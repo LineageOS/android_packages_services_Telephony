@@ -283,6 +283,22 @@ public class NotificationMgr {
             }
         }
 
+        CarrierConfigManager ccm = (CarrierConfigManager)
+            mContext.getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (ccm == null) {
+            Log.e(LOG_TAG, "Unable to get carrier config service");
+        } else {
+            PersistableBundle cc = ccm.getConfigForSubId(subId);
+            if (cc == null) {
+                Log.e(LOG_TAG, "Unable to get carrier config");
+            } else {
+                if (cc.getBoolean("sprint_mwi_quirk")) {
+                    Log.v(LOG_TAG, "sprint_mwi_quirk is set, hiding mwi");
+                    visible = false;
+                }
+            }
+        }
+
         Log.i(LOG_TAG, "updateMwi(): subId " + subId + " update to " + visible);
         mMwiVisible.put(subId, visible);
 
