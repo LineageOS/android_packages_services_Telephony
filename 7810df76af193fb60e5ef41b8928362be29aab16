@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1b9901_f711b7b0",
+        "filename": "src/com/android/phone/CallModeler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-11-09T10:09:28Z",
+      "side": 1,
+      "message": "mNextCallGsmCallIsForwarded seems to be working, but the forwarded flag isn\u0027t set in the Call object until onDisconnect time (?)",
+      "revId": "7810df76af193fb60e5ef41b8928362be29aab16",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1b9901_37496fd1",
+        "filename": "src/com/android/phone/CallModeler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-11-09T10:09:28Z",
+      "side": 1,
+      "message": "true -\u003e false",
+      "revId": "7810df76af193fb60e5ef41b8928362be29aab16",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
