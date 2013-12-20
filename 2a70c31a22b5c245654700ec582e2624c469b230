@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a7e1126_2f4605c0",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 4449
+      },
+      "writtenOn": "2013-12-20T06:53:39Z",
+      "side": 1,
+      "message": "tabs instead of spaces here and below",
+      "revId": "2a70c31a22b5c245654700ec582e2624c469b230",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
