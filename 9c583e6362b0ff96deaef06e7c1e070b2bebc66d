@@ -16,6 +16,57 @@
       "revId": "9c583e6362b0ff96deaef06e7c1e070b2bebc66d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba63e191_083467dc",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-12-23T08:16:56Z",
+      "side": 1,
+      "message": "- Melding weergeven van netwerkgebeurtenissen tijdens gesprekken.\n\nevt nog met voorbeeld, maar dat is in het engels ook niet",
+      "revId": "9c583e6362b0ff96deaef06e7c1e070b2bebc66d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba63e191_a8243baf",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-12-23T08:16:56Z",
+      "side": 1,
+      "message": "netwerk met kleine letter - dit is een machtiging",
+      "revId": "9c583e6362b0ff96deaef06e7c1e070b2bebc66d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba63e191_683723e4",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-12-23T08:16:56Z",
+      "side": 1,
+      "message": "..en kan extra kosten met zich meebrengen.",
+      "revId": "9c583e6362b0ff96deaef06e7c1e070b2bebc66d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
