@@ -36,4 +36,10 @@
     <string name="preferred_network_mode_wcdma_only_choice">WCDMA only</string>
     <string name="preferred_network_mode_gsm_only_choice">GSM only</string>
     <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA preferred</string>
+
+    <!-- My Phone Number -->
+    <string name="phone_number_label">My phone number</string>
+    <string name="phone_number_summary">Set the phone number for this device</string>
+    <string name="set_my_number_failed">Failed to set phone number</string>
+    <string name="msisdn_alpha_tag" translatable="false">Voice Line 1</string>
 </resources>
