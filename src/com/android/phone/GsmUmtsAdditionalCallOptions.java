@@ -21,12 +21,14 @@ public class GsmUmtsAdditionalCallOptions extends TimeConsumingPreferenceActivit
 
     public static final String BUTTON_CLIR_KEY  = "button_clir_key";
     public static final String BUTTON_CW_KEY    = "button_cw_key";
+    public static final String BUTTON_PN_KEY    = "button_pn_key";
 
     private static final int CW_WARNING_DIALOG = 201;
     private static final int CALLER_ID_WARNING_DIALOG = 202;
 
     private CLIRListPreference mCLIRButton;
     private CallWaitingSwitchPreference mCWButton;
+    private MSISDNEditPreference mMSISDNButton;
 
     private final ArrayList<Preference> mPreferences = new ArrayList<Preference>();
     private int mInitIndex = 0;
@@ -52,6 +54,7 @@ public class GsmUmtsAdditionalCallOptions extends TimeConsumingPreferenceActivit
         PreferenceScreen prefSet = getPreferenceScreen();
         mCLIRButton = (CLIRListPreference) prefSet.findPreference(BUTTON_CLIR_KEY);
         mCWButton = (CallWaitingSwitchPreference) prefSet.findPreference(BUTTON_CW_KEY);
+        mMSISDNButton = (MSISDNEditPreference) prefSet.findPreference(BUTTON_PN_KEY);
 
         PersistableBundle b = null;
         if (mSubscriptionInfoHelper.hasSubId()) {
@@ -102,6 +105,10 @@ public class GsmUmtsAdditionalCallOptions extends TimeConsumingPreferenceActivit
             }
         }
 
+        if (mMSISDNButton != null) {
+            mPreferences.add(mMSISDNButton);
+        }
+
         if (mPreferences.size() != 0) {
             if (icicle == null) {
                 if (DBG) Log.d(LOG_TAG, "start to init ");
@@ -124,6 +131,9 @@ public class GsmUmtsAdditionalCallOptions extends TimeConsumingPreferenceActivit
                     } else {
                         mCLIRButton.init(this, false, mPhone);
                     }
+                }
+                if (mMSISDNButton != null && mMSISDNButton.isEnabled()) {
+                    mMSISDNButton.init(this, true, mPhone);
                 }
             }
         }
@@ -216,6 +226,8 @@ public class GsmUmtsAdditionalCallOptions extends TimeConsumingPreferenceActivit
                 ((CallWaitingSwitchPreference) pref).init(this, false, mPhone);
             } else if (pref instanceof CLIRListPreference) {
                 ((CLIRListPreference) pref).init(this, false, mPhone);
+            } else if (pref instanceof MSISDNEditPreference) {
+                ((MSISDNEditPreference) pref).init(this, false, mPhone);
             }
         }
     }
