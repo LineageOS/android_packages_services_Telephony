@@ -69,6 +69,24 @@
       "revId": "47fef902c90935e763e85befaaf3395267b6c2f4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a68dd71_7fa34a9f",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 8326
+      },
+      "writtenOn": "2013-12-30T01:01:16Z",
+      "side": 1,
+      "message": "?? ????????????? cm_strings.xml:\n\u003c!-- Sprint MWI Quirk: Phantom message wait indicator workaround --\u003e",
+      "parentUuid": "9a68dd71_ff8e5a26",
+      "revId": "47fef902c90935e763e85befaaf3395267b6c2f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
