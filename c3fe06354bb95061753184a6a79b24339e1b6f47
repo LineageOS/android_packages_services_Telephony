@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a68dd71_9f487e2f",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 4832
+      },
+      "writtenOn": "2013-12-30T00:26:35Z",
+      "side": 1,
+      "message": "Eto zagolovok nastoek vibracii, dumaju prosto \"Vibracija\"",
+      "revId": "c3fe06354bb95061753184a6a79b24339e1b6f47",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a68dd71_ff5dfaec",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4832
+      },
+      "writtenOn": "2013-12-30T00:26:35Z",
+      "side": 1,
+      "message": "Vibrirovat pri otvete",
+      "revId": "c3fe06354bb95061753184a6a79b24339e1b6f47",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a68dd71_1f632eb3",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 4832
+      },
+      "writtenOn": "2013-12-30T00:26:35Z",
+      "side": 1,
+      "message": "Vibrirovat?",
+      "revId": "c3fe06354bb95061753184a6a79b24339e1b6f47",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a68dd71_df459617",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4832
+      },
+      "writtenOn": "2013-12-30T00:26:35Z",
+      "side": 1,
+      "message": "Vibrirovat pri sbrasqvanii",
+      "revId": "c3fe06354bb95061753184a6a79b24339e1b6f47",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a68dd71_3fbe3200",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4832
+      },
+      "writtenOn": "2013-12-30T00:26:35Z",
+      "side": 1,
+      "message": "Vibrirovat kazduju minutu",
+      "revId": "c3fe06354bb95061753184a6a79b24339e1b6f47",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a68dd71_bf5782c9",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 4832
+      },
+      "writtenOn": "2013-12-30T00:26:35Z",
+      "side": 1,
+      "message": "Vibrirovat",
+      "revId": "c3fe06354bb95061753184a6a79b24339e1b6f47",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a68dd71_7fc4aa91",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4832
+      },
+      "writtenOn": "2013-12-30T00:26:35Z",
+      "side": 1,
+      "message": "Mozet vqzovq \"S\" nomerov, a ne \"OT\"?",
+      "revId": "c3fe06354bb95061753184a6a79b24339e1b6f47",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
