@@ -51,6 +51,24 @@
       "revId": "47fef902c90935e763e85befaaf3395267b6c2f4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a68dd71_ff8e5a26",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2013-12-30T00:59:54Z",
+      "side": 1,
+      "message": "Sprint? ? ??? ????????, ??? ??? ? Verizon-?... ? ????? ??????, ??? ???? ?? ???-?? ?????? :)",
+      "parentUuid": "9a68dd71_7f7caa20",
+      "revId": "47fef902c90935e763e85befaaf3395267b6c2f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
