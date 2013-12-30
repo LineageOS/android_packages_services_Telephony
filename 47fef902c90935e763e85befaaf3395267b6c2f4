@@ -198,6 +198,24 @@
     },
     {
       "key": {
+        "uuid": "9a68dd71_1f09ee95",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 8326
+      },
+      "writtenOn": "2013-12-30T01:14:03Z",
+      "side": 1,
+      "message": "????? ? ???????????? ?????? (+79251234567) ????????. ?????, ?????? ????????))",
+      "parentUuid": "9a68dd71_5fd8c61d",
+      "revId": "47fef902c90935e763e85befaaf3395267b6c2f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a68dd71_bf81c2fd",
         "filename": "res/values-ru/cm_strings.xml",
         "patchSetId": 3
