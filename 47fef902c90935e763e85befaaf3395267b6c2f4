@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "9a68dd71_3fc4f23e",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2013-12-30T01:09:24Z",
+      "side": 1,
+      "message": "??, ??? ??? ?????. :)",
+      "parentUuid": "9a68dd71_7fca6a51",
+      "revId": "47fef902c90935e763e85befaaf3395267b6c2f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a68dd71_ffb5facf",
         "filename": "res/values-ru/cm_strings.xml",
         "patchSetId": 3
@@ -101,6 +119,24 @@
       "writtenOn": "2013-12-30T01:08:55Z",
       "side": 1,
       "message": "????? ??, ???? ?? ??????? \"?????\", ?? ???? \"?\"",
+      "parentUuid": "9a68dd71_ffb5facf",
+      "revId": "47fef902c90935e763e85befaaf3395267b6c2f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a68dd71_1fe24ed6",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2013-12-30T01:09:24Z",
+      "side": 1,
+      "message": "???. ? ??? ???-?? ?????? ? ??????? ???? — ??? ?????, ???? ??.",
       "parentUuid": "9a68dd71_ffb5facf",
       "revId": "47fef902c90935e763e85befaaf3395267b6c2f4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
