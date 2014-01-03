@@ -87,6 +87,24 @@
     },
     {
       "key": {
+        "uuid": "7a5de9d1_2fa7e950",
+        "filename": "res/values-pl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 8423
+      },
+      "writtenOn": "2014-01-03T07:15:06Z",
+      "side": 1,
+      "message": "https://github.com/CyanogenMod/android_packages_services_Telephony/blob/cm-11.0/res/values/cm_strings.xml#L76",
+      "parentUuid": "7a5de9d1_6f23a106",
+      "revId": "582db6a84a8a4fee702c673b61bd1fdf68171880",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a5de9d1_0f20edf6",
         "filename": "res/values-pl/cm_strings.xml",
         "patchSetId": 1
