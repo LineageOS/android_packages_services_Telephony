@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a5de9d1_2f4609c0",
+        "filename": "res/values-pl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4449
+      },
+      "writtenOn": "2014-01-03T06:01:10Z",
+      "side": 1,
+      "message": "przekazywana?\n\n(nie znam kontekstu, wi?c mog? si? myli?).",
+      "revId": "582db6a84a8a4fee702c673b61bd1fdf68171880",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a5de9d1_cf1175b1",
+        "filename": "res/values-pl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4449
+      },
+      "writtenOn": "2014-01-03T06:01:10Z",
+      "side": 1,
+      "message": "po??czenia",
+      "revId": "582db6a84a8a4fee702c673b61bd1fdf68171880",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a5de9d1_ef16b1a6",
+        "filename": "res/values-pl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4449
+      },
+      "writtenOn": "2014-01-03T06:01:10Z",
+      "side": 1,
+      "message": "Ukrywanie",
+      "revId": "582db6a84a8a4fee702c673b61bd1fdf68171880",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a5de9d1_4f26e517",
+        "filename": "res/values-pl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4449
+      },
+      "writtenOn": "2014-01-03T06:01:10Z",
+      "side": 1,
+      "message": "\"ka?dej minuty po??czenia wychodz?cego\"?",
+      "revId": "582db6a84a8a4fee702c673b61bd1fdf68171880",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a5de9d1_6f23a106",
+        "filename": "res/values-pl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 4449
+      },
+      "writtenOn": "2014-01-03T06:01:10Z",
+      "side": 1,
+      "message": "Shouldn\u0027t \u0027z\u0027 here be uppercase?",
+      "revId": "582db6a84a8a4fee702c673b61bd1fdf68171880",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a5de9d1_0f20edf6",
+        "filename": "res/values-pl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4449
+      },
+      "writtenOn": "2014-01-03T06:01:10Z",
+      "side": 1,
+      "message": "\"3G jest szybsze, ale zu?ywa wi?cej baterii i mo?e powodowa? dodatkowe koszty.\"\n\nIMO this isn\u0027t needed nowadays.",
+      "revId": "582db6a84a8a4fee702c673b61bd1fdf68171880",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
