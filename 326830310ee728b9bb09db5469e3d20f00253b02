@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a5ae5dd_67b0a18c",
+        "filename": "src/com/android/phone/Ringer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 56
+      },
+      "writtenOn": "2014-01-10T04:40:48Z",
+      "side": 1,
+      "message": "Compile fails, needs ) removed after \u003c\u003d 0",
+      "revId": "326830310ee728b9bb09db5469e3d20f00253b02",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
