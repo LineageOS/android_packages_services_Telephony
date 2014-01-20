@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a5ae5dd_86310def",
+        "filename": "res/values-ca/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-01-20T05:00:10Z",
+      "side": 1,
+      "message": "Please change to normal \u003c and \u003e",
+      "revId": "7a872f5cb8be4f15783513561e1261fc85aa02a2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
