@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a57f1b5_38bbb110",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2014-01-23T20:06:45Z",
+      "side": 1,
+      "message": "it should be 10",
+      "revId": "8b989a0bfd5ef82ed455f04b5025cf326edae45a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a57f1b5_d8361db4",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2014-01-23T20:06:45Z",
+      "side": 1,
+      "message": "don\u0027t use this check, it is unreliable now, hammerhead uses cdma lte for global mode, avoid anything that have to be gotten on build.prop. detect gsm or cdma at runtime not from build.prop.",
+      "revId": "8b989a0bfd5ef82ed455f04b5025cf326edae45a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
