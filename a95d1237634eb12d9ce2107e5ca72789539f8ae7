@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a57f1b5_b3cee2b2",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 19
+      },
+      "writtenOn": "2014-01-24T06:27:33Z",
+      "side": 1,
+      "message": "should not be NETWORK_MODE_LTE_GSM_WCDMA for GSM ?",
+      "revId": "a95d1237634eb12d9ce2107e5ca72789539f8ae7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
