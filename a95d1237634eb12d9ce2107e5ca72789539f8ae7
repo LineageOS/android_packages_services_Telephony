@@ -34,6 +34,24 @@
       "revId": "a95d1237634eb12d9ce2107e5ca72789539f8ae7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a57f1b5_3300b2aa",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2014-01-25T15:26:50Z",
+      "side": 1,
+      "message": "On mine, it depends. Out of 4, 2 fallback to 9, 2 fallback to 0 :(",
+      "parentUuid": "3a57f1b5_534bee2b",
+      "revId": "a95d1237634eb12d9ce2107e5ca72789539f8ae7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
