@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a54edaf_e96231ad",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2014-01-26T13:29:51Z",
+      "side": 1,
+      "message": "Spaces, not tabs.",
+      "revId": "2aff118853dc5422f7acd3f44c6877bc541d37ea",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
