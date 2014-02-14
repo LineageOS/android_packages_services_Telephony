@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fade3982_3a188084",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 2681
+      },
+      "writtenOn": "2014-02-14T19:53:26Z",
+      "side": 1,
+      "message": "This line needs to go",
+      "revId": "3ffc786dd28da1698cb56bb12e0970fc631fb21e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
