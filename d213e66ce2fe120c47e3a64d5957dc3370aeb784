@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_46449473",
+        "filename": "res/values-nl/cm_caf.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-03-09T09:54:15Z",
+      "side": 1,
+      "message": "Aangezien dit in cm-10.2 al vertaald is, neem ik aan dat je geen hulp hierbij nodig hebt.",
+      "revId": "d213e66ce2fe120c47e3a64d5957dc3370aeb784",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_064a8c83",
+        "filename": "res/values-nl/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-03-09T09:54:15Z",
+      "side": 1,
+      "message": "http://review.cyanogenmod.org/#/c/60661/",
+      "revId": "d213e66ce2fe120c47e3a64d5957dc3370aeb784",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}

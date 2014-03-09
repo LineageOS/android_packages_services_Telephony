@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_e64e8895",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-03-09T09:54:15Z",
+      "side": 0,
+      "message": "Dit zal zorgen voor merge conflicts, reverten a.u.b.",
+      "revId": "098ddecc75827653a7a4a82c9c3fe32d3b172a59",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
