@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bae84128_4d466c24",
+        "filename": "res/values/array.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-03-15T10:58:44Z",
+      "side": 1,
+      "message": "Please remove the translatable\u003d\"true\" attributes (they aren\u0027t necessary, string-arrays are translatable by default) and first place the name and then the translatable attribute (yes, it\u0027s different than this file, but that is standard)",
+      "revId": "27db31d76cce7e44c7f0f1af8c7c83bf282bb470",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae84128_2dd04853",
         "filename": "res/values/array.xml",
         "patchSetId": 1
