@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_a8c44692",
+        "filename": "res/values/cm_arrays.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2014-03-16T08:39:02Z",
+      "side": 1,
+      "message": "You may probably want to make this untranslatable, too.",
+      "revId": "00f885a628917636a6cd046d0029a799a121fe2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
