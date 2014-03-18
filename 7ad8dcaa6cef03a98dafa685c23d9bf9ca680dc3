@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_9ef8987e",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-03-18T03:42:05Z",
+      "side": 1,
+      "message": "Unused import -\u003e can be nuked.",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_7ef5d481",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-03-18T03:42:05Z",
+      "side": 1,
+      "message": "Unused imports -\u003e nuke them.",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_def2209a",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2119,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-03-18T03:42:05Z",
+      "side": 1,
+      "message": "See the saveLookupProviderSetting() suggestion below.",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_fe08c493",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2133,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-03-18T03:42:05Z",
+      "side": 1,
+      "message": "The ternary operator is unneeded, \u0027something !\u003d 0\u0027 is already a bool.",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_3e034c75",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-03-18T03:42:05Z",
+      "side": 1,
+      "message": "This could use a helper method:\n\nprivate void restoreLookupProvider(ListPreference pref, String key) {\n    String provider \u003d Settings.System.getString(getContentResolver(), key);\n    if (provider \u003d\u003d null) {\n        pref.setValueIndex(0);\n        saveLookupProviderSetting(pref, pref.getEntryValues()[0].toString());\n    } else {\n        pref.setValue(provider);\n    }\n}\n\n(this also eliminates the unsafe cast)",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_5efe106c",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2176,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-03-18T03:42:05Z",
+      "side": 1,
+      "message": "Suggestion:\n\nprivate void saveLookupProviderSetting(Preference pref, String newValue) {\n    String key;\n    if (pref \u003d\u003d mChooseForwardLookupProvider) {\n        key \u003d Settings.System.FORWARD_LOOKUP_PROVIDER;\n    } else if (pref \u003d\u003d mChoosePeopleLookupProvider) {\n        key \u003d Settings.System.PEOPLE_LOOKUP_PROVIDER;\n    } else if (pref \u003d\u003d mChooseReverseLookupProvider) {\n        key \u003d Settings.System.REVERSE_LOOKUP_PROVIDER;\n    } else {\n        return;\n    }\n    Settings.System.putString(getContentResolver(), key, newValue);\n}",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
