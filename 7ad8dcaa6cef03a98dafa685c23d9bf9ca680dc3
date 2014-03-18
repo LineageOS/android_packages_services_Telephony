@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bae84128_fef2846e",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7003
+      },
+      "writtenOn": "2014-03-18T06:51:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae84128_9ef8987e",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae84128_7ef5d481",
         "filename": "src/com/android/phone/CallFeaturesSetting.java",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2014-03-18T03:42:05Z",
       "side": 1,
       "message": "Unused imports -\u003e nuke them.",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_5ee8d07c",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 7003
+      },
+      "writtenOn": "2014-03-18T06:51:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae84128_7ef5d481",
       "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bae84128_defce040",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2119,
+      "author": {
+        "id": 7003
+      },
+      "writtenOn": "2014-03-18T06:51:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae84128_def2209a",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae84128_fe08c493",
         "filename": "src/com/android/phone/CallFeaturesSetting.java",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2014-03-18T03:42:05Z",
       "side": 1,
       "message": "The ternary operator is unneeded, \u0027something !\u003d 0\u0027 is already a bool.",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_bef91c50",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2133,
+      "author": {
+        "id": 7003
+      },
+      "writtenOn": "2014-03-18T06:51:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae84128_fe08c493",
       "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "bae84128_de9340f9",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 7003
+      },
+      "writtenOn": "2014-03-18T06:51:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae84128_3e034c75",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae84128_5efe106c",
         "filename": "src/com/android/phone/CallFeaturesSetting.java",
         "patchSetId": 4
@@ -98,6 +188,24 @@
       "writtenOn": "2014-03-18T03:42:05Z",
       "side": 1,
       "message": "Suggestion:\n\nprivate void saveLookupProviderSetting(Preference pref, String newValue) {\n    String key;\n    if (pref \u003d\u003d mChooseForwardLookupProvider) {\n        key \u003d Settings.System.FORWARD_LOOKUP_PROVIDER;\n    } else if (pref \u003d\u003d mChoosePeopleLookupProvider) {\n        key \u003d Settings.System.PEOPLE_LOOKUP_PROVIDER;\n    } else if (pref \u003d\u003d mChooseReverseLookupProvider) {\n        key \u003d Settings.System.REVERSE_LOOKUP_PROVIDER;\n    } else {\n        return;\n    }\n    Settings.System.putString(getContentResolver(), key, newValue);\n}",
+      "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_9e02583d",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2176,
+      "author": {
+        "id": 7003
+      },
+      "writtenOn": "2014-03-18T06:51:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae84128_5efe106c",
       "revId": "7ad8dcaa6cef03a98dafa685c23d9bf9ca680dc3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
