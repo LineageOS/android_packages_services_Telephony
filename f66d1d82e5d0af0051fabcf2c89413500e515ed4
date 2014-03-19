@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_9cb6e188",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 8640
+      },
+      "writtenOn": "2014-03-19T14:03:53Z",
+      "side": 1,
+      "message": "Why would we change this it\u0027s always been that way on single sim?",
+      "revId": "f66d1d82e5d0af0051fabcf2c89413500e515ed4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_dcb0698e",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 8640
+      },
+      "writtenOn": "2014-03-19T14:03:53Z",
+      "side": 1,
+      "message": "I think this looks better in Moto\u0027s Settings where Sub 1 is replaced with SIM1 etc.",
+      "revId": "f66d1d82e5d0af0051fabcf2c89413500e515ed4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
