@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_42e2b2d6",
+        "filename": "src/com/android/phone/SetSubscription.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2014-03-21T13:48:53Z",
+      "side": 1,
+      "message": "You probably want to remove the finish comment and this unuseful log",
+      "revId": "e262946d08ab1cf29a8198ed8a0465a36a9e8521",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_a2e73ee3",
+        "filename": "src/com/android/phone/SetSubscription.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2014-03-21T13:48:53Z",
+      "side": 1,
+      "message": "You probably want to remove this unuseful log",
+      "revId": "e262946d08ab1cf29a8198ed8a0465a36a9e8521",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
