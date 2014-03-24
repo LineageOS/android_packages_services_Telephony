@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_eb13e15a",
+        "filename": "res/values-nl/cm_caf.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7221
+      },
+      "writtenOn": "2014-03-24T11:20:26Z",
+      "side": 1,
+      "message": "TD-SCDMA/WCDMA/LTE",
+      "revId": "4494373b96080197eaf00fb4db42206928096f35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_2b1e6963",
+        "filename": "res/values-nl/cm_caf.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 7221
+      },
+      "writtenOn": "2014-03-24T11:20:26Z",
+      "side": 1,
+      "message": "2x \u003e\u003e",
+      "revId": "4494373b96080197eaf00fb4db42206928096f35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_0b1ba573",
+        "filename": "res/values-nl/cm_caf.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 7221
+      },
+      "writtenOn": "2014-03-24T11:20:26Z",
+      "side": 1,
+      "message": "2x \u003e\u003e",
+      "revId": "4494373b96080197eaf00fb4db42206928096f35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_6b26b1bb",
+        "filename": "res/values-nl/cm_caf.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 7221
+      },
+      "writtenOn": "2014-03-24T11:20:26Z",
+      "side": 1,
+      "message": "2x \u003e\u003e",
+      "revId": "4494373b96080197eaf00fb4db42206928096f35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_4b2bed82",
+        "filename": "res/values-nl/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 7221
+      },
+      "writtenOn": "2014-03-24T11:20:26Z",
+      "side": 1,
+      "message": "LTE/WCDMA (zonder spaties)",
+      "revId": "4494373b96080197eaf00fb4db42206928096f35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
