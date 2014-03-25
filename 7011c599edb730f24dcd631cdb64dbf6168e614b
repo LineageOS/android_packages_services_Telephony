@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_b1578601",
+        "filename": "res/values-nl/cm_caf.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-03-25T10:09:40Z",
+      "side": 1,
+      "message": "Please remove lines 65-73, they are already present in cm_strings.xml",
+      "revId": "7011c599edb730f24dcd631cdb64dbf6168e614b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
