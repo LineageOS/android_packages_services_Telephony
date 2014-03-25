@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_6387f50f",
+        "filename": "res/values-da/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2014-03-25T14:47:51Z",
+      "side": 1,
+      "message": "These needs to be in cm_caf.xml\n\nAlso, check this commit for a cleaned up version:\nhttp://review.cyanogenmod.org/#/c/61262/",
+      "revId": "5e979914778ded1e5e516dcaa7a47e50ec3c5347",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
