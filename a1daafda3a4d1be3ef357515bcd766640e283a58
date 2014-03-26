@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_46b63fdd",
+        "filename": "res/values-it/cm_caf.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3184
+      },
+      "writtenOn": "2014-03-26T07:41:59Z",
+      "side": 1,
+      "message": "sottoinsieme rete. Non ha senso ne in inglese ne italiano tanto vale tradurlo no?",
+      "revId": "a1daafda3a4d1be3ef357515bcd766640e283a58",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_86b047df",
+        "filename": "res/values-it/cm_caf.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 3184
+      },
+      "writtenOn": "2014-03-26T07:41:59Z",
+      "side": 1,
+      "message": "...solo per il primo abbonamento",
+      "revId": "a1daafda3a4d1be3ef357515bcd766640e283a58",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_26bb3bc6",
+        "filename": "res/values-it/cm_caf.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 3184
+      },
+      "writtenOn": "2014-03-26T07:41:59Z",
+      "side": 1,
+      "message": "Roaming gestito?",
+      "revId": "a1daafda3a4d1be3ef357515bcd766640e283a58",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_66b543cc",
+        "filename": "res/values-it/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 3184
+      },
+      "writtenOn": "2014-03-26T07:41:59Z",
+      "side": 1,
+      "message": "Senza \"di\" in tutti e tre",
+      "revId": "a1daafda3a4d1be3ef357515bcd766640e283a58",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
