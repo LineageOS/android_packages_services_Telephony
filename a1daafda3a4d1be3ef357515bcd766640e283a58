@@ -67,6 +67,24 @@
       "revId": "a1daafda3a4d1be3ef357515bcd766640e283a58",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_e6c15330",
+        "filename": "res/values-it/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 3916
+      },
+      "writtenOn": "2014-03-26T07:54:28Z",
+      "side": 1,
+      "message": "No. qui lascerei. Lo spazio c\u0027è. Approfittiamone, una volta.",
+      "parentUuid": "bae84128_66b543cc",
+      "revId": "a1daafda3a4d1be3ef357515bcd766640e283a58",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
