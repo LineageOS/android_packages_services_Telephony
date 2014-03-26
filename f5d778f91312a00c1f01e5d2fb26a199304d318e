@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_d946b0be",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2014-03-26T15:04:15Z",
+      "side": 0,
+      "message": "didn\u0027t mean to do this, but I don\u0027t think it will be a problem",
+      "revId": "f5d778f91312a00c1f01e5d2fb26a199304d318e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
