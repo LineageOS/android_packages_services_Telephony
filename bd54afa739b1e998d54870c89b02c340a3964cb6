@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7af24918_e0f2e86e",
+        "filename": "src/com/android/phone/MSimMobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 8640
+      },
+      "writtenOn": "2014-04-22T19:12:38Z",
+      "side": 1,
+      "message": "Before the move to main settings header it always launched the tabbed view with sim1 and sim 2 network settings. After the move it launches the view you see here https://plus.google.com/115770777184875456709/posts/92UXgcGGoV3 I have been over and over the code and I am not really sure why they have MSimMobileNetworkSettings and MSimMobileNetorkSubsSettings. The content is almost identical and only the second one is used. The first just calls the SelectSubscription. I am open to suggestions I have been trying for a week and this is the only thing that works like it did previously.",
+      "parentUuid": "7af24918_e0cb081d",
+      "revId": "bd54afa739b1e998d54870c89b02c340a3964cb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7af24918_40d11ccd",
         "filename": "src/com/android/phone/MSimMobileNetworkSettings.java",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-04-22T19:06:07Z",
       "side": 1,
       "message": "if (...) {",
+      "revId": "bd54afa739b1e998d54870c89b02c340a3964cb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_40e8fc7c",
+        "filename": "src/com/android/phone/MSimMobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 8640
+      },
+      "writtenOn": "2014-04-22T19:12:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7af24918_40d11ccd",
       "revId": "bd54afa739b1e998d54870c89b02c340a3964cb6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
