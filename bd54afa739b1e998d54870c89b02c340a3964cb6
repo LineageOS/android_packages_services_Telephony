@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af24918_e0cb081d",
+        "filename": "src/com/android/phone/MSimMobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-04-22T19:06:07Z",
+      "side": 1,
+      "message": "I don\u0027t yet completely follow the code, but isn\u0027t the manageSub !\u003d null check _always_ either true or false (only dependant on the contents of res/xml/msim_network_setting.xml)? If yes, this means that either this activity will never be used at all (if true) or the newly added code is dead code (if false).\n\nThis doesn\u0027t feel right to me?",
+      "revId": "bd54afa739b1e998d54870c89b02c340a3964cb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_40d11ccd",
+        "filename": "src/com/android/phone/MSimMobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-04-22T19:06:07Z",
+      "side": 1,
+      "message": "if (...) {",
+      "revId": "bd54afa739b1e998d54870c89b02c340a3964cb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
