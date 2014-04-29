@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af24918_6ce88e7d",
+        "filename": "res/layout/dialer_msim_item.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2014-04-29T22:41:28Z",
+      "side": 1,
+      "message": "Please remove whitespaces",
+      "revId": "6543e39b83e8b692600c8c482670878af6b4966d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_4cedd28a",
+        "filename": "res/layout/dialer_msim_item.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2014-04-29T22:41:28Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "6543e39b83e8b692600c8c482670878af6b4966d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
