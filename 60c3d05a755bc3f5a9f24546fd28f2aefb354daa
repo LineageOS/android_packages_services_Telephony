@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af24918_87105350",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-04-30T06:21:56Z",
+      "side": 1,
+      "message": "I think you should add a space after SIM.",
+      "revId": "60c3d05a755bc3f5a9f24546fd28f2aefb354daa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
