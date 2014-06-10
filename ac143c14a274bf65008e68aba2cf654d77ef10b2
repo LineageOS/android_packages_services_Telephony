@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da0c15f0_b7777fd3",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1737,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-10T19:47:56Z",
+      "side": 1,
+      "message": "No hardcoded strings please, those should go into a string resource.",
+      "revId": "ac143c14a274bf65008e68aba2cf654d77ef10b2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da0c15f0_9774fbcf",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1747,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-10T19:47:56Z",
+      "side": 1,
+      "message": "You only need to do all of this stuff if the package is installed, so it\u0027s better to do\n\nif (PhoneUtils.isPackageInstalled(...)) {\n    List\u003cString\u003e ...\n    ...\n    mChhoseReverseLookupProvider.setEntryValues(...);\n}",
+      "revId": "ac143c14a274bf65008e68aba2cf654d77ef10b2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da0c15f0_776de703",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 3635,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-10T19:47:56Z",
+      "side": 1,
+      "message": "return pi.applicationInfo.enabled;",
+      "revId": "ac143c14a274bf65008e68aba2cf654d77ef10b2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
