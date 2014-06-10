@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da0c15f0_7757a702",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3636,
+      "author": {
+        "id": 7220
+      },
+      "writtenOn": "2014-06-10T10:36:19Z",
+      "side": 1,
+      "message": "should return false if ( pkg \u003d\u003d null) ?",
+      "revId": "1d25ca2daab357962a7ea25aab9cfd14d91cfbda",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
