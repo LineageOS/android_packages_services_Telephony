@@ -16,6 +16,24 @@
       "revId": "ab8e43a5054d6e514add077a9329020fa14c8b92",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_b8bb1975",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1844,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2014-06-11T10:42:33Z",
+      "side": 1,
+      "message": "- Data service needs to be disconnected temporarily. Are you sure you want to continue?",
+      "parentUuid": "da0c15f0_94923956",
+      "revId": "ab8e43a5054d6e514add077a9329020fa14c8b92",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
