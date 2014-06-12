@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba0121b8_fe0bb97b",
+        "filename": "res/values/cm_arrays.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2014-06-12T16:51:48Z",
+      "side": 1,
+      "message": "Empty line not needed.",
+      "revId": "9a8a0cdbb1666bea329c07cd27f0ac795662a7b6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_de1075ab",
+        "filename": "src/com/android/phone/FlipDetector.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2014-06-12T16:51:48Z",
+      "side": 1,
+      "message": "Please add a CM copyright header.",
+      "revId": "9a8a0cdbb1666bea329c07cd27f0ac795662a7b6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
