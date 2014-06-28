@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba0121b8_60824d02",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-06-28T03:24:51Z",
+      "side": 1,
+      "message": "This may be something to store in a variable once the class is instantiated instead of having it look it up each time. I\u0027m not sure best practice here.",
+      "revId": "6b67e62a907c70215bac4d8a6edb44cce5e67268",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
