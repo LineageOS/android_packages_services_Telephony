@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba0121b8_4f312a0b",
+        "filename": "src/com/android/phone/NotificationMgr.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-07-07T19:20:44Z",
+      "side": 1,
+      "message": "http://developer.android.com/reference/android/app/Notification.Builder.html#setNumber%28int%29\n\n:)",
+      "revId": "da1a081c9fad67b4602687028eb68c48e20dcba1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
