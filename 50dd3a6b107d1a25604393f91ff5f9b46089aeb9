@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a061dce_9d1603a6",
+        "filename": "src/com/android/phone/CallNotifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 9180
+      },
+      "writtenOn": "2014-07-11T09:28:19Z",
+      "side": 1,
+      "message": "Would be better if we also stop the flip detector once the phone is OFFHOOK:\n(~Line 902)\n\n[optional] if you don\u0027t mind can you change the comment to:\n// Stop flip detector (Stops --\u003e Stop)",
+      "revId": "50dd3a6b107d1a25604393f91ff5f9b46089aeb9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_1dd833ef",
+        "filename": "src/com/android/phone/FlipDetector.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 9180
+      },
+      "writtenOn": "2014-07-11T09:28:19Z",
+      "side": 1,
+      "message": "Perhaps you can either use:\n - copyOfRange method in Arrays, to copy from 1, 9\nor\n - Use ArrayList, which supports remove()\n\n(Or is doing it like above the preferred way?)",
+      "revId": "50dd3a6b107d1a25604393f91ff5f9b46089aeb9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
