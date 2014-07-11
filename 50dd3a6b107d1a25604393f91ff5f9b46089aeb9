@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a061dce_9df2836e",
+        "filename": "src/com/android/phone/CallNotifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 4229
+      },
+      "writtenOn": "2014-07-11T09:37:58Z",
+      "side": 1,
+      "message": "What does OFFHOOK do?",
+      "parentUuid": "9a061dce_9d1603a6",
+      "revId": "50dd3a6b107d1a25604393f91ff5f9b46089aeb9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a061dce_1dd833ef",
         "filename": "src/com/android/phone/FlipDetector.java",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-11T09:28:19Z",
       "side": 1,
       "message": "Perhaps you can either use:\n - copyOfRange method in Arrays, to copy from 1, 9\nor\n - Use ArrayList, which supports remove()\n\n(Or is doing it like above the preferred way?)",
+      "revId": "50dd3a6b107d1a25604393f91ff5f9b46089aeb9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_fde73faa",
+        "filename": "src/com/android/phone/FlipDetector.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 4229
+      },
+      "writtenOn": "2014-07-11T09:37:58Z",
+      "side": 1,
+      "message": "I\u0027ll look into copyOfRange, but this is already fairly simple to read.",
+      "parentUuid": "9a061dce_1dd833ef",
       "revId": "50dd3a6b107d1a25604393f91ff5f9b46089aeb9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
