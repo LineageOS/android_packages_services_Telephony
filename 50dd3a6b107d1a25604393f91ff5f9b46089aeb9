@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9a061dce_1d8673b9",
+        "filename": "src/com/android/phone/CallNotifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 9180
+      },
+      "writtenOn": "2014-07-11T09:59:12Z",
+      "side": 1,
+      "message": "It indicates (amongst other things) that the call is active:\nhttps://android.googlesource.com/platform/frameworks/base/+/android-4.4.4_r1/telephony/java/com/android/internal/telephony/PhoneConstants.java\n\nIf one directly answers the phone, the flip detector can potentially keep running until you disconnect the call. (might drain the battery a bit more on longer calls ;-))",
+      "parentUuid": "9a061dce_9df2836e",
+      "revId": "50dd3a6b107d1a25604393f91ff5f9b46089aeb9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a061dce_1dd833ef",
         "filename": "src/com/android/phone/FlipDetector.java",
         "patchSetId": 4
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I\u0027ll look into copyOfRange, but this is already fairly simple to read.",
       "parentUuid": "9a061dce_1dd833ef",
+      "revId": "50dd3a6b107d1a25604393f91ff5f9b46089aeb9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_ddba3b6e",
+        "filename": "src/com/android/phone/FlipDetector.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 9180
+      },
+      "writtenOn": "2014-07-11T09:59:12Z",
+      "side": 1,
+      "message": "Yes, upto you.\nI\u0027d actually think of storing just the min/max values (that you calculate in difference) as member variables and getting rid of the sample array (mGravityInZ) altogether (Which would also get rid of both for loops)",
+      "parentUuid": "9a061dce_fde73faa",
       "revId": "50dd3a6b107d1a25604393f91ff5f9b46089aeb9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
