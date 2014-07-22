@@ -34,6 +34,24 @@
       "revId": "b07a78823aa46a3ccd618e1d28c3baf894d97770",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_ac8d8d7d",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2014-07-22T20:58:54Z",
+      "side": 1,
+      "message": "I think you are right http://en.wikipedia.org/wiki/Fullscreen",
+      "parentUuid": "9a061dce_ec866564",
+      "revId": "b07a78823aa46a3ccd618e1d28c3baf894d97770",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
