@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a061dce_acbbcd0d",
+        "filename": "src/com/android/phone/CallNotifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2202,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-07-23T00:21:37Z",
+      "side": 1,
+      "message": "Can\u0027t this be simplified now?\n\nif (c \u003d\u003d null) {\n    return false;\n}\nreturn BLACKLIST.equals(c.getUserData());",
+      "revId": "edce09e8a4b341cf309781b8619011fb8f4988b6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
