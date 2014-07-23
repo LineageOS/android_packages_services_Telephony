@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a061dce_ac00edab",
+        "filename": "src/com/android/phone/CallNotifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-07-23T02:28:24Z",
+      "side": 1,
+      "message": "This code (and the other vibration stuff) should probably be copied for the MSIM case as well - in another patch ;)",
+      "revId": "1e0333bfb1c384980f6c55cff4b705da454e7a3f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
