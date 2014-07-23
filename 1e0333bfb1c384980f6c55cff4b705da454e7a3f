@@ -16,6 +16,24 @@
       "revId": "1e0333bfb1c384980f6c55cff4b705da454e7a3f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_4c267169",
+        "filename": "src/com/android/phone/CallNotifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2014-07-23T02:36:08Z",
+      "side": 1,
+      "message": "Yes, but i didn\u0027t copy, because the msim code is also doing some vibration stuff, and i can\u0027t test this code",
+      "parentUuid": "9a061dce_ac00edab",
+      "revId": "1e0333bfb1c384980f6c55cff4b705da454e7a3f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
