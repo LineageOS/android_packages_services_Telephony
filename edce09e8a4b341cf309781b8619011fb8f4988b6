@@ -16,6 +16,24 @@
       "revId": "edce09e8a4b341cf309781b8619011fb8f4988b6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_2c469d23",
+        "filename": "src/com/android/phone/CallNotifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2202,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2014-07-23T00:33:45Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "9a061dce_acbbcd0d",
+      "revId": "edce09e8a4b341cf309781b8619011fb8f4988b6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
