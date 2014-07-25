@@ -105,6 +105,24 @@
       "revId": "50dd3a6b107d1a25604393f91ff5f9b46089aeb9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_92db80ed",
+        "filename": "src/com/android/phone/FlipDetector.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 4229
+      },
+      "writtenOn": "2014-07-25T03:11:10Z",
+      "side": 1,
+      "message": "So I don\u0027t think we can get rid of the arrays. We need to keep a rolling window of values, meaning that if we just keep min or max we need to throw them out after they age for a bit, but then we need to track the second highest value, etc etc.\n\nI can get rid of the difference, I think. I\u0027ve been semi busy with work so haven\u0027t gotten a chance to test this a lot.",
+      "parentUuid": "9a061dce_ddba3b6e",
+      "revId": "50dd3a6b107d1a25604393f91ff5f9b46089aeb9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
