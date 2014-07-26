@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a061dce_6386e0ba",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-07-26T07:52:05Z",
+      "side": 1,
+      "message": "Dialpad T9 search",
+      "revId": "fed54011d8cc8fc421577ceb1aac574b76a14a0a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_838974cd",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-07-26T07:52:05Z",
+      "side": 1,
+      "message": "T9 search input",
+      "revId": "fed54011d8cc8fc421577ceb1aac574b76a14a0a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
