@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a061dce_7c49518b",
+        "filename": "src/com/android/phone/FlipDetector.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 9180
+      },
+      "writtenOn": "2014-08-05T07:16:34Z",
+      "side": 1,
+      "message": "You mentioned in PS-4 that you need to throw out the values after they age a bit.\nI see no need for that; at least not to detect flip in this scenario. The FlipDetector/sensors run for a few seconds upon receiving a call.. It is stopped either when we detect a flip or when we answer the call!\nSo there is no real need to complicate this by maintaining a rolling window of values; it would never be used imo.\nPerhaps if you intend to detect multiple flips or keep this running longer (apps/games?) you could so.\n\nBut here, something like:\n\n                val \u003d event.values[2];\n                if (min \u003e val) {\n                    min \u003d val;\n                } else if (max \u003c val) {\n                    max \u003d val;\n                }\n            break;\n        }\n\n        // The difference in gravity must exceed a certain value and the current gravity must be\n        // close to -9.8, and the proximity sensor must be detecting the ground.\n        if ((max - min) \u003e MIN_GRAVITY_CHANGE\n                \u0026\u0026 val \u003c -MIN_GRAVITY\n                \u0026\u0026 mCloseProximity) {\n            stop();\n\n\nworks just fine for me.\n\nAnd it much more simpler to understand!",
+      "revId": "48fe9e4213d8aea4b0c69ea44c48960873b85e36",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
