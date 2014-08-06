@@ -16,6 +16,24 @@
       "revId": "48fe9e4213d8aea4b0c69ea44c48960873b85e36",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_02c27033",
+        "filename": "src/com/android/phone/FlipDetector.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 4229
+      },
+      "writtenOn": "2014-08-06T07:15:49Z",
+      "side": 1,
+      "message": "Fair enough, I\u0027ll give it some more testing.",
+      "parentUuid": "9a061dce_7c49518b",
+      "revId": "48fe9e4213d8aea4b0c69ea44c48960873b85e36",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
