@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a061dce_32125db5",
+        "filename": "common/src/com/android/services/telephony/common/Call.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-08T18:17:58Z",
+      "side": 1,
+      "message": "public long getCreateTime() {\n    return mCreateTime;\n}\n\n(same above)",
+      "revId": "ea3072181c183a8602fd8cf92018b26a951bd45f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_121759a4",
+        "filename": "common/src/com/android/services/telephony/common/Call.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-08T18:17:58Z",
+      "side": 1,
+      "message": "This newline should be killed.",
+      "revId": "ea3072181c183a8602fd8cf92018b26a951bd45f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
