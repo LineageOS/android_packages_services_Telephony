@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a061dce_ab09d833",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-11T03:47:05Z",
+      "side": 1,
+      "message": "- Those cat be static final and ALL_UPPERCASE\n- Why not use SystemPropertiea.getBoolean()?\n- When defining them as protected, they wouldn\u0027t need to be duplicated in the msim case",
+      "revId": "6451d7795fca3ac4efe7ed2869ad4e58957d4259",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_0b07241d",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-11T03:47:05Z",
+      "side": 1,
+      "message": "- The m prefix is for member variables\n- 100 chars\n- It would be clearer to write it as \u0027boolean too \u003d SystemProperties.getBoolean(SOME_PROP, res.get boolean(R.bool.too))\u0027",
+      "revId": "6451d7795fca3ac4efe7ed2869ad4e58957d4259",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
