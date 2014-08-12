@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a061dce_a1cbb971",
+        "filename": "src/com/android/phone/MSimMobileNetworkSubSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-12T18:54:22Z",
+      "side": 1,
+      "message": "You can nuke those 3 method overrides.",
+      "revId": "9d51c8fb5f092332556c0bf04f42b20fe5dadd6b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_e1c5b15b",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-12T18:54:22Z",
+      "side": 1,
+      "message": "Suggestion: isMobileDataEnabled()",
+      "revId": "9d51c8fb5f092332556c0bf04f42b20fe5dadd6b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_01c9c578",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-12T18:54:22Z",
+      "side": 1,
+      "message": "Suggestion: isDataRoamingEnabled()",
+      "revId": "9d51c8fb5f092332556c0bf04f42b20fe5dadd6b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_41a1fda8",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-12T18:54:22Z",
+      "side": 1,
+      "message": "Suggestion: savePreferredNetworkModeToPrefs(int mode)",
+      "revId": "9d51c8fb5f092332556c0bf04f42b20fe5dadd6b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
