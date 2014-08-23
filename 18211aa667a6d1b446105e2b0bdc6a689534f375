@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_6c6d3432",
+        "filename": "src/com/android/phone/CallNotifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-23T23:41:26Z",
+      "side": 1,
+      "message": "Loading/saving this from/to system settings doesn\u0027t make sense. Just save to shared prefs (done by the prefs framework automatically) and use our PhoneUtils.Preferences (or whatever it\u0027s called) class.",
+      "revId": "18211aa667a6d1b446105e2b0bdc6a689534f375",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_2cd17cce",
+        "filename": "src/com/android/phone/PhoneGlobals.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-23T23:41:26Z",
+      "side": 1,
+      "message": "Does this really need to be a dialog? I\u0027d make it a toast.",
+      "revId": "18211aa667a6d1b446105e2b0bdc6a689534f375",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
