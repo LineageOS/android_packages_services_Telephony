@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_4b401457",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2532,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2014-08-29T11:21:32Z",
+      "side": 1,
+      "message": "getting close to the 100 character limit?",
+      "revId": "00ef70b0d32aaa9868bd551344a5d370dc651876",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
