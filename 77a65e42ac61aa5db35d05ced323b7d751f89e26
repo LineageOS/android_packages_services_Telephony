@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_a3b464f2",
+        "filename": "res/xml/call_feature_setting.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-04T06:02:53Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be in the internet call section? Also indention.",
+      "revId": "77a65e42ac61aa5db35d05ced323b7d751f89e26",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_83b968ec",
+        "filename": "res/xml/msim_call_feature_sub_setting.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-04T06:02:53Z",
+      "side": 1,
+      "message": "Indention looks off here.",
+      "revId": "77a65e42ac61aa5db35d05ced323b7d751f89e26",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_c3cb6071",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-04T06:02:53Z",
+      "side": 1,
+      "message": "com.* imports should be after the android.* imports",
+      "revId": "77a65e42ac61aa5db35d05ced323b7d751f89e26",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
