@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7a1b2928_d4ce7859",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-09-04T22:54:29Z",
+      "side": 1,
+      "message": "Ah, I saw the other patches now too, disregard this",
+      "parentUuid": "7a1b2928_54e268d6",
+      "revId": "0a5ea184f44ca8bce971595cf1e72424a32f03c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a1b2928_b4e77ce3",
         "filename": "res/values/cm_strings.xml",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2014-09-04T22:52:45Z",
       "side": 1,
       "message": "extra space",
+      "revId": "0a5ea184f44ca8bce971595cf1e72424a32f03c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_14d91022",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-09-04T22:54:29Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "7a1b2928_b4e77ce3",
       "revId": "0a5ea184f44ca8bce971595cf1e72424a32f03c6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
