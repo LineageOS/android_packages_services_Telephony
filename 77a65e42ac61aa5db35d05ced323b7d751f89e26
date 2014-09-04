@@ -50,6 +50,74 @@
       "revId": "77a65e42ac61aa5db35d05ced323b7d751f89e26",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_83b048f6",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-04T06:11:11Z",
+      "side": 1,
+      "message": "100 chars",
+      "revId": "77a65e42ac61aa5db35d05ced323b7d751f89e26",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_a3abc488",
+        "filename": "src/com/android/phone/MSimCallFeaturesSetting.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-04T06:11:11Z",
+      "side": 1,
+      "message": "See earlier comment.",
+      "revId": "77a65e42ac61aa5db35d05ced323b7d751f89e26",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_63a1aca9",
+        "filename": "src/com/android/phone/MSimCallFeaturesSubSetting.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-04T06:11:11Z",
+      "side": 1,
+      "message": "See earlier comment.",
+      "revId": "77a65e42ac61aa5db35d05ced323b7d751f89e26",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_43a630c2",
+        "filename": "src/com/android/phone/MSimCallFeaturesSubSetting.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-04T06:11:11Z",
+      "side": 1,
+      "message": "Nuke the commented code?",
+      "revId": "77a65e42ac61aa5db35d05ced323b7d751f89e26",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
