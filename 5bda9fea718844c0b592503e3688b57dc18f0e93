@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_347873f2",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 10934
+      },
+      "writtenOn": "2014-09-20T14:15:10Z",
+      "side": 1,
+      "message": "Seems like could be joined with EVENT_EXCHANGE_APDU_DONE and avoid the handling code duplication?",
+      "revId": "5bda9fea718844c0b592503e3688b57dc18f0e93",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
