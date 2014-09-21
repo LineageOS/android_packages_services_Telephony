@@ -16,6 +16,24 @@
       "revId": "5bda9fea718844c0b592503e3688b57dc18f0e93",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_de615daa",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 5503
+      },
+      "writtenOn": "2014-09-21T10:43:35Z",
+      "side": 1,
+      "message": "Wow, good eye.  :)  But when merging an upstream patch, I usually prefer to keep the code as similar as possible to avoid future merge conflicts.  If others that maintain this code feel otherwise, I\u0027m okay with a follow up patch to dedupe the switch stmt.",
+      "parentUuid": "7a1b2928_347873f2",
+      "revId": "5bda9fea718844c0b592503e3688b57dc18f0e93",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
