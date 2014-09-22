@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_215cb0ec",
+        "filename": "res/values/cm_arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-22T21:27:37Z",
+      "side": 1,
+      "message": "call_recording_encoder_values",
+      "revId": "a6d1fec6cf509973eb73a6c249b84b37d2645365",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_4159ecfd",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2647,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-22T21:27:37Z",
+      "side": 1,
+      "message": "Copying a resource boolean into a system setting is very ugly. It\u0027s better to\n- fetch the dialer package resources (PackageManager.getResourcesForApplication())\n- grab the enable bool resource identifier\n- fetch its value",
+      "revId": "a6d1fec6cf509973eb73a6c249b84b37d2645365",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
