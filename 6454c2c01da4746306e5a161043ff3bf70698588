@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a1b2928_6f0de68f",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 2657,
+      "author": {
+        "id": 1448
+      },
+      "writtenOn": "2014-10-04T09:54:13Z",
+      "side": 1,
+      "message": "Oops",
+      "parentUuid": "7a1b2928_4f390a41",
+      "revId": "6454c2c01da4746306e5a161043ff3bf70698588",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a1b2928_afcb7e52",
         "filename": "src/com/android/phone/MSimCallNotifier.java",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-04T09:51:34Z",
       "side": 1,
       "message": "what is the purpose of the mod 60000 here?  Seems like start45SecondVibration works on raw duration in ms.",
+      "revId": "6454c2c01da4746306e5a161043ff3bf70698588",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_0f16f2a6",
+        "filename": "src/com/android/phone/MSimCallNotifier.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1448
+      },
+      "writtenOn": "2014-10-04T09:54:13Z",
+      "side": 1,
+      "message": "I don\u0027t know why they did that. I just brought over from the super class.",
+      "parentUuid": "7a1b2928_afcb7e52",
       "revId": "6454c2c01da4746306e5a161043ff3bf70698588",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
