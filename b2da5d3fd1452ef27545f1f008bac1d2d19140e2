@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a1b2928_92f3469e",
+        "filename": "src/com/android/phone/SelectSubscription.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1448
+      },
+      "writtenOn": "2014-10-07T10:02:45Z",
+      "side": 1,
+      "message": "Derp.. Good catch.",
+      "parentUuid": "7a1b2928_72d78aed",
+      "revId": "b2da5d3fd1452ef27545f1f008bac1d2d19140e2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a1b2928_f201da6b",
         "filename": "src/com/android/phone/SetSubscription.java",
         "patchSetId": 1
