@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_41f9d67f",
+        "filename": "src/com/android/phone/PhoneToggler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-10-12T01:27:30Z",
+      "side": 1,
+      "message": "Please fix the whitespace (use spaces, not tabs)",
+      "revId": "75b5aabf0a283f9333e933eafab5d98de4f42631",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_21f49a85",
+        "filename": "src/com/android/phone/PhoneToggler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-10-12T01:27:30Z",
+      "side": 1,
+      "message": "The data subscription can change, so I don\u0027t think it\u0027s a good idea to create an instance on the first call and use it forever. Probably it\u0027s just best to just remove mPhone and the checks for it.\n\nI also wonder whether it would make sense to apply the changes to all SIMs?",
+      "revId": "75b5aabf0a283f9333e933eafab5d98de4f42631",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
