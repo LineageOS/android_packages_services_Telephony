@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_c7021309",
+        "filename": "src/com/android/phone/PhoneToggler.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2014-10-15T12:51:46Z",
+      "side": 1,
+      "message": "extra space between MSimPhoneFactory and return.",
+      "revId": "7b77f43be20d30d06fa4b6871b35649484124009",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
