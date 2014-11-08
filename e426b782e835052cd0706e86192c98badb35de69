@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a122d0e_9308bc93",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2014-11-08T08:50:33Z",
+      "side": 1,
+      "message": "There\u0027s no enforcePermission() check here - should one be added?",
+      "revId": "e426b782e835052cd0706e86192c98badb35de69",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a122d0e_f3fdb06f",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2014-11-08T08:50:33Z",
+      "side": 1,
+      "message": "here too",
+      "revId": "e426b782e835052cd0706e86192c98badb35de69",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
