@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a122d0e_93643c4a",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2014-11-08T10:08:56Z",
+      "side": 1,
+      "message": "nice catch, done",
+      "parentUuid": "1a122d0e_9308bc93",
+      "revId": "e426b782e835052cd0706e86192c98badb35de69",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a122d0e_f3fdb06f",
         "filename": "src/com/android/phone/PhoneInterfaceManager.java",
         "patchSetId": 3
