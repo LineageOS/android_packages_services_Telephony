@@ -589,7 +589,8 @@ public class TelephonyConnectionService extends ConnectionService {
 
         final TelephonyConnection connection =
                 createConnectionFor(phone, null, true /* isOutgoing */, request.getAccountHandle(),
-                        request.getTelecomCallId(), request.getAddress(), request.getVideoState());
+                        request.getTelecomCallId(), request.getAddress(),
+                        request.getVideoState(), null /* extras */);
         if (connection == null) {
             return Connection.createFailedConnection(
                     DisconnectCauseUtil.toTelecomDisconnectCause(
@@ -648,10 +649,11 @@ public class TelephonyConnectionService extends ConnectionService {
         int videoState = originalConnection != null ? originalConnection.getVideoState() :
                 VideoProfile.STATE_AUDIO_ONLY;
 
+        final Bundle extras = request.getExtras();
         Connection connection =
                 createConnectionFor(phone, originalConnection, false /* isOutgoing */,
                         request.getAccountHandle(), request.getTelecomCallId(),
-                        request.getAddress(), videoState);
+                        request.getAddress(), videoState, extras);
         if (connection == null) {
             return Connection.createCanceledConnection();
         } else {
@@ -772,7 +774,7 @@ public class TelephonyConnectionService extends ConnectionService {
                 createConnectionFor(phone, unknownConnection,
                         !unknownConnection.isIncoming() /* isOutgoing */,
                         request.getAccountHandle(), request.getTelecomCallId(),
-                        request.getAddress(), videoState);
+                        request.getAddress(), videoState, null /* extras */);
 
         if (connection == null) {
             return Connection.createCanceledConnection();
@@ -959,11 +961,15 @@ public class TelephonyConnectionService extends ConnectionService {
             PhoneAccountHandle phoneAccountHandle,
             String telecomCallId,
             Uri address,
-            int videoState) {
+            int videoState,
+            Bundle extras) {
         TelephonyConnection returnConnection = null;
         int phoneType = phone.getPhoneType();
         if (phoneType == TelephonyManager.PHONE_TYPE_GSM) {
-            returnConnection = new GsmConnection(originalConnection, telecomCallId, isOutgoing);
+            boolean isForwarded = extras != null
+                    && extras.getBoolean(TelephonyManager.EXTRA_IS_FORWARDED, false);
+            returnConnection = new GsmConnection(originalConnection,
+                    telecomCallId, isOutgoing, isForwarded);
         } else if (phoneType == TelephonyManager.PHONE_TYPE_CDMA) {
             boolean allowsMute = allowsMute(phone);
             returnConnection = new CdmaConnection(originalConnection, mEmergencyTonePlayer,
