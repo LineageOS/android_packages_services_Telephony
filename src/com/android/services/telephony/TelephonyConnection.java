@@ -76,7 +76,6 @@ abstract class TelephonyConnection extends Connection {
     private static final int MSG_DISCONNECT = 4;
     private static final int MSG_MULTIPARTY_STATE_CHANGED = 5;
     private static final int MSG_CONFERENCE_MERGE_FAILED = 6;
-    private static final int MSG_SUPP_SERVICE_NOTIFY = 7;
 
     /**
      * Mappings from {@link com.android.internal.telephony.Connection} extras keys to their
@@ -148,25 +147,6 @@ abstract class TelephonyConnection extends Connection {
                     break;
                 case MSG_CONFERENCE_MERGE_FAILED:
                     notifyConferenceMergeFailed();
-                    break;
-                case MSG_SUPP_SERVICE_NOTIFY:
-                    Log.v(TelephonyConnection.this, "MSG_SUPP_SERVICE_NOTIFY on phoneId : "
-                            + getPhone() != null ? Integer.toString(getPhone().getPhoneId())
-                            : "null");
-                    SuppServiceNotification mSsNotification = null;
-                    if (msg.obj != null && ((AsyncResult) msg.obj).result != null) {
-                        mSsNotification =
-                                (SuppServiceNotification)((AsyncResult) msg.obj).result;
-                        if (mOriginalConnection != null && mSsNotification.history != null) {
-                            Bundle lastForwardedNumber = new Bundle();
-                            Log.v(TelephonyConnection.this,
-                                    "Updating call history info in extras.");
-                            lastForwardedNumber.putStringArrayList(
-                                Connection.EXTRA_LAST_FORWARDED_NUMBER,
-                                new ArrayList(Arrays.asList(mSsNotification.history)));
-                            putExtras(lastForwardedNumber);
-                        }
-                    }
                     break;
 
                 case MSG_SET_VIDEO_STATE:
@@ -821,7 +801,6 @@ abstract class TelephonyConnection extends Connection {
                 mHandler, MSG_HANDOVER_STATE_CHANGED, null);
         getPhone().registerForRingbackTone(mHandler, MSG_RINGBACK_TONE, null);
         getPhone().registerForDisconnect(mHandler, MSG_DISCONNECT, null);
-        getPhone().registerForSuppServiceNotification(mHandler, MSG_SUPP_SERVICE_NOTIFY, null);
         getPhone().registerForOnHoldTone(mHandler, MSG_ON_HOLD_TONE, null);
         getPhone().registerForInCallVoicePrivacyOn(mHandler, MSG_CDMA_VOICE_PRIVACY_ON, null);
         getPhone().registerForInCallVoicePrivacyOff(mHandler, MSG_CDMA_VOICE_PRIVACY_OFF, null);
@@ -1037,7 +1016,6 @@ abstract class TelephonyConnection extends Connection {
                 getPhone().unregisterForRingbackTone(mHandler);
                 getPhone().unregisterForHandoverStateChanged(mHandler);
                 getPhone().unregisterForDisconnect(mHandler);
-                getPhone().unregisterForSuppServiceNotification(mHandler);
                 getPhone().unregisterForOnHoldTone(mHandler);
                 getPhone().unregisterForInCallVoicePrivacyOn(mHandler);
                 getPhone().unregisterForInCallVoicePrivacyOff(mHandler);
