@@ -16,6 +16,24 @@
       "revId": "e97b7df9702369185238c752184c677a641c74ec",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a122d0e_ab9f345e",
+        "filename": "src/com/android/services/telephony/TelephonyConnection.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1448
+      },
+      "writtenOn": "2014-11-14T08:28:44Z",
+      "side": 0,
+      "message": "Maybe? Should use the saved name in Settings.Global though. We are trying to get way from the term \"sub\" for user facing stuff.",
+      "parentUuid": "1a122d0e_cb51d010",
+      "revId": "e97b7df9702369185238c752184c677a641c74ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
