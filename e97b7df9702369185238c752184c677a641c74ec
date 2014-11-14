@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a122d0e_cb51d010",
+        "filename": "src/com/android/services/telephony/TelephonyConnection.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-11-14T06:10:32Z",
+      "side": 0,
+      "message": "Do we want this prefixing of the toasts with \"SUBx:\"? If yes, I\u0027ll add it back in the CallNotifier variant.",
+      "revId": "e97b7df9702369185238c752184c677a641c74ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
