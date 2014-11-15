@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a122d0e_e54e7895",
+        "filename": "src/com/android/phone/SetSubscription.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1448
+      },
+      "writtenOn": "2014-11-15T08:27:23Z",
+      "side": 1,
+      "message": "Use spaces, not tabs.",
+      "revId": "36d5d2b92737c3cfc74664f2ac761312b1da2261",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
