@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab6814e_4b414f0b",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-11-30T02:50:20Z",
+      "side": 1,
+      "message": "mwi_notification -\u003e mwiNotification\n\nOr, preferably, use it directly:\nSettings.System.putInt(getContentResolver(), Settings.System.ENABLE_MWI_NOTIFICATION,\n        mMwiNotification.isChecked() ? 1 : 0);",
+      "revId": "cf5e40adfb1c08b76a6b2ca65540a0546c42f50e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_2b468b23",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-11-30T02:50:20Z",
+      "side": 1,
+      "message": "100 chars",
+      "revId": "cf5e40adfb1c08b76a6b2ca65540a0546c42f50e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_eb3be39a",
+        "filename": "src/com/android/phone/CallNotifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-11-30T02:50:20Z",
+      "side": 1,
+      "message": "No need to import classes in the same package.",
+      "revId": "cf5e40adfb1c08b76a6b2ca65540a0546c42f50e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_0b3747b1",
+        "filename": "src/com/android/phone/CallNotifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-11-30T02:50:20Z",
+      "side": 1,
+      "message": "100 chars\n\n(BTW, mApplication is a Context already, you can use it directly)",
+      "revId": "cf5e40adfb1c08b76a6b2ca65540a0546c42f50e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
