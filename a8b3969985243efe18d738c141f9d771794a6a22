@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_1b0132af",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2015-01-06T15:22:39Z",
+      "side": 1,
+      "message": "looks like this is missing TD_SCDMA modes",
+      "revId": "a8b3969985243efe18d738c141f9d771794a6a22",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
