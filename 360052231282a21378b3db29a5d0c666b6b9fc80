@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_ac07ff1a",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 10984
+      },
+      "writtenOn": "2015-01-08T10:32:47Z",
+      "side": 1,
+      "message": "These strings should probably be updated to reflect the fact that you can also change to LTE. We should probably even have these in case of 3G devices, and different ones for LTE devices.",
+      "revId": "360052231282a21378b3db29a5d0c666b6b9fc80",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
