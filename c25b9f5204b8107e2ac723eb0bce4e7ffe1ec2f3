@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a9d85d2_dc2a392c",
+        "filename": "src/com/android/phone/msim/SelectSubscription.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1448
+      },
+      "writtenOn": "2015-01-15T10:31:42Z",
+      "side": 1,
+      "message": "The third slot better repent.",
+      "revId": "c25b9f5204b8107e2ac723eb0bce4e7ffe1ec2f3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
