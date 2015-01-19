@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a9d85d2_5e6ab31b",
+        "filename": "src/com/android/phone/NotificationMgr.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-01-19T23:19:03Z",
+      "side": 1,
+      "message": "This indirection is pointless now that they only have a constant value, thus they can be inlined into the actual getInt() calls.\n\n(same for the Telecomm patch)",
+      "revId": "6628dc0b2c0c00eee7f1ec100d6c5b2fb01cc158",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
