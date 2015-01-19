@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a9d85d2_bead978a",
+        "filename": "src/com/android/phone/ExportContactsToSim.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 7001
+      },
+      "writtenOn": "2015-01-19T21:28:37Z",
+      "side": 1,
+      "message": "The specific code:\nif (!mIsForeground) {\nLog.d(TAG, \"The activitiy is not in foreground. Do not display dialog!!!\");\t\t\nreturn;\t\t\n}\nshouldn\u0027t exist for logging purposes with/without the return statement?",
+      "revId": "9e142f71d4a8522ff611c504e18e02a6f9861e2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
