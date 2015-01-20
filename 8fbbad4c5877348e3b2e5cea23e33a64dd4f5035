@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a9d85d2_61cb9073",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2015-01-20T08:22:58Z",
+      "side": 1,
+      "message": "ditch the summary, it\u0027s pointless",
+      "revId": "8fbbad4c5877348e3b2e5cea23e33a64dd4f5035",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a9d85d2_81ce7c81",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2015-01-20T08:22:58Z",
+      "side": 1,
+      "message": "ditch the summary, it duplicates the title (and also pointless)",
+      "revId": "8fbbad4c5877348e3b2e5cea23e33a64dd4f5035",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a9d85d2_21b988ea",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2015-01-20T08:22:58Z",
+      "side": 1,
+      "message": "Image to display when front-facing camera is disabled",
+      "revId": "8fbbad4c5877348e3b2e5cea23e33a64dd4f5035",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a9d85d2_e1be60d3",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2015-01-20T08:22:58Z",
+      "side": 1,
+      "message": "Data connection: (as in AOSP)",
+      "revId": "8fbbad4c5877348e3b2e5cea23e33a64dd4f5035",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a9d85d2_41b494f1",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2015-01-20T08:22:58Z",
+      "side": 1,
+      "message": "space is needed after a comma",
+      "revId": "8fbbad4c5877348e3b2e5cea23e33a64dd4f5035",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
