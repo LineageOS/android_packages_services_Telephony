@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fad55976_3e3a61ce",
+        "filename": "res/values/cm_arrays.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-01-22T11:09:41Z",
+      "side": 1,
+      "message": "Let me ask differently: Where is this used? This patch seems to introduce those arrays (I can\u0027t find it in the current code), and I don\u0027t see the patch introduce usages of it.",
+      "parentUuid": "fad55976_33b0da8b",
+      "revId": "e777e1480dc10cb016fcf4ad48c7861ed2572ef7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fad55976_13a03690",
         "filename": "res/values/cm_strings.xml",
         "patchSetId": 5
