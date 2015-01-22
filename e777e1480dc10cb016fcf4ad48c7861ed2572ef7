@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fad55976_73ad3288",
+        "filename": "res/values/cm_arrays.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-01-22T04:20:31Z",
+      "side": 1,
+      "message": "What\u0027s this?",
+      "revId": "e777e1480dc10cb016fcf4ad48c7861ed2572ef7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fad55976_13a03690",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-01-22T04:20:31Z",
+      "side": 1,
+      "message": "IMHO we shouldn\u0027t display an error like this _at all_.",
+      "revId": "e777e1480dc10cb016fcf4ad48c7861ed2572ef7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
