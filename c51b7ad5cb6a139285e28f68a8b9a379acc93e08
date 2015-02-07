@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bacf61ea_99befcfd",
+        "filename": "src/com/android/services/telephony/TelephonyConnection.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-02-07T10:32:58Z",
+      "side": 1,
+      "message": "This can be killed here, I think.",
+      "revId": "c51b7ad5cb6a139285e28f68a8b9a379acc93e08",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
