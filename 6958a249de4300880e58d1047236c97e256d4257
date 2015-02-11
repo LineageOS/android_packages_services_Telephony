@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bacf61ea_c909bfdf",
+        "filename": "src/com/android/services/telephony/GsmConnection.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-02-11T10:15:35Z",
+      "side": 1,
+      "message": "Oops, this should be connection now that the constructor doesn\u0027t call setOriginalConnection anymore.",
+      "revId": "6958a249de4300880e58d1047236c97e256d4257",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
