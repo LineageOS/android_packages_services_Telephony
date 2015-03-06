@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ad45d7e_b5c023e2",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-03-06T12:44:36Z",
+      "side": 1,
+      "message": "I\u0027m not understanding why this is being called from inside the handleGetPreferredNetworkTypeResponse function.",
+      "revId": "69efa99f1cd4afdaeec4554475594bc6a2900338",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_5589e7c9",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-03-06T12:44:36Z",
+      "side": 1,
+      "message": "Does this section need to be outside (ar.exception \u003d\u003d null)?",
+      "revId": "69efa99f1cd4afdaeec4554475594bc6a2900338",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
