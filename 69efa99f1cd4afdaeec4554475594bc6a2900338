@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ad45d7e_f5ba9b6d",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1448
+      },
+      "writtenOn": "2015-03-06T12:51:47Z",
+      "side": 1,
+      "message": "This actually might not be needed now. It was getting out of sync with the state of the modem causing a NO-OP if you tried to change to that mode.",
+      "parentUuid": "9ad45d7e_b5c023e2",
+      "revId": "69efa99f1cd4afdaeec4554475594bc6a2900338",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ad45d7e_5589e7c9",
         "filename": "src/com/android/phone/MobileNetworkSettings.java",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-03-06T12:44:36Z",
       "side": 1,
       "message": "Does this section need to be outside (ar.exception \u003d\u003d null)?",
+      "revId": "69efa99f1cd4afdaeec4554475594bc6a2900338",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_55b0c78b",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1448
+      },
+      "writtenOn": "2015-03-06T12:51:47Z",
+      "side": 1,
+      "message": "I just want to make sure these get enabled again on any callback. Even an exception. Sometimes the call back takes a while. I opted to disable instead of throwing up a dialog.",
+      "parentUuid": "9ad45d7e_5589e7c9",
       "revId": "69efa99f1cd4afdaeec4554475594bc6a2900338",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
