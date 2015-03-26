@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_fced5f8f",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-03-26T04:51:52Z",
+      "side": 1,
+      "message": "Actually, if this is meant to set mPhone.getPhoneId(), you\u0027ll want to move this outside the for loop, otherwise this mayhappens multiple times for phones with SIM count \u003e 2.",
+      "revId": "88be2c57f17b7ef5c0b75eb3769f7fdf78d73eea",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
