@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_329efb56",
+        "filename": "src/com/android/phone/msim/SelectSubscription.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-29T23:19:36Z",
+      "side": 1,
+      "message": "As far as I can tell, this will populate neither phone nor sub ID, which is not what you want. I\u0027d rather suggest to pass sub ID as -1 if sir is null.\n\nAdditionally, you\u0027ll need to change MSimCallFeaturesSubSetting.java:1526 to read\n\nmPhone \u003d PhoneUtils.getPhoneFromPhoneId(getIntent().getIntExtra(PhoneConstants.PHONE_KEY, -1);",
+      "revId": "fb1d2f986431b996c2f3988c184ee251ee21f951",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
