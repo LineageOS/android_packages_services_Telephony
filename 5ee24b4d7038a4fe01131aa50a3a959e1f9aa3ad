@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_92ca4f4e",
+        "filename": "src/com/android/phone/msim/SelectSubscription.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-29T23:40:11Z",
+      "side": 1,
+      "message": "Please limit line lengths to 100 chars\n\n(and the brackets around the \u0027sir !\u003d null\u0027 check are useless)",
+      "revId": "5ee24b4d7038a4fe01131aa50a3a959e1f9aa3ad",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
