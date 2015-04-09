@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ac371cc_99e1e7d3",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2015-04-09T06:39:51Z",
+      "side": 1,
+      "message": "these all need to go into cm_strings.xml",
+      "revId": "cc3fd0201c26f946e541e5ca99d9669f7eece7e1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
