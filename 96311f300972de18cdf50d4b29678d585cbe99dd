@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa7ab95a_69ad1631",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 11501
+      },
+      "writtenOn": "2015-04-18T13:06:19Z",
+      "side": 1,
+      "message": "The roaming options is disabled by default for all CM build. The roaming option button won\u0027t show unless a device overlays config_show_roaming_mode_option\n\nAs such this configuration is just an example for those who wants to overlay the settings, but resources are needed to make the code compile ((R.array.*)",
+      "parentUuid": "fa7ab95a_57938ea3",
+      "revId": "96311f300972de18cdf50d4b29678d585cbe99dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa7ab95a_978d167e",
         "filename": "src/com/android/phone/MobileNetworkSettings.java",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2015-04-18T11:04:53Z",
       "side": 1,
       "message": "mDefaultPrefNetEntries, etc",
+      "revId": "96311f300972de18cdf50d4b29678d585cbe99dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7ab95a_c962a216",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 11501
+      },
+      "writtenOn": "2015-04-18T13:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa7ab95a_978d167e",
       "revId": "96311f300972de18cdf50d4b29678d585cbe99dd",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "fa7ab95a_497772d4",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 11501
+      },
+      "writtenOn": "2015-04-18T13:06:19Z",
+      "side": 1,
+      "message": "Thanks, changed as suggested",
+      "parentUuid": "fa7ab95a_f7f2e205",
+      "revId": "96311f300972de18cdf50d4b29678d585cbe99dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa7ab95a_57daae79",
         "filename": "src/com/android/phone/MobileNetworkSettings.java",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2015-04-18T11:04:53Z",
       "side": 1,
       "message": "is the only purpose of the roaming mode option to filter what is available in preferred network modes?  or should we be actively setting something when the user changes roaming mode?",
+      "revId": "96311f300972de18cdf50d4b29678d585cbe99dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7ab95a_697436cf",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 11501
+      },
+      "writtenOn": "2015-04-18T13:06:19Z",
+      "side": 1,
+      "message": "Yes but we are not sure about how to signal the modem firmware at this time. That might be something added later.",
+      "parentUuid": "fa7ab95a_57daae79",
       "revId": "96311f300972de18cdf50d4b29678d585cbe99dd",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
