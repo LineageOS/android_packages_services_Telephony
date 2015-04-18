@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa7ab95a_a9555e1e",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2015-04-18T13:10:48Z",
+      "side": 1,
+      "message": "Unnecessary summary",
+      "revId": "d7a970abe0ec67a3bf093ae6cd9f6a53426ed7a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7ab95a_89589a58",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2015-04-18T13:10:48Z",
+      "side": 1,
+      "message": "All these should go to cm_arrays.xml",
+      "revId": "d7a970abe0ec67a3bf093ae6cd9f6a53426ed7a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
