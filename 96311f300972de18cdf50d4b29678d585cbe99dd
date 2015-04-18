@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa7ab95a_57938ea3",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 10293
+      },
+      "writtenOn": "2015-04-18T11:04:53Z",
+      "side": 1,
+      "message": "for options that are specific to a device (e.g. device X supports GSM/CDMA on slot 1), i would probably move the config to an overlay.",
+      "revId": "96311f300972de18cdf50d4b29678d585cbe99dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7ab95a_978d167e",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 10293
+      },
+      "writtenOn": "2015-04-18T11:04:53Z",
+      "side": 1,
+      "message": "mDefaultPrefNetEntries, etc",
+      "revId": "96311f300972de18cdf50d4b29678d585cbe99dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7ab95a_f7f2e205",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 10293
+      },
+      "writtenOn": "2015-04-18T11:04:53Z",
+      "side": 1,
+      "message": "if you rewrite this as final boolean enabled \u003d ..., then inside onClick for the positive button you can reference enabled from the closure instead of having to do the trick with mNewRoamMode \u003d getRoamingMode()",
+      "revId": "96311f300972de18cdf50d4b29678d585cbe99dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7ab95a_57daae79",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 10293
+      },
+      "writtenOn": "2015-04-18T11:04:53Z",
+      "side": 1,
+      "message": "is the only purpose of the roaming mode option to filter what is available in preferred network modes?  or should we be actively setting something when the user changes roaming mode?",
+      "revId": "96311f300972de18cdf50d4b29678d585cbe99dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
