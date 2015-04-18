@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa7ab95a_093baaec",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 11501
+      },
+      "writtenOn": "2015-04-18T13:14:36Z",
+      "side": 1,
+      "message": "Oh.. this should be \"International roaming mode\" per request.\n \nAlso it is needed so device can overlay.",
+      "parentUuid": "fa7ab95a_a9555e1e",
+      "revId": "d7a970abe0ec67a3bf093ae6cd9f6a53426ed7a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa7ab95a_89589a58",
         "filename": "res/values/strings.xml",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2015-04-18T13:10:48Z",
       "side": 1,
       "message": "All these should go to cm_arrays.xml",
+      "revId": "d7a970abe0ec67a3bf093ae6cd9f6a53426ed7a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7ab95a_29406e56",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 11501
+      },
+      "writtenOn": "2015-04-18T13:14:36Z",
+      "side": 1,
+      "message": "thanks, will do",
+      "parentUuid": "fa7ab95a_89589a58",
       "revId": "d7a970abe0ec67a3bf093ae6cd9f6a53426ed7a4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
