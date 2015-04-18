@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa7ab95a_bceda190",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 10621
+      },
+      "writtenOn": "2015-04-18T09:53:16Z",
+      "side": 1,
+      "message": "ROAMING_MODE?",
+      "range": {
+        "startLine": 90,
+        "startChar": 59,
+        "endLine": 90,
+        "endChar": 70
+      },
+      "revId": "78e733894fbed2597c2e2d7c1c486e035fbf1ef2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
