@@ -16,6 +16,24 @@
       "revId": "ec9b12cec9d1066cf4f8229bd244af70cbacd311",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7ab95a_62d8cbf0",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 11501
+      },
+      "writtenOn": "2015-04-20T09:28:46Z",
+      "side": 1,
+      "message": "Hi Ed,\n\nThe network mode defined for a roaming mode shouldn\u0027t exist in the default preferred networks (why need it otherwise?). We could add a flag to hide the default networks (e.g. hide_default_preferred_network etc.) so a device can choose show or hide the defaults. For this specific requirement, both (default and roaming) network modes should be shown. Suggestions?\n\nThanks,\nLin",
+      "parentUuid": "fa7ab95a_829f8f5e",
+      "revId": "ec9b12cec9d1066cf4f8229bd244af70cbacd311",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
