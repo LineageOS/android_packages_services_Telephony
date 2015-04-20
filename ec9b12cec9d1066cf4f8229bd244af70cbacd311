@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa7ab95a_829f8f5e",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 10293
+      },
+      "writtenOn": "2015-04-20T05:05:59Z",
+      "side": 1,
+      "message": "the concatenation here is throwing me off a bit.  wouldn\u0027t there be overlaps between the default network modes and the modes defined in roaming_modeX_preferred_network_choices? also are the default network modes always valid regardless of which roaming mode we are in?",
+      "revId": "ec9b12cec9d1066cf4f8229bd244af70cbacd311",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
