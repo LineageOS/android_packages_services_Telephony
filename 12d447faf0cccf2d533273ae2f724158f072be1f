@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7fb54a_32ca90a2",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1662,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-04-30T00:39:07Z",
+      "side": 1,
+      "message": "It\u0027s probably more elegant (and maybe even more correct) to move lines 1659-1661 into the if block (below line 1653) instead of adding the null check. If sir is null, the preference can\u0027t be clicked anyway.",
+      "revId": "12d447faf0cccf2d533273ae2f724158f072be1f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
