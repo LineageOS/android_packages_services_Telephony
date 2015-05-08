@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_8e46e3bd",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2015-05-08T01:44:12Z",
+      "side": 1,
+      "message": "When retriggering (searching again, opening activity again), the callback was registered again and all the handlers were called twice (or even more times). This prevents it",
+      "range": {
+        "startLine": 434,
+        "startChar": 12,
+        "endLine": 435,
+        "endChar": 61
+      },
+      "revId": "cc82236d0416bb53bab2b6747039b4ba62d3f778",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_ee0bef7b",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2015-05-08T01:44:12Z",
+      "side": 1,
+      "message": "I thought of removing locked networks from list but this could result in unwanted behaviour. Therefore I just added an icon and shifted the resulting rows to the bottom of the list. Will attach a screenshot to show what I mean :)",
+      "range": {
+        "startLine": 493,
+        "startChar": 20,
+        "endLine": 502,
+        "endChar": 21
+      },
+      "revId": "cc82236d0416bb53bab2b6747039b4ba62d3f778",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
