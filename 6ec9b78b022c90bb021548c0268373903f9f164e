@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_68da727a",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-05-09T10:22:45Z",
+      "side": 1,
+      "message": "More nitpicking, } else { is the typical code style used.",
+      "revId": "6ec9b78b022c90bb021548c0268373903f9f164e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_88e7b63f",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-05-09T10:22:45Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "6ec9b78b022c90bb021548c0268373903f9f164e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
