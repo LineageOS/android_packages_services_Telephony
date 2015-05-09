@@ -16,6 +16,24 @@
       "revId": "338058137015676ab96a36cbdd1d1aadfb2f6e7b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_e82a027e",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2015-05-09T09:39:12Z",
+      "side": 1,
+      "message": "Source:\nhttp://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android-apps/5.0.2_r1/com/android/phone/INetworkQueryService.java#INetworkQueryService.Stub.Proxy.stopNetworkQuery%28com.android.phone.INetworkQueryServiceCallback%29\n\n\"Tells the service that the requested query is to be ignored. This may not do anything for the Query request in the underlying RIL, but it ensures that the callback is removed from the list of notifications.\" which does perfectly fit to what I wanted it to do -\u003e remove the callback",
+      "parentUuid": "9a89bdaa_14bbc273",
+      "revId": "338058137015676ab96a36cbdd1d1aadfb2f6e7b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }

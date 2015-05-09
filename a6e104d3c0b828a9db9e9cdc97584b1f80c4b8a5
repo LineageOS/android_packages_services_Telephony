@@ -16,6 +16,24 @@
       "revId": "a6e104d3c0b828a9db9e9cdc97584b1f80c4b8a5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_4813ee5c",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2015-05-09T09:39:12Z",
+      "side": 0,
+      "message": "Not necessary for the change, yep, but two empty newlines are also no good style, are they?",
+      "parentUuid": "9a89bdaa_34b0c68b",
+      "revId": "a6e104d3c0b828a9db9e9cdc97584b1f80c4b8a5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
