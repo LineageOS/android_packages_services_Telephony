@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_14bbc273",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-05-09T09:05:37Z",
+      "side": 1,
+      "message": "Can\u0027t we just do something smarter to detect whether we need to register instead?",
+      "revId": "338058137015676ab96a36cbdd1d1aadfb2f6e7b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
