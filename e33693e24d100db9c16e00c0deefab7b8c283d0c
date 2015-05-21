@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_e9c5925b",
+        "filename": "res/layout/carrier_select.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2015-05-21T06:59:02Z",
+      "side": 1,
+      "message": "Is this from AOSP?",
+      "revId": "e33693e24d100db9c16e00c0deefab7b8c283d0c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_09a1d6a9",
+        "filename": "res/xml/carrier_select.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2015-05-21T06:59:02Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "e33693e24d100db9c16e00c0deefab7b8c283d0c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_29a69ac1",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2015-05-21T06:59:02Z",
+      "side": 1,
+      "message": "Would be nice to state what the \"flag\" parameter is here.",
+      "revId": "e33693e24d100db9c16e00c0deefab7b8c283d0c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_49abde89",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2015-05-21T06:59:02Z",
+      "side": 1,
+      "message": "Better off deleting vs commenting out.",
+      "revId": "e33693e24d100db9c16e00c0deefab7b8c283d0c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
