@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_29f3fa74",
+        "filename": "res/drawable/ic_refresh.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2015-05-21T09:16:54Z",
+      "side": 1,
+      "message": "Copyright header",
+      "revId": "c198a7db7c84cda6518d15cd80026660d564edd9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_09ee368b",
+        "filename": "res/xml/carrier_select_options.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2015-05-21T09:16:54Z",
+      "side": 1,
+      "message": "Needs Copyright header",
+      "revId": "c198a7db7c84cda6518d15cd80026660d564edd9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
