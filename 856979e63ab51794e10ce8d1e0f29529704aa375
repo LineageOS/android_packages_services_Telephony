@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_044d3d72",
+        "filename": "res/xml/carrier_select_options.xml",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-21T11:04:30Z",
+      "side": 1,
+      "message": "ifRoom|withText for tablets",
+      "revId": "856979e63ab51794e10ce8d1e0f29529704aa375",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_e43139ee",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-21T11:04:30Z",
+      "side": 1,
+      "message": "why we need to load this layout? Seems unused (the list and the fragment in the layout aren\u0027t used). Please remove this line and the layout",
+      "revId": "856979e63ab51794e10ce8d1e0f29529704aa375",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_04261dba",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-21T11:04:30Z",
+      "side": 1,
+      "message": "not used",
+      "revId": "856979e63ab51794e10ce8d1e0f29529704aa375",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_242b2184",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-21T11:04:30Z",
+      "side": 1,
+      "message": "is this useful? seems like log spam",
+      "revId": "856979e63ab51794e10ce8d1e0f29529704aa375",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_4420259c",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-21T11:04:30Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "856979e63ab51794e10ce8d1e0f29529704aa375",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_642529aa",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-21T11:04:30Z",
+      "side": 1,
+      "message": "return true;",
+      "revId": "856979e63ab51794e10ce8d1e0f29529704aa375",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_843a2dcc",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-21T11:04:30Z",
+      "side": 1,
+      "message": "remove else",
+      "revId": "856979e63ab51794e10ce8d1e0f29529704aa375",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_a43731e2",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-21T11:04:30Z",
+      "side": 1,
+      "message": "return super.onOptionsItemSelected(item);",
+      "revId": "856979e63ab51794e10ce8d1e0f29529704aa375",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
