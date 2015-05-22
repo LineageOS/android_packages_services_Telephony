@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_dbf6cfd6",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-22T10:02:19Z",
+      "side": 1,
+      "message": "Remove this last import. Unused",
+      "revId": "0582c6bfbc3d30d055659f26bf69a45bd887f497",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_7b26a369",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-22T10:02:19Z",
+      "side": 1,
+      "message": "getActionBar could return a null reference. please add a null check",
+      "revId": "0582c6bfbc3d30d055659f26bf69a45bd887f497",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_3b2c1b4a",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-22T10:02:19Z",
+      "side": 1,
+      "message": "return true;",
+      "revId": "0582c6bfbc3d30d055659f26bf69a45bd887f497",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
