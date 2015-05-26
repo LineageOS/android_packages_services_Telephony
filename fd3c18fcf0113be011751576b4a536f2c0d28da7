@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_077ff5aa",
+        "filename": "res/values/cm_arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2015-05-26T08:18:36Z",
+      "side": 1,
+      "message": "translatable\u003d\"false\"",
+      "revId": "fd3c18fcf0113be011751576b4a536f2c0d28da7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_274a3984",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2015-05-26T08:18:36Z",
+      "side": 1,
+      "message": "AMR-WB",
+      "range": {
+        "startLine": 348,
+        "startChar": 54,
+        "endLine": 348,
+        "endChar": 60
+      },
+      "revId": "fd3c18fcf0113be011751576b4a536f2c0d28da7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_8749458e",
+        "filename": "res/xml/call_feature_setting.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2015-05-26T08:18:36Z",
+      "side": 1,
+      "message": "Needs 2 more spaces of indentation",
+      "revId": "fd3c18fcf0113be011751576b4a536f2c0d28da7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_a75e4943",
+        "filename": "src/com/android/phone/CallFeaturesSetting.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2015-05-26T08:18:36Z",
+      "side": 1,
+      "message": "Broken indentation",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 669,
+        "endChar": 1
+      },
+      "revId": "fd3c18fcf0113be011751576b4a536f2c0d28da7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
