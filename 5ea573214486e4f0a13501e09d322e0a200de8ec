@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a461143_6c17fbed",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2015-06-12T20:28:02Z",
+      "side": 1,
+      "message": "card",
+      "range": {
+        "startLine": 687,
+        "startChar": 83,
+        "endLine": 687,
+        "endChar": 86
+      },
+      "revId": "5ea573214486e4f0a13501e09d322e0a200de8ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a461143_8cd26733",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2015-06-12T20:28:02Z",
+      "side": 1,
+      "message": "false",
+      "range": {
+        "startLine": 688,
+        "startChar": 66,
+        "endLine": 688,
+        "endChar": 71
+      },
+      "revId": "5ea573214486e4f0a13501e09d322e0a200de8ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
