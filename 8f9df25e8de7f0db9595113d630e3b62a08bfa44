@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba2be162_68f9a34d",
+        "filename": "src/com/android/phone/settings/AccountSelectionPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 10293
+      },
+      "writtenOn": "2015-06-20T05:58:30Z",
+      "side": 1,
+      "message": "so we are moving this config to framework res?  i think i would rather duplicate it",
+      "revId": "8f9df25e8de7f0db9595113d630e3b62a08bfa44",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
