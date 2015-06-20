@@ -16,6 +16,24 @@
       "revId": "8f9df25e8de7f0db9595113d630e3b62a08bfa44",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba2be162_88bb3775",
+        "filename": "src/com/android/phone/settings/AccountSelectionPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 940
+      },
+      "writtenOn": "2015-06-20T06:03:43Z",
+      "side": 1,
+      "message": "Yea, realized this is the route existing packages are taking when wanting to share configs.\n\nEg : config_voice_capable\n\nUsed by mms/telephony",
+      "parentUuid": "ba2be162_68f9a34d",
+      "revId": "8f9df25e8de7f0db9595113d630e3b62a08bfa44",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
