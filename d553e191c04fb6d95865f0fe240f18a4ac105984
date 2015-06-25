@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bff0334d_03b13090",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 10293
+      },
+      "writtenOn": "2015-06-25T03:02:21Z",
+      "side": 1,
+      "message": "wouldn\u0027t this be needed still?",
+      "revId": "d553e191c04fb6d95865f0fe240f18a4ac105984",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bff0334d_e3ad2c32",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 10293
+      },
+      "writtenOn": "2015-06-25T03:02:21Z",
+      "side": 0,
+      "message": "looks like the previous code was trying to lock edits while the preferred network mode is applied asynchronously.  are we intentionally dropping that behavior?",
+      "revId": "0e1355edf7c1ee63af32f5575bb777b37b77e5f1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
