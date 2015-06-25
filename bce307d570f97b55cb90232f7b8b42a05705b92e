@@ -16,6 +16,24 @@
       "revId": "bce307d570f97b55cb90232f7b8b42a05705b92e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bff0334d_e9c18d82",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2015-06-25T17:19:25Z",
+      "side": 1,
+      "message": "That should work.\nCurrently it displays the actual network mode. The preferred network mode can be obtained by that method (aka settings.GLOBAL), that should have what we want.\n\nBtw, I think you mean multi SIM, since multi RAT won\u0027t need this.",
+      "parentUuid": "bff0334d_83bd406a",
+      "revId": "bce307d570f97b55cb90232f7b8b42a05705b92e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
