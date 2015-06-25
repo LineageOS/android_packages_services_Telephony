@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bff0334d_83bd406a",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 10293
+      },
+      "writtenOn": "2015-06-25T02:50:43Z",
+      "side": 1,
+      "message": "is it possible to read the current mode from Phone.getPreferredNetworkType and then show \"(Current: xxx)\" if it differs from the preferred mode?  If so we could avoid having logic like \"if (multiRat) { // update summary }",
+      "revId": "bce307d570f97b55cb90232f7b8b42a05705b92e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
