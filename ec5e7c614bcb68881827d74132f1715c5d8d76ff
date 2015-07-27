@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf091321_1b82bf50",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2015-07-27T20:46:44Z",
+      "side": 1,
+      "message": "Need a better solution for this.\n\nCould configure a new URI for us in TelephonyProvider if that\u0027s fine (and doable for a single column in a table)\n\nThis one points to the whole siminfo table.",
+      "range": {
+        "startLine": 1021,
+        "startChar": 8,
+        "endLine": 1022,
+        "endChar": 118
+      },
+      "revId": "ec5e7c614bcb68881827d74132f1715c5d8d76ff",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
