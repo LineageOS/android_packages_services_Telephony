@@ -77,12 +77,14 @@ public class CdmaOptions {
                 PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
         // Some CDMA carriers want the APN settings.
         boolean addAPNExpand =
-                carrierConfig.getBoolean(CarrierConfigManager.KEY_SHOW_APN_SETTING_CDMA_BOOL);
+                carrierConfig.getBoolean(CarrierConfigManager.KEY_SHOW_APN_SETTING_CDMA_BOOL)
+                && !carrierConfig.getBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL);
         boolean addCdmaSubscription =
                 deviceSupportsNvAndRuim();
         // Read platform settings for carrier settings
         boolean addCarrierSettings =
-                carrierConfig.getBoolean(CarrierConfigManager.KEY_CARRIER_SETTINGS_ENABLE_BOOL);
+                carrierConfig.getBoolean(CarrierConfigManager.KEY_CARRIER_SETTINGS_ENABLE_BOOL)
+                && !carrierConfig.getBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL);
 
         mPrefScreen.addPreference(mButtonCdmaSystemSelect);
         mButtonCdmaSystemSelect.setEnabled(true);
