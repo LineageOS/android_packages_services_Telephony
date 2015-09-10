@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f1a1f67_16f73af8",
+        "filename": "src/com/android/phone/msim/MSimCallFeaturesSubSetting.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-09-10T22:15:52Z",
+      "side": 1,
+      "message": "getActionBar() can return a null ref. Please consider add a null check here and below",
+      "range": {
+        "startLine": 517,
+        "startChar": 23,
+        "endLine": 517,
+        "endChar": 35
+      },
+      "revId": "62c9798ced9e70e3c5eb5b6188600f355823dbb9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
