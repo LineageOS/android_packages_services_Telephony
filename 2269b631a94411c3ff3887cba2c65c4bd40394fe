@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff346bd7_613b609c",
+        "filename": "src/com/android/services/telephony/TelephonyConnection.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-09-19T04:07:39Z",
+      "side": 1,
+      "message": "It looks like what Ed is saying is to move these two lines above the emergency number check? That does seem to make sense to me.",
+      "revId": "2269b631a94411c3ff3887cba2c65c4bd40394fe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
