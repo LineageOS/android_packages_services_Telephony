@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f436f4f_78679027",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1828,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2015-10-03T20:24:53Z",
+      "side": 1,
+      "message": "is flag not always true? if yes, remove it",
+      "range": {
+        "startLine": 1828,
+        "startChar": 64,
+        "endLine": 1828,
+        "endChar": 68
+      },
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f436f4f_b8a73850",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2015-10-03T20:24:53Z",
+      "side": 1,
+      "message": "bool nsp \u003d android.provider.Settings.System.getInt(context.getContentResolver(), android.provider.Settings.System.NOISE_SUPPRESSION, 1) \u003d\u003d 1;",
+      "range": {
+        "startLine": 1836,
+        "startChar": 8,
+        "endLine": 1837,
+        "endChar": 71
+      },
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f436f4f_98623416",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2015-10-03T20:24:53Z",
+      "side": 1,
+      "message": "nsp should be boolean",
+      "range": {
+        "startLine": 1855,
+        "startChar": 12,
+        "endLine": 1855,
+        "endChar": 15
+      },
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
