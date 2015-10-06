@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "7f287b81_f45ef043",
+        "filename": "src/com/android/phone/CallNotifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-10-06T12:11:54Z",
+      "side": 1,
+      "message": ".getApplicationContext() can be omitted.",
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f287b81_54502433",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-10-06T12:11:54Z",
+      "side": 1,
+      "message": "No need for .getApplicationContext(), app already is the application context.",
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f436f4f_78679027",
         "filename": "src/com/android/phone/PhoneUtils.java",
         "patchSetId": 2
@@ -13,6 +47,30 @@
       "writtenOn": "2015-10-03T20:24:53Z",
       "side": 1,
       "message": "is flag not always true? if yes, remove it",
+      "range": {
+        "startLine": 1828,
+        "startChar": 64,
+        "endLine": 1828,
+        "endChar": 68
+      },
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f287b81_d45bf451",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1828,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-10-06T12:11:54Z",
+      "side": 1,
+      "message": "No, it isn\u0027t. See the CallNotifier.java change.",
+      "parentUuid": "9f436f4f_78679027",
       "range": {
         "startLine": 1828,
         "startChar": 64,
@@ -42,6 +100,47 @@
         "endLine": 1837,
         "endChar": 71
       },
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f287b81_34459871",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-10-06T12:11:54Z",
+      "side": 1,
+      "message": "I\u0027d prefer if this setting didn\u0027t reside in system settings at all. Given that it\u0027s both set and read from the telephony service, it should be stored in shared preferences. See the PhoneSettings class.",
+      "parentUuid": "9f436f4f_b8a73850",
+      "range": {
+        "startLine": 1836,
+        "startChar": 8,
+        "endLine": 1837,
+        "endChar": 71
+      },
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f287b81_144a9c7f",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1853,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-10-06T12:11:54Z",
+      "side": 1,
+      "message": "Those checks look kinda pointless; if any of the string values is empty, I would just skip doing anything at all.",
       "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
