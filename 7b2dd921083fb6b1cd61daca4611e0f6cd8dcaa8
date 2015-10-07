@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "7f287b81_a2fee6ab",
+        "filename": "res/values/config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-10-07T04:00:56Z",
+      "side": 1,
+      "message": "translatable\u003d\"false",
+      "range": {
+        "startLine": 95,
+        "startChar": 58,
+        "endLine": 95,
+        "endChar": 60
+      },
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f287b81_420e22e6",
+        "filename": "res/xml/call_feature_setting.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-10-07T04:00:56Z",
+      "side": 1,
+      "message": "The default value in DatabaseHelper is 0. These must be in sync.",
+      "range": {
+        "startLine": 144,
+        "startChar": 30,
+        "endLine": 144,
+        "endChar": 31
+      },
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f287b81_22131610",
+        "filename": "res/xml/call_feature_setting_msim.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-10-07T04:00:56Z",
+      "side": 1,
+      "message": "The default value in DatabaseHelper is 0. These must be in sync.",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 28
+      },
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f287b81_f45ef043",
         "filename": "src/com/android/phone/CallNotifier.java",
         "patchSetId": 2
@@ -147,6 +216,24 @@
     },
     {
       "key": {
+        "uuid": "7f287b81_02213a4e",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1853,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-10-07T04:00:56Z",
+      "side": 1,
+      "message": "And hardcoded. It\u0027s better to have a full parameter for on and off that can be override by devices, rather than only one that need parsing (this is useless for other devices parameters)",
+      "parentUuid": "7f287b81_144a9c7f",
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f436f4f_98623416",
         "filename": "src/com/android/phone/PhoneUtils.java",
         "patchSetId": 2
@@ -158,6 +245,30 @@
       "writtenOn": "2015-10-03T20:24:53Z",
       "side": 1,
       "message": "nsp should be boolean",
+      "range": {
+        "startLine": 1855,
+        "startChar": 12,
+        "endLine": 1855,
+        "endChar": 15
+      },
+      "revId": "7b2dd921083fb6b1cd61daca4611e0f6cd8dcaa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f287b81_42dce245",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-10-07T04:00:56Z",
+      "side": 1,
+      "message": "I prefer do not call the audioManager if noise supression is not enabled",
+      "parentUuid": "9f436f4f_98623416",
       "range": {
         "startLine": 1855,
         "startChar": 12,
