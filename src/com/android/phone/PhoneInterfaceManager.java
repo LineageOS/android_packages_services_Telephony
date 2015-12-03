@@ -485,6 +485,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_OPEN_CHANNEL:
                     request = (MainThreadRequest) msg.obj;
                     uiccCard = getUiccCardFromRequest(request);
+                    Pair<String, Integer> openChannelArgs = (Pair<String, Integer>) request.argument;
                     if (uiccCard == null) {
                         loge("iccOpenLogicalChannel: No UICC");
                         request.result = new IccOpenLogicalChannelResponse(-1,
@@ -494,7 +495,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         }
                     } else {
                         onCompleted = obtainMessage(EVENT_OPEN_CHANNEL_DONE, request);
-                        uiccCard.iccOpenLogicalChannel((String)request.argument, onCompleted);
+                        uiccCard.iccOpenLogicalChannel(openChannelArgs.first,
+                                openChannelArgs.second, onCompleted);
                     }
                     break;
 
@@ -2268,12 +2270,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public IccOpenLogicalChannelResponse iccOpenLogicalChannel(int subId, String AID) {
+    public IccOpenLogicalChannelResponse iccOpenLogicalChannel(int subId, String AID, int p2) {
         enforceModifyPermissionOrCarrierPrivilege(subId);
 
-        if (DBG) log("iccOpenLogicalChannel: subId=" + subId + " aid=" + AID);
+        if (DBG) log("iccOpenLogicalChannel: subId=" + subId + " aid=" + AID + " p2=" + p2);
         IccOpenLogicalChannelResponse response = (IccOpenLogicalChannelResponse)sendRequest(
-            CMD_OPEN_CHANNEL, AID, subId);
+            CMD_OPEN_CHANNEL, new Pair<String, Integer>(AID, p2), subId);
         if (DBG) log("iccOpenLogicalChannel: " + response);
         return response;
     }
