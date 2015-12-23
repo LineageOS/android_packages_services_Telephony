@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f7f9b97_b0b7483b",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-12-23T00:08:18Z",
+      "side": 1,
+      "message": "Is there any reason you can\u0027t use an existing system property? It would be best not to introduce more \"enable LTE\"-type system properties into the mix. You should also be able to also merge this whole section into something like:\n\nSystemProperties.getBoolean(\"ro.etc.etc.\", mIsLteCapable);",
+      "revId": "7cda5ac436488474756cebe4c610aa0fcf2741b8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f7f9b97_10ab9cd6",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-12-23T00:08:18Z",
+      "side": 1,
+      "message": "Hard tab.",
+      "revId": "7cda5ac436488474756cebe4c610aa0fcf2741b8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
