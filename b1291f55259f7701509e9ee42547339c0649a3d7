@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f7f9b97_961ec16e",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-12-25T12:58:08Z",
+      "side": 1,
+      "message": "When I say this is incomplete, I mean that you need to add the same to the enabled_networks_except_gsm_choices, enabled_networks_except_gsm_4g_choices, enabled_networks_except_gsm_lte_choices, enabled_networks_choices, and enabled_networks_4g_choices also.",
+      "revId": "b1291f55259f7701509e9ee42547339c0649a3d7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
