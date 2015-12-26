@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f7f9b97_67132d0f",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-12-26T03:59:04Z",
+      "side": 1,
+      "message": "You shouldn\u0027t be changing this file at all TBH.",
+      "revId": "b1a97483e3b8baa50c2fddb6010a903b8594c64f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
