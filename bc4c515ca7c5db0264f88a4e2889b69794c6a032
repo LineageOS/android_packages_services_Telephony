@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fce034c_4194f68b",
+        "filename": "src/com/android/phone/NotificationMgr.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2016-01-05T11:51:38Z",
+      "side": 1,
+      "message": "This will need to use CMSettings interfaces and the settings constant for it.",
+      "revId": "bc4c515ca7c5db0264f88a4e2889b69794c6a032",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
