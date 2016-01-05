@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fce034c_782d2645",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-01-05T04:39:20Z",
+      "side": 1,
+      "message": "FWIW, this could have been mSubscriptionManager.getDefaultDataSubId() also, avoiding this NPE altogether.",
+      "revId": "b3923e56030699eb8bf2ffe2a40f476fdc325e03",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
