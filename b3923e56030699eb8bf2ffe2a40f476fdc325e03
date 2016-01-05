@@ -16,6 +16,24 @@
       "revId": "b3923e56030699eb8bf2ffe2a40f476fdc325e03",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fce034c_d8177aed",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2016-01-05T04:42:09Z",
+      "side": 1,
+      "message": "true. will throw up new patchset here.",
+      "parentUuid": "3fce034c_782d2645",
+      "revId": "b3923e56030699eb8bf2ffe2a40f476fdc325e03",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
