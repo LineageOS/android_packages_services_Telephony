@@ -46,6 +46,30 @@
       "revId": "501fa6ac4b7a2d519eb7e9ef7d3b03fd80361f96",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fcbff3d_366d3132",
+        "filename": "src/com/android/services/telephony/TelephonyConnectionService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 14096
+      },
+      "writtenOn": "2016-02-06T04:45:19Z",
+      "side": 1,
+      "message": "ahh i see.. ok cool.",
+      "parentUuid": "1fcbff3d_f6f009cc",
+      "range": {
+        "startLine": 474,
+        "startChar": 29,
+        "endLine": 474,
+        "endChar": 35
+      },
+      "revId": "501fa6ac4b7a2d519eb7e9ef7d3b03fd80361f96",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
