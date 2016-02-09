@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffb9cba7_1e989d68",
+        "filename": "src/com/android/services/telephony/TelephonyConnectionService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2016-02-09T04:25:16Z",
+      "side": 1,
+      "message": "what does the 1 mean here? Can we provide a constant for it?",
+      "range": {
+        "startLine": 475,
+        "startChar": 39,
+        "endLine": 475,
+        "endChar": 40
+      },
+      "revId": "56808f4018bb3747fe3de63a081ebe5f670f82c7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffb9cba7_7e93d950",
+        "filename": "src/com/android/services/telephony/TelephonyConnectionService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2016-02-09T04:25:16Z",
+      "side": 1,
+      "message": "this string should be added to cm_strings.xml so it can be localized properly.",
+      "range": {
+        "startLine": 477,
+        "startChar": 60,
+        "endLine": 477,
+        "endChar": 76
+      },
+      "revId": "56808f4018bb3747fe3de63a081ebe5f670f82c7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
