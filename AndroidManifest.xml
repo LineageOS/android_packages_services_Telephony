@@ -163,6 +163,7 @@
     <uses-permission android:name="android.permission.LOCAL_MAC_ADDRESS" />
     <uses-permission android:name="android.permission.CHANGE_COMPONENT_ENABLED_STATE" />
     <uses-permission android:name="android.permission.CHANGE_DEVICE_IDLE_TEMP_WHITELIST" />
+    <uses-permission android:name="com.android.phone.CHANGE_NETWORK_MODE" />
     <!-- Needed to block messages. -->
     <uses-permission android:name="android.permission.READ_BLOCKED_NUMBERS" />
     <!-- Needed for emergency contact notification. -->
@@ -606,6 +607,13 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".PhoneToggler" android:permission="com.android.phone.CHANGE_NETWORK_MODE">
+            <intent-filter>
+                <action android:name="com.android.internal.telephony.REQUEST_NETWORK_MODE" />
+                <action android:name="com.android.internal.telephony.MODIFY_NETWORK_MODE" />
+            </intent-filter>
+        </receiver>
+
         <!-- Telecom integration -->
         <service
                 android:singleUser="true"
@@ -651,5 +659,20 @@
         <service
             android:name="com.android.phone.vvm.RemoteVvmTaskManager"
             android:exported="false"/>
+
+        <activity android:name=".NetworkModePickerActivity"
+                  android:theme="@*android:style/Theme.DeviceDefault.Light.Dialog"
+                  android:permission="com.android.phone.CHANGE_NETWORK_MODE"
+                  android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="lineageos.platform.intent.action.NETWORK_MODE_PICKER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
+
+    <permission android:name="com.android.phone.CHANGE_NETWORK_MODE"
+        android:label="@string/perm_change_mobile_network"
+        android:description="@string/perm_change_mobile_network_desc"
+        android:protectionLevel="signature|privileged" />
 </manifest>
