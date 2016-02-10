@@ -71,4 +71,8 @@
     <string name="call_notif_callconnectingect">Call connecting through explicit call transfer</string>
     <!-- Toast text for incoming call connected through ECT -->
     <string name="call_notif_callconnectedect">Call connected through explicit call transfer</string>
+
+    <!-- Network mode picker dialog title -->
+    <string name="choose_network_mode_title">Choose network mode</string>
+    <string name="choose_network_mode_system_default">System default</string>
 </resources>
