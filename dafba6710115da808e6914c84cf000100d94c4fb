@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffb9cba7_25ab05d7",
+        "filename": "src/com/android/phone/NetworkModePickerActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2016-02-11T10:05:17Z",
+      "side": 1,
+      "message": "drop dependency on phone for msim and just use subid",
+      "revId": "dafba6710115da808e6914c84cf000100d94c4fb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffb9cba7_65a9fddd",
+        "filename": "src/com/android/phone/NetworkModePickerActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2016-02-11T10:05:17Z",
+      "side": 1,
+      "message": "use string resource, not hardcode",
+      "range": {
+        "startLine": 117,
+        "startChar": 35,
+        "endLine": 117,
+        "endChar": 36
+      },
+      "revId": "dafba6710115da808e6914c84cf000100d94c4fb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffb9cba7_05ae01e7",
+        "filename": "src/com/android/phone/NetworkModePickerActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2016-02-11T10:05:17Z",
+      "side": 1,
+      "message": "this needs to actually ask for the current user Nw Mode too",
+      "revId": "dafba6710115da808e6914c84cf000100d94c4fb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
