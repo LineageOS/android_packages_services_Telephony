@@ -553,4 +553,6 @@
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"다시 탭하여 열기"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"메시지를 디코딩하는 중에 오류가 발생했습니다."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM 카드로 서비스가 활성화되었으며 휴대전화 로밍 기능이 업데이트되었습니다."</string>
+    <!-- no translation found for callFailed_cdma_call_limit (1556916577171457086) -->
+    <skip />
 </resources>

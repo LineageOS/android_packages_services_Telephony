@@ -553,4 +553,6 @@
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"తెరవడానికి మళ్లీ నొక్కండి"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"సందేశాన్ని డీకోడ్ చేస్తున్నప్పుడు లోపం సంభవించింది."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM కార్డ్ మీ సేవను సక్రియం చేసింది మరియు మీ ఫోన్ రోమింగ్ సామర్థ్యాలను నవీకరించింది."</string>
+    <!-- no translation found for callFailed_cdma_call_limit (1556916577171457086) -->
+    <skip />
 </resources>

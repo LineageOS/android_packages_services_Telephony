@@ -553,4 +553,6 @@
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Ketik lagi untuk membuka"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"Terdapat ralat semasa menyahkodkan mesej."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Kad SIM telah mengaktifkan perkhidmatan anda dan mengemas kini keupayaan perayauan telefon anda."</string>
+    <!-- no translation found for callFailed_cdma_call_limit (1556916577171457086) -->
+    <skip />
 </resources>

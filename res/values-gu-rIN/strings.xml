@@ -553,4 +553,6 @@
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"ખોલવા માટે ફરીથી ટૅપ કરો"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"સંદેશ ડીકોડિંગ કરતી વખતે ભૂલ આવી હતી."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"એક SIM કાર્ડ એ તમારી સેવા સક્રિય કરી છે અને તમારા ફોનની રોમિંગ ક્ષમતાઓને અપડેટ કરી છે."</string>
+    <!-- no translation found for callFailed_cdma_call_limit (1556916577171457086) -->
+    <skip />
 </resources>

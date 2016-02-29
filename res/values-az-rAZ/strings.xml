@@ -553,4 +553,6 @@
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Açmaq üçün yenidən tıklayın"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"Mesaj dekod edilən zaman xəta oldu."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM kart xidmətinizi aktivləşdirdi və telefonunuzun rominq imkanlarını güncəlləşdi."</string>
+    <!-- no translation found for callFailed_cdma_call_limit (1556916577171457086) -->
+    <skip />
 </resources>
