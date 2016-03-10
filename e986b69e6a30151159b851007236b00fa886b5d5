@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ffb9cba7_4dd06220",
+        "filename": "src/com/android/services/telephony/TelephonyConnectionService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2016-03-10T03:52:54Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be if mExtTelephony \u003d\u003d null ?",
+      "parentUuid": "ffb9cba7_4df942c6",
+      "revId": "e986b69e6a30151159b851007236b00fa886b5d5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffb9cba7_2d172ef0",
         "filename": "src/com/android/services/telephony/TelephonyConnectionService.java",
         "patchSetId": 1
