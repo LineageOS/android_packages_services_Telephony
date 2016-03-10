@@ -51,6 +51,24 @@
       "revId": "e986b69e6a30151159b851007236b00fa886b5d5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffb9cba7_adb9dee9",
+        "filename": "src/com/android/services/telephony/TelephonyConnectionService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-03-10T04:03:45Z",
+      "side": 1,
+      "message": "Whoops, I missed below (L619-623). Maybe we should just move the return PhoneFactory.getPhone(phoneId) into the try instead.",
+      "parentUuid": "ffb9cba7_2d172ef0",
+      "revId": "e986b69e6a30151159b851007236b00fa886b5d5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
