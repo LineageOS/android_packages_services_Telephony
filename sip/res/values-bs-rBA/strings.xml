@@ -37,7 +37,7 @@
     <string name="alert_dialog_ok" msgid="4752048404605388940">"Uredu"</string>
     <string name="close_profile" msgid="3122414058856309881">"Zatvori"</string>
     <string name="registration_status_checking_status" msgid="6136793741862200337">"Provjera statusa u toku..."</string>
-    <string name="registration_status_registering" msgid="2677183977796278749">"Registrovanje u toku…"</string>
+    <string name="registration_status_registering" msgid="2677183977796278749">"Registriranje u toku…"</string>
     <string name="registration_status_still_trying" msgid="7648151061205513458">"Još uvijek pokušavamo…"</string>
     <string name="registration_status_not_receiving" msgid="7620333886153361090">"Ne prima pozive."</string>
     <string name="registration_status_no_data" msgid="2541999976218192413">"Registracija računa je zaustavljena jer nema internet veze."</string>
@@ -60,7 +60,7 @@
     <string name="send_keepalive_title" msgid="599627072150501159">"Pošalji keep-alive poruku"</string>
     <string name="advanced_settings" msgid="6622996380747040711">"Opcionalne postavke"</string>
     <string name="auth_username_title" msgid="8262491689004708265">"Korisničko ime za provjeru vjerodostojnosti"</string>
-    <string name="auth_username_summary" msgid="941160241371436473">"Korisničko ime koje se koristi za provjeru vjerodostojnosti"</string>
+    <string name="auth_username_summary" msgid="941160241371436473">"Korisničko ime upotrijebljeno za provjeru vjerodostojnosti"</string>
     <string name="default_preference_summary" msgid="1979249643719483249">"&lt;Nije postavljeno&gt;"</string>
     <string name="display_name_summary" msgid="7155076491675565407">"&lt;Isto kao korisničko ime&gt;"</string>
     <string name="optional_summary" msgid="2363105560396317624">"&lt;Opcionalno&gt;"</string>
@@ -69,7 +69,7 @@
     <string name="all_empty_alert" msgid="4087734950375192387">"Unesite detalje novog SIP računa."</string>
     <string name="empty_alert" msgid="6659484914371384024">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> je obavezno polje i ne može biti prazno."</string>
     <string name="not_a_valid_port" msgid="7931422555587011830">"Broj priključka treba biti između 1000 i 65534."</string>
-    <string name="no_internet_available" msgid="5523747991760017298">"Da biste uputili SIP poziv, prvo provjerite internet vezu."</string>
+    <string name="no_internet_available" msgid="5523747991760017298">"Da uputite SIP poziv, prvo provjerite internet vezu."</string>
     <string name="no_wifi_available" msgid="1955023904229673488">"Trebate biti povezani na Wi-FI mrežu za SIP pozive (koristite postavke Bežično povezivanje i mreža)."</string>
     <string name="no_voip" msgid="3038021971231952704">"SIP pozivanje nije podržano"</string>
     <string name="sip_system_decide" msgid="5577696249416700671">"Automatski"</string>
