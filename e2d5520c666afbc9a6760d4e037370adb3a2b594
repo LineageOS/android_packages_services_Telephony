@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7faddb67_7c2756b8",
+        "filename": "src/com/android/services/telephony/TelecomAccountRegistry.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-03-21T09:17:12Z",
+      "side": 0,
+      "message": "Removing this without any further changes breaks outgoing calls (due to no accounts being present) if the service is missing. Line 493 should probably be removed, too.",
+      "revId": "e2d5520c666afbc9a6760d4e037370adb3a2b594",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
