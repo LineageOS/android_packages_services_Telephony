@@ -1053,6 +1053,9 @@ public class TelephonyConnectionService extends ConnectionService {
             returnConnection.setManageImsConferenceCallSupported(
                     TelecomAccountRegistry.getInstance(this).isManageImsConferenceCallSupported(
                             phoneAccountHandle));
+            returnConnection.setShowPreciseFailedCause(
+                    TelecomAccountRegistry.getInstance(this).isShowPreciseFailedCause(
+                            phoneAccountHandle));
         }
         return returnConnection;
     }
