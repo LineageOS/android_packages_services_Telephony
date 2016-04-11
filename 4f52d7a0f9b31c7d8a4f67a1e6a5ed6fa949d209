@@ -22,6 +22,30 @@
       "revId": "4f52d7a0f9b31c7d8a4f67a1e6a5ed6fa949d209",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7faddb67_7138aa3c",
+        "filename": "src/com/android/phone/settings/VoicemailSettingsActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2016-04-11T17:34:24Z",
+      "side": 1,
+      "message": "I\u0027d rename mMwiNotification into mMwiNotificationPref",
+      "parentUuid": "7faddb67_f1eedab2",
+      "range": {
+        "startLine": 255,
+        "startChar": 20,
+        "endLine": 255,
+        "endChar": 35
+      },
+      "revId": "4f52d7a0f9b31c7d8a4f67a1e6a5ed6fa949d209",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
