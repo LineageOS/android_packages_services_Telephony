@@ -42,6 +42,7 @@ import android.telephony.PhoneNumberUtils;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.ArrayMap;
@@ -132,6 +133,27 @@ public class NotificationMgr {
 
         mNotificationComponent = notificationComponent != null
                 ? ComponentName.unflattenFromString(notificationComponent) : null;
+
+        mSubscriptionManager.addOnSubscriptionsChangedListener(
+                new OnSubscriptionsChangedListener() {
+                    @Override
+                    public void onSubscriptionsChanged() {
+                        updateActivePhonesMwi();
+                    }
+                });
+    }
+
+    public void updateActivePhonesMwi() {
+        List<SubscriptionInfo> subInfos = mSubscriptionManager.getActiveSubscriptionInfoList();
+
+        if (subInfos == null) {
+            return;
+        }
+
+        for (int i = 0; i < subInfos.size(); i++) {
+            int subId = subInfos.get(i).getSubscriptionId();
+            refreshMwi(subId);
+        }
     }
 
     /**
