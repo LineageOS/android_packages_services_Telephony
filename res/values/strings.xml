@@ -805,6 +805,8 @@
     <string name="menu_edit">Edit contact</string>
     <!-- FDN list screen: menu item label -->
     <string name="menu_delete">Delete contact</string>
+    <!-- FDN list screen: menu item label -->
+    <string name="menu_dial">Dial contact</string>
 
     <!-- FDN related strings -->
     <!-- Label for PIN2 entry screen -->
