@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_b5ba7a07",
+        "filename": "src/com/android/phone/MyPhoneNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-05-13T16:48:52Z",
+      "side": 1,
+      "message": "This should probably just be a warning.",
+      "revId": "12824bcb1a164b5036648389b05a3fff6306eb2d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_d54a9625",
+        "filename": "src/com/android/phone/MyPhoneNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-05-13T16:48:52Z",
+      "side": 1,
+      "message": "Duplicate return statement.",
+      "revId": "12824bcb1a164b5036648389b05a3fff6306eb2d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
