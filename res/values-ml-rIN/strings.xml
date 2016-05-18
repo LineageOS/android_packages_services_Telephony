@@ -64,7 +64,7 @@
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"ഇതുപയോഗിച്ച് SIP കോളുചെയ്യുക"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"ആദ്യതവണ ചോദിക്കുക"</string>
     <string name="phone_accounts_default_account_label" msgid="4183772241814460014">"നെറ്റ്‌വർക്കൊന്നും ലഭ്യമല്ല"</string>
-    <string name="phone_accounts_settings_header" msgid="4141710640883261094">"ക്രമീകരണങ്ങൾ"</string>
+    <string name="phone_accounts_settings_header" msgid="4141710640883261094">"ക്രമീകരണം"</string>
     <string name="phone_accounts_choose_accounts" msgid="5232948804226424002">"അക്കൗണ്ടുകൾ തിരഞ്ഞെടുക്കുക"</string>
     <string name="phone_accounts_selection_header" msgid="1365215726106915865">"ഫോൺ അക്കൗണ്ടുകൾ"</string>
     <string name="phone_accounts_add_sip_account" msgid="2023821743341923271">"SIP അക്കൗണ്ട് ചേർക്കുക"</string>
