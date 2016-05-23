@@ -95,7 +95,7 @@
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Notificar-me de chamadas a receber durante uma chamada"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Definições do reencaminhamento de chamadas"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Definições de reencaminhamento de chamadas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"Reencaminhamento de chamadas"</string>
+    <string name="labelCF" msgid="2574386948026924737">"Encaminhamento de chamadas"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Encaminhar sempre"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Utilizar sempre este número"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"A reencaminhar todas as chamadas"</string>

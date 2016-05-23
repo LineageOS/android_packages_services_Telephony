@@ -27,7 +27,7 @@
     <string name="sip_call_options_entry_2" msgid="1815335903940609729">"Faqat SIP-qo‘ng‘iroqlar uchun"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="1358513095551847314">"Barcha qo‘ng‘iroqlar uchun"</string>
     <string name="add_sip_account" msgid="800843669753980091">"Hisob qo‘shish"</string>
-    <string name="remove_sip_account" msgid="1367664438506503690">"Hisobni o‘chirish"</string>
+    <string name="remove_sip_account" msgid="1367664438506503690">"Hisobni olib tashlash"</string>
     <string name="sip_account_list" msgid="5610858485304821480">"SIP hisoblari"</string>
     <string name="saving_account" msgid="5336529880235177448">"Hisob saqlanmoqda…"</string>
     <string name="removing_account" msgid="5537351356808985756">"Hisob o‘chirilmoqda…"</string>
@@ -58,7 +58,7 @@
     <string name="port_title" msgid="6693965912656593862">"Port raqami"</string>
     <string name="transport_title" msgid="889155457465372527">"Protokol"</string>
     <string name="send_keepalive_title" msgid="599627072150501159">"Keep-alive elementini yuborish"</string>
-    <string name="advanced_settings" msgid="6622996380747040711">"Qo‘shimcha sozlamalar"</string>
+    <string name="advanced_settings" msgid="6622996380747040711">"Kengaytirilgan sozlamalar"</string>
     <string name="auth_username_title" msgid="8262491689004708265">"Foydalanuvchi nomi"</string>
     <string name="auth_username_summary" msgid="941160241371436473">"Haqiqiylikni tekshirish uchun foydalanuvchi nomi"</string>
     <string name="default_preference_summary" msgid="1979249643719483249">"&lt;Ko‘rsatilmagan&gt;"</string>
