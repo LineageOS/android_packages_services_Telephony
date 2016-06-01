@@ -28,7 +28,7 @@
     <string name="mmiStarted" msgid="6347869857061147003">"MMIကုတ်နံပါတ်ကို စတင်ပြီးပါပြီ"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD ကုဒ် လုပ်ဆောင်နေပါသည်…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMIကုတ်နံပါတ်ကို ပယ်ဖျက်ပြီးပါပြီ"</string>
-    <string name="cancel" msgid="5044513931633602634">"ဖျက်သိမ်းရန်"</string>
+    <string name="cancel" msgid="5044513931633602634">"မလုပ်တော့ပါ"</string>
     <string name="enter_input" msgid="1810529547726803893">"USSD စာများဟာ စာလုံးရေ <xliff:g id="MIN_LEN">%d</xliff:g> မှ<xliff:g id="MAX_LEN">%d</xliff:g> အတွင်း ဖြစ်ရပါမည်။ နောက်တစ်ခေါက်ကြိုးစားပါ"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"ကွန်းဖရင့် ခေါ်ဆိုမှုကို ထိန်းချုပ်သည်"</string>
     <string name="ok" msgid="3811371167865772377">"အိုကေ"</string>
@@ -40,7 +40,7 @@
     <string name="pause_prompt_str" msgid="1789964702154314806">"အသံ ပို့နေစဉ်\n"</string>
     <string name="send_button" msgid="4106860097497818751">"ပို့ခြင်း"</string>
     <string name="pause_prompt_yes" msgid="3564467212025151797">"ဟုတ်ကဲ့"</string>
-    <string name="pause_prompt_no" msgid="6686238803236884877">"မဟုတ်ပါ"</string>
+    <string name="pause_prompt_no" msgid="6686238803236884877">"No"</string>
     <string name="wild_prompt_str" msgid="5543521676355533577">"wildစာလုံးကို အစားထိုးရန်မှာ"</string>
     <string name="no_vm_number" msgid="4164780423805688336">"အသံစာပို့စနစ် နံပါတ် ပျောက်နေပါသည်"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"ဆင်းမ်ကဒ်ပေါ်တွင် အသံစာပို့စနစ် နံပါတ် သိမ်းဆည်ထားခြင်း မရှိပါ"</string>
@@ -525,7 +525,7 @@
     <string name="alert_dialog_in_ecm_call" msgid="1886723687211887104">"ရွေးချယ်ထားသော အပြုအမူမှာ အရေပေါ်ခေါ်ဆိုမှုပြုလုပ်နေစဉ် မရှိနိုင်ပါ"</string>
     <string name="progress_dialog_exiting_ecm" msgid="4835734101617817074">"အရေးပေါ်ပြန်လည်ခေါ်ဆိုမှု အခြေအနေအား ထွက်ပါမည်"</string>
     <string name="alert_dialog_yes" msgid="6674268047820703974">"ဟုတ်သည်"</string>
-    <string name="alert_dialog_no" msgid="1476091437797628703">"မဟုတ်ပါ"</string>
+    <string name="alert_dialog_no" msgid="1476091437797628703">"No"</string>
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"လွှတ်လိုက်သည်"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"ဝန်ဆောင်မှု"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"ပြင်ဆင်သည်"</string>

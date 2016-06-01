@@ -51,7 +51,7 @@
     <string name="sip_edit_title" msgid="1967247832635750410">"SIP खाता विवरणहरू"</string>
     <string name="sip_edit_new_title" msgid="266414118302574305">"SIP खाता विवरणहरू"</string>
     <string name="domain_address_title" msgid="1968479941328225423">"सर्भर"</string>
-    <string name="username_title" msgid="6770064611005663470">"प्रयोगकर्ता नाम"</string>
+    <string name="username_title" msgid="6770064611005663470">"एक-पटके पाठ सन्देश"</string>
     <string name="password_title" msgid="5289013731515564295">"पासवर्ड"</string>
     <string name="display_name_title" msgid="579241787583079773">"नाम प्रदर्शन गर्नुहोस्"</string>
     <string name="proxy_address_title" msgid="6890163365640631841">"बाहिरका प्रोक्सी ठेगाना"</string>
@@ -59,10 +59,10 @@
     <string name="transport_title" msgid="889155457465372527">"यातायात प्रकार"</string>
     <string name="send_keepalive_title" msgid="599627072150501159">"चालु राख्नको लागि पठाउनुहोस्"</string>
     <string name="advanced_settings" msgid="6622996380747040711">"वैकल्पिक सेटिङहरू"</string>
-    <string name="auth_username_title" msgid="8262491689004708265">"प्रमाणीकरणको प्रयोगकर्ता नाम"</string>
-    <string name="auth_username_summary" msgid="941160241371436473">"प्रमाणीकरणको लागि प्रयोगकर्ता नाम प्रयोग भएको"</string>
+    <string name="auth_username_title" msgid="8262491689004708265">"प्रमाणीकरणको एक-पटके पाठ सन्देश"</string>
+    <string name="auth_username_summary" msgid="941160241371436473">"प्रमाणीकरणको लागि एक-पटके पाठ सन्देश प्रयोग भएको"</string>
     <string name="default_preference_summary" msgid="1979249643719483249">"&lt;सेट गरिएको छैन&gt;"</string>
-    <string name="display_name_summary" msgid="7155076491675565407">"&lt;प्रयोगकर्ता नाम जस्तै&gt;"</string>
+    <string name="display_name_summary" msgid="7155076491675565407">"&lt;एक-पटके पाठ सन्देश जस्तै&gt;"</string>
     <string name="optional_summary" msgid="2363105560396317624">"&lt;वैकल्पिकgt;"</string>
     <string name="advanced_settings_show" msgid="7838761602853998622">"▷ छोएर सबै देखाउनुहोस्"</string>
     <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ छोएर सबै लुकाउनुहोस्"</string>
