@@ -147,6 +147,15 @@
     <string name="no_change" msgid="3186040086622435212">"केही पनि फेरबदल गरिएन।"</string>
     <string name="sum_voicemail_choose_provider" msgid="59911196126278922">"भ्वाइसमेल सेवा छान्नुहोस्"</string>
     <string name="voicemail_default" msgid="2001233554889016880">"तपाईंको वाहक"</string>
+    <string name="vm_change_pin_old_pin" msgid="7295220109886682573">"पुरानो PIN"</string>
+    <string name="vm_change_pin_new_pin" msgid="5412922262839438097">"नयाँ PIN"</string>
+    <string name="vm_change_pin_progress_message" msgid="6727847908454506025">"PIN परिवर्तन गर्दै"</string>
+    <string name="vm_change_pin_error_too_short" msgid="5974971097302710497">"नयाँ PIN अत्यन्त छोटो छ।"</string>
+    <string name="vm_change_pin_error_too_long" msgid="8476870806115051865">"नयाँ PIN अत्यन्त लामो छ।"</string>
+    <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"नयाँ PIN अत्यन्त कमजोर छ। बलियो पासवर्डमा लगातारको अनुक्रम वा दोहोरिएका अङ्कहरू हुनु हुँदैन।"</string>
+    <string name="vm_change_pin_error_mismatch" msgid="2754685537970757317">"पुरानो PIN मेल खाँदैन।"</string>
+    <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"नयाँ PIN मा अमान्य वर्णहरू छन्।"</string>
+    <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"PIN परिवर्तन गर्न सकिएन"</string>
     <string name="mobile_networks" msgid="2843854043339307375">"सेलुलर सञ्जाल सेटिङहरू"</string>
     <string name="label_available" msgid="1181658289009300430">"उपलब्ध नेटवर्कहरू"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"खोजी गर्दै..."</string>
@@ -212,15 +221,15 @@
     <string name="cdma_options" msgid="4016822858172249884">"CDMA विकल्पहरू"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"डेटा उपयोग"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"हालको अवधिमा प्रयोग भएको डेटा"</string>
-    <string name="throttle_time_frame" msgid="1915198770363734685">"डेटा प्रयोग अवधि"</string>
+    <string name="throttle_time_frame" msgid="1915198770363734685">"डेटाको प्रयोग अवधि"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"डेटा दर नीति"</string>
     <string name="throttle_help" msgid="243651091785169900">"बढी सिक्नुहोस्"</string>
     <string name="throttle_status_subtext" msgid="1657318943142085170">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) को <xliff:g id="USED_2">%3$s</xliff:g> अवधि अधिकतम\nअर्को अवधिले <xliff:g id="USED_3">%4$d</xliff:g> दिनमा सुरु गर्दछ (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) को <xliff:g id="USED_2">%3$s</xliff:g> अवधि अधिकतम"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> अधिकतम बढीमा \n डेटा दरमा कम <xliff:g id="USED_1">%2$d</xliff:g> KB /s"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ को चक्र बितेको \nअर्को समय <xliff:g id="USED_1">%2$d</xliff:g> दिनमा सुरु हुन्छ (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
-    <string name="throttle_rate_subtext" msgid="2149102656120726855">"यदि डेटा प्रयोग गर्न सिमित पार भएको छ भने  <xliff:g id="USED">%1$d</xliff:g> Kb/s मा डेटा दर घटेको छ"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"तपाईँको केरियरक मोबाइल सञ्जाल डेटा प्रयोग नीतिको बारेमा थप जानकारी"</string>
+    <string name="throttle_rate_subtext" msgid="2149102656120726855">"यदि डेटाको प्रयोग गर्न सिमित पार भएको छ भने  <xliff:g id="USED">%1$d</xliff:g> Kb/s मा डेटा दर घटेको छ"</string>
+    <string name="throttle_help_subtext" msgid="3633091498168446044">"तपाईँको केरियरक मोबाइल सञ्जाल डेटाको प्रयोग नीतिको बारेमा थप जानकारी"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"सेल प्रसारण SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"सेल प्रसारण SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"सेल प्रसारण SMS सक्षम"</string>
@@ -491,7 +500,7 @@
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"सक्रिय गर्दै…"</string>
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"फोनले तपाईँको मोबाइल डेटा सेवा सक्रिय पार्दै छ। \n\nयसले ५ मिनेटसम्म समय लिन सक्छ।"</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"सक्रिया गर्ने काम छोड्ने हो?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"यदि तपाईँ सक्रियता छोड्नुहुन्छ भने तपाईँ कल वा मोबाइल डेटा नेटवर्क (तपाईँ वाइफाइ नेटवर्क जडान गर्न सक्नु हुन्छ) बाट जडान गर्न सक्नु हुन्छ। तपाईँले आफ्नो फोनलाई सक्रिय गर्ने बेलासम्म तपाईँ यसलाई हरेक पटक खोल्ने गर्नुहोस्।"</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"यदि तपाईँ सक्रियता छोड्नुहुन्छ भने तपाईँ कल वा मोबाइल डेटा नेटवर्क (तपाईँ Wi-Fi नेटवर्क जडान गर्न सक्नु हुन्छ) बाट जडान गर्न सक्नु हुन्छ। तपाईँले आफ्नो फोनलाई सक्रिय गर्ने बेलासम्म तपाईँ यसलाई हरेक पटक खोल्ने गर्नुहोस्।"</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"छोड्नुहोस्"</string>
     <string name="ota_activate" msgid="1368528132525626264">"सक्रिय बनाउनुहोस्"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"फोन सक्रिय भएको छ।"</string>
@@ -532,7 +541,7 @@
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"सेट गरेको छैन"</string>
     <string name="other_settings" msgid="3672912580359716394">"अन्य कल सेटिङहरू"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> को मार्फत कल गर्दै"</string>
-    <string name="contactPhoto" msgid="4713193418046639466">"सम्पर्क फोटो"</string>
+    <string name="contactPhoto" msgid="4713193418046639466">"सम्पर्क तस्बिर"</string>
     <string name="goPrivate" msgid="865837794424530980">"निजी जानुहोस्"</string>
     <string name="selectContact" msgid="781975788478987237">"सम्पर्क चयन गर्नुहोस्"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"भ्वाइस कल गर्ने समर्थित छैन"</string>
@@ -540,6 +549,7 @@
     <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"भाइब्रेट"</string>
     <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"भाइब्रेट"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"भिजुअल भ्वाइस मेल"</string>
+    <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN परिवर्तन गर्नुहोस्"</string>
     <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"आवाज:"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"रिङ्गटोन र भाइब्रेट"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"निर्मित SIM कार्डहरू"</string>

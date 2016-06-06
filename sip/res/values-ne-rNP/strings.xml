@@ -41,7 +41,7 @@
     <string name="registration_status_still_trying" msgid="7648151061205513458">"प्रयास गरिँदै..."</string>
     <string name="registration_status_not_receiving" msgid="7620333886153361090">"कलहरू प्राप्त भैरहेका छैनन्"</string>
     <string name="registration_status_no_data" msgid="2541999976218192413">"खाता दर्ता प्रक्रिया रोकियो किनकि इन्टरनेट जडित छैन।"</string>
-    <string name="registration_status_no_wifi_data" msgid="9154717387473039546">"खाता दर्ता रोकियो किनकि वाइफाइ जडित छैन।"</string>
+    <string name="registration_status_no_wifi_data" msgid="9154717387473039546">"खाता दर्ता रोकियो किनकि Wi-Fi जडित छैन।"</string>
     <string name="registration_status_not_running" msgid="514205414303796800">"खाता दर्ता गर्न विफल"</string>
     <string name="registration_status_done" msgid="3264961069247314253">"कलहरू प्राप्त गर्दै।"</string>
     <string name="registration_status_failed_try_later" msgid="2199970021756384317">"खाता दर्ता गर्न विफल: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>); पछि प्रयास गर्नुहोस्"</string>

@@ -73,7 +73,7 @@
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"Selectați conturile care pot da apeluri"</string>
     <string name="wifi_calling" msgid="739018212480165598">"Apelare prin Wi-Fi"</string>
     <string name="connection_service_default_label" msgid="1498481943805913754">"Serviciu de conectare încorporat"</string>
-    <string name="voicemail" msgid="8693759337917898954">"Mesaj vocal"</string>
+    <string name="voicemail" msgid="8693759337917898954">"Mesagerie vocală"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Mesagerie vocală (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"MV:"</string>
     <string name="networks" msgid="8873030692174541976">"Operatori de rețea"</string>
@@ -147,6 +147,15 @@
     <string name="no_change" msgid="3186040086622435212">"Nicio schimbare efectuată."</string>
     <string name="sum_voicemail_choose_provider" msgid="59911196126278922">"Alegeți serviciul de mesagerie vocală"</string>
     <string name="voicemail_default" msgid="2001233554889016880">"Operatorul dvs."</string>
+    <string name="vm_change_pin_old_pin" msgid="7295220109886682573">"Codul PIN vechi"</string>
+    <string name="vm_change_pin_new_pin" msgid="5412922262839438097">"Codul PIN nou"</string>
+    <string name="vm_change_pin_progress_message" msgid="6727847908454506025">"Se schimbă codul PIN"</string>
+    <string name="vm_change_pin_error_too_short" msgid="5974971097302710497">"Codul PIN nou este prea scurt."</string>
+    <string name="vm_change_pin_error_too_long" msgid="8476870806115051865">"Codul PIN nou este prea lung."</string>
+    <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"Codul PIN nou este prea slab. O parolă puternică nu ar trebui să aibă o secvență continuă sau cifre repetitive."</string>
+    <string name="vm_change_pin_error_mismatch" msgid="2754685537970757317">"Codul PIN vechi nu corespunde."</string>
+    <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"Codul PIN nou conține caractere nevalide."</string>
+    <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Nu se poate schimba codul PIN"</string>
     <string name="mobile_networks" msgid="2843854043339307375">"Setările pentru rețeaua mobilă"</string>
     <string name="label_available" msgid="1181658289009300430">"Rețele disponibile"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Se caută…"</string>
@@ -354,7 +363,7 @@
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"Reîncercare automată"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Activați modul Reîncercare automată"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Schimbarea modului TTY nu este permisă în timpul unui apel video"</string>
-    <string name="menu_add" msgid="1882023737425114762">"Adăugați o persoană în agendă"</string>
+    <string name="menu_add" msgid="1882023737425114762">"Adăugați o persoană"</string>
     <string name="menu_edit" msgid="7143003705504672374">"Modificați informațiile despre persoana din agendă"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Ștergeți persoana din agendă"</string>
     <string name="get_pin2" msgid="8204677063922225311">"Introduceți codul PIN2"</string>
@@ -375,7 +384,7 @@
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"NAR nu a fost actualizat. Codul PIN2 a fost incorect sau numărul de telefon a fost respins."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operațiunea NAR nu a reușit."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Se citește de pe cardul SIM..."</string>
-    <string name="simContacts_empty" msgid="5270660846489561932">"Nicio persoană în agenda de pe cardul dvs. SIM."</string>
+    <string name="simContacts_empty" msgid="5270660846489561932">"Nicio persoană pe cardul SIM."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Selectați pentru import"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Pentru a importa persoane de contact de pe cardul SIM, dezactivați modul Avion."</string>
     <string name="enable_pin" msgid="5422767284133234860">"Activați/dezactivați codul PIN al cardului SIM"</string>
@@ -470,8 +479,8 @@
     <string name="importToFDNfromContacts" msgid="2130620207013368580">"Importați din Agendă"</string>
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Persoana de contact a fost importată"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Persoana de contact nu a fost importată"</string>
-    <string name="hac_mode_title" msgid="8740268574688743289">"Asistență auditivă"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Activați compatibilitatea cu asistența auditivă"</string>
+    <string name="hac_mode_title" msgid="8740268574688743289">"Aparate auditive"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Activați compatibilitatea cu aparatele auditive"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY dezactivat"</item>
     <item msgid="3971695875449640648">"TTY integral"</item>
@@ -543,6 +552,7 @@
     <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Vibrații"</string>
     <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Vibrații"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Mesagerie vocală vizuală"</string>
+    <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Schimbați codul PIN"</string>
     <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Sunet"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Ton de apel și vibrare"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Carduri SIM încorporate"</string>
