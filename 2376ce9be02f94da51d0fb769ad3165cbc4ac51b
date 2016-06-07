@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_6cb63d41",
+        "filename": "src/com/android/phone/PhoneUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2428,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2016-06-07T17:07:59Z",
+      "side": 1,
+      "message": "We are switching the handle to key off from the sub id before to now the icc serial number, is this the behavior we want?",
+      "range": {
+        "startLine": 2427,
+        "startChar": 8,
+        "endLine": 2428,
+        "endChar": 59
+      },
+      "revId": "2376ce9be02f94da51d0fb769ad3165cbc4ac51b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
