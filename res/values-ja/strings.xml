@@ -33,7 +33,7 @@
     <string name="manageConferenceLabel" msgid="4691922394301969053">"グループ通話オプション"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"スピーカー"</string>
-    <string name="audio_mode_earpiece" msgid="4156527186373869107">"携帯端末のイヤホン"</string>
+    <string name="audio_mode_earpiece" msgid="4156527186373869107">"モバイル端末のイヤホン"</string>
     <string name="audio_mode_wired_headset" msgid="1465350758489175975">"有線ヘッドセット"</string>
     <string name="audio_mode_bluetooth" msgid="3047641300848211128">"Bluetooth"</string>
     <string name="wait_prompt_str" msgid="7601815427707856238">"次の番号を送信しますか？\n"</string>
@@ -63,9 +63,10 @@
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"発信先"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"SIP通話の発信先"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"最初に確認する"</string>
+    <string name="phone_accounts_default_account_label" msgid="4183772241814460014">"利用できるネットワークなし"</string>
     <string name="phone_accounts_settings_header" msgid="4141710640883261094">"設定"</string>
     <string name="phone_accounts_choose_accounts" msgid="5232948804226424002">"アカウントを選択"</string>
-    <string name="phone_accounts_selection_header" msgid="1365215726106915865">"携帯端末アカウント"</string>
+    <string name="phone_accounts_selection_header" msgid="1365215726106915865">"モバイル端末アカウント"</string>
     <string name="phone_accounts_add_sip_account" msgid="2023821743341923271">"SIPアカウントを追加"</string>
     <string name="phone_accounts_configure_account_settings" msgid="1361715069911607109">"アカウントを設定"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"すべての通話アカウント"</string>
@@ -200,6 +201,7 @@
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"LTEサービスを使用して音声などの通信を改善する（推奨）"</string>
     <string name="data_enabled" msgid="5972538663568715366">"データ通信を有効にする"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"データ使用を許可"</string>
+    <string name="dialog_alert_title" msgid="6751344986194435476">"注意"</string>
     <string name="roaming" msgid="8871412572928323707">"データローミング"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"ローミング時にデータサービスに接続する"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ローミング時にデータサービスに接続する"</string>
@@ -433,7 +435,7 @@
     <string name="incall_error_out_of_service" msgid="4100065333878929223">"モバイルネットワークが利用できません。"</string>
     <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"モバイルネットワークが利用できません。電話をかけるには無線ネットワークに接続してください。"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"発信するには、有効な番号を入力してください。"</string>
-    <string name="incall_error_call_failed" msgid="6302746943230078197">"発信できません。"</string>
+    <string name="incall_error_call_failed" msgid="5891978320269774095">"発信できませんでした。"</string>
     <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"MMIシーケンスを開始中..."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"サービスはサポートされていません"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"通話を切り替えられません。"</string>
@@ -442,10 +444,12 @@
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"グループ通話を利用できません。"</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"着信を拒否できません。"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"通話を解放できません。"</string>
+    <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"通話を保留にできません。"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"電話をかけるには無線ネットワークに接続してください。"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"緊急通報"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"無線通信をONにしています..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"通信サービスはありません。もう一度お試しください…"</string>
+    <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"緊急通報中に機内モードに切り替えることはできません。"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"発信できません。<xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g>は緊急通報番号ではありません。"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"発信できません。緊急通報番号におかけください。"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"キーボードで番号を入力してください"</string>
@@ -490,14 +494,14 @@
     <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"スキップして有効にしない場合、通話やモバイルデータネットワークの接続ができません（Wi-Fiネットワークには接続できます）。携帯を有効にするまでは、電源を入れるたびに有効にするかどうかを尋ねるメッセージが表示されます。"</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"スキップ"</string>
     <string name="ota_activate" msgid="1368528132525626264">"有効にする"</string>
-    <string name="ota_title_activate_success" msgid="6570240212263372046">"携帯端末が有効になりました。"</string>
+    <string name="ota_title_activate_success" msgid="6570240212263372046">"モバイル端末が有効になりました。"</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"有効にする際のエラー"</string>
     <string name="ota_listen" msgid="162923839877584937">"完了したというメッセージが流れるまで音声ガイダンスに従ってください。"</string>
     <string name="ota_speaker" msgid="6904589278542719647">"スピーカー"</string>
     <string name="ota_progress" msgid="460876637828044519">"プログラムを設定しています…"</string>
     <string name="ota_failure" msgid="7713756181204620397">"プログラムを設定できませんでした"</string>
     <string name="ota_successful" msgid="1880780692887077407">"携帯が有効に設定されました。サービスが開始されるまで最大で15分ほどかかることがあります。"</string>
-    <string name="ota_unsuccessful" msgid="8072141612635635357">"携帯端末を有効にできませんでした。\n電波状態が悪い可能性があります。\n\n電波の良い場所（窓のそばや屋外）に移動してもう一度お試しいただくか、カスタマーサービスに他の方法をお問い合わせください。"</string>
+    <string name="ota_unsuccessful" msgid="8072141612635635357">"モバイル端末を有効にできませんでした。\n電波状態が悪い可能性があります。\n\n電波の良い場所（窓のそばや屋外）に移動してもう一度お試しいただくか、カスタマーサービスに他の方法をお問い合わせください。"</string>
     <string name="ota_spc_failure" msgid="3909983542575030796">"超過SPCによる失敗"</string>
     <string name="ota_call_end" msgid="4537279738134612388">"戻る"</string>
     <string name="ota_try_again" msgid="7685477206465902290">"再試行"</string>
@@ -549,7 +553,8 @@
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"ユーザー補助機能"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="8772915926382037499">"Wi-Fi通話が着信中"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Wi-Fi通話"</string>
-    <string name="emergency_action_launch_hint" msgid="5841511849007540970">"開くにはもう一度タップしてください"</string>
+    <string name="emergency_action_launch_hint" msgid="4906759256275562674">"開くにはもう一度タップしてください"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"メッセージのデコード中にエラーが発生しました。"</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIMカードでサービスが有効になり、スマートフォンのローミング機能が更新されています。"</string>
+    <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"通話中の電話の数が多すぎます。新しく通話を発信するには、まず既存の通話を終了するか、統合してグループ通話にしてください。"</string>
 </resources>
