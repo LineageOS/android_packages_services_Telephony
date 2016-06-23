@@ -2038,9 +2038,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean hasIccCardUsingSlotId(int slotId) {
-        int subId[] = mSubscriptionController.getSubIdUsingSlotId(slotId);
-        final Phone phone = getPhone(subId[0]);
-        if (subId != null && phone != null) {
+        final Phone phone = PhoneFactory.getPhone(slotId);
+        if (phone != null) {
             return phone.getIccCard().hasIccCard();
         } else {
             return false;
