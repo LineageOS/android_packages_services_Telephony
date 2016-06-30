@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_ceb49438",
+        "filename": "src/com/android/services/telephony/TelephonyConnectionService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2016-06-30T19:47:05Z",
+      "side": 1,
+      "message": "phoneId",
+      "revId": "48cb5e4a461a82ef9e72c767cca5e0856aa70998",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_ae903897",
+        "filename": "src/com/android/services/telephony/TelephonyConnectionService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2016-06-30T19:47:05Z",
+      "side": 1,
+      "message": "assign phone.getServiceState().getState() to a var and use it in the next lines?",
+      "revId": "48cb5e4a461a82ef9e72c767cca5e0856aa70998",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_6e832058",
+        "filename": "src/com/android/services/telephony/TelephonyConnectionService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2016-06-30T19:47:05Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "48cb5e4a461a82ef9e72c767cca5e0856aa70998",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
