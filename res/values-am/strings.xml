@@ -63,6 +63,7 @@
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"ከዚህ ጋር ጥሪዎችን አድርግ"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"SIP ጥሪዎችን ከዚህ ጋር አድርግ"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"በመጀመሪያ ጠይቅ"</string>
+    <string name="phone_accounts_default_account_label" msgid="4183772241814460014">"የሚገኝ አውታረ መረብ የለም"</string>
     <string name="phone_accounts_settings_header" msgid="4141710640883261094">"ቅንብሮች"</string>
     <string name="phone_accounts_choose_accounts" msgid="5232948804226424002">"መለያዎች ይምረጡ"</string>
     <string name="phone_accounts_selection_header" msgid="1365215726106915865">"የስልክ መለያዎች"</string>
@@ -200,6 +201,7 @@
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"የድምፅ እና ሌሎች የመልዕክት ልውውጦችን ለማሻሻል LTE አገልግሎቶችን ይጠቀሙ (የሚመከር)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ውሂብ ነቅቷል"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"የውሂብ አጠቃቀም ፍቀድ"</string>
+    <string name="dialog_alert_title" msgid="6751344986194435476">"ትኩረት"</string>
     <string name="roaming" msgid="8871412572928323707">"ውሂብ በእንቅስቃሴ ላይ"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"በእንቅስቃሴ ላይ ሲሆን ወደ ውሂብ አገልግሎቶች ተያያዝ"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"በእንቅስቃሴ ላይ ሲሆን ወደ ውሂብ አገልግሎቶች ተያያዝ"</string>
@@ -433,7 +435,7 @@
     <string name="incall_error_out_of_service" msgid="4100065333878929223">"የተንቀሳቃሽ ስልክ አውታረ መረብ አይገኝም።"</string>
     <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"የተንቀሳቃሽ ስልክ አውታረ መረብ አይገኝም። ጥሪ ለማድረግ ወደ ሽቦ አልባ አውታረ መረብ ያገናኙ።"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"አንድ ጥሪ ለማድረግ የሚሰራ ቁጥር ያስገቡ።"</string>
-    <string name="incall_error_call_failed" msgid="6302746943230078197">"መደወል አልተቻለም።"</string>
+    <string name="incall_error_call_failed" msgid="5891978320269774095">"ጥሪ አልተሳካም።"</string>
     <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"የMMI sequence…"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"አገልግሎት አይደገፍም"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"ጥሪዎችን መቀያየር አልተቻለም።"</string>
@@ -442,10 +444,12 @@
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"ለስብሰባ ጥሪዎች አልተቻለም።"</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"ጥሪውን መዝጋት አልተቻለም።"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"ጥሪ(ዎች)ን መልቀቅ አልተቻለም።"</string>
+    <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"ጥሪዎችን መያዝ አልተቻለም።"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ጥሪ ለማድረግ ወደ ሽቦ አልባ አውታረ መረብ ያገናኙ።"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"የአደጋ ጊዜ ጥሪ"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"ሬዲዮ ክፈት"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"ምንም አገልግሎት የለም። ዳግም በመሞከር ላይ…"</string>
+    <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"በአደጋ ጥሪ ወቅት የአውሮፕላን ሁነታ መግባት አይችልም።"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"መደወል አልተቻለም። <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> የአስቸኳይ አደጋ ቁጥር አይደለም።"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"መደወል አልተቻለም። ወደ የአስቸኳይ አደጋ ቁጥር ይደውሉ።"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ለመደወል የሰሌዳ ቁልፍ ተጠቀም"</string>
@@ -549,7 +553,8 @@
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"ተደራሽነት"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="8772915926382037499">"ገቢ የWi-Fi ጥሪ"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"የWi-Fi ጥሪ"</string>
-    <string name="emergency_action_launch_hint" msgid="5841511849007540970">"ለመክፈት ዳግም ይንኩ"</string>
+    <string name="emergency_action_launch_hint" msgid="4906759256275562674">"ለመክፈት ዳግም ነካ ያድርጉ"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"መልዕክቱን በማመሳጠር ላይ ስህተት ነበር።"</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"አንድ ሲም ካርድ አገልግሎትዎን ገቢር አድርጎታል፣ እንዲሁም የስልክዎን የማስተላለፍ ችሎታዎችን አዘምኗል።"</string>
+    <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"እጅግ በጣም ብዙ ንቁ ጥሪዎች አሉ። እባክዎ አዲስ ከማስቀመጥዎ በፊት ያሉትን ጥሪዎች ይጨርሱ ወይም ያዋህዱ።"</string>
 </resources>

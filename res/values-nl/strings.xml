@@ -63,6 +63,7 @@
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Bellen met"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"SIP-oproepen uitvoeren met"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"Eerst vragen"</string>
+    <string name="phone_accounts_default_account_label" msgid="4183772241814460014">"Geen netwerk beschikbaar"</string>
     <string name="phone_accounts_settings_header" msgid="4141710640883261094">"Instellingen"</string>
     <string name="phone_accounts_choose_accounts" msgid="5232948804226424002">"Accounts kiezen"</string>
     <string name="phone_accounts_selection_header" msgid="1365215726106915865">"Telefoonaccounts"</string>
@@ -84,7 +85,7 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"Aanvullende CDMA-oproepinstellingen"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"Aanvullende oproepinstellingen voor alleen CDMA"</string>
     <string name="labelNwService" msgid="4699970172021870983">"Instellingen voor netwerkservice"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"Beller-id"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"Beller-ID"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"Instellingen laden…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Nummer verborgen bij uitgaande oproepen"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Nummer weergegeven bij uitgaande oproepen"</string>
@@ -92,7 +93,7 @@
     <string name="labelCW" msgid="6120513814915920200">"Wisselgesprek"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Inkomende oproepen melden als ik aan het bellen ben"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Inkomende oproepen melden als ik aan het bellen ben"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Doorschakelinstellingen voor oproepen"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Doorschakelinstellingen oproepen"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Doorschakelinstellingen voor oproepen (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Oproep doorschakelen"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Altijd doorschakelen"</string>
@@ -101,17 +102,17 @@
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Alle oproepen doorschakelen naar <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"Het telefoonnummer is niet beschikbaar"</string>
     <string name="sum_cfu_disabled" msgid="8384177689501334080">"Uit"</string>
-    <string name="labelCFB" msgid="6139853033106283172">"Wanneer bezet"</string>
+    <string name="labelCFB" msgid="6139853033106283172">"Indien bezet"</string>
     <string name="messageCFB" msgid="3711089705936187129">"Nummer indien in gesprek"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"Doorschakelen naar <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"Uit"</string>
     <string name="disable_cfb_forbidden" msgid="3506984333877998061">"Je provider biedt geen ondersteuning voor het uitschakelen van oproepdoorschakelingen wanneer je telefoon bezet is."</string>
-    <string name="labelCFNRy" msgid="1736067178393744351">"Wanneer onbeantwoord"</string>
+    <string name="labelCFNRy" msgid="1736067178393744351">"Indien onbeantwoord"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"Nummer indien onbeantwoord"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Doorschakelen naar <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Uit"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Je provider biedt geen ondersteuning voor het uitschakelen van oproepdoorschakelingen wanneer je telefoon niet wordt opgenomen."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"Wanneer niet bereikbaar"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"Indien niet bereikbaar"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Nummer indien onbereikbaar"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Doorschakelen naar <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"Uitgeschakeld"</string>
@@ -200,6 +201,7 @@
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"LTE-services gebruiken voor betere spraak- en andere communicatie (aanbevolen)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Gegevenstoegang aan"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Gegevensgebruik toestaan"</string>
+    <string name="dialog_alert_title" msgid="6751344986194435476">"Let op"</string>
     <string name="roaming" msgid="8871412572928323707">"Gegevensroaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Verbinding maken met gegevensservices tijdens roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Verbinding maken met gegevensservices tijdens roaming"</string>
@@ -433,7 +435,7 @@
     <string name="incall_error_out_of_service" msgid="4100065333878929223">"Mobiel netwerk niet beschikbaar."</string>
     <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"Mobiel netwerk is niet beschikbaar. Maak verbinding met een draadloos netwerk om te bellen."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Als je wilt bellen, moet je een geldig nummer invoeren."</string>
-    <string name="incall_error_call_failed" msgid="6302746943230078197">"Kan niet bellen."</string>
+    <string name="incall_error_call_failed" msgid="5891978320269774095">"Oproep mislukt."</string>
     <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"MMI-reeks starten..."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Service wordt niet ondersteund"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Kan niet overschakelen tussen oproepen."</string>
@@ -442,10 +444,12 @@
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Telefonische vergaderingen niet mogelijk."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Kan oproep niet weigeren."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Kan oproep(en) niet vrijgeven."</string>
+    <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Kan gesprekken niet in de wacht zetten."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Maak verbinding met een draadloos netwerk om te bellen."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Noodoproep"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Radio aanzetten..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Geen bereik. Opnieuw proberen…"</string>
+    <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Kan vliegtuigmodus niet activeren tijdens een noodoproep."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Kan niet bellen. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> is geen alarmnummer."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Kan niet bellen. Bel een alarmnummer."</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Toetsen gebruiken om te bellen"</string>
@@ -524,7 +528,7 @@
     <string name="alert_dialog_no" msgid="1476091437797628703">"Nee"</string>
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Negeren"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"Service"</string>
-    <string name="voicemail_settings" msgid="72448049107749316">"Instelling"</string>
+    <string name="voicemail_settings" msgid="72448049107749316">"Instellen"</string>
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Niet ingesteld&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Andere instellingen voor bellen"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"Bellen via <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
@@ -549,7 +553,8 @@
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Toegankelijkheid"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="8772915926382037499">"Inkomende wifi-oproep"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Wifi-oproep"</string>
-    <string name="emergency_action_launch_hint" msgid="5841511849007540970">"Tik nogmaals om te openen"</string>
+    <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Tik nogmaals om te openen"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"Er is een fout opgetreden tijdens het decoderen van het bericht."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Een simkaart heeft je service geactiveerd en heeft de roaming-mogelijkheden van je telefoon geüpdatet."</string>
+    <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Er zijn te veel actieve oproepen. Beëindig bestaande oproepen of voeg ze samen voordat je een nieuwe oproep start."</string>
 </resources>
