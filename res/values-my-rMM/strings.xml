@@ -28,7 +28,7 @@
     <string name="mmiStarted" msgid="6347869857061147003">"MMIကုတ်နံပါတ်ကို စတင်ပြီးပါပြီ"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD ကုဒ် လုပ်ဆောင်နေပါသည်…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMIကုတ်နံပါတ်ကို ပယ်ဖျက်ပြီးပါပြီ"</string>
-    <string name="cancel" msgid="5044513931633602634">"မလုပ်တော့ပါ"</string>
+    <string name="cancel" msgid="5044513931633602634">"မလုပ်တော့"</string>
     <string name="enter_input" msgid="1810529547726803893">"USSD စာများဟာ စာလုံးရေ <xliff:g id="MIN_LEN">%d</xliff:g> မှ<xliff:g id="MAX_LEN">%d</xliff:g> အတွင်း ဖြစ်ရပါမည်။ နောက်တစ်ခေါက်ကြိုးစားပါ"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"ကွန်းဖရင့် ခေါ်ဆိုမှုကို ထိန်းချုပ်သည်"</string>
     <string name="ok" msgid="3811371167865772377">"အိုကေ"</string>
@@ -39,7 +39,7 @@
     <string name="wait_prompt_str" msgid="7601815427707856238">"အောက်ပါ တီးလုံးများကို ပို့မလား?\n"</string>
     <string name="pause_prompt_str" msgid="1789964702154314806">"အသံ ပို့နေစဉ်\n"</string>
     <string name="send_button" msgid="4106860097497818751">"ပို့ခြင်း"</string>
-    <string name="pause_prompt_yes" msgid="3564467212025151797">"ဟုတ်ကဲ့"</string>
+    <string name="pause_prompt_yes" msgid="3564467212025151797">"Yes"</string>
     <string name="pause_prompt_no" msgid="6686238803236884877">"No"</string>
     <string name="wild_prompt_str" msgid="5543521676355533577">"wildစာလုံးကို အစားထိုးရန်မှာ"</string>
     <string name="no_vm_number" msgid="4164780423805688336">"အသံစာပို့စနစ် နံပါတ် ပျောက်နေပါသည်"</string>
@@ -512,7 +512,7 @@
     <string name="ota_successful" msgid="1880780692887077407">"သင့်ဖုန်းမှာ အခု အက်တီဗိတ် ဖြစ်နေပါပြီ။ ဝန်ဆောင်မှုများ စတင်ရန် ၁၅ မိနစ်ထိ ကြာနိုင်ပါသည်"</string>
     <string name="ota_unsuccessful" msgid="8072141612635635357">"သင့်ဖုန်း အက်တီဗိတ် မဖြစ်ပါ။ \nဖုန်းလိုင်းအားပိုကောင်းသော နေရာကိုရှာပါ (ပြတင်းပေါက်နား, သို့မဟုတ် အပြင်ဖက်)။ \n\nပြန်လည်ကြိုးစားပါ သို့မဟုတ် သုံးစွဲသူအား အကူအညီပေးဝန်ဆောင်မှု ကို ဆက်သွယ်ပြီး နည်းလမ်းရှာပါ။"</string>
     <string name="ota_spc_failure" msgid="3909983542575030796">"အလွန်အကျွံ SPC မအောင်မြင်မှုများ"</string>
-    <string name="ota_call_end" msgid="4537279738134612388">"နောက်ပြန်သွားရန်"</string>
+    <string name="ota_call_end" msgid="4537279738134612388">"နောက်သို့"</string>
     <string name="ota_try_again" msgid="7685477206465902290">"ပြန်ကြိုးစားပါ"</string>
     <string name="ota_next" msgid="3904945374358235910">"ရှေ့ဆက်သွားရန်"</string>
     <string name="ecm_exit_dialog" msgid="4448531867763097533">"EcmExitDialog"</string>
@@ -524,8 +524,8 @@
       <item quantity="one"> ဒေတာဆက်သွယ်မှု <xliff:g id="COUNT_0">%s</xliff:g> မိနစ်မရှိပါ</item>
     </plurals>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="other"> ဖုန်းသည် <xliff:g id="COUNT_1">%s</xliff:g> မိနစ်လောက် အရေးပေါ် ပြန်ခေါ်ခြင်းမုဒ်တွင် ရှိနေလိမ့်မည်။ ဤမုဒ်တွင် ဒေတာချိတ်ဆက်မှုအသုံးပြုသည့် app များကို အသုံးပြု၍ ရနိုင်မည်မဟုတ်ပါ။ ယခုထွက်လိုပါသလား? </item>
-      <item quantity="one"> ဖုန်းသည် <xliff:g id="COUNT_0">%s</xliff:g> မိနစ်လောက် အရေးပေါ် ပြန်ခေါ်ခြင်းမုဒ်တွင် ရှိနေလိမ့်မည်။ ဤမုဒ်တွင် ဒေတာချိတ်ဆက်မှုအသုံးပြုသည့် app များကို အသုံးပြု၍ ရနိုင်မည်မဟုတ်ပါ။ ယခုထွက်လိုပါသလား?</item>
+      <item quantity="other"> ဖုန်းသည် <xliff:g id="COUNT_1">%s</xliff:g> မိနစ်လောက် အရေးပေါ် ပြန်ခေါ်ခြင်းမုဒ်တွင် ရှိနေလိမ့်မည်။ ဤမုဒ်တွင် ဒေတာချိတ်ဆက်မှုအသုံးပြုသည့် အက်ပ်များကို အသုံးပြု၍ ရနိုင်မည်မဟုတ်ပါ။ ယခုထွက်လိုပါသလား? </item>
+      <item quantity="one"> ဖုန်းသည် <xliff:g id="COUNT_0">%s</xliff:g> မိနစ်လောက် အရေးပေါ် ပြန်ခေါ်ခြင်းမုဒ်တွင် ရှိနေလိမ့်မည်။ ဤမုဒ်တွင် ဒေတာချိတ်ဆက်မှုအသုံးပြုသည့် အက်ပ်များကို အသုံးပြု၍ ရနိုင်မည်မဟုတ်ပါ။ ယခုထွက်လိုပါသလား?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
       <item quantity="other"> ရွေးချယ်ထားသော အပြုအမူမှာ အရေပေါ်ခေါ်ဆိုမှုပြုလုပ်နေစဉ် မရှိနိုင်ပါ။ ဖုန်းသည်ဤ မုဒ်တွင် <xliff:g id="COUNT_1">%s</xliff:g> မိနစ်ရှိနေမည်ဖြစ်သည်။ ယခုထွက်လိုပါသလား?</item>
@@ -533,7 +533,7 @@
     </plurals>
     <string name="alert_dialog_in_ecm_call" msgid="1886723687211887104">"ရွေးချယ်ထားသော အပြုအမူမှာ အရေပေါ်ခေါ်ဆိုမှုပြုလုပ်နေစဉ် မရှိနိုင်ပါ"</string>
     <string name="progress_dialog_exiting_ecm" msgid="4835734101617817074">"အရေးပေါ်ပြန်လည်ခေါ်ဆိုမှု အခြေအနေအား ထွက်ပါမည်"</string>
-    <string name="alert_dialog_yes" msgid="6674268047820703974">"ဟုတ်သည်"</string>
+    <string name="alert_dialog_yes" msgid="6674268047820703974">"Yes"</string>
     <string name="alert_dialog_no" msgid="1476091437797628703">"No"</string>
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"လွှတ်လိုက်သည်"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"ဝန်ဆောင်မှု"</string>
