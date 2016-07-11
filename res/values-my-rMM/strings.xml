@@ -48,7 +48,7 @@
     <string name="puk_unlocked" msgid="2284912838477558454">"သင့် ဆင်းမ်ကဒ်အား ပိတ်ဆို့မှုကို ဖယ်ရှားပြီးပါပြီ။ သင့်ဖုန်းဟာ သော့ဖွင့်နေပါသည်…"</string>
     <string name="label_ndp" msgid="780479633159517250">"ဆင်းမ်ကဒ် ကွန်ရက် သော့ဖွင့်သော ပင်နံပါတ်"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ဖွင့်ရန်"</string>
-    <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"လွှတ်လိုက်သည်"</string>
+    <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"ပယ်ရန်"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"ကွန်ယက်သော့ဖွင့်ခြင်း တောင်းဆိုနေပါသည်…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"ကွန်ယက်ဖွင့်ရန် တောင်းဆိုမှု မအောင်မြင်ပါ"</string>
     <string name="unlock_success" msgid="6770085622238180152">"ကွန်ယက်ဖွင့်ခြင်း မအောင်မြင်ပါ"</string>
@@ -535,7 +535,7 @@
     <string name="progress_dialog_exiting_ecm" msgid="4835734101617817074">"အရေးပေါ်ပြန်လည်ခေါ်ဆိုမှု အခြေအနေအား ထွက်ပါမည်"</string>
     <string name="alert_dialog_yes" msgid="6674268047820703974">"Yes"</string>
     <string name="alert_dialog_no" msgid="1476091437797628703">"No"</string>
-    <string name="alert_dialog_dismiss" msgid="2491494287075907171">"လွှတ်လိုက်သည်"</string>
+    <string name="alert_dialog_dismiss" msgid="2491494287075907171">"ပယ်ရန်"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"ဝန်ဆောင်မှု"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"ပြင်ဆင်သည်"</string>
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"မသတ်မှတ်ထားပါ"</string>
