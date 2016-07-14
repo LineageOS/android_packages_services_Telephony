@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_e2e14600",
+        "filename": "src/com/android/phone/EditPhoneNumberPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 14345
+      },
+      "writtenOn": "2016-07-14T20:46:09Z",
+      "side": 1,
+      "message": "didn\u0027t you just do this on 283?",
+      "range": {
+        "startLine": 285,
+        "startChar": 28,
+        "endLine": 285,
+        "endChar": 76
+      },
+      "revId": "b235bb72b59e6668db1269a0e19f335ecb9bc24a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
