@@ -22,6 +22,30 @@
       "revId": "b235bb72b59e6668db1269a0e19f335ecb9bc24a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_5d1efbba",
+        "filename": "src/com/android/phone/EditPhoneNumberPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 13408
+      },
+      "writtenOn": "2016-07-15T15:31:15Z",
+      "side": 1,
+      "message": "Yes, we need to run this check right after we open the dialog as well as after the edittext is changed. I\u0027ll clean it up a bit though.",
+      "parentUuid": "3fa7e38b_e2e14600",
+      "range": {
+        "startLine": 285,
+        "startChar": 28,
+        "endLine": 285,
+        "endChar": 76
+      },
+      "revId": "b235bb72b59e6668db1269a0e19f335ecb9bc24a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
