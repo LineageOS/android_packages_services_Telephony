@@ -734,6 +734,11 @@ public class PhoneGlobals extends ContextWrapper {
                 Phone phone = SubscriptionManager.isValidPhoneId(phoneId) ?
                         PhoneFactory.getPhone(phoneId) : PhoneFactory.getDefaultPhone();
 
+                // If not default data subscription, ignore the broadcast intent and avoid action.
+                if (subId != SubscriptionManager.getDefaultDataSubId()) {
+                    if (VDBG) Log.d(LOG_TAG, "Ignore broadcast intent as not default data sub.");
+                    return;
+                }
                 // The "data disconnected due to roaming" notification is shown
                 // if (a) you have the "data roaming" feature turned off, and
                 // (b) you just lost data connectivity because you're roaming.
