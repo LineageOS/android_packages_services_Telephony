@@ -735,7 +735,7 @@ public class PhoneGlobals extends ContextWrapper {
                         PhoneFactory.getPhone(phoneId) : PhoneFactory.getDefaultPhone();
 
                 // If not default data subscription, ignore the broadcast intent and avoid action.
-                if (subId != SubscriptionManager.getDefaultDataSubId()) {
+                if (subId != SubscriptionManager.getDefaultDataSubscriptionId()) {
                     if (VDBG) Log.d(LOG_TAG, "Ignore broadcast intent as not default data sub.");
                     return;
                 }
