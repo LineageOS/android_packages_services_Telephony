@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_8c950fe7",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-07-24T22:01:57Z",
+      "side": 1,
+      "message": "This should it\u0027s own commit.",
+      "range": {
+        "startLine": 269,
+        "startChar": 8,
+        "endLine": 278,
+        "endChar": 61
+      },
+      "revId": "85695c3d889b958619dc4799381af57e23a94afa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_ac980b1b",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-07-24T22:01:57Z",
+      "side": 1,
+      "message": "This should be it\u0027s own commit.",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 604,
+        "endChar": 9
+      },
+      "revId": "85695c3d889b958619dc4799381af57e23a94afa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}

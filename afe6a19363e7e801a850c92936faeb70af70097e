@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_4c9f1703",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-07-24T22:01:57Z",
+      "side": 0,
+      "message": "Is this really unused?",
+      "range": {
+        "startLine": 249,
+        "startChar": 18,
+        "endLine": 249,
+        "endChar": 42
+      },
+      "revId": "afe6a19363e7e801a850c92936faeb70af70097e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
