@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_6fcf65b0",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2016-07-25T06:46:52Z",
+      "side": 0,
+      "message": "@Ethan: Couldn\u0027t find any references of it. Compiles fine, function still given. Also searched in other contexts so I think it\u0027s ok to remove. I am ok to readd it if you point me to an occurance :)",
+      "revId": "40da2300feeea1d4e12134ed41efbd05bd98530d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
