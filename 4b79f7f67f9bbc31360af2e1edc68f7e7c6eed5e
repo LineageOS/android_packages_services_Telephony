@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_b52b6a80",
+        "filename": "src/com/android/phone/NetworkSetting.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-07-26T01:01:29Z",
+      "side": 1,
+      "message": "Probably don\u0027t need to do this, it just pollutes the history.",
+      "range": {
+        "startLine": 295,
+        "startChar": 33,
+        "endLine": 295,
+        "endChar": 34
+      },
+      "revId": "4b79f7f67f9bbc31360af2e1edc68f7e7c6eed5e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
