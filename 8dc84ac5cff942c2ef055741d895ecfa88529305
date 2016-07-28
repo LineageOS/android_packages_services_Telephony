@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_13a7f351",
+        "filename": "src/com/android/phone/EditPhoneNumberPreference.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 15155
+      },
+      "writtenOn": "2016-07-28T18:00:10Z",
+      "side": 1,
+      "message": "You have this in onOff already. Consider using that instead of asking for it again. It\u0027s a minor thing though.",
+      "range": {
+        "startLine": 312,
+        "startChar": 16,
+        "endLine": 312,
+        "endChar": 64
+      },
+      "revId": "8dc84ac5cff942c2ef055741d895ecfa88529305",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
