@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_ac2ec040",
+        "filename": "src/com/mediatek/phone/PhoneInterfaceManagerEx.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 848
+      },
+      "writtenOn": "2016-07-29T23:27:05Z",
+      "side": 1,
+      "message": "No proprietary code allowed",
+      "range": {
+        "startLine": 4,
+        "startChar": 44,
+        "endLine": 8,
+        "endChar": 87
+      },
+      "revId": "8be01beb990167cc9853578615a8c4a7ebb6256d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
