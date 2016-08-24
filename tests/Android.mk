@@ -31,6 +31,6 @@ LOCAL_INSTRUMENTATION_FOR := TeleService
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
         android-support-test \
-        mockito-target
+        mockito-target-minus-junit4
 
 include $(BUILD_PACKAGE)
