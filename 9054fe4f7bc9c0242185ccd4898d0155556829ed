@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_aa400b09",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 13213
+      },
+      "writtenOn": "2016-08-25T11:48:54Z",
+      "side": 1,
+      "message": "Should I rename this?",
+      "range": {
+        "startLine": 91,
+        "startChar": 57,
+        "endLine": 91,
+        "endChar": 70
+      },
+      "revId": "9054fe4f7bc9c0242185ccd4898d0155556829ed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_ca454719",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 13213
+      },
+      "writtenOn": "2016-08-25T11:48:54Z",
+      "side": 1,
+      "message": "and this?",
+      "range": {
+        "startLine": 537,
+        "startChar": 12,
+        "endLine": 537,
+        "endChar": 25
+      },
+      "revId": "9054fe4f7bc9c0242185ccd4898d0155556829ed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
