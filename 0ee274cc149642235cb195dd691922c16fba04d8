@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_472b9293",
+        "filename": "src/com/android/phone/NotificationMgr.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-08-25T10:15:27Z",
+      "side": 1,
+      "message": "This should be moved to MobileNetworkSettings (as it\u0027s the one consuming the intent).",
+      "revId": "0ee274cc149642235cb195dd691922c16fba04d8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_272e96a5",
+        "filename": "src/com/android/phone/PhoneGlobals.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-08-25T10:15:27Z",
+      "side": 1,
+      "message": "This can be removed.",
+      "revId": "0ee274cc149642235cb195dd691922c16fba04d8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
