@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_877aea21",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-08-25T04:40:35Z",
+      "side": 1,
+      "message": "This should be private static final (it\u0027s a constant after all).\n\nAlso, how about renaming this to INITIAL_TAB_SLOT_ID?",
+      "revId": "e9ddf583094e34eb878284ea64a9a2e06c348de0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_677d6e1b",
+        "filename": "src/com/android/phone/NotificationMgr.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-08-25T04:40:35Z",
+      "side": 1,
+      "message": "Should use the definition from MobileNetworkSettings instead.",
+      "revId": "e9ddf583094e34eb878284ea64a9a2e06c348de0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_c788e220",
+        "filename": "src/com/android/phone/PhoneGlobals.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-08-25T04:40:35Z",
+      "side": 1,
+      "message": "The roamingSlotId member variable can be nuked and be replaced by putting the value into the message (as msg.arg1)",
+      "revId": "e9ddf583094e34eb878284ea64a9a2e06c348de0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
