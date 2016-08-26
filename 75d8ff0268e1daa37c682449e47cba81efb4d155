@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_d0a3b64e",
+        "filename": "src/com/android/phone/NotificationMgr.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2016-08-26T07:07:09Z",
+      "side": 1,
+      "message": "Whitespace change not necessary",
+      "revId": "75d8ff0268e1daa37c682449e47cba81efb4d155",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
