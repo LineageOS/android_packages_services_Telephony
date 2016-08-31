@@ -1034,7 +1034,13 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         updateConnectionCapabilities();
         updateConnectionProperties();
         if (mOriginalConnection != null) {
-            Uri address = getAddressFromNumber(mOriginalConnection.getAddress());
+            Uri address;
+            if (isShowingOriginalDialString()
+                    && mOriginalConnection.getOrigDialString() != null) {
+                address = getAddressFromNumber(mOriginalConnection.getOrigDialString());
+            } else {
+                address = getAddressFromNumber(mOriginalConnection.getAddress());
+            }
             int presentation = mOriginalConnection.getNumberPresentation();
             if (!Objects.equals(address, getAddress()) ||
                     presentation != getAddressPresentation()) {
@@ -1069,6 +1075,15 @@ abstract class TelephonyConnection extends Connection implements Holdable {
 
     void setOriginalConnection(com.android.internal.telephony.Connection originalConnection) {
         Log.v(this, "new TelephonyConnection, originalConnection: " + originalConnection);
+        if (mOriginalConnection != null && originalConnection != null
+               && !originalConnection.isIncoming()
+               && originalConnection.getOrigDialString() == null
+               && isShowingOriginalDialString()) {
+            Log.i(this, "new original dial string is null, convert to: "
+                   +  mOriginalConnection.getOrigDialString());
+            originalConnection.setConverted(mOriginalConnection.getOrigDialString());
+        }
+
         clearOriginalConnection();
         mOriginalConnectionExtras.clear();
         mOriginalConnection = originalConnection;
@@ -2165,6 +2180,21 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         result.put(ImsCallProfile.EXTRA_DISPLAY_TEXT,
                 android.telecom.Connection.EXTRA_CALL_SUBJECT);
         return Collections.unmodifiableMap(result);
+    }
+
+    private boolean isShowingOriginalDialString() {
+        boolean showOrigDialString = false;
+        Phone phone = getPhone();
+        if (phone != null && (phone.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA)
+                && !mOriginalConnection.isIncoming()) {
+            PersistableBundle pb = getCarrierConfig();
+            if (pb != null) {
+                showOrigDialString = pb.getBoolean(CarrierConfigManager
+                        .KEY_CONFIG_SHOW_ORIG_DIAL_STRING_FOR_CDMA_BOOL);
+                Log.d(this, "showOrigDialString: " + showOrigDialString);
+            }
+        }
+        return showOrigDialString;
     }
 
     /**
