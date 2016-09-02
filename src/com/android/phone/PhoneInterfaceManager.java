@@ -578,7 +578,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     uiccCard = getUiccCardFromRequest(request);
                     if (uiccCard == null) {
                         loge("iccCloseLogicalChannel: No UICC");
-                        request.result = new IccIoResult(0x6F, 0, (byte[])null);
+                        request.result = false;
                         synchronized (request) {
                             request.notifyAll();
                         }
