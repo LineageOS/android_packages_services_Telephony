@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_3f7e606b",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2016-09-11T07:31:02Z",
+      "side": 1,
+      "message": "Not sure but this one looks like it is missing some slash or has too many spaces...",
+      "range": {
+        "startLine": 68,
+        "startChar": 63,
+        "endLine": 68,
+        "endChar": 77
+      },
+      "revId": "2b2bfc775614da438fb070c3279427041e5756e8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
