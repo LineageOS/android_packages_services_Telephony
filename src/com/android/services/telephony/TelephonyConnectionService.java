@@ -262,7 +262,7 @@ public class TelephonyConnectionService extends ConnectionService {
         final String numberToDial = number;
 
         final boolean isEmergencyNumber =
-                PhoneUtils.isLocalEmergencyNumber(numberToDial);
+                PhoneUtils.isLocalEmergencyNumber(this, numberToDial);
         final boolean isAirplaneModeOn = Settings.System.getInt(getContentResolver(),
                 Settings.System.AIRPLANE_MODE_ON, 0) != 0;
         if (isEmergencyNumber) {
