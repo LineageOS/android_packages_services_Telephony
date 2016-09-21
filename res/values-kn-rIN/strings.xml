@@ -21,7 +21,7 @@
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"ತುರ್ತು ಡಯಲರ್"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"ಫೋನ್"</string>
     <string name="fdnListLabel" msgid="8630418672279521003">"FDN ಪಟ್ಟಿ"</string>
-    <string name="unknown" msgid="6878797917991465859">"ಅಜ್ಞಾತ"</string>
+    <string name="unknown" msgid="6878797917991465859">"ಅಪರಿಚಿತ"</string>
     <string name="private_num" msgid="6713286113000232309">"ಖಾಸಗಿ ಸಂಖ್ಯೆ"</string>
     <string name="payphone" msgid="4793877574636445118">"ಪೇಫೋನ್"</string>
     <string name="onHold" msgid="9035493194749959955">"ತಡೆಹಿಡಿಯಲಾಗಿದೆ"</string>
