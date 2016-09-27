@@ -2947,6 +2947,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return mPhone.isImsRegistered();
     }
 
+    /*
+     * {@hide}
+     * Returns the IMS Registration Status based on subId
+     */
+    public boolean isImsRegisteredForSubscriber(int subId) {
+        final Phone phone = getPhone(subId);
+
+        if (phone != null) {
+            return phone.isImsRegistered();
+        }
+        return false;
+    }
+
     @Override
     public int getSubIdForPhoneAccount(PhoneAccount phoneAccount) {
         return PhoneUtils.getSubIdForPhoneAccount(phoneAccount);
