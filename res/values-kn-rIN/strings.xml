@@ -161,14 +161,14 @@
     <string name="label_available" msgid="1181658289009300430">"ಲಭ್ಯವಿರುವ ನೆಟ್‌ವರ್ಕ್‌ಗಳು"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"ಹುಡುಕಲಾಗುತ್ತಿದೆ…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"ಯಾವುದೇ ನೆಟ್‌ವರ್ಕ್‌ಗಳು ಕಂಡುಬಂದಿಲ್ಲ."</string>
-    <string name="search_networks" msgid="1601136049300882441">"ನೆಟ್‌ವರ್ಕ್‌ಗಳನ್ನು ಹುಡುಕು"</string>
+    <string name="search_networks" msgid="1601136049300882441">"ನೆಟ್‌ವರ್ಕ್‌ಗಳನ್ನು ಹುಡುಕಿ"</string>
     <string name="network_query_error" msgid="6828516148953325006">"ನೆಟ್‌ವರ್ಕ್‌ಗಳಿಗಾಗಿ ಹುಡುಕುತ್ತಿರುವಾಗ ದೋಷ."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> ನಲ್ಲಿ ನೋಂದಾಯಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"ಈ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕವನ್ನು ನಿಮ್ಮ ಸಿಮ್‌ ಕಾರ್ಡ್‌ ಅನುಮತಿಸುವುದಿಲ್ಲ."</string>
     <string name="connect_later" msgid="2308119155752343975">"ಇದೀಗ ಈ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಪಡಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."</string>
     <string name="registration_done" msgid="495135664535876612">"ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿ ನೋಂದಾಯಿಸಲಾಗಿದೆ."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"ನೆಟ್‌ವರ್ಕ್‌ ಆಪರೇಟರ್‌ ಅನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"ಎಲ್ಲ ಲಭ್ಯವಿರುವ ನೆಟ್‌ವರ್ಕ್‌ಗಳಿಗಾಗಿ ಹುಡುಕು"</string>
+    <string name="sum_search_networks" msgid="2921092249873272715">"ಎಲ್ಲ ಲಭ್ಯವಿರುವ ನೆಟ್‌ವರ್ಕ್‌ಗಳಿಗಾಗಿ ಹುಡುಕಿ"</string>
     <string name="select_automatically" msgid="5628402124471810174">"ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆಯ್ಕೆಮಾಡು"</string>
     <string name="sum_select_automatically" msgid="5614890115123292400">"ಪ್ರಾಶಸ್ತ್ಯ ನೀಡಲಾದ ನೆಟ್‌ವರ್ಕ್‌ ಅನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆಯ್ಕೆಮಾಡು"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ಸ್ವಯಂಚಾಲಿತ ನೋಂದಣಿ…"</string>
@@ -469,7 +469,7 @@
     <string name="onscreenHoldText" msgid="2285258239691145872">"ಹೋಲ್ಡ್‌‌ ಮಾಡು"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ಮುಕ್ತಾಯ"</string>
     <string name="onscreenShowDialpadText" msgid="8561805492659639893">"ಡಯಲ್‌ಪ್ಯಾಡ್‌"</string>
-    <string name="onscreenMuteText" msgid="5011369181754261374">"ಮ್ಯೂಟ್ ಮಾಡು"</string>
+    <string name="onscreenMuteText" msgid="5011369181754261374">"ಮ್ಯೂಟ್ ಮಾಡಿ"</string>
     <string name="onscreenAddCallText" msgid="5140385634712287403">"ಕರೆಯನ್ನು ಸೇರಿಸು"</string>
     <string name="onscreenMergeCallsText" msgid="6640195098064538950">"ಕರೆಗಳನ್ನು ವಿಲೀನಗೊಳಿಸು"</string>
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"ಸ್ವ್ಯಾಪ್‌ ಮಾಡು"</string>
