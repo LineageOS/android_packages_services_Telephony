@@ -106,8 +106,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
     private static final int BAD_EMERGENCY_NUMBER_DIALOG = 0;
 
-    // private static final int USER_ACTIVITY_TIMEOUT_WHEN_NO_PROX_SENSOR = 15000; // millis
-
     EditText mDigits;
     private View mDialButton;
     private View mDelete;
