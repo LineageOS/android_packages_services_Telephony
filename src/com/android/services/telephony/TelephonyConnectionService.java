@@ -90,6 +90,7 @@ public class TelephonyConnectionService extends ConnectionService {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.initLogging(this);
         mExpectedComponentName = new ComponentName(this, this.getClass());
         mEmergencyTonePlayer = new EmergencyTonePlayer(this);
         TelecomAccountRegistry.getInstance(this).setTelephonyConnectionService(this);
