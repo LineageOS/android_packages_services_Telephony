@@ -149,6 +149,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_SET_ALLOWED_CARRIERS_DONE = 44;
     private static final int CMD_GET_ALLOWED_CARRIERS = 45;
     private static final int EVENT_GET_ALLOWED_CARRIERS_DONE = 46;
+    private static final int CMD_HANDLE_USSD_REQUEST = 47;
 
     /** The singleton instance. */
     private static PhoneInterfaceManager sInstance;
@@ -258,6 +259,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             IccAPDUArgument iccArgument;
 
             switch (msg.what) {
+                 case CMD_HANDLE_USSD_REQUEST: {
+                     request = (MainThreadRequest) msg.obj;
+                     final Phone phone = getPhoneFromRequest(request);
+                     Pair<String, ResultReceiver> ussdObject = (Pair) request.argument;
+                     String ussdRequest =  ussdObject.first;
+                     ResultReceiver wrappedCallback = ussdObject.second;
+                     request.result = phone != null ?
+                             phone.handleUssdRequest(ussdRequest, wrappedCallback)
+                             :false;
+                     // Wake up the requesting thread
+                     synchronized (request) {
+                         request.notifyAll();
+                     }
+                     break;
+                }
+
                 case CMD_HANDLE_PIN_MMI: {
                     request = (MainThreadRequest) msg.obj;
                     final Phone phone = getPhoneFromRequest(request);
@@ -1468,6 +1485,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean handlePinMmi(String dialString) {
         return handlePinMmiForSubscriber(getDefaultSubscription(), dialString);
     }
+
+    public void handleUssdRequest(String ussdRequest, ResultReceiver wrappedCallback) {
+      enforceCallPermission();
+      int subId = getDefaultSubscription();
+      if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+          return;
+      }
+      Pair<String, ResultReceiver> ussdObject = new Pair(ussdRequest, wrappedCallback);
+      sendRequest(CMD_HANDLE_USSD_REQUEST, ussdObject, subId);
+    };
+
 
     public boolean handlePinMmiForSubscriber(int subId, String dialString) {
         enforceModifyPermission();
