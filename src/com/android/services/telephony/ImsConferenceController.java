@@ -160,9 +160,9 @@ public class ImsConferenceController {
             mVideoConferenceMaxSupported = context.getResources().getInteger(
                     R.integer.conference_call_max_participants_supported);
         }
-        boolean isVideoConference = !VideoProfile.isAudioOnly(conference.getVideoState());;
-        return mIsConferenceCallLimited && isVideoConference && conference.getConnections().size()
-                >= mVideoConferenceMaxSupported;
+        boolean isVideoConference = !VideoProfile.isAudioOnly(conference.getVideoState());
+        return !(mIsConferenceCallLimited && isVideoConference && conference.getConnections().size()
+                >= mVideoConferenceMaxSupported);
     }
 
     /**
@@ -212,8 +212,17 @@ public class ImsConferenceController {
             if (Log.DEBUG) {
                 Log.d(this, "recalc - %s %s", conference.getState(), conference);
             }
+
+            //clean the single call conferencable if conference call does not allow merge any more
+            //make sure when switch the single call to active,
+            //conference to holding the "merge" button does not show either.
+            if (!allowAddingVideoConfParticipant(conference)) {
+                activeConnections.clear();
+                backgroundConnections.clear();
+            }
+
             if (!conference.isConferenceHost()
-                    || allowAddingVideoConfParticipant(conference)) {
+                    || !allowAddingVideoConfParticipant(conference)) {
                 if (Log.VERBOSE) {
                     Log.v(this, "skipping conference (not hosted on this device): %s", conference);
                     Log.v(this,"the conference call connection size is : %d"
@@ -260,7 +269,7 @@ public class ImsConferenceController {
         for (ImsConference conference : mImsConferences) {
             // If this conference is not being hosted on the current device, we cannot conference it
             // with any other connections.
-            if (!conference.isConferenceHost()) {
+            if (!conference.isConferenceHost() || !allowAddingVideoConfParticipant(conference)) {
                 if (Log.VERBOSE) {
                     Log.v(this, "skipping conference (not hosted on this device): %s",
                             conference);
