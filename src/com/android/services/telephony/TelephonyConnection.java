@@ -719,6 +719,7 @@ abstract class TelephonyConnection extends Connection {
         setVideoState(mOriginalConnection.getVideoState());
         setOriginalConnectionCapabilities(mOriginalConnection.getConnectionCapabilities());
         setWifi(mOriginalConnection.isWifi());
+        setAudioModeIsVoip(mOriginalConnection.getAudioModeIsVoip());
         setVideoProvider(mOriginalConnection.getVideoProvider());
         setAudioQuality(mOriginalConnection.getAudioQuality());
         setTechnologyTypeExtra();
