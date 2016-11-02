@@ -246,7 +246,7 @@
     <string name="enable_disable_emergency_broadcast" msgid="2157014609041245335">"Nødkringkasting"</string>
     <string name="emergency_broadcast_enable" msgid="2645980025414010211">"Nødkringkasting aktivert"</string>
     <string name="emergency_broadcast_disable" msgid="3665199821267569426">"Nødkringkasting deaktivert"</string>
-    <string name="enable_disable_administrative" msgid="6501582322182059412">"Administrativia"</string>
+    <string name="enable_disable_administrative" msgid="6501582322182059412">"Administrativ"</string>
     <string name="administrative_enable" msgid="1750086122962032235">"Administrativia aktivert"</string>
     <string name="administrative_disable" msgid="8433273857248698539">"Administartivia aktivert"</string>
     <string name="enable_disable_maintenance" msgid="1819693083025106678">"Vedlikehold"</string>

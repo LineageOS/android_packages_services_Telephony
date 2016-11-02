@@ -28,7 +28,7 @@
     <string name="mmiStarted" msgid="6347869857061147003">"MMI ಕೋಡ್‌ ಪ್ರಾರಂಭಿಸಲಾಗಿದೆ"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD ಕೋಡ್‌ ಚಾಲನೆಯಲ್ಲಿದೆ…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI ಕೋಡ್‌ ರದ್ದು ಮಾಡಲಾಗಿದೆ"</string>
-    <string name="cancel" msgid="5044513931633602634">"ರದ್ದುಮಾಡು"</string>
+    <string name="cancel" msgid="5044513931633602634">"ರದ್ದುಮಾಡಿ"</string>
     <string name="enter_input" msgid="1810529547726803893">"USSD ಸಂದೇಶದ ಅಕ್ಷರಗಳು <xliff:g id="MIN_LEN">%d</xliff:g> ಮತ್ತು <xliff:g id="MAX_LEN">%d</xliff:g> ನಡುವೆ ಇರಬೇಕು. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"ಕಾನ್ಫರೆನ್ಸ್ ಕರೆಯನ್ನು ನಿರ್ವಹಿಸಿ"</string>
     <string name="ok" msgid="3811371167865772377">"ಸರಿ"</string>
@@ -574,7 +574,7 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"ಹಲವಾರು ಸಕ್ರಿಯ ಕರೆಗಳು. ಹೊಸ ಕರೆ ಮಾಡುವ ಮೊದಲು ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಕರೆಗಳನ್ನು ಅಂತ್ಯಗೊಳಿಸಿ ಅಥವಾ ವಿಲೀನಗೊಳಿಸಿ."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ಧ್ವನಿಮೇಲ್ ಪಿನ್‌ ಬದಲಾಯಿಸಿ"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ಮುಂದುವರಿಸು"</string>
-    <string name="change_pin_cancel_label" msgid="353535488390948596">"ರದ್ದುಮಾಡು"</string>
+    <string name="change_pin_cancel_label" msgid="353535488390948596">"ರದ್ದುಮಾಡಿ"</string>
     <string name="change_pin_ok_label" msgid="6204308560844889926">"ಸರಿ"</string>
     <string name="change_pin_enter_old_pin_header" msgid="419179847657548887">"ನಿಮ್ಮ ಹಳೆಯ ಪಿನ್‌ ಅನ್ನು ದೃಢೀಕರಿಸಿ"</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8579171678763615453">"ಮುಂದುವರಿಸಲು ನಿಮ್ಮ ಧ್ವನಿಮೇಲ್ ಪಿನ್ ಅನ್ನು ನಮೂದಿಸಿ."</string>
