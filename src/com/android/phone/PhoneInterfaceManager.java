@@ -1544,16 +1544,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return handlePinMmiForSubscriber(getDefaultSubscription(), dialString);
     }
 
-    public void handleUssdRequest(String ussdRequest, ResultReceiver wrappedCallback) {
+    public void handleUssdRequest(int subId, String ussdRequest, ResultReceiver wrappedCallback) {
       enforceCallPermission();
-      int subId = getDefaultSubscription();
       if (!SubscriptionManager.isValidSubscriptionId(subId)) {
           return;
       }
       Pair<String, ResultReceiver> ussdObject = new Pair(ussdRequest, wrappedCallback);
       sendRequest(CMD_HANDLE_USSD_REQUEST, ussdObject, subId);
     };
-
 
     public boolean handlePinMmiForSubscriber(int subId, String dialString) {
         enforceModifyPermission();
