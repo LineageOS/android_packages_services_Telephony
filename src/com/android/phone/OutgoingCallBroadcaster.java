@@ -18,7 +18,7 @@ package com.android.phone;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.ActivityManagerNative;
+import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.AppOpsManager;
 import android.app.Dialog;
@@ -429,9 +429,9 @@ public class OutgoingCallBroadcaster extends Activity
         int launchedFromUid;
         String launchedFromPackage;
         try {
-            launchedFromUid = ActivityManagerNative.getDefault().getLaunchedFromUid(
+            launchedFromUid = ActivityManager.getService().getLaunchedFromUid(
                     getActivityToken());
-            launchedFromPackage = ActivityManagerNative.getDefault().getLaunchedFromPackage(
+            launchedFromPackage = ActivityManager.getService().getLaunchedFromPackage(
                     getActivityToken());
         } catch (RemoteException e) {
             launchedFromUid = -1;
