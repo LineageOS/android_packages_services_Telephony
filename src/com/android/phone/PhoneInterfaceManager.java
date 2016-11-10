@@ -3017,22 +3017,41 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 Binder.getCallingUid(), callingPackage) == AppOpsManager.MODE_ALLOWED) {
             return true;
         }
+
         try {
             return canReadPhoneState(callingPackage, message);
         } catch (SecurityException readPhoneStateSecurityException) {
-            try {
-                // Can be read with READ_SMS too.
-                mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_SMS, message);
-                return mAppOps.noteOp(AppOpsManager.OP_READ_SMS,
-                        Binder.getCallingUid(), callingPackage) == AppOpsManager.MODE_ALLOWED;
-            } catch (SecurityException readSmsSecurityException) {
-                // Throw exception with message including both READ_PHONE_STATE and READ_SMS
-                // permissions
-                throw new SecurityException(message + ": Neither user " + Binder.getCallingUid() +
-                        " nor current process has " + android.Manifest.permission.READ_PHONE_STATE +
-                        " or " + android.Manifest.permission.READ_SMS + ".");
-            }
         }
+        // Can be read with READ_SMS too.
+        try {
+            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_SMS, message);
+            int opCode = mAppOps.permissionToOpCode(android.Manifest.permission.READ_SMS);
+            if (opCode != AppOpsManager.OP_NONE) {
+                return mAppOps.noteOp(opCode, Binder.getCallingUid(), callingPackage)
+                        == AppOpsManager.MODE_ALLOWED;
+            } else {
+                return true;
+            }
+        } catch (SecurityException readSmsSecurityException) {
+        }
+        // Can be read with READ_PHONE_NUMBER too.
+        try {
+            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PHONE_NUMBER,
+                    message);
+            int opCode = mAppOps.permissionToOpCode(android.Manifest.permission.READ_PHONE_NUMBER);
+            if (opCode != AppOpsManager.OP_NONE) {
+                return mAppOps.noteOp(opCode, Binder.getCallingUid(), callingPackage)
+                        == AppOpsManager.MODE_ALLOWED;
+            } else {
+                return true;
+            }
+        } catch (SecurityException readPhoneNumberSecurityException) {
+        }
+
+        throw new SecurityException(message + ": Neither user " + Binder.getCallingUid() +
+                " nor current process has" + android.Manifest.permission.READ_PHONE_STATE +
+                ", " + android.Manifest.permission.READ_SMS + ", or " +
+                android.Manifest.permission.READ_PHONE_NUMBER);
     }
 
     @Override
