@@ -44,6 +44,7 @@ import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
+import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.phone.PhoneGlobals;
@@ -189,6 +190,12 @@ final class TelecomAccountRegistry {
 
             if (mIsVideoCapable) {
                 capabilities |= PhoneAccount.CAPABILITY_VIDEO_CALLING;
+            }
+
+            boolean isVideoEnabledByPlatform =
+                    ImsManager.isVtEnabledByPlatform(mPhone.getContext());
+            if (isVideoEnabledByPlatform) {
+                capabilities |= PhoneAccount.CAPABILITY_SUPPORTS_VIDEO_CALLING;
             }
 
             mIsVideoPresenceSupported = isCarrierVideoPresenceSupported();
