@@ -2507,7 +2507,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void setDataEnabled(int subId, boolean enable) {
-        enforceModifyPermission();
+        enforceModifyPermissionOrCarrierPrivilege(subId);
         int phoneId = mSubscriptionController.getPhoneId(subId);
         if (DBG) log("getDataEnabled: subId=" + subId + " phoneId=" + phoneId);
         Phone phone = PhoneFactory.getPhone(phoneId);
@@ -2522,9 +2522,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Get whether mobile data is enabled.
      *
-     * Note that this used to be available from ConnectivityService, gated by
-     * ACCESS_NETWORK_STATE permission, so this will accept either that or
-     * our MODIFY_PHONE_STATE.
+     * Accepts either ACCESS_NETWORK_STATE, MODIFY_PHONE_STATE or carrier privileges.
      *
      * @return {@code true} if data is enabled else {@code false}
      */
@@ -2534,8 +2532,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
                     null);
         } catch (Exception e) {
-            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.MODIFY_PHONE_STATE,
-                    null);
+            enforceModifyPermissionOrCarrierPrivilege(subId);
         }
         int phoneId = mSubscriptionController.getPhoneId(subId);
         if (DBG) log("getDataEnabled: subId=" + subId + " phoneId=" + phoneId);
