@@ -506,7 +506,7 @@
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Praleisti aktyvinimą?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Jei praleisite aktyvinimą, negalėsite skambinti ar prisijungti prie mobilių duomenų tinklų (nors ir galite prisijungti prie „Wi-Fi“ tinklų). Iki tol, kol suaktyvinsite telefoną, aktyvinkite jį kaskart jį įjungdami."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Praleisti"</string>
-    <string name="ota_activate" msgid="1368528132525626264">"Aktyvinti"</string>
+    <string name="ota_activate" msgid="1368528132525626264">"Suaktyvinti"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"Telefonas suaktyvintas."</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"Aktyvinimo problema"</string>
     <string name="ota_listen" msgid="162923839877584937">"Vadovaukitės girdimomis instrukcijomis, kol išgirsite, kad aktyvinimas baigtas."</string>
