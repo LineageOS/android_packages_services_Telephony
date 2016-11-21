@@ -48,8 +48,8 @@
     <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"Accountregistratie mislukt: gebruikersnaam of wachtwoord onjuist."</string>
     <string name="registration_status_server_unreachable" msgid="7710275557045148634">"Accountregistratie mislukt: controleer de servernaam."</string>
     <string name="third_party_account_summary" msgid="9041060473615403041">"Dit account wordt momenteel gebruikt door de app <xliff:g id="ACCOUNT_OWNER">%s</xliff:g>."</string>
-    <string name="sip_edit_title" msgid="1967247832635750410">"SIP-accountdetails"</string>
-    <string name="sip_edit_new_title" msgid="266414118302574305">"SIP-accountdetails"</string>
+    <string name="sip_edit_title" msgid="1967247832635750410">"SIP-gegevens"</string>
+    <string name="sip_edit_new_title" msgid="266414118302574305">"SIP-gegevens"</string>
     <string name="domain_address_title" msgid="1968479941328225423">"Server"</string>
     <string name="username_title" msgid="6770064611005663470">"Gebruikersnaam"</string>
     <string name="password_title" msgid="5289013731515564295">"Wachtwoord"</string>
@@ -61,7 +61,9 @@
     <string name="advanced_settings" msgid="6622996380747040711">"Optionele instellingen"</string>
     <string name="auth_username_title" msgid="8262491689004708265">"Gebruikersnaam voor verificatie"</string>
     <string name="auth_username_summary" msgid="941160241371436473">"Gebruikersnaam die voor de verificatie wordt gebruikt"</string>
-    <string name="default_preference_summary" msgid="1979249643719483249">"&lt;Niet ingesteld&gt;"</string>
+    <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;Niet ingesteld&gt;"</string>
+    <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;Niet ingesteld&gt;"</string>
+    <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;Niet ingesteld&gt;"</string>
     <string name="display_name_summary" msgid="7155076491675565407">"&lt;Gelijk aan gebruikersnaam&gt;"</string>
     <string name="optional_summary" msgid="2363105560396317624">"&lt;Optioneel&gt;"</string>
     <string name="advanced_settings_show" msgid="7838761602853998622">"▷ Tikken om alles weer te geven"</string>
