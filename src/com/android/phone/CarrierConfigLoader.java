@@ -20,7 +20,7 @@ import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE;
 
 import android.annotation.NonNull;
-import android.app.ActivityManagerNative;
+import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -390,8 +390,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         Intent intent = new Intent(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
         intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT);
         SubscriptionManager.putPhoneIdAndSubIdExtra(intent, phoneId);
-        ActivityManagerNative.broadcastStickyIntent(intent, READ_PHONE_STATE,
-                UserHandle.USER_ALL);
+        ActivityManager.broadcastStickyIntent(intent, UserHandle.USER_ALL);
     }
 
     /** Binds to the default or carrier config app. */
