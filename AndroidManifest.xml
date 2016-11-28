@@ -469,6 +469,20 @@
             </intent-filter>
         </receiver>
 
+        <!-- Activation service that trigger OTASP sim provisioning -->
+        <service android:name=".otasp.OtaspActivationService" android:launchMode="singleInstance"
+                 androidprv:systemUserOnly="true">
+            <intent-filter>
+                <action android:name="android.service.simActivation.SimActivationService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".otasp.OtaspSimStateReceiver" android:exported ="false">
+            <intent-filter>
+                <action android:name="android.telephony.action.CARRIER_CONFIG_CHANGED" />
+            </intent-filter>
+        </receiver>
+
         <!-- "Accessibility" settings UI. Referenced by Dialer application. -->
         <activity android:name="com.android.phone.settings.AccessibilitySettingsActivity"
                 android:label="@string/accessibility_settings_activity_title"
