@@ -79,8 +79,8 @@
     <string name="networks" msgid="8873030692174541976">"ජාල ක්‍රියාකරුවන්"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"හදිසි විකාශන"</string>
     <string name="call_settings" msgid="6112441768261754562">"ඇමතුම් සැකසුම්"</string>
-    <string name="additional_gsm_call_settings" msgid="1391795981938800617">"අමතර සැකසීම්"</string>
-    <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"අමතර සැකසීම් (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="additional_gsm_call_settings" msgid="1391795981938800617">"අතිරේක සැකසීම්"</string>
+    <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"අතිරේක සැකසීම් (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="4076647190996778012">"අමතර GSM පමණක් ඇමතුම් සැකසුම්"</string>
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"අමතර CDMA ඇමතුම් සැකසුම්"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"අමතර CDMA පමණක් ඇමතුම් සැකසුම්"</string>
