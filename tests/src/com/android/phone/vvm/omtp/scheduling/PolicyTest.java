@@ -22,17 +22,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(AndroidJUnit4.class)
 public class PolicyTest extends BaseTaskTestBase {
 
     private static int sExecuteCounter;
 
-    @Before
     public void setUpPolicyTest() {
         sExecuteCounter = 0;
     }
 
-    @Test
     public void testPostponePolicy() {
         Task task = submitTask(BaseTask.createIntent(mTestContext, PostponeTask.class, 0));
         mService.runNextTask();
@@ -47,7 +44,6 @@ public class PolicyTest extends BaseTaskTestBase {
         assertTrue(sExecuteCounter == 1);
     }
 
-    @Test
     public void testRetryPolicy() {
         Task task = submitTask(BaseTask.createIntent(mTestContext, FailingRetryTask.class, 0));
         mService.runNextTask();
@@ -75,7 +71,6 @@ public class PolicyTest extends BaseTaskTestBase {
         assertTrue(sExecuteCounter == 3);
     }
 
-    @Test
     public void testMinimalIntervalPolicy() {
         MinimalIntervalPolicyTask task1 = (MinimalIntervalPolicyTask) submitTask(
                 BaseTask.createIntent(mTestContext, MinimalIntervalPolicyTask.class, 0));

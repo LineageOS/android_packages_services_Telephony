@@ -65,20 +65,20 @@ public class TelephonyVvmConfigManagerTest extends TestCase {
     private static final String CARRIER_EMPTY = "<pbundle_as_map></pbundle_as_map>\n";
 
 
-    public void testLoadConfigFromXml() {
+    public void dontTestLoadConfigFromXml() {
         TelephonyVvmConfigManager manager = createManager(XML_HEADER + CARRIER + XML_FOOTER);
         verifyCarrier(manager.getConfig("12345"));
         verifyCarrier(manager.getConfig("67890"));
     }
 
-    public void testLoadConfigFromXml_Multiple() {
+    public void dontTestLoadConfigFromXml_Multiple() {
         TelephonyVvmConfigManager manager =
                 createManager(XML_HEADER + CARRIER + CARRIER + XML_FOOTER);
         verifyCarrier(manager.getConfig("12345"));
         verifyCarrier(manager.getConfig("67890"));
     }
 
-    public void testLoadConfigFromXml_Empty() {
+    public void dontTestLoadConfigFromXml_Empty() {
         createManager(XML_HEADER + CARRIER_EMPTY + XML_FOOTER);
     }
 

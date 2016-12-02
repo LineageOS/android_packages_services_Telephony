@@ -42,7 +42,6 @@ import org.junit.runner.RunWith;
 
 import java.util.concurrent.TimeoutException;
 
-@RunWith(AndroidJUnit4.class)
 public class TaskSchedulerServiceTestBase {
 
     private static final String EXTRA_ID = "test_extra_id";
@@ -73,7 +72,6 @@ public class TaskSchedulerServiceTestBase {
         return new TaskId(intent.getIntExtra(EXTRA_ID, 0), intent.getIntExtra(EXTRA_SUB_ID, 0));
     }
 
-    @Before
     public void setUp() throws TimeoutException {
         Assert.setIsMainThreadForTesting(true);
         mTargetContext = InstrumentationRegistry.getTargetContext();
@@ -91,7 +89,6 @@ public class TaskSchedulerServiceTestBase {
         mService.setContextForTest(mTestContext);
     }
 
-    @After
     public void tearDown() {
         Assert.setIsMainThreadForTesting(null);
         mService.setTaskAutoRunDisabledForTest(false);

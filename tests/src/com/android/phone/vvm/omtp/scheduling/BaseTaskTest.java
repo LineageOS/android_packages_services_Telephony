@@ -28,11 +28,9 @@ import com.android.phone.vvm.omtp.scheduling.Task.TaskId;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(AndroidJUnit4.class)
 public class BaseTaskTest extends BaseTaskTestBase {
 
 
-    @Test
     public void testBaseTask() {
         DummyBaseTask task = (DummyBaseTask) submitTask(
                 BaseTask.createIntent(mTestContext, DummyBaseTask.class, 123));
@@ -46,7 +44,6 @@ public class BaseTaskTest extends BaseTaskTestBase {
         verify(task.policy).onCompleted();
     }
 
-    @Test
     public void testFail() {
         FailingBaseTask task = (FailingBaseTask) submitTask(
                 BaseTask.createIntent(mTestContext, FailingBaseTask.class, 0));
@@ -54,7 +51,6 @@ public class BaseTaskTest extends BaseTaskTestBase {
         verify(task.policy).onFail();
     }
 
-    @Test
     public void testDuplicated() {
         DummyBaseTask task1 = (DummyBaseTask) submitTask(
                 BaseTask.createIntent(mTestContext, DummyBaseTask.class, 123));
@@ -68,8 +64,7 @@ public class BaseTaskTest extends BaseTaskTestBase {
         assertTrue(task1.hasRun);
         assertTrue(!task2.hasRun);
     }
-
-    @Test
+    
     public void testDuplicated_DifferentSubId() {
         DummyBaseTask task1 = (DummyBaseTask) submitTask(
                 BaseTask.createIntent(mTestContext, DummyBaseTask.class, 123));
@@ -86,7 +81,6 @@ public class BaseTaskTest extends BaseTaskTestBase {
         assertTrue(task2.hasRun);
     }
 
-    @Test
     public void testReadyTime() {
         BaseTask task = spy(new DummyBaseTask());
         assertTrue(task.getReadyInMilliSeconds() == 0);
