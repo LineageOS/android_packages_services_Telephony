@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD कोड चल्दै..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI कोड रद्द गरियो।"</string>
     <string name="cancel" msgid="5044513931633602634">"रद्द गर्नुहोस्"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD सन्देश  <xliff:g id="MIN_LEN">%d</xliff:g> र <xliff:g id="MAX_LEN">%d</xliff:g> अक्षरहरूका बिच हुनै पर्दछ। कृपया पुनःप्रयास गर्नुहोस्।"</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD सन्देश  <xliff:g id="MIN_LEN">%d</xliff:g> र <xliff:g id="MAX_LEN">%d</xliff:g> अक्षरहरूका बीच हुनै पर्दछ। कृपया पुनःप्रयास गर्नुहोस्।"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"सम्मेलन कल प्रबन्ध गर्नुहोस्"</string>
     <string name="ok" msgid="3811371167865772377">"ठीक छ"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"स्पिकर"</string>
@@ -330,7 +330,7 @@
     <item msgid="1205664026446156265">"स्वतः"</item>
   </string-array>
     <string name="cdma_subscription_title" msgid="1162564010076763284">"CDMA सदस्यता"</string>
-    <string name="cdma_subscription_summary" msgid="2530890766115781140">"RUIM/SIM र NV का बिच परिवर्तन गर्नुहोस्"</string>
+    <string name="cdma_subscription_summary" msgid="2530890766115781140">"RUIM/SIM र NV का बीच परिवर्तन गर्नुहोस्"</string>
     <string name="cdma_subscription_dialogtitle" msgid="2699527950523333110">"सदस्यता"</string>
   <string-array name="cdma_subscription_choices">
     <item msgid="2258014151300708431">"RUIM/SIM"</item>
