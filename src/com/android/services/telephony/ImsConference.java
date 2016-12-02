@@ -1000,4 +1000,47 @@ public class ImsConference extends Conference {
         }
         return PhoneGlobals.getInstance().getCarrierConfigForSubId(phone.getSubId());
     }
+
+    /**
+     * @return {@code true} if the carrier associated with the conference requires that the maximum
+     *      size of the conference is enforced, {@code false} otherwise.
+     */
+    public boolean isMaximumConferenceSizeEnforced() {
+        PersistableBundle b = getCarrierConfig();
+        // Return false if the CarrierConfig is unavailable
+        return b != null && b.getBoolean(
+                CarrierConfigManager.KEY_IS_IMS_CONFERENCE_SIZE_ENFORCED_BOOL);
+    }
+
+    /**
+     * @return The maximum size of a conference call where
+     * {@link #isMaximumConferenceSizeEnforced()} is true.
+     */
+    public int getMaximumConferenceSize() {
+        PersistableBundle b = getCarrierConfig();
+
+        // If there is no carrier config its really a problem, but we'll still define a sane limit
+        // of 5 so that we can still make a conference.
+        if (b == null) {
+            Log.w(this, "getMaximumConferenceSize - failed to get conference size");
+            return 5;
+        }
+        return b.getInt(CarrierConfigManager.KEY_IMS_CONFERENCE_SIZE_LIMIT_INT);
+    }
+
+    /**
+     * @return The number of participants in the conference.
+     */
+    public int getNumberOfParticipants() {
+        return mConferenceParticipantConnections.size();
+    }
+
+    /**
+     * @return {@code True} if the carrier enforces a maximum conference size, and the number of
+     *      participants in the conference has reached the limit, {@code false} otherwise.
+     */
+    public boolean isFullConference() {
+        return isMaximumConferenceSizeEnforced()
+                && getNumberOfParticipants() >= getMaximumConferenceSize();
+    }
 }
