@@ -72,7 +72,17 @@ public class TelephonyConnectionService extends ConnectionService {
             Pattern.compile("\\*228[0-9]{0,2}");
 
     private final TelephonyConferenceController mTelephonyConferenceController =
-            new TelephonyConferenceController(this);
+            new TelephonyConferenceController(new TelephonyConnectionServiceProxy() {
+                @Override
+                public Collection<Connection> getAllConnections() {
+                    return TelephonyConnectionService.this.getAllConnections();
+                }
+
+                @Override
+                public void addConference(TelephonyConference mTelephonyConference) {
+                    TelephonyConnectionService.this.addConference(mTelephonyConference);
+                }
+            });
     private final CdmaConferenceController mCdmaConferenceController =
             new CdmaConferenceController(this);
     private final ImsConferenceController mImsConferenceController =
