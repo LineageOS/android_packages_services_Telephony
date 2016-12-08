@@ -241,8 +241,10 @@ public class ImsConferenceController {
                 case Connection.STATE_ACTIVE:
                     //fall through
                 case Connection.STATE_HOLDING:
-                    conferenceParticipantsSet.addAll(conference.getConnections());
-                    conferenceableSet.add(conference);
+                    if (!conference.isFullConference()) {
+                        conferenceParticipantsSet.addAll(conference.getConnections());
+                        conferenceableSet.add(conference);
+                    }
                     continue;
                 default:
                     break;
@@ -269,7 +271,14 @@ public class ImsConferenceController {
                 conferenceables.addAll(conferenceParticipantsSet);
 
                 ((Connection) c).setConferenceables(conferenceables);
-            } else if (c instanceof Conference) {
+            } else if (c instanceof ImsConference) {
+                ImsConference imsConference = (ImsConference) c;
+
+                // If the conference is full, don't allow anything to be conferenced with it.
+                if (imsConference.isFullConference()) {
+                    imsConference.setConferenceableConnections(Collections.<Connection>emptyList());
+                }
+
                 // Remove all conferences from the set, since we can not conference a conference
                 // to another conference.
                 List<Connection> connections = conferenceableSet
@@ -278,7 +287,7 @@ public class ImsConferenceController {
                         .map(conferenceable -> (Connection) conferenceable)
                         .collect(Collectors.toList());
                 // Conference equivalent to setConferenceables that only accepts Connections
-                ((Conference) c).setConferenceableConnections(connections);
+                imsConference.setConferenceableConnections(connections);
             }
         }
     }
