@@ -52,6 +52,24 @@
       "revId": "3ed711c30f4caed67966305be431a732e8f89509",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_84f9d981",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 444
+      },
+      "writtenOn": "2016-12-09T01:10:08Z",
+      "side": 1,
+      "message": "If I do that, I get a crash.\n\njava.lang.NoClassDefFoundError: Failed resolution of: Lorg/cyanogenmod/internal/util/PackageManagerUtils",
+      "parentUuid": "5f681702_44006168",
+      "revId": "3ed711c30f4caed67966305be431a732e8f89509",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
