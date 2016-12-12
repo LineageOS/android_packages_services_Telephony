@@ -207,6 +207,9 @@
     <!-- Flag indicating whether to allow visual voicemail if available on the device.[DO NOT TRANSLATE] -->
     <bool name="allow_visual_voicemail">true</bool>
 
+    <!-- Flag to enable VVM3 visual voicemail. VVM3 is used by Verizon Wireless. -->
+    <bool name="vvm3_enabled">false</bool>
+
     <!-- Component for custom voicemail notification handling. [DO NOT TRANSLATE] -->
     <string name="config_customVoicemailComponent">@null</string>
 
@@ -245,6 +248,8 @@
     <bool name="config_enable_video_conference_call_limit">false</bool>
     <!-- To  show VMNotification always until user reads it-->
     <bool name="config_show_vm_notification_always" translatable="false">false</bool>
+    <!-- Disable filter out conference host-->
+    <bool name="disable_filter_out_conference_host">false</bool>
 
     <!-- Config to set Speed Dial to make an Emergency Call
          This needs to be re designed as the same config is
