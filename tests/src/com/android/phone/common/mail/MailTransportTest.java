@@ -23,7 +23,6 @@ import static org.mockito.Mockito.when;
 import android.net.Network;
 import android.test.AndroidTestCase;
 
-import com.android.phone.MockitoHelper;
 import com.android.phone.common.mail.MailTransport.SocketCreator;
 import com.android.phone.common.mail.store.ImapStore;
 import com.android.phone.vvm.omtp.imap.ImapHelper;
@@ -55,19 +54,14 @@ public class MailTransportTest extends AndroidTestCase {
     private static final InetAddress VALID_INET_ADDRESS = createInetAddress(HOST_ADDRESS);
     private static final InetAddress INVALID_INET_ADDRESS = createInetAddress(INVALID_HOST_ADDRESS);
 
-    // ClassLoader need to be replaced for mockito to work.
-    private MockitoHelper mMokitoHelper = new MockitoHelper();
-
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        mMokitoHelper.setUp(getContext(), getClass());
         MockitoAnnotations.initMocks(this);
     }
 
     @Override
     public void tearDown() throws Exception {
-        mMokitoHelper.tearDown();
         super.tearDown();
     }
 
