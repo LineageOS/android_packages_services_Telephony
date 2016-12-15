@@ -11,7 +11,7 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License
+ * limitations under the License.
  */
 
 package com.android.services.telephony;
@@ -44,24 +44,24 @@ import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.when;
 
 /**
- * Tests the EmergencyCallStateListener, which listens to one Phone and waits until its service
+ * Tests the RadioOnStateListener, which listens to one Phone and waits until its service
  * state changes to accepting emergency calls or in service. If it can not find a tower to camp onto
  * for emergency calls, then it will fail after a timeout period.
  */
 @RunWith(AndroidJUnit4.class)
-public class EmergencyCallStateListenerTest extends TelephonyTestBase {
+public class RadioOnStateListenerTest extends TelephonyTestBase {
 
     private static final long TIMEOUT_MS = 100;
 
     @Mock Phone mMockPhone;
     @Mock ServiceStateTracker mMockServiceStateTracker;
-    @Mock EmergencyCallStateListener.Callback mCallback;
-    EmergencyCallStateListener mListener;
+    @Mock RadioOnStateListener.Callback mCallback;
+    RadioOnStateListener mListener;
 
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        mListener = new EmergencyCallStateListener();
+        mListener = new RadioOnStateListener();
     }
 
     @After
@@ -82,7 +82,7 @@ public class EmergencyCallStateListenerTest extends TelephonyTestBase {
 
         verify(mMockPhone).unregisterForServiceStateChanged(any(Handler.class));
         verify(mMockPhone).registerForServiceStateChanged(any(Handler.class),
-                eq(EmergencyCallStateListener.MSG_SERVICE_STATE_CHANGED), isNull());
+                eq(RadioOnStateListener.MSG_SERVICE_STATE_CHANGED), isNull());
     }
 
     /**
@@ -105,7 +105,7 @@ public class EmergencyCallStateListenerTest extends TelephonyTestBase {
         mListener.waitForRadioOn(mMockPhone, mCallback);
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
 
-        mListener.getHandler().obtainMessage(EmergencyCallStateListener.MSG_SERVICE_STATE_CHANGED,
+        mListener.getHandler().obtainMessage(RadioOnStateListener.MSG_SERVICE_STATE_CHANGED,
                 new AsyncResult(null, state, null)).sendToTarget();
 
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
@@ -134,7 +134,7 @@ public class EmergencyCallStateListenerTest extends TelephonyTestBase {
         mListener.waitForRadioOn(mMockPhone, mCallback);
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
 
-        mListener.getHandler().obtainMessage(EmergencyCallStateListener.MSG_SERVICE_STATE_CHANGED,
+        mListener.getHandler().obtainMessage(RadioOnStateListener.MSG_SERVICE_STATE_CHANGED,
                 new AsyncResult(null, state, null)).sendToTarget();
 
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
@@ -166,7 +166,7 @@ public class EmergencyCallStateListenerTest extends TelephonyTestBase {
 
         // Still expect an answer because we will be sending the onComplete message as soon as the
         // radio is confirmed to be on, whether or not it is out of service or not.
-        mListener.getHandler().obtainMessage(EmergencyCallStateListener.MSG_SERVICE_STATE_CHANGED,
+        mListener.getHandler().obtainMessage(RadioOnStateListener.MSG_SERVICE_STATE_CHANGED,
                 new AsyncResult(null, state, null)).sendToTarget();
 
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
