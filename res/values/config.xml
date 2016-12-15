@@ -225,4 +225,7 @@
 
     <!-- The package name for the platform carrier config app, bundled with system image. -->
     <string name="platform_carrier_config_package" translatable="false">com.android.carrierconfig</string>
+
+    <!-- Whether the cellular radio is allowed to be power down when the Bluetooth can provide the data/call capabilities -->
+    <bool name="config_allowRadioPowerDownOnBluetooth">false</bool>
 </resources>
