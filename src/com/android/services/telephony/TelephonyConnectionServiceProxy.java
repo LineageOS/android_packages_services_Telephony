@@ -17,6 +17,7 @@
 package com.android.services.telephony;
 
 import android.telecom.Connection;
+import android.telecom.PhoneAccountHandle;
 
 import java.util.Collection;
 
@@ -27,4 +28,9 @@ import java.util.Collection;
 public interface TelephonyConnectionServiceProxy {
     Collection<Connection> getAllConnections();
     void addConference(TelephonyConference mTelephonyConference);
+    void addConference(ImsConference mImsConference);
+    void removeConnection(Connection connection);
+    void addExistingConnection(PhoneAccountHandle phoneAccountHandle,
+                               Connection connection);
+    void addConnectionToConferenceController(TelephonyConnection connection);
 }

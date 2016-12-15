@@ -215,7 +215,7 @@ public class ImsConference extends Conference {
     /**
      * The telephony connection service; used to add new participant connections to Telecom.
      */
-    private TelephonyConnectionService mTelephonyConnectionService;
+    private TelephonyConnectionServiceProxy mTelephonyConnectionService;
 
     /**
      * The connection to the conference server which is hosting the conference.
@@ -231,6 +231,8 @@ public class ImsConference extends Conference {
      * The address of the conference host.
      */
     private Uri[] mConferenceHostAddress;
+
+    private TelecomAccountRegistry mTelecomAccountRegistry;
 
     /**
      * The known conference participant connections.  The HashMap is keyed by a Pair containing
@@ -267,10 +269,13 @@ public class ImsConference extends Conference {
      * @param conferenceHost The telephony connection hosting the conference.
      * @param phoneAccountHandle The phone account handle associated with the conference.
      */
-    public ImsConference(TelephonyConnectionService telephonyConnectionService,
+    public ImsConference(TelecomAccountRegistry telecomAccountRegistry,
+                         TelephonyConnectionServiceProxy telephonyConnectionService,
             TelephonyConnection conferenceHost, PhoneAccountHandle phoneAccountHandle) {
 
         super(phoneAccountHandle);
+
+        mTelecomAccountRegistry = telecomAccountRegistry;
 
         // Specify the connection time of the conference to be the connection time of the original
         // connection.
@@ -589,8 +594,7 @@ public class ImsConference extends Conference {
             Phone imsPhone = mConferenceHost.getPhone();
             mConferenceHostPhoneAccountHandle =
                     PhoneUtils.makePstnPhoneAccountHandle(imsPhone.getDefaultPhone());
-            Uri hostAddress = TelecomAccountRegistry.getInstance(mTelephonyConnectionService)
-                    .getAddress(mConferenceHostPhoneAccountHandle);
+            Uri hostAddress = mTelecomAccountRegistry.getAddress(mConferenceHostPhoneAccountHandle);
 
             ArrayList<Uri> hostAddresses = new ArrayList<>();
 
