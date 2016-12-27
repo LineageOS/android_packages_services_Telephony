@@ -144,6 +144,7 @@
     <uses-permission android:name="com.android.voicemail.permission.ADD_VOICEMAIL" />
     <uses-permission android:name="com.android.voicemail.permission.WRITE_VOICEMAIL" />
     <uses-permission android:name="com.android.voicemail.permission.READ_VOICEMAIL" />
+    <uses-permission android:name="android.permission.BIND_VISUAL_VOICEMAIL_SERVICE"/>
     <uses-permission android:name="android.permission.LOCAL_MAC_ADDRESS" />
     <uses-permission android:name="android.permission.CHANGE_COMPONENT_ENABLED_STATE" />
     <uses-permission android:name="android.permission.CHANGE_DEVICE_IDLE_TEMP_WHITELIST" />
@@ -623,7 +624,9 @@
                 <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER" />
             </intent-filter>
         </provider>
-        <receiver android:name="com.android.phone.vvm.omtp.sms.OmtpMessageReceiver"
+
+        <receiver
+          android:name="com.android.phone.vvm.VvmSmsReceiver"
             android:exported="false"
             androidprv:systemUserOnly="true">
             <intent-filter>
@@ -683,13 +686,20 @@
             </intent-filter>
         </receiver>
 
-        <service
-            android:name="com.android.phone.vvm.omtp.sms.OmtpProvisioningService"
-            android:exported="false" />
 
         <service
           android:name="com.android.phone.vvm.omtp.scheduling.TaskSchedulerService"
           android:exported="false" />
+
+        <receiver
+          android:name="com.android.phone.vvm.VvmSimStateTracker"
+          android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.telephony.action.CARRIER_CONFIG_CHANGED"/>
+                <action android:name="android.intent.action.SIM_STATE_CHANGED"/>
+            </intent-filter>
+        </receiver>
 
         <receiver android:name="com.android.phone.vvm.omtp.VvmPackageInstallReceiver"
             androidprv:systemUserOnly="true">
@@ -700,10 +710,15 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".settings.VoicemailChangePinActivity"
-          android:exported="false"
-          android:theme="@style/DialerSettingsLight"
-          android:windowSoftInputMode="stateVisible|adjustResize">
-          </activity>
+        <activity
+            android:name="com.android.phone.settings.VoicemailChangePinActivity"
+            android:exported="false"
+            android:theme="@style/DialerSettingsLight"
+            android:windowSoftInputMode="stateVisible|adjustResize">
+        </activity>
+
+        <service
+            android:name="com.android.phone.vvm.RemoteVvmTaskManager"
+            android:exported="false"/>
     </application>
 </manifest>
