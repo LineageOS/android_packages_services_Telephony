@@ -15,7 +15,6 @@
  */
 package com.android.phone.vvm.omtp.sms;
 
-import android.content.BroadcastReceiver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
@@ -25,6 +24,8 @@ import android.os.UserManager;
 import android.provider.VoicemailContract;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.Voicemail;
+import android.telephony.VisualVoicemailSms;
+
 import com.android.phone.settings.VisualVoicemailSettingsUtil;
 import com.android.phone.vvm.omtp.ActivationTask;
 import com.android.phone.vvm.omtp.OmtpConstants;
@@ -40,46 +41,35 @@ import com.android.phone.vvm.omtp.utils.PhoneAccountHandleConverter;
 /**
  * Receive SMS messages and send for processing by the OMTP visual voicemail source.
  */
-public class OmtpMessageReceiver extends BroadcastReceiver {
+public class OmtpMessageReceiver {
 
     private static final String TAG = "OmtpMessageReceiver";
 
-    private Context mContext;
+    public static void onReceive(Context context, VisualVoicemailSms sms) {
 
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        mContext = context;
-        int subId = intent.getExtras().getInt(VoicemailContract.EXTRA_VOICEMAIL_SMS_SUBID);
-        PhoneAccountHandle phone = PhoneAccountHandleConverter.fromSubId(subId);
-
-        if (phone == null) {
-            // This should never happen
-            VvmLog.i(TAG, "Received message for null phone account on subId " + subId);
-            return;
-        }
-
+        PhoneAccountHandle phone = sms.getPhoneAccountHandle();
+        int subId = PhoneAccountHandleConverter.toSubId(phone);
         if (!UserManager.get(context).isUserUnlocked()) {
             VvmLog.i(TAG, "Received message on locked device");
             // LegacyModeSmsHandler can handle new message notifications without storage access
-            LegacyModeSmsHandler.handle(context, intent, phone);
+            LegacyModeSmsHandler.handle(context, sms);
             // A full sync will happen after the device is unlocked, so nothing else need to be
             // done.
             return;
         }
 
-        OmtpVvmCarrierConfigHelper helper = new OmtpVvmCarrierConfigHelper(mContext, subId);
-        if (!VisualVoicemailSettingsUtil.isEnabled(mContext, phone)) {
+        OmtpVvmCarrierConfigHelper helper = new OmtpVvmCarrierConfigHelper(context, subId);
+        if (!VisualVoicemailSettingsUtil.isEnabled(context, phone)) {
             if (helper.isLegacyModeEnabled()) {
-                LegacyModeSmsHandler.handle(context, intent, phone);
+                LegacyModeSmsHandler.handle(context, sms);
             } else {
                 VvmLog.i(TAG, "Received vvm message for disabled vvm source.");
             }
             return;
         }
 
-        String eventType = intent.getExtras()
-                .getString(VoicemailContract.EXTRA_VOICEMAIL_SMS_PREFIX);
-        Bundle data = intent.getExtras().getBundle(VoicemailContract.EXTRA_VOICEMAIL_SMS_FIELDS);
+        String eventType = sms.getPrefix();
+        Bundle data = sms.getFields();
 
         if (eventType == null || data == null) {
             VvmLog.e(TAG, "Unparsable VVM SMS received, ignoring");
@@ -91,7 +81,7 @@ public class OmtpMessageReceiver extends BroadcastReceiver {
 
             VvmLog.v(TAG, "Received SYNC sms for " + subId +
                     " with event " + message.getSyncTriggerEvent());
-            processSync(phone, message);
+            processSync(context, phone, message);
         } else if (eventType.equals(OmtpConstants.STATUS_SMS_PREFIX)) {
             VvmLog.v(TAG, "Received Status sms for " + subId);
             // If the STATUS SMS is initiated by ActivationTask the TaskSchedulerService will reject
@@ -122,7 +112,8 @@ public class OmtpMessageReceiver extends BroadcastReceiver {
      *
      * @param message The sync message to extract data from.
      */
-    private void processSync(PhoneAccountHandle phone, SyncMessage message) {
+    private static void processSync(Context context, PhoneAccountHandle phone,
+            SyncMessage message) {
         Intent serviceIntent = null;
         switch (message.getSyncTriggerEvent()) {
             case OmtpConstants.NEW_MESSAGE:
@@ -137,18 +128,18 @@ public class OmtpMessageReceiver extends BroadcastReceiver {
                         .setPhoneAccount(phone)
                         .setSourceData(message.getId())
                         .setDuration(message.getLength())
-                        .setSourcePackage(mContext.getPackageName());
+                        .setSourcePackage(context.getPackageName());
                 Voicemail voicemail = builder.build();
 
-                VoicemailsQueryHelper queryHelper = new VoicemailsQueryHelper(mContext);
+                VoicemailsQueryHelper queryHelper = new VoicemailsQueryHelper(context);
                 if (queryHelper.isVoicemailUnique(voicemail)) {
-                    Uri uri = VoicemailContract.Voicemails.insert(mContext, voicemail);
+                    Uri uri = VoicemailContract.Voicemails.insert(context, voicemail);
                     voicemail = builder.setId(ContentUris.parseId(uri)).setUri(uri).build();
-                    SyncOneTask.start(mContext, phone, voicemail);
+                    SyncOneTask.start(context, phone, voicemail);
                 }
                 break;
             case OmtpConstants.MAILBOX_UPDATE:
-                SyncTask.start(mContext, phone, OmtpVvmSyncService.SYNC_DOWNLOAD_ONLY);
+                SyncTask.start(context, phone, OmtpVvmSyncService.SYNC_DOWNLOAD_ONLY);
                 break;
             case OmtpConstants.GREETINGS_UPDATE:
                 // Not implemented in V1

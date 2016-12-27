@@ -16,11 +16,14 @@
 package com.android.phone;
 
 import android.annotation.Nullable;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.telephony.VisualVoicemailSmsFilterSettings;
 import android.util.ArraySet;
+
+import com.android.phone.vvm.RemoteVvmTaskManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +42,7 @@ public class VisualVoicemailSmsFilterConfig {
     private static final String PREFIX_KEY = "_prefix";
     private static final String ORIGINATING_NUMBERS_KEY = "_originating_numbers";
     private static final String DESTINATION_PORT_KEY = "_destination_port";
+    private static final String DEFAULT_PACKAGE = "com.android.phone";
 
     public static void enableVisualVoicemailSmsFilter(Context context, String callingPackage,
             int subId,
@@ -58,6 +62,21 @@ public class VisualVoicemailSmsFilterConfig {
                 .apply();
     }
 
+    public static VisualVoicemailSmsFilterSettings getActiveVisualVoicemailSmsFilterSettings(
+            Context context, int subId) {
+        ComponentName componentName = RemoteVvmTaskManager.getRemotePackage(context);
+        String packageName;
+        if (componentName == null) {
+            packageName = DEFAULT_PACKAGE;
+        } else {
+            packageName = componentName.getPackageName();
+        }
+        return getVisualVoicemailSmsFilterSettings(
+                context,
+                packageName,
+                subId);
+    }
+
     @Nullable
     public static VisualVoicemailSmsFilterSettings getVisualVoicemailSmsFilterSettings(
             Context context,
@@ -75,6 +94,7 @@ public class VisualVoicemailSmsFilterConfig {
                         VisualVoicemailSmsFilterSettings.DEFAULT_DESTINATION_PORT))
                 .build();
     }
+
     private static SharedPreferences getSharedPreferences(Context context) {
         return PreferenceManager
                 .getDefaultSharedPreferences(context.createDeviceProtectedStorageContext());
