@@ -268,6 +268,7 @@ public class TelephonyConnectionService extends ConnectionService {
         if (isEmergencyNumber) {
             mRequest = request;
         }
+
         if (isEmergencyNumber && (!isRadioOn() || isAirplaneModeOn)) {
             final Uri emergencyHandle = handle;
             // By default, Connection based on the default Phone, since we need to return to Telecom
