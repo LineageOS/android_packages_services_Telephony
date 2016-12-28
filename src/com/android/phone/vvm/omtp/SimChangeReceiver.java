@@ -31,6 +31,7 @@ import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.phone.settings.VisualVoicemailSettingsUtil;
+import com.android.phone.vvm.RemoteVvmTaskManager;
 import com.android.phone.vvm.omtp.sync.OmtpVvmSourceManager;
 import com.android.phone.vvm.omtp.utils.PhoneAccountHandleConverter;
 
@@ -51,6 +52,10 @@ public class SimChangeReceiver extends BroadcastReceiver {
         final String action = intent.getAction();
         if (action == null) {
             VvmLog.w(TAG, "Null action for intent.");
+            return;
+        }
+
+        if (RemoteVvmTaskManager.hasRemoteService(context)) {
             return;
         }
 
@@ -90,6 +95,7 @@ public class SimChangeReceiver extends BroadcastReceiver {
                 }
 
                 VvmLog.d(TAG, "Carrier config changed");
+
                 if (UserManager.get(context).isUserUnlocked() && !isCryptKeeperMode()) {
                     processSubId(context, subId);
                 } else {

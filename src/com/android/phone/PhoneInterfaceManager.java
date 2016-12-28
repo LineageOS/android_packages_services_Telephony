@@ -18,8 +18,10 @@ package com.android.phone;
 
 import static com.android.internal.telephony.PhoneConstants.SUBSCRIPTION_KEY;
 
+import android.Manifest.permission;
 import android.app.ActivityManager;
 import android.app.AppOpsManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -53,6 +55,7 @@ import android.telephony.ModemActivityInfo;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
+import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyHistogram;
@@ -63,6 +66,7 @@ import android.util.ArraySet;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Slog;
+
 import com.android.ims.ImsManager;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CellNetworkScanResult;
@@ -86,8 +90,11 @@ import com.android.internal.telephony.uicc.UiccController;
 import com.android.internal.util.HexDump;
 import com.android.phone.settings.VisualVoicemailSettingsUtil;
 import com.android.phone.settings.VoicemailNotificationSettingsUtil;
+
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -1985,11 +1992,33 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public VisualVoicemailSmsFilterSettings getSystemVisualVoicemailSmsFilterSettings(
-            String packageName, int subId) {
+    public VisualVoicemailSmsFilterSettings getActiveVisualVoicemailSmsFilterSettings(int subId) {
         enforceReadPrivilegedPermission();
         return VisualVoicemailSmsFilterConfig
-                .getVisualVoicemailSmsFilterSettings(mPhone.getContext(), packageName, subId);
+                .getActiveVisualVoicemailSmsFilterSettings(mPhone.getContext(), subId);
+    }
+
+    @Override
+    public void sendVisualVoicemailSmsForSubscriber(String callingPackage, int subId,
+            String number, int port, String text, PendingIntent sentIntent) {
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        enforceDefaultDialer(callingPackage);
+        enforceSendSmsPermission();
+        // Make the calls as the phone process.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            SmsManager smsManager = SmsManager.getSmsManagerForSubscriptionId(subId);
+            if (port == 0) {
+                smsManager.sendTextMessageWithSelfPermissions(number, null, text,
+                        sentIntent, null, false);
+            } else {
+                byte[] data = text.getBytes(StandardCharsets.UTF_8);
+                smsManager.sendDataMessageWithSelfPermissions(number, null,
+                        (short) port, data, sentIntent, null);
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
     /**
      * Returns the unread count of voicemails
@@ -3236,6 +3265,28 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private void enforceReadPrivilegedPermission() {
         mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
                 null);
+    }
+
+    /**
+     * Make sure either called from same process as self (phone) or IPC caller has send SMS
+     * permission.
+     *
+     * @throws SecurityException if the caller does not have the required permission
+     */
+    private void enforceSendSmsPermission() {
+        mApp.enforceCallingOrSelfPermission(permission.SEND_SMS, null);
+    }
+
+    /**
+     * Make sure called from the default dialer
+     *
+     * @throws SecurityException if the caller is not the default dialer
+     */
+    private void enforceDefaultDialer(String callingPackage) {
+        TelecomManager telecomManager = mPhone.getContext().getSystemService(TelecomManager.class);
+        if (!callingPackage.equals(telecomManager.getDefaultDialerPackage())) {
+            throw new SecurityException("Caller not default dialer.");
+        }
     }
 
     /**
