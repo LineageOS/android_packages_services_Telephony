@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.SystemProperties;
 import android.telecom.PhoneAccountHandle;
+import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
@@ -207,7 +208,19 @@ public class VvmSimStateTracker extends BroadcastReceiver {
             sPreBootHandles.add(phoneAccountHandle);
             return;
         }
-        if (getTelephonyManager(context, phoneAccountHandle).getServiceState().getState()
+        TelephonyManager telephonyManager = getTelephonyManager(context, phoneAccountHandle);
+        if(telephonyManager == null){
+            int subId = context.getSystemService(TelephonyManager.class).getSubIdForPhoneAccount(
+                    context.getSystemService(TelecomManager.class)
+                            .getPhoneAccount(phoneAccountHandle));
+            VvmLog.e(TAG, "Cannot create TelephonyManager from " + phoneAccountHandle + ", subId="
+                    + subId);
+            // TODO(b/33945549): investigate more why this is happening. The PhoneAccountHandle was
+            // just converted from a valid subId so createForPhoneAccountHandle shouldn't really
+            // return null.
+            return;
+        }
+        if (telephonyManager.getServiceState().getState()
                 == ServiceState.STATE_IN_SERVICE) {
             sendConnected(context, phoneAccountHandle);
             sListeners.put(phoneAccountHandle, null);
