@@ -57,7 +57,6 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
 
     private static final String SHOW_DURATION_KEY = "duration_enable_key";
     private static final String BUTTON_VIBRATE_CONNECTED_KEY = "button_vibrate_after_connected";
-    private static final String BUTTON_PROXIMITY_KEY   = "button_proximity_key";
 
     private static final String LEGACY_ACTION_CONFIGURE_PHONE_ACCOUNT =
             "android.telecom.action.CONNECTION_SERVICE_CONFIGURE";
@@ -85,7 +84,6 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
     private SipPreferences mSipPreferences;
     private CheckBoxPreference mShowDurationCheckBox;
     private CheckBoxPreference mVibrateAfterConnected;
-    private CheckBoxPreference mButtonProximity;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -220,15 +218,6 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
         }
 
         mVibrateAfterConnected = (CheckBoxPreference) findPreference(BUTTON_VIBRATE_CONNECTED_KEY);
-        mButtonProximity = (CheckBoxPreference) findPreference(BUTTON_PROXIMITY_KEY);
-        if (mButtonProximity != null) {
-            mButtonProximity.setOnPreferenceChangeListener(this);
-            boolean checked = Settings.System.getInt(getContext().getContentResolver(),
-                    Constants.SETTINGS_PROXIMITY_SENSOR, 1) == 1;
-            mButtonProximity.setChecked(checked);
-            mButtonProximity.setSummary(checked ? R.string.proximity_on_summary
-                    : R.string.proximity_off_summary);
-        }
         if (mVibrateAfterConnected != null) {
             mVibrateAfterConnected.setOnPreferenceChangeListener(this);
             boolean checked = Settings.System.getInt(getContext().getContentResolver(),
@@ -271,13 +260,6 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
             boolean doVibrate = (Boolean) objValue;
             Settings.System.putInt(getContext().getContentResolver(),
                     Constants.SETTINGS_VIBRATE_WHEN_ACCEPTED, doVibrate ? 1 : 0);
-            return true;
-        } else if (pref == mButtonProximity) {
-            boolean checked = (Boolean) objValue;
-            Settings.System.putInt(getContext().getContentResolver(),
-                    Constants.SETTINGS_PROXIMITY_SENSOR, checked ? 1 : 0);
-            mButtonProximity.setSummary(checked ? R.string.proximity_on_summary
-                    : R.string.proximity_off_summary);
             return true;
         }
         return false;
