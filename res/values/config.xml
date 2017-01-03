@@ -208,7 +208,7 @@
     <bool name="allow_visual_voicemail">true</bool>
 
     <!-- Flag to enable VVM3 visual voicemail. VVM3 is used by Verizon Wireless. -->
-    <bool name="vvm3_enabled">false</bool>
+    <bool name="vvm3_enabled">true</bool>
 
     <!-- Component for custom voicemail notification handling. [DO NOT TRANSLATE] -->
     <string name="config_customVoicemailComponent">@null</string>
