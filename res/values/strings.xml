@@ -1363,6 +1363,11 @@
         There are too many active calls. Please end or merge existing calls before placing a new one.
     </string>
 
+    <!-- Call failure reason: If the network does not accept the emergency call request, e.g., because IMEI was used as identification and this capability is not supported -->
+    <string name="callFailed_imei_not_accepted">
+        Unable to connect, please insert a valid SIM card.
+    </string>
+
     <!-- The title for the change voicemail PIN activity -->
     <string name="change_pin_title">Change Voicemail PIN</string>
     <!-- The label for the continue button in change voicemail PIN activity -->
