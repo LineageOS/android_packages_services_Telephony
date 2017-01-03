@@ -128,6 +128,7 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.DATA_LIMIT_REACHED:
             case android.telephony.DisconnectCause.DIALED_ON_WRONG_SLOT:
             case android.telephony.DisconnectCause.DIALED_CALL_FORWARDING_WHILE_ROAMING:
+            case android.telephony.DisconnectCause.IMEI_NOT_ACCEPTED:
                 return DisconnectCause.ERROR;
 
             case android.telephony.DisconnectCause.DIALED_MMI:
@@ -381,6 +382,10 @@ public class DisconnectCauseUtil {
                 break;
             case android.telephony.DisconnectCause.DIALED_CALL_FORWARDING_WHILE_ROAMING:
                 resourceId = com.android.internal.R.string.mmiErrorWhileRoaming;
+                break;
+
+            case android.telephony.DisconnectCause.IMEI_NOT_ACCEPTED:
+                resourceId = R.string.callFailed_imei_not_accepted;
                 break;
 
             default:
