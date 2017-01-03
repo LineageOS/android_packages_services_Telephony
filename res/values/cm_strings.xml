@@ -77,6 +77,9 @@
 
     <string name="msim_mobile_network_settings_title">SIM %d mobile network settings</string>
 
+    <!-- Label for a numbered SIM card.  [CHAR LIMIT=40] -->
+    <string name="sim_card_number_title">SIM <xliff:g id="card_number">%1$d</xliff:g></string>
+
     <!-- Permission to modify network mode via intent -->
     <string name="perm_change_mobile_network">Change network mode</string>
     <string name="perm_change_mobile_network_desc">Allows an application to modify the current network mode.</string>
