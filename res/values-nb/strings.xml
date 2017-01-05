@@ -579,6 +579,8 @@
     <string name="message_decode_error" msgid="3456481534066924855">"Det oppsto en feil under dekoding av meldingen."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Et SIM-kort har aktivert tjenesten din og oppdatert roamingfunksjonene for telefonen din."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Du har for mange aktive samtaler. Avslutt eller slå sammen eksisterende samtaler før du starter en ny samtale."</string>
+    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
+    <skip />
     <string name="change_pin_title" msgid="7790232089699034029">"Endre PIN-kode for talemeldinger"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Fortsett"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Avbryt"</string>

@@ -577,6 +577,8 @@
     <string name="message_decode_error" msgid="3456481534066924855">"Beim Entschlüsseln der Nachricht ist ein Fehler aufgetreten."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Eine SIM-Karte hat deinen Dienst aktiviert und die Roamingfunktionen deines Smartphones aktualisiert."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Zu viele aktive Anrufe. Beende aktive Anrufe oder führe sie zusammen, bevor du einen neuen Anruf tätigst."</string>
+    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
+    <skip />
     <string name="change_pin_title" msgid="7790232089699034029">"Mailbox-PIN ändern"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Weiter"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Abbrechen"</string>
