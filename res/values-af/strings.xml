@@ -577,6 +577,8 @@
     <string name="message_decode_error" msgid="3456481534066924855">"Kon nie die boodskap dekodeer nie."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"\'n SIM-kaart het jou diens geaktiveer en jou foon se swerwingvermoëns opgedateer."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Daar is te veel aktiewe oproepe. Beëindig of voeg asseblief bestaande oproepe saam voordat jy \'n nuwe een maak."</string>
+    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
+    <skip />
     <string name="change_pin_title" msgid="7790232089699034029">"Verander stemboodskap-PIN"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Gaan voort"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Kanselleer"</string>

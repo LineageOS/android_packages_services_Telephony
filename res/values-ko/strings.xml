@@ -573,6 +573,8 @@
     <string name="message_decode_error" msgid="3456481534066924855">"메시지를 디코딩하는 중에 오류가 발생했습니다."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM 카드로 서비스가 활성화되었으며 휴대전화 로밍 기능이 업데이트되었습니다."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"활성화된 통화가 너무 많습니다. 새로운 전화를 걸기 전에 기존의 통화를 끝내거나 합치세요."</string>
+    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
+    <skip />
     <string name="change_pin_title" msgid="7790232089699034029">"음성사서함 PIN 변경"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"계속"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"취소"</string>

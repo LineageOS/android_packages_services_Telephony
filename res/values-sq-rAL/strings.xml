@@ -573,6 +573,8 @@
     <string name="message_decode_error" msgid="3456481534066924855">"Ndodhi një gabim gjatë dekodimit të mesazhit."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Një kartë SIM ka aktivizuar shërbimin tënd dhe ka përditësuar aftësitë e roaming-ut të telefonit tënd."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Ka shumë thirrje aktive. Përfundo ose të bashko thirrjet ekzistuese para kryerjes së një thirrjeje të re."</string>
+    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
+    <skip />
     <string name="change_pin_title" msgid="7790232089699034029">"Ndrysho kodin PIN të postës zanore"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Vazhdo"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Anulo"</string>

@@ -573,6 +573,8 @@
     <string name="message_decode_error" msgid="3456481534066924855">"സന്ദേശം ഡീകോഡുചെയ്യുമ്പോൾ ഒരു പിശകുണ്ടായി."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"ഒരു SIM കാർഡ് നിങ്ങളുടെ സേവനം സജീവമാക്കി, ഫോണിന്റെ റോമിംഗ് ശേഷികൾ അപ്‌ഡേറ്റ് ചെയ്തു."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"നിരവധി കോളുകൾ നിലവിൽ സജീവമായുണ്ട്. പുതിയ കോൾ വിളിക്കുന്നതിനുമുമ്പ് നിലവിലുള്ള കോളുകൾ അവസാനിപ്പിക്കുകയോ ലയിപ്പിക്കുകയോ ചെയ്യുക."</string>
+    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
+    <skip />
     <string name="change_pin_title" msgid="7790232089699034029">"വോയ്‌സ്മെയിൽ പിൻ മാറ്റുക"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"തുടരുക"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"റദ്ദാക്കുക"</string>
