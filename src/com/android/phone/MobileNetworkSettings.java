@@ -63,6 +63,7 @@ import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
 import android.widget.TabHost;
+import com.android.phone.R;
 
 /**
  * "Mobile network settings" screen.  This preference screen lets you
@@ -330,6 +331,11 @@ public class MobileNetworkSettings extends PreferenceActivity
                     if (si != null && si.getSimSlotIndex() == simSlotIndex) {
                         // Slot is not empty and we match
                         tabName = String.valueOf(si.getDisplayName());
+                        if (TextUtils.isEmpty(tabName) ||
+                                TextUtils.getTrimmedLength(tabName) == 0) {
+                            tabName = String.format(getResources().
+                                    getString(R.string.sim_card_number_title), simSlotIndex + 1);
+                        }
                         si = siIterator.hasNext() ? siIterator.next() : null;
                     } else {
                         // Slot is empty, set name to unknown
