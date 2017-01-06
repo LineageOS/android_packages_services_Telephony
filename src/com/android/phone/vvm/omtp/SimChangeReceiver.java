@@ -28,6 +28,7 @@ import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
@@ -56,7 +57,15 @@ public class SimChangeReceiver extends BroadcastReceiver {
             return;
         }
 
-        if (RemoteVvmTaskManager.hasRemoteService(context)) {
+        int subId = intent.getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            VvmLog.i(TAG, "Received SIM change for invalid subscription id.");
+            return;
+        }
+
+        if (RemoteVvmTaskManager.hasRemoteService(context, subId)) {
             return;
         }
 
@@ -69,13 +78,7 @@ public class SimChangeReceiver extends BroadcastReceiver {
                 }
                 break;
             case CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED:
-                int subId = intent.getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
-                        SubscriptionManager.INVALID_SUBSCRIPTION_ID);
 
-                if (!SubscriptionManager.isValidSubscriptionId(subId)) {
-                    VvmLog.i(TAG, "Received SIM change for invalid subscription id.");
-                    return;
-                }
 
                 TelephonyManager telephonyManager = context
                         .getSystemService(TelephonyManager.class);
