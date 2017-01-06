@@ -90,10 +90,10 @@ import com.android.internal.telephony.uicc.UiccController;
 import com.android.internal.util.HexDump;
 import com.android.phone.settings.VisualVoicemailSettingsUtil;
 import com.android.phone.settings.VoicemailNotificationSettingsUtil;
+import com.android.phone.vvm.RemoteVvmTaskManager;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -2002,7 +2002,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void sendVisualVoicemailSmsForSubscriber(String callingPackage, int subId,
             String number, int port, String text, PendingIntent sentIntent) {
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
-        enforceDefaultDialer(callingPackage);
+        enforceVisualVoicemailPackage(callingPackage, subId);
         enforceSendSmsPermission();
         // Make the calls as the phone process.
         final long identity = Binder.clearCallingIdentity();
@@ -3278,14 +3278,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Make sure called from the default dialer
+     * Make sure called from the package in charge of visual voicemail.
      *
-     * @throws SecurityException if the caller is not the default dialer
+     * @throws SecurityException if the caller is not the visual voicemail package.
      */
-    private void enforceDefaultDialer(String callingPackage) {
-        TelecomManager telecomManager = mPhone.getContext().getSystemService(TelecomManager.class);
-        if (!callingPackage.equals(telecomManager.getDefaultDialerPackage())) {
-            throw new SecurityException("Caller not default dialer.");
+    private void enforceVisualVoicemailPackage(String callingPackage, int subId) {
+        String vvmPackage = RemoteVvmTaskManager.getRemotePackage(mPhone.getContext(), subId)
+                .getPackageName();
+        if (!callingPackage.equals(vvmPackage)) {
+            throw new SecurityException("Caller not current active visual voicemail package[" +
+                    vvmPackage + "]");
         }
     }
 

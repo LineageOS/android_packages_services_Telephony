@@ -207,6 +207,10 @@
     <!-- Flag indicating whether to allow visual voicemail if available on the device.[DO NOT TRANSLATE] -->
     <bool name="allow_visual_voicemail">true</bool>
 
+    <!-- The package to handle visual voicemail if the default dialer or the package
+    CarrierConfigManager.KEY_CARRIER_VVM_PACKAGE_NAME_STRING does not handle it -->
+    <string name="system_visual_voicemail_client"></string>
+
     <!-- Flag to enable VVM3 visual voicemail. VVM3 is used by Verizon Wireless. -->
     <bool name="vvm3_enabled">false</bool>
 

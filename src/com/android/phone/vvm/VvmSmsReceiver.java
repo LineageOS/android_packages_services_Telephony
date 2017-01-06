@@ -20,10 +20,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.VoicemailContract;
+import android.telephony.SubscriptionManager;
 import android.telephony.VisualVoicemailSms;
 
 import com.android.phone.vvm.omtp.VvmLog;
 import com.android.phone.vvm.omtp.sms.OmtpMessageReceiver;
+import com.android.phone.vvm.omtp.utils.PhoneAccountHandleConverter;
 
 /**
  * Receives the SMS filtered by {@link com.android.internal.telephony.VisualVoicemailSmsFilter} and
@@ -45,7 +47,13 @@ public class VvmSmsReceiver extends BroadcastReceiver {
             return;
         }
 
-        if (RemoteVvmTaskManager.hasRemoteService(context)) {
+        int subId = PhoneAccountHandleConverter.toSubId(sms.getPhoneAccountHandle());
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            VvmLog.e(TAG, "Received message for invalid subId");
+            return;
+        }
+
+        if (RemoteVvmTaskManager.hasRemoteService(context, subId)) {
             VvmLog.i(TAG, "Sending SMS received event to remote service");
             RemoteVvmTaskManager.startSmsReceived(context, sms);
             return;
