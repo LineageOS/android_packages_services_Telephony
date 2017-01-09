@@ -58,6 +58,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.util.FastXmlSerializer;
+import com.android.internal.util.IndentingPrintWriter;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -71,6 +72,9 @@ import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -717,9 +721,41 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
         pw.println("CarrierConfigLoader: " + this);
         for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
-            pw.println("  Phone Id=" + i);
-            pw.println("  mConfigFromDefaultApp=" + mConfigFromDefaultApp[i]);
-            pw.println("  mConfigFromCarrierApp=" + mConfigFromCarrierApp[i]);
+            pw.println("Phone Id = " + i);
+            // display default values in CarrierConfigManager
+            printConfig(CarrierConfigManager.getDefaultConfig(), pw,
+                    "Default Values from CarrierConfigManager");
+            pw.println("");
+            // display ConfigFromDefaultApp
+            printConfig(mConfigFromDefaultApp[i], pw, "mConfigFromDefaultApp");
+            pw.println("");
+            // display ConfigFromCarrierApp
+            printConfig(mConfigFromCarrierApp[i], pw, "mConfigFromCarrierApp");
+        }
+    }
+
+    private void printConfig(PersistableBundle configApp, PrintWriter pw, String name) {
+        IndentingPrintWriter indentPW = new IndentingPrintWriter(pw, "    ");
+        if (configApp == null) {
+            indentPW.increaseIndent();
+            indentPW.println(name + " : null ");
+            return;
+        }
+        indentPW.increaseIndent();
+        indentPW.println(name + " : ");
+        List<String> sortedKeys = new ArrayList<String>(configApp.keySet());
+        Collections.sort(sortedKeys);
+        indentPW.increaseIndent();
+        indentPW.increaseIndent();
+        for (String key : sortedKeys) {
+            if (configApp.get(key) != null && configApp.get(key) instanceof Object[]) {
+                indentPW.println(key + " = " +
+                        Arrays.toString((Object[]) configApp.get(key)));
+            } else if (configApp.get(key) != null && configApp.get(key) instanceof int[]) {
+                indentPW.println(key + " = " + Arrays.toString((int[]) configApp.get(key)));
+            } else {
+                indentPW.println(key + " = " + configApp.get(key));
+            }
         }
     }
 
