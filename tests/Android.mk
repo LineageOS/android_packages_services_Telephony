@@ -31,6 +31,8 @@ LOCAL_INSTRUMENTATION_FOR := TeleService
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
         android-support-test \
-        mockito-target-minus-junit4
+        mockito-target-minus-junit4 \
+        espresso-core \
+        truth-prebuilt
 
 include $(BUILD_PACKAGE)
