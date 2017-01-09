@@ -579,8 +579,7 @@
     <string name="message_decode_error" msgid="3456481534066924855">"Iškoduojant pranešimą įvyko klaida."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM kortelė suaktyvino paslaugą ir atnaujino telefono tarptinklinio duomenų ryšio funkcijas."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Yra per daug aktyvių skambučių. Prieš skambindami kitu numeriu, užbaikite ar sujunkite esamus skambučius."</string>
-    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
-    <skip />
+    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Nepavyko užmegzti ryšio. Įdėkite tinkamą SIM kortelę."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Balso pašto PIN kodo keitimas"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Tęsti"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Atšaukti"</string>

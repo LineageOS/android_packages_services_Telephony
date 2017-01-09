@@ -573,8 +573,7 @@
     <string name="message_decode_error" msgid="3456481534066924855">"ມີຂໍ້ຜິດພາດໃນລະຫວ່າງຖອດລະຫັດຂໍ້ຄວາມດັ່ງກ່າວ."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"ແຜ່ນ SIM ໄດ້ເປີດໃຊ້ງານການບໍລິການຂອງທ່ານ ແລະອັບເດດຄວາມສາມາດໃຊ້ງານຂ້າມເຂດຂອງໂທລະສັບຂອງທ່ານແລ້ວ."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"ມີສາຍຫຼາຍເກີນໄປ. ກະລຸນາວາງສາຍ ຫຼື ຮວມສາຍທີ່ກຳລັງໂທກ່ອນໂທສາຍໃໝ່."</string>
-    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
-    <skip />
+    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"ບໍ່ສາມາດເຊື່ອມຕໍ່ໄດ້, ກະລຸນາໃສ່ຊິມກາດທີ່ຖືກຕ້ອງ."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ປ່ຽນລະຫັດ PIN ຂໍ້ຄວາມສຽງ"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ດຳເນີນການຕໍ່"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"ຍົກເລີກ"</string>

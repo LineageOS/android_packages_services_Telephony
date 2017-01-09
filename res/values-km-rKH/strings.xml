@@ -573,8 +573,7 @@
     <string name="message_decode_error" msgid="3456481534066924855">"មានកំហុសខណៈពេលឌិកូដសារ។"</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"ស៊ីមកាតបានធ្វើឲ្យសេវាកម្មរបស់អ្នកសកម្ម និងបានធ្វើបច្ចុប្បន្នភាពសមត្ថភាពរ៉ូមីងសម្រាប់ទូរស័ព្ទរបស់អ្នក។"</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"មាន​ការ​ហៅ​ដែល​សកម្ម​ច្រើន​ពេក។ សូម​បញ្ចប់ ឬ​​ដាក់​​បញ្ចូល​គ្នា​ការ​ហៅ​ដែល​មាន​ស្រាប់​​មុន​ពេល​ដាក់​ការ​ហៅ​ថ្មី។"</string>
-    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
-    <skip />
+    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"មិន​អាច​តភ្ជាប់​បាន​ទេ សូម​បញ្ចូល​ស៊ីម​កាត​​ដែល​ប្រើ​បាន។"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ប្ដូរ​លេខ​កូដ PIN ជា​​សារ​សំឡេង"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"បន្ត"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"បោះបង់"</string>
