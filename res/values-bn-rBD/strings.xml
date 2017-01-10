@@ -573,8 +573,7 @@
     <string name="message_decode_error" msgid="3456481534066924855">"বার্তাটি ডিকোড করার সময় একটি ত্রুটি ঘটেছে৷"</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"একটি SIM কার্ড আপনার পরিষেবা সক্রিয় করেছে এবং আপনার ফোনের রোমিং ক্ষমতা আপডেট করা হয়েছে৷"</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"অনেকগুলি কল সক্রিয় রয়েছে। অনুগ্রহ করে একটি নতুন কল করার আগে বিদ্যমান কলগুলি কেটে দিন বা এটিকে সেই কলগুলিতে অন্তর্ভুক্ত করুন।"</string>
-    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
-    <skip />
+    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"সংযোগ করা যায়নি, অনুগ্রহ করে একটি বৈধ SIM কার্ড ঢোকান৷"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ভয়েসমেলের PIN পরিবর্তন করুন"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"চালিয়ে যান"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"বাতিল করুন"</string>

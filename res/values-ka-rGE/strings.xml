@@ -573,8 +573,7 @@
     <string name="message_decode_error" msgid="3456481534066924855">"შეტყობინების გაშიფრვისას წარმოიშვა შეცდომა."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM ბარათმა გაააქტიურა თქვენი სერვისი და თქვენი ტელეფონის როუმინგის შესაძლებლობები განაახლა."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"ძალიან ბევრი აქტიური ზარია. გთხოვთ, დაასრულოთ ან გააერთიანოთ არსებული ზარები ახალი ზარის განხორციელებამდე."</string>
-    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
-    <skip />
+    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"დაკავშირება შეუძლებელია, გთხოვთ, ჩადოთ მოქმედი SIM ბარათი."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ხმოვანი ფოსტის PIN-კოდის შეცვლა"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"გაგრძელება"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"გაუქმება"</string>

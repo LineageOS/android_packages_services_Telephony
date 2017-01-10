@@ -573,8 +573,7 @@
     <string name="message_decode_error" msgid="3456481534066924855">"При декодирането на съобщението възникна грешка."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM картата е активирала клетъчните ви услуги и е актуализирала възможностите за роуминг на телефона ви."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Активните обаждания са твърде много. Моля, завършете или обединете съществуващи обаждания, преди да започнете ново."</string>
-    <!-- no translation found for callFailed_imei_not_accepted (132192626901238542) -->
-    <skip />
+    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Не може да се установи връзка. Моля, поставете валидна SIM карта."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Промяна на ПИН за гласовата поща"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Напред"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Отказ"</string>
