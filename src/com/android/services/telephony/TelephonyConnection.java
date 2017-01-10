@@ -885,7 +885,7 @@ abstract class TelephonyConnection extends Connection {
         String[] filteredCnapNames = null;
         if (carrierConfig != null) {
             filteredCnapNames = carrierConfig.getStringArray(
-                    CarrierConfigManager.FILTERED_CNAP_NAMES_STRING_ARRAY);
+                    CarrierConfigManager.KEY_FILTERED_CNAP_NAMES_STRING_ARRAY);
         }
         if (filteredCnapNames != null) {
             long cnapNameMatches = Arrays.asList(filteredCnapNames)
