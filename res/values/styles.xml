@@ -179,7 +179,8 @@
         <item name="android:textColor">?android:attr/textColorPrimaryInverseDisableOnly</item>
     </style>
 
-    <style name="NetworkOperatorsSettingsTheme" parent="@android:style/Theme.DeviceDefault.Settings" />
+    <style name="NetworkOperatorsSettingsTheme"
+           parent="@*android:style/Theme.DeviceDefault.Settings.LightActionBar" />
 
     <style name="Empty" parent="@android:style/Theme.Material.Light">
         <item name="android:windowIsTranslucent">true</item>
