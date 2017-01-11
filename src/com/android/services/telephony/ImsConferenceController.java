@@ -91,7 +91,7 @@ public class ImsConferenceController {
     /**
      * The current {@link ConnectionService}.
      */
-    private final TelephonyConnectionService mConnectionService;
+    private final TelephonyConnectionServiceProxy mConnectionService;
 
     /**
      * List of known {@link TelephonyConnection}s.
@@ -104,13 +104,17 @@ public class ImsConferenceController {
      */
     private final ArrayList<ImsConference> mImsConferences = new ArrayList<>(1);
 
+    private TelecomAccountRegistry mTelecomAccountRegistry;
+
     /**
      * Creates a new instance of the Ims conference controller.
      *
      * @param connectionService The current connection service.
      */
-    public ImsConferenceController(TelephonyConnectionService connectionService) {
+    public ImsConferenceController(TelecomAccountRegistry telecomAccountRegistry,
+                                   TelephonyConnectionServiceProxy connectionService) {
         mConnectionService = connectionService;
+        mTelecomAccountRegistry = telecomAccountRegistry;
     }
 
     /**
@@ -319,7 +323,6 @@ public class ImsConferenceController {
         Iterator<TelephonyConnection> it = mTelephonyConnections.iterator();
         while (it.hasNext()) {
             TelephonyConnection connection = it.next();
-
             if (connection.isImsConnection() && connection.getOriginalConnection() != null &&
                     connection.getOriginalConnection().isMultiparty()) {
 
@@ -365,8 +368,8 @@ public class ImsConferenceController {
                     PhoneUtils.makePstnPhoneAccountHandle(imsPhone.getDefaultPhone());
         }
 
-        ImsConference conference = new ImsConference(mConnectionService, conferenceHostConnection,
-                phoneAccountHandle);
+        ImsConference conference = new ImsConference(mTelecomAccountRegistry, mConnectionService,
+                conferenceHostConnection, phoneAccountHandle);
         conference.setState(conferenceHostConnection.getState());
         conference.addListener(mConferenceListener);
         conference.updateConferenceParticipantsAfterCreation();

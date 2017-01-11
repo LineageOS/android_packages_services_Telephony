@@ -48,10 +48,9 @@ public class MockTelephonyConnection extends TelephonyConnection {
         super(null, null);
         MockitoAnnotations.initMocks(this);
 
-        //mock radioConnection mPhone mCall
+        // Set up mMockRadioConnection and mMockPhone to contain an active call
         when(mMockRadioConnection.getState()).thenReturn(Call.State.ACTIVE);
         when(mMockRadioConnection.getCall()).thenReturn(mMockCall);
-        //to pass the PhoneAccount
         when(mMockPhone.getRingingCall()).thenReturn(mMockCall);
         when(mMockCall.getState()).thenReturn(Call.State.ACTIVE);
     }
@@ -67,7 +66,7 @@ public class MockTelephonyConnection extends TelephonyConnection {
     }
 
     public TelephonyConnection cloneConnection() {
-        return null;
+        return this;
     }
 
 }

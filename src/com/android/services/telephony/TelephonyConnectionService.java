@@ -72,22 +72,43 @@ public class TelephonyConnectionService extends ConnectionService {
     private static final Pattern CDMA_ACTIVATION_CODE_REGEX_PATTERN =
             Pattern.compile("\\*228[0-9]{0,2}");
 
-    private final TelephonyConferenceController mTelephonyConferenceController =
-            new TelephonyConferenceController(new TelephonyConnectionServiceProxy() {
-                @Override
-                public Collection<Connection> getAllConnections() {
-                    return TelephonyConnectionService.this.getAllConnections();
-                }
+    private final TelephonyConnectionServiceProxy mTelephonyConnectionServiceProxy =
+            new TelephonyConnectionServiceProxy() {
+        @Override
+        public Collection<Connection> getAllConnections() {
+            return TelephonyConnectionService.this.getAllConnections();
+        }
+        @Override
+        public void addConference(TelephonyConference mTelephonyConference) {
+            TelephonyConnectionService.this.addConference(mTelephonyConference);
+        }
+        @Override
+        public void addConference(ImsConference mImsConference) {
+            TelephonyConnectionService.this.addConference(mImsConference);
+        }
+        @Override
+        public void removeConnection(Connection connection) {
+            TelephonyConnectionService.this.removeConnection(connection);
+        }
+        @Override
+        public void addExistingConnection(PhoneAccountHandle phoneAccountHandle,
+                                          Connection connection) {
+            TelephonyConnectionService.this
+                    .addExistingConnection(phoneAccountHandle, connection);
+        }
+        @Override
+        public void addConnectionToConferenceController(TelephonyConnection connection) {
+            TelephonyConnectionService.this.addConnectionToConferenceController(connection);
+        }
+    };
 
-                @Override
-                public void addConference(TelephonyConference mTelephonyConference) {
-                    TelephonyConnectionService.this.addConference(mTelephonyConference);
-                }
-            });
+    private final TelephonyConferenceController mTelephonyConferenceController =
+            new TelephonyConferenceController(mTelephonyConnectionServiceProxy);
     private final CdmaConferenceController mCdmaConferenceController =
             new CdmaConferenceController(this);
     private final ImsConferenceController mImsConferenceController =
-            new ImsConferenceController(this);
+            new ImsConferenceController(TelecomAccountRegistry.getInstance(this),
+                    mTelephonyConnectionServiceProxy);
 
     private ComponentName mExpectedComponentName = null;
     private EmergencyCallHelper mEmergencyCallHelper;
