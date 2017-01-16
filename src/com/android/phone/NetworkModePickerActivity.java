@@ -32,6 +32,7 @@ import com.android.internal.app.AlertActivity;
 import com.android.internal.app.AlertController;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.SubscriptionController;
 
 import java.util.ArrayList;
@@ -152,7 +153,9 @@ public final class NetworkModePickerActivity extends AlertActivity implements
     }
 
     private int getCurrentNetworkMode(int subId) {
-        return SubscriptionController.getInstance().getUserNwMode(subId);
+        return Settings.Global.getInt(getContentResolver(),
+                Settings.Global.PREFERRED_NETWORK_MODE + subId,
+                RILConstants.PREFERRED_NETWORK_MODE);
     }
 
     @Override

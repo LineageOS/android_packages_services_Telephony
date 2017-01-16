@@ -58,7 +58,6 @@ public class PhoneToggler extends BroadcastReceiver {
                 // chosen a valid network mode for this subId, so only basic validation is done
                 if (isValidModemNetworkMode(networkMode)) {
                     if (DBG) Log.d(LOG_TAG, "Changing network mode to " + networkMode);
-                    subCtrl.setUserNwMode(subId, networkMode);
                     try {
                         PhoneFactory.getPhone(SubscriptionManager.getPhoneId(subId))
                                 .setPreferredNetworkType(networkMode, null);
