@@ -1681,6 +1681,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public void setCellInfoListRate(int rateInMillis) {
+        enforceModifyPermission();
         WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
         mPhone.setCellInfoListRate(rateInMillis, workSource);
     }
