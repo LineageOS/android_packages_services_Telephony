@@ -368,6 +368,8 @@
     <string name="menu_add" msgid="1882023737425114762">"കോൺടാക്റ്റ് ചേർക്കുക"</string>
     <string name="menu_edit" msgid="7143003705504672374">"കോൺടാ‌ക്‌റ്റ് തിരുത്തുക"</string>
     <string name="menu_delete" msgid="3977150783449642851">"കോണ്‍‌ടാക്റ്റ് ഇല്ലാതാക്കുക"</string>
+    <!-- no translation found for menu_dial (3223106222819685808) -->
+    <skip />
     <string name="get_pin2" msgid="8204677063922225311">"PIN2 ടൈപ്പുചെയ്യുക"</string>
     <string name="name" msgid="7329028332786872378">"പേര്"</string>
     <string name="number" msgid="7905950798349903858">"അക്കം"</string>
