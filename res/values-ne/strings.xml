@@ -368,8 +368,7 @@
     <string name="menu_add" msgid="1882023737425114762">"सम्पर्क थप्नुहोस्"</string>
     <string name="menu_edit" msgid="7143003705504672374">"सम्पर्क सम्पादन गर्नुहोस्"</string>
     <string name="menu_delete" msgid="3977150783449642851">"सम्पर्क मेटाउनुहोस्"</string>
-    <!-- no translation found for menu_dial (3223106222819685808) -->
-    <skip />
+    <string name="menu_dial" msgid="3223106222819685808">"डायल गर्ने सम्पर्क"</string>
     <string name="get_pin2" msgid="8204677063922225311">"PIN2 प्रकार"</string>
     <string name="name" msgid="7329028332786872378">"नाम"</string>
     <string name="number" msgid="7905950798349903858">"नम्बर"</string>

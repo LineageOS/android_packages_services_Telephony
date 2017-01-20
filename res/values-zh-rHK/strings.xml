@@ -374,8 +374,7 @@
     <string name="menu_add" msgid="1882023737425114762">"新增聯絡人"</string>
     <string name="menu_edit" msgid="7143003705504672374">"編輯聯絡人"</string>
     <string name="menu_delete" msgid="3977150783449642851">"刪除聯絡人"</string>
-    <!-- no translation found for menu_dial (3223106222819685808) -->
-    <skip />
+    <string name="menu_dial" msgid="3223106222819685808">"撥號給聯絡人"</string>
     <string name="get_pin2" msgid="8204677063922225311">"輸入 PIN2 碼"</string>
     <string name="name" msgid="7329028332786872378">"名稱"</string>
     <string name="number" msgid="7905950798349903858">"電話號碼"</string>
