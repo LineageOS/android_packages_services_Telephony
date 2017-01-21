@@ -368,8 +368,7 @@
     <string name="menu_add" msgid="1882023737425114762">"Adicionar contato"</string>
     <string name="menu_edit" msgid="7143003705504672374">"Editar contato"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Excluir contato"</string>
-    <!-- no translation found for menu_dial (3223106222819685808) -->
-    <skip />
+    <string name="menu_dial" msgid="3223106222819685808">"Discar"</string>
     <string name="get_pin2" msgid="8204677063922225311">"Digitar PIN2"</string>
     <string name="name" msgid="7329028332786872378">"Nome"</string>
     <string name="number" msgid="7905950798349903858">"Número"</string>
