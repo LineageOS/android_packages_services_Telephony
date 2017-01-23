@@ -69,6 +69,8 @@ import android.util.Pair;
 import android.util.Slog;
 
 import com.android.ims.ImsManager;
+import com.android.ims.internal.IImsServiceController;
+import com.android.ims.internal.IImsServiceFeatureListener;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
@@ -2435,6 +2437,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
 
         return mPhone.getPcscfAddress(apnType);
+    }
+
+    /**
+     * Returns the {@link IImsServiceController} that corresponds to the given slot Id and IMS
+     * feature or {@link null} if the service is not available. If an ImsServiceController is
+     * available, the {@link IImsServiceFeatureListener} callback is registered as a listener for
+     * feature updates.
+     */
+    public IImsServiceController getImsServiceControllerAndListen(int slotId, int feature,
+            IImsServiceFeatureListener callback) {
+        enforceModifyPermission();
+        return PhoneFactory.getImsResolver().getImsServiceControllerAndListen(slotId, feature,
+                callback);
     }
 
     public void setImsRegistrationState(boolean registered) {
