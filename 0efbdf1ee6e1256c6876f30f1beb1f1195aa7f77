@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_7d4f7a93",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 6334
+      },
+      "writtenOn": "2017-01-24T01:40:52Z",
+      "side": 1,
+      "message": "probably can modularise this",
+      "revId": "0efbdf1ee6e1256c6876f30f1beb1f1195aa7f77",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_5d44b673",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 6334
+      },
+      "writtenOn": "2017-01-24T01:40:52Z",
+      "side": 1,
+      "message": "same",
+      "revId": "0efbdf1ee6e1256c6876f30f1beb1f1195aa7f77",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
