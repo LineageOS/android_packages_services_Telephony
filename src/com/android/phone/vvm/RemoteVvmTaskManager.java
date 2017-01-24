@@ -115,9 +115,12 @@ public class RemoteVvmTaskManager extends Service {
                 .getSystemService(CarrierConfigManager.class).getConfigForSubId(subId);
         packages.add(
                 carrierConfig.getString(CarrierConfigManager.KEY_CARRIER_VVM_PACKAGE_NAME_STRING));
-        for (String packageName : carrierConfig
-                .getStringArray(CarrierConfigManager.KEY_CARRIER_VVM_PACKAGE_NAME_STRING_ARRAY)) {
-            packages.add(packageName);
+        String[] vvmPackages = carrierConfig
+                .getStringArray(CarrierConfigManager.KEY_CARRIER_VVM_PACKAGE_NAME_STRING_ARRAY);
+        if (vvmPackages != null && vvmPackages.length > 0) {
+            for (String packageName : vvmPackages) {
+                packages.add(packageName);
+            }
         }
         packages.add(context.getResources().getString(R.string.system_visual_voicemail_client));
         packages.add(telecomManager.getSystemDialerPackage());
