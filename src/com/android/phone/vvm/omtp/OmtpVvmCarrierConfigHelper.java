@@ -191,8 +191,11 @@ public class OmtpVvmCarrierConfigHelper {
             names.add(bundle.getString(KEY_CARRIER_VVM_PACKAGE_NAME_STRING));
         }
         if (bundle.containsKey(KEY_CARRIER_VVM_PACKAGE_NAME_STRING_ARRAY)) {
-            names.addAll(Arrays.asList(
-                    bundle.getStringArray(KEY_CARRIER_VVM_PACKAGE_NAME_STRING_ARRAY)));
+            String[] vvmPackages = bundle.getStringArray(KEY_CARRIER_VVM_PACKAGE_NAME_STRING_ARRAY);
+            if (vvmPackages != null && vvmPackages.length > 0) {
+                names.addAll(Arrays.asList(
+                        bundle.getStringArray(KEY_CARRIER_VVM_PACKAGE_NAME_STRING_ARRAY)));
+            }
         }
         if (names.isEmpty()) {
             return null;
