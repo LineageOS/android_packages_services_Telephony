@@ -60,6 +60,7 @@
   <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
   <string name="preferred_network_mode_td_scdma_only_choice">କେବଳ TD-SCDMA</string>
+  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
   <string name="preferred_network_mode_lte_choice">LTE</string>
   <string name="preferred_network_mode_global_choice">Global</string>
   <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
@@ -74,5 +75,7 @@
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">ଅଗ୍ରାଧିକାର GSM/WCDMA</string>
   <string name="msim_mobile_network_settings_title">SIM %d ମୋବାଇଲ୍‍ ନେଟ୍‍ୱାର୍କ ସେଟିଙ୍ଗ୍ସ‍</string>
   <!-- Permission to modify network mode via intent -->
+  <string name="perm_change_mobile_network">ନେଟ୍‍ୱାର୍କ୍‍ ମୋଡ୍‍ ପରିବର୍ତ୍ତନ କରନ୍ତୁ</string>
+  <string name="perm_change_mobile_network_desc">ବର୍ତ୍ତମାନର ନେଟୱାର୍କ ମୋଡ଼କୁ ପରିବର୍ତ୍ତନ ପାଇଁ ଆପ୍ଲିକେସନ୍‍କୁ ଅନୁମତି ଦିଏ।.</string>
   <!-- Network mode picker dialog title -->
 </resources>

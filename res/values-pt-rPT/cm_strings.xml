@@ -60,7 +60,7 @@
   <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
   <string name="preferred_network_mode_td_scdma_only_choice">Só TD-SCDMA</string>
-  <string name="preferred_network_mode_lte_wcdma_choice">LTE / WCDMA</string>
+  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
   <string name="preferred_network_mode_lte_choice">LTE</string>
   <string name="preferred_network_mode_global_choice">Global</string>
   <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
@@ -75,8 +75,8 @@
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA preferida</string>
   <string name="msim_mobile_network_settings_title">Definições de rede móvel do SIM %d</string>
   <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">Alterar o modo de rede</string>
-  <string name="perm_change_mobile_network_desc">Permite que uma aplicação altere o modo de rede atual.</string>
+  <string name="perm_change_mobile_network">alterar o modo de rede</string>
+  <string name="perm_change_mobile_network_desc">Permite que uma aplicação modifique o modo de rede atual.</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Escolher o modo de rede</string>
   <string name="choose_network_mode_system_default">Padrão do sistema</string>

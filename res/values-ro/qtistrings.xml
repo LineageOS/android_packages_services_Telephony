@@ -33,6 +33,7 @@
 <resources>
   <!-- IMS settings related strings -->
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
+  <string name="ims_settings">Setări IMS</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN de deblocare pentru rețeaua subnet SIM</string>
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
@@ -42,8 +43,11 @@
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN de deblocare pentru SIM</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN deblocare RUIM rețea 1</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN deblocare RUIM rețea 2</string>
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN deblocare RUIM HRPD</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN deblocare RUIM corporativ</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
@@ -61,8 +65,11 @@
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Se solicită deblocare SIM\u2026</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Se solicită deblocare RUIM rețea 1\u2026</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Se solicită deblocare RUIM rețea 2\u2026</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Se solicită deblocare RUIM HRPD\u2026</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Se solicită deblocare RUIM pentru furnizorul de servicii\u2026</string>
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
@@ -72,14 +79,21 @@
   <!-- Status message displayed on PUK Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Se solicită deblocare PUK\u2026</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Cererea de deblocare pentru rețeaua subset SIM a eșuat.</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Cererea de deblocare pentru furnizorul de servicii SIM a eșuat.</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Cererea de deblocare pentru SIM corporativ a eșuat.</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Cererea de deblocare pentru SIM a eșuat.</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Cererea de deblocare pentru RUIM rețea 1 a eșuat.</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Cererea de deblocare pentru RUIM rețea 2 a eșuat.</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Cererea de deblocare pentru RUIM HRPD a eșuat.</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Cererea de deblocare pentru furnizorul de servicii RUIM a eșuat.</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Deblocarea PUK a eșuat.</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
@@ -97,16 +111,23 @@
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Deblocarea PUK a eșuat.</string>
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Deblocarea PUK a eșuat.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Deblocarea rețelei subset SIM a reușit.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Deblocarea furnizorului de servicii SIM a reușit.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Deblocarea SIM-ului corporativ a reușit.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Deblocarea SIM a reușit.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Deblocarea RUIM rețea 1 a reușit.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Deblocarea PUK a reușit.</string>
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">Deblocarea RUIM HRPD a reușit.</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Deblocarea furnizorului de servicii RUIM a reușit.</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Deblocarea RUIM corporativ a reușit.</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">Deblocarea RUIM a reușit.</string>
   <!-- Success message displayed on PUK Depersonalization panel -->
@@ -121,5 +142,15 @@
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Deblocarea PUK a reușit.</string>
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Deblocarea PUK a reușit.</string>
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Deblocarea PUK a reușit.</string>
+  <string name="preferred_network_mode_dialogtitle_cmcc">Mod reţea</string>
   <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G /2G (auto)"</string>
+  <string name="preferred_network_mode_3g_2g_auto">"3G/2G (auto)"</string>
+  <string name="cf_setting_mobile_data_alert">Vă rugăm să porniți datele mobile și să vă asigurați că WLAN este oprit</string>
+  <string name="cf_setting_mobile_data_roaming_alert">Vă rugăm să porniţi datele de roaming</string>
+  <string name="no_mobile_data">Datele mobile nu sunt disponibile</string>
+  <string name="no_mobile_data_roaming">Datele de roaming nu sunt disponibile</string>
+  <string name="call_barring">Restricționarea apelurilor</string>
+  <string name="srvcc_video_message">"Apelul video a fost retrogradat la un apel voce 2G/3G, deoarece rețeaua 4G nu este disponibilă."</string>
+  <string name="srvcc_message">"Apelul voce 4G a fost retrogradat la un apel voce 2G/3G, deoarece rețeaua 4G nu este disponibilă."</string>
 </resources>

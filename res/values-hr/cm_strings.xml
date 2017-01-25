@@ -60,7 +60,7 @@
   <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
   <string name="preferred_network_mode_td_scdma_only_choice">Samo TD-SCDMA</string>
-  <string name="preferred_network_mode_lte_wcdma_choice">LTE / WCDMA</string>
+  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
   <string name="preferred_network_mode_lte_choice">LTE</string>
   <string name="preferred_network_mode_global_choice">Globalno</string>
   <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
@@ -75,8 +75,8 @@
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA preferirano</string>
   <string name="msim_mobile_network_settings_title">Postavke %d SIM mobilne mreže</string>
   <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">Promijeni način mreže</string>
-  <string name="perm_change_mobile_network_desc">Aplikaciji omogućuje izmjenu trenutnog način rada mreže.</string>
+  <string name="perm_change_mobile_network">promijeni način mreže</string>
+  <string name="perm_change_mobile_network_desc">Dopušta aplikaciji izmijeniti trenutni način mreže.</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Odaberite način rada mreže</string>
   <string name="choose_network_mode_system_default">Zadana postavka sustava</string>

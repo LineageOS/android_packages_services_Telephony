@@ -60,6 +60,7 @@
   <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
   <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA only</string>
+  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
   <string name="preferred_network_mode_lte_choice">LTE</string>
   <string name="preferred_network_mode_global_choice">உலகளவு</string>
   <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
@@ -74,5 +75,7 @@
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA விரும்பப்பட்டது</string>
   <string name="msim_mobile_network_settings_title">SIM %d மொபைல் பிணைய அமைப்புகள்</string>
   <!-- Permission to modify network mode via intent -->
+  <string name="perm_change_mobile_network">நெட்வொர்க் பயன்முறையை மாற்றவும்</string>
+  <string name="perm_change_mobile_network_desc">தற்போதைய நெட்வொர்க் பயன்முறையை மாற்ற, இந்த பயன்பாட்டை அனுமதிக்கிறது.</string>
   <!-- Network mode picker dialog title -->
 </resources>

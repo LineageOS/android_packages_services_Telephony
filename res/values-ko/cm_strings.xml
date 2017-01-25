@@ -60,6 +60,7 @@
   <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
   <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA 전용</string>
+  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
   <string name="preferred_network_mode_lte_choice">LTE</string>
   <string name="preferred_network_mode_global_choice">Global</string>
   <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
@@ -74,6 +75,8 @@
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA 우선</string>
   <string name="msim_mobile_network_settings_title">SIM %d 모바일 네트워크 설정</string>
   <!-- Permission to modify network mode via intent -->
+  <string name="perm_change_mobile_network">네트워크 모드 변경</string>
+  <string name="perm_change_mobile_network_desc">애플리케이션이 현재의 네트워크 모드를 변경할 수 있도록 허용합니다.</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">네트워크 모드 선택</string>
   <string name="choose_network_mode_system_default">시스템 기본 설정</string>

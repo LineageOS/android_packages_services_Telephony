@@ -79,14 +79,21 @@
   <!-- Status message displayed on PUK Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Ber om PUK opplåsning\u2026</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">SIM nettverk delsett opplåsningsforespørsel mislyktes.</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">SIM-leverandørens opplåsningsforespørsel mislyktes.</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">SIM Corporate opplåsningsforespørsel mislyktes.</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ERROR">SIM opplåsningsforespørselen mislyktes.</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">RUIM Nettverk1 opplåsningsforespørsel mislyktes.</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">RUIM Nettverk2 opplåsningsforespørsel mislyktes.</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">RUIM Hrpd opplåsningsforespørsel mislyktes.</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">RUIM-leverandørens opplåsningsforespørsel mislyktes.</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">PUK opplåsning mislyktes.</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
@@ -104,16 +111,23 @@
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">PUK opplåsning mislyktes.</string>
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">PUK opplåsning mislyktes.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">SIM nettverk delsett opplåsing var vellykket.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">SIM-leverandør opplåsing var vellykket.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM Corporate opplåsing var vellykket.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Sim opplåsning vellykket.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">RUIM Nettverk1 opplåsing var vellykket.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">PUK opplåsning vellykket.</string>
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM Hrpd opplåsing var vellykket.</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM-leverandør opplåsing var vellykket.</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM Corporate opplåsing var vellykket.</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM opplåsning vellykket.</string>
   <!-- Success message displayed on PUK Depersonalization panel -->
@@ -128,5 +142,15 @@
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">PUK opplåsning vellykket.</string>
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK opplåsning vellykket.</string>
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">PUK opplåsning vellykket.</string>
+  <string name="preferred_network_mode_dialogtitle_cmcc">Nettverksmodus</string>
   <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (auto)"</string>
+  <string name="preferred_network_mode_3g_2g_auto">"3G/2G (auto)"</string>
+  <string name="cf_setting_mobile_data_alert">Vennligst slå på mobildata og kontroller at WLAN er av</string>
+  <string name="cf_setting_mobile_data_roaming_alert">Vennligst slå på dataroaming</string>
+  <string name="no_mobile_data">Mobildata er ikke tilgjengelig</string>
+  <string name="no_mobile_data_roaming">Dataroaming er ikke tilgjengelig</string>
+  <string name="call_barring">Ringesperring</string>
+  <string name="srvcc_video_message">"Videoanrop har blitt nedgradert til 2G/3G taleanrop, fordi 4G nettverk ikke er tilgjengelig."</string>
+  <string name="srvcc_message">"4G taleanrop har blitt nedgradert til 2G/3G taleanrop, fordi 4G nettverk ikke er tilgjengelig."</string>
 </resources>

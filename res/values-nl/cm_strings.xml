@@ -75,6 +75,8 @@
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Voorkeur voor GSM/WCDMA</string>
   <string name="msim_mobile_network_settings_title">Instellingen mobiel netwerk SIM %d</string>
   <!-- Permission to modify network mode via intent -->
+  <string name="perm_change_mobile_network">netwerkmodus wijzigen</string>
+  <string name="perm_change_mobile_network_desc">Hiermee kan de app de huidige netwerkmodus wijzigen.</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Netwerkmodus kiezen</string>
   <string name="choose_network_mode_system_default">Systeemstandaard</string>
