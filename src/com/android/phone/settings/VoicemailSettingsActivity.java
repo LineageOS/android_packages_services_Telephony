@@ -31,6 +31,7 @@ import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.ContactsContract.CommonDataKinds;
 import android.telecom.PhoneAccountHandle;
+import android.telephony.TelephonyManager;
 import android.text.BidiFormatter;
 import android.text.TextDirectionHeuristics;
 import android.text.TextUtils;
@@ -264,6 +265,8 @@ public class VoicemailSettingsActivity extends PreferenceActivity
                 getResources().getString(R.string.voicemail_notification_vibrate_key));
         mVoicemailNotificationVibrate.setOnPreferenceChangeListener(this);
 
+        maybeHidePublicSettings();
+
         mVoicemailVisualVoicemail = (SwitchPreference) findPreference(
                 getResources().getString(R.string.voicemail_visual_voicemail_key));
 
@@ -316,6 +319,23 @@ public class VoicemailSettingsActivity extends PreferenceActivity
 
         mVoicemailNotificationVibrate.setChecked(
                 VoicemailNotificationSettingsUtil.isVibrationEnabled(mPhone));
+    }
+
+    /**
+     * Hides a subset of voicemail settings if required by the intent extra. This is used by the
+     * default dialer to show "advanced" voicemail settings from its own custom voicemail settings
+     * UI.
+     */
+    private void maybeHidePublicSettings() {
+        if(!getIntent().getBooleanExtra(TelephonyManager.EXTRA_HIDE_PUBLIC_SETTINGS, false)){
+            return;
+        }
+        if (DBG) {
+            log("maybeHidePublicSettings: settings hidden by EXTRA_HIDE_PUBLIC_SETTINGS");
+        }
+        PreferenceScreen preferenceScreen = getPreferenceScreen();
+        preferenceScreen.removePreference(mVoicemailNotificationRingtone);
+        preferenceScreen.removePreference(mVoicemailNotificationVibrate);
     }
 
     @Override

@@ -25,7 +25,9 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -230,6 +232,8 @@ public class CallFeaturesSetting extends PreferenceActivity
         mVoicemailSettingsScreen.setIntent(mSubscriptionInfoHelper.getIntent(
                 VoicemailSettingsActivity.class));
 
+        maybeHideVoicemailSettings();
+
         mButtonAutoRetry = (CheckBoxPreference) findPreference(BUTTON_RETRY_KEY);
 
         mEnableVideoCalling = (CheckBoxPreference) findPreference(ENABLE_VIDEO_CALLING_KEY);
@@ -347,6 +351,38 @@ public class CallFeaturesSetting extends PreferenceActivity
                 }
             }
             wifiCallingSettings.setSummary(resId);
+        }
+    }
+
+    /**
+     * Hides the top level voicemail settings entry point if the default dialer contains a
+     * particular manifest metadata key. This is required when the default dialer wants to display
+     * its own version of voicemail settings.
+     */
+    private void maybeHideVoicemailSettings() {
+        String defaultDialer = getSystemService(TelecomManager.class).getDefaultDialerPackage();
+        if (defaultDialer == null) {
+            return;
+        }
+        try {
+            Bundle metadata = getPackageManager()
+                    .getApplicationInfo(defaultDialer, PackageManager.GET_META_DATA).metaData;
+            if (!metadata
+                    .getBoolean(TelephonyManager.METADATA_HIDE_VOICEMAIL_SETTINGS_MENU, false)) {
+                if (DBG) {
+                    log("maybeHideVoicemailSettings(): not disabled by default dialer");
+                }
+                return;
+            }
+            getPreferenceScreen().removePreference(mVoicemailSettingsScreen);
+            if (DBG) {
+                log("maybeHideVoicemailSettings(): disabled by default dialer");
+            }
+        } catch (NameNotFoundException e) {
+            // do nothing
+            if (DBG) {
+                log("maybeHideVoicemailSettings(): not controlled by default dialer");
+            }
         }
     }
 
