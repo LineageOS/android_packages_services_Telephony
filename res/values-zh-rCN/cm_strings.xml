@@ -26,7 +26,7 @@
   <!-- Blacklist preferences -->
   <string name="blacklist_title">呼叫黑名单列表</string>
   <string name="blacklist_summary_disabled">禁用</string>
-  <string name="blacklist_summary">您将不会收到来自呼叫黑名单列表中的来电或短信</string>
+  <string name="blacklist_summary">您将不会收到呼叫黑名单列表中的号码的来电或短信</string>
   <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
   <string name="mwi_notification_title">信息等待指示器</string>
   <string name="mwi_notification_summary">显示信息等待指示器语音信箱提醒（需要重启）</string>
@@ -99,7 +99,7 @@
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
   <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">首选网络模式：TD-SCDMA/GSM/WCDMA/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">首选网络类型: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">首选网络类型：TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
   <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">首选网络模式：TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
   <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
@@ -131,7 +131,7 @@
     <item>关闭</item>
     <item>国际漫游呼叫</item>
     <item>国际长途</item>
-    <item>去电</item>
+    <item>呼出通话</item>
   </string-array>
   <string-array name="call_barring_incoming_display_values">
     <item>关闭</item>
@@ -139,13 +139,13 @@
     <item>全部</item>
   </string-array>
   <string name="call_barring_incoming">限制呼入</string>
-  <string name="input_password">输入您的密码</string>
+  <string name="input_password">请输入您的密码</string>
   <string name="invalidPsw">输入一个有效的密码（4-8 位）</string>
   <string name="labelCbCancelAll">禁用呼叫限制</string>
   <string name="labelCbChangePassword">修改密码</string>
   <string name="psw_enter_old">旧密码</string>
   <string name="psw_enter_new">新密码</string>
-  <string name="psw_reenter_new">重新输入您的密码</string>
+  <string name="psw_reenter_new">再次输入您的密码</string>
   <string name="no_call_barring">已禁用呼叫限制</string>
   <string name="cb_psw_dont_match">密码不匹配</string>
   <!-- FDN settings: error message displayed in a popup (toast) -->
