@@ -24,6 +24,7 @@ import android.os.ServiceManager;
 import android.os.UserManager;
 import android.telecom.PhoneAccountHandle;
 import android.telephony.CarrierConfigManager;
+import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -127,6 +128,12 @@ public class SimChangeReceiver extends BroadcastReceiver {
                 // can be recorded.
                 OmtpVvmSourceManager.getInstance(context).addPhoneStateListener(
                         phoneAccount);
+                if (context.getSystemService(TelephonyManager.class)
+                        .getServiceStateForSubscriber(subId).getState()
+                        != ServiceState.STATE_IN_SERVICE) {
+                    VvmLog.i(TAG, "Cellular signal not available, not activating");
+                    return;
+                }
                 carrierConfigHelper.startActivation();
             } else {
                 if (carrierConfigHelper.isLegacyModeEnabled()) {
