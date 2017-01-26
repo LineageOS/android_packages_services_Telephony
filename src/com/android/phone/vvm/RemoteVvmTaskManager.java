@@ -104,6 +104,7 @@ public class RemoteVvmTaskManager extends Service {
         return getRemotePackage(context, subId) != null;
     }
 
+    @Nullable
     public static ComponentName getRemotePackage(Context context, int subId) {
         Intent bindIntent = newBindIntent(context);
 
