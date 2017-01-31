@@ -86,9 +86,9 @@ public class PhoneUtils {
     static final String ADD_CALL_MODE_KEY = "add_call_mode";
 
     // Return codes from placeCall()
-    static final int CALL_STATUS_DIALED = 0;  // The number was successfully dialed
-    static final int CALL_STATUS_DIALED_MMI = 1;  // The specified number was an MMI code
-    static final int CALL_STATUS_FAILED = 2;  // The call failed
+    public static final int CALL_STATUS_DIALED = 0;  // The number was successfully dialed
+    public static final int CALL_STATUS_DIALED_MMI = 1;  // The specified number was an MMI code
+    public static final int CALL_STATUS_FAILED = 2;  // The call failed
 
     // State of the Phone's audio modes
     // Each state can move to the other states, but within the state only certain
