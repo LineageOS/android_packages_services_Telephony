@@ -63,9 +63,6 @@ public class MMIDialogActivity extends Activity {
                 }
         };
         mCM.registerForMmiComplete(mHandler, PhoneGlobals.MMI_COMPLETE, null);
-        if (mCM.getState() == PhoneConstants.State.OFFHOOK) {
-            Toast.makeText(this, R.string.incall_status_dialed_mmi, Toast.LENGTH_SHORT).show();
-        }
         showMMIDialog();
     }
 
