@@ -33,6 +33,7 @@
 <resources>
   <!-- IMS settings related strings -->
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
+  <string name="ims_settings">Configuración de IMS</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN de desbloqueo de subred de tarjeta SIM</string>
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
@@ -42,6 +43,7 @@
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN de desbloqueo de tarjeta SIM</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN de desbloqueo de la red1 RUIM</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->

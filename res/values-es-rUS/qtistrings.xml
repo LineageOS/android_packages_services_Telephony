@@ -33,6 +33,7 @@
 <resources>
   <!-- IMS settings related strings -->
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
+  <string name="ims_settings">Ajustes de IMS</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN de desbloqueo de subred de tarjeta SIM</string>
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
@@ -42,8 +43,11 @@
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN de desbloqueo de tarjeta SIM</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN de desbloqueo RUIM en red 1</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN de desbloqueo RUIM en red 2</string>
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN de desbloqueo RUIM en HRPD</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN de desbloqueo de tarjeta RUIM corporativa</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
@@ -61,8 +65,11 @@
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Solicitando desbloqueo de tarjeta SIM\u2026</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Solicitando desbloqueo RUIM de red 1\u2026</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Solicitando desbloqueo RUIM de red 2\u2026</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Solicitando desbloqueo RUIM en HRPD\u2026</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Solicitando desbloqueo del proveedor de servicios de tarjeta RUIM\u2026</string>
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
@@ -72,14 +79,21 @@
   <!-- Status message displayed on PUK Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Solicitando desbloqueo con PUK\u2026</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Falló la solicitud de desbloqueo del subconjunto SIM.</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Falló la solicitud de desbloqueo del proveedor de servicios SIM.</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Falló la solicitud de desbloqueo de SIM corporativo.</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ERROR">No se realizó correctamente el desbloqueo de tarjeta SIM.</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Falló la solicitud de desbloqueo RUIM en red 1.</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Falló la solicitud de desbloqueo RUIM en red 2.</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Falló la solicitud de desbloqueo RUIM en HRPD.</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Falló la solicitud de desbloqueo RUIM del proveedor de servicios.</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">No se realizó correctamente el desbloqueo con PUK.</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
@@ -97,16 +111,23 @@
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">No se realizó correctamente el desbloqueo con PUK.</string>
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">No se realizó correctamente el desbloqueo con PUK.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Desbloqueo de subred de tarjeta SIM exitoso.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Desbloqueo del proveedor de servicios de la tarjeta SIM exitoso.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Desbloqueo de la tarjeta SIM corporativa exitoso.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Se realizó correctamente el desbloqueo de tarjeta SIM.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Desbloqueo RUIM de la red 1 exitoso.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Se realizó correctamente el desbloqueo con PUK.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Desbloqueo RUIM de la red 2 exitoso.</string>
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">Desbloqueo RUIM de HRPD exitoso.</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Desbloqueo RUIM del proveedor de servicios exitoso.</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Desbloqueo RUIM corporativo exitoso.</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">Se realizó correctamente el desbloqueo de tarjeta RUIM.</string>
   <!-- Success message displayed on PUK Depersonalization panel -->
@@ -121,5 +142,15 @@
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Se realizó correctamente el desbloqueo con PUK.</string>
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Se realizó correctamente el desbloqueo con PUK.</string>
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Se realizó correctamente el desbloqueo con PUK.</string>
+  <string name="preferred_network_mode_dialogtitle_cmcc">Modo de red</string>
   <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (auto)"</string>
+  <string name="preferred_network_mode_3g_2g_auto">"3G/2G (auto)"</string>
+  <string name="cf_setting_mobile_data_alert">Active los datos móviles y asegúrese que el Wi-Fi esté apagado</string>
+  <string name="cf_setting_mobile_data_roaming_alert">Activar la itinerancia de datos</string>
+  <string name="no_mobile_data">Datos móviles no disponibles</string>
+  <string name="no_mobile_data_roaming">Itinerancia de datos no disponible</string>
+  <string name="call_barring">Restricción de llamadas</string>
+  <string name="srvcc_video_message">"La videollamada fue degradada a llamada de voz 2G/3G, porque la red 4G no está disponible."</string>
+  <string name="srvcc_message">"La videollamada en 4G fue degradada a llamada de voz 2G/3G, porque la red 4G no está disponible."</string>
 </resources>
