@@ -159,26 +159,6 @@ public class PhoneGlobals extends ContextWrapper {
     // Broadcast receiver for various intent broadcasts (see onCreate())
     private final BroadcastReceiver mReceiver = new PhoneAppBroadcastReceiver();
 
-    /**
-     * The singleton OtaUtils instance used for OTASP calls.
-     *
-     * The OtaUtils instance is created lazily the first time we need to
-     * make an OTASP call, regardless of whether it's an interactive or
-     * non-interactive OTASP call.
-     */
-    public OtaUtils otaUtils;
-
-    // Following are the CDMA OTA information Objects used during OTA Call.
-    // cdmaOtaProvisionData object store static OTA information that needs
-    // to be maintained even during Slider open/close scenarios.
-    // cdmaOtaConfigData object stores configuration info to control visiblity
-    // of each OTA Screens.
-    // cdmaOtaScreenState object store OTA Screen State information.
-    public OtaUtils.CdmaOtaProvisionData cdmaOtaProvisionData;
-    public OtaUtils.CdmaOtaConfigData cdmaOtaConfigData;
-    public OtaUtils.CdmaOtaScreenState cdmaOtaScreenState;
-    public OtaUtils.CdmaOtaInCallScreenUiState cdmaOtaInCallScreenUiState;
-
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -366,11 +346,6 @@ public class PhoneGlobals extends ContextWrapper {
             PhoneUtils.setAudioMode(mCM);
         }
 
-        cdmaOtaProvisionData = new OtaUtils.CdmaOtaProvisionData();
-        cdmaOtaConfigData = new OtaUtils.CdmaOtaConfigData();
-        cdmaOtaScreenState = new OtaUtils.CdmaOtaScreenState();
-        cdmaOtaInCallScreenUiState = new OtaUtils.CdmaOtaInCallScreenUiState();
-
         // XXX pre-load the SimProvider so that it's ready
         resolver.getType(Uri.parse("content://icc/adn"));
 
@@ -431,43 +406,6 @@ public class PhoneGlobals extends ContextWrapper {
 
     public PersistableBundle getCarrierConfigForSubId(int subId) {
         return configLoader.getConfigForSubId(subId);
-    }
-
-    /**
-     * Handles OTASP-related events from the telephony layer.
-     *
-     * While an OTASP call is active, the CallNotifier forwards
-     * OTASP-related telephony events to this method.
-     */
-    void handleOtaspEvent(Message msg) {
-        if (DBG) Log.d(LOG_TAG, "handleOtaspEvent(message " + msg + ")...");
-
-        if (otaUtils == null) {
-            // We shouldn't be getting OTASP events without ever
-            // having started the OTASP call in the first place!
-            Log.w(LOG_TAG, "handleOtaEvents: got an event but otaUtils is null! "
-                  + "message = " + msg);
-            return;
-        }
-
-        otaUtils.onOtaProvisionStatusChanged((AsyncResult) msg.obj);
-    }
-
-    /**
-     * Similarly, handle the disconnect event of an OTASP call
-     * by forwarding it to the OtaUtils instance.
-     */
-    /* package */ void handleOtaspDisconnect() {
-        if (DBG) Log.d(LOG_TAG, "handleOtaspDisconnect()...");
-
-        if (otaUtils == null) {
-            // We shouldn't be getting OTASP events without ever
-            // having started the OTASP call in the first place!
-            Log.w(LOG_TAG, "handleOtaspDisconnect: otaUtils is null!");
-            return;
-        }
-
-        otaUtils.onOtaspDisconnect();
     }
 
     /**
@@ -618,15 +556,8 @@ public class PhoneGlobals extends ContextWrapper {
         PhoneUtils.displayMMIComplete(mmiCode.getPhone(), getInstance(), mmiCode, null, null);
     }
 
-    private void initForNewRadioTechnology(int phoneId) {
+    private void initForNewRadioTechnology() {
         if (DBG) Log.d(LOG_TAG, "initForNewRadioTechnology...");
-
-        final Phone phone = PhoneFactory.getPhone(phoneId);
-        if (phone == null || !TelephonyCapabilities.supportsOtasp(phone)) {
-            // Clean up OTA for non-CDMA since it is only valid for CDMA.
-            clearOtaState();
-        }
-
         notifier.updateCallNotifierRegistrationsAfterRadioTechnologyChange();
     }
 
@@ -758,11 +689,8 @@ public class PhoneGlobals extends ContextWrapper {
                         intent.getStringExtra(IccCardConstants.INTENT_KEY_ICC_STATE)));
             } else if (action.equals(TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED)) {
                 String newPhone = intent.getStringExtra(PhoneConstants.PHONE_NAME_KEY);
-                int phoneId = intent.getIntExtra(PhoneConstants.PHONE_KEY,
-                        SubscriptionManager.INVALID_PHONE_INDEX);
-                Log.d(LOG_TAG, "Radio technology switched. Now " + newPhone + " (" + phoneId
-                        + ") is active.");
-                initForNewRadioTechnology(phoneId);
+                Log.d(LOG_TAG, "Radio technology switched. Now " + newPhone + " is active.");
+                initForNewRadioTechnology();
             } else if (action.equals(TelephonyIntents.ACTION_SERVICE_STATE_CHANGED)) {
                 handleServiceStateChanged(intent);
             } else if (action.equals(TelephonyIntents.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED)) {
@@ -809,24 +737,6 @@ public class PhoneGlobals extends ContextWrapper {
                 int state = ss.getState();
                 notificationMgr.updateNetworkSelection(state);
             }
-        }
-    }
-
-    // it is safe to call clearOtaState() even if the InCallScreen isn't active
-    public void clearOtaState() {
-        if (DBG) Log.d(LOG_TAG, "- clearOtaState ...");
-        if (otaUtils != null) {
-            otaUtils.cleanOtaScreen(true);
-            if (DBG) Log.d(LOG_TAG, "  - clearOtaState clears OTA screen");
-        }
-    }
-
-    // it is safe to call dismissOtaDialogs() even if the InCallScreen isn't active
-    public void dismissOtaDialogs() {
-        if (DBG) Log.d(LOG_TAG, "- dismissOtaDialogs ...");
-        if (otaUtils != null) {
-            otaUtils.dismissAllOtaDialogs();
-            if (DBG) Log.d(LOG_TAG, "  - dismissOtaDialogs clears OTA dialogs");
         }
     }
 
