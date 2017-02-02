@@ -81,6 +81,7 @@
   <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
   <string name="preferred_network_mode_global_summary_cm">優先ネットワークモード: グローバル（CDMA/EvDo/LTE/GSM/WCDMA）</string>
   <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
+  <string name="callFailed_incoming_cb_enabled">パーティがすべての着信を禁止しています。</string>
   <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
   <string name="callUnanswered_forwarded">通話は応答されずに転送されました</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
@@ -151,7 +152,7 @@
   <string name="fdn_invalid_number_cm">番号が空欄であるか20桁を超えているため、FDNは更新されませんでした。</string>
   <string name="fdn_service_unavailable">FDNサービスは利用できません。</string>
   <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <string name="exportContacts">SIMカードに連絡先をエクスポート中\u2026</string>
+  <string name="exportContacts">SIMカードに連絡先をエクスポート中...</string>
   <!-- Title of the List shown for SIM Contacts Management Activity.  -->
   <string name="simContacts_title_cm">SIMカードの連絡先を管理</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->

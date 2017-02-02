@@ -57,27 +57,27 @@
   <!-- Label text for PUK entry widget on Depersonalization panel -->
   <string name="label_puk">PUKを入力</string>
   <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="requesting_nw_subset_unlock">SIMネットワークサブセットロック解除をリクエスト中\u2026</string>
+  <string name="requesting_nw_subset_unlock">SIMネットワークサブセットロック解除をリクエスト中...</string>
   <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="requesting_sp_unlock">SIMサービスプロバイダロック解除をリクエスト中\u2026</string>
+  <string name="requesting_sp_unlock">SIMサービスプロバイダロック解除をリクエスト中...</string>
   <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="requesting_corporate_unlock">SIMコーポレートロック解除をリクエスト中\u2026</string>
+  <string name="requesting_corporate_unlock">SIMコーポレートロック解除をリクエスト中...</string>
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="requesting_sim_unlock">SIMロック解除をリクエスト中\u2026</string>
+  <string name="requesting_sim_unlock">SIMロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="requesting_rnw1_unlock">RUIMネットワーク1ロック解除をリクエスト中\u2026</string>
+  <string name="requesting_rnw1_unlock">RUIMネットワーク1ロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="requesting_rnw2_unlock">RUIMネットワーク2ロック解除をリクエスト中\u2026</string>
+  <string name="requesting_rnw2_unlock">RUIMネットワーク2ロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="requesting_rhrpd_unlock">RUIM HRPDロック解除をリクエスト中\u2026</string>
+  <string name="requesting_rhrpd_unlock">RUIM HRPDロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="requesting_rsp_unlock">RUIMサービスプロバイダロック解除をリクエスト中\u2026</string>
+  <string name="requesting_rsp_unlock">RUIMサービスプロバイダロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="requesting_rc_unlock">RUIMコーポレートロック解除をリクエスト中\u2026</string>
+  <string name="requesting_rc_unlock">RUIMコーポレートロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="requesting_ruim_unlock">RUIMロック解除をリクエスト中\u2026</string>
+  <string name="requesting_ruim_unlock">RUIMロック解除をリクエスト中...</string>
   <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="requesting_puk_unlock">PUKロック解除をリクエスト中\u2026</string>
+  <string name="requesting_puk_unlock">PUKロック解除をリクエスト中...</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
   <string name="nw_subset_unlock_failed">SIMネットワークサブセットロック解除のリクエストを完了できませんでした。</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
