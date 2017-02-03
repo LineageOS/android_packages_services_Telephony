@@ -1366,6 +1366,12 @@
         Unable to connect, please insert a valid SIM card.
     </string>
 
+    <!-- Call failure reason displayed when an in-progress WIFI call fails due to a loss of WIFI
+         connectivity, or the WIFI signal has degraded to the point the call cannot continue. -->
+    <string name="callFailed_wifi_lost">
+        Wi-Fi connection lost.  Call ended.
+    </string>
+
     <!-- The title for the change voicemail PIN activity -->
     <string name="change_pin_title">Change Voicemail PIN</string>
     <!-- The label for the continue button in change voicemail PIN activity -->
