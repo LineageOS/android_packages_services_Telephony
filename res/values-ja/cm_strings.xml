@@ -164,7 +164,7 @@
   <string name="exportContactScreen">SIMに携帯電話の連絡先をエクスポート</string>
   <string name="addSimEntries">SIMの連絡先を追加</string>
   <string name="deleteAllSimEntries">SIMのすべての連絡先を削除</string>
-  <string name="deleteSimContacts">SIMの連絡先を削除中\u2026</string>
+  <string name="deleteSimContacts">SIMの連絡先を削除中...</string>
   <string name="editContact">編集</string>
   <string name="sendSms">SMSを送信</string>
   <string name="delete">削除</string>

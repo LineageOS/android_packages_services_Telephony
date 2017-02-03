@@ -33,7 +33,7 @@
 <resources>
   <!-- IMS settings related strings -->
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">Configuración de IMS</string>
+  <string name="ims_settings">Ajustes de IMS</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
   <string name="label_nsdp">PIN de desbloqueo de subred de tarjeta SIM</string>
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
