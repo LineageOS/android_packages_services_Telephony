@@ -130,6 +130,7 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.DATA_LIMIT_REACHED:
             case android.telephony.DisconnectCause.DIALED_ON_WRONG_SLOT:
             case android.telephony.DisconnectCause.IMEI_NOT_ACCEPTED:
+            case android.telephony.DisconnectCause.WIFI_LOST:
                 return DisconnectCause.ERROR;
 
             case android.telephony.DisconnectCause.DIALED_MMI:
@@ -384,6 +385,10 @@ public class DisconnectCauseUtil {
 
             case android.telephony.DisconnectCause.IMEI_NOT_ACCEPTED:
                 resourceId = R.string.callFailed_imei_not_accepted;
+                break;
+
+            case android.telephony.DisconnectCause.WIFI_LOST:
+                resourceId = R.string.callFailed_wifi_lost;
                 break;
 
             default:
