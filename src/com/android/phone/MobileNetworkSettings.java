@@ -815,11 +815,17 @@ public class MobileNetworkSettings extends PreferenceActivity
             switch (buttonNetworkMode) {
                 case Phone.NT_MODE_WCDMA_PREF:
                 case Phone.NT_MODE_GSM_ONLY:
-                case Phone.NT_MODE_LTE_GSM_WCDMA:
-                case Phone.NT_MODE_LTE_CDMA_EVDO_GSM_WCDMA:
+                case Phone.NT_MODE_WCDMA_ONLY:
+                case Phone.NT_MODE_GSM_UMTS:
                 case Phone.NT_MODE_CDMA:
                 case Phone.NT_MODE_CDMA_NO_EVDO:
+                case Phone.NT_MODE_EVDO_NO_CDMA:
+                case Phone.NT_MODE_GLOBAL:
                 case Phone.NT_MODE_LTE_CDMA_AND_EVDO:
+                case Phone.NT_MODE_LTE_GSM_WCDMA:
+                case Phone.NT_MODE_LTE_CDMA_EVDO_GSM_WCDMA:
+                case Phone.NT_MODE_LTE_ONLY:
+                case Phone.NT_MODE_LTE_WCDMA:
                 case Phone.NT_MODE_TDSCDMA_ONLY:
                 case Phone.NT_MODE_TDSCDMA_WCDMA:
                 case Phone.NT_MODE_LTE_TDSCDMA:
