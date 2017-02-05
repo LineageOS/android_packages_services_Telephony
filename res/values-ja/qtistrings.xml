@@ -57,27 +57,27 @@
   <!-- Label text for PUK entry widget on Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">PUKを入力</string>
   <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">SIMネットワークサブセットロック解除をリクエスト中\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">SIMネットワークサブセットロック解除をリクエスト中...</string>
   <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">SIMサービスプロバイダロック解除をリクエスト中\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">SIMサービスプロバイダロック解除をリクエスト中...</string>
   <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">SIMコーポレートロック解除をリクエスト中\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">SIMコーポレートロック解除をリクエスト中...</string>
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">SIMロック解除をリクエスト中\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">SIMロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">RUIMネットワーク1ロック解除をリクエスト中\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">RUIMネットワーク1ロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">RUIMネットワーク2ロック解除をリクエスト中\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">RUIMネットワーク2ロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">RUIM HRPDロック解除をリクエスト中\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">RUIM HRPDロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">RUIMサービスプロバイダロック解除をリクエスト中\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">RUIMサービスプロバイダロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">RUIMコーポレートロック解除をリクエスト中\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">RUIMコーポレートロック解除をリクエスト中...</string>
   <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">RUIMロック解除をリクエスト中\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">RUIMロック解除をリクエスト中...</string>
   <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">PUKロック解除をリクエスト中\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">PUKロック解除をリクエスト中...</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">SIMネットワークサブセットロック解除のリクエストを完了できませんでした。</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
