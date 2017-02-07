@@ -335,6 +335,10 @@ public class ImsConference extends Conference {
                 Connection.CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO,
                 can(capabilities, Connection.CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO));
 
+        conferenceCapabilities = changeBitmask(conferenceCapabilities,
+                Connection.CAPABILITY_CAN_PAUSE_VIDEO,
+                mConferenceHost.getVideoPauseSupported() && isVideoCapable());
+
         return conferenceCapabilities;
     }
 
@@ -942,6 +946,16 @@ public class ImsConference extends Conference {
                 setOnHold();
                 break;
         }
+    }
+
+    /**
+     * Determines if the host of this conference is capable of video calling.
+     * @return {@code true} if video capable, {@code false} otherwise.
+     */
+    private boolean isVideoCapable() {
+        int capabilities = mConferenceHost.getConnectionCapabilities();
+        return can(capabilities, Connection.CAPABILITY_SUPPORTS_VT_LOCAL_BIDIRECTIONAL)
+                && can(capabilities, Connection.CAPABILITY_SUPPORTS_VT_REMOTE_BIDIRECTIONAL);
     }
 
     private void updateStatusHints() {
