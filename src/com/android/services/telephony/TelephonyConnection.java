@@ -1549,6 +1549,14 @@ abstract class TelephonyConnection extends Connection {
     }
 
     /**
+     * @return {@code true} if this connection supports pausing the outgoing video using the
+     * {@link android.telecom.VideoProfile#STATE_PAUSED} VideoState.
+     */
+    public boolean getVideoPauseSupported() {
+        return mIsVideoPauseSupported;
+    }
+
+    /**
      * Sets whether this connection supports conference calling.
      * @param isConferenceSupported {@code true} if conference calling is supported by this
      *                                         connection, {@code false} otherwise.
