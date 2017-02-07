@@ -150,4 +150,5 @@
   <string name="cf_setting_mobile_data_roaming_alert">Proszę włączyć roaming danych</string>
   <string name="no_mobile_data">Transmisja danych jest niedostępna</string>
   <string name="no_mobile_data_roaming">Roaming danych jest niedostępny</string>
+  <string name="call_barring">Odrzucanie połączeń</string>
 </resources>
