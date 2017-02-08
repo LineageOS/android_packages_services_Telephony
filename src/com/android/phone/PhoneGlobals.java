@@ -336,7 +336,7 @@ public class PhoneGlobals extends ContextWrapper {
             registerReceiver(mReceiver, intentFilter);
 
             //set the default values for the preferences in the phone.
-            PreferenceManager.setDefaultValues(this, R.xml.network_setting, false);
+            PreferenceManager.setDefaultValues(this, R.xml.network_setting_fragment, false);
 
             PreferenceManager.setDefaultValues(this, R.xml.call_feature_setting, false);
 
