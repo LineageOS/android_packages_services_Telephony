@@ -18,6 +18,8 @@ package com.android.phone;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -44,10 +46,12 @@ public class RoamingDialogFragment extends DialogFragment implements OnClickList
     public void onAttach(Context context) {
         super.onAttach(context);
         // Verify host activity implemented callback interface
+        FragmentManager fragmentManager = getFragmentManager();
+        Fragment fragment = fragmentManager.findFragmentById(R.id.network_setting_content);
         try {
-            mListener = (RoamingDialogListener) getActivity();
+            mListener = (RoamingDialogListener) fragment;
         } catch (ClassCastException e) {
-            throw new ClassCastException(getActivity().toString() +
+            throw new ClassCastException(fragment.toString() +
                     "must implement RoamingDialogListener");
         }
     }

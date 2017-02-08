@@ -16,18 +16,14 @@
 
 package com.android.phone;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
 import android.os.PersistableBundle;
 import android.os.SystemProperties;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
+import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.telephony.CarrierConfigManager;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
 import com.android.internal.telephony.Phone;
@@ -48,19 +44,19 @@ public class CdmaOptions {
     private static final String BUTTON_CARRIER_SETTINGS_KEY = "carrier_settings_key";
     private static final String BUTTON_APN_EXPAND_KEY = "button_apn_key_cdma";
 
-    private PreferenceActivity mPrefActivity;
+    private PreferenceFragment mPrefFragment;
     private PreferenceScreen mPrefScreen;
     private Phone mPhone;
 
-    public CdmaOptions(PreferenceActivity prefActivity, PreferenceScreen prefScreen, Phone phone) {
-        mPrefActivity = prefActivity;
+    public CdmaOptions(PreferenceFragment prefFragment, PreferenceScreen prefScreen, Phone phone) {
+        mPrefFragment = prefFragment;
         mPrefScreen = prefScreen;
         mPhone = phone;
         create();
     }
 
     protected void create() {
-        mPrefActivity.addPreferencesFromResource(R.xml.cdma_options);
+        mPrefFragment.addPreferencesFromResource(R.xml.cdma_options);
 
         mButtonAPNExpand = (PreferenceScreen) mPrefScreen.findPreference(BUTTON_APN_EXPAND_KEY);
         boolean removedAPNExpand = false;
@@ -84,7 +80,7 @@ public class CdmaOptions {
                             // This will setup the Home and Search affordance
                             intent.putExtra(":settings:show_fragment_as_subsetting", true);
                             intent.putExtra("sub_id", mPhone.getSubId());
-                            mPrefActivity.startActivity(intent);
+                            mPrefFragment.startActivity(intent);
                             return true;
                         }
             });
