@@ -450,7 +450,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"لإجراء مكالمة، أدخل رقمًا صالحًا."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"أخفقت المكالمة."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"لا يمكن إضافة مكالمة في الوقت الحالي."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"‏جارٍ بدء تسلسل MMI..."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"الخدمة ليست متوفرة"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"يتعذر تبديل المكالمات."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"يتعذر فصل المكالمة."</string>
@@ -587,6 +586,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"‏نشطت شريحة SIM خدمتك وحدّثت إمكانات التجوال لهاتفك."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"هناك الكثير من المكالمات النشطة. يرجى إنهاء أو دمج المكالمات الموجودة قبل إجراء مكالمة جديدة."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"‏يتعذر الاتصال، يُرجى إدخال شريحة SIM صالحة."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"‏تم فقدان اتصال Wi-Fi. تم إنهاء المكالمة."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"تغيير رقم التعريف الشخصي للبريد الصوتي"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"متابعة"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"إلغاء"</string>

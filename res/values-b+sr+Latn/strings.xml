@@ -450,7 +450,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Da biste uputili poziv, unesite važeći broj."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Poziv nije uspeo."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Trenutno nije moguće dodati poziv."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"Pokretanje MMI sekvence"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Usluga nije podržana"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Zamena poziva nije uspela."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Razdvajanje poziva nije uspelo."</string>
@@ -578,6 +577,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM kartica je aktivirala uslugu i ažurirala funkcije rominga na telefonu."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Ima previše aktivnih poziva. Završite ili objedinite postojeće pozive pre nego što uputite novi."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Povezivanje nije uspelo, ubacite važeću SIM karticu."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi veza je prekinuta. Poziv je završen."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Promenite PIN kôd govorne pošte"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Nastavi"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Otkaži"</string>

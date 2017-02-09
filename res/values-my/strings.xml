@@ -450,7 +450,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"ဖုန်းခေါ်ရန်အတွက်၊ သင့်လျော်သည့်နံပါတ် ရိုက်ထည့်ပါ။"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"ခေါ်ဆို၍ မရပါ။"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"ယခုအချိန်တွင် ခေါ်ဆိုမှု ထပ်မထည့်နိုင်ပါ။"</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"MMI အမှတ်စဉ်ကို စတင်နေပါသည်…"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"ဤဝန်ဆောင်မှုအား မပံ့ပိုးပါ။"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"ဖုန်းခေါ်ခြင်းများကြား မကူးပ​ြောင်းနိုင်ပါ။"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"ဖုန်းခေါ်ခြင်းအား မခွဲထုတ်နိုင်ပါ။"</string>
@@ -575,6 +574,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM ကဒ်သည် သင့် ဖုန်းဝန်ဆောင်မှုအား အသက်သွင်းခဲ့ပြီး သင့်ဖုန်း၏ ကွန်ယက်ပြင်ပဒေတာသုံးနိုင်စွမ်းအား ပြင်ဆင်မွမ်းမံပြီးဖြစ်၏။"</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"လက်ရှိခေါ်ဆိုမှုများ အလွန်များနေပါသည်။ ခေါ်ဆိုမှုအသစ်တစ်ခု မပြုလုပ်ခင် လက်ရှိဖုန်းခေါ်ဆိုမှုများကို အဆုံးသတ် (သို့) ပေါင်း လိုက်ပါ။"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"ချိတ်ဆက် မရပါ၊ ကျေးဇူးပြုပြီး မှန်ကန်သည့် SIM ကဒ်ကို ထည့်ပေးပါ။"</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi ချိတ်ဆက်မှု မရှိတော့ပါ။ ခေါ်ဆိုမှု ပြီးဆုံးပါပြီ။"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"အသံမေးလ်ပင်နံပါတ် ပြောင်းရန်"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ဆက်လုပ်ရန်"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"မလုပ်တော့"</string>

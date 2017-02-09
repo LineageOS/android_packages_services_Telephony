@@ -454,7 +454,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Per effettuare una chiamata, inserisci un numero valido."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Chiamata non riuscita."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Al momento non è possibile aggiungere la chiamata."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"Inizio sequenza MMI..."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Servizio non supportato"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Impossibile cambiare chiamata."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Impossibile separare la chiamata."</string>
@@ -579,6 +578,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Una scheda SIM ha attivato il tuo servizio e ha aggiornato le funzionalità di roaming del telefono."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Ci sono troppe chiamate attive. Termina o unisci le chiamate esistenti prima di effettuarne una nuova."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Impossibile collegarsi. Inserisci una scheda SIM valida."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Connessione Wi-Fi interrotta. Chiamata terminata."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Cambia PIN segreteria"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continua"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Annulla"</string>

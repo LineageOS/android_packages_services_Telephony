@@ -450,7 +450,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"発信するには、有効な番号を入力してください。"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"発信できませんでした。"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"現在、通話を追加できません。"</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"MMIシーケンスを開始中..."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"サービスはサポートされていません"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"通話を切り替えられません。"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"通話を分割できません。"</string>
@@ -575,6 +574,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIMカードでサービスが有効になり、スマートフォンのローミング機能が更新されています。"</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"通話中の電話の数が多すぎます。新しく通話を発信するには、まず既存の通話を終了するか、統合してグループ通話にしてください。"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"接続できません。有効な SIM カードを挿入してください。"</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi 接続が失われたため、通話が終了しました。"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ボイスメール PIN の変更"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"続行"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"キャンセル"</string>

@@ -450,7 +450,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Hívásindításhoz adjon meg egy érvényes számot."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Sikertelen hívás."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Jelenleg nem lehet hívást indítani."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"MMI-sorozat indítása..."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"A szolgáltatás nem támogatott"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"A hívások közötti váltás sikertelen."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"A híváselkülönítés sikertelen."</string>
@@ -575,6 +574,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Egy SIM kártya aktiválta a szolgáltatást, valamint frissítette a telefon barangolási képességeit."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Túl sok aktív hívás van. Új hívás indítása előtt fejezzen be vagy vonjon össze meglévő hívásokat."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Sikertelen csatlakozás. Helyezzen be egy működő SIM-kártyát."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"A Wi-Fi-kapcsolat megszakadt. A hívás befejeződött."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"A hangposta PIN-kódjának módosítása"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Folytatás"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Mégse"</string>

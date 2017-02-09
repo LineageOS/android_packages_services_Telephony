@@ -450,7 +450,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"برای برقراری تماس، یک شماره معتبر وارد کنید."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"تماس ناموفق بود."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"فعلاً نمی‌توانید تماس اضافه کنید."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"‏شروع ترتیب MMI..."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"سرویس پشتیبانی نمی‌شود"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"نمی‌توانید بین تماس‌ها جابجا شوید."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"نمی‌توانید تماس را جدا کنید."</string>
@@ -575,6 +574,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"یک سیم‌کارت سرویس شما را فعال کرده است و قابلیت‌های رومینگ تلفنتان را به‌روز کرده است."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"تعداد زیادی تماس فعال وجود دارد. قبل از برقراری تماس جدید، لطفاً به تماس‌های موجود پایان دهید یا آنها را ادغام کنید."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"مرتبط نشد، لطفاً سیم کارت معتبری را وارد کنید."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"اتصال وای‌فای قطع شد. تماس پایان یافت."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"تغییر پین پست صوتی"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ادامه"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"لغو"</string>

@@ -450,7 +450,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Untuk melakukan panggilan telepon, masukkan nomor yang valid."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Telepon gagal."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Panggilan tidak dapat ditambahkan untuk saat ini."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"Memulai urutan MMI..."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Layanan tidak didukung"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Tidak dapat berganti panggilan telepon."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Tidak dapat memisahkan panggilan telepon."</string>
@@ -575,6 +574,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Kartu SIM telah mengaktifkan layanan dan memperbarui kemampuan roaming ponsel."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Ada terlalu banyak panggilan aktif. Akhiri atau gabungkan panggilan yang ada sebelum melakukan panggilan baru."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Tidak dapat tersambung, masukkan kartu SIM yang valid."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Sambungan Wi-Fi terputus. Panggilan diakhiri."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Ubah PIN Pesan Suara"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Lanjutkan"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Batal"</string>

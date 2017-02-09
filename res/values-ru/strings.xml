@@ -452,7 +452,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Недействительный номер."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Не удалось отправить вызов."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Невозможно позвонить в данный момент."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"Запуск последовательности MMI..."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Сервис не поддерживается"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Не удалось переключить вызов."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Не удалось разделить вызов."</string>
@@ -583,6 +582,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"В вашем телефоне уже настроен роуминг и активирована SIM-карта."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Слишком много активных вызовов. Чтобы выполнить новый вызов, завершите или объедините существующие."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Ошибка подключения. Вставьте поддерживаемую SIM-карту."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Соединение по Wi-Fi разорвано. Вызов завершен."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Сменить PIN-код голосовой почты"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Продолжить"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Отмена"</string>

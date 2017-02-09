@@ -450,7 +450,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Kad galėtumėte paskambinti, įveskite tinkamą numerį."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Paskambinti nepavyko."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Šiuo metu skambučio atlikti negalima."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"Paleidžiama MMI seka..."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Paslauga nepalaikoma"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Nepavyko perjungti skambučių."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nepavyko atskirti skambučio."</string>
@@ -581,6 +580,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM kortelė suaktyvino paslaugą ir atnaujino telefono tarptinklinio duomenų ryšio funkcijas."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Yra per daug aktyvių skambučių. Prieš skambindami kitu numeriu, užbaikite ar sujunkite esamus skambučius."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Nepavyko užmegzti ryšio. Įdėkite tinkamą SIM kortelę."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"„Wi-Fi“ ryšys prarastas. Skambutis baigėsi."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Balso pašto PIN kodo keitimas"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Tęsti"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Atšaukti"</string>

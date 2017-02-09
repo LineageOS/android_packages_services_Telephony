@@ -450,7 +450,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Ili upige simu, weka nambari sahihi."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Imeshindwa kupiga simu."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Hangout haiwezi kuongezwa kwa wakati huu."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"Inaanzisha msururu wa MMI…"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Huduma haiwezi kutumika."</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Haiwezi kubadili simu."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Haiwezi kutenganisha simu."</string>
@@ -575,6 +574,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM kadi yako imeanzisha huduma yako na kusasisha uwezo wa simu yako wa kutumia mitandao mingine."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Kuna simu nyingi mno zinazoendelea. Tafadhali kata au uunganishe simu zinazoendelea kabla hujapiga nyingine."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Imeshindwa kuunganisha, tafadhali ingiza SIM kadi sahihi."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Muunganisho wa Wi-Fi umekatika. Simu imekatika."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Badilisha PIN ya Ujumbe wa Sauti"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Endelea"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Ghairi"</string>

@@ -450,7 +450,6 @@
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"За да извършите обаждане, въведете валиден номер."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Обаждането не бе успешно."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Понастоящем обаждането не може да бъде добавено."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"Стартира се последователността MMI…"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Услугата не се поддържа"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Обажданията не могат да се превключат."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Обаждането не може да се отдели."</string>
@@ -575,6 +574,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM картата е активирала клетъчните ви услуги и е актуализирала възможностите за роуминг на телефона ви."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Активните обаждания са твърде много. Моля, завършете или обединете съществуващи обаждания, преди да започнете ново."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Не може да се установи връзка. Моля, поставете валидна SIM карта."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Връзката с Wi-Fi прекъсна. Обаждането завърши."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Промяна на ПИН за гласовата поща"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Напред"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Отказ"</string>
