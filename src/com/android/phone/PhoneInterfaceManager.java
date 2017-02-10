@@ -38,6 +38,7 @@ import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.os.WorkSource;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.service.carrier.CarrierIdentifier;
@@ -46,6 +47,7 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CellInfo;
+import android.telephony.ClientRequestStats;
 import android.telephony.IccOpenLogicalChannelResponse;
 import android.telephony.ModemActivityInfo;
 import android.telephony.NeighboringCellInfo;
@@ -275,7 +277,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_NEIGHBORING_CELL_DONE,
                             request);
-                    mPhone.getNeighboringCids(onCompleted);
+                    mPhone.getNeighboringCids(onCompleted, (WorkSource)request.argument);
                     break;
 
                 case EVENT_NEIGHBORING_CELL_DONE:
@@ -1526,7 +1528,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (phone == null) {
                 return null;
             }
-            phone.getCellLocation().fillInNotifierBundle(data);
+
+            WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
+            phone.getCellLocation(workSource).fillInNotifierBundle(data);
             return data;
         } else {
             log("getCellLocation: suppress non-active user");
@@ -1600,9 +1604,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             ArrayList<NeighboringCellInfo> cells = null;
 
+            WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
             try {
                 cells = (ArrayList<NeighboringCellInfo>) sendRequest(
-                        CMD_HANDLE_NEIGHBORING_CELL, null,
+                        CMD_HANDLE_NEIGHBORING_CELL, workSource,
                         SubscriptionManager.INVALID_SUBSCRIPTION_ID);
             } catch (RuntimeException e) {
                 Log.e(LOG_TAG, "getNeighboringCellInfo " + e);
@@ -1628,10 +1633,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (checkIfCallerIsSelfOrForegroundUser() ||
                 checkCallerInteractAcrossUsersFull()) {
             if (DBG_LOC) log("getAllCellInfo: is active user");
+            WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
             List<CellInfo> cellInfos = new ArrayList<CellInfo>();
             for (Phone phone : PhoneFactory.getPhones()) {
-                final List<CellInfo> info = phone.getAllCellInfo();
-                if (info != null) cellInfos.addAll(phone.getAllCellInfo());
+                final List<CellInfo> info = phone.getAllCellInfo(workSource);
+                if (info != null) cellInfos.addAll(info);
             }
             return cellInfos;
         } else {
@@ -1642,7 +1648,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public void setCellInfoListRate(int rateInMillis) {
-        mPhone.setCellInfoListRate(rateInMillis);
+        WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
+        mPhone.setCellInfoListRate(rateInMillis, workSource);
     }
 
     @Override
@@ -3407,5 +3414,34 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (phone != null) {
             phone.setPolicyDataEnabled(enabled);
         }
+    }
+
+    /**
+     * Get Client request stats
+     * @return List of Client Request Stats
+     * @hide
+     */
+    @Override
+    public List<ClientRequestStats> getClientRequestStats(String callingPackage, int subId) {
+        if (!canReadPhoneState(callingPackage, "getClientRequestStats")) {
+            return null;
+        }
+
+        Phone phone = getPhone(subId);
+        if (phone != null) {
+            return phone.getClientRequestStats();
+        }
+
+        return null;
+    }
+
+    private WorkSource getWorkSource(WorkSource workSource, int uid) {
+        if (workSource != null) {
+            return workSource;
+        }
+
+        String packageName = mPhone.getContext().getPackageManager().getNameForUid(uid);
+        workSource = new WorkSource(uid, packageName);
+        return workSource;
     }
 }
