@@ -149,7 +149,7 @@
   <string name="cf_setting_mobile_data_alert">Моля включете мобилни данни и се уверете, че WLAN е изключен</string>
   <string name="cf_setting_mobile_data_roaming_alert">Моля включете данни в роуминг</string>
   <string name="no_mobile_data">Мобилни данни не са налични</string>
-  <string name="no_mobile_data_roaming">Роуминг не е наличен</string>
+  <string name="no_mobile_data_roaming">Не са достъпни мобилни данни в роуминг</string>
   <string name="call_barring">Ограничаване на повикванията</string>
   <string name="srvcc_video_message">"Видео повикване е понижено до 2G / 3G гласово повикване, защото 4G мрежа не е налична."</string>
   <string name="srvcc_message">"4G гласово повикване е понижено до 2G / 3G гласово повикване, защото 4G мрежа не е налична."</string>
