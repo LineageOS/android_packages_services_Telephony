@@ -16,12 +16,15 @@
 package com.android.phone.otasp;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.telephony.ServiceState;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
@@ -80,7 +83,7 @@ public class OtaspActivationService extends Service {
         logd("OTASP call tried " + sOtaspCallRetries + " times");
         if (sOtaspCallRetries > OTASP_CALL_RETRIES_MAX) {
             logd("OTASP call exceeds max retries => activation failed");
-            //TODO updateActivationState(DEACTIVATED)
+            updateActivationState(this, false);
             onComplete();
             return;
         }
@@ -180,10 +183,10 @@ public class OtaspActivationService extends Service {
         if (mPhone.getState().equals(PhoneConstants.State.IDLE)) {
             if (mIsOtaspCallCommitted) {
                 logd("Otasp activation succeed");
-                //TODO updateActivationState(ACTIVATED)
+                updateActivationState(this, true);
             } else {
                 logd("Otasp activation failed");
-                //TODO updateActivationState(DEACTIVATED)
+                updateActivationState(this, false);
             }
             onComplete();
         }
@@ -201,6 +204,15 @@ public class OtaspActivationService extends Service {
         mPhone.unregisterForServiceStateChanged(mHandler);
         mPhone.unregisterForPreciseCallStateChanged(mHandler);
         mHandler.removeCallbacksAndMessages(null);
+    }
+
+    public static void updateActivationState(Context context, boolean success) {
+        final TelephonyManager mTelephonyMgr = TelephonyManager.from(context);
+        int state = (success) ? TelephonyManager.SIM_ACTIVATION_STATE_ACTIVATED :
+                TelephonyManager.SIM_ACTIVATION_STATE_DEACTIVATED;
+        int subId = SubscriptionManager.getDefaultSubscriptionId();
+        mTelephonyMgr.setVoiceActivationState(subId, state);
+        mTelephonyMgr.setDataActivationState(subId, state);
     }
 
     private static void logd(String s) {
