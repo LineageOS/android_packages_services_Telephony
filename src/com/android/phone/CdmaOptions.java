@@ -31,7 +31,6 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
 import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyProperties;
 
 /**
@@ -46,7 +45,6 @@ public class CdmaOptions {
 
     private static final String BUTTON_CDMA_SYSTEM_SELECT_KEY = "cdma_system_select_key";
     private static final String BUTTON_CDMA_SUBSCRIPTION_KEY = "cdma_subscription_key";
-    private static final String BUTTON_CDMA_ACTIVATE_DEVICE_KEY = "cdma_activate_device_key";
     private static final String BUTTON_CARRIER_SETTINGS_KEY = "carrier_settings_key";
     private static final String BUTTON_APN_EXPAND_KEY = "button_apn_key_cdma";
 
@@ -106,16 +104,6 @@ public class CdmaOptions {
             log("Both NV and Ruim NOT supported, REMOVE subscription type selection");
             mPrefScreen.removePreference(mPrefScreen
                                 .findPreference(BUTTON_CDMA_SUBSCRIPTION_KEY));
-        }
-
-        final boolean voiceCapable = mPrefActivity.getResources().getBoolean(
-                com.android.internal.R.bool.config_voice_capable);
-        final boolean isLTE = mPhone.getLteOnCdmaMode() == PhoneConstants.LTE_ON_CDMA_TRUE;
-        if (voiceCapable || isLTE) {
-            // This option should not be available on voice-capable devices (i.e. regular phones)
-            // and is replaced by the LTE data service item on LTE devices
-            mPrefScreen.removePreference(
-                    mPrefScreen.findPreference(BUTTON_CDMA_ACTIVATE_DEVICE_KEY));
         }
 
         // Read platform settings for carrier settings

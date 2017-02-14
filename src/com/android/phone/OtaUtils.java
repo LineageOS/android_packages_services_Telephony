@@ -87,6 +87,10 @@ public class OtaUtils {
            "com.android.phone.PERFORM_CDMA_PROVISIONING";
 
     // Intent action to launch activation on a non-voice capable device
+    /**
+     * @deprecated platform no longer supports voiceless cdma provisioning,
+     * only hands free activation.
+     */
     public static final String ACTION_PERFORM_VOICELESS_CDMA_PROVISIONING =
             "com.android.phone.PERFORM_VOICELESS_CDMA_PROVISIONING";
 
