@@ -36,10 +36,11 @@ public class OtaspSimStateReceiver extends BroadcastReceiver {
         @Override
         public void onOtaspChanged(int otaspMode) {
             logd("onOtaspChanged: otaspMode=" + otaspMode);
-            if (otaspMode == ServiceStateTracker.OTASP_NEEDED && isCarrierSupported()
-                    && PhoneGlobals.getPhone().getIccRecordsLoaded()) {
+            if (otaspMode == ServiceStateTracker.OTASP_NEEDED) {
                 logd("otasp activation required, start otaspActivationService");
                 mContext.startService(new Intent(mContext, OtaspActivationService.class));
+            } else if (otaspMode == ServiceStateTracker.OTASP_NOT_NEEDED) {
+                OtaspActivationService.updateActivationState(mContext, true);
             }
         }
     };
@@ -72,9 +73,11 @@ public class OtaspSimStateReceiver extends BroadcastReceiver {
         mContext = context;
         if(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED.equals(intent.getAction())) {
             if (DBG) logd("Received intent: " + intent.getAction());
-            final TelephonyManager telephonyManager = (TelephonyManager) context
-                    .getSystemService(Context.TELEPHONY_SERVICE);
-            telephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_OTASP_CHANGED);
+            if (PhoneGlobals.getPhone().getIccRecordsLoaded() && isCarrierSupported()) {
+                final TelephonyManager telephonyManager = TelephonyManager.from(context);
+                telephonyManager.listen(mPhoneStateListener,
+                        PhoneStateListener.LISTEN_OTASP_CHANGED);
+            }
         }
     }
 
