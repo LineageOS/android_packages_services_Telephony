@@ -43,11 +43,11 @@
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN-код разблакоўкі SIM</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN-код разблакаваньня сеткі 1 RUIM-карткі</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN-код разблакоўкі сеткі 1 RUIM</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN-код разблакаваньня сеткі 2 RUIM-карткі</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN-код разблакоўкі сеткі 2 RUIM</string>
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN-код разблакаваньня HRPD RUIM-карткі</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN-код разблакоўкі HRPD RUIM</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">Карпаратыўны PIN-код разблакоўкі RUIM</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
@@ -65,10 +65,11 @@
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Запыт разблакоўкі SIM\u2026</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Запыт разблакаваньня сеткі 1 RUIM-карткі\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Запыт разблакоўкі сеткі 1 RUIM\u2026</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Запыт разблакаваньня сеткі 2 RUIM\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Запыт разблакоўкі сеткі 2 RUIM\u2026</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Запыт разблакоўкі HRPD RUIM\u2026</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Запыт разблакоўкі аператара RUIM\u2026</string>
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
@@ -78,16 +79,23 @@
   <!-- Status message displayed on PUK Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Запыт разблакоўкі PUK-кодам\u2026</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Не атрымалася выканаць запыт на разблакоўку прыватнай сеткі SIM.</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Не атрымалася выканаць запыт на разблакоўку аператара SIM.</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Не атрымалася выканаць запыт на разблакоўку карпаратыўнай SIM.</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Не атрымалася выканаць запыт на разблакоўку SIM.</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Не атрымалася выканаць запыт на разблакоўку сеткі 1 RUIM.</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Не атрымалася выканаць запыт на разблакоўку сеткі 2 RUIM.</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Не атрымалася выканаць запыт на разблакоўку RUIM HRPD.</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Не атрымалася выканаць запыт на разблакоўку аператара RUIM.</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Не атрымалася зрабіць разблакоўку PUK-кодам.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Не атрымалася выканаць запыт на разблакоўку карпаратыўнай RUIM.</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Не атрымалася выканаць запыт на разблакоўку RUIM.</string>
   <!-- Error message displayed on PUK Depersonalization panel -->
@@ -103,23 +111,23 @@
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Не атрымалася зрабіць разблакоўку PUK-кодам.</string>
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Не атрымалася зрабіць разблакоўку PUK-кодам.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Разблакаваньне SIM-сеткі выканана пасьпяхова.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Прыватная сетка SIM разблакавана.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Апэратар SIM-карткі пасьпяхова разблакаваны.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Аператар SIM разблакаваны.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Карпаратыўная SIM-картка пасьпяхова разблакавана.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Карпаратыўная SIM разблакавана.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM-картка разблакавана.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Сетка 1 RUIM разблакавана.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Разблакоўка PUK-кодам выканана.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Сетка 2 RUIM разблакавана.</string>
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD пасьпяхова разблакавана.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD разблакавана.</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Апэратар RUIM-карткі разблакаваны.</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Аператар RUIM разблакаваны.</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Карпаратыўная RUIM-картка пасьпяхова разблакавана.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Карпаратыўная RUIM разблакавана.</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM-картка разблакавана.</string>
   <!-- Success message displayed on PUK Depersonalization panel -->

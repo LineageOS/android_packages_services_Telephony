@@ -47,7 +47,7 @@
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">RUIM 網路 2 解鎖 PIN 碼</string>
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM HRPD 解鎖 PIN 碼</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM 卡 HRPD 解鎖 PIN 碼</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">RUIM 業者解鎖 PIN 碼</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
@@ -83,7 +83,7 @@
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">SIM 卡服務供應商解鎖請求失敗。</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">SIM 卡業者解鎖請求失敗。</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">SIM 卡公司解鎖請求失敗。</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ERROR">SIM 卡解鎖請求失敗。</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
@@ -115,7 +115,7 @@
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">SIM 卡服務供應商解鎖成功。</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM 卡業者解鎖成功。</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM 卡公司解鎖成功。</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM 卡解鎖成功。</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
@@ -125,7 +125,7 @@
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD 解鎖成功。</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM 服務提供商解鎖成功。</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM 服務供應商解鎖成功。</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM 業者解鎖成功。</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->

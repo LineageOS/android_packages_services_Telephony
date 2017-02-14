@@ -43,11 +43,11 @@
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN за откључавање SIM-а</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">RUIM мрежа1 откључава PIN</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN за откључавање RUIM мреже 1</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">RUIM мрежа2 откључава PIN</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN за откључавање RUIM мреже 2</string>
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM hrpd откључава PIN</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN за откључавање RUIM HRPD-а</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN за откључавање корпоративног RUIM-а</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
@@ -65,11 +65,11 @@
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Захтевање откључавања SIM-а\u2026</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Захтевање откључавања RUIM мреже1\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Захтевање откључавања RUIM мреже 1\u2026</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Захтевање откључавања RUIM мреже2\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Захтевање откључавања RUIM мреже 2\u2026</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Захтевање откључавања RUIM hrpd\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Захтевање откључавања RUIM HRPD-а\u2026</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Захтевање откључавања RUIM сервисног провајдера\u2026</string>
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
@@ -87,15 +87,15 @@
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Захтев откључавања SIM-а неуспешан.</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Захтев откључавања RUIM мреже1 неуспешан.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Захтев откључавања RUIM мреже 1 неуспешан.</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Захтев откључавања RUIM мреже2 неуспешан.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Захтев откључавања RUIM мреже 2 неуспешан.</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Захтев откључавања RUIM Hrpd неуспешан.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Захтев откључавања RUIM HRPD-а неуспешан.</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Захтев откључавања RUIM сервисног провајдера неуспешан.</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Захтев откључавања корпоративног RUIM-а неуспешан.</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Захтев откључавања RUIM-а неуспешан.</string>
   <!-- Error message displayed on PUK Depersonalization panel -->
@@ -119,11 +119,11 @@
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Откључавање SIM-а успешно.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Откључавање RUIM мреже1 успешно.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Откључавање RUIM мреже 1 успешно.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Откључавање RUIM мреже 2 успешно.</string>
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM Hrpd откључавање успешно.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">Откључавање RUIM HRPD-а успешно.</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Откључавање RUIM сервисног провајдера успешно.</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
@@ -146,7 +146,6 @@
   <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
   <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (аутоматски)"</string>
   <string name="preferred_network_mode_3g_2g_auto">"3G/2G (аутоматски)"</string>
-  <string name="cf_setting_mobile_data_alert">Укључи мобилне податке и провери да WLAN искључен</string>
   <string name="cf_setting_mobile_data_roaming_alert">Укључите податаке у ромингу</string>
   <string name="no_mobile_data">Мобилни подаци нису доступни</string>
   <string name="no_mobile_data_roaming">Роминг података није доступан</string>
