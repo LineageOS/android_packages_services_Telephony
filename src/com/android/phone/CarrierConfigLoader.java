@@ -392,7 +392,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     private void broadcastConfigChangedIntent(int phoneId) {
         Intent intent = new Intent(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
-        intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT);
+        intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT |
+                Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND);
         SubscriptionManager.putPhoneIdAndSubIdExtra(intent, phoneId);
         ActivityManager.broadcastStickyIntent(intent, UserHandle.USER_ALL);
     }
