@@ -1968,6 +1968,66 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 .getVisualVoicemailSmsFilterSettings(mPhone.getContext(), packageName, subId);
     }
     /**
+     * Sets the voice activation state of a given subId.
+     */
+    @Override
+    public void setVoiceActivationState(int subId, int activationState) {
+        enforceModifyPermissionOrCarrierPrivilege(subId);
+        final Phone phone = getPhone(subId);
+        if (phone != null) {
+            phone.setVoiceActivationState(activationState);
+        } else {
+            loge("setVoiceActivationState fails with invalid subId: " + subId);
+        }
+    }
+
+    /**
+     * Sets the data activation state of a given subId.
+     */
+    @Override
+    public void setDataActivationState(int subId, int activationState) {
+        enforceModifyPermissionOrCarrierPrivilege(subId);
+        final Phone phone = getPhone(subId);
+        if (phone != null) {
+            phone.setDataActivationState(activationState);
+        } else {
+            loge("setVoiceActivationState fails with invalid subId: " + subId);
+        }
+    }
+
+    /**
+     * Returns the voice activation state of a given subId.
+     */
+    @Override
+    public int getVoiceActivationState(int subId, String callingPackage) {
+        if (!canReadPhoneState(callingPackage, "getVoiceActivationStateForSubscriber")) {
+            return TelephonyManager.SIM_ACTIVATION_STATE_UNKNOWN;
+        }
+        final Phone phone = getPhone(subId);
+        if (phone != null) {
+            return phone.getVoiceActivationState();
+        } else {
+            return TelephonyManager.SIM_ACTIVATION_STATE_UNKNOWN;
+        }
+    }
+
+    /**
+     * Returns the data activation state of a given subId.
+     */
+    @Override
+    public int getDataActivationState(int subId, String callingPackage) {
+        if (!canReadPhoneState(callingPackage, "getDataActivationStateForSubscriber")) {
+            return TelephonyManager.SIM_ACTIVATION_STATE_UNKNOWN;
+        }
+        final Phone phone = getPhone(subId);
+        if (phone != null) {
+            return phone.getDataActivationState();
+        } else {
+            return TelephonyManager.SIM_ACTIVATION_STATE_UNKNOWN;
+        }
+    }
+
+    /**
      * Returns the unread count of voicemails
      */
     public int getVoiceMessageCount() {
