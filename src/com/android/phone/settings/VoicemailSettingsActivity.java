@@ -199,7 +199,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
     private SubscriptionInfoHelper mSubscriptionInfoHelper;
     private OmtpVvmCarrierConfigHelper mOmtpVvmCarrierConfigHelper;
 
-    private EditPhoneNumberPreference mSubMenuVoicemailSettings;
+    private EditPhoneNumberPreference mSubMenuVoicemailSettings = null;
     private VoicemailProviderListPreference mVoicemailProviders;
     private PreferenceScreen mVoicemailSettings;
     private VoicemailRingtonePreference mVoicemailNotificationRingtone;
@@ -242,10 +242,11 @@ public class VoicemailSettingsActivity extends PreferenceActivity
         addPreferencesFromResource(R.xml.voicemail_settings);
 
         PreferenceScreen prefSet = getPreferenceScreen();
-        mSubMenuVoicemailSettings = (EditPhoneNumberPreference) findPreference(BUTTON_VOICEMAIL_KEY);
-        mSubMenuVoicemailSettings.setParentActivity(this, VOICEMAIL_PREF_ID, this);
-        mSubMenuVoicemailSettings.setDialogOnClosedListener(this);
-        mSubMenuVoicemailSettings.setDialogTitle(R.string.voicemail_settings_number_label);
+
+        if (mSubMenuVoicemailSettings == null) {
+            mSubMenuVoicemailSettings =
+                    (EditPhoneNumberPreference) findPreference(BUTTON_VOICEMAIL_KEY);
+        }
 
         mVoicemailProviders = (VoicemailProviderListPreference) findPreference(
                 BUTTON_VOICEMAIL_PROVIDER_KEY);
@@ -347,6 +348,13 @@ public class VoicemailSettingsActivity extends PreferenceActivity
             if (dialog != null) {
                 dialog.getActionBar().setDisplayHomeAsUpEnabled(false);
             }
+
+            mSubMenuVoicemailSettings =
+                    (EditPhoneNumberPreference) findPreference(BUTTON_VOICEMAIL_KEY);
+            mSubMenuVoicemailSettings.setParentActivity(this, VOICEMAIL_PREF_ID, this);
+            mSubMenuVoicemailSettings.setDialogOnClosedListener(this);
+            mSubMenuVoicemailSettings.setDialogTitle(R.string.voicemail_settings_number_label);
+            updateVoiceNumberField();
 
             if (preference.getIntent() != null) {
                 if (DBG) log("Invoking cfg intent " + preference.getIntent().getPackage());
