@@ -18,14 +18,10 @@ package com.android.phone;
 
 import android.app.Activity;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.SystemProperties;
-import android.provider.Settings;
 import android.telephony.CarrierConfigManager;
 import android.util.Log;
 
@@ -92,14 +88,6 @@ public class InCallScreenShowActivation extends Activity {
         if (intent.getAction().equals(OtaUtils.ACTION_PERFORM_CDMA_PROVISIONING)) {
 
             PersistableBundle carrierConfig = app.getCarrierConfig();
-            boolean usesHfa = carrierConfig.getBoolean(
-                    CarrierConfigManager.KEY_USE_HFA_FOR_PROVISIONING_BOOL);
-            if (usesHfa) {
-                Log.i(LOG_TAG, "Starting Hfa from ACTION_PERFORM_CDMA_PROVISIONING");
-                startHfa();
-                finish();
-                return;
-            }
 
             boolean usesOtasp = carrierConfig.getBoolean(
                     CarrierConfigManager.KEY_USE_OTASP_FOR_PROVISIONING_BOOL);
@@ -178,66 +166,5 @@ public class InCallScreenShowActivation extends Activity {
         }
 
         finish();
-    }
-
-    /**
-     * On devices that provide a phone initialization wizard (such as Google Setup Wizard),
-     * the wizard displays it's own activation UI. The Hfa activation started by this class
-     * will show a UI or not depending on the status of the setup wizard. If the setup wizard
-     * is running, do not show a UI, otherwise show our own UI since setup wizard will not.
-     *
-     * The method checks two properties:
-     * 1. Does the device require a setup wizard (ro.setupwizard.mode == (REQUIRED|OPTIONAL))
-     * 2. Is device_provisioned set to non-zero--a property that setup wizard sets at completion.
-     * @return true if wizard is running, false otherwise.
-     */
-    private boolean isWizardRunning(Context context) {
-        Intent intent = new Intent("android.intent.action.DEVICE_INITIALIZATION_WIZARD");
-        ResolveInfo resolveInfo = context.getPackageManager().resolveActivity(intent,
-                PackageManager.MATCH_DEFAULT_ONLY);
-        boolean provisioned = Settings.Global.getInt(context.getContentResolver(),
-                Settings.Global.DEVICE_PROVISIONED, 0) != 0;
-        String mode = SystemProperties.get("ro.setupwizard.mode", "REQUIRED");
-        boolean runningSetupWizard = "REQUIRED".equals(mode) || "OPTIONAL".equals(mode);
-        if (DBG) {
-            Log.v(LOG_TAG, "resolvInfo = " + resolveInfo + ", provisioned = " + provisioned
-                    + ", runningSetupWizard = " + runningSetupWizard);
-        }
-        return resolveInfo != null && !provisioned && runningSetupWizard;
-    }
-
-    /**
-     * Starts the HFA provisioning process by bringing up the HFA Activity.
-     */
-    private void startHfa() {
-        boolean isWizardRunning = isWizardRunning(this);
-        // We always run our HFA logic if we're in setup wizard, but if we're outside of setup
-        // wizard then we have to check a config to see if we should still run HFA.
-        if (isWizardRunning ||
-                getResources().getBoolean(R.bool.config_allow_hfa_outside_of_setup_wizard)) {
-
-            final Intent intent = new Intent();
-
-            final PendingIntent otaResponseIntent = getIntent().getParcelableExtra(
-                    OtaUtils.EXTRA_OTASP_RESULT_CODE_PENDING_INTENT);
-
-            final boolean showUi = !isWizardRunning;
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            if (otaResponseIntent != null) {
-                intent.putExtra(OtaUtils.EXTRA_OTASP_RESULT_CODE_PENDING_INTENT, otaResponseIntent);
-            }
-
-            Log.v(LOG_TAG, "Starting hfa activation activity");
-            if (showUi) {
-                intent.setClassName(this, HfaActivity.class.getName());
-                startActivity(intent);
-            } else {
-                intent.setClassName(this, HfaService.class.getName());
-                startService(intent);
-            }
-
-        }
-        setResult(RESULT_OK);
     }
 }
