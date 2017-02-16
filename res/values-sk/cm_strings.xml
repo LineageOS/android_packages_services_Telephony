@@ -17,7 +17,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
-  <string name="incall_screen_settings">Nastavenia obrazovky pri hovore</string>
+  <string name="incall_screen_settings">Nastavenia obrazovky hovoru</string>
   <string name="show_ssn_label">Oznámenia o udalostiach</string>
   <string name="show_ssn_summary">Zobraziť oznámenia na rôzne udalosti siete, ktoré súvisia s hovormi</string>
   <!-- Toasts for various transient network events -->
@@ -75,7 +75,7 @@
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Preferované GSM/WCDMA</string>
   <string name="msim_mobile_network_settings_title">Nastavenia mobilnej siete SIM %d</string>
   <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">Zmeniť režim siete</string>
+  <string name="perm_change_mobile_network">zmeniť režim siete</string>
   <string name="perm_change_mobile_network_desc">Povolí aplikácii zmeniť aktuálny režim siete.</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Zvoliť režim siete</string>

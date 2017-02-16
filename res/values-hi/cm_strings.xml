@@ -57,6 +57,7 @@
   <string name="preferred_network_mode_td_scdma_lte_choice">टीडी-एससीडीएम/एलटीई</string>
   <string name="preferred_network_mode_td_scdma_wcdma_choice">टीडी-एससीडीएम/डब्ल्यूसीडीएमए</string>
   <string name="preferred_network_mode_td_scdma_only_choice">केवल टीडी-एससीडीएम</string>
+  <string name="preferred_network_mode_lte_wcdma_choice">एलटीई/डब्ल्यूसीडीएमए</string>
   <string name="preferred_network_mode_lte_choice">एलटीई</string>
   <string name="preferred_network_mode_global_choice">वैश्विक</string>
   <string name="preferred_network_mode_gsm_wcdma_lte_choice">जीएसएम/डब्ल्यूसीडीएमए/एलटीई</string>

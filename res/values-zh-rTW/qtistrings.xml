@@ -125,7 +125,7 @@
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD 解鎖成功。</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM 服務提供商解鎖成功。</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM 服務供應商解鎖成功。</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM 業者解鎖成功。</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->

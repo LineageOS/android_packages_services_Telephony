@@ -17,7 +17,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
-  <string name="incall_screen_settings">來電螢幕設定</string>
+  <string name="incall_screen_settings">來電畫面設定</string>
   <string name="show_ssn_label">事件通知</string>
   <string name="show_ssn_summary">處理通話時顯示各種相關網路訊息</string>
   <!-- Toasts for various transient network events -->
@@ -60,7 +60,7 @@
   <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
   <string name="preferred_network_mode_td_scdma_only_choice">僅限 TD-SCDMA</string>
-  <string name="preferred_network_mode_lte_wcdma_choice">LTE / WCDMA</string>
+  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
   <string name="preferred_network_mode_lte_choice">LTE</string>
   <string name="preferred_network_mode_global_choice">全球</string>
   <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
@@ -75,7 +75,7 @@
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA 優先</string>
   <string name="msim_mobile_network_settings_title">Sim 卡 %d 行動網路設定</string>
   <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">更改網路模式</string>
+  <string name="perm_change_mobile_network">變更網路模式</string>
   <string name="perm_change_mobile_network_desc">允許應用程式修改目前的網路模式。</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">選擇網路模式</string>

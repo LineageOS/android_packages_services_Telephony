@@ -66,17 +66,6 @@
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
   <!-- Error message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Tidak berjaya membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Tidak berjaya membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Tidak berjaya membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Tidak berjaya membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Tidak berjaya membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Tidak berjaya membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Tidak berjaya membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Tidak berjaya membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Tidak berjaya membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Tidak berjaya membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Tidak berjaya membuka kunci PUK.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->

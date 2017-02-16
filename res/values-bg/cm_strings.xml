@@ -60,7 +60,7 @@
   <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
   <string name="preferred_network_mode_td_scdma_only_choice">Само TD-SCDMA</string>
-  <string name="preferred_network_mode_lte_wcdma_choice">LTE / WCDMA</string>
+  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
   <string name="preferred_network_mode_lte_choice">LTE</string>
   <string name="preferred_network_mode_global_choice">Глобални</string>
   <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
@@ -76,7 +76,7 @@
   <string name="msim_mobile_network_settings_title">Мрежови настройки СИМ карта %d</string>
   <!-- Permission to modify network mode via intent -->
   <string name="perm_change_mobile_network">Промяна на мрежовия режим</string>
-  <string name="perm_change_mobile_network_desc">Позволява на приложението да модифицира текущия мрежови режим.</string>
+  <string name="perm_change_mobile_network_desc">Разрешава на приложението да променя текущия режим на мрежата.</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Изберете мрежови режим</string>
   <string name="choose_network_mode_system_default">Система по подразбиране</string>

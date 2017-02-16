@@ -60,6 +60,7 @@
   <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
   <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA മാത്രം</string>
+  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
   <string name="preferred_network_mode_lte_choice">LTE</string>
   <string name="preferred_network_mode_global_choice">ആഗോള</string>
   <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
@@ -74,5 +75,7 @@
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM / WCDMA താല്‍പര്യപ്പെടുന്നു</string>
   <string name="msim_mobile_network_settings_title">സിം %d മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണങ്ങൾ</string>
   <!-- Permission to modify network mode via intent -->
+  <string name="perm_change_mobile_network">വിനിമയ ശ്രിംഖലയുടെ രീതി മാറ്റുക</string>
+  <string name="perm_change_mobile_network_desc">വിനിമയ ശ്രിംഖലയുടെ രീതി മാറ്റുന്നതിനു ഒരു അപ്പ്ലികെഷനെ പ്രാപ്തമാക്കുക.</string>
   <!-- Network mode picker dialog title -->
 </resources>

@@ -43,11 +43,11 @@
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN na odomknutie SIM</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN pre odomknutie RUIM siete 1</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN na odomknutie RUIM siete 1</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN pre odomknutie RUIM siete 2</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN na odomknutie RUIM siete 2</string>
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN pre odomknutie RUIM HRPD</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN na odomknutie RUIM HRPD</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN na odomknutie korporátnej RUIM</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
@@ -79,23 +79,23 @@
   <!-- Status message displayed on PUK Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Požiadavka odomknutia PUK\u2026</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Požiadavka na odomknutie podsiete SIM neúspešná.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Požiadavka na odomknutie podsiete SIM bola neúspešná.</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Požiadavka na odomknutie SIM poskytovateľa služieb neúspešná.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Požiadavka na odomknutie SIM poskytovateľa služieb bola neúspešná.</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Požiadavka na odomknutie korporátnej SIM neúspešná.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Požiadavka na odomknutie korporátnej SIM bola neúspešná.</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Požiadavka na odomknutie SIM bola neúspešná.</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Požiadavka na odomknutie RUIM siete 1 neúspešná.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Požiadavka na odomknutie RUIM siete 1 bola neúspešná.</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Požiadavka na odomknutie RUIM siete 2 neúspešná.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Požiadavka na odomknutie RUIM siete 2 bola neúspešná.</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Požiadavka na odomknutie RUIM HRPD neúspešná.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Požiadavka na odomknutie RUIM HRPD bola neúspešná.</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Požiadavka na odomknutie RUIM poskytovateľa služieb neúspešná.</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Požiadavka na odomknutie RUIM poskytovateľa služieb bola neúspešná.</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Požiadavka na odomknutie PUK bola neúspešná.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Požiadavka na odomknutie korporátnej RUIM bola neúspešná.</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Požiadavka na odomknutie RUIM bola neúspešná.</string>
   <!-- Error message displayed on PUK Depersonalization panel -->
@@ -111,23 +111,23 @@
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Požiadavka na odomknutie PUK bola neúspešná.</string>
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Požiadavka na odomknutie PUK bola neúspešná.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Odomknutie podsiete SIM vykonané.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Odomknutie podsiete SIM bolo úspešné.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Odomknutie SIM poskytovateľa služieb vykonané.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Odomknutie SIM poskytovateľa služieb bolo úspešné.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Odomknutie korporátnej SIM vykonané.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Odomknutie korporátnej SIM bolo úspešné.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Odomknutie SIM bolo úspešné.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Odomknutie RUIM siete 1 vykonané.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Odomknutie RUIM siete 1 bolo úspešné.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Odomknutie PUK bolo úspešné.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Odomknutie RUIM siete 2 bolo úspešné.</string>
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">Odomknutie RUIM HRPD vykonané.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">Odomknutie RUIM HRPD bolo úspešné.</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Odomknutie RUIM poskytovateľa služieb vykonané.</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Odomknutie RUIM poskytovateľa služieb bolo úspešné.</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Odomknutie korporátnej RUIM vykonané.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Odomknutie korporátnej RUIM bolo úspešné.</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">Odomknutie RUIM bolo úspešné.</string>
   <!-- Success message displayed on PUK Depersonalization panel -->

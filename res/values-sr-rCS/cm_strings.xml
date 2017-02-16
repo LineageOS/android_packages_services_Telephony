@@ -17,7 +17,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
-  <string name="incall_screen_settings">Ajustes de llamada en pantalla</string>
   <!-- Toasts for various transient network events -->
   <!-- Toast text for Unconditional Call Forwarding enabled  -->
   <!-- Toast text for Conditional Call Forwarding enabled  -->
@@ -34,10 +33,6 @@
   <!-- Toast text for incoming call connecting through ECT -->
   <!-- Toast text for incoming call connected through ECT -->
   <!-- Mobile network settings, preferred network modes -->
-  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
   <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">cambiar modo de red</string>
-  <string name="perm_change_mobile_network_desc">Permite que una aplicación modifique el modo actual de la red.</string>
   <!-- Network mode picker dialog title -->
 </resources>

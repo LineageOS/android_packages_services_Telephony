@@ -42,8 +42,11 @@
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">सिम अनलॉक पिन</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">आरयूआईएम नेटवर्क 1 अनलॉक पिन</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">आरयूआईएम नेटवर्क 2 अनलॉक पिन</string>
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">आरयूआईएम एचआरपीडी अनलॉक पिन</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">आरयूआईएम निगमीय अनलॉक पिन</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
@@ -61,8 +64,11 @@
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">सिम अनलॉक का अनुरोध कर रहे हैं\u2026</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">आरयूआईएम नेटवर्क 1 अनलॉक का अनुरोध कर रहे हैं\u2026</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">आरयूआईएम नेटवर्क 2 अनलॉक का अनुरोध कर रहे हैं\u2026</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">आरयूआईएम एचआरपीडी अनलॉक का अनुरोध कर रहे हैं\u2026</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">आरयूआईएम सेवा प्रदाता अनलॉक का अनुरोध कर रहे हैं\u2026</string>
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
@@ -72,16 +78,23 @@
   <!-- Status message displayed on PUK Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">पूयूके अनलॉक का अनुरोध कर रहे हैं\u2026</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">सिम नेटवर्क उपसमुच्चय अनलॉक अनुरोध सफल नहीं हुआ।</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">सिम सेवा प्रदाता अनलॉक अनुरोध सफल नहीं हुआ।</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">सिम निगमीय अनलॉक अनुरोध सफल नहीं हुआ।</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ERROR">सिम अनलॉक अनुरोध सफल नहीं हुआ।</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">आरयूआईएम नेटवर्क 1 अनलॉक अनुरोध सफल नहीं हुआ।</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">आरयूआईएम नेटवर्क 2 अनलॉक अनुरोध सफल नहीं हुआ।</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">आरयूआईएम एचआरपीडी अनलॉक अनुरोध सफल नहीं हुआ।</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">आरयूआईएम सेवा प्रदाता अनलॉक अनुरोध सफल नहीं हुआ।</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">पीयूके अनलॉक सफल नहीं हुआ।</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">आरयूआईएम निगमीय अनलॉक अनुरोध सफल नहीं हुआ।</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">आरयूआईएम अनलॉक अनुरोध सफल नहीं हुआ।</string>
   <!-- Error message displayed on PUK Depersonalization panel -->
@@ -97,16 +110,23 @@
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">पीयूके अनलॉक सफल नहीं हुआ।</string>
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">पीयूके अनलॉक सफल नहीं हुआ।</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">सिम नेटवर्क उपसमुच्चय अनलॉक सफल।</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">सिम सेवा प्रदाता अनलॉक असफल।</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">सिम निगमीय अनलॉक सफल।</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">सिम अनलॉक सफल।</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">आरयूआईएम नेटवर्क 1 अनलॉक सफल।</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">पीयूके अनलॉक सफल।</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">आरयूआईएम नेटवर्क 2 अनलॉक सफल।</string>
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">आरयूआईएम एचआरपीडी अनलॉक सफल।</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">आरयूआईएम सेवा प्रदाता अनलॉक सफल।</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">आरयूआईएम निगमीय अनलॉक सफल।</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">आरयूआईएम अनलॉक सफ।</string>
   <!-- Success message displayed on PUK Depersonalization panel -->
