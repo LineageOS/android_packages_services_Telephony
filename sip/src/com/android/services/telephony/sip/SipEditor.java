@@ -360,7 +360,13 @@ public class SipEditor extends PreferenceActivity
                             }
                     }
                 } else if (key == PreferenceKey.Port) {
-                    int port = Integer.parseInt(PreferenceKey.Port.getValue());
+                    int port;
+                    try {
+                        port = Integer.parseInt(PreferenceKey.Port.getValue());
+                    } catch (NumberFormatException e) {
+                        showAlert(getString(R.string.not_a_valid_port));
+                        return;
+                    }
                     if ((port < 1000) || (port > 65534)) {
                         showAlert(getString(R.string.not_a_valid_port));
                         return;
