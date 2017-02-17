@@ -3560,6 +3560,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public int setAllowedCarriers(int slotId, List<CarrierIdentifier> carriers) {
         enforceModifyPermission();
         int subId = SubscriptionManager.getSubId(slotId)[0];
+        if (carriers == null) {
+            throw new NullPointerException("carriers cannot be null");
+        }
         int[] retVal = (int[]) sendRequest(CMD_SET_ALLOWED_CARRIERS, carriers, subId);
         return retVal[0];
     }
