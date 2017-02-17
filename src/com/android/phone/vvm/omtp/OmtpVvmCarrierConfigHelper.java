@@ -35,6 +35,7 @@ import com.android.phone.vvm.omtp.protocol.VisualVoicemailProtocolFactory;
 import com.android.phone.vvm.omtp.sms.StatusMessage;
 import com.android.phone.vvm.omtp.utils.PhoneAccountHandleConverter;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Set;
 
 /**
@@ -283,10 +284,14 @@ public class OmtpVvmCarrierConfigHelper {
         if (!bundle.containsKey(KEY_VVM_DISABLED_CAPABILITIES_STRING_ARRAY)) {
             return null;
         }
-        ArraySet<String> result = new ArraySet<String>();
-        result.addAll(
-                Arrays.asList(bundle.getStringArray(KEY_VVM_DISABLED_CAPABILITIES_STRING_ARRAY)));
-        return result;
+        String[] disabledCapabilities =
+                bundle.getStringArray(KEY_VVM_DISABLED_CAPABILITIES_STRING_ARRAY);
+        if (disabledCapabilities != null && disabledCapabilities.length > 0) {
+            ArraySet<String> result = new ArraySet<>();
+            Collections.addAll(result, disabledCapabilities);
+            return result;
+        }
+        return null;
     }
 
     public String getClientPrefix() {
