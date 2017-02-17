@@ -362,7 +362,7 @@
     <string name="voice_privacy_summary" msgid="3159383389833516214">"উন্নত গোপনীয়তা মোড সক্ষম করুন"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY মোড"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"TTY মোড সেট করুন"</string>
-    <string name="auto_retry_mode_title" msgid="4073265511427813322">"স্বয়ংক্রিয় পুনরায় প্রচেষ্টা"</string>
+    <string name="auto_retry_mode_title" msgid="4073265511427813322">"স্বয়ংক্রিয় আবার প্রচেষ্টা"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"স্বয়ংক্রিয়ভাবে পুনরায় চেষ্টা করার মোড সক্ষম করুন"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"একটি ভিডিও কল করার সময় TTY মোড পরিবর্তন করার অনুমতি দেওয়া হয় না"</string>
     <string name="menu_add" msgid="1882023737425114762">"পরিচিতি যোগ করুন"</string>
@@ -427,7 +427,7 @@
     <string name="doneButton" msgid="2859593360997984240">"সম্পন্ন হয়েছে"</string>
     <string name="voicemail_settings_number_label" msgid="8524164258691887790">"ভয়েসমেল নম্বর"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"ডায়াল করা হচ্ছে"</string>
-    <string name="card_title_redialing" msgid="8253487008234167266">"পুনরায় ডায়াল করা হচ্ছে"</string>
+    <string name="card_title_redialing" msgid="8253487008234167266">"আবার ডায়াল করা হচ্ছে"</string>
     <string name="card_title_conf_call" msgid="1162980346189744501">"কনফারেন্স কল"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"ইনকামিং কল"</string>
     <string name="card_title_call_ended" msgid="5544730338889702298">"কল সমাপ্ত হয়েছে"</string>
