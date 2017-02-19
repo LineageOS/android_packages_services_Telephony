@@ -78,4 +78,6 @@
   <string name="perm_change_mobile_network">змінити налаштування мережі</string>
   <string name="perm_change_mobile_network_desc">Дозволяє програмі змінити поточні налаштування мережі.</string>
   <!-- Network mode picker dialog title -->
+  <string name="choose_network_mode_title">Вибір режиму мережі</string>
+  <string name="choose_network_mode_system_default">За замовчуванням системи</string>
 </resources>
