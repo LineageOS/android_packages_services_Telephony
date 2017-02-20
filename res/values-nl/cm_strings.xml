@@ -138,7 +138,7 @@
     <item>Roaming</item>
     <item>Alle</item>
   </string-array>
-  <string name="call_barring_incoming">Binnenkomende oproepen blokkeren</string>
+  <string name="call_barring_incoming">Inkomende oproepen blokkeren</string>
   <string name="input_password">Wachtwoord invoeren</string>
   <string name="invalidPsw">Voer een geldig wachtwoord in (4-8 cijfers)</string>
   <string name="labelCbCancelAll">Oproepblokkering uitschakelen</string>

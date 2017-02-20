@@ -29,9 +29,11 @@
   <string name="blacklist_summary">Ви не будете отримувати вхідні дзвінки чи повідомлення від абонентів, які знаходяться у списку заблокованих</string>
   <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
   <string name="mwi_notification_title">Індикатор очікування повідомлення</string>
+  <string name="mwi_notification_summary">Показувати індикатор очікування повідомлення сповіщень голосової пошти (потребує перезавантаження)</string>
   <!-- My Phone Number -->
   <string name="phone_number_label">Мій номер телефону</string>
   <string name="phone_number_summary">Встановити телефонний номер для цього пристрою</string>
+  <string name="set_my_number_failed">Не вдалося встановити номер телефону</string>
   <!-- Toasts for various transient network events -->
   <!-- Toast text for Unconditional Call Forwarding enabled  -->
   <string name="call_notif_unconditionalCF">Увімкнена безумовна переадресація виклику</string>
@@ -187,7 +189,16 @@
   <string name="perm_change_mobile_network">змінити налаштування мережі</string>
   <string name="perm_change_mobile_network_desc">Дозволяє програмі змінити поточні налаштування мережі.</string>
   <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Ідентифікація абонента</string>
+  <string name="connected_line_identification_summary">Вимкніть цей параметр, якщо в історії викликів не відображаються номери абонентів</string>
   <!-- Network mode picker dialog title -->
+  <string name="choose_network_mode_title">Вибір режиму мережі</string>
+  <string name="choose_network_mode_system_default">За замовчуванням системи</string>
   <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
+  <string name="unlock_failed_remaining_retries">Невдалий запит на розблокування, залишилося %1$d спроб.</string>
   <!-- Call forward: IMS: Media tag support -->
+  <string name="labelCFType">Налаштування переадресації викликів</string>
+  <string name="labelCFVoice">Голос</string>
+  <string name="labelCFVideo">Відео</string>
+  <string name="call_forward_option">Параметри переадресації викликів</string>
 </resources>
