@@ -16,6 +16,7 @@
 
 package com.android.phone;
 
+import android.annotation.Nullable;
 import android.app.ActionBar;
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -41,10 +42,12 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.telephony.CarrierConfigManager;
+import android.telephony.PhoneNumberUtils;
 import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.euicc.EuiccManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -52,6 +55,7 @@ import android.view.View;
 import android.widget.TabHost;
 
 import com.android.ims.ImsManager;
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
@@ -106,6 +110,9 @@ public class MobileNetworkSettings extends Activity  {
         // Number of active Subscriptions to show tabs
         private static final int TAB_THRESHOLD = 2;
 
+        // Number of last phone number digits shown in Euicc Setting tab
+        private static final int NUM_LAST_PHONE_DIGITS = 4;
+
         // fragment tag for roaming data dialog
         private static final String ROAMING_TAG = "RoamingDialogFragment";
 
@@ -120,6 +127,8 @@ public class MobileNetworkSettings extends Activity  {
         private static final String BUTTON_OPERATOR_SELECTION_EXPAND_KEY = "button_carrier_sel_key";
         private static final String BUTTON_CARRIER_SETTINGS_KEY = "carrier_settings_key";
         private static final String BUTTON_CDMA_SYSTEM_SELECT_KEY = "cdma_system_select_key";
+        private static final String BUTTON_CARRIER_SETTINGS_EUICC_KEY =
+                "carrier_settings_euicc_key";
 
         private final BroadcastReceiver mPhoneChangeReceiver = new PhoneChangeReceiver();
 
@@ -138,6 +147,7 @@ public class MobileNetworkSettings extends Activity  {
         private RestrictedSwitchPreference mButtonDataRoam;
         private SwitchPreference mButton4glte;
         private Preference mLteDataServicePref;
+        private Preference mEuiccSettingsPref;
 
         private static final String iface = "rmnet0"; //TODO: this will go away
         private List<SubscriptionInfo> mActiveSubInfos;
@@ -248,6 +258,10 @@ public class MobileNetworkSettings extends Activity  {
                 return true;
             } else if (preference == mButtonDataRoam) {
                 // Do not disable the preference screen if the user clicks Data roaming.
+                return true;
+            } else if (preference == mEuiccSettingsPref) {
+                Intent intent = new Intent(EuiccManager.ACTION_MANAGE_EMBEDDED_SUBSCRIPTIONS);
+                startActivity(intent);
                 return true;
             } else {
                 // if the button is anything but the simple toggle preference,
@@ -464,6 +478,9 @@ public class MobileNetworkSettings extends Activity  {
 
             mLteDataServicePref = prefSet.findPreference(BUTTON_CDMA_LTE_DATA_SERVICE_KEY);
 
+            mEuiccSettingsPref = prefSet.findPreference(BUTTON_CARRIER_SETTINGS_EUICC_KEY);
+            mEuiccSettingsPref.setOnPreferenceChangeListener(this);
+
             // Initialize mActiveSubInfo
             int max = mSubscriptionManager.getActiveSubscriptionInfoCountMax();
             mActiveSubInfos = new ArrayList<SubscriptionInfo>(max);
@@ -556,6 +573,18 @@ public class MobileNetworkSettings extends Activity  {
                 prefSet.addPreference(mButtonPreferredNetworkMode);
                 prefSet.addPreference(mButtonEnabledNetworks);
                 prefSet.addPreference(mButton4glte);
+                EuiccManager euiccManager =
+                        (EuiccManager) getActivity().getSystemService(Context.EUICC_SERVICE);
+                if (euiccManager.isEnabled()) {
+                    prefSet.addPreference(mEuiccSettingsPref);
+                    TelephonyManager tm =
+                        (TelephonyManager) getActivity()
+                                .getSystemService(Context.TELEPHONY_SERVICE);
+                    mEuiccSettingsPref.setSummary(
+                            getEuiccSettingsSummary(
+                                    tm.getSimOperatorName(),
+                                    PhoneNumberUtils.formatNumber(tm.getLine1Number())));
+                }
             }
 
             int settingsNetworkMode = android.provider.Settings.Global.getInt(
@@ -1036,6 +1065,30 @@ public class MobileNetworkSettings extends Activity  {
             // changes the mButtonPreferredNetworkMode accordingly to settingsNetworkMode
             mButtonPreferredNetworkMode.setValue(Integer.toString(settingsNetworkMode));
         }
+
+        @VisibleForTesting
+        String getEuiccSettingsSummary(@Nullable String spn, @Nullable String phoneNum) {
+            if (spn != null && phoneNum.length() >= NUM_LAST_PHONE_DIGITS) {
+                // Format the number and use the last one part or multiple
+                // parts whose total length is greater or equal to NUM_LAST_PHONE_DIGITS.
+                // TODO (b/36647649): This needs to be finalized by UX team
+                String shownNum;
+                int lastIndex = phoneNum.lastIndexOf('-');
+                if (lastIndex == -1) {
+                    shownNum = phoneNum.substring(phoneNum.length() - NUM_LAST_PHONE_DIGITS);
+                } else {
+                    shownNum = phoneNum.substring(lastIndex + 1);
+                    while (shownNum.length() < NUM_LAST_PHONE_DIGITS && lastIndex != -1) {
+                        lastIndex = phoneNum.lastIndexOf('-', lastIndex - 1);
+                        shownNum = phoneNum.substring(lastIndex + 1);
+                    }
+                }
+                return getString(R.string.carrier_settings_euicc_summary, spn, shownNum);
+            } else {
+                return null;
+            }
+        }
+
 
         private void UpdatePreferredNetworkModeSummary(int NetworkMode) {
             switch(NetworkMode) {
