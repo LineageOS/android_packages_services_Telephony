@@ -3505,4 +3505,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         workSource = new WorkSource(uid, packageName);
         return workSource;
     }
+
+    /**
+     * Set SIM card power state. Request is equivalent to inserting or removing the card.
+     *
+     * @param slotId SIM slot id.
+     * @param powerUp True if powering up the SIM, otherwise powering down
+     *
+     **/
+    @Override
+    public void setSimPowerStateForSlot(int slotId, boolean powerUp) {
+        enforceModifyPermission();
+        int subId[] = mSubscriptionController.getSubIdUsingSlotId(slotId);
+        if (subId == null || subId.length == 0) {
+            return;
+        }
+
+        final Phone phone = getPhone(subId[0]);
+        if (phone != null) {
+            phone.setSimPowerState(powerUp);
+        }
+    }
 }
