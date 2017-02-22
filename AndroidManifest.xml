@@ -317,18 +317,6 @@
             </intent-filter>
         </receiver>
 
-        <!-- Trampoline activity that handles the PERFORM_CDMA_PROVISIONING intent. -->
-        <activity android:name="InCallScreenShowActivation"
-            android:permission="android.permission.PERFORM_CDMA_PROVISIONING"
-            android:label="@string/phoneIconLabel"
-            android:theme="@android:style/Theme.NoDisplay"
-            android:excludeFromRecents="true">
-            <intent-filter>
-                <action android:name="com.android.phone.PERFORM_CDMA_PROVISIONING" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
         <!-- "Mobile network settings" screen, used on both
              non-voice-capable tablets and regular phone devices. -->
         <activity android:name="MobileNetworkSettings"
@@ -450,15 +438,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <!-- Broadcast Receiver that will process BOOT Complete and launch OTA -->
-        <!-- TODO http://b/23526250 Handle OTASP under system user -->
-        <receiver android:name="OtaStartupReceiver" android:exported="false"
-                androidprv:systemUserOnly="true">
-            <intent-filter android:priority="100">
-                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            </intent-filter>
-        </receiver>
 
         <!-- Activation service that trigger OTASP sim provisioning -->
         <service android:name=".otasp.OtaspActivationService" android:launchMode="singleInstance"
