@@ -468,7 +468,8 @@
             </intent-filter>
         </service>
 
-        <receiver android:name=".otasp.OtaspSimStateReceiver" android:exported ="false">
+        <receiver android:name=".otasp.OtaspSimStateReceiver" androidprv:systemUserOnly="true"
+                  android:exported ="false">
             <intent-filter>
                 <action android:name="android.telephony.action.CARRIER_CONFIG_CHANGED" />
             </intent-filter>
