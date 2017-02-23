@@ -81,12 +81,19 @@ public class VvmSimStateTracker extends BroadcastReceiver {
         }
 
         public void listen() {
-            getTelephonyManager(mContext, mPhoneAccountHandle)
-                    .listen(this, PhoneStateListener.LISTEN_SERVICE_STATE);
+            TelephonyManager telephonyManager = getTelephonyManager(mContext, mPhoneAccountHandle);
+            if(telephonyManager == null){
+                VvmLog.e(TAG, "Cannot create TelephonyManager from " + mPhoneAccountHandle);
+                return;
+            }
+            telephonyManager.listen(this, PhoneStateListener.LISTEN_SERVICE_STATE);
         }
 
         public void unlisten() {
-            getTelephonyManager(mContext, mPhoneAccountHandle)
+            // TelephonyManager does not need to be pinned to an account when removing a
+            // PhoneStateListener, and mPhoneAccountHandle might be invalid at this point
+            // (e.g. SIM removal)
+            mContext.getSystemService(TelephonyManager.class)
                     .listen(this, PhoneStateListener.LISTEN_NONE);
             sListeners.put(mPhoneAccountHandle, null);
         }
