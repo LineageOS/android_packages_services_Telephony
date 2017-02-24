@@ -2985,6 +2985,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    @Deprecated
     public int invokeOemRilRequestRaw(byte[] oemReq, byte[] oemResp) {
         enforceModifyPermission();
 
