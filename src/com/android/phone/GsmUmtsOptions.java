@@ -18,6 +18,8 @@ package com.android.phone;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.os.PersistableBundle;
 import android.preference.Preference;
@@ -99,8 +101,21 @@ public class GsmUmtsOptions {
             }
 
             // Read platform settings for carrier settings
-            final boolean isCarrierSettingsEnabled = carrierConfig.getBoolean(
+            boolean isCarrierSettingsEnabled = carrierConfig.getBoolean(
                 CarrierConfigManager.KEY_CARRIER_SETTINGS_ENABLE_BOOL);
+            if (isCarrierSettingsEnabled) {
+                final String packageName = mPrefActivity.getResources()
+                        .getString(R.string.carrier_settings);
+                final String className = mPrefActivity.getResources()
+                        .getString(R.string.carrier_settings_menu);
+                final Intent intent = new Intent().setClassName(packageName, className);
+                final ResolveInfo resolveInfo = mPrefActivity.getPackageManager()
+                        .resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                if (resolveInfo == null) {
+                    log("Carrier settings enabled, but no activity was found");
+                    isCarrierSettingsEnabled = false;
+                }
+            }
             if (!isCarrierSettingsEnabled) {
                 Preference pref = mPrefScreen.findPreference(BUTTON_CARRIER_SETTINGS_KEY);
                 if (pref != null) {
