@@ -33,18 +33,28 @@
 <resources>
   <!-- IMS settings related strings -->
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
+  <string name="ims_settings">IMS settings</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">SIM network subset unlock PIN</string>
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">SIM corporate unlock PIN</string>
   <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">SIM service provider unlock PIN</string>
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM unlock PIN</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">RUIM network 1 unlock PIN</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">RUIM network 2 unlock PIN</string>
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM HRPD unlock PIN</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">RUIM corporate unlock PIN</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
   <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
   <!-- Label text for PUK entry widget on Depersonalization panel -->
   <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Requesting SIM network subset unlock\u2026</string>
   <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
   <!-- Status message displayed on SIM Corporate Depersonalization panel -->
   <!-- Status message displayed on SIM SIM Depersonalization panel -->

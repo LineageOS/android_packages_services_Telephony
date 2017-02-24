@@ -17,6 +17,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
+  <string name="incall_screen_settings">In-call screen settings</string>
+  <string name="show_ssn_label">Event notification</string>
+  <string name="show_ssn_summary">Show a notification for various network events related to call handling</string>
   <!-- Toasts for various transient network events -->
   <!-- Toast text for Unconditional Call Forwarding enabled  -->
   <!-- Toast text for Conditional Call Forwarding enabled  -->
