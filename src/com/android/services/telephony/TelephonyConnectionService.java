@@ -43,12 +43,12 @@ import android.util.Pair;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
+import com.android.internal.telephony.GsmCdmaPhone;
 import com.android.internal.telephony.IccCard;
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
-import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.phone.MMIDialogActivity;
@@ -889,6 +889,18 @@ public class TelephonyConnectionService extends ConnectionService {
         try {
             if (phone != null) {
                 originalConnection = phone.dial(number, null, videoState, extras);
+
+                if (phone instanceof GsmCdmaPhone) {
+                    GsmCdmaPhone gsmCdmaPhone = (GsmCdmaPhone) phone;
+                    if (gsmCdmaPhone.isNotificationOfWfcCallRequired(number)) {
+                        // Send connection event to InCall UI to inform the user of the fact they
+                        // are potentially placing an international call on WFC.
+                        Log.i(this, "placeOutgoingConnection - sending international call on WFC " +
+                                "confirmation event");
+                        connection.sendConnectionEvent(
+                                TelephonyManager.EVENT_NOTIFY_INTERNATIONAL_CALL_ON_WFC, null);
+                    }
+                }
             }
         } catch (CallStateException e) {
             Log.e(this, e, "placeOutgoingConnection, phone.dial exception: " + e);
