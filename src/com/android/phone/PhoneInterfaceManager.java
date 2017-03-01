@@ -88,7 +88,9 @@ import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.uicc.IccIoResult;
 import com.android.internal.telephony.uicc.IccUtils;
+import com.android.internal.telephony.uicc.SIMRecords;
 import com.android.internal.telephony.uicc.UiccCard;
+import com.android.internal.telephony.uicc.UiccCardApplication;
 import com.android.internal.telephony.uicc.UiccController;
 import com.android.internal.util.HexDump;
 import com.android.phone.settings.VisualVoicemailSettingsUtil;
@@ -160,6 +162,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int CMD_GET_ALLOWED_CARRIERS = 45;
     private static final int EVENT_GET_ALLOWED_CARRIERS_DONE = 46;
     private static final int CMD_HANDLE_USSD_REQUEST = 47;
+    private static final int CMD_GET_FORBIDDEN_PLMNS = 48;
+    private static final int EVENT_GET_FORBIDDEN_PLMNS_DONE = 49;
 
     /** The singleton instance. */
     private static PhoneInterfaceManager sInstance;
@@ -858,6 +862,56 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     synchronized (request) {
                         request.notifyAll();
                     }
+                    break;
+
+                case EVENT_GET_FORBIDDEN_PLMNS_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null && ar.result != null) {
+                        request.result = ar.result;
+                    } else {
+                        request.result = new IllegalArgumentException(
+                                "Failed to retrieve Forbidden Plmns");
+                        if (ar.result == null) {
+                            loge("getForbiddenPlmns: Empty response");
+                        } else {
+                            loge("getForbiddenPlmns: Unknown exception");
+                        }
+                    }
+                    synchronized (request) {
+                        request.notifyAll();
+                    }
+                    break;
+
+                case CMD_GET_FORBIDDEN_PLMNS:
+                    request = (MainThreadRequest) msg.obj;
+                    uiccCard = getUiccCardFromRequest(request);
+                    if (uiccCard == null) {
+                        loge("getForbiddenPlmns() UiccCard is null");
+                        request.result = new IllegalArgumentException(
+                                "getForbiddenPlmns() UiccCard is null");
+                        synchronized (request) {
+                            request.notifyAll();
+                        }
+                        break;
+                    }
+                    Integer appType = (Integer) request.argument;
+                    UiccCardApplication uiccApp = uiccCard.getApplicationByType(appType);
+                    if (uiccApp == null) {
+                        loge("getForbiddenPlmns() no app with specified type -- "
+                                + appType);
+                        request.result = new IllegalArgumentException("Failed to get UICC App");
+                        synchronized (request) {
+                            request.notifyAll();
+                        }
+                        break;
+                    } else {
+                        if (DBG) logv("getForbiddenPlmns() found app " + uiccApp.getAid()
+                                + " specified type -- " + appType);
+                    }
+                    onCompleted = obtainMessage(EVENT_GET_FORBIDDEN_PLMNS_DONE, request);
+                    ((SIMRecords) uiccApp.getIccRecords()).getForbiddenPlmns(
+                              onCompleted);
                     break;
 
                 default:
@@ -2422,6 +2476,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         result[length - 1] = (byte) response.sw2;
         result[length - 2] = (byte) response.sw1;
         return result;
+    }
+
+    /**
+     * Get the forbidden PLMN List from the given app type (ex APPTYPE_USIM)
+     * on a particular subscription
+     */
+    public String[] getForbiddenPlmns(int subId, int appType) {
+        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
+                "Requires READ_PRIVILEGED_PHONE_STATE");
+        if (appType != TelephonyManager.APPTYPE_USIM && appType != TelephonyManager.APPTYPE_SIM) {
+            loge("getForbiddenPlmnList(): App Type must be USIM or SIM");
+            return null;
+        }
+        Object response = sendRequest(
+            CMD_GET_FORBIDDEN_PLMNS, new Integer(appType), subId);
+        if (response instanceof String[]) {
+            return (String[]) response;
+        }
+        // Response is an Exception of some kind, which is signalled to the user as a NULL retval
+        return null;
     }
 
     @Override
