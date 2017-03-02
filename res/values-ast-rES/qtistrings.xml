@@ -33,114 +33,49 @@
 <resources>
   <!-- IMS settings related strings -->
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">Axustes d\'IMS</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN de desbloquéu de sorrede de tarxeta SIM</string>
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">PIN de desbloquéu de SIM corporativa</string>
   <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">PIN de desbloquéu del fornidor de serviciu SIM</string>
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN de desbloquéu SIM</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN de desbloquéu de rede RUIM 1</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN de desbloquéu de rede RUIM 2</string>
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN de desbloquéu de RUIM HRPD</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN de desbloquéu de RUIM corporativa</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">PIN de desbloquéu del fornidor de serviciu RUIM</string>
   <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN de desbloquéu RUIM</string>
   <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Introducir PUK</string>
   <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Solicitando desbloquéu de sorrede de tarxeta SIM\u2026</string>
   <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Solicitando desbloquéu del fornidor de servicios de tarxeta SIM\u2026</string>
   <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Solicitando desbloquéu de tarxeta SIM corporativa\u2026</string>
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Solicitando desbloquéu de tarxeta SIM\u2026</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Solicitando desbloquéu de rede-1 de tarxeta RUIM\u2026</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Solicitando desbloquéu de rede-2 de tarxeta RUIM\u2026</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Solicitando desbloquéu de HRPD de tarxeta RUIM\u2026</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Solicitando desbloquéu del fornidor de servicios de tarxeta RUIM\u2026</string>
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Solicitando desbloquéu de tarxeta RUIM corporativa\u2026</string>
   <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Solicitando desbloquéu de tarxeta RUIM\u2026</string>
   <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Solicitando desbloquéu con PUK\u2026</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">El desbloquéu de sorrede de tarxeta SIM nun se fexo correcho.</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">El desbloquéu del fornidor de servicios de tarxeta SIM nun se fexo correcho.</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">El desbloquéu de tarxeta SIM corporativa nun se fexo correcho.</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">El desbloquéu de tarxeta SIM nun se fexo correcho.</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">El desbloquéu de rede 1 de tarxeta RUIM nun se fexo correcho.</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">El desbloquéu de rede 2 de tarxeta RUIM nun se fexo correcho.</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">El desbloquéu de HRPD de tarxeta RUIM nun se fexo correcho.</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">El desbloquéu del fornidor de servicios de tarxeta RUIM nun se fexo correcho.</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">El desbloquéu de tarxeta RUIM corporativa nun se fexo correcho.</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">El desbloquéu de tarxeta RUIM nun se fexo correcho.</string>
   <!-- Error message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">El desbloquéu con PUK nun se fexo correcho.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">El desbloquéu con PUK nun se fexo correcho.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">El desbloquéu con PUK nun se fexo correcho.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">El desbloquéu con PUK nun se fexo correcho.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">El desbloquéu con PUK nun se fexo correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">El desbloquéu con PUK nun se fexo correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">El desbloquéu con PUK nun se fexo correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">El desbloquéu con PUK nun se fexo correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">El desbloquéu con PUK nun se fexo correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">El desbloquéu con PUK nun se fexo correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">El desbloquéu con PUK nun se fexo correcho.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">El desbloquéu de sorrede de tarxeta SIM féxose correcho.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">El desbloquéu del fornidor de servicios de tarxeta SIM féxose correcho.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">El desbloquéu de tarxeta SIM corporativa féxose correcho.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">El desbloquéu de tarxeta SIM féxose correcho.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">El desbloquéu de rede-1 de tarxeta RUIM féxose correcho.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">El desbloquéu de rede-2 de tarxeta RUIM féxose correcho.</string>
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">El desbloquéu de HRPD de tarxeta RUIM féxose correcho.</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">El desbloquéu del fornidor de servicios de tarxeta RUIM féxose correcho.</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">El desbloquéu de tarxeta RUIM corporativa féxose correcho.</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">El desbloquéu de tarxeta RUIM féxose correcho.</string>
   <!-- Success message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">El desbloquéu con PUK féxose correcho.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">El desbloquéu con PUK féxose correcho.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">El desbloquéu con PUK féxose correcho.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">El desbloquéu con PUK féxose correcho.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">El desbloquéu con PUK féxose correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">El desbloquéu con PUK féxose correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">El desbloquéu con PUK féxose correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">El desbloquéu con PUK féxose correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">El desbloquéu con PUK féxose correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">El desbloquéu con PUK féxose correcho.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">El desbloquéu con PUK féxose correcho.</string>
   <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
 </resources>
