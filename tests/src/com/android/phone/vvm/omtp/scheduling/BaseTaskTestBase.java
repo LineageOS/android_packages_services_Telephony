@@ -28,11 +28,13 @@ public class BaseTaskTestBase extends TaskSchedulerServiceTestBase {
      */
     public long mTime;
 
+    @Before
     public void setUpBaseTaskTest() {
         mTime = 0;
         BaseTask.setClockForTesting(new TestClock());
     }
 
+    @After
     public void tearDownBaseTaskTest() {
         BaseTask.setClockForTesting(new Clock());
     }
