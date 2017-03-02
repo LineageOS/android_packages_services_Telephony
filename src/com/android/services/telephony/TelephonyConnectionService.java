@@ -263,8 +263,8 @@ public class TelephonyConnectionService extends ConnectionService {
 
         final boolean isEmergencyNumber =
                 PhoneUtils.isLocalEmergencyNumber(this, numberToDial);
-        final boolean isAirplaneModeOn = Settings.System.getInt(getContentResolver(),
-                Settings.System.AIRPLANE_MODE_ON, 0) != 0;
+        final boolean isAirplaneModeOn = Settings.Global.getInt(getContentResolver(),
+                Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
         if (isEmergencyNumber) {
             mRequest = request;
         }
