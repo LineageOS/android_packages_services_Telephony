@@ -77,6 +77,12 @@
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
+    <!-- TELEPHONY_SECRET_CODE used to be sent by the Dialer app, but is now sent by
+         the phone process through an API added in O. Since the broadcast was unprotected prior to
+         O, apps may have required this permission (which only Dialer has) in their receivers.
+         So, declare this permission here for backwards compatibility so the phone process can send
+         the broadcasts to those same receivers. -->
+    <uses-permission android:name="android.permission.CONTROL_INCALL_EXPERIENCE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
