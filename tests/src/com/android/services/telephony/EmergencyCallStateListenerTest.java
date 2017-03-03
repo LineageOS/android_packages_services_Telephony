@@ -20,6 +20,7 @@ import android.os.AsyncResult;
 import android.os.Handler;
 import android.telephony.ServiceState;
 import android.support.test.runner.AndroidJUnit4;
+import android.test.FlakyTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
 import com.android.TelephonyTestBase;
@@ -182,6 +183,7 @@ public class EmergencyCallStateListenerTest extends TelephonyTestBase {
      * Result: callback's onComplete is called with the isRadioReady=true.
      */
     @Test
+    @FlakyTest
     @SmallTest
     public void testTimeout_EmergencyCalls() {
         ServiceState state = new ServiceState();
@@ -191,11 +193,11 @@ public class EmergencyCallStateListenerTest extends TelephonyTestBase {
         when(mMockPhone.getServiceState()).thenReturn(state);
         when(mMockPhone.getServiceStateTracker()).thenReturn(mMockServiceStateTracker);
         when(mMockServiceStateTracker.isRadioOn()).thenReturn(true);
-        mListener.waitForRadioOn(mMockPhone, mCallback);
-        mListener.setTimeBetweenRetriesMillis(500);
+        mListener.setTimeBetweenRetriesMillis(100);
 
         // Wait for the timer to expire and check state manually in onRetryTimeout
-        waitForHandlerActionDelayed(mListener.getHandler(), TIMEOUT_MS, 600);
+        mListener.waitForRadioOn(mMockPhone, mCallback);
+        waitForHandlerActionDelayed(mListener.getHandler(), TIMEOUT_MS, 500);
 
         verify(mCallback).onComplete(eq(mListener), eq(true));
     }
@@ -212,6 +214,7 @@ public class EmergencyCallStateListenerTest extends TelephonyTestBase {
      * - setRadioPower was send twice (tried to turn on the radio)
      */
     @Test
+    @FlakyTest
     @SmallTest
     public void testTimeout_RetryFailure() {
         ServiceState state = new ServiceState();
@@ -220,12 +223,12 @@ public class EmergencyCallStateListenerTest extends TelephonyTestBase {
         when(mMockPhone.getServiceState()).thenReturn(state);
         when(mMockPhone.getServiceStateTracker()).thenReturn(mMockServiceStateTracker);
         when(mMockServiceStateTracker.isRadioOn()).thenReturn(false);
-        mListener.waitForRadioOn(mMockPhone, mCallback);
-        mListener.setTimeBetweenRetriesMillis(100);
+        mListener.setTimeBetweenRetriesMillis(50);
         mListener.setMaxNumRetries(2);
 
         // Wait for the timer to expire and check state manually in onRetryTimeout
-        waitForHandlerActionDelayed(mListener.getHandler(), TIMEOUT_MS, 600);
+        mListener.waitForRadioOn(mMockPhone, mCallback);
+        waitForHandlerActionDelayed(mListener.getHandler(), TIMEOUT_MS, 500);
 
         verify(mCallback).onComplete(eq(mListener), eq(false));
         verify(mMockPhone, times(2)).setRadioPower(eq(true));
