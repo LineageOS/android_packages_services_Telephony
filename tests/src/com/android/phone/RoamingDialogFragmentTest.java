@@ -21,6 +21,7 @@ import android.provider.Settings.Global;
 import android.provider.Settings.SettingNotFoundException;
 import android.support.test.espresso.matcher.PreferenceMatchers;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.filters.FlakyTest;
 import com.google.common.truth.Truth;
 import junit.framework.AssertionFailedError;
 import org.junit.Before;
@@ -68,6 +69,7 @@ public class RoamingDialogFragmentTest {
         }
     }
 
+    @FlakyTest
     @Test
     public void dataRoamingDialogPersistsOnRotation() {
         // click on the data roaming preference to trigger warning dialog
@@ -82,6 +84,7 @@ public class RoamingDialogFragmentTest {
 
     }
 
+    @FlakyTest
     @Test
     public void dataRoamingEnabledWhenPositiveButtonClicked() throws SettingNotFoundException {
         // click on the data roaming preference to trigger warning dialog
@@ -95,6 +98,7 @@ public class RoamingDialogFragmentTest {
                 Global.DATA_ROAMING)).isEqualTo(1);
     }
 
+    @FlakyTest
     @Test
     public void dialogDismissedOnNegativeButtonClicked() {
         // click on the data roaming preference to trigger warning dialog
@@ -107,6 +111,7 @@ public class RoamingDialogFragmentTest {
         onView(withText(R.string.roaming_alert_title)).check(doesNotExist());
     }
 
+    @FlakyTest
     @Test
     public void dataRoamingStaysDisabledWhenDialogCanceled() throws SettingNotFoundException {
         // click on the data roaming preference to trigger warning dialog
