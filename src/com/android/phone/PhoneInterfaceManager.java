@@ -80,6 +80,7 @@ import com.android.internal.telephony.IccCard;
 import com.android.internal.telephony.MccTable;
 import com.android.internal.telephony.OperatorInfo;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneConstantConversions;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.ProxyController;
@@ -1575,16 +1576,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public int getCallStateForSlot(int slotId) {
         Phone phone = PhoneFactory.getPhone(slotId);
         return phone == null ? TelephonyManager.CALL_STATE_IDLE :
-            DefaultPhoneNotifier.convertCallState(phone.getState());
+            PhoneConstantConversions.convertCallState(phone.getState());
     }
 
     @Override
     public int getDataState() {
         Phone phone = getPhone(mSubscriptionController.getDefaultDataSubId());
         if (phone != null) {
-            return DefaultPhoneNotifier.convertDataState(phone.getDataConnectionState());
+            return PhoneConstantConversions.convertDataState(phone.getDataConnectionState());
         } else {
-            return DefaultPhoneNotifier.convertDataState(PhoneConstants.DataState.DISCONNECTED);
+            return PhoneConstantConversions.convertDataState(PhoneConstants.DataState.DISCONNECTED);
         }
     }
 
