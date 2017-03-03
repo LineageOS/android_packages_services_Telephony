@@ -40,7 +40,6 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Pair;
 
-import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.GsmCdmaPhone;
@@ -89,105 +88,6 @@ public class TelephonyConnectionService extends ConnectionService {
     // redial, so we use a WeakReference that will become stale once the TelephonyConnection is
     // destroyed.
     private Pair<WeakReference<TelephonyConnection>, List<Phone>> mEmergencyRetryCache;
-
-    /**
-     * Keeps track of the status of a SIM slot.
-     */
-    private static class SlotStatus {
-        public int slotId;
-        // RAT capabilities
-        public int capabilities;
-        // By default, we will assume that the slots are not locked.
-        public boolean isLocked = false;
-
-        public SlotStatus(int slotId, int capabilities) {
-            this.slotId = slotId;
-            this.capabilities = capabilities;
-        }
-    }
-
-    // SubscriptionManager Proxy interface for testing
-    public interface SubscriptionManagerProxy {
-        int getDefaultVoicePhoneId();
-        int getSimStateForSlotIdx(int slotId);
-        int getPhoneId(int subId);
-    }
-
-    private SubscriptionManagerProxy mSubscriptionManagerProxy = new SubscriptionManagerProxy() {
-        @Override
-        public int getDefaultVoicePhoneId() {
-            return SubscriptionManager.getDefaultVoicePhoneId();
-        }
-
-        @Override
-        public int getSimStateForSlotIdx(int slotId) {
-            return SubscriptionManager.getSimStateForSlotIdx(slotId);
-        }
-
-        @Override
-        public int getPhoneId(int subId) {
-            return SubscriptionManager.getPhoneId(subId);
-        }
-    };
-
-    // TelephonyManager Proxy interface for testing
-    public interface TelephonyManagerProxy {
-        int getPhoneCount();
-        boolean hasIccCard(int slotId);
-    }
-
-    private TelephonyManagerProxy mTelephonyManagerProxy = new TelephonyManagerProxy() {
-        private final TelephonyManager sTelephonyManager = TelephonyManager.getDefault();
-
-        @Override
-        public int getPhoneCount() {
-            return sTelephonyManager.getPhoneCount();
-        }
-
-        @Override
-        public boolean hasIccCard(int slotId) {
-            return sTelephonyManager.hasIccCard(slotId);
-        }
-    };
-
-    //PhoneFactory proxy interface for testing
-    public interface PhoneFactoryProxy {
-        Phone getPhone(int index);
-        Phone getDefaultPhone();
-        Phone[] getPhones();
-    }
-
-    private PhoneFactoryProxy mPhoneFactoryProxy = new PhoneFactoryProxy() {
-        @Override
-        public Phone getPhone(int index) {
-            return PhoneFactory.getPhone(index);
-        }
-
-        @Override
-        public Phone getDefaultPhone() {
-            return PhoneFactory.getDefaultPhone();
-        }
-
-        @Override
-        public Phone[] getPhones() {
-            return PhoneFactory.getPhones();
-        }
-    };
-
-    @VisibleForTesting
-    public void setSubscriptionManagerProxy(SubscriptionManagerProxy proxy) {
-        mSubscriptionManagerProxy = proxy;
-    }
-
-    @VisibleForTesting
-    public void setTelephonyManagerProxy(TelephonyManagerProxy proxy) {
-        mTelephonyManagerProxy = proxy;
-    }
-
-    @VisibleForTesting
-    public void setPhoneFactoryProxy(PhoneFactoryProxy proxy) {
-        mPhoneFactoryProxy = proxy;
-    }
 
     /**
      * A listener to actionable events specific to the TelephonyConnection.
@@ -322,9 +222,9 @@ public class TelephonyConnectionService extends ConnectionService {
             final Uri emergencyHandle = handle;
             // By default, Connection based on the default Phone, since we need to return to Telecom
             // now.
-            final int defaultPhoneType = mPhoneFactoryProxy.getDefaultPhone().getPhoneType();
+            final int defaultPhoneType = PhoneFactory.getDefaultPhone().getPhoneType();
             final Connection emergencyConnection = getTelephonyConnection(request, numberToDial,
-                    isEmergencyNumber, emergencyHandle, mPhoneFactoryProxy.getDefaultPhone());
+                    isEmergencyNumber, emergencyHandle, PhoneFactory.getDefaultPhone());
             if (mEmergencyCallHelper == null) {
                 mEmergencyCallHelper = new EmergencyCallHelper(this);
             }
@@ -430,7 +330,7 @@ public class TelephonyConnectionService extends ConnectionService {
             if (context.getResources().getBoolean(R.bool.config_checkSimStateBeforeOutgoingCall)) {
                 // Check SIM card state before the outgoing call.
                 // Start the SIM unlock activity if PIN_REQUIRED.
-                final Phone defaultPhone = mPhoneFactoryProxy.getDefaultPhone();
+                final Phone defaultPhone = PhoneFactory.getDefaultPhone();
                 final IccCard icc = defaultPhone.getIccCard();
                 IccCardConstants.State simState = IccCardConstants.State.UNKNOWN;
                 if (icc != null) {
@@ -750,7 +650,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
     private boolean isRadioOn() {
         boolean result = false;
-        for (Phone phone : mPhoneFactoryProxy.getPhones()) {
+        for (Phone phone : PhoneFactory.getPhones()) {
             result |= phone.isRadioOn();
         }
         return result;
@@ -758,7 +658,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
     private Pair<WeakReference<TelephonyConnection>, List<Phone>> makeCachedConnectionPhonePair(
             TelephonyConnection c) {
-        List<Phone> phones = new ArrayList<>(Arrays.asList(mPhoneFactoryProxy.getPhones()));
+        List<Phone> phones = new ArrayList<>(Arrays.asList(PhoneFactory.getPhones()));
         return new Pair<>(new WeakReference<>(c), phones);
     }
 
@@ -914,8 +814,8 @@ public class TelephonyConnectionService extends ConnectionService {
         Phone chosenPhone = null;
         int subId = PhoneUtils.getSubIdForPhoneAccountHandle(accountHandle);
         if (subId != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-            int phoneId = mSubscriptionManagerProxy.getPhoneId(subId);
-            chosenPhone = mPhoneFactoryProxy.getPhone(phoneId);
+            int phoneId = SubscriptionManager.getPhoneId(subId);
+            chosenPhone = PhoneFactory.getPhone(phoneId);
         }
         // If this is an emergency call and the phone we originally planned to make this call
         // with is not in service or was invalid, try to find one that is in service, using the
@@ -936,120 +836,89 @@ public class TelephonyConnectionService extends ConnectionService {
      *  list (for multi-SIM devices):
      *  1) The User's SIM preference for Voice calling
      *  2) The First Phone that is currently IN_SERVICE or is available for emergency calling
-     *  3) If there is a PUK locked SIM, compare the SIMs that are not PUK locked. If all the SIMs
-     *     are locked, skip to condition 4).
-     *  4) The Phone with more Capabilities.
-     *  5) The First Phone that has a SIM card in it (Starting from Slot 0...N)
-     *  6) The Default Phone (Currently set as Slot 0)
+     *  3) The Phone with more Capabilities.
+     *  4) The First Phone that has a SIM card in it (Starting from Slot 0...N)
+     *  5) The Default Phone (Currently set as Slot 0)
      */
-    @VisibleForTesting
-    public Phone getFirstPhoneForEmergencyCall() {
+    private Phone getFirstPhoneForEmergencyCall() {
         // 1)
-        int phoneId = mSubscriptionManagerProxy.getDefaultVoicePhoneId();
+        int phoneId = SubscriptionManager.getDefaultVoicePhoneId();
         if (phoneId != SubscriptionManager.INVALID_PHONE_INDEX) {
-            Phone defaultPhone = mPhoneFactoryProxy.getPhone(phoneId);
+            Phone defaultPhone = PhoneFactory.getPhone(phoneId);
             if (defaultPhone != null && isAvailableForEmergencyCalls(defaultPhone)) {
                 return defaultPhone;
             }
         }
 
         Phone firstPhoneWithSim = null;
-        int phoneCount = mTelephonyManagerProxy.getPhoneCount();
-        List<SlotStatus> phoneSlotStatus = new ArrayList<>(phoneCount);
+        int phoneCount = TelephonyManager.getDefault().getPhoneCount();
+        List<Pair<Integer, Integer>> phoneNetworkType = new ArrayList<>(phoneCount);
         for (int i = 0; i < phoneCount; i++) {
-            Phone phone = mPhoneFactoryProxy.getPhone(i);
-            if (phone == null) {
+            Phone phone = PhoneFactory.getPhone(i);
+            if (phone == null)
                 continue;
-            }
             // 2)
             if (isAvailableForEmergencyCalls(phone)) {
                 // the slot has the radio on & state is in service.
                 Log.i(this, "getFirstPhoneForEmergencyCall, radio on & in service, Phone Id:" + i);
                 return phone;
             }
-            // 4)
-            // Store the RAF Capabilities for sorting later.
-            int radioAccessFamily = phone.getRadioAccessFamily();
-            SlotStatus status = new SlotStatus(i, radioAccessFamily);
-            phoneSlotStatus.add(status);
-            Log.i(this, "getFirstPhoneForEmergencyCall, RAF:" +
-                    Integer.toHexString(radioAccessFamily) + " saved for Phone Id:" + i);
             // 3)
-            // Report Slot's PIN/PUK lock status for sorting later.
-            int simState = mSubscriptionManagerProxy.getSimStateForSlotIdx(i);
-            if (simState == TelephonyManager.SIM_STATE_PIN_REQUIRED ||
-                    simState == TelephonyManager.SIM_STATE_PUK_REQUIRED) {
-                status.isLocked = true;
+            // Store the RAF Capabilities for sorting later only if there are capabilities to sort.
+            int radioAccessFamily = phone.getRadioAccessFamily();
+            if(RadioAccessFamily.getHighestRafCapability(radioAccessFamily) != 0) {
+                phoneNetworkType.add(new Pair<>(i, radioAccessFamily));
+                Log.i(this, "getFirstPhoneForEmergencyCall, RAF:" +
+                        Integer.toHexString(radioAccessFamily) + " saved for Phone Id:" + i);
             }
-            // 5)
-            if (firstPhoneWithSim == null && mTelephonyManagerProxy.hasIccCard(i)) {
+            // 4)
+            if (firstPhoneWithSim == null && TelephonyManager.getDefault().hasIccCard(i)) {
                 // The slot has a SIM card inserted, but is not in service, so keep track of this
                 // Phone. Do not return because we want to make sure that none of the other Phones
                 // are in service (because that is always faster).
+                Log.i(this, "getFirstPhoneForEmergencyCall, SIM card inserted, Phone Id:" + i);
                 firstPhoneWithSim = phone;
-                Log.i(this, "getFirstPhoneForEmergencyCall, SIM card inserted, Phone Id:" +
-                        firstPhoneWithSim.getPhoneId());
             }
         }
-        // 6)
-        if (firstPhoneWithSim == null && phoneSlotStatus.isEmpty()) {
-            // No Phones available, get the default.
+        // 5)
+        if (firstPhoneWithSim == null && phoneNetworkType.isEmpty()) {
+            // No SIMs inserted, get the default.
             Log.i(this, "getFirstPhoneForEmergencyCall, return default phone");
-            return mPhoneFactoryProxy.getDefaultPhone();
+            return PhoneFactory.getDefaultPhone();
         } else {
-            // 4)
-            final int defaultPhoneId = mPhoneFactoryProxy.getDefaultPhone().getPhoneId();
+            // 3)
             final Phone firstOccupiedSlot = firstPhoneWithSim;
-            if (!phoneSlotStatus.isEmpty()) {
+            if (!phoneNetworkType.isEmpty()) {
                 // Only sort if there are enough elements to do so.
-                if (phoneSlotStatus.size() > 1) {
-                    Collections.sort(phoneSlotStatus, (o1, o2) -> {
-                        // First start by seeing if either of the phone slots are locked. If they
-                        // are, then sort by non-locked SIM first. If they are both locked, sort
-                        // by capability instead.
-                        if (o1.isLocked && !o2.isLocked) {
-                            return -1;
-                        }
-                        if (o2.isLocked && !o1.isLocked) {
-                            return 1;
-                        }
-                        // sort by number of RadioAccessFamily Capabilities.
-                        int compare = Integer.bitCount(o1.capabilities) -
-                                Integer.bitCount(o2.capabilities);
+                if(phoneNetworkType.size() > 1) {
+                    Collections.sort(phoneNetworkType, (o1, o2) -> {
+                        // First start by sorting by number of RadioAccessFamily Capabilities.
+                        int compare = Integer.bitCount(o1.second) - Integer.bitCount(o2.second);
                         if (compare == 0) {
                             // Sort by highest RAF Capability if the number is the same.
-                            compare = RadioAccessFamily.getHighestRafCapability(o1.capabilities) -
-                                    RadioAccessFamily.getHighestRafCapability(o2.capabilities);
-                            if (compare == 0) {
-                                if (firstOccupiedSlot != null) {
-                                    // If the RAF capability is the same, choose based on whether or
-                                    // not any of the slots are occupied with a SIM card (if both
-                                    // are, always choose the first).
-                                    if (o1.slotId == firstOccupiedSlot.getPhoneId()) {
-                                        return 1;
-                                    } else if (o2.slotId == firstOccupiedSlot.getPhoneId()) {
-                                        return -1;
-                                    }
-                                } else {
-                                    // No slots have SIMs detected in them, so weight the default
-                                    // Phone Id greater than the others.
-                                    if (o1.slotId == defaultPhoneId) {
-                                        return 1;
-                                    } else if (o2.slotId == defaultPhoneId) {
-                                        return -1;
-                                    }
+                            compare = RadioAccessFamily.getHighestRafCapability(o1.second) -
+                                    RadioAccessFamily.getHighestRafCapability(o2.second);
+                            if (compare == 0 && firstOccupiedSlot != null) {
+                                // If the RAF capability is the same, choose based on whether or not
+                                // any of the slots are occupied with a SIM card (if both are,
+                                // always choose the first).
+                                if (o1.first == firstOccupiedSlot.getPhoneId()) {
+                                    return 1;
+                                } else if (o2.first == firstOccupiedSlot.getPhoneId()) {
+                                    return -1;
                                 }
+                                // Compare is still 0, return equal.
                             }
                         }
                         return compare;
                     });
                 }
-                int mostCapablePhoneId = phoneSlotStatus.get(phoneSlotStatus.size() - 1).slotId;
+                int mostCapablePhoneId = phoneNetworkType.get(phoneNetworkType.size()-1).first;
                 Log.i(this, "getFirstPhoneForEmergencyCall, Using Phone Id: " + mostCapablePhoneId +
                         "with highest capability");
-                return mPhoneFactoryProxy.getPhone(mostCapablePhoneId);
+                return PhoneFactory.getPhone(mostCapablePhoneId);
             } else {
-                // 5)
+                // 4)
                 return firstPhoneWithSim;
             }
         }

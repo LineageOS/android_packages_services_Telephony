@@ -28,8 +28,10 @@ import org.junit.runner.RunWith;
 
 import java.util.concurrent.TimeoutException;
 
+@RunWith(AndroidJUnit4.class)
 public class TaskSchedulerServiceTest extends TaskSchedulerServiceTestBase {
 
+    @Test
     public void testTaskIdComparison() {
         TaskId id1 = new TaskId(1, 1);
         TaskId id2 = new TaskId(1, 1);
@@ -39,6 +41,7 @@ public class TaskSchedulerServiceTest extends TaskSchedulerServiceTestBase {
         assertTrue(!id1.equals(id3));
     }
 
+    @Test
     public void testAddDuplicatedTask() throws TimeoutException {
         TestTask task1 = (TestTask) submitTask(
                 TaskSchedulerService.createIntent(mTestContext, TestTask.class));
@@ -53,6 +56,7 @@ public class TaskSchedulerServiceTest extends TaskSchedulerServiceTestBase {
         verifyNotRan(task2);
     }
 
+    @Test
     public void testAddDuplicatedTaskAfterFirstCompleted() throws TimeoutException {
         TestTask task1 = (TestTask) submitTask(
                 TaskSchedulerService.createIntent(mTestContext, TestTask.class));
@@ -65,6 +69,7 @@ public class TaskSchedulerServiceTest extends TaskSchedulerServiceTestBase {
         verifyRanOnce(task2);
     }
 
+    @Test
     public void testAddMultipleTask() {
         TestTask task1 = (TestTask) submitTask(
                 putTaskId(TaskSchedulerService.createIntent(mTestContext, TestTask.class),
@@ -90,6 +95,7 @@ public class TaskSchedulerServiceTest extends TaskSchedulerServiceTestBase {
         verifyRanOnce(task3);
     }
 
+    @Test
     public void testNotReady() {
         TestTask task1 = (TestTask) submitTask(
                 putTaskId(TaskSchedulerService.createIntent(mTestContext, TestTask.class),
@@ -109,6 +115,7 @@ public class TaskSchedulerServiceTest extends TaskSchedulerServiceTestBase {
         verifyRanOnce(task2);
     }
 
+    @Test
     public void testInvalidTaskId() {
         Task task = mock(Task.class);
         when(task.getId()).thenReturn(new TaskId(Task.TASK_INVALID, 0));
@@ -116,6 +123,7 @@ public class TaskSchedulerServiceTest extends TaskSchedulerServiceTestBase {
         mService.addTask(task);
     }
 
+    @Test
     public void testDuplicatesAllowedTaskId() {
         TestTask task1 = (TestTask) submitTask(
                 putTaskId(TaskSchedulerService.createIntent(mTestContext, TestTask.class),
