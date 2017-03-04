@@ -20,7 +20,7 @@ import android.os.AsyncResult;
 import android.os.Handler;
 import android.telephony.ServiceState;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.FlakyTest;
+import android.support.test.filters.FlakyTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
 import com.android.TelephonyTestBase;
