@@ -2188,30 +2188,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Send the dialer code if called from the current default dialer and the input code follows the
-     * format of *#*#<code>#*#*
-     * <p>
-     * Requires Permission:
-     *   {@link android.Manifest.permission#MODIFY_PHONE_STATE MODIFY_PHONE_STATE}
-     *
-     * @param inputCode The dialer code to send
-     * @return true if successfully sent, false otherwise
-     */
-    @Override
-    public boolean sendDialerCode(String callingPackage, String inputCode) {
-        enforceModifyPermission();
-        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
-        if (TextUtils.equals(callingPackage,
-                TelecomManager.from(mPhone.getContext()).getDefaultDialerPackage())) {
-            final Phone phone = getPhone(getDefaultSubscription());
-            if (phone != null) {
-                return phone.sendDialerCode(inputCode);
-            }
-        }
-        return false;
-    }
-
-    /**
      * Send the dialer code if called from the current default dialer or the caller has
      * carrier privilege.
      * @param inputCode The dialer code to send
