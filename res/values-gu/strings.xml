@@ -115,7 +115,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"જ્યારે પહોંચયોગ્ય ન હોય ત્યારે"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"જ્યારે પહોંચયોગ્ય ન હોય તે સમય માટેનો નંબર"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> પર ફોરવર્ડ કરી રહ્યાં છે"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"અક્ષમ કરેલું"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"બંધ"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"જ્યારે તમારો ફોન પહોંચયોગ્ય ન હોય ત્યારે તમારા કેરિઅર કૉલ ફોરવર્ડિંગને અક્ષમ કરવાને સમર્થન આપતા નથી."</string>
     <string name="updating_title" msgid="6146755386174019046">"કૉલ સેટિંગ્સ"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"કૉલ સેટિંગ્સને ફક્ત એડમિન વપરાશકર્તા દ્વારા જ બદલી શકાય છે."</string>

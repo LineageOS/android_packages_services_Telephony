@@ -115,7 +115,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"Кад сам недоступан/а"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Број кад је недоступно"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Прослеђује се на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"Онемогућено"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Искључено"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Мобилни оператер не подржава онемогућавање преусмеравања позива када је телефон недоступан."</string>
     <string name="updating_title" msgid="6146755386174019046">"Подешавања позива"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Само кориснику са администраторским правима је дозвољено да мења подешавања позива."</string>

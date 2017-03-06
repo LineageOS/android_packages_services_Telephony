@@ -115,7 +115,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"无法接通时"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"无法接通时的转接号码"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"转接到 <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"未启用"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"关闭"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"您的运营商不支持在手机无法接通时停用来电转接功能。"</string>
     <string name="updating_title" msgid="6146755386174019046">"通话设置"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"只有管理员用户才能更改通话设置。"</string>

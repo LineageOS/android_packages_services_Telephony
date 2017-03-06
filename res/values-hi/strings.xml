@@ -43,7 +43,7 @@
     <string name="pause_prompt_no" msgid="6686238803236884877">"नहीं"</string>
     <string name="wild_prompt_str" msgid="5543521676355533577">"वाइल्ड वर्ण को इससे बदलें:"</string>
     <string name="no_vm_number" msgid="4164780423805688336">"गुम वॉयस मेल नंबर"</string>
-    <string name="no_vm_number_msg" msgid="1300729501030053828">"सिम कार्ड पर कोई वॉयस मेल नंबर संग्रहीत नहीं है."</string>
+    <string name="no_vm_number_msg" msgid="1300729501030053828">"सिम कार्ड पर कोई वॉयस मेल नंबर संग्रहित नहीं है."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"नंबर जोड़ें"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"आपका सिम कार्ड अनब्लॉक कर दिया गया है. आपका फ़ोन अनलॉक किया जा रहा है..."</string>
     <string name="label_ndp" msgid="780479633159517250">"सिम नेटवर्क अनलॉक पिन"</string>
@@ -115,7 +115,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"पहुंच से बाहर होने पर"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"पहुंच योग्य न होने पर नंबर"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> को अग्रेषित कर रहा है"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"अक्षम की गई"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"बंद"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"जब आपका फ़ोन पहुंच योग्य न हो, तो आपका कैरियर कॉल अग्रेषण अक्षम करने का समर्थन नहीं करता."</string>
     <string name="updating_title" msgid="6146755386174019046">"कॉल सेटिंग"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"कॉल सेटिंग केवल व्यवस्थापक उपयोगकर्ता द्वारा ही बदली जा सकती हैं."</string>

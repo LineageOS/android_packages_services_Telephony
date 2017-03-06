@@ -115,7 +115,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"Если номер недоступен"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Переадресовывать на этот номер"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Переадресация на номер <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"Отключено"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Выкл."</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Ваш оператор не позволяет отключать переадресацию вызовов, если телефон находится вне зоны доступа."</string>
     <string name="updating_title" msgid="6146755386174019046">"Настройки вызовов"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Настройки вызовов может изменить только основной пользователь"</string>

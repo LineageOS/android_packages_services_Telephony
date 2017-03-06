@@ -115,7 +115,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"पहुँचयोग्य नहुँदा"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"पहुँचयोग्य हुँदाको नम्बर"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> मा फर्वाड गर्दै"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"असक्षम पारियो"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"बन्द गर्नुहोस्"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"तपाईंको फोन पहुँचयोग्य नहुँदा तपाईंको केरियरले कल-फर्वार्डिङ असक्षम बनाउँदा समर्थन गर्दैन।"</string>
     <string name="updating_title" msgid="6146755386174019046">"कल सेटिङहरू"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"कल सेटिङहरू केवल प्रशासकीय प्रयोगकर्ताद्वारा परिवर्तन गर्न सकिन्छ।"</string>

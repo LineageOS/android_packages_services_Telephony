@@ -115,7 +115,8 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"Калі недасягальны"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Нумар, калі недаступны"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Пераадрасацыя на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"Адключана"</string>
+    <!-- no translation found for sum_cfnrc_disabled (2684474391807469832) -->
+    <skip />
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Ваш аператар не падтрымлівае адключэнне пераадрасацыi выклікаў, калі тэлефон недаступны."</string>
     <string name="updating_title" msgid="6146755386174019046">"Налады выклікаў"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Налады выклікаў можа мяняць толькі адміністратар."</string>

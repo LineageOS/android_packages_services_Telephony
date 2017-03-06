@@ -115,7 +115,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"Ved utilgængelig"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Nummer ved utilgængelig"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Viderestiller til <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"Deaktiveret"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Fra"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Dit mobilselskab understøtter ikke deaktivering af viderestilling af opkald, når telefonen ikke er tilgængelig."</string>
     <string name="updating_title" msgid="6146755386174019046">"Indstillinger for opkald"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Opkaldsindstillingerne kan kun ændres af administratorbrugeren."</string>
@@ -365,7 +365,7 @@
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Skift pinkode for at få adgang til begrænset opkald."</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Administrer liste over telefonnumre"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Privat talekommunikation"</string>
-    <string name="voice_privacy_summary" msgid="3159383389833516214">"Aktivér udvidet fortrolighedstilstand"</string>
+    <string name="voice_privacy_summary" msgid="3159383389833516214">"Aktivér Udvidet fortrolighedstilstand"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY-tilstand"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"Angiv TTY-tilstand"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"Prøv automatisk igen"</string>

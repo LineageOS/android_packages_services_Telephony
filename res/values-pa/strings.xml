@@ -115,7 +115,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"ਜਦੋਂ ਪਹੁੰਚਯੋਗ ਨਾ ਹੋਵੇ"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"ਜਦੋਂ ਨਾ ਪਹੁੰਚਯੋਗ ਹੋਵੇ ਤਾਂ ਨੰਬਰ"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> ਨੂੰ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"ਅਯੋਗ ਬਣਾਇਆ"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"ਬੰਦ"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"ਜਦੋਂ ਤੁਹਾਡਾ ਫੋਨ ਨਾਪਹੁੰਚਯੋਗ ਹੁੰਦਾ ਹੈ ਤਾਂ ਤੁਹਾਡਾ ਕੈਰੀਅਰ ਕਾਲ ਫੌਰਵਾਰਡਿੰਗ ਨੂੰ ਅਸਮਰੱਥ ਬਣਾਉਣ ਦਾ ਸਮਰਥਨ ਨਹੀਂ ਕਰਦਾ।"</string>
     <string name="updating_title" msgid="6146755386174019046">"ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"ਕਾਲ ਸੈਟਿੰਗਾਂ ਸਿਰਫ਼ ਪ੍ਰਸ਼ਾਸਕ ਵਰਤੋਂਕਾਰ ਵੱਲੋਂ ਹੀ ਬਦਲੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ।"</string>

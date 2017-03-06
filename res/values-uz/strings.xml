@@ -115,7 +115,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"Agar raqamga tushib bo‘lmasa"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Ushbu raqamga yo‘naltirilsin"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> raqamiga yo‘naltiriladi"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"O‘chiq"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"O‘chirilgan"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Telefoningiz o‘chiq bo‘lganida qo‘ng‘iroqlarni boshqa raqamga yo‘naltirishni o‘chirish xususiyati tarmoq operatoringizda yo‘q."</string>
     <string name="updating_title" msgid="6146755386174019046">"Chaqiruv sozlamalari"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Faqat administrator qo‘ng‘iroq sozlamalarini o‘zgartirishi mumkin."</string>

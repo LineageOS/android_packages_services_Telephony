@@ -115,7 +115,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"Жеткиликтүү эмес болсо"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Жеткиликтүү эмес болсо багытталчу номер"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> номерине багытталууда"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"Өчүрүлгөн"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Өчүк"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Сиздин операторуңуз, телефон жеткиликсиз болгондо чалууну багыттоону токтотууну колдобойт."</string>
     <string name="updating_title" msgid="6146755386174019046">"Чалуу жөндөөлөрү"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Чалуу жөндөөлөрүн администратор гана өзгөртө алат."</string>

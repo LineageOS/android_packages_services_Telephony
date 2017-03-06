@@ -115,7 +115,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"No localitzable"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Número quan no es pugui localitzar"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"S\'està desviant a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"Desactivat"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Desactivat"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"El teu operador de telefonia mòbil no permet desactivar la desviació de trucades quan el telèfon estigui il·localitzable."</string>
     <string name="updating_title" msgid="6146755386174019046">"Configuració de trucada"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Només l\'administrador pot canviar la configuració de trucades."</string>
