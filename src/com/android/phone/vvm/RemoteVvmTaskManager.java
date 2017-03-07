@@ -131,9 +131,22 @@ public class RemoteVvmTaskManager extends Service {
             bindIntent.setPackage(packageName);
             ResolveInfo info = context.getPackageManager()
                     .resolveService(bindIntent, PackageManager.MATCH_ALL);
-            if (info != null) {
-                return info.getComponentInfo().getComponentName();
+            if (info == null) {
+                continue;
             }
+            if(info.serviceInfo == null){
+                VvmLog.w(TAG,
+                        "Component " + info.getComponentInfo() + " is not a service, ignoring");
+                continue;
+            }
+            if (!android.Manifest.permission.BIND_VISUAL_VOICEMAIL_SERVICE
+                    .equals(info.serviceInfo.permission)) {
+                VvmLog.w(TAG, "package " + info.serviceInfo.packageName
+                        + " does not enforce BIND_VISUAL_VOICEMAIL_SERVICE, ignoring");
+                continue;
+            }
+
+            return info.getComponentInfo().getComponentName();
 
         }
         return null;

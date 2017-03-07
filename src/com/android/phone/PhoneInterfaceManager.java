@@ -3538,8 +3538,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @throws SecurityException if the caller is not the visual voicemail package.
      */
     private void enforceVisualVoicemailPackage(String callingPackage, int subId) {
-        String vvmPackage = RemoteVvmTaskManager.getRemotePackage(mPhone.getContext(), subId)
-                .getPackageName();
+        ComponentName componentName =
+                RemoteVvmTaskManager.getRemotePackage(mPhone.getContext(), subId);
+        if(componentName == null) {
+            throw new SecurityException("Caller not current active visual voicemail package[null]");
+        }
+        String vvmPackage = componentName.getPackageName();
         if (!callingPackage.equals(vvmPackage)) {
             throw new SecurityException("Caller not current active visual voicemail package[" +
                     vvmPackage + "]");
