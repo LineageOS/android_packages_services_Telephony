@@ -151,8 +151,14 @@ public class SpecialCharSequenceMgr {
      * @return true if a secret code was encountered and intent is sent out
      */
     static private boolean handleSecretCode(String input) {
-        Phone phone = PhoneGlobals.getPhone();
-        return phone.sendDialerCode(input);
+        // Secret codes are in the form *#*#<code>#*#*
+        int len = input.length();
+        if (len > 8 && input.startsWith("*#*#") && input.endsWith("#*#*")) {
+            final Phone phone = PhoneGlobals.getPhone();
+            phone.sendDialerSpecialCode(input.substring(4, len - 4));
+            return true;
+        }
+        return false;
     }
 
     static private boolean handleAdnEntry(Context context, String input) {
