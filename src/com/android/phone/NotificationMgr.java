@@ -380,7 +380,7 @@ public class NotificationMgr {
                 if (!mUserManager.hasUserRestriction(
                         UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
                         && !user.isManagedProfile()) {
-                    if (!maybeSendVoicemailNotificationUsingDefaultDialer(vmCount, vmNumber,
+                    if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, vmCount, vmNumber,
                             pendingIntent, isSettingsIntent, userHandle)) {
                         mNotificationManager.notifyAsUser(
                                 Integer.toString(subId) /* tag */,
@@ -398,8 +398,8 @@ public class NotificationMgr {
                 if (!mUserManager.hasUserRestriction(
                         UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
                         && !user.isManagedProfile()) {
-                    if (!maybeSendVoicemailNotificationUsingDefaultDialer(0, null, null, false,
-                            userHandle)) {
+                    if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, 0, null, null,
+                            false, userHandle)) {
                         mNotificationManager.cancelAsUser(
                                 Integer.toString(subId) /* tag */,
                                 VOICEMAIL_NOTIFICATION,
@@ -415,6 +415,7 @@ public class NotificationMgr {
      * method is also used to indicate to the default dialer when to clear the
      * notification. A pending intent can be passed to the default dialer to indicate an action to
      * be taken as it would by a notification produced in this class.
+     * @param phone The phone the notification is sent from
      * @param count The number of pending voicemail messages to indicate on the notification. A
      *              Value of 0 is passed here to indicate that the notification should be cleared.
      * @param number The voicemail phone number if specified.
@@ -425,14 +426,16 @@ public class NotificationMgr {
      *                   dialer.
      * @return {@code true} if the default was notified of the notification.
      */
-    private boolean maybeSendVoicemailNotificationUsingDefaultDialer(Integer count, String number,
-            PendingIntent pendingIntent, boolean isSettingsIntent, UserHandle userHandle) {
+    private boolean maybeSendVoicemailNotificationUsingDefaultDialer(Phone phone, Integer count,
+            String number, PendingIntent pendingIntent, boolean isSettingsIntent,
+            UserHandle userHandle) {
 
         if (shouldManageNotificationThroughDefaultDialer(userHandle)) {
             Intent intent = getShowVoicemailIntentForDefaultDialer(userHandle);
             intent.setFlags(Intent.FLAG_RECEIVER_FOREGROUND);
             intent.setAction(TelephonyManager.ACTION_SHOW_VOICEMAIL_NOTIFICATION);
-
+            intent.putExtra(TelephonyManager.EXTRA_PHONE_ACCOUNT_HANDLE,
+                    PhoneUtils.makePstnPhoneAccountHandle(phone));
             if (count != null) {
                 intent.putExtra(TelephonyManager.EXTRA_NOTIFICATION_COUNT, count);
             }
