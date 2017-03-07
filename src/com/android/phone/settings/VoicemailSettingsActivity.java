@@ -264,7 +264,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
                 getResources().getString(R.string.voicemail_notification_vibrate_key));
         mVoicemailNotificationVibrate.setOnPreferenceChangeListener(this);
 
-        mVoicemailVisualVoicemail = (SwitchPreference) findPreference(
+        mVoicemailVisualVoicemail = (SwitchPreference) prefSet.findPreference(
                 getResources().getString(R.string.voicemail_visual_voicemail_key));
 
         mVoicemailChangePinPreference = prefSet.findPreference(
