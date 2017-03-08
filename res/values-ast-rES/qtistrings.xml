@@ -33,6 +33,7 @@
 <resources>
   <!-- IMS settings related strings -->
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
+  <string name="ims_settings">Axustes d\'IMS</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
   <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
@@ -77,5 +78,12 @@
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
   <!-- Success message displayed on PUK Depersonalization panel -->
+  <string name="preferred_network_mode_dialogtitle_cmcc">Mou de rede</string>
   <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (auto)"</string>
+  <string name="preferred_network_mode_3g_2g_auto">"3G/2G (auto)"</string>
+  <string name="cf_setting_mobile_data_alert">Activa los datos móviles y asegúrate que\'l Wi-Fi tea apagáu, por favor</string>
+  <string name="cf_setting_mobile_data_roaming_alert">Activa la itinerancia de datos, por favor</string>
+  <string name="no_mobile_data">Los datos móviles nun tán disponibles</string>
+  <string name="no_mobile_data_roaming">Los datos n\'itinerancia nun tán diponibles</string>
 </resources>
