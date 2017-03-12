@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Trūkst balss pasta numura"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM kartē neviens balss pasta numurs nav saglabāts."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Pievienot numuru"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Tikai galvenais lietotājs var mainīt balss pasta zvanu iestatījumus."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM karte ir atbloķēta. Notiek tālruņa atbloķēšana..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM tīkla atbloķēšanas PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Atbloķēt"</string>
@@ -385,7 +386,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Notiek fiksētā numuru sastādīšanas numura dzēšana…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Fiksētais numuru sastādīšanas numurs ir atspējots."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"IZSN nav atjaunināts, jo tika ievadīts nepareizs PIN."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"IZSN netika atjaunināts, jo numurā nedrīkst būt vairāk par 20 cipariem."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"IZSN netika atjaunināts. Ievadītais PIN2 nebija pareizs, vai tālruņa numurs tika noraidīts."</string>
     <string name="fdn_failed" msgid="540018079008319747">"IZSN ievadīšana neizdevās."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Notiek lasīšana no SIM kartes..."</string>

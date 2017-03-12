@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Chybí číslo hlasové schránky"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Na SIM kartě není uloženo žádné číslo hlasové schránky."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Přidat číslo"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Nastavení hlasové schránky a hovorů může změnit pouze primární uživatel."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM karta byla odblokována. Telefon se odblokovává..."</string>
     <string name="label_ndp" msgid="780479633159517250">"Kód PIN odblokování sítě pro SIM kartu"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Odemknout"</string>
@@ -383,7 +384,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Mazání povoleného telefonního čísla..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Povolené telefonní číslo bylo smazáno."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Funkce Povolená tel. čísla nebyla aktualizována, protože jste zadali chybný kód PIN."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"Funkce Povolená tel. čísla nebyla aktualizována, protože číslo nesmí obsahovat více než 20 číslic."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"Funkce Povolená telefonní čísla nebyla aktualizována, protože číslo je prázdné nebo obsahuje více než 20 číslic."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Povolená tel. čísla (FDN) nebyla aktualizována. Kód PIN2 byl nesprávný nebo bylo telefonní číslo odmítnuto."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operace s čísly FDN se nezdařila."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Čtení ze SIM karty..."</string>

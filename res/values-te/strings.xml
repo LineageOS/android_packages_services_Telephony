@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"వాయిస్ మెయిల్ నంబర్ లేదు"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"సిమ్ కార్డులో వాయిస్ మెయిల్ నంబర్ ఏదీ నిల్వ చేయబడలేదు."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"నంబర్‌ను జోడించు"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"కాల్ యొక్క వాయిస్ మెయిల్ సెట్టింగ్‌లను ప్రాథమిక వినియోగదారు మాత్రమే మార్చగలరు."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"మీ SIM కార్డు అన్‌బ్లాక్ చేయబడింది. మీ ఫోన్ అన్‌లాక్ చేయబడుతోంది…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM నెట్‌వర్క్ అన్‌లాక్ పిన్‌"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"అన్‌లాక్ చేయి"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ను తొలగిస్తోంది..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ఫిక్స్‌డ్ డయలింగ్ నంబర్ తొలగించబడింది."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"మీరు చెల్లని PINను టైప్ చేసినందున FDN నవీకరించబడలేదు."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"నంబర్ 20 అంకెలను మించి లేనందున FDN నవీకరించబడలేదు."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN నవీకరించబడలేదు. PIN2 చెల్లదు లేదా ఫోన్ నంబర్ తిరస్కరించబడింది."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN చర్య విఫలమైంది."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM కార్డు నుండి చదువుతోంది…"</string>

@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Falta el número del buzón de voz."</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"No se ha almacenado ningún número de buzón de voz en la tarjeta SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Añadir número"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"El usuario principal es el único que puede cambiar los ajustes de llamadas y del buzón de voz."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"La tarjeta SIM se ha desbloqueado. El teléfono se está desbloqueando..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN de desbloqueo de red de tarjeta SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Desbloquear"</string>
@@ -387,7 +388,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Eliminando número de marcación fija..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Se ha eliminado el número de marcación fija."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"No se ha actualizado FDN porque el código PIN que has introducido es incorrecto."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"No se ha actualizado FDN porque el número no puede superar los 20 dígitos."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN no actualizado. El código PIN2 era incorrecto o se ha rechazado el número de teléfono."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Error de funcionamiento de número de marcación fija."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Leyendo desde tarjeta SIM…"</string>

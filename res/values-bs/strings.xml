@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Nedostaje broj govorne pošte"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Broj govorne pošte nije pohranjen na SIM kartici."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Dodaj broj"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Govornu poštu u postavkama poziva može promijeniti samo primarni korisnik."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Vaša SIM kartica je odblokirana. Telefon se otključava…"</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN za otključavanje mreže na SIM kartici"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Otključaj"</string>
@@ -115,8 +116,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"Kada je nedostupno"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Broj kada je nedostupno"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Preusmjerava se na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <!-- no translation found for sum_cfnrc_disabled (2684474391807469832) -->
-    <skip />
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Isključeno"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Vaš operater ne podržava onemogućavanje preusmjeravanja poziva kada ste nedostupni."</string>
     <string name="updating_title" msgid="6146755386174019046">"Postavke poziva"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Postavke poziva može promijeniti samo administrator."</string>
@@ -384,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Brisanje broja fiksnog biranja u toku…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Broj fiksnog biranja je izbrisan."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN nije ažuriran jer ste upisali netačan PIN."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN nije ažuriran jer broj ne može imati više od 20 cifara."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN nije ažuriran. PIN2 je netačan ili je broj telefona odbijen."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN operacija nije uspjela."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Čitanje sa SIM kartice u toku…"</string>

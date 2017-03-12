@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Manjkajoča številka glasovne pošte"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Na kartici SIM ni shranjena številka glasovne pošte."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Dodaj številko"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Izbiro glede sporočil v odzivniku v nastavitvah za klicanje lahko spremeni samo primarni uporabnik."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Kartica SIM je bila deblokirana. Telefon se odklepa ..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN za odklep omrežja kartice SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Odkleni"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Brisanje zapore odhodnega klica ..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Zapora odhodnega klica izbrisana."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN ni bil posodobljen, ker ste vnesli napačno kodo PIN."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN ni bil posodobljen, ker število ne sme presegati 20 mest."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN ni bil posodobljen. Koda PIN2 je bila napačna ali pa je bila telefonska številka zavrnjena."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Postopek za omejeno klicanje ni uspel."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Branje kartice SIM ..."</string>

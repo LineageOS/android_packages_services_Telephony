@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Puudub kõnepostinumber"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM-kaardile pole salvestatud ühtegi kõnepostinumbrit."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Lisa number"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Kõneseadete kõneposti saab muuta ainult peamine kasutaja."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Teie SIM-kaardi blokeering on tühistatud. Teie telefoni avamine ..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM-võrgu avamise PIN-kood"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Ava"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Fikseeritud valimisnumbri kustutamine…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Fikseeritud valimisnumber kustutatud."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN-i ei värskendatud, sest sisestasite vale PIN-koodi."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN-i ei värskendatud, sest number ei tohi olla pikem kui 20 kohta."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN-i ei värskendatud. PIN2 oli vale või lükati telefoninumber tagasi."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN-i toiming ebaõnnestus."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM-kaardilt lugemine ..."</string>

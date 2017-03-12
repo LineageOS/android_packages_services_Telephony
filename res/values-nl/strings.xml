@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Voicemailnummer ontbreekt"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Er is geen voicemailnummer op de SIM-kaart opgeslagen."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Nummer toevoegen"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Voicemail voor Oproepinstellingen kan alleen worden gewijzigd door de primaire gebruiker."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Je SIM-kaart is gedeblokkeerd. Je telefoon wordt ontgrendeld..."</string>
     <string name="label_ndp" msgid="780479633159517250">"Pincode voor ontgrendelen SIM-netwerk"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Ontgrendelen"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Vast nummer verwijderen..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Vast nummer verwijderd."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN is niet bijgewerkt omdat je een onjuiste pincode hebt ingevoerd."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN is niet bijgewerkt omdat het nummer niet langer kan zijn dan 20 tekens."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN is niet bijgewerkt. De PIN2 was onjuist of het telefoonnummer is geweigerd."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN-bewerking mislukt."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lezen vanaf SIM-kaart..."</string>

@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"വോയ്‌സ്മെയിൽ നമ്പർ കാണുന്നില്ല"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"സിം കാർഡിൽ വോയ്‌സ്‌മെയിൽ നമ്പറൊന്നും സംഭരിച്ചിട്ടില്ല."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"നമ്പർ ചേർക്കുക"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"പ്രാഥമിക ഉപയോക്താവിന് മാത്രമേ കോൾ ക്രമീകരണത്തിലെ വോയ്‌സ് മെയിൽ മാറ്റാനാവൂ."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"സിം കാർഡ് തടഞ്ഞത് മാറ്റി. നിങ്ങളുടെ ഫോൺ അൺലോക്കുചെയ്യുന്നു…"</string>
     <string name="label_ndp" msgid="780479633159517250">"സിം നെറ്റ്‌വർക്ക് അൺലോക്ക് പിൻ"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"അൺലോക്കുചെയ്യുക"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"സ്ഥിര ഡയലിംഗ് നമ്പർ ഇല്ലാതാക്കുന്നു…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"സ്ഥിര ഡയലിംഗ് നമ്പർ ഇല്ലാതാക്കി."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"നിങ്ങൾ തെറ്റായ പിൻ നൽകിയതിനാൽ FDN അപ്‌ഡേറ്റുചെയ്‌തില്ല."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN അപ്‌ഡേറ്റുചെയ്‌തില്ല, നമ്പർ 20 അക്കങ്ങൾ കവിയരുത്."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN അപ്‌ഡേറ്റുചെയ്‌തില്ല. PIN2 തെറ്റായിരുന്നു, അല്ലെങ്കിൽ ഫോൺ നമ്പർ നിരസിച്ചു."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN പ്രവർത്തനം പരാജയപ്പെട്ടു."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"സിം കാർഡിൽ നിന്നും റീഡുചെയ്യുന്നു…"</string>

@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Адсутнічае нумар галасавой пошты"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"На SIM-карце няма нумару галасавой пошты."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Дадаць нумар"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Галасавая пошта для налад выклікаў можа змяняцца толькі першасным карыстальнікам."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Ваша SIM-карта была разблакаваная. Ваш тэлефон разблакоўваецца..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN-код разблакавання сеткі SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Разблакаваць"</string>
@@ -115,8 +116,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"Калі недасягальны"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Нумар, калі недаступны"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Пераадрасацыя на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <!-- no translation found for sum_cfnrc_disabled (2684474391807469832) -->
-    <skip />
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Выключаны"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Ваш аператар не падтрымлівае адключэнне пераадрасацыi выклікаў, калі тэлефон недаступны."</string>
     <string name="updating_title" msgid="6146755386174019046">"Налады выклікаў"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Налады выклікаў можа мяняць толькі адміністратар."</string>
@@ -384,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Выдаленне дазволенага нумару..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Дазволены нумар выдалены."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN не быў абноўлены, таму што вы набралі няправільны PIN-код."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN не абноўлены, таму што нумар не можа бвць больш за 20 знакаў."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Cпiс дазволеных нумароў не адноўлены. PIN2 ўведзены няправiльна, або нумар быў адхiлены."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Аперацыя ў закрытай абаненцкай групе не ўдалася."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Чытанне з SIM-карты..."</string>

@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Erantzungailuaren zenbakia falta da"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Ez da erantzungailuaren zenbakirik gorde SIM txartelean."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Gehitu zenbakia"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Erabiltzaile nagusiak soilik alda ditzake deien ezarpenetako erantzungailuaren aukerak."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM txartela desblokeatu da. Telefonoa desblokeatzen…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM sarea desblokeatzeko PIN kodea"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Desblokeatu"</string>
@@ -389,7 +390,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Markatze finkoko zenbakia ezabatzen…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Markatze finkoko zenbakia ezabatu da."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Ez da FDN eguneratu PIN kode okerra idatzi duzulako."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"Ez da FDN eguneratu zenbakiak ezin dituelako 20 digitu baino gehiago izan."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Ez da FDN eguneratu. PIN2 kodea ez da zuzena edo telefono-zenbakia baztertu da."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN eragiketak huts egin du."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM txarteletik irakurtzen…"</string>

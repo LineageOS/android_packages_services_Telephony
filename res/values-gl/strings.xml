@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Falta o número de correo de voz"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Non hai ningún número de correo de voz almacenado na tarxeta SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Engadir número"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Só o usuario principal pode cambiar a configuración do correo de voz nas chamadas."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Desbloqueouse a tarxeta SIM. O teléfono estase desbloqueando..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN de desbloqueo da rede SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Desbloquear"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Eliminando número de marcación fixa..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Eliminouse o número de marcación fixa."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Non se actualizou FDN porque escribiches un PIN incorrecto."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN non se actualizou porque o número non pode superar os 20 díxitos."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Non se actualizou FDN. O PIN2 era incorrecto ou rexeitouse o número de teléfono."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Produciuse un fallo no funcionamento de FDN."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lendo da tarxeta SIM..."</string>

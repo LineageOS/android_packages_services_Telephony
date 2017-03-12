@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Nambari ya sauti inayokosekana"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Hakuna nambari ya ujumbe wa sauti iliyohifadhiwa katika SIM kadi."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Ongeza nambari"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Mipangilio ya Ujumbe wa sauti na Simu inaweza kubadilishwa na mtumiaji mkuu pekee."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Kadi yako ya simu imefunguliwa. Simu yangu inafungua…."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN ya kufungua mtandao wa SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Fungua"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Inafuta nambari ya upigaji simu uliobanwa..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Nambari ya upigaji simu uliobanwa imefutwa"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN haikusasishwa kwa sababu uliweka PIN isiyo sahihi."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN haikusasishwa kwa sababu namba haiwezi kuzidisha herufi 20."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN haikusasishwa. PIN2 haikuwa sahihi, au namba ya simu ilikataliwa."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Utendakazi wa FDN ulishindwa."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Inasoma kutoka kwa SIM kadi…"</string>

@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Mangler nummer til talepostkasse"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Det er ikke lagret noe nummer for talepostkasse på SIM-kortet."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Legg til nummer"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Det er bare hovedbrukeren som kan endre innstillingene for Telefonsvarer."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM-kortet er blitt avblokkert. Telefonen låses opp…"</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN-kode for å fjerne operatørlås"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Lås opp"</string>
@@ -389,7 +390,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Sletter programmert telefonnummer ..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Programmert telefonnummer er slettet."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN er ikke oppdatert fordi du skrev inn feil PIN-kode."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN ble ikke oppdatert fordi tallet ikke kan overstige 20 sifre."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"Nummeret har 0 sifre – eller over 20 – og da kan ikke anropsbegrensning (FDN) oppdateres."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Fast nummer ble ikke oppdatert. PIN2 var feil, eller telefonnummeret ble avvist."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN-handlingen mislyktes."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Leser fra SIM-kort …"</string>

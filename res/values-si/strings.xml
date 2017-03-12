@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"හඬ තැපැල් අංකය නැත"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM කාඩ් පතෙහි හඬ තැපැල් අංකයක් ආචිත වී නැත."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"අංකයක් එක් කරන්න"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"ඇමතුම් සැකසීම් සඳහා හඬ තැපෑල ප්‍රධාන පරිශීලකයකු විසින් පමණක් වෙනස් කිරීමට හැකිය."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"ඔබගේ SIM කාඩ්පත අඟුළු හැර තිබේ. ඔබගේ දුරකතනයේ අඟුළු හරිමින්…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM ජාල අඟුළු හැරීමේ PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"අඟුල අරින්න"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ස්ථිර ඇමතුම් අංකය මකමින්..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ස්ථාවර ඇමතුම් අංකය මකන ලදි."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"ඔබ වැරදි PIN එකක් ඇතුලත් කළ බැවින් FDN යාවත්කාලින නොවුණි."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"අංකය ඉලක්කම් 20 ඉක්මවිය නොහැකි බැවින් FDN යාවත්කාල නොවුණි."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN යාවත්කාලින නොවුණි. PIN2 වැරදියි, නැති නම් දුරකථන අංකය ප්‍රතික්ෂේප විය."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN ක්‍රියාවලිය අසමත්."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM කාඩ් පතෙන් කියවමින්…"</string>

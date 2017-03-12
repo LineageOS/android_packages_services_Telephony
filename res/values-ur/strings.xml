@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"صوتی میل نمبر درج نہیں ہے"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"‏SIM کارڈ پر کوئی بھی صوتی میل نمبر اسٹور نہیں ہے۔"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"نمبر شامل کریں"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"کال کی ترتیبات کیلئے صوتی میل صرف بنیادی صارف ہی تبدیل کر سکتا ہے۔"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"‏آپ کا SIM کارڈ غیر مسدود ہوگیا ہے۔ آپ کا فون غیر مقفل ہو رہا ہے…"</string>
     <string name="label_ndp" msgid="780479633159517250">"‏SIM نیٹ ورک غیر مقفل کرنے کا PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"غیر مقفل کریں"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"فکسڈ ڈائلنگ نمبر حذف کر رہا ہے…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"فکسڈ ڈائلنگ نمبر حذف ہوگیا۔"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"‏FDN اپ ڈیٹ نہیں ہوا تھا کیونکہ آپ نے ایک غلط PIN ٹائپ کر دیا۔"</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"‏FDN اپ ڈیٹ نہیں ہوا تھا کیونکہ نمبر 20 ہندسوں سے زائد نہیں ہوسکتا۔"</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"‏FDN اپ ڈیٹ نہیں ہوا تھا کیونکہ PIN2 غلط تھا یا فون نمبر مسترد کر دیا گیا تھا۔"</string>
     <string name="fdn_failed" msgid="540018079008319747">"‏FDN کا عمل ناکام ہوگیا۔"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"‏SIM کارڈ سے پڑھ رہا ہے…"</string>

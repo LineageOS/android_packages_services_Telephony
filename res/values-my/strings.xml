@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"အသံစာပို့စနစ် နံပါတ် ပျောက်နေပါသည်"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"ဆင်းမ်ကဒ်ပေါ်တွင် အသံစာပို့စနစ် နံပါတ် သိမ်းဆည်ထားခြင်း မရှိပါ"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"နံပါတ်ထပ်ထည့်ရန်"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"အဓိက အသုံးပြုသူသာလျှင် ခေါ်ဆိုမှုဆက်တင်များကို ပြောင်းလဲနိုင်သော အသံမေးလ်။"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"သင့် ဆင်းမ်ကဒ်အား ပိတ်ဆို့မှုကို ဖယ်ရှားပြီးပါပြီ။ သင့်ဖုန်းဟာ သော့ဖွင့်နေပါသည်…"</string>
     <string name="label_ndp" msgid="780479633159517250">"ဆင်းမ်ကဒ် ကွန်ရက် သော့ဖွင့်သော ပင်နံပါတ်"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ဖွင့်ရန်"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ခေါ်ဆိုသည့်အခြေစိုက်နံပါတ်အားဖျက်နေသည်"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ပုံသေ ခေါ်ဆိုမှု နံပါတ် ဖျက်ပြီး"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"ပင်နံပါတ် မမှန်သောကြောင့် FDNကို အဆင့်မြှင့်တင်ခြင်းမပြုလုပ်နိုင်ပါ"</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"နံပါတ် အလုံးရေ (၂၀) ထက် ရှည်လို့ မရသောကြောင့် FDN ကို မပြင်ဆင်ဖြစ်ပါ"</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN ပြောင်းလဲမှု မဖြစ်ပါ။ ပင်နံပါတ် ၂ မှားယွင်းခြင်း သို့မဟုတ် ဖုန်းနံပါတ်ကို ငြင်းဖယ်ခံရခြင်း တစ်ခုခုဖြစ်ပါသည်"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN လုပ်ဆောင်ချက် မအောင်မြင်ပါ"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"ဆင်းမ်ကဒ်မှ ဖတ်နေပါသည်..."</string>

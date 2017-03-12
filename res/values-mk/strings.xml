@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Недостасува број на говорна пошта"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Нема мемориран број на говорна пошта на СИМ картичката."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Додај број"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Говорната пошта за поставки за повикување може да ја промени само примарниот корисник."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Вашата СИМ картичка е одблокирана. Вашиот телефон се отклучува..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN за отклучување мрежа на СИМ"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Отклучи"</string>
@@ -389,7 +390,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Бришење број на фиксно бирање..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Бројот на фиксно бирање е избришан."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN не се ажурираше зашто внесовте погрешен PIN."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN не е ажуриран зашто бројот не може да надмине 20 цифри."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN не е ажуриран затоа што бројот е празен или содржи повеќе од 20 цифри."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN не се ажурираше. PIN2 кодот е неточен или телефонскиот број е одбиен."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Операцијата со FDN не успеа."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Се чита од СИМ картичка..."</string>

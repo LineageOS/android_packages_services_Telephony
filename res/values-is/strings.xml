@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Talhólfsnúmer vantar"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Ekkert talhólfsnúmer er vistað á SIM-kortinu."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Bæta númeri við"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Aðeins aðalnotandinn má breyta talhólfi fyrir símtalsstillingar."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Opnað var fyrir SIM-kortið. Verið er að opna símann…"</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN-númer SIM-korts til að opna síma"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Taka úr lás"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Eyða föstu númeravali…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Föstu númeravali eytt."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Fast númeraval var ekki uppfært því að þú slóst inn rangt PIN-númer."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"Fast númeraval var ekki uppfært því að númerið getur ekki verið lengra en 20 tölustafir."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Fast númeraval var ekki uppfært. PIN2-númerið var rangt eða símanúmerinu var hafnað."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Aðgerð fasts númeravals mistókst."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Les af SIM-korti…"</string>

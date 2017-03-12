@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Número correio de voz ausente"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Não há um número correio de voz armazenado no cartão SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Adicionar número"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"O correio de voz nas configurações de chamada só pode ser alterado pelo usuário principal."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"O seu cartão SIM foi desbloqueado. O seu telefone está desbloqueando…"</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN de desbloqueio da rede SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Desbloquear"</string>
@@ -383,7 +384,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Excluindo número de chamadas fixas…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Número de chamadas fixas excluído."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"O FDN não foi atualizado porque você digitou um PIN incorreto."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"O FDN não foi atualizado porque o número não pode exceder 20 dígitos."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"O FDN não foi atualizado porque o número está vazio ou excede 20 dígitos."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"O FDN não foi atualizado. O PIN2 estava incorreto, ou o número de telefone foi rejeitado."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Falha na operação de FDN."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lendo a partir do cartão SIM…"</string>

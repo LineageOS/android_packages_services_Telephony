@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Не указан номер голосовой почты"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"На SIM-карте нет ни одного номера голосовой почты."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Добавить номер"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Настройки голосовой почты может изменить только основной пользователь."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM-карта разблокирована. Осуществляется разблокировка телефона..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN для разблокировки сети SIM-карты"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Разблокировать"</string>
@@ -385,7 +386,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Выполняется удаление номера ограниченного набора…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Номер ограниченного набора удален."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Разрешенный номер не обновлен, так как введен неверный PIN-код."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"Разрешенный номер не обновлен, т. к. не может содержать более 20 цифр."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Список разрешенных номеров не обновлен. Указан неверный PIN2 или номер телефона."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Не удалось включить FDN"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Считывание с SIM-карты…"</string>

@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"ხმოვანი ფოსტის ნომერი არ არის"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM ბარათზე ხმოვანი ფოსტის ნომერი შენახული არ არის."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"ნომრის დამატება"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"ზარისთვის ხმოვანი ფოსტის პარამეტრები შეიძლება მხოლოდ ძირითადმა მომხმარებელმა შეცვალოს."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"თქვენი SIM ბარათი განიბლოკა. მიმდინარეობს თქვენი ტელეფონის განბლოკვა…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM ქსელის განბლოკვის PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"განბლოკვა"</string>
@@ -383,7 +384,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"დაშვებული დარეკვის კონტაქტის წაშლა…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"დაშვებული ნომერი წაიშალა."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN არ განახლდა, რადგან არასწორი PIN შეიყვანეთ."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN ვერ განახლდა, რადგან ნომერი არ შეიძლება 20 ციფრს აღემატებოდეს."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN არ განახლებულა, რადგან ნომერი ცარიელია ან 20 ციფრზე მეტს შეიცავს."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN არ განახლდა. PIN2 არასწორია ან ტელეფონის ნომერი უარყოფილია."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN ოპერაცია ვერ განხორციელდა."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"მიმდინარეობს SIM ბარათიდან წაკითხვა…"</string>

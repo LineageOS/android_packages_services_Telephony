@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Ovozli pochta raqami ko‘rsatilmagan"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM kartada birorta ham ovozli pochta raqami yo‘q."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Raqam qo‘shish"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Ovozli pochta sozlamalarini faqat bosh foydalanuvchi o‘zgartira oladi."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"To‘sib qo‘yilgan SIM kartangiz ochildi. Telefoningiz qulfdan chiqarilmoqda…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM kartani tarmoqdagi qulfidan chiqarish PIN kodi"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Qulfdan chiqarish"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Ruxsat berilgan raqamlar o‘chirilmoqda…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Ruxsat berilgan raqamlar o‘chirildi."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN yangilanmadi, chunki siz PIN-kodni noto‘g‘ri kiritdingiz."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN yangilanmadi, chunki raqam 20 tadan oshmasligi kerak."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN yangilanmadi. PIN2 kodi xato yoki telefon raqami rad qilingan."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN jarayoni amalga oshmadi."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM-kartadan o‘qilmoqda…"</string>

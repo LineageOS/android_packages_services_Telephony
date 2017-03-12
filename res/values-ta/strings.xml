@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"குரலஞ்சல் எண் இல்லை"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"சிம் கார்டில் குரலஞ்சலுக்கான எண் எதுவும் சேமிக்கப்படவில்லை."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"எண்ணைச் சேர்"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"முதன்மைப் பயனர் மட்டுமே அழைப்பு அமைப்புகளின் குரல் அஞ்சலை மாற்ற முடியும்."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"சிம் கார்டின் தடுப்பு நீக்கப்பட்டது. மொபைல் திறக்கப்படுகிறது…"</string>
     <string name="label_ndp" msgid="780479633159517250">"சிம் நெட்வொர்க்கின் தடைநீக்க பின்"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"தடைநீக்கு"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"நிலையான அழைப்பு எண்ணை நீக்குகிறது…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"நிலையான அழைப்பு எண் நீக்கப்பட்டது."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"தவறான பின்னை உள்ளிட்டுள்ளதால், FDN புதுப்பிக்கப்படவில்லை."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"20 இலக்கங்களுக்கு மேல் எண் இருக்கக்கூடாது என்பதால், FDN புதுப்பிக்கப்படவில்லை."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN புதுப்பிக்கப்படவில்லை. PIN2 தவறானது அல்லது மொபைல் எண் நிராகரிக்கப்பட்டது."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN செயல்பாடு தோல்வி."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"சிம் கார்டில் இருப்பதைப் படிக்கிறது…"</string>

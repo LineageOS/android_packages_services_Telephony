@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Səsli poçt nömrəsi çatışmır"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM kartda heç bir səsli poçt nömrəsi yoxdur."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Nömrə əlavə edin"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Zəng ayarları üçün səsli e-poçt yalnız əsas istifadəçi tərəfindən dəyişdirilə bilər."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM kartınızın kilidi açıldı. Telefonunuzun da kilidi açılır…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM şəbəkəni kiliddən çıxaran PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Kilidi aç"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Sabit yığım nömrəsi silinir…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Sabit yığım nömrəsi silindi."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Yanlış PIN daxil etdiyiniz üçün FDN güncəlləşdirilmədi."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN güncəlləşdirilmədi, çünki nömrə 20 rəqəmdən çox ola bilməz."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN güncəlləşdirilmədi. PIN2 yanlış idi və ya telefon nömrəsi rədd edildi."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN əməliyyatı aılnmadı."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM kart oxunur ..."</string>

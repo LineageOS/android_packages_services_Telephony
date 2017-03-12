@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Brakuje numeru poczty głosowej"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Na karcie SIM nie ma zapisanego numeru poczty głosowej."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Dodaj numer"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Ustawienia poczty głosowej dla połączeń może zmienić tylko użytkownik główny."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Karta SIM została odblokowana. Odblokowywanie telefonu..."</string>
     <string name="label_ndp" msgid="780479633159517250">"Kod PIN do karty SIM odblokowujący sieć"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Odblokuj"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Trwa usuwanie ustalonego numeru…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Usunięto ustalony numer."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Nie zaktualizowano usługi FDN, ponieważ wpisano nieprawidłowy kod PIN."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"Nie zaktualizowano usługi FDN, ponieważ numer nie może być dłuższy niż 20 cyfr."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Nie zaktualizowano FDN. PIN2 był niepoprawny lub numer telefonu został odrzucony."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operacja FDN nie udała się."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Czytanie z karty SIM..."</string>

@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"ভয়েসমেল নম্বর অনুপস্থিত"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"সিম কার্ডটিতে কোনো ভয়েসমেল নম্বর সংরক্ষিত নেই৷"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"একটি নম্বর যোগ করুন"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"কেবলমাত্র প্রাথমিক ব্যবহারকারী কলের জন্য ভয়েস মেল সেটিংস পরিবর্তন করতে পারবেন৷"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"আপনার সিম কার্ডকে অবরোধ মুক্ত করা হয়েছে৷ আপনার ফোন আনলক করা হচ্ছে..."</string>
     <string name="label_ndp" msgid="780479633159517250">"সিম নেটওয়ার্ক আনলক পিন"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"আনলক করুন"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ডায়াল করার জন্য স্থির নম্বর মোছা হচ্ছে..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"স্থায়ী ডায়ালের নম্বর মুছে ফেলা হয়েছে৷"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"আপনি একটি ভুল পিন টাইপ করায় FDN আপডেট করা হয়নি৷"</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN আপডেট করা হয়নি কারণ নম্বরটি ২০ সংখ্যার বেশি হলে চলবে না৷"</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN আপডেট করা হয়নি৷ PIN2 ভুল ছিল, বা ফোন নম্বর বাতিল করা হয়েছে৷"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN অপারেশন ব্যর্থ হয়েছে৷"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"সিম কার্ড থেকে পড়া হচ্ছে…"</string>

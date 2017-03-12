@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Puhelinvastaajan numero puuttuu"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM-kortille ei ole tallennettu puhelinvastaajan numeroa."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Lisää numero"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Vain ensisijainen käyttäjä voi muokata vastaajaa puheluasetuksissa."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM-korttisi esto on purettu. Puhelimen lukitusta poistetaan..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM-verkko, PIN-koodin lukituksen poisto"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Poista lukitus"</string>
@@ -387,7 +388,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Poistetaan sallittua numeroa…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Sallittu numero poistettu."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Sallittuja numeroita ei päivitetty, koska annoit väärän PIN-koodin."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"Sallittuja numeroita ei päivitetty, sillä numerossa voi olla enintään 20 merkkiä."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN-numeroa ei päivitetty. PIN2 on virheellinen tai puhelinnumero hylättiin."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN-toiminto epäonnistui."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Luetaan SIM-korttia…"</string>

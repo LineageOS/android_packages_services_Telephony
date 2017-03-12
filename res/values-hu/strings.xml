@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Hiányzik a hangposta száma"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Nincs hangpostaszám a SIM kártyán."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Szám hozzáadása"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"A hívásbeállításokon belüli hangpostát csak az elsődleges felhasználó módosíthatja."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM kártyája letiltása megszűnt. Feloldás folyamatban..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM hálózati függetlenítő PIN kódja"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Feloldás"</string>
@@ -383,7 +384,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Fix hívószám törlése..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"A fix hívószám törölve."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"A fix hívószám nincs frissítve, mert hibás PIN kódot írt be."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"A fix hívószám nem lett frissítve, mert a szám nem haladhatja meg a 20 számjegyet."</string>
+    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"A fix hívószám nem lett frissítve. Hibás a PIN2 kód, vagy a telefonszámot elutasították."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Sikertelen a fix hívószámmal végzett művelet."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Beolvasás a SIM kártyáról..."</string>
