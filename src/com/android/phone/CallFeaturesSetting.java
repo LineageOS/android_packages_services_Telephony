@@ -360,7 +360,11 @@ public class CallFeaturesSetting extends PreferenceActivity
         }
 
         if (!PackageManagerUtils.isAppInstalled(this, "com.qualcomm.qti.phonefeature")) {
-            prefSet.removePreference(findPreference("button_callbarring_expand_key"));
+            PreferenceScreen prefCB = (PreferenceScreen)
+                    prefSet.findPreference("button_callbarring_expand_key");
+            if (prefCB != null) {
+                prefSet.removePreference(prefCB);
+            }
         }
 
         Preference wifiCallingSettings = findPreference(
