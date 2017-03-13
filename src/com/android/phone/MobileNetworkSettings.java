@@ -16,12 +16,14 @@
 
 package com.android.phone;
 
+import android.app.DialogFragment;
 import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
+import com.android.phone.RoamingDialogFragment.RoamingDialogListener;
 import com.android.settingslib.RestrictedLockUtils;
 
 import java.util.ArrayList;
@@ -29,10 +31,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import android.app.ActionBar;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -76,8 +76,7 @@ import android.widget.TabHost;
  * available from the Phone app (see CallFeaturesSetting for that.)
  */
 public class MobileNetworkSettings extends PreferenceActivity
-        implements DialogInterface.OnClickListener,
-        DialogInterface.OnDismissListener, Preference.OnPreferenceChangeListener{
+        implements Preference.OnPreferenceChangeListener, RoamingDialogListener {
 
     // debug data
     private static final String LOG_TAG = "NetworkSettings";
@@ -86,6 +85,9 @@ public class MobileNetworkSettings extends PreferenceActivity
 
     // Number of active Subscriptions to show tabs
     private static final int TAB_THRESHOLD = 2;
+
+    // fragment tag for roaming data dialog
+    private static final String ROAMING_TAG = "RoamingDialogFragment";
 
     //String keys for preference lookup
     private static final String BUTTON_PREFERED_NETWORK_MODE = "preferred_network_mode_key";
@@ -154,6 +156,12 @@ public class MobileNetworkSettings extends PreferenceActivity
 
     private final BroadcastReceiver mPhoneChangeReceiver = new PhoneChangeReceiver();
 
+    @Override
+    public void onPositiveButtonClick(DialogFragment dialog) {
+        mPhone.setDataRoamingEnabled(true);
+        mButtonDataRoam.setChecked(true);
+    }
+
     private class PhoneChangeReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -163,24 +171,6 @@ public class MobileNetworkSettings extends PreferenceActivity
             mCdmaOptions = null;
             updateBody();
         }
-    }
-
-    //This is a method implemented for DialogInterface.OnClickListener.
-    //  Used to dismiss the dialogs when they come up.
-    public void onClick(DialogInterface dialog, int which) {
-        if (which == DialogInterface.BUTTON_POSITIVE) {
-            mPhone.setDataRoamingEnabled(true);
-            mOkClicked = true;
-        } else {
-            // Reset the toggle
-            mButtonDataRoam.setChecked(false);
-        }
-    }
-
-    @Override
-    public void onDismiss(DialogInterface dialog) {
-        // Assuming that onClick gets called first
-        mButtonDataRoam.setChecked(mOkClicked);
     }
 
     /**
@@ -925,14 +915,10 @@ public class MobileNetworkSettings extends PreferenceActivity
             if (!mButtonDataRoam.isChecked()) {
                 // First confirm with a warning dialog about charges
                 mOkClicked = false;
-                new AlertDialog.Builder(this).setMessage(
-                        getResources().getString(R.string.roaming_warning))
-                        .setTitle(R.string.roaming_alert_title)
-                        .setIconAttribute(android.R.attr.alertDialogIcon)
-                        .setPositiveButton(android.R.string.yes, this)
-                        .setNegativeButton(android.R.string.no, this)
-                        .show()
-                        .setOnDismissListener(this);
+                RoamingDialogFragment fragment = new RoamingDialogFragment();
+                fragment.show(getFragmentManager(), ROAMING_TAG);
+                // Don't update the toggle unless the confirm button is actually pressed.
+                return false;
             } else {
                 mPhone.setDataRoamingEnabled(false);
             }
