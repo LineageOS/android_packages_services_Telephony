@@ -33,9 +33,11 @@
   <!-- Dialog label when a USSD code starts running -->
   <!-- Dialog label when an MMI code is canceled -->
   <!-- Label for "cancel" button on the MMI dialog -->
+  <string name="cancel">Encaboxar</string>
   <!-- Toast string displayed to user if the input in MMI dialog is < 1 or > 160 -->
   <!-- Label for "Manage conference call" panel [CHAR LIMIT=40] -->
   <!-- Positive button label ("OK") used in several dialogs in the phone UI [CHAR LIMIT=10] -->
+  <string name="ok">ACEUTAR</string>
   <!-- "Audio mode" popup menu: Item label to select the speakerphone [CHAR LIMIT=25] -->
   <!-- "Audio mode" popup menu: Item label to select the handset earpiece [CHAR LIMIT=25] -->
   <!-- "Audio mode" popup menu: Item label to select the wired headset [CHAR LIMIT=25] -->
@@ -81,6 +83,7 @@
   <!-- Label for list item which opens a dialog to select the default outgoing account for SIP calls. -->
   <!-- Entry in dialog to "ask first" for accounts when making a call -->
   <!-- Account label for when a SIM account has no service (i.e. airplane mode) -->
+  <string name="phone_accounts_default_account_label">Nun hai rede disponible</string>
   <!-- Label for heading of the per-account settings section in the phone accounts settings
          screen. -->
   <!-- Label for invoking phone account selection screen -->
@@ -153,6 +156,7 @@
          [CHAR LIMIT=NONE] -->
   <!-- Status message displayed in the "Call settings error" dialog -->
   <!-- Button label used to dismiss the "Call settings error" dialog -->
+  <string name="close_dialog">ACEUTAR</string>
   <!-- Button label used in several settings-related dialogs -->
   <!-- Button label used in several settings-related dialogs -->
   <!-- Button label which indicates the user wants to update a stored
@@ -241,6 +245,7 @@
   <!-- Data usage settings screen option for time frame-->
   <!-- Data usage settings screen option for throttling rate-->
   <!-- Data usage settings screen option for accessing the carrier website-->
+  <string name="throttle_help">Deprendi más</string>
   <!-- CDMA System select strings -->
   <!-- Mobile network settings screen, setting option name -->
   <!-- Mobile network settings screen, setting summary text -->
@@ -417,6 +422,10 @@
   <!-- Title for the DTMF Tones options displayed in Call Settings -->
   <!-- Summary for the DTMF Tones options displayed in Call Settings -->
   <!-- Options displayed as part of DTMF Tones in Call Settings -->
+  <string-array name="dtmf_tone_entries">
+    <item>Normal</item>
+    <item>Long</item>
+  </string-array>
   <!-- Do not translate. -->
   <!-- Title for the dialog used to display CDMA DisplayInfo -->
   <!-- Title for the dialog used to display a network error message to the user -->
@@ -490,6 +499,7 @@
          [CHAR LIMIT=30] -->
   <!-- String resource for the font-family to use for the call setting activity's title
          Do not translate. -->
+  <string name="call_settings_title_font_family">sans-serif-light</string>
   <!-- Label for PSTN connection service. -->
   <!-- Label for enabling video calling. -->
   <!-- Message for dialog shown when the user tries to turn on video calling but enhanced 4G LTE
@@ -508,8 +518,11 @@
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
   <!-- DO NOT TRANSLATE. Internal key for a visual voicemail preference. -->
   <!-- DO NOT TRANSLATE. Internal key for a voicemail change pin preference. -->
+  <string name="voicemail_change_pin_key">voicemail_change_pin_key</string>
   <!-- DO NOT TRANSLATE. Internal key for tty mode preference. -->
+  <string name="tty_mode_key">button_tty_mode_key</string>
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
+  <string name="wifi_calling_settings_key">button_wifi_calling_settings_key</string>
   <!-- Hint appearing below a selected action on the emergency dialer telling user to tap again to execute the action [CHAR LIMIT=NONE] -->
   <!-- Strings for IMAP -->
   <!-- String used in place of a message that could not be properly decoded (e.g. bad base64
@@ -519,7 +532,9 @@
   <!-- The title for the change voicemail PIN activity -->
   <!-- The label for the continue button in change voicemail PIN activity -->
   <!-- The label for the cancel button in change voicemail PIN activity -->
+  <string name="change_pin_cancel_label">Encaboxar</string>
   <!-- The label for the ok button in change voicemail PIN activity -->
+  <string name="change_pin_ok_label">Aceutar</string>
   <!-- The title for the enter old pin step in change voicemail PIN activity -->
   <!-- The hint for the enter old pin step in change voicemail PIN activity -->
   <!-- The title for the enter new pin step in change voicemail PIN activity -->

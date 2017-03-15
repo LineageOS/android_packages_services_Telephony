@@ -34,6 +34,7 @@
   <!-- Menu item when the menu button is pressed in the sip account editor. [CHAR LIMIT=NONE] -->
   <!-- Title of the alert dialog. [CHAR LIMIT=NONE] -->
   <!-- Title of the button to show in a alert dialog. [CHAR LIMIT=NONE] -->
+  <string name="alert_dialog_ok">ACEUTAR</string>
   <!-- Title of the button to show in a alert dialog. [CHAR LIMIT=NONE] -->
   <!-- Text of SIP-call registration status, checking current registration status with SIP service [CHAR LIMIT=NONE] -->
   <!-- Text of SIP-call registration status, registering with SIP server in order to receive calls on this account [CHAR LIMIT=NONE] -->
