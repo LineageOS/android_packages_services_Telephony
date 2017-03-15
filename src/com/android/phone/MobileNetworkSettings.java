@@ -487,7 +487,7 @@ public class MobileNetworkSettings extends PreferenceActivity
                 TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
         registerReceiver(mPhoneChangeReceiver, intentFilter);
         int initialSlotId = getIntent().getIntExtra(EXTRA_INITIAL_SLOT_TAB , -1);
-        if (initialSlotId != -1) {
+        if (initialSlotId != -1 && mTabHost != null) {
             mTabHost.setCurrentTab(initialSlotId);
         }
         if (DBG) log("onCreate:-");
