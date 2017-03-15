@@ -91,20 +91,53 @@
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">RUIM network 2 unlock request unsuccessful.</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">RUIM HRPD unlock request unsuccessful.</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">RUIM service provider unlock request unsuccessful.</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">RUIM corporate unlock request unsuccessful.</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">RUIM unlock request unsuccessful.</string>
   <!-- Error message displayed on PUK Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">PUK unlock unsuccessful.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">PUK unlock unsuccessful.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">PUK unlock unsuccessful.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">PUK unlock unsuccessful.</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">PUK unlock unsuccessful.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">PUK unlock unsuccessful.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">PUK unlock unsuccessful.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">PUK unlock unsuccessful.</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">PUK unlock unsuccessful.</string>
+  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">PUK unlock unsuccessful.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">PUK unlock unsuccessful.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">SIM network subset unlock successful.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">SIM service provider unlock successful.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">RUIM network 1 unlock successful.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">RUIM network 2 unlock successful.</string>
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD unlock successful.</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM corporate unlock successful.</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM unlock successful.</string>
   <!-- Success message displayed on PUK Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">PUK unlock successful.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">PUK unlock successful.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">PUK unlock successful.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK unlock successful.</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">PUK unlock successful.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">PUK unlock successful.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">PUK unlock successful.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">PUK unlock successful.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">PUK unlock successful.</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK unlock successful.</string>
+  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">PUK unlock successful.</string>
   <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
 </resources>

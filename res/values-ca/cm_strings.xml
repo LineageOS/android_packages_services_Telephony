@@ -17,7 +17,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
-  <string name="incall_screen_settings">Ajustaments de trucada en pantalla</string>
+  <string name="incall_screen_settings">Configuració de trucada en pantalla</string>
   <string name="show_ssn_label">Notificació d\'esdeveniments</string>
   <string name="show_ssn_summary">Mostra una notificació pels diferents esdeveniments de xarxa relacionats amb la gestió de trucades</string>
   <!-- Toasts for various transient network events -->
