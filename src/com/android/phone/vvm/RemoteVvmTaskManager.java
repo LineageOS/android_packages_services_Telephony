@@ -66,6 +66,11 @@ public class RemoteVvmTaskManager extends Service {
     private static final String ACTION_START_SMS_RECEIVED = "ACTION_START_SMS_RECEIVED";
     private static final String ACTION_START_SIM_REMOVED = "ACTION_START_SIM_REMOVED";
 
+    // TODO(b/35766990): Remove after VisualVoicemailService API is stabilized.
+    private static final String ACTION_VISUAL_VOICEMAIL_SERVICE_EVENT =
+            "com.android.phone.vvm.ACTION_VISUAL_VOICEMAIL_SERVICE_EVENT";
+    private static final String EXTRA_WHAT = "what";
+
     // TODO(twyen): track task individually to have time outs.
     private int mTaskReferenceCount;
 
@@ -106,6 +111,11 @@ public class RemoteVvmTaskManager extends Service {
 
     @Nullable
     public static ComponentName getRemotePackage(Context context, int subId) {
+        ComponentName broadcastPackage = getBroadcastPackage(context);
+        if (broadcastPackage != null) {
+            return broadcastPackage;
+        }
+
         Intent bindIntent = newBindIntent(context);
 
         TelecomManager telecomManager = context.getSystemService(TelecomManager.class);
@@ -134,7 +144,7 @@ public class RemoteVvmTaskManager extends Service {
             if (info == null) {
                 continue;
             }
-            if(info.serviceInfo == null){
+            if (info.serviceInfo == null) {
                 VvmLog.w(TAG,
                         "Component " + info.getComponentInfo() + " is not a service, ignoring");
                 continue;
@@ -150,6 +160,22 @@ public class RemoteVvmTaskManager extends Service {
 
         }
         return null;
+    }
+
+    @Nullable
+    private static ComponentName getBroadcastPackage(Context context) {
+        Intent broadcastIntent = new Intent(ACTION_VISUAL_VOICEMAIL_SERVICE_EVENT);
+        broadcastIntent.setPackage(
+                context.getSystemService(TelecomManager.class).getDefaultDialerPackage());
+        List<ResolveInfo> info = context.getPackageManager()
+                .queryBroadcastReceivers(broadcastIntent, PackageManager.MATCH_ALL);
+        if (info == null) {
+            return null;
+        }
+        if (info.isEmpty()) {
+            return null;
+        }
+        return info.get(0).getComponentInfo().getComponentName();
     }
 
     @Override
@@ -274,8 +300,26 @@ public class RemoteVvmTaskManager extends Service {
         }
     }
 
-    private void send(ComponentName remotePackage,int what, Bundle extras) {
+    private void send(ComponentName remotePackage, int what, Bundle extras) {
         Assert.isMainThread();
+
+        if (getBroadcastPackage(this) != null) {
+            /*
+             * Temporarily use a broadcast to notify dialer VVM events instead of using the
+             * VisualVoicemailService.
+             * b/35766990 The VisualVoicemailService is undergoing API changes. The dialer is in
+             * a different repository so it can not be updated in sync with android SDK. It is also
+             * hard to make a manifest service to work in the intermittent state.
+             */
+            VvmLog.i(TAG, "sending broadcast " + what + " to " + remotePackage);
+            Intent intent = new Intent(ACTION_VISUAL_VOICEMAIL_SERVICE_EVENT);
+            intent.putExtras(extras);
+            intent.putExtra(EXTRA_WHAT, what);
+            intent.setComponent(remotePackage);
+            sendBroadcast(intent);
+            return;
+        }
+
         Message message = Message.obtain();
         message.what = what;
         message.setData(new Bundle(extras));
