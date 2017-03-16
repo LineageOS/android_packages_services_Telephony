@@ -1753,6 +1753,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public String getMeidForSlot(int slotIndex, String callingPackage) {
+        if (!canReadPhoneState(callingPackage, "getMeidForSlot")) {
+            return null;
+        }
+        Phone phone = PhoneFactory.getPhone(slotIndex);
+        return phone == null ? null : phone.getMeid();
+    }
+
+    @Override
     public String getDeviceSoftwareVersionForSlot(int slotIndex, String callingPackage) {
       if (!canReadPhoneState(callingPackage, "getDeviceSoftwareVersionForSlot")) {
           return null;
