@@ -980,8 +980,10 @@ public class MobileNetworkSettings extends Activity  {
             }
 
             private void handleSetPreferredNetworkTypeResponse(Message msg) {
-                if (getActivity().isDestroyed()) {
+                final Activity activity = getActivity();
+                if (activity == null || activity.isDestroyed()) {
                     // Access preferences of activity only if it is not destroyed
+                    // or if fragment is not attached to an activity.
                     return;
                 }
 
