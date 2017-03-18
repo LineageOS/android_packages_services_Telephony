@@ -384,8 +384,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Sabit arama numarası siliniyor..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Sabit arama numarası silindi."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Yanlış PIN girdiğiniz için FDN güncellenmedi."</string>
-    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
-    <skip />
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"Sayı boş veya 20 basamaktan uzun olduğundan FDN güncellenmedi."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN güncellenmedi. PIN2 doğru değildi veya telefon numarası reddedildi."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN işlemi başarısız oldu."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM karttan okunuyor..."</string>

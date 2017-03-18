@@ -388,8 +388,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Zugelassene Rufnummer wird gelöscht..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Zugelassene Rufnummer gelöscht"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Die Liste der zugelassenen Rufnummern konnte nicht aktualisiert werden, da du eine falsche PIN eingegeben hast."</string>
-    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
-    <skip />
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"Die Rufnummernbeschränkung wurde nicht aktualisiert, da die Nummer leer ist oder 20 Zeichen überschreitet."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Die Liste der zugelassenen Rufnummern konnte nicht aktualisiert werden. Die eingegebene PIN2 ist ungültig oder die Rufnummer wurde abgelehnt."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Fehler bei der Rufnummernbeschränkung"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM-Karte wird ausgelesen..."</string>

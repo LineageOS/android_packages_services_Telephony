@@ -384,8 +384,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Brisanje broja fiksnog biranja u toku…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Broj fiksnog biranja je izbrisan."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN nije ažuriran jer ste upisali netačan PIN."</string>
-    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
-    <skip />
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN nije ažuriran jer je broj prazan ili ima više od 20 cifara."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN nije ažuriran. PIN2 je netačan ili je broj telefona odbijen."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN operacija nije uspjela."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Čitanje sa SIM kartice u toku…"</string>

@@ -388,8 +388,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Eliminazione numero selezione fissa..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Numero di selezione fissa eliminato."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN non aggiornato perché il PIN inserito non è corretto."</string>
-    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
-    <skip />
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN non è stato aggiornato perché il numero è vuoto o contiene più di 20 cifre."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN non aggiornato. Il codice PIN2 non era corretto o il numero di telefono è stato rifiutato."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operazione FDN non riuscita."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lettura da SIM..."</string>

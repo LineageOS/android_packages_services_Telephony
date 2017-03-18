@@ -384,8 +384,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"កំពុង​លុប​លេខ​​ហៅ​ថេរ…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"បាន​លុប​លេខ​ហៅ​ថេរ។"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"មិន​បាន​ធ្វើ​បច្ចុប្បន្នភាព FDN ពី​ព្រោះ​អ្នក​បាន​វាយ​បញ្ចូល​កូដ PIN មិន​ត្រឹមត្រូវ។"</string>
-    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
-    <skip />
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN មិនត្រូវ​បាន​ធ្វើ​បច្ចុប្បន្នភាពទេ ពីព្រោះ​លេខ​ទទេ ឬ​លើស​ 20 ខ្ទង់។"</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"មិន​បាន​ធ្វើ​បច្ចុប្បន្នភាព។ កូដ PIN2 មិន​ត្រឹមត្រូវ ឬ​លេខ​ទូរស័ព្ទ​ត្រូវ​បាន​ច្រានចោល។"</string>
     <string name="fdn_failed" msgid="540018079008319747">"បាន​បរាជ័យ​ក្នុង​ការ​ប្រតិបត្តិការ FDN ។"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"កំពុង​អាន​ពី​ស៊ីមកាត…"</string>

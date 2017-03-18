@@ -45,7 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Chýba číslo hlasovej schránky"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Na SIM karte nie je uložené žiadne číslo hlasovej schránky."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Pridať číslo"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Nastavenia hlasovej schránky a hovorov môže iba hlavný používateľ."</string>
+    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Nastavenia hlasovej schránky a hovorov môže zmeniť iba hlavný používateľ."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM karta bola odblokovaná. Prebieha odomykanie telefónu..."</string>
     <string name="label_ndp" msgid="780479633159517250">"Kód PIN odomknutia siete pre SIM kartu"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Odomknúť"</string>
@@ -384,8 +384,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Odstraňuje sa povolené číslo…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Povolené číslo bolo odstránené."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Povolené čísla neboli aktualizované. Zadali ste nesprávny kód PIN."</string>
-    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
-    <skip />
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"Režim povolených čísel nebol aktualizovaný, pretože číslo je prázdne alebo obsahuje viac než 20 číslic."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Povolené čísla neboli aktualizované. Kód PIN2 je nesprávny alebo bolo telefónne číslo odmietnuté."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operácia s povolenými číslami zlyhala."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Prebieha čítanie zo SIM karty..."</string>

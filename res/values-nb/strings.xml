@@ -390,7 +390,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Sletter programmert telefonnummer ..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Programmert telefonnummer er slettet."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN er ikke oppdatert fordi du skrev inn feil PIN-kode."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"Nummeret har 0 sifre – eller over 20 – og da kan ikke anropsbegrensning (FDN) oppdateres."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"Det programmerte telefonnummeret kan ikke oppdateres fordi det er er tomt eller inneholder over 20 sifre."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Fast nummer ble ikke oppdatert. PIN2 var feil, eller telefonnummeret ble avvist."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN-handlingen mislyktes."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Leser fra SIM-kort …"</string>

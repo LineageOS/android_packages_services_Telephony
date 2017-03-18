@@ -384,8 +384,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Brisanje zapore odhodnega klica ..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Zapora odhodnega klica izbrisana."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN ni bil posodobljen, ker ste vnesli napačno kodo PIN."</string>
-    <!-- no translation found for fdn_invalid_number (8602417141715473998) -->
-    <skip />
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"Funkcija FDN ni bila posodobljena, ker je številka prazna ali ima več kot 20 mest."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN ni bil posodobljen. Koda PIN2 je bila napačna ali pa je bila telefonska številka zavrnjena."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Postopek za omejeno klicanje ni uspel."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Branje kartice SIM ..."</string>
