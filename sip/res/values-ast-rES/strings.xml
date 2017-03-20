@@ -16,8 +16,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Title displayed SIP settings coming after other call settings in the call features screen. [CHAR LIMIT=NONE] -->
+  <string name="sip_settings">Axustes de SIP</string>
   <!-- Title displayed SIP account settings in the sip settings category. [CHAR LIMIT=NONE] -->
+  <string name="sip_accounts">Cuentes SIP</string>
   <!-- Title displayed SIP account settings in the sip settings category. [CHAR LIMIT=NONE] -->
+  <string name="sip_accounts_title">Cuentes</string>
   <!-- Title displayed for the button of receiving incoming SIP calls flag. Enabled for receiving calls. [CHAR LIMIT=NONE] -->
   <!-- Help user to understand that it will require more battery usage if the 'receiving incoming call' is enabled. [CHAR LIMIT=NONE] -->
   <!-- Title for the dialog of selecting the way we handle an outgoing call. [CHAR LIMIT=NONE] -->
@@ -28,6 +31,7 @@
   <!-- Title for the button to add a new sip account. [CHAR LIMIT=NONE] -->
   <!-- Title for the button to remove a sip account. [CHAR LIMIT=NONE] -->
   <!-- String of the category which lists all sip accounts. [CHAR LIMIT=NONE] -->
+  <string name="sip_account_list">Cuentes SIP</string>
   <!-- Toast message to indicate that the system is saving the account. [CHAR LIMIT=NONE] -->
   <!-- Toast message to indicate that the system is removing the account. [CHAR LIMIT=NONE] -->
   <!-- Menu item when the menu button is pressed in the sip account editor. [CHAR LIMIT=NONE] -->
@@ -37,6 +41,7 @@
   <string name="alert_dialog_ok">ACEUTAR</string>
   <!-- Title of the button to show in a alert dialog. [CHAR LIMIT=NONE] -->
   <!-- Text of SIP-call registration status, checking current registration status with SIP service [CHAR LIMIT=NONE] -->
+  <string name="registration_status_checking_status">Comprobando estáu...</string>
   <!-- Text of SIP-call registration status, registering with SIP server in order to receive calls on this account [CHAR LIMIT=NONE] -->
   <!-- Text of SIP-call registration status, still trying to register with SIP server [CHAR LIMIT=NONE] -->
   <!-- Text of SIP-call registration status, currently not receiving calls on this account [CHAR LIMIT=NONE] -->

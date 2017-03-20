@@ -80,12 +80,16 @@
   <!-- Label for the "Network settings" screen in the Settings UI -->
   <!-- Label for settings screen for phone accounts. -->
   <!-- Label for list item which opens a dialog to select the default outgoing account -->
+  <string name="phone_accounts_make_calls_with">Facer llamaes con</string>
   <!-- Label for list item which opens a dialog to select the default outgoing account for SIP calls. -->
+  <string name="phone_accounts_make_sip_calls_with">Facer llamaes SIP con</string>
   <!-- Entry in dialog to "ask first" for accounts when making a call -->
+  <string name="phone_accounts_ask_every_time">Entrugar primero</string>
   <!-- Account label for when a SIM account has no service (i.e. airplane mode) -->
   <string name="phone_accounts_default_account_label">Nun hai rede disponible</string>
   <!-- Label for heading of the per-account settings section in the phone accounts settings
          screen. -->
+  <string name="phone_accounts_settings_header">Axustes</string>
   <!-- Label for invoking phone account selection screen -->
   <!-- Label for heading in the phone account selection screen -->
   <!-- Title for the button to add a new sip account. [CHAR LIMIT=NONE] -->
@@ -102,7 +106,9 @@
   <!-- Mobile network settings screen, setting option name -->
   <!-- Cell Broadcast settings title.  [CHAR LIMIT=50] -->
   <!-- Call settings screen title -->
+  <string name="call_settings">Axustes de llamaes</string>
   <!-- GSM Call settings screen, setting option name -->
+  <string name="additional_gsm_call_settings">Axustes adicionales</string>
   <!-- GSM Call settings screen, setting option name, with label identifying the SIM the settings are for. -->
   <!-- GSM-only Call settings screen, setting option name-->
   <!-- CDMA Call settings screen, setting option name -->
@@ -110,6 +116,7 @@
   <!-- Call setting screen, nework service setting name -->
   <!-- Call settings screen, setting option name -->
   <!-- Additional call settings screen, setting summary text when the setting is being loaded [CHAR LIMIT=40] -->
+  <string name="sum_loading_settings">Cargando axustes\u2026</string>
   <!-- Additional call settings screen, setting summary text when Caller ID is hidden -->
   <!-- Additional call settings screen, setting summary text when Caller ID is shown -->
   <!-- Additional call settings screen, setting summary text for default Caller ID value -->
@@ -146,7 +153,9 @@
   <!-- Title of the "Call settings" settings screen, with a text label identifying which SIM the settings are for. -->
   <!-- Title of the alert dialog displayed if an error occurs while updating Call settings -->
   <!-- Toast in Call settings dialog while settings are being read -->
+  <string name="reading_settings">Lleendo axustes\u2026</string>
   <!-- Toast in Call settings dialog while settings are being saved -->
+  <string name="updating_settings">Anovando axustes\u2026</string>
   <!-- Toast in Call settings dialog while settings are being reverted -->
   <!-- Status message displayed in the "Call settings error" dialog -->
   <!-- Status message displayed in the "Call settings error" dialog -->
@@ -180,9 +189,11 @@
   <!-- Error message for the voicemail PIN change if the old PIN entered doesn't match  -->
   <!-- Error message for the voicemail PIN change if the new PIN contains invalid character -->
   <!-- Error message for the voicemail PIN change if operation has failed -->
+  <string name="vm_change_pin_error_system_error">Nun pue camudase\'l PIN</string>
   <!-- Message to replace the transcription if a visual voicemail message is not supported-->
   <!-- networks setting strings -->
   <!-- Mobile network settings screen title -->
+  <string name="mobile_networks">Axustes de rede móvil</string>
   <!-- Available networks screen title/heading -->
   <!-- Mobile network settings screen, toast when searching for available networks -->
   <!-- Available networks screen, text when no networks are found -->
@@ -197,31 +208,57 @@
   <!-- Available networks screen, setting option name -->
   <!-- Available networks screen, setting summary text -->
   <!-- Mobile network settings, summary for preferred network mode WCDMA preferred[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_wcdma_perf_summary">Mou preferíu de rede: WCDMA preferíu</string>
   <!-- Mobile network settings, summary for preferred network mode GSM [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_gsm_only_summary">Mou preferíu de rede: namái GSM</string>
   <!-- Mobile network settings, summary for preferred network mode WCDMA only [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_wcdma_only_summary">Mou preferíu de rede: namái WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode GSM / UMTS [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_gsm_wcdma_summary">Mou preferíu de rede: GSM / WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode CDMA [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_cdma_summary">Mou preferíu de rede: CDMA</string>
   <!-- Mobile network settings, summary for preferred network mode CDMA / EvDo [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_cdma_evdo_summary">Mou preferíu de rede: CDMA / EvDo</string>
   <!-- Mobile network settings, summary for preferred network mode CDMA only [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_cdma_only_summary">Mou preferíu de rede: namái CDMA</string>
   <!-- Mobile network settings, summary for preferred network mode EvDo only [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_evdo_only_summary">Mou preferíu de rede: namái EvDo</string>
   <!-- Mobile network settings, summary for preferred network mode CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary">Mou preferíu de rede: CDMA/EvDo/GSM/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_summary">Mou preferíu de rede: LTE </string>
   <!-- Mobile network settings, summary for preferred network mode GSM/WCDMA/LTE [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_gsm_wcdma_summary">Mou preferíu de rede: GSM/WCDMA/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode CDMA+LTE/EVDO[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_cdma_evdo_summary">Mou preferíu de rede: CDMA+LTE/EVDO</string>
   <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_global_summary">Mou preferíu de rede: Global</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_wcdma_summary">Mou preferíu de rede: LTE/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / GSM / UMTS [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_gsm_umts_summary">Mou preferíu de rede: LTE / GSM / UMTS</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / CDMA [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_cdma_summary">Mou preferíu de rede: LTE/CDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TDSCDMTA [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_tdscdma_summary">Mou preferíu de rede: TDSCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TDSCDMA / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_tdscdma_wcdma_summary">Mou preferíu de rede: TDSCDMA / WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_tdscdma_summary">Mou preferíu de rede: LTE / TDSCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TDSCDMA / GSM[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_tdscdma_gsm_summary">Mou preferíu de rede: TDSCDMA / GSM</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / GSM / TDSCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_tdscdma_gsm_summary">Mou preferíu de rede: LTE/GSM/TDSCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TDSCDMA / GSM / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary">Mou preferíu de rede: TDSCDMA/GSM/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_tdscdma_wcdma_summary">Mou preferíu de rede: LTE/TDSCDMA/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA / GSM / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary">Mou preferíu de rede: LTE/TDSCDMA/GSM/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary">Mou preferíu de rede: TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Mou preferíu de rede: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
   <!-- In-call screen: call failure reason (call denied because call barring
             is ON on MT side ) -->
   <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
@@ -232,6 +269,7 @@
   <!-- Mobile network settings screen, setting summary text when check box is not selected (explains what selecting it would do) [CHAR LIMITS=40] -->
   <!-- Mobile network settings screen, title for alert dialog -->
   <!-- Mobile network settings screen, setting check box name -->
+  <string name="roaming">Itinerancia de datos</string>
   <!-- Mobile network settings screen, setting summary text when check box is selected -->
   <!-- Mobile network settings screen, setting summary text when check box is clear -->
   <!-- Mobile network settings UI: notification message shown when you
@@ -240,6 +278,7 @@
   <!-- Mobile network settings screen, dialog message when user selects the Data roaming check box -->
   <!-- Mobile network settings screen, dialog message title when user selects the Data roaming check box -->
   <!-- USSD aggregation dialog box: separator strings between messages (new-lines will be added before and after) -->
+  <string name=" hide_error_from_network_text">Nun pue procesase la solicitú</string>
   <!-- Screen option on the mobile network settings to go into data usage settings -->
   <!-- Data usage settings screen option for checking the current usage -->
   <!-- Data usage settings screen option for time frame-->
@@ -497,6 +536,7 @@
   <!-- Title for the category "ringtone", which is shown above ringtone and vibration
          related settings.
          [CHAR LIMIT=30] -->
+  <string name="preference_category_ringtone">Timbre y vibración</string>
   <!-- String resource for the font-family to use for the call setting activity's title
          Do not translate. -->
   <string name="call_settings_title_font_family">sans-serif-light</string>
@@ -506,6 +546,7 @@
          is disabled. They have to turn on Enhanced 4G LTE capability in network settings first. -->
   <!-- Label for action button in dialog which opens mobile network settings, for video calling
          setting. -->
+  <string name="enable_video_calling_dialog_settings">Axustes de rede</string>
   <!-- Label for close button in dialog, for video calling setting. -->
   <!-- Strings used in Settings->Sim cards for each installed Sim. -->
   <!-- Title for activity to control accessibility settings such as TTY mode and hearing aid
@@ -515,6 +556,7 @@
          [CHAR LIMIT=25] -->
   <!-- Status hint label for a call being made over a wifi network. [CHAR LIMIT=25] -->
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
+  <string name="voicemail_notification_ringtone_key">voicemail_notification_ringtone_key</string>
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
   <!-- DO NOT TRANSLATE. Internal key for a visual voicemail preference. -->
   <!-- DO NOT TRANSLATE. Internal key for a voicemail change pin preference. -->
@@ -543,4 +585,5 @@
   <!-- The error message for th confirm new pin step in change voicemail PIN activity, if the pin doen't match the one previously entered -->
   <!-- The toast to show after the voicemail PIN has been successfully changed -->
   <!-- The error message to show if the server reported an error while attempting to change the voicemail PIN -->
+  <string name="change_pin_system_error">Nun pue afitase\'l PIN</string>
 </resources>
