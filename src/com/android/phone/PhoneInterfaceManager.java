@@ -1573,8 +1573,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return getCallStateForSlot(getSlotForDefaultSubscription());
     }
 
-    public int getCallStateForSlot(int slotId) {
-        Phone phone = PhoneFactory.getPhone(slotId);
+    public int getCallStateForSlot(int slotIndex) {
+        Phone phone = PhoneFactory.getPhone(slotIndex);
         return phone == null ? TelephonyManager.CALL_STATE_IDLE :
             PhoneConstantConversions.convertCallState(phone.getState());
     }
@@ -1744,20 +1744,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String getImeiForSlot(int slotId, String callingPackage) {
+    public String getImeiForSlot(int slotIndex, String callingPackage) {
       if (!canReadPhoneState(callingPackage, "getImeiForSlot")) {
           return null;
       }
-      Phone phone = PhoneFactory.getPhone(slotId);
+      Phone phone = PhoneFactory.getPhone(slotIndex);
       return phone == null ? null : phone.getImei();
     }
 
     @Override
-    public String getDeviceSoftwareVersionForSlot(int slotId, String callingPackage) {
+    public String getDeviceSoftwareVersionForSlot(int slotIndex, String callingPackage) {
       if (!canReadPhoneState(callingPackage, "getDeviceSoftwareVersionForSlot")) {
           return null;
       }
-      Phone phone = PhoneFactory.getPhone(slotId);
+      Phone phone = PhoneFactory.getPhone(slotIndex);
       return phone == null ? null : phone.getDeviceSvn();
     }
 
@@ -1885,8 +1885,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public int getActivePhoneTypeForSlot(int slotId) {
-        final Phone phone = PhoneFactory.getPhone(slotId);
+    public int getActivePhoneTypeForSlot(int slotIndex) {
+        final Phone phone = PhoneFactory.getPhone(slotIndex);
         if (phone == null) {
             return PhoneConstants.PHONE_TYPE_NONE;
         } else {
@@ -2282,15 +2282,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     public boolean hasIccCard() {
         // FIXME Make changes to pass defaultSimId of type int
-        return hasIccCardUsingSlotId(mSubscriptionController.getSlotId(getDefaultSubscription()));
+        return hasIccCardUsingSlotIndex(mSubscriptionController.getSlotIndex(
+                getDefaultSubscription()));
     }
 
     /**
-     * @return true if a ICC card is present for a slotId
+     * @return true if a ICC card is present for a slotIndex
      */
     @Override
-    public boolean hasIccCardUsingSlotId(int slotId) {
-        final Phone phone = PhoneFactory.getPhone(slotId);
+    public boolean hasIccCardUsingSlotIndex(int slotIndex) {
+        final Phone phone = PhoneFactory.getPhone(slotIndex);
         if (phone != null) {
             return phone.getIccCard().hasIccCard();
         } else {
@@ -2603,10 +2604,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * available, the {@link IImsServiceFeatureListener} callback is registered as a listener for
      * feature updates.
      */
-    public IImsServiceController getImsServiceControllerAndListen(int slotId, int feature,
+    public IImsServiceController getImsServiceControllerAndListen(int slotIndex, int feature,
             IImsServiceFeatureListener callback) {
         enforceModifyPermission();
-        return PhoneFactory.getImsResolver().getImsServiceControllerAndListen(slotId, feature,
+        return PhoneFactory.getImsResolver().getImsServiceControllerAndListen(slotIndex, feature,
                 callback);
     }
 
@@ -3629,34 +3630,36 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * {@hide}
-     * Set the allowed carrier list for slotId
+     * Set the allowed carrier list for slotIndex
      * Require system privileges. In the future we may add this to carrier APIs.
      *
      * @return The number of carriers set successfully, should match length of carriers
      */
     @Override
-    public int setAllowedCarriers(int slotId, List<CarrierIdentifier> carriers) {
+    public int setAllowedCarriers(int slotIndex, List<CarrierIdentifier> carriers) {
         enforceModifyPermission();
-        int subId = SubscriptionManager.getSubId(slotId)[0];
+
         if (carriers == null) {
             throw new NullPointerException("carriers cannot be null");
         }
+
+        int subId = SubscriptionManager.getSubId(slotIndex)[0];
         int[] retVal = (int[]) sendRequest(CMD_SET_ALLOWED_CARRIERS, carriers, subId);
         return retVal[0];
     }
 
     /**
      * {@hide}
-     * Get the allowed carrier list for slotId.
+     * Get the allowed carrier list for slotIndex.
      * Require system privileges. In the future we may add this to carrier APIs.
      *
      * @return List of {@link android.service.telephony.CarrierIdentifier}; empty list
      * means all carriers are allowed.
      */
     @Override
-    public List<CarrierIdentifier> getAllowedCarriers(int slotId) {
+    public List<CarrierIdentifier> getAllowedCarriers(int slotIndex) {
         enforceReadPrivilegedPermission();
-        int subId = SubscriptionManager.getSubId(slotId)[0];
+        int subId = SubscriptionManager.getSubId(slotIndex)[0];
         return (List<CarrierIdentifier>) sendRequest(CMD_GET_ALLOWED_CARRIERS, null, subId);
     }
 
@@ -3791,14 +3794,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Set SIM card power state. Request is equivalent to inserting or removing the card.
      *
-     * @param slotId SIM slot id.
+     * @param slotIndex SIM slot id.
      * @param powerUp True if powering up the SIM, otherwise powering down
      *
      **/
     @Override
-    public void setSimPowerStateForSlot(int slotId, boolean powerUp) {
+    public void setSimPowerStateForSlot(int slotIndex, boolean powerUp) {
         enforceModifyPermission();
-        Phone phone = PhoneFactory.getPhone(slotId);
+        Phone phone = PhoneFactory.getPhone(slotIndex);
+
         if (phone != null) {
             phone.setSimPowerState(powerUp);
         }

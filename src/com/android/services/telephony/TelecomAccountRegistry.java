@@ -152,7 +152,7 @@ final class TelecomAccountRegistry {
                 }
 
                 String slotIdString;
-                if (SubscriptionManager.isValidSlotId(slotId)) {
+                if (SubscriptionManager.isValidSlotIndex(slotId)) {
                     slotIdString = Integer.toString(slotId);
                 } else {
                     slotIdString = mContext.getResources().getString(R.string.unknown);
