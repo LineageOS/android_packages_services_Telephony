@@ -222,4 +222,7 @@
 
     <!-- Whether the emergency only account can make emergency calls -->
     <bool name="config_pstnCanPlaceEmergencyCalls">true</bool>
+
+    <!-- The package name for the platform carrier config app, bundled with system image. -->
+    <string name="platform_carrier_config_package" translatable="false">com.android.carrierconfig</string>
 </resources>
