@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"行動數據"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"行動數據"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"電話服務"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"緊急撥號"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"電話"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"遺失語音信箱號碼"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM 卡中未儲存語音信箱號碼。"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"新增號碼"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"只有主要使用者才能變更通話設定的語音信箱。"</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"您的 SIM 卡已解鎖。正在解鎖手機中…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM 網路解鎖 PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"解除鎖定"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"正在要求解除網路鎖定…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"網路解鎖失敗。"</string>
     <string name="unlock_success" msgid="6770085622238180152">"網路解鎖成功。"</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"這位使用者無法修改行動網路設定"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"這位使用者無法修改行動網路設定"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM 通話設定"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM 通話設定 (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA 通話設定"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"新的 PIN 碼包含無效的字元。"</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"無法變更 PIN 碼"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"不支援的訊息類型，請撥打 <xliff:g id="NUMBER">%s</xliff:g> 聽取留言。"</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"行動網路設定"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"行動網路設定"</string>
     <string name="label_available" msgid="1181658289009300430">"可用的網路"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"搜尋中…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"找不到網路。"</string>
@@ -238,7 +239,7 @@
     <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
     <skip />
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"若已達數據用量上限，數據傳輸速率會降低至 <xliff:g id="USED">%1$d</xliff:g> Kb/秒"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"更多有關行動業者行動網路數據使用政策的資訊"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"更多有關行動業者行動網路資料使用政策的資訊"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"區域廣播簡訊"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"區域廣播簡訊"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"已啟用區域廣播簡訊"</string>
@@ -452,8 +453,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"關閉飛航模式或連上無線網路即可撥打電話。"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"結束緊急回撥模式，以便撥打非緊急電話。"</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"尚未註冊網路。"</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"無法連線到行動網路。"</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"無法使用行動通訊網路。但連上 Wi-Fi 網路即可撥打電話。"</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"無法使用 Google 行動服務網路。"</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"如要撥打電話，請輸入有效的號碼。"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"無法通話。"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"目前無法新增通話。"</string>

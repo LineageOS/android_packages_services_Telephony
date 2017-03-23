@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Mobildata"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Mobildata"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefontjänster"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Nödsamtal"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefon"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Nummer till röstbrevlåda saknas"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Det finns inget nummer till röstbrevlådan sparat på SIM-kortet."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Lägg till nummer"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Röstbrevlåda för Samtalsinställningar får bara ändras av den primära användaren."</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM-kortets spärr har tagits bort. Låser upp telefonen…"</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN-kod för upplåsning av SIM-nätverk"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Lås upp"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"Försöker låsa upp nätverket…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"Det gick inte att låsa upp nätverket."</string>
     <string name="unlock_success" msgid="6770085622238180152">"Nätverket upplåst"</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Inställningarna för mobilnätverk är inte tillgängliga för den här användaren"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"Inställningarna för mobilnätverk är inte tillgängliga för den här användaren"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Samtalsinst. för GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Samtalsinställningar för GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"Samtalsinst. för CDMA"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"Den nya pinkoden innehåller ogiltiga tecken."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Det gick inte att ändra pinkoden"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Meddelandetypen stöds inte, ring <xliff:g id="NUMBER">%s</xliff:g> om du vill lyssna."</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"Inställningar för mobilnätverk"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"Mobila nätverksinställningar"</string>
     <string name="label_available" msgid="1181658289009300430">"Tillgängliga nätverk"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Söker…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Hittade inga nätverk."</string>
@@ -238,7 +239,7 @@
     <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
     <skip />
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datahastigheten sänks till <xliff:g id="USED">%1$d</xliff:g> kbit/s om dataanvändningsgränsen överskrids"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"Mer information om operatörens dataanvändningspolicy för mobilnätverket"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Mer information om operatörens dataanvändningspolicy för mobilnätverket"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Cell Broadcast SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"Cell Broadcast SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"Cell Broadcast SMS aktiverat"</string>
@@ -452,8 +453,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Inaktivera flygplansläget eller anslut till ett trådlöst nätverk om du vill ringa."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Avsluta läget för återuppringning vid nödsamtal om du vill ringa ett vanligt samtal."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Inte registrerat på nätverk."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"Det finns inget mobilnät tillgängligt."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"Det finns inga tillgängliga mobilnätverk. Anslut till ett trådlöst nätverk om du vill ringa."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"Inget mobilt nätverk är tillgängligt."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Ange ett giltigt nummer om du vill ringa ett samtal."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Det gick inte att koppla samtalet."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Det går inte att lägga till samtalet just nu."</string>

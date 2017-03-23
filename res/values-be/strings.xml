@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Мабільная перадача даных"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Mobile Data"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Тэлефонныя службы"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Экстраныя выклікі"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Тэлефон"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Адсутнічае нумар галасавой пошты"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"На SIM-карце няма нумару галасавой пошты."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Дадаць нумар"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Галасавая пошта для налад выклікаў можа змяняцца толькі першасным карыстальнікам."</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"Ваша SIM-карта была разблакаваная. Ваш тэлефон разблакоўваецца..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN-код разблакавання сеткі SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Разблакаваць"</string>
@@ -53,7 +54,8 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"Запыт разблакавання сеткі..."</string>
     <string name="unlock_failed" msgid="6490531697031504225">"Запыт разблакавання сеткі няўдалы."</string>
     <string name="unlock_success" msgid="6770085622238180152">"Сетка паспяхова разблакавана."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Налады мабільнай сеткі недаступныя для гэтага карыстальніка"</string>
+    <!-- no translation found for mobile_network_settings_not_available (7355254462995117896) -->
+    <skip />
     <string name="labelGSMMore" msgid="5930842194056092106">"Налады выклікаў GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Налады выклікаў GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"Налады выклікаў CDMA"</string>
@@ -158,7 +160,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"Новы PIN-код змяшчае несапраўдныя сімвалы."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Немагчыма змяніць PIN-код"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Гэты тып паведамлення не падтрымліваецца; каб праслухаць, патэлефануйце на <xliff:g id="NUMBER">%s</xliff:g>."</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"Налады сотавай сеткі"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"Налады мабільнай сеткі"</string>
     <string name="label_available" msgid="1181658289009300430">"Даступныя сеткі"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Пошук..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Сеткі не знойдзены."</string>
@@ -232,7 +234,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"Максімум <xliff:g id="USED_0">%1$s</xliff:g> перавышаны\nХуткасць перадачы дадзеных зніжана да <xliff:g id="USED_1">%2$d</xliff:g> Кб/с"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>?? цыклу прайшло\nНаступны перыяд пачнецца праз <xliff:g id="USED_1">%2$d</xliff:g> д. (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Хуткасць перадачы дадзеных зніжаецца да <xliff:g id="USED">%1$d</xliff:g> Кб/с, калі абмежаванне выкарыстання дадзеных перавышанае"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"Дадатковая інфармацыя аб палітыцы выкарыстання даных у сетцы вашага мабільнага аператара"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Больш падрабязная інфармацыя аб палітыцы выкарыстання дадзеных у сетцы вашага мабільнага аператара"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Перадача SMS на сотавыя"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"Перадача SMS на сотавыя"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"Перадача SMS на сотавыя ўключана"</string>
@@ -446,8 +448,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Адключыце рэжым палёту або падлучыцеся да бесправадной сеткі, каб зрабіць выклік."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Выйдзіце з рэжыму экстранных зваротных выклікаў, каб зрабіць няэкстранны выклік."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Не зарэгістраваны ў сетцы."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"Мабільная сетка недаступная."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"Мабільная сетка недаступная. Падлучыцеся да бесправадной сеткі, каб зрабіць выклік."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"Мабільная сетка недаступная."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Каб зрабіць выклік, увядзіце сапраўдны нумар."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Збой выклiку."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Зараз немагчыма дадаць выклік."</string>

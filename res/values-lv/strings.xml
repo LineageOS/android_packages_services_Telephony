@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Mobilie dati"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Mobilo ierīču dati"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Tālruņa pakalpojumi"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Ārkārtas numuru sastādītājs"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Tālrunis"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Trūkst balss pasta numura"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM kartē neviens balss pasta numurs nav saglabāts."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Pievienot numuru"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Tikai galvenais lietotājs var mainīt balss pasta zvanu iestatījumus."</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM karte ir atbloķēta. Notiek tālruņa atbloķēšana..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM tīkla atbloķēšanas PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Atbloķēt"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"Notiek tīkla atbloķēšanas pieprasīšana..."</string>
     <string name="unlock_failed" msgid="6490531697031504225">"Tīkla atbloķēšanas pieprasījums nav veiksmīgs."</string>
     <string name="unlock_success" msgid="6770085622238180152">"Tīkla atbloķēšana bija veiksmīga."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Mobilā tīkla iestatījumi šim lietotājam nav pieejami."</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"Mobilā tīkla iestatījumi šim lietotājam nav pieejami."</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM zvanu iestatījumi"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM zvanu iestatījumi (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA zvanu iestatījumi"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"Jaunajā PIN ir ietvertas nederīgas rakstzīmes."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Neizdevās mainīt PIN"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Neatbalstīts ziņojuma veids. Lai noklausītos, zvaniet uz numuru <xliff:g id="NUMBER">%s</xliff:g>."</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"Mobilā tīkla iestatījumi"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"Mobilā tīkla iestatījumi"</string>
     <string name="label_available" msgid="1181658289009300430">"Pieejamie tīkli"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Notiek meklēšana…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Neviens tīkls nav atrasts."</string>
@@ -234,7 +235,7 @@
     <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
     <skip />
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datu ātrums tiek samazināts līdz <xliff:g id="USED">%1$d</xliff:g> Kb/s, ja ir pārsniegts datu lietojuma ierobežojums."</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"Plašāka informācija par mobilo sakaru operatora mobilā tīkla datu lietošanas politiku"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Papildinformācija par mobilo sakaru operatora mobilā tīkla datu lietošanas politiku"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Šūnu apraides īsziņa"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"Šūnu apraides īsziņa"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"Šūnu apraides īsziņas ir iespējotas."</string>
@@ -448,8 +449,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Lai veiktu zvanu, izslēdziet lidojuma režīmu vai izveidojiet savienojumu ar bezvadu tīklu."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Lai veiktu parastu zvanu, izejiet no ārkārtas atzvana režīma."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Tīklā nav reģistrēts."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"Mobilais tīkls nav pieejams."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"Mobilais tīkls nav pieejams. Lai veiktu zvanu, izveidojiet savienojumu ar bezvadu tīklu."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"Mobilais tīkls nav pieejams."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Lai veiktu zvanu, ievadiet derīgu numuru."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Zvans neizdevās."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Pašlaik nevar pievienot zvanu."</string>

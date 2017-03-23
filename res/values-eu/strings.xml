@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Mugikorreko datuak"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Datu mugikorrak"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefonoaren zerbitzuak"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Larrialdietarako telefonoa"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefonoa"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Erantzungailuaren zenbakia falta da"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Ez da erantzungailuaren zenbakirik gorde SIM txartelean."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Gehitu zenbakia"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Erabiltzaile nagusiak soilik alda ditzake deien ezarpenetako erantzungailuaren aukerak."</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM txartela desblokeatu da. Telefonoa desblokeatzen…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM sarea desblokeatzeko PIN kodea"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Desblokeatu"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"Sarea desblokeatzeko eskatzen…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"Sarea desblokeatzeko eskaerak ez du arrakastarik izan."</string>
     <string name="unlock_success" msgid="6770085622238180152">"Sarea desblokeatu egin da."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Erabiltzaile honek ez dauzka sare mugikorraren ezarpenak erabilgarri"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"Erabiltzaile honek ez dauzka sare mugikorraren ezarpenak erabilgarri"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM deien ezarpenak"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM deien ezarpenak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA deien ezarpenak"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"Balio ez duten karaktereak ditu PIN kode berriak."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Ezin da aldatu PIN kodea"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Ez dira onartzen mota honetako mezuak. Entzuteko, deitu <xliff:g id="NUMBER">%s</xliff:g> zenbakira."</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"Sare mugikorraren ezarpenak"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"Sare mugikorren ezarpenak"</string>
     <string name="label_available" msgid="1181658289009300430">"Sare erabilgarriak"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Bilatzen…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Ez da sarerik aurkitu."</string>
@@ -238,7 +239,7 @@
     <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
     <skip />
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datuak erabiltzeko muga gainditzen bada, datu-abiadura <xliff:g id="USED">%1$d</xliff:g> Kb/s izango da"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"Informazio gehiago zure operadoreak sare mugikorretako datu-erabileraren inguruan dituen gidalerroei buruz"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Informazio gehiago zure operadoreak sare mugikorretako datu-erabileraren inguruan dituen gidalerroei buruz"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Sare mugikor bidezko SMS igorpenak"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"Sare mugikor bidezko SMS igorpenak"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"Sare mugikor bidezko SMS igorpena gaituta"</string>
@@ -452,8 +453,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Deia egiteko, desaktibatu hegaldi modua edo konektatu haririk gabeko sare batera."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Larrialdikoak ez diren deiak egiteko, irten larrialdi-deiak soilik jasotzeko modutik."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Ez dago sarean erregistratuta."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"Sare mugikorra ez dago erabilgarri."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"Sare mugikorra ez dago erabilgarri. Deia egiteko, konektatu haririk gabeko sare batera."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"Sare mugikorra ez dago erabilgarri."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Deitzeko, idatzi balio duen zenbaki bat."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Ezin izan da deitu."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Une honetan ezin da gehitu deirik."</string>

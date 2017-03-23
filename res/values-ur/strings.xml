@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"سیلولر ڈیٹا"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"موبائل ڈیٹا"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"فون سروسز"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"ہنگامی ڈائلر"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"فون"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"صوتی میل نمبر درج نہیں ہے"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"‏SIM کارڈ پر کوئی بھی صوتی میل نمبر اسٹور نہیں ہے۔"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"نمبر شامل کریں"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"کال کی ترتیبات کیلئے صوتی میل صرف بنیادی صارف ہی تبدیل کر سکتا ہے۔"</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"‏آپ کا SIM کارڈ غیر مسدود ہوگیا ہے۔ آپ کا فون غیر مقفل ہو رہا ہے…"</string>
     <string name="label_ndp" msgid="780479633159517250">"‏SIM نیٹ ورک غیر مقفل کرنے کا PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"غیر مقفل کریں"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"نیٹ ورک غیر مقفل کرنے کی درخواست کر رہا ہے…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"نیٹ ورک غیر مقفل کرنے کی درخواست ناکام ہوگئی۔"</string>
     <string name="unlock_success" msgid="6770085622238180152">"نیٹ ورک غیر مقفل کرنا کامیاب رہا۔"</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"اس صارف کیلئے سیلولر نیٹ ورک کی ترتیبات دستیاب نہیں ہیں"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"اس صارف کیلئے موبائل نیٹ ورک کی ترتیبات دستیاب نہیں ہیں"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"‏GSM کال کی ترتیبات"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"‏GSM کال کی ترتیبات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"‏CDMA کال کی ترتیبات"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"‏نئے PIN میں غلط کریکٹرز شامل ہیں۔"</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"‏PIN تبدیل کرنے سے قاصر"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"پیغام کی غیر تعاون یافتہ قسم، سننے کیلئے <xliff:g id="NUMBER">%s</xliff:g> پر کال کریں۔"</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"سیلولر نیٹ ورک کی ترتیبات"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"موبائل نیٹ ورک کی ترتیبات"</string>
     <string name="label_available" msgid="1181658289009300430">"دستیاب نیٹ ورکس"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"تلاش کر رہا ہے…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"کوئی نیٹ ورکس نہیں ملے۔"</string>
@@ -232,7 +233,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"‏<xliff:g id="USED_0">%1$s</xliff:g> زیادہ سے زیادہ سے تجاوز کرگیا\nڈیٹا کی شرح گھٹ کر <xliff:g id="USED_1">%2$d</xliff:g> Kb/s ہوگئی"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ از دور ختم ہوگیا\nاگلی مدت <xliff:g id="USED_1">%2$d</xliff:g> دنوں میں شروع ہو گی (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"‏اگر ڈیٹا کے استعمال کی حد سے تجاوز ہو جاتا ہے تو ڈیٹا شرح گھٹ کر <xliff:g id="USED">%1$d</xliff:g> Kb/s ہوجاتی ہے"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"آپ کے کیریئر کے سیلولر نیٹ ورک کے ڈیٹا کے استعمال کی پالیسی کے بارے میں مزید معلومات"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"آپ کے کیریئر کے موبائل نیٹ ورک کے ڈیٹا کے استعمال کی پالیسی کے بارے میں مزید معلومات"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"‏سیل نشریہ SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"‏سیل نشریہ SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"‏سیل نشریہ SMS فعال ہوگیا"</string>
@@ -446,8 +447,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"کال کرنے کیلئے ہوائی جہاز وضع آف کریں یا کسی وائرلیس نیٹ ورک سے منسلک ہوں۔"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"غیر ہنگامی کال کرنے کیلئے ہنگامی کال بیک موڈ سے اخراج کریں۔"</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"نیٹ ورک پر رجسٹرڈ نہیں ہے۔"</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"سیلولر نیٹ ورک دستیاب نہیں ہے۔"</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"سیلولر نیٹ ورک دستیاب نہیں ہے۔ کال کرنے کیلئے کسی وائرلیس نیٹ ورک سے منسلک ہوں۔"</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"موبائل نیٹ ورک دستیاب نہیں ہے۔"</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"کال کرنے کیلئے، ایک درست نمبر درج کریں۔"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"کال ناکام ہوگئی۔"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"اس وقت کال شامل نہیں ہو سکتی۔"</string>
