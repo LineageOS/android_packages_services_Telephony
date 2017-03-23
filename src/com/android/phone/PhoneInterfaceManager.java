@@ -2203,6 +2203,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Send the dialer code if called from the current default dialer or the caller has
+     * carrier privilege.
+     * @param inputCode The dialer code to send
+     */
+    @Override
+    public void sendDialerSpecialCode(String callingPackage, String inputCode) {
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        String defaultDialer = TelecomManager.from(mPhone.getContext()).getDefaultDialerPackage();
+        if (!TextUtils.equals(callingPackage, defaultDialer)) {
+            enforceCarrierPrivilege(getDefaultSubscription());
+        }
+        mPhone.sendDialerSpecialCode(inputCode);
+    }
+
+    /**
      * Returns the data network type.
      * Legacy call, permission-free.
      *
