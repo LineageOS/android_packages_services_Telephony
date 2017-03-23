@@ -310,8 +310,8 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
                 int subId2 = mTelephonyManager.getSubIdForPhoneAccount(account2);
                 if (subId1 != SubscriptionManager.INVALID_SUBSCRIPTION_ID &&
                         subId2 != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-                    retval = (mSubscriptionManager.getSlotId(subId1) <
-                        mSubscriptionManager.getSlotId(subId2)) ? -1 : 1;
+                    retval = (mSubscriptionManager.getSlotIndex(subId1) <
+                        mSubscriptionManager.getSlotIndex(subId2)) ? -1 : 1;
                 }
 
                 // Then order by package
