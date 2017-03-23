@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"സെല്ലുലാർ ഡാറ്റ"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"മൊബൈൽ ഡാറ്റ"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"ഫോൺ സേവനങ്ങൾ"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"അടിയന്തര ഡയലർ"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"ഫോണ്‍"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"വോയ്‌സ്മെയിൽ നമ്പർ കാണുന്നില്ല"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"സിം കാർഡിൽ വോയ്‌സ്‌മെയിൽ നമ്പറൊന്നും സംഭരിച്ചിട്ടില്ല."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"നമ്പർ ചേർക്കുക"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"പ്രാഥമിക ഉപയോക്താവിന് മാത്രമേ കോൾ ക്രമീകരണത്തിലെ വോയ്‌സ് മെയിൽ മാറ്റാനാവൂ."</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"സിം കാർഡ് തടഞ്ഞത് മാറ്റി. നിങ്ങളുടെ ഫോൺ അൺലോക്കുചെയ്യുന്നു…"</string>
     <string name="label_ndp" msgid="780479633159517250">"സിം നെറ്റ്‌വർക്ക് അൺലോക്ക് പിൻ"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"അൺലോക്കുചെയ്യുക"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"നെറ്റ്‌വർക്ക് അൺലോക്ക് അഭ്യർത്ഥിക്കുന്നു…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"നെറ്റ്‌വർക്ക് അൺലോക്ക് അഭ്യർത്ഥന പരാജയപ്പെട്ടു."</string>
     <string name="unlock_success" msgid="6770085622238180152">"നെറ്റ്‌വർക്ക് അൺലോക്ക് വിജയിച്ചു."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"ഈ ഉപയോക്താവിന് സെല്ലുലാർ നെറ്റ്‌വർക്ക് ക്രമീകരണങ്ങൾ ലഭ്യമല്ല"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"ഈ ഉപയോക്താവിന് മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണങ്ങൾ ലഭ്യമല്ല"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM കോൾ ക്രമീകരണങ്ങൾ"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM കോൾ ക്രമീകരണം (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA കോൾ ക്രമീകരണങ്ങൾ"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"പുതിയ പിന്നിൽ അസാധുവായ പ്രതീകങ്ങൾ അടങ്ങിയിരിക്കുന്നു."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"പിൻ മാറ്റാനായില്ല"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"സന്ദേശ തരം പിന്തുണയ്‌ക്കുന്നില്ല, കേൾക്കാൻ <xliff:g id="NUMBER">%s</xliff:g> നമ്പറിൽ വിളിക്കുക."</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"സെല്ലുലാർ നെറ്റ്‌വർക്ക് ക്രമീകരണങ്ങൾ"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണങ്ങൾ"</string>
     <string name="label_available" msgid="1181658289009300430">"ലഭ്യമായ നെറ്റ്‌വർക്കുകൾ"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"തിരയുന്നു…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"നെറ്റ്‌വർക്കുകളൊന്നും കണ്ടെത്തിയില്ല."</string>
@@ -232,7 +233,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"പരമാവധി <xliff:g id="USED_0">%1$s</xliff:g> കവിഞ്ഞു\nഡാറ്റ നിരക്ക് സെക്കൻഡിൽ <xliff:g id="USED_1">%2$d</xliff:g> Kb ആയി കുറച്ചു"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ സൈക്കിൾ കഴിഞ്ഞു\nഅടുത്ത കാലയളവ് <xliff:g id="USED_1">%2$d</xliff:g> ദിവസത്തിനകം ആരംഭിക്കും (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"ഡാറ്റാ ഉപയോഗ പരിധി കവിയുകയാണെങ്കിൽ, ഡാറ്റ നിരക്ക് സെക്കൻഡിൽ <xliff:g id="USED">%1$d</xliff:g> Kb ആയി കുറയ്‌ക്കുന്നു"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"നിങ്ങളുടെ കാരിയറിന്റെ സെല്ലുലാർ നെറ്റ്‌വർക്ക് ഡാറ്റ ഉപയോഗ നയത്തെക്കുറിച്ചുള്ള കൂടുതൽ വിവരങ്ങൾ"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"നിങ്ങളുടെ കാരിയറിന്റെ മൊബൈൽ നെറ്റ്‌വർക്ക് ഡാറ്റ ഉപയോഗ നയത്തെക്കുറിച്ചുള്ള കൂടുതൽ വിവരങ്ങൾ"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"സെൽ പ്രക്ഷേപണ SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"സെൽ പ്രക്ഷേപണ SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"സെൽ പ്രക്ഷേപണ SMS പ്രവർത്തനക്ഷമമാക്കി"</string>
@@ -446,8 +447,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"ഒരു കോൾ വിളിക്കാൻ വിമാന മോഡ് ഓഫാക്കുക അല്ലെങ്കിൽ വയർലെസ്സ് നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റുചെയ്യുക."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"അടിയന്തിരമല്ലാത്ത കോൾ ചെയ്യാൻ അടിയന്തിര കോൾബാക്ക് മോഡിൽ നിന്ന് പുറത്തുകടക്കുക."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"നെറ്റ്‌വർക്കിൽ രജിസ്റ്റർ ചെയ്‌തിട്ടില്ല."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"സെല്ലുലാർ നെറ്റ്‌വർക്ക് ലഭ്യമല്ല."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"സെല്ലുലാർ നെറ്റ്‌വർക്ക് ലഭ്യമല്ല. കോൾ വിളിക്കാൻ വയർലെസ്സ് നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റുചെയ്യുക."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"മൊബൈൽ നെറ്റ്‌വർക്ക് ലഭ്യമല്ല."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"ഒരു കോൾ ചെയ്യുന്നതിന്, സാധുതയുള്ള നമ്പർ നൽകുക."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"കോൾ ചെയ്യാനായില്ല."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"കോൾ ഇപ്പോൾ ചേർക്കാനാകില്ല."</string>

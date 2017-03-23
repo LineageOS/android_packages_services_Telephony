@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Мобилен интернет"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Мобилен интернет"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Телефонски услуги"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Бирач за итни случаи"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Телефон"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Недостасува број на говорна пошта"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Нема мемориран број на говорна пошта на СИМ картичката."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Додај број"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Говорната пошта за поставки за повикување може да ја промени само примарниот корисник."</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"Вашата СИМ картичка е одблокирана. Вашиот телефон се отклучува..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN за отклучување мрежа на СИМ"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Отклучи"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"Барање за отклучување мрежа..."</string>
     <string name="unlock_failed" msgid="6490531697031504225">"Барањето за отклучување мрежа е неуспешно."</string>
     <string name="unlock_success" msgid="6770085622238180152">"Отклучувањето мрежа е успешно."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Поставките за мобилна мрежа не се достапни за овој корисник"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"Поставките на мобилната мрежа не се достапни за овој корисник"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM поставки на повик"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Поставки за повик преку GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA поставки на повик"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"Новиот PIN содржи погрешни знаци."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"PIN-кодот не може да се промени"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Неподдржан тип порака. Повикајте <xliff:g id="NUMBER">%s</xliff:g> за да слушате."</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"Поставки за мобилна мрежа"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"Поставки на мобилна мрежа"</string>
     <string name="label_available" msgid="1181658289009300430">"Достапни мрежи"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Се пребарува..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Не се пронајдени мрежи."</string>
@@ -238,7 +239,7 @@
     <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
     <skip />
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Преносот на податоци се сведува на <xliff:g id="USED">%1$d</xliff:g> кб/с ако се надмине границата на потрошен интернет"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"Повеќе информации за политиката на користање податоци на мобилната мрежа на вашиот оператор"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Повеќе информации за политиката на користање податоци на мобилната мрежа на вашиот оператор"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"SMS за емитување од мобилен"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"SMS за емитување од мобилен"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"SMS за емитување од мобилен е овозможено"</string>
@@ -452,8 +453,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Исклучете го авионскиот режим или поврзете се на безжична мрежа за да повикате."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Излезете од режимот на итен повратен повик за да направите обичен повик."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Не е регистриран на мрежа."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"Не е достапна мобилна мрежа."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"Не е достапна мобилна мрежа. Поврзете се на безжична мрежа за да повикате."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"Не е достапна мобилна мрежа."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"За да повикате, внесете важечки број."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Повикот не успеа."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Повикот не може да се додаде во моментов."</string>

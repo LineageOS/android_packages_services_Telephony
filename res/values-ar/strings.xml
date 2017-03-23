@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"بيانات شبكة الجوّال"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"بيانات الجوال"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"خدمات الهاتف"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"طالب الطوارئ"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"الهاتف"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"رقم البريد الصوتي مفقود"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"‏لم يتم تخزين رقم بريد صوتي على شريحة SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"إضافة رقم"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"يمكنك تغيير البريد الصوتي لإعدادات المكالمات عن طريق المستخدم الأساسي فقط."</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"‏تم إلغاء حظر شريحة SIM. جارٍ إلغاء تأمين الهاتف..."</string>
     <string name="label_ndp" msgid="780479633159517250">"‏رمز PIN لإلغاء تأمين شبكة SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"إلغاء تأمين"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"جارٍ طلب إلغاء تأمين الشبكة..."</string>
     <string name="unlock_failed" msgid="6490531697031504225">"لم ينجح طلب إلغاء تأمين الشبكة."</string>
     <string name="unlock_success" msgid="6770085622238180152">"نجح إلغاء تأمين الشبكة."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"لا تتوفّر إعدادات شبكة الجوّال لهذا المستخدم"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"لا تتوفّر إعدادات شبكة الجوّال للمستخدم الحالي."</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"‏إعدادات اتصال نظام GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"‏إعدادات اتصال GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"‏إعدادات اتصال CDMA"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"رقم التعريف الشخصي الجديد يحتوي على أحرف غير صالحة."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"غير قادر على تغيير رقم التعريف الشخصي"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"نوع الرسالة غير معتمد، اتصل على <xliff:g id="NUMBER">%s</xliff:g> لسماعها."</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"إعدادات شبكة الجوّال"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"إعدادات شبكة الجوال"</string>
     <string name="label_available" msgid="1181658289009300430">"الشبكات المتاحة"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"جارِ البحث…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"لم يتم العثور على شبكات."</string>
@@ -232,7 +233,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> تم تعدي الحد الأقصى\nتم تخفيض معدل البيانات إلى <xliff:g id="USED_1">%2$d</xliff:g> كيلوبايت/ثانية"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"انقضت نسبة <xliff:g id="USED_0">%1$d</xliff:g>٪ من الدورة\nتبدأ الفترة التالية خلال <xliff:g id="USED_1">%2$d</xliff:g> يوم (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"تخفيض معدل البيانات إلى <xliff:g id="USED">%1$d</xliff:g> كيلوبايت/ثانية إذا تم تعدي حد البيانات"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"مزيد من المعلومات حول سياسة استخدام بيانات الشبكة لمشغل شبكة الجوّال"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"مزيد من المعلومات حول سياسة استخدام بيانات شبكة جوال مشغل شبكة الجوال"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"‏الرسائل القصيرة SMS لبث الخلية"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"‏الرسائل القصيرة SMS لبث الخلية"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"‏تم تمكين الرسائل القصيرة SMS لبث الخلية"</string>
@@ -446,8 +447,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"عليك إيقاف وضع الطائرة أو الاتصال بشبكة لاسلكية لإجراء مكالمة."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"ينبغي الخروج من وضع معاودة الاتصال بالطوارئ لإجراء مكالمة غير طارئة."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"غير مسجل على الشبكة."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"شبكة الجوّال غير متاحة."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"شبكة الجوّال ليست متوفرة. اتصل بشبكة لاسلكية لإجراء مكالمة."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"شبكة الجوال غير متاحة."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"لإجراء مكالمة، أدخل رقمًا صالحًا."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"أخفقت المكالمة."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"لا يمكن إضافة مكالمة في الوقت الحالي."</string>

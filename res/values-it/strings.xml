@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Dati mobili"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Dati cellulare"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Phone Services"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Chiamata di emergenza"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefono"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Numero segreteria mancante"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Nessun numero di segreteria presente nella SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Aggiungi numero"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Le impostazioni della segreteria telefonica delle chiamate possono essere modificate solo dall\'utente principale."</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"La SIM è stata sbloccata. Sblocco del telefono..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN sblocco rete SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Sblocca"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"Richiesta sblocco rete..."</string>
     <string name="unlock_failed" msgid="6490531697031504225">"Richiesta di sblocco della rete respinta."</string>
     <string name="unlock_success" msgid="6770085622238180152">"Sblocco della rete riuscito."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Le impostazioni per reti cellulari non sono disponibili per questo utente"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"Le impostazioni per dispositivi mobili non sono disponibili per questo utente"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Imp. chiamate GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Impostazioni di chiamata GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"Impostazioni di chiamata CDMA"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"Il nuovo PIN contiene caratteri non validi."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Impossibile cambiare il PIN"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Tipo di messaggio non supportato, chiama <xliff:g id="NUMBER">%s</xliff:g> per ascoltare."</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"Impostazioni rete cellulare"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"Impostazioni reti mobili"</string>
     <string name="label_available" msgid="1181658289009300430">"Reti disponibili"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Ricerca..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Nessuna rete trovata."</string>
@@ -236,7 +237,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> max superato\nVelocità dati ridotta a <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>% del ciclo trascorso\nIl periodo succ. inizia tra <xliff:g id="USED_1">%2$d</xliff:g> gg (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Velocità dati ridotta a <xliff:g id="USED">%1$d</xliff:g> Kb/s se limite utilizzo dati superato"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"Informazioni su norme di utilizzo dati della rete cellulare dell\'operatore"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Informazioni sulla norme di utilizzo dati della rete cellulare del gestore"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"SMS cell broadcast"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"SMS cell broadcast"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"SMS cell broadcast attivato"</string>
@@ -450,8 +451,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Disattiva la modalità aereo o connettiti a una rete wireless per effettuare una chiamata."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Per effettuare chiamate non di emergenza, esci dalla modalità di richiamata di emergenza."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Non registrato sulla rete."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"Rete cellulare non disponibile."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"La rete cellulare non è disponibile. Connettiti a una rete wireless per effettuare una chiamata."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"Rete cellulare non disponibile."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Per effettuare una chiamata, inserisci un numero valido."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Chiamata non riuscita."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Al momento non è possibile aggiungere la chiamata."</string>

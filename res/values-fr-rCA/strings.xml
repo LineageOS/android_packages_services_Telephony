@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Données cellulaires"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Données mobiles"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Services téléphoniques"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Appels d\'urgence"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Téléphone"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Numéro de messagerie vocale manquant"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Aucun numéro de messagerie vocale n\'est enregistré sur la carte SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Ajouter un numéro"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"Seul l\'utilisateur principal peut modifier les paramètres de messagerie vocale."</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"Votre carte SIM a été déverrouillée. Votre téléphone est en cours de déverrouillage..."</string>
     <string name="label_ndp" msgid="780479633159517250">"NIP de déblocage du réseau SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Déverrouiller"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"Demande de déblocage du réseau…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"Échec de la demande de déblocage du réseau"</string>
     <string name="unlock_success" msgid="6770085622238180152">"Le réseau a été débloqué."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Les paramètres de réseau cellulaire ne sont pas accessibles pour cet utilisateur"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"Les paramètres de réseau cellulaire ne sont pas accessibles pour cet utilisateur"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Paramètres d\'appel GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Paramètres d\'appel GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"Paramètres d\'appel CDMA"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"Le nouveau NIP contient des caractères incorrects."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Impossible de modifier le NIP"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Type de message non pris en charge. Composez le <xliff:g id="NUMBER">%s</xliff:g> pour l\'écouter."</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"Paramètres réseaux cellulaires"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"Paramètres du réseau mobile"</string>
     <string name="label_available" msgid="1181658289009300430">"Réseaux disponibles"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Recherche en cours…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Aucun réseau trouvé"</string>
@@ -236,7 +237,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> maximum dépassé\nTaux de transfert des données réduit à <xliff:g id="USED_1">%2$d</xliff:g> Ko/s"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g> % du cycle écoulé.\nLa prochaine période démarre dans <xliff:g id="USED_1">%2$d</xliff:g> jours (<xliff:g id="USED_2">%3$s</xliff:g>)."</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Taux de transfert des données réduit à <xliff:g id="USED">%1$d</xliff:g> Ko/s si le plafond d\'utilisation est dépassé"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"En savoir plus les politiques de votre fournisseur de services concernant l\'utilisation des données sur son réseau cellulaire"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Plus d\'informations sur les règles de votre opérateur mobile concernant l\'utilisation des données sur son réseau"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Diffusion cellulaire par SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"Diffusion cellulaire par SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"Option \"Diffusion cellulaire par SMS\" activée"</string>
@@ -450,8 +451,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Désactivez le mode Avion ou connectez-vous à un réseau Wi-Fi pour faire un appel."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Quittez le mode de rappel d\'urgence pour effectuer un appel non urgent."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Non enregistré sur le réseau"</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"Réseau cellulaire non disponible."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"Le réseau cellulaire n\'est pas accessible. Connectez-vous à un réseau Wi-Fi pour faire un appel."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"Réseau pour mobile non disponible"</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Pour faire un appel, entrez un numéro valide."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Échec de l\'appel."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Impossible d\'ajouter l\'appel pour le moment."</string>

@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"සෙල්‍යුලර් දත්ත"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ජංගම දත්ත"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"දුරකථන සේවා"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"හදිසි අමතනය"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"දුරකථනය"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"හඬ තැපැල් අංකය නැත"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM කාඩ් පතෙහි හඬ තැපැල් අංකයක් ආචිත වී නැත."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"අංකයක් එක් කරන්න"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"ඇමතුම් සැකසීම් සඳහා හඬ තැපෑල ප්‍රධාන පරිශීලකයකු විසින් පමණක් වෙනස් කිරීමට හැකිය."</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"ඔබගේ SIM කාඩ්පත අඟුළු හැර තිබේ. ඔබගේ දුරකතනයේ අඟුළු හරිමින්…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM ජාල අඟුළු හැරීමේ PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"අඟුල අරින්න"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"ජාල අඟුළු ඇරීමක් ඉල්ලුම් කරමින්…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"ජාලය අඟුළු හැරීමේ ඉල්ලීම අසාර්ථකයි."</string>
     <string name="unlock_success" msgid="6770085622238180152">"ජාලය අඟුළු හරිම සාර්ථකයි."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"මෙම පරිශීලකයා සඳහා සෙලියුලර් ජාල සැකසීම් නැත"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"මෙම පරිශීලකයා සඳහා ජංගම ජාල සැකසීම් නැත"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM ඇමතුම් සැකසුම්"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM ඇමතුම් සැකසීම් (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA ඇමතුම් සැකසුම්"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"නව PIN අංකයෙහි අවලංගු අනුලකුණු අන්තර්ගත වේ."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"PIN අංකය මාරු කිරීමට නොහැකිය"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"සහාය නොදක්වන පණිවිඩය වර්ගය, සවන් දීමට <xliff:g id="NUMBER">%s</xliff:g> අමතන්න."</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"සෙලියුලර් ජාල සැකසීම්"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"ජංගම ජාල සැකසුම්"</string>
     <string name="label_available" msgid="1181658289009300430">"තිබෙන ජාල"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"සොයමින්..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"කිසිඳු ජාලයක් සොයාගත නොහැකි විය."</string>
@@ -232,7 +233,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> උපරිමය ඉක්මවා ඇත\nදත්ත සිඝ්‍රතාවය <xliff:g id="USED_1">%2$d</xliff:g> Kb/s වෙත අඩු කෙරෙන ලදි"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ චක්‍ර ඉක්ම ගොස්ය\nඊළඟ සීමාව ආරම්භ වන්නේ දින <xliff:g id="USED_1">%2$d</xliff:g> කිනි (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"දත්ත භාවිතා සීමාව ඉක්මවුවහොත් දත්ත සිඝ්‍රතාවය <xliff:g id="USED">%1$d</xliff:g> Kb/s වෙත අඩුවේ"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"ඔබගේ ක්‍රියාකරුගේ සෙලියුලර් ජාලය දත්ත භාවිත ප්‍රතිපත්තිය පිලිබඳ තවත් තොරතුරු"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"ඔබගේ ක්‍රියාකරුගේ ජංගම ජාලය දත්ත භාවිත ප්‍රතිපත්තිය පිලිබඳ තවත් තොරතුරු"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"සෙල් විකාශන SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"සෙල් විකාශන SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"සෙල් විකාශන SMS සබලයි"</string>
@@ -446,8 +447,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"ඇමතුමක් ලබා ගැනීමට ගුවන් යානා මෝඩය අක්‍රිය කරන්න හෝ රැහැන් රහිත ජාලයකට සම්බන්ධ වෙන්න."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"හදිසි-නොවන ඇමතුමක් සිදු කිරීමට හදිසි අවස්ථා පසු ඇමතුම් ප්‍රකාරයෙන් ඉවත් වන්න."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"ජාලය මත ලියාපදිංචි වී නැත."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"සෙලියුලර් ජාලය නොමැත"</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"සෙලියුලර් ජාලය ලබාගත නොහැක. ඇමතුමක් ගැනීමට රැහැන් රහිත ජාලයකට සම්බන්ධ වෙන්න."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"ජංගම ජාලය නොමැත."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"ඇමතුමක් ලබාගැනීමට, වලංගු අංකයක් ලබාගන්න."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"ඇමතුම අසාර්ථක විය."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"ඇමතුම මේ අවස්ථාවේදී එක් කළ නොහැකිය."</string>

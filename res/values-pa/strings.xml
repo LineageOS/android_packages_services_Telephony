@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"ਸੈਲਿਊਲਰ ਡਾਟਾ"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ਮੋਬਾਈਲ ਡਾਟਾ"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"ਫ਼ੋਨ ਸੇਵਾਵਾਂ"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"ਐਮਰਜੈਂਸੀ ਡਾਇਲਰ"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"ਫੋਨ"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"ਲੁਪਤ ਵੌਇਸਮੇਲ ਨੰਬਰ"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM ਕਾਰਡ ਤੇ ਕੋਈ ਵੌਇਸਮੇਲ ਨੰਬਰ ਸਟੋਰ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਹੈ।"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"ਨੰਬਰ ਜੋੜੋ"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"ਕਾਲ ਸੈਟਿੰਗਾਂ ਲਈ ਵੌਇਸ ਮੇਲ ਨੂੰ ਸਿਰਫ਼ ਪ੍ਰਾਇਮਰੀ ਵਰਤੋਂਕਾਰ ਦੁਆਰਾ ਹੀ ਬਦਲਿਆ ਜਾ ਸਕਦਾ ਹੈ।"</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"ਤੁਹਾਡਾ SIM ਕਾਰਡ ਅਨਬਲੌਕ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਤੁਹਾਡਾ ਫੋਨ ਅਨੌਲਕ ਹੋ ਰਿਹਾ ਹੈ..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM ਨੈਟਵਰਕ ਅਨਲੌਕ PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ਅਨਲੌਕ ਕਰੋ"</string>
@@ -53,7 +54,8 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"ਨੈਟਵਰਕ ਅਨਲੌਕ ਦੀ ਬੇਨਤੀ ਕਰ ਰਿਹਾ ਹੈ…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"ਨੈਟਵਰਕ ਅਨਲੌਕ ਬੇਨਤੀ ਅਸਫਲ।"</string>
     <string name="unlock_success" msgid="6770085622238180152">"ਨੈਟਵਰਕ ਅਨਲੌਕ ਸਫਲ।"</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"ਸੈਲਿਊਲਰ ਨੈਟਵਰਕ ਸੈਟਿੰਗਾਂ ਇਸ ਉਪਭੋਗਤਾ ਲਈ ਉਪਲਬਧ ਨਹੀਂ ਹਨ"</string>
+    <!-- no translation found for mobile_network_settings_not_available (7355254462995117896) -->
+    <skip />
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM ਕਾਲ ਸੈਟਿੰਗਾਂ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
@@ -158,7 +160,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"ਨਵੇਂ PIN ਵਿੱਚ ਅਵੈਧ ਅੱਖਰ-ਚਿੰਨ੍ਹ ਹਨ।"</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"PIN ਨੂੰ ਬਦਲਣ ਵਿੱਚ ਅਸਮਰੱਥ"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"ਅਸਮਰਥਿਤ ਸੁਨੇਹਾ ਕਿਸਮ, ਸੁਣਨ ਲਈ <xliff:g id="NUMBER">%s</xliff:g> \'ਤੇ ਕਾਲ ਕਰੋ।"</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"ਸੈਲਿਊਲਰ ਨੈਟਵਰਕ ਸੈਟਿੰਗਾਂ"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"ਮੋਬਾਈਲ ਨੈਟਵਰਕ ਸੈਟਿੰਗਾਂ"</string>
     <string name="label_available" msgid="1181658289009300430">"ਉਪਲਬਧ ਨੈਟਵਰਕ"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"ਖੋਜ ਰਿਹਾ ਹੈ..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"ਕੋਈ ਨੈਟਵਰਕ ਨਹੀਂ ਮਿਲੇ।"</string>
@@ -232,7 +234,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> ਅਧਿਕਤਮ ਸੀਮਾ ਵਧ ਗਈ\nਡਾਟਾ ਰੇਟ <xliff:g id="USED_1">%2$d</xliff:g> Kb/s ਤੱਕ ਘਟ ਗਿਆ"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ ਚੱਕਰ ਪੂਰਾ ਹੋਇਆ\nਅਗਲੀ ਮਿਆਦ <xliff:g id="USED_1">%2$d</xliff:g> ਦਿਨਾਂ ਵਿੱਚ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"ਜੇਕਰ ਡਾਟਾ ਵਰਤੋਂ ਸੀਮਾ ਵਧਦੀ ਹੈ ਤਾਂ ਡਾਟਾ ਰੇਟ <xliff:g id="USED">%1$d</xliff:g> Kb/s ਤੱਕ ਘਟਿਆ"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"ਤੁਹਾਡੇ ਕੈਰੀਅਰ ਦੀ ਸੈਲਿਊਲਰ ਨੈਟਵਰਕ ਡਾਟਾ ਵਰਤੋਂ ਨੀਤੀ ਬਾਰੇ ਹੋਰ ਜਾਣਕਾਰੀ"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"ਤੁਹਾਡੇ ਕੈਰੀਅਰ ਦੀ ਮੋਬਾਈਲ ਨੈਟਵਰਕ ਡਾਟਾ ਵਰਤੋਂ ਨੀਤੀ ਬਾਰੇ ਹੋਰ ਜਾਣਕਾਰੀ"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"ਸੈਲ ਪ੍ਰਸਾਰਨ SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"ਸੈਲ ਪ੍ਰਸਾਰਨ SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"ਸੈਲ ਪ੍ਰਸਾਰਨ SMS ਸਮਰਥਿਤ"</string>
@@ -446,8 +448,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"ਏਅਰਪਲੇਨ ਮੋਡ ਬੰਦ ਕਰੋ ਜਾਂ ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ ਇੱਕ ਵਾਇਰਲੈਸ ਨੈਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"ਇੱਕ ਗ਼ੈਰ-ਅਪਾਤਕਾਲ ਕਾਲ ਕਰਨ ਲਈ ਅਪਾਤਕਾਲ ਕਾਲਬੈਕ ਮੋਡ ਤੋਂ ਬਾਹਰ ਆਓ।"</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"ਨੈਟਵਰਕ ਤੇ ਰਜਿਸਟਰ ਨਹੀਂ ਕੀਤਾ।"</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"ਸੈਲਿਊਲਰ ਨੈਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ"</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"ਸੈਲਿਊਲਰ ਨੈਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ ਇੱਕ ਵਾਇਰਲੈਸ ਨੈਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।"</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"ਮੋਬਾਈਲ ਨੈਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ।"</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ, ਇੱਕ ਪ੍ਰਮਾਣਿਕ ਨੰਬਰ ਦਰਜ ਕਰੋ।"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"ਕਾਲ ਕਰਨਾ ਅਸਫਲ ਰਿਹਾ।"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"ਇਸ ਵੇਲੇ ਕਾਲ ਸ਼ਾਮਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ।"</string>

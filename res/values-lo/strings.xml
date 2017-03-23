@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"ຂໍ້​ມູນ​ເຊວ​ລູ​ລາ"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ຂໍ້ມູນມືຖື"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"ການ​ບໍ​ລິ​ການ​ໂທ​ລະ​ສັບ"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"ໂປຣແກຣມໂທອອກສຸກເສີນ"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"ໂທລະສັບ"</string>
@@ -45,7 +45,8 @@
     <string name="no_vm_number" msgid="4164780423805688336">"ບໍ່ມີເບີຂໍ້ຄວາມສຽງ"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"ບໍ່ມີເບີຂໍ້ຄວາມສຽງຖືກບັນທຶກໃນ SIM card."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"ເພີ່ມໝາຍເລກ"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="8437804852649016239">"ຂໍ້ຄວາມສຽງສຳລັບການຕັ້ງຄ່າການໂທສາມາດປ່ຽນໄດ້ໂດຍຜູ້ໃຊ້ຫຼັກເທົ່ານັ້ນ."</string>
+    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
+    <skip />
     <string name="puk_unlocked" msgid="2284912838477558454">"ຍົກເລີກການປິດກັ້ນ SIM card ຂອງທ່ານແລ້ວ. ໂທລະສັບຂອງທ່ານກຳລັງຖືກປົດລັອກ..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN ປົດລັອກເຄືອຂ່າຍ SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ປົດລັອກ"</string>
@@ -53,7 +54,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"ກຳລັງຮ້ອງຂໍການປົດລັອກເຄືອຂ່າຍ..."</string>
     <string name="unlock_failed" msgid="6490531697031504225">"ຄຳຂໍການປົດລັອກເຄືອຂ່າຍບໍ່ສຳເລັດ."</string>
     <string name="unlock_success" msgid="6770085622238180152">"ການປົດລັອກເຄືອຂ່າຍບໍ່ສຳເລັດ."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"​ການ​ຕັ້ງ​ຄ່າ​ເຄືອ​ຂ່າຍ​ມ​ື​ຖືບໍ່​ສາ​ມາດ​ໃຊ້​ໄດ້​ກັບ​ຜູ່​ໃຊ້​ນີ້"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"​ການ​ຕັ້ງ​ຄ່າ​ເຄືອ​ຂ່າຍ​ມ​ື​ຖືບໍ່​ສາ​ມາດ​ໃຊ້​ໄດ້​ກັບ​ຜູ່​ໃຊ້​ນີ້"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"ການຕັ້ງຄ່າການໂທ GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"ການ​ຕັ້ງ​ຄ່າ GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"ການຕັ້ງຄ່າໂທ CDMA"</string>
@@ -158,7 +159,7 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"ລະຫັດ PIN ໃໝ່ມີຕົວອັກສອນທີ່ບໍ່ຖືກຕ້ອງ."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"ບໍ່ສາມາດປ່ຽນລະຫັດ PIN ໄດ້"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"ປະເພດຂໍ້ຄວາມທີ່ບໍ່ຮອງຮັບ, ໂທ <xliff:g id="NUMBER">%s</xliff:g> ເພື່ອຟັງ."</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"ການ​ຕັ້ງ​ຄ່າ​ເຄືອ​ຂ່າຍ​ມື​ຖື"</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"ການຕັ້ງຄ່າເຄືອຂ່າຍມືຖື"</string>
     <string name="label_available" msgid="1181658289009300430">"ເຄືອຂ່າຍທີ່ມີ"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"ກຳລັງຊອກຫາ..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"ບໍ່ພົບເຄືອຂ່າຍ."</string>
@@ -232,7 +233,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> ເກີນຂີດຈຳກັດ\nອັດຕາຂໍ້ມູນຖືກຫຼຸດລົງເປັນ <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ ຂອງຮອບຜ່ານໄປ\nໄລຍະຕໍ່ໄປຈະເລີ່ມໃນອີກ <xliff:g id="USED_1">%2$d</xliff:g> ມື້ (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"ອັດຕາຂໍ້ມູນຖືກຫຼຸດລົງເປັນ <xliff:g id="USED">%1$d</xliff:g> Kb/s ຫາກໃຊ້ເກີນປະລິມານທີ່ຈຳກັດໄວ້"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"ຂໍ້ມູນ​ເພີ່ມເຕີມກ່ຽວກັບ​ນະໂຍບາຍການ​ໃຊ້​ຂໍ້ມູນເຄືອຂ່າຍມືຖື​ຂອງຜູ່ໃຫ້​ບໍລິການ​ຂອງທ່ານ"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"ຂໍ້ມູນເພີ່ມເຕີມກ່ຽວກັບ ນະໂຍບາຍການໃຊ້ຂໍ້ມູນເຄືອຂ່າຍມືຖື ຂອງຜູ່ໃຫ້ບໍລິການຂອງທ່ານ"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"ຂໍ້ຄວາມ SMS ຈາກເຄືອຂ່າຍ"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"ຂໍ້ຄວາມ SMS ຈາກເຄືອຂ່າຍ"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"ເປີດຂໍ້ຄວາມ SMS ຈາກເຄືອຂ່າຍແລ້ວ"</string>
@@ -446,8 +447,9 @@
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"ປິດໂໝດເຄື່ອງບິນ ຫຼືເຊື່ອມຕໍ່ກັບເຄືອຂ່າຍໄຮ້ສາຍເພື່ອເຮັດການໂທ."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"ອອກ​ຈາກໂໝດ​ໂທ​ກັບ​ສຸກ​ເສີນ ເພື່ອ​ເຮັດ​ການ​ໂທ​ປົກກະຕິ."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"ບໍ່ໄດ້ລົງທະບຽນໃນເຄືອຂ່າຍ."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"ບໍ່​ມີ​ເຄືອ​ຂ່າຍ​ມື​ຖື​ທີ່​ສາ​ມາດ​ໃຊ້​ໄດ້."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"ເຄືອຂ່າຍເຊລລູລາບໍ່ພ້ອມໃຊ້ງານ. ໃຫ້ເຊື່ອມຕໍ່ກັບເຄືອຂ່າຍໄຮ້ສາຍເພື່ອເຮັດການໂທ."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"ເຄືອຂ່າຍມືຖືບໍ່ສາມາດໃຊ້ໄດ້."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"ເພື່ອ​ທີ່​ຈະ​ໂທ, ປ້ອນ​ເບີ​ໂທ​ທີ່​ໃຊ້​ໄດ້​ເຂົ້າ​ໄປ."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"ໂທບໍ່ສຳເລັດ."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"ບໍ່ສາມາດເພີ່ມການໂທໄດ້ໃນເວລານີ້."</string>
