@@ -18,10 +18,12 @@ package com.android.phone;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.telephony.SubscriptionManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -43,12 +45,16 @@ public class MMIDialogActivity extends Activity {
     private Handler mHandler;
 
     private CallManager mCM = PhoneGlobals.getInstance().getCallManager();
-    private Phone mPhone = PhoneGlobals.getPhone();
+    private Phone mPhone;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        int subId = intent.getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
+                SubscriptionManager.DEFAULT_SUBSCRIPTION_ID);
+        mPhone = PhoneGlobals.getPhone(subId);
         mHandler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
