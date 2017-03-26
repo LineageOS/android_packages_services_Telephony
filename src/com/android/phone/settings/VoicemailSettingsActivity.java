@@ -284,15 +284,17 @@ public class VoicemailSettingsActivity extends PreferenceActivity
 
         mVoicemailChangePinPreference = findPreference(
                 getResources().getString(R.string.voicemail_change_pin_key));
-        Intent changePinIntent = new Intent(new Intent(this, VoicemailChangePinActivity.class));
-        changePinIntent.putExtra(VoicemailChangePinActivity.EXTRA_PHONE_ACCOUNT_HANDLE,
-                mPhoneAccountHandle);
 
-        mVoicemailChangePinPreference.setIntent(changePinIntent);
-        if (VoicemailChangePinActivity.isDefaultOldPinSet(this, mPhoneAccountHandle)) {
-            mVoicemailChangePinPreference.setTitle(R.string.voicemail_set_pin_dialog_title);
-        } else {
-            mVoicemailChangePinPreference.setTitle(R.string.voicemail_change_pin_dialog_title);
+        if (mVoicemailChangePinPreference != null) {
+            Intent changePinIntent = new Intent(new Intent(this, VoicemailChangePinActivity.class));
+            changePinIntent.putExtra(VoicemailChangePinActivity.EXTRA_PHONE_ACCOUNT_HANDLE,
+                    mPhoneAccountHandle);
+            mVoicemailChangePinPreference.setIntent(changePinIntent);
+            if (VoicemailChangePinActivity.isDefaultOldPinSet(this, mPhoneAccountHandle)) {
+                mVoicemailChangePinPreference.setTitle(R.string.voicemail_set_pin_dialog_title);
+            } else {
+                mVoicemailChangePinPreference.setTitle(R.string.voicemail_change_pin_dialog_title);
+            }
         }
 
         if (mVoicemailVisualVoicemail != null) {
