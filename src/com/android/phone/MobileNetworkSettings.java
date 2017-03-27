@@ -1431,6 +1431,9 @@ public class MobileNetworkSettings extends PreferenceActivity
                 ev[0] = select;
                 ev[1] = com.android.phone.R.array.enabled_networks_values;
             }
+        } else if (phoneType == PhoneConstants.PHONE_TYPE_NONE) {
+            ev[0] = com.android.phone.R.array.enabled_networks_choices;
+            ev[1] = com.android.phone.R.array.enabled_networks_values;
         } else {
             throw new IllegalStateException("Unexpected phone type: " + phoneType);
         }
