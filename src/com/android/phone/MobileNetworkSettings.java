@@ -711,9 +711,10 @@ public class MobileNetworkSettings extends Activity  {
                 android.util.Log.d(LOG_TAG, "keep ltePref");
             }
 
-            // Enable enhanced 4G LTE mode settings depending on whether exists on platform
             if (!(ImsManager.isVolteEnabledByPlatform(getActivity())
-                    && ImsManager.isVolteProvisionedOnDevice(getActivity()))) {
+                    && ImsManager.isVolteProvisionedOnDevice(getActivity()))
+                    || carrierConfig.getBoolean(
+                        CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL)) {
                 Preference pref = prefSet.findPreference(BUTTON_4G_LTE_KEY);
                 if (pref != null) {
                     prefSet.removePreference(pref);
