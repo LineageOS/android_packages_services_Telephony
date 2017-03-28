@@ -35,8 +35,6 @@ import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.phone.PhoneUtils;
-import com.android.phone.vvm.omtp.VvmLog;
-import com.android.phone.vvm.omtp.utils.PhoneAccountHandleConverter;
 
 import java.util.Map;
 import java.util.Set;

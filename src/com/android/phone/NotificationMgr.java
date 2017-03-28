@@ -56,7 +56,6 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.phone.settings.VoicemailNotificationSettingsUtil;
 import com.android.phone.settings.VoicemailSettingsActivity;
-import com.android.phone.vvm.omtp.sync.VoicemailStatusQueryHelper;
 
 import java.util.Iterator;
 import java.util.List;
@@ -249,20 +248,6 @@ public class NotificationMgr {
         }
 
         Phone phone = PhoneGlobals.getPhone(subId);
-        if (visible && phone != null && shouldCheckVisualVoicemailConfigurationForMwi(subId)) {
-            VoicemailStatusQueryHelper queryHelper = new VoicemailStatusQueryHelper(mContext);
-            PhoneAccountHandle phoneAccount = PhoneUtils.makePstnPhoneAccountHandle(phone);
-            if (queryHelper.isVoicemailSourceConfigured(phoneAccount)) {
-                Log.v(LOG_TAG, "Source configured for visual voicemail, hiding mwi.");
-                // MWI may not be suppressed if the PIN is not set on VVM3 because it is also a
-                // "Not OK" configuration state. But VVM3 never send a MWI after the service is
-                // activated so this should be fine.
-                // TODO(twyen): once unbundled the client should be able to set a flag to suppress
-                // MWI, instead of letting the NotificationMgr try to interpret the states.
-                visible = false;
-            }
-        }
-
         Log.i(LOG_TAG, "updateMwi(): subId " + subId + " update to " + visible);
         mMwiVisible.put(subId, visible);
 
