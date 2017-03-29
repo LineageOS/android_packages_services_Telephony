@@ -35,8 +35,11 @@
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
   <string name="ims_settings">Axustes d\'IMS</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN de desbloquéu de sorrede de tarxeta SIM</string>
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">PIN de desbloquéu de SIM corporativa</string>
   <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">PIN de desbloquéu del fornidor de serviciu SIM</string>
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN de desbloquéu SIM</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
@@ -46,17 +49,27 @@
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN de desbloquéu de RUIM HRPD</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN de desbloquéu de RUIM corporativa</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">PIN de desbloquéu del fornidor de serviciu RUIM</string>
   <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN de desbloquéu RUIM</string>
   <!-- Label text for PUK entry widget on Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Introducir PUK</string>
   <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Solicitando desbloquéu de sorrede de tarxeta SIM\u2026</string>
   <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Solicitando desbloquéu del fornidor de servicios de tarxeta SIM\u2026</string>
   <!-- Status message displayed on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Solicitando desbloquéu de tarxeta SIM corporativa\u2026</string>
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Solicitando desbloquéu de tarxeta SIM\u2026</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Solicitando desbloquéu de rede-1 de tarxeta RUIM\u2026</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Solicitando desbloquéu de rede-2 de tarxeta RUIM\u2026</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Solicitando desbloquéu de HRPD de tarxeta RUIM\u2026</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
   <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
@@ -92,4 +105,6 @@
   <string name="no_mobile_data">Los datos móviles nun tán disponibles</string>
   <string name="no_mobile_data_roaming">Los datos n\'itinerancia nun tán diponibles</string>
   <string name="call_barring">Bloquéu de llamaes</string>
+  <string name="srvcc_video_message">"Baxóse la calidá de la llamada a 2G/3G porque la rede 4G nun ta disponible."</string>
+  <string name="srvcc_message">"Baxóse la calidá de la llamada 4G a 2G/3G porque la rede 4G nun ta disponible."</string>
 </resources>

@@ -321,6 +321,7 @@
   <!-- "Edit FDN Contact" screen: Label for the "name" text field -->
   <!-- "Edit FDN Contact" screen: Label for the "number" text field -->
   <!-- "Edit FDN Contact" screen: Button label for "save" action -->
+  <string name="save">Guardar</string>
   <!-- Title of "Edit FDN Contact" screen for a new contact -->
   <!-- "Edit FDN Contact" screen: status message displayed in a popup (toast) -->
   <!-- "Edit FDN Contact" screen: status message displayed in a popup (toast) -->

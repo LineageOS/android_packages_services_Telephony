@@ -18,12 +18,17 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
   <string name="incall_screen_settings">Axustes de pantalla na llamada</string>
+  <string name="show_ssn_label">Avisu d\'eventos</string>
   <string name="show_ssn_summary">Amuesa un avisu pa dellos eventos de rede venceyaos col remanamientu de llamaes</string>
   <!-- Toasts for various transient network events -->
   <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">Esvíu incondicional de llamada activu</string>
   <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">Esvíu condicional de llamada activu</string>
   <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">Reunviu de llamada saliente</string>
   <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">Llamada de grupu zarráu</string>
   <!-- In-call screen: status label when MO calls are barred -->
   <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
   <!-- Toast text for MO calls when CLIR Suppression is rejected -->

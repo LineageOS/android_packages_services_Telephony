@@ -115,7 +115,9 @@
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">SIM service provider unlock successful.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM corporate unlock successful.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM unlock successful.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">RUIM network 1 unlock successful.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
@@ -123,6 +125,7 @@
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD unlock successful.</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM service provider unlock successful.</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM corporate unlock successful.</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
