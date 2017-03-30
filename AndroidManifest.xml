@@ -61,7 +61,7 @@
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_REDIRECTED" />
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_REQUEST_NETWORK_FAILED" />
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_PCO_VALUE" />
-    <protected-broadcast android:name= "android.intent.action.VOICEMAIL_SMS_RECEIVED" />
+    <protected-broadcast android:name= "com.android.internal.provider.action.VOICEMAIL_SMS_RECEIVED" />
     <protected-broadcast android:name= "com.android.intent.isim_refresh" />
     <protected-broadcast android:name= "com.android.ims.IMS_SERVICE_UP" />
     <protected-broadcast android:name= "com.android.ims.IMS_SERVICE_DOWN" />
@@ -610,7 +610,7 @@
             android:exported="false"
             androidprv:systemUserOnly="true">
             <intent-filter>
-                <action android:name="android.intent.action.VOICEMAIL_SMS_RECEIVED"/>
+                <action android:name="com.android.internal.provider.action.VOICEMAIL_SMS_RECEIVED"/>
             </intent-filter>
         </receiver>
         <receiver
