@@ -1710,20 +1710,24 @@ abstract class TelephonyConnection extends Connection {
                 .getInstance(getPhone().getContext());
         boolean isConferencingSupported = telecomAccountRegistry
                 .isMergeCallSupported(phoneAccountHandle);
+        boolean isImsConferencingSupported = telecomAccountRegistry
+                .isMergeImsCallSupported(phoneAccountHandle);
         mIsCarrierVideoConferencingSupported = telecomAccountRegistry
                 .isVideoConferencingSupported(phoneAccountHandle);
         boolean isMergeOfWifiCallsAllowedWhenVoWifiOff = telecomAccountRegistry
                 .isMergeOfWifiCallsAllowedWhenVoWifiOff(phoneAccountHandle);
 
-        Log.v(this, "refreshConferenceSupported : isConfSupp=%b, isVidConfSupp=%b, " +
-                "isMergeOfWifiAllowed=%b, isWifi=%b, isVoWifiEnabled=%b", isConferencingSupported,
+        Log.v(this, "refreshConferenceSupported : isConfSupp=%b, isImsConfSupp=%b, " +
+                "isVidConfSupp=%b, isMergeOfWifiAllowed=%b, " +
+                "isWifi=%b, isVoWifiEnabled=%b",
+                isConferencingSupported, isImsConferencingSupported,
                 mIsCarrierVideoConferencingSupported, isMergeOfWifiCallsAllowedWhenVoWifiOff,
                 isWifi(), isVoWifiEnabled);
         boolean isConferenceSupported = true;
         if (mTreatAsEmergencyCall) {
             isConferenceSupported = false;
             Log.d(this, "refreshConferenceSupported = false; emergency call");
-        } else if (!isConferencingSupported) {
+        } else if (!isConferencingSupported || isIms && !isImsConferencingSupported) {
             isConferenceSupported = false;
             Log.d(this, "refreshConferenceSupported = false; carrier doesn't support conf.");
         } else if (isVideoCall && !mIsCarrierVideoConferencingSupported) {
