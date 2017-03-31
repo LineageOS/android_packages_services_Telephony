@@ -46,8 +46,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Үн почтасынын номери жок болуп жатат"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM-картада сакталган үн почтасынын номери жок."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Номер кошуу"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Үн почта жөндөөлөрүн алгачкы колдонуучу гана өзгөртө алат."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM-картаңыз бөгөттөн чыгарылган. Телефонуңуздун кулпусу ачылууда…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM-карта тармагынын кулпусун ачуучу PIN код"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Кулпусун ачуу"</string>
@@ -452,8 +451,7 @@
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Тармакта катталган эмес."</string>
     <!-- no translation found for incall_error_out_of_service (8587993036435080418) -->
     <skip />
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Мобилдик тармак жеткиликтүү эмес. Чалуу үчүн зымсыз тармакка туташыңыз."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Чалуу үчүн, жарактуу номер киргизиңиз."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Чалынбай калды."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Бул жолу чалууну кошуу мүмкүн эмес."</string>

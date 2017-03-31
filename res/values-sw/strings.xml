@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Nambari ya sauti inayokosekana"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Hakuna nambari ya ujumbe wa sauti iliyohifadhiwa katika SIM kadi."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Ongeza nambari"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Mipangilio ya ujumbe wa sauti inaweza kubadilishwa na Mtumiaji wa Msingi Pekee."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Kadi yako ya simu imefunguliwa. Simu yangu inafungua…."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN ya kufungua mtandao wa SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Fungua"</string>
@@ -448,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Ondoka kwenye hali ya kupiga simu za dharura ili upige simu zisizokuwa za dharura."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Haijasajiliwa kwa mitandao"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Mtandao wa simu haupatikani."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Mtandao wa simu za mkononi haupatikani. Unganisha kwenye mtandao pasiwaya ili upige simu."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Ili upige simu, weka nambari sahihi."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Imeshindwa kupiga simu."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Hangout haiwezi kuongezwa kwa wakati huu."</string>

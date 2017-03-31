@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Talhólfsnúmer vantar"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Ekkert talhólfsnúmer er vistað á SIM-kortinu."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Bæta númeri við"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Aðeins aðalnotandinn má breyta talhólfsstillingum."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Opnað var fyrir SIM-kortið. Verið er að opna símann…"</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN-númer SIM-korts til að opna síma"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Taka úr lás"</string>
@@ -448,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Hætta í stillingu fyrir svarhringingu neyðarsímtala til að hringja símtal sem ekki er neyðarsímtal."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Ekki skráð á símkerfi."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Farsímakerfi ekki tiltækt."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Farsímakerfi er ekki tiltækt. Tengstu þráðlausu neti til að hringja."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Sláðu inn gilt númer til að hringja símtal."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Tókst ekki að hringja."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Ekki er hægt að bæta símtali við sem stendur."</string>

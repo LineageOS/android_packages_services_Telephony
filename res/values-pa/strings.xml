@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"ਲੁਪਤ ਵੌਇਸਮੇਲ ਨੰਬਰ"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM ਕਾਰਡ ਤੇ ਕੋਈ ਵੌਇਸਮੇਲ ਨੰਬਰ ਸਟੋਰ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਹੈ।"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"ਨੰਬਰ ਜੋੜੋ"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"ਵੌਇਸਮੇਲ ਸੈਟਿੰਗਾਂ ਸਿਰਫ਼ ਪ੍ਰਾਇਮਰੀ ਵਰਤੋਂਕਾਰ ਦੁਆਰਾ ਹੀ ਸੰਸ਼ੋਧਿਤ ਕੀਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ।"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"ਤੁਹਾਡਾ SIM ਕਾਰਡ ਅਨਬਲੌਕ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਤੁਹਾਡਾ ਫੋਨ ਅਨੌਲਕ ਹੋ ਰਿਹਾ ਹੈ..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM ਨੈਟਵਰਕ ਅਨਲੌਕ PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ਅਨਲੌਕ ਕਰੋ"</string>
@@ -54,8 +53,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"ਨੈਟਵਰਕ ਅਨਲੌਕ ਦੀ ਬੇਨਤੀ ਕਰ ਰਿਹਾ ਹੈ…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"ਨੈਟਵਰਕ ਅਨਲੌਕ ਬੇਨਤੀ ਅਸਫਲ।"</string>
     <string name="unlock_success" msgid="6770085622238180152">"ਨੈਟਵਰਕ ਅਨਲੌਕ ਸਫਲ।"</string>
-    <!-- no translation found for mobile_network_settings_not_available (7355254462995117896) -->
-    <skip />
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"ਇਸ ਵਰਤੋਂਕਾਰ ਲਈ ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਸੈਟਿੰਗਾਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM ਕਾਲ ਸੈਟਿੰਗਾਂ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
@@ -449,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"ਇੱਕ ਗ਼ੈਰ-ਅਪਾਤਕਾਲ ਕਾਲ ਕਰਨ ਲਈ ਅਪਾਤਕਾਲ ਕਾਲਬੈਕ ਮੋਡ ਤੋਂ ਬਾਹਰ ਆਓ।"</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"ਨੈਟਵਰਕ ਤੇ ਰਜਿਸਟਰ ਨਹੀਂ ਕੀਤਾ।"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"ਮੋਬਾਈਲ ਨੈਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ।"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਕਾਲ ਕਰਨ ਲਈ ਕਿਸੇ ਵਾਇਰਲੈੱਸ ਨੈੱਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ, ਇੱਕ ਪ੍ਰਮਾਣਿਕ ਨੰਬਰ ਦਰਜ ਕਰੋ।"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"ਕਾਲ ਕਰਨਾ ਅਸਫਲ ਰਿਹਾ।"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"ਇਸ ਵੇਲੇ ਕਾਲ ਸ਼ਾਮਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ।"</string>

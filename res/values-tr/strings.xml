@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Eksik sesli mesaj numarası"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM kartta depolanan sesli mesaj numarası yok."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Numara ekle"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Sesli Mesaj Ayarları yalnızca Birincil Kullanıcı tarafından değiştirilebilir."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM kartınızın engellemesi kaldırıldı. Telefonunuzun kilidi açılıyor..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM ağı kilit açma PIN kodu"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Kilit Aç"</string>
@@ -448,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Acil durum çağrısı dışında bir çağrı yapmak için acil durumda geri aranma modundan çıkın."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Ağda kayıtlı değil."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Mobil ağ kullanılamıyor."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Mobil ağ kullanılamıyor. Telefon etmek için kablosuz ağa bağlanın."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Arama yapmak için geçerli bir numara girin."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Sesli arama başarısız oldu."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Çağrı şu anda eklenemiyor."</string>
