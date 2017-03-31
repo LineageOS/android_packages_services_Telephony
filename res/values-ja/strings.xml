@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"ボイスメール番号がありません"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIMカードにボイスメールの番号がありません。"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"番号を追加"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"ボイスメール設定を変更できるのはメインユーザーのみに限られています。"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIMカードロックを解除しました。端末のロックを解除しています..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIMネットワークのロック解除PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ロック解除"</string>
@@ -448,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"緊急通報以外の通話を発信するには、緊急通報待機モードを終了してください。"</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"ご加入の通信サービスがありません"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"モバイルネットワークが利用できません。"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"モバイル ネットワークを利用できません。電話をかけるにはワイヤレス ネットワークに接続してください。"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"発信するには、有効な番号を入力してください。"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"発信できませんでした。"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"現在、通話を追加できません。"</string>

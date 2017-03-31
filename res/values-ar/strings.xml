@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"رقم البريد الصوتي مفقود"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"‏لم يتم تخزين رقم بريد صوتي على شريحة SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"إضافة رقم"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"يمكن تعديل إعدادات البريد الصوتي عن طريق المستخدم الأساسي فقط."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"‏تم إلغاء حظر شريحة SIM. جارٍ إلغاء تأمين الهاتف..."</string>
     <string name="label_ndp" msgid="780479633159517250">"‏رمز PIN لإلغاء تأمين شبكة SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"إلغاء تأمين"</string>
@@ -448,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"ينبغي الخروج من وضع معاودة الاتصال بالطوارئ لإجراء مكالمة غير طارئة."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"غير مسجل على الشبكة."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"شبكة الجوال غير متاحة."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"شبكة الجوّال ليست متوفرة. اتصل بشبكة لاسلكية لإجراء مكالمة."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"لإجراء مكالمة، أدخل رقمًا صالحًا."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"أخفقت المكالمة."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"لا يمكن إضافة مكالمة في الوقت الحالي."</string>
@@ -486,7 +484,7 @@
     <string name="importingSimContacts" msgid="7374056215462575769">"‏استيراد جهات اتصال شريحة SIM"</string>
     <string name="importToFDNfromContacts" msgid="2130620207013368580">"استيراد من جهات الاتصال"</string>
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"تم استيراد جهة اتصال"</string>
-    <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"أخفق استيراد جهة اتصال"</string>
+    <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"تعذّر استيراد جهة اتصال"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"أدوات السمع المساعدة"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"تشغيل التوافق مع أداة السمع"</string>
   <string-array name="tty_mode_entries">

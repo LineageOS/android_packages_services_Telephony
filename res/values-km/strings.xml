@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"បាត់​​ចំនួន​​សារ​ជា​សំឡេង"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"គ្មាន​ចំនួន​សារ​ជា​សំឡេង​​ត្រូវ​បាន​រក្សា​ទុក​នៅ​លើ​ស៊ី​ម​កាត​ទេ​។"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"បន្ថែម​លេខ"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"មាន​តែ​អ្នក​ប្រើប្រាស់​ចម្បង​ទើប​អាច​កែប្រែ​ការ​កំណត់​សារ​ជា​សំឡេង​បាន។"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"បាន​ដោះ​សោ​ស៊ីមកាត​របស់​អ្នក។ ទូរស័ព្ទ​របស់​អ្នក​កំពុង​ដោះ​សោ…"</string>
     <string name="label_ndp" msgid="780479633159517250">"ដោះ​សោ​​កូដ PIN បណ្ដាញ​ស៊ីមកាត"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ដោះ​សោ"</string>
@@ -448,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"ចាកចេញពីរបៀបហៅទៅវិញពេលមានអាសន្នដើម្បីធ្វើការហៅធម្មតា។"</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"មិន​បាន​ចុះ​ឈ្មោះ​នៅ​លើ​បណ្ដាញ។"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"បណ្ដាញ​​ឧបករណ៍​​ចល័ត​មិន​អាច​ប្រើ​បាន​។"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"មិនមានបណ្តាញទូរសព្ទទេ។ ភ្ជាប់ទៅបណ្តាញឥតខ្សែ ដើម្បី​អាច​ហៅ​ទូរសព្ទ​បាន។"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"ដើម្បីធ្វើការហៅ បញ្ចូលលេខដែលមានសុពលភាព។"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"បាន​បរាជ័យ​ការ​ហៅ។"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"មិន​អាច​បន្ថែម​​​ការ​ហៅ​ទូរសព្ទ​នៅ​ពេល​នេះ​​បាន​ទេ។"</string>
