@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"遺失語音信箱號碼"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM 卡中未儲存語音信箱號碼。"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"新增號碼"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"只有主要使用者可以修改語音信箱設定。"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"您的 SIM 卡已解鎖。正在解鎖手機中…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM 網路解鎖 PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"解除鎖定"</string>
@@ -454,8 +453,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"結束緊急回撥模式，以便撥打非緊急電話。"</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"尚未註冊網路。"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"無法使用 Google 行動服務網路。"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"無法使用行動網路。連上 Wi-Fi 網路即可撥打電話。"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"如要撥打電話，請輸入有效的號碼。"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"無法通話。"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"目前無法新增通話。"</string>

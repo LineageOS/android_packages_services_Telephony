@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"குரலஞ்சல் எண் இல்லை"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"சிம் கார்டில் குரலஞ்சலுக்கான எண் எதுவும் சேமிக்கப்படவில்லை."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"எண்ணைச் சேர்"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"முதன்மை பயனர் மட்டுமே குரலஞ்சல் அமைப்புகளை மாற்ற முடியும்."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"சிம் கார்டின் தடுப்பு நீக்கப்பட்டது. மொபைல் திறக்கப்படுகிறது…"</string>
     <string name="label_ndp" msgid="780479633159517250">"சிம் நெட்வொர்க்கின் தடைநீக்க பின்"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"தடைநீக்கு"</string>
@@ -448,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"வழக்கமான அழைப்பிற்கு, அவசரகாலத் திரும்ப அழைக்கும் பயன்முறையிலிருந்து வெளியேறவும்."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"நெட்வொர்க்கில் பதிவுசெய்யப்படவில்லை."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"மொபைல் நெட்வொர்க் கிடைக்கவில்லை."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"மொபைல் நெட்வொர்க் கிடைக்கவில்லை. அழைக்க, வயர்லெஸ் நெட்வொர்க்குடன் இணைக்கவும்."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"அழைக்க, சரியான எண்ணை உள்ளிடவும்."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"அழைப்பு தோல்வியடைந்தது."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"இப்போது அழைப்பைச் சேர்க்க முடியாது."</string>

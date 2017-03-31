@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"හඬ තැපැල් අංකය නැත"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM කාඩ් පතෙහි හඬ තැපැල් අංකයක් ආචිත වී නැත."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"අංකයක් එක් කරන්න"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"හඬ තැපැල් සැකසීම් මූලික පරිශීලක විසින් පමණක් වෙනස් කිරීමට හැකිය."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"ඔබගේ SIM කාඩ්පත අඟුළු හැර තිබේ. ඔබගේ දුරකතනයේ අඟුළු හරිමින්…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM ජාල අඟුළු හැරීමේ PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"අඟුල අරින්න"</string>
@@ -448,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"හදිසි-නොවන ඇමතුමක් සිදු කිරීමට හදිසි අවස්ථා පසු ඇමතුම් ප්‍රකාරයෙන් ඉවත් වන්න."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"ජාලය මත ලියාපදිංචි වී නැත."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"ජංගම ජාලය නොමැත."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"ජංගම ජාලය ලබා ගැනීමට නොහැකිය. ඇමතුමක් කිරීමට රැහැන් රහිත ජාලයකට සම්බන්ධ කරන්න."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"ඇමතුමක් ලබාගැනීමට, වලංගු අංකයක් ලබාගන්න."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"ඇමතුම අසාර්ථක විය."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"ඇමතුම මේ අවස්ථාවේදී එක් කළ නොහැකිය."</string>

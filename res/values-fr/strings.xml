@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Numéro de messagerie vocale manquant"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Aucun numéro de messagerie vocale n\'est enregistré sur la carte SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Ajouter un numéro"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Seul l\'utilisateur principal de la messagerie vocale peut en modifier les paramètres."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Votre carte SIM a été déverrouillée. Votre téléphone est en cours de déverrouillage..."</string>
     <string name="label_ndp" msgid="780479633159517250">"Code PIN de déblocage du réseau SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Déverrouiller"</string>
@@ -448,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Veuillez quitter le mode de rappel d\'urgence pour passer un appel standard."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Non enregistré sur le réseau."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Réseau mobile non disponible"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Le réseau mobile n\'est pas disponible. Connectez-vous à un réseau sans fil pour passer un appel."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Pour émettre un appel, veuillez saisir un numéro valide."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Échec de l\'appel."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Impossible d\'ajouter un appel pour le moment."</string>

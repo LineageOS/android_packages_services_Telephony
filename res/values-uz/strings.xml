@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Ovozli pochta raqami ko‘rsatilmagan"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM kartada birorta ham ovozli pochta raqami yo‘q."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Raqam qo‘shish"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Ovozli pochta sozlamalarini faqat bosh foydalanuvchi o‘zgartira oladi."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"To‘sib qo‘yilgan SIM kartangiz ochildi. Telefoningiz qulfdan chiqarilmoqda…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM kartani tarmoqdagi qulfidan chiqarish PIN kodi"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Qulfdan chiqarish"</string>
@@ -448,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Odatiy qo‘ng‘iroq qilish uchun favqulodda qayta qo‘ng‘iroq rejimidan chiqing."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Tarmoqda ro‘yxatdan o‘tmagan."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Uyali tarmoq mavjud emas."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Mobil tarmoqdan foydalanib bo‘lmaydi. Qo‘ng‘iroq qilish uchun Wi-Fi tarmog‘iga ulaning."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Qo‘ng‘iroq qilish uchun raqamni to‘g‘ri kiriting."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Qo‘ng‘iroq amalga oshmadi."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Hozirgi vaqtda qo‘ng‘iroq qo‘shib bo‘lmaydi."</string>

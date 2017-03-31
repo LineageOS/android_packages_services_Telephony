@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"음성사서함 번호 없음"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM 카드에 저장된 음성사서함 번호가 없습니다."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"번호 추가"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"기본 사용자만 음성사서함 설정을 변경할 수 있습니다."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM 카드의 잠금이 해제되었습니다. 휴대전화의 잠금해제 중..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM 네트워크 잠금해제 PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"잠금해제"</string>
@@ -448,8 +447,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"일반 전화를 걸려면 긴급 콜백 모드를 해제하세요."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"네트워크에서 등록되지 않았습니다."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"모바일 네트워크를 사용할 수 없습니다."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"모바일 네트워크를 사용할 수 없습니다. 전화를 걸려면 무선 네트워크에 연결하세요."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"전화를 걸려면 올바른 번호를 입력하세요."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"전화 연결 실패"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"현재 통화를 추가할 수 없습니다."</string>
