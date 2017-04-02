@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Të dhëna celulare"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Të dhëna celulare"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Shërbimet e telefonit"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Formuesi i numrit të urgjencës"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefoni"</string>
@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Mungon numri i postës zanore"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Nuk ka numër të ruajtur në kartën SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Shto numër"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Cilësimet e postës zanore mund të modifikohen vetëm nga \"Përdoruesi kryesor\""</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Karta jote SIM u zhbllokua. Telefoni yt po shkyçet..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN-i i shkyçjes së rrjetit të kartës SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Shkyçe"</string>
@@ -52,7 +53,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"Po kërkon shkyçjen e rrjetit…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"Kërkesa për shkyçjen e rrjetit ishte e pasuksesshme."</string>
     <string name="unlock_success" msgid="6770085622238180152">"Shkyçja e rrjetit ishte e suksesshme."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Cilësimet e rrjetit celular nuk mundësohen për këtë përdorues"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"Cilësimet e rrjetit celular nuk ofrohen për këtë përdorues"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Cilësimet e telefonatës GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Cilësimet e telefonatës GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"Cilësimet e telefonatës CDMA"</string>
@@ -63,6 +64,7 @@
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Kryej telefonata me"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"Kryej telefonata SIP me"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"Pyet në fillim"</string>
+    <string name="phone_accounts_default_account_label" msgid="4183772241814460014">"Nuk ka rrjet të arritshëm"</string>
     <string name="phone_accounts_settings_header" msgid="4141710640883261094">"Cilësimet"</string>
     <string name="phone_accounts_choose_accounts" msgid="5232948804226424002">"Zgjidh llogaritë"</string>
     <string name="phone_accounts_selection_header" msgid="1365215726106915865">"Llogari telefoni"</string>
@@ -114,7 +116,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"Kur është e paarritshme"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Numri, nëse linja është e paarritshme"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Transferim te <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"Çaktivizuar"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Çaktivizuar"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Operatori yt nuk mbështet çaktivizimin e transferimit të telefonatës kur telefoni është i paarritshëm."</string>
     <string name="updating_title" msgid="6146755386174019046">"Cilësimet e telefonatës"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Cilësimet e telefonatës mund të ndryshohen vetëm nga administratori."</string>
@@ -146,7 +148,17 @@
     <string name="no_change" msgid="3186040086622435212">"Nuk u bë asnjë ndryshim."</string>
     <string name="sum_voicemail_choose_provider" msgid="59911196126278922">"Zgjidh shërbimin e postës zanore"</string>
     <string name="voicemail_default" msgid="2001233554889016880">"Operatori yt"</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"Cilësimet e rrjetit celular"</string>
+    <string name="vm_change_pin_old_pin" msgid="7295220109886682573">"Kodi PIN i vjetër"</string>
+    <string name="vm_change_pin_new_pin" msgid="5412922262839438097">"Kodi PIN i ri"</string>
+    <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"Prit..."</string>
+    <string name="vm_change_pin_error_too_short" msgid="5974971097302710497">"Kodi i ri PIN është shumë i shkurtër."</string>
+    <string name="vm_change_pin_error_too_long" msgid="8476870806115051865">"Kodi i ri PIN është shumë i gjatë."</string>
+    <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"Kodi i ri PIN është shumë i dobët. Një fjalëkalim i fortë nuk duhet të ketë rend të vazhdueshëm ose shifra të përsëritura."</string>
+    <string name="vm_change_pin_error_mismatch" msgid="2754685537970757317">"Kodi PIN i vjetër nuk përputhet."</string>
+    <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"Kodi PIN i ri përmban karaktere të pavlefshme."</string>
+    <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Kodi PIN nuk u ndryshua."</string>
+    <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Lloj mesazhi i pambështetur, telefono <xliff:g id="NUMBER">%s</xliff:g> për ta dëgjuar."</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"Cilësimet e rrjetit celular"</string>
     <string name="label_available" msgid="1181658289009300430">"Rrjete të arritshme"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Po kërkon..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Nuk u gjetën rrjete."</string>
@@ -197,9 +209,11 @@
     <item msgid="3817924849415716259">"GSM/WCDMA i preferuar"</item>
   </string-array>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Modaliteti i përparuar 4G LTE"</string>
+    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Telefonatë e avancuar"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Përdor shërbimet LTE për të përmirësuar komunikimet zanore dhe të tjera (rekomandohet)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Të dhënat janë të aktivizuara"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Lejo përdorimin e të dhënave"</string>
+    <string name="dialog_alert_title" msgid="6751344986194435476">"Kujdes!"</string>
     <string name="roaming" msgid="8871412572928323707">"Të dhënat e roaming-ut"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Lidhu me shërbimet e të dhënave kur je në roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Lidhu me shërbimin e të dhënave kur je në roaming"</string>
@@ -218,7 +232,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"U kapërcye maksimumi i <xliff:g id="USED_0">%1$s</xliff:g>\nShpejtësia e të dhënave u pakësua deri në <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"Ka kaluar <xliff:g id="USED_0">%1$d</xliff:g>٪ të ciklit\nPeriudha tjetër fillon për <xliff:g id="USED_1">%2$d</xliff:g> ditë (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Shpejtësia e të dhënave pakësohet në <xliff:g id="USED">%1$d</xliff:g> Kb/s nëse tejkalohet kufiri i përdorimit të të dhënave"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"Më shumë informacion rreth politikës së përdorimit të të dhënave të rrjetit celular të operatorit tënd"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Më shumë informacion rreth politikës së përdorimit të të dhënave të rrjetit celular të operatorit tënd"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"SMS-ja e \"Transmetimit celular\""</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"SMS-ja e transmetimit celular"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"SMS-ja e \"Transmetimit celular\" është e aktivizuar"</string>
@@ -355,6 +369,7 @@
     <string name="menu_add" msgid="1882023737425114762">"Shto kontakt"</string>
     <string name="menu_edit" msgid="7143003705504672374">"Redakto kontaktin"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Fshi kontaktin"</string>
+    <string name="menu_dial" msgid="3223106222819685808">"Telefono kontaktin"</string>
     <string name="get_pin2" msgid="8204677063922225311">"Shkruaj PIN2-shin"</string>
     <string name="name" msgid="7329028332786872378">"Emri"</string>
     <string name="number" msgid="7905950798349903858">"Numri"</string>
@@ -369,7 +384,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Po fshin numrin me telefonim të përzgjedhur..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Numri me telefonim të përzgjedhur u fshi."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN-ja nuk u përditësua sepse shkrove një PIN të pasaktë."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"FDN-ja nuk ishte i përditësuar sepse numri nuk mund të kalojë 20 shifra."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"Funksioni FDN nuk u përditësua sepse numri është bosh ose i kalon 20 shifra."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN-ja nuk u përditësua. PIN2-shi ishte i pasaktë ose numri i telefonit u refuzua."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operacioni FDN dështoi"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Po lexon nga karta SIM..."</string>
@@ -426,15 +441,16 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Numri i postës zanore është i panjohur"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Nuk ka shërbim"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Rrjeti i përzgjedhur (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) nuk mundësohet"</string>
-    <string name="incall_error_power_off" msgid="2947938060513306698">"Çaktivizo modalitetin e aeroplanit për të bërë telefonata."</string>
+    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Çaktivizo modalitetin e aeroplanit ose modalitetin e kursyesit të baterisë për të bërë një telefonatë."</string>
+    <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Çaktivizo modalitetin e aeroplanit për të bërë telefonata."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Çaktivizo modalitetin e aeroplanit ose lidhu me ndonjë rrjet interneti valor për të bërë telefonata."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Dil nga modaliteti i kthimit të telefonatës së urgjencës për të bërë një telefonatë jo urgjente."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"I paregjistruar në rrjet."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"Rrjeti celular nuk mundësohet."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"Rrjeti celular nuk mundësohet. Lidhu me një rrjet me valë për të bërë një telefonatë."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"Rrjeti celular nuk mundësohet."</string>
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Rrjeti celular nuk ofrohet. Lidhu me një rrjet pa tel për të bërë një telefonatë."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Për të kryer një telefonatë, fut një numër të vlefshëm."</string>
-    <string name="incall_error_call_failed" msgid="6302746943230078197">"Nuk mund të telefonojë."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"Po fillon sekuencën MMI…"</string>
+    <string name="incall_error_call_failed" msgid="5891978320269774095">"Thirrja dështoi."</string>
+    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Telefonata nuk mund të shtohet këtë herë."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Shërbimi nuk mbështetet"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Nuk mund të ndryshojë telefonatat."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nuk mund të ndajë telefonatën."</string>
@@ -442,10 +458,13 @@
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Nuk mund të kryejë telefonatë konference."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Nuk mund të refuzojë telefonatën."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Nuk mund të lëshojë telefonatën(at)."</string>
+    <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Telefonatat nuk mund të mbahen në pritje."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Lidhu me një rrjet me valë për të bërë një telefonatë."</string>
+    <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktivizo telefonatat nëpërmjet rrjetit Wi-Fi për të bërë një telefonatë."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Telefonata e urgjencës"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Po aktivizon radion…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Nuk ka shërbim. Po provon sërish…"</string>
+    <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Nuk mund të hysh në modalitetin e aeroplanit gjatë telefonatave të urgjencës."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Nuk mund të telefonohet. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> nuk është numër urgjence."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Nuk mund të telefonohet. Formo një numër urgjence."</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Përdor tastierën për të formuar numrin"</string>
@@ -536,6 +555,8 @@
     <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Dridhja"</string>
     <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Dridhja"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Posta zanore vizuale"</string>
+    <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Konfiguro kodin PIN"</string>
+    <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Ndrysho kodin PIN"</string>
     <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Tingulli"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Me zile dhe me dridhje"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Kartat e integruara SIM"</string>
@@ -547,9 +568,24 @@
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"Vetëm telefonata urgjence"</string>
     <string name="sim_description_default" msgid="4778679519938775515">"Karta SIM, foleja: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Qasshmëria"</string>
-    <string name="status_hint_label_incoming_wifi_call" msgid="8772915926382037499">"Telefonatë hyrëse Wi-Fi"</string>
+    <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"Telefonatë Wi-Fi nga"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Telefonatë me Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="5841511849007540970">"Prek sërish për ta hapur"</string>
+    <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Trokit përsëri për ta hapur"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"Ndodhi një gabim gjatë dekodimit të mesazhit."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Një kartë SIM ka aktivizuar shërbimin tënd dhe ka përditësuar aftësitë e roaming-ut të telefonit tënd."</string>
+    <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Ka shumë thirrje aktive. Përfundo ose të bashko thirrjet ekzistuese para kryerjes së një thirrjeje të re."</string>
+    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Nuk mund të lidhet. Fut një kartë SIM të vlefshme."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Lidhja Wi-Fi ka humbur. Telefonata u mbyll."</string>
+    <string name="change_pin_title" msgid="7790232089699034029">"Ndrysho kodin PIN të postës zanore"</string>
+    <string name="change_pin_continue_label" msgid="2135088662420163447">"Vazhdo"</string>
+    <string name="change_pin_cancel_label" msgid="353535488390948596">"Anulo"</string>
+    <string name="change_pin_ok_label" msgid="6204308560844889926">"Në rregull"</string>
+    <string name="change_pin_enter_old_pin_header" msgid="419179847657548887">"Konfirmo kodin PIN të vjetër"</string>
+    <string name="change_pin_enter_old_pin_hint" msgid="8579171678763615453">"Shkruaj kodin PIN të postës zanore për të vazhduar."</string>
+    <string name="change_pin_enter_new_pin_header" msgid="2611191814590251532">"Cakto një kod të ri PIN."</string>
+    <string name="change_pin_enter_new_pin_hint" msgid="2322940054329689309">"Kodi PIN duhet të ketë <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> shifra."</string>
+    <string name="change_pin_confirm_pin_header" msgid="8113764019347322170">"Konfirmo kodin tënd PIN"</string>
+    <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"Kodet PIN nuk përputhen"</string>
+    <string name="change_pin_succeeded" msgid="2022852286442211151">"Kodi PIN i postës zanore u përditësua"</string>
+    <string name="change_pin_system_error" msgid="8308462387154257840">"Kodi PIN nuk u caktua"</string>
 </resources>

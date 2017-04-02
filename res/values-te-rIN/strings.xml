@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"సెల్యులార్ డేటా"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"మొబైల్ డేటా"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"ఫోన్ సేవలు"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"అత్యవసర డయలర్"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"ఫోన్"</string>
@@ -45,6 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"వాయిస్ మెయిల్ నంబర్ లేదు"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"సిమ్ కార్డులో వాయిస్ మెయిల్ నంబర్ ఏదీ నిల్వ చేయబడలేదు."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"నంబర్‌ను జోడించు"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"వాయిస్ మెయిల్ సెట్టింగ్‌లను ప్రాథమిక వినియోగదారు మాత్రమే సవరించగలరు."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"మీ SIM కార్డు అన్‌బ్లాక్ చేయబడింది. మీ ఫోన్ అన్‌లాక్ చేయబడుతోంది…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM నెట్‌వర్క్ అన్‌లాక్ పిన్‌"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"అన్‌లాక్ చేయి"</string>
@@ -52,7 +53,7 @@
     <string name="requesting_unlock" msgid="6412629401033249351">"నెట్‌వర్క్ అన్‌లాక్‌ను అభ్యర్థిస్తోంది…"</string>
     <string name="unlock_failed" msgid="6490531697031504225">"నెట్‌వర్క్ అన్‌లాక్ అభ్యర్థన విఫలమైంది."</string>
     <string name="unlock_success" msgid="6770085622238180152">"నెట్‌వర్క్ అన్‌లాక్ విజయవంతమైంది."</string>
-    <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"ఈ వినియోగదారుకి సెల్యులార్ నెట్‌వర్క్ సెట్టింగ్‌లు అందుబాటులో లేవు"</string>
+    <string name="mobile_network_settings_not_available" msgid="7355254462995117896">"ఈ వినియోగదారుకు మొబైల్ నెట్‌వర్క్ సెట్టింగ్‌లు అందుబాటులో లేవు"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM కాల్ సెట్టింగ్‌లు"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM కాల్ సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA కాల్ సెట్టింగ్‌లు"</string>
@@ -63,6 +64,7 @@
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"దీనితో కాల్‌లు చేయి"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"దీనితో SIP కాల్‌లను చేయి"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"ముందుగానే అడుగు"</string>
+    <string name="phone_accounts_default_account_label" msgid="4183772241814460014">"నెట్‌వర్క్ ఏదీ అందుబాటులో లేదు"</string>
     <string name="phone_accounts_settings_header" msgid="4141710640883261094">"సెట్టింగ్‌లు"</string>
     <string name="phone_accounts_choose_accounts" msgid="5232948804226424002">"ఖాతాలను ఎంచుకోండి"</string>
     <string name="phone_accounts_selection_header" msgid="1365215726106915865">"ఫోన్ ఖాతాలు"</string>
@@ -114,7 +116,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"చేరుకోలేనప్పుడు"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"చేరుకోవడం సాధ్యపడనప్పుడు నంబర్"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వార్డ్ చేస్తోంది"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"నిలిపివేయబడింది"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"ఆఫ్‌లో ఉంది"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"మీ ఫోన్‌ను చేరుకోవడం సాధ్యపడనప్పుడు కాల్ ఫార్వర్డింగ్‌ను నిలిపివేయడానికి మీ క్యారియర్ మద్దతు ఇవ్వదు."</string>
     <string name="updating_title" msgid="6146755386174019046">"కాల్ సెట్టింగ్‌లు"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"కాల్ సెట్టింగ్‌లను నిర్వాహక వినియోగదారు మాత్రమే మార్చగలరు."</string>
@@ -146,7 +148,17 @@
     <string name="no_change" msgid="3186040086622435212">"మార్పులు ఏవీ చేయబడలేదు."</string>
     <string name="sum_voicemail_choose_provider" msgid="59911196126278922">"వాయిస్ మెయిల్ సేవను ఎంచుకోండి"</string>
     <string name="voicemail_default" msgid="2001233554889016880">"మీ క్యారియర్"</string>
-    <string name="mobile_networks" msgid="2843854043339307375">"సెల్యులార్ నెట్‌వర్క్ సెట్టింగ్‌లు"</string>
+    <string name="vm_change_pin_old_pin" msgid="7295220109886682573">"పాత PIN"</string>
+    <string name="vm_change_pin_new_pin" msgid="5412922262839438097">"కొత్త PIN"</string>
+    <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"దయచేసి వేచి ఉండండి."</string>
+    <string name="vm_change_pin_error_too_short" msgid="5974971097302710497">"కొత్త PIN చాలా చిన్నదిగా ఉంది."</string>
+    <string name="vm_change_pin_error_too_long" msgid="8476870806115051865">"కొత్త PIN చాలా పొడవు ఉంది."</string>
+    <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"కొత్త PIN చాలా బలహీనంగా ఉంది. శక్తివంతమైన పాస్‌వర్డ్‌లో వరుస శ్రేణిలో అక్షరాలు/అంకెలు లేదా పునరావృత అంకెలు ఉండకూడదు."</string>
+    <string name="vm_change_pin_error_mismatch" msgid="2754685537970757317">"పాత PIN సరిపోలలేదు."</string>
+    <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"కొత్త PIN చెల్లని అక్షరాలను కలిగి ఉంది."</string>
+    <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"PINని మార్చడం సాధ్యపడలేదు"</string>
+    <string name="vvm_unsupported_message_format" msgid="11795090778411977">"మద్దతులేని సందేశ రకం, వినడానికి <xliff:g id="NUMBER">%s</xliff:g>కి కాల్ చేయండి."</string>
+    <string name="mobile_networks" msgid="5540397602919106177">"మొబైల్ నెట్‌వర్క్ సెట్టింగ్‌లు"</string>
     <string name="label_available" msgid="1181658289009300430">"అందుబాటులో ఉన్న నెట్‌వర్క్‌లు"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"శోధిస్తోంది..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"నెట్‌వర్క్‌లు కనుగొనబడలేదు."</string>
@@ -197,9 +209,11 @@
     <item msgid="3817924849415716259">"GSM/WCDMAకు ప్రాధాన్యత"</item>
   </string-array>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"మెరుగుపరిచిన 4G LTE మోడ్"</string>
+    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"అధునాతన కాలింగ్"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"వాయిస్, ఇతర కమ్యూనికే. మెరుగుపరచడానికి LTE సేవలను ఉపయోగించు (సిఫార్సు చేయబడింది)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"డేటా ప్రారంభించబడింది"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"డేటా వినియోగాన్ని అనుమతించు"</string>
+    <string name="dialog_alert_title" msgid="6751344986194435476">"హెచ్చరిక"</string>
     <string name="roaming" msgid="8871412572928323707">"డేటా రోమింగ్"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
@@ -218,7 +232,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> గరిష్ట పరిమితి మించిపోయింది\nడేటా రేట్ <xliff:g id="USED_1">%2$d</xliff:g> Kb/sకి తగ్గించబడింది"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"సైకిల్‌లో <xliff:g id="USED_0">%1$d</xliff:g>٪ గడిచిపోయింది\nతదుపరి వ్యవధి <xliff:g id="USED_1">%2$d</xliff:g> రోజుల్లో (<xliff:g id="USED_2">%3$s</xliff:g>) ప్రారంభమవుతుంది"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"డేటా వినియోగ పరిమితి మించిపోయినప్పుడు డేటా రేట్ <xliff:g id="USED">%1$d</xliff:g> Kb/sకి తగ్గించబడుతుంది"</string>
-    <string name="throttle_help_subtext" msgid="3633091498168446044">"మీ క్యారియర్ యొక్క సెల్యులార్ నెట్‌వర్క్ డేటా వినియోగ విధానం గురించి మరింత సమాచారం"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"మీ క్యారియర్ యొక్క మొబైల్ నెట్‌వర్క్ డేటా వినియోగ విధానం గురించి మరింత సమాచారం"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"సెల్ ప్రసార SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"సెల్ ప్రసార SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"సెల్ ప్రసార SMS ప్రారంభించబడింది"</string>
@@ -355,6 +369,7 @@
     <string name="menu_add" msgid="1882023737425114762">"పరిచయాన్ని జోడించు"</string>
     <string name="menu_edit" msgid="7143003705504672374">"పరిచయాన్ని సవరించు"</string>
     <string name="menu_delete" msgid="3977150783449642851">"పరిచయాన్ని తొలగించు"</string>
+    <string name="menu_dial" msgid="3223106222819685808">"పరిచయానికి డయల్ చేయి"</string>
     <string name="get_pin2" msgid="8204677063922225311">"PIN2ని టైప్ చేయండి"</string>
     <string name="name" msgid="7329028332786872378">"పేరు"</string>
     <string name="number" msgid="7905950798349903858">"నంబర్"</string>
@@ -369,7 +384,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ను తొలగిస్తోంది..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ఫిక్స్‌డ్ డయలింగ్ నంబర్ తొలగించబడింది."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"మీరు చెల్లని PINను టైప్ చేసినందున FDN నవీకరించబడలేదు."</string>
-    <string name="fdn_invalid_number" msgid="1494755047900009147">"నంబర్ 20 అంకెలను మించి లేనందున FDN నవీకరించబడలేదు."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"నంబర్ ఖాళీగా వదలిపెట్టినందున లేదా 20 అంకెలను మించినందున FDN నవీకరించబడలేదు."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN నవీకరించబడలేదు. PIN2 చెల్లదు లేదా ఫోన్ నంబర్ తిరస్కరించబడింది."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN చర్య విఫలమైంది."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM కార్డు నుండి చదువుతోంది…"</string>
@@ -426,15 +441,16 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"వాయిస్ మెయిల్ నంబర్ తెలియదు"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"సేవ లేదు"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"ఎంచుకున్న నెట్‌వర్క్ (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) అందుబాటులో లేదు"</string>
-    <string name="incall_error_power_off" msgid="2947938060513306698">"కాల్ చేయడానికి ఎయిర్‌ప్లైన్ మోడ్‌ను ఆఫ్ చేయండి."</string>
+    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"కాల్ చేయడానికి ఎయిర్‌ప్లైన్ మోడ్ లేదా బ్యాటరీ సేవర్ మోడ్‌ను ఆఫ్ చేయండి."</string>
+    <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"కాల్ చేయడానికి ఎయిర్‌ప్లైన్ మోడ్‌ను ఆఫ్ చేయండి."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"కాల్ చేయడానికి ఎయిర్‌ప్లైన్ మోడ్‌ను ఆఫ్ చేయండి లేదా వైర్‌లెస్ నెట్‌వర్క్‌కు కనెక్ట్ చేయండి."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"సాధారణ కాల్ చేయడానికి అత్యవసర కాల్‌బ్యాక్ మోడ్ నుండి నిష్క్రమించండి."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"నెట్‌వర్క్‌లో నమోదు కాలేదు."</string>
-    <string name="incall_error_out_of_service" msgid="4100065333878929223">"సెల్యులార్ నెట్‌వర్క్ అందుబాటులో లేదు."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"సెల్యులార్ నెట్‌వర్క్ అందుబాటులో లేదు. కాల్ చేయడానికి వైర్‌లెస్ నెట్‌వర్క్‌కి కనెక్ట్ చేయండి."</string>
+    <string name="incall_error_out_of_service" msgid="8587993036435080418">"మొబైల్ నెట్‌వర్క్ అందుబాటులో లేదు."</string>
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"మొబైల్ నెట్‌వర్క్ అందుబాటులో లేదు. కాల్ చేయడానికి వైర్‌లెస్ నెట్‌వర్క్‌కు కనెక్ట్ చేయండి."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"కాల్ చేయడానికి, చెల్లుబాటు అయ్యే నంబర్‌ను నమోదు చేయండి."</string>
-    <string name="incall_error_call_failed" msgid="6302746943230078197">"కాల్ చేయలేరు."</string>
-    <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"MMI శ్రేణిని ప్రారంభిస్తోంది…"</string>
+    <string name="incall_error_call_failed" msgid="5891978320269774095">"కాల్ విఫలమైంది."</string>
+    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"ఈ సమయంలో కాల్‌ను జోడించడం సాధ్యపడదు."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"సేవకు మద్దతు లేదు"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"కాల్‌లను మార్చలేరు."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"కాల్‌ను వేరు చేయలేరు."</string>
@@ -442,10 +458,13 @@
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"కాన్ఫరెన్స్ కాల్‌లు చేయడం సాధ్యపడలేదు."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"కాల్‌ను తిరస్కరించలేరు."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"కాల్(ల)ను విడిచిపెట్టలేరు."</string>
+    <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"కాల్‌లను హోల్డ్ చేయలేరు."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"కాల్ చేయడానికి వైర్‌లెస్ నెట్‌వర్క్‌కు కనెక్ట్ చేయండి."</string>
+    <string name="incall_error_promote_wfc" msgid="106510757624022064">"కాల్‌ను చేయడానికి Wi-Fi కాలింగ్‌ను ప్రారంభించండి."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"అత్యవసర కాల్"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"రేడియోను ప్రారంభిస్తోంది…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"సేవ లేదు. మళ్లీ ప్రయత్నిస్తోంది…"</string>
+    <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"అత్యవసర కాల్‌లో ఉన్నప్పుడు ఎయిర్‌ప్లైన్ మోడ్‌లోకి ప్రవేశించలేరు."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"కాల్ చేయలేరు. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> అత్యవసర నంబర్ కాదు."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"కాల్ చేయలేరు. అత్యవసర నంబర్‌ను డయల్ చేయండి."</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"డయల్ చేయడానికి కీబోర్డ్‌ను ఉపయోగించండి"</string>
@@ -536,6 +555,8 @@
     <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"వైబ్రేట్"</string>
     <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"వైబ్రేట్"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"దృశ్యమాన వాయిస్‌మెయిల్"</string>
+    <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PINని సెట్ చేయండి"</string>
+    <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PINను మార్చు"</string>
     <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"ధ్వని"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"రింగ్‌టోన్ &amp; వైబ్రేట్"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"అంతర్నిర్మిత SIM కార్డులు"</string>
@@ -547,9 +568,24 @@
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"అత్యవసర కాలింగ్ మాత్రమే"</string>
     <string name="sim_description_default" msgid="4778679519938775515">"SIM కార్డ్, స్లాట్: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"ప్రాప్యత సామర్థ్యం"</string>
-    <string name="status_hint_label_incoming_wifi_call" msgid="8772915926382037499">"ఇన్‌కమింగ్ Wi-Fi కాల్"</string>
+    <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"వీరి నుండి Wi-Fi కాల్"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Wi-Fi కాల్"</string>
-    <string name="emergency_action_launch_hint" msgid="5841511849007540970">"తెరవడానికి మళ్లీ తాకండి"</string>
+    <string name="emergency_action_launch_hint" msgid="4906759256275562674">"తెరవడానికి మళ్లీ నొక్కండి"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"సందేశాన్ని డీకోడ్ చేస్తున్నప్పుడు లోపం సంభవించింది."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM కార్డ్ మీ సేవను సక్రియం చేసింది మరియు మీ ఫోన్ రోమింగ్ సామర్థ్యాలను నవీకరించింది."</string>
+    <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"చాలా ఎక్కువ కాల్‌లు సక్రియంగా ఉన్నాయి. దయచేసి మరొక కొత్త కాల్ చేసే ముందు ఇప్పటికే ఉన్న కాల్‌లను ముగించండి లేదా విలీనం చేయండి."</string>
+    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"కనెక్ట్ చేయడం సాధ్యపడలేదు, దయచేసి చెల్లుబాటు అయ్యే SIM కార్డ్‌ను చొప్పించండి."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi కనెక్షన్ పోయింది. కాల్ ముగిసింది."</string>
+    <string name="change_pin_title" msgid="7790232089699034029">"వాయిస్ మెయిల్ PINని మార్చండి"</string>
+    <string name="change_pin_continue_label" msgid="2135088662420163447">"కొనసాగించు"</string>
+    <string name="change_pin_cancel_label" msgid="353535488390948596">"రద్దు చేయి"</string>
+    <string name="change_pin_ok_label" msgid="6204308560844889926">"సరే"</string>
+    <string name="change_pin_enter_old_pin_header" msgid="419179847657548887">"మీ పాత PINని నిర్ధారించండి"</string>
+    <string name="change_pin_enter_old_pin_hint" msgid="8579171678763615453">"కొనసాగించడానికి మీ వాయిస్ మెయిల్ PINని నమోదు చేయండి."</string>
+    <string name="change_pin_enter_new_pin_header" msgid="2611191814590251532">"కొత్త PINని సెట్ చేయండి"</string>
+    <string name="change_pin_enter_new_pin_hint" msgid="2322940054329689309">"PIN తప్పనిసరిగా <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> అంకెల మధ్య ఉండాలి."</string>
+    <string name="change_pin_confirm_pin_header" msgid="8113764019347322170">"మీ PINని నిర్ధారించండి"</string>
+    <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"PINలు సరిపోలలేదు"</string>
+    <string name="change_pin_succeeded" msgid="2022852286442211151">"వాయిస్ మెయిల్ PIN నవీకరించబడింది"</string>
+    <string name="change_pin_system_error" msgid="8308462387154257840">"PINని సెట్ చేయడం సాధ్యపడలేదు"</string>
 </resources>
