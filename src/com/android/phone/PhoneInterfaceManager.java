@@ -3281,11 +3281,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
         } catch (SecurityException readSmsSecurityException) {
         }
-        // Can be read with READ_PHONE_NUMBER too.
+        // Can be read with READ_PHONE_NUMBERS too.
         try {
-            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PHONE_NUMBER,
+            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PHONE_NUMBERS,
                     message);
-            int opCode = mAppOps.permissionToOpCode(android.Manifest.permission.READ_PHONE_NUMBER);
+            int opCode = mAppOps.permissionToOpCode(android.Manifest.permission.READ_PHONE_NUMBERS);
             if (opCode != AppOpsManager.OP_NONE) {
                 return mAppOps.noteOp(opCode, Binder.getCallingUid(), callingPackage)
                         == AppOpsManager.MODE_ALLOWED;
@@ -3298,7 +3298,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         throw new SecurityException(message + ": Neither user " + Binder.getCallingUid() +
                 " nor current process has" + android.Manifest.permission.READ_PHONE_STATE +
                 ", " + android.Manifest.permission.READ_SMS + ", or " +
-                android.Manifest.permission.READ_PHONE_NUMBER);
+                android.Manifest.permission.READ_PHONE_NUMBERS);
     }
 
     @Override
