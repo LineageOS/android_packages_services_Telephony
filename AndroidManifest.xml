@@ -144,6 +144,7 @@
     <uses-permission android:name="android.permission.BIND_CARRIER_SERVICES" />
     <!-- BIND_CARRIER_MESSAGING_SERVICE has been deprecated in favor of BIND_CARRIER_SERVICES. -->
     <uses-permission android:name="android.permission.BIND_CARRIER_MESSAGING_SERVICE" />
+    <uses-permission android:name="android.permission.BIND_EUICC_SERVICE" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
@@ -483,6 +484,19 @@
                 <action android:name="com.android.phone.TelephonyDebugService" />
             </intent-filter>
         </service>
+
+        <!-- Handler for EuiccManager's public-facing intents. -->
+        <activity android:name=".EuiccUiDispatcherActivity"
+            android:theme="@android:style/Theme.NoDisplay">
+            <!-- Max out priority to ensure nobody else will handle these intents. -->
+            <intent-filter android:priority="1000">
+                <action android:name=
+                            "android.telephony.euicc.action.MANAGE_EMBEDDED_SUBSCRIPTIONS" />
+                <action android:name=
+                            "android.telephony.euicc.action.PROVISION_EMBEDDED_SUBSCRIPTIONS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity android:name="EmergencyCallbackModeExitDialog"
             android:excludeFromRecents="true"

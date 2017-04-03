@@ -50,4 +50,8 @@
         android:persistent="false"
         android:summary="@string/enhanced_4g_lte_mode_summary"/>
 
+    <PreferenceScreen
+        android:key="carrier_settings_euicc_key"
+        android:title="@string/carrier_settings_euicc" />
+
 </PreferenceScreen>
