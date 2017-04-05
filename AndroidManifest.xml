@@ -493,7 +493,7 @@
                 <action android:name=
                             "android.telephony.euicc.action.MANAGE_EMBEDDED_SUBSCRIPTIONS" />
                 <action android:name=
-                            "android.telephony.euicc.action.PROVISION_EMBEDDED_SUBSCRIPTIONS" />
+                            "android.telephony.euicc.action.PROVISION_EMBEDDED_SUBSCRIPTION" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
