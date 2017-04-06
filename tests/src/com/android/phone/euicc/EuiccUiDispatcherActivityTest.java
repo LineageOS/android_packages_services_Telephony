@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.phone;
+package com.android.phone.euicc;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -68,38 +68,38 @@ public class EuiccUiDispatcherActivityTest {
     }
 
     @Test
-    public void testGetEuiccUiIntent_disabled() {
+    public void testResolveEuiccUiIntent_disabled() {
         when(mMockEuiccManager.isEnabled()).thenReturn(false);
-        assertNull(mActivity.getEuiccUiIntent());
+        assertNull(mActivity.resolveEuiccUiIntent());
     }
 
     @Test
-    public void testGetEuiccIntent_unsupportedAction() {
+    public void testResolveEuiccUiIntent_unsupportedAction() {
         mIntent = new Intent("fake.action");
-        assertNull(mActivity.getEuiccUiIntent());
+        assertNull(mActivity.resolveEuiccUiIntent());
     }
 
     @Test
-    public void testGetEuiccIntent_alreadyProvisioned() {
+    public void testResolveEuiccUiIntent_alreadyProvisioned() {
         mIntent = PROVISION_INTENT;
-        assertNull(mActivity.getEuiccUiIntent());
+        assertNull(mActivity.resolveEuiccUiIntent());
     }
 
     @Test
-    public void testGetEuiccIntent_noImplementation() {
+    public void testResolveEuiccUiIntent_noImplementation() {
         mActivityInfo = null;
-        assertNull(mActivity.getEuiccUiIntent());
+        assertNull(mActivity.resolveEuiccUiIntent());
     }
 
     @Test
-    public void testGetEuiccIntent_validManage() {
-        assertNotNull(mActivity.getEuiccUiIntent());
+    public void testResolveEuiccUiIntent_validManage() {
+        assertNotNull(mActivity.resolveEuiccUiIntent());
     }
 
     @Test
-    public void testGetEuiccIntent_validProvision() {
+    public void testResolveEuiccUiIntent_validProvision() {
         mIsProvisioned = false;
-        assertNotNull(mActivity.getEuiccUiIntent());
+        assertNotNull(mActivity.resolveEuiccUiIntent());
     }
 
     class TestEuiccUiDispatcherActivity extends EuiccUiDispatcherActivity {

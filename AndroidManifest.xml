@@ -487,7 +487,7 @@
         </service>
 
         <!-- Handler for EuiccManager's public-facing intents. -->
-        <activity android:name=".EuiccUiDispatcherActivity"
+        <activity android:name=".euicc.EuiccUiDispatcherActivity"
             android:theme="@android:style/Theme.NoDisplay">
             <!-- Max out priority to ensure nobody else will handle these intents. -->
             <intent-filter android:priority="1000">
@@ -495,6 +495,21 @@
                             "android.telephony.euicc.action.MANAGE_EMBEDDED_SUBSCRIPTIONS" />
                 <action android:name=
                             "android.telephony.euicc.action.PROVISION_EMBEDDED_SUBSCRIPTION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--
+            Handler for EuiccManager's resolution intents. These are locked down so that only
+            privileged processes can start them, which means we can trust the Intent used to start
+            it (which contains a description of the next step to perform after resolution).
+        -->
+        <activity android:name=".euicc.EuiccResolutionUiDispatcherActivity"
+            android:permission="android.permission.CALL_PRIVILEGED">
+            <!-- Max out priority to ensure nobody else will handle these intents. -->
+            <intent-filter android:priority="1000">
+                <action android:name=
+                            "android.telephony.euicc.action.RESOLVE_ERROR" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

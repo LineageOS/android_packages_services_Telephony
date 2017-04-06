@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.phone;
+package com.android.phone.euicc;
 
 import android.annotation.Nullable;
 import android.app.Activity;
@@ -37,35 +37,54 @@ public class EuiccUiDispatcherActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
-            Intent euiccUiIntent = getEuiccUiIntent();
-            if (euiccUiIntent != null) {
-                euiccUiIntent.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
-                startActivity(euiccUiIntent);
-            } else {
+            Intent euiccUiIntent = resolveEuiccUiIntent();
+            if (euiccUiIntent == null) {
                 setResult(RESULT_CANCELED);
+                return;
             }
+
+            euiccUiIntent.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+            startActivity(euiccUiIntent);
         } finally {
             // Since we're using Theme.NO_DISPLAY, we must always finish() at the end of onCreate().
             finish();
         }
     }
 
-    /**
-     * Return a resolved Intent to start the Euicc app's UI for the given intent, or null if the
-     * implementation couldn't be resolved.
-     */
     @VisibleForTesting
     @Nullable
-    Intent getEuiccUiIntent() {
-        String action = getIntent().getAction();
-
+    Intent resolveEuiccUiIntent() {
         EuiccManager euiccManager = (EuiccManager) getSystemService(Context.EUICC_SERVICE);
         if (!euiccManager.isEnabled()) {
-            Log.w(TAG, "eUICC is not enabled; cannot start activity for action: " + action);
+            setResult(RESULT_CANCELED);
             return null;
         }
 
-        final String euiccUiAction;
+        Intent euiccUiIntent = getEuiccUiIntent();
+        if (euiccUiIntent == null) {
+            Log.w(TAG, "Unable to handle intent");
+            return null;
+        }
+
+        ActivityInfo activityInfo = findBestActivity(euiccUiIntent);
+        if (activityInfo == null) {
+            Log.w(TAG, "Could not resolve activity for intent: " + euiccUiIntent);
+            return null;
+        }
+
+        euiccUiIntent.setComponent(activityInfo.getComponentName());
+        return euiccUiIntent;
+    }
+
+    /**
+     * Return an Intent to start the Euicc app's UI for the given intent, or null if given intent
+     * cannot be handled.
+     */
+    @Nullable
+    protected Intent getEuiccUiIntent() {
+        String action = getIntent().getAction();
+
+        String euiccUiAction;
         switch (action) {
             case EuiccManager.ACTION_MANAGE_EMBEDDED_SUBSCRIPTIONS:
                 euiccUiAction = EuiccService.ACTION_MANAGE_EMBEDDED_SUBSCRIPTIONS;
@@ -82,15 +101,7 @@ public class EuiccUiDispatcherActivity extends Activity {
                 return null;
         }
 
-        Intent euiccUiIntent = new Intent(euiccUiAction);
-        ActivityInfo activityInfo = findBestActivity(euiccUiIntent);
-
-        if (activityInfo == null) {
-            Log.w(TAG, "Could not resolve activity for action: " + euiccUiAction);
-            return null;
-        }
-        euiccUiIntent.setComponent(activityInfo.getComponentName());
-        return euiccUiIntent;
+        return new Intent(euiccUiAction);
     }
 
     @VisibleForTesting
