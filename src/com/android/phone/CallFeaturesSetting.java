@@ -367,6 +367,9 @@ public class CallFeaturesSetting extends PreferenceActivity
         try {
             Bundle metadata = getPackageManager()
                     .getApplicationInfo(defaultDialer, PackageManager.GET_META_DATA).metaData;
+            if (metadata == null) {
+                return;
+            }
             if (!metadata
                     .getBoolean(TelephonyManager.METADATA_HIDE_VOICEMAIL_SETTINGS_MENU, false)) {
                 if (DBG) {
