@@ -560,7 +560,7 @@
     <string name="description_dial_button" msgid="7459705245418435351">"համարհավաքել"</string>
     <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Թրթռոց"</string>
     <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Թրթռոց"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Տեսանելի ձայնային փոստ"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Տեսողական ձայնային փոստ"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Ընտրեք PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Փոխել PIN-ը"</string>
     <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Ձայն"</string>
