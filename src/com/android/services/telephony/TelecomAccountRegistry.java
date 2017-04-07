@@ -210,11 +210,21 @@ final class TelecomAccountRegistry {
             }
 
             mIsVideoPauseSupported = isCarrierVideoPauseSupported();
-            Bundle instantLetteringExtras = null;
+            Bundle extras = new Bundle();
             if (isCarrierInstantLetteringSupported()) {
                 capabilities |= PhoneAccount.CAPABILITY_CALL_SUBJECT;
-                instantLetteringExtras = getPhoneAccountExtras();
+                extras.putAll(getPhoneAccountExtras());
             }
+
+            final boolean isHandoverFromSupported = mContext.getResources().getBoolean(
+                    R.bool.config_support_handover_from);
+            if (isHandoverFromSupported && !isEmergency) {
+                // Only set the extra is handover is supported and this isn't the emergency-only
+                // acct.
+                extras.putBoolean(PhoneAccount.EXTRA_SUPPORTS_HANDOVER_FROM,
+                        isHandoverFromSupported);
+            }
+
             mIsMergeCallSupported = isCarrierMergeCallSupported();
             mIsMergeImsCallSupported = isCarrierMergeImsCallSupported();
             mIsVideoConferencingSupported = isCarrierVideoConferencingSupported();
@@ -270,7 +280,7 @@ final class TelecomAccountRegistry {
                     .setShortDescription(description)
                     .setSupportedUriSchemes(Arrays.asList(
                             PhoneAccount.SCHEME_TEL, PhoneAccount.SCHEME_VOICEMAIL))
-                    .setExtras(instantLetteringExtras)
+                    .setExtras(extras)
                     .setGroupId(groupId)
                     .build();
 
@@ -384,6 +394,8 @@ final class TelecomAccountRegistry {
         }
 
         /**
+         * Where a device supports instant lettering and call subjects, retrieves the necessary
+         * PhoneAccount extras for those features.
          * @return The {@link PhoneAccount} extras associated with the current subscription.
          */
         private Bundle getPhoneAccountExtras() {
