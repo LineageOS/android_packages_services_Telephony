@@ -222,6 +222,10 @@
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Мобилдик берүү байланышын жоготтуңуз, анткени сиз мобилдик интернет роумингин иштетпестен, өзүңүздүн түйүнүңүздөн сырткары чыгып кеттиңиз."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Бир кыйла төлөмдөргө учурашыңыз мүмкүн."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Интернет-роумингге жол берилсинби?"</string>
+    <!-- no translation found for carrier_settings_euicc (6714062862127226405) -->
+    <skip />
+    <!-- no translation found for carrier_settings_euicc_summary (5115001942761995457) -->
+    <skip />
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS мүмкүнчүлүктөрү"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA мүмкүнчүлүктөрү"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Дайындардын колдонулушу"</string>
