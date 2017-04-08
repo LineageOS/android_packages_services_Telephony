@@ -220,6 +220,8 @@
     <string name="roaming_reenable_message" msgid="8913735676127858115">"તમે ડેટા કનેક્ટિવિટી ગુમાવી છે કારણ કે તમે તમારા હોમ નેટવર્કને બંધ ડેટા રોમિંગ સાથે છોડ્યું છે."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"તમારાથી આંશિક શુલ્ક લઈ શકાય છે."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ડેટા રોમિંગને મંજૂરી આપીએ?"</string>
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"કૅરિઅર"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS વિકલ્પો"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA વિકલ્પો"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"ડેટા વપરાશ"</string>

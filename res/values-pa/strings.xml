@@ -220,6 +220,8 @@
     <string name="roaming_reenable_message" msgid="8913735676127858115">"ਤੁਹਾਡੀ ਡਾਟਾ ਕਨੈਕਟੀਵਿਟੀ ਨਸ਼ਟ ਹੋ ਗਈ ਹੈ ਕਿਉਂਕਿ ਤੁਸੀਂ ਆਪਣਾ ਡਾਟਾ ਰੋਮਿੰਗ ਬੰਦ ਨਾਲ ਹੋਮ ਨੈਟਵਰਕ ਛੱਡ ਦਿੱਤਾ ਸੀ।"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"ਤੁਹਾਨੂੰ ਖ਼ਾਸ ਖ਼ਰਚੇ ਪੈ ਸਕਦੇ ਹਨ।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ਕੀ ਡਾਟਾ ਰੋਮਿੰਗ ਦੀ ਆਗਿਆ ਦੇਣੀ ਹੈ?"</string>
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"ਕੈਰੀਅਰ"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS ਚੋਣਾਂ"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA ਚੋਣਾਂ"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"ਡਾਟਾ ਵਰਤੋਂ"</string>
