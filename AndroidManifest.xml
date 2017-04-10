@@ -55,10 +55,10 @@
     <protected-broadcast android:name="android.provider.Telephony.SMS_CB_RECEIVED" />
     <protected-broadcast android:name="android.provider.Telephony.SMS_EMERGENCY_CB_RECEIVED" />
     <protected-broadcast android:name="android.provider.Telephony.SECRET_CODE" />
-    <protected-broadcast android:name= "android.intent.action.stk.command" />
-    <protected-broadcast android:name= "android.intent.action.stk.session_end" />
-    <protected-broadcast android:name= "android.intent.action.stk.icc_status_change" />
-    <protected-broadcast android:name= "android.intent.action.stk.alpha_notify" />
+    <protected-broadcast android:name= "com.android.internal.stk.command" />
+    <protected-broadcast android:name= "com.android.internal.stk.session_end" />
+    <protected-broadcast android:name= "com.android.internal.stk.icc_status_change" />
+    <protected-broadcast android:name= "com.android.internal.stk.alpha_notify" />
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_REDIRECTED" />
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_REQUEST_NETWORK_FAILED" />
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_PCO_VALUE" />
