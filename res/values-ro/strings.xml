@@ -220,10 +220,8 @@
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Ați pierdut conectivitatea la date, deoarece ați părăsit rețeaua de domiciliu neavând activat roamingul de date."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Se pot acumula costuri mari."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permiteți roamingul de date?"</string>
-    <!-- no translation found for carrier_settings_euicc (6714062862127226405) -->
-    <skip />
-    <!-- no translation found for carrier_settings_euicc_summary (5115001942761995457) -->
-    <skip />
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operator"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Opțiuni GSM/UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"Opțiuni CDMA"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Utilizarea datelor"</string>
