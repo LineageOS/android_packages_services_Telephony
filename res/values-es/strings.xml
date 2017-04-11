@@ -451,7 +451,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Sal del modo de devolución de llamada de emergencia para hacer otro tipo de llamada."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"No se ha podido conectar a la red"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"La red móvil no está disponible."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"La red de telefonía móvil no está disponible. Conéctate a una para llamar."</string>
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"La red móvil no está disponible. Conéctate a una para llamar."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Para realizar una llamada, introduce un número válido."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"No se ha podido llamar."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"No se puede añadir la llamada en este momento."</string>
