@@ -220,10 +220,8 @@
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Has perdido la conectividad de datos porque has dejado desactivada la itinerancia de datos de tu red doméstica."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"El coste de este servicio puede ser significativo."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"¿Permitir itinerancia de datos?"</string>
-    <!-- no translation found for carrier_settings_euicc (6714062862127226405) -->
-    <skip />
-    <!-- no translation found for carrier_settings_euicc_summary (5115001942761995457) -->
-    <skip />
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operador"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Opciones GSM/UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"Opciones de CDMA"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Uso de datos"</string>
@@ -455,7 +453,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Sal del modo de devolución de llamada de emergencia para hacer otro tipo de llamada."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"No se ha podido conectar a la red"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"La red móvil no está disponible."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"La red de telefonía móvil no está disponible. Conéctate a una para llamar."</string>
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"La red móvil no está disponible. Conéctate a una para llamar."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Para realizar una llamada, introduce un número válido."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"No se ha podido llamar."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"No se puede añadir la llamada en este momento."</string>
