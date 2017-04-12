@@ -201,8 +201,7 @@ public class MobileNetworkSettings extends Activity  {
                 return true;
             } else if (mCdmaOptions != null &&
                     mCdmaOptions.preferenceTreeClick(preference) == true) {
-                if (Boolean.parseBoolean(
-                        SystemProperties.get(TelephonyProperties.PROPERTY_INECM_MODE))) {
+                if (mPhone.isInEcm()) {
 
                     mClickedPreference = preference;
 
