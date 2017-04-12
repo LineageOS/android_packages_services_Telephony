@@ -2175,16 +2175,7 @@ public class PhoneUtils {
      */
     /* package */ static boolean isPhoneInEcm(Phone phone) {
         if ((phone != null) && TelephonyCapabilities.supportsEcm(phone)) {
-            // For phones that support ECM, return true iff PROPERTY_INECM_MODE == "true".
-            // TODO: There ought to be a better API for this than just
-            // exposing a system property all the way up to the app layer,
-            // probably a method like "inEcm()" provided by the telephony
-            // layer.
-            String ecmMode =
-                    SystemProperties.get(TelephonyProperties.PROPERTY_INECM_MODE);
-            if (ecmMode != null) {
-                return ecmMode.equals("true");
-            }
+            return phone.isInEcm();
         }
         return false;
     }
