@@ -580,10 +580,14 @@ public class MobileNetworkSettings extends Activity  {
                     TelephonyManager tm =
                         (TelephonyManager) getActivity()
                                 .getSystemService(Context.TELEPHONY_SERVICE);
-                    mEuiccSettingsPref.setSummary(
-                            getEuiccSettingsSummary(
-                                    tm.getSimOperatorName(),
-                                    PhoneNumberUtils.formatNumber(tm.getLine1Number())));
+                    if (TextUtils.isEmpty(tm.getLine1Number())) {
+                        mEuiccSettingsPref.setSummary(null);
+                    } else {
+                        mEuiccSettingsPref.setSummary(
+                                getEuiccSettingsSummary(
+                                        tm.getSimOperatorName(),
+                                        PhoneNumberUtils.formatNumber(tm.getLine1Number())));
+                    }
                 }
             }
 
@@ -1068,7 +1072,8 @@ public class MobileNetworkSettings extends Activity  {
 
         @VisibleForTesting
         String getEuiccSettingsSummary(@Nullable String spn, @Nullable String phoneNum) {
-            if (spn != null && phoneNum.length() >= NUM_LAST_PHONE_DIGITS) {
+            if (!TextUtils.isEmpty(spn) && !TextUtils.isEmpty(phoneNum)
+                    && phoneNum.length() >= NUM_LAST_PHONE_DIGITS) {
                 // Format the number and use the last one part or multiple
                 // parts whose total length is greater or equal to NUM_LAST_PHONE_DIGITS.
                 // TODO (b/36647649): This needs to be finalized by UX team

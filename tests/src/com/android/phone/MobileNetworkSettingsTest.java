@@ -56,6 +56,7 @@ public class MobileNetworkSettingsTest {
     public void testGetEuiccSettingsSummary() {
 
         assertNull(mFragment.getEuiccSettingsSummary(null, "1234"));
+        assertNull(mFragment.getEuiccSettingsSummary("spn", null));
         assertNull(mFragment.getEuiccSettingsSummary("spn", "123"));
         assertEquals(mFragment.getEuiccSettingsSummary("spn", "123456789"),
                 mFragment.getString(R.string.carrier_settings_euicc_summary, "spn", "6789"));
