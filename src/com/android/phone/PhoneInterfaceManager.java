@@ -3807,4 +3807,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             phone.setSimPowerState(powerUp);
         }
     }
+
+    /**
+     * Check if phone is in emergency callback mode
+     * @return true if phone is in emergency callback mode
+     * @param subId sub id
+     */
+    public boolean getEmergencyCallbackMode(int subId) {
+        final Phone phone = getPhone(subId);
+        if (phone != null) {
+            return phone.isInEcm();
+        } else {
+            return false;
+        }
+    }
 }
