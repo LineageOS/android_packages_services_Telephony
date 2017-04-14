@@ -295,21 +295,22 @@ public class VoicemailSettingsActivity extends PreferenceActivity
             } else {
                 mVoicemailChangePinPreference.setTitle(R.string.voicemail_change_pin_dialog_title);
             }
-        }
 
-        if (mVoicemailVisualVoicemail != null) {
-            if (mOmtpVvmCarrierConfigHelper.isValid()) {
-                mVoicemailVisualVoicemail.setOnPreferenceChangeListener(this);
-                mVoicemailVisualVoicemail.setChecked(
-                        VisualVoicemailSettingsUtil.isEnabled(this, mPhoneAccountHandle));
-                if (!isVisualVoicemailActivated()) {
+            if (mVoicemailVisualVoicemail != null) {
+                if (mOmtpVvmCarrierConfigHelper.isValid()) {
+                    mVoicemailVisualVoicemail.setOnPreferenceChangeListener(this);
+                    mVoicemailVisualVoicemail.setChecked(
+                            VisualVoicemailSettingsUtil.isEnabled(this, mPhoneAccountHandle));
+                    if (!isVisualVoicemailActivated()) {
+                        prefSet.removePreference(mVoicemailChangePinPreference);
+                    }
+                } else {
+                    prefSet.removePreference(mVoicemailVisualVoicemail);
                     prefSet.removePreference(mVoicemailChangePinPreference);
                 }
-            } else {
-                prefSet.removePreference(mVoicemailVisualVoicemail);
-                prefSet.removePreference(mVoicemailChangePinPreference);
             }
         }
+
         updateVMPreferenceWidgets(mVoicemailProviders.getValue());
 
         // check the intent that started this activity and pop up the voicemail
