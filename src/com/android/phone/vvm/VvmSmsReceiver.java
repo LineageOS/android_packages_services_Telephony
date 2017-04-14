@@ -23,10 +23,6 @@ import android.provider.VoicemailContract;
 import android.telephony.SubscriptionManager;
 import android.telephony.VisualVoicemailSms;
 
-import com.android.phone.vvm.omtp.VvmLog;
-import com.android.phone.vvm.omtp.sms.OmtpMessageReceiver;
-import com.android.phone.vvm.omtp.utils.PhoneAccountHandleConverter;
-
 /**
  * Receives the SMS filtered by {@link com.android.internal.telephony.VisualVoicemailSmsFilter} and
  * redirect it to the visual voicemail client. The redirection is required to let telephony service
@@ -56,10 +52,8 @@ public class VvmSmsReceiver extends BroadcastReceiver {
         if (RemoteVvmTaskManager.hasRemoteService(context, subId)) {
             VvmLog.i(TAG, "Sending SMS received event to remote service");
             RemoteVvmTaskManager.startSmsReceived(context, sms);
-            return;
-        }
-
-        OmtpMessageReceiver
-                .onReceive(context, sms);
+        } else {
+            VvmLog.w(TAG, "Sending SMS received event to remote service");
+        };
     }
 }
