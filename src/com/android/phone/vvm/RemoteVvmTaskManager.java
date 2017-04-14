@@ -40,8 +40,6 @@ import android.text.TextUtils;
 
 import com.android.phone.Assert;
 import com.android.phone.R;
-import com.android.phone.vvm.omtp.VvmLog;
-import com.android.phone.vvm.omtp.utils.PhoneAccountHandleConverter;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
