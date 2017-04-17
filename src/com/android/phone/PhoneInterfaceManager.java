@@ -38,8 +38,8 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
-import android.os.Process;
 import android.os.PersistableBundle;
+import android.os.Process;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.UserHandle;
@@ -86,6 +86,7 @@ import com.android.internal.telephony.DefaultPhoneNotifier;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IccCard;
 import com.android.internal.telephony.MccTable;
+import com.android.internal.telephony.NetworkScanRequestTracker;
 import com.android.internal.telephony.OperatorInfo;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstantConversions;
@@ -191,6 +192,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final String PREF_CARRIERS_ALPHATAG_PREFIX = "carrier_alphtag_";
     private static final String PREF_CARRIERS_NUMBER_PREFIX = "carrier_number_";
     private static final String PREF_CARRIERS_SUBSCRIBER_PREFIX = "carrier_subscriber_";
+
+    private NetworkScanRequestTracker mNetworkScanRequestTracker;
 
     /**
      * A request object to use for transmitting data to an ICC.
@@ -1054,6 +1057,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mTelephonySharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(mPhone.getContext());
         mSubscriptionController = SubscriptionController.getInstance();
+        mNetworkScanRequestTracker = new NetworkScanRequestTracker();
 
         publish();
     }
@@ -2676,24 +2680,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Performs a new network scan and returns the id of this scan.
+     * Starts a new network scan and returns the id of this scan.
      *
+     * @param subId id of the subscription
+     * @param request contains the radio access networks with bands/channels to scan
+     * @param messenger callback messenger for scan results or errors
+     * @param binder for the purpose of auto clean when the user thread crashes
      * @return the id of the requested scan which can be used to stop the scan.
      */
     @Override
     public int requestNetworkScan(int subId, NetworkScanRequest request, Messenger messenger,
             IBinder binder) {
-        // TODO(yinxu): Implement this method.
-        throw new UnsupportedOperationException("To be implemented...");
+        enforceModifyPermissionOrCarrierPrivilege(subId);
+        return mNetworkScanRequestTracker.startNetworkScan(
+                request, messenger, binder, getPhone(subId));
     }
 
     /**
      * Stops an existing network scan with the given scanId.
+     *
+     * @param subId id of the subscription
+     * @param scanId id of the scan that needs to be stopped
      */
     @Override
     public void stopNetworkScan(int subId, int scanId) {
-        // TODO(yinxu): Implement this method.
-        throw new UnsupportedOperationException("To be implemented...");
+        enforceModifyPermissionOrCarrierPrivilege(subId);
+        mNetworkScanRequestTracker.stopNetworkScan(scanId);
     }
 
     /**
