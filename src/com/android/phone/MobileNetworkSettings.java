@@ -196,6 +196,13 @@ public class MobileNetworkSettings extends Activity  {
             mButtonDataRoam.setChecked(true);
         }
 
+        @Override
+        public void onViewCreated(View view, Bundle savedInstanceState) {
+            if (getListView() != null) {
+                getListView().setDivider(null);
+            }
+        }
+
         /**
          * Invoked on each preference click in this hierarchy, overrides
          * PreferenceActivity's implementation.  Used to make sure we track the
