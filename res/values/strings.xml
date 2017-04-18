@@ -357,6 +357,8 @@
     <!-- networks setting strings --><skip/>
     <!-- Mobile network settings screen title -->
     <string name="mobile_networks">Mobile network settings</string>
+    <!-- Mobile network settings screen title/heading -->
+    <string name="network_settings_title">Mobile network</string>
     <!-- Available networks screen title/heading -->
     <string name="label_available">Available networks</string>
     <!-- Mobile network settings screen, toast when searching for available networks -->

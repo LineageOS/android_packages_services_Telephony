@@ -328,7 +328,7 @@
         <!-- "Mobile network settings" screen, used on both
              non-voice-capable tablets and regular phone devices. -->
         <activity android:name="MobileNetworkSettings"
-            android:label="@string/settings_label"
+            android:label="@string/network_settings_title"
             android:theme="@style/NetworkOperatorsSettingsTheme">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
