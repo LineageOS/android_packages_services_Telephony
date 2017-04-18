@@ -19,7 +19,6 @@ package com.android.phone;
 import static com.android.internal.telephony.PhoneConstants.SUBSCRIPTION_KEY;
 
 import android.Manifest.permission;
-import android.annotation.Nullable;
 import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
@@ -95,7 +94,10 @@ import com.android.internal.telephony.uicc.UiccCardApplication;
 import com.android.internal.telephony.uicc.UiccController;
 import com.android.internal.util.HexDump;
 import com.android.phone.settings.VoicemailNotificationSettingsUtil;
+import com.android.phone.vvm.PhoneAccountHandleConverter;
 import com.android.phone.vvm.RemoteVvmTaskManager;
+import com.android.phone.vvm.VisualVoicemailPreferences;
+import com.android.phone.vvm.VisualVoicemailSettingsUtil;
 import com.android.phone.vvm.VisualVoicemailSmsFilterConfig;
 
 import java.io.FileDescriptor;
@@ -2014,6 +2016,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         Boolean success = (Boolean) sendRequest(CMD_SET_VOICEMAIL_NUMBER,
                 new Pair<String, String>(alphaTag, number), new Integer(subId));
         return success;
+    }
+
+    @Override
+    public Bundle getVisualVoicemailSettings(String callingPackage, int subId) {
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        String systemDialer = TelecomManager.from(mPhone.getContext()).getSystemDialerPackage();
+        if (!TextUtils.equals(callingPackage, systemDialer)) {
+            throw new SecurityException("caller must be system dialer");
+        }
+        PhoneAccountHandle phoneAccountHandle = PhoneAccountHandleConverter.fromSubId(subId);
+        if (phoneAccountHandle == null){
+            return null;
+        }
+        return VisualVoicemailSettingsUtil.dump(mPhone.getContext(), phoneAccountHandle);
     }
 
     @Override
