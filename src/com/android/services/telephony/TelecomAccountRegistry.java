@@ -622,9 +622,11 @@ final class TelecomAccountRegistry {
      * @return {@code True} if merging IMS calls is supported.
      */
     boolean isMergeImsCallSupported(PhoneAccountHandle handle) {
-        for (AccountEntry entry : mAccounts) {
-            if (entry.getPhoneAccountHandle().equals(handle)) {
-                return entry.isMergeImsCallSupported();
+        synchronized (mAccountsLock) {
+            for (AccountEntry entry : mAccounts) {
+                if (entry.getPhoneAccountHandle().equals(handle)) {
+                    return entry.isMergeImsCallSupported();
+                }
             }
         }
         return false;
