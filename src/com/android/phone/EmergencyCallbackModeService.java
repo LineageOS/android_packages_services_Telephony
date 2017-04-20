@@ -40,6 +40,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.telephony.util.TelephonyNotificationBuilder;
 
 /**
  * Application service that inserts/removes Emergency Callback Mode notification and
@@ -180,7 +181,8 @@ public class EmergencyCallbackModeService extends Service {
             }
             return;
         }
-        final Notification.Builder builder = new Notification.Builder(getApplicationContext());
+        final Notification.Builder builder = new TelephonyNotificationBuilder(
+                getApplicationContext());
         builder.setOngoing(true);
         builder.setPriority(Notification.PRIORITY_HIGH);
         builder.setSmallIcon(R.drawable.ic_emergency_callback_mode);
@@ -205,6 +207,7 @@ public class EmergencyCallbackModeService extends Service {
                      R.plurals.phone_in_ecm_notification_time, minutes).toString(), time);
         }
         builder.setContentText(text);
+        builder.setChannel(TelephonyNotificationBuilder.CHANNEL_ID_ALERT);
 
         // Show notification
         mNotificationManager.notify(R.string.phone_in_ecm_notification_title, builder.build());
