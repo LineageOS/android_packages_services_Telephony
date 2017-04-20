@@ -26,9 +26,9 @@
   <!-- Toast text for Conditional Call Forwarding enabled  -->
   <string name="call_notif_conditionalCF">Esvíu condicional de llamada activu</string>
   <!-- Toast text for a forwarded MO call  -->
-  <string name="call_notif_MOcall_forwarding">Reunviu de llamada saliente</string>
+  <string name="call_notif_MOcall_forwarding">Reúnviase la llamada saliente</string>
   <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
-  <string name="call_notif_cugcall">Llamada de grupu zarráu</string>
+  <string name="call_notif_cugcall">Llamada nun grupu zarráu d\'usarios</string>
   <!-- In-call screen: status label when MO calls are barred -->
   <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
   <!-- Toast text for MO calls when CLIR Suppression is rejected -->

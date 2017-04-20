@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Bitte aktivieren Sie Daten-Roaming</string>
   <string name="no_mobile_data">Mobile Daten sind nicht verfügbar</string>
   <string name="no_mobile_data_roaming">Daten-Roaming ist nicht verfügbar</string>
-  <string name="call_barring">Anrufsperre</string>
   <string name="srvcc_video_message">"Videoanruf wurde in ein 2G/3G-Sprachanruf übergestellt, da kein 4G-Netz verfügbar ist."</string>
   <string name="srvcc_message">"4G-Anruf wurde in ein 2G/3G-Anruf übergestellt, da kein 4G-Netz verfügbar ist."</string>
 </resources>

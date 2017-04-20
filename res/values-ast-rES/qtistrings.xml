@@ -61,15 +61,12 @@
   <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Solicitando desbloquéu del fornidor de servicios de tarxeta SIM\u2026</string>
   <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Solicitando desbloquéu de tarxeta SIM corporativa\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Solicitando\'l desbloquéu de la SIM corporativa\u2026</string>
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Solicitando desbloquéu de tarxeta SIM\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Solicitando\'l desbloquéu de SIM\u2026</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Solicitando desbloquéu de rede-1 de tarxeta RUIM\u2026</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Solicitando desbloquéu de rede-2 de tarxeta RUIM\u2026</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Solicitando desbloquéu de HRPD de tarxeta RUIM\u2026</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
   <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
@@ -104,7 +101,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Activa la itinerancia de datos, por favor</string>
   <string name="no_mobile_data">Los datos móviles nun tán disponibles</string>
   <string name="no_mobile_data_roaming">Los datos n\'itinerancia nun tán diponibles</string>
-  <string name="call_barring">Bloquéu de llamaes</string>
   <string name="srvcc_video_message">"Baxóse la calidá de la llamada a 2G/3G porque la rede 4G nun ta disponible."</string>
   <string name="srvcc_message">"Baxóse la calidá de la llamada 4G a 2G/3G porque la rede 4G nun ta disponible."</string>
 </resources>

@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Ota data roaming käyttöön</string>
   <string name="no_mobile_data">Mobiilidata ei ole käytettävissä</string>
   <string name="no_mobile_data_roaming">Data roaming ei ole käytettävissä</string>
-  <string name="call_barring">Puhelun esto</string>
   <string name="srvcc_video_message">"Videopuhelu on alennettu 2G / 3G äänipuheluksi, koska 4G-verkko ei ole käytettävissä."</string>
   <string name="srvcc_message">"4G äänipuhelu on alennettu 2G / 3G äänipuheluksi, koska 4G-verkko ei ole käytettävissä."</string>
 </resources>

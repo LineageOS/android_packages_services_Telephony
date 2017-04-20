@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Kérjük, kapcsolja be az adatroamingot</string>
   <string name="no_mobile_data">Mobilhálózat nem érhető el</string>
   <string name="no_mobile_data_roaming">Adatroaming nem érhető el</string>
-  <string name="call_barring">Híváskorlátozás</string>
   <string name="srvcc_video_message">"Videohívást visszaminősítettük 2G/3G hanghívássá, mert a 4G hálózat nem érhető el."</string>
   <string name="srvcc_message">"4G hanghívást visszaminősítettük 2G/3G hanghívássá, mert a 4G hálózat nem érhető el."</string>
 </resources>

@@ -149,7 +149,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Aktivér dataroaming</string>
   <string name="no_mobile_data">Mobildata er ikke tilgængelig</string>
   <string name="no_mobile_data_roaming">Dataroaming er ikke tilgængelig</string>
-  <string name="call_barring">Spærring af opkald</string>
   <string name="srvcc_video_message">"Videoopkald nedgraderes til 2G/3G-taleopkald, fordi 4G-netværk ikke er tilgængelig."</string>
   <string name="srvcc_message">"4G-videoopkald nedgraderes til 2G/3G-taleopkald, fordi 4G-netværk ikke er tilgængelig."</string>
 </resources>

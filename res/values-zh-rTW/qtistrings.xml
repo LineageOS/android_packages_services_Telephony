@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">請開啟數據漫遊</string>
   <string name="no_mobile_data">行動數據不可用</string>
   <string name="no_mobile_data_roaming">數據漫遊不可用</string>
-  <string name="call_barring">限制通話</string>
   <string name="srvcc_video_message">"視訊通話已經降為 2G/3G 語音通話，因為 4G 網路不可用。"</string>
   <string name="srvcc_message">"4G 語音通話已經降為 2G/3G 語音通話，因為 4G 網路不可用。"</string>
 </resources>

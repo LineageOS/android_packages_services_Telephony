@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Vă rugăm să porniţi datele de roaming</string>
   <string name="no_mobile_data">Datele mobile nu sunt disponibile</string>
   <string name="no_mobile_data_roaming">Datele de roaming nu sunt disponibile</string>
-  <string name="call_barring">Restricționarea apelurilor</string>
   <string name="srvcc_video_message">"Apelul video a fost retrogradat la un apel voce 2G/3G, deoarece rețeaua 4G nu este disponibilă."</string>
   <string name="srvcc_message">"Apelul voce 4G a fost retrogradat la un apel voce 2G/3G, deoarece rețeaua 4G nu este disponibilă."</string>
 </resources>

@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Por favor, ligue o roaming de dados</string>
   <string name="no_mobile_data">Os dados móveis não estão disponíveis</string>
   <string name="no_mobile_data_roaming">O roaming de dados não está disponível</string>
-  <string name="call_barring">Barramento de chamadas</string>
   <string name="srvcc_video_message">"A vídeo-chamada foi alterada para uma chamada de voz em 2G/3G devido à indisponibilidade da rede 4G."</string>
   <string name="srvcc_message">"A chamada de voz em 4G foi alterada para uma chamada de voz em 2G/3G devido à indisponibilidade da rede 4G."</string>
 </resources>

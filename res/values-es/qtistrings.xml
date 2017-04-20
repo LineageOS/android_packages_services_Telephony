@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Por favor activar itinerancia de datos</string>
   <string name="no_mobile_data">Datos móviles no disponibles</string>
   <string name="no_mobile_data_roaming">Itinerancia de datos no está disponible</string>
-  <string name="call_barring">Restricción de llamadas</string>
   <string name="srvcc_video_message">"La videollamada ha sido degradada una llamada de voz 2G/3G, porque la red 4G no está disponible."</string>
   <string name="srvcc_message">"La llamada de voz 4G ha sido degradada una llamada de voz 2G/3G, porque la red 4G no está disponible."</string>
 </resources>

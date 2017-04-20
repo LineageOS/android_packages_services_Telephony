@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Vui lòng bật chuyển vùng dữ liệu</string>
   <string name="no_mobile_data">Dữ liệu di động là không có sẵn</string>
   <string name="no_mobile_data_roaming">Chuyển vùng dữ liệu không có sẵn</string>
-  <string name="call_barring">Chặn cuộc gọi</string>
   <string name="srvcc_video_message">"Cuộc gọi video đã được hạ xuống thành các cuộc gọi thoại 2G/3G, vì mạng 4G không có sẵn."</string>
   <string name="srvcc_message">"Cuộc gọi thoại 4G đã được hạ xuống thành các cuộc gọi thoại 2G/3G, vì mạng 4G không có sẵn."</string>
 </resources>

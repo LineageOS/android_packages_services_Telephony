@@ -17,22 +17,53 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
+  <string name="incall_screen_settings">Parametrat e ekranit gjatë telefonatës</string>
   <!-- Toasts for various transient network events -->
   <!-- Toast text for Unconditional Call Forwarding enabled  -->
   <!-- Toast text for Conditional Call Forwarding enabled  -->
   <!-- Toast text for a forwarded MO call  -->
   <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
   <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">Thirrjet dalëse janë të bllokuara</string>
   <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
   <!-- Toast text for MO calls when CLIR Suppression is rejected -->
   <!-- In-call screen: status label when MO call gets deflected to another party -->
   <!-- Toast text for incoming call being forwarded to other remote party  -->
   <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Telefonatë shumëpalëshe</string>
   <!-- Toast text for incoming call which is answered,put on hold & then released -->
   <!-- Toast text for incoming call forward check received -->
   <!-- Toast text for incoming call connecting through ECT -->
   <!-- Toast text for incoming call connected through ECT -->
   <!-- Mobile network settings, preferred network modes -->
+  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
+  <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
+  <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
+  <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
+  <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
+  <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
+  <string name="preferred_network_mode_td_scdma_only_choice">vetëm TD-SCDMA</string>
+  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
+  <string name="preferred_network_mode_lte_choice">LTE</string>
+  <string name="preferred_network_mode_global_choice">Global</string>
+  <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
+  <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
+  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
+  <string name="preferred_network_mode_evdo_only_choice">vetëm EvDo</string>
+  <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA pa EvDo</string>
+  <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo auto</string>
+  <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA auto</string>
+  <string name="preferred_network_mode_wcdma_only_choice">vetëm WCDMA</string>
+  <string name="preferred_network_mode_gsm_only_choice">vetëm GSM</string>
+  <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA e preferuar</string>
+  <string name="msim_mobile_network_settings_title">Parametrat e rrjetit celular për SIM %d</string>
   <!-- Permission to modify network mode via intent -->
+  <string name="perm_change_mobile_network">ndrysho profilin e rrjetit</string>
+  <string name="perm_change_mobile_network_desc">Lejon një aplikacion të modifikojë profilin aktual të rrjetit.</string>
   <!-- Network mode picker dialog title -->
+  <string name="choose_network_mode_title">Zgjidh profilin e rrjetit</string>
+  <string name="choose_network_mode_system_default">Sipas sistemit</string>
 </resources>

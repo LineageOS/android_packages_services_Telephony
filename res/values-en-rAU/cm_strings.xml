@@ -17,6 +17,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
+  <string name="incall_screen_settings">In-call screen settings</string>
   <string name="show_ssn_label">Event notification</string>
   <string name="show_ssn_summary">Show a notification for various network events related to call handling</string>
   <!-- Toasts for various transient network events -->
@@ -49,6 +50,8 @@
   <!-- Toast text for incoming call connected through ECT -->
   <string name="call_notif_callconnectedect">Call connected through explicit call transfer</string>
   <!-- Mobile network settings, preferred network modes -->
+  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
   <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
@@ -70,6 +73,11 @@
   <string name="preferred_network_mode_wcdma_only_choice">WCDMA only</string>
   <string name="preferred_network_mode_gsm_only_choice">GSM only</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA preferred</string>
+  <string name="msim_mobile_network_settings_title">SIM %d mobile network settings</string>
   <!-- Permission to modify network mode via intent -->
+  <string name="perm_change_mobile_network">change network mode</string>
+  <string name="perm_change_mobile_network_desc">Allows an app to modify the current network mode.</string>
   <!-- Network mode picker dialog title -->
+  <string name="choose_network_mode_title">Choose network mode</string>
+  <string name="choose_network_mode_system_default">System default</string>
 </resources>

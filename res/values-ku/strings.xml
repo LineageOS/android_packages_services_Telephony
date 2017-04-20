@@ -739,6 +739,7 @@
          operator name set by user -->
   <string name="notification_network_selection_text">تۆڕی دیاریکراو (<xliff:g id="operator_name">%s</xliff:g>) ئاماده‌نییه‌</string>
   <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
+  <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
   <!-- In-call screen: call failure message displayed in an error dialog when in airplane mode, WFC is enabled, not wifi-only, and not connected to wireless networks. [CHAR_LIMIT=NONE] -->
   <!-- In-call screen: call failure message displayed when the user attempts to make a non-emergency call while the phone is in emergency callback mode. -->
   <!-- In-call screen: call failure message displayed in an error dialog.

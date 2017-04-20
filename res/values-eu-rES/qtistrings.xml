@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Piztu datuak ibiltaritzan</string>
   <string name="no_mobile_data">Datu mugikorrak ez daude eskuragarri</string>
   <string name="no_mobile_data_roaming">Datuen ibiltaritza ez dago eskuragarri</string>
-  <string name="call_barring">Deien traba</string>
   <string name="srvcc_video_message">"Bideo deia 2G/3G ahots deira jaitsi da, 4G sarea ez dagoelako eskuragarri."</string>
   <string name="srvcc_message">"4G ahots deia 2G/3G ahots deira jaitsi da, 4G sarea ez dagoelako eskuragarri."</string>
 </resources>

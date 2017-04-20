@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Veuillez activer l\'itinérance de données</string>
   <string name="no_mobile_data">Données mobiles non disponibles</string>
   <string name="no_mobile_data_roaming">Itinérance de données indisponible</string>
-  <string name="call_barring">Restriction d\'appels</string>
   <string name="srvcc_video_message">"Appel vidéo transformé en appel vocal 2G/3G car le réseau 4G est indisponible."</string>
   <string name="srvcc_message">"Appel vocal 4G transformé en appel vocal 2G/3G car le réseau 4G est indisponible."</string>
 </resources>

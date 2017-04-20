@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Vklopite podatkovno gostovanje</string>
   <string name="no_mobile_data">Mobilni podatki niso na voljo</string>
   <string name="no_mobile_data_roaming">Podatkovno gostovanje ni na voljo</string>
-  <string name="call_barring">Zapora klicev</string>
   <string name="srvcc_video_message">"Videoklic je bil podgrajen na glasovni klic 2G/3G, ker omrežje 4G ni na voljo."</string>
   <string name="srvcc_message">"Glasovni klic 4G je bil podgrajen na glasovni klic 2G/3G, ker omrežje 4G ni na voljo."</string>
 </resources>

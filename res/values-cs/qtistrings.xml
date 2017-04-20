@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Prosím, zapněte datový roaming</string>
   <string name="no_mobile_data">Mobilní data nejsou k dispozici</string>
   <string name="no_mobile_data_roaming">Datový roaming není k dispozici</string>
-  <string name="call_barring">Blokování hovorů</string>
   <string name="srvcc_video_message">"Videohovor byl změněn na hlasový 2G/3G kvůli nedostupnosti LTE."</string>
   <string name="srvcc_message">"Hlasový hovor 4G byl změněn na 2G/3G kvůli nedostupnosti 4G."</string>
 </resources>

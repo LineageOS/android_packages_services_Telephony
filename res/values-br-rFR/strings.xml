@@ -362,6 +362,7 @@
   <!-- Label for the expanded "No service" notification item, including the
          operator name set by user -->
   <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
+  <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
   <!-- In-call screen: call failure message displayed in an error dialog when in airplane mode, WFC is enabled, not wifi-only, and not connected to wireless networks. [CHAR_LIMIT=NONE] -->
   <!-- In-call screen: call failure message displayed when the user attempts to make a non-emergency call while the phone is in emergency callback mode. -->
   <!-- In-call screen: call failure message displayed in an error dialog.

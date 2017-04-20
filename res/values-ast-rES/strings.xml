@@ -39,6 +39,7 @@
   <!-- Positive button label ("OK") used in several dialogs in the phone UI [CHAR LIMIT=10] -->
   <string name="ok">ACEUTAR</string>
   <!-- "Audio mode" popup menu: Item label to select the speakerphone [CHAR LIMIT=25] -->
+  <string name="audio_mode_speaker">Altavoz</string>
   <!-- "Audio mode" popup menu: Item label to select the handset earpiece [CHAR LIMIT=25] -->
   <!-- "Audio mode" popup menu: Item label to select the wired headset [CHAR LIMIT=25] -->
   <!-- "Audio mode" popup menu: Item label to select the bluetooth headset [CHAR LIMIT=25] -->
@@ -195,6 +196,7 @@
   <!-- Mobile network settings screen title -->
   <string name="mobile_networks">Axustes de rede móvil</string>
   <!-- Available networks screen title/heading -->
+  <string name="label_available">Redes disponibles</string>
   <!-- Mobile network settings screen, toast when searching for available networks -->
   <!-- Available networks screen, text when no networks are found -->
   <!-- Available networks screen, setting option name -->
@@ -205,8 +207,11 @@
   <!-- Available networks screen, toast when registered on a specific network -->
   <!-- Mobile network settings screen setting option summary text -->
   <!-- Available networks screen, setting summary text -->
+  <string name="sum_search_networks">Gueta toles redes disponibles</string>
   <!-- Available networks screen, setting option name -->
   <!-- Available networks screen, setting summary text -->
+  <string name="preferred_network_mode_title">Triba preferida de rede</string>
+  <string name="preferred_network_mode_dialogtitle">Triba preferida de rede</string>
   <!-- Mobile network settings, summary for preferred network mode WCDMA preferred[CHAR LIMIT=100] -->
   <string name="preferred_network_mode_wcdma_perf_summary">Mou preferíu de rede: WCDMA preferíu</string>
   <!-- Mobile network settings, summary for preferred network mode GSM [CHAR LIMIT=100] -->
@@ -285,6 +290,8 @@
   <!-- Data usage settings screen option for throttling rate-->
   <!-- Data usage settings screen option for accessing the carrier website-->
   <string name="throttle_help">Deprendi más</string>
+  <string name="list_language_title">Llingua</string>
+  <string name="list_language_dtitle">Llingües</string>
   <!-- CDMA System select strings -->
   <!-- Mobile network settings screen, setting option name -->
   <!-- Mobile network settings screen, setting summary text -->
@@ -407,6 +414,7 @@
   <!-- Label for the expanded "No service" notification item, including the
          operator name set by user -->
   <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
+  <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
   <!-- In-call screen: call failure message displayed in an error dialog when in airplane mode, WFC is enabled, not wifi-only, and not connected to wireless networks. [CHAR_LIMIT=NONE] -->
   <!-- In-call screen: call failure message displayed when the user attempts to make a non-emergency call while the phone is in emergency callback mode. -->
   <!-- In-call screen: call failure message displayed in an error dialog.
@@ -468,7 +476,9 @@
   </string-array>
   <!-- Do not translate. -->
   <!-- Title for the dialog used to display CDMA DisplayInfo -->
+  <string name="network_info_message">Mensaxe de rede</string>
   <!-- Title for the dialog used to display a network error message to the user -->
+  <string name="network_error_message">Mensaxe de fallu</string>
   <!-- OTA-specific strings -->
   <!-- Title shown on OTA screen -->
   <!-- Message displayed on the OTA activation screen. -->
@@ -484,6 +494,7 @@
          needs to be kept at 2 lines or less to be sure that there's
          enough room for the dialpad. [CHAR LIMIT=80] -->
   <!-- Button label within the OTA listen screen -->
+  <string name="ota_speaker">Altavoz</string>
   <!-- String to be displayed on OTA listen screen once user has selected the
          correct option to begin provisioning -->
   <!-- String to display within the OTA Fail Notice dialog -->
@@ -532,6 +543,7 @@
   <!-- Voicemail ringtone title. The user clicks on this preference to select
          which sound to play when a voicemail notification is received.
          [CHAR LIMIT=30] -->
+  <string name="voicemail_notification_ringtone_title">Soníu</string>
   <!-- The default value value for voicemail notification. -->
   <!-- Actual values used in our code for voicemail notifications. DO NOT TRANSLATE -->
   <!-- Title for the category "ringtone", which is shown above ringtone and vibration
@@ -552,6 +564,7 @@
   <!-- Strings used in Settings->Sim cards for each installed Sim. -->
   <!-- Title for activity to control accessibility settings such as TTY mode and hearing aid
          compatability. [CHAR LIMIT=40] -->
+  <string name="accessibility_settings_activity_title">Accesibilidá</string>
   <!-- Configuration setting for world mode Format is <true;GID if any to be checked>-->
   <!-- Status hint label for an incoming call over a wifi network which has not been accepted yet.
          [CHAR LIMIT=25] -->

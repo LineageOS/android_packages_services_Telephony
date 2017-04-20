@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Attiva il roaming dati</string>
   <string name="no_mobile_data">I dati mobili non sono disponibili</string>
   <string name="no_mobile_data_roaming">Il roaming dati non è disponibile</string>
-  <string name="call_barring">Blocco chiamate</string>
   <string name="srvcc_video_message">"La videochiamata è stata declassata a chiamata vocale 2G/3G perché la connessione non è disponibile."</string>
   <string name="srvcc_message">"La chiamata 4G è stata declassata a chiamata 2G/3G, perché la connessione 4G non è disponibile."</string>
 </resources>

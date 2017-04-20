@@ -150,7 +150,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Vennligst slå på dataroaming</string>
   <string name="no_mobile_data">Mobildata er ikke tilgjengelig</string>
   <string name="no_mobile_data_roaming">Dataroaming er ikke tilgjengelig</string>
-  <string name="call_barring">Ringesperring</string>
   <string name="srvcc_video_message">"Videoanrop har blitt nedgradert til 2G/3G taleanrop, fordi 4G nettverk ikke er tilgjengelig."</string>
   <string name="srvcc_message">"4G taleanrop har blitt nedgradert til 2G/3G taleanrop, fordi 4G nettverk ikke er tilgjengelig."</string>
 </resources>
