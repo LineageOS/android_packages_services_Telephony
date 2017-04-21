@@ -161,6 +161,8 @@
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Колдоого алынбаган билдирүү, угуу үчүн <xliff:g id="NUMBER">%s</xliff:g> чалыңыз."</string>
     <!-- no translation found for mobile_networks (5540397602919106177) -->
     <skip />
+    <!-- no translation found for network_settings_title (514120489499925574) -->
+    <skip />
     <string name="label_available" msgid="1181658289009300430">"Жеткиликтүү тармактар"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Изделүүдө…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Эч тармак табылган жок."</string>
