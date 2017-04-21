@@ -159,6 +159,8 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Unable to change PIN"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Unsupported message type. Call <xliff:g id="NUMBER">%s</xliff:g> to listen."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Mobile network settings"</string>
+    <!-- no translation found for network_settings_title (514120489499925574) -->
+    <skip />
     <string name="label_available" msgid="1181658289009300430">"Available networks"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Searching…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"No networks found."</string>
