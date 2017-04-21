@@ -54,6 +54,7 @@ import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyCapabilities;
+import com.android.internal.telephony.util.TelephonyNotificationBuilder;
 import com.android.phone.settings.VoicemailNotificationSettingsUtil;
 import com.android.phone.settings.VoicemailSettingsActivity;
 
@@ -341,7 +342,7 @@ public class NotificationMgr {
             Resources res = mContext.getResources();
             PersistableBundle carrierConfig = PhoneGlobals.getInstance().getCarrierConfigForSubId(
                     subId);
-            Notification.Builder builder = new Notification.Builder(mContext);
+            Notification.Builder builder = new TelephonyNotificationBuilder(mContext);
             builder.setSmallIcon(resId)
                     .setWhen(System.currentTimeMillis())
                     .setColor(subInfo.getIconTint())
@@ -351,7 +352,8 @@ public class NotificationMgr {
                     .setSound(ringtoneUri)
                     .setColor(res.getColor(R.color.dialer_theme_color))
                     .setOngoing(carrierConfig.getBoolean(
-                            CarrierConfigManager.KEY_VOICEMAIL_NOTIFICATION_PERSISTENT_BOOL));
+                            CarrierConfigManager.KEY_VOICEMAIL_NOTIFICATION_PERSISTENT_BOOL))
+                    .setChannel(TelephonyNotificationBuilder.CHANNEL_ID_VOICE_MAIL);
 
             if (VoicemailNotificationSettingsUtil.isVibrationEnabled(phone)) {
                 builder.setDefaults(Notification.DEFAULT_VIBRATE);
@@ -497,13 +499,14 @@ public class NotificationMgr {
                 notificationTitle = mContext.getString(R.string.labelCF);
             }
 
-            Notification.Builder builder = new Notification.Builder(mContext)
+            Notification.Builder builder = new TelephonyNotificationBuilder(mContext)
                     .setSmallIcon(R.drawable.stat_sys_phone_call_forward)
                     .setColor(subInfo.getIconTint())
                     .setContentTitle(notificationTitle)
                     .setContentText(mContext.getString(R.string.sum_cfu_enabled_indicator))
                     .setShowWhen(false)
-                    .setOngoing(true);
+                    .setOngoing(true)
+                    .setChannel(TelephonyNotificationBuilder.CHANNEL_ID_CALL_FORWARD);
 
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -549,11 +552,12 @@ public class NotificationMgr {
 
         final CharSequence contentText = mContext.getText(R.string.roaming_reenable_message);
 
-        final Notification.Builder builder = new Notification.Builder(mContext)
+        final Notification.Builder builder = new TelephonyNotificationBuilder(mContext)
                 .setSmallIcon(android.R.drawable.stat_sys_warning)
                 .setContentTitle(mContext.getText(R.string.roaming))
                 .setColor(mContext.getResources().getColor(R.color.dialer_theme_color))
-                .setContentText(contentText);
+                .setContentText(contentText)
+                .setChannel(TelephonyNotificationBuilder.CHANNEL_ID_MOBILE_DATA_ALERT);
 
         List<UserInfo> users = mUserManager.getUsers(true);
         for (int i = 0; i < users.size(); i++) {
@@ -585,13 +589,14 @@ public class NotificationMgr {
     private void showNetworkSelection(String operator) {
         if (DBG) log("showNetworkSelection(" + operator + ")...");
 
-        Notification.Builder builder = new Notification.Builder(mContext)
+        Notification.Builder builder = new TelephonyNotificationBuilder(mContext)
                 .setSmallIcon(android.R.drawable.stat_sys_warning)
                 .setContentTitle(mContext.getString(R.string.notification_network_selection_title))
                 .setContentText(
                         mContext.getString(R.string.notification_network_selection_text, operator))
                 .setShowWhen(false)
-                .setOngoing(true);
+                .setOngoing(true)
+                .setChannel(TelephonyNotificationBuilder.CHANNEL_ID_ALERT);
 
         // create the target network operators settings intent
         Intent intent = new Intent(Intent.ACTION_MAIN);
