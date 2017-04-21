@@ -513,11 +513,12 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
      */
     private void placeCall() {
         mLastNumber = mDigits.getText().toString();
-        // Convert into emergency number if necessary
-        // This is required in some regions (e.g. Taiwan).
-        if (PhoneNumberUtils.isConvertToEmergencyNumberEnabled()) {
-            mLastNumber = PhoneNumberUtils.convertToEmergencyNumber(mLastNumber);
-        }
+
+        // Convert into emergency number according to emergency conversion map.
+        // If conversion map is not defined (this is default), this method does
+        // nothing and just returns input number.
+        mLastNumber = PhoneNumberUtils.convertToEmergencyNumber(this, mLastNumber);
+
         if (PhoneNumberUtils.isLocalEmergencyNumber(this, mLastNumber)) {
             if (DBG) Log.d(LOG_TAG, "placing call to " + mLastNumber);
 
