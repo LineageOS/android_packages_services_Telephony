@@ -290,7 +290,7 @@ public class CallFeaturesSetting extends PreferenceActivity
                 ImsManager.isVtProvisionedOnDevice(mPhone.getContext()) &&
                 (carrierConfig.getBoolean(
                         CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
-                        || mPhone.mDcTracker.isDataEnabled(true))) {
+                        || mPhone.mDcTracker.isDataEnabled())) {
             boolean currentValue =
                     ImsManager.isEnhanced4gLteModeSettingEnabledByUser(mPhone.getContext())
                     ? PhoneGlobals.getInstance().phoneMgr.isVideoCallingEnabled(
