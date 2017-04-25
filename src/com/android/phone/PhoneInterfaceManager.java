@@ -1562,7 +1562,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
       sendRequest(CMD_HANDLE_USSD_REQUEST, ussdObject, subId);
     };
 
-
     public boolean handlePinMmiForSubscriber(int subId, String dialString) {
         enforceModifyPermission();
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
