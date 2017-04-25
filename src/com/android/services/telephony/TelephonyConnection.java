@@ -50,6 +50,7 @@ import com.android.internal.telephony.gsm.SuppServiceNotification;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
+import com.android.internal.telephony.imsphone.ImsPhoneConnection;
 import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
@@ -417,6 +418,20 @@ abstract class TelephonyConnection extends Connection {
         public void onConnectionEvent(String event, Bundle extras) {
             sendConnectionEvent(event, extras);
         }
+
+        @Override
+        public void onRttModifyRequestReceived() {
+            sendRemoteRttRequest();
+        }
+
+        @Override
+        public void onRttModifyResponseReceived(int status) {
+            if (status == RttModifyStatus.SESSION_MODIFY_REQUEST_SUCCESS) {
+                sendRttInitiationSuccess();
+            } else {
+                sendRttInitiationFailure(status);
+            }
+        }
     };
 
     protected com.android.internal.telephony.Connection mOriginalConnection;
@@ -616,6 +631,31 @@ abstract class TelephonyConnection extends Connection {
         if (mOriginalConnection != null) {
             mOriginalConnection.pullExternalCall();
         }
+    }
+
+    @Override
+    public void onStartRtt(RttTextStream textStream) {
+        if (isImsConnection()) {
+            ImsPhoneConnection originalConnection = (ImsPhoneConnection) mOriginalConnection;
+            originalConnection.sendRttModifyRequest(textStream);
+        } else {
+            Log.w(this, "onStartRtt - not in IMS, so RTT cannot be enabled.");
+        }
+    }
+
+    @Override
+    public void onStopRtt() {
+        // This is not supported by carriers/vendor yet. No-op for now.
+    }
+
+    @Override
+    public void handleRttUpgradeResponse(RttTextStream textStream) {
+        if (!isImsConnection()) {
+            Log.w(this, "handleRttUpgradeResponse - not in IMS, so RTT cannot be enabled.");
+            return;
+        }
+        ImsPhoneConnection originalConnection = (ImsPhoneConnection) mOriginalConnection;
+        originalConnection.sendRttModifyResponse(textStream);
     }
 
     public void performHold() {
