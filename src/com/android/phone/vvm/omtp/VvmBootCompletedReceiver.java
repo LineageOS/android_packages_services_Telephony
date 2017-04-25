@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.SubscriptionManager;
+import com.android.phone.vvm.RemoteVvmTaskManager;
 import com.android.phone.vvm.omtp.utils.PhoneAccountHandleConverter;
 
 /**
@@ -42,6 +43,10 @@ public class VvmBootCompletedReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // Listens to android.intent.action.BOOT_COMPLETED
         if (!intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
+            return;
+        }
+
+        if (RemoteVvmTaskManager.hasRemoteService(context)) {
             return;
         }
 
