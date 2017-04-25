@@ -2168,6 +2168,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+      * returns true, if the device is in a state where both voice and data
+      * are supported simultaneously. This can change based on location or network condition.
+     */
+    @Override
+    public boolean isConcurrentVoiceAndDataAllowed(int subId) {
+        final Phone phone = getPhone(subId);
+        return (phone == null ? false : phone.isConcurrentVoiceAndDataAllowed());
+    }
+
+    /**
      * Returns the data network type.
      * Legacy call, permission-free.
      *
