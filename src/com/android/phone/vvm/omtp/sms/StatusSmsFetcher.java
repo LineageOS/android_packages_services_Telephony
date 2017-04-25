@@ -27,13 +27,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.provider.VoicemailContract;
+import android.telecom.PhoneAccountHandle;
 import android.telephony.SmsManager;
+import android.telephony.VisualVoicemailSms;
 
 import com.android.phone.Assert;
 import com.android.phone.vvm.omtp.OmtpConstants;
 import com.android.phone.vvm.omtp.OmtpVvmCarrierConfigHelper;
 import com.android.phone.vvm.omtp.VvmLog;
 import com.android.phone.vvm.omtp.protocol.VisualVoicemailProtocol;
+import com.android.phone.vvm.omtp.utils.PhoneAccountHandleConverter;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -107,16 +110,17 @@ public class StatusSmsFetcher extends BroadcastReceiver implements Closeable {
             return;
         }
 
-        int subId = intent.getExtras().getInt(VoicemailContract.EXTRA_VOICEMAIL_SMS_SUBID);
-
+        VisualVoicemailSms sms = intent.getExtras()
+                .getParcelable(VoicemailContract.EXTRA_VOICEMAIL_SMS);
+        PhoneAccountHandle phoneAccountHandle = sms.getPhoneAccountHandle();
+        int subId = PhoneAccountHandleConverter.toSubId(phoneAccountHandle);
         if (mSubId != subId) {
             return;
         }
-        String eventType = intent.getExtras()
-                .getString(VoicemailContract.EXTRA_VOICEMAIL_SMS_PREFIX);
+        String eventType = sms.getPrefix();
 
         if (eventType.equals(OmtpConstants.STATUS_SMS_PREFIX)) {
-            mFuture.complete(intent.getBundleExtra(VoicemailContract.EXTRA_VOICEMAIL_SMS_FIELDS));
+            mFuture.complete(sms.getFields());
             return;
         }
 
@@ -132,7 +136,7 @@ public class StatusSmsFetcher extends BroadcastReceiver implements Closeable {
             return;
         }
         Bundle translatedBundle = protocol.translateStatusSmsBundle(helper, eventType,
-                intent.getBundleExtra(VoicemailContract.EXTRA_VOICEMAIL_SMS_FIELDS));
+                sms.getFields());
 
         if (translatedBundle != null) {
             VvmLog.i(TAG, "Translated to STATUS SMS");

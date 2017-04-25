@@ -17,10 +17,8 @@
 package com.android.phone.vvm.omtp.sms;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.VoicemailContract;
-import android.telecom.PhoneAccountHandle;
+import android.telephony.VisualVoicemailSms;
 
 import com.android.internal.telephony.Phone;
 import com.android.phone.PhoneUtils;
@@ -37,15 +35,14 @@ public class LegacyModeSmsHandler {
 
     private static final String TAG = "LegacyModeSmsHandler";
 
-    public static void handle(Context context, Intent intent, PhoneAccountHandle handle) {
+    public static void handle(Context context, VisualVoicemailSms sms) {
         VvmLog.v(TAG, "processing VVM SMS on legacy mode");
-        String eventType = intent.getExtras()
-                .getString(VoicemailContract.EXTRA_VOICEMAIL_SMS_PREFIX);
-        Bundle data = intent.getExtras().getBundle(VoicemailContract.EXTRA_VOICEMAIL_SMS_FIELDS);
+        String eventType = sms.getPrefix();
+        Bundle data = sms.getFields();
 
         if (eventType.equals(OmtpConstants.SYNC_SMS_PREFIX)) {
             SyncMessage message = new SyncMessage(data);
-            VvmLog.v(TAG, "Received SYNC sms for " + handle.getId() +
+            VvmLog.v(TAG, "Received SYNC sms for " + sms.getPhoneAccountHandle() +
                     " with event " + message.getSyncTriggerEvent());
 
             switch (message.getSyncTriggerEvent()) {
@@ -56,7 +53,8 @@ public class LegacyModeSmsHandler {
                     // For some carriers new message count could be set to 0 even if there are still
                     // unread messages, to clear the message waiting indicator.
                     VvmLog.v(TAG, "updating MWI");
-                    Phone phone = PhoneUtils.getPhoneForPhoneAccountHandle(handle);
+                    Phone phone = PhoneUtils.getPhoneForPhoneAccountHandle(
+                            sms.getPhoneAccountHandle());
                     // Setting voicemail message count to non-zero will show the telephony voicemail
                     // notification, and zero will clear it.
                     phone.setVoiceMessageCount(message.getNewMessageCount());
