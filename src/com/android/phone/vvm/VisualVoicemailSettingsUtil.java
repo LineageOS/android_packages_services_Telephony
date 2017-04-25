@@ -16,8 +16,9 @@
 package com.android.phone.vvm;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.telecom.PhoneAccountHandle;
-import com.android.phone.R;
+import android.telephony.TelephonyManager;
 
 /**
  * Save whether or not a particular account is enabled in shared to be retrieved later.
@@ -26,39 +27,18 @@ public class VisualVoicemailSettingsUtil {
 
     private static final String IS_ENABLED_KEY = "is_enabled";
 
+    private static final String DEFAULT_OLD_PIN_KEY = "default_old_pin";
 
-    public static void setEnabled(Context context, PhoneAccountHandle phoneAccount,
-            boolean isEnabled) {
-        new VisualVoicemailPreferences(context, phoneAccount).edit()
-                .putBoolean(IS_ENABLED_KEY, isEnabled)
-                .apply();
-    }
-
-    public static boolean isEnabled(Context context,
-            PhoneAccountHandle phoneAccount) {
-        if (phoneAccount == null) {
-            return false;
+    public static Bundle dump(Context context, PhoneAccountHandle phoneAccountHandle){
+        Bundle result = new Bundle();
+        VisualVoicemailPreferences prefs = new VisualVoicemailPreferences(context,
+                phoneAccountHandle);
+        if (prefs.contains(IS_ENABLED_KEY)) {
+            result.putBoolean(TelephonyManager.EXTRA_VISUAL_VOICEMAIL_ENABLED_BY_USER_BOOL,
+                    prefs.getBoolean(IS_ENABLED_KEY, false));
         }
-        if (!context.getResources().getBoolean(R.bool.allow_visual_voicemail)) {
-            return false;
-        }
-
-        VisualVoicemailPreferences prefs = new VisualVoicemailPreferences(context, phoneAccount);
-        return prefs.getBoolean(IS_ENABLED_KEY, false);
-    }
-
-    /**
-     * Whether the client enabled status is explicitly set by user or by default(Whether carrier VVM
-     * app is installed). This is used to determine whether to disable the client when the carrier
-     * VVM app is installed. If the carrier VVM app is installed the client should give priority to
-     * it if the settings are not touched.
-     */
-    public static boolean isEnabledUserSet(Context context,
-            PhoneAccountHandle phoneAccount) {
-        if (phoneAccount == null) {
-            return false;
-        }
-        VisualVoicemailPreferences prefs = new VisualVoicemailPreferences(context, phoneAccount);
-        return prefs.contains(IS_ENABLED_KEY);
+        result.putString(TelephonyManager.EXTRA_VOICEMAIL_SCRAMBLED_PIN_STRING,
+                prefs.getString(DEFAULT_OLD_PIN_KEY));
+        return result;
     }
 }
