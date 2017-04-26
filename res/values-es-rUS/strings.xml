@@ -93,7 +93,7 @@
     <string name="labelCW" msgid="6120513814915920200">"Llamada en espera"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Configuración de reenvío de llamadas"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Reenvío de llamadas"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Configuración de desvío de llamada (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Desvío de llamadas"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Reenviar siempre"</string>
@@ -112,7 +112,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Reenviar a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Desactivado"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando tu teléfono no responde."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"Cuando está inaccesible"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"Cuando no esté disponible"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Número cuando no se puede establecer la llamada"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Reenviar a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"Desactivado"</string>
@@ -120,7 +120,7 @@
     <string name="updating_title" msgid="6146755386174019046">"Config. de llamada"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Solo el usuario administrador puede cambiar la configuración de llamadas."</string>
     <string name="call_settings_with_label" msgid="3401177261468593519">"Configuración (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="error_updating_title" msgid="7970259216988931777">"Error en configuración de llamada"</string>
+    <string name="error_updating_title" msgid="7970259216988931777">"Error de configuración de llamada"</string>
     <string name="reading_settings" msgid="1920291699287055284">"Leyendo configuración..."</string>
     <string name="updating_settings" msgid="8171225533884883252">"Actualizando configuración..."</string>
     <string name="reverting_settings" msgid="4752151682666912828">"Revirtiendo configuraciones..."</string>
@@ -439,7 +439,8 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Número de correo de voz desconocido"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Sin servicio"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"La red seleccionada (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) no está disponible"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Desactiva el modo de avión o el modo de ahorro de batería para realizar una llamada."</string>
+    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
+    <skip />
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Desactivar modo de avión para hacer una llamada"</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Desactivar el modo de avión o conectarse a una red inalámbrica para hacer una llamada"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Para realizar una llamada que no sea de emergencia, sal del modo de devolución de llamada de emergencia."</string>

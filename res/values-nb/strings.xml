@@ -96,7 +96,7 @@
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Innstillinger for viderekobling"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Innstillinger for viderekobling (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Viderekobling"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"Alltid viderekoble"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"Viderekoble alltid"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Bruk alltid dette nummeret"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Viderekoble alle anrop"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Viderekobler alle anrop til <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
@@ -107,13 +107,13 @@
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"Viderekobler til <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"Av"</string>
     <string name="disable_cfb_forbidden" msgid="3506984333877998061">"Operatøren støtter ikke deaktivering av viderekobling når telefonen er opptatt."</string>
-    <string name="labelCFNRy" msgid="1736067178393744351">"Når ingen svarer"</string>
-    <string name="messageCFNRy" msgid="672317899884380374">"Nummer når ingen svarer"</string>
+    <string name="labelCFNRy" msgid="1736067178393744351">"Når jeg ikke svarer"</string>
+    <string name="messageCFNRy" msgid="672317899884380374">"Nummer når jeg ikke svarer"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Viderekobler til <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Av"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Operatøren støtter ikke deaktivering av viderekobling når anropet ikke besvares."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"Når mottaker ikke nås"</string>
-    <string name="messageCFNRc" msgid="6380695421020295119">"Nummer når mottaker ikke kan nås"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"Når jeg ikke kan nås"</string>
+    <string name="messageCFNRc" msgid="6380695421020295119">"Nummer når jeg ikke kan nås"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Viderekobler til <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"Slått av"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Operatøren støtter ikke deaktivering av viderekobling når telefonen er utenfor dekning."</string>
@@ -327,7 +327,7 @@
     <string name="multi_category_disable" msgid="880104702904139505">"Multikategori deaktivert"</string>
     <string name="network_lte" msgid="7702681952521375754">"LTE (anbefales)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G (anbefales)"</string>
-    <string name="network_global" msgid="1323190488685355309">"Global"</string>
+    <string name="network_global" msgid="1323190488685355309">"Globalt"</string>
     <string name="cdma_system_select_title" msgid="5757657769327732833">"Systemvalg"</string>
     <string name="cdma_system_select_summary" msgid="60460043745797517">"Velg roamingmodus for CDMA"</string>
     <string name="cdma_system_select_dialogtitle" msgid="6083355415165359075">"Systemvalg"</string>
@@ -362,8 +362,8 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Slå av faste numre"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Slå på faste numre"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Vedlikehold liste over faste numre"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Endre PIN-kode for tilgang til faste numre"</string>
-    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Administrer liste over telefonnumre"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Endre PIN-koden som gir tilgang til faste numre"</string>
+    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Administrer listen med telefonnumre"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Personvern for Google Voice"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Aktiver forbedret personvern"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY-modus"</string>
@@ -445,7 +445,8 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Mangler nummer til talepostkasse"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Ingen tjeneste"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Valgt nettverk (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) er ikke tilgjengelig"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Slå av flymodus eller batterisparing for å ringe."</string>
+    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
+    <skip />
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Slå av flymodus for å ringe."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Slå av flymodus eller koble til et trådløst nettverk for å ringe."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Avslutt modusen for nødanrop for å gjøre et vanlig anrop."</string>
