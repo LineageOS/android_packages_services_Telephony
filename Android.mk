@@ -16,12 +16,14 @@ LOCAL_JAVA_LIBRARIES := \
         org.apache.http.legacy
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
+        guava \
+        volley
+
+LOCAL_STATIC_ANDROID_LIBRARIES := \
         android-support-v7-appcompat \
         android-support-v7-preference \
         android-support-v7-recyclerview \
-        android-support-v14-preference \
-        guava \
-        volley
+        android-support-v14-preference
 
 LOCAL_SRC_FILES := $(call all-java-files-under, $(src_dirs))
 LOCAL_SRC_FILES += \
@@ -29,6 +31,8 @@ LOCAL_SRC_FILES += \
         src/com/android/phone/INetworkQueryService.aidl \
         src/com/android/phone/INetworkQueryServiceCallback.aidl
 LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, $(res_dirs))
+
+LOCAL_USE_AAPT2 := true
 
 LOCAL_AAPT_FLAGS := \
     --auto-add-overlay \
