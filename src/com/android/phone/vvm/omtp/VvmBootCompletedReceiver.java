@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.SubscriptionManager;
+
 import com.android.phone.vvm.RemoteVvmTaskManager;
 import com.android.phone.vvm.omtp.utils.PhoneAccountHandleConverter;
 
@@ -46,10 +47,6 @@ public class VvmBootCompletedReceiver extends BroadcastReceiver {
             return;
         }
 
-        if (RemoteVvmTaskManager.hasRemoteService(context)) {
-            return;
-        }
-
         VvmLog.v(TAG, "processing subId list");
         for (PhoneAccountHandle handle : TelecomManager.from(context)
                 .getCallCapablePhoneAccounts()) {
@@ -60,6 +57,10 @@ public class VvmBootCompletedReceiver extends BroadcastReceiver {
                 VvmLog.e(TAG, "phone account " + handle + " has invalid subId " + subId);
                 continue;
             }
+            if (RemoteVvmTaskManager.hasRemoteService(context, subId)) {
+                return;
+            }
+
             VvmLog.v(TAG, "processing subId " + subId);
             SimChangeReceiver.processSubId(context, subId);
         }
