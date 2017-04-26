@@ -159,8 +159,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"‏PIN تبدیل کرنے سے قاصر"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"پیغام کی غیر تعاون یافتہ قسم، سننے کیلئے <xliff:g id="NUMBER">%s</xliff:g> پر کال کریں۔"</string>
     <string name="mobile_networks" msgid="5540397602919106177">"موبائل نیٹ ورک کی ترتیبات"</string>
-    <!-- no translation found for network_settings_title (514120489499925574) -->
-    <skip />
+    <string name="network_settings_title" msgid="514120489499925574">"موبائل نیٹ ورک"</string>
     <string name="label_available" msgid="1181658289009300430">"دستیاب نیٹ ورکس"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"تلاش کر رہا ہے…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"کوئی نیٹ ورکس نہیں ملے۔"</string>
@@ -443,7 +442,8 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"صوتی میل نمبر نامعلوم ہے"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"کوئی سروس نہیں ہے"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"منتخب کردہ نیٹ ورک (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) دستیاب نہیں ہے"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"کال کرنے کیلئے ہوائی جہاز موڈ یا بیٹری سیور موڈ کو آف کریں۔"</string>
+    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
+    <skip />
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"کال کرنے کیلئے ہوائی جہاز وضع آف کریں۔"</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"کال کرنے کیلئے ہوائی جہاز وضع آف کریں یا کسی وائرلیس نیٹ ورک سے منسلک ہوں۔"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"غیر ہنگامی کال کرنے کیلئے ہنگامی کال بیک موڈ سے اخراج کریں۔"</string>

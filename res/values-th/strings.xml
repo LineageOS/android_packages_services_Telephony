@@ -159,8 +159,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"ไม่สามารถเปลี่ยน PIN ได้"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"ไม่รองรับข้อความประเภทนี้ โปรดโทร <xliff:g id="NUMBER">%s</xliff:g> เพื่อฟังข้อความเสียง"</string>
     <string name="mobile_networks" msgid="5540397602919106177">"การตั้งค่าเครือข่ายมือถือ"</string>
-    <!-- no translation found for network_settings_title (514120489499925574) -->
-    <skip />
+    <string name="network_settings_title" msgid="514120489499925574">"เครือข่ายมือถือ"</string>
     <string name="label_available" msgid="1181658289009300430">"เครือข่ายที่ใช้งานได้"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"กำลังค้นหา…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"ไม่พบเครือข่าย"</string>
@@ -443,7 +442,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"ไม่ทราบหมายเลขข้อความเสียง"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"ไม่มีบริการ"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"เครือข่ายที่เลือกไว้ (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) ไม่พร้อมใช้งาน"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"ปิดโหมดบนเครื่องบินหรือโหมดประหยัดแบตเตอรี่เพื่อโทรออก"</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"เปิดเครือข่ายมือถือ ปิดโหมดบนเครื่องบิน หรือปิดโหมดประหยัดแบตเตอรี่เพื่อโทรออก"</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"ปิดโหมดบนเครื่องบินเพื่อโทรออก"</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"ปิดโหมดบนเครื่องบินหรือเชื่อมต่อเครือข่ายไร้สายเพื่อโทรออก"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"โปรดออกจากโหมดการโทรกลับกรณีฉุกเฉินเพื่อโทรไปยังหมายเลขที่ไม่ใช่หมายเลขฉุกเฉิน"</string>

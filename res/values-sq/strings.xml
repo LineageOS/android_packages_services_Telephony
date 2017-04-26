@@ -159,8 +159,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Kodi PIN nuk u ndryshua."</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Lloj mesazhi i pambështetur, telefono <xliff:g id="NUMBER">%s</xliff:g> për ta dëgjuar."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Cilësimet e rrjetit celular"</string>
-    <!-- no translation found for network_settings_title (514120489499925574) -->
-    <skip />
+    <string name="network_settings_title" msgid="514120489499925574">"Rrjeti celular"</string>
     <string name="label_available" msgid="1181658289009300430">"Rrjete të arritshme"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Po kërkon..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Nuk u gjetën rrjete."</string>
@@ -443,7 +442,8 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Numri i postës zanore është i panjohur"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Nuk ka shërbim"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Rrjeti i përzgjedhur (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) nuk mundësohet"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Çaktivizo modalitetin e aeroplanit ose modalitetin e kursyesit të baterisë për të bërë një telefonatë."</string>
+    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
+    <skip />
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Çaktivizo modalitetin e aeroplanit për të bërë telefonata."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Çaktivizo modalitetin e aeroplanit ose lidhu me ndonjë rrjet interneti valor për të bërë telefonata."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Dil nga modaliteti i kthimit të telefonatës së urgjencës për të bërë një telefonatë jo urgjente."</string>
