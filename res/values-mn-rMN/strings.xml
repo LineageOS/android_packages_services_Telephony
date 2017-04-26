@@ -439,7 +439,8 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Дуут шуудангийн дугаар тодорхойгүй"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Үйлчилгээ байхгүй"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Сонгосон сүлжээ (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) ашиглах боломжгүй"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Дуудлага хийхийн тулд нислэгийн горим буюу батерей хэмнэх горимыг идэвхгүй болгоно уу."</string>
+    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
+    <skip />
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Дуудлага хийхийн тулд онгоцны горимыг унтраа."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Дуудлага хийхийн тулд онгоцны горимыг унтраа эсвэл утасгүй интернетэд холбогдоно уу."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Яаралтай түргэн тусламжийн бус дуудлага хийхийн тулд яаралтай түргэн тусламжийн callback горимоос гарна уу."</string>
@@ -542,7 +543,7 @@
     <string name="alert_dialog_no" msgid="1476091437797628703">"Үгүй"</string>
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Алгасах"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"Үйлчилгээ"</string>
-    <string name="voicemail_settings" msgid="72448049107749316">"Суулгах"</string>
+    <string name="voicemail_settings" msgid="72448049107749316">"Тохиргоо"</string>
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Тохируулаагүй&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Бусад дуудлагын тохиргоо"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"<xliff:g id="PROVIDER_NAME">%s</xliff:g>-р залгаж байна"</string>

@@ -226,10 +226,10 @@
     <string name="throttle_time_frame" msgid="1915198770363734685">"Perioada de utilizare a datelor"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"Politica ratei de transfer a datelor"</string>
     <string name="throttle_help" msgid="243651091785169900">"Aflați mai multe"</string>
-    <string name="throttle_status_subtext" msgid="1657318943142085170">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) din <xliff:g id="USED_2">%3$s</xliff:g> perioada maximă\nUrmătoarea perioadă începe în <xliff:g id="USED_3">%4$d</xliff:g> (de) zile (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1657318943142085170">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) din <xliff:g id="USED_2">%3$s</xliff:g> perioada maximă\nUrmătoarea perioadă începe în <xliff:g id="USED_3">%4$d</xliff:g> zile (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) din <xliff:g id="USED_2">%3$s</xliff:g> perioadă maximă"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> maximum depășit\nRata de transfer se reduce la <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
-    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ din ciclul trecut\nPerioada următoare începe în <xliff:g id="USED_1">%2$d</xliff:g> (de) zile (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ din ciclul trecut\nPerioada următoare începe în <xliff:g id="USED_1">%2$d</xliff:g> zile (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Rata de transfer a datelor se reduce la <xliff:g id="USED">%1$d</xliff:g> Kb/s, dacă limita de utilizare este depășită."</string>
     <string name="throttle_help_subtext" msgid="3633091498168446044">"Mai multe informații despre politica de utilizare a datelor aplicată de operatorul dvs. de telefonie mobilă"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Transmisie celulară a mesajelor SMS"</string>
@@ -439,7 +439,8 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Număr mesagerie vocală necunoscut"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Fără serviciu"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Rețeaua selectată (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) nu este disponibilă"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Dezactivați modul avion sau modul de economisire a bateriei pentru a iniția un apel."</string>
+    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
+    <skip />
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Pentru a apela, dezactivați modul Avion."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Pentru a apela, dezactivați modul Avion sau conectați-vă la o rețea wireless."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Ieșiți din modul de apelare inversă de urgență pentru a efectua un apel care nu este de urgență."</string>
