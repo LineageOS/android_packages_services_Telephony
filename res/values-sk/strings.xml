@@ -159,8 +159,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"PIN nie je možné zmeniť"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Nepodporovaný typ správy, zavolajte na číslo <xliff:g id="NUMBER">%s</xliff:g> a vypočujte si správu."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Nastavenia mobilnej siete"</string>
-    <!-- no translation found for network_settings_title (514120489499925574) -->
-    <skip />
+    <string name="network_settings_title" msgid="514120489499925574">"Mobilná sieť"</string>
     <string name="label_available" msgid="1181658289009300430">"Dostupné siete"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Hľadá sa…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Nebola nájdená žiadna sieť."</string>
@@ -357,7 +356,7 @@
     <string name="fdn_disabled" msgid="4700049736675368279">"Režim povolených čísel je vypnutý"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Zapnúť režim povolených čísel"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Vypnúť režim povolených čísel"</string>
-    <string name="change_pin2" msgid="2153563695382176676">"Zmena kódu PIN2"</string>
+    <string name="change_pin2" msgid="2153563695382176676">"Zmeniť kód PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Vypnúť režim povolených čísel"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Zapnúť režim povolených čísel"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Umožňuje spravovať povolené čísla"</string>
@@ -445,7 +444,8 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Číslo hlasovej schránky je neznáme"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Žiadny signál"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Vybratá sieť (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) nie je k dispozícii"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Ak chcete volať, vypnite režim v lietadle alebo režim šetriča batérie."</string>
+    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
+    <skip />
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Ak chcete volať, vypnite režim v lietadle"</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Ak chcete volať, vypnite režim v lietadle alebo sa pripojte k bezdrôtovej sieti"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Ak chcete volať štandardným spôsobom, ukončite režim tiesňového spätného volania."</string>
