@@ -29,16 +29,23 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.os.PersistableBundle;
 import android.os.RemoteException;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.CarrierConfigManager;
 import android.telephony.VisualVoicemailService;
 import android.telephony.VisualVoicemailSms;
+import android.text.TextUtils;
 
 import com.android.phone.Assert;
+import com.android.phone.R;
 import com.android.phone.vvm.omtp.VvmLog;
+import com.android.phone.vvm.omtp.utils.PhoneAccountHandleConverter;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -93,18 +100,39 @@ public class RemoteVvmTaskManager extends Service {
         context.startService(intent);
     }
 
-    public static boolean hasRemoteService(Context context) {
-        return getRemotePackage(context) != null;
+    public static boolean hasRemoteService(Context context, int subId) {
+        return getRemotePackage(context, subId) != null;
     }
 
-    public static ComponentName getRemotePackage(Context context) {
+    public static ComponentName getRemotePackage(Context context, int subId) {
+        Intent bindIntent = newBindIntent(context);
 
-        ResolveInfo info = context.getPackageManager()
-                .resolveService(newBindIntent(context), PackageManager.MATCH_ALL);
-        if (info == null) {
-            return null;
+        TelecomManager telecomManager = context.getSystemService(TelecomManager.class);
+        List<String> packages = new ArrayList<>();
+        packages.add(telecomManager.getDefaultDialerPackage());
+        PersistableBundle carrierConfig = context
+                .getSystemService(CarrierConfigManager.class).getConfigForSubId(subId);
+        packages.add(
+                carrierConfig.getString(CarrierConfigManager.KEY_CARRIER_VVM_PACKAGE_NAME_STRING));
+        for (String packageName : carrierConfig
+                .getStringArray(CarrierConfigManager.KEY_CARRIER_VVM_PACKAGE_NAME_STRING_ARRAY)) {
+            packages.add(packageName);
         }
-        return info.getComponentInfo().getComponentName();
+        packages.add(context.getResources().getString(R.string.system_visual_voicemail_client));
+        packages.add(telecomManager.getSystemDialerPackage());
+        for (String packageName : packages) {
+            if (TextUtils.isEmpty(packageName)) {
+                continue;
+            }
+            bindIntent.setPackage(packageName);
+            ResolveInfo info = context.getPackageManager()
+                    .resolveService(bindIntent, PackageManager.MATCH_ALL);
+            if (info != null) {
+                return info.getComponentInfo().getComponentName();
+            }
+
+        }
+        return null;
     }
 
     @Override
@@ -130,15 +158,27 @@ public class RemoteVvmTaskManager extends Service {
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
         Assert.isMainThread();
         mTaskReferenceCount++;
+
+        PhoneAccountHandle phoneAccountHandle = intent.getExtras()
+                .getParcelable(VisualVoicemailService.DATA_PHONE_ACCOUNT_HANDLE);
+        int subId = PhoneAccountHandleConverter.toSubId(phoneAccountHandle);
+        ComponentName remotePackage = getRemotePackage(this, subId);
+        if (remotePackage == null) {
+            VvmLog.i(TAG, "No service to handle " + intent.getAction() + ", ignoring");
+            checkReference();
+            return START_NOT_STICKY;
+        }
+
         switch (intent.getAction()) {
             case ACTION_START_CELL_SERVICE_CONNECTED:
-                send(VisualVoicemailService.MSG_ON_CELL_SERVICE_CONNECTED, intent.getExtras());
+                send(remotePackage, VisualVoicemailService.MSG_ON_CELL_SERVICE_CONNECTED,
+                        intent.getExtras());
                 break;
             case ACTION_START_SMS_RECEIVED:
-                send(VisualVoicemailService.MSG_ON_SMS_RECEIVED, intent.getExtras());
+                send(remotePackage, VisualVoicemailService.MSG_ON_SMS_RECEIVED, intent.getExtras());
                 break;
             case ACTION_START_SIM_REMOVED:
-                send(VisualVoicemailService.MSG_ON_SIM_REMOVED, intent.getExtras());
+                send(remotePackage, VisualVoicemailService.MSG_ON_SIM_REMOVED, intent.getExtras());
                 break;
             default:
                 Assert.fail("Unexpected action +" + intent.getAction());
@@ -217,7 +257,7 @@ public class RemoteVvmTaskManager extends Service {
         }
     }
 
-    private void send(int what, Bundle extras) {
+    private void send(ComponentName remotePackage,int what, Bundle extras) {
         Assert.isMainThread();
         Message message = Message.obtain();
         message.what = what;
@@ -229,12 +269,16 @@ public class RemoteVvmTaskManager extends Service {
 
         if (!mConnection.isConnected()) {
             Intent intent = newBindIntent(this);
-            intent.setComponent(getRemotePackage(this));
+            intent.setComponent(remotePackage);
+            VvmLog.i(TAG, "Binding to " + intent.getComponent());
             bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
         }
     }
 
     private void checkReference() {
+        if (mConnection == null) {
+            return;
+        }
         if (mTaskReferenceCount == 0) {
             unbindService(mConnection);
             mConnection = null;
@@ -244,8 +288,6 @@ public class RemoteVvmTaskManager extends Service {
     private static Intent newBindIntent(Context context) {
         Intent intent = new Intent();
         intent.setAction(VisualVoicemailService.SERVICE_INTERFACE);
-        TelecomManager telecomManager = context.getSystemService(TelecomManager.class);
-        intent.setPackage(telecomManager.getDefaultDialerPackage());
         return intent;
     }
 }

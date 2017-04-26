@@ -20,6 +20,7 @@ import android.telecom.PhoneAccountHandle;
 import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
+
 import com.android.phone.PhoneUtils;
 import com.android.phone.VoicemailStatus;
 import com.android.phone.vvm.RemoteVvmTaskManager;
@@ -55,7 +56,7 @@ public class VvmPhoneStateListener extends PhoneStateListener {
             return;
         }
 
-        if (RemoteVvmTaskManager.hasRemoteService(mContext)) {
+        if (RemoteVvmTaskManager.hasRemoteService(mContext, subId)) {
             return;
         }
 

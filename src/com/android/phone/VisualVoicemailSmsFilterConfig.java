@@ -64,7 +64,7 @@ public class VisualVoicemailSmsFilterConfig {
 
     public static VisualVoicemailSmsFilterSettings getActiveVisualVoicemailSmsFilterSettings(
             Context context, int subId) {
-        ComponentName componentName = RemoteVvmTaskManager.getRemotePackage(context);
+        ComponentName componentName = RemoteVvmTaskManager.getRemotePackage(context, subId);
         String packageName;
         if (componentName == null) {
             packageName = DEFAULT_PACKAGE;
