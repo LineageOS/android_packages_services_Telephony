@@ -159,8 +159,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Δεν είναι δυνατή η αλλαγή του PIN"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Μη υποστηριζόμενος τύπος μηνύματος: καλέστε στο <xliff:g id="NUMBER">%s</xliff:g> για να το ακούσετε."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Ρυθμίσεις δικτύου κινητής τηλεφωνίας"</string>
-    <!-- no translation found for network_settings_title (514120489499925574) -->
-    <skip />
+    <string name="network_settings_title" msgid="514120489499925574">"Δίκτυο κινητής τηλεφωνίας"</string>
     <string name="label_available" msgid="1181658289009300430">"Διαθέσιμα δίκτυα"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Αναζήτηση..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Δεν βρέθηκαν δίκτυα."</string>
@@ -445,7 +444,8 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Ο αριθμός αυτόματου τηλεφωνητή είναι άγνωστος"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Δίκτυο μη διαθέσιμο"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Επιλεγμένο δίκτυο (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) μη διαθέσιμο"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Απενεργοποιήστε τη λειτουργία πτήσης ή τη λειτουργία εξοικονόμησης μπαταρίας, για να πραγματοποιήσετε μια κλήση."</string>
+    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
+    <skip />
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Απενεργοποιήστε τη λειτουργία κλήσης για να πραγματοποιήσετε μια κλήση."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Απενεργοποιήστε τη λειτουργία πτήσης ή συνδεθείτε σε ένα ασύρματο δίκτυο για να πραγματοποιήσετε μια κλήση."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Πραγματοποιήστε έξοδο από τη λειτουργία επιστροφής κλήσης έκτακτης ανάγκης για να πραγματοποιήσετε μια κλήση μη έκτακτης ανάγκης."</string>
