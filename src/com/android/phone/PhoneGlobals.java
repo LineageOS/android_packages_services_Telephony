@@ -145,8 +145,6 @@ public class PhoneGlobals extends ContextWrapper {
     private Activity mPUKEntryActivity;
     private ProgressDialog mPUKEntryProgressDialog;
 
-    private boolean mDataDisconnectedDueToRoaming = false;
-
     private WakeState mWakeState = WakeState.SLEEP;
 
     private PowerManager mPowerManager;
@@ -650,36 +648,36 @@ public class PhoneGlobals extends ContextWrapper {
             } else if (action.equals(TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED)) {
                 int subId = intent.getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
                         SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-                int phoneId = SubscriptionManager.getPhoneId(subId);
-                String state = intent.getStringExtra(PhoneConstants.STATE_KEY);
+                final String apnType = intent.getStringExtra(PhoneConstants.DATA_APN_TYPE_KEY);
+                final String state = intent.getStringExtra(PhoneConstants.STATE_KEY);
+                final String reason = intent.getStringExtra(PhoneConstants.STATE_CHANGE_REASON_KEY);
                 if (VDBG) {
                     Log.d(LOG_TAG, "mReceiver: ACTION_ANY_DATA_CONNECTION_STATE_CHANGED");
                     Log.d(LOG_TAG, "- state: " + state);
-                    Log.d(LOG_TAG, "- reason: "
-                    + intent.getStringExtra(PhoneConstants.STATE_CHANGE_REASON_KEY));
+                    Log.d(LOG_TAG, "- reason: " + reason);
                     Log.d(LOG_TAG, "- subId: " + subId);
-                    Log.d(LOG_TAG, "- phoneId: " + phoneId);
                 }
-                Phone phone = SubscriptionManager.isValidPhoneId(phoneId) ?
-                        PhoneFactory.getPhone(phoneId) : PhoneFactory.getDefaultPhone();
 
-                // If not default data subscription, ignore the broadcast intent and avoid action.
-                if (subId != SubscriptionManager.getDefaultDataSubscriptionId()) {
-                    if (VDBG) Log.d(LOG_TAG, "Ignore broadcast intent as not default data sub.");
+                // If the apn type of data connection state changed event is NOT default,
+                // ignore the broadcast intent and avoid action.
+                if (!PhoneConstants.APN_TYPE_DEFAULT.equals(apnType)) {
+                    if (VDBG) Log.d(LOG_TAG, "Ignore broadcast intent as not default apn type");
                     return;
                 }
+
                 // The "data disconnected due to roaming" notification is shown
                 // if (a) you have the "data roaming" feature turned off, and
                 // (b) you just lost data connectivity because you're roaming.
-                boolean disconnectedDueToRoaming =
-                        !phone.getDataRoamingEnabled()
-                        && PhoneConstants.DataState.DISCONNECTED.equals(state)
-                        && Phone.REASON_ROAMING_ON.equals(
-                            intent.getStringExtra(PhoneConstants.STATE_CHANGE_REASON_KEY));
-                if (mDataDisconnectedDueToRoaming != disconnectedDueToRoaming) {
-                    mDataDisconnectedDueToRoaming = disconnectedDueToRoaming;
-                    mHandler.sendEmptyMessage(disconnectedDueToRoaming
-                            ? EVENT_DATA_ROAMING_DISCONNECTED : EVENT_DATA_ROAMING_OK);
+                if (PhoneConstants.DataState.DISCONNECTED.name().equals(state)
+                        && Phone.REASON_ROAMING_ON.equals(reason)
+                        && !getPhone(subId).getDataRoamingEnabled()) {
+                    // Notify the user that data call is disconnected due to roaming. Note that
+                    // calling this multiple times will not cause multiple notifications.
+                    mHandler.sendEmptyMessage(EVENT_DATA_ROAMING_DISCONNECTED);
+                } else if (PhoneConstants.DataState.CONNECTED.name().equals(state)) {
+                    // Cancel the notification when data is available. Note it is okay to call this
+                    // even if the notification doesn't exist.
+                    mHandler.sendEmptyMessage(EVENT_DATA_ROAMING_OK);
                 }
             } else if ((action.equals(TelephonyIntents.ACTION_SIM_STATE_CHANGED)) &&
                     (mPUKEntryActivity != null)) {
