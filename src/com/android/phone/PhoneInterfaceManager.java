@@ -19,6 +19,7 @@ package com.android.phone;
 import static com.android.internal.telephony.PhoneConstants.SUBSCRIPTION_KEY;
 
 import android.Manifest.permission;
+import android.annotation.Nullable;
 import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
@@ -2032,6 +2033,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return false;
         }
         return VisualVoicemailSettingsUtil.isEnabled(mPhone.getContext(), phoneAccountHandle);
+    }
+
+    @Override
+    public String getVisualVoicemailPackageName(String callingPackage,
+            @Nullable PhoneAccountHandle phoneAccountHandle) {
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        if (!canReadPhoneState(callingPackage, "getVisualVoicemailPackageName")) {
+            return null;
+        }
+        int subId = PhoneUtils.getSubIdForPhoneAccountHandle(phoneAccountHandle);
+        return RemoteVvmTaskManager.getRemotePackage(mPhone.getContext(), subId).getPackageName();
     }
 
     @Override
