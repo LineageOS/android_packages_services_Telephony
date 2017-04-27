@@ -40,7 +40,7 @@
     <string name="registration_status_registering" msgid="2677183977796278749">"Registriranje u toku…"</string>
     <string name="registration_status_still_trying" msgid="7648151061205513458">"Još uvijek pokušavamo…"</string>
     <string name="registration_status_not_receiving" msgid="7620333886153361090">"Ne prima pozive."</string>
-    <string name="registration_status_no_data" msgid="2541999976218192413">"Registracija računa je zaustavljena jer nema internet veze."</string>
+    <string name="registration_status_no_data" msgid="2541999976218192413">"Registracija računa je zaustavljena jer niste povezani na internet."</string>
     <string name="registration_status_no_wifi_data" msgid="9154717387473039546">"Registracija računa je zaustavljena jer nema Wi-Fi veze."</string>
     <string name="registration_status_not_running" msgid="514205414303796800">"Registracija računa neuspješna."</string>
     <string name="registration_status_done" msgid="3264961069247314253">"Primanje poziva."</string>
