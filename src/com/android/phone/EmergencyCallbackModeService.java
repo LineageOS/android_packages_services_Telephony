@@ -207,7 +207,7 @@ public class EmergencyCallbackModeService extends Service {
                      R.plurals.phone_in_ecm_notification_time, minutes).toString(), time);
         }
         builder.setContentText(text);
-        builder.setChannel(TelephonyNotificationBuilder.CHANNEL_ID_ALERT);
+        builder.setChannelId(TelephonyNotificationBuilder.CHANNEL_ID_ALERT);
 
         // Show notification
         mNotificationManager.notify(R.string.phone_in_ecm_notification_title, builder.build());
