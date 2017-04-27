@@ -31,11 +31,11 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.os.UserManager;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
@@ -106,9 +106,9 @@ public class CallFeaturesSetting extends PreferenceActivity
     private SubscriptionInfoHelper mSubscriptionInfoHelper;
     private TelecomManager mTelecomManager;
 
-    private CheckBoxPreference mButtonAutoRetry;
+    private SwitchPreference mButtonAutoRetry;
     private PreferenceScreen mVoicemailSettingsScreen;
-    private CheckBoxPreference mEnableVideoCalling;
+    private SwitchPreference mEnableVideoCalling;
 
     /*
      * Click Listeners, handle click based on objects attached to UI.
@@ -230,9 +230,9 @@ public class CallFeaturesSetting extends PreferenceActivity
         mVoicemailSettingsScreen.setIntent(mSubscriptionInfoHelper.getIntent(
                 VoicemailSettingsActivity.class));
 
-        mButtonAutoRetry = (CheckBoxPreference) findPreference(BUTTON_RETRY_KEY);
+        mButtonAutoRetry = (SwitchPreference) findPreference(BUTTON_RETRY_KEY);
 
-        mEnableVideoCalling = (CheckBoxPreference) findPreference(ENABLE_VIDEO_CALLING_KEY);
+        mEnableVideoCalling = (SwitchPreference) findPreference(ENABLE_VIDEO_CALLING_KEY);
 
         PersistableBundle carrierConfig =
                 PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
