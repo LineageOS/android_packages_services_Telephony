@@ -224,6 +224,10 @@ final class TelecomAccountRegistry {
                 extras.putBoolean(PhoneAccount.EXTRA_SUPPORTS_HANDOVER_FROM,
                         isHandoverFromSupported);
             }
+            if (slotId != SubscriptionManager.INVALID_SIM_SLOT_INDEX) {
+                extras.putString(PhoneAccount.EXTRA_SORT_ORDER,
+                    String.valueOf(slotId));
+            }
 
             mIsMergeCallSupported = isCarrierMergeCallSupported();
             mIsMergeImsCallSupported = isCarrierMergeImsCallSupported();
@@ -406,7 +410,6 @@ final class TelecomAccountRegistry {
                     CarrierConfigManager.KEY_CARRIER_INSTANT_LETTERING_LENGTH_LIMIT_INT);
             String instantLetteringEncoding = b.getString(
                     CarrierConfigManager.KEY_CARRIER_INSTANT_LETTERING_ENCODING_STRING);
-
             Bundle phoneAccountExtras = new Bundle();
             phoneAccountExtras.putInt(PhoneAccount.EXTRA_CALL_SUBJECT_MAX_LENGTH,
                     instantLetteringMaxLength);
