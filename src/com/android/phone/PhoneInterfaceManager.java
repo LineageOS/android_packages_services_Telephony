@@ -2036,13 +2036,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String getVisualVoicemailPackageName(String callingPackage,
-            @Nullable PhoneAccountHandle phoneAccountHandle) {
+    public String getVisualVoicemailPackageName(String callingPackage, int subId) {
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
         if (!canReadPhoneState(callingPackage, "getVisualVoicemailPackageName")) {
             return null;
         }
-        int subId = PhoneUtils.getSubIdForPhoneAccountHandle(phoneAccountHandle);
         return RemoteVvmTaskManager.getRemotePackage(mPhone.getContext(), subId).getPackageName();
     }
 
