@@ -17,15 +17,23 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
+  <string name="incall_screen_settings">In-call screen settings</string>
   <string name="show_ssn_label">Event notification</string>
   <string name="show_ssn_summary">Show a notification for various network events related to call handling</string>
+  <string name="incall_echo_cancellation">In-call noise reduction</string>
+  <string name="enable_aec_label">Echo cancellation</string>
+  <string name="enable_aec_summary">Reduce ambient noise for the remote party during voice calls</string>
   <!-- Blacklist preferences -->
+  <string name="blacklist_title">Blocked caller list</string>
   <string name="blacklist_summary_disabled">Disabled</string>
+  <string name="blacklist_summary">You will not receive incoming calls or messages from phone numbers on the blocked caller list</string>
   <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
   <string name="mwi_notification_title">Message wait indicator</string>
+  <string name="mwi_notification_summary">Show message wait indicator voicemail notifications (restart required)</string>
   <!-- My Phone Number -->
   <string name="phone_number_label">My phone number</string>
   <string name="phone_number_summary">Set the phone number for this device</string>
+  <string name="set_my_number_failed">Failed to set phone number</string>
   <!-- Toasts for various transient network events -->
   <!-- Toast text for Unconditional Call Forwarding enabled  -->
   <string name="call_notif_unconditionalCF">Unconditional call forwarding active</string>
@@ -62,6 +70,13 @@
   <!-- Success message displayed on SIM Network Depersonalization panel -->
   <string name="unlock_success_cm">SIM network unlock successful.</string>
   <!-- Call forwarding settings screen, setting timer info for cfut case -->
+  <string name="all_day">All day</string>
+  <string name="time_start">From</string>
+  <string name="time_end">To</string>
+  <string name="time_hour">Hour</string>
+  <string name="time_minute">Minute</string>
+  <string name="time_formate_am">AM</string>
+  <string name="time_formate_pm">PM</string>
   <!-- Mobile network settings, preferred network modes -->
   <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
   <string name="preferred_network_mode_global_summary_cm">Preferred network mode: Global (CDMA/EvDo/LTE/GSM/WCDMA)</string>
@@ -84,8 +99,11 @@
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
   <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Preferred network mode: TD-SCDMA/GSM/WCDMA/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Preferred network mode: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
   <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Preferred network mode: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
   <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
@@ -107,14 +125,40 @@
   <string name="preferred_network_mode_wcdma_only_choice">WCDMA only</string>
   <string name="preferred_network_mode_gsm_only_choice">GSM only</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA preferred</string>
+  <string name="call_barring">Call barring</string>
+  <string name="call_barring_outgoing">Outgoing call barring</string>
+  <string-array name="call_barring_outgoing_display_values">
+    <item>Off</item>
+    <item>International roaming calls</item>
+    <item>International calls</item>
+    <item>Outgoing calls</item>
+  </string-array>
+  <string-array name="call_barring_incoming_display_values">
+    <item>Off</item>
+    <item>Roaming</item>
+    <item>All</item>
+  </string-array>
+  <string name="call_barring_incoming">Incoming call barring</string>
+  <string name="input_password">Enter your password</string>
+  <string name="invalidPsw">Enter a valid password (4-8 digits)</string>
+  <string name="labelCbCancelAll">Disable call barring</string>
+  <string name="labelCbChangePassword">Change password</string>
+  <string name="psw_enter_old">Old password</string>
+  <string name="psw_enter_new">New password</string>
+  <string name="psw_reenter_new">Reenter your password</string>
+  <string name="no_call_barring">Call barring disabled</string>
+  <string name="cb_psw_dont_match">Passwords do not match</string>
   <!-- FDN settings: error message displayed in a popup (toast) -->
+  <string name="fdn_invalid_number_cm">FDN wasn\'t updated because the number is empty or exceeds 20 digits.</string>
   <string name="fdn_service_unavailable">FDN service is not available.</string>
   <!-- Title of the activity shown for Exporting contacts to SIM.  -->
   <string name="exportContacts">Exporting contacts to SIM card\u2026</string>
   <!-- Title of the List shown for SIM Contacts Management Activity.  -->
   <string name="simContacts_title_cm">Manage SIM card contacts</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->
+  <string name="incall_error_local_low_battery">Call failed due to low battery.</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->
+  <string name="incall_error_low_battery">Call failed due to remote device low battery.</string>
   <!-- Sim contacts management -->
   <string name="contactScreen">Manage SIM contacts</string>
   <string name="exportContactScreen">Export phone contacts to SIM</string>
@@ -140,9 +184,21 @@
   <string name="exportAllcontatsSuccess">Successfully exported all contacts to SIM</string>
   <string name="exportAllcontatsFailed">Failed to export all contacts to SIM</string>
   <string name="exportAllcontatsNoContacts">No contacts found to export to SIM</string>
+  <string name="msim_mobile_network_settings_title">SIM %d cellular network settings</string>
   <!-- Permission to modify network mode via intent -->
+  <string name="perm_change_mobile_network">change network mode</string>
+  <string name="perm_change_mobile_network_desc">Allows an app to modify the current network mode.</string>
   <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Connected line identification</string>
+  <string name="connected_line_identification_summary">Disable this option if the numbers of the recipients don\'t show up in the call history</string>
   <!-- Network mode picker dialog title -->
+  <string name="choose_network_mode_title">Choose network mode</string>
+  <string name="choose_network_mode_system_default">System default</string>
   <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
+  <string name="unlock_failed_remaining_retries">Unlock request unsuccessful, %1$d retries remaining.</string>
   <!-- Call forward: IMS: Media tag support -->
+  <string name="labelCFType">Call forwarding settings</string>
+  <string name="labelCFVoice">Voice</string>
+  <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Call forwarding options</string>
 </resources>

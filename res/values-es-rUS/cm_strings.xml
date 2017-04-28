@@ -154,20 +154,20 @@
   <!-- Title of the activity shown for Exporting contacts to SIM.  -->
   <string name="exportContacts">Exportando contactos a la tarjeta SIM\u2026</string>
   <!-- Title of the List shown for SIM Contacts Management Activity.  -->
-  <string name="simContacts_title_cm">Administrar contactos de la tarjeta SIM</string>
+  <string name="simContacts_title_cm">Gestionar contactos de la tarjeta SIM</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->
   <string name="incall_error_local_low_battery">Error de llamada por batería baja.</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->
   <string name="incall_error_low_battery">Error de llamada debido a la batería baja del dispositivo remoto.</string>
   <!-- Sim contacts management -->
-  <string name="contactScreen">Administrar contactos SIM</string>
+  <string name="contactScreen">Gestionar contactos SIM</string>
   <string name="exportContactScreen">Exportar contactos del teléfono a la SIM</string>
   <string name="addSimEntries">Añadir contacto a la SIM</string>
-  <string name="deleteAllSimEntries">Eliminar todos los contactos de la SIM</string>
+  <string name="deleteAllSimEntries">Borrar todos los contactos de la SIM</string>
   <string name="deleteSimContacts">Eliminando contactos de la SIM\u2026</string>
   <string name="editContact">Editar</string>
   <string name="sendSms">Enviar SMS</string>
-  <string name="delete">Eliminar</string>
+  <string name="delete">Borrar</string>
   <string name="dial">Llamar</string>
   <string name="enterName">Introducir nombre:</string>
   <string name="enterNumber">Introducir número de teléfono:</string>
@@ -184,7 +184,7 @@
   <string name="exportAllcontatsSuccess">Todos los contactos han sido exportados a la tarjeta SIM</string>
   <string name="exportAllcontatsFailed">Error al exportar todos los contactos de la tarjeta SIM</string>
   <string name="exportAllcontatsNoContacts">No hay contactos que exportar a la tarjeta SIM</string>
-  <string name="msim_mobile_network_settings_title">Ajustes de la red celular de la SIM %d</string>
+  <string name="msim_mobile_network_settings_title">Ajustes de la red móvil de la SIM %d</string>
   <!-- Permission to modify network mode via intent -->
   <string name="perm_change_mobile_network">cambiar modo de red</string>
   <string name="perm_change_mobile_network_desc">Le permite a una aplicación modificar el modo actual de la red.</string>
@@ -193,7 +193,7 @@
   <string name="connected_line_identification_summary">Desactivar esta opción si los números de los destinatarios no se muestran en el historial de llamadas</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Elige el modo de red</string>
-  <string name="choose_network_mode_system_default">Utilizar valores predeterminados</string>
+  <string name="choose_network_mode_system_default">Utilizar valores predefinidos</string>
   <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
   <string name="unlock_failed_remaining_retries">Petición de desbloqueo incorrecta, quedan %1$d intentos.</string>
   <!-- Call forward: IMS: Media tag support -->

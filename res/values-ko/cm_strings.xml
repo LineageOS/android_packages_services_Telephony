@@ -33,6 +33,7 @@
   <!-- My Phone Number -->
   <string name="phone_number_label">내 전화번호</string>
   <string name="phone_number_summary">이 장치의 전화번호 설정</string>
+  <string name="set_my_number_failed">휴대전화 번호를 설정할 수 없습니다</string>
   <!-- Toasts for various transient network events -->
   <!-- Toast text for Unconditional Call Forwarding enabled  -->
   <string name="call_notif_unconditionalCF">무조건 착신 전환 활성</string>
@@ -183,7 +184,7 @@
   <string name="exportAllcontatsSuccess">모든 연락처를 SIM으로 내보냈습니다</string>
   <string name="exportAllcontatsFailed">모든 연락처를 SIM으로 내보내지 못했습니다</string>
   <string name="exportAllcontatsNoContacts">SIM에 내보낼 연락처가 없습니다</string>
-  <string name="msim_mobile_network_settings_title">SIM %d 셀룰러 네트워크 설정</string>
+  <string name="msim_mobile_network_settings_title">SIM %d 이동 통신망 네트워크 설정</string>
   <!-- Permission to modify network mode via intent -->
   <string name="perm_change_mobile_network">네트워크 모드 변경</string>
   <string name="perm_change_mobile_network_desc">애플리케이션이 현재의 네트워크 모드를 변경할 수 있도록 허용합니다.</string>
@@ -194,5 +195,10 @@
   <string name="choose_network_mode_title">네트워크 모드 선택</string>
   <string name="choose_network_mode_system_default">시스템 기본 설정</string>
   <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
+  <string name="unlock_failed_remaining_retries">잠금 해제 요청 실패, %1$d번의 다시 시도 남음.</string>
   <!-- Call forward: IMS: Media tag support -->
+  <string name="labelCFType">착신 전환 설정</string>
+  <string name="labelCFVoice">음성</string>
+  <string name="labelCFVideo">영상</string>
+  <string name="call_forward_option">착신 전환 옵션</string>
 </resources>

@@ -17,50 +17,158 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
+  <string name="incall_screen_settings">Parametrat e ekranit gjatë telefonatës</string>
+  <string name="incall_echo_cancellation">Reduktimi i zhurmave gjatë telefonatës</string>
+  <string name="enable_aec_label">Eliminimi i jehonës</string>
+  <string name="enable_aec_summary">Redukto zhurmat e ambjentit të telefonuesit gjatë thirrjeve zanore</string>
   <!-- Blacklist preferences -->
+  <string name="blacklist_title">Lista e telefonuesve të bllokuar</string>
+  <string name="blacklist_summary_disabled">E çaktivizuar</string>
   <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
   <!-- My Phone Number -->
+  <string name="phone_number_label">Numri im i telefonit</string>
   <!-- Toasts for various transient network events -->
   <!-- Toast text for Unconditional Call Forwarding enabled  -->
   <!-- Toast text for Conditional Call Forwarding enabled  -->
   <!-- Toast text for a forwarded MO call  -->
   <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
   <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">Thirrjet dalëse janë të bllokuara</string>
   <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
   <!-- Toast text for MO calls when CLIR Suppression is rejected -->
   <!-- In-call screen: status label when MO call gets deflected to another party -->
   <!-- Toast text for incoming call being forwarded to other remote party  -->
   <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Telefonatë shumëpalëshe</string>
   <!-- Toast text for incoming call which is answered,put on hold & then released -->
   <!-- Toast text for incoming call forward check received -->
   <!-- Toast text for incoming call connecting through ECT -->
   <!-- Toast text for incoming call connected through ECT -->
   <!-- Status message displayed on SIM Network Depersonalization panel -->
+  <string name="requesting_unlock_cm">Duke zhbllokuar rrjetin e kartës SIM\u2026</string>
   <!-- Error message displayed on SIM Network Depersonalization panel -->
+  <string name="unlock_failed_cm">Zhbllokimi i rrjetit të kartës SIM dështoi.</string>
   <!-- Success message displayed on SIM Network Depersonalization panel -->
+  <string name="unlock_success_cm">Zhbllokimi i rrjetit të kartës SIM u krye me sukses.</string>
   <!-- Call forwarding settings screen, setting timer info for cfut case -->
+  <string name="all_day">Gjithë ditën</string>
+  <string name="time_start">Nga</string>
+  <string name="time_end">Për</string>
+  <string name="time_hour">Ora</string>
+  <string name="time_minute">Minuti</string>
+  <string name="time_formate_am">AM</string>
+  <string name="time_formate_pm">PM</string>
   <!-- Mobile network settings, preferred network modes -->
   <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_global_summary_cm">Rrjeti i preferuar: Global (CDMA/EvDo/LTE/GSM/WCDMA)</string>
   <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
+  <string name="callFailed_incoming_cb_enabled">Korrespondenti ka bllokuar të gjitha thirrjet hyrëse.</string>
   <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_td_scdma_wcdma_summary">Rrjeti i preferuar: TD-SCDMA/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_td_scdma_lte_summary">Rrjeti i preferuar: TD-SCDMA/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_td_scdma_gsm_summary">Rrjeti i preferuar: TD-SCDMA/GSM</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/LTE[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Rrjeti i preferuar: TD-SCDMA/GSM/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Rrjeti i preferuar: TD-SCDMA/GSM/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA/LTE[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Rrjeti i preferuar: TD-SCDMA/WCDMA/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Rrjeti i preferuar: TD-SCDMA/GSM/WCDMA/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Rrjeti i preferuar: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Rrjeti i preferuar: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
+  <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
+  <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
+  <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
+  <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
+  <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
+  <string name="preferred_network_mode_td_scdma_only_choice">vetëm TD-SCDMA</string>
+  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
+  <string name="preferred_network_mode_lte_choice">LTE</string>
+  <string name="preferred_network_mode_global_choice">Global</string>
+  <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
+  <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
+  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
+  <string name="preferred_network_mode_evdo_only_choice">vetëm EvDo</string>
+  <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA pa EvDo</string>
+  <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo auto</string>
+  <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA auto</string>
+  <string name="preferred_network_mode_wcdma_only_choice">vetëm WCDMA</string>
+  <string name="preferred_network_mode_gsm_only_choice">vetëm GSM</string>
+  <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA e preferuar</string>
+  <string name="call_barring">Bllokimi i thirrjeve</string>
+  <string name="call_barring_outgoing">Bllokimi i thirrjeve dalëse</string>
+  <string-array name="call_barring_outgoing_display_values">
+    <item>Inaktiv</item>
+    <item>International roaming calls</item>
+    <item>Thirrjet ndërkombëtare</item>
+    <item>Thirrjet dalëse</item>
+  </string-array>
+  <string-array name="call_barring_incoming_display_values">
+    <item>Inaktiv</item>
+    <item>Roaming</item>
+    <item>Të gjitha</item>
+  </string-array>
+  <string name="call_barring_incoming">Bllokimi i thirrjeve hyrëse</string>
+  <string name="input_password">Vendos fjalëkalimin</string>
+  <string name="invalidPsw">Vendos një fjalëkalim të vlefshëm (4-8 shifra)</string>
+  <string name="labelCbChangePassword">Ndrysho fjalëkalimin</string>
+  <string name="psw_enter_old">Fjalëkalimi i vjetër</string>
+  <string name="psw_enter_new">Fjalëkalimi i ri</string>
+  <string name="psw_reenter_new">Rivendos fjalëkalimin</string>
+  <string name="cb_psw_dont_match">Fjalëkalimet nuk përputhen</string>
   <!-- FDN settings: error message displayed in a popup (toast) -->
+  <string name="fdn_service_unavailable">Shërbimi FDN nuk është i disponueshëm.</string>
   <!-- Title of the activity shown for Exporting contacts to SIM.  -->
+  <string name="exportContacts">Duke eksportuar kontaktet në kartën SIM\u2026</string>
   <!-- Title of the List shown for SIM Contacts Management Activity.  -->
+  <string name="simContacts_title_cm">Menaxho kontaktet e kartës SIM</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->
+  <string name="incall_error_local_low_battery">Thirrja dështoi për shkak të baterisë së ulët.</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->
+  <string name="incall_error_low_battery">Thirrja dështoi për shkak të baterisë së ulët të pajisjes në distancë.</string>
   <!-- Sim contacts management -->
+  <string name="contactScreen">Menaxho kontaktet e kartës SIM</string>
+  <string name="exportContactScreen">Eksporto kontaktet e telefonit te karta SIM</string>
+  <string name="addSimEntries">Shto një kontakt në SIM</string>
+  <string name="deleteAllSimEntries">Fshi të gjitha kontaktet e kartës SIM</string>
+  <string name="deleteSimContacts">Duke fshirë kontaktet e kartës SIM\u2026</string>
+  <string name="editContact">Redakto</string>
+  <string name="sendSms">Dërgo SMS</string>
+  <string name="delete">Fshi</string>
+  <string name="dial">Formo</string>
+  <string name="enterName">Vendos emrin:</string>
+  <string name="enterNumber">Vendos numrin e telefonit:</string>
+  <string name="hintName">Emri</string>
+  <string name="hintPhonenumber">Numri i telefonit</string>
+  <string name="contactAddSuccess">Kontakti u shtua në kartën SIM</string>
+  <string name="contactAddFailed">Shtimi i kontaktit në kartën SIM dështoi</string>
+  <string name="contactUpdateSuccess">Kontakti në kartën SIM u përditësua</string>
+  <string name="contactUpdateFailed">Përditësimi i kontaktit në kartën SIM dështoi</string>
+  <string name="contactdeleteSuccess">Kontakti u fshi nga karta SIM</string>
+  <string name="contactdeleteFailed">Fshirja e kontaktit nga karta SIM dështoi</string>
+  <string name="allContactdeleteSuccess">Të gjithë kontaktet u fshinë nga karta SIM</string>
+  <string name="allContactdeleteFailed">Fshirja e të gjitha kontakteve nga karta SIM dështoi</string>
+  <string name="exportAllcontatsSuccess">Të gjithë kontaktet u eksportuan në kartën SIM</string>
+  <string name="exportAllcontatsFailed">Eksportimi të gjitha kontakteve në kartën SIM dështoi</string>
+  <string name="msim_mobile_network_settings_title">Parametrat e rrjetit celular për SIM %d</string>
   <!-- Permission to modify network mode via intent -->
+  <string name="perm_change_mobile_network">ndrysho profilin e rrjetit</string>
+  <string name="perm_change_mobile_network_desc">Lejon një aplikacion të modifikojë profilin aktual të rrjetit.</string>
   <!-- Mobile network settings, COLP -->
   <!-- Network mode picker dialog title -->
+  <string name="choose_network_mode_title">Zgjidh profilin e rrjetit</string>
+  <string name="choose_network_mode_system_default">Sipas sistemit</string>
   <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
   <!-- Call forward: IMS: Media tag support -->
+  <string name="labelCFVideo">Video</string>
 </resources>

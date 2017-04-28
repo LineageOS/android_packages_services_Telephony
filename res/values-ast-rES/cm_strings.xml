@@ -18,87 +18,72 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
   <string name="incall_screen_settings">Axustes de pantalla na llamada</string>
-  <string name="show_ssn_label">Notificación d\'eventos</string>
-  <string name="show_ssn_summary">Amosar notificación pa dellos eventos de rede rellacionaos cola xestión de llamaes</string>
+  <string name="show_ssn_label">Avisu d\'eventos</string>
+  <string name="show_ssn_summary">Amuesa un avisu pa dellos eventos de rede venceyaos col remanamientu de llamaes</string>
   <string name="incall_echo_cancellation">Reducción de ruiu mentanto la llamada</string>
   <string name="enable_aec_label">Desaniciu de bauríu</string>
   <string name="enable_aec_summary">Amenorga\'l bauríu ambiente pa la parte remota nes llamaes de voz</string>
   <!-- Blacklist preferences -->
+  <string name="blacklist_title">Llistáu de númberos bloquiaos</string>
   <string name="blacklist_summary_disabled">Desactivada</string>
+  <string name="blacklist_summary">Nun recibirás llamaes o mensaxes entrantes de númberos telefónicos nel llistáu de númberos bloquiaos</string>
   <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
   <string name="mwi_notification_title">Indicador de mensaxes n\'espera</string>
   <string name="mwi_notification_summary">Amosar indicador d\'espera pa les notificaciones del buzón de voz (precisa reaniciu)</string>
   <!-- My Phone Number -->
-  <string name="phone_number_label">El mio númberu de teléfonu</string>
-  <string name="phone_number_summary">Afita\'l númberu teléfonu pa esti preséu</string>
+  <string name="phone_number_label">El mio númberu telefónicu</string>
+  <string name="phone_number_summary">Afita\'l númberu telefónicu pa esti preséu</string>
+  <string name="set_my_number_failed">Fallu al afitar el númberu telefónicu</string>
   <!-- Toasts for various transient network events -->
   <!-- Toast text for Unconditional Call Forwarding enabled  -->
   <string name="call_notif_unconditionalCF">Esvíu incondicional de llamada activu</string>
   <!-- Toast text for Conditional Call Forwarding enabled  -->
   <string name="call_notif_conditionalCF">Esvíu condicional de llamada activu</string>
   <!-- Toast text for a forwarded MO call  -->
-  <string name="call_notif_MOcall_forwarding">Reunviu de llamada saliente</string>
+  <string name="call_notif_MOcall_forwarding">Reúnviase la llamada saliente</string>
   <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
-  <string name="call_notif_cugcall">Llamada de grupu zarráu</string>
+  <string name="call_notif_cugcall">Llamada nun grupu zarráu d\'usarios</string>
   <!-- In-call screen: status label when MO calls are barred -->
-  <string name="call_notif_outgoing_barred">Escluyíes llamaes salientes</string>
   <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
-  <string name="call_notif_incoming_barred">Escluyíes llamaes entrantes</string>
   <!-- Toast text for MO calls when CLIR Suppression is rejected -->
-  <string name="call_notif_clir_suppression_rejected">Supresión del númberu propiu refugáu pela rede</string>
   <!-- In-call screen: status label when MO call gets deflected to another party -->
-  <string name="call_notif_call_deflected">Llamada esviada pela parte remota</string>
   <!-- Toast text for incoming call being forwarded to other remote party  -->
-  <string name="call_notif_MTcall_forwarding">Llamada entrante esviada</string>
   <!-- Toast text for incoming call which is part of MultiParty Call -->
-  <string name="call_notif_multipartycall">Llamada múltiple</string>
   <!-- Toast text for incoming call which is answered,put on hold & then released -->
-  <string name="call_notif_callonhold_released">Llamada lliberada remotamente</string>
   <!-- Toast text for incoming call forward check received -->
-  <string name="call_notif_forwardcheckreceived">Esvióse la llamada</string>
   <!-- Toast text for incoming call connecting through ECT -->
-  <string name="call_notif_callconnectingect">Llamada coneutándose per centralita</string>
   <!-- Toast text for incoming call connected through ECT -->
-  <string name="call_notif_callconnectedect">Llamada coneutada per centralita</string>
   <!-- Status message displayed on SIM Network Depersonalization panel -->
-  <string name="requesting_unlock_cm">Solicitando desbloquéu tarxeta SIM\u2026</string>
   <!-- Error message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_failed_cm">El desbloquéu de rede 2 de tarxeta RUIM nun se fexo correcho.</string>
   <!-- Success message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_success_cm">El desbloquéu de tarxeta SIM féxose correcho.</string>
   <!-- Call forwarding settings screen, setting timer info for cfut case -->
   <string name="all_day">Tol día</string>
-  <string name="time_start">De</string>
-  <string name="time_end">Pa</string>
   <string name="time_hour">Hora</string>
   <string name="time_minute">Minutu</string>
   <string name="time_formate_am">AM</string>
   <string name="time_formate_pm">PM</string>
   <!-- Mobile network settings, preferred network modes -->
   <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_global_summary_cm">Mou de rede preferíu: Global(CDMA/EVDO/LTE/GSM/WCDMA)</string>
   <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
-  <string name="callFailed_incoming_cb_enabled">La conferencia tien prohibíes les llamaes entrantes.</string>
   <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
-  <string name="callUnanswered_forwarded">Llamada non respondida y esviada</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_summary">Mou de rede preferíu: TD-SCDMA / WCDMA</string>
+  <string name="preferred_network_mode_td_scdma_wcdma_summary">Mou preferíu de rede: TD-SCDMA/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_summary">Mou de rede preferíu: TD-SCDMA / LTE</string>
+  <string name="preferred_network_mode_td_scdma_lte_summary">Mou preferíu de rede: TD-SCDMA/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_summary">Mou de rede preferíu: TD-SCDMA / GSM</string>
+  <string name="preferred_network_mode_td_scdma_gsm_summary">Mou preferíu de rede: TD-SCDMA/GSM</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Mou de rede preferíu: TD-SCDMA/GSM/LTE</string>
+  <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Mou preferíu de rede: TD-SCDMA/GSM/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Mou de rede preferíu: TD-SCDMA/GSM/WCDMA</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Mou preferíu de rede: TD-SCDMA/GSM/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Mou de rede preferíu: TD-SCDMA/WCDMA/LTE</string>
+  <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Mou preferíu de rede: TD-SCDMA/WCDMA/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Mou de rede preferíu: TD-SCDMA/GSM/WCDMA/LTE</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Mou preferíu de rede: TD-SCDMA/GSM/WCDMA/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Mou de rede preferíu: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Mou preferíu de rede: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Mou de rede preferíu: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+  <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Mou preferíu de rede: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
   <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
   <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
   <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
@@ -121,81 +106,49 @@
   <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA (mou automáticu)</string>
   <string name="preferred_network_mode_wcdma_only_choice">Namái WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">Namái GSM</string>
-  <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Preferencia de GSM/WCDMA</string>
-  <string name="call_barring">Bloquéu de llamaes</string>
-  <string name="call_barring_outgoing">Bloquéu de llamaes salientes</string>
   <string-array name="call_barring_outgoing_display_values">
-    <item>Apagar</item>
-    <item>Llamaes internacionales n\'itinerancia</item>
+    <item>Off</item>
+    <item>International roaming calls</item>
     <item>Llamaes internacionales</item>
     <item>Llamaes salientes</item>
   </string-array>
-  <string-array name="call_barring_incoming_display_values">
-    <item>Apagar</item>
-    <item>Roaming</item>
-    <item>Too</item>
-  </string-array>
-  <string name="call_barring_incoming">Bloquéu de llamaes entrantes</string>
-  <string name="input_password">Introduz la to contraseña</string>
-  <string name="invalidPsw">Introduz una contraseña válida (4-8 díxitos)</string>
-  <string name="labelCbCancelAll">Desactivar bloquéu de llamaes</string>
   <string name="labelCbChangePassword">Camudar contraseña</string>
   <string name="psw_enter_old">Contraseña vieya</string>
   <string name="psw_enter_new">Contraseña nueva</string>
   <string name="psw_reenter_new">Reintroduz la to contraseña</string>
-  <string name="no_call_barring">Bloquéu de llamaes desactiváu</string>
   <string name="cb_psw_dont_match">Les contraseñes nun concasen</string>
   <!-- FDN settings: error message displayed in a popup (toast) -->
   <string name="fdn_invalid_number_cm">FDN nun s\'anovó porque\'l númberu ta baleru o perpasa los 20 díxitos.</string>
   <string name="fdn_service_unavailable">El serviciu FDN nun ta disponible.</string>
   <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <string name="exportContacts">Esportando contautos a la tarxeta SIM\u2026</string>
   <!-- Title of the List shown for SIM Contacts Management Activity.  -->
-  <string name="simContacts_title_cm">Xestionar contautos de tarxeta SIM</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->
   <string name="incall_error_local_low_battery">Falló la llamada pola mor de batería baxa.</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_low_battery">Falló la llamada pola mor de batería baxa del preséu remotu.</string>
+  <string name="incall_error_low_battery">Falló la llamada pola mor de batería baxa nel preséu remotu.</string>
   <!-- Sim contacts management -->
-  <string name="contactScreen">Xestionar los contautos de la SIM</string>
-  <string name="exportContactScreen">Esportar contautos del teléfonu a la SIM</string>
-  <string name="addSimEntries">Amestar contautu a la SIM</string>
+  <string name="contactScreen">Xestionar contautos de la SIM</string>
   <string name="deleteAllSimEntries">Desaniciar tolos contautos de la SIM</string>
   <string name="deleteSimContacts">Desaniciando contautos de la SIM\u2026</string>
   <string name="editContact">Editar</string>
   <string name="sendSms">Unviar SMS</string>
   <string name="delete">Desaniciar</string>
-  <string name="dial">Llamar</string>
-  <string name="enterName">Pon el nome:</string>
-  <string name="enterNumber">Introducir el númberu de teléfonu:</string>
+  <string name="enterNumber">Introducir el númberu telefónicu:</string>
   <string name="hintName">Nome</string>
-  <string name="hintPhonenumber">Númberu de teléfonu</string>
-  <string name="contactAddSuccess">El contautu amestóse a la SIM</string>
-  <string name="contactAddFailed">Nun pudo amestase\'l contautu a la SIM</string>
-  <string name="contactUpdateSuccess">El contautu anovóse na tarxeta SIM</string>
-  <string name="contactUpdateFailed">Fallu al anovar el contautu na tarxeta SIM</string>
-  <string name="contactdeleteSuccess">El contautu desanicióse de la tarxeta SIM</string>
-  <string name="contactdeleteFailed">Fallu al desaniciar el contautu de la tarxeta SIM</string>
-  <string name="allContactdeleteSuccess">Desaniciáronse tolos contautos de la tarxeta SIM</string>
-  <string name="allContactdeleteFailed">Fallu al desaniciar tolos contautos de la tarxeta SIM</string>
-  <string name="exportAllcontatsSuccess">Esportáronse tolos contautos a la tarxeta SIM</string>
-  <string name="exportAllcontatsFailed">Fallu al esportar tolos contautos de la tarxeta SIM</string>
-  <string name="exportAllcontatsNoContacts">Nun s\'atoparon contautos qu\'esportar a la tarxeta SIM</string>
-  <string name="msim_mobile_network_settings_title">Axustes de rede móvil de SIM %d</string>
+  <string name="hintPhonenumber">Númberu telefónicu</string>
+  <string name="contactAddFailed">Fallu al amestar contautu a la SIM</string>
+  <string name="contactUpdateFailed">Fallu al anovar el contautu na SIM</string>
+  <string name="contactdeleteFailed">Fallu al desaniciar el contautu de la SIM</string>
+  <string name="allContactdeleteFailed">Fallu al desaniciar tolos contautos de la SIM</string>
+  <string name="exportAllcontatsFailed">Fallu al esportar tolos contautos a la tarxeta SIM</string>
+  <string name="exportAllcontatsNoContacts">Nun s\'alcontraron contautos pa esportar a la SIM</string>
   <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">camudar mou de rede</string>
-  <string name="perm_change_mobile_network_desc">Permite qu\'una aplicación modifique\'l mou de rede actual.</string>
+  <string name="perm_change_mobile_network_desc">Permite qu\'una aplicación modifique\'l mou actual de rede.</string>
   <!-- Mobile network settings, COLP -->
-  <string name="connected_line_identification_title">Identificación de llina coneutada</string>
-  <string name="connected_line_identification_summary">Deshabilita esta opción si los númberos de los destinatarios nun s\'amuesen nel historial de llamaes</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Escoyer mou de rede</string>
-  <string name="choose_network_mode_system_default">Predeterminao del sistema</string>
   <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
-  <string name="unlock_failed_remaining_retries">Solicitú de desbloquéu incorreuta, queden %1$d intentos.</string>
   <!-- Call forward: IMS: Media tag support -->
-  <string name="labelCFType">Configuración del esvíu de llamaes</string>
   <string name="labelCFVoice">Voz</string>
   <string name="labelCFVideo">Videu</string>
-  <string name="call_forward_option">Opciones del esvío de llamaes</string>
 </resources>

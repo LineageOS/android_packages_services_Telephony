@@ -147,21 +147,21 @@
   <string name="psw_enter_new">Новий пароль</string>
   <string name="psw_reenter_new">введіть пароль ще раз</string>
   <string name="no_call_barring">Заборона викликів відключена</string>
-  <string name="cb_psw_dont_match">Паролі не співпадають</string>
+  <string name="cb_psw_dont_match">Паролі не збігаються</string>
   <!-- FDN settings: error message displayed in a popup (toast) -->
   <string name="fdn_invalid_number_cm">FDN не було оновлено оскільки номер пустий, або перевищує 20 цифр.</string>
   <string name="fdn_service_unavailable">Служба FDN недоступна.</string>
   <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <string name="exportContacts">Експортування контактів на SIM-картку\u2026</string>
+  <string name="exportContacts">Експортування контактів на SIM-карту\u2026</string>
   <!-- Title of the List shown for SIM Contacts Management Activity.  -->
-  <string name="simContacts_title_cm">Керувати контактами SIM-картки</string>
+  <string name="simContacts_title_cm">Керувати контактами SIM-карти</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->
   <string name="incall_error_local_low_battery">Виклик не вдалося через низький рівень заряду акумулятора.</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->
   <string name="incall_error_low_battery">Виклик не вдалося через низький рівень заряду акумулятора віддаленого пристрою.</string>
   <!-- Sim contacts management -->
   <string name="contactScreen">Керування контактами SIM-картки</string>
-  <string name="exportContactScreen">Експортувати контакти телефону на SIM-картку</string>
+  <string name="exportContactScreen">Експортувати контакти телефону на SIM-карту</string>
   <string name="addSimEntries">Додати SIM-контакт</string>
   <string name="deleteAllSimEntries">Видалити всі контакти SIM</string>
   <string name="deleteSimContacts">Видалення SIM-контактів\u2026</string>

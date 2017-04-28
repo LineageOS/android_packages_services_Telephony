@@ -33,49 +33,94 @@
 <resources>
   <!-- IMS settings related strings -->
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
+  <string name="ims_settings">Parametrat e IMS</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
+  <string name="label_nsdp">PIN-i për zhbllokimin e nënrrjetit të kartës SIM</string>
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
+  <string name="label_cdp">PIN-i për zhbllokimin e kartës SIM të korporatës</string>
   <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
+  <string name="label_spdp">PIN-i për zhbllokimin e operatorit të SIM-it</string>
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
+  <string name="label_sdp">PIN-i për zhbllokimin e kartës SIM</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
+  <string name="label_rn1dp">PIN-i për zhbllokimin e rrjetit 1 të kartës RUIM</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
+  <string name="label_rn2dp">PIN-i për zhbllokimin e rrjetit 2 të kartës RUIM</string>
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
+  <string name="label_rhrpd">PIN-i për zhbllokimin e HRPD-së së kartës RUIM</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
+  <string name="label_rcdp">PIN-i për zhbllokimin e kartës RUIM të korporatës</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
+  <string name="label_rspdp">PIN-i për zhbllokimin e operatorit të kartës RUIM</string>
   <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
+  <string name="label_rdp">PIN-i për zhbllokimin e kartës RUIM</string>
   <!-- Label text for PUK entry widget on Depersonalization panel -->
+  <string name="label_puk">Vendos PUK-un</string>
   <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="requesting_nw_subset_unlock">Duke zhbllokuar nënrrjetin e kartës SIM\u2026</string>
   <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="requesting_sp_unlock">Duke zhbllokuar operatorin e kartës SIM\u2026</string>
   <!-- Status message displayed on SIM Corporate Depersonalization panel -->
+  <string name="requesting_corporate_unlock">Duke zhbllokuar kartën SIM të korporatës\u2026</string>
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
+  <string name="requesting_sim_unlock">Duke zhbllokuar kartën SIM\u2026</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="requesting_rnw1_unlock">Duke zhbllokuar rrjetin 1 të kartës RUIM\u2026</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="requesting_rnw2_unlock">Duke zhbllokuar rrjetin 2 të kartës RUIM\u2026</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="requesting_rhrpd_unlock">Duke zhbllokuar HRPD-në e kartës RUIM\u2026</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="requesting_rsp_unlock">Duke zhbllokuar operatorin e kartës RUIM\u2026</string>
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
+  <string name="requesting_rc_unlock">Duke zhbllokuar kartën RUIM të korporatës\u2026</string>
   <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
+  <string name="requesting_ruim_unlock">Duke zhbllokuar kartën RUIM\u2026</string>
   <!-- Status message displayed on PUK Depersonalization panel -->
+  <string name="requesting_puk_unlock">Duke zhbllokuar me PUK\u2026</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="nw_subset_unlock_failed">Zhbllokimi i nënrrjetit të kartës SIM dështoi.</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="sp_unlock_failed">Zhbllokimi i operatorit të kartës SIM dështoi.</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
+  <string name="corporate_unlock_failed">Zhbllokimi i kartës SIM të korporatës dështoi.</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
+  <string name="sim_unlock_failed">Zhbllokimi i kartës SIM dështoi.</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="rnw1_unlock_failed">Zhbllokimi i rrjetit 1 të kartës RUIM dështoi.</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="rnw2_unlock_failed">Zhbllokimi i rrjetit 2 të kartës RUIM dështoi.</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="rhrpd_unlock_failed">Zhbllokimi i HRPD-së së kartës RUIM dështoi.</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="rsp_unlock_failed">Zhbllokimi i operatorit të kartës RUIM dështoi.</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
+  <string name="rc_unlock_failed">Zhbllokimi i kartës RUIM të korporatës dështoi.</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
+  <string name="ruim_unlock_failed">Zhbllokimi i kartës RUIM dështoi.</string>
   <!-- Error message displayed on PUK Depersonalization panel -->
+  <string name="puk_unlock_failed">Zhbllokimi me PUK dështoi.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
+  <string name="nw_subset_unlock_success">Zhbllokimi i nënrrjetit të kartës SIM u krye me sukses.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
+  <string name="sp_unlock_success">Zhbllokimi i operatorit të kartës SIM u krye me sukses.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
+  <string name="corporate_unlock_success">Zhbllokimi i kartës SIM të korporatës u krye me sukses.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
+  <string name="sim_unlock_success">Zhbllokimi i kartës SIM u krye me sukses.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
+  <string name="rnw1_unlock_success">Zhbllokimi i rrjetit 1 të kartës RUIM u krye me sukses.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
+  <string name="rnw2_unlock_success">Zhbllokimi i rrjetit 2 të kartës RUIM u krye me sukses.</string>
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
+  <string name="rhrpd_unlock_success">Zhbllokimi i HRPD-së së kartës RUIM u krye me sukses.</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
+  <string name="rsp_unlock_success">Zhbllokimi i operatorit të kartës RUIM u krye me sukses.</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
+  <string name="rc_unlock_success">Zhbllokimi i kartës RUIM të korporatës u krye me sukses.</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
+  <string name="ruim_unlock_success">Zhbllokimi i kartës RUIM u krye me sukses.</string>
   <!-- Success message displayed on PUK Depersonalization panel -->
+  <string name="puk_unlock_success">Zhbllokimi me PUK u krye me sukses.</string>
   <!-- Preferred networks -->
 </resources>
