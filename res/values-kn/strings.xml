@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"ಫೋನ್ ಸೇವೆಗಳು"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"ತುರ್ತು ಡಯಲರ್"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"ಫೋನ್"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"FDN ಪಟ್ಟಿ"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"ಎಫ್‌ಡಿಎನ್‌ ಪಟ್ಟಿ"</string>
     <string name="unknown" msgid="6878797917991465859">"ಅಪರಿಚಿತ"</string>
     <string name="private_num" msgid="6713286113000232309">"ಖಾಸಗಿ ಸಂಖ್ಯೆ"</string>
     <string name="payphone" msgid="4793877574636445118">"ಪೇಫೋನ್"</string>
@@ -62,13 +62,13 @@
     <string name="settings_label" msgid="3876743539816984008">"ನೆಟ್‌ವರ್ಕ್‌ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"ಕರೆ ಮಾಡುವ ಖಾತೆಗಳು"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"ಇದರೊಂದಿಗೆ ಕರೆಗಳನ್ನು ಮಾಡಿ"</string>
-    <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"SIP ಕರೆಗಳನ್ನು ಇದರೊಂದಿಗೆ ಮಾಡಿ"</string>
+    <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"ಎಸ್‌ಐಪಿ ಕರೆಗಳನ್ನು ಇದರೊಂದಿಗೆ ಮಾಡಿ"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"ಮೊದಲು ಕೇಳು"</string>
     <string name="phone_accounts_default_account_label" msgid="4183772241814460014">"ಯಾವುದೇ ನೆಟ್‌ವರ್ಕ್ ಲಭ್ಯವಿಲ್ಲ"</string>
     <string name="phone_accounts_settings_header" msgid="4141710640883261094">"ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="phone_accounts_choose_accounts" msgid="5232948804226424002">"ಖಾತೆಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
     <string name="phone_accounts_selection_header" msgid="1365215726106915865">"ಫೋನ್ ಖಾತೆಗಳು"</string>
-    <string name="phone_accounts_add_sip_account" msgid="2023821743341923271">"SIP ಖಾತೆಯನ್ನು ಸೇರಿಸಿ"</string>
+    <string name="phone_accounts_add_sip_account" msgid="2023821743341923271">"ಎಸ್‌ಐಪಿ ಖಾತೆಯನ್ನು ಸೇರಿಸಿ"</string>
     <string name="phone_accounts_configure_account_settings" msgid="1361715069911607109">"ಖಾತೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಕಾನ್ಫಿಗರ್ ಮಾಡಿ"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"ಎಲ್ಲಾ ಕರೆ ಮಾಡುವ ಖಾತೆಗಳು"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"ಯಾವ ಖಾತೆಗಳು ಕರೆಗಳನ್ನು ಮಾಡಬಹುದು ಎಂಬುದನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
@@ -133,7 +133,7 @@
     <string name="fdn_check_failure" msgid="18200614306525434">"ನಿಮ್ಮ ಫೋನ್‌ ಅಪ್ಲಿಕೇಶನ್‌‌ನ ಸ್ಥಿರ ಡಯಲಿಂಗ್‌‌ ಸಂಖ್ಯೆಗಳ ಸೆಟ್ಟಿಂಗ್‌ ಅನ್ನು ಆನ್‌ ಮಾಡಲಾಗಿದೆ. ಪರಿಣಾಮ, ಕೆಲವು ಕರೆ ಸಂಬಂಧಿತ ವೈಶಿಷ್ಟ್ಯಗಳು ಕಾರ್ಯ ನಿರ್ವಹಿಸುತ್ತಿಲ್ಲ."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"ಈ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸುವ ಮೊದಲು ರೇಡಿಯೋ ಆನ್ ಮಾಡಿ."</string>
     <string name="close_dialog" msgid="2365884406356986917">"ಸರಿ"</string>
-    <string name="enable" msgid="7248657275000173526">"ಆನ್ ಮಾಡು"</string>
+    <string name="enable" msgid="7248657275000173526">"ಆನ್‌ ಮಾಡಿ"</string>
     <string name="disable" msgid="4678348128118573672">"ಆಫ್ ಮಾಡು"</string>
     <string name="change_num" msgid="239476305819844391">"ಅಪ್‌ಡೇಟ್‌ ಮಾಡು"</string>
   <string-array name="clir_display_values">
@@ -349,18 +349,18 @@
     <string name="carrier_settings_title" msgid="9028166176523012300">"ವಾಹಕ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="fdn" msgid="7878832555095183202">"ಸ್ಥಿರ ಡಯಲಿಂಗ್‌‌ ಸಂಖ್ಯೆಗಳು"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"ಸ್ಥಿರ ಡಯಲ್ ಸಂಖ್ಯೆಗಳು (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"FDN ಪಟ್ಟಿ"</string>
-    <string name="fdn_list_with_label" msgid="7437232552210469217">"FDN ಪಟ್ಟಿ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="fdn_activation" msgid="2156479741307463576">"FDN ಸಕ್ರಿಯಗೊಳಿಸುವಿಕೆ"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"ಎಫ್‌ಡಿಎನ್‌ ಪಟ್ಟಿ"</string>
+    <string name="fdn_list_with_label" msgid="7437232552210469217">"ಎಫ್‌ಡಿಎನ್‌ ಪಟ್ಟಿ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn_activation" msgid="2156479741307463576">"ಎಫ್‌ಡಿಎನ್‌ ಸಕ್ರಿಯಗೊಳಿಸುವಿಕೆ"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"ಸ್ಥಿರ ಡಯಲಿಂಗ್ ಸಂಖ್ಯೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"ಸ್ಥಿರ ಡಯಲಿಂಗ್ ಸಂಖ್ಯೆಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"FDN ಸಕ್ರಿಯಗೊಳಿಸು"</string>
-    <string name="disable_fdn" msgid="7944020890722540616">"FDN ನಿಷ್ಕ್ರಿಯಗೊಳಿಸು"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"ಎಫ್‌ಡಿಎನ್‌ ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
+    <string name="disable_fdn" msgid="7944020890722540616">"ಎಫ್‌ಡಿಎನ್‌ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸು"</string>
     <string name="change_pin2" msgid="2153563695382176676">"PIN2 ಬದಲಾಯಿಸಿ"</string>
-    <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN ನಿಷ್ಕ್ರಿಯಗೊಳಿಸು"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN ಸಕ್ರಿಯಗೊಳಿಸು"</string>
+    <string name="enable_fdn_ok" msgid="7215588870329688132">"ಎಫ್‌ಡಿಎನ್‌ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸು"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"ಎಫ್‌ಡಿಎನ್‌ ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"ಸ್ಥಿರ ಡಯಲಿಂಗ್ ಸಂಖ್ಯೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ಪ್ರವೇಶಕ್ಕಾಗಿ ಪಿನ್‌ ಬದಲಾಯಿಸಿ"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"ಎಫ್‌ಡಿಎನ್‌ ಪ್ರವೇಶಕ್ಕಾಗಿ ಪಿನ್‌ ಬದಲಾಯಿಸಿ"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ಫೋನ್ ಸಂಖ್ಯೆ ಪಟ್ಟಿಯನ್ನು ನಿರ್ವಹಿಸಿ"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"ಧ್ವನಿ ಗೌಪ್ಯತೆ"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"ಗೌಪ್ಯತೆ ವರ್ಧಿತ ಮೋಡ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸು"</string>
@@ -383,13 +383,13 @@
     <string name="edit_fdn_contact" msgid="7976936035587081480">"ಸ್ಥಿರ ಡಯಲಿಂಗ್‌‌ ಸಂಖ್ಯೆಯನ್ನು ಎಡಿಟ್ ಮಾಡಿ"</string>
     <string name="updating_fdn_contact" msgid="8370929876849803600">"ಸ್ಥಿರ ಡಯಲಿಂಗ್‌‌ ಸಂಖ್ಯೆಯನ್ನು ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="fdn_contact_updated" msgid="5497828782609005017">"ಸ್ಥಿರ ಡಯಲಿಂಗ್ ಸಂಖ್ಯೆಯನ್ನು ನವೀಕರಿಸಲಾಗಿದೆ."</string>
-    <string name="delete_fdn_contact" msgid="6668958073074151717">"ಸ್ಥಿರ ಡಯಲಿಂಗ್‌‌ ಸಂಖ್ಯೆಯನ್ನು ಅಳಿಸು"</string>
+    <string name="delete_fdn_contact" msgid="6668958073074151717">"ಸ್ಥಿರ ಡಯಲಿಂಗ್‌‌ ಸಂಖ್ಯೆಯನ್ನು ಅಳಿಸಿ"</string>
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ಸ್ಥಿರ ಡಯಲಿಂಗ್‌‌ ಸಂಖ್ಯೆಯನ್ನು ಅಳಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ಸ್ಥಿರ ಡಯಲಿಂಗ್ ಸಂಖ್ಯೆಯನ್ನು ಅಳಿಸಲಾಗಿದೆ."</string>
-    <string name="pin2_invalid" msgid="5470854099230755944">"ನೀವು ತಪ್ಪಾದ ಪಿನ್‌ ಟೈಪ್‌ ಮಾಡಿರುವ ಕಾರಣ FDN ಅನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"ಸಂಖ್ಯೆಯು ಖಾಲಿ ಇರುವುದರಿಂದ ಅಥವಾ 20 ಅಂಕಿಗಳನ್ನು ಮೀರುವುದರಿಂದಾಗಿ FDN ಅನ್ನು ಅಪ್‌ಡೇಟ್ ಮಾಡಲಾಗಿಲ್ಲ."</string>
-    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN ಅನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ. PIN2 ತಪ್ಪಾಗಿದೆ ಅಥವಾ ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ತಿರಸ್ಕರಿಸಲಾಗಿದೆ."</string>
-    <string name="fdn_failed" msgid="540018079008319747">"FDN ಕಾರ್ಯಾಚರಣೆ ವಿಫಲವಾಗಿದೆ."</string>
+    <string name="pin2_invalid" msgid="5470854099230755944">"ನೀವು ತಪ್ಪಾದ ಪಿನ್‌ ಟೈಪ್‌ ಮಾಡಿರುವ ಕಾರಣ ಎಫ್‌ಡಿಎನ್‌ ಅನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"ಸಂಖ್ಯೆಯು ಖಾಲಿ ಇರುವುದರಿಂದ ಅಥವಾ 20 ಅಂಕಿಗಳನ್ನು ಮೀರುವುದರಿಂದಾಗಿ ಎಫ್‌ಡಿಎನ್‌ ಅನ್ನು ಅಪ್‌ಡೇಟ್ ಮಾಡಲಾಗಿಲ್ಲ."</string>
+    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"ಎಫ್‌ಡಿಎನ್‌ ಅನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ. PIN2 ತಪ್ಪಾಗಿದೆ ಅಥವಾ ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ತಿರಸ್ಕರಿಸಲಾಗಿದೆ."</string>
+    <string name="fdn_failed" msgid="540018079008319747">"ಎಫ್‌ಡಿಎನ್‌ ಕಾರ್ಯಾಚರಣೆ ವಿಫಲವಾಗಿದೆ."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"ಸಿಮ್‌ ಕಾರ್ಡ್‌ನಿಂದ ಓದಲಾಗುತ್ತಿದೆ…"</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"ನಿಮ್ಮ ಸಿಮ್‌ ಕಾರ್ಡ್‌ನಲ್ಲಿ ಯಾವುದೇ ಸಂಪರ್ಕಗಳಿಲ್ಲ."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"ಆಮದು ಮಾಡಲು ಸಂಪರ್ಕಗಳು"</string>
@@ -409,7 +409,7 @@
     <string name="enable_pin_ok" msgid="2918545971413270063">"PIN ಹೊಂದಿಸಲಾಗಿದೆ"</string>
     <string name="disable_pin_ok" msgid="2109571368635883688">"PIN ತೆರವುಗೊಳಿಸಲಾಗಿದೆ"</string>
     <string name="pin_failed" msgid="5644377896213584760">"PIN ತಪ್ಪಾಗಿದೆ"</string>
-    <string name="pin_changed" msgid="4455736268023261662">"PIN ನವೀಕರಿಸಲಾಗಿದೆ"</string>
+    <string name="pin_changed" msgid="4455736268023261662">"PIN ಅಪ್‌ಡೇಟ್‌ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="puk_requested" msgid="5921393215789090200">"ಪಾಸ್‌ವರ್ಡ್ ತಪ್ಪಾಗಿದೆ. PIN ಇದೀಗ ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ. PUK ವಿನಂತಿಸಲಾಗಿದೆ."</string>
     <string name="enter_pin2_text" msgid="8339444124477720345">"PIN2"</string>
     <string name="oldPin2Label" msgid="8559146795026261502">"ಹಳೆಯ PIN2"</string>
@@ -420,7 +420,7 @@
     <string name="mismatchPin2" msgid="4177967478551851117">"PIN2s ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."</string>
     <string name="invalidPin2" msgid="1757045131429105595">"4 ರಿಂದ 8 ಸಂಖ್ಯೆಗಳ PIN2 ನಮೂದಿಸಿ."</string>
     <string name="invalidPuk2" msgid="7059081153334815973">"8 ಸಂಖ್ಯೆಗಳ PUK2 ನಮೂದಿಸಿ."</string>
-    <string name="pin2_changed" msgid="3724522579945610956">"PIN2 ನವೀಕರಿಸಲಾಗಿದೆ"</string>
+    <string name="pin2_changed" msgid="3724522579945610956">"PIN2 ಅಪ್‌ಡೇಟ್‌ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="label_puk2_code" msgid="4688069961795341948">"PUK2 ಕೋಡ್ ನಮೂದಿಸಿ"</string>
     <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"ಪಾಸ್‌ವರ್ಡ್ ತಪ್ಪಾಗಿದೆ. PIN2 ಇದೀಗ ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಲು, PIN 2 ಬದಲಾಯಿಸಿ."</string>
     <string name="puk2_requested" msgid="5831015200030161434">"ಪಾಸ್‌ವರ್ಡ್ ತಪ್ಪಾಗಿದೆ. SIM ಅನ್ನು ಇದೀಗ ಲಾಕ್ ಮಾಡಲಾಗಿದೆ. PUK2 ನಮೂದಿಸಿ."</string>
@@ -488,7 +488,7 @@
     <string name="importToFDNfromContacts" msgid="2130620207013368580">"ಸಂಪರ್ಕಗಳಿಂದ ಆಮದು ಮಾಡು"</string>
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"ಆಮದು ಮಾಡಿದ ಸಂಪರ್ಕ"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"ಸಂಪರ್ಕ ಆಮದು ಮಾಡುವಲ್ಲಿ ವಿಫಲವಾಗಿದೆ"</string>
-    <string name="hac_mode_title" msgid="8740268574688743289">"ಶ್ರವಣ ಸಾಧನಗಳು"</string>
+    <string name="hac_mode_title" msgid="8740268574688743289">"ಕೇಳುವಿಕೆ ಸಾಧನಗಳು"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"ಶ್ರವಣ ಸಾಧನ ಹೊಂದಾಣಿಕೆಯನ್ನು ಆನ್‌ ಮಾಡಿ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ಆಫ್"</item>
