@@ -364,7 +364,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"停用 FDN"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"啟用 FDN"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"管理固定撥號"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"變更 FDN 存取 PIN"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"變更存取 FDN 的 PIN"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"管理電話號碼清單"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"語音加密保護"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"已啟用加強型私隱保護模式"</string>
@@ -399,7 +399,7 @@
     <string name="simContacts_title" msgid="1861472842524839921">"選取要匯入的聯絡人"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"關閉飛行模式，並從 SIM 卡匯入聯絡人。"</string>
     <string name="enable_pin" msgid="5422767284133234860">"啟用/停用 SIM PIN"</string>
-    <string name="change_pin" msgid="9174186126330785343">"更改 SIM PIN"</string>
+    <string name="change_pin" msgid="9174186126330785343">"變更 SIM 卡的 PIN"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"SIM PIN："</string>
     <string name="oldPinLabel" msgid="5287773661246368314">"舊 PIN"</string>
     <string name="newPinLabel" msgid="207488227285336897">"新的 PIN"</string>

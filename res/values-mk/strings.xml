@@ -374,7 +374,7 @@
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Овозможи режим на автоматски повторен обид"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Промена на режим TTY не е дозволена за време на видеоповик"</string>
     <string name="menu_add" msgid="1882023737425114762">"Додај контакт"</string>
-    <string name="menu_edit" msgid="7143003705504672374">"Уреди контакт"</string>
+    <string name="menu_edit" msgid="7143003705504672374">"Измени контакт"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Избриши контакт"</string>
     <string name="menu_dial" msgid="3223106222819685808">"Повикај контакт"</string>
     <string name="get_pin2" msgid="8204677063922225311">"Внеси PIN2"</string>
@@ -384,7 +384,7 @@
     <string name="add_fdn_contact" msgid="2481915899633353976">"Додај број на фиксно бирање"</string>
     <string name="adding_fdn_contact" msgid="7627379633721940991">"Се додава број на фиксно бирање..."</string>
     <string name="fdn_contact_added" msgid="7458335758501736665">"Бројот на фиксно бирање е додаден."</string>
-    <string name="edit_fdn_contact" msgid="7976936035587081480">"Уреди број на фиксно бирање"</string>
+    <string name="edit_fdn_contact" msgid="7976936035587081480">"Измени број на фиксно бирање"</string>
     <string name="updating_fdn_contact" msgid="8370929876849803600">"Ажурирање број за фиксно бирање..."</string>
     <string name="fdn_contact_updated" msgid="5497828782609005017">"Бројот на фиксно бирање е ажуриран."</string>
     <string name="delete_fdn_contact" msgid="6668958073074151717">"Избриши број на фиксно бирање"</string>
@@ -448,8 +448,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Бројот на говорна пошта е непознат"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Нема услуга"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Одбраната мрежа (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) е недостапна"</string>
-    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
-    <skip />
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Вклучете мобилна мрежа, исклучете го авионскиот режим или пак, штедачот на батеријата за да воспоставите повик."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Исклучете го авионскиот режим за да повикате."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Исклучете го авионскиот режим или поврзете се на безжична мрежа за да повикате."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Излезете од режимот на итен повратен повик за да направите обичен повик."</string>
