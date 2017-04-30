@@ -347,7 +347,7 @@
     <string name="cdma_activate_device" msgid="3793805892364814518">"Activați dispozitivul"</string>
     <string name="cdma_lte_data_service" msgid="4255018217292548962">"Configurați serviciul de date"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"Setări operator"</string>
-    <string name="fdn" msgid="7878832555095183202">"Numere pentru apeluri restricționate"</string>
+    <string name="fdn" msgid="7878832555095183202">"Numere apeluri restricționate"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"Numere pentru apeluri restricționate (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="8777755791892122369">"Listă NAR"</string>
     <string name="fdn_list_with_label" msgid="7437232552210469217">"Listă NAR (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -444,8 +444,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Număr mesagerie vocală necunoscut"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Fără serviciu"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Rețeaua selectată (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) nu este disponibilă"</string>
-    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
-    <skip />
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Activați rețeaua mobilă, dezactivați modul avion sau modul de economisire a bateriei pentru a iniția un apel."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Pentru a apela, dezactivați modul Avion."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Pentru a apela, dezactivați modul Avion sau conectați-vă la o rețea wireless."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Ieșiți din modul de apelare inversă de urgență pentru a efectua un apel care nu este de urgență."</string>

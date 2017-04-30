@@ -66,7 +66,7 @@
     <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;Սահմանված չէ&gt;"</string>
     <string name="display_name_summary" msgid="7155076491675565407">"&lt;Նույնը, ինչ օգտանունը&gt;"</string>
     <string name="optional_summary" msgid="2363105560396317624">"&lt;Ընտրովի&gt;"</string>
-    <string name="advanced_settings_show" msgid="7838761602853998622">"▷ Հպեք՝ ցուցադրելու ամենը"</string>
+    <string name="advanced_settings_show" msgid="7838761602853998622">"▷ Հպեք՝ տեսնելու համար"</string>
     <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ Հպեք՝ թաքցնելու ամենը"</string>
     <string name="all_empty_alert" msgid="4087734950375192387">"Մուտքագրեք նոր SIP հաշվի տվյալները:"</string>
     <string name="empty_alert" msgid="6659484914371384024">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g>-ը պարտադիր է և չի կարող լինել դատարկ:"</string>

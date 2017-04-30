@@ -20,7 +20,7 @@
     <string name="sip_accounts" msgid="85559497282185405">"Contas SIP"</string>
     <string name="sip_accounts_title" msgid="2082527045326874519">"Contas"</string>
     <string name="sip_receive_calls" msgid="426678617137462173">"Recibir chamadas entrantes"</string>
-    <string name="sip_receive_calls_summary" msgid="946161517528227523">"Consume máis batería"</string>
+    <string name="sip_receive_calls_summary" msgid="946161517528227523">"Consome máis batería"</string>
     <string name="sip_call_options_title" msgid="8421210494703869806">"Utilizar chamadas SIP"</string>
     <string name="sip_call_options_wifi_only_title" msgid="5112579243580893890">"Utilizar chamadas SIP (só coa wifi)"</string>
     <string name="sip_call_options_entry_1" msgid="7217659161237099900">"Para todas as chamadas cando a rede de datos está dispoñible"</string>
