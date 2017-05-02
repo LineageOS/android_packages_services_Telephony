@@ -245,9 +245,9 @@
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"Cell Broadcast-sms aktiveret"</string>
     <string name="cell_bc_sms_disable" msgid="3398365088309408749">"Cell Broadcast-sms deaktiveret"</string>
     <string name="cb_sms_settings" msgid="651715019785107312">"Indstillinger for Cell Broadcast-sms"</string>
-    <string name="enable_disable_emergency_broadcast" msgid="2157014609041245335">"Nødtransmission"</string>
-    <string name="emergency_broadcast_enable" msgid="2645980025414010211">"Nødtransmission er aktiveret"</string>
-    <string name="emergency_broadcast_disable" msgid="3665199821267569426">"Nødtransmission er deaktiveret"</string>
+    <string name="enable_disable_emergency_broadcast" msgid="2157014609041245335">"Nødudsendelse"</string>
+    <string name="emergency_broadcast_enable" msgid="2645980025414010211">"Nødudsendelse er aktiveret"</string>
+    <string name="emergency_broadcast_disable" msgid="3665199821267569426">"Nødudsendelse er deaktiveret"</string>
     <string name="enable_disable_administrative" msgid="6501582322182059412">"Administration"</string>
     <string name="administrative_enable" msgid="1750086122962032235">"Administration er aktiveret"</string>
     <string name="administrative_disable" msgid="8433273857248698539">"Administration er deaktiveret"</string>
