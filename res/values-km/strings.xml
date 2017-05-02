@@ -321,7 +321,7 @@
     <string name="enable_disable_multi_category" msgid="626771003122899280">"ប្រភេទ​ច្រើន"</string>
     <string name="multi_category_enable" msgid="1179299804641721768">"បាន​បើក​ប្រភេទ​ច្រើន"</string>
     <string name="multi_category_disable" msgid="880104702904139505">"បាន​បិទ​ប្រភេទ​ច្រើន"</string>
-    <string name="network_lte" msgid="7702681952521375754">"LTE (បាន​ផ្ដល់​អនុសាសន៍)"</string>
+    <string name="network_lte" msgid="7702681952521375754">"LTE (បានណែនាំ)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G (បាន​ផ្ដល់​អនុសាសន៍)"</string>
     <string name="network_global" msgid="1323190488685355309">"សកល"</string>
     <string name="cdma_system_select_title" msgid="5757657769327732833">"ជ្រើស​ប្រព័ន្ធ"</string>
