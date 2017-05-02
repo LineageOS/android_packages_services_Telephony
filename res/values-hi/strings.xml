@@ -107,7 +107,7 @@
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"<xliff:g id="PHONENUMBER">{0}</xliff:g> को अग्रेषित कर रहा है"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"बंद"</string>
     <string name="disable_cfb_forbidden" msgid="3506984333877998061">"जब आपका फ़ोन व्यस्त हो, तो आपका ऑपरेटर कॉल अग्रेषण अक्षम करने का समर्थन नहीं करता."</string>
-    <string name="labelCFNRy" msgid="1736067178393744351">"उत्‍तर न मिलने पर"</string>
+    <string name="labelCFNRy" msgid="1736067178393744351">"उत्तर न मिलने पर"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"अनुत्तरित होने पर नंबर"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> को अग्रेषित कर रहा है"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"बंद"</string>
@@ -371,7 +371,7 @@
     <string name="get_pin2" msgid="8204677063922225311">"पिन2 लिखें"</string>
     <string name="name" msgid="7329028332786872378">"नाम"</string>
     <string name="number" msgid="7905950798349903858">"नंबर"</string>
-    <string name="save" msgid="4094274636321939086">"जोड़ें"</string>
+    <string name="save" msgid="4094274636321939086">"सहेजें"</string>
     <string name="add_fdn_contact" msgid="2481915899633353976">"फ़िक्स्ड डायलिंग नंबर जोड़ें"</string>
     <string name="adding_fdn_contact" msgid="7627379633721940991">"फ़िक्स्ड डायलिंग नंबर जोड़ रहा है..."</string>
     <string name="fdn_contact_added" msgid="7458335758501736665">"फ़िक्स्ड डायलिंग नंबर जोड़ा गया."</string>
@@ -424,7 +424,7 @@
     <string name="pin2_unblocked" msgid="7791600368153469078">"PIN2 अब अवरोधित नहीं है"</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"नेटवर्क या SIM कार्ड गड़बड़ी"</string>
     <string name="doneButton" msgid="2859593360997984240">"पूर्ण"</string>
-    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"ध्‍वनिमेल नबंर"</string>
+    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"वॉइसमेल नबंर"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"डायल हो रहा है"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"पुन: डायल हो रहा है"</string>
     <string name="card_title_conf_call" msgid="1162980346189744501">"कॉन्फ़्रेंस कॉल"</string>

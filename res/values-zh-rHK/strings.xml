@@ -90,16 +90,16 @@
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"撥出電話時隱藏本機號碼"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"撥打電話時顯示本機號碼"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"使用預設值，在撥打電話時顯示本機號碼"</string>
-    <string name="labelCW" msgid="6120513814915920200">"來電待接"</string>
+    <string name="labelCW" msgid="6120513814915920200">"來電等候"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"通話時如有來電請通知我"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"通話時如有來電請通知我"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"來電轉接設定"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"來電轉駁設定"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"來電轉駁設定 (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"來電轉接"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"轉接全部來電"</string>
+    <string name="labelCF" msgid="2574386948026924737">"來電轉駁"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"全部轉駁"</string>
     <string name="messageCFU" msgid="3560082430662923687">"永遠使用這個號碼"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"轉接所有通話"</string>
-    <string name="sum_cfu_enabled" msgid="2450052502198827927">"將所有來電轉接至 <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
+    <string name="sum_cfu_enabled" msgid="2450052502198827927">"將所有來電轉駁至 <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"號碼無法使用"</string>
     <string name="sum_cfu_disabled" msgid="8384177689501334080">"關閉"</string>
     <string name="labelCFB" msgid="6139853033106283172">"線路繁忙時"</string>
@@ -362,7 +362,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"停用 FDN"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"啟用 FDN"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"管理固定撥號"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"變更 FDN 存取 PIN"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"變更存取 FDN 的 PIN"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"管理電話號碼清單"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"語音加密保護"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"已啟用加強型私隱保護模式"</string>
@@ -396,7 +396,7 @@
     <string name="simContacts_title" msgid="1861472842524839921">"選取要匯入的聯絡人"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"關閉飛行模式，並從 SIM 卡匯入聯絡人。"</string>
     <string name="enable_pin" msgid="5422767284133234860">"啟用/停用 SIM PIN"</string>
-    <string name="change_pin" msgid="9174186126330785343">"更改 SIM PIN"</string>
+    <string name="change_pin" msgid="9174186126330785343">"變更 SIM 卡的 PIN"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"SIM PIN："</string>
     <string name="oldPinLabel" msgid="5287773661246368314">"舊 PIN"</string>
     <string name="newPinLabel" msgid="207488227285336897">"新的 PIN"</string>
