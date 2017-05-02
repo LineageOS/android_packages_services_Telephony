@@ -85,7 +85,7 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"Ajustes adicionales de llamadas CDMA"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"Ajustes adicionales de llamadas solo CDMA"</string>
     <string name="labelNwService" msgid="4699970172021870983">"Ajustes del servicio de red"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"Identificador del emisor"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"ID de llamada"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"Cargando ajustes…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Número oculto en llamadas salientes"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Número mostrado en llamadas salientes"</string>
@@ -116,7 +116,7 @@
     <string name="messageCFNRc" msgid="6380695421020295119">"Número cuando no se pueda establecer la llamada"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Desviando a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"Inhabilitado"</string>
-    <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Tu operador no permite inhabilitar el desvío de llamadas si no se puede establecer la llamada."</string>
+    <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Tu operador no permite inhabilitar el desvío de llamada si no se puede establecer la llamada."</string>
     <string name="updating_title" msgid="6146755386174019046">"Ajustes de llamadas"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"El administrador es el único usuario que puede cambiar los ajustes de llamada."</string>
     <string name="call_settings_with_label" msgid="3401177261468593519">"Ajustes (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -361,7 +361,7 @@
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Habilitar FDN"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Administrar números de marcación fija"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Cambiar PIN para el acceso de FDN"</string>
-    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Administrar lista de números de teléfono"</string>
+    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gestionar lista de números de teléfono"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Privacidad de voz"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Habilitar modo de privacidad mejorado"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"Modo TTY"</string>
@@ -443,8 +443,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Número del buzón de voz desconocido"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Sin servicio"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"La red seleccionada (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) no está disponible."</string>
-    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
-    <skip />
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Activa la red móvil o desactiva el modo avión o el modo de ahorro de batería para hacer una llamada."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Desactiva el modo avión parra hacer llamadas."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Desactiva el modo avión o conéctate a una red inalámbrica para hacer llamadas."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Sal del modo de devolución de llamada de emergencia para hacer otro tipo de llamada."</string>
@@ -470,7 +469,7 @@
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Sin servicio. Reintentado…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Durante una llamada de emergencia no se puede entrar en el modo avión."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"No se puede establecer la llamada. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> no es un número de emergencia."</string>
-    <string name="dial_emergency_empty_error" msgid="9130194953830414638">"No se puede establecer la llamada. Marcar un número de emergencia."</string>
+    <string name="dial_emergency_empty_error" msgid="9130194953830414638">"No se puede establecer la llamada. Marca un número de emergencia."</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Utilizar teclado para marcar"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Retener"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Finalizar"</string>

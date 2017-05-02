@@ -360,7 +360,7 @@
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Кіраванне спісам тэлефонных нумароў"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Палiтыка прыватнасцi Voice"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Уключыць пашыраны рэжым прыватнасці"</string>
-    <string name="tty_mode_option_title" msgid="9033098925144434669">"Рэжым TTY"</string>
+    <string name="tty_mode_option_title" msgid="9033098925144434669">"Рэжым тэлетайпа"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"Задаць рэжым TTY"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"Аўтаматычны паўтор"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Уключыць рэжым аўтаматычнага паўтору"</string>
@@ -439,8 +439,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Невядомы нумар галасавой пошты"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Не абслугоўваецца"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Выбраная сетка (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) недаступная"</string>
-    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
-    <skip />
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Каб пазваніць, уключыце мабільную сетку, выключыце рэжым палёту або рэжым эканоміі зараду."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Адключыце рэжым палёту, каб зрабіць выклік."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Адключыце рэжым палёту або падлучыцеся да бесправадной сеткі, каб зрабіць выклік."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Выйдзіце з рэжыму экстранных зваротных выклікаў, каб зрабіць няэкстранны выклік."</string>
@@ -488,10 +487,10 @@
     <string name="hac_mode_title" msgid="8740268574688743289">"Слыхавы апарат"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Уключыць функцыю сумяшчальнасці са слыхавым апаратам"</string>
   <string-array name="tty_mode_entries">
-    <item msgid="512950011423868021">"TTY адключаны"</item>
-    <item msgid="3971695875449640648">"TTY поўны"</item>
-    <item msgid="1937509904407445684">"TTY HCO"</item>
-    <item msgid="5644925873488772224">"TTY VCO"</item>
+    <item msgid="512950011423868021">"Тэлетайп выключаны"</item>
+    <item msgid="3971695875449640648">"Поўнафункцыянальны тэлетайп"</item>
+    <item msgid="1937509904407445684">"Тэлетайп HCO"</item>
+    <item msgid="5644925873488772224">"Тэлетайп VCO"</item>
   </string-array>
     <string name="dtmf_tones_title" msgid="5163153771291340803">"Сігналы DTMF"</string>
     <string name="dtmf_tones_summary" msgid="3351820372864020331">"Задаць даўжыню тонаў DTMF"</string>
