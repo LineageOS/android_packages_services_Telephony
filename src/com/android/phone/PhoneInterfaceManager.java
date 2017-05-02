@@ -33,8 +33,10 @@ import android.os.AsyncResult;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
+import android.os.Messenger;
 import android.os.Process;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
@@ -53,6 +55,7 @@ import android.telephony.ClientRequestStats;
 import android.telephony.IccOpenLogicalChannelResponse;
 import android.telephony.ModemActivityInfo;
 import android.telephony.NeighboringCellInfo;
+import android.telephony.NetworkScanRequest;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
 import android.telephony.SmsManager;
@@ -71,6 +74,7 @@ import com.android.ims.ImsManager;
 import com.android.ims.internal.IImsServiceController;
 import com.android.ims.internal.IImsServiceFeatureListener;
 import com.android.internal.telephony.CallManager;
+import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.DefaultPhoneNotifier;
@@ -282,9 +286,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                      Pair<String, ResultReceiver> ussdObject = (Pair) request.argument;
                      String ussdRequest =  ussdObject.first;
                      ResultReceiver wrappedCallback = ussdObject.second;
-                     request.result = phone != null ?
-                             phone.handleUssdRequest(ussdRequest, wrappedCallback)
-                             :false;
+                     try {
+                         request.result = phone != null ?
+                                 phone.handleUssdRequest(ussdRequest, wrappedCallback)
+                                 : false;
+                     } catch (CallStateException cse) {
+                         request.result = false;
+                     }
                      // Wake up the requesting thread
                      synchronized (request) {
                          request.notifyAll();
@@ -2646,6 +2654,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         CellNetworkScanResult result = (CellNetworkScanResult) sendRequest(
                 CMD_PERFORM_NETWORK_SCAN, null, subId);
         return result;
+    }
+
+    /**
+     * Performs a new network scan and returns the id of this scan.
+     *
+     * @return the id of the requested scan which can be used to stop the scan.
+     */
+    @Override
+    public int requestNetworkScan(int subId, NetworkScanRequest request, Messenger messenger,
+            IBinder binder) {
+        // TODO(yinxu): Implement this method.
+        throw new UnsupportedOperationException("To be implemented...");
+    }
+
+    /**
+     * Stops an existing network scan with the given scanId.
+     */
+    @Override
+    public void stopNetworkScan(int subId, int scanId) {
+        // TODO(yinxu): Implement this method.
+        throw new UnsupportedOperationException("To be implemented...");
     }
 
     /**

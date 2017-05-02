@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Mobiele gegevens"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Mobiele data"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefoonservices"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Kiezer noodoproep"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefoon"</string>
@@ -43,10 +43,10 @@
     <string name="pause_prompt_no" msgid="6686238803236884877">"Nee"</string>
     <string name="wild_prompt_str" msgid="5543521676355533577">"Jokerteken vervangen door"</string>
     <string name="no_vm_number" msgid="4164780423805688336">"Voicemailnummer ontbreekt"</string>
-    <string name="no_vm_number_msg" msgid="1300729501030053828">"Er is geen voicemailnummer op de SIM-kaart opgeslagen."</string>
+    <string name="no_vm_number_msg" msgid="1300729501030053828">"Er is geen voicemailnummer op de simkaart opgeslagen."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Nummer toevoegen"</string>
     <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Voicemailinstellingen kunnen alleen worden gewijzigd door de primaire gebruiker."</string>
-    <string name="puk_unlocked" msgid="2284912838477558454">"Je SIM-kaart is gedeblokkeerd. Je telefoon wordt ontgrendeld..."</string>
+    <string name="puk_unlocked" msgid="2284912838477558454">"Je simkaart is gedeblokkeerd. Je telefoon wordt ontgrendeld..."</string>
     <string name="label_ndp" msgid="780479633159517250">"Pincode voor ontgrendelen SIM-netwerk"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Ontgrendelen"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Negeren"</string>
@@ -126,7 +126,7 @@
     <string name="updating_settings" msgid="8171225533884883252">"Instellingen bijwerken..."</string>
     <string name="reverting_settings" msgid="4752151682666912828">"Instellingen terugzetten..."</string>
     <string name="response_error" msgid="6674110501330139405">"Onverwachte reactie van netwerk."</string>
-    <string name="exception_error" msgid="7027667130619518211">"Netwerk- of SIM-kaartfout."</string>
+    <string name="exception_error" msgid="7027667130619518211">"Netwerk- of simkaartfout."</string>
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-verzoek is gewijzigd in DIAL-verzoek."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-verzoek is gewijzigd in USSD-verzoek."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-verzoek is gewijzigd in nieuw SS-verzoek."</string>
@@ -390,13 +390,13 @@
     <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN is niet geüpdatet omdat het nummer leeg is of langer is dan twintig tekens."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN is niet bijgewerkt. De PIN2 was onjuist of het telefoonnummer is geweigerd."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN-bewerking mislukt."</string>
-    <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lezen vanaf SIM-kaart..."</string>
-    <string name="simContacts_empty" msgid="5270660846489561932">"Geen contacten op je SIM-kaart."</string>
+    <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lezen vanaf simkaart..."</string>
+    <string name="simContacts_empty" msgid="5270660846489561932">"Geen contacten op je simkaart."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Contacten selecteren om te importeren"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Schakel de vliegtuigmodus uit om contacten van de simkaart te importeren."</string>
     <string name="enable_pin" msgid="5422767284133234860">"SIM pincode in-/uitschakelen"</string>
-    <string name="change_pin" msgid="9174186126330785343">"SIM pincode wijzigen"</string>
-    <string name="enter_pin_text" msgid="8532615714751931951">"SIM pincode:"</string>
+    <string name="change_pin" msgid="9174186126330785343">"Pincode simkaart wijzigen"</string>
+    <string name="enter_pin_text" msgid="8532615714751931951">"Pincode simkaart:"</string>
     <string name="oldPinLabel" msgid="5287773661246368314">"Oude pincode"</string>
     <string name="newPinLabel" msgid="207488227285336897">"Nieuwe pincode"</string>
     <string name="confirmPinLabel" msgid="257597715098070206">"Nieuwe pincode bevestigen"</string>
@@ -469,7 +469,7 @@
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Geen bereik. Opnieuw proberen…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Kan vliegtuigmodus niet activeren tijdens een noodoproep."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Kan niet bellen. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> is geen alarmnummer."</string>
-    <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Kan niet bellen. Bel een alarmnummer."</string>
+    <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Bellen niet mogelijk. Bel een alarmnummer."</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Toetsen gebruiken om te bellen"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"In de wacht"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Beëindigen"</string>
