@@ -444,8 +444,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"የማይታወቅ የድምፅ መልዕክት ቁጥር"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"ምንም አገልግሎት የለም"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"የተመረጠ አውታረመረብ(<xliff:g id="OPERATOR_NAME">%s</xliff:g>) የለም"</string>
-    <!-- no translation found for incall_error_power_off (2007450435656211658) -->
-    <skip />
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"የተንቀሳቃሽ ስልክ አውታረ መረብ ያብሩ፣ ጥሪ ለማድረግ የአውሮፕላን ሁነታን ወይም የባትሪ ኃይል ቆጣቢ ሁነታን ያጥፉ።"</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"ጥሪ ለማድረግ የአውሮፕላን ሁነታን ያጥፉ።"</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"ጥሪ ለማድረግ የአውሮፕላን ሁኔታን ያጥፉ ወይም ወደ ሽቦ አልባ አውታረ መረብ ያገናኙ።"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"አስቸኳይ ያልሆነ ጥሪ ለማድረግ ከአስቸኳይ መልሰህ ደውል ሁነታ ይውጡ።"</string>
@@ -490,7 +489,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"የመጣ እውቂያ"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"እውቂያን ማስመጣት አልተቻለም"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"ማዳመጫ መርጃዎች"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"የመስሚያ መርጃ ተጓዳኝአብራ"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"የመስሚያ መርጃ ተጓዳኝ አብራ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ጠፍቷል"</item>
     <item msgid="3971695875449640648">"TTY ሙሉ"</item>

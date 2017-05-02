@@ -122,11 +122,11 @@ public class VvmSimStateTracker extends BroadcastReceiver {
             case TelephonyIntents.ACTION_SIM_STATE_CHANGED:
                 if (IccCardConstants.INTENT_VALUE_ICC_ABSENT.equals(
                         intent.getStringExtra(IccCardConstants.INTENT_KEY_ICC_STATE))) {
-                    // onSimRemoved will scan all known accounts with isPhoneAccountActive() to find
+                    // checkRemovedSim will scan all known accounts with isPhoneAccountActive() to find
                     // which SIM is removed.
                     // ACTION_SIM_STATE_CHANGED only provides subId which cannot be converted to a
                     // PhoneAccountHandle when the SIM is absent.
-                    onSimRemoved(context);
+                    checkRemovedSim(context);
                 }
                 break;
             case CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED:
@@ -135,6 +135,7 @@ public class VvmSimStateTracker extends BroadcastReceiver {
 
                 if (!SubscriptionManager.isValidSubscriptionId(subId)) {
                     VvmLog.i(TAG, "Received SIM change for invalid subscription id.");
+                    checkRemovedSim(context);
                     return;
                 }
 
@@ -172,7 +173,7 @@ public class VvmSimStateTracker extends BroadcastReceiver {
         RemoteVvmTaskManager.startCellServiceConnected(context, phoneAccountHandle);
     }
 
-    private void onSimRemoved(Context context) {
+    private void checkRemovedSim(Context context) {
         SubscriptionManager subscriptionManager = SubscriptionManager.from(context);
         if (!isBootCompleted()) {
             for (PhoneAccountHandle phoneAccountHandle : sPreBootHandles) {

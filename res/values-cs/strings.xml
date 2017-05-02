@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefonní služby"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Tísňové volání"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefon"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"Seznam povolených telefonních čísel"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"Seznam povolených čísel"</string>
     <string name="unknown" msgid="6878797917991465859">"Neznámý volající"</string>
     <string name="private_num" msgid="6713286113000232309">"Soukromé číslo"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefonní automat"</string>
@@ -349,7 +349,7 @@
     <string name="carrier_settings_title" msgid="9028166176523012300">"Nastavení operátora"</string>
     <string name="fdn" msgid="7878832555095183202">"Povolená tel. čísla"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"Povolená tel. čísla (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"Seznam povolených telefonních čísel"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"Seznam povolených čísel"</string>
     <string name="fdn_list_with_label" msgid="7437232552210469217">"Povolená čísla (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Aktivace povolených telefonních čísel"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Funkce Povolená tel. čísla je zapnuta"</string>

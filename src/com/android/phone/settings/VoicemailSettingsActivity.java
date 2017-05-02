@@ -25,10 +25,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.UserManager;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.ContactsContract.CommonDataKinds;
 import android.telephony.TelephonyManager;
 import android.text.BidiFormatter;
@@ -200,7 +200,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
     private VoicemailProviderListPreference mVoicemailProviders;
     private PreferenceScreen mVoicemailSettings;
     private VoicemailRingtonePreference mVoicemailNotificationRingtone;
-    private CheckBoxPreference mVoicemailNotificationVibrate;
+    private SwitchPreference mVoicemailNotificationVibrate;
 
     //*********************************************************************************************
     // Preference Activity Methods
@@ -259,7 +259,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
         mVoicemailNotificationRingtone.setVoicemailRingtoneNameChangeListener(this);
         mVoicemailNotificationRingtone.init(mPhone, mOldVmRingtoneName);
 
-        mVoicemailNotificationVibrate = (CheckBoxPreference) findPreference(
+        mVoicemailNotificationVibrate = (SwitchPreference) findPreference(
                 getResources().getString(R.string.voicemail_notification_vibrate_key));
         mVoicemailNotificationVibrate.setOnPreferenceChangeListener(this);
 
