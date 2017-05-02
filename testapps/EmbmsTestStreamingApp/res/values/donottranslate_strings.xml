@@ -17,4 +17,7 @@
 
 <resources>
     <string name="bind_button">Bind to service</string>
+    <string name="streaming_uri_label">Current Streaming URI</string>
+    <string name="get_streaming_services_button">Get streaming services</string>
+    <string name="available_streaming_services_label">Available Streaming Services</string>
 </resources>
