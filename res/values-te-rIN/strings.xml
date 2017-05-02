@@ -57,7 +57,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM కాల్ సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA కాల్ సెట్టింగ్‌లు"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA కాల్ సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"ప్రాప్యత స్థానం పేర్లు"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"ప్రాప్యత పాయింట్ పేర్లు"</string>
     <string name="settings_label" msgid="3876743539816984008">"నెట్‌వర్క్ సెట్టింగ్‌లు"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"కాల్ చేయగల ఖాతాలు"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"దీనితో కాల్‌లు చేయి"</string>
@@ -352,11 +352,11 @@
     <string name="fdn_disabled" msgid="4700049736675368279">"ఫిక్సెడ్ డయలింగ్ నంబర్‌లు నిలిపివేయబడ్డాయి"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"FDNని ప్రారంభించు"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"FDNని నిలిపివేయి"</string>
-    <string name="change_pin2" msgid="2153563695382176676">"PIN2ని మార్చు"</string>
+    <string name="change_pin2" msgid="2153563695382176676">"పిన్2ని మార్చు"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDNని నిలిపివేయి"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"FDNని ప్రారంభించు"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌లను నిర్వహించండి"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ప్రాప్యత కోసం PINను మార్చండి"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ప్రాప్యత కోసం పిన్‌ను మార్చండి"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ఫోన్ నంబర్ జాబితాను నిర్వహించండి"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"వాయిస్ గోప్యత"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"మెరుగైన గోప్యతా మోడ్‌ను ప్రారంభించండి"</string>

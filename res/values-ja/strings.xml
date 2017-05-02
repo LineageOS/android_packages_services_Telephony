@@ -488,7 +488,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"補聴機能の互換をON"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY OFF"</item>
-    <item msgid="3971695875449640648">"TTYフル"</item>
+    <item msgid="3971695875449640648">"TTY フル"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>
   </string-array>
