@@ -577,7 +577,7 @@
     <string name="message_decode_error" msgid="3456481534066924855">"Xabarni kodsizlashda xatolik yuz berdi."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Telefoningizda rouming xizmati sozlangan va SIM karta faollashtirilgan."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Hozir bir nechta qo‘ng‘iroqlar amalda. Boshqa abonentga qo‘ng‘iroq qilishdan avval, amaldagi qo‘ng‘iroqlarni tugating yoki ularni konferens-aloqaga birlashtiring."</string>
-    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Ulanib bo‘lmadi. Ishlaydigan SIM kartani joylang."</string>
+    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Ulanishda xato. Mos SIM kartani soling."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi tarmog‘iga ulanish uzildi va qo‘ng‘iroq tugatildi."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Ovozli pochta PIN kodini o‘zgartirish"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Davom etish"</string>
