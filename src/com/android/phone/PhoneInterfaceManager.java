@@ -71,6 +71,7 @@ import com.android.ims.ImsManager;
 import com.android.ims.internal.IImsServiceController;
 import com.android.ims.internal.IImsServiceFeatureListener;
 import com.android.internal.telephony.CallManager;
+import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.DefaultPhoneNotifier;
@@ -282,9 +283,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                      Pair<String, ResultReceiver> ussdObject = (Pair) request.argument;
                      String ussdRequest =  ussdObject.first;
                      ResultReceiver wrappedCallback = ussdObject.second;
-                     request.result = phone != null ?
-                             phone.handleUssdRequest(ussdRequest, wrappedCallback)
-                             :false;
+                     try {
+                         request.result = phone != null ?
+                                 phone.handleUssdRequest(ussdRequest, wrappedCallback)
+                                 : false;
+                     } catch (CallStateException cse) {
+                         request.result = false;
+                     }
                      // Wake up the requesting thread
                      synchronized (request) {
                          request.notifyAll();
