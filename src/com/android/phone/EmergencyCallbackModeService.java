@@ -24,8 +24,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
 import android.os.AsyncResult;
 import android.os.Binder;
 import android.os.CountDownTimer;
@@ -37,10 +35,9 @@ import android.util.Log;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
-import com.android.internal.telephony.util.TelephonyNotificationBuilder;
+import com.android.internal.telephony.util.NotificationChannelController;
 
 /**
  * Application service that inserts/removes Emergency Callback Mode notification and
@@ -181,8 +178,7 @@ public class EmergencyCallbackModeService extends Service {
             }
             return;
         }
-        final Notification.Builder builder = new TelephonyNotificationBuilder(
-                getApplicationContext());
+        final Notification.Builder builder = new Notification.Builder(getApplicationContext());
         builder.setOngoing(true);
         builder.setPriority(Notification.PRIORITY_HIGH);
         builder.setSmallIcon(R.drawable.ic_emergency_callback_mode);
@@ -207,7 +203,7 @@ public class EmergencyCallbackModeService extends Service {
                      R.plurals.phone_in_ecm_notification_time, minutes).toString(), time);
         }
         builder.setContentText(text);
-        builder.setChannelId(TelephonyNotificationBuilder.CHANNEL_ID_ALERT);
+        builder.setChannelId(NotificationChannelController.CHANNEL_ID_ALERT);
 
         // Show notification
         mNotificationManager.notify(R.string.phone_in_ecm_notification_title, builder.build());
