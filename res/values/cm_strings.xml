@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
      Copyright (C) 2013-2014 The CyanogenMod Project
+     Copyright (C) 2017 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -89,4 +90,8 @@
     <!-- Mobile network settings, COLP -->
     <string name="connected_line_identification_title">Connected line identification</string>
     <string name="connected_line_identification_summary">Disable this option if the numbers of the recipients don\'t show up in the call history</string>
+
+    <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
+    <string name="mwi_notification_title">Message wait indicator</string>
+    <string name="mwi_notification_summary">Show message wait indicator voicemail notifications (restart required)</string>
 </resources>
