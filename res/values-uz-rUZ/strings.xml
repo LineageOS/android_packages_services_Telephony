@@ -59,7 +59,7 @@
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA qo‘ng‘iroq sozlamalari (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="9043423184895642077">"Internetga kirish nuqtalari (APN)"</string>
     <string name="settings_label" msgid="3876743539816984008">"Tarmoq sozlamalari"</string>
-    <string name="phone_accounts" msgid="6376603393888116364">"Qo‘ng‘iroq uchun hisoblar"</string>
+    <string name="phone_accounts" msgid="6376603393888116364">"Chaqiruv uchun hisoblar"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Qo‘ng‘iroqlar uchun hisob"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"SIP qo‘ng‘iroqlari uchun hisob"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"Avval so‘ralsin"</string>
@@ -91,12 +91,12 @@
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Raqam chiquvchi qo‘ng‘iroqlarda ko‘rsatilsin"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Chiquvchi qo‘ng‘iroqlarda telefon raqamimni ko‘rsatish uchun operatorning standart sozlamalaridan foydalanilsin"</string>
     <string name="labelCW" msgid="6120513814915920200">"Chaqiruvni kutish"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"Suhbat vaqtida kiruvchi qo‘ng‘iroq kelsa, sizga xabar qilinadi"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"Suhbat vaqtida kiruvchi qo‘ng‘iroq kelsa, sizga xabar qilinadi"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"Suhbat vaqtida kiruvchi chaqiruv kelsa, sizga xabar qilinadi"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"Suhbat vaqtida kiruvchi chaqiruv kelsa, sizga xabar qilinadi"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Chaqiruvni yo‘naltirish"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Chaqiruvni yo‘naltirish (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"Chaqiruvni yo‘naltirish"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"Har doim yo‘naltirish"</string>
+    <string name="labelCF" msgid="2574386948026924737">"Chaqiruvlarni uzatish"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"Har doim uzatish"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Qo‘ng‘iroq har doim ushbu raqamga yo‘naltirilsin"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Barcha qo‘ng‘iroqlar yo‘naltirilmoqda"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Barcha qo‘ng‘iroqlar <xliff:g id="PHONENUMBER">{0}</xliff:g>ga yo‘naltirilmoqda"</string>
@@ -365,7 +365,7 @@
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"Avto-qayta urinish"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Avto-qayta urinish rejimini yoqish"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Video qo‘ng‘iroq davomida TTY rejimini o‘zgartirish taqiqlangan"</string>
-    <string name="menu_add" msgid="1882023737425114762">"Kontakt qo‘shish"</string>
+    <string name="menu_add" msgid="1882023737425114762">"Kontakt saqlash"</string>
     <string name="menu_edit" msgid="7143003705504672374">"Kontaktni tahrirlash"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Kontaktni o‘chirish"</string>
     <string name="get_pin2" msgid="8204677063922225311">"PIN2 kodni kiriting"</string>
@@ -390,7 +390,7 @@
     <string name="simContacts_title" msgid="1861472842524839921">"Import u-n kontaktlarni tanlang"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"SIM kartadan kontaktlarni import qilish uchun parvoz rejimini o‘chiring"</string>
     <string name="enable_pin" msgid="5422767284133234860">"SIM karta uchun PIN-kod so‘rovini yoqish/o‘chirish"</string>
-    <string name="change_pin" msgid="9174186126330785343">"SIM-kartaning PIN-kodini o‘zgartirish"</string>
+    <string name="change_pin" msgid="9174186126330785343">"SIM karta PIN kodini almashtirish"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"SIM karta PIN kodi:"</string>
     <string name="oldPinLabel" msgid="5287773661246368314">"Yangi PIN-kod"</string>
     <string name="newPinLabel" msgid="207488227285336897">"Yangi PIN-kod"</string>
@@ -543,7 +543,7 @@
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Rad etish"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"Xizmat"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"Sozlash"</string>
-    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Ko‘rsatilmagan&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Kiritilmagan&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Boshqa qo‘ng‘iroq sozlamalari"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> orqali qo‘ng‘iroq"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"kontakt surati"</string>
