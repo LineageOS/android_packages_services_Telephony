@@ -817,7 +817,7 @@ public class TelephonyConnectionService extends ConnectionService {
         } catch (CallStateException e) {
             Log.e(this, e, "placeOutgoingConnection, phone.dial exception: " + e);
             int cause = android.telephony.DisconnectCause.OUTGOING_FAILURE;
-            if (e.getError() == CallStateException.ERROR_DISCONNECTED) {
+            if (e.getError() == CallStateException.ERROR_OUT_OF_SERVICE) {
                 cause = android.telephony.DisconnectCause.OUT_OF_SERVICE;
             } else if (e.getError() == CallStateException.ERROR_POWER_OFF) {
                 cause = android.telephony.DisconnectCause.POWER_OFF;
