@@ -210,6 +210,12 @@
     <!-- Flag to enable VVM3 visual voicemail. VVM3 is used by Verizon Wireless. -->
     <bool name="vvm3_enabled">false</bool>
 
+    <!-- Sprint Message Wait Indicator Quirk
+         If true, message wait indicators are hidden by default on this device unless the user
+         enables it in Call Settings.  This quirk is necessary to resolve the "Phantom Voicemail"
+         issue where notifications are impossible to dismiss on the Sprint network. -->
+    <bool name="sprint_mwi_quirk">false</bool>
+
     <!-- Component for custom voicemail notification handling. [DO NOT TRANSLATE] -->
     <string name="config_customVoicemailComponent">@null</string>
 
