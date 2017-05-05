@@ -216,8 +216,8 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"Zezwalaj na transmisję danych"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Uwaga"</string>
     <string name="roaming" msgid="8871412572928323707">"Roaming danych"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Połącz z usługami przesyłu danych podczas roamingu"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Połącz z usługami przesyłu danych podczas roamingu"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Połącz z usługami transmisji danych podczas roamingu"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Połącz z usługami transmisji danych podczas roamingu"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Połączenie transmisji danych zostało utracone, ponieważ opuszczono sieć macierzystą przy wyłączonej opcji danych w roamingu."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Mogą się z tym wiązać wysokie opłaty."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Zezwolić na roaming danych?"</string>

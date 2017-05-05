@@ -16,11 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Подаци за мобилне уређаје"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Мобилни подаци"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Телефонске услуге"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Хитни позиви"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Телефон"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"Листа бројева за фиксно бирање"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"Бројеви за фиксно бирање"</string>
     <string name="unknown" msgid="6878797917991465859">"Непознато"</string>
     <string name="private_num" msgid="6713286113000232309">"Приватан број"</string>
     <string name="payphone" msgid="4793877574636445118">"Телефонска говорница"</string>
@@ -58,7 +58,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Подешавања GSM позива (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA подешавања позива"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"Подешавања CDMA позива (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"Називи приступних тачака"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"Називи прист. тачака"</string>
     <string name="settings_label" msgid="3876743539816984008">"Мрежна подешавања"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Налози за позивање"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Упућујте позиве помоћу"</string>

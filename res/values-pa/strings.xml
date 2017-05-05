@@ -91,7 +91,7 @@
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"ਆਊਟਗੋਇੰਗ ਕਾਲਾਂ ਵਿੱਚ ਲੁਕਾਇਆ ਨੰਬਰ"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"ਆਊਟਗੋਇੰਗ ਕਾਲਾਂ ਵਿੱਚ ਡਿਸਪਲੇ ਕੀਤਾ ਨੰਬਰ"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"ਆਊਟਗੋਇੰਗ ਕਾਲਾਂ ਵਿੱਚ ਮੇਰਾ ਨੰਬਰ ਡਿਸਪਲੇ ਕਰਨ ਲਈ ਡਿਫੌਲਟ ਓਪਰੇਟਰ ਸੈਟਿੰਗਾਂ ਵਰਤੋ।"</string>
-    <string name="labelCW" msgid="6120513814915920200">"ਕਾਲ ਵੇਟਿੰਗ"</string>
+    <string name="labelCW" msgid="6120513814915920200">"ਕਾਲ ਉਡੀਕ ਵਿੱਚ"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"ਕਿਸੇ ਕਾਲ ਦੇ ਦੌਰਾਨ, ਮੈਨੂੰ ਇਨਕਮਿੰਗ ਕਾਲਾਂ ਦੀ ਸੂਚਨਾ ਦਿਓ"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"ਕਿਸੇ ਕਾਲ ਦੇ ਦੌਰਾਨ, ਮੈਨੂੰ ਇਨਕਮਿੰਗ ਕਾਲਾਂ ਦੀ ਸੂਚਨਾ ਦਿਓ"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"ਕਾਲ ਫੌਰਵਾਰਡਿੰਗ ਸੈਟਿੰਗਾਂ"</string>
