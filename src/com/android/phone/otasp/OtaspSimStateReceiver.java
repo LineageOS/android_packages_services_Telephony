@@ -24,7 +24,6 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.ServiceStateTracker;
 import com.android.phone.PhoneGlobals;
 
 public class OtaspSimStateReceiver extends BroadcastReceiver {
@@ -36,10 +35,10 @@ public class OtaspSimStateReceiver extends BroadcastReceiver {
         @Override
         public void onOtaspChanged(int otaspMode) {
             logd("onOtaspChanged: otaspMode=" + otaspMode);
-            if (otaspMode == ServiceStateTracker.OTASP_NEEDED) {
+            if (otaspMode == TelephonyManager.OTASP_NEEDED) {
                 logd("otasp activation required, start otaspActivationService");
                 mContext.startService(new Intent(mContext, OtaspActivationService.class));
-            } else if (otaspMode == ServiceStateTracker.OTASP_NOT_NEEDED) {
+            } else if (otaspMode == TelephonyManager.OTASP_NOT_NEEDED) {
                 OtaspActivationService.updateActivationState(mContext, true);
             }
         }
