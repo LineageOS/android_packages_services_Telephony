@@ -172,6 +172,12 @@
     <string name="voicemail_settings_with_label">Voicemail (<xliff:g id="subscriptionlabel" example="Mock Carrier">%s</xliff:g>)</string>
     <!-- Call forwarding dialog box, voicemail number prefix -->
     <string name="voicemail_abbreviated">VM:</string>
+    <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
+    <string name="voicemail_notifications_key" translatable="false">voicemail_notification_key</string>
+
+    <!-- Voicemail notifications title. The user clicks on this preference navigate to the system settings screen for that channel
+    .[CHAR LIMIT=30] -->
+    <string name="voicemail_notifications_preference_title">Notifications</string>
     <!-- Mobile network settings screen, setting option name -->
     <string name="networks">Network operators</string>
     <!-- Cell Broadcast settings title.  [CHAR LIMIT=50] -->
@@ -1265,11 +1271,6 @@
     -->
     <string name="description_dial_button">dial</string>
 
-    <!-- Title for the vibration settings for voicemail notifications [CHAR LIMIT=40] -->
-    <string name="voicemail_notification_vibrate_when_title" msgid="8731372580674292759">Vibrate</string>
-    <!-- Dialog title for the vibration settings for voice mail notifications [CHAR LIMIT=40]-->
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="8995274609647451109">Vibrate</string>
-
     <!-- Visual voicemail on/off title [CHAR LIMIT=40] -->
     <string name="voicemail_visual_voicemail_switch_title">Visual Voicemail</string>
 
@@ -1277,21 +1278,6 @@
     <string name="voicemail_set_pin_dialog_title">Set PIN</string>
     <!-- Voicemail change PIN dialog title [CHAR LIMIT=40] -->
     <string name="voicemail_change_pin_dialog_title">Change PIN</string>
-
-    <!-- Voicemail ringtone title. The user clicks on this preference to select
-         which sound to play when a voicemail notification is received.
-         [CHAR LIMIT=30] -->
-    <string name="voicemail_notification_ringtone_title">Sound</string>
-
-    <!-- The default value value for voicemail notification. -->
-    <string name="voicemail_notification_vibrate_when_default" translatable="false">never</string>
-
-    <!-- Actual values used in our code for voicemail notifications. DO NOT TRANSLATE -->
-    <string-array name="voicemail_notification_vibrate_when_values" translatable="false">
-        <item>always</item>
-        <item>silent</item>
-        <item>never</item>
-    </string-array>
 
     <!-- Title for the category "ringtone", which is shown above ringtone and vibration
          related settings.
@@ -1339,10 +1325,6 @@
     <!-- Status hint label for a call being made over a wifi network. [CHAR LIMIT=25] -->
     <string name="status_hint_label_wifi_call">Wi-Fi call</string>
 
-    <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
-    <string name="voicemail_notification_ringtone_key">voicemail_notification_ringtone_key</string>
-    <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
-    <string name="voicemail_notification_vibrate_key">voicemail_notification_vibrate_key</string>
     <!-- DO NOT TRANSLATE. Internal key for a visual voicemail preference. -->
     <string name="voicemail_visual_voicemail_key">voicemail_visual_voicemail_key</string>
     <!-- DO NOT TRANSLATE. Internal key for a voicemail change pin preference. -->
