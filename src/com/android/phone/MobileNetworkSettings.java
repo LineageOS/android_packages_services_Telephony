@@ -50,8 +50,10 @@ import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TabHost;
 
 import com.android.ims.ImsManager;
@@ -362,8 +364,6 @@ public class MobileNetworkSettings extends Activity  {
                     if (DBG) log("initializeSubscriptions: UPDATE");
                     currentTab = mTabHost != null ? mTabHost.getCurrentTab() : 0;
 
-                    getActivity().setContentView(com.android.internal.R.layout.common_tab_settings);
-
                     mTabHost = (TabHost) getActivity().findViewById(android.R.id.tabhost);
                     mTabHost.setup();
 
@@ -402,7 +402,6 @@ public class MobileNetworkSettings extends Activity  {
                         mTabHost.clearAllTabs();
                         mTabHost = null;
                     }
-                    getActivity().setContentView(com.android.internal.R.layout.common_tab_settings);
                     break;
                 }
                 case DO_NOTHING: {
@@ -549,8 +548,20 @@ public class MobileNetworkSettings extends Activity  {
                     TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
             activity.registerReceiver(mPhoneChangeReceiver, intentFilter);
 
-            initializeSubscriptions();
             Log.i(LOG_TAG, "onCreate:-");
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
+            return inflater.inflate(com.android.internal.R.layout.common_tab_settings,
+                    container, false);
+        }
+
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            initializeSubscriptions();
         }
 
         private class PhoneChangeReceiver extends BroadcastReceiver {
