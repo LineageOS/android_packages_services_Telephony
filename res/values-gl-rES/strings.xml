@@ -77,7 +77,7 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Correo de voz (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"CV:"</string>
     <string name="networks" msgid="8873030692174541976">"Operadores de rede"</string>
-    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Emisións de emerxencia"</string>
+    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Difusións de emerxencia"</string>
     <string name="call_settings" msgid="6112441768261754562">"Configuración de chamada"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Configuración adicional"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Configuración adicional (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -214,8 +214,8 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"Permitir o uso de datos"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Atención"</string>
     <string name="roaming" msgid="8871412572928323707">"Itinerancia de datos"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Conecta cos servizos de datos durante a itinerancia"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Conecta cos servizos de datos durante a itinerancia"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Conéctase aos servizos de datos durante a itinerancia"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Conéctase aos servizos de datos durante a itinerancia"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Perdiches a conectividade de datos debido a que abandonaches a túa rede doméstica coa itinerancia de datos desactivada."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"É posible que se apliquen custos elevados."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permitir a itinerancia de datos?"</string>
