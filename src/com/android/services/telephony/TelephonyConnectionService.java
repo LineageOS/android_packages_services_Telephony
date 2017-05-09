@@ -98,6 +98,12 @@ public class TelephonyConnectionService extends ConnectionService {
                     .addExistingConnection(phoneAccountHandle, connection);
         }
         @Override
+        public void addExistingConnection(PhoneAccountHandle phoneAccountHandle,
+                Connection connection, Conference conference) {
+            TelephonyConnectionService.this
+                    .addExistingConnection(phoneAccountHandle, connection, conference);
+        }
+        @Override
         public void addConnectionToConferenceController(TelephonyConnection connection) {
             TelephonyConnectionService.this.addConnectionToConferenceController(connection);
         }
