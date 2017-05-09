@@ -30,6 +30,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.ContactsContract.CommonDataKinds;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.BidiFormatter;
 import android.text.TextDirectionHeuristics;
@@ -42,6 +43,7 @@ import android.widget.Toast;
 import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.util.NotificationChannelController;
 import com.android.phone.EditPhoneNumberPreference;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.R;
@@ -57,8 +59,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
         implements DialogInterface.OnClickListener,
                 Preference.OnPreferenceChangeListener,
                 EditPhoneNumberPreference.OnDialogClosedListener,
-                EditPhoneNumberPreference.GetDefaultNumberListener,
-                VoicemailRingtonePreference.VoicemailRingtoneNameChangeListener {
+                EditPhoneNumberPreference.GetDefaultNumberListener{
     private static final String LOG_TAG = VoicemailSettingsActivity.class.getSimpleName();
     private static final boolean DBG = (PhoneGlobals.DBG_LEVEL >= 2);
 
@@ -185,8 +186,6 @@ public class VoicemailSettingsActivity extends PreferenceActivity
     private CallForwardInfo[] mNewFwdSettings;
     private String mNewVMNumber;
 
-    private CharSequence mOldVmRingtoneName = "";
-
     /**
      * Used to indicate that the voicemail preference should be shown.
      */
@@ -199,8 +198,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
     private EditPhoneNumberPreference mSubMenuVoicemailSettings = null;
     private VoicemailProviderListPreference mVoicemailProviders;
     private PreferenceScreen mVoicemailSettings;
-    private VoicemailRingtonePreference mVoicemailNotificationRingtone;
-    private SwitchPreference mVoicemailNotificationVibrate;
+    private Preference mVoicemailNotificationPreference;
 
     //*********************************************************************************************
     // Preference Activity Methods
@@ -227,6 +225,14 @@ public class VoicemailSettingsActivity extends PreferenceActivity
                 getActionBar(), getResources(), R.string.voicemail_settings_with_label);
         mPhone = mSubscriptionInfoHelper.getPhone();
         addPreferencesFromResource(R.xml.voicemail_settings);
+
+        mVoicemailNotificationPreference =
+                findPreference(getString(R.string.voicemail_notifications_key));
+        final Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+        intent.putExtra(Settings.EXTRA_CHANNEL_ID,
+                NotificationChannelController.CHANNEL_ID_VOICE_MAIL);
+        intent.putExtra(Settings.EXTRA_APP_PACKAGE, mPhone.getContext().getPackageName());
+        mVoicemailNotificationPreference.setIntent(intent);
     }
 
     @Override
@@ -254,15 +260,6 @@ public class VoicemailSettingsActivity extends PreferenceActivity
 
         mVoicemailSettings = (PreferenceScreen) findPreference(BUTTON_VOICEMAIL_SETTING_KEY);
 
-        mVoicemailNotificationRingtone = (VoicemailRingtonePreference) findPreference(
-                getResources().getString(R.string.voicemail_notification_ringtone_key));
-        mVoicemailNotificationRingtone.setVoicemailRingtoneNameChangeListener(this);
-        mVoicemailNotificationRingtone.init(mPhone, mOldVmRingtoneName);
-
-        mVoicemailNotificationVibrate = (SwitchPreference) findPreference(
-                getResources().getString(R.string.voicemail_notification_vibrate_key));
-        mVoicemailNotificationVibrate.setOnPreferenceChangeListener(this);
-
         maybeHidePublicSettings();
 
         updateVMPreferenceWidgets(mVoicemailProviders.getValue());
@@ -286,9 +283,6 @@ public class VoicemailSettingsActivity extends PreferenceActivity
 
         updateVoiceNumberField();
         mVMProviderSettingsForced = false;
-
-        mVoicemailNotificationVibrate.setChecked(
-                VoicemailNotificationSettingsUtil.isVibrationEnabled(mPhone));
     }
 
     /**
@@ -304,8 +298,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
             log("maybeHidePublicSettings: settings hidden by EXTRA_HIDE_PUBLIC_SETTINGS");
         }
         PreferenceScreen preferenceScreen = getPreferenceScreen();
-        preferenceScreen.removePreference(mVoicemailNotificationRingtone);
-        preferenceScreen.removePreference(mVoicemailNotificationVibrate);
+        preferenceScreen.removePreference(mVoicemailNotificationPreference);
     }
 
     @Override
@@ -401,12 +394,6 @@ public class VoicemailSettingsActivity extends PreferenceActivity
                 mChangingVMorFwdDueToProviderChange = true;
                 saveVoiceMailAndForwardingNumber(newProviderKey, newProviderSettings);
             }
-        } else if (preference.getKey().equals(mVoicemailNotificationVibrate.getKey())) {
-            // Check key instead of comparing reference because closing the voicemail notification
-            // ringtone dialog invokes onResume(), but leaves the old preference screen up,
-            // TODO: Revert to checking reference after migrating voicemail to its own activity.
-            VoicemailNotificationSettingsUtil.setVibrationEnabled(
-                    mPhone, Boolean.TRUE.equals(objValue));
         }
         // Always let the preference setting proceed.
         return true;
@@ -537,11 +524,6 @@ public class VoicemailSettingsActivity extends PreferenceActivity
         }
 
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    public void onVoicemailRingtoneNameChanged(CharSequence name) {
-        mOldVmRingtoneName = name;
     }
 
     /**
@@ -1012,7 +994,6 @@ public class VoicemailSettingsActivity extends PreferenceActivity
             mVoicemailProviders.setSummary(getString(R.string.sum_voicemail_choose_provider));
             mVoicemailSettings.setEnabled(false);
             mVoicemailSettings.setIntent(null);
-            mVoicemailNotificationVibrate.setEnabled(false);
         } else {
             if (DBG) log("updateVMPreferenceWidget: key: " + key + " -> " + provider.toString());
 
@@ -1020,7 +1001,6 @@ public class VoicemailSettingsActivity extends PreferenceActivity
             mVoicemailProviders.setSummary(providerName);
             mVoicemailSettings.setEnabled(true);
             mVoicemailSettings.setIntent(provider.intent);
-            mVoicemailNotificationVibrate.setEnabled(true);
         }
     }
 
