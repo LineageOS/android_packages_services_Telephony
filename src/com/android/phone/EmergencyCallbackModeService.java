@@ -41,6 +41,8 @@ import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
 
+import java.text.SimpleDateFormat;
+
 /**
  * Application service that inserts/removes Emergency Callback Mode notification and
  * updates Emergency Callback Mode countdown clock in the notification
@@ -154,7 +156,6 @@ public class EmergencyCallbackModeService extends Service {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     mTimeLeft = millisUntilFinished;
-                    EmergencyCallbackModeService.this.showNotification(millisUntilFinished);
                 }
 
                 @Override
@@ -199,10 +200,17 @@ public class EmergencyCallbackModeService extends Service {
         if(mInEmergencyCall) {
             text = getText(R.string.phone_in_ecm_call_notification_text).toString();
         } else {
-            int minutes = (int)(millisUntilFinished / 60000);
-            String time = String.format("%d:%02d", minutes, (millisUntilFinished % 60000) / 1000);
-            text = String.format(getResources().getQuantityText(
-                     R.plurals.phone_in_ecm_notification_time, minutes).toString(), time);
+            // Calculate the time in ms when the notification will be finished.
+            long finishedCountMs = millisUntilFinished + System.currentTimeMillis();
+            builder.setShowWhen(true);
+            builder.setChronometerCountDown(true);
+            builder.setUsesChronometer(true);
+            builder.setWhen(finishedCountMs);
+
+            String completeTime = SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT).format(
+                    finishedCountMs);
+            text = getResources().getString(R.string.phone_in_ecm_notification_complete_time,
+                    completeTime);
         }
         builder.setContentText(text);
 
