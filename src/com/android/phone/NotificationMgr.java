@@ -55,7 +55,6 @@ import android.widget.Toast;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.internal.telephony.util.NotificationChannelController;
-import com.android.phone.settings.VoicemailNotificationSettingsUtil;
 import com.android.phone.settings.VoicemailSettingsActivity;
 
 import java.util.Iterator;
@@ -333,11 +332,6 @@ public class NotificationMgr {
 
             PendingIntent pendingIntent =
                     PendingIntent.getActivity(mContext, subId /* requestCode */, intent, 0);
-            Uri ringtoneUri = null;
-
-            if (enableNotificationSound) {
-                ringtoneUri = VoicemailNotificationSettingsUtil.getRingtoneUri(phone);
-            }
 
             Resources res = mContext.getResources();
             PersistableBundle carrierConfig = PhoneGlobals.getInstance().getCarrierConfigForSubId(
@@ -349,15 +343,10 @@ public class NotificationMgr {
                     .setContentTitle(notificationTitle)
                     .setContentText(notificationText)
                     .setContentIntent(pendingIntent)
-                    .setSound(ringtoneUri)
                     .setColor(res.getColor(R.color.dialer_theme_color))
                     .setOngoing(carrierConfig.getBoolean(
                             CarrierConfigManager.KEY_VOICEMAIL_NOTIFICATION_PERSISTENT_BOOL))
                     .setChannel(NotificationChannelController.CHANNEL_ID_VOICE_MAIL);
-
-            if (VoicemailNotificationSettingsUtil.isVibrationEnabled(phone)) {
-                builder.setDefaults(Notification.DEFAULT_VIBRATE);
-            }
 
             final Notification notification = builder.build();
             List<UserInfo> users = mUserManager.getUsers(true);
