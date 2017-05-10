@@ -16,15 +16,14 @@
 
 package com.android.phone.settings;
 
-import android.content.Context;
+import android.app.NotificationChannel;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.telephony.TelephonyManager;
-import android.text.TextUtils;
 
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.util.NotificationChannelController;
 import com.android.phone.R;
 
 public class VoicemailNotificationSettingsUtil {
@@ -53,9 +52,9 @@ public class VoicemailNotificationSettingsUtil {
     }
 
     public static boolean isVibrationEnabled(Phone phone) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(phone.getContext());
-        migrateVoicemailVibrationSettingsIfNeeded(phone, prefs);
-        return prefs.getBoolean(getVoicemailVibrationSharedPrefsKey(phone), false /* defValue */);
+        final NotificationChannel channel = NotificationChannelController.getChannel(
+                NotificationChannelController.CHANNEL_ID_VOICE_MAIL, phone.getContext());
+        return (channel != null) ? channel.shouldVibrate() : false;
     }
 
    public static void setRingtoneUri(Phone phone, Uri ringtoneUri) {
@@ -68,12 +67,9 @@ public class VoicemailNotificationSettingsUtil {
     }
 
     public static Uri getRingtoneUri(Phone phone) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(phone.getContext());
-        migrateVoicemailRingtoneSettingsIfNeeded(phone, prefs);
-        String uriString = prefs.getString(
-                getVoicemailRingtoneSharedPrefsKey(phone),
-                Settings.System.DEFAULT_NOTIFICATION_URI.toString());
-        return !TextUtils.isEmpty(uriString) ? Uri.parse(uriString) : null;
+        final NotificationChannel channel = NotificationChannelController.getChannel(
+                NotificationChannelController.CHANNEL_ID_VOICE_MAIL, phone.getContext());
+        return (channel != null) ? channel.getSound() : null;
     }
 
     /**
