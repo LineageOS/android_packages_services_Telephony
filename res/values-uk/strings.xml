@@ -77,6 +77,8 @@
     <string name="voicemail" msgid="8693759337917898954">"Голосова пошта"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Голосова пошта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ГП:"</string>
+    <!-- no translation found for voicemail_notifications_preference_title (4019728578955102213) -->
+    <skip />
     <string name="networks" msgid="8873030692174541976">"Оператори мережі"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Повідомлення екстрених служб"</string>
     <string name="call_settings" msgid="6112441768261754562">"Виклики"</string>
@@ -559,12 +561,9 @@
     <string name="selectContact" msgid="781975788478987237">"вибрати контакт"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Голосові дзвінки не підтримуються"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"дзвонити"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Вібросигнал"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Вібросигнал"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Візуальна голосова пошта"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Установити PIN-код"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Змінити PIN-код"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Звук"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Сигнал дзвінка та вібросигнал"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Вбудовані SIM-карти"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Увімкнути відеодзвінки"</string>
