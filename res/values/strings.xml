@@ -1197,12 +1197,8 @@
     <string name="phone_in_ecm_notification_title">Emergency Callback Mode</string>
     <!-- ECM: Notification body -->
     <string name="phone_in_ecm_call_notification_text">Data connection disabled</string>
-    <plurals name="phone_in_ecm_notification_time">
-        <!-- number of minutes is one -->
-        <item quantity="one">No data connection for <xliff:g id="count">%s</xliff:g> minute</item>
-        <!-- number of minutes is not equal to one -->
-        <item quantity="other">No data connection for <xliff:g id="count">%s</xliff:g> minutes</item>
-    </plurals>
+    <!-- ECM: Displays the time when ECM will end, Example: "No Data Connection until 10:45 AM" -->
+    <string name="phone_in_ecm_notification_complete_time">No data connection until <xliff:g id="completeTime">%s</xliff:g></string>
     <!-- ECM: Dialog box message for exiting from the notifications screen -->
     <plurals name="alert_dialog_exit_ecm">
         <!-- number of minutes is one -->
