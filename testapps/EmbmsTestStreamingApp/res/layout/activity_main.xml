@@ -20,9 +20,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <Button
-        android:id="@+id/bind_button"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/curr_streaming_uri"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/bind_button" />
+        android:label="@string/streaming_uri_label"/>
+    <GridLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <Button
+            android:id="@+id/bind_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bind_button" />
+        <Button
+            android:id="@+id/get_streaming_services_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_streaming_services_button" />
+    </GridLayout>
+    <Spinner
+        android:id="@+id/available_streaming_services"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:label="@string/available_streaming_services_label"/>
 </LinearLayout>
