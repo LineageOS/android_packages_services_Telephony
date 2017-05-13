@@ -559,7 +559,7 @@
     <string name="description_dial_button" msgid="7459705245418435351">"markatu"</string>
     <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Egin dar-dar"</string>
     <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Egin dar-dar"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Erantzungailu bisuala"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Ikusizko erantzungailua"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Ezarri PIN kodea"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Aldatu PIN kodea"</string>
     <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Soinua"</string>
