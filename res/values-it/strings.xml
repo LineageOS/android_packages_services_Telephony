@@ -77,8 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Segreteria"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Segreteria (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ST:"</string>
-    <!-- no translation found for voicemail_notifications_preference_title (4019728578955102213) -->
-    <skip />
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notifiche"</string>
     <string name="networks" msgid="8873030692174541976">"Operatori di rete"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Trasmissioni di emergenza"</string>
     <string name="call_settings" msgid="6112441768261754562">"Impostazioni chiamate"</string>
@@ -532,10 +531,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Modalità di richiamata di emergenza attivata"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Modalità di richiamata di emergenza"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Connessione dati disabilitata"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">Nessuna connessione dati per <xliff:g id="COUNT_1">%s</xliff:g> minuti</item>
-      <item quantity="one">Nessuna connessione dati per <xliff:g id="COUNT_0">%s</xliff:g> minuto</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Il telefono sarà in modalità Richiamata di emergenza per <xliff:g id="COUNT_1">%s</xliff:g> minuti. In questa modalità non è possibile utilizzare applicazioni che impiegano una connessione dati. Vuoi uscire ora?</item>
       <item quantity="one">Il telefono sarà in modalità Richiamata di emergenza per <xliff:g id="COUNT_0">%s</xliff:g> minuto. In questa modalità non è possibile utilizzare app che impiegano una connessione dati. Vuoi uscire ora?</item>

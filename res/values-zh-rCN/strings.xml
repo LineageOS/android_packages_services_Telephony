@@ -77,8 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"语音信箱"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"语音信箱（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"语音信箱："</string>
-    <!-- no translation found for voicemail_notifications_preference_title (4019728578955102213) -->
-    <skip />
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"通知"</string>
     <string name="networks" msgid="8873030692174541976">"网络运营商"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"紧急广播"</string>
     <string name="call_settings" msgid="6112441768261754562">"通话设置"</string>
@@ -528,10 +527,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"已进入紧急回拨模式"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"紧急回拨模式"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"数据连接已停用"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">持续 <xliff:g id="COUNT_1">%s</xliff:g> 分钟没有数据网络连接</item>
-      <item quantity="one">持续 <xliff:g id="COUNT_0">%s</xliff:g> 分钟没有数据网络连接</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">手机在 <xliff:g id="COUNT_1">%s</xliff:g> 分钟内都会处于紧急回拨模式。此模式下无法使用任何需要连接数据网络的应用。要立即退出吗？</item>
       <item quantity="one">手机在 <xliff:g id="COUNT_0">%s</xliff:g> 分钟内都会处于紧急回拨模式。此模式下无法使用任何需要连接数据网络的应用。要立即退出吗？</item>
