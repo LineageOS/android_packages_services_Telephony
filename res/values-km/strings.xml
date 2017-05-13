@@ -77,8 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"សារ​ជា​សំឡេង"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"សារជាសម្លេង (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for voicemail_notifications_preference_title (4019728578955102213) -->
-    <skip />
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"ការ​ជូនដំណឹង"</string>
     <string name="networks" msgid="8873030692174541976">"ប្រតិបត្តិ​ករ​​​បណ្ដាញ"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"ការ​ផ្សាយ​ពេល​មាន​អាសន្ន"</string>
     <string name="call_settings" msgid="6112441768261754562">"កំណត់​ការ​ហៅ"</string>
@@ -530,10 +529,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"បាន​បញ្ចូល​របៀប​ការ​ហៅ​ទៅ​វិញ​ពេល​មាន​អាសន្ន"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"របៀប​ហៅ​ទៅ​វិញ​ពេល​មាន​អាសន្ន"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"បាន​បិទ​ការ​តភ្ជាប់​ទិន្នន័យ"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">គ្មានការភ្ជាប់ទិន្នន័យរយៈពេល <xliff:g id="COUNT_1">%s</xliff:g> នាទី</item>
-      <item quantity="one">គ្មានការភ្ជាប់ទិន្នន័យរយៈពេល <xliff:g id="COUNT_0">%s</xliff:g> នាទី</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">ទូរស័ព្ទនេះនឹងស្ថិតក្នុងរបៀប ហៅត្រលប់ពេលអាសន្ន រយៈពេល <xliff:g id="COUNT_1">%s</xliff:g> នាទី។ ខណៈពេលស្ថិតក្នុងរបៀបនេះ មិនមានកម្មវិធីដែលប្រើការភ្ជាប់ទិន្នន័យណា អាចប្រើបានបានឡើយ។ តើអ្នកចង់ចាកចេញឥឡូវនេះទេ?</item>
       <item quantity="one">ទូរស័ព្ទនេះនឹងស្ថិតក្នុងរបៀប ហៅត្រលប់ពេលអាសន្ន រយៈពេល <xliff:g id="COUNT_0">%s</xliff:g> នាទី។ ខណៈពេលស្ថិតក្នុងរបៀបនេះ មិនមានកម្មវិធីដែលប្រើការភ្ជាប់ទិន្នន័យណា អាចប្រើបានបានឡើយ។ តើអ្នកចង់ចាកចេញឥឡូវនេះទេ?</item>

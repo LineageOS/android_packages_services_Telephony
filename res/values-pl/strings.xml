@@ -77,8 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Poczta głosowa"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Poczta głosowa (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Poczta głosowa:"</string>
-    <!-- no translation found for voicemail_notifications_preference_title (4019728578955102213) -->
-    <skip />
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Powiadomienia"</string>
     <string name="networks" msgid="8873030692174541976">"Operatorzy sieci"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Komunikaty alarmowe"</string>
     <string name="call_settings" msgid="6112441768261754562">"Ustawienia połączeń"</string>
@@ -530,12 +529,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Włączono tryb alarmowego połączenia zwrotnego"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Tryb alarmowego połączenia zwrotnego"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Połączenie transmisji danych jest wyłączone"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="few">Brak połączenia transmisji danych przez <xliff:g id="COUNT_1">%s</xliff:g> minuty</item>
-      <item quantity="many">Brak połączenia transmisji danych przez <xliff:g id="COUNT_1">%s</xliff:g> minut</item>
-      <item quantity="other">Brak połączenia transmisji danych przez <xliff:g id="COUNT_1">%s</xliff:g> minuty</item>
-      <item quantity="one">Brak połączenia transmisji danych przez <xliff:g id="COUNT_0">%s</xliff:g> minutę</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="few">Telefon będzie w trybie alarmowego połączenia zwrotnego przez <xliff:g id="COUNT_1">%s</xliff:g> minuty. W tym trybie nie można używać aplikacji, które korzystają z połączenia transmisji danych. Chcesz zakończyć tryb teraz?</item>
       <item quantity="many">Telefon będzie w trybie alarmowego połączenia zwrotnego przez <xliff:g id="COUNT_1">%s</xliff:g> minut. W tym trybie nie można używać aplikacji, które korzystają z połączenia transmisji danych. Chcesz zakończyć tryb teraz?</item>

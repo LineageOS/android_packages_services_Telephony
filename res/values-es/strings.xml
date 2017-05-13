@@ -533,10 +533,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Se ha activado el modo de devolución de llamada de emergencia."</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Modo de devolución de llamada de emergencia"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Conexión de datos inhabilitada"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">Ninguna conexión de datos durante <xliff:g id="COUNT_1">%s</xliff:g> minutos</item>
-      <item quantity="one">Ninguna conexión de datos durante <xliff:g id="COUNT_0">%s</xliff:g> minuto</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Se activará el modo de devolución de llamada de emergencia en el teléfono durante <xliff:g id="COUNT_1">%s</xliff:g> minutos. En este modo, no se puede utilizar ninguna aplicación que emplee una conexión de datos. ¿Quieres salir?</item>
       <item quantity="one">Se activará el modo de devolución de llamada de emergencia en el teléfono durante <xliff:g id="COUNT_0">%s</xliff:g> minuto. En este modo, no se puede utilizar ninguna aplicación que emplee una conexión de datos. ¿Quieres salir?</item>
