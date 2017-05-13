@@ -77,8 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Bústia de veu"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Bústia de veu (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"CV:"</string>
-    <!-- no translation found for voicemail_notifications_preference_title (4019728578955102213) -->
-    <skip />
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notificacions"</string>
     <string name="networks" msgid="8873030692174541976">"Operadors de xarxa"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Missatges d\'emergència"</string>
     <string name="call_settings" msgid="6112441768261754562">"Configuració de trucada"</string>
@@ -528,10 +527,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"S\'ha activat al mode de devolució de trucada d\'emergència"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Mode de devolució de trucada d\'emergència"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Connexió de dades desactivada"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">No hi ha hagut connexió de dades durant <xliff:g id="COUNT_1">%s</xliff:g> minuts</item>
-      <item quantity="one">No hi ha hagut connexió de dades durant <xliff:g id="COUNT_0">%s</xliff:g> minut</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">El telèfon estarà en mode de devolució de trucades d\'emergència durant <xliff:g id="COUNT_1">%s</xliff:g> minuts. Durant aquest temps, no es podrà utilitzar cap aplicació que faci servir una connexió de dades. Vols sortir ara?</item>
       <item quantity="one">El telèfon estarà en mode de devolució de trucades d\'emergència durant <xliff:g id="COUNT_0">%s</xliff:g> minut. Durant aquest temps, no es podrà utilitzar cap aplicació que faci servir una connexió de dades. Vols sortir ara?</item>
