@@ -95,7 +95,7 @@
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Meddela mig om inkommande samtal under pågående samtal"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Inställningar vidarebefordning"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Inställningar för vidarebefordran av samtal (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"Vidarebefordra samtal"</string>
+    <string name="labelCF" msgid="2574386948026924737">"Vidarekoppla samtal"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Vidarebefordra alltid"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Använd alltid detta nummer"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Vidarebefordra alla samtal"</string>
