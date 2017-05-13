@@ -77,8 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Галасавая пошта"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Галасавая пошта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ГП:"</string>
-    <!-- no translation found for voicemail_notifications_preference_title (4019728578955102213) -->
-    <skip />
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Апавяшчэнні"</string>
     <string name="networks" msgid="8873030692174541976">"Сеткавыя аператары"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Экстранныя трансляцыі"</string>
     <string name="call_settings" msgid="6112441768261754562">"Налады выклікаў"</string>
@@ -530,12 +529,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"У рэжыме аварыйнага зваротнага выкліку"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Рэжым аварыйнага зваротнага выкліку"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Падлучэнне для перадачы дадзеных адключана"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="one">Злучэння для перадачы даных няма на працягу <xliff:g id="COUNT_1">%s</xliff:g> хвіліны</item>
-      <item quantity="few">Злучэння для перадачы даных няма на працягу <xliff:g id="COUNT_1">%s</xliff:g> хвілін</item>
-      <item quantity="many">Злучэння для перадачы даных няма на працягу <xliff:g id="COUNT_1">%s</xliff:g> хвілін</item>
-      <item quantity="other">Злучэння для перадачы даных няма на працягу <xliff:g id="COUNT_1">%s</xliff:g> хвіліны</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">Тэлефон пяройдзе ў рэжым экстраннага зваротнага выкліку на <xliff:g id="COUNT_1">%s</xliff:g> хвіліну. У гэтым рэжыме немагчыма карыстацца праграмамі, якія выкарыстоўваюць злучэнне для перадачы даных. Жадаеце выйсці зараз?</item>
       <item quantity="few">Тэлефон пяройдзе ў рэжым экстраннага зваротнага выкліку на <xliff:g id="COUNT_1">%s</xliff:g> хвіліны. У гэтым рэжыме немагчыма карыстацца праграмамі, якія выкарыстоўваюць злучэнне для перадачы даных. Жадаеце выйсці зараз?</item>

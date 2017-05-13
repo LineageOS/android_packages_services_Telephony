@@ -77,8 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Talepostkasse"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Talepostkasse (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Svarer:"</string>
-    <!-- no translation found for voicemail_notifications_preference_title (4019728578955102213) -->
-    <skip />
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Varsler"</string>
     <string name="networks" msgid="8873030692174541976">"Nettoperatører"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Nødvarsler"</string>
     <string name="call_settings" msgid="6112441768261754562">"Samtaleinnstillinger"</string>
@@ -536,10 +535,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Startet modusen nødsamtale-tilbakeringing"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Modusen nødsamtale-tilbakeringing"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Datatilkobling deaktivert"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">Ingen datatilkobling i <xliff:g id="COUNT_1">%s</xliff:g> minutter</item>
-      <item quantity="one">Ingen datatilkobling i <xliff:g id="COUNT_0">%s</xliff:g> minutt</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Telefonen er i nødsamtalemodus i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Når telefonen er i denne modusen, kan du ikke bruke apper som krever datatilkobling. Vil du avslutte nå?</item>
       <item quantity="one">Telefonen er i nødsamtalemodus i <xliff:g id="COUNT_0">%s</xliff:g> minutt. Når telefonen er i denne modusen, kan du ikke bruke apper som krever datatilkobling. Vil du avslutte nå?</item>

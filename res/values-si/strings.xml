@@ -77,8 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"හඬ තැපෑල"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"හඬ තැපෑල (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for voicemail_notifications_preference_title (4019728578955102213) -->
-    <skip />
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"දැනුම්දීම්"</string>
     <string name="networks" msgid="8873030692174541976">"ජාල ක්‍රියාකරුවන්"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"හදිසි විකාශන"</string>
     <string name="call_settings" msgid="6112441768261754562">"ඇමතුම් සැකසුම්"</string>
@@ -530,10 +529,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"හදිසි ආපසු ඇමතුම් ආකාරයට ඇතුලත් විණි"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"හදිසි ආපසු ඇමතුම් ආකාරය"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"දත්ත සම්බන්ධතාවය අබලයි"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="one">මිනිත්තු <xliff:g id="COUNT_1">%s</xliff:g> ක් දත්ත සම්බන්ධතාවයක් නැත</item>
-      <item quantity="other">මිනිත්තු <xliff:g id="COUNT_1">%s</xliff:g> ක් දත්ත සම්බන්ධතාවයක් නැත</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">දුරකථනය මිනිත්තු <xliff:g id="COUNT_1">%s</xliff:g> ක් හදිසි ආපසු ඇමතුම් ආකාරය තුළ වනු ඇත. මෙම ආකාරය තුළ සිටින අතරතුර දත්ත සම්බන්ධයක් භාවිත කරන යෙදුම් කිසිවක් භාවිත කළ නොහැකිය. ඔබට දැන් පිටවීමට අවශ්යද?</item>
       <item quantity="other">දුරකථනය මිනිත්තු <xliff:g id="COUNT_1">%s</xliff:g> ක් හදිසි ආපසු ඇමතුම් ආකාරය තුළ වනු ඇත. මෙම ආකාරය තුළ සිටින අතරතුර දත්ත සම්බන්ධයක් භාවිත කරන යෙදුම් කිසිවක් භාවිත කළ නොහැකිය. ඔබට දැන් පිටවීමට අවශ්යද?</item>
