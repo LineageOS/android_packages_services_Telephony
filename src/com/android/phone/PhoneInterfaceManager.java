@@ -59,6 +59,7 @@ import android.telephony.NetworkScanRequest;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
 import android.telephony.SmsManager;
+import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyHistogram;
@@ -3844,5 +3845,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } else {
             return false;
         }
+    }
+
+    /**
+     * Get the current signal strength information for the given subscription.
+     * Because this information is not updated when the device is in a low power state
+     * it should not be relied-upon to be current.
+     * @param subId Subscription index
+     * @return the most recent cached signal strength info from the modem
+     */
+    @Override
+    public SignalStrength getSignalStrength(int subId) {
+        Phone p = getPhone(subId);
+        if (p == null) {
+            return null;
+        }
+
+        return p.getSignalStrength();
     }
 }
