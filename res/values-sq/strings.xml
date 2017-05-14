@@ -77,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Posta zanore"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Posta zanore (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Njoftimet"</string>
     <string name="networks" msgid="8873030692174541976">"Operatorët e rrjetit"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Transmetimet e urgjencës"</string>
     <string name="call_settings" msgid="6112441768261754562">"Cilësimet e telefonatës"</string>
@@ -526,10 +527,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Hyri në modalitetin e \"Kthimit të telefonatës së urgjencës\""</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Modaliteti i \"Kthimit të telefonatës së urgjencës\""</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Lidhja me të dhënat është çaktivizuar"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">Nuk ka të dhëna të lidhura për <xliff:g id="COUNT_1">%s</xliff:g> minuta</item>
-      <item quantity="one">Nuk ka të dhëna të lidhura për <xliff:g id="COUNT_0">%s</xliff:g> minutë</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Telefoni do të përdoret në modalitetin e \"Kthimit të Telefonatës së Urgjencës\" për <xliff:g id="COUNT_1">%s</xliff:g> minuta. Ndërkohë që është në këtë modalitet, nuk mund të përdoret asnjë aplikacion duke përdorur lidhje të dhënash. Dëshiron të dalësh tani?</item>
       <item quantity="one">Telefoni do të jetë në modalitetin e \"Kthimit të telefonatës së urgjencës\" për <xliff:g id="COUNT_0">%s</xliff:g> minuta. Ndërkohë që është në këtë modalitet, nuk mund të përdoret asnjë aplikacion duke përdorur lidhje të dhënash. Dëshiron të dalësh tani?</item>
@@ -553,12 +552,9 @@
     <string name="selectContact" msgid="781975788478987237">"përzgjidh kontaktin"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Telefonata zanore nuk mbështetet"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"formo numrin"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Dridhja"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Dridhja"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Posta zanore vizuale"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Konfiguro kodin PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Ndrysho kodin PIN"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Tingulli"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Me zile dhe me dridhje"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Kartat e integruara SIM"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Aktivizo telefonatën me video"</string>

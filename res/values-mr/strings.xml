@@ -77,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"व्हॉइसमेल"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"व्हॉइसमेल (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"सूचना"</string>
     <string name="networks" msgid="8873030692174541976">"नेटवर्क ऑपरेटर"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"आणीबाणी प्रसारणे"</string>
     <string name="call_settings" msgid="6112441768261754562">"कॉल सेटिंग्ज"</string>
@@ -526,10 +527,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"आणीबाणी कॉलबॅक मोड प्रविष्‍ट केला"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"आणीबाणी कॉलबॅक मोड"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"डेटा कनेक्शन अक्षम केले"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="one"><xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी कोणतेही डेटा कनेक्‍शन नाही</item>
-      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी कोणतेही डेटा कनेक्‍शन नाही</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अनुप्रयोग वापरले जाऊ शकत नाहीत. आपण आता बाहेर पडू इच्छिता?</item>
       <item quantity="other">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अनुप्रयोग वापरले जाऊ शकत नाहीत. आपण आता बाहेर पडू इच्छिता?</item>
@@ -553,12 +552,9 @@
     <string name="selectContact" msgid="781975788478987237">"संपर्क निवडा"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"व्‍हॉइस कॉलिंंग समर्थित नाही"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"डायल करा"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"कंपन होणे"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"कंपन होणे"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"दृश्‍यमान व्हॉइसमेल"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"पिन सेट करा"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"पिन बदला"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"ध्वनी"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"रिंगटोन आणि कंपन"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"अंगभूत सिम कार्डे"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"व्हिडिओ कॉलिंग चालू करा"</string>
