@@ -394,7 +394,7 @@ public class NetworkSetting extends PreferenceActivity
         if (phone != null) {
             ServiceState ss = tm.getServiceStateForSubscriber(phone.getSubId());
             if (ss != null) {
-                app.notificationMgr.updateNetworkSelection(ss.getState());
+                app.notificationMgr.updateNetworkSelection(ss.getState(), phone.getSubId());
             }
         }
     }
