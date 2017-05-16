@@ -18,6 +18,7 @@ package com.android.phone.testapps.embmsfrontend;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -34,7 +35,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EmbmsTestStreamingApp extends Activity {
     private static final String APP_NAME = "StreamingApp1";
@@ -60,7 +64,7 @@ public class EmbmsTestStreamingApp extends Activity {
         public View getView(int position, View convertView, ViewGroup parent) {
             StreamingServiceInfo info = getItem(position);
             TextView result = new TextView(EmbmsTestStreamingApp.this);
-            result.setText(info.getClassName());
+            result.setText(info.getNames().get(info.getLocale()));
             return result;
         }
 
@@ -68,8 +72,8 @@ public class EmbmsTestStreamingApp extends Activity {
         public View getDropDownView(int position, View convertView, ViewGroup parent) {
             StreamingServiceInfo info = getItem(position);
             TextView result = new TextView(EmbmsTestStreamingApp.this);
-            String text = "classname="
-                    + info.getClassName()
+            String text = "name="
+                    + info.getNames().get(info.getLocale())
                     + ", "
                     + "serviceId="
                     + info.getServiceId();
@@ -87,8 +91,11 @@ public class EmbmsTestStreamingApp extends Activity {
 
     private Handler mHandler;
     private HandlerThread mHandlerThread;
+    private StreamingServiceTracker mLatestStream = null;
 
     private StreamingServiceInfoAdapter mStreamingServicesDisplayAdapter;
+    private final Map<String, StreamingServiceTracker> mStreamingServiceTrackerById =
+            new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +135,7 @@ public class EmbmsTestStreamingApp extends Activity {
                 return;
             }
             try {
-                mStreamingManager.getStreamingServices(null);
+                mStreamingManager.getStreamingServices(Collections.singletonList("Class1"));
             } catch (MbmsException e) {
                 Toast.makeText(EmbmsTestStreamingApp.this,
                         "Error getting streaming services" + e.getErrorCode(),
@@ -136,7 +143,7 @@ public class EmbmsTestStreamingApp extends Activity {
             }
         });
 
-        Spinner serviceSelector = (Spinner) findViewById(R.id.available_streaming_services);
+        final Spinner serviceSelector = (Spinner) findViewById(R.id.available_streaming_services);
         mStreamingServicesDisplayAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
         serviceSelector.setAdapter(mStreamingServicesDisplayAdapter);
@@ -145,15 +152,56 @@ public class EmbmsTestStreamingApp extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 StreamingServiceInfo info =
                         (StreamingServiceInfo) serviceSelector.getItemAtPosition(position);
-                Toast.makeText(EmbmsTestStreamingApp.this,
-                        "Service selected: " + info.getClassName(), Toast.LENGTH_SHORT).show();
-                // TODO: use this value for start streaming
+                String toastText = "Service selected: " + info.getNames().get(info.getLocale());
+                Toast.makeText(EmbmsTestStreamingApp.this, toastText, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
+        });
+
+        Button startStreamingButton = (Button) findViewById(R.id.start_streaming_button);
+        startStreamingButton.setOnClickListener((view) -> {
+            if (mStreamingManager == null) {
+                Toast.makeText(EmbmsTestStreamingApp.this,
+                        "No streaming service bound", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            StreamingServiceInfo serviceInfo =
+                    (StreamingServiceInfo) serviceSelector.getSelectedItem();
+            if (serviceInfo == null) {
+                Toast.makeText(EmbmsTestStreamingApp.this,
+                        "No streaming service selected", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            StreamingServiceTracker tracker = new StreamingServiceTracker(this, serviceInfo);
+            tracker.startStreaming(mStreamingManager);
+            mStreamingServiceTrackerById.put(serviceInfo.getServiceId(), tracker);
+            mLatestStream = tracker;
+        });
+
+        Button disposeStreamButton = (Button) findViewById(R.id.dispose_stream_button);
+        disposeStreamButton.setOnClickListener((view) -> {
+            if (mLatestStream == null) {
+                Toast.makeText(EmbmsTestStreamingApp.this,
+                        "No streams active", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            mLatestStream.dispose();
+            mStreamingServiceTrackerById.remove(mLatestStream.getServiceId());
+            TextView uriField = (TextView) findViewById(R.id.curr_streaming_uri);
+            uriField.setText("");
+            mLatestStream = null;
+        });
+
+        Button disposeManagerButton = (Button) findViewById(R.id.dispose_manager_button);
+        disposeManagerButton.setOnClickListener((view) -> {
+            TextView uriField = (TextView) findViewById(R.id.curr_streaming_uri);
+            uriField.setText("");
+            mStreamingServicesDisplayAdapter.update(Collections.emptyList());
+            mStreamingManager.dispose();
         });
     }
 
@@ -165,5 +213,12 @@ public class EmbmsTestStreamingApp extends Activity {
 
     private void updateStreamingServicesList(List<StreamingServiceInfo> services) {
         runOnUiThread(() -> mStreamingServicesDisplayAdapter.update(services));
+    }
+
+    public void updateUriInUi(Uri uri) {
+        runOnUiThread(() -> {
+            TextView uriField = (TextView) findViewById(R.id.curr_streaming_uri);
+            uriField.setText(uri.toSafeString());
+        });
     }
 }

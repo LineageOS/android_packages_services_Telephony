@@ -16,17 +16,18 @@
 
 package com.android.phone.testapps.embmsmw;
 
-import android.app.AppOpsManager;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.telephony.mbms.IMbmsStreamingManagerCallback;
+import android.telephony.mbms.IStreamingServiceCallback;
 import android.telephony.mbms.MbmsException;
+import android.telephony.mbms.StreamingService;
 import android.telephony.mbms.StreamingServiceInfo;
 import android.telephony.mbms.vendor.IMbmsStreamingService;
 import android.telephony.mbms.vendor.MbmsStreamingServiceBase;
@@ -35,12 +36,9 @@ import android.util.Log;
 import com.android.internal.os.SomeArgs;
 
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -50,6 +48,10 @@ public class EmbmsTestStreamingService extends Service {
     }};
 
     private static final String TAG = "EmbmsTestStreaming";
+
+    private static final long SEND_SERVICE_LIST_DELAY = 300;
+    private static final long START_STREAMING_DELAY = 500;
+
     private static final int SEND_STREAMING_SERVICES_LIST = 1;
 
     private final Map<StreamingAppIdentifier, IMbmsStreamingManagerCallback> mAppCallbacks =
@@ -71,6 +73,7 @@ public class EmbmsTestStreamingService extends Service {
                         // Assume app has gone away and clean up.
                     }
                 }
+                break;
         }
         return true;
     };
@@ -80,11 +83,12 @@ public class EmbmsTestStreamingService extends Service {
         public int initialize(IMbmsStreamingManagerCallback listener, String appName, int subId) {
             String[] packageNames = getPackageManager().getPackagesForUid(Binder.getCallingUid());
             if (packageNames == null) {
-                return MbmsException.ERROR_APP_PERMISSIONS_NOT_GRANTED;
+                throw new SecurityException("No matching packages found for your UID");
             }
             boolean isUidAllowed = Arrays.stream(packageNames).anyMatch(ALLOWED_PACKAGES::contains);
             if (!isUidAllowed) {
-                return MbmsException.ERROR_APP_PERMISSIONS_NOT_GRANTED;
+                throw new SecurityException("No packages for your UID are allowed to use this " +
+                        "service");
             }
 
             StreamingAppIdentifier appKey =
@@ -102,26 +106,10 @@ public class EmbmsTestStreamingService extends Service {
                 List<String> serviceClasses) {
             StreamingAppIdentifier appKey =
                     new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
-            if (!mAppCallbacks.containsKey(appKey)) {
-                return MbmsException.ERROR_NOT_YET_INITIALIZED;
-            }
+            checkInitialized(appKey);
 
-            Map<Locale, String> nameDict1 = new HashMap<Locale, String>() {{
-                put(Locale.US, "TestService1");
-            }};
-            Map<Locale, String> nameDict2 = new HashMap<Locale, String>() {{
-                put(Locale.US, "TestService1");
-            }};
-            StreamingServiceInfo info1 = new StreamingServiceInfo(nameDict1, "Class 1", Locale.US,
-                    "Service ID 1", new Date(System.currentTimeMillis() - 10000),
-                    new Date(System.currentTimeMillis() + 10000));
-            StreamingServiceInfo info2 = new StreamingServiceInfo(nameDict2, "Class 2", Locale.US,
-                    "Service ID 2", new Date(System.currentTimeMillis() - 20000),
-                    new Date(System.currentTimeMillis() + 20000));
-            List<StreamingServiceInfo> serviceInfos = new LinkedList<StreamingServiceInfo>() {{
-                add(info1);
-                add(info2);
-            }};
+            List<StreamingServiceInfo> serviceInfos =
+                    StreamingServiceRepository.getStreamingServicesForClasses(serviceClasses);
 
             SomeArgs args = SomeArgs.obtain();
             args.arg1 = appKey;
@@ -129,8 +117,64 @@ public class EmbmsTestStreamingService extends Service {
 
             mHandler.removeMessages(SEND_STREAMING_SERVICES_LIST);
             mHandler.sendMessageDelayed(
-                    mHandler.obtainMessage(SEND_STREAMING_SERVICES_LIST, args), 300);
+                    mHandler.obtainMessage(SEND_STREAMING_SERVICES_LIST, args),
+                    SEND_SERVICE_LIST_DELAY);
             return MbmsException.SUCCESS;
+        }
+
+        @Override
+        public int startStreaming(String appName, int subscriptionId, String serviceId,
+                IStreamingServiceCallback callback) {
+            StreamingAppIdentifier appKey =
+                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            checkInitialized(appKey);
+            checkServiceExists(serviceId);
+
+            if (StreamStateTracker.getStreamingState(appKey, serviceId) ==
+                    StreamingService.STATE_STARTED) {
+                return MbmsException.ERROR_STREAM_ALREADY_STARTED;
+            }
+
+            mHandler.postDelayed(
+                    () -> StreamStateTracker.startStreaming(appKey, serviceId, callback),
+                    START_STREAMING_DELAY);
+            return MbmsException.SUCCESS;
+        }
+
+        @Override
+        public Uri getPlaybackUri(String appName, int subscriptionId, String serviceId) {
+            StreamingAppIdentifier appKey =
+                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            checkInitialized(appKey);
+            checkServiceExists(serviceId);
+
+            Uri streamingUri = StreamingServiceRepository.getUriForService(serviceId);
+            if (streamingUri == null) {
+                throw new IllegalArgumentException("Invalid service ID");
+            }
+            return streamingUri;
+        }
+
+        @Override
+        public void disposeStream(String appName, int subscriptionId, String serviceId) {
+            StreamingAppIdentifier appKey =
+                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            checkInitialized(appKey);
+            checkServiceExists(serviceId);
+
+            Log.i(TAG, "Disposing of stream " + serviceId);
+            StreamStateTracker.dispose(appKey, serviceId);
+        }
+
+        @Override
+        public void dispose(String appName, int subscriptionId) {
+            StreamingAppIdentifier appKey =
+                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            checkInitialized(appKey);
+
+            Log.i(TAG, "Disposing app " + appName);
+            StreamStateTracker.disposeAll(appKey);
+            mAppCallbacks.remove(appKey);
         }
     };
 
@@ -152,5 +196,17 @@ public class EmbmsTestStreamingService extends Service {
 
     private static void logd(String s) {
         Log.d(TAG, s);
+    }
+
+    private void checkInitialized(StreamingAppIdentifier appKey) {
+        if (!mAppCallbacks.containsKey(appKey)) {
+            throw new IllegalStateException("Not yet initialized");
+        }
+    }
+
+    private void checkServiceExists(String serviceId) {
+        if (StreamingServiceRepository.getStreamingServiceInfoForId(serviceId) == null) {
+            throw new IllegalArgumentException("Invalid service ID");
+        }
     }
 }
