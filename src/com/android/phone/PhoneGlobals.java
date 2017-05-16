@@ -738,7 +738,9 @@ public class PhoneGlobals extends ContextWrapper {
             ServiceState ss = ServiceState.newFromBundle(extras);
             if (ss != null) {
                 int state = ss.getState();
-                notificationMgr.updateNetworkSelection(state);
+                int subId = intent.getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
+                        SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+                notificationMgr.updateNetworkSelection(state, subId);
             }
         }
     }
