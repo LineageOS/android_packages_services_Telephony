@@ -77,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Correo de voz"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Buzón de voz (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Correo de voz:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notificaciones"</string>
     <string name="networks" msgid="8873030692174541976">"Operadores de red"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Transmisiones de emergencia"</string>
     <string name="call_settings" msgid="6112441768261754562">"Configuración de llamada"</string>
@@ -528,10 +529,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Modo de devolución de llamada de emergencia ingresado"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Modo de devolución de llamada de emergencia"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"La conexión de datos se ha desactivado"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">Sin conexión de datos por <xliff:g id="COUNT_1">%s</xliff:g> minutos</item>
-      <item quantity="one">Sin conexión de datos por <xliff:g id="COUNT_0">%s</xliff:g> minuto</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">El teléfono estará en el modo de llamada de emergencia durante <xliff:g id="COUNT_1">%s</xliff:g> minutos. Mientras esté en este modo, no se podrá utilizar ninguna aplicación que utilice una conexión de datos. ¿Quieres salir ahora?</item>
       <item quantity="one">El teléfono estará en el modo de llamada de emergencia durante <xliff:g id="COUNT_0">%s</xliff:g> minuto. Mientras esté en este modo, no se podrá utilizar ninguna aplicación que utilice una conexión de datos. ¿Quieres salir ahora?</item>
@@ -555,12 +554,9 @@
     <string name="selectContact" msgid="781975788478987237">"seleccionar contacto"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"No admite llamadas de voz."</string>
     <string name="description_dial_button" msgid="7459705245418435351">"marcar"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Vibrar"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Vibrar"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Buzón de voz visual"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Establecer PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Cambiar PIN"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Sonido"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Tono y vibración"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Tarjetas SIM integradas"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Activar videollamadas"</string>

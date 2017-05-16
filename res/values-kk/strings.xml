@@ -77,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Дауыстық пошта"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Дауыстық пошта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ДХ:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Хабарландырулар"</string>
     <string name="networks" msgid="8873030692174541976">"Желі операторлары"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Жедел таратылымдар"</string>
     <string name="call_settings" msgid="6112441768261754562">"Қоңырау параметрлері"</string>
@@ -528,10 +529,8 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Төтенше қоңырауды кері шалу режиміне кірді"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Төтенше қоңырауды кері шалу режимі"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Дерекқор байланысы өшірілген"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> минут бойы деректер байланысы жоқ</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%s</xliff:g> минут бойы деректер байланысы жоқ</item>
-    </plurals>
+    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
+    <skip />
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Телефон <xliff:g id="COUNT_1">%s</xliff:g> минут бойы жедел кері қоңырау шалу режимінде болады. Бұл режимде деректер байланысын пайдаланатын қолданбаларды пайдалану мүмкін емес. Қазір шығу керек пе?</item>
       <item quantity="one">Телефон <xliff:g id="COUNT_0">%s</xliff:g> минут бойы жедел кері қоңырау шалу режимінде болады. Бұл режимде деректер байланысын пайдаланатын қолданбаларды пайдалану мүмкін емес. Қазір шығу керек пе?</item>
@@ -555,12 +554,9 @@
     <string name="selectContact" msgid="781975788478987237">"контакт таңдау"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Дауыс арқылы қоңырау шалу қолдауы жоқ"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"теру"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Діріл"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Діріл"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Визуалды дауыс поштасы"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN кодын орнату"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN кодты өзгерту"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Дыбыс"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Рингтон&amp; Діріл"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Кірістірілген SIM карталары"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Бейне қоңырауларды қосу"</string>
