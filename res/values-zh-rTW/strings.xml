@@ -535,8 +535,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"已進入緊急回撥模式"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"緊急回撥模式"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"資料連線已停用"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"在<xliff:g id="COMPLETETIME">%s</xliff:g> 之前無法使用數據連線"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">接下來的 <xliff:g id="COUNT_1">%s</xliff:g> 分鐘內，手機會進入緊急回電模式。在此模式下，您將無法使用需要數據連線的應用程式。您要立即退出這個模式嗎？</item>
       <item quantity="one">接下來的 <xliff:g id="COUNT_0">%s</xliff:g> 分鐘內，手機會進入緊急回電模式。在此模式下，您將無法使用需要數據連線的應用程式。您要立即退出這個模式嗎？</item>
