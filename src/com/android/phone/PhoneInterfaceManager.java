@@ -1499,6 +1499,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     public boolean setRadioPower(boolean turnOn) {
+        enforceModifyPermission();
         final Phone defaultPhone = PhoneFactory.getDefaultPhone();
         if (defaultPhone != null) {
             defaultPhone.setRadioPower(turnOn);
