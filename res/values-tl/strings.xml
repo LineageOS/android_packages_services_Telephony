@@ -529,8 +529,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Ipinasok na Emergency Callback Mode"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Emergency Callback Mode"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Hindi pinagana ang koneksyon ng data"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Walang koneksyon sa data hanggang <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">Mapupunta sa Emergency Callback mode ang telepono sa loob ng <xliff:g id="COUNT_1">%s</xliff:g> minuto. Habang nasa mode na ito, walang magagamit na mga application na gumagamit ng koneksyon ng data. Gusto mo bang lumabas ngayon?</item>
       <item quantity="other">Mapupunta sa Emergency Callback mode ang telepono sa loob ng <xliff:g id="COUNT_1">%s</xliff:g> na minuto. Habang nasa mode na ito, walang magagamit na mga application na gumagamit ng koneksyon ng data. Gusto mo bang lumabas ngayon?</item>

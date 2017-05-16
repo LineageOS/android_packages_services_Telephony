@@ -529,8 +529,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"S-a activat modul de apelare inversă de urgență"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Mod de apelare inversă de urgență"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Conexiune de date dezactivată"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Nicio conexiune de date până la <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="few">Telefonul va fi în modul Apelare inversă de urgență pentru <xliff:g id="COUNT_1">%s</xliff:g> minute. Când telefonul este în acest mod, nu se poate folosi nicio aplicație care necesită o conexiune de date. Doriți să ieșiți acum?</item>
       <item quantity="other">Telefonul va fi în modul Apelare inversă de urgență pentru <xliff:g id="COUNT_1">%s</xliff:g> de minute. Când telefonul este în acest mod, nu se poate folosi nicio aplicație care necesită o conexiune de date. Doriți să ieșiți acum?</item>

@@ -529,8 +529,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Įvestas atgalinio skambinimo pagalbos numeriu režimas"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Atgalinio skambinimo pagalbos numeriu režimas"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Duomenų ryšys išjungtas"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Duomenų ryšio nebus iki <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">Telefonas veiks pagalbos tarnybos atskambinimo režimu <xliff:g id="COUNT_1">%s</xliff:g> minutę. Įgalinus šį režimą negalima naudoti jokių programų, kurioms reikalingas duomenų ryšys. Norite dabar išeiti iš šio režimo?</item>
       <item quantity="few">Telefonas veiks pagalbos tarnybos atskambinimo režimu <xliff:g id="COUNT_1">%s</xliff:g> minutes. Įgalinus šį režimą negalima naudoti jokių programų, kurioms reikalingas duomenų ryšys. Norite dabar išeiti iš šio režimo?</item>
