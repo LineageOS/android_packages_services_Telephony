@@ -527,8 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Modus voor noodoproepen ingeschakeld"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Modus voor noodoproepen"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Gegevensverbinding uitgeschakeld"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Geen dataverbinding tot <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">De telefoon bevindt zich <xliff:g id="COUNT_1">%s</xliff:g> minuten in de modus voor noodoproepen. In deze modus kunnen geen apps worden gebruikt waarvoor een gegevensverbinding nodig is. Wil je nu afsluiten?</item>
       <item quantity="one">De telefoon bevindt zich <xliff:g id="COUNT_0">%s</xliff:g> minuut in de modus voor noodoproepen. In deze modus kunnen geen apps worden gebruikt waarvoor een gegevensverbinding nodig is. Wil je nu afsluiten?</item>

@@ -531,8 +531,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Шашылыш кайра чалуу режими киргизилди"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Шашылыш кайра чалуу режими"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Мобилдик туташуу өчүрүлгөн"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> чейин мобилдик байланыш жок"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Телефон Шашылыш кайра чалуу режиминде <xliff:g id="COUNT_1">%s</xliff:g> мүнөт бою болот. Бул режим күйүп турганда маалыматтык туташууну пайдаланган эч бир колдонмо иштетилбейт. Азыр чыгып кеткиңиз келеби?</item>
       <item quantity="one">Телефон Шашылыш кайра чалуу режиминде <xliff:g id="COUNT_0">%s</xliff:g> мүнөт бою болот. Бул режим күйүп турганда маалыматтык туташууну пайдаланган эч бир колдонмо иштетилбейт. Азыр чыгып кеткиңиз келеби?</item>

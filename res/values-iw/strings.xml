@@ -527,8 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"נכנס למצב חירום של התקשרות חזרה"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"מצב חירום של התקשרות חזרה"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"חיבור נתונים מושבת"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"אין חיבור לרשת נתונים עד <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="two">הטלפון יהיה במצב חירום של התקשרות חזרה למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות. בזמן שהטלפון במצב הזה, לא ניתן להשתמש באפליקציות הזקוקות לחיבור נתונים. האם ברצונך לצאת כעת?</item>
       <item quantity="many">הטלפון יהיה במצב חירום של התקשרות חזרה למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות. בזמן שהטלפון במצב הזה, לא ניתן להשתמש באפליקציות הזקוקות לחיבור נתונים. האם ברצונך לצאת כעת?</item>

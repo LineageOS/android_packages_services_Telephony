@@ -527,8 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"કટોકટી કૉલબેક મોડમાં દાખલ કર્યો"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"કટોકટી કૉલબેક મોડ"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"ડેટા કનેક્શન અક્ષમ કરેલ છે"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> સુધી કોઈ ડેટા કનેક્શન નથી"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">ફોન <xliff:g id="COUNT_1">%s</xliff:g> મિનિટ સુધી કટોકટી કૉલબેક મોડમાં રહેશે. આ મોડમાં હોય ત્યારે ડેટા કનેક્શનનો ઉપયોગ કરતી કોઈપણ એપ્લિકેશન્સનો ઉપયોગ થઈ શકશે નહીં. શું તમે હમણાં બહાર નીકળવા માગો છો?</item>
       <item quantity="other">ફોન <xliff:g id="COUNT_1">%s</xliff:g> મિનિટ સુધી કટોકટી કૉલબેક મોડમાં રહેશે. આ મોડમાં હોય ત્યારે ડેટા કનેક્શનનો ઉપયોગ કરતી કોઈપણ એપ્લિકેશન્સનો ઉપયોગ થઈ શકશે નહીં. શું તમે હમણાં બહાર નીકળવા માગો છો?</item>

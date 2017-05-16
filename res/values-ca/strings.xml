@@ -527,8 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"S\'ha activat al mode de devolució de trucada d\'emergència"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Mode de devolució de trucada d\'emergència"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Connexió de dades desactivada"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"No hi haurà connexió de dades fins a les <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">El telèfon estarà en mode de devolució de trucades d\'emergència durant <xliff:g id="COUNT_1">%s</xliff:g> minuts. Durant aquest temps, no es podrà utilitzar cap aplicació que faci servir una connexió de dades. Vols sortir ara?</item>
       <item quantity="one">El telèfon estarà en mode de devolució de trucades d\'emergència durant <xliff:g id="COUNT_0">%s</xliff:g> minut. Durant aquest temps, no es podrà utilitzar cap aplicació que faci servir una connexió de dades. Vols sortir ara?</item>
