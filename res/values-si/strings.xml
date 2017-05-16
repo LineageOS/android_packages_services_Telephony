@@ -527,8 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"හදිසි ආපසු ඇමතුම් ආකාරයට ඇතුලත් විණි"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"හදිසි ආපසු ඇමතුම් ආකාරය"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"දත්ත සම්බන්ධතාවය අබලයි"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> තෙක් දත්ත සම්බන්ධතාවක් නැත"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">දුරකථනය මිනිත්තු <xliff:g id="COUNT_1">%s</xliff:g> ක් හදිසි ආපසු ඇමතුම් ආකාරය තුළ වනු ඇත. මෙම ආකාරය තුළ සිටින අතරතුර දත්ත සම්බන්ධයක් භාවිත කරන යෙදුම් කිසිවක් භාවිත කළ නොහැකිය. ඔබට දැන් පිටවීමට අවශ්යද?</item>
       <item quantity="other">දුරකථනය මිනිත්තු <xliff:g id="COUNT_1">%s</xliff:g> ක් හදිසි ආපසු ඇමතුම් ආකාරය තුළ වනු ඇත. මෙම ආකාරය තුළ සිටින අතරතුර දත්ත සම්බන්ධයක් භාවිත කරන යෙදුම් කිසිවක් භාවිත කළ නොහැකිය. ඔබට දැන් පිටවීමට අවශ්යද?</item>
