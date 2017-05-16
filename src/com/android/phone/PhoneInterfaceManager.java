@@ -3817,19 +3817,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Set SIM card power state. Request is equivalent to inserting or removing the card.
+     * Set SIM card power state.
      *
      * @param slotIndex SIM slot id.
-     * @param powerUp True if powering up the SIM, otherwise powering down
+     * @param state  State of SIM (power down, power up, pass through)
+     * - {@link android.telephony.TelephonyManager#CARD_POWER_DOWN}
+     * - {@link android.telephony.TelephonyManager#CARD_POWER_UP}
+     * - {@link android.telephony.TelephonyManager#CARD_POWER_UP_PASS_THROUGH}
      *
      **/
     @Override
-    public void setSimPowerStateForSlot(int slotIndex, boolean powerUp) {
+    public void setSimPowerStateForSlot(int slotIndex, int state) {
         enforceModifyPermission();
         Phone phone = PhoneFactory.getPhone(slotIndex);
 
         if (phone != null) {
-            phone.setSimPowerState(powerUp);
+            phone.setSimPowerState(state);
         }
     }
 
