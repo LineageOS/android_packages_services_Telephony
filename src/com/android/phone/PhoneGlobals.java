@@ -648,6 +648,7 @@ public class PhoneGlobals extends ContextWrapper {
             } else if (action.equals(TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED)) {
                 int subId = intent.getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
                         SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+                int phoneId = SubscriptionManager.getPhoneId(subId);
                 final String apnType = intent.getStringExtra(PhoneConstants.DATA_APN_TYPE_KEY);
                 final String state = intent.getStringExtra(PhoneConstants.STATE_KEY);
                 final String reason = intent.getStringExtra(PhoneConstants.STATE_CHANGE_REASON_KEY);
@@ -657,6 +658,8 @@ public class PhoneGlobals extends ContextWrapper {
                     Log.d(LOG_TAG, "- reason: " + reason);
                     Log.d(LOG_TAG, "- subId: " + subId);
                 }
+                Phone phone = SubscriptionManager.isValidPhoneId(phoneId) ?
+                        PhoneFactory.getPhone(phoneId) : PhoneFactory.getDefaultPhone();
 
                 // If the apn type of data connection state changed event is NOT default,
                 // ignore the broadcast intent and avoid action.
@@ -670,7 +673,7 @@ public class PhoneGlobals extends ContextWrapper {
                 // (b) you just lost data connectivity because you're roaming.
                 if (PhoneConstants.DataState.DISCONNECTED.name().equals(state)
                         && Phone.REASON_ROAMING_ON.equals(reason)
-                        && !getPhone(subId).getDataRoamingEnabled()) {
+                        && !phone.getDataRoamingEnabled()) {
                     // Notify the user that data call is disconnected due to roaming. Note that
                     // calling this multiple times will not cause multiple notifications.
                     mHandler.sendEmptyMessage(EVENT_DATA_ROAMING_DISCONNECTED);
@@ -735,7 +738,9 @@ public class PhoneGlobals extends ContextWrapper {
             ServiceState ss = ServiceState.newFromBundle(extras);
             if (ss != null) {
                 int state = ss.getState();
-                notificationMgr.updateNetworkSelection(state);
+                int subId = intent.getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
+                        SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+                notificationMgr.updateNetworkSelection(state, subId);
             }
         }
     }

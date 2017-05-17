@@ -59,6 +59,7 @@ import android.telephony.NetworkScanRequest;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
 import android.telephony.SmsManager;
+import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyHistogram;
@@ -1498,6 +1499,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     public boolean setRadioPower(boolean turnOn) {
+        enforceModifyPermission();
         final Phone defaultPhone = PhoneFactory.getDefaultPhone();
         if (defaultPhone != null) {
             defaultPhone.setRadioPower(turnOn);
@@ -1547,13 +1549,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    // FIXME: subId version needed
     @Override
-    public boolean isDataConnectivityPossible() {
-        int subId = mSubscriptionController.getDefaultDataSubId();
+    public boolean isDataConnectivityPossible(int subId) {
         final Phone phone = getPhone(subId);
         if (phone != null) {
-            return phone.isDataConnectivityPossible();
+            return phone.isDataAllowed();
         } else {
             return false;
         }
@@ -3815,19 +3815,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Set SIM card power state. Request is equivalent to inserting or removing the card.
+     * Set SIM card power state.
      *
      * @param slotIndex SIM slot id.
-     * @param powerUp True if powering up the SIM, otherwise powering down
+     * @param state  State of SIM (power down, power up, pass through)
+     * - {@link android.telephony.TelephonyManager#CARD_POWER_DOWN}
+     * - {@link android.telephony.TelephonyManager#CARD_POWER_UP}
+     * - {@link android.telephony.TelephonyManager#CARD_POWER_UP_PASS_THROUGH}
      *
      **/
     @Override
-    public void setSimPowerStateForSlot(int slotIndex, boolean powerUp) {
+    public void setSimPowerStateForSlot(int slotIndex, int state) {
         enforceModifyPermission();
         Phone phone = PhoneFactory.getPhone(slotIndex);
 
         if (phone != null) {
-            phone.setSimPowerState(powerUp);
+            phone.setSimPowerState(state);
         }
     }
 
@@ -3843,5 +3846,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } else {
             return false;
         }
+    }
+
+    /**
+     * Get the current signal strength information for the given subscription.
+     * Because this information is not updated when the device is in a low power state
+     * it should not be relied-upon to be current.
+     * @param subId Subscription index
+     * @return the most recent cached signal strength info from the modem
+     */
+    @Override
+    public SignalStrength getSignalStrength(int subId) {
+        Phone p = getPhone(subId);
+        if (p == null) {
+            return null;
+        }
+
+        return p.getSignalStrength();
     }
 }

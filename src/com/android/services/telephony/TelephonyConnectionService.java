@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.ConnectionRequest;
@@ -349,7 +350,10 @@ public class TelephonyConnectionService extends ConnectionService {
         final boolean isEmergencyNumber =
                 PhoneNumberUtils.isLocalEmergencyNumber(this, numberToDial);
 
-        if (isEmergencyNumber && !isRadioOn()) {
+        final boolean isAirplaneModeOn = Settings.Global.getInt(getContentResolver(),
+                Settings.Global.AIRPLANE_MODE_ON, 0) > 0;
+
+        if (isEmergencyNumber && (!isRadioOn() || isAirplaneModeOn)) {
             final Uri emergencyHandle = handle;
             // By default, Connection based on the default Phone, since we need to return to Telecom
             // now.
@@ -905,7 +909,7 @@ public class TelephonyConnectionService extends ConnectionService {
         } catch (CallStateException e) {
             Log.e(this, e, "placeOutgoingConnection, phone.dial exception: " + e);
             int cause = android.telephony.DisconnectCause.OUTGOING_FAILURE;
-            if (e.getError() == CallStateException.ERROR_DISCONNECTED) {
+            if (e.getError() == CallStateException.ERROR_OUT_OF_SERVICE) {
                 cause = android.telephony.DisconnectCause.OUT_OF_SERVICE;
             } else if (e.getError() == CallStateException.ERROR_POWER_OFF) {
                 cause = android.telephony.DisconnectCause.POWER_OFF;

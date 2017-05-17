@@ -77,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"البريد الصوتي"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"البريد الصوتي (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"الإشعارات"</string>
     <string name="networks" msgid="8873030692174541976">"مشغلو الشبكة"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"عمليات البث في حالات الطوارئ"</string>
     <string name="call_settings" msgid="6112441768261754562">"إعدادات الاتصال"</string>
@@ -510,7 +511,7 @@
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"يُجري الهاتف تنشيطًا لخدمة بيانات الجوّال.\n\nقد يستغرق هذا الأمر ما يصل إلى 5 دقائق."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"هل تريد تخطي التنشيط؟"</string>
     <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"‏إذا تخطيت التنشيط، فلن تتمكن من إجراء مكالمات أو الاتصال بشبكات بيانات الجوال (ومع ذلك، يمكنك الاتصال بشبكات Wi-Fi). إلى أن تنشط هاتفك، ستتم مطالبتك بتنشيطه في كل مرة تشغله فيها."</string>
-    <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"تخطٍ"</string>
+    <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"تخطي"</string>
     <string name="ota_activate" msgid="1368528132525626264">"تنشيط"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"تم تنشيط الهاتف."</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"مشكلة في التنشيط"</string>
@@ -528,14 +529,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"تم الدخول إلى وضع هاتف معاودة الاتصال بالطوارئ"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"وضع هاتف معاودة الاتصال بالطوارئ"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"تم تعطيل اتصال البيانات"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="zero">لن يتوفر اتصال بالبيانات لمدة <xliff:g id="COUNT_1">%s</xliff:g> من الدقائق</item>
-      <item quantity="two">لن يتوفر اتصال بالبيانات لمدة دقيقتين (<xliff:g id="COUNT_1">%s</xliff:g>)</item>
-      <item quantity="few">لن يتوفر اتصال بالبيانات لمدة <xliff:g id="COUNT_1">%s</xliff:g> دقائق</item>
-      <item quantity="many">لن يتوفر اتصال بالبيانات لمدة <xliff:g id="COUNT_1">%s</xliff:g> دقيقة</item>
-      <item quantity="other">لن يتوفر اتصال بالبيانات لمدة <xliff:g id="COUNT_1">%s</xliff:g> من الدقائق</item>
-      <item quantity="one">لن يتوفر اتصال بالبيانات لمدة <xliff:g id="COUNT_0">%s</xliff:g> دقيقة</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"لا يوجد اتصال بيانات حتى <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="zero">سيكون الهاتف في وضع الرد على مكالمة الطوارئ لمدة <xliff:g id="COUNT_1">%s</xliff:g> من الدقائق. وأثناء هذا الوضع، لا يمكن استخدام أي تطبيقات تستخدم اتصال بيانات. هل تريد الخروج الآن؟</item>
       <item quantity="two">سيكون الهاتف في وضع الرد على مكالمة الطوارئ لمدة دقيقتين (<xliff:g id="COUNT_1">%s</xliff:g>). وأثناء هذا الوضع، لا يمكن استخدام أي تطبيقات تستخدم اتصال بيانات. هل تريد الخروج الآن؟</item>
@@ -567,12 +561,9 @@
     <string name="selectContact" msgid="781975788478987237">"تحديد جهة اتصال"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"الاتصال الصوتي غير معتمد"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"طلب"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"الاهتزاز"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"الاهتزاز"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"بريد صوتي مرئي"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"تعيين رقم التعريف الشخصي"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"تغيير رقم التعريف الشخصي"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"الصوت"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"نغمة الرنين والاهتزاز"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"‏بطاقات SIM مدمجة"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"تشغيل مكالمات الفيديو"</string>

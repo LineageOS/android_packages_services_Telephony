@@ -77,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Mailbox"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Mailbox (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"MB:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Benachrichtigungen"</string>
     <string name="networks" msgid="8873030692174541976">"Mobilfunkanbieter"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Notfallbenachrichtigungen"</string>
     <string name="call_settings" msgid="6112441768261754562">"Anrufeinstellungen"</string>
@@ -532,10 +533,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Notfallrückrufmodus aktiviert"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Notfallrückrufmodus"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Datenverbindung deaktiviert"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> Minuten lang keine Datenverbindung</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%s</xliff:g> Minute lang keine Datenverbindung</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Keine Datenverbindung bis <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Das Smartphone wird <xliff:g id="COUNT_1">%s</xliff:g> Minuten lang in den Notfallrückrufmodus versetzt. In dieser Zeit können Apps mit Datenverbindung nicht genutzt werden. Möchtest du den Vorgang jetzt abbrechen?</item>
       <item quantity="one">Das Smartphone wird <xliff:g id="COUNT_0">%s</xliff:g> Minute lang in den Notfallrückrufmodus versetzt. In dieser Zeit können Apps mit Datenverbindung nicht genutzt werden. Möchtest du den Vorgang jetzt abbrechen?</item>
@@ -559,12 +557,9 @@
     <string name="selectContact" msgid="781975788478987237">"Kontakt wählen"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Sprachanruf wird nicht unterstützt."</string>
     <string name="description_dial_button" msgid="7459705245418435351">"Wählen"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Vibration"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Vibration"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuelle Mailbox"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN festlegen"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN ändern"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Töne"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Klingelton &amp; Vibration"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Integrierte SIM-Karten"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Videoanrufe aktivieren"</string>
