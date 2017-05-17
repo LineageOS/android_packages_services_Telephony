@@ -527,8 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Vnesen način za povratni klic v sili"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Način povratnega klica v sili"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Podatkovno povezovanje onemogočeno"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Podatkovne povezave ne bo do <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">Telefon bo v načinu povratnega klica v sili <xliff:g id="COUNT_1">%s</xliff:g> minuto. V tem načinu ni mogoče uporabljati aplikacij, ki uporabljajo podatkovno povezavo. Ali želite zapreti?</item>
       <item quantity="two">Telefon bo v načinu povratnega klica v sili <xliff:g id="COUNT_1">%s</xliff:g> minuti. V tem načinu ni mogoče uporabljati aplikacij, ki uporabljajo podatkovno povezavo. Ali želite zapreti?</item>

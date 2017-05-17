@@ -527,8 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"የአደጋጊዜ ተዘዋዋሪ ጥሪ ሁነታ ገብቷል"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"የአደጋጊዜ ተዘዋዋሪጥሪ ሁነታ"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"የውሂብ ተያያዥነት አልነቃም"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"እሰከ <xliff:g id="COMPLETETIME">%s</xliff:g> የውሂብ ግንኙነት የለም"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">ስልኩ በድንገተኛ ጥሪ መልሶ መደወያ ሁነታ ለ <xliff:g id="COUNT_1">%s</xliff:g> ደቂቃዎች ይቆያል። በዚህ ሁነታ ላይ በሚሆንበት ጊዜ የውሂብ ግንኙነትን የሚጠቀሙ ማናቸውም መተግበሪያዎች ጥቅም ላይ ሊውሉ አይችሉም። አሁን መውጣት ይፈልጋሉ?</item>
       <item quantity="other">ስልኩ በድንገተኛ ጥሪ መልሶ መደወያ ሁነታ ለ <xliff:g id="COUNT_1">%s</xliff:g> ደቂቃዎች ይቆያል። በዚህ ሁነታ ላይ በሚሆንበት ጊዜ የውሂብ ግንኙነትን የሚጠቀሙ ማናቸውም መተግበሪያዎች ጥቅም ላይ ሊውሉ አይችሉም። አሁን መውጣት ይፈልጋሉ?</item>

@@ -527,8 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Masukkan Mode Telepon Balik Darurat"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Mode Panggilan Balik Darurat"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Sambungan data dinonaktifkan"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Tidak ada koneksi data sampai <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Ponsel ini akan berada dalam mode Panggilan Balik Darurat selama <xliff:g id="COUNT_1">%s</xliff:g> menit. Saat dalam mode ini, aplikasi yang menggunakan sambungan data tidak dapat digunakan. Ingin keluar sekarang?</item>
       <item quantity="one">Ponsel ini akan berada dalam mode Panggilan Balik Darurat selama <xliff:g id="COUNT_0">%s</xliff:g> menit. Saat dalam mode ini, aplikasi yang menggunakan sambungan data tidak dapat digunakan. Ingin keluar sekarang?</item>
