@@ -57,6 +57,7 @@ import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.phone.common.CallLogAsync;
 import com.android.phone.settings.SettingsConstants;
+import com.android.phone.vvm.CarrierVvmPackageInstalledReceiver;
 import com.android.services.telephony.sip.SipUtil;
 
 /**
@@ -156,6 +157,9 @@ public class PhoneGlobals extends ContextWrapper {
 
     // Broadcast receiver for various intent broadcasts (see onCreate())
     private final BroadcastReceiver mReceiver = new PhoneAppBroadcastReceiver();
+
+    private final CarrierVvmPackageInstalledReceiver mCarrierVvmPackageInstalledReceiver =
+            new CarrierVvmPackageInstalledReceiver();
 
     Handler mHandler = new Handler() {
         @Override
@@ -332,6 +336,8 @@ public class PhoneGlobals extends ContextWrapper {
             intentFilter.addAction(TelephonyIntents.ACTION_SERVICE_STATE_CHANGED);
             intentFilter.addAction(TelephonyIntents.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED);
             registerReceiver(mReceiver, intentFilter);
+
+            mCarrierVvmPackageInstalledReceiver.register(this);
 
             //set the default values for the preferences in the phone.
             PreferenceManager.setDefaultValues(this, R.xml.network_setting_fragment, false);
