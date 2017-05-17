@@ -475,7 +475,7 @@
     <string name="onscreenHoldText" msgid="2285258239691145872">"Ushlab turish"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Tugatish"</string>
     <string name="onscreenShowDialpadText" msgid="8561805492659639893">"Terish paneli"</string>
-    <string name="onscreenMuteText" msgid="5011369181754261374">"Ovozni o‘chirish"</string>
+    <string name="onscreenMuteText" msgid="5011369181754261374">"Ovozsiz qilish"</string>
     <string name="onscreenAddCallText" msgid="5140385634712287403">"Chaqiruv qo‘shish"</string>
     <string name="onscreenMergeCallsText" msgid="6640195098064538950">"Qo‘ng‘iroqlarni birlashtirish"</string>
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"Almashish"</string>
@@ -529,8 +529,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Favqulodda teskari qo‘ng‘iroq rejimi kiritildi"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Favqulodda teskari qo‘ng‘iroq rejimi"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Internetga ulanish o‘chirildi"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> gacha internetga ulanib bo‘lmaydi"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Telefon <xliff:g id="COUNT_1">%s</xliff:g> daqiqa davomida Favqulodda teskari qo‘ng‘iroq rejimida bo‘ladi. Ushbu rejimda internet bilan ishlaydigan hech qanday ilovadan foydalanib bo‘lmaydi. Bu rejimdan chiqishni xohlaysizmi?</item>
       <item quantity="one">Telefon <xliff:g id="COUNT_0">%s</xliff:g> daqiqa davomida Favqulodda teskari qo‘ng‘iroq rejimida bo‘ladi. Ushbu rejimda internet bilan ishlaydigan hech qanday ilovadan foydalanib bo‘lmaydi. Bu rejimdan chiqishni xohlaysizmi?</item>

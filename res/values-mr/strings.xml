@@ -529,8 +529,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"आणीबाणी कॉलबॅक मोड प्रविष्‍ट केला"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"आणीबाणी कॉलबॅक मोड"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"डेटा कनेक्शन अक्षम केले"</string>
-    <!-- no translation found for phone_in_ecm_notification_complete_time (7730376844178948351) -->
-    <skip />
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> पर्यंत कोणतेही डेटा कनेक्‍शन नाही"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अनुप्रयोग वापरले जाऊ शकत नाहीत. आपण आता बाहेर पडू इच्छिता?</item>
       <item quantity="other">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अनुप्रयोग वापरले जाऊ शकत नाहीत. आपण आता बाहेर पडू इच्छिता?</item>
