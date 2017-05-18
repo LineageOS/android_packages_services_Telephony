@@ -389,5 +389,8 @@ public class ImsConferenceController {
                         android.telephony.DisconnectCause.IMS_MERGED_SUCCESSFULLY)));
         connection.destroy();
         mImsConferences.add(conference);
+        // If one of the participants failed to join the conference, recalculate will set the
+        // conferenceable connections for the conference to show merge calls option.
+        recalculateConferenceable();
     }
 }
