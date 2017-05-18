@@ -76,6 +76,7 @@
     <protected-broadcast android:name= "com.android.ims.REGISTRATION_ERROR" />
     <protected-broadcast android:name= "com.android.phone.vvm.omtp.sms.REQUEST_SENT" />
     <protected-broadcast android:name= "com.android.phone.vvm.ACTION_VISUAL_VOICEMAIL_SERVICE_EVENT" />
+    <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_VVM_PACKAGE_INSTALLED" />
 
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
