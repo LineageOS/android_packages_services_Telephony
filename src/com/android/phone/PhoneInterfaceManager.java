@@ -1549,13 +1549,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    // FIXME: subId version needed
     @Override
-    public boolean isDataConnectivityPossible() {
-        int subId = mSubscriptionController.getDefaultDataSubId();
+    public boolean isDataConnectivityPossible(int subId) {
         final Phone phone = getPhone(subId);
         if (phone != null) {
-            return phone.isDataConnectivityPossible();
+            return phone.isDataAllowed();
         } else {
             return false;
         }
