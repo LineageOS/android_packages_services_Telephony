@@ -149,4 +149,6 @@
   <string name="cf_setting_mobile_data_roaming_alert">Proszę włączyć roaming danych</string>
   <string name="no_mobile_data">Transmisja danych jest niedostępna</string>
   <string name="no_mobile_data_roaming">Roaming danych jest niedostępny</string>
+  <string name="srvcc_video_message">"Wideorozmowa została przełączona w rozmowę głosową 2G/3G, ponieważ sieć 4G nie jest dostępna."</string>
+  <string name="srvcc_message">"Rozmowa głosowa 4G została przełączona w rozmowę głosową 2G/3G, ponieważ sieć 4G nie jest dostępna."</string>
 </resources>
