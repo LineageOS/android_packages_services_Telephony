@@ -17,10 +17,12 @@
 
 <resources>
     <string name="bind_button">Bind to service</string>
-    <string name="streaming_uri_label">Current Streaming URI</string>
+    <string name="streaming_uri_label">Current Streaming URIs</string>
     <string name="get_streaming_services_button">Get streaming services</string>
     <string name="start_streaming_button">Start Streaming</string>
+    <string name="stop_streaming_button">Stop Streaming</string>
     <string name="available_streaming_services_label">Available Streaming Services</string>
     <string name="dispose_stream_button">Dispose latest stream</string>
     <string name="dispose_manager_button">Dispose streaming manager</string>
+    <string name="tracked_streams_label">Tracked Streams</string>
 </resources>

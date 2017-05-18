@@ -42,20 +42,34 @@ public class StreamingServiceTracker {
     private final EmbmsTestStreamingApp mActivity;
     private final StreamingServiceInfo mStreamingServiceInfo;
     private StreamingService mStreamingService;
-    private int mState;
+
+    private int mState = StreamingService.STATE_STOPPED;
+    private Uri mStreamingUri = Uri.EMPTY;
 
     public StreamingServiceTracker(EmbmsTestStreamingApp appActivity, StreamingServiceInfo info) {
         mActivity = appActivity;
         mStreamingServiceInfo = info;
     }
 
-    public void startStreaming(MbmsStreamingManager streamingManager) {
+    public boolean startStreaming(MbmsStreamingManager streamingManager) {
         try {
             mStreamingService =
                     streamingManager.startStreaming(mStreamingServiceInfo, new Callback());
+            return true;
         } catch (MbmsException e) {
             Toast.makeText(mActivity,
-                    "Error starting streaming" + e.getErrorCode(),
+                    "Error starting streaming: " + e.getErrorCode(),
+                    Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
+
+    public void stopStreaming() {
+        try {
+            mStreamingService.stopStreaming();
+        } catch (MbmsException e) {
+            Toast.makeText(mActivity,
+                    "Error stopping streaming: " + e.getErrorCode(),
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -74,17 +88,19 @@ public class StreamingServiceTracker {
         return mStreamingServiceInfo.getServiceId();
     }
 
+    public int getState() {
+        return mState;
+    }
+
+    public Uri getUri() {
+        return mStreamingUri;
+    }
+
     private void onStreamStateChanged(int state) {
-        String toastMessage = "Stream "
-                + mStreamingServiceInfo.getNames().get(mStreamingServiceInfo.getLocale())
-                + " has entered state "
-                + state;
-        mActivity.runOnUiThread(() ->
-                Toast.makeText(mActivity, toastMessage, Toast.LENGTH_SHORT).show());
         if (state == StreamingService.STATE_STARTED && mState != StreamingService.STATE_STARTED) {
             try {
-                Uri streamingUri = mStreamingService.getPlaybackUri();
-                mActivity.updateUriInUi(streamingUri);
+                mStreamingUri = mStreamingService.getPlaybackUri();
+                mActivity.updateUri();
             } catch (MbmsException e) {
                 String errorToast = "Got error " + e.getErrorCode() + " while getting uri";
                 mActivity.runOnUiThread(() ->
@@ -92,5 +108,11 @@ public class StreamingServiceTracker {
             }
         }
         mState = state;
+        mActivity.updateStreamingState();
+    }
+
+    @Override
+    public String toString() {
+        return "Tracked service with ID " + getServiceId();
     }
 }
