@@ -156,6 +156,16 @@ public class EmbmsTestStreamingService extends Service {
         }
 
         @Override
+        public void stopStreaming(String appName, int subscriptionId, String serviceId) {
+            StreamingAppIdentifier appKey =
+                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            checkInitialized(appKey);
+            checkServiceExists(serviceId);
+
+            mHandler.post(() -> StreamStateTracker.stopStreaming(appKey, serviceId));
+        }
+
+        @Override
         public void disposeStream(String appName, int subscriptionId, String serviceId) {
             StreamingAppIdentifier appKey =
                     new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
