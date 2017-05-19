@@ -25,6 +25,7 @@ import android.os.HandlerThread;
 import android.telephony.MbmsStreamingManager;
 import android.telephony.mbms.MbmsException;
 import android.telephony.mbms.MbmsStreamingManagerCallback;
+import android.telephony.mbms.StreamingService;
 import android.telephony.mbms.StreamingServiceInfo;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class EmbmsTestStreamingApp extends Activity {
     private static final String APP_NAME = "StreamingApp1";
@@ -87,12 +89,38 @@ public class EmbmsTestStreamingApp extends Activity {
         }
     }
 
+    private final class TrackedStreamAdapter extends ArrayAdapter<String> {
+        public TrackedStreamAdapter(Context context) {
+            super(context, android.R.layout.simple_spinner_item);
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            String serviceId = getItem(position);
+            StreamingServiceTracker tracker = mStreamingServiceTrackerById.get(serviceId);
+            TextView result = new TextView(EmbmsTestStreamingApp.this);
+            result.setText(tracker == null ? "" : tracker.toString());
+            return result;
+        }
+
+        @Override
+        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+            String serviceId = getItem(position);
+            StreamingServiceTracker tracker = mStreamingServiceTrackerById.get(serviceId);
+            TextView result = new TextView(EmbmsTestStreamingApp.this);
+            result.setText(tracker.toString());
+            return result;
+        }
+    }
+
     private MbmsStreamingManager mStreamingManager = null;
 
     private Handler mHandler;
     private HandlerThread mHandlerThread;
-    private StreamingServiceTracker mLatestStream = null;
 
+    private TrackedStreamAdapter mTrackedStreamingServiceAdapter;
+    private Spinner mStreamSelector;
     private StreamingServiceInfoAdapter mStreamingServicesDisplayAdapter;
     private final Map<String, StreamingServiceTracker> mStreamingServiceTrackerById =
             new HashMap<>();
@@ -107,6 +135,7 @@ public class EmbmsTestStreamingApp extends Activity {
         mHandler = new Handler(mHandlerThread.getLooper());
         mStreamingServicesDisplayAdapter =
                 new StreamingServiceInfoAdapter(this, android.R.layout.simple_spinner_item);
+        mTrackedStreamingServiceAdapter = new TrackedStreamAdapter(this);
 
         Button bindButton = (Button) findViewById(R.id.bind_button);
         bindButton.setOnClickListener((view) ->
@@ -147,17 +176,24 @@ public class EmbmsTestStreamingApp extends Activity {
         mStreamingServicesDisplayAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
         serviceSelector.setAdapter(mStreamingServicesDisplayAdapter);
-        serviceSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        mStreamSelector = (Spinner) findViewById(R.id.curr_streams);
+        mTrackedStreamingServiceAdapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item);
+        mStreamSelector.setAdapter(mTrackedStreamingServiceAdapter);
+        mStreamSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                StreamingServiceInfo info =
-                        (StreamingServiceInfo) serviceSelector.getItemAtPosition(position);
-                String toastText = "Service selected: " + info.getNames().get(info.getLocale());
-                Toast.makeText(EmbmsTestStreamingApp.this, toastText, Toast.LENGTH_SHORT).show();
+                String serviceId = (String) mStreamSelector.getItemAtPosition(position);
+                StreamingServiceTracker tracker = mStreamingServiceTrackerById.get(serviceId);
+
+                setStreamStateDisplay(String.valueOf(tracker.getState()));
+                setUriDisplay(tracker.getUri());
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+                clearStateAndUriDisplay();
             }
         });
 
@@ -177,30 +213,43 @@ public class EmbmsTestStreamingApp extends Activity {
             }
 
             StreamingServiceTracker tracker = new StreamingServiceTracker(this, serviceInfo);
-            tracker.startStreaming(mStreamingManager);
-            mStreamingServiceTrackerById.put(serviceInfo.getServiceId(), tracker);
-            mLatestStream = tracker;
+            if (tracker.startStreaming(mStreamingManager)) {
+                mStreamingServiceTrackerById.put(serviceInfo.getServiceId(), tracker);
+                mTrackedStreamingServiceAdapter.add(serviceInfo.getServiceId());
+            }
+        });
+
+        Button stopStreamingButton = (Button) findViewById(R.id.stop_streaming_button);
+        stopStreamingButton.setOnClickListener((view) -> {
+            if (getSelectedTrackedStream() == null) {
+                Toast.makeText(EmbmsTestStreamingApp.this,
+                        "No streams selected", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            StreamingServiceTracker stream = getSelectedTrackedStream();
+            stream.stopStreaming();
         });
 
         Button disposeStreamButton = (Button) findViewById(R.id.dispose_stream_button);
         disposeStreamButton.setOnClickListener((view) -> {
-            if (mLatestStream == null) {
+            if (getSelectedTrackedStream() == null) {
                 Toast.makeText(EmbmsTestStreamingApp.this,
-                        "No streams active", Toast.LENGTH_SHORT).show();
+                        "No streams selected", Toast.LENGTH_SHORT).show();
                 return;
             }
-            mLatestStream.dispose();
-            mStreamingServiceTrackerById.remove(mLatestStream.getServiceId());
-            TextView uriField = (TextView) findViewById(R.id.curr_streaming_uri);
-            uriField.setText("");
-            mLatestStream = null;
+            clearStateAndUriDisplay();
+            StreamingServiceTracker stream = getSelectedTrackedStream();
+            mTrackedStreamingServiceAdapter.remove(stream.getServiceId());
+            mStreamingServiceTrackerById.remove(stream.getServiceId());
+            stream.dispose();
         });
 
         Button disposeManagerButton = (Button) findViewById(R.id.dispose_manager_button);
         disposeManagerButton.setOnClickListener((view) -> {
-            TextView uriField = (TextView) findViewById(R.id.curr_streaming_uri);
-            uriField.setText("");
+            clearStateAndUriDisplay();
+            mTrackedStreamingServiceAdapter.clear();
             mStreamingServicesDisplayAdapter.update(Collections.emptyList());
+            mStreamingServiceTrackerById.clear();
             mStreamingManager.dispose();
         });
     }
@@ -215,10 +264,39 @@ public class EmbmsTestStreamingApp extends Activity {
         runOnUiThread(() -> mStreamingServicesDisplayAdapter.update(services));
     }
 
-    public void updateUriInUi(Uri uri) {
+    private StreamingServiceTracker getSelectedTrackedStream() {
+        String serviceId = (String) mStreamSelector.getSelectedItem();
+        return mStreamingServiceTrackerById.get(serviceId);
+    }
+
+    private void setUriDisplay(Uri uri) {
         runOnUiThread(() -> {
             TextView uriField = (TextView) findViewById(R.id.curr_streaming_uri);
             uriField.setText(uri.toSafeString());
         });
+    }
+
+    private void setStreamStateDisplay(String stateString) {
+        runOnUiThread(() -> {
+            TextView uriField = (TextView) findViewById(R.id.stream_state);
+            uriField.setText(stateString);
+        });
+    }
+
+    private void clearStateAndUriDisplay() {
+        setUriDisplay(Uri.EMPTY);
+        setStreamStateDisplay("");
+    }
+
+    public void updateUri() {
+        Uri uri = getSelectedTrackedStream() == null ?
+            Uri.EMPTY : getSelectedTrackedStream().getUri();
+        setUriDisplay(uri);
+    }
+
+    public void updateStreamingState() {
+        String stateString = getSelectedTrackedStream() == null ?
+            "" : String.valueOf(getSelectedTrackedStream().getState());
+        setStreamStateDisplay(stateString);
     }
 }
