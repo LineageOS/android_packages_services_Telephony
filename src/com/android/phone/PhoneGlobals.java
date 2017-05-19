@@ -145,6 +145,8 @@ public class PhoneGlobals extends ContextWrapper {
     private Activity mPUKEntryActivity;
     private ProgressDialog mPUKEntryProgressDialog;
 
+    private boolean mDataDisconnectedDueToRoaming = false;
+
     private WakeState mWakeState = WakeState.SLEEP;
 
     private PowerManager mPowerManager;
@@ -669,16 +671,21 @@ public class PhoneGlobals extends ContextWrapper {
                 // The "data disconnected due to roaming" notification is shown
                 // if (a) you have the "data roaming" feature turned off, and
                 // (b) you just lost data connectivity because you're roaming.
-                if (PhoneConstants.DataState.DISCONNECTED.name().equals(state)
+                // (c) if we haven't shown the notification for this disconnection earlier.
+                if (!mDataDisconnectedDueToRoaming
+                        && PhoneConstants.DataState.DISCONNECTED.name().equals(state)
                         && Phone.REASON_ROAMING_ON.equals(reason)
                         && !phone.getDataRoamingEnabled()) {
                     // Notify the user that data call is disconnected due to roaming. Note that
                     // calling this multiple times will not cause multiple notifications.
                     mHandler.sendEmptyMessage(EVENT_DATA_ROAMING_DISCONNECTED);
-                } else if (PhoneConstants.DataState.CONNECTED.name().equals(state)) {
+                    mDataDisconnectedDueToRoaming = true;
+                } else if (mDataDisconnectedDueToRoaming
+                        && PhoneConstants.DataState.CONNECTED.name().equals(state)) {
                     // Cancel the notification when data is available. Note it is okay to call this
                     // even if the notification doesn't exist.
                     mHandler.sendEmptyMessage(EVENT_DATA_ROAMING_OK);
+                    mDataDisconnectedDueToRoaming = false;
                 }
             } else if ((action.equals(TelephonyIntents.ACTION_SIM_STATE_CHANGED)) &&
                     (mPUKEntryActivity != null)) {
