@@ -188,7 +188,7 @@
     <!-- GSM-only Call settings screen, setting option name-->
     <string name="sum_gsm_call_settings">Additional GSM only call settings</string>
     <!-- CDMA Call settings screen, setting option name -->
-    <string name="additional_cdma_call_settings">Additional CDMA call settings</string>
+    <string name="additional_cdma_call_settings">CDMA call settings</string>
     <!-- CDMA-only Call settings screen, setting option name-->
     <string name="sum_cdma_call_settings">Additional CDMA only call settings</string>
     <!-- Call setting screen, nework service setting name -->

@@ -82,7 +82,7 @@
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Additional settings"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Additional settings (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="4076647190996778012">"Additional GSM-only call settings"</string>
-    <string name="additional_cdma_call_settings" msgid="8628958775721886909">"Additional CDMA call settings"</string>
+    <string name="additional_cdma_call_settings" msgid="8628958775721886909">"CDMA call settings"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"Additional CDMA-only call settings"</string>
     <string name="labelNwService" msgid="4699970172021870983">"Network service settings"</string>
     <string name="labelCallerId" msgid="3888899447379069198">"Caller ID"</string>
