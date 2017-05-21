@@ -18,12 +18,15 @@ package com.android.phone.testapps.embmsmw;
 
 import android.telephony.mbms.IStreamingServiceCallback;
 import android.telephony.mbms.StreamingService;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
 
 // Singleton that keeps track of streaming states for all apps using the middleware.
 public class StreamStateTracker {
+    private static final String LOG_TAG = "MbmsStreamStateTracker";
+
     private static final Map<StreamingAppIdentifier, AppActiveStreams>
             sPerAppStreamStates = new HashMap<>();
 
@@ -47,6 +50,7 @@ public class StreamStateTracker {
     }
 
     public static void stopStreaming(StreamingAppIdentifier appIdentifier, String serviceId) {
+        Log.i(LOG_TAG, "Stopping stream " + serviceId);
         AppActiveStreams appStreams = sPerAppStreamStates.get(appIdentifier);
         if (appStreams == null) {
             // It was never started, so don't bother stopping.
