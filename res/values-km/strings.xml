@@ -529,7 +529,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"បាន​បញ្ចូល​របៀប​ការ​ហៅ​ទៅ​វិញ​ពេល​មាន​អាសន្ន"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"របៀប​ហៅ​ទៅ​វិញ​ពេល​មាន​អាសន្ន"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"បាន​បិទ​ការ​តភ្ជាប់​ទិន្នន័យ"</string>
-    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"មិន​មាន​ការតភ្ជាប់​ទិន្នន័យ រហូតដល់ <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"មិន​មាន​ការតភ្ជាប់​ទិន្នន័យ រហូតដល់ម៉ោង <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">ទូរស័ព្ទនេះនឹងស្ថិតក្នុងរបៀប ហៅត្រលប់ពេលអាសន្ន រយៈពេល <xliff:g id="COUNT_1">%s</xliff:g> នាទី។ ខណៈពេលស្ថិតក្នុងរបៀបនេះ មិនមានកម្មវិធីដែលប្រើការភ្ជាប់ទិន្នន័យណា អាចប្រើបានបានឡើយ។ តើអ្នកចង់ចាកចេញឥឡូវនេះទេ?</item>
       <item quantity="one">ទូរស័ព្ទនេះនឹងស្ថិតក្នុងរបៀប ហៅត្រលប់ពេលអាសន្ន រយៈពេល <xliff:g id="COUNT_0">%s</xliff:g> នាទី។ ខណៈពេលស្ថិតក្នុងរបៀបនេះ មិនមានកម្មវិធីដែលប្រើការភ្ជាប់ទិន្នន័យណា អាចប្រើបានបានឡើយ។ តើអ្នកចង់ចាកចេញឥឡូវនេះទេ?</item>

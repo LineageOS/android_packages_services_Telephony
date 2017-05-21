@@ -77,8 +77,10 @@ public class AppActiveStreams {
 
         if (entry != null) {
             try {
-                entry.setState(StreamingService.STATE_STOPPED);
-                entry.getCallback().streamStateChanged(StreamingService.STATE_STOPPED);
+                if (entry.getState() != StreamingService.STATE_STOPPED) {
+                    entry.setState(StreamingService.STATE_STOPPED);
+                    entry.getCallback().streamStateChanged(StreamingService.STATE_STOPPED);
+                }
             } catch (RemoteException e) {
                 dispose(serviceId);
             }
