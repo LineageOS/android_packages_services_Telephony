@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa82b9bf_4272b2e6",
+        "filename": "res/values/qtistrings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2017-05-23T16:31:03Z",
+      "side": 1,
+      "message": "Call forwarding settings",
+      "range": {
+        "startLine": 159,
+        "startChar": 31,
+        "endLine": 159,
+        "endChar": 51
+      },
+      "revId": "a22e54241842c8980c4698b1e6b8e3f96b377168",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa82b9bf_e27666d8",
+        "filename": "res/values/qtistrings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2017-05-23T16:31:03Z",
+      "side": 1,
+      "message": "Call forwarding options",
+      "range": {
+        "startLine": 162,
+        "startChar": 39,
+        "endLine": 162,
+        "endChar": 59
+      },
+      "revId": "a22e54241842c8980c4698b1e6b8e3f96b377168",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
