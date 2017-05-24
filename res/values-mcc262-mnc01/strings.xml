@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Status hint label for an incoming call over a wifi network which has not been accepted yet.
          DO NOT TRANSLATE. -->
-    <string name="status_hint_label_incoming_wifi_call">WLAN call from</string>
+    <string name="status_hint_label_incoming_wifi_call">WLAN Call from</string>
     <!-- Status hint label for a call being made over a wifi network. DO NOT TRANSLATE. -->
-    <string name="status_hint_label_wifi_call">WLAN call</string>
+    <string name="status_hint_label_wifi_call">WLAN Call</string>
 </resources>
