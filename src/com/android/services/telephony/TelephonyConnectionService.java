@@ -328,8 +328,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
         // Convert into emergency number if necessary
         // This is required in some regions (e.g. Taiwan).
-        if (!PhoneNumberUtils.isLocalEmergencyNumber(this, number) &&
-                PhoneNumberUtils.isConvertToEmergencyNumberEnabled()) {
+        if (!PhoneNumberUtils.isLocalEmergencyNumber(this, number)) {
             final Phone phone = getPhoneForAccount(request.getAccountHandle(), false);
             // We only do the conversion if the phone is not in service. The un-converted
             // emergency numbers will go to the correct destination when the phone is in-service,
@@ -337,7 +336,7 @@ public class TelephonyConnectionService extends ConnectionService {
             // service.
             if (phone == null || phone.getServiceState().getState()
                     != ServiceState.STATE_IN_SERVICE) {
-                String convertedNumber = PhoneNumberUtils.convertToEmergencyNumber(number);
+                String convertedNumber = PhoneNumberUtils.convertToEmergencyNumber(this, number);
                 if (!TextUtils.equals(convertedNumber, number)) {
                     Log.i(this, "onCreateOutgoingConnection, converted to emergency number");
                     number = convertedNumber;
