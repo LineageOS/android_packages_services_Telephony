@@ -20,6 +20,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
         android-support-v7-preference \
         android-support-v7-recyclerview \
         android-support-v14-preference \
+        colorextraction \
         guava \
         volley
 
