@@ -302,7 +302,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
                 mVoicemailVisualVoicemail.setOnPreferenceChangeListener(this);
                 mVoicemailVisualVoicemail.setChecked(
                         VisualVoicemailSettingsUtil.isEnabled(this, mPhoneAccountHandle));
-                if (!isVisualVoicemailActivated()) {
+                if (!isVisualVoicemailActivated() && mVoicemailChangePinPreference != null) {
                     prefSet.removePreference(mVoicemailChangePinPreference);
                 }
             } else {
