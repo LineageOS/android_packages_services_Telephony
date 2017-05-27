@@ -302,9 +302,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
                 mVoicemailVisualVoicemail.setOnPreferenceChangeListener(this);
                 mVoicemailVisualVoicemail.setChecked(
                         VisualVoicemailSettingsUtil.isEnabled(this, mPhoneAccountHandle));
-                if (!isVisualVoicemailActivated()) {
-                    prefSet.removePreference(mVoicemailChangePinPreference);
-                }
+                mVoicemailChangePinPreference.setEnabled(isVisualVoicemailActivated());
             } else {
                 prefSet.removePreference(mVoicemailVisualVoicemail);
                 prefSet.removePreference(mVoicemailChangePinPreference);
@@ -434,11 +432,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
             VisualVoicemailSettingsUtil
                     .setEnabled(mPhone.getContext(), mPhoneAccountHandle, isEnabled);
             PreferenceScreen prefSet = getPreferenceScreen();
-            if (isVisualVoicemailActivated()) {
-                prefSet.addPreference(mVoicemailChangePinPreference);
-            } else {
-                prefSet.removePreference(mVoicemailChangePinPreference);
-            }
+            mVoicemailChangePinPreference.setEnabled(isVisualVoicemailActivated());
         }
 
         // Always let the preference setting proceed.
