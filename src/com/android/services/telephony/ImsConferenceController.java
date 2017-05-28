@@ -16,6 +16,7 @@
 
 package com.android.services.telephony;
 
+import com.android.ims.ImsReasonInfo;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.phone.PhoneUtils;
@@ -382,7 +383,9 @@ public class ImsConferenceController {
         // disconnect tone is not played.
         connection.removeConnectionListener(mConnectionListener);
         connection.clearOriginalConnection();
-        connection.setDisconnected(new DisconnectCause(DisconnectCause.OTHER));
+        connection.setDisconnected(new DisconnectCause(DisconnectCause.OTHER,
+                android.telephony.DisconnectCause.toString(
+                        android.telephony.DisconnectCause.IMS_MERGED_SUCCESSFULLY)));
         connection.destroy();
         mImsConferences.add(conference);
     }
