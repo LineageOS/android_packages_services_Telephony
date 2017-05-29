@@ -131,17 +131,6 @@ public class ImsConference extends Conference {
         }
 
         /**
-         * Handles destruction of the host connection; once the host connection has been
-         * destroyed, cleans up the conference participant connection.
-         *
-         * @param connection The host connection.
-         */
-        @Override
-        public void onDestroyed(android.telecom.Connection connection) {
-            disconnectConferenceParticipants();
-        }
-
-        /**
          * Handles changes to conference participant data as reported by the conference host
          * connection.
          *
@@ -415,6 +404,8 @@ public class ImsConference extends Conference {
         if (mConferenceHost == null) {
             return;
         }
+
+        disconnectConferenceParticipants();
 
         Call call = mConferenceHost.getCall();
         if (call != null) {
@@ -743,8 +734,9 @@ public class ImsConference extends Conference {
             mConferenceParticipantConnections.put(new Pair<>(participant.getHandle(),
                     participant.getEndpoint()), connection);
         }
+
         mTelephonyConnectionService.addExistingConnection(mConferenceHostPhoneAccountHandle,
-                connection);
+                connection, this);
         addConnection(connection);
     }
 

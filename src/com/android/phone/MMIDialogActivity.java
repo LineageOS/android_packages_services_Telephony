@@ -68,6 +68,7 @@ public class MMIDialogActivity extends Activity {
                     }
                 }
         };
+        Log.d(TAG, "onCreate; registering for mmi complete.");
         mCM.registerForMmiComplete(mHandler, PhoneGlobals.MMI_COMPLETE, null);
         showMMIDialog();
     }
@@ -91,8 +92,10 @@ public class MMIDialogActivity extends Activity {
         if (codes.size() > 0) {
             final MmiCode mmiCode = codes.get(0);
             final Message message = Message.obtain(mHandler, PhoneGlobals.MMI_CANCEL);
+            Log.d(TAG, "showMMIDialog: mmiCode = " + mmiCode);
             mMMIDialog = PhoneUtils.displayMMIInitiate(this, mmiCode, message, mMMIDialog);
         } else {
+            Log.d(TAG, "showMMIDialog: no pending MMIs; finishing");
             finish();
         }
     }
@@ -104,6 +107,7 @@ public class MMIDialogActivity extends Activity {
         // Check the code to see if the request is ready to
         // finish, this includes any MMI state that is not
         // PENDING.
+        Log.d(TAG, "onMMIComplete: mmi=" + mmiCode);
 
         // if phone is a CDMA phone display feature code completed message
         int phoneType = mPhone.getPhoneType();
@@ -111,8 +115,10 @@ public class MMIDialogActivity extends Activity {
             PhoneUtils.displayMMIComplete(mPhone, this, mmiCode, null, null);
         } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
             if (mmiCode.getState() != MmiCode.State.PENDING) {
-                Log.d(TAG, "Got MMI_COMPLETE, finishing dialog activity...");
+                Log.d(TAG, "onMMIComplete: Got MMI_COMPLETE, finishing dialog activity...");
                 dismissDialogsAndFinish();
+            } else {
+                Log.d(TAG, "onMMIComplete: still pending.");
             }
         }
     }
@@ -137,7 +143,7 @@ public class MMIDialogActivity extends Activity {
         // the in-call screen, since we'll be visible in a
         // partially-constructed state as soon as the "MMI Started" dialog
         // gets dismissed. So let's forcibly bail out right now.
-        Log.d(TAG, "onMMICancel: finishing InCallScreen...");
+        Log.d(TAG, "onMMICancel: finishing MMI dialog...");
         dismissDialogsAndFinish();
     }
 
@@ -150,6 +156,7 @@ public class MMIDialogActivity extends Activity {
             mCM.unregisterForMmiComplete(mHandler);
             mHandler = null;
         }
+        Log.v(TAG, "dismissDialogsAndFinish");
         finish();
     }
 }
