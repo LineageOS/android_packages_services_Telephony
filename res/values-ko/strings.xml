@@ -171,7 +171,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"네트워크 운영자 선택"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"사용 가능한 모든 네트워크 검색"</string>
     <string name="select_automatically" msgid="5628402124471810174">"자동으로 선택"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"기본 설정 네트워크를 자동으로 선택"</string>
     <string name="register_automatically" msgid="6017849844573519637">"자동 등록..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"기본 네트워크 유형"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"네트워크 작동 모드 변경"</string>

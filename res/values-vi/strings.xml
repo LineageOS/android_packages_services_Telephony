@@ -171,7 +171,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Chọn nhà cung cấp dịch vụ mạng"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Tìm kiếm tất cả mạng khả dụng"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Tự động chọn"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Tự động chọn mạng ưa thích"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Đăng ký tự động..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Loại mạng ưa thích"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Thay đổi chế độ hoạt động của mạng"</string>

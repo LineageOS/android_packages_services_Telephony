@@ -171,7 +171,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"انتخاب یک اپراتور شبکه"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"جستجوی همه شبکه‌های موجود"</string>
     <string name="select_automatically" msgid="5628402124471810174">"انتخاب به‌طور خودکار"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"به صورت خودکار شبکه برگزیده را انتخاب کنید"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ثبت خودکار..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"نوع شبکه برگزیده"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"تغییر حالت عملکرد شبکه"</string>
