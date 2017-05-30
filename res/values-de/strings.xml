@@ -172,7 +172,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Mobilfunkanbieter auswählen"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Nach allen verfügbaren Netzwerken suchen"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Automatisch auswählen"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Bevorzugtes Netzwerk automatisch auswählen"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatische Registrierung..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Bevorzugter Netzwerktyp"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Netzwerkbetriebsmodus ändern"</string>

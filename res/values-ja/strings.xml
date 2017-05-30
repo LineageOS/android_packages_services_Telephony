@@ -172,7 +172,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"通信事業者を選択する"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"利用可能なすべてのネットワークを検索する"</string>
     <string name="select_automatically" msgid="5628402124471810174">"自動的に選択"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"最適なネットワークを自動的に選択する"</string>
     <string name="register_automatically" msgid="6017849844573519637">"自動登録..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"優先ネットワークタイプ"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ネットワーク動作モードの変更"</string>

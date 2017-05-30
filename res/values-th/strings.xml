@@ -172,7 +172,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"เลือกผู้ให้บริการเครือข่าย"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"ค้นหาเครือข่ายทั้งหมดที่ใช้ได้"</string>
     <string name="select_automatically" msgid="5628402124471810174">"เลือกโดยอัตโนมัติ"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"เลือกเครือข่ายที่ต้องการอัตโนมัติ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"การลงทะเบียนอัตโนมัติ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ประเภทเครือข่ายที่ต้องการ"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"เปลี่ยนโหมดปฏิบัติการของเครือข่าย"</string>

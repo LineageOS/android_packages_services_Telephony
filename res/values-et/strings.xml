@@ -172,7 +172,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Võrguoperaatori valimine"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Otsi kõiki saadaolevaid võrke"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Vali automaatselt"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Vali automaatselt eelistatud võrk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automaatne registreerimine ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Eelistatud võrgutüüp"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Muuda võrgu töörežiimi"</string>

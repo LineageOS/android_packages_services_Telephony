@@ -172,7 +172,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"நெட்வொர்க் ஆபரேட்டரைத் தேர்வுசெய்யவும்"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"கிடைக்கும் எல்லா நெட்வொர்க்குகளையும் தேடுக"</string>
     <string name="select_automatically" msgid="5628402124471810174">"தானாகவே தேர்வுசெய்"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"தானாகவே தேர்வுசெய்த நெட்வொர்க்கைத் தேர்வுசெய்க"</string>
     <string name="register_automatically" msgid="6017849844573519637">"தானியங்கு பதிவு…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"தேர்ந்தெடுத்த நெட்வொர்க் வகை"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"நெட்வொர்க் செயல்பாட்டிற்கான பயன்முறையை மாற்று"</string>

@@ -172,7 +172,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Choose a network operator"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Search for all available networks"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Choose automatically"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Automatically choose preferred network"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatic registration..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Preferred network type"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Change the network operating mode"</string>

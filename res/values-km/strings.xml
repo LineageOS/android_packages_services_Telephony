@@ -172,7 +172,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"ជ្រើស​ប្រតិបត្តិ​ករ​​បណ្ដាញ"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"ស្វែងរក​បណ្ដាញ​ដែល​មាន​ទាំង​អស់"</string>
     <string name="select_automatically" msgid="5628402124471810174">"ជ្រើស​ដោយ​ស្វ័យ​ប្រវត្តិ"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"ជ្រើស​បណ្ដាញ​ដែល​ចូលចិត្ត​ដោយ​ស្វ័យប្រវត្តិ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ការ​ចុះ​ឈ្មោះ​ដោយ​ស្វ័យ​ប្រវត្តិ ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ប្រភេទ​បណ្ដាញ​​ដែល​​ពេញចិត្ត"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ប្ដូរ​របៀប​ប្រតិបត្តិការ​បណ្ដាញ"</string>
