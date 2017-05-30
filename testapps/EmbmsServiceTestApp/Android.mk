@@ -15,5 +15,6 @@ LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
 # Change the following to "debug" to build the EmbmsTestService into the userdebug build.
 LOCAL_MODULE_TAGS := optional
+#LOCAL_MODULE_TAGS := debug
 
 include $(BUILD_PACKAGE)

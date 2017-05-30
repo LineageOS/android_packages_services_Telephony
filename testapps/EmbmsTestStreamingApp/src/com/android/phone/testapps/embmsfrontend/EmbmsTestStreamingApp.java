@@ -25,6 +25,7 @@ import android.os.HandlerThread;
 import android.telephony.MbmsStreamingManager;
 import android.telephony.mbms.MbmsException;
 import android.telephony.mbms.MbmsStreamingManagerCallback;
+import android.telephony.mbms.StreamingService;
 import android.telephony.mbms.StreamingServiceInfo;
 import android.view.View;
 import android.view.ViewGroup;
@@ -295,9 +296,28 @@ public class EmbmsTestStreamingApp extends Activity {
         });
     }
 
+    private void setStreamMethodDisplay(int method) {
+        runOnUiThread(() -> {
+            String methodString = "UNKNOWN METHOD";
+            switch (method) {
+                case StreamingService.BROADCAST_METHOD: {
+                    methodString = "BROADCAST";
+                    break;
+                }
+                case StreamingService.UNICAST_METHOD: {
+                    methodString = "UNICAST";
+                    break;
+                }
+            }
+            TextView methodField = (TextView) findViewById(R.id.curr_streaming_method);
+            methodField.setText(methodString);
+        });
+    }
+
     private void clearStateAndUriDisplay() {
         setUriDisplay(Uri.EMPTY);
         setStreamStateDisplay("");
+        setStreamMethodDisplay(StreamingService.UNICAST_METHOD);
     }
 
     public void updateUri() {
@@ -310,5 +330,15 @@ public class EmbmsTestStreamingApp extends Activity {
         String stateString = getSelectedTrackedStream() == null ?
             "" : String.valueOf(getSelectedTrackedStream().getState());
         setStreamStateDisplay(stateString);
+    }
+
+    /** implementation of updateMethod callback */
+    public void updateMethod() {
+        StreamingServiceTracker serviceTracker = getSelectedTrackedStream();
+        if (serviceTracker == null) {
+            setStreamMethodDisplay(StreamingService.UNICAST_METHOD);
+        } else {
+            setStreamMethodDisplay(serviceTracker.getMethod());
+        }
     }
 }
