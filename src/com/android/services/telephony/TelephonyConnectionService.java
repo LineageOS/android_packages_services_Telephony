@@ -1251,6 +1251,10 @@ public class TelephonyConnectionService extends ConnectionService {
     }
 
     private void maybeSendInternationalCallEvent(TelephonyConnection telephonyConnection) {
+        if (telephonyConnection == null || telephonyConnection.getPhone() == null ||
+                telephonyConnection.getPhone().getDefaultPhone() == null) {
+            return;
+        }
         Phone phone = telephonyConnection.getPhone().getDefaultPhone();
         if (phone instanceof GsmCdmaPhone) {
             GsmCdmaPhone gsmCdmaPhone = (GsmCdmaPhone) phone;
