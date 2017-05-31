@@ -81,6 +81,15 @@ public class NotificationMgr {
     private static final String MWI_SHOULD_CHECK_VVM_CONFIGURATION_KEY_PREFIX =
             "mwi_should_check_vvm_configuration_state_";
 
+    /**
+     * Boolean value representing whether the {@link
+     * TelephonyManager#ACTION_SHOW_VOICEMAIL_NOTIFICATION} is new or a refresh of an existing
+     * notification.
+     *
+     * TODO(b/62202833): make public
+     */
+    private static final String EXTRA_IS_REFRESH = "is_refresh";
+
     // notification types
     static final int MMI_NOTIFICATION = 1;
     static final int NETWORK_SELECTION_NOTIFICATION = 2;
@@ -196,7 +205,7 @@ public class NotificationMgr {
         if (mMwiVisible.containsKey(subId)) {
             boolean mwiVisible = mMwiVisible.get(subId);
             if (mwiVisible) {
-                updateMwi(subId, mwiVisible, false /* enableNotificationSound */);
+                updateMwi(subId, mwiVisible, true /* isRefresh */);
             }
         }
     }
@@ -228,7 +237,7 @@ public class NotificationMgr {
      * @param visible true if there are messages waiting
      */
     /* package */ void updateMwi(int subId, boolean visible) {
-        updateMwi(subId, visible, true /* enableNotificationSound */);
+        updateMwi(subId, visible, false /* isRefresh */);
     }
 
     /**
@@ -236,9 +245,10 @@ public class NotificationMgr {
      *
      * @param subId the subId to update.
      * @param visible true if there are messages waiting
-     * @param enableNotificationSound {@code true} if the notification sound should be played.
+     * @param isRefresh {@code true} if the notification is a refresh and the user should not be
+     * notified again.
      */
-    void updateMwi(int subId, boolean visible, boolean enableNotificationSound) {
+    void updateMwi(int subId, boolean visible, boolean isRefresh) {
         if (!PhoneGlobals.sVoiceCapable) {
             // Do not show the message waiting indicator on devices which are not voice capable.
             // These events *should* be blocked at the telephony layer for such devices.
@@ -345,7 +355,8 @@ public class NotificationMgr {
                     .setColor(res.getColor(R.color.dialer_theme_color))
                     .setOngoing(carrierConfig.getBoolean(
                             CarrierConfigManager.KEY_VOICEMAIL_NOTIFICATION_PERSISTENT_BOOL))
-                    .setChannel(NotificationChannelController.CHANNEL_ID_VOICE_MAIL);
+                    .setChannel(NotificationChannelController.CHANNEL_ID_VOICE_MAIL)
+                    .setOnlyAlertOnce(isRefresh);
 
             final Notification notification = builder.build();
             List<UserInfo> users = mUserManager.getUsers(true);
@@ -356,7 +367,7 @@ public class NotificationMgr {
                         UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
                         && !user.isManagedProfile()) {
                     if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, vmCount, vmNumber,
-                            pendingIntent, isSettingsIntent, userHandle)) {
+                            pendingIntent, isSettingsIntent, userHandle, isRefresh)) {
                         mNotificationManager.notifyAsUser(
                                 Integer.toString(subId) /* tag */,
                                 VOICEMAIL_NOTIFICATION,
@@ -374,7 +385,7 @@ public class NotificationMgr {
                         UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
                         && !user.isManagedProfile()) {
                     if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, 0, null, null,
-                            false, userHandle)) {
+                            false, userHandle, isRefresh)) {
                         mNotificationManager.cancelAsUser(
                                 Integer.toString(subId) /* tag */,
                                 VOICEMAIL_NOTIFICATION,
@@ -403,7 +414,7 @@ public class NotificationMgr {
      */
     private boolean maybeSendVoicemailNotificationUsingDefaultDialer(Phone phone, Integer count,
             String number, PendingIntent pendingIntent, boolean isSettingsIntent,
-            UserHandle userHandle) {
+            UserHandle userHandle, boolean isRefresh) {
 
         if (shouldManageNotificationThroughDefaultDialer(userHandle)) {
             Intent intent = getShowVoicemailIntentForDefaultDialer(userHandle);
@@ -411,6 +422,7 @@ public class NotificationMgr {
             intent.setAction(TelephonyManager.ACTION_SHOW_VOICEMAIL_NOTIFICATION);
             intent.putExtra(TelephonyManager.EXTRA_PHONE_ACCOUNT_HANDLE,
                     PhoneUtils.makePstnPhoneAccountHandle(phone));
+            intent.putExtra(EXTRA_IS_REFRESH, isRefresh);
             if (count != null) {
                 intent.putExtra(TelephonyManager.EXTRA_NOTIFICATION_COUNT, count);
             }
