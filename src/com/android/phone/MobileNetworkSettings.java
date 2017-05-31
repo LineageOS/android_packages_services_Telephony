@@ -18,11 +18,12 @@ package com.android.phone;
 
 import android.annotation.Nullable;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.Activity;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -33,7 +34,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PersistableBundle;
-import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.ListPreference;
@@ -41,6 +41,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.provider.Settings;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.PhoneStateListener;
@@ -60,7 +61,6 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
-import com.android.internal.telephony.TelephonyProperties;
 import com.android.settingslib.RestrictedLockUtils;
 
 import java.util.ArrayList;
@@ -575,6 +575,25 @@ public class MobileNetworkSettings extends Activity  {
             return mActiveSubInfos.size() > 0;
         }
 
+        /**
+         * Whether to show the entry point to eUICC settings.
+         *
+         * <p>We show the entry point on any device which supports eUICC as long as either the eUICC
+         * was ever provisioned (that is, at least one profile was ever downloaded onto it), or if
+         * the user has enabled development mode.
+         */
+        private boolean showEuiccSettings() {
+            EuiccManager euiccManager =
+                    (EuiccManager) getActivity().getSystemService(Context.EUICC_SERVICE);
+            if (!euiccManager.isEnabled()) {
+                return false;
+            }
+            ContentResolver cr = getActivity().getContentResolver();
+            return Settings.Global.getInt(cr, Settings.Global.EUICC_PROVISIONED, 0) != 0
+                    || Settings.Global.getInt(
+                            cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+        }
+
         private void updateBody() {
             Context context = getActivity().getApplicationContext();
             PreferenceScreen prefSet = getPreferenceScreen();
@@ -591,9 +610,7 @@ public class MobileNetworkSettings extends Activity  {
                 prefSet.addPreference(mButtonPreferredNetworkMode);
                 prefSet.addPreference(mButtonEnabledNetworks);
                 prefSet.addPreference(mButton4glte);
-                EuiccManager euiccManager =
-                        (EuiccManager) getActivity().getSystemService(Context.EUICC_SERVICE);
-                if (euiccManager.isEnabled()) {
+                if (showEuiccSettings()) {
                     prefSet.addPreference(mEuiccSettingsPref);
                     TelephonyManager tm =
                         (TelephonyManager) getActivity()

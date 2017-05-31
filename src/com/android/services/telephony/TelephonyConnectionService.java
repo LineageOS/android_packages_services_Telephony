@@ -98,6 +98,12 @@ public class TelephonyConnectionService extends ConnectionService {
                     .addExistingConnection(phoneAccountHandle, connection);
         }
         @Override
+        public void addExistingConnection(PhoneAccountHandle phoneAccountHandle,
+                Connection connection, Conference conference) {
+            TelephonyConnectionService.this
+                    .addExistingConnection(phoneAccountHandle, connection, conference);
+        }
+        @Override
         public void addConnectionToConferenceController(TelephonyConnection connection) {
             TelephonyConnectionService.this.addConnectionToConferenceController(connection);
         }
@@ -328,8 +334,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
         // Convert into emergency number if necessary
         // This is required in some regions (e.g. Taiwan).
-        if (!PhoneNumberUtils.isLocalEmergencyNumber(this, number) &&
-                PhoneNumberUtils.isConvertToEmergencyNumberEnabled()) {
+        if (!PhoneNumberUtils.isLocalEmergencyNumber(this, number)) {
             final Phone phone = getPhoneForAccount(request.getAccountHandle(), false);
             // We only do the conversion if the phone is not in service. The un-converted
             // emergency numbers will go to the correct destination when the phone is in-service,
@@ -337,7 +342,7 @@ public class TelephonyConnectionService extends ConnectionService {
             // service.
             if (phone == null || phone.getServiceState().getState()
                     != ServiceState.STATE_IN_SERVICE) {
-                String convertedNumber = PhoneNumberUtils.convertToEmergencyNumber(number);
+                String convertedNumber = PhoneNumberUtils.convertToEmergencyNumber(this, number);
                 if (!TextUtils.equals(convertedNumber, number)) {
                     Log.i(this, "onCreateOutgoingConnection, converted to emergency number");
                     number = convertedNumber;
@@ -653,6 +658,21 @@ public class TelephonyConnectionService extends ConnectionService {
         }
     }
 
+    /**
+     * Called by the {@link ConnectionService} when a newly created {@link Connection} has been
+     * added to the {@link ConnectionService} and sent to Telecom.  Here it is safe to send
+     * connection events.
+     *
+     * @param connection the {@link Connection}.
+     */
+    @Override
+    public void onCreateConnectionComplete(Connection connection) {
+        if (connection instanceof TelephonyConnection) {
+            TelephonyConnection telephonyConnection = (TelephonyConnection) connection;
+            maybeSendInternationalCallEvent(telephonyConnection);
+        }
+    }
+
     @Override
     public void triggerConferenceRecalculate() {
         if (mTelephonyConferenceController.shouldRecalculate()) {
@@ -893,18 +913,6 @@ public class TelephonyConnectionService extends ConnectionService {
         try {
             if (phone != null) {
                 originalConnection = phone.dial(number, null, videoState, extras);
-
-                if (phone instanceof GsmCdmaPhone) {
-                    GsmCdmaPhone gsmCdmaPhone = (GsmCdmaPhone) phone;
-                    if (gsmCdmaPhone.isNotificationOfWfcCallRequired(number)) {
-                        // Send connection event to InCall UI to inform the user of the fact they
-                        // are potentially placing an international call on WFC.
-                        Log.i(this, "placeOutgoingConnection - sending international call on WFC " +
-                                "confirmation event");
-                        connection.sendConnectionEvent(
-                                TelephonyManager.EVENT_NOTIFY_INTERNATIONAL_CALL_ON_WFC, null);
-                    }
-                }
             }
         } catch (CallStateException e) {
             Log.e(this, e, "placeOutgoingConnection, phone.dial exception: " + e);
@@ -1239,5 +1247,25 @@ public class TelephonyConnectionService extends ConnectionService {
                 context.getContentResolver(),
                 android.provider.Settings.Secure.PREFERRED_TTY_MODE,
                 TelecomManager.TTY_MODE_OFF) != TelecomManager.TTY_MODE_OFF);
+    }
+
+    private void maybeSendInternationalCallEvent(TelephonyConnection telephonyConnection) {
+        if (telephonyConnection == null || telephonyConnection.getPhone() == null ||
+                telephonyConnection.getPhone().getDefaultPhone() == null) {
+            return;
+        }
+        Phone phone = telephonyConnection.getPhone().getDefaultPhone();
+        if (phone instanceof GsmCdmaPhone) {
+            GsmCdmaPhone gsmCdmaPhone = (GsmCdmaPhone) phone;
+            if (gsmCdmaPhone.isNotificationOfWfcCallRequired(
+                    telephonyConnection.getOriginalConnection().getOrigDialString())) {
+                // Send connection event to InCall UI to inform the user of the fact they
+                // are potentially placing an international call on WFC.
+                Log.i(this, "placeOutgoingConnection - sending international call on WFC " +
+                        "confirmation event");
+                telephonyConnection.sendConnectionEvent(
+                        TelephonyManager.EVENT_NOTIFY_INTERNATIONAL_CALL_ON_WFC, null);
+            }
+        }
     }
 }
