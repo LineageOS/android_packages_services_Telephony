@@ -33,7 +33,7 @@
 <resources>
   <!-- IMS settings related strings -->
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">IMS innstillinger</string>
+  <string name="ims_settings">IMS-innstillinger</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">SIM nettverk delsett opplåsnings PIN</string>
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
@@ -111,11 +111,11 @@
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">PUK opplåsning mislyktes.</string>
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">PUK opplåsning mislyktes.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">SIMkort til undernettverk låst opp.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">SIM-kort til undernettverk låst opp.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">SIMkort opplåst.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">SIM-kort opplåst.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Simkort arbeid opplåst.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM-kort arbeid opplåst.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Sim opplåsning vellykket.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">Dataroaming er ikke tilgjengelig</string>
   <string name="srvcc_video_message">"Videoanrop har blitt nedgradert til 2G/3G taleanrop, fordi 4G nettverk ikke er tilgjengelig."</string>
   <string name="srvcc_message">"4G taleanrop har blitt nedgradert til 2G/3G taleanrop, fordi 4G nettverk ikke er tilgjengelig."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Samtaleviderekobling innstillinger</string>
+  <string name="labelCFVoice">Stemme</string>
+  <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Samtaleviderekobling innstillinger</string>
 </resources>

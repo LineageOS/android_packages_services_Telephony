@@ -152,4 +152,5 @@
   <string name="no_mobile_data_roaming">Roaming podataka nije dostupan</string>
   <string name="srvcc_video_message">"Video poziv poziv vraćen na 2G/3G video poziv, jer 4G mreža nije dostupna."</string>
   <string name="srvcc_message">"4G glasovni poziv vraćen na 2G/3G glasovni poziv, jer 4G mreža nije dostupna."</string>
+  <!-- call forwarding settings related strings -->
 </resources>

@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">Не са достъпни мобилни данни в роуминг</string>
   <string name="srvcc_video_message">"Видео повикване е понижено до 2G / 3G гласово повикване, защото 4G мрежа не е налична."</string>
   <string name="srvcc_message">"4G гласово повикване е понижено до 2G / 3G гласово повикване, защото 4G мрежа не е налична."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Настройки за препращане на повикване</string>
+  <string name="labelCFVoice">Глас</string>
+  <string name="labelCFVideo">Видео</string>
+  <string name="call_forward_option">Опции за препращане на повикване</string>
 </resources>

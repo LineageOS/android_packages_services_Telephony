@@ -152,4 +152,5 @@
   <string name="no_mobile_data_roaming">Adatroaming nem érhető el</string>
   <string name="srvcc_video_message">"Videohívást visszaminősítettük 2G/3G hanghívássá, mert a 4G hálózat nem érhető el."</string>
   <string name="srvcc_message">"4G hanghívást visszaminősítettük 2G/3G hanghívássá, mert a 4G hálózat nem érhető el."</string>
+  <!-- call forwarding settings related strings -->
 </resources>

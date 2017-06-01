@@ -142,4 +142,5 @@
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
   <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
+  <!-- call forwarding settings related strings -->
 </resources>

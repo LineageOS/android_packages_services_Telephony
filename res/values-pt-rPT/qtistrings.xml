@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">O roaming de dados não está disponível</string>
   <string name="srvcc_video_message">"A vídeo-chamada foi alterada para uma chamada de voz em 2G/3G devido à indisponibilidade da rede 4G."</string>
   <string name="srvcc_message">"A chamada de voz em 4G foi alterada para uma chamada de voz em 2G/3G devido à indisponibilidade da rede 4G."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Definições de encaminhamento de chamadas</string>
+  <string name="labelCFVoice">Voz</string>
+  <string name="labelCFVideo">Vídeo</string>
+  <string name="call_forward_option">Opções de encaminhamento de chamadas</string>
 </resources>

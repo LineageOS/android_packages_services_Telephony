@@ -103,4 +103,5 @@
   <string name="no_mobile_data_roaming">Los datos n\'itinerancia nun tán diponibles</string>
   <string name="srvcc_video_message">"Baxóse la calidá de la llamada a 2G/3G porque la rede 4G nun ta disponible."</string>
   <string name="srvcc_message">"Baxóse la calidá de la llamada 4G a 2G/3G porque la rede 4G nun ta disponible."</string>
+  <!-- call forwarding settings related strings -->
 </resources>

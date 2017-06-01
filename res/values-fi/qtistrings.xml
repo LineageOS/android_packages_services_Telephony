@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">Data roaming ei ole käytettävissä</string>
   <string name="srvcc_video_message">"Videopuhelu on alennettu 2G / 3G äänipuheluksi, koska 4G-verkko ei ole käytettävissä."</string>
   <string name="srvcc_message">"4G äänipuhelu on alennettu 2G / 3G äänipuheluksi, koska 4G-verkko ei ole käytettävissä."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Soitonsiirron asetukset</string>
+  <string name="labelCFVoice">Ääni</string>
+  <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Soitonsiirron valinnat</string>
 </resources>

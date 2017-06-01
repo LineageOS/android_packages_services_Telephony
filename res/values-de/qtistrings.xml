@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">Daten-Roaming ist nicht verfügbar</string>
   <string name="srvcc_video_message">"Videoanruf wurde in ein 2G/3G-Sprachanruf übergestellt, da kein 4G-Netz verfügbar ist."</string>
   <string name="srvcc_message">"4G-Anruf wurde in ein 2G/3G-Anruf übergestellt, da kein 4G-Netz verfügbar ist."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Einstellungen für die Anrufweiterleitung</string>
+  <string name="labelCFVoice">Sprache</string>
+  <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Optionen für die Anrufweiterleitung</string>
 </resources>

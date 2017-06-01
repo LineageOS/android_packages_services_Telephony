@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">數據漫遊不可用</string>
   <string name="srvcc_video_message">"視訊通話已經降為 2G/3G 語音通話，因為 4G 網路不可用。"</string>
   <string name="srvcc_message">"4G 語音通話已經降為 2G/3G 語音通話，因為 4G 網路不可用。"</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">來電轉接設定</string>
+  <string name="labelCFVoice">語音</string>
+  <string name="labelCFVideo">視訊</string>
+  <string name="call_forward_option">來電轉接選項</string>
 </resources>

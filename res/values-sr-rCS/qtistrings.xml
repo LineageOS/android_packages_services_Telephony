@@ -78,4 +78,5 @@
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
   <!-- Success message displayed on PUK Depersonalization panel -->
   <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
+  <!-- call forwarding settings related strings -->
 </resources>

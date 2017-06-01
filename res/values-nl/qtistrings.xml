@@ -152,4 +152,5 @@
   <string name="no_mobile_data_roaming">Gegevensroaming niet beschikbaar</string>
   <string name="srvcc_video_message">"Video-oproep is gedegradeerd naar 2G/3G-gesprek, omdat het 4G-netwerk niet beschikbaar is."</string>
   <string name="srvcc_message">"4G-spraakoproep is gedegradeerd naar 2G/3G-gesprek, omdat het 4G-netwerk niet beschikbaar is."</string>
+  <!-- call forwarding settings related strings -->
 </resources>

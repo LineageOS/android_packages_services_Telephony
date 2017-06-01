@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">Dataroaming er ikke tilgængelig</string>
   <string name="srvcc_video_message">"Videoopkald nedgraderes til 2G/3G-taleopkald, fordi 4G-netværk ikke er tilgængelig."</string>
   <string name="srvcc_message">"4G-videoopkald nedgraderes til 2G/3G-taleopkald, fordi 4G-netværk ikke er tilgængelig."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Indstillinger for viderestilling af opkald</string>
+  <string name="labelCFVoice">Stemme</string>
+  <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Indstillinger for viderestilling af opkald</string>
 </resources>

@@ -152,4 +152,5 @@
   <string name="no_mobile_data_roaming">Η περιαγωγή δεδομένων δεν είναι διαθέσιμη</string>
   <string name="srvcc_video_message">"Η βίντεο κλήση έχει υποβαθμιστεί σε 2G/3G φωνητική κλήση, επειδή το δίκτυο 4G δεν είναι διαθέσιμο."</string>
   <string name="srvcc_message">"Η 4G φωνητική κλήση έχει υποβαθμιστεί σε 2G/3G φωνητική κλήση, επειδή το δίκτυο 4G δεν είναι διαθέσιμο."</string>
+  <!-- call forwarding settings related strings -->
 </resources>

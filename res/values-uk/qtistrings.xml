@@ -152,4 +152,5 @@
   <string name="no_mobile_data_roaming">Роумінг даних недоступний</string>
   <string name="srvcc_video_message">"Відеодзвінок був понижений до 2G/3G голосового виклику, оскільки мережі 4G недоступні."</string>
   <string name="srvcc_message">"Голосовий виклик 4G був понижений до 2G/3G голосового виклику, оскільки мережі 4G недоступні."</string>
+  <!-- call forwarding settings related strings -->
 </resources>

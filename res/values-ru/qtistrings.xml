@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">Мобильные данные в роуминге недоступны</string>
   <string name="srvcc_video_message">"Видеовызов был понижен до голосового 2G / 3G вызова, потому что 4G сеть недоступна."</string>
   <string name="srvcc_message">"4G голосовой вызов был понижен до голосового 2G / 3G вызова, потому что 4G сеть недоступна."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Настройки переадресации вызовов</string>
+  <string name="labelCFVoice">Голос</string>
+  <string name="labelCFVideo">Видео</string>
+  <string name="call_forward_option">Параметры переадресации вызовов</string>
 </resources>

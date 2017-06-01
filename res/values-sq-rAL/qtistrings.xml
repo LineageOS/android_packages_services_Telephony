@@ -152,4 +152,5 @@
   <string name="no_mobile_data_roaming">Shërbimi roaming për internet nuk është i disponueshëm</string>
   <string name="srvcc_video_message">"Thirrja me video u kthye në thirrje zanore 2G/3G, pasi rrjeti 4G nuk është i disponueshëm."</string>
   <string name="srvcc_message">"Thirrja 4G u kthye në thirrje 2G/3G, pasi rrjeti 4G nuk është i disponueshëm."</string>
+  <!-- call forwarding settings related strings -->
 </resources>

@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">Itinerancia de datos no disponible</string>
   <string name="srvcc_video_message">"La videollamada fue degradada a llamada de voz 2G/3G, porque la red 4G no está disponible."</string>
   <string name="srvcc_message">"La videollamada en 4G fue degradada a llamada de voz 2G/3G, porque la red 4G no está disponible."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Ajustes del desvío de llamadas</string>
+  <string name="labelCFVoice">Voz</string>
+  <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Opciones del desvío de llamadas</string>
 </resources>

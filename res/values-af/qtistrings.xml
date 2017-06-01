@@ -152,4 +152,5 @@
   <string name="no_mobile_data_roaming">Dataswerwing is nie beskikbaar nie</string>
   <string name="srvcc_video_message">"Video-oproep is na 2G / 3G stem oproep afgegradeer, omdat die 4G netwerk is nie beskikbaar nie."</string>
   <string name="srvcc_message">"4G stemoproep is na 2G / 3G stem oproep afgegradeer, omdat die 4G netwerk is nie beskikbaar nie."</string>
+  <!-- call forwarding settings related strings -->
 </resources>

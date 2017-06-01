@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">Dátový roaming nie je k dispozícii</string>
   <string name="srvcc_video_message">"Videohovor bol zmenený na hlasový 2G/3G kvôli nedostupnosti LTE."</string>
   <string name="srvcc_message">"Hlasový hovor 4G bol zmenený na 2G/3G kvôli nedostupnosti 4G."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Nastavenia presmerovania hovorov</string>
+  <string name="labelCFVoice">Hlas</string>
+  <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Nastavenia presmerovania hovorov</string>
 </resources>

@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">Datele de roaming nu sunt disponibile</string>
   <string name="srvcc_video_message">"Apelul video a fost retrogradat la un apel voce 2G/3G, deoarece rețeaua 4G nu este disponibilă."</string>
   <string name="srvcc_message">"Apelul voce 4G a fost retrogradat la un apel voce 2G/3G, deoarece rețeaua 4G nu este disponibilă."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Setări de redirecționare apel</string>
+  <string name="labelCFVoice">Voce</string>
+  <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Opțiuni de redirecționare apel</string>
 </resources>

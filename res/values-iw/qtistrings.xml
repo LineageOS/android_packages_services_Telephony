@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">נדידת נתונים אינה זמינה</string>
   <string name="srvcc_video_message">"שיחת הוידאו הועברה לשיחה קולית בדור שני/שלישי, היות ואין רשת דור רביעי זמינה."</string>
   <string name="srvcc_message">"השיחה הקולית בדור הרביעי הועברה לשיחה בדור שני/שלישי, היות ואין רשת דור רביעי זמינה."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">הגדרות העברת שיחות</string>
+  <string name="labelCFVoice">קול</string>
+  <string name="labelCFVideo">וידאו</string>
+  <string name="call_forward_option">אפשרויות העברת שיחות</string>
 </resources>

@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">La itinerància de dades no està disponible</string>
   <string name="srvcc_video_message">"La videotrucada ha estat degradada a una trucada de veu 2G/3G, perquè la xarxa 4G no es troba disponible."</string>
   <string name="srvcc_message">"La trucada de veu 4G ha estat degradada a una trucada de veu 2G/3G, perquè la xarxa 4G no es troba disponible."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Configuració de desviament de trucades</string>
+  <string name="labelCFVoice">Veu</string>
+  <string name="labelCFVideo">Vídeo</string>
+  <string name="call_forward_option">Opcions de desviament de trucades</string>
 </resources>

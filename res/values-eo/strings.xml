@@ -530,6 +530,7 @@
          [CHAR LIMIT=30] -->
   <!-- String resource for the font-family to use for the call setting activity's title
          Do not translate. -->
+  <string name="call_settings_title_font_family">sans-serif-light</string>
   <!-- Label for PSTN connection service. -->
   <!-- Label for enabling video calling. -->
   <!-- Message for dialog shown when the user tries to turn on video calling but enhanced 4G LTE
@@ -546,10 +547,15 @@
          [CHAR LIMIT=25] -->
   <!-- Status hint label for a call being made over a wifi network. [CHAR LIMIT=25] -->
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
+  <string name="voicemail_notification_ringtone_key">voicemail_notification_ringtone_key</string>
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
+  <string name="voicemail_notification_vibrate_key">voicemail_notification_vibrate_key</string>
   <!-- DO NOT TRANSLATE. Internal key for a visual voicemail preference. -->
+  <string name="voicemail_visual_voicemail_key">voicemail_visual_voicemail_key</string>
   <!-- DO NOT TRANSLATE. Internal key for a voicemail change pin preference. -->
+  <string name="voicemail_change_pin_key">voicemail_change_pin_key</string>
   <!-- DO NOT TRANSLATE. Internal key for tty mode preference. -->
+  <string name="tty_mode_key">button_tty_mode_key</string>
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
   <string name="wifi_calling_settings_key">button_wifi_calling_settings_key</string>
   <!-- Hint appearing below a selected action on the emergency dialer telling user to tap again to execute the action [CHAR LIMIT=NONE] -->

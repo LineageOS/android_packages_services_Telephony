@@ -152,4 +152,5 @@
   <string name="no_mobile_data_roaming">Itinérance de données indisponible</string>
   <string name="srvcc_video_message">"Appel vidéo transformé en appel vocal 2G/3G car le réseau 4G est indisponible."</string>
   <string name="srvcc_message">"Appel vocal 4G transformé en appel vocal 2G/3G car le réseau 4G est indisponible."</string>
+  <!-- call forwarding settings related strings -->
 </resources>

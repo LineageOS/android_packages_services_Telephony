@@ -152,4 +152,5 @@
   <string name="no_mobile_data_roaming">データローミングが利用できません</string>
   <string name="srvcc_video_message">"4Gネットワークが利用できないため、ビデオ通話は2G/3Gの音声通話にダウングレードされました。"</string>
   <string name="srvcc_message">"4Gネットワークが利用できないため、4Gの音声通話は2G/3Gの音声通話にダウングレードされました。"</string>
+  <!-- call forwarding settings related strings -->
 </resources>

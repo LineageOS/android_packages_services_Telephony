@@ -152,4 +152,9 @@
   <string name="no_mobile_data_roaming">데이터 로밍을 사용할 수 없습니다.</string>
   <string name="srvcc_video_message">"4G 네트워크 사용이 불가능하여 영상 통화에서 2G/3G 음성 통화로 변경되었습니다."</string>
   <string name="srvcc_message">"4G 네트워크 사용이 불가능하여 4G 음성 통화에서 2G/3G 음성 통화로 변경되었습니다."</string>
+  <!-- call forwarding settings related strings -->
+  <string name="labelCFType">착신 전환 설정</string>
+  <string name="labelCFVoice">음성</string>
+  <string name="labelCFVideo">영상</string>
+  <string name="call_forward_option">착신 전환 옵션</string>
 </resources>

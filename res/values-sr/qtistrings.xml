@@ -152,4 +152,5 @@
   <string name="no_mobile_data_roaming">Роминг података није доступан</string>
   <string name="srvcc_video_message">"Видео позив је пребачен на 2G/3G гласовни позив јер 4G мрежа није доступна."</string>
   <string name="srvcc_message">"4G гласовни позив је пребачен на 2G/3G гласовни позив јер 4G мрежа није доступна."</string>
+  <!-- call forwarding settings related strings -->
 </resources>
