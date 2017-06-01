@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.NetworkStats;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Binder;
@@ -58,8 +59,8 @@ import android.telephony.NeighboringCellInfo;
 import android.telephony.NetworkScanRequest;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
-import android.telephony.SmsManager;
 import android.telephony.SignalStrength;
+import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyHistogram;
@@ -3746,27 +3747,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Get aggregated video call data usage from all subscriptions since boot.
-     * @return total data usage in bytes
+     * Get aggregated video call data usage since boot.
+     *
+     * @param perUidStats True if requesting data usage per uid, otherwise overall usage.
+     * @return Snapshot of video call data usage
      * {@hide}
      */
     @Override
-    public long getVtDataUsage() {
+    public NetworkStats getVtDataUsage(int subId, boolean perUidStats) {
         mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_NETWORK_USAGE_HISTORY,
                 null);
 
-        // NetworkStatsService keeps tracking the active network interface and identity. It will
-        // record the delta with the corresponding network identity. What we need to do here is
-        // returning total video call data usage from all subscriptions since boot.
-
-        // TODO: Add sub id support in the future. We'll need it when we support DSDA and
-        // simultaneous VT calls.
-        final Phone[] phones = PhoneFactory.getPhones();
-        long total = 0;
-        for (Phone phone : phones) {
-            total += phone.getVtDataUsage();
+        // NetworkStatsService keeps tracking the active network interface and identity. It
+        // records the delta with the corresponding network identity. We just return the total video
+        // call data usage snapshot since boot.
+        Phone phone = getPhone(subId);
+        if (phone != null) {
+            return phone.getVtDataUsage(perUidStats);
         }
-        return total;
+        return null;
     }
 
     /**
