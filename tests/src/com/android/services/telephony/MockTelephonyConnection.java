@@ -45,7 +45,7 @@ public class MockTelephonyConnection extends TelephonyConnection {
     }
 
     public MockTelephonyConnection() {
-        super(null, null);
+        super(null, null, false);
         MockitoAnnotations.initMocks(this);
 
         // Set up mMockRadioConnection and mMockPhone to contain an active call

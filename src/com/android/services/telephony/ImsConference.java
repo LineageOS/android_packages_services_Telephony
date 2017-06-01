@@ -879,7 +879,8 @@ public class ImsConference extends Conference {
 
             if (mConferenceHost.getPhone().getPhoneType() == PhoneConstants.PHONE_TYPE_GSM) {
                 Log.i(this,"handleOriginalConnectionChange : SRVCC to GSM");
-                GsmConnection c = new GsmConnection(originalConnection, getTelecomCallId());
+                GsmConnection c = new GsmConnection(originalConnection, getTelecomCallId(),
+                        mConferenceHost.isOutgoingCall());
                 // This is a newly created conference connection as a result of SRVCC
                 c.setConferenceSupported(true);
                 c.addCapability(Connection.CAPABILITY_CONFERENCE_HAS_NO_CHILDREN);
