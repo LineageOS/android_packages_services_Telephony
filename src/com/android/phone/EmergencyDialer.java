@@ -25,10 +25,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.net.Uri;
@@ -55,7 +52,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 
 import com.android.phone.common.dialpad.DialpadKeyButton;
 import com.android.phone.common.util.ViewUtil;
@@ -672,7 +668,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         AlertDialog dialog = null;
         if (id == BAD_EMERGENCY_NUMBER_DIALOG) {
             // construct dialog
-            dialog = new AlertDialog.Builder(this)
+            dialog = new AlertDialog.Builder(this, R.style.EmergencyDialerAlertDialogTheme)
                     .setTitle(getText(R.string.emergency_enable_radio_dialog_title))
                     .setMessage(createErrorMessage(mLastNumber))
                     .setPositiveButton(R.string.ok, null)
