@@ -40,6 +40,7 @@ public class EuiccUiDispatcherActivity extends Activity {
             Intent euiccUiIntent = resolveEuiccUiIntent();
             if (euiccUiIntent == null) {
                 setResult(RESULT_CANCELED);
+                onDispatchFailure();
                 return;
             }
 
@@ -56,7 +57,7 @@ public class EuiccUiDispatcherActivity extends Activity {
     Intent resolveEuiccUiIntent() {
         EuiccManager euiccManager = (EuiccManager) getSystemService(Context.EUICC_SERVICE);
         if (!euiccManager.isEnabled()) {
-            setResult(RESULT_CANCELED);
+            Log.w(TAG, "eUICC not enabled");
             return null;
         }
 
@@ -74,6 +75,10 @@ public class EuiccUiDispatcherActivity extends Activity {
 
         euiccUiIntent.setComponent(activityInfo.getComponentName());
         return euiccUiIntent;
+    }
+
+    /** Called when dispatch fails. May be overridden to perform some operation here. */
+    protected void onDispatchFailure() {
     }
 
     /**
