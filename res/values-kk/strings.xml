@@ -173,7 +173,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Желі операторын таңдау"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Барлық қол жетімді желілерді іздеу"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Автоматты таңдау"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Қалаулы желіні автоматты түрде таңдау"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Aвтоматты тіркелу…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Қалаулы желі түрі"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Желі жұмысының режимін өзгерту"</string>

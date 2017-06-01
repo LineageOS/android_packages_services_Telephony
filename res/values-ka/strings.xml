@@ -173,7 +173,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"აირჩიეთ ქსელის ოპერატორი"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"ყველა ხელმისაწვდომი ქსელების მოძიება"</string>
     <string name="select_automatically" msgid="5628402124471810174">"ავტომატურად არჩევა"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"პრიორიტეტული ქსელის ავტომატური არჩევა"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ავტომატური რეგისტრაცია…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ქსელის სასურველი ტიპი"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ქსელის ოპერირების რეჟიმის შეცვლა"</string>

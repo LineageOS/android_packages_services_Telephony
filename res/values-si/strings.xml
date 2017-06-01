@@ -173,7 +173,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"ජාල ක්‍රියාකරවන්නෙකු තෝරන්න"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"සියලුම තිබෙන ජාල සොයන්න"</string>
     <string name="select_automatically" msgid="5628402124471810174">"ස්වයංක්‍රීයව තෝරන්න"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"ස්වයංක්‍රීයව ප්‍රිය ජාල තෝරන්න"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ස්වයංක්‍රීය ලියාපදිංචිය..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ප්‍රියකරන ජාල වර්ගය"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ජාල මෙහෙයුම් ආකාරය වෙනස් කරන්න"</string>

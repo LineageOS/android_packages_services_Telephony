@@ -173,7 +173,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Aukeratu sare-operadorea"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Bilatu sare erabilgarri guztiak"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Aukeratu automatikoki"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Aukeratu automatikoki sare hobetsia"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Erregistratze automatikoa…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Sare mota hobetsia"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Aldatu sarearen funtzionamendu modua"</string>

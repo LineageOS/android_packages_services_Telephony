@@ -173,7 +173,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"నెట్‌వర్క్ ఆపరేటర్‌ను ఎంచుకోండి"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"అందుబాటులో ఉన్న అన్ని నెట్‌వర్క్‌ల కోసం శోధించండి"</string>
     <string name="select_automatically" msgid="5628402124471810174">"స్వయంచాలకంగా ఎంచుకోండి"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"స్వయంచాలకంగా ప్రాధాన్య నెట్‌వర్క్‌ను ఎంచుకోండి"</string>
     <string name="register_automatically" msgid="6017849844573519637">"స్వయంచాలక నమోదు…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ప్రాధాన్య నెట్‌వర్క్ రకం"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"నెట్‌వర్క్ ఆపరేటింగ్ మోడ్‌ను మార్చండి"</string>

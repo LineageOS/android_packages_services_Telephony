@@ -173,7 +173,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"ເລືອກເຄືອຂ່າຍຜູ່ໃຫ້ບໍລິການ"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"ຊອກຫາເຄືອຂ່າຍທີ່ມີທັງໝົດ"</string>
     <string name="select_automatically" msgid="5628402124471810174">"ເລືອກອັດຕະໂນມັດ"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"ເລືອກເຄືອຂ່າຍທີ່ຕ້ອງການອັດຕະໂນມັດ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ກຳລັງລົງທະບຽນອັດຕະໂນມັດ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ປະ​ເພດ​ເຄືອ​ຂ່າຍທີ່ຕ້ອງການ"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ປ່ຽນຮູບແບບປະຕິບັດການຂອງເຄືອຂ່າຍ"</string>

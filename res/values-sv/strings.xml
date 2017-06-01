@@ -173,7 +173,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Välj en nätverksoperatör"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Sök efter alla tillgängliga nätverk"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Välj automatiskt"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Välj önskat nätverk automatiskt"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatisk registrering ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Önskad nätverkstyp"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Ändra nätverksläge"</string>

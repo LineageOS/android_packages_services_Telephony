@@ -24,6 +24,5 @@
     <Preference 
         android:key="button_auto_select_key" 
         android:title="@string/select_automatically"
-        android:summary="@string/sum_select_automatically"
         android:persistent="false"/>
 </PreferenceScreen>
