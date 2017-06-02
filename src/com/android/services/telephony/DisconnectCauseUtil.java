@@ -20,9 +20,9 @@ import android.content.Context;
 import android.media.ToneGenerator;
 import android.telecom.DisconnectCause;
 
+import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.common.R;
-import com.android.phone.ImsUtil;
 
 public class DisconnectCauseUtil {
 
@@ -130,6 +130,7 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.DIALED_CALL_FORWARDING_WHILE_ROAMING:
             case android.telephony.DisconnectCause.IMEI_NOT_ACCEPTED:
             case android.telephony.DisconnectCause.WIFI_LOST:
+            case android.telephony.DisconnectCause.IMS_ACCESS_BLOCKED:
                 return DisconnectCause.ERROR;
 
             case android.telephony.DisconnectCause.DIALED_MMI:
