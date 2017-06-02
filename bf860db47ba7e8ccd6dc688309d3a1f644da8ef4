@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_b5ac188e",
+        "filename": "src/com/android/phone/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 7230
+      },
+      "writtenOn": "2017-06-02T18:34:42Z",
+      "side": 1,
+      "message": "I feel like this will \"override\" hasUserRestriction check but that\u0027s how it works on single sim devices (https://github.com/LineageOS/android_packages_apps_Settings/blob/a9d1a34/src/com/android/settings/WirelessSettings.java#L323) so I guess it\u0027s fine",
+      "range": {
+        "startLine": 455,
+        "startChar": 12,
+        "endLine": 455,
+        "endChar": 30
+      },
+      "revId": "bf860db47ba7e8ccd6dc688309d3a1f644da8ef4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
