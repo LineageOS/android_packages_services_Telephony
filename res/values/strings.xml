@@ -1384,4 +1384,34 @@
     <string name="change_pin_succeeded">Voicemail PIN updated</string>
     <!-- The error message to show if the server reported an error while attempting to change the voicemail PIN -->
     <string name="change_pin_system_error">Unable to set PIN</string>
+
+    <!-- The subtext for mobile data setting. shown if roaming settings turned off -->
+    <string name="mobile_data_status_roaming_turned_off_subtext">Data roaming is turned off</string>
+    <!-- The subtext for mobile data setting. shown if roaming settings turned on -->
+    <string name="mobile_data_status_roaming_turned_on_subtext">Data roaming is turned on</string>
+    <!-- The subtext for mobile data setting. shown if currently roaming, have roaming settings turned on but don't have a roaming data plan-->
+    <string name="mobile_data_status_roaming_without_plan_subtext">Currently roaming, need data plan</string>
+    <!-- The subtext for mobile data setting. shown if currently roaming, have roaming settings turned and have an active roaming data plan-->
+    <string name="mobile_data_status_roaming_with_plan_subtext">Currently roaming, data plan is active</string>
+    <!-- The subtext for mobile data setting. shown if not in roaming and prepaid sim has run out of balance -->
+    <string name="mobile_data_status_no_plan_subtext">No mobile data left</string>
+
+    <!-- The setting option name for activate prepaid mobile data plan -->
+    <string name="mobile_data_activate_prepaid">No mobile data left</string>
+    <!-- The setting option summary for activate prepaid mobile data plan -->
+    <string name="mobile_data_activate_prepaid_summary">Add mobile data through <xliff:g id="provider_name">%s</xliff:g></string>
+    <!-- The setting option name for for adding roaming data plan -->
+    <string name="mobile_data_activate_roaming_plan">No roaming plan</string>
+    <!-- The setting option summary for adding roaming data plan -->
+    <string name="mobile_data_activate_roaming_plan_summary">Add roaming plan through <xliff:g id="provider_name">%s</xliff:g></string>
+    <!-- The setting option footer for adding data either prepaid or roaming -->
+    <string name="mobile_data_activate_footer">You can add mobile data or a roaming plan through your carrier, <xliff:g id="provider_name">%s</xliff:g>.</string>
+    <!-- activate data plan dialogue title for either prepaid or roaming -->
+    <string name="mobile_data_activate_diag_title">Add data?</string>
+    <!-- activate data plan dialogue message for either prepaid or roaming -->
+    <string name="mobile_data_activate_diag_message">You may need to add data through <xliff:g id="provider_name">%s</xliff:g></string>
+    <!-- activate data plan dialogue button for adding data, which will take users out of the setting page -->
+    <string name="mobile_data_activate_button">ADD DATA</string>
+    <!-- activate data plan dialogue button for cancel further actions-->
+    <string name="mobile_data_activate_cancel_button">CANCEL</string>
 </resources>
