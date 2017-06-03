@@ -172,7 +172,10 @@
     <string name="registration_done" msgid="495135664535876612">"નેટવર્ક પર નોંધણી કરી."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"એક નેટવર્ક ઓપરેટર પસંદ કરો"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"બધા ઉપલબ્ધ નેટવર્ક્સ માટે શોધો"</string>
-    <string name="select_automatically" msgid="5628402124471810174">"આપમેળે પસંદ કરો"</string>
+    <!-- no translation found for select_automatically (1046727200631770962) -->
+    <skip />
+    <!-- no translation found for network_select_title (7733107364757544558) -->
+    <skip />
     <string name="register_automatically" msgid="6017849844573519637">"સ્વયંચાલિત નોંધણી…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"પસંદગીનો નેટવર્ક પ્રકાર"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"નેટવર્ક ઓપરેટિંગ મોડ બદલો"</string>
@@ -209,20 +212,37 @@
     <item msgid="1524224863879435516">"ફક્ત GSM"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA પસંદ કરેલ છે"</item>
   </string-array>
+    <!-- no translation found for call_category (5863978196309462052) -->
+    <skip />
+    <!-- no translation found for network_operator_category (4830701959205735636) -->
+    <skip />
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"વિસ્તૃત 4G LTE મોડ"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"વિગતવાર કૉલિંગ"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"વૉઇસ અને અન્ય સંચારોને બહેતર બનાવવા માટે LTE સેવાઓનો ઉપયોગ કરો (ભલામણ કરેલ)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ડેટા સક્ષમ કરેલ છે"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ડેટા વપરાશની મંજૂરી આપો"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"ધ્યાન આપો"</string>
-    <string name="roaming" msgid="8871412572928323707">"ડેટા રોમિંગ"</string>
+    <!-- no translation found for roaming (7894878421600247140) -->
+    <skip />
     <string name="roaming_enable" msgid="7331106985174381987">"જ્યારે રોમિંગ હોય ત્યારે ડેટા સેવાઓથી કનેક્ટ કરો"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"જ્યારે રોમિંગ હોય ત્યારે ડેટા સેવાઓથી કનેક્ટ કરો"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"તમે ડેટા કનેક્ટિવિટી ગુમાવી છે કારણ કે તમે તમારા હોમ નેટવર્કને બંધ ડેટા રોમિંગ સાથે છોડ્યું છે."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"તમારાથી આંશિક શુલ્ક લઈ શકાય છે."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ડેટા રોમિંગને મંજૂરી આપીએ?"</string>
+    <!-- no translation found for data_usage_title (8759619109516889802) -->
+    <skip />
+    <!-- no translation found for data_usage_template (8065650945732671045) -->
+    <skip />
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"કૅરિઅર"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
+    <skip />
+    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
+    <skip />
+    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
+    <skip />
+    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
+    <skip />
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS વિકલ્પો"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA વિકલ્પો"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"ડેટા વપરાશ"</string>
