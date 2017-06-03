@@ -151,7 +151,8 @@ abstract class TelephonyConnection extends Connection {
                     break;
                 case MSG_SUPP_SERVICE_NOTIFY:
                     Log.v(TelephonyConnection.this, "MSG_SUPP_SERVICE_NOTIFY on phoneId : "
-                            +getPhone().getPhoneId());
+                            + getPhone() != null ? Integer.toString(getPhone().getPhoneId())
+                            : "null");
                     SuppServiceNotification mSsNotification = null;
                     if (msg.obj != null && ((AsyncResult) msg.obj).result != null) {
                         mSsNotification =
