@@ -152,7 +152,8 @@ abstract class TelephonyConnection extends Connection {
                     break;
                 case MSG_SUPP_SERVICE_NOTIFY:
                     Log.v(TelephonyConnection.this, "MSG_SUPP_SERVICE_NOTIFY on phoneId : "
-                            +getPhone().getPhoneId());
+                            + getPhone() != null ? Integer.toString(getPhone().getPhoneId())
+                            : "null");
                     SuppServiceNotification mSsNotification = null;
                     if (msg.obj != null && ((AsyncResult) msg.obj).result != null) {
                         mSsNotification =
@@ -499,13 +500,19 @@ abstract class TelephonyConnection extends Connection {
     private boolean mIsCdmaVoicePrivacyEnabled;
 
     /**
+     * Indicates whether this call is an outgoing call.
+     */
+    protected final boolean mIsOutgoing;
+
+    /**
      * Listeners to our TelephonyConnection specific callbacks
      */
     private final Set<TelephonyConnectionListener> mTelephonyListeners = Collections.newSetFromMap(
             new ConcurrentHashMap<TelephonyConnectionListener, Boolean>(8, 0.9f, 1));
 
     protected TelephonyConnection(com.android.internal.telephony.Connection originalConnection,
-            String callId) {
+            String callId, boolean isOutgoingCall) {
+        mIsOutgoing = isOutgoingCall;
         setTelecomCallId(callId);
         if (originalConnection != null) {
             setOriginalConnection(originalConnection);
@@ -1553,6 +1560,13 @@ abstract class TelephonyConnection extends Connection {
     }
 
     /**
+     * @return {@code true} if this is an outgoing call, {@code false} otherwise.
+     */
+    boolean isOutgoingCall() {
+        return mIsOutgoing;
+    }
+
+    /**
      * Sets the current call audio quality. Used during rebuild of the properties
      * to set or unset the {@link Connection#PROPERTY_HIGH_DEF_AUDIO} property.
      *
@@ -1741,7 +1755,7 @@ abstract class TelephonyConnection extends Connection {
         boolean isVoWifiEnabled = false;
         if (isIms) {
             ImsPhone imsPhone = (ImsPhone) phone;
-            isVoWifiEnabled = imsPhone.isWifiCallingEnabled();
+            isVoWifiEnabled = ImsUtil.isWfcEnabled(phone.getContext());
         }
         PhoneAccountHandle phoneAccountHandle = isIms ? PhoneUtils
                 .makePstnPhoneAccountHandle(phone.getDefaultPhone())
