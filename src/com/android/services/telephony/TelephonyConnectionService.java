@@ -963,7 +963,7 @@ public class TelephonyConnectionService extends ConnectionService {
         TelephonyConnection returnConnection = null;
         int phoneType = phone.getPhoneType();
         if (phoneType == TelephonyManager.PHONE_TYPE_GSM) {
-            returnConnection = new GsmConnection(originalConnection, telecomCallId);
+            returnConnection = new GsmConnection(originalConnection, telecomCallId, isOutgoing);
         } else if (phoneType == TelephonyManager.PHONE_TYPE_CDMA) {
             boolean allowsMute = allowsMute(phone);
             returnConnection = new CdmaConnection(originalConnection, mEmergencyTonePlayer,
@@ -1250,6 +1250,11 @@ public class TelephonyConnectionService extends ConnectionService {
                 TelecomManager.TTY_MODE_OFF) != TelecomManager.TTY_MODE_OFF);
     }
 
+    /**
+     * For outgoing dialed calls, potentially send a ConnectionEvent if the user is on WFC and is
+     * dialing an international number.
+     * @param telephonyConnection The connection.
+     */
     private void maybeSendInternationalCallEvent(TelephonyConnection telephonyConnection) {
         if (telephonyConnection == null || telephonyConnection.getPhone() == null ||
                 telephonyConnection.getPhone().getDefaultPhone() == null) {
@@ -1258,8 +1263,9 @@ public class TelephonyConnectionService extends ConnectionService {
         Phone phone = telephonyConnection.getPhone().getDefaultPhone();
         if (phone instanceof GsmCdmaPhone) {
             GsmCdmaPhone gsmCdmaPhone = (GsmCdmaPhone) phone;
-            if (gsmCdmaPhone.isNotificationOfWfcCallRequired(
-                    telephonyConnection.getOriginalConnection().getOrigDialString())) {
+            if (telephonyConnection.isOutgoingCall() &&
+                    gsmCdmaPhone.isNotificationOfWfcCallRequired(
+                            telephonyConnection.getOriginalConnection().getOrigDialString())) {
                 // Send connection event to InCall UI to inform the user of the fact they
                 // are potentially placing an international call on WFC.
                 Log.i(this, "placeOutgoingConnection - sending international call on WFC " +
