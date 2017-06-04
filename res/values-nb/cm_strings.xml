@@ -152,7 +152,7 @@
   <string name="fdn_invalid_number_cm">FDN ble ikke oppdatert fordi nummeret er tomt eller har fler enn 20 siffer.</string>
   <string name="fdn_service_unavailable">FDN tjenesten er ikke tilgjengelig.</string>
   <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <string name="exportContacts">Eksporterer kontakter til SIMkort\u2026</string>
+  <string name="exportContacts">Eksporterer kontakter til SIM-kort\u2026</string>
   <!-- Title of the List shown for SIM Contacts Management Activity.  -->
   <string name="simContacts_title_cm">Administrere SIM-kortkontakter</string>
   <!-- In-call screen: call failure message displayed in errror dialog -->
@@ -173,16 +173,16 @@
   <string name="enterNumber">Angi telefonnummer:</string>
   <string name="hintName">Navn</string>
   <string name="hintPhonenumber">Mobilnummer</string>
-  <string name="contactAddSuccess">Kontakten ble lagret på SIMkortet</string>
-  <string name="contactAddFailed">Klarte ikke å lagre kontakten på SIMkortet</string>
-  <string name="contactUpdateSuccess">Kontakten er oppdatert på SIMkortet</string>
-  <string name="contactUpdateFailed">Klarte ikke å oppdatere kontakt på SIMkortet</string>
-  <string name="contactdeleteSuccess">Kontakten ble slettet fra SIMkort</string>
-  <string name="contactdeleteFailed">Klarte ikke å slette kontakt fra SIMkort</string>
-  <string name="allContactdeleteSuccess">Slettet alle kontakter fra SIMkort</string>
-  <string name="allContactdeleteFailed">Klarte ikke å slette alle kontakter fra SIMkort</string>
-  <string name="exportAllcontatsSuccess">Vellykket eksportering av alle kontakter til SIMkort</string>
-  <string name="exportAllcontatsFailed">Klarte ikke å eksportere alle kontakter til SIMkort</string>
+  <string name="contactAddSuccess">Kontakten ble lagret på SIM-kort</string>
+  <string name="contactAddFailed">Klarte ikke lagre kontakten på SIM-kort</string>
+  <string name="contactUpdateSuccess">Kontakten er oppdatert på SIM-kort</string>
+  <string name="contactUpdateFailed">Klarte ikke oppdatere kontakt på SIM-kort</string>
+  <string name="contactdeleteSuccess">Kontakten ble slettet fra SIM-kort</string>
+  <string name="contactdeleteFailed">Klarte ikke slette kontakt fra SIM-kort</string>
+  <string name="allContactdeleteSuccess">Slettet alle kontakter fra SIM-kort</string>
+  <string name="allContactdeleteFailed">Klarte ikke slette alle kontakter fra SIM-kort</string>
+  <string name="exportAllcontatsSuccess">Eksportering av alle kontakter til SIM-kort var vellykket</string>
+  <string name="exportAllcontatsFailed">Eksportering av alle kontakter til SIM-kort mislyktes</string>
   <string name="exportAllcontatsNoContacts">Ingen kontakter funnet for eksportering</string>
   <string name="msim_mobile_network_settings_title">SIM %d mobilnettverk innstillinger</string>
   <!-- Permission to modify network mode via intent -->

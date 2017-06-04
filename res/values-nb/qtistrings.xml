@@ -33,7 +33,7 @@
 <resources>
   <!-- IMS settings related strings -->
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">IMS innstillinger</string>
+  <string name="ims_settings">IMS-innstillinger</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
   <string name="label_nsdp">SIM nettverk delsett opplåsnings PIN</string>
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
@@ -101,11 +101,11 @@
   <!-- Error message displayed on PUK Depersonalization panel -->
   <string name="puk_unlock_failed">PUK opplåsning mislyktes.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="nw_subset_unlock_success">SIMkort til undernettverk låst opp.</string>
+  <string name="nw_subset_unlock_success">SIM-kort til undernettverk låst opp.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="sp_unlock_success">SIMkort opplåst.</string>
+  <string name="sp_unlock_success">SIM-kort opplåst.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="corporate_unlock_success">Simkort arbeid opplåst.</string>
+  <string name="corporate_unlock_success">SIM-kort arbeid opplåst.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <string name="sim_unlock_success">Sim opplåsning vellykket.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->

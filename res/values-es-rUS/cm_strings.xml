@@ -183,7 +183,7 @@
   <string name="allContactdeleteFailed">Error al eliminar todos los contactos de la tarjeta SIM</string>
   <string name="exportAllcontatsSuccess">Todos los contactos han sido exportados a la tarjeta SIM</string>
   <string name="exportAllcontatsFailed">Error al exportar todos los contactos de la tarjeta SIM</string>
-  <string name="exportAllcontatsNoContacts">No hay contactos que exportar a la tarjeta SIM</string>
+  <string name="exportAllcontatsNoContacts">Sin contactos que exportar a la tarjeta SIM</string>
   <string name="msim_mobile_network_settings_title">Ajustes de la red móvil de la SIM %d</string>
   <!-- Permission to modify network mode via intent -->
   <string name="perm_change_mobile_network">cambiar modo de red</string>

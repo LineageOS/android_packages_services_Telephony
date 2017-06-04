@@ -19,6 +19,7 @@
          and other settings UIs.  This is the version of the label for
          tablet devices, where the phone app handles mobile data but not
          actual phone calls. -->
+  <string name="phoneAppLabel" product="tablet">Datos móviles</string>
   <!-- Official label of the phone app, as seen in "Manage Applications"
          and other settings UIs. -->
   <!-- Screen title for Emergency Dialer UI -->
@@ -78,6 +79,7 @@
          are applied to. [CHAR LIMIT=40] -->
   <!-- Mobile network settings screen, setting option name -->
   <!-- Label for the "Network settings" screen in the Settings UI -->
+  <string name="settings_label">Axustes de rede</string>
   <!-- Label for settings screen for phone accounts. -->
   <!-- Label for list item which opens a dialog to select the default outgoing account -->
   <string name="phone_accounts_make_calls_with">Facer llamaes con</string>
@@ -102,6 +104,7 @@
   <!-- Title of the "Voicemail" settings screen, with a text label identifying which SIM the settings are for. -->
   <!-- Call forwarding dialog box, voicemail number prefix -->
   <!-- Mobile network settings screen, setting option name -->
+  <string name="networks">Operadores de rede</string>
   <!-- Cell Broadcast settings title.  [CHAR LIMIT=50] -->
   <!-- Call settings screen title -->
   <string name="call_settings">Axustes de llamaes</string>
@@ -311,6 +314,7 @@
   <!-- Call settings, string that appears on FDN contact list when there are no contacts on the SIM. -->
   <!-- Call settings: title of the dialog that lets you select contacts from the SIM. -->
   <!-- Appears when user tries to import contacts in SIM during airplane mode [CHAR LIMIT=NONE] -->
+  <string name="simContacts_airplaneMode">Desactiva\'l mou avión pa importar contautos de la tarxeta SIM.</string>
   <!-- SIM PIN strings -->
   <!-- Title of "Enable/disable SIM PIN" screen -->
   <!-- Title of "Change SIM PIN" screen -->
@@ -374,7 +378,9 @@
   <!-- Label for the expanded "No service" notification item, including the
          operator name set by user -->
   <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
+  <string name="incall_error_power_off">Desactiva\'l mou avión pa facer una llamada.</string>
   <!-- In-call screen: call failure message displayed in an error dialog when in airplane mode, WFC is enabled, not wifi-only, and not connected to wireless networks. [CHAR_LIMIT=NONE] -->
+  <string name="incall_error_power_off_wfc">Desactiva\'l mou avión o conéutate a una rede inalámbrica pa facer una llamada.</string>
   <!-- In-call screen: call failure message displayed when the user attempts to make a non-emergency call while the phone is in emergency callback mode. -->
   <!-- In-call screen: call failure message displayed in an error dialog.
          This string is currently unused (see comments in InCallScreen.java.) -->
@@ -523,7 +529,9 @@
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
   <string name="voicemail_notification_ringtone_key">voicemail_notification_ringtone_key</string>
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
+  <string name="voicemail_notification_vibrate_key">voicemail_notification_vibrate_key</string>
   <!-- DO NOT TRANSLATE. Internal key for a visual voicemail preference. -->
+  <string name="voicemail_visual_voicemail_key">voicemail_visual_voicemail_key</string>
   <!-- DO NOT TRANSLATE. Internal key for tty mode preference. -->
   <string name="tty_mode_key">button_tty_mode_key</string>
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->

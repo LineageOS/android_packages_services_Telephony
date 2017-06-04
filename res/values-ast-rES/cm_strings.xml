@@ -48,9 +48,11 @@
   <!-- Toast text for MO calls when CLIR Suppression is rejected -->
   <!-- In-call screen: status label when MO call gets deflected to another party -->
   <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">La llamada entrante ta esviada</string>
   <!-- Toast text for incoming call which is part of MultiParty Call -->
   <!-- Toast text for incoming call which is answered,put on hold & then released -->
   <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">Esvióse la llamada</string>
   <!-- Toast text for incoming call connecting through ECT -->
   <!-- Toast text for incoming call connected through ECT -->
   <!-- Status message displayed on SIM Network Depersonalization panel -->
