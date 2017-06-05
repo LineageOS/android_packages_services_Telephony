@@ -189,7 +189,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         getWindow().setAttributes(lp);
 
         mColorExtractor = new ColorExtractor(this);
-        GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK);
+        GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK,
+                ColorExtractor.TYPE_EXTRA_DARK);
         updateTheme(lockScreenColors.supportsDarkText());
 
         setContentView(R.layout.emergency_dialer);
@@ -490,7 +491,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         super.onStart();
 
         mColorExtractor.addOnColorsChangedListener(this);
-        GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK);
+        GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK,
+                ColorExtractor.TYPE_EXTRA_DARK);
         // Do not animate when view isn't visible yet, just set an initial state.
         mBackgroundGradient.setColors(lockScreenColors, false);
         updateTheme(lockScreenColors.supportsDarkText());
@@ -732,8 +734,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     }
 
     @Override
-    public void onColorsChanged(GradientColors colors, int which) {
+    public void onColorsChanged(ColorExtractor extractor, int which) {
         if ((which & WallpaperManager.FLAG_LOCK) != 0) {
+            GradientColors colors = extractor.getColors(WallpaperManager.FLAG_LOCK,
+                    ColorExtractor.TYPE_EXTRA_DARK);
             mBackgroundGradient.setColors(colors);
             updateTheme(colors.supportsDarkText());
         }
