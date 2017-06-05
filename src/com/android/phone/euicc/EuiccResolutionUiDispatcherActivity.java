@@ -16,6 +16,7 @@
 package com.android.phone.euicc;
 
 import android.annotation.Nullable;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.service.euicc.EuiccService;
 import android.telephony.euicc.EuiccManager;
@@ -53,5 +54,20 @@ public class EuiccResolutionUiDispatcherActivity extends EuiccUiDispatcherActivi
         // Propagate the extras from the original Intent.
         euiccUiIntent.putExtras(getIntent());
         return euiccUiIntent;
+    }
+
+    @Override
+    protected void onDispatchFailure() {
+        // Attempt to dispatch the callback so the caller knows the operation has failed.
+        PendingIntent callbackIntent =
+                getIntent().getParcelableExtra(
+                        EuiccManager.EXTRA_EMBEDDED_SUBSCRIPTION_RESOLUTION_CALLBACK_INTENT);
+        if (callbackIntent != null) {
+            try {
+                callbackIntent.send(EuiccManager.EMBEDDED_SUBSCRIPTION_RESULT_GENERIC_ERROR);
+            } catch (PendingIntent.CanceledException e) {
+                // Caller canceled the callback; do nothing.
+            }
+        }
     }
 }

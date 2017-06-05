@@ -224,6 +224,11 @@ final class TelecomAccountRegistry {
                 extras.putBoolean(PhoneAccount.EXTRA_SUPPORTS_HANDOVER_FROM,
                         isHandoverFromSupported);
             }
+
+            extras.putBoolean(PhoneAccount.EXTRA_SUPPORTS_VIDEO_CALLING_FALLBACK,
+                    mContext.getResources()
+                            .getBoolean(R.bool.config_support_video_calling_fallback));
+
             if (slotId != SubscriptionManager.INVALID_SIM_SLOT_INDEX) {
                 extras.putString(PhoneAccount.EXTRA_SORT_ORDER,
                     String.valueOf(slotId));

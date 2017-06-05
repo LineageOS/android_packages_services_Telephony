@@ -262,6 +262,11 @@
         <item name="dialpadTheme">@style/Dialpad_LightTransparent</item>
     </style>
 
+    <style name="EmergencyDialerAlertDialogTheme"
+           parent="@android:style/Theme.Material.Dialog">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
     <style name="SimImportTheme" parent="@android:style/Theme.Material.Light">
         <item name="android:actionBarStyle">@style/TelephonyActionBarStyle</item>
         <item name="android:colorPrimaryDark">@color/dialer_theme_color_dark</item>

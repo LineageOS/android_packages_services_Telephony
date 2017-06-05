@@ -172,8 +172,10 @@
     <string name="registration_done" msgid="495135664535876612">"네트워크에 등록되었습니다."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"네트워크 운영자 선택"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"사용 가능한 모든 네트워크 검색"</string>
-    <string name="select_automatically" msgid="5628402124471810174">"자동으로 선택"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"기본 설정 네트워크를 자동으로 선택"</string>
+    <!-- no translation found for select_automatically (1046727200631770962) -->
+    <skip />
+    <!-- no translation found for network_select_title (7733107364757544558) -->
+    <skip />
     <string name="register_automatically" msgid="6017849844573519637">"자동 등록..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"기본 네트워크 유형"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"네트워크 작동 모드 변경"</string>
@@ -210,20 +212,37 @@
     <item msgid="1524224863879435516">"GSM 전용"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA로 기본 설정"</item>
   </string-array>
+    <!-- no translation found for call_category (5863978196309462052) -->
+    <skip />
+    <!-- no translation found for network_operator_category (4830701959205735636) -->
+    <skip />
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"향상된 4G LTE 모드"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"고급 통화"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"LTE 서비스를 사용하여 음성 및 기타 통신을 개선할 수 있습니다(권장)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"데이터 사용"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"데이터 사용 허용"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"주의"</string>
-    <string name="roaming" msgid="8871412572928323707">"데이터 로밍"</string>
+    <!-- no translation found for roaming (7894878421600247140) -->
+    <skip />
     <string name="roaming_enable" msgid="7331106985174381987">"로밍 시 데이터 서비스에 연결"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"로밍 시 데이터 서비스에 연결"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"데이터 로밍을 사용 중지한 상태에서 홈 네트워크를 벗어났으므로 데이터 연결이 끊어졌습니다."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"많은 요금이 부과될 수 있습니다."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"데이터 로밍을 허용하시겠습니까?"</string>
+    <!-- no translation found for data_usage_title (8759619109516889802) -->
+    <skip />
+    <!-- no translation found for data_usage_template (8065650945732671045) -->
+    <skip />
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"이동통신사"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
+    <skip />
+    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
+    <skip />
+    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
+    <skip />
+    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
+    <skip />
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS 옵션"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA 옵션"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"데이터 사용"</string>

@@ -172,8 +172,10 @@
     <string name="registration_done" msgid="495135664535876612">"ഒരു നെറ്റ്‌വർക്കിൽ രജിസ്റ്റർ ചെയ്‌തു."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"ഒരു നെ‌റ്റ്‌വർക്ക് ഓപ്പറേറ്ററെ തിരഞ്ഞെടുക്കുക"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"ലഭ്യമായ എല്ലാ നെറ്റ്‌വർക്കുകൾക്കായും തിരയുക"</string>
-    <string name="select_automatically" msgid="5628402124471810174">"സ്വയമേവ തിരഞ്ഞെടുക്കൂ"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"താൽപ്പര്യമുള്ള നെറ്റ്‌വർക്ക് സ്വയമേവ തിരഞ്ഞെടുക്കൂ"</string>
+    <!-- no translation found for select_automatically (1046727200631770962) -->
+    <skip />
+    <!-- no translation found for network_select_title (7733107364757544558) -->
+    <skip />
     <string name="register_automatically" msgid="6017849844573519637">"യാന്ത്രിക രജിസ്‌ട്രേഷൻ…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"തിരഞ്ഞെടുത്ത നെറ്റ്‌വർക്ക് തരം"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"നെറ്റ്‌വർക്ക് ഓപ്പറേറ്റുചെയ്യൽ മോഡ് മാറ്റുക"</string>
@@ -210,20 +212,37 @@
     <item msgid="1524224863879435516">"GSM മാത്രം"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA തിരഞ്ഞെടുത്തത്"</item>
   </string-array>
+    <!-- no translation found for call_category (5863978196309462052) -->
+    <skip />
+    <!-- no translation found for network_operator_category (4830701959205735636) -->
+    <skip />
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"മെച്ചപ്പെടുത്തിയ 4G LTE മോഡ്"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"വിപുലമായ കോളിംഗ്"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"വോയ്‌സ്, മറ്റ് ആശയവിനിമയങ്ങൾ (ശുപാർശിതം) എന്നിവ മികച്ചതാക്കുന്നതിന് LTE സേവനങ്ങൾ ഉപയോഗിക്കുക"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ഡാറ്റ പ്രവർത്തനക്ഷമമാക്കി"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ഡാറ്റ ഉപയോഗം അനുവദിക്കുക"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"ശ്രദ്ധിക്കുക"</string>
-    <string name="roaming" msgid="8871412572928323707">"ഡാറ്റ റോമിംഗ്"</string>
+    <!-- no translation found for roaming (7894878421600247140) -->
+    <skip />
     <string name="roaming_enable" msgid="7331106985174381987">"റോമിംഗിലാകുമ്പോൾ ഡാറ്റ സേവനങ്ങളുമായി കണ‌ക്റ്റുചെയ്യുക"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"റോമിംഗിലാകുമ്പോൾ ഡാറ്റ സേവനങ്ങളുമായി കണ‌ക്റ്റുചെയ്യുക"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"നിങ്ങൾ ഡാറ്റ റോമിംഗ് ഓഫുചെയ്‌തതിനൊപ്പം നിങ്ങളുടെ ഹോം നെ‌റ്റ്‌വർക്കും വിട്ടതിനാൽ നിങ്ങൾക്ക് ഡാറ്റ കണക്റ്റിവിറ്റി നഷ്‌ടപ്പെട്ടു."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"നിങ്ങളിൽ നിന്ന് നിർദ്ദിഷ്‌ട നിരക്കുകൾ ഈടാക്കിയേക്കാം."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ഡാറ്റ റോമിംഗ് അനുവദിക്കണോ?"</string>
+    <!-- no translation found for data_usage_title (8759619109516889802) -->
+    <skip />
+    <!-- no translation found for data_usage_template (8065650945732671045) -->
+    <skip />
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"കാരിയര്‍"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
+    <skip />
+    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
+    <skip />
+    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
+    <skip />
+    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
+    <skip />
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS ഓപ്‌ഷനുകൾ"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA ഓപ്‌ഷനുകൾ"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"ഡാറ്റ ഉപയോഗം"</string>
