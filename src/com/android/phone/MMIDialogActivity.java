@@ -32,6 +32,7 @@ import com.android.internal.telephony.MmiCode;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -88,7 +89,11 @@ public class MMIDialogActivity extends Activity {
     }
 
     private void showMMIDialog() {
-        final List<? extends MmiCode> codes = mPhone.getPendingMmiCodes();
+        final List<MmiCode> codes = new ArrayList<>(mPhone.getPendingMmiCodes());
+        // If the phone has an IMS phone, also get pending imS MMIsl.
+        if (mPhone.getImsPhone() != null) {
+            codes.addAll(mPhone.getImsPhone().getPendingMmiCodes());
+        }
         if (codes.size() > 0) {
             final MmiCode mmiCode = codes.get(0);
             final Message message = Message.obtain(mHandler, PhoneGlobals.MMI_CANCEL);
