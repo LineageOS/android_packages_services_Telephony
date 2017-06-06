@@ -22,16 +22,19 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.UserHandle;
@@ -177,7 +180,6 @@ public class MobileNetworkSettings extends Activity  {
         private static final String BUTTON_4G_LTE_KEY = "enhanced_4g_lte";
         private static final String BUTTON_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
         private static final String BUTTON_APN_EXPAND_KEY = "button_apn_key";
-        private static final String BUTTON_OPERATOR_SELECTION_EXPAND_KEY = "button_carrier_sel_key";
         private static final String BUTTON_CARRIER_SETTINGS_KEY = "carrier_settings_key";
         private static final String BUTTON_CDMA_SYSTEM_SELECT_KEY = "cdma_system_select_key";
         private static final String BUTTON_CARRIER_SETTINGS_EUICC_KEY =
@@ -208,6 +210,7 @@ public class MobileNetworkSettings extends Activity  {
         private PreferenceCategory mCallingCategory;
         private Preference mWiFiCallingPref;
         private SwitchPreference mVideoCallingPref;
+        private NetworkSelectListPreference mButtonNetworkSelect;
 
         private static final String iface = "rmnet0"; //TODO: this will go away
         private List<SubscriptionInfo> mActiveSubInfos;
@@ -247,6 +250,53 @@ public class MobileNetworkSettings extends Activity  {
 
             }
         };
+
+        /**
+         * Service connection code for the NetworkQueryService.
+         * Handles the work of binding to a local object so that we can make
+         * the appropriate service calls.
+         */
+
+        /** Local service interface */
+        private INetworkQueryService mNetworkQueryService = null;
+
+        private void setNetworkQueryService() {
+            mButtonNetworkSelect = (NetworkSelectListPreference) getPreferenceScreen()
+                    .findPreference(NetworkOperators.BUTTON_NETWORK_SELECT_KEY);
+            if (mButtonNetworkSelect != null) {
+                mButtonNetworkSelect.setNetworkQueryService(mNetworkQueryService);
+            }
+
+        }
+        /** Service connection */
+        private final ServiceConnection mNetworkQueryServiceConnection = new ServiceConnection() {
+
+            /** Handle the task of binding the local object to the service */
+            public void onServiceConnected(ComponentName className, IBinder service) {
+                if (DBG) log("connection created, binding local service.");
+                mNetworkQueryService = ((NetworkQueryService.LocalBinder) service).getService();
+                setNetworkQueryService();
+            }
+
+            /** Handle the task of cleaning up the local binding */
+            public void onServiceDisconnected(ComponentName className) {
+                if (DBG) log("connection disconnected, cleaning local binding.");
+                mNetworkQueryService = null;
+                setNetworkQueryService();
+            }
+        };
+
+        private void bindNetworkQueryService() {
+            getContext().startService(new Intent(getContext(), NetworkQueryService.class));
+            getContext().bindService(new Intent(getContext(), NetworkQueryService.class).setAction(
+                        NetworkQueryService.ACTION_LOCAL_BINDER),
+                        mNetworkQueryServiceConnection, Context.BIND_AUTO_CREATE);
+        }
+
+        private void unbindNetworkQueryService() {
+            // unbind the service.
+            getContext().unbindService(mNetworkQueryServiceConnection);
+        }
 
         @Override
         public void onPositiveButtonClick(DialogFragment dialog) {
@@ -517,6 +567,8 @@ public class MobileNetworkSettings extends Activity  {
             mTelephonyManager = (TelephonyManager) activity.getSystemService(
                             Context.TELEPHONY_SERVICE);
 
+            bindNetworkQueryService();
+
             if (mUm.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
                 mUnavailable = true;
                 activity.setContentView(R.layout.telephony_disallowed_preference_screen);
@@ -595,6 +647,7 @@ public class MobileNetworkSettings extends Activity  {
 
         @Override
         public void onDestroy() {
+            unbindNetworkQueryService();
             super.onDestroy();
             if (getActivity() != null && !getActivity().isDestroyed()) {
                 getActivity().unregisterReceiver(mPhoneChangeReceiver);
@@ -715,7 +768,8 @@ public class MobileNetworkSettings extends Activity  {
                         mGsmUmtsOptions = null;
                     }
                 } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
-                    mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, phoneSubId);
+                    mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, phoneSubId,
+                            mNetworkQueryService);
                 } else {
                     throw new IllegalStateException("Unexpected phone type: " + phoneType);
                 }
@@ -731,7 +785,8 @@ public class MobileNetworkSettings extends Activity  {
                 mButtonPreferredNetworkMode.setOnPreferenceChangeListener(this);
 
                 mCdmaOptions = new CdmaOptions(this, prefSet, mPhone);
-                mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, phoneSubId);
+                mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, phoneSubId,
+                        mNetworkQueryService);
             } else {
                 prefSet.removePreference(mButtonPreferredNetworkMode);
                 final int phoneType = mPhone.getPhoneType();
@@ -817,7 +872,8 @@ public class MobileNetworkSettings extends Activity  {
                         mButtonEnabledNetworks.setEntryValues(
                                 R.array.enabled_networks_values);
                     }
-                    mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, phoneSubId);
+                    mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, phoneSubId,
+                            mNetworkQueryService);
                 } else {
                     throw new IllegalStateException("Unexpected phone type: " + phoneType);
                 }
@@ -924,7 +980,7 @@ public class MobileNetworkSettings extends Activity  {
             if (ps != null) {
                 ps.setEnabled(hasActiveSubscriptions);
             }
-            ps = findPreference(BUTTON_OPERATOR_SELECTION_EXPAND_KEY);
+            ps = findPreference(NetworkOperators.CATEGORY_NETWORK_OPERATORS_KEY);
             if (ps != null) {
                 ps.setEnabled(hasActiveSubscriptions);
             }
@@ -1608,22 +1664,24 @@ public class MobileNetworkSettings extends Activity  {
             }
 
             if (mGsmUmtsOptions == null) {
-                mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, mPhone.getSubId());
+                mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, mPhone.getSubId(),
+                        mNetworkQueryService);
             }
             PreferenceScreen apnExpand =
                     (PreferenceScreen) prefSet.findPreference(BUTTON_APN_EXPAND_KEY);
-            PreferenceScreen operatorSelectionExpand =
-                    (PreferenceScreen) prefSet.findPreference(BUTTON_OPERATOR_SELECTION_EXPAND_KEY);
+            PreferenceCategory networkOperatorCategory =
+                    (PreferenceCategory) prefSet.findPreference(
+                            NetworkOperators.CATEGORY_NETWORK_OPERATORS_KEY);
             PreferenceScreen carrierSettings =
                     (PreferenceScreen) prefSet.findPreference(BUTTON_CARRIER_SETTINGS_KEY);
             if (apnExpand != null) {
                 apnExpand.setEnabled(isWorldMode() || enable);
             }
-            if (operatorSelectionExpand != null) {
+            if (networkOperatorCategory != null) {
                 if (enable) {
-                    operatorSelectionExpand.setEnabled(true);
+                    networkOperatorCategory.setEnabled(true);
                 } else {
-                    prefSet.removePreference(operatorSelectionExpand);
+                    prefSet.removePreference(networkOperatorCategory);
                 }
             }
             if (carrierSettings != null) {
