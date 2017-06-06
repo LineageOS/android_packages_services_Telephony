@@ -22,9 +22,9 @@ import android.os.PersistableBundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
+import android.preference.TwoStatePreference;
 import android.provider.Settings;
 import android.telephony.CarrierConfigManager;
-import android.content.ComponentName;
 
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
@@ -36,34 +36,43 @@ public class GsmUmtsOptions {
     private static final String LOG_TAG = "GsmUmtsOptions";
 
     private PreferenceScreen mButtonAPNExpand;
-    private PreferenceScreen mButtonOperatorSelectionExpand;
+    private TwoStatePreference mButtonAutoSelect;
+    private NetworkSelectListPreference mButtonOperatorSelection;
+
+    private NetworkOperators mNetworkOperator;
 
     private static final String BUTTON_APN_EXPAND_KEY = "button_apn_key";
-    private static final String BUTTON_OPERATOR_SELECTION_EXPAND_KEY = "button_carrier_sel_key";
     private static final String BUTTON_CARRIER_SETTINGS_KEY = "carrier_settings_key";
+
     public static final String EXTRA_SUB_ID = "sub_id";
     private PreferenceFragment mPrefFragment;
     private PreferenceScreen mPrefScreen;
+    INetworkQueryService mNetworkQueryService;
     private int mSubId;
 
     public GsmUmtsOptions(PreferenceFragment prefFragment, PreferenceScreen prefScreen,
-            final int subId) {
+            final int subId, INetworkQueryService queryService) {
         mPrefFragment = prefFragment;
         mPrefScreen = prefScreen;
         mSubId = subId;
+        mNetworkQueryService = queryService;
         create();
     }
 
     protected void create() {
         mPrefFragment.addPreferencesFromResource(R.xml.gsm_umts_options);
         mButtonAPNExpand = (PreferenceScreen) mPrefScreen.findPreference(BUTTON_APN_EXPAND_KEY);
+
+        mNetworkOperator = (NetworkOperators) mPrefScreen
+                .findPreference(NetworkOperators.CATEGORY_NETWORK_OPERATORS_KEY);
+        mNetworkOperator.initialize(mPrefScreen, mSubId, mNetworkQueryService);
+
         boolean removedAPNExpand = false;
-        mButtonOperatorSelectionExpand =
-                (PreferenceScreen) mPrefScreen.findPreference(BUTTON_OPERATOR_SELECTION_EXPAND_KEY);
+        boolean removedNetworkOperatorsCategory = false;
         if (PhoneFactory.getDefaultPhone().getPhoneType() != PhoneConstants.PHONE_TYPE_GSM) {
             log("Not a GSM phone");
             mButtonAPNExpand.setEnabled(false);
-            mButtonOperatorSelectionExpand.setEnabled(false);
+            mNetworkOperator.setEnabled(false);
         } else {
             log("Not a CDMA phone");
             Resources res = mPrefFragment.getResources();
@@ -83,17 +92,19 @@ public class GsmUmtsOptions {
             if (!carrierConfig.getBoolean(
                     CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL)) {
                 mPrefScreen.removePreference(mPrefScreen
-                        .findPreference(BUTTON_OPERATOR_SELECTION_EXPAND_KEY));
+                        .findPreference(NetworkOperators.CATEGORY_NETWORK_OPERATORS_KEY));
+                removedNetworkOperatorsCategory = true;
             }
 
             if (carrierConfig.getBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL)) {
                 if (PhoneFactory.getDefaultPhone().isCspPlmnEnabled()) {
                     log("[CSP] Enabling Operator Selection menu.");
-                    mButtonOperatorSelectionExpand.setEnabled(true);
+                    mNetworkOperator.setEnabled(true);
                 } else {
                     log("[CSP] Disabling Operator Selection menu.");
                     mPrefScreen.removePreference(mPrefScreen
-                          .findPreference(BUTTON_OPERATOR_SELECTION_EXPAND_KEY));
+                            .findPreference(NetworkOperators.CATEGORY_NETWORK_OPERATORS_KEY));
+                    removedNetworkOperatorsCategory = true;
                 }
             }
 
@@ -124,25 +135,22 @@ public class GsmUmtsOptions {
                         }
             });
         }
-        if (mPrefScreen.findPreference(BUTTON_OPERATOR_SELECTION_EXPAND_KEY) != null) {
-            mButtonOperatorSelectionExpand.setOnPreferenceClickListener(
-                    new Preference.OnPreferenceClickListener() {
-                        @Override
-                        public boolean onPreferenceClick(Preference preference) {
-                            final Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.setComponent(new ComponentName("com.android.phone",
-                                    "com.android.phone.NetworkSetting"));
-                            intent.putExtra(EXTRA_SUB_ID, mSubId);
-                            mPrefFragment.startActivity(intent);
-                            return true;
-                        }
-            });
+
+        if (!removedNetworkOperatorsCategory) {
+            mButtonAutoSelect = (TwoStatePreference) mPrefScreen
+                    .findPreference(NetworkOperators.BUTTON_AUTO_SELECT_KEY);
+            mButtonOperatorSelection = (NetworkSelectListPreference) mPrefScreen
+                    .findPreference(NetworkOperators.BUTTON_NETWORK_SELECT_KEY);
         }
     }
 
     public boolean preferenceTreeClick(Preference preference) {
-        log("preferenceTreeClick: return false");
-        return false;
+        if (preference == mButtonAutoSelect || preference == mButtonOperatorSelection) {
+            return true;
+        } else {
+            log("preferenceTreeClick: return false");
+            return false;
+        }
     }
 
     protected void log(String s) {

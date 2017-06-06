@@ -337,6 +337,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.NETWORK_OPERATOR_SETTINGS" />
                 <action android:name="android.settings.DATA_ROAMING_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -348,17 +349,6 @@
         <!-- networks setting -->
         <!-- service to handle network query requests sent to RIL -->
         <service android:name="NetworkQueryService" />
-
-        <activity android:name="NetworkSetting"
-                android:label="@string/networks"
-                android:configChanges="orientation|screenSize|keyboardHidden"
-                android:theme="@style/NetworkOperatorsSettingsTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.settings.NETWORK_OPERATOR_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
         <activity android:name="GsmUmtsCallOptions"
                 android:label="@string/gsm_umts_options"
