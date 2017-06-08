@@ -29,10 +29,13 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.ParcelFileDescriptor;
+import android.os.RemoteException;
 import android.telephony.MbmsDownloadManager;
 import android.telephony.mbms.DownloadRequest;
+import android.telephony.mbms.FileInfo;
+import android.telephony.mbms.FileServiceInfo;
 import android.telephony.mbms.IDownloadCallback;
-import android.telephony.mbms.MbmsDownloadReceiver;
+import android.telephony.mbms.IMbmsDownloadManagerCallback;
 import android.telephony.mbms.MbmsException;
 import android.telephony.mbms.UriPathPair;
 import android.telephony.mbms.vendor.IMbmsDownloadService;
@@ -44,32 +47,110 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class EmbmsSampleDownloadService extends Service {
+    private static final Set<String> ALLOWED_PACKAGES = new HashSet<String>() {{
+        add("com.android.phone.testapps.embmsdownload");
+    }};
+
     private static final String LOG_TAG = "EmbmsSampleDownload";
+    private static final long SEND_FILE_SERVICE_INFO_DELAY = 500;
     private static final long DOWNLOAD_DELAY_MS = 1000;
+    private static final long FILE_SEPARATION_DELAY = 500;
 
     private final IMbmsDownloadService mBinder = new MbmsDownloadServiceBase() {
         @Override
-        public int download(DownloadRequest downloadRequest, IDownloadCallback listener) {
-            // TODO: move this package name finding logic to initialize()
+        public void initialize(String appName, int subId, IMbmsDownloadManagerCallback listener) {
             String[] packageNames = getPackageManager().getPackagesForUid(Binder.getCallingUid());
             if (packageNames == null) {
                 throw new SecurityException("No matching packages found for your UID");
             }
-
-            if (packageNames.length != 1) {
-                throw new IllegalStateException("More than one package found for your UID");
+            boolean isUidAllowed = Arrays.stream(packageNames).anyMatch(ALLOWED_PACKAGES::contains);
+            if (!isUidAllowed) {
+                throw new SecurityException("No packages for your UID are allowed to use this " +
+                        "service");
             }
 
-            String packageName = packageNames[0];
+            FrontendAppIdentifier appKey =
+                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subId);
+            if (!mAppCallbacks.containsKey(appKey)) {
+                mAppCallbacks.put(appKey, listener);
+                ComponentName appReceiver = MbmsDownloadManager.getAppReceiverFromUid(
+                        EmbmsSampleDownloadService.this, Binder.getCallingUid());
+                mAppReceivers.put(appKey, appReceiver);
+            } else {
+                // Stick the error callback on a different thread so that we're not calling back
+                // to the app on the same thread.
+                mHandler.post(() -> {
+                    try {
+                        listener.error(MbmsException.ERROR_ALREADY_INITIALIZED, "");
+                    } catch (RemoteException e) {
+                        // ignore, it was an error anyway
+                    }
+                });
+            }
+        }
 
-            mHandler.post(() -> sendFdRequest(downloadRequest, packageName, 1));
+        @Override
+        public int getFileServices(String appName, int subscriptionId,
+                List<String> serviceClasses) throws RemoteException {
+            FrontendAppIdentifier appKey =
+                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            checkInitialized(appKey);
+
+            List<FileServiceInfo> serviceInfos =
+                    FileServiceRepository.getInstance(EmbmsSampleDownloadService.this)
+                    .getFileServicesForClasses(serviceClasses);
+
+            mHandler.postDelayed(() -> {
+                try {
+                    IMbmsDownloadManagerCallback appCallback = mAppCallbacks.get(appKey);
+                    appCallback.fileServicesUpdated(serviceInfos);
+                } catch (RemoteException e) {
+                    // TODO: call dispose
+                }
+            }, SEND_FILE_SERVICE_INFO_DELAY);
+            return MbmsException.SUCCESS;
+        }
+
+        @Override
+        public int setTempFileRootDirectory(String appName, int subscriptionId,
+                String rootDirectoryPath) throws RemoteException {
+            FrontendAppIdentifier appKey =
+                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            checkInitialized(appKey);
+
+            if (mDoesAppHaveActiveDownload.getOrDefault(appKey, false)) {
+                return MbmsException.ERROR_CANNOT_CHANGE_TEMP_FILE_ROOT;
+            }
+            mAppTempFileRoots.put(appKey, rootDirectoryPath);
+            return MbmsException.SUCCESS;
+        }
+
+        @Override
+        public int download(DownloadRequest downloadRequest, IDownloadCallback listener) {
+            FrontendAppIdentifier appKey = new FrontendAppIdentifier(
+                    Binder.getCallingUid(), downloadRequest.getAppName(),
+                    downloadRequest.getSubscriptionId());
+            checkInitialized(appKey);
+
+            mHandler.post(() -> sendFdRequest(downloadRequest, appKey));
             return MbmsException.SUCCESS;
         }
     };
+
+    private final Map<FrontendAppIdentifier, IMbmsDownloadManagerCallback> mAppCallbacks =
+            new HashMap<>();
+    private final Map<FrontendAppIdentifier, ComponentName> mAppReceivers = new HashMap<>();
+    private final Map<FrontendAppIdentifier, String> mAppTempFileRoots = new HashMap<>();
+    private final Map<FrontendAppIdentifier, Boolean> mDoesAppHaveActiveDownload =
+            new ConcurrentHashMap<>();
 
     private HandlerThread mHandlerThread;
     private Handler mHandler;
@@ -82,14 +163,15 @@ public class EmbmsSampleDownloadService extends Service {
         return mBinder.asBinder();
     }
 
-    private void sendFdRequest(DownloadRequest request, String packageName, int numFds) {
+    private void sendFdRequest(DownloadRequest request, FrontendAppIdentifier appKey) {
+        int numFds = getNumFdsNeededForRequest(request);
         // Compose the FILE_DESCRIPTOR_REQUEST_INTENT
         Intent requestIntent = new Intent(MbmsDownloadManager.ACTION_FILE_DESCRIPTOR_REQUEST);
         requestIntent.putExtra(MbmsDownloadManager.EXTRA_REQUEST, request);
         requestIntent.putExtra(MbmsDownloadManager.EXTRA_FD_COUNT, numFds);
-        ComponentName mbmsReceiverComponent = new ComponentName(packageName,
-                MbmsDownloadReceiver.class.getCanonicalName());
-        requestIntent.setComponent(mbmsReceiverComponent);
+        requestIntent.putExtra(MbmsDownloadManager.EXTRA_TEMP_FILE_ROOT,
+                mAppTempFileRoots.get(appKey));
+        requestIntent.setComponent(mAppReceivers.get(appKey));
 
         // Send as an ordered broadcast, using a BroadcastReceiver to capture the result
         // containing UriPathPairs.
@@ -102,7 +184,7 @@ public class EmbmsSampleDownloadService extends Service {
                         // This delay is to emulate the time it'd usually take to fetch the file
                         // off the network.
                         mHandler.postDelayed(
-                                () -> performDownload(request, packageName, resultExtras),
+                                () -> performDownload(request, appKey, resultExtras),
                                 DOWNLOAD_DELAY_MS);
                     }
                 },
@@ -112,25 +194,52 @@ public class EmbmsSampleDownloadService extends Service {
                 null /* initialExtras */);
     }
 
-    private void performDownload(DownloadRequest request, String packageName, Bundle extras) {
-        int result = MbmsDownloadManager.RESULT_SUCCESSFUL;
+    private void performDownload(DownloadRequest request, FrontendAppIdentifier appKey,
+            Bundle extras) {
         List<UriPathPair> tempFiles = extras.getParcelableArrayList(
                 MbmsDownloadManager.EXTRA_FREE_URI_LIST);
-        Uri tempFilePathUri = tempFiles.get(0).getFilePathUri();
-        Uri freeTempFileUri = tempFiles.get(0).getContentUri();
+        List<FileInfo> filesToDownload = request.getFileServiceInfo().getFiles();
 
+        if (tempFiles.size() != filesToDownload.size()) {
+            Log.w(LOG_TAG, "Different numbers of temp files and files to download...");
+        }
+
+        // Go through the files one-by-one and send them to the frontend app with a delay between
+        // each one.
+        mDoesAppHaveActiveDownload.put(appKey, true);
+        for (int i = 0; i < tempFiles.size(); i++) {
+            if (i >= filesToDownload.size()) {
+                break;
+            }
+            UriPathPair tempFile = tempFiles.get(i);
+            FileInfo fileToDownload = filesToDownload.get(i);
+            final boolean isLastFile = i == tempFiles.size() - 1;
+            mHandler.postDelayed(() -> {
+                downloadSingleFile(appKey, request, tempFile, fileToDownload);
+                if (isLastFile) {
+                    mDoesAppHaveActiveDownload.put(appKey, false);
+                }
+            }, FILE_SEPARATION_DELAY * i);
+        }
+    }
+
+    private void downloadSingleFile(FrontendAppIdentifier appKey, DownloadRequest request,
+            UriPathPair tempFile, FileInfo fileToDownload) {
+        int result = MbmsDownloadManager.RESULT_SUCCESSFUL;
         try {
             // Get the ParcelFileDescriptor for the single temp file we requested
-            ParcelFileDescriptor tempFile = getContentResolver().openFileDescriptor(
-                    freeTempFileUri, "rw");
+            ParcelFileDescriptor tempFileFd = getContentResolver().openFileDescriptor(
+                    tempFile.getContentUri(), "rw");
             OutputStream destinationStream =
-                    new ParcelFileDescriptor.AutoCloseOutputStream(tempFile);
+                    new ParcelFileDescriptor.AutoCloseOutputStream(tempFileFd);
 
             // This is how you get the native fd
-            Log.i(LOG_TAG, "Native fd: " + tempFile.getFd());
+            Log.i(LOG_TAG, "Native fd: " + tempFileFd.getFd());
 
+            int resourceId = FileServiceRepository.getInstance(this)
+                    .getResourceForFileUri(fileToDownload.getUri());
             // Open the picture we have in our res/raw directory
-            InputStream image = getResources().openRawResource(R.raw.s1);
+            InputStream image = getResources().openRawResource(resourceId);
 
             // Copy it into the temp file in the app's file space (crudely)
             byte[] imageBuffer = new byte[image.available()];
@@ -144,16 +253,17 @@ public class EmbmsSampleDownloadService extends Service {
         Intent downloadResultIntent =
                 new Intent(MbmsDownloadManager.ACTION_DOWNLOAD_RESULT_INTERNAL);
         downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_REQUEST, request);
-        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_FINAL_URI, tempFilePathUri);
+        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_FINAL_URI,
+                tempFile.getFilePathUri());
+        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_FILE_INFO, fileToDownload);
+        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_TEMP_FILE_ROOT,
+                mAppTempFileRoots.get(appKey));
         ArrayList<Uri> tempFileList = new ArrayList<>(1);
-        tempFileList.add(tempFilePathUri);
+        tempFileList.add(tempFile.getFilePathUri());
         downloadResultIntent.getExtras().putParcelableArrayList(
                 MbmsDownloadManager.EXTRA_TEMP_LIST, tempFileList);
         downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_RESULT, result);
-
-        ComponentName mbmsReceiverComponent = new ComponentName(packageName,
-                MbmsDownloadReceiver.class.getCanonicalName());
-        downloadResultIntent.setComponent(mbmsReceiverComponent);
+        downloadResultIntent.setComponent(mAppReceivers.get(appKey));
 
         sendOrderedBroadcast(downloadResultIntent,
                 null, // receiverPermission
@@ -168,5 +278,15 @@ public class EmbmsSampleDownloadService extends Service {
                 Activity.RESULT_OK,
                 null, // initialData
                 null /* initialExtras */);
+    }
+
+    private void checkInitialized(FrontendAppIdentifier appKey) {
+        if (!mAppCallbacks.containsKey(appKey)) {
+            throw new IllegalStateException("Not yet initialized");
+        }
+    }
+
+    private int getNumFdsNeededForRequest(DownloadRequest request) {
+        return request.getFileServiceInfo().getFiles().size();
     }
 }
