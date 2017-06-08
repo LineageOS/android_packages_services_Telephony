@@ -36,6 +36,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
+import android.os.PersistableBundle;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.UserHandle;
@@ -54,12 +55,14 @@ import android.telephony.IccOpenLogicalChannelResponse;
 import android.telephony.ModemActivityInfo;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.RadioAccessFamily;
+import android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyHistogram;
 import android.telephony.TelephonyManager;
+import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
 import android.text.TextUtils;
 import android.util.ArraySet;
@@ -282,6 +285,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                      Pair<String, ResultReceiver> ussdObject = (Pair) request.argument;
                      String ussdRequest =  ussdObject.first;
                      ResultReceiver wrappedCallback = ussdObject.second;
+
+                     if (!isUssdApiAllowed(request.subId)) {
+                         // Carrier does not support use of this API, return failure.
+                         Rlog.w(LOG_TAG, "handleUssdRequest: carrier does not support USSD apis.");
+                         UssdResponse response = new UssdResponse(ussdRequest, null);
+                         Bundle returnData = new Bundle();
+                         returnData.putParcelable(TelephonyManager.USSD_RESPONSE, response);
+                         wrappedCallback.send(TelephonyManager.USSD_RETURN_FAILURE, returnData);
+
+                         request.result = true;
+                         synchronized (request) {
+                             request.notifyAll();
+                         }
+                         return;
+                     }
+
                      try {
                          request.result = phone != null ?
                                  phone.handleUssdRequest(ussdRequest, wrappedCallback)
@@ -3806,6 +3825,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (phone != null) {
             phone.setSimPowerState(powerUp);
         }
+    }
+
+    private boolean isUssdApiAllowed(int subId) {
+        CarrierConfigManager configManager =
+                (CarrierConfigManager) mPhone.getContext().getSystemService(
+                        Context.CARRIER_CONFIG_SERVICE);
+        if (configManager == null) {
+            return false;
+        }
+        PersistableBundle pb = configManager.getConfigForSubId(subId);
+        if (pb == null) {
+            return false;
+        }
+        return pb.getBoolean(
+                CarrierConfigManager.KEY_ALLOW_USSD_REQUESTS_VIA_TELEPHONY_MANAGER_BOOL);
     }
 
     /**
