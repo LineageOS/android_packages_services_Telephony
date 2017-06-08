@@ -23,7 +23,14 @@
             android:launchMode="singleInstance"
             androidprv:systemUserOnly="true">
       <intent-filter>
-          <action android:name="android.telephony.action.EmbmsStreaming" />
+        <action android:name="android.telephony.action.EmbmsStreaming" />
+      </intent-filter>
+    </service>
+    <service android:name="com.android.phone.testapps.embmsmw.EmbmsSampleDownloadService"
+             android:launchMode="singleInstance"
+             androidprv:systemUserOnly="true">
+      <intent-filter>
+        <action android:name="android.telephony.action.EmbmsDownload" />
       </intent-filter>
     </service>
   </application>
