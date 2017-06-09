@@ -19,7 +19,6 @@ package com.android.phone;
 import static com.android.internal.telephony.PhoneConstants.SUBSCRIPTION_KEY;
 
 import android.Manifest.permission;
-import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
@@ -35,7 +34,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.os.Process;
 import android.os.PersistableBundle;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
@@ -1629,46 +1627,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public Bundle getCellLocation(String callingPackage) {
-        enforceFineOrCoarseLocationPermission("getCellLocation");
-
-        // OP_COARSE_LOCATION controls both fine and coarse location.
-        if (mAppOps.noteOp(AppOpsManager.OP_COARSE_LOCATION, Binder.getCallingUid(),
-                callingPackage) != AppOpsManager.MODE_ALLOWED) {
-            log("getCellLocation: returning null; mode != allowed");
+        if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
+                callingPackage, Binder.getCallingUid())) {
             return null;
         }
 
-        if (checkIfCallerIsSelfOrForegroundUser() ||
-                checkCallerInteractAcrossUsersFull()) {
-            if (DBG_LOC) log("getCellLocation: is active user");
-            Bundle data = new Bundle();
-            Phone phone = getPhone(mSubscriptionController.getDefaultDataSubId());
-            if (phone == null) {
-                return null;
-            }
-
-            WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
-            phone.getCellLocation(workSource).fillInNotifierBundle(data);
-            return data;
-        } else {
-            log("getCellLocation: suppress non-active user");
+        if (DBG_LOC) log("getCellLocation: is active user");
+        Bundle data = new Bundle();
+        Phone phone = getPhone(mSubscriptionController.getDefaultDataSubId());
+        if (phone == null) {
             return null;
         }
-    }
 
-    private void enforceFineOrCoarseLocationPermission(String message) {
-        try {
-            mApp.enforceCallingOrSelfPermission(
-                    android.Manifest.permission.ACCESS_FINE_LOCATION, null);
-        } catch (SecurityException e) {
-            // If we have ACCESS_FINE_LOCATION permission, skip the check for ACCESS_COARSE_LOCATION
-            // A failure should throw the SecurityException from ACCESS_COARSE_LOCATION since this
-            // is the weaker precondition
-            mApp.enforceCallingOrSelfPermission(
-                    android.Manifest.permission.ACCESS_COARSE_LOCATION, message);
-        }
+        WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
+        phone.getCellLocation(workSource).fillInNotifierBundle(data);
+        return data;
     }
-
 
     @Override
     public void enableLocationUpdates() {
@@ -1703,11 +1677,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     @SuppressWarnings("unchecked")
     public List<NeighboringCellInfo> getNeighboringCellInfo(String callingPackage) {
-        enforceFineOrCoarseLocationPermission("getNeighboringCellInfo");
-
-        // OP_COARSE_LOCATION controls both fine and coarse location.
-        if (mAppOps.noteOp(AppOpsManager.OP_COARSE_LOCATION, Binder.getCallingUid(),
-                callingPackage) != AppOpsManager.MODE_ALLOWED) {
+        if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
+                callingPackage, Binder.getCallingUid())) {
             return null;
         }
 
@@ -1716,52 +1687,37 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return null;
         }
 
-        if (checkIfCallerIsSelfOrForegroundUser() ||
-                checkCallerInteractAcrossUsersFull()) {
-            if (DBG_LOC) log("getNeighboringCellInfo: is active user");
+        if (DBG_LOC) log("getNeighboringCellInfo: is active user");
 
-            ArrayList<NeighboringCellInfo> cells = null;
+        ArrayList<NeighboringCellInfo> cells = null;
 
-            WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
-            try {
-                cells = (ArrayList<NeighboringCellInfo>) sendRequest(
-                        CMD_HANDLE_NEIGHBORING_CELL, workSource,
-                        SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-            } catch (RuntimeException e) {
-                Log.e(LOG_TAG, "getNeighboringCellInfo " + e);
-            }
-            return cells;
-        } else {
-            if (DBG_LOC) log("getNeighboringCellInfo: suppress non-active user");
-            return null;
+        WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
+        try {
+            cells = (ArrayList<NeighboringCellInfo>) sendRequest(
+                    CMD_HANDLE_NEIGHBORING_CELL, workSource,
+                    SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        } catch (RuntimeException e) {
+            Log.e(LOG_TAG, "getNeighboringCellInfo " + e);
         }
+        return cells;
     }
 
 
     @Override
     public List<CellInfo> getAllCellInfo(String callingPackage) {
-        enforceFineOrCoarseLocationPermission("getAllCellInfo");
-
-        // OP_COARSE_LOCATION controls both fine and coarse location.
-        if (mAppOps.noteOp(AppOpsManager.OP_COARSE_LOCATION, Binder.getCallingUid(),
-                callingPackage) != AppOpsManager.MODE_ALLOWED) {
+        if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
+                callingPackage, Binder.getCallingUid())) {
             return null;
         }
 
-        if (checkIfCallerIsSelfOrForegroundUser() ||
-                checkCallerInteractAcrossUsersFull()) {
-            if (DBG_LOC) log("getAllCellInfo: is active user");
-            WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
-            List<CellInfo> cellInfos = new ArrayList<CellInfo>();
-            for (Phone phone : PhoneFactory.getPhones()) {
-                final List<CellInfo> info = phone.getAllCellInfo(workSource);
-                if (info != null) cellInfos.addAll(info);
-            }
-            return cellInfos;
-        } else {
-            if (DBG_LOC) log("getAllCellInfo: suppress non-active user");
-            return null;
+        if (DBG_LOC) log("getAllCellInfo: is active user");
+        WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
+        List<CellInfo> cellInfos = new ArrayList<CellInfo>();
+        for (Phone phone : PhoneFactory.getPhones()) {
+            final List<CellInfo> info = phone.getAllCellInfo(workSource);
+            if (info != null) cellInfos.addAll(info);
         }
+        return cellInfos;
     }
 
     @Override
@@ -1801,47 +1757,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     //
     // Internal helper methods.
     //
-
-    /**
-     * Returns true if the caller holds INTERACT_ACROSS_USERS_FULL.
-     */
-    private boolean checkCallerInteractAcrossUsersFull() {
-        return mPhone.getContext().checkCallingOrSelfPermission(
-                android.Manifest.permission.INTERACT_ACROSS_USERS_FULL)
-                == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private static boolean checkIfCallerIsSelfOrForegroundUser() {
-        boolean ok;
-
-        boolean self = Binder.getCallingUid() == Process.myUid();
-        if (!self) {
-            // Get the caller's user id then clear the calling identity
-            // which will be restored in the finally clause.
-            int callingUser = UserHandle.getCallingUserId();
-            long ident = Binder.clearCallingIdentity();
-
-            try {
-                // With calling identity cleared the current user is the foreground user.
-                int foregroundUser = ActivityManager.getCurrentUser();
-                ok = (foregroundUser == callingUser);
-                if (DBG_LOC) {
-                    log("checkIfCallerIsSelfOrForegoundUser: foregroundUser=" + foregroundUser
-                            + " callingUser=" + callingUser + " ok=" + ok);
-                }
-            } catch (Exception ex) {
-                if (DBG_LOC) loge("checkIfCallerIsSelfOrForegoundUser: Exception ex=" + ex);
-                ok = false;
-            } finally {
-                Binder.restoreCallingIdentity(ident);
-            }
-        } else {
-            if (DBG_LOC) log("checkIfCallerIsSelfOrForegoundUser: is self");
-            ok = true;
-        }
-        if (DBG_LOC) log("checkIfCallerIsSelfOrForegoundUser: ret=" + ok);
-        return ok;
-    }
 
     /**
      * Make sure the caller has the MODIFY_PHONE_STATE permission.
