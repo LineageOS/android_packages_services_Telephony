@@ -16,10 +16,6 @@
 
 package com.android.services.telephony;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
@@ -34,13 +30,7 @@ import android.text.TextUtils;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Connection;
-import com.android.internal.telephony.DriverCall;
-import com.android.internal.telephony.GsmCdmaCallTracker;
-import com.android.internal.telephony.GsmCdmaConnection;
-import com.android.internal.telephony.GsmCdmaPhone;
 import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.TelephonyComponentFactory;
-import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.cdma.CdmaCallWaitingNotification;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsExternalConnection;
@@ -324,6 +314,21 @@ final class PstnIncomingCallNotifier {
             }
 
             telephonyConnection.setOriginalConnection(unknown);
+
+            // Do not call hang up if the original connection is an ImsExternalConnection, it is
+            // not supported.
+            if (original instanceof ImsExternalConnection) {
+                return true;
+            }
+            // Since we have set the new connection as the original connection, disconnect the old
+            // one, since it is no longer needed.
+            try {
+                original.hangup();
+                Log.i(this, "Hung up original connection: " + original);
+            } catch (CallStateException e) {
+                Log.w(this, "Couldn't hang up original connection: " + original + ", Error: "
+                        + e.getError());
+            }
             return true;
         }
         return false;
