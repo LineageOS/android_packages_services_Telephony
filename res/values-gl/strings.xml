@@ -172,10 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"Rexistrado na rede"</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Escolle un operador de rede"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Busca todas as redes dispoñibles"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"Seleccionar rede automaticamente"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Rede"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Rexistro automático..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tipo de rede preferido"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Cambiar o modo de funcionamento da rede"</string>
@@ -212,37 +210,28 @@
     <item msgid="1524224863879435516">"Só GSM"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA preferido"</item>
   </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="call_category" msgid="5863978196309462052">"Chamando"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Rede"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Modo LTE 4G mellorado"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Chamadas avanzadas"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Usa os servizos LTE para mellorar a comunicación por voz e outras (recomendado)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Datos activados"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Permitir o uso de datos"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Atención"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"Itinerancia"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Conéctase aos servizos de datos durante a itinerancia"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Conéctase aos servizos de datos durante a itinerancia"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Perdiches a conectividade de datos debido a que abandonaches a túa rede doméstica coa itinerancia de datos desactivada."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"É posible que se apliquen custos elevados."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permitir a itinerancia de datos?"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="data_usage_title" msgid="8759619109516889802">"Uso de datos"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"Datos móbiles usados no período do <xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operador"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Datos móbiles"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Acceder aos datos cunha rede móbil"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Chamadas por wifi"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Videochamadas do operador"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Opcións de GSM/UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"Opcións de CDMA"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Uso de datos"</string>
@@ -605,4 +594,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"Os PIN non coinciden"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"Actualizouse o PIN do correo de voz"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"Non se puido establecer o PIN"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"Desactivouse a itinerancia de datos"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"Activouse a itinerancia de datos"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"Actualmente estás en itinerancia, pero necesitas un plan de datos"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Actualmente estás en itineracia, e tes un plan de datos activado"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Non queda ningún dato móbil"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Non queda ningún dato móbil"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Engade datos móbiles a través de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Non hai ningún plan de itinerancia"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Engade un plan de itinerancia a través de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Podes engadir datos móbiles ou un plan de itinerancia a través do teu operador, <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Queres engadir datos?"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"É posible que necesites engadir datos a través de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"ENGADIR DATOS"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"CANCELAR"</string>
 </resources>

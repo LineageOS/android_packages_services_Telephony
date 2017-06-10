@@ -172,10 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"Đã đăng ký trên mạng."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Chọn nhà cung cấp dịch vụ mạng"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Tìm kiếm tất cả mạng khả dụng"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"Tự động chọn mạng"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Mạng"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Đăng ký tự động..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Loại mạng ưa thích"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Thay đổi chế độ hoạt động của mạng"</string>
@@ -212,37 +210,28 @@
     <item msgid="1524224863879435516">"Chỉ GSM"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA được ưa thích"</item>
   </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="call_category" msgid="5863978196309462052">"Đang gọi"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Mạng"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Chế độ 4G LTE tăng cường"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Tính năng gọi nâng cao"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Sử dụng dịch vụ LTE để cải tiến tính năng thoại và các phương thức giao tiếp khác (khuyến nghị)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Đã bật dữ liệu"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Cho phép sử dụng dữ liệu"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Chú ý"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"Chuyển vùng"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Bạn đã mất kết nối dữ liệu vì bạn đã tắt chuyển vùng dữ liệu của mạng gia đình của mình."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Bạn có thể phải chịu các khoản phí đáng kể."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Cho phép chuyển vùng dữ liệu?"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="data_usage_title" msgid="8759619109516889802">"Mức sử dụng dữ liệu"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"Đã sử dụng <xliff:g id="ID_1">%1$s</xliff:g> dữ liệu di động trong khoảng thời gian từ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Nhà cung cấp dịch vụ"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Dữ liệu di động"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Truy cập dữ liệu bằng mạng di động"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Gọi qua Wi-Fi"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Tính năng gọi điện video của nhà cung cấp dịch vụ"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Tùy chọn GSM/UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"Tùy chọn CDMA"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Sử dụng dữ liệu"</string>
@@ -605,4 +594,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"Các mã PIN không khớp"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"Đã cập nhật mã PIN thư thoại"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"Không thể đặt mã PIN"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"Đã tắt chuyển vùng dữ liệu"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"Đã bật chuyển vùng dữ liệu"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"Hiện đang chuyển vùng, cần gói dữ liệu"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Hiện đang chuyển vùng, gói dữ liệu hoạt động"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Không còn dữ liệu di động"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Không còn dữ liệu di động"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Thêm dữ liệu di động qua <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Không có gói chuyển vùng nào"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Thêm gói chuyển vùng qua <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Bạn có thể thêm gói chuyển vùng hoặc gói dữ liệu di động thông qua nhà cung cấp dịch vụ vủa bạn, <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Thêm dữ liệu?"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Bạn có thể phải thêm dữ liệu qua <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"THÊM DỮ LIỆU"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"HỦY"</string>
 </resources>

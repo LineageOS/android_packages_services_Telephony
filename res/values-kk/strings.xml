@@ -172,10 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"Желіге тіркелді."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Желі операторын таңдау"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Барлық қол жетімді желілерді іздеу"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"Желіні автоматты түрде таңдау"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Желі"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Aвтоматты тіркелу…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Қалаулы желі түрі"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Желі жұмысының режимін өзгерту"</string>
@@ -212,37 +210,28 @@
     <item msgid="1524224863879435516">"GSM (ұялы байланыстың жаһандық жүйесі) ғана"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA қалаулы"</item>
   </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="call_category" msgid="5863978196309462052">"Қоңырау"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Желі"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Жақсартылған 4G LTE режимі"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Кеңейтілген қоңырау шалу мүмкіндіктері"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Дауыстық және басқа байланыстарды жақсарту үшін LTE қызметтерін пайдалану (ұсынылады)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Дерекқор қосылған"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Деректерді пайдалануға рұқсат ету"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Назар аударыңыз"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"Роуминг"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Роуминг кезінде дерек қызметтеріне қосу"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Роуминг кезінде дерекқор қызметтеріне қосу"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Дерекқор байланысын жоғалтып алдыңыз, себебі үйдегі желінің дерекқор роумингін өшірілген күйінде қалдырғансыз."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Сізден елеулі ақылар алынуы мүмкін."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Деректер роумингіне рұқсат берілсін бе?"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="data_usage_title" msgid="8759619109516889802">"Деректер трафигі"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> аралығында <xliff:g id="ID_1">%1$s</xliff:g> мобильдік дерек қолданылды"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Оператор"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Мобильдік деректер"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Деректерге мобильдік желі арқылы кіру"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi қоңыраулары"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Оператор бейне қоңыраулары"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS опциялары"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA (кең жолақты әр түрлі кодты бірнеше қол жетімділік) опциялары"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Дерекқор қолдану"</string>
@@ -605,4 +594,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"PIN кодтары сәйкес келмейді"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"Дауыстық пошта PIN коды жаңартылды"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"PIN кодын орнату мүмкін болмады"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"Роуминг өшірулі"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"Роуминг қосулы"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"Роуминг қызметі жұмыс істеп тұр, бірақ баланста ақша жоқ"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Роуминг қызметі жұмыс істеп тұр, мобильдік байланыс бар"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Мобильдік байланыс балансында ақша жоқ"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Мобильдік байланыс балансында ақша жоқ"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Мобильдік байланыс жоспарын <xliff:g id="PROVIDER_NAME">%s</xliff:g> арқылы қосу"</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Роуминг балансында ақша жоқ"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Роуминг жоспарын <xliff:g id="PROVIDER_NAME">%s</xliff:g> арқылы қосу"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Мобильдік немесе роуминг жоспарын <xliff:g id="PROVIDER_NAME">%s</xliff:g> операторы арқылы қосуға болады."</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Жоспар қосу қажет пе?"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Мобильдік байланыс жоспарын <xliff:g id="PROVIDER_NAME">%s</xliff:g> арқылы қосу қажет болады"</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"ЖОСПАР ҚОСУ"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ТОҚТАТУ"</string>
 </resources>

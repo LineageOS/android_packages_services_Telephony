@@ -172,10 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"Geregistreer op die netwerk."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Kies \'n netwerkoperateur"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Soek alle beskikbare netwerke"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"Kies outomaties netwerk"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Netwerk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Outomatiese registrasie..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Voorkeurnetwerktipe"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Verander die netwerkbedryfsmodus"</string>
@@ -212,37 +210,28 @@
     <item msgid="1524224863879435516">"Net GSM"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA verkies"</item>
   </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="call_category" msgid="5863978196309462052">"Oproepe"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Netwerk"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Verbeterde 4G LTE-modus"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Gevorderde oproepe"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Gebruik LTE-dienste om stem- en ander kommunikasie te verbeter (aanbeveel)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Data geaktiveer"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Laat datagebruik toe"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Aandag"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"Swerwing"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Verbind met datadienste tydens swerwing"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Verbind met datadienste tydens swerwing"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Jy het dataverbinding verloor omdat jy wegbeweeg het van jou tuisnetwerk af sonder om dataswerwing weer aan te skakel."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Dit kan baie duur wees."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Laat dataswerwing toe?"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="data_usage_title" msgid="8759619109516889802">"Datagebruik"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruik tussen <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Diensverskaffer"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobiele data"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Verkry toegang tot data deur selnetwerk te gebruik"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi-oproepe"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Diensverskaffervideo-oproepe"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM//UMTS-opsies"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA-opsies"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Datagebruik"</string>
@@ -609,4 +598,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"PIN\'s stem nie ooreen nie"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"Stemboodskap-PIN is opgedateer"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"Kan nie PIN stel nie"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"Dataswerwing is afgeskakel"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"Dataswerwing is aangeskakel"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"Swerf tans, benodig dataplan"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Swerf tans, dataplan is aktief"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Geen mobiele data oor nie"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Geen mobiele data oor nie"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Voel mobiele data by deur <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Geen swerwingplan nie"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Voeg swerwingplan by deur <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Jy kan mobiele data of ’n swerwingplan deur jou diensverskaffer, <xliff:g id="PROVIDER_NAME">%s</xliff:g>, byvoeg."</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Voeg data by?"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Jy sal dalk data deur <xliff:g id="PROVIDER_NAME">%s</xliff:g> moet byvoeg"</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"VOEG DATA BY"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"KANSELLEER"</string>
 </resources>
