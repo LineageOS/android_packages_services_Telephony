@@ -25,7 +25,6 @@ import android.os.HandlerThread;
 import android.telephony.MbmsStreamingManager;
 import android.telephony.mbms.MbmsException;
 import android.telephony.mbms.MbmsStreamingManagerCallback;
-import android.telephony.mbms.StreamingService;
 import android.telephony.mbms.StreamingServiceInfo;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +38,8 @@ import android.widget.Toast;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 
 public class EmbmsTestStreamingApp extends Activity {
     private static final String APP_NAME = "StreamingApp1";
@@ -62,11 +61,24 @@ public class EmbmsTestStreamingApp extends Activity {
             super(context, resource);
         }
 
+        private String getName(StreamingServiceInfo info) {
+            Map<Locale, String> names = info.getNames();
+            String name = "<No Name>";
+            if (!names.isEmpty()) {
+                Locale locale = Locale.getDefault();
+                if (!names.containsKey(locale)) {
+                    locale = names.keySet().iterator().next();
+                }
+                name = names.get(locale);
+            }
+            return name;
+        }
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             StreamingServiceInfo info = getItem(position);
             TextView result = new TextView(EmbmsTestStreamingApp.this);
-            result.setText(info.getNames().get(info.getLocale()));
+            result.setText(getName(info));
             return result;
         }
 
@@ -75,7 +87,7 @@ public class EmbmsTestStreamingApp extends Activity {
             StreamingServiceInfo info = getItem(position);
             TextView result = new TextView(EmbmsTestStreamingApp.this);
             String text = "name="
-                    + info.getNames().get(info.getLocale())
+                    + getName(info)
                     + ", "
                     + "serviceId="
                     + info.getServiceId();
