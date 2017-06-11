@@ -172,10 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"नेटवर्कमा दर्ता भयो।"</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"नेटवर्क संचालक रोज्नुहोस्"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"सम्पूर्ण उपलब्ध नेटवर्कहरूको खोजी कार्य गर्नुहोस्"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"नेटवर्क स्वत:छान्नुहोस्"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"नेटवर्क"</string>
     <string name="register_automatically" msgid="6017849844573519637">"स्वतः दर्ता..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"रुचाइएको सञ्जाल प्रकार"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"नेटवर्क संचालन मोड परिवर्तन गर्नुहोस्"</string>
@@ -212,37 +210,28 @@
     <item msgid="1524224863879435516">"GSM मात्र"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA रुचाइएका"</item>
   </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="call_category" msgid="5863978196309462052">"कल गर्दै"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"नेटवर्क"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Enhanced 4G LTE Mode"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"उन्नत कल गरिँदै"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"आवाज र अन्य सञ्चार सुधार गर्न LTE सेवाहरूको प्रयोग गर्नुहोस् (सिफारिस गरिएको)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"डेटा सक्षम भयो"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"डेटा उपयोगलाई अनुमति दिनुहोस्"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"ध्यानाकर्षण"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"रोमिङ"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"रोमिङको समयमा डेटा सेवामा जडान गर्नुहोस्"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"रोमिङको समयमा डेटा सेवा जडान गर्नुहोस्"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"तपाईँले डेटा गुमाउनु भएको छ किनभने तपाईँले डेटासहितको घर नेटवर्क रोमिङ बन्द गरेर छोड्नुभएको छ।"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"तपाईंलाई महत्त्वपूर्ण शुल्क लाग्न सक्छ।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिङको अनुमति दिने हो?"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="data_usage_title" msgid="8759619109516889802">"डेटाको प्रयोग"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> देखि <xliff:g id="ID_2">%2$s</xliff:g> सम्म प्रयोग भएको मोबाइल डेटा"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"सेवा प्रदायक"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"मोबाइल डेटा"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"मोबाइल नेटवर्कको प्रयोग गरी डेटामाथि पहुँच गर्नुहोस्"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi कल"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"सेवा प्रदायकको भिडियो कल"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS  विकल्पहरू"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA विकल्पहरू"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"डेटा उपयोग"</string>
@@ -605,4 +594,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"PIN हरू मेल खाँदैनन्"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"भ्वाइस मेल PIN अद्यावधिक गरियो"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"PIN सेट गर्न असमर्थ भयो"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"डेटा रोमिङ सेवालाई निष्क्रिय पारिएको छ"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"डेटा रोमिङ सेवालाई सक्रिय गरिएको छ"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"हाल रोमिङ मोडमा, डेटा योजना आवश्यक छ"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"हाल रोमिङ मोडमा, डेटा योजना सक्रिय छ"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"कुनै मोबाइल डेटा बाँकी छैन"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"कुनै मोबाइल डेटा बाँकी छैन"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> मार्फत मोबाइल डेटा थप्नुहोस्"</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"कुनै रोमिङ योजना छैन"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> मार्फत रोमिङ योजना थप्नुहोस्"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"तपाईंले आफ्नो सेवा प्रदायक मार्फत मोबाइल डेटा वा रोमिङ योजना थप्न सक्नुहुन्छ, <xliff:g id="PROVIDER_NAME">%s</xliff:g>।"</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"डेटा थप्ने हो?"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"तपाईंले <xliff:g id="PROVIDER_NAME">%s</xliff:g> मार्फत डेटा थप्नुपर्ने हुन सक्छ"</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"डेटा थप्नुहोस्"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"रद्द गर्नुहोस्"</string>
 </resources>

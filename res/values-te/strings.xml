@@ -172,10 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"నెట్‌వర్క్‌లో నమోదు అయింది."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"నెట్‌వర్క్ ఆపరేటర్‌ను ఎంచుకోండి"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"అందుబాటులో ఉన్న అన్ని నెట్‌వర్క్‌ల కోసం శోధించండి"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"నెట్‌వర్క్‌ను స్వయంచాలకంగా ఎంచుకోండి"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"నెట్‌వర్క్"</string>
     <string name="register_automatically" msgid="6017849844573519637">"స్వయంచాలక నమోదు…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ప్రాధాన్య నెట్‌వర్క్ రకం"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"నెట్‌వర్క్ ఆపరేటింగ్ మోడ్‌ను మార్చండి"</string>
@@ -212,37 +210,28 @@
     <item msgid="1524224863879435516">"GSM మాత్రమే"</item>
     <item msgid="3817924849415716259">"GSM/WCDMAకు ప్రాధాన్యత"</item>
   </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="call_category" msgid="5863978196309462052">"కాలింగ్"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"నెట్‌వర్క్"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"మెరుగుపరిచిన 4G LTE మోడ్"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"అధునాతన కాలింగ్"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"వాయిస్, ఇతర కమ్యూనికే. మెరుగుపరచడానికి LTE సేవలను ఉపయోగించు (సిఫార్సు చేయబడింది)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"డేటా ప్రారంభించబడింది"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"డేటా వినియోగాన్ని అనుమతించు"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"హెచ్చరిక"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"రోమింగ్"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"మీరు డేటా రోమింగ్ ఆపివేసి, మీ హోమ్ నెట్‌వర్క్ నుండి నిష్క్రమించినందున మీరు డేటా కనెక్టివిటీని కోల్పోయారు."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"మీకు గణనీయ ఛార్జీలు విధించబడవచ్చు."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"డేటా రోమింగ్‌ను అనుమతించాలా?"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="data_usage_title" msgid="8759619109516889802">"డేటా వినియోగం"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> మధ్య కాలంలో <xliff:g id="ID_1">%1$s</xliff:g> మొబైల్ డేటా ఉపయోగించబడింది"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"క్యారియర్"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"మొబైల్ డేటా"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"మొబైల్ నెట్‌వర్క్‌ను ఉపయోగించి డేటాను ప్రాప్యత చేయండి"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi కాలింగ్"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"క్యారియర్ వీడియో కాలింగ్"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS ఎంపికలు"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA ఎంపికలు"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"డేటా వినియోగం"</string>
@@ -605,4 +594,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"PINలు సరిపోలలేదు"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"వాయిస్ మెయిల్ PIN నవీకరించబడింది"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"PINని సెట్ చేయడం సాధ్యపడలేదు"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"డేటా రోమింగ్ ఆఫ్ చేయబడింది"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"డేటా రోమింగ్ ఆన్ చేయబడింది"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"ప్రస్తుతం రోమింగ్‌లో ఉంది, డేటా ప్లాన్ అవసరం"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"ప్రస్తుతం రోమింగ్‌లో ఉంది, డేటా ప్లాన్ సక్రియంగా ఉంది"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"మొబైల్ డేటా ఏదీ మిగిలి లేదు"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"మొబైల్ డేటా ఏదీ మిగిలి లేదు"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ద్వారా మొబైల్ డేటాను జోడించండి"</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"రోమింగ్ ప్లాన్ ఏదీ లేదు"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ద్వారా రోమింగ్ ప్లాన్‌ను జోడించండి"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"మీరు మీ క్యారియర్ <xliff:g id="PROVIDER_NAME">%s</xliff:g> ద్వారా మొబైల్ డేటా లేదా రోమింగ్ ప్లాన్‌ను జోడించవచ్చు."</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"డేటాను జోడించాలా?"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"మీరు <xliff:g id="PROVIDER_NAME">%s</xliff:g> ద్వారా డేటాను జోడించాల్సి ఉండవచ్చు"</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"డేటాను జోడించు"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"రద్దు చేయి"</string>
 </resources>
