@@ -594,10 +594,10 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"पिन का मिलान नहीं हो रहा"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"वॉइसमेल पिन अपडेट किया गया"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"पिन सेट कर पाने में असमर्थ"</string>
-    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"डेटा रोमिंग को बंद किया गया है"</string>
-    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"डेटा रोमिंग को चालू किया गया है"</string>
-    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"इस समय रोमिंग, डेटा योजना की आवश्यकता है"</string>
-    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"इस समय रोमिंग, डेटा योजना सक्रिय है"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"डेटा रोमिंग बंद है"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"डेटा रोमिंग चालू है"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"इस समय रोमिंग पर है, डेटा योजना की ज़रूरत है"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"इस समय रोमिंग पर है, डेटा योजना सक्रिय है"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"कोई मोबाइल डेटा नहीं बचा है"</string>
     <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"कोई मोबाइल डेटा नहीं बचा है"</string>
     <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> के ज़रिए मोबाइल डेटा जोड़ें"</string>

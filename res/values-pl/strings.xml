@@ -604,12 +604,12 @@
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Korzystasz z roamingu i masz aktywny pakiet danych"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Osiągnięto limit mobilnej transmisji danych"</string>
     <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Osiągnięto limit mobilnej transmisji danych"</string>
-    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Dodaj pakiet mobilnej transmisji danych przez operatora <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Dodaj pakiet mobilnej transmisji danych u operatora <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Brak funkcji roamingu"</string>
-    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Dodaj funkcję roamingu przez operatora <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Możesz dodać pakiet mobilnej transmisji danych lub funkcję roamingu przez swojego operatora (<xliff:g id="PROVIDER_NAME">%s</xliff:g>)."</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Dodaj funkcję roamingu u operatora <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Możesz dodać pakiet mobilnej transmisji danych lub funkcję roamingu u swojego operatora (<xliff:g id="PROVIDER_NAME">%s</xliff:g>)."</string>
     <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Dodać pakiet danych?"</string>
-    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Może być konieczne dodanie pakietu danych przez operatora <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Może być konieczne dodanie pakietu danych u operatora <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"DODAJ PAKIET DANYCH"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ANULUJ"</string>
 </resources>

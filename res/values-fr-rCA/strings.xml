@@ -600,8 +600,8 @@
     <string name="change_pin_system_error" msgid="8308462387154257840">"Impossible de définir le NIP"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"L\'itinérance de données est désactivée"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"L\'itinérance de données est activée"</string>
-    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"En cours d\'itinérance. Un forfait de données est requis"</string>
-    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"En cours d\'itinérance. Le forfait de données est actif"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"En itinérance. Un forfait de données est requis"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"En itinérance. Le forfait de données est actif"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Il ne reste plus de données mobiles"</string>
     <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Il ne reste plus de données mobiles"</string>
     <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Ajouter des données mobiles par l\'intermédiaire de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
