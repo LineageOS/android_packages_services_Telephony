@@ -50,6 +50,28 @@
         android:persistent="false"
         android:summary="@string/enhanced_4g_lte_mode_summary"/>
 
+    <PreferenceCategory
+        android:key="calling"
+        android:title="@string/call_category">
+
+        <PreferenceScreen
+            android:key="wifi_calling_key"
+            android:title="@string/wifi_calling_settings_title">
+
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.Settings$WifiCallingSettingsActivity"/>
+
+        </PreferenceScreen>
+
+        <SwitchPreference
+            android:key="video_calling_key"
+            android:title="@string/video_calling_settings_title"
+            android:persistent="true"/>
+
+    </PreferenceCategory>
+
+
     <PreferenceScreen
         android:key="carrier_settings_euicc_key"
         android:title="@string/carrier_settings_euicc" />
