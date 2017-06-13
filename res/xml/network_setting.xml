@@ -50,4 +50,9 @@
         android:persistent="false"
         android:summary="@string/enhanced_4g_lte_mode_summary"/>
 
+    <SwitchPreference
+        android:key="eu_roaming_key"
+        android:title="@string/eu_roaming_title"
+        android:summary="@string/eu_roaming_summary" />
+
 </PreferenceScreen>

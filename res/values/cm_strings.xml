@@ -85,4 +85,8 @@
     <string name="choose_network_mode_title">Choose network mode</string>
     <string name="choose_network_mode_system_default">System default</string>
     <string name="cdma_call_settings">CDMA call settings</string>
+
+    <!-- EU Roaming -->
+    <string name="eu_roaming_title">EU Roaming</string>
+    <string name="eu_roaming_summary">Allow roaming within the EU</string>
 </resources>
