@@ -101,6 +101,7 @@ public class MobileNetworkSettings extends PreferenceActivity
     private static final String BUTTON_OPERATOR_SELECTION_EXPAND_KEY = "button_carrier_sel_key";
     private static final String BUTTON_CARRIER_SETTINGS_KEY = "carrier_settings_key";
     private static final String BUTTON_CDMA_SYSTEM_SELECT_KEY = "cdma_system_select_key";
+    private static final String BUTTON_EU_ROAMING_KEY = "eu_roaming_key";
 
     static final int preferredNetworkMode = Phone.PREFERRED_NT_MODE;
 
@@ -117,6 +118,7 @@ public class MobileNetworkSettings extends PreferenceActivity
     private RestrictedSwitchPreference mButtonDataRoam;
     private SwitchPreference mButton4glte;
     private Preference mLteDataServicePref;
+    private SwitchPreference mButtonEuRoaming;
 
     private static final String iface = "rmnet0"; //TODO: this will go away
     private List<SubscriptionInfo> mActiveSubInfos;
@@ -250,6 +252,9 @@ public class MobileNetworkSettings extends PreferenceActivity
             return true;
         } else if (preference == mButtonDataRoam) {
             // Do not disable the preference screen if the user clicks Data roaming.
+            return true;
+        } else if (preference == mButtonEuRoaming) {
+            // Do not disable the preference screen if the user clicks EU roaming
             return true;
         } else {
             // if the button is anything but the simple toggle preference,
@@ -478,6 +483,9 @@ public class MobileNetworkSettings extends PreferenceActivity
 
         mLteDataServicePref = prefSet.findPreference(BUTTON_CDMA_LTE_DATA_SERVICE_KEY);
 
+        mButtonEuRoaming = (SwitchPreference)findPreference(BUTTON_EU_ROAMING_KEY);
+        mButtonEuRoaming.setOnPreferenceChangeListener(this);
+
         // Initialize mActiveSubInfo
         int max = mSubscriptionManager.getActiveSubscriptionInfoCountMax();
         mActiveSubInfos = new ArrayList<SubscriptionInfo>(max);
@@ -564,6 +572,7 @@ public class MobileNetworkSettings extends PreferenceActivity
             prefSet.addPreference(mButtonPreferredNetworkMode);
             prefSet.addPreference(mButtonEnabledNetworks);
             prefSet.addPreference(mButton4glte);
+            prefSet.addPreference(mButtonEuRoaming);
         }
 
         int settingsNetworkMode = SubscriptionController.getInstance().getUserNwMode(phoneSubId);
@@ -730,6 +739,10 @@ public class MobileNetworkSettings extends PreferenceActivity
         if (ps != null) {
             ps.setEnabled(hasActiveSubscriptions);
         }
+
+        boolean euRoamingEnabled = android.provider.Settings.Global.getInt(getContentResolver(),
+                android.provider.Settings.Global.EU_ROAMING, 0) != 0;
+        mButtonEuRoaming.setChecked(euRoamingEnabled);
     }
 
     @Override
@@ -881,6 +894,10 @@ public class MobileNetworkSettings extends PreferenceActivity
                 mPhone.setDataRoamingEnabled(false);
             }
             return true;
+        } else if (preference == mButtonEuRoaming) {
+            android.provider.Settings.Global.putInt(getContentResolver(),
+                    android.provider.Settings.Global.EU_ROAMING,
+                    mButtonEuRoaming.isChecked() ? 1 : 0);
         }
 
         updateBody();
