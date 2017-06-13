@@ -13,5 +13,6 @@ LOCAL_PACKAGE_NAME := EmbmsTestStreamingApp
 
 LOCAL_CERTIFICATE := platform
 LOCAL_MODULE_TAGS := tests
+#LOCAL_MODULE_TAGS := debug
 
 include $(BUILD_PACKAGE)
