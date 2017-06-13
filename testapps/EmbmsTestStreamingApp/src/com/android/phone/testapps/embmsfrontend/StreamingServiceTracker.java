@@ -34,8 +34,13 @@ public class StreamingServiceTracker {
         }
 
         @Override
-        public void streamStateChanged(int state) {
-            onStreamStateChanged(state);
+        public void streamStateUpdated(int state) {
+            onStreamStateUpdated(state);
+        }
+
+        @Override
+        public void streamMethodUpdated(int method) {
+            onStreamMethodUpdated(method);
         }
     }
 
@@ -45,6 +50,7 @@ public class StreamingServiceTracker {
 
     private int mState = StreamingService.STATE_STOPPED;
     private Uri mStreamingUri = Uri.EMPTY;
+    private int mMethod = StreamingService.UNICAST_METHOD;
 
     public StreamingServiceTracker(EmbmsTestStreamingApp appActivity, StreamingServiceInfo info) {
         mActivity = appActivity;
@@ -96,7 +102,11 @@ public class StreamingServiceTracker {
         return mStreamingUri;
     }
 
-    private void onStreamStateChanged(int state) {
+    public int getMethod() {
+        return mMethod;
+    }
+
+    private void onStreamStateUpdated(int state) {
         if (state == StreamingService.STATE_STARTED && mState != StreamingService.STATE_STARTED) {
             try {
                 mStreamingUri = mStreamingService.getPlaybackUri();
@@ -109,6 +119,13 @@ public class StreamingServiceTracker {
         }
         mState = state;
         mActivity.updateStreamingState();
+    }
+
+    private void onStreamMethodUpdated(int method) {
+        if (mMethod != method) {
+            mMethod = method;
+            mActivity.updateMethod();
+        }
     }
 
     @Override
