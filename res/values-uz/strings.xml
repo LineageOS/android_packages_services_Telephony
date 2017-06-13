@@ -172,10 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"Tarmoqda ro‘yxatdan o‘tgan."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Tarmoq operatorini tanlang"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Barcha mavjud tarmoqlarni qidirish"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"Tarmoqni avtomatik tanlash"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Tarmoq"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Avtomatik ro‘yxatdan o‘tish…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tarmoq turi"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Tarmoq rejimini o‘zgartiring"</string>
@@ -212,37 +210,28 @@
     <item msgid="1524224863879435516">"Faqat GSM"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA xohishingiz bo‘yicha"</item>
   </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="call_category" msgid="5863978196309462052">"Chaqiruvlar"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Tarmoq"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Kuchaytirilgan 4G LTE rejimi"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Keng imkoniyatli qo‘ng‘iroqlar"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Ovozli va boshqa aloqalarni yaxshilash uchun LTE xizmatlaridan foydalaning"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Internet yoqildi"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Mobil internetdan foydalanishga ruxsat"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Diqqat"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"Rouming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Rouming vaqtida mobil internetga ulanish"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Rouming vaqtida mobil internetga ulanish"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Internetga ulanish uzildi, chunki uy tarmog‘ingizni rouming internetini o\'chirgan holatda tark etdingiz."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Xarajati ancha yuqori bo‘lishi mumkin."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Internet-roumingga ruxsat berilsinmi?"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="data_usage_title" msgid="8759619109516889802">"Trafik sarfi"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> vaqt oralig‘ida sarflangan mobil trafik: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Aloqa operatori"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobil internet"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Mobil tarmoq orqali internetdan foydalanish"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi chaqiruv"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Operator tarmog‘i orqali video suhbatlar"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS sozlamalari"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA sozlamalari"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Trafik sarfi"</string>
@@ -472,7 +461,7 @@
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Uyali tarmoq mavjud emas."</string>
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Mobil tarmoqdan foydalanib bo‘lmaydi. Qo‘ng‘iroq qilish uchun Wi-Fi tarmog‘iga ulaning."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Qo‘ng‘iroq qilish uchun raqamni to‘g‘ri kiriting."</string>
-    <string name="incall_error_call_failed" msgid="5891978320269774095">"Qo‘ng‘iroq amalga oshmadi."</string>
+    <string name="incall_error_call_failed" msgid="5891978320269774095">"Chaqiruv amalga oshmadi."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Hozirgi vaqtda qo‘ng‘iroq qo‘shib bo‘lmaydi."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Bu xizmat qo‘llab-quvvatlanmaydi"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Qo‘ng‘iroqlarni almashtirib bo‘lmadi."</string>
@@ -605,4 +594,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"PIN kodlar bir-biriga mos kelmadi"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"Ovozli pochta PIN kodi yangilandi"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"PIN kodni o‘rnatib bo‘lmadi"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"Rouming internet o‘chiq"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"Rouming internet yoniq"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"Siz rouming rejimidasiz, rouming internet tarif rejasi yoqilmagan"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Siz rouming rejimidasiz, rouming internet tarif rejasi yoqilgan"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Mobil trafik tugagan"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Mobil trafik tugagan"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Mobil internet tarif rejasini yoqish uchun aloqa operatoringiz bilan (<xliff:g id="PROVIDER_NAME">%s</xliff:g>) bog‘laning."</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Rouming internet tarif rejasi yoqilmagan"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Rouming internet tarif rejasini yoqish uchun aloqa operatoringiz bilan (<xliff:g id="PROVIDER_NAME">%s</xliff:g>) bog‘laning."</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Mobil yoki rouming internet tarif rejasini yoqish uchun <xliff:g id="PROVIDER_NAME">%s</xliff:g> aloqa operatoringiz bilan bog‘laning."</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Mobil internet tarif rejasi yoqilsinmi?"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Mobil internet tarif rejasini, ehtimol, <xliff:g id="PROVIDER_NAME">%s</xliff:g> orqali yoqishingiz lozim bo‘ladi."</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"YOQISH"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"BEKOR QILISH"</string>
 </resources>
