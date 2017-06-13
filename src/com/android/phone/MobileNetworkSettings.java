@@ -161,6 +161,7 @@ public class MobileNetworkSettings extends Activity  {
                 "com.android.settings.Settings$WirelessSettingsActivity";
 
         private SubscriptionManager mSubscriptionManager;
+        private TelephonyManager mTelephonyManager;
 
         //UI objects
         private ListPreference mButtonPreferredNetworkMode;
@@ -265,9 +266,7 @@ public class MobileNetworkSettings extends Activity  {
                         getActivity().getContentResolver(),
                         android.provider.Settings.Global.SETUP_PREPAID_DATA_SERVICE_URL);
                 if (!TextUtils.isEmpty(tmpl)) {
-                    TelephonyManager tm = (TelephonyManager) getActivity().getSystemService(
-                            Context.TELEPHONY_SERVICE);
-                    String imsi = tm.getSubscriberId();
+                    String imsi = mTelephonyManager.getSubscriberId();
                     if (imsi == null) {
                         imsi = "";
                     }
@@ -316,7 +315,8 @@ public class MobileNetworkSettings extends Activity  {
         };
 
         private void initializeSubscriptions() {
-            if (getActivity().isDestroyed()) {
+            final Activity activity = getActivity();
+            if (activity == null || activity.isDestroyed()) {
                 // Process preferences in activity only if its not destroyed
                 return;
             }
@@ -472,13 +472,22 @@ public class MobileNetworkSettings extends Activity  {
         public void onCreate(Bundle icicle) {
             Log.i(LOG_TAG, "onCreate:+");
             super.onCreate(icicle);
+
+            final Activity activity = getActivity();
+            if (activity == null || activity.isDestroyed()) {
+                Log.e(LOG_TAG, "onCreate:- with no valid activity.");
+                return;
+            }
+
             mHandler = new MyHandler();
-            mUm = (UserManager) getActivity().getSystemService(Context.USER_SERVICE);
-            mSubscriptionManager = SubscriptionManager.from(getActivity());
+            mUm = (UserManager) activity.getSystemService(Context.USER_SERVICE);
+            mSubscriptionManager = SubscriptionManager.from(activity);
+            mTelephonyManager = (TelephonyManager) activity.getSystemService(
+                            Context.TELEPHONY_SERVICE);
 
             if (mUm.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
                 mUnavailable = true;
-                getActivity().setContentView(R.layout.telephony_disallowed_preference_screen);
+                activity.setContentView(R.layout.telephony_disallowed_preference_screen);
                 return;
             }
 
@@ -492,7 +501,7 @@ public class MobileNetworkSettings extends Activity  {
             mVideoCallingPref = (SwitchPreference) findPreference(BUTTON_VIDEO_CALLING_KEY);
 
             try {
-                Context con = getActivity().createPackageContext("com.android.systemui", 0);
+                Context con = activity.createPackageContext("com.android.systemui", 0);
                 int id = con.getResources().getIdentifier("config_show4GForLTE",
                         "bool", "com.android.systemui");
                 mShow4GForLTE = con.getResources().getBoolean(id);
@@ -523,7 +532,7 @@ public class MobileNetworkSettings extends Activity  {
 
             IntentFilter intentFilter = new IntentFilter(
                     TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
-            getActivity().registerReceiver(mPhoneChangeReceiver, intentFilter);
+            activity.registerReceiver(mPhoneChangeReceiver, intentFilter);
 
             initializeSubscriptions();
             Log.i(LOG_TAG, "onCreate:-");
@@ -543,7 +552,9 @@ public class MobileNetworkSettings extends Activity  {
         @Override
         public void onDestroy() {
             super.onDestroy();
-            getActivity().unregisterReceiver(mPhoneChangeReceiver);
+            if (getActivity() != null && !getActivity().isDestroyed()) {
+                getActivity().unregisterReceiver(mPhoneChangeReceiver);
+            }
         }
 
         @Override
@@ -556,6 +567,11 @@ public class MobileNetworkSettings extends Activity  {
                 return;
             }
 
+            final Activity activity = getActivity();
+            if (activity == null || activity.isDestroyed()) {
+                Log.e(LOG_TAG, "onResume:- with no valid activity.");
+                return;
+            }
             // upon resumption from the sub-activity, make sure we re-enable the
             // preferences.
             getPreferenceScreen().setEnabled(true);
@@ -570,17 +586,14 @@ public class MobileNetworkSettings extends Activity  {
                 updatePreferredNetworkUIFromDb();
             }
 
-            if (ImsManager.isVolteEnabledByPlatform(getActivity())
-                    && ImsManager.isVolteProvisionedOnDevice(getActivity())) {
-                TelephonyManager tm =
-                        (TelephonyManager) getActivity().getSystemService(
-                                Context.TELEPHONY_SERVICE);
-                tm.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+            if (ImsManager.isVolteEnabledByPlatform(activity)
+                    && ImsManager.isVolteProvisionedOnDevice(activity)) {
+                mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
             }
 
             // NOTE: Buttons will be enabled/disabled in mPhoneStateListener
-            boolean enh4glteMode = ImsManager.isEnhanced4gLteModeSettingEnabledByUser(getActivity())
-                    && ImsManager.isNonTtyOrTtyOnVolteEnabled(getActivity());
+            boolean enh4glteMode = ImsManager.isEnhanced4gLteModeSettingEnabledByUser(activity)
+                    && ImsManager.isNonTtyOrTtyOnVolteEnabled(activity);
             mButton4glte.setChecked(enh4glteMode);
 
             // Video calling and WiFi calling state might have changed.
@@ -616,7 +629,12 @@ public class MobileNetworkSettings extends Activity  {
         }
 
         private void updateBody() {
-            Context context = getActivity().getApplicationContext();
+            final Activity activity = getActivity();
+            if (activity == null || activity.isDestroyed()) {
+                Log.e(LOG_TAG, "updateBody with no valid activity.");
+                return;
+            }
+            Context context = activity.getApplicationContext();
             PreferenceScreen prefSet = getPreferenceScreen();
             boolean isLteOnCdma = mPhone.getLteOnCdmaMode() == PhoneConstants.LTE_ON_CDMA_TRUE;
             final int phoneSubId = mPhone.getSubId();
@@ -633,16 +651,14 @@ public class MobileNetworkSettings extends Activity  {
                 prefSet.addPreference(mButton4glte);
                 if (showEuiccSettings()) {
                     prefSet.addPreference(mEuiccSettingsPref);
-                    TelephonyManager tm =
-                        (TelephonyManager) getActivity()
-                                .getSystemService(Context.TELEPHONY_SERVICE);
-                    if (TextUtils.isEmpty(tm.getLine1Number())) {
+                    if (TextUtils.isEmpty(mTelephonyManager.getLine1Number())) {
                         mEuiccSettingsPref.setSummary(null);
                     } else {
                         mEuiccSettingsPref.setSummary(
                                 getEuiccSettingsSummary(
-                                        tm.getSimOperatorName(),
-                                        PhoneNumberUtils.formatNumber(tm.getLine1Number())));
+                                        mTelephonyManager.getSimOperatorName(),
+                                        PhoneNumberUtils.formatNumber(
+                                                mTelephonyManager.getLine1Number())));
                     }
                 }
             }
@@ -792,7 +808,7 @@ public class MobileNetworkSettings extends Activity  {
             }
 
             final boolean missingDataServiceUrl = TextUtils.isEmpty(
-                    android.provider.Settings.Global.getString(getActivity().getContentResolver(),
+                    android.provider.Settings.Global.getString(activity.getContentResolver(),
                             android.provider.Settings.Global.SETUP_PREPAID_DATA_SERVICE_URL));
             if (!isLteOnCdma || missingDataServiceUrl) {
                 prefSet.removePreference(mLteDataServicePref);
@@ -800,8 +816,8 @@ public class MobileNetworkSettings extends Activity  {
                 android.util.Log.d(LOG_TAG, "keep ltePref");
             }
 
-            if (!(ImsManager.isVolteEnabledByPlatform(getActivity())
-                    && ImsManager.isVolteProvisionedOnDevice(getActivity()))
+            if (!(ImsManager.isVolteEnabledByPlatform(activity)
+                    && ImsManager.isVolteProvisionedOnDevice(activity))
                     || carrierConfig.getBoolean(
                         CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL)) {
                 Preference pref = prefSet.findPreference(BUTTON_4G_LTE_KEY);
@@ -812,14 +828,14 @@ public class MobileNetworkSettings extends Activity  {
 
             updateCallingCategory();
 
-            ActionBar actionBar = getActivity().getActionBar();
+            ActionBar actionBar = activity.getActionBar();
             if (actionBar != null) {
                 // android.R.id.home will be triggered in onOptionsItemSelected()
                 actionBar.setDisplayHomeAsUpEnabled(true);
             }
 
             // Enable link to CMAS app settings depending on the value in config.xml.
-            final boolean isCellBroadcastAppLinkEnabled = getActivity().getResources().getBoolean(
+            final boolean isCellBroadcastAppLinkEnabled = activity.getResources().getBoolean(
                     com.android.internal.R.bool.config_cellBroadcastAppLinks);
             if (!mUm.isAdminUser() || !isCellBroadcastAppLinkEnabled
                     || mUm.hasUserRestriction(UserManager.DISALLOW_CONFIG_CELL_BROADCASTS)) {
@@ -850,11 +866,11 @@ public class MobileNetworkSettings extends Activity  {
              * change dynamically such as when hot swapping sims.
              */
             boolean hasActiveSubscriptions = hasActiveSubscriptions();
-            TelephonyManager tm = (TelephonyManager) getActivity().getSystemService(
-                    Context.TELEPHONY_SERVICE);
-            boolean canChange4glte = (tm.getCallState() == TelephonyManager.CALL_STATE_IDLE) &&
-                    ImsManager.isNonTtyOrTtyOnVolteEnabled(getActivity().getApplicationContext()) &&
-                    carrierConfig.getBoolean(
+            boolean canChange4glte =
+                    (mTelephonyManager.getCallState() == TelephonyManager.CALL_STATE_IDLE)
+                            && ImsManager.isNonTtyOrTtyOnVolteEnabled(
+                                    activity.getApplicationContext())
+                            && carrierConfig.getBoolean(
                             CarrierConfigManager.KEY_EDITABLE_ENHANCED_4G_LTE_BOOL);
             boolean useVariant4glteTitle = carrierConfig.getBoolean(
                     CarrierConfigManager.KEY_ENHANCED_4G_LTE_TITLE_VARIANT_BOOL);
@@ -910,13 +926,7 @@ public class MobileNetworkSettings extends Activity  {
             super.onPause();
             if (DBG) log("onPause:+");
 
-            if (ImsManager.isVolteEnabledByPlatform(getActivity())
-                    && ImsManager.isVolteProvisionedOnDevice(getActivity())) {
-                TelephonyManager tm =
-                        (TelephonyManager) getActivity().getSystemService(
-                                Context.TELEPHONY_SERVICE);
-                tm.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
-            }
+            mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
 
             mSubscriptionManager
                     .removeOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
@@ -1539,8 +1549,6 @@ public class MobileNetworkSettings extends Activity  {
 
         private boolean isWorldMode() {
             boolean worldModeOn = false;
-            final TelephonyManager tm =
-                    (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
             final String configString = getResources().getString(R.string.config_world_mode);
 
             if (!TextUtils.isEmpty(configString)) {
@@ -1550,8 +1558,9 @@ public class MobileNetworkSettings extends Activity  {
                 if (configArray != null &&
                         ((configArray.length == 1 && configArray[0].equalsIgnoreCase("true"))
                                 || (configArray.length == 2 && !TextUtils.isEmpty(configArray[1])
-                                && tm != null
-                                && configArray[1].equalsIgnoreCase(tm.getGroupIdLevel1())))) {
+                                && mTelephonyManager != null
+                                && configArray[1].equalsIgnoreCase(
+                                        mTelephonyManager.getGroupIdLevel1())))) {
                     worldModeOn = true;
                 }
             }
