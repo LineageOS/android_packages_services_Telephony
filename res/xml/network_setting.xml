@@ -28,6 +28,11 @@
         android:summaryOn="@string/roaming_enable"
         android:summaryOff="@string/roaming_disable"/>
 
+    <com.android.phone.RestrictedSwitchPreference
+        android:key="eu_roaming_key"
+        android:title="@string/eu_roaming_title"
+        android:summary="@string/eu_roaming_summary" />
+
     <ListPreference
         android:key="preferred_network_mode_key"
         android:title="@string/preferred_network_mode_title"
