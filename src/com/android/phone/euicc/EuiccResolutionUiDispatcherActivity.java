@@ -64,7 +64,7 @@ public class EuiccResolutionUiDispatcherActivity extends EuiccUiDispatcherActivi
                         EuiccManager.EXTRA_EMBEDDED_SUBSCRIPTION_RESOLUTION_CALLBACK_INTENT);
         if (callbackIntent != null) {
             try {
-                callbackIntent.send(EuiccManager.EMBEDDED_SUBSCRIPTION_RESULT_GENERIC_ERROR);
+                callbackIntent.send(EuiccManager.EMBEDDED_SUBSCRIPTION_RESULT_ERROR);
             } catch (PendingIntent.CanceledException e) {
                 // Caller canceled the callback; do nothing.
             }
