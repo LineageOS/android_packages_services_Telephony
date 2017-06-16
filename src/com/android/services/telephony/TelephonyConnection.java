@@ -44,10 +44,9 @@ import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Connection.Capability;
 import com.android.internal.telephony.Connection.PostDialListener;
+import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.gsm.SuppServiceNotification;
-
-import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
@@ -56,9 +55,8 @@ import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
 import com.android.phone.R;
 
-import java.lang.Override;
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -158,14 +156,20 @@ abstract class TelephonyConnection extends Connection {
                     if (msg.obj != null && ((AsyncResult) msg.obj).result != null) {
                         mSsNotification =
                                 (SuppServiceNotification)((AsyncResult) msg.obj).result;
-                        if (mOriginalConnection != null && mSsNotification.history != null) {
-                            Bundle lastForwardedNumber = new Bundle();
-                            Log.v(TelephonyConnection.this,
-                                    "Updating call history info in extras.");
-                            lastForwardedNumber.putStringArrayList(
-                                Connection.EXTRA_LAST_FORWARDED_NUMBER,
-                                new ArrayList(Arrays.asList(mSsNotification.history)));
-                            putExtras(lastForwardedNumber);
+                        if (mOriginalConnection != null) {
+                            if (mSsNotification.history != null) {
+                                Bundle lastForwardedNumber = new Bundle();
+                                Log.v(TelephonyConnection.this,
+                                        "Updating call history info in extras.");
+                                lastForwardedNumber.putStringArrayList(
+                                        Connection.EXTRA_LAST_FORWARDED_NUMBER,
+                                        new ArrayList(Arrays.asList(mSsNotification.history)));
+                                putExtras(lastForwardedNumber);
+                            }
+                            if (mSsNotification.code
+                                    == SuppServiceNotification.MO_CODE_CALL_FORWARDED) {
+                                sendConnectionEvent(TelephonyManager.EVENT_CALL_FORWARDED, null);
+                            }
                         }
                     }
                     break;
