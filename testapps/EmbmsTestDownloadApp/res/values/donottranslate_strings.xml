@@ -19,4 +19,5 @@
     <string name="bind_button">Bind</string>
     <string name="request_dl_button">Request DL</string>
     <string name="get_file_services_button">Fetch file services</string>
+    <string name="set_temp_root_button">Set temp file root</string>
 </resources>
