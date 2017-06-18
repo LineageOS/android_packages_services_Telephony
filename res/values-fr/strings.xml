@@ -601,9 +601,9 @@
     <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Votre forfait de données mobiles est épuisé"</string>
     <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Votre forfait de données mobiles est épuisé"</string>
     <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Recharger le forfait de données mobiles auprès de l\'opérateur <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Aucun forfait international"</string>
-    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Souscrire un forfait international auprès de l\'opérateur <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Vous pouvez recharger votre forfait de données mobiles ou souscrire un forfait international auprès de votre opérateur <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Aucun forfait de données international"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Souscrire un forfait de données international auprès de l\'opérateur <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Vous pouvez recharger votre forfait de données mobiles ou souscrire un forfait de données international auprès de votre opérateur <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
     <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Recharger le forfait de données mobiles ?"</string>
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Vous devez peut-être recharger votre forfait de données mobiles auprès de l\'opérateur <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"RECHARGER LE FORFAIT DE DONNÉES MOBILES"</string>

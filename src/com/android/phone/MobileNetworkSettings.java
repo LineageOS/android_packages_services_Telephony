@@ -28,6 +28,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
@@ -38,10 +39,13 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
+import android.telecom.PhoneAccountHandle;
+import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.PhoneStateListener;
@@ -55,12 +59,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TabHost;
 
+import com.android.ims.ImsConfig;
 import com.android.ims.ImsManager;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
+import com.android.phone.settings.PhoneAccountSettingsFragment;
 import com.android.settingslib.RestrictedLockUtils;
 
 import java.util.ArrayList;
@@ -141,6 +147,9 @@ public class MobileNetworkSettings extends Activity  {
         private static final String BUTTON_CDMA_SYSTEM_SELECT_KEY = "cdma_system_select_key";
         private static final String BUTTON_CARRIER_SETTINGS_EUICC_KEY =
                 "carrier_settings_euicc_key";
+        private static final String BUTTON_WIFI_CALLING_KEY = "wifi_calling_key";
+        private static final String BUTTON_VIDEO_CALLING_KEY = "video_calling_key";
+        private static final String CATEGORY_CALLING_KEY = "calling";
 
         private final BroadcastReceiver mPhoneChangeReceiver = new PhoneChangeReceiver();
 
@@ -160,6 +169,9 @@ public class MobileNetworkSettings extends Activity  {
         private SwitchPreference mButton4glte;
         private Preference mLteDataServicePref;
         private Preference mEuiccSettingsPref;
+        private PreferenceCategory mCallingCategory;
+        private Preference mWiFiCallingPref;
+        private SwitchPreference mVideoCallingPref;
 
         private static final String iface = "rmnet0"; //TODO: this will go away
         private List<SubscriptionInfo> mActiveSubInfos;
@@ -281,6 +293,8 @@ public class MobileNetworkSettings extends Activity  {
                 Intent intent = new Intent(EuiccManager.ACTION_MANAGE_EMBEDDED_SUBSCRIPTIONS);
                 startActivity(intent);
                 return true;
+            } else if (preference == mWiFiCallingPref || preference == mVideoCallingPref) {
+                return false;
             } else {
                 // if the button is anything but the simple toggle preference,
                 // we'll need to disable all preferences to reject all click
@@ -473,6 +487,10 @@ public class MobileNetworkSettings extends Activity  {
             mButton4glte = (SwitchPreference)findPreference(BUTTON_4G_LTE_KEY);
             mButton4glte.setOnPreferenceChangeListener(this);
 
+            mCallingCategory = (PreferenceCategory) findPreference(CATEGORY_CALLING_KEY);
+            mWiFiCallingPref = findPreference(BUTTON_WIFI_CALLING_KEY);
+            mVideoCallingPref = (SwitchPreference) findPreference(BUTTON_VIDEO_CALLING_KEY);
+
             try {
                 Context con = getActivity().createPackageContext("com.android.systemui", 0);
                 int id = con.getResources().getIdentifier("config_show4GForLTE",
@@ -564,6 +582,9 @@ public class MobileNetworkSettings extends Activity  {
             boolean enh4glteMode = ImsManager.isEnhanced4gLteModeSettingEnabledByUser(getActivity())
                     && ImsManager.isNonTtyOrTtyOnVolteEnabled(getActivity());
             mButton4glte.setChecked(enh4glteMode);
+
+            // Video calling and WiFi calling state might have changed.
+            updateCallingCategory();
 
             mSubscriptionManager.addOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
 
@@ -789,6 +810,8 @@ public class MobileNetworkSettings extends Activity  {
                 }
             }
 
+            updateCallingCategory();
+
             ActionBar actionBar = getActivity().getActionBar();
             if (actionBar != null) {
                 // android.R.id.home will be triggered in onOptionsItemSelected()
@@ -873,6 +896,10 @@ public class MobileNetworkSettings extends Activity  {
                 ps.setEnabled(hasActiveSubscriptions);
             }
             ps = findPreference(BUTTON_CDMA_SYSTEM_SELECT_KEY);
+            if (ps != null) {
+                ps.setEnabled(hasActiveSubscriptions);
+            }
+            ps = findPreference(CATEGORY_CALLING_KEY);
             if (ps != null) {
                 ps.setEnabled(hasActiveSubscriptions);
             }
@@ -1028,6 +1055,17 @@ public class MobileNetworkSettings extends Activity  {
                     mPhone.setDataRoamingEnabled(false);
                 }
                 return true;
+            } else if (preference == mVideoCallingPref) {
+                // If mButton4glte is not checked, mVideoCallingPref should be disabled.
+                // So it only makes sense to call phoneMgr.enableVideoCalling if it's checked.
+                if (mButton4glte.isChecked()) {
+                    PhoneGlobals.getInstance().phoneMgr.enableVideoCalling((boolean) objValue);
+                    return true;
+                } else {
+                    loge("mVideoCallingPref should be disabled if mButton4glte is not checked.");
+                    mVideoCallingPref.setEnabled(false);
+                    return false;
+                }
             }
 
             updateBody();
@@ -1128,7 +1166,6 @@ public class MobileNetworkSettings extends Activity  {
                 return null;
             }
         }
-
 
         private void UpdatePreferredNetworkModeSummary(int NetworkMode) {
             switch(NetworkMode) {
@@ -1357,6 +1394,117 @@ public class MobileNetworkSettings extends Activity  {
 
                 default:
                     break;
+            }
+        }
+
+        private void updateWiFiCallState() {
+            if (mWiFiCallingPref == null || mCallingCategory == null) {
+                return;
+            }
+
+            boolean removePref = false;
+            final PhoneAccountHandle simCallManager =
+                    TelecomManager.from(getContext()).getSimCallManager();
+
+            if (simCallManager != null) {
+                Intent intent = PhoneAccountSettingsFragment.buildPhoneAccountConfigureIntent(
+                        getContext(), simCallManager);
+                if (intent != null) {
+                    PackageManager pm = mPhone.getContext().getPackageManager();
+                    List<ResolveInfo> resolutions = pm.queryIntentActivities(intent, 0);
+                    if (!resolutions.isEmpty()) {
+                        mWiFiCallingPref.setTitle(resolutions.get(0).loadLabel(pm));
+                        mWiFiCallingPref.setSummary(null);
+                        mWiFiCallingPref.setIntent(intent);
+                    } else {
+                        removePref = true;
+                    }
+                } else {
+                    removePref = true;
+                }
+            } else if (!ImsManager.isWfcEnabledByPlatform(mPhone.getContext())
+                    || !ImsManager.isWfcProvisionedOnDevice(mPhone.getContext())) {
+                removePref = true;
+            } else {
+                int resId = com.android.internal.R.string.wifi_calling_off_summary;
+                if (ImsManager.isWfcEnabledByUser(mPhone.getContext())) {
+                    boolean isRoaming = mButtonDataRoam.isChecked();
+                    int wfcMode = ImsManager.getWfcMode(mPhone.getContext(), isRoaming);
+                    switch (wfcMode) {
+                        case ImsConfig.WfcModeFeatureValueConstants.WIFI_ONLY:
+                            resId = com.android.internal.R.string.wfc_mode_wifi_only_summary;
+                            break;
+                        case ImsConfig.WfcModeFeatureValueConstants.CELLULAR_PREFERRED:
+                            resId = com.android.internal.R.string
+                                    .wfc_mode_cellular_preferred_summary;
+                            break;
+                        case ImsConfig.WfcModeFeatureValueConstants.WIFI_PREFERRED:
+                            resId = com.android.internal.R.string.wfc_mode_wifi_preferred_summary;
+                            break;
+                        default:
+                            if (DBG) log("Unexpected WFC mode value: " + wfcMode);
+                    }
+                }
+                mWiFiCallingPref.setSummary(resId);
+            }
+
+            if (removePref) {
+                mCallingCategory.removePreference(mWiFiCallingPref);
+            } else {
+                mCallingCategory.addPreference(mWiFiCallingPref);
+            }
+        }
+
+        private void updateVideoCallState() {
+            if (mVideoCallingPref == null || mCallingCategory == null) {
+                return;
+            }
+
+            PersistableBundle carrierConfig = PhoneGlobals.getInstance()
+                    .getCarrierConfigForSubId(mPhone.getSubId());
+
+            boolean removePref = false;
+
+            if (ImsManager.isVtEnabledByPlatform(mPhone.getContext())
+                    && ImsManager.isVtProvisionedOnDevice(mPhone.getContext())
+                    && (carrierConfig.getBoolean(
+                            CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
+                            || mPhone.mDcTracker.isDataEnabled())) {
+                boolean enhanced4gLteEnabled = mButton4glte.isChecked();
+                mVideoCallingPref.setEnabled(enhanced4gLteEnabled);
+                boolean currentValue = enhanced4gLteEnabled
+                        ? PhoneGlobals.getInstance().phoneMgr.isVideoCallingEnabled(
+                        getContext().getOpPackageName()) : false;
+                mVideoCallingPref.setChecked(currentValue);
+                if (enhanced4gLteEnabled) {
+                    mVideoCallingPref.setOnPreferenceChangeListener(this);
+                }
+            } else {
+                removePref = true;
+            }
+
+            if (removePref) {
+                mCallingCategory.removePreference(mVideoCallingPref);
+            } else {
+                mCallingCategory.addPreference(mVideoCallingPref);
+            }
+        }
+
+        private void updateCallingCategory() {
+            if (mCallingCategory == null) {
+                return;
+            }
+
+            updateWiFiCallState();
+            updateVideoCallState();
+
+            // If all items in calling category is removed, we remove it from
+            // the screen. Otherwise we'll see title of the category but nothing
+            // is in there.
+            if (mCallingCategory.getPreferenceCount() == 0) {
+                getPreferenceScreen().removePreference(mCallingCategory);
+            } else {
+                getPreferenceScreen().addPreference(mCallingCategory);
             }
         }
 
