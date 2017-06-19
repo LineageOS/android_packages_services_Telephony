@@ -49,6 +49,7 @@ public class EmbmsTestStreamingService extends Service {
 
     private static final String TAG = "EmbmsTestStreaming";
 
+    private static final long INITIALIZATION_DELAY = 200;
     private static final long SEND_SERVICE_LIST_DELAY = 300;
     private static final long START_STREAMING_DELAY = 500;
 
@@ -81,7 +82,8 @@ public class EmbmsTestStreamingService extends Service {
     private final IMbmsStreamingService.Stub mBinder = new MbmsStreamingServiceBase() {
         @Override
         public int initialize(IMbmsStreamingManagerCallback listener, String appName, int subId) {
-            String[] packageNames = getPackageManager().getPackagesForUid(Binder.getCallingUid());
+            int packageUid = Binder.getCallingUid();
+            String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
                 throw new SecurityException("No matching packages found for your UID");
             }
@@ -91,13 +93,26 @@ public class EmbmsTestStreamingService extends Service {
                         "service");
             }
 
-            FrontendAppIdentifier appKey =
-                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subId);
-            if (!mAppCallbacks.containsKey(appKey)) {
-                mAppCallbacks.put(appKey, listener);
-            } else {
-                return MbmsException.ERROR_ALREADY_INITIALIZED;
-            }
+            mHandler.postDelayed(() -> {
+                FrontendAppIdentifier appKey =
+                        new FrontendAppIdentifier(packageUid, appName, subId);
+                if (!mAppCallbacks.containsKey(appKey)) {
+                    mAppCallbacks.put(appKey, listener);
+                } else {
+                    try {
+                        listener.error(MbmsException.ERROR_ALREADY_INITIALIZED, "");
+                    } catch (RemoteException e) {
+                        // ignore, it was an error anyway
+                    }
+                    return;
+                }
+                try {
+                    listener.middlewareReady();
+                } catch (RemoteException e) {
+                    StreamStateTracker.disposeAll(appKey);
+                    mAppCallbacks.remove(appKey);
+                }
+            }, INITIALIZATION_DELAY);
             return 0;
         }
 
