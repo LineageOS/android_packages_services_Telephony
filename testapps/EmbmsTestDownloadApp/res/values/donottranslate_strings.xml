@@ -18,4 +18,5 @@
 <resources>
     <string name="bind_button">Bind</string>
     <string name="request_dl_button">Request DL</string>
+    <string name="get_file_services_button">Fetch file services</string>
 </resources>
