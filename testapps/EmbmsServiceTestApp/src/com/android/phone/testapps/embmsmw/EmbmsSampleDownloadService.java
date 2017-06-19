@@ -60,6 +60,7 @@ public class EmbmsSampleDownloadService extends Service {
     }};
 
     private static final String LOG_TAG = "EmbmsSampleDownload";
+    private static final long INITIALIZATION_DELAY = 200;
     private static final long SEND_FILE_SERVICE_INFO_DELAY = 500;
     private static final long DOWNLOAD_DELAY_MS = 1000;
     private static final long FILE_SEPARATION_DELAY = 500;
@@ -67,7 +68,8 @@ public class EmbmsSampleDownloadService extends Service {
     private final IMbmsDownloadService mBinder = new MbmsDownloadServiceBase() {
         @Override
         public void initialize(String appName, int subId, IMbmsDownloadManagerCallback listener) {
-            String[] packageNames = getPackageManager().getPackagesForUid(Binder.getCallingUid());
+            int packageUid = Binder.getCallingUid();
+            String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
                 throw new SecurityException("No matching packages found for your UID");
             }
@@ -77,24 +79,29 @@ public class EmbmsSampleDownloadService extends Service {
                         "service");
             }
 
-            FrontendAppIdentifier appKey =
-                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subId);
-            if (!mAppCallbacks.containsKey(appKey)) {
-                mAppCallbacks.put(appKey, listener);
-                ComponentName appReceiver = MbmsDownloadManager.getAppReceiverFromUid(
-                        EmbmsSampleDownloadService.this, Binder.getCallingUid());
-                mAppReceivers.put(appKey, appReceiver);
-            } else {
-                // Stick the error callback on a different thread so that we're not calling back
-                // to the app on the same thread.
-                mHandler.post(() -> {
+            // Do initialization with a bit of a delay to simulate work being done.
+            mHandler.postDelayed(() -> {
+                FrontendAppIdentifier appKey =
+                        new FrontendAppIdentifier(packageUid, appName, subId);
+                if (!mAppCallbacks.containsKey(appKey)) {
+                    mAppCallbacks.put(appKey, listener);
+                    ComponentName appReceiver = MbmsDownloadManager.getAppReceiverFromUid(
+                            EmbmsSampleDownloadService.this, packageUid);
+                    mAppReceivers.put(appKey, appReceiver);
+                } else {
                     try {
                         listener.error(MbmsException.ERROR_ALREADY_INITIALIZED, "");
                     } catch (RemoteException e) {
                         // ignore, it was an error anyway
                     }
-                });
-            }
+                    return;
+                }
+                try {
+                    listener.middlewareReady();
+                } catch (RemoteException e) {
+                    // TODO: call dispose
+                }
+            }, INITIALIZATION_DELAY);
         }
 
         @Override
