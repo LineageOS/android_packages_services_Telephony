@@ -27,10 +27,10 @@ import java.util.Map;
 public class StreamStateTracker {
     private static final String LOG_TAG = "MbmsStreamStateTracker";
 
-    private static final Map<StreamingAppIdentifier, AppActiveStreams>
+    private static final Map<FrontendAppIdentifier, AppActiveStreams>
             sPerAppStreamStates = new HashMap<>();
 
-    public static int getStreamingState(StreamingAppIdentifier appIdentifier, String serviceId) {
+    public static int getStreamingState(FrontendAppIdentifier appIdentifier, String serviceId) {
         AppActiveStreams appStreams = sPerAppStreamStates.get(appIdentifier);
         if (appStreams == null) {
             return StreamingService.STATE_STOPPED;
@@ -38,7 +38,7 @@ public class StreamStateTracker {
         return appStreams.getStateForService(serviceId);
     }
 
-    public static void startStreaming(StreamingAppIdentifier appIdentifier, String serviceId,
+    public static void startStreaming(FrontendAppIdentifier appIdentifier, String serviceId,
             IStreamingServiceCallback callback) {
         AppActiveStreams appStreams = sPerAppStreamStates.get(appIdentifier);
         if (appStreams == null) {
@@ -49,7 +49,7 @@ public class StreamStateTracker {
         appStreams.startStreaming(serviceId, callback);
     }
 
-    public static void stopStreaming(StreamingAppIdentifier appIdentifier, String serviceId) {
+    public static void stopStreaming(FrontendAppIdentifier appIdentifier, String serviceId) {
         Log.i(LOG_TAG, "Stopping stream " + serviceId);
         AppActiveStreams appStreams = sPerAppStreamStates.get(appIdentifier);
         if (appStreams == null) {
@@ -59,7 +59,7 @@ public class StreamStateTracker {
         appStreams.stopStreaming(serviceId);
     }
 
-    public static void dispose(StreamingAppIdentifier appIdentifier, String serviceId) {
+    public static void dispose(FrontendAppIdentifier appIdentifier, String serviceId) {
         AppActiveStreams appStreams = sPerAppStreamStates.get(appIdentifier);
         if (appStreams == null) {
             // We have no record of this app, so we can just move on.
@@ -68,7 +68,7 @@ public class StreamStateTracker {
         appStreams.dispose(serviceId);
     }
 
-    public static void disposeAll(StreamingAppIdentifier appIdentifier) {
+    public static void disposeAll(FrontendAppIdentifier appIdentifier) {
         sPerAppStreamStates.remove(appIdentifier);
     }
 
