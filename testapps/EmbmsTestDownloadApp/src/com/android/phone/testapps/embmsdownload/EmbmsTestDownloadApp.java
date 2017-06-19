@@ -146,6 +146,12 @@ public class EmbmsTestDownloadApp extends Activity {
                             Toast.LENGTH_SHORT).show());
             updateFileServicesList(services);
         }
+
+        @Override
+        public void middlewareReady() {
+            runOnUiThread(() -> Toast.makeText(EmbmsTestDownloadApp.this,
+                    "Initialization done", Toast.LENGTH_SHORT).show());
+        }
     };
 
     private MbmsDownloadManager mDownloadManager;
@@ -172,20 +178,29 @@ public class EmbmsTestDownloadApp extends Activity {
         downloadedImages.setAdapter(mImageAdapter);
 
         Button bindButton = (Button) findViewById(R.id.bind_button);
-        bindButton.setOnClickListener((view) -> mHandler.post(() -> {
+        bindButton.setOnClickListener((view) -> {
             try {
-                mDownloadManager = MbmsDownloadManager.createManager(this, mCallback, APP_NAME);
-                File downloadDir = new File(EmbmsTestDownloadApp.this.getFilesDir(),
-                        CUSTOM_EMBMS_TEMP_FILE_LOCATION);
-                downloadDir.mkdirs();
-                mDownloadManager.setTempFileRootDirectory(downloadDir);
-                runOnUiThread(() -> Toast.makeText(EmbmsTestDownloadApp.this,
-                        "Initialization done", Toast.LENGTH_SHORT).show());
+                mDownloadManager = MbmsDownloadManager.create(this, mCallback, APP_NAME);
             } catch (MbmsException e) {
-                runOnUiThread(() -> Toast.makeText(EmbmsTestDownloadApp.this,
-                        "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show());
+                Toast.makeText(EmbmsTestDownloadApp.this,
+                        "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
             }
-        }));
+        });
+
+        Button setTempFileRootButton = (Button) findViewById(R.id.set_temp_root_button);
+        setTempFileRootButton.setOnClickListener((view) -> {
+            File downloadDir = new File(EmbmsTestDownloadApp.this.getFilesDir(),
+                    CUSTOM_EMBMS_TEMP_FILE_LOCATION);
+            downloadDir.mkdirs();
+            try {
+                mDownloadManager.setTempFileRootDirectory(downloadDir);
+                Toast.makeText(EmbmsTestDownloadApp.this,
+                        "temp file root set to " + downloadDir, Toast.LENGTH_SHORT).show();
+            } catch (MbmsException e) {
+                Toast.makeText(EmbmsTestDownloadApp.this,
+                        "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         Button getFileServicesButton = (Button) findViewById(R.id.get_file_services_button);
         getFileServicesButton.setOnClickListener((view) -> mHandler.post(() -> {
