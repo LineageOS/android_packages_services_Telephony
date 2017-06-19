@@ -25,17 +25,27 @@
         android:id="@+id/progress_window"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <ImageView
-        android:id="@+id/sample_picture"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/downloaded_images"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-
+        android:scrollbars="horizontal"
+        android:horizontalSpacing="10dp"
+        android:gravity="center"/>
     <Button
         android:id="@+id/bind_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bind_button" />
+    <Button
+        android:id="@+id/get_file_services_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/get_file_services_button" />
+    <Spinner
+        android:id="@+id/available_file_services"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/request_dl_button"

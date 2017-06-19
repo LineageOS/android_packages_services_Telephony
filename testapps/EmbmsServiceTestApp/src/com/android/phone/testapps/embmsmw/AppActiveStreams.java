@@ -67,10 +67,10 @@ public class AppActiveStreams {
 
     // Stores the state and callback per service ID.
     private final Map<String, StreamCallbackWithState> mStreamStates = new HashMap<>();
-    private final StreamingAppIdentifier mAppIdentifier;
+    private final FrontendAppIdentifier mAppIdentifier;
     private final Random mRand = new Random();
 
-    public AppActiveStreams(StreamingAppIdentifier appIdentifier) {
+    public AppActiveStreams(FrontendAppIdentifier appIdentifier) {
         mAppIdentifier = appIdentifier;
     }
 
