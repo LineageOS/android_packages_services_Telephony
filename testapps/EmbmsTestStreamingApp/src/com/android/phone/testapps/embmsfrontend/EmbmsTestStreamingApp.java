@@ -54,6 +54,12 @@ public class EmbmsTestStreamingApp extends Activity {
                             Toast.LENGTH_SHORT).show());
             updateStreamingServicesList(services);
         }
+
+        @Override
+        public void middlewareReady() {
+            runOnUiThread(() -> Toast.makeText(EmbmsTestStreamingApp.this, "Successfully bound",
+                    Toast.LENGTH_SHORT).show());
+        }
     };
 
     private final class StreamingServiceInfoAdapter
@@ -151,22 +157,16 @@ public class EmbmsTestStreamingApp extends Activity {
         mTrackedStreamingServiceAdapter = new TrackedStreamAdapter(this);
 
         Button bindButton = (Button) findViewById(R.id.bind_button);
-        bindButton.setOnClickListener((view) ->
-            mHandler.post(() -> {
-                try {
-                    mStreamingManager = MbmsStreamingManager.create(
-                            EmbmsTestStreamingApp.this, mStreamingListener, APP_NAME);
-                } catch (MbmsException e) {
-                    EmbmsTestStreamingApp.this.runOnUiThread(() ->
-                            Toast.makeText(EmbmsTestStreamingApp.this,
-                                    "Init error: " + e.getErrorCode(), Toast.LENGTH_SHORT).show());
-                    return;
-                }
-                EmbmsTestStreamingApp.this.runOnUiThread(() ->
-                        Toast.makeText(EmbmsTestStreamingApp.this, "Successfully bound",
-                                Toast.LENGTH_SHORT).show());
-            })
-        );
+        bindButton.setOnClickListener((view) -> {
+            try {
+                mStreamingManager = MbmsStreamingManager.create(
+                        EmbmsTestStreamingApp.this, mStreamingListener, APP_NAME);
+            } catch (MbmsException e) {
+                Toast.makeText(EmbmsTestStreamingApp.this,
+                        "Init error: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
+                return;
+            }
+        });
 
         Button getStreamingServicesButton = (Button)
                 findViewById(R.id.get_streaming_services_button);
