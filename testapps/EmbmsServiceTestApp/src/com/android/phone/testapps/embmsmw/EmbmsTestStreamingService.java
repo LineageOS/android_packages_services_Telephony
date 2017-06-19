@@ -54,7 +54,7 @@ public class EmbmsTestStreamingService extends Service {
 
     private static final int SEND_STREAMING_SERVICES_LIST = 1;
 
-    private final Map<StreamingAppIdentifier, IMbmsStreamingManagerCallback> mAppCallbacks =
+    private final Map<FrontendAppIdentifier, IMbmsStreamingManagerCallback> mAppCallbacks =
             new HashMap<>();
 
     private HandlerThread mHandlerThread;
@@ -63,7 +63,7 @@ public class EmbmsTestStreamingService extends Service {
         switch (msg.what) {
             case SEND_STREAMING_SERVICES_LIST:
                 SomeArgs args = (SomeArgs) msg.obj;
-                StreamingAppIdentifier appKey = (StreamingAppIdentifier) args.arg1;
+                FrontendAppIdentifier appKey = (FrontendAppIdentifier) args.arg1;
                 List<StreamingServiceInfo> services = (List) args.arg2;
                 IMbmsStreamingManagerCallback appCallback = mAppCallbacks.get(appKey);
                 if (appCallback != null) {
@@ -91,8 +91,8 @@ public class EmbmsTestStreamingService extends Service {
                         "service");
             }
 
-            StreamingAppIdentifier appKey =
-                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subId);
+            FrontendAppIdentifier appKey =
+                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subId);
             if (!mAppCallbacks.containsKey(appKey)) {
                 mAppCallbacks.put(appKey, listener);
             } else {
@@ -104,8 +104,8 @@ public class EmbmsTestStreamingService extends Service {
         @Override
         public int getStreamingServices(String appName, int subscriptionId,
                 List<String> serviceClasses) {
-            StreamingAppIdentifier appKey =
-                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            FrontendAppIdentifier appKey =
+                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
             checkInitialized(appKey);
 
             List<StreamingServiceInfo> serviceInfos =
@@ -125,8 +125,8 @@ public class EmbmsTestStreamingService extends Service {
         @Override
         public int startStreaming(String appName, int subscriptionId, String serviceId,
                 IStreamingServiceCallback callback) {
-            StreamingAppIdentifier appKey =
-                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            FrontendAppIdentifier appKey =
+                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
             checkInitialized(appKey);
             checkServiceExists(serviceId);
 
@@ -143,8 +143,8 @@ public class EmbmsTestStreamingService extends Service {
 
         @Override
         public Uri getPlaybackUri(String appName, int subscriptionId, String serviceId) {
-            StreamingAppIdentifier appKey =
-                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            FrontendAppIdentifier appKey =
+                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
             checkInitialized(appKey);
             checkServiceExists(serviceId);
 
@@ -157,8 +157,8 @@ public class EmbmsTestStreamingService extends Service {
 
         @Override
         public void stopStreaming(String appName, int subscriptionId, String serviceId) {
-            StreamingAppIdentifier appKey =
-                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            FrontendAppIdentifier appKey =
+                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
             checkInitialized(appKey);
             checkServiceExists(serviceId);
 
@@ -167,8 +167,8 @@ public class EmbmsTestStreamingService extends Service {
 
         @Override
         public void disposeStream(String appName, int subscriptionId, String serviceId) {
-            StreamingAppIdentifier appKey =
-                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            FrontendAppIdentifier appKey =
+                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
             checkInitialized(appKey);
             checkServiceExists(serviceId);
 
@@ -178,8 +178,8 @@ public class EmbmsTestStreamingService extends Service {
 
         @Override
         public void dispose(String appName, int subscriptionId) {
-            StreamingAppIdentifier appKey =
-                    new StreamingAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+            FrontendAppIdentifier appKey =
+                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
             checkInitialized(appKey);
 
             Log.i(TAG, "Disposing app " + appName);
@@ -208,7 +208,7 @@ public class EmbmsTestStreamingService extends Service {
         Log.d(TAG, s);
     }
 
-    private void checkInitialized(StreamingAppIdentifier appKey) {
+    private void checkInitialized(FrontendAppIdentifier appKey) {
         if (!mAppCallbacks.containsKey(appKey)) {
             throw new IllegalStateException("Not yet initialized");
         }
