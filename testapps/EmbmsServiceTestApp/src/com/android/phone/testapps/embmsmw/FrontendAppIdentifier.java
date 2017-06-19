@@ -16,12 +16,12 @@
 
 package com.android.phone.testapps.embmsmw;
 
-public class StreamingAppIdentifier {
+public class FrontendAppIdentifier {
     private final int uid;
     private final String appName;
     private final int subscriptionId;
 
-    public StreamingAppIdentifier(int uid, String appName, int subscriptionId) {
+    public FrontendAppIdentifier(int uid, String appName, int subscriptionId) {
         this.uid = uid;
         this.appName = appName;
         this.subscriptionId = subscriptionId;
@@ -48,7 +48,7 @@ public class StreamingAppIdentifier {
             return false;
         }
 
-        StreamingAppIdentifier that = (StreamingAppIdentifier) o;
+        FrontendAppIdentifier that = (FrontendAppIdentifier) o;
 
         if (uid != that.uid) {
             return false;
