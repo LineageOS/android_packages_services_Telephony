@@ -270,12 +270,17 @@ public class EmbmsTestDownloadApp extends Activity {
 
     private void performDownload(FileServiceInfo info) {
         File destination = null;
+        Uri.Builder sourceUriBuilder = new Uri.Builder()
+                .scheme(FILE_DOWNLOAD_SCHEME)
+                .authority(FILE_AUTHORITY);
         try {
             if (info.getFiles().size() > 1) {
-                destination = new File(getFilesDir(), "images/").getCanonicalFile();
+                destination = new File(getFilesDir(), "images/animals/").getCanonicalFile();
                 destination.mkdirs();
+                sourceUriBuilder.path("/*");
             } else {
                 destination = new File(getFilesDir(), "images/image.png").getCanonicalFile();
+                sourceUriBuilder.path("/image.png");
             }
         } catch (IOException e) {
             // ignore
@@ -284,16 +289,10 @@ public class EmbmsTestDownloadApp extends Activity {
         Intent completionIntent = new Intent(DOWNLOAD_DONE_ACTION);
         completionIntent.setClass(this, DownloadCompletionReceiver.class);
 
-        Uri sourceUri = new Uri.Builder()
-                .scheme(FILE_DOWNLOAD_SCHEME)
-                .authority(FILE_AUTHORITY)
-                .path("/")
-                .build();
-
         DownloadRequest request = new DownloadRequest.Builder()
                 .setId(0)
                 .setServiceInfo(info)
-                .setSource(sourceUri)
+                .setSource(sourceUriBuilder.build())
                 .setDest(Uri.fromFile(destination))
                 .setAppIntent(completionIntent)
                 .setSubscriptionId(SubscriptionManager.getDefaultSubscriptionId())
