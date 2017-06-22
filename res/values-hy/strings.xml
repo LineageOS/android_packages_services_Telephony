@@ -495,7 +495,7 @@
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"Փոխանակել"</string>
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"Կառավարել զանգերը"</string>
     <string name="onscreenManageConferenceText" msgid="6485935856534311346">"Կառավարել կոնֆերանսը"</string>
-    <string name="onscreenAudioText" msgid="1710087112800041743">"Ձայնանյութ"</string>
+    <string name="onscreenAudioText" msgid="1710087112800041743">"Աուդիո"</string>
     <string name="onscreenVideoCallText" msgid="4800924186056115442">"Տեսազանգել"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"Ներմուծել"</string>
     <string name="importAllSimEntries" msgid="1503181169636198673">"Ներմուծել բոլորը"</string>
