@@ -38,6 +38,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -234,6 +235,25 @@ public class EmbmsTestDownloadApp extends Activity {
 
             performDownload(serviceInfo);
         });
+
+        Button requestCleanupButton = (Button) findViewById(R.id.request_cleanup_button);
+        requestCleanupButton.setOnClickListener((view) ->
+                SideChannel.triggerCleanup(EmbmsTestDownloadApp.this));
+
+        Button requestSpuriousTempFilesButton =
+                (Button) findViewById(R.id.request_spurious_temp_files_button);
+        requestSpuriousTempFilesButton.setOnClickListener((view) ->
+                SideChannel.requestSpuriousTempFiles(EmbmsTestDownloadApp.this,
+                        (FileServiceInfo) serviceSelector.getSelectedItem()));
+
+        NumberPicker downloadDelayPicker = (NumberPicker) findViewById(R.id.delay_factor);
+        downloadDelayPicker.setMinValue(1);
+        downloadDelayPicker.setMaxValue(50);
+
+        Button delayDownloadButton = (Button) findViewById(R.id.delay_download_button);
+        delayDownloadButton.setOnClickListener((view) ->
+                SideChannel.delayDownloads(EmbmsTestDownloadApp.this,
+                        downloadDelayPicker.getValue()));
     }
 
     @Override
@@ -277,9 +297,11 @@ public class EmbmsTestDownloadApp extends Activity {
             if (info.getFiles().size() > 1) {
                 destination = new File(getFilesDir(), "images/animals/").getCanonicalFile();
                 destination.mkdirs();
+                clearDirectory(destination);
                 sourceUriBuilder.path("/*");
             } else {
                 destination = new File(getFilesDir(), "images/image.png").getCanonicalFile();
+                destination.delete();
                 sourceUriBuilder.path("/image.png");
             }
         } catch (IOException e) {
@@ -304,6 +326,14 @@ public class EmbmsTestDownloadApp extends Activity {
             Toast.makeText(EmbmsTestDownloadApp.this,
                     "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
         }
+    }
 
+    private static void clearDirectory(File directory) {
+        for (File file: directory.listFiles()) {
+            if (file.isDirectory()) {
+                clearDirectory(file);
+            }
+            file.delete();
+        }
     }
 }
