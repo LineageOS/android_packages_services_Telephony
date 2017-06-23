@@ -27,7 +27,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.telephony.MbmsDownloadManager;
 import android.telephony.SubscriptionManager;
-import android.telephony.mbms.DownloadCallback;
 import android.telephony.mbms.DownloadRequest;
 import android.telephony.mbms.FileServiceInfo;
 import android.telephony.mbms.MbmsDownloadManagerCallback;
@@ -55,7 +54,6 @@ public class EmbmsTestDownloadApp extends Activity {
     public static final String DOWNLOAD_DONE_ACTION =
             "com.android.phone.testapps.embmsdownload.DOWNLOAD_DONE";
 
-    private static final String APP_NAME = "SampleAppName";
     private static final String CUSTOM_EMBMS_TEMP_FILE_LOCATION = "customEmbmsTempFiles";
 
     private static final String FILE_AUTHORITY = "com.android.phone.testapps";
@@ -103,6 +101,7 @@ public class EmbmsTestDownloadApp extends Activity {
             extends ArrayAdapter<FileServiceInfo> {
         public FileServiceInfoAdapter(Context context) {
             super(context, android.R.layout.simple_spinner_item);
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         }
 
         @Override
@@ -132,6 +131,28 @@ public class EmbmsTestDownloadApp extends Activity {
         }
     }
 
+    private final class DownloadRequestAdapter
+            extends ArrayAdapter<DownloadRequest> {
+        public DownloadRequestAdapter(Context context) {
+            super(context, android.R.layout.simple_spinner_item);
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            DownloadRequest request = getItem(position);
+            TextView result = new TextView(EmbmsTestDownloadApp.this);
+            result.setText(request.getSourceUri().toSafeString());
+            return result;
+        }
+
+        @Override
+        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+            return getView(position, convertView, parent);
+        }
+    }
+
+
     private MbmsDownloadManagerCallback mCallback = new MbmsDownloadManagerCallback() {
         @Override
         public void error(int errorCode, String message) {
@@ -159,6 +180,7 @@ public class EmbmsTestDownloadApp extends Activity {
     private Handler mHandler;
     private HandlerThread mHandlerThread;
     private FileServiceInfoAdapter mFileServiceInfoAdapter;
+    private DownloadRequestAdapter mDownloadRequestAdapter;
     private ImageAdapter mImageAdapter;
 
     @Override
@@ -171,6 +193,7 @@ public class EmbmsTestDownloadApp extends Activity {
         mHandlerThread.start();
         mHandler = new Handler(mHandlerThread.getLooper());
         mFileServiceInfoAdapter = new FileServiceInfoAdapter(this);
+        mDownloadRequestAdapter = new DownloadRequestAdapter(this);
 
         RecyclerView downloadedImages = (RecyclerView) findViewById(R.id.downloaded_images);
         downloadedImages.setLayoutManager(
@@ -181,7 +204,7 @@ public class EmbmsTestDownloadApp extends Activity {
         Button bindButton = (Button) findViewById(R.id.bind_button);
         bindButton.setOnClickListener((view) -> {
             try {
-                mDownloadManager = MbmsDownloadManager.create(this, mCallback, APP_NAME);
+                mDownloadManager = MbmsDownloadManager.create(this, mCallback);
             } catch (MbmsException e) {
                 Toast.makeText(EmbmsTestDownloadApp.this,
                         "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
@@ -214,8 +237,6 @@ public class EmbmsTestDownloadApp extends Activity {
         }));
 
         final Spinner serviceSelector = (Spinner) findViewById(R.id.available_file_services);
-        mFileServiceInfoAdapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
         serviceSelector.setAdapter(mFileServiceInfoAdapter);
 
         Button requestDlButton = (Button) findViewById(R.id.request_dl_button);
@@ -254,6 +275,27 @@ public class EmbmsTestDownloadApp extends Activity {
         delayDownloadButton.setOnClickListener((view) ->
                 SideChannel.delayDownloads(EmbmsTestDownloadApp.this,
                         downloadDelayPicker.getValue()));
+
+        final Spinner downloadRequestSpinner = (Spinner) findViewById(R.id.active_downloads);
+        downloadRequestSpinner.setAdapter(mDownloadRequestAdapter);
+
+        Button cancelDownloadButton = (Button) findViewById(R.id.cancel_download_button);
+        cancelDownloadButton.setOnClickListener((view) -> {
+            if (mDownloadManager == null) {
+                Toast.makeText(EmbmsTestDownloadApp.this,
+                        "No download service bound", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            try {
+                DownloadRequest request =
+                        (DownloadRequest) downloadRequestSpinner.getSelectedItem();
+                mDownloadManager.cancelDownload(request);
+                mDownloadRequestAdapter.remove(request);
+            } catch (MbmsException e) {
+                runOnUiThread(() -> Toast.makeText(EmbmsTestDownloadApp.this,
+                        "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show());
+            }
+        });
     }
 
     @Override
@@ -322,6 +364,7 @@ public class EmbmsTestDownloadApp extends Activity {
 
         try {
             mDownloadManager.download(request, null);
+            mDownloadRequestAdapter.add(request);
         } catch (MbmsException e) {
             Toast.makeText(EmbmsTestDownloadApp.this,
                     "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
