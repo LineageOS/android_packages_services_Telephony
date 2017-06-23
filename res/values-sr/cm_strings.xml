@@ -17,9 +17,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Advanced Settings -->
-  <string name="incall_screen_settings">Поставке екрана при позиву</string>
+  <string name="incall_screen_settings">Подешавања екрана позива</string>
   <string name="show_ssn_label">Обавештење о догађају</string>
-  <string name="show_ssn_summary">Прикажи обавештење за разне мрежне догађаје везане за управљање позивом</string>
+  <string name="show_ssn_summary">Прикажите обавештење о разним догађајима мреже везаних за позиве</string>
   <string name="incall_echo_cancellation">Смањење буке при позиву</string>
   <string name="enable_aec_label">Уклањање еха</string>
   <string name="enable_aec_summary">Смањење амбијенталне буке удаљене забаве током позива</string>
@@ -36,9 +36,9 @@
   <string name="set_my_number_failed">Неуспешно постављање телефонског броја</string>
   <!-- Toasts for various transient network events -->
   <!-- Toast text for Unconditional Call Forwarding enabled  -->
-  <string name="call_notif_unconditionalCF">Безусловно прослеђивање позива је активно</string>
+  <string name="call_notif_unconditionalCF">Безусловно прослеђивање позива је укључено</string>
   <!-- Toast text for Conditional Call Forwarding enabled  -->
-  <string name="call_notif_conditionalCF">Условно прослеђивање позива је активно</string>
+  <string name="call_notif_conditionalCF">Условно прослеђивање позива је укључено</string>
   <!-- Toast text for a forwarded MO call  -->
   <string name="call_notif_MOcall_forwarding">Одлазни позив је прослеђен</string>
   <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
@@ -46,7 +46,7 @@
   <!-- In-call screen: status label when MO calls are barred -->
   <string name="call_notif_outgoing_barred">Одлазни позиви су забрањени</string>
   <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
-  <string name="call_notif_incoming_barred">Долазни позиви су забрањени од удаљене странке</string>
+  <string name="call_notif_incoming_barred">Долазни позиви су забрањени од удаљене стране</string>
   <!-- Toast text for MO calls when CLIR Suppression is rejected -->
   <string name="call_notif_clir_suppression_rejected">Сопствени број је сузбијен од мреже</string>
   <!-- In-call screen: status label when MO call gets deflected to another party -->
@@ -60,9 +60,9 @@
   <!-- Toast text for incoming call forward check received -->
   <string name="call_notif_forwardcheckreceived">Позив је прослеђен</string>
   <!-- Toast text for incoming call connecting through ECT -->
-  <string name="call_notif_callconnectingect">Успоствљање позива преко експлицитног трансфера позива</string>
+  <string name="call_notif_callconnectingect">Веза се успоставља преко јавног преноса позива</string>
   <!-- Toast text for incoming call connected through ECT -->
-  <string name="call_notif_callconnectedect">Веза је успостављена преко експлицитног трансфера позива</string>
+  <string name="call_notif_callconnectedect">Веза је успостављена преко јавног преноса позива</string>
   <!-- Status message displayed on SIM Network Depersonalization panel -->
   <string name="requesting_unlock_cm">Захтевање откључавања SIM мреже\u2026</string>
   <!-- Error message displayed on SIM Network Depersonalization panel -->
@@ -102,8 +102,8 @@
   <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Преферирани режим мреже: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
   <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Жељени режим мреже: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EVDO</string>
+  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EVDO</string>
   <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
   <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
@@ -116,12 +116,12 @@
   <string name="preferred_network_mode_lte_choice">LTE</string>
   <string name="preferred_network_mode_global_choice">Глобално</string>
   <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_evdo_only_choice">Само EvDo</string>
-  <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA w/o EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_auto_choice">Аутоматски CDMA/EvDo</string>
-  <string name="preferred_network_mode_gsm_wcdma_auto_choice">Аутоматски GSM/WCDMA</string>
+  <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EVDO</string>
+  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EVDO/GSM/WCDMA</string>
+  <string name="preferred_network_mode_evdo_only_choice">Само EVDO</string>
+  <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA без EVDO</string>
+  <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EVDO (аутоматски)</string>
+  <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA (аутоматски)</string>
   <string name="preferred_network_mode_wcdma_only_choice">Само WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">Само GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Преферирај GSM/WCDMA</string>
@@ -186,14 +186,14 @@
   <string name="exportAllcontatsNoContacts">Није пронађен ниједан контакт за извоз на SIM</string>
   <string name="msim_mobile_network_settings_title">Подешавање SIM %d мобилне мреже</string>
   <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">промени режим мреже</string>
+  <string name="perm_change_mobile_network">Промени режим мреже</string>
   <string name="perm_change_mobile_network_desc">Дозвољава апликацији да измени тренутни режим мреже.</string>
   <!-- Mobile network settings, COLP -->
   <string name="connected_line_identification_title">Идентификација конектоване линије</string>
   <string name="connected_line_identification_summary">Онемогући ову опцију ако је се број прималаца не приказује у историји позива</string>
   <!-- Network mode picker dialog title -->
-  <string name="choose_network_mode_title">Изабери режим мреже</string>
-  <string name="choose_network_mode_system_default">Подразумевано са система</string>
+  <string name="choose_network_mode_title">Избор режима мреже</string>
+  <string name="choose_network_mode_system_default">Подразумевано</string>
   <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
   <string name="unlock_failed_remaining_retries">Захтев за откључавањем неуспешан, преостаје %1$d покушаја.</string>
   <!-- Call forward: IMS: Media tag support -->

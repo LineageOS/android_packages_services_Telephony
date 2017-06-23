@@ -139,13 +139,13 @@
     <item>Todo</item>
   </string-array>
   <string name="call_barring_incoming">Restricción de llamadas entrantes</string>
-  <string name="input_password">Introducir contraseña</string>
-  <string name="invalidPsw">Introducir una contraseña válida (4-8 dígitos)</string>
+  <string name="input_password">Ingresa la contraseña</string>
+  <string name="invalidPsw">Ingresa una contraseña válida (4-8 dígitos)</string>
   <string name="labelCbCancelAll">Desactivar bloqueo de llamadas</string>
   <string name="labelCbChangePassword">Cambiar contraseña</string>
   <string name="psw_enter_old">Contraseña anterior</string>
   <string name="psw_enter_new">Nueva contraseña</string>
-  <string name="psw_reenter_new">Vuelve a introducir tu contraseña</string>
+  <string name="psw_reenter_new">Vuelve a ingresar la contraseña</string>
   <string name="no_call_barring">Bloqueo de llamadas desactivado</string>
   <string name="cb_psw_dont_match">Las contraseñas no coinciden</string>
   <!-- FDN settings: error message displayed in a popup (toast) -->
@@ -169,8 +169,8 @@
   <string name="sendSms">Enviar SMS</string>
   <string name="delete">Borrar</string>
   <string name="dial">Llamar</string>
-  <string name="enterName">Introducir nombre:</string>
-  <string name="enterNumber">Introducir número de teléfono:</string>
+  <string name="enterName">Ingresar nombre:</string>
+  <string name="enterNumber">Ingresar número de teléfono:</string>
   <string name="hintName">Nombre</string>
   <string name="hintPhonenumber">Número de teléfono</string>
   <string name="contactAddSuccess">El contacto ha sido añadido a la tarjeta SIM</string>
