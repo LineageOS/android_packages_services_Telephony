@@ -153,4 +153,8 @@
   <string name="srvcc_video_message">"Cuộc gọi video đã được hạ xuống thành các cuộc gọi thoại 2G/3G, vì mạng 4G không có sẵn."</string>
   <string name="srvcc_message">"Cuộc gọi thoại 4G đã được hạ xuống thành các cuộc gọi thoại 2G/3G, vì mạng 4G không có sẵn."</string>
   <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Cài đặt chuyển tiếp cuộc gọi</string>
+  <string name="labelCFVoice">Thoại</string>
+  <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Tùy chọn chuyển tiếp cuộc gọi</string>
 </resources>

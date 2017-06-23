@@ -33,124 +33,128 @@
 <resources>
   <!-- IMS settings related strings -->
   <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">IMS поставке</string>
+  <string name="ims_settings">Подешавања IMS-а</string>
   <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN за откључавање подскупа SIM мреже</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN кôд за откључавање подскупа мреже SIM картице</string>
   <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">PIN за откључавање корпоративног SIM-а</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">PIN кôд за откључавање корпоративне SIM картице</string>
   <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">PIN за откључавање SIM сервисног провајдера</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">PIN кôд за откључавање оператера SIM картице</string>
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN за откључавање SIM-а</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN кôд за откључавање SIM картице</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN за откључавање RUIM мреже 1</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN кôд за откључавање мреже 1 RUIM картице</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN за откључавање RUIM мреже 2</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN кôд за откључавање мреже 2 RUIM картице</string>
   <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN за откључавање RUIM HRPD-а</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN кôд за откључавање HRPD RUIM картице</string>
   <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN за откључавање корпоративног RUIM-а</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN кôд за откључавање корпоративне RUIM картице</string>
   <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">PIN за откључавање RUIM сервисног провајдера</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">PIN кôд за откључавање оператера RUIM картице</string>
   <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN за откључавање RUIM-а</string>
+  <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN кôд за откључавање RUIM картице</string>
   <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Унеси PUK</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Унесите PUK кôд</string>
   <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Захтевање откључавања подскупа SIM мреже\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Захтевам откључавање подскупа мреже SIM картице\u2026</string>
   <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Захтевање откључавања SIM сервисног провајдера\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Захтевам откључавање оператера SIM картице\u2026</string>
   <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Захтевање откључавања корпоративног SIM-а\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Захтевам откључавање корпоративне SIM картице\u2026</string>
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Захтевање откључавања SIM-а\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Захтевам откључавање SIM картице\u2026</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Захтевање откључавања RUIM мреже 1\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Захтевам откључавање мреже 1 RUIM картице\u2026</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Захтевање откључавања RUIM мреже 2\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Захтевам откључавање мреже 2 RUIM картице\u2026</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Захтевање откључавања RUIM HRPD-а\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Захтевам откључавање HRPD RUIM картице\u2026</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Захтевање откључавања RUIM сервисног провајдера\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Захтевам откључавање оператера RUIM картице\u2026</string>
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Захтевање откључавања корпоративног RUIM-а\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Захтевам откључавање корпоративне RUIM картице\u2026</string>
   <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Захтевање откључавања RUIM-а\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Захтевам откључавање RUIM картице\u2026</string>
   <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Захтевање откључавања PUK-а\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Захтевам откључавање PUK кодом\u2026</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Захтев откључавања подскупа SIM мреже неуспешан.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Не могу да испуним захтев за откључавање подскупа мреже SIM картице.</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Захтев откључавања SIM сервисног провајдера неуспешан.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Не могу да испуним захтев за откључавање оператера SIM картице.</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Захтев откључавања корпоративног SIM-а неуспешан.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Не могу да испуним захтев за откључавање корпоративне SIM картице.</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Захтев откључавања SIM-а неуспешан.</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Не могу да испуним захтев за откључавање SIM картице.</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Захтев откључавања RUIM мреже 1 неуспешан.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Не могу да испуним захтев за откључавање мреже 1 RUIM картице.</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Захтев откључавања RUIM мреже 2 неуспешан.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Не могу да испуним захтев за откључавање мреже 2 RUIM картице.</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Захтев откључавања RUIM HRPD-а неуспешан.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Не могу да испуним захтев за откључавање HRPD RUIM картице.</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Захтев откључавања RUIM сервисног провајдера неуспешан.</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Не могу да испуним захтев за откључавање оператера RUIM картице.</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Захтев откључавања корпоративног RUIM-а неуспешан.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Не могу да испуним захтев за откључавање корпоративне RUIM картице.</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Захтев откључавања RUIM-а неуспешан.</string>
+  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Не могу да испуним захтев за откључавање RUIM картице.</string>
   <!-- Error message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Откључавање PUK-а неуспешно.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Не могу да откључам PUK кодом.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Не могу да откључам PUK кодом.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Не могу да откључам PUK кодом.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Не могу да откључам PUK кодом.</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Не могу да откључам PUK кодом.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Не могу да откључам PUK кодом.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Не могу да откључам PUK кодом.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Не могу да откључам PUK кодом.</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Не могу да откључам PUK кодом.</string>
+  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Не могу да откључам PUK кодом.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Не могу да откључам PUK кодом.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Откључавање подскупа SIM мреже успешно.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Подскуп мреже SIM картице је откључан.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Откључавање SIM сервисног провајдера успешно.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Оператер SIM картице је откључан.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Откључавање корпоративног SIM-а успешно.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Корпоративна SIM картица је откључана.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Откључавање SIM-а успешно.</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM картица је откључана.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Откључавање RUIM мреже 1 успешно.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Мрежа 1 RUIM картице је откључана.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Откључавање RUIM мреже 2 успешно.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Мрежа 2 RUIM картице је откључана.</string>
   <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">Откључавање RUIM HRPD-а успешно.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">HRPD RUIM картица је откључана.</string>
   <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Откључавање RUIM сервисног провајдера успешно.</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Оператер RUIM картице је откључан.</string>
   <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Откључавање корпоративног RUIM-а успешно.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Корпоративна RUIM картица је откључана.</string>
   <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">Откључавање RUIM-а успешно.</string>
+  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM картица је откључана.</string>
   <!-- Success message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Откључавање PUK-а успешно.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">Откључавање PUK кодом је завршено.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">Откључавање PUK кодом је завршено.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">Откључавање PUK кодом је завршено.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">Откључавање PUK кодом је завршено.</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">Откључавање PUK кодом је завршено.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">Откључавање PUK кодом је завршено.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Откључавање PUK кодом је завршено.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">Откључавање PUK кодом је завршено.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Откључавање PUK кодом је завршено.</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Откључавање PUK кодом је завршено.</string>
+  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Откључавање PUK кодом је завршено.</string>
   <string name="preferred_network_mode_dialogtitle_cmcc">Режим мреже</string>
   <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
   <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (аутоматски)"</string>
   <string name="preferred_network_mode_3g_2g_auto">"3G/2G (аутоматски)"</string>
-  <string name="cf_setting_mobile_data_alert">Укључи мобилне податке и провери да је Wi-Fi искључен</string>
-  <string name="cf_setting_mobile_data_roaming_alert">Укључите податаке у ромингу</string>
-  <string name="no_mobile_data">Мобилни подаци нису доступни</string>
-  <string name="no_mobile_data_roaming">Роминг података није доступан</string>
-  <string name="srvcc_video_message">"Видео позив је пребачен на 2G/3G гласовни позив јер 4G мрежа није доступна."</string>
-  <string name="srvcc_message">"4G гласовни позив је пребачен на 2G/3G гласовни позив јер 4G мрежа није доступна."</string>
+  <string name="cf_setting_mobile_data_alert">Укључите мобилне податке и уверите се да је Wi-Fi искључен</string>
+  <string name="cf_setting_mobile_data_roaming_alert">Укључите мобилне податке у ромингу</string>
+  <string name="no_mobile_data">Мобилни подаци су недоступни</string>
+  <string name="no_mobile_data_roaming">Мобилни подаци у ромингу су недоступни</string>
+  <string name="srvcc_video_message">"Видео-позив је пребачен на 2G/3G гласовни позив јер је 4G мрежа недоступна."</string>
+  <string name="srvcc_message">"4G гласовни позив је пребачен на 2G/3G гласовни позив јер је 4G мрежа недоступна."</string>
   <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Подешавања прослеђивања позива</string>
+  <string name="labelCFVoice">Глас</string>
+  <string name="labelCFVideo">Видео</string>
+  <string name="call_forward_option">Опције прослеђивања позива</string>
 </resources>

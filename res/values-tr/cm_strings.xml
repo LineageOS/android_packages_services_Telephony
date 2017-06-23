@@ -80,4 +80,5 @@
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Şebeke modunu seç</string>
   <string name="choose_network_mode_system_default">Sistem varsayılanı</string>
+  <string name="cdma_call_settings">CDMA çağrı ayarları</string>
 </resources>

@@ -55,7 +55,7 @@
   <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN de desbloqueo de tarjeta RUIM</string>
   <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Introducir PUK</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Ingresar PUK</string>
   <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Solicitando desbloqueo de subred de tarjeta SIM\u2026</string>
   <!-- Status message displayed on SIM Service Provider Depersonalization panel -->

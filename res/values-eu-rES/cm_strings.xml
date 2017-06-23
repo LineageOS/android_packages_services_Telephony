@@ -80,4 +80,5 @@
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Hautatu sare modua</string>
   <string name="choose_network_mode_system_default">Sistemaren lehenetsia</string>
+  <string name="cdma_call_settings">CDMA dei ezarpenak</string>
 </resources>

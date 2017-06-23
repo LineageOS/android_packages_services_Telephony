@@ -80,4 +80,5 @@
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Elige el modo de red</string>
   <string name="choose_network_mode_system_default">Utilizar valores predefinidos</string>
+  <string name="cdma_call_settings">Ajustes de llamada CDMA</string>
 </resources>

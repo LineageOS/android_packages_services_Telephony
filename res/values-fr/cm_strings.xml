@@ -80,4 +80,5 @@
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Choisir le mode réseau</string>
   <string name="choose_network_mode_system_default">Par défaut du système</string>
+  <string name="cdma_call_settings">Paramètres d\'appels CMDA</string>
 </resources>

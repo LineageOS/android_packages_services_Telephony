@@ -80,4 +80,5 @@
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Chọn chế độ mạng</string>
   <string name="choose_network_mode_system_default">Mặc định hệ thống</string>
+  <string name="cdma_call_settings">Cài đặt cuộc gọi CDMA</string>
 </resources>

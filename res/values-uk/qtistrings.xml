@@ -153,4 +153,8 @@
   <string name="srvcc_video_message">"Відеодзвінок був понижений до 2G/3G голосового виклику, оскільки мережі 4G недоступні."</string>
   <string name="srvcc_message">"Голосовий виклик 4G був понижений до 2G/3G голосового виклику, оскільки мережі 4G недоступні."</string>
   <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Налаштування переадресації викликів</string>
+  <string name="labelCFVoice">Голос</string>
+  <string name="labelCFVideo">Відео</string>
+  <string name="call_forward_option">Параметри переадресації викликів</string>
 </resources>

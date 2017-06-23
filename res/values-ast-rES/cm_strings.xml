@@ -69,4 +69,5 @@
   <string name="perm_change_mobile_network_desc">Permite qu\'una aplicación modifique\'l mou actual de rede.</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Escoyer mou de rede</string>
+  <string name="cdma_call_settings">Axustes de llamaes CDMA</string>
 </resources>

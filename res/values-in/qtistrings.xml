@@ -153,4 +153,6 @@
   <string name="srvcc_video_message">"Panggilan video telah diturunkan ke 2G / 3G panggilan suara, karena 4G jaringan tidak tersedia."</string>
   <string name="srvcc_message">"panggilan suara 4G telah diturunkan ke panggilan suara 2G/3G, karena jaringan 4G tidak tersedia."</string>
   <!-- call forwarding settings related strings -->
+  <string name="labelCFVoice">Suara</string>
+  <string name="labelCFVideo">Video</string>
 </resources>

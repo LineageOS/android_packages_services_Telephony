@@ -80,4 +80,5 @@
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">네트워크 모드 선택</string>
   <string name="choose_network_mode_system_default">시스템 기본 설정</string>
+  <string name="cdma_call_settings">CDMA 통화 설정</string>
 </resources>

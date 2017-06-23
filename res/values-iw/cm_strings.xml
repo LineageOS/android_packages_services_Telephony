@@ -80,4 +80,5 @@
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">בחר במצב רשת</string>
   <string name="choose_network_mode_system_default">ברירת המחדל של המערכת</string>
+  <string name="cdma_call_settings">‏הגדרות שיחה של CDMA</string>
 </resources>

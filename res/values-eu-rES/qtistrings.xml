@@ -153,4 +153,8 @@
   <string name="srvcc_video_message">"Bideo deia 2G/3G ahots deira jaitsi da, 4G sarea ez dagoelako eskuragarri."</string>
   <string name="srvcc_message">"4G ahots deia 2G/3G ahots deira jaitsi da, 4G sarea ez dagoelako eskuragarri."</string>
   <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Dei-birbidaltze ezarpenak</string>
+  <string name="labelCFVoice">Ahotsa</string>
+  <string name="labelCFVideo">Bideoa</string>
+  <string name="call_forward_option">Dei-birbideratze aukerak</string>
 </resources>

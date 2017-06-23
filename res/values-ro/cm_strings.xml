@@ -80,4 +80,5 @@
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Alegeți modul rețelei</string>
   <string name="choose_network_mode_system_default">Implicit sistem</string>
+  <string name="cdma_call_settings">Setări apel CDMA</string>
 </resources>
