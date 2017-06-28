@@ -47,6 +47,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -152,29 +153,98 @@ public class EmbmsSampleDownloadService extends Service {
         }
     };
 
+    private static EmbmsSampleDownloadService sInstance = null;
+
     private final Map<FrontendAppIdentifier, IMbmsDownloadManagerCallback> mAppCallbacks =
             new HashMap<>();
     private final Map<FrontendAppIdentifier, ComponentName> mAppReceivers = new HashMap<>();
     private final Map<FrontendAppIdentifier, String> mAppTempFileRoots = new HashMap<>();
     private final Map<FrontendAppIdentifier, Boolean> mDoesAppHaveActiveDownload =
             new ConcurrentHashMap<>();
+    // A map of app-identifiers to (maps of service-ids to sets of temp file uris in use)
+    private final Map<FrontendAppIdentifier, Map<String, Set<Uri>>> mTempFilesInUse =
+            new ConcurrentHashMap<>();
 
     private HandlerThread mHandlerThread;
     private Handler mHandler;
+    private int mDownloadDelayFactor = 1;
 
     @Override
     public IBinder onBind(Intent intent) {
         mHandlerThread = new HandlerThread("EmbmsTestDownloadServiceWorker");
         mHandlerThread.start();
         mHandler = new Handler(mHandlerThread.getLooper());
+        sInstance = this;
         return mBinder.asBinder();
+    }
+
+    public static EmbmsSampleDownloadService getInstance() {
+        return sInstance;
+    }
+
+    public void requestCleanup() {
+        // Assume that there's only one app, and do it for all the services.
+        FrontendAppIdentifier registeredAppId = mAppReceivers.keySet().iterator().next();
+        ComponentName appReceiver = mAppReceivers.values().iterator().next();
+        for (FileServiceInfo fileServiceInfo :
+                FileServiceRepository.getInstance(this).getAllFileServices()) {
+            Intent cleanupIntent = new Intent(MbmsDownloadManager.ACTION_CLEANUP);
+            cleanupIntent.setComponent(appReceiver);
+            cleanupIntent.putExtra(MbmsDownloadManager.EXTRA_SERVICE_INFO, fileServiceInfo);
+            cleanupIntent.putExtra(MbmsDownloadManager.EXTRA_TEMP_FILE_ROOT,
+                    mAppTempFileRoots.get(registeredAppId));
+            Set<Uri> tempFilesInUse =
+                    mTempFilesInUse.getOrDefault(registeredAppId, Collections.emptyMap())
+                            .getOrDefault(fileServiceInfo.getServiceId(), Collections.emptySet());
+            cleanupIntent.putExtra(MbmsDownloadManager.EXTRA_TEMP_FILES_IN_USE,
+                    new ArrayList<>(tempFilesInUse));
+            sendBroadcast(cleanupIntent);
+        }
+    }
+
+    public void requestExtraTempFiles(FileServiceInfo serviceInfo) {
+        // Assume one app, and do it for the specified service.
+        FrontendAppIdentifier registeredAppId = mAppReceivers.keySet().iterator().next();
+        ComponentName appReceiver = mAppReceivers.values().iterator().next();
+        Intent fdRequestIntent = new Intent(MbmsDownloadManager.ACTION_FILE_DESCRIPTOR_REQUEST);
+        fdRequestIntent.putExtra(MbmsDownloadManager.EXTRA_SERVICE_INFO, serviceInfo);
+        fdRequestIntent.putExtra(MbmsDownloadManager.EXTRA_FD_COUNT, 10);
+        fdRequestIntent.putExtra(MbmsDownloadManager.EXTRA_TEMP_FILE_ROOT,
+                mAppTempFileRoots.get(registeredAppId));
+        fdRequestIntent.setComponent(appReceiver);
+
+        sendOrderedBroadcast(fdRequestIntent,
+                null, // receiverPermission
+                new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        int result = getResultCode();
+                        Bundle extras = getResultExtras(false);
+                        Log.i(LOG_TAG, "Received extra temp files. Result " + result);
+                        if (extras != null) {
+                            Log.i(LOG_TAG, "Got "
+                                    + extras.getParcelableArrayList(
+                                    MbmsDownloadManager.EXTRA_FREE_URI_LIST).size()
+                                    + " fds");
+                        }
+                    }
+                },
+                null, // scheduler
+                Activity.RESULT_OK,
+                null, // initialData
+                null /* initialExtras */);
+    }
+
+    public void delayDownloads(int factor) {
+        mDownloadDelayFactor = factor;
     }
 
     private void sendFdRequest(DownloadRequest request, FrontendAppIdentifier appKey) {
         int numFds = getNumFdsNeededForRequest(request);
         // Compose the FILE_DESCRIPTOR_REQUEST_INTENT
         Intent requestIntent = new Intent(MbmsDownloadManager.ACTION_FILE_DESCRIPTOR_REQUEST);
-        requestIntent.putExtra(MbmsDownloadManager.EXTRA_REQUEST, request);
+        requestIntent.putExtra(MbmsDownloadManager.EXTRA_SERVICE_INFO,
+                request.getFileServiceInfo());
         requestIntent.putExtra(MbmsDownloadManager.EXTRA_FD_COUNT, numFds);
         requestIntent.putExtra(MbmsDownloadManager.EXTRA_TEMP_FILE_ROOT,
                 mAppTempFileRoots.get(appKey));
@@ -219,14 +289,18 @@ public class EmbmsSampleDownloadService extends Service {
                 break;
             }
             UriPathPair tempFile = tempFiles.get(i);
+            addTempFileInUse(appKey, request.getFileServiceInfo().getServiceId(),
+                    tempFile.getFilePathUri());
             FileInfo fileToDownload = filesToDownload.get(i);
             final boolean isLastFile = i == tempFiles.size() - 1;
             mHandler.postDelayed(() -> {
                 downloadSingleFile(appKey, request, tempFile, fileToDownload);
+                removeTempFileInUse(appKey, request.getFileServiceInfo().getServiceId(),
+                        tempFile.getFilePathUri());
                 if (isLastFile) {
                     mDoesAppHaveActiveDownload.put(appKey, false);
                 }
-            }, FILE_SEPARATION_DELAY * i);
+            }, FILE_SEPARATION_DELAY * i * mDownloadDelayFactor);
         }
     }
 
@@ -295,5 +369,31 @@ public class EmbmsSampleDownloadService extends Service {
 
     private int getNumFdsNeededForRequest(DownloadRequest request) {
         return request.getFileServiceInfo().getFiles().size();
+    }
+
+    private void addTempFileInUse(FrontendAppIdentifier appKey, String serviceId, Uri tempFileUri) {
+        Map<String, Set<Uri>> tempFileByService = mTempFilesInUse.get(appKey);
+        if (tempFileByService == null) {
+            tempFileByService = new ConcurrentHashMap<>();
+            mTempFilesInUse.put(appKey, tempFileByService);
+        }
+        Set<Uri> tempFilesInUse = tempFileByService.get(serviceId);
+        if (tempFilesInUse == null) {
+            tempFilesInUse = ConcurrentHashMap.newKeySet();
+            tempFileByService.put(serviceId, tempFilesInUse);
+        }
+        tempFilesInUse.add(tempFileUri);
+    }
+
+    private void removeTempFileInUse(FrontendAppIdentifier appKey, String serviceId,
+            Uri tempFileUri) {
+        Set<Uri> tempFilesInUse = mTempFilesInUse.getOrDefault(appKey, Collections.emptyMap())
+                .getOrDefault(serviceId, Collections.emptySet());
+        if (tempFilesInUse.contains(tempFileUri)) {
+            tempFilesInUse.remove(tempFileUri);
+        } else {
+            Log.w(LOG_TAG, "Trying to remove unknown temp file in use " + tempFileUri + " for app" +
+                    appKey + " and service id " + serviceId);
+        }
     }
 }
