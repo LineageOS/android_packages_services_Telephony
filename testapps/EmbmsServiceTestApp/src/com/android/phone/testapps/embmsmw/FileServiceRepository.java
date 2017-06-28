@@ -71,6 +71,10 @@ public class FileServiceRepository {
                 .collect(Collectors.toList());
     }
 
+    public List<FileServiceInfo> getAllFileServices() {
+        return new ArrayList<>(mIdToServiceInfo.values());
+    }
+
     public FileServiceInfo getFileServiceInfoForId(String serviceId) {
         return mIdToServiceInfo.getOrDefault(serviceId, null);
     }
