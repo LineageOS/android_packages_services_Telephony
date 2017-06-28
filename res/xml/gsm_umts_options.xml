@@ -33,14 +33,15 @@
             android:persistent="false"/>
     </com.android.phone.NetworkOperators>
 
-    <PreferenceScreen
-        android:key="button_apn_key"
-        android:title="@string/apn_settings"
-        android:persistent="false">
-
-        <!-- The launching Intent will be defined thru code as we need to pass some Extra -->
-
-    </PreferenceScreen>
+    <!--We want separate APN setting from reset of settings because-->
+    <!--we want user to change it with caution.-->
+    <PreferenceCategory
+        android:key="category_apn_key">
+        <Preference
+            android:key="button_apn_key"
+            android:title="@string/apn_settings"
+            android:persistent="false" />
+    </PreferenceCategory>
 
     <PreferenceScreen
         android:key="carrier_settings_key"

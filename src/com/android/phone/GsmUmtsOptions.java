@@ -35,13 +35,15 @@ import com.android.internal.telephony.PhoneFactory;
 public class GsmUmtsOptions {
     private static final String LOG_TAG = "GsmUmtsOptions";
 
-    private PreferenceScreen mButtonAPNExpand;
+    private Preference mButtonAPNExpand;
+    private Preference mCategoryAPNExpand;
     private TwoStatePreference mButtonAutoSelect;
     private NetworkSelectListPreference mButtonOperatorSelection;
 
     private NetworkOperators mNetworkOperator;
 
     private static final String BUTTON_APN_EXPAND_KEY = "button_apn_key";
+    private static final String CATEGORY_APN_EXPAND_KEY = "category_apn_key";
     private static final String BUTTON_CARRIER_SETTINGS_KEY = "carrier_settings_key";
 
     public static final String EXTRA_SUB_ID = "sub_id";
@@ -61,7 +63,8 @@ public class GsmUmtsOptions {
 
     protected void create() {
         mPrefFragment.addPreferencesFromResource(R.xml.gsm_umts_options);
-        mButtonAPNExpand = (PreferenceScreen) mPrefScreen.findPreference(BUTTON_APN_EXPAND_KEY);
+        mButtonAPNExpand = mPrefScreen.findPreference(BUTTON_APN_EXPAND_KEY);
+        mCategoryAPNExpand = mPrefScreen.findPreference(CATEGORY_APN_EXPAND_KEY);
 
         mNetworkOperator = (NetworkOperators) mPrefScreen
                 .findPreference(NetworkOperators.CATEGORY_NETWORK_OPERATORS_KEY);
@@ -71,7 +74,7 @@ public class GsmUmtsOptions {
         boolean removedNetworkOperatorsCategory = false;
         if (PhoneFactory.getDefaultPhone().getPhoneType() != PhoneConstants.PHONE_TYPE_GSM) {
             log("Not a GSM phone");
-            mButtonAPNExpand.setEnabled(false);
+            mCategoryAPNExpand.setEnabled(false);
             mNetworkOperator.setEnabled(false);
         } else {
             log("Not a CDMA phone");
@@ -85,8 +88,7 @@ public class GsmUmtsOptions {
             // Note: these settings used to be controlled with overlays in
             // Telephony/res/values/config.xml
             if (!carrierConfig.getBoolean(CarrierConfigManager.KEY_APN_EXPAND_BOOL)
-                    && mButtonAPNExpand != null) {
-                mPrefScreen.removePreference(mButtonAPNExpand);
+                    && mCategoryAPNExpand != null) {
                 removedAPNExpand = true;
             }
             if (!carrierConfig.getBoolean(
@@ -134,6 +136,8 @@ public class GsmUmtsOptions {
                             return true;
                         }
             });
+        } else {
+            mPrefScreen.removePreference(mCategoryAPNExpand);
         }
 
         if (!removedNetworkOperatorsCategory) {

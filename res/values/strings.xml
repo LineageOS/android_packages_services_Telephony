@@ -489,6 +489,8 @@
     <string name="data_usage_title">Data usage</string>
     <!-- Summary about how much data has been used in a date range [CHAR LIMIT=100] -->
     <string name="data_usage_template"><xliff:g name="amount" example="200 MB">%1$s</xliff:g> mobile data used between <xliff:g name="date_range" example="Jan 1 -- Feb 2">%2$s</xliff:g></string>
+    <!-- Mobile network settings screen, Advanced button to show more items when clicked [CHAR LIMIT=50] -->
+    <string name="advanced_options_title">Advanced</string>
     <!-- Mobile network settings screen, name of the option to manage carrier profiles on devices which support embedded carrier profiles -->
     <string name="carrier_settings_euicc">Carrier</string>
     <!-- Mobile network settings screen, summary of the option to manage carrier profiles on devices which support embedded carrier profiles -->

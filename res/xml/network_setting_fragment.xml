@@ -37,6 +37,15 @@
         android:key="data_usage_summary"
         android:title="@string/data_usage_title" />
 
+    <com.android.phone.AdvancedOptionsPreference
+        android:key="advanced_options"/>
+
+    <SwitchPreference
+        android:key="enhanced_4g_lte"
+        android:title="@string/enhanced_4g_lte_mode_title"
+        android:persistent="false"
+        android:summary="@string/enhanced_4g_lte_mode_summary"/>
+
     <ListPreference
         android:key="preferred_network_mode_key"
         android:title="@string/preferred_network_mode_title"
@@ -53,11 +62,9 @@
         android:entryValues="@array/enabled_networks_values"
         android:dialogTitle="@string/preferred_network_mode_dialogtitle" />
 
-    <SwitchPreference
-        android:key="enhanced_4g_lte"
-        android:title="@string/enhanced_4g_lte_mode_title"
-        android:persistent="false"
-        android:summary="@string/enhanced_4g_lte_mode_summary"/>
+    <Preference
+        android:key="carrier_settings_euicc_key"
+        android:title="@string/carrier_settings_euicc" />
 
     <PreferenceCategory
         android:key="calling"
@@ -79,10 +86,5 @@
             android:persistent="true"/>
 
     </PreferenceCategory>
-
-
-    <PreferenceScreen
-        android:key="carrier_settings_euicc_key"
-        android:title="@string/carrier_settings_euicc" />
 
 </PreferenceScreen>
