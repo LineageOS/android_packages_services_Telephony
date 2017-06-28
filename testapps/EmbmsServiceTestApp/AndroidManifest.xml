@@ -33,6 +33,10 @@
         <action android:name="android.telephony.action.EmbmsDownload" />
       </intent-filter>
     </service>
+
+    <receiver android:name="com.android.phone.testapps.embmsmw.SideChannelReceiver"
+              android:enabled="true"
+              android:exported="true"/>
   </application>
 </manifest>
 
