@@ -68,7 +68,7 @@ public class EmbmsSampleDownloadService extends Service {
 
     private final IMbmsDownloadService mBinder = new MbmsDownloadServiceBase() {
         @Override
-        public void initialize(String appName, int subId, IMbmsDownloadManagerCallback listener) {
+        public void initialize(int subId, IMbmsDownloadManagerCallback listener) {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
@@ -82,8 +82,7 @@ public class EmbmsSampleDownloadService extends Service {
 
             // Do initialization with a bit of a delay to simulate work being done.
             mHandler.postDelayed(() -> {
-                FrontendAppIdentifier appKey =
-                        new FrontendAppIdentifier(packageUid, appName, subId);
+                FrontendAppIdentifier appKey = new FrontendAppIdentifier(packageUid, subId);
                 if (!mAppCallbacks.containsKey(appKey)) {
                     mAppCallbacks.put(appKey, listener);
                     ComponentName appReceiver = MbmsDownloadManager.getAppReceiverFromUid(
@@ -106,10 +105,10 @@ public class EmbmsSampleDownloadService extends Service {
         }
 
         @Override
-        public int getFileServices(String appName, int subscriptionId,
+        public int getFileServices(int subscriptionId,
                 List<String> serviceClasses) throws RemoteException {
             FrontendAppIdentifier appKey =
-                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+                    new FrontendAppIdentifier(Binder.getCallingUid(), subscriptionId);
             checkInitialized(appKey);
 
             List<FileServiceInfo> serviceInfos =
@@ -128,13 +127,13 @@ public class EmbmsSampleDownloadService extends Service {
         }
 
         @Override
-        public int setTempFileRootDirectory(String appName, int subscriptionId,
+        public int setTempFileRootDirectory(int subscriptionId,
                 String rootDirectoryPath) throws RemoteException {
             FrontendAppIdentifier appKey =
-                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+                    new FrontendAppIdentifier(Binder.getCallingUid(), subscriptionId);
             checkInitialized(appKey);
 
-            if (mDoesAppHaveActiveDownload.getOrDefault(appKey, false)) {
+            if (mActiveDownloadRequests.getOrDefault(appKey, Collections.emptySet()).size() > 0) {
                 return MbmsException.ERROR_CANNOT_CHANGE_TEMP_FILE_ROOT;
             }
             mAppTempFileRoots.put(appKey, rootDirectoryPath);
@@ -144,11 +143,23 @@ public class EmbmsSampleDownloadService extends Service {
         @Override
         public int download(DownloadRequest downloadRequest, IDownloadCallback listener) {
             FrontendAppIdentifier appKey = new FrontendAppIdentifier(
-                    Binder.getCallingUid(), downloadRequest.getAppName(),
-                    downloadRequest.getSubscriptionId());
+                    Binder.getCallingUid(), downloadRequest.getSubscriptionId());
             checkInitialized(appKey);
 
             mHandler.post(() -> sendFdRequest(downloadRequest, appKey));
+            return MbmsException.SUCCESS;
+        }
+
+        @Override
+        public int cancelDownload(DownloadRequest downloadRequest) {
+            FrontendAppIdentifier appKey = new FrontendAppIdentifier(
+                    Binder.getCallingUid(), downloadRequest.getSubscriptionId());
+            checkInitialized(appKey);
+            if (!mActiveDownloadRequests.getOrDefault(
+                    appKey, Collections.emptySet()).contains(downloadRequest)) {
+                return MbmsException.ERROR_UNKNOWN_DOWNLOAD_REQUEST;
+            }
+            mActiveDownloadRequests.get(appKey).remove(downloadRequest);
             return MbmsException.SUCCESS;
         }
     };
@@ -159,7 +170,7 @@ public class EmbmsSampleDownloadService extends Service {
             new HashMap<>();
     private final Map<FrontendAppIdentifier, ComponentName> mAppReceivers = new HashMap<>();
     private final Map<FrontendAppIdentifier, String> mAppTempFileRoots = new HashMap<>();
-    private final Map<FrontendAppIdentifier, Boolean> mDoesAppHaveActiveDownload =
+    private final Map<FrontendAppIdentifier, Set<DownloadRequest>> mActiveDownloadRequests =
             new ConcurrentHashMap<>();
     // A map of app-identifiers to (maps of service-ids to sets of temp file uris in use)
     private final Map<FrontendAppIdentifier, Map<String, Set<Uri>>> mTempFilesInUse =
@@ -281,9 +292,13 @@ public class EmbmsSampleDownloadService extends Service {
             Log.w(LOG_TAG, "Different numbers of temp files and files to download...");
         }
 
+        if (!mActiveDownloadRequests.containsKey(appKey)) {
+            mActiveDownloadRequests.put(appKey, Collections.synchronizedSet(new HashSet<>()));
+        }
+        mActiveDownloadRequests.get(appKey).add(request);
+
         // Go through the files one-by-one and send them to the frontend app with a delay between
         // each one.
-        mDoesAppHaveActiveDownload.put(appKey, true);
         for (int i = 0; i < tempFiles.size(); i++) {
             if (i >= filesToDownload.size()) {
                 break;
@@ -292,14 +307,14 @@ public class EmbmsSampleDownloadService extends Service {
             addTempFileInUse(appKey, request.getFileServiceInfo().getServiceId(),
                     tempFile.getFilePathUri());
             FileInfo fileToDownload = filesToDownload.get(i);
-            final boolean isLastFile = i == tempFiles.size() - 1;
             mHandler.postDelayed(() -> {
+                if (mActiveDownloadRequests.get(appKey) == null ||
+                        !mActiveDownloadRequests.get(appKey).contains(request)) {
+                    return;
+                }
                 downloadSingleFile(appKey, request, tempFile, fileToDownload);
                 removeTempFileInUse(appKey, request.getFileServiceInfo().getServiceId(),
                         tempFile.getFilePathUri());
-                if (isLastFile) {
-                    mDoesAppHaveActiveDownload.put(appKey, false);
-                }
             }, FILE_SEPARATION_DELAY * i * mDownloadDelayFactor);
         }
     }
