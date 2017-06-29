@@ -81,7 +81,7 @@ public class EmbmsTestStreamingService extends Service {
 
     private final IMbmsStreamingService.Stub mBinder = new MbmsStreamingServiceBase() {
         @Override
-        public int initialize(IMbmsStreamingManagerCallback listener, String appName, int subId) {
+        public int initialize(IMbmsStreamingManagerCallback listener, int subId) {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
@@ -94,8 +94,7 @@ public class EmbmsTestStreamingService extends Service {
             }
 
             mHandler.postDelayed(() -> {
-                FrontendAppIdentifier appKey =
-                        new FrontendAppIdentifier(packageUid, appName, subId);
+                FrontendAppIdentifier appKey = new FrontendAppIdentifier(packageUid, subId);
                 if (!mAppCallbacks.containsKey(appKey)) {
                     mAppCallbacks.put(appKey, listener);
                 } else {
@@ -117,10 +116,9 @@ public class EmbmsTestStreamingService extends Service {
         }
 
         @Override
-        public int getStreamingServices(String appName, int subscriptionId,
-                List<String> serviceClasses) {
+        public int getStreamingServices(int subscriptionId, List<String> serviceClasses) {
             FrontendAppIdentifier appKey =
-                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+                    new FrontendAppIdentifier(Binder.getCallingUid(), subscriptionId);
             checkInitialized(appKey);
 
             List<StreamingServiceInfo> serviceInfos =
@@ -138,10 +136,10 @@ public class EmbmsTestStreamingService extends Service {
         }
 
         @Override
-        public int startStreaming(String appName, int subscriptionId, String serviceId,
+        public int startStreaming(int subscriptionId, String serviceId,
                 IStreamingServiceCallback callback) {
             FrontendAppIdentifier appKey =
-                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+                    new FrontendAppIdentifier(Binder.getCallingUid(), subscriptionId);
             checkInitialized(appKey);
             checkServiceExists(serviceId);
 
@@ -157,9 +155,9 @@ public class EmbmsTestStreamingService extends Service {
         }
 
         @Override
-        public Uri getPlaybackUri(String appName, int subscriptionId, String serviceId) {
+        public Uri getPlaybackUri(int subscriptionId, String serviceId) {
             FrontendAppIdentifier appKey =
-                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+                    new FrontendAppIdentifier(Binder.getCallingUid(), subscriptionId);
             checkInitialized(appKey);
             checkServiceExists(serviceId);
 
@@ -171,9 +169,9 @@ public class EmbmsTestStreamingService extends Service {
         }
 
         @Override
-        public void stopStreaming(String appName, int subscriptionId, String serviceId) {
+        public void stopStreaming(int subscriptionId, String serviceId) {
             FrontendAppIdentifier appKey =
-                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+                    new FrontendAppIdentifier(Binder.getCallingUid(), subscriptionId);
             checkInitialized(appKey);
             checkServiceExists(serviceId);
 
@@ -181,9 +179,9 @@ public class EmbmsTestStreamingService extends Service {
         }
 
         @Override
-        public void disposeStream(String appName, int subscriptionId, String serviceId) {
+        public void disposeStream(int subscriptionId, String serviceId) {
             FrontendAppIdentifier appKey =
-                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+                    new FrontendAppIdentifier(Binder.getCallingUid(), subscriptionId);
             checkInitialized(appKey);
             checkServiceExists(serviceId);
 
@@ -192,12 +190,12 @@ public class EmbmsTestStreamingService extends Service {
         }
 
         @Override
-        public void dispose(String appName, int subscriptionId) {
+        public void dispose(int subscriptionId) {
             FrontendAppIdentifier appKey =
-                    new FrontendAppIdentifier(Binder.getCallingUid(), appName, subscriptionId);
+                    new FrontendAppIdentifier(Binder.getCallingUid(), subscriptionId);
             checkInitialized(appKey);
 
-            Log.i(TAG, "Disposing app " + appName);
+            Log.i(TAG, "Disposing app with uid " + Binder.getCallingUid());
             StreamStateTracker.disposeAll(appKey);
             mAppCallbacks.remove(appKey);
         }
