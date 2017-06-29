@@ -23,4 +23,5 @@
     <string name="request_cleanup_button">Cleanup</string>
     <string name="request_spurious_temp_files_button">Request more temp files</string>
     <string name="delay_download_button">Delay download</string>
+    <string name="cancel_download_button">Cancel download</string>
 </resources>
