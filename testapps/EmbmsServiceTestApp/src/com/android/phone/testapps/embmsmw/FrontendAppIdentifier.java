@@ -18,21 +18,15 @@ package com.android.phone.testapps.embmsmw;
 
 public class FrontendAppIdentifier {
     private final int uid;
-    private final String appName;
     private final int subscriptionId;
 
-    public FrontendAppIdentifier(int uid, String appName, int subscriptionId) {
+    public FrontendAppIdentifier(int uid, int subscriptionId) {
         this.uid = uid;
-        this.appName = appName;
         this.subscriptionId = subscriptionId;
     }
 
     public int getUid() {
         return uid;
-    }
-
-    public String getAppName() {
-        return appName;
     }
 
     public int getSubscriptionId() {
@@ -53,16 +47,12 @@ public class FrontendAppIdentifier {
         if (uid != that.uid) {
             return false;
         }
-        if (subscriptionId != that.subscriptionId) {
-            return false;
-        }
-        return appName.equals(that.appName);
+        return this.subscriptionId == that.subscriptionId;
     }
 
     @Override
     public int hashCode() {
         int result = uid;
-        result = 31 * result + (appName != null ? appName.hashCode() : 0);
         result = 31 * result + subscriptionId;
         return result;
     }
