@@ -178,8 +178,6 @@
     <!-- Voicemail notifications title. The user clicks on this preference navigate to the system settings screen for that channel
     .[CHAR LIMIT=30] -->
     <string name="voicemail_notifications_preference_title">Notifications</string>
-    <!-- Mobile network settings screen, setting option name -->
-    <string name="networks">Network operators</string>
     <!-- Cell Broadcast settings title.  [CHAR LIMIT=50] -->
     <string name="cell_broadcast_settings">Emergency broadcasts</string>
     <!-- Call settings screen title -->
@@ -371,8 +369,6 @@
     <string name="load_networks_progress">Searching\u2026</string>
     <!-- Available networks screen, text when no networks are found -->
     <string name="empty_networks_list">No networks found.</string>
-    <!-- Available networks screen, setting option name -->
-    <string name="search_networks">Search networks</string>
     <!-- Available networks screen, toast when an error is encountered when searching for networks -->
     <string name="network_query_error">Error while searching for networks.</string>
     <!-- Available networks screen, toast when registering on a specific network -->
@@ -383,10 +379,6 @@
     <string name="connect_later">Can\'t connect to this network right now. Try again later.</string>
     <!-- Available networks screen, toast when registered on a specific network -->
     <string name="registration_done">Registered on network.</string>
-    <!-- Mobile network settings screen setting option summary text -->
-    <string name="sum_carrier_select">Choose a network operator</string>
-    <!-- Available networks screen, setting summary text -->
-    <string name="sum_search_networks">Search for all available networks</string>
     <!-- Available networks screen, name of switch button for whether to select network automatically -->
     <string name="select_automatically">Automatically select network</string>
     <!-- Available networks screen, name of button when user wants to select network manually  -->

@@ -603,10 +603,10 @@ public class NotificationMgr {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
                 Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-        // Use NetworkSetting to handle the selection intent
+        // Use MobileNetworkSettings to handle the selection intent
         intent.setComponent(new ComponentName(
-                mContext.getString(R.string.network_operator_settings_package),
-                mContext.getString(R.string.network_operator_settings_class)));
+                mContext.getString(R.string.mobile_network_settings_package),
+                mContext.getString(R.string.mobile_network_settings_class)));
         intent.putExtra(GsmUmtsOptions.EXTRA_SUB_ID, subId);
         PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, intent, 0);
 

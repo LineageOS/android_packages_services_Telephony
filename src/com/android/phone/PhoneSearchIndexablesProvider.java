@@ -16,25 +16,24 @@
 
 package com.android.phone;
 
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_NON_INDEXABLE_KEYS_KEY_VALUE;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_CLASS_NAME;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_ICON_RESID;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_INTENT_ACTION;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_INTENT_TARGET_CLASS;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_RANK;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_RESID;
+import static android.provider.SearchIndexablesContract.INDEXABLES_RAW_COLUMNS;
+import static android.provider.SearchIndexablesContract.INDEXABLES_XML_RES_COLUMNS;
+import static android.provider.SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
 import android.provider.SearchIndexablesProvider;
-
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_NON_INDEXABLE_KEYS_KEY_VALUE;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_RANK;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_RESID;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_CLASS_NAME;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_ICON_RESID;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_INTENT_ACTION;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_INTENT_TARGET_CLASS;
-
-import static android.provider.SearchIndexablesContract.INDEXABLES_RAW_COLUMNS;
-import static android.provider.SearchIndexablesContract.INDEXABLES_XML_RES_COLUMNS;
-import static android.provider.SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS;
 
 public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
     private static final String TAG = "PhoneSearchIndexablesProvider";
@@ -82,7 +81,7 @@ public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
         if (!userManager.isAdminUser()) {
             final String[] values = new String[]{"preferred_network_mode_key", "button_roaming_key",
                     "cdma_lte_data_service_key", "enabled_networks_key", "enhanced_4g_lte",
-                    "button_apn_key", "button_carrier_sel_key", "carrier_settings_key",
+                    "button_apn_key", "button_network_select_key", "carrier_settings_key",
                     "cdma_system_select_key", "carrier_settings_euicc_key"};
             for (String nik : values) {
                 final Object[] ref = new Object[NON_INDEXABLES_KEYS_COLUMNS.length];

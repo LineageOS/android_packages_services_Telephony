@@ -153,10 +153,10 @@
     <!-- Class name for the default main Dialer activity [DO NOT TRANSLATE] -->
     <string name="dialer_default_class" translatable="false">com.android.dialer.DialtactsActivity</string>
 
-    <!-- Package name for the network operator settings [DO NOT TRANSLATE] -->
-    <string name="network_operator_settings_package" translatable="false">com.android.phone</string>
-    <!-- Class name for the network operator settings activity [DO NOT TRANSLATE] -->
-    <string name="network_operator_settings_class" translatable="false">com.android.phone.NetworkSetting</string>
+    <!-- Package name for the mobile network settings [DO NOT TRANSLATE] -->
+    <string name="mobile_network_settings_package" translatable="false">com.android.phone</string>
+    <!-- Class name for the mobile network settings activity [DO NOT TRANSLATE] -->
+    <string name="mobile_network_settings_class" translatable="false">com.android.phone.MobileNetworkSettings</string>
 
     <!-- CDMA activation goes through HFA -->
     <!-- DEPRECATED: Use CarrierConfigManager#KEY_USE_HFA_FOR_PROVISIONING_BOOL -->
