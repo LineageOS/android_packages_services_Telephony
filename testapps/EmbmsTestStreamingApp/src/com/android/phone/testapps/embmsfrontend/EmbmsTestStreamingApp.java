@@ -43,8 +43,6 @@ import java.util.Locale;
 import java.util.Map;
 
 public class EmbmsTestStreamingApp extends Activity {
-    private static final String APP_NAME = "StreamingApp1";
-
     private MbmsStreamingManagerCallback mStreamingListener = new MbmsStreamingManagerCallback() {
         @Override
         public void streamingServicesUpdated(List<StreamingServiceInfo> services) {
@@ -160,7 +158,7 @@ public class EmbmsTestStreamingApp extends Activity {
         bindButton.setOnClickListener((view) -> {
             try {
                 mStreamingManager = MbmsStreamingManager.create(
-                        EmbmsTestStreamingApp.this, mStreamingListener, APP_NAME);
+                        EmbmsTestStreamingApp.this, mStreamingListener);
             } catch (MbmsException e) {
                 Toast.makeText(EmbmsTestStreamingApp.this,
                         "Init error: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
