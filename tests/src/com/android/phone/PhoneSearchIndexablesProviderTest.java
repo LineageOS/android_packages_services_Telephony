@@ -50,13 +50,22 @@ public final class PhoneSearchIndexablesProviderTest {
 
     private class PhoneSearchIndexablesTestProvider extends PhoneSearchIndexablesProvider {
         private boolean mIsEuiccSettingsHidden = false;
+        private boolean mIsEnhanced4gLteHidden = false;
 
         @Override boolean isEuiccSettingsHidden() {
             return mIsEuiccSettingsHidden;
         }
 
+        @Override boolean isEnhanced4gLteHidden() {
+            return mIsEnhanced4gLteHidden;
+        }
+
         public void setIsEuiccSettingsHidden(boolean isEuiccSettingsHidden) {
             mIsEuiccSettingsHidden = isEuiccSettingsHidden;
+        }
+
+        public void setIsEnhanced4gLteHidden(boolean isEnhanced4gLteHidden) {
+            mIsEnhanced4gLteHidden = isEnhanced4gLteHidden;
         }
     }
 
@@ -103,8 +112,9 @@ public final class PhoneSearchIndexablesProviderTest {
 
     @Test
     public void testQueryNonIndexableKeys() {
+        mProvider.setIsEnhanced4gLteHidden(false /* isEnhanced4gLteHidden */);
+        mProvider.setIsEuiccSettingsHidden(false /* isEuiccSettingsHiden */);
         when(mUserManager.isAdminUser()).thenReturn(false);
-        mProvider.setIsEuiccSettingsHidden(false /* isEuiccSettingsHidden */);
         Cursor cursor1 = mProvider.queryNonIndexableKeys(
                 SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
         assertThat(cursor1.getColumnNames()).isEqualTo(
@@ -120,5 +130,10 @@ public final class PhoneSearchIndexablesProviderTest {
         Cursor cursor3 = mProvider
                 .queryNonIndexableKeys(SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
         assertThat(cursor3.getCount()).isEqualTo(2);
+
+        mProvider.setIsEnhanced4gLteHidden(true /* isEnhanced4gLteHidden */);
+        Cursor cursor4 = mProvider
+                .queryNonIndexableKeys(SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
+        assertThat(cursor4.getCount()).isEqualTo(3);
     }
 }
