@@ -79,13 +79,13 @@
   <!-- Status message displayed on PUK Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Solicitando desbloqueo con PUK\u2026</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">No se realizó correctamente el desbloqueo de subred de tarjeta SIM.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Error al desbloquear subred de la tarjeta SIM.</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">No se realizó correctamente el desbloqueo del proveedor de servicios de tarjeta SIM.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Error al desbloquear el proveedor de servicios de la tarjeta SIM.</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">No se realizó correctamente el desbloqueo de tarjeta SIM corporativa.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Error al desbloquear la tarjeta SIM corporativa.</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">No se realizó correctamente el desbloqueo de tarjeta SIM.</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Error al desbloquear la tarjeta SIM.</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">El desbloqueo de red 1 de tarjeta RUIM no se ha realizado correctamente.</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
@@ -111,13 +111,13 @@
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">No se realizó correctamente el desbloqueo con PUK.</string>
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">No se realizó correctamente el desbloqueo con PUK.</string>
   <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Se realizó correctamente el desbloqueo de subred de tarjeta SIM.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Subred de la tarjeta SIM desbloqueada.</string>
   <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Se realizó correctamente el desbloqueo del proveedor de servicios de tarjeta SIM.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Proveedor de servicios de la tarjeta SIM desbloqueado.</string>
   <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Se realizó correctamente el desbloqueo de tarjeta SIM corporativa.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Tarjeta SIM corporativa desbloqueada.</string>
   <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Se realizó correctamente el desbloqueo de tarjeta SIM.</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Tarjeta SIM desbloqueada.</string>
   <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Se realizó correctamente el desbloqueo de red 1 de tarjeta RUIM.</string>
   <!-- Success message displayed on RUIM Network2 Depersonalization panel -->

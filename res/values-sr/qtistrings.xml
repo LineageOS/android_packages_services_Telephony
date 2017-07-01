@@ -57,47 +57,47 @@
   <!-- Label text for PUK entry widget on Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Унесите PUK кôд</string>
   <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Захтевам откључавање подскупа мреже SIM картице\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Откључавам подскуп мреже SIM картице\u2026</string>
   <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Захтевам откључавање оператера SIM картице\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Откључавам оператера SIM картице\u2026</string>
   <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Захтевам откључавање корпоративне SIM картице\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Откључавам корпоративну SIM картицу\u2026</string>
   <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Захтевам откључавање SIM картице\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Откључавам SIM картицу\u2026</string>
   <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Захтевам откључавање мреже 1 RUIM картице\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Откључавам мрежу 1 RUIM картице\u2026</string>
   <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Захтевам откључавање мреже 2 RUIM картице\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Откључавам мрежу 2 RUIM картице\u2026</string>
   <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Захтевам откључавање HRPD RUIM картице\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Откључавам HRPD RUIM картицу\u2026</string>
   <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Захтевам откључавање оператера RUIM картице\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Откључавам оператера RUIM картице\u2026</string>
   <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Захтевам откључавање корпоративне RUIM картице\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Откључавам корпоративну RUIM картицу\u2026</string>
   <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Захтевам откључавање RUIM картице\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Откључавам RUIM картицу\u2026</string>
   <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Захтевам откључавање PUK кодом\u2026</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Откључавам PUK кодом\u2026</string>
   <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Не могу да испуним захтев за откључавање подскупа мреже SIM картице.</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Не могу да откључам подскуп мреже SIM картице.</string>
   <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Не могу да испуним захтев за откључавање оператера SIM картице.</string>
+  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Не могу да откључам оператера SIM картице.</string>
   <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Не могу да испуним захтев за откључавање корпоративне SIM картице.</string>
+  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Не могу да откључам корпоративну SIM картицу.</string>
   <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Не могу да испуним захтев за откључавање SIM картице.</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Не могу да откључам SIM картицу.</string>
   <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Не могу да испуним захтев за откључавање мреже 1 RUIM картице.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Не могу да откључам мрежу 1 RUIM картице.</string>
   <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Не могу да испуним захтев за откључавање мреже 2 RUIM картице.</string>
+  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Не могу да откључам мрежу 2 RUIM картице.</string>
   <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Не могу да испуним захтев за откључавање HRPD RUIM картице.</string>
+  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Не могу да откључам HRPD RUIM картицу.</string>
   <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Не могу да испуним захтев за откључавање оператера RUIM картице.</string>
+  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Не могу да откључам оператера RUIM картице.</string>
   <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Не могу да испуним захтев за откључавање корпоративне RUIM картице.</string>
+  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Не могу да откључам корпоративну RUIM картицу.</string>
   <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Не могу да испуним захтев за откључавање RUIM картице.</string>
+  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Не могу да откључам RUIM картицу.</string>
   <!-- Error message displayed on PUK Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Не могу да откључам PUK кодом.</string>
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Не могу да откључам PUK кодом.</string>
