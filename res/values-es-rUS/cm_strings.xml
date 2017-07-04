@@ -173,11 +173,11 @@
   <string name="enterNumber">Ingresar número de teléfono:</string>
   <string name="hintName">Nombre</string>
   <string name="hintPhonenumber">Número de teléfono</string>
-  <string name="contactAddSuccess">El contacto ha sido añadido a la tarjeta SIM</string>
+  <string name="contactAddSuccess">Contacto añadido a la tarjeta SIM</string>
   <string name="contactAddFailed">Error al añadir el contacto a la tarjeta SIM</string>
-  <string name="contactUpdateSuccess">El contacto ha sido actualizado en la tarjeta SIM</string>
+  <string name="contactUpdateSuccess">Contacto actualizado en la tarjeta SIM</string>
   <string name="contactUpdateFailed">Error al actualizar el contacto en la tarjeta SIM</string>
-  <string name="contactdeleteSuccess">El contacto ha sido eliminado de la tarjeta SIM</string>
+  <string name="contactdeleteSuccess">Contacto eliminado de la tarjeta SIM</string>
   <string name="contactdeleteFailed">Error al eliminar el contacto de la tarjeta SIM</string>
   <string name="allContactdeleteSuccess">Todos los contactos han sido eliminados de la tarjeta SIM</string>
   <string name="allContactdeleteFailed">Error al eliminar todos los contactos de la tarjeta SIM</string>

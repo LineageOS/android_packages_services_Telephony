@@ -64,9 +64,9 @@
   <!-- Toast text for incoming call connected through ECT -->
   <string name="call_notif_callconnectedect">Веза је успостављена преко јавног преноса позива</string>
   <!-- Status message displayed on SIM Network Depersonalization panel -->
-  <string name="requesting_unlock_cm">Захтевање откључавања SIM мреже\u2026</string>
+  <string name="requesting_unlock_cm">Откључавам SIM мрежу\u2026</string>
   <!-- Error message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_failed_cm">Захтев откључавања SIM мреже неуспешан.</string>
+  <string name="unlock_failed_cm">Не могу да откључам SIM мрежу.</string>
   <!-- Success message displayed on SIM Network Depersonalization panel -->
   <string name="unlock_success_cm">Откључавање SIM мреже успешно.</string>
   <!-- Call forwarding settings screen, setting timer info for cfut case -->
@@ -195,7 +195,7 @@
   <string name="choose_network_mode_title">Избор режима мреже</string>
   <string name="choose_network_mode_system_default">Подразумевано</string>
   <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
-  <string name="unlock_failed_remaining_retries">Захтев за откључавањем неуспешан, преостаје %1$d покушаја.</string>
+  <string name="unlock_failed_remaining_retries">Грешка при откључавању. Преостало је %1$d покушаја.</string>
   <!-- Call forward: IMS: Media tag support -->
   <string name="labelCFType">Поставке преусмеравања позива</string>
   <string name="labelCFVoice">Глас</string>
