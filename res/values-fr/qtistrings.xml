@@ -153,6 +153,8 @@
   <string name="srvcc_video_message">"Appel vidéo transformé en appel vocal 2G/3G car le réseau 4G est indisponible."</string>
   <string name="srvcc_message">"Appel vocal 4G transformé en appel vocal 2G/3G car le réseau 4G est indisponible."</string>
   <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Paramètres de transfert d\'appel</string>
   <string name="labelCFVoice">Voix</string>
   <string name="labelCFVideo">Vidéo</string>
+  <string name="call_forward_option">Options de transfert d’appel</string>
 </resources>

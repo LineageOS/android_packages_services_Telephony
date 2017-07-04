@@ -153,4 +153,8 @@
   <string name="srvcc_video_message">"Video-oproep is gedegradeerd naar 2G/3G-gesprek, omdat het 4G-netwerk niet beschikbaar is."</string>
   <string name="srvcc_message">"4G-spraakoproep is gedegradeerd naar 2G/3G-gesprek, omdat het 4G-netwerk niet beschikbaar is."</string>
   <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Doorschakel-instellingen</string>
+  <string name="labelCFVoice">Spraak</string>
+  <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Doorschakel-instellingen</string>
 </resources>
