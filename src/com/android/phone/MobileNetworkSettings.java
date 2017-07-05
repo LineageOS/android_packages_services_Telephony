@@ -65,12 +65,15 @@ import android.widget.TabHost;
 import com.android.ims.ImsConfig;
 import com.android.ims.ImsManager;
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.phone.settings.PhoneAccountSettingsFragment;
 import com.android.settingslib.RestrictedLockUtils;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -152,6 +155,8 @@ public class MobileNetworkSettings extends Activity  {
         private static final String BUTTON_WIFI_CALLING_KEY = "wifi_calling_key";
         private static final String BUTTON_VIDEO_CALLING_KEY = "video_calling_key";
         private static final String CATEGORY_CALLING_KEY = "calling";
+        private static final String BUTTON_MOBILE_DATA_ENABLE_KEY = "mobile_data_enable";
+        private static final String BUTTON_DATA_USAGE_KEY = "data_usage_summary";
 
         private final BroadcastReceiver mPhoneChangeReceiver = new PhoneChangeReceiver();
 
@@ -176,6 +181,8 @@ public class MobileNetworkSettings extends Activity  {
         private Preference mWiFiCallingPref;
         private SwitchPreference mVideoCallingPref;
         private NetworkSelectListPreference mButtonNetworkSelect;
+        private MobileDataPreference mMobileDataPref;
+        private DataUsagePreference mDataUsagePref;
 
         private static final String iface = "rmnet0"; //TODO: this will go away
         private List<SubscriptionInfo> mActiveSubInfos;
@@ -284,6 +291,8 @@ public class MobileNetworkSettings extends Activity  {
         @Override
         public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
                                              Preference preference) {
+            sendMetricsEventPreferenceClicked(preferenceScreen, preference);
+
             /** TODO: Refactor and get rid of the if's using subclasses */
             final int phoneSubId = mPhone.getSubId();
             if (preference.getKey().equals(BUTTON_4G_LTE_KEY)) {
@@ -342,7 +351,8 @@ public class MobileNetworkSettings extends Activity  {
                 Intent intent = new Intent(EuiccManager.ACTION_MANAGE_EMBEDDED_SUBSCRIPTIONS);
                 startActivity(intent);
                 return true;
-            } else if (preference == mWiFiCallingPref || preference == mVideoCallingPref) {
+            } else if (preference == mWiFiCallingPref || preference == mVideoCallingPref
+                    || preference == mMobileDataPref || preference == mDataUsagePref) {
                 return false;
             } else {
                 // if the button is anything but the simple toggle preference,
@@ -551,6 +561,8 @@ public class MobileNetworkSettings extends Activity  {
             mCallingCategory = (PreferenceCategory) findPreference(CATEGORY_CALLING_KEY);
             mWiFiCallingPref = findPreference(BUTTON_WIFI_CALLING_KEY);
             mVideoCallingPref = (SwitchPreference) findPreference(BUTTON_VIDEO_CALLING_KEY);
+            mMobileDataPref = (MobileDataPreference) findPreference(BUTTON_MOBILE_DATA_ENABLE_KEY);
+            mDataUsagePref = (DataUsagePreference) findPreference(BUTTON_DATA_USAGE_KEY);
 
             try {
                 Context con = activity.createPackageContext("com.android.systemui", 0);
@@ -702,6 +714,12 @@ public class MobileNetworkSettings extends Activity  {
                 prefSet.addPreference(mButtonPreferredNetworkMode);
                 prefSet.addPreference(mButtonEnabledNetworks);
                 prefSet.addPreference(mButton4glte);
+
+                mMobileDataPref.initialize(phoneSubId);
+                prefSet.addPreference(mMobileDataPref);
+                mDataUsagePref.initialize(phoneSubId);
+                prefSet.addPreference(mDataUsagePref);
+
                 if (showEuiccSettings()) {
                     prefSet.addPreference(mEuiccSettingsPref);
                     if (TextUtils.isEmpty(mTelephonyManager.getLine1Number())) {
@@ -949,6 +967,8 @@ public class MobileNetworkSettings extends Activity  {
             mButton4glte.setTitle(enhanced4glteModeTitleId);
             mButton4glte.setEnabled(hasActiveSubscriptions && canChange4glte);
             mLteDataServicePref.setEnabled(hasActiveSubscriptions);
+            mMobileDataPref.setEnabled(hasActiveSubscriptions);
+            mDataUsagePref.setEnabled(hasActiveSubscriptions);
             Preference ps;
             PreferenceScreen root = getPreferenceScreen();
             ps = findPreference(BUTTON_CELL_BROADCAST_SETTINGS);
@@ -1691,6 +1711,19 @@ public class MobileNetworkSettings extends Activity  {
                 }
             }
             return false;
+        }
+
+        private void sendMetricsEventPreferenceClicked(
+                PreferenceScreen preferenceScreen, Preference preference) {
+            if (preference == mMobileDataPref) {
+                MetricsLogger.action(getContext(),
+                        MetricsEvent.ACTION_MOBILE_NETWORK_MOBILE_DATA_TOGGLE,
+                        ((MobileDataPreference) preference).mChecked);
+            } else if (preference == mDataUsagePref) {
+                MetricsLogger.action(getContext(),
+                        MetricsEvent.ACTION_MOBILE_NETWORK_DATA_USAGE);
+            }
+            // TODO: add Metrics constants for other preferences and send events here accordingly.
         }
     }
 }
