@@ -255,7 +255,8 @@ public class EmbmsSampleDownloadService extends Service {
         // Compose the FILE_DESCRIPTOR_REQUEST_INTENT
         Intent requestIntent = new Intent(MbmsDownloadManager.ACTION_FILE_DESCRIPTOR_REQUEST);
         requestIntent.putExtra(MbmsDownloadManager.EXTRA_SERVICE_INFO,
-                request.getFileServiceInfo());
+                FileServiceRepository.getInstance(this)
+                        .getFileServiceInfoForId(request.getFileServiceId()));
         requestIntent.putExtra(MbmsDownloadManager.EXTRA_FD_COUNT, numFds);
         requestIntent.putExtra(MbmsDownloadManager.EXTRA_TEMP_FILE_ROOT,
                 mAppTempFileRoots.get(appKey));
@@ -286,7 +287,9 @@ public class EmbmsSampleDownloadService extends Service {
             Bundle extras) {
         List<UriPathPair> tempFiles = extras.getParcelableArrayList(
                 MbmsDownloadManager.EXTRA_FREE_URI_LIST);
-        List<FileInfo> filesToDownload = request.getFileServiceInfo().getFiles();
+        List<FileInfo> filesToDownload = FileServiceRepository.getInstance(this)
+                .getFileServiceInfoForId(request.getFileServiceId())
+                .getFiles();
 
         if (tempFiles.size() != filesToDownload.size()) {
             Log.w(LOG_TAG, "Different numbers of temp files and files to download...");
@@ -304,7 +307,7 @@ public class EmbmsSampleDownloadService extends Service {
                 break;
             }
             UriPathPair tempFile = tempFiles.get(i);
-            addTempFileInUse(appKey, request.getFileServiceInfo().getServiceId(),
+            addTempFileInUse(appKey, request.getFileServiceId(),
                     tempFile.getFilePathUri());
             FileInfo fileToDownload = filesToDownload.get(i);
             mHandler.postDelayed(() -> {
@@ -313,7 +316,7 @@ public class EmbmsSampleDownloadService extends Service {
                     return;
                 }
                 downloadSingleFile(appKey, request, tempFile, fileToDownload);
-                removeTempFileInUse(appKey, request.getFileServiceInfo().getServiceId(),
+                removeTempFileInUse(appKey, request.getFileServiceId(),
                         tempFile.getFilePathUri());
             }, FILE_SEPARATION_DELAY * i * mDownloadDelayFactor);
         }
@@ -346,9 +349,17 @@ public class EmbmsSampleDownloadService extends Service {
             result = MbmsDownloadManager.RESULT_CANCELLED;
         }
 
+        // Take a round-trip through the download request serialization to exercise it
+        DownloadRequest request1 = new DownloadRequest.Builder()
+                .setSource(request.getSourceUri())
+                .setSubscriptionId(request.getSubscriptionId())
+                .setServiceId(request.getFileServiceId())
+                .setOpaqueData(request.getOpaqueData())
+                .build();
+
         Intent downloadResultIntent =
                 new Intent(MbmsDownloadManager.ACTION_DOWNLOAD_RESULT_INTERNAL);
-        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_REQUEST, request);
+        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_REQUEST, request1);
         downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_FINAL_URI,
                 tempFile.getFilePathUri());
         downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_FILE_INFO, fileToDownload);
@@ -383,7 +394,8 @@ public class EmbmsSampleDownloadService extends Service {
     }
 
     private int getNumFdsNeededForRequest(DownloadRequest request) {
-        return request.getFileServiceInfo().getFiles().size();
+        return FileServiceRepository.getInstance(this)
+                .getFileServiceInfoForId(request.getFileServiceId()).getFiles().size();
     }
 
     private void addTempFileInUse(FrontendAppIdentifier appKey, String serviceId, Uri tempFileUri) {
