@@ -80,7 +80,7 @@ public class AppActiveStreams {
                 StreamingService.STATE_STOPPED : callbackWithState.getState();
     }
 
-    public void startStreaming(String serviceId, IStreamingServiceCallback callback) {
+    public void startStreaming(String serviceId, IStreamingServiceCallback callback, int reason) {
         if (mStreamStates.get(serviceId) != null) {
             // error - already started
             return;
@@ -95,21 +95,21 @@ public class AppActiveStreams {
                 new StreamCallbackWithState(callback, StreamingService.STATE_STARTED,
                         StreamingService.UNICAST_METHOD));
         try {
-            callback.streamStateUpdated(StreamingService.STATE_STARTED);
+            callback.streamStateUpdated(StreamingService.STATE_STARTED, reason);
             updateStreamingMethod(serviceId);
         } catch (RemoteException e) {
             dispose(serviceId);
         }
     }
 
-    public void stopStreaming(String serviceId) {
+    public void stopStreaming(String serviceId, int reason) {
         StreamCallbackWithState entry = mStreamStates.get(serviceId);
 
         if (entry != null) {
             try {
                 if (entry.getState() != StreamingService.STATE_STOPPED) {
                     entry.setState(StreamingService.STATE_STOPPED);
-                    entry.getCallback().streamStateUpdated(StreamingService.STATE_STOPPED);
+                    entry.getCallback().streamStateUpdated(StreamingService.STATE_STOPPED, reason);
                 }
             } catch (RemoteException e) {
                 dispose(serviceId);
