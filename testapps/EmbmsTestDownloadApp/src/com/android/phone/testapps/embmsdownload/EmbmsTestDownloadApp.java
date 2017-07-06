@@ -354,7 +354,6 @@ public class EmbmsTestDownloadApp extends Activity {
         completionIntent.setClass(this, DownloadCompletionReceiver.class);
 
         DownloadRequest request = new DownloadRequest.Builder()
-                .setId(0)
                 .setServiceInfo(info)
                 .setSource(sourceUriBuilder.build())
                 .setDest(Uri.fromFile(destination))
