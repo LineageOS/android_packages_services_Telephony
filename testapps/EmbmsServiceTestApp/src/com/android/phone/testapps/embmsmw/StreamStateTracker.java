@@ -39,24 +39,25 @@ public class StreamStateTracker {
     }
 
     public static void startStreaming(FrontendAppIdentifier appIdentifier, String serviceId,
-            IStreamingServiceCallback callback) {
+            IStreamingServiceCallback callback, int reason) {
         AppActiveStreams appStreams = sPerAppStreamStates.get(appIdentifier);
         if (appStreams == null) {
             appStreams = new AppActiveStreams(appIdentifier);
             sPerAppStreamStates.put(appIdentifier, appStreams);
         }
 
-        appStreams.startStreaming(serviceId, callback);
+        appStreams.startStreaming(serviceId, callback, reason);
     }
 
-    public static void stopStreaming(FrontendAppIdentifier appIdentifier, String serviceId) {
+    public static void stopStreaming(FrontendAppIdentifier appIdentifier, String serviceId,
+            int reason) {
         Log.i(LOG_TAG, "Stopping stream " + serviceId);
         AppActiveStreams appStreams = sPerAppStreamStates.get(appIdentifier);
         if (appStreams == null) {
             // It was never started, so don't bother stopping.
             return;
         }
-        appStreams.stopStreaming(serviceId);
+        appStreams.stopStreaming(serviceId, reason);
     }
 
     public static void dispose(FrontendAppIdentifier appIdentifier, String serviceId) {
