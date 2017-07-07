@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"వాయిస్ మెయిల్ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"నోటిఫికేషన్‌లు"</string>
-    <string name="networks" msgid="8873030692174541976">"నెట్‌వర్క్ ఆపరేటర్‌లు"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"అత్యవసర ప్రసారాలు"</string>
     <string name="call_settings" msgid="6112441768261754562">"కాల్ సెట్టింగ్‌లు"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"అదనపు సెట్టింగ్‌లు"</string>
@@ -164,14 +163,11 @@
     <string name="label_available" msgid="1181658289009300430">"అందుబాటులో ఉన్న నెట్‌వర్క్‌లు"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"శోధిస్తోంది..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"నెట్‌వర్క్‌లు కనుగొనబడలేదు."</string>
-    <string name="search_networks" msgid="1601136049300882441">"నెట్‌వర్క్‌లను శోధించు"</string>
     <string name="network_query_error" msgid="6828516148953325006">"నెట్‌వర్క్‌ల కోసం శోధిస్తున్నప్పుడు లోపం."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g>లో నమోదు అవుతోంది…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"మీ SIM కార్డు ఈ నెట్‌వర్క్‌కు కనెక్షన్‌ను అనుమతించదు."</string>
     <string name="connect_later" msgid="2308119155752343975">"ప్రస్తుతం ఈ నెట్‌వర్క్‌కు కనెక్ట్ చేయడం సాధ్యపడదు. తర్వాత మళ్లీ ప్రయత్నించండి."</string>
     <string name="registration_done" msgid="495135664535876612">"నెట్‌వర్క్‌లో నమోదు అయింది."</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"నెట్‌వర్క్ ఆపరేటర్‌ను ఎంచుకోండి"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"అందుబాటులో ఉన్న అన్ని నెట్‌వర్క్‌ల కోసం శోధించండి"</string>
     <string name="select_automatically" msgid="1046727200631770962">"నెట్‌వర్క్‌ను స్వయంచాలకంగా ఎంచుకోండి"</string>
     <string name="network_select_title" msgid="7733107364757544558">"నెట్‌వర్క్"</string>
     <string name="register_automatically" msgid="6017849844573519637">"స్వయంచాలక నమోదు…"</string>
@@ -230,6 +226,14 @@
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"మొబైల్ డేటా"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"మొబైల్ నెట్‌వర్క్‌ను ఉపయోగించి డేటాను ప్రాప్యత చేయండి"</string>
+    <!-- no translation found for data_usage_disable_mobile (3577275288809667615) -->
+    <skip />
+    <!-- no translation found for sim_selection_required_pref (7049424902961844236) -->
+    <skip />
+    <!-- no translation found for sim_change_data_title (5332425991853799280) -->
+    <skip />
+    <!-- no translation found for sim_change_data_message (2163963581444907496) -->
+    <skip />
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi కాలింగ్"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"క్యారియర్ వీడియో కాలింగ్"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS ఎంపికలు"</string>
