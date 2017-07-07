@@ -34,8 +34,8 @@ public class StreamingServiceTracker {
         }
 
         @Override
-        public void streamStateUpdated(int state) {
-            onStreamStateUpdated(state);
+        public void streamStateUpdated(int state, int reason) {
+            onStreamStateUpdated(state, reason);
         }
 
         @Override
@@ -106,7 +106,7 @@ public class StreamingServiceTracker {
         return mMethod;
     }
 
-    private void onStreamStateUpdated(int state) {
+    private void onStreamStateUpdated(int state, int reason) {
         if (state == StreamingService.STATE_STARTED && mState != StreamingService.STATE_STARTED) {
             try {
                 mStreamingUri = mStreamingService.getPlaybackUri();
@@ -119,6 +119,9 @@ public class StreamingServiceTracker {
         }
         mState = state;
         mActivity.updateStreamingState();
+        mActivity.runOnUiThread(() ->
+                Toast.makeText(mActivity, "State change reason: " + reason, Toast.LENGTH_SHORT)
+                        .show());
     }
 
     private void onStreamMethodUpdated(int method) {

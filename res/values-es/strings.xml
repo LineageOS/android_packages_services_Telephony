@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Buzón de voz (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Buzón de voz:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notificaciones"</string>
-    <string name="networks" msgid="8873030692174541976">"Operadores de red"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Difusiones de emergencia"</string>
     <string name="call_settings" msgid="6112441768261754562">"Ajustes de llamadas"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Ajustes adicionales"</string>
@@ -164,14 +163,11 @@
     <string name="label_available" msgid="1181658289009300430">"Redes disponibles"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Buscando..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"No se ha encontrado ninguna red."</string>
-    <string name="search_networks" msgid="1601136049300882441">"Buscar redes"</string>
     <string name="network_query_error" msgid="6828516148953325006">"Se ha producido un error al buscar redes."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Registrándose en <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"La tarjeta SIM no permite establecer conexión con esta red."</string>
     <string name="connect_later" msgid="2308119155752343975">"No se puede conectar a la red en este momento. Inténtalo de nuevo más tarde."</string>
     <string name="registration_done" msgid="495135664535876612">"Conexión con la red establecida"</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"Selecciona un operador de red"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"Buscar todas las redes disponibles"</string>
     <string name="select_automatically" msgid="1046727200631770962">"Seleccionar una red automáticamente"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Red"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Registro automático..."</string>
@@ -230,6 +226,14 @@
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"Datos móviles"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Acceder a los datos con la red móvil"</string>
+    <!-- no translation found for data_usage_disable_mobile (3577275288809667615) -->
+    <skip />
+    <!-- no translation found for sim_selection_required_pref (7049424902961844236) -->
+    <skip />
+    <!-- no translation found for sim_change_data_title (5332425991853799280) -->
+    <skip />
+    <!-- no translation found for sim_change_data_message (2163963581444907496) -->
+    <skip />
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Llamadas por Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Videollamadas a través del operador"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Opciones GSM/UMTS"</string>

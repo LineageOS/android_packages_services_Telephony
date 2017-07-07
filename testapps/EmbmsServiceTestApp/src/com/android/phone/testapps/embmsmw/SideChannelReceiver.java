@@ -59,7 +59,6 @@ public class SideChannelReceiver extends BroadcastReceiver {
                 // Increase download latency by a certain factor
                 downloadService.delayDownloads(intent.getIntExtra(EXTRA_DELAY_FACTOR, 1));
                 break;
-
         }
     }
 }

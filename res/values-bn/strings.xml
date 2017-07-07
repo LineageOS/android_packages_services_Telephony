@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"ভয়েসমেল (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"বিজ্ঞপ্তি"</string>
-    <string name="networks" msgid="8873030692174541976">"নেটওয়ার্ক অপারেটর"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"জরুরী সম্প্রচার"</string>
     <string name="call_settings" msgid="6112441768261754562">"কল সেটিংস"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"অতিরিক্ত সেটিংস"</string>
@@ -164,14 +163,11 @@
     <string name="label_available" msgid="1181658289009300430">"উপলব্ধ নেটওয়ার্কগুলি"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"অনুসন্ধান করছে..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"কোনো নেটওয়ার্ক পাওয়া যায়নি৷"</string>
-    <string name="search_networks" msgid="1601136049300882441">"নেটওয়ার্কগুলি অনুসন্ধান করুন"</string>
     <string name="network_query_error" msgid="6828516148953325006">"নেটওয়ার্কগুলির জন্য অনুসন্ধান করার সময় ত্রুটি৷"</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> এ নিবন্ধিত করা হচ্ছে…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"আপনার সিম কার্ড এই নেটওয়ার্কে সংযোগ স্থাপনের অনুমতি দেয় না৷"</string>
     <string name="connect_later" msgid="2308119155752343975">"এই মুহূর্তে এই নেটওয়ার্কের সাথে সংযোগ স্থাপন করা যাচ্ছে না৷ পরে আবার চেষ্টা করুন৷"</string>
     <string name="registration_done" msgid="495135664535876612">"নেটওয়ার্কে নিবন্ধিত করা হয়েছে৷"</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"একটি নেটওয়ার্ক অপারেটর বেছে নিন"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"সমস্ত উপলব্ধ নেটওয়ার্কের জন্য অনুসন্ধান করুন"</string>
     <string name="select_automatically" msgid="1046727200631770962">"স্বয়ংক্রিয়ভাবে নেটওয়ার্ক নির্বাচন করুন"</string>
     <string name="network_select_title" msgid="7733107364757544558">"নেটওয়ার্ক"</string>
     <string name="register_automatically" msgid="6017849844573519637">"স্বয়ংক্রিয় নিবন্ধীকরণ..."</string>
@@ -230,6 +226,14 @@
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"মোবাইল ডেটা"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"মোবাইল নেটওয়ার্ক ব্যবহার করে ডেটা অ্যাক্সেস করুন"</string>
+    <!-- no translation found for data_usage_disable_mobile (3577275288809667615) -->
+    <skip />
+    <!-- no translation found for sim_selection_required_pref (7049424902961844236) -->
+    <skip />
+    <!-- no translation found for sim_change_data_title (5332425991853799280) -->
+    <skip />
+    <!-- no translation found for sim_change_data_message (2163963581444907496) -->
+    <skip />
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"ওয়াই-ফাই কলিং"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"পরিষেবা প্রদানকারীর ভিডিও কলিং"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS বিকল্পগুলি"</string>

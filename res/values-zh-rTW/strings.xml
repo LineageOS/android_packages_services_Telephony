@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"語音信箱 (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"語音信箱："</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"通知"</string>
-    <string name="networks" msgid="8873030692174541976">"電信業者"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"緊急廣播"</string>
     <string name="call_settings" msgid="6112441768261754562">"通話設定"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"其他設定"</string>
@@ -164,14 +163,11 @@
     <string name="label_available" msgid="1181658289009300430">"可用的網路"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"搜尋中…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"找不到網路。"</string>
-    <string name="search_networks" msgid="1601136049300882441">"搜尋網路"</string>
     <string name="network_query_error" msgid="6828516148953325006">"搜尋網路時發生錯誤。"</string>
     <string name="register_on_network" msgid="9055203954040805084">"正在註冊 <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"您的 SIM 卡無法連上這個網路。"</string>
     <string name="connect_later" msgid="2308119155752343975">"目前無法連上這個網路，請稍後再試。"</string>
     <string name="registration_done" msgid="495135664535876612">"註冊網路成功。"</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"選擇行動網路業者"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"搜尋所有可用的網路"</string>
     <string name="select_automatically" msgid="1046727200631770962">"自動選取網路"</string>
     <string name="network_select_title" msgid="7733107364757544558">"網路"</string>
     <string name="register_automatically" msgid="6017849844573519637">"自動註冊…"</string>
@@ -230,6 +226,14 @@
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> - <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"行動數據"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"使用行動網路存取數據"</string>
+    <!-- no translation found for data_usage_disable_mobile (3577275288809667615) -->
+    <skip />
+    <!-- no translation found for sim_selection_required_pref (7049424902961844236) -->
+    <skip />
+    <!-- no translation found for sim_change_data_title (5332425991853799280) -->
+    <skip />
+    <!-- no translation found for sim_change_data_message (2163963581444907496) -->
+    <skip />
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi 通話"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"電信業者視訊通話"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS 選項"</string>

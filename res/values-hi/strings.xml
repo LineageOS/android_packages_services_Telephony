@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"वॉइसमेल (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"नोटिफ़िकेशन"</string>
-    <string name="networks" msgid="8873030692174541976">"नेटवर्क ऑपरेटर"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"आपातकालीन प्रसारण"</string>
     <string name="call_settings" msgid="6112441768261754562">"कॉल सेटिंग"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"अतिरिक्त सेटिंग"</string>
@@ -164,14 +163,11 @@
     <string name="label_available" msgid="1181658289009300430">"उपलब्ध नेटवर्क"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"खोज रहा है..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"कोई नेटवर्क नहीं मिला."</string>
-    <string name="search_networks" msgid="1601136049300882441">"नेटवर्क खोजें"</string>
     <string name="network_query_error" msgid="6828516148953325006">"नेटवर्क खोज के दौरान गड़बड़ी."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> पर पंजीकरण कर रहा है…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"आपका सिम कार्ड इस नेटवर्क पर कनेक्शन की अनुमति नहीं देता है."</string>
     <string name="connect_later" msgid="2308119155752343975">"अभी इस नेटवर्क से कनेक्ट नहीं कर सकते. बाद में पुन: प्रयास करें."</string>
     <string name="registration_done" msgid="495135664535876612">"नेटवर्क पर पंजीकृत."</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"कोई नेटवर्क ऑपरेटर चुनें"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"सभी उपलब्ध नेटवर्क खोजें"</string>
     <string name="select_automatically" msgid="1046727200631770962">"अपने आप नेटवर्क चुनें"</string>
     <string name="network_select_title" msgid="7733107364757544558">"नेटवर्क"</string>
     <string name="register_automatically" msgid="6017849844573519637">"स्वचालित पंजीकरण..."</string>
@@ -230,6 +226,14 @@
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"मोबाइल डेटा"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"मोबाइल नेटवर्क का उपयोग करके डेटा एक्सेस करें"</string>
+    <!-- no translation found for data_usage_disable_mobile (3577275288809667615) -->
+    <skip />
+    <!-- no translation found for sim_selection_required_pref (7049424902961844236) -->
+    <skip />
+    <!-- no translation found for sim_change_data_title (5332425991853799280) -->
+    <skip />
+    <!-- no translation found for sim_change_data_message (2163963581444907496) -->
+    <skip />
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"वाई-फ़ाई कॉलिंग"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"वाहक वीडियो कॉलिंग"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS विकल्प"</string>

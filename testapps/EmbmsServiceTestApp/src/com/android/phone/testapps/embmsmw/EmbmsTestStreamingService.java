@@ -149,7 +149,8 @@ public class EmbmsTestStreamingService extends Service {
             }
 
             mHandler.postDelayed(
-                    () -> StreamStateTracker.startStreaming(appKey, serviceId, callback),
+                    () -> StreamStateTracker.startStreaming(appKey, serviceId, callback,
+                            StreamingService.REASON_BY_USER_REQUEST),
                     START_STREAMING_DELAY);
             return MbmsException.SUCCESS;
         }
@@ -175,7 +176,8 @@ public class EmbmsTestStreamingService extends Service {
             checkInitialized(appKey);
             checkServiceExists(serviceId);
 
-            mHandler.post(() -> StreamStateTracker.stopStreaming(appKey, serviceId));
+            mHandler.post(() -> StreamStateTracker.stopStreaming(appKey, serviceId,
+                    StreamingService.REASON_BY_USER_REQUEST));
         }
 
         @Override
