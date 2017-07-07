@@ -53,12 +53,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 
+import com.android.internal.colorextraction.ColorExtractor;
+import com.android.internal.colorextraction.ColorExtractor.GradientColors;
+import com.android.internal.colorextraction.drawable.GradientDrawable;
 import com.android.phone.common.dialpad.DialpadKeyButton;
 import com.android.phone.common.util.ViewUtil;
-
-import com.google.android.colorextraction.ColorExtractor;
-import com.google.android.colorextraction.ColorExtractor.GradientColors;
-import com.google.android.colorextraction.drawable.GradientDrawable;
 
 /**
  * EmergencyDialer is a special dialer that is used ONLY for dialing emergency calls.
