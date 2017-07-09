@@ -25,6 +25,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ComponentInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.NetworkStats;
@@ -95,6 +96,7 @@ import com.android.internal.telephony.ProxyController;
 import com.android.internal.telephony.RIL;
 import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.SubscriptionController;
+import com.android.internal.telephony.euicc.EuiccConnector;
 import com.android.internal.telephony.uicc.IccIoResult;
 import com.android.internal.telephony.uicc.IccUtils;
 import com.android.internal.telephony.uicc.SIMRecords;
@@ -191,6 +193,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final String PREF_CARRIERS_ALPHATAG_PREFIX = "carrier_alphtag_";
     private static final String PREF_CARRIERS_NUMBER_PREFIX = "carrier_number_";
     private static final String PREF_CARRIERS_SUBSCRIBER_PREFIX = "carrier_subscriber_";
+
+    // The AID of ISD-R.
+    private static final String ISDR_AID = "A0000005591010FFFFFFFF8900000100";
 
     private NetworkScanRequestTracker mNetworkScanRequestTracker;
 
@@ -2313,12 +2318,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public IccOpenLogicalChannelResponse iccOpenLogicalChannel(int subId, String AID, int p2) {
+    public IccOpenLogicalChannelResponse iccOpenLogicalChannel(
+            int subId, String callingPackage, String aid, int p2) {
         enforceModifyPermissionOrCarrierPrivilege(subId);
 
-        if (DBG) log("iccOpenLogicalChannel: subId=" + subId + " aid=" + AID + " p2=" + p2);
+        if (TextUtils.equals(ISDR_AID, aid)) {
+            // Only allows LPA to open logical channel to ISD-R.
+            mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+            ComponentInfo bestComponent =
+                    EuiccConnector.findBestComponent(mPhone.getContext().getPackageManager());
+            if (bestComponent == null
+                    || !TextUtils.equals(callingPackage, bestComponent.packageName)) {
+                loge("The calling package is not allowed to access ISD-R.");
+                throw new SecurityException("The calling package is not allowed to access ISD-R.");
+            }
+        }
+
+        if (DBG) log("iccOpenLogicalChannel: subId=" + subId + " aid=" + aid + " p2=" + p2);
         IccOpenLogicalChannelResponse response = (IccOpenLogicalChannelResponse)sendRequest(
-            CMD_OPEN_CHANNEL, new Pair<String, Integer>(AID, p2), subId);
+                CMD_OPEN_CHANNEL, new Pair<String, Integer>(aid, p2), subId);
         if (DBG) log("iccOpenLogicalChannel: " + response);
         return response;
     }
