@@ -4387,27 +4387,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Check TETHER_DUN_REQUIRED and TETHER_DUN_APN settings, net.tethering.noprovisioning
-     * SystemProperty to decide whether DUN APN is required for
-     * tethering.
+     * Check whether DUN APN is required for tethering.
      *
-     * @return 0: Not required. 1: required. 2: Not set.
+     * @return {@code true} if DUN APN is required for tethering.
      * @hide
      */
     @Override
-    public int getTetherApnRequired() {
+    public boolean getTetherApnRequired() {
         enforceModifyPermission();
-
         final long identity = Binder.clearCallingIdentity();
         final Phone defaultPhone = getDefaultPhone();
         try {
-            int dunRequired = Settings.Global.getInt(defaultPhone.getContext().getContentResolver(),
-                    Settings.Global.TETHER_DUN_REQUIRED, 2);
-            // If not set, check net.tethering.noprovisioning, TETHER_DUN_APN setting
-            if (dunRequired == 2 && defaultPhone.hasMatchedTetherApnSetting()) {
-                dunRequired = 1;
-            }
-            return dunRequired;
+            return defaultPhone.hasMatchedTetherApnSetting();
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
