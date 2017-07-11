@@ -680,10 +680,12 @@ public class PhoneGlobals extends ContextWrapper {
                 // if (a) you have the "data roaming" feature turned off, and
                 // (b) you just lost data connectivity because you're roaming.
                 // (c) if we haven't shown the notification for this disconnection earlier.
+                // (d) if data was enabled for the sim
                 if (!mDataDisconnectedDueToRoaming
                         && PhoneConstants.DataState.DISCONNECTED.name().equals(state)
                         && Phone.REASON_ROAMING_ON.equals(reason)
-                        && !phone.getDataRoamingEnabled()) {
+                        && !phone.getDataRoamingEnabled()
+                        && phone.getDataEnabled()) {
                     // Notify the user that data call is disconnected due to roaming. Note that
                     // calling this multiple times will not cause multiple notifications.
                     mHandler.sendEmptyMessage(EVENT_DATA_ROAMING_DISCONNECTED);

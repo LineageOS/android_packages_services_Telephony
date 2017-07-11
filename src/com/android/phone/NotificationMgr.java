@@ -16,8 +16,6 @@
 
 package com.android.phone;
 
-import static android.Manifest.permission.READ_PHONE_STATE;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -52,6 +50,7 @@ import android.util.ArrayMap;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCapabilities;
@@ -61,6 +60,8 @@ import com.android.phone.settings.VoicemailSettingsActivity;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
+import static android.Manifest.permission.READ_PHONE_STATE;
 
 /**
  * NotificationManager-related utility code for the Phone app.
@@ -543,7 +544,8 @@ public class NotificationMgr {
      * appears when you lose data connectivity because you're roaming and
      * you have the "data roaming" feature turned off.
      */
-    /* package */ void showDataDisconnectedRoaming() {
+    @VisibleForTesting
+    public void showDataDisconnectedRoaming() {
         if (DBG) log("showDataDisconnectedRoaming()...");
 
         // "Mobile network settings" screen / dialog
