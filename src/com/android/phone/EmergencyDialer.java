@@ -96,8 +96,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     private static final boolean DBG = false;
     private static final String LOG_TAG = "EmergencyDialer";
 
-    private StatusBarManager mStatusBarManager;
-
     /** The length of DTMF tones in milliseconds */
     private static final int TONE_LENGTH_MS = 150;
 
@@ -174,8 +172,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
-        mStatusBarManager = (StatusBarManager) getSystemService(Context.STATUS_BAR_SERVICE);
 
         // Allow this activity to be displayed in front of the keyguard / lockscreen.
         WindowManager.LayoutParams lp = getWindow().getAttributes();
@@ -519,21 +515,11 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             }
         }
 
-        // Disable the status bar and set the poke lock timeout to medium.
-        // There is no need to do anything with the wake lock.
-        if (DBG) Log.d(LOG_TAG, "disabling status bar, set to long timeout");
-        mStatusBarManager.disable(StatusBarManager.DISABLE_EXPAND);
-
         updateDialAndDeleteButtonStateEnabledAttr();
     }
 
     @Override
     public void onPause() {
-        // Reenable the status bar and set the poke lock timeout to default.
-        // There is no need to do anything with the wake lock.
-        if (DBG) Log.d(LOG_TAG, "reenabling status bar and closing the dialer");
-        mStatusBarManager.disable(StatusBarManager.DISABLE_NONE);
-
         super.onPause();
 
         synchronized (mToneGeneratorLock) {
