@@ -123,6 +123,26 @@ public class MobileNetworkSettings extends Activity  {
         return super.onOptionsItemSelected(item);
     }
 
+
+    /**
+     * Whether to show the entry point to eUICC settings.
+     *
+     * <p>We show the entry point on any device which supports eUICC as long as either the eUICC
+     * was ever provisioned (that is, at least one profile was ever downloaded onto it), or if
+     * the user has enabled development mode.
+     */
+    public static boolean showEuiccSettings(Context context) {
+        EuiccManager euiccManager =
+                (EuiccManager) context.getSystemService(Context.EUICC_SERVICE);
+        if (!euiccManager.isEnabled()) {
+            return false;
+        }
+        ContentResolver cr = context.getContentResolver();
+        return Settings.Global.getInt(cr, Settings.Global.EUICC_PROVISIONED, 0) != 0
+                || Settings.Global.getInt(
+                cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+    }
+
     public static class MobileNetworkFragment extends PreferenceFragment implements
             Preference.OnPreferenceChangeListener, RoamingDialogFragment.RoamingDialogListener {
 
@@ -701,25 +721,6 @@ public class MobileNetworkSettings extends Activity  {
             return mActiveSubInfos.size() > 0;
         }
 
-        /**
-         * Whether to show the entry point to eUICC settings.
-         *
-         * <p>We show the entry point on any device which supports eUICC as long as either the eUICC
-         * was ever provisioned (that is, at least one profile was ever downloaded onto it), or if
-         * the user has enabled development mode.
-         */
-        private boolean showEuiccSettings() {
-            EuiccManager euiccManager =
-                    (EuiccManager) getActivity().getSystemService(Context.EUICC_SERVICE);
-            if (!euiccManager.isEnabled()) {
-                return false;
-            }
-            ContentResolver cr = getActivity().getContentResolver();
-            return Settings.Global.getInt(cr, Settings.Global.EUICC_PROVISIONED, 0) != 0
-                    || Settings.Global.getInt(
-                            cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
-        }
-
         private void updateBodyBasicFields(Activity activity, PreferenceScreen prefSet,
                 int phoneSubId, boolean hasActiveSubscriptions) {
             Context context = activity.getApplicationContext();
@@ -790,7 +791,7 @@ public class MobileNetworkSettings extends Activity  {
             prefSet.addPreference(mButtonEnabledNetworks);
             prefSet.addPreference(mButton4glte);
 
-            if (showEuiccSettings()) {
+            if (showEuiccSettings(getActivity())) {
                 prefSet.addPreference(mEuiccSettingsPref);
                 if (TextUtils.isEmpty(mTelephonyManager.getLine1Number())) {
                     mEuiccSettingsPref.setSummary(null);
