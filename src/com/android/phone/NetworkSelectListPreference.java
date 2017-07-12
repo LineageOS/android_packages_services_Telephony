@@ -22,6 +22,8 @@ import android.content.DialogInterface;
 import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.os.RemoteException;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -61,7 +63,7 @@ public class NetworkSelectListPreference extends ListPreference
 
     private int mPhoneId = SubscriptionManager.INVALID_PHONE_INDEX;
     private List<OperatorInfo> mOperatorInfoList;
-    private  OperatorInfo mOperatorInfo;
+    private OperatorInfo mOperatorInfo;
 
     private int mSubId;
     private NetworkOperators mNetworkOperators;
@@ -179,10 +181,12 @@ public class NetworkSelectListPreference extends ListPreference
 
     // This initialize method needs to be called for this preference to work properly.
     protected void initialize(int subId, INetworkQueryService queryService,
-            NetworkOperators networkOperators) {
+            NetworkOperators networkOperators, ProgressDialog progressDialog) {
         mSubId = subId;
         mNetworkQueryService = queryService;
         mNetworkOperators = networkOperators;
+        // This preference should share the same progressDialog with networkOperators category.
+        mProgressDialog = progressDialog;
 
         if (SubscriptionManager.isValidSubscriptionId(mSubId)) {
             mPhoneId = SubscriptionManager.getPhoneId(mSubId);
@@ -227,7 +231,7 @@ public class NetworkSelectListPreference extends ListPreference
                 NotificationMgr.NETWORK_SELECTION_NOTIFICATION, status);
     }
 
-    private void displayNetworkSeletionInProgress() {
+    private void displayNetworkSelectionInProgress() {
         showProgressBar(DIALOG_NETWORK_SELECTION);
     }
 
@@ -357,14 +361,21 @@ public class NetworkSelectListPreference extends ListPreference
     }
 
     private void showProgressBar(int id) {
-        if ((id == DIALOG_NETWORK_SELECTION) || (id == DIALOG_NETWORK_LIST_LOAD)) {
+        if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(getContext());
+        } else {
+            // Dismiss progress bar if it's showing now.
+            dismissProgressBar();
+        }
+
+        if ((id == DIALOG_NETWORK_SELECTION) || (id == DIALOG_NETWORK_LIST_LOAD)) {
             switch (id) {
                 case DIALOG_NETWORK_SELECTION:
                     final String networkSelectMsg = getContext().getResources()
                             .getString(R.string.register_on_network,
                                     getNetworkTitle(mOperatorInfo));
                     mProgressDialog.setMessage(networkSelectMsg);
+                    mProgressDialog.setCanceledOnTouchOutside(false);
                     mProgressDialog.setCancelable(false);
                     mProgressDialog.setIndeterminate(true);
                     break;
@@ -372,6 +383,8 @@ public class NetworkSelectListPreference extends ListPreference
                     mProgressDialog.setMessage(
                             getContext().getResources().getString(R.string.load_networks_progress));
                     mProgressDialog.setCanceledOnTouchOutside(false);
+                    mProgressDialog.setCancelable(true);
+                    mProgressDialog.setIndeterminate(false);
                     mProgressDialog.setOnCancelListener(this);
                     break;
                 default:
@@ -397,12 +410,93 @@ public class NetworkSelectListPreference extends ListPreference
         Phone phone = PhoneFactory.getPhone(mPhoneId);
         if (phone != null) {
             phone.selectNetworkManually(mOperatorInfo, true, msg);
-            displayNetworkSeletionInProgress();
+            displayNetworkSelectionInProgress();
         } else {
             loge("Error selecting network. phone is null.");
         }
 
         return true;
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        final Parcelable superState = super.onSaveInstanceState();
+        if (isPersistent()) {
+            // No need to save instance state since it's persistent
+            return superState;
+        }
+
+        final SavedState myState = new SavedState(superState);
+        myState.mDialogListEntries = getEntries();
+        myState.mDialogListEntryValues = getEntryValues();
+        myState.mOperatorInfoList = mOperatorInfoList;
+        return myState;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state == null || !state.getClass().equals(SavedState.class)) {
+            // Didn't save state for us in onSaveInstanceState
+            super.onRestoreInstanceState(state);
+            return;
+        }
+
+        SavedState myState = (SavedState) state;
+
+        if (getEntries() == null && myState.mDialogListEntries != null) {
+            setEntries(myState.mDialogListEntries);
+        }
+        if (getEntryValues() == null && myState.mDialogListEntryValues != null) {
+            setEntryValues(myState.mDialogListEntryValues);
+        }
+        if (mOperatorInfoList == null && myState.mOperatorInfoList != null) {
+            mOperatorInfoList = myState.mOperatorInfoList;
+        }
+
+        super.onRestoreInstanceState(myState.getSuperState());
+    }
+
+    /**
+     *  We save entries, entryValues and operatorInfoList into bundle.
+     *  At onCreate of fragment, dialog will be restored if it was open. In this case,
+     *  we need to restore entries, entryValues and operatorInfoList. Without those information,
+     *  onPreferenceChange will fail if user select network from the dialog.
+     */
+    private static class SavedState extends BaseSavedState {
+        CharSequence[] mDialogListEntries;
+        CharSequence[] mDialogListEntryValues;
+        List<OperatorInfo> mOperatorInfoList;
+
+        SavedState(Parcel source) {
+            super(source);
+            final ClassLoader boot = Object.class.getClassLoader();
+            mDialogListEntries = source.readCharSequenceArray();
+            mDialogListEntryValues = source.readCharSequenceArray();
+            mOperatorInfoList = source.readParcelableList(mOperatorInfoList, boot);
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeCharSequenceArray(mDialogListEntries);
+            dest.writeCharSequenceArray(mDialogListEntryValues);
+            dest.writeParcelableList(mOperatorInfoList, flags);
+        }
+
+        SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR =
+                new Parcelable.Creator<SavedState>() {
+                    public SavedState createFromParcel(Parcel in) {
+                        return new SavedState(in);
+                    }
+
+                    public SavedState[] newArray(int size) {
+                        return new SavedState[size];
+                    }
+                };
     }
 
     private void logd(String msg) {

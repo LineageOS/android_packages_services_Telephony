@@ -16,13 +16,13 @@
 
 package com.android.phone;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
-import android.preference.PreferenceScreen;
 import android.preference.TwoStatePreference;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
@@ -58,15 +58,7 @@ public class NetworkOperators extends PreferenceCategory
     private TwoStatePreference mAutoSelect;
 
     private int mSubId;
-
-    public NetworkOperators(
-            Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
-    public NetworkOperators(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+    private ProgressDialog mProgressDialog;
 
     public NetworkOperators(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -77,30 +69,32 @@ public class NetworkOperators extends PreferenceCategory
     }
 
     /**
-     * Initialize NetworkOperators instance with information like subId, queryService.
-     * It is required to have preferences work properly.
+     * Initialize NetworkOperators instance.
+     */
+    public void initialize() {
+        mNetworkSelect =
+                (NetworkSelectListPreference) findPreference(BUTTON_NETWORK_SELECT_KEY);
+        mAutoSelect =
+                (TwoStatePreference) findPreference(BUTTON_AUTO_SELECT_KEY);
+        mProgressDialog = new ProgressDialog(getContext());
+    }
+
+    /**
+     * Update NetworkOperators instance if like subId or queryService are updated.
      *
-     * @param prefScreen prefScreen this category is in.
      * @param subId Corresponding subscription ID of this network.
      * @param queryService The service to do network queries.
      */
-    public void initialize(PreferenceScreen prefScreen,
-            final int subId, INetworkQueryService queryService) {
+    protected void update(final int subId, INetworkQueryService queryService) {
         mSubId = subId;
-
-        mNetworkSelect =
-                (NetworkSelectListPreference) prefScreen.findPreference(BUTTON_NETWORK_SELECT_KEY);
-        mAutoSelect =
-                (TwoStatePreference) prefScreen.findPreference(BUTTON_AUTO_SELECT_KEY);
-
         mPhoneId = SubscriptionManager.getPhoneId(mSubId);
 
         if (mAutoSelect != null) {
             mAutoSelect.setOnPreferenceChangeListener(this);
         }
 
-        if (mAutoSelect != null) {
-            mNetworkSelect.initialize(mSubId, queryService, this);
+        if (mNetworkSelect != null) {
+            mNetworkSelect.initialize(mSubId, queryService, this, mProgressDialog);
         }
 
         getNetworkSelectionMode();
@@ -130,6 +124,7 @@ public class NetworkOperators extends PreferenceCategory
             switch (msg.what) {
                 case EVENT_AUTO_SELECT_DONE:
                     mAutoSelect.setEnabled(true);
+                    dismissProgressBar();
 
                     ar = (AsyncResult) msg.obj;
                     if (ar.exception != null) {
@@ -210,6 +205,7 @@ public class NetworkOperators extends PreferenceCategory
         }
         if (autoSelect) {
             if (DBG) logd("select network automatically...");
+            showAutoSelectProgressBar();
             mAutoSelect.setEnabled(false);
             Message msg = mHandler.obtainMessage(EVENT_AUTO_SELECT_DONE);
             Phone phone = PhoneFactory.getPhone(mPhoneId);
@@ -228,6 +224,25 @@ public class NetworkOperators extends PreferenceCategory
         if (phone != null) {
             phone.getNetworkSelectionMode(msg);
         }
+    }
+
+    private void dismissProgressBar() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
+
+    private void showAutoSelectProgressBar() {
+        mProgressDialog.setMessage(
+                getContext().getResources().getString(R.string.register_automatically));
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.show();
+    }
+
+    protected boolean preferenceTreeClick(Preference preference) {
+        return (preference == mAutoSelect || preference == mNetworkSelect);
     }
 
     private void logd(String msg) {
