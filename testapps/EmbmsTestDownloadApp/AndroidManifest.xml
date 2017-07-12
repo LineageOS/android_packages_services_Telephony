@@ -28,9 +28,9 @@
         </activity>
 
         <!-- This is the receiver defined by the MBMS api. -->
-        <!-- TODO: protect this with a permission -->
         <receiver
             android:name="android.telephony.mbms.MbmsDownloadReceiver"
+            android:permission="android.permission.SEND_EMBMS_INTENTS"
             android:enabled="true"
             android:exported="true">
         </receiver>
