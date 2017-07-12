@@ -18,6 +18,8 @@
         xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
         package="com.android.phone.testapps.embmsmw"
         coreApp="true">
+  <uses-permission android:name="android.permission.SEND_EMBMS_INTENTS"/>
+
   <application android:label="EmbmsTestMiddleware">
     <service android:name="com.android.phone.testapps.embmsmw.EmbmsTestStreamingService"
             android:launchMode="singleInstance"
