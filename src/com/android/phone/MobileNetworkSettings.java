@@ -16,7 +16,6 @@
 
 package com.android.phone;
 
-import android.annotation.Nullable;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.DialogFragment;
@@ -50,7 +49,6 @@ import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
-import android.telephony.PhoneNumberUtils;
 import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -66,7 +64,6 @@ import android.widget.TabHost;
 
 import com.android.ims.ImsConfig;
 import com.android.ims.ImsManager;
-import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.Phone;
@@ -819,14 +816,11 @@ public class MobileNetworkSettings extends Activity  {
 
             if (showEuiccSettings(getActivity())) {
                 prefSet.addPreference(mEuiccSettingsPref);
-                if (TextUtils.isEmpty(mTelephonyManager.getLine1Number())) {
+                String spn = mTelephonyManager.getSimOperatorName();
+                if (TextUtils.isEmpty(spn)) {
                     mEuiccSettingsPref.setSummary(null);
                 } else {
-                    mEuiccSettingsPref.setSummary(
-                            getEuiccSettingsSummary(
-                                    mTelephonyManager.getSimOperatorName(),
-                                    PhoneNumberUtils.formatNumber(
-                                            mTelephonyManager.getLine1Number())));
+                    mEuiccSettingsPref.setSummary(spn);
                 }
             }
 
@@ -1306,30 +1300,6 @@ public class MobileNetworkSettings extends Activity  {
             UpdateEnabledNetworksValueAndSummary(settingsNetworkMode);
             // changes the mButtonPreferredNetworkMode accordingly to settingsNetworkMode
             mButtonPreferredNetworkMode.setValue(Integer.toString(settingsNetworkMode));
-        }
-
-        @VisibleForTesting
-        String getEuiccSettingsSummary(@Nullable String spn, @Nullable String phoneNum) {
-            if (!TextUtils.isEmpty(spn) && !TextUtils.isEmpty(phoneNum)
-                    && phoneNum.length() >= NUM_LAST_PHONE_DIGITS) {
-                // Format the number and use the last one part or multiple
-                // parts whose total length is greater or equal to NUM_LAST_PHONE_DIGITS.
-                // TODO (b/36647649): This needs to be finalized by UX team
-                String shownNum;
-                int lastIndex = phoneNum.lastIndexOf('-');
-                if (lastIndex == -1) {
-                    shownNum = phoneNum.substring(phoneNum.length() - NUM_LAST_PHONE_DIGITS);
-                } else {
-                    shownNum = phoneNum.substring(lastIndex + 1);
-                    while (shownNum.length() < NUM_LAST_PHONE_DIGITS && lastIndex != -1) {
-                        lastIndex = phoneNum.lastIndexOf('-', lastIndex - 1);
-                        shownNum = phoneNum.substring(lastIndex + 1);
-                    }
-                }
-                return getString(R.string.carrier_settings_euicc_summary, spn, shownNum);
-            } else {
-                return null;
-            }
         }
 
         private void UpdatePreferredNetworkModeSummary(int NetworkMode) {
