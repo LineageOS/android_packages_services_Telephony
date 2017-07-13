@@ -222,18 +222,16 @@
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillade dataroaming?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Dataforbrug"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brugt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"Avanceret"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilselskab"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"mobilselskab, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobildata"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Få adgang til data via mobilnetværk"</string>
-    <!-- no translation found for data_usage_disable_mobile (3577275288809667615) -->
-    <skip />
-    <!-- no translation found for sim_selection_required_pref (7049424902961844236) -->
-    <skip />
-    <!-- no translation found for sim_change_data_title (5332425991853799280) -->
-    <skip />
-    <!-- no translation found for sim_change_data_message (2163963581444907496) -->
-    <skip />
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Vil du deaktivere mobildata?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"Du har ikke valgt endnu"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"Skift SIM-kortet til data?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"Vil du bruge <xliff:g id="NEW_SIM">%1$s</xliff:g> i stedet for <xliff:g id="OLD_SIM">%2$s</xliff:g> til mobildata?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi-opkald"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Videoopkald via mobilselskab"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Indstillinger for GSM/UMTS"</string>

@@ -222,18 +222,17 @@
     <string name="roaming_alert_title" msgid="3654815360303826008">"데이터 로밍을 허용하시겠습니까?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"데이터 사용량"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> 기간에 사용된 모바일 데이터: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"고급"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"이동통신사"</string>
+    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
+    <skip />
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"모바일 데이터"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"모바일 네트워크를 사용하여 데이터 액세스"</string>
-    <!-- no translation found for data_usage_disable_mobile (3577275288809667615) -->
-    <skip />
-    <!-- no translation found for sim_selection_required_pref (7049424902961844236) -->
-    <skip />
-    <!-- no translation found for sim_change_data_title (5332425991853799280) -->
-    <skip />
-    <!-- no translation found for sim_change_data_message (2163963581444907496) -->
-    <skip />
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"모바일 데이터를 사용 중지하시겠습니까?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"선택 필요"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"데이터 SIM을 변경하시겠습니까?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"모바일 데이터에 <xliff:g id="OLD_SIM">%2$s</xliff:g> 대신 <xliff:g id="NEW_SIM">%1$s</xliff:g>을(를) 사용하시겠습니까?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi 통화"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"이동통신사 화상 통화"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS 옵션"</string>

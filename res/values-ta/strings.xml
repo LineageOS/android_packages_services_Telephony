@@ -222,18 +222,17 @@
     <string name="roaming_alert_title" msgid="3654815360303826008">"தரவு ரோமிங்கை அனுமதிக்கவா?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"தரவுப் பயன்பாடு"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g>க்குள் <xliff:g id="ID_1">%1$s</xliff:g> மொபைல் தரவு பயன்படுத்தப்பட்டது"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"மேம்பட்டவை"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"தொலைத்தொடர்பு நிறுவனம்"</string>
+    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
+    <skip />
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"மொபைல் தரவு"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"மொபைல் நெட்வொர்க்கைப் பயன்படுத்தி, தரவை அணுகு"</string>
-    <!-- no translation found for data_usage_disable_mobile (3577275288809667615) -->
-    <skip />
-    <!-- no translation found for sim_selection_required_pref (7049424902961844236) -->
-    <skip />
-    <!-- no translation found for sim_change_data_title (5332425991853799280) -->
-    <skip />
-    <!-- no translation found for sim_change_data_message (2163963581444907496) -->
-    <skip />
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"மொபைல் தரவை முடக்கவா?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"தேர்ந்தெடுக்க வேண்டும்"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"தரவிற்கான சிம்மை மாற்றவா?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"<xliff:g id="OLD_SIM">%2$s</xliff:g>க்குப் பதிலாக <xliff:g id="NEW_SIM">%1$s</xliff:g> இன் மொபைல் தரவைப் பயன்படுத்தவா?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"வைஃபை அழைப்பு"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"தொலைத்தொடர்பு நிறுவன வீடியோ அழைப்பு"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS விருப்பங்கள்"</string>
