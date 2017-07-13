@@ -36,6 +36,7 @@ import android.provider.SearchIndexableResource;
 import android.provider.SearchIndexablesContract.RawData;
 import android.provider.SearchIndexablesProvider;
 import android.support.annotation.VisibleForTesting;
+import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
 
 public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
@@ -97,6 +98,7 @@ public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
     @Override
     public Cursor queryNonIndexableKeys(String[] projection) {
         MatrixCursor cursor = new MatrixCursor(NON_INDEXABLES_KEYS_COLUMNS);
+
         if (!mUserManager.isAdminUser()) {
             final String[] values = new String[]{"preferred_network_mode_key", "button_roaming_key",
                     "cdma_lte_data_service_key", "enabled_networks_key", "enhanced_4g_lte",
@@ -105,8 +107,13 @@ public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
             for (String nik : values) {
                 cursor.addRow(createNonIndexableRow(nik));
             }
-        } else if (isEuiccSettingsHidden()) {
-            cursor.addRow(createNonIndexableRow("esim_list_profile" /* key */));
+        } else {
+            if (isEuiccSettingsHidden()) {
+                cursor.addRow(createNonIndexableRow("esim_list_profile" /* key */));
+            }
+            if (isEnhanced4gLteHidden()) {
+                cursor.addRow(createNonIndexableRow("enhanced_4g_lte" /* key */));
+            }
         }
         cursor.addRow(createNonIndexableRow("carrier_settings_euicc_key" /* key */));
         return cursor;
@@ -114,6 +121,13 @@ public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
 
     @VisibleForTesting boolean isEuiccSettingsHidden() {
         return !MobileNetworkSettings.showEuiccSettings(getContext());
+    }
+
+    @VisibleForTesting boolean isEnhanced4gLteHidden() {
+        TelephonyManager telephonyManager =
+                (TelephonyManager) getContext().getSystemService(Context.TELEPHONY_SERVICE);
+        return MobileNetworkSettings
+                .hideEnhanced4gLteSettings(getContext(), telephonyManager.getCarrierConfig());
     }
 
     private Object[] createNonIndexableRow(String key) {
