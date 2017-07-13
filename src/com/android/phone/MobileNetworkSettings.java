@@ -58,8 +58,10 @@ import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TabHost;
 
 import com.android.ims.ImsConfig;
@@ -121,6 +123,26 @@ public class MobileNetworkSettings extends Activity  {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    /**
+     * Whether to show the entry point to eUICC settings.
+     *
+     * <p>We show the entry point on any device which supports eUICC as long as either the eUICC
+     * was ever provisioned (that is, at least one profile was ever downloaded onto it), or if
+     * the user has enabled development mode.
+     */
+    public static boolean showEuiccSettings(Context context) {
+        EuiccManager euiccManager =
+                (EuiccManager) context.getSystemService(Context.EUICC_SERVICE);
+        if (!euiccManager.isEnabled()) {
+            return false;
+        }
+        ContentResolver cr = context.getContentResolver();
+        return Settings.Global.getInt(cr, Settings.Global.EUICC_PROVISIONED, 0) != 0
+                || Settings.Global.getInt(
+                cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
     }
 
     public static class MobileNetworkFragment extends PreferenceFragment implements
@@ -413,8 +435,6 @@ public class MobileNetworkSettings extends Activity  {
                     if (DBG) log("initializeSubscriptions: UPDATE");
                     currentTab = mTabHost != null ? mTabHost.getCurrentTab() : 0;
 
-                    getActivity().setContentView(com.android.internal.R.layout.common_tab_settings);
-
                     mTabHost = (TabHost) getActivity().findViewById(android.R.id.tabhost);
                     mTabHost.setup();
 
@@ -453,7 +473,6 @@ public class MobileNetworkSettings extends Activity  {
                         mTabHost.clearAllTabs();
                         mTabHost = null;
                     }
-                    getActivity().setContentView(com.android.internal.R.layout.common_tab_settings);
                     break;
                 }
                 case DO_NOTHING: {
@@ -625,8 +644,20 @@ public class MobileNetworkSettings extends Activity  {
                     TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
             activity.registerReceiver(mPhoneChangeReceiver, intentFilter);
 
-            initializeSubscriptions();
             Log.i(LOG_TAG, "onCreate:-");
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
+            return inflater.inflate(com.android.internal.R.layout.common_tab_settings,
+                    container, false);
+        }
+
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            initializeSubscriptions();
         }
 
         private class PhoneChangeReceiver extends BroadcastReceiver {
@@ -701,25 +732,6 @@ public class MobileNetworkSettings extends Activity  {
             return mActiveSubInfos.size() > 0;
         }
 
-        /**
-         * Whether to show the entry point to eUICC settings.
-         *
-         * <p>We show the entry point on any device which supports eUICC as long as either the eUICC
-         * was ever provisioned (that is, at least one profile was ever downloaded onto it), or if
-         * the user has enabled development mode.
-         */
-        private boolean showEuiccSettings() {
-            EuiccManager euiccManager =
-                    (EuiccManager) getActivity().getSystemService(Context.EUICC_SERVICE);
-            if (!euiccManager.isEnabled()) {
-                return false;
-            }
-            ContentResolver cr = getActivity().getContentResolver();
-            return Settings.Global.getInt(cr, Settings.Global.EUICC_PROVISIONED, 0) != 0
-                    || Settings.Global.getInt(
-                            cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
-        }
-
         private void updateBodyBasicFields(Activity activity, PreferenceScreen prefSet,
                 int phoneSubId, boolean hasActiveSubscriptions) {
             Context context = activity.getApplicationContext();
@@ -790,7 +802,7 @@ public class MobileNetworkSettings extends Activity  {
             prefSet.addPreference(mButtonEnabledNetworks);
             prefSet.addPreference(mButton4glte);
 
-            if (showEuiccSettings()) {
+            if (showEuiccSettings(getActivity())) {
                 prefSet.addPreference(mEuiccSettingsPref);
                 if (TextUtils.isEmpty(mTelephonyManager.getLine1Number())) {
                     mEuiccSettingsPref.setSummary(null);
