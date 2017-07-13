@@ -16,6 +16,8 @@
 package com.android.phone;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
@@ -27,11 +29,15 @@ import com.android.internal.telephony.TelephonyIntents;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 
 import java.lang.reflect.Field;
 
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(AndroidJUnit4.class)
@@ -41,14 +47,16 @@ public class PhoneGlobalsTest extends TelephonyTestBase {
 
     private PhoneGlobals mPhoneGlobals = PhoneGlobals.getInstance();
 
-    private NotificationMgr mNotificationMgr = mock(NotificationMgr.class);
+    private Handler mHandler = mock(Handler.class);
+
+    private static final int EVENT_DATA_ROAMING_DISCONNECTED = 10;
 
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        Field notificationMgr = PhoneGlobals.class.getDeclaredField("notificationMgr");
-        notificationMgr.setAccessible(true);
-        notificationMgr.set(mPhoneGlobals, mNotificationMgr);
+        Field handler = PhoneGlobals.class.getDeclaredField("mHandler");
+        handler.setAccessible(true);
+        handler.set(mPhoneGlobals, mHandler);
     }
 
     @Test
@@ -64,17 +72,34 @@ public class PhoneGlobalsTest extends TelephonyTestBase {
         intent.putExtra(PhoneConstants.STATE_CHANGE_REASON_KEY, Phone.REASON_ROAMING_ON);
         mContext.sendBroadcast(intent);
 
-        waitForMs(200);
+        waitForMs(300);
 
-        verify(mNotificationMgr, times(0)).showDataDisconnectedRoaming();
+        ArgumentCaptor<Message> messageArgumentCaptor = ArgumentCaptor.forClass(Message.class);
+        verify(mHandler, atLeast(0)).sendMessageAtTime(any(Message.class), anyLong());
+        boolean flag = true;
+        for (Message msg : messageArgumentCaptor.getAllValues()) {
+            if (msg.what == EVENT_DATA_ROAMING_DISCONNECTED) {
+                flag = false;
+            }
+        }
+        assertTrue(flag);
+
 
         // Test notification sent out when data is enabled, data raoming enabled and data
         // disconnected because of roaming.
         mPhone.setDataEnabled(true);
         mContext.sendBroadcast(intent);
 
-        waitForMs(200);
+        waitForMs(300);
 
-        verify(mNotificationMgr, times(1)).showDataDisconnectedRoaming();
+
+        verify(mHandler, atLeast(1)).sendMessageAtTime(messageArgumentCaptor.capture(), anyLong());
+        flag = false;
+        for (Message msg : messageArgumentCaptor.getAllValues()) {
+            if (msg.what == EVENT_DATA_ROAMING_DISCONNECTED) {
+                flag = true;
+            }
+        }
+        assertTrue(flag);
     }
 }
