@@ -227,6 +227,8 @@
     <string name="data_usage_title" msgid="8759619109516889802">"தரவுப் பயன்பாடு"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g>க்குள் <xliff:g id="ID_1">%1$s</xliff:g> மொபைல் தரவு பயன்படுத்தப்பட்டது"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"தொலைத்தொடர்பு நிறுவனம்"</string>
+    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
+    <skip />
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"மொபைல் தரவு"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"மொபைல் நெட்வொர்க்கைப் பயன்படுத்தி, தரவை அணுகு"</string>
