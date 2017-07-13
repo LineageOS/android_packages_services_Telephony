@@ -145,6 +145,21 @@ public class MobileNetworkSettings extends Activity  {
                 cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
     }
 
+    /**
+     * Whether to show the Enhanced 4G LTE settings.
+     *
+     * <p>We show this settings if the VoLTE can be enabled by this device and the carrier app
+     * doesn't set {@link CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL} to false.
+     */
+    public static boolean hideEnhanced4gLteSettings(Context context,
+                PersistableBundle carrierConfig) {
+        return !(ImsManager.isVolteEnabledByPlatform(context)
+            && ImsManager.isVolteProvisionedOnDevice(context))
+            || carrierConfig.getBoolean(
+            CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL);
+
+    }
+
     public static class MobileNetworkFragment extends PreferenceFragment implements
             Preference.OnPreferenceChangeListener, RoamingDialogFragment.RoamingDialogListener {
 
@@ -971,10 +986,7 @@ public class MobileNetworkSettings extends Activity  {
                 android.util.Log.d(LOG_TAG, "keep ltePref");
             }
 
-            if (!(ImsManager.isVolteEnabledByPlatform(activity)
-                    && ImsManager.isVolteProvisionedOnDevice(activity))
-                    || carrierConfig.getBoolean(
-                        CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL)) {
+            if (hideEnhanced4gLteSettings(getActivity(), carrierConfig)) {
                 Preference pref = prefSet.findPreference(BUTTON_4G_LTE_KEY);
                 if (pref != null) {
                     prefSet.removePreference(pref);
