@@ -50,7 +50,6 @@ import android.util.ArrayMap;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCapabilities;
@@ -544,8 +543,7 @@ public class NotificationMgr {
      * appears when you lose data connectivity because you're roaming and
      * you have the "data roaming" feature turned off.
      */
-    @VisibleForTesting
-    public void showDataDisconnectedRoaming() {
+    void showDataDisconnectedRoaming() {
         if (DBG) log("showDataDisconnectedRoaming()...");
 
         // "Mobile network settings" screen / dialog
