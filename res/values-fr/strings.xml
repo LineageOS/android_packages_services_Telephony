@@ -222,18 +222,17 @@
     <string name="roaming_alert_title" msgid="3654815360303826008">"Autoriser l\'itinérance des données ?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Consommation des données"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> de données mobiles utilisées pendant la période suivante : <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"Paramètres avancés"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Opérateur"</string>
+    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
+    <skip />
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"Données mobiles"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Accéder aux données via le réseau mobile"</string>
-    <!-- no translation found for data_usage_disable_mobile (3577275288809667615) -->
-    <skip />
-    <!-- no translation found for sim_selection_required_pref (7049424902961844236) -->
-    <skip />
-    <!-- no translation found for sim_change_data_title (5332425991853799280) -->
-    <skip />
-    <!-- no translation found for sim_change_data_message (2163963581444907496) -->
-    <skip />
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Désactiver les données mobiles ?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"Sélection requise"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"Modifier la SIM des données ?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"Utiliser la carte SIM <xliff:g id="NEW_SIM">%1$s</xliff:g> au lieu de la carte <xliff:g id="OLD_SIM">%2$s</xliff:g> pour les données mobiles ?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Appels Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Appels vidéo via l\'opérateur"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Options GSM/UMTS"</string>
