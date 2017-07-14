@@ -72,12 +72,25 @@ public class EmbmsSampleDownloadService extends Service {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
-                throw new SecurityException("No matching packages found for your UID");
+                try {
+                    listener.error(
+                            MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED,
+                            "No matching packages found for your UID");
+                } catch (RemoteException e) {
+                    // ignore
+                }
+                return;
             }
             boolean isUidAllowed = Arrays.stream(packageNames).anyMatch(ALLOWED_PACKAGES::contains);
             if (!isUidAllowed) {
-                throw new SecurityException("No packages for your UID are allowed to use this " +
-                        "service");
+                try {
+                    listener.error(
+                            MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED,
+                            "No packages for your UID are allowed to use this service.");
+                } catch (RemoteException e) {
+                    // ignore
+                }
+                return;
             }
 
             // Do initialization with a bit of a delay to simulate work being done.
@@ -90,7 +103,8 @@ public class EmbmsSampleDownloadService extends Service {
                     mAppReceivers.put(appKey, appReceiver);
                 } else {
                     try {
-                        listener.error(MbmsException.ERROR_ALREADY_INITIALIZED, "");
+                        listener.error(
+                                MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
                     } catch (RemoteException e) {
                         // ignore, it was an error anyway
                     }
@@ -134,7 +148,7 @@ public class EmbmsSampleDownloadService extends Service {
             checkInitialized(appKey);
 
             if (mActiveDownloadRequests.getOrDefault(appKey, Collections.emptySet()).size() > 0) {
-                return MbmsException.ERROR_CANNOT_CHANGE_TEMP_FILE_ROOT;
+                return MbmsException.DownloadErrors.ERROR_CANNOT_CHANGE_TEMP_FILE_ROOT;
             }
             mAppTempFileRoots.put(appKey, rootDirectoryPath);
             return MbmsException.SUCCESS;
@@ -157,7 +171,7 @@ public class EmbmsSampleDownloadService extends Service {
             checkInitialized(appKey);
             if (!mActiveDownloadRequests.getOrDefault(
                     appKey, Collections.emptySet()).contains(downloadRequest)) {
-                return MbmsException.ERROR_UNKNOWN_DOWNLOAD_REQUEST;
+                return MbmsException.DownloadErrors.ERROR_UNKNOWN_DOWNLOAD_REQUEST;
             }
             mActiveDownloadRequests.get(appKey).remove(downloadRequest);
             return MbmsException.SUCCESS;

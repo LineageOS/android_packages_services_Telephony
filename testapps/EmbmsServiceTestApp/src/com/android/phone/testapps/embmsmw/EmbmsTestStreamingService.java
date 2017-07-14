@@ -81,16 +81,29 @@ public class EmbmsTestStreamingService extends Service {
 
     private final IMbmsStreamingService.Stub mBinder = new MbmsStreamingServiceBase() {
         @Override
-        public int initialize(IMbmsStreamingManagerCallback listener, int subId) {
+        public void initialize(IMbmsStreamingManagerCallback listener, int subId) {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
-                throw new SecurityException("No matching packages found for your UID");
+                try {
+                    listener.error(
+                            MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED,
+                            "No matching packages found for your UID");
+                } catch (RemoteException e) {
+                    // ignore
+                }
+                return;
             }
             boolean isUidAllowed = Arrays.stream(packageNames).anyMatch(ALLOWED_PACKAGES::contains);
             if (!isUidAllowed) {
-                throw new SecurityException("No packages for your UID are allowed to use this " +
-                        "service");
+                try {
+                    listener.error(
+                            MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED,
+                            "No packages for your UID are allowed to use this service.");
+                } catch (RemoteException e) {
+                    // ignore
+                }
+                return;
             }
 
             mHandler.postDelayed(() -> {
@@ -99,7 +112,8 @@ public class EmbmsTestStreamingService extends Service {
                     mAppCallbacks.put(appKey, listener);
                 } else {
                     try {
-                        listener.error(MbmsException.ERROR_ALREADY_INITIALIZED, "");
+                        listener.error(
+                                MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
                     } catch (RemoteException e) {
                         // ignore, it was an error anyway
                     }
@@ -112,7 +126,6 @@ public class EmbmsTestStreamingService extends Service {
                     mAppCallbacks.remove(appKey);
                 }
             }, INITIALIZATION_DELAY);
-            return 0;
         }
 
         @Override
@@ -145,7 +158,7 @@ public class EmbmsTestStreamingService extends Service {
 
             if (StreamStateTracker.getStreamingState(appKey, serviceId) ==
                     StreamingService.STATE_STARTED) {
-                return MbmsException.ERROR_STREAM_ALREADY_STARTED;
+                return MbmsException.StreamingErrors.ERROR_DUPLICATE_START_STREAM;
             }
 
             mHandler.postDelayed(
