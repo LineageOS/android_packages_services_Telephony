@@ -222,18 +222,16 @@
     <string name="roaming_alert_title" msgid="3654815360303826008">"السماح بتجوال البيانات؟"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"استخدام البيانات"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"تم استخدام <xliff:g id="ID_1">%1$s</xliff:g> من بيانات الجوال خلال الفترة بين <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"إعدادات متقدمة"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"مشغل شبكة الجوّال"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"‏مشغل شبكة الجوال، esim، sim، euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"بيانات الجوال"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"الوصول إلى البيانات باستخدام شبكة الجوال"</string>
-    <!-- no translation found for data_usage_disable_mobile (3577275288809667615) -->
-    <skip />
-    <!-- no translation found for sim_selection_required_pref (7049424902961844236) -->
-    <skip />
-    <!-- no translation found for sim_change_data_title (5332425991853799280) -->
-    <skip />
-    <!-- no translation found for sim_change_data_message (2163963581444907496) -->
-    <skip />
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"هل تريد إيقاف تشغيل بيانات الجوّال؟"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"يلزم التحديد"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"‏هل تريد تغيير شريحة SIM للبيانات؟"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"هل تريد استخدام <xliff:g id="NEW_SIM">%1$s</xliff:g> بدلاً من <xliff:g id="OLD_SIM">%2$s</xliff:g> لبيانات الجوّال؟"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"‏الاتصال عبر Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"مكالمة فيديو باستخدام مشغل شبكة الجوال"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"‏خيارات نظام GSM/النظام العالمي لاتصالات الجوال عن بعد (UMTS)"</string>
