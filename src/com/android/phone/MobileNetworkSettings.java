@@ -16,7 +16,6 @@
 
 package com.android.phone;
 
-import android.annotation.Nullable;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.DialogFragment;
@@ -43,7 +42,6 @@ import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.telephony.CarrierConfigManager;
-import android.telephony.PhoneNumberUtils;
 import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -56,7 +54,6 @@ import android.view.View;
 import android.widget.TabHost;
 
 import com.android.ims.ImsManager;
-import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
@@ -129,6 +126,21 @@ public class MobileNetworkSettings extends Activity  {
         return Settings.Global.getInt(cr, Settings.Global.EUICC_PROVISIONED, 0) != 0
                 || Settings.Global.getInt(
                 cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+    }
+
+    /**
+     * Whether to show the Enhanced 4G LTE settings.
+     *
+     * <p>We show this settings if the VoLTE can be enabled by this device and the carrier app
+     * doesn't set {@link CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL} to false.
+     */
+    public static boolean hideEnhanced4gLteSettings(Context context,
+                PersistableBundle carrierConfig) {
+        return !(ImsManager.isVolteEnabledByPlatform(context)
+            && ImsManager.isVolteProvisionedOnDevice(context))
+            || carrierConfig.getBoolean(
+            CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL);
+
     }
 
     public static class MobileNetworkFragment extends PreferenceFragment implements
@@ -631,14 +643,11 @@ public class MobileNetworkSettings extends Activity  {
                 prefSet.addPreference(mButton4glte);
                 if (showEuiccSettings(getActivity())) {
                     prefSet.addPreference(mEuiccSettingsPref);
-                    if (TextUtils.isEmpty(mTelephonyManager.getLine1Number())) {
+                    String spn = mTelephonyManager.getSimOperatorName();
+                    if (TextUtils.isEmpty(spn)) {
                         mEuiccSettingsPref.setSummary(null);
                     } else {
-                        mEuiccSettingsPref.setSummary(
-                                getEuiccSettingsSummary(
-                                        mTelephonyManager.getSimOperatorName(),
-                                        PhoneNumberUtils.formatNumber(
-                                                mTelephonyManager.getLine1Number())));
+                        mEuiccSettingsPref.setSummary(spn);
                     }
                 }
             }
@@ -796,10 +805,7 @@ public class MobileNetworkSettings extends Activity  {
                 android.util.Log.d(LOG_TAG, "keep ltePref");
             }
 
-            if (!(ImsManager.isVolteEnabledByPlatform(activity)
-                    && ImsManager.isVolteProvisionedOnDevice(activity))
-                    || carrierConfig.getBoolean(
-                        CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL)) {
+            if (hideEnhanced4gLteSettings(getActivity(), carrierConfig)) {
                 Preference pref = prefSet.findPreference(BUTTON_4G_LTE_KEY);
                 if (pref != null) {
                     prefSet.removePreference(pref);
@@ -1115,31 +1121,6 @@ public class MobileNetworkSettings extends Activity  {
             // changes the mButtonPreferredNetworkMode accordingly to settingsNetworkMode
             mButtonPreferredNetworkMode.setValue(Integer.toString(settingsNetworkMode));
         }
-
-        @VisibleForTesting
-        String getEuiccSettingsSummary(@Nullable String spn, @Nullable String phoneNum) {
-            if (!TextUtils.isEmpty(spn) && !TextUtils.isEmpty(phoneNum)
-                    && phoneNum.length() >= NUM_LAST_PHONE_DIGITS) {
-                // Format the number and use the last one part or multiple
-                // parts whose total length is greater or equal to NUM_LAST_PHONE_DIGITS.
-                // TODO (b/36647649): This needs to be finalized by UX team
-                String shownNum;
-                int lastIndex = phoneNum.lastIndexOf('-');
-                if (lastIndex == -1) {
-                    shownNum = phoneNum.substring(phoneNum.length() - NUM_LAST_PHONE_DIGITS);
-                } else {
-                    shownNum = phoneNum.substring(lastIndex + 1);
-                    while (shownNum.length() < NUM_LAST_PHONE_DIGITS && lastIndex != -1) {
-                        lastIndex = phoneNum.lastIndexOf('-', lastIndex - 1);
-                        shownNum = phoneNum.substring(lastIndex + 1);
-                    }
-                }
-                return getString(R.string.carrier_settings_euicc_summary, spn, shownNum);
-            } else {
-                return null;
-            }
-        }
-
 
         private void UpdatePreferredNetworkModeSummary(int NetworkMode) {
             switch(NetworkMode) {

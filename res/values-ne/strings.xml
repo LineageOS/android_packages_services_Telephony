@@ -227,6 +227,8 @@
     <string name="data_usage_title" msgid="8759619109516889802">"डेटाको प्रयोग"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> देखि <xliff:g id="ID_2">%2$s</xliff:g> सम्म प्रयोग भएको मोबाइल डेटा"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"सेवा प्रदायक"</string>
+    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
+    <skip />
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"मोबाइल डेटा"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"मोबाइल नेटवर्कको प्रयोग गरी डेटामाथि पहुँच गर्नुहोस्"</string>
@@ -512,7 +514,7 @@
     <item msgid="2883365539347850535">"लामो"</item>
   </string-array>
     <string name="network_info_message" msgid="7738596060242881930">"सञ्जाल सन्देश"</string>
-    <string name="network_error_message" msgid="3394780436230411413">"त्रुटि सन्देश"</string>
+    <string name="network_error_message" msgid="3394780436230411413">"त्रुटिसम्बन्धी सन्देश"</string>
     <string name="ota_title_activate" msgid="8616918561356194398">"तपाईंको फोन सक्रिय गर्नुहोस्"</string>
     <string name="ota_touch_activate" msgid="6553212803262586244">"विशेष कललाई तपाईंको फोन सेवा सक्रिय गर्न जरुरी हुन्छ। \n \n \"सक्रिय\" थिचेर तपाईंको फोन  सक्रिय गर्न दिएका निर्देशनहरू सुन्नुहोस्।"</string>
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"सक्रिय गर्दै…"</string>
