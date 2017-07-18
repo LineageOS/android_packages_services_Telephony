@@ -17,8 +17,8 @@
 package com.android.phone.testapps.embmsmw;
 
 import android.os.RemoteException;
-import android.telephony.mbms.IStreamingServiceCallback;
 import android.telephony.mbms.StreamingService;
+import android.telephony.mbms.StreamingServiceCallback;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,18 +28,18 @@ import java.util.Random;
 public class AppActiveStreams {
     // Wrapper for a pair (StreamingServiceCallback, streaming state)
     private static class StreamCallbackWithState {
-        private final IStreamingServiceCallback mCallback;
+        private final StreamingServiceCallback mCallback;
         private int mState;
         private int mMethod;
         private boolean mMethodSet = false;
 
-        StreamCallbackWithState(IStreamingServiceCallback callback, int state, int method) {
+        StreamCallbackWithState(StreamingServiceCallback callback, int state, int method) {
             mCallback = callback;
             mState = state;
             mMethod = method;
         }
 
-        public IStreamingServiceCallback getCallback() {
+        public StreamingServiceCallback getCallback() {
             return mCallback;
         }
 
@@ -80,7 +80,7 @@ public class AppActiveStreams {
                 StreamingService.STATE_STOPPED : callbackWithState.getState();
     }
 
-    public void startStreaming(String serviceId, IStreamingServiceCallback callback, int reason) {
+    public void startStreaming(String serviceId, StreamingServiceCallback callback, int reason) {
         if (mStreamStates.get(serviceId) != null) {
             // error - already started
             return;

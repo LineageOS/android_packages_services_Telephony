@@ -16,8 +16,8 @@
 
 package com.android.phone.testapps.embmsmw;
 
-import android.telephony.mbms.IStreamingServiceCallback;
 import android.telephony.mbms.StreamingService;
+import android.telephony.mbms.StreamingServiceCallback;
 import android.util.Log;
 
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class StreamStateTracker {
     }
 
     public static void startStreaming(FrontendAppIdentifier appIdentifier, String serviceId,
-            IStreamingServiceCallback callback, int reason) {
+            StreamingServiceCallback callback, int reason) {
         AppActiveStreams appStreams = sPerAppStreamStates.get(appIdentifier);
         if (appStreams == null) {
             appStreams = new AppActiveStreams(appIdentifier);
