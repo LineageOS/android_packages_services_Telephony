@@ -224,8 +224,7 @@
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g>のモバイルデータ使用量: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"詳細設定"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"携帯通信会社"</string>
-    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
-    <skip />
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"携帯通信会社、esim、sim、euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"モバイルデータ"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"モバイル ネットワーク経由でデータにアクセス"</string>
