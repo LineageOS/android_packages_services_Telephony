@@ -34,7 +34,7 @@ import android.telephony.MbmsDownloadManager;
 import android.telephony.mbms.DownloadRequest;
 import android.telephony.mbms.FileInfo;
 import android.telephony.mbms.FileServiceInfo;
-import android.telephony.mbms.IDownloadCallback;
+import android.telephony.mbms.IDownloadProgressListener;
 import android.telephony.mbms.IMbmsDownloadManagerCallback;
 import android.telephony.mbms.MbmsException;
 import android.telephony.mbms.UriPathPair;
@@ -155,7 +155,7 @@ public class EmbmsSampleDownloadService extends Service {
         }
 
         @Override
-        public int download(DownloadRequest downloadRequest, IDownloadCallback listener) {
+        public int download(DownloadRequest downloadRequest, IDownloadProgressListener listener) {
             FrontendAppIdentifier appKey = new FrontendAppIdentifier(
                     Binder.getCallingUid(), downloadRequest.getSubscriptionId());
             checkInitialized(appKey);
