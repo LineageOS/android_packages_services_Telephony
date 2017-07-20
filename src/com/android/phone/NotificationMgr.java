@@ -16,6 +16,8 @@
 
 package com.android.phone;
 
+import static android.Manifest.permission.READ_PHONE_STATE;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -60,8 +62,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import static android.Manifest.permission.READ_PHONE_STATE;
-
 /**
  * NotificationManager-related utility code for the Phone app.
  *
@@ -80,15 +80,6 @@ public class NotificationMgr {
 
     private static final String MWI_SHOULD_CHECK_VVM_CONFIGURATION_KEY_PREFIX =
             "mwi_should_check_vvm_configuration_state_";
-
-    /**
-     * Boolean value representing whether the {@link
-     * TelephonyManager#ACTION_SHOW_VOICEMAIL_NOTIFICATION} is new or a refresh of an existing
-     * notification.
-     *
-     * TODO(b/62202833): make public
-     */
-    private static final String EXTRA_IS_REFRESH = "is_refresh";
 
     // notification types
     static final int MMI_NOTIFICATION = 1;
@@ -422,7 +413,7 @@ public class NotificationMgr {
             intent.setAction(TelephonyManager.ACTION_SHOW_VOICEMAIL_NOTIFICATION);
             intent.putExtra(TelephonyManager.EXTRA_PHONE_ACCOUNT_HANDLE,
                     PhoneUtils.makePstnPhoneAccountHandle(phone));
-            intent.putExtra(EXTRA_IS_REFRESH, isRefresh);
+            intent.putExtra(TelephonyManager.EXTRA_IS_REFRESH, isRefresh);
             if (count != null) {
                 intent.putExtra(TelephonyManager.EXTRA_NOTIFICATION_COUNT, count);
             }
