@@ -81,29 +81,15 @@ public class EmbmsTestStreamingService extends Service {
 
     private final IMbmsStreamingService.Stub mBinder = new MbmsStreamingServiceBase() {
         @Override
-        public void initialize(IMbmsStreamingManagerCallback listener, int subId) {
+        public int initialize(IMbmsStreamingManagerCallback listener, int subId) {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
-                try {
-                    listener.error(
-                            MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED,
-                            "No matching packages found for your UID");
-                } catch (RemoteException e) {
-                    // ignore
-                }
-                return;
+                return MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
             }
             boolean isUidAllowed = Arrays.stream(packageNames).anyMatch(ALLOWED_PACKAGES::contains);
             if (!isUidAllowed) {
-                try {
-                    listener.error(
-                            MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED,
-                            "No packages for your UID are allowed to use this service.");
-                } catch (RemoteException e) {
-                    // ignore
-                }
-                return;
+                return MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
             }
 
             mHandler.postDelayed(() -> {
@@ -126,6 +112,7 @@ public class EmbmsTestStreamingService extends Service {
                     mAppCallbacks.remove(appKey);
                 }
             }, INITIALIZATION_DELAY);
+            return MbmsException.SUCCESS;
         }
 
         @Override
