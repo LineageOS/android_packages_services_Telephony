@@ -93,8 +93,8 @@
     <string name="sum_show_caller_id" msgid="6768534125447290401">"आउटगोइंग कॉल में प्रदर्शित किया गया नंबर"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"आउटगोइंग कॉल में मेरा नंबर दिखाने के लिए सामान्य ऑपरेटर सेटिंग का उपयोग करें"</string>
     <string name="labelCW" msgid="6120513814915920200">"कॉल प्रतीक्षा"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"कॉल के दौरान, मुझे इनकमिंग कॉल की नोटिफिकेशन दें"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"कॉल के दौरान, मुझे इनकमिंग कॉल की नोटिफिकेशन दें"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"कॉल के दौरान, मुझे इनकमिंग कॉल की नोटिफ़िकेशन दें"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"कॉल के दौरान, मुझे इनकमिंग कॉल की नोटिफ़िकेशन दें"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"कॉल आगे भेजने की सेटिंग"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"कॉल आगे भेजने की सेटिंग (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"कॉल आगे भेजना"</string>
