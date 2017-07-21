@@ -50,6 +50,7 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
+import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -839,7 +840,9 @@ public class MobileNetworkSettings extends Activity  {
                 prefSet.removePreference(mLteDataServicePref);
             } else if (carrierConfig.getBoolean(CarrierConfigManager
                     .KEY_HIDE_PREFERRED_NETWORK_TYPE_BOOL)
-                    && !mPhone.getServiceState().getRoaming()) {
+                    && !mPhone.getServiceState().getRoaming()
+                    && mPhone.getServiceState().getDataRegState()
+                    == ServiceState.STATE_IN_SERVICE) {
                 prefSet.removePreference(mButtonPreferredNetworkMode);
                 prefSet.removePreference(mButtonEnabledNetworks);
 
