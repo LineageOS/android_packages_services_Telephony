@@ -97,6 +97,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private PersistableBundle[] mConfigFromCarrierApp;
     // Service connection for binding to config app.
     private CarrierServiceConnection[] mServiceConnection;
+    // Whether we have sent config change bcast for each phone id.
+    private boolean[] mHasSentConfigChange;
 
     // Broadcast receiver for Boot intents, register intent filter in construtor.
     private final BroadcastReceiver mBootReceiver = new ConfigLoaderBroadcastReceiver();
@@ -179,7 +181,12 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
                 case EVENT_SYSTEM_UNLOCKED:
                     for (int i = 0; i < TelephonyManager.from(mContext).getPhoneCount(); ++i) {
-                        updateConfigForPhoneId(i);
+                        // When user unlock device, we should only try to send broadcast again if
+                        // we have sent it before unlock. This will avoid we try to load carrier
+                        // config when SIM is still loading when unlock happens.
+                        if (mHasSentConfigChange[i]) {
+                            updateConfigForPhoneId(i);
+                        }
                     }
                     break;
 
@@ -370,6 +377,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         mConfigFromDefaultApp = new PersistableBundle[numPhones];
         mConfigFromCarrierApp = new PersistableBundle[numPhones];
         mServiceConnection = new CarrierServiceConnection[numPhones];
+        mHasSentConfigChange = new boolean[numPhones];
         // Make this service available through ServiceManager.
         ServiceManager.addService(Context.CARRIER_CONFIG_SERVICE, this);
         log("CarrierConfigLoader has started");
@@ -399,6 +407,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND);
         SubscriptionManager.putPhoneIdAndSubIdExtra(intent, phoneId);
         ActivityManager.broadcastStickyIntent(intent, UserHandle.USER_ALL);
+        mHasSentConfigChange[phoneId] = true;
     }
 
     /** Binds to the default or carrier config app. */
