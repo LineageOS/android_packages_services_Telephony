@@ -68,29 +68,15 @@ public class EmbmsSampleDownloadService extends Service {
 
     private final IMbmsDownloadService mBinder = new MbmsDownloadServiceBase() {
         @Override
-        public void initialize(int subId, IMbmsDownloadManagerCallback listener) {
+        public int initialize(int subId, IMbmsDownloadManagerCallback listener) {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
-                try {
-                    listener.error(
-                            MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED,
-                            "No matching packages found for your UID");
-                } catch (RemoteException e) {
-                    // ignore
-                }
-                return;
+                return MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
             }
             boolean isUidAllowed = Arrays.stream(packageNames).anyMatch(ALLOWED_PACKAGES::contains);
             if (!isUidAllowed) {
-                try {
-                    listener.error(
-                            MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED,
-                            "No packages for your UID are allowed to use this service.");
-                } catch (RemoteException e) {
-                    // ignore
-                }
-                return;
+                return MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
             }
 
             // Do initialization with a bit of a delay to simulate work being done.
@@ -116,6 +102,8 @@ public class EmbmsSampleDownloadService extends Service {
                     // TODO: call dispose
                 }
             }, INITIALIZATION_DELAY);
+
+            return MbmsException.SUCCESS;
         }
 
         @Override
