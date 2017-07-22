@@ -68,7 +68,7 @@ public class EmbmsSampleDownloadService extends Service {
 
     private final IMbmsDownloadService mBinder = new MbmsDownloadServiceBase() {
         @Override
-        public int initialize(int subId, IMbmsDownloadManagerCallback listener) {
+        public int initialize(int subId, IMbmsDownloadManagerCallback callback) {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
@@ -83,13 +83,13 @@ public class EmbmsSampleDownloadService extends Service {
             mHandler.postDelayed(() -> {
                 FrontendAppIdentifier appKey = new FrontendAppIdentifier(packageUid, subId);
                 if (!mAppCallbacks.containsKey(appKey)) {
-                    mAppCallbacks.put(appKey, listener);
+                    mAppCallbacks.put(appKey, callback);
                     ComponentName appReceiver = MbmsDownloadManager.getAppReceiverFromUid(
                             EmbmsSampleDownloadService.this, packageUid);
                     mAppReceivers.put(appKey, appReceiver);
                 } else {
                     try {
-                        listener.error(
+                        callback.error(
                                 MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
                     } catch (RemoteException e) {
                         // ignore, it was an error anyway
@@ -97,7 +97,7 @@ public class EmbmsSampleDownloadService extends Service {
                     return;
                 }
                 try {
-                    listener.middlewareReady();
+                    callback.middlewareReady();
                 } catch (RemoteException e) {
                     // TODO: call dispose
                 }
