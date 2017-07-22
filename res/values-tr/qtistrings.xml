@@ -153,8 +153,8 @@
   <string name="srvcc_video_message">"4G ağ kullanılamadığından görüntülü aramadan 2G/3G sesli aramaya geçildi."</string>
   <string name="srvcc_message">"4G ağ kullanılamadığından 4G sesli aramadan 2G/3G sesli aramaya geçildi."</string>
   <!-- call forwarding settings related strings -->
-  <string name="labelCFType">Çağrı yönlendirme ayarları</string>
+  <string name="labelCFType">Arama yönlendirme ayarları</string>
   <string name="labelCFVoice">Ses</string>
   <string name="labelCFVideo">Video</string>
-  <string name="call_forward_option">Çağrı yönlendirme ayarları</string>
+  <string name="call_forward_option">Arama yönlendirme ayarları</string>
 </resources>

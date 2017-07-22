@@ -103,7 +103,6 @@
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
   <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
   <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
   <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
   <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
@@ -150,9 +149,11 @@
   <string name="cf_setting_mobile_data_roaming_alert">Silakan aktifkan data roaming</string>
   <string name="no_mobile_data">Mobile data saat ini tidak tersedia</string>
   <string name="no_mobile_data_roaming">Data roaming saat ini tidak tersedia</string>
-  <string name="srvcc_video_message">"Panggilan video telah diturunkan ke 2G / 3G panggilan suara, karena 4G jaringan tidak tersedia."</string>
+  <string name="srvcc_video_message">"Panggilan video telah diturunkan ke 2G / 3G panggilan suara, karena jaringan 4G tidak tersedia."</string>
   <string name="srvcc_message">"panggilan suara 4G telah diturunkan ke panggilan suara 2G/3G, karena jaringan 4G tidak tersedia."</string>
   <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Setelan pengalihan panggilan</string>
   <string name="labelCFVoice">Suara</string>
   <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Pilihan pengalihan panggilan</string>
 </resources>

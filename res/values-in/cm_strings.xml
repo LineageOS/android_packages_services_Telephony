@@ -40,7 +40,7 @@
   <!-- Toast text for incoming call being forwarded to other remote party  -->
   <string name="call_notif_MTcall_forwarding">Panggilan masuk diteruskan</string>
   <!-- Toast text for incoming call which is part of MultiParty Call -->
-  <string name="call_notif_multipartycall">Panggilan multi-pihak</string>
+  <string name="call_notif_multipartycall">Panggilan banyak-pihak</string>
   <!-- Toast text for incoming call which is answered,put on hold & then released -->
   <string name="call_notif_callonhold_released">Panggilan dilepas dari jarak jauh</string>
   <!-- Toast text for incoming call forward check received -->
@@ -79,6 +79,5 @@
   <string name="perm_change_mobile_network_desc">Memperbolehkan aplikasi untuk mengubah modus jariangan saat ini</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Pilih modus jaringan</string>
-  <string name="choose_network_mode_system_default">Aturan standar sistem</string>
   <string name="cdma_call_settings">Setelan panggilan CDMA</string>
 </resources>
