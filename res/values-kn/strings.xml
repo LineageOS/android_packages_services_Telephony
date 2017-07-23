@@ -227,8 +227,7 @@
     <string name="data_usage_title" msgid="8759619109516889802">"ಡೇಟಾ ಬಳಕೆ"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> ನಡುವೆ ಬಳಸಲಾದ ಮೊಬೈಲ್ ಡೇಟಾ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ವಾಹಕ"</string>
-    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
-    <skip />
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"carrier, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"ಮೊಬೈಲ್ ಡೇಟಾ"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"ಮೊಬೈಲ್ ನೆಟ್‌ವರ್ಕ್‌ ಬಳಸಿ ಡೇಟಾ ಪ್ರವೇಶಿಸಿ"</string>
@@ -457,11 +456,11 @@
     <string name="notification_network_selection_text" msgid="2607085729661923269">"ಆಯ್ಕೆಮಾಡಿದ (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) ನೆಟ್‌ವರ್ಕ್‌ ಲಭ್ಯವಿಲ್ಲ"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"ಕರೆ ಮಾಡಲು ಮೊಬೈಲ್ ನೆಟ್‌ವರ್ಕ್ ಆನ್ ಮಾಡಿ, ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಅಥವಾ ಬ್ಯಾಟರಿ ಉಳಿತಾಯ ಮೋಡ್ ಅನ್ನು ಆಫ್ ಮಾಡಿ."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"ಕರೆ ಮಾಡಲು ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಆಫ್ ಮಾಡಿ."</string>
-    <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಆಫ್ ಮಾಡಿ ಅಥವಾ ಕರೆ ಮಾಡಲು ವೈರ್‌ಲೆಸ್ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಪಡಿಸಿ."</string>
+    <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಆಫ್ ಮಾಡಿ ಅಥವಾ ಕರೆ ಮಾಡಲು ವೈರ್‌ಲೆಸ್ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"ತುರ್ತು ರಹಿತ ಕರೆಯನ್ನು ಮಾಡಲು ತುರ್ತು ಮರು ಕರೆಮಾಡುವಿಕೆ ಮೋಡ್ ಅನ್ನು ನಿರ್ಗಮಿಸಿ."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿ ಇನ್ನೂ ನೋಂದಣಿಯಾಗಿಲ್ಲ."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"ಮೊಬೈಲ್‌ ನೆಟ್‌ವರ್ಕ್‌ ಲಭ್ಯವಿಲ್ಲ."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"ಮೊಬೈಲ್ ನೆಟ್‌ವರ್ಕ್ ಲಭ್ಯವಿಲ್ಲ. ಕರೆ ಮಾಡಲು ವೈರ್‌ಲೆಸ್ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಪಡಿಸಿ."</string>
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"ಮೊಬೈಲ್ ನೆಟ್‌ವರ್ಕ್ ಲಭ್ಯವಿಲ್ಲ. ಕರೆ ಮಾಡಲು ವೈರ್‌ಲೆಸ್ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"ಕರೆಯನ್ನು ಮಾಡಲು, ಮಾನ್ಯವಾದ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"ಕರೆ ವಿಫಲವಾಗಿದೆ."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"ಕರೆಯನ್ನು ಈ ಸಮಯದಲ್ಲಿ ಸೇರಿಸಲಾಗುವುದಿಲ್ಲ."</string>
@@ -473,7 +472,7 @@
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"ಕರೆಯನ್ನು ತಿರಸ್ಕರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"ಕರೆ(ಗಳು) ಬಿಡುಗಡೆ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"ಕರೆಗಳನ್ನು ಹೋಲ್ಡ್ ಮಾಡಲಾಗುವುದಿಲ್ಲ."</string>
-    <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ಕರೆ ಮಾಡಲು ವೈರ್‌ಲೆಸ್ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಪಡಿಸಿ."</string>
+    <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ಕರೆ ಮಾಡಲು ವೈರ್‌ಲೆಸ್ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"ಕರೆ ಮಾಡಲು ವೈ-ಫೈ ಕರೆ ಮಾಡುವಿಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ತುರ್ತು ಕರೆಗಳು"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"ರೇಡಿಯೋ ಆನ್‌ ಮಾಡಲಾಗುತ್ತಿದೆ…"</string>

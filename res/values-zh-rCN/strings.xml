@@ -227,8 +227,7 @@
     <string name="data_usage_title" msgid="8759619109516889802">"流量使用情况"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g>使用了 <xliff:g id="ID_1">%1$s</xliff:g> 移动数据流量"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"运营商"</string>
-    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
-    <skip />
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"运营商, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> - <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"移动数据"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"通过移动网络访问数据"</string>
