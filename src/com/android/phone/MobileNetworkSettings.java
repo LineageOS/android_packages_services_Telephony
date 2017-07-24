@@ -74,7 +74,6 @@ import com.android.internal.telephony.TelephonyIntents;
 import com.android.phone.settings.PhoneAccountSettingsFragment;
 import com.android.settingslib.RestrictedLockUtils;
 
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -184,6 +183,7 @@ public class MobileNetworkSettings extends Activity  {
         private static final String BUTTON_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
         private static final String BUTTON_CARRIER_SETTINGS_KEY = "carrier_settings_key";
         private static final String BUTTON_CDMA_SYSTEM_SELECT_KEY = "cdma_system_select_key";
+        private static final String BUTTON_CDMA_SUBSCRIPTION_KEY = "cdma_subscription_key";
         private static final String BUTTON_CARRIER_SETTINGS_EUICC_KEY =
                 "carrier_settings_euicc_key";
         private static final String BUTTON_WIFI_CALLING_KEY = "wifi_calling_key";
@@ -194,6 +194,8 @@ public class MobileNetworkSettings extends Activity  {
         private static final String CATEGORY_CALLING_KEY = "calling";
         private static final String CATEGORY_GSM_APN_EXPAND_KEY = "category_gsm_apn_key";
         private static final String CATEGORY_CDMA_APN_EXPAND_KEY = "category_cdma_apn_key";
+        private static final String BUTTON_GSM_APN_EXPAND_KEY = "button_gsm_apn_key";
+        private static final String BUTTON_CDMA_APN_EXPAND_KEY = "button_cdma_apn_key";
 
         private final BroadcastReceiver mPhoneChangeReceiver = new PhoneChangeReceiver();
 
@@ -316,6 +318,9 @@ public class MobileNetworkSettings extends Activity  {
         public void onPositiveButtonClick(DialogFragment dialog) {
             mPhone.setDataRoamingEnabled(true);
             mButtonDataRoam.setChecked(true);
+            MetricsLogger.action(getContext(),
+                    getMetricsEventCategory(getPreferenceScreen(), mButtonDataRoam),
+                    true);
         }
 
         @Override
@@ -998,6 +1003,19 @@ public class MobileNetworkSettings extends Activity  {
                 }
             }
 
+            /**
+             * Listen to extra preference changes that need as Metrics events logging.
+             */
+            if (prefSet.findPreference(BUTTON_CDMA_SYSTEM_SELECT_KEY) != null) {
+                prefSet.findPreference(BUTTON_CDMA_SYSTEM_SELECT_KEY)
+                        .setOnPreferenceChangeListener(this);
+            }
+
+            if (prefSet.findPreference(BUTTON_CDMA_SUBSCRIPTION_KEY) != null) {
+                prefSet.findPreference(BUTTON_CDMA_SUBSCRIPTION_KEY)
+                        .setOnPreferenceChangeListener(this);
+            }
+
             // Get the networkMode from Settings.System and displays it
             mButtonEnabledNetworks.setValue(Integer.toString(settingsNetworkMode));
             mButtonPreferredNetworkMode.setValue(Integer.toString(settingsNetworkMode));
@@ -1086,6 +1104,8 @@ public class MobileNetworkSettings extends Activity  {
          * display value.
          */
         public boolean onPreferenceChange(Preference preference, Object objValue) {
+            sendMetricsEventPreferenceChanged(getPreferenceScreen(), preference, objValue);
+
             final int phoneSubId = mPhone.getSubId();
             if (preference == mButtonPreferredNetworkMode) {
                 //NOTE onPreferenceChange seems to be called even if there is no change
@@ -1199,6 +1219,9 @@ public class MobileNetworkSettings extends Activity  {
 
                 //normally called on the toggle click
                 if (!mButtonDataRoam.isChecked()) {
+                    // MetricsEvent with no value update.
+                    MetricsLogger.action(getContext(),
+                            getMetricsEventCategory(getPreferenceScreen(), mButtonDataRoam));
                     // First confirm with a warning dialog about charges
                     mOkClicked = false;
                     RoamingDialogFragment fragment = new RoamingDialogFragment();
@@ -1207,8 +1230,11 @@ public class MobileNetworkSettings extends Activity  {
                     return false;
                 } else {
                     mPhone.setDataRoamingEnabled(false);
+                    MetricsLogger.action(getContext(),
+                            getMetricsEventCategory(getPreferenceScreen(), mButtonDataRoam),
+                            false);
+                    return true;
                 }
-                return true;
             } else if (preference == mVideoCallingPref) {
                 // If mButton4glte is not checked, mVideoCallingPref should be disabled.
                 // So it only makes sense to call phoneMgr.enableVideoCalling if it's checked.
@@ -1220,6 +1246,11 @@ public class MobileNetworkSettings extends Activity  {
                     mVideoCallingPref.setEnabled(false);
                     return false;
                 }
+            } else if (preference == getPreferenceScreen()
+                    .findPreference(BUTTON_CDMA_SYSTEM_SELECT_KEY)
+                    || preference == getPreferenceScreen()
+                    .findPreference(BUTTON_CDMA_SUBSCRIPTION_KEY)) {
+                return true;
             }
 
             updateBody();
@@ -1703,8 +1734,7 @@ public class MobileNetworkSettings extends Activity  {
             PreferenceCategory networkOperatorCategory =
                     (PreferenceCategory) prefSet.findPreference(
                             NetworkOperators.CATEGORY_NETWORK_OPERATORS_KEY);
-            PreferenceScreen carrierSettings =
-                    (PreferenceScreen) prefSet.findPreference(BUTTON_CARRIER_SETTINGS_KEY);
+            Preference carrierSettings = prefSet.findPreference(BUTTON_CARRIER_SETTINGS_KEY);
             if (apnExpand != null) {
                 apnExpand.setEnabled(isWorldMode() || enable);
             }
@@ -1753,17 +1783,104 @@ public class MobileNetworkSettings extends Activity  {
             return false;
         }
 
+        /**
+         * Metrics events related methods. it takes care of all preferences possible in this
+         * fragment(except a few that log on their own). It doesn't only include preferences in
+         * network_setting_fragment.xml, but also those defined in GsmUmtsOptions and CdmaOptions.
+         */
         private void sendMetricsEventPreferenceClicked(
                 PreferenceScreen preferenceScreen, Preference preference) {
-            if (preference == mMobileDataPref) {
-                MetricsLogger.action(getContext(),
-                        MetricsEvent.ACTION_MOBILE_NETWORK_MOBILE_DATA_TOGGLE,
-                        ((MobileDataPreference) preference).mChecked);
-            } else if (preference == mDataUsagePref) {
-                MetricsLogger.action(getContext(),
-                        MetricsEvent.ACTION_MOBILE_NETWORK_DATA_USAGE);
+            final int category = getMetricsEventCategory(preferenceScreen, preference);
+            if (category == MetricsEvent.VIEW_UNKNOWN) {
+                return;
             }
-            // TODO: add Metrics constants for other preferences and send events here accordingly.
+
+            // Send MetricsEvent on click. It includes preferences other than SwitchPreferences,
+            // which send MetricsEvent in onPreferenceChange.
+            // For ListPreferences, we log it here without a value, only indicating it's clicked to
+            // open the list dialog. When a value is chosen, another MetricsEvent is logged with
+            // new value in onPreferenceChange.
+            if (preference == mLteDataServicePref || preference == mDataUsagePref
+                    || preference == mEuiccSettingsPref || preference == mAdvancedOptions
+                    || preference == mWiFiCallingPref || preference == mButtonPreferredNetworkMode
+                    || preference == mButtonEnabledNetworks
+                    || preference == preferenceScreen.findPreference(BUTTON_CDMA_SYSTEM_SELECT_KEY)
+                    || preference == preferenceScreen.findPreference(BUTTON_CDMA_SUBSCRIPTION_KEY)
+                    || preference == preferenceScreen.findPreference(BUTTON_GSM_APN_EXPAND_KEY)
+                    || preference == preferenceScreen.findPreference(BUTTON_CDMA_APN_EXPAND_KEY)
+                    || preference == preferenceScreen.findPreference(BUTTON_CARRIER_SETTINGS_KEY)) {
+                MetricsLogger.action(getContext(), category);
+            }
+        }
+
+        private void sendMetricsEventPreferenceChanged(
+                PreferenceScreen preferenceScreen, Preference preference, Object newValue) {
+            final int category = getMetricsEventCategory(preferenceScreen, preference);
+            if (category == MetricsEvent.VIEW_UNKNOWN) {
+                return;
+            }
+
+            // MetricsEvent logging with new value, for SwitchPreferences and ListPreferences.
+            if (preference == mButton4glte || preference == mVideoCallingPref) {
+                MetricsLogger.action(getContext(), category, (Boolean) newValue);
+            } else if (preference == mButtonPreferredNetworkMode
+                    || preference == mButtonEnabledNetworks
+                    || preference == preferenceScreen
+                            .findPreference(BUTTON_CDMA_SYSTEM_SELECT_KEY)
+                    || preference == preferenceScreen
+                            .findPreference(BUTTON_CDMA_SUBSCRIPTION_KEY)) {
+                // Network select preference sends metrics event in its own listener.
+                MetricsLogger.action(getContext(), category, Integer.valueOf((String) newValue));
+            }
+        }
+
+        private int getMetricsEventCategory(
+                PreferenceScreen preferenceScreen, Preference preference) {
+
+            if (preference == null) {
+                return MetricsEvent.VIEW_UNKNOWN;
+            } else if (preference == mMobileDataPref) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_MOBILE_DATA_TOGGLE;
+            } else if (preference == mButtonDataRoam) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_DATA_ROAMING_TOGGLE;
+            } else if (preference == mDataUsagePref) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_DATA_USAGE;
+            } else if (preference == mLteDataServicePref) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_SET_UP_DATA_SERVICE;
+            } else if (preference == mAdvancedOptions) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_EXPAND_ADVANCED_FIELDS;
+            } else if (preference == mButton4glte) {
+                return MetricsEvent.ACTION_MOBILE_ENHANCED_4G_LTE_MODE_TOGGLE;
+            } else if (preference == mButtonPreferredNetworkMode) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_SELECT_PREFERRED_NETWORK;
+            } else if (preference == mButtonEnabledNetworks) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_SELECT_ENABLED_NETWORK;
+            } else if (preference == mEuiccSettingsPref) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_EUICC_SETTING;
+            } else if (preference == mWiFiCallingPref) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_WIFI_CALLING;
+            } else if (preference == mVideoCallingPref) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_VIDEO_CALLING_TOGGLE;
+            } else if (preference == preferenceScreen
+                            .findPreference(NetworkOperators.BUTTON_AUTO_SELECT_KEY)) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_AUTO_SELECT_NETWORK_TOGGLE;
+            } else if (preference == preferenceScreen
+                            .findPreference(NetworkOperators.BUTTON_NETWORK_SELECT_KEY)) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_MANUAL_SELECT_NETWORK;
+            } else if (preference == preferenceScreen
+                            .findPreference(BUTTON_CDMA_SYSTEM_SELECT_KEY)) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_CDMA_SYSTEM_SELECT;
+            } else if (preference == preferenceScreen
+                            .findPreference(BUTTON_CDMA_SUBSCRIPTION_KEY)) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_CDMA_SUBSCRIPTION_SELECT;
+            } else if (preference == preferenceScreen.findPreference(BUTTON_GSM_APN_EXPAND_KEY)
+                    || preference == preferenceScreen.findPreference(BUTTON_CDMA_APN_EXPAND_KEY)) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_APN_SETTINGS;
+            } else if (preference == preferenceScreen.findPreference(BUTTON_CARRIER_SETTINGS_KEY)) {
+                return MetricsEvent.ACTION_MOBILE_NETWORK_CARRIER_SETTINGS;
+            } else {
+                return MetricsEvent.VIEW_UNKNOWN;
+            }
         }
 
         private void setAndvancedButtonSummary() {
