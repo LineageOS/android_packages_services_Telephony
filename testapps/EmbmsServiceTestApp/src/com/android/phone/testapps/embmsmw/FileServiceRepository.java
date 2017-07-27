@@ -119,23 +119,6 @@ public class FileServiceRepository {
             return null;
         }
 
-        InputStream fileIn = mContext.getResources().openRawResource(mFileUriToResource.get(uri));
-        int fileSize;
-        byte[] buffer;
-        byte[] md5Sum;
-        try {
-            fileSize = fileIn.available();
-            buffer = new byte[fileIn.available()];
-            fileIn.read(buffer);
-        } catch (IOException e) {
-            // ignore and just return null
-            return null;
-        }
-        try {
-            md5Sum = MessageDigest.getInstance("MD5").digest(buffer);
-        } catch (NoSuchAlgorithmException e) {
-            return null;
-        }
-        return new FileInfo(uri, "application/octet-stream", fileSize, md5Sum);
+        return new FileInfo(uri, "application/octet-stream");
     }
 }
