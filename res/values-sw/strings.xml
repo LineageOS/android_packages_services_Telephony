@@ -314,7 +314,7 @@
     <string name="lodgings_disable" msgid="3387879742320682391">"Nyumba zimelemzwa"</string>
     <string name="enable_disable_retail_directory" msgid="1357809784475660303">"Saraka ya Rejareja"</string>
     <string name="retail_directory_enable" msgid="3280626290436111496">"Saraka ya Rejareja imewezeshwa"</string>
-    <string name="retail_directory_disable" msgid="6479739816662879027">"Saraka ya Rejareja imelemazwa"</string>
+    <string name="retail_directory_disable" msgid="6479739816662879027">"Saraka ya Rejareja imezimwa"</string>
     <string name="enable_disable_advertisements" msgid="5999495926176182128">"Matangazo"</string>
     <string name="advertisements_enable" msgid="2050305021264683786">"Matangazo yamewezeshwa"</string>
     <string name="advertisements_disable" msgid="8350985908788707935">"Matangazo yamelemazwa"</string>
@@ -599,8 +599,8 @@
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"Kipengele cha kutumia data kwenye mitandao mingine kimewashwa"</string>
     <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"Unatumia mtandao mwingine kwa sasa, mpango wa data unahitajika"</string>
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Unatumia mtandao mwingine kwa sasa, mpango wa data umewashwa"</string>
-    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Data ya simu imeisha"</string>
-    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Data ya simu imeisha"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Data ya mtandao wa simu imeisha"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Data ya mtandao wa simu imeisha"</string>
     <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Ongeza data ya simu kupitia <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Hakuna mpango wa kutumia mitandao mingine"</string>
     <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Ongeza mpango wa kutumia mitandao mingine kupitia <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
