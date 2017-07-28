@@ -25,9 +25,10 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.telephony.mbms.IMbmsStreamingManagerCallback;
-import android.telephony.mbms.IStreamingServiceCallback;
 import android.telephony.mbms.MbmsException;
+import android.telephony.mbms.MbmsStreamingManagerCallback;
 import android.telephony.mbms.StreamingService;
+import android.telephony.mbms.StreamingServiceCallback;
 import android.telephony.mbms.StreamingServiceInfo;
 import android.telephony.mbms.vendor.IMbmsStreamingService;
 import android.telephony.mbms.vendor.MbmsStreamingServiceBase;
@@ -81,7 +82,7 @@ public class EmbmsTestStreamingService extends Service {
 
     private final IMbmsStreamingService.Stub mBinder = new MbmsStreamingServiceBase() {
         @Override
-        public int initialize(IMbmsStreamingManagerCallback listener, int subId) {
+        public int initialize(MbmsStreamingManagerCallback listener, int subId) {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
@@ -137,7 +138,7 @@ public class EmbmsTestStreamingService extends Service {
 
         @Override
         public int startStreaming(int subscriptionId, String serviceId,
-                IStreamingServiceCallback callback) {
+                StreamingServiceCallback callback) {
             FrontendAppIdentifier appKey =
                     new FrontendAppIdentifier(Binder.getCallingUid(), subscriptionId);
             checkInitialized(appKey);
