@@ -288,6 +288,7 @@
     <string name="stk_cc_ss_to_dial_error">SS request modified to DIAL request.</string>
     <string name="stk_cc_ss_to_ussd_error">SS request modified to USSD request.</string>
     <string name="stk_cc_ss_to_ss_error">SS request modified to new SS request.</string>
+    <string name="stk_cc_ss_to_dial_video_error">SS request modified to Video DIAL request.</string>
 
     <!-- Status message displayed in the "Call settings error" dialog when operation fails due to FDN
          [CHAR LIMIT=NONE] -->
