@@ -1037,7 +1037,7 @@
     <!-- In-call screen: call failure message displayed in an error dialog -->
     <string name="incall_error_call_failed">Call failed.</string>
     <!-- In-call screen: call failure message displayed in an error dialog -->
-    <string name="incall_error_cannot_add_call">Call cannot be added at this time.</string>
+    <string name="incall_error_cannot_add_call">Call cannot be added at this time.  You can try to reach out by sending a message.</string>
     <!-- In-call screen: message displayed in an error dialog -->
     <string name="incall_error_supp_service_unknown">Service not supported</string>
     <!-- In-call screen: message displayed in an error dialog -->
