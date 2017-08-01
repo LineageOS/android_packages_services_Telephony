@@ -96,6 +96,7 @@ import com.android.internal.telephony.ProxyController;
 import com.android.internal.telephony.RIL;
 import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.SubscriptionController;
+import com.android.internal.telephony.TelephonyProperties;
 import com.android.internal.telephony.uicc.IccIoResult;
 import com.android.internal.telephony.uicc.IccUtils;
 import com.android.internal.telephony.uicc.SIMRecords;
@@ -1660,6 +1661,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             log("getCellLocation: suppress non-active user");
             return null;
         }
+    }
+
+    @Override
+    public String getNetworkCountryIsoForPhone(int phoneId) {
+        // Reporting the correct network country is ambiguous when IWLAN could conflict with
+        // registered cell info, so return a NULL country instead.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            final int subId = mSubscriptionController.getSubIdUsingPhoneId(subId);
+            if (TelephonyManager.NETWORK_TYPE_IWLAN
+                    == getVoiceNetworkType(subId, mApp.getPackageName())) {
+                return "";
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return TelephonyManager.getTelephonyProperty(
+                phoneId, TelephonyProperties.PROPERTY_OPERATOR_ISO_COUNTRY, "");
     }
 
     private void enforceFineOrCoarseLocationPermission(String message) {
