@@ -30,6 +30,8 @@ import android.telephony.TelephonyManager;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
@@ -112,6 +114,8 @@ public class NetworkOperators extends PreferenceCategory
         if (preference == mAutoSelect) {
             boolean autoSelect = (Boolean) newValue;
             selectNetworkAutomatic(autoSelect);
+            MetricsLogger.action(getContext(),
+                    MetricsEvent.ACTION_MOBILE_NETWORK_AUTO_SELECT_NETWORK_TOGGLE, autoSelect);
             return true;
         }
         return false;
