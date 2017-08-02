@@ -28,6 +28,7 @@ import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.net.sip.SipManager;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
@@ -57,6 +58,7 @@ import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.phone.common.CallLogAsync;
 import com.android.phone.settings.SettingsConstants;
+import com.android.services.telephony.sip.SipBroadcastReceiver;
 import com.android.services.telephony.sip.SipUtil;
 
 /**
@@ -158,6 +160,8 @@ public class PhoneGlobals extends ContextWrapper {
 
     // Broadcast receiver for various intent broadcasts (see onCreate())
     private final BroadcastReceiver mReceiver = new PhoneAppBroadcastReceiver();
+    // Broadcast receiver for SIP based intents (see onCreate())
+    private final SipBroadcastReceiver mSipBroadcastReceiver = new SipBroadcastReceiver();
 
     Handler mHandler = new Handler() {
         @Override
@@ -334,6 +338,13 @@ public class PhoneGlobals extends ContextWrapper {
             intentFilter.addAction(TelephonyIntents.ACTION_SERVICE_STATE_CHANGED);
             intentFilter.addAction(TelephonyIntents.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED);
             registerReceiver(mReceiver, intentFilter);
+
+            IntentFilter sipIntentFilter = new IntentFilter(Intent.ACTION_BOOT_COMPLETED);
+            sipIntentFilter.addAction(SipManager.ACTION_SIP_INCOMING_CALL);
+            sipIntentFilter.addAction(SipManager.ACTION_SIP_SERVICE_UP);
+            sipIntentFilter.addAction(SipManager.ACTION_SIP_CALL_OPTION_CHANGED);
+            sipIntentFilter.addAction(SipManager.ACTION_SIP_REMOVE_PHONE);
+            registerReceiver(mSipBroadcastReceiver, sipIntentFilter);
 
             //set the default values for the preferences in the phone.
             PreferenceManager.setDefaultValues(this, R.xml.network_setting_fragment, false);
