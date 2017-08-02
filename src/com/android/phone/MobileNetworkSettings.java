@@ -692,7 +692,7 @@ public class MobileNetworkSettings extends Activity  {
         public void onDestroy() {
             unbindNetworkQueryService();
             super.onDestroy();
-            if (getActivity() != null && !getActivity().isDestroyed()) {
+            if (getActivity() != null) {
                 getActivity().unregisterReceiver(mPhoneChangeReceiver);
             }
         }
