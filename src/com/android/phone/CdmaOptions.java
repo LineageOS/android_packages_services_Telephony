@@ -26,6 +26,8 @@ import android.provider.Settings;
 import android.telephony.CarrierConfigManager;
 import android.text.TextUtils;
 
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.Phone;
 
 /**
@@ -95,6 +97,8 @@ public class CdmaOptions {
                     new Preference.OnPreferenceClickListener() {
                         @Override
                         public boolean onPreferenceClick(Preference preference) {
+                            MetricsLogger.action(mButtonAPNExpand.getContext(),
+                                    MetricsEvent.ACTION_MOBILE_NETWORK_APN_SETTINGS);
                             // We need to build the Intent by hand as the Preference Framework
                             // does not allow to add an Intent with some extras into a Preference
                             // XML file
