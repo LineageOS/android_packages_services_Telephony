@@ -66,6 +66,7 @@
   <!-- Label text for PIN entry widget on SIM Network Depersonalization panel -->
   <!-- Button label on SIM Network Depersonalization panel -->
   <!-- Button label on SIM Network Depersonalization panel -->
+  <string name="sim_ndp_dismiss_text">Escartar</string>
   <!-- Status message displayed on SIM Network Depersonalization panel -->
   <!-- Error message displayed on SIM Network Depersonalization panel -->
   <!-- Success message displayed on SIM Network Depersonalization panel -->
@@ -78,9 +79,11 @@
   <!-- CDMA Call settings screen, setting option name with label indicating the SIM the settings
          are applied to. [CHAR LIMIT=40] -->
   <!-- Mobile network settings screen, setting option name -->
+  <string name="apn_settings">Nomes de puntu d\'accesu</string>
   <!-- Label for the "Network settings" screen in the Settings UI -->
   <string name="settings_label">Axustes de rede</string>
   <!-- Label for settings screen for phone accounts. -->
+  <string name="phone_accounts">Cuentes de llamaes</string>
   <!-- Label for list item which opens a dialog to select the default outgoing account -->
   <string name="phone_accounts_make_calls_with">Facer llamaes con</string>
   <!-- Label for list item which opens a dialog to select the default outgoing account for SIP calls. -->
@@ -98,8 +101,10 @@
   <!-- Description label for icon to configure a phone account's settings. -->
   <!-- Label for heading that takes user to the list of calling accounts where they can enable
          and disable all accounts. -->
+  <string name="phone_accounts_all_calling_accounts">Toles cuentes de llamaes</string>
   <!-- Summary for all-calling-account setting indicating that is where the user goes to enable
          and disable phone accounts. -->
+  <string name="phone_accounts_all_calling_accounts_summary">Esbilla les cuentes que puen facer llamaes</string>
   <!-- Title for setting to select Wi-Fi call manager account -->
   <!-- Built-in label for the default connection service setting. -->
   <!-- Call settings screen, setting option name -->
@@ -125,15 +130,19 @@
   <!-- Additional call settings screen, setting summary text for default Caller ID value -->
   <!-- Additional call settings screen, setting check box name -->
   <!-- Additional call settings screen, setting summary text when call waiting check box is selected -->
+  <string name="sum_cw_enabled">Nes llamaes, avísame de llamaes entrantes</string>
   <!-- Additional call settings screen, setting summary text when call waiting check box is clear -->
+  <string name="sum_cw_disabled">Nes llamaes, avísame de llamaes entrantes</string>
   <!-- Call forwarding settings screen, section heading -->
   <!-- Call forwarding settings screen, section heading, with a label identifying the SIM the settings are for. -->
   <!-- Call settings screen, setting option name -->
   <!-- Call forwarding settings screen, setting option name -->
   <!-- Call forwarding dialog box, text field label -->
+  <string name="messageCFU">Usar siempres esti númberu</string>
   <!-- Call forwarding settings screen, setting summary text when forwarding all calls -->
   <!-- Call forwarding settings screen, setting summary text the Always forward is set -->
   <!-- Call forwarding settings screen, Always forward is enabled but the number is unavailable -->
+  <string name="sum_cfu_enabled_no_number">El númberu nun ta disponible</string>
   <!-- Call forwarding settings screen, setting summary text when Always forward is disabled -->
   <!-- Call forwarding settings screen, setting timer info for cfut case -->
   <!-- Call forwarding settings screen, setting option name -->
@@ -170,6 +179,7 @@
   <!-- Button label used to dismiss the "Call settings error" dialog -->
   <string name="close_dialog">ACEUTAR</string>
   <!-- Button label used in several settings-related dialogs -->
+  <string name="enable">Activar</string>
   <!-- Button label used in several settings-related dialogs -->
   <!-- Button label which indicates the user wants to update a stored
          phone number; used in several settings-related dialogs -->
@@ -202,12 +212,15 @@
   <!-- Mobile network settings screen, toast when searching for available networks -->
   <!-- Available networks screen, text when no networks are found -->
   <!-- Available networks screen, setting option name -->
+  <string name="search_networks">Guetar redes</string>
   <!-- Available networks screen, toast when an error is encountered when searching for networks -->
+  <string name="network_query_error">Fallu entrín se guetaben redes.</string>
   <!-- Available networks screen, toast when registering on a specific network -->
   <!-- Available networks screen, toast when SIM card isn't allowed on a network -->
   <!-- Available networks screen, toast when unable to connect to a network temporarily -->
   <!-- Available networks screen, toast when registered on a specific network -->
   <!-- Mobile network settings screen setting option summary text -->
+  <string name="sum_carrier_select">Escueyi una operadora de rede</string>
   <!-- Available networks screen, setting summary text -->
   <string name="sum_search_networks">Gueta toles redes disponibles</string>
   <!-- Available networks screen, setting option name -->
@@ -272,13 +285,16 @@
   <!-- Cellular network 4G title [CHAR LIMIT=30] -->
   <!-- Carrier variant of Enhaced 4G LTE Mode title.  [CHAR LIMIT=50] -->
   <!-- Cellular network 4G summary [CHAR LIMIT=80] -->
+  <string name="enhanced_4g_lte_mode_summary">Usa los servicios LTE p\'ameyorar la voz y otres comunicaciones (aconséyase)</string>
   <!-- Mobile network settings screen, data enabling checkbox name -->
   <!-- Mobile network settings screen, setting summary text when check box is not selected (explains what selecting it would do) [CHAR LIMITS=40] -->
   <!-- Mobile network settings screen, title for alert dialog -->
   <!-- Mobile network settings screen, setting check box name -->
   <string name="roaming">Itinerancia de datos</string>
   <!-- Mobile network settings screen, setting summary text when check box is selected -->
+  <string name="roaming_enable">Coneuta a los servicios de rede al tar n\'itinerancia</string>
   <!-- Mobile network settings screen, setting summary text when check box is clear -->
+  <string name="roaming_disable">Coneuta a los servicios de rede al tar n\'itinerancia</string>
   <!-- Mobile network settings UI: notification message shown when you
          lose data connectivity because you're roaming and you have the
          "data roaming" feature turned off. -->
@@ -288,12 +304,15 @@
   <string name=" hide_error_from_network_text">Nun pue procesase la solicitú</string>
   <!-- Screen option on the mobile network settings to go into data usage settings -->
   <!-- Data usage settings screen option for checking the current usage -->
+  <string name="throttle_current_usage">Datos usaos nel periodu actual</string>
   <!-- Data usage settings screen option for time frame-->
   <!-- Data usage settings screen option for throttling rate-->
   <!-- Data usage settings screen option for accessing the carrier website-->
   <string name="throttle_help">Deprendi más</string>
   <string name="list_language_title">Llingua</string>
   <string name="list_language_dtitle">Llingües</string>
+  <string name="network_lte">LTE (aconséyase)</string>
+  <string name="network_4G">4G (aconséyase)</string>
   <!-- CDMA System select strings -->
   <!-- Mobile network settings screen, setting option name -->
   <!-- Mobile network settings screen, setting summary text -->
@@ -304,8 +323,10 @@
          with mobile operator specific settings. [CHAR LIMIT=25] -->
   <!-- FDN settings strings -->
   <!-- Label for "Fixed Dialing Number" settings in call settings. -->
+  <string name="fdn">Númberos de marcación fixa</string>
   <!-- Title for "Fixed Dialing Number" settings, with a label to identify the SIM the settings
         apply to. -->
+  <string name="fdn_with_label">Númberos de marcación fixa (<xliff:g id="subscriptionlabel" example="Verizon">%s</xliff:g>)</string>
   <!-- Call settings screen, button label that takes you to the Fixed Dialing Number management screen -->
   <!-- Title for settings screen to manage Fixed Dialing Number contacts, with a label to identify
          the SIM the settings apply to. -->
@@ -318,6 +339,7 @@
   <!-- Call settings screen, setting option name when FDN is enabled -->
   <!-- Call settings screen, setting option name when FDN is disabled -->
   <!-- Call settings screen, setting summary text -->
+  <string name="sum_fdn">Xestionar númberos de marcación fixa</string>
   <!-- Call settings, FDN screen, setting option name -->
   <!-- Call settings, FDN screen, setting option name -->
   <!-- Voice privacy on CDMA is an added layer of voice encryption. Theoretically, it would be harder to break in to a phone call with this feature enabled. -->
@@ -392,6 +414,7 @@
   <!-- SIM PIN screen: error message shown in dialog when there is a network or sim error.
          [CHAR LIMIT=NONE] -->
   <!-- SIM PIN screen: button label -->
+  <string name="doneButton">Fecho</string>
   <!-- Used in FakePhoneActivity test code.  DO NOT TRANSLATE. -->
   <!-- Used in FakePhoneActivity test code.  DO NOT TRANSLATE. -->
   <!-- Used in FakePhoneActivity test code.  DO NOT TRANSLATE. -->
@@ -414,6 +437,7 @@
   <!-- Message displayed in the "Voicemail" notification item,
          indicating that there's no voicemail number available -->
   <!-- Label for the "No service" notification item, when expanded. -->
+  <string name="notification_network_selection_title">Ensin serviciu</string>
   <!-- Label for the expanded "No service" notification item, including the
          operator name set by user -->
   <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
@@ -425,12 +449,14 @@
   <!-- In-call screen: call failure message displayed in an error dialog.
          This string is currently unused (see comments in InCallScreen.java.) -->
   <!-- In-call screen: call failure message displayed in an error dialog -->
+  <string name="incall_error_out_of_service">Rede móvil non disponible.</string>
   <!-- In-call screen: call failure message displayed in an error dialog -->
   <!-- In-call screen: call failure message displayed in an error dialog -->
   <!-- In-call screen: call failure message displayed in an error dialog -->
   <!-- In-call screen: call failure message displayed in an error dialog -->
   <!-- In-call screen: status message displayed in a dialog when starting an MMI -->
   <!-- In-call screen: message displayed in an error dialog -->
+  <string name="incall_error_supp_service_unknown">Serviciu non sofitáu</string>
   <!-- In-call screen: message displayed in an error dialog -->
   <!-- In-call screen: message displayed in an error dialog -->
   <!-- In-call screen: message displayed in an error dialog -->
@@ -443,6 +469,7 @@
   <!-- Dialog title for the "radio enable" UI for emergency calls -->
   <!-- Status message for the "radio enable" UI for emergency calls -->
   <!-- Status message for the "radio enable" UI for emergency calls -->
+  <string name="emergency_enable_radio_dialog_retry">Nun hai serviciu. Vuelvi intentalo\u2026</string>
   <!-- Toast message shown when user tries to turn on airplane mode while in an emergency call -->
   <string name="radio_off_during_emergency_call">Nun pue activase\'l mou avión nuna llamada d\'emerxencia.</string>
   <!-- Dialer text on Emergency Dialer -->
@@ -508,6 +535,7 @@
   <!-- String to be displayed on the OTA Fail/Success screen upon unsuccessful provisioning -->
   <!-- String to display within the OTA SPC Fail Notice dialog -->
   <!-- Button label in OTA listen screen that cancels activation and goes to the previous screen -->
+  <string name="ota_call_end">Atrás</string>
   <!-- Button label shown on OTA error screen to allow the user to try again -->
   <!-- Button label shown on OTA screens that have a next screen -->
   <!-- Emergency Callback Mode (ECM) -->
@@ -521,6 +549,7 @@
   <!-- ECM: ECM exit dialog choice -->
   <!-- ECM: ECM exit dialog choice -->
   <!-- ECM: ECM exit dialog choice -->
+  <string name="alert_dialog_dismiss">Escartar</string>
   <!-- For incoming calls, this is a string we can get from a CDMA network instead of
          the actual phone number, to indicate there's no number present.  DO NOT TRANSLATE. -->
   <!-- Preference for Voicemail service provider under "Voicemail" settings.
@@ -542,7 +571,9 @@
          [CHAR LIMIT=NONE]
     -->
   <!-- Title for the vibration settings for voicemail notifications [CHAR LIMIT=40] -->
+  <string name="voicemail_notification_vibrate_when_title" msgid="8731372580674292759">Vibrar</string>
   <!-- Dialog title for the vibration settings for voice mail notifications [CHAR LIMIT=40]-->
+  <string name="voicemail_notification_vibarte_when_dialog_title" msgid="8995274609647451109">Vibrar</string>
   <!-- Visual voicemail on/off title [CHAR LIMIT=40] -->
   <!-- Voicemail change PIN dialog title [CHAR LIMIT=40] -->
   <!-- Voicemail change PIN dialog title [CHAR LIMIT=40] -->
@@ -595,6 +626,7 @@
   <!-- Call failure reason: Cannot add a call because there are already too many active calls. -->
   <!-- The title for the change voicemail PIN activity -->
   <!-- The label for the continue button in change voicemail PIN activity -->
+  <string name="change_pin_continue_label">Siguir</string>
   <!-- The label for the cancel button in change voicemail PIN activity -->
   <string name="change_pin_cancel_label">Encaboxar</string>
   <!-- The label for the ok button in change voicemail PIN activity -->

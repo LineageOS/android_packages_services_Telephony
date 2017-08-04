@@ -36,6 +36,7 @@
   <!-- Toast text for incoming call being forwarded to other remote party  -->
   <string name="call_notif_MTcall_forwarding">La llamada entrante ta esviada</string>
   <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Llamada múltiple</string>
   <!-- Toast text for incoming call which is answered,put on hold & then released -->
   <!-- Toast text for incoming call forward check received -->
   <string name="call_notif_forwardcheckreceived">Esvióse la llamada</string>
