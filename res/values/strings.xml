@@ -488,7 +488,7 @@
     <!-- Mobile network settings screen, data usage setting check box name -->
     <string name="data_usage_title">Data usage</string>
     <!-- Summary about how much data has been used in a date range [CHAR LIMIT=100] -->
-    <string name="data_usage_template"><xliff:g name="amount" example="200 MB">%1$s</xliff:g> mobile data used between <xliff:g name="date_range" example="Jan 1 -- Feb 2">%2$s</xliff:g></string>
+    <string name="data_usage_template"><xliff:g name="amount" example="200 MB">%1$s</xliff:g> mobile data used <xliff:g name="date_range" example="Jan 1 -- Feb 2">%2$s</xliff:g></string>
     <!-- Mobile network settings screen, Advanced button to show more items when clicked [CHAR LIMIT=50] -->
     <string name="advanced_options_title">Advanced</string>
     <!-- Mobile network settings screen, name of the option to manage carrier profiles on devices which support embedded carrier profiles -->
@@ -498,8 +498,8 @@
     <!-- Mobile network settings screen, summary of the option to manage carrier profiles on devices which support embedded carrier profiles -->
     <string name="carrier_settings_euicc_summary"><xliff:g id="carrier_name">%1$s</xliff:g> &#8212; <xliff:g id="phone_number">%2$s</xliff:g></string>
     <!-- Mobile network settings screen, title of Mobile Data switch preference -->
-    <string name="mobile_data_settings_title">Mobile Data</string>
-    <!-- Mobile network settings screen, title of Mobile Data switch preference -->
+    <string name="mobile_data_settings_title">Mobile data</string>
+    <!-- Mobile network settings screen, title of Mobile data switch preference -->
     <string name="mobile_data_settings_summary">Access data using mobile network</string>
     <!-- Message to show when user trying to turn off mobile data, in single sim mode [CHAR LIMIT=100]-->
     <string name="data_usage_disable_mobile">Turn off mobile data?</string>

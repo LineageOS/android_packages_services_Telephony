@@ -748,6 +748,12 @@ public class MobileNetworkSettings extends Activity  {
                 int phoneSubId, boolean hasActiveSubscriptions) {
             Context context = activity.getApplicationContext();
 
+            ActionBar actionBar = activity.getActionBar();
+            if (actionBar != null) {
+                // android.R.id.home will be triggered in onOptionsItemSelected()
+                actionBar.setDisplayHomeAsUpEnabled(true);
+            }
+
             prefSet.addPreference(mMobileDataPref);
             prefSet.addPreference(mButtonDataRoam);
             prefSet.addPreference(mDataUsagePref);
@@ -979,12 +985,6 @@ public class MobileNetworkSettings extends Activity  {
             }
 
             updateCallingCategory();
-
-            ActionBar actionBar = activity.getActionBar();
-            if (actionBar != null) {
-                // android.R.id.home will be triggered in onOptionsItemSelected()
-                actionBar.setDisplayHomeAsUpEnabled(true);
-            }
 
             // Enable link to CMAS app settings depending on the value in config.xml.
             final boolean isCellBroadcastAppLinkEnabled = activity.getResources().getBoolean(
