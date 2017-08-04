@@ -28,6 +28,7 @@ import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.net.sip.SipManager;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
@@ -64,6 +65,7 @@ import com.android.internal.util.IndentingPrintWriter;
 import com.android.phone.common.CallLogAsync;
 import com.android.phone.settings.SettingsConstants;
 import com.android.phone.vvm.CarrierVvmPackageInstalledReceiver;
+import com.android.services.telephony.sip.SipBroadcastReceiver;
 import com.android.services.telephony.sip.SipUtil;
 
 import java.io.FileDescriptor;
@@ -173,6 +175,8 @@ public class PhoneGlobals extends ContextWrapper {
 
     // Broadcast receiver for various intent broadcasts (see onCreate())
     private final BroadcastReceiver mReceiver = new PhoneAppBroadcastReceiver();
+    // Broadcast receiver for SIP based intents (see onCreate())
+    private final SipBroadcastReceiver mSipBroadcastReceiver = new SipBroadcastReceiver();
 
     private final CarrierVvmPackageInstalledReceiver mCarrierVvmPackageInstalledReceiver =
             new CarrierVvmPackageInstalledReceiver();
@@ -361,6 +365,13 @@ public class PhoneGlobals extends ContextWrapper {
             intentFilter.addAction(TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED);
             intentFilter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
             registerReceiver(mReceiver, intentFilter);
+
+            IntentFilter sipIntentFilter = new IntentFilter(Intent.ACTION_BOOT_COMPLETED);
+            sipIntentFilter.addAction(SipManager.ACTION_SIP_INCOMING_CALL);
+            sipIntentFilter.addAction(SipManager.ACTION_SIP_SERVICE_UP);
+            sipIntentFilter.addAction(SipManager.ACTION_SIP_CALL_OPTION_CHANGED);
+            sipIntentFilter.addAction(SipManager.ACTION_SIP_REMOVE_PHONE);
+            registerReceiver(mSipBroadcastReceiver, sipIntentFilter);
 
             mCarrierVvmPackageInstalledReceiver.register(this);
 
