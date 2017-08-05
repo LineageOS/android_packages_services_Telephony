@@ -548,7 +548,7 @@ public class NotificationMgr {
                 .setContentTitle(mContext.getText(R.string.roaming))
                 .setColor(mContext.getResources().getColor(R.color.dialer_theme_color))
                 .setContentText(contentText)
-                .setChannel(NotificationChannelController.CHANNEL_ID_MOBILE_DATA_ALERT);
+                .setChannel(NotificationChannelController.CHANNEL_ID_MOBILE_DATA_STATUS);
 
         List<UserInfo> users = mUserManager.getUsers(true);
         for (int i = 0; i < users.size(); i++) {
