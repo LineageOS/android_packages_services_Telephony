@@ -221,12 +221,14 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Stroški utegnejo biti veliki."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Želite dovoliti podatkovno gostovanje?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Prenesena količina podatkov"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"V obdobju <xliff:g id="ID_2">%2$s</xliff:g> je bilo v mobilnem omrežju prenesenih <xliff:g id="ID_1">%1$s</xliff:g> podatkov"</string>
+    <!-- no translation found for data_usage_template (8526428824844656364) -->
+    <skip />
     <string name="advanced_options_title" msgid="8074895510265488035">"Dodatno"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operater"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operater, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Prenos podatkov v mobilnem omrežju"</string>
+    <!-- no translation found for mobile_data_settings_title (4661165467914727157) -->
+    <skip />
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Dostop do podatkov prek mobilnega omrežja"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Želite izklopiti prenos podatkov v mobilnem omrežju?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Potrebna je izbira"</string>
