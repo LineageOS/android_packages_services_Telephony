@@ -221,12 +221,14 @@
     <string name="roaming_warning" msgid="1603164667540144353">"તમારાથી આંશિક શુલ્ક લઈ શકાય છે."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ડેટા રોમિંગને મંજૂરી આપીએ?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"ડેટા વપરાશ"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> ની વચ્ચે <xliff:g id="ID_1">%1$s</xliff:g> મોબાઇલ ડેટાનો વપરાશ કરવામાં આવ્યો"</string>
+    <!-- no translation found for data_usage_template (8526428824844656364) -->
+    <skip />
     <string name="advanced_options_title" msgid="8074895510265488035">"વિગતવાર"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"કૅરિઅર"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"કૅરિઅર, ઇ-સિમ, સિમ, ઇયુઆઇસીસી"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"મોબાઇલ ડેટા"</string>
+    <!-- no translation found for mobile_data_settings_title (4661165467914727157) -->
+    <skip />
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"મોબાઇલ નેટવર્કનો વપરાશ કરીને ડેટા ઍક્સેસ કરો"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"મોબાઇલ ડેટા બંધ કરીએ?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"પસંદગી આવશ્યક છે"</string>

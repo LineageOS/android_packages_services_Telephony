@@ -221,12 +221,14 @@
     <string name="roaming_warning" msgid="1603164667540144353">"您可能需要支付龐大的費用。"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"要允許數據漫遊服務嗎？"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"數據用量"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g>期間使用了 <xliff:g id="ID_1">%1$s</xliff:g> 的流動數據"</string>
+    <!-- no translation found for data_usage_template (8526428824844656364) -->
+    <skip />
     <string name="advanced_options_title" msgid="8074895510265488035">"進階設定"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"流動網絡供應商"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"流動網絡供應商, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"流動數據"</string>
+    <!-- no translation found for mobile_data_settings_title (4661165467914727157) -->
+    <skip />
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"透過流動網絡存取數據"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"要關閉流動數據嗎？"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"請選取偏好設定"</string>

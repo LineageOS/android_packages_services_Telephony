@@ -221,12 +221,14 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Des frais importants peuvent s\'appliquer."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Autoriser les données en itinérance?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Utilisation de données"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> de données mobiles utilisées entre <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <!-- no translation found for data_usage_template (8526428824844656364) -->
+    <skip />
     <string name="advanced_options_title" msgid="8074895510265488035">"Avancés"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Opérateur"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"fournisseur de services, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Données mobiles"</string>
+    <!-- no translation found for mobile_data_settings_title (4661165467914727157) -->
+    <skip />
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Accéder aux données sur réseau cellulaire"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Désactiver les données mobiles?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Sélection requise"</string>

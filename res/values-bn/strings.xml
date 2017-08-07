@@ -221,12 +221,14 @@
     <string name="roaming_warning" msgid="1603164667540144353">"আপনাকে উল্লেখযোগ্য পরিমাণে চার্জ করা হতে পারে৷"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ডেটা রোমিংয়ের অনুমতি দেবেন?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"ডেটার ব্যবহার"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> এর মধ্যে <xliff:g id="ID_1">%1$s</xliff:g> মোবাইল ডেটা ব্যবহার করা হয়েছে"</string>
+    <!-- no translation found for data_usage_template (8526428824844656364) -->
+    <skip />
     <string name="advanced_options_title" msgid="8074895510265488035">"উন্নত"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"পরিষেবা প্রদানকারী"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"পরিষেবা প্রদানকারী, ই-সিম, সিম, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"মোবাইল ডেটা"</string>
+    <!-- no translation found for mobile_data_settings_title (4661165467914727157) -->
+    <skip />
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"মোবাইল নেটওয়ার্ক ব্যবহার করে ডেটা অ্যাক্সেস করুন"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"মোবাইল ডেটা বন্ধ করবেন?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"নির্বাচন করার প্রয়োজন"</string>
