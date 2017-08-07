@@ -48,7 +48,7 @@
     <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"اکاؤنٹ رجسٹریشن ناکام ہوگیا: غلط صارف نام یا پاس ورڈ۔"</string>
     <string name="registration_status_server_unreachable" msgid="7710275557045148634">"اکاؤنٹ رجسٹریشن ناکام ہوگیا: سرور کا نام چیک کریں۔"</string>
     <string name="third_party_account_summary" msgid="9041060473615403041">"یہ اکاؤنٹ فی الحال <xliff:g id="ACCOUNT_OWNER">%s</xliff:g> ایپ کے ذریعہ زیر استعمال ہے۔"</string>
-    <string name="sip_edit_title" msgid="1967247832635750410">"‏SIP اکاؤنٹ کی تفصیلات"</string>
+    <string name="sip_edit_title" msgid="1967247832635750410">"‏SIP اکاؤنٹ تفصیلات"</string>
     <string name="sip_edit_new_title" msgid="266414118302574305">"‏SIP اکاؤنٹ کی تفصیلات"</string>
     <string name="domain_address_title" msgid="1968479941328225423">"سرور"</string>
     <string name="username_title" msgid="6770064611005663470">"صارف نام"</string>

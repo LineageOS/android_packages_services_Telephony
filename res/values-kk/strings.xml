@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Дауыс хабарының нөмірі жоқ"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM картасында ешқандай дауыс хабарының нөмірі сақталмаған."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Нөмір қосу"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Дауыстық пошта параметрлерін тек негізгі пайдаланушы өзгерте алады."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM картаңыз ашылды. Телефоныңыздың бекітпесі ашылуда…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM желісін ашатын PIN код"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Бекітпесін ашу"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Дауыстық пошта"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Дауыстық пошта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ДХ:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Хабарландырулар"</string>
     <string name="networks" msgid="8873030692174541976">"Желі операторлары"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Жедел таратылымдар"</string>
     <string name="call_settings" msgid="6112441768261754562">"Қоңырау параметрлері"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"PIN кодты өзгерту мүмкін емес"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Қолдау көрсетілмейтін хабар түрі, тыңдау үшін <xliff:g id="NUMBER">%s</xliff:g> нөміріне қоңырау шалыңыз."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Ұялы желі параметрлері"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"Мобильдік желі"</string>
     <string name="label_available" msgid="1181658289009300430">"Қол жетімді желілер"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Іздеуде…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Ешқандай желілер табылмады."</string>
@@ -442,14 +443,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Дауыс хабарының нөмірі белгісіз"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Қызмет көрсетілмейді"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Таңдалған (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) желісі қол жетімсіз"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Қоңырау шалу мүмкін болуы үшін, ұшақ режимін немесе батарея үнемдеу режимін өшіріңіз."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Қоңырау шалу мүмкін болуы үшін мобильдік байланысты қосып, ұшақ режимін немесе батарея үнемдеу режимін өшіріңіз."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Қоңырау шалу үшін ұшақ режимін өшіріңіз."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Қоңырау шалу үшін ұшақ режимін өшіріңіз не сымсыз желіге қосылыңыз."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Төтенше емес қоңырау шалу үшін төтенше қоңырауды кері шалу режимінен шығыңыз."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Желіде тіркелмеген."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Ұялы желі қол жетімсіз."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Мобильдік желі қолжетімді емес. Қоңырау шалу үшін сымсыз желіге қосылыңыз."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Қоңырау шалу үшін жарамды нөмірді енгізіңіз."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Қоңырау шалынбады."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Қоңырауды қазіргі уақытта қосу мүмкін емес."</string>
@@ -527,10 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Төтенше қоңырауды кері шалу режиміне кірді"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Төтенше қоңырауды кері шалу режимі"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Дерекқор байланысы өшірілген"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> минут бойы деректер байланысы жоқ</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%s</xliff:g> минут бойы деректер байланысы жоқ</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> дейін мобильдік байланыс болмайды."</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Телефон <xliff:g id="COUNT_1">%s</xliff:g> минут бойы жедел кері қоңырау шалу режимінде болады. Бұл режимде деректер байланысын пайдаланатын қолданбаларды пайдалану мүмкін емес. Қазір шығу керек пе?</item>
       <item quantity="one">Телефон <xliff:g id="COUNT_0">%s</xliff:g> минут бойы жедел кері қоңырау шалу режимінде болады. Бұл режимде деректер байланысын пайдаланатын қолданбаларды пайдалану мүмкін емес. Қазір шығу керек пе?</item>
@@ -554,12 +551,9 @@
     <string name="selectContact" msgid="781975788478987237">"контакт таңдау"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Дауыс арқылы қоңырау шалу қолдауы жоқ"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"теру"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Діріл"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Діріл"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Визуалды дауыс поштасы"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN кодын орнату"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN кодты өзгерту"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Дыбыс"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Рингтон&amp; Діріл"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Кірістірілген SIM карталары"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Бейне қоңырауларды қосу"</string>

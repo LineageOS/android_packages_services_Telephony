@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"שירותי טלפון"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"חייגן חירום"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"טלפון"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"‏רשימת FDN"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"רשימת מספרי חיוג קבועים"</string>
     <string name="unknown" msgid="6878797917991465859">"לא ידוע"</string>
     <string name="private_num" msgid="6713286113000232309">"מספר פרטי"</string>
     <string name="payphone" msgid="4793877574636445118">"טלפון ציבורי"</string>
@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"חסר מספר של דואר קולי"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"‏בכרטיס ה-SIM לא מאוחסן מספר של דואר קולי."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"הוסף מספר"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"רק המשתמש הראשי יכול לשנות את ההגדרות של הדואר הקולי."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"‏בוטלה החסימה של כרטיס SIM. מבטל את חסימת הטלפון..."</string>
     <string name="label_ndp" msgid="780479633159517250">"‏PIN לביטול נעילה של רשת SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"בטל נעילה"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"דואר קולי"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"דואר קולי (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"דואר קולי:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"עדכונים"</string>
     <string name="networks" msgid="8873030692174541976">"מפעילי רשת"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"שידורי חירום"</string>
     <string name="call_settings" msgid="6112441768261754562">"הגדרות שיחה"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"לא ניתן לשנות את קוד הגישה"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"סוג ההודעה לא נתמך. התקשר למספר <xliff:g id="NUMBER">%s</xliff:g> כדי להאזין לה."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"הגדרות רשת סלולרית"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"רשת סלולרית"</string>
     <string name="label_available" msgid="1181658289009300430">"רשתות זמינות"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"מחפש..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"לא נמצאו רשתות."</string>
@@ -347,18 +348,18 @@
     <string name="carrier_settings_title" msgid="9028166176523012300">"הגדרות ספק"</string>
     <string name="fdn" msgid="7878832555095183202">"מספרי חיוג קבועים"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"מספרי חיוג קבועים (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"‏רשימת FDN"</string>
-    <string name="fdn_list_with_label" msgid="7437232552210469217">"‏רשימת FDN ‏(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="fdn_activation" msgid="2156479741307463576">"‏הפעלת FDN"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"רשימת מספרי חיוג קבועים"</string>
+    <string name="fdn_list_with_label" msgid="7437232552210469217">"רשימת מספרי חיוג קבועים ‏(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn_activation" msgid="2156479741307463576">"הפעלת מספרי חיוג קבועים"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"מספרי חיוג קבועים מופעלים"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"מספרי חיוג קבועים מושבתים"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"‏הפוך FDN לפעיל"</string>
-    <string name="disable_fdn" msgid="7944020890722540616">"‏השבת FDN"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"הפעלת מספרי חיוג קבועים"</string>
+    <string name="disable_fdn" msgid="7944020890722540616">"השבתת מספרי חיוג קבועים"</string>
     <string name="change_pin2" msgid="2153563695382176676">"‏שנה PIN2"</string>
-    <string name="enable_fdn_ok" msgid="7215588870329688132">"‏השבת FDN"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"‏הפוך FDN לפעיל"</string>
+    <string name="enable_fdn_ok" msgid="7215588870329688132">"השבת מספרי חיוג קבועים"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"הפעל מספרי חיוג קבועים"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"נהל מספרי חיוג קבועים"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"‏שנה את ה-PIN לקבלת גישת FDN"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"שנה את קוד הגישה למספרי חיוג קבועים"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"נהל רשימת מספרי טלפון"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"פרטיות קול"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"הפוך מצב פרטיות משופרת לפעיל"</string>
@@ -384,9 +385,9 @@
     <string name="delete_fdn_contact" msgid="6668958073074151717">"מחק מספר חיוג קבוע"</string>
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"מוחק מספר חיוג קבוע..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"מספר חיוג קבוע נמחק."</string>
-    <string name="pin2_invalid" msgid="5470854099230755944">"‏ה-FDN לא עודכן כיוון שהקלדת PIN שגוי."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"‏ה-FDN לא עודכן בגלל שהמספר ריק או ארוך מ-20 תווים."</string>
-    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"‏FDN לא עודכן. קוד PIN2 היה שגוי או שמספר הטלפון נדחה."</string>
+    <string name="pin2_invalid" msgid="5470854099230755944">"רשימת מספרי חיוג קבועים לא עודכנה מכיוון שקוד הגישה שגוי."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"‏ה-FDN לא עודכן מכיוון שהמספר ריק או ארוך מ-20 תווים."</string>
+    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"רשימת מספרי החיוג הקבועים לא עודכנה. קוד הגישה היה שגוי או שמספר הטלפון נדחה."</string>
     <string name="fdn_failed" msgid="540018079008319747">"‏פעולת FDN נכשלה."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"‏קורא מכרטיס SIM…"</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"‏אין אנשי קשר בכרטיס ה-SIM."</string>
@@ -442,14 +443,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"המספר של הדואר הקולי אינו ידוע"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"אין שירות"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"הרשת שנבחרה (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) לא זמינה"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"כדי להתקשר השבת את מצב הטיסה או מצב החיסכון בסוללה."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"עליך להפעיל את הרשת הסלולרית, להשבית את מצב הטיסה או להשבית את מצב החיסכון בסוללה כדי להתקשר."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"בטל את מצב טיסה כדי לבצע שיחה."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"בטל את מצב טיסה או התחבר לרשת אלחוטית כדי לבצע שיחה."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"עליך לצאת ממצב חירום של התקשרות חזרה כדי לבצע שיחות שאינן שיחות חירום."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"לא רשום ברשת."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"הרשת הסלולרית אינה זמינה."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"הרשת הסלולרית לא זמינה. עליך להתחבר לרשת אלחוטית כדי להתקשר."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"כדי להתקשר, הזן מספר טלפון חוקי."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"השיחה נכשלה."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"לא ניתן להוסיף את השיחה כרגע."</string>
@@ -527,12 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"נכנס למצב חירום של התקשרות חזרה"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"מצב חירום של התקשרות חזרה"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"חיבור נתונים מושבת"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="two">ללא חיבור נתונים למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות</item>
-      <item quantity="many">ללא חיבור נתונים למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות</item>
-      <item quantity="other">ללא חיבור נתונים למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות</item>
-      <item quantity="one">ללא חיבור נתונים למשך דקה <xliff:g id="COUNT_0">%s</xliff:g></item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"אין חיבור לרשת נתונים עד <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="two">הטלפון יהיה במצב חירום של התקשרות חזרה למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות. בזמן שהטלפון במצב הזה, לא ניתן להשתמש באפליקציות הזקוקות לחיבור נתונים. האם ברצונך לצאת כעת?</item>
       <item quantity="many">הטלפון יהיה במצב חירום של התקשרות חזרה למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות. בזמן שהטלפון במצב הזה, לא ניתן להשתמש באפליקציות הזקוקות לחיבור נתונים. האם ברצונך לצאת כעת?</item>
@@ -560,12 +555,9 @@
     <string name="selectContact" msgid="781975788478987237">"בחר איש קשר"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"חיוג קולי אינו נתמך"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"חייג"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"רטט"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"רטט"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"דואר קולי ויזואלי"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"הגדרת קוד גישה"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"שינוי קוד הגישה"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"צליל"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"רינגטון ורטט"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"‏כרטיסי SIM מובנים"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"הפעל שיחות וידאו"</string>

@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Número do correio de voz em falta"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Não existe um número de correio de voz armazenado no cartão SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Adicionar número"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"As definições do correio de voz só podem ser modificadas pelo utilizador principal."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"O cartão SIM foi desbloqueado. O telefone está a ser desbloqueado..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN para desbloqueio de rede do cartão SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Desbloquear"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Correio de voz"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Correio de voz (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Correio de voz:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notificações"</string>
     <string name="networks" msgid="8873030692174541976">"Operadores de rede"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Transmissões de emergência"</string>
     <string name="call_settings" msgid="6112441768261754562">"Definições de chamada"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Não é possível alterar o PIN"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Tipo de mensagem não suportada, ligue para o número <xliff:g id="NUMBER">%s</xliff:g> para ouvir."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Definições da rede móvel"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"Rede móvel"</string>
     <string name="label_available" msgid="1181658289009300430">"Redes disponíveis"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"A pesquisar..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Nenhuma rede encontrada."</string>
@@ -442,14 +443,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Número do correio de voz desconhecido"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Nenhum serviço"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Rede selecionada (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) indisponível"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Desative o modo de avião ou a poupança de bateria para fazer uma chamada."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Ative a rede móvel, desative o modo de avião ou desative o modo de poupança de bateria para fazer uma chamada."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Desative o modo de avião para fazer uma chamada."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Desative o modo de avião ou ligue-se a uma rede sem fios para fazer uma chamada."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Sair do modo de chamada de retorno de emergência para efetuar uma chamada que não é de emergência."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Sem registo na rede."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Rede móvel não disponível."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"A rede móvel não está disponível. Ligue-se a uma rede sem fios para efetuar uma chamada."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Para telefonar, introduza um número válido."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"A chamada falhou."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Não é possível adicionar a chamada neste momento."</string>
@@ -527,17 +527,14 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Entrou em Modo de Chamada de Retorno de Emergência"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Modo de Chamada de Retorno de Emergência"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Ligação de dados desativada"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">Sem ligação de dados durante <xliff:g id="COUNT_1">%s</xliff:g> minutos</item>
-      <item quantity="one">Sem ligação de dados durante <xliff:g id="COUNT_0">%s</xliff:g> minuto</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Sem ligação de dados até à(s) <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="other">O telemóvel fica no modo de Chamada de emergência durante <xliff:g id="COUNT_1">%s</xliff:g> minutos. Neste modo, não é possível utilizar aplicações com uma ligação de dados. Pretende sair agora?</item>
       <item quantity="one">O telemóvel fica no modo de Chamada de emergência durante <xliff:g id="COUNT_0">%s</xliff:g> minuto. Neste modo, não é possível utilizar aplicações com uma ligação de dados. Pretende sair agora?</item>
+      <item quantity="other">O telemóvel fica no modo de Chamada de emergência durante <xliff:g id="COUNT_1">%s</xliff:g> minutos. Neste modo, não é possível utilizar aplicações com uma ligação de dados. Pretende sair agora?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
-      <item quantity="other">A ação selecionada não está disponível no modo de Chamada de emergência. O telemóvel fica neste modo durante <xliff:g id="COUNT_1">%s</xliff:g> minutos. Pretende sair agora?</item>
       <item quantity="one">A ação selecionada não está disponível no modo de Chamada de emergência. O telemóvel fica neste modo durante <xliff:g id="COUNT_0">%s</xliff:g> minuto. Pretende sair agora?</item>
+      <item quantity="other">A ação selecionada não está disponível no modo de Chamada de emergência. O telemóvel fica neste modo durante <xliff:g id="COUNT_1">%s</xliff:g> minutos. Pretende sair agora?</item>
     </plurals>
     <string name="alert_dialog_in_ecm_call" msgid="1886723687211887104">"A ação selecionada não está disponível durante uma chamada de emergência."</string>
     <string name="progress_dialog_exiting_ecm" msgid="4835734101617817074">"A sair do modo de chamada de retorno de emergência"</string>
@@ -554,12 +551,9 @@
     <string name="selectContact" msgid="781975788478987237">"seleccionar contacto"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Chamadas de voz não suportadas"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"marcar"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Vibrar"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Vibrar"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Correio de voz visual"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Definir PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Alterar PIN"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Som"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Tocar e Vibrar"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Cartões SIM incorporados"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Ativar videochamada"</string>

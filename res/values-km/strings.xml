@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"បាត់​​ចំនួន​​សារ​ជា​សំឡេង"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"គ្មាន​ចំនួន​សារ​ជា​សំឡេង​​ត្រូវ​បាន​រក្សា​ទុក​នៅ​លើ​ស៊ី​ម​កាត​ទេ​។"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"បន្ថែម​លេខ"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"មាន​តែ​អ្នក​ប្រើប្រាស់​ចម្បង​ទើប​អាច​កែប្រែ​ការ​កំណត់​សារ​ជា​សំឡេង​បាន។"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"បាន​ដោះ​សោ​ស៊ីមកាត​របស់​អ្នក។ ទូរស័ព្ទ​របស់​អ្នក​កំពុង​ដោះ​សោ…"</string>
     <string name="label_ndp" msgid="780479633159517250">"ដោះ​សោ​​កូដ PIN បណ្ដាញ​ស៊ីមកាត"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ដោះ​សោ"</string>
@@ -61,7 +60,7 @@
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"ការកំណត់ការហៅ CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="9043423184895642077">"ឈ្មោះ​ចំណុច​ចូលដំណើរការ"</string>
     <string name="settings_label" msgid="3876743539816984008">"ការកំណត់​បណ្ដាញ"</string>
-    <string name="phone_accounts" msgid="6376603393888116364">"គណនីហៅទូរស័ព្ទ"</string>
+    <string name="phone_accounts" msgid="6376603393888116364">"គណនីហៅទូរសព្ទ"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"ធ្វើការហៅជាមួយ"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"ធ្វើការហៅ SIP ជាមួយ"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"សួរជាមុនសិន"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"សារ​ជា​សំឡេង"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"សារជាសម្លេង (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"ការ​ជូនដំណឹង"</string>
     <string name="networks" msgid="8873030692174541976">"ប្រតិបត្តិ​ករ​​​បណ្ដាញ"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"ការ​ផ្សាយ​ពេល​មាន​អាសន្ន"</string>
     <string name="call_settings" msgid="6112441768261754562">"កំណត់​ការ​ហៅ"</string>
@@ -148,7 +148,7 @@
     <string name="fw_get_in_vm_failed" msgid="8862896836093833973">"មិន​អាច​យក និង​រក្សាទុក​ការ​កំណត់​លេខ​បញ្ជូន​បន្ត​បច្ចុប្បន្ន​បាន​ទេ។\n ប្ដូរ​ទៅ​ក្រុមហ៊ុន​ផ្ដល់​សេវាកម្ម​ថ្មី​ឬ?"</string>
     <string name="no_change" msgid="3186040086622435212">"មិន​បាន​ប្ដូរ។"</string>
     <string name="sum_voicemail_choose_provider" msgid="59911196126278922">"ជ្រើស​សេវា​សារ​ជា​សំឡេង"</string>
-    <string name="voicemail_default" msgid="2001233554889016880">"អ្នកផ្តល់សេវាទូរស័ព្ទរបស់អ្នក"</string>
+    <string name="voicemail_default" msgid="2001233554889016880">"ក្រុមហ៊ុនបម្រើសេវាទូរសព្ទរបស់អ្នក"</string>
     <string name="vm_change_pin_old_pin" msgid="7295220109886682573">"លេខ​កូដ PIN ថ្មី"</string>
     <string name="vm_change_pin_new_pin" msgid="5412922262839438097">"លេខ​កូដ PIN ថ្មី"</string>
     <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"សូម​រង់ចាំ។"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"មិន​អាច​ប្ដូរ​លេខ​កូដ PIN"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"មិន​ស្គាល់​ប្រភេទ​សារ សូម​ហៅ​ទូរស័ព្ទ​ទៅ <xliff:g id="NUMBER">%s</xliff:g> ដើម្បី​ស្ដាប់។"</string>
     <string name="mobile_networks" msgid="5540397602919106177">"ការ​កំណត់​បណ្ដាញ​ឧបករណ៍​ចល័ត"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"បណ្ដាញទូរសព្ទចល័ត"</string>
     <string name="label_available" msgid="1181658289009300430">"បណ្ដាញ​ដែល​មាន"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"កំពុង​ស្វែងរក..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"រក​មិន​ឃើញ​បណ្ដាញ។"</string>
@@ -321,7 +322,7 @@
     <string name="enable_disable_multi_category" msgid="626771003122899280">"ប្រភេទ​ច្រើន"</string>
     <string name="multi_category_enable" msgid="1179299804641721768">"បាន​បើក​ប្រភេទ​ច្រើន"</string>
     <string name="multi_category_disable" msgid="880104702904139505">"បាន​បិទ​ប្រភេទ​ច្រើន"</string>
-    <string name="network_lte" msgid="7702681952521375754">"LTE (បាន​ផ្ដល់​អនុសាសន៍)"</string>
+    <string name="network_lte" msgid="7702681952521375754">"LTE (បានណែនាំ)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G (បាន​ផ្ដល់​អនុសាសន៍)"</string>
     <string name="network_global" msgid="1323190488685355309">"សកល"</string>
     <string name="cdma_system_select_title" msgid="5757657769327732833">"ជ្រើស​ប្រព័ន្ធ"</string>
@@ -359,7 +360,7 @@
     <string name="disable_fdn_ok" msgid="5727046928930740173">"បើក FDN"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"គ្រប់គ្រង​លេខ​ហៅ​មានកំណត់"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"ប្ដូរ​កូដ PIN សម្រាប់​ចូល​ដំណើរការ FDN"</string>
-    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"គ្រប់គ្រង​បញ្ជី​លេខ​ទូរស័ព្ទ"</string>
+    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"គ្រប់គ្រង​បញ្ជី​លេខ​ទូរសព្ទ"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"ភាព​ឯកជន​សារ​ជា​សំឡេង"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"បើក​របៀប​បង្កើន​ភាព​ឯកជន"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"ម៉ូត TTY"</string>
@@ -442,14 +443,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"មិន​ស្គាល់​ចំនួន​សារ​ជា​សំឡេង"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"គ្មាន​សេវា"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"បណ្ដាញ​ដែល​បាន​ជ្រើស ( <xliff:g id="OPERATOR_NAME">%s</xliff:g> ) មិន​អាច​ប្រើ​បាន​ទេ"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"បិទ​មុខងារ​ពេល​ជិះ​យន្តហោះ ឬ​មុខងារ​សន្សំ​សំចៃ​ថ្ម ដើម្បី​អាច​ហៅ​​ទូរសព្ទ​បាន។"</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"បើក​បណ្ដាញ​ទូរសព្ទ​ចល័ត បិទ​មុខងារ​ពេល​ជិះ​យន្តហោះ ឬ​បិទ​មុខងារ​កម្មវិធី​សន្សំថ្ម ដើម្បី​ហៅ​ទូរសព្ទ។"</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"បិទរបៀបយន្តហោះដើម្បីធ្វើការហៅ។"</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"បិទរបៀបយន្តហោះ ឬភ្ជាប់ទៅបណ្តាញឥតខ្សែដើម្បីធ្វើការហៅ។"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"ចាកចេញពីរបៀបហៅទៅវិញពេលមានអាសន្នដើម្បីធ្វើការហៅធម្មតា។"</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"មិន​បាន​ចុះ​ឈ្មោះ​នៅ​លើ​បណ្ដាញ។"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"បណ្ដាញ​​ឧបករណ៍​​ចល័ត​មិន​អាច​ប្រើ​បាន​។"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"មិនមានបណ្តាញទូរសព្ទទេ។ ភ្ជាប់ទៅបណ្តាញឥតខ្សែ ដើម្បី​អាច​ហៅ​ទូរសព្ទ​បាន។"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"ដើម្បីធ្វើការហៅ បញ្ចូលលេខដែលមានសុពលភាព។"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"បាន​បរាជ័យ​ការ​ហៅ។"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"មិន​អាច​បន្ថែម​​​ការ​ហៅ​ទូរសព្ទ​នៅ​ពេល​នេះ​​បាន​ទេ។"</string>
@@ -487,8 +487,8 @@
     <string name="importToFDNfromContacts" msgid="2130620207013368580">"នាំចូល​ពី​ទំនាក់ទំនង"</string>
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"បាននាំចូលទំនាក់ទំនង"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"បានបរាជ័យក្នុងការនាំចូលទំនាក់ទំនង"</string>
-    <string name="hac_mode_title" msgid="8740268574688743289">"ឧបករណ៍​ជំនួស​ការ​ស្ដាប់"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"បើក​ឧបករណ៍​ជំនួស​ការ​ស្ដាប់"</string>
+    <string name="hac_mode_title" msgid="8740268574688743289">"ឧបករណ៍​ជំនួយការ​ស្ដាប់"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"បើក​មុខងារដែលត្រូវគ្នានឹងឧបករណ៍​ជំនួយ​ការ​ស្ដាប់"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"បិទ TTY"</item>
     <item msgid="3971695875449640648">"TTY ពេញ"</item>
@@ -527,10 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"បាន​បញ្ចូល​របៀប​ការ​ហៅ​ទៅ​វិញ​ពេល​មាន​អាសន្ន"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"របៀប​ហៅ​ទៅ​វិញ​ពេល​មាន​អាសន្ន"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"បាន​បិទ​ការ​តភ្ជាប់​ទិន្នន័យ"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">គ្មានការភ្ជាប់ទិន្នន័យរយៈពេល <xliff:g id="COUNT_1">%s</xliff:g> នាទី</item>
-      <item quantity="one">គ្មានការភ្ជាប់ទិន្នន័យរយៈពេល <xliff:g id="COUNT_0">%s</xliff:g> នាទី</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"មិន​មាន​ការតភ្ជាប់​ទិន្នន័យ រហូតដល់ម៉ោង <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">ទូរស័ព្ទនេះនឹងស្ថិតក្នុងរបៀប ហៅត្រលប់ពេលអាសន្ន រយៈពេល <xliff:g id="COUNT_1">%s</xliff:g> នាទី។ ខណៈពេលស្ថិតក្នុងរបៀបនេះ មិនមានកម្មវិធីដែលប្រើការភ្ជាប់ទិន្នន័យណា អាចប្រើបានបានឡើយ។ តើអ្នកចង់ចាកចេញឥឡូវនេះទេ?</item>
       <item quantity="one">ទូរស័ព្ទនេះនឹងស្ថិតក្នុងរបៀប ហៅត្រលប់ពេលអាសន្ន រយៈពេល <xliff:g id="COUNT_0">%s</xliff:g> នាទី។ ខណៈពេលស្ថិតក្នុងរបៀបនេះ មិនមានកម្មវិធីដែលប្រើការភ្ជាប់ទិន្នន័យណា អាចប្រើបានបានឡើយ។ តើអ្នកចង់ចាកចេញឥឡូវនេះទេ?</item>
@@ -554,12 +551,9 @@
     <string name="selectContact" msgid="781975788478987237">"ជ្រើស​ទំនាក់ទំនង"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"មិន​គាំទ្រ​ការ​ហៅ​ជា​សំឡេង"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ចុច"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"ញ័រ"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"ញ័រ"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"សារជាសំឡេងអាចមើលឃើញ"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"កំណត់លេខកូដ PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"ប្ដូរ​​លេខ​កូដ PIN"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"សំឡេង"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"សំឡេង​រោទ៍ &amp; ញ័រ"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"ស៊ីមកាត​ជាប់​ជា​មួយ"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"បើក​ការ​ហៅ​ជា​វីដេអូ"</string>

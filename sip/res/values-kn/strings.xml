@@ -16,19 +16,19 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="sip_settings" msgid="3768482698061677257">"SIP ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
-    <string name="sip_accounts" msgid="85559497282185405">"SIP ಖಾತೆಗಳು"</string>
+    <string name="sip_settings" msgid="3768482698061677257">"ಎಸ್‌ಐಪಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
+    <string name="sip_accounts" msgid="85559497282185405">"ಎಸ್‌ಐಪಿ ಖಾತೆಗಳು"</string>
     <string name="sip_accounts_title" msgid="2082527045326874519">"ಖಾತೆಗಳು"</string>
     <string name="sip_receive_calls" msgid="426678617137462173">"ಒಳಬರುವ ಕರೆಗಳನ್ನು ಸ್ವೀಕರಿಸು"</string>
     <string name="sip_receive_calls_summary" msgid="946161517528227523">"ಹೆಚ್ಚು ಬ್ಯಾಟರಿಯನ್ನು ಬಳಸುತ್ತದೆ"</string>
-    <string name="sip_call_options_title" msgid="8421210494703869806">"SIP ಕರೆ ಮಾಡುವಿಕೆಯನ್ನು ಬಳಸಿ"</string>
-    <string name="sip_call_options_wifi_only_title" msgid="5112579243580893890">"SIP ಕರೆ ಮಾಡುವಿಕೆಯನ್ನು ಬಳಸಿ (ವೈ-ಫೈ ಮಾತ್ರ)"</string>
+    <string name="sip_call_options_title" msgid="8421210494703869806">"ಎಸ್‌ಐಪಿ ಕರೆ ಮಾಡುವಿಕೆಯನ್ನು ಬಳಸಿ"</string>
+    <string name="sip_call_options_wifi_only_title" msgid="5112579243580893890">"ಎಸ್‌ಐಪಿ ಕರೆ ಮಾಡುವಿಕೆಯನ್ನು ಬಳಸಿ (ವೈ-ಫೈ ಮಾತ್ರ)"</string>
     <string name="sip_call_options_entry_1" msgid="7217659161237099900">"ಡೇಟಾ ನೆಟ್‌ವರ್ಕ್‌ ಲಭ್ಯವಿರುವಾಗ ಎಲ್ಲ ಕರೆಗಳಿಗಾಗಿ"</string>
-    <string name="sip_call_options_entry_2" msgid="1815335903940609729">"ಕೇವಲ SIP ಕರೆಗಳಿಗೆ ಮಾತ್ರ"</string>
+    <string name="sip_call_options_entry_2" msgid="1815335903940609729">"ಕೇವಲ ಎಸ್‌ಐಪಿ ಕರೆಗಳಿಗೆ ಮಾತ್ರ"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="1358513095551847314">"ಎಲ್ಲ ಕರೆಗಳಿಗಾಗಿ"</string>
     <string name="add_sip_account" msgid="800843669753980091">"ಖಾತೆ ಸೇರಿಸಿ"</string>
     <string name="remove_sip_account" msgid="1367664438506503690">"ಖಾತೆಯನ್ನು ತೆಗೆದುಹಾಕು"</string>
-    <string name="sip_account_list" msgid="5610858485304821480">"SIP ಖಾತೆಗಳು"</string>
+    <string name="sip_account_list" msgid="5610858485304821480">"ಎಸ್‌ಐಪಿ ಖಾತೆಗಳು"</string>
     <string name="saving_account" msgid="5336529880235177448">"ಖಾತೆಯನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="removing_account" msgid="5537351356808985756">"ಖಾತೆಯನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತಿದೆ…"</string>
     <string name="sip_menu_save" msgid="7882219814563869225">"ಉಳಿಸು"</string>
@@ -48,8 +48,8 @@
     <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"ಖಾತೆ ನೋಂದಣಿಯು ಯಶಸ್ವಿಯಾಗಲಿಲ್ಲ: ಬಳಕೆದಾರರ ಹೆಸರು ಅಥವಾ ಪಾಸ್‌ವರ್ಡ್‌ ತಪ್ಪಾಗಿದೆ."</string>
     <string name="registration_status_server_unreachable" msgid="7710275557045148634">"ಖಾತೆ ನೋಂದಣಿಯು ಯಶಸ್ವಿಯಾಗಲಿಲ್ಲ: ಸರ್ವರ್‌ ಹೆಸರನ್ನು ಪರಿಶೀಲಿಸಿ."</string>
     <string name="third_party_account_summary" msgid="9041060473615403041">"ಈ ಖಾತೆಯನ್ನು ಪ್ರಸ್ತುತ <xliff:g id="ACCOUNT_OWNER">%s</xliff:g> ಅಪ್ಲಿಕೇಶನ್‌ ಬಳಸುತ್ತಿದೆ."</string>
-    <string name="sip_edit_title" msgid="1967247832635750410">"SIP ಖಾತೆ ವಿವರಗಳು"</string>
-    <string name="sip_edit_new_title" msgid="266414118302574305">"SIP ಖಾತೆ ವಿವರಗಳು"</string>
+    <string name="sip_edit_title" msgid="1967247832635750410">"ಎಸ್‌ಐಪಿ ಖಾತೆ ವಿವರಗಳು"</string>
+    <string name="sip_edit_new_title" msgid="266414118302574305">"ಎಸ್‌ಐಪಿ ಖಾತೆ ವಿವರಗಳು"</string>
     <string name="domain_address_title" msgid="1968479941328225423">"ಸರ್ವರ್"</string>
     <string name="username_title" msgid="6770064611005663470">"ಬಳಕೆದಾರಹೆಸರು"</string>
     <string name="password_title" msgid="5289013731515564295">"ಪಾಸ್‌ವರ್ಡ್"</string>
@@ -68,13 +68,13 @@
     <string name="optional_summary" msgid="2363105560396317624">"&lt;ಐಚ್ಛಿಕ&gt;"</string>
     <string name="advanced_settings_show" msgid="7838761602853998622">"▷ ಎಲ್ಲವನ್ನೂ ತೋರಿಸಲು ಸ್ಪರ್ಶಿಸಿ"</string>
     <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ ಎಲ್ಲವನ್ನೂ ಮರೆಮಾಡಲು ಸ್ಪರ್ಶಿಸಿ"</string>
-    <string name="all_empty_alert" msgid="4087734950375192387">"ಹೊಸ SIP ಖಾತೆಯ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ."</string>
+    <string name="all_empty_alert" msgid="4087734950375192387">"ಹೊಸ ಎಸ್‌ಐಪಿ ಖಾತೆಯ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ."</string>
     <string name="empty_alert" msgid="6659484914371384024">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> ಅಗತ್ಯವಿದೆ ಮತ್ತು ಖಾಲಿ ಬಿಡುವಂತಿಲ್ಲ."</string>
     <string name="not_a_valid_port" msgid="7931422555587011830">"ಪೋರ್ಟ್‌ ಸಂಖ್ಯೆಯು 1000 ಮತ್ತು 65534 ರ ವ್ಯಾಪ್ತಿಯೊಳಗಿರಬೇಕು."</string>
-    <string name="no_internet_available" msgid="5523747991760017298">"SIP ಕರೆ ಮಾಡಲು, ಮೊದಲು ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ."</string>
-    <string name="no_wifi_available" msgid="1955023904229673488">"SIP ಕರೆಗಳಿಗಾಗಿ ನೀವು ವೈ-ಫೈ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಗೊಂಡಿರುವ ಅಗತ್ಯವಿದೆ (ವೈರ್‌ಲೆಸ್ &amp; ನೆಟ್‌ವರ್ಕ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಬಳಸಿ)."</string>
-    <string name="no_voip" msgid="3038021971231952704">"SIP ಕರೆ ಮಾಡುವಿಕೆ ಬೆಂಬಲಿತವಾಗಿಲ್ಲ"</string>
+    <string name="no_internet_available" msgid="5523747991760017298">"ಎಸ್‌ಐಪಿ ಕರೆ ಮಾಡಲು, ಮೊದಲು ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ."</string>
+    <string name="no_wifi_available" msgid="1955023904229673488">"ಎಸ್‌ಐಪಿ ಕರೆಗಳಿಗಾಗಿ ನೀವು ವೈ-ಫೈ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಗೊಂಡಿರುವ ಅಗತ್ಯವಿದೆ (ವೈರ್‌ಲೆಸ್ &amp; ನೆಟ್‌ವರ್ಕ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಬಳಸಿ)."</string>
+    <string name="no_voip" msgid="3038021971231952704">"ಎಸ್‌ಐಪಿ ಕರೆ ಮಾಡುವಿಕೆ ಬೆಂಬಲಿತವಾಗಿಲ್ಲ"</string>
     <string name="sip_system_decide" msgid="5577696249416700671">"ಸ್ವಯಂಚಾಲಿತ"</string>
     <string name="sip_always_send_keepalive" msgid="4773022409239823318">"ಯಾವಾಗಲೂ ಕಳುಹಿಸು"</string>
-    <string name="sip_connection_service_label" msgid="6935325004265884453">"ಅಂತರ್ನಿರ್ಮಿತ SIP ಕರೆ ಮಾಡುವಿಕೆ"</string>
+    <string name="sip_connection_service_label" msgid="6935325004265884453">"ಅಂತರ್ನಿರ್ಮಿತ ಎಸ್‌ಐಪಿ ಕರೆ ಮಾಡುವಿಕೆ"</string>
 </resources>

@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Липсващ номер на гласова поща"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"На SIM картата няма съхранен номер за гласова поща."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Добавяне на номер"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Само основният потребител може да променя настройките на гласовата поща."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM картата ви е отблокирана. Телефонът ви се отключва…"</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN за отключване на SIM мрежа"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Отключване"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Гласова поща"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Гласова поща (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Известия"</string>
     <string name="networks" msgid="8873030692174541976">"Мрежови оператори"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Спешни излъчвания"</string>
     <string name="call_settings" msgid="6112441768261754562">"Настройки за обаждане"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Промяната на ПИН не е възможна"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Типът на съобщението не се поддържа. Обадете се на <xliff:g id="NUMBER">%s</xliff:g>, за да го чуете."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Настройки на мобилн. мрежа"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"Мобилна мрежа"</string>
     <string name="label_available" msgid="1181658289009300430">"Налични мрежи"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Търси се…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Не са намерени мрежи."</string>
@@ -393,7 +394,7 @@
     <string name="simContacts_title" msgid="1861472842524839921">"Контакти за импортиране"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Изключете самолетния режим, за да импортирате контактите от SIM картата."</string>
     <string name="enable_pin" msgid="5422767284133234860">"Активиране/деактивиране на PIN за SIM карта"</string>
-    <string name="change_pin" msgid="9174186126330785343">"Промяна на PIN за SIM карта"</string>
+    <string name="change_pin" msgid="9174186126330785343">"Промяна на ПИН за SIM карта"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"PIN код за SIM карта:"</string>
     <string name="oldPinLabel" msgid="5287773661246368314">"Стар PIN"</string>
     <string name="newPinLabel" msgid="207488227285336897">"Нов PIN"</string>
@@ -409,7 +410,7 @@
     <string name="pin_failed" msgid="5644377896213584760">"ПИН кодът е неправилен"</string>
     <string name="pin_changed" msgid="4455736268023261662">"ПИН кодът е актуализиран"</string>
     <string name="puk_requested" msgid="5921393215789090200">"Паролата е неправилна. ПИН кодът вече е блокиран. Изисква се PUK."</string>
-    <string name="enter_pin2_text" msgid="8339444124477720345">"PIN2"</string>
+    <string name="enter_pin2_text" msgid="8339444124477720345">"ПИН2"</string>
     <string name="oldPin2Label" msgid="8559146795026261502">"Стар PIN2"</string>
     <string name="newPin2Label" msgid="4573956902204349054">"Нов PIN2"</string>
     <string name="confirmPin2Label" msgid="8100319484454787708">"Потвърждаване на новия PIN2"</string>
@@ -442,14 +443,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Неизвестен номер за гласова поща"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Няма покритие"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Избраната мрежа (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) не е налична"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Изключете самолетния режим или режима за запазване на батерията, за да се обадите."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Включете мобилната мрежа, изключете самолетния режим или режима за запазване на батерията, за да се обадите."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Изключете самолетния режим, за да осъществите обаждане."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Изключете самолетния режим или се свържете с безжична мрежа, за да осъществите обаждане."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Излезте от режима на обратно обаждане при спешност, за да можете да извършвате обаждания, които не са спешни."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Няма регистрация в мрежата."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Няма мобилна мрежа."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Няма мобилна мрежа. Свържете се с безжична, за да се обадите."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"За да извършите обаждане, въведете валиден номер."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Обаждането не бе успешно."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Понастоящем обаждането не може да бъде добавено."</string>
@@ -527,10 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Влизане в режим на обратно обаждане при спешност"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Режим на обратно обаждане при спешност"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Връзката с данни е деактивирана"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">Няма връзка за данни в продължение на <xliff:g id="COUNT_1">%s</xliff:g> минути</item>
-      <item quantity="one">Няма връзка за данни в продължение на <xliff:g id="COUNT_0">%s</xliff:g> минута</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Няма връзка за данни до <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Телефонът ще бъде в режим за обратно обаждане при спешност в продължение на <xliff:g id="COUNT_1">%s</xliff:g> минути. В този режим не могат да се използват приложения, работещи с връзка за данни. Искате ли да излезете сега?</item>
       <item quantity="one">Телефонът ще бъде в режим за обратно обаждане при спешност в продължение на <xliff:g id="COUNT_0">%s</xliff:g> минута. В този режим не могат да се използват приложения, работещи с връзка за данни. Искате ли да излезете сега?</item>
@@ -554,12 +551,9 @@
     <string name="selectContact" msgid="781975788478987237">"избиране на контакта"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Гласови обаждания не се поддържат"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"набиране"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Вибриране"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Вибриране"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Визуална гласова поща"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Задаване на ПИН"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Промяна на ПИН"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Звук"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Мелодия и вибриране"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Вградени SIM карти"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Включване на видеообажданията"</string>

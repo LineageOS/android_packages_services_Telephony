@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Brakuje numeru poczty głosowej"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Na karcie SIM nie ma zapisanego numeru poczty głosowej."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Dodaj numer"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Ustawienia poczty głosowej może zmienić tylko użytkownik główny."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Karta SIM została odblokowana. Odblokowywanie telefonu..."</string>
     <string name="label_ndp" msgid="780479633159517250">"Kod PIN do karty SIM odblokowujący sieć"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Odblokuj"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Poczta głosowa"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Poczta głosowa (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Poczta głosowa:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Powiadomienia"</string>
     <string name="networks" msgid="8873030692174541976">"Operatorzy sieci"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Komunikaty alarmowe"</string>
     <string name="call_settings" msgid="6112441768261754562">"Ustawienia połączeń"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Nie udało się zmienić kodu PIN"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Nieobsługiwany typ wiadomości – aby ją odsłuchać, zadzwoń pod numer <xliff:g id="NUMBER">%s</xliff:g>."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Ustawienia sieci komórkowej"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"Sieć komórkowa"</string>
     <string name="label_available" msgid="1181658289009300430">"Dostępne sieci"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Wyszukiwanie..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Nie znaleziono sieci."</string>
@@ -216,8 +217,8 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"Zezwalaj na transmisję danych"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Uwaga"</string>
     <string name="roaming" msgid="8871412572928323707">"Roaming danych"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Połącz z usługami przesyłu danych podczas roamingu"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Połącz z usługami przesyłu danych podczas roamingu"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Połącz z usługami transmisji danych podczas roamingu"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Połącz z usługami transmisji danych podczas roamingu"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Połączenie transmisji danych zostało utracone, ponieważ opuszczono sieć macierzystą przy wyłączonej opcji danych w roamingu."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Mogą się z tym wiązać wysokie opłaty."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Zezwolić na roaming danych?"</string>
@@ -442,14 +443,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Nieznany numer poczty głosowej"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Brak usługi"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Wybrana sieć (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) jest niedostępna"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Aby zadzwonić, wyłącz tryb samolotowy lub tryb oszczędzania baterii."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Aby zadzwonić, włącz sieć komórkową, wyłącz tryb samolotowy lub wyłącz tryb oszczędzania baterii."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Wyłącz tryb samolotowy, by zadzwonić."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Wyłącz tryb samolotowy lub połącz się z siecią bezprzewodową, by zadzwonić."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Aby zadzwonić normalnie, wyjdź z trybu alarmowego połączenia zwrotnego."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Nie zarejestrowano w sieci"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Sieć komórkowa jest niedostępna."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Sieć komórkowa jest niedostępna. Połącz się z siecią bezprzewodową, by zadzwonić."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Aby zadzwonić, wybierz prawidłowy numer."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Nie udało się połączyć."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Nie można w tej chwili dodać połączenia."</string>
@@ -527,12 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Włączono tryb alarmowego połączenia zwrotnego"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Tryb alarmowego połączenia zwrotnego"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Połączenie transmisji danych jest wyłączone"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="few">Brak połączenia transmisji danych przez <xliff:g id="COUNT_1">%s</xliff:g> minuty</item>
-      <item quantity="many">Brak połączenia transmisji danych przez <xliff:g id="COUNT_1">%s</xliff:g> minut</item>
-      <item quantity="other">Brak połączenia transmisji danych przez <xliff:g id="COUNT_1">%s</xliff:g> minuty</item>
-      <item quantity="one">Brak połączenia transmisji danych przez <xliff:g id="COUNT_0">%s</xliff:g> minutę</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Brak połączenia transmisji danych do <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="few">Telefon będzie w trybie alarmowego połączenia zwrotnego przez <xliff:g id="COUNT_1">%s</xliff:g> minuty. W tym trybie nie można używać aplikacji, które korzystają z połączenia transmisji danych. Chcesz zakończyć tryb teraz?</item>
       <item quantity="many">Telefon będzie w trybie alarmowego połączenia zwrotnego przez <xliff:g id="COUNT_1">%s</xliff:g> minut. W tym trybie nie można używać aplikacji, które korzystają z połączenia transmisji danych. Chcesz zakończyć tryb teraz?</item>
@@ -550,7 +545,7 @@
     <string name="alert_dialog_yes" msgid="6674268047820703974">"Tak"</string>
     <string name="alert_dialog_no" msgid="1476091437797628703">"Nie"</string>
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Zamknij"</string>
-    <string name="voicemail_provider" msgid="5135942703327136909">"Usługa"</string>
+    <string name="voicemail_provider" msgid="5135942703327136909">"Dostawca"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"Konfiguracja"</string>
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Nie ustawiono&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Inne ustawienia połączeń"</string>
@@ -560,12 +555,9 @@
     <string name="selectContact" msgid="781975788478987237">"wybierz kontakt"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Połączenia głosowe nie są obsługiwane"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"wybierz numer"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Wibracje"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Wibracje"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Wizualna poczta głosowa"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Ustaw kod PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Zmień PIN"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Dźwięk"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Dzwonek i wibracje"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Wbudowane karty SIM"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Włącz rozmowy wideo"</string>

@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"عدم وجود شماره پست صوتی"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"شماره پست صوتی در سیم کارت ذخیره نشده است."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"افزودن شماره"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"فقط «کاربر اصلی» می‌تواند «تنظیمات پست صوتی» را تغییر دهد."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"قفل سیم کارت شما باز شده است. قفل گوشی در حال باز شدن است..."</string>
     <string name="label_ndp" msgid="780479633159517250">"پین بازگشایی قفل شبکه سیم"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"بازگشایی قفل"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"پست صوتی"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"پست صوتی (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"اعلان‌ها"</string>
     <string name="networks" msgid="8873030692174541976">"اپراتورهای شبکه"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"پخش هشدارهای اضطراری"</string>
     <string name="call_settings" msgid="6112441768261754562">"تنظیمات تماس"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"پین تغییر نکرد"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"نوع پیام پشتیبانی نمی‌شود، برای گوش کردن با <xliff:g id="NUMBER">%s</xliff:g> تماس بگیرید."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"تنظیمات شبکهٔ تلفن همراه"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"شبکه تلفن همراه"</string>
     <string name="label_available" msgid="1181658289009300430">"شبکه‌های موجود"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"در حال جستجو…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"شبکه‌ای یافت نشد."</string>
@@ -442,14 +443,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"شماره پست صوتی ناشناس"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"بدون سرویس"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"شبکه انتخابی (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) قابل دسترس نیست"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"برای برقراری تماس، حالت هواپیما یا بهینه‌سازی باتری را غیرفعال کنید."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"برای برقراری تماس، شبکه تلفن همراه را روشن کنید، حالت هواپیما یا بهینه‌سازی باتری را غیرفعال کنید."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"برای برقراری تماس، حالت پرواز را خاموش کنید."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"برای برقرای تماس، حالت پرواز را خاموش کنید یا به شبکه بی‌سیم وصل شوید."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"برای برقراری تماس غیراضطراری از حالت پاسخ تماس اضطراری خارج شوید."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"در شبکه ثبت نشده است."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"شبکهٔ تلفن همراه موجود نیست."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"شبکه تلفن همراه دردسترس نیست. برای برقراری تماس به شبکه بی‌سیم متصل شوید."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"برای برقراری تماس، یک شماره معتبر وارد کنید."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"تماس ناموفق بود."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"فعلاً نمی‌توانید تماس اضافه کنید."</string>
@@ -527,10 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"حالت پاسخ تماس اضطراری وارد شده"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"حال پاسخ تماس اضطراری"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"اتصال داده غیر فعال شد"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="one">هیچ اتصال داده‌ای برای <xliff:g id="COUNT_1">%s</xliff:g> دقیقه موجود نیست</item>
-      <item quantity="other">هیچ اتصال داده‌ای برای <xliff:g id="COUNT_1">%s</xliff:g> دقیقه موجود نیست</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"بدون اتصال داده تا <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">تلفن برای <xliff:g id="COUNT_1">%s</xliff:g> دقیقه در حالت تماس اضطراری خواهد بود. در این حالت برنامه‌ای که از اتصال داده استفاده می‌کند، نمی‌تواند استفاده شود. می‌خواهید اکنون خارج شوید؟</item>
       <item quantity="other">تلفن برای <xliff:g id="COUNT_1">%s</xliff:g> دقیقه در حالت تماس اضطراری خواهد بود. در این حالت برنامه‌ای که از اتصال داده استفاده می‌کند، نمی‌تواند استفاده شود. می‌خواهید اکنون خارج شوید؟</item>
@@ -554,12 +551,9 @@
     <string name="selectContact" msgid="781975788478987237">"انتخاب حساب"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"تماس صوتی پشتیبانی نمی‌شود"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"شماره گیری"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"لرزش"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"لرزش"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"پست صوتی تصویری"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"تنظیم پین"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"تغییر پین"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"صدا"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"آهنگ‌ زنگ و لرزش"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"سیم‌کارت‌های داخلی"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"روشن کردن تماس ویدئویی"</string>

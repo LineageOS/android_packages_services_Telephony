@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"صوتی میل نمبر درج نہیں ہے"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"‏SIM کارڈ پر کوئی بھی صوتی میل نمبر اسٹور نہیں ہے۔"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"نمبر شامل کریں"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"صرف بنیادی صارف ہی صوتی میل کی ترتیبات تبدیل کر سکتا ہے۔"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"‏آپ کا SIM کارڈ غیر مسدود ہوگیا ہے۔ آپ کا فون غیر مقفل ہو رہا ہے…"</string>
     <string name="label_ndp" msgid="780479633159517250">"‏SIM نیٹ ورک غیر مقفل کرنے کا PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"غیر مقفل کریں"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"صوتی میل"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"صوتی میل (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"اطلاعات"</string>
     <string name="networks" msgid="8873030692174541976">"نیٹ ورک آپریٹرز"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"ہنگامی براڈکاسٹس"</string>
     <string name="call_settings" msgid="6112441768261754562">"کال کی ترتیبات"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"‏PIN تبدیل کرنے سے قاصر"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"پیغام کی غیر تعاون یافتہ قسم، سننے کیلئے <xliff:g id="NUMBER">%s</xliff:g> پر کال کریں۔"</string>
     <string name="mobile_networks" msgid="5540397602919106177">"موبائل نیٹ ورک کی ترتیبات"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"موبائل نیٹ ورک"</string>
     <string name="label_available" msgid="1181658289009300430">"دستیاب نیٹ ورکس"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"تلاش کر رہا ہے…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"کوئی نیٹ ورکس نہیں ملے۔"</string>
@@ -442,14 +443,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"صوتی میل نمبر نامعلوم ہے"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"کوئی سروس نہیں ہے"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"منتخب کردہ نیٹ ورک (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) دستیاب نہیں ہے"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"کال کرنے کیلئے ہوائی جہاز موڈ یا بیٹری سیور موڈ کو آف کریں۔"</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"کال کرنے کیل‏ئے موبائل نیٹ ورک آن کریں، ہوائی جہاز موڈ یا بیٹری سیور موڈ آف کریں۔"</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"کال کرنے کیلئے ہوائی جہاز وضع آف کریں۔"</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"کال کرنے کیلئے ہوائی جہاز وضع آف کریں یا کسی وائرلیس نیٹ ورک سے منسلک ہوں۔"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"غیر ہنگامی کال کرنے کیلئے ہنگامی کال بیک موڈ سے اخراج کریں۔"</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"نیٹ ورک پر رجسٹرڈ نہیں ہے۔"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"موبائل نیٹ ورک دستیاب نہیں ہے۔"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"موبائل نیٹ ورک دستیاب نہیں ہے۔ کال کرنے کیلئے کسی وائرلیس نیٹ ورک سے منسلک ہوں۔"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"کال کرنے کیلئے، ایک درست نمبر درج کریں۔"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"کال ناکام ہوگئی۔"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"اس وقت کال شامل نہیں ہو سکتی۔"</string>
@@ -527,10 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"ہنگامی کال بیک طرز میں داخل ہو گیا"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"ہنگامی کال بیک طرز"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"ڈیٹا کنکشن غیر فعال ہوگیا"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> منٹ تک کوئی ڈیٹا کنکشن نہیں ہے</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%s</xliff:g> منٹ تک کوئی ڈیٹا کنکشن نہیں ہے</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> تک کوئی ڈیٹا کنکشن نہیں"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">فون <xliff:g id="COUNT_1">%s</xliff:g> منٹ تک ہنگامی کال بیک وضع میں رہے گا۔ اس وضع میں رہتے ہوئے ڈیٹا کنکشن کا استعمال کرنے والی کسی بھی ایپلیکیشنز کا استعمال نہیں کیا جا سکتا ہے۔ کیا آپ ابھی باہر نکلنا چاہتے ہیں؟</item>
       <item quantity="one">فون <xliff:g id="COUNT_0">%s</xliff:g> منٹ تک ہنگامی کال بیک وضع میں رہے گا۔ اس وضع میں رہتے ہوئے ڈیٹا کنکشن کا استعمال کرنے والی کسی بھی ایپس کا استعمال نہیں کیا جا سکتا ہے۔ کیا آپ ابھی باہر نکلنا چاہتے ہیں؟</item>
@@ -554,12 +551,9 @@
     <string name="selectContact" msgid="781975788478987237">"رابطہ منتخب کریں"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"صوتی کالنگ تعاون یافتہ نہیں ہے"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ڈائل کریں"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"وائبریٹ"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"وائبریٹ"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"بصری صوتی میل"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"‏PIN سیٹ کریں"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"‏PIN تبدیل کریں"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"آواز"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"رنگ ٹون اور وائبریٹ"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"‏پہلے سے شامل SIM کارڈز"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"ویڈیو کالنگ کو آن کریں"</string>

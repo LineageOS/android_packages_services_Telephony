@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"भ्वाइसमेल नम्बर हराइरहेको छ"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM कार्डमा कुनै पनि भ्वाइसमेल नम्बर भण्डारण भएको छैन।"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"नम्बर थप्नुहोस्"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"प्राथमिक प्रयोगकर्ताले मात्र भ्वाइस मेल सेटिङहरू परिमार्जन गर्न सक्नुहुन्छ।"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"तपाईँको SIM कार्ड अनब्लक गरिएको छ। तपाईँको फोन अनलक हुँदैछ ..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM नेटवर्क अनलक PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"अनलोक गर्नुहोस्"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"भ्वाइसमेल"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"भ्वाइस मेल (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"सूचनाहरू"</string>
     <string name="networks" msgid="8873030692174541976">"नेटवर्क संचालकहरू"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"आपतकालीन प्रसारणहरू"</string>
     <string name="call_settings" msgid="6112441768261754562">"कल सेटिङहरू"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"PIN परिवर्तन गर्न सकिएन"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"सन्देशको असमर्थित प्रकार, सुन्नका लागि <xliff:g id="NUMBER">%s</xliff:g> मा कल गर्नुहोस्।"</string>
     <string name="mobile_networks" msgid="5540397602919106177">"मोबाइल नेटवर्क सेटिहरू"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"मोबाइल नेटवर्क"</string>
     <string name="label_available" msgid="1181658289009300430">"उपलब्ध नेटवर्कहरू"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"खोजी गर्दै..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"कुनै नेटवर्कहरू भेटिएनन्।"</string>
@@ -442,14 +443,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"अज्ञात भवाइसमेल नम्बर"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"सेवा छैन"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"चयन गरिएको नेटवर्क ( <xliff:g id="OPERATOR_NAME">%s</xliff:g> ) अनुपलब्ध"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"कल गर्न हवाइजहाज मोड वा ब्याट्री सेवर मोडलाई निष्क्रिय पार्नुहोस्"</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"मोबाइल नेटवर्क सक्रिय पार्नुहोस्, कल गर्न हवाइजहाज मोड वा ब्याट्री सेवर मोड निष्क्रिय पार्नुहोस्।"</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"एक कल गर्न हवाइजहाज मोड बन्द गर्नुहोस्।"</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"एक कल गर्न हवाइजहाज मोड बन्द गर्नुहोस् वा एक ताररहितको सञ्जालमा जडान गर्नुहोस्।"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"गैर-आपतकालीन कल गर्न आपतकालीन कलब्याक मोडबाट निस्कनुहोस्।"</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"नेटवर्कमा दर्ता भएको छैन।"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"मोबाइल नेटवर्क उपलब्ध छैन।"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"मोबाइल नेटवर्क उपलब्ध छैन। कल गर्न तारविनाको नेटवर्कमा जडान गर्नुहोस्।"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"एक कल गर्नको लागि, एक वैध नम्बर प्रविष्ट गर्नुहोस्।"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"कल विफल भयो।"</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"यतिबेला कल थप गर्न सकिँदैन।"</string>
@@ -502,7 +502,7 @@
     <item msgid="2883365539347850535">"लामो"</item>
   </string-array>
     <string name="network_info_message" msgid="7738596060242881930">"सञ्जाल सन्देश"</string>
-    <string name="network_error_message" msgid="3394780436230411413">"त्रुटि सन्देश"</string>
+    <string name="network_error_message" msgid="3394780436230411413">"त्रुटिसम्बन्धी सन्देश"</string>
     <string name="ota_title_activate" msgid="8616918561356194398">"तपाईंको फोन सक्रिय गर्नुहोस्"</string>
     <string name="ota_touch_activate" msgid="6553212803262586244">"विशेष कललाई तपाईंको फोन सेवा सक्रिय गर्न जरुरी हुन्छ। \n \n \"सक्रिय\" थिचेर तपाईंको फोन  सक्रिय गर्न दिएका निर्देशनहरू सुन्नुहोस्।"</string>
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"सक्रिय गर्दै…"</string>
@@ -527,10 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"आपतकालीन कलब्याक मोड प्रविष्टि गरियो"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"आपतकालीन कलब्याक मोड"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"डेटा जडान अक्षम भयो"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other"> <xliff:g id="COUNT_1">%s</xliff:g> मिनेटको लागि कुनै डेटा जडान छैन</item>
-      <item quantity="one"> <xliff:g id="COUNT_0">%s</xliff:g> मिनेटको लागि कुनै डेटा जडान छैन</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> सम्म डेटा जडान भएको छैन"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other"> फोन आपतकालीन कलब्याक मोडमा <xliff:g id="COUNT_1">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको अवस्थामा एक डेटा जडान प्रयोग गरेर कुनै पनि अनुप्रयोगहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
       <item quantity="one"> फोन आपतकालीन कलब्याक मोडमा <xliff:g id="COUNT_0">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको समयमा एक डेटा जडान प्रयोग गरेर कुनै पनि अनुप्रयोगहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
@@ -554,12 +551,9 @@
     <string name="selectContact" msgid="781975788478987237">"सम्पर्क चयन गर्नुहोस्"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"भ्वाइस कल गर्ने समर्थित छैन"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"डायल"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"भाइब्रेट"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"भाइब्रेट"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"भिजुअल भ्वाइस मेल"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN सेट गर्नुहोस्"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN परिवर्तन गर्नुहोस्"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"आवाज:"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"रिङ्गटोन र भाइब्रेट"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"निर्मित SIM कार्डहरू"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"भिडियो कल खोल्नुहोस्"</string>

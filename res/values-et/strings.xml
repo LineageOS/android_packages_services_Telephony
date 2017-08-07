@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Puudub kõnepostinumber"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM-kaardile pole salvestatud ühtegi kõnepostinumbrit."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Lisa number"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Kõneposti seadeid saab muuta ainult peamine kasutaja."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Teie SIM-kaardi blokeering on tühistatud. Teie telefoni avamine ..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM-võrgu avamise PIN-kood"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Ava"</string>
@@ -78,8 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Kõnepost"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Kõnepost (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"KP:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Märguanded"</string>
     <string name="networks" msgid="8873030692174541976">"Võrguoperaatorid"</string>
-    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Hädaolukorra ülekanded"</string>
+    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Hädaolukorra märguanded"</string>
     <string name="call_settings" msgid="6112441768261754562">"Kõneseaded"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Lisaseaded"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Lisaseaded (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"PIN-koodi ei õnnestu muuta"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Toetamata sõnumi tüüp, kuulamiseks helistage numbrile <xliff:g id="NUMBER">%s</xliff:g>."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Mobiilsidevõrgu seaded"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"Mobiilsidevõrk"</string>
     <string name="label_available" msgid="1181658289009300430">"Saadaolevad võrgud"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Otsimine ..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Võrke ei leitud."</string>
@@ -391,7 +392,7 @@
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM-kaardilt lugemine ..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"Teie SIM-kaardil pole ühtegi kontakti."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Valige imporditavad kontaktid"</string>
-    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Kontaktide importimiseks SIM-kaardilt lülitage lennukirežiim välja."</string>
+    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Kontaktide importimiseks SIM-kaardilt lülitage lennurežiim välja."</string>
     <string name="enable_pin" msgid="5422767284133234860">"SIM-i PIN-koodi lubamine/keelamine"</string>
     <string name="change_pin" msgid="9174186126330785343">"Muuda SIM-kaardi PIN-koodi"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"SIM-i PIN-kood"</string>
@@ -442,14 +443,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Kõneposti number teadmata"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Teenus puudub"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Valitud võrk (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) pole saadaval"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Helistamiseks lülitage lennurežiim või akusäästja režiim välja."</string>
-    <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Helistamiseks lülitage lennukirežiim välja."</string>
-    <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Helistamiseks lülitage lennukirežiim välja või looge ühendus traadita võrguga."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Helistamiseks lülitage mobiilsidevõrk sisse, lennu- või akusäästjarežiim välja."</string>
+    <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Helistamiseks lülitage lennurežiim välja."</string>
+    <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Helistamiseks lülitage lennurežiim välja või looge ühendus traadita võrguga."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Muude kui hädaabikõne tegemiseks väljuge hädaabikõnede režiimist."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Ei ole võrku registreeritud."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Mobiilsidevõrk pole saadaval."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Mobiilsidevõrk pole saadaval. Helistamiseks looge ühendus traadita võrguga."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Helistamiseks sisestage kehtiv number."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Kõne ebaõnnestus."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Kõnet ei saa praegu lisada."</string>
@@ -466,7 +466,7 @@
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Hädaabikõne"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Raadioside sisselülitamine ..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Teenus puudub. Uuesti proovimine ..."</string>
-    <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Hädaabikõne ajal ei saa lennukirežiimi aktiveerida."</string>
+    <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Hädaabikõne ajal ei saa lennurežiimi aktiveerida."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Ei saa helistada. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ei ole hädaabikõne number."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Ei saa helistada. Valige hädaabinumber."</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Kasutage valimiseks klaviatuuri"</string>
@@ -527,10 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Sisenetud hädaolukorra tagasihelistusrežiimi"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Hädaolukorra tagasihelistusrežiim"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Andmeühendus keelatud"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other">Andmesideühendus puudub <xliff:g id="COUNT_1">%s</xliff:g> minutit</item>
-      <item quantity="one">Andmesideühendus puudub <xliff:g id="COUNT_0">%s</xliff:g> minuti</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Kuni kella <xliff:g id="COMPLETETIME">%s</xliff:g> andmesideühendus puudub"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Telefon on <xliff:g id="COUNT_1">%s</xliff:g> minutit hädaabikõne tagasihelistamise režiimis. Selles režiimis olles ei saa kasutada ühtegi rakendust, mis kasutab andmesideühendust. Kas soovite kohe väljuda?</item>
       <item quantity="one">Telefon on <xliff:g id="COUNT_0">%s</xliff:g> minuti hädaabikõne tagasihelistamise režiimis. Selles režiimis olles ei saa kasutada ühtegi rakendust, mis kasutab andmesideühendust. Kas soovite kohe väljuda?</item>
@@ -554,12 +551,9 @@
     <string name="selectContact" msgid="781975788478987237">"vali kontakt"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Tavakõnesid ei toetata"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"helista"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Vibreerimine"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Vibreerimine"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuaalne kõnepost"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN-koodi määramine"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN-koodi muutmine"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Heli"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Helin ja vibratsioon"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Sisseehitatud SIM-kaardid"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Videokõnede sisselülitamine"</string>

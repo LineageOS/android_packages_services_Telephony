@@ -21,7 +21,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Телефон кызматтары"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Өзгөчө кырдаалдагы тергич"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Телефон"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"FDN тизмеси"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"Уруксат берилген номерлер тизмеси"</string>
     <string name="unknown" msgid="6878797917991465859">"Белгисиз"</string>
     <string name="private_num" msgid="6713286113000232309">"Купуя номер"</string>
     <string name="payphone" msgid="4793877574636445118">"Таксофон"</string>
@@ -46,8 +46,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Үн почтасынын номери жок болуп жатат"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM-картада сакталган үн почтасынын номери жок."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Номер кошуу"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Үн почта жөндөөлөрүн алгачкы колдонуучу гана өзгөртө алат."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM-картаңыз бөгөттөн чыгарылган. Телефонуңуздун кулпусу ачылууда…"</string>
     <string name="label_ndp" msgid="780479633159517250">"SIM-карта тармагынын кулпусун ачуучу PIN код"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Кулпусун ачуу"</string>
@@ -60,7 +59,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM чалуунун жөндөөлөрү (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA чалуунун жөндөөлөрү"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA чалуунун жөндөөлөрү (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"Мүмкүнчүлүк алуу түйүнүнүн аталыштары"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"Туташуу түйүндөрү (APN)"</string>
     <string name="settings_label" msgid="3876743539816984008">"Тармак жөндөөлөрү"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Чалуу үчүн каттоо эсептер"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Чалууларды төмөнкү менен жасоо"</string>
@@ -79,8 +78,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Үн почтасы"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Үн почтасы (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ҮП:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Эскертмелер"</string>
     <string name="networks" msgid="8873030692174541976">"Тармактык операторлор"</string>
-    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Шашылыш таркатмалар"</string>
+    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Өзгөчө кырдаал тууралуу кулактандыруу"</string>
     <string name="call_settings" msgid="6112441768261754562">"Чалуу жөндөөлөрү"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Кошумча жөндөөлөр"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Кошумча жөндөөлөр (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -88,15 +88,15 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"Кошумча CDMA чалуунун жөндөөлөрү"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"CDMA менен гана чалуунун кошумча жөндөөлөрү"</string>
     <string name="labelNwService" msgid="4699970172021870983">"Тармак кызматынын жөндөөлөрү"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"Номурду аныктоо"</string>
-    <string name="sum_loading_settings" msgid="1826692909391168620">"Тууралоолор жүктөлүүдө…"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"Чалуучуну аныктоо"</string>
+    <string name="sum_loading_settings" msgid="1826692909391168620">"Жөндөөлөр жүктөлүүдө…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Чыгуучу чалууларда номер жашырылган"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Чыгуучу чалууларда көрсөтүлчү номер"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Номеримди чыгуучу чалууларда көрсөтүү үчүн демейки оператор жөндөөлөрү колдонулсун"</string>
-    <string name="labelCW" msgid="6120513814915920200">"Чалууну кармоо"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"Чалуу учурунда мага кирүүчү чалуулар жөнүндө эскертилсин"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"Чалуу учурунда мага кирүүчү чалуулар жөнүндө эскертилсин"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Чалууну багыттоонун жөндөөлөрү"</string>
+    <string name="labelCW" msgid="6120513814915920200">"Чалууну кармап туруу"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"Бирөө менен сүйлөшүп жатканда мага келген чалуулар жөнүндө эскертилсин"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"Бирөө менен сүйлөшүп жатканда мага келген чалуулар жөнүндө эскертилсин"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Чалууну багыттоо жөндөөлөрү"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Чалууну багыттоо жөндөөлөрү (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Чалууну багыттоо"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Ар дайым багыттоо"</string>
@@ -123,12 +123,12 @@
     <string name="updating_title" msgid="6146755386174019046">"Чалуу жөндөөлөрү"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Чалуу жөндөөлөрүн администратор гана өзгөртө алат."</string>
     <string name="call_settings_with_label" msgid="3401177261468593519">"Жөндөөлөр (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="error_updating_title" msgid="7970259216988931777">"Чалуу жөндөөлөрүндөгү ката"</string>
+    <string name="error_updating_title" msgid="7970259216988931777">"Чалуу жөндөөлөрүндө ката кетти"</string>
     <string name="reading_settings" msgid="1920291699287055284">"Жөндөөлөр окулууда…"</string>
     <string name="updating_settings" msgid="8171225533884883252">"Жөндөөлөр жаңыртылууда…"</string>
     <string name="reverting_settings" msgid="4752151682666912828">"Жөндөөлөр артка кайтарылууда…"</string>
     <string name="response_error" msgid="6674110501330139405">"Тармактан күтүлбөгөн жооп алынды."</string>
-    <string name="exception_error" msgid="7027667130619518211">"Тармак же SIM-карта катасы."</string>
+    <string name="exception_error" msgid="7027667130619518211">"Тармак же SIM карта катасы."</string>
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS сурамы DIAL сурамына өзгөртүлдү."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS сурамы USSD сурамына өзгөртүлдү."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS сурамы жаңы SS сурамына өзгөртүлдү."</string>
@@ -162,6 +162,7 @@
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Колдоого алынбаган билдирүү, угуу үчүн <xliff:g id="NUMBER">%s</xliff:g> чалыңыз."</string>
     <!-- no translation found for mobile_networks (5540397602919106177) -->
     <skip />
+    <string name="network_settings_title" msgid="514120489499925574">"Мобилдик тармак"</string>
     <string name="label_available" msgid="1181658289009300430">"Жеткиликтүү тармактар"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Изделүүдө…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Эч тармак табылган жок."</string>
@@ -176,9 +177,9 @@
     <string name="select_automatically" msgid="5628402124471810174">"Автоматтык тандоо"</string>
     <string name="sum_select_automatically" msgid="5614890115123292400">"Артыкчылыктуу түйүндү автоматтык тандоо"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Автоматтык катталуу…"</string>
-    <string name="preferred_network_mode_title" msgid="2336624679902659306">"Артыкчылыктуу желенин түрү"</string>
+    <string name="preferred_network_mode_title" msgid="2336624679902659306">"Тармактын түрү"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Тармактын иштөө режимин өзгөртүңүз"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Артыкчылыктуу желенин түрү"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Тармактын түрү"</string>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Тандалган тармак режими: WCDMA тандалган"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Тандалган тармак режими: GSM гана"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Тандалган тармак режими: WCDMA гана"</string>
@@ -193,7 +194,7 @@
     <string name="preferred_network_mode_lte_cdma_evdo_summary" msgid="228702246343742853">"Артыкчылыктуу желе тартиби: CDMA+LTE/EVDO"</string>
     <string name="preferred_network_mode_global_summary" msgid="1633134285545730364">"Тандалган тармак режими: Дүйнө жүзү"</string>
     <string name="preferred_network_mode_lte_wcdma_summary" msgid="9180775701594742750">"Артыкчылыктуу желе тартиби: LTE / WCDMA"</string>
-    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Жактырылган тармак режими: LTE / GSM / UMTS"</string>
+    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Жактырылган режим: LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Тандалган тармак режими: LTE / CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Тандалган тармак режими: TDSCDMA"</string>
   <string-array name="preferred_network_mode_choices">
@@ -218,14 +219,14 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"Дайындарды пайдаланууга уруксат берүү"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Көңүл буруңуз"</string>
     <string name="roaming" msgid="8871412572928323707">"Интернет роуминг"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Роуминг учурунда мобилдик интернетке туташтырылсын"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Роуминг учурунда мобилдик интернетке туташтырылсын"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Роуминг учурунда мобилдик Интернетке туташат"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Роуминг учурунда мобилдик Интернетке туташат"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Мобилдик берүү байланышын жоготтуңуз, анткени сиз мобилдик интернет роумингин иштетпестен, өзүңүздүн түйүнүңүздөн сырткары чыгып кеттиңиз."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Бир кыйла төлөмдөргө учурашыңыз мүмкүн."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Интернет-роумингге жол берилсинби?"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS мүмкүнчүлүктөрү"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA мүмкүнчүлүктөрү"</string>
-    <string name="throttle_data_usage" msgid="3715677828160555808">"Дайындардын колдонулушу"</string>
+    <string name="throttle_data_usage" msgid="3715677828160555808">"Дайындардын өткөрүлүшү"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"Учурдагы периоддо колдонулган дайындар"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"Дайындарды колдонуу периоду"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"Дайындардын ылдамдыгынын саясаты"</string>
@@ -348,21 +349,21 @@
     <string name="cdma_activate_device" msgid="3793805892364814518">"Түзмөктү жандыруу"</string>
     <string name="cdma_lte_data_service" msgid="4255018217292548962">"Дайындар кызматын жөндөө"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"Оператордун тууралоолору"</string>
-    <string name="fdn" msgid="7878832555095183202">"Туруктуу терүү номерлери"</string>
-    <string name="fdn_with_label" msgid="187084204115493366">"Туруктуу терүү номерлери (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"FDN тизмеси"</string>
-    <string name="fdn_list_with_label" msgid="7437232552210469217">"FDN тизмеси (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="fdn_activation" msgid="2156479741307463576">"FDN\'ди жандыруу"</string>
-    <string name="fdn_enabled" msgid="5238109009915521240">"Туруктуу терүү номерлери иштетилген"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"Туруктуу терүү номерлери өчүрүлгөн"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"FDN\'ди иштетүү"</string>
-    <string name="disable_fdn" msgid="7944020890722540616">"FDN\'ди өчүрүү"</string>
+    <string name="fdn" msgid="7878832555095183202">"Уруксат берилген номерлер"</string>
+    <string name="fdn_with_label" msgid="187084204115493366">"Уруксат берилген номерлер (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"Уруксат берилген номерлер"</string>
+    <string name="fdn_list_with_label" msgid="7437232552210469217">"Уруксат берилген номерлер тизмеси (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn_activation" msgid="2156479741307463576">"Уруксат берилген номерлерди иштетүү"</string>
+    <string name="fdn_enabled" msgid="5238109009915521240">"Уруксат берилген номерлер иштетилген"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"Уруксат берилген номерлер өчүрүлгөн"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"Уруксат берилген номерлерди иштетүү"</string>
+    <string name="disable_fdn" msgid="7944020890722540616">"Уруксат берлгн номерлрд өчр"</string>
     <string name="change_pin2" msgid="2153563695382176676">"PIN2 кодун өзгөртүү"</string>
-    <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN\'ди өчүрүү"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN\'ди иштетүү"</string>
+    <string name="enable_fdn_ok" msgid="7215588870329688132">"Уруксат берлгн номерлрд өчр"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"Уруксат берлгн номерлрд иштетүү"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Туруктуу терүү номерлерин башкаруу"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN мүмкүнчүлүгүнүн PIN кодун өзгөртүү"</string>
-    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Телефон номеринин тизмесин башкаруу"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Уруксат берилген номерлердин тизмесине кирүү үчүн PIN кодду өзгөртүү"</string>
+    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Уруксат берилген номерлердин тизмесин башкаруу"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Үн купуялуулугу"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Жакшыртылган купуялык режимин иштетүү"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"Телетайп режими"</string>
@@ -392,7 +393,7 @@
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"БНТ жаңыртылган жок. PIN2 туура эмес, же телефон номуру жараксыз."</string>
     <string name="fdn_failed" msgid="540018079008319747">"БНТ иши кыйрады."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM-картадан окулууда…"</string>
-    <string name="simContacts_empty" msgid="5270660846489561932">"SIM-картаңызда байланыштар жок."</string>
+    <string name="simContacts_empty" msgid="5270660846489561932">"SIM картаңызда байланыштар жок."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Импорттоло турган байланыштарды тандаңыз"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"SIM картадан байланыштарды импорттоо үчүн учак режимин өчүрүңүз."</string>
     <string name="enable_pin" msgid="5422767284133234860">"SIM-картанын PIN кодун иштетүү/өчүрүү"</string>
@@ -445,15 +446,14 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Үн почтасынын номери белгисиз"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Байланыш жок"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Тандалган тармак (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) жеткиликсиз"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Чалуу үчүн \"Учакта\" режимин же \"Батареяны үнөмдөө\" режимин өчүрүңүз."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Мобилдик тармакты күйгүзүңүз, чалуу үчүн \"Учакта\" режимин же \"Батареяны үнөмдөө\" режимин өчүрүңүз."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Чалуу үчүн учак режимин өчүрүңүз."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Чалуу үчүн учак режимин өчүрүңүз же зымсыз тармакка туташыңыз."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Кадимки шартта чалуу үчүн шашылыш кайра чалуу режиминен чыгыңыз."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Тармакта катталган эмес."</string>
     <!-- no translation found for incall_error_out_of_service (8587993036435080418) -->
     <skip />
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Мобилдик тармак жеткиликтүү эмес. Чалуу үчүн зымсыз тармакка туташыңыз."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Чалуу үчүн, жарактуу номер киргизиңиз."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Чалынбай калды."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Бул жолу чалууну кошуу мүмкүн эмес."</string>
@@ -472,7 +472,7 @@
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Кызмат жок. Кайра аракет кылууда…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Шашылыш чалуу учурунда учак режимине өтүүгө болбойт."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Чалынбай жатат. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> өзгөчө кырдаал номери эмес."</string>
-    <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Чалынбай жатат. Өзгөчө кырдаал номерин териңиз."</string>
+    <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Чалынбай жатат. Өзгөчө кырдаалдар кызматынын номерин териңиз."</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Баскычтоп менен териңиз"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Күттүрүү"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Бүтүрүү"</string>
@@ -531,10 +531,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Шашылыш кайра чалуу режими киргизилди"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Шашылыш кайра чалуу режими"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Мобилдик туташуу өчүрүлгөн"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> мүнөт бою маалыматтык туташуу болбойт</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%s</xliff:g> мүнөт бою маалыматтык туташуу болбойт</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> чейин мобилдик байланыш жок"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Телефон Шашылыш кайра чалуу режиминде <xliff:g id="COUNT_1">%s</xliff:g> мүнөт бою болот. Бул режим күйүп турганда маалыматтык туташууну пайдаланган эч бир колдонмо иштетилбейт. Азыр чыгып кеткиңиз келеби?</item>
       <item quantity="one">Телефон Шашылыш кайра чалуу режиминде <xliff:g id="COUNT_0">%s</xliff:g> мүнөт бою болот. Бул режим күйүп турганда маалыматтык туташууну пайдаланган эч бир колдонмо иштетилбейт. Азыр чыгып кеткиңиз келеби?</item>
@@ -558,12 +555,9 @@
     <string name="selectContact" msgid="781975788478987237">"байланыш тандоо"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Үн менен чалуу колдоого алынбайт"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"терүү"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Дирилдөө"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Дирилдөө"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Визуалдык үн почтасы"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN код коюу"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN кодду өзгөртүү"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Үнү"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Рингтон жана Титирөө"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Кыналган SIM карталар"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Видео чалууну күйгүзүү"</string>
@@ -573,7 +567,7 @@
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"Шашылыш чалуулар"</string>
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"Шашылыш чалуу гана"</string>
     <string name="sim_description_default" msgid="4778679519938775515">"SIM-карта, оюкча: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Жеткиликтүүлүк"</string>
+    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Атайын мүмкүнчүлүктөр"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"Wi-Fi аркылуу чалуу:"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Wi-Fi чалуу"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Ачуу үчүн кайра таптап коюңуз"</string>

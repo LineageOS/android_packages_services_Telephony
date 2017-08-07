@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Не указан номер голосовой почты"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"На SIM-карте нет ни одного номера голосовой почты."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Добавить номер"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Настройки голосовой почты может изменить только основной пользователь"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM-карта разблокирована. Осуществляется разблокировка телефона..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN для разблокировки сети SIM-карты"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Разблокировать"</string>
@@ -78,8 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Голосовая почта"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Голосовая почта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ГП:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Уведомления"</string>
     <string name="networks" msgid="8873030692174541976">"Операторы связи"</string>
-    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Уведомления о чрезвычайных ситуациях"</string>
+    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Оповещения о чрезвычайных ситуациях"</string>
     <string name="call_settings" msgid="6112441768261754562">"Вызовы"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Дополнительные настройки"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Дополнительные настройки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Не удалось сменить PIN-код"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Неподдерживаемый тип сообщения. Чтобы его прослушать, позвоните по телефону <xliff:g id="NUMBER">%s</xliff:g>."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Настройки мобильной сети"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"Мобильная сеть"</string>
     <string name="label_available" msgid="1181658289009300430">"Доступные сети"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Поиск…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Сети не найдены."</string>
@@ -444,14 +445,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Номер голосовой почты неизвестен"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Сеть не найдена"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Выбранная сеть (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) недоступна."</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Чтобы позвонить, отключите режим полета или энергосбережения."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Чтобы позвонить, подключитесь к мобильной сети или отключите режим полета либо режим энергосбережения."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Чтобы позвонить, отключите режим полета."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Чтобы позвонить, отключите режим полета и подключитесь к Wi-Fi."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Чтобы сделать обычный звонок, выйдите из режима экстренных обратных вызовов."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Нет регистрации в сети."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Мобильная сеть недоступна."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Мобильная сеть недоступна. Чтобы позвонить, подключитесь к Wi-Fi."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Недействительный номер."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Не удалось отправить вызов."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Невозможно позвонить в данный момент."</string>
@@ -529,12 +529,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Телефон переведен в режим экстренных обратных вызовов"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Режим экстренных обратных вызовов"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Передача данных отключена"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="one">Подключение для передачи данных отсутствует <xliff:g id="COUNT_1">%s</xliff:g> минуту</item>
-      <item quantity="few">Подключение для передачи данных отсутствует <xliff:g id="COUNT_1">%s</xliff:g> минуты</item>
-      <item quantity="many">Подключение для передачи данных отсутствует <xliff:g id="COUNT_1">%s</xliff:g> минут</item>
-      <item quantity="other">Подключение для передачи данных отсутствует <xliff:g id="COUNT_1">%s</xliff:g> минуты</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Подключения для передачи данных не будет до <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">Режим экстренных обратных вызовов будет действовать ещё <xliff:g id="COUNT_1">%s</xliff:g> минуту. При этом будут недоступны приложения с поддержкой передачи данных. Выйти?</item>
       <item quantity="few">Режим экстренных обратных вызовов будет действовать ещё <xliff:g id="COUNT_1">%s</xliff:g> минуты. При этом будут недоступны приложения с поддержкой передачи данных. Выйти?</item>
@@ -562,12 +557,9 @@
     <string name="selectContact" msgid="781975788478987237">"выбрать контакт"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Голосовые вызовы не поддерживаются"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"набор номера"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Вибросигнал"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Вибросигнал"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Визуальная голосовая почта"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Установка PIN-кода"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Изменение PIN-кода"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Звук"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Рингтон и вибросигнал"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Встроенные SIM-карты"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Включить видеовстречи"</string>

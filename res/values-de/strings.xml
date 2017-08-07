@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefondienste"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Notruf"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefon"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"Liste der zugelassenen Rufnummern"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"Zugelassene Rufnummern"</string>
     <string name="unknown" msgid="6878797917991465859">"Unbekannt"</string>
     <string name="private_num" msgid="6713286113000232309">"Private Nummer"</string>
     <string name="payphone" msgid="4793877574636445118">"Münztelefon"</string>
@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Fehlende Mailbox-Nummer"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Auf der SIM-Karte ist keine Mailbox-Nummer gespeichert."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Nummer hinzufügen"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Mailboxeinstellungen können nur vom primären Nutzer geändert werden."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Deine SIM-Karte wurde entsperrt. Dein Telefon wird nun entsperrt..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN zur Entsperrung des SIM-Netzwerks"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Entsperren"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Mailbox"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Mailbox (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"MB:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Benachrichtigungen"</string>
     <string name="networks" msgid="8873030692174541976">"Mobilfunkanbieter"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Notfallbenachrichtigungen"</string>
     <string name="call_settings" msgid="6112441768261754562">"Anrufeinstellungen"</string>
@@ -127,7 +127,7 @@
     <string name="updating_settings" msgid="8171225533884883252">"Einstellungen werden aktualisiert…"</string>
     <string name="reverting_settings" msgid="4752151682666912828">"Einstellungen werden zurückgesetzt..."</string>
     <string name="response_error" msgid="6674110501330139405">"Unerwartete Antwort von Netzwerk"</string>
-    <string name="exception_error" msgid="7027667130619518211">"Netzwerk- oder SIM-Kartenfehler"</string>
+    <string name="exception_error" msgid="7027667130619518211">"Netzwerk- oder SIM-Kartenfehler."</string>
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-Anfrage wurde in DIAL-Anfrage geändert."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-Anfrage wurde in USSD-Anfrage geändert."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-Anfrage wurde in neue SS-Anfrage geändert."</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"PIN kann nicht geändert werden"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Nicht unterstützter Nachrichtentyp, zum Abhören <xliff:g id="NUMBER">%s</xliff:g> anrufen."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Einstellungen für Mobilfunknetze"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"Mobilfunknetz"</string>
     <string name="label_available" msgid="1181658289009300430">"Verfügbare Netzwerke"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Suche läuft..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Keine Netzwerke gefunden"</string>
@@ -393,7 +394,7 @@
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Die Liste der zugelassenen Rufnummern konnte nicht aktualisiert werden. Die eingegebene PIN2 ist ungültig oder die Rufnummer wurde abgelehnt."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Fehler bei der Rufnummernbeschränkung"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM-Karte wird ausgelesen..."</string>
-    <string name="simContacts_empty" msgid="5270660846489561932">"Keine Kontakte auf SIM-Karte"</string>
+    <string name="simContacts_empty" msgid="5270660846489561932">"Keine Kontakte auf SIM-Karte."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Kontakte für Import auswählen"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Deaktiviere den Flugmodus, um Kontakte von der SIM-Karte zu importieren."</string>
     <string name="enable_pin" msgid="5422767284133234860">"PIN-Abfrage für SIM-Karte aktivieren/deaktivieren"</string>
@@ -446,14 +447,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Mailboxnummer unbekannt"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"kein Dienst"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Ausgewähltes Netzwerk (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) nicht verfügbar"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Deaktiviere zum Telefonieren den Flugmodus oder Energiesparmodus."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Zum Anrufen Mobilfunknetz aktivieren, Flugmodus oder Energiesparmodus deaktivieren."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Deaktiviere zum Telefonieren den Flugmodus."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Deaktiviere zum Telefonieren den Flugmodus oder stelle eine WLAN-Verbindung her."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Beende den Notfallrückrufmodus, um einen Anruf zu tätigen, bei dem es sich nicht um einen Notfall handelt."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Nicht in Netzwerk registriert."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Mobilfunknetz ist nicht verfügbar."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Es ist kein Mobilfunknetz verfügbar. Stelle zum Telefonieren eine WLAN-Verbindung her."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Gib eine gültige Nummer ein."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Fehler beim Anruf."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Der Anruf kann momentan nicht hinzugefügt werden."</string>
@@ -531,10 +531,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Notfallrückrufmodus aktiviert"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Notfallrückrufmodus"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Datenverbindung deaktiviert"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> Minuten lang keine Datenverbindung</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%s</xliff:g> Minute lang keine Datenverbindung</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Keine Datenverbindung bis <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="other">Das Smartphone wird <xliff:g id="COUNT_1">%s</xliff:g> Minuten lang in den Notfallrückrufmodus versetzt. In dieser Zeit können Apps mit Datenverbindung nicht genutzt werden. Möchtest du den Vorgang jetzt abbrechen?</item>
       <item quantity="one">Das Smartphone wird <xliff:g id="COUNT_0">%s</xliff:g> Minute lang in den Notfallrückrufmodus versetzt. In dieser Zeit können Apps mit Datenverbindung nicht genutzt werden. Möchtest du den Vorgang jetzt abbrechen?</item>
@@ -558,12 +555,9 @@
     <string name="selectContact" msgid="781975788478987237">"Kontakt wählen"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Sprachanruf wird nicht unterstützt."</string>
     <string name="description_dial_button" msgid="7459705245418435351">"Wählen"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Vibration"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Vibration"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuelle Mailbox"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN festlegen"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN ändern"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Töne"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Klingelton &amp; Vibration"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Integrierte SIM-Karten"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Videoanrufe aktivieren"</string>

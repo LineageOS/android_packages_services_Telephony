@@ -26,7 +26,7 @@
     <string name="payphone" msgid="4793877574636445118">"Таксофон"</string>
     <string name="onHold" msgid="9035493194749959955">"Очікує"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Код MMI запущено"</string>
-    <string name="ussdRunning" msgid="485588686340541690">"Запуск. код USSD..."</string>
+    <string name="ussdRunning" msgid="485588686340541690">"Виконується запит USSD…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Код MMI скасовано"</string>
     <string name="cancel" msgid="5044513931633602634">"Скасувати"</string>
     <string name="enter_input" msgid="1810529547726803893">"Кількість символів повідомлення USSD має становити від <xliff:g id="MIN_LEN">%d</xliff:g> до <xliff:g id="MAX_LEN">%d</xliff:g>. Повторіть спробу."</string>
@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Відстуній номер голосової пошти"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"На SIM-карті немає збереж. номерів голос. пошти."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Додати номер"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Налаштування голосової пошти може змінювати лише основний користувач."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Вашу SIM-карту розблоковано. Ваш телефон розблоковується..."</string>
     <string name="label_ndp" msgid="780479633159517250">"Розбл. PIN-код мережі SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Розблок."</string>
@@ -60,7 +59,7 @@
     <string name="labelCDMAMore" msgid="1630676740428229339">"Налашт. викл. в CDMA"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"Налаштування викликів CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="9043423184895642077">"Назва точки доступу"</string>
-    <string name="settings_label" msgid="3876743539816984008">"Налашт-ння мережі"</string>
+    <string name="settings_label" msgid="3876743539816984008">"Налаштування мережі"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Обл. записи для дзвінків"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Здійснювати дзвінки за допомогою"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"Здійснювати дзвінки SIP за допомогою"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Голосова пошта"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Голосова пошта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ГП:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Сповіщення"</string>
     <string name="networks" msgid="8873030692174541976">"Оператори мережі"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Повідомлення екстрених служб"</string>
     <string name="call_settings" msgid="6112441768261754562">"Виклики"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Не вдалося змінити PIN-код"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Повідомлення непідтримуваного типу. Зателефонуйте на номер <xliff:g id="NUMBER">%s</xliff:g>, щоб прослухати."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Налаштування мобільної мережі"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"Мобільна мережа"</string>
     <string name="label_available" msgid="1181658289009300430">"Доступні мережі"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Пошук…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Не знайд. жодних мереж."</string>
@@ -362,8 +363,8 @@
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Керувати списком номерів"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Конфіденційність Voice"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Увімкн. режим розшир. конфіденц."</string>
-    <string name="tty_mode_option_title" msgid="9033098925144434669">"Режим TTY"</string>
-    <string name="tty_mode_option_summary" msgid="1073835131534808732">"Устан. режим TTY"</string>
+    <string name="tty_mode_option_title" msgid="9033098925144434669">"Режим телетайпа"</string>
+    <string name="tty_mode_option_summary" msgid="1073835131534808732">"Установити режим телетайпа"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"Автоповтор"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Увімкнути режим автоповтору"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Під час відеодзвінка заборонено змінювати режим TTY"</string>
@@ -442,14 +443,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Невідомий номер голосової пошти"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Нема служби"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Вибрана мережа (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) недоступна"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Щоб зателефонувати, вимкніть режим польоту або режим економії заряду."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Щоб зателефонувати, увімкніть мобільну мережу, вимкніть режим польоту або режим економії заряду."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Щоб зателефонувати, вимкніть режим польоту."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Щоб зателефонувати, вимкніть режим польоту або під’єднайтеся до бездротової мережі."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Щоб зателефонувати на звичайний номер, вимкніть режим екстрених викликів."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Не зареєстровано в мережі."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Мобільна мережа недоступна."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Мобільна мережа недоступна. Щоб зателефонувати, під’єднайтеся до бездротової мережі."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Щоб зателефонувати, введіть дійсний номер."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Не вдалося здійснити виклик."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Зараз не можна додати виклик."</string>
@@ -490,10 +490,10 @@
     <string name="hac_mode_title" msgid="8740268574688743289">"Слухові апарати"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Увімкнути функцію НАС"</string>
   <string-array name="tty_mode_entries">
-    <item msgid="512950011423868021">"TTY вимк."</item>
-    <item msgid="3971695875449640648">"TTY повн."</item>
-    <item msgid="1937509904407445684">"TTY HCO"</item>
-    <item msgid="5644925873488772224">"TTY VCO"</item>
+    <item msgid="512950011423868021">"Телетайп вимкнено"</item>
+    <item msgid="3971695875449640648">"Повнофункціональний телетайп"</item>
+    <item msgid="1937509904407445684">"Телетайп з можливістю чути співрозмовника"</item>
+    <item msgid="5644925873488772224">"Телетайп з можливістю передачі голосу"</item>
   </string-array>
     <string name="dtmf_tones_title" msgid="5163153771291340803">"Сигнали DTMF"</string>
     <string name="dtmf_tones_summary" msgid="3351820372864020331">"Установити довжину сигналів DTMF"</string>
@@ -527,12 +527,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Увійд. в реж. авар. зворот. виклику"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Реж. авар. зворот. виклику"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Передавання даних вимкнено"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="one">Передавання даних недоступне протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилини</item>
-      <item quantity="few">Передавання даних недоступне протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилин</item>
-      <item quantity="many">Передавання даних недоступне протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилин</item>
-      <item quantity="other">Передавання даних недоступне протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилин</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Немає мобільного Інтернету до <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">Телефон перебуватиме в режимі екстреного виклику протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилини. У цьому режимі не працюватимуть додатки, які передають дані. Вийти?</item>
       <item quantity="few">Телефон перебуватиме в режимі екстреного виклику протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилин. У цьому режимі не працюватимуть додатки, які передають дані. Вийти?</item>
@@ -560,12 +555,9 @@
     <string name="selectContact" msgid="781975788478987237">"вибрати контакт"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Голосові дзвінки не підтримуються"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"дзвонити"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Вібросигнал"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Вібросигнал"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Візуальна голосова пошта"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Установити PIN-код"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Змінити PIN-код"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Звук"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Сигнал дзвінка та вібросигнал"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Вбудовані SIM-карти"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Увімкнути відеодзвінки"</string>

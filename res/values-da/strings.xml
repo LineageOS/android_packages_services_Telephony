@@ -45,8 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Telefonsvarernummer mangler"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Der er ikke gemt noget telefonsvarernummer på SIM-kortet."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Tilføj nummer"</string>
-    <!-- no translation found for voice_number_setting_primary_user_only (6596604364907022416) -->
-    <skip />
+    <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"Indstillingerne for telefonsvareren kan kun ændres af den primære bruger."</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Blokeringen af dit SIM-kort er blevet ophævet. Din telefon låser op ..."</string>
     <string name="label_ndp" msgid="780479633159517250">"Pinkode til oplåsning af SIM-netværket"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Lås op"</string>
@@ -78,6 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Telefonsvarer"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Telefonsvarer (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Underretninger"</string>
     <string name="networks" msgid="8873030692174541976">"Netværksudbydere"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Nødudsendelser"</string>
     <string name="call_settings" msgid="6112441768261754562">"Indstillinger for opkald"</string>
@@ -160,6 +160,7 @@
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Pinkoden kan ikke ændres"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Ikke-understøttet beskedtype. Ring til <xliff:g id="NUMBER">%s</xliff:g> for at aflytte."</string>
     <string name="mobile_networks" msgid="5540397602919106177">"Indstillinger for mobilnetværk"</string>
+    <string name="network_settings_title" msgid="514120489499925574">"Mobilnetværk"</string>
     <string name="label_available" msgid="1181658289009300430">"Tilgængelige netværk"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Søger..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Der blev ikke fundet nogen netværk."</string>
@@ -245,9 +246,9 @@
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"Cell Broadcast-sms aktiveret"</string>
     <string name="cell_bc_sms_disable" msgid="3398365088309408749">"Cell Broadcast-sms deaktiveret"</string>
     <string name="cb_sms_settings" msgid="651715019785107312">"Indstillinger for Cell Broadcast-sms"</string>
-    <string name="enable_disable_emergency_broadcast" msgid="2157014609041245335">"Nødtransmission"</string>
-    <string name="emergency_broadcast_enable" msgid="2645980025414010211">"Nødtransmission er aktiveret"</string>
-    <string name="emergency_broadcast_disable" msgid="3665199821267569426">"Nødtransmission er deaktiveret"</string>
+    <string name="enable_disable_emergency_broadcast" msgid="2157014609041245335">"Nødudsendelse"</string>
+    <string name="emergency_broadcast_enable" msgid="2645980025414010211">"Nødudsendelse er aktiveret"</string>
+    <string name="emergency_broadcast_disable" msgid="3665199821267569426">"Nødudsendelse er deaktiveret"</string>
     <string name="enable_disable_administrative" msgid="6501582322182059412">"Administration"</string>
     <string name="administrative_enable" msgid="1750086122962032235">"Administration er aktiveret"</string>
     <string name="administrative_disable" msgid="8433273857248698539">"Administration er deaktiveret"</string>
@@ -448,14 +449,13 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Telefonsvarernummeret er ukendt"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Ingen dækning"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Det valgte netværk (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) er ikke tilgængeligt"</string>
-    <string name="incall_error_power_off" product="watch" msgid="772302793483607711">"Slå Flytilstand eller Batterisparefunktion fra for at foretage et opkald."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Slå Mobilnetværk til, Flytilstand fra eller Batterisparefunktion fra for at foretage et opkald."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Slå flytilstand fra for at foretage et opkald."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Slå flytilstand fra, eller opret forbindelse til et trådløst netværk for at foretage et opkald."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Afslut nødtilbagekaldstilstand for at foretage et almindeligt opkald."</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Ikke registreret på netværk."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Mobilnetværket er ikke tilgængeligt."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc (8741629779555132471) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Mobilnetværk er ikke tilgængeligt. Opret forbindelse til et trådløst netværk for at foretage et opkald."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Indtast et gyldigt nummer for at foretage et opkald."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Opkald mislykkedes."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Opkaldet kan ikke tilføjes på nuværende tidspunkt."</string>
@@ -533,10 +533,7 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Gik i nødtilbagekaldstilstand"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Nødtilbagekaldstilstand"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Dataforbindelsen er deaktiveret"</string>
-    <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="one">Ingen dataforbindelse i <xliff:g id="COUNT_1">%s</xliff:g> minutter</item>
-      <item quantity="other">Ingen dataforbindelse i <xliff:g id="COUNT_1">%s</xliff:g> minutter</item>
-    </plurals>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Der er ingen dataforbindelse før kl. <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
       <item quantity="one">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen applikationer, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
       <item quantity="other">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen applikationer, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
@@ -560,12 +557,9 @@
     <string name="selectContact" msgid="781975788478987237">"vælg kontaktperson"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Taleopkald understøttes ikke"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ring op"</string>
-    <string name="voicemail_notification_vibrate_when_title" msgid="8361970092063604886">"Vibration"</string>
-    <string name="voicemail_notification_vibarte_when_dialog_title" msgid="5739583146522136440">"Vibration"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuel telefonsvarer"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Angiv pinkode"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Skift pinkode"</string>
-    <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Lyd"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Ringetone og vibration"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Indbyggede SIM-kort"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Slå videoopkald til"</string>
