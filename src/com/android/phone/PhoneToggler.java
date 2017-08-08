@@ -59,6 +59,9 @@ public class PhoneToggler extends BroadcastReceiver {
                 if (isValidModemNetworkMode(networkMode)) {
                     if (DBG) Log.d(LOG_TAG, "Changing network mode to " + networkMode);
                     subCtrl.setUserNwMode(subId, networkMode);
+                    android.provider.Settings.Global.putInt(context.getContentResolver(),
+                            android.provider.Settings.Global.PREFERRED_NETWORK_MODE + subId,
+                            networkMode);
                     try {
                         PhoneFactory.getPhone(SubscriptionManager.getPhoneId(subId))
                                 .setPreferredNetworkType(networkMode, null);
