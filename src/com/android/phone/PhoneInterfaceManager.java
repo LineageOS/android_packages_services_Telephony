@@ -3797,6 +3797,30 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Action set from carrier signalling broadcast receivers to start/stop reporting the default
+     * network status based on which carrier apps could apply actions accordingly,
+     * enable/disable default url handler for example.
+     *
+     * @param subId the subscription ID that this action applies to.
+     * @param report control start/stop reporting the default network status.
+     * {@hide}
+     */
+    @Override
+    public void carrierActionReportDefaultNetworkStatus(int subId, boolean report) {
+        enforceModifyPermission();
+        final Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("carrierAction: ReportDefaultNetworkStatus fails with invalid sibId: " + subId);
+            return;
+        }
+        try {
+            phone.carrierActionReportDefaultNetworkStatus(report);
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "carrierAction: ReportDefaultNetworkStatus fails. Exception ex=" + e);
+        }
+    }
+
+    /**
      * Called when "adb shell dumpsys phone" is invoked. Dump is also automatically invoked when a
      * bug report is being generated.
      */
