@@ -149,7 +149,7 @@ final class PstnIncomingCallNotifier {
             Connection connection = call.getLatestConnection();
             if (connection != null) {
                 String number = connection.getAddress();
-                if (number != null && Objects.equals(number, ccwi.number)) {
+                if (!TextUtils.isEmpty(number) && Objects.equals(number, ccwi.number)) {
                     sendIncomingCallIntent(connection);
                 }
             }
