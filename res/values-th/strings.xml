@@ -221,14 +221,12 @@
     <string name="roaming_warning" msgid="1603164667540144353">"คุณอาจต้องเสียค่าใช้จ่ายมาก"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"อนุญาตการโรมมิ่งอินเทอร์เน็ตไหม"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"ปริมาณการใช้อินเทอร์เน็ต"</string>
-    <!-- no translation found for data_usage_template (8526428824844656364) -->
-    <skip />
+    <string name="data_usage_template" msgid="8526428824844656364">"เน็ตมือถือ <xliff:g id="ID_1">%1$s</xliff:g> ที่ใช้ระหว่าง <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"ขั้นสูง"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ผู้ให้บริการ"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"ผู้ให้บริการ, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (4661165467914727157) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"อินเทอร์เน็ตมือถือ"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"เข้าถึงข้อมูลโดยใช้เครือข่ายมือถือ"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"ปิดเน็ตมือถือไหม"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"ต้องเลือก"</string>

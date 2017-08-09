@@ -221,14 +221,12 @@
     <string name="roaming_warning" msgid="1603164667540144353">"高額な通信料が発生することがあります。"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"データローミングを許可しますか？"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"データ使用量"</string>
-    <!-- no translation found for data_usage_template (8526428824844656364) -->
-    <skip />
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> のモバイルデータ使用量: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"詳細設定"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"携帯通信会社"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"携帯通信会社、esim、sim、euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (4661165467914727157) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"モバイルデータ"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"モバイル ネットワーク経由でデータにアクセス"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"モバイルデータを OFF にしますか？"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"選択してください"</string>

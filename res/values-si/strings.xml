@@ -221,14 +221,12 @@
     <string name="roaming_warning" msgid="1603164667540144353">"ඔබ සැලකිය යුතු ගාස්තු ඇති විය හැකිය."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"දත්ත රෝමින් සඳහා අවසර දෙන්න ද"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"දත්ත භාවිතය"</string>
-    <!-- no translation found for data_usage_template (8526428824844656364) -->
-    <skip />
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> <xliff:g id="ID_1">%1$s</xliff:g>ක ජංගම දත්ත භාවිත කරන ලදී"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"උසස්"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"වාහකය"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"වාහකය, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (4661165467914727157) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"ජංගම දත්ත"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"ජංගම ජාලය භාවිතයෙන් දත්ත වෙත ප්‍රවේශ වන්න"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"ජංගම දත්ත ක්‍රියාවිරහිත කරන්නද?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"තේරීම අවශ්‍යයි"</string>
