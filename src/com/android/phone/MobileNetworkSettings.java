@@ -657,8 +657,6 @@ public class MobileNetworkSettings extends Activity  {
             int max = mSubscriptionManager.getActiveSubscriptionInfoCountMax();
             mActiveSubInfos = new ArrayList<SubscriptionInfo>(max);
 
-            setAndvancedButtonSummary();
-
             IntentFilter intentFilter = new IntentFilter(
                     TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
             activity.registerReceiver(mPhoneChangeReceiver, intentFilter);
@@ -1881,26 +1879,6 @@ public class MobileNetworkSettings extends Activity  {
             } else {
                 return MetricsEvent.VIEW_UNKNOWN;
             }
-        }
-
-        private void setAndvancedButtonSummary() {
-            if (mAdvancedOptions == null) {
-                return;
-            }
-
-            StringBuilder summary = new StringBuilder();
-            summary.append(mButton4glte.getTitle());
-            summary.append(", ");
-            summary.append(mButtonPreferredNetworkMode.getTitle());
-            summary.append(", ");
-            summary.append(mButtonEnabledNetworks.getTitle());
-            summary.append(", ");
-            summary.append(mEuiccSettingsPref.getTitle());
-            summary.append(", ");
-            summary.append(mWiFiCallingPref.getTitle());
-            summary.append(", ");
-            summary.append(mVideoCallingPref.getTitle());
-            mAdvancedOptions.setSummary(summary.toString());
         }
 
         private void updateGsmUmtsOptions(PreferenceFragment prefFragment,
