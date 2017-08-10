@@ -221,12 +221,12 @@
     <string name="roaming_warning" msgid="1603164667540144353">"သိသာသည့် ငွေနူန်းထားသင့်အား ကျသင့်နိုင်ပါသည်။"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ကွန်ရက်ပြင်ပဒေတာအသုံးပြုခြင်း ခွင့်​ပြုမည်လား?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"ဒေတာအသုံးပြုမှု"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> အကြား မိုဘိုင်းဒေတာ <xliff:g id="ID_1">%1$s</xliff:g> ကို အသုံးပြုထားပါသည်"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> အထိ မိုဘိုင်းဒေတာ <xliff:g id="ID_1">%1$s</xliff:g> ကို အသုံးပြုထားပါသည်"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"အဆင့်မြင့်"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ဝန်ဆောင်မှုပေးသူ"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"ဖုန်းလိုင်း၊ esim၊ ဆင်းမ်ကဒ်၊ euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"မိုဘိုင်းဒေတာ"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"မိုဘိုင်းဒေတာ"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"မိုဘိုင်းကွန်ရက်သုံးပြီး ဒေတာကို ဝင်သုံးခွင့်ပေးပါ"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"မိုဘိုင်းဒေတာကို ပိတ်မလား။"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"ရွေးချယ်မှု လိုအပ်ပါသည်"</string>
