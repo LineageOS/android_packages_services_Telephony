@@ -64,7 +64,7 @@ import com.android.internal.telephony.dataconnection.DataConnectionReasons.DataD
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.phone.common.CallLogAsync;
 import com.android.phone.settings.SettingsConstants;
-import com.android.services.telephony.sip.SipBroadcastReceiver;
+import com.android.services.telephony.sip.SipAccountRegistry;
 import com.android.services.telephony.sip.SipUtil;
 
 import java.io.FileDescriptor;
@@ -175,7 +175,7 @@ public class PhoneGlobals extends ContextWrapper {
     // Broadcast receiver for various intent broadcasts (see onCreate())
     private final BroadcastReceiver mReceiver = new PhoneAppBroadcastReceiver();
     // Broadcast receiver for SIP based intents (see onCreate())
-    private final SipBroadcastReceiver mSipBroadcastReceiver = new SipBroadcastReceiver();
+    private final SipReceiver mSipReceiver = new SipReceiver();
 
     private final SettingsObserver mSettingsObserver;
 
@@ -243,7 +243,7 @@ public class PhoneGlobals extends ContextWrapper {
                 case EVENT_RESTART_SIP:
                     // This should only run if the Phone process crashed and was restarted. We do
                     // not want this running if the device is still in the FBE encrypted state.
-                    // This is the same procedure that is triggered in the SipBroadcastReceiver
+                    // This is the same procedure that is triggered in the SipIncomingCallReceiver
                     // upon BOOT_COMPLETED.
                     UserManager userManager = UserManager.get(sMe);
                     if (userManager != null && userManager.isUserUnlocked()) {
@@ -363,11 +363,10 @@ public class PhoneGlobals extends ContextWrapper {
             registerReceiver(mReceiver, intentFilter);
 
             IntentFilter sipIntentFilter = new IntentFilter(Intent.ACTION_BOOT_COMPLETED);
-            sipIntentFilter.addAction(SipManager.ACTION_SIP_INCOMING_CALL);
             sipIntentFilter.addAction(SipManager.ACTION_SIP_SERVICE_UP);
             sipIntentFilter.addAction(SipManager.ACTION_SIP_CALL_OPTION_CHANGED);
             sipIntentFilter.addAction(SipManager.ACTION_SIP_REMOVE_PHONE);
-            registerReceiver(mSipBroadcastReceiver, sipIntentFilter);
+            registerReceiver(mSipReceiver, sipIntentFilter);
 
             //set the default values for the preferences in the phone.
             PreferenceManager.setDefaultValues(this, R.xml.network_setting_fragment, false);
@@ -751,6 +750,31 @@ public class PhoneGlobals extends ContextWrapper {
                 if (phone != null) {
                     updateDataRoamingStatus();
                 }
+            }
+        }
+    }
+
+    private class SipReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+
+            SipAccountRegistry sipAccountRegistry = SipAccountRegistry.getInstance();
+            if (action.equals(Intent.ACTION_BOOT_COMPLETED)) {
+                SipUtil.startSipService();
+            } else if (action.equals(SipManager.ACTION_SIP_SERVICE_UP)
+                    || action.equals(SipManager.ACTION_SIP_CALL_OPTION_CHANGED)) {
+                sipAccountRegistry.setup(context);
+            } else if (action.equals(SipManager.ACTION_SIP_REMOVE_PHONE)) {
+                if (DBG) {
+                    Log.d(LOG_TAG, "SIP_REMOVE_PHONE "
+                            + intent.getStringExtra(SipManager.EXTRA_LOCAL_URI));
+                }
+                sipAccountRegistry.removeSipProfile(intent.getStringExtra(
+                        SipManager.EXTRA_LOCAL_URI));
+            } else {
+                if (DBG) Log.d(LOG_TAG, "onReceive, action not processed: " + action);
             }
         }
     }
