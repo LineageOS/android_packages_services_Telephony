@@ -27,14 +27,11 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.util.Log;
 
-import com.android.phone.PhoneGlobals;
-import com.android.server.sip.SipService;
-
 /**
- * Broadcast receiver that handles SIP-related intents.
+ * Broadcast receiver that handles explicit incoming call intents
  */
-public class SipBroadcastReceiver extends BroadcastReceiver {
-    private static final String PREFIX = "[SipBroadcastReceiver] ";
+public class SipIncomingCallReceiver extends BroadcastReceiver {
+    private static final String PREFIX = "[SipIncomingCallReceiver] ";
     private static final boolean VERBOSE = false; /* STOP SHIP if true */
 
     @Override
@@ -42,7 +39,7 @@ public class SipBroadcastReceiver extends BroadcastReceiver {
         String action = intent.getAction();
 
         if (!isRunningInSystemUser()) {
-            if (VERBOSE) log("SipBroadcastReceiver only run in system user, ignore " + action);
+            if (VERBOSE) log("SipIncomingCallReceiver only run in system user, ignore " + action);
             return;
         }
 
@@ -51,18 +48,8 @@ public class SipBroadcastReceiver extends BroadcastReceiver {
             return;
         }
 
-        SipAccountRegistry sipAccountRegistry = SipAccountRegistry.getInstance();
-        if (action.equals(Intent.ACTION_BOOT_COMPLETED)) {
-            SipUtil.startSipService();
-        } else if (action.equals(SipManager.ACTION_SIP_INCOMING_CALL)) {
+        if (action.equals(SipManager.ACTION_SIP_INCOMING_CALL)) {
             takeCall(context, intent);
-        } else if (action.equals(SipManager.ACTION_SIP_SERVICE_UP) ||
-                action.equals(SipManager.ACTION_SIP_CALL_OPTION_CHANGED)) {
-            sipAccountRegistry.setup(context);
-        } else if (action.equals(SipManager.ACTION_SIP_REMOVE_PHONE)) {
-            if (VERBOSE) log("SIP_REMOVE_PHONE " +
-                            intent.getStringExtra(SipManager.EXTRA_LOCAL_URI));
-            sipAccountRegistry.removeSipProfile(intent.getStringExtra(SipManager.EXTRA_LOCAL_URI));
         } else {
             if (VERBOSE) log("onReceive, action not processed: " + action);
         }
@@ -82,7 +69,7 @@ public class SipBroadcastReceiver extends BroadcastReceiver {
             extras.putParcelable(SipUtil.EXTRA_INCOMING_CALL_INTENT, intent);
             TelecomManager tm = TelecomManager.from(context);
             PhoneAccount phoneAccount = tm.getPhoneAccount(accountHandle);
-            if(phoneAccount != null && phoneAccount.isEnabled()) {
+            if (phoneAccount != null && phoneAccount.isEnabled()) {
                 tm.addNewIncomingCall(accountHandle, extras);
             } else {
                 log("takeCall, PhoneAccount is disabled. Not accepting incoming call...");
