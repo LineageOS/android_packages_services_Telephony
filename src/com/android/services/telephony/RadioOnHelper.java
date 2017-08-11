@@ -30,12 +30,11 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Helper class that implements special behavior related to emergency calls or make phone calls when
- * radio is power off due to the device being on Bluetooth. Specifically, this class handles the
- * case of the user trying to dial an emergency number while the radio is off (i.e. the device is
- * in airplane mode) or a normal number while the radio is off (because of the device is on
- * Bluetooth), by forcibly turning the radio back on, waiting for it to come up, and then retrying
- * the call.
+ * Helper class that implements special behavior related to emergency calls or making phone calls
+ * when the radio is in the POWER_OFF STATE. Specifically, this class handles the case of the user
+ * trying to dial an emergency number while the radio is off (i.e. the device is in airplane mode)
+ * or a normal number while the radio is off (because of the device is on Bluetooth), by turning the
+ * radio back on, waiting for it to come up, and then retrying the call.
  */
 public class RadioOnHelper implements RadioOnStateListener.Callback {
 
@@ -65,7 +64,7 @@ public class RadioOnHelper implements RadioOnStateListener.Callback {
      *
      * This method kicks off the following sequence:
      * - Power on the radio for each Phone
-     * - Listen for the service state change event telling us the radio has come up.
+     * - Listen for radio events telling us the radio has come up.
      * - Retry if we've gone a significant amount of time without any response from the radio.
      * - Finally, clean up any leftover state.
      *
@@ -73,7 +72,7 @@ public class RadioOnHelper implements RadioOnStateListener.Callback {
      * RadioOnHelper's handler (thus ensuring that the rest of the sequence is entirely
      * serialized, and runs on the main looper.)
      */
-    public void enableRadioOnCalling(RadioOnStateListener.Callback callback) {
+    public void triggerRadioOnAndListen(RadioOnStateListener.Callback callback) {
         setupListeners();
         mCallback = callback;
         mInProgressListeners.clear();
@@ -108,8 +107,8 @@ public class RadioOnHelper implements RadioOnStateListener.Callback {
 
             // Post the broadcast intend for change in airplane mode
             // TODO: We really should not be in charge of sending this broadcast.
-            //     If changing the setting is sufficent to trigger all of the rest of the logic,
-            //     then that should also trigger the broadcast intent.
+            // If changing the setting is sufficient to trigger all of the rest of the logic,
+            // then that should also trigger the broadcast intent.
             Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
             intent.putExtra("state", false);
             mContext.sendBroadcastAsUser(intent, UserHandle.ALL);
