@@ -221,7 +221,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Гэта можа прывесці да значных выдаткаў."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Дазволіць перадачу даных у роўмінгу?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Выкарыстанне даных"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> мабільны трафік, выкарыстаны ў перыяд <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> мабільнага трафіку выкарыстана ў перыяд <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Пашыраныя налады"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Аператар"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"аператар, esim, sim, euicc"</string>
