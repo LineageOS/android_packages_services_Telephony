@@ -30,7 +30,9 @@ import android.text.TextUtils;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Connection;
+import com.android.internal.telephony.GsmCdmaPhone;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.cdma.CdmaCallWaitingNotification;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsExternalConnection;
@@ -320,14 +322,16 @@ final class PstnIncomingCallNotifier {
             if (original instanceof ImsExternalConnection) {
                 return true;
             }
-            // Since we have set the new connection as the original connection, disconnect the old
-            // one, since it is no longer needed.
-            try {
-                original.hangup();
-                Log.i(this, "Hung up original connection: " + original);
-            } catch (CallStateException e) {
-                Log.w(this, "Couldn't hang up original connection: " + original + ", Error: "
-                        + e.getError());
+            // If the connection we're replacing was a GSM or CDMA connection, call upon the call
+            // tracker to perform cleanup of calls.  This ensures that we don't end up with a
+            // call stuck in the call tracker preventing other calls from being placed.
+            if (original.getCall() != null && original.getCall().getPhone() != null &&
+                    original.getCall().getPhone() instanceof GsmCdmaPhone) {
+
+                GsmCdmaPhone phone = (GsmCdmaPhone) original.getCall().getPhone();
+                phone.getCallTracker().cleanupCalls();
+                Log.i(this, "maybeSwapWithUnknownConnection - Invoking call tracker cleanup "
+                        + "for connection: " + original);
             }
             return true;
         }
