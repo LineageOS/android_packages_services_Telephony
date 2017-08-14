@@ -172,7 +172,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"בחר ספק רשת"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"חפש את כל הרשתות הזמינות"</string>
     <string name="select_automatically" msgid="5628402124471810174">"בחר אוטומטית"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"בחר רשת מועדפת באופן אוטומטי"</string>
     <string name="register_automatically" msgid="6017849844573519637">"רישום אוטומטי..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"סוג רשת מועדף"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"שנה את מצב ההפעלה של הרשת"</string>

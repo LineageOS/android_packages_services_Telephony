@@ -172,7 +172,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"የአውታረ መረብ ከዋኝ ምረጥ"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"የሚገኙ አውታረመረቦች በሙሉ ፈልግ"</string>
     <string name="select_automatically" msgid="5628402124471810174">"በራስ ሰር ምረጥ"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"ተመራጭ አውታረ መረብን በራስ ሰር ምረጥ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ራስ ሰር ምዝገባ...."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"የሚመረጠው የአውታረ መረብ አይነት"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"የአውታረመረቡንመከወኛ ሁነታ ለውጥ"</string>

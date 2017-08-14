@@ -173,7 +173,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"એક નેટવર્ક ઓપરેટર પસંદ કરો"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"બધા ઉપલબ્ધ નેટવર્ક્સ માટે શોધો"</string>
     <string name="select_automatically" msgid="5628402124471810174">"આપમેળે પસંદ કરો"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"પસંદગીનું નેટવર્ક આપમેળે શોધો"</string>
     <string name="register_automatically" msgid="6017849844573519637">"સ્વયંચાલિત નોંધણી…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"પસંદગીનો નેટવર્ક પ્રકાર"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"નેટવર્ક ઓપરેટિંગ મોડ બદલો"</string>

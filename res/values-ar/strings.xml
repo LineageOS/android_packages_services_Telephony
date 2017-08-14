@@ -172,7 +172,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"اختر مشغل شبكة جوال"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"البحث عن كل الشبكات المتاحة"</string>
     <string name="select_automatically" msgid="5628402124471810174">"اختيار تلقائي"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"اختيار الشبكة المفضلة تلقائيًا"</string>
     <string name="register_automatically" msgid="6017849844573519637">"التسجيل التلقائي..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"نوع الشبكة المفضل"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"تغيير وضع تشغيل الشبكة"</string>
