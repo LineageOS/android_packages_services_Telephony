@@ -3351,7 +3351,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 // Set preferred mobile network type to the best available
                 setPreferredNetworkType(subId, Phone.PREFERRED_NT_MODE);
                 // Turn off roaming
-                SubscriptionManager.from(mApp).setDataRoaming(0, subId);
+                mPhone.setDataRoamingEnabled(false);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
