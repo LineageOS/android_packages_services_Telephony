@@ -171,7 +171,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Şəbəkə operatoru seçin"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Bütün əlçatımlı şəbəkələri axtarın"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Avtomatik seçin"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Tərcih olunmuş şəbəkəni avtomatik seçin"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Avtomatik qeydiyyat ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tərcih edilən şəbəkə növü"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Şəbəkə əməliyyat rejimini dəyişin"</string>

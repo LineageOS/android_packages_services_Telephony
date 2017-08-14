@@ -171,7 +171,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"नेटवर्क ऑपरेटर निवडा"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"सर्व उपलब्ध नेटवर्क शोधा"</string>
     <string name="select_automatically" msgid="5628402124471810174">"स्‍वयंचलितपणे निवडा"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"स्‍वयंचलितपणे प्राधान्‍यकृत नेटवर्क निवडा"</string>
     <string name="register_automatically" msgid="6017849844573519637">"स्‍वयंचलित नोंदणी…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"प्राधान्‍यकृत नेटवर्क प्रकार"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"नेटवर्क कार्य करण्‍याचा मोड बदला"</string>

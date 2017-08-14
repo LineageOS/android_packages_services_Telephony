@@ -171,7 +171,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Выберите оператора связи"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Поиск всех доступных сетей"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Автоматически"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Автоматически выбирать предпочтительную сеть"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Автоматическая регистрация..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Тип сети"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Изменить режим работы сети"</string>

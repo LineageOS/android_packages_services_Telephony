@@ -171,7 +171,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Pumili ng network operator"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Hanapin ang lahat ng mga available na network"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Awtomatikong pumili"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Awtomatikong pumili ng gustong network"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Awtomatikong pagpaparehistro..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Gustong uri ng network"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Baguhin ang network operating mode"</string>

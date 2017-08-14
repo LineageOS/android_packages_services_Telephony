@@ -171,7 +171,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Pasirinkite tinklo operatorių"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Ieškoti galimų tinklų"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Pasirinkti automatiškai"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Automatiškai pasirinkti pageidaujamą tinklą"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatinė registracija..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Pageidaujamas tinklo tipas"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Pakeisti tinklo veikimo režimą"</string>

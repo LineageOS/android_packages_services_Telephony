@@ -171,7 +171,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"選擇網絡供應商"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"搜尋所有可用的網絡"</string>
     <string name="select_automatically" msgid="5628402124471810174">"自動選擇"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"自動選擇偏好網絡"</string>
     <string name="register_automatically" msgid="6017849844573519637">"自動註冊..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"偏好的網絡類型"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"更改網絡操作模式"</string>

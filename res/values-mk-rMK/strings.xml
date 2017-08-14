@@ -171,7 +171,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Избери оператор на мрежа"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Пребарај ги сите достапни мрежи"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Избери автоматски"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Автоматски избери претпочитана мрежа"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Автоматска регистрација..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Претпочитан тип мрежа"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Промени го режимот на работа на мрежата"</string>
