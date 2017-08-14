@@ -173,7 +173,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"ഒരു നെ‌റ്റ്‌വർക്ക് ഓപ്പറേറ്ററെ തിരഞ്ഞെടുക്കുക"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"ലഭ്യമായ എല്ലാ നെറ്റ്‌വർക്കുകൾക്കായും തിരയുക"</string>
     <string name="select_automatically" msgid="5628402124471810174">"സ്വയമേവ തിരഞ്ഞെടുക്കൂ"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"താൽപ്പര്യമുള്ള നെറ്റ്‌വർക്ക് സ്വയമേവ തിരഞ്ഞെടുക്കൂ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"യാന്ത്രിക രജിസ്‌ട്രേഷൻ…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"തിരഞ്ഞെടുത്ത നെറ്റ്‌വർക്ക് തരം"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"നെറ്റ്‌വർക്ക് ഓപ്പറേറ്റുചെയ്യൽ മോഡ് മാറ്റുക"</string>

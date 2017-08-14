@@ -387,10 +387,10 @@
     <string name="sum_carrier_select">Choose a network operator</string>
     <!-- Available networks screen, setting summary text -->
     <string name="sum_search_networks">Search for all available networks</string>
-    <!-- Available networks screen, setting option name -->
-    <string name="select_automatically">Choose automatically</string>
-    <!-- Available networks screen, setting summary text -->
-    <string name="sum_select_automatically">Automatically choose preferred network</string>
+    <!-- Available networks screen, name of switch button for whether to select network automatically -->
+    <string name="select_automatically">Automatically select network</string>
+    <!-- Available networks screen, name of button when user wants to select network manually  -->
+    <string name="network_select_title">Network</string>
     <string name="register_automatically">Automatic registration\u2026</string>
     <string name="preferred_network_mode_title">Preferred network type</string>
     <string name="preferred_network_mode_summary">Change the network operating mode</string>
@@ -460,6 +460,12 @@
         <item>"1"</item>
         <item>"0"</item>
     </string-array>
+
+    <!-- Mobile network settings screen, name for call settings category -->
+    <string name="call_category">Calling</string>
+    <!-- Mobile network settings screen, name for network operator category -->
+    <string name="network_operator_category">Network</string>
+
     <!-- Mobile network 4G title [CHAR LIMIT=30] -->
     <string name="enhanced_4g_lte_mode_title">Enhanced 4G LTE Mode</string>
     <!-- Carrier variant of Enhaced 4G LTE Mode title.  [CHAR LIMIT=50] -->
@@ -474,7 +480,7 @@
     <!-- Mobile network settings screen, title for alert dialog -->
     <string name="dialog_alert_title">Attention</string>
     <!-- Mobile network settings screen, setting check box name -->
-    <string name="roaming">Data roaming</string>
+    <string name="roaming">Roaming</string>
     <!-- Mobile network settings screen, setting summary text when check box is selected -->
     <string name="roaming_enable">Connect to data services when roaming</string>
     <!-- Mobile network settings screen, setting summary text when check box is clear -->
@@ -487,6 +493,22 @@
     <string name="roaming_warning">You may incur significant charges.</string>
     <!-- Mobile network settings screen, dialog message title when user selects the Data roaming check box -->
     <string name="roaming_alert_title">Allow data roaming?</string>
+    <!-- Mobile network settings screen, data usage setting check box name -->
+    <string name="data_usage_title">Data usage</string>
+    <!-- Summary about how much data has been used in a date range [CHAR LIMIT=100] -->
+    <string name="data_usage_template"><xliff:g name="amount" example="200 MB">%1$s</xliff:g> mobile data used between <xliff:g name="date_range" example="Jan 1 -- Feb 2">%2$s</xliff:g></string>
+    <!-- Mobile network settings screen, name of the option to manage carrier profiles on devices which support embedded carrier profiles -->
+    <string name="carrier_settings_euicc">Carrier</string>
+    <!-- Mobile network settings screen, summary of the option to manage carrier profiles on devices which support embedded carrier profiles -->
+    <string name="carrier_settings_euicc_summary"><xliff:g id="carrier_name">%1$s</xliff:g> &#8212; <xliff:g id="phone_number">%2$s</xliff:g></string>
+    <!-- Mobile network settings screen, title of Mobile Data switch preference -->
+    <string name="mobile_data_settings_title">Mobile Data</string>
+    <!-- Mobile network settings screen, title of Mobile Data switch preference -->
+    <string name="mobile_data_settings_summary">Access data using mobile network</string>
+    <!-- Mobile network settings screen, title of Wi-Fi calling setting -->
+    <string name="wifi_calling_settings_title">Wi-Fi calling</string>
+    <!-- Mobile network settings screen, title of Video calling setting -->
+    <string name="video_calling_settings_title">Carrier video calling</string>
 
     <!-- USSD aggregation dialog box: separator strings between messages (new-lines will be added before and after) -->
     <string name="ussd_dialog_sep" translatable="false">----------</string>

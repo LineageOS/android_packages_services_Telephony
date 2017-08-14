@@ -173,7 +173,6 @@
     <string name="sum_carrier_select" msgid="3494252551249882718">"Escolher um operador de rede"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Procurar todas as redes disponíveis"</string>
     <string name="select_automatically" msgid="5628402124471810174">"Selecionar automaticamente"</string>
-    <string name="sum_select_automatically" msgid="5614890115123292400">"Selecionar rede preferida automaticamente"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Registo automático..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tipo de rede preferencial"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Alterar o modo de funcionamento em rede"</string>
