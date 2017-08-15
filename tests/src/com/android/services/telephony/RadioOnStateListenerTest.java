@@ -25,7 +25,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneConstants
+import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.ServiceStateTracker;
 
 import org.junit.After;
