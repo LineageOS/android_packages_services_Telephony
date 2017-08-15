@@ -118,8 +118,6 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
         when(mMockPhone.getState()).thenReturn(PhoneConstants.State.IDLE);
         when(mCallback.isOkToCall(eq(mMockPhone), anyInt())).thenReturn(false);
         when(mMockPhone.getServiceState()).thenReturn(state);
-        when(mMockPhone.getServiceStateTracker()).thenReturn(mMockServiceStateTracker);
-        when(mMockServiceStateTracker.isRadioOn()).thenReturn(true);
         mListener.waitForRadioOn(mMockPhone, mCallback);
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
 
