@@ -427,6 +427,8 @@ public class DisconnectCauseUtil {
                     return android.telecom.DisconnectCause.REASON_WIFI_ON_BUT_WFC_OFF;
                 }
                 break;
+            case android.telephony.DisconnectCause.IMS_ACCESS_BLOCKED:
+                return DisconnectCause.REASON_IMS_ACCESS_BLOCKED;
         }
 
         // If no specific code-mapping found, then fall back to using the reason.
