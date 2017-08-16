@@ -258,9 +258,18 @@ public class MobileNetworkSettings extends Activity  {
             @Override
             public void onCallStateChanged(int state, String incomingNumber) {
                 if (DBG) log("PhoneStateListener.onCallStateChanged: state=" + state);
-                boolean enabled = (state == TelephonyManager.CALL_STATE_IDLE) &&
-                        ImsManager.isNonTtyOrTtyOnVolteEnabled
-                                (getActivity().getApplicationContext());
+
+                Activity activity = getActivity();
+                if (activity == null) {
+                    return;
+                }
+
+                int subId = mPhone != null
+                        ? mPhone.getSubId() : SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+                PersistableBundle carrierConfig =
+                        PhoneGlobals.getInstance().getCarrierConfigForSubId(subId);
+                boolean enabled = is4gLtePrefEnabled(activity.getApplicationContext(),
+                        carrierConfig);
                 Preference pref = getPreferenceScreen().findPreference(BUTTON_4G_LTE_KEY);
                 if (pref != null) pref.setEnabled(enabled && hasActiveSubscriptions());
 
@@ -1032,12 +1041,8 @@ public class MobileNetworkSettings extends Activity  {
              * but you do need to remember that this all needs to work when subscriptions
              * change dynamically such as when hot swapping sims.
              */
-            boolean canChange4glte =
-                    (mTelephonyManager.getCallState() == TelephonyManager.CALL_STATE_IDLE)
-                            && ImsManager.isNonTtyOrTtyOnVolteEnabled(
-                                    activity.getApplicationContext())
-                            && carrierConfig.getBoolean(
-                            CarrierConfigManager.KEY_EDITABLE_ENHANCED_4G_LTE_BOOL);
+            boolean canChange4glte = is4gLtePrefEnabled(activity.getApplicationContext(),
+                    carrierConfig);
             boolean useVariant4glteTitle = carrierConfig.getBoolean(
                     CarrierConfigManager.KEY_ENHANCED_4G_LTE_TITLE_VARIANT_BOOL);
             int enhanced4glteModeTitleId = useVariant4glteTitle ?
@@ -1254,6 +1259,13 @@ public class MobileNetworkSettings extends Activity  {
             updateBody();
             // always let the preference setting proceed.
             return true;
+        }
+
+        private boolean is4gLtePrefEnabled(Context context, PersistableBundle carrierConfig) {
+            return (mTelephonyManager.getCallState() == TelephonyManager.CALL_STATE_IDLE)
+                    && ImsManager.isNonTtyOrTtyOnVolteEnabled(context)
+                    && carrierConfig.getBoolean(
+                            CarrierConfigManager.KEY_EDITABLE_ENHANCED_4G_LTE_BOOL);
         }
 
         private class MyHandler extends Handler {
