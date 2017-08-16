@@ -56,7 +56,7 @@ public class EmbmsTestStreamingService extends Service {
 
     private static final int SEND_STREAMING_SERVICES_LIST = 1;
 
-    private final Map<FrontendAppIdentifier, IMbmsStreamingManagerCallback> mAppCallbacks =
+    private final Map<FrontendAppIdentifier, MbmsStreamingManagerCallback> mAppCallbacks =
             new HashMap<>();
 
     private HandlerThread mHandlerThread;
@@ -67,20 +67,16 @@ public class EmbmsTestStreamingService extends Service {
                 SomeArgs args = (SomeArgs) msg.obj;
                 FrontendAppIdentifier appKey = (FrontendAppIdentifier) args.arg1;
                 List<StreamingServiceInfo> services = (List) args.arg2;
-                IMbmsStreamingManagerCallback appCallback = mAppCallbacks.get(appKey);
+                MbmsStreamingManagerCallback appCallback = mAppCallbacks.get(appKey);
                 if (appCallback != null) {
-                    try {
-                        appCallback.streamingServicesUpdated(services);
-                    } catch (RemoteException e) {
-                        // Assume app has gone away and clean up.
-                    }
+                    appCallback.onStreamingServicesUpdated(services);
                 }
                 break;
         }
         return true;
     };
 
-    private final IMbmsStreamingService.Stub mBinder = new MbmsStreamingServiceBase() {
+    private final MbmsStreamingServiceBase mBinder = new MbmsStreamingServiceBase() {
         @Override
         public int initialize(MbmsStreamingManagerCallback listener, int subId) {
             int packageUid = Binder.getCallingUid();
@@ -98,20 +94,11 @@ public class EmbmsTestStreamingService extends Service {
                 if (!mAppCallbacks.containsKey(appKey)) {
                     mAppCallbacks.put(appKey, listener);
                 } else {
-                    try {
-                        listener.error(
-                                MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
-                    } catch (RemoteException e) {
-                        // ignore, it was an error anyway
-                    }
+                    listener.onError(
+                            MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
                     return;
                 }
-                try {
-                    listener.middlewareReady();
-                } catch (RemoteException e) {
-                    StreamStateTracker.disposeAll(appKey);
-                    mAppCallbacks.remove(appKey);
-                }
+                listener.onMiddlewareReady();
             }, INITIALIZATION_DELAY);
             return MbmsException.SUCCESS;
         }
@@ -199,6 +186,15 @@ public class EmbmsTestStreamingService extends Service {
             checkInitialized(appKey);
 
             Log.i(TAG, "Disposing app with uid " + Binder.getCallingUid());
+            StreamStateTracker.disposeAll(appKey);
+            mAppCallbacks.remove(appKey);
+        }
+
+        @Override
+        public void onAppCallbackDied(int uid, int subscriptionId) {
+            FrontendAppIdentifier appKey = new FrontendAppIdentifier(uid, subscriptionId);
+
+            Log.i(TAG, "Disposing app " + appKey + " due to binder death");
             StreamStateTracker.disposeAll(appKey);
             mAppCallbacks.remove(appKey);
         }
