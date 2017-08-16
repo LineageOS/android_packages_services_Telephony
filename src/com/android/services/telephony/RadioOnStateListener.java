@@ -24,22 +24,24 @@ import android.telephony.ServiceState;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.os.SomeArgs;
-import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.SubscriptionController;
 
 /**
- * Helper class that listens to a Phone's radio state and sends a callback when the radio state of
- * that Phone is either "in service" or ("emergency calls only." if is emergency).
+ * Helper class that listens to a Phone's radio state and sends an onComplete callback when we
+ * return true for isOkToCall.
  */
 public class RadioOnStateListener {
 
-    /**
-     * Receives the result of the RadioOnStateListener's attempt to turn on the radio.
-     */
     interface Callback {
+        /**
+         * Receives the result of the RadioOnStateListener's attempt to turn on the radio.
+         */
         void onComplete(RadioOnStateListener listener, boolean isRadioReady);
+
+        /**
+         * Given the Phone and the new service state of that phone, return whether or not this
+         * phone is ok to call. If it is, onComplete will be called shortly after.
+         */
         boolean isOkToCall(Phone phone, int serviceState);
     }
 
@@ -140,8 +142,9 @@ public class RadioOnStateListener {
     }
 
     /**
-     * Handles the SERVICE_STATE_CHANGED event. Normally this event tells us that the radio has
-     * finally come up. In that case, it's now safe to actually place the RadioOn call.
+     * Handles the SERVICE_STATE_CHANGED event. This event tells us that the radio state has changed
+     * and is probably coming up. We can now check to see if the conditions are met to place the
+     * call with {@link Callback#isOkToCall}
      */
     private void onServiceStateChanged(ServiceState state) {
         Log.d(this, "onServiceStateChanged(), new state = %s, Phone = %s", state,
@@ -151,7 +154,7 @@ public class RadioOnStateListener {
         // - STATE_IN_SERVICE        // Normal operation
         // - STATE_OUT_OF_SERVICE    // Still searching for an operator to register to,
         //                           // or no radio signal
-        // - STATE_EMERGENCY_ONLY    // Phone is locked; only emergency numbers are allowed
+        // - STATE_EMERGENCY_ONLY    // Only emergency numbers are allowed; currently not used
         // - STATE_POWER_OFF         // Radio is explicitly powered off (airplane mode)
 
         if (isOkToCall(state.getState())) {
@@ -167,9 +170,7 @@ public class RadioOnStateListener {
     }
 
     /**
-     * We currently only look to make sure that the radio is on before dialing. We should be able to
-     * make emergency calls at any time after the radio has been powered on and isn't in the
-     * UNAVAILABLE state, even if it is reporting the OUT_OF_SERVICE state.
+     * Callback to see if it is okay to call yet, given the current conditions.
      */
     private boolean isOkToCall(int serviceState) {
         return (mCallback == null) ? false : mCallback.isOkToCall(mPhone, serviceState);

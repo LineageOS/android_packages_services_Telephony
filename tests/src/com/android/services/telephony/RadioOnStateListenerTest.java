@@ -34,7 +34,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
-import static org.mockito.Matchers.anyBoolean;
+import static org.mockito.ArgumentMatchers.anyBoolean;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Matchers.isNull;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -54,7 +55,6 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
     private static final long TIMEOUT_MS = 100;
 
     @Mock Phone mMockPhone;
-    @Mock ServiceStateTracker mMockServiceStateTracker;
     @Mock RadioOnStateListener.Callback mCallback;
     RadioOnStateListener mListener;
 
@@ -86,22 +86,16 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
     }
 
     /**
-     * Prerequisites:
-     *  - Phone is IN_SERVICE
-     *  - Radio is on
-     *
-     * Test: Send SERVICE_STATE_CHANGED message
-     *
-     * Result: callback's onComplete is called with the isRadioReady=true
+     * {@link RadioOnStateListener.Callback#isOkToCall(int)} returns true, so we are expecting
+     * {@link RadioOnStateListener.Callback#onComplete(boolean)} to return true.
      */
     @Test
     @SmallTest
-    public void testPhoneChangeState_InService() {
+    public void testPhoneChangeState_OkToCallTrue() {
         ServiceState state = new ServiceState();
         state.setState(ServiceState.STATE_IN_SERVICE);
         when(mMockPhone.getState()).thenReturn(PhoneConstants.State.IDLE);
-        when(mMockPhone.getServiceStateTracker()).thenReturn(mMockServiceStateTracker);
-        when(mMockServiceStateTracker.isRadioOn()).thenReturn(true);
+        when(mCallback.isOkToCall(eq(mMockPhone), anyInt())).thenReturn(true);
         mListener.waitForRadioOn(mMockPhone, mCallback);
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
 
@@ -113,24 +107,17 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
     }
 
     /**
-     * Prerequisites:
-     *  - Phone is OUT_OF_SERVICE (emergency calls only)
-     *  - Radio is on
-     *
-     * Test: Send SERVICE_STATE_CHANGED message
-     *
-     * Result: callback's onComplete is called with the isRadioReady=true
+     * We never receive a {@link RadioOnStateListener.Callback#onComplete(boolean)} because
+     * {@link RadioOnStateListener.Callback#isOkToCall(int)} returns false.
      */
     @Test
     @SmallTest
-    public void testPhoneChangeState_EmergencyCalls() {
+    public void testPhoneChangeState_NoOkToCall_Timeout() {
         ServiceState state = new ServiceState();
         state.setState(ServiceState.STATE_OUT_OF_SERVICE);
-        state.setEmergencyOnly(true);
         when(mMockPhone.getState()).thenReturn(PhoneConstants.State.IDLE);
+        when(mCallback.isOkToCall(eq(mMockPhone), anyInt())).thenReturn(false);
         when(mMockPhone.getServiceState()).thenReturn(state);
-        when(mMockPhone.getServiceStateTracker()).thenReturn(mMockServiceStateTracker);
-        when(mMockServiceStateTracker.isRadioOn()).thenReturn(true);
         mListener.waitForRadioOn(mMockPhone, mCallback);
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
 
@@ -138,91 +125,22 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
                 new AsyncResult(null, state, null)).sendToTarget();
 
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
-        verify(mCallback).onComplete(eq(mListener), eq(true));
+        verify(mCallback, never()).onComplete(any(RadioOnStateListener.class), anyBoolean());
     }
 
     /**
-     * Prerequisites:
-     *  - Phone is OUT_OF_SERVICE
-     *  - Radio is on
-     *
-     * Test: Send SERVICE_STATE_CHANGED message
-     *
-     * Result: callback's onComplete is called with the isRadioReady=true. Even though the radio is
-     * not reporting emergency calls only, we still send onComplete so that the radio can trigger
-     * the emergency call.
-     */
-    @Test
-    @SmallTest
-    public void testPhoneChangeState_OutOfService() {
-        ServiceState state = new ServiceState();
-        state.setState(ServiceState.STATE_OUT_OF_SERVICE);
-        when(mMockPhone.getState()).thenReturn(PhoneConstants.State.IDLE);
-        when(mMockPhone.getServiceState()).thenReturn(state);
-        when(mMockPhone.getServiceStateTracker()).thenReturn(mMockServiceStateTracker);
-        when(mMockServiceStateTracker.isRadioOn()).thenReturn(true);
-        mListener.waitForRadioOn(mMockPhone, mCallback);
-        waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
-
-        // Still expect an answer because we will be sending the onComplete message as soon as the
-        // radio is confirmed to be on, whether or not it is out of service or not.
-        mListener.getHandler().obtainMessage(RadioOnStateListener.MSG_SERVICE_STATE_CHANGED,
-                new AsyncResult(null, state, null)).sendToTarget();
-
-        waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
-        verify(mCallback).onComplete(eq(mListener), eq(true));
-    }
-
-    /**
-     * Prerequisites:
-     *  - Phone is OUT_OF_SERVICE (emergency calls only)
-     *  - Radio is on
-     *
-     * Test: Wait for retry timer to complete (don't send ServiceState changed message)
-     *
-     * Result: callback's onComplete is called with the isRadioReady=true.
+     * Tests {@link RadioOnStateListener.Callback#isOkToCall(int)} returning false and hitting the
+     * max number of retries. This should result in
+     * {@link RadioOnStateListener.Callback#onComplete(boolean)} returning false.
      */
     @Test
     @FlakyTest
-    @SmallTest
-    public void testTimeout_EmergencyCalls() {
-        ServiceState state = new ServiceState();
-        state.setState(ServiceState.STATE_OUT_OF_SERVICE);
-        state.setEmergencyOnly(true);
-        when(mMockPhone.getState()).thenReturn(PhoneConstants.State.IDLE);
-        when(mMockPhone.getServiceState()).thenReturn(state);
-        when(mMockPhone.getServiceStateTracker()).thenReturn(mMockServiceStateTracker);
-        when(mMockServiceStateTracker.isRadioOn()).thenReturn(true);
-        mListener.setTimeBetweenRetriesMillis(100);
-
-        // Wait for the timer to expire and check state manually in onRetryTimeout
-        mListener.waitForRadioOn(mMockPhone, mCallback);
-        waitForHandlerActionDelayed(mListener.getHandler(), TIMEOUT_MS, 500);
-
-        verify(mCallback).onComplete(eq(mListener), eq(true));
-    }
-
-    /**
-     * Prerequisites:
-     *  - Phone is OUT_OF_SERVICE
-     *  - Radio is off
-     *
-     * Test: Wait for retry timer to complete, no ServiceState changed messages received.
-     *
-     * Result:
-     * - callback's onComplete is called with the isRadioReady=false.
-     * - setRadioPower was send twice (tried to turn on the radio)
-     */
-    @Test
-    @FlakyTest
-    @SmallTest
     public void testTimeout_RetryFailure() {
         ServiceState state = new ServiceState();
         state.setState(ServiceState.STATE_POWER_OFF);
         when(mMockPhone.getState()).thenReturn(PhoneConstants.State.IDLE);
         when(mMockPhone.getServiceState()).thenReturn(state);
-        when(mMockPhone.getServiceStateTracker()).thenReturn(mMockServiceStateTracker);
-        when(mMockServiceStateTracker.isRadioOn()).thenReturn(false);
+        when(mCallback.isOkToCall(eq(mMockPhone), anyInt())).thenReturn(false);
         mListener.setTimeBetweenRetriesMillis(50);
         mListener.setMaxNumRetries(2);
 
