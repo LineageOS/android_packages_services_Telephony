@@ -123,7 +123,7 @@
     <string name="call_settings_with_label" msgid="3401177261468593519">"सेटिंग्ज (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="7970259216988931777">"कॉल सेटिंग्ज त्रुटी"</string>
     <string name="reading_settings" msgid="1920291699287055284">"सेटिंग्‍ज वाचत आहे…"</string>
-    <string name="updating_settings" msgid="8171225533884883252">"सेटिंग्ज अद्यतनित करीत आहे..."</string>
+    <string name="updating_settings" msgid="8171225533884883252">"सेटिंग्ज अपडेट करीत आहे..."</string>
     <string name="reverting_settings" msgid="4752151682666912828">"सेटिंग्‍ज परत करत आहे…"</string>
     <string name="response_error" msgid="6674110501330139405">"नेटवर्क वरून अनपेक्षित प्रतिसाद."</string>
     <string name="exception_error" msgid="7027667130619518211">"नेटवर्क किंवा सिम कार्ड त्रुटी."</string>
@@ -135,7 +135,7 @@
     <string name="close_dialog" msgid="2365884406356986917">"ठीक"</string>
     <string name="enable" msgid="7248657275000173526">"चालू करा"</string>
     <string name="disable" msgid="4678348128118573672">"बंद करा"</string>
-    <string name="change_num" msgid="239476305819844391">"अद्यतनित करा"</string>
+    <string name="change_num" msgid="239476305819844391">"अपडेट करा"</string>
   <string-array name="clir_display_values">
     <item msgid="5560134294467334594">"नेटवर्क डीफॉल्ट"</item>
     <item msgid="7876195870037833661">"नंबर लपवा"</item>
@@ -392,14 +392,14 @@
     <string name="adding_fdn_contact" msgid="7627379633721940991">"निश्चित डायलिंग नंबर जोडत आहे..."</string>
     <string name="fdn_contact_added" msgid="7458335758501736665">"निश्चित डायलिंग नंबर जोडला."</string>
     <string name="edit_fdn_contact" msgid="7976936035587081480">"निश्चित डायलिंग नंबर संपादित करीत आहे..."</string>
-    <string name="updating_fdn_contact" msgid="8370929876849803600">"निश्चित डायलिंग नंबर अद्यतनित करीत आहे..."</string>
-    <string name="fdn_contact_updated" msgid="5497828782609005017">"निश्चित डायलिंग नंबर अद्यतनित केला."</string>
+    <string name="updating_fdn_contact" msgid="8370929876849803600">"निश्चित डायलिंग नंबर अपडेट करीत आहे..."</string>
+    <string name="fdn_contact_updated" msgid="5497828782609005017">"निश्चित डायलिंग नंबर अपडेट केला."</string>
     <string name="delete_fdn_contact" msgid="6668958073074151717">"निश्चित डायलिंग नंबर हटवा"</string>
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"निश्चित डायलिंग नंबर हटवित आहे..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"निश्चित डायलिंग नंबर हटविला."</string>
-    <string name="pin2_invalid" msgid="5470854099230755944">"आपण चुकीचा पिन टाईप केल्‍याने FDN अद्यतनित केले नव्‍हते."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN अद्यतनित झाले नाही कारण नंबर रिक्त आहे किंवा 20 अंकांपेक्षा मोठा आहे."</string>
-    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN अद्यतनित केले नव्‍हते. PIN2 चुकीचा होता किंवा फोन नंबरला नकार दिला."</string>
+    <string name="pin2_invalid" msgid="5470854099230755944">"आपण चुकीचा पिन टाईप केल्‍याने FDN अपडेट केले नव्‍हते."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN अपडेट झाले नाही कारण नंबर रिक्त आहे किंवा 20 अंकांपेक्षा मोठा आहे."</string>
+    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN अपडेट केले नव्‍हते. PIN2 चुकीचा होता किंवा फोन नंबरला नकार दिला."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN कार्य अयशस्‍वी झाले."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"सिक कार्डमधून वाचत आहे..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"आपल्‍या सिम कार्डवर कोणतेही संपर्क नाहीत."</string>
@@ -420,7 +420,7 @@
     <string name="enable_pin_ok" msgid="2918545971413270063">"पिन सेट केला"</string>
     <string name="disable_pin_ok" msgid="2109571368635883688">"पिन साफ केला"</string>
     <string name="pin_failed" msgid="5644377896213584760">"पिन चुकीचा आहे"</string>
-    <string name="pin_changed" msgid="4455736268023261662">"पिन अद्यतनित केला"</string>
+    <string name="pin_changed" msgid="4455736268023261662">"पिन अपडेट केला"</string>
     <string name="puk_requested" msgid="5921393215789090200">"संकेतशब्द चुकीचा आहे. पिन आता अवरोधित केला. PUK ची विनंती केली."</string>
     <string name="enter_pin2_text" msgid="8339444124477720345">"PIN2"</string>
     <string name="oldPin2Label" msgid="8559146795026261502">"जुना PIN2"</string>
@@ -431,7 +431,7 @@
     <string name="mismatchPin2" msgid="4177967478551851117">"पिन2 जुळत नाहीत. पुन्हा प्रयत्न करा."</string>
     <string name="invalidPin2" msgid="1757045131429105595">"4 ते 8 अंक असलेला एक पिन2 प्रविष्‍ट करा."</string>
     <string name="invalidPuk2" msgid="7059081153334815973">"8 अंक असलेला एक PUK2 प्रविष्‍ट करा."</string>
-    <string name="pin2_changed" msgid="3724522579945610956">"पिन2 अद्यतनित केला"</string>
+    <string name="pin2_changed" msgid="3724522579945610956">"पिन2 अपडेट केला"</string>
     <string name="label_puk2_code" msgid="4688069961795341948">"PUK2 कोड प्रविष्‍ट करा"</string>
     <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"संकेतशब्द चुकीचा आहे. पिन2 आता अवरोधित केला. पुन्हा प्रयत्न करण्‍यासाठी, पिन 2 बदला."</string>
     <string name="puk2_requested" msgid="5831015200030161434">"संकेतशब्द चुकीचा आहे. सिम आता लॉक केले आहे. PUK2 प्रविष्‍ट करा."</string>
@@ -464,7 +464,8 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"मोबाइल नेटवर्क उपलब्‍ध नाही. कॉल करण्‍यासाठी वायरलेस नेटवर्कशी कनेक्‍ट करा."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"कॉल करण्यासाठी, एक वैध नंबर प्रविष्ट करा."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"कॉल अयशस्वी झाला."</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"यावेळी कॉल जोडला जाऊ शकत नाही."</string>
+    <!-- no translation found for incall_error_cannot_add_call (8878159278947023326) -->
+    <skip />
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"सेवा समर्थित नाही"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"कॉल स्विच करू शकत नाही."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"कॉल विभक्त करू शकत नाही."</string>
@@ -541,8 +542,8 @@
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"डेटा कनेक्शन अक्षम केले"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> पर्यंत कोणतेही डेटा कनेक्‍शन नाही"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="one">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अनुप्रयोग वापरले जाऊ शकत नाहीत. आपण आता बाहेर पडू इच्छिता?</item>
-      <item quantity="other">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अनुप्रयोग वापरले जाऊ शकत नाहीत. आपण आता बाहेर पडू इच्छिता?</item>
+      <item quantity="one">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अॅप्लिकेशन वापरले जाऊ शकत नाहीत. आपण आता बाहेर पडू इच्छिता?</item>
+      <item quantity="other">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अॅप्लिकेशन वापरले जाऊ शकत नाहीत. आपण आता बाहेर पडू इच्छिता?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
       <item quantity="one">आणीबाणी कॉलबॅक मोडमध्ये असताना निवडलेली क्रिया उपलब्ध नसते. फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी या मोडमध्ये राहील. आपण आता बाहेर पडू इच्छिता?</item>
@@ -580,7 +581,7 @@
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"वाय-फाय कॉल"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"उघडण्यासाठी पुन्हा टॅप करा"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"संदेश डीकोड करताना एक त्रुटी आली."</string>
-    <string name="callFailed_cdma_activation" msgid="2307989779233262164">"सिम कार्डने आपली सेवा सक्रिय केली आहे आणि आपल्या फोनच्या रोमिंग क्षमता अद्यतनित केल्या."</string>
+    <string name="callFailed_cdma_activation" msgid="2307989779233262164">"सिम कार्डने आपली सेवा सक्रिय केली आहे आणि आपल्या फोनच्या रोमिंग क्षमता अपडेट केल्या."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"बरेच सक्रिय कॉल आहेत. कृपया नवीन एक कॉल करण्यापूर्वी विद्यमान कॉल समाप्त करा किंवा विलीन करा."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"कनेक्ट करण्यात अक्षम, कृपया एक वैध सिम कार्ड घाला."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"वाय-फाय कनेक्शन गमावले. कॉल समाप्त झाला."</string>
@@ -594,7 +595,7 @@
     <string name="change_pin_enter_new_pin_hint" msgid="2322940054329689309">"पिन <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> अंकी असणे आवश्‍यक आहे."</string>
     <string name="change_pin_confirm_pin_header" msgid="8113764019347322170">"आपल्या पिनची पुष्टी करा"</string>
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"पिन जुळत नाहीत"</string>
-    <string name="change_pin_succeeded" msgid="2022852286442211151">"व्हॉइसमेल पिन अद्यतनित केला"</string>
+    <string name="change_pin_succeeded" msgid="2022852286442211151">"व्हॉइसमेल पिन अपडेट केला"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"पिन सेट करण्यात अक्षम"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"डेटा रोमिंग बंद केलेले आहे"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"डेटा रोमिंग चालू केलेले आहे"</string>
