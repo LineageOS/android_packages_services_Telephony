@@ -760,6 +760,10 @@ public class MobileNetworkSettings extends Activity  {
             mMobileDataPref.initialize(phoneSubId);
             mDataUsagePref.initialize(phoneSubId);
 
+            mMobileDataPref.setEnabled(hasActiveSubscriptions);
+            mButtonDataRoam.setEnabled(hasActiveSubscriptions);
+            mDataUsagePref.setEnabled(hasActiveSubscriptions);
+
             // Initialize states of mButtonDataRoam.
             mButtonDataRoam.setChecked(mPhone.getDataRoamingEnabled());
             mButtonDataRoam.setDisabledByAdmin(false);
@@ -772,10 +776,6 @@ public class MobileNetworkSettings extends Activity  {
                             UserManager.DISALLOW_DATA_ROAMING);
                 }
             }
-
-            mMobileDataPref.setEnabled(hasActiveSubscriptions);
-            mButtonDataRoam.setEnabled(hasActiveSubscriptions);
-            mDataUsagePref.setEnabled(hasActiveSubscriptions);
         }
 
         private void updateBody() {
