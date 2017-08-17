@@ -103,6 +103,7 @@ public class EuiccUiDispatcherActivity extends Activity {
                 intent.putExtra(
                         EuiccManager.EXTRA_FORCE_PROVISION,
                         getIntent().getBooleanExtra(EuiccManager.EXTRA_FORCE_PROVISION, false));
+                break;
             default:
                 Log.w(TAG, "Unsupported action: " + action);
                 return null;
