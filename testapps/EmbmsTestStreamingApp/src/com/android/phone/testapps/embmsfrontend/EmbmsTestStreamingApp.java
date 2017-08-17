@@ -45,7 +45,7 @@ import java.util.Map;
 public class EmbmsTestStreamingApp extends Activity {
     private MbmsStreamingManagerCallback mStreamingListener = new MbmsStreamingManagerCallback() {
         @Override
-        public void onStreamingServicesUpdated(List<StreamingServiceInfo> services) {
+        public void streamingServicesUpdated(List<StreamingServiceInfo> services) {
             EmbmsTestStreamingApp.this.runOnUiThread(() ->
                     Toast.makeText(EmbmsTestStreamingApp.this,
                             "Got services length " + services.size(),
@@ -54,7 +54,7 @@ public class EmbmsTestStreamingApp extends Activity {
         }
 
         @Override
-        public void onMiddlewareReady() {
+        public void middlewareReady() {
             runOnUiThread(() -> Toast.makeText(EmbmsTestStreamingApp.this, "Successfully bound",
                     Toast.LENGTH_SHORT).show());
         }
@@ -158,7 +158,7 @@ public class EmbmsTestStreamingApp extends Activity {
         bindButton.setOnClickListener((view) -> {
             try {
                 mStreamingManager = MbmsStreamingManager.create(
-                        EmbmsTestStreamingApp.this, mStreamingListener, mHandler);
+                        EmbmsTestStreamingApp.this, mStreamingListener);
             } catch (MbmsException e) {
                 Toast.makeText(EmbmsTestStreamingApp.this,
                         "Init error: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
