@@ -16,7 +16,6 @@
 
 package com.android.phone.testapps.embmsmw;
 
-import android.os.RemoteException;
 import android.telephony.mbms.StreamingService;
 import android.telephony.mbms.StreamingServiceCallback;
 
@@ -94,25 +93,17 @@ public class AppActiveStreams {
         mStreamStates.put(serviceId,
                 new StreamCallbackWithState(callback, StreamingService.STATE_STARTED,
                         StreamingService.UNICAST_METHOD));
-        try {
-            callback.streamStateUpdated(StreamingService.STATE_STARTED, reason);
-            updateStreamingMethod(serviceId);
-        } catch (RemoteException e) {
-            dispose(serviceId);
-        }
+        callback.onStreamStateUpdated(StreamingService.STATE_STARTED, reason);
+        updateStreamingMethod(serviceId);
     }
 
     public void stopStreaming(String serviceId, int reason) {
         StreamCallbackWithState entry = mStreamStates.get(serviceId);
 
         if (entry != null) {
-            try {
-                if (entry.getState() != StreamingService.STATE_STOPPED) {
-                    entry.setState(StreamingService.STATE_STOPPED);
-                    entry.getCallback().streamStateUpdated(StreamingService.STATE_STOPPED, reason);
-                }
-            } catch (RemoteException e) {
-                dispose(serviceId);
+            if (entry.getState() != StreamingService.STATE_STOPPED) {
+                entry.setState(StreamingService.STATE_STOPPED);
+                entry.getCallback().onStreamStateUpdated(StreamingService.STATE_STOPPED, reason);
             }
         }
     }
@@ -133,11 +124,7 @@ public class AppActiveStreams {
             }
             if (newMethod != oldMethod || callbackWithState.isMethodSet()) {
                 callbackWithState.setMethod(newMethod);
-                try {
-                    callbackWithState.getCallback().streamMethodUpdated(newMethod);
-                } catch (RemoteException e) {
-                    dispose(serviceId);
-                }
+                callbackWithState.getCallback().onStreamMethodUpdated(newMethod);
             }
         }
     }
