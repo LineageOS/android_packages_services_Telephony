@@ -16,6 +16,7 @@
 
 package com.android.phone.testapps.embmsmw;
 
+import android.os.RemoteException;
 import android.telephony.mbms.StreamingService;
 import android.telephony.mbms.StreamingServiceCallback;
 
@@ -93,17 +94,25 @@ public class AppActiveStreams {
         mStreamStates.put(serviceId,
                 new StreamCallbackWithState(callback, StreamingService.STATE_STARTED,
                         StreamingService.UNICAST_METHOD));
-        callback.onStreamStateUpdated(StreamingService.STATE_STARTED, reason);
-        updateStreamingMethod(serviceId);
+        try {
+            callback.streamStateUpdated(StreamingService.STATE_STARTED, reason);
+            updateStreamingMethod(serviceId);
+        } catch (RemoteException e) {
+            dispose(serviceId);
+        }
     }
 
     public void stopStreaming(String serviceId, int reason) {
         StreamCallbackWithState entry = mStreamStates.get(serviceId);
 
         if (entry != null) {
-            if (entry.getState() != StreamingService.STATE_STOPPED) {
-                entry.setState(StreamingService.STATE_STOPPED);
-                entry.getCallback().onStreamStateUpdated(StreamingService.STATE_STOPPED, reason);
+            try {
+                if (entry.getState() != StreamingService.STATE_STOPPED) {
+                    entry.setState(StreamingService.STATE_STOPPED);
+                    entry.getCallback().streamStateUpdated(StreamingService.STATE_STOPPED, reason);
+                }
+            } catch (RemoteException e) {
+                dispose(serviceId);
             }
         }
     }
@@ -124,7 +133,11 @@ public class AppActiveStreams {
             }
             if (newMethod != oldMethod || callbackWithState.isMethodSet()) {
                 callbackWithState.setMethod(newMethod);
-                callbackWithState.getCallback().onStreamMethodUpdated(newMethod);
+                try {
+                    callbackWithState.getCallback().streamMethodUpdated(newMethod);
+                } catch (RemoteException e) {
+                    dispose(serviceId);
+                }
             }
         }
     }

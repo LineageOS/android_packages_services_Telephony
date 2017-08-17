@@ -27,20 +27,20 @@ import android.widget.Toast;
 public class StreamingServiceTracker {
     private class Callback extends StreamingServiceCallback {
         @Override
-        public void onError(int errorCode, String message) {
+        public void error(int errorCode, String message) {
             String toastMessage = "Error: " + errorCode + ": " + message;
             mActivity.runOnUiThread(() ->
                     Toast.makeText(mActivity, toastMessage, Toast.LENGTH_SHORT).show());
         }
 
         @Override
-        public void onStreamStateUpdated(int state, int reason) {
-            StreamingServiceTracker.this.onStreamStateUpdated(state, reason);
+        public void streamStateUpdated(int state, int reason) {
+            onStreamStateUpdated(state, reason);
         }
 
         @Override
-        public void onStreamMethodUpdated(int method) {
-            StreamingServiceTracker.this.onStreamMethodUpdated(method);
+        public void streamMethodUpdated(int method) {
+            onStreamMethodUpdated(method);
         }
     }
 
@@ -60,7 +60,7 @@ public class StreamingServiceTracker {
     public boolean startStreaming(MbmsStreamingManager streamingManager) {
         try {
             mStreamingService =
-                    streamingManager.startStreaming(mStreamingServiceInfo, new Callback(), null);
+                    streamingManager.startStreaming(mStreamingServiceInfo, new Callback());
             return true;
         } catch (MbmsException e) {
             Toast.makeText(mActivity,
