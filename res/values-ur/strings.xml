@@ -172,7 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"نیٹ ورک پر رجسٹرڈ ہوگیا۔"</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"ایک نیٹ ورک آپریٹر منتخب کریں"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"سبھی دستیاب نیٹ ورکس تلاش کریں"</string>
-    <string name="select_automatically" msgid="5628402124471810174">"خود کار طور پر منتخب کریں"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"نیٹ ورک خودکار طور پر منتخب کریں"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"نیٹ ورک"</string>
     <string name="register_automatically" msgid="6017849844573519637">"خود کار رجسٹریشن…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ترجیحی نیٹ ورک کی قسم"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"نیٹ ورک آپریٹنگ طرز تبدیل کریں"</string>
@@ -209,18 +210,28 @@
     <item msgid="1524224863879435516">"‏صرف GSM"</item>
     <item msgid="3817924849415716259">"‏GSM/WCDMA ترجیحی"</item>
   </string-array>
+    <string name="call_category" msgid="5863978196309462052">"کال کی جا رہی ہے"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"نیٹ ورک"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"‏Enhanced 4G LTE وضع"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"اعلی درجے کی کالنگ"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"‏صوتی اور دیگر مواصلات کو بہتر بنانے کیلئے LTE سروسز استعمال کریں (تجویز کردہ)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ڈیٹا فعال ہوگیا"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ڈیٹا کے استعمال کی اجازت دیں"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"توجہ دیں"</string>
-    <string name="roaming" msgid="8871412572928323707">"ڈیٹا رومنگ"</string>
+    <string name="roaming" msgid="7894878421600247140">"رومنگ"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"رومنگ کے وقت ڈیٹا سروسز سے مربوط ہوں"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"رومنگ کے وقت ڈیٹا سروسز سے مربوط ہوں"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"آپ ڈیٹا کی حالت رسائی سے محروم ہوگئے کیونکہ آپ نے ڈیٹا رومنگ آف ہونے کے ساتھ اپنا ہوم نیٹ ورک چھوڑ دیا۔"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"آپ پر خاطر خواہ چارجز لگ سکتے ہیں۔"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ڈیٹا رومنگ کی اجازت دیں؟"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"ڈیٹا کا استعمال"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> موبائل ڈیٹا جو <xliff:g id="ID_2">%2$s</xliff:g> کے درمیان استعمال ہوا"</string>
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"کیریئر"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"موبائل ڈیٹا"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"موبائل نیٹ ورک استعمال کرکے ڈیٹا تک رسائی حاصل کریں"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"‏Wi-Fi کالنگ"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"کیرئیر ویڈیو کالنگ"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"‏GSM/UMTS کے اختیارات"</string>
     <string name="cdma_options" msgid="4016822858172249884">"‏CDMA کے اختیارات"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"ڈیٹا کا استعمال"</string>

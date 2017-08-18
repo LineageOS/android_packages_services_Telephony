@@ -172,7 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"Võrku registreeritud."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Võrguoperaatori valimine"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Otsi kõiki saadaolevaid võrke"</string>
-    <string name="select_automatically" msgid="5628402124471810174">"Vali automaatselt"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"Vali võrk automaatselt"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Võrk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automaatne registreerimine ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Eelistatud võrgutüüp"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Muuda võrgu töörežiimi"</string>
@@ -209,18 +210,28 @@
     <item msgid="1524224863879435516">"Ainult GSM"</item>
     <item msgid="3817924849415716259">"Eelistatud GSM/WCDMA"</item>
   </string-array>
+    <string name="call_category" msgid="5863978196309462052">"Helistamine"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Võrk"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Tõhustatud 4G LTE režiim"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Täpsem helistamine"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Kasutage hääl- ja muu suhtluse täiustamiseks LTE-teenuseid (soovitatav)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Andmeside lubatud"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Luba andmekasutus"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Tähelepanu"</string>
-    <string name="roaming" msgid="8871412572928323707">"Andmesiderändlus"</string>
+    <string name="roaming" msgid="7894878421600247140">"Rändlus"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Ühenda rändluse ajal andmesideteenustega"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Ühenda rändluse ajal andmesideteenustega"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Andmesideühendus katkes, kuna lahkusite koduvõrgust ja andmesiderändlus oli välja lülitatud."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Lisanduda võivad suured tasud."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Kas lubada andmeside rändlus?"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"Andmekasutus"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"Vahemikus <xliff:g id="ID_2">%2$s</xliff:g> on kasutatud <xliff:g id="ID_1">%1$s</xliff:g> mobiilset andmesidet"</string>
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operaator"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobiilne andmeside"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Juurdepääs andmetele mobiilsidevõrgu abil"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"WiFi-kõned"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Operaatori videokõne"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM-i/UMTS-i valikud"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA valikud"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Andmete kasutus"</string>

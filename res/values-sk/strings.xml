@@ -172,7 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"Prihlásenie k sieti prebehlo úspešne."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Zvoliť sieťového operátora"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Hľadať všetky dostupné siete"</string>
-    <string name="select_automatically" msgid="5628402124471810174">"Vybrať automaticky"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"Vybrať sieť automaticky"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Sieť"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatická registrácia..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Preferovaný typ siete"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Zmeniť prevádzkový režim siete"</string>
@@ -209,25 +210,35 @@
     <item msgid="1524224863879435516">"Iba GSM"</item>
     <item msgid="3817924849415716259">"GSM / WCDMA – preferované"</item>
   </string-array>
+    <string name="call_category" msgid="5863978196309462052">"Volanie"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Sieť"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Zlepšený režim 4G LTE"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Rozšírené volanie"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Použiť služby LTE na vylepšenie hlasu a ďalších komunikácií (odporúčané)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Povoliť dát. prenosy"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Povoliť využívanie dát"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Pozor"</string>
-    <string name="roaming" msgid="8871412572928323707">"Dátový roaming"</string>
+    <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Pripájať sa k dátovým službám pri roamingu"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Pripájať sa k dátovým službám pri roamingu"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Dátové pripojenie bolo prerušené, pretože ste opustili domovskú sieť a máte vypnutý dátový roaming."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Môžu sa vám účtovať vysoké poplatky."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Povoliť dátový roaming?"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"Spotreba dát"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"Spotreba mobilných dát za obdobie <xliff:g id="ID_2">%2$s</xliff:g> je <xliff:g id="ID_1">%1$s</xliff:g>"</string>
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operátor"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobilné dáta"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Prístup k dátam pomocou mobilnej siete"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Volanie cez Wi-Fi"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Videohovory prostredníctvom operátora"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Možnosti GSM/UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"Možnosti CDMA"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Spotreba dát"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"Dáta využité v aktuálnom období"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"Obdobie využitia dát"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"Pravidlá pre prenosovú rýchlosť"</string>
-    <string name="throttle_help" msgid="243651091785169900">"Viac informácií"</string>
+    <string name="throttle_help" msgid="243651091785169900">"Ďalšie informácie"</string>
     <string name="throttle_status_subtext" msgid="1657318943142085170">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) z limitu <xliff:g id="USED_2">%3$s</xliff:g> pre obdobie\nPočet dní do začiatku ďalšieho obdobia: <xliff:g id="USED_3">%4$d</xliff:g> (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) z limitu <xliff:g id="USED_2">%3$s</xliff:g> pre obdobie"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"Bol prekročený limit <xliff:g id="USED_0">%1$s</xliff:g>\nPrenosová rýchlosť bola znížená na <xliff:g id="USED_1">%2$d</xliff:g> kB/s"</string>

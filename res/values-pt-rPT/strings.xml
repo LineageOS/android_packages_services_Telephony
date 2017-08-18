@@ -172,7 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"Registado na rede."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Escolher um operador de rede"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Procurar todas as redes disponíveis"</string>
-    <string name="select_automatically" msgid="5628402124471810174">"Selecionar automaticamente"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"Selecionar automaticamente a rede"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Rede"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Registo automático..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tipo de rede preferencial"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Alterar o modo de funcionamento em rede"</string>
@@ -209,18 +210,28 @@
     <item msgid="1524224863879435516">"Apenas GSM"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA preferido"</item>
   </string-array>
+    <string name="call_category" msgid="5863978196309462052">"Chamadas"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Rede"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Modo 4G LTE avançado"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Chamadas avançadas"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Utilizar os serviços LTE para melhorar a voz e outras comunicações (recomendado)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Dados ativados"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Permitir a utilização de dados"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Atenção"</string>
-    <string name="roaming" msgid="8871412572928323707">"Roaming de dados"</string>
+    <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Ligar a serviços de dados em roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Ligar a serviços de dados em roaming"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"A conectividade de dados foi perdida porque saiu do alcance da sua rede e o roaming de dados estava desativado."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Podem ser cobrados custos significativos."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Pretende permitir roaming de dados?"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"Utilização de dados"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> de dados móveis utilizados entre <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operador"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Dados móveis"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Aceder aos dados através de rede móvel"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Chamadas Wi-Fi"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Videochamadas do operador"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Opções GSM/UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"Opções CDMA"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Utilização de dados"</string>

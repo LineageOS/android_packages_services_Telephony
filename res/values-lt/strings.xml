@@ -172,7 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"Registruota tinkle."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Pasirinkite tinklo operatorių"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Ieškoti galimų tinklų"</string>
-    <string name="select_automatically" msgid="5628402124471810174">"Pasirinkti automatiškai"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"Automatiškai pasirinkti tinklą"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Tinklas"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatinė registracija..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Pageidaujamas tinklo tipas"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Pakeisti tinklo veikimo režimą"</string>
@@ -209,18 +210,28 @@
     <item msgid="1524224863879435516">"Tik GSM"</item>
     <item msgid="3817924849415716259">"Pageidaujama GSM / WCDMA"</item>
   </string-array>
+    <string name="call_category" msgid="5863978196309462052">"Skambinama"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Tinklas"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Patobulintas 4G LTE režimas"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Išplėstinės skambinimo parinktys"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Naudoti LTE paslaugas „Voice“ ir kitiems ryšiams patobulinti (rekomenduojama)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Duomenys įgalinti"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Leisti naudoti duomenis"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Dėmesio"</string>
-    <string name="roaming" msgid="8871412572928323707">"Tarptinklinis duomenų ryšys"</string>
+    <string name="roaming" msgid="7894878421600247140">"Tarptinklinis ryšys"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Veikiant tarptinkliniam ryšiui, prisijungti prie duomenų paslaugų"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Veikiant tarptinkliniam ryšiui, prisijungti prie duomenų paslaugų"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Ryšys su duomenimis nutrūko, nes iš pagrindinio tinklo išėjote neįjungę tarptinklinio ryšio."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Galite būti apmokestinti dideliais mokesčiais."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Leisti tarptinklinį duomenų ryšį?"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"Duomenų naudojimas"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> išnaudota mobiliojo ryšio duomenų: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operatorius"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"„<xliff:g id="CARRIER_NAME">%1$s</xliff:g>“ – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobiliojo ryšio duomenys"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Prieiga prie duomenų naudojant mobiliojo ryšio tinklą"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"„Wi-Fi“ skambinimas"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Operatoriaus vaizdo skambučiai"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM / UMTS parinktys"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA parinktys"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Duomenų naudojimas"</string>

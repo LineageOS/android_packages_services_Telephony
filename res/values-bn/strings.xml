@@ -172,7 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"নেটওয়ার্কে নিবন্ধিত করা হয়েছে৷"</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"একটি নেটওয়ার্ক অপারেটর বেছে নিন"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"সমস্ত উপলব্ধ নেটওয়ার্কের জন্য অনুসন্ধান করুন"</string>
-    <string name="select_automatically" msgid="5628402124471810174">"স্বয়ংক্রিয়ভাবে বেছে নিন"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"স্বয়ংক্রিয়ভাবে নেটওয়ার্ক নির্বাচন করুন"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"নেটওয়ার্ক"</string>
     <string name="register_automatically" msgid="6017849844573519637">"স্বয়ংক্রিয় নিবন্ধীকরণ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"পছন্দের নেটওয়ার্ক"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"নেটওয়ার্ক অপারেটিং মোড পরিবর্তন করুন"</string>
@@ -209,18 +210,28 @@
     <item msgid="1524224863879435516">"শুধুমাত্র GSM"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA সুবিধাজনক"</item>
   </string-array>
+    <string name="call_category" msgid="5863978196309462052">"কলিং"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"নেটওয়ার্ক"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"উন্নত 4G LTE মোড"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"উন্নত কলিং"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ভয়েস এবং অন্যান্য যোগাযোগব্যবস্থা উন্নত করতে LTE পরিষেবা ব্যবহার করুন (প্রস্তাবিত)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ডেটা সক্ষম করা হয়েছে"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ডেটা ব্যবহারের অনুমতি দিন"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"খেয়াল করুন"</string>
-    <string name="roaming" msgid="8871412572928323707">"রোমিং ডেটা"</string>
+    <string name="roaming" msgid="7894878421600247140">"রোমিং"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"রোমিংয়ে থাকাকালীন ডেটা পরিষেবাগুলির সাথে সংযোগ স্থাপন করুন"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"রোমিংয়ে থাকাকালীন ডেটা পরিষেবাগুলির সাথে সংযোগ স্থাপন করুন"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"আপনি ডেটা রোমিং বন্ধ করে আপনার হোম নেটওয়ার্কের বাইরে চলে আসায় আপনার ডেটা সংযোগ হারিয়ে ফেলেছেন৷"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"আপনাকে উল্লেখযোগ্য পরিমাণে চার্জ করা হতে পারে৷"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ডেটা রোমিংয়ের অনুমতি দেবেন?"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"ডেটার ব্যবহার"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> এর মধ্যে <xliff:g id="ID_1">%1$s</xliff:g> মোবাইল ডেটা ব্যবহার করা হয়েছে"</string>
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"পরিষেবা প্রদানকারী"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"মোবাইল ডেটা"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"মোবাইল নেটওয়ার্ক ব্যবহার করে ডেটা অ্যাক্সেস করুন"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"ওয়াই-ফাই কলিং"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"পরিষেবা প্রদানকারীর ভিডিও কলিং"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS বিকল্পগুলি"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA বিকল্পগুলি"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"ডেটা ব্যবহার"</string>

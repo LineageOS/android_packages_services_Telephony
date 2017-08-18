@@ -151,7 +151,7 @@
     <string name="voicemail_default" msgid="2001233554889016880">"مشغل شبكة الجوّال"</string>
     <string name="vm_change_pin_old_pin" msgid="7295220109886682573">"رقم التعريف الشخصي القديم"</string>
     <string name="vm_change_pin_new_pin" msgid="5412922262839438097">"رقم التعريف الشخصي الجديد"</string>
-    <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"الرجاء الانتظار."</string>
+    <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"يُرجى الانتظار."</string>
     <string name="vm_change_pin_error_too_short" msgid="5974971097302710497">"رقم التعريف الشخصي الجديد قصير جدًا."</string>
     <string name="vm_change_pin_error_too_long" msgid="8476870806115051865">"رقم التعريف الشخصي الجديد طويل جدًا."</string>
     <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"رقم التعريف الشخصي الجديد ضعيف جدًا. لا ينبغي أن تكون كلمة المرور القوية عبارة عن تسلسل متتالٍ أو أرقام متكررة."</string>
@@ -172,7 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"مسجل على الشبكة."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"اختر مشغل شبكة جوال"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"البحث عن كل الشبكات المتاحة"</string>
-    <string name="select_automatically" msgid="5628402124471810174">"اختيار تلقائي"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"تحديد الشبكة تلقائيًا"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"الشبكة"</string>
     <string name="register_automatically" msgid="6017849844573519637">"التسجيل التلقائي..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"نوع الشبكة المفضل"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"تغيير وضع تشغيل الشبكة"</string>
@@ -209,18 +210,28 @@
     <item msgid="1524224863879435516">"‏نظام GSM فقط"</item>
     <item msgid="3817924849415716259">"‏GSM/WCDMA المفضل"</item>
   </string-array>
+    <string name="call_category" msgid="5863978196309462052">"جارٍ الاتصال"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"الشبكة"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"‏وضع 4G LTE المحسّن"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"اتصال متقدم"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"‏استخدام خدمات LTE لتحسين الصوت والاتصالات الأخرى (مستحسن)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"تم تمكين البيانات"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"السماح باستخدام البيانات"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"تنبيه"</string>
-    <string name="roaming" msgid="8871412572928323707">"تجوال البيانات"</string>
+    <string name="roaming" msgid="7894878421600247140">"تجوال"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"اتصال بخدمات البيانات عند التجوال"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"اتصال بخدمات البيانات عند التجوال"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"لقد فقدت اتصال البيانات نظرًا لأنك أوقفت تشغيل تجوال البيانات بشبكتك الرئيسية."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"قد يكلف ذلك رسومًا مرتفعة."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"السماح بتجوال البيانات؟"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"استخدام البيانات"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"تم استخدام <xliff:g id="ID_1">%1$s</xliff:g> من بيانات الجوال خلال الفترة بين <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"مشغل شبكة الجوّال"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"بيانات الجوال"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"الوصول إلى البيانات باستخدام شبكة الجوال"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"‏الاتصال عبر Wi-Fi"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"مكالمة فيديو باستخدام مشغل شبكة الجوال"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"‏خيارات نظام GSM/النظام العالمي لاتصالات الجوال عن بعد (UMTS)"</string>
     <string name="cdma_options" msgid="4016822858172249884">"‏خيارات CDMA"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"استخدام البيانات"</string>

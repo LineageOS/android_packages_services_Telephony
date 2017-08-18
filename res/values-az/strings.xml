@@ -172,7 +172,8 @@
     <string name="registration_done" msgid="495135664535876612">"Şəbəkədə qeydiyyatdan keçib."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Şəbəkə operatoru seçin"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Bütün əlçatımlı şəbəkələri axtarın"</string>
-    <string name="select_automatically" msgid="5628402124471810174">"Avtomatik seçin"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"Avtomatik olaraq şəbəkə seçin"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Şəbəkə"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Avtomatik qeydiyyat ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tərcih edilən şəbəkə növü"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Şəbəkə əməliyyat rejimini dəyişin"</string>
@@ -209,18 +210,28 @@
     <item msgid="1524224863879435516">"Yalnız GSM"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA\'ya üstünlük verilib"</item>
   </string-array>
+    <string name="call_category" msgid="5863978196309462052">"Zəng edilir"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Şəbəkə"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Təkmil 4G LTE Rejimi"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Qabaqcıl Zəng"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Səs və digər kommunikasiyaları təkmilləşdirmək üçün LTE xidmətlərindən istifadə edin (tövsiyə olunur)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Data aktivdir"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Data istifadəsinə icazə verin"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Diqqət"</string>
-    <string name="roaming" msgid="8871412572928323707">"Data rouminq"</string>
+    <string name="roaming" msgid="7894878421600247140">"Rominq"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Rouminq zamanı data xidmətlərinə qoşulun"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Rouminq zamanı data xidmətlərinə qoşulun"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Siz deaktiv edilmiş rouminq ilə daxili şəbəkəni tərk etdiyiniz üçün data bağlantısını itirdiniz."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Sizə əhəmiyyətli xərclər tətbiq edilə bilər."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Məlumat rominqinə icazə verilsin?"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"Data istifadəsi"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> ərzində <xliff:g id="ID_1">%1$s</xliff:g> mobil data istifadə edildi"</string>
+    <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobil Operator"</string>
+    <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobil Data"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Mobil şəbəkədən istifadə edərək dataya daxil olun"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi zəngi"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Operator video zəngi"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS Seçimlər"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA Seçimlər"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Data istifadəsi"</string>
