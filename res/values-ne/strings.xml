@@ -464,8 +464,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"मोबाइल नेटवर्क उपलब्ध छैन। कल गर्न तारविनाको नेटवर्कमा जडान गर्नुहोस्।"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"एक कल गर्नको लागि, एक वैध नम्बर प्रविष्ट गर्नुहोस्।"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"कल विफल भयो।"</string>
-    <!-- no translation found for incall_error_cannot_add_call (8878159278947023326) -->
-    <skip />
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"यतिबेला कल गर्न सकिएन। तपाईंले कुनै सन्देश पठाएर सम्पर्क गर्ने प्रयास गर्न सक्नुहुन्छ।"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"सेवा समर्थित छैन"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"कल स्विच गर्न सक्दैन।"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"कल अलग गर्न सक्दैन।"</string>
