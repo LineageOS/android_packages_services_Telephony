@@ -20,13 +20,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkTemplate;
-import android.os.Bundle;
 import android.preference.Preference;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
 import android.util.AttributeSet;
 
+import com.android.settingslib.drawer.SettingsDrawerActivity;
 import com.android.settingslib.net.DataUsageController;
 
 /**
@@ -62,8 +62,8 @@ public class DataUsagePreference extends Preference {
 
     @Override
     public Intent getIntent() {
-        Bundle args = new Bundle();
         Intent intent = new Intent(Settings.ACTION_MOBILE_DATA_USAGE);
+        intent.putExtra(SettingsDrawerActivity.EXTRA_SHOW_MENU, true);
 
         intent.putExtra(Settings.EXTRA_NETWORK_TEMPLATE, mTemplate);
         intent.putExtra(Settings.EXTRA_SUB_ID, mSubId);
