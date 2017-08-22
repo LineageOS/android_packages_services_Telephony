@@ -151,9 +151,10 @@ abstract class TelephonyConnection extends Connection {
                     notifyConferenceMergeFailed();
                     break;
                 case MSG_SUPP_SERVICE_NOTIFY:
+                    Phone phone = getPhone();
                     Log.v(TelephonyConnection.this, "MSG_SUPP_SERVICE_NOTIFY on phoneId : "
-                            + getPhone() != null ? Integer.toString(getPhone().getPhoneId())
-                            : "null");
+                            + (phone != null ? Integer.toString(phone.getPhoneId())
+                            : "null"));
                     SuppServiceNotification mSsNotification = null;
                     if (msg.obj != null && ((AsyncResult) msg.obj).result != null) {
                         mSsNotification =
@@ -1751,6 +1752,15 @@ abstract class TelephonyConnection extends Connection {
     private void refreshConferenceSupported() {
         boolean isVideoCall = VideoProfile.isVideo(getVideoState());
         Phone phone = getPhone();
+        if (phone == null) {
+            Log.w(this, "refreshConferenceSupported = false; phone is null");
+            if (isConferenceSupported()) {
+                setConferenceSupported(false);
+                notifyConferenceSupportedChanged(false);
+            }
+            return;
+        }
+
         boolean isIms = phone.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS;
         boolean isVoWifiEnabled = false;
         if (isIms) {
