@@ -464,8 +464,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"የተንቀሳቃሽ ስልክ አውታረ መረብ አይገኝም። ጥሪ ለማድረግ ከሽቦ አልባ አውታረ መረብ ጋር ያገናኙ።"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"አንድ ጥሪ ለማድረግ የሚሰራ ቁጥር ያስገቡ።"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"ጥሪ አልተሳካም።"</string>
-    <!-- no translation found for incall_error_cannot_add_call (8878159278947023326) -->
-    <skip />
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"ጥሪ አሁን መታከል አይችልም። መልዕክት በመላክ ለማግኘት መሞከር ይችላሉ።"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"አገልግሎት አይደገፍም"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"ጥሪዎችን መቀያየር አልተቻለም።"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"ጥሪን መለየት አልተቻለም።"</string>

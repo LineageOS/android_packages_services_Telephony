@@ -466,8 +466,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Mobilais tīkls nav pieejams. Lai veiktu zvanu, izveidojiet savienojumu ar bezvadu tīklu."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Lai veiktu zvanu, ievadiet derīgu numuru."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Zvans neizdevās."</string>
-    <!-- no translation found for incall_error_cannot_add_call (8878159278947023326) -->
-    <skip />
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Pašlaik nevar pievienot zvanu. Varat mēģināt sūtīt īsziņu."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Pakalpojums netiek atbalstīts"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Nevar pārslēgt zvanus."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nevar nošķirt zvanu."</string>
