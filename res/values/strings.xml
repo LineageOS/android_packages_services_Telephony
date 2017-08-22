@@ -1383,6 +1383,14 @@
         Wi-Fi connection lost.  Call ended.
     </string>
 
+    <!-- Call failure reason displayed when the user's outgoing call cannot be placed due to a low
+         battery. -->
+    <string name="dialFailed_low_battery">Your video call cannot be placed due to low battery.</string>
+
+    <!-- Call failure reason displayed when the user's call is ended due to a low battery. This
+         message is shown when an in-progress call is ended due to the battery being low. -->
+    <string name="callFailed_low_battery">Video call ended due to low battery.</string>
+
     <!-- The title for the change voicemail PIN activity -->
     <string name="change_pin_title">Change Voicemail PIN</string>
     <!-- The label for the continue button in change voicemail PIN activity -->
