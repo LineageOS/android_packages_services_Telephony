@@ -78,7 +78,7 @@ public class EmbmsTestStreamingService extends Service {
 
     private final MbmsStreamingServiceBase mBinder = new MbmsStreamingServiceBase() {
         @Override
-        public int initialize(MbmsStreamingManagerCallback listener, int subId) {
+        public int initialize(MbmsStreamingManagerCallback callback, int subId) {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
@@ -92,13 +92,13 @@ public class EmbmsTestStreamingService extends Service {
             mHandler.postDelayed(() -> {
                 FrontendAppIdentifier appKey = new FrontendAppIdentifier(packageUid, subId);
                 if (!mAppCallbacks.containsKey(appKey)) {
-                    mAppCallbacks.put(appKey, listener);
+                    mAppCallbacks.put(appKey, callback);
                 } else {
-                    listener.onError(
+                    callback.onError(
                             MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
                     return;
                 }
-                listener.onMiddlewareReady();
+                callback.onMiddlewareReady();
             }, INITIALIZATION_DELAY);
             return MbmsException.SUCCESS;
         }
