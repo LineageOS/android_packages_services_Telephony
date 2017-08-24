@@ -435,7 +435,7 @@
     <string name="label_puk2_code" msgid="4688069961795341948">"Introdueix el codi PUK2"</string>
     <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"La contrasenya no és correcta i el PIN2 s\'ha bloquejat. Per tornar-ho a provar, canvia el PIN2."</string>
     <string name="puk2_requested" msgid="5831015200030161434">"La contrasenya no és correcta i la SIM s\'ha bloquejat. Introdueix el PUK2."</string>
-    <string name="puk2_blocked" msgid="3150263853077280049">"El PUK2 s\'ha bloquejat de manera permanent."</string>
+    <string name="puk2_blocked" msgid="3150263853077280049">"El PUK2 s\'ha bloquejat permanentment."</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n"Et queden <xliff:g id="NUMBER">%d</xliff:g> intents."</string>
     <string name="pin2_unblocked" msgid="7791600368153469078">"El PIN2 ja no està bloquejat."</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"Error de xarxa o de targeta SIM"</string>
