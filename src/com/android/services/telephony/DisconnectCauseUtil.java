@@ -128,7 +128,6 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.MAXIMUM_NUMBER_OF_CALLS_REACHED:
             case android.telephony.DisconnectCause.DATA_DISABLED:
             case android.telephony.DisconnectCause.DATA_LIMIT_REACHED:
-            case android.telephony.DisconnectCause.DIALED_ON_WRONG_SLOT:
             case android.telephony.DisconnectCause.DIALED_CALL_FORWARDING_WHILE_ROAMING:
             case android.telephony.DisconnectCause.IMEI_NOT_ACCEPTED:
             case android.telephony.DisconnectCause.WIFI_LOST:

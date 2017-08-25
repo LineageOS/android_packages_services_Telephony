@@ -92,6 +92,7 @@ abstract class TelephonyConnection extends Connection {
     private static final int MSG_ON_HOLD_TONE = 14;
     private static final int MSG_CDMA_VOICE_PRIVACY_ON = 15;
     private static final int MSG_CDMA_VOICE_PRIVACY_OFF = 16;
+    private static final int MSG_HANGUP = 17;
 
     private final Handler mHandler = new Handler() {
         @Override
@@ -235,6 +236,10 @@ abstract class TelephonyConnection extends Connection {
                     Log.d(this, "MSG_CDMA_VOICE_PRIVACY_OFF received");
                     setCdmaVoicePrivacy(false);
                     break;
+                case MSG_HANGUP:
+                    int cause = (int) msg.obj;
+                    hangup(cause);
+                    break;
             }
         }
     };
@@ -253,7 +258,7 @@ abstract class TelephonyConnection extends Connection {
      */
     public abstract static class TelephonyConnectionListener {
         public void onOriginalConnectionConfigured(TelephonyConnection c) {}
-        public void onOriginalConnectionRetry(TelephonyConnection c) {}
+        public void onOriginalConnectionRetry(TelephonyConnection c, boolean isPermanentFailure) {}
     }
 
     private final PostDialListener mPostDialListener = new PostDialListener() {
@@ -539,7 +544,7 @@ abstract class TelephonyConnection extends Connection {
     @Override
     public void onDisconnect() {
         Log.v(this, "onDisconnect");
-        hangup(android.telephony.DisconnectCause.LOCAL);
+        mHandler.obtainMessage(MSG_HANGUP, android.telephony.DisconnectCause.LOCAL).sendToTarget();
     }
 
     /**
@@ -574,7 +579,7 @@ abstract class TelephonyConnection extends Connection {
     @Override
     public void onAbort() {
         Log.v(this, "onAbort");
-        hangup(android.telephony.DisconnectCause.LOCAL);
+        mHandler.obtainMessage(MSG_HANGUP, android.telephony.DisconnectCause.LOCAL).sendToTarget();
     }
 
     @Override
@@ -603,7 +608,8 @@ abstract class TelephonyConnection extends Connection {
     public void onReject() {
         Log.v(this, "onReject");
         if (isValidRingingCall()) {
-            hangup(android.telephony.DisconnectCause.INCOMING_REJECTED);
+            mHandler.obtainMessage(MSG_HANGUP, android.telephony.DisconnectCause.INCOMING_REJECTED)
+                    .sendToTarget();
         }
         super.onReject();
     }
@@ -1088,8 +1094,8 @@ abstract class TelephonyConnection extends Connection {
         if (mOriginalConnection != null) {
             try {
                 // Hanging up a ringing call requires that we invoke call.hangup() as opposed to
-                // connection.hangup(). Without this change, the party originating the call will not
-                // get sent to voicemail if the user opts to reject the call.
+                // connection.hangup(). Without this change, the party originating the call
+                // will not get sent to voicemail if the user opts to reject the call.
                 if (isValidRingingCall()) {
                     Call call = getCall();
                     if (call != null) {
@@ -1098,10 +1104,10 @@ abstract class TelephonyConnection extends Connection {
                         Log.w(this, "Attempting to hangup a connection without backing call.");
                     }
                 } else {
-                    // We still prefer to call connection.hangup() for non-ringing calls in order
-                    // to support hanging-up specific calls within a conference call. If we invoked
-                    // call.hangup() while in a conference, we would end up hanging up the entire
-                    // conference call instead of the specific connection.
+                    // We still prefer to call connection.hangup() for non-ringing calls
+                    // in order to support hanging-up specific calls within a conference call.
+                    // If we invoked call.hangup() while in a conference, we would end up
+                    // hanging up the entire conference call instead of the specific connection.
                     mOriginalConnection.hangup();
                 }
             } catch (CallStateException e) {
@@ -1292,6 +1298,7 @@ abstract class TelephonyConnection extends Connection {
         } else {
             newState = mOriginalConnection.getState();
         }
+        int cause = mOriginalConnection.getDisconnectCause();
         Log.v(this, "Update state from %s to %s for %s", mConnectionState, newState, this);
 
         if (mConnectionState != newState) {
@@ -1318,13 +1325,18 @@ abstract class TelephonyConnection extends Connection {
                     setRinging();
                     break;
                 case DISCONNECTED:
-                    // We can get into a situation where the radio wants us to redial the same
-                    // emergency call on the other available slot. This will not set the state to
-                    // disconnected and will instead tell the TelephonyConnectionService to create
-                    // a new originalConnection using the new Slot.
-                    if (mOriginalConnection.getDisconnectCause() ==
-                            DisconnectCause.DIALED_ON_WRONG_SLOT) {
-                        fireOnOriginalConnectionRetryDial();
+                    if (shouldTreatAsEmergencyCall()
+                            && (cause
+                            == android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE
+                            || cause
+                            == android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE)) {
+                        // We can get into a situation where the radio wants us to redial the
+                        // same emergency call on the other available slot. This will not set
+                        // the state to disconnected and will instead tell the
+                        // TelephonyConnectionService to
+                        // create a new originalConnection using the new Slot.
+                        fireOnOriginalConnectionRetryDial(cause
+                                == android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE);
                     } else {
                         setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
                                 mOriginalConnection.getDisconnectCause(),
@@ -1723,9 +1735,9 @@ abstract class TelephonyConnection extends Connection {
         }
     }
 
-    private final void fireOnOriginalConnectionRetryDial() {
+    private final void fireOnOriginalConnectionRetryDial(boolean isPermanentFailure) {
         for (TelephonyConnectionListener l : mTelephonyListeners) {
-            l.onOriginalConnectionRetry(this);
+            l.onOriginalConnectionRetry(this, isPermanentFailure);
         }
     }
 
