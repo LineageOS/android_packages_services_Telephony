@@ -61,7 +61,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.regex.Pattern;
 
 /**
@@ -126,7 +128,8 @@ public class TelephonyConnectionService extends ConnectionService {
     // call at one time. We also only access this cache from a TelephonyConnection that wishes to
     // redial, so we use a WeakReference that will become stale once the TelephonyConnection is
     // destroyed.
-    private Pair<WeakReference<TelephonyConnection>, List<Phone>> mEmergencyRetryCache;
+    @VisibleForTesting
+    public Pair<WeakReference<TelephonyConnection>, Queue<Phone>> mEmergencyRetryCache;
 
     /**
      * Keeps track of the status of a SIM slot.
@@ -238,8 +241,8 @@ public class TelephonyConnectionService extends ConnectionService {
         }
 
         @Override
-        public void onOriginalConnectionRetry(TelephonyConnection c) {
-            retryOutgoingOriginalConnection(c);
+        public void onOriginalConnectionRetry(TelephonyConnection c, boolean isPermanentFailure) {
+            retryOutgoingOriginalConnection(c, isPermanentFailure);
         }
     };
 
@@ -887,54 +890,69 @@ public class TelephonyConnectionService extends ConnectionService {
         return result;
     }
 
-    private Pair<WeakReference<TelephonyConnection>, List<Phone>> makeCachedConnectionPhonePair(
+    private Pair<WeakReference<TelephonyConnection>, Queue<Phone>> makeCachedConnectionPhonePair(
             TelephonyConnection c) {
-        List<Phone> phones = new ArrayList<>(Arrays.asList(mPhoneFactoryProxy.getPhones()));
+        Queue<Phone> phones = new LinkedList<>(Arrays.asList(mPhoneFactoryProxy.getPhones()));
         return new Pair<>(new WeakReference<>(c), phones);
     }
 
-    // Check the mEmergencyRetryCache to see if it contains the TelephonyConnection. If it doesn't,
-    // then it is stale. Create a new one!
-    private void updateCachedConnectionPhonePair(TelephonyConnection c) {
+    // Update the mEmergencyRetryCache by removing the Phone used to call the last failed emergency
+    // number and then moving it to the back of the queue if it is not a permanent failure cause
+    // from the modem.
+    private void updateCachedConnectionPhonePair(TelephonyConnection c,
+            boolean isPermanentFailure) {
+        // No cache exists, create a new one.
         if (mEmergencyRetryCache == null) {
             Log.i(this, "updateCachedConnectionPhonePair, cache is null. Generating new cache");
             mEmergencyRetryCache = makeCachedConnectionPhonePair(c);
-        } else {
-            // Check to see if old cache is stale. If it is, replace it
-            WeakReference<TelephonyConnection> cachedConnection = mEmergencyRetryCache.first;
-            if (cachedConnection.get() != c) {
-                Log.i(this, "updateCachedConnectionPhonePair, cache is stale. Regenerating.");
-                mEmergencyRetryCache = makeCachedConnectionPhonePair(c);
-            }
+        // Cache is stale, create a new one with the new TelephonyConnection.
+        } else if (mEmergencyRetryCache.first.get() != c) {
+            Log.i(this, "updateCachedConnectionPhonePair, cache is stale. Regenerating.");
+            mEmergencyRetryCache = makeCachedConnectionPhonePair(c);
+        }
+
+        Queue<Phone> cachedPhones = mEmergencyRetryCache.second;
+        Phone phoneUsed = c.getPhone();
+        if (phoneUsed == null) {
+            return;
+        }
+        // Remove phone used from the list, but for temporary fail cause, it will be added
+        // back to list further in this method. However in case of permanent failure, the
+        // phone shouldn't be reused, hence it will not be added back again.
+        cachedPhones.remove(phoneUsed);
+        Log.i(this, "updateCachedConnectionPhonePair, isPermanentFailure:" + isPermanentFailure);
+        if (!isPermanentFailure) {
+            // In case of temporary failure, add the phone back, this will result adding it
+            // to tail of list mEmergencyRetryCache.second, giving other phone more
+            // priority and that is what we want.
+            cachedPhones.offer(phoneUsed);
         }
     }
 
     /**
-     * Returns the first Phone that has not been used yet to place the call. Any Phones that have
-     * been used to place a call will have already been removed from mEmergencyRetryCache.second.
-     * The phone that it excluded will be removed from mEmergencyRetryCache.second in this method.
-     * @param phoneToExclude The Phone object that will be removed from our cache of available
-     * phones.
-     * @return the first Phone that is available to be used to retry the call.
+     * Updates a cache containing all of the slots that are available for redial at any point.
+     *
+     * - If a Connection returns with the disconnect cause EMERGENCY_TEMP_FAILURE, keep that phone
+     * in the cache, but move it to the lowest priority in the list. Then, place the emergency call
+     * on the next phone in the list.
+     * - If a Connection returns with the disconnect cause EMERGENCY_PERM_FAILURE, remove that phone
+     * from the cache and pull another phone from the cache to place the emergency call.
+     *
+     * This will continue until there are no more slots to dial on.
      */
-    private Phone getPhoneForRedial(Phone phoneToExclude) {
-        List<Phone> cachedPhones = mEmergencyRetryCache.second;
-        if (cachedPhones.contains(phoneToExclude)) {
-            Log.i(this, "getPhoneForRedial, removing Phone[" + phoneToExclude.getPhoneId() +
-                    "] from the available Phone cache.");
-            cachedPhones.remove(phoneToExclude);
-        }
-        return cachedPhones.isEmpty() ? null : cachedPhones.get(0);
-    }
-
-    private void retryOutgoingOriginalConnection(TelephonyConnection c) {
-        updateCachedConnectionPhonePair(c);
-        Phone newPhoneToUse = getPhoneForRedial(c.getPhone());
+    @VisibleForTesting
+    public void retryOutgoingOriginalConnection(TelephonyConnection c, boolean isPermanentFailure) {
+        int phoneId = (c.getPhone() == null) ? -1 : c.getPhone().getPhoneId();
+        updateCachedConnectionPhonePair(c, isPermanentFailure);
+        // Pull next phone to use from the cache or null if it is empty
+        Phone newPhoneToUse = (mEmergencyRetryCache.second != null)
+                ? mEmergencyRetryCache.second.peek() : null;
         if (newPhoneToUse != null) {
             int videoState = c.getVideoState();
             Bundle connExtras = c.getExtras();
             Log.i(this, "retryOutgoingOriginalConnection, redialing on Phone Id: " + newPhoneToUse);
             c.clearOriginalConnection();
+            if (phoneId != newPhoneToUse.getPhoneId()) updatePhoneAccount(c, newPhoneToUse);
             placeOutgoingConnection(c, newPhoneToUse, videoState, connExtras);
         } else {
             // We have run out of Phones to use. Disconnect the call and destroy the connection.
@@ -943,6 +961,15 @@ public class TelephonyConnectionService extends ConnectionService {
             c.clearOriginalConnection();
             c.destroy();
         }
+    }
+
+    private void updatePhoneAccount(TelephonyConnection connection, Phone phone) {
+        PhoneAccountHandle pHandle = PhoneUtils.makePstnPhoneAccountHandle(phone);
+        // For ECall handling on MSIM, until the request reaches here (i.e PhoneApp), we don't know
+        // on which phone account ECall can be placed. After deciding, we should notify Telecom of
+        // the change so that the proper PhoneAccount can be displayed.
+        Log.i(this, "updatePhoneAccount setPhoneAccountHandle, account = " + pHandle);
+        connection.notifyPhoneAccountChanged(pHandle);
     }
 
     private void placeOutgoingConnection(
