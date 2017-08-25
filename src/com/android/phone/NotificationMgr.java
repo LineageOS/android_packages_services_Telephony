@@ -504,23 +504,13 @@ public class NotificationMgr {
             intent.setClassName("com.android.phone", "com.android.phone.CallFeaturesSetting");
             SubscriptionInfoHelper.addExtrasToIntent(
                     intent, mSubscriptionManager.getActiveSubscriptionInfo(subId));
-            PendingIntent contentIntent =
-                    PendingIntent.getActivity(mContext, subId /* requestCode */, intent, 0);
-
-            List<UserInfo> users = mUserManager.getUsers(true);
-            for (int i = 0; i < users.size(); i++) {
-                final UserInfo user = users.get(i);
-                if (user.isManagedProfile()) {
-                    continue;
-                }
-                UserHandle userHandle = user.getUserHandle();
-                builder.setContentIntent(user.isAdmin() ? contentIntent : null);
-                mNotificationManager.notifyAsUser(
-                        Integer.toString(subId) /* tag */,
-                        CALL_FORWARD_NOTIFICATION,
-                        builder.build(),
-                        userHandle);
-            }
+            builder.setContentIntent(PendingIntent.getActivity(mContext, subId /* requestCode */,
+                    intent, 0));
+            mNotificationManager.notifyAsUser(
+                    Integer.toString(subId) /* tag */,
+                    CALL_FORWARD_NOTIFICATION,
+                    builder.build(),
+                    UserHandle.ALL);
         } else {
             mNotificationManager.cancelAsUser(
                     Integer.toString(subId) /* tag */,
@@ -548,21 +538,12 @@ public class NotificationMgr {
                 .setContentTitle(mContext.getText(R.string.roaming))
                 .setColor(mContext.getResources().getColor(R.color.dialer_theme_color))
                 .setContentText(contentText)
-                .setChannel(NotificationChannelController.CHANNEL_ID_MOBILE_DATA_STATUS);
-
-        List<UserInfo> users = mUserManager.getUsers(true);
-        for (int i = 0; i < users.size(); i++) {
-            final UserInfo user = users.get(i);
-            if (user.isManagedProfile()) {
-                continue;
-            }
-            UserHandle userHandle = user.getUserHandle();
-            builder.setContentIntent(user.isAdmin() ? contentIntent : null);
-            final Notification notif =
-                    new Notification.BigTextStyle(builder).bigText(contentText).build();
-            mNotificationManager.notifyAsUser(
-                    null /* tag */, DATA_DISCONNECTED_ROAMING_NOTIFICATION, notif, userHandle);
-        }
+                .setChannel(NotificationChannelController.CHANNEL_ID_MOBILE_DATA_STATUS)
+                .setContentIntent(contentIntent);
+        final Notification notif =
+                new Notification.BigTextStyle(builder).bigText(contentText).build();
+        mNotificationManager.notifyAsUser(
+                null /* tag */, DATA_DISCONNECTED_ROAMING_NOTIFICATION, notif, UserHandle.ALL);
     }
 
     /**
@@ -599,22 +580,12 @@ public class NotificationMgr {
                 mContext.getString(R.string.mobile_network_settings_package),
                 mContext.getString(R.string.mobile_network_settings_class)));
         intent.putExtra(GsmUmtsOptions.EXTRA_SUB_ID, subId);
-        PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, intent, 0);
-
-        List<UserInfo> users = mUserManager.getUsers(true);
-        for (int i = 0; i < users.size(); i++) {
-            final UserInfo user = users.get(i);
-            if (user.isManagedProfile()) {
-                continue;
-            }
-            UserHandle userHandle = user.getUserHandle();
-            builder.setContentIntent(user.isAdmin() ? contentIntent : null);
-            mNotificationManager.notifyAsUser(
-                    null /* tag */,
-                    SELECTED_OPERATOR_FAIL_NOTIFICATION,
-                    builder.build(),
-                    userHandle);
-        }
+        builder.setContentIntent(PendingIntent.getActivity(mContext, 0, intent, 0));
+        mNotificationManager.notifyAsUser(
+                null /* tag */,
+                SELECTED_OPERATOR_FAIL_NOTIFICATION,
+                builder.build(),
+                UserHandle.ALL);
     }
 
     /**
