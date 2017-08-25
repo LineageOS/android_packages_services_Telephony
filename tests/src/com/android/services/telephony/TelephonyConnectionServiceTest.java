@@ -16,13 +16,19 @@
 
 package com.android.services.telephony;
 
+import android.net.Uri;
+import android.telecom.DisconnectCause;
+import android.telecom.TelecomManager;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
+import android.support.test.filters.FlakyTest;
 import android.support.test.runner.AndroidJUnit4;
 import android.telephony.TelephonyManager;
 import android.test.suitebuilder.annotation.SmallTest;
 
 import com.android.TelephonyTestBase;
+import com.android.internal.telephony.CallStateException;
+import com.android.internal.telephony.Connection;
 import com.android.internal.telephony.Phone;
 
 import org.junit.After;
@@ -31,9 +37,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.fail;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -491,6 +508,250 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertEquals(slot0Phone, resultPhone);
     }
 
+    /**
+     * The modem has returned a temporary error when placing an emergency call on a phone with one
+     * SIM slot.
+     *
+     * Verify that dial is called on the same phone again when retryOutgoingOriginalConnection is
+     * called.
+     */
+    @Test
+    @FlakyTest
+    @SmallTest
+    public void testRetryOutgoingOriginalConnection_redialTempFailOneSlot() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        Phone slot0Phone = c.getPhone();
+        when(slot0Phone.getPhoneId()).thenReturn(SLOT_0_PHONE_ID);
+        List<Phone> phones = new ArrayList<>(1);
+        phones.add(slot0Phone);
+        setPhones(phones);
+        c.setAddress(Uri.parse("tel:+16505551212"), TelecomManager.PRESENTATION_ALLOWED);
+
+        mTestConnectionService.retryOutgoingOriginalConnection(c, false /*isPermanentFailure*/);
+
+        // We never need to be notified in telecom that the PhoneAccount has changed, because it
+        // was redialed on the same slot
+        assertEquals(0, c.getNotifyPhoneAccountChangedCount());
+        try {
+            verify(slot0Phone).dial(anyString(), any(), anyInt(), any());
+        } catch (CallStateException e) {
+            // This shouldn't happen
+            fail();
+        }
+    }
+
+    /**
+     * The modem has returned a permanent failure when placing an emergency call on a phone with one
+     * SIM slot.
+     *
+     * Verify that the connection is set to disconnected with an error disconnect cause and dial is
+     * not called.
+     */
+    @Test
+    @FlakyTest
+    @SmallTest
+    public void testRetryOutgoingOriginalConnection_redialPermFailOneSlot() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        Phone slot0Phone = c.getPhone();
+        when(slot0Phone.getPhoneId()).thenReturn(SLOT_0_PHONE_ID);
+        List<Phone> phones = new ArrayList<>(1);
+        phones.add(slot0Phone);
+        setPhones(phones);
+        c.setAddress(Uri.parse("tel:+16505551212"), TelecomManager.PRESENTATION_ALLOWED);
+
+        mTestConnectionService.retryOutgoingOriginalConnection(c, true /*isPermanentFailure*/);
+
+        // We never need to be notified in telecom that the PhoneAccount has changed, because it
+        // was never redialed
+        assertEquals(0, c.getNotifyPhoneAccountChangedCount());
+        try {
+            verify(slot0Phone, never()).dial(anyString(), any(), anyInt(), any());
+        } catch (CallStateException e) {
+            // This shouldn't happen
+            fail();
+        }
+        assertEquals(c.getState(), android.telecom.Connection.STATE_DISCONNECTED);
+        assertEquals(c.getDisconnectCause().getCode(), DisconnectCause.ERROR);
+    }
+
+    /**
+     * The modem has returned a temporary failure when placing an emergency call on a phone with two
+     * SIM slots.
+     *
+     * Verify that the emergency call is dialed on the other slot and telecom is notified of the new
+     * PhoneAccount.
+     */
+    @Test
+    @FlakyTest
+    @SmallTest
+    public void testRetryOutgoingOriginalConnection_redialTempFailTwoSlot() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        Phone slot0Phone = c.getPhone();
+        when(slot0Phone.getPhoneId()).thenReturn(SLOT_0_PHONE_ID);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                false /*isEmergencyOnly*/);
+        setPhonesDialConnection(slot1Phone, c.getOriginalConnection());
+        c.setAddress(Uri.parse("tel:+16505551212"), TelecomManager.PRESENTATION_ALLOWED);
+        List<Phone> phones = new ArrayList<>(2);
+        phones.add(slot0Phone);
+        phones.add(slot1Phone);
+        setPhones(phones);
+
+        mTestConnectionService.retryOutgoingOriginalConnection(c, false /*isPermanentFailure*/);
+
+        // The cache should still contain all of the Phones, since it was a temporary failure.
+        assertEquals(2, mTestConnectionService.mEmergencyRetryCache.second.size());
+        // We need to be notified in Telecom that the PhoneAccount has changed, because it was
+        // redialed on another slot
+        assertEquals(1, c.getNotifyPhoneAccountChangedCount());
+        try {
+            verify(slot1Phone).dial(anyString(), any(), anyInt(), any());
+        } catch (CallStateException e) {
+            // This shouldn't happen
+            fail();
+        }
+    }
+
+    /**
+     * The modem has returned a temporary failure when placing an emergency call on a phone with two
+     * SIM slots.
+     *
+     * Verify that the emergency call is dialed on the other slot and telecom is notified of the new
+     * PhoneAccount.
+     */
+    @Test
+    @FlakyTest
+    @SmallTest
+    public void testRetryOutgoingOriginalConnection_redialPermFailTwoSlot() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        Phone slot0Phone = c.getPhone();
+        when(slot0Phone.getPhoneId()).thenReturn(SLOT_0_PHONE_ID);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                false /*isEmergencyOnly*/);
+        setPhonesDialConnection(slot1Phone, c.getOriginalConnection());
+        c.setAddress(Uri.parse("tel:+16505551212"), TelecomManager.PRESENTATION_ALLOWED);
+        List<Phone> phones = new ArrayList<>(2);
+        phones.add(slot0Phone);
+        phones.add(slot1Phone);
+        setPhones(phones);
+
+        mTestConnectionService.retryOutgoingOriginalConnection(c, true /*isPermanentFailure*/);
+
+        // The cache should only contain the slot1Phone.
+        assertEquals(1, mTestConnectionService.mEmergencyRetryCache.second.size());
+        // We need to be notified in Telecom that the PhoneAccount has changed, because it was
+        // redialed on another slot
+        assertEquals(1, c.getNotifyPhoneAccountChangedCount());
+        try {
+            verify(slot1Phone).dial(anyString(), any(), anyInt(), any());
+        } catch (CallStateException e) {
+            // This shouldn't happen
+            fail();
+        }
+    }
+
+    /**
+     * The modem has returned a temporary failure twice while placing an emergency call on a phone
+     * with two SIM slots.
+     *
+     * Verify that the emergency call is dialed on slot 1 and then on slot 0 and telecom is
+     * notified of this twice.
+     */
+    @Test
+    @FlakyTest
+    @SmallTest
+    public void testRetryOutgoingOriginalConnection_redialTempFailTwoSlot_twoFailure() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        Phone slot0Phone = c.getPhone();
+        when(slot0Phone.getPhoneId()).thenReturn(SLOT_0_PHONE_ID);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                false /*isEmergencyOnly*/);
+        setPhonesDialConnection(slot1Phone, c.getOriginalConnection());
+        c.setAddress(Uri.parse("tel:+16505551212"), TelecomManager.PRESENTATION_ALLOWED);
+        List<Phone> phones = new ArrayList<>(2);
+        phones.add(slot0Phone);
+        phones.add(slot1Phone);
+        setPhones(phones);
+
+        // First Temporary failure
+        mTestConnectionService.retryOutgoingOriginalConnection(c, false /*isPermanentFailure*/);
+        // Set the Phone to the new phone that was just used to dial.
+        c.setMockPhone(slot1Phone);
+        // The cache should still contain all of the Phones, since it was a temporary failure.
+        assertEquals(2, mTestConnectionService.mEmergencyRetryCache.second.size());
+        // Make sure slot 1 is next in the queue.
+        assertEquals(slot1Phone, mTestConnectionService.mEmergencyRetryCache.second.peek());
+        // Second Temporary failure
+        mTestConnectionService.retryOutgoingOriginalConnection(c, false /*isPermanentFailure*/);
+        // Set the Phone to the new phone that was just used to dial.
+        c.setMockPhone(slot0Phone);
+        // The cache should still contain all of the Phones, since it was a temporary failure.
+        assertEquals(2, mTestConnectionService.mEmergencyRetryCache.second.size());
+        // Make sure slot 0 is next in the queue.
+        assertEquals(slot0Phone, mTestConnectionService.mEmergencyRetryCache.second.peek());
+
+        // We need to be notified in Telecom that the PhoneAccount has changed, because it was
+        // redialed on another slot
+        assertEquals(2, c.getNotifyPhoneAccountChangedCount());
+        try {
+            verify(slot0Phone).dial(anyString(), any(), anyInt(), any());
+            verify(slot1Phone).dial(anyString(), any(), anyInt(), any());
+        } catch (CallStateException e) {
+            // This shouldn't happen
+            fail();
+        }
+    }
+
+    /**
+     * The modem has returned a permanent failure twice while placing an emergency call on a phone
+     * with two SIM slots.
+     *
+     * Verify that the emergency call is dialed on slot 1 and then disconnected and telecom is
+     * notified of the change to slot 1.
+     */
+    @Test
+    @FlakyTest
+    @SmallTest
+    public void testRetryOutgoingOriginalConnection_redialPermFailTwoSlot_twoFailure() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        Phone slot0Phone = c.getPhone();
+        when(slot0Phone.getPhoneId()).thenReturn(SLOT_0_PHONE_ID);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                false /*isEmergencyOnly*/);
+        setPhonesDialConnection(slot1Phone, c.getOriginalConnection());
+        c.setAddress(Uri.parse("tel:+16505551212"), TelecomManager.PRESENTATION_ALLOWED);
+        List<Phone> phones = new ArrayList<>(2);
+        phones.add(slot0Phone);
+        phones.add(slot1Phone);
+        setPhones(phones);
+
+        // First Permanent failure
+        mTestConnectionService.retryOutgoingOriginalConnection(c, true /*isPermanentFailure*/);
+        // Set the Phone to the new phone that was just used to dial.
+        c.setMockPhone(slot1Phone);
+        // The cache should only contain one phone
+        assertEquals(1, mTestConnectionService.mEmergencyRetryCache.second.size());
+        // Make sure slot 1 is next in the queue.
+        assertEquals(slot1Phone, mTestConnectionService.mEmergencyRetryCache.second.peek());
+        // Second Permanent failure
+        mTestConnectionService.retryOutgoingOriginalConnection(c, true /*isPermanentFailure*/);
+        // The cache should be empty
+        assertEquals(true, mTestConnectionService.mEmergencyRetryCache.second.isEmpty());
+
+        assertEquals(c.getState(), android.telecom.Connection.STATE_DISCONNECTED);
+        assertEquals(c.getDisconnectCause().getCode(), DisconnectCause.ERROR);
+        // We need to be notified in Telecom that the PhoneAccount has changed, because it was
+        // redialed on another slot
+        assertEquals(1, c.getNotifyPhoneAccountChangedCount());
+        try {
+            verify(slot1Phone).dial(anyString(), any(), anyInt(), any());
+            verify(slot0Phone, never()).dial(anyString(), any(), anyInt(), any());
+        } catch (CallStateException e) {
+            // This shouldn't happen
+            fail();
+        }
+    }
+
     private Phone makeTestPhone(int phoneId, int serviceState, boolean isEmergencyOnly) {
         Phone phone = mock(Phone.class);
         ServiceState testServiceState = new ServiceState();
@@ -523,5 +784,18 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
     private void setDefaultPhone(Phone phone) {
         when(mPhoneFactoryProxy.getDefaultPhone()).thenReturn(phone);
+    }
+
+    private void setPhones(List<Phone> phones) {
+        when(mPhoneFactoryProxy.getPhones()).thenReturn(phones.toArray(new Phone[phones.size()]));
+    }
+
+    private void setPhonesDialConnection(Phone phone, Connection c) {
+        try {
+            when(phone.dial(anyString(), anyInt())).thenReturn(c);
+        } catch (CallStateException e) {
+            // this shouldn't happen
+            fail();
+        }
     }
 }
