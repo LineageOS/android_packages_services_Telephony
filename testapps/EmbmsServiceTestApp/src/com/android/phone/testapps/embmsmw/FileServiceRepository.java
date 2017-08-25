@@ -21,13 +21,8 @@ import android.net.Uri;
 import android.telephony.mbms.FileInfo;
 import android.telephony.mbms.FileServiceInfo;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -67,7 +62,7 @@ public class FileServiceRepository {
     public List<FileServiceInfo> getFileServicesForClasses(
             List<String> serviceClasses) {
         return mIdToServiceInfo.values().stream()
-                .filter((info) -> serviceClasses.contains(info.getClassName()))
+                .filter((info) -> serviceClasses.contains(info.getServiceClassName()))
                 .collect(Collectors.toList());
     }
 
