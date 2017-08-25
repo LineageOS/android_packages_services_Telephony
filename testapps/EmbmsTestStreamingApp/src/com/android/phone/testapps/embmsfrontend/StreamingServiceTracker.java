@@ -17,8 +17,7 @@
 package com.android.phone.testapps.embmsfrontend;
 
 import android.net.Uri;
-import android.telephony.MbmsStreamingManager;
-import android.telephony.mbms.MbmsException;
+import android.telephony.MbmsStreamingSession;
 import android.telephony.mbms.StreamingService;
 import android.telephony.mbms.StreamingServiceCallback;
 import android.telephony.mbms.StreamingServiceInfo;
@@ -57,37 +56,17 @@ public class StreamingServiceTracker {
         mStreamingServiceInfo = info;
     }
 
-    public boolean startStreaming(MbmsStreamingManager streamingManager) {
-        try {
-            mStreamingService =
-                    streamingManager.startStreaming(mStreamingServiceInfo, new Callback(), null);
-            return true;
-        } catch (MbmsException e) {
-            Toast.makeText(mActivity,
-                    "Error starting streaming: " + e.getErrorCode(),
-                    Toast.LENGTH_SHORT).show();
-        }
-        return false;
+    /**
+     * Start streaming using the provided streaming session
+     */
+    public boolean startStreaming(MbmsStreamingSession streamingManager) {
+        mStreamingService =
+                streamingManager.startStreaming(mStreamingServiceInfo, new Callback(), null);
+        return true;
     }
 
     public void stopStreaming() {
-        try {
-            mStreamingService.stopStreaming();
-        } catch (MbmsException e) {
-            Toast.makeText(mActivity,
-                    "Error stopping streaming: " + e.getErrorCode(),
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void dispose() {
-        try {
-            mStreamingService.dispose();
-        } catch (MbmsException e) {
-            Toast.makeText(mActivity,
-                    "Error disposing stream" + e.getErrorCode(),
-                    Toast.LENGTH_SHORT).show();
-        }
+        mStreamingService.stopStreaming();
     }
 
     public String getServiceId() {
@@ -108,14 +87,8 @@ public class StreamingServiceTracker {
 
     private void onStreamStateUpdated(int state, int reason) {
         if (state == StreamingService.STATE_STARTED && mState != StreamingService.STATE_STARTED) {
-            try {
-                mStreamingUri = mStreamingService.getPlaybackUri();
-                mActivity.updateUri();
-            } catch (MbmsException e) {
-                String errorToast = "Got error " + e.getErrorCode() + " while getting uri";
-                mActivity.runOnUiThread(() ->
-                        Toast.makeText(mActivity, errorToast, Toast.LENGTH_SHORT).show());
-            }
+            mStreamingUri = mStreamingService.getPlaybackUri();
+            mActivity.updateUri();
         }
         mState = state;
         mActivity.updateStreamingState();
