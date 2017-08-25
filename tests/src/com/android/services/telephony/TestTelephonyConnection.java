@@ -11,11 +11,14 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License
+ * limitations under the License.
  */
 
 package com.android.services.telephony;
 
+import android.telecom.PhoneAccountHandle;
+
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.android.internal.telephony.Call;
@@ -28,7 +31,7 @@ import org.mockito.MockitoAnnotations;
  * Mock Telephony Connection used in TelephonyConferenceController.java for testing purpose
  */
 
-public class MockTelephonyConnection extends TelephonyConnection {
+public class TestTelephonyConnection extends TelephonyConnection {
 
     @Mock
     com.android.internal.telephony.Connection mMockRadioConnection;
@@ -36,18 +39,19 @@ public class MockTelephonyConnection extends TelephonyConnection {
     @Mock
     Call mMockCall;
 
-    @Mock
-    Phone mMockPhone;
+    private Phone mMockPhone;
+    private int mNotifyPhoneAccountChangedCount = 0;
 
     @Override
     public com.android.internal.telephony.Connection getOriginalConnection() {
         return mMockRadioConnection;
     }
 
-    public MockTelephonyConnection() {
+    public TestTelephonyConnection() {
         super(null, null, false);
         MockitoAnnotations.initMocks(this);
 
+        mMockPhone = mock(Phone.class);
         // Set up mMockRadioConnection and mMockPhone to contain an active call
         when(mMockRadioConnection.getState()).thenReturn(Call.State.ACTIVE);
         when(mMockRadioConnection.getCall()).thenReturn(mMockCall);
@@ -60,6 +64,10 @@ public class MockTelephonyConnection extends TelephonyConnection {
         return true;
     }
 
+    public void setMockPhone(Phone newPhone) {
+        mMockPhone = newPhone;
+    }
+
     @Override
     public Phone getPhone() {
         return mMockPhone;
@@ -69,4 +77,12 @@ public class MockTelephonyConnection extends TelephonyConnection {
         return this;
     }
 
+    @Override
+    public void notifyPhoneAccountChanged(PhoneAccountHandle pHandle) {
+        mNotifyPhoneAccountChangedCount++;
+    }
+
+    public int getNotifyPhoneAccountChangedCount() {
+        return mNotifyPhoneAccountChangedCount;
+    }
 }
