@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Of mörg símtöl eru virk. Ljúktu eða sameinaðu fyrirliggjandi símtöl áður en þú hringir nýtt."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Ekki var hægt að tengjast, notaðu gilt SIM-kort."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi tengingin rofnaði. Símtalinu lauk."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Ekki er hægt að hringja myndsímtal vegna lítillar rafhlöðuorku."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Myndsímtali lauk vegna lítillar rafhlöðuorku."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Breyta PIN-númeri talhólfs"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Halda áfram"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Hætta við"</string>

@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Υπάρχουν πάρα πολλές ενεργές κλήσεις. Τερματίστε ή να συγχωνεύστε τις υπάρχουσες κλήσεις πριν πραγματοποιήσετε νέα."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Δεν είναι δυνατή η σύνδεση. Τοποθετήστε μια έγκυρη κάρτα SIM."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Η σύνδεση Wi-Fi χάθηκε. Η κλήση τερματίστηκε."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Η βιντεοκλήση δεν μπορεί να πραγματοποιηθεί λόγω χαμηλής στάθμης μπαταρίας"</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Η βιντεοκλήση τερματίστηκε λόγω χαμηλής στάθμης μπαταρίας"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Αλλαγή PIN αυτόματου τηλεφωνητή"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Συνέχεια"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Ακύρωση"</string>

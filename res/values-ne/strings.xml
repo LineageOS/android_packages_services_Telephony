@@ -584,6 +584,10 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"धेरै सक्रिय कलहरू छन्। कृपया कुनै नयाँ राख्नु अघि विद्यमान कलहरूलाई अन्त्य वा मर्ज गर्नुहोस्।"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"जडान गर्न सकिएन, कृपया मान्य SIM कार्ड सम्मिलित गर्नुहोस्।"</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi जडान विच्छेद भयो। कल समाप्त भयो।"</string>
+    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
+    <skip />
+    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
+    <skip />
     <string name="change_pin_title" msgid="7790232089699034029">"भ्वाइस मेलको PIN परिवर्तन गर्नुहोस्"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"जारी राख्नुहोस्"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"रद्द गर्नुहोस्"</string>

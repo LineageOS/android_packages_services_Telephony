@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ទិន្នន័យ​ចល័ត"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ទិន្នន័យ​ទូរសព្ទចល័ត"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"សេវាកម្មទូរស័ព្ទ"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"អ្នក​ហៅ​នៅ​ពេល​មាន​អាសន្ន"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"ទូរស័ព្ទ"</string>
@@ -226,7 +226,7 @@
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ក្រុមហ៊ុន​បម្រើ​សេវា​ទូរសព្ទ"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"carrier, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="4661165467914727157">"ទិន្នន័យ​ចល័ត"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"ទិន្នន័យ​ទូរសព្ទចល័ត"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"ចូល​ប្រើប្រាស់​ទិន្នន័យ​តាម​បណ្ដាញ​​ទូរសព្ទ​ចល័ត"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"បិទទិន្នន័យ​​ទូរសព្ទ​ចល័ត?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"ជម្រើស​ដែល​ត្រូវមាន"</string>
@@ -584,6 +584,10 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"មាន​ការ​ហៅ​ដែល​សកម្ម​ច្រើន​ពេក។ សូម​បញ្ចប់ ឬ​​ដាក់​​បញ្ចូល​គ្នា​ការ​ហៅ​ដែល​មាន​ស្រាប់​​មុន​ពេល​ដាក់​ការ​ហៅ​ថ្មី។"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"មិន​អាច​តភ្ជាប់​បាន​ទេ សូម​បញ្ចូល​ស៊ីម​កាត​​ដែល​ប្រើ​បាន។"</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"បាត់ការភ្ជាប់ Wi-Fi។ បានបញ្ចប់ការហៅទូរស័ព្ទ។"</string>
+    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
+    <skip />
+    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
+    <skip />
     <string name="change_pin_title" msgid="7790232089699034029">"ប្ដូរ​លេខ​កូដ PIN ជា​​សារ​សំឡេង"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"បន្ត"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"បោះបង់"</string>

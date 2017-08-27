@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"활성화된 통화가 너무 많습니다. 새로운 전화를 걸기 전에 기존의 통화를 끝내거나 합치세요."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"연결할 수 없습니다. 유효한 SIM 카드를 삽입하세요."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi 연결이 끊어져 통화가 종료되었습니다."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"배터리 부족으로 화상 통화를 할 수 없습니다."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"배터리 부족으로 화상 통화가 종료되었습니다."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"음성사서함 PIN 변경"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"계속"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"취소"</string>

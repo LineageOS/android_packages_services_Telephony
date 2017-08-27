@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Хэт олон идэвхтэй дуудлага байна. Шинэ дуудлага хийхийн өмнө одоогийн дуудлагуудыг таслах буюу нэгтгэнэ үү."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Холбох боломжгүй, хүчинтэй SIM карт оруулна уу."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi холболт тасарсан. Дуудлага дууссан."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Цэнэг бага байгаа тул видео дуудлагыг хийх боломжгүй."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Цэнэг бага байгаа тул видео дуудлагыг дуусгасан."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Дуут шуудангийн PIN-г өөрчлөх"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Үргэлжлүүлэх"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Цуцлах"</string>
