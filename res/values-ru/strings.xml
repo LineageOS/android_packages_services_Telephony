@@ -590,6 +590,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Слишком много активных вызовов. Чтобы выполнить новый вызов, завершите или объедините существующие."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Ошибка подключения. Вставьте поддерживаемую SIM-карту."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Соединение по Wi-Fi разорвано. Вызов завершен."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Вы не можете начать видеовстречу, так как уровень заряда батареи слишком низкий."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Видеовстреча завершена из-за низкого уровня заряда батареи."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Сменить PIN-код голосовой почты"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Продолжить"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Отмена"</string>

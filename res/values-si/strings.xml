@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"සක්‍රිය ඇමතුම් ඉතා විශාල ගණනක් ඇත. කරුණාකර නව ඇමතුමක් ගැනීමට පෙර පවතින ඇමතුම් අවසන් හෝ ඒකාබද්ධ කරන්න."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"සම්බන්ධ වීමට නොහැකිය, කරුණාකර වලංගු SIM කාඩ්පතක් ඇතුළු කරන්න."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi සම්බන්ධතාවය අහිමි විය. ඇමතුම අවසන් විය."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"අඩු බැටරිය නිසා ඔබගේ වීඩියෝ ඇමතුම සිදු කළ නොහැකිය."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"අඩු බැටරිය හේතුවෙන් වීඩියෝ ඇමතුම අවසන් විය."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"හඬ තැපැල් PIN අංකය වෙනස් කරන්න"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"දිගටම කර ගෙන යන්න"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"අවලංගු කරන්න"</string>

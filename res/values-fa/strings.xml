@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"تعداد زیادی تماس فعال وجود دارد. قبل از برقراری تماس جدید، لطفاً به تماس‌های موجود پایان دهید یا آنها را ادغام کنید."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"مرتبط نشد، لطفاً سیم کارت معتبری را وارد کنید."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"اتصال وای‌فای قطع شد. تماس پایان یافت."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"به دلیل شارژ کم باتری، نمی‌توان تماسی برقرار کرد."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"تماس ویدیویی به‌دلیل شارژ کم باتری پایان یافت."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"تغییر پین پست صوتی"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ادامه"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"لغو"</string>

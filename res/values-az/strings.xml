@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Burada həddindən çox aktiv zəng var. Yeni birini yerləşdirmək üçün mövcud zəngləri sonlandırın və ya birləşdirin."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Qoşulmaq olmadı, etibarlı SİM kart daxil edin."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi bağlantısı kəsildi. Zəng başa çatdı."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Batareya az olduğu üçün video zəng edə bilməzsiniz."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Batareya az olduğuna görə video zəng bitdi."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Səsli poçtun PIN kodunu dəyişin"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Davam edin"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Ləğv edin"</string>

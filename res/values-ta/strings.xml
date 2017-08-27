@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"மிகவும் அதிக அளவிலான அழைப்புகள் செயலில் உள்ளன. புதிய அழைப்பை மேற்கொள்ளும் முன், ஏற்கனவேயுள்ள அழைப்புகளைத் துண்டிக்கவும் அல்லது ஒன்றாகப் பிணைக்கவும்."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"இணைக்க முடியவில்லை, சரியான சிம் கார்டைச் செருகவும்."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"வைஃபை இணைப்பு துண்டிக்கப்பட்டதால், அழைப்பு முடிந்தது."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"பேட்டரி அளவு குறைவாக இருப்பதால், வீடியோ அழைப்பைச் செய்ய முடியாது."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"பேட்டரி அளவு குறைவாக இருப்பதால், வீடியோ அழைப்பு முடிந்தது."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"குரலஞ்சல் பின்னை மாற்றவும்"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"தொடர்க"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"ரத்துசெய்"</string>
