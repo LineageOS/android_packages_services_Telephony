@@ -89,4 +89,9 @@
     <!-- Mobile network settings, COLP -->
     <string name="connected_line_identification_title">Connected line identification</string>
     <string name="connected_line_identification_summary">Disable this option if the numbers of the recipients don\'t show up in the call history</string>
+
+    <!-- My Phone Number -->
+    <string name="phone_number_label">My phone number</string>
+    <string name="phone_number_summary">Set the phone number for this device</string>
+    <string name="msisdn_alpha_tag" translatable="false">Voice Line 1</string>
 </resources>
