@@ -588,6 +588,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Masz za dużo aktywnych połączeń. Scal lub zakończ istniejące połączenia, aby nawiązać nowe."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Nie udało się nawiązać połączenia. Włóż prawidłową kartę SIM."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Utracono połączenie Wi-Fi. Rozmowa została zakończona."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Nie możesz rozpocząć rozmowy wideo z powodu słabej baterii."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Rozmowa wideo została zakończona z powodu słabej baterii."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Zmień kod PIN poczty głosowej"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Dalej"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Anuluj"</string>

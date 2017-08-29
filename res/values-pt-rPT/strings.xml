@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Existem demasiadas chamadas ativas. Termine ou intercale as chamadas existentes antes de efetuar uma nova chamada."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Não é possível estabelecer ligação, introduza um cartão SIM válido."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"A ligação Wi-Fi foi perdida. A chamada foi terminada."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"A sua videochamada não pôde ser efetuada devido a bateria fraca."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"A videochamada terminou devido a bateria fraca."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Alterar o PIN do correio de voz"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continuar"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Cancelar"</string>

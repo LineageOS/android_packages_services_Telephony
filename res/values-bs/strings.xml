@@ -586,6 +586,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Previše aktivnih poziva. Prekinite ili spojite postojeće pozive prije upućivanja novog poziva."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Povezivanje nije moguće, umetnite važeću SIM karticu."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi veza je prekinuta. Poziv je završen."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Upućivanje videopoziva nije moguće zbog istrošenosti baterije."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Videopoziv je završen zbog istrošenosti baterije."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Promijeni PIN govorne pošte"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Nastavi"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Otkaži"</string>

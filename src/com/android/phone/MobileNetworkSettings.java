@@ -617,12 +617,6 @@ public class MobileNetworkSettings extends Activity  {
 
             bindNetworkQueryService();
 
-            if (mUm.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
-                mUnavailable = true;
-                activity.setContentView(R.layout.telephony_disallowed_preference_screen);
-                return;
-            }
-
             addPreferencesFromResource(R.xml.network_setting_fragment);
 
             mButton4glte = (SwitchPreference)findPreference(BUTTON_4G_LTE_KEY);
@@ -683,7 +677,13 @@ public class MobileNetworkSettings extends Activity  {
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
-            initializeSubscriptions();
+            if (mUm.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)
+                    || !mUm.isSystemUser()) {
+                mUnavailable = true;
+                getActivity().setContentView(R.layout.telephony_disallowed_preference_screen);
+            } else {
+                initializeSubscriptions();
+            }
         }
 
         private class PhoneChangeReceiver extends BroadcastReceiver {

@@ -588,6 +588,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Zu viele aktive Anrufe. Beende aktive Anrufe oder führe sie zusammen, bevor du einen neuen Anruf tätigst."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Verbindung kann nicht hergestellt werden. Lege eine gültige SIM-Karte ein."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"WLAN-Verbindung unterbrochen. Anruf beendet."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Der Videoanruf kann aufgrund des niedrigen Akkustands nicht getätigt werden."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Der Videoanruf wurde aufgrund des niedrigen Akkustands beendet."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Mailbox-PIN ändern"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Weiter"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Abbrechen"</string>
