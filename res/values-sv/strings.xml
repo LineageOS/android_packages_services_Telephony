@@ -590,6 +590,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Det finns för många aktiva samtal. Avsluta eller slå samman pågående samtal innan du ringer ett nytt."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Det går inte att ansluta. Sätt i ett giltigt SIM-kort."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi-anslutningen bruten. Samtal avslutat."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Det går inte att ringa videosamtal på grund av svagt batteri."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Videosamtalet slutade på grund av svagt batteri."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Ändra röstbrevlådans pinkod"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Fortsätt"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Avbryt"</string>

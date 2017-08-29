@@ -590,6 +590,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Има премногу активни повици. Завршете или спојте ги постоечките повици пред да започнете нов."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Не може да се поврзе. Внесете важечка SIM-картичка."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi-врската е прекината. Повикот заврши."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Видеоповикот не може да се воспостави поради слаба батерија."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Видеоповикот заврши поради слаба батерија."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Променете PIN на говорната пошта"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Продолжи"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Откажи"</string>

@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Hozir bir nechta chaqiruv amalda. Boshqa abonentga telefon qilishdan avval amaldagi chaqiruvlarni tugating yoki ularni konferens-aloqaga birlashtiring."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Ulanishda xato. Mos SIM kartani soling."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi tarmog‘iga ulanish uzildi va qo‘ng‘iroq tugatildi."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Batareya quvvati kam qolgani sababli video suhbat boshlab bo‘lmaydi."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Batareya quvvati kam qolgani sababli video suhbat tugatildi."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Ovozli pochta PIN kodini o‘zgartirish"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Davom etish"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Bekor qilish"</string>

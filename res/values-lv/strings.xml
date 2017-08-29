@@ -588,6 +588,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Ir pārāk daudz aktīvu zvanu. Pirms jauna zvana veikšanas pabeidziet vai apvienojiet esošos zvanus."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Nevar izveidot savienojumu. Lūdzu, ievietojiet derīgu SIM karti."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi savienojums ir zaudēts. Zvans ir pārtraukts."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Videozvanu nevar veikt zema akumulatora līmeņa dēļ."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Videozvans tika pārtraukts zema akumulatora līmeņa dēļ."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Balss pasta PIN koda mainīšana"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Turpināt"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Atcelt"</string>

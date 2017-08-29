@@ -588,6 +588,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Prebieha príliš veľa aktívnych hovorov. Skôr ako uskutočníte nový hovor, ukončite existujúce hovory alebo ich zlúčte."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Nedá sa pripojiť, vložte platnú SIM kartu."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Pripojenie Wi-Fi bolo stratené. Hovor bol ukončený."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Videohovor sa nedá spustiť pre slabú batériu."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Videohovor bol ukončený pre slabú batériu."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Zmena kódu PIN hlasovej schránky"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Pokračovať"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Zrušiť"</string>

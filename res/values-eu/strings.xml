@@ -590,6 +590,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Dei gehiegi daude aktibo. Amaitu edo bateratu abian diren deiak beste bat egin aurretik."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Ezin da konektatu. Erabili balio duen SIM txartel bat."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Galdu egin da Wi-Fi konexioa. Amaitu da deia."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Ezin da egin deia, bateria gutxi gelditzen delako."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Bideo-deia amaitu egin da bateria gutxi gelditzen delako."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Aldatu erantzungailuaren PIN kodea"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Jarraitu"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Utzi"</string>

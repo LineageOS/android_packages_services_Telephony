@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Активните обаждания са твърде много. Моля, завършете или обединете съществуващи обаждания, преди да започнете ново."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Не може да се установи връзка. Моля, поставете валидна SIM карта."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Връзката с Wi-Fi прекъсна. Обаждането завърши."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Видеообаждането ви не може да се извърши, защото батерията е изтощена."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Видеообаждането завърши заради изтощена батерия."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Промяна на ПИН за гласовата поща"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Напред"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Отказ"</string>

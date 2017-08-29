@@ -592,6 +592,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"هناك الكثير من المكالمات النشطة. يرجى إنهاء أو دمج المكالمات الموجودة قبل إجراء مكالمة جديدة."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"‏يتعذر الاتصال، يُرجى إدخال شريحة SIM صالحة."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"‏تم فقدان اتصال Wi-Fi. تم إنهاء المكالمة."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"يتعذر إجراء مكالمة الفيديو نتيجة لانخفاض طاقة البطارية."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"تم إنهاء مكالمة الفيديو نتيجة لانخفاض طاقة البطارية."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"تغيير رقم التعريف الشخصي للبريد الصوتي"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"متابعة"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"إلغاء"</string>

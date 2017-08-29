@@ -584,6 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"बहुत अधिक कॉल सक्रिय हैं. नया कॉल करने से पहले कृपया मौजूदा कॉल समाप्त करें या उन्हें मिला दें."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"कनेक्ट नहीं हो पा रहा है, कृपया कोई मान्य SIM कार्ड डालें."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"वाई-फ़ाई कनेक्शन चला गया. कॉल समाप्त हो गया."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"बैटरी कम होने के कारण आप वीडियो कॉल नहीं कर सकते."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"बैटरी कम होने के कारण वीडियो कॉल समाप्त हो गया."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"वॉइसमेल पिन बदलें"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"जारी रखें"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"अभी नहीं"</string>
