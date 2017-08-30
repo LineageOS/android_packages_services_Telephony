@@ -584,10 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"လက်ရှိခေါ်ဆိုမှုများ အလွန်များနေပါသည်။ ခေါ်ဆိုမှုအသစ်တစ်ခု မပြုလုပ်ခင် လက်ရှိဖုန်းခေါ်ဆိုမှုများကို အဆုံးသတ် (သို့) ပေါင်း လိုက်ပါ။"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"ချိတ်ဆက် မရပါ၊ ကျေးဇူးပြုပြီး မှန်ကန်သည့် SIM ကဒ်ကို ထည့်ပေးပါ။"</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi ချိတ်ဆက်မှု ပြတ်တောက်သွားပါသည်။ ခေါ်ဆိုမှု ရပ်တန့်သွားပါပြီ။"</string>
-    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
-    <skip />
-    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
-    <skip />
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"ဘက်ထရီအားနည်းနေသဖြင့် ဗီဒီယိုခေါ်ဆိုမှုကို မပြုလုပ်နိုင်ပါ။"</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"ဘက်ထရီအားနည်းနေသဖြင့် ဗီဒီယိုခေါ်ဆိုမှု ပြီးဆုံးသွားပါသည်။"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"အသံမေးလ်ပင်နံပါတ် ပြောင်းရန်"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ဆက်လုပ်ရန်"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"မလုပ်တော့"</string>

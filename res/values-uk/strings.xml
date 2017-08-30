@@ -381,7 +381,7 @@
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Увімкнути режим автоповтору"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Під час відеодзвінка заборонено змінювати режим TTY"</string>
     <string name="menu_add" msgid="1882023737425114762">"Додати контакт"</string>
-    <string name="menu_edit" msgid="7143003705504672374">"Змінити контакт"</string>
+    <string name="menu_edit" msgid="7143003705504672374">"Редагувати контакт"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Видалити контакт"</string>
     <string name="menu_dial" msgid="3223106222819685808">"Зателефонувати контакту"</string>
     <string name="get_pin2" msgid="8204677063922225311">"Введіть PIN2-код"</string>
