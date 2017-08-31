@@ -584,10 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"অনেকগুলি কল সক্রিয় রয়েছে। অনুগ্রহ করে একটি নতুন কল করার আগে বিদ্যমান কলগুলি কেটে দিন বা এটিকে সেই কলগুলিতে অন্তর্ভুক্ত করুন।"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"সংযোগ করা যায়নি, অনুগ্রহ করে একটি বৈধ SIM কার্ড ঢোকান৷"</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"ওয়াই-ফাই সংযোগ বিচ্ছিন্ন হয়েছে। কল কেটে গেছে।"</string>
-    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
-    <skip />
-    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
-    <skip />
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"চার্জ খুব কম, তাই ভিডিও কল করা যাবে না।"</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"চার্জ খুব কম, তাই ভিডিও কল বন্ধ করা হয়েছে।"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ভয়েসমেলের PIN পরিবর্তন করুন"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"চালিয়ে যান"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"বাতিল করুন"</string>

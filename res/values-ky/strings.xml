@@ -588,10 +588,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Учурда жигердүү чалуулар өтө көп. Чалуу үчүн учурдагы чалууларды бүтүрүңүз же бириктириңиз."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Байланышуу мумкүн эмес. Жарактуу SIM-картаны салыңыз."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi туташуусу үзүлүп калды. Чалуу аяктады."</string>
-    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
-    <skip />
-    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
-    <skip />
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Батареянын заряды төмөн болгондуктан, видео режиминде чала албайсыз."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Батареянын заряды төмөн болгондуктан, видео чалуу аяктады."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Үн почтасынын PIN кодун өзгөртүү"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Улантуу"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Жокко чыгаруу"</string>

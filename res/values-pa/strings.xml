@@ -584,10 +584,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"ਇੱਥੇ ਬਹੁਤ ਸਾਰੀਆਂ ਕਿਰਿਆਸ਼ੀਲ ਕਾਲਾਂ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਨਵੀਂ ਕਾਲ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਮੌਜੂਦਾ ਕਾਲਾਂ ਨੂੰ ਸਮਾਪਤ ਜਾਂ ਮਿਲਾਓ।"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"ਕਨੈਕਟ ਕਰਨ ਦੇ ਅਯੋਗ, ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਵੈਧ ਸਿਮ ਕਾਰਡ ਦਾਖਲ ਕਰੋ।"</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi ਕਨੈਕਸ਼ਨ ਚਲਾ ਗਿਆ ਹੈ। ਕਾਲ ਸਮਾਪਤ ਹੋਈ।"</string>
-    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
-    <skip />
-    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
-    <skip />
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"ਘੱਟ ਬੈਟਰੀ ਕਾਰਨ ਤੁਹਾਡੀ ਵੀਡੀਓ ਕਾਲ ਕੀਤੀ ਨਹੀਂ ਜਾ ਸਕਦੀ।"</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"ਘੱਟ ਬੈਟਰੀ ਕਾਰਨ ਵੀਡੀਓ ਕਾਲ ਸਮਾਪਤ ਹੋਈ।"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ਵੌਇਸਮੇਲ PIN ਬਦਲੋ"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ਜਾਰੀ ਰੱਖੋ"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"ਰੱਦ ਕਰੋ"</string>
