@@ -30,12 +30,11 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.ParcelFileDescriptor;
 import android.os.RemoteException;
-import android.telephony.MbmsDownloadManager;
+import android.telephony.MbmsDownloadSession;
 import android.telephony.mbms.DownloadRequest;
-import android.telephony.mbms.DownloadStateCallback;
 import android.telephony.mbms.FileInfo;
 import android.telephony.mbms.FileServiceInfo;
-import android.telephony.mbms.MbmsDownloadManagerCallback;
+import android.telephony.mbms.MbmsDownloadSessionCallback;
 import android.telephony.mbms.MbmsException;
 import android.telephony.mbms.UriPathPair;
 import android.telephony.mbms.vendor.IMbmsDownloadService;
@@ -69,7 +68,7 @@ public class EmbmsSampleDownloadService extends Service {
 
     private final IMbmsDownloadService mBinder = new MbmsDownloadServiceBase() {
         @Override
-        public int initialize(int subId, MbmsDownloadManagerCallback callback) {
+        public int initialize(int subId, MbmsDownloadSessionCallback callback) {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
@@ -101,7 +100,7 @@ public class EmbmsSampleDownloadService extends Service {
         }
 
         @Override
-        public int getFileServices(int subscriptionId,
+        public int requestUpdateFileServices(int subscriptionId,
                 List<String> serviceClasses) throws RemoteException {
             FrontendAppIdentifier appKey =
                     new FrontendAppIdentifier(Binder.getCallingUid(), subscriptionId);
@@ -112,7 +111,7 @@ public class EmbmsSampleDownloadService extends Service {
                     .getFileServicesForClasses(serviceClasses);
 
             mHandler.postDelayed(() -> {
-                MbmsDownloadManagerCallback appCallback = mAppCallbacks.get(appKey);
+                MbmsDownloadSessionCallback appCallback = mAppCallbacks.get(appKey);
                 appCallback.onFileServicesUpdated(serviceInfos);
             }, SEND_FILE_SERVICE_INFO_DELAY);
             return MbmsException.SUCCESS;
@@ -133,7 +132,7 @@ public class EmbmsSampleDownloadService extends Service {
         }
 
         @Override
-        public int download(DownloadRequest downloadRequest, DownloadStateCallback callback) {
+        public int download(DownloadRequest downloadRequest) {
             FrontendAppIdentifier appKey = new FrontendAppIdentifier(
                     Binder.getCallingUid(), downloadRequest.getSubscriptionId());
             checkInitialized(appKey);
@@ -167,7 +166,7 @@ public class EmbmsSampleDownloadService extends Service {
 
     private static EmbmsSampleDownloadService sInstance = null;
 
-    private final Map<FrontendAppIdentifier, MbmsDownloadManagerCallback> mAppCallbacks =
+    private final Map<FrontendAppIdentifier, MbmsDownloadSessionCallback> mAppCallbacks =
             new HashMap<>();
     private final Map<FrontendAppIdentifier, ComponentName> mAppReceivers = new HashMap<>();
     private final Map<FrontendAppIdentifier, String> mAppTempFileRoots = new HashMap<>();
@@ -323,7 +322,7 @@ public class EmbmsSampleDownloadService extends Service {
 
     private void downloadSingleFile(FrontendAppIdentifier appKey, DownloadRequest request,
             UriPathPair tempFile, FileInfo fileToDownload) {
-        int result = MbmsDownloadManager.RESULT_SUCCESSFUL;
+        int result = MbmsDownloadSession.RESULT_SUCCESSFUL;
         try {
             // Get the ParcelFileDescriptor for the single temp file we requested
             ParcelFileDescriptor tempFileFd = getContentResolver().openFileDescriptor(
@@ -345,7 +344,7 @@ public class EmbmsSampleDownloadService extends Service {
             destinationStream.write(imageBuffer);
             destinationStream.flush();
         } catch (IOException e) {
-            result = MbmsDownloadManager.RESULT_CANCELLED;
+            result = MbmsDownloadSession.RESULT_CANCELLED;
         }
 
         // Take a round-trip through the download request serialization to exercise it
@@ -361,14 +360,14 @@ public class EmbmsSampleDownloadService extends Service {
         downloadResultIntent.putExtra(VendorUtils.EXTRA_REQUEST, request1);
         downloadResultIntent.putExtra(VendorUtils.EXTRA_FINAL_URI,
                 tempFile.getFilePathUri());
-        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_MBMS_FILE_INFO, fileToDownload);
+        downloadResultIntent.putExtra(MbmsDownloadSession.EXTRA_MBMS_FILE_INFO, fileToDownload);
         downloadResultIntent.putExtra(VendorUtils.EXTRA_TEMP_FILE_ROOT,
                 mAppTempFileRoots.get(appKey));
         ArrayList<Uri> tempFileList = new ArrayList<>(1);
         tempFileList.add(tempFile.getFilePathUri());
         downloadResultIntent.getExtras().putParcelableArrayList(
                 VendorUtils.EXTRA_TEMP_LIST, tempFileList);
-        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_MBMS_DOWNLOAD_RESULT, result);
+        downloadResultIntent.putExtra(MbmsDownloadSession.EXTRA_MBMS_DOWNLOAD_RESULT, result);
         downloadResultIntent.setComponent(mAppReceivers.get(appKey));
 
         sendOrderedBroadcast(downloadResultIntent,
