@@ -71,7 +71,7 @@
     <string name="phone_accounts_add_sip_account" msgid="2023821743341923271">"SIP অ্যাকাউন্ট যোগ করুন"</string>
     <string name="phone_accounts_configure_account_settings" msgid="1361715069911607109">"অ্যাকাউন্ট সেটিংস কনফিগার করুন"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"সমস্ত কলিং অ্যাকাউন্ট"</string>
-    <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"কোন অ্যাকাউন্টগুলি কল করতে পারবে তা নির্বাচন করুন"</string>
+    <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"কোন অ্যাকাউন্টগুলি কল করতে পারবে তা বেছে নিন"</string>
     <string name="wifi_calling" msgid="739018212480165598">"ওয়াই-ফাই কলিং"</string>
     <string name="connection_service_default_label" msgid="1498481943805913754">"বিল্ট-ইন সংযোগ পরিষেবা"</string>
     <string name="voicemail" msgid="8693759337917898954">"ভয়েসমেল"</string>
@@ -168,7 +168,7 @@
     <string name="not_allowed" msgid="5613353860205691579">"আপনার সিম কার্ড এই নেটওয়ার্কে সংযোগ স্থাপনের অনুমতি দেয় না৷"</string>
     <string name="connect_later" msgid="2308119155752343975">"এই মুহূর্তে এই নেটওয়ার্কের সাথে সংযোগ স্থাপন করা যাচ্ছে না৷ পরে আবার চেষ্টা করুন৷"</string>
     <string name="registration_done" msgid="495135664535876612">"নেটওয়ার্কে নিবন্ধিত করা হয়েছে৷"</string>
-    <string name="select_automatically" msgid="1046727200631770962">"স্বয়ংক্রিয়ভাবে নেটওয়ার্ক নির্বাচন করুন"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"স্বয়ংক্রিয়ভাবে নেটওয়ার্ক বেছে নিন"</string>
     <string name="network_select_title" msgid="7733107364757544558">"নেটওয়ার্ক"</string>
     <string name="register_automatically" msgid="6017849844573519637">"স্বয়ংক্রিয় নিবন্ধীকরণ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"পছন্দের নেটওয়ার্ক"</string>
@@ -240,13 +240,13 @@
     <string name="throttle_current_usage" msgid="8762280193043815361">"বর্তমান সময়ের মধ্যে ব্যবহৃত ডেটা"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"ডেটা ব্যবহারের সময়কাল"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"ডেটা হারের নীতি"</string>
-    <string name="throttle_help" msgid="243651091785169900">"আরো জানুন"</string>
+    <string name="throttle_help" msgid="243651091785169900">"আরও জানুন"</string>
     <string name="throttle_status_subtext" msgid="1657318943142085170">"<xliff:g id="USED_2">%3$s</xliff:g> সময়ের মধ্যে সর্বোচ্চ সীমার <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)\nপরবর্তী সময়কাল <xliff:g id="USED_3">%4$d</xliff:g> দিনের মধ্যে শুরু হবে(<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_2">%3$s</xliff:g> সময়ের সর্বোচ্চ সীমার মধ্যে <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) ব্যবহৃত হয়েছে"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> সর্বোচ্চ সীমা পেরিয়ে গেছে\nডেটার হার <xliff:g id="USED_1">%2$d</xliff:g> Kb/s এ হ্রাস করা হয়েছে"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"এই সময়কালের <xliff:g id="USED_0">%1$d</xliff:g>٪ অতিক্রান্ত হয়েছে\nপরবর্তী সময়কাল <xliff:g id="USED_1">%2$d</xliff:g> দিনের মধ্যে শুরু হবে (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"ডেটা ব্যবহারের সীমা পেরিয়ে গেলে ডেটা হারকে কমিয়ে <xliff:g id="USED">%1$d</xliff:g> Kb/s করা হয়"</string>
-    <string name="throttle_help_subtext" msgid="5217706521499010816">"আপনার ক্যারিয়ারের মোবাইল নেটওয়ার্ক ডেটা ব্যবহারের নীতি সম্বন্ধে আরো তথ্য"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"আপনার ক্যারিয়ারের মোবাইল নেটওয়ার্ক ডেটা ব্যবহারের নীতি সম্বন্ধে আরও তথ্য"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"সেল সম্প্রচার SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"সেল সম্প্রচার SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"সেল সম্প্রচার SMS সক্ষম করা হয়েছে"</string>
@@ -278,7 +278,7 @@
     <string name="international_enable" msgid="5855356769925044927">"আন্তর্জাতিক সংবাদ সক্ষম করা হয়েছে"</string>
     <string name="international_disable" msgid="2850648591041088931">"আন্তর্জাতিক সংবাদ অক্ষম করা হয়েছে"</string>
     <string name="list_language_title" msgid="2841683501919760043">"ভাষা"</string>
-    <string name="list_language_summary" msgid="8109546531071241601">"সংবাদের ভাষা নির্বাচন করুন"</string>
+    <string name="list_language_summary" msgid="8109546531071241601">"সংবাদের ভাষা বেছে নিন"</string>
   <string-array name="list_language_entries">
     <item msgid="6137851079727305485">"ইংরাজি"</item>
     <item msgid="1151988412809572526">"ফরাসী"</item>
@@ -387,7 +387,7 @@
     <string name="get_pin2" msgid="8204677063922225311">"PIN2 টাইপ করুন"</string>
     <string name="name" msgid="7329028332786872378">"নাম"</string>
     <string name="number" msgid="7905950798349903858">"নম্বর"</string>
-    <string name="save" msgid="4094274636321939086">"সংরক্ষণ করুন"</string>
+    <string name="save" msgid="4094274636321939086">"সেভ করুন"</string>
     <string name="add_fdn_contact" msgid="2481915899633353976">"ডায়াল করার জন্য স্থির নম্বর যোগ করুন৷"</string>
     <string name="adding_fdn_contact" msgid="7627379633721940991">"ডায়াল করার জন্য স্থির নম্বর যোগ করা হচ্ছে..."</string>
     <string name="fdn_contact_added" msgid="7458335758501736665">"স্থায়ী ডায়ালের নম্বর যোগ করা হয়েছে৷"</string>
@@ -530,7 +530,7 @@
     <string name="ota_progress" msgid="460876637828044519">"আপনার ফোন প্রোগ্রাম করা হচ্ছে..."</string>
     <string name="ota_failure" msgid="7713756181204620397">"আপনার ফোন প্রোগ্রাম করা যায়নি"</string>
     <string name="ota_successful" msgid="1880780692887077407">"আপনার ফোন এখন সক্ষম৷ পরিষেবা শুরু হতে ১৫ মিনিট পর্যন্ত সময় লাগতে পারে৷"</string>
-    <string name="ota_unsuccessful" msgid="8072141612635635357">"আপনার ফোন সক্রিয় করা যায়নি৷ \nআপনাকে অপেক্ষাকৃত উন্নত কভারেজ রয়েছে এমন একটি জায়গায় যেতে হতে পারে (একটি জানালার কাছে, অথবা বাইরে)৷ \n\nআবার চেষ্টা করুন অথবা আরো বিকল্পের জন্য গ্রাহক পরিষেবার সাথে যোগাযোগ করুন৷"</string>
+    <string name="ota_unsuccessful" msgid="8072141612635635357">"আপনার ফোন সক্রিয় করা যায়নি৷ \nআপনাকে অপেক্ষাকৃত উন্নত কভারেজ রয়েছে এমন একটি জায়গায় যেতে হতে পারে (একটি জানালার কাছে, অথবা বাইরে)৷ \n\nআবার চেষ্টা করুন অথবা আরও বিকল্পের জন্য গ্রাহক পরিষেবার সাথে যোগাযোগ করুন৷"</string>
     <string name="ota_spc_failure" msgid="3909983542575030796">"এক্সেস SPC ব্যর্থতাগুলি"</string>
     <string name="ota_call_end" msgid="4537279738134612388">"ফিরুন"</string>
     <string name="ota_try_again" msgid="7685477206465902290">"আবার চেষ্টা করুন"</string>
@@ -560,7 +560,7 @@
     <string name="calling_via_template" msgid="4839419581866928142">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> এর দ্বারা কল হচ্ছে"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"পরিচিতির ফটো"</string>
     <string name="goPrivate" msgid="865837794424530980">"ব্যক্তিগতভাবে কাজ করুন"</string>
-    <string name="selectContact" msgid="781975788478987237">"পরিচিতি নির্বাচন করুন"</string>
+    <string name="selectContact" msgid="781975788478987237">"পরিচিতি বেছে নিন"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"ভয়েস কলিং সমর্থিত নয়"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ডায়াল করুন"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"ভিজ্যুয়াল ভয়েসমেল"</string>

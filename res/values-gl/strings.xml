@@ -215,8 +215,8 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"Permitir o uso de datos"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Atención"</string>
     <string name="roaming" msgid="7894878421600247140">"Itinerancia"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Conéctase aos servizos de datos durante a itinerancia"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Conéctase aos servizos de datos durante a itinerancia"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Conectarse a servizos de datos en itinerancia"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Conectarse a servizos de datos en itinerancia"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Perdiches a conectividade de datos debido a que abandonaches a túa rede doméstica coa itinerancia de datos desactivada."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"É posible que se apliquen custos elevados."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permitir a itinerancia de datos?"</string>

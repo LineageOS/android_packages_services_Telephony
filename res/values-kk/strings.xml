@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Ұялы дерекқор"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Мобильдік дерек"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Телефон қызметтері"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Төтенше тергіш"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Телефон"</string>
@@ -58,7 +58,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM қоңырау параметрлері (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA қоңырауының параметрлері"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA қоңырау параметрлері (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"Қол жетімділік нүктесінің атаулары"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"Кіру нүктесінің атаулары"</string>
     <string name="settings_label" msgid="3876743539816984008">"Желі параметрлері"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Қоңырау шалу есептік жазбалары"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Келесінің көмегімен қоңыраулар шалу"</string>
@@ -216,9 +216,9 @@
     <string name="dialog_alert_title" msgid="6751344986194435476">"Назар аударыңыз"</string>
     <string name="roaming" msgid="7894878421600247140">"Роуминг"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Роуминг кезінде дерек қызметтеріне қосу"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Роуминг кезінде дерекқор қызметтеріне қосу"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Роуминг кезінде дерек қызметтеріне қосу"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Дерекқор байланысын жоғалтып алдыңыз, себебі үйдегі желінің дерекқор роумингін өшірілген күйінде қалдырғансыз."</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"Сізден елеулі ақылар алынуы мүмкін."</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"Қомақты ақы алынуы мүмкін."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Деректер роумингіне рұқсат берілсін бе?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Деректер трафигі"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> аралығында <xliff:g id="ID_1">%1$s</xliff:g> мобильдік дерек қолданылды"</string>
@@ -521,7 +521,7 @@
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"Телефон ұялы дерекқор қызметін қосуда.\n\nБұған 5 минуттай қажет болуы мүмкін."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Іске қосу қадамын аттап өтесіз бе?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Егер іске қосу қадамынан аттап өтсеңіз, қоңырау шалу немесе ұялы дерекқор желісіне қосылу мүмкін болмайды (бірақ Wi-Fi желілеріне қосылуына мүмкіндігіңіз болады). Телефоныңыз іске қосылғанша телефонды қолданған сайын іске қосу қажет болады."</string>
-    <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Аттап өту"</string>
+    <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Өткізіп жіберу"</string>
     <string name="ota_activate" msgid="1368528132525626264">"Іске қосу"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"Телефон іске қосылды."</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"Іске қосу барысында мәселе орын алды"</string>

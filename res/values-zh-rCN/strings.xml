@@ -219,9 +219,9 @@
     <string name="roaming_disable" msgid="1843417228755568110">"漫游时连接到移动数据网络服务"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"移动数据网络连接已断开，因为您已离开本地网络并关闭了移动数据网络漫游功能。"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"这可能会产生高额费用。"</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"要允许数据网络漫游吗？"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"要允许移动数据网络漫游吗？"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"流量使用情况"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>使用了 <xliff:g id="ID_1">%1$s</xliff:g> 移动数据流量"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>期间使用的移动数据流量为：<xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"高级"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"运营商"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"运营商, esim, sim, euicc"</string>
