@@ -214,8 +214,8 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"Permitir o uso de datos"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Atención"</string>
     <string name="roaming" msgid="7894878421600247140">"Itinerancia"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Conéctase aos servizos de datos durante a itinerancia"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Conéctase aos servizos de datos durante a itinerancia"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Conectarse a servizos de datos en itinerancia"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Conectarse a servizos de datos en itinerancia"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Perdiches a conectividade de datos debido a que abandonaches a túa rede doméstica coa itinerancia de datos desactivada."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"É posible que se apliquen custos elevados."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permitir a itinerancia de datos?"</string>
@@ -583,10 +583,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Hai moitas chamadas activas. Finaliza as chamadas existentes ou combínaas antes de facer unha nova."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Non se pode conectar. Insire unha tarxeta SIM válida."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Finalizouse a chamada porque se perdeu a conexión wifi."</string>
-    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
-    <skip />
-    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
-    <skip />
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Non se puido realizar a videochamada porque queda pouca batería."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"A videochamada finalizou porque queda pouca batería."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Cambiar PIN do correo de voz"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continuar"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Cancelar"</string>

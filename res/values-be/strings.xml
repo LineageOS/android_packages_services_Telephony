@@ -587,7 +587,7 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Занадта шмат актыўных выклікаў. Скончыце ці аб\'яднайце існуючыя выклікі, перш чым рабіць новы выклік."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Немагчыма падключыцца, устаўце сапраўдную SIM-карту."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Страчана падключэнне да Wi-Fi. Выклік завершаны."</string>
-    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Наладзіць злучэнне для ажыццяўлення відэавыкліку немагчыма: нізкі зарад акумулятара."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Немагчыма наладзіць злучэнне для відэавыкліку: нізкі зарад акумулятара."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Відэавыклік завершаны: нізкі зарад акумулятара."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Змяніць PIN-код галасавой пошты"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Працягнуць"</string>

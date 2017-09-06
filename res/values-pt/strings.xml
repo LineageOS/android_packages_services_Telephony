@@ -217,10 +217,10 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Conectar aos serviços de dados quando estiver em roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Conectar aos serviços de dados quando estiver em roaming"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Você perdeu a conectividade de dados porque deixou o roaming de dados de sua rede doméstica desativado."</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"Pode acarretar cobranças significativas"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"Pode haver cobranças significativas."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permitir roaming de dados?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Uso de dados"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> dados móveis usados em <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de dados móveis usados em <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avançadas"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operadora"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operadora, esim, sim, euicc"</string>
@@ -333,7 +333,7 @@
     <string name="enable_disable_multi_category" msgid="626771003122899280">"Várias categorias"</string>
     <string name="multi_category_enable" msgid="1179299804641721768">"Várias categorias ativadas"</string>
     <string name="multi_category_disable" msgid="880104702904139505">"Várias categorias desativadas"</string>
-    <string name="network_lte" msgid="7702681952521375754">"LTE (recomendável)"</string>
+    <string name="network_lte" msgid="7702681952521375754">"LTE (recomendado)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G (recomendável)"</string>
     <string name="network_global" msgid="1323190488685355309">"Global"</string>
     <string name="cdma_system_select_title" msgid="5757657769327732833">"Seleção de sistema"</string>

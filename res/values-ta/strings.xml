@@ -219,8 +219,8 @@
     <string name="roaming_reenable_message" msgid="8913735676127858115">"உள்ளூர் நெட்வொர்க்கில் தரவு ரோமிங்கை முடக்கிய நிலையில் வெளியேறியுள்ளதால், தரவு இணைப்பை இழந்துவிட்டீர்கள்."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"குறிப்பிடத்தக்க கட்டணங்கள் இருக்கலாம்."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"தரவு ரோமிங்கை அனுமதிக்கவா?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"தரவுப் பயன்பாடு"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>க்குள் <xliff:g id="ID_1">%1$s</xliff:g> மொபைல் தரவு பயன்படுத்தப்பட்டது"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"டேட்டா பயன்பாடு"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g> மொபைல் டேட்டா பயன்படுத்தப்பட்டது"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"மேம்பட்டவை"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"தொலைத்தொடர்பு நிறுவனம்"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"தொலைத்தொடர்பு நிறுவனம், இ-சிம், சிம், euicc"</string>
@@ -235,7 +235,7 @@
     <string name="video_calling_settings_title" msgid="539714564273795574">"தொலைத்தொடர்பு நிறுவன வீடியோ அழைப்பு"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS விருப்பங்கள்"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA விருப்பங்கள்"</string>
-    <string name="throttle_data_usage" msgid="3715677828160555808">"தரவு பயன்பாடு"</string>
+    <string name="throttle_data_usage" msgid="3715677828160555808">"டேட்டா பயன்பாடு"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"தற்போது பயன்படுத்தப்பட்ட தரவு"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"தரவு பயன்படுத்தப்பட்ட காலம்"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"தரவு கட்டண கொள்கை"</string>

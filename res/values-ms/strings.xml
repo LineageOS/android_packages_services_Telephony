@@ -583,10 +583,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Terlalu banyak panggilan aktif. Sila tamatkan atau gabungkan panggilan yang sedia ada sebelum membuat panggilan baharu."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Tidak dapat bersambung, sila masukkan kad SIM yang sah."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Sambungan Wi-Fi terputus. Panggilan ditamatkan."</string>
-    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
-    <skip />
-    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
-    <skip />
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Panggilan video anda tidak dapat dibuat kerana kuasa bateri rendah."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Panggilan video ditamatkan kerana kuasa bateri rendah."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Tukar PIN Mel Suara"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Teruskan"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Batal"</string>
