@@ -220,7 +220,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Des frais importants peuvent s\'appliquer."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Autoriser les données en itinérance?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Utilisation de données"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de données mobiles utilisées entre <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de données mobiles utilisées pendant la période suivante : <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avancés"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Opérateur"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"fournisseur de services, esim, sim, euicc"</string>

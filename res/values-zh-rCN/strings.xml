@@ -218,9 +218,9 @@
     <string name="roaming_disable" msgid="1843417228755568110">"漫游时连接到移动数据网络服务"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"移动数据网络连接已断开，因为您已离开本地网络并关闭了移动数据网络漫游功能。"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"这可能会产生高额费用。"</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"要允许数据网络漫游吗？"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"要允许移动数据网络漫游吗？"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"流量使用情况"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>使用了 <xliff:g id="ID_1">%1$s</xliff:g> 移动数据流量"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>期间使用的移动数据流量为：<xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"高级"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"运营商"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"运营商, esim, sim, euicc"</string>
@@ -583,10 +583,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"进行中的通话过多。请结束现有通话或将其合并，然后再拨打新的电话。"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"无法连接，请插入有效的 SIM 卡。"</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"WLAN 连接中断，通话已结束。"</string>
-    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
-    <skip />
-    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
-    <skip />
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"由于电量不足，无法发起视频通话。"</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"由于电量不足，视频通话已结束。"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"更改语音信箱 PIN 码"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"继续"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"取消"</string>

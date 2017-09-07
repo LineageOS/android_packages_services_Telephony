@@ -213,7 +213,7 @@
     <string name="data_enabled" msgid="5972538663568715366">"Dati attivati"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Consenti l\'utilizzo dei dati"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Attenzione"</string>
-    <string name="roaming" msgid="7894878421600247140">"In roaming"</string>
+    <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Connessione a servizi di dati in caso di roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Connessione a servizi di dati in roaming"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Connettività dati persa: hai lasciato la rete del tuo operatore con il roaming dati disattivato."</string>
@@ -226,7 +226,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operatore, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> - <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Dati mobili"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Accedi ai dati utilizzando la rete mobile"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Accedi ai dati tramite la rete mobile"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Disattivare i dati mobili?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Fai una scelta"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Cambiare la SIM per i dati?"</string>
@@ -587,8 +587,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Ci sono troppe chiamate attive. Termina o unisci le chiamate esistenti prima di effettuarne una nuova."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Impossibile collegarsi. Inserisci una scheda SIM valida."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Connessione Wi-Fi interrotta. Chiamata terminata."</string>
-    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Batteria scarica. La videochiamata non può essere effettuata."</string>
-    <string name="callFailed_low_battery" msgid="4913582435905872616">"Batteria scarica. Videochiamata terminata."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Batteria in esaurimento. La videochiamata non può essere effettuata."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Batteria in esaurimento. Videochiamata terminata."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Cambia PIN segreteria"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continua"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Annulla"</string>

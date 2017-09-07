@@ -170,9 +170,9 @@
     <string name="select_automatically" msgid="1046727200631770962">"Tự động chọn mạng"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Mạng"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Đăng ký tự động..."</string>
-    <string name="preferred_network_mode_title" msgid="2336624679902659306">"Loại mạng ưa thích"</string>
+    <string name="preferred_network_mode_title" msgid="2336624679902659306">"Loại mạng ưu tiên"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Thay đổi chế độ hoạt động của mạng"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Loại mạng ưa thích"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Loại mạng ưu tiên"</string>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Chế độ mạng được ưa thích: ưu tiên WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Chế độ mạng được ưa thích: chỉ GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Chế độ mạng được ưa thích: chỉ WCDMA"</string>
@@ -583,10 +583,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Có quá nhiều cuộc gọi hiện hoạt. Vui lòng kết thúc hoặc hợp nhất các cuộc gọi hiện có trước khi thực hiện cuộc gọi mới."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Không thể kết nối, vui lòng lắp thẻ SIM hợp lệ."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Mất kết nối Wi-Fi. Đã kết thúc cuộc gọi."</string>
-    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
-    <skip />
-    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
-    <skip />
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Không thể thực hiện cuộc gọi video của bạn do pin yếu."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Cuộc gọi video đã kết thúc do pin yếu."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Thay đổi mã PIN thư thoại"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Tiếp tục"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Hủy"</string>

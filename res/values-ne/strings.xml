@@ -217,7 +217,7 @@
     <string name="roaming_enable" msgid="7331106985174381987">"रोमिङको समयमा डेटा सेवामा जडान गर्नुहोस्"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"रोमिङको समयमा डेटा सेवा जडान गर्नुहोस्"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"तपाईँले डेटा गुमाउनु भएको छ किनभने तपाईँले डेटासहितको घर नेटवर्क रोमिङ बन्द गरेर छोड्नुभएको छ।"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"तपाईंलाई महत्त्वपूर्ण शुल्क लाग्न सक्छ।"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"तपाईंलाई अत्यन्त धेरै शुल्क लाग्न सक्छ।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिङको अनुमति दिने हो?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"डेटाको प्रयोग"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> सम्म <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा प्रयोग भयो"</string>
@@ -583,10 +583,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"धेरै सक्रिय कलहरू छन्। कृपया कुनै नयाँ राख्नु अघि विद्यमान कलहरूलाई अन्त्य वा मर्ज गर्नुहोस्।"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"जडान गर्न सकिएन, कृपया मान्य SIM कार्ड सम्मिलित गर्नुहोस्।"</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi जडान विच्छेद भयो। कल समाप्त भयो।"</string>
-    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
-    <skip />
-    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
-    <skip />
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"ब्याट्रीको चार्ज स्तर कम हुनाले तपाईं भिडियो कल गर्न सक्नुहुन्न।"</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"ब्याट्रीको चार्ज स्तर कम हुनाले भिडियो कल बन्द भयो।"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"भ्वाइस मेलको PIN परिवर्तन गर्नुहोस्"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"जारी राख्नुहोस्"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"रद्द गर्नुहोस्"</string>

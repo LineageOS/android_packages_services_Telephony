@@ -583,10 +583,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"અહીં ઘણા બધા સક્રિય કૉલ્સ છે. કૃપા કરીને એક નવો કૉલ કરવા પહેલાં અસ્તિત્વમાંના કૉલ્સને સમાપ્ત કરો અથવા મર્જ કરો."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"કનેક્ટ કરવામાં અસમર્થ, કૃપા કરીને એક માન્ય SIM કાર્ડ દાખલ કરો."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi કનેક્શન ગુમાવ્યું. કૉલ સમાપ્ત થયો."</string>
-    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
-    <skip />
-    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
-    <skip />
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"બૅટરી ઓછી હોવાને કારણે તમારો વીડિઓ કૉલ કનેક્ટ કરી શકાતો નથી."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"બૅટરી ઓછી હોવાને કારણે વીડિઓ કૉલ સમાપ્ત થયો છે."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"વૉઇસમેઇલ PIN બદલો"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ચાલુ રાખો"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"રદ કરો"</string>

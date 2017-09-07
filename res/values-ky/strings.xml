@@ -159,7 +159,6 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"Жаңы PIN коддо жараксыз белгилер бар."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"PIN код өзгөртүлгөн жок"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Колдоого алынбаган билдирүү, угуу үчүн <xliff:g id="NUMBER">%s</xliff:g> чалыңыз."</string>
-    <skip />
     <string name="network_settings_title" msgid="514120489499925574">"Мобилдик тармак"</string>
     <string name="label_available" msgid="1181658289009300430">"Жеткиликтүү тармактар"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Изделүүдө…"</string>
@@ -219,16 +218,16 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Роуминг учурунда мобилдик Интернетке туташат"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Роуминг учурунда мобилдик Интернетке туташат"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Мобилдик берүү байланышын жоготтуңуз, анткени сиз мобилдик интернет роумингин иштетпестен, өзүңүздүн түйүнүңүздөн сырткары чыгып кеттиңиз."</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"Бир кыйла төлөмдөргө учурашыңыз мүмкүн."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"Интернет-роумингге жол берилсинби?"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"Көп акча төлөп калышыңыз мүмкүн."</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"Интернет-роумингди иштетесизби?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Дайындардын өткөрүлүшү"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> аралыгында <xliff:g id="ID_1">%1$s</xliff:g> мобилдик трафик колдонулду"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Өркүндөтүлгөн"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Байланыш оператору"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"carrier, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Мобилдик трафик"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Мобилдик тармакты колдонуу менен дайындарга кошулуу мүмкүнчүлүгү"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Мобилдик Интернет"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Интернетке мобилдик тармак аркылуу чыгасыз"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Мобилдик Интернетти өчүрөсүзбү?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Тандоо керек"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Дайындар SIM\'и өзгөртүлсүнбү?"</string>
@@ -587,10 +586,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Учурда жигердүү чалуулар өтө көп. Чалуу үчүн учурдагы чалууларды бүтүрүңүз же бириктириңиз."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Байланышуу мумкүн эмес. Жарактуу SIM-картаны салыңыз."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi туташуусу үзүлүп калды. Чалуу аяктады."</string>
-    <!-- no translation found for dialFailed_low_battery (8760548177088774268) -->
-    <skip />
-    <!-- no translation found for callFailed_low_battery (4913582435905872616) -->
-    <skip />
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Батареянын заряды төмөн болгондуктан, видео режиминде чала албайсыз."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Батареянын заряды төмөн болгондуктан, видео чалуу аяктады."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Үн почтасынын PIN кодун өзгөртүү"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Улантуу"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Жокко чыгаруу"</string>
