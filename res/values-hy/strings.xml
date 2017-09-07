@@ -218,7 +218,7 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Դուք կորցրել եք տվյալների կապը, քանի որ անջատված եք թողել ձեր գլխավոր ցանցի տվյալների ռոումինգը:"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"Դրա համար ձեզանից կարող են զգալի վճարներ գանձվել:"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"Դրա համար ձեզանից կարող են խոշոր վճարներ գանձվել:"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Թույլատրե՞լ տվյալների ռոումինգը:"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Թրաֆիկի օգտագործում"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Oգտագործվել է <xliff:g id="ID_1">%1$s</xliff:g> բջջային ինտերնետ (<xliff:g id="ID_2">%2$s</xliff:g>)"</string>
