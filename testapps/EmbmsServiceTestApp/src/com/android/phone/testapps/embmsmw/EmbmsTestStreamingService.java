@@ -25,9 +25,10 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.telephony.mbms.IMbmsStreamingManagerCallback;
-import android.telephony.mbms.IStreamingServiceCallback;
 import android.telephony.mbms.MbmsException;
+import android.telephony.mbms.MbmsStreamingManagerCallback;
 import android.telephony.mbms.StreamingService;
+import android.telephony.mbms.StreamingServiceCallback;
 import android.telephony.mbms.StreamingServiceInfo;
 import android.telephony.mbms.vendor.IMbmsStreamingService;
 import android.telephony.mbms.vendor.MbmsStreamingServiceBase;
@@ -55,7 +56,7 @@ public class EmbmsTestStreamingService extends Service {
 
     private static final int SEND_STREAMING_SERVICES_LIST = 1;
 
-    private final Map<FrontendAppIdentifier, IMbmsStreamingManagerCallback> mAppCallbacks =
+    private final Map<FrontendAppIdentifier, MbmsStreamingManagerCallback> mAppCallbacks =
             new HashMap<>();
 
     private HandlerThread mHandlerThread;
@@ -66,22 +67,18 @@ public class EmbmsTestStreamingService extends Service {
                 SomeArgs args = (SomeArgs) msg.obj;
                 FrontendAppIdentifier appKey = (FrontendAppIdentifier) args.arg1;
                 List<StreamingServiceInfo> services = (List) args.arg2;
-                IMbmsStreamingManagerCallback appCallback = mAppCallbacks.get(appKey);
+                MbmsStreamingManagerCallback appCallback = mAppCallbacks.get(appKey);
                 if (appCallback != null) {
-                    try {
-                        appCallback.streamingServicesUpdated(services);
-                    } catch (RemoteException e) {
-                        // Assume app has gone away and clean up.
-                    }
+                    appCallback.onStreamingServicesUpdated(services);
                 }
                 break;
         }
         return true;
     };
 
-    private final IMbmsStreamingService.Stub mBinder = new MbmsStreamingServiceBase() {
+    private final MbmsStreamingServiceBase mBinder = new MbmsStreamingServiceBase() {
         @Override
-        public int initialize(IMbmsStreamingManagerCallback listener, int subId) {
+        public int initialize(MbmsStreamingManagerCallback callback, int subId) {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
@@ -95,22 +92,13 @@ public class EmbmsTestStreamingService extends Service {
             mHandler.postDelayed(() -> {
                 FrontendAppIdentifier appKey = new FrontendAppIdentifier(packageUid, subId);
                 if (!mAppCallbacks.containsKey(appKey)) {
-                    mAppCallbacks.put(appKey, listener);
+                    mAppCallbacks.put(appKey, callback);
                 } else {
-                    try {
-                        listener.error(
-                                MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
-                    } catch (RemoteException e) {
-                        // ignore, it was an error anyway
-                    }
+                    callback.onError(
+                            MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
                     return;
                 }
-                try {
-                    listener.middlewareReady();
-                } catch (RemoteException e) {
-                    StreamStateTracker.disposeAll(appKey);
-                    mAppCallbacks.remove(appKey);
-                }
+                callback.onMiddlewareReady();
             }, INITIALIZATION_DELAY);
             return MbmsException.SUCCESS;
         }
@@ -137,7 +125,7 @@ public class EmbmsTestStreamingService extends Service {
 
         @Override
         public int startStreaming(int subscriptionId, String serviceId,
-                IStreamingServiceCallback callback) {
+                StreamingServiceCallback callback) {
             FrontendAppIdentifier appKey =
                     new FrontendAppIdentifier(Binder.getCallingUid(), subscriptionId);
             checkInitialized(appKey);
@@ -198,6 +186,15 @@ public class EmbmsTestStreamingService extends Service {
             checkInitialized(appKey);
 
             Log.i(TAG, "Disposing app with uid " + Binder.getCallingUid());
+            StreamStateTracker.disposeAll(appKey);
+            mAppCallbacks.remove(appKey);
+        }
+
+        @Override
+        public void onAppCallbackDied(int uid, int subscriptionId) {
+            FrontendAppIdentifier appKey = new FrontendAppIdentifier(uid, subscriptionId);
+
+            Log.i(TAG, "Disposing app " + appKey + " due to binder death");
             StreamStateTracker.disposeAll(appKey);
             mAppCallbacks.remove(appKey);
         }
