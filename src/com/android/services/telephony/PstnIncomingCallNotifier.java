@@ -141,8 +141,24 @@ final class PstnIncomingCallNotifier {
             Connection connection = call.getLatestConnection();
             if (connection != null) {
                 String number = connection.getAddress();
-                if (!TextUtils.isEmpty(number) && Objects.equals(number, ccwi.number)) {
+                int presentation = connection.getNumberPresentation();
+
+                if (presentation != PhoneConstants.PRESENTATION_ALLOWED
+                        && presentation == ccwi.numberPresentation) {
+                    // Presentation of number not allowed, but the presentation of the Connection
+                    // and the call waiting presentation match.
+                    Log.i(this, "handleCdmaCallWaiting: inform telecom of waiting call; "
+                                    + "presentation = %d", presentation);
                     sendIncomingCallIntent(connection);
+                } else if (!TextUtils.isEmpty(number) && Objects.equals(number, ccwi.number)) {
+                    // Presentation of the number is allowed, so we ensure the number matches the
+                    // one in the call waiting information.
+                    Log.i(this, "handleCdmaCallWaiting: inform telecom of waiting call; "
+                            + "number = %s", Log.pii(number));
+                    sendIncomingCallIntent(connection);
+                } else {
+                    Log.w(this, "handleCdmaCallWaiting: presentation or number do not match, not"
+                            + " informing telecom of call: %s", ccwi);
                 }
             }
         }
