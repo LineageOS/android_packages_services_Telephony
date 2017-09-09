@@ -40,6 +40,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class EmbmsTestStreamingApp extends Activity {
     private MbmsStreamingSessionCallback mStreamingListener = new MbmsStreamingSessionCallback() {
@@ -66,16 +67,13 @@ public class EmbmsTestStreamingApp extends Activity {
         }
 
         private String getName(StreamingServiceInfo info) {
-            Map<Locale, String> names = info.getNames();
-            String name = "<No Name>";
-            if (!names.isEmpty()) {
-                Locale locale = Locale.getDefault();
-                if (!names.containsKey(locale)) {
-                    locale = names.keySet().iterator().next();
-                }
-                name = names.get(locale);
+            Locale locale = Locale.getDefault();
+            try {
+                return info.getNameForLocale(locale).toString();
+            } catch (NoSuchElementException e) {
+                locale = info.getLocales().iterator().next();
+                return info.getNameForLocale(locale).toString();
             }
-            return name;
         }
 
         @Override
@@ -167,8 +165,7 @@ public class EmbmsTestStreamingApp extends Activity {
                         "No streaming service bound", Toast.LENGTH_SHORT).show();
                 return;
             }
-            mStreamingManager.requestUpdateStreamingServices(
-                    Collections.singletonList("Class1"));
+            mStreamingManager.requestUpdateStreamingServices(Collections.singletonList("Class1"));
         });
 
         final Spinner serviceSelector = (Spinner) findViewById(R.id.available_streaming_services);

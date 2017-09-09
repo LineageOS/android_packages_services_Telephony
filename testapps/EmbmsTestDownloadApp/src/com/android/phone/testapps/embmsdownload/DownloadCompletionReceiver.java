@@ -21,6 +21,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.telephony.MbmsDownloadSession;
+import android.telephony.mbms.DownloadRequest;
+import android.telephony.mbms.FileInfo;
+
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class DownloadCompletionReceiver extends BroadcastReceiver {
     @Override
@@ -33,7 +41,47 @@ public class DownloadCompletionReceiver extends BroadcastReceiver {
             }
             Uri completedFile = intent.getParcelableExtra(
                     MbmsDownloadSession.EXTRA_MBMS_COMPLETED_FILE_URI);
-            EmbmsTestDownloadApp.getInstance().onDownloadDone(completedFile);
+            FileInfo completedFileInfo = intent.getParcelableExtra(
+                    MbmsDownloadSession.EXTRA_MBMS_FILE_INFO);
+            DownloadRequest request = intent.getParcelableExtra(
+                    MbmsDownloadSession.EXTRA_MBMS_DOWNLOAD_REQUEST);
+
+            Path destinationFile = getDestinationFile(context,
+                    request.getFileServiceId(), completedFileInfo);
+            Path sourceFile = FileSystems.getDefault().getPath(completedFile.getPath());
+            try {
+                Files.move(sourceFile, destinationFile, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                return;
+            }
+
+            EmbmsTestDownloadApp.getInstance().onDownloadDone(
+                    Uri.fromFile(destinationFile.toFile()));
+        }
+    }
+
+    private Path getDestinationFile(Context context, String serviceId, FileInfo info) {
+        try {
+            if (serviceId.contains("2")) {
+                String fileName = info.getUri().getLastPathSegment();
+                Path destination = FileSystems.getDefault()
+                        .getPath(context.getFilesDir().getPath(), "images/animals/", fileName)
+                        .normalize();
+                if (!Files.isDirectory(destination.getParent())) {
+                    Files.createDirectory(destination.getParent());
+                }
+                return destination;
+            } else {
+                Path destination = FileSystems.getDefault()
+                        .getPath(context.getFilesDir().getPath(), "images/image.png")
+                        .normalize();
+                if (!Files.isDirectory(destination.getParent())) {
+                    Files.createDirectory(destination.getParent());
+                }
+                return destination;
+            }
+        } catch (IOException e) {
+            return null;
         }
     }
 }
