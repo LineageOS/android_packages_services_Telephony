@@ -23,7 +23,7 @@ import android.os.Binder;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
-import android.telephony.mbms.MbmsException;
+import android.telephony.mbms.MbmsErrors;
 import android.telephony.mbms.MbmsStreamingSessionCallback;
 import android.telephony.mbms.StreamingService;
 import android.telephony.mbms.StreamingServiceCallback;
@@ -79,11 +79,11 @@ public class EmbmsTestStreamingService extends Service {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
-                return MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
+                return MbmsErrors.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
             }
             boolean isUidAllowed = Arrays.stream(packageNames).anyMatch(ALLOWED_PACKAGES::contains);
             if (!isUidAllowed) {
-                return MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
+                return MbmsErrors.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
             }
 
             mHandler.postDelayed(() -> {
@@ -92,12 +92,12 @@ public class EmbmsTestStreamingService extends Service {
                     mAppCallbacks.put(appKey, callback);
                 } else {
                     callback.onError(
-                            MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
+                            MbmsErrors.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
                     return;
                 }
                 callback.onMiddlewareReady();
             }, INITIALIZATION_DELAY);
-            return MbmsException.SUCCESS;
+            return MbmsErrors.SUCCESS;
         }
 
         @Override
@@ -117,7 +117,7 @@ public class EmbmsTestStreamingService extends Service {
             mHandler.sendMessageDelayed(
                     mHandler.obtainMessage(SEND_STREAMING_SERVICES_LIST, args),
                     SEND_SERVICE_LIST_DELAY);
-            return MbmsException.SUCCESS;
+            return MbmsErrors.SUCCESS;
         }
 
         @Override
@@ -130,14 +130,14 @@ public class EmbmsTestStreamingService extends Service {
 
             if (StreamStateTracker.getStreamingState(appKey, serviceId) ==
                     StreamingService.STATE_STARTED) {
-                return MbmsException.StreamingErrors.ERROR_DUPLICATE_START_STREAM;
+                return MbmsErrors.StreamingErrors.ERROR_DUPLICATE_START_STREAM;
             }
 
             mHandler.postDelayed(
                     () -> StreamStateTracker.startStreaming(appKey, serviceId, callback,
                             StreamingService.REASON_BY_USER_REQUEST),
                     START_STREAMING_DELAY);
-            return MbmsException.SUCCESS;
+            return MbmsErrors.SUCCESS;
         }
 
         @Override
