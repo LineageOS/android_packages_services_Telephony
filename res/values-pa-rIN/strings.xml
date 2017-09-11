@@ -35,7 +35,7 @@
     <string name="audio_mode_speaker" msgid="27649582100085266">"ਸਪੀਕਰ"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"ਹੈਂਡਸੈਟ ਈਅਰਪੀਸ"</string>
     <string name="audio_mode_wired_headset" msgid="1465350758489175975">"ਵਾਇਰ ਵਾਲਾ ਹੈਡਸੈਟ"</string>
-    <string name="audio_mode_bluetooth" msgid="3047641300848211128">"Bluetooth"</string>
+    <string name="audio_mode_bluetooth" msgid="3047641300848211128">"ਬਲੂਟੁੱਥ"</string>
     <string name="wait_prompt_str" msgid="7601815427707856238">"ਕੀ ਇਹ ਟੋਨਾਂ ਭੇਜਣੀਆਂ ਹਨ?\n"</string>
     <string name="pause_prompt_str" msgid="1789964702154314806">"ਟੋਨਾਂ\n ਭੇਜ ਰਿਹਾ ਹੈ"</string>
     <string name="send_button" msgid="4106860097497818751">"ਭੇਜੋ"</string>
@@ -172,9 +172,9 @@
     <string name="select_automatically" msgid="5628402124471810174">"ਆਟੋਮੈਟਿਕਲੀ ਚੁਣੋ"</string>
     <string name="sum_select_automatically" msgid="5614890115123292400">"ਆਟੋਮੈਟਿਕਲੀ ਤਰਜੀਹੀ ਨੈਟਵਰਕ ਚੁਣੋ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ਸਵੈਚਲਿਤ ਰਜਿਸਟਰੇਸ਼ਨ…"</string>
-    <string name="preferred_network_mode_title" msgid="2336624679902659306">"ਤਰਜੀਹੀ ਨੈਟਵਰਕ ਪ੍ਰਕਾਰ"</string>
+    <string name="preferred_network_mode_title" msgid="2336624679902659306">"ਤਰਜੀਹੀ ਨੈੱਟਵਰਕ ਪ੍ਰਕਾਰ"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ਨੈਟਵਰਕ ਓਪਰੇਟਿੰਗ ਮੋਡ ਬਦਲੋ"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ਤਰਜੀਹੀ ਨੈਟਵਰਕ ਪ੍ਰਕਾਰ"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ਤਰਜੀਹੀ ਨੈੱਟਵਰਕ ਪ੍ਰਕਾਰ"</string>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"ਤਰਜੀਹੀ ਨੈਟਵਰਕ ਮੋਡ: ਤਰਜੀਹੀ WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"ਤਰਜੀਹੀ ਨੈਟਵਰਕ ਮੋਡ: ਕੇਵਲ GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"ਤਰਜੀਹੀ ਨੈਟਵਰਕ ਮੋਡ: ਕੇਵਲ WCDMA"</string>
@@ -209,7 +209,7 @@
   </string-array>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"ਵਿਸਤ੍ਰਿਤ 4G LTE ਮੋਡ"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"ਉੱਨਤ ਕਾਲਿੰਗ"</string>
-    <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ਵੌਇਸ ਅਤੇ ਹੋਰ ਸੰਚਾਰ ਬਿਹਤਰ ਬਣਾਉਣ ਲਈ  LTE ਸੇਵਾਵਾਂ ਵਰਤੋ (ਸਿਫਾਰਿਸ਼ ਕੀਤਾ)"</string>
+    <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ਵੌਇਸ ਅਤੇ ਹੋਰ ਸੰਚਾਰ ਬਿਹਤਰ ਬਣਾਉਣ ਲਈ  LTE ਸੇਵਾਵਾਂ ਵਰਤੋ ( ਸਿਫ਼ਾਰਸ਼  ਕੀਤਾ)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ਡਾਟਾ ਸਮਰਥਿਤ"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ਡਾਟਾ ਵਰਤੋਂ ਦੀ ਆਗਿਆ ਦਿਓ"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"ਸਾਵਧਾਨ"</string>
@@ -217,7 +217,7 @@
     <string name="roaming_enable" msgid="7331106985174381987">"ਰੋਮਿੰਗ ਵੇਲੇ ਡਾਟਾ ਸੇਵਾਵਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰੋ"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ਰੋਮਿੰਗ ਵੇਲੇ ਡਾਟਾ ਸੇਵਾਵਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰੋ"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"ਤੁਹਾਡੀ ਡਾਟਾ ਕਨੈਕਟੀਵਿਟੀ ਨਸ਼ਟ ਹੋ ਗਈ ਹੈ ਕਿਉਂਕਿ ਤੁਸੀਂ ਆਪਣਾ ਡਾਟਾ ਰੋਮਿੰਗ ਬੰਦ ਨਾਲ ਹੋਮ ਨੈਟਵਰਕ ਛੱਡ ਦਿੱਤਾ ਸੀ।"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"ਤੁਹਾਨੂੰ ਖ਼ਾਸ ਖ਼ਰਚੇ ਪੈ ਸਕਦੇ ਹਨ।"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"ਤੁਹਾਨੂੰ ਵਾਧੂ ਖਰਚਾ ਦੇਣਾ ਪੈ ਸਕਦਾ ਹੈ"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ਕੀ ਡਾਟਾ ਰੋਮਿੰਗ ਦੀ ਆਗਿਆ ਦੇਣੀ ਹੈ?"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS ਚੋਣਾਂ"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA ਚੋਣਾਂ"</string>
@@ -319,8 +319,8 @@
     <string name="enable_disable_multi_category" msgid="626771003122899280">"ਮਲਟੀ-ਸ਼੍ਰੇਣੀ"</string>
     <string name="multi_category_enable" msgid="1179299804641721768">"ਮਲਟੀ-ਸ਼੍ਰੇਣੀ ਸਮਰਥਿਤ"</string>
     <string name="multi_category_disable" msgid="880104702904139505">"ਮਲਟੀ-ਸ਼੍ਰੇਣੀ ਅਸਮਰਥਿਤ"</string>
-    <string name="network_lte" msgid="7702681952521375754">"LTE (ਸਿਫਾਰਿਸ਼ ਕੀਤਾ)"</string>
-    <string name="network_4G" msgid="2723512640529983138">"4G (ਸਿਫਾਰਿਸ਼ ਕੀਤਾ)"</string>
+    <string name="network_lte" msgid="7702681952521375754">"LTE ( ਸਿਫ਼ਾਰਸ਼  ਕੀਤਾ)"</string>
+    <string name="network_4G" msgid="2723512640529983138">"4G ( ਸਿਫ਼ਾਰਸ਼  ਕੀਤਾ)"</string>
     <string name="network_global" msgid="1323190488685355309">"ਗਲੋਬਲ"</string>
     <string name="cdma_system_select_title" msgid="5757657769327732833">"ਸਿਸਟਮ ਚੁਣੋ"</string>
     <string name="cdma_system_select_summary" msgid="60460043745797517">"CDMA ਰੋਮਿੰਗ ਮੋਡ ਬਦਲੋ"</string>
@@ -386,7 +386,7 @@
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN ਅਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਸੀ। PIN2 ਗ਼ਲਤ ਸੀ ਜਾਂ ਫ਼ੋਨ ਨੰਬਰ ਅਸਵੀਕਾਰ ਕੀਤਾ ਗਿਆ ਸੀ।"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN ਓਪਰੇਸ਼ਨ ਅਸਫਲ।"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM ਕਾਰਡ ਤੋਂ ਪੜ੍ਹ ਰਿਹਾ ਹੈ…"</string>
-    <string name="simContacts_empty" msgid="5270660846489561932">"ਤੁਹਾਡੇ SIM ਕਾਰਡ ’ਤੇ ਕੋਈ ਸੰਪਰਕ ਨਹੀਂ।"</string>
+    <string name="simContacts_empty" msgid="5270660846489561932">"ਤੁਹਾਡੇ ਸਿਮ ਕਾਰਡ ’ਤੇ ਕੋਈ ਸੰਪਰਕ ਨਹੀਂ।"</string>
     <string name="simContacts_title" msgid="1861472842524839921">"ਆਯਾਤ ਕਰਨ ਲਈ ਸੰਪਰਕ ਚੁਣੋ"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"SIM ਕਾਰਡ ਤੋਂ ਸੰਪਰਕ ਆਯਾਤ ਕਰਨ ਲਈ ਏਅਰਪਲੇਨ ਮੋਡ ਬੰਦ ਕਰੋ।"</string>
     <string name="enable_pin" msgid="5422767284133234860">"SIM PIN ਨੂੰ ਸਮਰੱਥ/ਅਸਮਰੱਥ ਬਣਾਓ"</string>
@@ -476,7 +476,7 @@
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"ਸਵੈਪ ਕਰੋ"</string>
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"ਕਾਲਾਂ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
     <string name="onscreenManageConferenceText" msgid="6485935856534311346">"ਕਾਨਫਰੰਸ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
-    <string name="onscreenAudioText" msgid="1710087112800041743">"ਔਡੀਓ"</string>
+    <string name="onscreenAudioText" msgid="1710087112800041743">" ਆਡੀਓ"</string>
     <string name="onscreenVideoCallText" msgid="4800924186056115442">"ਵੀਡੀਓ ਕਾਲ"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"ਆਯਾਤ ਕਰੋ"</string>
     <string name="importAllSimEntries" msgid="1503181169636198673">"ਸਾਰੇ ਆਯਾਤ ਕਰੋ"</string>

@@ -218,7 +218,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Povezivanje sa uslugom za podatke tokom rominga"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Veza za prenos podataka je prekinuta zato što ste napustili kućnu mrežu sa isključenim prenosom podataka u romingu."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Mogu da nastanu značajni troškovi."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"Dozvoljavate li prenos podataka u romingu?"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"Dozvoljavate prenos podataka u romingu?"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Opcije za GSM/UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA opcije"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Korišćenje podataka"</string>

@@ -217,7 +217,7 @@
     <string name="roaming_enable" msgid="7331106985174381987">"रोमिङको समयमा डेटा सेवामा जडान गर्नुहोस्"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"रोमिङको समयमा डेटा सेवा जडान गर्नुहोस्"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"तपाईँले डेटा गुमाउनु भएको छ किनभने तपाईँले डेटासहितको घर नेटवर्क रोमिङ बन्द गरेर छोड्नुभएको छ।"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"तपाईंलाई महत्त्वपूर्ण शुल्क लाग्न सक्छ।"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"तपाईंलाई अत्यन्त धेरै शुल्क लाग्न सक्छ।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिङको अनुमति दिने हो?"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS  विकल्पहरू"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA विकल्पहरू"</string>
@@ -499,7 +499,7 @@
     <item msgid="2883365539347850535">"लामो"</item>
   </string-array>
     <string name="network_info_message" msgid="7738596060242881930">"सञ्जाल सन्देश"</string>
-    <string name="network_error_message" msgid="3394780436230411413">"त्रुटि सन्देश"</string>
+    <string name="network_error_message" msgid="3394780436230411413">"त्रुटिसम्बन्धी सन्देश"</string>
     <string name="ota_title_activate" msgid="8616918561356194398">"तपाईंको फोन सक्रिय गर्नुहोस्"</string>
     <string name="ota_touch_activate" msgid="6553212803262586244">"विशेष कललाई तपाईंको फोन सेवा सक्रिय गर्न जरुरी हुन्छ। \n \n \"सक्रिय\" थिचेर तपाईंको फोन  सक्रिय गर्न दिएका निर्देशनहरू सुन्नुहोस्।"</string>
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"सक्रिय गर्दै…"</string>

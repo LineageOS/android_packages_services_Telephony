@@ -26,7 +26,7 @@
     <string name="payphone" msgid="4793877574636445118">"Таксофон"</string>
     <string name="onHold" msgid="9035493194749959955">"Очікує"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Код MMI запущено"</string>
-    <string name="ussdRunning" msgid="485588686340541690">"Запуск. код USSD..."</string>
+    <string name="ussdRunning" msgid="485588686340541690">"Виконується запит USSD…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Код MMI скасовано"</string>
     <string name="cancel" msgid="5044513931633602634">"Скасувати"</string>
     <string name="enter_input" msgid="1810529547726803893">"Кількість символів повідомлення USSD має становити від <xliff:g id="MIN_LEN">%d</xliff:g> до <xliff:g id="MAX_LEN">%d</xliff:g>. Повторіть спробу."</string>
@@ -366,7 +366,7 @@
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Увімкнути режим автоповтору"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Під час відеодзвінка заборонено змінювати режим TTY"</string>
     <string name="menu_add" msgid="1882023737425114762">"Додати контакт"</string>
-    <string name="menu_edit" msgid="7143003705504672374">"Змінити контакт"</string>
+    <string name="menu_edit" msgid="7143003705504672374">"Редагувати контакт"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Видалити контакт"</string>
     <string name="get_pin2" msgid="8204677063922225311">"Введіть PIN2-код"</string>
     <string name="name" msgid="7329028332786872378">"Ім\'я"</string>

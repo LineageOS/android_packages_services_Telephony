@@ -48,8 +48,8 @@
     <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"Няўдалая рэгістрацыя ўліковага запісу: няправільнае імя карыстальніка або пароль."</string>
     <string name="registration_status_server_unreachable" msgid="7710275557045148634">"Няўдалая рэгістрацыя ўліковага запісу: праверце імя сервера."</string>
     <string name="third_party_account_summary" msgid="9041060473615403041">"Гэты ўліковы запіс зараз выкарыстоўваецца праграмай <xliff:g id="ACCOUNT_OWNER">%s</xliff:g>."</string>
-    <string name="sip_edit_title" msgid="1967247832635750410">"Дэталі уліковага запісу SIP"</string>
-    <string name="sip_edit_new_title" msgid="266414118302574305">"Дэталі уліковага запісу SIP"</string>
+    <string name="sip_edit_title" msgid="1967247832635750410">"Ул. запіс SIP"</string>
+    <string name="sip_edit_new_title" msgid="266414118302574305">"Ул. запіс SIP"</string>
     <string name="domain_address_title" msgid="1968479941328225423">"Сервер"</string>
     <string name="username_title" msgid="6770064611005663470">"Імя карыстальніка"</string>
     <string name="password_title" msgid="5289013731515564295">"Пароль"</string>

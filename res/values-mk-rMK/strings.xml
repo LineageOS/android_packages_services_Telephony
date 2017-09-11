@@ -218,7 +218,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Поврзи се со интернет услуги во роаминг"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Изгубивте поврзување податоци зашто на вашата домашна мрежа исклучивте роаминг на податоци."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Може да направите големи трошоци."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"Дозволи роаминг на податоци?"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"Дозволи интернет-роаминг?"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Опции за GSM/UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"Опции на CDMA"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Потрошен интернет"</string>

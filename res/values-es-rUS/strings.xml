@@ -78,7 +78,7 @@
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Correo de voz:"</string>
     <string name="networks" msgid="8873030692174541976">"Operadores de red"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Transmisiones de emergencia"</string>
-    <string name="call_settings" msgid="6112441768261754562">"Configuración de llamada"</string>
+    <string name="call_settings" msgid="6112441768261754562">"Configuración de llamadas"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Configuración adicional"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Configuración adicional (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="4076647190996778012">"Configuración de llamadas de GSM adicionales únicamente"</string>

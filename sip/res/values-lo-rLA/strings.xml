@@ -45,13 +45,13 @@
     <string name="registration_status_not_running" msgid="514205414303796800">"ການ​ລົງທະບຽນ​ບັນຊີ​ບໍ່ສຳເລັດ."</string>
     <string name="registration_status_done" msgid="3264961069247314253">"ຮັບສາຍ."</string>
     <string name="registration_status_failed_try_later" msgid="2199970021756384317">"ການ​ລົງທະບຽນ​ບັນຊີ​ບໍ່ສຳເລັດ: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>); ຈະ​ລອງ​ໃໝ່​ໃນ​ພາຍຫຼັງ"</string>
-    <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"ການ​ລົງທະບຽນ​ບັນຊີ​ບໍ່ສຳເລັດ: ຊື່ຜູ່ໃຊ້ ຫຼື​ລະຫັດຜ່ານ​ບໍ່ຖືກຕ້ອງ."</string>
+    <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"ການ​ລົງທະບຽນ​ບັນຊີ​ບໍ່ສຳເລັດ: ຊື່ຜູ້ໃຊ້ ຫຼື​ລະຫັດຜ່ານ​ບໍ່ຖືກຕ້ອງ."</string>
     <string name="registration_status_server_unreachable" msgid="7710275557045148634">"ການ​ລົງທະບຽນ​ບັນຊີ​ບໍ່​ສຳເລັດ: ກະລຸນາ​ກວດສອບ​ຊື່​ເຊີບເວີ."</string>
     <string name="third_party_account_summary" msgid="9041060473615403041">"ແອັບຯ <xliff:g id="ACCOUNT_OWNER">%s</xliff:g> ກຳລັງໃຊ້ບັນຊີນີ້ຢູ່"</string>
     <string name="sip_edit_title" msgid="1967247832635750410">"ລາຍລະອຽດບັນຊີ SIP"</string>
     <string name="sip_edit_new_title" msgid="266414118302574305">"ລາຍລະອຽດບັນຊີ SIP"</string>
     <string name="domain_address_title" msgid="1968479941328225423">"ເຊີບເວີ"</string>
-    <string name="username_title" msgid="6770064611005663470">"ຊື່ຜູ່ໃຊ້"</string>
+    <string name="username_title" msgid="6770064611005663470">"ຊື່ຜູ້ໃຊ້"</string>
     <string name="password_title" msgid="5289013731515564295">"ລະຫັດຜ່ານ"</string>
     <string name="display_name_title" msgid="579241787583079773">"ຊື່ທີ່ສະແດງ"</string>
     <string name="proxy_address_title" msgid="6890163365640631841">"ທີ່ຢູ່ Proxy ຂາອອກ"</string>
@@ -59,12 +59,12 @@
     <string name="transport_title" msgid="889155457465372527">"ປະເພດການສົ່ງຂໍ້ມູນ"</string>
     <string name="send_keepalive_title" msgid="599627072150501159">"ສົ່ງ keep-alive"</string>
     <string name="advanced_settings" msgid="6622996380747040711">"ການ​ຕັ້ງ​ຄ່າທາງ​ເລືອກ​ເສີມ"</string>
-    <string name="auth_username_title" msgid="8262491689004708265">"ຊື່​ຜູ່ໃຊ້​ສຳລັບ​ການ​ພິສູດ​ຢືນຢັນ​ໂຕ"</string>
-    <string name="auth_username_summary" msgid="941160241371436473">"ຊື່​ຜູ່ໃຊ້​ເພື່ອ​ການ​ພິສູດ​ຢືນຢັນ​ໂຕ"</string>
+    <string name="auth_username_title" msgid="8262491689004708265">"ຊື່​ຜູ້ໃຊ້​ສຳລັບ​ການ​ພິສູດ​ຢືນຢັນ​ຕົວ"</string>
+    <string name="auth_username_summary" msgid="941160241371436473">"ຊື່​ຜູ້ໃຊ້​ເພື່ອ​ການ​ພິສູດ​ຢືນຢັນ​ຕົວ"</string>
     <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;ບໍ່ໄດ້ຕັ້ງ&gt;"</string>
     <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;ບໍ່ໄດ້ຕັ້ງ&gt;"</string>
     <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;ບໍ່ໄດ້ຕັ້ງ&gt;"</string>
-    <string name="display_name_summary" msgid="7155076491675565407">"&lt;ອັນດຽວກັບຊື່ຜູ່ໃຊ້&gt;"</string>
+    <string name="display_name_summary" msgid="7155076491675565407">"&lt;ອັນດຽວກັບຊື່ຜູ້ໃຊ້&gt;"</string>
     <string name="optional_summary" msgid="2363105560396317624">"&lt;ໂຕເລືອກເສີມ&gt;"</string>
     <string name="advanced_settings_show" msgid="7838761602853998622">"▷ ແຕະ​ເພື່ອ​ສະແດງ​ທັງໝົດ"</string>
     <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ ແຕະ​ເພື່ອ​ເຊື່ອງ​ທັງໝົດ"</string>

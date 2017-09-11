@@ -77,7 +77,7 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Голосовая почта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ГП:"</string>
     <string name="networks" msgid="8873030692174541976">"Операторы связи"</string>
-    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Уведомления о чрезвычайных ситуациях"</string>
+    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Оповещения о чрезвычайных ситуациях"</string>
     <string name="call_settings" msgid="6112441768261754562">"Вызовы"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Дополнительные настройки"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Дополнительные настройки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

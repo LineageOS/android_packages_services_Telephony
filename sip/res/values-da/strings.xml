@@ -25,7 +25,7 @@
     <string name="sip_call_options_wifi_only_title" msgid="5112579243580893890">"Anvend SIP-opkald (kun Wi-Fi)"</string>
     <string name="sip_call_options_entry_1" msgid="7217659161237099900">"Gælder alle opkald ved tilgængeligt datanetværk"</string>
     <string name="sip_call_options_entry_2" msgid="1815335903940609729">"Kun for SIP-opkald"</string>
-    <string name="sip_call_options_wifi_only_entry_1" msgid="1358513095551847314">"Gælder alle opkald"</string>
+    <string name="sip_call_options_wifi_only_entry_1" msgid="1358513095551847314">"For alle opkald"</string>
     <string name="add_sip_account" msgid="800843669753980091">"Tilføj konto"</string>
     <string name="remove_sip_account" msgid="1367664438506503690">"Fjern konto"</string>
     <string name="sip_account_list" msgid="5610858485304821480">"SIP-konti"</string>
@@ -46,7 +46,7 @@
     <string name="registration_status_done" msgid="3264961069247314253">"Modtager opkald."</string>
     <string name="registration_status_failed_try_later" msgid="2199970021756384317">"Registreringen af konto mislykkedes: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>). Vi prøver igen senere."</string>
     <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"Registreringen af kontoen mislykkedes: Forkert brugernavn eller adgangskode."</string>
-    <string name="registration_status_server_unreachable" msgid="7710275557045148634">"Registreringen af kontoen mislykkedes. Kontrollér servernavn."</string>
+    <string name="registration_status_server_unreachable" msgid="7710275557045148634">"Registreringen af kontoen mislykkedes. Tjek servernavn."</string>
     <string name="third_party_account_summary" msgid="9041060473615403041">"Denne konto benyttes i øjeblikket af appen <xliff:g id="ACCOUNT_OWNER">%s</xliff:g>."</string>
     <string name="sip_edit_title" msgid="1967247832635750410">"Oplysninger om SIP-konto"</string>
     <string name="sip_edit_new_title" msgid="266414118302574305">"Oplysninger om SIP-konto"</string>

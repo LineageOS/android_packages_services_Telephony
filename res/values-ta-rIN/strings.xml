@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"செல்லுலார் தரவு"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"மொபைல் டேட்டா"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"ஃபோன் சேவைகள்"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"அவசரகால டயலர்"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"மொபைல்"</string>
@@ -221,7 +221,7 @@
     <string name="roaming_alert_title" msgid="3654815360303826008">"தரவு ரோமிங்கை அனுமதிக்கவா?"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS விருப்பங்கள்"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA விருப்பங்கள்"</string>
-    <string name="throttle_data_usage" msgid="3715677828160555808">"தரவு பயன்பாடு"</string>
+    <string name="throttle_data_usage" msgid="3715677828160555808">"டேட்டா பயன்பாடு"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"தற்போது பயன்படுத்தப்பட்ட தரவு"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"தரவு பயன்படுத்தப்பட்ட காலம்"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"தரவு கட்டண கொள்கை"</string>
