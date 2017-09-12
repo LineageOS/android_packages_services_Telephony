@@ -816,7 +816,6 @@ public class MobileNetworkSettings extends Activity  {
                 updateBodyAdvancedFields(activity, prefSet, phoneSubId, hasActiveSubscriptions);
             } else {
                 prefSet.addPreference(mAdvancedOptions);
-                mAdvancedOptions.setEnabled(hasActiveSubscriptions);
             }
         }
 
