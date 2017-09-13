@@ -155,13 +155,13 @@ public class EmbmsTestDownloadApp extends Activity {
 
     private MbmsDownloadManagerCallback mCallback = new MbmsDownloadManagerCallback() {
         @Override
-        public void error(int errorCode, String message) {
+        public void onError(int errorCode, String message) {
             runOnUiThread(() -> Toast.makeText(EmbmsTestDownloadApp.this,
                     "Error " + errorCode + ": " + message, Toast.LENGTH_SHORT).show());
         }
 
         @Override
-        public void fileServicesUpdated(List<FileServiceInfo> services) {
+        public void onFileServicesUpdated(List<FileServiceInfo> services) {
             EmbmsTestDownloadApp.this.runOnUiThread(() ->
                     Toast.makeText(EmbmsTestDownloadApp.this,
                             "Got services length " + services.size(),
@@ -170,7 +170,7 @@ public class EmbmsTestDownloadApp extends Activity {
         }
 
         @Override
-        public void middlewareReady() {
+        public void onMiddlewareReady() {
             runOnUiThread(() -> Toast.makeText(EmbmsTestDownloadApp.this,
                     "Initialization done", Toast.LENGTH_SHORT).show());
         }
@@ -362,7 +362,7 @@ public class EmbmsTestDownloadApp extends Activity {
                 .build();
 
         try {
-            mDownloadManager.download(request, null);
+            mDownloadManager.download(request, null, null);
             mDownloadRequestAdapter.add(request);
         } catch (MbmsException e) {
             Toast.makeText(EmbmsTestDownloadApp.this,
