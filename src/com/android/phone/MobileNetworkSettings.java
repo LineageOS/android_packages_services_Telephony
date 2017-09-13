@@ -1712,8 +1712,7 @@ public class MobileNetworkSettings extends Activity  {
             PreferenceCategory networkOperatorCategory =
                     (PreferenceCategory) prefSet.findPreference(
                             NetworkOperators.CATEGORY_NETWORK_OPERATORS_KEY);
-            PreferenceScreen carrierSettings =
-                    (PreferenceScreen) prefSet.findPreference(BUTTON_CARRIER_SETTINGS_KEY);
+            Preference carrierSettings = prefSet.findPreference(BUTTON_CARRIER_SETTINGS_KEY);
             if (apnExpand != null) {
                 apnExpand.setEnabled(isWorldMode() || enable);
             }
