@@ -408,8 +408,8 @@
     <string name="enable_pin" msgid="5422767284133234860">"Ενεργοποίηση/απενεργοποίηση αριθμού PIN της κάρτας SIM"</string>
     <string name="change_pin" msgid="9174186126330785343">"Αλλαγή αριθμού PIN της κάρτας SIM"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"Αριθμός PIN της κάρτας SIM:"</string>
-    <string name="oldPinLabel" msgid="5287773661246368314">"Παλιός αριθμός PIN"</string>
-    <string name="newPinLabel" msgid="207488227285336897">"Νέος αριθμός PIN"</string>
+    <string name="oldPinLabel" msgid="5287773661246368314">"Παλιό PIN"</string>
+    <string name="newPinLabel" msgid="207488227285336897">"Νέο PIN"</string>
     <string name="confirmPinLabel" msgid="257597715098070206">"Επιβεβαίωση νέου αριθμού PIN"</string>
     <string name="badPin" msgid="8955102849303984935">"Το παλιό PIN που πληκτρολογήσατε δεν είναι σωστό. Δοκιμάστε ξανά."</string>
     <string name="mismatchPin" msgid="5923253370683071889">"Τα PIN που πληκτρολογήσατε δεν ταιριάζουν. Δοκιμάστε ξανά."</string>
