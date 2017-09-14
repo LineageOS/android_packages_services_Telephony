@@ -35,7 +35,6 @@ import android.telephony.mbms.DownloadRequest;
 import android.telephony.mbms.DownloadStateCallback;
 import android.telephony.mbms.FileInfo;
 import android.telephony.mbms.FileServiceInfo;
-import android.telephony.mbms.IMbmsDownloadManagerCallback;
 import android.telephony.mbms.MbmsDownloadManagerCallback;
 import android.telephony.mbms.MbmsException;
 import android.telephony.mbms.UriPathPair;
@@ -91,19 +90,11 @@ public class EmbmsSampleDownloadService extends Service {
                             getPackageManager().getNameForUid(packageUid));
                     mAppReceivers.put(appKey, appReceiver);
                 } else {
-                    try {
-                        callback.error(
-                                MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
-                    } catch (RemoteException e) {
-                        // ignore, it was an error anyway
-                    }
+                    callback.onError(
+                            MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
                     return;
                 }
-                try {
-                    callback.middlewareReady();
-                } catch (RemoteException e) {
-                    // TODO: call dispose
-                }
+                callback.onMiddlewareReady();
             }, INITIALIZATION_DELAY);
 
             return MbmsException.SUCCESS;
@@ -121,12 +112,8 @@ public class EmbmsSampleDownloadService extends Service {
                     .getFileServicesForClasses(serviceClasses);
 
             mHandler.postDelayed(() -> {
-                try {
-                    IMbmsDownloadManagerCallback appCallback = mAppCallbacks.get(appKey);
-                    appCallback.fileServicesUpdated(serviceInfos);
-                } catch (RemoteException e) {
-                    // TODO: call dispose
-                }
+                MbmsDownloadManagerCallback appCallback = mAppCallbacks.get(appKey);
+                appCallback.onFileServicesUpdated(serviceInfos);
             }, SEND_FILE_SERVICE_INFO_DELAY);
             return MbmsException.SUCCESS;
         }
@@ -167,11 +154,20 @@ public class EmbmsSampleDownloadService extends Service {
             mActiveDownloadRequests.get(appKey).remove(downloadRequest);
             return MbmsException.SUCCESS;
         }
+
+        @Override
+        public void onAppCallbackDied(int uid, int subscriptionId) {
+            FrontendAppIdentifier appKey = new FrontendAppIdentifier(uid, subscriptionId);
+
+            Log.i(LOG_TAG, "Disposing app " + appKey + " due to binder death");
+            mAppCallbacks.remove(appKey);
+            // TODO: call dispose
+        }
     };
 
     private static EmbmsSampleDownloadService sInstance = null;
 
-    private final Map<FrontendAppIdentifier, IMbmsDownloadManagerCallback> mAppCallbacks =
+    private final Map<FrontendAppIdentifier, MbmsDownloadManagerCallback> mAppCallbacks =
             new HashMap<>();
     private final Map<FrontendAppIdentifier, ComponentName> mAppReceivers = new HashMap<>();
     private final Map<FrontendAppIdentifier, String> mAppTempFileRoots = new HashMap<>();
@@ -365,14 +361,14 @@ public class EmbmsSampleDownloadService extends Service {
         downloadResultIntent.putExtra(VendorUtils.EXTRA_REQUEST, request1);
         downloadResultIntent.putExtra(VendorUtils.EXTRA_FINAL_URI,
                 tempFile.getFilePathUri());
-        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_FILE_INFO, fileToDownload);
+        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_MBMS_FILE_INFO, fileToDownload);
         downloadResultIntent.putExtra(VendorUtils.EXTRA_TEMP_FILE_ROOT,
                 mAppTempFileRoots.get(appKey));
         ArrayList<Uri> tempFileList = new ArrayList<>(1);
         tempFileList.add(tempFile.getFilePathUri());
         downloadResultIntent.getExtras().putParcelableArrayList(
                 VendorUtils.EXTRA_TEMP_LIST, tempFileList);
-        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_RESULT, result);
+        downloadResultIntent.putExtra(MbmsDownloadManager.EXTRA_MBMS_DOWNLOAD_RESULT, result);
         downloadResultIntent.setComponent(mAppReceivers.get(appKey));
 
         sendOrderedBroadcast(downloadResultIntent,
