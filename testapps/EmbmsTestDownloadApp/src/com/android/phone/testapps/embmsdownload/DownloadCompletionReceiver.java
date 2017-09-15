@@ -20,19 +20,19 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.telephony.MbmsDownloadManager;
+import android.telephony.MbmsDownloadSession;
 
 public class DownloadCompletionReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (EmbmsTestDownloadApp.DOWNLOAD_DONE_ACTION.equals(intent.getAction())) {
-            int result = intent.getIntExtra(MbmsDownloadManager.EXTRA_MBMS_DOWNLOAD_RESULT,
-                    MbmsDownloadManager.RESULT_CANCELLED);
-            if (result != MbmsDownloadManager.RESULT_SUCCESSFUL) {
+            int result = intent.getIntExtra(MbmsDownloadSession.EXTRA_MBMS_DOWNLOAD_RESULT,
+                    MbmsDownloadSession.RESULT_CANCELLED);
+            if (result != MbmsDownloadSession.RESULT_SUCCESSFUL) {
                 EmbmsTestDownloadApp.getInstance().onDownloadFailed(result);
             }
             Uri completedFile = intent.getParcelableExtra(
-                    MbmsDownloadManager.EXTRA_MBMS_COMPLETED_FILE_URI);
+                    MbmsDownloadSession.EXTRA_MBMS_COMPLETED_FILE_URI);
             EmbmsTestDownloadApp.getInstance().onDownloadDone(completedFile);
         }
     }
