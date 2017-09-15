@@ -387,71 +387,115 @@
     <string name="preferred_network_mode_title">Preferred network type</string>
     <string name="preferred_network_mode_summary">Change the network operating mode</string>
     <string name="preferred_network_mode_dialogtitle">Preferred network type</string>
-    <!-- Mobile network settings, summary for preferred network mode WCDMA preferred[CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_wcdma_perf_summary">Preferred network mode: WCDMA preferred</string>
-    <!-- Mobile network settings, summary for preferred network mode GSM [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_gsm_only_summary">Preferred network mode: GSM only</string>
-    <!-- Mobile network settings, summary for preferred network mode WCDMA only [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_wcdma_only_summary">Preferred network mode: WCDMA only</string>
-    <!-- Mobile network settings, summary for preferred network mode GSM / UMTS [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_gsm_wcdma_summary">Preferred network mode: GSM / WCDMA</string>
-    <!-- Mobile network settings, summary for preferred network mode CDMA [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_cdma_summary">Preferred network mode: CDMA</string>
-    <!-- Mobile network settings, summary for preferred network mode CDMA / EvDo [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_cdma_evdo_summary">Preferred network mode: CDMA / EvDo</string>
-    <!-- Mobile network settings, summary for preferred network mode CDMA only [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_cdma_only_summary">Preferred network mode: CDMA only</string>
-    <!-- Mobile network settings, summary for preferred network mode EvDo only [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_evdo_only_summary">Preferred network mode: EvDo only</string>
-    <!-- Mobile network settings, summary for preferred network mode CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary">Preferred network mode: CDMA/EvDo/GSM/WCDMA</string>
-    <!-- Mobile network settings, summary for preferred network mode LTE [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_lte_summary">Preferred network mode: LTE </string>
-    <!-- Mobile network settings, summary for preferred network mode GSM/WCDMA/LTE [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_lte_gsm_wcdma_summary">Preferred network mode: GSM/WCDMA/LTE</string>
-    <!-- Mobile network settings, summary for preferred network mode CDMA+LTE/EVDO[CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_lte_cdma_evdo_summary">Preferred network mode: CDMA+LTE/EVDO</string>
-    <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_global_summary">Preferred network mode: Global</string>
-    <!-- Mobile network settings, summary for preferred network mode LTE / WCDMA[CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_lte_wcdma_summary">Preferred network mode: LTE / WCDMA</string>
-     <!-- Mobile network settings, summary for preferred network mode LTE / GSM / UMTS [CHAR LIMIT=100] -->
-     <string name="preferred_network_mode_lte_gsm_umts_summary">Preferred network mode: LTE / GSM / UMTS</string>
-     <!-- Mobile network settings, summary for preferred network mode LTE / CDMA [CHAR LIMIT=100] -->
-     <string name="preferred_network_mode_lte_cdma_summary">Preferred network mode: LTE / CDMA</string>
-     <!-- Mobile network settings, summary for preferred network mode TDSCDMTA [CHAR LIMIT=100] -->
-     <string name="preferred_network_mode_tdscdma_summary">Preferred network mode: TDSCDMA</string>
 
+    <!-- The preferred network modes in Mobile network settings -->
     <string-array name="preferred_network_mode_choices">
-        <item>LTE / WCDMA</item>
-        <item>LTE</item>
-        <item>Global</item>
-        <item>GSM/WCDMA/LTE</item>
-        <item>CDMA + LTE/EvDo</item>
-        <item>CDMA/EvDo/GSM/WCDMA</item>
-        <item>EvDo only</item>
-        <item>CDMA w/o EvDo</item>
-        <item>CDMA/EvDo auto</item>
-        <item>GSM/WCDMA auto</item>
-        <item>WCDMA only</item>
-        <item>GSM only</item>
         <item>GSM/WCDMA preferred</item>
+        <item>GSM only</item>
+        <item>WCDMA only</item>
+        <item>GSM/WCDMA auto</item>
+        <item>CDMA/EvDo auto</item>
+        <item>CDMA w/o EvDo</item>
+        <item>EvDo only</item>
+        <item>CDMA/EvDo/GSM/WCDMA</item>
+        <item>CDMA + LTE/EvDo</item>
+        <item>GSM/WCDMA/LTE</item>
+        <item>Global</item>
+        <item>LTE</item>
+        <item>LTE / WCDMA</item>
+        <item>TDSCDMA only</item>
+        <item>TDSCDMA/WCDMA</item>
+        <item>LTE/TDSCDMA</item>
+        <item>TDSCDMA/GSM</item>
+        <item>LTE/TDSCDMA/GSM</item>
+        <item>TDSCDMA/GSM/WCDMA</item>
+        <item>LTE/TDSCDMA/WCDMA</item>
+        <item>LTE/TDSCDMA/GSM/WCDMA</item>
+        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
     </string-array>
+    <!-- The preferred network modes RIL constants, in order of the modes above,
+         e.g. the choice "GSM/WCDMA preferred" has the corresponding value "0" -->
     <string-array name="preferred_network_mode_values"  translatable="false">
-        <item>"12"</item>
-        <item>"11"</item>
-        <item>"10"</item>
-        <item>"9"</item>
-        <item>"8"</item>
-        <item>"7"</item>
-        <item>"6"</item>
-        <item>"5"</item>
-        <item>"4"</item>
-        <item>"3"</item>
-        <item>"2"</item>
-        <item>"1"</item>
         <item>"0"</item>
+        <item>"1"</item>
+        <item>"2"</item>
+        <item>"3"</item>
+        <item>"4"</item>
+        <item>"5"</item>
+        <item>"6"</item>
+        <item>"7"</item>
+        <item>"8"</item>
+        <item>"9"</item>
+        <item>"10"</item>
+        <item>"11"</item>
+        <item>"12"</item>
+        <item>"13"</item>
+        <item>"14"</item>
+        <item>"15"</item>
+        <item>"16"</item>
+        <item>"17"</item>
+        <item>"18"</item>
+        <item>"19"</item>
+        <item>"20"</item>
+        <item>"21"</item>
+        <item>"22"</item>
     </string-array>
+
+    <!-- The following strings are summaries for preferred network modes in Mobile network settings,
+         and have a character limit of 100 -->
+    <!-- WCDMA preferred -->
+    <string name="preferred_network_mode_wcdma_perf_summary">Preferred network mode: WCDMA preferred</string>
+    <!-- GSM only -->
+    <string name="preferred_network_mode_gsm_only_summary">Preferred network mode: GSM only</string>
+    <!-- WCDMA only -->
+    <string name="preferred_network_mode_wcdma_only_summary">Preferred network mode: WCDMA only</string>
+    <!-- GSM / WCDMA -->
+    <string name="preferred_network_mode_gsm_wcdma_summary">Preferred network mode: GSM / WCDMA</string>
+    <!-- CDMA -->
+    <string name="preferred_network_mode_cdma_summary">Preferred network mode: CDMA</string>
+    <!-- CDMA / EvDo -->
+    <string name="preferred_network_mode_cdma_evdo_summary">Preferred network mode: CDMA / EvDo</string>
+    <!-- CDMA only -->
+    <string name="preferred_network_mode_cdma_only_summary">Preferred network mode: CDMA only</string>
+    <!-- EvDo only -->
+    <string name="preferred_network_mode_evdo_only_summary">Preferred network mode: EvDo only</string>
+    <!-- CDMA/EvDo/GSM/WCDMA -->
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary">Preferred network mode: CDMA/EvDo/GSM/WCDMA</string>
+    <!-- LTE  -->
+    <string name="preferred_network_mode_lte_summary">Preferred network mode: LTE </string>
+    <!-- GSM/WCDMA/LTE -->
+    <string name="preferred_network_mode_lte_gsm_wcdma_summary">Preferred network mode: GSM/WCDMA/LTE</string>
+    <!-- CDMA+LTE/EVDO -->
+    <string name="preferred_network_mode_lte_cdma_evdo_summary">Preferred network mode: CDMA+LTE/EVDO</string>
+    <!-- Global -->
+    <string name="preferred_network_mode_global_summary">Preferred network mode: Global</string>
+    <!-- LTE / WCDMA -->
+    <string name="preferred_network_mode_lte_wcdma_summary">Preferred network mode: LTE / WCDMA</string>
+    <!-- LTE / GSM / UMTS -->
+    <string name="preferred_network_mode_lte_gsm_umts_summary">Preferred network mode: LTE / GSM / UMTS</string>
+    <!-- LTE / CDMA -->
+    <string name="preferred_network_mode_lte_cdma_summary">Preferred network mode: LTE / CDMA</string>
+    <!-- TDSCDMA -->
+    <string name="preferred_network_mode_tdscdma_summary">Preferred network mode: TDSCDMA</string>
+    <!-- TDSCDMA / WCDMA -->
+    <string name="preferred_network_mode_tdscdma_wcdma_summary">Preferred network mode: TDSCDMA / WCDMA</string>
+    <!-- LTE / TDSCDMA -->
+    <string name="preferred_network_mode_lte_tdscdma_summary">Preferred network mode: LTE / TDSCDMA</string>
+    <!-- TDSCDMA / GSM -->
+    <string name="preferred_network_mode_tdscdma_gsm_summary">Preferred network mode: TDSCDMA / GSM</string>
+    <!-- LTE/GSM/TDSCDMA -->
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary">Preferred network mode: LTE/GSM/TDSCDMA</string>
+    <!-- TDSCDMA/GSM/WCDMA -->
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary">Preferred network mode: TDSCDMA/GSM/WCDMA</string>
+    <!-- LTE/TDSCDMA/WCDMA -->
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary">Preferred network mode: LTE/TDSCDMA/WCDMA</string>
+    <!-- LTE/TDSCDMA/GSM/WCDMA -->
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary">Preferred network mode: LTE/TDSCDMA/GSM/WCDMA</string>
+    <!-- TDSCDMA/CDMA/EvDo/GSM/WCDMA -->
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary">Preferred network mode: TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
+    <!-- LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA -->
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Preferred network mode: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
 
     <!-- Mobile network settings screen, name for call settings category -->
     <string name="call_category">Calling</string>
