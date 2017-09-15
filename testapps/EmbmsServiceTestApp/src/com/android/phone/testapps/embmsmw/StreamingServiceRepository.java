@@ -43,7 +43,7 @@ public class StreamingServiceRepository {
     public static List<StreamingServiceInfo> getStreamingServicesForClasses(
             List<String> serviceClasses) {
         return sIdToServiceInfo.values().stream()
-                .filter((info) -> serviceClasses.contains(info.getClassName()))
+                .filter((info) -> serviceClasses.contains(info.getServiceClassName()))
                 .collect(Collectors.toList());
     }
 
