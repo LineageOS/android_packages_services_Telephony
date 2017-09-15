@@ -35,7 +35,7 @@ import android.telephony.mbms.DownloadRequest;
 import android.telephony.mbms.FileInfo;
 import android.telephony.mbms.FileServiceInfo;
 import android.telephony.mbms.MbmsDownloadSessionCallback;
-import android.telephony.mbms.MbmsException;
+import android.telephony.mbms.MbmsErrors;
 import android.telephony.mbms.UriPathPair;
 import android.telephony.mbms.vendor.IMbmsDownloadService;
 import android.telephony.mbms.vendor.MbmsDownloadServiceBase;
@@ -72,11 +72,11 @@ public class EmbmsSampleDownloadService extends Service {
             int packageUid = Binder.getCallingUid();
             String[] packageNames = getPackageManager().getPackagesForUid(packageUid);
             if (packageNames == null) {
-                return MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
+                return MbmsErrors.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
             }
             boolean isUidAllowed = Arrays.stream(packageNames).anyMatch(ALLOWED_PACKAGES::contains);
             if (!isUidAllowed) {
-                return MbmsException.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
+                return MbmsErrors.InitializationErrors.ERROR_APP_PERMISSIONS_NOT_GRANTED;
             }
 
             // Do initialization with a bit of a delay to simulate work being done.
@@ -90,13 +90,13 @@ public class EmbmsSampleDownloadService extends Service {
                     mAppReceivers.put(appKey, appReceiver);
                 } else {
                     callback.onError(
-                            MbmsException.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
+                            MbmsErrors.InitializationErrors.ERROR_DUPLICATE_INITIALIZE, "");
                     return;
                 }
                 callback.onMiddlewareReady();
             }, INITIALIZATION_DELAY);
 
-            return MbmsException.SUCCESS;
+            return MbmsErrors.SUCCESS;
         }
 
         @Override
@@ -114,7 +114,7 @@ public class EmbmsSampleDownloadService extends Service {
                 MbmsDownloadSessionCallback appCallback = mAppCallbacks.get(appKey);
                 appCallback.onFileServicesUpdated(serviceInfos);
             }, SEND_FILE_SERVICE_INFO_DELAY);
-            return MbmsException.SUCCESS;
+            return MbmsErrors.SUCCESS;
         }
 
         @Override
@@ -125,10 +125,10 @@ public class EmbmsSampleDownloadService extends Service {
             checkInitialized(appKey);
 
             if (mActiveDownloadRequests.getOrDefault(appKey, Collections.emptySet()).size() > 0) {
-                return MbmsException.DownloadErrors.ERROR_CANNOT_CHANGE_TEMP_FILE_ROOT;
+                return MbmsErrors.DownloadErrors.ERROR_CANNOT_CHANGE_TEMP_FILE_ROOT;
             }
             mAppTempFileRoots.put(appKey, rootDirectoryPath);
-            return MbmsException.SUCCESS;
+            return MbmsErrors.SUCCESS;
         }
 
         @Override
@@ -138,7 +138,7 @@ public class EmbmsSampleDownloadService extends Service {
             checkInitialized(appKey);
 
             mHandler.post(() -> sendFdRequest(downloadRequest, appKey));
-            return MbmsException.SUCCESS;
+            return MbmsErrors.SUCCESS;
         }
 
         @Override
@@ -148,10 +148,10 @@ public class EmbmsSampleDownloadService extends Service {
             checkInitialized(appKey);
             if (!mActiveDownloadRequests.getOrDefault(
                     appKey, Collections.emptySet()).contains(downloadRequest)) {
-                return MbmsException.DownloadErrors.ERROR_UNKNOWN_DOWNLOAD_REQUEST;
+                return MbmsErrors.DownloadErrors.ERROR_UNKNOWN_DOWNLOAD_REQUEST;
             }
             mActiveDownloadRequests.get(appKey).remove(downloadRequest);
-            return MbmsException.SUCCESS;
+            return MbmsErrors.SUCCESS;
         }
 
         @Override
@@ -357,7 +357,7 @@ public class EmbmsSampleDownloadService extends Service {
 
         Intent downloadResultIntent =
                 new Intent(VendorUtils.ACTION_DOWNLOAD_RESULT_INTERNAL);
-        downloadResultIntent.putExtra(VendorUtils.EXTRA_REQUEST, request1);
+        downloadResultIntent.putExtra(MbmsDownloadSession.EXTRA_MBMS_DOWNLOAD_REQUEST, request1);
         downloadResultIntent.putExtra(VendorUtils.EXTRA_FINAL_URI,
                 tempFile.getFilePathUri());
         downloadResultIntent.putExtra(MbmsDownloadSession.EXTRA_MBMS_FILE_INFO, fileToDownload);
