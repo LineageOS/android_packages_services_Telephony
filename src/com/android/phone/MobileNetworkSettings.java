@@ -1139,7 +1139,13 @@ public class MobileNetworkSettings extends Activity  {
         private void UpdatePreferredNetworkModeSummary(int NetworkMode) {
             switch(NetworkMode) {
                 case Phone.NT_MODE_TDSCDMA_GSM_WCDMA:
+                    mButtonPreferredNetworkMode.setSummary(
+                            R.string.preferred_network_mode_tdscdma_gsm_wcdma_summary);
+                    break;
                 case Phone.NT_MODE_TDSCDMA_GSM:
+                    mButtonPreferredNetworkMode.setSummary(
+                            R.string.preferred_network_mode_tdscdma_gsm_summary);
+                    break;
                 case Phone.NT_MODE_WCDMA_PREF:
                     mButtonPreferredNetworkMode.setSummary(
                             R.string.preferred_network_mode_wcdma_perf_summary);
@@ -1149,6 +1155,9 @@ public class MobileNetworkSettings extends Activity  {
                             R.string.preferred_network_mode_gsm_only_summary);
                     break;
                 case Phone.NT_MODE_TDSCDMA_WCDMA:
+                    mButtonPreferredNetworkMode.setSummary(
+                            R.string.preferred_network_mode_tdscdma_wcdma_summary);
+                    break;
                 case Phone.NT_MODE_WCDMA_ONLY:
                     mButtonPreferredNetworkMode.setSummary(
                             R.string.preferred_network_mode_wcdma_only_summary);
@@ -1179,12 +1188,21 @@ public class MobileNetworkSettings extends Activity  {
                             R.string.preferred_network_mode_evdo_only_summary);
                     break;
                 case Phone.NT_MODE_LTE_TDSCDMA:
+                    mButtonPreferredNetworkMode.setSummary(
+                            R.string.preferred_network_mode_lte_tdscdma_summary);
+                    break;
                 case Phone.NT_MODE_LTE_ONLY:
                     mButtonPreferredNetworkMode.setSummary(
                             R.string.preferred_network_mode_lte_summary);
                     break;
                 case Phone.NT_MODE_LTE_TDSCDMA_GSM:
+                    mButtonPreferredNetworkMode.setSummary(
+                            R.string.preferred_network_mode_lte_tdscdma_gsm_summary);
+                    break;
                 case Phone.NT_MODE_LTE_TDSCDMA_GSM_WCDMA:
+                    mButtonPreferredNetworkMode.setSummary(
+                            R.string.preferred_network_mode_lte_tdscdma_gsm_wcdma_summary);
+                    break;
                 case Phone.NT_MODE_LTE_GSM_WCDMA:
                     mButtonPreferredNetworkMode.setSummary(
                             R.string.preferred_network_mode_lte_gsm_wcdma_summary);
@@ -1198,6 +1216,9 @@ public class MobileNetworkSettings extends Activity  {
                             R.string.preferred_network_mode_tdscdma_summary);
                     break;
                 case Phone.NT_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA:
+                    mButtonPreferredNetworkMode.setSummary(
+                            R.string.preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary);
+                    break;
                 case Phone.NT_MODE_LTE_CDMA_EVDO_GSM_WCDMA:
                     if (mPhone.getPhoneType() == PhoneConstants.PHONE_TYPE_CDMA ||
                             mIsGlobalCdma ||
@@ -1210,11 +1231,17 @@ public class MobileNetworkSettings extends Activity  {
                     }
                     break;
                 case Phone.NT_MODE_TDSCDMA_CDMA_EVDO_GSM_WCDMA:
+                    mButtonPreferredNetworkMode.setSummary(
+                            R.string.preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary);
+                    break;
                 case Phone.NT_MODE_GLOBAL:
                     mButtonPreferredNetworkMode.setSummary(
                             R.string.preferred_network_mode_cdma_evdo_gsm_wcdma_summary);
                     break;
                 case Phone.NT_MODE_LTE_TDSCDMA_WCDMA:
+                    mButtonPreferredNetworkMode.setSummary(
+                            R.string.preferred_network_mode_lte_tdscdma_wcdma_summary);
+                    break;
                 case Phone.NT_MODE_LTE_WCDMA:
                     mButtonPreferredNetworkMode.setSummary(
                             R.string.preferred_network_mode_lte_wcdma_summary);
