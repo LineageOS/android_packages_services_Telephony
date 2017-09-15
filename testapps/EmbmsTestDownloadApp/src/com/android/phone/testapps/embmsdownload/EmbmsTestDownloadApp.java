@@ -42,7 +42,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -310,23 +309,13 @@ public class EmbmsTestDownloadApp extends Activity {
     }
 
     private void performDownload(FileServiceInfo info) {
-        File destination = null;
         Uri.Builder sourceUriBuilder = new Uri.Builder()
                 .scheme(FILE_DOWNLOAD_SCHEME)
                 .authority(FILE_AUTHORITY);
-        try {
-            if (info.getFiles().size() > 1) {
-                destination = new File(getFilesDir(), "images/animals/").getCanonicalFile();
-                destination.mkdirs();
-                clearDirectory(destination);
-                sourceUriBuilder.path("/*");
-            } else {
-                destination = new File(getFilesDir(), "images/image.png").getCanonicalFile();
-                destination.delete();
-                sourceUriBuilder.path("/image.png");
-            }
-        } catch (IOException e) {
-            // ignore
+        if (info.getServiceId().contains("2")) {
+            sourceUriBuilder.path("/*");
+        } else {
+            sourceUriBuilder.path("/image.png");
         }
 
         Intent completionIntent = new Intent(DOWNLOAD_DONE_ACTION);
@@ -335,21 +324,11 @@ public class EmbmsTestDownloadApp extends Activity {
         DownloadRequest request = new DownloadRequest.Builder()
                 .setServiceInfo(info)
                 .setSource(sourceUriBuilder.build())
-                .setDest(Uri.fromFile(destination))
                 .setAppIntent(completionIntent)
                 .setSubscriptionId(SubscriptionManager.getDefaultSubscriptionId())
                 .build();
 
         mDownloadManager.download(request);
         mDownloadRequestAdapter.add(request);
-    }
-
-    private static void clearDirectory(File directory) {
-        for (File file: directory.listFiles()) {
-            if (file.isDirectory()) {
-                clearDirectory(file);
-            }
-            file.delete();
-        }
     }
 }
