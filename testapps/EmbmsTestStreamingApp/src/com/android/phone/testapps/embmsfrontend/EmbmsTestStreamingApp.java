@@ -22,9 +22,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.telephony.MbmsStreamingManager;
-import android.telephony.mbms.MbmsException;
-import android.telephony.mbms.MbmsStreamingManagerCallback;
+import android.telephony.MbmsStreamingSession;
+import android.telephony.mbms.MbmsStreamingSessionCallback;
 import android.telephony.mbms.StreamingService;
 import android.telephony.mbms.StreamingServiceInfo;
 import android.view.View;
@@ -41,9 +40,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class EmbmsTestStreamingApp extends Activity {
-    private MbmsStreamingManagerCallback mStreamingListener = new MbmsStreamingManagerCallback() {
+    private MbmsStreamingSessionCallback mStreamingListener = new MbmsStreamingSessionCallback() {
         @Override
         public void onStreamingServicesUpdated(List<StreamingServiceInfo> services) {
             EmbmsTestStreamingApp.this.runOnUiThread(() ->
@@ -67,16 +67,13 @@ public class EmbmsTestStreamingApp extends Activity {
         }
 
         private String getName(StreamingServiceInfo info) {
-            Map<Locale, String> names = info.getNames();
-            String name = "<No Name>";
-            if (!names.isEmpty()) {
-                Locale locale = Locale.getDefault();
-                if (!names.containsKey(locale)) {
-                    locale = names.keySet().iterator().next();
-                }
-                name = names.get(locale);
+            Locale locale = Locale.getDefault();
+            try {
+                return info.getNameForLocale(locale).toString();
+            } catch (NoSuchElementException e) {
+                locale = info.getLocales().iterator().next();
+                return info.getNameForLocale(locale).toString();
             }
-            return name;
         }
 
         @Override
@@ -131,7 +128,7 @@ public class EmbmsTestStreamingApp extends Activity {
         }
     }
 
-    private MbmsStreamingManager mStreamingManager = null;
+    private MbmsStreamingSession mStreamingManager = null;
 
     private Handler mHandler;
     private HandlerThread mHandlerThread;
@@ -156,14 +153,8 @@ public class EmbmsTestStreamingApp extends Activity {
 
         Button bindButton = (Button) findViewById(R.id.bind_button);
         bindButton.setOnClickListener((view) -> {
-            try {
-                mStreamingManager = MbmsStreamingManager.create(
-                        EmbmsTestStreamingApp.this, mStreamingListener, mHandler);
-            } catch (MbmsException e) {
-                Toast.makeText(EmbmsTestStreamingApp.this,
-                        "Init error: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
-                return;
-            }
+            mStreamingManager = MbmsStreamingSession.create(
+                    EmbmsTestStreamingApp.this, mStreamingListener, mHandler);
         });
 
         Button getStreamingServicesButton = (Button)
@@ -174,13 +165,7 @@ public class EmbmsTestStreamingApp extends Activity {
                         "No streaming service bound", Toast.LENGTH_SHORT).show();
                 return;
             }
-            try {
-                mStreamingManager.getStreamingServices(Collections.singletonList("Class1"));
-            } catch (MbmsException e) {
-                Toast.makeText(EmbmsTestStreamingApp.this,
-                        "Error getting streaming services" + e.getErrorCode(),
-                        Toast.LENGTH_SHORT).show();
-            }
+            mStreamingManager.requestUpdateStreamingServices(Collections.singletonList("Class1"));
         });
 
         final Spinner serviceSelector = (Spinner) findViewById(R.id.available_streaming_services);
@@ -241,27 +226,13 @@ public class EmbmsTestStreamingApp extends Activity {
             stream.stopStreaming();
         });
 
-        Button disposeStreamButton = (Button) findViewById(R.id.dispose_stream_button);
-        disposeStreamButton.setOnClickListener((view) -> {
-            if (getSelectedTrackedStream() == null) {
-                Toast.makeText(EmbmsTestStreamingApp.this,
-                        "No streams selected", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            clearStateAndUriDisplay();
-            StreamingServiceTracker stream = getSelectedTrackedStream();
-            mTrackedStreamingServiceAdapter.remove(stream.getServiceId());
-            mStreamingServiceTrackerById.remove(stream.getServiceId());
-            stream.dispose();
-        });
-
         Button disposeManagerButton = (Button) findViewById(R.id.dispose_manager_button);
         disposeManagerButton.setOnClickListener((view) -> {
             clearStateAndUriDisplay();
             mTrackedStreamingServiceAdapter.clear();
             mStreamingServicesDisplayAdapter.update(Collections.emptyList());
             mStreamingServiceTrackerById.clear();
-            mStreamingManager.dispose();
+            mStreamingManager.close();
         });
     }
 
