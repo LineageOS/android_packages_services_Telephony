@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">Alegeți modul rețelei</string>
   <string name="choose_network_mode_system_default">Implicit sistem</string>
   <string name="cdma_call_settings">Setări apel CDMA</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Identificare linie conectată</string>
+  <string name="connected_line_identification_summary">Dezactivaţi această opţiune dacă numerele destinatarilor nu apar în istoria apelurilor</string>
 </resources>

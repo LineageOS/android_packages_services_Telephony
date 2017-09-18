@@ -78,4 +78,5 @@
   <string name="perm_change_mobile_network">నెట్వర్క్ మోడ్‌ను మార్చండి</string>
   <string name="perm_change_mobile_network_desc">ప్రస్తుత నెట్వర్క్ మోడ్‌ను సవరించడానికి అనువర్తనాన్ని అనుమతిస్తుంది.</string>
   <!-- Network mode picker dialog title -->
+  <!-- Mobile network settings, COLP -->
 </resources>

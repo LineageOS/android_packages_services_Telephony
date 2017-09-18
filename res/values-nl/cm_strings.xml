@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">Netwerkmodus kiezen</string>
   <string name="choose_network_mode_system_default">Systeemstandaard</string>
   <string name="cdma_call_settings">CDMA-oproepinstellingen</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Verbindingsidentificatie</string>
+  <string name="connected_line_identification_summary">Schakel deze optie uit als nummers van ontvangers niet weergegeven worden in de oproepgeschiedenis</string>
 </resources>

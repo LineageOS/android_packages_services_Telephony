@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">네트워크 모드 선택</string>
   <string name="choose_network_mode_system_default">시스템 기본 설정</string>
   <string name="cdma_call_settings">CDMA 통화 설정</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">연결된 통화 확인</string>
+  <string name="connected_line_identification_summary">통화 목록에서 통화 내역이 보이지 않으면 이 설정을 사용하지 않도록 설정</string>
 </resources>

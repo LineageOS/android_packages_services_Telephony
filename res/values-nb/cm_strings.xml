@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">Velg nettverksmodus</string>
   <string name="choose_network_mode_system_default">Systemstandard</string>
   <string name="cdma_call_settings">CDMA samtaleinnstillinger</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Tilkoblet linje identifikasjon</string>
+  <string name="connected_line_identification_summary">Deaktiver dette alternativet hvis mottakernes nummere ikke vises i anropsloggen</string>
 </resources>

@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">Вибір режиму мережі</string>
   <string name="choose_network_mode_system_default">За замовчуванням системи</string>
   <string name="cdma_call_settings">Налаштування CDMA-телефонії</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Ідентифікація абонента</string>
+  <string name="connected_line_identification_summary">Вимкніть цей параметр, якщо в історії викликів не відображаються номери абонентів</string>
 </resources>

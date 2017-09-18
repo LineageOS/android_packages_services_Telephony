@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">Şebeke modunu seç</string>
   <string name="choose_network_mode_system_default">Sistem varsayılanı</string>
   <string name="cdma_call_settings">CDMA arama ayarları</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Bağlantılı hat tanımlama</string>
+  <string name="connected_line_identification_summary">Arama geçmişinde alıcı sayısı gösterilmiyorsa bu seçeneği devre dışı bırak</string>
 </resources>

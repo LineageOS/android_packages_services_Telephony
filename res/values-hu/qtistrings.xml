@@ -153,4 +153,8 @@
   <string name="srvcc_video_message">"Videohívást visszaminősítettük 2G/3G hanghívássá, mert a 4G hálózat nem érhető el."</string>
   <string name="srvcc_message">"4G hanghívást visszaminősítettük 2G/3G hanghívássá, mert a 4G hálózat nem érhető el."</string>
   <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Hívásátirányítási beállítások</string>
+  <string name="labelCFVoice">Hang</string>
+  <string name="labelCFVideo">Videó</string>
+  <string name="call_forward_option">Hívásátirányítási lehetőségek</string>
 </resources>

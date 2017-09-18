@@ -78,4 +78,5 @@
   <string name="perm_change_mobile_network">വിനിമയ ശ്രിംഖലയുടെ രീതി മാറ്റുക</string>
   <string name="perm_change_mobile_network_desc">വിനിമയ ശ്രിംഖലയുടെ രീതി മാറ്റുന്നതിനു ഒരു അപ്പ്ലികെഷനെ പ്രാപ്തമാക്കുക.</string>
   <!-- Network mode picker dialog title -->
+  <!-- Mobile network settings, COLP -->
 </resources>

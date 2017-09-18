@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">Elige el modo de red</string>
   <string name="choose_network_mode_system_default">Utilizar valores predefinidos</string>
   <string name="cdma_call_settings">Ajustes de llamada CDMA</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Identificación de la línea conectada</string>
+  <string name="connected_line_identification_summary">Desactivar esta opción si los números de los destinatarios no se muestran en el historial de llamadas</string>
 </resources>

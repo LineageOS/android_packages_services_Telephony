@@ -79,4 +79,7 @@
   <string name="perm_change_mobile_network_desc">વર્તમાન નેટવર્ક સ્થિતિ સુધારવા માટે એપ્લિકેશન ને પરવાનગી આપો.</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_system_default">તંત્ર મૂળભુત</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">કનેક્ટેડ લાઇનની ઓળખ</string>
+  <string name="connected_line_identification_summary">આ વિકલ્પ નિષ્ક્રિય કરો જો પ્રાપ્તિકર્તાઓ ના નંબરો કૉલ ઇતિહાસમા બતાવવામાં ના આવે</string>
 </resources>

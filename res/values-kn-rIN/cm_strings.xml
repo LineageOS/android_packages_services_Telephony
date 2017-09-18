@@ -78,4 +78,5 @@
   <string name="perm_change_mobile_network">ನೆಟ್‍ವರ್ಕ್ ಮೋಡ್ ಬದಲಿಸಿ</string>
   <string name="perm_change_mobile_network_desc">ಪ್ರಸ್ತುತ ನೆಟ್ವರ್ಕ್ ಮೋಡ್ ಮಾರ್ಪಡಿಸಲು ಅಪ್ಲಿಕೇಶನ್ಗೆ ಅನುಮತಿಸುತ್ತದೆ.</string>
   <!-- Network mode picker dialog title -->
+  <!-- Mobile network settings, COLP -->
 </resources>

@@ -78,4 +78,5 @@
   <string name="perm_change_mobile_network">ନେଟ୍‍ୱାର୍କ୍‍ ମୋଡ୍‍ ପରିବର୍ତ୍ତନ କରନ୍ତୁ</string>
   <string name="perm_change_mobile_network_desc">ବର୍ତ୍ତମାନର ନେଟୱାର୍କ ମୋଡ଼କୁ ପରିବର୍ତ୍ତନ ପାଇଁ ଆପ୍ଲିକେସନ୍‍କୁ ଅନୁମତି ଦିଏ।.</string>
   <!-- Network mode picker dialog title -->
+  <!-- Mobile network settings, COLP -->
 </resources>

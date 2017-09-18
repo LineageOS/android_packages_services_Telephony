@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">Choisir le mode réseau</string>
   <string name="choose_network_mode_system_default">Par défaut du système</string>
   <string name="cdma_call_settings">Paramètres d\'appels CMDA</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Identification de la ligne connectée</string>
+  <string name="connected_line_identification_summary">Désactiver cette option si les numéros des destinataires n\'apparaissent pas dans l\'historique des appels</string>
 </resources>

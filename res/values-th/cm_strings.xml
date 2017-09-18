@@ -80,4 +80,7 @@
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">เลือกรูปแบบเครือข่าย</string>
   <string name="choose_network_mode_system_default">ค่าเริ่มต้นระบบ</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">การระบุตัวตนสายที่เชื่อมต่อ</string>
+  <string name="connected_line_identification_summary">ปิดใช้งานตัวเลือกนี้หากหมายเลขของผู้รับไม่แสดงในประวัติการโทร</string>
 </resources>

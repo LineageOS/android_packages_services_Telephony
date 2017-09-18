@@ -80,4 +80,7 @@
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">اختيار وضع الشبكة</string>
   <string name="choose_network_mode_system_default">الإعداد الافتراضي للنظام</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">تعريف الخط المتصل</string>
+  <string name="connected_line_identification_summary">تعطيل هذا الخيار إذا لم يظهر أعداد المستلمين في سجل المكالمات</string>
 </resources>

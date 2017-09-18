@@ -153,4 +153,8 @@
   <string name="srvcc_video_message">"Video-oproep is na 2G / 3G stem oproep afgegradeer, omdat die 4G netwerk is nie beskikbaar nie."</string>
   <string name="srvcc_message">"4G stemoproep is na 2G / 3G stem oproep afgegradeer, omdat die 4G netwerk is nie beskikbaar nie."</string>
   <!-- call forwarding settings related strings -->
+  <string name="labelCFType">Oproep-aanstuurinstellings</string>
+  <string name="labelCFVoice">Stem</string>
+  <string name="labelCFVideo">Video</string>
+  <string name="call_forward_option">Oproep-aansturing opsies</string>
 </resources>

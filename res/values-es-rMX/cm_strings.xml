@@ -40,4 +40,7 @@
   <string name="perm_change_mobile_network">cambiar modo de red</string>
   <string name="perm_change_mobile_network_desc">Permite que una aplicación modifique el modo actual de la red.</string>
   <!-- Network mode picker dialog title -->
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Identificación de línea conectada</string>
+  <string name="connected_line_identification_summary">Desactiva esta opción si los números de los destinatarios no se muestran en el historial de llamadas</string>
 </resources>

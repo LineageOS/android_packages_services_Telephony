@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">Vælg netværkstilstand</string>
   <string name="choose_network_mode_system_default">Systemstandard</string>
   <string name="cdma_call_settings">Indstillinger for CDMA-opkald</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Tilslutningsidentifikation</string>
+  <string name="connected_line_identification_summary">Deaktivér denne indstilling, hvis antallet af modtagerne ikke vises i opkaldshistorikken</string>
 </resources>

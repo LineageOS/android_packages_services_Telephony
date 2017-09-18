@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">בחר במצב רשת</string>
   <string name="choose_network_mode_system_default">ברירת המחדל של המערכת</string>
   <string name="cdma_call_settings">‏הגדרות שיחה של CDMA</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">זיהוי קו מחובר</string>
+  <string name="connected_line_identification_summary">השבת אפשרות זו אם מספרי הנמענים לא מופיעים בהיסטוריית השיחות</string>
 </resources>

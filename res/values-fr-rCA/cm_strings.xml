@@ -35,4 +35,5 @@
   <!-- Mobile network settings, preferred network modes -->
   <!-- Permission to modify network mode via intent -->
   <!-- Network mode picker dialog title -->
+  <!-- Mobile network settings, COLP -->
 </resources>

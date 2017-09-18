@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">Chọn chế độ mạng</string>
   <string name="choose_network_mode_system_default">Mặc định hệ thống</string>
   <string name="cdma_call_settings">Cài đặt cuộc gọi CDMA</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Xác định đường dây đã kết nối</string>
+  <string name="connected_line_identification_summary">Vô hiệu hóa tùy chọn này nếu số lượng người nhận không hiển thị trong lịch sử cuộc gọi</string>
 </resources>

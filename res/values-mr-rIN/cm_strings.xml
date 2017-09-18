@@ -78,4 +78,7 @@
   <string name="perm_change_mobile_network">नेटवर्क मोड बदला</string>
   <string name="perm_change_mobile_network_desc">अॅपला सुरु असलेल्या नेटवर्क मोड वर सूधारणा करण्यास परवानगी दया.</string>
   <!-- Network mode picker dialog title -->
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">कनेक्ट लाइन ओळख</string>
+  <string name="connected_line_identification_summary">प्राप्तकर्ता संख्या कॉल इतिहास मध्ये दर्शविले नाही तर हा पर्याय अक्षम करा</string>
 </resources>

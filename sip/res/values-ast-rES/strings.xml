@@ -18,13 +18,10 @@
   <!-- Title displayed SIP settings coming after other call settings in the call features screen. [CHAR LIMIT=NONE] -->
   <string name="sip_settings">Axustes de SIP</string>
   <!-- Title displayed SIP account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="sip_accounts">Cuentes SIP</string>
   <!-- Title displayed SIP account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="sip_accounts_title">Cuentes</string>
   <!-- Title displayed for the button of receiving incoming SIP calls flag. Enabled for receiving calls. [CHAR LIMIT=NONE] -->
   <string name="sip_receive_calls">Recibir llamaes entrantes</string>
   <!-- Help user to understand that it will require more battery usage if the 'receiving incoming call' is enabled. [CHAR LIMIT=NONE] -->
-  <string name="sip_receive_calls_summary">Usa más batería</string>
   <!-- Title for the dialog of selecting the way we handle an outgoing call. [CHAR LIMIT=NONE] -->
   <!-- Title for the dialog of selecting the way we handle an outgoing call (Wi-Fi only). [CHAR LIMIT=NONE] -->
   <!-- Item of the SIP call option dialog: for routing all outgoing calls via SIP. [CHAR LIMIT=NONE] -->
@@ -33,11 +30,9 @@
   <!-- Title for the button to add a new sip account. [CHAR LIMIT=NONE] -->
   <!-- Title for the button to remove a sip account. [CHAR LIMIT=NONE] -->
   <!-- String of the category which lists all sip accounts. [CHAR LIMIT=NONE] -->
-  <string name="sip_account_list">Cuentes SIP</string>
   <!-- Toast message to indicate that the system is saving the account. [CHAR LIMIT=NONE] -->
   <!-- Toast message to indicate that the system is removing the account. [CHAR LIMIT=NONE] -->
   <!-- Menu item when the menu button is pressed in the sip account editor. [CHAR LIMIT=NONE] -->
-  <string name="sip_menu_save">Guardar</string>
   <!-- Menu item when the menu button is pressed in the sip account editor. [CHAR LIMIT=NONE] -->
   <string name="sip_menu_discard">Escartar</string>
   <!-- Title of the alert dialog. [CHAR LIMIT=NONE] -->
@@ -45,7 +40,6 @@
   <string name="alert_dialog_ok">ACEUTAR</string>
   <!-- Title of the button to show in a alert dialog. [CHAR LIMIT=NONE] -->
   <!-- Text of SIP-call registration status, checking current registration status with SIP service [CHAR LIMIT=NONE] -->
-  <string name="registration_status_checking_status">Comprobando estáu...</string>
   <!-- Text of SIP-call registration status, registering with SIP server in order to receive calls on this account [CHAR LIMIT=NONE] -->
   <!-- Text of SIP-call registration status, still trying to register with SIP server [CHAR LIMIT=NONE] -->
   <!-- Text of SIP-call registration status, currently not receiving calls on this account [CHAR LIMIT=NONE] -->
@@ -61,7 +55,6 @@
   <!-- Title of the sip editor screen. [CHAR LIMIT=NONE] -->
   <!-- Text of the domain address preference. [CHAR LIMIT=NONE] -->
   <!-- Text of the username preference. [CHAR LIMIT=NONE] -->
-  <string name="username_title">Nome d\'usuariu</string>
   <!-- Text of the password preference. [CHAR LIMIT=NONE] -->
   <!-- Text of the display name preference. [CHAR LIMIT=NONE] -->
   <!-- Text of the outbound proxy address preference. [CHAR LIMIT=NONE] -->
@@ -81,6 +74,7 @@
   <!-- Hint to show the advanced settings section. [CHAR LIMIT=NONE] -->
   <!-- Hint to hide the advanced settings section. [CHAR LIMIT=NONE] -->
   <!-- Text in an alert dialog telling the user that all input fields can not be left blank. [CHAR LIMIT=NONE] -->
+  <string name="all_empty_alert">Introduz los detalles de la cuenta SIP nueva.</string>
   <!-- Text in an alert dialog telling the user that some input field (name of which is also part of the strings being translated above) is required and can not be left blank. [CHAR LIMIT=NONE] -->
   <!-- Showing that port number is out of range in an alert dialog. [CHAR LIMIT=NONE] -->
   <string name="not_a_valid_port">El númberu de puertu debería tar ente 1000 y 65534.</string>

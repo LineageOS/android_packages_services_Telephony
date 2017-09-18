@@ -78,4 +78,5 @@
   <string name="perm_change_mobile_network">நெட்வொர்க் பயன்முறையை மாற்றவும்</string>
   <string name="perm_change_mobile_network_desc">தற்போதைய நெட்வொர்க் பயன்முறையை மாற்ற, இந்த பயன்பாட்டை அனுமதிக்கிறது.</string>
   <!-- Network mode picker dialog title -->
+  <!-- Mobile network settings, COLP -->
 </resources>

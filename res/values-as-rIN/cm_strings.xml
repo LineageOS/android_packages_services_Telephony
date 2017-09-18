@@ -78,4 +78,5 @@
   <string name="perm_change_mobile_network">নেটৱৰ্ক মোড পৰিৱৰ্তন কৰক</string>
   <string name="perm_change_mobile_network_desc">এটা এপ্প্‌ক চলিত নেটৱৰ্ক মোড পৰিৱৰ্তন কৰিবলৈ অনুমতি দিয়ে।</string>
   <!-- Network mode picker dialog title -->
+  <!-- Mobile network settings, COLP -->
 </resources>

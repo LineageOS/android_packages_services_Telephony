@@ -81,4 +81,7 @@
   <string name="choose_network_mode_title">Netzwerkmodus auswählen</string>
   <string name="choose_network_mode_system_default">Systemstandard</string>
   <string name="cdma_call_settings">CDMA-Anrufeinstellungen</string>
+  <!-- Mobile network settings, COLP -->
+  <string name="connected_line_identification_title">Verbindungsidentifikation</string>
+  <string name="connected_line_identification_summary">Deaktivieren Sie diese Option, falls Empfängernummern nicht im Anrufverlauf angezeigt werden.</string>
 </resources>

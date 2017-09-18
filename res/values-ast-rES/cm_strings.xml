@@ -71,4 +71,5 @@
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">Escoyer mou de rede</string>
   <string name="cdma_call_settings">Axustes de llamaes CDMA</string>
+  <!-- Mobile network settings, COLP -->
 </resources>
