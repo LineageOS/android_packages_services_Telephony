@@ -173,6 +173,28 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ප්‍රියකරන ජාල වර්ගය"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ජාල මෙහෙයුම් ආකාරය වෙනස් කරන්න"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ප්‍රියකරන ජාල වර්ගය"</string>
+    <!-- no translation found for preferred_network_mode_choices:0 (3628460389382468528) -->
+    <!-- no translation found for preferred_network_mode_choices:1 (8442633436636425221) -->
+    <!-- no translation found for preferred_network_mode_choices:2 (2032314385791760810) -->
+    <!-- no translation found for preferred_network_mode_choices:3 (6334554401059422303) -->
+    <!-- no translation found for preferred_network_mode_choices:4 (1462198368200398663) -->
+    <!-- no translation found for preferred_network_mode_choices:5 (3611460019185359968) -->
+    <!-- no translation found for preferred_network_mode_choices:7 (4286774020869405140) -->
+    <!-- no translation found for preferred_network_mode_choices:8 (4006002265696868538) -->
+    <!-- no translation found for preferred_network_mode_choices:9 (8973936140318359205) -->
+    <!-- no translation found for preferred_network_mode_choices:10 (3471059554252610472) -->
+    <!-- no translation found for preferred_network_mode_choices:11 (2882615514545171802) -->
+    <!-- no translation found for preferred_network_mode_choices:12 (8076204422288290116) -->
+    <!-- no translation found for preferred_network_mode_choices:13 (3982984144824159726) -->
+    <!-- no translation found for preferred_network_mode_choices:14 (3686191974505922271) -->
+    <!-- no translation found for preferred_network_mode_choices:15 (7135671700201836475) -->
+    <!-- no translation found for preferred_network_mode_choices:16 (3736619459066330755) -->
+    <!-- no translation found for preferred_network_mode_choices:17 (4778666570887216861) -->
+    <!-- no translation found for preferred_network_mode_choices:18 (2952322596201849456) -->
+    <!-- no translation found for preferred_network_mode_choices:19 (115984258536697617) -->
+    <!-- no translation found for preferred_network_mode_choices:20 (7957991936217192636) -->
+    <!-- no translation found for preferred_network_mode_choices:21 (2828588917858484655) -->
+    <!-- no translation found for preferred_network_mode_choices:22 (4989979948139945854) -->
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"ප්‍රිය ජාල ආකාරය: WCDMA කැමතියි"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"ප්‍රිය ජාල ආකාරය: GSM පමණි"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"ප්‍රිය ජාල ආකාරය: WCDMA පමණි"</string>
@@ -190,21 +212,24 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"කැමති ජාල ආකාරය: LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"ප්‍රිය ජාල ආකාරය: LTE / CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"මනාප ජාල ප්‍රකාරය: TDSCDMA"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="7886739962255042385">"LTE / WCDMA"</item>
-    <item msgid="577652050447385699">"LTE"</item>
-    <item msgid="6813597571293773656">"ගෝලීය"</item>
-    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
-    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
-    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="545430093607698090">"EvDo පමණි"</item>
-    <item msgid="1508557726283094448">"CDMA රහිත EvDo"</item>
-    <item msgid="4341433122263841224">"CDMA/EvDo ස්වයංක්‍රීය"</item>
-    <item msgid="5958053792390386668">"GSM/WCDMA ස්වයංක්‍රීය"</item>
-    <item msgid="7913148405605373434">"WCDMA පමණි"</item>
-    <item msgid="1524224863879435516">"GSM පමණි"</item>
-    <item msgid="3817924849415716259">"GSM/WCDMA කැමතියි"</item>
-  </string-array>
+    <!-- no translation found for preferred_network_mode_tdscdma_wcdma_summary (2405154895437348623) -->
+    <skip />
+    <!-- no translation found for preferred_network_mode_lte_tdscdma_summary (2104702896644235637) -->
+    <skip />
+    <!-- no translation found for preferred_network_mode_tdscdma_gsm_summary (4893784445338396204) -->
+    <skip />
+    <!-- no translation found for preferred_network_mode_lte_tdscdma_gsm_summary (1815169717046729757) -->
+    <skip />
+    <!-- no translation found for preferred_network_mode_tdscdma_gsm_wcdma_summary (2195358773359424099) -->
+    <skip />
+    <!-- no translation found for preferred_network_mode_lte_tdscdma_wcdma_summary (1181424059695667803) -->
+    <skip />
+    <!-- no translation found for preferred_network_mode_lte_tdscdma_gsm_wcdma_summary (2526539326505354382) -->
+    <skip />
+    <!-- no translation found for preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary (8195248059196614939) -->
+    <skip />
+    <!-- no translation found for preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary (5596733053095592791) -->
+    <skip />
     <string name="call_category" msgid="5863978196309462052">"අමතමින්"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"ජාලය"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"දියුණු කරන ලද 4G LTE මෝඩය"</string>
