@@ -52,7 +52,7 @@
   <!-- In-call screen: status label when MO call gets deflected to another party -->
   <string name="call_notif_call_deflected">由遠端系統啟用通話轉接</string>
   <!-- Toast text for incoming call being forwarded to other remote party  -->
-  <string name="call_notif_MTcall_forwarding">來電通話已轉駁</string>
+  <string name="call_notif_MTcall_forwarding">來電通話已轉接</string>
   <!-- Toast text for incoming call which is part of MultiParty Call -->
   <string name="call_notif_multipartycall">多方通話</string>
   <!-- Toast text for incoming call which is answered,put on hold & then released -->

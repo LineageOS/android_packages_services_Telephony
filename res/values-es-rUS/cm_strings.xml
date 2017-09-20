@@ -168,7 +168,7 @@
   <string name="editContact">Editar</string>
   <string name="sendSms">Enviar SMS</string>
   <string name="delete">Borrar</string>
-  <string name="dial">Llamar</string>
+  <string name="dial">Marcar</string>
   <string name="enterName">Ingresar nombre:</string>
   <string name="enterNumber">Ingresar número de teléfono:</string>
   <string name="hintName">Nombre</string>

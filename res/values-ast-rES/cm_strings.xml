@@ -50,6 +50,7 @@
   <!-- Toast text for incoming call being forwarded to other remote party  -->
   <string name="call_notif_MTcall_forwarding">La llamada entrante ta esviada</string>
   <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Llamada múltiple</string>
   <!-- Toast text for incoming call which is answered,put on hold & then released -->
   <!-- Toast text for incoming call forward check received -->
   <string name="call_notif_forwardcheckreceived">Esvióse la llamada</string>
@@ -60,12 +61,15 @@
   <!-- Success message displayed on SIM Network Depersonalization panel -->
   <!-- Call forwarding settings screen, setting timer info for cfut case -->
   <string name="all_day">Tol día</string>
+  <string name="time_start">De</string>
+  <string name="time_end">Pa</string>
   <string name="time_hour">Hora</string>
   <string name="time_minute">Minutu</string>
   <string name="time_formate_am">AM</string>
   <string name="time_formate_pm">PM</string>
   <!-- Mobile network settings, preferred network modes -->
   <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_global_summary_cm">Mou preferíu de rede: Global (CDMA/EvDo/LTE/GSM/WCDMA)</string>
   <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
   <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
   <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
@@ -151,6 +155,8 @@
   <string name="choose_network_mode_title">Escoyer mou de rede</string>
   <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
   <!-- Call forward: IMS: Media tag support -->
+  <string name="labelCFType">Axustes d\'esvíu de llamaes</string>
   <string name="labelCFVoice">Voz</string>
   <string name="labelCFVideo">Videu</string>
+  <string name="call_forward_option">Opciones d\'esvíu de llamaes</string>
 </resources>
