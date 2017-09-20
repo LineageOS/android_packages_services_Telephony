@@ -2320,6 +2320,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    public void hasIccCardUsingSlotId(int slotId) {
+       hasIccCardUsingSlotIndex(slotId);
+    }
+
     /**
      * Return if the current radio is LTE on CDMA. This
      * is a tri-state return value as for a period of time
