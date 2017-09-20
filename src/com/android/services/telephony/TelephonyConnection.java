@@ -159,6 +159,15 @@ abstract class TelephonyConnection extends Connection {
                         mSsNotification =
                                 (SuppServiceNotification)((AsyncResult) msg.obj).result;
                         if (mOriginalConnection != null) {
+                            if (mSsNotification.history != null) {
+                                Bundle lastForwardedNumber = new Bundle();
+                                Log.v(TelephonyConnection.this,
+                                        "Updating call history info in extras.");
+                                lastForwardedNumber.putStringArrayList(
+                                        Connection.EXTRA_LAST_FORWARDED_NUMBER,
+                                        new ArrayList(Arrays.asList(mSsNotification.history)));
+                                putExtras(lastForwardedNumber);
+                            }
                             if (mSsNotification.code
                                     == SuppServiceNotification.MO_CODE_CALL_FORWARDED) {
                                 sendConnectionEvent(TelephonyManager.EVENT_CALL_FORWARDED, null);
