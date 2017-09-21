@@ -25,12 +25,11 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.telephony.MbmsDownloadManager;
+import android.telephony.MbmsDownloadSession;
 import android.telephony.SubscriptionManager;
 import android.telephony.mbms.DownloadRequest;
 import android.telephony.mbms.FileServiceInfo;
-import android.telephony.mbms.MbmsDownloadManagerCallback;
-import android.telephony.mbms.MbmsException;
+import android.telephony.mbms.MbmsDownloadSessionCallback;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +42,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -108,7 +106,7 @@ public class EmbmsTestDownloadApp extends Activity {
         public View getView(int position, View convertView, ViewGroup parent) {
             FileServiceInfo info = getItem(position);
             TextView result = new TextView(EmbmsTestDownloadApp.this);
-            result.setText(info.getNames().get(info.getLocales().get(0)));
+            result.setText(info.getNameForLocale(info.getLocales().get(0)));
             return result;
         }
 
@@ -117,7 +115,7 @@ public class EmbmsTestDownloadApp extends Activity {
             FileServiceInfo info = getItem(position);
             TextView result = new TextView(EmbmsTestDownloadApp.this);
             String text = "name="
-                    + info.getNames().get(info.getLocales().get(0))
+                    + info.getNameForLocale(info.getLocales().get(0))
                     + ", "
                     + "numFiles="
                     + info.getFiles().size();
@@ -153,15 +151,15 @@ public class EmbmsTestDownloadApp extends Activity {
     }
 
 
-    private MbmsDownloadManagerCallback mCallback = new MbmsDownloadManagerCallback() {
+    private MbmsDownloadSessionCallback mCallback = new MbmsDownloadSessionCallback() {
         @Override
-        public void error(int errorCode, String message) {
+        public void onError(int errorCode, String message) {
             runOnUiThread(() -> Toast.makeText(EmbmsTestDownloadApp.this,
                     "Error " + errorCode + ": " + message, Toast.LENGTH_SHORT).show());
         }
 
         @Override
-        public void fileServicesUpdated(List<FileServiceInfo> services) {
+        public void onFileServicesUpdated(List<FileServiceInfo> services) {
             EmbmsTestDownloadApp.this.runOnUiThread(() ->
                     Toast.makeText(EmbmsTestDownloadApp.this,
                             "Got services length " + services.size(),
@@ -170,13 +168,13 @@ public class EmbmsTestDownloadApp extends Activity {
         }
 
         @Override
-        public void middlewareReady() {
+        public void onMiddlewareReady() {
             runOnUiThread(() -> Toast.makeText(EmbmsTestDownloadApp.this,
                     "Initialization done", Toast.LENGTH_SHORT).show());
         }
     };
 
-    private MbmsDownloadManager mDownloadManager;
+    private MbmsDownloadSession mDownloadManager;
     private Handler mHandler;
     private HandlerThread mHandlerThread;
     private FileServiceInfoAdapter mFileServiceInfoAdapter;
@@ -203,12 +201,7 @@ public class EmbmsTestDownloadApp extends Activity {
 
         Button bindButton = (Button) findViewById(R.id.bind_button);
         bindButton.setOnClickListener((view) -> {
-            try {
-                mDownloadManager = MbmsDownloadManager.create(this, mCallback);
-            } catch (MbmsException e) {
-                Toast.makeText(EmbmsTestDownloadApp.this,
-                        "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
-            }
+            mDownloadManager = MbmsDownloadSession.create(this, mCallback, mHandler);
         });
 
         Button setTempFileRootButton = (Button) findViewById(R.id.set_temp_root_button);
@@ -216,24 +209,14 @@ public class EmbmsTestDownloadApp extends Activity {
             File downloadDir = new File(EmbmsTestDownloadApp.this.getFilesDir(),
                     CUSTOM_EMBMS_TEMP_FILE_LOCATION);
             downloadDir.mkdirs();
-            try {
-                mDownloadManager.setTempFileRootDirectory(downloadDir);
-                Toast.makeText(EmbmsTestDownloadApp.this,
-                        "temp file root set to " + downloadDir, Toast.LENGTH_SHORT).show();
-            } catch (MbmsException e) {
-                Toast.makeText(EmbmsTestDownloadApp.this,
-                        "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
-            }
+            mDownloadManager.setTempFileRootDirectory(downloadDir);
+            Toast.makeText(EmbmsTestDownloadApp.this,
+                    "temp file root set to " + downloadDir, Toast.LENGTH_SHORT).show();
         });
 
         Button getFileServicesButton = (Button) findViewById(R.id.get_file_services_button);
         getFileServicesButton.setOnClickListener((view) -> mHandler.post(() -> {
-            try {
-                mDownloadManager.getFileServices(Collections.singletonList("Class1"));
-            } catch (MbmsException e) {
-                runOnUiThread(() -> Toast.makeText(EmbmsTestDownloadApp.this,
-                        "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show());
-            }
+            mDownloadManager.requestUpdateFileServices(Collections.singletonList("Class1"));
         }));
 
         final Spinner serviceSelector = (Spinner) findViewById(R.id.available_file_services);
@@ -286,15 +269,10 @@ public class EmbmsTestDownloadApp extends Activity {
                         "No download service bound", Toast.LENGTH_SHORT).show();
                 return;
             }
-            try {
-                DownloadRequest request =
-                        (DownloadRequest) downloadRequestSpinner.getSelectedItem();
-                mDownloadManager.cancelDownload(request);
-                mDownloadRequestAdapter.remove(request);
-            } catch (MbmsException e) {
-                runOnUiThread(() -> Toast.makeText(EmbmsTestDownloadApp.this,
-                        "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show());
-            }
+            DownloadRequest request =
+                    (DownloadRequest) downloadRequestSpinner.getSelectedItem();
+            mDownloadManager.cancelDownload(request);
+            mDownloadRequestAdapter.remove(request);
         });
     }
 
@@ -331,23 +309,13 @@ public class EmbmsTestDownloadApp extends Activity {
     }
 
     private void performDownload(FileServiceInfo info) {
-        File destination = null;
         Uri.Builder sourceUriBuilder = new Uri.Builder()
                 .scheme(FILE_DOWNLOAD_SCHEME)
                 .authority(FILE_AUTHORITY);
-        try {
-            if (info.getFiles().size() > 1) {
-                destination = new File(getFilesDir(), "images/animals/").getCanonicalFile();
-                destination.mkdirs();
-                clearDirectory(destination);
-                sourceUriBuilder.path("/*");
-            } else {
-                destination = new File(getFilesDir(), "images/image.png").getCanonicalFile();
-                destination.delete();
-                sourceUriBuilder.path("/image.png");
-            }
-        } catch (IOException e) {
-            // ignore
+        if (info.getServiceId().contains("2")) {
+            sourceUriBuilder.path("/*");
+        } else {
+            sourceUriBuilder.path("/image.png");
         }
 
         Intent completionIntent = new Intent(DOWNLOAD_DONE_ACTION);
@@ -356,26 +324,11 @@ public class EmbmsTestDownloadApp extends Activity {
         DownloadRequest request = new DownloadRequest.Builder()
                 .setServiceInfo(info)
                 .setSource(sourceUriBuilder.build())
-                .setDest(Uri.fromFile(destination))
                 .setAppIntent(completionIntent)
                 .setSubscriptionId(SubscriptionManager.getDefaultSubscriptionId())
                 .build();
 
-        try {
-            mDownloadManager.download(request, null);
-            mDownloadRequestAdapter.add(request);
-        } catch (MbmsException e) {
-            Toast.makeText(EmbmsTestDownloadApp.this,
-                    "caught MbmsException: " + e.getErrorCode(), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private static void clearDirectory(File directory) {
-        for (File file: directory.listFiles()) {
-            if (file.isDirectory()) {
-                clearDirectory(file);
-            }
-            file.delete();
-        }
+        mDownloadManager.download(request);
+        mDownloadRequestAdapter.add(request);
     }
 }
