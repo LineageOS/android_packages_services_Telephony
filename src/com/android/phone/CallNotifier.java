@@ -762,7 +762,8 @@ public class CallNotifier extends Handler {
 
         @Override
         public void onCallForwardingIndicatorChanged(boolean visible) {
-            if (VDBG) log("onCallForwardingIndicatorChanged(): " + this.mSubId + " " + visible);
+            Log.i(LOG_TAG, "onCallForwardingIndicatorChanged(): subId=" + this.mSubId
+                    + ", visible=" + (visible ? "Y" : "N"));
             mApplication.notificationMgr.updateCfi(this.mSubId, visible);
         }
     };
