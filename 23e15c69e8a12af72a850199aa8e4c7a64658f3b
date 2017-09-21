@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0858ab19_ad3ae869",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2323,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2017-09-21T03:21:56Z",
+      "side": 1,
+      "message": "This surely should return boolean, not void, shouldn\u0027t it?\n\nAlso it\u0027s probably better to add a comment explaining this being present for backwards compat.",
+      "revId": "23e15c69e8a12af72a850199aa8e4c7a64658f3b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
