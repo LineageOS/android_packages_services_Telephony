@@ -54,6 +54,7 @@ public class NetworkOperators extends PreferenceCategory
     public static final String CATEGORY_NETWORK_OPERATORS_KEY = "network_operators_category_key";
 
     int mPhoneId = SubscriptionManager.INVALID_PHONE_INDEX;
+    private static final int ALREADY_IN_AUTO_SELECTION = 1;
 
     //preference objects
     private NetworkSelectListPreference mNetworkSelect;
@@ -136,7 +137,7 @@ public class NetworkOperators extends PreferenceCategory
                         displayNetworkSelectionFailed(ar.exception);
                     } else {
                         if (DBG) logd("automatic network selection: succeeded!");
-                        displayNetworkSelectionSucceeded();
+                        displayNetworkSelectionSucceeded(msg.arg1);
                     }
 
                     break;
@@ -195,8 +196,13 @@ public class NetworkOperators extends PreferenceCategory
     }
 
     // Used by both mAutoSelect and mNetworkSelect buttons.
-    protected void displayNetworkSelectionSucceeded() {
-        String status = getContext().getResources().getString(R.string.registration_done);
+    protected void displayNetworkSelectionSucceeded(int msgArg1) {
+        String status = null;
+        if (msgArg1 == ALREADY_IN_AUTO_SELECTION) {
+            status = getContext().getResources().getString(R.string.already_auto);
+        } else {
+            status = getContext().getResources().getString(R.string.registration_done);
+        }
 
         final PhoneGlobals app = PhoneGlobals.getInstance();
         app.notificationMgr.postTransientNotification(

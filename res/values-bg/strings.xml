@@ -173,28 +173,31 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Предпочитан тип мрежа"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Промяна на операционния режим на мрежата"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Предпочитан тип мрежа"</string>
-    <!-- no translation found for preferred_network_mode_choices:0 (3628460389382468528) -->
-    <!-- no translation found for preferred_network_mode_choices:1 (8442633436636425221) -->
-    <!-- no translation found for preferred_network_mode_choices:2 (2032314385791760810) -->
-    <!-- no translation found for preferred_network_mode_choices:3 (6334554401059422303) -->
-    <!-- no translation found for preferred_network_mode_choices:4 (1462198368200398663) -->
-    <!-- no translation found for preferred_network_mode_choices:5 (3611460019185359968) -->
-    <!-- no translation found for preferred_network_mode_choices:7 (4286774020869405140) -->
-    <!-- no translation found for preferred_network_mode_choices:8 (4006002265696868538) -->
-    <!-- no translation found for preferred_network_mode_choices:9 (8973936140318359205) -->
-    <!-- no translation found for preferred_network_mode_choices:10 (3471059554252610472) -->
-    <!-- no translation found for preferred_network_mode_choices:11 (2882615514545171802) -->
-    <!-- no translation found for preferred_network_mode_choices:12 (8076204422288290116) -->
-    <!-- no translation found for preferred_network_mode_choices:13 (3982984144824159726) -->
-    <!-- no translation found for preferred_network_mode_choices:14 (3686191974505922271) -->
-    <!-- no translation found for preferred_network_mode_choices:15 (7135671700201836475) -->
-    <!-- no translation found for preferred_network_mode_choices:16 (3736619459066330755) -->
-    <!-- no translation found for preferred_network_mode_choices:17 (4778666570887216861) -->
-    <!-- no translation found for preferred_network_mode_choices:18 (2952322596201849456) -->
-    <!-- no translation found for preferred_network_mode_choices:19 (115984258536697617) -->
-    <!-- no translation found for preferred_network_mode_choices:20 (7957991936217192636) -->
-    <!-- no translation found for preferred_network_mode_choices:21 (2828588917858484655) -->
-    <!-- no translation found for preferred_network_mode_choices:22 (4989979948139945854) -->
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="3628460389382468528">"Предпочита се GSM/WCDMA"</item>
+    <item msgid="8442633436636425221">"Само GSM"</item>
+    <item msgid="2032314385791760810">"Само WCDMA"</item>
+    <item msgid="6334554401059422303">"Авт. GSM/WCDMA"</item>
+    <item msgid="1462198368200398663">"Авт. CDMA/EvDo"</item>
+    <item msgid="3611460019185359968">"CDMA без EvDo"</item>
+    <item msgid="545430093607698090">"Само EvDo"</item>
+    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
+    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
+    <item msgid="3471059554252610472">"Глобален"</item>
+    <item msgid="2882615514545171802">"LTE"</item>
+    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
+    <item msgid="3982984144824159726">"Само TDSCDMA"</item>
+    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
+    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
+    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
+    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
+    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Предпочитан режим на мрежата: Предпочита се WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Предпочитан режим на мрежата: Само GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Предпочитан режим на мрежата: Само WCDMA"</string>
@@ -212,24 +215,15 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Предпочитан мрежов режим: LTE/GSM/UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Предпочитан режим на мрежата: LTE / CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Предпочитан режим на мрежата: TDSCDMA"</string>
-    <!-- no translation found for preferred_network_mode_tdscdma_wcdma_summary (2405154895437348623) -->
-    <skip />
-    <!-- no translation found for preferred_network_mode_lte_tdscdma_summary (2104702896644235637) -->
-    <skip />
-    <!-- no translation found for preferred_network_mode_tdscdma_gsm_summary (4893784445338396204) -->
-    <skip />
-    <!-- no translation found for preferred_network_mode_lte_tdscdma_gsm_summary (1815169717046729757) -->
-    <skip />
-    <!-- no translation found for preferred_network_mode_tdscdma_gsm_wcdma_summary (2195358773359424099) -->
-    <skip />
-    <!-- no translation found for preferred_network_mode_lte_tdscdma_wcdma_summary (1181424059695667803) -->
-    <skip />
-    <!-- no translation found for preferred_network_mode_lte_tdscdma_gsm_wcdma_summary (2526539326505354382) -->
-    <skip />
-    <!-- no translation found for preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary (8195248059196614939) -->
-    <skip />
-    <!-- no translation found for preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary (5596733053095592791) -->
-    <skip />
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Предпочитан режим на мрежата: TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Предпочитан режим на мрежата: LTE/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Предпочитан режим на мрежата: TDSCDMA/GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Предпочитан режим на мрежата: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Предпочитан режим на мрежата: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Предпочитан режим на мрежата: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Предпочитан режим на мрежата: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Предпочитан режим на мрежата: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Предпочитан режим на мрежата: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="call_category" msgid="5863978196309462052">"Извършва се обаждане"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Мрежа"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Подобрен режим с 4G LTE"</string>
