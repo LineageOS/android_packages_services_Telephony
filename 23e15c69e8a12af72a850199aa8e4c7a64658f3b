@@ -16,6 +16,24 @@
       "revId": "23e15c69e8a12af72a850199aa8e4c7a64658f3b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3b01931_e1a59dc6",
+        "filename": "src/com/android/phone/PhoneInterfaceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2323,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2017-09-22T17:17:54Z",
+      "side": 1,
+      "message": "Yeah it should be a bool",
+      "parentUuid": "0858ab19_ad3ae869",
+      "revId": "23e15c69e8a12af72a850199aa8e4c7a64658f3b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
