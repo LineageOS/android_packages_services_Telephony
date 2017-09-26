@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"Ваша SIM-карта не дазваляе падключацца да гэтай сеткі."</string>
     <string name="connect_later" msgid="2308119155752343975">"Зараз немагчыма падключыцца да гэтай сеткі. Паўтарыце спробу пазней."</string>
     <string name="registration_done" msgid="495135664535876612">"Зарэгістраваны ў сетцы."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Выбіраць сетку аўтаматычна"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Сетка"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Аўтаматычная рэгістрацыя..."</string>

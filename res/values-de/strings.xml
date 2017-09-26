@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"Deine SIM-Karte unterstützt keine Verbindung mit diesem Netzwerk."</string>
     <string name="connect_later" msgid="2308119155752343975">"Momentan kann keine Verbindung zu diesem Netzwerk aufgebaut werden. Bitte versuche es später erneut."</string>
     <string name="registration_done" msgid="495135664535876612">"In Netzwerk registriert."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Netzwerk automatisch auswählen"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Netzwerk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatische Registrierung..."</string>

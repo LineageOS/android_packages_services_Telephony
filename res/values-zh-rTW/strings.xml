@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"您的 SIM 卡無法連上這個網路。"</string>
     <string name="connect_later" msgid="2308119155752343975">"目前無法連上這個網路，請稍後再試。"</string>
     <string name="registration_done" msgid="495135664535876612">"註冊網路成功。"</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"自動選取網路"</string>
     <string name="network_select_title" msgid="7733107364757544558">"網路"</string>
     <string name="register_automatically" msgid="6017849844573519637">"自動註冊…"</string>

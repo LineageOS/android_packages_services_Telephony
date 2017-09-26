@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"आपका सिम कार्ड इस नेटवर्क पर कनेक्शन की अनुमति नहीं देता है."</string>
     <string name="connect_later" msgid="2308119155752343975">"अभी इस नेटवर्क से कनेक्ट नहीं कर सकते. बाद में पुन: प्रयास करें."</string>
     <string name="registration_done" msgid="495135664535876612">"नेटवर्क पर पंजीकृत."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"अपने आप नेटवर्क चुनें"</string>
     <string name="network_select_title" msgid="7733107364757544558">"नेटवर्क"</string>
     <string name="register_automatically" msgid="6017849844573519637">"स्वचालित पंजीकरण..."</string>

@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"SIM txartelak ez dizu sare honetara konektatzea baimentzen."</string>
     <string name="connect_later" msgid="2308119155752343975">"Une honetan, ezin da sare horretara konektatu. Saiatu berriro geroago."</string>
     <string name="registration_done" msgid="495135664535876612">"Sarean erregistratuta."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Hautatu sarea automatikoki"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Sarea"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Erregistratze automatikoa…"</string>

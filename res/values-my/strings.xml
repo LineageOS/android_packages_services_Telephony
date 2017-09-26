@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"ဒီကွန်ယက်ကို ဆက်သွယ်ရန် သင့်ရဲ့ ဆင်းမ်ကဒ်မှ ခွင့်မပြုပါ"</string>
     <string name="connect_later" msgid="2308119155752343975">"ကွန်ယက်ကို ဆက်သွယ်လို့မရပါ။ နောင်မှ ပြန်ကြိုးစားပါ"</string>
     <string name="registration_done" msgid="495135664535876612">"ကွန်ယက်ပေါ်တွင် မှတ်ပုံတင်ထားခြင်း"</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"ကွန်ရက်ကို အလိုအလျောက် ရွေးချယ်ရန်"</string>
     <string name="network_select_title" msgid="7733107364757544558">"ကွန်ရက်"</string>
     <string name="register_automatically" msgid="6017849844573519637">"အလိုအလျောက် မှတ်ပုံတင်ခြင်း…"</string>

@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"A tarxeta SIM non permite unha conexión a esta rede."</string>
     <string name="connect_later" msgid="2308119155752343975">"Non se pode conectar con esta rede agora. Téntao de novo máis tarde."</string>
     <string name="registration_done" msgid="495135664535876612">"Rexistrado na rede"</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Seleccionar rede automaticamente"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Rede"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Rexistro automático..."</string>

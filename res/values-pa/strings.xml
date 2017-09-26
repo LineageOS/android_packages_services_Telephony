@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"ਤੁਹਾਡਾ SIM ਇਸ ਨੈਟਵਰਕ ਲਈ ਇੱਕ ਕਨੈਕਸ਼ਨ ਦੀ ਆਗਿਆ ਨਹੀਂ ਦਿੰਦਾ।"</string>
     <string name="connect_later" msgid="2308119155752343975">"ਹੁਣ ਇਸ ਨੈਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਨਹੀਂ ਕਰ ਸਕਦਾ। ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"</string>
     <string name="registration_done" msgid="495135664535876612">"ਨੈਟਵਰਕ ਤੇ ਰਜਿਸਟਰ ਕੀਤਾ।"</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"ਸਵੈਚਲਿਤ ਤੌਰ \'ਤੇ ਨੈੱਟਵਰਕ ਚੁਣੋ"</string>
     <string name="network_select_title" msgid="7733107364757544558">"ਨੈੱਟਵਰਕ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ਸਵੈਚਲਿਤ ਰਜਿਸਟਰੇਸ਼ਨ…"</string>

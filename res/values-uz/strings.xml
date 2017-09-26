@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"SIM kartangiz ushbu tarmoqqa ulanishga ruxsat bermaydi."</string>
     <string name="connect_later" msgid="2308119155752343975">"Ushbu tarmoqqa hozirgi vaqtda ulanib bo‘lmaydi. Keyinroq urinib ko‘ring."</string>
     <string name="registration_done" msgid="495135664535876612">"Tarmoqda ro‘yxatdan o‘tgan."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Tarmoqni avtomatik tanlash"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Tarmoq"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Avtomatik ro‘yxatdan o‘tish…"</string>

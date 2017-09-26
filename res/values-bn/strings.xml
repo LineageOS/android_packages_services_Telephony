@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"আপনার সিম কার্ড এই নেটওয়ার্কে সংযোগ স্থাপনের অনুমতি দেয় না৷"</string>
     <string name="connect_later" msgid="2308119155752343975">"এই মুহূর্তে এই নেটওয়ার্কের সাথে সংযোগ স্থাপন করা যাচ্ছে না৷ পরে আবার চেষ্টা করুন৷"</string>
     <string name="registration_done" msgid="495135664535876612">"নেটওয়ার্কে নিবন্ধিত করা হয়েছে৷"</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"স্বয়ংক্রিয়ভাবে নেটওয়ার্ক বেছে নিন"</string>
     <string name="network_select_title" msgid="7733107364757544558">"নেটওয়ার্ক"</string>
     <string name="register_automatically" msgid="6017849844573519637">"স্বয়ংক্রিয় নিবন্ধীকরণ..."</string>

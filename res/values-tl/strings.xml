@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"Hindi pinapayagan ng iyong SIM card ang koneksyon sa network na ito."</string>
     <string name="connect_later" msgid="2308119155752343975">"Hindi makakonekta sa network na ito sa ngayon. Subukang muli sa ibang pagkakataon."</string>
     <string name="registration_done" msgid="495135664535876612">"Nakarehistro sa network."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Awtomatikong piliin ang network"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Network"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Awtomatikong pagpaparehistro..."</string>

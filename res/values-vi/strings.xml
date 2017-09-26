@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"Thẻ SIM của bạn không cho phép kết nối với mạng này."</string>
     <string name="connect_later" msgid="2308119155752343975">"Không thể kết nối với mạng này ngay bây giờ. Hãy thử lại sau."</string>
     <string name="registration_done" msgid="495135664535876612">"Đã đăng ký trên mạng."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Tự động chọn mạng"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Mạng"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Đăng ký tự động..."</string>

@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"Jou SIM-kaart laat nie \'n verbinding na hierdie netwerk toe nie."</string>
     <string name="connect_later" msgid="2308119155752343975">"Kan nie nou aan hierdie netwerk koppel nie. Probeer later weer."</string>
     <string name="registration_done" msgid="495135664535876612">"Geregistreer op die netwerk."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Kies outomaties netwerk"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Netwerk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Outomatiese registrasie..."</string>
