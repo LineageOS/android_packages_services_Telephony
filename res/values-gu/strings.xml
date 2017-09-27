@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"તમારું SIM કાર્ડ આ નેટવર્કથી કનેક્શનને મંજૂરી આપતું નથી."</string>
     <string name="connect_later" msgid="2308119155752343975">"હમણાં આ નેટવર્કથી કનેક્ટ કરી શકાતું નથી. પછીથી ફરી પ્રયાસ કરો."</string>
     <string name="registration_done" msgid="495135664535876612">"નેટવર્ક પર નોંધણી કરી."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"નેટવર્ક આપમેળે પસંદ કરો"</string>
     <string name="network_select_title" msgid="7733107364757544558">"નેટવર્ક"</string>
     <string name="register_automatically" msgid="6017849844573519637">"સ્વયંચાલિત નોંધણી…"</string>

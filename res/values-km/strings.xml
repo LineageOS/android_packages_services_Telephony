@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"មិន​អនុញ្ញាត​ឲ្យ​ស៊ីមកាត​របស់​អ្នក​តភ្ជាប់​ទៅ​បណ្ដាញ​នេះ​ទេ។"</string>
     <string name="connect_later" msgid="2308119155752343975">"មិន​អាច​តភ្ជាប់​ទៅ​បណ្ដាញ​ឥឡូវ​នេះ​បាន​ទេ។ ព្យាយាម​ម្ដងទៀត​ពេលក្រោយ។"</string>
     <string name="registration_done" msgid="495135664535876612">"បាន​ចុះឈ្មោះ​នៅ​លើ​បណ្ដាញ។"</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"ជ្រើសរើស​បណ្ដាញ​ដោយស្វ័យប្រវត្តិ"</string>
     <string name="network_select_title" msgid="7733107364757544558">"បណ្ដាញ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ការ​ចុះ​ឈ្មោះ​ដោយ​ស្វ័យ​ប្រវត្តិ ..."</string>

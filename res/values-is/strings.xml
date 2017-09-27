@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"SIM-kortið leyfir ekki tengingu við þetta símkerfi."</string>
     <string name="connect_later" msgid="2308119155752343975">"Ekki næst tenging við þetta kerfi á þessari stundu. Reyndu aftur síðar."</string>
     <string name="registration_done" msgid="495135664535876612">"Skráð á símkerfi."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Velja netkerfi sjálfkrafa"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Netkerfi"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Sjálfvirk skráning…"</string>

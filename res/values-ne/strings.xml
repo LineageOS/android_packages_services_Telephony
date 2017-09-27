@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"तपाईंको SIM कार्डले यो नेटवर्कको लागि जडान अनुमति दिँदैन।"</string>
     <string name="connect_later" msgid="2308119155752343975">"यो नेटवर्कमा अहिले जडान हुन सक्दैन। पछि प्रयास गर्नुहोस्।"</string>
     <string name="registration_done" msgid="495135664535876612">"नेटवर्कमा दर्ता भयो।"</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"नेटवर्क स्वत:छान्नुहोस्"</string>
     <string name="network_select_title" msgid="7733107364757544558">"नेटवर्क"</string>
     <string name="register_automatically" msgid="6017849844573519637">"स्वतः दर्ता..."</string>

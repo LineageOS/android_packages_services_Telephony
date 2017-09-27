@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"Dit SIM-kort tillader ikke en forbindelse til dette netværk."</string>
     <string name="connect_later" msgid="2308119155752343975">"Der kan ikke oprettes forbindelse til dette netværk lige nu. Prøv igen senere."</string>
     <string name="registration_done" msgid="495135664535876612">"Registreret på netværket."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Vælg netværk automatisk"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Netværk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatisk registrering..."</string>

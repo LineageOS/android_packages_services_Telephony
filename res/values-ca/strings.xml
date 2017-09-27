@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"La targeta SIM no et permet connectar-te a aquesta xarxa."</string>
     <string name="connect_later" msgid="2308119155752343975">"Ara mateix no es pot connectar a aquesta xarxa. Torna-ho a provar més tard."</string>
     <string name="registration_done" msgid="495135664535876612">"Registrat a la xarxa."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Selecciona la xarxa automàticament"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Xarxa"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Registre automàtic..."</string>

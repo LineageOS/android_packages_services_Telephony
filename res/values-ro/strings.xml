@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"Cardul dvs. SIM nu permite conexiunea la această rețea."</string>
     <string name="connect_later" msgid="2308119155752343975">"Nu se poate efectua conectarea la această rețea chiar acum. Încercați din nou mai târziu."</string>
     <string name="registration_done" msgid="495135664535876612">"Înregistrat în rețea."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Selectați automat rețeaua"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Rețea"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Înregistrare automată..."</string>

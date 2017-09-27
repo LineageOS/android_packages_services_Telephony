@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"SIM kartınız bu ağa bağlanmaya izin vermiyor."</string>
     <string name="connect_later" msgid="2308119155752343975">"Şu an bu ağa bağlanılamıyor. Daha sonra tekrar deneyin."</string>
     <string name="registration_done" msgid="495135664535876612">"Ağa kaydedildi."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Ağı otomatik seç"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Ağ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Otomatik kayıt..."</string>

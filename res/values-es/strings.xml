@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"La tarjeta SIM no permite establecer conexión con esta red."</string>
     <string name="connect_later" msgid="2308119155752343975">"No se puede conectar a la red en este momento. Inténtalo de nuevo más tarde."</string>
     <string name="registration_done" msgid="495135664535876612">"Conexión con la red establecida"</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"Seleccionar una red automáticamente"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Red"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Registro automático..."</string>

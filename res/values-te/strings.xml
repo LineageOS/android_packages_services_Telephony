@@ -167,6 +167,8 @@
     <string name="not_allowed" msgid="5613353860205691579">"మీ SIM కార్డు ఈ నెట్‌వర్క్‌కు కనెక్షన్‌ను అనుమతించదు."</string>
     <string name="connect_later" msgid="2308119155752343975">"ప్రస్తుతం ఈ నెట్‌వర్క్‌కు కనెక్ట్ చేయడం సాధ్యపడదు. తర్వాత మళ్లీ ప్రయత్నించండి."</string>
     <string name="registration_done" msgid="495135664535876612">"నెట్‌వర్క్‌లో నమోదు అయింది."</string>
+    <!-- no translation found for already_auto (6067116884321285507) -->
+    <skip />
     <string name="select_automatically" msgid="1046727200631770962">"నెట్‌వర్క్‌ను స్వయంచాలకంగా ఎంచుకోండి"</string>
     <string name="network_select_title" msgid="7733107364757544558">"నెట్‌వర్క్"</string>
     <string name="register_automatically" msgid="6017849844573519637">"స్వయంచాలక నమోదు…"</string>
