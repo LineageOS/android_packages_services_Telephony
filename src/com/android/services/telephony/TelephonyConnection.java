@@ -976,6 +976,9 @@ abstract class TelephonyConnection extends Connection {
     }
 
     private boolean shouldSetDisableAddCallExtra() {
+        if (mOriginalConnection == null) {
+            return false;
+        }
         boolean carrierShouldAllowAddCall = mOriginalConnection.shouldAllowAddCallDuringVideoCall();
         if (carrierShouldAllowAddCall) {
             return false;
