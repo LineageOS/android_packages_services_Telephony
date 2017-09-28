@@ -167,8 +167,7 @@
     <string name="not_allowed" msgid="5613353860205691579">"Kad SIM anda tidak membenarkan sambungan ke rangkaian ini."</string>
     <string name="connect_later" msgid="2308119155752343975">"Tidak dapat menyambung kepada rangkaian ini sekarang. Cuba lagi nanti."</string>
     <string name="registration_done" msgid="495135664535876612">"Didaftarkan pada rangkaian."</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"Sudah berada dalam pilihan automatik."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Pilih rangkaian secara automatik"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Rangkaian"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Pendaftaran automatik..."</string>
