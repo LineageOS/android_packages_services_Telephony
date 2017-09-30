@@ -167,8 +167,7 @@
     <string name="not_allowed" msgid="5613353860205691579">"Vaša SIM kartica ne dozvoljava povezivanje na ovu mrežu."</string>
     <string name="connect_later" msgid="2308119155752343975">"Trenutno nije moguće povezati se s ovom mrežom. Pokušajte ponovo kasnije."</string>
     <string name="registration_done" msgid="495135664535876612">"Registrirano na mrežu."</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"Automatski izbor se već koristi."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Automatski odaberi mrežu"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Mreža"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatska registracija u toku…"</string>

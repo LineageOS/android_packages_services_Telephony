@@ -167,8 +167,7 @@
     <string name="not_allowed" msgid="5613353860205691579">"‏لا تسمح شريحة SIM بالاتصال بهذه الشبكة."</string>
     <string name="connect_later" msgid="2308119155752343975">"يتعذر الاتصال بهذه الشبكة في الوقت الحالي. حاول مرة أخرى لاحقًا."</string>
     <string name="registration_done" msgid="495135664535876612">"مسجل على الشبكة."</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"في التحديد التلقائي فعلاً."</string>
     <string name="select_automatically" msgid="1046727200631770962">"تحديد الشبكة تلقائيًا"</string>
     <string name="network_select_title" msgid="7733107364757544558">"الشبكة"</string>
     <string name="register_automatically" msgid="6017849844573519637">"التسجيل التلقائي..."</string>

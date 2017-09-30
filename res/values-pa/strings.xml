@@ -336,9 +336,9 @@
     <string name="enable_disable_retail_directory" msgid="1357809784475660303">"ਰੀਟੇਲ ਡਾਇਰੈਕਟਰੀ"</string>
     <string name="retail_directory_enable" msgid="3280626290436111496">"ਰੀਟੇਲ ਡਾਇਰੈਕਟਰੀ ਸਮਰਥਿਤ"</string>
     <string name="retail_directory_disable" msgid="6479739816662879027">"ਰੀਟੇਲ ਡਾਇਰੈਕਟਰੀ ਅਸਮਰਥਿਤ"</string>
-    <string name="enable_disable_advertisements" msgid="5999495926176182128">"ਇਸ਼ਤਿਹਾਰ"</string>
-    <string name="advertisements_enable" msgid="2050305021264683786">"ਇਸ਼ਤਿਹਾਰ ਸਮਰਥਿਤ"</string>
-    <string name="advertisements_disable" msgid="8350985908788707935">"ਇਸ਼ਤਿਹਾਰ ਅਸਮਰਥਿਤ"</string>
+    <string name="enable_disable_advertisements" msgid="5999495926176182128">"ਵਿਗਿਆਪਨ"</string>
+    <string name="advertisements_enable" msgid="2050305021264683786">"ਵਿਗਿਆਪਨ ਸਮਰਥਿਤ"</string>
+    <string name="advertisements_disable" msgid="8350985908788707935">"ਵਿਗਿਆਪਨ ਅਸਮਰਥਿਤ"</string>
     <string name="enable_disable_stock_quotes" msgid="6397810445293533603">"ਸਟੌਕ ਕੋਟਸ"</string>
     <string name="stock_quotes_enable" msgid="4384802470887170543">"ਸਟੌਕ ਕੋਟਸ ਸਮਰਥਿਤ"</string>
     <string name="stock_quotes_disable" msgid="4781450084565594998">"ਸਟੌਕ ਕੋਟਸ ਅਸਮਰਥਿਤ"</string>
