@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"ಈ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕವನ್ನು ನಿಮ್ಮ ಸಿಮ್‌ ಕಾರ್ಡ್‌ ಅನುಮತಿಸುವುದಿಲ್ಲ."</string>
     <string name="connect_later" msgid="2308119155752343975">"ಇದೀಗ ಈ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಪಡಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."</string>
     <string name="registration_done" msgid="495135664535876612">"ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿ ನೋಂದಾಯಿಸಲಾಗಿದೆ."</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"ಈಗಾಗಲೇ ಸ್ವಯಂಚಾಲಿತ ಆಯ್ಕೆಯಲ್ಲಿದೆ."</string>
     <string name="select_automatically" msgid="1046727200631770962">"ನೆಟ್‌ವರ್ಕ್‌ ಅನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆಯ್ಕೆಮಾಡಿ"</string>
     <string name="network_select_title" msgid="7733107364757544558">"ನೆಟ್‌ವರ್ಕ್"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ಸ್ವಯಂಚಾಲಿತ ನೋಂದಣಿ…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ಬಯಸಿದ ನೆಟ್‌ವರ್ಕ್‌ ಪ್ರಕಾರ"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ನೆಟ್‌ವರ್ಕ್‌ ಕಾರ್ಯಾಚರಣಾ ಮೋಡ್‌ ಬದಲಿಸಿ"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ಬಯಸಿದ ನೆಟ್‌ವರ್ಕ್‌ ಪ್ರಕಾರ"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(ನಿಷೇಧಿತ)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA ಗೆ ಪ್ರಾಶಸ್ತ್ಯ ನೀಡಲಾಗಿದೆ"</item>
     <item msgid="8442633436636425221">"GSM ಮಾತ್ರ"</item>

@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"Teie SIM-kaart ei võimalda ühendust selle võrguga."</string>
     <string name="connect_later" msgid="2308119155752343975">"Võrguga ei saa praegu ühendust. Proovige hiljem uuesti."</string>
     <string name="registration_done" msgid="495135664535876612">"Võrku registreeritud."</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"On juba automaatses valikus."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Vali võrk automaatselt"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Võrk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automaatne registreerimine ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Eelistatud võrgutüüp"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Muuda võrgu töörežiimi"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Eelistatud võrgutüüp"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(keelatud)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Eelistatud: GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"Ainult GSM"</item>

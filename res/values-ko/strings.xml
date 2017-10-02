@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"SIM 카드에서 이 네트워크에 연결할 수 없습니다."</string>
     <string name="connect_later" msgid="2308119155752343975">"현재 네트워크에 연결할 수 없습니다. 나중에 다시 시도해 주세요."</string>
     <string name="registration_done" msgid="495135664535876612">"네트워크에 등록되었습니다."</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"이미 자동 선택을 사용하는 중입니다."</string>
     <string name="select_automatically" msgid="1046727200631770962">"네트워크 자동 선택"</string>
     <string name="network_select_title" msgid="7733107364757544558">"네트워크"</string>
     <string name="register_automatically" msgid="6017849844573519637">"자동 등록..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"기본 네트워크 유형"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"네트워크 작동 모드 변경"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"기본 네트워크 유형"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(금지됨)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA로 기본 설정"</item>
     <item msgid="8442633436636425221">"GSM 전용"</item>

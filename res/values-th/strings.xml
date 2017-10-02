@@ -174,6 +174,7 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ประเภทเครือข่ายที่ต้องการ"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"เปลี่ยนโหมดปฏิบัติการของเครือข่าย"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ประเภทเครือข่ายที่ต้องการ"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(ห้ามใช้)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"ต้องการ GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"GSM เท่านั้น"</item>
@@ -398,7 +399,7 @@
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"ตั้งค่าโหมด TTY"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"ลองซ้ำอัตโนมัติ"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"เปิดใช้งานโหมดลองซ้ำอัตโนมัติ"</string>
-    <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"ไม่อนุญาตการเปลี่ยนโหมด TTY ในระหว่างแฮงเอาท์วิดีโอ"</string>
+    <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"ไม่อนุญาตการเปลี่ยนโหมด TTY ในระหว่าง Hangouts วิดีโอ"</string>
     <string name="menu_add" msgid="1882023737425114762">"เพิ่มรายชื่อติดต่อ"</string>
     <string name="menu_edit" msgid="7143003705504672374">"แก้ไขรายชื่อติดต่อ"</string>
     <string name="menu_delete" msgid="3977150783449642851">"ลบรายชื่อติดต่อ"</string>
@@ -511,7 +512,7 @@
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"จัดการการโทร"</string>
     <string name="onscreenManageConferenceText" msgid="6485935856534311346">"จัดการการประชุม"</string>
     <string name="onscreenAudioText" msgid="1710087112800041743">"เสียง"</string>
-    <string name="onscreenVideoCallText" msgid="4800924186056115442">"แฮงเอาท์วิดีโอ"</string>
+    <string name="onscreenVideoCallText" msgid="4800924186056115442">" Hangouts วิดีโอ"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"นำเข้า"</string>
     <string name="importAllSimEntries" msgid="1503181169636198673">"นำเข้าทั้งหมด"</string>
     <string name="importingSimContacts" msgid="7374056215462575769">"กำลังนำเข้าสมุดโทรศัพท์ในซิม"</string>
@@ -587,8 +588,8 @@
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"เปลี่ยน PIN"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"เสียงเรียกเข้าและสั่น"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"ซิมการ์ดในตัว"</string>
-    <string name="enable_video_calling_title" msgid="7237253660669000899">"เปิดแฮงเอาท์วิดีโอ"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"หากต้องการเปิดแฮงเอาท์วิดีโอ คุณจะต้องเปิดใช้โหมด 4G LTE ที่ปรับปรุงแล้วในการตั้งค่าเครือข่าย"</string>
+    <string name="enable_video_calling_title" msgid="7237253660669000899">"เปิด Hangouts วิดีโอ"</string>
+    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"หากต้องการเปิด Hangouts วิดีโอ คุณจะต้องเปิดใช้โหมด 4G LTE ที่ปรับปรุงแล้วในการตั้งค่าเครือข่าย"</string>
     <string name="enable_video_calling_dialog_settings" msgid="576528473599603249">"การตั้งค่าเครือข่าย"</string>
     <string name="enable_video_calling_dialog_close" msgid="7411471282167927991">"ปิด"</string>
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"หมายเลขฉุกเฉิน"</string>

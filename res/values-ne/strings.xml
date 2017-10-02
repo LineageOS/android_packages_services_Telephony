@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"तपाईंको SIM कार्डले यो नेटवर्कको लागि जडान अनुमति दिँदैन।"</string>
     <string name="connect_later" msgid="2308119155752343975">"यो नेटवर्कमा अहिले जडान हुन सक्दैन। पछि प्रयास गर्नुहोस्।"</string>
     <string name="registration_done" msgid="495135664535876612">"नेटवर्कमा दर्ता भयो।"</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"तपाईंले पहिल्यै स्वतः चयनको विकल्प छनौट गर्नुभएको छ।"</string>
     <string name="select_automatically" msgid="1046727200631770962">"नेटवर्क स्वत:छान्नुहोस्"</string>
     <string name="network_select_title" msgid="7733107364757544558">"नेटवर्क"</string>
     <string name="register_automatically" msgid="6017849844573519637">"स्वतः दर्ता..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"रुचाइएको सञ्जाल प्रकार"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"नेटवर्क संचालन मोड परिवर्तन गर्नुहोस्"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"रुचाइएको सञ्जाल प्रकार"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(निषेध गरिएको)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA रुचाइयो"</item>
     <item msgid="8442633436636425221">"GSM मात्र"</item>
