@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"‏آپ کا SIM کارڈ اس نیٹ ورک سے کنکشن کی اجازت نہیں دیتا ہے۔"</string>
     <string name="connect_later" msgid="2308119155752343975">"ابھی اس نیٹ ورک سے مربوط نہیں ہوسکتا۔ بعد میں دوبارہ کوشش کریں۔"</string>
     <string name="registration_done" msgid="495135664535876612">"نیٹ ورک پر رجسٹرڈ ہوگیا۔"</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"پہلے سے ہی خودکار انتخاب میں ہے۔"</string>
     <string name="select_automatically" msgid="1046727200631770962">"نیٹ ورک خودکار طور پر منتخب کریں"</string>
     <string name="network_select_title" msgid="7733107364757544558">"نیٹ ورک"</string>
     <string name="register_automatically" msgid="6017849844573519637">"خود کار رجسٹریشن…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ترجیحی نیٹ ورک کی قسم"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"نیٹ ورک آپریٹنگ طرز تبدیل کریں"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ترجیحی نیٹ ورک کی قسم"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(ممنوع)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"‏GSM/WCDMA ترجیحی"</item>
     <item msgid="8442633436636425221">"‏صرف GSM"</item>

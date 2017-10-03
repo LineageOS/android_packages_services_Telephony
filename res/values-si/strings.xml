@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"ඔබගේ SIM කාඩ් පත මෙම ජාලයට සම්බන්ධතාවයකට අවසර නොදේ."</string>
     <string name="connect_later" msgid="2308119155752343975">"මෙම අවස්ථාවේදී මෙම ජාලයට සම්බන්ධ විය නොහැක. පසුව යළි උත්සාහ කරන්න."</string>
     <string name="registration_done" msgid="495135664535876612">"ජාලය මත ලියාපදිංචි වෙමින්."</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"දැනටමත් ස්වයංක්‍රිය තේරීමේ සිටී."</string>
     <string name="select_automatically" msgid="1046727200631770962">"ස්වයංක්‍රියව ජාලය තෝරන්න"</string>
     <string name="network_select_title" msgid="7733107364757544558">"ජාලය"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ස්වයංක්‍රීය ලියාපදිංචිය..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ප්‍රියකරන ජාල වර්ගය"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ජාල මෙහෙයුම් ආකාරය වෙනස් කරන්න"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ප්‍රියකරන ජාල වර්ගය"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(තහනම්)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA කැමතියි"</item>
     <item msgid="8442633436636425221">"GSM පමණි"</item>

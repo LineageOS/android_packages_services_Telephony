@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"SIM kártyája nem teszi lehetővé a kapcsolódást ehhez a hálózathoz."</string>
     <string name="connect_later" msgid="2308119155752343975">"Most nem lehet csatlakozni a hálózathoz. Próbálja meg később."</string>
     <string name="registration_done" msgid="495135664535876612">"Regisztrálva a hálózaton."</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"Már automatikus kiválasztás van beállítva."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Hálózat automatikus kiválasztása"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Hálózat"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatikus regisztráció..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Preferált hálózattípus"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"A hálózati üzemmód megváltoztatása"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Preferált hálózattípus"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(tiltott)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA a preferált"</item>
     <item msgid="8442633436636425221">"Csak GSM"</item>

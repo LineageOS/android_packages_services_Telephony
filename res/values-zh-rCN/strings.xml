@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"您的SIM卡不允许连接到此网络。"</string>
     <string name="connect_later" msgid="2308119155752343975">"目前无法连接到此网络，请稍后重试。"</string>
     <string name="registration_done" msgid="495135664535876612">"已在网络上注册。"</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"已设为自动选择。"</string>
     <string name="select_automatically" msgid="1046727200631770962">"自动选择网络"</string>
     <string name="network_select_title" msgid="7733107364757544558">"网络"</string>
     <string name="register_automatically" msgid="6017849844573519637">"自动注册..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"首选网络类型"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"更改网络运行方式"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"首选网络类型"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"（禁止）"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"首选 GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"仅限 GSM"</item>

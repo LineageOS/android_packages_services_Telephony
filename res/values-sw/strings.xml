@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"SIM kadi yako hairuhusu muunganisho wa mtandao huu."</string>
     <string name="connect_later" msgid="2308119155752343975">"Haiwezi kuunganisha na mtandao huu hivi sasa. Jaribu tena baadaye."</string>
     <string name="registration_done" msgid="495135664535876612">"Imesajiliwa katika mtandao"</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"Tayari iko katika hali ya kuchaguliwa kiotomatiki."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Chagua mtandao kiotomatiki"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Mtandao"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Usajili otomatiki..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Aina ya mtandao unaoupendelea"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Badilisha gumzo ya utendaji wa mtandao"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Aina ya mtandao unaoupendelea"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(hairuhusiwi)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA inapendelewa"</item>
     <item msgid="8442633436636425221">"GSM pekee"</item>

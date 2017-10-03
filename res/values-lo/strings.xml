@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"SIM card ຂອງທ່ານບໍ່ອະນຸຍາດໃຫ້ເຊື່ອມຕໍ່ກັບເຄືອຂ່າຍນີ້."</string>
     <string name="connect_later" msgid="2308119155752343975">"ບໍ່ສາມາດເຊື່ອມຕໍ່ຫາເຄືອຂ່າຍນີ້ໃນເວລານີ້ໄດ້. ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ."</string>
     <string name="registration_done" msgid="495135664535876612">"ລົງທະບຽນໃນເຄືອຂ່າຍແລ້ວ."</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"ມີຢູ່ໃນການເລືອກອັດຕະໂນມັດຢູ່ແລ້ວ"</string>
     <string name="select_automatically" msgid="1046727200631770962">"ເລືອກເຄືອຂ່າຍອັດຕະໂນມັດ"</string>
     <string name="network_select_title" msgid="7733107364757544558">"ເຄືອຂ່າຍ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ກຳລັງລົງທະບຽນອັດຕະໂນມັດ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ປະ​ເພດ​ເຄືອ​ຂ່າຍທີ່ຕ້ອງການ"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ປ່ຽນຮູບແບບປະຕິບັດການຂອງເຄືອຂ່າຍ"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ປະ​ເພດ​ເຄືອ​ຂ່າຍທີ່ຕ້ອງການ"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(ຂໍ້ມູນຕ້ອງຫ້າມ)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"ຕ້ອງການ GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"GSM ເທົ່ານັ້ນ"</item>

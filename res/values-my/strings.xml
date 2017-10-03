@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"ဒီကွန်ယက်ကို ဆက်သွယ်ရန် သင့်ရဲ့ ဆင်းမ်ကဒ်မှ ခွင့်မပြုပါ"</string>
     <string name="connect_later" msgid="2308119155752343975">"ကွန်ယက်ကို ဆက်သွယ်လို့မရပါ။ နောင်မှ ပြန်ကြိုးစားပါ"</string>
     <string name="registration_done" msgid="495135664535876612">"ကွန်ယက်ပေါ်တွင် မှတ်ပုံတင်ထားခြင်း"</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"အလိုအလျောက် ရွေးချယ်မှုထဲတွင် ပါပြီးသားဖြစ်သည်။"</string>
     <string name="select_automatically" msgid="1046727200631770962">"ကွန်ရက်ကို အလိုအလျောက် ရွေးချယ်ရန်"</string>
     <string name="network_select_title" msgid="7733107364757544558">"ကွန်ရက်"</string>
     <string name="register_automatically" msgid="6017849844573519637">"အလိုအလျောက် မှတ်ပုံတင်ခြင်း…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ပိုနှစ်သက်သော ကွန်ရက်အမျိုးအစား"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ကွန်ရက် လုပ်ဆောင်မှုစနစ်အား ပြောင်းပါ"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ပိုနှစ်သက်သော ကွန်ရက်အမျိုးအစား"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(တားမြစ်ထားသည်)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA သုံးလိုပါသည်"</item>
     <item msgid="8442633436636425221">"GSM သာ"</item>

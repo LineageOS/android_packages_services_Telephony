@@ -167,14 +167,14 @@
     <string name="not_allowed" msgid="5613353860205691579">"आपले सिम कार्ड या नेटवर्कच्‍या कनेक्‍शनला अनुमती देत नाही."</string>
     <string name="connect_later" msgid="2308119155752343975">"आत्ता या नेटवर्कशी कनेक्‍ट करू शकत नाही. नंतर पुन्‍हा प्रयत्‍न करा."</string>
     <string name="registration_done" msgid="495135664535876612">"नेटवर्कवर नोंदणी केली."</string>
-    <!-- no translation found for already_auto (6067116884321285507) -->
-    <skip />
+    <string name="already_auto" msgid="6067116884321285507">"आपोआप निवडीमध्‍ये आधीपासून आहे."</string>
     <string name="select_automatically" msgid="1046727200631770962">"स्वयंचलितपणे नेटवर्क निवडा"</string>
     <string name="network_select_title" msgid="7733107364757544558">"नेटवर्क"</string>
     <string name="register_automatically" msgid="6017849844573519637">"स्‍वयंचलित नोंदणी…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"प्राधान्‍यकृत नेटवर्क प्रकार"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"नेटवर्क कार्य करण्‍याचा मोड बदला"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"प्राधान्‍यकृत नेटवर्क प्रकार"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(मनाई केलेले)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA प्राधान्‍यकृत"</item>
     <item msgid="8442633436636425221">"केवळ GSM"</item>
