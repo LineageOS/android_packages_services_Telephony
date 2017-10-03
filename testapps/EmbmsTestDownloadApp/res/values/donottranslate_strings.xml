@@ -24,4 +24,7 @@
     <string name="request_spurious_temp_files_button">Request more temp files</string>
     <string name="delay_download_button">Delay download</string>
     <string name="cancel_download_button">Cancel download</string>
+    <string name="register_state_callback_button">Register State Cb</string>
+    <string name="register_progress_callback_button">Register Progress Cb</string>
+    <string name="register_all_callback_button">Register All Cbs</string>
 </resources>
