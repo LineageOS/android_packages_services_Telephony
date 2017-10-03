@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
     private static final String LOG_TAG = "GsmUmtsCallForwardOptions";
-    private final boolean DBG = (PhoneGlobals.DBG_LEVEL >= 2);
 
     private static final String NUM_PROJECTION[] = {
         android.provider.ContactsContract.CommonDataKinds.Phone.NUMBER
@@ -94,7 +93,7 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
 
         if (mFirstResume) {
             if (mIcicle == null) {
-                if (DBG) Log.d(LOG_TAG, "start to init ");
+                Log.d(LOG_TAG, "start to init ");
                 mPreferences.get(mInitIndex).init(this, false, mPhone);
             } else {
                 mInitIndex = mPreferences.size();
@@ -141,9 +140,9 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (DBG) Log.d(LOG_TAG, "onActivityResult: done");
+        Log.d(LOG_TAG, "onActivityResult: done");
         if (resultCode != RESULT_OK) {
-            if (DBG) Log.d(LOG_TAG, "onActivityResult: contact picker result not OK.");
+            Log.d(LOG_TAG, "onActivityResult: contact picker result not OK.");
             return;
         }
         Cursor cursor = null;
@@ -151,7 +150,7 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
             cursor = getContentResolver().query(data.getData(),
                 NUM_PROJECTION, null, null, null);
             if ((cursor == null) || (!cursor.moveToFirst())) {
-                if (DBG) Log.d(LOG_TAG, "onActivityResult: bad contact data, no results found.");
+                Log.d(LOG_TAG, "onActivityResult: bad contact data, no results found.");
                 return;
             }
 
