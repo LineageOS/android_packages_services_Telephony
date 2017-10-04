@@ -1640,7 +1640,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public Bundle getCellLocation(String callingPackage) {
         if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
-                callingPackage, Binder.getCallingUid())) {
+                callingPackage, Binder.getCallingUid(), "getCellLocation")) {
             return null;
         }
 
@@ -1708,7 +1708,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @SuppressWarnings("unchecked")
     public List<NeighboringCellInfo> getNeighboringCellInfo(String callingPackage) {
         if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
-                callingPackage, Binder.getCallingUid())) {
+                callingPackage, Binder.getCallingUid(), "getNeighboringCellInfo")) {
             return null;
         }
 
@@ -1736,7 +1736,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public List<CellInfo> getAllCellInfo(String callingPackage) {
         if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
-                callingPackage, Binder.getCallingUid())) {
+                callingPackage, Binder.getCallingUid(), "getAllCellInfo")) {
             return null;
         }
 
