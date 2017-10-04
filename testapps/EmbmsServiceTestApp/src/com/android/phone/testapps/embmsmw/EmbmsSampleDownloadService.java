@@ -32,6 +32,7 @@ import android.os.ParcelFileDescriptor;
 import android.os.RemoteException;
 import android.telephony.MbmsDownloadSession;
 import android.telephony.mbms.DownloadRequest;
+import android.telephony.mbms.DownloadStateCallback;
 import android.telephony.mbms.FileInfo;
 import android.telephony.mbms.FileServiceInfo;
 import android.telephony.mbms.MbmsDownloadSessionCallback;
@@ -142,6 +143,13 @@ public class EmbmsSampleDownloadService extends Service {
         }
 
         @Override
+        public int registerStateCallback(DownloadRequest downloadRequest,
+                DownloadStateCallback callback) throws RemoteException {
+            mDownloadStateCallbacks.put(downloadRequest, callback);
+            return MbmsErrors.SUCCESS;
+        }
+
+        @Override
         public int cancelDownload(DownloadRequest downloadRequest) {
             FrontendAppIdentifier appKey = new FrontendAppIdentifier(
                     Binder.getCallingUid(), downloadRequest.getSubscriptionId());
@@ -174,6 +182,8 @@ public class EmbmsSampleDownloadService extends Service {
             new ConcurrentHashMap<>();
     // A map of app-identifiers to (maps of service-ids to sets of temp file uris in use)
     private final Map<FrontendAppIdentifier, Map<String, Set<Uri>>> mTempFilesInUse =
+            new ConcurrentHashMap<>();
+    private final Map<DownloadRequest, DownloadStateCallback> mDownloadStateCallbacks =
             new ConcurrentHashMap<>();
 
     private HandlerThread mHandlerThread;
@@ -323,6 +333,16 @@ public class EmbmsSampleDownloadService extends Service {
     private void downloadSingleFile(FrontendAppIdentifier appKey, DownloadRequest request,
             UriPathPair tempFile, FileInfo fileToDownload) {
         int result = MbmsDownloadSession.RESULT_SUCCESSFUL;
+        // Test Callback
+        DownloadStateCallback c = mDownloadStateCallbacks.get(request);
+        if (c != null) {
+            c.onProgressUpdated(request, fileToDownload, 0, 10, 0, 10);
+        }
+        // Test Callback
+        if (c != null) {
+            c.onStateUpdated(request, fileToDownload,
+                    MbmsDownloadSession.STATUS_ACTIVELY_DOWNLOADING);
+        }
         try {
             // Get the ParcelFileDescriptor for the single temp file we requested
             ParcelFileDescriptor tempFileFd = getContentResolver().openFileDescriptor(
@@ -346,7 +366,10 @@ public class EmbmsSampleDownloadService extends Service {
         } catch (IOException e) {
             result = MbmsDownloadSession.RESULT_CANCELLED;
         }
-
+        // Test Callback
+        if (c != null) {
+            c.onProgressUpdated(request, fileToDownload, 10, 10, 10, 10);
+        }
         // Take a round-trip through the download request serialization to exercise it
         DownloadRequest request1 = new DownloadRequest.Builder()
                 .setSource(request.getSourceUri())
