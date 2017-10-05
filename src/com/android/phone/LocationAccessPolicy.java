@@ -45,18 +45,27 @@ final class LocationAccessPolicy {
      *
      * @param pkgName Package name of the application requesting access
      * @param uid The uid of the package
+     * @param message Message to add to the exception if no location permission
      * @return boolean true or false if permissions is granted
      */
     static boolean canAccessCellLocation(@NonNull Context context, @NonNull String pkgName,
-            int uid) throws SecurityException {
+            int uid, String message) throws SecurityException {
         context.getSystemService(AppOpsManager.class).checkPackage(uid, pkgName);
         // We always require the location permission and also require the
         // location mode to be on for non-legacy apps. Legacy apps are
         // required to be in the foreground to at least mitigate the case
         // where a legacy app the user is not using tracks their location.
-        if (!hasUidLocationPermission(context, pkgName, uid)
-                || (!isLocationModeEnabled(context, UserHandle.getUserId(uid)))
-                        && !isLegacyForeground(context, pkgName)) {
+
+        // Grating ACCESS_FINE_LOCATION to an app automatically grants it ACCESS_COARSE_LOCATION.
+        context.enforceCallingOrSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION, message);
+        final int opCode = AppOpsManager.permissionToOpCode(
+                Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (opCode != AppOpsManager.OP_NONE && context.getSystemService(AppOpsManager.class)
+                .noteOp(opCode, uid, pkgName) != AppOpsManager.MODE_ALLOWED) {
+            return false;
+        }
+        if (!isLocationModeEnabled(context, UserHandle.getUserId(uid))
+                && !isLegacyForeground(context, pkgName)) {
             return false;
         }
         // If the user or profile is current, permission is granted.
@@ -101,21 +110,6 @@ final class LocationAccessPolicy {
         return context.checkCallingOrSelfPermission(
                 android.Manifest.permission.INTERACT_ACROSS_USERS_FULL)
                 == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private static boolean hasUidLocationPermission(@NonNull Context context,
-            @NonNull String pkgName, int uid) {
-        // Grating ACCESS_FINE_LOCATION to an app automatically grants it ACCESS_COARSE_LOCATION.
-        if ((context.checkCallingOrSelfPermission(
-                Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
-            final int opCode = AppOpsManager.permissionToOpCode(
-                    Manifest.permission.ACCESS_COARSE_LOCATION);
-            if (opCode != AppOpsManager.OP_NONE) {
-                return context.getSystemService(AppOpsManager.class).noteOp(opCode, uid, pkgName)
-                        == AppOpsManager.MODE_ALLOWED;
-            }
-        }
-        return false;
     }
 
     private static boolean isCurrentProfile(@NonNull Context context, int uid) {

@@ -28,6 +28,8 @@ import android.support.v7.widget.RecyclerView;
 import android.telephony.MbmsDownloadSession;
 import android.telephony.SubscriptionManager;
 import android.telephony.mbms.DownloadRequest;
+import android.telephony.mbms.DownloadStateCallback;
+import android.telephony.mbms.FileInfo;
 import android.telephony.mbms.FileServiceInfo;
 import android.telephony.mbms.MbmsDownloadSessionCallback;
 import android.util.Log;
@@ -273,6 +275,109 @@ public class EmbmsTestDownloadApp extends Activity {
                     (DownloadRequest) downloadRequestSpinner.getSelectedItem();
             mDownloadManager.cancelDownload(request);
             mDownloadRequestAdapter.remove(request);
+        });
+
+        Button registerProgressCallback =
+                (Button) findViewById(R.id.register_progress_callback_button);
+        registerProgressCallback.setOnClickListener((view) -> {
+            if (mDownloadManager == null) {
+                Toast.makeText(EmbmsTestDownloadApp.this,
+                        "No download service bound", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            DownloadRequest req = (DownloadRequest) downloadRequestSpinner.getSelectedItem();
+            if (req == null) {
+                Toast.makeText(EmbmsTestDownloadApp.this,
+                        "No DownloadRequest Pending for progress...", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            mDownloadManager.registerStateCallback(req, new DownloadStateCallback(
+                    DownloadStateCallback.PROGRESS_UPDATES) {
+                @Override
+                public void onProgressUpdated(DownloadRequest request, FileInfo fileInfo,
+                        int currentDownloadSize, int fullDownloadSize, int currentDecodedSize,
+                        int fullDecodedSize) {
+                    Toast.makeText(EmbmsTestDownloadApp.this,
+                            "Progress Updated (" + fileInfo + ") cd: " + currentDecodedSize
+                                    + " fd: " + fullDownloadSize, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onStateUpdated(DownloadRequest request, FileInfo fileInfo, int state) {
+                    // only registered for state callback, this shouldn't happen!
+                    Toast.makeText(EmbmsTestDownloadApp.this,
+                            "State ERROR: received state update for callback that didn't filter it",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }, sInstance.getMainThreadHandler());
+        });
+
+        Button registerStateCallback =
+                (Button) findViewById(R.id.register_state_callback_button);
+        registerStateCallback.setOnClickListener((view) -> {
+            if (mDownloadManager == null) {
+                Toast.makeText(EmbmsTestDownloadApp.this,
+                        "No download service bound", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            DownloadRequest req = (DownloadRequest) downloadRequestSpinner.getSelectedItem();
+            if (req == null) {
+                Toast.makeText(EmbmsTestDownloadApp.this,
+                        "No DownloadRequest Pending for state...", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            mDownloadManager.registerStateCallback(req, new DownloadStateCallback(
+                    DownloadStateCallback.STATE_UPDATES) {
+                @Override
+                public void onProgressUpdated(DownloadRequest request, FileInfo fileInfo,
+                        int currentDownloadSize, int fullDownloadSize, int currentDecodedSize,
+                        int fullDecodedSize) {
+                    // only registered for state callback, this shouldn't happen!
+                    Toast.makeText(EmbmsTestDownloadApp.this,
+                            "Progress ERROR: received progress update for callback that didn't "
+                                    + "filter it", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onStateUpdated(DownloadRequest request, FileInfo fileInfo, int state) {
+                    Toast.makeText(EmbmsTestDownloadApp.this,
+                            "State Updated (" + fileInfo + ") state: " + state,
+                            Toast.LENGTH_SHORT).show();
+                }
+            }, sInstance.getMainThreadHandler());
+        });
+
+        Button registerAllCallbacks =
+                (Button) findViewById(R.id.register_all_callback_button);
+        registerAllCallbacks.setOnClickListener((view) -> {
+            if (mDownloadManager == null) {
+                Toast.makeText(EmbmsTestDownloadApp.this,
+                        "No download service bound", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            DownloadRequest req = (DownloadRequest) downloadRequestSpinner.getSelectedItem();
+            if (req == null) {
+                Toast.makeText(EmbmsTestDownloadApp.this,
+                        "No DownloadRequest Pending for state...", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            mDownloadManager.registerStateCallback(req, new DownloadStateCallback() {
+                @Override
+                public void onProgressUpdated(DownloadRequest request, FileInfo fileInfo,
+                        int currentDownloadSize, int fullDownloadSize, int currentDecodedSize,
+                        int fullDecodedSize) {
+                    Toast.makeText(EmbmsTestDownloadApp.this,
+                            "Progress Updated (" + fileInfo + ") cd: " + currentDecodedSize
+                                    + " fd: " + fullDownloadSize, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onStateUpdated(DownloadRequest request, FileInfo fileInfo, int state) {
+                    Toast.makeText(EmbmsTestDownloadApp.this,
+                            "State Updated (" + fileInfo + ") state: " + state,
+                            Toast.LENGTH_SHORT).show();
+                }
+            }, sInstance.getMainThreadHandler());
         });
     }
 
