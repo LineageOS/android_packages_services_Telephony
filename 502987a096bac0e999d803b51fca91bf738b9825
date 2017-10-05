@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64a11d71_9c3f9e7a",
+        "filename": "src/com/android/phone/NotificationMgr.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2017-10-05T03:41:19Z",
+      "side": 1,
+      "message": "Why is this checking both the overlay resource and the settings value? In this case, you don\u0027t need to check overlay resource, right?",
+      "range": {
+        "startLine": 289,
+        "startChar": 8,
+        "endLine": 290,
+        "endChar": 81
+      },
+      "revId": "502987a096bac0e999d803b51fca91bf738b9825",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
