@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df160de1_1004ba8f",
+        "filename": "src/com/android/phone/NotificationMgr.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2017-10-09T12:52:14Z",
+      "side": 1,
+      "message": "I didn\u0027t know if the return here was still necessary or not, so I omitted it for now.",
+      "revId": "07b8709e98628309453aa9a91ca100898f6af40a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
