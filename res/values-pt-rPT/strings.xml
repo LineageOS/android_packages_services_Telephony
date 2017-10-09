@@ -278,7 +278,7 @@
     <string name="international_enable" msgid="5855356769925044927">"Notícias internacionais ativadas"</string>
     <string name="international_disable" msgid="2850648591041088931">"Notícias internacionais desativadas"</string>
     <string name="list_language_title" msgid="2841683501919760043">"Idioma"</string>
-    <string name="list_language_summary" msgid="8109546531071241601">"Seleccionar o idioma das notícias"</string>
+    <string name="list_language_summary" msgid="8109546531071241601">"Selecionar o idioma das notícias"</string>
   <string-array name="list_language_entries">
     <item msgid="6137851079727305485">"Inglês"</item>
     <item msgid="1151988412809572526">"Francês"</item>
@@ -337,9 +337,9 @@
     <string name="network_lte" msgid="7702681952521375754">"LTE (recomendado)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G (recomendado)"</string>
     <string name="network_global" msgid="1323190488685355309">"Global"</string>
-    <string name="cdma_system_select_title" msgid="5757657769327732833">"Seleccionar sistema"</string>
+    <string name="cdma_system_select_title" msgid="5757657769327732833">"Selecionar sistema"</string>
     <string name="cdma_system_select_summary" msgid="60460043745797517">"Alterar o modo de roaming CDMA"</string>
-    <string name="cdma_system_select_dialogtitle" msgid="6083355415165359075">"Seleccionar sistema"</string>
+    <string name="cdma_system_select_dialogtitle" msgid="6083355415165359075">"Selecionar sistema"</string>
   <string-array name="cdma_system_select_choices">
     <item msgid="176474317493999285">"Apenas redes domésticas"</item>
     <item msgid="1205664026446156265">"Automático"</item>
