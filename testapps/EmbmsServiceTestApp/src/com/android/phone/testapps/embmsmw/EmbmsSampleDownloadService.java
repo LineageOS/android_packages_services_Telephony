@@ -371,8 +371,7 @@ public class EmbmsSampleDownloadService extends Service {
             c.onProgressUpdated(request, fileToDownload, 10, 10, 10, 10);
         }
         // Take a round-trip through the download request serialization to exercise it
-        DownloadRequest request1 = new DownloadRequest.Builder()
-                .setSource(request.getSourceUri())
+        DownloadRequest request1 = new DownloadRequest.Builder(request.getSourceUri())
                 .setSubscriptionId(request.getSubscriptionId())
                 .setServiceId(request.getFileServiceId())
                 .setOpaqueData(request.getOpaqueData())
