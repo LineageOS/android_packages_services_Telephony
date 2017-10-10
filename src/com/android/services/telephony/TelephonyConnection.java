@@ -1373,6 +1373,7 @@ abstract class TelephonyConnection extends Connection {
         updateConnectionProperties();
         updateAddress();
         updateMultiparty();
+        refreshDisableAddCall();
     }
 
     /**
