@@ -174,6 +174,7 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ქსელის სასურველი ტიპი"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ქსელის ოპერირების რეჟიმის შეცვლა"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ქსელის სასურველი ტიპი"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(აკრძალული)"</string>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"ქსელის სასურველი რეჟიმი: WCDMA უპირატესობა"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"ქსელის სასურველი რეჟიმი: მხოლოდ GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"ქსელის სასურველი რეჟიმი: WCDMA მხოლოდ"</string>

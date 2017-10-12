@@ -174,6 +174,7 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"પસંદગીનો નેટવર્ક પ્રકાર"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"નેટવર્ક ઓપરેટિંગ મોડ બદલો"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"પસંદગીનો નેટવર્ક પ્રકાર"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(પ્રતિબંધિત)"</string>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"પસંદગીનો નેટવર્ક મોડ: WCDMA પસંદ કરેલ છે"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"પસંદગીનો નેટવર્ક મોડ: ફક્ત GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"પસંદગીનો નેટવર્ક મોડ: ફક્ત WCDMA"</string>
