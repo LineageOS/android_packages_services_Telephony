@@ -387,6 +387,7 @@
     <string name="preferred_network_mode_title">Preferred network type</string>
     <string name="preferred_network_mode_summary">Change the network operating mode</string>
     <string name="preferred_network_mode_dialogtitle">Preferred network type</string>
+    <string name="forbidden_network">(forbidden)</string>
 
     <!-- The preferred network modes in Mobile network settings -->
     <string-array name="preferred_network_mode_choices">
