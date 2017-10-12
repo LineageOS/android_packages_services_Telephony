@@ -977,12 +977,19 @@ public class MobileNetworkSettings extends Activity  {
 
                 //normally called on the toggle click
                 if (!mButtonDataRoam.isChecked()) {
-                    // First confirm with a warning dialog about charges
-                    mOkClicked = false;
-                    RoamingDialogFragment fragment = new RoamingDialogFragment();
-                    fragment.show(getFragmentManager(), ROAMING_TAG);
-                    // Don't update the toggle unless the confirm button is actually pressed.
-                    return false;
+                    PersistableBundle carrierConfig =
+                            PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
+                    if (carrierConfig != null && carrierConfig.getBoolean(
+                            CarrierConfigManager.KEY_DISABLE_CHARGE_INDICATION_BOOL)) {
+                        mPhone.setDataRoamingEnabled(true);
+                    } else {
+                        // First confirm with a warning dialog about charges
+                        mOkClicked = false;
+                        RoamingDialogFragment fragment = new RoamingDialogFragment();
+                        fragment.show(getFragmentManager(), ROAMING_TAG);
+                        // Don't update the toggle unless the confirm button is actually pressed.
+                        return false;
+                    }
                 } else {
                     mPhone.setDataRoamingEnabled(false);
                 }
