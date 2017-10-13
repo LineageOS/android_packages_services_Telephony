@@ -387,6 +387,7 @@
     <string name="preferred_network_mode_title">Preferred network type</string>
     <string name="preferred_network_mode_summary">Change the network operating mode</string>
     <string name="preferred_network_mode_dialogtitle">Preferred network type</string>
+    <string name="forbidden_network">(forbidden)</string>
     <!-- Mobile network settings, summary for preferred network mode WCDMA preferred[CHAR LIMIT=100] -->
     <string name="preferred_network_mode_wcdma_perf_summary">Preferred network mode: WCDMA preferred</string>
     <!-- Mobile network settings, summary for preferred network mode GSM [CHAR LIMIT=100] -->

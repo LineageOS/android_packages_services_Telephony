@@ -174,6 +174,7 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Jenis jaringan yang dipilih"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Ubah mode pengoperasian jaringan"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Jenis jaringan yang dipilih"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(terlarang)"</string>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Mode jaringan pilihan: WCDMA lebih disukai"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Mode jaringan pilihan: GSM saja"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Mode jaringan pilihan: WCDMA saja"</string>

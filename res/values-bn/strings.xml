@@ -174,6 +174,7 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"পছন্দের নেটওয়ার্ক"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"নেটওয়ার্ক অপারেটিং মোড পরিবর্তন করুন"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"পছন্দের নেটওয়ার্ক"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(নিষিদ্ধ)"</string>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"পছন্দের নেটওয়ার্ক মোড: WCDMA পছন্দসই"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"পছন্দের নেটওয়ার্ক মোড: শুধুমাত্র GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"পছন্দের নেটওয়ার্ক মোড: শুধুমাত্র WCDMA"</string>

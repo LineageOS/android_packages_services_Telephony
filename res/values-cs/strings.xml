@@ -174,6 +174,7 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Preferovaný typ sítě"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Změnit provozní režim sítě"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Preferovaný typ sítě"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(zakázáno)"</string>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Upřednostňovaný režim sítě: preferováno WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Upřednostňovaný režim sítě: pouze GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Upřednostňovaný režim sítě: pouze WCDMA"</string>
