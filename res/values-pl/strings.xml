@@ -216,7 +216,7 @@
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Zaawansowane połączenia"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Użyj usług LTE, by poprawić łączność głosową i inną (zalecane)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Włączone przesyłanie danych"</string>
-    <string name="data_enable_summary" msgid="2382798156640007971">"Zezwalaj na transmisję danych"</string>
+    <string name="data_enable_summary" msgid="2382798156640007971">"Zezwalaj na użycie danych"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Uwaga"</string>
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Połącz z usługami transmisji danych podczas roamingu"</string>
@@ -224,7 +224,7 @@
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Połączenie transmisji danych zostało utracone, ponieważ opuszczono sieć macierzystą przy wyłączonej opcji danych w roamingu."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Mogą się z tym wiązać wysokie opłaty."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Zezwolić na roaming danych?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Transmisja danych"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"Użycie danych"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"Wykorzystano <xliff:g id="ID_1">%1$s</xliff:g> mobilnej transmisji danych w okresie <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operator"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operator, esim, sim, euicc"</string>

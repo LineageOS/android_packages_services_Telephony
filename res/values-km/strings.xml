@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ទិន្នន័យ​ចល័ត"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ទិន្នន័យ​ទូរសព្ទចល័ត"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"សេវាកម្មទូរស័ព្ទ"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"អ្នក​ហៅ​នៅ​ពេល​មាន​អាសន្ន"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"ទូរស័ព្ទ"</string>
@@ -222,7 +222,7 @@
     <string name="roaming_enable" msgid="7331106985174381987">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"អ្នក​បាន​បាត់បង់​ការ​តភ្ជាប់​ទិន្នន័យ ពីព្រោះ​អ្នក​បាន​ចាកចេញ​ពី​បណ្ដាញ​ដើម​របស់​អ្នក​ជាមួយ​រ៉ូមីង​ទិន្នន័យ​បាន​បិទ។"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"អាចនាំឲ្យមានការគិតប្រាក់របស់អ្នកច្រើន។"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"អាចនាំឲ្យមានការគិតប្រាក់ច្រើនពីអ្នក។"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"អនុញ្ញាតឲ្យរ៉ូមីងទិន្នន័យ?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"ការ​ប្រើ​ប្រាស់ទិន្នន័យ"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> ទិន្នន័យ​ទូរសព្ទ​ដែល​បាន​ប្រើ​នៅ​ចន្លោះ​ថ្ងៃ <xliff:g id="ID_2">%2$s</xliff:g>"</string>

@@ -58,7 +58,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Configuració de trucades GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"Configuració de trucades CDMA"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"Configuració de trucades CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"APN"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"Noms dels punts d\'accés"</string>
     <string name="settings_label" msgid="3876743539816984008">"Configuració de xarxa"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Comptes de trucades"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Truca amb"</string>
@@ -397,7 +397,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"S\'està suprimint el número de marcatge fix..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Número de marcatge fix suprimit."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN no s\'ha actualitzat ja que has escrit un PIN incorrecte."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN no s\'ha actualitzat perquè el número està buit o conté més de 20 dígits."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN no s\'ha actualitzat perquè el número és buit o conté més de 20 dígits."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"El número FDN no s\'ha actualitzat. El PIN2 no és correcte o bé s\'ha rebutjat el número de telèfon."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Hi ha hagut un problema en l\'operació FDN."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lectura de la targeta SIM..."</string>
@@ -434,7 +434,7 @@
     <string name="label_puk2_code" msgid="4688069961795341948">"Introdueix el codi PUK2"</string>
     <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"La contrasenya no és correcta i el PIN2 s\'ha bloquejat. Per tornar-ho a provar, canvia el PIN2."</string>
     <string name="puk2_requested" msgid="5831015200030161434">"La contrasenya no és correcta i la SIM s\'ha bloquejat. Introdueix el PUK2."</string>
-    <string name="puk2_blocked" msgid="3150263853077280049">"El PUK2 s\'ha bloquejat de manera permanent."</string>
+    <string name="puk2_blocked" msgid="3150263853077280049">"El PUK2 s\'ha bloquejat permanentment."</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n"Et queden <xliff:g id="NUMBER">%d</xliff:g> intents."</string>
     <string name="pin2_unblocked" msgid="7791600368153469078">"El PIN2 ja no està bloquejat."</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"Error de xarxa o de targeta SIM"</string>

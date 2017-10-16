@@ -224,15 +224,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Роуминг учурунда мобилдик Интернетке туташат"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Роуминг учурунда мобилдик Интернетке туташат"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Мобилдик берүү байланышын жоготтуңуз, анткени сиз мобилдик интернет роумингин иштетпестен, өзүңүздүн түйүнүңүздөн сырткары чыгып кеттиңиз."</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"Бир кыйла төлөмдөргө учурашыңыз мүмкүн."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"Интернет-роумингге жол берилсинби?"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"Көп акча төлөп калышыңыз мүмкүн."</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"Интернет-роумингди иштетесизби?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Дайындардын өткөрүлүшү"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> аралыгында <xliff:g id="ID_1">%1$s</xliff:g> мобилдик трафик колдонулду"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Байланыш оператору"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"carrier, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"Мобилдик Интернет"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Мобилдик тармакты колдонуу менен дайындарга кошулуу мүмкүнчүлүгү"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Интернетке мобилдик тармак аркылуу чыгасыз"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi аркылуу чалуу"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Видео чалуулар"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS мүмкүнчүлүктөрү"</string>

@@ -58,7 +58,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Mipangilio ya simu ya GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"Mipangilio ya simu ya CDMA"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"Mipangilio ya simu ya CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"Majina ya Lango la Mtandao"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"Majina ya milango ya Mtandao"</string>
     <string name="settings_label" msgid="3876743539816984008">"Mipangilio ya mtandao"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Akaunti za simu"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Piga simu kutumia"</string>
@@ -222,8 +222,8 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Unganisha huduma ya data wakati niko nje ya mtandao wangu wa kawaida"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Unganisha huduma ya data wakati niko nje ya mtandao wangu wa kawaida"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Umepoteza muunganisho wa data kwa sababu uliondoka kwenye mtandao wako wa kawaida ukiwa umezima utumiaji data nje ya mtandao wa kawaida."</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"Unaweza kutozwa gharama kubwa."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"Je, ungependa kuruhusu matumizi ya intaneti ukiwa nje ya mtandao wako wa kawaida?"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"Huenda ukatozwa gharama kubwa."</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"Ungependa kutumia intaneti ukiwa kwenye mitandao mingine?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Matumizi ya data"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> za data ya simu zimetumika kati ya <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mtoa huduma"</string>

@@ -151,7 +151,7 @@
     <string name="voicemail_default" msgid="2001233554889016880">"مشغل شبكة الجوّال"</string>
     <string name="vm_change_pin_old_pin" msgid="7295220109886682573">"رقم التعريف الشخصي القديم"</string>
     <string name="vm_change_pin_new_pin" msgid="5412922262839438097">"رقم التعريف الشخصي الجديد"</string>
-    <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"الرجاء الانتظار."</string>
+    <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"يُرجى الانتظار."</string>
     <string name="vm_change_pin_error_too_short" msgid="5974971097302710497">"رقم التعريف الشخصي الجديد قصير جدًا."</string>
     <string name="vm_change_pin_error_too_long" msgid="8476870806115051865">"رقم التعريف الشخصي الجديد طويل جدًا."</string>
     <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"رقم التعريف الشخصي الجديد ضعيف جدًا. لا ينبغي أن تكون كلمة المرور القوية عبارة عن تسلسل متتالٍ أو أرقام متكررة."</string>

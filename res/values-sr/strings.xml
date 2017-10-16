@@ -223,14 +223,14 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Повезивање са услугом за податке током роминга"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Веза за пренос података је прекинута зато што сте напустили кућну мрежу са искљученим преносом података у ромингу."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Могу да настану значајни трошкови."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"Дозвољавате ли пренос података у ромингу?"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"Дозвољавате пренос података у ромингу?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Употреба података"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"Потрошили сте <xliff:g id="ID_1">%1$s</xliff:g> мобилних података у периоду <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Мобилни оператер"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"мобилни оператер, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"Мобилни подаци"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Користите податке преко мобилне мреже"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Користи податке преко мобилне мреже"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Позивање преко Wi-Fi-ја"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Видео позивање преко оператера"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Опције за GSM/UMTS"</string>

@@ -230,7 +230,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"оператор, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"Мобильный Интернет"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Доступ к данным с помощью мобильного Интернета"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Доступ к Интернету по мобильной сети"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Звонки по Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Видеозвонки"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Параметры GSM/UMTS"</string>
