@@ -92,8 +92,21 @@ import java.util.List;
 
 public class MobileNetworkSettings extends Activity  {
 
+    /** @hide */
+    public static final String EXTRA_SUB_ID = "extra_sub_id";
+
     private enum TabState {
         NO_TABS, UPDATE, DO_NOTHING
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        MobileNetworkFragment fragment = (MobileNetworkFragment) getFragmentManager()
+                .findFragmentById(R.id.network_setting_content);
+        if (fragment != null) {
+            fragment.onIntentUpdate(intent);
+        }
     }
 
     @Override
@@ -121,7 +134,6 @@ public class MobileNetworkSettings extends Activity  {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     /**
      * Whether to show the entry point to eUICC settings.
@@ -339,6 +351,12 @@ public class MobileNetworkSettings extends Activity  {
             }
         }
 
+        public void onIntentUpdate(Intent intent) {
+            if (!mUnavailable) {
+                updateCurrentTab(intent);
+            }
+        }
+
         /**
          * Invoked on each preference click in this hierarchy, overrides
          * PreferenceActivity's implementation.  Used to make sure we track the
@@ -433,6 +451,15 @@ public class MobileNetworkSettings extends Activity  {
                 initializeSubscriptions();
             }
         };
+
+        private int getSlotIdFromIntent(Intent intent) {
+            Bundle data = intent.getExtras();
+            int subId = -1;
+            if (data != null) {
+                subId = data.getInt(EXTRA_SUB_ID, -1);
+            }
+            return SubscriptionManager.getSlotIndex(subId);
+        }
 
         private void initializeSubscriptions() {
             final Activity activity = getActivity();
@@ -585,6 +612,13 @@ public class MobileNetworkSettings extends Activity  {
                     mEmptyTabContent);
         }
 
+        private void updateCurrentTab(Intent intent) {
+            int slotId = getSlotIdFromIntent(intent);
+            if (slotId >= 0 && mTabHost != null && mTabHost.getCurrentTab() != slotId) {
+                mTabHost.setCurrentTab(slotId);
+            }
+        }
+
         @Override
         public void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
@@ -683,6 +717,7 @@ public class MobileNetworkSettings extends Activity  {
                 getActivity().setContentView(R.layout.telephony_disallowed_preference_screen);
             } else {
                 initializeSubscriptions();
+                updateCurrentTab(getActivity().getIntent());
             }
         }
 
