@@ -150,7 +150,18 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
         if (DBG) Log.d(LOG_TAG, "handleGetCFResponse done, callForwardInfo=" + callForwardInfo);
 
         setToggled(callForwardInfo.status == 1);
-        setPhoneNumber(callForwardInfo.number);
+        boolean displayVoicemailNumber = false;
+        if (TextUtils.isEmpty(callForwardInfo.number)) {
+            PersistableBundle carrierConfig =
+                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
+            if (carrierConfig != null) {
+                displayVoicemailNumber = carrierConfig.getBoolean(CarrierConfigManager
+                        .KEY_DISPLAY_VOICEMAIL_NUMBER_AS_DEFAULT_CALL_FORWARDING_NUMBER_BOOL);
+                Log.d(LOG_TAG, "display voicemail number as default");
+            }
+        }
+        String voicemailNumber = mPhone.getVoiceMailNumber();
+        setPhoneNumber(displayVoicemailNumber ? voicemailNumber : callForwardInfo.number);
     }
 
     private void updateSummaryText() {
