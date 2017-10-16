@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Dane komórkowe"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Komórkowa transmisja danych"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefon – usługi"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Numery alarmowe"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefon"</string>
@@ -211,7 +211,7 @@
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Zaawansowane połączenia"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Użyj usług LTE, by poprawić łączność głosową i inną (zalecane)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Włączone przesyłanie danych"</string>
-    <string name="data_enable_summary" msgid="2382798156640007971">"Zezwalaj na transmisję danych"</string>
+    <string name="data_enable_summary" msgid="2382798156640007971">"Zezwalaj na użycie danych"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Uwaga"</string>
     <string name="roaming" msgid="8871412572928323707">"Roaming danych"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Połącz z usługami transmisji danych podczas roamingu"</string>
