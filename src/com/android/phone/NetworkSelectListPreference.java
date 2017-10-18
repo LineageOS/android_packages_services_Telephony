@@ -315,7 +315,13 @@ public class NetworkSelectListPreference extends ListPreference
                 CharSequence[] networkEntries = new CharSequence[result.size()];
                 CharSequence[] networkEntryValues = new CharSequence[result.size()];
                 for (int i = 0; i < mOperatorInfoList.size(); i++) {
-                    networkEntries[i] = getNetworkTitle(mOperatorInfoList.get(i));
+                    if (mOperatorInfoList.get(i).getState() == OperatorInfo.State.FORBIDDEN) {
+                        networkEntries[i] = getNetworkTitle(mOperatorInfoList.get(i))
+                            + " "
+                            + getContext().getResources().getString(R.string.forbidden_network);
+                    } else {
+                        networkEntries[i] = getNetworkTitle(mOperatorInfoList.get(i));
+                    }
                     networkEntryValues[i] = Integer.toString(i + 2);
                 }
 

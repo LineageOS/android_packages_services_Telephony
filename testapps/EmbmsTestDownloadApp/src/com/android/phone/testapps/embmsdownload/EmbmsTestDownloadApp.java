@@ -426,9 +426,8 @@ public class EmbmsTestDownloadApp extends Activity {
         Intent completionIntent = new Intent(DOWNLOAD_DONE_ACTION);
         completionIntent.setClass(this, DownloadCompletionReceiver.class);
 
-        DownloadRequest request = new DownloadRequest.Builder()
+        DownloadRequest request = new DownloadRequest.Builder(sourceUriBuilder.build())
                 .setServiceInfo(info)
-                .setSource(sourceUriBuilder.build())
                 .setAppIntent(completionIntent)
                 .setSubscriptionId(SubscriptionManager.getDefaultSubscriptionId())
                 .build();
