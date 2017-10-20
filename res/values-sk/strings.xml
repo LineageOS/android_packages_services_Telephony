@@ -72,7 +72,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="1361715069911607109">"Konfigurácia nastavení účtu"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"Všetky telefónne účty"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"Výber účtov, pomocou ktorých bude možné telefonovať"</string>
-    <string name="wifi_calling" msgid="739018212480165598">"Volanie cez Wi-Fi"</string>
+    <string name="wifi_calling" msgid="739018212480165598">"Volanie cez Wi‑Fi"</string>
     <string name="connection_service_default_label" msgid="1498481943805913754">"Vstavaná služba pripojenia"</string>
     <string name="voicemail" msgid="8693759337917898954">"Hlasová schránka"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Hlasová schránka (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -172,14 +172,37 @@
     <string name="registration_done" msgid="495135664535876612">"Prihlásenie k sieti prebehlo úspešne."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Zvoliť sieťového operátora"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Hľadať všetky dostupné siete"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"Vybrať sieť automaticky"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Sieť"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatická registrácia..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Preferovaný typ siete"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Zmeniť prevádzkový režim siete"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Preferovaný typ siete"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="3628460389382468528">"GSM/WCDMA – preferované"</item>
+    <item msgid="8442633436636425221">"Iba GSM"</item>
+    <item msgid="2032314385791760810">"Iba WCDMA"</item>
+    <item msgid="6334554401059422303">"GSM/WCDMA – automaticky"</item>
+    <item msgid="1462198368200398663">"CDMA/EvDo – automaticky"</item>
+    <item msgid="3611460019185359968">"CDMA bez EvDo"</item>
+    <item msgid="545430093607698090">"Iba EvDo"</item>
+    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
+    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
+    <item msgid="3471059554252610472">"Globálne"</item>
+    <item msgid="2882615514545171802">"LTE"</item>
+    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
+    <item msgid="3982984144824159726">"Iba TDSCDMA"</item>
+    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
+    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
+    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
+    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
+    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Preferovaný režim siete: preferované WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Preferovaný režim siete: iba GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Preferovaný režim siete: iba WCDMA"</string>
@@ -197,59 +220,45 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Uprednostňovaný režim siete: LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Preferovaný režim siete: LTE / CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Preferovaný režim siete: TDSCDMA"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="7886739962255042385">"LTE / WCDMA"</item>
-    <item msgid="577652050447385699">"LTE"</item>
-    <item msgid="6813597571293773656">"Globálny"</item>
-    <item msgid="127064712132619032">"GSM / WCDMA / LTE"</item>
-    <item msgid="1126767511633425977">"CDMA + LTE / EvDo"</item>
-    <item msgid="6389676313771670660">"CDMA / EvDo / GSM / WCDMA"</item>
-    <item msgid="545430093607698090">"Iba EvDo"</item>
-    <item msgid="1508557726283094448">"CDMA bez EvDo"</item>
-    <item msgid="4341433122263841224">"CDMA / EvDo – automaticky"</item>
-    <item msgid="5958053792390386668">"GSM / WCDMA – automaticky"</item>
-    <item msgid="7913148405605373434">"Iba WCDMA"</item>
-    <item msgid="1524224863879435516">"Iba GSM"</item>
-    <item msgid="3817924849415716259">"GSM / WCDMA – preferované"</item>
-  </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Preferovaný režim siete: TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Preferovaný režim siete: LTE/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Preferovaný režim siete: TDSCDMA/GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Preferovaný režim siete: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Preferovaný režim siete: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Preferovaný režim siete: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Preferovaný režim siete: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Preferovaný režim siete: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Preferovaný režim siete: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="call_category" msgid="5863978196309462052">"Volanie"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Sieť"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Zlepšený režim 4G LTE"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Rozšírené volanie"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Použiť služby LTE na vylepšenie hlasu a ďalších komunikácií (odporúčané)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Povoliť dát. prenosy"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Povoliť využívanie dát"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Pozor"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Pripájať sa k dátovým službám pri roamingu"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Pripájať sa k dátovým službám pri roamingu"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Dátové pripojenie bolo prerušené, pretože ste opustili domovskú sieť a máte vypnutý dátový roaming."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Môžu sa vám účtovať vysoké poplatky."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Povoliť dátový roaming?"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="data_usage_title" msgid="8759619109516889802">"Spotreba dát"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"Spotreba mobilných dát za obdobie <xliff:g id="ID_2">%2$s</xliff:g> je <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operátor"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operátor, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobilné dáta"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Prístup k dátam pomocou mobilnej siete"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Volanie cez Wi‑Fi"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Videohovory prostredníctvom operátora"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Možnosti GSM/UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"Možnosti CDMA"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Spotreba dát"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"Dáta využité v aktuálnom období"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"Obdobie využitia dát"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"Pravidlá pre prenosovú rýchlosť"</string>
-    <string name="throttle_help" msgid="243651091785169900">"Viac informácií"</string>
+    <string name="throttle_help" msgid="243651091785169900">"Ďalšie informácie"</string>
     <string name="throttle_status_subtext" msgid="1657318943142085170">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) z limitu <xliff:g id="USED_2">%3$s</xliff:g> pre obdobie\nPočet dní do začiatku ďalšieho obdobia: <xliff:g id="USED_3">%4$d</xliff:g> (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) z limitu <xliff:g id="USED_2">%3$s</xliff:g> pre obdobie"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"Bol prekročený limit <xliff:g id="USED_0">%1$s</xliff:g>\nPrenosová rýchlosť bola znížená na <xliff:g id="USED_1">%2$d</xliff:g> kB/s"</string>
@@ -483,7 +492,7 @@
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Nedajú sa ukončiť hovory"</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Hovory nie je možné podržať."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Ak chcete volať, pripojte sa k bezdrôtovej sieti"</string>
-    <string name="incall_error_promote_wfc" msgid="106510757624022064">"Na uskutočnenie hovoru povoľte volanie cez Wi-Fi."</string>
+    <string name="incall_error_promote_wfc" msgid="106510757624022064">"Na uskutočnenie hovoru povoľte volanie cez Wi‑Fi."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Tiesňové volanie"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Prebieha zapínanie rádia..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Žiadna služba. Prebieha opätovný pokus…"</string>
@@ -529,7 +538,7 @@
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"Prebieha aktivácia..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"V telefóne prebieha aktivácia mobilnej dátovej služby.\n\nMôže to trvať až 5 minút."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Preskočiť aktiváciu?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Ak preskočíte aktiváciu, nemôžete volať ani sa pripájať k mobilným dátovým sieťam (môžete sa ale pripojiť k sieťam Wi-Fi). Ak svoj telefón neaktivujete, bude sa pri každom zapnutí zobrazovať výzva na aktiváciu."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Ak preskočíte aktiváciu, nemôžete volať ani sa pripájať k mobilným dátovým sieťam (môžete sa ale pripojiť k sieťam Wi‑Fi). Ak svoj telefón neaktivujete, bude sa pri každom zapnutí zobrazovať výzva na aktiváciu."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Preskočiť"</string>
     <string name="ota_activate" msgid="1368528132525626264">"Aktivovať"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"Telefón je aktivovaný."</string>
@@ -589,14 +598,16 @@
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"Tiesňové volania iba na čísla"</string>
     <string name="sim_description_default" msgid="4778679519938775515">"Slot na SIM kartu: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Dostupnosť"</string>
-    <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"Hovor cez Wi-Fi od:"</string>
-    <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Hovor cez Wi-Fi"</string>
+    <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"Hovor cez Wi‑Fi od:"</string>
+    <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Hovor cez Wi‑Fi"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Otvoríte opätovným klepnutím"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"Pri dekódovaní správy sa vyskytla chyba"</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM karta aktivovala vašu službu a aktualizovala možnosti roamingu vášho telefónu"</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Prebieha príliš veľa aktívnych hovorov. Skôr ako uskutočníte nový hovor, ukončite existujúce hovory alebo ich zlúčte."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Nedá sa pripojiť, vložte platnú SIM kartu."</string>
-    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Pripojenie Wi-Fi bolo stratené. Hovor bol ukončený."</string>
+    <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Pripojenie Wi‑Fi bolo stratené. Hovor bol ukončený."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Videohovor sa nedá spustiť pre slabú batériu."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Videohovor bol ukončený pre slabú batériu."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Zmena kódu PIN hlasovej schránky"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Pokračovať"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Zrušiť"</string>
@@ -609,4 +620,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"Kódy PIN sa nezhodujú"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"Kód PIN hlasovej schránky bol aktualizovaný"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"Kód PIN sa nedá nastaviť"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"Dátový roaming je vypnutý"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"Dátový roaming je zapnutý"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"Momentálne roaming, vyžaduje sa dátová tarifa"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Momentálne roaming, dátová tarifa je aktívna"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Žiadne zostávajúce mobilné dáta"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Žiadne zostávajúce mobilné dáta"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Pridať mobilné dáta prostredníctvom operátora <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Žiadna zostávajúca tarifa roamingu"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Pridať tarifu roamingu prostredníctvom operátora <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Mobilné dáta alebo tarifu roamingu môžete pridať prostredníctvom svojho operátora <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Pridať dáta?"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Možno bude potrebné pridať dáta prostredníctvom poskytovateľa <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"PRIDAŤ DÁTA"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ZRUŠIŤ"</string>
 </resources>

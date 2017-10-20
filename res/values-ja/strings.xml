@@ -172,14 +172,37 @@
     <string name="registration_done" msgid="495135664535876612">"ネットワークに登録されました。"</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"通信事業者を選択する"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"利用可能なすべてのネットワークを検索する"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"ネットワークを自動的に選択"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"ネットワーク"</string>
     <string name="register_automatically" msgid="6017849844573519637">"自動登録..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"優先ネットワークタイプ"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ネットワーク動作モードの変更"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"優先ネットワークタイプ"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="3628460389382468528">"GSM / WCDMA を優先"</item>
+    <item msgid="8442633436636425221">"GSM のみ"</item>
+    <item msgid="2032314385791760810">"WCDMA のみ"</item>
+    <item msgid="6334554401059422303">"GSM / WCDMA 自動"</item>
+    <item msgid="1462198368200398663">"CDMA / EV-DO 自動"</item>
+    <item msgid="3611460019185359968">"CDMA（EV-DO 非準拠）"</item>
+    <item msgid="545430093607698090">"EV-DOのみ"</item>
+    <item msgid="4286774020869405140">"CDMA / EV-DO / GSM / WCDMA"</item>
+    <item msgid="4006002265696868538">"CDMA+LTE / EV-DO"</item>
+    <item msgid="8973936140318359205">"GSM / WCDMA / LTE"</item>
+    <item msgid="3471059554252610472">"グローバル"</item>
+    <item msgid="2882615514545171802">"LTE"</item>
+    <item msgid="8076204422288290116">"LTE / WCDMA"</item>
+    <item msgid="3982984144824159726">"TDSCDMA のみ"</item>
+    <item msgid="3686191974505922271">"TDSCDMA / WCDMA"</item>
+    <item msgid="7135671700201836475">"LTE / TDSCDMA"</item>
+    <item msgid="3736619459066330755">"TDSCDMA / GSM"</item>
+    <item msgid="4778666570887216861">"LTE / TDSCDMA / GSM"</item>
+    <item msgid="2952322596201849456">"TDSCDMA / GSM / WCDMA"</item>
+    <item msgid="115984258536697617">"LTE / TDSCDMA / WCDMA"</item>
+    <item msgid="7957991936217192636">"LTE / TDSCDMA / GSM / WCDMA"</item>
+    <item msgid="2828588917858484655">"TDSCDMA / CDMA / EV-DO / GSM / WCDMA"</item>
+    <item msgid="4989979948139945854">"LTE / TDSCDMA / CDMA / EV-DO / GSM / WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"優先ネットワークモード: WCDMA優先"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"優先ネットワークモード: GSMのみ"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"優先ネットワークモード: WCDMAのみ"</string>
@@ -197,52 +220,38 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"推奨ネットワークモード: LTE/GSM/UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"優先ネットワークモード: LTE/CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"優先ネットワークモード: TDSCDMA"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="7886739962255042385">"LTE/WCDMA"</item>
-    <item msgid="577652050447385699">"LTE"</item>
-    <item msgid="6813597571293773656">"グローバル"</item>
-    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
-    <item msgid="1126767511633425977">"CDMA+LTE/EV-DO"</item>
-    <item msgid="6389676313771670660">"CDMA/EV-DO/GSM/WCDMA"</item>
-    <item msgid="545430093607698090">"EV-DOのみ"</item>
-    <item msgid="1508557726283094448">"CDMA（EV-DO非準拠）"</item>
-    <item msgid="4341433122263841224">"CDMA/EV-DO自動"</item>
-    <item msgid="5958053792390386668">"GSM/WCDMA自動"</item>
-    <item msgid="7913148405605373434">"WCDMAのみ"</item>
-    <item msgid="1524224863879435516">"GSMのみ"</item>
-    <item msgid="3817924849415716259">"GSM/WCDMAを優先"</item>
-  </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"優先ネットワーク モード: TDSCDMA / WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"優先ネットワーク モード: LTE / TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"優先ネットワーク モード: TDSCDMA / GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"優先ネットワーク モード: LTE / GSM / TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"優先ネットワーク モード: TDSCDMA / GSM / WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"優先ネットワーク モード: LTE / TDSCDMA / WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"優先ネットワーク モード: LTE / TDSCDMA / GSM / WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"優先ネットワーク モード: TDSCDMA / CDMA / EV-DO / GSM / WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"優先ネットワーク モード: LTE / TDSCDMA / CDMA / EV-DO / GSM / WCDMA"</string>
+    <string name="call_category" msgid="5863978196309462052">"通話"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"ネットワーク"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"4G LTE拡張モード"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"高度な通話機能"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"LTEサービスを使用して音声などの通信を改善する（推奨）"</string>
     <string name="data_enabled" msgid="5972538663568715366">"データ通信を有効にする"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"データ使用を許可"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"注意"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"ローミング"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"ローミング時にデータサービスに接続する"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ローミング時にデータサービスに接続する"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"データローミングをOFFにしてホームネットワークを離れたため、データ接続が切断されました。"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"高額な通信料が発生することがあります。"</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"データローミングを許可しますか？"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="roaming_alert_title" msgid="3654815360303826008">"データ ローミングを許可しますか？"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"データ使用量"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g>のモバイルデータ使用量: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"携帯通信会社"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"携帯通信会社、esim、sim、euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"モバイルデータ"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"モバイル ネットワーク経由でデータにアクセス"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi 通話"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"携帯通信会社のビデオ通話"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTSオプション"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMAオプション"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"データ使用量"</string>
@@ -593,6 +602,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"通話中の電話の数が多すぎます。新しく通話を発信するには、まず既存の通話を終了するか、統合してグループ通話にしてください。"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"接続できません。有効な SIM カードを挿入してください。"</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi 接続が失われたため、通話が終了しました。"</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"電池残量が低下しているため、ビデオハングアウトを行えません。"</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"電池残量が低下したため、ビデオハングアウトが終了しました。"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ボイスメール PIN の変更"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"続行"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"キャンセル"</string>
@@ -605,4 +616,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"PIN が一致しません"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"ボイスメール PIN を更新しました"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"PIN を設定できません"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"データ ローミングが OFF になっています"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"データ ローミングが ON になっています"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"現在ローミング中で、データプランが必要です"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"現在ローミング中で、データプランが有効になっています"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"モバイルデータ残量がありません"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"モバイルデータ残量なし"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> を通じてモバイルデータを追加する"</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"ローミング プランなし"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> を通じてローミング プランを追加する"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"ご利用の携帯通信会社（<xliff:g id="PROVIDER_NAME">%s</xliff:g>）を通じてモバイルデータまたはローミング プランを追加できます。"</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"データを追加しますか？"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"場合によっては、<xliff:g id="PROVIDER_NAME">%s</xliff:g> を通じてデータを追加する必要があります"</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"データを追加"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"キャンセル"</string>
 </resources>

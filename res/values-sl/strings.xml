@@ -172,14 +172,37 @@
     <string name="registration_done" msgid="495135664535876612">"Registrirano v omrežju."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Izbira omrežnega operaterja"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Najdi vsa razpoložljiva omrežja"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"Samodejno izberi omrežje"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Omrežje"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Samodejna registracija ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Prednostna vrsta omrežja"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Sprememba načina delovanja omrežja"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Prednostna vrsta omrežja"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="3628460389382468528">"Prednostno GSM/WCDMA"</item>
+    <item msgid="8442633436636425221">"Samo GSM"</item>
+    <item msgid="2032314385791760810">"Samo WCDMA"</item>
+    <item msgid="6334554401059422303">"Samodejno GSM/WCDMA"</item>
+    <item msgid="1462198368200398663">"Samodejno CDMA/EvDo"</item>
+    <item msgid="3611460019185359968">"CDMA brez EvDo"</item>
+    <item msgid="545430093607698090">"Samo EvDo"</item>
+    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
+    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
+    <item msgid="3471059554252610472">"Splošno"</item>
+    <item msgid="2882615514545171802">"LTE"</item>
+    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
+    <item msgid="3982984144824159726">"Samo TDSCDMA"</item>
+    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
+    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
+    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
+    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
+    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Prednostni način omrežja: prednostno WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Prednostni način omrežja: samo GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Prednostni način omrežja: samo WCDMA"</string>
@@ -197,52 +220,38 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Prednostni omrežni način: LTE/GSM/UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Prednostni način omrežja: LTE/CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Prednostni način omrežja: TDSCDMA"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="7886739962255042385">"LTE/WCDMA"</item>
-    <item msgid="577652050447385699">"LTE"</item>
-    <item msgid="6813597571293773656">"Globalno"</item>
-    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
-    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
-    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="545430093607698090">"Samo EvDo"</item>
-    <item msgid="1508557726283094448">"CDMA brez EvDo"</item>
-    <item msgid="4341433122263841224">"Samodejno CDMA/EvDo"</item>
-    <item msgid="5958053792390386668">"Samodejno GSM/WCDMA"</item>
-    <item msgid="7913148405605373434">"Samo WCDMA"</item>
-    <item msgid="1524224863879435516">"Samo GSM"</item>
-    <item msgid="3817924849415716259">"Prednostno GSM/WCDMA"</item>
-  </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Prednostni način omrežja: TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Prednostni način omrežja: LTE/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Prednostni način omrežja: TDSCDMA/GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Prednostni način omrežja: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Prednostni način omrežja: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Prednostni način omrežja: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Prednostni način omrežja: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Prednostni način omrežja: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Prednostni način omrežja: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="call_category" msgid="5863978196309462052">"Klicanje"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Omrežje"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Izboljšan način 4G LTE"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Napredno klicanje"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Uporaba storitev LTE za izboljšanje glas. in drugih komunikacij (priporočeno)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Podatki omogočeni"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Dovoli prenos podatkov"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Opozorilo"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"Gostovanje"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Med gostovanjem vzpostavi povezavo s podatkovnimi storitvami"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Med gostovanjem vzpostavi povezavo s podatkovnimi storitvami"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Podatkovna povezava ni mogoča, ker ste zapustili domače omrežje, podatkovno gostovanje pa je izklopljeno."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Stroški utegnejo biti veliki."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Želite dovoliti podatkovno gostovanje?"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="data_usage_title" msgid="8759619109516889802">"Prenesena količina podatkov"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"V obdobju <xliff:g id="ID_2">%2$s</xliff:g> je bilo v mobilnem omrežju prenesenih <xliff:g id="ID_1">%1$s</xliff:g> podatkov"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operater"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operater, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Prenos podatkov v mobilnem omrežju"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Dostop do podatkov prek mobilnega omrežja"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Klicanje prek Wi-Fi-ja"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Videoklicanje prek operaterja"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Možnosti GSM/UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"Možnosti CDMA"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Uporaba podatkov"</string>
@@ -597,6 +606,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Preveč aktivnih klicev. Preden začnete nov klic, končajte ali združite obstoječe klice."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Povezave ni mogoče vzpostaviti, vstavite veljavno kartico SIM."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Povezava Wi-Fi je bila prekinjena. Klic je končan."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Videoklica ni mogoče vzpostaviti, ker je baterija je skoraj prazna."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Videoklic se je končal, ker je baterija je skoraj prazna."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Sprememba kode PIN za sporočila v odzivniku"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Naprej"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Prekliči"</string>
@@ -609,4 +620,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"Kodi PIN se ne ujemata"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"Koda PIN za sporočila v odzivniku je posodobljena"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"Kode PIN ni mogoče nastaviti"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"Podatkovno gostovanje je izključeno"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"Podatkovno gostovanje je vključeno"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"Trenutno gostujete, potreben je podatkovni paket"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Trenutno gostujete, podatkovni paket je aktiven"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Podatkov za prenos v mobilnem omrežju ni več"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Podatkov za prenos v mobilnem omrežju ni več"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Dodaj podatke za prenos v mobilnem omrežju prek operaterja <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Ni paketa gostovanja"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Dodaj paket gostovanja prek operaterju <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Podatke za prenos v mobilnem omrežju ali paket gostovanja lahko dodate prek operaterja <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Želite dodati podatkovni paket?"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Podatkovni paket je treba morda dodati prek ponudnika <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"DODAJ PODATKOVNI PAKET"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"PREKLIČI"</string>
 </resources>

@@ -172,14 +172,37 @@
     <string name="registration_done" msgid="495135664535876612">"Reģistrēts tīklā."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Izvēlēties tīkla operatoru"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Meklēt visus pieejamos tīklus"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"Automātiski atlasīt tīklu"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Tīkls"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automātiska reģistrācija..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Ieteicamais tīkla veids"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Mainiet tīkla darbības režīmu"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Ieteicamais tīkla veids"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="3628460389382468528">"Ieteicamais režīms: GSM/WCDMA"</item>
+    <item msgid="8442633436636425221">"Tikai GSM"</item>
+    <item msgid="2032314385791760810">"Tikai WCDMA"</item>
+    <item msgid="6334554401059422303">"Automātiskais režīms: GSM/WCDMA"</item>
+    <item msgid="1462198368200398663">"Automātiskais režīms: CDMA/EvDo"</item>
+    <item msgid="3611460019185359968">"CDMA bez EvDo"</item>
+    <item msgid="545430093607698090">"Tikai EvDo"</item>
+    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="4006002265696868538">"CDMA un LTE/EvDo"</item>
+    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
+    <item msgid="3471059554252610472">"Globāls"</item>
+    <item msgid="2882615514545171802">"LTE"</item>
+    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
+    <item msgid="3982984144824159726">"Tikai TDSCDMA"</item>
+    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
+    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
+    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
+    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
+    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Ieteicamais tīkla režīms: WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Ieteicamais tīkla režīms: tikai GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Ieteicamais tīkla režīms: tikai WCDMA"</string>
@@ -197,52 +220,38 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Vēlamais tīkla režīms: LTE/GSM/UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Ieteicamais tīkla režīms: LTE/CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Vēlamais tīkla režīms: TDSCDMA"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="7886739962255042385">"LTE/WCDMA"</item>
-    <item msgid="577652050447385699">"LTE"</item>
-    <item msgid="6813597571293773656">"Vispārējs"</item>
-    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
-    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
-    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="545430093607698090">"Tikai EvDo"</item>
-    <item msgid="1508557726283094448">"CDMA bez EvDo"</item>
-    <item msgid="4341433122263841224">"CDMA/EvDo automātiski"</item>
-    <item msgid="5958053792390386668">"GSM/WCDMA automātiski"</item>
-    <item msgid="7913148405605373434">"Tikai WCDMA"</item>
-    <item msgid="1524224863879435516">"Tikai GSM"</item>
-    <item msgid="3817924849415716259">"Ieteicams GSM/WCDMA režīms"</item>
-  </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Ieteicamais tīkla režīms: TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Ieteicamais tīkla režīms: LTE/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Ieteicamais tīkla režīms: TDSCDMA/GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Ieteicamais tīkla režīms: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Ieteicamais tīkla režīms: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Ieteicamais tīkla režīms: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Ieteicamais tīkla režīms: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Ieteicamais tīkla režīms: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Ieteicamais tīkla režīms: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="call_category" msgid="5863978196309462052">"Zvanīšana"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Tīkls"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Uzlabota 4G LTE režīms"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Paplašināta zvanīšana"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Lietojiet LTE pakalpojumus, lai uzlabotu balss un cita veida saziņu (ieteicams)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Dati ir iespējoti."</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Atļaut datu izmantošanu"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Uzmanību!"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"Viesabonēšana"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Viesabonēšanas laikā izveidot savienojumu ar datu pakalpojumiem"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Viesabonēšanas laikā izveidot savienojumu ar datu pakalpojumiem"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Datu savienojamība ir zaudēta, jo mājas tīkls ar datu viesabonēšanu ir izslēgts."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Var rasties ievērojamas izmaksas."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vai atļaut datu viesabonēšanu?"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="data_usage_title" msgid="8759619109516889802">"Datu lietojums"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> mobilo datu izmantoti šādā laika periodā: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilo sakaru operators"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"mobilo sakaru operators, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobilie dati"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Piekļuve datiem, izmantojot mobilo tīklu"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi zvani"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Mobilo sakaru operatora videozvani"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS opcijas"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA opcijas"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Datu lietojums"</string>
@@ -597,6 +606,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Ir pārāk daudz aktīvu zvanu. Pirms jauna zvana veikšanas pabeidziet vai apvienojiet esošos zvanus."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Nevar izveidot savienojumu. Lūdzu, ievietojiet derīgu SIM karti."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi savienojums ir zaudēts. Zvans ir pārtraukts."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Videozvanu nevar veikt zema akumulatora līmeņa dēļ."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Videozvans tika pārtraukts zema akumulatora līmeņa dēļ."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Balss pasta PIN koda mainīšana"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Turpināt"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Atcelt"</string>
@@ -609,4 +620,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"PIN kodi neatbilst."</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"Balss pasta PIN kods atjaunināts"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"Nevar iestatīt PIN kodu."</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"Datu viesabonēšana ir izslēgta"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"Datu viesabonēšana ir ieslēgta"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"Pašlaik ir ieslēgta viesabonēšana, ir nepieciešams datu plāns"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Pašlaik ir ieslēgta viesabonēšana, datu plāns ir aktīvs"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Vairs nav mobilo datu"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Vairs nav mobilo datu"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Pievienot mobilos datus, izmantojot mobilo sakaru operatoru <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Nav viesabonēšanas plāna"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Pievienot viesabonēšanas plānu, izmantojot mobilo sakaru operatoru <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Varat pievienot mobilos datus vai viesabonēšanas plānu, izmantojot savu mobilo sakaru operatoru (<xliff:g id="PROVIDER_NAME">%s</xliff:g>)."</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Vai pievienot datus?"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Iespējams, jums būs jāpievieno dati, izmantojot mobilo sakaru operatoru <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"PIEVIENOT DATUS"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ATCELT"</string>
 </resources>

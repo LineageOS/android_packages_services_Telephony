@@ -172,14 +172,37 @@
     <string name="registration_done" msgid="495135664535876612">"Sarean erregistratuta."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Aukeratu sare-operadorea"</string>
     <string name="sum_search_networks" msgid="2921092249873272715">"Bilatu sare erabilgarri guztiak"</string>
-    <!-- no translation found for select_automatically (1046727200631770962) -->
-    <skip />
-    <!-- no translation found for network_select_title (7733107364757544558) -->
-    <skip />
+    <string name="select_automatically" msgid="1046727200631770962">"Hautatu sarea automatikoki"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"Sarea"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Erregistratze automatikoa…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Sare mota hobetsia"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Aldatu sarearen funtzionamendu modua"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Sare mota hobetsia"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="3628460389382468528">"GSM/WCDMA hobetsita"</item>
+    <item msgid="8442633436636425221">"GSM soilik"</item>
+    <item msgid="2032314385791760810">"WCDMA soilik"</item>
+    <item msgid="6334554401059422303">"GSM/WCDMA automatikoa"</item>
+    <item msgid="1462198368200398663">"CDMA/EvDo automatikoa"</item>
+    <item msgid="3611460019185359968">"EvDo gabeko CDMA"</item>
+    <item msgid="545430093607698090">"EvDo soilik"</item>
+    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
+    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
+    <item msgid="3471059554252610472">"Orokorrak"</item>
+    <item msgid="2882615514545171802">"LTE"</item>
+    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
+    <item msgid="3982984144824159726">"TDSCDMA soilik"</item>
+    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
+    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
+    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
+    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
+    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Sare modu hobetsia: WCDMA nahiago"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Sare modu hobetsia: GSM soilik"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Sare modu hobetsia: WCDMA soilik"</string>
@@ -197,52 +220,38 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Sareko modu hobetsia: LTE/GSM/UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Sare modu hobetsia: LTE/CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Sare modu hobetsia: TDSCDMA"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="7886739962255042385">"LTE/WCDMA"</item>
-    <item msgid="577652050447385699">"LTE"</item>
-    <item msgid="6813597571293773656">"Orokorra"</item>
-    <item msgid="127064712132619032">"GSM / WCDMA / LTE"</item>
-    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
-    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="545430093607698090">"EvDo soilik"</item>
-    <item msgid="1508557726283094448">"EvDo gabeko CDMA"</item>
-    <item msgid="4341433122263841224">"CDMA/EvDo automatikoa"</item>
-    <item msgid="5958053792390386668">"GSM/WCDMA automatikoa"</item>
-    <item msgid="7913148405605373434">"WCDMA soilik"</item>
-    <item msgid="1524224863879435516">"GSM soilik"</item>
-    <item msgid="3817924849415716259">"GSM/WCDMA hobetsita"</item>
-  </string-array>
-    <!-- no translation found for call_category (5863978196309462052) -->
-    <skip />
-    <!-- no translation found for network_operator_category (4830701959205735636) -->
-    <skip />
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Sareko modu hobetsia: TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Sareko modu hobetsia: LTE/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Sareko modu hobetsia: TDSCDMA/GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Sareko modu hobetsia: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Sareko modu hobetsia: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Sareko modu hobetsia: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Sareko modu hobetsia: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Sareko modu hobetsia: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Sareko modu hobetsia: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="call_category" msgid="5863978196309462052">"Deiak"</string>
+    <string name="network_operator_category" msgid="4830701959205735636">"Sarea"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"4G LTE modu hobetua"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Deitzeko aukera aurreratuak"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Erabili LTE zerbitzuak ahotsa eta bestelako komunikazioak hobetzeko (gomendatua)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Datuak gaituta"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Onartu datuak erabiltzea"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Erne"</string>
-    <!-- no translation found for roaming (7894878421600247140) -->
-    <skip />
+    <string name="roaming" msgid="7894878421600247140">"Ibiltaritza"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Konektatu datu-zerbitzuetara ibiltaritzan"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Konektatu datu-zerbitzuetara ibiltaritzan"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Datu-konexioa galdu duzu ibiltaritza desaktibatuta izanda etxeko saretik irten zarelako."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Baliteke kostu handiak ordaindu behar izatea."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Ibiltaritzako datuak baimendu nahi dituzu?"</string>
-    <!-- no translation found for data_usage_title (8759619109516889802) -->
-    <skip />
-    <!-- no translation found for data_usage_template (8065650945732671045) -->
-    <skip />
+    <string name="data_usage_title" msgid="8759619109516889802">"Datuen erabilera"</string>
+    <string name="data_usage_template" msgid="8065650945732671045">"Datuen <xliff:g id="ID_1">%1$s</xliff:g> erabili dira data hauen artean: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operadorea"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operadorea, esim, esim txartela, sim, sim txartela, euicc, euicc txartela"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <!-- no translation found for mobile_data_settings_title (3273340917802377121) -->
-    <skip />
-    <!-- no translation found for mobile_data_settings_summary (5087255915840576895) -->
-    <skip />
-    <!-- no translation found for wifi_calling_settings_title (7741961465416430470) -->
-    <skip />
-    <!-- no translation found for video_calling_settings_title (539714564273795574) -->
-    <skip />
+    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Datu mugikorrak"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Atzitu datuak datu-konexioaren bidez"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi bidezko deiak"</string>
+    <string name="video_calling_settings_title" msgid="539714564273795574">"Operadorearen bideo-deiak"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS aukerak"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA aukerak"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Datuen erabilera"</string>
@@ -599,6 +608,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Dei gehiegi daude aktibo. Amaitu edo bateratu abian diren deiak beste bat egin aurretik."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Ezin da konektatu. Erabili balio duen SIM txartel bat."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Galdu egin da Wi-Fi konexioa. Amaitu da deia."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Ezin da egin deia, bateria gutxi gelditzen delako."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Bideo-deia amaitu egin da bateria gutxi gelditzen delako."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Aldatu erantzungailuaren PIN kodea"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Jarraitu"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Utzi"</string>
@@ -611,4 +622,18 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"Ez datoz bat PIN kodeak"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"Eguneratu da erantzungailuaren PIN kodea"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"Ezin da ezarri PIN kodea"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"Desaktibatuta daude ibiltaritzako datuak"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"Aktibatuta daude ibiltaritzako datuak"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"Ibiltaritza moduan zaude une honetan. Datu-plan bat behar duzu."</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Ibiltaritza moduan zaude une honetan. Aktibatuta dago datu-plana."</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Agortu dira datu mugikorrak"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Agortu dira datu mugikorrak"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Gehitu datu mugikorrak <xliff:g id="PROVIDER_NAME">%s</xliff:g> operadorearen bidez"</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Ez dago ibiltaritza-planik"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Gehitu ibiltaritza-plan bat <xliff:g id="PROVIDER_NAME">%s</xliff:g> operadorearen bidez"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Datu mugikorrak edo ibiltaritza-plan bat gehitzeko, jarri harremanetan zure operadorearekin (<xliff:g id="PROVIDER_NAME">%s</xliff:g>)."</string>
+    <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Datuak gehitu nahi dituzu?"</string>
+    <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Agian datuak gehitu beharko dituzu <xliff:g id="PROVIDER_NAME">%s</xliff:g> operadorearen bidez"</string>
+    <string name="mobile_data_activate_button" msgid="3682400969184405446">"GEHITU DATUAK"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"UTZI"</string>
 </resources>
