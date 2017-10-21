@@ -93,7 +93,7 @@
     <string name="labelCW" msgid="6120513814915920200">"Call waiting"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"During a call, notify me of incoming calls"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"During a call, notify me of incoming calls"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Call-forwarding settings"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Call forwarding settings"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Call forwarding settings (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Call forwarding"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Always forward"</string>
