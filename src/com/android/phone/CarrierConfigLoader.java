@@ -30,16 +30,12 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.os.AsyncResult;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.PersistableBundle;
-import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.preference.PreferenceManager;
@@ -54,9 +50,7 @@ import android.util.Log;
 import com.android.internal.telephony.ICarrierConfigLoader;
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
-import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.util.FastXmlSerializer;
 import com.android.internal.util.IndentingPrintWriter;
 
@@ -170,9 +164,19 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             PersistableBundle config;
             switch (msg.what) {
                 case EVENT_CLEAR_CONFIG:
+
+                    /* Ignore clear configuration request if device is being shutdown. */
+                    Phone phone = PhoneFactory.getPhone(phoneId);
+                    if (phone != null) {
+                        if (phone.isShuttingDown()) {
+                            break;
+                        }
+                    }
+
                     if (mConfigFromDefaultApp[phoneId] == null &&
                         mConfigFromCarrierApp[phoneId] == null)
                         break;
+
                     mConfigFromDefaultApp[phoneId] = null;
                     mConfigFromCarrierApp[phoneId] = null;
                     mServiceConnection[phoneId] = null;
