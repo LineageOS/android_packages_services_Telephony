@@ -169,8 +169,17 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             switch (msg.what) {
                 case EVENT_CLEAR_CONFIG:
                 {
+                    /* Ignore clear configuration request if device is being shutdown. */
+                    Phone phone = PhoneFactory.getPhone(phoneId);
+                    if (phone != null) {
+                        if (phone.isShuttingDown()) {
+                            break;
+                        }
+                    }
+
                     if (mConfigFromDefaultApp[phoneId] == null
                             && mConfigFromCarrierApp[phoneId] == null) break;
+
                     mConfigFromDefaultApp[phoneId] = null;
                     mConfigFromCarrierApp[phoneId] = null;
                     mServiceConnection[phoneId] = null;
