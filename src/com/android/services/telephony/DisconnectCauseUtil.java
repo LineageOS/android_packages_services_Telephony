@@ -67,6 +67,7 @@ public class DisconnectCauseUtil {
                 return DisconnectCause.LOCAL;
 
             case android.telephony.DisconnectCause.NORMAL:
+            case android.telephony.DisconnectCause.NORMAL_UNSPECIFIED:
                 return DisconnectCause.REMOTE;
 
             case android.telephony.DisconnectCause.OUTGOING_CANCELED:
