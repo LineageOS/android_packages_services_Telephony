@@ -49,13 +49,13 @@ import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
-import android.telephony.ims.feature.ImsFeature;
 import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
+import android.telephony.ims.feature.ImsFeature;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -75,7 +75,6 @@ import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.phone.settings.PhoneAccountSettingsFragment;
 import com.android.settingslib.RestrictedLockUtils;
-
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -1619,7 +1618,7 @@ public class MobileNetworkSettings extends Activity  {
             } else {
                 int resId = com.android.internal.R.string.wifi_calling_off_summary;
                 if (ImsManager.isWfcEnabledByUser(mPhone.getContext())) {
-                    boolean isRoaming = mButtonDataRoam.isChecked();
+                    boolean isRoaming = mTelephonyManager.isNetworkRoaming();
                     int wfcMode = ImsManager.getWfcMode(mPhone.getContext(), isRoaming);
                     switch (wfcMode) {
                         case ImsConfig.WfcModeFeatureValueConstants.WIFI_ONLY:
