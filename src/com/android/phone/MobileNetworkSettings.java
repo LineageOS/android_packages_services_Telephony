@@ -1635,7 +1635,7 @@ public class MobileNetworkSettings extends Activity  {
             } else {
                 int resId = com.android.internal.R.string.wifi_calling_off_summary;
                 if (ImsManager.isWfcEnabledByUser(mPhone.getContext())) {
-                    boolean isRoaming = mButtonDataRoam.isChecked();
+                    boolean isRoaming = mTelephonyManager.isNetworkRoaming();
                     int wfcMode = ImsManager.getWfcMode(mPhone.getContext(), isRoaming);
                     switch (wfcMode) {
                         case ImsConfig.WfcModeFeatureValueConstants.WIFI_ONLY:
