@@ -207,7 +207,7 @@ public class PhoneGlobals extends ContextWrapper {
                     break;
 
                 case EVENT_DATA_ROAMING_DISCONNECTED:
-                    notificationMgr.showDataDisconnectedRoaming();
+                    notificationMgr.showDataDisconnectedRoaming(msg.arg1);
                     break;
 
                 case EVENT_DATA_ROAMING_OK:
@@ -842,7 +842,9 @@ public class PhoneGlobals extends ContextWrapper {
             mNoDataDueToRoaming = true;
             Log.d(LOG_TAG, "Show roaming disconnected notification");
             mDataRoamingNotifLog.log("Show");
-            mHandler.sendEmptyMessage(EVENT_DATA_ROAMING_DISCONNECTED);
+            Message msg = mHandler.obtainMessage(EVENT_DATA_ROAMING_DISCONNECTED);
+            msg.arg1 = mDefaultDataSubId;
+            msg.sendToTarget();
         } else if (mNoDataDueToRoaming && (dataAllowed
                 || !reasons.containsOnly(DataDisallowedReasonType.ROAMING_DISABLED))) {
             // Otherwise dismiss the notification we showed earlier.
