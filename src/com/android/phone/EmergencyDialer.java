@@ -183,14 +183,9 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         super.onCreate(icicle);
 
         // Allow this activity to be displayed in front of the keyguard / lockscreen.
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.flags |= WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
-
-        // When no proximity sensor is available, use a shorter timeout.
-        // TODO: Do we enable this for non proximity devices any more?
-        // lp.userActivityTimeout = USER_ACTIVITY_TIMEOUT_WHEN_NO_PROX_SENSOR;
-
-        getWindow().setAttributes(lp);
+        setShowWhenLocked(true);
+        // Allow turning screen on
+        setTurnScreenOn(true);
 
         mColorExtractor = new ColorExtractor(this);
         GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK,
