@@ -44,9 +44,14 @@ import android.telephony.TelephonyManager;
 import android.util.ArrayMap;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import com.android.internal.telephony.SubscriptionController;
 
 /**
  * Phone app module that listens for phone state changes and various other
@@ -68,7 +73,8 @@ public class CallNotifier extends Handler {
 
     private Map<Integer, CallNotifierPhoneStateListener> mPhoneStateListeners =
             new ArrayMap<Integer, CallNotifierPhoneStateListener>();
-
+    private Map<Integer, Boolean> mCFIStatus = new ArrayMap<Integer, Boolean>();
+    private Map<Integer, Boolean> mMWIStatus = new ArrayMap<Integer, Boolean>();
     private PhoneGlobals mApplication;
     private CallManager mCM;
     private BluetoothHeadset mBluetoothHeadset;
@@ -140,7 +146,7 @@ public class CallNotifier extends Handler {
                 new OnSubscriptionsChangedListener() {
                     @Override
                     public void onSubscriptionsChanged() {
-                        updatePhoneStateListeners();
+                        updatePhoneStateListeners(true);
                     }
                 });
     }
@@ -571,14 +577,26 @@ public class CallNotifier extends Handler {
                 SHOW_MESSAGE_NOTIFICATION_TIME);
     }
 
-    public void updatePhoneStateListeners() {
+    public void updatePhoneStateListeners(boolean isRefresh) {
         List<SubscriptionInfo> subInfos = mSubscriptionManager.getActiveSubscriptionInfoList();
 
-        // Unregister phone listeners for inactive subscriptions.
-        Iterator<Integer> itr = mPhoneStateListeners.keySet().iterator();
-        while (itr.hasNext()) {
-            int subId = itr.next();
+        // Sort sub id list based on slot id, so that CFI/MWI notifications will be updated for
+        // slot 0 first then slot 1. This is needed to ensure that when CFI or MWI is enabled for
+        // both slots, user always sees icon related to slot 0 on left side followed by that of
+        // slot 1.
+        List<Integer> subIdList = new ArrayList<Integer>(mPhoneStateListeners.keySet());
+        Collections.sort(subIdList, new Comparator<Integer>() {
+            public int compare(Integer sub1, Integer sub2) {
+                int slotId1 = SubscriptionController.getInstance().getSlotIndex(sub1);
+                int slotId2 = SubscriptionController.getInstance().getSlotIndex(sub2);
+                return slotId1 > slotId2 ? 0 : -1;
+            }
+        });
+
+        for (int subIdCounter = (subIdList.size() - 1); subIdCounter >= 0; subIdCounter--) {
+            int subId = subIdList.get(subIdCounter);
             if (subInfos == null || !containsSubId(subInfos, subId)) {
+                Log.d(LOG_TAG, "updatePhoneStateListeners: Hide the outstanding notifications.");
                 // Hide the outstanding notifications.
                 mApplication.notificationMgr.updateMwi(subId, false);
                 mApplication.notificationMgr.updateCfi(subId, false);
@@ -586,7 +604,16 @@ public class CallNotifier extends Handler {
                 // Listening to LISTEN_NONE removes the listener.
                 mTelephonyManager.listen(
                         mPhoneStateListeners.get(subId), PhoneStateListener.LISTEN_NONE);
-                itr.remove();
+                mPhoneStateListeners.remove(subId);
+            } else {
+                Log.d(LOG_TAG, "updatePhoneStateListeners: update CF notifications.");
+
+                if (mCFIStatus.containsKey(subId)) {
+                    mApplication.notificationMgr.updateCfi(subId, mCFIStatus.get(subId));
+                }
+                if (mMWIStatus.containsKey(subId)) {
+                    mApplication.notificationMgr.updateMwi(subId, mMWIStatus.get(subId), isRefresh);
+                }
             }
         }
 
@@ -757,14 +784,16 @@ public class CallNotifier extends Handler {
         @Override
         public void onMessageWaitingIndicatorChanged(boolean visible) {
             if (VDBG) log("onMessageWaitingIndicatorChanged(): " + this.mSubId + " " + visible);
-            mApplication.notificationMgr.updateMwi(this.mSubId, visible);
+            mMWIStatus.put(this.mSubId, visible);
+            updatePhoneStateListeners(false);
         }
 
         @Override
         public void onCallForwardingIndicatorChanged(boolean visible) {
             Log.i(LOG_TAG, "onCallForwardingIndicatorChanged(): subId=" + this.mSubId
                     + ", visible=" + (visible ? "Y" : "N"));
-            mApplication.notificationMgr.updateCfi(this.mSubId, visible);
+            mCFIStatus.put(this.mSubId, visible);
+            updatePhoneStateListeners(false);
         }
     };
 
