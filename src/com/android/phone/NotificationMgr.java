@@ -124,27 +124,6 @@ public class NotificationMgr {
         mSubscriptionManager = SubscriptionManager.from(mContext);
         mTelecomManager = TelecomManager.from(mContext);
         mTelephonyManager = (TelephonyManager) app.getSystemService(Context.TELEPHONY_SERVICE);
-
-        mSubscriptionManager.addOnSubscriptionsChangedListener(
-                new OnSubscriptionsChangedListener() {
-                    @Override
-                    public void onSubscriptionsChanged() {
-                        updateActivePhonesMwi();
-                    }
-                });
-    }
-
-    public void updateActivePhonesMwi() {
-        List<SubscriptionInfo> subInfos = mSubscriptionManager.getActiveSubscriptionInfoList();
-
-        if (subInfos == null) {
-            return;
-        }
-
-        for (int i = 0; i < subInfos.size(); i++) {
-            int subId = subInfos.get(i).getSubscriptionId();
-            refreshMwi(subId);
-        }
     }
 
     /**
@@ -196,7 +175,7 @@ public class NotificationMgr {
         if (mMwiVisible.containsKey(subId)) {
             boolean mwiVisible = mMwiVisible.get(subId);
             if (mwiVisible) {
-                updateMwi(subId, mwiVisible, true /* isRefresh */);
+                mApp.notifier.updatePhoneStateListeners(true);
             }
         }
     }
@@ -264,6 +243,10 @@ public class NotificationMgr {
             }
 
             int resId = android.R.drawable.stat_notify_voicemail;
+            if (mTelephonyManager.getPhoneCount() > 1) {
+                resId = (phone.getPhoneId() == 0) ? R.drawable.stat_notify_voicemail_sub1
+                        : R.drawable.stat_notify_voicemail_sub2;
+            }
 
             // This Notification can get a lot fancier once we have more
             // information about the current voicemail messages.
@@ -484,14 +467,18 @@ public class NotificationMgr {
             }
 
             String notificationTitle;
+            int resId = R.drawable.stat_sys_phone_call_forward;
             if (mTelephonyManager.getPhoneCount() > 1) {
+                int slotId = SubscriptionManager.getSlotIndex(subId);
+                resId = (slotId == 0) ? R.drawable.stat_sys_phone_call_forward_sub1
+                        : R.drawable.stat_sys_phone_call_forward_sub2;
                 notificationTitle = subInfo.getDisplayName().toString();
             } else {
                 notificationTitle = mContext.getString(R.string.labelCF);
             }
 
             Notification.Builder builder = new Notification.Builder(mContext)
-                    .setSmallIcon(R.drawable.stat_sys_phone_call_forward)
+                    .setSmallIcon(resId)
                     .setColor(subInfo.getIconTint())
                     .setContentTitle(notificationTitle)
                     .setContentText(mContext.getString(R.string.sum_cfu_enabled_indicator))
@@ -512,10 +499,17 @@ public class NotificationMgr {
                     builder.build(),
                     UserHandle.ALL);
         } else {
-            mNotificationManager.cancelAsUser(
-                    Integer.toString(subId) /* tag */,
-                    CALL_FORWARD_NOTIFICATION,
-                    UserHandle.ALL);
+            List<UserInfo> users = mUserManager.getUsers(true);
+            for (UserInfo user : users) {
+                if (user.isManagedProfile()) {
+                    continue;
+                }
+                UserHandle userHandle = user.getUserHandle();
+                mNotificationManager.cancelAsUser(
+                        Integer.toString(subId) /* tag */,
+                        CALL_FORWARD_NOTIFICATION,
+                        userHandle);
+            }
         }
     }
 
