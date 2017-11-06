@@ -91,6 +91,16 @@
     <protected-broadcast android:name= "android.telephony.action.SIM_SLOT_STATUS_CHANGED" />
     <protected-broadcast android:name= "android.telephony.action.SUBSCRIPTION_CARRIER_IDENTITY_CHANGED" />
 
+    <protected-broadcast android:name= "codeaurora.intent.action.ACTION_LTE_CONFIGURE" />
+    <protected-broadcast android:name= "codeaurora.intent.action.ACTION_MANAGED_ROAMING_IND" />
+    <protected-broadcast android:name= "org.codeaurora.intent.action.ACTION_DDS_SWITCH_DONE" />
+    <protected-broadcast android:name= "org.codeaurora.intent.action.ACTION_NETWORK_SPECIFIER_SET" />
+    <protected-broadcast android:name= "org.codeaurora.intent.action.ACTION_RADIO_CAPABILITY_UPDATED" />
+    <protected-broadcast android:name= "org.codeaurora.intent.action.ACTION_SET_PRIMARY_CARD_DONE" />
+    <protected-broadcast android:name= "org.codeaurora.intent.action.ACTION_UICC_MANUAL_PROVISION_STATUS_CHANGED" />
+    <protected-broadcast android:name= "org.codeaurora.intent.action.PRIMARY_CARD_CHANGED_IN_SERVICE" />
+    <protected-broadcast android:name= "org.codeaurora.intent.action.SUBSCRIPTION_INFO_RECORD_ADDED" />
+
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
