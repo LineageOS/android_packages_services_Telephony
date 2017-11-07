@@ -94,9 +94,6 @@ import java.util.List;
 
 public class MobileNetworkSettings extends Activity  {
 
-    /** @hide */
-    public static final String EXTRA_SUB_ID = "extra_sub_id";
-
     private enum TabState {
         NO_TABS, UPDATE, DO_NOTHING
     }
@@ -459,7 +456,7 @@ public class MobileNetworkSettings extends Activity  {
             Bundle data = intent.getExtras();
             int subId = -1;
             if (data != null) {
-                subId = data.getInt(EXTRA_SUB_ID, -1);
+                subId = data.getInt(Settings.EXTRA_SUB_ID, -1);
             }
             return SubscriptionManager.getSlotIndex(subId);
         }
