@@ -42,6 +42,7 @@ import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
+import android.telephony.ims.feature.ImsFeature;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -50,6 +51,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.ims.ImsConfig;
+import com.android.ims.ImsException;
 import com.android.ims.ImsManager;
 import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.Phone;
@@ -105,6 +107,7 @@ public class CallFeaturesSetting extends PreferenceActivity
     private static final String ENABLE_VIDEO_CALLING_KEY = "button_enable_video_calling";
 
     private Phone mPhone;
+    private ImsManager mImsMgr;
     private SubscriptionInfoHelper mSubscriptionInfoHelper;
     private TelecomManager mTelecomManager;
 
@@ -188,6 +191,17 @@ public class CallFeaturesSetting extends PreferenceActivity
         mTelecomManager = TelecomManager.from(this);
     }
 
+    private void updateImsManager(Phone phone) {
+        log("updateImsManager :: phone.getContext()=" + phone.getContext()
+                + " phone.getPhoneId()=" + phone.getPhoneId());
+        mImsMgr = ImsManager.getInstance(phone.getContext(), phone.getPhoneId());
+        if (mImsMgr == null) {
+            log("updateImsManager :: Could not get ImsManager instance!");
+        } else {
+            log("updateImsManager :: mImsMgr=" + mImsMgr);
+        }
+    }
+
     private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
         @Override
         public void onCallStateChanged(int state, String incomingNumber) {
@@ -210,6 +224,7 @@ public class CallFeaturesSetting extends PreferenceActivity
     protected void onResume() {
         super.onResume();
 
+        updateImsManager(mPhone);
         PreferenceScreen preferenceScreen = getPreferenceScreen();
         if (preferenceScreen != null) {
             preferenceScreen.removeAll();
@@ -346,6 +361,19 @@ public class CallFeaturesSetting extends PreferenceActivity
                 }
             }
             wifiCallingSettings.setSummary(resId);
+        }
+
+        try {
+            if (mImsMgr.getImsServiceStatus() != ImsFeature.STATE_READY) {
+                log("Feature state not ready so remove vt and wfc settings for "
+                        + " phone =" + mPhone.getPhoneId());
+                prefSet.removePreference(wifiCallingSettings);
+                prefSet.removePreference(mEnableVideoCalling);
+            }
+        } catch (ImsException ex) {
+            log("Exception when trying to get ImsServiceStatus: " + ex);
+            prefSet.removePreference(wifiCallingSettings);
+            prefSet.removePreference(mEnableVideoCalling);
         }
     }
 
