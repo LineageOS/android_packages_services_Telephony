@@ -49,6 +49,7 @@ import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
+import android.telephony.ims.feature.ImsFeature;
 import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
@@ -64,6 +65,7 @@ import android.view.ViewGroup;
 import android.widget.TabHost;
 
 import com.android.ims.ImsConfig;
+import com.android.ims.ImsException;
 import com.android.ims.ImsManager;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -230,6 +232,7 @@ public class MobileNetworkSettings extends Activity  {
 
         private UserManager mUm;
         private Phone mPhone;
+        private ImsManager mImsMgr;
         private MyHandler mHandler;
         private boolean mOkClicked;
         private boolean mExpandAdvancedFields;
@@ -566,6 +569,13 @@ public class MobileNetworkSettings extends Activity  {
                 mPhone = PhoneGlobals.getPhone();
             }
             Log.i(LOG_TAG, "updatePhone:- slotId=" + slotId + " sir=" + sir);
+
+            mImsMgr = ImsManager.getInstance(mPhone.getContext(), mPhone.getPhoneId());
+            if (mImsMgr == null) {
+                log("updatePhone :: Could not get ImsManager instance!");
+            } else if (DBG) {
+                log("updatePhone :: mImsMgr=" + mImsMgr);
+            }
         }
 
         private TabHost.TabContentFactory mEmptyTabContent = new TabHost.TabContentFactory() {
@@ -983,8 +993,16 @@ public class MobileNetworkSettings extends Activity  {
                 android.util.Log.d(LOG_TAG, "keep ltePref");
             }
 
-            if (hideEnhanced4gLteSettings(getActivity(), carrierConfig)) {
-                Preference pref = prefSet.findPreference(BUTTON_4G_LTE_KEY);
+            Preference pref = prefSet.findPreference(BUTTON_4G_LTE_KEY);
+            try {
+                if ((mImsMgr.getImsServiceStatus() != ImsFeature.STATE_READY)
+                        || hideEnhanced4gLteSettings(getActivity(), carrierConfig)) {
+                    if (pref != null) {
+                        prefSet.removePreference(pref);
+                    }
+                }
+            } catch (ImsException ex) {
+                log("Exception when trying to get ImsServiceStatus: " + ex);
                 if (pref != null) {
                     prefSet.removePreference(pref);
                 }
