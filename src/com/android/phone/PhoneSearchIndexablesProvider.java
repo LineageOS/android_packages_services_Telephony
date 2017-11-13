@@ -102,7 +102,7 @@ public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
         if (!mUserManager.isAdminUser()) {
             final String[] values = new String[]{"preferred_network_mode_key", "button_roaming_key",
                     "cdma_lte_data_service_key", "enabled_networks_key", "enhanced_4g_lte",
-                    "button_apn_key", "button_carrier_sel_key", "carrier_settings_key",
+                    "button_apn_key", "button_network_select_key", "carrier_settings_key",
                     "cdma_system_select_key", "esim_list_profile"};
             for (String nik : values) {
                 cursor.addRow(createNonIndexableRow(nik));
