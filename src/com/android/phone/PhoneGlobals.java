@@ -180,6 +180,7 @@ public class PhoneGlobals extends ContextWrapper {
 
     private final CarrierVvmPackageInstalledReceiver mCarrierVvmPackageInstalledReceiver =
             new CarrierVvmPackageInstalledReceiver();
+
     private final SettingsObserver mSettingsObserver;
 
     Handler mHandler = new Handler() {

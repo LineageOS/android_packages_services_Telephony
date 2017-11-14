@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"البريد الصوتي (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"الإشعارات"</string>
-    <string name="networks" msgid="8873030692174541976">"مشغلو الشبكة"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"عمليات البث في حالات الطوارئ"</string>
     <string name="call_settings" msgid="6112441768261754562">"إعدادات الاتصال"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"إعدادات إضافية"</string>
@@ -151,7 +150,7 @@
     <string name="voicemail_default" msgid="2001233554889016880">"مشغل شبكة الجوّال"</string>
     <string name="vm_change_pin_old_pin" msgid="7295220109886682573">"رقم التعريف الشخصي القديم"</string>
     <string name="vm_change_pin_new_pin" msgid="5412922262839438097">"رقم التعريف الشخصي الجديد"</string>
-    <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"يُرجى الانتظار."</string>
+    <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"الرجاء الانتظار."</string>
     <string name="vm_change_pin_error_too_short" msgid="5974971097302710497">"رقم التعريف الشخصي الجديد قصير جدًا."</string>
     <string name="vm_change_pin_error_too_long" msgid="8476870806115051865">"رقم التعريف الشخصي الجديد طويل جدًا."</string>
     <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"رقم التعريف الشخصي الجديد ضعيف جدًا. لا ينبغي أن تكون كلمة المرور القوية عبارة عن تسلسل متتالٍ أو أرقام متكررة."</string>
@@ -164,45 +163,17 @@
     <string name="label_available" msgid="1181658289009300430">"الشبكات المتاحة"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"جارِ البحث…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"لم يتم العثور على شبكات."</string>
-    <string name="search_networks" msgid="1601136049300882441">"بحث في الشبكات"</string>
     <string name="network_query_error" msgid="6828516148953325006">"حدث خطأ أثناء البحث عن شبكات."</string>
     <string name="register_on_network" msgid="9055203954040805084">"جارٍ التسجيل على <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"‏لا تسمح شريحة SIM بالاتصال بهذه الشبكة."</string>
     <string name="connect_later" msgid="2308119155752343975">"يتعذر الاتصال بهذه الشبكة في الوقت الحالي. حاول مرة أخرى لاحقًا."</string>
     <string name="registration_done" msgid="495135664535876612">"مسجل على الشبكة."</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"اختر مشغل شبكة جوال"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"البحث عن كل الشبكات المتاحة"</string>
     <string name="select_automatically" msgid="1046727200631770962">"تحديد الشبكة تلقائيًا"</string>
     <string name="network_select_title" msgid="7733107364757544558">"الشبكة"</string>
     <string name="register_automatically" msgid="6017849844573519637">"التسجيل التلقائي..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"نوع الشبكة المفضل"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"تغيير وضع تشغيل الشبكة"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"نوع الشبكة المفضل"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="3628460389382468528">"‏GSM/WCDMA المفضل"</item>
-    <item msgid="8442633436636425221">"‏نظام GSM فقط"</item>
-    <item msgid="2032314385791760810">"‏WCDMA فقط"</item>
-    <item msgid="6334554401059422303">"‏GSM/WCDMA تلقائي"</item>
-    <item msgid="1462198368200398663">"‏CDMA/EvDo تلقائي"</item>
-    <item msgid="3611460019185359968">"CDMA w/o EvDo"</item>
-    <item msgid="545430093607698090">"‏EvDo فقط"</item>
-    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
-    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
-    <item msgid="3471059554252610472">"عامّة"</item>
-    <item msgid="2882615514545171802">"LTE"</item>
-    <item msgid="8076204422288290116">"LTE / WCDMA"</item>
-    <item msgid="3982984144824159726">"‏TDSCDMA فقط"</item>
-    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
-    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
-    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
-    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
-    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
-    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
-    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
-    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
-    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
-  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"‏وضع الشبكة المفضل: تم تفضيل WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"‏وضع الشبكة المفضل: GSM فقط"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"‏وضع الشبكة المفضل: WCDMA فقط"</string>
@@ -220,15 +191,21 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"‏وضع الشبكة المفضل: LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"‏وضع الشبكة المفضل: LTE / CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"‏وضع الشبكة المفضَّل: TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"‏وضع الشبكة المفضل: TDSCDMA / WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"‏وضع الشبكة المفضل: LTE / TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"‏وضع الشبكة المفضل: TDSCDMA / GSM"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"‏وضع الشبكة المفضل: LTE/GSM/TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"‏وضع الشبكة المفضل: TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"‏وضع الشبكة المفضل: LTE/TDSCDMA/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"‏وضع الشبكة المفضل: LTE/TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"‏وضع الشبكة المفضل: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"‏وضع الشبكة المفضل: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="7886739962255042385">"LTE / WCDMA"</item>
+    <item msgid="577652050447385699">"LTE"</item>
+    <item msgid="6813597571293773656">"عام"</item>
+    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
+    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
+    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="545430093607698090">"‏EvDo فقط"</item>
+    <item msgid="1508557726283094448">"CDMA w/o EvDo"</item>
+    <item msgid="4341433122263841224">"‏CDMA/EvDo تلقائي"</item>
+    <item msgid="5958053792390386668">"‏GSM/WCDMA تلقائي"</item>
+    <item msgid="7913148405605373434">"‏WCDMA فقط"</item>
+    <item msgid="1524224863879435516">"‏نظام GSM فقط"</item>
+    <item msgid="3817924849415716259">"‏GSM/WCDMA المفضل"</item>
+  </string-array>
     <string name="call_category" msgid="5863978196309462052">"جارٍ الاتصال"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"الشبكة"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"‏وضع 4G LTE المحسّن"</string>
@@ -245,11 +222,16 @@
     <string name="roaming_alert_title" msgid="3654815360303826008">"السماح بتجوال البيانات؟"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"استخدام البيانات"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"تم استخدام <xliff:g id="ID_1">%1$s</xliff:g> من بيانات الجوال خلال الفترة بين <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"إعدادات متقدمة"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"مشغل شبكة الجوّال"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"‏مشغل شبكة الجوال، esim، sim، euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"بيانات الجوال"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"الوصول إلى البيانات باستخدام شبكة الجوال"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"هل تريد إيقاف تشغيل بيانات الجوّال؟"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"يلزم التحديد"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"‏هل تريد تغيير شريحة SIM للبيانات؟"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"هل تريد استخدام <xliff:g id="NEW_SIM">%1$s</xliff:g> بدلاً من <xliff:g id="OLD_SIM">%2$s</xliff:g> لبيانات الجوّال؟"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"‏الاتصال عبر Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"مكالمة فيديو باستخدام مشغل شبكة الجوال"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"‏خيارات نظام GSM/النظام العالمي لاتصالات الجوال عن بعد (UMTS)"</string>
@@ -610,8 +592,6 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"هناك الكثير من المكالمات النشطة. يرجى إنهاء أو دمج المكالمات الموجودة قبل إجراء مكالمة جديدة."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"‏يتعذر الاتصال، يُرجى إدخال شريحة SIM صالحة."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"‏تم فقدان اتصال Wi-Fi. تم إنهاء المكالمة."</string>
-    <string name="dialFailed_low_battery" msgid="8760548177088774268">"يتعذر إجراء مكالمة الفيديو نتيجة لانخفاض طاقة البطارية."</string>
-    <string name="callFailed_low_battery" msgid="4913582435905872616">"تم إنهاء مكالمة الفيديو نتيجة لانخفاض طاقة البطارية."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"تغيير رقم التعريف الشخصي للبريد الصوتي"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"متابعة"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"إلغاء"</string>

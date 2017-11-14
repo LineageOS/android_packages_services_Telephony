@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Poczta głosowa (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Poczta głosowa:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Powiadomienia"</string>
-    <string name="networks" msgid="8873030692174541976">"Operatorzy sieci"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Komunikaty alarmowe"</string>
     <string name="call_settings" msgid="6112441768261754562">"Ustawienia połączeń"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Ustawienia dodatkowe"</string>
@@ -164,45 +163,17 @@
     <string name="label_available" msgid="1181658289009300430">"Dostępne sieci"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Wyszukiwanie..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Nie znaleziono sieci."</string>
-    <string name="search_networks" msgid="1601136049300882441">"Wyszukaj sieci"</string>
     <string name="network_query_error" msgid="6828516148953325006">"Podczas wyszukiwania sieci wystąpił błąd."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Rejestrowanie w <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"Karta SIM nie pozwala na połączenia z tą siecią."</string>
     <string name="connect_later" msgid="2308119155752343975">"Nie można teraz połączyć się z tą siecią. Spróbuj ponownie później."</string>
     <string name="registration_done" msgid="495135664535876612">"Zarejestrowano w sieci."</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"Wybierz operatora sieci"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"Wyszukaj wszystkie dostępne sieci"</string>
     <string name="select_automatically" msgid="1046727200631770962">"Automatycznie wybieraj sieć"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Sieć"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatyczna rejestracja..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Preferowany typ sieci"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Zmień tryb działania sieci"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Preferowany typ sieci"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="3628460389382468528">"Preferowany GSM/WCDMA"</item>
-    <item msgid="8442633436636425221">"Tylko GSM"</item>
-    <item msgid="2032314385791760810">"Tylko WCDMA"</item>
-    <item msgid="6334554401059422303">"Automatyczny GSM/WCDMA"</item>
-    <item msgid="1462198368200398663">"Automatyczny CDMA/EvDo"</item>
-    <item msgid="3611460019185359968">"CDMA bez EvDo"</item>
-    <item msgid="545430093607698090">"Tylko EvDo"</item>
-    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
-    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
-    <item msgid="3471059554252610472">"Globalny"</item>
-    <item msgid="2882615514545171802">"LTE"</item>
-    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
-    <item msgid="3982984144824159726">"Tylko TDSCDMA"</item>
-    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
-    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
-    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
-    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
-    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
-    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
-    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
-    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
-    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
-  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Preferowany tryb sieci: preferowany WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Preferowany tryb sieci: tylko GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Preferowany tryb sieci: tylko WCDMA"</string>
@@ -220,22 +191,28 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Preferowany tryb sieci: LTE/GSM/UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Preferowany tryb sieci: LTE/CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Preferowany tryb sieci: TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Preferowany tryb sieci: TDSCDMA/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Preferowany tryb sieci: LTE/TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Preferowany tryb sieci: TDSCDMA/GSM"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Preferowany tryb sieci: LTE/GSM/TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Preferowany tryb sieci: TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Preferowany tryb sieci: LTE/TDSCDMA/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Preferowany tryb sieci: LTE/TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Preferowany tryb sieci: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Preferowany tryb sieci: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="7886739962255042385">"LTE/WCDMA"</item>
+    <item msgid="577652050447385699">"LTE"</item>
+    <item msgid="6813597571293773656">"Globalny"</item>
+    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
+    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
+    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="545430093607698090">"Tylko EvDo"</item>
+    <item msgid="1508557726283094448">"CDMA bez EvDo"</item>
+    <item msgid="4341433122263841224">"Automatyczny CDMA/EvDo"</item>
+    <item msgid="5958053792390386668">"Automatyczny GSM/WCDMA"</item>
+    <item msgid="7913148405605373434">"Tylko WCDMA"</item>
+    <item msgid="1524224863879435516">"Tylko GSM"</item>
+    <item msgid="3817924849415716259">"Preferowany GSM/WCDMA"</item>
+  </string-array>
     <string name="call_category" msgid="5863978196309462052">"Połączenia"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Sieć"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Tryb rozszerzonego 4G LTE"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Zaawansowane połączenia"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Użyj usług LTE, by poprawić łączność głosową i inną (zalecane)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Włączone przesyłanie danych"</string>
-    <string name="data_enable_summary" msgid="2382798156640007971">"Zezwalaj na użycie danych"</string>
+    <string name="data_enable_summary" msgid="2382798156640007971">"Zezwalaj na transmisję danych"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Uwaga"</string>
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Połącz z usługami transmisji danych podczas roamingu"</string>
@@ -243,13 +220,19 @@
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Połączenie transmisji danych zostało utracone, ponieważ opuszczono sieć macierzystą przy wyłączonej opcji danych w roamingu."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Mogą się z tym wiązać wysokie opłaty."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Zezwolić na roaming danych?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Użycie danych"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"Transmisja danych"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"Wykorzystano <xliff:g id="ID_1">%1$s</xliff:g> mobilnej transmisji danych w okresie <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"Zaawansowane"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operator"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operator, esim, sim, euicc"</string>
+    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
+    <skip />
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobilna transmisja danych"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Korzystaj z danych przy użyciu sieci komórkowej"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Wyłączyć mobilną transmisję danych?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"Musisz wybrać kartę"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"Zmienić kartę SIM do danych?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"Użyć karty <xliff:g id="NEW_SIM">%1$s</xliff:g> zamiast <xliff:g id="OLD_SIM">%2$s</xliff:g> do mobilnej transmisji danych?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Połączenia przez Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Rozmowy wideo w sieci operatora"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Opcje GSM/UMTS"</string>
@@ -606,8 +589,6 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Masz za dużo aktywnych połączeń. Scal lub zakończ istniejące połączenia, aby nawiązać nowe."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Nie udało się nawiązać połączenia. Włóż prawidłową kartę SIM."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Utracono połączenie Wi-Fi. Rozmowa została zakończona."</string>
-    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Nie możesz rozpocząć rozmowy wideo z powodu słabej baterii."</string>
-    <string name="callFailed_low_battery" msgid="4913582435905872616">"Rozmowa wideo została zakończona z powodu słabej baterii."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Zmień kod PIN poczty głosowej"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Dalej"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Anuluj"</string>

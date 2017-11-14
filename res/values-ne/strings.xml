@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"भ्वाइस मेल (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"सूचनाहरू"</string>
-    <string name="networks" msgid="8873030692174541976">"नेटवर्क संचालकहरू"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"आपतकालीन प्रसारणहरू"</string>
     <string name="call_settings" msgid="6112441768261754562">"कल सेटिङहरू"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"अतिरिक्त सेटिङहरू"</string>
@@ -164,45 +163,17 @@
     <string name="label_available" msgid="1181658289009300430">"उपलब्ध नेटवर्कहरू"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"खोजी गर्दै..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"कुनै नेटवर्कहरू भेटिएनन्।"</string>
-    <string name="search_networks" msgid="1601136049300882441">"नेटवर्कहरू खोज्नुहोस्"</string>
     <string name="network_query_error" msgid="6828516148953325006">"नेटवर्कको लागि खोजी कार्य गर्दा त्रुटि"</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> मा दर्ता गर्दै..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"तपाईंको SIM कार्डले यो नेटवर्कको लागि जडान अनुमति दिँदैन।"</string>
     <string name="connect_later" msgid="2308119155752343975">"यो नेटवर्कमा अहिले जडान हुन सक्दैन। पछि प्रयास गर्नुहोस्।"</string>
     <string name="registration_done" msgid="495135664535876612">"नेटवर्कमा दर्ता भयो।"</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"नेटवर्क संचालक रोज्नुहोस्"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"सम्पूर्ण उपलब्ध नेटवर्कहरूको खोजी कार्य गर्नुहोस्"</string>
     <string name="select_automatically" msgid="1046727200631770962">"नेटवर्क स्वत:छान्नुहोस्"</string>
     <string name="network_select_title" msgid="7733107364757544558">"नेटवर्क"</string>
     <string name="register_automatically" msgid="6017849844573519637">"स्वतः दर्ता..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"रुचाइएको सञ्जाल प्रकार"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"नेटवर्क संचालन मोड परिवर्तन गर्नुहोस्"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"रुचाइएको सञ्जाल प्रकार"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="3628460389382468528">"GSM/WCDMA रुचाइयो"</item>
-    <item msgid="8442633436636425221">"GSM मात्र"</item>
-    <item msgid="2032314385791760810">"WCDMA मात्र"</item>
-    <item msgid="6334554401059422303">"GSM/WCDMA स्वतः"</item>
-    <item msgid="1462198368200398663">"CDMA/EvDo स्वतः"</item>
-    <item msgid="3611460019185359968">"CDMA w/o EvDo"</item>
-    <item msgid="545430093607698090">"केवल EvDo"</item>
-    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
-    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
-    <item msgid="3471059554252610472">"विश्वव्यापी"</item>
-    <item msgid="2882615514545171802">"LTE"</item>
-    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
-    <item msgid="3982984144824159726">"TDSCDMA मात्र"</item>
-    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
-    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
-    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
-    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
-    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
-    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
-    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
-    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
-    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
-  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"रुचाइएको नेटवर्क मोड: WCDMA रुचाइएको"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"रुचाइएको नेटवर्क मोड: GSM मात्र"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"रुचाइएको नेटवर्क मोड: WCDMA मात्र"</string>
@@ -220,15 +191,21 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"रुचाइएको सञ्जाल मोड: LTE /GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"रुचाइएको नेटवर्क मोड: LTE/CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"रुचाइएको नेटवर्क मोड: TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"रुचाइएको नेटवर्क मोड: TDSCDMA / WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"रुचाइएको नेटवर्क मोड: LTE / TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"रुचाइएको नेटवर्क मोड: TDSCDMA / GSM"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"रुचाइएको नेटवर्क मोड: LTE/GSM/TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"रुचाइएको नेटवर्क मोड: TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"रुचाइएको नेटवर्क मोड: LTE/TDSCDMA/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"रुचाइएको नेटवर्क मोड: LTE/TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"रुचाइएको नेटवर्क मोड: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"रुचाइएको नेटवर्क मोड: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="7886739962255042385">"LTE/WCDMA"</item>
+    <item msgid="577652050447385699">"LTE"</item>
+    <item msgid="6813597571293773656">"विश्वव्यापी"</item>
+    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
+    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
+    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="545430093607698090">"केवल EvDo"</item>
+    <item msgid="1508557726283094448">"CDMA w/o EvDo"</item>
+    <item msgid="4341433122263841224">"CDMA/EvDo अटो"</item>
+    <item msgid="5958053792390386668">"GSM/WCDMA स्वचालित"</item>
+    <item msgid="7913148405605373434">"WCDMA मात्र"</item>
+    <item msgid="1524224863879435516">"GSM मात्र"</item>
+    <item msgid="3817924849415716259">"GSM/WCDMA रुचाइएका"</item>
+  </string-array>
     <string name="call_category" msgid="5863978196309462052">"कल गर्दै"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"नेटवर्क"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Enhanced 4G LTE Mode"</string>
@@ -241,15 +218,21 @@
     <string name="roaming_enable" msgid="7331106985174381987">"रोमिङको समयमा डेटा सेवामा जडान गर्नुहोस्"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"रोमिङको समयमा डेटा सेवा जडान गर्नुहोस्"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"तपाईँले डेटा गुमाउनु भएको छ किनभने तपाईँले डेटासहितको घर नेटवर्क रोमिङ बन्द गरेर छोड्नुभएको छ।"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"तपाईंलाई अत्यन्त धेरै शुल्क लाग्न सक्छ।"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"तपाईंलाई महत्त्वपूर्ण शुल्क लाग्न सक्छ।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिङको अनुमति दिने हो?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"डेटाको प्रयोग"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> देखि <xliff:g id="ID_2">%2$s</xliff:g> सम्म प्रयोग भएको मोबाइल डेटा"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"उन्नत"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"सेवा प्रदायक"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"सेवा प्रदायक, esim, sim, euicc"</string>
+    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
+    <skip />
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"मोबाइल डेटा"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"मोबाइल नेटवर्कको प्रयोग गरी डेटामाथि पहुँच गर्नुहोस्"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"मोबाइल डेटा निष्क्रिय पार्ने हो?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"चयन गर्न आवश्यक छ"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"डेटा सिम परिवर्तन गर्ने हो?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"मोबाइल डेटाका लागि <xliff:g id="OLD_SIM">%2$s</xliff:g> को सट्टा <xliff:g id="NEW_SIM">%1$s</xliff:g> को प्रयोग गर्ने हो?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi कल"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"सेवा प्रदायकको भिडियो कल"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS  विकल्पहरू"</string>
@@ -602,8 +585,6 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"धेरै सक्रिय कलहरू छन्। कृपया कुनै नयाँ राख्नु अघि विद्यमान कलहरूलाई अन्त्य वा मर्ज गर्नुहोस्।"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"जडान गर्न सकिएन, कृपया मान्य SIM कार्ड सम्मिलित गर्नुहोस्।"</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi जडान विच्छेद भयो। कल समाप्त भयो।"</string>
-    <string name="dialFailed_low_battery" msgid="8760548177088774268">"ब्याट्रीको चार्ज स्तर कम हुनाले तपाईं भिडियो कल गर्न सक्नुहुन्न।"</string>
-    <string name="callFailed_low_battery" msgid="4913582435905872616">"ब्याट्रीको चार्ज स्तर कम हुनाले भिडियो कल बन्द भयो।"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"भ्वाइस मेलको PIN परिवर्तन गर्नुहोस्"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"जारी राख्नुहोस्"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"रद्द गर्नुहोस्"</string>

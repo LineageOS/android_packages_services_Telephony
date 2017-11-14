@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Ovozli pochta (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Bildirishnomalar"</string>
-    <string name="networks" msgid="8873030692174541976">"Tarmoq operatorlari"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Favqulodda tarqatma xabarlar"</string>
     <string name="call_settings" msgid="6112441768261754562">"Chaqiruv sozlamalari"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Qo‘shimcha sozlamalar"</string>
@@ -164,45 +163,17 @@
     <string name="label_available" msgid="1181658289009300430">"Mavjud tarmoqlar"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Qidirilmoqda…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Birorta ham tarmoq topilmadi."</string>
-    <string name="search_networks" msgid="1601136049300882441">"Tarmoqlarni qidirish"</string>
     <string name="network_query_error" msgid="6828516148953325006">"Tarmoqlar izlanayotganda xato."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g>da ro‘yxatdan o‘tmoqda…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"SIM kartangiz ushbu tarmoqqa ulanishga ruxsat bermaydi."</string>
     <string name="connect_later" msgid="2308119155752343975">"Ushbu tarmoqqa hozirgi vaqtda ulanib bo‘lmaydi. Keyinroq urinib ko‘ring."</string>
     <string name="registration_done" msgid="495135664535876612">"Tarmoqda ro‘yxatdan o‘tgan."</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"Tarmoq operatorini tanlang"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"Barcha mavjud tarmoqlarni qidirish"</string>
     <string name="select_automatically" msgid="1046727200631770962">"Tarmoqni avtomatik tanlash"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Tarmoq"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Avtomatik ro‘yxatdan o‘tish…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tarmoq turi"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Tarmoq rejimini o‘zgartiring"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Tarmoq turi"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="3628460389382468528">"GSM/WCDMA (tavsiya qilinadi)"</item>
-    <item msgid="8442633436636425221">"Faqat GSM"</item>
-    <item msgid="2032314385791760810">"Faqat WCDMA"</item>
-    <item msgid="6334554401059422303">"GSM/WCDMA (avtorejim)"</item>
-    <item msgid="1462198368200398663">"CDMA/EvDo (avtorejim)"</item>
-    <item msgid="3611460019185359968">"CDMA (EvDo’siz)"</item>
-    <item msgid="545430093607698090">"Faqat EvDo"</item>
-    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="4006002265696868538">"CDMA va LTE/EvDo"</item>
-    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
-    <item msgid="3471059554252610472">"Jahon"</item>
-    <item msgid="2882615514545171802">"LTE"</item>
-    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
-    <item msgid="3982984144824159726">"Faqat TDSCDMA"</item>
-    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
-    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
-    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
-    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
-    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
-    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
-    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
-    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
-    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
-  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Tanlangan tarmoq rejimi: WCDMA tanlangan"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Tanlangan tarmoq rejimi: faqat GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Tanlangan tarmoq rejimi: faqat WCDMA"</string>
@@ -220,15 +191,21 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Ma’qul tarmoq rejimi: LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Ma’qul tarmoq rejimi: LTE / CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Tanlangan tarmoq rejimi: TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Tavsiya etilgan tarmoq rejimi: TDSCDMA/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Tavsiya etilgan tarmoq rejimi: LTE/TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Tavsiya etilgan tarmoq rejimi: TDSCDMA/GSM"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Tavsiya etilgan tarmoq rejimi: LTE/GSM/TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Tavsiya etilgan tarmoq rejimi: TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Tavsiya etilgan tarmoq rejimi: LTE/TDSCDMA/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Tavsiya etilgan tarmoq rejimi: LTE/TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Tavsiya etilgan tarmoq rejimi: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Tavsiya etilgan tarmoq rejimi: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="7886739962255042385">"LTE / WCDMA"</item>
+    <item msgid="577652050447385699">"LTE"</item>
+    <item msgid="6813597571293773656">"Global"</item>
+    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
+    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
+    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="545430093607698090">"Faqat EvDo"</item>
+    <item msgid="1508557726283094448">"CDMA tarmog‘i EvDo’siz"</item>
+    <item msgid="4341433122263841224">"CDMA/EvDo avto"</item>
+    <item msgid="5958053792390386668">"GSM/WCDMA avto"</item>
+    <item msgid="7913148405605373434">"Faqat WCDMA"</item>
+    <item msgid="1524224863879435516">"Faqat GSM"</item>
+    <item msgid="3817924849415716259">"GSM/WCDMA xohishingiz bo‘yicha"</item>
+  </string-array>
     <string name="call_category" msgid="5863978196309462052">"Chaqiruvlar"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Tarmoq"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Kuchaytirilgan 4G LTE rejimi"</string>
@@ -245,11 +222,17 @@
     <string name="roaming_alert_title" msgid="3654815360303826008">"Internet-roumingga ruxsat berilsinmi?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Trafik sarfi"</string>
     <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> vaqt oralig‘ida sarflangan mobil trafik: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"Qo‘shimcha sozlamalar"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Aloqa operatori"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operator, esim, sim, euicc"</string>
+    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
+    <skip />
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobil internet"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Mobil tarmoq orqali internetdan foydalanish"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Mobil internet o‘chirib qo‘yilsinmi?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"SIM kartani tanlang"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"SIM karta o‘zgartirilsinmi?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"Mobil internet uchun <xliff:g id="OLD_SIM">%2$s</xliff:g> o‘rniga <xliff:g id="NEW_SIM">%1$s</xliff:g> SIM kartasidan foydalanilsinmi?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi chaqiruv"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Operator tarmog‘i orqali video suhbatlar"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS sozlamalari"</string>
@@ -599,11 +582,9 @@
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Ochish uchun yana bosing"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"Xabarni kodsizlashda xatolik yuz berdi."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Telefoningizda rouming xizmati sozlangan va SIM karta faollashtirilgan."</string>
-    <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Hozir bir nechta chaqiruv amalda. Boshqa abonentga telefon qilishdan avval amaldagi chaqiruvlarni tugating yoki ularni konferens-aloqaga birlashtiring."</string>
+    <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Hozir bir nechta qo‘ng‘iroqlar amalda. Boshqa abonentga qo‘ng‘iroq qilishdan avval, amaldagi qo‘ng‘iroqlarni tugating yoki ularni konferens-aloqaga birlashtiring."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Ulanishda xato. Mos SIM kartani soling."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi tarmog‘iga ulanish uzildi va qo‘ng‘iroq tugatildi."</string>
-    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Batareya quvvati kam qolgani sababli video suhbat boshlab bo‘lmaydi."</string>
-    <string name="callFailed_low_battery" msgid="4913582435905872616">"Batareya quvvati kam qolgani sababli video suhbat tugatildi."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Ovozli pochta PIN kodini o‘zgartirish"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Davom etish"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Bekor qilish"</string>
