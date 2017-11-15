@@ -111,6 +111,13 @@ public class TelephonyConnectionService extends ConnectionService {
         }
     };
 
+    private final Connection.Listener mConnectionListener = new Connection.Listener() {
+        @Override
+        public void onConferenceChanged(Connection connection, Conference conference) {
+            mHoldTracker.updateHoldCapability(connection.getPhoneAccountHandle());
+        }
+    };
+
     private final TelephonyConferenceController mTelephonyConferenceController =
             new TelephonyConferenceController(mTelephonyConnectionServiceProxy);
     private final CdmaConferenceController mCdmaConferenceController =
@@ -122,6 +129,7 @@ public class TelephonyConnectionService extends ConnectionService {
     private ComponentName mExpectedComponentName = null;
     private RadioOnHelper mRadioOnHelper;
     private EmergencyTonePlayer mEmergencyTonePlayer;
+    private HoldTracker mHoldTracker;
 
     // Contains one TelephonyConnection that has placed a call and a memory of which Phones it has
     // already tried to connect with. There should be only one TelephonyConnection trying to place a
@@ -253,6 +261,7 @@ public class TelephonyConnectionService extends ConnectionService {
         mExpectedComponentName = new ComponentName(this, this.getClass());
         mEmergencyTonePlayer = new EmergencyTonePlayer(this);
         TelecomAccountRegistry.getInstance(this).setTelephonyConnectionService(this);
+        mHoldTracker = new HoldTracker();
     }
 
     @Override
@@ -860,6 +869,41 @@ public class TelephonyConnectionService extends ConnectionService {
         }
     }
 
+    @Override
+    public void onConnectionAdded(Connection connection) {
+        if (connection instanceof Holdable && !isExternalConnection(connection)) {
+            connection.addConnectionListener(mConnectionListener);
+            mHoldTracker.addHoldable(
+                    connection.getPhoneAccountHandle(), (Holdable) connection);
+        }
+    }
+
+    @Override
+    public void onConnectionRemoved(Connection connection) {
+        if (connection instanceof Holdable && !isExternalConnection(connection)) {
+            mHoldTracker.removeHoldable(connection.getPhoneAccountHandle(), (Holdable) connection);
+        }
+    }
+
+    @Override
+    public void onConferenceAdded(Conference conference) {
+        if (conference instanceof Holdable) {
+            mHoldTracker.addHoldable(conference.getPhoneAccountHandle(), (Holdable) conference);
+        }
+    }
+
+    @Override
+    public void onConferenceRemoved(Conference conference) {
+        if (conference instanceof Holdable) {
+            mHoldTracker.removeHoldable(conference.getPhoneAccountHandle(), (Holdable) conference);
+        }
+    }
+
+    private boolean isExternalConnection(Connection connection) {
+        return (connection.getConnectionProperties() & Connection.PROPERTY_IS_EXTERNAL_CALL)
+                == Connection.PROPERTY_IS_EXTERNAL_CALL;
+    }
+
     private boolean blockCallForwardingNumberWhileRoaming(Phone phone, String number) {
         if (phone == null || TextUtils.isEmpty(number) || !phone.getServiceState().getRoaming()) {
             return false;
@@ -969,7 +1013,7 @@ public class TelephonyConnectionService extends ConnectionService {
         // on which phone account ECall can be placed. After deciding, we should notify Telecom of
         // the change so that the proper PhoneAccount can be displayed.
         Log.i(this, "updatePhoneAccount setPhoneAccountHandle, account = " + pHandle);
-        connection.notifyPhoneAccountChanged(pHandle);
+        connection.setPhoneAccountHandle(pHandle);
     }
 
     private void placeOutgoingConnection(
