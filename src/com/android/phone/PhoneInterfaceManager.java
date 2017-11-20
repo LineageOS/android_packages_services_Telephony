@@ -79,6 +79,7 @@ import com.android.ims.internal.IImsServiceController;
 import com.android.ims.internal.IImsServiceFeatureListener;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
+import com.android.internal.telephony.CarrierInfoManager;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.DefaultPhoneNotifier;
@@ -3269,6 +3270,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 setPreferredNetworkType(subId, Phone.PREFERRED_NT_MODE);
                 // Turn off roaming
                 mPhone.setDataRoamingEnabled(false);
+                // Remove IMSI encryption keys from Carrier DB.
+                CarrierInfoManager.deleteAllCarrierKeysForImsiEncryption(mPhone.getContext());
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
