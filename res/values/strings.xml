@@ -543,6 +543,14 @@
     <string name="mobile_data_settings_title">Mobile Data</string>
     <!-- Mobile network settings screen, title of Mobile Data switch preference -->
     <string name="mobile_data_settings_summary">Access data using mobile network</string>
+    <!-- Message to show when user trying to turn off mobile data, in single sim mode [CHAR LIMIT=100]-->
+    <string name="data_usage_disable_mobile">Turn off mobile data?</string>
+    <!-- When a SIM preference hasn't been selected yet, this string is displayed as the pref summary until the user chooses a SIM subscription from the preference list [CHAR LIMIT=50] -->
+    <string name="sim_selection_required_pref">Selection required</string>
+    <!-- Title asking user if they wish to change the default sim for cellular data.  [CHAR LIMIT=30] -->
+    <string name="sim_change_data_title">Change data SIM?</string>
+    <!-- Message confirming the user wishes to change the default data SIM from one to another.  [CHAR LIMIT=NONE] -->
+    <string name="sim_change_data_message">Use <xliff:g id="new_sim">%1$s</xliff:g> instead of <xliff:g id="old_sim">%2$s</xliff:g> for mobile data?</string>
     <!-- Mobile network settings screen, title of Wi-Fi calling setting -->
     <string name="wifi_calling_settings_title">Wi-Fi calling</string>
     <!-- Mobile network settings screen, title of Video calling setting -->
