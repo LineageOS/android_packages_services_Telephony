@@ -598,7 +598,7 @@
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Zana za walio na matatizo ya kuona au kusikia"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"Simu ya Wi-Fi kutoka kwa"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Simu ya Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Gonga tena ili ufungue"</string>
+    <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Gusa tena ili ufungue"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"Hitilafu imetokea wakati wa usimbuaji wa ujumbe."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM kadi yako imeanzisha huduma yako na kusasisha uwezo wa simu yako wa kutumia mitandao mingine."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Kuna simu nyingi mno zinazoendelea. Tafadhali kata au uunganishe simu zinazoendelea kabla hujapiga nyingine."</string>
