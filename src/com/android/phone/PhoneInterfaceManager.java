@@ -38,8 +38,8 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
-import android.os.Process;
 import android.os.PersistableBundle;
+import android.os.Process;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.UserHandle;
@@ -76,8 +76,9 @@ import android.util.Pair;
 import android.util.Slog;
 
 import com.android.ims.ImsManager;
-import com.android.ims.internal.IImsServiceController;
-import com.android.ims.internal.IImsServiceFeatureListener;
+import com.android.ims.internal.IImsMMTelFeature;
+import com.android.ims.internal.IImsRcsFeature;
+import com.android.ims.internal.IImsServiceFeatureCallback;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.CellNetworkScanResult;
@@ -2562,16 +2563,37 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Returns the {@link IImsServiceController} that corresponds to the given slot Id and IMS
-     * feature or {@link null} if the service is not available. If an ImsServiceController is
-     * available, the {@link IImsServiceFeatureListener} callback is registered as a listener for
-     * feature updates.
+     * Returns the {@link IImsMMTelFeature} that corresponds to the given slot Id for the MMTel
+     * feature or {@link null} if the service is not available. If the feature is available, the
+     * {@link IImsServiceFeatureCallback} callback is registered as a listener for feature updates.
      */
-    public IImsServiceController getImsServiceControllerAndListen(int slotIndex, int feature,
-            IImsServiceFeatureListener callback) {
+    public IImsMMTelFeature getMMTelFeatureAndListen(int slotId,
+            IImsServiceFeatureCallback callback) {
         enforceModifyPermission();
-        return PhoneFactory.getImsResolver().getImsServiceControllerAndListen(slotIndex, feature,
-                callback);
+        return PhoneFactory.getImsResolver().getMMTelFeatureAndListen(slotId, callback);
+    }
+
+    /**
+     * Returns the {@link IImsMMTelFeature} that corresponds to the given slot Id for the MMTel
+     * feature during emergency calling or {@link null} if the service is not available. If the
+     * feature is available, the {@link IImsServiceFeatureCallback} callback is registered as a
+     * listener for feature updates.
+     */
+    public IImsMMTelFeature getEmergencyMMTelFeatureAndListen(int slotId,
+            IImsServiceFeatureCallback callback) {
+        enforceModifyPermission();
+        return PhoneFactory.getImsResolver().getEmergencyMMTelFeatureAndListen(slotId, callback);
+    }
+
+    /**
+     * Returns the {@link IImsRcsFeature} that corresponds to the given slot Id for the RCS
+     * feature during emergency calling or {@link null} if the service is not available. If the
+     * feature is available, the {@link IImsServiceFeatureCallback} callback is registered as a
+     * listener for feature updates.
+     */
+    public IImsRcsFeature getRcsFeatureAndListen(int slotId, IImsServiceFeatureCallback callback) {
+        enforceModifyPermission();
+        return PhoneFactory.getImsResolver().getRcsFeatureAndListen(slotId, callback);
     }
 
     public void setImsRegistrationState(boolean registered) {
