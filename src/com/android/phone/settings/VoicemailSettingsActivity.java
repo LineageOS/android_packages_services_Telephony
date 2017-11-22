@@ -32,6 +32,7 @@ import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.ContactsContract.CommonDataKinds;
 import android.provider.Settings;
+import android.telecom.PhoneAccountHandle;
 import android.telephony.CarrierConfigManager;
 import android.telephony.TelephonyManager;
 import android.text.BidiFormatter;
@@ -48,6 +49,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.util.NotificationChannelController;
 import com.android.phone.EditPhoneNumberPreference;
 import com.android.phone.PhoneGlobals;
+import com.android.phone.PhoneUtils;
 import com.android.phone.R;
 import com.android.phone.SubscriptionInfoHelper;
 
@@ -222,6 +224,12 @@ public class VoicemailSettingsActivity extends PreferenceActivity
         mShowVoicemailPreference = (icicle == null) &&
                 TextUtils.equals(getIntent().getAction(), ACTION_ADD_VOICEMAIL);
 
+        PhoneAccountHandle phoneAccountHandle = (PhoneAccountHandle)
+                getIntent().getParcelableExtra(TelephonyManager.EXTRA_PHONE_ACCOUNT_HANDLE);
+        if (phoneAccountHandle != null) {
+            getIntent().putExtra(SubscriptionInfoHelper.SUB_ID_EXTRA,
+                    PhoneUtils.getSubIdForPhoneAccountHandle(phoneAccountHandle));
+        }
         mSubscriptionInfoHelper = new SubscriptionInfoHelper(this, getIntent());
         mSubscriptionInfoHelper.setActionBarTitle(
                 getActionBar(), getResources(), R.string.voicemail_settings_with_label);
