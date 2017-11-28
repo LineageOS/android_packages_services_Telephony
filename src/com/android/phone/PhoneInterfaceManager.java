@@ -39,7 +39,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.PersistableBundle;
-import android.os.Process;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.UserHandle;
@@ -1768,6 +1767,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
       }
       Phone phone = PhoneFactory.getPhone(slotIndex);
       return phone == null ? null : phone.getDeviceSvn();
+    }
+
+    @Override
+    public int getSubscriptionCarrierId(int subId) {
+        final Phone phone = getPhone(subId);
+        return phone == null ? TelephonyManager.UNKNOWN_CARRIER_ID : phone.getCarrierId();
+    }
+
+    @Override
+    public String getSubscriptionCarrierName(int subId) {
+        final Phone phone = getPhone(subId);
+        return phone == null ? null : phone.getCarrierName();
     }
 
     //
