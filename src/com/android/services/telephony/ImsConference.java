@@ -636,6 +636,11 @@ public class ImsConference extends Conference {
             return;
         }
 
+        if (parent != null && !parent.isManageImsConferenceCallSupported()) {
+            Log.i(this, "handleConferenceParticipantsUpdate: manage conference is disallowed");
+            return;
+        }
+
         Log.i(this, "handleConferenceParticipantsUpdate: size=%d", participants.size());
 
         // Perform the update in a synchronized manner.  It is possible for the IMS framework to
