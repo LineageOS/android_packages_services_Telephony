@@ -1768,6 +1768,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
       return phone == null ? null : phone.getDeviceSvn();
     }
 
+    @Override
+    public int getSubscriptionCarrierId(int subId) {
+        final Phone phone = getPhone(subId);
+        return phone == null ? TelephonyManager.UNKNOWN_CARRIER_ID : phone.getCarrierId();
+    }
+
+    @Override
+    public String getSubscriptionCarrierName(int subId) {
+        final Phone phone = getPhone(subId);
+        return phone == null ? null : phone.getCarrierName();
+    }
+
     //
     // Internal helper methods.
     //
