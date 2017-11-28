@@ -498,6 +498,12 @@ abstract class TelephonyConnection extends Connection {
     private boolean mIsConferenceSupported;
 
     /**
+     * Indicates whether managing conference call is supported after this connection being
+     * a part of a IMS conference.
+     */
+    private boolean mIsManageImsConferenceCallSupported;
+
+    /**
      * Indicates whether the carrier supports video conferencing; captures the current state of the
      * carrier config
      * {@link android.telephony.CarrierConfigManager#KEY_SUPPORT_VIDEO_CONFERENCE_CALL_BOOL}.
@@ -1644,6 +1650,26 @@ abstract class TelephonyConnection extends Connection {
      */
     public boolean isConferenceSupported() {
         return mIsConferenceSupported;
+    }
+
+    /**
+     * Sets whether managing conference call is supported after this connection being a part of a
+     * Ims conference.
+     *
+     * @param isManageImsConferenceCallSupported {@code true} if manage conference calling is
+     *        supported after this connection being a part of a IMS conference,
+     *        {@code false} otherwise.
+     */
+    public void setManageImsConferenceCallSupported(boolean isManageImsConferenceCallSupported) {
+        mIsManageImsConferenceCallSupported = isManageImsConferenceCallSupported;
+    }
+
+    /**
+     * @return {@code true} if manage conference calling is supported after this connection being a
+     * part of a IMS conference.
+     */
+    public boolean isManageImsConferenceCallSupported() {
+        return mIsManageImsConferenceCallSupported;
     }
 
     /**

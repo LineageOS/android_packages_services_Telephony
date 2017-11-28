@@ -1046,6 +1046,9 @@ public class TelephonyConnectionService extends ConnectionService {
             returnConnection.setVideoPauseSupported(
                     TelecomAccountRegistry.getInstance(this).isVideoPauseSupported(
                             phoneAccountHandle));
+            returnConnection.setManageImsConferenceCallSupported(
+                    TelecomAccountRegistry.getInstance(this).isManageImsConferenceCallSupported(
+                            phoneAccountHandle));
         }
         return returnConnection;
     }
