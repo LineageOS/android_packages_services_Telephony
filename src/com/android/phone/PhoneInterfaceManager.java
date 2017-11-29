@@ -39,7 +39,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.PersistableBundle;
-import android.os.Process;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.UserHandle;
@@ -1541,7 +1540,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         int subId = mSubscriptionController.getDefaultDataSubId();
         final Phone phone = getPhone(subId);
         if (phone != null) {
-            phone.setDataEnabled(true);
+            phone.setUserDataEnabled(true);
             return true;
         } else {
             return false;
@@ -1555,7 +1554,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         int subId = mSubscriptionController.getDefaultDataSubId();
         final Phone phone = getPhone(subId);
         if (phone != null) {
-            phone.setDataEnabled(false);
+            phone.setUserDataEnabled(false);
             return true;
         } else {
             return false;
@@ -2746,28 +2745,46 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param enable {@code true} turn turn data on, else {@code false}
      */
     @Override
-    public void setDataEnabled(int subId, boolean enable) {
+    public void setUserDataEnabled(int subId, boolean enable) {
         enforceModifyPermissionOrCarrierPrivilege(subId);
         int phoneId = mSubscriptionController.getPhoneId(subId);
-        if (DBG) log("getDataEnabled: subId=" + subId + " phoneId=" + phoneId);
+        if (DBG) log("setUserDataEnabled: subId=" + subId + " phoneId=" + phoneId);
         Phone phone = PhoneFactory.getPhone(phoneId);
         if (phone != null) {
-            if (DBG) log("setDataEnabled: subId=" + subId + " enable=" + enable);
-            phone.setDataEnabled(enable);
+            if (DBG) log("setUserDataEnabled: subId=" + subId + " enable=" + enable);
+            phone.setUserDataEnabled(enable);
         } else {
-            loge("setDataEnabled: no phone for subId=" + subId);
+            loge("setUserDataEnabled: no phone for subId=" + subId);
         }
     }
 
     /**
-     * Get whether mobile data is enabled.
+     * Get the user enabled state of Mobile Data.
+     *
+     * TODO: remove and use isUserDataEnabled.
+     * This can't be removed now because some vendor codes
+     * calls through ITelephony directly while they should
+     * use TelephonyManager.
+     *
+     * @return true on enabled
+     */
+    @Override
+    public boolean getDataEnabled(int subId) {
+        return isUserDataEnabled(subId);
+    }
+
+    /**
+     * Get whether mobile data is enabled per user setting.
+     *
+     * There are other factors deciding whether mobile data is actually enabled, but they are
+     * not considered here. See {@link #isDataEnabled(int)} for more details.
      *
      * Accepts either ACCESS_NETWORK_STATE, MODIFY_PHONE_STATE or carrier privileges.
      *
      * @return {@code true} if data is enabled else {@code false}
      */
     @Override
-    public boolean getDataEnabled(int subId) {
+    public boolean isUserDataEnabled(int subId) {
         try {
             mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
                     null);
@@ -2775,14 +2792,45 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             enforceModifyPermissionOrCarrierPrivilege(subId);
         }
         int phoneId = mSubscriptionController.getPhoneId(subId);
-        if (DBG) log("getDataEnabled: subId=" + subId + " phoneId=" + phoneId);
+        if (DBG) log("isUserDataEnabled: subId=" + subId + " phoneId=" + phoneId);
         Phone phone = PhoneFactory.getPhone(phoneId);
         if (phone != null) {
-            boolean retVal = phone.getDataEnabled();
-            if (DBG) log("getDataEnabled: subId=" + subId + " retVal=" + retVal);
+            boolean retVal = phone.isUserDataEnabled();
+            if (DBG) log("isUserDataEnabled: subId=" + subId + " retVal=" + retVal);
             return retVal;
         } else {
-            if (DBG) loge("getDataEnabled: no phone subId=" + subId + " retVal=false");
+            if (DBG) loge("isUserDataEnabled: no phone subId=" + subId + " retVal=false");
+            return false;
+        }
+    }
+
+    /**
+     * Get whether mobile data is enabled.
+     *
+     * Comparable to {@link #isUserDataEnabled(int)}, this considers all factors deciding
+     * whether mobile data is actually enabled.
+     *
+     * Accepts either ACCESS_NETWORK_STATE, MODIFY_PHONE_STATE or carrier privileges.
+     *
+     * @return {@code true} if data is enabled else {@code false}
+     */
+    @Override
+    public boolean isDataEnabled(int subId) {
+        try {
+            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
+                    null);
+        } catch (Exception e) {
+            enforceModifyPermissionOrCarrierPrivilege(subId);
+        }
+        int phoneId = mSubscriptionController.getPhoneId(subId);
+        if (DBG) log("isDataEnabled: subId=" + subId + " phoneId=" + phoneId);
+        Phone phone = PhoneFactory.getPhone(phoneId);
+        if (phone != null) {
+            boolean retVal = phone.isDataEnabled();
+            if (DBG) log("isDataEnabled: subId=" + subId + " retVal=" + retVal);
+            return retVal;
+        } else {
+            if (DBG) loge("isDataEnabled: no phone subId=" + subId + " retVal=false");
             return false;
         }
     }
@@ -3286,7 +3334,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (SubscriptionManager.isUsableSubIdValue(subId) && !mUserManager.hasUserRestriction(
                     UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
                 // Enable data
-                setDataEnabled(subId, true);
+                setUserDataEnabled(subId, true);
                 // Set network selection mode to automatic
                 setNetworkSelectionModeAutomatic(subId);
                 // Set preferred mobile network type to the best available
