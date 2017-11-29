@@ -174,6 +174,32 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ประเภทเครือข่ายที่ต้องการ"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"เปลี่ยนโหมดปฏิบัติการของเครือข่าย"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ประเภทเครือข่ายที่ต้องการ"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(ห้ามใช้)"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="3628460389382468528">"ต้องการ GSM/WCDMA"</item>
+    <item msgid="8442633436636425221">"GSM เท่านั้น"</item>
+    <item msgid="2032314385791760810">"WCDMA เท่านั้น"</item>
+    <item msgid="6334554401059422303">"GSM/WCDMA อัตโนมัติ"</item>
+    <item msgid="1462198368200398663">"CDMA/EvDo อัตโนมัติ"</item>
+    <item msgid="3611460019185359968">"CDMA ที่ไม่มี EvDo"</item>
+    <item msgid="545430093607698090">"EvDo เท่านั้น"</item>
+    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
+    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
+    <item msgid="3471059554252610472">"ทั่วไป"</item>
+    <item msgid="2882615514545171802">"LTE"</item>
+    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
+    <item msgid="3982984144824159726">"TDSCDMA เท่านั้น"</item>
+    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
+    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
+    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
+    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
+    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"โหมดเครือข่ายที่ต้องการ: ต้องการ WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"โหมดเครือข่ายที่ต้องการ: GSM เท่านั้น"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"โหมดเครือข่ายที่ต้องการ: WCDMA เท่านั้น"</string>
@@ -191,21 +217,15 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"โหมดเครือข่ายที่ต้องการ: LTE/GSM/UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"โหมดเครือข่ายที่ต้องการ: LTE/CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"โหมดเครือข่ายที่ต้องการ: TDSCDMA"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="7886739962255042385">"LTE / WCDMA"</item>
-    <item msgid="577652050447385699">"LTE"</item>
-    <item msgid="6813597571293773656">"ทั่วโลก"</item>
-    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
-    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
-    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="545430093607698090">"EvDo เท่านั้น"</item>
-    <item msgid="1508557726283094448">"CDMA ที่ไม่มี EvDo"</item>
-    <item msgid="4341433122263841224">"CDMA/EvDo อัตโนมัติ"</item>
-    <item msgid="5958053792390386668">"GSM/WCDMA อัตโนมัติ"</item>
-    <item msgid="7913148405605373434">"WCDMA เท่านั้น"</item>
-    <item msgid="1524224863879435516">"GSM เท่านั้น"</item>
-    <item msgid="3817924849415716259">"ต้องการ GSM/WCDMA"</item>
-  </string-array>
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"โหมดเครือข่ายที่ต้องการ: TDSCDMA / WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"โหมดเครือข่ายที่ต้องการ: LTE / TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"โหมดเครือข่ายที่ต้องการ: TDSCDMA / GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"โหมดเครือข่ายที่ต้องการ: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"โหมดเครือข่ายที่ต้องการ: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"โหมดเครือข่ายที่ต้องการ: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"โหมดเครือข่ายที่ต้องการ: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"โหมดเครือข่ายที่ต้องการ: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"โหมดเครือข่ายที่ต้องการ: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="call_category" msgid="5863978196309462052">"กำลังโทร"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"เครือข่าย"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"โหมด 4G LTE ที่ปรับปรุงแล้ว"</string>
@@ -221,13 +241,12 @@
     <string name="roaming_warning" msgid="1603164667540144353">"คุณอาจต้องเสียค่าใช้จ่ายมาก"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"อนุญาตการโรมมิ่งอินเทอร์เน็ตไหม"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"ปริมาณการใช้อินเทอร์เน็ต"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"เน็ตมือถือ <xliff:g id="ID_1">%1$s</xliff:g> ที่ใช้ระหว่าง <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"เน็ตมือถือ <xliff:g id="ID_1">%1$s</xliff:g> ที่ใช้ระหว่าง <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"ขั้นสูง"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ผู้ให้บริการ"</string>
-    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
-    <skip />
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"ผู้ให้บริการ, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"เน็ตมือถือ"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"อินเทอร์เน็ตมือถือ"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"เข้าถึงข้อมูลโดยใช้เครือข่ายมือถือ"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"ปิดเน็ตมือถือไหม"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"ต้องเลือก"</string>
@@ -380,7 +399,7 @@
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"ตั้งค่าโหมด TTY"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"ลองซ้ำอัตโนมัติ"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"เปิดใช้งานโหมดลองซ้ำอัตโนมัติ"</string>
-    <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"ไม่อนุญาตการเปลี่ยนโหมด TTY ในระหว่างแฮงเอาท์วิดีโอ"</string>
+    <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"ไม่อนุญาตการเปลี่ยนโหมด TTY ในระหว่าง Hangouts วิดีโอ"</string>
     <string name="menu_add" msgid="1882023737425114762">"เพิ่มรายชื่อติดต่อ"</string>
     <string name="menu_edit" msgid="7143003705504672374">"แก้ไขรายชื่อติดต่อ"</string>
     <string name="menu_delete" msgid="3977150783449642851">"ลบรายชื่อติดต่อ"</string>
@@ -465,7 +484,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"เครือข่ายมือถือไม่พร้อมใช้งาน โปรดเชื่อมต่อเครือข่ายไร้สายเพื่อโทรออก"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"หากต้องการโทรออก โปรดป้อนหมายเลขที่ถูกต้อง"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"การโทรล้มเหลว"</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"ไม่สามารถเพิ่มสายได้ในขณะนี้"</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"เพิ่มการโทรไม่ได้ในขณะนี้ คุณสามารถพยายามติดต่อได้โดยการส่งข้อความ"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"บริการนี้ไม่ได้รับการสนับสนุน"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"ไม่สามารถสลับสายได้"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"ไม่สามารถแยกสายได้"</string>
@@ -493,7 +512,7 @@
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"จัดการการโทร"</string>
     <string name="onscreenManageConferenceText" msgid="6485935856534311346">"จัดการการประชุม"</string>
     <string name="onscreenAudioText" msgid="1710087112800041743">"เสียง"</string>
-    <string name="onscreenVideoCallText" msgid="4800924186056115442">"แฮงเอาท์วิดีโอ"</string>
+    <string name="onscreenVideoCallText" msgid="4800924186056115442">" Hangouts วิดีโอ"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"นำเข้า"</string>
     <string name="importAllSimEntries" msgid="1503181169636198673">"นำเข้าทั้งหมด"</string>
     <string name="importingSimContacts" msgid="7374056215462575769">"กำลังนำเข้าสมุดโทรศัพท์ในซิม"</string>
@@ -569,8 +588,8 @@
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"เปลี่ยน PIN"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"เสียงเรียกเข้าและสั่น"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"ซิมการ์ดในตัว"</string>
-    <string name="enable_video_calling_title" msgid="7237253660669000899">"เปิดแฮงเอาท์วิดีโอ"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"หากต้องการเปิดแฮงเอาท์วิดีโอ คุณจะต้องเปิดใช้โหมด 4G LTE ที่ปรับปรุงแล้วในการตั้งค่าเครือข่าย"</string>
+    <string name="enable_video_calling_title" msgid="7237253660669000899">"เปิด Hangouts วิดีโอ"</string>
+    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"หากต้องการเปิด Hangouts วิดีโอ คุณจะต้องเปิดใช้โหมด 4G LTE ที่ปรับปรุงแล้วในการตั้งค่าเครือข่าย"</string>
     <string name="enable_video_calling_dialog_settings" msgid="576528473599603249">"การตั้งค่าเครือข่าย"</string>
     <string name="enable_video_calling_dialog_close" msgid="7411471282167927991">"ปิด"</string>
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"หมายเลขฉุกเฉิน"</string>
@@ -585,6 +604,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"มีสายที่ใช้งานอยู่มากเกินไป โปรดวางสายหรือรวมสายที่มีก่อนโทรออกครั้งใหม่"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"ไม่สามารถเชื่อมต่อ โปรดใส่ซิมการ์ดที่ถูกต้อง"</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"การเชื่อมต่อ Wi-Fi ถูกตัด วางสายแล้ว"</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"ไม่สามารถใช้วิดีโอคอลได้เนื่องจากแบตเตอรี่เหลือน้อย"</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"วิดีโอคอลสิ้นสุดแล้วเนื่องจากแบตเตอรี่เหลือน้อย"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"เปลี่ยน PIN ข้อความเสียง"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ดำเนินการต่อ"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"ยกเลิก"</string>

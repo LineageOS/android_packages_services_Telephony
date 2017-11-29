@@ -119,7 +119,7 @@
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Desativado"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"O seu operador não suporta a desativação do reencaminhamento de chamadas quando o telemóvel não está acessível."</string>
     <string name="updating_title" msgid="6146755386174019046">"Definições de chamadas"</string>
-    <string name="call_settings_admin_user_only" msgid="4526094783818216374">"As definições de chamadas só podem ser alteradas pelo utilizador administrador."</string>
+    <string name="call_settings_admin_user_only" msgid="4526094783818216374">"As definições de chamadas só podem ser alteradas pelo utilizador gestor."</string>
     <string name="call_settings_with_label" msgid="3401177261468593519">"Definições (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="7970259216988931777">"Erro nas definições de chamada"</string>
     <string name="reading_settings" msgid="1920291699287055284">"A ler as definições..."</string>
@@ -174,6 +174,32 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tipo de rede preferencial"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Alterar o modo de funcionamento em rede"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Tipo de rede preferencial"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(proibida)"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="3628460389382468528">"GSM/WCDMA preferido"</item>
+    <item msgid="8442633436636425221">"Apenas GSM"</item>
+    <item msgid="2032314385791760810">"Apenas WCDMA"</item>
+    <item msgid="6334554401059422303">"GSM/WCDMA automático"</item>
+    <item msgid="1462198368200398663">"CDMA/EvDo automático"</item>
+    <item msgid="3611460019185359968">"CDMA sem EvDo"</item>
+    <item msgid="545430093607698090">"Apenas EvDo"</item>
+    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
+    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
+    <item msgid="3471059554252610472">"Global"</item>
+    <item msgid="2882615514545171802">"LTE"</item>
+    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
+    <item msgid="3982984144824159726">"Apenas TDSCDMA"</item>
+    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
+    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
+    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
+    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
+    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Modo de rede preferido: apenas WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Modo de rede preferido: apenas GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Modo de rede preferido: apenas WCDMA"</string>
@@ -191,21 +217,15 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Modo de rede preferido: LTE/GSM/UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Modo de rede preferido: LTE/CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Modo de rede preferido: TDSCDMA"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="7886739962255042385">"LTE/WCDMA"</item>
-    <item msgid="577652050447385699">"LTE"</item>
-    <item msgid="6813597571293773656">"Global"</item>
-    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
-    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
-    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="545430093607698090">"Apenas EvDo"</item>
-    <item msgid="1508557726283094448">"CDMA sem EvDo"</item>
-    <item msgid="4341433122263841224">"CDMA/EvDo automático"</item>
-    <item msgid="5958053792390386668">"GSM/WCDMA automático"</item>
-    <item msgid="7913148405605373434">"Apenas WCDMA"</item>
-    <item msgid="1524224863879435516">"Apenas GSM"</item>
-    <item msgid="3817924849415716259">"GSM/WCDMA preferido"</item>
-  </string-array>
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Modo de rede preferido: TDSCDMA/WCDMAA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Modo de rede preferido: LTE/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Modo de rede preferido: TDSCDMA/GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Modo de rede preferido: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Modo de rede preferido: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Modo de rede preferido: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Modo de rede preferido: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Modo de rede preferido: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Modo de rede preferido: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="call_category" msgid="5863978196309462052">"Chamadas"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Rede"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Modo 4G LTE avançado"</string>
@@ -221,13 +241,12 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Podem ser cobrados custos significativos."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Pretende permitir roaming de dados?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Utilização de dados"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> de dados móveis utilizados entre <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de dados móveis utilizados entre <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avançadas"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operador"</string>
-    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
-    <skip />
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operador, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Dados móveis"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Dados móveis"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Aceder aos dados através de rede móvel"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Pretende desativar os dados móveis?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"A seleção é necessária"</string>
@@ -279,7 +298,7 @@
     <string name="international_enable" msgid="5855356769925044927">"Notícias internacionais ativadas"</string>
     <string name="international_disable" msgid="2850648591041088931">"Notícias internacionais desativadas"</string>
     <string name="list_language_title" msgid="2841683501919760043">"Idioma"</string>
-    <string name="list_language_summary" msgid="8109546531071241601">"Seleccionar o idioma das notícias"</string>
+    <string name="list_language_summary" msgid="8109546531071241601">"Selecionar o idioma das notícias"</string>
   <string-array name="list_language_entries">
     <item msgid="6137851079727305485">"Inglês"</item>
     <item msgid="1151988412809572526">"Francês"</item>
@@ -338,9 +357,9 @@
     <string name="network_lte" msgid="7702681952521375754">"LTE (recomendado)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G (recomendado)"</string>
     <string name="network_global" msgid="1323190488685355309">"Global"</string>
-    <string name="cdma_system_select_title" msgid="5757657769327732833">"Seleccionar sistema"</string>
+    <string name="cdma_system_select_title" msgid="5757657769327732833">"Selecionar sistema"</string>
     <string name="cdma_system_select_summary" msgid="60460043745797517">"Alterar o modo de roaming CDMA"</string>
-    <string name="cdma_system_select_dialogtitle" msgid="6083355415165359075">"Seleccionar sistema"</string>
+    <string name="cdma_system_select_dialogtitle" msgid="6083355415165359075">"Selecionar sistema"</string>
   <string-array name="cdma_system_select_choices">
     <item msgid="176474317493999285">"Apenas redes domésticas"</item>
     <item msgid="1205664026446156265">"Automático"</item>
@@ -465,7 +484,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"A rede móvel não está disponível. Ligue-se a uma rede sem fios para efetuar uma chamada."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Para telefonar, introduza um número válido."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"A chamada falhou."</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Não é possível adicionar a chamada neste momento."</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Não é possível adicionar a chamada neste momento. Pode tentar entrar em contacto ao enviar uma mensagem."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Serviço não suportado"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Não é possível alternar chamadas."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Não é possível separar a chamada."</string>
@@ -542,11 +561,11 @@
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Ligação de dados desativada"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Sem ligação de dados até à(s) <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="one">The phone will be in Emergency Callback mode for <xliff:g id="COUNT_1">%s</xliff:g> minutes. While in this mode no applications using a data connection can be used. Do you want to exit now?</item>
+      <item quantity="one">O telemóvel fica no modo de Chamada de emergência durante <xliff:g id="COUNT_0">%s</xliff:g> minuto. Neste modo, não é possível utilizar aplicações com uma ligação de dados. Pretende sair agora?</item>
       <item quantity="other">O telemóvel fica no modo de Chamada de emergência durante <xliff:g id="COUNT_1">%s</xliff:g> minutos. Neste modo, não é possível utilizar aplicações com uma ligação de dados. Pretende sair agora?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
-      <item quantity="one">The selected action isn\'t available while in the Emergency Callback mode. The phone will be in this mode for <xliff:g id="COUNT_1">%s</xliff:g> minutes. Do you want to exit now?</item>
+      <item quantity="one">A ação selecionada não está disponível no modo de Chamada de emergência. O telemóvel fica neste modo durante <xliff:g id="COUNT_0">%s</xliff:g> minuto. Pretende sair agora?</item>
       <item quantity="other">A ação selecionada não está disponível no modo de Chamada de emergência. O telemóvel fica neste modo durante <xliff:g id="COUNT_1">%s</xliff:g> minutos. Pretende sair agora?</item>
     </plurals>
     <string name="alert_dialog_in_ecm_call" msgid="1886723687211887104">"A ação selecionada não está disponível durante uma chamada de emergência."</string>
@@ -585,6 +604,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Existem demasiadas chamadas ativas. Termine ou intercale as chamadas existentes antes de efetuar uma nova chamada."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Não é possível estabelecer ligação, introduza um cartão SIM válido."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"A ligação Wi-Fi foi perdida. A chamada foi terminada."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"A sua videochamada não pôde ser efetuada devido a bateria fraca."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"A videochamada terminou devido a bateria fraca."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Alterar o PIN do correio de voz"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continuar"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Cancelar"</string>

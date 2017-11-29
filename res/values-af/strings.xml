@@ -174,6 +174,32 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Voorkeurnetwerktipe"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Verander die netwerkbedryfsmodus"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Voorkeurnetwerktipe"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(verbode)"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="3628460389382468528">"GSM/WCDMA verkies"</item>
+    <item msgid="8442633436636425221">"Net GSM"</item>
+    <item msgid="2032314385791760810">"Net WCDMA"</item>
+    <item msgid="6334554401059422303">"GSM/WCDMA outomaties"</item>
+    <item msgid="1462198368200398663">"CDMA/EvDo outomaties"</item>
+    <item msgid="3611460019185359968">"CDMA sonder EvDo"</item>
+    <item msgid="545430093607698090">"Net EvDo"</item>
+    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
+    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
+    <item msgid="3471059554252610472">"Wêreldwyd"</item>
+    <item msgid="2882615514545171802">"LTE"</item>
+    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
+    <item msgid="3982984144824159726">"Net TDSCDMA"</item>
+    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
+    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
+    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
+    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
+    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Voorkeurnetwerk-modus: WCDMA verkies"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Voorkeurnetwerk-modus: net GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Voorkeurnetwerk-modus: net WCDMA"</string>
@@ -191,21 +217,15 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Voorkeurnetwerkmodus: LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Voorkeurnetwerk-modus: LTE / CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Voorkeur-netwerkmodus: TDSCDMA"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="7886739962255042385">"LTE / WCDMA"</item>
-    <item msgid="577652050447385699">"LTE"</item>
-    <item msgid="6813597571293773656">"Globaal"</item>
-    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
-    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
-    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="545430093607698090">"Net EvDo"</item>
-    <item msgid="1508557726283094448">"CDMA sonder EvDo"</item>
-    <item msgid="4341433122263841224">"CDMA/EvDo outomaties"</item>
-    <item msgid="5958053792390386668">"GSM/WCDMA outomaties"</item>
-    <item msgid="7913148405605373434">"Net WCDMA"</item>
-    <item msgid="1524224863879435516">"Net GSM"</item>
-    <item msgid="3817924849415716259">"GSM/WCDMA verkies"</item>
-  </string-array>
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Voorkeurnetwerkmodus: TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Voorkeurnetwerkmodus: LTE/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Voorkeurnetwerkmodus: TDSCDMA/GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Voorkeurnetwerkmodus: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Voorkeurnetwerkmodus: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Voorkeurnetwerkmodus: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Voorkeurnetwerkmodus: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Voorkeurnetwerkmodus: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Voorkeurnetwerkmodus: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="call_category" msgid="5863978196309462052">"Oproepe"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Netwerk"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Verbeterde 4G LTE-modus"</string>
@@ -221,13 +241,12 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Dit kan baie duur wees."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Laat dataswerwing toe?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Datagebruik"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruik tussen <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruik <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Gevorderd"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Diensverskaffer"</string>
-    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
-    <skip />
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"diensverskaffer, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobiele data"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobiele data"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Verkry toegang tot data deur selnetwerk te gebruik"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Skakel mobiele data af?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Keuse vereis"</string>
@@ -469,7 +488,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Mobiele netwerk is nie beskikbaar nie. Koppel aan \'n draadlose netwerk om \'n oproep te maak."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Voer \'n geldige nommer in om \'n oproep te maak."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Oproep het misluk."</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Oproep kan nie op die oomblik bygevoeg word nie."</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Oproep kan nie op die oomblik bygevoeg word nie. Jy kan probeer in verbinding tree deur \'n boodskap te stuur."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Diens word nie gesteun nie"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Kan nie oproepe wissel nie."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Kan nie oproep skei nie."</string>
@@ -589,6 +608,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Daar is te veel aktiewe oproepe. Beëindig of voeg asseblief bestaande oproepe saam voordat jy \'n nuwe een maak."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Kan nie koppel nie, sit asseblief \'n geldige SIM-kaart in."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi-verbinding verloor. Oproep is beëindig."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Jou video-oproep kan nie gemaak word nie weens lae battery."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Video-oproep het geëindig weens lae battery."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Verander stemboodskap-PIN"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Gaan voort"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Kanselleer"</string>

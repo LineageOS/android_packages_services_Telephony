@@ -58,7 +58,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Configuració de trucades GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"Configuració de trucades CDMA"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"Configuració de trucades CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"APN"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"Noms dels punts d\'accés"</string>
     <string name="settings_label" msgid="3876743539816984008">"Configuració de xarxa"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Comptes de trucades"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Truca amb"</string>
@@ -153,7 +153,7 @@
     <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"Espera un moment."</string>
     <string name="vm_change_pin_error_too_short" msgid="5974971097302710497">"El PIN nou és massa curt."</string>
     <string name="vm_change_pin_error_too_long" msgid="8476870806115051865">"El PIN nou és massa llarg."</string>
-    <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"El PIN nou no és prou segur. Les contrasenyes segures no poden contenir seqüències contínues ni dígits repetits."</string>
+    <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"El PIN nou no és prou segur. Les contrasenyes segures no poden contenir dígits repetits ni consecutius."</string>
     <string name="vm_change_pin_error_mismatch" msgid="2754685537970757317">"El PIN antic no coincideix."</string>
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"El PIN nou conté caràcters que no són vàlids."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"No es pot canviar el PIN"</string>
@@ -174,6 +174,32 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tipus de xarxa preferit"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Canvia el mode de funcionament de la xarxa"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Tipus de xarxa preferit"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(prohibit)"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="3628460389382468528">"Mode GSM/WCDMA preferit"</item>
+    <item msgid="8442633436636425221">"Només GSM"</item>
+    <item msgid="2032314385791760810">"Només WCDMA"</item>
+    <item msgid="6334554401059422303">"Mode GSM/WCDMA automàtic"</item>
+    <item msgid="1462198368200398663">"Mode CDMA/EvDo automàtic"</item>
+    <item msgid="3611460019185359968">"Mode CDMA sense EvDo"</item>
+    <item msgid="545430093607698090">"Només EvDo"</item>
+    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
+    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
+    <item msgid="3471059554252610472">"Global"</item>
+    <item msgid="2882615514545171802">"LTE"</item>
+    <item msgid="8076204422288290116">"LTE/WCDMA"</item>
+    <item msgid="3982984144824159726">"Només TDSCDMA"</item>
+    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
+    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
+    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
+    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
+    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Mode de xarxa preferit: WCDMA preferit"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Mode de xarxa preferit: només GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Mode de xarxa preferit: només WCDMA"</string>
@@ -191,21 +217,15 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Mode de xarxa preferit: LTE/GSM/UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Mode de xarxa preferit: LTE/CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Mode de xarxa preferit: TDSCDMA"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="7886739962255042385">"LTE/WCDMA"</item>
-    <item msgid="577652050447385699">"LTE"</item>
-    <item msgid="6813597571293773656">"Global"</item>
-    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
-    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
-    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="545430093607698090">"Només EvDo"</item>
-    <item msgid="1508557726283094448">"CDMA sense EvDo"</item>
-    <item msgid="4341433122263841224">"CDMA/EvDo automàtic"</item>
-    <item msgid="5958053792390386668">"GSM/WCDMA automàtic"</item>
-    <item msgid="7913148405605373434">"Només WCDMA"</item>
-    <item msgid="1524224863879435516">"Només GSM"</item>
-    <item msgid="3817924849415716259">"GSM/WCDMA preferit"</item>
-  </string-array>
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Mode de xarxa preferit: TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Mode de xarxa preferit: LTE/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Mode de xarxa preferit: TDSCDMA/GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Mode de xarxa preferit: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Mode de xarxa preferit: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Mode de xarxa preferit: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Mode de xarxa preferit: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Mode de xarxa preferit: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Mode de xarxa preferit: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="call_category" msgid="5863978196309462052">"Trucades"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Xarxa"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Mode 4G LTE millorat"</string>
@@ -221,13 +241,12 @@
     <string name="roaming_warning" msgid="1603164667540144353">"És possible que se\'t facturin càrrecs elevats."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permetre la itinerància de dades?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Ús de dades"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> de dades mòbils utilitzats durant el període <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"Ús de dades mòbils en el període <xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Configuració avançada"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operador de telefonia mòbil"</string>
-    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
-    <skip />
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operador, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Dades mòbils"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Dades mòbils"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Accedeix a les dades amb una xarxa mòbil"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Vols desactivar les dades mòbils?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Has de seleccionar una preferència"</string>
@@ -399,7 +418,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"S\'està suprimint el número de marcatge fix..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Número de marcatge fix suprimit."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN no s\'ha actualitzat ja que has escrit un PIN incorrecte."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN no s\'ha actualitzat perquè el número està buit o conté més de 20 dígits."</string>
+    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN no s\'ha actualitzat perquè el número és buit o conté més de 20 dígits."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"El número FDN no s\'ha actualitzat. El PIN2 no és correcte o bé s\'ha rebutjat el número de telèfon."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Hi ha hagut un problema en l\'operació FDN."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lectura de la targeta SIM..."</string>
@@ -436,7 +455,7 @@
     <string name="label_puk2_code" msgid="4688069961795341948">"Introdueix el codi PUK2"</string>
     <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"La contrasenya no és correcta i el PIN2 s\'ha bloquejat. Per tornar-ho a provar, canvia el PIN2."</string>
     <string name="puk2_requested" msgid="5831015200030161434">"La contrasenya no és correcta i la SIM s\'ha bloquejat. Introdueix el PUK2."</string>
-    <string name="puk2_blocked" msgid="3150263853077280049">"El PUK2 s\'ha bloquejat de manera permanent."</string>
+    <string name="puk2_blocked" msgid="3150263853077280049">"El PUK2 s\'ha bloquejat permanentment."</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n"Et queden <xliff:g id="NUMBER">%d</xliff:g> intents."</string>
     <string name="pin2_unblocked" msgid="7791600368153469078">"El PIN2 ja no està bloquejat."</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"Error de xarxa o de targeta SIM"</string>
@@ -465,7 +484,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"La xarxa mòbil no està disponible. Per fer una trucada, connecta\'t a una xarxa sense fil."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Per realitzar una trucada, introdueix un número vàlid."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"No s\'ha pogut fer la trucada."</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"En aquest moment no es pot afegir la trucada."</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"En aquest moment no es pot afegir la trucada. Prova d\'enviar un missatge."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"El servei no és compatible."</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"No es pot canviar de trucada."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"No es pot separar la trucada."</string>
@@ -585,6 +604,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Hi ha massa trucades actives. Finalitza\'n alguna o combina-les abans de fer-ne una de nova."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"No es pot establir la connexió. Insereix una targeta SIM vàlida."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"La trucada ha finalitzat perquè s\'ha perdut la connexió Wi-Fi."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"No pots iniciar la videotrucada perquè queda poca bateria."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"La videotrucada ha finalitzat perquè queda poca bateria."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Canvia el PIN per a la bústia de veu"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continua"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Cancel·la"</string>

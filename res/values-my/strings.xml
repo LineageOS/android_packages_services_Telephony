@@ -58,7 +58,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM ခေါ်ဆိုမှု ဆက်တင်များ ( <xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g> )"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA ဖုန်းခေါ်ဆိုမှု ဆက်တင်"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA ခေါ်ဆိုမှု ဆက်တင်များ ( <xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g> )"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"ချိတ်ဆက်သောပွိုင့်အမည်များ"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"APN ချိတ်ဆက်ရာလမ်းကြောင်းအမည်"</string>
     <string name="settings_label" msgid="3876743539816984008">"ကွန်ရက် ဆက်တင်များ"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"ခေါ်ဆိုသော အကောင့်များ"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"ဖြင့် ခေါ်ဆိုမှုများပြုလုပ်မည်"</string>
@@ -174,6 +174,32 @@
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ပိုနှစ်သက်သော ကွန်ရက်အမျိုးအစား"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ကွန်ရက် လုပ်ဆောင်မှုစနစ်အား ပြောင်းပါ"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ပိုနှစ်သက်သော ကွန်ရက်အမျိုးအစား"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(တားမြစ်ထားသည်)"</string>
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="3628460389382468528">"GSM/WCDMA သုံးလိုပါသည်"</item>
+    <item msgid="8442633436636425221">"GSM သာ"</item>
+    <item msgid="2032314385791760810">"WCDMA သာ"</item>
+    <item msgid="6334554401059422303">"GSM/WCDMA အလိုအလျောက်ပြောင်းရန်"</item>
+    <item msgid="1462198368200398663">"CDMA/EvDo အလိုအလျောက်ပြောင်းရန်"</item>
+    <item msgid="3611460019185359968">"EvDo မပါသည့် CDMA"</item>
+    <item msgid="545430093607698090">"EvDo သာ"</item>
+    <item msgid="4286774020869405140">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="4006002265696868538">"CDMA + LTE/EvDo"</item>
+    <item msgid="8973936140318359205">"GSM/WCDMA/LTE"</item>
+    <item msgid="3471059554252610472">"ကမ္ဘာအနှံ့"</item>
+    <item msgid="2882615514545171802">"LTE"</item>
+    <item msgid="8076204422288290116">"LTE / WCDMA"</item>
+    <item msgid="3982984144824159726">"TDSCDMA သာ"</item>
+    <item msgid="3686191974505922271">"TDSCDMA/WCDMA"</item>
+    <item msgid="7135671700201836475">"LTE/TDSCDMA"</item>
+    <item msgid="3736619459066330755">"TDSCDMA/GSM"</item>
+    <item msgid="4778666570887216861">"LTE/TDSCDMA/GSM"</item>
+    <item msgid="2952322596201849456">"TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="115984258536697617">"LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="7957991936217192636">"LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"ပိုမိုကြိုက်သော ကွန်ယက်စနစ်-WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"ပိုမိုကြိုက်သော ကွန်ယက်စနစ်-GSM သာ"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"ပိုမိုကြိုက်သော ကွန်ယက်စနစ်- WCDMA သာ"</string>
@@ -191,21 +217,15 @@
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"ပိုနှစ်သက်သည့် ကွန်ရက်မုဒ်: LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"ပိုနှစ်သက်သည့် ကွန်ရက်မုဒ်: LTE / CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"ပိုမိုကြိုက်သော ကွန်ရက်မုဒ်: TDSCDMA"</string>
-  <string-array name="preferred_network_mode_choices">
-    <item msgid="7886739962255042385">"LTE / WCDMA"</item>
-    <item msgid="577652050447385699">"မြန်နှုန်းမြင့်လိုင်း"</item>
-    <item msgid="6813597571293773656">"တစ်ကမ္ဘာလုံးဆိုင်ရာ"</item>
-    <item msgid="127064712132619032">"GSM/WCDMA/LTE"</item>
-    <item msgid="1126767511633425977">"CDMA + LTE/EvDo"</item>
-    <item msgid="6389676313771670660">"CDMA/EvDo/GSM/WCDMA"</item>
-    <item msgid="545430093607698090">"EvDo သာ"</item>
-    <item msgid="1508557726283094448">"CDMA w/o EvDo"</item>
-    <item msgid="4341433122263841224">"CDMA/EvDo auto"</item>
-    <item msgid="5958053792390386668">"GSM/WCDMA auto"</item>
-    <item msgid="7913148405605373434">"WCDMA သာ"</item>
-    <item msgid="1524224863879435516">"GSM သာ"</item>
-    <item msgid="3817924849415716259">"GSM/WCDMA preferred"</item>
-  </string-array>
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"အသုံးပြုလိုသော ကွန်ရက်မုဒ်− TDSCDMA / WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"အသုံးပြုလိုသော ကွန်ရက်မုဒ်− LTE / TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"အသုံးပြုလိုသော ကွန်ရက်မုဒ်− TDSCDMA / GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"အသုံးပြုလိုသော ကွန်ရက်မုဒ်− LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"အသုံးပြုလိုသော ကွန်ရက်မုဒ်− TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"အသုံးပြုလိုသော ကွန်ရက်မုဒ်− LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"အသုံးပြုလိုသော ကွန်ရက်မုဒ်− LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"အသုံးပြုလိုသော ကွန်ရက်မုဒ်− TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"အသုံးပြုလိုသော ကွန်ရက်မုဒ်− LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="call_category" msgid="5863978196309462052">"ခေါ်ဆိုခြင်း"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"ကွန်ရက်"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"မြှင့်တင်ထား 4G LTE မုဒ်"</string>
@@ -215,19 +235,18 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"ဒေတာ သုံးစွဲမှု ခွင့်ပြုရန်"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"သတိပြုရန်"</string>
     <string name="roaming" msgid="7894878421600247140">"ပြင်ပကွန်ရက်နှင့် ချိတ်ဆက်ခြင်း"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"ကွန်ရက်ပြင်ပဒေတာကို သုံးနေစဉ် ဒေတာဝန်ဆောင်မှုများကို ဆက်သွယ်ခြင်း"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"ကွန်ရက်ပြင်ပဒေတာကို သုံးနေစဉ် ဒေတာဝန်ဆောင်မှုများကို ဆက်သွယ်ခြင်း"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"ကွန်ရက်ပြင်ပဒေတာကို သုံးနေစဉ် ဒေတာဝန်ဆောင်မှုများကို ချိတ်ဆက်ပါ"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"ကွန်ရက်ပြင်ပဒေတာကို သုံးနေစဉ် ဒေတာဝန်ဆောင်မှုများကို ချိတ်ဆက်ပါ"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"ဒေတာဆက်သွယ်မှုပြတ်တောက်သွားပါသည် အဘယ်ကြောင့်ဆိုသော် သင့်အိမ်၏ကွန်ယက်မှထွက်ကာ ဒေတာရုန်းမင်းကွန်ယက်ကိုလဲပိတ်ထားသောကြောင့်ဖြစ်သည်"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"သိသာသည့် ငွေနူန်းထားသင့်အား ကျသင့်နိုင်ပါသည်။"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ကွန်ရက်ပြင်ပဒေတာအသုံးပြုခြင်း ခွင့်​ပြုမည်လား?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"ဒေတာအသုံးပြုမှု"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_2">%2$s</xliff:g> အကြား မိုဘိုင်းဒေတာ <xliff:g id="ID_1">%1$s</xliff:g> ကို အသုံးပြုထားပါသည်"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> အထိ မိုဘိုင်းဒေတာ <xliff:g id="ID_1">%1$s</xliff:g> ကို အသုံးပြုထားပါသည်"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"အဆင့်မြင့်"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ဝန်ဆောင်မှုပေးသူ"</string>
-    <!-- no translation found for keywords_carrier_settings_euicc (783429609643157743) -->
-    <skip />
+    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"ဖုန်းလိုင်း၊ esim၊ ဆင်းမ်ကဒ်၊ euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"မိုဘိုင်းဒေတာ"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"မိုဘိုင်းဒေတာ"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"မိုဘိုင်းကွန်ရက်သုံးပြီး ဒေတာကို ဝင်သုံးခွင့်ပေးပါ"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"မိုဘိုင်းဒေတာကို ပိတ်မလား။"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"ရွေးချယ်မှု လိုအပ်ပါသည်"</string>
@@ -465,7 +484,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"မိုဘိုင်းကွန်ရက် မရနိုင်ပါ။ ခေါ်ဆိုမှုပြုလုပ်ရန် ကြိုးမဲ့ကွန်ရက်သို့ ချိတ်ဆက်လိုက်ပါ။"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"ဖုန်းခေါ်ရန်အတွက်၊ သင့်လျော်သည့်နံပါတ် ရိုက်ထည့်ပါ။"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"ခေါ်ဆို၍ မရပါ။"</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"ယခုအချိန်တွင် ခေါ်ဆိုမှု ထပ်မထည့်နိုင်ပါ။"</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"ယခုအချိန်တွင် ခေါ်ဆိုမှု ထပ်မထည့်နိုင်ပါ။ မက်ဆေ့ဂျ်ပို့ဆောင်ခြင်းဖြင့်လည်း ဆက်သွယ်ရန်ကြိုးစားနိုင်ပါသည်။"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"ဤဝန်ဆောင်မှုအား မပံ့ပိုးပါ။"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"ဖုန်းခေါ်ခြင်းများကြား မကူးပ​ြောင်းနိုင်ပါ။"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"ဖုန်းခေါ်ခြင်းအား မခွဲထုတ်နိုင်ပါ။"</string>
@@ -585,6 +604,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"လက်ရှိခေါ်ဆိုမှုများ အလွန်များနေပါသည်။ ခေါ်ဆိုမှုအသစ်တစ်ခု မပြုလုပ်ခင် လက်ရှိဖုန်းခေါ်ဆိုမှုများကို အဆုံးသတ် (သို့) ပေါင်း လိုက်ပါ။"</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"ချိတ်ဆက် မရပါ၊ ကျေးဇူးပြုပြီး မှန်ကန်သည့် SIM ကဒ်ကို ထည့်ပေးပါ။"</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi ချိတ်ဆက်မှု ပြတ်တောက်သွားပါသည်။ ခေါ်ဆိုမှု ရပ်တန့်သွားပါပြီ။"</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"ဘက်ထရီအားနည်းနေသဖြင့် ဗီဒီယိုခေါ်ဆိုမှုကို မပြုလုပ်နိုင်ပါ။"</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"ဘက်ထရီအားနည်းနေသဖြင့် ဗီဒီယိုခေါ်ဆိုမှု ပြီးဆုံးသွားပါသည်။"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"အသံမေးလ်ပင်နံပါတ် ပြောင်းရန်"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ဆက်လုပ်ရန်"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"မလုပ်တော့"</string>
