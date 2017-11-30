@@ -105,6 +105,10 @@ public class CallNotifier extends Handler {
     // they don't step on each others' toes.
     public static final int INTERNAL_SHOW_MESSAGE_NOTIFICATION_DONE = 22;
 
+    public static final int UPDATE_TYPE_MWI = 0;
+    public static final int UPDATE_TYPE_CFI = 1;
+    public static final int UPDATE_TYPE_MWI_CFI = 2;
+
     /**
      * Initialize the singleton CallNotifier instance.
      * This is only done once, at startup, from PhoneApp.onCreate().
@@ -578,6 +582,11 @@ public class CallNotifier extends Handler {
     }
 
     public void updatePhoneStateListeners(boolean isRefresh) {
+        updatePhoneStateListeners(isRefresh, UPDATE_TYPE_MWI_CFI,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+    }
+
+    public void updatePhoneStateListeners(boolean isRefresh, int updateType, int subIdToUpdate) {
         List<SubscriptionInfo> subInfos = mSubscriptionManager.getActiveSubscriptionInfoList();
 
         // Sort sub id list based on slot id, so that CFI/MWI notifications will be updated for
@@ -609,10 +618,20 @@ public class CallNotifier extends Handler {
                 Log.d(LOG_TAG, "updatePhoneStateListeners: update CF notifications.");
 
                 if (mCFIStatus.containsKey(subId)) {
-                    mApplication.notificationMgr.updateCfi(subId, mCFIStatus.get(subId));
+                    if ((updateType == UPDATE_TYPE_CFI) && (subId == subIdToUpdate)) {
+                        mApplication.notificationMgr.updateCfi(subId, mCFIStatus.get(subId),
+                                isRefresh);
+                    } else {
+                        mApplication.notificationMgr.updateCfi(subId, mCFIStatus.get(subId), true);
+                    }
                 }
                 if (mMWIStatus.containsKey(subId)) {
-                    mApplication.notificationMgr.updateMwi(subId, mMWIStatus.get(subId), isRefresh);
+                    if ((updateType == UPDATE_TYPE_MWI) && (subId == subIdToUpdate)) {
+                        mApplication.notificationMgr.updateMwi(subId, mMWIStatus.get(subId),
+                            isRefresh);
+                    } else {
+                        mApplication.notificationMgr.updateMwi(subId, mMWIStatus.get(subId), true);
+                    }
                 }
             }
         }
@@ -785,7 +804,7 @@ public class CallNotifier extends Handler {
         public void onMessageWaitingIndicatorChanged(boolean visible) {
             if (VDBG) log("onMessageWaitingIndicatorChanged(): " + this.mSubId + " " + visible);
             mMWIStatus.put(this.mSubId, visible);
-            updatePhoneStateListeners(false);
+            updatePhoneStateListeners(false, UPDATE_TYPE_MWI, this.mSubId);
         }
 
         @Override
@@ -793,7 +812,7 @@ public class CallNotifier extends Handler {
             Log.i(LOG_TAG, "onCallForwardingIndicatorChanged(): subId=" + this.mSubId
                     + ", visible=" + (visible ? "Y" : "N"));
             mCFIStatus.put(this.mSubId, visible);
-            updatePhoneStateListeners(false);
+            updatePhoneStateListeners(false, UPDATE_TYPE_CFI, this.mSubId);
         }
     };
 
