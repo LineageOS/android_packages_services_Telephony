@@ -21,7 +21,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.service.euicc.EuiccService;
 import android.telephony.euicc.EuiccManager;
 import android.util.Log;
@@ -95,10 +94,6 @@ public class EuiccUiDispatcherActivity extends Activity {
                 intent.setAction(EuiccService.ACTION_MANAGE_EMBEDDED_SUBSCRIPTIONS);
                 break;
             case EuiccManager.ACTION_PROVISION_EMBEDDED_SUBSCRIPTION:
-                if (isDeviceProvisioned()) {
-                    Log.w(TAG, "Cannot perform eUICC provisioning once device is provisioned");
-                    return null;
-                }
                 intent.setAction(EuiccService.ACTION_PROVISION_EMBEDDED_SUBSCRIPTION);
                 intent.putExtra(
                         EuiccManager.EXTRA_FORCE_PROVISION,
@@ -110,12 +105,6 @@ public class EuiccUiDispatcherActivity extends Activity {
         }
 
         return intent;
-    }
-
-    @VisibleForTesting
-    boolean isDeviceProvisioned() {
-        return Settings.Global.getInt(getContentResolver(),
-                Settings.Global.DEVICE_PROVISIONED, 0) != 0;
     }
 
     @VisibleForTesting
