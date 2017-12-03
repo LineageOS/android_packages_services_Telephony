@@ -47,7 +47,6 @@ public class EuiccUiDispatcherActivityTest {
 
     @Mock private Context mMockContext;
     @Mock private EuiccManager mMockEuiccManager;
-    private boolean mIsProvisioned = true;
     private ActivityInfo mActivityInfo = ACTIVITY_INFO;
     private Intent mIntent = MANAGE_INTENT;
     private EuiccUiDispatcherActivity mActivity;
@@ -80,12 +79,6 @@ public class EuiccUiDispatcherActivityTest {
     }
 
     @Test
-    public void testResolveEuiccUiIntent_alreadyProvisioned() {
-        mIntent = PROVISION_INTENT;
-        assertNull(mActivity.resolveEuiccUiIntent());
-    }
-
-    @Test
     public void testResolveEuiccUiIntent_noImplementation() {
         mActivityInfo = null;
         assertNull(mActivity.resolveEuiccUiIntent());
@@ -98,7 +91,6 @@ public class EuiccUiDispatcherActivityTest {
 
     @Test
     public void testResolveEuiccUiIntent_validProvision() {
-        mIsProvisioned = false;
         assertNotNull(mActivity.resolveEuiccUiIntent());
     }
 
@@ -110,11 +102,6 @@ public class EuiccUiDispatcherActivityTest {
         @Override
         public Intent getIntent() {
             return mIntent;
-        }
-
-        @Override
-        boolean isDeviceProvisioned() {
-            return mIsProvisioned;
         }
 
         @Override
