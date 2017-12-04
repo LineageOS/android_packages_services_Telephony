@@ -20,6 +20,7 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.telecom.PhoneAccountHandle;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -36,7 +37,6 @@ import com.android.internal.telephony.PhoneFactory;
  * helping extract this info and perform common operations using this info.
  */
 public class SubscriptionInfoHelper {
-    public static final int NO_SUB_ID = -1;
 
     // Extra on intent containing the id of a subscription.
     public static final String SUB_ID_EXTRA =
@@ -47,7 +47,7 @@ public class SubscriptionInfoHelper {
 
     private Context mContext;
 
-    private int mSubId = NO_SUB_ID;
+    private int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     private String mSubLabel;
 
     /**
@@ -55,7 +55,14 @@ public class SubscriptionInfoHelper {
      */
     public SubscriptionInfoHelper(Context context, Intent intent) {
         mContext = context;
-        mSubId = intent.getIntExtra(SUB_ID_EXTRA, NO_SUB_ID);
+        PhoneAccountHandle phoneAccountHandle =
+                intent.getParcelableExtra(TelephonyManager.EXTRA_PHONE_ACCOUNT_HANDLE);
+        if (phoneAccountHandle != null) {
+            mSubId = PhoneUtils.getSubIdForPhoneAccountHandle(phoneAccountHandle);
+        }
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            mSubId = intent.getIntExtra(SUB_ID_EXTRA, SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        }
         mSubLabel = intent.getStringExtra(SUB_LABEL_EXTRA);
     }
 
@@ -117,7 +124,7 @@ public class SubscriptionInfoHelper {
     }
 
     public boolean hasSubId() {
-        return mSubId != NO_SUB_ID;
+        return mSubId != SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     }
 
     public int getSubId() {
