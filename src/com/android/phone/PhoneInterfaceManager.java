@@ -39,7 +39,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.PersistableBundle;
-import android.os.Process;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.UserHandle;
@@ -3850,7 +3849,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @return true if phone is in emergency callback mode
      * @param subId sub id
      */
+    @Override
     public boolean getEmergencyCallbackMode(int subId) {
+        enforceReadPrivilegedPermission();
         final Phone phone = getPhone(subId);
         if (phone != null) {
             return phone.isInEcm();
