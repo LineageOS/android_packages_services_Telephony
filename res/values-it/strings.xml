@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Segreteria (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ST:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notifiche"</string>
-    <string name="networks" msgid="8873030692174541976">"Operatori di rete"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Trasmissioni di emergenza"</string>
     <string name="call_settings" msgid="6112441768261754562">"Impostazioni chiamate"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Altre impostazioni"</string>
@@ -164,20 +163,18 @@
     <string name="label_available" msgid="1181658289009300430">"Reti disponibili"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Ricerca..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Nessuna rete trovata."</string>
-    <string name="search_networks" msgid="1601136049300882441">"Cerca reti"</string>
     <string name="network_query_error" msgid="6828516148953325006">"Errore durante la ricerca di reti."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Registrazione su <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"La scheda SIM non consente la connessione a questa rete."</string>
     <string name="connect_later" msgid="2308119155752343975">"Impossibile connettersi a questa rete in questo momento. Riprova più tardi."</string>
     <string name="registration_done" msgid="495135664535876612">"Registrato sulla rete."</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"Scegli un operatore di rete"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"Cerca tutte le reti disponibili"</string>
     <string name="select_automatically" msgid="1046727200631770962">"Seleziona automaticamente la rete"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Rete"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Registrazione automatica..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tipo di rete preferito"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Cambia la modalità di funzionamento della rete"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Tipo di rete preferito"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(vietato)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA preferito"</item>
     <item msgid="8442633436636425221">"Solo GSM"</item>
@@ -244,12 +241,17 @@
     <string name="roaming_warning" msgid="1603164667540144353">"I costi potrebbero essere elevati."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Consentire il roaming dei dati?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Utilizzo dati"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"Utilizzo dati del dispositivo mobile: <xliff:g id="ID_1">%1$s</xliff:g> nel periodo <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"Utilizzo dati mobili: <xliff:g id="ID_1">%1$s</xliff:g> nel periodo <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"Avanzate"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operatore"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operatore, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> - <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Dati mobili"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Dati mobili"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Accedi ai dati tramite la rete mobile"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Disattivare i dati mobili?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"Fai una scelta"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"Cambiare la SIM per i dati?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"Utilizzare <xliff:g id="NEW_SIM">%1$s</xliff:g> anziché <xliff:g id="OLD_SIM">%2$s</xliff:g> per i dati mobili?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Chiamate Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Videochiamata dell\'operatore"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Opzioni GSM/UMTS"</string>
@@ -486,7 +488,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"La rete cellulare non è disponibile. Connettiti a una rete wireless per effettuare una chiamata."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Per effettuare una chiamata, inserisci un numero valido."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Chiamata non riuscita."</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Al momento non è possibile aggiungere la chiamata."</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Impossibile aggiungere la chiamata al momento. Prova a inviare un messaggio."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Servizio non supportato"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Impossibile cambiare chiamata."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Impossibile separare la chiamata."</string>

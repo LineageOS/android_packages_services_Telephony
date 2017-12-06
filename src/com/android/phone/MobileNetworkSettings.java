@@ -76,6 +76,7 @@ import com.android.internal.telephony.TelephonyIntents;
 import com.android.phone.settings.PhoneAccountSettingsFragment;
 import com.android.settingslib.RestrictedLockUtils;
 
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -193,7 +194,8 @@ public class MobileNetworkSettings extends Activity  {
         private static final String BUTTON_DATA_USAGE_KEY = "data_usage_summary";
         private static final String BUTTON_ADVANCED_OPTIONS_KEY = "advanced_options";
         private static final String CATEGORY_CALLING_KEY = "calling";
-        private static final String CATEGORY_APN_EXPAND_KEY = "category_apn_key";
+        private static final String CATEGORY_GSM_APN_EXPAND_KEY = "category_gsm_apn_key";
+        private static final String CATEGORY_CDMA_APN_EXPAND_KEY = "category_cdma_apn_key";
 
         private final BroadcastReceiver mPhoneChangeReceiver = new PhoneChangeReceiver();
 
@@ -257,9 +259,18 @@ public class MobileNetworkSettings extends Activity  {
             @Override
             public void onCallStateChanged(int state, String incomingNumber) {
                 if (DBG) log("PhoneStateListener.onCallStateChanged: state=" + state);
-                boolean enabled = (state == TelephonyManager.CALL_STATE_IDLE) &&
-                        ImsManager.isNonTtyOrTtyOnVolteEnabled
-                                (getActivity().getApplicationContext());
+
+                Activity activity = getActivity();
+                if (activity == null) {
+                    return;
+                }
+
+                int subId = mPhone != null
+                        ? mPhone.getSubId() : SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+                PersistableBundle carrierConfig =
+                        PhoneGlobals.getInstance().getCarrierConfigForSubId(subId);
+                boolean enabled = is4gLtePrefEnabled(activity.getApplicationContext(),
+                        carrierConfig);
                 Preference pref = getPreferenceScreen().findPreference(BUTTON_4G_LTE_KEY);
                 if (pref != null) pref.setEnabled(enabled && hasActiveSubscriptions());
 
@@ -660,8 +671,6 @@ public class MobileNetworkSettings extends Activity  {
             int max = mSubscriptionManager.getActiveSubscriptionInfoCountMax();
             mActiveSubInfos = new ArrayList<SubscriptionInfo>(max);
 
-            setAndvancedButtonSummary();
-
             IntentFilter intentFilter = new IntentFilter(
                     TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
             activity.registerReceiver(mPhoneChangeReceiver, intentFilter);
@@ -687,8 +696,6 @@ public class MobileNetworkSettings extends Activity  {
             public void onReceive(Context context, Intent intent) {
                 Log.i(LOG_TAG, "onReceive:");
                 // When the radio changes (ex: CDMA->GSM), refresh all options.
-                mGsmUmtsOptions = null;
-                mCdmaOptions = null;
                 updateBody();
             }
         }
@@ -697,7 +704,7 @@ public class MobileNetworkSettings extends Activity  {
         public void onDestroy() {
             unbindNetworkQueryService();
             super.onDestroy();
-            if (getActivity() != null && !getActivity().isDestroyed()) {
+            if (getActivity() != null) {
                 getActivity().unregisterReceiver(mPhoneChangeReceiver);
             }
         }
@@ -758,6 +765,12 @@ public class MobileNetworkSettings extends Activity  {
                 int phoneSubId, boolean hasActiveSubscriptions) {
             Context context = activity.getApplicationContext();
 
+            ActionBar actionBar = activity.getActionBar();
+            if (actionBar != null) {
+                // android.R.id.home will be triggered in onOptionsItemSelected()
+                actionBar.setDisplayHomeAsUpEnabled(true);
+            }
+
             prefSet.addPreference(mMobileDataPref);
             prefSet.addPreference(mButtonDataRoam);
             prefSet.addPreference(mDataUsagePref);
@@ -765,6 +778,10 @@ public class MobileNetworkSettings extends Activity  {
             // Customized preferences needs to be initialized with subId.
             mMobileDataPref.initialize(phoneSubId);
             mDataUsagePref.initialize(phoneSubId);
+
+            mMobileDataPref.setEnabled(hasActiveSubscriptions);
+            mButtonDataRoam.setEnabled(hasActiveSubscriptions);
+            mDataUsagePref.setEnabled(hasActiveSubscriptions);
 
             // Initialize states of mButtonDataRoam.
             mButtonDataRoam.setChecked(mPhone.getDataRoamingEnabled());
@@ -778,10 +795,6 @@ public class MobileNetworkSettings extends Activity  {
                             UserManager.DISALLOW_DATA_ROAMING);
                 }
             }
-
-            mMobileDataPref.setEnabled(hasActiveSubscriptions);
-            mButtonDataRoam.setEnabled(hasActiveSubscriptions);
-            mDataUsagePref.setEnabled(hasActiveSubscriptions);
         }
 
         private void updateBody() {
@@ -808,7 +821,6 @@ public class MobileNetworkSettings extends Activity  {
                 updateBodyAdvancedFields(activity, prefSet, phoneSubId, hasActiveSubscriptions);
             } else {
                 prefSet.addPreference(mAdvancedOptions);
-                mAdvancedOptions.setEnabled(hasActiveSubscriptions);
             }
         }
 
@@ -858,14 +870,9 @@ public class MobileNetworkSettings extends Activity  {
 
                 final int phoneType = mPhone.getPhoneType();
                 if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
-                    mCdmaOptions = new CdmaOptions(this, prefSet, mPhone);
-                    // In World mode force a refresh of GSM Options.
-                    if (isWorldMode()) {
-                        mGsmUmtsOptions = null;
-                    }
+                    updateCdmaOptions(this, prefSet, mPhone);
                 } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
-                    mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, phoneSubId,
-                            mNetworkQueryService);
+                    updateGsmUmtsOptions(this, prefSet, phoneSubId, mNetworkQueryService);
                 } else {
                     throw new IllegalStateException("Unexpected phone type: " + phoneType);
                 }
@@ -880,9 +887,8 @@ public class MobileNetworkSettings extends Activity  {
                 // change Preferred Network Mode.
                 mButtonPreferredNetworkMode.setOnPreferenceChangeListener(this);
 
-                mCdmaOptions = new CdmaOptions(this, prefSet, mPhone);
-                mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, phoneSubId,
-                        mNetworkQueryService);
+                updateCdmaOptions(this, prefSet, mPhone);
+                updateGsmUmtsOptions(this, prefSet, phoneSubId, mNetworkQueryService);
             } else {
                 prefSet.removePreference(mButtonPreferredNetworkMode);
                 final int phoneType = mPhone.getPhoneType();
@@ -926,12 +932,8 @@ public class MobileNetworkSettings extends Activity  {
                             }
                         }
                     }
-                    mCdmaOptions = new CdmaOptions(this, prefSet, mPhone);
+                    updateCdmaOptions(this, prefSet, mPhone);
 
-                    // In World mode force a refresh of GSM Options.
-                    if (isWorldMode()) {
-                        mGsmUmtsOptions = null;
-                    }
                 } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
                     if (isSupportTdscdma()) {
                         mButtonEnabledNetworks.setEntries(
@@ -968,8 +970,7 @@ public class MobileNetworkSettings extends Activity  {
                         mButtonEnabledNetworks.setEntryValues(
                                 R.array.enabled_networks_values);
                     }
-                    mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, phoneSubId,
-                            mNetworkQueryService);
+                    updateGsmUmtsOptions(this, prefSet, phoneSubId, mNetworkQueryService);
                 } else {
                     throw new IllegalStateException("Unexpected phone type: " + phoneType);
                 }
@@ -1009,12 +1010,6 @@ public class MobileNetworkSettings extends Activity  {
 
             updateCallingCategory();
 
-            ActionBar actionBar = activity.getActionBar();
-            if (actionBar != null) {
-                // android.R.id.home will be triggered in onOptionsItemSelected()
-                actionBar.setDisplayHomeAsUpEnabled(true);
-            }
-
             // Enable link to CMAS app settings depending on the value in config.xml.
             final boolean isCellBroadcastAppLinkEnabled = activity.getResources().getBoolean(
                     com.android.internal.R.bool.config_cellBroadcastAppLinks);
@@ -1045,12 +1040,8 @@ public class MobileNetworkSettings extends Activity  {
              * but you do need to remember that this all needs to work when subscriptions
              * change dynamically such as when hot swapping sims.
              */
-            boolean canChange4glte =
-                    (mTelephonyManager.getCallState() == TelephonyManager.CALL_STATE_IDLE)
-                            && ImsManager.isNonTtyOrTtyOnVolteEnabled(
-                                    activity.getApplicationContext())
-                            && carrierConfig.getBoolean(
-                            CarrierConfigManager.KEY_EDITABLE_ENHANCED_4G_LTE_BOOL);
+            boolean canChange4glte = is4gLtePrefEnabled(activity.getApplicationContext(),
+                    carrierConfig);
             boolean useVariant4glteTitle = carrierConfig.getBoolean(
                     CarrierConfigManager.KEY_ENHANCED_4G_LTE_TITLE_VARIANT_BOOL);
             int enhanced4glteModeTitleId = useVariant4glteTitle ?
@@ -1068,7 +1059,11 @@ public class MobileNetworkSettings extends Activity  {
             if (ps != null) {
                 ps.setEnabled(hasActiveSubscriptions);
             }
-            ps = findPreference(CATEGORY_APN_EXPAND_KEY);
+            ps = findPreference(CATEGORY_GSM_APN_EXPAND_KEY);
+            if (ps != null) {
+                ps.setEnabled(hasActiveSubscriptions);
+            }
+            ps = findPreference(CATEGORY_CDMA_APN_EXPAND_KEY);
             if (ps != null) {
                 ps.setEnabled(hasActiveSubscriptions);
             }
@@ -1257,6 +1252,13 @@ public class MobileNetworkSettings extends Activity  {
             updateBody();
             // always let the preference setting proceed.
             return true;
+        }
+
+        private boolean is4gLtePrefEnabled(Context context, PersistableBundle carrierConfig) {
+            return (mTelephonyManager.getCallState() == TelephonyManager.CALL_STATE_IDLE)
+                    && ImsManager.isNonTtyOrTtyOnVolteEnabled(context)
+                    && carrierConfig.getBoolean(
+                            CarrierConfigManager.KEY_EDITABLE_ENHANCED_4G_LTE_BOOL);
         }
 
         private class MyHandler extends Handler {
@@ -1755,17 +1757,14 @@ public class MobileNetworkSettings extends Activity  {
                 return;
             }
 
-            if (mGsmUmtsOptions == null) {
-                mGsmUmtsOptions = new GsmUmtsOptions(this, prefSet, mPhone.getSubId(),
-                        mNetworkQueryService);
-            }
+            updateGsmUmtsOptions(this, prefSet, mPhone.getSubId(), mNetworkQueryService);
+
             PreferenceCategory apnExpand =
-                    (PreferenceCategory) prefSet.findPreference(CATEGORY_APN_EXPAND_KEY);
+                    (PreferenceCategory) prefSet.findPreference(CATEGORY_GSM_APN_EXPAND_KEY);
             PreferenceCategory networkOperatorCategory =
                     (PreferenceCategory) prefSet.findPreference(
                             NetworkOperators.CATEGORY_NETWORK_OPERATORS_KEY);
-            PreferenceScreen carrierSettings =
-                    (PreferenceScreen) prefSet.findPreference(BUTTON_CARRIER_SETTINGS_KEY);
+            Preference carrierSettings = prefSet.findPreference(BUTTON_CARRIER_SETTINGS_KEY);
             if (apnExpand != null) {
                 apnExpand.setEnabled(isWorldMode() || enable);
             }
@@ -1786,9 +1785,7 @@ public class MobileNetworkSettings extends Activity  {
             if (prefSet == null) {
                 return;
             }
-            if (enable && mCdmaOptions == null) {
-                mCdmaOptions = new CdmaOptions(this, prefSet, mPhone);
-            }
+            updateCdmaOptions(this, prefSet, mPhone);
             CdmaSystemSelectListPreference systemSelect =
                     (CdmaSystemSelectListPreference)prefSet.findPreference
                             (BUTTON_CDMA_SYSTEM_SELECT_KEY);
@@ -1829,26 +1826,29 @@ public class MobileNetworkSettings extends Activity  {
             // TODO: add Metrics constants for other preferences and send events here accordingly.
         }
 
-        private void setAndvancedButtonSummary() {
-            if (mAdvancedOptions == null) {
-                return;
+        private void updateGsmUmtsOptions(PreferenceFragment prefFragment,
+                PreferenceScreen prefScreen, final int subId, INetworkQueryService queryService) {
+            // We don't want to re-create GsmUmtsOptions if already exists. Otherwise, the
+            // preferences inside it will also be re-created which causes unexpected behavior.
+            // For example, the open dialog gets dismissed or detached after pause / resume.
+            if (mGsmUmtsOptions == null) {
+                mGsmUmtsOptions = new GsmUmtsOptions(prefFragment, prefScreen, subId, queryService);
+            } else {
+                mGsmUmtsOptions.update(subId, queryService);
             }
-
-            StringBuilder summary = new StringBuilder();
-            summary.append(mButton4glte.getTitle());
-            summary.append(", ");
-            summary.append(mButtonPreferredNetworkMode.getTitle());
-            summary.append(", ");
-            summary.append(mButtonEnabledNetworks.getTitle());
-            summary.append(", ");
-            summary.append(mEuiccSettingsPref.getTitle());
-            summary.append(", ");
-            summary.append(mWiFiCallingPref.getTitle());
-            summary.append(", ");
-            summary.append(mVideoCallingPref.getTitle());
-            mAdvancedOptions.setSummary(summary.toString());
         }
 
+        private void updateCdmaOptions(PreferenceFragment prefFragment, PreferenceScreen prefScreen,
+                Phone phone) {
+            // We don't want to re-create CdmaOptions if already exists. Otherwise, the preferences
+            // inside it will also be re-created which causes unexpected behavior. For example,
+            // the open dialog gets dismissed or detached after pause / resume.
+            if (mCdmaOptions == null) {
+                mCdmaOptions = new CdmaOptions(prefFragment, prefScreen, phone);
+            } else {
+                mCdmaOptions.update(phone);
+            }
+        }
     }
 }
 

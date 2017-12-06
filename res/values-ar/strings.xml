@@ -27,7 +27,7 @@
     <string name="onHold" msgid="9035493194749959955">"معلقة"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"‏بدأ رمز MMI"</string>
     <string name="ussdRunning" msgid="485588686340541690">"‏جارٍ تشغيل رمز USSD..."</string>
-    <string name="mmiCancelled" msgid="2771923949751842276">"‏تم إلغاء كود MMI"</string>
+    <string name="mmiCancelled" msgid="2771923949751842276">"‏تم إلغاء رمز MMI"</string>
     <string name="cancel" msgid="5044513931633602634">"إلغاء"</string>
     <string name="enter_input" msgid="1810529547726803893">"‏يجب أن تتراوح حروف رسالة USSD بين <xliff:g id="MIN_LEN">%d</xliff:g> و<xliff:g id="MAX_LEN">%d</xliff:g>. يُرجى إعادة المحاولة."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"إدارة مكالمة جماعية"</string>
@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"البريد الصوتي (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"الإشعارات"</string>
-    <string name="networks" msgid="8873030692174541976">"مشغلو الشبكة"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"عمليات البث في حالات الطوارئ"</string>
     <string name="call_settings" msgid="6112441768261754562">"إعدادات الاتصال"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"إعدادات إضافية"</string>
@@ -164,20 +163,18 @@
     <string name="label_available" msgid="1181658289009300430">"الشبكات المتاحة"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"جارِ البحث…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"لم يتم العثور على شبكات."</string>
-    <string name="search_networks" msgid="1601136049300882441">"بحث في الشبكات"</string>
     <string name="network_query_error" msgid="6828516148953325006">"حدث خطأ أثناء البحث عن شبكات."</string>
     <string name="register_on_network" msgid="9055203954040805084">"جارٍ التسجيل على <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"‏لا تسمح شريحة SIM بالاتصال بهذه الشبكة."</string>
     <string name="connect_later" msgid="2308119155752343975">"يتعذر الاتصال بهذه الشبكة في الوقت الحالي. حاول مرة أخرى لاحقًا."</string>
     <string name="registration_done" msgid="495135664535876612">"مسجل على الشبكة."</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"اختر مشغل شبكة جوال"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"البحث عن كل الشبكات المتاحة"</string>
     <string name="select_automatically" msgid="1046727200631770962">"تحديد الشبكة تلقائيًا"</string>
     <string name="network_select_title" msgid="7733107364757544558">"الشبكة"</string>
     <string name="register_automatically" msgid="6017849844573519637">"التسجيل التلقائي..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"نوع الشبكة المفضل"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"تغيير وضع تشغيل الشبكة"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"نوع الشبكة المفضل"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(محظور)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"‏GSM/WCDMA المفضل"</item>
     <item msgid="8442633436636425221">"‏نظام GSM فقط"</item>
@@ -244,12 +241,17 @@
     <string name="roaming_warning" msgid="1603164667540144353">"قد يكلف ذلك رسومًا مرتفعة."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"السماح بتجوال البيانات؟"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"استخدام البيانات"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"تم استخدام <xliff:g id="ID_1">%1$s</xliff:g> من بيانات الجوال خلال الفترة بين <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"تم استخدام <xliff:g id="ID_1">%1$s</xliff:g> من بيانات الجوال خلال الفترة بين <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"إعدادات متقدمة"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"مشغل شبكة الجوّال"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"‏مشغل شبكة الجوال، esim، sim، euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"بيانات الجوال"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"بيانات الجوّال"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"الوصول إلى البيانات باستخدام شبكة الجوال"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"هل تريد إيقاف تشغيل بيانات الجوّال؟"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"يلزم التحديد"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"‏هل تريد تغيير شريحة SIM للبيانات؟"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"هل تريد استخدام <xliff:g id="NEW_SIM">%1$s</xliff:g> بدلاً من <xliff:g id="OLD_SIM">%2$s</xliff:g> لبيانات الجوّال؟"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"‏الاتصال عبر Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"مكالمة فيديو باستخدام مشغل شبكة الجوال"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"‏خيارات نظام GSM/النظام العالمي لاتصالات الجوال عن بعد (UMTS)"</string>
@@ -418,7 +420,7 @@
     <string name="pin2_invalid" msgid="5470854099230755944">"‏لم يتم تحديث FDN لأنك كتبت رقم تعريف شخصي غير صحيح."</string>
     <string name="fdn_invalid_number" msgid="8602417141715473998">"‏لم يتم تحديث FDN نظرًا لأن الرقم فارغ أو يتجاوز طوله 20 رقمًا."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"‏لم يتم تحديث FDN. رقم PIN2 غير صحيح، أو تم رفض رقم الهاتف."</string>
-    <string name="fdn_failed" msgid="540018079008319747">"‏أخفقت عملية FDN!"</string>
+    <string name="fdn_failed" msgid="540018079008319747">"‏تعذّر إتمام عملية FDN!"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"‏جارٍ القراءة من شريحة SIM..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"‏ليس هناك جهات اتصال على شريحة SIM."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"حدد جهات اتصال لاستيرادها"</string>
@@ -481,8 +483,8 @@
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"شبكة الجوال غير متاحة."</string>
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"شبكة الجوّال ليست متوفرة. اتصل بشبكة لاسلكية لإجراء مكالمة."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"لإجراء مكالمة، أدخل رقمًا صالحًا."</string>
-    <string name="incall_error_call_failed" msgid="5891978320269774095">"أخفقت المكالمة."</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"لا يمكن إضافة مكالمة في الوقت الحالي."</string>
+    <string name="incall_error_call_failed" msgid="5891978320269774095">"تعذّرت المكالمة."</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"يتعذر إجراء المكالمة في الوقت الحالي. يمكنك محاولة التواصل من خلال إرسال رسالة."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"الخدمة ليست متوفرة"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"يتعذر تبديل المكالمات."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"يتعذر فصل المكالمة."</string>

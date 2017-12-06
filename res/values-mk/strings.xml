@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Говорна пошта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ГП:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Известувања"</string>
-    <string name="networks" msgid="8873030692174541976">"Оператори на мрежа"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Итни емитувања"</string>
     <string name="call_settings" msgid="6112441768261754562">"Поставки на повик"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Дополнителни поставки"</string>
@@ -164,20 +163,18 @@
     <string name="label_available" msgid="1181658289009300430">"Достапни мрежи"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Се пребарува..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Не се пронајдени мрежи."</string>
-    <string name="search_networks" msgid="1601136049300882441">"Пребарај мрежи"</string>
     <string name="network_query_error" msgid="6828516148953325006">"Грешка при пребарување мрежи."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Регистрирање на <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"Вашата SIM картичка не дозволува поврзување со оваа мрежа."</string>
     <string name="connect_later" msgid="2308119155752343975">"Не може да се поврзе со оваа мрежа во моментов. Обидете се повторно подоцна."</string>
     <string name="registration_done" msgid="495135664535876612">"Регистрирање на мрежа."</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"Избери оператор на мрежа"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"Пребарај ги сите достапни мрежи"</string>
     <string name="select_automatically" msgid="1046727200631770962">"Избери мрежа автоматски"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Мрежа"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Автоматска регистрација..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Претпочитан тип мрежа"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Промени го режимот на работа на мрежата"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Претпочитан тип мрежа"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(забрането)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Претпочитан: GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"Само GSM"</item>
@@ -244,12 +241,17 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Може да направите големи трошоци."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Дозволи интернет-роаминг?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Потрошен сообраќај"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> потрошен мобилен интернет во периодот <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> потрошен мобилен интернет во периодот <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"Напредни"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Оператор"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"оператор, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> - <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Мобилен интернет"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Мобилен интернет"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Пристапете до податоците преку мобилна мрежа"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Да се исклучи мобилниот интернет?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"Треба да се избере"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"Да се промени SIM за интернет?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"Да се користи <xliff:g id="NEW_SIM">%1$s</xliff:g> наместо <xliff:g id="OLD_SIM">%2$s</xliff:g> за мобилен интернет?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Повикување преку Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Видеоповикување преку оператор"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Опции за GSM/UMTS"</string>
@@ -488,7 +490,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Не е достапна мобилна мрежа. Поврзете се на безжична мрежа за да повикате."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"За да повикате, внесете важечки број."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Повикот не успеа."</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Повикот не може да се додаде во моментов."</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Повикот не може да се додаде во моментов. Може да се обидете да стапите во контакт со испраќање порака."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Услугата не е поддржана"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Не може да префрли повици."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Не може да оддели повик."</string>

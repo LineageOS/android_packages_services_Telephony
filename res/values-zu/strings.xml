@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Ivoyisimeyili (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Izaziso"</string>
-    <string name="networks" msgid="8873030692174541976">"Imisebenzi yenethiwekhi"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Ukusakazwa okuphuthumayo"</string>
     <string name="call_settings" msgid="6112441768261754562">"Izilungiselelo zekholi"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Izilungiselelo ezengeziwe"</string>
@@ -164,20 +163,18 @@
     <string name="label_available" msgid="1181658289009300430">"Amanethiwekhi atholakalayo"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Iyasesha..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Awekho amanethiwekhi atholakele."</string>
-    <string name="search_networks" msgid="1601136049300882441">"Sesha amanethiwekhi"</string>
     <string name="network_query_error" msgid="6828516148953325006">"Iphutha ngenkathi icinga amanethiwekhi."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Ibhalisa kwi <xliff:g id="NETWORK">%s</xliff:g>"</string>
     <string name="not_allowed" msgid="5613353860205691579">"Ikhadi lakho le-SIM alivumeli uxhumano kulenethiwekhi."</string>
     <string name="connect_later" msgid="2308119155752343975">"Ayikwazi ukuxhuma kunethiwekhi okwamanje. Zama futhi ngemva kwesikhashana."</string>
     <string name="registration_done" msgid="495135664535876612">"Ibhalisiwe kwinethiwekhi"</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"Khetha inkamapani yenethiwekhi"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"Sesha wonke amanethiwekhi atholakalayo"</string>
     <string name="select_automatically" msgid="1046727200631770962">"Khetha ngokuzenzakalela inethiwekhi"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Inethiwekhi"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Ukubhalisa okuzenzakalelayo..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Uhlobo lwenethiwekhi oluncamelayo"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Shintsha imodi esebenzayo yenethiwekhi"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Uhlobo lwenethiwekhi oluncamelayo"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(kunqatshelwe)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Okukhethwayo kwe-GSM / WCDMA"</item>
     <item msgid="8442633436636425221">"I-GSM kuphela"</item>
@@ -244,12 +241,17 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Ingahle uthole izindleko ezincane."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vumela ukuhamba kwedatha?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Ukusebenzisa idatha"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> idatha yeselula esetshenziswe phakathi kwe-<xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> kusetshenziswe idatha yeselula engu-<xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"Okuthuthukisiwe"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Inkampani yenethiwekhi"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"inkampani yenethiwekhi, i-esim, i-sim, i-euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Idatha yeselula"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Idatha yeselula"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Finyelela kudatha usebenzisa inethiwekhi yeselula"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Vala idatha yeselula?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"Ukukhetha kuyadingeka"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"Shintsha idatha ye-SIM?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"Sebenzisa i-<xliff:g id="NEW_SIM">%1$s</xliff:g> esikhundleni se-<xliff:g id="OLD_SIM">%2$s</xliff:g> kudatha yeselula?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Ukushaya kwe-Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Ukushaya kwevidiyo kwenkampani yenethiwekhi"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Okukhethwa kukho kwe-GSM/UMTS"</string>
@@ -486,7 +488,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Inethiwekhi yeselula ayitholakali. Xhumeka kunethiwekhi engenantambo ukuze wenze ikholi."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Ukuze wenze ikholi, faka inombolo evumelekile."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Ikholi ihlulekile."</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Ikholi ayikwazi ukungezwa ngalesi sikhathi."</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Ikholi ayikwazi ukungezwa ngalesi sikhathi. Ungazama ukufinyelela ngokuthumela umlayezo."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Isevisi ayisekelwe"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Ayikwazi ukushintsha amakholi."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Ayikwazi ukuhlukanisa ikholi."</string>

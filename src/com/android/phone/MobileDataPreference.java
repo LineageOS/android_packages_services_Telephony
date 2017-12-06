@@ -114,6 +114,9 @@ public class MobileDataPreference extends DialogPreference {
 
     @Override
     public void performClick(PreferenceScreen preferenceScreen) {
+        if (!isEnabled() || !SubscriptionManager.isValidSubscriptionId(mSubId)) {
+            return;
+        }
         final SubscriptionInfo currentSir = mSubscriptionManager.getActiveSubscriptionInfo(
                 mSubId);
         final SubscriptionInfo nextSir = mSubscriptionManager.getDefaultDataSubscriptionInfo();

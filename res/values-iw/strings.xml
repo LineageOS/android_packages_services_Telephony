@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"דואר קולי (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"דואר קולי:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"עדכונים"</string>
-    <string name="networks" msgid="8873030692174541976">"מפעילי רשת"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"שידורי חירום"</string>
     <string name="call_settings" msgid="6112441768261754562">"הגדרות שיחה"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"הגדרות נוספות"</string>
@@ -164,20 +163,18 @@
     <string name="label_available" msgid="1181658289009300430">"רשתות זמינות"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"מחפש..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"לא נמצאו רשתות."</string>
-    <string name="search_networks" msgid="1601136049300882441">"חפש רשתות"</string>
     <string name="network_query_error" msgid="6828516148953325006">"שגיאה במהלך חיפוש רשתות."</string>
     <string name="register_on_network" msgid="9055203954040805084">"נרשם ב-<xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"‏כרטיס ה-SIM לא מאפשר חיבור לרשת זו."</string>
     <string name="connect_later" msgid="2308119155752343975">"לא ניתן להתחבר לרשת זו כעת. נסה שוב מאוחר יותר."</string>
     <string name="registration_done" msgid="495135664535876612">"רשום ברשת."</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"בחר ספק רשת"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"חפש את כל הרשתות הזמינות"</string>
     <string name="select_automatically" msgid="1046727200631770962">"בחירה אוטומטית של הרשת"</string>
     <string name="network_select_title" msgid="7733107364757544558">"רשת"</string>
     <string name="register_automatically" msgid="6017849844573519637">"רישום אוטומטי..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"סוג רשת מועדף"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"שנה את מצב ההפעלה של הרשת"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"סוג רשת מועדף"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(אסור)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"‏GSM/WCDMA מועדפת"</item>
     <item msgid="8442633436636425221">"‏GSM בלבד"</item>
@@ -244,12 +241,17 @@
     <string name="roaming_warning" msgid="1603164667540144353">"ייתכנו שיעורי חיוב גבוהים."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"האם לאפשר נדידה?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"שימוש בחבילת הגלישה"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"השתמשת ב-<xliff:g id="ID_1">%1$s</xliff:g> מחבילת הגלישה בתאריכים <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"השתמשת ב-<xliff:g id="ID_1">%1$s</xliff:g> מחבילת הגלישה בתאריכים <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"הגדרות מתקדמות"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ספק"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"‏ספק, esim, ‏sim‏, ‏euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"חבילת גלישה"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"חבילת גלישה"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"שימוש בחבילת הגלישה דרך הרשת הסלולרית"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"להשבית את חבילת הגלישה?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"עליך לבחור אפשרות"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"‏לשנות את ה-SIM של חבילת הגלישה?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"להשתמש בחבילת הגלישה ב-<xliff:g id="NEW_SIM">%1$s</xliff:g> במקום ב-<xliff:g id="OLD_SIM">%2$s</xliff:g>?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"‏שיחות Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"שיחות וידאו באמצעות הספק הסלולרי"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"‏אפשרויות GSM/UMTS"</string>
@@ -482,7 +484,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"הרשת הסלולרית לא זמינה. עליך להתחבר לרשת אלחוטית כדי להתקשר."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"כדי להתקשר, הזן מספר טלפון חוקי."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"השיחה נכשלה."</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"לא ניתן להוסיף את השיחה כרגע."</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"לא ניתן להוסיף את השיחה כרגע. ניתן לנסות לשלוח הודעה."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"שירות לא נתמך"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"לא ניתן לעבור בין שיחות."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"לא ניתן להפריד שיחה."</string>
