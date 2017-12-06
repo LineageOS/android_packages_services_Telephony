@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Voicemail (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Meldingen"</string>
-    <string name="networks" msgid="8873030692174541976">"Mobiele providers"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Nooduitzendingen"</string>
     <string name="call_settings" msgid="6112441768261754562">"Oproepinstellingen"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Aanvullende instellingen"</string>
@@ -164,20 +163,18 @@
     <string name="label_available" msgid="1181658289009300430">"Beschikbare netwerken"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Zoeken..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Geen netwerken gevonden."</string>
-    <string name="search_networks" msgid="1601136049300882441">"Netwerken zoeken"</string>
     <string name="network_query_error" msgid="6828516148953325006">"Fout tijdens zoeken naar netwerken."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Registreren op <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"Je simkaart staat geen verbinding met dit netwerk toe."</string>
     <string name="connect_later" msgid="2308119155752343975">"Kan nu geen verbinding maken met dit netwerk. Probeer het later opnieuw."</string>
     <string name="registration_done" msgid="495135664535876612">"Geregistreerd op netwerk."</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"Een mobiele provider kiezen"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"Alle beschikbare netwerken zoeken"</string>
     <string name="select_automatically" msgid="1046727200631770962">"Netwerk automatisch selecteren"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Netwerk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatische registratie..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Voorkeursnetwerktype"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"De netwerkgebruiksmodus wijzigen"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Voorkeursnetwerktype"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(niet toegestaan)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Voorkeur voor GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"Alleen GSM"</item>
@@ -240,16 +237,21 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Verbinding maken met gegevensservices tijdens roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Verbinding maken met gegevensservices tijdens roaming"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"De gegevensverbinding is verbroken, omdat je je thuisnetwerk hebt verlaten terwijl gegevensroaming was uitgeschakeld."</string>
+    <string name="roaming_reenable_message" msgid="8913735676127858115">"De gegevensverbinding is verbroken, omdat je je thuisnetwerk hebt verlaten terwijl dataroaming was uitgeschakeld."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Er kunnen hoge roamingkosten in rekening worden gebracht."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"Gegevensroaming toestaan?"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"Dataroaming toestaan?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Datagebruik"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruikt tussen <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruikt van <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"Geavanceerd"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Provider"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"provider, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"Mobiele data"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobiele data"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Datatoegang via mobiel netwerk"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Mobiele data uitschakelen?"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"Selectie vereist"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"Sim voor gegevens wijzigen?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"<xliff:g id="NEW_SIM">%1$s</xliff:g> in plaats van <xliff:g id="OLD_SIM">%2$s</xliff:g> gebruiken voor mobiele data?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Bellen via wifi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Provider videogesprekken"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM-/UMTS-opties"</string>
@@ -264,7 +266,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"Maximum van <xliff:g id="USED_0">%1$s</xliff:g> overschreden\nGegevenssnelheid verlaagd tot <xliff:g id="USED_1">%2$d</xliff:g>  KB/s"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">" ٪<xliff:g id="USED_0">%1$d</xliff:g>van cyclus verstreken\nDe volgende periode start over <xliff:g id="USED_1">%2$d</xliff:g> dagen (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Gegevenssnelheid wordt verlaagd tot <xliff:g id="USED">%1$d</xliff:g>  KB/s als de limiet voor gegevensgebruik wordt overschreden"</string>
-    <string name="throttle_help_subtext" msgid="5217706521499010816">"Meer informatie over het beleid voor gegevensgebruik van je mobiele provider"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Meer informatie over het beleid voor datagebruik van je mobiele provider"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Infodienstbericht"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"SMS Infodienstbericht"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"SMS Infodienstbericht ingeschakeld"</string>
@@ -482,7 +484,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Mobiel netwerk is niet beschikbaar. Maak verbinding met een draadloos netwerk om te bellen."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Als je wilt bellen, moet je een geldig nummer invoeren."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Oproep mislukt."</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"Oproep kan momenteel niet worden toegevoegd."</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Oproep kan op dit moment niet worden toegevoegd. Je kunt contact opnemen door een bericht te sturen."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Service wordt niet ondersteund"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Kan niet overschakelen tussen oproepen."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Kan oproep niet scheiden."</string>

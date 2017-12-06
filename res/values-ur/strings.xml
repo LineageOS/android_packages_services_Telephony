@@ -78,7 +78,6 @@
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"صوتی میل (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"اطلاعات"</string>
-    <string name="networks" msgid="8873030692174541976">"نیٹ ورک آپریٹرز"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"ہنگامی براڈکاسٹس"</string>
     <string name="call_settings" msgid="6112441768261754562">"کال کی ترتیبات"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"اضافی ترتیبات"</string>
@@ -164,20 +163,18 @@
     <string name="label_available" msgid="1181658289009300430">"دستیاب نیٹ ورکس"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"تلاش کر رہا ہے…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"کوئی نیٹ ورکس نہیں ملے۔"</string>
-    <string name="search_networks" msgid="1601136049300882441">"نیٹ ورکس تلاش کریں"</string>
     <string name="network_query_error" msgid="6828516148953325006">"نیٹ ورکس کی تلاش کے دوران خرابی۔"</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> پر رجسٹر کر رہا ہے…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"‏آپ کا SIM کارڈ اس نیٹ ورک سے کنکشن کی اجازت نہیں دیتا ہے۔"</string>
     <string name="connect_later" msgid="2308119155752343975">"ابھی اس نیٹ ورک سے مربوط نہیں ہوسکتا۔ بعد میں دوبارہ کوشش کریں۔"</string>
     <string name="registration_done" msgid="495135664535876612">"نیٹ ورک پر رجسٹرڈ ہوگیا۔"</string>
-    <string name="sum_carrier_select" msgid="3494252551249882718">"ایک نیٹ ورک آپریٹر منتخب کریں"</string>
-    <string name="sum_search_networks" msgid="2921092249873272715">"سبھی دستیاب نیٹ ورکس تلاش کریں"</string>
     <string name="select_automatically" msgid="1046727200631770962">"نیٹ ورک خودکار طور پر منتخب کریں"</string>
     <string name="network_select_title" msgid="7733107364757544558">"نیٹ ورک"</string>
     <string name="register_automatically" msgid="6017849844573519637">"خود کار رجسٹریشن…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ترجیحی نیٹ ورک کی قسم"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"نیٹ ورک آپریٹنگ طرز تبدیل کریں"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ترجیحی نیٹ ورک کی قسم"</string>
+    <string name="forbidden_network" msgid="4384929668343563440">"(ممنوع)"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"‏GSM/WCDMA ترجیحی"</item>
     <item msgid="8442633436636425221">"‏صرف GSM"</item>
@@ -244,12 +241,17 @@
     <string name="roaming_warning" msgid="1603164667540144353">"آپ پر خاطر خواہ چارجز لگ سکتے ہیں۔"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ڈیٹا رومنگ کی اجازت دیں؟"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"ڈیٹا کا استعمال"</string>
-    <string name="data_usage_template" msgid="8065650945732671045">"<xliff:g id="ID_1">%1$s</xliff:g> موبائل ڈیٹا جو <xliff:g id="ID_2">%2$s</xliff:g> کے درمیان استعمال ہوا"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> موبائل ڈیٹا <xliff:g id="ID_2">%2$s</xliff:g> میں استعمال ہوا"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"جدید ترین"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"کیریئر"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"‏کیریئر، esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="3273340917802377121">"موبائل ڈیٹا"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"موبائل ڈیٹا"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"موبائل نیٹ ورک استعمال کرکے ڈیٹا تک رسائی حاصل کریں"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"موبائل ڈیٹا آف کریں؟"</string>
+    <string name="sim_selection_required_pref" msgid="7049424902961844236">"انتخاب درکار ہے"</string>
+    <string name="sim_change_data_title" msgid="5332425991853799280">"‏ڈیٹا SIM تبدیل کریں؟"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"موبائل ڈیٹا کے لیے <xliff:g id="OLD_SIM">%2$s</xliff:g> کی بجائے <xliff:g id="NEW_SIM">%1$s</xliff:g> استعمال کریں؟"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"‏Wi-Fi کالنگ"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"کیرئیر ویڈیو کالنگ"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"‏GSM/UMTS کے اختیارات"</string>
@@ -482,7 +484,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"موبائل نیٹ ورک دستیاب نہیں ہے۔ کال کرنے کیلئے کسی وائرلیس نیٹ ورک سے منسلک ہوں۔"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"کال کرنے کیلئے، ایک درست نمبر درج کریں۔"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"کال ناکام ہوگئی۔"</string>
-    <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"اس وقت کال شامل نہیں ہو سکتی۔"</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"اس وقت کال شامل نہیں کی جا سکتی۔ آپ ایک پیغام بھیج کر رابطہ کرنے کی کوشش کر سکتے ہیں۔"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"سروس تعاون یافتہ نہیں ہے"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"کالز سوئچ نہیں کر سکتے۔"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"کال کو الگ نہیں کر سکتے۔"</string>

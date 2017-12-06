@@ -36,9 +36,9 @@
     <!--We want separate APN setting from reset of settings because-->
     <!--we want user to change it with caution.-->
     <PreferenceCategory
-        android:key="category_apn_key">
+        android:key="category_gsm_apn_key">
         <Preference
-            android:key="button_apn_key"
+            android:key="button_gsm_apn_key"
             android:title="@string/apn_settings"
             android:persistent="false" />
     </PreferenceCategory>
