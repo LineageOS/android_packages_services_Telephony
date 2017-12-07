@@ -440,7 +440,11 @@ public class TelephonyConnectionService extends ConnectionService {
                     isEmergencyNumber, handle, phone);
             // If there was a failure, the resulting connection will not be a TelephonyConnection,
             // so don't place the call!
-            if(resultConnection instanceof TelephonyConnection) {
+            if (resultConnection instanceof TelephonyConnection) {
+                if (request.getExtras() != null && request.getExtras().getBoolean(
+                        TelecomManager.EXTRA_USE_ASSISTED_DIALING, false)) {
+                    ((TelephonyConnection) resultConnection).setIsUsingAssistedDialing(true);
+                }
                 placeOutgoingConnection((TelephonyConnection) resultConnection, phone, request);
             }
             return resultConnection;
