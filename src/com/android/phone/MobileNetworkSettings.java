@@ -1929,15 +1929,10 @@ public class MobileNetworkSettings extends Activity  {
 
             updateGsmUmtsOptions(this, prefSet, mPhone.getSubId(), mNetworkQueryService);
 
-            PreferenceCategory apnExpand =
-                    (PreferenceCategory) prefSet.findPreference(CATEGORY_GSM_APN_EXPAND_KEY);
             PreferenceCategory networkOperatorCategory =
                     (PreferenceCategory) prefSet.findPreference(
                             NetworkOperators.CATEGORY_NETWORK_OPERATORS_KEY);
             Preference carrierSettings = prefSet.findPreference(BUTTON_CARRIER_SETTINGS_KEY);
-            if (apnExpand != null) {
-                apnExpand.setEnabled(isWorldMode() || enable);
-            }
             if (networkOperatorCategory != null) {
                 if (enable) {
                     networkOperatorCategory.setEnabled(true);
