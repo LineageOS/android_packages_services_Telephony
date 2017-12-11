@@ -125,6 +125,11 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.DIAL_MODIFIED_TO_USSD:
             case android.telephony.DisconnectCause.DIAL_MODIFIED_TO_SS:
             case android.telephony.DisconnectCause.DIAL_MODIFIED_TO_DIAL:
+            case android.telephony.DisconnectCause.DIAL_MODIFIED_TO_DIAL_VIDEO:
+            case android.telephony.DisconnectCause.DIAL_VIDEO_MODIFIED_TO_SS:
+            case android.telephony.DisconnectCause.DIAL_VIDEO_MODIFIED_TO_USSD:
+            case android.telephony.DisconnectCause.DIAL_VIDEO_MODIFIED_TO_DIAL:
+            case android.telephony.DisconnectCause.DIAL_VIDEO_MODIFIED_TO_DIAL_VIDEO:
             case android.telephony.DisconnectCause.ERROR_UNSPECIFIED:
             case android.telephony.DisconnectCause.MAXIMUM_NUMBER_OF_CALLS_REACHED:
             case android.telephony.DisconnectCause.DATA_DISABLED:
@@ -303,6 +308,26 @@ public class DisconnectCauseUtil {
 
             case android.telephony.DisconnectCause.DIAL_MODIFIED_TO_DIAL:
                 resourceId = R.string.callFailed_dialToDial;
+                break;
+
+            case android.telephony.DisconnectCause.DIAL_MODIFIED_TO_DIAL_VIDEO:
+                resourceId = R.string.callFailed_dialToDialVideo;
+                break;
+
+            case android.telephony.DisconnectCause.DIAL_VIDEO_MODIFIED_TO_SS:
+                resourceId = R.string.callFailed_dialVideoToSs;
+                break;
+
+            case android.telephony.DisconnectCause.DIAL_VIDEO_MODIFIED_TO_USSD:
+                resourceId = R.string.callFailed_dialVideoToUssd;
+                break;
+
+            case android.telephony.DisconnectCause.DIAL_VIDEO_MODIFIED_TO_DIAL:
+                resourceId = R.string.callFailed_dialVideoToDial;
+                break;
+
+            case android.telephony.DisconnectCause.DIAL_VIDEO_MODIFIED_TO_DIAL_VIDEO:
+                resourceId = R.string.callFailed_dialVideoToDialVideo;
                 break;
 
             case android.telephony.DisconnectCause.OUTGOING_FAILURE:
