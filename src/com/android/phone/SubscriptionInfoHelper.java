@@ -25,7 +25,6 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import com.android.phone.PhoneGlobals;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 
@@ -46,10 +45,10 @@ public class SubscriptionInfoHelper {
     private static final String SUB_LABEL_EXTRA =
             "com.android.phone.settings.SubscriptionInfoHelper.SubscriptionLabel";
 
-    private static Context mContext;
+    private Context mContext;
 
-    private static int mSubId = NO_SUB_ID;
-    private static String mSubLabel;
+    private int mSubId = NO_SUB_ID;
+    private String mSubLabel;
 
     /**
      * Instantiates the helper, by extracting the subscription id and label from the intent.
