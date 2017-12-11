@@ -162,7 +162,7 @@ public class NotificationMgr {
     /* package */ void refreshMwi(int subId) {
         // In a single-sim device, subId can be -1 which means "no sub id".  In this case we will
         // reference the single subid stored in the mMwiVisible map.
-        if (subId == SubscriptionInfoHelper.NO_SUB_ID) {
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             if (mMwiVisible.keySet().size() == 1) {
                 Set<Integer> keySet = mMwiVisible.keySet();
                 Iterator<Integer> keyIt = keySet.iterator();
