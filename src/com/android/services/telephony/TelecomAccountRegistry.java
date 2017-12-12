@@ -226,6 +226,12 @@ final class TelecomAccountRegistry {
                         isHandoverFromSupported);
             }
 
+            boolean isDeviceRttSupported = mContext.getResources().getBoolean(
+                    R.bool.config_support_rtt);
+            if (isDeviceRttSupported && isCarrierRttSupported()) {
+                capabilities |= PhoneAccount.CAPABILITY_RTT;
+            }
+
             extras.putBoolean(PhoneAccount.EXTRA_SUPPORTS_VIDEO_CALLING_FALLBACK,
                     mContext.getResources()
                             .getBoolean(R.bool.config_support_video_calling_fallback));
@@ -388,6 +394,12 @@ final class TelecomAccountRegistry {
                     PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
             return b != null &&
                     b.getBoolean(CarrierConfigManager.KEY_SUPPORT_VIDEO_CONFERENCE_CALL_BOOL);
+        }
+
+        private boolean isCarrierRttSupported() {
+            PersistableBundle b =
+                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
+            return b != null && b.getBoolean(CarrierConfigManager.KEY_RTT_SUPPORTED_BOOL);
         }
 
         /**
