@@ -82,6 +82,6 @@
   <string name="choose_network_mode_system_default">系統預設</string>
   <string name="cdma_call_settings">CDMA 通話設定</string>
   <!-- Mobile network settings, COLP -->
-  <string name="connected_line_identification_title">已連線識別</string>
+  <string name="connected_line_identification_title">連線號碼識別</string>
   <string name="connected_line_identification_summary">如果對方號碼不在通話紀錄中顯示，停用此選項</string>
 </resources>

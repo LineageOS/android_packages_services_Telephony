@@ -41,7 +41,7 @@
   <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">SIM 卡服務供應商解鎖 PIN 碼</string>
   <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM 卡解鎖 PIN碼</string>
+  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM 卡解鎖 PIN 碼</string>
   <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">RUIM 網路 1 解鎖 PIN 碼</string>
   <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
