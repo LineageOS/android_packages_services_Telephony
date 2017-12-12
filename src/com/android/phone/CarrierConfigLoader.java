@@ -749,7 +749,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private String getPackageVersion(String packageName) {
         try {
             PackageInfo info = mContext.getPackageManager().getPackageInfo(packageName, 0);
-            return Integer.toString(info.versionCode);
+            return Long.toString(info.getLongVersionCode());
         } catch (PackageManager.NameNotFoundException e) {
             return null;
         }
