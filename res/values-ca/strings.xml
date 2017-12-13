@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"La sol·licitud SS s\'ha transformat en una sol·licitud DIAL."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"La sol·licitud SS s\'ha transformat en una sol·licitud USSD."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"La sol·licitud SS s\'ha transformat en una sol·licitud SS nova."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"La sol·licitud SS s\'ha transformat en una sol·licitud DIAL de vídeo."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"La configuració dels números de marcatge fix de l\'aplicació Telèfon està activada. En conseqüència, algunes funcions relacionades amb les trucades no funcionen."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Per veure aquesta configuració, has d\'activar el senyal mòbil."</string>
     <string name="close_dialog" msgid="2365884406356986917">"D\'acord"</string>
@@ -153,7 +154,7 @@
     <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"Espera un moment."</string>
     <string name="vm_change_pin_error_too_short" msgid="5974971097302710497">"El PIN nou és massa curt."</string>
     <string name="vm_change_pin_error_too_long" msgid="8476870806115051865">"El PIN nou és massa llarg."</string>
-    <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"El PIN nou no és prou segur. Les contrasenyes segures no poden contenir seqüències contínues ni dígits repetits."</string>
+    <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"El PIN nou no és prou segur. Les contrasenyes segures no poden contenir dígits repetits ni consecutius."</string>
     <string name="vm_change_pin_error_mismatch" msgid="2754685537970757317">"El PIN antic no coincideix."</string>
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"El PIN nou conté caràcters que no són vàlids."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"No es pot canviar el PIN"</string>

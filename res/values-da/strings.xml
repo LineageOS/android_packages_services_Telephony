@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-anmodningen blev ændret til en DIAL-anmodning."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-anmodningen blev ændret til en USSD-anmodning."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-anmodningen blev ændret til en ny SS-anmodning."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS-anmodningen er ændret til en DIAL-anmodning."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Indstillingen Begrænset opkald i appen Opkald er aktiveret. Derfor fungerer nogle opkaldsfunktioner ikke."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Tænd radioen, inden du får vist disse indstillinger."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>

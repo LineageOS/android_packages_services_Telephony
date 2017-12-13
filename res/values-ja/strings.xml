@@ -100,7 +100,7 @@
     <string name="labelCFU" msgid="8147177368148660600">"常に転送"</string>
     <string name="messageCFU" msgid="3560082430662923687">"常にこの番号を使用"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"電話をすべて転送する"</string>
-    <string name="sum_cfu_enabled" msgid="2450052502198827927">"電話をすべて<xliff:g id="PHONENUMBER">{0}</xliff:g>￼に転送する"</string>
+    <string name="sum_cfu_enabled" msgid="2450052502198827927">"電話をすべて<xliff:g id="PHONENUMBER">{0}</xliff:g>に転送する"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"番号が利用できません"</string>
     <string name="sum_cfu_disabled" msgid="8384177689501334080">"OFF"</string>
     <string name="labelCFB" msgid="6139853033106283172">"通話中の着信時"</string>
@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SSリクエストはDIALリクエストに変更されました。"</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SSリクエストはUSSDリクエストに変更されました。"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SSリクエストは新しいSSリクエストに変更されました。"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS リクエストが Video DIAL リクエストに変更されました。"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"電話アプリの発信番号制限設定がONになっているため、通話関連の機能の一部を使用できません。"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"これらの設定を表示するには無線通信をONにしてください。"</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>

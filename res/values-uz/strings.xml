@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS so‘rovi DIAL so‘roviga o‘zgartirildi."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS so‘rovi USSD so‘roviga o‘zgartirildi."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS so‘rovi yangi SS so‘roviga o‘zgartirildi."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS so‘rovi Video DIAL so‘roviga o‘zgartirildi."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Telefon ilovasidagi ruxsat etilgan raqamlar yoqildi. Endim ba’zi qo‘ng‘iroq funksiyalari ishlamay qoladi."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Ushbu sozlamalarni ko‘rishdan oldin radioni yoqing."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
