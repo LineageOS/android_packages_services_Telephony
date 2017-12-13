@@ -39,7 +39,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.PersistableBundle;
-import android.os.Process;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.UserHandle;
@@ -3094,7 +3093,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void enableVideoCalling(boolean enable) {
         enforceModifyPermission();
-        ImsManager.setVtSetting(mPhone.getContext(), enable);
+        ImsManager.getInstance(mPhone.getContext(), mPhone.getPhoneId()).setVtSetting(enable);
     }
 
     @Override
@@ -3107,9 +3106,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // enabled video calling, if IMS is disabled we aren't able to support video calling.
         // In the long run, we may instead need to check if there exists a connection service
         // which can support video calling.
-        return ImsManager.isVtEnabledByPlatform(mPhone.getContext())
-                && ImsManager.isEnhanced4gLteModeSettingEnabledByUser(mPhone.getContext())
-                && ImsManager.isVtEnabledByUser(mPhone.getContext());
+        ImsManager imsManager = ImsManager.getInstance(mPhone.getContext(), mPhone.getPhoneId());
+        return imsManager.isVtEnabledByPlatform()
+                && imsManager.isEnhanced4gLteModeSettingEnabledByUser()
+                && imsManager.isVtEnabledByUser();
     }
 
     @Override
