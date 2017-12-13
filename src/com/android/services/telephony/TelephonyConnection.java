@@ -33,7 +33,6 @@ import android.telecom.StatusHints;
 import android.telecom.TelecomManager;
 import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
-import android.telephony.DisconnectCause;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
 import android.util.Pair;
@@ -521,6 +520,11 @@ abstract class TelephonyConnection extends Connection {
     protected final boolean mIsOutgoing;
 
     /**
+     * Indicates whether this call is using assisted dialing.
+     */
+    private boolean mIsUsingAssistedDialing;
+
+    /**
      * Listeners to our TelephonyConnection specific callbacks
      */
     private final Set<TelephonyConnectionListener> mTelephonyListeners = Collections.newSetFromMap(
@@ -823,6 +827,8 @@ abstract class TelephonyConnection extends Connection {
                 isExternalConnection());
         newProperties = changeBitmask(newProperties, PROPERTY_HAS_CDMA_VOICE_PRIVACY,
                 mIsCdmaVoicePrivacyEnabled);
+        newProperties = changeBitmask(newProperties, PROPERTY_ASSISTED_DIALING_USED,
+                mIsUsingAssistedDialing);
 
         if (getConnectionProperties() != newProperties) {
             setConnectionProperties(newProperties);
@@ -1690,6 +1696,15 @@ abstract class TelephonyConnection extends Connection {
      */
     public boolean wasImsConnection() {
         return mWasImsConnection;
+    }
+
+    boolean getIsUsingAssistedDialing() {
+        return mIsUsingAssistedDialing;
+    }
+
+    void setIsUsingAssistedDialing(Boolean isUsingAssistedDialing) {
+        mIsUsingAssistedDialing = isUsingAssistedDialing;
+        updateConnectionProperties();
     }
 
     private static Uri getAddressFromNumber(String number) {
