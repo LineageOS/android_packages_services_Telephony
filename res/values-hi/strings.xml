@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS अनुरोध को DIAL अनुरोध में बदल दिया गया है."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS अनुरोध को USSD अनुरोध में बदल दिया गया है."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS अनुरोध को नए SS अनुरोध में बदल दिया गया है."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS अनुरोध को वीडियो DIAL में बदल दिया गया."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"आपके फ़ोन ऐप्स की फ़िक्‍स्‍ड डायलिंग नंबर सेटिंग चालू है. इसके परिणामस्‍वरूप, कॉल से संबंधित कुछ सुविधाएं कार्य नहीं कर रही हैं."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"इन सेटिंग को देखने के पहले रेडियो चालू करें."</string>
     <string name="close_dialog" msgid="2365884406356986917">"ठीक है"</string>
@@ -278,9 +279,9 @@
     <string name="enable_disable_administrative" msgid="6501582322182059412">"व्यवस्थापकीय"</string>
     <string name="administrative_enable" msgid="1750086122962032235">"व्यवस्थापकीय सक्षम किया गया"</string>
     <string name="administrative_disable" msgid="8433273857248698539">"व्यवस्थापकीय अक्षम किया गया"</string>
-    <string name="enable_disable_maintenance" msgid="1819693083025106678">"रखरखाव"</string>
-    <string name="maintenance_enable" msgid="8566636458770971189">"रखरखाव सक्षम किया गया"</string>
-    <string name="maintenance_disable" msgid="7340189100885066077">"रखरखाव अक्षम किया गया"</string>
+    <string name="enable_disable_maintenance" msgid="1819693083025106678">"रख-रखाव"</string>
+    <string name="maintenance_enable" msgid="8566636458770971189">"रख-रखाव सक्षम किया गया"</string>
+    <string name="maintenance_disable" msgid="7340189100885066077">"रख-रखाव अक्षम किया गया"</string>
     <string name="general_news_settings" msgid="4968779723948432978">"सामान्य समाचार"</string>
     <string name="bf_news_settings" msgid="3935593091894685267">"व्यवसाय और वित्तीय समाचार"</string>
     <string name="sports_news_settings" msgid="7649399631270052835">"खेल समाचार"</string>

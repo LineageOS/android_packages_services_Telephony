@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"የSS ጥያቄ ወደ የDIAL ጥያቄ ተቀይሯል።"</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"የSS ጥያቄ ወደ የUSSD ጥያቄ ተቀይሯል።"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"የSS ጥያቄ ወደ አዲስ የSS ጥያቄ ተቀይሯል።"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"የSS ጥያቄ ወደ ቪዲዮ DIAL ጥያቄ ተለውጧል።"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"የስልክህ መተግበሪያ የተወሰነ ስልክ ቁጥሮች ቅንብር የበራ ነው። በዚህም ውጤት መሰረት፣ ከጥሪ ጋር የተያያዙ አንዳንድ ባህሪያት እየሰሩ አይደለም።"</string>
     <string name="radio_off_error" msgid="2304459933248513376">" እነዚህን ቅንብሮች ከማየትህ በፊት ሬዲዮኑን አብራ።"</string>
     <string name="close_dialog" msgid="2365884406356986917">"እሺ"</string>

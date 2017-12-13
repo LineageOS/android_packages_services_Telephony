@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS eskaera DIAL eskaerara aldatu da."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS eskaera USSD eskaerara aldatu da."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS eskaera SS eskaera berrira aldatu da."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS eskaera Video DIAL eskaerara aldatu da."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Telefonoa aplikazioaren Markatze finkoko zenbakiak ezarpena aktibatuta duzu. Ondorioz, deiekin lotutako eginbide batzuk ez dira funtzionatzen ari."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Ezarpenak ikusi aurretik, piztu irratia."</string>
     <string name="close_dialog" msgid="2365884406356986917">"Ados"</string>

@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Solicitarea SS a fost transformată în solicitare DIAL."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Solicitarea SS a fost transformată în solicitare USSD."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Solicitarea SS a fost transformată în solicitare SS nouă."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Solicitarea SS a fost modificată într-o solicitare DIAL video."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Setarea Numere cu apelări restricționate din aplicația Telefon este activată. Ca rezultat, unele funcții legate de apelare nu pot fi utilizate."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Activați semnalul radio, înainte de a vizualiza aceste setări."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>

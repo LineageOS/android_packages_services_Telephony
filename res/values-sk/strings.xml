@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Žiadosť SS bola upravená na žiadosť DIAL."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Žiadosť SS bola upravená na žiadosť USSD."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Žiadosť SS bola upravená na novú žiadosť SS."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Žiadosť SS bola upravená na žiadosť Video DIAL."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"V aplikácii Telefón je zapnutý režim povolených čísel. Z toho dôvodu nefungujú niektoré funkcie volania."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Pred zobrazením nastavení zapnite rádio."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
