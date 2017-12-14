@@ -189,7 +189,7 @@
   <string name="perm_change_mobile_network">變更網路模式</string>
   <string name="perm_change_mobile_network_desc">允許應用程式修改目前的網路模式。</string>
   <!-- Mobile network settings, COLP -->
-  <string name="connected_line_identification_title">已連線識別</string>
+  <string name="connected_line_identification_title">連線號碼識別</string>
   <string name="connected_line_identification_summary">如果對方號碼不在通話紀錄中顯示，停用此選項</string>
   <!-- Network mode picker dialog title -->
   <string name="choose_network_mode_title">選擇網路模式</string>
