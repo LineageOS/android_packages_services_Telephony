@@ -39,6 +39,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.PersistableBundle;
+import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.UserHandle;
@@ -77,6 +78,7 @@ import android.util.Slog;
 import com.android.ims.ImsManager;
 import com.android.ims.internal.IImsMMTelFeature;
 import com.android.ims.internal.IImsRcsFeature;
+import com.android.ims.internal.IImsRegistration;
 import com.android.ims.internal.IImsServiceFeatureCallback;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
@@ -2593,6 +2595,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public IImsRcsFeature getRcsFeatureAndListen(int slotId, IImsServiceFeatureCallback callback) {
         enforceModifyPermission();
         return PhoneFactory.getImsResolver().getRcsFeatureAndListen(slotId, callback);
+    }
+
+    /**
+     * Returns the {@link IImsRegistration} structure associated with the slotId and feature
+     * specified.
+     */
+    public IImsRegistration getImsRegistration(int slotId, int feature) throws RemoteException {
+        enforceModifyPermission();
+        return PhoneFactory.getImsResolver().getImsRegistration(slotId, feature);
     }
 
     public void setImsRegistrationState(boolean registered) {
