@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS অনুরোধটিকে DIAL অনুরোধে রুপান্তরিত করা হয়েছে৷"</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS অনুরোধটিকে USSD অনুরোধে রুপান্তরিত করা হয়েছে৷"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS অনুরোধটিকে নতুন SS অনুরোধে রুপান্তরিত করা হয়েছে৷"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS অনুরোধটিকে ভিডিও DIAL অনুরোধে পরিবর্তন করা হয়েছে।"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"আপনার ফোন অ্যাপ্লিকেশনের স্থায়ী ডায়ালের নাম্বারগুলির সেটিং চালু করা হয়েছে৷ এর ফলে, কিছু কিছু কল সংক্রান্ত বৈশিষ্ট্য কাজ করছে না৷"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"এই সেটিংস দেখার পূর্বে রেডিওটি চালু করুন৷"</string>
     <string name="close_dialog" msgid="2365884406356986917">"ঠিক আছে"</string>

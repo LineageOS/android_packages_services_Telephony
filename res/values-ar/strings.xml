@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"‏تم تعديل طلب SS إلى طلب DIAL."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"‏تم تعديل طلب SS إلى طلب USSD."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"‏تم تعديل طلب SS إلى طلب SS جديد."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"‏تم تعديل طلب SS إلى طلب DIAL فيديو."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"تم تشغيل إعداد أرقام الاتصال الثابتة بالتطبيق المثبت على هاتفك. ونتيجة لذلك، لن تعمل بعض الميزات المرتبطة بالمكالمات."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"شغّل اللاسلكي قبل عرض هذه الإعدادات."</string>
     <string name="close_dialog" msgid="2365884406356986917">"موافق"</string>

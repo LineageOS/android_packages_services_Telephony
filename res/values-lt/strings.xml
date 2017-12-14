@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS užklausa pakeista į DIAL užklausą."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS užklausa pakeista į USSD užklausą."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS užklausa pakeista į naują SS užklausą."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS užklausa pakeista į „Video DIAL“ užklausą."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Įjungtas jūsų telefono programos fiksuotojo rinkimo numerių nustatymas. Todėl neveikia kai kurios su skambinimu susijusios funkcijos."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Prieš žiūrėdami šiuos nustatymus, įjunkite radiją."</string>
     <string name="close_dialog" msgid="2365884406356986917">"Gerai"</string>

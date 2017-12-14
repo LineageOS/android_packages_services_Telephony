@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS 请求已修改为 DIAL 请求。"</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS 请求已修改为 USSD 请求。"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS 请求已修改为新的 SS 请求。"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS 请求已修改为视频 DIAL 请求。"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"拨号应用的固定拨号设置已启用。因此，部分与拨号相关的功能将不能正常使用。"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"请先开启无线装置，然后再查看这些设置。"</string>
     <string name="close_dialog" msgid="2365884406356986917">"确定"</string>

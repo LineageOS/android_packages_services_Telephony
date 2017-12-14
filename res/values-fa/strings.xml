@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"‏درخواست SS به درخواست DIAL تغییر کرد."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"‏درخواست SS به درخواست USSD تغییر کرد."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"‏درخواست SS به درخواست جدید SS تغییر کرد."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"‏درخواست SS به درخواست Video DIAL تغییر کرد."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"تنظیم اعداد شماره‌گیری ثابت برنامه‌های تلفن شما غیرفعال است. درنتیجه، برخی از ویژگی‌های مربوط به تماس کار نمی‌کند."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"قبل از مشاهدهٔ این تنظیمات، رادیو را روشن کنید."</string>
     <string name="close_dialog" msgid="2365884406356986917">"تأیید"</string>

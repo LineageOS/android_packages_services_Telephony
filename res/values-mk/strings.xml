@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Барањето SS е изменето во барање DIAL."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Барањето SS е изменето во барање USSD."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Барањето SS е изменето во ново барање SS."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Барањето SS е изменето во барање Видео DIAL."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Апликацијата на вашиот телефон за броеви на фиксно бирање е вклучена. Како резултат на тоа, некои функции поврзани со повици не работат."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Вклучете го радиото пред да ги гледате овие поставки."</string>
     <string name="close_dialog" msgid="2365884406356986917">"Во ред"</string>

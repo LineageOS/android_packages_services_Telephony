@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Żądanie SS zostało zmienione na żądanie DIAL."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Żądanie SS zostało zmienione na żądanie USSD."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Żądanie SS zostało zmienione na nowe żądanie SS."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Żądanie SS zostało zmienione na żądanie Video DIAL."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"W aplikacji Telefon włączone jest ustawienie Numery ustalone. W rezultacie niektóre funkcje związane z połączeniami nie działają."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Przed wyświetleniem tych ustawień włącz radio."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>

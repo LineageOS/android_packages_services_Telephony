@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"‏SS درخواست میں ترمیم کر کے DIAL درخواست بنا دی گئی ہے۔"</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"‏SS درخواست میں ترمیم کر کے USSD درخواست بنا دی گئی ہے۔"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"‏SS درخواست میں ترمیم کر کے نئی SS درخواست بنا دی گئی ہے۔"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"‏SS درخواست میں ترمیم کر کے ویڈیو DIAL درخواست بنا دی گئی ہے۔"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"آپ کے فون کی ایپ کے فکسڈ ڈائلنگ نمبرز کی ترتیب آن ہے۔ نتیجتاًً، کال سے متعلقہ کچھ خصوصیات کام نہیں کر رہی ہیں۔"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"یہ ترتیبات دیکھنے سے پہلے ریڈیو آن کریں۔"</string>
     <string name="close_dialog" msgid="2365884406356986917">"ٹھیک ہے"</string>

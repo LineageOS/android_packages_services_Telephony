@@ -131,6 +131,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS сурамы DIAL сурамына өзгөртүлдү."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS сурамы USSD сурамына өзгөртүлдү."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS сурамы жаңы SS сурамына өзгөртүлдү."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS сурамы Видео DIAL сурамына өзгөртүлдү."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Сиздин телефонуңуздун Бекитилген Номурду Терүү колдонмосу жандырылган. Натыйжасында, чалууга байланыштуу айрым мүмкүнчүлүктөр иштебей турат."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Бул тууралоолорду көрүш үчүн, алгач радиону иштетишиңиз керек."</string>
     <string name="close_dialog" msgid="2365884406356986917">"Жарайт"</string>

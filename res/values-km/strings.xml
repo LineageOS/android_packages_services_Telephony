@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"សំណើ SS ត្រូវបានកែសម្រួលទៅសំណើនៃការហៅ។"</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"សំណើ SS ត្រូវបានកែសម្រួលទៅសំណើសារ USSD។"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"សំណើ SS ត្រូវបានកែសម្រួលទៅតាមសំណើ SS ថ្មី។"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"បាន​កែប្រែ​សំណើ SS ទៅជា​សំណើ DIAL ជា​វីដេអូ។"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"បាន​បើក​ការ​កំណត់​លេខ​ហៅ​​ថេរ​​​នៃ​កម្មវិធី​ទូរស័ព្ទ​របស់​អ្នក។ ជា​លទ្ធផល លក្ខណៈ​មួយ​ចំនួន​ដែល​ទាក់ទង​នឹង​ការ​ហៅ​មិន​ដំណើរការ។"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"បើក​​វិទ្យុ​មុន​ពេល​មើល​ការ​កំណត់​ទាំង​នេះ​។"</string>
     <string name="close_dialog" msgid="2365884406356986917">"យល់​ព្រម​"</string>
