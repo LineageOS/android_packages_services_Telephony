@@ -776,11 +776,15 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         PersistableBundle retConfig = CarrierConfigManager.getDefaultConfig();
         if (SubscriptionManager.isValidPhoneId(phoneId)) {
             PersistableBundle config = mConfigFromDefaultApp[phoneId];
-            if (config != null)
+            if (config != null) {
                 retConfig.putAll(config);
+                retConfig.putBoolean(CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL, true);
+            }
             config = mConfigFromCarrierApp[phoneId];
-            if (config != null)
+            if (config != null) {
                 retConfig.putAll(config);
+                retConfig.putBoolean(CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL, true);
+            }
         }
         return retConfig;
     }
