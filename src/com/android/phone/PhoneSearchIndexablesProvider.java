@@ -37,7 +37,6 @@ import android.provider.SearchIndexableResource;
 import android.provider.SearchIndexablesContract.RawData;
 import android.provider.SearchIndexablesProvider;
 import android.support.annotation.VisibleForTesting;
-import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
 
 public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
@@ -133,10 +132,7 @@ public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
     }
 
     @VisibleForTesting boolean isEnhanced4gLteHidden() {
-        TelephonyManager telephonyManager =
-                (TelephonyManager) getContext().getSystemService(Context.TELEPHONY_SERVICE);
-        return MobileNetworkSettings
-                .hideEnhanced4gLteSettings(getContext(), telephonyManager.getCarrierConfig());
+        return MobileNetworkSettings.hideEnhanced4gLteSettings(getContext());
     }
 
     private Object[] createNonIndexableRow(String key) {
