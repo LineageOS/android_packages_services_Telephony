@@ -22,6 +22,7 @@ import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.telecom.CallAudioState;
@@ -96,7 +97,7 @@ abstract class TelephonyConnection extends Connection {
     private static final int MSG_CDMA_VOICE_PRIVACY_OFF = 16;
     private static final int MSG_HANGUP = 17;
 
-    private final Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -170,10 +171,7 @@ abstract class TelephonyConnection extends Connection {
                                         new ArrayList(Arrays.asList(mSsNotification.history)));
                                 putExtras(lastForwardedNumber);
                             }
-                            if (mSsNotification.code
-                                    == SuppServiceNotification.MO_CODE_CALL_FORWARDED) {
-                                sendConnectionEvent(TelephonyManager.EVENT_CALL_FORWARDED, null);
-                            }
+                            handleSuppServiceNotification(mSsNotification);
                         }
                     }
                     break;
@@ -254,6 +252,115 @@ abstract class TelephonyConnection extends Connection {
             }
         }
     };
+
+    /**
+     * Handles {@link SuppServiceNotification}s pertinent to Telephony.
+     * @param ssn the notification.
+     */
+    private void handleSuppServiceNotification(SuppServiceNotification ssn) {
+        Log.i(this, "handleSuppServiceNotification: type=%d, code=%d", ssn.notificationType,
+                ssn.code);
+        if (ssn.notificationType == SuppServiceNotification.NOTIFICATION_TYPE_CODE_1
+                && ssn.code == SuppServiceNotification.CODE_1_CALL_FORWARDED) {
+            sendConnectionEvent(TelephonyManager.EVENT_CALL_FORWARDED, null);
+        }
+        sendSuppServiceNotificationEvent(ssn.notificationType, ssn.code);
+    }
+
+    /**
+     * Sends a supplementary service notification connection event.
+     * This connection event includes the type and code, as well as a human readable message which
+     * is suitable for display to the user if the UI chooses to do so.
+     * @param type the {@link SuppServiceNotification#type}.
+     * @param code the {@link SuppServiceNotification#code}.
+     */
+    private void sendSuppServiceNotificationEvent(int type, int code) {
+        Bundle extras = new Bundle();
+        extras.putInt(TelephonyManager.EXTRA_NOTIFICATION_TYPE, type);
+        extras.putInt(TelephonyManager.EXTRA_NOTIFICATION_CODE, code);
+        extras.putCharSequence(TelephonyManager.EXTRA_NOTIFICATION_MESSAGE,
+                getSuppServiceMessage(type, code));
+        sendConnectionEvent(TelephonyManager.EVENT_SUPPLEMENTARY_SERVICE_NOTIFICATION, extras);
+    }
+
+    /**
+     * Retrieves a human-readable message for a supplementary service notification.
+     * This message is suitable for display to the user.
+     * @param type the code group.
+     * @param code the code.
+     * @return A {@link CharSequence} containing the message, or {@code null} if none defined.
+     */
+    private CharSequence getSuppServiceMessage(int type, int code) {
+        int messageId = -1;
+        if (type == SuppServiceNotification.NOTIFICATION_TYPE_CODE_1) {
+            switch (code) {
+                case SuppServiceNotification.CODE_1_CALL_DEFLECTED:
+                    messageId = R.string.supp_service_notification_call_deflected;
+                    break;
+                case SuppServiceNotification.CODE_1_CALL_FORWARDED:
+                    messageId = R.string.supp_service_notification_call_forwarded;
+                    break;
+                case SuppServiceNotification.CODE_1_CALL_IS_WAITING:
+                    messageId = R.string.supp_service_notification_call_waiting;
+                    break;
+                case SuppServiceNotification.CODE_1_CLIR_SUPPRESSION_REJECTED:
+                    messageId = R.string.supp_service_clir_suppression_rejected;
+                    break;
+                case SuppServiceNotification.CODE_1_CUG_CALL:
+                    messageId = R.string.supp_service_closed_user_group_call;
+                    break;
+                case SuppServiceNotification.CODE_1_INCOMING_CALLS_BARRED:
+                    messageId = R.string.supp_service_incoming_calls_barred;
+                    break;
+                case SuppServiceNotification.CODE_1_OUTGOING_CALLS_BARRED:
+                    messageId = R.string.supp_service_outgoing_calls_barred;
+                    break;
+                case SuppServiceNotification.CODE_1_SOME_CF_ACTIVE:
+                    // Intentional fall through.
+                case SuppServiceNotification.CODE_1_UNCONDITIONAL_CF_ACTIVE:
+                    messageId = R.string.supp_service_call_forwarding_active;
+                    break;
+            }
+        } else if (type == SuppServiceNotification.NOTIFICATION_TYPE_CODE_2) {
+            switch (code) {
+                case SuppServiceNotification.CODE_2_ADDITIONAL_CALL_FORWARDED:
+                    messageId = R.string.supp_service_additional_call_forwarded;
+                    break;
+                case SuppServiceNotification.CODE_2_CALL_CONNECTED_ECT:
+                    messageId = R.string.supp_service_additional_ect_connected;
+                    break;
+                case SuppServiceNotification.CODE_2_CALL_CONNECTING_ECT:
+                    messageId = R.string.supp_service_additional_ect_connecting;
+                    break;
+                case SuppServiceNotification.CODE_2_CALL_ON_HOLD:
+                    messageId = R.string.supp_service_call_on_hold;
+                    break;
+                case SuppServiceNotification.CODE_2_CALL_RETRIEVED:
+                    messageId = R.string.supp_service_call_resumed;
+                    break;
+                case SuppServiceNotification.CODE_2_CUG_CALL:
+                    messageId = R.string.supp_service_closed_user_group_call;
+                    break;
+                case SuppServiceNotification.CODE_2_DEFLECTED_CALL:
+                    messageId = R.string.supp_service_deflected_call;
+                    break;
+                case SuppServiceNotification.CODE_2_FORWARDED_CALL:
+                    messageId = R.string.supp_service_forwarded_call;
+                    break;
+                case SuppServiceNotification.CODE_2_MULTI_PARTY_CALL:
+                    messageId = R.string.supp_service_conference_call;
+                    break;
+                case SuppServiceNotification.CODE_2_ON_HOLD_CALL_RELEASED:
+                    messageId = R.string.supp_service_held_call_released;
+                    break;
+            }
+        }
+        if (messageId != -1 && getPhone() != null && getPhone().getContext() != null) {
+            return getPhone().getContext().getText(messageId);
+        } else {
+            return null;
+        }
+    }
 
     /**
      * @return {@code true} if carrier video conferencing is supported, {@code false} otherwise.

@@ -16,13 +16,29 @@
 
 package com.android.services.telephony;
 
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.fail;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import android.net.Uri;
+import android.os.AsyncResult;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.test.filters.FlakyTest;
+import android.support.test.runner.AndroidJUnit4;
 import android.telecom.DisconnectCause;
 import android.telecom.TelecomManager;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
-import android.support.test.filters.FlakyTest;
-import android.support.test.runner.AndroidJUnit4;
 import android.telephony.TelephonyManager;
 import android.test.suitebuilder.annotation.SmallTest;
 
@@ -30,28 +46,17 @@ import com.android.TelephonyTestBase;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Connection;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.gsm.SuppServiceNotification;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.fail;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.nullable;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 /**
  * Unit tests for TelephonyConnectionService.
@@ -60,6 +65,7 @@ import static org.mockito.Mockito.when;
 @RunWith(AndroidJUnit4.class)
 public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
+    private static final long TIMEOUT_MS = 100;
     private static final int SLOT_0_PHONE_ID = 0;
     private static final int SLOT_1_PHONE_ID = 1;
 
@@ -750,6 +756,58 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
             // This shouldn't happen
             fail();
         }
+    }
+
+    @Test
+    @SmallTest
+    public void testSuppServiceNotification() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+
+        // We need to set the original connection to cause the supp service notification
+        // registration to occur.
+        Phone phone = c.getPhone();
+        c.setOriginalConnection(c.getOriginalConnection());
+
+        // When the registration occurs, we'll capture the handler and message so we can post our
+        // own messages to it.
+        ArgumentCaptor<Handler> handlerCaptor = ArgumentCaptor.forClass(Handler.class);
+        ArgumentCaptor<Integer> messageCaptor = ArgumentCaptor.forClass(Integer.class);
+        verify(phone).registerForSuppServiceNotification(handlerCaptor.capture(),
+                messageCaptor.capture(), any());
+        Handler handler = handlerCaptor.getValue();
+        int message = messageCaptor.getValue();
+
+        // With the handler and message now known, we'll post a supp service notification.
+        AsyncResult result = getSuppServiceNotification(
+                SuppServiceNotification.NOTIFICATION_TYPE_CODE_1,
+                SuppServiceNotification.CODE_1_CALL_FORWARDED);
+        handler.obtainMessage(message, result).sendToTarget();
+        waitForHandlerAction(handler, TIMEOUT_MS);
+
+        assertTrue(c.getLastConnectionEvents().contains(TelephonyManager.EVENT_CALL_FORWARDED));
+
+        // With the handler and message now known, we'll post a supp service notification.
+        result = getSuppServiceNotification(
+                SuppServiceNotification.NOTIFICATION_TYPE_CODE_1,
+                SuppServiceNotification.CODE_1_CALL_IS_WAITING);
+        handler.obtainMessage(message, result).sendToTarget();
+        waitForHandlerAction(handler, TIMEOUT_MS);
+
+        // We we want the 3rd event since the forwarding one above sends 2.
+        assertEquals(c.getLastConnectionEvents().get(2),
+                TelephonyManager.EVENT_SUPPLEMENTARY_SERVICE_NOTIFICATION);
+        Bundle extras = c.getLastConnectionEventExtras().get(2);
+        assertEquals(SuppServiceNotification.NOTIFICATION_TYPE_CODE_1,
+                extras.getInt(TelephonyManager.EXTRA_NOTIFICATION_TYPE));
+        assertEquals(SuppServiceNotification.CODE_1_CALL_IS_WAITING,
+                extras.getInt(TelephonyManager.EXTRA_NOTIFICATION_CODE));
+    }
+
+    private AsyncResult getSuppServiceNotification(int notificationType, int code) {
+        SuppServiceNotification notification = new SuppServiceNotification();
+        notification.notificationType = notificationType;
+        notification.code = code;
+        return new AsyncResult(null, notification, null);
     }
 
     private Phone makeTestPhone(int phoneId, int serviceState, boolean isEmergencyOnly) {
