@@ -1395,6 +1395,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         updateConnectionProperties();
         updateAddress();
         updateMultiparty();
+        refreshDisableAddCall();
     }
 
     /**
