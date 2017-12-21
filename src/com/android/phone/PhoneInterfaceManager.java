@@ -2093,9 +2093,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public int getVoiceActivationState(int subId, String callingPackage) {
-        if (!canReadPhoneState(callingPackage, "getVoiceActivationStateForSubscriber")) {
-            return TelephonyManager.SIM_ACTIVATION_STATE_UNKNOWN;
-        }
+        enforceReadPrivilegedPermission();
         final Phone phone = getPhone(subId);
         if (phone != null) {
             return phone.getVoiceActivationState();
@@ -2109,9 +2107,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public int getDataActivationState(int subId, String callingPackage) {
-        if (!canReadPhoneState(callingPackage, "getDataActivationStateForSubscriber")) {
-            return TelephonyManager.SIM_ACTIVATION_STATE_UNKNOWN;
-        }
+        enforceReadPrivilegedPermission();
         final Phone phone = getPhone(subId);
         if (phone != null) {
             return phone.getDataActivationState();
