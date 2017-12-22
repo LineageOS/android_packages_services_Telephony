@@ -39,7 +39,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.PersistableBundle;
-import android.os.Process;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.UserHandle;
@@ -2616,9 +2615,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Set the network selection mode to manual with the selected carrier.
      */
     @Override
-    public boolean setNetworkSelectionModeManual(int subId, OperatorInfo operator,
+    public boolean setNetworkSelectionModeManual(int subId, String operatorNumeric,
             boolean persistSelection) {
         enforceModifyPermissionOrCarrierPrivilege(subId);
+        OperatorInfo operator = new OperatorInfo(
+                /* operatorAlphaLong */ "",
+                /* operatorAlphaShort */ "",
+                operatorNumeric);
         if (DBG) log("setNetworkSelectionModeManual: subId:" + subId + " operator:" + operator);
         ManualNetworkSelectionArgument arg = new ManualNetworkSelectionArgument(operator,
                 persistSelection);
