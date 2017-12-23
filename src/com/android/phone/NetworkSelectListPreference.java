@@ -19,6 +19,7 @@ package com.android.phone;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.metrics.LogMaker;
 import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.Message;
@@ -35,6 +36,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.OperatorInfo;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
@@ -80,6 +83,7 @@ public class NetworkSelectListPreference extends ListPreference
 
     @Override
     protected void onClick() {
+        sendMetricsEvent(null);
         loadNetworksList();
     }
 
@@ -406,11 +410,14 @@ public class NetworkSelectListPreference extends ListPreference
      * @param preference is the preference to be changed, should be network select button.
      * @param newValue should be the value of the selection as index of operators.
      */
+    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         int operatorIndex = findIndexOfValue((String) newValue);
         mOperatorInfo = mOperatorInfoList.get(operatorIndex);
 
         if (DBG) logd("selected network: " + getNetworkTitle(mOperatorInfo));
+
+        sendMetricsEvent(getNetworkTitle(mOperatorInfo));
 
         Message msg = mHandler.obtainMessage(EVENT_NETWORK_SELECTION_DONE);
         Phone phone = PhoneFactory.getPhone(mPhoneId);
@@ -503,6 +510,21 @@ public class NetworkSelectListPreference extends ListPreference
                         return new SavedState[size];
                     }
                 };
+    }
+
+    private void sendMetricsEvent(String network) {
+        final LogMaker logMaker =
+                new LogMaker(MetricsEvent.ACTION_MOBILE_NETWORK_MANUAL_SELECT_NETWORK)
+                .setType(MetricsEvent.TYPE_ACTION);
+
+        if (network != null) {
+            // Since operator list is loaded dynamically from modem, we cannot know which network
+            // user chooses if we only record integer index of newValue. So a new tag and a string
+            // value (network) is added in this MetricsEvent.
+            logMaker.addTaggedData(MetricsEvent.FIELD_MOBILE_NETWORK, network);
+        }
+
+        MetricsLogger.action(logMaker);
     }
 
     private void logd(String msg) {
