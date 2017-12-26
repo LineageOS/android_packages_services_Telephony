@@ -158,7 +158,6 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"‏نئے PIN میں غلط کریکٹرز شامل ہیں۔"</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"‏PIN تبدیل کرنے سے قاصر"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"پیغام کی غیر تعاون یافتہ قسم، سننے کیلئے <xliff:g id="NUMBER">%s</xliff:g> پر کال کریں۔"</string>
-    <string name="mobile_networks" msgid="5540397602919106177">"موبائل نیٹ ورک کی ترتیبات"</string>
     <string name="network_settings_title" msgid="514120489499925574">"موبائل نیٹ ورک"</string>
     <string name="label_available" msgid="1181658289009300430">"دستیاب نیٹ ورکس"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"تلاش کر رہا ہے…"</string>
