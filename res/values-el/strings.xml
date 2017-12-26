@@ -158,7 +158,6 @@
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"Το νέο PIN περιέχει μη έγκυρους χαρακτήρες."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"Δεν είναι δυνατή η αλλαγή του PIN"</string>
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"Μη υποστηριζόμενος τύπος μηνύματος: καλέστε στο <xliff:g id="NUMBER">%s</xliff:g> για να το ακούσετε."</string>
-    <string name="mobile_networks" msgid="5540397602919106177">"Ρυθμίσεις δικτύου κινητής τηλεφωνίας"</string>
     <string name="network_settings_title" msgid="514120489499925574">"Δίκτυο κινητής τηλεφωνίας"</string>
     <string name="label_available" msgid="1181658289009300430">"Διαθέσιμα δίκτυα"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Αναζήτηση..."</string>
