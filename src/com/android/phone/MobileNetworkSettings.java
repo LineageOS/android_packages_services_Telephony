@@ -1268,6 +1268,7 @@ public class MobileNetworkSettings extends Activity  {
                         // First confirm with a warning dialog about charges
                         mOkClicked = false;
                         RoamingDialogFragment fragment = new RoamingDialogFragment();
+                        fragment.setPhone(mPhone);
                         fragment.show(getFragmentManager(), ROAMING_TAG);
                         // Don't update the toggle unless the confirm button is actually pressed.
                         return false;
