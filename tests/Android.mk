@@ -38,3 +38,6 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 LOCAL_COMPATIBILITY_SUITE := device-tests
 
 include $(BUILD_PACKAGE)
+
+# Include all makefiles in subdirectories
+include $(call all-makefiles-under,$(LOCAL_PATH))
