@@ -240,6 +240,8 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Konektatu datu-zerbitzuetara ibiltaritzan"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Datu-konexioa galdu duzu ibiltaritza desaktibatuta izanda etxeko saretik irten zarelako."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Baliteke kostu handiak ordaindu behar izatea."</string>
+    <!-- no translation found for roaming_check_price_warning (7497570906830902550) -->
+    <skip />
     <string name="roaming_alert_title" msgid="3654815360303826008">"Ibiltaritzako datuak baimendu nahi dituzu?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Datuen erabilera"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Datuen <xliff:g id="ID_1">%1$s</xliff:g> erabili dira data hauen artean: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -601,7 +603,7 @@
     <string name="enable_video_calling_dialog_close" msgid="7411471282167927991">"Itxi"</string>
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"Larrialdi-deiak"</string>
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"Larrialdi-deiak soilik"</string>
-    <string name="sim_description_default" msgid="4778679519938775515">"SIM txartela, <xliff:g id="SLOT_ID">%s</xliff:g> erretena"</string>
+    <string name="sim_description_default" msgid="4778679519938775515">"SIM txartela, <xliff:g id="SLOT_ID">%s</xliff:g> zirrikitua"</string>
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Erabilerraztasuna"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"Wi-Fi bidezko deia:"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Wi-Fi deia"</string>
