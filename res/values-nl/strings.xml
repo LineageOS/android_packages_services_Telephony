@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Verbinding maken met gegevensservices tijdens roaming"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"De gegevensverbinding is verbroken, omdat je je thuisnetwerk hebt verlaten terwijl dataroaming was uitgeschakeld."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Er kunnen hoge roamingkosten in rekening worden gebracht."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Neem contact op met je netwerkprovider over de prijzen."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Dataroaming toestaan?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Datagebruik"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruikt van <xliff:g id="ID_2">%2$s</xliff:g>"</string>

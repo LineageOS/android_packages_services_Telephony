@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Používat datové služby při roamingu"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Datové připojení bylo přerušeno, protože jste opustili domovskou síť a máte vypnutý datový roaming."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Mohou vám být účtovány vysoké poplatky."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Ceny vám sdělí poskytovatel datových služeb."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Povolit datový roaming?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Využití dat"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"V období <xliff:g id="ID_2">%2$s</xliff:g> jste využili <xliff:g id="ID_1">%1$s</xliff:g> mobilních dat"</string>
