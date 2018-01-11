@@ -40,6 +40,7 @@ import android.util.Pair;
 import com.android.ims.ImsCall;
 import com.android.ims.ImsCallProfile;
 import com.android.internal.telephony.Call;
+import com.android.internal.telephony.CallFailCause;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Connection.Capability;
 import com.android.internal.telephony.Connection.PostDialListener;
@@ -530,6 +531,11 @@ abstract class TelephonyConnection extends Connection implements Holdable {
      * Indicates whether this call is using assisted dialing.
      */
     private boolean mIsUsingAssistedDialing;
+
+    /**
+     * Indicates whether this connection supports showing preciese call failed cause.
+     */
+    private boolean mShowPreciseFailedCause;
 
     /**
      * Listeners to our TelephonyConnection specific callbacks
@@ -1372,8 +1378,14 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                         fireOnOriginalConnectionRetryDial(cause
                                 == android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE);
                     } else {
+                        int preciseDisconnectCause = CallFailCause.NOT_VALID;
+                        if (mShowPreciseFailedCause) {
+                            preciseDisconnectCause =
+                                    mOriginalConnection.getPreciseDisconnectCause();
+                        }
                         setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
                                 mOriginalConnection.getDisconnectCause(),
+                                preciseDisconnectCause,
                                 mOriginalConnection.getVendorDisconnectCause()));
                         close();
                     }
@@ -1685,6 +1697,15 @@ abstract class TelephonyConnection extends Connection implements Holdable {
      */
     public boolean isManageImsConferenceCallSupported() {
         return mIsManageImsConferenceCallSupported;
+    }
+
+    /**
+     * Sets whether this connection supports showing precise call disconnect cause.
+     * @param showPreciseFailedCause  {@code true} if showing precise call
+     * disconnect cause is supported by this connection, {@code false} otherwise.
+     */
+    public void setShowPreciseFailedCause(boolean showPreciseFailedCause) {
+        mShowPreciseFailedCause = showPreciseFailedCause;
     }
 
     /**
