@@ -36,6 +36,10 @@
         android:key="data_usage_summary"
         android:title="@string/data_usage_title" />
 
+    <Preference
+        android:key="carrier_settings_euicc_key"
+        android:title="@string/carrier_settings_euicc" />
+
     <com.android.phone.AdvancedOptionsPreference
         android:key="advanced_options"/>
 
@@ -60,10 +64,6 @@
         android:entries="@array/enabled_networks_choices"
         android:entryValues="@array/enabled_networks_values"
         android:dialogTitle="@string/preferred_network_mode_dialogtitle" />
-
-    <Preference
-        android:key="carrier_settings_euicc_key"
-        android:title="@string/carrier_settings_euicc" />
 
     <PreferenceCategory
         android:key="calling"
