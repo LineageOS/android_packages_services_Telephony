@@ -151,7 +151,7 @@
   <string name="no_mobile_data">Mobil veri kullanılamaz</string>
   <string name="no_mobile_data_roaming">Veri dolaşımı kullanılabilir değil</string>
   <string name="srvcc_video_message">"4G ağ kullanılamadığından görüntülü aramadan 2G/3G sesli aramaya geçildi."</string>
-  <string name="srvcc_message">"4G ağ kullanılamadığından 4G sesli aramadan 2G/3G sesli aramaya geçildi."</string>
+  <string name="srvcc_message">"4G ağı mevcut olmadığından 4G sesli aramadan 2G/3G sesli aramaya geçildi."</string>
   <!-- call forwarding settings related strings -->
   <string name="labelCFType">Arama yönlendirme ayarları</string>
   <string name="labelCFVoice">Ses</string>

@@ -19,6 +19,7 @@
          and other settings UIs.  This is the version of the label for
          tablet devices, where the phone app handles mobile data but not
          actual phone calls. -->
+  <string name="phoneAppLabel" product="tablet">Data Symudol</string>
   <!-- Official label of the phone app, as seen in "Manage Applications"
          and other settings UIs. -->
   <!-- Screen title for Emergency Dialer UI -->
@@ -58,16 +59,21 @@
   <!-- Body text of the "Missing voicemail number" dialog -->
   <!-- Button label on the "Missing voicemail number" dialog -->
   <!--Toast in Call settings when asked to launch voicemail for a guest user -->
+  <string name="voice_number_setting_primary_user_only">Dim ond y prif ddefnyddiwr gall newid y lleisbost ar gyfer gosodiadau galwadau.</string>
   <!-- Status message displayed on SIM PIN unlock panel -->
   <!-- network depersonalization -->
   <!-- Label text for PIN entry widget on SIM Network Depersonalization panel -->
   <!-- Button label on SIM Network Depersonalization panel -->
   <!-- Button label on SIM Network Depersonalization panel -->
   <!-- Status message displayed on SIM Network Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_IN_PROGRESS">Yn gofyn am ddatgloi rhwydwaith SIM\u2026</string>
   <!-- Error message displayed on SIM Network Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_ERROR">Methodd y cais am ddatgloi rhwydwaith y SIM.</string>
   <!-- Success message displayed on SIM Network Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUCCESS">Mae rhwydwaith y SIM wedi ei ddatgloi.</string>
   <!-- settings strings -->
   <!-- Error message for users that aren't allowed to modify Mobile Network settings [CHAR LIMIT=none] -->
+  <string name="mobile_network_settings_not_available">Dyw gosodiadau rhwydwaith symudol ddim ar gael ar gyfer y defnyddiwr hwn.</string>
   <!-- GSM Call settings screen, setting option name. [CHAR LIMIT=40] -->
   <!-- GSM Call settings screen, setting option name with label indicating the SIM the settings
          are applied to. [CHAR LIMIT=40] -->
@@ -81,6 +87,7 @@
   <!-- Label for list item which opens a dialog to select the default outgoing account for SIP calls. -->
   <!-- Entry in dialog to "ask first" for accounts when making a call -->
   <!-- Account label for when a SIM account has no service (i.e. airplane mode) -->
+  <string name="phone_accounts_default_account_label">Dim rhwydwaith ar gael</string>
   <!-- Label for heading of the per-account settings section in the phone accounts settings
          screen. -->
   <!-- Label for invoking phone account selection screen -->
@@ -114,32 +121,55 @@
   <!-- Additional call settings screen, setting summary text when call waiting check box is selected -->
   <!-- Additional call settings screen, setting summary text when call waiting check box is clear -->
   <!-- Call forwarding settings screen, section heading -->
+  <string name="call_forwarding_settings">Gosodiadau dargyfeirio galwadau</string>
   <!-- Call forwarding settings screen, section heading, with a label identifying the SIM the settings are for. -->
+  <string name="call_forwarding_settings_with_label">Gosodiadau dargyfeirio galwadau (<xliff:g id="subscriptionlabel" example="Verizon">%s</xliff:g>)</string>
   <!-- Call settings screen, setting option name -->
+  <string name="labelCF">Dargyfeirio galwadau</string>
   <!-- Call forwarding settings screen, setting option name -->
   <!-- Call forwarding dialog box, text field label -->
   <!-- Call forwarding settings screen, setting summary text when forwarding all calls -->
+  <string name="sum_cfu_enabled_indicator">Yn dargyfeirio pob galwad</string>
   <!-- Call forwarding settings screen, setting summary text the Always forward is set -->
+  <string name="sum_cfu_enabled">Yn dargyfeirio galwadau i <xliff:g id="phonenumber" example="555-1212">{0}</xliff:g></string>
   <!-- Call forwarding settings screen, Always forward is enabled but the number is unavailable -->
   <!-- Call forwarding settings screen, setting summary text when Always forward is disabled -->
   <!-- Call forwarding settings screen, setting timer info for cfut case -->
+  <string name="set_time_period">Gosoda gyfnod amser</string>
+  <string name="all_day">\u0020Trwy\'r dydd\u0020</string>
+  <string name="time_interval_char">: </string>
+  <string name="time_start">\u0020O\u0020</string>
+  <string name="time_start_hour">awr dechrau amser</string>
+  <string name="time_start_minute">munud dechrau amser</string>
+  <string name="time_end">\u0020Hyd at\u0020</string>
+  <string name="time_next_day">\u0020trannoeth\u0020</string>
+  <string name="time_end_hour">awr diwedd amser</string>
+  <string name="time_end_minute">munud diwedd amser</string>
+  <string name="time_formate_am">AM</string>
+  <string name="time_formate_pm">PM</string>
+  <string name="cf_setting_mobile_data_alert">Tro\'r data symudol ymlaen a gwneud yn siŵr bod WLAN i ffwrdd.</string>
+  <string name="cf_setting_mobile_data_roaming_alert">Rho ddata crwydro ar waith</string>
   <!-- Call forwarding settings screen, setting option name -->
   <!-- Call forwarding dialog box, text field label -->
   <!-- Call forwarding settings screen, setting summary text when forwarding to specific number when busy -->
+  <string name="sum_cfb_enabled">Yn dargyfeirio i <xliff:g id="phonenumber" example="555-1212">{0}</xliff:g></string>
   <!-- Call forwarding settings screen, setting summary text when forwarding when busy is disabled -->
   <!-- Error message displayed after failing to disable forwarding calls when the phone is busy -->
   <!-- Call forwarding settings screen, setting option name -->
   <!-- Call forwarding dialog box, text field label -->
   <!-- Call forwarding settings screen, setting summary text when forwarding to a specific number when unanswered -->
+  <string name="sum_cfnry_enabled">Yn dargyfeirio i <xliff:g id="phonenumber" example="555-1212">{0}</xliff:g></string>
   <!-- Call forwarding settings screen, setting summary text when Forward when unanswered is disabled -->
   <!-- Error message displayed after failing to disable forwarding calls when the phone does not answer -->
   <!-- Call forwarding settings screen, setting option name -->
   <!-- Call forwarding dialog box, text field label -->
   <!-- Call forwarding settings screen, setting summary text when forwarding to a specific number when unreachable-->
+  <string name="sum_cfnrc_enabled">Yn dargyfeirio i <xliff:g id="phonenumber" example="555-1212">{0}</xliff:g></string>
   <!-- Call forwarding settings screen, setting summary text when Forward when unreachable is disabled -->
   <!-- Error message displayed after failing to disable forwarding calls when the phone is unreachable -->
   <!-- Title of the progress dialog displayed while updating Call settings -->
   <!-- Toast in Call settings when asked to launch settings for a secondary user -->
+  <string name="call_settings_admin_user_only">Dim ond defnyddiwr gweinyddol gall newid gosodiadau galwadau.</string>
   <!-- Title of the "Call settings" settings screen, with a text label identifying which SIM the settings are for. -->
   <!-- Title of the alert dialog displayed if an error occurs while updating Call settings -->
   <!-- Toast in Call settings dialog while settings are being read -->
@@ -170,15 +200,24 @@
   <!-- Hint for the old PIN field in the change vociemail PIN dialog -->
   <!-- Hint for the new PIN field in the change vociemail PIN dialog -->
   <!-- Message on the dialog when PIN changing is in progress -->
+  <string name="vm_change_pin_progress_message">Arhosa.</string>
   <!-- Error message for the voicemail PIN change if the PIN is too short -->
+  <string name="vm_change_pin_error_too_short">Mae\'r PIN newydd rhy fyr.</string>
   <!-- Error message for the voicemail PIN change if the PIN is too long -->
+  <string name="vm_change_pin_error_too_long">Mae\'r PIN newydd rhy hir.</string>
   <!-- Error message for the voicemail PIN change if the PIN is too weak -->
+  <string name="vm_change_pin_error_too_weak">Mae\'r PIN yn rhy wan. Rhaid osgoi rhediad o rifau neu ailadrodd digidau.</string>
   <!-- Error message for the voicemail PIN change if the old PIN entered doesn't match  -->
+  <string name="vm_change_pin_error_mismatch">Dyw\'r hen PIN ddim yr un fath.</string>
   <!-- Error message for the voicemail PIN change if the new PIN contains invalid character -->
+  <string name="vm_change_pin_error_invalid">Mae nodau annilys yn y PIN newydd.</string>
   <!-- Error message for the voicemail PIN change if operation has failed -->
+  <string name="vm_change_pin_error_system_error">Methu newid y PIN</string>
   <!-- Message to replace the transcription if a visual voicemail message is not supported-->
+  <string name="vvm_unsupported_message_format">Math diarth o neges. Galwa <xliff:g id="number" example="*86">%s</xliff:g> i wrando arno.</string>
   <!-- networks setting strings -->
   <!-- Mobile network settings screen title -->
+  <string name="mobile_networks">Gosodiadau rhwydwaith symudol</string>
   <!-- Available networks screen title/heading -->
   <!-- Mobile network settings screen, toast when searching for available networks -->
   <!-- Available networks screen, text when no networks are found -->
@@ -210,23 +249,61 @@
   <!-- Mobile network settings, summary for preferred network mode LTE / CDMA [CHAR LIMIT=100] -->
   <!-- Mobile network settings, summary for preferred network mode TDSCDMTA [CHAR LIMIT=100] -->
   <!-- Mobile network settings, summary for preferred network mode TDSCDMA / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_tdscdma_wcdma_summary">Modd rhwydwaith i\'w ffafrio: TDSCDMA / WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_tdscdma_summary">Modd rhwydwaith i\'w ffafrio: LTE / TDSCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TDSCDMA / GSM[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_tdscdma_gsm_summary">Modd rhwydwaith i\'w ffafrio: TDSCDMA / GSM</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / GSM / TDSCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_tdscdma_gsm_summary">Modd rhwydwaith i\'w ffafrio: LTE/GSM/TDSCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TDSCDMA / GSM / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary">Modd rhwydwaith i\'w ffafrio: TDSCDMA/GSM/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_tdscdma_wcdma_summary">Modd rhwydwaith i\'w ffafrio: LTE/TDSCDMA/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA / GSM / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary">Modd rhwydwaith i\'w ffafrio: LTE/TDSCDMA/GSM/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary">Modd rhwydwaith i\'w ffafrio: TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Modd rhwydwaith i\'w ffafrio: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
   <!-- In-call screen: call failure reason (call denied because call barring
             is ON on MT side ) -->
+  <string name="callFailed_incoming_cb_enabled">Mae\'r parti wedi gwahardd derbyn unrhyw alwadau.</string>
   <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
+  <string name="callUnanswered_forwarded">Galwad heb ei ateb ac wedi ei dargyfeirio</string>
+  <string-array name="preferred_network_mode_choices">
+    <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+    <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+    <item>LTE/TDSCDMA/GSM/WCDMA</item>
+    <item>LTE/TDSCDMA/WCDMA</item>
+    <item>TDSCDMA/GSM/WCDMA</item>
+    <item>LTE/TDSCDMA/GSM</item>
+    <item>TDSCDMA/GSM</item>
+    <item>LTE/TDSCDMA</item>
+    <item>TDSCDMA/WCDMA</item>
+    <item>TDSCDMA yn unig</item>
+    <item>LTE / WCDMA</item>
+    <item>LTE</item>
+    <item>Global</item>
+    <item>GSM/WCDMA/LTE</item>
+    <item>CDMA + LTE/EvDo</item>
+    <item>CDMA/EvDo/GSM/WCDMA</item>
+    <item>EvDo yn unig</item>
+    <item>CDMA heb EvDo</item>
+    <item>CDMA/EvDo awto</item>
+    <item>GSM/WCDMA awto</item>
+    <item>WCDMA yn unig</item>
+    <item>GSM yn unig</item>
+    <item>Ffafrio GSM/WCDMA</item>
+  </string-array>
   <!-- Cellular network 4G title [CHAR LIMIT=30] -->
   <!-- Carrier variant of Enhaced 4G LTE Mode title.  [CHAR LIMIT=50] -->
+  <string name="enhanced_4g_lte_mode_title_variant">Galwadau Uwch</string>
   <!-- Cellular network 4G summary [CHAR LIMIT=80] -->
   <!-- Mobile network settings screen, data enabling checkbox name -->
   <!-- Mobile network settings screen, setting summary text when check box is not selected (explains what selecting it would do) [CHAR LIMITS=40] -->
   <!-- Mobile network settings screen, title for alert dialog -->
+  <string name="dialog_alert_title">Sylw</string>
   <!-- Mobile network settings screen, setting check box name -->
   <!-- Mobile network settings screen, setting summary text when check box is selected -->
   <!-- Mobile network settings screen, setting summary text when check box is clear -->
@@ -236,6 +313,7 @@
   <!-- Mobile network settings screen, dialog message when user selects the Data roaming check box -->
   <!-- Mobile network settings screen, dialog message title when user selects the Data roaming check box -->
   <!-- USSD aggregation dialog box: separator strings between messages (new-lines will be added before and after) -->
+  <string name=" hide_error_from_network_text">Methu Prosesu\'r Cais</string>
   <!-- Screen option on the mobile network settings to go into data usage settings -->
   <!-- Data usage settings screen option for checking the current usage -->
   <!-- Data usage settings screen option for time frame-->
@@ -288,6 +366,7 @@
   <!-- "Delete FDN Contact" screen: status message displayed in a popup (toast) -->
   <!-- FDN settings: error message displayed in a popup (toast) -->
   <!-- FDN settings: error message displayed in a popup (toast) -->
+  <string name="fdn_invalid_number">Ni ddiweddarwyd FDN gan fod y rhif yn wag neu\'n hirach na 20 digid.</string>
   <!-- FDN settings: error message displayed in a popup (toast), when the entered
          FDN number was inappropriate, OR, PIN2 the user entered was incorrect.
          Because of API restriction, there's no way to determine which is the exact
@@ -362,16 +441,21 @@
   <!-- Label for the expanded "No service" notification item, including the
          operator name set by user -->
   <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
+  <string name="incall_error_power_off" product="watch">Diffodda modd awyren neu arbedwr batri er mwyn gwneud galwad.</string>
   <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
   <!-- In-call screen: call failure message displayed in an error dialog when in airplane mode, WFC is enabled, not wifi-only, and not connected to wireless networks. [CHAR_LIMIT=NONE] -->
   <!-- In-call screen: call failure message displayed when the user attempts to make a non-emergency call while the phone is in emergency callback mode. -->
   <!-- In-call screen: call failure message displayed in an error dialog.
          This string is currently unused (see comments in InCallScreen.java.) -->
   <!-- In-call screen: call failure message displayed in an error dialog -->
+  <string name="incall_error_out_of_service">Dim rhwydwaith symudol ar gael.</string>
+  <!-- In-call screen: call failure message displayed in an error dialog -->
+  <string name="incall_error_out_of_service_wfc">Dyw\'r rhwydwaith symudol ddim ar gael. Cysyllta â\'r rwydwaith diwifr i wneud galwad.</string>
   <!-- In-call screen: call failure message displayed in an error dialog -->
   <!-- In-call screen: call failure message displayed in an error dialog -->
+  <string name="incall_error_call_failed">Methodd y galwad.</string>
   <!-- In-call screen: call failure message displayed in an error dialog -->
-  <!-- In-call screen: call failure message displayed in an error dialog -->
+  <string name="incall_error_cannot_add_call">Methu ychwanegu\'r alwad ar hyn o bryd.</string>
   <!-- In-call screen: status message displayed in a dialog when starting an MMI -->
   <!-- In-call screen: message displayed in an error dialog -->
   <!-- In-call screen: message displayed in an error dialog -->
@@ -381,12 +465,15 @@
   <!-- In-call screen: message displayed in an error dialog -->
   <!-- In-call screen: message displayed in an error dialog -->
   <!-- In-call screen: message displayed in an error dialog -->
+  <string name="incall_error_supp_service_hold">Methu rhoi galwadau i aros.</string>
   <!-- In-call screen: call failure message displayed in an error dialog when WFC is enabled, is wifi-only, and not connected to a wireless network. [CHAR_LIMIT=NONE] -->
   <!-- In-call screen: call failure message displayed in an error dialog when the user is connected to a wireless network, but wifi calling is turned off. [CHAR_LIMIT=NONE] -->
+  <string name="incall_error_promote_wfc">Galluoga galwadau Wi-Fi er mwyn gwneud galwad.</string>
   <!-- Dialog title for the "radio enable" UI for emergency calls -->
   <!-- Status message for the "radio enable" UI for emergency calls -->
   <!-- Status message for the "radio enable" UI for emergency calls -->
   <!-- Toast message shown when user tries to turn on airplane mode while in an emergency call -->
+  <string name="radio_off_during_emergency_call">Nid yw\'n bosib newid i fodd awyren ar ganol alwad brys.</string>
   <!-- Dialer text on Emergency Dialer -->
   <!-- Emergency dialer: message displayed in an error dialog -->
   <!-- Emergency dialer: message displayed in an error dialog -->
@@ -410,7 +497,9 @@
   <!-- SIM Contacts: status message displayed while importing card -->
   <!-- Import a single contact entry from contacts to the SIM card -->
   <!-- Message shown when a single contact is imported from SIM card -->
+  <string name="singleContactImportedMsg">Mewnforiwyd y cyswllt</string>
   <!-- Message shown when a single contact could not be imported from SIM card -->
+  <string name="failedToImportSingleContactMsg">Methwyd mewnforio cyswllt</string>
   <!-- Hearing aid settings -->
   <!-- Service option entries.  -->
   <!-- Do not translate. -->
@@ -480,7 +569,9 @@
   <!-- Dialog title for the vibration settings for voice mail notifications [CHAR LIMIT=40]-->
   <!-- Visual voicemail on/off title [CHAR LIMIT=40] -->
   <!-- Voicemail change PIN dialog title [CHAR LIMIT=40] -->
+  <string name="voicemail_set_pin_dialog_title">Gosod PIN</string>
   <!-- Voicemail change PIN dialog title [CHAR LIMIT=40] -->
+  <string name="voicemail_change_pin_dialog_title">Newid PIN</string>
   <!-- Voicemail ringtone title. The user clicks on this preference to select
          which sound to play when a voicemail notification is received.
          [CHAR LIMIT=30] -->
@@ -504,29 +595,46 @@
   <!-- Configuration setting for world mode Format is <true;GID if any to be checked>-->
   <!-- Status hint label for an incoming call over a wifi network which has not been accepted yet.
          [CHAR LIMIT=25] -->
+  <string name="status_hint_label_incoming_wifi_call">Galwad Wi-Fi oddi wrth</string>
   <!-- Status hint label for a call being made over a wifi network. [CHAR LIMIT=25] -->
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
   <!-- DO NOT TRANSLATE. Internal key for a visual voicemail preference. -->
   <!-- DO NOT TRANSLATE. Internal key for a voicemail change pin preference. -->
+  <string name="voicemail_change_pin_key">voicemail_change_pin_key</string>
   <!-- DO NOT TRANSLATE. Internal key for tty mode preference. -->
   <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
   <!-- Hint appearing below a selected action on the emergency dialer telling user to tap again to execute the action [CHAR LIMIT=NONE] -->
+  <string name="emergency_action_launch_hint">Tara eto i agor</string>
   <!-- Strings for IMAP -->
   <!-- String used in place of a message that could not be properly decoded (e.g. bad base64
        data was received.) [CHAR LIMIT=none] -->
   <!-- Call failure reason: SIM card and roaming capabilities have already been activated. [CHAR LIMIT=NONE]-->
   <!-- Call failure reason: Cannot add a call because there are already too many active calls. -->
+  <string name="callFailed_cdma_call_limit">
+Mae gormod o alwadau ar eu canol. Diwedda neu gyfuno rhai o\'r galwadau cyfredol cyn gwneud galwad newydd.
+    </string>
   <!-- The title for the change voicemail PIN activity -->
+  <string name="change_pin_title">Newid PIN Lleisbost</string>
   <!-- The label for the continue button in change voicemail PIN activity -->
+  <string name="change_pin_continue_label">Parhau</string>
   <!-- The label for the cancel button in change voicemail PIN activity -->
   <!-- The label for the ok button in change voicemail PIN activity -->
+  <string name="change_pin_ok_label">Iawn</string>
   <!-- The title for the enter old pin step in change voicemail PIN activity -->
+  <string name="change_pin_enter_old_pin_header">Cadarnha dy hen PIN</string>
   <!-- The hint for the enter old pin step in change voicemail PIN activity -->
+  <string name="change_pin_enter_old_pin_hint">Rho PIN dy laisbost i barhau.</string>
   <!-- The title for the enter new pin step in change voicemail PIN activity -->
+  <string name="change_pin_enter_new_pin_header">Gosod PIN newydd</string>
   <!-- The hint for the enter new pin step in change voicemail PIN activity -->
+  <string name="change_pin_enter_new_pin_hint">Rhaid i\'r PIN fod rhwng <xliff:g id="min" example="4">%1$d</xliff:g> a <xliff:g id="max" example="7">%2$d</xliff:g> digid.</string>
   <!-- The title for the confirm new pin step in change voicemail PIN activity -->
+  <string name="change_pin_confirm_pin_header">Cadarnha dy PIN</string>
   <!-- The error message for th confirm new pin step in change voicemail PIN activity, if the pin doen't match the one previously entered -->
+  <string name="change_pin_confirm_pins_dont_match">Dyw\'r ddau PIN ddim yr un fath.</string>
   <!-- The toast to show after the voicemail PIN has been successfully changed -->
+  <string name="change_pin_succeeded">Wedi diweddaru PIN lleisbost</string>
   <!-- The error message to show if the server reported an error while attempting to change the voicemail PIN -->
+  <string name="change_pin_system_error">Methwyd gosod y PIN</string>
 </resources>

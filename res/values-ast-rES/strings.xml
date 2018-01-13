@@ -19,58 +19,83 @@
          and other settings UIs.  This is the version of the label for
          tablet devices, where the phone app handles mobile data but not
          actual phone calls. -->
+  <string name="phoneAppLabel" product="tablet">Datos móviles</string>
   <!-- Official label of the phone app, as seen in "Manage Applications"
          and other settings UIs. -->
+  <string name="phoneAppLabel" product="default">Servicios telefónicos</string>
   <!-- Screen title for Emergency Dialer UI -->
+  <string name="emergencyDialerIconLabel">Marcador d\'emerxencia</string>
   <!-- Activity label for the in-call UI -->
+  <string name="phoneIconLabel">Teléfonu</string>
   <!-- Title of FDN list screen -->
+  <string name="fdnListLabel">Llistáu FDN</string>
   <!-- Call status -->
   <!-- Incoming call screen, name of "unknown" caller -->
-  <string name="unknown">Desconocíu</string>
+  <string name="unknown">Desconozse</string>
   <!-- Incoming call screen, string when number hidden -->
+  <string name="private_num">Númberu priváu</string>
   <!-- Incoming call screen, string when called from a pay phone -->
+  <string name="payphone">Teléfonu públicu</string>
   <!-- In-call screen: status label for a call that's on hold -->
+  <string name="onHold">N\'espera</string>
   <!-- Possible error messages with outgoing calls -->
   <!-- Dialog label when a USSD code starts running -->
   <!-- Dialog label when an MMI code is canceled -->
   <!-- Label for "cancel" button on the MMI dialog -->
+  <string name="cancel">Encaboxar</string>
   <!-- Toast string displayed to user if the input in MMI dialog is < 1 or > 160 -->
+  <string name="enter_input">El mensaxe USSD ha tener ente <xliff:g id="min_len">%d</xliff:g> y <xliff:g id="max_len">%d</xliff:g> caráuteres. Volvi tentalo, por favor.</string>
   <!-- Label for "Manage conference call" panel [CHAR LIMIT=40] -->
   <!-- Positive button label ("OK") used in several dialogs in the phone UI [CHAR LIMIT=10] -->
   <string name="ok">ACEUTAR</string>
   <!-- "Audio mode" popup menu: Item label to select the speakerphone [CHAR LIMIT=25] -->
+  <string name="audio_mode_speaker">Altavoz</string>
   <!-- "Audio mode" popup menu: Item label to select the handset earpiece [CHAR LIMIT=25] -->
   <!-- "Audio mode" popup menu: Item label to select the wired headset [CHAR LIMIT=25] -->
   <!-- "Audio mode" popup menu: Item label to select the bluetooth headset [CHAR LIMIT=25] -->
+  <string name="audio_mode_bluetooth">Bluetooth</string>
   <!-- post dial -->
   <!-- In-call screen: body text of the dialog that appears when we encounter
          the "wait" character in a phone number to be dialed; this dialog asks the
          user if it's OK to send the numbers following the "wait". -->
+  <string name="wait_prompt_str">¿Unviar los tonos de darréu?\n</string>
   <!-- In-call screen: body text of the dialog that appears when we encounter
          the "PAUSE" character in a phone number to be dialed; this dialog gives
          informative message to the user to show the sending numbers following the "Pause". -->
+  <string name="pause_prompt_str">Unviando tonos\n</string>
   <!-- In-call screen: button label on the "wait" prompt dialog -->
+  <string name="send_button">Unviar</string>
   <!-- In-call screen: button label on the "wait" prompt dialog in CDMA Mode-->
+  <string name="pause_prompt_yes">Sí</string>
   <!-- In-call screen: button label on the "wait" prompt dialog in CDMA Mode-->
+  <string name="pause_prompt_no">Non</string>
   <!-- In-call screen: on the "wild" character dialog, this is the label
          for a text widget that lets the user enter the digits that should
          replace the "wild" character. -->
+  <string name="wild_prompt_str">Trocar el caráuter comodín por</string>
   <!-- missing voicemail number -->
   <!-- Title of the "Missing voicemail number" dialog -->
+  <string name="no_vm_number">Falta\'l númberu del buzón de voz.</string>
   <!-- Body text of the "Missing voicemail number" dialog -->
   <!-- Button label on the "Missing voicemail number" dialog -->
+  <string name="add_vm_number_str">Amestar númberu</string>
   <!--Toast in Call settings when asked to launch voicemail for a guest user -->
+  <string name="voice_number_setting_primary_user_only">Namái l\'usuariu primariu pue camudar los axustes del buzón de voz pa llamaes.</string>
   <!-- Status message displayed on SIM PIN unlock panel -->
   <!-- network depersonalization -->
   <!-- Label text for PIN entry widget on SIM Network Depersonalization panel -->
   <!-- Button label on SIM Network Depersonalization panel -->
   <!-- Button label on SIM Network Depersonalization panel -->
+  <string name="sim_ndp_dismiss_text">Escartar</string>
   <!-- Status message displayed on SIM Network Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_IN_PROGRESS">Solicitando desbloquéu de rede de SIM\u2026</string>
+  <string name="PERSOSUBSTATE_SIM_NETWORK_IN_PROGRESS">Solicitando desbloquéu de rede de la SIM\u2026</string>
   <!-- Error message displayed on SIM Network Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_ERROR">La solicitú de desbloquéu de la rede de la SIM nun tuvo ésitu.</string>
   <!-- Success message displayed on SIM Network Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_SUCCESS">La solicitú de desbloquéu de la rede de la SIM tuvo ésitu.</string>
   <!-- settings strings -->
   <!-- Error message for users that aren't allowed to modify Mobile Network settings [CHAR LIMIT=none] -->
+  <string name="mobile_network_settings_not_available">Los axustes de rede móvil nun tán disponibles pa esti usuariu</string>
   <!-- GSM Call settings screen, setting option name. [CHAR LIMIT=40] -->
   <!-- GSM Call settings screen, setting option name with label indicating the SIM the settings
          are applied to. [CHAR LIMIT=40] -->
@@ -86,10 +111,12 @@
   <!-- Label for list item which opens a dialog to select the default outgoing account -->
   <!-- Label for list item which opens a dialog to select the default outgoing account for SIP calls. -->
   <!-- Entry in dialog to "ask first" for accounts when making a call -->
+  <string name="phone_accounts_ask_every_time">Entrugar primero</string>
   <!-- Account label for when a SIM account has no service (i.e. airplane mode) -->
   <string name="phone_accounts_default_account_label">Nun hai rede disponible</string>
   <!-- Label for heading of the per-account settings section in the phone accounts settings
          screen. -->
+  <string name="phone_accounts_settings_header">Axustes</string>
   <!-- Label for invoking phone account selection screen -->
   <!-- Label for heading in the phone account selection screen -->
   <!-- Title for the button to add a new sip account. [CHAR LIMIT=NONE] -->
@@ -136,12 +163,14 @@
   <string name="sum_cfu_enabled_no_number">El númberu nun ta disponible</string>
   <!-- Call forwarding settings screen, setting summary text when Always forward is disabled -->
   <!-- Call forwarding settings screen, setting timer info for cfut case -->
+  <string name="set_time_period">Afitar periodu de tiempu</string>
   <string name="all_day">\u0020Tol día\u0020</string>
   <string name="time_interval_char">: </string>
   <string name="time_start">\u0020De\u0020</string>
-  <string name="time_end">\u0020A\u0020</string>
+  <string name="time_end">\u0020Pa\u0020</string>
   <string name="time_formate_am">AM</string>
   <string name="time_formate_pm">PM</string>
+  <string name="cf_setting_mobile_data_alert">Activa los datos móviles y asegúrate que la WLAN ta desactivada</string>
   <string name="cf_setting_mobile_data_roaming_alert">Activa la itinerancia de datos, por favor</string>
   <!-- Call forwarding settings screen, setting option name -->
   <!-- Call forwarding dialog box, text field label -->
@@ -160,6 +189,7 @@
   <!-- Error message displayed after failing to disable forwarding calls when the phone is unreachable -->
   <!-- Title of the progress dialog displayed while updating Call settings -->
   <!-- Toast in Call settings when asked to launch settings for a secondary user -->
+  <string name="call_settings_admin_user_only">Namái l\'alministrador pue camudar los axustes de llamada.</string>
   <!-- Title of the "Call settings" settings screen, with a text label identifying which SIM the settings are for. -->
   <!-- Title of the alert dialog displayed if an error occurs while updating Call settings -->
   <!-- Toast in Call settings dialog while settings are being read -->
@@ -199,6 +229,7 @@
   <!-- Error message for the voicemail PIN change if the PIN is too long -->
   <string name="vm_change_pin_error_too_long">El PIN nuevu ye perllagu.</string>
   <!-- Error message for the voicemail PIN change if the PIN is too weak -->
+  <string name="vm_change_pin_error_too_weak">El PIN nuevu ye perfeble. Una contraseña fuerte nun debería tener una secuencia continua o díxitos repitíos.</string>
   <!-- Error message for the voicemail PIN change if the old PIN entered doesn't match  -->
   <string name="vm_change_pin_error_mismatch">El PIN vieyu nun concasa.</string>
   <!-- Error message for the voicemail PIN change if the new PIN contains invalid character -->
@@ -206,6 +237,7 @@
   <!-- Error message for the voicemail PIN change if operation has failed -->
   <string name="vm_change_pin_error_system_error">Nun pue camudase\'l PIN</string>
   <!-- Message to replace the transcription if a visual voicemail message is not supported-->
+  <string name="vvm_unsupported_message_format">Triba de mensaxe non sofitada, llama a <xliff:g id="number" example="*86">%s</xliff:g> pa sentilu.</string>
   <!-- networks setting strings -->
   <!-- Mobile network settings screen title -->
   <string name="mobile_networks">Axustes de rede móvil</string>
@@ -266,8 +298,35 @@
   <!-- In-call screen: call failure reason (call denied because call barring
             is ON on MT side ) -->
   <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
+  <string name="callUnanswered_forwarded">Llamada non contestada y reunviada</string>
+  <string-array name="preferred_network_mode_choices">
+    <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+    <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+    <item>LTE/TDSCDMA/GSM/WCDMA</item>
+    <item>LTE/TDSCDMA/WCDMA</item>
+    <item>TDSCDMA/GSM/WCDMA</item>
+    <item>LTE/TDSCDMA/GSM</item>
+    <item>TDSCDMA/GSM</item>
+    <item>LTE/TDSCDMA</item>
+    <item>TDSCDMA/WCDMA</item>
+    <item>Namái TDSCDMA</item>
+    <item>LTE / WCDMA</item>
+    <item>LTE</item>
+    <item>Global</item>
+    <item>GSM/WCDMA/LTE</item>
+    <item>CDMA + LTE/EvDo</item>
+    <item>CDMA/EvDo/GSM/WCDMA</item>
+    <item>Namái EvDo</item>
+    <item>CDMA ensin EvDo</item>
+    <item>CDMA/EvDo auto</item>
+    <item>GSM/WCDMA auto</item>
+    <item>Namái WCDMA</item>
+    <item>Namái GSM</item>
+    <item>GSM/WCDMA preferred</item>
+  </string-array>
   <!-- Cellular network 4G title [CHAR LIMIT=30] -->
   <!-- Carrier variant of Enhaced 4G LTE Mode title.  [CHAR LIMIT=50] -->
+  <string name="enhanced_4g_lte_mode_title_variant">Llamaes avanzaes</string>
   <!-- Cellular network 4G summary [CHAR LIMIT=80] -->
   <string name="enhanced_4g_lte_mode_summary">Usa los servicios LTE p\'ameyorar la voz y otres comunicaciones (aconséyase)</string>
   <!-- Mobile network settings screen, data enabling checkbox name -->
@@ -344,6 +403,7 @@
   <!-- "Delete FDN Contact" screen: status message displayed in a popup (toast) -->
   <!-- FDN settings: error message displayed in a popup (toast) -->
   <!-- FDN settings: error message displayed in a popup (toast) -->
+  <string name="fdn_invalid_number">FDN nun s\'anovó porque\'l númberu ta baleru o perpasa los 20 díxitos.</string>
   <!-- FDN settings: error message displayed in a popup (toast), when the entered
          FDN number was inappropriate, OR, PIN2 the user entered was incorrect.
          Because of API restriction, there's no way to determine which is the exact
@@ -419,6 +479,7 @@
   <!-- Label for the expanded "No service" notification item, including the
          operator name set by user -->
   <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
+  <string name="incall_error_power_off" product="watch">Desactiva\'l mou avión o l\'aforrador de batería pa facer llamaes.</string>
   <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
   <string name="incall_error_power_off" product="default">Desactiva\'l mou avión pa facer una llamada.</string>
   <!-- In-call screen: call failure message displayed in an error dialog when in airplane mode, WFC is enabled, not wifi-only, and not connected to wireless networks. [CHAR_LIMIT=NONE] -->
@@ -429,9 +490,12 @@
   <!-- In-call screen: call failure message displayed in an error dialog -->
   <string name="incall_error_out_of_service">Rede móvil non disponible.</string>
   <!-- In-call screen: call failure message displayed in an error dialog -->
+  <string name="incall_error_out_of_service_wfc">La rede móvil nun ta disponible. Conéutate a una rede inalámbrica pa facer llamaes.</string>
   <!-- In-call screen: call failure message displayed in an error dialog -->
   <!-- In-call screen: call failure message displayed in an error dialog -->
+  <string name="incall_error_call_failed">Falló la llamada.</string>
   <!-- In-call screen: call failure message displayed in an error dialog -->
+  <string name="incall_error_cannot_add_call">La llamada nun pue amestase nesti momentu.</string>
   <!-- In-call screen: status message displayed in a dialog when starting an MMI -->
   <!-- In-call screen: message displayed in an error dialog -->
   <!-- In-call screen: message displayed in an error dialog -->
@@ -441,8 +505,10 @@
   <!-- In-call screen: message displayed in an error dialog -->
   <!-- In-call screen: message displayed in an error dialog -->
   <!-- In-call screen: message displayed in an error dialog -->
+  <string name="incall_error_supp_service_hold">Nun puen ponese llamaes n\'espera.</string>
   <!-- In-call screen: call failure message displayed in an error dialog when WFC is enabled, is wifi-only, and not connected to a wireless network. [CHAR_LIMIT=NONE] -->
   <!-- In-call screen: call failure message displayed in an error dialog when the user is connected to a wireless network, but wifi calling is turned off. [CHAR_LIMIT=NONE] -->
+  <string name="incall_error_promote_wfc">Activa les llamaes Wi-Fi pa facer llamaes.</string>
   <!-- Dialog title for the "radio enable" UI for emergency calls -->
   <!-- Status message for the "radio enable" UI for emergency calls -->
   <!-- Status message for the "radio enable" UI for emergency calls -->
@@ -471,8 +537,9 @@
   <!-- SIM Contacts: status message displayed while importing card -->
   <!-- Import a single contact entry from contacts to the SIM card -->
   <!-- Message shown when a single contact is imported from SIM card -->
+  <string name="singleContactImportedMsg">Contautu importáu</string>
   <!-- Message shown when a single contact could not be imported from SIM card -->
-  <string name="failedToImportSingleContactMsg">Fallu al importar el contautu</string>
+  <string name="failedToImportSingleContactMsg">Falló la importación del contautu</string>
   <!-- Hearing aid settings -->
   <!-- Service option entries.  -->
   <!-- Do not translate. -->
@@ -593,21 +660,26 @@
         Hai milenta llamaes actives. Fina o amiesta una enantes de facer otra, por favor.
     </string>
   <!-- The title for the change voicemail PIN activity -->
+  <string name="change_pin_title">Camudancia de PIN del buzón de voz</string>
   <!-- The label for the continue button in change voicemail PIN activity -->
   <string name="change_pin_continue_label">Siguir</string>
   <!-- The label for the cancel button in change voicemail PIN activity -->
+  <string name="change_pin_cancel_label">Encaboxar</string>
   <!-- The label for the ok button in change voicemail PIN activity -->
   <string name="change_pin_ok_label">Aceutar</string>
   <!-- The title for the enter old pin step in change voicemail PIN activity -->
+  <string name="change_pin_enter_old_pin_header">Confirma\'l PIN vieyu</string>
   <!-- The hint for the enter old pin step in change voicemail PIN activity -->
+  <string name="change_pin_enter_old_pin_hint">Introduz el PIN del buzon de voz pa siguir.</string>
   <!-- The title for the enter new pin step in change voicemail PIN activity -->
-  <string name="change_pin_enter_new_pin_header">Afitar un PIN nuevu</string>
   <!-- The hint for the enter new pin step in change voicemail PIN activity -->
+  <string name="change_pin_enter_new_pin_hint">El PIN ha ser de <xliff:g id="min" example="4">%1$d</xliff:g>-<xliff:g id="max" example="7">%2$d</xliff:g> díxitos.</string>
   <!-- The title for the confirm new pin step in change voicemail PIN activity -->
-  <string name="change_pin_confirm_pin_header">Confirma\'l to PIN</string>
+  <string name="change_pin_confirm_pin_header">Confirma\'l PIN</string>
   <!-- The error message for th confirm new pin step in change voicemail PIN activity, if the pin doen't match the one previously entered -->
   <string name="change_pin_confirm_pins_dont_match">Los PIN nun concasen</string>
   <!-- The toast to show after the voicemail PIN has been successfully changed -->
+  <string name="change_pin_succeeded">Anovóse\'l PIN del buzón de voz</string>
   <!-- The error message to show if the server reported an error while attempting to change the voicemail PIN -->
   <string name="change_pin_system_error">Nun pue afitase\'l PIN</string>
 </resources>
