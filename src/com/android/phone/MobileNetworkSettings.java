@@ -145,18 +145,29 @@ public class MobileNetworkSettings extends Activity  {
     }
 
     /**
-     * Whether to show the Enhanced 4G LTE settings.
+     * Whether to show the Enhanced 4G LTE settings in search result.
      *
      * <p>We show this settings if the VoLTE can be enabled by this device and the carrier app
-     * doesn't set {@link CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL} to false.
+     * doesn't set {@link CarrierConfigManager#KEY_HIDE_ENHANCED_4G_LTE_BOOL} to false.
      */
-    public static boolean hideEnhanced4gLteSettings(Context context,
-                PersistableBundle carrierConfig) {
-        return !(ImsManager.isVolteEnabledByPlatform(context)
-            && ImsManager.isVolteProvisionedOnDevice(context))
-            || carrierConfig.getBoolean(
-            CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL);
+    public static boolean hideEnhanced4gLteSettings(Context context) {
+        List<SubscriptionInfo> sil =
+                SubscriptionManager.from(context).getActiveSubscriptionInfoList();
+        // Check all active subscriptions. We only hide the button if it's disabled for all
+        // active subscriptions.
+        for (SubscriptionInfo subInfo : sil) {
+            ImsManager imsManager = ImsManager.getInstance(context, subInfo.getSimSlotIndex());
+            PersistableBundle carrierConfig = PhoneGlobals.getInstance()
+                    .getCarrierConfigForSubId(subInfo.getSubscriptionId());
+            if ((imsManager.isVolteEnabledByPlatform()
+                    && imsManager.isVolteProvisionedOnDevice())
+                    || carrierConfig.getBoolean(
+                    CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL)) {
+                return false;
+            }
+        }
 
+        return true;
     }
 
     public static class MobileNetworkFragment extends PreferenceFragment implements
