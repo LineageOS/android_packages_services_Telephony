@@ -237,7 +237,7 @@
 
     <!-- Flag indicating whether a system app can use video calling fallback if carrier video
          calling is not available. -->
-    <bool name="config_support_video_calling_fallback">false</bool>
+    <bool name="config_support_video_calling_fallback">true</bool>
 
     <!-- Whether the cellular radio is allowed to be power down when the Bluetooth can provide the data/call capabilities -->
     <bool name="config_allowRadioPowerDownOnBluetooth">false</bool>
