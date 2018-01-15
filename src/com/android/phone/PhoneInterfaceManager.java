@@ -1636,7 +1636,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return null;
         }
 
-        WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
         phone.getCellLocation(workSource).fillInNotifierBundle(data);
         return data;
     }
@@ -1706,7 +1706,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         ArrayList<NeighboringCellInfo> cells = null;
 
-        WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
         try {
             cells = (ArrayList<NeighboringCellInfo>) sendRequest(
                     CMD_HANDLE_NEIGHBORING_CELL, workSource,
@@ -1726,7 +1726,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         if (DBG_LOC) log("getAllCellInfo: is active user");
-        WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
         List<CellInfo> cellInfos = new ArrayList<CellInfo>();
         for (Phone phone : PhoneFactory.getPhones()) {
             final List<CellInfo> info = phone.getAllCellInfo(workSource);
@@ -1738,7 +1738,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void setCellInfoListRate(int rateInMillis) {
         enforceModifyPermission();
-        WorkSource workSource = getWorkSource(null, Binder.getCallingUid());
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
         mPhone.setCellInfoListRate(rateInMillis, workSource);
     }
 
@@ -3861,14 +3861,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return null;
     }
 
-    private WorkSource getWorkSource(WorkSource workSource, int uid) {
-        if (workSource != null) {
-            return workSource;
-        }
-
+    private WorkSource getWorkSource(int uid) {
         String packageName = mPhone.getContext().getPackageManager().getNameForUid(uid);
-        workSource = new WorkSource(uid, packageName);
-        return workSource;
+        return new WorkSource(uid, packageName);
     }
 
     /**
