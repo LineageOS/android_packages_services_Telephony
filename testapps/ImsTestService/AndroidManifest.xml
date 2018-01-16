@@ -33,6 +33,7 @@
 
         <activity android:name=".ImsRegistrationActivity" android:label="IMS Registration" />
         <activity android:name=".ImsCallingActivity" android:label="IMS Calling" />
+        <activity android:name=".ImsConfigActivity" android:label="IMS Config" />
 
         <service android:name=".TestImsService"
                  android:exported="true"
