@@ -16,45 +16,91 @@
 
 package com.android.phone.testapps.imstestapp;
 
-import android.os.RemoteException;
 import android.telephony.ims.stub.ImsConfigImplBase;
 
 import com.android.ims.ImsConfig;
-import com.android.ims.ImsConfigListener;
+
+import java.util.ArrayList;
 
 public class TestImsConfigImpl extends ImsConfigImplBase {
 
+    public static class ConfigItem {
+        public int item;
+        public int value;
+        public String valueString;
+
+        public ConfigItem(int item, int value) {
+            this.item = item;
+            this.value = value;
+        }
+
+        public ConfigItem(int item, String value) {
+            this.item = item;
+            valueString = value;
+        }
+    }
+
+    public interface ImsConfigListener {
+        void notifyConfigChanged();
+    }
+
+    private static TestImsConfigImpl sTestImsConfigImpl;
+    private ImsConfigListener mListener;
+    private ArrayList<ConfigItem> mArrayOfConfigs = new ArrayList<>();
+
+    public static TestImsConfigImpl getInstance() {
+        if (sTestImsConfigImpl == null) {
+            sTestImsConfigImpl = new TestImsConfigImpl();
+        }
+        return sTestImsConfigImpl;
+    }
+
+    public void setConfigListener(ImsConfigListener listener) {
+        mListener = listener;
+    }
+
+    public ArrayList<ConfigItem> getConfigList() {
+        return mArrayOfConfigs;
+    }
+
     @Override
-    public int getProvisionedValue(int item) throws RemoteException {
+    public int setConfig(int item, int value) {
+        replaceConfig(new ConfigItem(item, value));
+        return ImsConfig.OperationStatusConstants.SUCCESS;
+    }
+
+    @Override
+    public int setConfig(int item, String value) {
+        replaceConfig(new ConfigItem(item, value));
+        return ImsConfig.OperationStatusConstants.SUCCESS;
+    }
+
+    @Override
+    public int getConfigInt(int item) {
+        replaceConfig(new ConfigItem(item, ImsConfig.FeatureValueConstants.ON));
         return ImsConfig.FeatureValueConstants.ON;
     }
 
     @Override
-    public String getProvisionedStringValue(int item) throws RemoteException {
+    public String getConfigString(int item) {
         return null;
     }
 
-    @Override
-    public int setProvisionedValue(int item, int value) throws RemoteException {
-        return ImsConfig.OperationStatusConstants.SUCCESS;
+    public void setConfigValue(int item, int value) {
+        replaceConfig(new ConfigItem(item, value));
+        notifyProvisionedValueChanged(item, value);
     }
 
-    @Override
-    public int setProvisionedStringValue(int item, String value) throws RemoteException {
-        return ImsConfig.OperationStatusConstants.SUCCESS;
-    }
-
-    @Override
-    public void getFeatureValue(int feature, int network, ImsConfigListener listener)
-            throws RemoteException {
-        listener.onGetFeatureResponse(feature, network, ImsConfig.FeatureValueConstants.ON,
-                ImsConfig.OperationStatusConstants.SUCCESS);
-    }
-
-    @Override
-    public void setFeatureValue(int feature, int network, int value, ImsConfigListener listener)
-            throws RemoteException {
-        listener.onSetFeatureResponse(feature, network, value,
-                ImsConfig.OperationStatusConstants.SUCCESS);
+    public void replaceConfig(ConfigItem configItem) {
+        ConfigItem config = mArrayOfConfigs.stream()
+                .filter(configElem -> configElem.item == configItem.item)
+                .findFirst().orElse(null);
+        if (config != null) {
+            mArrayOfConfigs.remove(config);
+        }
+        mArrayOfConfigs.add(configItem);
+        if (mListener != null) {
+            mListener.notifyConfigChanged();
+        }
     }
 }

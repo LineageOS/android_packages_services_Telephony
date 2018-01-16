@@ -42,6 +42,9 @@ public class ImsTestServiceApp extends Activity {
         ((Button) findViewById(R.id.control_launch_calling)).setOnClickListener(
                 (view) -> launchCallingActivity());
 
+        ((Button) findViewById(R.id.control_launch_config)).setOnClickListener(
+                (view) -> launchConfigActivity());
+
         // Adds Card view for testing
         mConnections = findViewById(R.id.connections_list);
         mConnections.addView(getLayoutInflater().inflate(R.layout.ims_connection, null, false));
@@ -54,6 +57,11 @@ public class ImsTestServiceApp extends Activity {
 
     private void launchCallingActivity() {
         Intent intent = new Intent(this, ImsCallingActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchConfigActivity() {
+        Intent intent = new Intent(this, ImsConfigActivity.class);
         startActivity(intent);
     }
 }
