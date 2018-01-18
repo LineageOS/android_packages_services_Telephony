@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Dolaşımdayken veri hizmetlerine bağlan"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Veri dolaşımı kapalıyken ev ağınızdan ayrıldığınız için veri bağlantısını kaybettiniz."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Kayda değer ücretler ödeyebilirsiniz."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Fiyat bilgisi için ağ sağlayıcınıza başvurun."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Veri dolaşımına izin verilsin mi?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Veri kullanımı"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> arasında <xliff:g id="ID_1">%1$s</xliff:g> mobil veri kullanıldı"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> üzerinden veri planı eklemeniz gerekebilir"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"VERİ PLANI EKLE"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"İPTAL"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Çağrı sonlandırıldı"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Telsiz kapalı"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM kart yok veya SIM hatası oluştu"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobil ağ kullanılamıyor"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Atanmamış (ayrılmamış) numara"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Hedefe rota yok"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanal kabul edilebilir değil"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operatör yasaklamaya karar verdi"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Normal çağrı temizleme"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Kullanıcı meşgul"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Yanıt veren kullanıcı yok"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Kullanıcı uyarısı, cevap yok"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Çağrı reddedildi"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Numara değişti"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Ön alım"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Seçili olmayan kullanıcıyı temizleme"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Hedef hizmet dışı"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Geçersiz numara biçimi (tamamlanmamış numara)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Tamamlayıcı hizmet isteği reddedildi"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"DURUM SORGUSU Yanıtı"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal, belirtilmedi"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Kullanılabilir devre/kanal yok"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Şebeke hizmet dışı"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Geçici hata"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Geçiş ekipmanında yoğunluk"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Erişim bilgileri silindi"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"İstenen devre/kanal kullanılamıyor"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Kaynaklar kullanılamıyor, belirtilmedi"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Hizmet kalitesiyle ilgili bilgi yok"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"İstenen tamamlayıcı hizmete abone olunmadı"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Gelen çağrılar CUG içinde yasaklandı"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Taşıyıcı yeteneği yetkilendirilmedi"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Taşıyıcı yeteneği şu anda kullanılamıyor"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Hizmet veya seçenek kullanılamıyor, belirtilmedi"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Taşıyıcı hizmeti uygulanmadı"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM değeri, ACMmax değeriyle aynı veya bu değerden büyük"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"İstenen tamamlayıcı hizmet uygulanmadı"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Yalnızca kısıtlanmış dijital bilgi taşıyıcı yeteneği kullanılabilir"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Hizmet veya seçenek uygulanmadı, belirtilmedi"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Geçersiz işlem tanımlayıcısı değeri"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Kullanıcı, CUG üyesi değil"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Uyumsuz hedef"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Geçersiz geçiş şebekesi seçimi"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Semantik olarak yanlış mesaj"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Geçersiz zorunlu bilgi"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Mesaj türü mevcut değil veya uygulanmadı"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Mesaj türü, protokol durumuyla uyumlu değil"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Bilgi öğesi mevcut değil veya uygulanmadı"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Koşullu IE hatası"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Mesaj, protokol durumuyla uyumlu değil"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Zamanlayıcı süresinin sonunda kurtarma"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokol hatası, belirtilmedi"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Birlikte çalışma, belirtilmedi"</string>
 </resources>

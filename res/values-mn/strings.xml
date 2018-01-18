@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS хүсэлтийг DIAL хүсэлт болгон өөрчилсөн."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS хүсэлтийг USSD хүсэлт болгон өөрчилсөн."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS хүсэлтийг шинэ SS хүсэлт болгон өөрчилсөн."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS хүсэлтийг Видео DIAL хүсэлт болгон өөрчилсөн."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Таны Phone апп-н FDN тохиргоо асаалттай байна. Тус шалтгаанаар дуудлагатай холбоотой зарим функц ажиллахгүй."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Эдгээр тохиргоог харахын өмнө радиог асаана уу."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -239,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Роумингтэй үед дата үйлчилгээнд холбогдох"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Та төрөлх сүлжээнээс дата роумингыг унтраагаад гарсан тул дата холболтоо алдлаа."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Таны төлбөр өндөр гарах магадлалтайг анхааруулж байна."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Үнийг нь өөрийн сүлжээний нийлүүлэгчээс шалгана уу."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Дата роуминг үйлчилгээг идэвхжүүлэх үү?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Дата ашиглалт"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> мобайл дата ашигласан <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -632,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Та <xliff:g id="PROVIDER_NAME">%s</xliff:g>-р дамжуулан дата нэмэх шаардлагатай болж магадгүй"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ДАТА НЭМЭХ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ЦУЦЛАХ"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Дуудлага дууссан"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Радио идэвхгүй"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM карт байхгүй эсвэл SIM картын алдаа"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Мобайл сүлжээ байхгүй"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Оноогоогүй (хуваарилаагүй) дугаар"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Чиглэлд хүрэх замнал байхгүй"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Сувгийг хүлээн авах боломжгүй"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Оператор саатуулсан гэж тодорхойлсон"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Энгийн дуудлага арилгалт"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Хэрэглэгч завгүй"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Хариу өгөх хэрэглэгч байхгүй"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Хэрэглэгчийн анхааруулга, хариу байхгүй"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Дуудлагыг тасалсан"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Дугаар өөрчлөгдсөн"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Давуу эрх"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Сонгосон хэрэглэгчийн арилгалт байхгүй"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Чиглэл ажиллагаагүй"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Дугаарын формат буруу (дугаар дутуу)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Төхөөрөмж татгалзсан"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"ТӨЛӨВИЙН ХҮСЭЛТИЙН хариу"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Энгийн, тодорхойлоогүй"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Боломжтой сүлжээ/суваг байхгүй"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Сүлжээ ажиллагаагүй"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Түр зуурын алдаа"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Сэлгэх төхөөрөмж гацсан"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Хандалтын мэдээллийг устгасан"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Хүссэн сүлжээ/сувгийг ашиглах боломжгүй"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Ашиглах боломжтой нөөц байхгүй, тодорхойлоогүй"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Үйлчилгээний чанарыг ашиглах боломжгүй"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Хүссэн төхөөрөмж бүртгэгдээгүй"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Ирж буй дуудлага CUG дотор саатсан"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Эзэмшигчийн чадавхийг зөвшөөрөөгүй"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Эзэмшигчийн чадавхийг одоогоор мэдэх боломжгүй"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Үйлчилгээ эсвэл сонголт байхгүй, тодорхойлоогүй"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Эзэмшигчийн үйлчилгээ хийгдээгүй"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM нь ACMmax-с их буюу тэнцүү"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Хүссэн төхөөрөмж ажиллаагүй"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Зөвхөн хязгаарлагдмал дижитал мэдээлэл эзэмшигчийн чадавхийг ашиглах боломжтой"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Үйлчилгээ эсвэл сонголтыг гүйцэтгээгүй, тодорхойлоогүй"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Гүйлгээний таниулагчийн утга буруу"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Хэрэглэгч CUG-н гишүүн биш"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Нийцэхгүй чиглэл"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Дамжих сүлжээний сонголт буруу"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Утгын хувьд буруу зурвас"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Заавал байх мэдээлэл буруу"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Зурвасын төрөл байхгүй эсвэл хэрэгжээгүй"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Зурвасын төрөл протоколын горимтой нийцэхгүй"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Мэдээллийн бүрдэл байхгүй эсвэл хэрэгжээгүй"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Нөхцөлт IE алдаа"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Зурвас протоколын горимтой нийцэхгүй"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Хугацаа хэмжигч дуусах үед сэргээх"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Протоколын алдаа, тодорхойлоогүй"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Харилцан үйлчилж буй, тодорхойлоогүй"</string>
 </resources>

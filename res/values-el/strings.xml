@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Σύνδεση στις υπηρεσίες δεδομένων κατά την περιαγωγή"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Χάσατε τη σύνδεση δεδομένων επειδή φύγατε από το οικείο δίκτυο έχοντας την περιαγωγή δεδομένων απενεργοποιημένη."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Ενδέχεται να επιβαρυνθείτε με σημαντικές χρεώσεις."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Επικοινωνήστε με τον πάροχο του δικτύου για τις τιμές."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Να επιτρέπεται η περιαγωγή δεδομένων;"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Χρήση δεδομένων"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> δεδομένα κινητής τηλεφωνίας σε χρήση μεταξύ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Μπορεί να χρειαστεί να προσθέσετε δεδομένα μέσω <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ΠΡΟΣΘΗΚΗ ΔΕΔΟΜΕΝΩΝ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ΑΚΥΡΩΣΗ"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Η κλήση τερματίστηκε"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Ο πομπός είναι απενεργοποιημένος"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Δεν υπάρχει κάρτα SIM ή σφάλμα κάρτας SIM"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Μη διαθέσιμο δίκτυο κινητής τηλεφωνίας"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Ανεκχώρητος αριθμός"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Δεν υπάρχει δρόμος προς τον προορισμό"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Μη αποδεκτό κανάλι"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Φραγή καθορισμένη από φορέα εκμετάλλευσης"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Κανονική απόλυση κλήσης"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Χρήστης κατειλημμένος"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Δεν υπάρχει απόκριση χρήστη"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Ειδοποίηση χρήστη, χωρίς απάντηση"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Απόρριψη κλήσης"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Ο αριθμός άλλαξε"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Υπερτέρηση"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Ανεπίλεκτη απόλυση χρήστη"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Προορισμός εκτός λειτουργίας"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Μη έγκυρη μορφή αριθμού (ατελής αριθμός)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Απόρριψη ευκολίας"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Απόκριση σε ΕΝΔΙΕΡΩΤΗΣΗ ΚΑΤΑΣΤΑΣΗΣ"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Κανονικό, απροσδιόριστο"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Δεν υπάρχει κύκλωμα/κανάλι διαθέσιμο"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Δίκτυο εκτός λειτουργίας"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Προσωρινή αποτυχία"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Συμφόρηση εξοπλισμού μεταγωγής"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Απόρριψη πληροφοριών πρόσβασης"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Αιτούμενο κύκλωμα/κανάλι μη διαθέσιμο"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Πόροι μη διαθέσιμοι, απροσδιόριστο"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Ποιότητα υπηρεσίας μη διαθέσιμη"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Δεν υπάρχει συνδρομητική εγγραφή για την αιτούμενη ευκολία"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Οι εισερχόμενες κλήσεις έχουν αποκλειστεί εντός του CUG"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Μη εξουσιοδοτημένη δυνατότητα κομιστή"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Η δυνατότητα κομιστή δεν είναι προς το παρόν διαθέσιμη"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Υπηρεσία ή επιλογή μη διαθέσιμη, απροσδιόριστο"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Η υπηρεσία κομιστή δεν υλοποιήθηκε"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM ίσο ή μεγαλύτερο του ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Αιτούμενη ευκολία μη υλοποιημένη"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Μόνο περιορισμένη κομιστική ικανότητα ψηφιακών πληροφοριών είναι διαθέσιμη"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Υπηρεσία ή επιλογή μη υλοποιημένη, απροσδιόριστο"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Μη έγκυρη τιμή αναγνωριστικού συναλλαγής"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Ο χρήστης δεν είναι μέλος του CUG"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Ασύμβατος προορισμός"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Επιλογή μη έγκυρου διαβατικού δικτύου"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Σημασιολογικώς λανθασμένο μήνυμα"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Μη έγκυρες υποχρεωτικές πληροφορίες"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Τύπος μηνύματος μη υπαρκτός ή μη υλοποιημένος"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Τύπος μηνύματος μη συμβατός με την κατάσταση πρωτοκόλλου"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Στοιχείο πληροφορίας μη υπαρκτό ή μη υλοποιημένο"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Σφάλμα συνθήκης IE"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Το μήνυμα δεν είναι συμβατό με την κατάσταση πρωτοκόλλου"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Ανάκαμψη με την εκπνοή του χρονομετρητή"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Σφάλμα πρωτοκόλλου, απροσδιόριστο"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Διασυνεργασία, απροσδιόριστη"</string>
 </resources>

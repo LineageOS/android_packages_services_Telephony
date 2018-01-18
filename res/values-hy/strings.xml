@@ -240,8 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Դուք կորցրել եք տվյալների կապը, քանի որ անջատված եք թողել ձեր գլխավոր ցանցի տվյալների ռոումինգը:"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Դրա համար ձեզանից կարող են խոշոր վճարներ գանձվել:"</string>
-    <!-- no translation found for roaming_check_price_warning (7497570906830902550) -->
-    <skip />
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Գների վերաբերյալ տեղեկություններ ստանալու համար դիմեք ձեր օպերատորին:"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Թույլատրե՞լ տվյալների ռոումինգը:"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Թրաֆիկի օգտագործում"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Oգտագործվել է <xliff:g id="ID_1">%1$s</xliff:g> բջջային ինտերնետ (<xliff:g id="ID_2">%2$s</xliff:g>)"</string>
@@ -641,4 +640,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Հավանաբար դուք պետք է ավելացնեք թրաֆիկը <xliff:g id="PROVIDER_NAME">%s</xliff:g> օպերատորի միջոցով"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ԱՎԵԼԱՑՆԵԼ ԹՐԱՖԻԿԸ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ՉԵՂԱՐԿԵԼ"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Զանգն ավարտվել է"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Ռադիոկապն անջատված է"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM քարտ չի գտնվել կամ SIM քարտի սխալ է առաջացել"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Բջջային ցանցն անհասանելի է"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Չնշանակված (չտեղաբաշխված) համար"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Տվյալ ուղղությունը չի սպասարկվում"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Սխալ կապուղի"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Օպերատորի կողմից սահմանված արգելք"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Զանգի սովորական ավարտ"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Բաժանորդը զբաղված է"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Պատասխան չկա"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Օգտատիրոջ սարքից պատասխան չկա"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Զանգը մերժվել է"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Համարը փոխվել է"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Ծառայության առաջնահերթ ընդհատում"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Հասցեատեր չի ընտրվել"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Հասցեատերը չի սպասարկվում"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Համարի ձևաչափը սխալ է (համարը լիարժեք չէ)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Սարքի օգտագործման հարցումը մերժվել է"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Հարցման կարգավիճակի պատասխան"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Սովորական, նշված չէ"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Շղթան կամ կապուղին հասանելի չէ"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Ցանցը խափանված է"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Ժամանակավոր խափանում"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Կոմուտատորը գերբեռնված է"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Մուտքի տվյալները հեռացվել են"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Պահանջվող շղթան կամ կապուղին հասանելի չէ"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Ռեսուրսներն անհասանելի են, պատճառն անհայտ է"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Ծառայության պահանջվող որակը հնարավոր չէ ապահովել"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Պահանջվող սարքի բաժանորդագրությունը բացակայում է"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Բաժանորդների փակ խմբի ներսում մուտքային զանգերն արգելված են"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Թողունակությունը թույլատրված չէ"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Տվյալ թողունակությունն այս պահին հնարավոր չէ ապահովել"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Ծառայությունը կամ ընտրանքը հասանելի չէ, պատճառն անհայտ է"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Չի հաջողվում ապահովել տվյալ թողունակությունը"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM արժեքը մեծ կամ հավասար է ACMmax արժեքին"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Պահանջվող սարքը չի աջակցվում"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Առկա է թվային տվյալների փոխանցման սահմանափակ հնարավորություն"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Ծառայությունը կամ ընտրանքը չի աջակցվում, պատճառն անհայտ է"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Գործարքի նույնացուցիչի արժեքը սխալ է"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Բաժանորդը փակ խմբի անդամ չէ"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Ընդունող սարքն անհամատեղելի է"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Տարանցիկ ցանցի անվավեր ընտրություն"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Հաղորդագրությունը իմաստային առումով սխալ է"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Անվավեր պարտադիր տվյալներ"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Հաղորդագրության տեսակը գոյություն չունի կամ չի աջակցվում"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Հաղորդագրության տեսակը համատեղելի չէ հաղորդակարգի կարգավիճակի հետ"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Տեղեկատվական տարրը գոյություն չունի կամ չի աջակցվում"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Պայմանական IE սխալ"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Հաղորդագրությունը համատեղելի չէ հաղորդակարգի կարգավիճակի հետ"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Վերականգնում ժամաչափի լրանալու արդյունքում"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Հաղորդակարգի անհայտ սխալ"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Միջցանցային փոխազդեցության անհայտ սխալ"</string>
 </resources>

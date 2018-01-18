@@ -634,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"คุณอาจต้องเพิ่มข้อมูลผ่าน <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"เพิ่มข้อมูล"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ยกเลิก"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"วางสายแล้ว"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"ปิดวิทยุ"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"ไม่มีซิมการ์ดหรือซิมการ์ดผิดปกติ"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"เครือข่ายมือถือใช้งานไม่ได้"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"หมายเลขที่ไม่ได้กำหนด (ไม่ได้จัดสรร)"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"ไม่มีเส้นทางไปยังปลายทาง"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"ช่องสัญญาณไม่เป็นที่ยอมรับ"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"ผู้ให้บริการระงับการใช้งาน"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"กำลังล้างข้อมูลการโทรปกติ"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"สายผู้ใช้ไม่ว่าง"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"ผู้ใช้ไม่รับสาย"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"กำลังแจ้งเตือนผู้ใช้ แต่ไม่มีการรับสาย"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"สายถูกตัด"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"เปลี่ยนหมายเลขแล้ว"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"การจองใช้สิทธิ์"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"กำลังล้างข้อมูลผู้ใช้ที่ไม่ได้เลือกไว้"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"ปลายทางขัดข้อง"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"รูปแบบหมายเลขไม่ถูกต้อง (หมายเลขไม่สมบูรณ์)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"บริการถูกตัดสาย"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"ตอบกลับการสอบถามสถานะ"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"ปกติ (ไม่ระบุ)"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"ไม่มีวงจร/แชแนลพร้อมใช้งาน"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"เครือข่ายขัดข้อง"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"ใช้งานไม่ได้ชั่วคราว"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"กำลังสลับความคับคั่งของอุปกรณ์"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"ระบบยกเลิกข้อมูลการเข้าถึง"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"วงจร/แชแนลที่ร้องขอไม่พร้อมใช้งาน"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"ทรัพยากรไม่พร้อมใช้งาน (ไม่ระบุ)"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"คุณภาพของบริการไม่พร้อมใช้งาน"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"ยังไม่ได้สมัครใช้บริการที่ร้องขอ"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"ระงับสายเรียกเข้าภายใน CUG"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"ความสามารถของ Bearer ไม่ได้รับอนุญาต"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"ความสามารถของ Bearer ไม่พร้อมใช้งานในขณะนี้"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"บริการหรือตัวเลือกไม่พร้อมใช้งาน (ไม่ระบุ)"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"บริการ Bearer ยังใช้ไม่ได้"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM เท่ากับหรือมากกว่า ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"บริการที่ร้องขอยังใช้ไม่ได้"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"ความสามารถของ Bearer สำหรับข้อมูลดิจิทัลพร้อมใช้งานแบบจำกัดเท่านั้น"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"บริการหรือตัวเลือกยังใช้ไม่ได้ (ไม่ระบุ)"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"ค่าตัวระบุธุรกรรมไม่ถูกต้อง"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"ผู้ใช้ไม่ใช่สมาชิกของ CUG"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"ปลายทางไม่สามารถใช้ร่วมกัน"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"การเลือกเครือข่ายเชื่อมต่อไม่ถูกต้อง"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"ความหมายของข้อความไม่ถูกต้อง"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"ข้อมูลที่ต้องระบุไม่ถูกต้อง"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"ประเภทข้อความไม่มีอยู่หรือยังใช้ไม่ได้"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"ประเภทข้อความใช้กับสถานะโปรโตคอลไม่ได้"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"องค์ประกอบข้อมูลไม่มีอยู่หรือยังใช้ไม่ได้"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"IE เกิดข้อผิดพลาดตามเงื่อนไข"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"ข้อความใช้กับสถานะโปรโตคอลไม่ได้"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"กู้คืนเมื่อครบกำหนดตัวจับเวลา"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"ข้อผิดพลาดของโปรโตคอล (ไม่ระบุ)"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"กำลังเชื่อมต่อเครือข่าย (ไม่ระบุ)"</string>
 </resources>

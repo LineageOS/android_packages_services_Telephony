@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Роуминг кезінде дерек қызметтеріне қосу"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Дерекқор байланысын жоғалтып алдыңыз, себебі үйдегі желінің дерекқор роумингін өшірілген күйінде қалдырғансыз."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Қомақты ақы алынуы мүмкін."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Бағасын желі провайдерінен біліңіз."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Деректер роумингіне рұқсат берілсін бе?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Деректер трафигі"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> аралығында <xliff:g id="ID_1">%1$s</xliff:g> мобильдік дерек қолданылды"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Мобильдік байланыс жоспарын <xliff:g id="PROVIDER_NAME">%s</xliff:g> арқылы қосу қажет болады"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ЖОСПАР ҚОСУ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ТОҚТАТУ"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Қоңырау аяқталды"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Радио өшірулі"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM картасы жоқ немесе SIM қатесі"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Мобильдік желі қолжетімді емес"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Жойылған (тағайындалмаған) нөмір"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Мақсатты нысан арнасы қате"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Арна жарамсыз"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Оператор тарапынан бөгелген"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Қалыпты қоңырау мүмкіндігі жоқ"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Пайдаланушы бос емес"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Пайдаланушы жауап бермеді"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Пайдаланушы жауап бермеді"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Қоңырау қабылданбады"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Нөмір өзгерген"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Кідіртілген"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Кіріс қоңырау мүмкіндігі жоқ"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Мақсатты нысан жоқ"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Нөмір форматы жарамсыз (аяқталмаған нөмір)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Мақсатты нысан қабылдамады"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"КҮЙІН СҰРАУ хабарына жауап"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Қалыпты, анықталмаған"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Қолжетімді желі/арна жоқ"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Желі қызметі тоқтатылған"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Уақытша ақаулық"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Құрылғы ауыстыру ақаулығы"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Кіру деректері жарамсыз"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Сұралған желі/арна қолжетімсіз"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Қорлар қолжетімсіз, анықталмаған"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Қызмет сапасы қолжетімсіз"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Сұралған нысан тіркелмеген"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Кіріс қоңырауы топ бойынша бөгелген"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Мақсатты нысан қабылдай алмайды"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Мақсатты нысан қызметтен тыс"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Қызмет немесе опция қолжетімсіз, анықталмаған"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Мақсатты нысан қызметі орнатылмаған"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM мәні ACMmax мәніне тең немесе одан артық"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Сұралған нысан орнатылмаған"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Шектелген сандық деректер ғана қолданылады"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Қызмет немесе опция орнатылмаған, анықталмаған"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Транзакция идентификаторының мәні жарамсыз"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Пайдаланушы топ мүшесі емес"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Қолданылмайтын мақсатты нысан"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Таңдалған транзиттік желі жарамсыз"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Мағынасы қате хабар"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Міндетті дерек жарамсыз"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Хабар түрі жоқ немесе орнатылмаған"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Хабар түрі протокол күйімен үйлесімсіз"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Дерек элементі жоқ немесе орнатылмаған"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Шартты IE қатесі"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Хабар протокол күйімен үйлесімсіз"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Қалпына келтіру уақыты аяқталған"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Протокол қатесі, анықталмаған"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Ішкі желі қатесі, анықталмаған"</string>
 </resources>

@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"اتصال به سرویس‌های داده هنگام رومینگ"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"اتصال داده خود را از دست داده‌اید، زیرا از شبکه اصلی خود خارج شدید و رومینگ داده خاموش است،"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"شاید هزینه زیادی برای شما داشته باشد."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"برای قیمت با ارائه‌دهنده شبکه‌تان بررسی کنید."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"رومینگ داده مجاز است؟"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"مصرف داده"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> داده تلفن همراه مصرف‌شده در <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"ممکن است لازم باشد ازطریق <xliff:g id="PROVIDER_NAME">%s</xliff:g> داده اضافه کنید"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"افزودن داده"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"لغو"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"تماس پایان یافت"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"رادیو خاموش"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"سیم‌کارتی وجود ندارد یا خطای سیم‌کارت"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"شبکه تلفن همراه در دسترس نیست"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"شماره اختصاص‌داده‌نشده"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"مسیری به مقصد وجود ندارد"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"کانال قابل قبول نیست"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"اپراتور محدودیت تعیین کرده است"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"پاک‌سازی تماس عادی"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"کاربر مشغول است"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"کاربری پاسخ نمی‌دهد"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"هشدار کاربر، بدون پاسخ"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"تماس رد شد"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"شماره تغییر کرده است"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"حق تقدم"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"پاک‌سازی کاربر انتخاب‌نشده"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"مقصد نادرست است"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"قالب شماره نامعتبر (شماره سازگار نیست)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"امکانات رد شد"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"پاسخ به درخواست وضعیت"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"عادی، نامشخص"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"مدار/کانالی در دسترس نیست"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"شبکه در دسترس نیست"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"خطای موقت"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"ترافیک تجهیزات سوئیچینگ"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"از دسترسی به اطلاعات صرف‌نظر شد"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"مدار/کانال درخواستی در دسترس نیست"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"منابع در دسترس نیستند، نامشخص"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"کیفیت سرویس در دسترس نیست"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"برای امکانات درخواستی مشترک نشده است"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"‏تماس‌های ورودی در CUG ممنوع شد"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"ظرفیت حامل مجاز نیست"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"اکنون ظرفیت حامل در دسترس نیست"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"سرویس یا گزینه در دسترس نیست، نامشخص"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"سرویس حامل اعمال نشده است"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"‏ACM مساوی با یا بزرگ‌تر از ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"امکانات درخواستی اجرا نشده است"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"فقط ظرفیت حامل اطلاعات دیجیتالی محدود امکان‌پذیر است"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"سرویس یا گزینه اجرا نشده است، نامشخص"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"ارزش شناسه تراکنش نامعتبر"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"‏کاربر عضو CUG نیست"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"مقصد ناسازگار"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"انتخاب شبکه حمل‌ونقل نامعتبر"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"پیام از نظر معنایی نادرست است"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"اطلاعات اجباری نامعتبر"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"نوع پیام موجود نیست یا اجرا نشده است"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"نوع پیام با حالت پروتکل سازگار نیست"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"عنصر اطلاعات وجود ندارد یا اجرا نشده است"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"‏خطای IE شرطی"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"پیام با حالت پروتکل سازگار نیست"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"بازیابی در زمان انقضای تایمر"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"خطای پروتکل، نامشخص"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"تعامل، نامشخص"</string>
 </resources>

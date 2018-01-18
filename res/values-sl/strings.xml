@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Med gostovanjem vzpostavi povezavo s podatkovnimi storitvami"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Podatkovna povezava ni mogoča, ker ste zapustili domače omrežje, podatkovno gostovanje pa je izklopljeno."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Stroški utegnejo biti veliki."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Preverite cene pri operaterju omrežja."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Želite dovoliti podatkovno gostovanje?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Prenesena količina podatkov"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"V obdobju <xliff:g id="ID_2">%2$s</xliff:g> je bilo v mobilnem omrežju prenesenih <xliff:g id="ID_1">%1$s</xliff:g> podatkov"</string>
@@ -637,4 +638,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Podatkovni paket je treba morda dodati prek ponudnika <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"DODAJ PODATKOVNI PAKET"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"PREKLIČI"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Klic je končan"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radio je izklopljen"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Ni kartice SIM ali napaka kartice SIM"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobilno omrežje ni na voljo"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Nedodeljena (nerazporejena) številka"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Ni poti do cilja"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanal je nesprejemljiv"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Zapora, ki jo je določil operater"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Brisanje normalnih klicev"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Uporabnik je zaseden"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Ni odziva uporabnikov"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Opozorilo uporabnika, brez odgovora"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Klic je bil zavrnjen"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Številka je spremenjena"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Prekinjanje"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Brisanje neizbranih uporabnikov"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Cilj ne deluje"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Neveljavna oblika številke (nepopolna številka)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Sredstvo je zavrnjeno"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Odziv na POIZVEDBO STANJA"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normalno, neopredeljeno"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Na voljo ni nobenega voda/kanala"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Omrežje ne deluje"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Začasna napaka"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Preobremenjenost komutacijske opreme"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Podatki o dostopu so zavrženi"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Zahtevani vod/kanal ni na voljo"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Viri niso na voljo, neopredeljeno"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Kakovost storitve ni na voljo"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Nimate naročnine na zahtevano sredstvo"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Zapora dohodnih klicev v zaprti uporabniški skupini"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Zmogljivost nosilca ni odobrena"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Zmogljivost nosilca trenutno ni na voljo"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Storitev ali možnost ni na voljo, neopredeljeno"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Storitev nosilca ni uveljavljena"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM je enako ali več kot ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Zahtevano sredstvo ni uveljavljeno"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Na voljo je samo omejena zmogljivost nosilca digitalnih podatkov"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Storitev ali možnost ni uveljavljena, neopredeljeno"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Neveljavna vrednost identifikatorja transakcije"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Uporabnik ni član zaprte uporabniške skupine"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Nezdružljiv cilj"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Neveljavna izbira tranzitnega omrežja"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Semantično nepravilno sporočilo"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Neveljavni obvezni podatki"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Vrsta sporočila ne obstaja ali ni uveljavljena"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Vrsta sporočila ni združljiva s stanjem protokola"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Informacijski element ne obstaja ali ni uveljavljen"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Pogojna napaka IE"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Sporočilo ni združljivo s stanjem protokola"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Obnovitev ob poteku merilnika časa"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Napaka protokola, neopredeljeno"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Interakcija, neopredeljeno"</string>
 </resources>

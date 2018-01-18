@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"رومنگ کے وقت ڈیٹا سروسز سے مربوط ہوں"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"آپ ڈیٹا کی حالت رسائی سے محروم ہوگئے کیونکہ آپ نے ڈیٹا رومنگ آف ہونے کے ساتھ اپنا ہوم نیٹ ورک چھوڑ دیا۔"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"آپ پر خاطر خواہ چارجز لگ سکتے ہیں۔"</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"اپنے نیٹ ورک فراہم کنندہ سے قیمت معلوم کریں۔"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ڈیٹا رومنگ کی اجازت دیں؟"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"ڈیٹا کا استعمال"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> موبائل ڈیٹا <xliff:g id="ID_2">%2$s</xliff:g> میں استعمال ہوا"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"آپ کو شاید <xliff:g id="PROVIDER_NAME">%s</xliff:g> کے ذریعے ڈیٹا شامل کرنا پڑے"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ڈیٹا شامل کریں"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"منسوخ کریں"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"کال ختم ہو گئی"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"ریڈیو آف ہے"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"‏کوئی SIM کارڈ نہیں ہے یا SIM کارڈ خراب ہے"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"موبائل نیٹ ورک دستیاب نہیں ہے"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"غیر تفویض کردہ (غیر مختص) نمبر"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"منزل کا کوئی راستہ نہیں ہے"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"چینل ناقابل قبول ہے"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"آپریٹر نے رکاوٹ کا تعین کیا ہے"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"عام کال صاف کی جا رہی ہے"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"صارف مصروف ہے"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"کوئی صارف جواب نہیں دے رہا ہے"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"صارف کو متنبہ کیا جا رہا ہے، کوئی جواب نہیں"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"کال مسترد ہو گئی"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"نمبر تبدیل ہو گیا ہے"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"پیشگی خریداری"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"منتخب شدہ کسی بھی صارف کو صاف نہیں کیا جا رہا ہے"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"منزل آرڈر میں شامل نہیں ہے"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"نمبر کا فارمیٹ غلط ہے (نامکمل نمبر)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"سہولت مسترد کر دی گئی"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"\'صورت حال\' کے استفسار کا جواب دیں"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"عام، غیر واضح"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"کوئی سرکٹ/چینل دستیاب نہیں ہے"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"نیٹ ورک آرڈر میں شامل نہیں ہے"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"عارضی ناکامی"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"عنصر کی بندش پر سوئچ کیا جا رہا ہے"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"رسائی کى معلومات مسترد کر دی گئی"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"درخواست کردہ سرکٹ/چینل دستیاب نہیں ہے"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"وسائل دستیاب نہیں ہیں، غیر واضح"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"سروس کا معیار دستیاب نہیں ہے"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"درخواست کردہ سہولت سبسکرائب نہیں کی گئی ہے"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"‏CUG کے اندر آنے والی کالز کی اجازت نہیں ہے"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"بیئرر کی صلاحیت کی اجازت نہیں ہے"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"بیئرر کی صلاحیت فی الحال دستیاب نہیں ہے"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"سروس یا اختیار دستیاب نہیں ہے، غیر واضح"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"بیئرر کی سروس نافذ نہیں کی گئی"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"‏ACM یا تو ACMmax کے برابر ہے یا اس سے بڑا ہے"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"درخواست کردہ سہولت نافذ نہیں کی گئی ہے"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"صرف محدود کردہ ڈیجیٹل معلومات کے بیئرر کی صلاحیت دستیاب ہے"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"سروس یا اختیار کو نافذ نہیں کیا گیا ہے، غیر واضح"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"ٹرانزیکشن کے شناخت کار کی قدر غلط ہے"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"‏صارف CUG کا رکن نہیں ہے"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"غیر مطابقت پذیر منزل"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"ٹرانزٹ نیٹ ورک کا انتخاب غلط ہے"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"معنوی طور پر غلط پیغام"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"لازمی معلومات غلط ہیں"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"پیغام کی قسم غیر موجود ہے یا نافذ نہیں کی گئی ہے"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"پیغام کی قسم پروٹوکول کی حالت کے ساتھ مطابقت پذیر نہیں ہے"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"معلومات کا عنصر غیر موجود ہے یا نافذ نہیں کیا گیا ہے"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"‏مشروط IE کی خرابی"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"پیغام پروٹوکول کی حالت کے ساتھ مطابقت پذیر نہیں ہے"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"ٹائمر کی اختتامی تاریخ پر بازیابی"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"پروٹوکول کی خرابی، غیر واضح"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"مل جل کر کام ہو رہا ہے، غیر واضح"</string>
 </resources>

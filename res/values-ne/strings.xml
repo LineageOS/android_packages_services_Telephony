@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"रोमिङको समयमा डेटा सेवा जडान गर्नुहोस्"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"तपाईँले डेटा गुमाउनु भएको छ किनभने तपाईँले डेटासहितको घर नेटवर्क रोमिङ बन्द गरेर छोड्नुभएको छ।"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"तपाईंलाई अत्यन्त धेरै शुल्क लाग्न सक्छ।"</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"मूल्यसम्बन्धी जानकारीको लागि आफ्नो नेटवर्क प्रदायकलाई सोध्नुहोस्।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिङको अनुमति दिने हो?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"डेटाको प्रयोग"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> सम्म <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा प्रयोग भयो"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"तपाईंले <xliff:g id="PROVIDER_NAME">%s</xliff:g> मार्फत डेटा थप्नुपर्ने हुन सक्छ"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"डेटा थप्नुहोस्"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"रद्द गर्नुहोस्"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"कल अन्त्य भयो"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"रेडियो निष्क्रिय छ"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"कुनै पनि SIM कार्ड छैन वा SIM कार्डसम्बन्धी त्रुटि भयो"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"मोबाइल नेटवर्क उपलब्ध छैन"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"नतोकिएको (नबाँडिएको) नम्बर"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"गन्तव्यसम्म पुग्ने मार्ग छैन"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"च्यानल अस्वीकार्य छ"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"अपरेटरद्वारा निर्धारित रोकावट"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"कलसम्बन्धी सामान्य स्वीकृति"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"प्रयोगकर्ता व्यस्त हुनुहुन्छ"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"प्रयोगकर्ताले प्रतिक्रिया जनाइरहनुभएको छैन"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"प्रयोगकर्तालाई अलर्ट गर्दै, फोन उठेन"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"कल अस्वीकार गरियो"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"नम्बर परिवर्तन भएको छ"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"प्रि-एम्पसन"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"प्रयोगकर्ताको स्वीकृति चयन गरिएको छैन"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"गन्तव्यले काम गरिरहेको छैन"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"नम्बरको ढाँचा अमान्य छ (अपूर्ण नम्बर)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"सुविधा अस्वीकार गरियो"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"STATUS ENQUIRY को जवाफ"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"सामान्य, नतोकिएको"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"कुनै पनि सर्किट/च्यानल उपलब्ध छैन"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"नेटवर्कले काम गरिरहेको छैन"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"अस्थायी विफलता"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"स्विचिङ उपकरण भरियो"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"पहुँचसम्बन्धी सूचना खारेज गरियो"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"अनुरोध गरिएको सर्किट/च्यानल उपलब्ध छैन"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"संसाधनहरू अनुपलब्ध छन्, नतोकिएको"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"सेवाको गुणस्तर उपलब्ध छैन"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"अनुरोध गरिएको सुविधाको सदस्यता लिइएको छैन"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"CUG भित्र आगमन कलमाथि रोक लगाइएको छ"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"वाहकको क्षमता प्राधिकृत छैन"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"वाहकको क्षमता हाल उपलब्ध छैन"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"सेवा वा विकल्प उपलब्ध छैन, नतोकिएको"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"वाहकको सेवा कार्यान्वयन गरिएको छैन"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM या त ACMmax भन्दा बराबर छ वा त्यसभन्दा ठूलो छ"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"अनुरोध गरिएको सुविधा कार्यान्वयन गरिएको छैन"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"केवल प्रतिबन्धित डिजिटल जानकारी नामक वाहक क्षमता उपलब्ध छ"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"सेवा वा विकल्प कार्यान्वयन गरिएको छैन, नतोकिएको"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"कारोबार पहिचानकर्ताको मान अमान्य छ"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"प्रयोगकर्ता CUG को सदस्य हुनुहुन्न"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"अनुपयुक्त गन्तव्य"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"ट्रान्जिट नेटवर्कको चयन अमान्य छ"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"सिमान्टिक रूपमा गलत सन्देश"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"अनिवार्य जानकारी अमान्य छ"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"सन्देशको प्रकार अवस्थित छैन वा कार्यान्वयन गरिएको छैन"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"सन्देशको प्रकार प्रोटोकलको स्थितिसँग मिल्दोजुल्दो छैन"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"सूचनासम्बन्धी तत्त्व अवस्थित छैन वा कार्यान्वयन गरिएको छैन"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"ससर्त IE सम्बन्धी त्रुटि"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"सन्देश प्रोटोकलको स्थितिसँग मिल्दोजुल्दो छैन"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"टाइमरको समयावधि सकिएपछि पुनः प्राप्ति गरियो"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"प्रोटोकलसम्बन्धी त्रुटि, नतोकिएको"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"अन्तरक्रिया गरिरहेको, नतोकिएको"</string>
 </resources>

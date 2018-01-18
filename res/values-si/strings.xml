@@ -634,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"ඔබට <xliff:g id="PROVIDER_NAME">%s</xliff:g> හරහා දත්ත එක් කිරීමට අවශ්‍ය විය හැකිය."</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"දත්ත එක් කරන්න"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"අවලංගු කරන්න"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"ඇමතුම අවසන් විය"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"රේඩියෝව ක්‍රියාවිරහිතයි"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM කාඩ් පතක් නොමැති හෝ SIM කාඩ් පත් දෝෂය"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"ජංගම ජාලය නොමැත"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"නොපවරන ලද (වෙන් නොකළ) අංකය"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"ගමනාන්තය දක්වා මාර්ගයක් නොමැත"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"නාලිකාව පිළිගත නොහැකිය"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"මෙහෙයුම්කරු නිර්ණිත අවහිර කිරීම"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"සාමාන්‍ය ඇමතුම් හිස් කිරීම"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"පරිශීලක කාර්යබහුලයි"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"පරිශීලකයා ප්‍රතිචාර නොදක්වයි"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"පරිශීලක ඇඟවීම, පිළිතුරක් නැත"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"ඇමතුම ප්‍රතික්ෂේප කරන ලදී"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"අංකය වෙනස් කර ඇත"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"පූර්ව-කම්පන"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"තෝරා නොගත් පරිශීලක හිස් කිරීම"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"ගමනාන්තය බිඳ වැටී ඇත"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"වලංගු නොවන අංක ආකෘතිය (අසම්පූර්ණ අංකය)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"පහසුකම ප්‍රතික්ෂේපිතයි"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"STATUS ENQUIRY වෙත ප්‍රතිචාරය"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"සාමාන්‍ය, නිශ්චිත නොවන"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"පරිපථයක්/නාලිකාවක් නොපවතී"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"ජාලය බිඳ වැටී ඇත"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"තාවකාලික අසාර්ථකත්වය"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"මාරු කිරීමේ උපකරණ තදබදය"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"ප්‍රවේශ තොරතුරු ඉවත දමා ඇත"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"ඉල්ලූ පරිපථය/නාලිකාව නොතිබේ"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"සම්පත් නොතිබේ, නිශ්චිත නැත"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"සේවයේ ගුණාත්මකභාවය නොමැත"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"ඉල්ලූ පහසුකමට දායක වී නැත"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"එන ඇමතුම CUG තුළ අවහිර කර ඇත"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"හිමිකරු හැකියාවට අවසර නැත"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"හිමිකරු හැකියාව දැනට නොපවතී"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"සේවාව හෝ විකල්පය නොපවතී, නිශ්චිත නැත"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"හිමිකරු සේවාව ක්‍රියාත්මක කර නැත"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM ACMmax ට සමාන හෝ විශාලය"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"ඉල්ලූ පහසුකම ක්‍රියාත්මක කර නැත"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"සීමා කළ අංකිත තොරතුරු හිමිකරු හැකියාව පමණක් ලබා ගත හැකිය"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"සේවාව හෝ විකල්පය ක්‍රියාත්මක කර නැත, නිශ්චිත නැත"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"වලංගු නොවන ගනුදෙනු හඳුනා ගැනීමේ අගය"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"පරිශීලක CUG හි සාමාජිකයෙක් නොවේ"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"නොගැළපෙන ගමනාන්තය"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"වලංගු නොවන ජාල තේරීම"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"අර්ථානුකූලව වැරදි පණිවිඩය"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"වලංගු නොවන අනිවාර්ය තොරතුරු"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"පනිවිඩ වර්ගය නොපවතී නැතහොත් ක්‍රියාත්මක කර නැත"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"පණිවිඩ වර්ගය ප්‍රොටොකෝල තත්ත්වය සමග නොගැළපෙයි"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"තොරතුරු මූලාංගය නොපවතී නැතහොත් ක්‍රියාත්මක කර නැත"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"කොන්දේසිගත IE දෝෂය"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"පණිවිඩය ප්‍රොටොකෝල තත්ත්වය සමග නොගැළපෙයි"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"කාල පරාසයේ කල් ඉකුත්වීම"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"ප්‍රොටොකෝල දෝෂය, නිශ්චිත නොවන"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"අන්තර්ක්‍රියාකාරී, නිශ්චිත නොවන"</string>
 </resources>
