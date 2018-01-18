@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Ligar a serviços de dados em roaming"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"A conectividade de dados foi perdida porque saiu do alcance da sua rede e o roaming de dados estava desativado."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Podem ser cobrados custos significativos."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Consulte o seu fornecedor de serviços de rede para obter preços."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Pretende permitir roaming de dados?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Utilização de dados"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de dados móveis utilizados entre <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -633,4 +634,110 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Pode ter de adicionar dados através do operador <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ADICIONAR DADOS"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"CANCELAR"</string>
+    <!-- no translation found for clh_card_title_call_ended_txt (4072101334811753823) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_powerOff_txt (3773036949107147708) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_simError_txt (757650590524277969) -->
+    <skip />
+    <!-- no translation found for clh_incall_error_out_of_service_txt (3974373603657193827) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_unassigned_number_txt (7635996793232604064) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_no_route_to_destination_txt (8561586745288855167) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_channel_unacceptable_txt (8048626924246611459) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_operator_determined_barring_txt (6889705714244076823) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_normal_call_clearing_txt (2810975267106345820) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_user_busy_txt (2736095995784746915) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_no_user_responding_txt (1421543095873040084) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_user_alerting_txt (6606245970376797447) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_call_rejected_txt (8001665478195793223) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_number_changed_txt (5127909898925154242) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_pre_emption_txt (6864702416751338567) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_non_selected_user_clearing_txt (8725898326616836656) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_destination_out_of_order_txt (6626355413556362437) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_invalid_number_format_txt (6987646655639655370) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_facility_rejected_txt (4539787567476563415) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_response_to_STATUS_ENQUIRY_txt (178503536263624366) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_normal_unspecified_txt (2777574148560245427) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_no_circuit_available_txt (2894749820848784700) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_network_out_of_order_txt (807472585030492179) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_temporary_failure_txt (1985847623937655151) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_switching_equipment_congestion_txt (465517139462928431) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_access_information_discarded_txt (132851305339579892) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_requested_circuit_txt (2316345471851443847) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_resources_unavailable_unspecified_txt (4460267429142724322) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_quality_of_service_unavailable_txt (7315823047206338755) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_requested_facility_not_subscribed_txt (1688438372518949530) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_incoming_calls_barred_within_the_CUG_txt (3922231620226043342) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_bearer_capability_not_authorized_txt (6515594235334537340) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_bearer_capability_not_presently_available_txt (8013567156449692135) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_service_or_option_not_available_unspecified_txt (8663374141880847414) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_bearer_service_not_implemented_txt (2772484977847973583) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt (2192709279981159761) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_requested_facility_not_implemented_txt (406404292085779118) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt (4817899794531157207) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_service_or_option_not_implemented_unspecified_txt (2968655784896862505) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_invalid_transaction_identifier_value_txt (3843478518660918642) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_user_not_member_of_CUG_txt (8462852903153938988) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_incompatible_destination_txt (2580750652910253219) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_invalid_transit_network_selection_txt (6589916900457111005) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_semantically_incorrect_message_txt (2329284157442218683) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_invalid_mandatory_information_txt (9081556111928912676) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_message_type_non_existent_or_not_implemented_txt (2641350895896546715) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_message_type_not_compatible_with_protocol_state_txt (6598180735494982466) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_information_element_non_existent_or_not_implemented_txt (4725610801664706983) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_conditional_IE_error_txt (9140031076499566143) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_message_not_compatible_with_protocol_state_txt (6586005128633024271) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_recovery_on_timer_expiry_txt (3680765722923600294) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_protocol_Error_unspecified_txt (8294907817156524790) -->
+    <skip />
+    <!-- no translation found for clh_callFailed_interworking_unspecified_txt (8838850798491763729) -->
+    <skip />
 </resources>
