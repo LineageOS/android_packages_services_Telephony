@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Conectați-vă la serviciile de date în roaming"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Ați pierdut conectivitatea la date, deoarece ați părăsit rețeaua de domiciliu neavând activat roamingul de date."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Se pot acumula costuri mari."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Consultați furnizorul de rețea în privința prețurilor."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permiteți roamingul de date?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Utilizarea datelor"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de date mobile utilizate în intervalul <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -635,4 +636,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Poate fi necesar să adăugați date prin <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ADĂUGAȚI DATE"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ANULAȚI"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Apel încheiat"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radio oprit"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Niciun card SIM sau eroare de card SIM"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Rețeaua mobilă nu este disponibilă"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Număr neatribuit (nealocat)"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Nicio rută către destinație"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Canalul nu poate fi acceptat"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operatorul a stabilit blocarea"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Se șterg apelurile normale"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Utilizatorul este ocupat"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Niciun utilizator nu răspunde"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Alertare utilizator, niciun răspuns"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Apelul a fost respins"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Numărul a fost modificat"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Preempțiune"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Se șterg utilizatorii neselectați"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Destinația nu este disponibilă"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Format de număr nevalid (număr incomplet)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Facilitatea a fost respinsă"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Răspuns la INTEROGAREA STĂRII"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal, nespecificat"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Niciun circuit/canal disponibil"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Rețeaua nu funcționează"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Eroare temporară"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Se comută congestia echipamentelor"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Informațiile de acces au fost șterse"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Circuitul/canalul solicitat nu este disponibil"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Resurse indisponibile, nespecificate"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Calitatea serviciului nu este disponibilă"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Facilitatea solicitată nu este abonată"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Apelurile primite sunt blocate în CUG"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Capacitatea de transport nu a fost autorizată"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Capacitatea de transport nu este disponibilă în prezent"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Serviciul sau opțiunea nu sunt disponibile, nespecificat"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Serviciul de transport nu este implementat"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM este egală sau mai mare decât ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Facilitatea solicitată nu este implementată."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Este disponibilă numai capacitatea de transport restricționat de informații digitale"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Serviciul sau opțiunea nu sunt implementate, nespecificat"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Valoare nevalidă de identificare a tranzacției"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Utilizatorul nu este membru CUG"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Destinație incompatibilă"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Selecție nevalidă a rețelei de tranzit"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Mesaj incorect din punct de vedere semantic"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Informații obligatorii nevalide"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Elementul de informații este inexistent sau nu a fost implementat."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Tipul de mesaj nu este compatibil cu starea protocolului"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Elementul de informații este inexistent sau nu a fost implementat."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Eroare IE condițională"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Mesajul nu este compatibil cu starea protocolului"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Recuperare la expirarea timpului"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Eroare de protocol, nespecificată"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Inter-colaborare, nespecificată"</string>
 </resources>

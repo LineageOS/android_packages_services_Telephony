@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Ühenda rändluse ajal andmesideteenustega"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Andmesideühendus katkes, kuna lahkusite koduvõrgust ja andmesiderändlus oli välja lülitatud."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Lisanduda võivad suured tasud."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hinnakirja küsige oma võrguteenuse pakkujalt."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Kas lubada andmeside rändlus?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Andmekasutus"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Vahemikus <xliff:g id="ID_2">%2$s</xliff:g> on kasutatud <xliff:g id="ID_1">%1$s</xliff:g> mobiilset andmesidet"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Peate võib-olla operaatori <xliff:g id="PROVIDER_NAME">%s</xliff:g> kaudu andmemahtu lisama"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"LISA ANDMEMAHTU"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"TÜHISTA"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Kõne lõpetati"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Raadio on väljas"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM-kaarti pole või SIM-kaardi viga"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobiilsidevõrk pole saadaval"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Määramata (reserveerimata) number"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Sihtkohta pole marsruuti"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanal pole aktsepteeritav"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operaatori määratud blokeering"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Tavaline kõne kustutamine"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Kasutaja on hõivatud"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Ükski kasutaja ei vasta"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Kasutajat teavitati, vastust pole"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Kõnest keelduti"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Numbrit muudeti"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Eelisostuõigus"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Valimata kasutaja kustutamine"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Sihtkoht ei tööta"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Sobimatu numbrivorming (poolik number)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Üksus lükati tagasi"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Vastus OLEKU PÄRINGULE"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Tavaline, määramata"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Ühtegi vooluringi/kanalit pole saadaval"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Võrk ei tööta"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Ajutine viga"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Ümberlülitusseadmete ülekoormus"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Juurdepääsuteabest loobuti"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Taotletud vooluring/kanal pole saadaval"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Ressursid pole saadaval, määramata"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Teenuse kvaliteet pole saadaval"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Taotletud üksust pole tellitud"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Sissetulevad kõned on CUG-s blokeeritud"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Kandja võimekus on volitamata"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Kandja võimekus pole praegu saadaval"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Teenus või valik pole saadaval, määramata"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Kandja teenust pole juurutatud"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM on võrdne või suurem kui ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Taotletud üksust pole juurutatud"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Saadaval on ainult piiratud digitaalse teabe kandja võimekus"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Teenust või valikut pole juurutatud, määramata"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Tehingu sobimatu identifikaatoriväärtus"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Kasutaja pole CUG liige"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Ühildumatu sihtkoht"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Ülekandevõrgu sobimatu valik"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Vale tähendusega sõnum"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Sobimatu kohustuslik teave"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Sõnumi tüüpi pole või seda pole juurutatud"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Sõnumi tüüp ei ühildu protokolli olekuga"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Teabeelementi pole või seda pole juurutatud"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Tingimuslik IE-viga"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Sõnum ei ühildu protokolli olekuga"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Taimeri aegumise taastamine"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokolli viga, määramata"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Omavaheline töö, määramata"</string>
 </resources>

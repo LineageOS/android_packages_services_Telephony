@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Rouming vaqtida mobil internetga ulanish"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Internetga ulanish uzildi, chunki uy tarmog‘ingizni rouming internetini o\'chirgan holatda tark etdingiz."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Xarajati ancha yuqori bo‘lishi mumkin."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Paketlar narxlari haqidagi ma’lumotni internet provayderingizdan olishingiz mumkin."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Internet-roumingga ruxsat berilsinmi?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Trafik sarfi"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> davomida sarflangan mobil trafik: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Mobil internet tarif rejasini, ehtimol, <xliff:g id="PROVIDER_NAME">%s</xliff:g> orqali yoqishingiz lozim bo‘ladi."</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"YOQISH"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"BEKOR QILISH"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Chaqiruv yakunlandi"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Antena o‘chiq"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM karta o‘rnatilmagan yoki uni o‘qishda xatolik yuz berdi"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Uyali aloqa tarmog‘idan foydalanib bo‘lmaydi"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Tayinlanmagan raqam"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Chaqiruvni uzatayotgan tarmoq mazkur yo‘nalishni qo‘llab-quvvatlamaydi"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Bunday kanal qo‘llab-quvvatlanmaydi"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operator tomonidan chaqiruvga o‘rnatilgan taqiq"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Chaqiruv normal holatda tugatildi"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Abonent band"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Javob yo‘q"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Foydalanuvchi qurilmasidan javob yo‘q"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Chaqiruv rad etildi"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Raqam o‘zgargan"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Xizmat ko‘rsatishni majburiy to‘xatish"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Qabul qiluvchi tanlanmagan"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Qabul qiluvchining abonent raqamiga xizmat ko‘rsatilmayapti"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Raqam formati xato (raqam to‘liq emas)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Qurilmadan foydalanish so‘rovi rad etildi"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"SO‘ROV HOLATIGA javob"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal holat, aniqlanmagan"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Hech qanday chizma yoki kanal yo‘q"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Tarmoq ish faoliyatida emas"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Vaqtinchalik xato"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Tarmoq qurilmasi juda band"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Kirish axboroti bekor qilindi"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"So‘ralgan chizma yoki kanal mavjud emas"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Noma’lum sabablarga ko‘ra resurslardan foydalanib bo‘lmaydi"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"So‘ralgan xizmat ko‘rsatish sifati darajasini ta’minlab bo‘lmaydi"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"So‘ralgan qurilmaga obuna yo‘q"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Abonentlar yopiq guruhi ichida kiruvchi chaqiruvlar taqiqlangan"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Tarmoqning o‘tkazish qobiliyati: avtorizatsiya qilinmagan"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Tarmoq ayni paytda so‘ralgan o‘tkazish qobiliyatini ta’minlab bera olmaydi"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Xizmat yoki parametrdan noma’lum sabablarga ko‘ra foydalanib bo‘lmaydi"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"So‘ralgan o‘tkazish qobiliyatini ta’minlab berib bo‘lmayapti"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM qiymati ACMmax qiymatiga teng yoki undan katta"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"So‘ralgan qurilma qo‘llab-quvvatlanmaydi"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Tarmoqning o‘tkazish qobiliyati: faqat kirish cheklangan raqamli axborotga kirish mumkin"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Xizmat yoki parametr qo‘llab-quvvatlanmaydi"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"O‘tkazma identifikatorining qiymati xato"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Abonent yopiq guruh ishtirokchisi emas"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Maqsadli qurilma mos kelmaydi"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Bunday tranzit tarmog‘ini tanlab bo‘lmaydi"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Xabar semantik jihatdan xato"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Majburiy axborot xato"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Xabar turi mavjud emas yoki qo‘llab-quvvatlanmaydi"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Xabar turi protokol holatiga mos emas"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Axborotli element mavjud emas yoki qo‘llab-quvvatlanmaydi"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"IE shartli xatosi"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Xabar protokol holatiga mos emas"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Taymer vaqti tugashi bilan uni yangidan ishga tushirish"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Aniqlanmagan protokol xatosi"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Tarmoqlar o‘rtasidagi o‘zaro aloqada xatolik yuz berdi"</string>
 </resources>

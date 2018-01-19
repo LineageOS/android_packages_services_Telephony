@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Opret forbindelse til datatjenester under roaming"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Du har mistet dataforbindelsen, fordi du har forladt dit hjemmenetværk, og dataroaming er slået fra."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Du kan risikere at skulle betale høje gebyrer."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakt din netværksudbyder for at få oplyst priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillade dataroaming?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Dataforbrug"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brugt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -639,4 +640,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Du bliver muligvis nødt til at tilføje data via <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"TILFØJ DATA"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ANNULLER"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Opkaldet er afsluttet"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radioen er slukket"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Der er intet SIM-kort, eller også er der opstået en fejl med SIM-kortet"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobilnetværket er ikke tilgængeligt"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Ikke-tildelt (ikke-allokeret) nummer"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Der kan ikke routes til destinationen"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanalen kan ikke accepteres"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operatøren har konstateret spærring"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Normal opkaldsrydning"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Brugeren er optaget"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Der er ingen brugere, der svarer"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Brugeradvarsel, intet svar"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Opkaldet blev afvist"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Nummeret blev ændret"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Forhåndstømning"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Den ikke-valgte bruger blev ryddet"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Destinationen er ude af drift"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Ugyldigt nummerformat (ufuldstændigt nummer)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Anlægget blev afvist"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Svar på STAUTSFORESPØRGSEL"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal, uspecificeret"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Der er ingen tilgængelige kredsløb/kanaler"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Netværket er ude af drift"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Midlertidig fejl"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Overbelastning på grund af skiftet udstyr"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Adgangsoplysningerne blev kasseret"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Anmodet kredsløb/kanal er ikke tilgængelig"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Ressourcerne er utilgængelige, uspecificeret"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Der er ingen oplysninger om kvaliteten af tjenesten"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Det anmodede anlæg er ikke tilmeldt"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Indgående opkald spærres i CUG"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Bærekapaciteten blev ikke autoriseret"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Bærekapaciteten er ikke aktuelt tilgængelig"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Tjenesten eller valgmuligheden er ikke tilgængelig, uspecificeret"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Bærertjenesten er ikke implementeret"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM er lig med eller større end maks. ACM"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Det anmodede anlæg er ikke implementeret"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Det er kun begrænsede oplysninger om bæringskapacitet, der er tilgængelige"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Tjenesten eller valgmuligheden er ikke implementeret, uspecificeret"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Ugyldig værdi for transaktions-id"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Brugeren er ikke medlem af CUG"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Destinationen er inkompatibel"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Ugyldigt valg af transitnetværk"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Semantisk forkert esked"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Ugyldige obligatoriske oplysninger"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Beskedtypen er ikkeeksisterende eller ikke implementeret"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Beskedtypen er ikke kompatibel med protokoltilstanden"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Informationselementet er ikkeeksisterende eller ikke implementeret"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Betinget IE-fejl"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Beskeden er ikke kompatibel med protokoltilstanden"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Gendannelse ved udløb af timer"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokolfejl, uspecificeret"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Gensidig påvirkning, ikke angivet"</string>
 </resources>

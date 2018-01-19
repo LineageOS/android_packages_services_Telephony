@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"റോമിംഗിലാകുമ്പോൾ ഡാറ്റ സേവനങ്ങളുമായി കണ‌ക്റ്റുചെയ്യുക"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"നിങ്ങൾ ഡാറ്റ റോമിംഗ് ഓഫുചെയ്‌തതിനൊപ്പം നിങ്ങളുടെ ഹോം നെ‌റ്റ്‌വർക്കും വിട്ടതിനാൽ നിങ്ങൾക്ക് ഡാറ്റ കണക്റ്റിവിറ്റി നഷ്‌ടപ്പെട്ടു."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"നിങ്ങളിൽ നിന്ന് നിർദ്ദിഷ്‌ട നിരക്കുകൾ ഈടാക്കിയേക്കാം."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"നിരക്കിനായി നിങ്ങളുടെ നെറ്റ്‌വർക്ക് ദാതാവിനെ ബന്ധപ്പെടുക."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ഡാറ്റ റോമിംഗ് അനുവദിക്കണോ?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"ഡാറ്റ ഉപയോഗം"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> തീയതികൾക്കിടയിൽ <xliff:g id="ID_1">%1$s</xliff:g> മൊബൈൽ ഡാറ്റ ഉപയോഗിച്ചു"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"നിങ്ങൾക്ക് <xliff:g id="PROVIDER_NAME">%s</xliff:g> വഴി ഡാറ്റ ചേർക്കേണ്ടി വന്നേക്കാം"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ഡാറ്റ ചേർക്കുക"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"റദ്ദാക്കുക"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"കോൾ അവസാനിച്ചു"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"റേഡിയോ ഓഫ്"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"സിം കാർഡ് ഇല്ല അല്ലെങ്കിൽ സിം കാർഡ് പിശക്"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"മൊബൈൽ നെറ്റ്‌വർക്ക് ലഭ്യമല്ല"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"നൽകിയിട്ടില്ലാത്ത (അനുവദിക്കാത്ത) നമ്പർ"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"ലക്ഷ്യസ്ഥാനത്തേക്ക് റൂട്ടൊന്നുമില്ല"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"ചാനൽ സ്വീകാര്യമല്ല"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"ഓപ്പറേറ്റർ നിര്‍ണ്ണയിച്ച നിരോധിക്കൽ"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"സാധാരണ കോൾ ക്ലിയറിംഗ്"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"ഉപയോക്താവ് തിരക്കിലാണ്"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"ഒരു ഉപയോക്താവും പ്രതികരിക്കുന്നില്ല"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"ഉപയോക്താവിന് മുന്നറിയിപ്പ് നൽകുന്നു, മറുപടി നൽകുന്നില്ല"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"കോൾ നിരസിച്ചു"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"നമ്പർ മാറ്റി"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"പൂര്‍വ്വക്രയാധികാരം"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"തിരഞ്ഞെടുക്കാത്ത ഉപയോക്തൃ ക്ലിയറിംഗ്"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"ലക്ഷ്യസ്ഥാനം പ്രവർത്തനരഹിതമാണ്"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"നമ്പർ ഫോർമാറ്റ് തെറ്റാണ് (പൂർണ്ണമല്ലാത്ത നമ്പർ)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"ഫെസിലിറ്റി നിരസിച്ചു"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"സ്‌റ്റാറ്റസ് അന്വേഷണത്തിലേക്കുള്ള പ്രതികരണം"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"സാധാരണ, വ്യക്തമാക്കാത്തത്"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"സർക്യൂട്ട്/ചാനൽ ലഭ്യമല്ല"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"നെറ്റ്‍വര്‍ക്ക് പ്രവർത്തനരഹിതമാണ്"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"താൽക്കാലിക പിശക്"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"എക്യുപ്‌മെന്റ് കൺജഷനിലേക്ക് മാറുന്നു"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"ആക്സസ് വിവരം ഉപേക്ഷിച്ചു"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"അഭ്യർത്ഥിച്ച സർക്യൂട്ട്/ചാനൽ ലഭ്യമല്ല"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"ഉറവിടങ്ങൾ ലഭ്യമല്ല, വ്യക്തമാക്കിയിട്ടില്ല"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"ഗുണമേന്മയുള്ള സേവനം ലഭ്യമല്ല"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"അഭ്യർത്ഥിച്ച സൗകര്യത്തിന് വരിക്കാരായിട്ടില്ല"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"CUG-യിൽ ഇൻകമിംഗ് കോളുകൾ നിരോധിച്ചിരിക്കുന്നു"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"ബെയറർ കഴിവ് അംഗീകരിച്ചിട്ടില്ല"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"ബെയറർ കഴിവ് നിലവിൽ ലഭ്യമല്ല"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"സേവനം അല്ലെങ്കിൽ ഓപ്‌ഷൻ ലഭ്യമല്ല, വ്യക്തമാക്കിയിട്ടില്ല"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"ബെയറർ സേവനം നടപ്പിലാക്കിയില്ല"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACMmax-ന് സമമോ അതിനേക്കാൾ വലുതോ ആണ് ACM"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"അഭ്യർത്ഥിച്ച സൗകര്യം നടപ്പാക്കിയിട്ടില്ല"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"നിയന്ത്രിത ഡിജിറ്റൽ വിവര ബെയറർ കഴിവ് മാത്രം ലഭ്യമാണ്"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"സേവനം അല്ലെങ്കിൽ ഓപ്‌ഷൻ, നടപ്പാക്കിയില്ല, വ്യക്തമാക്കിയിട്ടില്ല"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"ഇടപാട് ഐഡന്‍റിഫയര്‍ മൂല്യം തെറ്റാണ്"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"ഉപയോക്താവ് CUG അംഗമല്ല"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"ലക്ഷ്യസ്ഥാനം അനുയോജ്യമല്ല"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"ട്രാന്‍സിറ്റ് നെറ്റ്‍വര്‍ക്ക് തിരഞ്ഞെടുപ്പ് തെറ്റാണ്"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"അർത്ഥ സംബന്ധിയായി തെറ്റായ സന്ദേശം"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"നിർബന്ധിത വിവരം തെറ്റാണ്"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"സന്ദേശ തരം നിലവിലില്ല അല്ലെങ്കിൽ നടപ്പാക്കിയിട്ടില്ല"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"സന്ദേശ തരം പ്രോട്ടോക്കോൾ നിലയ്ക്ക് അനുയോജ്യമല്ല"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"വിവര ഘടകം നിലവിലില്ല അല്ലെങ്കിൽ നടപ്പാക്കിയിട്ടില്ല"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"സോപാധിക IE പിശക്"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"സന്ദേശം പ്രോട്ടോക്കോൾ നിലയ്ക്ക് അനുയോജ്യമല്ല"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"ടൈമർ കാലഹരണപ്പെടുമ്പോൾ വീണ്ടെടുക്കൽ"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"പ്രോട്ടോക്കോള്‍ പിശക്, വ്യക്തമാക്കിയിട്ടില്ല"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"ഇന്റർവർക്കിംഗ്, വ്യക്തമാക്കിയിട്ടില്ല"</string>
 </resources>

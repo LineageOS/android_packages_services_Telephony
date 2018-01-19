@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"로밍 시 데이터 서비스에 연결"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"데이터 로밍을 사용 중지한 상태에서 홈 네트워크를 벗어났으므로 데이터 연결이 끊어졌습니다."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"많은 요금이 부과될 수 있습니다."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"요금은 이동통신사에 문의하세요."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"데이터 로밍을 허용하시겠습니까?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"데이터 사용량"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> 기간에 사용된 모바일 데이터: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"<xliff:g id="PROVIDER_NAME">%s</xliff:g>을(를) 통해 데이터를 추가해야 할 수도 있습니다."</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"데이터 추가"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"취소"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"통화 종료됨"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"무선 연결 끊김"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM 카드가 없거나 SIM 카드 오류 발생"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"모바일 네트워크를 사용할 수 없음"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"지정되지 않은(할당되지 않은) 번호"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"수신 기기로의 경로가 없음"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"채널이 수락되지 않음"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"통신사에서 차단을 결정함"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"일반 전화 클리어링"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"사용자가 통화 중"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"사용자가 응답하지 않음"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"사용자 알림, 답변 없음"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"통화 거부됨"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"번호가 변경됨"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"선점"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"선택되지 않은 사용자 클리어링"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"수신 기기가 작동하지 않음"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"번호 형식이 잘못됨(불완전한 번호)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"기능이 거부됨"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"상태 조회에 대한 응답"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"일반, 지정되지 않음"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"사용 가능한 회선/채널이 없음"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"네트워크가 작동하지 않음"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"일시적인 실패"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"전환 장비 혼잡"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"액세스 정보 삭제됨"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"요청된 회선/채널을 사용할 수 없음"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"리소스를 사용할 수 없음, 지정되지 않음"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"QoS를 사용할 수 없음"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"요청된 기능에 가입되지 않음"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"수신 전화가 CUG 내에서 차단됨"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"베어러 기능이 승인되지 않음"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"베어러 기능을 현재 사용할 수 없음"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"서비스 또는 옵션을 사용할 수 없음, 지정되지 않음"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"베어러 서비스가 구현되지 않음"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM이 ACMmax와 같거나 더 큼"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"요청된 기능이 구현되지 않음"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"제한된 디지털 정보 베어러 기능만 사용할 수 있음"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"서비스 또는 옵션이 구현되지 않음, 지정되지 않음"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"트랜잭션 식별자 값이 잘못됨"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"사용자가 CUG의 구성원이 아님"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"수신 기기가 호환되지 않음"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"트랜싯망 선택이 잘못됨"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"의미상 올바르지 않은 메시지"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"필수 정보가 잘못됨"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"메시지 유형이 존재하지 않거나 구현되지 않음"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"메시지 유형이 프로토콜 상태와 호환되지 않음"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"정보 요소가 존재하지 않거나 구현되지 않음"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"조건부 IE 오류"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"메시지가 프로토콜 상태와 호환되지 않음"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"타이머 만료 시 복구"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"프로토콜 오류, 지정되지 않음"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"인터워킹, 지정되지 않음"</string>
 </resources>

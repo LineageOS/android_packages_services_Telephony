@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Anslut till datatjänster vid roaming"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Du förlorade dataanslutningen eftersom du lämnade ditt hemnätverk utan att aktivera dataroaming."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Detta kan leda till höga kostnader."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakta din nätoperatör för priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vill du tillåta dataroaming?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Dataanvändning"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata använt mellan <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -639,4 +640,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Du behöver kanske lägga till data genom <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"LÄGG TILL DATA"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"AVBRYT"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Samtal avslutat"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radio av"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Inget SIM-kort eller SIM-kortsfel"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Inget mobilt nätverk tillgängligt"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Ej tilldelat nummer"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Ingen väg till destination"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanal inte godkänd"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operatör bestämde spärrning"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Normal samtalsclearing"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Användare upptagen"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Användare svarar inte"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Användarvarning, inget svar"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Samtal avvisat"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Nummer ändrat"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Blockering"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Ingen vald användarclearing"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Destination fungerar inte"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Ogiltigt nummerformat (ofullständigt nummer)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Funktion avvisad"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Svar på STATUS ENQUIRY"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal, ej angiven"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Ingen tillgänglig krets/kanal"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Nätverket fungerar inte"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Tillfälligt fel"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Överbelastad växel"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Åtkomstinformation slängd"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Begärd krets/kanal inte tillgänglig"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Resurser inte tillgängliga, ej angivna"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Tjänstekvalitet inte tillgänglig."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Begärd funktion inte prenumererad"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Inkommande samtal spärrade inom CUG"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Bearer-funktioner inte auktoriserade"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Bearer-funktioner för närvarande inte tillgängliga"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Tjänst eller alternativ inte tillgänglig, ej angivet"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Bearer-tjänst inte implementerad"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM är lika med eller större än ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Begärd funktion inte implementerad"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Endast begränsad bearer-funktion för digital information finns tillgänglig"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Tjänst eller alternativ implementerat, ej angivet"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Ogiltigt transaktionsidentifierarvärde"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Användare inte CUG-medlem"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Inkompatibel destination"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Ogiltigt transitnätval"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Semantiskt felaktigt meddelande"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Ogiltig obligatorisk information"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Meddelandetyp finns inte eller är inte implementerad"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Meddelandetyp inte kompatibel med protokollstatus"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Informationselement finns inte eller är inte implementerat"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Villkorligt IE-fel"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Meddelande inte kompatibelt med protokollstatus"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Återställning vid timerutgång"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokollfel, ej angivet"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Interworking, ej angiven"</string>
 </resources>

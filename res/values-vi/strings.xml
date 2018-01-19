@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Bạn đã mất kết nối dữ liệu vì bạn đã tắt chuyển vùng dữ liệu của mạng gia đình của mình."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Bạn có thể phải chịu các khoản phí đáng kể."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hãy liên hệ với nhà cung cấp mạng của bạn để biết giá cước."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Cho phép chuyển vùng dữ liệu?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Mức sử dụng dữ liệu"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Đã sử dụng <xliff:g id="ID_1">%1$s</xliff:g> dữ liệu di động <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Bạn có thể phải thêm dữ liệu qua <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"THÊM DỮ LIỆU"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"HỦY"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Đã kết thúc cuộc gọi"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Tắt đài"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Không có thẻ SIM hoặc lỗi thẻ SIM"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Không có mạng di động"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Số chưa chỉ định (chưa phân bổ)"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Không chuyển được tới đích đến"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Không chấp nhận kênh"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Chặn do nhà mạng xác định"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Ngắt kết nối cuộc gọi thông thường"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Người dùng bận"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Không có phản hồi của người dùng"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Cảnh báo người dùng, không trả lời"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Đã từ chối cuộc gọi"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Đã thay đổi số"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Mua trước"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Ngắt kết nối người dùng chưa chọn"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Đích đến hoạt động không chính xác"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Định dạng số không hợp lệ (số không đầy đủ)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Đã từ chối tiện ích"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Phản hồi STATUS ENQUIRY"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Thông thường, không xác định"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Không có mạch/kênh"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Mạng hoạt động không chính xác"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Lỗi tạm thời"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Nghẽn thiết bị chuyển mạch"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Đã loại bỏ thông tin truy cập"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Không có mạch/kênh yêu cầu"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Không có tài nguyên, không xác định"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Không có chất lượng dịch vụ"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Chưa đăng ký tiện ích yêu cầu"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Đã chặn cuộc gọi đến trong CUG"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Chưa cho phép khả năng mang tải"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Hiện chưa có khả năng mang tải"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Không có dịch vụ hoặc tùy chọn, không xác định"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Chưa triển khai dịch vụ mang tải"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM bằng hoặc lớn hơn ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Chưa triển khai tiện ích yêu cầu"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Chỉ có khả năng mang tải hạn chế cho thông tin kỹ thuật số"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Chưa triển khai dịch vụ hoặc tùy chọn, không xác định"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Giá trị nhận dạng giao dịch không hợp lệ"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Người dùng không phải là thành viên của CUG"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Đích đến không tương thích"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Lựa chọn mạng chuyển tiếp không hợp lệ"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Thông báo không đúng ngữ nghĩa"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Thông tin bắt buộc không hợp lệ"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Loại thông báo không tồn tại hoặc chưa triển khai"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Loại thông báo không tương thích với trạng thái giao thức"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Thành phần thông tin không tồn tại hoặc chưa triển khai"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Lỗi IE có điều kiện"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Thông báo không tương thích với trạng thái giao thức"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Khôi phục khi hết hạn hẹn giờ"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Lỗi giao thức, không xác định"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Ảnh hưởng lẫn nhau, không xác định"</string>
 </resources>
