@@ -81,8 +81,9 @@
     <protected-broadcast android:name= "com.android.cellbroadcastreceiver.GET_LATEST_CB_AREA_INFO" />
     <protected-broadcast android:name= "android.intent.action.CURRENT_CARRIER_IDENTITY_CHANGED" />
     <protected-broadcast android:name= "com.android.internal.telephony.ACTION_CARRIER_CERTIFICATE_DOWNLOAD" />
-    <protected-broadcast android:name= "android.intent.action.SIM_CARD_STATE_CHANGED" />
-    <protected-broadcast android:name= "android.intent.action.SIM_APPLICATION_STATE_CHANGED" />
+    <protected-broadcast android:name= "android.telephony.action.SIM_CARD_STATE_CHANGED" />
+    <protected-broadcast android:name= "android.telephony.action.SIM_APPLICATION_STATE_CHANGED" />
+    <protected-broadcast android:name= "android.telephony.action.SIM_SLOT_STATUS_CHANGED" />
 
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
