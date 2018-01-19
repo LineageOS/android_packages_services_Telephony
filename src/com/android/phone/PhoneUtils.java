@@ -130,7 +130,7 @@ public class PhoneUtils {
      * because these dialogs are displayed using the application context, which does not resolve
      * the dialog theme correctly.
      */
-    private static final int THEME = AlertDialog.THEME_DEVICE_DEFAULT_LIGHT;
+    private static final int THEME = com.android.internal.R.style.Theme_DeviceDefault_Dialog_Alert;
 
     private static class FgRingCalls {
         private Call fgCall;
