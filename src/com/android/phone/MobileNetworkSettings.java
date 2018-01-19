@@ -811,15 +811,6 @@ public class MobileNetworkSettings extends Activity  {
             prefSet.addPreference(mMobileDataPref);
             prefSet.addPreference(mButtonDataRoam);
             prefSet.addPreference(mDataUsagePref);
-            if (showEuiccSettings(getActivity())) {
-                prefSet.addPreference(mEuiccSettingsPref);
-                String spn = mTelephonyManager.getSimOperatorName();
-                if (TextUtils.isEmpty(spn)) {
-                    mEuiccSettingsPref.setSummary(null);
-                } else {
-                    mEuiccSettingsPref.setSummary(spn);
-                }
-            }
 
             // Customized preferences needs to be initialized with subId.
             mMobileDataPref.initialize(phoneSubId);
@@ -867,7 +858,6 @@ public class MobileNetworkSettings extends Activity  {
                 updateBodyAdvancedFields(activity, prefSet, phoneSubId, hasActiveSubscriptions);
             } else {
                 prefSet.addPreference(mAdvancedOptions);
-                mAdvancedOptions.setEnabled(hasActiveSubscriptions);
             }
         }
 
@@ -882,6 +872,16 @@ public class MobileNetworkSettings extends Activity  {
             prefSet.addPreference(mButtonPreferredNetworkMode);
             prefSet.addPreference(mButtonEnabledNetworks);
             prefSet.addPreference(mButton4glte);
+
+            if (showEuiccSettings(getActivity())) {
+                prefSet.addPreference(mEuiccSettingsPref);
+                String spn = mTelephonyManager.getSimOperatorName();
+                if (TextUtils.isEmpty(spn)) {
+                    mEuiccSettingsPref.setSummary(null);
+                } else {
+                    mEuiccSettingsPref.setSummary(spn);
+                }
+            }
 
             int settingsNetworkMode = android.provider.Settings.Global.getInt(
                     mPhone.getContext().getContentResolver(),
