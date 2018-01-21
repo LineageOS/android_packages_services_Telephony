@@ -638,4 +638,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Je možné, že musíte data přidat prostřednictvím poskytovatele <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"PŘIDAT DATA"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ZRUŠIT"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Hovor byl ukončen"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Rádio je vypnuto"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Chybí SIM karta nebo chyba SIM karty"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobilní síť je nedostupná"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Nepřiřazené (nepřidělené) číslo"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Žádná trasa k příjemci"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanál není přijatelný"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operátor určil blokování"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Normální mazání hovorů"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Uživatel je zaneprázdněn"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Žádný uživatel nereaguje"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Upozorňování uživatele, bez odpovědi"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Hovor byl odmítnut"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Číslo se změnilo"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Předběžné zabránění"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Nevybrané mazání uživatelů"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Příjemce je mimo provoz"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Neplatný formát čísla (číslo není celé)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Služba byla odmítnuta"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Odpověď na DOTAZ NA STAV"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normální, nespecifikováno"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Není dostupný žádný obvod/kanál"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Síť je mimo provoz"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Dočasné selhání"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Přetížení přepínacího zařízení"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Přístupové údaje byly zahozeny"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Požadovaný obvod/kanál není dostupný"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Zdroje nejsou dostupné, nespecifikováno"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Není dostupná kvalita služby"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"K požadované službě nejste přihlášeni"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Příchozí hovory jsou v uzavřené uživatelé skupině blokovány"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Funkce nositele nemá oprávnění"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Funkce nositele není momentálně dostupná"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Služba nebo možnost není dostupná, nespecifikováno"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Služba nositele není implementována"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM se rovná nebo je větší než maximální ACM"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Požadovaná služba není implementována"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Je dostupná jen omezená funkce nositele digitálních údajů"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Služba nebo možnost není implementována, nespecifikováno"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Neplatná hodnota identifikátoru transakce"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Uživatel není členem uzavřené uživatelské skupiny"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Nekompatibilní příjemce"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Neplatný výběr sítě pro přenos"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Sémanticky nesprávná zpráva"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Neplatný povinný údaj"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Typ zprávy neexistuje nebo není implementován"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Typ zprávy není kompatibilní se stavem protokolu"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Prvek údajů neexistuje nebo není implementován"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Podmíněná chyba prvku údajů"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Zpráva není kompatibilní se stavem protokolu"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Obnovování po uplynutí časového limitu"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Chyba protokolu, nespecifikováno"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Propojení, nespecifikováno"</string>
 </resources>

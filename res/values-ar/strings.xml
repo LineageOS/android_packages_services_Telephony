@@ -240,8 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"اتصال بخدمات البيانات عند التجوال"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"لقد فقدت اتصال البيانات نظرًا لأنك أوقفت تشغيل تجوال البيانات بشبكتك الرئيسية."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"قد يكلف ذلك رسومًا مرتفعة."</string>
-    <!-- no translation found for roaming_check_price_warning (7497570906830902550) -->
-    <skip />
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"راجع مقدم الشبكة للتعرف على الأسعار."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"السماح بتجوال البيانات؟"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"استخدام البيانات"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"تم استخدام <xliff:g id="ID_1">%1$s</xliff:g> من بيانات الجوال خلال الفترة بين <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -643,4 +642,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"قد تحتاج إلى إضافة بيانات من خلال <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"إضافة بيانات"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"إلغاء"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"تم إنهاء الاتصال"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"اللاسلكي متوقف"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"‏لا توجد شريحة SIM أو يوجد خطأ بشريحة SIM"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"شبكة الجوّال غير متوفرة"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"رقم غير مسجل (غير مخصص)"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"لا يوجد مسار إلى الوجهة"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"القناة غير مقبولة"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"اكتشف عامل التشغيل وجود منع"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"محو المكالمة العادية"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"المستخدم مشغول"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"لم يستجب أي مستخدم"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"تنبيه المستخدم، لا يوجد رد"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"تم رفض المكالمة"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"تم تغيير الرقم"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"حق الشفعة"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"محو المستخدم غير المحدد"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"الوجهة معطلة"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"تنسيق الرقم غير صالح (الرقم ليس كاملاً)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"تم رفض المرفق"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"الرد على استفسار الحالة"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"عادي، غير محدد"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"لا تتوفر أي دائرة أو قناة"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"الشبكة معطلة"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"فشل مؤقت"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"تبديل ازدحام المعدات"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"تم تجاهل الوصول إلى المعلومات"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"الدائرة أو القناة المطلوبة غير متوفرة"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"الموارد غير متوفرة، غير محدد"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"جودة الخدمة غير متوفرة"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"المرفق المطلوب غير مشترك"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"‏تم منع المكالمات الواردة داخل CUG"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"لم يتم تخويل إمكانية الحامل"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"إمكانية الحامل غير متوفرة حاليًا"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"لا تتوفر الخدمة أو الخيار، غير محدد"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"لم يتم تنفيذ خدمة الحامل"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"‏ACM يساوي أو أكبر من ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"لم يتم تنفيذ المرفق المطلوب"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"تتوفر فقط إمكانية حامل المعلومات الرقمية المقيَّدة"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"لم يتم تنفيذ الخدمة أو الخيار، غير محدد"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"قيمة معرّف العملية غير صالحة"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"‏المستخدم ليس عضوًا في CUG"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"الوجهة غير متوافقة"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"تحديد شبكة النقل العام غير صالح"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"رسالة غير صحيحة دلاليًا"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"المعلومات الإلزامية غير صالحة"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"نوع الرسالة غير موجود أو غير مطبق"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"نوع الرسالة غير متوافق مع حالة البروتوكول"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"عنصر المعلومات غير موجود أو غير مطبق"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"‏خطأ IE مشروط"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"الرسالة غير متوافقة مع حالة البروتوكول"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"الاستعادة عند انتهاء الموقّت"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"خطأ في البروتوكول، غير محدد"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"التشغيل البيني، غير محدد"</string>
 </resources>

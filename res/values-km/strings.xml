@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"អ្នក​បាន​បាត់បង់​ការ​តភ្ជាប់​ទិន្នន័យ ពីព្រោះ​អ្នក​បាន​ចាកចេញ​ពី​បណ្ដាញ​ដើម​របស់​អ្នក​ជាមួយ​រ៉ូមីង​ទិន្នន័យ​បាន​បិទ។"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"អាចនាំឲ្យមានការគិតប្រាក់ច្រើនពីអ្នក។"</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"ពិនិត្យមើល​តម្លៃ​ជាមួយ​ក្រុមហ៊ុន​ផ្ដល់​សេវា​​បណ្ដាញ​​របស់​អ្នក។"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"អនុញ្ញាតឲ្យរ៉ូមីងទិន្នន័យ?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"ការ​ប្រើ​ប្រាស់ទិន្នន័យ"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"បានប្រើទិន្នន័យទូរសព្ទអស់ <xliff:g id="ID_1">%1$s</xliff:g> នៅថ្ងៃទី <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -633,4 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"អ្នក​ប្រហែល​ត្រូវ​បញ្ចូល​ទិន្នន័យ​តាម <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"បញ្ចូល​ទិន្នន័យ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"បោះបង់"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"បាន​បញ្ចប់​ការ​ហៅ"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"បិទ​វិទ្យុ"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"គ្មាន​ស៊ីម​កាត ឬ​បញ្ហា​ស៊ីម​កាត"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"បណ្ដាញ​ចល័ត​មិន​អាច​ប្រើ​បាន"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"លេខ​មិន​បាន​ចាត់តាំង (មិន​បាន​លៃ​ទុក)"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"គ្មាន​ផ្លូវ​ទៅ​គោលដៅ"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"ប៉ុស្ដិ៍​មិន​អាច​ទទួល​យក​​បានទេ"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"ប្រតិបត្តិករ​បាន​កំណត់​ការរារាំង"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"ការសម្អាត​ការហៅ​ទូរសព្ទ​ធម្មតា"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"អ្នក​ប្រើប្រាស់​រវល់"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"គ្មាន​ការឆ្លើយតប​របស់​អ្នក​ប្រើប្រាស់"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"ការជូនដំណឹង​អ្នក​ប្រើប្រាស់ គ្មាន​ចម្លើយ"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"បាន​ច្រាន​ចោល​ការហៅ"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"បាន​ប្ដូរ​លេខ"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"ការទិញ​មុន"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"គ្មាន​ការសម្អាត​អ្នក​ប្រើប្រាស់​ដែល​បាន​ជ្រើសរើស​ទេ"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"ទិសដៅ​មិន​នៅ​ក្នុង​ការបញ្ជា"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"ទ្រង់ទ្រាយ​លេខ​មិន​ត្រឹមត្រូវ (លេខ​មិន​ពេញលេញ)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"បាន​ច្រានចោល​កន្លែង"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"ការឆ្លើយតប​ទៅ​សំណួរ​ស្ថានភាព"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"ធម្មតា មិន​បាន​បញ្ជាក់"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"មិន​មាន​សៀគ្វី/ប៉ុស្តិ៍​អាច​ប្រើបាន"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"បណ្ដាញ​​មិន​នៅ​ក្នុង​ការបញ្ជា"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"មិន​អាច​ធ្វើ​បាន​ជា​បណ្ដោះអាសន្ន"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"មាន​បញ្ហា​ការប្ដូរ​ឧបករណ៍"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"បោះបង់​ការចូលប្រើប្រាស់​ព័ត៌មាន"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"សៀគ្វី/ប៉ុស្តិ៍​ដែល​បាន​ស្នើ​មិន​អាច​ប្រើបាន​ទេ"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"អត់​មាន​ធនធាន មិន​បាន​បញ្ជាក់"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"អត់​មាន​គុណភាព​សេវាកម្ម"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"កន្លែង​ដែល​បាន​ស្នើ​មិន​បាន​ជាវ"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"បាន​រារាំង​​ការហៅ​ចូល​នៅ​ក្នុង CUG"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"សមត្ថភាព​អ្នក​នាំ​សារ​មិន​ត្រូវបាន​​ផ្ដល់​សិទ្ធិ"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"សមត្ថភាព​អ្នក​នាំ​សារ​មិនអាច​ប្រើ​បាន​បច្ចុប្បន្ន​នេះ"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"សេវាកម្ម ឬ​ជម្រើស​មិន​អាច​ប្រើបាន មិន​បាន​បញ្ជាក់"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"សេវាកម្ម​អ្នក​ផ្ដល់​សារ​មិន​ត្រូវបាន​អនុវត្ត"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM ស្មើនឹង ឬ​ធំជាង ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"កន្លែង​ដែល​បាន​ស្នើ​មិន​បាន​អនុវត្ត"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"មាន​តែ​សមត្ថភាព​អ្នក​ផ្ដល់​សារ​ព័ត៌មាន​ឌីជីថល​ដែល​ដាក់​កំហិត​ប៉ុណ្ណោះ​អាច​ប្រើ​បាន"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"សេវាកម្ម ឬ​ជម្រើស​មិន​បាន​អនុវត្ត មិន​បាន​បញ្ជាក់"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"តម្លៃ​សម្គាល់​ប្រតិបត្តិការ​មិន​ត្រឹមត្រូវ"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"អ្នក​ប្រើប្រាស់​មិន​មែន​ជា​សមាជិក​នៃ CUG"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"ទិសដៅ​មិន​ត្រូវគ្នា"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"ការជ្រើសរើស​បណ្ដាញ​ឆ្លងកាត់​មិន​ត្រឹមត្រូវ"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"អត្ថន័យ​សារ​មិន​ត្រឹមត្រូវ"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"ព័ត៌មាន​ចាំបាច់​មិន​ត្រឹមត្រូវ"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"ប្រភេទ​សារ​មិន​មាន​ស្រាប់ ឬ​មិន​បាន​អនុវត្ត"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"ប្រភេទ​សារ​មិន​ត្រូវគ្នា​ជាមួយ​ស្ថានភាព​វិធី"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"ធាតុ​ព័ត៌មាន​មិន​មាន​ស្រាប់ ឬ​មិន​បាន​អនុវត្ត"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"បញ្ហា IE តាម​លក្ខខណ្ឌ"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"សារ​មិន​ត្រូវគ្នា​ជាមួយ​ស្ថានភាព​វិធី"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"ការសង្គ្រោះ​ហួស​ពេល​កំណត់"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"បញ្ហា​វិធី មិន​បាន​បញ្ជាក់"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"អន្តរ​ការងារ មិន​បាន​បញ្ជាក់"</string>
 </resources>

@@ -638,4 +638,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"ייתכן שיהיה צורך להגדיל את חבילת הגלישה באמצעות <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"הגדלת חבילת הגלישה"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ביטול"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"השיחה הסתיימה"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"הרדיו מושבת"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"‏אין כרטיס SIM או שגיאת כרטיס SIM"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"הרשת הסלולרית אינה זמינה"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"המספר לא הוקצה"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"אין נתיב ליעד"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"הערוץ לא קביל"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"אין אישור של המפעיל"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"ניתוק שיחה רגיל"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"המשתמש תפוס"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"המשתמש לא ענה"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"התראת משתמש, אין תשובה"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"השיחה נדחתה"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"המספר השתנה"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"זכות קדימה"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"ניתוק משתמש שלא נבחר"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"היעד לא תקין"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"פורמט המספר לא חוקי (חסרות ספרות)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"המכשיר נדחה"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"תשובה לבירור סטטוס"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"רגיל, לא צוין"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"אין מעגל/ערוץ זמין"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"הרשת לא תקינה"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"שגיאה זמנית"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"עומס במכשיר המיתוג"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"הגישה למידע בוטלה"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"המעגל/הערוץ המבוקש לא זמין"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"המשאבים לא זמינים, לא צוין"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"איכות השירות לא זמינה"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"המכשיר המבוקש לא רשום"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"אי אפשר לבצע שיחות נכנסות בתוך קבוצת המשתמשים הסגורה"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"אין הרשאת גישה ליכולת הרשת"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"יכולת הרשת לא זמינה כרגע"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"השירות או האפשרות לא זמינים, לא צוין"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"שירות הרשת לא יושם"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"‏הערך של ACM שווה לערך של ACMmax או גדול ממנו"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"המכשיר המבוקש לא יושם"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"רק רשת עם מידע דיגיטלי מוגבל זמינה"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"השירות או האפשרות לא יושמו, לא צוין"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"ערך מזהה הפעולה לא חוקי"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"המשתמש לא חבר בקבוצת המשתמשים הסגורה"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"היעד לא תואם"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"רשת המעבר שנבחרה לא חוקית"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"ההודעה לא נכונה סמנטית"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"מידע חובה לא חוקי"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"סוג ההודעה לא קיים או לא יושם"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"סוג ההודעה לא תואם למצב הפרוטוקול"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"אלמנט המידע לא קיים או לא יושם"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"שגיאה באלמנט מידע מותנה"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"ההודעה לא תואמת למצב הפרוטוקול"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"פג הזמן לשחזור"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"שגיאת פרוטוקול, לא צוין"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"שגיאת קישור, לא צוין"</string>
 </resources>

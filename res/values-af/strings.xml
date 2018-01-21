@@ -240,6 +240,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Verbind met datadienste tydens swerwing"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Jy het dataverbinding verloor omdat jy wegbeweeg het van jou tuisnetwerk af sonder om dataswerwing weer aan te skakel."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Dit kan baie duur wees."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Bevestig met jou netwerkverskaffer vir prysberekening."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Laat dataswerwing toe?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Datagebruik"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruik <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -637,4 +638,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Jy sal dalk data deur <xliff:g id="PROVIDER_NAME">%s</xliff:g> moet byvoeg"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"VOEG DATA BY"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"KANSELLEER"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Oproep beëindig"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radio af"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Geen SIM-kaart nie of SIM-kaartfout"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobiele netwerk is nie beskikbaar nie"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Nommer nie toegeken nie"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Geen roete na bestemming nie"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanaal onaanvaarbaar"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operateur-bepaalde blokkering"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Normale oproep-skoonmaak"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Gebruiker besig"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Geen gebruiker reageer nie"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Gebruikerwaarskuwing, geen antwoord nie"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Oproep verwerp"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Nommer het verander"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Voorkoop"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Nie-geselekteerde gebruiker-skoonmaak"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Bestemming buite werking"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Ongeldige nommerformaat (onvolledige nommer)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Fasiliteit is afgekeur"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Antwoord op STATUSNAVRAE"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normaal, ongespesifiseer"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Geen verbinding/kanaal beskikbaar nie"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Netwerk buite werking"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Tydelike mislukking"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Kongestie met wisseling van toerusting"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Toegangsinligting weggegooi"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Versoekte verbinding/kanaal is nie beskikbaar nie"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Hulpbronne onbeskikbaar, ongespesifiseer"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Kwaliteit van diens is nie beskikbaar nie"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Versoekte fasiliteit nie ingeteken nie"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Inkomende oproepe binne die CUG versper"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Draervermoë nie gemagtig nie"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Draervermoë nie tans beskikbaar nie"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Diens of opsie nie beskikbaar nie, ongespesifiseer"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Draerdiens nie geïmplementeer nie"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM gelyk aan of meer as ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Versoekte fasiliteit nie geïmplementeer nie"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Slegs beperkte digitale inligting-draervermoë is beskikbaar"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Diens of opsie nie geïmplementeer nie, ongespesifiseer"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Ongeldige transaksie-idenfiseerderwaarde"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Gebruiker nie lid van CUG nie"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Onversoenbare bestemming"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Ongeldige deurgangsnetwerk-seleksie"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Boodskap is semanties verkeerd"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Ongeldige verpligte inligting"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Boodskaptipe bestaan nie of nie geïmplementeer nie"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Boodskaptipe werk nie met protokolstaat nie"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Inligtingselement bestaan nie of nie geïmplementeer nie"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Voorwaardelike IE-fout"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Boodskap werk nie met protokolstaat nie"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Herstel op tydhouerverval"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokolfout, ongespesifiseer"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Interwerkend, ongespesifiseer"</string>
 </resources>
