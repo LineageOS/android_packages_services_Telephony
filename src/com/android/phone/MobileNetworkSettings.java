@@ -155,15 +155,17 @@ public class MobileNetworkSettings extends Activity  {
                 SubscriptionManager.from(context).getActiveSubscriptionInfoList();
         // Check all active subscriptions. We only hide the button if it's disabled for all
         // active subscriptions.
-        for (SubscriptionInfo subInfo : sil) {
-            ImsManager imsManager = ImsManager.getInstance(context, subInfo.getSimSlotIndex());
-            PersistableBundle carrierConfig = PhoneGlobals.getInstance()
-                    .getCarrierConfigForSubId(subInfo.getSubscriptionId());
-            if ((imsManager.isVolteEnabledByPlatform()
-                    && imsManager.isVolteProvisionedOnDevice())
-                    || carrierConfig.getBoolean(
-                    CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL)) {
-                return false;
+        if (sil != null) {
+            for (SubscriptionInfo subInfo : sil) {
+                ImsManager imsManager = ImsManager.getInstance(context, subInfo.getSimSlotIndex());
+                PersistableBundle carrierConfig = PhoneGlobals.getInstance()
+                        .getCarrierConfigForSubId(subInfo.getSubscriptionId());
+                if ((imsManager.isVolteEnabledByPlatform()
+                        && imsManager.isVolteProvisionedOnDevice())
+                        || carrierConfig.getBoolean(
+                        CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL)) {
+                    return false;
+                }
             }
         }
 
