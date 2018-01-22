@@ -7,7 +7,11 @@ include $(CLEAR_VARS)
 phone_common_dir := ../../apps/PhoneCommon
 
 src_dirs := src $(phone_common_dir)/src sip/src
-res_dirs := res $(phone_common_dir)/res sip/res
+res_dirs := res \
+    $(phone_common_dir)/res \
+    sip/res \
+    src/com/android/phone/assisteddialing/res \
+    src/com/android/phone/settings/assisteddialing/res
 
 LOCAL_JAVA_LIBRARIES := \
         telephony-common \
@@ -35,7 +39,9 @@ LOCAL_USE_AAPT2 := true
 
 LOCAL_AAPT_FLAGS := \
     --extra-packages com.android.phone.common \
-    --extra-packages com.android.services.telephony.sip
+    --extra-packages com.android.services.telephony.sip \
+    --extra-packages com.android.phone.assisteddialing \
+    --extra-packages com.android.phone.settings.assisteddialing
 
 LOCAL_PACKAGE_NAME := TeleService
 
