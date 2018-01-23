@@ -27,8 +27,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.android.ims.ImsReasonInfo;
+import android.telephony.ims.ImsReasonInfo;
 
 import java.util.Map;
 
