@@ -1169,6 +1169,11 @@
     <string name="hac_mode_title">Hearing aids</string>
     <string name="hac_mode_summary">Turn on hearing aid compatibility</string>
 
+    <!-- RTT settings: used to turn on/off Real-Time Text, an accessibility feature similar to
+         TTY that allows users to send text over a phone call. -->
+    <string name="rtt_mode_title">RTT</string>
+    <string name="rtt_mode_summary">Turn RTT on or off</string>
+
     <!-- Service option entries.  -->
     <string-array name="tty_mode_entries">
         <item>TTY Off</item>

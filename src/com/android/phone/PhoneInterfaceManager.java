@@ -3269,6 +3269,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return mPhone.getContext().getResources().getBoolean(R.bool.hac_enabled);
     }
 
+    public boolean isRttSupported() {
+        boolean isCarrierSupported =
+                mApp.getCarrierConfig().getBoolean(CarrierConfigManager.KEY_RTT_SUPPORTED_BOOL);
+        boolean isDeviceSupported =
+                mPhone.getContext().getResources().getBoolean(R.bool.config_support_rtt);
+        return isCarrierSupported && isDeviceSupported;
+    }
+
     /**
      * Returns the unique device ID of phone, for example, the IMEI for
      * GSM and the MEID for CDMA phones. Return null if device ID is not available.
