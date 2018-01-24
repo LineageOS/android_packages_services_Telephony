@@ -67,7 +67,6 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyHistogram;
 import android.telephony.TelephonyManager;
-import android.telephony.UiccSlotInfo;
 import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
 import android.text.TextUtils;
@@ -107,7 +106,6 @@ import com.android.internal.telephony.uicc.SIMRecords;
 import com.android.internal.telephony.uicc.UiccCard;
 import com.android.internal.telephony.uicc.UiccCardApplication;
 import com.android.internal.telephony.uicc.UiccController;
-import com.android.internal.telephony.uicc.UiccSlot;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
 import com.android.internal.util.HexDump;
 import com.android.phone.vvm.PhoneAccountHandleConverter;
@@ -180,8 +178,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int CMD_HANDLE_USSD_REQUEST = 47;
     private static final int CMD_GET_FORBIDDEN_PLMNS = 48;
     private static final int EVENT_GET_FORBIDDEN_PLMNS_DONE = 49;
-    private static final int CMD_SWITCH_SLOTS = 50;
-    private static final int EVENT_SWITCH_SLOTS_DONE = 51;
 
     /** The singleton instance. */
     private static PhoneInterfaceManager sInstance;
@@ -942,22 +938,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     onCompleted = obtainMessage(EVENT_GET_FORBIDDEN_PLMNS_DONE, request);
                     ((SIMRecords) uiccApp.getIccRecords()).getForbiddenPlmns(
                               onCompleted);
-                    break;
-
-                case CMD_SWITCH_SLOTS:
-                    request = (MainThreadRequest) msg.obj;
-                    int[] physicalSlots = (int[]) request.argument;
-                    onCompleted = obtainMessage(EVENT_SWITCH_SLOTS_DONE, request);
-                    UiccController.getInstance().switchSlots(physicalSlots, onCompleted);
-                    break;
-
-                case EVENT_SWITCH_SLOTS_DONE:
-                    ar = (AsyncResult) msg.obj;
-                    request = (MainThreadRequest) ar.userObj;
-                    request.result = (ar.exception == null);
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
                     break;
 
                 default:
@@ -3967,47 +3947,5 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         return p.getSignalStrength();
-    }
-
-    @Override
-    public UiccSlotInfo[] getUiccSlotsInfo() {
-        enforceReadPrivilegedPermission();
-
-        UiccSlot[] slots = UiccController.getInstance().getUiccSlots();
-        if (slots == null) return null;
-        UiccSlotInfo[] infos = new UiccSlotInfo[slots.length];
-        for (int i = 0; i < slots.length; i++) {
-            UiccSlot slot = slots[i];
-
-            String cardId = UiccController.getInstance().getUiccCard(i).getCardId();
-
-            int cardState = 0;
-            switch (slot.getCardState()) {
-                case CARDSTATE_ABSENT:
-                    cardState = UiccSlotInfo.CARD_STATE_INFO_ABSENT;
-                    break;
-                case CARDSTATE_PRESENT:
-                    cardState = UiccSlotInfo.CARD_STATE_INFO_PRESENT;
-                    break;
-                case CARDSTATE_ERROR:
-                    cardState = UiccSlotInfo.CARD_STATE_INFO_ERROR;
-                    break;
-                case CARDSTATE_RESTRICTED:
-                    cardState = UiccSlotInfo.CARD_STATE_INFO_RESTRICTED;
-                    break;
-                default:
-                    break;
-
-            }
-
-            infos[i] = new UiccSlotInfo(slot.isActive(), slot.isEuicc(), cardId, cardState);
-        }
-        return infos;
-    }
-
-    @Override
-    public boolean switchSlots(int[] physicalSlots) {
-        enforceModifyPermission();
-        return (Boolean) sendRequest(CMD_SWITCH_SLOTS, physicalSlots);
     }
 }
