@@ -635,7 +635,7 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"YOQISH"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"BEKOR QILISH"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Chaqiruv yakunlandi"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Antena o‘chiq"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Antenna o‘chiq"</string>
     <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM karta o‘rnatilmagan yoki uni o‘qishda xatolik yuz berdi"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Uyali aloqa tarmog‘idan foydalanib bo‘lmaydi"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Tayinlanmagan raqam"</string>
@@ -675,13 +675,13 @@
     <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Xizmat yoki parametr qo‘llab-quvvatlanmaydi"</string>
     <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"O‘tkazma identifikatorining qiymati xato"</string>
     <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Abonent yopiq guruh ishtirokchisi emas"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Maqsadli qurilma mos kelmaydi"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Natijaviy qurilma mos kelmaydi"</string>
     <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Bunday tranzit tarmog‘ini tanlab bo‘lmaydi"</string>
     <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Xabar semantik jihatdan xato"</string>
     <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Majburiy axborot xato"</string>
     <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Xabar turi mavjud emas yoki qo‘llab-quvvatlanmaydi"</string>
     <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Xabar turi protokol holatiga mos emas"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Axborotli element mavjud emas yoki qo‘llab-quvvatlanmaydi"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Axborot elementi mavjud emas yoki qo‘llab-quvvatlanmaydi"</string>
     <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"IE shartli xatosi"</string>
     <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Xabar protokol holatiga mos emas"</string>
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Taymer vaqti tugashi bilan uni yangidan ishga tushirish"</string>

@@ -636,7 +636,7 @@
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"MÉGSE"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"A hívás befejeződött"</string>
     <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Rádió kikapcsolva"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Nincs SIM-kártya vagy SIM-kártyahiba"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Nincs SIM-kártya, vagy SIM-kártyahiba"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"A mobilhálózat nem érhető el"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Nem hozzárendelt (nem kiosztott) szám"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Nincs a célhoz vezető útvonal"</string>
@@ -665,23 +665,23 @@
     <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"A szolgáltatásminőség nem érhető el"</string>
     <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"A kért szolgáltatás nincs előfizetve"</string>
     <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Bejövő hívások kizárva a zárt felhasználói csoporton belül"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Nincs hitelesítve hordozószolgáltató"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Nincs engedélyezve hordozószolgáltató"</string>
     <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Jelenleg nincs elérhető hordozószolgáltató"</string>
     <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Nem elérhető szolgáltatás vagy opció, nincs megadva"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Nincs implementálva hordozószolgáltató"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"Az ACM értéke egyenlő vagy nagyobb az ACMmax értékénél"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"A kért szolgáltatás nincs bevezetve"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Nincs megvalósítva hordozószolgáltató"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"Az ACM értéke egyenlő az ACMmax értékével, vagy nagyobb annál"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"A kért szolgáltatás nincs megvalósítva"</string>
     <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Csak korlátozott digitális információhordozó-képesség érhető el"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Nem bevezetett szolgáltatás vagy opció, nincs megadva"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Nem megvalósított szolgáltatás vagy opció, nincs megadva"</string>
     <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Érvénytelen tranzakcióazonosító-érték"</string>
     <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"A felhasználó nem tagja a zárt felhasználói csoportnak"</string>
     <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Nem kompatibilis cél"</string>
     <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Érvénytelen átmenő hálózat lett kiválasztva"</string>
     <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Szemantikailag hibás üzenet"</string>
     <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Érvénytelen kötelező információ"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Nem létező vagy nem bevezetett üzenettípus"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Nem létező vagy nem megvalósított üzenettípus"</string>
     <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Az üzenettípus nem kompatibilis a protokollállapottal"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Nem létező vagy nem bevezetett információ-összetevő"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Nem létező vagy nem megvalósított információelem"</string>
     <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Feltételes IE-hiba"</string>
     <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Az üzenet nem kompatibilis a protokoll állapotával"</string>
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Időzített visszaállítás lejárata"</string>
