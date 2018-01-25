@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Mobilni podaci"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Prijenos podataka na mobilnoj mreži"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefonske usluge"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Hitno biranje"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefon"</string>
@@ -218,7 +218,7 @@
     <string name="roaming" msgid="7894878421600247140">"Roming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Povezivanje na usluge prijenosa podataka u romingu"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Povezivanje na usluge prijenosa podataka u romingu"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Izgubili ste podatkovnu vezu jer ste napustili matičnu mrežu dok je roming podataka isključen."</string>
+    <string name="roaming_reenable_message" msgid="8913735676127858115">"Izgubili ste vezu za prijenos podataka jer ste napustili matičnu mrežu dok je roming podataka isključen."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Može dovesti do značajnih troškova."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Dozvoliti roming podataka?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Prijenos podataka"</string>
@@ -227,12 +227,12 @@
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operater"</string>
     <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"mobilni operater, esim, sim, euicc"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobilni podaci"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Prijenos podataka na mobilnoj mreži"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Pristup prijenosu podataka mobilnom mrežom"</string>
-    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Isključiti prijenos mobilnih podataka?"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Isključiti prijenos podataka na mobilnoj mreži?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Potreban izbor"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Promijeniti podatkovni SIM?"</string>
-    <string name="sim_change_data_message" msgid="2163963581444907496">"Koristiti SIM karticu <xliff:g id="NEW_SIM">%1$s</xliff:g> umjesto SIM kartice <xliff:g id="OLD_SIM">%2$s</xliff:g> za prijenos mobilnih podataka?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"Koristiti SIM karticu <xliff:g id="NEW_SIM">%1$s</xliff:g> umjesto SIM kartice <xliff:g id="OLD_SIM">%2$s</xliff:g> za prijenos podataka na mobilnoj mreži?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi pozivanje"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Operater video pozivanja"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS opcije"</string>
@@ -540,11 +540,11 @@
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Aktiviran način rada za hitni povratni poziv"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Način rada za hitni povratni poziv"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Podatkovna veza je onemogućena"</string>
-    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Nema podatkovne veze do <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Nema veze za prijenos podataka do <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="one">Telefon će biti u Načinu rada za hitni povratni poziv <xliff:g id="COUNT_1">%s</xliff:g> minutu. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste podatkovnu vezu. Želite li izaći iz ovog načina rada sada?</item>
-      <item quantity="few">Telefon će biti u Načinu rada za hitni povratni poziv u <xliff:g id="COUNT_1">%s</xliff:g> minute. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste podatkovnu vezu. Želite li izaći iz ovog načina rada sada?</item>
-      <item quantity="other">Telefon će biti u Načinu rada za hitni povratni poziv <xliff:g id="COUNT_1">%s</xliff:g> minuta. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste podatkovnu vezu. Želite li izaći iz ovog načina rada sada?</item>
+      <item quantity="one">Telefon će biti u Načinu rada za hitni povratni poziv <xliff:g id="COUNT_1">%s</xliff:g> minutu. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste vezu za prijenos podataka. Želite li izaći iz ovog načina rada sada?</item>
+      <item quantity="few">Telefon će biti u Načinu rada za hitni povratni poziv u <xliff:g id="COUNT_1">%s</xliff:g> minute. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste vezu za prijenos podataka. Želite li izaći iz ovog načina rada sada?</item>
+      <item quantity="other">Telefon će biti u Načinu rada za hitni povratni poziv <xliff:g id="COUNT_1">%s</xliff:g> minuta. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste vezu za prijenos podataka. Želite li izaći iz ovog načina rada sada?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
       <item quantity="one">Odabrana radnja nije dostupna u načinu rada za hitni povratni poziv. Telefon će biti u ovom načinu rada <xliff:g id="COUNT_1">%s</xliff:g> minutu. Želite li izaći iz ovog načina rada sada?</item>
@@ -585,7 +585,7 @@
     <string name="message_decode_error" msgid="3456481534066924855">"Došlo je do greške prilikom dekodiranja poruke."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM kartica je aktivirala vašu uslugu i ažurirala mogućnosti rominga za telefon."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Previše aktivnih poziva. Prekinite ili spojite postojeće pozive prije upućivanja novog poziva."</string>
-    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Povezivanje nije moguće, umetnite važeću SIM karticu."</string>
+    <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Povezivanje nije uspjelo, umetnite važeću SIM karticu."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi veza je prekinuta. Poziv je završen."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Upućivanje videopoziva nije moguće zbog istrošenosti baterije."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Videopoziv je završen zbog istrošenosti baterije."</string>
@@ -607,10 +607,10 @@
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Trenutno u romingu, plan za podatke je aktivan"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Nema preostalih mobilnih podataka"</string>
     <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Nema preostalih mobilnih podataka"</string>
-    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Dodajte mobilne podatke pomoću pružaoca usluga <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Dodajte podatke za prijenos na mobilnoj mreži putem operatera <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Nema plana za roming"</string>
     <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Dodajte plan za roming pomoću pružaoca usluga <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Možete dodati mobilne podatke ili plan za roming pomoću operatera, <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Možete dodati podatke za prijenos na mobilnoj mreži ili plan za roming pomoću operatera, <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
     <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Dodati podatke?"</string>
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Možda ćete morati dodati podatke preko pružaoca usluga <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"DODAJTE PODATKE"</string>
