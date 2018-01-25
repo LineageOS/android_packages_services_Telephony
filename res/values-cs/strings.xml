@@ -34,7 +34,7 @@
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Reproduktor"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Sluchátko"</string>
-    <string name="audio_mode_wired_headset" msgid="1465350758489175975">"Kabelová náhlavní soupr."</string>
+    <string name="audio_mode_wired_headset" msgid="1465350758489175975">"Kabelová sluchátka"</string>
     <string name="audio_mode_bluetooth" msgid="3047641300848211128">"Bluetooth"</string>
     <string name="wait_prompt_str" msgid="7601815427707856238">"Odeslat následující tóny?\n"</string>
     <string name="pause_prompt_str" msgid="1789964702154314806">"Odesílání tónů\n"</string>

@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Mobilni podaci"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="1107073389495104784">"Prijenos podataka na mobilnoj mreži"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefonske usluge"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Hitno biranje"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefon"</string>
@@ -216,7 +216,7 @@
     <string name="roaming" msgid="8871412572928323707">"Roming podataka"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Povezivanje na usluge prijenosa podataka u romingu"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Povezivanje na usluge prijenosa podataka u romingu"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Izgubili ste podatkovnu vezu jer ste napustili matičnu mrežu dok je roming podataka isključen."</string>
+    <string name="roaming_reenable_message" msgid="8913735676127858115">"Izgubili ste vezu za prijenos podataka jer ste napustili matičnu mrežu dok je roming podataka isključen."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Može dovesti do značajnih troškova."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Dozvoliti roming podataka?"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS opcije"</string>
@@ -525,14 +525,14 @@
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Način rada za hitni povratni poziv"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Podatkovna veza je onemogućena"</string>
     <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
-      <item quantity="one">Nema podatkovne veze <xliff:g id="COUNT_1">%s</xliff:g> minutu</item>
-      <item quantity="few">Nema podatkovne veze <xliff:g id="COUNT_1">%s</xliff:g> minute</item>
-      <item quantity="other">Nema podatkovne veze <xliff:g id="COUNT_1">%s</xliff:g> minuta</item>
+      <item quantity="one">Nema veze za prijenos podataka <xliff:g id="COUNT_1">%s</xliff:g> minutu</item>
+      <item quantity="few">Nema veze za prijenos podataka <xliff:g id="COUNT_1">%s</xliff:g> minute</item>
+      <item quantity="other">Nema veze za prijenos podataka <xliff:g id="COUNT_1">%s</xliff:g> minuta</item>
     </plurals>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="one">Telefon će biti u Načinu rada za hitni povratni poziv <xliff:g id="COUNT_1">%s</xliff:g> minutu. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste podatkovnu vezu. Želite li izaći iz ovog načina rada sada?</item>
-      <item quantity="few">Telefon će biti u Načinu rada za hitni povratni poziv u <xliff:g id="COUNT_1">%s</xliff:g> minute. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste podatkovnu vezu. Želite li izaći iz ovog načina rada sada?</item>
-      <item quantity="other">Telefon će biti u Načinu rada za hitni povratni poziv <xliff:g id="COUNT_1">%s</xliff:g> minuta. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste podatkovnu vezu. Želite li izaći iz ovog načina rada sada?</item>
+      <item quantity="one">Telefon će biti u Načinu rada za hitni povratni poziv <xliff:g id="COUNT_1">%s</xliff:g> minutu. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste vezu za prijenos podataka. Želite li izaći iz ovog načina rada sada?</item>
+      <item quantity="few">Telefon će biti u Načinu rada za hitni povratni poziv u <xliff:g id="COUNT_1">%s</xliff:g> minute. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste vezu za prijenos podataka. Želite li izaći iz ovog načina rada sada?</item>
+      <item quantity="other">Telefon će biti u Načinu rada za hitni povratni poziv <xliff:g id="COUNT_1">%s</xliff:g> minuta. Dok se nalazi u ovom načinu rada, ne mogu se upotrebljavati aplikacije koje koriste vezu za prijenos podataka. Želite li izaći iz ovog načina rada sada?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
       <item quantity="one">Odabrana radnja nije dostupna u načinu rada za hitni povratni poziv. Telefon će biti u ovom načinu rada <xliff:g id="COUNT_1">%s</xliff:g> minutu. Želite li izaći iz ovog načina rada sada?</item>

@@ -243,9 +243,9 @@
     <string name="enable_disable_administrative" msgid="6501582322182059412">"व्यवस्थापकीय"</string>
     <string name="administrative_enable" msgid="1750086122962032235">"व्यवस्थापकीय सक्षम किया गया"</string>
     <string name="administrative_disable" msgid="8433273857248698539">"व्यवस्थापकीय अक्षम किया गया"</string>
-    <string name="enable_disable_maintenance" msgid="1819693083025106678">"रखरखाव"</string>
-    <string name="maintenance_enable" msgid="8566636458770971189">"रखरखाव सक्षम किया गया"</string>
-    <string name="maintenance_disable" msgid="7340189100885066077">"रखरखाव अक्षम किया गया"</string>
+    <string name="enable_disable_maintenance" msgid="1819693083025106678">"रख-रखाव"</string>
+    <string name="maintenance_enable" msgid="8566636458770971189">"रख-रखाव सक्षम किया गया"</string>
+    <string name="maintenance_disable" msgid="7340189100885066077">"रख-रखाव अक्षम किया गया"</string>
     <string name="general_news_settings" msgid="4968779723948432978">"सामान्य समाचार"</string>
     <string name="bf_news_settings" msgid="3935593091894685267">"व्यवसाय और वित्तीय समाचार"</string>
     <string name="sports_news_settings" msgid="7649399631270052835">"खेल समाचार"</string>

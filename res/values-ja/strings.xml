@@ -99,7 +99,7 @@
     <string name="labelCFU" msgid="8147177368148660600">"常に転送"</string>
     <string name="messageCFU" msgid="3560082430662923687">"常にこの番号を使用"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"電話をすべて転送する"</string>
-    <string name="sum_cfu_enabled" msgid="2450052502198827927">"電話をすべて<xliff:g id="PHONENUMBER">{0}</xliff:g>￼に転送する"</string>
+    <string name="sum_cfu_enabled" msgid="2450052502198827927">"電話をすべて<xliff:g id="PHONENUMBER">{0}</xliff:g>に転送する"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"番号が利用できません"</string>
     <string name="sum_cfu_disabled" msgid="8384177689501334080">"OFF"</string>
     <string name="labelCFB" msgid="6139853033106283172">"通話中の着信時"</string>

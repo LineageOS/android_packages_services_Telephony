@@ -27,7 +27,7 @@
     <string name="onHold" msgid="9035493194749959955">"معلقة"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"‏بدأ رمز MMI"</string>
     <string name="ussdRunning" msgid="485588686340541690">"‏جارٍ تشغيل رمز USSD..."</string>
-    <string name="mmiCancelled" msgid="2771923949751842276">"‏تم إلغاء كود MMI"</string>
+    <string name="mmiCancelled" msgid="2771923949751842276">"‏تم إلغاء رمز MMI"</string>
     <string name="cancel" msgid="5044513931633602634">"إلغاء"</string>
     <string name="enter_input" msgid="1810529547726803893">"‏يجب أن تتراوح حروف رسالة USSD بين <xliff:g id="MIN_LEN">%d</xliff:g> و<xliff:g id="MAX_LEN">%d</xliff:g>. يُرجى إعادة المحاولة."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"إدارة مكالمة جماعية"</string>
@@ -144,7 +144,7 @@
     <string name="vm_change_failed" msgid="3352934863246208918">"تعذر تغيير رقم البريد الصوتي.\nيمكنك الاتصال بمشغل شبكة الجوال إذا استمرت هذه المشكلة في الظهور."</string>
     <string name="fw_change_failed" msgid="5298103228470214665">"تعذر تغيير رقم إعادة التوجيه.\nاتصل بمشغل شبكة الجوّال إذا استمرت هذه المشكلة في الظهور."</string>
     <string name="fw_get_in_vm_failed" msgid="8862896836093833973">"تتعذر عملية استعادة إعدادات إعادة توجيه الأرقام الحالية وحفظها.\nهل تريد الانتقال إلى الموزع الجديد على أي حال؟"</string>
-    <string name="no_change" msgid="3186040086622435212">"لم يتم إجراء أية تغييرات."</string>
+    <string name="no_change" msgid="3186040086622435212">"لم يتم إجراء أي تغييرات."</string>
     <string name="sum_voicemail_choose_provider" msgid="59911196126278922">"اختيار خدمة البريد الصوتي"</string>
     <string name="voicemail_default" msgid="2001233554889016880">"مشغل شبكة الجوّال"</string>
     <string name="vm_change_pin_old_pin" msgid="7295220109886682573">"رقم التعريف الشخصي القديم"</string>
@@ -384,7 +384,7 @@
     <string name="pin2_invalid" msgid="5470854099230755944">"‏لم يتم تحديث FDN لأنك كتبت رقم تعريف شخصي غير صحيح."</string>
     <string name="fdn_invalid_number" msgid="1494755047900009147">"‏لم يتم تحديث FDN لأن العدد لا يمكن أن يتجاوز 20 رقمًا."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"‏لم يتم تحديث FDN. رقم PIN2 غير صحيح، أو تم رفض رقم الهاتف."</string>
-    <string name="fdn_failed" msgid="540018079008319747">"‏أخفقت عملية FDN!"</string>
+    <string name="fdn_failed" msgid="540018079008319747">"‏تعذّر إتمام عملية FDN!"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"‏جارٍ القراءة من شريحة SIM..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"‏ليس هناك جهات اتصال على شريحة SIM."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"حدد جهات اتصال لاستيرادها"</string>
@@ -417,7 +417,7 @@
     <string name="invalidPuk2" msgid="7059081153334815973">"‏أدخل رمز PUK2 المكوّن من 8 أرقام."</string>
     <string name="pin2_changed" msgid="3724522579945610956">"‏تم تحديث رمز PIN2"</string>
     <string name="label_puk2_code" msgid="4688069961795341948">"‏أدخل رمز PUK2"</string>
-    <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"‏كلمة المرور غير صحيحة. أصبح PIN2 محظور الآن. لإعادة المحاولة، عليك تغيير PIN2."</string>
+    <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"‏كلمة المرور غير صحيحة. أصبح PIN2 محظور  الآن. لإعادة المحاولة، عليك تغيير PIN2."</string>
     <string name="puk2_requested" msgid="5831015200030161434">"‏كلمة المرور غير صحيحة. تم قفل شريحة SIM الآن. أدخل رمز PUK2."</string>
     <string name="puk2_blocked" msgid="3150263853077280049">"‏تم حظر PUK2 بشكل دائم."</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n"يتبقى لديك <xliff:g id="NUMBER">%d</xliff:g> من المحاولات."</string>
@@ -447,7 +447,7 @@
     <string name="incall_error_out_of_service" msgid="4100065333878929223">"شبكة الجوّال غير متاحة."</string>
     <string name="incall_error_out_of_service_wfc" msgid="323851839058697057">"شبكة الجوّال ليست متوفرة. اتصل بشبكة لاسلكية لإجراء مكالمة."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"لإجراء مكالمة، أدخل رقمًا صالحًا."</string>
-    <string name="incall_error_call_failed" msgid="5891978320269774095">"أخفقت المكالمة."</string>
+    <string name="incall_error_call_failed" msgid="5891978320269774095">"تعذّرت المكالمة."</string>
     <string name="incall_error_cannot_add_call" msgid="5206923515522412110">"لا يمكن إضافة مكالمة في الوقت الحالي."</string>
     <string name="incall_status_dialed_mmi" msgid="3672498861336189563">"‏جارٍ بدء تسلسل MMI..."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"الخدمة ليست متوفرة"</string>
