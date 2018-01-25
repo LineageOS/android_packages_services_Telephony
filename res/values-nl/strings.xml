@@ -218,9 +218,9 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Verbinding maken met gegevensservices tijdens roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Verbinding maken met gegevensservices tijdens roaming"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"De gegevensverbinding is verbroken, omdat je je thuisnetwerk hebt verlaten terwijl gegevensroaming was uitgeschakeld."</string>
+    <string name="roaming_reenable_message" msgid="8913735676127858115">"De gegevensverbinding is verbroken, omdat je je thuisnetwerk hebt verlaten terwijl dataroaming was uitgeschakeld."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Er kunnen hoge roamingkosten in rekening worden gebracht."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"Gegevensroaming toestaan?"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"Dataroaming toestaan?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Datagebruik"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruikt van <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Geavanceerd"</string>
@@ -247,7 +247,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"Maximum van <xliff:g id="USED_0">%1$s</xliff:g> overschreden\nGegevenssnelheid verlaagd tot <xliff:g id="USED_1">%2$d</xliff:g>  KB/s"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">" ٪<xliff:g id="USED_0">%1$d</xliff:g>van cyclus verstreken\nDe volgende periode start over <xliff:g id="USED_1">%2$d</xliff:g> dagen (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Gegevenssnelheid wordt verlaagd tot <xliff:g id="USED">%1$d</xliff:g>  KB/s als de limiet voor gegevensgebruik wordt overschreden"</string>
-    <string name="throttle_help_subtext" msgid="5217706521499010816">"Meer informatie over het beleid voor gegevensgebruik van je mobiele provider"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Meer informatie over het beleid voor datagebruik van je mobiele provider"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Infodienstbericht"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"SMS Infodienstbericht"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"SMS Infodienstbericht ingeschakeld"</string>

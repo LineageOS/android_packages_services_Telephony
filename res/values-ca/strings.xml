@@ -153,7 +153,7 @@
     <string name="vm_change_pin_progress_message" msgid="3977357361934350336">"Espera un moment."</string>
     <string name="vm_change_pin_error_too_short" msgid="5974971097302710497">"El PIN nou és massa curt."</string>
     <string name="vm_change_pin_error_too_long" msgid="8476870806115051865">"El PIN nou és massa llarg."</string>
-    <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"El PIN nou no és prou segur. Les contrasenyes segures no poden contenir seqüències contínues ni dígits repetits."</string>
+    <string name="vm_change_pin_error_too_weak" msgid="7883744811891784882">"El PIN nou no és prou segur. Les contrasenyes segures no poden contenir dígits repetits ni consecutius."</string>
     <string name="vm_change_pin_error_mismatch" msgid="2754685537970757317">"El PIN antic no coincideix."</string>
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"El PIN nou conté caràcters que no són vàlids."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"No es pot canviar el PIN"</string>
