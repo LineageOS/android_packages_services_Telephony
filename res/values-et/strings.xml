@@ -669,7 +669,7 @@
     <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Kandja võimekus pole praegu saadaval"</string>
     <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Teenus või valik pole saadaval, määramata"</string>
     <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Kandja teenust pole juurutatud"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM on võrdne või suurem kui ACMmax"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM on võrdne ACMmaxiga või sellest suurem"</string>
     <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Taotletud üksust pole juurutatud"</string>
     <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Saadaval on ainult piiratud digitaalse teabe kandja võimekus"</string>
     <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Teenust või valikut pole juurutatud, määramata"</string>

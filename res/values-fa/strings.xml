@@ -650,7 +650,7 @@
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"شماره تغییر کرده است"</string>
     <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"حق تقدم"</string>
     <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"پاک‌سازی کاربر انتخاب‌نشده"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"مقصد نادرست است"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"مقصد درست کار نمی‌کند"</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"قالب شماره نامعتبر (شماره سازگار نیست)"</string>
     <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"امکانات رد شد"</string>
     <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"پاسخ به درخواست وضعیت"</string>
@@ -658,7 +658,7 @@
     <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"مدار/کانالی در دسترس نیست"</string>
     <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"شبکه در دسترس نیست"</string>
     <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"خطای موقت"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"ترافیک تجهیزات سوئیچینگ"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"انسداد در تجهیزات سوئیچینگ"</string>
     <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"از دسترسی به اطلاعات صرف‌نظر شد"</string>
     <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"مدار/کانال درخواستی در دسترس نیست"</string>
     <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"منابع در دسترس نیستند، نامشخص"</string>

@@ -641,7 +641,7 @@
     <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Nambari ambayo haijakabidhiwa (haijateuliwa)"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Hakuna njia ya kufikia kifaa cha mpokeaji"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kituo kisichokubalika"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Mtoa huduma kubaini uzuiaji"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Uzuiaji unaobainishwa na mtoa huduma"</string>
     <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Ufutaji wa kawaida wa simu"</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Mtumiaji ana shughuli"</string>
     <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Hakuna mtumiaji anayejibu"</string>

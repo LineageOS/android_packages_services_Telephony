@@ -644,14 +644,14 @@
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Nema rute do odredišta"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanal nije prihvatljiv"</string>
     <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operater je odredio zabranu"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Odobrenje za normalan poziv"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Normalno brisanje poziva"</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Korisnik je zauzet"</string>
     <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Nijedan korisnik ne odgovara"</string>
     <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Korisnik je obavješten, nema odgovora"</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Poziv je odbijen"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Broj je promijenjen"</string>
     <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Pravo prvenstva"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Nijedan odabrani korisnik ne daje odobrenje"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Brisanje korisnika nije odabrano"</string>
     <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Odredište ne radi"</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Nevažeći format broja (nepotpun broj)"</string>
     <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Usluga je odbijena"</string>
@@ -667,13 +667,13 @@
     <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Kvalitet usluge nedostupan"</string>
     <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Nema pretplate na traženu uslugu"</string>
     <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Dolazni pozivi su zabranjeni u okviru CUG-a"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Mogućnost prijenosa nije odobrena"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Mogućnost prijenosa trenutno nije dostupna"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Kapacitet nosioca nije odobren"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Kapacitet nosioca trenutno nije dostupan"</string>
     <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Nije dostupna usluga ili opcija, neodređeno"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Usluga prijenosa nije implementirana"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Usluga nosioca nije implementirana"</string>
     <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"Vrijednost ACM je jednaka vrijednosti ACMmax ili veća"</string>
     <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Tražena usluga nije implementirana"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Dostupna je samo ograničena mogućnost prijenosa digitalnih informacija"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Dostupne su samo ograničene digitalne informacije o kapacitetu nosioca"</string>
     <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Nije implementirana usluga ili opcija, neodređeno"</string>
     <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Nevažeća vrijednost identifikatora transakcije"</string>
     <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Korisnik nije član CUG-a"</string>

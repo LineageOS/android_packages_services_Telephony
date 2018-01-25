@@ -644,11 +644,11 @@
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Мабільная сетка недаступная"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Непрызначаны нумар"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Не вызначаны маршрут накірунку"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Непрыймальны канал"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Непрымальны канал"</string>
     <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Забарона выкліку аператарам"</string>
     <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Ачыстка звычайнага выкліку"</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Абанент заняты"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Абсталяванне абнента не адказвае"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Абсталяванне абанента не адказвае"</string>
     <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Абвестка абанента, няма адказу"</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Выклік адхілены"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Нумар зменены"</string>
@@ -681,7 +681,7 @@
     <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Абанент не ўваходзіць у замкнёную абаненцкую групу"</string>
     <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Несумяшчальны накірунак"</string>
     <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Няправільны выбар транзітнай сеткі"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Сематычна недакладнае паведамленне"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Семантычна недакладнае паведамленне"</string>
     <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Няправільная абавязковая інфармацыя"</string>
     <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Тып паведамлення не існуе або не падтрымліваецца"</string>
     <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Тып паведамлення не сумяшчальны са станам пратакола"</string>

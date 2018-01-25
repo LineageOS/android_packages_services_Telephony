@@ -645,52 +645,52 @@
     <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"沒有 SIM 卡或 SIM 卡錯誤"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"無法使用行動網路"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"未指派 (未分配) 的號碼"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"沒有通往目標的路由"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"沒有通往受話方的路由"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"不接受的頻道"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"電信業者判定限制"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"一般通話清除功能"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"電信業者判定的限制"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"正在清除一般通話"</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"使用者忙線"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"沒有使用者回應"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"使用者提醒，沒有回應"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"使用者未回應"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"使用者響鈴中，沒有回應"</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"通話遭拒"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"號碼已變更"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"佔先"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"未選取使用者清除功能"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"目標發生錯誤"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"預防性措施"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"正在清除未選取的使用者"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"受話方無法正常運作"</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"數字格式無效 (數字不完整)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"設備遭拒"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"附加服務遭拒"</string>
     <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"針對「狀態查詢」的回應"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"一般，未指定"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"一般，原因不明"</string>
     <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"無法取得可用的電路/頻道"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"網路發生錯誤"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"網路無法正常運作"</string>
     <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"暫時失敗"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"切換設備壅塞"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"交換設備壅塞"</string>
     <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"已捨棄存取資訊"</string>
     <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"無法取得要求的電路/頻道"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"無法使用資源，未指定"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"無法使用資源，原因不明"</string>
     <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"無法提供服務品質"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"未訂閱要求的設備"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"未訂閱要求的附加服務"</string>
     <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"來電在 CUG 內遭禁"</string>
     <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"承載系統功能未獲授權"</string>
     <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"目前尚未提供承載系統功能"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"無法使用服務或選項，未指定"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"承載系統服務未執行"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"無法使用服務或選項，原因不明"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"承載系統服務未導入"</string>
     <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM 等於或大於 ACMmax"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"未執行要求的設備"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"要求的附加服務未導入"</string>
     <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"只能使用受限制的數位資訊承載系統功能"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"服務或選項未執行，未指定"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"服務或選項未導入，原因不明"</string>
     <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"交易 ID 值無效"</string>
     <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"使用者不是 CUG 成員"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"不相容的目標"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"不相容的受話方設定"</string>
     <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"轉接網路選項無效"</string>
     <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"語意不正確的訊息"</string>
     <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"必要資訊無效"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"訊息類型不存在或未執行"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"訊息類型不存在或未導入"</string>
     <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"訊息類型與通訊協定狀態不相容"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"資訊元素不存在或未執行"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"條件式 IE 失誤"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"資訊元素不存在或未導入"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"條件式 IE 錯誤"</string>
     <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"訊息與通訊協定狀態不相容"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"計時器到期復原"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"通訊協定錯誤，未指定"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"互通，未指定"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"在計時器到期時復原"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"通訊協定錯誤，原因不明"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"互通，原因不明"</string>
 </resources>

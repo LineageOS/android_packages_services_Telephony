@@ -670,12 +670,12 @@
     <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Baliabideak ez daude erabilgarri, zehaztugabea"</string>
     <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Zerbitzuaren kalitatea ez dago erabilgarri"</string>
     <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Eskatutako instalazioa ez dago harpidetuta"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Erabiltzaile-talde itxian deiak jasotzeko aukera debekatuta dago"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Erabiltzaile talde itxian deiak jasotzeko aukera debekatuta dago"</string>
     <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Jabearen gaitasuna ez da onartzen"</string>
     <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Jabearen gaitasuna ez dago erabilgarri une honetan"</string>
     <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Zerbitzua edo aukera ez dago erabilgarri, zehaztugabea"</string>
     <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Jabearen zerbitzua ez da ezarri"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM datuak ACMmax datuak baino handiagoak edo berdinak dira"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACMmax datuak baino handiagoak edo berdinak dira ACM datuak"</string>
     <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Eskatutako instalazioa ez da ezarri"</string>
     <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Jabeak informazio digital murrizturako gaitasuna soilik du erabilgarri"</string>
     <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Zerbitzua edo aukera ez da ezarri, zehaztugabea"</string>
