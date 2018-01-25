@@ -542,7 +542,7 @@
     <!-- Mobile network settings screen, name of the option to manage carrier profiles on devices which support embedded carrier profiles -->
     <string name="carrier_settings_euicc">Carrier</string>
     <!-- Keywords used to search the carrier menu for managing carrier profiles on devices which support embedded carrier profiles. eSIM/eUICC is embedded SIM card used to store this data.  -->
-    <string name="keywords_carrier_settings_euicc">carrier, esim, sim, euicc</string>
+    <string name="keywords_carrier_settings_euicc">carrier, esim, sim, euicc, switch carriers, add carrier</string>
     <!-- Mobile network settings screen, summary of the option to manage carrier profiles on devices which support embedded carrier profiles -->
     <string name="carrier_settings_euicc_summary"><xliff:g id="carrier_name">%1$s</xliff:g> &#8212; <xliff:g id="phone_number">%2$s</xliff:g></string>
     <!-- Mobile network settings screen, title of Mobile Data switch preference -->
