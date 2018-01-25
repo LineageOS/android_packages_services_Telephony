@@ -410,6 +410,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT |
                 Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND);
         SubscriptionManager.putPhoneIdAndSubIdExtra(intent, phoneId);
+        intent.putExtra(CarrierConfigManager.EXTRA_SLOT_INDEX, phoneId);
         ActivityManager.broadcastStickyIntent(intent, UserHandle.USER_ALL);
         mHasSentConfigChange[phoneId] = true;
     }
