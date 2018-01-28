@@ -21,13 +21,11 @@ import static com.google.common.truth.Truth.assertThat;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 /**
  * Unit Tests for CountryCodeProvider.
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest = Config.NONE)
 public class CountryCodeProviderTest {
 
     private final CountryCodeProvider mCountryCodeProvider = new CountryCodeProvider();
@@ -38,5 +36,4 @@ public class CountryCodeProviderTest {
             assertThat(mCountryCodeProvider.isSupportedCountryCode(country)).isTrue();
         }
     }
-
 }

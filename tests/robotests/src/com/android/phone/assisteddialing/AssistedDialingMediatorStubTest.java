@@ -16,28 +16,24 @@
 
 package com.android.phone.assisteddialing;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.content.Context;
 import android.telephony.TelephonyManager;
-
-import static com.google.common.truth.Truth.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 import org.robolectric.shadow.api.Shadow;
 import org.robolectric.shadows.ShadowTelephonyManager;
 
 import java.util.Optional;
+
 /**
  * Unit Tests for AssistedDialingMediator.
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(
-        manifest = Config.NONE,
-        shadows = {ShadowTelephonyManager.class}
-)
 public class AssistedDialingMediatorStubTest {
 
     private final TelephonyManager mTelephonyManager =
