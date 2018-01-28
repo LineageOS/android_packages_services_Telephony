@@ -634,110 +634,57 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> မှတစ်ဆင့် ဒေတာထည့်ရန် လိုအပ်ပါလိမ့်မည်"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ဒေတာ ထည့်ရန်"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"မလုပ်တော့"</string>
-    <!-- no translation found for clh_card_title_call_ended_txt (4072101334811753823) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_powerOff_txt (3773036949107147708) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_simError_txt (757650590524277969) -->
-    <skip />
-    <!-- no translation found for clh_incall_error_out_of_service_txt (3974373603657193827) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_unassigned_number_txt (7635996793232604064) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_no_route_to_destination_txt (8561586745288855167) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_channel_unacceptable_txt (8048626924246611459) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_operator_determined_barring_txt (6889705714244076823) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_normal_call_clearing_txt (2810975267106345820) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_user_busy_txt (2736095995784746915) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_no_user_responding_txt (1421543095873040084) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_user_alerting_txt (6606245970376797447) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_call_rejected_txt (8001665478195793223) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_number_changed_txt (5127909898925154242) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_pre_emption_txt (6864702416751338567) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_non_selected_user_clearing_txt (8725898326616836656) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_destination_out_of_order_txt (6626355413556362437) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_invalid_number_format_txt (6987646655639655370) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_facility_rejected_txt (4539787567476563415) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_response_to_STATUS_ENQUIRY_txt (178503536263624366) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_normal_unspecified_txt (2777574148560245427) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_no_circuit_available_txt (2894749820848784700) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_network_out_of_order_txt (807472585030492179) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_temporary_failure_txt (1985847623937655151) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_switching_equipment_congestion_txt (465517139462928431) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_access_information_discarded_txt (132851305339579892) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_requested_circuit_txt (2316345471851443847) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_resources_unavailable_unspecified_txt (4460267429142724322) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_quality_of_service_unavailable_txt (7315823047206338755) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_requested_facility_not_subscribed_txt (1688438372518949530) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_incoming_calls_barred_within_the_CUG_txt (3922231620226043342) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_bearer_capability_not_authorized_txt (6515594235334537340) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_bearer_capability_not_presently_available_txt (8013567156449692135) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_service_or_option_not_available_unspecified_txt (8663374141880847414) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_bearer_service_not_implemented_txt (2772484977847973583) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt (2192709279981159761) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_requested_facility_not_implemented_txt (406404292085779118) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt (4817899794531157207) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_service_or_option_not_implemented_unspecified_txt (2968655784896862505) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_invalid_transaction_identifier_value_txt (3843478518660918642) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_user_not_member_of_CUG_txt (8462852903153938988) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_incompatible_destination_txt (2580750652910253219) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_invalid_transit_network_selection_txt (6589916900457111005) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_semantically_incorrect_message_txt (2329284157442218683) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_invalid_mandatory_information_txt (9081556111928912676) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_message_type_non_existent_or_not_implemented_txt (2641350895896546715) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_message_type_not_compatible_with_protocol_state_txt (6598180735494982466) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_information_element_non_existent_or_not_implemented_txt (4725610801664706983) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_conditional_IE_error_txt (9140031076499566143) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_message_not_compatible_with_protocol_state_txt (6586005128633024271) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_recovery_on_timer_expiry_txt (3680765722923600294) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_protocol_Error_unspecified_txt (8294907817156524790) -->
-    <skip />
-    <!-- no translation found for clh_callFailed_interworking_unspecified_txt (8838850798491763729) -->
-    <skip />
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"ခေါ်ဆိုမှု ပြီးသွားပါပြီ"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"ရေဒီယို ပိတ်ထားသည်"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"ဆင်းမ်ကဒ် မရှိပါ (သို့) ဆင်းမ်ကဒ် အမှားအယွင်း"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"မိုဘိုင်း ကွန်ရက် မရှိပါ"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"သတ်မှတ်မထားသော (ပေးမထားသော) နံပါတ်"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"ဦးတည်ရာသို့ လမ်းကြောင်းမရှိပါ"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"ချန်နယ်ကို ခွင့်မပြုနိုင်ပါ"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"အော်ပရေတာ သတ်မှတ်ထားသော ပိတ်ပင်မှု"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"ပုံမှန်ခေါ်ဆိုမှု ရှင်းလင်းရေး"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"အသုံးပြုသူ လိုင်းမအားပါ"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"အသုံးပြုသူ တုံ့ပြန်ချက် မရှိပါ"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"အသုံးပြုသူ သတိပေးချက်၊ ဖြေကြားမှု မရှိပါ"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"ခေါ်ဆိုမှုကို ငြင်းပယ်လိုက်သည်"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"နံပါတ်ပြောင်းထားသည်"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"ကြိုတင် ဟန့်တားခြင်း"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"အသုံးပြုသူ ရှင်းလင်းမှု ရွေးချယ်မထားပါ"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"အထွက်ခေါ်ဆိုမှု အမှားအယွင်း"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"နံပါတ်ဖော်မက် မမှန်ကန်ပါ (မပြည့်စုံသောနံပါတ်)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"ပံ့ပိုးမှုကို ငြင်းပယ်လိုက်သည်"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"STATUS ENQUIRY သို့ ပြန်ကြားချက်"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"ပုံမှန်၊ သတ်မှတ်မထားပါ"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"ပတ်လမ်း၊ ချန်နယ် မရရှိနိုင်ပါ"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"ကွန်ရက် အမှားအယွင်း"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"ယာယီပြတ်တောက်မှု"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"ကိရိယာပြည့်ကျပ်မှု ပြောင်းလဲခြင်း"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"အသုံးပြုခွင့် အချက်အလက်များကို ဖယ်ပစ်လိုက်သည်"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"ပတ်လမ်း၊ ချန်နယ် တောင်းဆိုချက် မရရှိနိုင်ပါ"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"အရင်းအမြစ်များ မရရှိနိုင်ပါ၊ သတ်မှတ်မထားပါ"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"ဝန်ဆောင်မှု အရည်အသွေး မရရှိနိုင်ပါ"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"ပံပိုးမှုတောင်းဆိုချက်ကို စာရင်းသွင်းမထားပါ"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"CUG အတွင်း အဝင်ခေါ်ဆိုမှုများကို ပိတ်ပင်ထားသည်"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"ကိုင်ဆောင်သူ လုပ်ဆောင်ချက်ကို ခွင့်ပြုမထားပါ"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"လက်ရှိတွင် ကိုင်ဆောင်သူ လုပ်ဆောင်ချက်ကို မရရှိနိုင်ပါ"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"ဝန်ဆောင်မှု (သို့) ရွေးချယ်မှု မရရှိနိုင်ပါ၊ သတ်မှတ်မထားပါ"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"ကိုင်ဆောင်သူ ဝန်ဆောင်မှုကို ထည့်သွင်းမထားပါ"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM သည် ACMmax နှင့် ညီမျှပါသည် (သို့) ထက် ကြီးပါသည်"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"ပံ့ပိုးမှုတောင်းဆိုချက်ကို ဆောင်ရွက်မထားပါ"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"ကန့်သတ်ထားသော ဒစ်ဂျစ်တယ်အချက်အလက် ကိုင်ဆောင်သူ လုပ်ဆောင်ချက်ကိုသာလျှင် ရရှိနိုင်ပါသည်"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"ဝန်ဆောင်မှု (သို့) ရွေးချယ်မှု ဆောင်ရွက်မထားပါ၊ သတ်မှတ်မထားပါ"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"လွှဲပြောင်းမှုသတ်မှတ်သူ စံနှုန်း မမှန်ကန်ပါ"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"CUG အဖွဲ့ဝင်မဟုတ်သော အသုံးပြုသူ"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"အထွက်ဖုန်းခေါ်ဆိုမှု သဟဇာတ မဖြစ်ပါ"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"ဖြတ်သန်းသည့်ကွန်ရက်ရွေးချယ်မှု မမှန်ကန်ပါ"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"ဝေါဟာရအရင်းအမြစ်ဆိုင်ရာ မက်ဆေ့ဂျ် အမှား"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"ထည့်သွင်းရမည့်အချက်အလက် မမှန်ကန်ပါ"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"မက်ဆေ့ဂျ်အမျိုးအစား မရှိပါ (သို့) ဆောင်ရွက်မထားပါ"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"မက်ဆေ့ဂျ်အမျိုးအစားသည် ပရိုတိုကောအနေအထားနှင့် မကိုက်ညီပါ"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"အချက်အလက် မရှိပါ (သို့) ဆောင်ရွက်မထားပါ"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"အခြေအနေအရ IE အမှားအယွင်း"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"မက်ဆေ့ဂျ်သည် ပရိုတိုကောအနေအထားနှင့် မကိုက်ညီပါ"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"သတ်မှတ်ချိန်ကုန်ဆုံးပြီး ပြန်လည်ရယူမှုစတင်ခြင်း"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"ပရိုတိုကော အမှားအယွင်း၊ သတ်မှတ်မထားပါ"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"ဆက်နွယ်မှု၊ သတ်မှတ်မထားပါ"</string>
 </resources>

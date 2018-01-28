@@ -651,7 +651,7 @@
     <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Anticipación"</string>
     <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Non se seleccionou a acción de borrar o usuario"</string>
     <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Destino fóra de servizo"</string>
-    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"O formato de número non é válido (número incompleto)"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"O formato do número non é válido (número incompleto)"</string>
     <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Rexeitouse a instalación"</string>
     <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Resposta á CONSULTA DE ESTADO"</string>
     <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal, sen especificar"</string>
@@ -664,17 +664,17 @@
     <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Os recursos non están dispoñibles, sen especificar"</string>
     <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"A calidade do servizo non está dispoñible"</string>
     <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Non tes subscrición á instalación solicitada"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Prohibíronse as chamadas entrantes en CUG"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Prohibíronse as chamadas entrantes dentro do GCU"</string>
     <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"A capacidade do portador non está autorizada"</string>
     <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Actualmente a capacidade do portador non está dispoñible"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Non están dispoñibles o servicio nin a opción, sen especificar"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Non están dispoñibles o servizo nin a opción, sen especificar"</string>
     <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Non se implementou o servizo do portador"</string>
     <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"O valor de ACM é igual ou maior ao de ACMmax"</string>
     <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Non se implementou a instalación solicitada"</string>
     <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Só está dispoñible a capacidade do portador de información dixital restrinxida"</string>
     <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Non se implementou o servizo nin a opción, sen especificar"</string>
     <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"O valor do identificador da transacción non é válido"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"O usuario non é membro de CUG"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"O usuario non é membro do GCU"</string>
     <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"O destino non é compatible"</string>
     <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"A selección da rede de tránsito non é válida"</string>
     <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Mensaxe semanticamente incorrecta"</string>
