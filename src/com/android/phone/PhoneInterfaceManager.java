@@ -3474,20 +3474,50 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    private final ModemActivityInfo mLastModemActivityInfo =
+            new ModemActivityInfo(0, 0, 0, new int[0], 0, 0);
+
     /**
      * Responds to the ResultReceiver with the {@link android.telephony.ModemActivityInfo} object
      * representing the state of the modem.
      *
-     * NOTE: This clears the modem state, so there should only every be one caller.
+     * NOTE: The underlying implementation clears the modem state, so there should only ever be one
+     * caller to it. Everyone should call this class to get cumulative data.
      * @hide
      */
     @Override
     public void requestModemActivityInfo(ResultReceiver result) {
         enforceModifyPermission();
-
-        ModemActivityInfo info = (ModemActivityInfo) sendRequest(CMD_GET_MODEM_ACTIVITY_INFO, null);
+        ModemActivityInfo ret = null;
+        synchronized (mLastModemActivityInfo) {
+            ModemActivityInfo info = (ModemActivityInfo) sendRequest(CMD_GET_MODEM_ACTIVITY_INFO,
+                    null);
+            if (info != null) {
+                int[] mergedTxTimeMs = new int[ModemActivityInfo.TX_POWER_LEVELS];
+                for (int i = 0; i < mergedTxTimeMs.length; i++) {
+                    mergedTxTimeMs[i] =
+                            info.getTxTimeMillis()[i] + mLastModemActivityInfo.getTxTimeMillis()[i];
+                }
+                mLastModemActivityInfo.setTimestamp(info.getTimestamp());
+                mLastModemActivityInfo.setSleepTimeMillis(
+                        info.getSleepTimeMillis() + mLastModemActivityInfo.getSleepTimeMillis());
+                mLastModemActivityInfo.setIdleTimeMillis(
+                        info.getIdleTimeMillis() + mLastModemActivityInfo.getIdleTimeMillis());
+                mLastModemActivityInfo.setTxTimeMillis(mergedTxTimeMs);
+                mLastModemActivityInfo.setRxTimeMillis(
+                        info.getRxTimeMillis() + mLastModemActivityInfo.getRxTimeMillis());
+                mLastModemActivityInfo.setEnergyUsed(
+                        info.getEnergyUsed() + mLastModemActivityInfo.getEnergyUsed());
+            }
+            ret = new ModemActivityInfo(mLastModemActivityInfo.getTimestamp(),
+                    mLastModemActivityInfo.getSleepTimeMillis(),
+                    mLastModemActivityInfo.getIdleTimeMillis(),
+                    mLastModemActivityInfo.getTxTimeMillis(),
+                    mLastModemActivityInfo.getRxTimeMillis(),
+                    mLastModemActivityInfo.getEnergyUsed());
+        }
         Bundle bundle = new Bundle();
-        bundle.putParcelable(TelephonyManager.MODEM_ACTIVITY_RESULT_KEY, info);
+        bundle.putParcelable(TelephonyManager.MODEM_ACTIVITY_RESULT_KEY, ret);
         result.send(0, bundle);
     }
 
