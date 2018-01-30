@@ -202,7 +202,8 @@ public class PhoneGlobals extends ContextWrapper {
                         // The user won't be able to do anything else until
                         // they enter a valid SIM network PIN.
                         Log.i(LOG_TAG, "show sim depersonal panel");
-                        IccNetworkDepersonalizationPanel.showDialog();
+                        Phone phone = (Phone) ((AsyncResult) msg.obj).userObj;
+                        IccNetworkDepersonalizationPanel.showDialog(phone);
                     }
                     break;
 
