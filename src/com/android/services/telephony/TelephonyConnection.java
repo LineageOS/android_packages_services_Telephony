@@ -1811,7 +1811,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     @Override
     public void setHoldable(boolean isHoldable) {
         mIsHoldable = isHoldable;
-        buildConnectionCapabilities();
+        updateConnectionCapabilities();
     }
 
     @Override
