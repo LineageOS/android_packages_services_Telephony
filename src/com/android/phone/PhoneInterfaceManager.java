@@ -183,6 +183,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int CMD_SWITCH_SLOTS = 50;
     private static final int EVENT_SWITCH_SLOTS_DONE = 51;
 
+    // Parameters of select command.
+    private static final int SELECT_COMMAND = 0xA4;
+    private static final int SELECT_P1 = 0x04;
+    private static final int SELECT_P2 = 0;
+    private static final int SELECT_P3 = 0x10;
+
     /** The singleton instance. */
     private static PhoneInterfaceManager sInstance;
 
@@ -2419,9 +2425,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String iccTransmitApduBasicChannel(int subId, int cla, int command, int p1, int p2,
-                int p3, String data) {
+    public String iccTransmitApduBasicChannel(int subId, String callingPackage, int cla,
+            int command, int p1, int p2, int p3, String data) {
         enforceModifyPermissionOrCarrierPrivilege(subId);
+
+        if (command == SELECT_COMMAND && p1 == SELECT_P1 && p2 == SELECT_P2 && p3 == SELECT_P3
+                && TextUtils.equals(ISDR_AID, data)) {
+            // Only allows LPA to select ISD-R.
+            mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+            ComponentInfo bestComponent =
+                    EuiccConnector.findBestComponent(mPhone.getContext().getPackageManager());
+            if (bestComponent == null
+                    || !TextUtils.equals(callingPackage, bestComponent.packageName)) {
+                loge("The calling package is not allowed to select ISD-R.");
+                throw new SecurityException("The calling package is not allowed to select ISD-R.");
+            }
+        }
 
         if (DBG) {
             log("iccTransmitApduBasicChannel: subId=" + subId + " cla=" + cla + " cmd=" + command
