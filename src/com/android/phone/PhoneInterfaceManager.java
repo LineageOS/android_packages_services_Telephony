@@ -70,6 +70,10 @@ import android.telephony.TelephonyManager;
 import android.telephony.UiccSlotInfo;
 import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
+import android.telephony.ims.aidl.IImsConfig;
+import android.telephony.ims.aidl.IImsMmTelFeature;
+import android.telephony.ims.aidl.IImsRcsFeature;
+import android.telephony.ims.aidl.IImsRegistration;
 import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.Log;
@@ -77,9 +81,6 @@ import android.util.Pair;
 import android.util.Slog;
 
 import com.android.ims.ImsManager;
-import com.android.ims.internal.IImsMMTelFeature;
-import com.android.ims.internal.IImsRcsFeature;
-import com.android.ims.internal.IImsRegistration;
 import com.android.ims.internal.IImsServiceFeatureCallback;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
@@ -183,6 +184,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_GET_FORBIDDEN_PLMNS_DONE = 49;
     private static final int CMD_SWITCH_SLOTS = 50;
     private static final int EVENT_SWITCH_SLOTS_DONE = 51;
+
+    // Parameters of select command.
+    private static final int SELECT_COMMAND = 0xA4;
+    private static final int SELECT_P1 = 0x04;
+    private static final int SELECT_P2 = 0;
+    private static final int SELECT_P3 = 0x10;
 
     /** The singleton instance. */
     private static PhoneInterfaceManager sInstance;
@@ -2416,9 +2423,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String iccTransmitApduBasicChannel(int subId, int cla, int command, int p1, int p2,
-                int p3, String data) {
+    public String iccTransmitApduBasicChannel(int subId, String callingPackage, int cla,
+            int command, int p1, int p2, int p3, String data) {
         enforceModifyPermissionOrCarrierPrivilege(subId);
+
+        if (command == SELECT_COMMAND && p1 == SELECT_P1 && p2 == SELECT_P2 && p3 == SELECT_P3
+                && TextUtils.equals(ISDR_AID, data)) {
+            // Only allows LPA to select ISD-R.
+            mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+            ComponentInfo bestComponent =
+                    EuiccConnector.findBestComponent(mPhone.getContext().getPackageManager());
+            if (bestComponent == null
+                    || !TextUtils.equals(callingPackage, bestComponent.packageName)) {
+                loge("The calling package is not allowed to select ISD-R.");
+                throw new SecurityException("The calling package is not allowed to select ISD-R.");
+            }
+        }
 
         if (DBG) {
             log("iccTransmitApduBasicChannel: subId=" + subId + " cla=" + cla + " cmd=" + command
@@ -2593,26 +2613,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Returns the {@link IImsMMTelFeature} that corresponds to the given slot Id for the MMTel
-     * feature or {@link null} if the service is not available. If the feature is available, the
-     * {@link IImsServiceFeatureCallback} callback is registered as a listener for feature updates.
+     * Enables IMS for the framework. This will trigger IMS registration and ImsFeature capability
+     * status updates, if not already enabled.
      */
-    public IImsMMTelFeature getMMTelFeatureAndListen(int slotId,
-            IImsServiceFeatureCallback callback) {
+    public void enableIms(int slotId) {
         enforceModifyPermission();
-        return PhoneFactory.getImsResolver().getMMTelFeatureAndListen(slotId, callback);
+        PhoneFactory.getImsResolver().enableIms(slotId);
     }
 
     /**
-     * Returns the {@link IImsMMTelFeature} that corresponds to the given slot Id for the MMTel
-     * feature during emergency calling or {@link null} if the service is not available. If the
-     * feature is available, the {@link IImsServiceFeatureCallback} callback is registered as a
-     * listener for feature updates.
+     * Disables IMS for the framework. This will trigger IMS de-registration and trigger ImsFeature
+     * status updates to disabled.
      */
-    public IImsMMTelFeature getEmergencyMMTelFeatureAndListen(int slotId,
+    public void disableIms(int slotId) {
+        enforceModifyPermission();
+        PhoneFactory.getImsResolver().disableIms(slotId);
+    }
+
+    /**
+     * Returns the {@link IImsMmTelFeature} that corresponds to the given slot Id for the MMTel
+     * feature or {@link null} if the service is not available. If the feature is available, the
+     * {@link IImsServiceFeatureCallback} callback is registered as a listener for feature updates.
+     */
+    public IImsMmTelFeature getMmTelFeatureAndListen(int slotId,
             IImsServiceFeatureCallback callback) {
         enforceModifyPermission();
-        return PhoneFactory.getImsResolver().getEmergencyMMTelFeatureAndListen(slotId, callback);
+        return PhoneFactory.getImsResolver().getMmTelFeatureAndListen(slotId, callback);
     }
 
     /**
@@ -2633,6 +2659,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public IImsRegistration getImsRegistration(int slotId, int feature) throws RemoteException {
         enforceModifyPermission();
         return PhoneFactory.getImsResolver().getImsRegistration(slotId, feature);
+    }
+
+    /**
+     * Returns the {@link IImsConfig} structure associated with the slotId and feature
+     * specified.
+     */
+    public IImsConfig getImsConfig(int slotId, int feature) throws RemoteException {
+        enforceModifyPermission();
+        return PhoneFactory.getImsResolver().getImsConfig(slotId, feature);
     }
 
     public void setImsRegistrationState(boolean registered) {

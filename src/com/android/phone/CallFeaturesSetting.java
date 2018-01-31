@@ -352,7 +352,7 @@ public class CallFeaturesSetting extends PreferenceActivity
         }
 
         try {
-            if (mImsMgr.getImsServiceStatus() != ImsFeature.STATE_READY) {
+            if (mImsMgr.getImsServiceState() != ImsFeature.STATE_READY) {
                 log("Feature state not ready so remove vt and wfc settings for "
                         + " phone =" + mPhone.getPhoneId());
                 prefSet.removePreference(wifiCallingSettings);
