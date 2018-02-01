@@ -33,6 +33,7 @@ import android.telecom.StatusHints;
 import android.telecom.TelecomManager;
 import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
+import android.telephony.DisconnectCause;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsCallProfile;
@@ -442,6 +443,12 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             } else {
                 sendRttInitiationFailure(status);
             }
+        }
+
+        @Override
+        public void onDisconnect(int cause) {
+            Log.i(this, "onDisconnect: cause=%s", DisconnectCause.toString(cause));
+            mHandler.obtainMessage(MSG_DISCONNECT);
         }
     };
 
@@ -899,7 +906,6 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         getPhone().registerForHandoverStateChanged(
                 mHandler, MSG_HANDOVER_STATE_CHANGED, null);
         getPhone().registerForRingbackTone(mHandler, MSG_RINGBACK_TONE, null);
-        getPhone().registerForDisconnect(mHandler, MSG_DISCONNECT, null);
         getPhone().registerForSuppServiceNotification(mHandler, MSG_SUPP_SERVICE_NOTIFY, null);
         getPhone().registerForOnHoldTone(mHandler, MSG_ON_HOLD_TONE, null);
         getPhone().registerForInCallVoicePrivacyOn(mHandler, MSG_CDMA_VOICE_PRIVACY_ON, null);
@@ -1339,7 +1345,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             newState = mOriginalConnection.getState();
         }
         int cause = mOriginalConnection.getDisconnectCause();
-        Log.v(this, "Update state from %s to %s for %s", mConnectionState, newState, this);
+        Log.v(this, "Update state from %s to %s for %s", mConnectionState, newState,
+                getTelecomCallId());
 
         if (mConnectionState != newState) {
             mConnectionState = newState;
