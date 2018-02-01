@@ -383,6 +383,15 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="GsmUmtsCallBarringOptions"
+                android:label="@string/labelCallBarring"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:theme="@style/CallSettingsWithoutDividerTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="GsmUmtsAdditionalCallOptions"
                 android:label="@string/labelGSMMore"
                 android:configChanges="orientation|screenSize|keyboardHidden"

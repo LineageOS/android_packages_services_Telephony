@@ -304,4 +304,7 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <style name="CallSettingsWithoutDividerTheme" parent="SettingsLight">
+        <item name="android:listDivider">@null</item>
+    </style>
 </resources>
