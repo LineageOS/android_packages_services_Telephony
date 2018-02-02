@@ -227,6 +227,13 @@ final class TelecomAccountRegistry {
                         isHandoverFromSupported);
             }
 
+            final boolean isTelephonyAudioDeviceSupported = mContext.getResources().getBoolean(
+                    R.bool.config_support_telephony_audio_device);
+            if (isTelephonyAudioDeviceSupported && !isEmergency
+                    && isCarrierUseCallRecordingTone()) {
+                extras.putBoolean(PhoneAccount.EXTRA_PLAY_CALL_RECORDING_TONE, true);
+            }
+
             boolean isDeviceRttSupported = mContext.getResources().getBoolean(
                     R.bool.config_support_rtt);
             if (isDeviceRttSupported && isCarrierRttSupported()) {
@@ -441,6 +448,18 @@ final class TelecomAccountRegistry {
             PersistableBundle b =
                     PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
             return b.getBoolean(CarrierConfigManager.KEY_SHOW_PRECISE_FAILED_CAUSE_BOOL);
+        }
+
+        /**
+         * Determines from carrier config whether the carrier requires the use of a call recording
+         * tone.
+         *
+         * @return {@code true} if a call recording tone should be used, {@code false} otherwise.
+         */
+        private boolean isCarrierUseCallRecordingTone() {
+            PersistableBundle b =
+                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
+            return b.getBoolean(CarrierConfigManager.KEY_PLAY_CALL_RECORDING_TONE_BOOL);
         }
 
         /**
