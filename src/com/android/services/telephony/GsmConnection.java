@@ -81,12 +81,6 @@ final class GsmConnection extends TelephonyConnection {
             }
         }
 
-        // For GSM connections, CAPABILITY_CONFERENCE_HAS_NO_CHILDREN should be applied whenever
-        // PROPERTY_IS_DOWNGRADED_CONFERENCE is true.
-        if ((getConnectionProperties() & PROPERTY_IS_DOWNGRADED_CONFERENCE) != 0) {
-            capabilities |= CAPABILITY_CONFERENCE_HAS_NO_CHILDREN;
-        }
-
         return capabilities;
     }
 
