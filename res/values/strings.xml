@@ -1603,4 +1603,71 @@
     <string name="clh_callFailed_protocol_Error_unspecified_txt">Protocol error, unspecified</string>
     <!-- In-call screen: call failure reason (Cause Number 127) -->
     <string name="clh_callFailed_interworking_unspecified_txt">Interworking, unspecified</string>
+
+    <!-- Call settings screen, setting option name -->
+    <string name="labelCallBarring">Call barring</string>
+    <!-- Call barring settings screen, setting summary text when a call barring option is activated -->
+    <string name="sum_call_barring_enabled">On</string>
+    <!-- Call barring settings screen, setting summary text when a call barring option is deactivated -->
+    <string name="sum_call_barring_disabled">Off</string>
+    <!-- Call barring settings screen, setting option name -->
+    <string name="call_barring_baoc">All outgoing</string>
+    <!-- Call barring settings screen, Disable blocking of all outgoing calls -->
+    <string name="call_barring_baoc_enabled">Disable blocking of all outgoing calls?</string>
+    <!-- Call barring settings screen, Block all outgoing calls -->
+    <string name="call_barring_baoc_disabled">Block all outgoing calls?</string>
+    <!-- Call barring settings screen, setting option name -->
+    <string name="call_barring_baoic">Outgoing international</string>
+    <!-- Call barring settings screen, Disable blocking of outgoing international calls -->
+    <string name="call_barring_baoic_enabled">Disable blocking of outgoing international calls?</string>
+    <!-- Call barring settings screen, Block outgoing international calls-->
+    <string name="call_barring_baoic_disabled">Block outgoing international calls?</string>
+    <!-- Call barring settings screen, setting option name -->
+    <string name="call_barring_baoicr">Outgoing international roaming</string>
+    <!-- Call barring settings screen, Disable blocking of outgoing international roaming -->
+    <string name="call_barring_baoicr_enabled">Disable blocking of outgoing international roaming?</string>
+    <!-- Call barring settings screen, Block outgoing international roaming -->
+    <string name="call_barring_baoicr_disabled">Block outgoing international roaming?</string>
+    <!-- Call barring settings screen, setting option name -->
+    <string name="call_barring_baic">All incoming</string>
+    <!-- Call barring settings screen, Disable blocking of all incoming calls -->
+    <string name="call_barring_baic_enabled">Disable blocking of all incoming calls?</string>
+    <!-- Call barring settings screen, Block all incoming calls -->
+    <string name="call_barring_baic_disabled">Block all incoming calls?</string>
+    <!-- Call barring settings screen, setting option name -->
+    <string name="call_barring_baicr">Incoming international roaming</string>
+    <!-- Call barring settings screen, Disable blocking of all incoming international roaming -->
+    <string name="call_barring_baicr_enabled">Disable blocking of all incoming international roaming?</string>
+    <!-- Call barring settings screen, Block incoming international roaming-->
+    <string name="call_barring_baicr_disabled">Block incoming international roaming?</string>
+    <!-- Call barring settings screen, setting option name -->
+    <string name="call_barring_deactivate_all">Deactivate all</string>
+    <!-- Call barring settings screen, setting summary text when BAAll check box is selected -->
+    <string name="call_barring_deactivate_all_description">Deactivate all call barring settings</string>
+    <!-- Call barring settings screen, deactivate all successfully -->
+    <string name="call_barring_deactivate_success">Call barring deactivated</string>
+    <!-- Call barring settings screen, change password -->
+    <string name="call_barring_change_pwd">Change password</string>
+    <!-- Call barring settings screen, change password -->
+    <string name="call_barring_change_pwd_description">Change call barring password</string>
+    <!-- Call barring settings screen, not possible to change call barring password -->
+    <string name="call_barring_change_pwd_description_disabled">Cannot change call barring password.</string>
+    <!-- Call barring settings screen, change password -->
+    <string name="call_barring_pwd_not_match">Passwords do not match</string>
+    <!-- Call barring settings screen, change password -->
+    <string name="call_barring_right_pwd_number">Enter a password with 4 numbers</string>
+    <!-- Call barring settings screen, change password -->
+    <string name="call_barring_change_pwd_success">Password changed</string>
+    <!-- Call barring settings screen, change password -->
+    <string name="call_barring_old_pwd">Old password</string>
+    <!-- Call barring settings screen, change password -->
+    <string name="call_barring_new_pwd">New password</string>
+    <!-- Call barring settings screen, change password -->
+    <string name="call_barring_confirm_pwd">Confirm password</string>
+    <!-- Call forwarding dialog box, text field label -->
+    <string name="messageCallBarring">Enter password</string>
+    <!-- Call barring settings screen, section heading -->
+    <string name="call_barring_settings">Call barring settings</string>
+    <!-- Call barring settings screen, deactivate all call barring settings -->
+    <string name="call_barring_deactivate_all_no_password">Deactivate all call barring settings?</string>
 </resources>
