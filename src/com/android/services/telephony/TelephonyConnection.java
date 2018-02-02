@@ -1056,10 +1056,16 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 b != null && b.getBoolean(CarrierConfigManager.KEY_WIFI_CALLS_CAN_BE_HD_AUDIO);
         boolean canVideoCallsBeHdAudio =
                 b != null && b.getBoolean(CarrierConfigManager.KEY_VIDEO_CALLS_CAN_BE_HD_AUDIO);
+        boolean canGsmCdmaCallsBeHdAudio =
+                b != null && b.getBoolean(CarrierConfigManager.KEY_GSM_CDMA_CALLS_CAN_BE_HD_AUDIO);
         boolean shouldDisplayHdAudio =
                 b != null && b.getBoolean(CarrierConfigManager.KEY_DISPLAY_HD_AUDIO_PROPERTY_BOOL);
 
         if (!shouldDisplayHdAudio) {
+            return false;
+        }
+
+        if (isGsmCdmaConnection() && !canGsmCdmaCallsBeHdAudio) {
             return false;
         }
 
@@ -1724,6 +1730,25 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         com.android.internal.telephony.Connection originalConnection = getOriginalConnection();
         return originalConnection != null &&
                 originalConnection.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS;
+    }
+
+    /**
+     * Whether the original connection is an GSM/CDMA connection.
+     * @return {@code True} if the original connection is an GSM/CDMA connection, {@code false}
+     *     otherwise.
+     */
+    protected boolean isGsmCdmaConnection() {
+        Phone phone = getPhone();
+        if (phone != null) {
+            switch (phone.getPhoneType()) {
+                case PhoneConstants.PHONE_TYPE_GSM:
+                case PhoneConstants.PHONE_TYPE_CDMA:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+        return false;
     }
 
     /**
