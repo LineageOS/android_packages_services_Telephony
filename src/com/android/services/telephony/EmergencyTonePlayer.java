@@ -67,11 +67,7 @@ class EmergencyTonePlayer {
                 startVibrate();
                 break;
             case EMERGENCY_TONE_ALERT:
-                // Only start if we are not in silent mode.
-                int ringerMode = mAudioManager.getRingerMode();
-                if (ringerMode == AudioManager.RINGER_MODE_NORMAL) {
-                    startAlert();
-                }
+                startAlert();
                 break;
             case EMERGENCY_TONE_OFF:
                 // nothing;
