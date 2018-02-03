@@ -246,7 +246,7 @@
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata använt mellan <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avancerat"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operatör"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operatör, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"operatör, esim, sim, euicc, byt operatör, lägg till operatör"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobildata"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Få åtkomst till data via mobilt nätverk"</string>
@@ -426,7 +426,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Tar bort fast nummer…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Det fasta numret har tagits bort."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN uppdaterades inte eftersom du skrev en felaktig PIN-kod."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"Det fasta uppringningsnumret (FDN) uppdaterades inte eftersom det är tomt eller överskriver 20 siffror."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN uppdaterades inte eftersom numret översteg 20 siffror."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN uppdaterades inte. Antingen har du angivit fel PIN2, eller så avvisades telefonnumret."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Det gick inte att ringa till fast uppringningsnummer."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Läser från SIM-kort…"</string>
@@ -693,4 +693,70 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Återställning vid timerutgång"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokollfel, ej angivet"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Interworking, ej angiven"</string>
+    <!-- no translation found for labelCallBarring (3452870940716226978) -->
+    <skip />
+    <!-- no translation found for sum_call_barring_enabled (6804489690436703488) -->
+    <skip />
+    <!-- no translation found for sum_call_barring_disabled (5900772179198857783) -->
+    <skip />
+    <!-- no translation found for call_barring_baoc (1199843944333106035) -->
+    <skip />
+    <!-- no translation found for call_barring_baoc_enabled (8112118391869380361) -->
+    <skip />
+    <!-- no translation found for call_barring_baoc_disabled (7806697133004697974) -->
+    <skip />
+    <!-- no translation found for call_barring_baoic (3162154267825211826) -->
+    <skip />
+    <!-- no translation found for call_barring_baoic_enabled (2634377543147258105) -->
+    <skip />
+    <!-- no translation found for call_barring_baoic_disabled (5817895648306183464) -->
+    <skip />
+    <!-- no translation found for call_barring_baoicr (8951699885885742076) -->
+    <skip />
+    <!-- no translation found for call_barring_baoicr_enabled (2519630715322138317) -->
+    <skip />
+    <!-- no translation found for call_barring_baoicr_disabled (5831267468931377699) -->
+    <skip />
+    <!-- no translation found for call_barring_baic (5272726081458339912) -->
+    <skip />
+    <!-- no translation found for call_barring_baic_enabled (2457134916223203380) -->
+    <skip />
+    <!-- no translation found for call_barring_baic_disabled (6945604947500275636) -->
+    <skip />
+    <!-- no translation found for call_barring_baicr (5728784220691481693) -->
+    <skip />
+    <!-- no translation found for call_barring_baicr_enabled (6533336994391716127) -->
+    <skip />
+    <!-- no translation found for call_barring_baicr_disabled (6746329853943256566) -->
+    <skip />
+    <!-- no translation found for call_barring_deactivate_all (5269788384941003415) -->
+    <skip />
+    <!-- no translation found for call_barring_deactivate_all_description (4972365443287257704) -->
+    <skip />
+    <!-- no translation found for call_barring_deactivate_success (8014685598632000936) -->
+    <skip />
+    <!-- no translation found for call_barring_change_pwd (6887420609726284232) -->
+    <skip />
+    <!-- no translation found for call_barring_change_pwd_description (5505087790260233953) -->
+    <skip />
+    <!-- no translation found for call_barring_change_pwd_description_disabled (7630770327645349957) -->
+    <skip />
+    <!-- no translation found for call_barring_pwd_not_match (6716711689350314525) -->
+    <skip />
+    <!-- no translation found for call_barring_right_pwd_number (2902966502520410446) -->
+    <skip />
+    <!-- no translation found for call_barring_change_pwd_success (3278310763742760321) -->
+    <skip />
+    <!-- no translation found for call_barring_old_pwd (6080515987320238522) -->
+    <skip />
+    <!-- no translation found for call_barring_new_pwd (7048532299150269547) -->
+    <skip />
+    <!-- no translation found for call_barring_confirm_pwd (1947167278466285411) -->
+    <skip />
+    <!-- no translation found for messageCallBarring (2412123220272136055) -->
+    <skip />
+    <!-- no translation found for call_barring_settings (80766145008623645) -->
+    <skip />
+    <!-- no translation found for call_barring_deactivate_all_no_password (920902774366557311) -->
+    <skip />
 </resources>
