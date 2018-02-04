@@ -155,6 +155,7 @@
     <!-- BIND_CARRIER_MESSAGING_SERVICE has been deprecated in favor of BIND_CARRIER_SERVICES. -->
     <uses-permission android:name="android.permission.BIND_CARRIER_MESSAGING_SERVICE" />
     <uses-permission android:name="com.android.permission.BIND_EUICC_SERVICE" />
+    <uses-permission android:name="com.android.permission.BIND_TELEPHONY_NETWORK_SERVICE" />
     <uses-permission android:name="com.android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
@@ -677,5 +678,12 @@
         <service
             android:name="com.android.phone.vvm.RemoteVvmTaskManager"
             android:exported="false"/>
+
+        <service android:name="com.android.internal.telephony.CellularNetworkService"
+            android:permission="android.permission.BIND_TELEPHONY_NETWORK_SERVICE" >
+            <intent-filter>
+                <action android:name="android.telephony.NetworkService" />
+            </intent-filter>
+        </service>
     </application>
 </manifest>
