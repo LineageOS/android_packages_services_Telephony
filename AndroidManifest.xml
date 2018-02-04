@@ -182,6 +182,7 @@
     <uses-permission android:name="android.permission.MANAGE_NETWORK_POLICY" />
     <uses-permission android:name="android.permission.READ_NETWORK_USAGE_HISTORY" />
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission android:name="android.permission.BIND_TELEPHONY_DATA_SERVICE" />
 
     <application android:name="PhoneApp"
             android:persistent="true"
@@ -678,11 +679,16 @@
         <service
             android:name="com.android.phone.vvm.RemoteVvmTaskManager"
             android:exported="false"/>
-
         <service android:name="com.android.internal.telephony.CellularNetworkService"
             android:permission="android.permission.BIND_TELEPHONY_NETWORK_SERVICE" >
             <intent-filter>
                 <action android:name="android.telephony.NetworkService" />
+            </intent-filter>
+        </service>
+        <service android:name="com.android.internal.telephony.dataconnection.CellularDataService"
+            android:permission="android.permission.BIND_TELEPHONY_DATA_SERVICE" >
+            <intent-filter>
+                <action android:name="android.telephony.data.DataService" />
             </intent-filter>
         </service>
     </application>
