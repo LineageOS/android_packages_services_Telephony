@@ -910,7 +910,6 @@ public class ImsConference extends Conference implements Holdable {
                         mConferenceHost.isOutgoingCall());
                 // This is a newly created conference connection as a result of SRVCC
                 c.setConferenceSupported(true);
-                c.addCapability(Connection.CAPABILITY_CONFERENCE_HAS_NO_CHILDREN);
                 c.setConnectionProperties(
                         c.getConnectionProperties() | Connection.PROPERTY_IS_DOWNGRADED_CONFERENCE);
                 c.updateState();

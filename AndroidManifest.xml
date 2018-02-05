@@ -155,6 +155,7 @@
     <!-- BIND_CARRIER_MESSAGING_SERVICE has been deprecated in favor of BIND_CARRIER_SERVICES. -->
     <uses-permission android:name="android.permission.BIND_CARRIER_MESSAGING_SERVICE" />
     <uses-permission android:name="com.android.permission.BIND_EUICC_SERVICE" />
+    <uses-permission android:name="com.android.permission.BIND_TELEPHONY_NETWORK_SERVICE" />
     <uses-permission android:name="com.android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
@@ -180,6 +181,8 @@
     <uses-permission android:name="android.permission.UPDATE_DEVICE_STATS" />
     <uses-permission android:name="android.permission.MANAGE_NETWORK_POLICY" />
     <uses-permission android:name="android.permission.READ_NETWORK_USAGE_HISTORY" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission android:name="android.permission.BIND_TELEPHONY_DATA_SERVICE" />
 
     <application android:name="PhoneApp"
             android:persistent="true"
@@ -379,6 +382,15 @@
                 android:label="@string/labelCF"
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="GsmUmtsCallBarringOptions"
+                android:label="@string/labelCallBarring"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:theme="@style/CallSettingsWithoutDividerTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -667,5 +679,17 @@
         <service
             android:name="com.android.phone.vvm.RemoteVvmTaskManager"
             android:exported="false"/>
+        <service android:name="com.android.internal.telephony.CellularNetworkService"
+            android:permission="android.permission.BIND_TELEPHONY_NETWORK_SERVICE" >
+            <intent-filter>
+                <action android:name="android.telephony.NetworkService" />
+            </intent-filter>
+        </service>
+        <service android:name="com.android.internal.telephony.dataconnection.CellularDataService"
+            android:permission="android.permission.BIND_TELEPHONY_DATA_SERVICE" >
+            <intent-filter>
+                <action android:name="android.telephony.data.DataService" />
+            </intent-filter>
+        </service>
     </application>
 </manifest>
