@@ -36,5 +36,6 @@
     <string name="calling_cap_video">Video</string>
     <string name="calling_cap_ut">UT</string>
     <string name="calling_cap_sms">SMS</string>
-    <string name="calling_cap_change_button">Change Capabilities</string>
+    <string name="calling_cap_change_button">Change Capability Status</string>
+    <string name="calling_cap_enabled_text">Enabled Capabilities</string>
 </resources>

@@ -17,8 +17,9 @@
 package com.android.phone.testapps.imstestapp;
 
 import android.telephony.ims.ImsService;
-import android.telephony.ims.feature.MMTelFeature;
+import android.telephony.ims.feature.MmTelFeature;
 import android.telephony.ims.feature.RcsFeature;
+import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.util.Log;
 
@@ -35,6 +36,7 @@ public class TestImsService extends ImsService {
     public TestImsRegistrationImpl mImsRegistration;
     public TestMmTelFeatureImpl mTestMmTelFeature;
     public TestRcsFeatureImpl mTestRcsFeature;
+    public TestImsConfigImpl mTestImsConfig;
 
     public static TestImsService getInstance() {
         return mInstance;
@@ -46,24 +48,19 @@ public class TestImsService extends ImsService {
         mImsRegistration = TestImsRegistrationImpl.getInstance();
         mTestMmTelFeature = TestMmTelFeatureImpl.getInstance();
         mTestRcsFeature = new TestRcsFeatureImpl();
+        mTestImsConfig = TestImsConfigImpl.getInstance();
 
         mInstance = this;
     }
 
     @Override
-    public MMTelFeature onCreateEmergencyMMTelImsFeature(int slotId) {
+    public MmTelFeature createMmTelFeature(int slotId) {
         Log.i(LOG_TAG, "TestImsService: onCreateEmergencyMMTelImsFeature");
         return mTestMmTelFeature;
     }
 
     @Override
-    public MMTelFeature onCreateMMTelImsFeature(int slotId) {
-        Log.i(LOG_TAG, "TestImsService: onCreateMMTelImsFeature");
-        return mTestMmTelFeature;
-    }
-
-    @Override
-    public RcsFeature onCreateRcsFeature(int slotId) {
+    public RcsFeature createRcsFeature(int slotId) {
         return mTestRcsFeature;
     }
 
@@ -71,5 +68,10 @@ public class TestImsService extends ImsService {
     public ImsRegistrationImplBase getRegistration(int slotId) {
         Log.i(LOG_TAG, "TestImsService: getRegistration");
         return mImsRegistration;
+    }
+
+    @Override
+    public ImsConfigImplBase getConfig(int slotId) {
+        return mTestImsConfig;
     }
 }

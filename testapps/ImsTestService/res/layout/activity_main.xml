@@ -81,6 +81,12 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="4dp"
                 android:text="Calling"/>
+            <Button
+                android:id="@+id/control_launch_config"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="4dp"
+                android:text="Config"/>
         </LinearLayout>
     </LinearLayout>
 
