@@ -234,9 +234,7 @@ final class TelecomAccountRegistry {
                 extras.putBoolean(PhoneAccount.EXTRA_PLAY_CALL_RECORDING_TONE, true);
             }
 
-            boolean isDeviceRttSupported = mContext.getResources().getBoolean(
-                    R.bool.config_support_rtt);
-            if (isDeviceRttSupported && isCarrierRttSupported()) {
+            if (PhoneGlobals.getInstance().phoneMgr.isRttSupported()) {
                 capabilities |= PhoneAccount.CAPABILITY_RTT;
             }
 
@@ -403,12 +401,6 @@ final class TelecomAccountRegistry {
                     PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
             return b != null &&
                     b.getBoolean(CarrierConfigManager.KEY_SUPPORT_VIDEO_CONFERENCE_CALL_BOOL);
-        }
-
-        private boolean isCarrierRttSupported() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            return b != null && b.getBoolean(CarrierConfigManager.KEY_RTT_SUPPORTED_BOOL);
         }
 
         /**

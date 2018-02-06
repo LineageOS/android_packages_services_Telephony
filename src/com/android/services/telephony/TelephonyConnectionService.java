@@ -715,6 +715,7 @@ public class TelephonyConnectionService extends ConnectionService {
         connection.setAddress(handle, PhoneConstants.PRESENTATION_ALLOWED);
         connection.setInitializing();
         connection.setVideoState(request.getVideoState());
+        connection.setRttTextStream(request.getRttTextStream());
 
         return connection;
     }
@@ -1088,7 +1089,11 @@ public class TelephonyConnectionService extends ConnectionService {
         com.android.internal.telephony.Connection originalConnection = null;
         try {
             if (phone != null) {
-                originalConnection = phone.dial(number, null, videoState, extras);
+                originalConnection = phone.dial(number, new ImsPhone.ImsDialArgs.Builder()
+                        .setVideoState(videoState)
+                        .setIntentExtras(extras)
+                        .setRttTextStream(connection.getRttTextStream())
+                        .build());
             }
         } catch (CallStateException e) {
             Log.e(this, e, "placeOutgoingConnection, phone.dial exception: " + e);
