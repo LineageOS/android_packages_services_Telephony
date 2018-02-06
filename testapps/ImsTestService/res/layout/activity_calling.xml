@@ -57,4 +57,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/calling_cap_change_button" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:paddingRight="4dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="@string/calling_cap_enabled_text"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/call_cap_enabled_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text=""/>
+
+
 </LinearLayout>
