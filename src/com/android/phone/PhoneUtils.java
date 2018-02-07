@@ -30,13 +30,10 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
-import android.os.PersistableBundle;
 import android.os.RemoteException;
-import android.os.SystemProperties;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.VideoProfile;
-import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SubscriptionManager;
 import android.text.TextUtils;
@@ -61,7 +58,6 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCapabilities;
-import com.android.internal.telephony.TelephonyProperties;
 import com.android.internal.telephony.sip.SipPhone;
 import com.android.phone.CallGatewayManager.RawGatewayInfo;
 
@@ -121,9 +117,6 @@ public class PhoneUtils {
 
     /** Define for not a special CNAP string */
     private static final int CNAP_SPECIAL_CASE_NO = -1;
-
-    /** Noise suppression status as selected by user */
-    private static boolean sIsNoiseSuppressionEnabled = true;
 
     /**
      * Theme to use for dialogs displayed by utility methods in this class. This is needed
@@ -1794,62 +1787,6 @@ public class PhoneUtils {
     static boolean isSpeakerOn(Context context) {
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         return audioManager.isSpeakerphoneOn();
-    }
-
-
-    static void turnOnNoiseSuppression(Context context, boolean flag, boolean store) {
-        if (DBG) log("turnOnNoiseSuppression: " + flag);
-        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-
-        PersistableBundle b = PhoneGlobals.getInstance().getCarrierConfig();
-        if (!b.getBoolean(CarrierConfigManager.KEY_HAS_IN_CALL_NOISE_SUPPRESSION_BOOL)) {
-            return;
-        }
-
-        if (flag) {
-            audioManager.setParameters("noise_suppression=auto");
-        } else {
-            audioManager.setParameters("noise_suppression=off");
-        }
-
-        // record the speaker-enable value
-        if (store) {
-            sIsNoiseSuppressionEnabled = flag;
-        }
-
-        // TODO: implement and manage ICON
-
-    }
-
-    static void restoreNoiseSuppression(Context context) {
-        if (DBG) log("restoreNoiseSuppression, restoring to: " + sIsNoiseSuppressionEnabled);
-
-        PersistableBundle b = PhoneGlobals.getInstance().getCarrierConfig();
-        if (!b.getBoolean(CarrierConfigManager.KEY_HAS_IN_CALL_NOISE_SUPPRESSION_BOOL)) {
-            return;
-        }
-
-        // change the mode if needed.
-        if (isNoiseSuppressionOn(context) != sIsNoiseSuppressionEnabled) {
-            turnOnNoiseSuppression(context, sIsNoiseSuppressionEnabled, false);
-        }
-    }
-
-    static boolean isNoiseSuppressionOn(Context context) {
-
-        PersistableBundle b = PhoneGlobals.getInstance().getCarrierConfig();
-        if (!b.getBoolean(CarrierConfigManager.KEY_HAS_IN_CALL_NOISE_SUPPRESSION_BOOL)) {
-            return false;
-        }
-
-        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-        String noiseSuppression = audioManager.getParameters("noise_suppression");
-        if (DBG) log("isNoiseSuppressionOn: " + noiseSuppression);
-        if (noiseSuppression.contains("off")) {
-            return false;
-        } else {
-            return true;
-        }
     }
 
     static boolean isInEmergencyCall(CallManager cm) {
