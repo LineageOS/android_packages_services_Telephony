@@ -37,6 +37,7 @@ import android.telephony.DisconnectCause;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsCallProfile;
+import android.text.TextUtils;
 import android.util.Pair;
 
 import com.android.ims.ImsCall;
@@ -637,6 +638,45 @@ abstract class TelephonyConnection extends Connection {
     }
 
     @Override
+    public void onDeflect(Uri address) {
+        Log.v(this, "onDeflect");
+        if (mOriginalConnection != null && isValidRingingCall()) {
+            if (address == null) {
+                Log.w(this, "call deflect address uri is null");
+                return;
+            }
+            String scheme = address.getScheme();
+            String deflectNumber = "";
+            String uriString = address.getSchemeSpecificPart();
+            if (!PhoneAccount.SCHEME_VOICEMAIL.equals(scheme)) {
+                if (!PhoneAccount.SCHEME_TEL.equals(scheme)) {
+                    Log.w(this, "onDeflect, address scheme is not of type tel instead: " +
+                            scheme);
+                    return;
+                }
+                if (PhoneNumberUtils.isUriNumber(uriString)) {
+                    Log.w(this, "Invalid deflect address. Not a legal PSTN number.");
+                    return;
+                }
+                deflectNumber = PhoneNumberUtils.convertAndStrip(uriString);
+                if (TextUtils.isEmpty(deflectNumber)) {
+                    Log.w(this, "Empty deflect number obtained from address uri");
+                    return;
+                }
+            } else {
+                Log.w(this, "Cannot deflect to voicemail uri");
+                return;
+            }
+
+            try {
+                mOriginalConnection.deflect(deflectNumber);
+            } catch (CallStateException e) {
+                Log.e(this, e, "Failed to deflect call.");
+            }
+        }
+    }
+
+    @Override
     public void onReject() {
         Log.v(this, "onReject");
         if (isValidRingingCall()) {
@@ -808,6 +848,8 @@ abstract class TelephonyConnection extends Connection {
         newCapabilities = changeBitmask(newCapabilities, CAPABILITY_CAN_PULL_CALL,
                 isExternalConnection() && isPullable());
         newCapabilities = applyConferenceTerminationCapabilities(newCapabilities);
+        newCapabilities = changeBitmask(newCapabilities, CAPABILITY_SUPPORT_DEFLECT,
+                isImsConnection() && canDeflectImsCalls());
 
         if (getConnectionCapabilities() != newCapabilities) {
             setConnectionCapabilities(newCapabilities);
@@ -1083,6 +1125,17 @@ abstract class TelephonyConnection extends Connection {
             return null;
         }
         return PhoneGlobals.getInstance().getCarrierConfigForSubId(phone.getSubId());
+    }
+
+    private boolean canDeflectImsCalls() {
+        PersistableBundle b = getCarrierConfig();
+        // Return false if the CarrierConfig is unavailable
+        if (b != null) {
+            return b.getBoolean(
+                    CarrierConfigManager.KEY_CARRIER_ALLOW_DEFLECT_IMS_CALL_BOOL) &&
+                    isValidRingingCall();
+        }
+        return false;
     }
 
     /**
