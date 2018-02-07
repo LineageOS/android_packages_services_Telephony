@@ -4069,7 +4069,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             }
 
-            infos[i] = new UiccSlotInfo(slot.isActive(), slot.isEuicc(), cardId, cardState);
+            infos[i] = new UiccSlotInfo(
+                    slot.isActive(), slot.isEuicc(), cardId, cardState, slot.getPhoneId());
         }
         return infos;
     }
