@@ -32,7 +32,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.RemoteException;
-import android.os.SystemProperties;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.VideoProfile;
@@ -61,7 +60,6 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCapabilities;
-import com.android.internal.telephony.TelephonyProperties;
 import com.android.internal.telephony.sip.SipPhone;
 import com.android.phone.CallGatewayManager.RawGatewayInfo;
 
@@ -1114,54 +1112,6 @@ public class PhoneUtils {
         VoiceMailNumberMissingException(String msg) {
             super(msg);
         }
-    }
-
-    /**
-     * Given an Intent (which is presumably the ACTION_CALL intent that
-     * initiated this outgoing call), figure out the actual phone number we
-     * should dial.
-     *
-     * Note that the returned "number" may actually be a SIP address,
-     * if the specified intent contains a sip: URI.
-     *
-     * This method is basically a wrapper around PhoneUtils.getNumberFromIntent(),
-     * except it's also aware of the EXTRA_ACTUAL_NUMBER_TO_DIAL extra.
-     * (That extra, if present, tells us the exact string to pass down to the
-     * telephony layer.  It's guaranteed to be safe to dial: it's either a PSTN
-     * phone number with separators and keypad letters stripped out, or a raw
-     * unencoded SIP address.)
-     *
-     * @return the phone number corresponding to the specified Intent, or null
-     *   if the Intent has no action or if the intent's data is malformed or
-     *   missing.
-     *
-     * @throws VoiceMailNumberMissingException if the intent
-     *   contains a "voicemail" URI, but there's no voicemail
-     *   number configured on the device.
-     */
-    public static String getInitialNumber(Intent intent)
-            throws PhoneUtils.VoiceMailNumberMissingException {
-        if (DBG) log("getInitialNumber(): " + intent);
-
-        String action = intent.getAction();
-        if (TextUtils.isEmpty(action)) {
-            return null;
-        }
-
-        // If the EXTRA_ACTUAL_NUMBER_TO_DIAL extra is present, get the phone
-        // number from there.  (That extra takes precedence over the actual data
-        // included in the intent.)
-        if (intent.hasExtra(OutgoingCallBroadcaster.EXTRA_ACTUAL_NUMBER_TO_DIAL)) {
-            String actualNumberToDial =
-                    intent.getStringExtra(OutgoingCallBroadcaster.EXTRA_ACTUAL_NUMBER_TO_DIAL);
-            if (DBG) {
-                log("==> got EXTRA_ACTUAL_NUMBER_TO_DIAL; returning '"
-                        + toLogSafePhoneNumber(actualNumberToDial) + "'");
-            }
-            return actualNumberToDial;
-        }
-
-        return getNumberFromIntent(PhoneGlobals.getInstance(), intent);
     }
 
     /**
