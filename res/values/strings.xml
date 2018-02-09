@@ -1599,7 +1599,6 @@
     <string name="clh_callFailed_protocol_Error_unspecified_txt">Protocol error, unspecified</string>
     <!-- In-call screen: call failure reason (Cause Number 127) -->
     <string name="clh_callFailed_interworking_unspecified_txt">Interworking, unspecified</string>
-
     <!-- Call settings screen, setting option name -->
     <string name="labelCallBarring">Call barring</string>
     <!-- Call barring settings screen, setting summary text when a call barring option is activated -->
@@ -1666,4 +1665,57 @@
     <string name="call_barring_settings">Call barring settings</string>
     <!-- Call barring settings screen, deactivate all call barring settings -->
     <string name="call_barring_deactivate_all_no_password">Deactivate all call barring settings?</string>
+    <!-- Message displayed to the user when an outgoing call is deflected.  This means that the
+         party the user is calling has chosen to send the call to another phone number. -->
+    <string name="supp_service_notification_call_deflected">Call deflected.</string>
+    <!-- Message displayed to the user when an outgoing call is forwarded to another number.
+         This happens because the party the user is calling has call forwarding active. -->
+    <string name="supp_service_notification_call_forwarded">Call forwarded.</string>
+    <!-- Message displayed to the user when an outgoing call is waiting.  This happens when the
+         party the user is calling is already in another call. -->
+    <string name="supp_service_notification_call_waiting">Call is waiting.</string>
+    <!-- Message displayed to the user when they have chosen to block their phone number for an
+         outgoing call, but the network has rejected that request. -->
+    <string name="supp_service_clir_suppression_rejected">Number blocking is rejected.</string>
+    <!-- Message displayed to the user to inform them that the call is to or from a number which is
+         part of a closed user group.  A closed user group is a network feature which restricts
+         calls on a device to members of the closed user group. -->
+    <string name="supp_service_closed_user_group_call">Closed user group call.</string>
+    <!-- Message displayed to the user when incoming call barring is active.  This means that the
+         user has enabled the network feature which prevents all incoming calls. -->
+    <string name="supp_service_incoming_calls_barred">Incoming calls barred.</string>
+    <!-- Message displayed to the user when outgoing call barring is active.  This means that the
+         user has enabled the network feature which prevents all outgoing calls. -->
+    <string name="supp_service_outgoing_calls_barred">Outgoing calls barred.</string>
+    <!-- Message displayed to the user to indicate that call forwarding is active. -->
+    <string name="supp_service_call_forwarding_active">Call forwarding active.</string>
+    <!-- Message displayed to the user when they receive multiple incoming calls at the same time
+         and one of them is forwarded to the network.  Phones can't handle multiple incoming calls
+         so the network will typically forward one of the calls to voicemail or another number
+         defined by the user. -->
+    <string name="supp_service_additional_call_forwarded">Additional call forwarded.</string>
+    <!-- Message displayed to the user to indicate that a call has been successfully transferred
+         to another phone number. -->
+    <string name="supp_service_additional_ect_connected">Explicit call transfer complete.</string>
+    <!-- Message displayed to the user to indicate that the call is in the process of being
+         transferred to another phone number.-->
+    <string name="supp_service_additional_ect_connecting">Explicit call transfer in progress.</string>
+    <!-- Message displayed to the user to indicate that the remote party has put the user
+         on hold. -->
+    <string name="supp_service_call_on_hold">Call on hold.</string>
+    <!-- Message displayed to the user to indicate that the remote party has taken the user
+         off hold. -->
+    <string name="supp_service_call_resumed">Call resumed.</string>
+    <!-- Message displayed to the user to indicate that an incoming call was deflected from another
+         number.  This means that the call originated as a result of the original caller choosing
+         to forward the call to the current user rather than answering it themselves. -->
+    <string name="supp_service_deflected_call">Call was deflected.</string>
+    <!-- Message displayed to the user to indicate that an incoming call was forwarded from another
+         number. -->
+    <string name="supp_service_forwarded_call">Forwarded call.</string>
+    <!-- Message displayed to the user to indicate that they are joining a conference call. -->
+    <string name="supp_service_conference_call">Joining conference call.</string>
+    <!-- Message displayed to the user to indicate that a held call has been released /
+         disconnected. -->
+    <string name="supp_service_held_call_released">Held call has been released.</string>
 </resources>
