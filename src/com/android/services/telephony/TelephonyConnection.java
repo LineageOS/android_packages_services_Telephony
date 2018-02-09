@@ -448,8 +448,9 @@ abstract class TelephonyConnection extends Connection {
 
         @Override
         public void onDisconnect(int cause) {
-            Log.i(this, "onDisconnect: cause=%s", DisconnectCause.toString(cause));
-            mHandler.obtainMessage(MSG_DISCONNECT);
+            Log.i(this, "onDisconnect: callId=%s, cause=%s", getTelecomCallId(),
+                    DisconnectCause.toString(cause));
+            mHandler.obtainMessage(MSG_DISCONNECT).sendToTarget();
         }
     };
 
