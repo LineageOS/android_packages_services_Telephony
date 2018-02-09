@@ -134,9 +134,6 @@ public class PhoneGlobals extends ContextWrapper {
 
     private static PhoneGlobals sMe;
 
-    // A few important fields we expose to the rest of the package
-    // directly (rather than thru set/get methods) for efficiency.
-    CallController callController;
     CallManager mCM;
     CallNotifier notifier;
     CallerInfoCache callerInfoCache;
@@ -325,11 +322,6 @@ public class PhoneGlobals extends ContextWrapper {
             CallLogger callLogger = new CallLogger(this, new CallLogAsync());
 
             callGatewayManager = CallGatewayManager.getInstance();
-
-            // Create the CallController singleton, which is the interface
-            // to the telephony layer for user-initiated telephony functionality
-            // (like making outgoing calls.)
-            callController = CallController.init(this, callLogger, callGatewayManager);
 
             // Create the CallerInfoCache singleton, which remembers custom ring tone and
             // send-to-voicemail settings.
