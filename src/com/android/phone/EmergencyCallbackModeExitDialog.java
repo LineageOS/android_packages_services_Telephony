@@ -17,9 +17,9 @@
 package com.android.phone;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -28,7 +28,6 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
-import android.content.res.Resources;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -36,12 +35,10 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import android.os.SystemProperties;
 import android.util.Log;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyIntents;
-import com.android.internal.telephony.TelephonyProperties;
 
 /**
  * Displays dialog that enables users to exit Emergency Callback Mode
@@ -80,12 +77,12 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnCance
 
         mPhone = PhoneGlobals.getInstance().getPhoneInEcm();
         // Check if phone is in Emergency Callback Mode. If not, exit.
-        final boolean isInEcm = mPhone.isInEcm();
-        Log.i(TAG, "ECMModeExitDialog launched - isInEcm: " + isInEcm + " phone:" + mPhone);
-        if (mPhone == null || !isInEcm) {
+        if (mPhone == null || !mPhone.isInEcm()) {
+            Log.i(TAG, "ECMModeExitDialog launched - isInEcm: false" + " phone:" + mPhone);
             finish();
             return;
         }
+        Log.i(TAG, "ECMModeExitDialog launched - isInEcm: true" + " phone:" + mPhone);
 
         mHandler = new Handler();
 
