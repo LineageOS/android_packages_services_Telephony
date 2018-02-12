@@ -23,7 +23,7 @@ interface  TimeConsumingPreferenceListener {
 public class TimeConsumingPreferenceActivity extends PreferenceActivity
                         implements TimeConsumingPreferenceListener,
                         DialogInterface.OnCancelListener {
-    private static final String LOG_TAG = "TimeConsumingPreferenceActivity";
+    private static final String LOG_TAG = "TimeConsumingPrefActivity";
     private final boolean DBG = (PhoneGlobals.DBG_LEVEL >= 2);
 
     private class DismissOnClickListener implements DialogInterface.OnClickListener {
@@ -155,8 +155,7 @@ public class TimeConsumingPreferenceActivity extends PreferenceActivity
     @Override
     public void onStarted(Preference preference, boolean reading) {
         if (DBG) dumpState();
-        if (DBG) Log.d(LOG_TAG, "onStarted, preference=" + preference.getKey()
-                + ", reading=" + reading);
+        Log.i(LOG_TAG, "onStarted, preference=" + preference.getKey() + ", reading=" + reading);
         mBusyList.add(preference.getKey());
 
         if (mIsForeground) {
@@ -172,8 +171,7 @@ public class TimeConsumingPreferenceActivity extends PreferenceActivity
     @Override
     public void onFinished(Preference preference, boolean reading) {
         if (DBG) dumpState();
-        if (DBG) Log.d(LOG_TAG, "onFinished, preference=" + preference.getKey()
-                + ", reading=" + reading);
+        Log.i(LOG_TAG, "onFinished, preference=" + preference.getKey() + ", reading=" + reading);
         mBusyList.remove(preference.getKey());
 
         if (mBusyList.isEmpty()) {
@@ -189,7 +187,7 @@ public class TimeConsumingPreferenceActivity extends PreferenceActivity
     @Override
     public void onError(Preference preference, int error) {
         if (DBG) dumpState();
-        if (DBG) Log.d(LOG_TAG, "onError, preference=" + preference.getKey() + ", error=" + error);
+        Log.i(LOG_TAG, "onError, preference=" + preference.getKey() + ", error=" + error);
 
         if (mIsForeground) {
             showDialog(error);
