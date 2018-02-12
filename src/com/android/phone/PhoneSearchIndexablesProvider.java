@@ -46,7 +46,7 @@ public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
     private static SearchIndexableResource[] INDEXABLE_RES = new SearchIndexableResource[] {
             new SearchIndexableResource(1, R.xml.network_setting_fragment,
                     MobileNetworkSettings.class.getName(),
-                    R.mipmap.ic_launcher_phone),
+                    R.mipmap.ic_launcher),
     };
 
     @Override
