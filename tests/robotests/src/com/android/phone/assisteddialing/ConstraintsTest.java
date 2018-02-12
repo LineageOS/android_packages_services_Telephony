@@ -20,20 +20,21 @@ import static com.google.common.truth.Truth.assertThat;
 
 import android.content.Context;
 
+import com.android.phone.TelephonyRobolectricTestRunner;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
 /**
  * Unit Tests for Constraints.
  */
-@RunWith(RobolectricTestRunner.class)
+@RunWith(TelephonyRobolectricTestRunner.class)
 public class ConstraintsTest {
 
-  public final Context mContext = RuntimeEnvironment.application.getBaseContext();
+  private final Context mContext = RuntimeEnvironment.application;
   private final CountryCodeProvider mCountryCodeProvider = new CountryCodeProvider();
-  private Constraints mConstraints = new Constraints(mContext, mCountryCodeProvider);
+  private final Constraints mConstraints = new Constraints(mContext, mCountryCodeProvider);
 
   @Test
   public void testnumberMeetsPreconditionsForAssistedDialing_countryCodesEquivalent() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,20 +18,21 @@ package com.android.phone.assisteddialing;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import com.android.phone.TelephonyRobolectricTestRunner;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 /**
  * Unit Tests for CountryCodeProvider.
  */
-@RunWith(RobolectricTestRunner.class)
+@RunWith(TelephonyRobolectricTestRunner.class)
 public class CountryCodeProviderTest {
 
     private final CountryCodeProvider mCountryCodeProvider = new CountryCodeProvider();
 
     @Test
-    public void testnumberMeetsPreconditionsForAssistedDiailng_defaults() {
+    public void testnumberMeetsPreconditionsForAssistedDialing_defaults() {
         for (String country : CountryCodeProvider.DEFAULT_COUNTRY_CODES) {
             assertThat(mCountryCodeProvider.isSupportedCountryCode(country)).isTrue();
         }
