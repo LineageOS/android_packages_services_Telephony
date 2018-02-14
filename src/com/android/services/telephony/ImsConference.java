@@ -273,10 +273,10 @@ public class ImsConference extends Conference implements Holdable {
         long connectTime = conferenceHost.getOriginalConnection().getConnectTime();
         long connectElapsedTime = conferenceHost.getOriginalConnection().getConnectTimeReal();
         setConnectionTime(connectTime);
-        setConnectionElapsedTime(connectElapsedTime);
+        setConnectionStartElapsedRealTime(connectElapsedTime);
         // Set the connectTime in the connection as well.
         conferenceHost.setConnectTimeMillis(connectTime);
-        conferenceHost.setConnectElapsedTimeMillis(connectElapsedTime);
+        conferenceHost.setConnectionStartElapsedRealTime(connectElapsedTime);
 
         mTelephonyConnectionService = telephonyConnectionService;
         setConferenceHost(conferenceHost);
