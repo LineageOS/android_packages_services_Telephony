@@ -26,6 +26,7 @@ import android.bluetooth.IBluetoothHeadsetPhone;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncResult;
@@ -46,6 +47,7 @@ import android.telephony.NeighboringCellInfo;
 import android.telephony.CellInfo;
 import android.telephony.ServiceState;
 import android.text.TextUtils;
+import android.util.EventLog;
 import android.util.Log;
 
 import com.android.internal.telephony.CallManager;
@@ -645,7 +647,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub implements CallModele
      * @return true is a call was ended
      */
     public boolean endCall() {
-        enforceCallPermission();
+        if (mApp.checkCallingOrSelfPermission(Manifest.permission.MODIFY_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+            Log.i(LOG_TAG, "endCall: called without modify phone state.");
+            EventLog.writeEvent(0x534e4554, "67862398", -1, "");
+            throw new SecurityException("MODIFY_PHONE_STATE permission required.");
+        }
         return (Boolean) sendRequest(CMD_END_CALL, null);
     }
 
