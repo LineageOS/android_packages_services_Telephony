@@ -79,10 +79,10 @@
     <protected-broadcast android:name= "com.android.phone.vvm.ACTION_VISUAL_VOICEMAIL_SERVICE_EVENT" />
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_VVM_PACKAGE_INSTALLED" />
     <protected-broadcast android:name= "com.android.cellbroadcastreceiver.GET_LATEST_CB_AREA_INFO" />
-    <protected-broadcast android:name= "android.intent.action.CURRENT_CARRIER_IDENTITY_CHANGED" />
     <protected-broadcast android:name= "android.telephony.action.SIM_CARD_STATE_CHANGED" />
     <protected-broadcast android:name= "android.telephony.action.SIM_APPLICATION_STATE_CHANGED" />
     <protected-broadcast android:name= "android.telephony.action.SIM_SLOT_STATUS_CHANGED" />
+    <protected-broadcast android:name= "android.telephony.action.SUBSCRIPTION_CARRIER_IDENTITY_CHANGED" />
 
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
