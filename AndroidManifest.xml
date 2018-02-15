@@ -173,6 +173,7 @@
     <uses-permission android:name="android.permission.READ_BLOCKED_NUMBERS" />
     <!-- Needed for emergency contact notification. -->
     <uses-permission android:name="android.permission.WRITE_BLOCKED_NUMBERS" />
+    <uses-permission android:name="android.permission.NETWORK_SETTINGS" />
 
     <!-- This tells the activity manager to not delay any of our activity
          start requests, even if they happen immediately after the user
@@ -240,6 +241,10 @@
                 <data android:mimeType="vnd.android.cursor.item/sim-contact" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.android.internal.telephony.uicc.InstallCarrierAppTrampolineActivity"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:exported="false"/>
 
         <!-- "Mobile network settings" screen, used on both
              non-voice-capable tablets and regular phone devices. -->
@@ -569,6 +574,10 @@
                 <action android:name="android.intent.action.SIM_STATE_CHANGED"/>
             </intent-filter>
         </receiver>
+
+        <receiver
+            android:name="com.android.internal.telephony.uicc.ShowInstallAppNotificationReceiver"
+            android:exported="false"/>
 
         <service
             android:name="com.android.phone.vvm.RemoteVvmTaskManager"
