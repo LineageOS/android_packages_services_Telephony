@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.UserManager;
@@ -53,6 +54,8 @@ import com.android.phone.settings.VoicemailSettingsActivity;
 import com.android.phone.settings.fdn.FdnSetting;
 
 import java.util.List;
+
+import org.codeaurora.ims.QtiCallConstants;
 
 /**
  * Top level "Call settings" UI; see res/xml/call_feature_setting.xml
@@ -92,6 +95,7 @@ public class CallFeaturesSetting extends PreferenceActivity
             "phone_account_settings_preference_screen";
 
     private static final String ENABLE_VIDEO_CALLING_KEY = "button_enable_video_calling";
+    private static final String BUTTON_IMS_SETTINGS_KEY = "ims_settings_key";
 
     private Phone mPhone;
     private ImsManager mImsMgr;
@@ -102,6 +106,7 @@ public class CallFeaturesSetting extends PreferenceActivity
     private PreferenceScreen mVoicemailSettingsScreen;
     private SwitchPreference mEnableVideoCalling;
     private Preference mButtonWifiCalling;
+    private PreferenceScreen mImsSettingsScreen;
 
     /*
      * Click Listeners, handle click based on objects attached to UI.
@@ -293,6 +298,35 @@ public class CallFeaturesSetting extends PreferenceActivity
             }
         }
 
+        mImsSettingsScreen = (PreferenceScreen) findPreference(BUTTON_IMS_SETTINGS_KEY);
+        if (isImsSettingsApkAvailable(mPhone.getContext())) {
+            ImsManager imsManager = ImsManager.getInstance(mPhone.getContext(),
+                    mPhone.getPhoneId());
+            try {
+                if ((imsManager.isVolteEnabledByPlatform() || imsManager.isVtEnabledByPlatform() ||
+                        imsManager.isWfcEnabledByPlatform()) &&
+                        imsManager.getImsServiceState() == ImsFeature.STATE_READY) {
+                    mImsSettingsScreen.setOnPreferenceClickListener(
+                            new Preference.OnPreferenceClickListener() {
+                         @Override
+                         public boolean onPreferenceClick(Preference preference) {
+                             Intent intent = new Intent("org.codeaurora.IMS_SETTINGS");
+                             intent.putExtra(QtiCallConstants.EXTRA_PHONE_ID, mPhone.getPhoneId());
+                             startActivity(intent);
+                             return true;
+                         }
+                    });
+                } else {
+                    prefSet.removePreference(mImsSettingsScreen);
+                }
+            } catch (ImsException ex) {
+                log("Exception when trying to get ImsServiceStatus: " + ex);
+                prefSet.removePreference(mImsSettingsScreen);
+            }
+        } else {
+           prefSet.removePreference(mImsSettingsScreen);
+        }
+
         if (mImsMgr.isVtEnabledByPlatform() && mImsMgr.isVtProvisionedOnDevice()
                 && (carrierConfig.getBoolean(
                         CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
@@ -439,5 +473,25 @@ public class CallFeaturesSetting extends PreferenceActivity
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         activity.startActivity(intent);
         activity.finish();
+    }
+
+    /**
+     * check whether ImsSettings apk exist in system, if yes, return true, else
+     * return false.
+     */
+    public static boolean isImsSettingsApkAvailable(Context context) {
+        // check whether the target handler exist in system
+        Intent intent = new Intent("org.codeaurora.IMS_SETTINGS");
+        PackageManager pm = context.getPackageManager();
+        List<ResolveInfo> list = pm.queryIntentActivities(intent, 0);
+        for (ResolveInfo resolveInfo : list) {
+            // check is it installed in system.img, exclude the application
+            // installed by user
+            if ((resolveInfo.activityInfo.applicationInfo.flags &
+                    ApplicationInfo.FLAG_SYSTEM) != 0) {
+                return true;
+            }
+        }
+        return false;
     }
 }
