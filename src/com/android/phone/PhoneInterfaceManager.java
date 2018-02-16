@@ -74,6 +74,7 @@ import android.telephony.ims.aidl.IImsConfig;
 import android.telephony.ims.aidl.IImsMmTelFeature;
 import android.telephony.ims.aidl.IImsRcsFeature;
 import android.telephony.ims.aidl.IImsRegistration;
+import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.Log;
@@ -3294,22 +3295,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    /*
-     * {@hide}
-     * Returns the IMS Registration Status
-     */
-    @Override
-    public boolean isImsRegistered() {
-        return mPhone.isImsRegistered();
-    }
-
     /**
      * {@hide}
      * Returns the IMS Registration Status on a particular subid
      *
      * @param subId
      */
-    public boolean isImsRegisteredForSubscriber(int subId) {
+    public boolean isImsRegistered(int subId) {
         Phone phone = getPhone(subId);
         if (phone != null) {
             return phone.isImsRegistered();
@@ -3323,27 +3315,53 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return PhoneUtils.getSubIdForPhoneAccount(phoneAccount);
     }
 
-    /*
-     * {@hide}
-     * Returns the IMS Registration Status
+    /**
+     * @return the VoWiFi calling availability.
      */
-    public boolean isWifiCallingAvailable() {
-        return mPhone.isWifiCallingEnabled();
+    public boolean isWifiCallingAvailable(int subId) {
+        Phone phone = getPhone(subId);
+        if (phone != null) {
+            return phone.isWifiCallingEnabled();
+        } else {
+            return false;
+        }
     }
 
-    /*
-     * {@hide}
-     * Returns the IMS Registration Status
+    /**
+     * @return the VoLTE availability.
      */
-    public boolean isVolteAvailable() {
-        return mPhone.isVolteEnabled();
+    public boolean isVolteAvailable(int subId) {
+        Phone phone = getPhone(subId);
+        if (phone != null) {
+            return phone.isVolteEnabled();
+        } else {
+            return false;
+        }
     }
 
-    /*
-     * {@hide} Returns the IMS Registration Status
+    /**
+     * @return the VT calling availability.
      */
-    public boolean isVideoTelephonyAvailable() {
-        return mPhone.isVideoEnabled();
+    public boolean isVideoTelephonyAvailable(int subId) {
+        Phone phone = getPhone(subId);
+        if (phone != null) {
+            return phone.isVideoEnabled();
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @return the IMS registration technology for the MMTEL feature. Valid return values are
+     * defined in {@link ImsRegistrationImplBase}.
+     */
+    public @ImsRegistrationImplBase.ImsRegistrationTech int getImsRegTechnologyForMmTel(int subId) {
+        Phone phone = getPhone(subId);
+        if (phone != null) {
+            return phone.getImsRegistrationTech();
+        } else {
+            return ImsRegistrationImplBase.REGISTRATION_TECH_NONE;
+        }
     }
 
     private boolean canReadPhoneState(String callingPackage, String message) {
