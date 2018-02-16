@@ -559,6 +559,16 @@ abstract class TelephonyConnection extends Connection {
                     DisconnectCause.toString(cause));
             mHandler.obtainMessage(MSG_DISCONNECT).sendToTarget();
         }
+
+        @Override
+        public void onRttInitiated() {
+            sendRttInitiationSuccess();
+        }
+
+        @Override
+        public void onRttTerminated() {
+            sendRttSessionRemotelyTerminated();
+        }
     };
 
     protected com.android.internal.telephony.Connection mOriginalConnection;
@@ -567,6 +577,7 @@ abstract class TelephonyConnection extends Connection {
     private boolean mIsStateOverridden = false;
     private Call.State mOriginalConnectionState = Call.State.IDLE;
     private Call.State mConnectionOverriddenState = Call.State.IDLE;
+    private RttTextStream mRttTextStream = null;
 
     private boolean mWasImsConnection;
 
@@ -992,6 +1003,8 @@ abstract class TelephonyConnection extends Connection {
                 mIsCdmaVoicePrivacyEnabled);
         newProperties = changeBitmask(newProperties, PROPERTY_ASSISTED_DIALING_USED,
                 mIsUsingAssistedDialing);
+        newProperties = changeBitmask(newProperties, PROPERTY_IS_RTT,
+                (getConnectionProperties() & PROPERTY_IS_RTT) != 0);
 
         if (getConnectionProperties() != newProperties) {
             setConnectionProperties(newProperties);
@@ -1809,6 +1822,14 @@ abstract class TelephonyConnection extends Connection {
             return true;
         }
         return false;
+    }
+
+    public void setRttTextStream(RttTextStream s) {
+        mRttTextStream = s;
+    }
+
+    public RttTextStream getRttTextStream() {
+        return mRttTextStream;
     }
 
     /**
