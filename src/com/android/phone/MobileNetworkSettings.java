@@ -266,8 +266,10 @@ public class MobileNetworkSettings extends Activity  {
 
         private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
             /*
-             * Enable/disable the 'Enhanced 4G LTE Mode' when in/out of a call
-             * and depending on TTY mode and TTY support over VoLTE.
+             * Enable/disable the 'Enhanced 4G LTE Mode' and 'Carrier video calling'
+             * when in/out of a call. 'Enhanced 4G LTE Mode' depends on TTY mode
+             * and TTY support over VoLTE.
+             *
              * @see android.telephony.PhoneStateListener#onCallStateChanged(int,
              * java.lang.String)
              */
@@ -283,6 +285,7 @@ public class MobileNetworkSettings extends Activity  {
                 Preference pref = getPreferenceScreen().findPreference(BUTTON_4G_LTE_KEY);
                 if (pref != null) pref.setEnabled(enabled && hasActiveSubscriptions());
 
+                updateVideoCallState();
             }
         };
 
@@ -1708,7 +1711,8 @@ public class MobileNetworkSettings extends Activity  {
                     mVideoCallingPref.setEnabled(false);
                     mVideoCallingPref.setChecked(false);
                 } else {
-                    mVideoCallingPref.setEnabled(true);
+                    mVideoCallingPref.setEnabled(
+                            mTelephonyManager.getCallState() == TelephonyManager.CALL_STATE_IDLE);
                     mVideoCallingPref.setChecked(mImsMgr.isVtEnabledByUser());
                     mVideoCallingPref.setOnPreferenceChangeListener(this);
                 }
