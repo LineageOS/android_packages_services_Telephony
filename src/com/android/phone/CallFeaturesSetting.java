@@ -197,7 +197,12 @@ public class CallFeaturesSetting extends PreferenceActivity
         public void onCallStateChanged(int state, String incomingNumber) {
             if (DBG) log("PhoneStateListener onCallStateChanged: state is " + state);
             if (mEnableVideoCalling != null) {
-                mEnableVideoCalling.setEnabled(state == TelephonyManager.CALL_STATE_IDLE);
+                // Use TelephonyManager#getCallStete instead of 'state' parameter because it needs
+                // to check the current state of all phone calls.
+                TelephonyManager telephonyManager =
+                        (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+                mEnableVideoCalling.setEnabled(
+                        telephonyManager.getCallState() == TelephonyManager.CALL_STATE_IDLE);
             }
         }
     };
