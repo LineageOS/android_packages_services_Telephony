@@ -546,7 +546,7 @@
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Não definido&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Outras definições de chamada"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"A chamar via <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="contactPhoto" msgid="4713193418046639466">"fotografia do contacto"</string>
+    <string name="contactPhoto" msgid="4713193418046639466">"foto do contacto"</string>
     <string name="goPrivate" msgid="865837794424530980">"tornar privado"</string>
     <string name="selectContact" msgid="781975788478987237">"seleccionar contacto"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Chamadas de voz não suportadas"</string>
