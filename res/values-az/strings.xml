@@ -523,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontakt idxalı uğursuz oldu"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Eşitmə yardımı"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Eşitmə yardımı uyğunluğunu aktivləşdirin"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT-ni aktiv və ya deaktiv edin"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Deaktiv"</item>
     <item msgid="3971695875449640648">"TTY Tam"</item>
@@ -687,70 +689,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Taymer başa çatdıqdan sonra bərpa"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokol xətası, təyin edilməyib"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Qarşılıqlı iş, təyin edilməyib"</string>
-    <!-- no translation found for labelCallBarring (3452870940716226978) -->
-    <skip />
-    <!-- no translation found for sum_call_barring_enabled (6804489690436703488) -->
-    <skip />
-    <!-- no translation found for sum_call_barring_disabled (5900772179198857783) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc (1199843944333106035) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc_enabled (8112118391869380361) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc_disabled (7806697133004697974) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic (3162154267825211826) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic_enabled (2634377543147258105) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic_disabled (5817895648306183464) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr (8951699885885742076) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr_enabled (2519630715322138317) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr_disabled (5831267468931377699) -->
-    <skip />
-    <!-- no translation found for call_barring_baic (5272726081458339912) -->
-    <skip />
-    <!-- no translation found for call_barring_baic_enabled (2457134916223203380) -->
-    <skip />
-    <!-- no translation found for call_barring_baic_disabled (6945604947500275636) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr (5728784220691481693) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr_enabled (6533336994391716127) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr_disabled (6746329853943256566) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all (5269788384941003415) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all_description (4972365443287257704) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_success (8014685598632000936) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd (6887420609726284232) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_description (5505087790260233953) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_description_disabled (7630770327645349957) -->
-    <skip />
-    <!-- no translation found for call_barring_pwd_not_match (6716711689350314525) -->
-    <skip />
-    <!-- no translation found for call_barring_right_pwd_number (2902966502520410446) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_success (3278310763742760321) -->
-    <skip />
-    <!-- no translation found for call_barring_old_pwd (6080515987320238522) -->
-    <skip />
-    <!-- no translation found for call_barring_new_pwd (7048532299150269547) -->
-    <skip />
-    <!-- no translation found for call_barring_confirm_pwd (1947167278466285411) -->
-    <skip />
-    <!-- no translation found for messageCallBarring (2412123220272136055) -->
-    <skip />
-    <!-- no translation found for call_barring_settings (80766145008623645) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all_no_password (920902774366557311) -->
-    <skip />
+    <string name="labelCallBarring" msgid="3452870940716226978">"Zəng bloklama"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Aktiv"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Deaktiv"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Bütün gedən zənglər"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Bütün gedən zənglərin bloklanması deaktiv edilsin?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Bütün gedən zənglər blok edilsin?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Gedən beynəlxalq zənglər"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Gedən beynəlxalq zənglərin bloklanması deaktiv edilsin?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Gedən beynəlxalq zənglər blok edilsin?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"Gedən beynəlxalq rouminq zəngləri"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Gedən beynəlxalq rouminq zənglərinin bloklanması deaktiv edilsin?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Gedən beynəlxalq rouminq zəngləri blok edilsin?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Bütün gələn zənglər"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Bütün gələn zənglərin bloklanması deaktiv edilsin?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Bütün gələn zənglər blok edilsin?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Gələn beynəlxalq rouminq zəngləri"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Bütün gələn beynəlxalq rouminq zənglərinin bloklanması deaktiv edilsin?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Gələn beynəlxalq rouminq zəngləri blok edilsin?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Hamısını deaktiv edin"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Bütün zəng bloklama ayarlarını deaktiv edin"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Zəng bloklama deaktiv edildi"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Parolu dəyişin"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Zəng bloklama parolunu dəyişin"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Zəng bloklama parolunu dəyişmək mümkün deyil."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Parollar uyğun deyil"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"4 rəqəmli parol daxil edin"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Parol dəyişdirildi"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Köhnə parol"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Yeni parol"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Parolu təsdiqləyin"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Parol daxil edin"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Zəng bloklama ayarları"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Bütün zəng bloklama ayarları deaktiv edilsin?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Call dəyişdirildi."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Zəng yönləndirildi."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Zəng gözləmədədir."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"Nömrə bloklama rədd edildi."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Bağlı istifadəçi qrupunun zəngi."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Gələn zənglər blok edildi."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Gedən zənglər blok edilib."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Zəng yönləndirmə aktivdir."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Əlavə zəng yönləndirildi."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Açıq zəng transferi tamamlandı."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Açıq zəng transferi davam edir."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Zəng gözləmədədir."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Zəng davam edir."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Zəng dəyişdirildi."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Yönləndirilmiş zəng."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Konfrans zənginə qoşulursunuz."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Gözləmədə olan zəngin bağlantısı kəsildi."</string>
 </resources>

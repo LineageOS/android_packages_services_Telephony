@@ -420,8 +420,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"発信番号制限を削除しています..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"発信番号制限を削除しました。"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"発信番号制限は更新されませんでした。入力したPINは正しくありません。"</string>
-    <!-- no translation found for fdn_invalid_number (2062898833049589309) -->
-    <skip />
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN は更新されませんでした。20 桁を超える番号は指定できません。"</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"発信番号制限は更新されませんでした。PIN2が正しくないか、電話番号が拒否されました。"</string>
     <string name="fdn_failed" msgid="540018079008319747">"発信番号制限操作に失敗しました。"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIMカードから読み取り中..."</string>
@@ -524,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"連絡先をインポートできませんでした"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"補聴機能"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"補聴機能の互換をON"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT を ON または OFF にする"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY OFF"</item>
     <item msgid="3971695875449640648">"TTY フル"</item>
@@ -688,70 +689,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"タイマー期限の復元"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"プロトコル エラー、詳細不明"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"相互作用中、詳細未定"</string>
-    <!-- no translation found for labelCallBarring (3452870940716226978) -->
-    <skip />
-    <!-- no translation found for sum_call_barring_enabled (6804489690436703488) -->
-    <skip />
-    <!-- no translation found for sum_call_barring_disabled (5900772179198857783) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc (1199843944333106035) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc_enabled (8112118391869380361) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc_disabled (7806697133004697974) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic (3162154267825211826) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic_enabled (2634377543147258105) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic_disabled (5817895648306183464) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr (8951699885885742076) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr_enabled (2519630715322138317) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr_disabled (5831267468931377699) -->
-    <skip />
-    <!-- no translation found for call_barring_baic (5272726081458339912) -->
-    <skip />
-    <!-- no translation found for call_barring_baic_enabled (2457134916223203380) -->
-    <skip />
-    <!-- no translation found for call_barring_baic_disabled (6945604947500275636) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr (5728784220691481693) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr_enabled (6533336994391716127) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr_disabled (6746329853943256566) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all (5269788384941003415) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all_description (4972365443287257704) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_success (8014685598632000936) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd (6887420609726284232) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_description (5505087790260233953) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_description_disabled (7630770327645349957) -->
-    <skip />
-    <!-- no translation found for call_barring_pwd_not_match (6716711689350314525) -->
-    <skip />
-    <!-- no translation found for call_barring_right_pwd_number (2902966502520410446) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_success (3278310763742760321) -->
-    <skip />
-    <!-- no translation found for call_barring_old_pwd (6080515987320238522) -->
-    <skip />
-    <!-- no translation found for call_barring_new_pwd (7048532299150269547) -->
-    <skip />
-    <!-- no translation found for call_barring_confirm_pwd (1947167278466285411) -->
-    <skip />
-    <!-- no translation found for messageCallBarring (2412123220272136055) -->
-    <skip />
-    <!-- no translation found for call_barring_settings (80766145008623645) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all_no_password (920902774366557311) -->
-    <skip />
+    <string name="labelCallBarring" msgid="3452870940716226978">"通話制限"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"ON"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"OFF"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"すべての発信"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"発信ブロックをすべて無効にしますか？"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"すべての発信をブロックしますか？"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"国際電話の発信"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"国際電話の発信ブロックを無効にしますか？"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"国際電話の発信をブロックしますか？"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"国際ローミングの発信"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"国際ローミングの発信ブロックを無効にしますか？"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"国際ローミングの発信をブロックしますか？"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"すべての着信"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"着信ブロックをすべて無効にしますか？"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"すべての着信をブロックしますか？"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"国際ローミングの着信"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"国際ローミングの着信ブロックをすべて無効にしますか？"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"国際ローミングの着信をブロックしますか？"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"すべて無効にする"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"通話制限設定をすべて無効にする"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"通話制限が無効になりました"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"パスワードを変更"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"通話制限パスワードを変更"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"通話制限パスワードを変更できません。"</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"パスワードが一致しません"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"4 桁の数字のパスワードを入力"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"パスワードが変更されました"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"古いパスワード"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"新しいパスワード"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"パスワードを確認"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"パスワードを入力"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"通話制限設定"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"通話制限設定をすべて無効にしますか？"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"通話が転送されました。"</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"通話が転送されました。"</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"応答保留中です。"</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"電話番号をブロックできませんでした。"</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"非公開ユーザー グループの通話。"</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"通話の着信が制限されています。"</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"通話の発信が制限されています。"</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"電話の転送が有効になっています。"</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"この他の着信を転送しました。"</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"別の電話番号に電話を転送しました。"</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"別の電話番号に電話を転送しています。"</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"通話保留中。"</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"通話が再開されました。"</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"電話が転送されてきました。"</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"転送されてきた電話。"</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"グループ通話に参加しようとしています。"</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"通話の保留が解除されました。"</string>
 </resources>
