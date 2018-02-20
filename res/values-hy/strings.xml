@@ -246,7 +246,7 @@
     <string name="data_usage_template" msgid="8526428824844656364">"Oգտագործվել է <xliff:g id="ID_1">%1$s</xliff:g> բջջային ինտերնետ (<xliff:g id="ID_2">%2$s</xliff:g>)"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Լրացուցիչ"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Օպերատոր"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"օպերատոր, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"օպերատոր, esim, sim, euicc, մի օպերատորից անցնել մյուսին, ավելացնել օպերատոր"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Բջջային ինտերնետ"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Օգտվել բջջային ինտերնետից"</string>
@@ -426,7 +426,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Ջնջվում է ամրակայված հեռախոսահամարը ..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Թույլատրված հեռախոսահամարը ջնջված է:"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN-ը չի թարմացվել, քանի որ դուք մուտքագրել եք սխալ PIN:"</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN-ը չթարմացվեց, քանի որ համարը լրացված չէ կամ գերազանցում է 20 նիշը:"</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN-ը չթարմացվեց, քանի որ համարը գերազանցում է 20 նիշը:"</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN-ը չի թարմացվել: PIN2-ը սխալ է կամ հեռախոսահամարը մերժված է:"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN գործողությունը ձախողվեց:"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Ընթերցում է SIM քարտից..."</string>
@@ -529,6 +529,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Չհաջողվեց ներմուծել կոնտակտը"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Լսողական ապարատ"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Միացնել լսողական ապարատի աջակցումը"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"Միացնել կամ անջատել RTT գործառույթը"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY-ն անջատված է"</item>
     <item msgid="3971695875449640648">"TTY Full"</item>
@@ -693,4 +695,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Վերականգնում ժամաչափի լրանալու արդյունքում"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Հաղորդակարգի անհայտ սխալ"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Միջցանցային փոխազդեցության անհայտ սխալ"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"Զանգերի արգելափակում"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Միացված է"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Անջատված է"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Բոլոր ելքային զանգերը"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Հանե՞լ բոլոր ելքային զանգերի արգելափակումը"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Արգելափակե՞լ բոլոր ելքային զանգերը"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Ելքային միջազգային զանգեր"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Հանե՞լ ելքային միջազգային զանգերի արգելափակումը"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Արգելափակե՞լ ելքային միջազգային զանգերը"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"Ելքային զանգեր միջազգային ռոումինգում"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Հանե՞լ միջազգային ռոումինգում ելքային զանգերի արգելափակումը"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Արգելափակե՞լ ելքային զանգերը միջազգային ռոումինգում"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Բոլոր մուտքային զանգերը"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Հանե՞լ բոլոր մուտքային զանգերի արգելափակումը"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Արգելափակե՞լ բոլոր մուտքային զանգերը"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Մուտքային զանգեր միջազգային ռոումինգում"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Հանե՞լ միջազգային ռոումինգում բոլոր մուտքային զանգերի արգելափակումը"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Արգելափակե՞լ մուտքային զանգերը միջազգային ռոումինգում"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Անջատել բոլոր կարգավորումները"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Անջատել զանգերի արգելափակման բոլոր կարգավորումները"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Զանգերի արգելափակման կարգավորումներն անջատվեցին"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Փոխել գաղտնաբառը"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Փոխել զանգերի արգելափակման գաղտնաբառը"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Չհաջողվեց փոխել զանգերի արգելափակման գաղտնաբառը:"</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Գաղտնաբառերը չեն համընկնում"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Մուտքագրեք 4 թվից բաղկացած գաղտնաբառ"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Գաղտնաբառը փոխվեց"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Հին գաղտնաբառը"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Նոր գաղտնաբառը"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Հաստատել գաղտնաբառը"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Մուտքագրեք գաղտնաբառը"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Զանգերի արգելափակման կարգավորումներ"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Անջատե՞լ զանգերի արգելափակման բոլոր կարգավորումները"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Զանգը վերահասցեավորվեց:"</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Զանգը վերահասցեավորվեց:"</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Զանգը սպասման մեջ է:"</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"Համարի արգելափակումը մերժված է:"</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Կապակցում օգտատերերի փակ խմբի հետ"</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Բոլոր մուտքային զանգերն արգելափակված են:"</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Բոլոր ելքային զանգերն արգելափակված են:"</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Զանգի վերահասցեավորումն ակտիվ է:"</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Հավելյալ զանգը վերահասցեավորվեց:"</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Զանգը վերահասցեավորվեց:"</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Զանգը վերահասցեավորվում է:"</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Զանգը սպասման մեջ է:"</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Զանգը վերսկսվեց:"</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Զանգը վերահասցեավորվեց:"</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Վերահասցեավորված զանգ"</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Միացում կոնֆերանս զանգի"</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Զանգը հանվեց սպասման ռեժիմից:"</string>
 </resources>

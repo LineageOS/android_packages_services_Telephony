@@ -246,7 +246,7 @@
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> موبائل ڈیٹا <xliff:g id="ID_2">%2$s</xliff:g> میں استعمال ہوا"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"جدید ترین"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"کیریئر"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"‏کیریئر، esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"‏کیریئر، esim, sim, euicc، کیریئرز سوئچ کریں، کیریئر شامل کریں"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"موبائل ڈیٹا"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"موبائل نیٹ ورک استعمال کرکے ڈیٹا تک رسائی حاصل کریں"</string>
@@ -420,7 +420,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"فکسڈ ڈائلنگ نمبر حذف کر رہا ہے…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"فکسڈ ڈائلنگ نمبر حذف ہوگیا۔"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"‏FDN اپ ڈیٹ نہیں ہوا تھا کیونکہ آپ نے ایک غلط PIN ٹائپ کر دیا۔"</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"‏FDN اپ ڈیٹ نہیں ہوا کیونکہ نمبر خالی ہے یا 20 ہندسوں سے زائد ہے۔"</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"‏FDN اپ ڈیٹ نہیں ہوا کیونکہ نمبر 20 ہندسوں سے زائد ہے۔"</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"‏FDN اپ ڈیٹ نہیں ہوا تھا کیونکہ PIN2 غلط تھا یا فون نمبر مسترد کر دیا گیا تھا۔"</string>
     <string name="fdn_failed" msgid="540018079008319747">"‏FDN کا عمل ناکام ہوگیا۔"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"‏SIM کارڈ سے پڑھ رہا ہے…"</string>
@@ -523,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"رابطہ درآمد کرنے میں ناکام"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"سماعتی آلات"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"سماعتی آلہ کی ہم آہنگی آن کریں"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"‏RTT آن یا آف کریں"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"‏TTY آف"</item>
     <item msgid="3971695875449640648">"‏TTY مکمل"</item>
@@ -687,4 +689,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"ٹائمر کی اختتامی تاریخ پر بازیابی"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"پروٹوکول کی خرابی، غیر واضح"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"مل جل کر کام ہو رہا ہے، غیر واضح"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"کال میں رکاوٹ"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"آن"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"آف"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"سبھی باہر جانے والی"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"سبھی باہر جانے والی کالز کو مسدود کرنے کو غیر فعال کریں؟"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"سبھی باہر جانے والی کالز کو مسدود کریں؟"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"باہر جانے والے بین الاقوامی"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"باہر جانے والی بین الاقوامی کالز کو مسدود کرنے کو غیر فعال کریں؟"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"باہر جانے والی بین الاقوامی کالز کو مسدود کریں؟"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"باہر جانے والی بین الاقوامی رومنگ"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"باہر جانے والی بین الاقوامی رومنگ کو مسدود کرنے کو غیر فعال کریں؟"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"باہر جانے والی بین الاقوامی رومنگ کو مسدود کریں؟"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"سبھی آنے والی"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"سبھی آنے والی کالز کو مسدود کرنے کو غیر فعال کریں؟"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"سبھی آنے والی کالز کو مسدود کریں؟"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"آنے والی بین الاقوامی رومنگ"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"سبھی آنے والی بین الاقوامی رومنگ کو مسدود کرنے کو غیر فعال کریں؟"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"آنے والی بین الاقوامی رومنگ کو مسدود کریں؟"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"سبھی کو غیر فعال کریں"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"کال میں رکاوٹ والی سبھی ترتیبات کو غیر فعال کریں"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"کال میں رکاوٹ کو غیر فعال کر دیا گیا"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"پاس ورڈ تبدیل کریں"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"کال میں رکاوٹ والے پاس ورڈ کو تبدیل کریں"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"کال میں رکاوٹ والا پاس ورڈ تبدیل نہیں ہو سکتا۔"</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"پاس ورڈز مماثل نہیں ہیں"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"4 نمبرز والا ایک پاس ورڈ درج کریں"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"پاس ورڈ تبدیل ہو گیا"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"پرانا پاس ورڈ"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"نیا پاس ورڈ"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"پاس ورڈ کی توثیق کریں"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"پاس ورڈ درج کریں"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"کال میں رکاوٹ کی ترتیبات"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"کال میں رکاوٹ والی سبھی ترتیبات کو غیر فعال کریں؟"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"کال کو مُنصرف کیا گیا۔"</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"کال آگے منتقل کر دی گئی۔"</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"کال انتظار میں ہے۔"</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"نمبر کو مسدود کرنا مسترد کر دیا گیا۔"</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"بند صارف گروپ کال۔"</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"آنے والی کالز کی اجازت نہیں ہے۔"</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"کی جانے والی کالز کی اجازت نہیں ہے۔"</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"کال فارورڈنگ فعال ہے۔"</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"اضافی کال آگے منتقل کر دی گئی۔"</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"صریح کال کی منتقلی مکمل ہو گئی۔"</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"صریح کال کی منتقلی پیشرفت میں ہے۔"</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"کال ہولڈ پر ہے۔"</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"کال دوبارہ شروع ہو گئی۔"</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"کال کو مُنصرف کیا گیا۔"</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"کال کو آگے منتقل کیا گیا۔"</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"کانفرنس کال میں شمولیت ہو رہی ہے۔"</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"ہولڈ پر رکھی کال جاری ہو گئی۔"</string>
 </resources>

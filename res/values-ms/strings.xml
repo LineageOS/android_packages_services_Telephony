@@ -246,7 +246,7 @@
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> data mudah alih digunakan <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Terperinci"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Pembawa"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"pembawa, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"pembawa, esim, sim, euicc, tukar pembawa, tambah pembawa"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Data mudah alih"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Akses data menggunakan rangkaian mudah alih"</string>
@@ -420,7 +420,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Memadamkan nombor dailan tetap..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Nombor dailan tetap dipadamkan."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN tidak dikemaskini kerana anda telah menaip PIN yang salah."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN tidak dikemas kini kerana nombor kosong atau melebihi 20 digit."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN tidak dikemas kini kerana nombor melebihi 20 digit."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN tidak dikemaskini. PIN2 salah atau nombor telefon telah ditolak."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operasi FDN gagal."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Membaca daripada kad SIM..."</string>
@@ -523,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Gagal mengimport kenalan"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Alat pendengaran"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Hidupkan keserasian alat pendengaran"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"Hidupkan atau matikan RTT"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Dimatikan"</item>
     <item msgid="3971695875449640648">"TTY Penuh"</item>
@@ -687,4 +689,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Pemulihan pada tamat tempoh pemasa"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Ralat protokol, tidak ditentukan"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Saling berfungsi, tidak ditentukan"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"Sekatan panggilan"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Hidup"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Mati"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Semua panggilan keluar"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Lumpuhkan penyekatan semua panggilan keluar?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Sekat semua panggilan keluar?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Panggilan keluar antarabangsa"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Lumpuhkan penyekatan panggilan keluar antarabangsa?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Sekat panggilan keluar antarabangsa?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"Panggilan keluar perayauan antarabangsa"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Lumpuhkan penyekatan panggilan keluar perayauan antarabangsa?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Sekat panggilan keluar perayauan antarabangsa?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Semua panggilan masuk"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Lumpuhkan penyekatan semua panggilan masuk?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Sekat semua panggilan masuk?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Panggilan masuk perayauan antarabangsa"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Lumpuhkan penyekatan semua panggilan masuk perayauan antarabangsa?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Sekat panggilan masuk perayauan antarabangsa?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Nyahaktifkan semua"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Nyahaktifkan semua tetapan sekatan panggilan"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Sekatan panggilan dinyahaktifkan"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Tukar kata laluan"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Tukar kata laluan sekatan panggilan"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Tidak boleh menukar kata laluan sekatan panggilan."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Kata laluan tidak sepadan"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Masukkan kata laluan dengan 4 nombor"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Kata laluan ditukar"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Kata laluan lama"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Kata laluan baharu"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Sahkan kata laluan"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Masukkan kata laluan"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Tetapan sekatan panggilan"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Nyahaktifkan semua tetapan sekatan panggilan?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Panggilan dipesongkan."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Panggilan dimajukan."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Panggilan sedang menunggu."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"Penyekatan nombor ditolak."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Panggilan kumpulan pengguna tertutup."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Panggilan masuk disekat."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Panggilan keluar disekat."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Pemajuan panggilan aktif."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Panggilan tambahan dimajukan."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Pindahan panggilan tak tersirat selesai."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Pindahan panggilan tak tersirat sedang berlangsung."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Panggilan ditunda."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Panggilan disambung semula."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Panggilan telah dipesongkan."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Panggilan dimajukan."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Menyertai panggilan sidang."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Panggilan yang ditunda telah dilepaskan."</string>
 </resources>

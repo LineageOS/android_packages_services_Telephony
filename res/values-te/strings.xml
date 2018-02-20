@@ -246,7 +246,7 @@
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> మధ్య కాలంలో <xliff:g id="ID_1">%1$s</xliff:g> మొబైల్ డేటా ఉపయోగించబడింది"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"అధునాతనం"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"క్యారియర్"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"క్యారియర్, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"క్యారియర్, ఇసిమ్, సిమ్, ఇయుక్, క్యారియర్‌లను మార్చు, క్యారియర్‌ను జోడించు"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"మొబైల్ డేటా"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"మొబైల్ నెట్‌వర్క్‌ను ఉపయోగించి డేటాను యాక్సెస్ చేయండి"</string>
@@ -420,7 +420,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ను తొలగిస్తోంది..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ఫిక్స్‌డ్ డయలింగ్ నంబర్ తొలగించబడింది."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"మీరు చెల్లని PINను టైప్ చేసినందున FDN నవీకరించబడలేదు."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"నంబర్ ఖాళీగా వదలిపెట్టినందున లేదా 20 అంకెలను మించినందున FDN నవీకరించబడలేదు."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"నంబర్ 20 అంకెలను మించినందున FDN అప్‌డేట్ చేయబడలేదు."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN నవీకరించబడలేదు. PIN2 చెల్లదు లేదా ఫోన్ నంబర్ తిరస్కరించబడింది."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN చర్య విఫలమైంది."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM కార్డు నుండి చదువుతోంది…"</string>
@@ -523,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"పరిచయాన్ని దిగుమతి చేయడంలో విఫలమైంది"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"వినికిడి సహాయక సాధనాలు"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"వినికిడి సహాయక సాధనం అనుకూలతను ప్రారంభించండి"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT ఆన్ లేదా ఆఫ్ చేయండి"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ఆఫ్‌లో ఉన్నవి"</item>
     <item msgid="3971695875449640648">"TTY సంపూర్ణంగా ఉన్నవి"</item>
@@ -687,4 +689,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"టైమర్ గడువుపై పునరుద్ధరణ"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"ప్రోటోకాల్ ఎర్రర్, పేర్కొనబడలేదు"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"కలయిక, పేర్కొనబడలేదు"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"కాల్ బేరింగ్"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"ఆన్"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"ఆఫ్"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"అన్ని అవుట్‌గోయింగ్"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"అన్ని అవుట్‌గోయింగ్ కాల్‌లను బ్లాక్ చేయడాన్ని నిలిపివేయాలా?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"అన్ని అవుట్‌గోయింగ్ కాల్‌లను బ్లాక్ చేయాలా?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"అవుట్‌గోయింగ్ అంతర్జాతీయ"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"అవుట్‌గోయింగ్ అంతర్జాతీయ కాల్‌లను బ్లాక్ చేయడాన్ని నిలిపివేయాలా?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"అవుట్‌గోయింగ్ అంతర్జాతీయ కాల్‌లను బ్లాక్ చేయాలా?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"అవుట్‌గోయింగ్ అంతర్జాతీయ రోమింగ్"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"అవుట్‌గోయింగ్ అంతర్జాతీయ రోమింగ్‌ని బ్లాక్ చేయడాన్ని నిలిపివేయాలా?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"అవుట్‌గోయింగ్ అంతర్జాతీయ రోమింగ్‌ని బ్లాక్ చేయాలా?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"అన్ని ఇన్‌కమింగ్"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"అన్ని ఇన్‌కమింగ్ కాల్‌లను బ్లాక్ చేయడాన్ని నిలిపివేయాలా?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"అన్ని ఇన్‌కమింగ్ కాల్‌లను బ్లాక్ చేయాలా?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"ఇన్‌కమింగ్ అంతర్జాతీయ రోమింగ్"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"ఇన్‌కమింగ్ అంతర్జాతీయ రోమింగ్‌ని మొత్తం బ్లాక్ చేయడాన్ని నిలిపివేయాలా?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"ఇన్‌కమింగ్ అంతర్జాతీయ రోమింగ్‌ని బ్లాక్ చేయాలా?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"అన్నింటినీ నిష్క్రియం చేయండి"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"అన్ని కాల్ బేరింగ్ సెట్టింగ్‌లను నిష్క్రియం చేయండి"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"కాల్ బేరింగ్ నిష్క్రియం చేయబడింది"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"పాస్‌వర్డ్‌ను మార్చండి"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"కాల్ బేరింగ్ పాస్‌వర్డ్‌ని మార్చండి"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"కాల్ బేరింగ్ పాస్‌వర్డ్‌ని మార్చడం సాధ్యం కాదు."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"పాస్‌‌వర్డ్‌లు సరిపోలడం లేదు"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"4 సంఖ్యలతో పాస్‌వర్డ్‌ని నమోదు చేయండి"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"పాస్‌వర్డ్ మార్చబడింది"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"పాత పాస్‌వర్డ్"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"కొత్త పాస్‌వర్డ్"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"పాస్‌వర్డ్‌ని నిర్ధారించండి"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"పాస్‌వర్డ్‌ని నమోదు చేయండి"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"కాల్ బేరింగ్ సెట్టింగ్‌లు"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"అన్ని కాల్ బేరింగ్ సెట్టింగ్‌లను నిష్క్రియం చేయాలా?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"కాల్ మళ్లించబడింది."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"కాల్ ఫార్వార్డ్ చేయబడింది."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"కాల్ నిరీక్షణలో ఉంది."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"నంబర్ బ్లాకింగ్ తిరస్కరించబడింది."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"దగ్గరి వినియోగదారు సమూహ కాల్."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"ఇన్‌కమింగ్ కాల్‌లు నిరోధించబడ్డాయి"</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"అవుట్‌గోయింగ్ కాల్‌లు నిరోధించబడ్డాయి."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"కాల్ ఫార్వర్డింగ్ సక్రియంగా ఉంది."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"అదనపు కాల్ ఫార్వార్డ్ చేయబడింది."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"అభ్యంతరకరమైన కాల్ బదిలీ పూర్తయింది."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"అభ్యంతరకరమైన కాల్ బదిలీ ప్రోగ్రెస్‌లో ఉంది."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"కాల్ హోల్డ్‌లో ఉంది."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"కాల్ మళ్లీ ప్రారంభించబడింది."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"కాల్ మళ్లించబడింది."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"కాల్ ఫార్వార్డ్ చేయబడింది."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"కాన్ఫరెన్స్ కాల్‌లో చేరుతున్నారు"</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"హోల్డ్‌లో ఉంచిన కాల్ ప్రారంభించబడింది."</string>
 </resources>

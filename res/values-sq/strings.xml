@@ -246,7 +246,7 @@
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> të dhëna celulare të përdorura mes datave <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Të përparuara"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operatori celular"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operatori celular, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"operatori celular, esim, sim, euicc, ndërro operatorët celularë, shto operatorin celular"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> - <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Të dhënat celulare"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Qasu te të dhënat duke përdorur rrjetin celular"</string>
@@ -420,7 +420,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Po fshin numrin me telefonim të përzgjedhur..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Numri me telefonim të përzgjedhur u fshi."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN-ja nuk u përditësua sepse shkrove një PIN të pasaktë."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"Funksioni FDN nuk u përditësua sepse numri është bosh ose i kalon 20 shifra."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"Funksioni FDN nuk u përditësua sepse numri i kalon 20 shifra."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN-ja nuk u përditësua. PIN2-shi ishte i pasaktë ose numri i telefonit u refuzua."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operacioni FDN dështoi"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Po lexon nga karta SIM..."</string>
@@ -523,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Dështoi në importimin e kontaktit"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Aparatet e dëgjimit"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Aktivizo përputhshmërinë e aparateve të dëgjimit"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"Aktivizo ose çaktivizo RTT"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY i çaktivizuar"</item>
     <item msgid="3971695875449640648">"TTY i plotë"</item>
@@ -687,4 +689,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Rikuperimi pas skadimit të kohëmatësit"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Gabim i protokollit, i paspecifikuar"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Ndërlidhja, e paspecifikuar"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"Bllokimi i telefonatave"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Aktiv"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Joaktiv"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Të gjitha telefonatat dalëse"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Të çaktivizohet bllokimi për të gjitha telefonatat dalëse?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Të bllokohen të gjitha telefonatat dalëse?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Telefonatat ndërkombëtare dalëse"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Të çaktivizohet bllokimi për telefonatat ndërkombëtare dalëse?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Të bllokohen telefonatat ndërkombëtare dalëse?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"Telefonatat ndërkombëtare dalëse në roaming"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Të çaktivizohet bllokimi për telefonatat ndërkombëtare dalëse në roaming?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Të bllokohen telefonatat ndërkombëtare dalëse në roaming?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Të gjitha telefonatat hyrëse"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Të çaktivizohet bllokimi për të gjitha telefonatat hyrëse?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Të bllokohen të gjitha telefonatat hyrëse?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Telefonatat ndërkombëtare hyrëse në roaming"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Të çaktivizohet bllokimi për të gjitha telefonatat ndërkombëtare hyrëse në roaming?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Të bllokohen telefonatat ndërkombëtare hyrëse në roaming?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Çaktivizo të gjitha"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Çaktivizo të gjitha cilësimet e bllokimit të telefonatave"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Bllokimi i telefonatave u çaktivizua"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Ndrysho fjalëkalimin"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Ndrysho fjalëkalimin për bllokimin e telefonatave"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Fjalëkalimi për bllokimin e telefonatave nuk mund të ndryshohet."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Fjalëkalimet nuk përputhen"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Fut një fjalëkalim me 4 numra"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Fjalëkalimi u ndryshua"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Fjalëkalimi i vjetër"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Fjalëkalimi i ri"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Konfirmo fjalëkalimin"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Fut fjalëkalimin"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Cilësimet e bllokimit të telefonatave"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Të çaktivizohen të gjitha cilësimet e bllokimit të telefonatave?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Telefonata u devijua."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Telefonata u transferua."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Telefonata është në pritje."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"Bllokimi i numrit u refuzua."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Telefonatë në grup të mbyllur përdoruesish."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Telefonatat hyrëse u bllokuan."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Telefonatat dalëse janë bllokuar."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Transferimi i telefonatave është aktiv."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Një telefonatë tjetër u transferua."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Transferimi i qartë i telefonatave përfundoi."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Transferimi i qartë i telefonatave në vazhdim."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Telefonatë në pritje."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Telefonata vazhdoi."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Telefonata u devijua."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Telefonatë e transferuar."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Po bashkohesh në një telefonatë konferencë."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Telefonata në pritje u shkëput."</string>
 </resources>

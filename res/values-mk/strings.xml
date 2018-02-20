@@ -246,7 +246,7 @@
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> потрошен мобилен интернет во периодот <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Напредни"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Оператор"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"оператор, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"оператор, esim, sim, euicc, префрли оператори, додај оператор"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> - <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Мобилен интернет"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Пристапете до податоците преку мобилна мрежа"</string>
@@ -426,7 +426,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Бришење број на фиксно бирање..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Бројот на фиксно бирање е избришан."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN не се ажурираше зашто внесовте погрешен PIN."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN не е ажуриран затоа што бројот е празен или содржи повеќе од 20 цифри."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN не е ажуриран затоа што бројот содржи повеќе од 20 цифри."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN не се ажурираше. PIN2 кодот е неточен или телефонскиот број е одбиен."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Операцијата со FDN не успеа."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Се чита од SIM картичка..."</string>
@@ -529,6 +529,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Не успеа да увезе контакт"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Слушни помагала"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Вклучи компатибилност на слушни помагала"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"Вклучете или исклучете RTT"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY исклучени"</item>
     <item msgid="3971695875449640648">"TTY целосни"</item>
@@ -693,4 +695,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Враќање на истекување на тајмерот"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Грешка на протокол, неодредено"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Меѓусебно комуницирање, неодредено"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"Забрана на повик"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Вклучено"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Исклучено"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Сите појдовни"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Да се оневозможи блокирањето на сите појдовни повици?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Да се блокираат сите појдовни повици?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Појдовни меѓународни повици"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Да се оневозможи блокирањето појдовни меѓународни повици?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Да се блокираат појдовните меѓународни повици?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"Појдовни меѓународни повици во роаминг"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Да се оневозможи блокирањето појдовни меѓународни повици во роаминг?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Да се блокираат појдовните меѓународни повици во роаминг?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Сите дојдовни"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Да се оневозможи блокирањето на сите дојдовни повици?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Да се блокираат сите дојдовни повици?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Дојдовни меѓународни повици во роаминг"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Да се оневозможи блокирањето на сите дојдовни меѓународни повици во роаминг?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Да се блокираат дојдовните меѓународни повици во роаминг?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Деактивирајте ги сите"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Деактивирајте ги сите поставки за забрана на повици"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Забраната на повици е деактивирана"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Променете ја лозинката"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Променете ја лозинката за забрана на повици"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Не може да се промени лозинката за забрана на повици."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Лозинките не се совпаѓаат"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Внесете лозинка со 4 броеви"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Лозинката е променета"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Стара лозинка"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Нова лозинка"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Потврдете ја лозинката"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Внесете лозинка"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Поставки за забрана на повици"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Да се деактивираат сите поставки за забрана на повици?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Повикот е пренасочен."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Повикот е проследен."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Повик на чекање."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"Блокирањето број е отфрлено."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Повик на затворена група корисници."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Дојдовните повици се забранети."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Појдовните повици се забранети."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Проследувањето повик е активно."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Дополнителен повик е проследен."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Пренесувањето експлицитен повик е завршено."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Пренесувањето експлицитен повик е во тек."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Повик на чекање."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Повикот продолжи."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Повикот е пренасочен."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Проследен повик."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Се придружувате на конференциски повик."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Повикот на чекање е прекинат."</string>
 </resources>

@@ -523,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"संपर्क आयात करने में विफल"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"श्रवण सहायक साधन"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवण सहायक साधन संगतता चालू करें"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT को चालू या बंद करें"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बंद"</item>
     <item msgid="3971695875449640648">"TTY पूर्ण"</item>
@@ -687,70 +689,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"टाइमर समाप्ति पर बहाली"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"प्रोटोकॉल गड़बड़ी, जानकारी नहीं दी गई है"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"इंटरनेटवर्किंग, जानकारी नहीं दी गई है"</string>
-    <!-- no translation found for labelCallBarring (3452870940716226978) -->
-    <skip />
-    <!-- no translation found for sum_call_barring_enabled (6804489690436703488) -->
-    <skip />
-    <!-- no translation found for sum_call_barring_disabled (5900772179198857783) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc (1199843944333106035) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc_enabled (8112118391869380361) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc_disabled (7806697133004697974) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic (3162154267825211826) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic_enabled (2634377543147258105) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic_disabled (5817895648306183464) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr (8951699885885742076) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr_enabled (2519630715322138317) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr_disabled (5831267468931377699) -->
-    <skip />
-    <!-- no translation found for call_barring_baic (5272726081458339912) -->
-    <skip />
-    <!-- no translation found for call_barring_baic_enabled (2457134916223203380) -->
-    <skip />
-    <!-- no translation found for call_barring_baic_disabled (6945604947500275636) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr (5728784220691481693) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr_enabled (6533336994391716127) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr_disabled (6746329853943256566) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all (5269788384941003415) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all_description (4972365443287257704) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_success (8014685598632000936) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd (6887420609726284232) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_description (5505087790260233953) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_description_disabled (7630770327645349957) -->
-    <skip />
-    <!-- no translation found for call_barring_pwd_not_match (6716711689350314525) -->
-    <skip />
-    <!-- no translation found for call_barring_right_pwd_number (2902966502520410446) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_success (3278310763742760321) -->
-    <skip />
-    <!-- no translation found for call_barring_old_pwd (6080515987320238522) -->
-    <skip />
-    <!-- no translation found for call_barring_new_pwd (7048532299150269547) -->
-    <skip />
-    <!-- no translation found for call_barring_confirm_pwd (1947167278466285411) -->
-    <skip />
-    <!-- no translation found for messageCallBarring (2412123220272136055) -->
-    <skip />
-    <!-- no translation found for call_barring_settings (80766145008623645) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all_no_password (920902774366557311) -->
-    <skip />
+    <string name="labelCallBarring" msgid="3452870940716226978">"कॉल रोकें"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"चालू"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"बंद"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"सभी जाने वाले"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"सभी जाने वाले कॉल को ब्लॉक करना बंद करें?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"सभी जाने वाले कॉल ब्लॉक करें?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"जाने वाले अंतरराष्ट्रीय"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"जाने वाले अंतरराष्ट्रीय कॉल को ब्लॉक करना बंद करें?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"जाने वाले अंतरराष्ट्रीय कॉल ब्लॉक करें?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"जाने वाले अंतरराष्ट्रीय रोमिंग"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"जाने वाले अंतरराष्ट्रीय रोमिंग को ब्लॉक करना बंद करें?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"जाने वाले अंतरराष्ट्रीय रोमिंग ब्लॉक करें?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"सभी आने वाले"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"सभी आने वाले कॉल को ब्लॉक करना बंद करें?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"सभी आने वाले कॉल ब्लॉक करें?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"आने वाले अंतरराष्ट्रीय रोमिंग"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"सभी आने वाले अंतरराष्ट्रीय रोमिंग को ब्लॉक करना बंद करें?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"आने वाले अंतरराष्ट्रीय रोमिंग ब्लॉक करें?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"सभी निष्क्रिय करें"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"कॉल रोकें सुविधा की सभी सेटिंग निष्क्रिय करें"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"कॉल रोकें सुविधा निष्क्रिय की गई"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"पासवर्ड बदलें"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"कॉल रोकें सुविधा का पासवर्ड बदलें"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"कॉल रोकें सुविधा का पासवर्ड बदला नहीं जा सकता."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"पासवर्ड मेल नहीं खाते"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"4 संख्याओं वाला एक पासवर्ड डालें"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"पासवर्ड बदल दिया गया"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"पुराना पासवर्ड"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"नया पासवर्ड"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"पासवर्ड की पुष्टि करें"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"पासवर्ड डालें"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"कॉल रोकें सुविधा की सेटिंग"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"कॉल रोकें सुविधा की सभी सेटिंग निष्क्रिय करें?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"कॉल दूसरे नंबर पर भेजे जाने के बजाय खुद को आ गया."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"कॉल दूसरे नंबर पर भेजा गया."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"कॉल प्रतीक्षा में है."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"नंबर ब्लॉक करना नामंज़ूर कर दिया गया है."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"सदस्यों तक सीमित उपयोगकर्ता समूह की कॉल."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"आने वाले कॉल (इनकमिंग) प्रतिबंधित हैं."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"किए जाने वाले कॉल (आउटगोइंग) प्रतिबंधित हैं."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"कॉल को दूसरे नंबर पर भेजा जाना सक्रिय है."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"अतिरिक्त कॉल को दूसरे नंबर पर भेजा गया."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"स्पष्ट कॉल ट्रांसफ़र पूरा हुआ."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"स्पष्ट कॉल ट्रांसफ़र जारी है."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"कॉल होल्ड पर है."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"कॉल फिर से शुरू किया गया."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"कॉल दूसरे नंबर पर भेजे जाने के बजाय खुद को आ गया था."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"दूसरे नंबर पर भेजा गया कॉल."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"कॉन्फ़्रेंस कॉल में शामिल हो रहे/रही हैं."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"होल्ड किए गए कॉल को होल्ड से हटा दिया गया है."</string>
 </resources>

@@ -246,7 +246,7 @@
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> തീയതികൾക്കിടയിൽ <xliff:g id="ID_1">%1$s</xliff:g> മൊബൈൽ ഡാറ്റ ഉപയോഗിച്ചു"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"വിപുലമായത്"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"കാരിയര്‍"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"കാരിയർ, ഇ-സിം, സിം, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"കാരിയർ, ഇ-സിം, euicc, കാരിയർമാരെ മാറുക, കാരിയറെ ചേർക്കുക"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"മൊബൈൽ ഡാറ്റ"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"മൊബൈൽ നെറ്റ്‌വർക്ക് ഉപയോഗിച്ച് ഡാറ്റ ആക്‌സസ് ചെയ്യുക"</string>
@@ -420,7 +420,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"സ്ഥിര ഡയലിംഗ് നമ്പർ ഇല്ലാതാക്കുന്നു…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"സ്ഥിര ഡയലിംഗ് നമ്പർ ഇല്ലാതാക്കി."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"നിങ്ങൾ തെറ്റായ പിൻ നൽകിയതിനാൽ FDN അപ്‌ഡേറ്റുചെയ്‌തില്ല."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"നമ്പറില്ലാത്തതിനാലോ അത് 20 അക്കങ്ങളിൽ കൂടുതൽ ഉള്ളതിനാലോ, FDN അപ്‌ഡേറ്റുചെയ്‌തില്ല."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"നമ്പർ 20 അക്കങ്ങൾ കവിഞ്ഞതിനാൽ FDN അപ്‌ഡേറ്റ് ചെയ്‌തില്ല."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN അപ്‌ഡേറ്റുചെയ്‌തില്ല. PIN2 തെറ്റായിരുന്നു, അല്ലെങ്കിൽ ഫോൺ നമ്പർ നിരസിച്ചു."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN പ്രവർത്തനം പരാജയപ്പെട്ടു."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"സിം കാർഡിൽ നിന്നും റീഡുചെയ്യുന്നു…"</string>
@@ -523,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"കോൺടാക്റ്റ് ഇമ്പോർട്ടുചെയ്യുന്നത് പരാജയപ്പെട്ടു"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"ശ്രവണ സഹായികൾ"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"ശ്രവണസഹായി അനുയോജ്യത ഓൺ ചെയ്യുക"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT ഓൺ അല്ലെങ്കിൽ ഓഫ് ചെയ്യുക"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ഓഫാണ്"</item>
     <item msgid="3971695875449640648">"TTY പൂർണ്ണം"</item>
@@ -687,4 +689,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"ടൈമർ കാലഹരണപ്പെടുമ്പോൾ വീണ്ടെടുക്കൽ"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"പ്രോട്ടോക്കോള്‍ പിശക്, വ്യക്തമാക്കിയിട്ടില്ല"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"ഇന്റർവർക്കിംഗ്, വ്യക്തമാക്കിയിട്ടില്ല"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"കോൾ തടയൽ"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"ഓൺ"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"ഓഫ്"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"എല്ലാ ഔട്ട്‌ഗോയിംഗും"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"എല്ലാ ഔട്ട്‌ഗോയിംഗ് കോളുകളും ബ്ലോക്ക് ചെയ്യുന്നത് പ്രവർത്തനരഹിതമാക്കണോ?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"എല്ലാ ഔട്ട്‌ഗോയിംഗ് കോളുകളും ബ്ലോക്ക് ചെയ്യണോ?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"അന്താരാഷ്‌ട്ര ഔട്ട്‌ഗോയിംഗ്"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"അന്താരാഷ്‌ട്ര ഔട്ട്‌ഗോയിംഗ് കോളുകൾ ബ്ലോക്ക് ചെയ്യുന്നത് പ്രവർത്തനരഹിതമാക്കണോ?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"അന്താരാഷ്‌ട്ര ഔട്ട്‌ഗോയിംഗ് കോളുകൾ ബ്ലോക്ക് ചെയ്യണോ?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"അന്താരാഷ്‌ട്ര റോമിംഗ് ഔട്ട്‌ഗോയിംഗ്"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"അന്താരാഷ്‌ട്ര റോമിംഗ് ഔട്ട്‌ഗോയിംഗ് ബ്ലോക്ക് ചെയ്യുന്നത് പ്രവർത്തനരഹിതമാക്കണോ?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"അന്താരാഷ്‌ട്ര റോമിംഗ് ഔട്ട്‌ഗോയിംഗ് ബ്ലോക്ക് ചെയ്യണോ?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"എല്ലാ ഇന്‍‌കമിംഗും"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"എല്ലാ ഇന്‍‌കമിംഗ് കോളുകളും ബ്ലോക്ക് ചെയ്യുന്നത് പ്രവർത്തനരഹിതമാക്കണോ?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"എല്ലാ ഇന്‍‌കമിംഗ് കോളുകളും ബ്ലോക്ക് ചെയ്യണോ?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"അന്താരാഷ്‌ട്ര റോമിംഗ് ഇന്‍‌കമിംഗ്"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"എല്ലാ അന്താരാഷ്‌ട്ര റോമിംഗ് ഇന്‍‌കമിംഗുകളും ബ്ലോക്ക് ചെയ്യുന്നത് പ്രവർത്തനരഹിതമാക്കണോ?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"അന്താരാഷ്‌ട്ര റോമിംഗ് ഇന്‍‌കമിംഗ് ബ്ലോക്ക് ചെയ്യണോ?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"എല്ലാം നിർജ്ജീവമാക്കുക"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"എല്ലാ കോൾ തടയൽ ക്രമീകരണവും നിർജ്ജീവമാക്കുക"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"കോൾ തടയൽ നിർജ്ജീവമാക്കി"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"പാസ്‌വേഡ് മാറ്റുക"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"കോൾ തടയൽ പാസ്‌വേഡ് മാറ്റുക"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"കോൾ തടയൽ പാസ്‌വേഡ് മാറ്റാനാവില്ല."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"പാസ്‌വേഡുകള്‍ പൊരുത്തപ്പെടുന്നില്ല"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"4 അക്കങ്ങളുള്ള പാസ്‌വേഡ് നൽകുക"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"‍പാസ്‌വേഡ് മാറ്റി"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"പഴയ പാസ്‌വേഡ്"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"പുതിയ പാസ്‌വേഡ്"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"പാസ്‌വേഡ് സ്ഥിരീകരിക്കുക"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"പാസ്‌വേഡ് നൽകുക"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"കോൾ തടയൽ ക്രമീകരണം"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"എല്ലാ കോൾ തടയൽ ക്രമീകരണവും നിർജ്ജീവമാക്കണോ?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"കോൾ വഴി തിരിച്ചുവിട്ടു."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"കോൾ കൈമാറി."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"കോൾ വെയ്‌റ്റിംഗിലാണ്."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"നമ്പർ ബ്ലോക്ക് ചെയ്യൽ നിരസിച്ചു."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"ഉപയോക്തൃ ഗ്രൂപ്പ് കോൾ അവസാനിപ്പിച്ചു."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"ഇൻകമിംഗ് കോളുകൾ തടഞ്ഞിരിക്കുന്നു."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"ഔട്ട്‌ഗോയിംഗ് കോളുകൾ തടഞ്ഞു."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"കോൾ കൈമാറൽ സജീവമാണ്."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"അധിക കോൾ കൈമാറി."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"എക്‌സ്‌പ്ലിസിറ്റ് കോൾ കൈമാറൽ പൂർത്തിയായി."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"എക്‌സ്‌പ്ലിസിറ്റ് കോൾ കൈമാറൽ പുരോഗതിയിലാണ്."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"കോൾ ഹോൾഡിലാണ്."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"കോൾ വീണ്ടും ആരംഭിച്ചു."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"കോൾ വഴി തിരിച്ചുവിട്ടിട്ടുണ്ട്."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"കൈമാറിയ കോൾ."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"കോൺഫറൻസ് കോളിൽ ചേരുന്നു."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"ഹോൾഡ് ചെയ്‌ത കോൾ സ്വതന്ത്രമാക്കി."</string>
 </resources>

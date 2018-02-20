@@ -420,8 +420,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ခေါ်ဆိုသည့်အခြေစိုက်နံပါတ်အားဖျက်နေသည်"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ပုံသေ ခေါ်ဆိုမှု နံပါတ် ဖျက်ပြီး"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"ပင်နံပါတ် မမှန်သောကြောင့် FDNကို အဆင့်မြှင့်တင်ခြင်းမပြုလုပ်နိုင်ပါ"</string>
-    <!-- no translation found for fdn_invalid_number (2062898833049589309) -->
-    <skip />
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"နံပါတ်တွင် ဂဏန်းအလုံး ၂၀ ကျော်နေသဖြင့် FDN ကို အပ်ဒိတ်လုပ်၍ မရပါ။"</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN ပြောင်းလဲမှု မဖြစ်ပါ။ ပင်နံပါတ် ၂ မှားယွင်းခြင်း သို့မဟုတ် ဖုန်းနံပါတ်ကို ငြင်းဖယ်ခံရခြင်း တစ်ခုခုဖြစ်ပါသည်"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN လုပ်ဆောင်ချက် မအောင်မြင်ပါ"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"ဆင်းမ်ကဒ်မှ ဖတ်နေပါသည်..."</string>
@@ -524,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"အဆက်အသွယ်ကို တင်သွင်း မရခဲ့"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"နားကြပ်"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"အကြားအာရုံကိရိယာသုံးနိုင်ရန် ဖွင့်ပါ"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT ဖွင့်ပါ (သို့) ပိတ်ပါ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ပိတ်ထားသည်"</item>
     <item msgid="3971695875449640648">"TTY အပြည့်"</item>
@@ -688,70 +689,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"သတ်မှတ်ချိန်ကုန်ဆုံးပြီး ပြန်လည်ရယူမှုစတင်ခြင်း"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"ပရိုတိုကော အမှားအယွင်း၊ သတ်မှတ်မထားပါ"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"ဆက်နွယ်မှု၊ သတ်မှတ်မထားပါ"</string>
-    <!-- no translation found for labelCallBarring (3452870940716226978) -->
-    <skip />
-    <!-- no translation found for sum_call_barring_enabled (6804489690436703488) -->
-    <skip />
-    <!-- no translation found for sum_call_barring_disabled (5900772179198857783) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc (1199843944333106035) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc_enabled (8112118391869380361) -->
-    <skip />
-    <!-- no translation found for call_barring_baoc_disabled (7806697133004697974) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic (3162154267825211826) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic_enabled (2634377543147258105) -->
-    <skip />
-    <!-- no translation found for call_barring_baoic_disabled (5817895648306183464) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr (8951699885885742076) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr_enabled (2519630715322138317) -->
-    <skip />
-    <!-- no translation found for call_barring_baoicr_disabled (5831267468931377699) -->
-    <skip />
-    <!-- no translation found for call_barring_baic (5272726081458339912) -->
-    <skip />
-    <!-- no translation found for call_barring_baic_enabled (2457134916223203380) -->
-    <skip />
-    <!-- no translation found for call_barring_baic_disabled (6945604947500275636) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr (5728784220691481693) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr_enabled (6533336994391716127) -->
-    <skip />
-    <!-- no translation found for call_barring_baicr_disabled (6746329853943256566) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all (5269788384941003415) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all_description (4972365443287257704) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_success (8014685598632000936) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd (6887420609726284232) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_description (5505087790260233953) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_description_disabled (7630770327645349957) -->
-    <skip />
-    <!-- no translation found for call_barring_pwd_not_match (6716711689350314525) -->
-    <skip />
-    <!-- no translation found for call_barring_right_pwd_number (2902966502520410446) -->
-    <skip />
-    <!-- no translation found for call_barring_change_pwd_success (3278310763742760321) -->
-    <skip />
-    <!-- no translation found for call_barring_old_pwd (6080515987320238522) -->
-    <skip />
-    <!-- no translation found for call_barring_new_pwd (7048532299150269547) -->
-    <skip />
-    <!-- no translation found for call_barring_confirm_pwd (1947167278466285411) -->
-    <skip />
-    <!-- no translation found for messageCallBarring (2412123220272136055) -->
-    <skip />
-    <!-- no translation found for call_barring_settings (80766145008623645) -->
-    <skip />
-    <!-- no translation found for call_barring_deactivate_all_no_password (920902774366557311) -->
-    <skip />
+    <string name="labelCallBarring" msgid="3452870940716226978">"ခေါ်ဆိုမှုကို ပိတ်ပင်ရန်"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"ဖွင့်ထားသည်"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"ပိတ်ထားသည်"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"အထွက်ခေါ်ဆိုမှုအားလုံး"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"အထွက်ခေါ်ဆိုမှုအားလုံး ပိတ်ထားခြင်းကို ပယ်ဖျက်မလား။"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"အထွက်ခေါ်ဆိုမှုအားလုံးကို ပိတ်မလား။"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"နိုင်ငံတကာ အထွက်ခေါ်ဆိုမှု"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"နိုင်ငံတကာ အထွက်ခေါ်ဆိုမှုအားလုံး ပိတ်ထားခြင်းကို ပယ်ဖျက်မလား။"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"နိုင်ငံတကာ အထွက်ခေါ်ဆိုမှုများကို ပိတ်မလား။"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"နိုင်ငံတကာ ပြင်ပကွန်ရက်နှင့် ချိတ်ဆက်သော အထွက်ခေါ်ဆိုမှု"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"နိုင်ငံတကာ ပြင်ပကွန်ရက်နှင့် ချိတ်ဆက်သော အထွက်ခေါ်ဆိုမှု ပိတ်ထားခြင်းကို ပယ်ဖျက်မလား။"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"နိုင်ငံတကာ ပြင်ပကွန်ရက်နှင့် ချိတ်ဆက်သော အထွက်ခေါ်ဆိုမှုကို ပိတ်မလား။"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"အဝင်ခေါ်ဆိုမှုအားလုံး"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"အဝင်ခေါ်ဆိုမှုအားလုံး ပိတ်ထားခြင်းကို ပယ်ဖျက်မလား။"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"အဝင်ခေါ်ဆိုမှုအားလုံးကို ပိတ်မလား။"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"နိုင်ငံတကာ ပြင်ပကွန်ရက်နှင့် ချိတ်ဆက်သော အဝင်ခေါ်ဆိုမှု"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"နိုင်ငံတကာ ပြင်ပကွန်ရက်နှင့် ချိတ်ဆက်သော အဝင်ခေါ်ဆိုမှုအားလုံး ပိတ်ထားခြင်းကို ပယ်ဖျက်မလား။"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"နိုင်ငံတကာ ပြင်ပကွန်ရက်နှင့် ချိတ်ဆက်သော အဝင်ခေါ်ဆိုမှုကို ပိတ်မလား။"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"အားလုံးကို ပယ်ဖျက်ရန်"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"ခေါ်ဆိုမှုပိတ်ပင်သော ဆက်တင်အားလုံးကို ပယ်ဖျက်ပါ"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"ခေါ်ဆိုမှုပိတ်ပင်ခြင်းကို ပယ်ဖျက်ပြီးပါပြီ"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"စကားဝှက် ပြောင်းရန်"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"ခေါ်ဆိုမှုပိတ်ပင်သော စကားဝှက်ကို ပြောင်းပါ"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"ခေါ်ဆိုမှုပိတ်ပင်သော စကားဝှက်ကို မပြောင်းနိုင်ပါ။"</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"စကားဝှက်များက ထပ်တူမကျပါ"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"နံပါတ် ၄ လုံးနှင့် စကားဝှက် ထည့်ရန်"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"စကားဝှက်ကို ပြောင်းလိုက်ပါပြီ"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"စကားဝှက်အဟောင်း"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"စကားဝှက်အသစ်"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"စကားဝှက်ကို အတည်ပြုရန်"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"စကားဝှက် ထည့်ရန်"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"ခေါ်ဆိုမှုပိတ်ပင်သော ဆက်တင်များ"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"ခေါ်ဆိုမှုပိတ်ပင်သော  ဆက်တင်အားလုံးကို ပယ်ဖျက်မလား။"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"ခေါ်ဆိုမှုကို လွှဲထားပါသည်။"</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"ခေါ်ဆိုမှုကို ထပ်ဆင့်ပို့ထားပါသည်။"</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"ခေါ်ဆိုမှုက စောင့်ဆိုင်းနေပါသည်။"</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"နံပါတ်ပိတ်ခြင်းကို ငြင်းဆိုထားပါသည်။"</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"သီးသန့် အသုံးပြုသူအဖွဲ့အတွင်း ခေါ်ဆိုမှု။"</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"အဝင်ခေါ်ဆိုမှုများကို ပိတ်ပင်ထားပါသည်။"</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"အထွက်ခေါ်ဆိုမှုများကို ပိတ်ပင်ထားပါသည်။"</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"ခေါ်ဆိုမှုထပ်ဆင့်ပို့ခြင်းကို ဖွင့်ထားပါသည်။"</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"နောက်ထပ်ခေါ်ဆိုမှုကို ထပ်ဆင့်ပို့ထားပါသည်။"</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"တိုက်ရိုက်ခေါ်ဆိုမှုကို လွှဲပြောင်းပြီးပါပြီ။"</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"တိုက်ရိုက်ခေါ်ဆိုမှုကို လွှဲပြောင်းနေဆဲဖြစ်ပါသည်။"</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"ဖုန်းကိုင်ထားပါသည်။"</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"ဖုန်းဆက်ပြောနေပါသည်။"</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"ခေါ်ဆိုမှုကို လွှဲထားပါသည်။"</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ထပ်ဆင့်ပို့ထားသော ခေါ်ဆိုမှု။"</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"အစည်းအဝေးခေါ်ဆိုမှုကို ချိတ်ဆက်နေပါသည်။"</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"ကိုင်ထားသော ဖုန်းကို ချလိုက်ပါပြီ။"</string>
 </resources>

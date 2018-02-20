@@ -246,7 +246,7 @@
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> za data ya mtandao wa simu zimetumika kuanzia <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Mipangilio ya Kina"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mtoa huduma"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"mtoa huduma, mtandao wa simu, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"mtoa huduma za mtandao, esim, sim, euicc, badilisha watoa huduma za mtandao, ongeza mtoa huduma za mtandao"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Data ya mtandao wa simu"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Tumia data ya mtandao wa simu"</string>
@@ -420,7 +420,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Inafuta nambari ya upigaji simu uliobanwa..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Nambari ya upigaji simu uliobanwa imefutwa"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN haikusasishwa kwa sababu uliweka PIN isiyo sahihi."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN haikusasishwa kwa sababu nambari haina kitu au inazidi tarakimu 20."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN haikusasishwa kwa sababu nambari inazidi tarakimu 20."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN haikusasishwa. PIN2 haikuwa sahihi, au namba ya simu ilikataliwa."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Utendakazi wa FDN ulishindwa."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Inasoma kutoka kwa SIM kadi…"</string>
@@ -523,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Imeshindwa kuingiza anwani"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Vifaa vya kusaidia kusikia"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Washa utangamano wa kifaa cha kusaidia kusikia"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"Washa au uzime kipengele cha RTT"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Zima TTY"</item>
     <item msgid="3971695875449640648">"TTY Kamili"</item>
@@ -687,4 +689,54 @@
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Urejeshaji wakati muda wa kipima muda unapokwisha"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Hitilafu ya kiitifaki, haijabainishwa"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Kufanya kazi mseto, haijabainishwa"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"Kuzuia upigaji simu"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Washa"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Zima"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Simu zote unazopiga"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Je, ungependa kuacha kuzuia simu zote unazopiga?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Je, ungependa kuzuia simu zote unazopiga?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Simu za kimataifa unazopiga"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Je, ungependa kuacha kuzuia simu za kimataifa unazopiga?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Je, ungependa kuzuia simu za kimataifa unazopiga?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"Simu za kimataifa unazopiga ambazo hutumia mitandao mingine"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Je, ungependa kuacha kuzuia simu za kimataifa unazopiga ambazo hutumia mitandao mingine?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Je, ungependa kuzuia simu za kimataifa unazopiga ambazo hutumia mitandao mingine?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Zote zinazoingia"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Je, ungependa kuacha kuzuia simu zote zinazoingia?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Je, ungependa kuzuia simu zote zinazoingia?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Simu ya kimataifa inayoingia ambayo inatumia mitandao mingine"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Je, ungependa kuacha kuzuia simu zote za kimataifa zinazoingia na zinazotumia mitandao mingine?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Je, ungependa kuzuia simu ya kimataifa inayoingia ambayo inatumia mitandao mingine?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Zima zote"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Zima mipangilio yote ya kuzuia upigaji simu"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Mipangilio ya kuzuia upigaji simu imezimwa"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Badilisha nenosiri"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Badilisha nenosiri la kuzuia upigaji simu"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Imeshindwa kubadilisha nenosiri la kuzuia upigaji simu."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Manenosiri hayalingani"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Weka nenosiri lenye tarakimu 4"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Nenosiri limebadilishwa"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Nenosiri la awali"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Nenosiri jipya"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Thibitisha nenosiri"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Weka nenosiri"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Mipangilio ya kuzuia upigaji simu"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Je, ungependa kuzima mipangilio yote ya kuzuia upigaji simu?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Simu unayopiga imeelekezwa kwingine."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Simu imesambazwa."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Simu inasubiri."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"Ombi la kuzuia nambari limekataliwa."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Simu kwenye kikundi cha watumiaji teule."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Simu zinazoingia zimezuiwa."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Simu unazopiga zimezuiwa."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Kipengele cha kusambaza simu kimewashwa."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Simu ya ziada imesambazwa."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Imefaulu kuhamisha simu."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Inaendelea kuhamisha simu."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Simu imesitishwa."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Simu sasa inaendelea."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Simu kutoka kwingine ilielekezwa kwako."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Simu iliyosambazwa."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Unajiunga kwenye simu ya mkutano."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Simu iliyositishwa imekatwa."</string>
 </resources>
