@@ -50,19 +50,31 @@ public class AssistedDialingMediatorImplTest {
   private final AssistedDialingMediator mAssistedDialingMediator =
       new AssistedDialingMediatorImpl(mLocationDetector, mNumberTransformer);
 
-  @Test(expected = NullPointerException.class)
+  @Test
   public void testConstructorThrows_allParametersNull() {
-    new AssistedDialingMediatorImpl(null, null);
+    try {
+      new AssistedDialingMediatorImpl(null, null);
+    } catch (NullPointerException expected) {
+      // expected
+    }
   }
 
-  @Test(expected = NullPointerException.class)
+  @Test
   public void testConstructorThrows_locationDetectorNull() {
-    new AssistedDialingMediatorImpl(null, mNumberTransformer);
+    try {
+      new AssistedDialingMediatorImpl(null, mNumberTransformer);
+    } catch (NullPointerException expected) {
+      // expected
+    }
   }
 
-  @Test(expected = NullPointerException.class)
+  @Test
   public void testConstructorThrows_numberTransformerNull() {
-    new AssistedDialingMediatorImpl(mLocationDetector, null);
+    try {
+      new AssistedDialingMediatorImpl(mLocationDetector, null);
+    } catch (NullPointerException expected) {
+      // expected
+    }
   }
 
   @Test
