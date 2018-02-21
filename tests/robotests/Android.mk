@@ -1,40 +1,46 @@
-##############################################
-# Compile TeleService robolectric tests
-##############################################
-LOCAL_PATH := $(call my-dir)
+#############################################
+# Telephony Robolectric test target. #
+#############################################
+LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := TeleService_robotests
-
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
+LOCAL_PRIVILEGED_MODULE := true
 
-LOCAL_JAVA_RESOURCE_DIRS := res
+# Include the testing libraries (JUnit4 + Robolectric libs).
+LOCAL_STATIC_JAVA_LIBRARIES := \
+    platform-robolectric-android-all-stubs \
+    android-support-test \
+    mockito-robolectric-prebuilt \
+    platform-test-annotations \
+    truth-prebuilt \
+    testng
 
 LOCAL_JAVA_LIBRARIES := \
-  robolectric_android-all-stub \
-  Robolectric_all-target \
-  truth-prebuilt
+    junit \
+    platform-robolectric-3.6.1-prebuilt \
+    telephony-common \
+    sdk_vcurrent
 
 LOCAL_INSTRUMENTATION_FOR := TeleService
+LOCAL_MODULE := TeleRobo
+
+LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_STATIC_JAVA_LIBRARY)
 
-##############################################
-# Execute TeleService robolectric tests
-##############################################
+#############################################################
+# Telephony runner target to run the previous target. #
+#############################################################
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := Run_TeleService_robotests
+LOCAL_MODULE := TelephonyRoboTests
+
+LOCAL_SDK_VERSION := current
+
+LOCAL_STATIC_JAVA_LIBRARIES := \
+    TeleRobo \
 
 LOCAL_TEST_PACKAGE := TeleService
 
-LOCAL_JAVA_LIBRARIES := \
-  TeleService_robotests \
-  robolectric_android-all-stub \
-  Robolectric_all-target \
-  truth-prebuilt
-
-LOCAL_ROBOTEST_FILES := $(filter-out %/BaseRobolectricTest.java,\
-  $(call find-files-in-subdirs, $(LOCAL_PATH)/src, *Test.java, .))
-
-include external/robolectric-shadows/run_robotests.mk
+include prebuilts/misc/common/robolectric/3.6.1/run_robotests.mk
