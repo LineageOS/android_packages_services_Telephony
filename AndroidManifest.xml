@@ -495,12 +495,8 @@
         <activity
             android:name="com.android.phone.settings.assisteddialing.AssistedDialingSettingActivity"
             android:label="@string/assisted_dialing_setting_title"
-            android:theme="@style/DialerSettingsLight">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.telecom.action.SHOW_ASSISTED_DIALING_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            android:theme="@style/DialerSettingsLight"
+            android:exported="false">
         </activity>
 
         <activity android:name="com.android.phone.settings.PhoneAccountSettingsActivity"
