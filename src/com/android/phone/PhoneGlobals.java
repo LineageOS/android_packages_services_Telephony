@@ -49,7 +49,6 @@ import android.util.LocalLog;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.i18n.phonenumbers.PhoneNumberUtil;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.IccCardConstants;
@@ -181,8 +180,6 @@ public class PhoneGlobals extends ContextWrapper {
 
     private final SettingsObserver mSettingsObserver;
 
-    private final PhoneNumberUtil mPhoneNumberUtil = PhoneNumberUtil.getInstance();
-
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -196,7 +193,7 @@ public class PhoneGlobals extends ContextWrapper {
                             CarrierConfigManager.KEY_IGNORE_SIM_NETWORK_LOCKED_EVENTS_BOOL)) {
                         // Some products don't have the concept of a "SIM network lock"
                         Log.i(LOG_TAG, "Ignoring EVENT_SIM_NETWORK_LOCKED event; "
-                                + "not showing 'SIM network unlock' PIN entry screen");
+                              + "not showing 'SIM network unlock' PIN entry screen");
                     } else {
                         // Normal case: show the "SIM network unlock" PIN entry screen.
                         // The user won't be able to do anything else until
@@ -434,10 +431,6 @@ public class PhoneGlobals extends ContextWrapper {
         return mCM;
     }
 
-    public PhoneNumberUtil getPhoneNumberUtil() {
-        return mPhoneNumberUtil;
-    }
-
     public PersistableBundle getCarrierConfig() {
         return getCarrierConfigForSubId(SubscriptionManager.getDefaultSubscriptionId());
     }
@@ -651,7 +644,7 @@ public class PhoneGlobals extends ContextWrapper {
     private void setRadioPowerOff(Context context) {
         Log.i(LOG_TAG, "Turning radio off - airplane");
         Settings.Global.putInt(context.getContentResolver(), Settings.Global.CELL_ON,
-                PhoneConstants.CELL_OFF_DUE_TO_AIRPLANE_MODE_FLAG);
+                 PhoneConstants.CELL_OFF_DUE_TO_AIRPLANE_MODE_FLAG);
         SystemProperties.set("persist.radio.airplane_mode_on", "1");
         Settings.Global.putInt(getContentResolver(), Settings.Global.ENABLE_CELLULAR_ON_BOOT, 0);
         PhoneUtils.setRadioPower(false);

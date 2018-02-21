@@ -492,13 +492,6 @@
                 android:theme="@style/Empty">
         </activity>
 
-        <activity
-            android:name="com.android.phone.settings.assisteddialing.AssistedDialingSettingActivity"
-            android:label="@string/assisted_dialing_setting_title"
-            android:theme="@style/DialerSettingsLight"
-            android:exported="false">
-        </activity>
-
         <activity android:name="com.android.phone.settings.PhoneAccountSettingsActivity"
             android:label="@string/phone_accounts"
             android:theme="@style/DialerSettingsLight">

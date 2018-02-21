@@ -28,14 +28,6 @@
     </PreferenceScreen>
 
     <PreferenceScreen
-        android:key="assisted_dialing_settings_preference_key"
-        android:title="@string/assisted_dialing_setting_title">
-        <intent
-            android:targetPackage="com.android.phone"
-            android:targetClass="com.android.phone.settings.AssistedDialingSettingActivity"/>
-    </PreferenceScreen>
-
-    <PreferenceScreen
         android:key="button_voicemail_category_key"
         android:title="@string/voicemail" />
 
