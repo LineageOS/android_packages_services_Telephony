@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The Android Open Source Project
+ * Copyright (C) 2017 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,12 +21,11 @@ import static com.google.common.truth.Truth.assertThat;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 
-import com.android.phone.TelephonyRobolectricTestRunner;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.Shadows;
+import org.robolectric.shadow.api.Shadow;
 import org.robolectric.shadows.ShadowTelephonyManager;
 
 import java.util.Locale;
@@ -35,78 +34,82 @@ import java.util.Optional;
 /**
  * Unit Tests for LocationDetector.
  */
-@RunWith(TelephonyRobolectricTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class LocationDetectorTest {
 
-  private final TelephonyManager mTelephonyManager =
-      (TelephonyManager) RuntimeEnvironment.application.getSystemService(Context.TELEPHONY_SERVICE);
-  private final ShadowTelephonyManager mShadowTelephonyManager =
-      Shadows.shadowOf(mTelephonyManager);
-  private final LocationDetector mLocationDetector = new LocationDetector(mTelephonyManager, null);
+    private final TelephonyManager mTelephonyManager =
+            (TelephonyManager) RuntimeEnvironment.application.getSystemService(
+                    Context.TELEPHONY_SERVICE);
+    private final ShadowTelephonyManager mShadowTelephonyManager =
+            (ShadowTelephonyManager) Shadow.extract(mTelephonyManager);
+    private final LocationDetector mLocationDetector = new LocationDetector(
+            mTelephonyManager, null);
 
-  @Test
-  public void testGetUserHomeCountry() {
-    // User home country
-    mShadowTelephonyManager.setSimCountryIso(
-        AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM);
-    assertThat(mLocationDetector.getUpperCaseUserHomeCountry().get())
-        .isEqualTo(AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM);
-  }
+    @Test
+    public void testGetUserHomeCountry() {
+        // User home country
+        mShadowTelephonyManager.setSimCountryIso(
+                AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM);
+        assertThat(mLocationDetector.getUpperCaseUserHomeCountry().get())
+                .isEqualTo(AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM);
+    }
 
-  @Test
-  public void testGetUserHomeCountry_userProvidedHomeCountry() {
-    // User home country
-    mShadowTelephonyManager.setSimCountryIso(
-        AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM);
+    @Test
+    public void testGetUserHomeCountry_userProvidedHomeCountry() {
+        // User home country
+        mShadowTelephonyManager.setSimCountryIso(
+                AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM);
 
-    LocationDetector localLocationDetector = new LocationDetector(mTelephonyManager, "ZZ");
-    assertThat(localLocationDetector.getUpperCaseUserHomeCountry().get()).isEqualTo("ZZ");
-  }
+        LocationDetector localLocationDetector = new LocationDetector(mTelephonyManager, "ZZ");
+        assertThat(localLocationDetector.getUpperCaseUserHomeCountry().get()).isEqualTo("ZZ");
+    }
 
-  @Test
-  public void testGetUserRoamingCountry() {
-    // User roaming country
-    mShadowTelephonyManager.setNetworkCountryIso(
-        AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM);
-    assertThat(mLocationDetector.getUpperCaseUserRoamingCountry().get())
-        .isEqualTo(AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM);
-  }
+    @Test
+    public void testGetUserRoamingCountry() {
+        // User roaming country
+        mShadowTelephonyManager.setNetworkCountryIso(
+                AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM);
+        assertThat(mLocationDetector.getUpperCaseUserRoamingCountry().get())
+                .isEqualTo(AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM);
+    }
 
-  @Test
-  public void testGetLocationValues_returnValuesAreAlwaysUpperCase() {
-    mShadowTelephonyManager.setNetworkCountryIso(
-        AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toLowerCase());
-    mShadowTelephonyManager.setSimCountryIso(
-        AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toLowerCase());
+    @Test
+    public void testGetLocationValues_returnValuesAreAlwaysUpperCase() {
+        mShadowTelephonyManager.setNetworkCountryIso(
+                AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toLowerCase());
+        mShadowTelephonyManager.setSimCountryIso(
+                AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toLowerCase());
 
-    assertThat(mLocationDetector.getUpperCaseUserHomeCountry().get())
-        .isEqualTo(
-            AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toUpperCase(
-                Locale.US));
-    assertThat(mLocationDetector.getUpperCaseUserRoamingCountry().get())
-        .isEqualTo(
-            AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toUpperCase(
-                Locale.US));
-  }
+        assertThat(mLocationDetector.getUpperCaseUserHomeCountry().get())
+                .isEqualTo(
+                        AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toUpperCase(
+                                Locale.US));
+        assertThat(mLocationDetector.getUpperCaseUserRoamingCountry().get())
+                .isEqualTo(
+                        AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toUpperCase(
+                                Locale.US));
+    }
 
-  @Test
-  public void testGetLocationValues_returnValuesMayBeEmpty() {
-    mShadowTelephonyManager.setNetworkCountryIso(null);
-    mShadowTelephonyManager.setSimCountryIso(null);
+    @Test
+    public void testGetLocationValues_returnValuesMayBeEmpty() {
+        mShadowTelephonyManager.setNetworkCountryIso(null);
+        mShadowTelephonyManager.setSimCountryIso(null);
 
-    assertThat(mLocationDetector.getUpperCaseUserHomeCountry()).isEqualTo(Optional.empty());
-    assertThat(mLocationDetector.getUpperCaseUserRoamingCountry()).isEqualTo(Optional.empty());
-  }
+        assertThat(mLocationDetector.getUpperCaseUserHomeCountry()).isEqualTo(Optional.empty());
+        assertThat(mLocationDetector.getUpperCaseUserRoamingCountry()).isEqualTo(Optional.empty());
+    }
 
-  @Test
-  public void testConstructorWithNullYieldsEmptyOptional() {
-    mShadowTelephonyManager.setNetworkCountryIso(
-        AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toLowerCase());
-    mShadowTelephonyManager.setSimCountryIso(
-        AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toLowerCase());
+    @Test
+    public void testConstructorWithNullYieldsEmptyOptional() {
+        mShadowTelephonyManager.setNetworkCountryIso(
+                AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toLowerCase());
+        mShadowTelephonyManager.setSimCountryIso(
+                AssistedDialingTestHelper.SUPPORTED_COUNTRY_CODE_UNITED_KINGDOM.toLowerCase());
 
-    final LocationDetector locationDetector = new LocationDetector(null, null);
-    assertThat(locationDetector.getUpperCaseUserHomeCountry().isPresent()).isFalse();
-    assertThat(locationDetector.getUpperCaseUserRoamingCountry().isPresent()).isFalse();
-  }
+        LocationDetector locationDetector = new LocationDetector(null, null);
+        assertThat(locationDetector.getUpperCaseUserHomeCountry().isPresent())
+                .isFalse();
+        assertThat(locationDetector.getUpperCaseUserRoamingCountry().isPresent())
+                .isFalse();
+    }
 }
