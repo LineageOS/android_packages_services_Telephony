@@ -106,9 +106,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             // TODO: this is going to be a on/off switch for now. Ask UX about how to integrate
             // this settings with TTY
             boolean rttOn = Settings.System.getInt(
-                    mContext.getContentResolver(), Settings.System.RTT_CALLING_MODE,
-                    TelecomManager.TTY_MODE_OFF)
-                    != TelecomManager.TTY_MODE_OFF;
+                    mContext.getContentResolver(), Settings.System.RTT_CALLING_MODE, 0) != 0;
             mButtonRtt.setChecked(rttOn);
         } else {
             getPreferenceScreen().removePreference(mButtonRtt);
@@ -149,8 +147,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             return true;
         } else if (preference == mButtonRtt) {
             Log.i(LOG_TAG, "RTT setting changed -- now " + mButtonRtt.isChecked());
-            int rttMode = mButtonRtt.isChecked()
-                    ? TelecomManager.TTY_MODE_FULL : TelecomManager.TTY_MODE_OFF;
+            int rttMode = mButtonRtt.isChecked() ? 1 : 0;
             Settings.System.putInt(mContext.getContentResolver(), Settings.System.RTT_CALLING_MODE,
                     rttMode);
             // Update RTT config with IMS Manager
