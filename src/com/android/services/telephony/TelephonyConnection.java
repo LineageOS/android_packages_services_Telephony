@@ -546,6 +546,7 @@ abstract class TelephonyConnection extends Connection {
 
         @Override
         public void onRttModifyResponseReceived(int status) {
+            updateConnectionProperties();
             if (status == RttModifyStatus.SESSION_MODIFY_REQUEST_SUCCESS) {
                 sendRttInitiationSuccess();
             } else {
@@ -562,11 +563,13 @@ abstract class TelephonyConnection extends Connection {
 
         @Override
         public void onRttInitiated() {
+            updateConnectionProperties();
             sendRttInitiationSuccess();
         }
 
         @Override
         public void onRttTerminated() {
+            updateConnectionProperties();
             sendRttSessionRemotelyTerminated();
         }
     };
@@ -845,7 +848,7 @@ abstract class TelephonyConnection extends Connection {
 
     @Override
     public void onStopRtt() {
-        // This is not supported by carriers/vendor yet. No-op for now.
+        Log.i(this, "Stopping RTT currently not supported. Doing nothing.");
     }
 
     @Override
@@ -1003,8 +1006,7 @@ abstract class TelephonyConnection extends Connection {
                 mIsCdmaVoicePrivacyEnabled);
         newProperties = changeBitmask(newProperties, PROPERTY_ASSISTED_DIALING_USED,
                 mIsUsingAssistedDialing);
-        newProperties = changeBitmask(newProperties, PROPERTY_IS_RTT,
-                (getConnectionProperties() & PROPERTY_IS_RTT) != 0);
+        newProperties = changeBitmask(newProperties, PROPERTY_IS_RTT, isRtt());
 
         if (getConnectionProperties() != newProperties) {
             setConnectionProperties(newProperties);
@@ -1688,6 +1690,15 @@ abstract class TelephonyConnection extends Connection {
         return can(mOriginalConnectionCapabilities, Capability.IS_EXTERNAL_CONNECTION)
                 && can(mOriginalConnectionCapabilities,
                 Capability.IS_EXTERNAL_CONNECTION);
+    }
+
+    /**
+     * Determines if the current connection has RTT enabled.
+     */
+    private boolean isRtt() {
+        return mOriginalConnection != null
+                && mOriginalConnection.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS
+                && ((ImsPhoneConnection) mOriginalConnection).isRttEnabledForCall();
     }
 
     /**

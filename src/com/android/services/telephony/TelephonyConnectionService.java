@@ -52,6 +52,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
+import com.android.internal.telephony.imsphone.ImsPhoneConnection;
 import com.android.phone.MMIDialogActivity;
 import com.android.phone.PhoneUtils;
 import com.android.phone.R;
@@ -700,15 +701,46 @@ public class TelephonyConnectionService extends ConnectionService {
         int videoState = originalConnection != null ? originalConnection.getVideoState() :
                 VideoProfile.STATE_AUDIO_ONLY;
 
-        Connection connection =
+        TelephonyConnection connection =
                 createConnectionFor(phone, originalConnection, false /* isOutgoing */,
                         request.getAccountHandle(), request.getTelecomCallId(),
                         request.getAddress(), videoState);
+        handleIncomingRtt(request, originalConnection);
         if (connection == null) {
             return Connection.createCanceledConnection();
         } else {
             return connection;
         }
+    }
+
+    private void handleIncomingRtt(ConnectionRequest request,
+            com.android.internal.telephony.Connection originalConnection) {
+        if (originalConnection == null
+                || originalConnection.getPhoneType() != PhoneConstants.PHONE_TYPE_IMS) {
+            if (request.isRequestingRtt()) {
+                Log.w(this, "Requesting RTT on non-IMS call, ignoring");
+            }
+            return;
+        }
+
+        ImsPhoneConnection imsOriginalConnection = (ImsPhoneConnection) originalConnection;
+        if (!request.isRequestingRtt()) {
+            if (imsOriginalConnection.isRttEnabledForCall()) {
+                Log.i(this, "Incoming call requested RTT but was declined");
+            }
+            return;
+        }
+
+        if (!imsOriginalConnection.isRttEnabledForCall()) {
+            if (request.isRequestingRtt()) {
+                Log.w(this, "Incoming call processed as RTT but did not come in as one. Ignoring");
+            }
+            return;
+        }
+
+        Log.i(this, "Setting RTT stream on ImsPhoneConnection");
+        imsOriginalConnection.setCurrentRttTextStream(request.getRttTextStream());
+        imsOriginalConnection.getImsCall().setAnswerWithRtt();
     }
 
     /**
