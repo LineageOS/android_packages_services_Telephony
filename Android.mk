@@ -46,6 +46,7 @@ LOCAL_AAPT_FLAGS := \
     --extra-packages android.support.v14.preference
 
 LOCAL_PACKAGE_NAME := TeleService
+LOCAL_PRIVATE_PLATFORM_APIS := true
 
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
