@@ -735,7 +735,7 @@ public class TelephonyConnectionService extends ConnectionService {
         ImsPhoneConnection imsOriginalConnection = (ImsPhoneConnection) originalConnection;
         if (!request.isRequestingRtt()) {
             if (imsOriginalConnection.isRttEnabledForCall()) {
-                Log.i(this, "Incoming call requested RTT but was declined");
+                Log.w(this, "Incoming call requested RTT but we did not get a RttTextStream");
             }
             return;
         }
