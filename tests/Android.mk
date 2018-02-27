@@ -21,6 +21,7 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
 LOCAL_JAVA_LIBRARIES := android.test.runner
 LOCAL_PACKAGE_NAME := TeleServiceTests
+LOCAL_PRIVATE_PLATFORM_APIS := true
 LOCAL_CERTIFICATE := platform
 
 LOCAL_MODULE_TAGS := tests
@@ -38,6 +39,3 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 LOCAL_COMPATIBILITY_SUITE := device-tests
 
 include $(BUILD_PACKAGE)
-
-# Include all makefiles in subdirectories
-include $(call all-makefiles-under,$(LOCAL_PATH))

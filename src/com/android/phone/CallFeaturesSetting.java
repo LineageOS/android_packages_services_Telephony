@@ -50,7 +50,6 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.phone.settings.PhoneAccountSettingsFragment;
 import com.android.phone.settings.VoicemailSettingsActivity;
-import com.android.phone.settings.assisteddialing.AssistedDialingSettingActivity;
 import com.android.phone.settings.fdn.FdnSetting;
 
 import java.util.List;
@@ -84,12 +83,10 @@ public class CallFeaturesSetting extends PreferenceActivity
     // persistent, they are used as the key to store shared preferences and the name should not be
     // changed unless the settings are also migrated.
     private static final String VOICEMAIL_SETTING_SCREEN_PREF_KEY = "button_voicemail_category_key";
-    private static final String BUTTON_FDN_KEY = "button_fdn_key";
-    private static final String BUTTON_RETRY_KEY = "button_auto_retry_key";
+    private static final String BUTTON_FDN_KEY   = "button_fdn_key";
+    private static final String BUTTON_RETRY_KEY       = "button_auto_retry_key";
     private static final String BUTTON_GSM_UMTS_OPTIONS = "button_gsm_more_expand_key";
     private static final String BUTTON_CDMA_OPTIONS = "button_cdma_more_expand_key";
-    private static final String BUTTON_ASSISTED_DIALING_KEY =
-            "assisted_dialing_settings_preference_key";
 
     private static final String PHONE_ACCOUNT_SETTINGS_KEY =
             "phone_account_settings_preference_screen";
@@ -147,7 +144,7 @@ public class CallFeaturesSetting extends PreferenceActivity
                             }
                         };
                 builder.setMessage(getResources().getString(
-                        R.string.enable_video_calling_dialog_msg))
+                                R.string.enable_video_calling_dialog_msg))
                         .setNeutralButton(getResources().getString(
                                 R.string.enable_video_calling_dialog_settings),
                                 networkSettingsClickListener)
@@ -293,11 +290,11 @@ public class CallFeaturesSetting extends PreferenceActivity
 
         if (mImsMgr.isVtEnabledByPlatform() && mImsMgr.isVtProvisionedOnDevice()
                 && (carrierConfig.getBoolean(
-                CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
+                        CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
                 || mPhone.mDcTracker.isDataEnabled())) {
             boolean currentValue =
                     mImsMgr.isEnhanced4gLteModeSettingEnabledByUser()
-                            ? PhoneGlobals.getInstance().phoneMgr.isVideoCallingEnabled(
+                    ? PhoneGlobals.getInstance().phoneMgr.isVideoCallingEnabled(
                             getOpPackageName()) : false;
             mEnableVideoCalling.setChecked(currentValue);
             mEnableVideoCalling.setOnPreferenceChangeListener(this);
@@ -307,7 +304,7 @@ public class CallFeaturesSetting extends PreferenceActivity
 
         if (mImsMgr.isVolteEnabledByPlatform()
                 && !carrierConfig.getBoolean(
-                CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL)) {
+                        CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL)) {
             TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
             /* tm.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE); */
         }
@@ -368,8 +365,6 @@ public class CallFeaturesSetting extends PreferenceActivity
             prefSet.removePreference(wifiCallingSettings);
             prefSet.removePreference(mEnableVideoCalling);
         }
-
-        updateAssistedDialingButton();
     }
 
     /**
@@ -415,31 +410,6 @@ public class CallFeaturesSetting extends PreferenceActivity
         mSubscriptionInfoHelper.setActionBarTitle(
                 getActionBar(), getResources(), R.string.call_settings_with_label);
         mPhone = mSubscriptionInfoHelper.getPhone();
-    }
-
-    private void updateAssistedDialingButton() {
-        Log.i(LOG_TAG, "updateAssistedDialingButton, subId: " + mPhone.getSubId());
-        PreferenceScreen preferenceScreen = getPreferenceScreen();
-        Preference preference = preferenceScreen.findPreference(BUTTON_ASSISTED_DIALING_KEY);
-        Intent intent = mSubscriptionInfoHelper.getIntent(AssistedDialingSettingActivity.class);
-        intent.putExtra(SubscriptionInfoHelper.SUB_ID_EXTRA, mPhone.getSubId());
-        preference.setIntent(intent);
-
-        if (!shouldShowAssistedDialingButton()) {
-            preferenceScreen.removePreference(preference);
-        }
-    }
-
-    private boolean shouldShowAssistedDialingButton() {
-        // Allow carriers to disable this feature.
-        PersistableBundle carrierConfig =
-                PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-        if (!carrierConfig.getBoolean(CarrierConfigManager.KEY_ASSISTED_DIALING_ENABLED_BOOL)) {
-            Log.i(LOG_TAG, "shouldShowAssistedDialingButton, disabled by carrier config");
-            return false;
-        }
-
-        return true;
     }
 
     private static void log(String msg) {
