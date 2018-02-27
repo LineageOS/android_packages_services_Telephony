@@ -4045,4 +4045,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         enforceModifyPermission();
         return (Boolean) sendRequest(CMD_SWITCH_SLOTS, physicalSlots);
     }
+
+    @Override
+    public void setRadioIndicationUpdateMode(int subId, int filters, int mode) {
+        enforceModifyPermission();
+        final Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("setRadioIndicationUpdateMode fails with invalid subId: " + subId);
+            return;
+        }
+
+        phone.setRadioIndicationUpdateMode(filters, mode);
+    }
 }
