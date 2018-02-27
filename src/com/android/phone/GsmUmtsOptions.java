@@ -28,6 +28,7 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.settingslib.RestrictedLockUtils;
 
 /**
  * List of Network-specific settings screens.
@@ -35,7 +36,7 @@ import com.android.internal.telephony.PhoneFactory;
 public class GsmUmtsOptions {
     private static final String LOG_TAG = "GsmUmtsOptions";
 
-    private Preference mButtonAPNExpand;
+    private RestrictedPreference mButtonAPNExpand;
     private Preference mCategoryAPNExpand;
     Preference mCarrierSettingPref;
 
@@ -54,7 +55,7 @@ public class GsmUmtsOptions {
         mPrefFragment = prefFragment;
         mPrefScreen = prefScreen;
         mPrefFragment.addPreferencesFromResource(R.xml.gsm_umts_options);
-        mButtonAPNExpand = mPrefScreen.findPreference(BUTTON_APN_EXPAND_KEY);
+        mButtonAPNExpand = (RestrictedPreference) mPrefScreen.findPreference(BUTTON_APN_EXPAND_KEY);
         mCategoryAPNExpand = mPrefScreen.findPreference(CATEGORY_APN_EXPAND_KEY);
         mNetworkOperator = (NetworkOperators) mPrefScreen
                 .findPreference(NetworkOperators.CATEGORY_NETWORK_OPERATORS_KEY);
@@ -113,6 +114,10 @@ public class GsmUmtsOptions {
         // Calling add or remove explicitly to make sure they are updated.
 
         if (addAPNExpand) {
+            mButtonAPNExpand.setDisabledByAdmin(
+                    MobileNetworkSettings.isDpcApnEnforced(mButtonAPNExpand.getContext())
+                            ? RestrictedLockUtils.getDeviceOwner(mButtonAPNExpand.getContext())
+                            : null);
             mButtonAPNExpand.setOnPreferenceClickListener(
                     new Preference.OnPreferenceClickListener() {
                         @Override
