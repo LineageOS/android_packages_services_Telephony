@@ -2688,6 +2688,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return PhoneFactory.getImsResolver().getImsConfig(slotId, feature);
     }
 
+    /**
+     * @return true if emergency calling is available on IMS, false if it should fallback to CS.
+     */
+    public boolean isEmergencyMmTelAvailable(int slotId) {
+        enforceModifyPermission();
+        return PhoneFactory.getImsResolver().isEmergencyMmTelAvailable(slotId);
+    }
+
     public void setImsRegistrationState(boolean registered) {
         enforceModifyPermission();
         mPhone.setImsRegistrationState(registered);
@@ -4088,5 +4096,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean switchSlots(int[] physicalSlots) {
         enforceModifyPermission();
         return (Boolean) sendRequest(CMD_SWITCH_SLOTS, physicalSlots);
+    }
+
+    @Override
+    public void setRadioIndicationUpdateMode(int subId, int filters, int mode) {
+        enforceModifyPermission();
+        final Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("setRadioIndicationUpdateMode fails with invalid subId: " + subId);
+            return;
+        }
+
+        phone.setRadioIndicationUpdateMode(filters, mode);
     }
 }
