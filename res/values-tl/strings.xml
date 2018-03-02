@@ -45,7 +45,7 @@
     <string name="no_vm_number" msgid="4164780423805688336">"Nawawala ang numero ng voicemail"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Walang nakaimbak na numero ng voicemail sa SIM card."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Magdagdag ng numero"</string>
-    <string name="puk_unlocked" msgid="2284912838477558454">"Naalis sa pagkaka-block ang iyong SIM card. Nag-a-unlock ang iyong telepono…"</string>
+    <string name="puk_unlocked" msgid="2284912838477558454">"Na-unblock ang iyong SIM card. Nag-a-unlock ang telepono mo…"</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN na pang-unlock ng SIM network"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"I-unlock"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Balewalain"</string>

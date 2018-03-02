@@ -580,7 +580,7 @@
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM txartel batek zerbitzua aktibatu du eta telefonoaren ibiltaritza-gaitasunak aldatu ditu."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Dei gehiegi daude aktibo. Amaitu edo bateratu abian diren deiak beste bat egin aurretik."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Aldatu erantzungailuaren PIN kodea"</string>
-    <string name="change_pin_continue_label" msgid="2135088662420163447">"Jarraitu"</string>
+    <string name="change_pin_continue_label" msgid="2135088662420163447">"Egin aurrera"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Utzi"</string>
     <string name="change_pin_ok_label" msgid="6204308560844889926">"Ados"</string>
     <string name="change_pin_enter_old_pin_header" msgid="419179847657548887">"Berretsi PIN kode zaharra"</string>
