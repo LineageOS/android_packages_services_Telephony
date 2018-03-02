@@ -31,7 +31,7 @@
     <string name="cancel" msgid="5044513931633602634">"မလုပ်တော့"</string>
     <string name="enter_input" msgid="1810529547726803893">"USSD စာများဟာ စာလုံးရေ <xliff:g id="MIN_LEN">%d</xliff:g> မှ<xliff:g id="MAX_LEN">%d</xliff:g> အတွင်း ဖြစ်ရပါမည်။ နောက်တစ်ခေါက်ကြိုးစားပါ"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"ကွန်းဖရင့် ခေါ်ဆိုမှုကို ထိန်းချုပ်သည်"</string>
-    <string name="ok" msgid="3811371167865772377">"အိုကေ"</string>
+    <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"စပီကာ"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"လက်ကိုင်တယ်လီဖုန်းနားခွက်"</string>
     <string name="audio_mode_wired_headset" msgid="1465350758489175975">"ကြိုးတပ် မိုက်ခွက်ပါနားကြပ်"</string>
@@ -133,7 +133,7 @@
     <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS တောင်းဆိုမှုကို ဗီဒီယိုခေါ်ရန် တောင်းဆိုမှုအဖြစ် ပြင်ဆင်ထားပါသည်။"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"သင့်ဖုန်းအပ်ပလီကေးရှင်း ၏ ပုံသေ ခေါ်ဆိုမှု နံပါတ်များ ဖွင့်ထားပါသည်။ ထို့ကြောင့် တချို့ ဖုန်းခေါ်မှု စွမ်းဆောင်ရည်များ အလုပ်မလုပ်ပါ"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"ဤအပြင်အဆင်များကို မကြည့်ခင် ရေဒီယိုကို ဖွင့်ပါ"</string>
-    <string name="close_dialog" msgid="2365884406356986917">"အိုကေ"</string>
+    <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
     <string name="enable" msgid="7248657275000173526">"ဖွင့်ထားရန်"</string>
     <string name="disable" msgid="4678348128118573672">"ပိတ်မည်"</string>
     <string name="change_num" msgid="239476305819844391">"အဆင်မြှင့်ခြင်း"</string>
@@ -613,7 +613,7 @@
     <string name="change_pin_title" msgid="7790232089699034029">"အသံမေးလ်ပင်နံပါတ် ပြောင်းရန်"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ဆက်လုပ်ရန်"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"မလုပ်တော့"</string>
-    <string name="change_pin_ok_label" msgid="6204308560844889926">"အိုကေ"</string>
+    <string name="change_pin_ok_label" msgid="6204308560844889926">"OK"</string>
     <string name="change_pin_enter_old_pin_header" msgid="419179847657548887">"သင့်ပင်နံပါတ်အဟောင်းကို အတည်ပြုရန်"</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8579171678763615453">"ဆက်လုပ်ရန် သင့်အသံမေးလ်ပင်နံပါတ် ထည့်ပါ။"</string>
     <string name="change_pin_enter_new_pin_header" msgid="2611191814590251532">"ပင်နံပါတ်အသစ် သတ်မှတ်ရန်"</string>
