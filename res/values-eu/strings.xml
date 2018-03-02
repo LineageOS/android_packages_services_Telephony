@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Datu mugikorrak"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Datu-konexioa"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefonoaren zerbitzuak"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Larrialdietarako telefonoa"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefonoa"</string>
@@ -248,7 +248,7 @@
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operadorea"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"operadorea, esim, esim txartela, sim, sim txartela, euicc, euicc txartela, aldatu operadoreak, aldatu operadorez, aldatu operadorea, gehitu operadorea, gehitu operadoreak"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Datu mugikorrak"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"Datu-konexioa"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Atzitu datuak datu-konexioaren bidez"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Datu-konexioa desaktibatu nahi duzu?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Hautatu egin behar da"</string>
@@ -617,7 +617,7 @@
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Ezin da egin deia, bateria gutxi gelditzen delako."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Bideo-deia amaitu egin da bateria gutxi gelditzen delako."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Aldatu erantzungailuaren PIN kodea"</string>
-    <string name="change_pin_continue_label" msgid="2135088662420163447">"Jarraitu"</string>
+    <string name="change_pin_continue_label" msgid="2135088662420163447">"Egin aurrera"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Utzi"</string>
     <string name="change_pin_ok_label" msgid="6204308560844889926">"Ados"</string>
     <string name="change_pin_enter_old_pin_header" msgid="419179847657548887">"Berretsi PIN kode zaharra"</string>
@@ -632,9 +632,9 @@
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"Aktibatuta daude ibiltaritzako datuak"</string>
     <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"Ibiltaritza moduan zaude une honetan. Datu-plan bat behar duzu."</string>
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"Ibiltaritza moduan zaude une honetan. Aktibatuta dago datu-plana."</string>
-    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Agortu dira datu mugikorrak"</string>
-    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Agortu dira datu mugikorrak"</string>
-    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Gehitu datu mugikorrak <xliff:g id="PROVIDER_NAME">%s</xliff:g> operadorearen bidez"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Agortu da datu-konexioa"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Agortu da datu-konexioa"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Gehitu datu-konexioa <xliff:g id="PROVIDER_NAME">%s</xliff:g> operadorearen bidez"</string>
     <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Ez dago ibiltaritza-planik"</string>
     <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Gehitu ibiltaritza-plan bat <xliff:g id="PROVIDER_NAME">%s</xliff:g> operadorearen bidez"</string>
     <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Datu mugikorrak edo ibiltaritza-plan bat gehitzeko, jarri harremanetan zure operadorearekin (<xliff:g id="PROVIDER_NAME">%s</xliff:g>)."</string>

@@ -401,7 +401,7 @@
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"Postavi TTY način rada"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"Automatski ponovni pokušaj"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Omogući način rada za automatski ponovni pokušaj"</string>
-    <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Promjena TTY načina rada nije dozvoljena tokom videopoziva"</string>
+    <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Promjena TTY načina rada nije dozvoljena tokom video poziva"</string>
     <string name="menu_add" msgid="1882023737425114762">"Dodaj kontakt"</string>
     <string name="menu_edit" msgid="7143003705504672374">"Uredi kontakt"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Izbriši kontakt"</string>
@@ -514,7 +514,7 @@
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"Upravljaj pozivima"</string>
     <string name="onscreenManageConferenceText" msgid="6485935856534311346">"Upravljaj konferenc."</string>
     <string name="onscreenAudioText" msgid="1710087112800041743">"Zvuk"</string>
-    <string name="onscreenVideoCallText" msgid="4800924186056115442">"Videopoziv"</string>
+    <string name="onscreenVideoCallText" msgid="4800924186056115442">"Video poziv"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"Uvezi"</string>
     <string name="importAllSimEntries" msgid="1503181169636198673">"Uvezi sve"</string>
     <string name="importingSimContacts" msgid="7374056215462575769">"Uvoz kontakata sa SIM kartice u toku"</string>
@@ -594,8 +594,8 @@
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Promijeni PIN"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Melodija zvona i vibracija"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Ugrađene SIM kartice"</string>
-    <string name="enable_video_calling_title" msgid="7237253660669000899">"Uključi videopozive"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"Da uključite videopozive, omogućite Poboljšani 4G LTE način rada u postavkama mreže."</string>
+    <string name="enable_video_calling_title" msgid="7237253660669000899">"Uključi video pozive"</string>
+    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"Da uključite video pozive, omogućite Poboljšani 4G LTE način rada u postavkama mreže."</string>
     <string name="enable_video_calling_dialog_settings" msgid="576528473599603249">"Postavke mreže"</string>
     <string name="enable_video_calling_dialog_close" msgid="7411471282167927991">"Zatvori"</string>
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"Hitni pozivi"</string>
@@ -610,8 +610,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Previše aktivnih poziva. Prekinite ili spojite postojeće pozive prije upućivanja novog poziva."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Povezivanje nije uspjelo, umetnite važeću SIM karticu."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi veza je prekinuta. Poziv je završen."</string>
-    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Upućivanje videopoziva nije moguće zbog istrošenosti baterije."</string>
-    <string name="callFailed_low_battery" msgid="4913582435905872616">"Videopoziv je završen zbog istrošenosti baterije."</string>
+    <string name="dialFailed_low_battery" msgid="8760548177088774268">"Upućivanje video poziva nije moguće zbog istrošenosti baterije."</string>
+    <string name="callFailed_low_battery" msgid="4913582435905872616">"Video poziv je završen zbog istrošenosti baterije."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Promijeni PIN govorne pošte"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Nastavi"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Otkaži"</string>
