@@ -594,7 +594,7 @@
     <string name="change_pin_enter_old_pin_header" msgid="419179847657548887">"आफ्नो पुरानो PIN को पुष्टि गर्नुहोस्"</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8579171678763615453">"जारी राख्नका लागि आफ्नो भ्वाइस मेलको PIN प्रविष्ट गर्नुहोस्।"</string>
     <string name="change_pin_enter_new_pin_header" msgid="2611191814590251532">"एउटा नयाँ PIN सेट गर्नुहोस्"</string>
-    <string name="change_pin_enter_new_pin_hint" msgid="2322940054329689309">"PIN <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> अङ्कको हुनुपर्छ।"</string>
+    <string name="change_pin_enter_new_pin_hint" msgid="2322940054329689309">"PIN <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> अङ्कको हुनु पर्छ।"</string>
     <string name="change_pin_confirm_pin_header" msgid="8113764019347322170">"तपाईँको PIN को पुष्टि गर्नुहोस्"</string>
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"PIN हरू मेल खाँदैनन्"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"भ्वाइस मेल PIN अद्यावधिक गरियो"</string>
