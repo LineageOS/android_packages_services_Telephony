@@ -389,6 +389,16 @@
     <string name="preferred_network_mode_summary">Change the network operating mode</string>
     <string name="preferred_network_mode_dialogtitle">Preferred network type</string>
     <string name="forbidden_network">(forbidden)</string>
+    <!-- Available networks screen, name of button when user wants to select network manually  -->
+    <string name="choose_network_title">Choose network</string>
+    <!-- Available networks screen, text when no networks connected -->
+    <string name="network_disconnected">Disconnected</string>
+    <!-- Available networks screen, text when network connected -->
+    <string name="network_connected">Connected</string>
+    <!-- Available networks screen, text when a network is connecting -->
+    <string name="network_connecting">Connecting...</string>
+    <!-- Available networks screen, text when a network cannot be connected -->
+    <string name="network_could_not_connect">Couldn’t connect</string>
 
     <!-- The preferred network modes in Mobile network settings -->
     <string-array name="preferred_network_mode_choices">
