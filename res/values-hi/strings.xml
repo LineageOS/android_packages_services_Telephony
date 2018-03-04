@@ -420,7 +420,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"फ़िक्स्ड डायलिंग नंबर हटा रहा है..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"फ़िक्स्ड डायलिंग नंबर हटाया गया."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN पे नई जानकारी नहीं है क्योंकि आपने गलत पिन लिखा है."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN अपडेट नहीं किया जा सका, क्योंकि नंबर में 20 से अधिक संख्याएं हैं."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN अपडेट नहीं किया जा सका, क्योंकि नंबर में 20 से अधिक अंक हैं."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN पे नई जानकारी नहीं है. PIN2 गलत था, या फ़ोन नंबर अस्वीकृत था."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN की कार्यवाही विफल रही."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"सिम कार्ड से पढ़ रहा है…"</string>
