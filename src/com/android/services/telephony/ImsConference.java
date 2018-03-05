@@ -758,7 +758,8 @@ public class ImsConference extends Conference {
 
         participant.removeConnectionListener(mParticipantListener);
         synchronized(mUpdateSyncRoot) {
-            mConferenceParticipantConnections.remove(participant.getUserEntity());
+            mConferenceParticipantConnections.remove(new Pair<>(participant.getUserEntity(),
+                    participant.getEndpoint()));
         }
         mTelephonyConnectionService.removeConnection(participant);
     }
