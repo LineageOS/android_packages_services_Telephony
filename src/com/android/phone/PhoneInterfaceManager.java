@@ -3436,7 +3436,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 // Set network selection mode to automatic
                 setNetworkSelectionModeAutomatic(subId);
                 // Set preferred mobile network type to the best available
-                setPreferredNetworkType(subId, Phone.PREFERRED_NT_MODE);
+                String defaultNetwork = TelephonyManager.getTelephonyProperty(
+                        mSubscriptionController.getPhoneId(subId),
+                        "ro.telephony.default_network",
+                        null);
+                int networkType = !TextUtils.isEmpty(defaultNetwork)
+                        ? Integer.parseInt(defaultNetwork) : Phone.PREFERRED_NT_MODE;
+                setPreferredNetworkType(subId, networkType);
                 // Turn off roaming
                 mPhone.setDataRoamingEnabled(false);
             }
