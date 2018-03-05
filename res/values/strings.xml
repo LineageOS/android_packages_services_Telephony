@@ -1509,111 +1509,111 @@
     <!-- In-call screen: status label displayed briefly after a call ends -->
     <string name="clh_card_title_call_ended_txt">Call ended</string>
     <!-- In-call screen: call failure reason (radio is off) -->
-    <string name="clh_callFailed_powerOff_txt">Radio off</string>
+    <string name="clh_callFailed_powerOff_txt">Airplane mode is on</string>
     <!-- In-call screen: call failure reason (SIM error) -->
-    <string name="clh_callFailed_simError_txt">No SIM card or SIM card error</string>
+    <string name="clh_callFailed_simError_txt">Can\'t access SIM card</string>
     <!-- In-call screen: call failure message displayed in an error dialog -->
     <string name="clh_incall_error_out_of_service_txt">Mobile network not available</string>
 
     <!-- See CallFailCause for details on what causes each message -->
     <!-- In-call screen: call failure reason (Cause Number 1) -->
-    <string name="clh_callFailed_unassigned_number_txt">Unassigned (unallocated) number</string>
+    <string name="clh_callFailed_unassigned_number_txt">Issue with phone number you are trying to dial. Error code 1.</string>
     <!-- In-call screen: call failure reason (Cause Number 3) -->
-    <string name="clh_callFailed_no_route_to_destination_txt">No route to destination</string>
+    <string name="clh_callFailed_no_route_to_destination_txt">Couldn\'t complete call. Error code 3.</string>
     <!-- In-call screen: call failure reason (Cause Number 6) -->
-    <string name="clh_callFailed_channel_unacceptable_txt">Channel unacceptable</string>
+    <string name="clh_callFailed_channel_unacceptable_txt">Couldn\'t complete call. Error code 6.</string>
     <!-- In-call screen: call failure reason (Cause Number 8) -->
-    <string name="clh_callFailed_operator_determined_barring_txt">Operator determined barring</string>
+    <string name="clh_callFailed_operator_determined_barring_txt">Couldn\'t complete call. Error code 8.</string>
     <!-- In-call screen: call failure reason (Cause Number 16) -->
-    <string name="clh_callFailed_normal_call_clearing_txt">Normal call clearing</string>
+    <string name="clh_callFailed_normal_call_clearing_txt">Couldn\'t complete call. Error code 16.</string>
     <!-- In-call screen: call failure reason (Cause Number 17) -->
     <string name="clh_callFailed_user_busy_txt">User busy</string>
     <!-- In-call screen: call failure reason (Cause Number 18) -->
-    <string name="clh_callFailed_no_user_responding_txt">No user responding</string>
+    <string name="clh_callFailed_no_user_responding_txt">User not responding</string>
     <!-- In-call screen: call failure reason (Cause Number 19) -->
-    <string name="clh_callFailed_user_alerting_txt">User alerting, no answer</string>
+    <string name="clh_callFailed_user_alerting_txt">Couldn\'t complete call. Error code 19.</string>
     <!-- In-call screen: call failure reason (Cause Number 21) -->
     <string name="clh_callFailed_call_rejected_txt">Call rejected</string>
     <!-- In-call screen: call failure reason (Cause Number 22) -->
     <string name="clh_callFailed_number_changed_txt">Number changed</string>
     <!-- In-call screen: call failure reason (Cause Number 25) -->
-    <string name="clh_callFailed_pre_emption_txt">Pre-emption</string>
+    <string name="clh_callFailed_pre_emption_txt">Couldn\'t complete call. Error code 25.</string>
     <!-- In-call screen: call failure reason (Cause Number 26) -->
-    <string name="clh_callFailed_non_selected_user_clearing_txt">Non selected user clearing</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt">Couldn\'t complete call. Error code 26.</string>
     <!-- In-call screen: call failure reason (Cause Number 27) -->
-    <string name="clh_callFailed_destination_out_of_order_txt">Destination out of order</string>
+    <string name="clh_callFailed_destination_out_of_order_txt">Couldn\'t complete call. Error code 27.</string>
     <!-- In-call screen: call failure reason (Cause Number 28) -->
     <string name="clh_callFailed_invalid_number_format_txt">Invalid number format (incomplete number)</string>
     <!-- In-call screen: call failure reason (Cause Number 29) -->
-    <string name="clh_callFailed_facility_rejected_txt">Facility rejected</string>
+    <string name="clh_callFailed_facility_rejected_txt">Couldn\'t complete call. Error code 29.</string>
     <!-- In-call screen: call failure reason (Cause Number 30) -->
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt">Response to STATUS ENQUIRY</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt">Couldn\'t complete call. Error code 30.</string>
     <!-- In-call screen: call failure reason (Cause Number 31) -->
-    <string name="clh_callFailed_normal_unspecified_txt">Normal, unspecified</string>
+    <string name="clh_callFailed_normal_unspecified_txt">Couldn\'t complete call. Error code 31.</string>
     <!-- In-call screen: call failure reason (Cause Number 34) -->
-    <string name="clh_callFailed_no_circuit_available_txt">No circuit/channel available</string>
+    <string name="clh_callFailed_no_circuit_available_txt">Couldn\'t complete call. Error code 34.</string>
     <!-- In-call screen: call failure reason (Cause Number 38) -->
-    <string name="clh_callFailed_network_out_of_order_txt">Network out of order</string>
+    <string name="clh_callFailed_network_out_of_order_txt">Couldn\'t complete call. Error code 38.</string>
     <!-- In-call screen: call failure reason (Cause Number 41) -->
-    <string name="clh_callFailed_temporary_failure_txt">Temporary failure</string>
+    <string name="clh_callFailed_temporary_failure_txt">Couldn\'t complete call. Error code 41.</string>
     <!-- In-call screen: call failure reason (Cause Number 42) -->
-    <string name="clh_callFailed_switching_equipment_congestion_txt">Switching equipment congestion</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt">Couldn\'t complete call. Error code 42.</string>
     <!-- In-call screen: call failure reason (Cause Number 43) -->
-    <string name="clh_callFailed_access_information_discarded_txt">Access information discarded</string>
+    <string name="clh_callFailed_access_information_discarded_txt">Couldn\'t complete call. Error code 43.</string>
     <!-- In-call screen: call failure reason (Cause Number 44) -->
-    <string name="clh_callFailed_requested_circuit_txt">Requested circuit/channel not available</string>
+    <string name="clh_callFailed_requested_circuit_txt">Couldn\'t complete call. Error code 44.</string>
     <!-- In-call screen: call failure reason (Cause Number 47) -->
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt">Resources unavailable, unspecified</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt">Couldn\'t complete call. Error code 47.</string>
     <!-- In-call screen: call failure reason (Cause Number 49) -->
-    <string name="clh_callFailed_quality_of_service_unavailable_txt">Quality of service unavailable</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt">Couldn\'t complete call. Error code 49.</string>
     <!-- In-call screen: call failure reason (Cause Number 50) -->
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt">Requested facility not subscribed</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt">Couldn\'t complete call. Error code 50.</string>
     <!-- In-call screen: call failure reason (Cause Number 55) -->
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt">Incoming calls barred within the CUG</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt">Couldn\'t complete call. Error code 55.</string>
     <!-- In-call screen: call failure reason (Cause Number 57) -->
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt">Bearer capability not authorized</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt">Couldn\'t complete call. Error code 57.</string>
     <!-- In-call screen: call failure reason (Cause Number 58) -->
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt">Bearer capability not presently available</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt">Couldn\'t complete call. Error code 58.</string>
     <!-- In-call screen: call failure reason (Cause Number 63) -->
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt">Service or option not available, unspecified</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt">Couldn\'t complete call. Error code 63.</string>
     <!-- In-call screen: call failure reason (Cause Number 65) -->
-    <string name="clh_callFailed_bearer_service_not_implemented_txt">Bearer service not implemented</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt">Couldn\'t complete call. Error code 65.</string>
     <!-- In-call screen: call failure reason (Cause Number 68) -->
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt">ACM equal to or greater than ACMmax</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt">Couldn\'t complete call. Error code 68.</string>
     <!-- In-call screen: call failure reason (Cause Number 69) -->
-    <string name="clh_callFailed_requested_facility_not_implemented_txt">Requested facility not implemented</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt">Couldn\'t complete call. Error code 69.</string>
     <!-- In-call screen: call failure reason (Cause Number 70) -->
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt">Only restricted digital information bearer capability is available</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt">Couldn\'t complete call. Error code 70.</string>
     <!-- In-call screen: call failure reason (Cause Number 79) -->
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt">Service or option not implemented, unspecified</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt">Couldn\'t complete call. Error code 79.</string>
     <!-- In-call screen: call failure reason (Cause Number 81) -->
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt">Invalid transaction identifier value</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt">Couldn\'t complete call. Error code 81.</string>
     <!-- In-call screen: call failure reason (Cause Number 87) -->
-    <string name="clh_callFailed_user_not_member_of_CUG_txt">User not member of CUG</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt">Couldn\'t complete call. Error code 87.</string>
     <!-- In-call screen: call failure reason (Cause Number 88) -->
-    <string name="clh_callFailed_incompatible_destination_txt">Incompatible destination</string>
+    <string name="clh_callFailed_incompatible_destination_txt">Couldn\'t complete call. Error code 88.</string>
     <!-- In-call screen: call failure reason (Cause Number 91) -->
-    <string name="clh_callFailed_invalid_transit_network_selection_txt">Invalid transit network selection</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt">Couldn\'t complete call. Error code 91.</string>
     <!-- In-call screen: call failure reason (Cause Number 95) -->
-    <string name="clh_callFailed_semantically_incorrect_message_txt">Semantically incorrect message</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt">Couldn\'t complete call. Error code 95.</string>
     <!-- In-call screen: call failure reason (Cause Number 96) -->
-    <string name="clh_callFailed_invalid_mandatory_information_txt">Invalid mandatory information</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt">Couldn\'t complete call. Error code 96.</string>
     <!-- In-call screen: call failure reason (Cause Number 97) -->
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt">Message type non-existent or not implemented</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt">Couldn\'t complete call. Error code 97.</string>
     <!-- In-call screen: call failure reason (Cause Number 98) -->
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt">Message type not compatible with protocol state</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt">Couldn\'t complete call. Error code 98.</string>
     <!-- In-call screen: call failure reason (Cause Number 99) -->
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt">Information element non-existent or not implemented</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt">Couldn\'t complete call. Error code 99.</string>
     <!-- In-call screen: call failure reason (Cause Number 100) -->
-    <string name="clh_callFailed_conditional_IE_error_txt">Conditional IE error</string>
+    <string name="clh_callFailed_conditional_IE_error_txt">Couldn\'t complete call. Error code 00.</string>
     <!-- In-call screen: call failure reason (Cause Number 101) -->
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt">Message not compatible with protocol state</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt">Couldn\'t complete call. Error code 01.</string>
     <!-- In-call screen: call failure reason (Cause Number 102) -->
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt">Recovery on timer expiry</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt">Couldn\'t complete call. Error code 02.</string>
     <!-- In-call screen: call failure reason (Cause Number 111) -->
-    <string name="clh_callFailed_protocol_Error_unspecified_txt">Protocol error, unspecified</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt">Couldn\'t complete call. Error code 11.</string>
     <!-- In-call screen: call failure reason (Cause Number 127) -->
-    <string name="clh_callFailed_interworking_unspecified_txt">Interworking, unspecified</string>
+    <string name="clh_callFailed_interworking_unspecified_txt">Couldn\'t complete call. Error code 27.</string>
     <!-- Call settings screen, setting option name -->
     <string name="labelCallBarring">Call barring</string>
     <!-- Call barring settings screen, setting summary text when a call barring option is activated -->
