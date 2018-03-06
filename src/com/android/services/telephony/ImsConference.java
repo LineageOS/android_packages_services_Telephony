@@ -777,7 +777,8 @@ public class ImsConference extends Conference implements Holdable {
 
         participant.removeConnectionListener(mParticipantListener);
         synchronized(mUpdateSyncRoot) {
-            mConferenceParticipantConnections.remove(participant.getUserEntity());
+            mConferenceParticipantConnections.remove(new Pair<>(participant.getUserEntity(),
+                    participant.getEndpoint()));
         }
         mTelephonyConnectionService.removeConnection(participant);
     }
