@@ -37,7 +37,7 @@
     <!--we want user to change it with caution.-->
     <PreferenceCategory
         android:key="category_gsm_apn_key">
-        <Preference
+        <com.android.phone.RestrictedPreference
             android:key="button_gsm_apn_key"
             android:title="@string/apn_settings"
             android:persistent="false" />

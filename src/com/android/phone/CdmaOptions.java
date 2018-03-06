@@ -29,6 +29,7 @@ import android.text.TextUtils;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.Phone;
+import com.android.settingslib.RestrictedLockUtils;
 
 /**
  * List of Phone-specific settings screens.
@@ -38,7 +39,7 @@ public class CdmaOptions {
 
     private CdmaSystemSelectListPreference mButtonCdmaSystemSelect;
     private CdmaSubscriptionListPreference mButtonCdmaSubscription;
-    private Preference mButtonAPNExpand;
+    private RestrictedPreference mButtonAPNExpand;
     private Preference mCategoryAPNExpand;
     private Preference mButtonCarrierSettings;
 
@@ -63,7 +64,7 @@ public class CdmaOptions {
         mButtonCdmaSubscription = (CdmaSubscriptionListPreference) mPrefScreen
                 .findPreference(BUTTON_CDMA_SUBSCRIPTION_KEY);
         mButtonCarrierSettings = mPrefScreen.findPreference(BUTTON_CARRIER_SETTINGS_KEY);
-        mButtonAPNExpand = mPrefScreen.findPreference(BUTTON_APN_EXPAND_KEY);
+        mButtonAPNExpand = (RestrictedPreference) mPrefScreen.findPreference(BUTTON_APN_EXPAND_KEY);
         mCategoryAPNExpand = mPrefScreen.findPreference(CATEGORY_APN_EXPAND_KEY);
 
         update(phone);
@@ -93,6 +94,10 @@ public class CdmaOptions {
         // Calling add or remove explicitly to make sure they are updated.
 
         if (addAPNExpand) {
+            mButtonAPNExpand.setDisabledByAdmin(
+                    MobileNetworkSettings.isDpcApnEnforced(mButtonAPNExpand.getContext())
+                            ? RestrictedLockUtils.getDeviceOwner(mButtonAPNExpand.getContext())
+                            : null);
             mButtonAPNExpand.setOnPreferenceClickListener(
                     new Preference.OnPreferenceClickListener() {
                         @Override

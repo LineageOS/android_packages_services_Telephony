@@ -16,6 +16,8 @@
 
 package com.android.phone;
 
+import static android.provider.Telephony.Carriers.ENFORCE_MANAGED_URI;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.DialogFragment;
@@ -30,6 +32,8 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.ContentObserver;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
@@ -172,6 +176,20 @@ public class MobileNetworkSettings extends Activity  {
         return true;
     }
 
+    /**
+     * Returns if DPC APNs are enforced.
+     */
+    public static boolean isDpcApnEnforced(Context context) {
+        try (Cursor enforceCursor = context.getContentResolver().query(ENFORCE_MANAGED_URI,
+                null, null, null, null)) {
+            if (enforceCursor == null || enforceCursor.getCount() != 1) {
+                return false;
+            }
+            enforceCursor.moveToFirst();
+            return enforceCursor.getInt(0) > 0;
+        }
+    }
+
     public static class MobileNetworkFragment extends PreferenceFragment implements
             Preference.OnPreferenceChangeListener, RoamingDialogFragment.RoamingDialogListener {
 
@@ -213,6 +231,7 @@ public class MobileNetworkSettings extends Activity  {
         private static final String BUTTON_CDMA_APN_EXPAND_KEY = "button_cdma_apn_key";
 
         private final BroadcastReceiver mPhoneChangeReceiver = new PhoneChangeReceiver();
+        private final ContentObserver mDpcEnforcedContentObserver = new DpcApnEnforcedObserver();
 
         static final int preferredNetworkMode = Phone.PREFERRED_NT_MODE;
 
@@ -701,6 +720,9 @@ public class MobileNetworkSettings extends Activity  {
                     TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
             activity.registerReceiver(mPhoneChangeReceiver, intentFilter);
 
+            activity.getContentResolver().registerContentObserver(ENFORCE_MANAGED_URI, false,
+                    mDpcEnforcedContentObserver);
+
             Log.i(LOG_TAG, "onCreate:-");
         }
 
@@ -732,12 +754,26 @@ public class MobileNetworkSettings extends Activity  {
             }
         }
 
+        private class DpcApnEnforcedObserver extends ContentObserver {
+            DpcApnEnforcedObserver() {
+                super(null);
+            }
+
+            @Override
+            public void onChange(boolean selfChange) {
+                Log.i(LOG_TAG, "DPC enforced onChange:");
+                updateBody();
+            }
+        }
+
         @Override
         public void onDestroy() {
             unbindNetworkQueryService();
             super.onDestroy();
             if (getActivity() != null) {
                 getActivity().unregisterReceiver(mPhoneChangeReceiver);
+                getActivity().getContentResolver().unregisterContentObserver(
+                        mDpcEnforcedContentObserver);
             }
         }
 
