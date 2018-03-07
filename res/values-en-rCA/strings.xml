@@ -176,6 +176,16 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Change the network operating mode"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Preferred network type"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(forbidden)"</string>
+    <!-- no translation found for choose_network_title (4023911977543009350) -->
+    <skip />
+    <!-- no translation found for network_disconnected (2227251609006103194) -->
+    <skip />
+    <!-- no translation found for network_connected (1288589103624338857) -->
+    <skip />
+    <!-- no translation found for network_connecting (4927203097283533783) -->
+    <skip />
+    <!-- no translation found for network_could_not_connect (8254009365807767243) -->
+    <skip />
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA preferred"</item>
     <item msgid="8442633436636425221">"GSM only"</item>
