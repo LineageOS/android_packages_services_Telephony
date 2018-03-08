@@ -1834,7 +1834,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mPhone.getContext().getSystemService(AppOpsManager.class)
                 .checkPackage(Binder.getCallingUid(), callingPackage);
         if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
-                callingPackage, Binder.getCallingUid(),Binder.getCallingPid())) {
+                callingPackage, Binder.getCallingUid(), Binder.getCallingPid(), true)) {
             return null;
         }
 
@@ -1932,7 +1932,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mPhone.getContext().getSystemService(AppOpsManager.class)
                 .checkPackage(Binder.getCallingUid(), callingPackage);
         if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
-                callingPackage, Binder.getCallingUid(), Binder.getCallingPid())) {
+                callingPackage, Binder.getCallingUid(), Binder.getCallingPid(), true)) {
             return null;
         }
 
@@ -1966,7 +1966,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mPhone.getContext().getSystemService(AppOpsManager.class)
                 .checkPackage(Binder.getCallingUid(), callingPackage);
         if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
-                callingPackage, Binder.getCallingUid(), Binder.getCallingPid())) {
+                callingPackage, Binder.getCallingUid(), Binder.getCallingPid(), true)) {
             return null;
         }
 
