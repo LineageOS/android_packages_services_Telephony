@@ -15,6 +15,7 @@
  */
 package com.android.phone.euicc;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
@@ -92,6 +93,15 @@ public class EuiccUiDispatcherActivityTest {
     @Test
     public void testResolveEuiccUiIntent_validProvision() {
         assertNotNull(mActivity.resolveEuiccUiIntent());
+    }
+
+    @Test
+    public void testExtrasPropagated() {
+        mIntent.putExtra("foo", "bar");
+
+        Intent euiccUiIntent = mActivity.resolveEuiccUiIntent();
+        assertNotNull(euiccUiIntent);
+        assertEquals("bar", euiccUiIntent.getStringExtra("foo"));
     }
 
     class TestEuiccUiDispatcherActivity extends EuiccUiDispatcherActivity {
