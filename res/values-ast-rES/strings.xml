@@ -346,16 +346,50 @@
   <!-- Data usage settings screen option for time frame-->
   <!-- Data usage settings screen option for throttling rate-->
   <!-- Data usage settings screen option for accessing the carrier website-->
+  <string name="enable_disable_local">Llocal</string>
+  <string name="enable_disable_regional">Rexonal</string>
+  <string name="enable_disable_national">Nacional</string>
+  <string name="enable_disable_international">Internacional</string>
+  <string name="list_language_title">Llingua</string>
+  <string-array name="list_language_entries">
+    <item>Inglés</item>
+    <item>Francés</item>
+    <item>Español</item>
+    <item>Xaponés</item>
+    <item>Coreanu</item>
+    <item>Chinu</item>
+    <item>Hebréu</item>
+  </string-array>
+  <string-array name="list_language_values">
+    <item>"1"</item>
+    <item>"2"</item>
+    <item>"3"</item>
+    <item>"4"</item>
+    <item>"5"</item>
+    <item>"6"</item>
+    <item>"7"</item>
+  </string-array>
+  <string name="list_language_dtitle">Llingües</string>
+  <string name="enable_disable_lodgings">Agospiu</string>
   <string name="network_lte">LTE (aconséyase)</string>
   <string name="network_4G">4G (aconséyase)</string>
+  <string name="network_global">Global</string>
   <!-- CDMA System select strings -->
   <!-- Mobile network settings screen, setting option name -->
   <!-- Mobile network settings screen, setting summary text -->
   <!-- System select settings screen title -->
+  <string name="cdma_subscription_dialogtitle">soscripción</string>
+  <string-array name="cdma_subscription_values">
+    <item>"0"</item>
+    <item>"1"</item>
+  </string-array>
   <!-- Preference title with which users can activate CDMA network [CHAR LIMIT=30] -->
+  <string name="cdma_activate_device">Activar preséu</string>
   <!-- Preference title for launching an account manager page for prepaid LTE [CHAR LIMIT=30] -->
+  <string name="cdma_lte_data_service">Configurar serviciu de datos</string>
   <!-- A menu item in "Mobile network settings" that allows the user to update the phone
          with mobile operator specific settings. [CHAR LIMIT=25] -->
+  <string name="carrier_settings_title">Axustes de la operadora</string>
   <!-- FDN settings strings -->
   <!-- Label for "Fixed Dialing Number" settings in call settings. -->
   <string name="fdn">Númberos de marcación fixa</string>
@@ -562,14 +596,20 @@
   <!-- Button label within the OTA listen screen -->
   <!-- String to be displayed on OTA listen screen once user has selected the
          correct option to begin provisioning -->
+  <string name="ota_progress">Programando\'l teléfonu\u2026</string>
   <!-- String to display within the OTA Fail Notice dialog -->
+  <string name="ota_failure">Nun pudo programase\'l teléfonu</string>
   <!-- String to be displayed on the OTA Fail/Success screen upon successful provisioning -->
   <!-- String to be displayed on the OTA Fail/Success screen upon unsuccessful provisioning -->
   <!-- String to display within the OTA SPC Fail Notice dialog -->
   <!-- Button label in OTA listen screen that cancels activation and goes to the previous screen -->
+  <string name="ota_call_end">Atrás</string>
   <!-- Button label shown on OTA error screen to allow the user to try again -->
+  <string name="ota_try_again">Retentar</string>
   <!-- Button label shown on OTA screens that have a next screen -->
+  <string name="ota_next">Siguiente</string>
   <!-- Emergency Callback Mode (ECM) -->
+  <string name="ecm_exit_dialog">EcmExitDialog</string>
   <!-- ECM: Status bar notification message -->
   <!-- ECM: Notification title -->
   <!-- ECM: Notification body -->
@@ -579,14 +619,19 @@
   <!-- ECM: Dialog box message while in emergency call -->
   <!-- ECM: Progress text -->
   <!-- ECM: ECM exit dialog choice -->
+  <string name="alert_dialog_yes">Sí</string>
   <!-- ECM: ECM exit dialog choice -->
+  <string name="alert_dialog_no">Non</string>
   <!-- ECM: ECM exit dialog choice -->
+  <string name="alert_dialog_dismiss">Escartar</string>
   <!-- For incoming calls, this is a string we can get from a CDMA network instead of
          the actual phone number, to indicate there's no number present.  DO NOT TRANSLATE. -->
   <!-- Preference for Voicemail service provider under "Voicemail" settings.
          [CHAR LIMIT=40] -->
+  <string name="voicemail_provider">Serviciu</string>
   <!-- Preference for Voicemail setting of each provider.
          [CHAR LIMIT=40] -->
+  <string name="voicemail_settings">Configuración</string>
   <!-- String to display in voicemail number summary when no voicemail num is set -->
   <!-- Title displayed above settings coming after voicemail in the call features screen -->
   <!-- Title displayed in the overlay when a call is placed using a 3rd party provider.
