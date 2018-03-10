@@ -1698,6 +1698,7 @@ abstract class TelephonyConnection extends Connection {
     private boolean isRtt() {
         return mOriginalConnection != null
                 && mOriginalConnection.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS
+                && mOriginalConnection instanceof ImsPhoneConnection
                 && ((ImsPhoneConnection) mOriginalConnection).isRttEnabledForCall();
     }
 
