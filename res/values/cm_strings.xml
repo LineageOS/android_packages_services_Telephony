@@ -36,4 +36,7 @@
     <string name="preferred_network_mode_wcdma_only_choice">WCDMA only</string>
     <string name="preferred_network_mode_gsm_only_choice">GSM only</string>
     <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA preferred</string>
+
+    <!-- Emergency Calling -->
+    <string name="emergency_unsupported_dialer_message">Unable to complete emergency call, no suitable app found</string>
 </resources>
