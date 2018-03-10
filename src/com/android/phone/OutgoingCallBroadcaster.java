@@ -474,15 +474,30 @@ public class OutgoingCallBroadcaster extends Activity
                 // opposed to a Context which look up known android
                 // packages only)
                 final Resources resources = getResources();
-                invokeFrameworkDialer.setClassName(
-                        resources.getString(R.string.ui_default_package),
-                        resources.getString(R.string.dialer_default_class));
-                invokeFrameworkDialer.setAction(Intent.ACTION_DIAL);
-                invokeFrameworkDialer.setData(intent.getData());
-                if (DBG) Log.v(TAG, "onCreate(): calling startActivity for Dialer: "
-                               + invokeFrameworkDialer);
-                startActivity(invokeFrameworkDialer);
-                finish();
+                String[] packages = resources.getStringArray(R.array.trusted_dialer_packages)
+                String[] classes = resources.getStringArray(R.array.trusted_dialer_classes)
+                for (int i = 0; i < packages.length; i++) {
+                    try {
+                        invokeFrameworkDialer.setClassName(packages[i], classes[i]);
+                        invokeFrameworkDialer.setAction(Intent.ACTION_DIAL);
+                        invokeFrameworkDialer.setData(intent.getData());
+                        if (DBG) Log.v(TAG, "onCreate(): calling startActivity for Dialer: "
+                                       + invokeFrameworkDialer);
+                        startActivity(invokeFrameworkDialer);
+                        finish();
+                        return;
+                    } catch (ClassNotFoundException e) {
+                        continue;
+                    } catch (IllegalArgumentException e) {
+                        continue;
+                    }
+                }
+
+                // No dialer was able to handle the emergency call
+                new AlertDialog.Builder(this)
+                        .setMessage(R.string.message_emergency_unsupported_dialer)
+                        .setPositiveButton(android.R.string.ok, null);
+                        .show();
                 return;
             }
             callNow = false;

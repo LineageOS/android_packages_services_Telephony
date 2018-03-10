@@ -40,4 +40,16 @@
         <item>@string/preferred_network_mode_gsm_only_choice</item>
         <item>@string/preferred_network_mode_gsm_wcdma_preferred_choice</item>
     </string-array>
+
+    <!-- Package names for dialer apps that can handle emergency calls -->
+    <string-array name="trusted_dialer_packages" translatable="false">
+        <item>@string/ui_default_package</item>
+        <item>com.android.google.dialer</item>
+    </string-array>
+
+    <!-- Class names of main activities for dialer apps that can handle emergency calls -->
+    <string-array name="trusted_dialer_classes" translatable="false">
+        <item>@string/dialer_default_class</item>
+        <item>com.android.google.dialer.extensions.GoogleDialtactsActivity</item>
+    </string-array>
 </resources>
