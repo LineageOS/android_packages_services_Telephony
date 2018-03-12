@@ -2611,15 +2611,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return success;
     }
 
-    /**
-     * {@hide}
-     * Returns Default sim, 0 in the case of single standby.
-     */
-    public int getDefaultSim() {
-        //TODO Need to get it from Telephony Devcontroller
-        return 0;
-    }
-
     public String[] getPcscfAddress(String apnType, String callingPackage) {
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
                 mApp, callingPackage, "getPcscfAddress")) {
