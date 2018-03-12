@@ -103,8 +103,7 @@ public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
 
             if (!mUserManager.isAdminUser()) {
                 final String[] values = new String[]{"preferred_network_mode_key",
-                        "button_roaming_key",
-                        "cdma_lte_data_service_key", "enabled_networks_key", "enhanced_4g_lte",
+                        "button_roaming_key", "cdma_lte_data_service_key", "enhanced_4g_lte",
                         "button_apn_key", "button_carrier_sel_key", "carrier_settings_key",
                         "cdma_system_select_key", "esim_list_profile", "mobile_data_enable",
                         "data_usage_summary", "wifi_calling_key", "video_calling_key"};
@@ -119,6 +118,12 @@ public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
                     cursor.addRow(createNonIndexableRow("enhanced_4g_lte" /* key */));
                 }
             }
+
+            // enabled_networks button and preferred_network_mode button share the same title
+            // "Preferred network type"and are mutual exclusive. Thus we remove one from search
+            // result to avoid duplicate search result.
+            // TODO: b/63381516 all hidden buttons should dynamically be removed from search result.
+            cursor.addRow(createNonIndexableRow("enabled_networks_key" /* key */));
             cursor.addRow(createNonIndexableRow("carrier_settings_euicc_key" /* key */));
             cursor.addRow(createNonIndexableRow("advanced_options" /* key */));
             return cursor;
