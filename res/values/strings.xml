@@ -369,7 +369,7 @@
     <!-- Available networks screen, text when no networks are found -->
     <string name="empty_networks_list">No networks found.</string>
     <!-- Available networks screen, toast when an error is encountered when searching for networks -->
-    <string name="network_query_error">Error while searching for networks.</string>
+    <string name="network_query_error">Couldn\'t find networks. Try again.</string>
     <!-- Available networks screen, toast when registering on a specific network -->
     <string name="register_on_network">Registering on <xliff:g id="network">%s</xliff:g>\u2026</string>
     <!-- Available networks screen, toast when SIM card isn't allowed on a network -->
