@@ -89,15 +89,13 @@ public class EuiccUiDispatcherActivity extends Activity {
         String action = getIntent().getAction();
 
         Intent intent = new Intent();
+        intent.putExtras(getIntent());
         switch (action) {
             case EuiccManager.ACTION_MANAGE_EMBEDDED_SUBSCRIPTIONS:
                 intent.setAction(EuiccService.ACTION_MANAGE_EMBEDDED_SUBSCRIPTIONS);
                 break;
             case EuiccManager.ACTION_PROVISION_EMBEDDED_SUBSCRIPTION:
                 intent.setAction(EuiccService.ACTION_PROVISION_EMBEDDED_SUBSCRIPTION);
-                intent.putExtra(
-                        EuiccManager.EXTRA_FORCE_PROVISION,
-                        getIntent().getBooleanExtra(EuiccManager.EXTRA_FORCE_PROVISION, false));
                 break;
             default:
                 Log.w(TAG, "Unsupported action: " + action);

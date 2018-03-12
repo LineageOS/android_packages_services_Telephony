@@ -139,6 +139,8 @@ public class RemoteVvmTaskManager extends Service {
         TelecomManager telecomManager = context.getSystemService(TelecomManager.class);
         List<String> packages = new ArrayList<>();
         packages.add(telecomManager.getDefaultDialerPackage());
+        // TODO(b/73136824): Check permissions in the calling function and avoid relying on the
+        // binder caller's permissions to access the carrier config.
         PersistableBundle carrierConfig = context
                 .getSystemService(CarrierConfigManager.class).getConfigForSubId(subId);
         packages.add(
