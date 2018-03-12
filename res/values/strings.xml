@@ -1605,15 +1605,15 @@
     <!-- In-call screen: call failure reason (Cause Number 99) -->
     <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt">Couldn\'t complete call. Error code 99.</string>
     <!-- In-call screen: call failure reason (Cause Number 100) -->
-    <string name="clh_callFailed_conditional_IE_error_txt">Couldn\'t complete call. Error code 00.</string>
+    <string name="clh_callFailed_conditional_IE_error_txt">Couldn\'t complete call. Error code 100.</string>
     <!-- In-call screen: call failure reason (Cause Number 101) -->
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt">Couldn\'t complete call. Error code 01.</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt">Couldn\'t complete call. Error code 101.</string>
     <!-- In-call screen: call failure reason (Cause Number 102) -->
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt">Couldn\'t complete call. Error code 02.</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt">Couldn\'t complete call. Error code 102.</string>
     <!-- In-call screen: call failure reason (Cause Number 111) -->
-    <string name="clh_callFailed_protocol_Error_unspecified_txt">Couldn\'t complete call. Error code 11.</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt">Couldn\'t complete call. Error code 111.</string>
     <!-- In-call screen: call failure reason (Cause Number 127) -->
-    <string name="clh_callFailed_interworking_unspecified_txt">Couldn\'t complete call. Error code 27.</string>
+    <string name="clh_callFailed_interworking_unspecified_txt">Couldn\'t complete call. Error code 127.</string>
     <!-- Call settings screen, setting option name -->
     <string name="labelCallBarring">Call barring</string>
     <!-- Call barring settings screen, setting summary text when a call barring option is activated -->
