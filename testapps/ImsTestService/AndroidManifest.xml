@@ -40,9 +40,8 @@
                  android:enabled="true"
                  android:persistent="true"
                  android:permission="android.permission.BIND_IMS_SERVICE">
-            <meta-data android:name="android.telephony.ims.MMTEL_FEATURE" android:value="true"/>
-            <!--meta-data android:name="android.telephony.ims.EMERGENCY_MMTEL_FEATURE"
-                       android:value="true" /-->
+            <!--meta-data android:name="android.telephony.ims.MMTEL_FEATURE" android:value="true"/-->
+            <!-- No features means we will get queried for dynamic config. -->
             <intent-filter>
                 <action android:name="android.telephony.ims.ImsService" />
             </intent-filter>
