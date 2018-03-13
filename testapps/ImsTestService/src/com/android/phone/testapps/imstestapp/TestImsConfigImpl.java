@@ -55,6 +55,10 @@ public class TestImsConfigImpl extends ImsConfigImplBase {
         return sTestImsConfigImpl;
     }
 
+    private TestImsConfigImpl() {
+        super();
+    }
+
     public void setConfigListener(ImsConfigListener listener) {
         mListener = listener;
     }
