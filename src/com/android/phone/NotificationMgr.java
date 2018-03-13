@@ -539,7 +539,7 @@ public class NotificationMgr {
 
         final Notification.Builder builder = new Notification.Builder(mContext)
                 .setSmallIcon(android.R.drawable.stat_sys_warning)
-                .setContentTitle(mContext.getText(R.string.roaming))
+                .setContentTitle(mContext.getText(R.string.roaming_notification_title))
                 .setColor(mContext.getResources().getColor(R.color.dialer_theme_color))
                 .setContentText(contentText)
                 .setChannel(NotificationChannelController.CHANNEL_ID_MOBILE_DATA_STATUS)
