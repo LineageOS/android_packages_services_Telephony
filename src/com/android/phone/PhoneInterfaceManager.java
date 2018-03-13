@@ -2709,6 +2709,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return PhoneFactory.getImsResolver().isEmergencyMmTelAvailable(slotId);
     }
 
+    /**
+     * @return true if the IMS resolver is busy resolving a binding and should not be considered
+     * available, false if the IMS resolver is idle.
+     */
+    public boolean isResolvingImsBinding() {
+        enforceModifyPermission();
+        return PhoneFactory.getImsResolver().isResolvingBinding();
+    }
+
     public void setImsRegistrationState(boolean registered) {
         enforceModifyPermission();
         mPhone.setImsRegistrationState(registered);
