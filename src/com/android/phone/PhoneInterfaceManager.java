@@ -2624,15 +2624,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return success;
     }
 
-    /**
-     * {@hide}
-     * Returns Default sim, 0 in the case of single standby.
-     */
-    public int getDefaultSim() {
-        //TODO Need to get it from Telephony Devcontroller
-        return 0;
-    }
-
     public String[] getPcscfAddress(String apnType, String callingPackage) {
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
                 mApp, mPhone.getSubId(), callingPackage, "getPcscfAddress")) {
@@ -2702,11 +2693,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * @return true if emergency calling is available on IMS, false if it should fallback to CS.
+     * @return true if the IMS resolver is busy resolving a binding and should not be considered
+     * available, false if the IMS resolver is idle.
      */
-    public boolean isEmergencyMmTelAvailable(int slotId) {
+    public boolean isResolvingImsBinding() {
         enforceModifyPermission();
-        return PhoneFactory.getImsResolver().isEmergencyMmTelAvailable(slotId);
+        return PhoneFactory.getImsResolver().isResolvingBinding();
     }
 
     public void setImsRegistrationState(boolean registered) {
@@ -4113,7 +4105,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
 
             infos[i] = new UiccSlotInfo(
-                    slot.isActive(), slot.isEuicc(), cardId, cardState, slot.getPhoneId());
+                    slot.isActive(),
+                    slot.isEuicc(),
+                    cardId,
+                    cardState,
+                    slot.getPhoneId(),
+                    slot.isExtendedApduSupported());
         }
         return infos;
     }

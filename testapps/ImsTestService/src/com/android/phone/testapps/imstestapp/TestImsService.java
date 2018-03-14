@@ -17,9 +17,11 @@
 package com.android.phone.testapps.imstestapp;
 
 import android.telephony.ims.ImsService;
+import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.feature.MmTelFeature;
 import android.telephony.ims.feature.RcsFeature;
 import android.telephony.ims.stub.ImsConfigImplBase;
+import android.telephony.ims.stub.ImsFeatureConfiguration;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.util.Log;
 
@@ -54,8 +56,16 @@ public class TestImsService extends ImsService {
     }
 
     @Override
+    public ImsFeatureConfiguration querySupportedImsFeatures() {
+        return new ImsFeatureConfiguration.Builder()
+                .addFeature(0, ImsFeature.FEATURE_EMERGENCY_MMTEL)
+                .addFeature(0, ImsFeature.FEATURE_MMTEL)
+                .build();
+    }
+
+    @Override
     public MmTelFeature createMmTelFeature(int slotId) {
-        Log.i(LOG_TAG, "TestImsService: onCreateEmergencyMMTelImsFeature");
+        Log.i(LOG_TAG, "TestImsService: onCreateMmTelImsFeature");
         return mTestMmTelFeature;
     }
 

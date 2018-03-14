@@ -124,16 +124,16 @@ public final class PhoneSearchIndexablesProviderTest {
         when(mUserManager.isAdminUser()).thenReturn(true);
         Cursor cursor2 = mProvider
                 .queryNonIndexableKeys(SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
-        assertThat(cursor2.getCount()).isEqualTo(2);
+        assertThat(cursor2.getCount()).isEqualTo(3);
 
         mProvider.setIsEuiccSettingsHidden(true /* isEuiccSettingsHidden */);
         Cursor cursor3 = mProvider
                 .queryNonIndexableKeys(SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
-        assertThat(cursor3.getCount()).isEqualTo(3);
+        assertThat(cursor3.getCount()).isEqualTo(4);
 
         mProvider.setIsEnhanced4gLteHidden(true /* isEnhanced4gLteHidden */);
         Cursor cursor4 = mProvider
                 .queryNonIndexableKeys(SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
-        assertThat(cursor4.getCount()).isEqualTo(4);
+        assertThat(cursor4.getCount()).isEqualTo(5);
     }
 }
