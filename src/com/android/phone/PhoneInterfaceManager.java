@@ -4075,7 +4075,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
 
             infos[i] = new UiccSlotInfo(
-                    slot.isActive(), slot.isEuicc(), cardId, cardState, slot.getPhoneId());
+                    slot.isActive(),
+                    slot.isEuicc(),
+                    cardId,
+                    cardState,
+                    slot.getPhoneId(),
+                    slot.isExtendedApduSupported());
         }
         return infos;
     }
