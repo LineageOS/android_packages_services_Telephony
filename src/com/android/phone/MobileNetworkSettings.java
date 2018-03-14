@@ -223,6 +223,8 @@ public class MobileNetworkSettings extends Activity  {
 
         //Information that needs to save into Bundle.
         private static final String EXPAND_ADVANCED_FIELDS = "expand_advanced_fields";
+        //Intent extra to indicate expand all fields.
+        private static final String EXPAND_EXTRA = "expandable";
 
         private SubscriptionManager mSubscriptionManager;
         private TelephonyManager mTelephonyManager;
@@ -636,6 +638,8 @@ public class MobileNetworkSettings extends Activity  {
 
             if (icicle != null) {
                 mExpandAdvancedFields = icicle.getBoolean(EXPAND_ADVANCED_FIELDS, false);
+            } else if (getActivity().getIntent().getBooleanExtra(EXPAND_EXTRA, false)) {
+                mExpandAdvancedFields = true;
             }
 
             bindNetworkQueryService();
