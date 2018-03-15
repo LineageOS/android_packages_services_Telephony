@@ -2520,10 +2520,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Get the forbidden PLMN List from the given app type (ex APPTYPE_USIM)
      * on a particular subscription
      */
-    public String[] getForbiddenPlmns(int subId, int appType) {
-        // TODO(b/73884967): Migrate to TelephonyPermissions check.
-        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PHONE_STATE,
-                "Requires READ_PHONE_STATE");
+    public String[] getForbiddenPlmns(int subId, int appType, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, "getForbiddenPlmns")) {
+            return null;
+        }
         if (appType != TelephonyManager.APPTYPE_USIM && appType != TelephonyManager.APPTYPE_SIM) {
             loge("getForbiddenPlmnList(): App Type must be USIM or SIM");
             return null;
