@@ -2520,10 +2520,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Get the forbidden PLMN List from the given app type (ex APPTYPE_USIM)
      * on a particular subscription
      */
-    public String[] getForbiddenPlmns(int subId, int appType) {
-        // TODO(b/73884967): Migrate to TelephonyPermissions check.
-        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PHONE_STATE,
-                "Requires READ_PHONE_STATE");
+    public String[] getForbiddenPlmns(int subId, int appType, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, "getForbiddenPlmns")) {
+            return null;
+        }
         if (appType != TelephonyManager.APPTYPE_USIM && appType != TelephonyManager.APPTYPE_SIM) {
             loge("getForbiddenPlmnList(): App Type must be USIM or SIM");
             return null;
@@ -3466,7 +3467,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 // Set network selection mode to automatic
                 setNetworkSelectionModeAutomatic(subId);
                 // Set preferred mobile network type to the best available
-                setPreferredNetworkType(subId, Phone.PREFERRED_NT_MODE);
+                String defaultNetwork = TelephonyManager.getTelephonyProperty(
+                        mSubscriptionController.getPhoneId(subId),
+                        "ro.telephony.default_network",
+                        null);
+                int networkType = !TextUtils.isEmpty(defaultNetwork)
+                        ? Integer.parseInt(defaultNetwork) : Phone.PREFERRED_NT_MODE;
+                setPreferredNetworkType(subId, networkType);
                 // Turn off roaming
                 mPhone.setDataRoamingEnabled(false);
                 // Remove IMSI encryption keys from Carrier DB.
