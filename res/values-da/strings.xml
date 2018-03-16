@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Tilgængelige netværk"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Søger..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Der blev ikke fundet nogen netværk."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Der opstod en fejl, mens der blev søgt efter netværk."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Der kunne ikke findes netværk. Prøv igen."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Registrerer på <xliff:g id="NETWORK">%s</xliff:g> ..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"Dit SIM-kort tillader ikke en forbindelse til dette netværk."</string>
     <string name="connect_later" msgid="2308119155752343975">"Der kan ikke oprettes forbindelse til dette netværk lige nu. Prøv igen senere."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Skift netværksdriftstilstand"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Foretrukken netværkstype"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(forbudt)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Vælg netværk"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Afbrudt"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Forbundet"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Forbindelsen oprettes…"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Der kunne ikke oprettes forbindelse"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA foretrækkes"</item>
     <item msgid="8442633436636425221">"Kun GSM"</item>
@@ -238,7 +243,10 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Opret forbindelse til datatjenester under roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Opret forbindelse til datatjenester under roaming"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Du har mistet dataforbindelsen, fordi du har forladt dit hjemmenetværk, og dataroaming er slået fra."</string>
+    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
+    <skip />
+    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
+    <skip />
     <string name="roaming_warning" msgid="1603164667540144353">"Du kan risikere at skulle betale høje gebyrer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakt din netværksudbyder for at få oplyst priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillade dataroaming?"</string>
@@ -571,8 +579,8 @@
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Dataforbindelsen er deaktiveret"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Der er ingen dataforbindelse før kl. <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="one">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen applikationer, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
-      <item quantity="other">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen applikationer, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
+      <item quantity="one">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen apps, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
+      <item quantity="other">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen apps, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
       <item quantity="one">Den valgte handling er ikke tilgængelig i tilstanden Nødopkald. Telefonen vil være i denne tilstand i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Vil du afslutte denne tilstand nu?</item>
