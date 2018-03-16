@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Redes disponibles"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Buscando..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"No se ha encontrado ninguna red."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Se ha producido un error al buscar redes."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"No se ha encontrado ninguna red. Inténtalo de nuevo."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Registrándose en <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"La tarjeta SIM no permite establecer conexión con esta red."</string>
     <string name="connect_later" msgid="2308119155752343975">"No se puede conectar a la red en este momento. Inténtalo de nuevo más tarde."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Cambiar el modo operativo de la red"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Tipo de red preferida"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(prohibida)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Elegir red"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Desconectada"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Conectada"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Conectando..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"No se ha podido conectar"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Preferencia: GSM o WCDMA"</item>
     <item msgid="8442633436636425221">"Solo GSM"</item>
@@ -238,7 +243,10 @@
     <string name="roaming" msgid="7894878421600247140">"Itinerancia"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Conectarse a servicios de datos en itinerancia"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Conectarse a servicios de datos en itinerancia"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Has perdido la conectividad de datos porque has dejado desactivada la itinerancia de datos de tu red doméstica."</string>
+    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
+    <skip />
+    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
+    <skip />
     <string name="roaming_warning" msgid="1603164667540144353">"El coste de este servicio puede ser significativo."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Ponte en contacto con tu proveedor de red para consultar el precio."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"¿Permitir itinerancia de datos?"</string>
@@ -549,7 +557,7 @@
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"El teléfono está activando el servicio de datos móviles.\n\nEste proceso puede tardar hasta 5 minutos."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"¿Quieres omitir la activación?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Si omites la activación, no podrás realizar llamadas ni conectarte a las redes de datos móviles (aunque sí podrás conectarte a las redes Wi-Fi). Se te pedirá que actives el teléfono cada vez que lo enciendas hasta que realices la activación."</string>
-    <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Omitir"</string>
+    <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Saltar"</string>
     <string name="ota_activate" msgid="1368528132525626264">"Activar"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"El teléfono está activado."</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"Problema con la activación"</string>

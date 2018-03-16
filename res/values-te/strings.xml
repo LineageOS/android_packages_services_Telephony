@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"అందుబాటులో ఉన్న నెట్‌వర్క్‌లు"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"శోధిస్తోంది..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"నెట్‌వర్క్‌లు కనుగొనబడలేదు."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"నెట్‌వర్క్‌ల కోసం శోధిస్తున్నప్పుడు లోపం."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"నెట్‌వర్క్‌లను కనుగొనడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g>లో నమోదు అవుతోంది…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"మీ SIM కార్డు ఈ నెట్‌వర్క్‌కు కనెక్షన్‌ను అనుమతించదు."</string>
     <string name="connect_later" msgid="2308119155752343975">"ప్రస్తుతం ఈ నెట్‌వర్క్‌కు కనెక్ట్ చేయడం సాధ్యపడదు. తర్వాత మళ్లీ ప్రయత్నించండి."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"నెట్‌వర్క్ ఆపరేటింగ్ మోడ్‌ను మార్చండి"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ప్రాధాన్య నెట్‌వర్క్ రకం"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(నిషేధించబడింది)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"నెట్‌వర్క్‌ను ఎంచుకోండి"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"డిస్‌కనెక్ట్ చేయబడింది"</string>
+    <string name="network_connected" msgid="1288589103624338857">"కనెక్ట్ చేయబడింది"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"కనెక్ట్ అవుతోంది..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"కనెక్ట్ చేయడం సాధ్యపడలేదు"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMAకు ప్రాధాన్యత"</item>
     <item msgid="8442633436636425221">"GSM మాత్రమే"</item>
@@ -238,7 +243,10 @@
     <string name="roaming" msgid="7894878421600247140">"రోమింగ్"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"మీరు డేటా రోమింగ్ ఆపివేసి, మీ హోమ్ నెట్‌వర్క్ నుండి నిష్క్రమించినందున మీరు డేటా కనెక్టివిటీని కోల్పోయారు."</string>
+    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
+    <skip />
+    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
+    <skip />
     <string name="roaming_warning" msgid="1603164667540144353">"మీకు గణనీయ ఛార్జీలు విధించబడవచ్చు."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ధరల కోసం మీ నెట్‌వర్క్ ప్రదాతను అడగండి."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"డేటా రోమింగ్‌ను అనుమతించాలా?"</string>

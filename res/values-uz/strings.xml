@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Mavjud tarmoqlar"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Qidirilmoqda…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Birorta ham tarmoq topilmadi."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Tarmoqlar izlanayotganda xato."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Hech qanday tarmoqni topilmadi. Qayta urining."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g>da ro‘yxatdan o‘tmoqda…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"SIM kartangiz ushbu tarmoqqa ulanishga ruxsat bermaydi."</string>
     <string name="connect_later" msgid="2308119155752343975">"Ushbu tarmoqqa hozirgi vaqtda ulanib bo‘lmaydi. Keyinroq urinib ko‘ring."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Tarmoq rejimini o‘zgartiring"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Tarmoq turi"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(taqiqlangan)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Tarmoqni tanlash"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Tarmoqqa ulanmagan"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Ulandi"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Ulanmoqda…"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Tarmoqqa ulanmadi"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA (tavsiya qilinadi)"</item>
     <item msgid="8442633436636425221">"Faqat GSM"</item>
@@ -238,7 +243,10 @@
     <string name="roaming" msgid="7894878421600247140">"Rouming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Rouming vaqtida mobil internetga ulanish"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Rouming vaqtida mobil internetga ulanish"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Internetga ulanish uzildi, chunki uy tarmog‘ingizni rouming internetini o\'chirgan holatda tark etdingiz."</string>
+    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
+    <skip />
+    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
+    <skip />
     <string name="roaming_warning" msgid="1603164667540144353">"Xarajati ancha yuqori bo‘lishi mumkin."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Paketlar narxlari haqidagi ma’lumotni internet provayderingizdan olishingiz mumkin."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Internet-roumingga ruxsat berilsinmi?"</string>

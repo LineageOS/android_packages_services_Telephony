@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"उपलब्ध नेटवर्कहरू"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"खोजी गर्दै..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"कुनै नेटवर्कहरू भेटिएनन्।"</string>
-    <string name="network_query_error" msgid="6828516148953325006">"नेटवर्कको लागि खोजी कार्य गर्दा त्रुटि"</string>
+    <string name="network_query_error" msgid="8466081377231178298">"नेटवर्कहरू फेला पार्न सकिएन। फेरि प्रयास गर्नुहोस्।"</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> मा दर्ता गर्दै..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"तपाईंको SIM कार्डले यो नेटवर्कको लागि जडान अनुमति दिँदैन।"</string>
     <string name="connect_later" msgid="2308119155752343975">"यो नेटवर्कमा अहिले जडान हुन सक्दैन। पछि प्रयास गर्नुहोस्।"</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"नेटवर्क संचालन मोड परिवर्तन गर्नुहोस्"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"रुचाइएको सञ्जाल प्रकार"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(निषेध गरिएको)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"नेटवर्क छनौट गर्नुहोस्‌"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"जडान विच्छेद गरियो"</string>
+    <string name="network_connected" msgid="1288589103624338857">"जडान गरियो"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"जडान गरिँदै छ..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"जडान गर्न सकिएन"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA रुचाइयो"</item>
     <item msgid="8442633436636425221">"GSM मात्र"</item>
@@ -238,7 +243,10 @@
     <string name="roaming" msgid="7894878421600247140">"रोमिङ"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"रोमिङको समयमा डेटा सेवामा जडान गर्नुहोस्"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"रोमिङको समयमा डेटा सेवा जडान गर्नुहोस्"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"तपाईँले डेटा गुमाउनु भएको छ किनभने तपाईँले डेटासहितको घर नेटवर्क रोमिङ बन्द गरेर छोड्नुभएको छ।"</string>
+    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
+    <skip />
+    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
+    <skip />
     <string name="roaming_warning" msgid="1603164667540144353">"तपाईंलाई अत्यन्त धेरै शुल्क लाग्न सक्छ।"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"मूल्यसम्बन्धी जानकारीको लागि आफ्नो नेटवर्क प्रदायकलाई सोध्नुहोस्।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिङको अनुमति दिने हो?"</string>
@@ -268,7 +276,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> अधिकतम बढीमा \n डेटा दरमा कम <xliff:g id="USED_1">%2$d</xliff:g> KB /s"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ को चक्र बितेको \nअर्को समय <xliff:g id="USED_1">%2$d</xliff:g> दिनमा सुरु हुन्छ (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"यदि डेटाको प्रयोग गर्न सिमित पार भएको छ भने  <xliff:g id="USED">%1$d</xliff:g> Kb/s मा डेटा दर घटेको छ"</string>
-    <string name="throttle_help_subtext" msgid="5217706521499010816">"तपाईंको केरियरको मोबाइल नेटवर्क डेटाको प्रयोग नीतिको बारेमा अधिक जानकारी"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"तपाईंको केरियरको मोबाइल नेटवर्क डेटाको प्रयोग नीतिको बारेमा थप जानकारी"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"सेल प्रसारण SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"सेल प्रसारण SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"सेल प्रसारण SMS सक्षम"</string>

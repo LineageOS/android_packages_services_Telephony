@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"បណ្ដាញ​ដែល​មាន"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"កំពុង​ស្វែងរក..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"រក​មិន​ឃើញ​បណ្ដាញ។"</string>
-    <string name="network_query_error" msgid="6828516148953325006">"កំហុស​ខណៈ​ស្វែងរក​បណ្ដាញ។"</string>
+    <string name="network_query_error" msgid="8466081377231178298">"មិន​អាច​រក​ឃើញ​បណ្ដាញ​ទេ។ ព្យាយាម​ម្ដង​ទៀត។"</string>
     <string name="register_on_network" msgid="9055203954040805084">"ចុះឈ្មោះ​នៅ​លើ <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"មិន​អនុញ្ញាត​ឲ្យ​ស៊ីមកាត​របស់​អ្នក​តភ្ជាប់​ទៅ​បណ្ដាញ​នេះ​ទេ។"</string>
     <string name="connect_later" msgid="2308119155752343975">"មិន​អាច​តភ្ជាប់​ទៅ​បណ្ដាញ​ឥឡូវ​នេះ​បាន​ទេ។ ព្យាយាម​ម្ដងទៀត​ពេលក្រោយ។"</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ប្ដូរ​របៀប​ប្រតិបត្តិការ​បណ្ដាញ"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ប្រភេទ​បណ្ដាញ​​ដែល​​ពេញចិត្ត"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(ហាម)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"ជ្រើសរើសបណ្តាញ"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"បាន​ផ្ដាច់"</string>
+    <string name="network_connected" msgid="1288589103624338857">"បានភ្ជាប់"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"កំពុង​ភ្ជាប់..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"មិន​អាចភ្ជាប់​បានទេ"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"ប្រើ GSM/WCDMA ជា​អាទិភាព"</item>
     <item msgid="8442633436636425221">"GSM ប៉ុណ្ណោះ"</item>
@@ -238,7 +243,10 @@
     <string name="roaming" msgid="7894878421600247140">"រ៉ូ​មីង"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"អ្នក​បាន​បាត់បង់​ការ​តភ្ជាប់​ទិន្នន័យ ពីព្រោះ​អ្នក​បាន​ចាកចេញ​ពី​បណ្ដាញ​ដើម​របស់​អ្នក​ជាមួយ​រ៉ូមីង​ទិន្នន័យ​បាន​បិទ។"</string>
+    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
+    <skip />
+    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
+    <skip />
     <string name="roaming_warning" msgid="1603164667540144353">"អាចនាំឲ្យមានការគិតប្រាក់ច្រើនពីអ្នក។"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ពិនិត្យមើល​តម្លៃ​ជាមួយ​ក្រុមហ៊ុន​ផ្ដល់​សេវា​​បណ្ដាញ​​របស់​អ្នក។"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"អនុញ្ញាតឲ្យរ៉ូមីងទិន្នន័យ?"</string>
