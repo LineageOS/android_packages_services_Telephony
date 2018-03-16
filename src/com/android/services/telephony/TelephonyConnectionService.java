@@ -740,6 +740,9 @@ public class TelephonyConnectionService extends ConnectionService {
             return;
         }
 
+        Log.i(this, "Setting RTT stream on ImsPhoneConnection in case we need it later");
+        imsOriginalConnection.setCurrentRttTextStream(request.getRttTextStream());
+
         if (!imsOriginalConnection.isRttEnabledForCall()) {
             if (request.isRequestingRtt()) {
                 Log.w(this, "Incoming call processed as RTT but did not come in as one. Ignoring");
@@ -747,8 +750,7 @@ public class TelephonyConnectionService extends ConnectionService {
             return;
         }
 
-        Log.i(this, "Setting RTT stream on ImsPhoneConnection");
-        imsOriginalConnection.setCurrentRttTextStream(request.getRttTextStream());
+        Log.i(this, "Setting the call to be answered with RTT on.");
         imsOriginalConnection.getImsCall().setAnswerWithRtt();
     }
 
