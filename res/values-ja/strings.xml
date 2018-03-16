@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"利用可能なネットワーク"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"検索中..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"ネットワークが見つかりません。"</string>
-    <string name="network_query_error" msgid="6828516148953325006">"ネットワークの検索中にエラーが発生しました。"</string>
+    <string name="network_query_error" msgid="8466081377231178298">"ネットワークが見つかりませんでした。もう一度お試しください。"</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g>に登録中..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"お使いのSIMカードではこのネットワークに接続できません。"</string>
     <string name="connect_later" msgid="2308119155752343975">"現在このネットワークに接続できません。しばらくしてからもう一度お試しください。"</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ネットワーク動作モードの変更"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"優先ネットワークタイプ"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"（禁止）"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"ネットワークを選択"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"未接続"</string>
+    <string name="network_connected" msgid="1288589103624338857">"接続中"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"接続処理中..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"接続できませんでした"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM / WCDMA を優先"</item>
     <item msgid="8442633436636425221">"GSM のみ"</item>
@@ -238,7 +243,10 @@
     <string name="roaming" msgid="7894878421600247140">"ローミング"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"ローミング時にデータサービスに接続する"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ローミング時にデータサービスに接続する"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"データローミングをOFFにしてホームネットワークを離れたため、データ接続が切断されました。"</string>
+    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
+    <skip />
+    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
+    <skip />
     <string name="roaming_warning" msgid="1603164667540144353">"高額な通信料が発生することがあります。"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"価格設定については、ネットワーク プロバイダにお問い合わせください。"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"データ ローミングを許可しますか？"</string>
@@ -637,58 +645,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"データを追加"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"キャンセル"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"通話が終了した"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"無線通信が OFF になっている"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM カードがない、または SIM カードのエラー"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"機内モードが ON になっています"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"SIM カードにアクセスできません"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"モバイル ネットワークを利用できない"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"未割り当ての番号"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"宛先に転送できない"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"許可されないチャンネル"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"指定した通信事業者が禁止している"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"通常の通話を終了している"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"発信先の電話番号に問題があります。エラーコード 1。"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"通話が切断されました。エラーコード 3。"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"通話が切断されました。エラーコード 6。"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"通話が切断されました。エラーコード 8。"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"通話が切断されました。エラーコード 16。"</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"ユーザーが取り込み中"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"ユーザーから応答がない"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"ユーザーへの警告、回答なし"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"相手が電話に出ません"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"通話が切断されました。エラーコード 19。"</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"通話が拒否された"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"番号が変更されている"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"一時的に中断"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"未選択のユーザーをクリアしている"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"宛先が応答できない状態"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"通話が切断されました。エラーコード 25。"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"通話が切断されました。エラーコード 26。"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"通話が切断されました。エラーコード 27。"</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"無効な番号形式（番号が不完全）"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"サービスが拒否された"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"状態の照会に対する回答"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"通常、詳細不明"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"利用できる回線 / チャンネルがない"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"ネットワークが動作していない"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"一時的なエラー"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"機器の切り替え時の混雑"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"アクセス情報が破棄された"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"リクエストした回線 / チャンネルを利用できない"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"リソースを利用できない、詳細不明"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"サービスの品質を確認できない"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"リクエストしたサービスに登録していない"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"着信通話が CUG 内で禁止されている"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"ベアラー サービスが承認されていない"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"現在ベアラー サービスを利用できない"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"サービスまたはオプションを利用できない、詳細不明"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"ベアラー サービスが実装されていない"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM の値が ACMmax の値以上になっている"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"リクエストしたサービスが実装されていない"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"制限付きのデジタル情報ベアラー機能のみ利用可能"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"サービスまたはオプションが実装されていない、詳細不明"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"無効なトランザクション ID"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"ユーザーが CUG のメンバーではない"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"対応していない宛先"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"無効なトランジット ネットワークの選択"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"意味的に正しくないメッセージ"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"無効な必須情報"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"メッセージの種類が存在しないか、実装されていない"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"メッセージの種類がプロトコルの状態に対応していない"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"情報エレメントが存在しないか、実装されていない"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"条件付きの IE エラー"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"メッセージがプロトコルの状態に対応していない"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"タイマー期限の復元"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"プロトコル エラー、詳細不明"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"相互作用中、詳細未定"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"通話が切断されました。エラーコード 29。"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"通話が切断されました。エラーコード 30。"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"通話が切断されました。エラーコード 31。"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"通話が切断されました。エラーコード 34。"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"通話が切断されました。エラーコード 38。"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"通話が切断されました。エラーコード 41。"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"通話が切断されました。エラーコード 42。"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"通話が切断されました。エラーコード 43。"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"通話が切断されました。エラーコード 44。"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"通話が切断されました。エラーコード 47。"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"通話が切断されました。エラーコード 49。"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"通話が切断されました。エラーコード 50。"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"通話が切断されました。エラーコード 55。"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"通話が切断されました。エラーコード 57。"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"通話が切断されました。エラーコード 58。"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"通話が切断されました。エラーコード 63。"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"通話が切断されました。エラーコード 65。"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"通話が切断されました。エラーコード 68。"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"通話が切断されました。エラーコード 69。"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"通話が切断されました。エラーコード 70。"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"通話が切断されました。エラーコード 79。"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"通話が切断されました。エラーコード 81。"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"通話が切断されました。エラーコード 87。"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"通話が切断されました。エラーコード 88。"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"通話が切断されました。エラーコード 91。"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"通話が切断されました。エラーコード 95。"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"通話が切断されました。エラーコード 96。"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"通話が切断されました。エラーコード 97。"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"通話が切断されました。エラーコード 98。"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"通話が切断されました。エラーコード 99。"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"通話が切断されました。エラーコード 100。"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"通話が切断されました。エラーコード 101。"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"通話が切断されました。エラーコード 102。"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"通話が切断されました。エラーコード 111。"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"通話が切断されました。エラーコード 127。"</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"通話制限"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"ON"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"OFF"</string>
