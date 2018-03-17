@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Tillgängliga nätverk"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Söker…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Hittade inga nätverk."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Ett fel uppstod när vi sökte efter nätverk."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Det gick inte att hitta nätverk. Försök igen."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Registrerar på <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"Ditt SIM-kort tillåter inte anslutning till detta nätverk."</string>
     <string name="connect_later" msgid="2308119155752343975">"Det går inte att ansluta till det här nätverket just nu. Försök igen senare."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Ändra nätverksläge"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Önskad nätverkstyp"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(förbjudet)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Välj nätverk"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Frånkopplad"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Ansluten"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Ansluter …"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Det gick inte att ansluta"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Föredrar GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"Endast GSM"</item>
@@ -238,7 +243,10 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Anslut till datatjänster vid roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Anslut till datatjänster vid roaming"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Du förlorade dataanslutningen eftersom du lämnade ditt hemnätverk utan att aktivera dataroaming."</string>
+    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
+    <skip />
+    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
+    <skip />
     <string name="roaming_warning" msgid="1603164667540144353">"Detta kan leda till höga kostnader."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakta din nätoperatör för priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vill du tillåta dataroaming?"</string>
@@ -643,58 +651,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"LÄGG TILL DATA"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"AVBRYT"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Samtal avslutat"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radio av"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Inget SIM-kort eller SIM-kortsfel"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Flygplansläge är aktiverat"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"Det går inte att komma åt SIM-kortet"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Inget mobilt nätverk tillgängligt"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Ej tilldelat nummer"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Ingen väg till destination"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanal inte godkänd"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operatör bestämde spärrning"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Normal samtalsclearing"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Något är fel med telefonnumret du försöker ringa. Felkod 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"16."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Användare upptagen"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Användare svarar inte"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Användarvarning, inget svar"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Användaren svarar inte"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"19."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Samtal avvisat"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Nummer ändrat"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Blockering"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Ingen vald användarclearing"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Destination fungerar inte"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"27."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Ogiltigt nummerformat (ofullständigt nummer)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Funktion avvisad"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Svar på STATUS ENQUIRY"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal, ej angiven"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Ingen tillgänglig krets/kanal"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Nätverket fungerar inte"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Tillfälligt fel"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Överbelastad växel"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Åtkomstinformation slängd"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Begärd krets/kanal inte tillgänglig"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Resurser inte tillgängliga, ej angivna"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Tjänstekvalitet inte tillgänglig."</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Begärd funktion inte prenumererad"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Inkommande samtal spärrade inom CUG"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Bearer-funktioner inte auktoriserade"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Bearer-funktioner för närvarande inte tillgängliga"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Tjänst eller alternativ inte tillgänglig, ej angivet"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Bearer-tjänst inte implementerad"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM är lika med eller större än ACMmax"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Begärd funktion inte implementerad"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Endast begränsad bearer-funktion för digital information finns tillgänglig"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Tjänst eller alternativ implementerat, ej angivet"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Ogiltigt transaktionsidentifierarvärde"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Användare inte CUG-medlem"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Inkompatibel destination"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Ogiltigt transitnätval"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Semantiskt felaktigt meddelande"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Ogiltig obligatorisk information"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Meddelandetyp finns inte eller är inte implementerad"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Meddelandetyp inte kompatibel med protokollstatus"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Informationselement finns inte eller är inte implementerat"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Villkorligt IE-fel"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Meddelande inte kompatibelt med protokollstatus"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Återställning vid timerutgång"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokollfel, ej angivet"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Interworking, ej angiven"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Samtalet kunde inte slutföras. Felkod 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Det gick inte att slutföra samtalet. Felkod 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Det gick inte att slutföra samtalet. Felkod 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Det gick inte att slutföra samtalet. Felkod 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Det gick inte att slutföra samtalet. Felkod 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Det gick inte att slutföra samtalet. Felkod 127."</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Samtalsspärr"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"På"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Av"</string>

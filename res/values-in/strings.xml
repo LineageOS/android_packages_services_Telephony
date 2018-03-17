@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Jaringan yang tersedia"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Menelusuri…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Jaringan tidak ditemukan."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Kesalahan ketika menelusuri jaringan."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Tidak dapat menemukan jaringan. Coba lagi."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Mendaftarkan pada <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"Kartu SIM Anda tidak mengizinkan sambungan ke jaringan ini."</string>
     <string name="connect_later" msgid="2308119155752343975">"Tidak dapat terhubung ke jaringan ini sekarang. Coba lagi nanti."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Ubah mode pengoperasian jaringan"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Jenis jaringan yang dipilih"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(terlarang)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Pilih jaringan"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Tidak tersambung"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Tersambung"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Menyambungkan..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Tidak dapat tersambung"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA lebih disukai"</item>
     <item msgid="8442633436636425221">"GSM saja"</item>
@@ -238,7 +243,10 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Sambungkan ke layanan data ketika roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Sambungkan ke layanan data ketika roaming"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Anda telah kehilangan konektivitas data karena meninggalkan jaringan asal dalam keadaan roaming data dimatikan."</string>
+    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
+    <skip />
+    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
+    <skip />
     <string name="roaming_warning" msgid="1603164667540144353">"Anda dapat dikenakan biaya yang cukup besar."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hubungi penyedia jaringan untuk mengetahui harganya."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Izinkan roaming data?"</string>
@@ -637,58 +645,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"TAMBAHKAN DATA"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"BATAL"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Panggilan diakhiri"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radio nonaktif"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Tidak ada kartu SIM atau kartu SIM error"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Mode pesawat aktif"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"Tidak dapat mengakses kartu SIM"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Jaringan seluler tidak tersedia"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Nomor tidak ditetapkan (tidak dialokasikan)"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Tidak ada rute ke tujuan"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Saluran tidak diterima"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Pembatasan yang ditentukan operator"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Pemutusan panggilan normal"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Masalah dengan nomor telepon yang ingin Anda panggil. Kode error 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"Tidak dapat menyelesaikan panggilan. Kode error 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"Tidak dapat menyelesaikan panggilan. Kode error 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"Tidak dapat menyelesaikan panggilan. Kode error 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"Tidak dapat menyelesaikan panggilan. Kode error 16."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Pengguna sibuk"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Tidak ada pengguna yang merespons"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Pemberitahuan pengguna, tidak ada jawaban"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Pengguna tidak merespons"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"Tidak dapat menyelesaikan panggilan. Kode error 19."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Panggilan ditolak"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Nomor diubah"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Pengambilalihan"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Pemutusan pengguna yang tidak dipilih"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Tujuan tidak berfungsi"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"Tidak dapat menyelesaikan panggilan. Kode error 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"Tidak dapat menyelesaikan panggilan. Kode error 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"Tidak dapat menyelesaikan panggilan. Kode error 27."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Format nomor tidak valid (nomor tidak lengkap)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Fasilitas ditolak"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Tanggapan terhadap PERMINTAAN STATUS"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal, tidak ditentukan"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Tidak tersedia sirkuit/saluran"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Jaringan tidak berfungsi"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Kegagalan sementara"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Kemacetan peralatan pengalihan"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Akses informasi dihapus"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Sirkuit/saluran yang diminta tidak tersedia"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Resource tidak tersedia, tidak ditentukan"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Kualitas layanan tidak tersedia"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Tidak berlangganan fasilitas yang diminta"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Panggilan masuk ditolak di CUG"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Kapabilitas bearer tidak diizinkan"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Kapabilitas bearer saat ini tidak tersedia"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Layanan atau opsi tidak tersedia, tidak ditentukan"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Layanan bearer tidak diterapkan"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM sama dengan atau lebih besar dari ACMmax"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Fasilitas yang diminta tidak diterapkan"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Hanya kapabilitas bearer informasi digital terbatas yang tersedia"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Layanan atau opsi tidak diterapkan, tidak ditentukan"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Nilai pengidentifikasi transaksi tidak valid"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Pengguna bukan anggota CUG"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Tujuan tidak kompatibel"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Pilihan jaringan transit tidak valid"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Pesan salah secara semantis"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Informasi wajib tidak valid"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Jenis pesan tidak ada atau tidak diterapkan"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Jenis pesan tidak kompatibel dengan status protokol"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Elemen informasi tidak ada atau tidak diterapkan"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Error IE bersyarat"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Pesan tidak kompatibel dengan status protokol"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Pemulihan pada masa berlaku timer"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Error protokol, tidak ditentukan"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Interworking, tidak ditentukan"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"Tidak dapat menyelesaikan panggilan. Kode error 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Tidak dapat menyelesaikan panggilan. Kode error 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"Tidak dapat menyelesaikan panggilan. Kode error 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"Tidak dapat menyelesaikan panggilan. Kode error 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"Tidak dapat menyelesaikan panggilan. Kode error 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"Tidak dapat menyelesaikan panggilan. Kode error 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"Tidak dapat menyelesaikan panggilan. Kode error 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"Tidak dapat menyelesaikan panggilan. Kode error 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"Tidak dapat menyelesaikan panggilan. Kode error 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"Tidak dapat menyelesaikan panggilan. Kode error 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"Tidak dapat menyelesaikan panggilan. Kode error 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"Tidak dapat menyelesaikan panggilan. Kode error 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"Tidak dapat menyelesaikan panggilan. Kode error 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"Tidak dapat menyelesaikan panggilan. Kode error 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"Tidak dapat menyelesaikan panggilan. Kode error 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"Tidak dapat menyelesaikan panggilan. Kode error 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"Tidak dapat menyelesaikan panggilan. Kode error 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"Tidak dapat menyelesaikan panggilan. Kode error 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"Tidak dapat menyelesaikan panggilan. Kode error 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"Tidak dapat menyelesaikan panggilan. Kode error 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"Tidak dapat menyelesaikan panggilan. Kode error 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"Tidak dapat menyelesaikan panggilan. Kode error 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"Tidak dapat menyelesaikan panggilan. Kode error 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"Tidak dapat menyelesaikan panggilan. Kode error 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"Tidak dapat menyelesaikan panggilan. Kode error 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"Tidak dapat menyelesaikan panggilan. Kode error 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"Tidak dapat menyelesaikan panggilan. Kode error 96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"Tidak dapat menyelesaikan panggilan. Kode error 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"Tidak dapat menyelesaikan panggilan. Kode error 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"Tidak dapat menyelesaikan panggilan. Kode error 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Tidak dapat menyelesaikan panggilan. Kode error 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Tidak dapat menyelesaikan panggilan. Kode error 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Tidak dapat menyelesaikan panggilan. Kode error 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Tidak dapat menyelesaikan panggilan. Kode error 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Tidak dapat menyelesaikan panggilan. Kode error 127."</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Pemblokiran panggilan"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Aktif"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Nonaktif"</string>

@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"الشبكات المتاحة"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"جارِ البحث…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"لم يتم العثور على شبكات."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"حدث خطأ أثناء البحث عن شبكات."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"تعذر العثور على شبكات. حاول مرة أخرى."</string>
     <string name="register_on_network" msgid="9055203954040805084">"جارٍ التسجيل على <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"‏لا تسمح شريحة SIM بالاتصال بهذه الشبكة."</string>
     <string name="connect_later" msgid="2308119155752343975">"يتعذر الاتصال بهذه الشبكة في الوقت الحالي. حاول مرة أخرى لاحقًا."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"تغيير وضع تشغيل الشبكة"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"نوع الشبكة المفضل"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(محظور )"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"اختيار شبكة"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"غير متّصل"</string>
+    <string name="network_connected" msgid="1288589103624338857">"متصل"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"جارٍ الاتصال…"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"تعذّر الاتصال"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"‏GSM/WCDMA المفضل"</item>
     <item msgid="8442633436636425221">"‏نظام GSM فقط"</item>
@@ -238,7 +243,10 @@
     <string name="roaming" msgid="7894878421600247140">"تجوال"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"اتصال بخدمات البيانات عند التجوال"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"اتصال بخدمات البيانات عند التجوال"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"لقد فقدت اتصال البيانات نظرًا لأنك أوقفت تشغيل تجوال البيانات بشبكتك الرئيسية."</string>
+    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
+    <skip />
+    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
+    <skip />
     <string name="roaming_warning" msgid="1603164667540144353">"قد يكلف ذلك رسومًا مرتفعة."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"راجع مقدم الشبكة للتعرف على الأسعار."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"السماح بتجوال البيانات؟"</string>
@@ -645,58 +653,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"إضافة بيانات"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"إلغاء"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"تم إنهاء الاتصال"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"اللاسلكي متوقف"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"‏لا توجد شريحة SIM أو يوجد خطأ بشريحة SIM"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"تشغيل وضع الطائرة"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"‏تعذر الوصول إلى شريحة SIM"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"شبكة الجوّال غير متوفرة"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"رقم غير مسجل (غير مخصص)"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"لا يوجد مسار إلى الوجهة"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"القناة غير مقبولة"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"اكتشف عامل التشغيل وجود منع"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"محو المكالمة العادية"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"حدثت مشكلة في رقم الهاتف الذي تحاول الاتصال به. رمز الخطأ 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"تعذر إكمال المكالمة. رمز الخطأ 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"تعذر إكمال المكالمة. رمز الخطأ 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"تعذر إكمال المكالمة. رمز الخطأ 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"تعذر إكمال المكالمة. رمز الخطأ 16."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"المستخدم مشغول"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"لم يستجب أي مستخدم"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"تنبيه المستخدم، لا يوجد رد"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"المستخدم لا يستجيب"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"تعذر إكمال المكالمة. رمز الخطأ 19."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"تم رفض المكالمة"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"تم تغيير الرقم"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"حق الشفعة"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"محو المستخدم غير المحدد"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"الوجهة معطلة"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"تعذر إكمال المكالمة. رمز الخطأ 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"تعذر إكمال المكالمة. رمز الخطأ 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"تعذر إكمال المكالمة. رمز الخطأ 27."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"تنسيق الرقم غير صالح (الرقم ليس كاملاً)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"تم رفض المرفق"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"الرد على استفسار الحالة"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"عادي، غير محدد"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"لا تتوفر أي دائرة أو قناة"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"الشبكة معطلة"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"فشل مؤقت"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"تبديل ازدحام المعدات"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"تم تجاهل الوصول إلى المعلومات"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"الدائرة أو القناة المطلوبة غير متوفرة"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"الموارد غير متوفرة، غير محدد"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"جودة الخدمة غير متوفرة"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"المرفق المطلوب غير مشترك"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"‏تم منع المكالمات الواردة داخل CUG"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"لم يتم تخويل إمكانية الحامل"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"إمكانية الحامل غير متوفرة حاليًا"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"لا تتوفر الخدمة أو الخيار، غير محدد"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"لم يتم تنفيذ خدمة الحامل"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"‏ACM يساوي أو أكبر من ACMmax"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"لم يتم تنفيذ المرفق المطلوب"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"تتوفر فقط إمكانية حامل المعلومات الرقمية المقيَّدة"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"لم يتم تنفيذ الخدمة أو الخيار، غير محدد"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"قيمة معرّف العملية غير صالحة"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"‏المستخدم ليس عضوًا في CUG"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"الوجهة غير متوافقة"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"تحديد شبكة النقل العام غير صالح"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"رسالة غير صحيحة دلاليًا"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"المعلومات الإلزامية غير صالحة"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"نوع الرسالة غير موجود أو غير مطبق"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"نوع الرسالة غير متوافق مع حالة البروتوكول"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"عنصر المعلومات غير موجود أو غير مطبق"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"‏خطأ IE مشروط"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"الرسالة غير متوافقة مع حالة البروتوكول"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"الاستعادة عند انتهاء الموقّت"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"خطأ في البروتوكول، غير محدد"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"التشغيل البيني، غير محدد"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"تعذر إكمال المكالمة. رمز الخطأ 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"تعذر إكمال المكالمة. رمز الخطأ 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"تعذر إكمال المكالمة. رمز الخطأ 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"تعذر إكمال المكالمة. رمز الخطأ 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"تعذر إكمال المكالمة. رمز الخطأ 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"تعذر إكمال المكالمة. رمز الخطأ 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"تعذر إكمال المكالمة. رمز الخطأ 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"تعذر إكمال المكالمة. رمز الخطأ 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"تعذر إكمال المكالمة. رمز الخطأ 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"تعذر إكمال المكالمة. رمز الخطأ 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"تعذر إكمال المكالمة. رمز الخطأ 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"تعذر إكمال المكالمة. رمز الخطأ 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"تعذر إكمال المكالمة. رمز الخطأ 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"تعذر إكمال المكالمة. رمز الخطأ 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"تعذر إكمال المكالمة. رمز الخطأ 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"تعذر إكمال المكالمة. رمز الخطأ 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"تعذر إكمال المكالمة. رمز الخطأ 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"تعذر إكمال المكالمة. رمز الخطأ 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"تعذر إكمال المكالمة. رمز الخطأ 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"تعذر إكمال المكالمة. رمز الخطأ 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"تعذر إكمال المكالمة. رمز الخطأ 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"تعذر إكمال المكالمة. رمز الخطأ 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"تعذر إكمال المكالمة. رمز الخطأ 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"تعذر إكمال المكالمة. رمز الخطأ 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"تعذر إكمال المكالمة. رمز الخطأ 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"تعذر إكمال المكالمة. رمز الخطأ 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"تعذر إكمال المكالمة. رمز الخطأ 99."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"تعذر إكمال المكالمة. رمز الخطأ 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"تعذر إكمال المكالمة. رمز الخطأ 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"تعذر إكمال المكالمة. رمز الخطأ 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"تعذر إكمال المكالمة. رمز الخطأ 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"تعذر إكمال المكالمة. رمز الخطأ 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"تعذر إكمال المكالمة. رمز الخطأ 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"تعذر إكمال المكالمة. رمز الخطأ 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"تعذر إكمال المكالمة. رمز الخطأ 127."</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"منع الاتصال"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"تفعيل"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"متوقف"</string>
