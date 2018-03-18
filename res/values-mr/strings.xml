@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"उपलब्ध नेटवर्क"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"शोधत आहे..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"कोणतीही नेटवर्क आढळली नाहीत."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"नेटवर्क शोधताना एरर."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"नेटवर्क मिळू शकले नाहीत. पुन्‍हा प्रयत्‍न करा."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> वर नोंदणी करत आहे…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"आपले सिम कार्ड या नेटवर्कच्‍या कनेक्‍शनला अनुमती देत नाही."</string>
     <string name="connect_later" msgid="2308119155752343975">"आत्ता या नेटवर्कशी कनेक्‍ट करू शकत नाही. नंतर पुन्‍हा प्रयत्‍न करा."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"नेटवर्क कार्य करण्‍याचा मोड बदला"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"प्राधान्‍यकृत नेटवर्क प्रकार"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(मनाई केलेले)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"नेटवर्क निवडा"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"डिस्कनेक्ट केले"</string>
+    <string name="network_connected" msgid="1288589103624338857">"कनेक्ट केले"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"कनेक्ट होत आहे..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"कनेक्ट करता आले नाही"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA प्राधान्‍यकृत"</item>
     <item msgid="8442633436636425221">"केवळ GSM"</item>
@@ -238,7 +243,10 @@
     <string name="roaming" msgid="7894878421600247140">"रोमिंग"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"रोमिंग असताना डेटा सेवांना कनेक्ट करा"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"रोमिंग असताना डेटा सेवांना कनेक्ट करा"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"आपण डेटा रोमिंग बंद करून आपले होम नेटवर्क सोडल्यामुळे आपण डेटा कनेक्टिव्हिटी गमावली आहे."</string>
+    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
+    <skip />
+    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
+    <skip />
     <string name="roaming_warning" msgid="1603164667540144353">"आपल्‍याला लक्षणीय रोमिंग शुल्‍क लागू शकते."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"किंमतींबद्दल तुमच्या नेटवर्क प्रदात्याला विचारा."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिंगला अनुमती द्यायची?"</string>
@@ -549,7 +557,7 @@
     <string name="ota_activate" msgid="1368528132525626264">"सक्रिय करा"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"फोन सक्रिय केला आहे."</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"सक्रीय करण्‍यात समस्या"</string>
-    <string name="ota_listen" msgid="162923839877584937">"सक्रिय करणे पूर्ण झाले आहे असे आपल्‍याला ऐकू येईपर्यंत बोललेल्‍या सूचनांचे अनुसरण करा."</string>
+    <string name="ota_listen" msgid="162923839877584937">"सक्रिय करणे पूर्ण झाले आहे असे आपल्‍याला ऐकू येईपर्यंत बोललेल्‍या सूचनांचे फॉलो करा."</string>
     <string name="ota_speaker" msgid="6904589278542719647">"स्पीकर"</string>
     <string name="ota_progress" msgid="460876637828044519">"आपल्‍या फोनचे प्रोग्रामिंग करत आहे…"</string>
     <string name="ota_failure" msgid="7713756181204620397">"आपला फोन प्रोग्राम करणे शक्य झाले नाही"</string>
