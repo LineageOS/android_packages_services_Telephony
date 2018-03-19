@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"የሚገኙ አውታረመረቦች"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"በመፈለግ ላይ…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"ምንም አውታረመረብ አልተገኘም።"</string>
-    <string name="network_query_error" msgid="6828516148953325006">"አውታረ መረቦች በመፈለግ ላይ ስህተት"</string>
+    <string name="network_query_error" msgid="8466081377231178298">"አውታረ መረቦችን ማግኘት አልተቻለም። እንደገና ይሞክሩ።"</string>
     <string name="register_on_network" msgid="9055203954040805084">"በ<xliff:g id="NETWORK">%s</xliff:g> ላይ በመመዝገብ ላይ..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"የSIM ካርድህ ወደዚህ አውታረመረብ  ግንኙነት አይፈቅድም።"</string>
     <string name="connect_later" msgid="2308119155752343975">"በአሁን ጊዜ ወደዚህ አውታረ መረብ ማገናኘት አልተቻለም፡፡ በኋላ እንደገና ሞክር፡፡"</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"የአውታረመረቡንመከወኛ ሁነታ ለውጥ"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"የሚመረጠው የአውታረ መረብ አይነት"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(የተከለከለ)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"አውታረ መረብ ይምረጡ"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"ግንኙነት ተቋርጧል"</string>
+    <string name="network_connected" msgid="1288589103624338857">"ተገናኝቷል"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"በመገናኘት ላይ..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"መገናኘት አልተቻለም"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA ይመረጣል"</item>
     <item msgid="8442633436636425221">"GSM ብቻ"</item>
@@ -238,7 +243,8 @@
     <string name="roaming" msgid="7894878421600247140">"በማዛወር ላይ"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"በእንቅስቃሴ ላይ ሲሆን ወደ ውሂብ አገልግሎቶች ተያያዝ"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"በእንቅስቃሴ ላይ ሲሆን ወደ ውሂብ አገልግሎቶች ተያያዝ"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"የውሂብ ተያያዥነት የጠፋበት ምክንያት የቤትህን አውታረ መረብ እንቅስቃሴ ውሂብ በማጥፋትህ ነው።"</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"የውሂብ ዝውውር ጠፍቷል። ለማብራት መታ ያድርጉ።"</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"የጠፋ የሞባይል ውሂብ ግንኙነት"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"ከፍተኛ ክፍያዎችን ሊያስከትልብዎት ይችላል።"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ለተመኑ የአውታረ መረብ አቅራቢዎን ያነጋግሩ።"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"የውሂብ ዝውውር ፍቀድ?"</string>
@@ -637,58 +643,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ውሂብ አክል"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ይቅር"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"ጥሪ አብቅቷል"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"ሬዲዮ ጠፍቷል"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"ሲም ካርድ የለም ወይም የሲም ካርድ ስህተት"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"የአውሮፕላን ሁነታ በርቷል"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"ሲም ካርድ ዘንድ መድረስ አልቻለም"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"የተንቀሳቃሽ ስልክ አውታረ መረብ አይገኝም"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"ያልተመደበ (ያልተሰጠ) ቁጥር"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"ወደ መድረሻ መንገድ የለም"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"ሰርጥ ተቀባይነት የለውም"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"አገልግሎት አቅራቢ ገደብ ማድረግን ለይቷል"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"መደበኛ የጥሪ ማጽዳት"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"ሊደውሉለት እየሞከሩ ያሉት ስልክ ቁጥር ላይ ችግር። የስህተት ኮድ 1።"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 3።"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 6።"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 8።"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 16።"</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"ተጠቃሚ በሥራ ላይ"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"ምንም ተጠቃሚ ምላሽ አይሰጥም"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"ተጠቃሚ በማንቃት ላይ፣ መልስ የለም"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"ተጠቃሚ አይመልስም"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 19።"</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"ጥሪ ተቀባይነት አላገኘም"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"ቁጥር ተለውጧል"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"ቀድሞ-ግዥ"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"ያልተመረጠ የተጠቃሚ ማጽዳት"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"መዳረሻ አይሰራም"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 25።"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 26።"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 27።"</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"ልክ ያልሆነ የቁጥር ቅርጸት (ያልተሟላ ቁጥር)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"ምቹ ሁናቴ ተቀባይነት አላገኘም"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"ለ የሁኔታ ጥያቄ ምላሽ"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"መደበኛ፣ ያልተገለጸ"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"ምንም ሰርኪውት/ሰርጥ አይገኝም"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"አውታረ መረብ አይሰራም"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"ጊዜያዊ መበላሸት"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"የስዊች መሣሪያ መጨናነቅ"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"የመዳረሻ መረጃ ተወግዷል"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"የተጠየቀ ሰርኪውት/ሰርጥ አይገኝም"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"ግብዓቶች አይገኙም፣ አልተገለጹም"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"የአገልግሎት ጥራት አይገኝም"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"የተጠየቀ ምቹ ሁናቴ አልተመዘገበም"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"ገቢ ጥሪዎች በ CUG ውስጥ ተከልክለዋል"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"የያዥ ችሎታ ፈቃድ አልተሰጠውም"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"የያዥ ችሎታ አሁን አይገኝም"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"አገልግሎት ወይም አማራጭ አይገኝም፣ አልተገለጸም"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"የያዥ አገልግሎት አሁን አልተተገበረም"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM ከ ACMmax እኩል የሆነ ወይም የበለጠ"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"የተጠየቀ ምቹ ሁናቴ አልተተገበረም"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"የተገደበ ዲጂታዊ የመረጃ ያዥ ችሎታ ብቻ ይገኛል"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"አገልግሎት ወይም አማራጭ አልተተገበረም፣ አልተገለጸም"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"ልክ ያልሆነ የግብይት መለያ እሴት"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"ተጠቃሚ የCUG አባል አይደለም"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"ተኳኋኝ ያልሆነ መድረሻ"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"ልክ ያልሆነ የትራንዚት አውታረ መረብ ምርጫ"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"ትርጉሙ የተሳሳተ መልዕክት"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"ልክ ያልሆነ አስፈላጊ መረጃ"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"የመልዕክት አይነት የለም ወይም አልተተገበረም"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"የመልዕክት አይነት ከፕሮቶኮል ሁኔታ ጋር ተኳኋኝ አይደለም"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"የመረጃ አባል የለም ወይም አልተተገበረም"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"ሁኔታዊ IE ስህተት"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"መልዕክት ከፕሮቶኮል ሁኔታ ጋር ተኳኋኝ አይደለም"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"በጊዜ ቆጣሪ ማብቂያ ላይ ወደ ነበረበት መመለስ"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"የፕሮቶኮል ስህተት አልተገለጸም"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"በይነ-ገቢር፣ አልተገለጸም"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 29።"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 30።"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 31።"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 34።"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 38።"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 41።"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 42።"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 43።"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 44።"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 47።"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 49።"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 50።"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 55።"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 57።"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 58።"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 63።"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 65።"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 68።"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 69።"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 70።"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 79።"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 81።"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 87።"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 88።"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 91።"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 95።"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 96።"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 97።"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 98።"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 99።"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 100።"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 101።"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 102።"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 111።"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"ጥሪን ማጠናቀቅ አልተቻለም። የስህተት ኮድ 127።"</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"ጥሪ ከልክል"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"አብራ"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"አጥፋ"</string>
