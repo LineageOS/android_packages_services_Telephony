@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Доступні мережі"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Пошук…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Не знайд. жодних мереж."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Помилка під час пошуку мереж."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Не вдалося знайти мережу. Повторіть спробу."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Реєстрування у <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"Ваша SIM-карта не дозволяє під’єднання до цієї мережі."</string>
     <string name="connect_later" msgid="2308119155752343975">"Зараз неможливо під’єднатися до цієї мережі. Повторіть спробу пізніше."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Змінити режим роботи мережі"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Тип мережі"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(заборонено)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Вибрати мережу"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Від’єднано"</string>
+    <string name="network_connected" msgid="1288589103624338857">"З’єднано"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"З’єднання…"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Не вдалося з’єднатися"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Рекомендовано GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"Лише GSM"</item>
@@ -238,7 +243,8 @@
     <string name="roaming" msgid="7894878421600247140">"Роумінг"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Підключатися до служб передавання даних у роумінгу"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Підключатися до служб передавання даних у роумінгу"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Доступ до даних утрачено, оскільки ви вийшли з домашньої мережі з вимкненим роумінгом даних."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Роумінг даних вимкнено. Натисніть, щоб увімкнути."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Від’єднано від мобільного Інтернету"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Може стягуватися значна плата."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Докладніше про ціни можна дізнатися в оператора мережі."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Дозволити роумінг даних?"</string>
@@ -641,58 +647,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ДОДАТИ ТРАФІК"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"СКАСУВАТИ"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Виклик завершено"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Радіо вимкнено"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Немає SIM-карти або її не вдалося розпізнати"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Увімкнено режим польоту"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"Немає доступу до SIM-карти"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Мобільна мережа недоступна"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Номер не призначено"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Напрямок виклику не задано"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Неприйнятний канал"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Виклик відхилено оператором"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Стандартне роз’єднання"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Проблема з номером телефону, який ви набираєте. Код помилки: 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"Не вдалося здійснити виклик. Код помилки: 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"Не вдалося здійснити виклик. Код помилки: 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"Не вдалося здійснити виклик. Код помилки: 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"Не вдалося здійснити виклик. Код помилки: 16."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Абонент зайнятий"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Немає відповіді"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Сповіщення для користувача; немає відповіді"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Користувач не відповідає"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"Не вдалося здійснити виклик. Код помилки: 19."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Виклик відхилено"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Номер змінено"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Пріоритетне переривання"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Немає адресата виклику"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Збій у роботі обладнання на боці абонента"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"Не вдалося здійснити виклик. Код помилки: 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"Не вдалося здійснити виклик. Код помилки: 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"Не вдалося здійснити виклик. Код помилки: 27."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Недійсний формат номера (указано неповністю)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Відмова в наданні послуги"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Відповідь на ЗАПИТ ПРО СТАН"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Стандартний стан (не визначено)"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Недоступний канал або лінія"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Мережевий збій"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Тимчасовий збій"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Перевантаження комутаційного обладнання"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Дані доступу відхилено"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Лінія або канал за запитом недоступні"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Ресурси недоступні (не визначено)"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Низька якість обслуговування"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Немає підписки на сервіс за запитом"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Вхідні виклики заборонені в закритій абонентській групі"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Недозволена пропускна здатність каналу"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Затребувана пропускна здатність каналу наразі недоступна"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Недоступний сервіс або функція (не визначено)"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Непідтримувана пропускна здатність каналу"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM дорівнює максимально допустимому значенню або перевищує його"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Сервіс за запитом не підтримується"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Обмежена пропускна здатність для передачі цифрових даних"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Непідтримуваний сервіс або функція (не визначено)"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Недійсне значення ідентифікатора транзакції"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Абонент не належить до закритої абонентської групи"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Несумісний номер"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Недійсне значення вибору транзитної мережі"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Повідомлення із семантичною помилкою"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Недійсна обов’язкова інформація"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Тип повідомлення не існує або не підтримується"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Тип повідомлення несумісний зі статусом протоколу"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Інформаційний елемент відсутній або його не застосовано"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Умовна помилка інформаційного елемента"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Повідомлення несумісне зі статусом протоколу"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Відновлення після завершення визначеного таймером часу"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Невідома помилка протоколу"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Невідома помилка міжмережевого з’єднання"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"Не вдалося здійснити виклик. Код помилки: 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Не вдалося здійснити виклик. Код помилки: 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"Не вдалося здійснити виклик. Код помилки: 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"Не вдалося здійснити виклик. Код помилки: 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"Не вдалося здійснити виклик. Код помилки: 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"Не вдалося здійснити виклик. Код помилки: 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"Не вдалося здійснити виклик. Код помилки: 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"Не вдалося здійснити виклик. Код помилки: 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"Не вдалося здійснити виклик. Код помилки: 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"Не вдалося здійснити виклик. Код помилки: 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"Не вдалося здійснити виклик. Код помилки: 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"Не вдалося здійснити виклик. Код помилки: 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"Не вдалося здійснити виклик. Код помилки: 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"Не вдалося здійснити виклик. Код помилки: 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"Не вдалося здійснити виклик. Код помилки: 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"Не вдалося здійснити виклик. Код помилки: 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"Не вдалося здійснити виклик. Код помилки: 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"Не вдалося здійснити виклик. Код помилки: 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"Не вдалося здійснити виклик. Код помилки: 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"Не вдалося здійснити виклик. Код помилки: 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"Не вдалося здійснити виклик. Код помилки: 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"Не вдалося здійснити виклик. Код помилки: 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"Не вдалося здійснити виклик. Код помилки: 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"Не вдалося здійснити виклик. Код помилки: 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"Не вдалося здійснити виклик. Код помилки: 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"Не вдалося здійснити виклик. Код помилки: 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"Не вдалося здійснити виклик. Код помилки: 96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"Не вдалося здійснити виклик. Код помилки: 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"Не вдалося здійснити виклик. Код помилки: 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"Не вдалося здійснити виклик. Код помилки: 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Не вдалося здійснити виклик. Код помилки: 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Не вдалося здійснити виклик. Код помилки: 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Не вдалося здійснити виклик. Код помилки: 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Не вдалося здійснити виклик. Код помилки: 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Не вдалося здійснити виклик. Код помилки: 127."</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Заборона дзвінків"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Увімкнено"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Вимкнено"</string>

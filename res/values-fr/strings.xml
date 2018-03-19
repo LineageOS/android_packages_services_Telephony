@@ -243,10 +243,8 @@
     <string name="roaming" msgid="7894878421600247140">"Itinérance"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Se connecter aux services de données lors de l\'itinérance"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Se connecter aux services de données lors de l\'itinérance"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"L\'itinérance des données est désactivée. Appuyez pour l\'activer."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Perte de la connexion des données mobiles"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Des frais importants peuvent s\'appliquer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Vérifiez le tarif auprès de votre opérateur."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Autoriser l\'itinérance des données ?"</string>
