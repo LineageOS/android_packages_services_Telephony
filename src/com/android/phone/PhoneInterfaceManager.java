@@ -2716,14 +2716,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * @return true if emergency calling is available on IMS, false if it should fallback to CS.
-     */
-    public boolean isEmergencyMmTelAvailable(int slotId) {
-        enforceModifyPermission();
-        return PhoneFactory.getImsResolver().isEmergencyMmTelAvailable(slotId);
-    }
-
-    /**
      * @return true if the IMS resolver is busy resolving a binding and should not be considered
      * available, false if the IMS resolver is idle.
      */
