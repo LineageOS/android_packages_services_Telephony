@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Saadaolevad võrgud"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Otsimine ..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Võrke ei leitud."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Viga võrkude otsimisel."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Võrke ei õnnestunud leida. Proovige uuesti."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Registreerimine võrku <xliff:g id="NETWORK">%s</xliff:g> ..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"Teie SIM-kaart ei võimalda ühendust selle võrguga."</string>
     <string name="connect_later" msgid="2308119155752343975">"Võrguga ei saa praegu ühendust. Proovige hiljem uuesti."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Muuda võrgu töörežiimi"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Eelistatud võrgutüüp"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(keelatud)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Vali võrk"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Ühendus on katkestatud"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Ühendatud"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Ühendamine …"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Ühendust ei õnnestunud luua"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Eelistatud: GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"Ainult GSM"</item>
@@ -238,7 +243,8 @@
     <string name="roaming" msgid="7894878421600247140">"Rändlus"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Ühenda rändluse ajal andmesideteenustega"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Ühenda rändluse ajal andmesideteenustega"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Andmesideühendus katkes, kuna lahkusite koduvõrgust ja andmesiderändlus oli välja lülitatud."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Andmeside rändlus on välja lülitatud. Puudutage sisselülitamiseks."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobiilne andmesideühendus katkes"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Lisanduda võivad suured tasud."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hinnakirja küsige oma võrguteenuse pakkujalt."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Kas lubada andmeside rändlus?"</string>

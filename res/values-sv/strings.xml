@@ -243,10 +243,8 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Anslut till datatjänster vid roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Anslut till datatjänster vid roaming"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Dataroaming är avstängd. Tryck för att aktivera."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobildataanslutningen avbruten"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Detta kan leda till höga kostnader."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakta din nätoperatör för priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vill du tillåta dataroaming?"</string>

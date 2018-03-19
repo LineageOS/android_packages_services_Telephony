@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Доступне мреже"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Претражује се…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Нису пронађене мреже."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Грешка током тражења мрежа."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Не можемо да пронађемо мреже. Пробајте поново."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Регистровање на <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"SIM картица не дозвољава везу са овом мрежом."</string>
     <string name="connect_later" msgid="2308119155752343975">"Тренутно није могуће повезати се са овом мрежом. Пробајте поново касније."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Промена режима рада мреже"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Жељени тип мреже"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(забрањено)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Изаберите мрежу"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Веза је прекинута"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Повезани сте"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Повезује се..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Повезивање није успело"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA има предност"</item>
     <item msgid="8442633436636425221">"Само GSM"</item>
@@ -238,7 +243,8 @@
     <string name="roaming" msgid="7894878421600247140">"Роминг"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Повезивање са услугом за податке током роминга"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Повезивање са услугом за податке током роминга"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Веза за пренос података је прекинута зато што сте напустили кућну мрежу са искљученим преносом података у ромингу."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Пренос података у ромингу је искључен. Додирните да бисте га укључили."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Изгубили сте везу за пренос мобилних података"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Могу да настану значајни трошкови."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Цене проверите код мобилног оператера."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Дозвољавате пренос података у ромингу?"</string>
