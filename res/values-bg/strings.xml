@@ -243,10 +243,8 @@
     <string name="roaming" msgid="7894878421600247140">"Роуминг"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Свързване с услуги за данни при роуминг"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Свързване с услуги за данни при роуминг"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Роумингът на данни е изключен. Докоснете за включване."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Мобилната връзка за данни прекъсна"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Това може да доведе до високи такси."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"За цени се обърнете към оператора си."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Да се разреши ли роуминг на данни?"</string>

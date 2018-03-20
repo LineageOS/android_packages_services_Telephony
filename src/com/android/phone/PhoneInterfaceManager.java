@@ -1611,6 +1611,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean isDataConnectivityPossible(int subId) {
+        enforceReadPrivilegedPermission();
         final Phone phone = getPhone(subId);
         if (phone != null) {
             return phone.isDataAllowed();
@@ -1905,12 +1906,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int getActivePhoneTypeForSlot(int slotIndex) {
-        final Phone phone = PhoneFactory.getPhone(slotIndex);
-        if (phone == null) {
-            return PhoneConstants.PHONE_TYPE_NONE;
-        } else {
-            return phone.getPhoneType();
+        enforceReadPrivilegedPermission();
+        return getPhoneTypeForSlot(slotIndex);
+    }
+
+    @Override
+    public int getVoiceCapableActivePhoneTypeForSlot(int slotIndex) {
+        // Check if the device is voice-capable
+        if (!mApp.getResources()
+                .getBoolean(com.android.internal.R.bool.config_voice_capable)) {
+            return TelephonyManager.PHONE_TYPE_NONE;
         }
+        return getPhoneTypeForSlot(slotIndex);
     }
 
     /**
@@ -2015,6 +2022,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Returns true if CDMA provisioning needs to run.
      */
     public boolean needsOtaServiceProvisioning() {
+        enforceReadPrivilegedPermission();
         return mPhone.needsOtaServiceProvisioning();
     }
 
@@ -2050,7 +2058,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 mApp, subId, callingPackage, "getVisualVoicemailPackageName")) {
             return null;
         }
-        return RemoteVvmTaskManager.getRemotePackage(mPhone.getContext(), subId).getPackageName();
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return RemoteVvmTaskManager
+                    .getRemotePackage(mPhone.getContext(), subId).getPackageName();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 
     @Override
@@ -3029,6 +3043,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public List<String> getCarrierPackageNamesForIntentAndPhone(Intent intent, int phoneId) {
+        enforceReadPrivilegedPermission();
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             loge("phoneId " + phoneId + " is not valid.");
             return null;
@@ -3303,10 +3318,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean isVideoCallingEnabled(String callingPackage) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, mPhone.getSubId(), callingPackage, "isVideoCallingEnabled")) {
-            return false;
-        }
+        enforceReadPrivilegedPermission();
 
         // Check the user preference and the  system-level IMS setting. Even if the user has
         // enabled video calling, if IMS is disabled we aren't able to support video calling.
@@ -4161,5 +4173,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         mSubscriptionController.getPhoneId(subId),
                         DEFAULT_NETWORK_MODE_PROPERTY_NAME,
                         String.valueOf(Phone.PREFERRED_NT_MODE)));
+    }
+
+    /**
+     * Util function that returns the phone type.
+     * @param slotIndex - slot to query.
+     */
+    private int getPhoneTypeForSlot(int slotIndex) {
+        final Phone phone = PhoneFactory.getPhone(slotIndex);
+        if (phone == null) {
+            return PhoneConstants.PHONE_TYPE_NONE;
+        } else {
+            return phone.getPhoneType();
+        }
     }
 }

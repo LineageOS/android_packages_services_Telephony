@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Əlçatımlı şəbəkələr"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Axtarılır..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Şəbəkə tapılmadı"</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Şəbəkə axtarışı zamanı xəta baş verdi."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Şəbəkə tapılmadı. Yenidən cəhd edin."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> şəbəkəsində qeydiyyatdan keçirilir…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"Sizin SIM kart bu şəbəkəyə bağlantıya icazə vermir."</string>
     <string name="connect_later" msgid="2308119155752343975">"Hazırda bu şəbəkəyə qoşulmaq olmur. Sonra təkrar sınayın."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Şəbəkə əməliyyat rejimini dəyişin"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Tərcih edilən şəbəkə növü"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(qadağandır)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Şəbəkəni seçin"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Bağlantı kəsildi"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Qoşuldu"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Qoşulur..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Qoşulmaq mümkün olmadı"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA\'ya üstünlük verilib"</item>
     <item msgid="8442633436636425221">"Yalnız GSM"</item>
@@ -238,7 +243,8 @@
     <string name="roaming" msgid="7894878421600247140">"Rominq"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Rouminq zamanı data xidmətlərinə qoşulun"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Rouminq zamanı data xidmətlərinə qoşulun"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Siz deaktiv edilmiş rouminq ilə daxili şəbəkəni tərk etdiyiniz üçün data bağlantısını itirdiniz."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Data rominqi deaktivdir. Aktiv etmək üçün klikləyin."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobil data bağlantısı itdi"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Sizə əhəmiyyətli xərclər tətbiq edilə bilər."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Qiymətləndirmə üçün şəbəkə provayderi ilə yoxlayın."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Məlumat rominqinə icazə verilsin?"</string>
@@ -637,58 +643,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"DATA ƏLAVƏ EDİN"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"LƏĞV EDİN"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Zəng sona çatdı"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radio deaktivdir"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM kart və ya SIM kart xətası yoxdur"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Uçuş rejimi aktivdir"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"SIM karta daxil olmaq mümkün deyil"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobil şəbəkə əlçatan deyil"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Təyin edilməmiş nömrə"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Təyinata marşrut yoxdur"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanal qəbuledilməzdir"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operator bloklama aşkar etdi"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Normal zəngin dayandırılması"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Yığmağa çalışdığınız telefon nömrəsi ilə bağlı problem. Xəta kodu: 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"Zəngi bitirmək mümkün deyil. Xəta kodu: 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"Zəngi bitirmək mümkün deyil. Xəta kodu: 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"Zəngi bitirmək mümkün deyil. Xəta kodu: 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"Zəngi bitirmək mümkün deyil. Xəta kodu: 16."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"İstifadəçi məşğuldur"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"İstifadəçi cavab vermir"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"İstifadəçi xəbərdarlıq edir, cavab yoxdur"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"İstifadəçi cavab vermir"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"Zəngi bitirmək mümkün deyil. Xəta kodu:19."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Zəng rədd edildi"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Nömrə dəyişilib"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Dayandırma"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"İstiifadəçi tərəfindən seçilməmiş səbəb"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Təyinat istifadədə deyil"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"Zəngi bitirmək mümkün deyil. Xəta kodu: 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"Zəngi bitirmək mümkün deyil. Xəta kodu: 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"Zəngi bitirmək mümkün deyil. Xəta kodu: 27."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Yanlış nömrə formatı (natamam nömrə)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Xidmət rədd edildi"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"STATUS SORĞUSUNA cavab"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal, təyin edilməyib"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Şəbəkə/kanal əlçatan deyil"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Şəbəkə istifadədə deyil"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Müvəqqəti xəta"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Kommutasiya avadanlığı yüklənib"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Giriş məlumatı ləğv edildi"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Tələb edilən şəbəkə/kanal əlçatan deyil"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Resurslar əlçatan deyil, təyin edilməyib"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Xidmət keyfiyyəti əlçatan deyil"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Tələb edilən xidmətə abunəlik mümkün deyil"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Gələn zənglər CUG daxilində blok edilib"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Daşıyıcı tutumu doğrulanmayıb"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Daşıyıcı tutumu indi əlçatan deyil"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Xidmət və ya seçim əlçatan deyil, təyin edilməyib"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Daşıyıcı xidməti tətbiq edilmir"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM ACMmax ədədinə bərabər və ya ondan böyük olmalıdır"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Tələb edilən xidmət tətbiq olunmur"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Yalnız məhdud, rəqəmsal məlumat daşıyıcısı tutumu əlçatandır"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Xidmət və ya seçim tətbiq olunmur, təyin edilməyib"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Yanlış əməliyyat identifikatoru dəyəri"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"İstifadəçi CUG üzvü deyil"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Uyğun olmayan təyinat"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Yanlış tranzit şəbəkə seçimi"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Məna baxımından yanlış mesaj"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Vacib məlumat yanlışdır"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Mesaj növü mövcud deyil və ya tətbiq olunmur"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Mesaj növü protokol statusu ilə uyğun deyil"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Məlumat elementi mövcud deyil və ya tətbiq edilmir"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Şərti IE xətası"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Mesaj protokol statusu ilə uyğun deyil"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Taymer başa çatdıqdan sonra bərpa"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokol xətası, təyin edilməyib"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Qarşılıqlı iş, təyin edilməyib"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"Zəngi bitirmək mümkün deyil. Xəta kodu: 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Zəngi bitirmək mümkün deyil. Xəta kodu: 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"Zəngi bitirmək mümkün deyil. Xəta kodu: 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"Zəngi bitirmək mümkün deyil. Xəta kodu: 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"Zəngi bitirmək mümkün deyil. Xəta kodu: 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"Zəngi bitirmək mümkün deyil. Xəta kodu: 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"Zəngi bitirmək mümkün deyil. Xəta kodu: 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"Zəngi bitirmək mümkün deyil. Xəta kodu: 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"Zəngi bitirmək mümkün deyil. Xəta kodu: 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"Zəngi bitirmək mümkün deyil. Xəta kodu: 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"Zəngi bitirmək mümkün deyil. Xəta kodu: 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"Zəngi bitirmək mümkün deyil. Xəta kodu: 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"Zəngi bitirmək mümkün deyil. Xəta kodu: 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"Zəngi bitirmək mümkün deyil. Xəta kodu: 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"Zəngi bitirmək mümkün deyil. Xəta kodu: 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"Zəngi bitirmək mümkün deyil. Xəta kodu: 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"Zəngi bitirmək mümkün deyil. Xəta kodu: 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"Zəngi bitirmək mümkün deyil. Xəta kodu: 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"Zəngi bitirmək mümkün deyil. Xəta kodu: 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"Zəngi bitirmək mümkün deyil. Xəta kodu: 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"Zəngi bitirmək mümkün deyil. Xəta kodu: 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"Zəngi bitirmək mümkün deyil. Xəta kodu: 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"Zəngi bitirmək mümkün deyil. Xəta kodu: 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"Zəngi bitirmək mümkün deyil. Xəta kodu: 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"Zəngi bitirmək mümkün deyil. Xəta kodu: 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"Zəngi bitirmək mümkün deyil. Xəta kodu: 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"Zəngi bitirmək mümkün deyil. Xəta kodu: 96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"Zəngi bitirmək mümkün deyil. Xəta kodu: 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"Zəngi bitirmək mümkün deyil. Xəta kodu: 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"Zəngi bitirmək mümkün deyil. Xəta kodu: 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Zəngi bitirmək mümkün deyil. Xəta kodu: 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Zəngi bitirmək mümkün deyil. Xəta kodu: 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Zəngi bitirmək mümkün deyil. Xəta kodu: 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Zəngi bitirmək mümkün deyil. Xəta kodu: 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Zəngi bitirmək mümkün deyil. Xəta kodu: 127."</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Zəng bloklama"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Aktiv"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Deaktiv"</string>
