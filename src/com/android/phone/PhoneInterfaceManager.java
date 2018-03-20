@@ -2058,7 +2058,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 mApp, subId, callingPackage, "getVisualVoicemailPackageName")) {
             return null;
         }
-        return RemoteVvmTaskManager.getRemotePackage(mPhone.getContext(), subId).getPackageName();
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return RemoteVvmTaskManager
+                    .getRemotePackage(mPhone.getContext(), subId).getPackageName();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 
     @Override
