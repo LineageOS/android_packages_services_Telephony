@@ -243,10 +243,8 @@
     <string name="roaming" msgid="7894878421600247140">"漫游"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"漫游时连接到移动数据网络服务"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"漫游时连接到移动数据网络服务"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"数据网络漫游已停用。点按即可启用。"</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"移动网络连接中断"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"这可能会产生高额费用。"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"请与您的网络服务提供商联系以了解定价。"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"要允许移动数据网络漫游吗？"</string>
