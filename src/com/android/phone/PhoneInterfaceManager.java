@@ -71,6 +71,7 @@ import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
 import android.text.TextUtils;
 import android.util.ArraySet;
+import android.util.EventLog;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Slog;
@@ -1171,7 +1172,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @return true is a call was ended
      */
     public boolean endCallForSubscriber(int subId) {
-        enforceCallPermission();
+        if (mApp.checkCallingOrSelfPermission(permission.MODIFY_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+            Log.i(LOG_TAG, "endCall: called without modify phone state.");
+            EventLog.writeEvent(0x534e4554, "67862398", -1, "");
+            throw new SecurityException("MODIFY_PHONE_STATE permission required.");
+        }
         return (Boolean) sendRequest(CMD_END_CALL, null, new Integer(subId));
     }
 
