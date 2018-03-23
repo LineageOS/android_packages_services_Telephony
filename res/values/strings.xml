@@ -1181,8 +1181,14 @@
 
     <!-- RTT settings: used to turn on/off Real-Time Text, an accessibility feature similar to
          TTY that allows users to send text over a phone call. -->
-    <string name="rtt_mode_title">RTT</string>
-    <string name="rtt_mode_summary">Turn RTT on or off</string>
+    <string name="rtt_mode_title">Real-time text(RTT) call</string>
+    <string name="rtt_mode_summary">Allow messaging within a voice call</string>
+    <string name="rtt_mode_more_information">
+       RTT assists callers who are deaf, hard hearing, have a speech disability,
+       or need more than voice alone.<br/>
+       &lt;a href="<xliff:g example="http://www.google.com" id="url">http://support.google.com/mobile?p=telephony_rtt</xliff:g>">Learn more&lt;/a>
+       <br/> - RTT calls are saved as a message transcript
+       <br/> - RTT is not available for video calls</string>
 
     <!-- Service option entries.  -->
     <string-array name="tty_mode_entries">
