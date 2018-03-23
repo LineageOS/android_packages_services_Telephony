@@ -411,7 +411,7 @@ public class NetworkSelectListPreference extends ListPreference
                 String networkTitle = getNetworkTitle(cellInfo);
                 if (!networkEntriesList.contains(networkTitle)) {
                     networkEntriesList.add(networkTitle);
-                    networkEntryValuesList.add(Integer.toString(networkEntriesList.size() + 1));
+                    networkEntryValuesList.add(getOperatorNumeric(cellInfo));
                 }
             }
             setEntries(networkEntriesList.toArray(new CharSequence[networkEntriesList.size()]));
@@ -507,6 +507,16 @@ public class NetworkSelectListPreference extends ListPreference
             BidiFormatter bidiFormatter = BidiFormatter.getInstance();
             return bidiFormatter.unicodeWrap(ni.getOperatorNumeric(), TextDirectionHeuristics.LTR);
         }
+    }
+
+    /**
+     * Returns the operator numeric (MCCMNC) obtained in the manual search.
+     *
+     * @param cellInfo contains the information of the network.
+     * @return MCCMNC string.
+     */
+    private String getOperatorNumeric(CellInfo cellInfo) {
+        return getOperatorInfoFromCellInfo(cellInfo).getOperatorNumeric();
     }
 
     /**
