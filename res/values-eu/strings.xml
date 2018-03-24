@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Ezarpenak leheneratzen…"</string>
     <string name="response_error" msgid="6674110501330139405">"Ez zen sarearen horrelako erantzunik espero."</string>
     <string name="exception_error" msgid="7027667130619518211">"Sarearen edo SIM txartelaren errorea."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS eskaera DIAL eskaerara aldatu da."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS eskaera USSD eskaerara aldatu da."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS eskaera SS eskaera berrira aldatu da."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS eskaera Video DIAL eskaerara aldatu da."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS eskaera ohiko deira aldatu da"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS eskaera USSD eskaerara aldatu da"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"SS eskaera berrira aldatu da"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS eskaera bideo-deira aldatu da"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Telefonoa aplikazioaren Markatze finkoko zenbakiak ezarpena aktibatuta duzu. Ondorioz, deiekin lotutako eginbide batzuk ez dira funtzionatzen ari."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Ezarpenak ikusi aurretik, piztu irratia."</string>
     <string name="close_dialog" msgid="2365884406356986917">"Ados"</string>
@@ -243,10 +243,8 @@
     <string name="roaming" msgid="7894878421600247140">"Ibiltaritza"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Konektatu datu-zerbitzuetara ibiltaritzan"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Konektatu datu-zerbitzuetara ibiltaritzan"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Datu-ibiltaritza desaktibatuta dago. Sakatu aktibatzeko."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Galdu da datu-konexioa"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Baliteke kostu handiak ordaindu behar izatea."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Eskatu prezioari buruzko informazioa sare-hornitzaileari."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Ibiltaritzako datuak baimendu nahi dituzu?"</string>
@@ -618,7 +616,7 @@
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Wi-Fi deia"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Irekitzeko, sakatu berriro"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"Errore bat gertatu mezua deskodetzean."</string>
-    <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM txartel batek zerbitzua aktibatu du eta telefonoaren ibiltaritza-gaitasunak aldatu ditu."</string>
+    <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM txartel batek zerbitzua aktibatu du eta telefonoaren ibiltaritza-gaitasunak eguneratu ditu."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Dei gehiegi daude aktibo. Amaitu edo bateratu abian diren deiak beste bat egin aurretik."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Ezin da konektatu. Erabili balio duen SIM txartel bat."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Galdu egin da Wi-Fi konexioa. Amaitu da deia."</string>
