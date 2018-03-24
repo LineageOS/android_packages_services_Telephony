@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Vraćanje podešavanja…"</string>
     <string name="response_error" msgid="6674110501330139405">"Neočekivani odgovor mreže."</string>
     <string name="exception_error" msgid="7027667130619518211">"Greška na mreži ili SIM kartici."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS zahtev je promenjen u DIAL zahtev."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS zahtev je promenjen u USSD zahtev."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS zahtev je promenjen u novi SS zahtev."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS zahtev je promenjen u Video DIAL zahtev."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS zahtev je promenjen u običan poziv"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS zahtev je promenjen u USSD zahtev"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Promenjeno je u novi SS zahtev"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS zahtev je promenjen u video poziv"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Podešavanje Brojeva za fiksno biranje aplikacije Telefon je uključeno. Zbog toga neke funkcije u vezi sa pozivima ne funkcionišu."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Uključite radio pre pregledanja ovih podešavanja."</string>
     <string name="close_dialog" msgid="2365884406356986917">"Potvrdi"</string>

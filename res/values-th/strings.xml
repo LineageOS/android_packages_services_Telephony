@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"กำลังย้อนกลับการตั้งค่า…"</string>
     <string name="response_error" msgid="6674110501330139405">"พบการตอบกลับที่ไม่คาดหมายจากเครือข่าย"</string>
     <string name="exception_error" msgid="7027667130619518211">"ข้อผิดพลาดของเครือข่ายหรือซิมการ์ด"</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"คำขอ SS ที่แก้ไขเป็นคำขอ DIAL"</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"คำขอ SS ที่แก้ไขเป็นคำขอ USSD"</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"คำขอ SS ที่แก้ไขเป็นคำขอ SS ใหม่"</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"คำขอ SS ที่แก้ไขเป็นคำขอ Video DIAL"</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"คำขอ SS เปลี่ยนเป็นการโทรปกติแล้ว"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"คำขอ SS เปลี่ยนเป็นคำขอ USSD แล้ว"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"เปลี่ยนเป็นคำขอ SS ใหม่แล้ว"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"คำขอ SS เปลี่ยนเป็นวิดีโอคอลแล้ว"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"เนื่องจากมีการเปิดใช้การตั้งค่าการจำกัดหมายเลขโทรออกของแอปโทรศัพท์ จึงเป็นผลให้ฟีเจอร์ที่เกี่ยวกับการโทรบางอย่างไม่ทำงาน"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"เปิดวิทยุก่อนดูการตั้งค่าเหล่านี้"</string>
     <string name="close_dialog" msgid="2365884406356986917">"ตกลง"</string>

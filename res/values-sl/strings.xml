@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Povrnitev nastavitev ..."</string>
     <string name="response_error" msgid="6674110501330139405">"Nepričakovan odgovor iz omrežja."</string>
     <string name="exception_error" msgid="7027667130619518211">"Napaka omrežja ali kartice SIM."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Zahteva SS je spremenjena v zahtevo DIAL."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Zahteva SS je spremenjena v zahtevo USSD."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Zahteva SS je spremenjena v novo zahtevo SS."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Zahteva SS je spremenjena v zahtevo Video DIAL."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"Zahteva SS je spremenjena v navaden klic"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Zahteva SS je spremenjena v zahtevo USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Spremenjeno v novo zahtevo SS"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Zahteva SS je spremenjena v videoklic"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Nastavitev predpisanih številk aplikacije telefona je vklopljena. Zato nekatere funkcije, povezane s klici, ne delujejo."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Pred ogledom teh nastavitev vklopite radijski oddajnik."</string>
     <string name="close_dialog" msgid="2365884406356986917">"V redu"</string>
@@ -243,10 +243,8 @@
     <string name="roaming" msgid="7894878421600247140">"Gostovanje"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Med gostovanjem vzpostavi povezavo s podatkovnimi storitvami"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Med gostovanjem vzpostavi povezavo s podatkovnimi storitvami"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Podatkovno gostovanje je izklopljeno. Dotaknite se, da ga vklopite."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobilna podatkovna povezava je prekinjena"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Stroški utegnejo biti veliki."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Preverite cene pri operaterju omrežja."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Želite dovoliti podatkovno gostovanje?"</string>
