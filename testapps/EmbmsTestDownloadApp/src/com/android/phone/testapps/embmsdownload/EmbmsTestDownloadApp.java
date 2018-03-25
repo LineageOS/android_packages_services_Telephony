@@ -27,8 +27,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.telephony.MbmsDownloadSession;
 import android.telephony.SubscriptionManager;
+import android.telephony.mbms.DownloadProgressListener;
 import android.telephony.mbms.DownloadRequest;
-import android.telephony.mbms.DownloadStateCallback;
+import android.telephony.mbms.DownloadStatusListener;
 import android.telephony.mbms.FileInfo;
 import android.telephony.mbms.FileServiceInfo;
 import android.telephony.mbms.MbmsDownloadSessionCallback;
@@ -292,8 +293,8 @@ public class EmbmsTestDownloadApp extends Activity {
                         "No DownloadRequest Pending for progress...", Toast.LENGTH_SHORT).show();
                 return;
             }
-            mDownloadManager.registerStateCallback(req, sInstance.getMainThreadHandler()::post,
-                    new DownloadStateCallback(DownloadStateCallback.PROGRESS_UPDATES) {
+            mDownloadManager.addProgressListener(req, sInstance.getMainThreadHandler()::post,
+                    new DownloadProgressListener() {
                         @Override
                         public void onProgressUpdated(DownloadRequest request, FileInfo fileInfo,
                                 int currentDownloadSize, int fullDownloadSize,
@@ -302,16 +303,6 @@ public class EmbmsTestDownloadApp extends Activity {
                                     "Progress Updated (" + fileInfo + ") cd: " + currentDecodedSize
                                             + " fd: " + fullDownloadSize, Toast.LENGTH_SHORT)
                                     .show();
-                        }
-
-                        @Override
-                        public void onStateUpdated(DownloadRequest request, FileInfo fileInfo,
-                                @MbmsDownloadSession.DownloadStatus int state) {
-                            // only registered for state callback, this shouldn't happen!
-                            Toast.makeText(EmbmsTestDownloadApp.this,
-                                    "State ERROR: received state update for callback that didn't"
-                                            + " filter it",
-                                    Toast.LENGTH_SHORT).show();
                         }
                     });
         });
@@ -330,21 +321,10 @@ public class EmbmsTestDownloadApp extends Activity {
                         "No DownloadRequest Pending for state...", Toast.LENGTH_SHORT).show();
                 return;
             }
-            mDownloadManager.registerStateCallback(req, sInstance.getMainThreadHandler()::post,
-                    new DownloadStateCallback(DownloadStateCallback.STATE_UPDATES) {
+            mDownloadManager.addStatusListener(req, sInstance.getMainThreadHandler()::post,
+                    new DownloadStatusListener() {
                         @Override
-                        public void onProgressUpdated(DownloadRequest request, FileInfo fileInfo,
-                                int currentDownloadSize, int fullDownloadSize,
-                                int currentDecodedSize, int fullDecodedSize) {
-                            // only registered for state callback, this shouldn't happen!
-                            Toast.makeText(EmbmsTestDownloadApp.this,
-                                    "Progress ERROR: received progress update for"
-                                            + " callback that didn't "
-                                            + "filter it", Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onStateUpdated(DownloadRequest request, FileInfo fileInfo,
+                        public void onStatusUpdated(DownloadRequest request, FileInfo fileInfo,
                                 @MbmsDownloadSession.DownloadStatus int state) {
                             Toast.makeText(EmbmsTestDownloadApp.this,
                                     "State Updated (" + fileInfo + ") state: " + state,
@@ -367,8 +347,20 @@ public class EmbmsTestDownloadApp extends Activity {
                         "No DownloadRequest Pending for state...", Toast.LENGTH_SHORT).show();
                 return;
             }
-            mDownloadManager.registerStateCallback(req, sInstance.getMainThreadHandler()::post,
-                    new DownloadStateCallback() {
+
+            mDownloadManager.addStatusListener(req, sInstance.getMainThreadHandler()::post,
+                    new DownloadStatusListener() {
+                        @Override
+                        public void onStatusUpdated(DownloadRequest request, FileInfo fileInfo,
+                                @MbmsDownloadSession.DownloadStatus int state) {
+                            Toast.makeText(EmbmsTestDownloadApp.this,
+                                    "State Updated (" + fileInfo + ") state: " + state,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+            mDownloadManager.addProgressListener(req, sInstance.getMainThreadHandler()::post,
+                    new DownloadProgressListener() {
                         @Override
                         public void onProgressUpdated(DownloadRequest request, FileInfo fileInfo,
                                 int currentDownloadSize, int fullDownloadSize,
@@ -377,14 +369,6 @@ public class EmbmsTestDownloadApp extends Activity {
                                     "Progress Updated (" + fileInfo + ") cd: " + currentDecodedSize
                                             + " fd: " + fullDownloadSize, Toast.LENGTH_SHORT)
                                     .show();
-                        }
-
-                        @Override
-                        public void onStateUpdated(DownloadRequest request, FileInfo fileInfo,
-                                @MbmsDownloadSession.DownloadStatus int state) {
-                            Toast.makeText(EmbmsTestDownloadApp.this,
-                                    "State Updated (" + fileInfo + ") state: " + state,
-                                    Toast.LENGTH_SHORT).show();
                         }
                     });
         });
