@@ -546,7 +546,7 @@
     <!-- Mobile network settings screen, dialog message title when user selects the Data roaming check box -->
     <string name="roaming_alert_title">Allow data roaming?</string>
     <!-- Mobile network settings screen, data usage setting check box name -->
-    <string name="data_usage_title">Data usage</string>
+    <string name="data_usage_title">App data usage</string>
     <!-- Summary about how much data has been used in a date range [CHAR LIMIT=100] -->
     <string name="data_usage_template"><xliff:g name="amount" example="200 MB">%1$s</xliff:g> mobile data used <xliff:g name="date_range" example="Jan 1 -- Feb 2">%2$s</xliff:g></string>
     <!-- Mobile network settings screen, Advanced button to show more items when clicked [CHAR LIMIT=50] -->
