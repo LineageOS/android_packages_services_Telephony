@@ -41,6 +41,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.PersistableBundle;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.ListPreference;
@@ -81,6 +82,7 @@ import com.android.phone.settings.PhoneAccountSettingsFragment;
 import com.android.settingslib.RestrictedLockUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -97,6 +99,15 @@ import java.util.List;
  */
 
 public class MobileNetworkSettings extends Activity  {
+
+    // CID of the device.
+    private static final String KEY_CID = "ro.boot.cid";
+    // CIDs of devices which should not show anything related to eSIM.
+    private static final String KEY_ESIM_CID_IGNORE = "ro.setupwizard.esim_cid_ignore";
+    // System Property which is used to decide whether the default eSIM UI will be shown,
+    // the default value is false.
+    private static final String KEY_ENABLE_ESIM_UI_BY_DEFAULT =
+            "esim.enable_esim_system_ui_by_default";
 
     private enum TabState {
         NO_TABS, UPDATE, DO_NOTHING
@@ -151,10 +162,20 @@ public class MobileNetworkSettings extends Activity  {
         if (!euiccManager.isEnabled()) {
             return false;
         }
+
         ContentResolver cr = context.getContentResolver();
-        return Settings.Global.getInt(cr, Settings.Global.EUICC_PROVISIONED, 0) != 0
-                || Settings.Global.getInt(
-                cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+        final boolean esimIgnoredDevice =
+                Arrays.asList(TextUtils.split(SystemProperties.get(KEY_ESIM_CID_IGNORE, ""), ","))
+                        .contains(SystemProperties.get(KEY_CID, null));
+        final boolean enabledEsimUiByDefault =
+                SystemProperties.getBoolean(KEY_ENABLE_ESIM_UI_BY_DEFAULT, true);
+        final boolean euiccProvisioned =
+                Settings.Global.getInt(cr, Settings.Global.EUICC_PROVISIONED, 0) != 0;
+        final boolean inDeveloperMode =
+                Settings.Global.getInt(cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+
+        return (inDeveloperMode || euiccProvisioned
+                || (!esimIgnoredDevice && enabledEsimUiByDefault));
     }
 
     /**
