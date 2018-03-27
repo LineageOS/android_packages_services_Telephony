@@ -766,23 +766,8 @@
   <string name="phone_in_ecm_notification_title">جىددىي چاقىرىش ھالىتى</string>
   <!-- ECM: Notification body -->
   <string name="phone_in_ecm_call_notification_text">سانلىق مەلۇمات باغلىنىش چەكلەنگەن</string>
-  <plurals name="phone_in_ecm_notification_time">
-    <!-- number of minutes is one -->
-    <!-- number of minutes is not equal to one -->
-    <item quantity="other"><xliff:g id="COUNT">%s</xliff:g> مىنۇت سانلىق مەلۇمات باغلىنىشى يوق</item>
-  </plurals>
   <!-- ECM: Dialog box message for exiting from the notifications screen -->
-  <plurals name="alert_dialog_exit_ecm">
-    <!-- number of minutes is one -->
-    <!-- number of minutes is not equal to one -->
-    <item quantity="other">تېلېفون <xliff:g id="COUNT">%s</xliff:g> مىنۇت جىددىي چاقىرىش ھالىتىدە تۇرىدۇ. بۇ ھالەتتە، سانلىق مەلۇمات باغلىنىشى ئېلىپ بېرىلىۋاتقان ئەپنى ئىشلەتكىلى بولمايدۇ. دەرھال چېكىنەمسىز؟</item>
-  </plurals>
   <!-- ECM: Dialog box message for exiting from any other app -->
-  <plurals name="alert_dialog_not_avaialble_in_ecm">
-    <!-- number of minutes is one -->
-    <!-- number of minutes is not equal to one -->
-    <item quantity="other">جىددىي چاقىرىش ھالىتىدە تاللانغان مەشغۇلاتنى ئىجرا قىلالمايدۇ. تېلېفون بۇ ھالەتتە <xliff:g id="COUNT">%s</xliff:g> مىنۇت داۋاملىشىدۇ. دەرھال چېكىنەمسىز؟</item>
-  </plurals>
   <!-- ECM: Dialog box message while in emergency call -->
   <string name="alert_dialog_in_ecm_call">جىددىي چاقىرىش ھالىتىدە تاللانغان مەشغۇلاتنى ئىجرا قىلالمايدۇ.</string>
   <!-- ECM: Progress text -->
