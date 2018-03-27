@@ -378,6 +378,8 @@
     <string name="connect_later">Can\'t connect to this network right now. Try again later.</string>
     <!-- Available networks screen, toast when registered on a specific network -->
     <string name="registration_done">Registered on network.</string>
+    <!-- Available networks, toast when user selects automatic selection  -->
+    <string name="already_auto">Already in automatic selection.</string>
     <!-- Available networks screen, name of switch button for whether to select network automatically -->
     <string name="select_automatically">Automatically select network</string>
     <!-- Available networks screen, name of button when user wants to select network manually  -->

@@ -124,7 +124,7 @@ public class NetworkSelectListPreference extends ListPreference
                             logd("manual network selection: succeeded! "
                                     + getNetworkTitle(mCellInfo));
                         }
-                        mNetworkOperators.displayNetworkSelectionSucceeded();
+                        mNetworkOperators.displayNetworkSelectionSucceeded(msg.arg1);
                     }
                     mNetworkOperators.getNetworkSelectionMode();
                     break;
