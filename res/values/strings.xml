@@ -1133,6 +1133,9 @@
     <string name="dial_emergency_error">Can\'t call. <xliff:g id="non_emergency_number">%s</xliff:g> is not an emergency number.</string>
     <!-- Emergency dialer: message displayed in an error dialog -->
     <string name="dial_emergency_empty_error">Can\'t call. Dial an emergency number.</string>
+    <!-- Message displayed over top of the emergency dialer dialpad indicating to the user that
+         emergency calling is not currently available. -->
+    <string name="dial_emergency_calling_not_available">Emergency calling not available</string>
 
     <!-- Displayed in the text entry box in the dialer when in landscape mode to guide the user
          to dial using the physical keyboard -->
