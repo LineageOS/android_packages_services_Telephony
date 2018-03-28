@@ -118,5 +118,11 @@ public class EuiccUiDispatcherActivityTest {
         ActivityInfo findBestActivity(Intent euiccUiIntent) {
             return mActivityInfo;
         }
+
+        @Override
+        protected void grantDefaultPermissionsToActiveLuiApp(ActivityInfo activityInfo) {}
+
+        @Override
+        protected void revokePermissionFromLuiApps(Intent intent) {}
     }
 }
