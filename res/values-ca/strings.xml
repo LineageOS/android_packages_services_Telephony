@@ -503,7 +503,7 @@
     <string name="ota_title_activate" msgid="8616918561356194398">"Activació del telèfon"</string>
     <string name="ota_touch_activate" msgid="6553212803262586244">"Cal fer una trucada especial per activar el servei del telèfon. \n\nDesprés de prémer \"Activa\", escolteu les instruccions proporcionades per activar el telèfon."</string>
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"S\'està activant..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"El telèfon està activant el vostre servei de dades per a mòbils.\n\nAquest procés pot durar fins a 5 minuts."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"El telèfon està activant el vostre servei de dades mòbils.\n\nAquest procés pot durar fins a 5 minuts."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Voleu ometre l\'activació?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Si ometeu l\'activació, no podreu fer trucades ni connectar-vos a xarxes de dades mòbils (tot i que podreu connectar-vos a xarxes Wi-fi). Fins que activeu el telèfon, se us demanarà que ho feu cada cop que l\'engegueu."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Omet"</string>

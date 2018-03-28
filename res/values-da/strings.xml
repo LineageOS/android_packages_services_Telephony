@@ -535,8 +535,8 @@
       <item quantity="other">Ingen dataforbindelse i <xliff:g id="COUNT_1">%s</xliff:g> minutter</item>
     </plurals>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="one">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen applikationer, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
-      <item quantity="other">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen applikationer, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
+      <item quantity="one">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen apps, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
+      <item quantity="other">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen apps, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
       <item quantity="one">Den valgte handling er ikke tilgængelig i tilstanden Nødopkald. Telefonen vil være i denne tilstand i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Vil du afslutte denne tilstand nu?</item>
