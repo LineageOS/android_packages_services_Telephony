@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Se revine la setări..."</string>
     <string name="response_error" msgid="6674110501330139405">"Răspuns neașteptat de la rețea."</string>
     <string name="exception_error" msgid="7027667130619518211">"Eroare de rețea sau de card SIM."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Solicitarea SS a fost transformată în solicitare DIAL."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Solicitarea SS a fost transformată în solicitare USSD."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Solicitarea SS a fost transformată în solicitare SS nouă."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Solicitarea SS a fost modificată într-o solicitare DIAL video."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"Solicitarea SS a fost schimbată cu un apel obișnuit"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Solicitarea SS a fost schimbată cu o solicitare USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Schimbat cu o solicitare SS nouă"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Solicitarea SS a fost schimbată cu un apel video"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Setarea Numere cu apelări restricționate din aplicația Telefon este activată. Ca rezultat, unele funcții legate de apelare nu pot fi utilizate."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Activați semnalul radio, înainte de a vizualiza aceste setări."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -243,14 +243,13 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Conectați-vă la serviciile de date în roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Conectați-vă la serviciile de date în roaming"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Roamingul de date este dezactivat. Atingeți pentru a-l activa."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"S-a pierdut conexiunea de date mobile"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Se pot acumula costuri mari."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Consultați furnizorul de rețea în privința prețurilor."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permiteți roamingul de date?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Utilizarea datelor"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de date mobile utilizate în intervalul <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avansate"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operator"</string>
@@ -531,8 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Persoana de contact nu a fost importată"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Aparate auditive"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activați compatibilitatea cu aparatele auditive"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Activați sau dezactivați RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Apel de tipul Text în timp real (TTR)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Permiteți schimbul de mesaje în timpul unui apel vocal"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" TTR oferă asistență apelanților fără auz, cu deficiențe de auz, care au dizabilități de vorbire sau care au nevoie de mai mult decât vocea."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Aflați mai multe&lt;/a&gt;\n       "<br></br>" - Apelurile RTT sunt salvate ca transcrierea unui mesaj "<br></br>" - Serviciul TTR nu este disponibil pentru apelurile video."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY dezactivat"</item>
     <item msgid="3971695875449640648">"TTY integral"</item>

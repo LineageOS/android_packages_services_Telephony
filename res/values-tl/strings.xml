@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Ibinabalik ang mga setting…"</string>
     <string name="response_error" msgid="6674110501330139405">"Hindi inaasahang tugon mula sa network."</string>
     <string name="exception_error" msgid="7027667130619518211">"Error sa Network o SIM card."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Ginawang DIAL request ang SS request."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Ginawang USSD request ang SS request."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Ginawang bagong SS request ang SS request."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Binago ang SS na kahilingan sa Video DIAL na kahilingan."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"Pinalitan ang SS na kahilingan ng regular na tawag"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Pinalitan ang SS na kahilingan ng USSD na kahilingan"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Pinalitan ng bagong SS na kahilingan"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Pinalitan ang SS na kahilingan ng video call"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Naka-on ang setting ng mga Fixed Dialing Number ng iyong app ng Telepono. Bilang resulta, hindi gumagana ang ilang tampok na nauugnay sa pagtawag."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Mangyaring i-on ang radyo bago tingnan ang mga setting na ito."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -243,14 +243,13 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Kumonekta sa mga serbisyo ng data kapag nagro-roam"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Kumonekta sa mga serbisyo ng data kapag nagro-roam"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Naka-off ang data roaming. I-tap para i-on."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Nawalan ng koneksyon ng mobile data"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Maaari kang magkaroon ng malaking bayarin."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Magtanong sa iyong provider ng network para sa presyo."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Payagan ang roaming ng data?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Paggamit ng data"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> na mobile data ang nagamit noong <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Advanced"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Carrier"</string>
@@ -531,8 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Hindi na-import ang contact"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Mga hearing aid"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"I-on ang compatibility ng hearing aid"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"I-on o i-off ang RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Real-time na text(RTT) na tawag"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Payagan ang pagmemensahe sa isang voice call"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Tinutulungan ng RTT ang mga tumatawag na bingi, mahina ang pandinig, mayroong kapansanan sa pagsasalita, o kailangan ng higit pa sa boses lang."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Matuto pa&lt;/a&gt;\n       "<br></br>" - Ang mga RTT na tawag ay sine-save bilang transcript ng mensahe "<br></br>" - Hindi available ang RTT para sa mga video call"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"I-off ang TTY"</item>
     <item msgid="3971695875449640648">"Puno ang TTY"</item>

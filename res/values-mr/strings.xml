@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"सेटिंग्‍ज परत करत आहे…"</string>
     <string name="response_error" msgid="6674110501330139405">"नेटवर्क वरून अनपेक्षित प्रतिसाद."</string>
     <string name="exception_error" msgid="7027667130619518211">"नेटवर्क किंवा सिम कार्ड एरर."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS विनंती डायल विनंतीवर सुधारित केली."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS विनंती USSD विनंतीवर सुधारित केली."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS विनंती नवीन SS विनंतीवर सुधारित केली."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS विनंतीमध्ये बदल करून ती व्हिडिओ डायल विनंतीमध्ये बदलली आहे."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS विनंती नियमित कॉलवर बदलली"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS विनंती USSD विनंतीवर बदलली"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"नवीन SS विनंतीवर बदलली"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS विनंती व्हिडिओ कॉलवर बदलली"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"आपल्‍या फोन अ‍ॅप्‍सचे निश्चित डायलिंग नंबर सेटिंग चालू केले. परिणामी, काही कॉल संबंधित वैशिष्‍ट्ये कार्य करीत नाहीत."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"या सेटिंग्‍ज पाहण्‍यापूर्वी रेडिओ चालू करा."</string>
     <string name="close_dialog" msgid="2365884406356986917">"ठीक"</string>
@@ -243,14 +243,13 @@
     <string name="roaming" msgid="7894878421600247140">"रोमिंग"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"रोमिंग असताना डेटा सेवांना कनेक्ट करा"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"रोमिंग असताना डेटा सेवांना कनेक्ट करा"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"डेटा रोमिंग बंद आहे. सुरू करण्‍यासाठी टॅप करा."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"मोबाइल डेटा कनेक्‍शन गेले"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"आपल्‍याला लक्षणीय रोमिंग शुल्‍क लागू शकते."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"किंमतींबद्दल तुमच्या नेटवर्क प्रदात्याला विचारा."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिंगला अनुमती द्यायची?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"डेटा वापर"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> दरम्यान <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा वापरला गेला"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"प्रगत"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"वाहक"</string>
@@ -531,8 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"संपर्क आयात करण्यात अयशस्वी"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"श्रवणयंत्रे"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवणयंत्र सुसंगतता चालू करा"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT सुरू किंवा बंद करा"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"रीअल-टाइम टेक्‍स्‍ट(RTT) कॉल"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"व्‍हॉइस कॉल करताना मेसेजिंग करू शकतो"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT अशा कॉल करणार्‍यांना साहाय्य करते ज्‍यांन बहिरेपणा आहे, ज्‍यांना कमी ऐकू येते किंवा बोलताना अडखळतात किंवा ज्‍यांना फक्‍त आवाज पुरेसा नसतो."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;अधिक जाणून घ्‍या&lt;a&gt;\n       "<br></br>" - RTT कॉल संदेश प्रतिलेख म्‍हणून सेव्‍ह केले आहेत "<br></br>" - RTT व्हिडिओ कॉलसाठी उपलब्‍ध नाही"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बंद"</item>
     <item msgid="3971695875449640648">"TTY पूर्ण"</item>

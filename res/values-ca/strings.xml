@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"S\'està tornant la configuració als valors originals…"</string>
     <string name="response_error" msgid="6674110501330139405">"Resposta inesperada de la xarxa."</string>
     <string name="exception_error" msgid="7027667130619518211">"Error de xarxa o de targeta SIM."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"La sol·licitud SS s\'ha transformat en una sol·licitud DIAL."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"La sol·licitud SS s\'ha transformat en una sol·licitud USSD."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"La sol·licitud SS s\'ha transformat en una sol·licitud SS nova."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"La sol·licitud SS s\'ha transformat en una sol·licitud DIAL de vídeo."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"La sol·licitud SS s\'ha canviat per una trucada estàndard"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"La sol·licitud SS s\'ha canviat per una sol·licitud USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"S\'ha canviat a una nova sol·licitud SS"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"La sol·licitud SS s\'ha canviat per una videotrucada"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"La configuració dels números de marcatge fix de l\'aplicació Telèfon està activada. En conseqüència, algunes funcions relacionades amb les trucades no funcionen."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Per veure aquesta configuració, has d\'activar el senyal mòbil."</string>
     <string name="close_dialog" msgid="2365884406356986917">"D\'acord"</string>
@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"És possible que se\'t facturin càrrecs elevats."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Contacta amb el proveïdor de xarxa per saber els preus."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permetre la itinerància de dades?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Ús de dades"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Ús de dades de l\'aplicació"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Ús de dades mòbils en el període <xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Configuració avançada"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operador de telefonia mòbil"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Error en importar el contacte"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Audiòfons"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activa la compatibilitat amb audiòfons"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"Missatges en temps real"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Activa o desactiva els missatges en temps real"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Trucada de text en temps real (RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Permet l\'ús de missatges en una trucada de veu"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" La funció RTT ofereix assistència als usuaris que són sords, tenen problemes d\'audició o alteracions de la parla, o bé que necessiten un text a banda de la veu."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Més informació&lt;/a&gt;\n       "<br></br>" - Les trucades RTT es desen en forma de transcripció. "<br></br>" - Aquesta funció no està disponible per a videotrucades."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desactivat"</item>
     <item msgid="3971695875449640648">"TTY complet"</item>
@@ -548,7 +549,7 @@
     <string name="ota_title_activate" msgid="8616918561356194398">"Activació del telèfon"</string>
     <string name="ota_touch_activate" msgid="6553212803262586244">"Cal fer una trucada especial per activar el servei del telèfon. \n\nDesprés de prémer \"Activa\", escolteu les instruccions proporcionades per activar el telèfon."</string>
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"S\'està activant..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"El telèfon està activant el vostre servei de dades per a mòbils.\n\nAquest procés pot durar fins a 5 minuts."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"El telèfon està activant el vostre servei de dades mòbils.\n\nAquest procés pot durar fins a 5 minuts."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Voleu ometre l\'activació?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Si ometeu l\'activació, no podreu fer trucades ni connectar-vos a xarxes de dades mòbils (tot i que podreu connectar-vos a xarxes Wi-fi). Fins que activeu el telèfon, se us demanarà que ho feu cada cop que l\'engegueu."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Omet"</string>

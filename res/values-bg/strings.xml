@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Настройките се променят в първоначалното състояние…"</string>
     <string name="response_error" msgid="6674110501330139405">"Неочакван отговор от мрежата."</string>
     <string name="exception_error" msgid="7027667130619518211">"Грешка в мрежата или SIM картата."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS заявката е променена на DIAL заявка."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS заявката е променена на USSD заявка."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS заявката е променена на нова SS заявка."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Заявката SS бе променена на заявка DIAL за видеообаждане."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS заявката е променена на обикновено обаждане"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS заявката е променена на USSD заявка"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Променено на нова SS заявка"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS заявката е променена на видеообаждане"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Настройката „Фиксирани номера за набиране“ на приложението ви Телефон е включена. В резултат на това някои функции, свързани с обажданията, не работят."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Включете радиото, преди да разгледате тези настройки."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Това може да доведе до високи такси."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"За цени се обърнете към оператора си."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Да се разреши ли роуминг на данни?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Използване на данни"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Пренос на данни от приложенията"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> мобилни данни са използвани за периода <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Разширени"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Оператор"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Импортирането на контакта не бе успешно"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Слухови апарати"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Включване на съвместимостта за слухов апарат"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Включване или изключване на RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Обаждане с текстово съобщение в реално време (RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Позволяване на съобщения в рамките на гласово обаждане"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT подпомага обаждащи се, които са глухи, имат затруднения със слуха, говорно увреждане или се нуждаят от повече от само глас."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Научете повече&lt;/a&gt;\n       "<br></br>" - RTT обажданията се запазват като препис на съобщение "<br></br>" - RTT не е налице за видеообаждания"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY е изкл."</item>
     <item msgid="3971695875449640648">"Пълен TTY режим"</item>
