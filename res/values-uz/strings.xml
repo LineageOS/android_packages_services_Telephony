@@ -127,14 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Sozlamalar tiklanmoqda…"</string>
     <string name="response_error" msgid="6674110501330139405">"Tarmoqdan kutilmagan javob."</string>
     <string name="exception_error" msgid="7027667130619518211">"Tarmoq yoki SIM kartada xato."</string>
-    <!-- no translation found for stk_cc_ss_to_dial_error (4440038807310535377) -->
-    <skip />
-    <!-- no translation found for stk_cc_ss_to_ussd_error (6095812685884176176) -->
-    <skip />
-    <!-- no translation found for stk_cc_ss_to_ss_error (7920654012697945858) -->
-    <skip />
-    <!-- no translation found for stk_cc_ss_to_dial_video_error (3873905132181743781) -->
-    <skip />
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS so‘rovi oddiy chaqiruvga o‘zgartirildi"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS so‘rovi USSD so‘roviga o‘zgartirildi"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Yangi SS so‘roviga o‘zgartirildi"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS so‘rovi video chaqiruvga o‘zgartirildi"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Telefon ilovasidagi ruxsat etilgan raqamlar yoqildi. Endim ba’zi qo‘ng‘iroq funksiyalari ishlamay qoladi."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Ushbu sozlamalarni ko‘rishdan oldin radioni yoqing."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -252,7 +248,8 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Xarajati ancha yuqori bo‘lishi mumkin."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Paketlar narxlari haqidagi ma’lumotni internet provayderingizdan olishingiz mumkin."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Internet-roumingga ruxsat berilsinmi?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Trafik sarfi"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> davomida sarflangan mobil trafik: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Kengaytirilgan sozlamalar"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Aloqa operatori"</string>
@@ -533,8 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontaktni import qilib bo‘lmadi"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Eshitish apparatlari"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Eshitish apparatlari bilan ishlash imkoniyatini yoqish"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"Kiritilayotgan matnni real vaqtda ko‘rish funksiyasi"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Kiritilayotgan matnni real vaqtda ko‘rish funksiyasini yoqish yoki o‘chirish"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"RTT chaqiruvi"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Video chaqiruvlar vaqtida xabarlar almashinuviga ruxsat berish"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT kar, eshitish qobiliyati va nutqiy faoliyati buzilgan shaxslarga mo‘ljallangan funksiyadir."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Batafsil&lt;/a&gt;\n "<br></br>"– RTT chaqiruvlari transkripsiya sifatida saqlanadi. "<br></br>"– RTT funksiyasidan video chaqiruvlar vaqtida foydalanib bo‘lmaydi."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Teletayp o‘chiq"</item>
     <item msgid="3971695875449640648">"To‘liq funksiyali teletayp"</item>

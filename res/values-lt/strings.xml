@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Galite būti apmokestinti dideliais mokesčiais."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Daugiau kainodaros informacijos galite gauti susisiekę su tinklo paslaugų teikėju."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Leisti tarptinklinį duomenų ryšį?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Duomenų naudojimas"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Programos duomenų naudojimas"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> išnaudota mobiliojo ryšio duomenų: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Išplėstiniai"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operatorius"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Nepavyko importuoti kontakto"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Klausos aparatai"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Įjungti klausos aparato suderinamumą"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Įjungti arba išjungti RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Tikralaikių teksto pranešimų (RTT) skambutis"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Leisti susirašinėti dalyvaujant balso skambutyje"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT padeda skambintojams, kurie yra kurti, neprigirdintys, sunkiai kalba arba kuriems reikia ne tik kalbėti."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Sužinokite daugiau&lt;/a&gt;\n       "<br></br>" – RTT skambučiai išsaugomi kaip pranešimų nuorašai "<br></br>" – RTT paslauga nepasiekiama dalyvaujant vaizdo skambučiuose"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY išjungta"</item>
     <item msgid="3971695875449640648">"TTY pilnas"</item>

@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"ត្រឡប់​ការ​កំណត់…"</string>
     <string name="response_error" msgid="6674110501330139405">"ការ​ឆ្លើយ​តប​ដែល​មិន​រំពឹង​ទុក​ពី​​បណ្ដាញ​។"</string>
     <string name="exception_error" msgid="7027667130619518211">"បញ្ហា​ស៊ីមកាត ឬ​បណ្ដាញ។"</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"សំណើ SS ត្រូវបានកែសម្រួលទៅសំណើនៃការហៅ។"</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"សំណើ SS ត្រូវបានកែសម្រួលទៅសំណើសារ USSD។"</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"សំណើ SS ត្រូវបានកែសម្រួលទៅតាមសំណើ SS ថ្មី។"</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"បាន​កែប្រែ​សំណើ SS ទៅជា​សំណើ DIAL ជា​វីដេអូ។"</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"សំណើ SS បាន​ប្ដូរ​ទៅ​ការហៅ​ជា​ប្រចាំ"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"សំណើ SS បាន​ប្ដូរ​ទៅ​សំណើ USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"បាន​ប្ដូរ​ទៅ​សំណើ SS ថ្មី"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"សំណើ SS បាន​ប្ដូរ​ទៅ​ការហៅ​ជា​វីដេអូ"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"បាន​បើក​ការ​កំណត់​លេខ​ហៅ​​ថេរ​​​នៃ​កម្មវិធី​ទូរស័ព្ទ​របស់​អ្នក។ ជា​លទ្ធផល លក្ខណៈ​មួយ​ចំនួន​ដែល​ទាក់ទង​នឹង​ការ​ហៅ​មិន​ដំណើរការ។"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"បើក​​វិទ្យុ​មុន​ពេល​មើល​ការ​កំណត់​ទាំង​នេះ​។"</string>
     <string name="close_dialog" msgid="2365884406356986917">"យល់​ព្រម​"</string>
@@ -243,14 +243,13 @@
     <string name="roaming" msgid="7894878421600247140">"រ៉ូ​មីង"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"ការរ៉ូមីង​ទិន្នន័យ​ត្រូវ​បាន​បិទ។ ចុច ដើម្បី​បើក។"</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"ដាច់​ការតភ្ជាប់​ទិន្នន័យ​ចល័ត"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"អាចនាំឲ្យមានការគិតប្រាក់ច្រើនពីអ្នក។"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ពិនិត្យមើល​តម្លៃ​ជាមួយ​ក្រុមហ៊ុន​ផ្ដល់​សេវា​​បណ្ដាញ​​របស់​អ្នក។"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"អនុញ្ញាតឲ្យរ៉ូមីងទិន្នន័យ?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"ការ​ប្រើ​ប្រាស់ទិន្នន័យ"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"បានប្រើទិន្នន័យទូរសព្ទអស់ <xliff:g id="ID_1">%1$s</xliff:g> នៅថ្ងៃទី <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"កម្រិតខ្ពស់"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ក្រុមហ៊ុន​បម្រើ​សេវា​ទូរសព្ទ"</string>
@@ -531,8 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"បានបរាជ័យក្នុងការនាំចូលទំនាក់ទំនង"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"ឧបករណ៍​ជំនួយការ​ស្ដាប់"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"បើក​មុខងារដែលត្រូវគ្នានឹងឧបករណ៍​ជំនួយ​ការ​ស្ដាប់"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"បើក ឬ​បិទ RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"ការហៅ​តាម​សារ​ជា​អក្សរ​ក្នុង​ពេល​ជាក់ស្ដែង"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"អនុញ្ញាត​ការផ្ញើសារ​នៅ​ក្នុង​ការហៅ​ជា​សំឡេង"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT ជួយ​អ្នក​ហៅ​ទូរសព្ទ​ដែល​​ថ្លង់ ពិបាក​ក្នុង​ការស្ដាប់ មិន​អាច​និយាយ​បាន ឬ​​មាន​តម្រូវការ​ក្រៅ​ពី​សំឡេង។"<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ស្វែងយល់​បន្ថែម&lt;/a&gt;\n       "<br></br>" - ការហៅ​ទូរសព្ទតាម RTT ត្រូវ​បាន​រក្សាទុក​ជា​ប្រតិចារឹក​សារ "<br></br>" - RTT មិន​អាច​ហៅ​ជា​វីដេអូ​បាន​ទេ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"បិទ TTY"</item>
     <item msgid="3971695875449640648">"TTY ពេញ"</item>

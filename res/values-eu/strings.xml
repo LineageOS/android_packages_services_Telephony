@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Baliteke kostu handiak ordaindu behar izatea."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Eskatu prezioari buruzko informazioa sare-hornitzaileari."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Ibiltaritzako datuak baimendu nahi dituzu?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Datuen erabilera"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Aplikazioak erabilitako datuak"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Datuen <xliff:g id="ID_1">%1$s</xliff:g> erabili dira data hauen artean: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Ezarpen aurreratuak"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operadorea"</string>
@@ -489,7 +489,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Erantzungailuaren zenbakia ezezaguna da"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Ez dago zerbitzurik"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Hautatutako sarea (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) ez dago erabilgarri"</string>
-    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Deitzeko, aktibatu sare mugikorra, desaktibatu hegaldi modua edo desaktibatu bateria aurrezteko modua."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Deitzeko, aktibatu sare mugikorra, desaktibatu hegaldi modua edo desaktibatu bateria-aurrezlea."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Deia egiteko, desaktibatu hegaldi modua."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Deia egiteko, desaktibatu hegaldi modua edo konektatu haririk gabeko sare batera."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Larrialdikoak ez diren deiak egiteko, irten larrialdi-deiak soilik jasotzeko modutik."</string>
@@ -535,8 +535,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Ezin izan da inportatu kontaktua"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Audiofonoak"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Aktibatu audiofonoen bateragarritasuna"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT txata"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Aktibatu edo desaktibatu RTT txata"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Deietan testua bidaltzeko eginbidea"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Baimendu mezuak bidali eta jasotzea ahots-deien barruan"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Deietan testua bidaltzeko eginbideak deitzaile gorrei, entzumen-arazoak dituztenei, hitz egiteko ezintasunen bat dutenei edota ahotsaz gain beste makuluren bat behar dutenei laguntzen die."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lortu informazio gehiago&lt;/a&gt;\n       "<br></br>" - Deietan testua bidaltzeko eginbidearekin egindako deiak mezu-transkripzio gisa gordetzen dira. "<br></br>" - Deietan testua bidaltzeko eginbidea ez da bateragarria bideo-deiekin."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desaktibatuta"</item>
     <item msgid="3971695875449640648">"TTY osoa"</item>

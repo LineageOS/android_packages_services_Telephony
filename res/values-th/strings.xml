@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"คุณอาจต้องเสียค่าใช้จ่ายมาก"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"โปรดสอบถามผู้ให้บริการเครือข่ายสำหรับข้อมูลเกี่ยวกับราคา"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"อนุญาตการโรมมิ่งอินเทอร์เน็ตไหม"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"ปริมาณการใช้อินเทอร์เน็ต"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"การใช้ข้อมูลแอป"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"เน็ตมือถือ <xliff:g id="ID_1">%1$s</xliff:g> ที่ใช้ระหว่าง <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"ขั้นสูง"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ผู้ให้บริการ"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"ไม่สามารถนำเข้ารายชื่อติดต่อ"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"เครื่องช่วยฟัง"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"เปิดการช่วยฟัง"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"เปิดหรือปิด RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"การโทรระบบข้อความแบบเรียลไทม์ (RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"อนุญาตให้รับส่งข้อความระหว่างการโทรด้วยเสียง"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT ช่วยเหลือผู้โทรที่หูหนวก ได้ยินไม่ชัด มีความบกพร่องในการพูด หรือต้องรับฟังเสียงอื่นนอกจากเสียงพูด"<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ดูข้อมูลเพิ่มเติม&lt;/a&gt;\n       "<br></br>" - สาย RTT จะบันทึกในรูปแบบการถอดเสียงเป็นข้อความ "<br></br>" - RTT ใช้ไม่ได้สำหรับวิดีโอคอล"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"ปิด TTY"</item>
     <item msgid="3971695875449640648">"TTY เต็ม"</item>

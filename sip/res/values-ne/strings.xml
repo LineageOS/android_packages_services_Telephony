@@ -23,7 +23,7 @@
     <string name="sip_receive_calls_summary" msgid="946161517528227523">"बढी ब्याट्री आयु खपत गर्छ"</string>
     <string name="sip_call_options_title" msgid="8421210494703869806">"SIP कल प्रयोग गर्नुहोस्"</string>
     <string name="sip_call_options_wifi_only_title" msgid="5112579243580893890">"SIP कल प्रयोग गर्नुहोस् (Wi-Fi मात्र)"</string>
-    <string name="sip_call_options_entry_1" msgid="7217659161237099900">"डेटा नेटवर्क उपलब्धहुँदा सबै कलहरूको लागि"</string>
+    <string name="sip_call_options_entry_1" msgid="7217659161237099900">"डेटा नेटवर्क उपलब्ध हुँदा सबै कलहरूको लागि"</string>
     <string name="sip_call_options_entry_2" msgid="1815335903940609729">"मात्र SIP कलका लागि"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="1358513095551847314">"सबै कलहरूको लागि"</string>
     <string name="add_sip_account" msgid="800843669753980091">"खाता थप्नुहोस्"</string>

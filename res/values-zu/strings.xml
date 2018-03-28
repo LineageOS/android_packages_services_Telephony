@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Iguqula izilungiselelo."</string>
     <string name="response_error" msgid="6674110501330139405">"Impendulo engalindelekile kwinethiwekhi."</string>
     <string name="exception_error" msgid="7027667130619518211">"Iphutha lenethiwekhi noma lekhadi le-SIM."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Isicelo se-SS silungiselwe kusicelo SOKUDAYELA."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Isicelo se-SS silungiselwe kusicelo se-USSD."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Isicelo se-SS silungiselwe kusicelo esisha se-SS."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Isicelo se-SS silungiselwe kusicelo se-DIAL."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"Isicelo se-SS sishintshele kukholi ejwayelekile"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Isicelo se-SS sishintshele kusicelo se-USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Ishintshele kusicelo esisha se-SS"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Isicelo se-SS sishintshele kukholi yevidiyo"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Izilungiselelo zezinombolo zokudayila okukhiyiwe kohlelo lokusebenza lwefoni yakho zikhanyisiwe. Njengomphumela, ezinye izici ezihlobene namakholi azisebenzi."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Sicela uvule umsakazo ngaphambi kokubuka lezi zilungiselelo."</string>
     <string name="close_dialog" msgid="2365884406356986917">"KULUNGILE"</string>
@@ -243,14 +243,12 @@
     <string name="roaming" msgid="7894878421600247140">"Iyazulazula"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Xhuma emasevisini edatha uma uzulazula"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Xhuma emasevisini edatha lapho uzulazula"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Ukuzulazula kwedatha kuvaliwe. Thepha ukuze ukuvule."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Ukuxhumeka kwedatha yeselula kulahlekile"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Ingahle uthole izindleko ezincane."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hlola ngomhlinzeki wakho wenethiwekhi ukuze uthole intengo."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vumela ukuhamba kwedatha?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Ukusebenzisa idatha"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Ukusetshenziswa kwedatha yohlelo lokusebenza"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> kusetshenziswe idatha yeselula engu-<xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Okuthuthukisiwe"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Inkampani yenethiwekhi"</string>
@@ -535,8 +533,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Yehlulekile ukungenisa oxhumana naye"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Izinsiza zokuzwa"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Vula ikhono lensiza yokuzwa"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"I-RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Vula noma vala i-RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Ikholi yombhalo wesikhathi sangempela(RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Vumela ukuthumela imilayezo ngaphakathi kwekholi yezwi"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" I-RTT isiza abashayayo abayizithulu, abenzwa kanzima, abanokukhubazeka kwenkulumo noma abadinga ngaphezulu kwezwi kuphela."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Funda kabanzi&lt;/a&gt;\n       "<br></br>" - Amakholi e-RTT alondolozwa njengokuloba komlayezo "<br></br>" - I-RTT ayitholakali kumakholi evidiyo"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"I-TTY Ivaliwe"</item>
     <item msgid="3971695875449640648">"I-TTY Igcwele"</item>
