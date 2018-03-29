@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"جارٍ إعادة الإعدادات..."</string>
     <string name="response_error" msgid="6674110501330139405">"رد غير متوقع من الشبكة."</string>
     <string name="exception_error" msgid="7027667130619518211">"‏خطأ في الشبكة أو في شريحة SIM"</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"‏تم تعديل طلب SS إلى طلب DIAL."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"‏تم تعديل طلب SS إلى طلب USSD."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"‏تم تعديل طلب SS إلى طلب SS جديد."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"‏تم تعديل طلب SS إلى طلب DIAL فيديو."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"‏تم تغيير طلب SS إلى مكالمة عادية"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"‏تم تغيير طلب SS إلى طلب USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"‏تم التغيير إلى طلب SS جديد"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"‏تم تغيير طلب SS إلى مكالمة فيديو"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"تم تشغيل إعداد أرقام الاتصال الثابتة بالتطبيق المثبت على هاتفك. ونتيجة لذلك، لن تعمل بعض الميزات المرتبطة بالمكالمات."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"شغّل اللاسلكي قبل عرض هذه الإعدادات."</string>
     <string name="close_dialog" msgid="2365884406356986917">"موافق"</string>
@@ -248,7 +248,8 @@
     <string name="roaming_warning" msgid="1603164667540144353">"قد يكلف ذلك رسومًا مرتفعة."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"راجع مقدم الشبكة للتعرف على الأسعار."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"السماح بتجوال البيانات؟"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"استخدام البيانات"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"تم استخدام <xliff:g id="ID_1">%1$s</xliff:g> من بيانات الجوال خلال الفترة بين <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"إعدادات متقدمة"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"مشغل شبكة الجوّال"</string>
@@ -529,8 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"تعذّر استيراد جهة اتصال"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"أدوات السمع المساعدة"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"تشغيل التوافق مع أداة السمع"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"‏تفعيل أو إيقاف RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"مكالمة باستخدام الميزة \"مراسلة نصية في الوقت الفعلي\""</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"السماح بالمراسلة داخل مكالمة صوتية"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" ‏ تعمل الميزة \"مراسلة نصية في الوقت الفعلي\" على مساعدة المتصلين الذين يعانون من فقدان حاسة السمع أو من ضعف في السمع أو ليست لديهم القدرة على التحدث أو يحتاجون إلى ما هو أكثر من الصوت فقط."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;معرفة المزيد&lt;/a&gt;\n       "<br></br>" - يتم حفظ المكالمات التي تتم عن طريق الميزة \"مراسلة نصية في الوقت الفعلي\" كنص رسالة "<br></br>" - لا تتوفر الميزة \"مراسلة نصية في الوقت الفعلي\" لمكالمات الفيديو"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"‏إيقاف تشغيل TTY"</item>
     <item msgid="3971695875449640648">"‏TTY مكتمل"</item>

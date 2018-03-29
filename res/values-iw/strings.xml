@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"מאחזר הגדרות הקודמות…"</string>
     <string name="response_error" msgid="6674110501330139405">"תגובה לא צפויה מהרשת."</string>
     <string name="exception_error" msgid="7027667130619518211">"‏שגיאת רשת או שגיאה של כרטיס SIM."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"‏בקשת SS שונתה לבקשת DIAL."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"‏בקשת SS שונתה לבקשת USSD."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"‏בקשת SS שונתה לבקשת SS חדשה."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"‏בקשת SS שונתה לבקשת Video DIAL."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"‏בקשת SS שונתה לשיחה רגילה"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"‏בקשת SS שונתה לבקשת USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"‏היה שינוי לבקשת SS חדשה"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"‏בקשת SS שונתה לשיחת וידאו"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"הגדרת מספרי החיוג הקבועים של אפליקציית הטלפון שלך מופעלת. כתוצאה מכך, חלק מהתכונות הקשורות לשיחות לא פועלות."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"הפעל את הרדיו לפני ההצגה של הגדרות אלה."</string>
     <string name="close_dialog" msgid="2365884406356986917">"אישור"</string>
@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"ייתכנו שיעורי חיוב גבוהים."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"למידע נוסף על המחירים, יש לפנות לספק השירות."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"האם לאפשר נדידה?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"שימוש בחבילת הגלישה"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"שימוש בחבילת הגלישה דרך אפליקציות"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"השתמשת ב-<xliff:g id="ID_1">%1$s</xliff:g> מחבילת הגלישה בתאריכים <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"הגדרות מתקדמות"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ספק"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"ייבוא איש הקשר נכשל"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"מכשירי שמיעה"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"הפעל תאימות למכשיר שמיעה"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"‏הפעלה או השבתה של RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"‏שיחת RTT (טקסט בזמן אמת)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"אפשר לשלוח הודעות טקסט בזמן שיחה"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" ‏ RTT (טקסט בזמן אמת) היא תכונת נגישות שעוזרת לחרשים, לקויי שמיעה, לקויי דיבור או אנשים שלא יכולים להסתפק רק בשיחות קוליות."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;למידע נוסף&lt;/a&gt;\n       "<br></br>" - שיחות RTT מתומללות ונשמרות כהודעות "<br></br>" - אי אפשר להשתמש ב-RTT לשיחות וידאו"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"‏TTY כבוי"</item>
     <item msgid="3971695875449640648">"‏TTY מלא"</item>

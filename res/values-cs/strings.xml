@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Probíhá vrácení předchozích nastavení…"</string>
     <string name="response_error" msgid="6674110501330139405">"Neočekávaná odpověď sítě."</string>
     <string name="exception_error" msgid="7027667130619518211">"Došlo k chybě sítě nebo SIM karty."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Požadavek SS byl změněn na požadavek DIAL."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Požadavek SS byl změněn na požadavek USSD."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Požadavek SS byl změněn na nový požadavek SS."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Požadavek SS byl změněn na požadavek Video DIAL."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"Požadavek SS byl změněn na běžný hovor"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Požadavek SS byl změněn na požadavek USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Změněno na nový požadavek SS"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Požadavek SS byl změněn na videohovor"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Nastavení Povolených telefonních čísel v aplikaci vašeho telefonu je zapnuto. Z tohoto důvodu nefungují některé funkce spojené s voláním."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Před zobrazením těchto nastavení prosím zapněte bezdrátový modul."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Mohou vám být účtovány vysoké poplatky."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Ceny vám sdělí poskytovatel datových služeb."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Povolit datový roaming?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Využití dat"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Využití dat aplikací"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"V období <xliff:g id="ID_2">%2$s</xliff:g> jste využili <xliff:g id="ID_1">%1$s</xliff:g> mobilních dat"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Rozšířená nastavení"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operátor"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontakt se nepodařilo importovat"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Naslouchátka"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Zapnout režim kompatibility s naslouchátkem"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Zapnout nebo vypnout RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Hovor, během něhož můžete posílat zprávy (RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Povolit posílání zpráv během hlasového hovoru"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Funkce SMS během hovoru (RTT) pomáhá volajícím, kteří neslyší, jsou nedoslýchaví, mají řečovou vadu, případně potřebují víc než jen hlas z jiného důvodu."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Další informace&lt;/a&gt;\n       "<br></br>" – Text poslaný během hovoru se uloží jako přepis zpráv "<br></br>" – Tato funkce není dostupná při  videohovorech"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY vypnuto"</item>
     <item msgid="3971695875449640648">"Úplný režim TTY"</item>

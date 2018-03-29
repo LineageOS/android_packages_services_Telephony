@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Instellingen terugzetten..."</string>
     <string name="response_error" msgid="6674110501330139405">"Onverwachte reactie van netwerk."</string>
     <string name="exception_error" msgid="7027667130619518211">"Netwerk- of simkaartfout."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-verzoek is gewijzigd in DIAL-verzoek."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-verzoek is gewijzigd in USSD-verzoek."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-verzoek is gewijzigd in nieuw SS-verzoek."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS-verzoek is gewijzigd in Video DIAL-verzoek."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS-verzoek gewijzigd in normale oproep"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS-verzoek gewijzigd in USSD-verzoek"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Gewijzigd in nieuw SS-verzoek"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-verzoek gewijzigd in videogesprek"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"De instelling \'Vaste nummers\' in je app Telefoon is ingeschakeld. Hierdoor werken sommige oproepgerelateerde functies niet."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Schakel de radio in voordat je deze instellingen bekijkt."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Beschikbare netwerken"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Zoeken..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Geen netwerken gevonden."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Fout tijdens zoeken naar netwerken."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Kan geen netwerken vinden. Probeer het opnieuw."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Registreren op <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"Je simkaart staat geen verbinding met dit netwerk toe."</string>
     <string name="connect_later" msgid="2308119155752343975">"Kan nu geen verbinding maken met dit netwerk. Probeer het later opnieuw."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"De netwerkgebruiksmodus wijzigen"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Voorkeursnetwerktype"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(niet toegestaan)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Netwerk kiezen"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Verbinding verbroken"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Verbonden"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Verbinding maken..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Kan geen verbinding maken"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Voorkeur voor GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"Alleen GSM"</item>
@@ -238,11 +243,13 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Verbinding maken met gegevensservices tijdens roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Verbinding maken met gegevensservices tijdens roaming"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"De gegevensverbinding is verbroken, omdat je je thuisnetwerk hebt verlaten terwijl dataroaming was uitgeschakeld."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Dataroaming is uitgeschakeld. Tik om in te schakelen."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobiele internetverbinding is verbroken"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Er kunnen hoge roamingkosten in rekening worden gebracht."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Neem contact op met je netwerkprovider over de prijzen."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Dataroaming toestaan?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Datagebruik"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruikt van <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Geavanceerd"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Provider"</string>
@@ -523,8 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kan contact niet importeren"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Gehoorapparaten"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Compatibiliteit voor gehoorapparaat inschakelen"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT in- of uitschakelen"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Realtime tekstoproep (RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Berichten in een spraakoproep toestaan"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT helpt bellers die doof or hardhorend zijn, een spraakbeperking hebben of meer dan alleen een stem nodig hebben."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Meer informatie&lt;/a&gt;\n       "<br></br>" - RTT-gesprekken worden opgeslagen als een berichttranscriptie "<br></br>" - RTT is niet beschikbaar voor videogesprekken"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY uit"</item>
     <item msgid="3971695875449640648">"TTY vol"</item>
