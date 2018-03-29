@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Pode haver cobranças significativas."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Consulte os preços com seu provedor de rede."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permitir roaming de dados?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Uso de dados"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Uso de dados do app"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de dados móveis usados em <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avançadas"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operadora"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Falha ao importar contato"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Aparelhos auditivos"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Ativar compatibilidade com aparelhos auditivos"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Ativar ou desativar RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Chamada com mensagem de texto em tempo real (RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Permitir o envio de mensagens de texto em uma chamada de voz"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" A RTT ajuda os autores das chamadas com deficiências como surdez, dificuldade de audição ou fala ou que precisam de outros recursos além de voz."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saiba mais&lt;/a&gt;\n       "<br></br>" — As chamadas RTT são salvas como transcrições de mensagem "<br></br>" — A RTT não está disponível para videochamadas"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desativado"</item>
     <item msgid="3971695875449640648">"TTY completo"</item>

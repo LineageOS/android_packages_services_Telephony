@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Det kan medføre betydelige kostnader."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Sjekk med nettverksleverandøren din for priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillate roaming?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Databruk"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Appens databruk"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brukt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avansert"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operatør"</string>
@@ -535,8 +535,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kunne ikke importere kontakten"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Høreapparater"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Slå på kompatibilitet med høreapparater"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Slå RTT på eller av"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Sanntidstekst-anrop (STT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Tillat meldingsutveksling i talesamtaler"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" STT hjelper brukere som er døve, tunghørte, har talefunksjonshemninger eller trenger noe mer enn bare tale."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Finn ut mer&lt;/a&gt;\n       "<br></br>" – STT-samtaler lagres som meldingstranskripsjoner "<br></br>" – STT er ikke tilgjengelig for videosamtaler"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY av"</item>
     <item msgid="3971695875449640648">"TTY full"</item>

@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Rétablissement des paramètres…"</string>
     <string name="response_error" msgid="6674110501330139405">"Réponse inattendue du réseau"</string>
     <string name="exception_error" msgid="7027667130619518211">"Erreur de réseau ou de carte SIM."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"La demande SS a été remplacée par une demande DIAL."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"La demande SS a été remplacée par une demande USSD."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"La demande SS a été remplacée par une nouvelle demande SS."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"La demande SS a été remplacée par une demande Video DIAL."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"Demande SS remplacée par un appel ordinaire"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Demande SS remplacée par une demande USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Remplacement par une nouvelle demande SS"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Demande SS remplacée par un appel vidéo"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Les numéros autorisés sont activés dans l\'application de votre téléphone. Par conséquent, certaines fonctionnalités d\'appel ne fonctionnent pas."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Activez le signal radio avant d\'afficher ces paramètres."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -248,7 +248,8 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Des frais importants peuvent s\'appliquer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Communiquez avec votre fournisseur réseau pour connaître les tarifs."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Autoriser les données en itinérance?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Utilisation de données"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de données mobiles utilisées pendant la période suivante : <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avancés"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Opérateur"</string>
@@ -533,8 +534,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Impossible d\'importer le contact"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Assistance auditive"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activer la compatibilité du service d\'assistance auditive"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"Texte en temps réel"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Activer ou désactiver le mode « Texte en temps réel »"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Appel texte en temps réel (TTR)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Autoriser l\'utilisation de la messagerie lors des appels vocaux"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" La fonctionnalité TTR aide les appelants qui sont sourds ou malentendants, qui ont un trouble de la parole ou pour qui la voix ne suffit pas."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;En savoir plus&lt;/a&gt;\n       "<br></br>" - Les appels TTR sont enregistrés en tant que transcriptions de messages "<br></br>" - La fonctionnalité TTR n\'est pas disponible pour les appels vidéo"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY désactivé"</item>
     <item msgid="3971695875449640648">"TTY complet"</item>

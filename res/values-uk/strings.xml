@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Може стягуватися значна плата."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Докладніше про ціни можна дізнатися в оператора мережі."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Дозволити роумінг даних?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Використання трафіку"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Використання трафіку додатками"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> мобільного трафіку використано в період <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Додатково"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Оператор"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Контакт не імпортовано"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Слухові апарати"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Увімкнути функцію НАС"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Увімкнути або вимкнути RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Виклик із передаванням тексту в реальному часі"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Дозволити передавання повідомлень під час голосового виклику"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Функція RTT буде корисною для глухих користувачів або осіб із вадами слуху чи порушенням мовлення, а також тих людей, які не можуть цілком сприйняти голосове повідомлення й потребують додаткових засобів передачі."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Докладніше&lt;/a&gt;\n       "<br></br>" - RTT-виклики зберігаються як транскрибований текст. "<br></br>" - Функція RTT не підтримується для відеодзвінків."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Телетайп вимкнено"</item>
     <item msgid="3971695875449640648">"Повнофункціональний телетайп"</item>

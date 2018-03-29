@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Beállítások visszaállítása..."</string>
     <string name="response_error" msgid="6674110501330139405">"Nem várt válasz a hálózattól."</string>
     <string name="exception_error" msgid="7027667130619518211">"Hiba a hálózatban vagy a SIM-kártyánál."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Az SS-kérés módosítva DIAL-kérésre."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Az SS-kérés módosítva USSD-kérésre."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Az USSD-kérés módosítva új SS-kérésre."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Az SS kérés módosítva Video DIAL kérésre."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"Az SS-kérés módosítva hagyományos hívásra"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Az SS-kérés módosítva USSD-kérésre"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Új SS-kérésre módosítva"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Az SS-kérés módosítva videohívásra"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Telefonja alkalmazásának Fix hívószámok beállítása be van kapcsolva. Ennek eredményeként bizonyos hívásfunkciók nem működnek."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Kapcsolja be a rádiót a beállítások megtekintése előtt."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Lehet, hogy jelentős összeget számítanak fel érte."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Az árakat a szolgáltatótól tudhatja meg."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Engedélyezi az adatbarangolást?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Adathasználat"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Alkalmazás adathasználata"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobiladat felhasználva a következő dátumok között: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Speciális"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Szolgáltató"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Névjegy importálása sikertelen"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Hallókészülékek"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Hallókészülék-kompatibilitás bekapcsolása"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Az RTT be- vagy kikapcsolása"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"RTT-hívás"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Üzenetküldés engedélyezése a hangalapú hívásokban"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Az RTT funkció a siket, hallássérült, beszédzavaros vagy a hangalapú kommunikáción kívül más kommunikációt is igénylő hívóknak lehet segítségére."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;További információ.&lt;/a&gt;\n       "<br></br>" - Az RTT-hívásokat a rendszer üzenetátiratként menti. "<br></br>" - Az RTT funkció nem áll rendelkezésre videohívásokban."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY kikapcsolva"</item>
     <item msgid="3971695875449640648">"Teljes TTY"</item>
