@@ -281,9 +281,7 @@ public class CallFeaturesSetting extends PreferenceActivity
                         addPreferencesFromResource(R.xml.cdma_call_privacy);
                     }
                 } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
-                    if (mPhone.getIccCard() == null || !mPhone.getIccCard().getIccFdnAvailable()) {
-                        prefSet.removePreference(fdnButton);
-                    }
+
                     if (carrierConfig.getBoolean(
                             CarrierConfigManager.KEY_ADDITIONAL_CALL_SETTING_BOOL)) {
                         addPreferencesFromResource(R.xml.gsm_umts_call_options);
