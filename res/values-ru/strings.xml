@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Возврат к предыдущим настройкам…"</string>
     <string name="response_error" msgid="6674110501330139405">"Неожиданный отклик сети."</string>
     <string name="exception_error" msgid="7027667130619518211">"Ошибка сети или SIM-карты."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-запрос преобразован в DIAL-запрос."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-запрос преобразован в USSD-запрос."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-запрос преобразован в новый SS-запрос."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS-запрос преобразован в DIAL-запрос (видео)."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS-запрос преобразован в обычный вызов"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS-запрос преобразован в USSD-запрос"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Преобразовано в SS-запрос"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-запрос преобразован в видеовызов"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Разрешенные номера в приложении \"Телефон\" включены. В результате некоторые функции вызовов недоступны."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Чтобы увидеть настройки, включите приемопередатчик."</string>
     <string name="close_dialog" msgid="2365884406356986917">"ОК"</string>
@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Доступные сети"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Поиск…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Сети не найдены."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Ошибка поиска сетей."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Не удалось найти сети. Повторите попытку."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Регистрация в сети <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"Ваша SIM-карта не поддерживает подключение к этой сети."</string>
     <string name="connect_later" msgid="2308119155752343975">"Не удалось подключиться к сети. Повторите попытку позже."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Изменить режим работы сети"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Тип сети"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(доступ запрещен)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Выбрать сеть"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Подключения нет"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Подключено"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Подключение…"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Не удалось подключиться к сети"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA (предпочтительный режим)"</item>
     <item msgid="8442633436636425221">"Только GSM"</item>
@@ -238,11 +243,12 @@
     <string name="roaming" msgid="7894878421600247140">"Роуминг"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Подключаться к службам передачи данных в роуминге"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Подключаться к службам передачи данных в роуминге"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Мобильный Интернет в роуминге отключен. Вы можете включить интернет-роуминг в настройках."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Интернет-роуминг выключен. Нажмите, чтобы его включить."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Отсутствует подключение к мобильной сети"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Возможны значительные расходы."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Информацию о тарифах вы можете получить у интернет-провайдера."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Разрешить интернет-роуминг?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Передача данных"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Трафик приложения"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Объем мобильного трафика за период <xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Дополнительные настройки"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Оператор"</string>
@@ -525,8 +531,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Не удалось импортировать контакт"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Слуховые аппараты"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Включить поддержку слухового аппарата"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"Текст в режиме реального времени"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Включение и выключение текста в режиме реального времени"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Вызов RTT"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Разрешить обмен сообщениями во время голосового вызова"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Функция RTT предназначена для пользователей с нарушениями слуха и речи."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Подробнее…&lt;/a&gt;\n       "<br></br>"– Вызовы RTT сохраняются как транскрипции."<br></br>"– Функция RTT недоступна при видеовызове."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Телетайп выключен"</item>
     <item msgid="3971695875449640648">"Полнофункциональный телетайп"</item>

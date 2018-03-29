@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Vraćanje podešavanja…"</string>
     <string name="response_error" msgid="6674110501330139405">"Neočekivani odgovor mreže."</string>
     <string name="exception_error" msgid="7027667130619518211">"Greška na mreži ili SIM kartici."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS zahtev je promenjen u DIAL zahtev."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS zahtev je promenjen u USSD zahtev."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS zahtev je promenjen u novi SS zahtev."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS zahtev je promenjen u Video DIAL zahtev."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS zahtev je promenjen u običan poziv"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS zahtev je promenjen u USSD zahtev"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Promenjeno je u novi SS zahtev"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS zahtev je promenjen u video poziv"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Podešavanje Brojeva za fiksno biranje aplikacije Telefon je uključeno. Zbog toga neke funkcije u vezi sa pozivima ne funkcionišu."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Uključite radio pre pregledanja ovih podešavanja."</string>
     <string name="close_dialog" msgid="2365884406356986917">"Potvrdi"</string>
@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Mogu da nastanu značajni troškovi."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Cene proverite kod mobilnog operatera."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Dozvoljavate prenos podataka u romingu?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Upotreba podataka"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Potrošnja podataka aplikacije"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Potrošili ste <xliff:g id="ID_1">%1$s</xliff:g> mobilnih podataka u periodu <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Napredno"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilni operater"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Uvoz kontakta nije uspeo"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Slušni aparat"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Uključi kompatibilnost sa slušnim aparatom"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Uključite ili isključite RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Poziv sa tekstom u realnom vremenu (RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Dozvolite razmenu poruka u audio pozivu"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Tekst u realnom vremenu (RTT) pomaže pozivaocima koji su gluvi, slabo čuju, imaju govorne teškoće ili kojima je potrebno nešto više od glasa."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saznajte više&lt;/a&gt;\n       "<br></br>" – RTT pozivi se čuvaju kao transkript poruke "<br></br>" – RTT nije dostupan za video pozive"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY je isključen"</item>
     <item msgid="3971695875449640648">"TTY je pun"</item>

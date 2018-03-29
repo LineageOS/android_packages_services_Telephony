@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಹಿಂತಿರುಗಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="response_error" msgid="6674110501330139405">"ನೆಟ್‌ವರ್ಕ್‌ನಿಂದ ಅನಿರೀಕ್ಷಿತ ಪ್ರತಿಕ್ರಿಯೆ."</string>
     <string name="exception_error" msgid="7027667130619518211">"ನೆಟ್‌ವರ್ಕ್‌ ಅಥವಾ ಸಿಮ್‌ ಕಾರ್ಡ್‌ ದೋಷ."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS ವಿನಂತಿಯನ್ನು DIAL ವಿನಂತಿಗೆ ಮಾರ್ಪಡಿಸಲಾಗಿದೆ."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS ವಿನಂತಿಯನ್ನು USSD ವಿನಂತಿಗೆ ಮಾರ್ಪಡಿಸಲಾಗಿದೆ."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS ವಿನಂತಿಯನ್ನು ಹೊಸ SS ವಿನಂತಿಗೆ ಮಾರ್ಪಡಿಸಲಾಗಿದೆ."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS ವಿನಂತಿಯನ್ನು ವೀಡಿಯೊ DIAL ವಿನಂತಿಗೆ ಮಾರ್ಪಡಿಸಲಾಗಿದೆ."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS ವಿನಂತಿಯನ್ನು ಸಾಮಾನ್ಯ ಕರೆಗೆ ಬದಲಾಯಿಸಲಾಗಿದೆ"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS ವಿನಂತಿಯನ್ನು USSD ವಿನಂತಿಗೆ ಬದಲಾಯಿಸಲಾಗಿದೆ"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"ಹೊಸ SS ವಿನಂತಿಗೆ ಬದಲಾಯಿಸಲಾಗಿದೆ"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS ವಿನಂತಿಯನ್ನು ವೀಡಿಯೊ ಕರೆಗೆ ಬದಲಾಯಿಸಲಾಗಿದೆ"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"ನಿಮ್ಮ ಫೋನ್‌ ಅಪ್ಲಿಕೇಶನ್‌‌ನ ಸ್ಥಿರ ಡಯಲಿಂಗ್‌‌ ಸಂಖ್ಯೆಗಳ ಸೆಟ್ಟಿಂಗ್‌ ಅನ್ನು ಆನ್‌ ಮಾಡಲಾಗಿದೆ. ಪರಿಣಾಮ, ಕೆಲವು ಕರೆ ಸಂಬಂಧಿತ ವೈಶಿಷ್ಟ್ಯಗಳು ಕಾರ್ಯ ನಿರ್ವಹಿಸುತ್ತಿಲ್ಲ."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"ಈ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸುವ ಮೊದಲು ರೇಡಿಯೋ ಆನ್ ಮಾಡಿ."</string>
     <string name="close_dialog" msgid="2365884406356986917">"ಸರಿ"</string>
@@ -243,14 +243,13 @@
     <string name="roaming" msgid="7894878421600247140">"ರೋಮಿಂಗ್"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"ರೋಮಿಂಗ್‌ನಲ್ಲಿರುವಾಗ ಡೇಟಾ ಸೇವೆಗಳಿಗೆ ಸಂಪರ್ಕಿಸು"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ರೋಮಿಂಗ್‌ನಲ್ಲಿರುವಾಗ ಡೇಟಾ ಸೇವೆಗಳಿಗೆ ಸಂಪರ್ಕಿಸು"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"ಡೇಟಾ ರೋಮಿಂಗ್ ಆಫ್ ಮಾಡಲಾಗಿದೆ. ಆನ್ ಮಾಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"ಮೊಬೈಲ್ ಡೇಟಾ ಸಂಪರ್ಕ ಕಡಿತಗೊಂಡಿದೆ"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"ನೀವು ಗಣನೀಯವಾಗಿ ಶುಲ್ಕಗಳನ್ನು ತೆರಬೇಕಾಗಬಹುದು."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ಬೆಲೆ ನಿಗದಿಗಾಗಿ ನಿಮ್ಮ ನೆಟ್‌ವರ್ಕ್ ಒದಗಿಸುವವರೊಂದಿಗೆ ಪರಿಶೀಲಿಸಿ."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ಡೇಟಾ ರೋಮಿಂಗ್ ಅನುಮತಿಸುವುದೇ?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"ಡೇಟಾ ಬಳಕೆ"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> ಬಳಸಲಾದ ಮೊಬೈಲ್ ಡೇಟಾ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"ಸುಧಾರಿತ"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ವಾಹಕ"</string>
@@ -531,8 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"ಸಂಪರ್ಕ ಆಮದು ಮಾಡುವಲ್ಲಿ ವಿಫಲವಾಗಿದೆ"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"ಕೇಳುವಿಕೆ ಸಾಧನಗಳು"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"ಶ್ರವಣ ಸಾಧನ ಹೊಂದಾಣಿಕೆಯನ್ನು ಆನ್‌ ಮಾಡಿ"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT ಆನ್‌ ಅಥವಾ ಆಫ್‌ ಮಾಡಿ"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"ನೈಜ-ಸಮಯದ ಪಠ್ಯ(RTT) ಕರೆ"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"ಧ್ವನಿ ಕರೆಯ ಒಳಗೆ ಸಂದೇಶ ಕಳುಹಿಸುವಿಕೆಗೆ ಅನುಮತಿಸಿ"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" ಕಿವುಡರು, ಆಲಿಸುವಿಕೆಯ ದೋಷಗಳನ್ನು ಹೊಂದಿದವರು, ಮಾತನಾಡುವಿಕೆಯಲ್ಲಿ ದೋಷಗಳನ್ನು ಹೊಂದಿದವರು ಅಥವಾ ಅಥವಾ ಧ್ವನಿ ಮೀರಿ ಬೇರೆ ರೀತಿಯಲ್ಲಿ ಕರೆ ಮಾಡಲು ಕಠಿಣರಾಗಿರುವವರಿಗೆ RTT ಮೋಡ್ ಸಹಾಯ ಮಾಡುತ್ತದೆ."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ&lt;/a&gt;\n       "<br></br>" - RTT ಕರೆಗಳನ್ನು ಸಂದೇಶ ಪ್ರತಿಲಿಪಿಗಳಂತೆ ಉಳಿಸಲಾಗಿದೆ "<br></br>" - ವೀಡಿಯೊ ಕರೆಗಳಿಗೆ RTT ಲಭ್ಯವಿಲ್ಲ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ಆಫ್"</item>
     <item msgid="3971695875449640648">"TTY ಪೂರ್ಣ"</item>

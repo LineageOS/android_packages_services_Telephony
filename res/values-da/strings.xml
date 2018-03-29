@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Tilbagefører indstillinger …"</string>
     <string name="response_error" msgid="6674110501330139405">"Uventet svar fra netværk."</string>
     <string name="exception_error" msgid="7027667130619518211">"Fejl på netværk eller SIM-kort."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-anmodningen blev ændret til en DIAL-anmodning."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-anmodningen blev ændret til en USSD-anmodning."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-anmodningen blev ændret til en ny SS-anmodning."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS-anmodningen er ændret til en DIAL-anmodning."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS-anmodningen blev ændret til et almindeligt opkald"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS-anmodningen blev ændret til en USSD-anmodning"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Der blev ændret til en SS-anmodning"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-anmodningen blev ændret til et videoopkald"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Indstillingen Begrænset opkald i appen Opkald er aktiveret. Derfor fungerer nogle opkaldsfunktioner ikke."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Tænd radioen, inden du får vist disse indstillinger."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -243,14 +243,13 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Opret forbindelse til datatjenester under roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Opret forbindelse til datatjenester under roaming"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Dataroaming er deaktiveret. Tryk for at aktivere."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobildataforbindelsen blev afbrudt"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Du kan risikere at skulle betale høje gebyrer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakt din netværksudbyder for at få oplyst priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillade dataroaming?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Dataforbrug"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brugt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avanceret"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilselskab"</string>
@@ -537,8 +536,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontaktpersonen kunne ikke importeres"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Høreapparater"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Slå høreapparatskompatibilitet til"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Slå RTT til eller fra"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Opkald via sms i realtid (RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Tillad afsendelse af sms-beskeder i et taleopkald"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT hjælper personer, som er døve, hørehæmmede, talehandicappede, eller som har brug for mere end bare tale, med at foretage opkald."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Få flere oplysninger&lt;/a&gt;\n       "<br></br>" – RTT-opkald gemmes som en beskedtransskription "<br></br>" – RTT er ikke tilgængeligt til videoopkald"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY fra"</item>
     <item msgid="3971695875449640648">"Fuld TTY-tilstand"</item>

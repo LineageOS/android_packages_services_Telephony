@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Sozlamalar tiklanmoqda…"</string>
     <string name="response_error" msgid="6674110501330139405">"Tarmoqdan kutilmagan javob."</string>
     <string name="exception_error" msgid="7027667130619518211">"Tarmoq yoki SIM kartada xato."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS so‘rovi DIAL so‘roviga o‘zgartirildi."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS so‘rovi USSD so‘roviga o‘zgartirildi."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS so‘rovi yangi SS so‘roviga o‘zgartirildi."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS so‘rovi Video DIAL so‘roviga o‘zgartirildi."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS so‘rovi oddiy chaqiruvga o‘zgartirildi"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS so‘rovi USSD so‘roviga o‘zgartirildi"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Yangi SS so‘roviga o‘zgartirildi"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS so‘rovi video chaqiruvga o‘zgartirildi"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Telefon ilovasidagi ruxsat etilgan raqamlar yoqildi. Endim ba’zi qo‘ng‘iroq funksiyalari ishlamay qoladi."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Ushbu sozlamalarni ko‘rishdan oldin radioni yoqing."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -243,14 +243,13 @@
     <string name="roaming" msgid="7894878421600247140">"Rouming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Rouming vaqtida mobil internetga ulanish"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Rouming vaqtida mobil internetga ulanish"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Rouming-internet yoqilmagan. Uni yoqish uchun bosing."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobil internet uzildi"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Xarajati ancha yuqori bo‘lishi mumkin."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Paketlar narxlari haqidagi ma’lumotni internet provayderingizdan olishingiz mumkin."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Internet-roumingga ruxsat berilsinmi?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Trafik sarfi"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> davomida sarflangan mobil trafik: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Kengaytirilgan sozlamalar"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Aloqa operatori"</string>
@@ -531,8 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontaktni import qilib bo‘lmadi"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Eshitish apparatlari"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Eshitish apparatlari bilan ishlash imkoniyatini yoqish"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"Kiritilayotgan matnni real vaqtda ko‘rish funksiyasi"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Kiritilayotgan matnni real vaqtda ko‘rish funksiyasini yoqish yoki o‘chirish"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"RTT chaqiruvi"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Video chaqiruvlar vaqtida xabarlar almashinuviga ruxsat berish"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT kar, eshitish qobiliyati va nutqiy faoliyati buzilgan shaxslarga mo‘ljallangan funksiyadir."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Batafsil&lt;/a&gt;\n "<br></br>"– RTT chaqiruvlari transkripsiya sifatida saqlanadi. "<br></br>"– RTT funksiyasidan video chaqiruvlar vaqtida foydalanib bo‘lmaydi."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Teletayp o‘chiq"</item>
     <item msgid="3971695875449640648">"To‘liq funksiyali teletayp"</item>

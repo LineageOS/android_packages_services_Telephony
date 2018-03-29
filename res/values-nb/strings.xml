@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Tilbakestiller innstillinger ..."</string>
     <string name="response_error" msgid="6674110501330139405">"Uventet svar fra nettverket."</string>
     <string name="exception_error" msgid="7027667130619518211">"Nettverks- eller SIM-kortfeil."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-forespørselen er endret til en DIAL-forespørsel."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-forespørselen er endret til en USSD-forespørsel."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-forespørselen er endret til en ny SS-forespørsel."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS-forespørselen er endret til en Video DIAL-forespørsel."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS-forespørsel endret til vanlig anrop"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS-forespørsel endret til USSD-forespørsel"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Endret til ny SS-forespørsel"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-forespørsel endret til videoanrop"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Telefonappens innstilling for Faste numre er aktivert. Derfor fungerer ikke enkelte av ringefunksjonene."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Slå på radioen før du ser på disse innstillingene."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Tilgjengelige nettverk"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Søker …"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Fant ingen nettverk."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Det oppsto en feil under søking etter nettverk."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Fant ingen nettverk. Prøv på nytt."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Kobler til <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"SIM-kortet tillater ingen tilkobling til dette nettverket."</string>
     <string name="connect_later" msgid="2308119155752343975">"Kan ikke koble til dette nettverket akkurat nå. Prøv på nytt senere."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Bytt nettverksmodus"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Foretrukket nettverkstype"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(forbudt)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Velg nettverk"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Frakoblet"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Tilkoblet"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Kobler til …"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Kunne ikke koble til"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA er foretrukket"</item>
     <item msgid="8442633436636425221">"Bare GSM"</item>
@@ -238,11 +243,12 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Koble til datatjenester ved roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Koble til datatjenester ved roaming"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Du har mistet datatilkoblingen fordi du forlot hjemmenettet med roaming avslått."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Data-roaming er slått av. Trykk for å slå på."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobildatatilkoblingen er tapt"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Det kan medføre betydelige kostnader."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Sjekk med nettverksleverandøren din for priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillate roaming?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Databruk"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Appens databruk"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brukt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avansert"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operatør"</string>
@@ -529,8 +535,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kunne ikke importere kontakten"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Høreapparater"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Slå på kompatibilitet med høreapparater"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Slå RTT på eller av"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Sanntidstekst-anrop (STT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Tillat meldingsutveksling i talesamtaler"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" STT hjelper brukere som er døve, tunghørte, har talefunksjonshemninger eller trenger noe mer enn bare tale."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Finn ut mer&lt;/a&gt;\n       "<br></br>" – STT-samtaler lagres som meldingstranskripsjoner "<br></br>" – STT er ikke tilgjengelig for videosamtaler"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY av"</item>
     <item msgid="3971695875449640648">"TTY full"</item>

@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Po rikthen cilësimet…"</string>
     <string name="response_error" msgid="6674110501330139405">"Përgjigje e papritur nga rrjeti."</string>
     <string name="exception_error" msgid="7027667130619518211">"Gabim në rrjet ose në kartën SIM."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Kërkesa SS është modifikuar në kërkesën DIAL."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Kërkesa SS është modifikuar në kërkesën USSD."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Kërkesa SS është modifikuar në kërkesën e re SS."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Kërkesa SS është modifikuar në kërkesën Video DIAL."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"Kërkesa SS u ndryshua në telefonatë të zakonshme"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Kërkesa SS u ndryshua në kërkesë USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"U ndryshua në kërkesë të re SS"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Kërkesa SS u ndryshua në telefonatë me video"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Cilësimi për numrat me telefonim të përzgjedhur të aplikacionit të telefonit tënd u aktivizua. Si rezultat, disa funksione që kanë të bëjnë me telefonimin nuk funksionojnë."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Aktivizo radion para se të shohësh këto cilësime."</string>
     <string name="close_dialog" msgid="2365884406356986917">"Në rregull"</string>
@@ -243,14 +243,13 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Lidhu me shërbimet e të dhënave kur je në roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Lidhu me shërbimin e të dhënave kur je në roaming"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Roaming për të dhënat është çaktivizuar. Trokit për ta aktivizuar."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Lidhja e të dhënave celulare ka humbur"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Mund të shkaktohen tarifa të larta."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakto me ofruesin e rrjetit për çmimin."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Të lejohet përdorimi i të dhënave kur je në roaming?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Përdorimi i të dhënave"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> të dhëna celulare të përdorura mes datave <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Të përparuara"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operatori celular"</string>
@@ -531,8 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Dështoi në importimin e kontaktit"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Aparatet e dëgjimit"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Aktivizo përputhshmërinë e aparateve të dëgjimit"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Aktivizo ose çaktivizo RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Telefonata me tekst në kohë reale (RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Lejo mesazhet brenda një telefonate zanore"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Funksioni RTT ndihmon telefonuesit që janë të shurdhër, kanë vështirësi me dëgjimin, kanë një aftësi të kufizuar të të folurit ose që kanë nevojë për më shumë se thjesht zërin."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Mëso më shumë&lt;/a&gt;\n       "<br></br>" - Telefonatat RTT ruhen si një transkript mesazhi "<br></br>" - Funksioni RTT nuk ofrohet për telefonatat me video"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY i çaktivizuar"</item>
     <item msgid="3971695875449640648">"TTY i plotë"</item>

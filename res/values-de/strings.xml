@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Einstellungen werden zurückgesetzt..."</string>
     <string name="response_error" msgid="6674110501330139405">"Unerwartete Antwort von Netzwerk"</string>
     <string name="exception_error" msgid="7027667130619518211">"Netzwerk- oder SIM-Kartenfehler."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-Anfrage wurde in DIAL-Anfrage geändert."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-Anfrage wurde in USSD-Anfrage geändert."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-Anfrage wurde in neue SS-Anfrage geändert."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS-Anfrage wurde in Video-DIAL-Anfrage geändert."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS-Anfrage wurde in normalen Anruf geändert"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS-Anfrage wurde in USSD-Anfrage geändert"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"In neue SS-Anfrage geändert"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-Anfrage wurde in Videoanruf geändert"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Da die Anrufbegrenzung in deiner Telefon-App aktiviert ist, funktionieren nicht alle Anruffunktionen."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Aktiviere deine Mobilfunkverbindung, bevor du diese Einstellungen anzeigst."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -243,14 +243,13 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Bei Roaming mit Datendienst verbinden"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Bei Roaming mit Datendienst verbinden"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Daten-Roaming ist deaktiviert. Zum Aktivieren tippen."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Keine mobile Datenverbindung"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Es können hohe Gebühren anfallen."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Wende dich an deinen Netzwerkanbieter, um Preisinformationen zu erhalten."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Daten-Roaming zulassen?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Datennutzung"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"Im Zeitraum <xliff:g id="ID_2">%2$s</xliff:g> genutzte mobile Daten: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Erweitert"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilfunkanbieter"</string>
@@ -535,8 +534,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Fehler beim Importieren des Kontakts"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Hörhilfen"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Hörhilfekompatibilität aktivieren"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT aktivieren/deaktivieren"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"RTT-Anruf"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Nachrichten in Sprachanrufen erlauben"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Echtzeittext (Real-Time Text, RTT) dient als Unterstützung für Anrufer, die gehörlos, schwerhörig oder sprachgeschädigt sind oder zusätzlich zur gesprochenen Sprache weitere Informationen benötigen."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Weitere Informationen&lt;/a&gt;\n       "<br></br>" – RTT-Anrufe werden als Nachrichtentranskripte gespeichert "<br></br>" – RTT ist nicht für Videoanrufe verfügbar"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY aus"</item>
     <item msgid="3971695875449640648">"TTY (vollständig)"</item>

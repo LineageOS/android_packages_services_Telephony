@@ -73,7 +73,7 @@
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"সমস্ত কলিং অ্যাকাউন্ট"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"কোন অ্যাকাউন্টগুলি কল করতে পারবে তা বেছে নিন"</string>
     <string name="wifi_calling" msgid="739018212480165598">"ওয়াই-ফাই কলিং"</string>
-    <string name="connection_service_default_label" msgid="1498481943805913754">"বিল্ট-ইন সংযোগ পরিষেবা"</string>
+    <string name="connection_service_default_label" msgid="1498481943805913754">"অন্তর্ভুক্ত সংযোগ পরিষেবা"</string>
     <string name="voicemail" msgid="8693759337917898954">"ভয়েসমেল"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"ভয়েসমেল (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"সেটিংসের প্রত্যাবর্তন করা হচ্ছে…"</string>
     <string name="response_error" msgid="6674110501330139405">"নেটওয়ার্ক থেকে অপ্রত্যাশিত প্রতিক্রিয়া৷"</string>
     <string name="exception_error" msgid="7027667130619518211">"নেটওয়ার্ক বা সিম কার্ড ত্রুটি৷"</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS অনুরোধটিকে DIAL অনুরোধে রুপান্তরিত করা হয়েছে৷"</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS অনুরোধটিকে USSD অনুরোধে রুপান্তরিত করা হয়েছে৷"</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS অনুরোধটিকে নতুন SS অনুরোধে রুপান্তরিত করা হয়েছে৷"</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS অনুরোধটিকে ভিডিও DIAL অনুরোধে পরিবর্তন করা হয়েছে।"</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS অনুরোধটি সাধারণ কলে পরিবর্তন করা হয়েছে"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS অনুরোধটি USSD অনুরোধে পরিবর্তন করা হয়েছে"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"নতুন SS অনুরোধে পরিবর্তন করা হয়েছে"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS অনুরোধটি ভিডিও কলে পরিবর্তন করা হয়েছে"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"আপনার ফোন অ্যাপ্লিকেশনের স্থায়ী ডায়ালের নাম্বারগুলির সেটিং চালু করা হয়েছে৷ এর ফলে, কিছু কিছু কল সংক্রান্ত বৈশিষ্ট্য কাজ করছে না৷"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"এই সেটিংস দেখার পূর্বে রেডিওটি চালু করুন৷"</string>
     <string name="close_dialog" msgid="2365884406356986917">"ঠিক আছে"</string>
@@ -243,14 +243,13 @@
     <string name="roaming" msgid="7894878421600247140">"রোমিং"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"রোমিংয়ে থাকাকালীন ডেটা পরিষেবাগুলির সাথে সংযোগ স্থাপন করুন"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"রোমিংয়ে থাকাকালীন ডেটা পরিষেবাগুলির সাথে সংযোগ স্থাপন করুন"</string>
-    <!-- no translation found for roaming_reenable_message (6843814381576397939) -->
-    <skip />
-    <!-- no translation found for roaming_notification_title (4749053220884743110) -->
-    <skip />
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"ডেটা রোমিং বন্ধ আছে। চালু করতে ট্যাপ করুন।"</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"মোবাইল ডেটার কানেকশন কেটে গেছে"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"আপনাকে উল্লেখযোগ্য পরিমাণে চার্জ করা হতে পারে৷"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"খরচের বিষয়ে জানতে নেটওয়ার্ক প্রদানকারীর সাথে যোগাযোগ করুন।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ডেটা রোমিংয়ের অনুমতি দেবেন?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"ডেটার ব্যবহার"</string>
+    <!-- no translation found for data_usage_title (4042209259808900283) -->
+    <skip />
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> এর মধ্যে <xliff:g id="ID_1">%1$s</xliff:g> মোবাইল ডেটা ব্যবহার করা হয়েছে"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"উন্নত"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"পরিষেবা প্রদানকারী"</string>
@@ -531,8 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"পরিচিতি আমদানি করতে ব্যর্থ হয়েছে"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"শ্রবণ যন্ত্রগুলি"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"শ্রবণ যন্ত্র উপযুক্ততা চালু করুন"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT চালু বা বন্ধ করুন"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"রিয়েল-টাইম টেক্সট(RTT) কল"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"ভয়েস কলে মেসেজ পাঠানোর অনুমতি দিন"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" যে কলাররা বধির, কানে কম শোনেন, যাদের কথা বলতে অসুবিধা হয় অথবা যারা কণ্ঠস্বরের সাথে অন্য কোনও উপায়ে নিজেদের প্রকাশ করেন, RTT বৈশিষ্ট্যটি তাদের সাহায্য করে।"<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;আরও জানুন&lt;/a&gt;\n       "<br></br>" - RTT কলগুলি মেসেজ ট্রান্সক্রিপ্ট হিসেবে সেভ করে রাখা হয় "<br></br>" - ভিডিও কলে RTT বৈশিষ্ট্য ব্যবহার করা যায় না"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY বন্ধ"</item>
     <item msgid="3971695875449640648">"TTY পূর্ণ"</item>
@@ -599,7 +599,7 @@
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN সেট করুন"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"পিন পরিবর্তন করুন"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"রিংটোন ও কম্পন"</string>
-    <string name="pstn_connection_service_label" msgid="1743245930577325900">"বিল্ট-ইন সিম কার্ডগুলি"</string>
+    <string name="pstn_connection_service_label" msgid="1743245930577325900">"অন্তর্ভুক্ত সিম কার্ডগুলি"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"ভিডিও কলিং চালু করুন"</string>
     <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"ভিডিও কলিং চালু করতে আপনাকে নেটওয়ার্ক সেটিংস-এ উন্নত 4G LTE মোড সক্ষম করতে হবে৷"</string>
     <string name="enable_video_calling_dialog_settings" msgid="576528473599603249">"নেটওয়ার্ক সেটিংস"</string>
