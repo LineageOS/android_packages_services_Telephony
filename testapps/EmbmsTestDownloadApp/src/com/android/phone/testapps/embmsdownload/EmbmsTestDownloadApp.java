@@ -38,8 +38,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -184,6 +184,7 @@ public class EmbmsTestDownloadApp extends Activity {
     private FileServiceInfoAdapter mFileServiceInfoAdapter;
     private DownloadRequestAdapter mDownloadRequestAdapter;
     private ImageAdapter mImageAdapter;
+    private boolean mIsTempDirExternal = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,12 +209,26 @@ public class EmbmsTestDownloadApp extends Activity {
             mDownloadManager = MbmsDownloadSession.create(this, mHandler::post, mCallback);
         });
 
-        Button setTempFileRootButton = (Button) findViewById(R.id.set_temp_root_button);
-        setTempFileRootButton.setOnClickListener((view) -> {
+        Button setTempFileRootButtonExternal =
+                (Button) findViewById(R.id.set_temp_root_button_external);
+        setTempFileRootButtonExternal.setOnClickListener((view) -> {
+            File downloadDir = new File(EmbmsTestDownloadApp.this.getExternalFilesDir(null),
+                    CUSTOM_EMBMS_TEMP_FILE_LOCATION);
+            downloadDir.mkdirs();
+            mDownloadManager.setTempFileRootDirectory(downloadDir);
+            mIsTempDirExternal = true;
+            Toast.makeText(EmbmsTestDownloadApp.this,
+                    "temp file root set to " + downloadDir, Toast.LENGTH_SHORT).show();
+        });
+
+        Button setTempFileRootButtonInternal =
+                (Button) findViewById(R.id.set_temp_root_button_internal);
+        setTempFileRootButtonInternal.setOnClickListener((view) -> {
             File downloadDir = new File(EmbmsTestDownloadApp.this.getFilesDir(),
                     CUSTOM_EMBMS_TEMP_FILE_LOCATION);
             downloadDir.mkdirs();
             mDownloadManager.setTempFileRootDirectory(downloadDir);
+            mIsTempDirExternal = false;
             Toast.makeText(EmbmsTestDownloadApp.this,
                     "temp file root set to " + downloadDir, Toast.LENGTH_SHORT).show();
         });
@@ -254,14 +269,13 @@ public class EmbmsTestDownloadApp extends Activity {
                 SideChannel.requestSpuriousTempFiles(EmbmsTestDownloadApp.this,
                         (FileServiceInfo) serviceSelector.getSelectedItem()));
 
-        NumberPicker downloadDelayPicker = (NumberPicker) findViewById(R.id.delay_factor);
-        downloadDelayPicker.setMinValue(1);
-        downloadDelayPicker.setMaxValue(50);
+        EditText downloadDelay = findViewById(R.id.delay_factor);
+        downloadDelay.setText(String.valueOf(5));
 
         Button delayDownloadButton = (Button) findViewById(R.id.delay_download_button);
         delayDownloadButton.setOnClickListener((view) ->
                 SideChannel.delayDownloads(EmbmsTestDownloadApp.this,
-                        downloadDelayPicker.getValue()));
+                        Integer.valueOf(downloadDelay.getText().toString())));
 
         final Spinner downloadRequestSpinner = (Spinner) findViewById(R.id.active_downloads);
         downloadRequestSpinner.setAdapter(mDownloadRequestAdapter);
@@ -432,14 +446,15 @@ public class EmbmsTestDownloadApp extends Activity {
 
     private Uri getDestination(String serviceId) {
         File dest;
+        File baseDir = mIsTempDirExternal ? getExternalFilesDir(null) : getFilesDir();
         try {
             if (serviceId.contains("2")) {
-                dest = new File(getFilesDir().getCanonicalFile(), "images/animals/");
+                dest = new File(baseDir.getCanonicalFile(), "images/animals/");
                 if (!dest.exists()) {
                     dest.mkdirs();
                 }
             } else {
-                dest = new File(getFilesDir().getCanonicalFile(), "images/");
+                dest = new File(baseDir.getCanonicalFile(), "images/");
                 if (!dest.exists()) {
                     dest.mkdirs();
                 }
