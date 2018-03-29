@@ -521,13 +521,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     @Override
     public void onPause() {
         super.onPause();
-
-        synchronized (mToneGeneratorLock) {
-            if (mToneGenerator != null) {
-                mToneGenerator.release();
-                mToneGenerator = null;
-            }
-        }
     }
 
     @Override
@@ -663,7 +656,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
             // blur stuff behind the dialog
             dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
-            dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+            setShowWhenLocked(true);
         }
         return dialog;
     }
