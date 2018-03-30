@@ -248,8 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Es können hohe Gebühren anfallen."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Wende dich an deinen Netzwerkanbieter, um Preisinformationen zu erhalten."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Daten-Roaming zulassen?"</string>
-    <!-- no translation found for data_usage_title (4042209259808900283) -->
-    <skip />
+    <string name="data_usage_title" msgid="4042209259808900283">"Datennutzung durch Apps"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Im Zeitraum <xliff:g id="ID_2">%2$s</xliff:g> genutzte mobile Daten: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Erweitert"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilfunkanbieter"</string>
@@ -514,6 +513,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Während eines Notrufs ist das Wechseln in den Flugmodus nicht möglich."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Anruf nicht möglich. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ist keine Notrufnummer."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Anruf nicht möglich. Wähle eine Notrufnummer."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Zum Wählen Tastatur verwenden"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Halten"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Ende"</string>
@@ -534,9 +535,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Fehler beim Importieren des Kontakts"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Hörhilfen"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Hörhilfekompatibilität aktivieren"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"RTT-Anruf"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Nachrichten in Sprachanrufen erlauben"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Echtzeittext (Real-Time Text, RTT) dient als Unterstützung für Anrufer, die gehörlos, schwerhörig oder sprachgeschädigt sind oder zusätzlich zur gesprochenen Sprache weitere Informationen benötigen."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Weitere Informationen&lt;/a&gt;\n       "<br></br>" – RTT-Anrufe werden als Nachrichtentranskripte gespeichert "<br></br>" – RTT ist nicht für Videoanrufe verfügbar"</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY aus"</item>
     <item msgid="3971695875449640648">"TTY (vollständig)"</item>
