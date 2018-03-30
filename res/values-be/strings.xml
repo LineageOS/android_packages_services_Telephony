@@ -127,14 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Вяртанне налад..."</string>
     <string name="response_error" msgid="6674110501330139405">"Нечаканы адказ ад сеткі."</string>
     <string name="exception_error" msgid="7027667130619518211">"Памылка сеткі ці SIM-карты."</string>
-    <!-- no translation found for stk_cc_ss_to_dial_error (4440038807310535377) -->
-    <skip />
-    <!-- no translation found for stk_cc_ss_to_ussd_error (6095812685884176176) -->
-    <skip />
-    <!-- no translation found for stk_cc_ss_to_ss_error (7920654012697945858) -->
-    <skip />
-    <!-- no translation found for stk_cc_ss_to_dial_video_error (3873905132181743781) -->
-    <skip />
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS-запыт заменены на стандартны выклік"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS-запыт заменены на USSD-запыт"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Зроблена замена на новы SS-запыт"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-запыт заменены на відэавыклік"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Уключаны дазволеныя нумары. У выніку некаторыя функцыі адносна званкоў не працуюць."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Перад праглядам гэтых параметраў уключыце радыё."</string>
     <string name="close_dialog" msgid="2365884406356986917">"ОК"</string>
@@ -252,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Гэта можа прывесці да значных выдаткаў."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Праверце цану ў свайго інтэрнэт-правайдара."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Дазволіць перадачу даных у роўмінгу?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Выкарыстанне даных"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Выкарыстанне трафіка"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> мабільнага трафіку выкарыстана ў перыяд <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Пашыраныя налады"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Аператар"</string>
@@ -533,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Не ўдалося імпартаваць кантакт"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Слыхавы апарат"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Уключыць функцыю сумяшчальнасці са слыхавым апаратам"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Уключыць або выключыць RTT"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Выклік з тэкстам у рэальным часе (RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Дазволіць абмен паведамленнямі ў галасавых выкліках"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT дапамагае абанентам з парушэннямі слыху і маўлення."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Даведацца больш&lt;/a&gt;\n       "<br></br>" – RTT-выклікі захоўваюцца ў выглядзе расшыфроўкі паведамленняў. "<br></br>" – Функцыя RTT недаступная для відэавыклікаў."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Тэлетайп выключаны"</item>
     <item msgid="3971695875449640648">"Поўнафункцыянальны тэлетайп"</item>

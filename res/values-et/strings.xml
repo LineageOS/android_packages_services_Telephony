@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Lisanduda võivad suured tasud."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hinnakirja küsige oma võrguteenuse pakkujalt."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Kas lubada andmeside rändlus?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Andmekasutus"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Rakenduse andmekasutus"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Vahemikus <xliff:g id="ID_2">%2$s</xliff:g> on kasutatud <xliff:g id="ID_1">%1$s</xliff:g> mobiilset andmesidet"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Täpsemad"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operaator"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontakti importimine ebaõnnestus"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Kuuldeaparaadid"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Lülita kuuldeaparaadi ühilduvus sisse"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT sisse- või väljalülitamine"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Reaalajas teksti saatmise (RTT) kõne"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Häälkõnes sõnumside lubamine"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT aitab kurte, kuulmis- või kõnepuudega helistajaid või neid, kes vajavad lisaks häälele muud abi."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lisateave&lt;/a&gt;\n       "<br></br>" – RTT-kõned salvestatakse sõnumi trankriptsioonina "<br></br>" – RTT pole saadaval videokõnede puhul"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY väljas"</item>
     <item msgid="3971695875449640648">"TTY-täisrežiim"</item>

@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"You may incur significant charges."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Check with your network provider for pricing."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Allow data roaming?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Data usage"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"App data usage"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobile data used <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Advanced"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operator"</string>
@@ -529,8 +529,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Failed to import contact"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Hearing aids"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Turn on hearing-aid compatibility"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Turn RTT on or off"</string>
+    <string name="rtt_mode_title" msgid="1708730804251975602">"Real-time text(RTT) call"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Allow messaging within a voice call"</string>
+    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT assists callers who are deaf, hard of hearing, have a speech disability or need more than voice alone."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Learn more&lt;/a&gt;\n       "<br></br>" – RTT calls are saved as a message transcript "<br></br>" – RTT is not available for video calls"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY off"</item>
     <item msgid="3971695875449640648">"TTY full"</item>
