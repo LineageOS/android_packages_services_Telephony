@@ -248,8 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"તમારાથી આંશિક શુલ્ક લઈ શકાય છે."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"કિંમત માટે તમારા નેટવર્ક પ્રદાતા સાથે તપાસો."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ડેટા રોમિંગને મંજૂરી આપીએ?"</string>
-    <!-- no translation found for data_usage_title (4042209259808900283) -->
-    <skip />
+    <string name="data_usage_title" msgid="4042209259808900283">"ઍપ ડેટા વપરાશ"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> મોબાઇલ ડેટાનો ઉપયોગ <xliff:g id="ID_2">%2$s</xliff:g> ના રોજ સુધી કરવામાં આવ્યો"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"વિગતવાર"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"કૅરિઅર"</string>
@@ -510,6 +509,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"કટોકટીના કૉલ દરમિયાન એરપ્લેન મોડમાં દાખલ થઈ શકતાં નથી."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"કૉલ કરી શકાતો નથી. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> એ કટોકટીનો નંબર નથી."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"કૉલ કરી શકાતો નથી. કટોકટીનો નંબર ડાયલ કરો!"</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ડાયલ કરવા માટે કીબોર્ડનો ઉપયોગ કરો"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"હોલ્ડ કરો"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"સમાપ્ત"</string>
@@ -530,9 +531,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"સંપર્ક આયાત કરવામાં નિષ્ફળ થયાં"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"સાંભળવામાં સહાયતા"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"સાંભળવામાં સહાયતા સુસંગતતા ચાલુ કરો"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"રિઅલ-ટાઇમ ટેક્સ્ટ(RTT) કૉલ"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"વૉઇસ કૉલ અંતર્ગત સંદેશ મોકલવાની મંજૂરી આપો"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT બહેરા, સાંભળવા અને બોલવામાં મુશ્કેલી પડતી હોય અથવા વધુ મોટા અવાજની જરૂર હોય એવા કૉલરની સહાય કરે છે."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;વધુ જાણો&lt;/a&gt;\n       "<br></br>" - RTT કૉલને સંદેશ ટ્રાન્સક્રિપ્ટ તરીકે સાચવવામાં આવે છે "<br></br>" - RTT વીડિઓ કૉલ માટે ઉપલબ્ધ નથી"</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY બંધ"</item>
     <item msgid="3971695875449640648">"TTY સંપૂર્ણ"</item>
