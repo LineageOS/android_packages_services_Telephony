@@ -248,8 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Du kan risikere at skulle betale høje gebyrer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakt din netværksudbyder for at få oplyst priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillade dataroaming?"</string>
-    <!-- no translation found for data_usage_title (4042209259808900283) -->
-    <skip />
+    <string name="data_usage_title" msgid="4042209259808900283">"Appens dataforbrug"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brugt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avanceret"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilselskab"</string>
@@ -516,6 +515,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Flytilstand kan ikke slås til under et nødopkald."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Kan ikke ringe op. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> er ikke et alarmnummer."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Kan ikke ringe op. Ring til et alarmnummer."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Brug tastatur til at ringe op"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Hold"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Afslut"</string>
@@ -536,9 +537,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontaktpersonen kunne ikke importeres"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Høreapparater"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Slå høreapparatskompatibilitet til"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"Opkald via sms i realtid (RTT)"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Tillad afsendelse af sms-beskeder i et taleopkald"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT hjælper personer, som er døve, hørehæmmede, talehandicappede, eller som har brug for mere end bare tale, med at foretage opkald."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Få flere oplysninger&lt;/a&gt;\n       "<br></br>" – RTT-opkald gemmes som en beskedtransskription "<br></br>" – RTT er ikke tilgængeligt til videoopkald"</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY fra"</item>
     <item msgid="3971695875449640648">"Fuld TTY-tilstand"</item>

@@ -513,6 +513,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Lentokonetilaa ei voi ottaa käyttöön hätäpuhelun aikana."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Puhelua ei voi soittaa. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ei ole hätänumero."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Puhelua ei voi soittaa. Valitse hätänumero."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Valitse numero näppäimistöstä"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Pitoon"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Loppu"</string>
@@ -533,9 +535,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontaktin tuominen epäonnistui"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Kuulolaitteet"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Ota kuulolaitteen yhteensopivuustoiminto käyttöön"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"RTT-puhelu (puhelusta lähetettävä teksti)"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Salli viestit äänipuheluissa"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT-toiminto auttaa kuuroja sekä käyttäjiä, joilla on kuulo‑ tai puhehäiriöitä tai jotka tarvitsevat muuta tukea pelkän puheen lisäksi."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lisätietoja&lt;/a&gt;\n       "<br></br>" – RTT-puhelut tallennetaan transkriptioviestinä. "<br></br>" – RTT ei ole käytettävissä videopuheluissa."</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY pois käytöstä"</item>
     <item msgid="3971695875449640648">"TTY täynnä"</item>
