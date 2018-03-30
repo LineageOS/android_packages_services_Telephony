@@ -509,6 +509,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"No es pot activar el mode d\'avió durant una trucada d\'emergència."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"No es pot trucar. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> no és un número d\'emergència."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"No es pot trucar. Marca un número d\'emergència."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Utilitzeu el teclat per marcar"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Posa en espera"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Final"</string>
@@ -529,9 +531,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Error en importar el contacte"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Audiòfons"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activa la compatibilitat amb audiòfons"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"Trucada de text en temps real (RTT)"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permet l\'ús de missatges en una trucada de veu"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" La funció RTT ofereix assistència als usuaris que són sords, tenen problemes d\'audició o alteracions de la parla, o bé que necessiten un text a banda de la veu."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Més informació&lt;/a&gt;\n       "<br></br>" - Les trucades RTT es desen en forma de transcripció. "<br></br>" - Aquesta funció no està disponible per a videotrucades."</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desactivat"</item>
     <item msgid="3971695875449640648">"TTY complet"</item>

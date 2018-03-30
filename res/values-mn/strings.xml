@@ -248,8 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Таны төлбөр өндөр гарах магадлалтайг анхааруулж байна."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Үнийг нь өөрийн сүлжээний нийлүүлэгчээс шалгана уу."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Дата роуминг үйлчилгээг идэвхжүүлэх үү?"</string>
-    <!-- no translation found for data_usage_title (4042209259808900283) -->
-    <skip />
+    <string name="data_usage_title" msgid="4042209259808900283">"Аппын дата ашиглалт"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> мобайл дата ашигласан <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Нарийвчилсан"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Оператор компани"</string>
@@ -510,6 +509,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Яаралтай дуудлагын дундуур нислэгийн горимд шилжих боломжгүй."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Дуудлага хийх боломжгүй. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> нь түргэн тусламжийн дугаар биш байна."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Дуудлага хийх боломжгүй. Түргэн тусламжийн дугаар луу залга."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Залгахдаа гар ашиглах"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Саатуулах"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Дуусгах"</string>
@@ -530,9 +531,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Харилцагчийн жагсаалтыг импортолж чадсангүй"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Сонсголын төхөөрөмж"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Сонсголын төхөөрөмж тааруулагчийг асаана уу"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"Шууд мессежлэх (RTT) дуудлага"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Дуудлагын дотор зурвас бичихийг зөвшөөрөх"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT нь дүлий, хатуу чихтэй, хэл ярианы хөгжлийн бэрхшээлтэй, эсвэл хэн нэгний тусламжтай ярьдаг дуудлага хийгчдэд тусладаг."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Дэлгэрэнгүй үзэх&lt;/a&gt;\n       "<br></br>" - RTT дуудлага нь зурвасын сийрүүлэг хэлбэрээр хадгалагдана "<br></br>" - RTT нь видео дуудлага хийхэд боломжгүй"</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Унтраасан"</item>
     <item msgid="3971695875449640648">"TTY Дүүрэн"</item>

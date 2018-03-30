@@ -248,8 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Des frais importants peuvent s\'appliquer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Vérifiez le tarif auprès de votre opérateur."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Autoriser l\'itinérance des données ?"</string>
-    <!-- no translation found for data_usage_title (4042209259808900283) -->
-    <skip />
+    <string name="data_usage_title" msgid="4042209259808900283">"Consommation des données par les applications"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de données mobiles utilisées pendant la période suivante : <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Paramètres avancés"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Opérateur"</string>
@@ -510,6 +509,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Vous ne pouvez pas activer le mode Avion au cours d\'un appel d\'urgence."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Impossible d\'émettre l\'appel. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> n\'est pas un numéro d\'urgence."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Impossible d\'émettre l\'appel. Veuillez composer un numéro d\'urgence."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Utilisez le clavier pour composer un numéro."</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"En attente"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Raccrocher"</string>
@@ -530,9 +531,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Échec de l\'importation du contact."</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Assistance auditive"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activer la compatibilité avec les prothèses auditives"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"Appel texte en temps réel"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Autoriser l\'échange de messages pendant les appels vocaux"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" La fonctionnalité de texte en temps réel vient en aide aux personnes sourdes, malentendantes, qui ont un trouble de la parole, ou qui ont besoin d\'une transcription en plus de la voix."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;En savoir plus&lt;/a&gt;\n       "<br></br>" - Les appels texte en temps réel sont enregistrés sous forme de transcription "<br></br>" - Le mode texte en temps réel n\'est pas disponible pour les appels vidéo"</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Mode TTY désactivé"</item>
     <item msgid="3971695875449640648">"TTY complet"</item>
