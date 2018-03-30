@@ -15,6 +15,7 @@
  */
 package com.android.phone;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -60,7 +61,7 @@ import java.util.Map;
 public class NetworkSelectSetting extends PreferenceFragment {
 
     private static final String TAG = "NetworkSelectSetting";
-    private static final boolean DBG = true;
+    private static final boolean DBG = false;
 
     private static final int EVENT_NETWORK_SELECTION_DONE = 1;
     private static final int EVENT_NETWORK_SCAN_RESULTS = 2;
@@ -132,6 +133,12 @@ public class NetworkSelectSetting extends PreferenceFragment {
         // Inflate progress bar
         final Activity activity = getActivity();
         if (activity != null) {
+            ActionBar actionBar = activity.getActionBar();
+            if (actionBar != null) {
+                // android.R.id.home will be triggered in
+                // {@link NetworkSelectSettingAcitivity#onOptionsItemSelected()}
+                actionBar.setDisplayHomeAsUpEnabled(true);
+            }
             mFrameLayout = activity.findViewById(R.id.choose_network_content);
             final LayoutInflater inflater = activity.getLayoutInflater();
             final View pinnedHeader =
@@ -256,13 +263,13 @@ public class NetworkSelectSetting extends PreferenceFragment {
 
                     ar = (AsyncResult) msg.obj;
                     if (ar.exception != null) {
-                        mNetworkOperators.displayNetworkSelectionFailed(ar.exception);
+                        if (DBG) logd("manual network selection: failed! ");
+                        updateNetworkSelection();
                         // Set summary as "Couldn't connect" to the selected network.
                         mSelectedNetworkOperatorPreference.setSummary(
                                 R.string.network_could_not_connect);
                     } else {
                         if (DBG) logd("manual network selection: succeeded! ");
-                        mNetworkOperators.displayNetworkSelectionSucceeded(msg.arg1);
                         // Set summary as "Connected" to the selected network.
                         mSelectedNetworkOperatorPreference.setSummary(R.string.network_connected);
                     }
@@ -290,7 +297,6 @@ public class NetworkSelectSetting extends PreferenceFragment {
                 case EVENT_NETWORK_SCAN_COMPLETED:
                     stopNetworkQuery();
                     if (DBG) logd("scan complete");
-                    setProgressBarVisible(false);
                     if (mCellInfoList == null) {
                         // In case the scan timeout before getting any results
                         addMessagePreference(R.string.empty_networks_list);
@@ -608,6 +614,22 @@ public class NetworkSelectSetting extends PreferenceFragment {
             // unbind the service.
             getContext().unbindService(mNetworkQueryServiceConnection);
             mShouldUnbind = false;
+        }
+    }
+
+    /**
+     * Call {@link NotificationMgr#updateNetworkSelection(int, int)} to send notification about
+     * no service of user selected operator
+     */
+    private void updateNetworkSelection() {
+        if (DBG) logd("Update notification about no service of user selected operator");
+        final PhoneGlobals app = PhoneGlobals.getInstance();
+        Phone phone = PhoneFactory.getPhone(mPhoneId);
+        if (phone != null) {
+            ServiceState ss = mTelephonyManager.getServiceStateForSubscriber(phone.getSubId());
+            if (ss != null) {
+                app.notificationMgr.updateNetworkSelection(ss.getState(), phone.getSubId());
+            }
         }
     }
 
