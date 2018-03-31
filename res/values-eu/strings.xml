@@ -515,6 +515,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Ezin da erabili hegaldi modua larrialdi-deietan."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Ezin da deitu. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ez da larrialdietarako zenbakia."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Ezin da deitu. Markatu larrialdietarako zenbakia."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Erabili teklatua markatzeko"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Utzi zain"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Amaitu"</string>
@@ -535,9 +537,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Ezin izan da inportatu kontaktua"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Audiofonoak"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Aktibatu audiofonoen bateragarritasuna"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"Deietan testua bidaltzeko eginbidea"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Baimendu mezuak bidali eta jasotzea ahots-deien barruan"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Deietan testua bidaltzeko eginbideak deitzaile gorrei, entzumen-arazoak dituztenei, hitz egiteko ezintasunen bat dutenei edota ahotsaz gain beste makuluren bat behar dutenei laguntzen die."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lortu informazio gehiago&lt;/a&gt;\n       "<br></br>" - Deietan testua bidaltzeko eginbidearekin egindako deiak mezu-transkripzio gisa gordetzen dira. "<br></br>" - Deietan testua bidaltzeko eginbidea ez da bateragarria bideo-deiekin."</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desaktibatuta"</item>
     <item msgid="3971695875449640648">"TTY osoa"</item>

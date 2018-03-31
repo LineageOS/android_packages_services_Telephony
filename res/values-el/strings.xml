@@ -248,8 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Ενδέχεται να επιβαρυνθείτε με σημαντικές χρεώσεις."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Επικοινωνήστε με τον πάροχο του δικτύου για τις τιμές."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Να επιτρέπεται η περιαγωγή δεδομένων;"</string>
-    <!-- no translation found for data_usage_title (4042209259808900283) -->
-    <skip />
+    <string name="data_usage_title" msgid="4042209259808900283">"Χρήση δεδομένων εφαρμογής"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> δεδομένα κινητής τηλεφωνίας σε χρήση μεταξύ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Σύνθετες ρυθμίσεις"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Εταιρεία κινητής τηλεφωνίας"</string>
@@ -510,6 +509,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Δεν είναι δυνατή η ενεργοποίηση της λειτουργίας πτήσης κατά τη διάρκεια μιας κλήσης έκτακτης ανάγκης."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Δεν είναι δυνατή η κλήση. Το <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> δεν είναι αριθμός έκτακτης ανάγκης."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Δεν είναι δυνατή η κλήση. Πληκτρολογήστε έναν αριθμό έκτακτης ανάγκης."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Χρησιμοποιήστε το πληκτρολόγιο για να πραγματοποιήσετε καλέσετε έναν αριθμό"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Αναμονή"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Τέλος"</string>
@@ -530,9 +531,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Αποτυχία εισαγωγής επαφής"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Βοηθήματα ακρόασης"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Ενεργοποίηση συμβατότητας βοηθήματος ακρόασης"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"Κλήση με αποστολή κειμένου σε πραγματικό χρόνο (RTT)"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Να επιτρέπεται η ανταλλαγή μηνυμάτων σε μια φωνητική κλήση"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" Η λειτουργία RTT υποβοηθά καλούντες που αντιμετωπίζουν προβλήματα ακοής ή ομιλίας ή θέλουν κάτι περισσότερο από απλή φωνητική επικοινωνία."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Μάθετε περισσότερα&lt;/a&gt;\n       "<br></br>" - Οι κλήσεις RTT αποθηκεύονται ως μεταγραφές μηνυμάτων "<br></br>" - Η λειτουργία RTT δεν είναι διαθέσιμο για βιντεοκλήσεις"</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Απενεργοποιήθηκε"</item>
     <item msgid="3971695875449640648">"TTY Full"</item>
