@@ -77,7 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"वॉयस मेल"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"वॉइसमेल (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"नोटिफ़िकेशन"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"सूचनाएं"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"आपातकालीन प्रसारण"</string>
     <string name="call_settings" msgid="6112441768261754562">"कॉल सेटिंग"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"अतिरिक्त सेटिंग"</string>
@@ -248,8 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"आपको बहुत अधिक शुल्‍क देना पड़ सकता है."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"कीमतों की जानकारी के लिए आपको नेटवर्क सेवा देने वाली कंपनी से संपर्क करें."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिंग की अनुमति दें?"</string>
-    <!-- no translation found for data_usage_title (4042209259808900283) -->
-    <skip />
+    <string name="data_usage_title" msgid="4042209259808900283">"ऐप्लिकेशन का डेटा खर्च"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> में <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा का उपयोग किया गया"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"उन्नत"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"वाहक"</string>
@@ -510,6 +509,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"आपातकालीन कॉल के दौरान हवाई जहाज़ मोड चालू नहीं किया जा सकता."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"कॉल नहीं किया जा सकता. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> एक आपातकालीन नंबर नहीं है."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"कॉल नहीं किया जा सकता. आपातकालीन नबर डायल करें."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"डायल करने के लिए कीबोर्ड का उपयोग करें"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"होल्ड करें"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"समाप्त"</string>
@@ -530,9 +531,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"संपर्क आयात करने में विफल"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"श्रवण सहायक साधन"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवण सहायक साधन संगतता चालू करें"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"रीयल-टाइम में मैसेज भेजना (आरटीटी) कॉल"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"वॉइस कॉल में मैसेज भेजने की अनुमति दें"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" आरटीटी कॉल करने वाले ऐसे लोगों की मदद करता है, जो बधिर हैं, ऊंचा सुनते हैं या मूक है या जिनके लिए सिर्फ़ आवाज़ काफ़ी नहीं होती."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;अधिक जानें&lt;/a&gt;\n       "<br></br>" - आरटीटी कॉल मैसेज, लेख के रूप में सेव किए जाते हैं "<br></br>" - वीडियो कॉल के लिए आरटीटी उपलब्ध नहीं है"</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बंद"</item>
     <item msgid="3971695875449640648">"TTY पूर्ण"</item>

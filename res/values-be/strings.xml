@@ -509,6 +509,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Немагчыма ўвайсцi ў рэжым палёту падчас экстранага выклiку"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Выклік немагчымы. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> не з\'яўляецца нумарам экстраннай службы."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Выклік немагчымы. Набраць нумар экстраннай службы."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Выкарыстоўвайце клавіятуру, каб набраць нумар"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Утрымліваць"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Скончыць"</string>
@@ -529,9 +531,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Не ўдалося імпартаваць кантакт"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Слыхавы апарат"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Уключыць функцыю сумяшчальнасці са слыхавым апаратам"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"Выклік з тэкстам у рэальным часе (RTT)"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Дазволіць абмен паведамленнямі ў галасавых выкліках"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT дапамагае абанентам з парушэннямі слыху і маўлення."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Даведацца больш&lt;/a&gt;\n       "<br></br>" – RTT-выклікі захоўваюцца ў выглядзе расшыфроўкі паведамленняў. "<br></br>" – Функцыя RTT недаступная для відэавыклікаў."</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Тэлетайп выключаны"</item>
     <item msgid="3971695875449640648">"Поўнафункцыянальны тэлетайп"</item>

@@ -88,9 +88,9 @@ public class NetworkOperators extends PreferenceCategory
         mChooseNetwork = findPreference(BUTTON_CHOOSE_NETWORK_KEY);
         mNetworkSelect = (NetworkSelectListPreference) findPreference(BUTTON_NETWORK_SELECT_KEY);
         if (mEnableNewManualSelectNetworkUI) {
-            this.removePreference(mNetworkSelect);
+            removePreference(mNetworkSelect);
         } else {
-            this.removePreference(mChooseNetwork);
+            removePreference(mChooseNetwork);
         }
         mProgressDialog = new ProgressDialog(getContext());
     }
@@ -113,7 +113,7 @@ public class NetworkOperators extends PreferenceCategory
             if (mChooseNetwork != null) {
                 TelephonyManager telephonyManager = (TelephonyManager)
                         getContext().getSystemService(Context.TELEPHONY_SERVICE);
-                logd("data connection status " + telephonyManager.getDataState());
+                if (DBG) logd("data connection status " + telephonyManager.getDataState());
                 if (telephonyManager.getDataState() == telephonyManager.DATA_CONNECTED) {
                     mChooseNetwork.setSummary(telephonyManager.getNetworkOperatorName());
                 } else {
@@ -139,7 +139,7 @@ public class NetworkOperators extends PreferenceCategory
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mAutoSelect) {
             boolean autoSelect = (Boolean) newValue;
-            logd("onPreferenceChange autoSelect: " + String.valueOf(autoSelect));
+            if (DBG) logd("onPreferenceChange autoSelect: " + String.valueOf(autoSelect));
             selectNetworkAutomatic(autoSelect);
             MetricsLogger.action(getContext(),
                     MetricsEvent.ACTION_MOBILE_NETWORK_AUTO_SELECT_NETWORK_TOGGLE, autoSelect);
@@ -196,7 +196,6 @@ public class NetworkOperators extends PreferenceCategory
                         }
                     }
             }
-
             return;
         }
     };
@@ -241,7 +240,7 @@ public class NetworkOperators extends PreferenceCategory
     }
 
     private void selectNetworkAutomatic(boolean autoSelect) {
-        logd("selectNetworkAutomatic: " + String.valueOf(autoSelect));
+        if (DBG) logd("selectNetworkAutomatic: " + String.valueOf(autoSelect));
         if (mEnableNewManualSelectNetworkUI) {
             if (mChooseNetwork != null) {
                 mChooseNetwork.setEnabled(!autoSelect);
@@ -309,7 +308,7 @@ public class NetworkOperators extends PreferenceCategory
 
     protected boolean preferenceTreeClick(Preference preference) {
         if (mEnableNewManualSelectNetworkUI) {
-            logd("enable New AutoSelectNetwork UI");
+            if (DBG) logd("enable New AutoSelectNetwork UI");
             if (preference == mChooseNetwork) {
                 openChooseNetworkPage();
             }

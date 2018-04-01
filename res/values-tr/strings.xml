@@ -509,6 +509,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Acil durum çağrısı sırasında uçak moduna geçilemez."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Aranamıyor. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> bir acil durum numarası değil."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Aranamıyor. Bir acil durum numarasını arayın."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Çevirmek için klavyeyi kullan"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Beklet"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Sonlandır"</string>
@@ -529,9 +531,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kişi içe aktarılamadı"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"İşitme cihazları"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"İşitme cihazı uyumluluğunu aç"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"Gerçek zamanlı mesaj (RTT) çağrısı"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Sesli aramada mesajlaşmaya izin verilir"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT; tam veya kısmi işitme engelli, konuşma engeli olan veya sesten fazlasına ihtiyaç duyan arayanlara yardımcı olur."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Daha fazla bilgi&lt;/a&gt;\n       "<br></br>" - RTT çağrıları, mesaj çeviri yazısı olarak kaydedilir "<br></br>" - RTT, görüntülü görüşmelerde kullanılamaz"</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Kapalı"</item>
     <item msgid="3971695875449640648">"TTY Tam"</item>
