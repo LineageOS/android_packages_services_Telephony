@@ -249,8 +249,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Көп акча төлөп калышыңыз мүмкүн."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Бааларын байланыш операторуңуздан сурашыңыз керек."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Интернет-роумингди иштетесизби?"</string>
-    <!-- no translation found for data_usage_title (4042209259808900283) -->
-    <skip />
+    <string name="data_usage_title" msgid="4042209259808900283">"Колдонмолордун трафиги"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> аралыгында <xliff:g id="ID_1">%1$s</xliff:g> мобилдик трафик колдонулду"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Өркүндөтүлгөн"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Байланыш оператору"</string>
@@ -513,6 +512,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Шашылыш чалуу учурунда учак режимине өтүүгө болбойт."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Чалынбай жатат. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> өзгөчө кырдаал номери эмес."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Чалынбай жатат. Өзгөчө кырдаалдар кызматынын номерин териңиз."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Баскычтоп менен териңиз"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Күттүрүү"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Бүтүрүү"</string>
@@ -533,9 +534,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Байланыш импорттолбой калды"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Угуу аппараты"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Угуу аппаратын колдоого алуу"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"Чалуу учурунда анык убакыттагы билдирүү(RTT)"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Үн чалуунун учурунда жазышууга уруксат берүү"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT функциясы угуу жана сүйлөө жөндөмдүүлүгү бузулган адамдарга арналат."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Кеңири маалымат&lt;/a&gt;\n       "<br></br>" - RTT функциясында чалуулар транскрипциялар катары сакталат "<br></br>" - RTT функациясы видео чалууда жеткиликсиз болот"</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Телетайп түзмөгү өчүк"</item>
     <item msgid="3971695875449640648">"Телетайп түзмөгү толуп калды"</item>

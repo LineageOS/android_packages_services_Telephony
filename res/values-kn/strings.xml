@@ -248,8 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"ನೀವು ಗಣನೀಯವಾಗಿ ಶುಲ್ಕಗಳನ್ನು ತೆರಬೇಕಾಗಬಹುದು."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ಬೆಲೆ ನಿಗದಿಗಾಗಿ ನಿಮ್ಮ ನೆಟ್‌ವರ್ಕ್ ಒದಗಿಸುವವರೊಂದಿಗೆ ಪರಿಶೀಲಿಸಿ."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ಡೇಟಾ ರೋಮಿಂಗ್ ಅನುಮತಿಸುವುದೇ?"</string>
-    <!-- no translation found for data_usage_title (4042209259808900283) -->
-    <skip />
+    <string name="data_usage_title" msgid="4042209259808900283">"ಅಪ್ಲಿಕೇಶನ್‌ ಡೇಟಾ ಬಳಕೆ"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> ಬಳಸಲಾದ ಮೊಬೈಲ್ ಡೇಟಾ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"ಸುಧಾರಿತ"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ವಾಹಕ"</string>
@@ -510,6 +509,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"ತುರ್ತು ಕರೆ ಸಮಯದಲ್ಲಿ ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್‌ಗೆ ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ಇದು ತುರ್ತು ಸಂಖ್ಯೆಯಲ್ಲ."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ. ತುರ್ತು ಸಂಖ್ಯೆಯನ್ನು ಡಯಲ್ ಮಾಡಿ."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ಡಯಲ್‌ ಮಾಡಲು ಕೀಬೋರ್ಡ್‌ ಬಳಸಿ"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ಹೋಲ್ಡ್‌‌ ಮಾಡು"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ಮುಕ್ತಾಯ"</string>
@@ -530,9 +531,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"ಸಂಪರ್ಕ ಆಮದು ಮಾಡುವಲ್ಲಿ ವಿಫಲವಾಗಿದೆ"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"ಕೇಳುವಿಕೆ ಸಾಧನಗಳು"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"ಶ್ರವಣ ಸಾಧನ ಹೊಂದಾಣಿಕೆಯನ್ನು ಆನ್‌ ಮಾಡಿ"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"ನೈಜ-ಸಮಯದ ಪಠ್ಯ(RTT) ಕರೆ"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ಧ್ವನಿ ಕರೆಯ ಒಳಗೆ ಸಂದೇಶ ಕಳುಹಿಸುವಿಕೆಗೆ ಅನುಮತಿಸಿ"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" ಕಿವುಡರು, ಆಲಿಸುವಿಕೆಯ ದೋಷಗಳನ್ನು ಹೊಂದಿದವರು, ಮಾತನಾಡುವಿಕೆಯಲ್ಲಿ ದೋಷಗಳನ್ನು ಹೊಂದಿದವರು ಅಥವಾ ಅಥವಾ ಧ್ವನಿ ಮೀರಿ ಬೇರೆ ರೀತಿಯಲ್ಲಿ ಕರೆ ಮಾಡಲು ಕಠಿಣರಾಗಿರುವವರಿಗೆ RTT ಮೋಡ್ ಸಹಾಯ ಮಾಡುತ್ತದೆ."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ&lt;/a&gt;\n       "<br></br>" - RTT ಕರೆಗಳನ್ನು ಸಂದೇಶ ಪ್ರತಿಲಿಪಿಗಳಂತೆ ಉಳಿಸಲಾಗಿದೆ "<br></br>" - ವೀಡಿಯೊ ಕರೆಗಳಿಗೆ RTT ಲಭ್ಯವಿಲ್ಲ"</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ಆಫ್"</item>
     <item msgid="3971695875449640648">"TTY ಪೂರ್ಣ"</item>

@@ -248,8 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Xarajati ancha yuqori bo‘lishi mumkin."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Paketlar narxlari haqidagi ma’lumotni internet provayderingizdan olishingiz mumkin."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Internet-roumingga ruxsat berilsinmi?"</string>
-    <!-- no translation found for data_usage_title (4042209259808900283) -->
-    <skip />
+    <string name="data_usage_title" msgid="4042209259808900283">"Ilova sarflagan trafik"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> davomida sarflangan mobil trafik: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Kengaytirilgan sozlamalar"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Aloqa operatori"</string>
@@ -275,7 +274,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> maksimal darajadan oshib ketdi\nTrafik tezligi <xliff:g id="USED_1">%2$d</xliff:g> Kb/s’ga pasaydi"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ o‘tgan bosqichdan\nKeyingi bosqich <xliff:g id="USED_1">%2$d</xliff:g> kunda boshlanadi (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Agar trafik sarfi cheklovdan oshsa, ma’lumot uzatish tezligi <xliff:g id="USED">%1$d</xliff:g> Kb/s’ga pasayadi"</string>
-    <string name="throttle_help_subtext" msgid="5217706521499010816">"Tarmoq operatoringizning uyali tarmoq ma’lumotidan foydalanish siyosati haqida ko‘proq ma’lumot"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Aloqa operatoringizning mobil internetdan foydalanish siyosati haqida batafsil"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Uyali tarmoqdagi SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"Uyali tarmoqdagi SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"Uyali tarmoqdagi SMS yoqilb qo‘yilgan"</string>
@@ -510,6 +509,8 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Favqulodda qo‘ng‘iroq paytida parvoz rejimiga o‘tkazib bo‘lmaydi."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Qo‘ng‘iroq qilib bo‘lmadi. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> favqulodda raqam emas."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Qo‘ng‘iroq qilib bo‘lmadi. Favqulodda raqamga tering."</string>
+    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Terish uchun tugmatagdan foydalaning"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Ushlab turish"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Tugatish"</string>
@@ -530,9 +531,11 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontaktni import qilib bo‘lmadi"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Eshitish apparatlari"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Eshitish apparatlari bilan ishlash imkoniyatini yoqish"</string>
-    <string name="rtt_mode_title" msgid="1708730804251975602">"RTT chaqiruvi"</string>
+    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
+    <skip />
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Video chaqiruvlar vaqtida xabarlar almashinuviga ruxsat berish"</string>
-    <string name="rtt_mode_more_information" msgid="4813402527238286052">" RTT kar, eshitish qobiliyati va nutqiy faoliyati buzilgan shaxslarga mo‘ljallangan funksiyadir."<br></br>" &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Batafsil&lt;/a&gt;\n "<br></br>"– RTT chaqiruvlari transkripsiya sifatida saqlanadi. "<br></br>"– RTT funksiyasidan video chaqiruvlar vaqtida foydalanib bo‘lmaydi."</string>
+    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Teletayp o‘chiq"</item>
     <item msgid="3971695875449640648">"To‘liq funksiyali teletayp"</item>
