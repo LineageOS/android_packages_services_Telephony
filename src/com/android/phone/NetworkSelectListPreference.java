@@ -33,11 +33,6 @@ import android.telephony.CellInfoCdma;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoLte;
 import android.telephony.CellInfoWcdma;
-import android.telephony.CellSignalStrengthCdma;
-import android.telephony.CellSignalStrengthGsm;
-import android.telephony.CellSignalStrengthLte;
-import android.telephony.CellSignalStrengthWcdma;
-import android.telephony.NetworkScan;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.BidiFormatter;
@@ -70,8 +65,7 @@ public class NetworkSelectListPreference extends ListPreference
 
     private static final int EVENT_NETWORK_SELECTION_DONE = 1;
     private static final int EVENT_NETWORK_SCAN_RESULTS = 2;
-    private static final int EVENT_NETWORK_SCAN_ERROR = 3;
-    private static final int EVENT_NETWORK_SCAN_COMPLETED = 4;
+    private static final int EVENT_NETWORK_SCAN_COMPLETED = 3;
 
     //dialog ids
     private static final int DIALOG_NETWORK_SELECTION = 100;
@@ -83,7 +77,6 @@ public class NetworkSelectListPreference extends ListPreference
 
     private int mSubId;
     private NetworkOperators mNetworkOperators;
-    private boolean mNeedScanAgain;
 
     private ProgressDialog mProgressDialog;
     public NetworkSelectListPreference(Context context, AttributeSet attrs) {
@@ -98,8 +91,10 @@ public class NetworkSelectListPreference extends ListPreference
     @Override
     protected void onClick() {
         sendMetricsEvent(null);
-        // Scan the network with setting the isIncrementalResult as true via TelephonyManager first.
-        loadNetworksList(true);
+        // Start the one-time network scan via {@link Phone#getAvailableNetworks()}.
+        // {@link NetworkQueryService will return a {@link onResults()} callback first with a list
+        // of CellInfo, and then will return a {@link onComplete} indicating the scan completed.
+        loadNetworksList();
     }
 
     private final Handler mHandler = new Handler() {
@@ -132,86 +127,22 @@ public class NetworkSelectListPreference extends ListPreference
                 case EVENT_NETWORK_SCAN_RESULTS:
                     List<CellInfo> results = (List<CellInfo>) msg.obj;
                     results.removeIf(cellInfo -> cellInfo == null);
-                    if (results.size() > 0) {
-                        boolean isInvalidCellInfoList = true;
-                        // Regard the list as invalid only if all the elements in the list are
-                        // invalid.
-                        for (CellInfo cellInfo : results) {
-                            if (!isInvalidCellInfo(cellInfo)) {
-                                isInvalidCellInfoList = false;
-                                break;
-                            }
-                        }
-                        if (isInvalidCellInfoList) {
-                            mNeedScanAgain = true;
-                            if (DBG) {
-                                logd("Invalid cell info. Stop current network scan "
-                                        + "and start a new one via old API");
-                            }
-                            // Stop current network scan flow. This behavior will result in a
-                            // onComplete() callback, after which we will start a new network query
-                            // via Phone.getAvailableNetworks(). This behavior might also result in
-                            // a onError() callback if the modem did not stop network query
-                            // successfully. In this case we will display network query failed
-                            // instead of resending a new request.
-                            try {
-                                if (mNetworkQueryService != null) {
-                                    mNetworkQueryService.stopNetworkQuery();
-                                }
-                            } catch (RemoteException e) {
-                                loge("exception from stopNetworkQuery " + e);
-                            }
-                        } else {
-                            // TODO(b/70530820): Display the scan results incrementally after
-                            // finalizing the UI desing on Mobile Network Setting page. For now,
-                            // just update the CellInfo list when received the onResult callback,
-                            // and display the scan result when received the onComplete callback
-                            // in the end.
-                            mCellInfoList = new ArrayList<>(results);
-                            if (DBG) logd("CALLBACK_SCAN_RESULTS" + mCellInfoList.toString());
-                        }
-                    }
+                    mCellInfoList = new ArrayList<>(results);
+                    if (DBG) logd("CALLBACK_SCAN_RESULTS" + mCellInfoList.toString());
 
-                    break;
-
-                case EVENT_NETWORK_SCAN_ERROR:
-                    int error = msg.arg1;
-                    if (DBG) logd("error while querying available networks " + error);
-                    if (error == NetworkScan.ERROR_UNSUPPORTED) {
-                        if (DBG) {
-                            logd("Modem does not support: try to scan network again via Phone");
-                        }
-                        loadNetworksList(false);
-                    } else {
-                        try {
-                            if (mNetworkQueryService != null) {
-                                mNetworkQueryService.unregisterCallback(mCallback);
-                            }
-                        } catch (RemoteException e) {
-                            loge("onError: exception from unregisterCallback " + e);
-                        }
-                        displayNetworkQueryFailed(error);
-                    }
                     break;
 
                 case EVENT_NETWORK_SCAN_COMPLETED:
-                    if (mNeedScanAgain) {
-                        logd("CellInfo is invalid to display. Start a new scan via Phone. ");
-                        loadNetworksList(false);
-                        mNeedScanAgain = false;
-                    } else {
-                        try {
-                            if (mNetworkQueryService != null) {
-                                mNetworkQueryService.unregisterCallback(mCallback);
-                            }
-                        } catch (RemoteException e) {
-                            loge("onComplete: exception from unregisterCallback " + e);
+                    try {
+                        if (mNetworkQueryService != null) {
+                            mNetworkQueryService.unregisterCallback(mCallback);
                         }
-                        if (DBG) logd("scan complete, load the cellInfosList");
-                        // Modify UI to indicate users that the scan has completed.
-                        networksListLoaded();
+                    } catch (RemoteException e) {
+                        loge("onComplete: exception from unregisterCallback " + e);
                     }
-                    break;
+                    if (DBG) logd("scan complete, load the cellInfosList");
+                    // Modify UI to indicate users that the scan has completed.
+                    networksListLoaded();
             }
             return;
         }
@@ -224,7 +155,7 @@ public class NetworkSelectListPreference extends ListPreference
      */
     private final INetworkQueryServiceCallback mCallback = new INetworkQueryServiceCallback.Stub() {
 
-        /** Returns the scan results to the user, this callback will be called at lease one time. */
+        /** Returns the scan results to the user, this callback will be called only one time. */
         public void onResults(List<CellInfo> results) {
             if (DBG) logd("get scan results.");
             Message msg = mHandler.obtainMessage(EVENT_NETWORK_SCAN_RESULTS, results);
@@ -244,16 +175,9 @@ public class NetworkSelectListPreference extends ListPreference
         }
 
         /**
-         * Informs the user that there is some error about the scan.
-         *
-         * This callback will be called whenever there is any error about the scan, and the scan
-         * will be terminated. onComplete() will NOT be called.
+         * This callback will not be called, since the old Scan API won't send this callback.
          */
-        public void onError(int error) {
-            if (DBG) logd("get onError callback with error code: " + error);
-            Message msg = mHandler.obtainMessage(EVENT_NETWORK_SCAN_ERROR, error, 0 /* arg2 */);
-            msg.sendToTarget();
-        }
+        public void onError(int error) {}
     };
 
     @Override
@@ -298,7 +222,6 @@ public class NetworkSelectListPreference extends ListPreference
         mNetworkOperators = networkOperators;
         // This preference should share the same progressDialog with networkOperators category.
         mProgressDialog = progressDialog;
-        mNeedScanAgain = false;
 
         if (SubscriptionManager.isValidSubscriptionId(mSubId)) {
             mPhoneId = SubscriptionManager.getPhoneId(mSubId);
@@ -361,17 +284,14 @@ public class NetworkSelectListPreference extends ListPreference
                 NotificationMgr.NETWORK_SELECTION_NOTIFICATION, status);
     }
 
-    private void loadNetworksList(boolean isIncrementalResult) {
+    private void loadNetworksList() {
         if (DBG) logd("load networks list...");
 
-        if (!mNeedScanAgain) {
-            // Avoid blinking while showing the dialog again.
-            showProgressDialog(DIALOG_NETWORK_LIST_LOAD);
-        }
+        showProgressDialog(DIALOG_NETWORK_LIST_LOAD);
 
         try {
             if (mNetworkQueryService != null) {
-                mNetworkQueryService.startNetworkQuery(mCallback, mPhoneId, isIncrementalResult);
+                mNetworkQueryService.startNetworkQuery(mCallback, mPhoneId, false);
             } else {
                 displayNetworkQueryFailed(NetworkQueryService.QUERY_EXCEPTION);
             }
@@ -399,7 +319,6 @@ public class NetworkSelectListPreference extends ListPreference
         }
 
         setEnabled(true);
-
         if (mCellInfoList != null) {
             // create a preference for each item in the list.
             // just use the operator name instead of the mildly
@@ -552,46 +471,6 @@ public class NetworkSelectListPreference extends ListPreference
             oi = new OperatorInfo("", "", "");
         }
         return oi;
-    }
-
-
-    /**
-     * Check if the CellInfo is valid to display. If a CellInfo has signal strength but does
-     * not have operator info, it is invalid to display.
-     */
-    private boolean isInvalidCellInfo(CellInfo cellInfo) {
-        if (DBG) logd("Check isInvalidCellInfo: " + cellInfo.toString());
-        CharSequence al = null;
-        CharSequence as = null;
-        boolean hasSignalStrength = false;
-        if (cellInfo instanceof CellInfoLte) {
-            CellInfoLte lte = (CellInfoLte) cellInfo;
-            al = lte.getCellIdentity().getOperatorAlphaLong();
-            as = lte.getCellIdentity().getOperatorAlphaShort();
-            hasSignalStrength = !lte.getCellSignalStrength().equals(new CellSignalStrengthLte());
-        } else if (cellInfo instanceof CellInfoWcdma) {
-            CellInfoWcdma wcdma = (CellInfoWcdma) cellInfo;
-            al = wcdma.getCellIdentity().getOperatorAlphaLong();
-            as = wcdma.getCellIdentity().getOperatorAlphaShort();
-            hasSignalStrength = !wcdma.getCellSignalStrength().equals(
-                    new CellSignalStrengthWcdma());
-        } else if (cellInfo instanceof CellInfoGsm) {
-            CellInfoGsm gsm = (CellInfoGsm) cellInfo;
-            al = gsm.getCellIdentity().getOperatorAlphaLong();
-            as = gsm.getCellIdentity().getOperatorAlphaShort();
-            hasSignalStrength = !gsm.getCellSignalStrength().equals(new CellSignalStrengthGsm());
-        } else if (cellInfo instanceof CellInfoCdma) {
-            CellInfoCdma cdma = (CellInfoCdma) cellInfo;
-            al = cdma.getCellIdentity().getOperatorAlphaLong();
-            as = cdma.getCellIdentity().getOperatorAlphaShort();
-            hasSignalStrength = !cdma.getCellSignalStrength().equals(new CellSignalStrengthCdma());
-        } else {
-            return true;
-        }
-        if (TextUtils.isEmpty(al) && TextUtils.isEmpty(as) && hasSignalStrength) {
-            return true;
-        }
-        return false;
     }
 
     @Override
