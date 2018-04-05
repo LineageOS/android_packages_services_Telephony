@@ -274,7 +274,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> maksimal darajadan oshib ketdi\nTrafik tezligi <xliff:g id="USED_1">%2$d</xliff:g> Kb/s’ga pasaydi"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ o‘tgan bosqichdan\nKeyingi bosqich <xliff:g id="USED_1">%2$d</xliff:g> kunda boshlanadi (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Agar trafik sarfi cheklovdan oshsa, ma’lumot uzatish tezligi <xliff:g id="USED">%1$d</xliff:g> Kb/s’ga pasayadi"</string>
-    <string name="throttle_help_subtext" msgid="5217706521499010816">"Tarmoq operatoringizning uyali tarmoq ma’lumotidan foydalanish siyosati haqida ko‘proq ma’lumot"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Aloqa operatoringizning mobil internetdan foydalanish siyosati haqida batafsil"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Uyali tarmoqdagi SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"Uyali tarmoqdagi SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"Uyali tarmoqdagi SMS yoqilb qo‘yilgan"</string>

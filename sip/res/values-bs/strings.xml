@@ -65,7 +65,7 @@
     <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;Nije postavljeno&gt;"</string>
     <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;Nije postavljeno&gt;"</string>
     <string name="display_name_summary" msgid="7155076491675565407">"&lt;Isto kao korisničko ime&gt;"</string>
-    <string name="optional_summary" msgid="2363105560396317624">"&lt;Opcionalno&gt;"</string>
+    <string name="optional_summary" msgid="2363105560396317624">"&lt;Nije obavezno&gt;"</string>
     <string name="advanced_settings_show" msgid="7838761602853998622">"▷ Dodirnite da prikažete sve"</string>
     <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ Dodirnite da sakrijete sve"</string>
     <string name="all_empty_alert" msgid="4087734950375192387">"Unesite detalje novog SIP računa."</string>
