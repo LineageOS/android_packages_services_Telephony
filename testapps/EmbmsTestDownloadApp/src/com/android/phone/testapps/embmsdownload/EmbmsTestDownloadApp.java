@@ -427,7 +427,7 @@ public class EmbmsTestDownloadApp extends Activity {
         if (info.getServiceId().contains("2")) {
             sourceUriBuilder.path("/*");
         } else {
-            sourceUriBuilder.path("/image.png");
+            sourceUriBuilder.path("/sunAndTree.png");
         }
 
         Intent completionIntent = new Intent(DOWNLOAD_DONE_ACTION);
