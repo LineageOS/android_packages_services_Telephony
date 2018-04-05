@@ -43,6 +43,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
     private static final String BUTTON_TTY_KEY = "button_tty_mode_key";
     private static final String BUTTON_HAC_KEY = "button_hac_key";
     private static final String BUTTON_RTT_KEY = "button_rtt_key";
+    private static final String RTT_INFO_PREF = "button_rtt_more_information_key";
 
     private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
         /**
@@ -109,6 +110,8 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             mButtonRtt.setChecked(rttOn);
         } else {
             getPreferenceScreen().removePreference(mButtonRtt);
+            Preference rttInfoPref = findPreference(RTT_INFO_PREF);
+            getPreferenceScreen().removePreference(rttInfoPref);
             mButtonRtt = null;
         }
     }
