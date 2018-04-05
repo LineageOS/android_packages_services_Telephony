@@ -19,12 +19,11 @@ package com.android.phone.settings;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.preference.SwitchPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
-import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionManager;
@@ -105,8 +104,8 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
         if (PhoneGlobals.getInstance().phoneMgr.isRttSupported()) {
             // TODO: this is going to be a on/off switch for now. Ask UX about how to integrate
             // this settings with TTY
-            boolean rttOn = Settings.System.getInt(
-                    mContext.getContentResolver(), Settings.System.RTT_CALLING_MODE, 0) != 0;
+            boolean rttOn = Settings.Secure.getInt(
+                    mContext.getContentResolver(), Settings.Secure.RTT_CALLING_MODE, 0) != 0;
             mButtonRtt.setChecked(rttOn);
         } else {
             getPreferenceScreen().removePreference(mButtonRtt);
@@ -148,7 +147,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
         } else if (preference == mButtonRtt) {
             Log.i(LOG_TAG, "RTT setting changed -- now " + mButtonRtt.isChecked());
             int rttMode = mButtonRtt.isChecked() ? 1 : 0;
-            Settings.System.putInt(mContext.getContentResolver(), Settings.System.RTT_CALLING_MODE,
+            Settings.Secure.putInt(mContext.getContentResolver(), Settings.Secure.RTT_CALLING_MODE,
                     rttMode);
             // Update RTT config with IMS Manager
             ImsManager imsManager = ImsManager.getInstance(getContext(),
