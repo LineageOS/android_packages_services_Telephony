@@ -131,7 +131,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Solicitação SS alterada para solicitação USSD"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Alterada para uma nova solicitação SS"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Solicitação SS alterada para videochamada"</string>
-    <string name="fdn_check_failure" msgid="18200614306525434">"A configuração \"Números de chamada fixos\" do app de seu telefone está ativada. Por isso, alguns recursos relacionados a chamadas não funcionam."</string>
+    <string name="fdn_check_failure" msgid="18200614306525434">"A configuração \"Números de chamada fixos\" do seu app Telefone está ativada. Por isso, alguns recursos relacionados a chamadas não funcionam."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Ligue o rádio antes de ver essas configurações."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
     <string name="enable" msgid="7248657275000173526">"Ativar"</string>
