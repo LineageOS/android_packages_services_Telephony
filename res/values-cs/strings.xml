@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Během nouzového volání není možné zapnout režim letadla."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Hovor nelze uskutečnit. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> není číslo tísňového volání."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Hovor nelze uskutečnit. Vytočte číslo tísňového volání."</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Tísňové volání není dostupné"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Číslo vytočíte pomocí klávesnice."</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Přidržet"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Ukončit"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontakt se nepodařilo importovat"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Naslouchátka"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Zapnout režim kompatibility s naslouchátkem"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"Hovor, během něhož můžete posílat zprávy (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Povolit posílání zpráv během hlasového hovoru"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Funkce SMS během hovoru (RTT) pomáhá volajícím, kteří neslyší, jsou nedoslýchaví, mají řečovou vadu, případně potřebují víc než jen hlas z jiného důvodu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Další informace&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Text poslaný během hovoru se uloží jako přepis zpráv\n       &lt;br&gt; – Tato funkce není dostupná při videohovorech"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY vypnuto"</item>
     <item msgid="3971695875449640648">"Úplný režim TTY"</item>

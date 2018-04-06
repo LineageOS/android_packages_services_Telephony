@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‎‎‎‏‏‎‎‏‏‎‎‎‎‏‏‏‏‏‎‎‎‏‎‏‏‎‎‏‎‎‎‎‏‏‎‎‎‏‎‎‏‏‎‏‏‏‎‎‏‏‎‎‏‎‎‎‎‏‏‏‎‎Cannot enter airplane mode during an emergency call.‎‏‎‎‏‎"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‎‏‏‎‏‎‎‏‏‏‏‎‎‎‏‎‏‎‏‏‎‎‎‏‏‏‏‎‏‏‎‏‎‎‏‏‏‎‏‎‎‏‎‎‏‎‎‎‎‏‎‏‏‏‏‏‏‎‎‎‎‏‏‎Can\'t call. ‎‏‎‎‏‏‎<xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g>‎‏‎‎‏‏‏‎ is not an emergency number.‎‏‎‎‏‎"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‏‎‏‎‏‏‎‏‎‎‏‏‏‏‎‏‏‏‏‏‏‎‏‏‏‏‏‏‎‎‏‎‎‏‎‎‏‎‎‎‎‎‎‎‏‏‏‎‎‏‎‎‏‎‏‏‏‎‎Can\'t call. Dial an emergency number.‎‏‎‎‏‎"</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‎‏‏‏‎‏‏‎‎‎‎‏‏‏‎‏‎‎‎‎‏‎‏‏‏‏‏‏‏‎‏‎‏‏‎‏‏‎‏‎‏‏‎‎‏‏‏‎‏‏‏‏‎‏‎‏‏‎‎‏‎‎Emergency calling not available‎‏‎‎‏‎"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‏‏‏‎‎‏‎‎‏‏‏‏‎‎‏‎‏‏‎‏‎‏‎‎‏‏‏‏‎‏‏‎‏‏‎‎‏‏‎‏‎‏‎‏‏‎‎‏‎‎‎‏‎‏‎‎‎‎‎Use keyboard to dial‎‏‎‎‏‎"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‎‏‏‏‏‏‏‏‎‏‏‎‏‏‎‏‏‎‏‏‏‏‎‎‏‎‎‎‎‏‎‏‏‎‏‏‏‎‎‏‏‎‏‎‎‏‏‎‏‎‎‎‎‏‎‏‎‎‏‎‎‎‎‎Hold‎‏‎‎‏‎"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‏‏‏‎‏‎‎‎‏‏‏‎‏‏‎‏‎‎‎‏‏‏‎‎‎‏‏‎‎‏‎‎‏‎‏‏‏‏‏‎‎‎‏‏‏‏‎‎‎‏‎‎‏‏‎‏‏‏‎‎‏‎End‎‏‎‎‏‎"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‎‏‏‏‎‏‏‏‎‎‎‎‏‏‏‏‎‎‏‎‏‏‎‏‏‏‎‎‏‎‏‏‏‏‏‏‏‏‎‏‏‎‏‏‏‎‎‏‏‎‏‎‎‏‎‏‏‏‏‏‎‏‎Failed to import contact‎‏‎‎‏‎"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‏‏‎‎‏‎‏‎‎‏‎‏‏‏‎‏‎‏‎‏‏‏‏‏‏‎‏‎‏‏‏‏‏‎‎‏‏‏‏‎‏‎‏‎‏‎‎‎‎‏‏‏‏‎‏‏‏‏‎‎‏‎Hearing aids‎‏‎‎‏‎"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‏‏‏‏‎‏‏‎‏‎‏‏‎‏‎‏‏‎‏‏‏‎‏‏‎‏‏‎‎‎‏‎‏‎‏‏‎‎‏‏‎‎‎‏‎‎‎‏‎‎‎‏‎‏‎‏‏‏‏‎‏‎Turn on hearing aid compatibility‎‏‎‎‏‎"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‎‎‎‎‎‏‎‎‎‎‎‏‏‏‏‏‎‎‎‏‏‏‎‎‎‏‎‏‎‏‏‏‏‎‏‎‎‏‏‏‎‎‎‎‏‎‎‏‏‎‏‏‎‏‏‎‎‏‎‎‏‎Real-time text (RTT) call‎‏‎‎‏‎"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‎‎‏‏‏‎‏‏‎‏‎‏‏‎‏‏‏‏‏‎‎‏‏‎‏‏‎‏‎‏‎‎‎‏‎‎‏‎‎‏‎‎‏‎‏‎‎‎‎‏‎‏‎‏‏‎‎‎‏‎‎‎Allow messaging within a voice call‎‏‎‎‏‎"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‏‏‎‎‏‎‏‏‏‎‎‎‎‏‏‎‎‏‎‎‎‏‎‎‎‏‏‏‎‎‎‏‎‏‏‎‏‎‎‏‏‎‎‎‏‏‎‏‎‏‎‏‏‎‏‎‎‏‎RTT assists callers who are deaf, hard hearing, have a speech disability, or need more than voice alone.&lt;br&gt; &lt;a href=‎‏‎‎‏‏‎<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>‎‏‎‎‏‏‏‎&gt;Learn more&lt;/a&gt;‎‏‎‎‏‏‎\n‎‏‎‎‏‏‏‎       &lt;br&gt;&lt;br&gt; - RTT calls are saved as a message transcript‎‏‎‎‏‏‎\n‎‏‎‎‏‏‏‎       &lt;br&gt; - RTT is not available for video calls‎‏‎‎‏‎"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‎‏‏‏‏‏‎‎‎‏‏‏‏‎‎‏‎‏‏‏‎‏‎‏‎‏‎‎‎‏‎‏‎‏‎‎‏‎‎‏‏‏‎‎‏‏‏‏‎‎‎‏‎‎‎‏‏‏‎‏‎‏‎TTY Off‎‏‎‎‏‎"</item>
     <item msgid="3971695875449640648">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‏‎‏‏‏‎‎‎‏‏‏‏‎‎‏‎‎‏‏‎‎‎‏‎‏‏‎‏‏‎‎‎‏‎‏‎‎‎‎‎‎‏‏‏‏‎‏‎‏‎‏‏‎‏‏‎‎‏‎‎‎‎TTY Full‎‏‎‎‏‎"</item>
