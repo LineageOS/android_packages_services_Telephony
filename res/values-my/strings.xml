@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"အရေးပေါ်ဖုန်းခေါ်ဆိုနေစဉ် လေယာဉ်ပျံသန်းနေစဉ် သုံးသောစနစ်သို့ မဝင်ရောက်နိုင်ပါ"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"မခေါ်ဆိုနိုင်ပါ။ <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> က အရေးပေါ်နံပါတ် မဟုတ်ပါ။"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"မခေါ်ဆိုနိုင်ပါ။ အရေးပေါ်ဖုန်းနံပါတ်တစ်ခုကို နှိပ်ပါ။"</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"အရေးပေါ် ခေါ်ဆို၍ မရပါ"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ကီးဘုတ်သုံး၍ခလုတ်နှိပ်ပါ"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ကိုင်ထားသည်"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ပြီးပါပြီ"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"အဆက်အသွယ်ကို တင်သွင်း မရခဲ့"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"နားကြပ်"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"အကြားအာရုံကိရိယာသုံးနိုင်ရန် ဖွင့်ပါ"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"အချိန်နှင့်တစ်ပြေးညီ စာသား(RTT) ခေါ်ဆိုမှု"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ဖုန်းပြောနေစဉ် မက်ဆေ့ဂျ်ပို့ခွင့်ပြုပါ"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT သည် နားမကြားသူ၊ နားလေးသူ၊ စကားချို့ယွင်းသူ (သို့) အသံတစ်မျိုးတည်းထက် ပိုမို၍ လိုအပ်သူများကို ကူညီပေးပါသည်။&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ပိုမိုလေ့လာရန်&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT ခေါ်ဆိုမှုများကို မက်ဆေ့ဂျ်စာသားမှတ်တမ်းအဖြစ် သိမ်းဆည်းပါသည်\n       &lt;br&gt; - RTT ကို ဗီဒီယိုခေါ်ဆိုမှုများအတွက် အသုံးမပြုနိုင်ပါ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ပိတ်ထားသည်"</item>
     <item msgid="3971695875449640648">"TTY အပြည့်"</item>
