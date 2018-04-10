@@ -19,7 +19,6 @@ package com.android.phone;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.metrics.LogMaker;
 import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.Message;
@@ -90,7 +89,6 @@ public class NetworkSelectListPreference extends ListPreference
 
     @Override
     protected void onClick() {
-        sendMetricsEvent(null);
         // Start the one-time network scan via {@link Phone#getAvailableNetworks()}.
         // {@link NetworkQueryService will return a {@link onResults()} callback first with a list
         // of CellInfo, and then will return a {@link onComplete} indicating the scan completed.
@@ -393,7 +391,8 @@ public class NetworkSelectListPreference extends ListPreference
         mCellInfo = mCellInfoList.get(operatorIndex);
         if (DBG) logd("selected network: " + mCellInfo.toString());
 
-        sendMetricsEvent(getNetworkTitle(mCellInfo));
+        MetricsLogger.action(getContext(),
+                MetricsEvent.ACTION_MOBILE_NETWORK_MANUAL_SELECT_NETWORK);
 
         Message msg = mHandler.obtainMessage(EVENT_NETWORK_SELECTION_DONE);
         Phone phone = PhoneFactory.getPhone(mPhoneId);
@@ -552,21 +551,6 @@ public class NetworkSelectListPreference extends ListPreference
                         return new SavedState[size];
                     }
                 };
-    }
-
-    private void sendMetricsEvent(String network) {
-        final LogMaker logMaker =
-                new LogMaker(MetricsEvent.ACTION_MOBILE_NETWORK_MANUAL_SELECT_NETWORK)
-                        .setType(MetricsEvent.TYPE_ACTION);
-
-        if (network != null) {
-            // Since operator list is loaded dynamically from modem, we cannot know which network
-            // user chooses if we only record integer index of newValue. So a new tag and a string
-            // value (network) is added in this MetricsEvent.
-            logMaker.addTaggedData(MetricsEvent.FIELD_MOBILE_NETWORK, network);
-        }
-
-        MetricsLogger.action(logMaker);
     }
 
     private void logd(String msg) {
