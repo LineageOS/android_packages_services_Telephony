@@ -26,7 +26,6 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 /**
