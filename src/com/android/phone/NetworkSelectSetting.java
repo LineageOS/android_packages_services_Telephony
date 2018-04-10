@@ -21,7 +21,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.metrics.LogMaker;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
@@ -45,7 +44,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.OperatorInfo;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
@@ -184,17 +183,8 @@ public class NetworkSelectSetting extends PreferenceFragment {
             if (DBG) logd("User click a NetworkOperatorPreference: " + cellInfo.toString());
 
             // Send metrics event
-            final LogMaker logMaker = new LogMaker(
-                    MetricsProto.MetricsEvent.ACTION_MOBILE_NETWORK_MANUAL_SELECT_NETWORK)
-                    .setType(MetricsProto.MetricsEvent.TYPE_ACTION);
-            if (CellInfoUtil.getNetworkTitle(cellInfo) != null) {
-                // Since operator list is loaded dynamically from modem, we cannot know which
-                // network user chooses if we only record integer index of newValue. So a new tag
-                // and a string value (network) is added in this MetricsEvent.
-                logMaker.addTaggedData(MetricsProto.MetricsEvent.FIELD_MOBILE_NETWORK,
-                        CellInfoUtil.getNetworkTitle(cellInfo));
-            }
-            MetricsLogger.action(logMaker);
+            MetricsLogger.action(getContext(),
+                    MetricsEvent.ACTION_MOBILE_NETWORK_MANUAL_SELECT_NETWORK);
 
             // Connect to the network
             Message msg = mHandler.obtainMessage(EVENT_NETWORK_SELECTION_DONE);
