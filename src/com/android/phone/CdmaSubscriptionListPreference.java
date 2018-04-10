@@ -23,7 +23,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.ListPreference;
 import android.provider.Settings;
-import android.provider.Settings.Secure;
 import android.util.AttributeSet;
 import android.util.Log;
 

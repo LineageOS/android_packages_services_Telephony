@@ -1,9 +1,7 @@
 package com.android.phone;
 
-import com.android.internal.telephony.CallForwardInfo;
-import com.android.internal.telephony.CommandException;
-import com.android.internal.telephony.CommandsInterface;
-import com.android.internal.telephony.Phone;
+import static com.android.phone.TimeConsumingPreferenceActivity.EXCEPTION_ERROR;
+import static com.android.phone.TimeConsumingPreferenceActivity.RESPONSE_ERROR;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -24,8 +22,10 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import static com.android.phone.TimeConsumingPreferenceActivity.RESPONSE_ERROR;
-import static com.android.phone.TimeConsumingPreferenceActivity.EXCEPTION_ERROR;
+import com.android.internal.telephony.CallForwardInfo;
+import com.android.internal.telephony.CommandException;
+import com.android.internal.telephony.CommandsInterface;
+import com.android.internal.telephony.Phone;
 
 public class CallForwardEditPreference extends EditPhoneNumberPreference {
     private static final String LOG_TAG = "CallForwardEditPreference";

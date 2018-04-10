@@ -1,9 +1,5 @@
 package com.android.phone;
 
-import com.android.internal.telephony.CallForwardInfo;
-import com.android.internal.telephony.CommandsInterface;
-import com.android.internal.telephony.Phone;
-
 import android.app.ActionBar;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,6 +9,10 @@ import android.preference.PreferenceScreen;
 import android.telephony.CarrierConfigManager;
 import android.util.Log;
 import android.view.MenuItem;
+
+import com.android.internal.telephony.CallForwardInfo;
+import com.android.internal.telephony.CommandsInterface;
+import com.android.internal.telephony.Phone;
 
 import java.util.ArrayList;
 

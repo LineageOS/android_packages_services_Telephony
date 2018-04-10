@@ -25,7 +25,6 @@ import android.util.Log;
 
 import com.android.ims.ImsConfig;
 import com.android.ims.ImsManager;
-import com.android.phone.PhoneGlobals;
 
 public class ImsUtil {
     private static final String LOG_TAG = ImsUtil.class.getSimpleName();
