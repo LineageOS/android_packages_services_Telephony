@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Kan vliegtuigmodus niet activeren tijdens een noodoproep."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Kan niet bellen. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> is geen alarmnummer."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Bellen niet mogelijk. Bel een alarmnummer."</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Noodoproepen niet beschikbaar"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Toetsen gebruiken om te bellen"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"In de wacht"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Beëindigen"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kan contact niet importeren"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Gehoorapparaten"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Compatibiliteit voor gehoorapparaat inschakelen"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"Realtime tekstoproep (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Berichten in een spraakoproep toestaan"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT helpt bellers die doof of slechthorend zijn, een spraakbeperking hebben of meer dan alleen een stem nodig hebben.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Meer informatie&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-gesprekken worden opgeslagen als een berichttranscript. \n       &lt;br&gt; - RTT is niet beschikbaar voor videogesprekken."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY uit"</item>
     <item msgid="3971695875449640648">"TTY vol"</item>

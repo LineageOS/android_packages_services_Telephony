@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"හදිසි අවස්ථා ඇමතුමක් අතරතුර ගුවන් යානා ප්‍රකාරය ඇතුළු කළ නොහැකිය."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"ඇමතුම් ලබාගැනීම කළ නොහැක. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> මෙය හදිස්සි ඇමතුම් අංකයක් නොවේ."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ඇමතිය නොහැක. හදිසි අංකයක් අමතන්න."</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"හදිසි අවස්ථා ඇමතුම ලබා ගත නොහැකිය"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ඇමතීමට කිරීමට යතුරු පුවරුව භාවිතා කරන්න"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"රඳවා සිටින්න"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"අවසානයි"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"සම්බන්ධතාවය ආයාත කිරීමට නොහැකි විය"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"ඇසීමේ සහාය"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"ඇසීමේ සහාය සඳහා ගැලපීම සක්‍රිය කරන්න"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"තථ්‍ය-කාල පෙළ (RTT) ඇමතුම"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"හඬ ඇමතුමක් තුළ පණිවිඩ යැවීමට ඉඩ දෙන්න"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"බිහිරි, ශ්‍රවණ දුර්වලතා, කථන ආබාධයක් හෝ හඬට වඩා වැඩි දෙයක් අවශ්‍ය අමතන්නන්ට RTT සහාය දක්වයි.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;තව දැන ගන්න&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT ඇමතුම් පණිවිඩ පිටපතත් ලෙස සුරැකේ \n       &lt;br&gt; - වීඩියෝ ඇමතුම් සඳහා RTT ලබා ගත නොහැකිය"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY අක්‍රියයි"</item>
     <item msgid="3971695875449640648">"TTY පුර්ණයි"</item>

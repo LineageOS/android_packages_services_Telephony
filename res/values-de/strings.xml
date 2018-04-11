@@ -513,8 +513,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Während eines Notrufs ist das Wechseln in den Flugmodus nicht möglich."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Anruf nicht möglich. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ist keine Notrufnummer."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Anruf nicht möglich. Wähle eine Notrufnummer."</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Notruf nicht verfügbar"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Zum Wählen Tastatur verwenden"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Halten"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Ende"</string>
@@ -535,11 +534,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Fehler beim Importieren des Kontakts"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Hörhilfen"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Hörhilfekompatibilität aktivieren"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"RTT-Anruf"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Nachrichten in Sprachanrufen erlauben"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Echtzeittext (Real-Time Text, RTT) dient als Unterstützung für Anrufer, die gehörlos, schwerhörig oder sprachgeschädigt sind oder zusätzlich zur gesprochenen Sprache weitere Informationen benötigen.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Weitere Informationen&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT-Anrufe werden als Nachrichtentranskripte gespeichert\n       &lt;br&gt; – RTT ist nicht für Videoanrufe verfügbar"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY aus"</item>
     <item msgid="3971695875449640648">"TTY (vollständig)"</item>

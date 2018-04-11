@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"ہنگامی کال کے دوران ہوائی جہاز موڈ میں داخل نہیں ہو سکتا۔"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"کال نہیں کی جا سکتی۔ <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ایک ہنگامی نمبر نہیں ہے۔"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"کال نہیں کی جا سکتی۔ ایک ہنگامی نمبر ڈائل کریں۔"</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"ہنگامی کالنگ دستیاب نہیں ہے"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ڈائل کرنے کیلئے کی بورڈ استعمال کریں"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ہولڈ کریں"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ختم کریں"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"رابطہ درآمد کرنے میں ناکام"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"سماعتی آلات"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"سماعتی آلہ کی ہم آہنگی آن کریں"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"‏ریئل ٹائم ٹیکسٹ (RTT) کال"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"صوتی کال کے اندر پیغام رسانی کی اجازت دیں"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"‏RTT ایسے کالرز کو اسسٹ کرتا ہے جو بہرے ہیں، اونچا سنتے ہیں، بولنے سے معزور ہیں یا ان کیلئے صرف آواز ہی کافی نہیں ہے۔‎&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;‎مزید جانیں‎&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT کالز پیغام ٹرانسکرپٹ کے بطور محفوظ کی جاتی ہیں\n       &lt;br&gt; - RTT ویڈیو کالز کیلئے دستیاب نہیں ہے"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"‏TTY آف"</item>
     <item msgid="3971695875449640648">"‏TTY مکمل"</item>

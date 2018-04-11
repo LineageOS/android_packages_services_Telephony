@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"কোনো জরুরী কলের সময় বিমান মোডে প্রবেশ করা যাবে না৷"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"কল করা যাবে না৷ <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> কোনো জরুরী নম্বর নয়৷"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"কল করা যাবে না৷ কোনো জরুরী নম্বর ডায়াল করুন৷"</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"জরুরি কল করা যাবে না"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ডায়াল করতে কীবোর্ড ব্যবহার করুন"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ধরে থাকুন"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"শেষ করুন"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"পরিচিতি আমদানি করতে ব্যর্থ হয়েছে"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"শ্রবণ যন্ত্রগুলি"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"শ্রবণ যন্ত্র উপযুক্ততা চালু করুন"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"রিয়েল-টাইম টেক্সট (RTT) কল"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ভয়েস কলে মেসেজ পাঠানোর অনুমতি দিন"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"যে কলাররা বধির, কানে কম শোনেন, যাদের কথা বলতে অসুবিধা হয় অথবা যারা কণ্ঠস্বরের সাথে অন্য কোনও উপায়ে নিজেদের প্রকাশ করেন, RTT বৈশিষ্ট্যটি তাদের সাহায্য করে।&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;আরও জানুন&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT কলগুলি মেসেজ ট্রান্সক্রিপ্ট হিসেবে সেভ করে রাখা হয়\n       &lt;br&gt; - ভিডিও কলে RTT বৈশিষ্ট্য ব্যবহার করা যায় না"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY বন্ধ"</item>
     <item msgid="3971695875449640648">"TTY পূর্ণ"</item>
