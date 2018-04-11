@@ -515,8 +515,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Շտապ կանչի ժամանակ հնարավոր չէ մտնել ինքնաթիռի ռեժիմ:"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Հնարավոր չէ զանգել: <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> համարը արտակարգ իրավիճակի համար չէ:"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Հնարավոր չէ զանգել: Հավաքեք արտակարգ իրավիճակի որևէ համար:"</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Շտապ կանչերը հասանելի չեն"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Օգտագործեք ստեղնաշարը՝ համարհավաքման համար"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Պահել"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Ավարտել"</string>
@@ -537,11 +536,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Չհաջողվեց ներմուծել կոնտակտը"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Լսողական ապարատ"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Միացնել լսողական ապարատի աջակցումը"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"RTT զանգ (հաղորդագրություն զանգի միջոցով)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Թույլատրել հաղորդագրությունների ուղարկումն ու ստացումը զանգի միջոցով"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT-ն օգնում է այն բաժանորդներին, ովքեր լսողության և խոսքի դժվարություններ ունեն, կամ ովքեր լոկ ձայնով չեն բավարարվում:&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Իմանալ ավելին&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT զանգերը պահվում են որպես հաղորդագրության տառադրումներ\n       &lt;br&gt; – RTT-ն հասանելի չէ տեսազանգի ժամանակ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY-ն անջատված է"</item>
     <item msgid="3971695875449640648">"TTY Full"</item>
@@ -616,7 +613,7 @@
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"Արտակարգ իրավիճակների զանգեր"</string>
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"Միայն արտակարգ իրավիճակների զանգեր"</string>
     <string name="sim_description_default" msgid="4778679519938775515">"SIM քարտ, բնիկը՝ <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Մատչելիություն"</string>
+    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Հատուկ գործառույթներ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"Wi-Fi զանգ այս օգտվողից՝"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Զանգ Wi-Fi-ի միջոցով"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Կրկին հպեք՝ բացելու համար"</string>

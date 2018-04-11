@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"緊急通報中に機内モードに切り替えることはできません。"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"発信できません。<xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g>は緊急通報番号ではありません。"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"発信できません。緊急通報番号におかけください。"</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"緊急通報はご利用いただけません"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"キーボードで番号を入力してください"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"保留"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"終了"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"連絡先をインポートできませんでした"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"補聴機能"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"補聴機能の互換をON"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"リアルタイム テキスト（RTT）通話"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"音声通話中のメッセージ送信を許可する"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT は、聴覚障害や言語障害があるなど、音声だけではコミュニケーションを取ることが困難なユーザーをサポートする機能です。&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;詳細&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT 通話は文字に変換して保存されます\n       &lt;br&gt; - RTT はビデオ通話ではご利用いただけません"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY OFF"</item>
     <item msgid="3971695875449640648">"TTY フル"</item>
