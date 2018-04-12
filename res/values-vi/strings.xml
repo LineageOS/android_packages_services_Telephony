@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Không thể bật chế độ trên máy bay trong khi thực hiện cuộc gọi khẩn cấp."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Không thực hiện được cuộc gọi. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> không phải là số khẩn cấp."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Không thực hiện được cuộc gọi. Hãy quay số khẩn cấp."</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Không sử dụng được tính năng gọi khẩn cấp"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Sử dụng bàn phím để quay số"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Giữ"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Kết thúc"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Không nhập được liên hệ"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Trợ thính"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Bật khả năng tương thích trợ thính"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"Cuộc gọi qua Tin nhắn theo thời gian thực (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Cho phép nhắn tin trong cuộc gọi thoại"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Tin nhắn theo thời gian thực (RTT) trợ giúp những người gọi khiếm thính, bị suy giảm thính lực, không có khả năng nói hoặc cần thêm hỗ trợ khác ngoài giọng nói.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Tìm hiểu thêm&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Cuộc gọi qua RTT được lưu dưới dạng bản chép lời tin nhắn\n       &lt;br&gt; - Không sử dụng được RTT trên cuộc gọi video"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Tắt TTY"</item>
     <item msgid="3971695875449640648">"TTY Đầy"</item>

@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Ulazak u režim rada u avionu nije moguć tokom hitnog poziva."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Poziv nije uspeo. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> nije broj za hitne slučajeve."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Poziv nije uspeo. Pozovite broj za hitne slučajeve."</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Upućivanje hitnih poziva nije dostupno"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Koristite tastaturu za pozivanje"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Čekanje"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Završi"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Uvoz kontakta nije uspeo"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Slušni aparat"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Uključi kompatibilnost sa slušnim aparatom"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"Poziv sa tekstom u realnom vremenu (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Dozvolite razmenu poruka u audio pozivu"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Tekst u realnom vremenu (RTT) pomaže pozivaocima koji su gluvi, slabo čuju, imaju govorne teškoće ili kojima je potrebno nešto više od glasa.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saznajte više&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT pozivi se čuvaju kao transkript poruke\n       &lt;br&gt; – RTT nije dostupan za video pozive"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY je isključen"</item>
     <item msgid="3971695875449640648">"TTY je pun"</item>

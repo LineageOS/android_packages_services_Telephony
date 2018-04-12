@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"आपातकालीन कॉल के दौरान हवाई जहाज़ मोड चालू नहीं किया जा सकता."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"कॉल नहीं किया जा सकता. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> एक आपातकालीन नंबर नहीं है."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"कॉल नहीं किया जा सकता. आपातकालीन नबर डायल करें."</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"आपातकालीन कॉल करने की सुविधा उपलब्ध नहीं है"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"डायल करने के लिए कीबोर्ड का उपयोग करें"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"होल्ड करें"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"समाप्त"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"संपर्क आयात करने में विफल"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"श्रवण सहायक साधन"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवण सहायक साधन संगतता चालू करें"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"(आरटीटी) कॉल से रीयल-टाइम में मैसेज भेजें"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"वॉइस कॉल में मैसेज भेजने की अनुमति दें"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"आरटीटी सुविधा, कॉल करने वाले ऐसे लोगों की मदद करती है, जो बधिर हैं, ऊंचा सुनते हैं या जिन्हें बोलने में कठिनाई होती है या जिनके लिए सिर्फ़ आवाज़ काफ़ी नहीं होती.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;अधिक जानें&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - आरटीटी कॉल मैसेज लेख के रूप में सेव किए जाते हैं\n       &lt;br&gt; - आरटीटी वीडियो कॉल के लिए उपलब्ध नहीं है"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बंद"</item>
     <item msgid="3971695875449640648">"TTY पूर्ण"</item>

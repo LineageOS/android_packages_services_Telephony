@@ -449,7 +449,7 @@
     <string name="disable_pin_ok" msgid="2109571368635883688">"PIN byl vymazán."</string>
     <string name="pin_failed" msgid="5644377896213584760">"Nesprávný PIN"</string>
     <string name="pin_changed" msgid="4455736268023261662">"PIN byl aktualizován"</string>
-    <string name="puk_requested" msgid="5921393215789090200">"Nesprávné heslo. PIN je nyní zablokován. Je požadován kód PUK."</string>
+    <string name="puk_requested" msgid="5921393215789090200">"Nesprávné heslo. PIN je teď zablokován. Je požadován kód PUK."</string>
     <string name="enter_pin2_text" msgid="8339444124477720345">"PIN2"</string>
     <string name="oldPin2Label" msgid="8559146795026261502">"Původní kód PIN2"</string>
     <string name="newPin2Label" msgid="4573956902204349054">"Nový kód PIN2"</string>
@@ -461,8 +461,8 @@
     <string name="invalidPuk2" msgid="7059081153334815973">"Zadejte PUK2 o délce 8 číslic."</string>
     <string name="pin2_changed" msgid="3724522579945610956">"PIN2 byl aktualizován"</string>
     <string name="label_puk2_code" msgid="4688069961795341948">"Zadejte kód PUK2"</string>
-    <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"Nesprávné heslo. PIN2 je nyní zablokován. Chcete-li to zkusit znovu, změňte PIN 2."</string>
-    <string name="puk2_requested" msgid="5831015200030161434">"Nesprávné heslo. SIM karta je nyní uzamčena. Zadejte kód PUK2."</string>
+    <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"Nesprávné heslo. PIN2 je teď zablokován. Chcete-li to zkusit znovu, změňte PIN 2."</string>
+    <string name="puk2_requested" msgid="5831015200030161434">"Nesprávné heslo. SIM karta je teď uzamčena. Zadejte kód PUK2."</string>
     <string name="puk2_blocked" msgid="3150263853077280049">"PUK2 je trvale zablokován."</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n"Počet zbývajících pokusů: <xliff:g id="NUMBER">%d</xliff:g>."</string>
     <string name="pin2_unblocked" msgid="7791600368153469078">"PIN2 již není blokován"</string>
@@ -561,7 +561,7 @@
     <string name="ota_speaker" msgid="6904589278542719647">"Hlasitě"</string>
     <string name="ota_progress" msgid="460876637828044519">"Programování telefonu…"</string>
     <string name="ota_failure" msgid="7713756181204620397">"Naprogramování telefonu se nezdařilo"</string>
-    <string name="ota_successful" msgid="1880780692887077407">"Váš telefon je nyní aktivován. Spuštění služby může trvat až 15 minut."</string>
+    <string name="ota_successful" msgid="1880780692887077407">"Váš telefon je teď aktivován. Spuštění služby může trvat až 15 minut."</string>
     <string name="ota_unsuccessful" msgid="8072141612635635357">"Váš telefon nebyl aktivován.\nMožná bude nutné vyhledat místo s lepším pokrytím (blízko okna nebo venku). \n\nZkuste to znovu nebo kontaktujte oddělení zákaznických služeb, kde získáte další možnosti."</string>
     <string name="ota_spc_failure" msgid="3909983542575030796">"PŘÍLIŠ MNOHO SELHÁNÍ CERTIFIKÁTŮ SPC"</string>
     <string name="ota_call_end" msgid="4537279738134612388">"Zpět"</string>
@@ -573,16 +573,16 @@
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Datové spojení zakázáno"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Datové připojení nebude dostupné do <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="few">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minuty v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci nyní ukončit?</item>
-      <item quantity="many">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minuty v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci nyní ukončit?</item>
-      <item quantity="other">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minut v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci nyní ukončit?</item>
-      <item quantity="one">Telefon bude <xliff:g id="COUNT_0">%s</xliff:g> minutu v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci nyní ukončit?</item>
+      <item quantity="few">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minuty v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
+      <item quantity="many">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minuty v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
+      <item quantity="other">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minut v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
+      <item quantity="one">Telefon bude <xliff:g id="COUNT_0">%s</xliff:g> minutu v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
-      <item quantity="few">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minuty. Chcete akci nyní ukončit?</item>
-      <item quantity="many">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minuty. Chcete akci nyní ukončit?</item>
-      <item quantity="other">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minut. Chcete akci nyní ukončit?</item>
-      <item quantity="one">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_0">%s</xliff:g> minutu. Chcete akci nyní ukončit?</item>
+      <item quantity="few">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minuty. Chcete akci teď ukončit?</item>
+      <item quantity="many">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minuty. Chcete akci teď ukončit?</item>
+      <item quantity="other">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minut. Chcete akci teď ukončit?</item>
+      <item quantity="one">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_0">%s</xliff:g> minutu. Chcete akci teď ukončit?</item>
     </plurals>
     <string name="alert_dialog_in_ecm_call" msgid="1886723687211887104">"Během tísňového volání není vybraná akce k dispozici."</string>
     <string name="progress_dialog_exiting_ecm" msgid="4835734101617817074">"Ukončení režimu tísňového zpětného volání"</string>
