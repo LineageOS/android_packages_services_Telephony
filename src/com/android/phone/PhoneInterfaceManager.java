@@ -4102,4 +4102,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         phone.setRadioIndicationUpdateMode(filters, mode);
     }
+
+    @Override
+    public void setCarrierTestOverride(int subId, String mccmnc, String imsi, String iccid, String
+            gid1, String gid2, String plmn, String spn) {
+        enforceModifyPermission();
+        final Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("setCarrierTestOverride fails with invalid subId: " + subId);
+            return;
+        }
+        phone.setCarrierTestOverride(mccmnc, imsi, iccid, gid1, gid2, plmn, spn);
+    }
+
+    @Override
+    public int getCarrierIdListVersion(int subId) {
+        enforceReadPrivilegedPermission();
+        final Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("getCarrierIdListVersion fails with invalid subId: " + subId);
+            return TelephonyManager.UNKNOWN_CARRIER_ID_LIST_VERSION;
+        }
+        return phone.getCarrierIdListVersion();
+    }
 }
