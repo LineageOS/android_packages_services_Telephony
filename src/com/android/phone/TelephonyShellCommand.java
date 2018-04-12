@@ -36,6 +36,7 @@ public class TelephonyShellCommand extends ShellCommand {
     private static final String LOG_TAG = "TelephonyShellCommand";
     // Don't commit with this true.
     private static final boolean VDBG = true;
+    private static final int DEFAULT_PHONE_ID = 0;
 
     private static final String IMS_SUBCOMMAND = "ims";
     private static final String IMS_SET_CARRIER_SERVICE = "set-ims-service";
@@ -130,7 +131,7 @@ public class TelephonyShellCommand extends ShellCommand {
     // ims set-ims-service
     private int handleImsSetServiceCommand() {
         PrintWriter errPw = getErrPrintWriter();
-        int slotId = SubscriptionManager.getDefaultVoicePhoneId();
+        int slotId = getDefaultSlot();
         Boolean isCarrierService = null;
 
         String opt;
@@ -186,7 +187,7 @@ public class TelephonyShellCommand extends ShellCommand {
     // ims get-ims-service
     private int handleImsGetServiceCommand() {
         PrintWriter errPw = getErrPrintWriter();
-        int slotId = SubscriptionManager.getDefaultVoicePhoneId();
+        int slotId = getDefaultSlot();
         Boolean isCarrierService = null;
 
         String opt;
@@ -232,7 +233,7 @@ public class TelephonyShellCommand extends ShellCommand {
     }
 
     private int handleEnableIms() {
-        int slotId = SubscriptionManager.getDefaultVoicePhoneId();
+        int slotId = getDefaultSlot();
         String opt;
         while ((opt = getNextOption()) != null) {
             switch (opt) {
@@ -259,7 +260,7 @@ public class TelephonyShellCommand extends ShellCommand {
     }
 
     private int handleDisableIms() {
-        int slotId = SubscriptionManager.getDefaultVoicePhoneId();
+        int slotId = getDefaultSlot();
         String opt;
         while ((opt = getNextOption()) != null) {
             switch (opt) {
@@ -284,5 +285,15 @@ public class TelephonyShellCommand extends ShellCommand {
             Log.v(LOG_TAG, "ims disable -s " + slotId);
         }
         return 0;
+    }
+
+    private int getDefaultSlot() {
+        int slotId = SubscriptionManager.getDefaultVoicePhoneId();
+        if (slotId <= SubscriptionManager.INVALID_SIM_SLOT_INDEX
+                || slotId == SubscriptionManager.DEFAULT_PHONE_INDEX) {
+            // If there is no default, default to slot 0.
+            slotId = DEFAULT_PHONE_ID;
+        }
+        return slotId;
     }
 }
