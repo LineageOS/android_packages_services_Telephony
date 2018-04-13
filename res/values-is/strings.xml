@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Ekki er hægt að fara í flugstillingu meðan neyðarsímtal er í gangi."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Ekki hægt að hringja. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> er ekki neyðarnúmer."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Ekki hægt að hringja. Hringdu í neyðarnúmer."</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Neyðarsímtöl eru ekki í boði"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Notaðu lyklaborðið til að hringja"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Setja í bið"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Ljúka"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Mistókst að flytja inn tengilið"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Heyrnartæki"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Kveikja á samhæfi við heyrnartæki"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"RTT-símtal (með texta í rauntíma)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Leyfa skilaboðasendingar í símtölum"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT (símtöl með texta í rauntíma) aðstoðar heyrnarlausa og fólk með heyrnarskerðingu eða skerta talgetu og þá sem þurfa að styðja sig við meira en bara hljóð.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Frekari upplýsingar&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-símtöl eru vistuð í umrituðum skilaboðum\n       &lt;br&gt; - RTT er ekki í boði fyrir myndsímtöl"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Slökkt á TTY"</item>
     <item msgid="3971695875449640648">"TTY að fullu"</item>

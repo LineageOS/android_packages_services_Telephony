@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"ਕਿਸੇ ਐਮਰਜੈਂਸੀ ਕਾਲ ਦੌਰਾਨ ਜਹਾਜ਼ ਮੋਡ ਵਿੱਚ ਦਾਖਲ ਨਹੀਂ ਹੋਇਆ ਜਾ ਸਕਦਾ।"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"ਕਾਲ ਨਹੀਂ ਕਰ ਸਕਦਾ। <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ਇੱਕ ਐਮਰਜੈਂਸੀ ਨੰਬਰ ਨਹੀਂ ਹੈ।"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਇੱਕ ਐਮਰਜੈਂਸੀ ਨੰਬਰ ਡਾਇਲ ਕਰੋ।"</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"ਸੰਕਟਕਾਲੀਨ ਕਾਲ ਉਪਲਬਧ ਨਹੀਂ ਹੈ"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ਡਾਇਲ ਕਰਨ ਲਈ ਕੀ-ਬੋਰਡ ਵਰਤੋ"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ਹੋਲਡ ਕਰੋ"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ਖ਼ਤਮ"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"ਸੰਪਰਕ ਆਯਾਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"ਸੁਣਨ ਲਈ ਸਹਾਇਕ ਸਾਧਨ"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"ਸੁਣਨ ਲਈ ਸਹਾਇਕ ਸਾਧਨ ਅਨੁਕੂਲਤਾ ਚਾਲੂ ਕਰੋ"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"ਨਾਲ-ਦੀ-ਨਾਲ ਦਿਸਦੀ ਲਿਖਤ (RTT) ਵਾਲੀ ਕਾਲ"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ਕਿਸੇ ਵੌਇਸ ਕਾਲ ਦੌਰਾਨ ਸੁਨੇਹਾ ਭੇਜਣ ਦਿਓ"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT ਅਜਿਹੇ ਕਾਲ ਕਰਨ ਵਾਲੇ ਲੋਕਾਂ ਦੀ ਸਹਾਇਤਾ ਕਰਦਾ ਹੈ ਜੋ ਬੋਲੇ, ਘੱਟ ਸੁਣਨ ਵਾਲੇ, ਬੋਲਣ ਵਿੱਚ ਅਸਮਰਥ ਜਾਂ ਜਿਨ੍ਹਾਂ ਲਈ ਸਿਰਫ਼ ਅਵਾਜ਼ ਕਾਫ਼ੀ ਨਹੀਂ ਹੁੰਦੀ।&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ਹੋਰ ਜਾਣੋ&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT ਕਾਲਾਂ ਨੂੰ ਇੱਕ ਪ੍ਰਤਿਲਿਪੀ ਸੁਨੇਹੇ ਵਜੋਂ ਰੱਖਿਅਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ\n       &lt;br&gt; - RTT ਵੀਡੀਓ ਕਾਲਾਂ ਲਈ ਉਪਲਬਧ ਨਹੀਂ ਹੈ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ਬੰਦ"</item>
     <item msgid="3971695875449640648">"TTY ਪੂਰਾ"</item>

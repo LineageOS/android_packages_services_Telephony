@@ -509,8 +509,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"કટોકટીના કૉલ દરમિયાન એરપ્લેન મોડમાં દાખલ થઈ શકતાં નથી."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"કૉલ કરી શકાતો નથી. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> એ કટોકટીનો નંબર નથી."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"કૉલ કરી શકાતો નથી. કટોકટીનો નંબર ડાયલ કરો!"</string>
-    <!-- no translation found for dial_emergency_calling_not_available (5675557523782491826) -->
-    <skip />
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"કટોકટીમાં કૉલ કરવાની સુવિધા ઉપલબ્ધ નથી"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ડાયલ કરવા માટે કીબોર્ડનો ઉપયોગ કરો"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"હોલ્ડ કરો"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"સમાપ્ત"</string>
@@ -531,11 +530,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"સંપર્ક આયાત કરવામાં નિષ્ફળ થયાં"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"સાંભળવામાં સહાયતા"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"સાંભળવામાં સહાયતા સુસંગતતા ચાલુ કરો"</string>
-    <!-- no translation found for rtt_mode_title (6954652435543570121) -->
-    <skip />
+    <string name="rtt_mode_title" msgid="6954652435543570121">"રિઅલ-ટાઇમ ટેક્સ્ટ(RTT) કૉલ"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"વૉઇસ કૉલ અંતર્ગત સંદેશ મોકલવાની મંજૂરી આપો"</string>
-    <!-- no translation found for rtt_mode_more_information (8587829103563257193) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT બહેરા, સાંભળવા અને બોલવામાં મુશ્કેલી પડતી હોય અથવા વૉઇસ કરતાં પણ વધુ કંઈકની જરૂર હોય એવા કૉલરની સહાય કરે છે.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;વધુ જાણો&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT કૉલને સંદેશ ટ્રાન્સક્રિપ્ટ તરીકે સાચવવામાં આવે છે\n       &lt;br&gt; - RTT વીડિઓ કૉલ માટે ઉપલબ્ધ નથી"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY બંધ"</item>
     <item msgid="3971695875449640648">"TTY સંપૂર્ણ"</item>
