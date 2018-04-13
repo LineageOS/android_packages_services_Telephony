@@ -95,6 +95,7 @@ import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.DefaultPhoneNotifier;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IccCard;
+import com.android.internal.telephony.LocaleTracker;
 import com.android.internal.telephony.MccTable;
 import com.android.internal.telephony.NetworkScanRequestTracker;
 import com.android.internal.telephony.OperatorInfo;
@@ -105,9 +106,9 @@ import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.ProxyController;
 import com.android.internal.telephony.RIL;
 import com.android.internal.telephony.RILConstants;
+import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyPermissions;
-import com.android.internal.telephony.TelephonyProperties;
 import com.android.internal.telephony.euicc.EuiccConnector;
 import com.android.internal.telephony.uicc.IccIoResult;
 import com.android.internal.telephony.uicc.IccUtils;
@@ -1699,6 +1700,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             final int subId = mSubscriptionController.getSubIdUsingPhoneId(phoneId);
+            // Todo: fix this when we can get the actual cellular network info when the device
+            // is on IWLAN.
             if (TelephonyManager.NETWORK_TYPE_IWLAN
                     == getVoiceNetworkTypeForSubscriber(subId, mApp.getPackageName())) {
                 return "";
@@ -1706,8 +1709,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
-        return TelephonyManager.getTelephonyProperty(
-                phoneId, TelephonyProperties.PROPERTY_OPERATOR_ISO_COUNTRY, "");
+
+        Phone phone = PhoneFactory.getPhone(phoneId);
+        if (phone != null) {
+            ServiceStateTracker sst = phone.getServiceStateTracker();
+            if (sst != null) {
+                LocaleTracker lt = sst.getLocaleTracker();
+                if (lt != null) {
+                    return lt.getCurrentCountry();
+                }
+            }
+        }
+        return "";
     }
 
     @Override
