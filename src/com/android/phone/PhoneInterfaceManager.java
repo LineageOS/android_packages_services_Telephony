@@ -2726,7 +2726,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @hide
      */
     public boolean setImsService(int slotId, boolean isCarrierImsService, String packageName) {
-        enforceModifyPermission();
+        int[] subIds = SubscriptionManager.getSubId(slotId);
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID),
+                "setImsService");
+
         return PhoneFactory.getImsResolver().overrideImsServiceConfiguration(slotId,
                 isCarrierImsService, packageName);
     }
@@ -2740,7 +2744,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @return the package name of the ImsService configuration.
      */
     public String getImsService(int slotId, boolean isCarrierImsService) {
-        enforceReadPrivilegedPermission();
+        int[] subIds = SubscriptionManager.getSubId(slotId);
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID),
+                "getImsService");
+
         return PhoneFactory.getImsResolver().getImsServiceConfiguration(slotId,
                 isCarrierImsService);
     }
