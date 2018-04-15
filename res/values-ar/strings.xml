@@ -172,9 +172,9 @@
     <string name="select_automatically" msgid="1046727200631770962">"تحديد الشبكة تلقائيًا"</string>
     <string name="network_select_title" msgid="7733107364757544558">"الشبكة"</string>
     <string name="register_automatically" msgid="6017849844573519637">"التسجيل التلقائي..."</string>
-    <string name="preferred_network_mode_title" msgid="2336624679902659306">"نوع الشبكة المفضل"</string>
+    <string name="preferred_network_mode_title" msgid="2336624679902659306">"نوع الشبكة المفضّل"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"تغيير وضع تشغيل الشبكة"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"نوع الشبكة المفضل"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"نوع الشبكة المفضّل"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(محظور )"</string>
     <string name="choose_network_title" msgid="4023911977543009350">"اختيار شبكة"</string>
     <string name="network_disconnected" msgid="2227251609006103194">"غير متّصل"</string>

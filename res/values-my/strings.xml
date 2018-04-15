@@ -21,7 +21,7 @@
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"အရေးပေါ်နံပါတ်ခေါ်ဆိုနံပါတ်ကွက်"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"ဖုန်း"</string>
     <string name="fdnListLabel" msgid="8630418672279521003">"FDN စာရင်း"</string>
-    <string name="unknown" msgid="6878797917991465859">"အကြောင်းအရာ မသိရှိ"</string>
+    <string name="unknown" msgid="6878797917991465859">"မသိပါ"</string>
     <string name="private_num" msgid="6713286113000232309">"လျို့ဝှက် နံပါတ်"</string>
     <string name="payphone" msgid="4793877574636445118">"ငွေပေးရသည့်ဖုန်း"</string>
     <string name="onHold" msgid="9035493194749959955">"ခဏ ကိုင်ထားစဉ်"</string>
