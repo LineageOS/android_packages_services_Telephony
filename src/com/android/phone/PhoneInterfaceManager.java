@@ -3404,6 +3404,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return isCarrierSupported && isDeviceSupported;
     }
 
+    public boolean isRttEnabled() {
+        return isRttSupported() && Settings.Secure.getInt(mPhone.getContext().getContentResolver(),
+                Settings.Secure.RTT_CALLING_MODE, 0) != 0;
+    }
+
     /**
      * Returns the unique device ID of phone, for example, the IMEI for
      * GSM and the MEID for CDMA phones. Return null if device ID is not available.
