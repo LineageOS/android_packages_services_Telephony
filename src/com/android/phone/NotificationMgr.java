@@ -613,27 +613,24 @@ public class NotificationMgr {
                 PhoneFactory.getPhone(phoneId) : PhoneFactory.getDefaultPhone();
         if (TelephonyCapabilities.supportsNetworkSelection(phone)) {
             if (SubscriptionManager.isValidSubscriptionId(subId)) {
+                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(mContext);
+                String selectedNetworkOperatorName =
+                        sp.getString(Phone.NETWORK_SELECTION_NAME_KEY + subId, "");
+                // get the shared preference of network_selection.
+                // empty is auto mode, otherwise it is the operator alpha name
+                // in case there is no operator name, check the operator numeric
+                if (TextUtils.isEmpty(selectedNetworkOperatorName)) {
+                    selectedNetworkOperatorName =
+                            sp.getString(Phone.NETWORK_SELECTION_KEY + subId, "");
+                }
+                boolean isManualSelection;
                 // if restoring manual selection is controlled by framework, then get network
                 // selection from shared preference, otherwise get from real network indicators.
                 boolean restoreSelection = !mContext.getResources().getBoolean(
                         com.android.internal.R.bool.skip_restoring_network_selection);
-                String selectedNetworkOperatorName;
-                boolean isManualSelection;
                 if (restoreSelection) {
-                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(mContext);
-                    selectedNetworkOperatorName =
-                            sp.getString(Phone.NETWORK_SELECTION_NAME_KEY + subId, "");
-                    // get the shared preference of network_selection.
-                    // empty is auto mode, otherwise it is the operator alpha name
-                    // in case there is no operator name, check the operator numeric
-                    if (TextUtils.isEmpty(selectedNetworkOperatorName)) {
-                        selectedNetworkOperatorName =
-                                sp.getString(Phone.NETWORK_SELECTION_KEY + subId, "");
-                    }
                     isManualSelection = !TextUtils.isEmpty(selectedNetworkOperatorName);
                 } else {
-                    selectedNetworkOperatorName = phone.getServiceStateTracker().mSS
-                            .getOperatorAlpha();
                     isManualSelection = phone.getServiceStateTracker().mSS.getIsManualSelection();
                 }
 
