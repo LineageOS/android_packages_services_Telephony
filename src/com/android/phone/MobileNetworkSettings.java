@@ -164,6 +164,22 @@ public class MobileNetworkSettings extends Activity  {
         }
 
         ContentResolver cr = context.getContentResolver();
+
+        TelephonyManager tm =
+                (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String currentCountry = tm.getNetworkCountryIso().toLowerCase();
+        String supportedCountries =
+                Settings.Global.getString(cr, Settings.Global.EUICC_SUPPORTED_COUNTRIES);
+        boolean inEsimSupportedCountries = false;
+        if (TextUtils.isEmpty(currentCountry)) {
+            inEsimSupportedCountries = true;
+        } else if (!TextUtils.isEmpty(supportedCountries)) {
+            List<String> supportedCountryList =
+                    Arrays.asList(TextUtils.split(supportedCountries.toLowerCase(), ","));
+            if (supportedCountryList.contains(currentCountry)) {
+                inEsimSupportedCountries = true;
+            }
+        }
         final boolean esimIgnoredDevice =
                 Arrays.asList(TextUtils.split(SystemProperties.get(KEY_ESIM_CID_IGNORE, ""), ","))
                         .contains(SystemProperties.get(KEY_CID, null));
@@ -175,7 +191,7 @@ public class MobileNetworkSettings extends Activity  {
                 Settings.Global.getInt(cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
 
         return (inDeveloperMode || euiccProvisioned
-                || (!esimIgnoredDevice && enabledEsimUiByDefault));
+                || (!esimIgnoredDevice && enabledEsimUiByDefault && inEsimSupportedCountries));
     }
 
     /**
