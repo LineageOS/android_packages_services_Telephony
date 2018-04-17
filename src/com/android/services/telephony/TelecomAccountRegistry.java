@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PorterDuff;
@@ -29,9 +30,12 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.provider.Settings;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
@@ -234,7 +238,7 @@ final class TelecomAccountRegistry {
                 extras.putBoolean(PhoneAccount.EXTRA_PLAY_CALL_RECORDING_TONE, true);
             }
 
-            if (PhoneGlobals.getInstance().phoneMgr.isRttSupported()) {
+            if (PhoneGlobals.getInstance().phoneMgr.isRttEnabled()) {
                 capabilities |= PhoneAccount.CAPABILITY_RTT;
             }
 
@@ -496,6 +500,13 @@ final class TelecomAccountRegistry {
             }
         }
 
+        public void updateRttCapability() {
+            boolean isRttEnabled = PhoneGlobals.getInstance().phoneMgr.isRttEnabled();
+            boolean oldRttEnabled = mAccount.hasCapabilities(PhoneAccount.CAPABILITY_RTT);
+            if (isRttEnabled != oldRttEnabled) {
+                mAccount = registerPstnPhoneAccount(mIsEmergency, mIsDummy);
+            }
+        }
         /**
          * Indicates whether this account supports pausing video calls.
          * @return {@code true} if the account supports pausing video calls, {@code false}
@@ -601,7 +612,7 @@ final class TelecomAccountRegistry {
     private final TelephonyManager mTelephonyManager;
     private final SubscriptionManager mSubscriptionManager;
     private List<AccountEntry> mAccounts = new LinkedList<AccountEntry>();
-    private Object mAccountsLock = new Object();
+    private final Object mAccountsLock = new Object();
     private int mServiceState = ServiceState.STATE_POWER_OFF;
     private boolean mIsPrimaryUser = true;
 
@@ -804,6 +815,23 @@ final class TelecomAccountRegistry {
         // use is not the primary user we disable video calling.
         mContext.registerReceiver(mUserSwitchedReceiver,
                 new IntentFilter(Intent.ACTION_USER_SWITCHED));
+
+        // Listen to the RTT system setting so that we update it when the user flips it.
+        ContentObserver rttUiSettingObserver = new ContentObserver(
+                new Handler(Looper.getMainLooper())) {
+            @Override
+            public void onChange(boolean selfChange) {
+                synchronized (mAccountsLock) {
+                    for (AccountEntry account : mAccounts) {
+                        account.updateRttCapability();
+                    }
+                }
+            }
+        };
+
+        Uri rttSettingUri = Settings.Secure.getUriFor(Settings.Secure.RTT_CALLING_MODE);
+        mContext.getContentResolver().registerContentObserver(
+                rttSettingUri, false, rttUiSettingObserver);
     }
 
     /**
