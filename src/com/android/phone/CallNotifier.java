@@ -546,9 +546,9 @@ public class CallNotifier extends Handler {
             mergeFailedString = mApplication.getResources().getString(
                     R.string.incall_error_supp_service_conference);
         } else if (r.result == Phone.SuppService.RESUME) {
-            if (DBG) log("onSuppServiceFailed: displaying merge failure message");
+            if (DBG) log("onSuppServiceFailed: displaying resume failure message");
             mergeFailedString = mApplication.getResources().getString(
-                    R.string.incall_error_supp_service_switch);
+                    R.string.incall_error_supp_service_resume);
         } else if (r.result == Phone.SuppService.HOLD) {
             if (DBG) log("onSuppServiceFailed: displaying hold failure message");
             mergeFailedString = mApplication.getResources().getString(
