@@ -1100,6 +1100,9 @@
     <string name="incall_error_supp_service_unknown">Service not supported</string>
     <!-- In-call screen: message displayed in an error dialog -->
     <string name="incall_error_supp_service_switch">Can\'t switch calls.</string>
+    <!-- In-call screen: message displayed in an error dialog when the user attempts to resume a
+         call, and the system encountered an error which prevented the call from being resumed. -->
+    <string name="incall_error_supp_service_resume">Can\'t resume call.</string>
     <!-- In-call screen: message displayed in an error dialog -->
     <string name="incall_error_supp_service_separate">Can\'t separate call.</string>
     <!-- In-call screen: message displayed in an error dialog -->
