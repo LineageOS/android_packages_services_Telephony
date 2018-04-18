@@ -726,6 +726,7 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.ERROR_UNSPECIFIED:
             case android.telephony.DisconnectCause.LOCAL:
             case android.telephony.DisconnectCause.NORMAL:
+            case android.telephony.DisconnectCause.NORMAL_UNSPECIFIED:
             case android.telephony.DisconnectCause.VIDEO_CALL_NOT_ALLOWED_WHILE_TTY_ENABLED:
                 return ToneGenerator.TONE_PROP_PROMPT;
 
