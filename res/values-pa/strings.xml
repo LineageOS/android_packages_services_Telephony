@@ -249,7 +249,7 @@
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ਕੀਮਤਾਂ ਜਾਣਨ ਲਈ ਆਪਣੇ ਨੈੱਟਵਰਕ ਪ੍ਰਦਾਨਕ ਨੂੰ ਸੰਪਰਕ ਕਰੋ।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ਕੀ ਡਾਟਾ ਰੋਮਿੰਗ ਦੀ ਆਗਿਆ ਦੇਣੀ ਹੈ?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ਐਪ ਡਾਟਾ ਵਰਤੋਂ"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> ਤੱਕ <xliff:g id="ID_1">%1$s</xliff:g> ਮੋਬਾਈਲ  ਡਾਟਾ  ਵਰਤਿਆ ਗਿਆ"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> ਤੱਕ <xliff:g id="ID_1">%1$s</xliff:g> ਮੋਬਾਈਲ ਡਾਟਾ ਵਰਤਿਆ ਗਿਆ"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"ਉੱਨਤ"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ਕੈਰੀਅਰ"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"ਕੈਰੀਅਰ, ਈ-ਸਿਮ, ਸਿਮ, euicc, ਕੈਰੀਅਰ ਬਦਲੋ, ਕੈਰੀਅਰ ਸ਼ਾਮਲ ਕਰੋ"</string>

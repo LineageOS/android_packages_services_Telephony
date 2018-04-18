@@ -249,7 +249,7 @@
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hãy liên hệ với nhà cung cấp mạng của bạn để biết giá cước."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Cho phép chuyển vùng dữ liệu?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Mức sử dụng dữ liệu của ứng dụng"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"Đã sử dụng <xliff:g id="ID_1">%1$s</xliff:g> dữ liệu di động <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"Đã dùng <xliff:g id="ID_1">%1$s</xliff:g> dữ liệu di động: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Nâng cao"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Nhà cung cấp dịch vụ"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"nhà mạng, esim, sim, euicc, chuyển nhà mạng, thêm nhà mạng"</string>
@@ -362,7 +362,7 @@
     <string name="enable_disable_multi_category" msgid="626771003122899280">"Nhiều danh mục"</string>
     <string name="multi_category_enable" msgid="1179299804641721768">"Đã bật nhiều danh mục"</string>
     <string name="multi_category_disable" msgid="880104702904139505">"Đã vô hiệu hóa nhiều danh mục"</string>
-    <string name="network_lte" msgid="7702681952521375754">"LTE (được khuyến nghị)"</string>
+    <string name="network_lte" msgid="7702681952521375754">"LTE (khuyên dùng)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G (được khuyến nghị)"</string>
     <string name="network_global" msgid="1323190488685355309">"Toàn cầu"</string>
     <string name="cdma_system_select_title" msgid="5757657769327732833">"Chọn hệ thống"</string>

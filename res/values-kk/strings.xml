@@ -263,7 +263,7 @@
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi қоңыраулары"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Оператор бейне қоңыраулары"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS опциялары"</string>
-    <string name="cdma_options" msgid="4016822858172249884">"CDMA (кең жолақты әр түрлі кодты бірнеше қол жетімділік) опциялары"</string>
+    <string name="cdma_options" msgid="4016822858172249884">"CDMA (кең жолақты әртүрлі кодты бірнеше қол жетімділік) опциялары"</string>
     <string name="throttle_data_usage" msgid="3715677828160555808">"Дерекқор қолдану"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"Ағымдағы мерзімде қолданылған дерекқор"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"Дерекқор қолдану мерзімі"</string>
@@ -372,7 +372,7 @@
     <item msgid="176474317493999285">"Hегізгі ғана"</item>
     <item msgid="1205664026446156265">"Aвтоматты"</item>
   </string-array>
-    <string name="cdma_subscription_title" msgid="1162564010076763284">"CDMA (кең жолақты әр түрлі кодты бірнеше қол жетімділік) жазылымы"</string>
+    <string name="cdma_subscription_title" msgid="1162564010076763284">"CDMA (кең жолақты әртүрлі кодты бірнеше қол жетімділік) жазылымы"</string>
     <string name="cdma_subscription_summary" msgid="2530890766115781140">"RUIM/SIM және NV арасында ауысу"</string>
     <string name="cdma_subscription_dialogtitle" msgid="2699527950523333110">"жазылым"</string>
   <string-array name="cdma_subscription_choices">
