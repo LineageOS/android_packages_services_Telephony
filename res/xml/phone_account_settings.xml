@@ -15,8 +15,7 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:phone="http://schemas.android.com/apk/res/com.android.phone"
-    android:title="@string/phone_accounts">
+                  android:title="@string/phone_accounts">
 
     <PreferenceCategory
         android:key="phone_accounts_accounts_list_category_key"

@@ -16,14 +16,6 @@
 
 package com.android.phone;
 
-import com.android.internal.telephony.CallManager;
-
-import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaDisplayInfoRec;
-import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaSignalInfoRec;
-import com.android.internal.telephony.cdma.SignalToneUtil;
-
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothHeadset;
 import android.bluetooth.BluetoothProfile;
@@ -35,7 +27,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemProperties;
 import android.telecom.TelecomManager;
-
 import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -44,14 +35,19 @@ import android.telephony.TelephonyManager;
 import android.util.ArrayMap;
 import android.util.Log;
 
+import com.android.internal.telephony.CallManager;
+import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.SubscriptionController;
+import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaDisplayInfoRec;
+import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaSignalInfoRec;
+import com.android.internal.telephony.cdma.SignalToneUtil;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import com.android.internal.telephony.SubscriptionController;
 
 /**
  * Phone app module that listens for phone state changes and various other

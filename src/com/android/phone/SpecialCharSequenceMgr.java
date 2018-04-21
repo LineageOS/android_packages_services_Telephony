@@ -19,19 +19,14 @@ package com.android.phone;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.provider.Settings;
-
-import com.android.internal.telephony.TelephonyIntents;
-import com.android.internal.telephony.Phone;
-
 import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.WindowManager;
 
+import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyCapabilities;
 
 /**
