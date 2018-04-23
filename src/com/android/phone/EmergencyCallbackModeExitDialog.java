@@ -219,7 +219,8 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnCance
         case EXIT_ECM_BLOCK_OTHERS:
         case EXIT_ECM_DIALOG:
             CharSequence text = getDialogText(mEcmTimeout);
-            mAlertDialog = new AlertDialog.Builder(EmergencyCallbackModeExitDialog.this)
+            mAlertDialog = new AlertDialog.Builder(EmergencyCallbackModeExitDialog.this,
+                    android.R.style.Theme_DeviceDefault_Dialog_Alert)
                     .setIcon(R.drawable.ic_emergency_callback_mode)
                     .setTitle(R.string.phone_in_ecm_notification_title)
                     .setMessage(text)
@@ -247,7 +248,8 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnCance
             return mAlertDialog;
 
         case EXIT_ECM_IN_EMERGENCY_CALL_DIALOG:
-            mAlertDialog = new AlertDialog.Builder(EmergencyCallbackModeExitDialog.this)
+            mAlertDialog = new AlertDialog.Builder(EmergencyCallbackModeExitDialog.this,
+                    android.R.style.Theme_DeviceDefault_Dialog_Alert)
                     .setIcon(R.drawable.ic_emergency_callback_mode)
                     .setTitle(R.string.phone_in_ecm_notification_title)
                     .setMessage(R.string.alert_dialog_in_ecm_call)
