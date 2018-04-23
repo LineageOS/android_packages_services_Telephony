@@ -4212,10 +4212,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         for (int i = 0; i < slots.length; i++) {
             UiccSlot slot = slots[i];
 
-            String cardId = null;
+            String cardId;
             UiccCard card = slot.getUiccCard();
             if (card != null) {
                 cardId = card.getCardId();
+            } else {
+                cardId = slot.getIccId();
             }
 
             int cardState = 0;
