@@ -37,6 +37,7 @@
     <protected-broadcast android:name="android.intent.action.SIG_STR" />
     <protected-broadcast android:name="android.intent.action.ANY_DATA_STATE" />
     <protected-broadcast android:name="android.intent.action.DATA_CONNECTION_FAILED" />
+    <protected-broadcast android:name="android.intent.action.DATA_STALL_DETECTED" />
     <protected-broadcast android:name="android.intent.action.SIM_STATE_CHANGED" />
     <protected-broadcast android:name="android.intent.action.NETWORK_SET_TIME" />
     <protected-broadcast android:name="android.intent.action.NETWORK_SET_TIMEZONE" />
