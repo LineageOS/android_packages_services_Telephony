@@ -70,7 +70,6 @@ import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -219,10 +218,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
                 case EVENT_DO_FETCH_DEFAULT:
                 {
-                    final String iccid = getIccIdForPhoneId(phoneId);
-                    final String gid1 = getGid1ForPhoneId(phoneId);
                     final PersistableBundle config =
-                            restoreConfigFromXml(mPlatformCarrierConfigPackage, iccid, gid1);
+                            restoreConfigFromXml(mPlatformCarrierConfigPackage, phoneId);
                     if (config != null) {
                         log(
                                 "Loaded config from XML. package="
@@ -262,8 +259,6 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         break;
                     }
                     final CarrierIdentifier carrierId = getCarrierIdForPhoneId(phoneId);
-                    final String iccid = getIccIdForPhoneId(phoneId);
-                    final String gid1 = getGid1ForPhoneId(phoneId);
                     // ResultReceiver callback will execute in this Handler's thread.
                     final ResultReceiver resultReceiver =
                             new ResultReceiver(this) {
@@ -284,8 +279,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                     }
                                     PersistableBundle config =
                                             resultData.getParcelable(KEY_CONFIG_BUNDLE);
-                                    saveConfigToXml(mPlatformCarrierConfigPackage,
-                                            iccid, gid1, config);
+                                    saveConfigToXml(
+                                            mPlatformCarrierConfigPackage, phoneId, config);
                                     mConfigFromDefaultApp[phoneId] = config;
                                     sendMessage(
                                             obtainMessage(
@@ -340,10 +335,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 case EVENT_DO_FETCH_CARRIER:
                 {
                     final String carrierPackageName = getCarrierPackageForPhoneId(phoneId);
-                    final String iccid = getIccIdForPhoneId(phoneId);
-                    final String gid1 = getGid1ForPhoneId(phoneId);
                     final PersistableBundle config =
-                            restoreConfigFromXml(carrierPackageName, iccid, gid1);
+                            restoreConfigFromXml(carrierPackageName, phoneId);
                     if (config != null) {
                         log(
                                 "Loaded config from XML. package="
@@ -382,8 +375,6 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         break;
                     }
                     final CarrierIdentifier carrierId = getCarrierIdForPhoneId(phoneId);
-                    final String iccid = getIccIdForPhoneId(phoneId);
-                    final String gid1 = getGid1ForPhoneId(phoneId);
                     // ResultReceiver callback will execute in this Handler's thread.
                     final ResultReceiver resultReceiver =
                             new ResultReceiver(this) {
@@ -404,8 +395,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                     }
                                     PersistableBundle config =
                                             resultData.getParcelable(KEY_CONFIG_BUNDLE);
-                                    saveConfigToXml(getCarrierPackageForPhoneId(phoneId),
-                                            iccid, gid1, config);
+                                    saveConfigToXml(
+                                            getCarrierPackageForPhoneId(phoneId), phoneId, config);
                                     mConfigFromCarrierApp[phoneId] = config;
                                     sendMessage(
                                             obtainMessage(
@@ -632,13 +623,19 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
      * In case of errors or invalid input, no file will be written.
      *
      * @param packageName the name of the package from which we fetched this bundle.
-     * @param iccid the ICCID of the subscription for which this bundle was fetched.
-     * @param extras First 20 characters of gid1 of the subscription for which the bundle
-     *               was fetched.
+     * @param phoneId the phone ID.
      * @param config the bundle to be written. Null will be treated as an empty bundle.
      */
-    private void saveConfigToXml(String packageName, String iccid, String extras,
-            PersistableBundle config) {
+    private void saveConfigToXml(String packageName, int phoneId, PersistableBundle config) {
+        if (SubscriptionManager.getSimStateForSlotIndex(phoneId)
+                != TelephonyManager.SIM_STATE_LOADED) {
+            log("Skip save config because SIM records are not loaded.");
+            return;
+        }
+
+        final String iccid = getIccIdForPhoneId(phoneId);
+        // extras is the first 20 characters of gid1
+        final String extras = getGid1ForPhoneId(phoneId);
         if (packageName == null || iccid == null) {
             loge("Cannot save config with null packageName or iccid.");
             return;
@@ -690,25 +687,31 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
      * Reads a bundle from an XML file.
      *
      * This restores a bundle that was written with {@link #saveConfigToXml}. This returns the saved
-     * config bundle for the given package and ICCID.
+     * config bundle for the given package and phone ID.
      *
      * In case of errors, or if the saved config is from a different package version than the
      * current version, then null will be returned.
      *
      * @param packageName the name of the package from which we fetched this bundle.
-     * @param iccid the ICCID of the subscription for which this bundle was fetched.
-     * @param extras First 20 characters of gid1 of the subscription for which the bundle
-     *               was fetched.
+     * @param phoneId the phone ID.
      * @return the bundle from the XML file. Returns null if there is no saved config, the saved
      *         version does not match, or reading config fails.
      */
-    private PersistableBundle restoreConfigFromXml(String packageName, String iccid,
-            String extras) {
+    private PersistableBundle restoreConfigFromXml(String packageName, int phoneId) {
         final String version = getPackageVersion(packageName);
         if (version == null) {
             loge("Failed to get package version for: " + packageName);
             return null;
         }
+        if (SubscriptionManager.getSimStateForSlotIndex(phoneId)
+                != TelephonyManager.SIM_STATE_LOADED) {
+            log("Skip restoring config because SIM records are not yet loaded.");
+            return null;
+        }
+
+        final String iccid = getIccIdForPhoneId(phoneId);
+        // extras is the first 20 characters of gid1
+        final String extras = getGid1ForPhoneId(phoneId);
         if (packageName == null || iccid == null) {
             loge("Cannot restore config with null packageName or iccid.");
             return null;
