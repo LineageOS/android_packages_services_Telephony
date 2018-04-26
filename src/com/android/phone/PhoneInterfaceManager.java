@@ -4210,6 +4210,37 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * A test API to reload the UICC profile.
+     *
+     * <p>Requires that the calling app has permission
+     * {@link android.Manifest.permission#MODIFY_PHONE_STATE MODIFY_PHONE_STATE}.
+     * @hide
+     */
+    @Override
+    public void refreshUiccProfile(int subId) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone == null) {
+                return;
+            }
+            UiccCard uiccCard = phone.getUiccCard();
+            if (uiccCard == null) {
+                return;
+            }
+            UiccProfile uiccProfile = uiccCard.getUiccProfile();
+            if (uiccProfile == null) {
+                return;
+            }
+            uiccProfile.refresh();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
      * Returns false if the mobile data is disabled by default, otherwise return true.
      */
     private boolean getDefaultDataEnabled() {
