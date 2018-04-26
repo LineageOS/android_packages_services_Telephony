@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e3c81dd_3c157cd2",
+        "filename": "src/com/android/phone/OutgoingCallBroadcaster.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 13897
+      },
+      "writtenOn": "2018-04-26T09:16:20Z",
+      "side": 1,
+      "message": "Maybe I\u0027d use a more generic RuntimeException here and add:\n\n    Log.e(TAG, \"Failed to start \" + invokeFrameworkDialer);",
+      "range": {
+        "startLine": 489,
+        "startChar": 29,
+        "endLine": 489,
+        "endChar": 53
+      },
+      "revId": "474602a4f0d99f509a991383f5fba2a134b3b854",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
