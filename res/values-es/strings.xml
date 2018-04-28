@@ -249,8 +249,8 @@
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Ponte en contacto con tu proveedor de red para consultar el precio."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"¿Permitir itinerancia de datos?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Uso de datos de la aplicación"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"Se han utilizado <xliff:g id="ID_1">%1$s</xliff:g> en el periodo del <xliff:g id="ID_2">%2$s</xliff:g>"</string>
-    <string name="advanced_options_title" msgid="8074895510265488035">"Avanzados"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"Se han usado <xliff:g id="ID_1">%1$s</xliff:g> en el periodo del <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"Avanzado"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operador"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"operador, esim, sim, euicc, cambiar de operador, añadir operador"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
@@ -536,7 +536,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activar compatibilidad con audífonos"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Llamada de texto en tiempo real (TTR)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permitir mensajes en una llamada de voz"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"La función TTR (texto en tiempo real) ofrece asistencia a las personas sordas o con discapacidades auditivas, que tienen algún trastorno del habla o que necesitan una transcripción además de la voz para comunicarse.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Más información&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Las llamadas de TTR se guardan como la transcripción de un mensaje.\n       &lt;br&gt; - La función TTR no está disponible en videollamadas."</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desactivado"</item>
     <item msgid="3971695875449640648">"TTY completo"</item>

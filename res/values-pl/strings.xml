@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Włącz funkcje zgodności z aparatem słuchowym"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Połączenie RTT (wysyłanie SMS-ów w czasie rzeczywistym)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Zezwalaj na wymianę SMS-ów podczas rozmowy głosowej"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT pomaga osobom niesłyszącym, niedosłyszącym, mającym problemy z mówieniem oraz potrzebującym czegoś więcej oprócz głosu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Więcej informacji&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Połączenia RTT są zapisywane jako transkrypcje\n       &lt;br&gt; – Funkcja RTT jest niedostępna w przypadku rozmów wideo"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY wyłączony"</item>
     <item msgid="3971695875449640648">"TTY pełny"</item>

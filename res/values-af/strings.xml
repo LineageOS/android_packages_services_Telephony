@@ -536,8 +536,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Skakel gehoorapparaat-versoenbaarheid aan"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Intydse teksoproep (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Laat boodskappe binne \'n stemoproep toe"</string>
-    <!-- syntax error in translation for rtt_mode_more_information (8587829103563257193) org.xmlpull.v1.XmlPullParserException: expected: /br read: string (position:END_TAG </string>@1:431 in     <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT help bellers wat, doof, hardhorend is, \'n spraakgebrek het, of  meer as net \'n stem benodig. &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Kom meer te wete&lt;/a&gt;\n       <br><br> - RTT-oproepe word as \'n boodskaptranskripsie gestoor\n       <br> - RTT is nie vir video-oproepe beskikbaar nie"</string>
-)  -->
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY af"</item>
     <item msgid="3971695875449640648">"TTY vol"</item>

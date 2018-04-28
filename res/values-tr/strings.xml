@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"İşitme cihazı uyumluluğunu aç"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Gerçek zamanlı mesaj (RTT) çağrısı"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Sesli aramada mesajlaşmaya izin verilir"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT; tam veya kısmi işitme engelli, konuşma engeli olan veya sesten fazlasına ihtiyaç duyan arayanlara yardımcı olur.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Daha fazla bilgi&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT çağrıları, mesaj çeviri yazısı olarak kaydedilir\n       &lt;br&gt; - RTT, görüntülü görüşmelerde kullanılamaz"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Kapalı"</item>
     <item msgid="3971695875449640648">"TTY Tam"</item>

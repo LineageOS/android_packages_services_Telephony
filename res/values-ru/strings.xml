@@ -534,7 +534,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Включить поддержку слухового аппарата"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Вызов RTT"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Разрешить обмен сообщениями во время голосового вызова"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Функция RTT предназначена для пользователей с нарушениями слуха и речи.&lt;br&gt;&lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Подробнее…&lt;/a&gt;\n&lt;br&gt;&lt;br&gt;– Вызовы RTT сохраняются как транскрипции.\n&lt;br&gt;– Функция RTT недоступна при видеовызове."</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Телетайп выключен"</item>
     <item msgid="3971695875449640648">"Полнофункциональный телетайп"</item>

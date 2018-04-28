@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activați compatibilitatea cu aparatele auditive"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Apel de tipul Text în timp real (TTR)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permiteți schimbul de mesaje în timpul unui apel vocal"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"TTR oferă asistență apelanților fără auz, cu deficiențe de auz, care au dizabilități de vorbire sau care au nevoie de mai mult decât vocea.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Aflați mai multe&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Apelurile RTT sunt salvate ca transcrierea unui mesaj\n       &lt;br&gt; - Serviciul TTR nu este disponibil pentru apelurile video."</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY dezactivat"</item>
     <item msgid="3971695875449640648">"TTY integral"</item>

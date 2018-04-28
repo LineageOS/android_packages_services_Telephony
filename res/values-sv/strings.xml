@@ -538,7 +538,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Aktivera kompatibilitet med hörapparat"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"RTT-samtal (realtidstext)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Tillåt meddelanden i röstsamtal"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT hjälper döva, hörselskadade och personer med talsvårigheter eller som behöver mer än endast röst.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Läs mer&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-samtal sparas som en meddelandetranskription\n       &lt;br&gt; - RTT är inte tillgängligt för videosamtal"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY av"</item>
     <item msgid="3971695875449640648">"TTY är full"</item>

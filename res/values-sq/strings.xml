@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Aktivizo përputhshmërinë e aparateve të dëgjimit"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Telefonata me tekst në kohë reale (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Lejo mesazhet brenda një telefonate zanore"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Funksioni RTT ndihmon telefonuesit që janë të shurdhër, kanë vështirësi me dëgjimin, kanë një aftësi të kufizuar të të folurit ose që kanë nevojë për më shumë se thjesht zërin.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Mëso më shumë&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Telefonatat RTT ruhen si një transkript mesazhi\n       &lt;br&gt; - Funksioni RTT nuk ofrohet për telefonatat me video"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY i çaktivizuar"</item>
     <item msgid="3971695875449640648">"TTY i plotë"</item>

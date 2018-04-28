@@ -72,7 +72,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="1361715069911607109">"Kontoeinstellungen konfigurieren"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"Alle Anrufkonten"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"Auswählen, welche Konten Anrufe tätigen können"</string>
-    <string name="wifi_calling" msgid="739018212480165598">"Anrufe über WLAN"</string>
+    <string name="wifi_calling" msgid="739018212480165598">"WLAN-Telefonie"</string>
     <string name="connection_service_default_label" msgid="1498481943805913754">"Integrierter Verbindungsdienst"</string>
     <string name="voicemail" msgid="8693759337917898954">"Mailbox"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Mailbox (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -260,7 +260,7 @@
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Auswahl erforderlich"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"SIM für mobile Daten ändern?"</string>
     <string name="sim_change_data_message" msgid="2163963581444907496">"<xliff:g id="NEW_SIM">%1$s</xliff:g> anstelle von <xliff:g id="OLD_SIM">%2$s</xliff:g> für mobile Daten verwenden?"</string>
-    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Anrufe über WLAN"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"WLAN-Telefonie"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Videoanrufe über Mobilfunkanbieter"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM-/UMTS-Optionen"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA-Optionen"</string>
@@ -506,7 +506,7 @@
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Anrufe können nicht freigegeben werden."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Anrufe können nicht gehalten werden."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Stelle zum Telefonieren eine WLAN-Verbindung her."</string>
-    <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktiviere Anrufe über WLAN, um anzurufen."</string>
+    <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktiviere WLAN-Telefonie, um anzurufen."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Notruf"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Mobilfunkverbindung wird aktiviert..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Kein Service. Erneuter Versuch..."</string>
@@ -536,7 +536,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Hörhilfekompatibilität aktivieren"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"RTT-Anruf"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Nachrichten in Sprachanrufen erlauben"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Echtzeittext (Real-Time Text, RTT) dient als Unterstützung für Anrufer, die gehörlos, schwerhörig oder sprachgeschädigt sind oder zusätzlich zur gesprochenen Sprache weitere Informationen benötigen.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Weitere Informationen&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT-Anrufe werden als Nachrichtentranskripte gespeichert\n       &lt;br&gt; – RTT ist nicht für Videoanrufe verfügbar"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY aus"</item>
     <item msgid="3971695875449640648">"TTY (vollständig)"</item>

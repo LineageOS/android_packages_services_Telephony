@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Hallókészülék-kompatibilitás bekapcsolása"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Valós idejű szöveg (RTT) típusú hívás"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Üzenetküldés engedélyezése a hangalapú hívásokban"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Az RTT funkció a siket, hallássérült, beszédzavaros vagy a hangalapú kommunikáción kívül más kommunikációt is igénylő hívóknak lehet segítségére.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;További információ.&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Az RTT-hívásokat a rendszer üzenetátiratként menti.\n       &lt;br&gt; - Az RTT funkció nem áll rendelkezésre videohívásokban."</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY kikapcsolva"</item>
     <item msgid="3971695875449640648">"Teljes TTY"</item>

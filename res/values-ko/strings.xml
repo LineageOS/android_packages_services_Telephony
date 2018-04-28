@@ -249,7 +249,7 @@
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"요금은 이동통신사에 문의하세요."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"데이터 로밍을 허용하시겠습니까?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"앱 데이터 사용량"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> 기간에 사용된 모바일 데이터: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>에 사용된 모바일 데이터: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"고급"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"이동통신사"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"이동통신사, esim, sim, euicc, 이동통신사 전환, 이동통신사 추가"</string>
@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"보청기 호환 사용"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"실시간 문자 메시지(RTT) 통화"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"음성 통화 중 메시지 허용"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT는 청각 장애, 난청, 언어 장애가 있거나 음성 이외의 의사소통 수단이 필요한 발신자에게 도움이 됩니다.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;자세히 알아보기&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT 통화는 메시지 스크립트로 저장됩니다.\n       &lt;br&gt; - 화상 통화에서는 RTT를 사용할 수 없습니다."</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY 사용 안함"</item>
     <item msgid="3971695875449640648">"TTY 전체"</item>
