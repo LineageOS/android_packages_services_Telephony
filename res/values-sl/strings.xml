@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Vključi združljivost s slušnim pripomočkom"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Klic s sprotnim besedilom (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Dovoli izmenjavo sporočil v glasovnem klicu"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Funkcija RTT pomaga klicateljem, ki so gluhi, naglušni, imajo govorno motnjo ali potrebujejo več kot samo glas.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Več o tem&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Klici RTT se shranijo kot prepis sporočila\n       &lt;br&gt; – RTT ni na voljo pri videoklicih"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Način TTY izklopljen"</item>
     <item msgid="3971695875449640648">"TTY poln"</item>

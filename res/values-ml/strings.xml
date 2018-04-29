@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"ശ്രവണസഹായി അനുയോജ്യത ഓൺ ചെയ്യുക"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"തത്സമയ ടെക്‌സ്‌റ്റ്(RTT) കോൾ"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"വോയ്‌സ് കോളിൽ സന്ദേശമയയ്‌ക്കൽ അനുവദിക്കുക"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"ബധിരർ, കേൾവി ശക്തി കുറഞ്ഞവർ, സംഭാഷണ വൈകല്യമുള്ളവർ അല്ലെങ്കിൽ ശബ്‌ദത്തിന് പുറമേ മറ്റ് സഹായവും ആവശ്യമുള്ള, വിളിക്കുന്ന ആളുകളെ RTT സഹായിക്കുന്നു.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;കൂടുതലറിയുക&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT കോളുകൾ സന്ദേശ ട്രാൻസ്‌ക്രിപ്റ്റായി സംരക്ഷിക്കുന്നു\n       &lt;br&gt; - വീഡിയോ കോളുകൾക്കായി RTT ലഭ്യമല്ല"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ഓഫാണ്"</item>
     <item msgid="3971695875449640648">"TTY പൂർണ്ണം"</item>

@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"ಶ್ರವಣ ಸಾಧನ ಹೊಂದಾಣಿಕೆಯನ್ನು ಆನ್‌ ಮಾಡಿ"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"ನೈಜ-ಸಮಯ ಪಠ್ಯ (RTT) ಕರೆ"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ಧ್ವನಿ ಕರೆಯ ಒಳಗೆ ಸಂದೇಶ ಕಳುಹಿಸುವಿಕೆಗೆ ಅನುಮತಿಸಿ"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"ಕಿವುಡರು, ಆಲಿಸುವಿಕೆಯ ದೋಷಗಳನ್ನು ಹೊಂದಿದವರು, ಮಾತನಾಡುವಿಕೆಯಲ್ಲಿ ದೋಷಗಳನ್ನು ಹೊಂದಿದವರು ಅಥವಾ ಧ್ವನಿ ಮೀರಿ ಬೇರೆ ರೀತಿಯಲ್ಲಿ ಕರೆ ಮಾಡಲು ಕಠಿಣರಾಗಿರುವವರಿಗೆ RTT ಮೋಡ್ ಸಹಾಯ ಮಾಡುತ್ತದೆ.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ&lt;/a&gt;\n   &lt;br&gt;&lt;br&gt; - RTT ಕರೆಗಳನ್ನು ಸಂದೇಶ ಪ್ರತಿಲಿಪಿಗಳಂತೆ ಉಳಿಸಲಾಗಿದೆ \n    &lt;br&gt; - ವೀಡಿಯೊ ಕರೆಗಳಿಗೆ RTT ಲಭ್ಯವಿಲ್ಲ"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ಆಫ್"</item>
     <item msgid="3971695875449640648">"TTY ಪೂರ್ಣ"</item>

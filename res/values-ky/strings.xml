@@ -535,7 +535,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Угуу аппаратын колдоого алуу"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Чалуу учурунда анык убакыттагы билдирүү (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Үн чалуунун учурунда жазышууга уруксат берүү"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT функциясы угуу жана сүйлөө жөндөмдүүлүгү бузулган адамдарга арналат.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Кеңири маалымат&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT функциясында чалуулар транскрипциялар катары сакталат\n       &lt;br&gt; - RTT функациясы видео чалууда жеткиликсиз болот"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Телетайп түзмөгү өчүк"</item>
     <item msgid="3971695875449640648">"Телетайп түзмөгү толуп калды"</item>

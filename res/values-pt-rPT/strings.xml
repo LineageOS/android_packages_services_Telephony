@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Ativar compatibilidade com aparelho auxiliar de audição"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Chamada com Mensagens de texto em tempo real (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permitir envio de mensagens numa chamada de voz"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"A RTT assiste os autores de chamadas surdos, com deficiências auditivas, dificuldades da fala ou que precisem de mais do que apenas a voz.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saiba mais&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; -As chamadas RTT são guardadas como transcrição de mensagem\n       &lt;br&gt; - A RTT não está disponível para videochamadas"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desativado"</item>
     <item msgid="3971695875449640648">"TTY total"</item>

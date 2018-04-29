@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवणयंत्र सुसंगतता चालू करा"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"रीअल-टाइम टेक्‍स्‍ट (RTT) कॉल"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"व्‍हॉइस कॉल करताना मेसेजिंग करू शकतो"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT अशा कॉल करणार्‍यांना साहाय्य करते, ज्‍यांना बहिरेपणा आहे, ज्‍यांना कमी ऐकू येते किंवा बोलताना अडखळतात किंवा ज्‍यांना फक्‍त आवाज पुरेसा नसतो.&lt;br&gt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g> &gt;अधिक जाणून घ्‍या&lt;a&gt;\n       &lt;br/&gt; - RTT कॉल संदेश प्रतिलेख म्‍हणून सेव्‍ह केले आहेत\n       &lt;br/&gt; - RTT व्हिडिओ कॉलसाठी उपलब्‍ध नाही"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बंद"</item>
     <item msgid="3971695875449640648">"TTY पूर्ण"</item>

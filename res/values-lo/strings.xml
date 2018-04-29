@@ -241,8 +241,8 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"​ອະ​ນຸ​ຍາດ​ໃຫ້​ໃຊ້​ຂໍ້​ມູນ"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"ກະລຸນາຮັບຊາບ"</string>
     <string name="roaming" msgid="7894878421600247140">"ໂຣມມິງ"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"ເຊື່ອມຕໍ່ບໍລິການຂໍ້ມູນເມື່ອໂຣມມິງ"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"ເຊື່ອມຕໍ່ບໍລິການຂໍ້ມູນເມື່ອໂຣມມິງ"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"ເຊື່ອມຕໍ່ບໍລິການອິນເຕີເນັດເມື່ອໂຣມມິງຢູ່"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"ເຊື່ອມຕໍ່ບໍລິການອິນເຕີເນັດເມື່ອໂຣມມິງຢູ່"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ການໂຣມມິງອິນເຕີເນັດຖືກປິດໄວ້ຢູ່. ແຕະເພື່ອເປີດໃຊ້."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"ສູນເສຍການເຊື່ອມຕໍ່ອິນເຕີເນັດມືຖືແລ້ວ"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"ທ່ານ​ອາດ​ຈະ​ເສຍ​ຄ່າ​ໃຊ້​ຈ່າຍ​ຫຼາຍ."</string>
@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"ເປີດໃຊ້ການຊ່ວຍໄດ້ຍິນ"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"ການໂທ Real-time text (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ອະນຸຍາດໃຫ້ສົ່ງຂໍ້ຄວາມພາຍໃນການໂທສຽງໄດ້"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT ຈະຊ່ວຍຜູ້ໂທທີ່ຫູໜວກ, ມີບັນຫາໃນການໄດ້ຍິນ, ຂາດຄວາມສາມາດໃນການເວົ້າ ຫຼື ຕ້ອງການຫຼາຍກວ່າສຽງ.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ສຶກສາເພີ່ມເຕີມ&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - ການໂທ RTT ຈະຖືກບັນທຶກເປັນການຖອດຂໍ້ຄວາມ\n       &lt;br&gt; - RTT ບໍ່ສາມາດໃຊ້ກັບການໂທວິດີໂອໄດ້"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ປິດ"</item>
     <item msgid="3971695875449640648">"TTY ເຕັມ"</item>

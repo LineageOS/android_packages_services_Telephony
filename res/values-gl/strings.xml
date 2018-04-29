@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activar a compatibilidade con audiófonos"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Chamada RTT (texto en tempo real)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permitir uso de mensaxes durante unha chamada de voz"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"A función RTT constitúe unha axuda para todos aqueles emisores de chamadas que padezan xordeira ou outros problemas auditivos, teñan algún trastorno da fala ou necesiten algo máis que a voz para comunicarse.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Máis información&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; — As chamadas RTT gárdanse como transcricións de mensaxes\n       &lt;br&gt; — Non se pode utilizar a función RTT nas videochamadas"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desactivado"</item>
     <item msgid="3971695875449640648">"TTY completo"</item>

@@ -255,7 +255,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"mobilni operater, esim, sim, euicc, promjena mobilnog operatera, dodavanje mobilnog operatera"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobilni podaci"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Pristupanje podacima pomoću mobilne mreže"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Pristupi podacima pomoću mobilne mreže"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Želite li isključiti mobilne podatke?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Odabir je obvezan"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Promijeniti podatkovni SIM?"</string>
@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Uključi kompatibilnost za pomoć osobama oštećenog sluha"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"RTT (tekst u stvarnom vremenu) poziv"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Omogućavanje slanja poruka u glasovnom pozivu"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT pomaže pozivateljima koji su gluhi, imaju oštećenje sluha, govornu manu ili im treba više od samo glasa.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saznajte više&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT pozivi spremaju se kao prijepis poruke\n       &lt;br&gt; – RTT nije dostupan za videopozive"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Isključen je TTY"</item>
     <item msgid="3971695875449640648">"TTY je pun"</item>

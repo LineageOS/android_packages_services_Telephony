@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"மொபைல் தரவு"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"மொபைல் டேட்டா"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"ஃபோன் சேவைகள்"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"அவசரகால டயலர்"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"மொபைல்"</string>
@@ -102,21 +102,21 @@
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"எல்லா அழைப்புகளையும் பகிர்"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"<xliff:g id="PHONENUMBER">{0}</xliff:g> க்கு எல்லா அழைப்புகளையும் பகிர்"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"எண் கிடைக்கவில்லை"</string>
-    <string name="sum_cfu_disabled" msgid="8384177689501334080">"முடக்கத்தில்"</string>
+    <string name="sum_cfu_disabled" msgid="8384177689501334080">"ஆஃப்"</string>
     <string name="labelCFB" msgid="6139853033106283172">"பிஸியாக இருக்கும்போது"</string>
     <string name="messageCFB" msgid="3711089705936187129">"பிஸியாக இருக்கும்போது:"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"<xliff:g id="PHONENUMBER">{0}</xliff:g> க்குப் பகிர்"</string>
-    <string name="sum_cfb_disabled" msgid="4913145177320506827">"முடக்கத்தில்"</string>
+    <string name="sum_cfb_disabled" msgid="4913145177320506827">"ஆஃப்"</string>
     <string name="disable_cfb_forbidden" msgid="3506984333877998061">"மொபைல் பிஸியாக இருக்கும்போது, அழைப்பு பகிர்தலை முடக்குவதை ஆபரேட்டர் ஆதரிக்கவில்லை."</string>
     <string name="labelCFNRy" msgid="1736067178393744351">"பதிலளிக்காமல் இருக்கும்போது"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"பதிலளிக்காதபோது:"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> க்குப் பகிர்"</string>
-    <string name="sum_cfnry_disabled" msgid="3884684060443538097">"முடக்கத்தில்"</string>
+    <string name="sum_cfnry_disabled" msgid="3884684060443538097">"ஆஃப்"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"பதிலளிக்காமல் இருக்கும்போது, அழைப்பு பகிர்தலை முடக்குவதை ஆபரேட்டர் ஆதரிக்கவில்லை."</string>
     <string name="labelCFNRc" msgid="2614827454402079766">"தொடர்புகொள்ள முடியாமல் இருக்கும்போது"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"தொடர்பு கிடைக்காதபோது:"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> க்குப் பகிர்"</string>
-    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"முடக்கப்பட்டுள்ளது"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"ஆஃப்"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"மொபைல் தொடர்புகொள்ள முடியாத இடத்தில் இருக்கும்போது, அழைப்பு பகிர்தலை முடக்குவதை ஆபரேட்டர் ஆதரிக்கவில்லை."</string>
     <string name="updating_title" msgid="6146755386174019046">"அழைப்பு அமைப்பு"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"நிர்வாகிப் பயனர் மட்டுமே அழைப்பிற்கான அமைப்புகளை மாற்ற முடியும்."</string>
@@ -238,11 +238,11 @@
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"மேம்பட்ட அழைப்பு"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"குரல் மற்றும் பிற தொடர்புமுறைகளை மேம்படுத்த, LTE சேவைகளைப் பயன்படுத்தவும் (பரிந்துரைக்கப்பட்டது)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"தரவு இயக்கப்பட்டது"</string>
-    <string name="data_enable_summary" msgid="2382798156640007971">"தரவுப் பயன்பாட்டை அனுமதி"</string>
+    <string name="data_enable_summary" msgid="2382798156640007971">"டேட்டா உபயோகத்தை அனுமதி"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"கவனம் தேவை"</string>
     <string name="roaming" msgid="7894878421600247140">"ரோமிங்"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"ரோமிங்கின் போது தரவு சேவைகளுடன் இணை"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"ரோமிங்கின் போது தரவு சேவைகளுடன் இணை"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"ரோமிங்கின் போது டேட்டா சேவைகளுடன் இணை"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"ரோமிங்கின் போது டேட்டா சேவைகளுடன் இணை"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"டேட்டா ரோமிங் முடக்கத்தில் உள்ளது. இயக்க, தட்டவும்."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"மொபைல் டேட்டா இணைப்பு இல்லை"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"குறிப்பிடத்தக்க பேமெண்ட்கள் இருக்கலாம்."</string>
@@ -254,17 +254,17 @@
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"தொலைத்தொடர்பு நிறுவனம்"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"தொலைத்தொடர்பு நிறுவனம், eSIM, சிம், euicc, தொலைத்தொடர்பு நிறுவனங்களை மாற்று, தொலைத்தொடர்பு நிறுவனத்தைச் சேர்"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="4661165467914727157">"மொபைல் தரவு"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"மொபைல் டேட்டா"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"மொபைல் நெட்வொர்க்கைப் பயன்படுத்தி, தரவை அணுகு"</string>
-    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"மொபைல் தரவை முடக்கவா?"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"மொபைல் டேட்டாவை முடக்கவா?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"தேர்ந்தெடுக்க வேண்டும்"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"தரவிற்கான சிம்மை மாற்றவா?"</string>
-    <string name="sim_change_data_message" msgid="2163963581444907496">"<xliff:g id="OLD_SIM">%2$s</xliff:g>க்குப் பதிலாக <xliff:g id="NEW_SIM">%1$s</xliff:g> இன் மொபைல் தரவைப் பயன்படுத்தவா?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"<xliff:g id="OLD_SIM">%2$s</xliff:g>க்குப் பதிலாக <xliff:g id="NEW_SIM">%1$s</xliff:g> இன் மொபைல் டேட்டாவைப் பயன்படுத்தவா?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"வைஃபை அழைப்பு"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"தொலைத்தொடர்பு நிறுவன வீடியோ அழைப்பு"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS விருப்பங்கள்"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA விருப்பங்கள்"</string>
-    <string name="throttle_data_usage" msgid="3715677828160555808">"டேட்டா பயன்பாடு"</string>
+    <string name="throttle_data_usage" msgid="3715677828160555808">"டேட்டா உபயோகம்"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"தற்போது பயன்படுத்தப்பட்ட தரவு"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"தரவு பயன்படுத்தப்பட்ட காலம்"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"தரவு கட்டண கொள்கை"</string>
@@ -384,7 +384,7 @@
     <item msgid="6043847456049107742">"1"</item>
   </string-array>
     <string name="cdma_activate_device" msgid="3793805892364814518">"சாதனத்தைச் செயல்படுத்தவும்"</string>
-    <string name="cdma_lte_data_service" msgid="4255018217292548962">"தரவு சேவையை அமை"</string>
+    <string name="cdma_lte_data_service" msgid="4255018217292548962">"டேட்டா சேவையை அமை"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"மொபைல் நிறுவன அமைப்பு"</string>
     <string name="fdn" msgid="7878832555095183202">"நிலையான அழைப்பு எண்கள்"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"நிலையான அழைப்பு எண்கள் (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"கேட்கும் சாதனத்தின் இணக்கத்தன்மையை இயக்கு"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"நிகழ்நேர உரை (RTT) அழைப்பு"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"குரல் அழைப்பிலேயே செய்தியிடலை அனுமதிக்கும்"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"காது கேளாதோர், கேட்பதற்குச் சிரமப்படுவோர், பேச இயலாதோர் அல்லது குரலைத் தாண்டி மற்ற வழிகளில் தகவல் தேவைப்படுவோருக்கு RTT பயன்முறை உதவுகிறது.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;மேலும் அறிக&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - டிரான்ஸ்கிரிப்ட் செய்யப்பட்ட செய்தியாக RTT அழைப்புகள் சேமிக்கப்படும்\n       &lt;br&gt; - வீடியோ அழைப்புகளுக்கு RTT பயன்முறை இல்லை"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ஐ முடக்கு"</item>
     <item msgid="3971695875449640648">"TTY ஐ இயக்கு"</item>
@@ -550,9 +551,9 @@
     <string name="ota_title_activate" msgid="8616918561356194398">"மொபைலைச் செயல்படுத்தவும்"</string>
     <string name="ota_touch_activate" msgid="6553212803262586244">"மொபைல் சேவையைச் செயல்படுத்துவதற்கு, சிறப்பு அழைப்பானது இயக்கப்பட்டிருக்க வேண்டும். \n\n\"செயல்படுத்து\" என்பதை அழுத்திய பிறகு, மொபைலைச் செயல்படுத்துவதற்கு வழங்கப்படும் வழிமுறைகளைக் கவனிக்கவும்."</string>
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"செயல்படுத்துகிறது..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"மொபைலில் மொபைல் தரவு சேவை செயல்படுத்தப்படுகிறது.\n\nஇதற்கு 5 நிமிடம் வரை எடுக்கலாம்."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"மொபைலில் மொபைல் டேட்டா சேவை செயல்படுத்தப்படுகிறது.\n\nஇதற்கு 5 நிமிடம் வரை எடுக்கலாம்."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"செயல்படுத்தலைத் தவிர்க்கவா?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"இதைத் தவிர்த்தால், அழைப்புகளை மேற்கொள்ள முடியாது அல்லது மொபைல் தரவு நெட்வொர்க்குகளுடன் இணைக்க முடியாது (எனினும் வைஃபை நெட்வொர்க்குகளுடன் இணைக்கலாம்). மொபைலைச் செயல்படுத்தும்வரை, அதை இயக்கும் ஒவ்வொரு முறையும் இதைச் செயல்படுத்துமாறு தெரிவிக்கப்படும்."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"இதைத் தவிர்த்தால், அழைப்புகளை மேற்கொள்ள முடியாது அல்லது மொபைல் டேட்டா நெட்வொர்க்குகளுடன் இணைக்க முடியாது (எனினும் வைஃபை நெட்வொர்க்குகளுடன் இணைக்கலாம்). மொபைலைச் செயல்படுத்தும்வரை, அதை இயக்கும் ஒவ்வொரு முறையும் இதைச் செயல்படுத்துமாறு தெரிவிக்கப்படும்."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"தவிர்"</string>
     <string name="ota_activate" msgid="1368528132525626264">"செயல்படுத்து"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"மொபைல் செயல்படுத்தப்பட்டது."</string>
@@ -634,12 +635,12 @@
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"தரவு ரோமிங் இயக்கப்பட்டுள்ளது"</string>
     <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"தற்போது ரோமிங்கில், தரவுத் திட்டம் தேவை"</string>
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"தற்போது ரோமிங்கில், தரவுத் திட்டம் இயக்கத்தில் உள்ளது"</string>
-    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"மொபைல் தரவு இல்லை"</string>
-    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"மொபைல் தரவு இல்லை"</string>
-    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> மூலம் மொபைல் தரவைச் சேர்க்கவும்"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"மொபைல் டேட்டா இல்லை"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"மொபைல் டேட்டா இல்லை"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> மூலம் மொபைல் டேட்டாவைச் சேர்க்கவும்"</string>
     <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"ரோமிங் திட்டம் இல்லை"</string>
     <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> மூலம் ரோமிங் திட்டத்தைச் சேர்க்கவும்"</string>
-    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"உங்கள் <xliff:g id="PROVIDER_NAME">%s</xliff:g> மொபைல் நிறுவனம் மூலம் மொபைல் தரவு அல்லது ரோமிங் திட்டத்தைச் சேர்க்கலாம்."</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"உங்கள் <xliff:g id="PROVIDER_NAME">%s</xliff:g> மொபைல் நிறுவனம் மூலம் மொபைல் டேட்டா அல்லது ரோமிங் திட்டத்தைச் சேர்க்கலாம்."</string>
     <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"தரவைச் சேர்க்கவா?"</string>
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> மூலம் தரவைச் சேர்க்க வேண்டியது இருக்கலாம்"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"தரவைச் சேர்"</string>
@@ -698,8 +699,8 @@
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"புரோட்டோகால் பிழை, குறிப்பிடப்படவில்லை"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"இண்டர்வொர்க்கிங், குறிப்பிடப்படவில்லை"</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"அழைப்புத் தடுப்பு"</string>
-    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"இயக்கப்பட்டது"</string>
-    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"முடக்கப்பட்டது"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"ஆன்"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"ஆஃப்"</string>
     <string name="call_barring_baoc" msgid="1199843944333106035">"வெளிச்செல்லும் எல்லா அழைப்புகளும்"</string>
     <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"வெளிச்செல்லும் எல்லா அழைப்புகளையும் தடுப்பதை முடக்கவா?"</string>
     <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"வெளிச்செல்லும் எல்லா அழைப்புகளையும் தடுக்கவா?"</string>

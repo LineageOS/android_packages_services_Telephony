@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Увімкнути функцію НАС"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Виклик із передаванням тексту в реальному часі"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Дозволити передавання повідомлень під час голосового виклику"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Функція RTT буде корисною для глухих користувачів або осіб із вадами слуху чи порушенням мовлення, а також тих людей, які не можуть цілком сприйняти голосове повідомлення та потребують додаткових засобів передачі.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Докладніше&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt;– RTT-виклики зберігаються як транскрибований текст.\n       &lt;br&gt; – Функція RTT не підтримується для відеодзвінків."</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Телетайп вимкнено"</item>
     <item msgid="3971695875449640648">"Повнофункціональний телетайп"</item>

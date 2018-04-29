@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"শ্রবণ যন্ত্র উপযুক্ততা চালু করুন"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"রিয়েল-টাইম টেক্সট (RTT) কল"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ভয়েস কলে মেসেজ পাঠানোর অনুমতি দিন"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"যে কলাররা বধির, কানে কম শোনেন, যাদের কথা বলতে অসুবিধা হয় অথবা যারা কণ্ঠস্বরের সাথে অন্য কোনও উপায়ে নিজেদের প্রকাশ করেন, RTT বৈশিষ্ট্যটি তাদের সাহায্য করে।&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;আরও জানুন&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT কলগুলি মেসেজ ট্রান্সক্রিপ্ট হিসেবে সেভ করে রাখা হয়\n       &lt;br&gt; - ভিডিও কলে RTT বৈশিষ্ট্য ব্যবহার করা যায় না"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY বন্ধ"</item>
     <item msgid="3971695875449640648">"TTY পূর্ণ"</item>

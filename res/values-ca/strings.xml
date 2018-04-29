@@ -249,7 +249,7 @@
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Contacta amb el proveïdor de xarxa per saber els preus."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permetre la itinerància de dades?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Ús de dades de l\'aplicació"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"Ús de dades mòbils en el període <xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"S\'han utilitzat <xliff:g id="ID_1">%1$s</xliff:g> en el període <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Configuració avançada"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operador de telefonia mòbil"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"operador, eSIM, SIM, eUICC, canviar d\'operador, afegir un operador"</string>
@@ -532,7 +532,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activa la compatibilitat amb audiòfons"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Trucada de text en temps real (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permet l\'ús de missatges en una trucada de veu"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"La funció RTT ofereix assistència als usuaris que són sords, tenen problemes d\'audició o alteracions de la parla, o bé que necessiten un text a banda de la veu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Més informació&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les trucades RTT es desen en forma de transcripció.\n       &lt;br&gt; - Aquesta funció no està disponible per a videotrucades."</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desactivat"</item>
     <item msgid="3971695875449640648">"TTY complet"</item>
