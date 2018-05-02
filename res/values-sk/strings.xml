@@ -248,7 +248,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Môžu sa vám účtovať vysoké poplatky."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Informácie o cenách získate od svojho poskytovateľa siete."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Povoliť dátový roaming?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"Spotreba dát aplikácie"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Spotreba dát aplikácií"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Spotreba mobilných dát za obdobie <xliff:g id="ID_2">%2$s</xliff:g> je <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Rozšírené"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operátor"</string>
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Hovor sa momentálne nedá pridať. Môžete namiesto toho skúsiť poslať správu."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Služba nie je podporovaná"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Nedajú sa prepínať hovory"</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Hovor sa nedá obnoviť."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nedá sa rozdeliť hovor"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Nedá sa preniesť"</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Hovory nie je možné spojiť do konferenčného hovoru."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Zapnúť režim kompatibility s načúvacou pomôckou"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Posielanie okamžitého textu (RTT) počas hovorov"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Povoliť posielanie správ počas hlasového hovoru"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Okamžitý text pomáha volajúcim, ktorí nepočujú, majú problémy so sluchom, rečovú poruchu alebo potrebujú viac ako samotný hlas.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Ďalšie informácie&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Okamžitý text poslaný počas hovoru sa uloží ako prepis správ\n       &lt;br&gt; – Okamžitý text nie je k dispozícii počas videohovorov"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Textový telefón vypnutý"</item>
     <item msgid="3971695875449640648">"Úplný textový telefón"</item>

@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Обаждането не може да бъде добавено сега. Може да се опитате да се свържете чрез изпращане на съобщение."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Услугата не се поддържа"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Обажданията не могат да се превключат."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Обаждането не може да се възобнови."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Обаждането не може да се отдели."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Не може да се прехвърли."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Не могат да се правят конферентни обаждания."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Включване на съвместимостта за слухов апарат"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Обаждане с текстово съобщение в реално време (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Позволяване на съобщения в рамките на гласово обаждане"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT подпомага обаждащи се, които са глухи, имат затруднения със слуха, говорно увреждане или се нуждаят от повече от само глас.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Научете повече&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT обажданията се запазват като препис на съобщение\n       &lt;br&gt; – RTT не е налице за видеообаждания"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY е изкл."</item>
     <item msgid="3971695875449640648">"Пълен TTY режим"</item>

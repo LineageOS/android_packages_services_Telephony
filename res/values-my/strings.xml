@@ -21,7 +21,7 @@
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"အရေးပေါ်နံပါတ်ခေါ်ဆိုနံပါတ်ကွက်"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"ဖုန်း"</string>
     <string name="fdnListLabel" msgid="8630418672279521003">"FDN စာရင်း"</string>
-    <string name="unknown" msgid="6878797917991465859">"အကြောင်းအရာ မသိရှိ"</string>
+    <string name="unknown" msgid="6878797917991465859">"မသိပါ"</string>
     <string name="private_num" msgid="6713286113000232309">"လျို့ဝှက် နံပါတ်"</string>
     <string name="payphone" msgid="4793877574636445118">"ငွေပေးရသည့်ဖုန်း"</string>
     <string name="onHold" msgid="9035493194749959955">"ခဏ ကိုင်ထားစဉ်"</string>
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"ယခုအချိန်တွင် ခေါ်ဆိုမှု ထပ်မထည့်နိုင်ပါ။ မက်ဆေ့ဂျ်ပို့ဆောင်ခြင်းဖြင့်လည်း ဆက်သွယ်ရန်ကြိုးစားနိုင်ပါသည်။"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"ဤဝန်ဆောင်မှုအား မပံ့ပိုးပါ။"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"ဖုန်းခေါ်ခြင်းများကြား မကူးပ​ြောင်းနိုင်ပါ။"</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"ဖုန်းဆက်ပြော၍ မရပါ။"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"ဖုန်းခေါ်ခြင်းအား မခွဲထုတ်နိုင်ပါ။"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"မလွှဲပြောင်းနိုင်ပါ။"</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"ကွန်းဖရင့် ပြုလုပ်၍ မရပါ"</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"အကြားအာရုံကိရိယာသုံးနိုင်ရန် ဖွင့်ပါ"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"အချိန်နှင့်တစ်ပြေးညီ စာသား(RTT) ခေါ်ဆိုမှု"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ဖုန်းပြောနေစဉ် မက်ဆေ့ဂျ်ပို့ခွင့်ပြုပါ"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT သည် နားမကြားသူ၊ နားလေးသူ၊ စကားချို့ယွင်းသူ (သို့) အသံတစ်မျိုးတည်းထက် ပိုမို၍ လိုအပ်သူများကို ကူညီပေးပါသည်။&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ပိုမိုလေ့လာရန်&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT ခေါ်ဆိုမှုများကို မက်ဆေ့ဂျ်စာသားမှတ်တမ်းအဖြစ် သိမ်းဆည်းပါသည်\n       &lt;br&gt; - RTT ကို ဗီဒီယိုခေါ်ဆိုမှုများအတွက် အသုံးမပြုနိုင်ပါ"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ပိတ်ထားသည်"</item>
     <item msgid="3971695875449640648">"TTY အပြည့်"</item>

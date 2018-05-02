@@ -250,7 +250,7 @@
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिंग की अनुमति दें?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ऐप्लिकेशन का डेटा खर्च"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> में <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा का उपयोग किया गया"</string>
-    <string name="advanced_options_title" msgid="8074895510265488035">"उन्नत"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"बेहतर विकल्प"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"वाहक"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"मोबाइल और इंटरनेट सेवा देने वाली कंपनी, eSIM, सिम, euicc, मोबाइल और इंटरनेट सेवा देने वाली कंपनी स्विच करें, मोबाइल और इंटरनेट सेवा देने वाली कंपनी जोड़ें"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"अभी कॉल जोड़ा नहीं जा सकता. आप संदेश भेजकर संपर्क करने की कोशिश कर सकते हैं."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"सेवा समर्थित नहीं है"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"कॉल स्‍विच नहीं किए जा सकते."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"कॉल फिर से शुरू नहीं की जा सकती."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"कॉल अलग नहीं किया जा सकता."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"ट्रांसफर नहीं किया जा सकता."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"कॉंन्फ़्रेंस कॉल करने में असमर्थ."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवण सहायक साधन संगतता चालू करें"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"(आरटीटी) कॉल से रीयल-टाइम में मैसेज भेजें"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"वॉइस कॉल में मैसेज भेजने की अनुमति दें"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"आरटीटी सुविधा, कॉल करने वाले ऐसे लोगों की मदद करती है, जो बधिर हैं, ऊंचा सुनते हैं या जिन्हें बोलने में कठिनाई होती है या जिनके लिए सिर्फ़ आवाज़ काफ़ी नहीं होती.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;अधिक जानें&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - आरटीटी कॉल मैसेज लेख के रूप में सेव किए जाते हैं\n       &lt;br&gt; - आरटीटी वीडियो कॉल के लिए उपलब्ध नहीं है"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बंद"</item>
     <item msgid="3971695875449640648">"TTY पूर्ण"</item>
@@ -607,7 +609,7 @@
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"आपातकालीन कॉल"</string>
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"केवल आपातकालीन कॉल"</string>
     <string name="sim_description_default" msgid="4778679519938775515">"सिम कार्ड, स्‍लॉट: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"सरल उपयोग"</string>
+    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"सुलभता"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"इससे वाई-फ़ाई कॉल"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"वाई-फ़ाई कॉल"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"खोलने के लिए पुन: टैप करें"</string>

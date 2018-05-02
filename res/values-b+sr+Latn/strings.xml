@@ -58,7 +58,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Podešavanja GSM poziva (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA podešavanja poziva"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"Podešavanja CDMA poziva (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"Nazivi prist. tačaka"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"Nazivi pristupnih tačaka"</string>
     <string name="settings_label" msgid="3876743539816984008">"Mrežna podešavanja"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Nalozi za pozivanje"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Upućujte pozive pomoću"</string>
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Dodavanje poziva trenutno nije moguće. Možete da pokušate da ostvarite kontakt pomoću poruke."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Usluga nije podržana"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Zamena poziva nije uspela."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Nismo uspeli da nastavimo poziv."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Razdvajanje poziva nije uspelo."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Prebacivanje nije uspelo."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Konferencijski pozivi nisu mogući."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Uključi kompatibilnost sa slušnim aparatom"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Poziv sa tekstom u realnom vremenu (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Dozvolite razmenu poruka u audio pozivu"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Tekst u realnom vremenu (RTT) pomaže pozivaocima koji su gluvi, slabo čuju, imaju govorne teškoće ili kojima je potrebno nešto više od glasa.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saznajte više&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT pozivi se čuvaju kao transkript poruke\n       &lt;br&gt; – RTT nije dostupan za video pozive"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY je isključen"</item>
     <item msgid="3971695875449640648">"TTY je pun"</item>

@@ -249,7 +249,7 @@
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hãy liên hệ với nhà cung cấp mạng của bạn để biết giá cước."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Cho phép chuyển vùng dữ liệu?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Mức sử dụng dữ liệu của ứng dụng"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"Đã sử dụng <xliff:g id="ID_1">%1$s</xliff:g> dữ liệu di động <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"Đã dùng <xliff:g id="ID_1">%1$s</xliff:g> dữ liệu di động: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Nâng cao"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Nhà cung cấp dịch vụ"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"nhà mạng, esim, sim, euicc, chuyển nhà mạng, thêm nhà mạng"</string>
@@ -362,7 +362,7 @@
     <string name="enable_disable_multi_category" msgid="626771003122899280">"Nhiều danh mục"</string>
     <string name="multi_category_enable" msgid="1179299804641721768">"Đã bật nhiều danh mục"</string>
     <string name="multi_category_disable" msgid="880104702904139505">"Đã vô hiệu hóa nhiều danh mục"</string>
-    <string name="network_lte" msgid="7702681952521375754">"LTE (được khuyến nghị)"</string>
+    <string name="network_lte" msgid="7702681952521375754">"LTE (khuyên dùng)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G (được khuyến nghị)"</string>
     <string name="network_global" msgid="1323190488685355309">"Toàn cầu"</string>
     <string name="cdma_system_select_title" msgid="5757657769327732833">"Chọn hệ thống"</string>
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Không thể thêm cuộc gọi tại thời điểm này. Bạn có thể cố gắng liên hệ bằng cách gửi tin nhắn."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Dịch vụ không được hỗ trợ"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Không chuyển đổi được cuộc gọi."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Không thể tiếp tục cuộc gọi."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Không tách được cuộc gọi."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Không chuyển được cuộc gọi."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Không thể thực hiện cuộc gọi hội nghị."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Bật khả năng tương thích trợ thính"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Cuộc gọi qua Tin nhắn theo thời gian thực (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Cho phép nhắn tin trong cuộc gọi thoại"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Tin nhắn theo thời gian thực (RTT) trợ giúp những người gọi khiếm thính, bị suy giảm thính lực, không có khả năng nói hoặc cần thêm hỗ trợ khác ngoài giọng nói.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Tìm hiểu thêm&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Cuộc gọi qua RTT được lưu dưới dạng bản chép lời tin nhắn\n       &lt;br&gt; - Không sử dụng được RTT trên cuộc gọi video"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Tắt TTY"</item>
     <item msgid="3971695875449640648">"TTY Đầy"</item>
@@ -607,7 +609,7 @@
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"Cuộc gọi khẩn cấp"</string>
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"Chỉ gọi điện khẩn cấp"</string>
     <string name="sim_description_default" msgid="4778679519938775515">"Thẻ SIM, rãnh: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Trợ năng"</string>
+    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Hỗ trợ tiếp cận"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"Cuộc gọi qua Wi-Fi từ"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Cuộc gọi qua Wi-Fi"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Nhấn lại để mở"</string>

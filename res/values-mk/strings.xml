@@ -255,7 +255,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"оператор, esim, sim, euicc, префрли оператори, додај оператор"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> - <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Мобилен интернет"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Пристапете до податоците преку мобилна мрежа"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Пристап на интернет преку мобилната мрежа"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Да се исклучи мобилниот интернет?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Треба да се избере"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Да се промени SIM за интернет?"</string>
@@ -501,6 +501,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Повикот не може да се додаде во моментов. Може да се обидете да стапите во контакт со испраќање порака."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Услугата не е поддржана"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Не може да префрли повици."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Не може да се продолжи повикот."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Не може да оддели повик."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Не може да пренесе."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Не може да оствари конференциски повици."</string>
@@ -538,7 +539,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Вклучи компатибилност на слушни помагала"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Повик со „Текст во реално време“ (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Дозволете пораки во текот на гласовен повик"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Функцијата RTT им помага на повикувачи коишто се глуви, слабо слушаат, имаат говорна мана или пак, им е потребно многу повеќе од глас.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Дознајте повеќе&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Повиците со RTT се зачувуваат како препис на порака\n       &lt;br&gt; - Функцијата RTT не е достапна за видеоповици"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY исклучени"</item>
     <item msgid="3971695875449640648">"TTY целосни"</item>

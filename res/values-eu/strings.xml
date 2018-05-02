@@ -501,6 +501,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Une honetan, ezin da egin deia. Deitu ordez, mezu bat bidaltzen saia zaitezke."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Ez da zerbitzua onartzen"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Ezin da deiz aldatu."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Ezin zaio berrekin deiari."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Ezin da deia bereizi."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Ezin da transferitu."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Ezin da konferentzia-deirik egin."</string>
@@ -538,7 +539,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Aktibatu audiofonoen bateragarritasuna"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Deietan testua bidaltzeko eginbidea"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Baimendu mezuak bidali eta jasotzea ahots-deien barruan"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"Deietan testua bidaltzeko eginbideak deitzaile gorrei, entzumen-arazoak dituztenei, hitz egiteko ezintasunen bat dutenei edota ahotsaz gain beste makuluren bat behar dutenei laguntzen die..&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lortu informazio gehiago&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Deietan testua bidaltzeko eginbidearekin egindako deiak mezu-transkripzio gisa gordetzen dira.\n       &lt;br&gt; - Deietan testua bidaltzeko eginbidea ez da bateragarria bideo-deiekin."</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desaktibatuta"</item>
     <item msgid="3971695875449640648">"TTY osoa"</item>
@@ -556,9 +558,9 @@
     <string name="ota_title_activate" msgid="8616918561356194398">"Aktibatu telefonoa"</string>
     <string name="ota_touch_activate" msgid="6553212803262586244">"Telefono-zerbitzua aktibatzeko, dei berezi bat egin behar da.\n\n\"Aktibatu\" sakatu ondoren, telefonoa aktibatzeko, entzun ematen zaizkizun argibideak."</string>
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"Aktibatzen…"</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"Telefonoa datu mugikorren zerbitzua aktibatzen ari da.\n\nEragiketa 5 minutura arte luza daiteke."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"Telefonoa datu-konexioaren zerbitzua aktibatzen ari da.\n\nEragiketa 5 minutura arte luza daiteke."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Aktibazioa saltatu nahi duzu?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Aktibazioa saltatzen baduzu, ezingo dituzu deiak egin eta ezingo duzu datu mugikorren sareetara konektatu, baina Wi-Fi sareetara konektatu ahal izango duzu. Telefonoa aktibatzen duzun arte, pizten duzun bakoitzean eskatuko zaizu aktibatzeko."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Aktibazioa saltatzen baduzu, ezingo duzu deirik egin, ez eta datu-konexioaren sareetara konektatu ere, baina Wi-Fi sareetara konektatu ahal izango duzu. Telefonoa aktibatzen duzun arte, pizten duzun bakoitzean eskatuko zaizu aktibatzeko."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Saltatu"</string>
     <string name="ota_activate" msgid="1368528132525626264">"Aktibatu"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"Telefonoa aktibatuta dago."</string>

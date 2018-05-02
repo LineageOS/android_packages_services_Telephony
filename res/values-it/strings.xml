@@ -169,7 +169,7 @@
     <string name="connect_later" msgid="2308119155752343975">"Impossibile connettersi a questa rete in questo momento. Riprova più tardi."</string>
     <string name="registration_done" msgid="495135664535876612">"Registrato sulla rete."</string>
     <string name="already_auto" msgid="6067116884321285507">"Già in selezione automatica."</string>
-    <string name="select_automatically" msgid="1046727200631770962">"Seleziona automaticamente la rete"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"Seleziona rete automaticamente"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Rete"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Registrazione automatica..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tipo di rete preferito"</string>
@@ -249,7 +249,7 @@
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Verifica i costi con il tuo fornitore di rete."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Consentire il roaming dei dati?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Utilizzo dei dati delle app"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"Utilizzo dati mobili: <xliff:g id="ID_1">%1$s</xliff:g> nel periodo <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"Dati mobili usati: <xliff:g id="ID_1">%1$s</xliff:g> nel periodo <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avanzate"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operatore"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"operatore, esim, sim, euicc, cambia operatore, aggiungi operatore"</string>
@@ -499,6 +499,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Impossibile aggiungere la chiamata al momento. Prova a inviare un messaggio."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Servizio non supportato"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Impossibile cambiare chiamata."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Impossibile riprendere la chiamata."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Impossibile separare la chiamata."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Impossibile trasferire."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Audioconferenze non disponibili"</string>
@@ -536,7 +537,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Attiva la compatibilità con apparecchi acustici"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Chiamate con Real-time text (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Consenti l\'utilizzo di messaggi durante le chiamate vocali"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT aiuta i chiamanti con disabilità uditive o del linguaggio e le persone che hanno bisogno di un supporto scritto oltre alla voce.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Ulteriori informazioni&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Le chiamate RTT vengono salvare come una trascrizione in messaggi\n       &lt;br&gt; - RTT non è disponibile per le videochiamate"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY disattivato"</item>
     <item msgid="3971695875449640648">"TTY completo"</item>

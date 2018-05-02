@@ -58,7 +58,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Mipangilio ya simu ya GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"Mipangilio ya simu ya CDMA"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"Mipangilio ya simu ya CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"Majina ya milango ya Mtandao"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"Majina ya milango ya mtandao"</string>
     <string name="settings_label" msgid="3876743539816984008">"Mipangilio ya mtandao"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Akaunti za simu"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Piga simu kutumia"</string>
@@ -240,7 +240,7 @@
     <string name="data_enabled" msgid="5972538663568715366">"Data imewashwa"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Ruhusu matumizi ya data"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Ilani"</string>
-    <string name="roaming" msgid="7894878421600247140">"Matumizi ya mitandao mingine"</string>
+    <string name="roaming" msgid="7894878421600247140">"Mitandao ya ng\'ambo"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Unganisha huduma ya data wakati niko nje ya mtandao wangu wa kawaida"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Unganisha huduma ya data wakati niko nje ya mtandao wangu wa kawaida"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Kipengele cha kuwasha matumizi ya intaneti ukiwa nje ya mtandao wako wa kawaida kimezimwa. Gusa ili ukiwashe."</string>
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Simu haiwezi kuongezwa kwa sasa. Unaweza kujaribu kuwasiliana kwa kutuma ujumbe."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Huduma haiwezi kutumika."</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Haiwezi kubadili simu."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Imeshindwa kuendelea kupiga simu."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Haiwezi kutenganisha simu."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Haiwezi kuhamisha."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Imeshindwa kupigia watu wengi."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Washa utangamano wa kifaa cha kusaidia kusikia"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Kutuma SMS katika Muda Halisi (RTT) wakati wa kupiga simu"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Ruhusu uandikaji wa ujumbe wakati unapiga simu"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT huwasaidia wapigaji simu ambao ni viziwi, wasioweza kusikia vyema,wenye matatizo ya kuzungumza au wanaohitaji kufanya zaidi ya kuzungumza tu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Pata maelezo zaidi&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Simu za RTT huhifadhiwa kama manukuu ya ujumbe \n       &lt;br&gt; - RTT haipatikani kwa simu za video"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Zima TTY"</item>
     <item msgid="3971695875449640648">"TTY Kamili"</item>

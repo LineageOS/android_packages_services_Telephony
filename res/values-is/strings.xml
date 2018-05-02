@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Ekki er hægt að bæta símtali við að svo stöddu. Þú getur reynt að hafa samband með því að senda skilaboð."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Þjónusta ekki studd"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Ekki hægt að skipta milli símtala."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Ekki er hægt að halda áfram með símtal."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Ekki hægt að aðskilja símtal."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Ekki hægt að flytja."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Ekki hægt að halda símafund."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Kveikja á samhæfi við heyrnartæki"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"RTT-símtal (með texta í rauntíma)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Leyfa skilaboðasendingar í símtölum"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT (símtöl með texta í rauntíma) aðstoðar heyrnarlausa og fólk með heyrnarskerðingu eða skerta talgetu og þá sem þurfa að styðja sig við meira en bara hljóð.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Frekari upplýsingar&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-símtöl eru vistuð í umrituðum skilaboðum\n       &lt;br&gt; - RTT er ekki í boði fyrir myndsímtöl"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Slökkt á TTY"</item>
     <item msgid="3971695875449640648">"TTY að fullu"</item>

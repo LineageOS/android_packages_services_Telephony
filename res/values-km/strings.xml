@@ -19,7 +19,7 @@
     <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ទិន្នន័យ​ទូរសព្ទចល័ត"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"សេវាកម្មទូរស័ព្ទ"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"អ្នក​ហៅ​នៅ​ពេល​មាន​អាសន្ន"</string>
-    <string name="phoneIconLabel" msgid="2331230813161304895">"ទូរស័ព្ទ"</string>
+    <string name="phoneIconLabel" msgid="2331230813161304895">"ទូរសព្ទ"</string>
     <string name="fdnListLabel" msgid="8630418672279521003">"បញ្ជី FDN"</string>
     <string name="unknown" msgid="6878797917991465859">"មិន​ស្គាល់"</string>
     <string name="private_num" msgid="6713286113000232309">"លេខ​ឯកជន"</string>
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"មិន​អាច​បញ្ចូល​ការហៅបាន​ទេ​នៅពេល​នេះ។ អ្នក​អាច​ព្យាយាម​ទាក់ទង​​តាមរយៈ​ការផ្ញើសារ។"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"សេវាកម្មមិនត្រូវបានគាំទ្រទេ។"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"មិនអាចឆ្លាស់ការហៅបានទេ។"</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"មិន​អាច​បន្ត​ការហៅ​ទូរសព្ទ​បាន​ទេ។"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"មិនអាចបំបែកការហៅបានទេ។"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"មិនអាចផ្ទេរបានទេ។"</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"មិន​អាច​ហៅ​ជា​សន្និសីទ។"</string>
@@ -503,7 +504,7 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"មិនអាចរង់ចាំការហៅទេ"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ភ្ជាប់ទៅបណ្តាញឥតខ្សែដើម្បីធ្វើការហៅ។"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"បើក​ការ​ហៅ​តាម​​វ៉ាយហ្វាយ​ដើម្បី​ធ្វើ​ការ​ហៅ។"</string>
-    <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ការ​ហៅ​នៅ​ពេល​មាន​អាសន្ន"</string>
+    <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ការហៅ​ទូរសព្ទសង្គ្រោះ​បន្ទាន់"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"កំពុង​បើក​វិទ្យុ…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"គ្មានសេវាទេ។ ព្យាយាមម្តង…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"មិន​អាច​ចូល​ជា​របៀប​លើ​យន្តហោះ​​នៅ​អំឡុង​ការ​ហៅ​បន្ទាន់​បាន​ទេ។"</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"បើក​មុខងារដែលត្រូវគ្នានឹងឧបករណ៍​ជំនួយ​ការ​ស្ដាប់"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"ការហៅ​តាម​សារ​ជា​អក្សរ​ក្នុង​ពេល​ជាក់ស្ដែង"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"អនុញ្ញាត​ការផ្ញើសារ​នៅ​ក្នុង​ការហៅ​ជា​សំឡេង"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT ជួយ​អ្នក​ហៅ​ទូរសព្ទ​ដែល​​ថ្លង់ ពិបាក​ក្នុង​ការស្ដាប់ មិន​អាច​និយាយ​បាន ឬ​​មាន​តម្រូវការ​ក្រៅ​ពី​សំឡេង។&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ស្វែងយល់​បន្ថែម&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - ការហៅ​ទូរសព្ទតាម RTT ត្រូវ​បាន​រក្សាទុក​ជា​ប្រតិចារឹក​សារ \n       &lt;br&gt; - RTT មិន​មានសម្រាប់ការហៅ​ជា​វីដេអូ​​ទេ"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"បិទ TTY"</item>
     <item msgid="3971695875449640648">"TTY ពេញ"</item>

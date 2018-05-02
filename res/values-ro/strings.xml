@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Apelul nu poate fi inițiat în acest moment. Puteți lua legătura cu persoana respectivă trimițându-i un mesaj."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Serviciul nu este compatibil"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Apelurile nu pot fi comutate."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Nu se poate relua apelul."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Apelul nu poate fi separat."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Nu se poate transfera."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Teleconferința nu se poate efectua."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activați compatibilitatea cu aparatele auditive"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Apel de tipul Text în timp real (TTR)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permiteți schimbul de mesaje în timpul unui apel vocal"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"TTR oferă asistență apelanților fără auz, cu deficiențe de auz, care au dizabilități de vorbire sau care au nevoie de mai mult decât vocea.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Aflați mai multe&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Apelurile RTT sunt salvate ca transcrierea unui mesaj\n       &lt;br&gt; - Serviciul TTR nu este disponibil pentru apelurile video."</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY dezactivat"</item>
     <item msgid="3971695875449640648">"TTY integral"</item>

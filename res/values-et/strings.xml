@@ -248,14 +248,14 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Lisanduda võivad suured tasud."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hinnakirja küsige oma võrguteenuse pakkujalt."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Kas lubada andmeside rändlus?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"Rakenduse andmekasutus"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Rakenduste andmekasutus"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Vahemikus <xliff:g id="ID_2">%2$s</xliff:g> on kasutatud <xliff:g id="ID_1">%1$s</xliff:g> mobiilset andmesidet"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Täpsemad"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operaator"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"operaator, esim, sim, euicc, vaheta operaatorit, lisa operaator"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobiilne andmeside"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Juurdepääs andmetele mobiilsidevõrgu abil"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Andmesideühendus mobiilsidevõrgu abil"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Kas lülitada mobiilne andmeside välja?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Valik on tegemata"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Muuta andmeside SIM-kaarti?"</string>
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Kõnet ei saa praegu lisada. Proovige helistamise asemel sõnum saata."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Teenust ei toetata"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Kõnesid ei saa vahetada."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Kõnet ei saa jätkata."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Kõnet ei saa eraldada."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Ei saa üle kanda."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Konverentskõnesid ei saa teha."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Lülita kuuldeaparaadi ühilduvus sisse"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Reaalajas teksti saatmise (RTT) kõne"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Häälkõnes sõnumside lubamine"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT aitab kurte, kuulmis- või kõnepuudega helistajaid või neid, kes vajavad lisaks häälele muud abi.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lisateave&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT-kõned salvestatakse sõnumi trankriptsioonina \n       &lt;br&gt; – RTT pole saadaval videokõnede puhul"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY väljas"</item>
     <item msgid="3971695875449640648">"TTY-täisrežiim"</item>

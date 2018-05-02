@@ -236,7 +236,7 @@
     <string name="network_operator_category" msgid="4830701959205735636">"Réseau"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Mode LTE 4G avancé"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Appel avancé"</string>
-    <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Utiliser services LTE pour améliorer communications vocales et autres (recommandé)"</string>
+    <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Utiliser les services LTE pour améliorer les communications vocales et autres (recommandé)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Données activées"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Autoriser la consommation des données"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Avertissement"</string>
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Impossible d\'ajouter un appel pour le moment. Essayez plutôt d\'envoyer un message."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Service incompatible"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Impossible de changer d\'appel."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Impossible de reprendre l\'appel."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Impossible d\'isoler l\'appel."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Transfert impossible."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Impossible d\'effectuer des conférences téléphoniques."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activer la compatibilité avec les prothèses auditives"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Appel texte en temps réel"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Autoriser l\'échange de messages pendant les appels vocaux"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"La fonctionnalité de texte en temps réel vient en aide aux personnes sourdes, malentendantes, qui ont un trouble de la parole, ou qui ont besoin d\'une transcription en plus de la voix.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;En savoir plus&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Les appels texte en temps réel sont enregistrés sous forme de transcription\n       &lt;br&gt; – Le mode texte en temps réel n\'est pas disponible pour les appels vidéo"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Mode TTY désactivé"</item>
     <item msgid="3971695875449640648">"TTY complet"</item>

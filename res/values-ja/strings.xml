@@ -249,7 +249,7 @@
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"価格設定については、ネットワーク プロバイダにお問い合わせください。"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"データ ローミングを許可しますか？"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"アプリのデータ使用量"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> のモバイルデータ使用量: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>のモバイルデータ使用量: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"詳細設定"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"携帯通信会社"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"携帯通信会社, eSIM, SIM, eUICC, 携帯通信会社を切り替える, 携帯通信会社を追加"</string>
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"現在、通話を追加できません。連絡するには、メッセージを送信してみてください。"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"サービスはサポートされていません"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"通話を切り替えられません。"</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"通話を再開できません。"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"通話を分割できません。"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"転送できません。"</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"グループ通話を利用できません。"</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"補聴機能の互換をON"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"リアルタイム テキスト（RTT）通話"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"音声通話中のメッセージ送信を許可する"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT は、聴覚障害や言語障害があるなど、音声だけではコミュニケーションを取ることが困難なユーザーをサポートする機能です。&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;詳細&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT 通話は文字に変換して保存されます\n       &lt;br&gt; - RTT はビデオ通話ではご利用いただけません"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY OFF"</item>
     <item msgid="3971695875449640648">"TTY フル"</item>
