@@ -532,8 +532,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Uključi kompatibilnost za slušni aparat"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Pozivanje sa slanjem SMS-ova u stvarnom vremenu (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Dozvolite razmjenu poruka tokom glasovnog poziva"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT pomaže pozivaocima koji su gluhi, imaju probleme sa sluhom ili govorom te onima kojima treba više od samog glasa.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saznajte više&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT pozivi se pohranjuju kao transkripti poruka\n       &lt;br&gt; - RTT nije dostupan za video pozive"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY je isključen"</item>
     <item msgid="3971695875449640648">"TTY je pun"</item>

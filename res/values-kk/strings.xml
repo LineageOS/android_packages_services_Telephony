@@ -532,8 +532,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Есту аппаратының қолдауын қосу"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Хабар жіберу функциясы бар қоңырау (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Дауыстық қоңырау кезінде хабар жіберу мүмкіндігін қосу"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT функциясы керең немесе есту не сөйлеу қабілеті төмен адамдарға көмек ретінде не дауысқа қосымша функциялар қажет болғанда қолданылады. <xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>Толығырақ ақпарат\n RTT қоңыраулары хабар транскрипциясы ретінде сақталады\nRTT функциясы бейне қоңыраулар үшін қолданылмайды"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Tелетайп өшірулі"</item>
     <item msgid="3971695875449640648">"Tелетайп толық функциялы"</item>

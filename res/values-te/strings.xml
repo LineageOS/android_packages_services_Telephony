@@ -532,8 +532,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"వినికిడి సహాయక సాధనం అనుకూలతను ప్రారంభించండి"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"నిజ సమయ వచనం (RTT) కాల్"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"వాయిస్ కాల్‌లో సందేశాలు పంపడానికి అనుమతించండి"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"బధిరులు, వినికిడి సమస్యలు ఉన్న వారు, మాట్లాడటంలో సమస్యలు ఉన్న వారు లేదా కేవలం వాయిస్‌తో అర్థం చేసుకోలేని కాలర్‌లకు RTT సహాయపడుతుంది.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;మరింత తెలుసుకోండి&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT కాల్‌లు సందేశ లిపి మార్పు వలె సేవ్ చేయబడతాయి\n       &lt;br&gt; - వీడియో కాల్‌ల కోసం RTT అందుబాటులో లేదు"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ఆఫ్‌లో ఉన్నవి"</item>
     <item msgid="3971695875449640648">"TTY సంపూర్ణంగా ఉన్నవి"</item>

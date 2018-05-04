@@ -532,8 +532,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Eşitmə yardımı uyğunluğunu aktivləşdirin"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Real zaman mətn (RTT) zəngi"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Səsli zəng daxilində mesajlaşmaya icazə verin"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT kar və ya eşitmə problemi olan, danışma qüsuru olan və ya səsdən daha çoxuna ehtiyac duyan şəxslərə dəstək olur.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Ətraflı məlumat&lt;/a&gt;\n &lt;br&gt;&lt;br&gt; - RTT zəngləri mesaj transkripsiyası kimi yadda saxlanılır\n &lt;br&gt; - RTT video zənglər üçün əlçatan deyil"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Deaktiv"</item>
     <item msgid="3971695875449640648">"TTY Tam"</item>
