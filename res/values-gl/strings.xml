@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Non se pode realizar a chamada neste momento. Podes tentar poñerte en contacto mediante unha mensaxe."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Servizo non compatible"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Non se poden cambiar as chamadas."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Non se puido retomar a chamada."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Non se pode separar a chamada."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Non se pode transferir."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Non se poden efectuar conferencias."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activar a compatibilidade con audiófonos"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Chamada RTT (texto en tempo real)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permitir uso de mensaxes durante unha chamada de voz"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"A función RTT constitúe unha axuda para todos aqueles emisores de chamadas que padezan xordeira ou outros problemas auditivos, teñan algún trastorno da fala ou necesiten algo máis que a voz para comunicarse.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Máis información&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; — As chamadas RTT gárdanse como transcricións de mensaxes\n       &lt;br&gt; — Non se pode utilizar a función RTT nas videochamadas"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desactivado"</item>
     <item msgid="3971695875449640648">"TTY completo"</item>

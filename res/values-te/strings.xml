@@ -58,7 +58,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM కాల్ సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA కాల్ సెట్టింగ్‌లు"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA కాల్ సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"ప్రాప్యత పాయింట్ పేర్లు"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"యాక్సెస్ పాయింట్ పేర్లు"</string>
     <string name="settings_label" msgid="3876743539816984008">"నెట్‌వర్క్ సెట్టింగ్‌లు"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"కాల్ చేయగల ఖాతాలు"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"దీనితో కాల్‌లు చేయి"</string>
@@ -169,7 +169,7 @@
     <string name="connect_later" msgid="2308119155752343975">"ప్రస్తుతం ఈ నెట్‌వర్క్‌కు కనెక్ట్ చేయడం సాధ్యపడదు. తర్వాత మళ్లీ ప్రయత్నించండి."</string>
     <string name="registration_done" msgid="495135664535876612">"నెట్‌వర్క్‌లో నమోదు అయింది."</string>
     <string name="already_auto" msgid="6067116884321285507">"ఇప్పటికే స్వయంచాలక ఎంపికలో ఉంది."</string>
-    <string name="select_automatically" msgid="1046727200631770962">"నెట్‌వర్క్‌ను స్వయంచాలకంగా ఎంచుకోండి"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"నెట్‌వర్క్‌ను ఆటోమేటిక్‌గా ఎంచుకో"</string>
     <string name="network_select_title" msgid="7733107364757544558">"నెట్‌వర్క్"</string>
     <string name="register_automatically" msgid="6017849844573519637">"స్వయంచాలక నమోదు…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ప్రాధాన్య నెట్‌వర్క్ రకం"</string>
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"ఈ సమయంలో కాల్ జోడించబడదు. మీరు సందేశాన్ని పంపడం ద్వారా సంప్రదించవచ్చు."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"సేవకు మద్దతు లేదు"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"కాల్‌లను మార్చలేరు."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"కాల్‌ను పునఃప్రారంభించలేరు."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"కాల్‌ను వేరు చేయలేరు."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"బదిలీ చేయలేరు."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"కాన్ఫరెన్స్ కాల్‌లు చేయడం సాధ్యపడలేదు."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"వినికిడి సహాయక సాధనం అనుకూలతను ప్రారంభించండి"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"నిజ సమయ వచనం (RTT) కాల్"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"వాయిస్ కాల్‌లో సందేశాలు పంపడానికి అనుమతించండి"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"బధిరులు, వినికిడి సమస్యలు ఉన్న వారు, మాట్లాడటంలో సమస్యలు ఉన్న వారు లేదా కేవలం వాయిస్‌తో అర్థం చేసుకోలేని కాలర్‌లకు RTT సహాయపడుతుంది.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;మరింత తెలుసుకోండి&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT కాల్‌లు సందేశ లిపి మార్పు వలె సేవ్ చేయబడతాయి\n       &lt;br&gt; - వీడియో కాల్‌ల కోసం RTT అందుబాటులో లేదు"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ఆఫ్‌లో ఉన్నవి"</item>
     <item msgid="3971695875449640648">"TTY సంపూర్ణంగా ఉన్నవి"</item>

@@ -58,7 +58,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM қоңырау параметрлері (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA қоңырауының параметрлері"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA қоңырау параметрлері (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"Кіру нүктесінің атаулары"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"APN"</string>
     <string name="settings_label" msgid="3876743539816984008">"Желі параметрлері"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Қоңырау шалу есептік жазбалары"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Келесінің көмегімен қоңыраулар шалу"</string>
@@ -241,8 +241,8 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"Деректерді пайдалануға рұқсат ету"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Назар аударыңыз"</string>
     <string name="roaming" msgid="7894878421600247140">"Роуминг"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Роуминг кезінде дерек қызметтеріне қосу"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Роуминг кезінде дерек қызметтеріне қосу"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Роуминг кезінде дерек тасымалдау қызметтеріне қосылу"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Роуминг кезінде дерек тасымалдау қызметтеріне қосылу"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Роуминг өшірулі. Қосу үшін түртіңіз."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Ұялы байланыс жоғалып кетті"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Қомақты ақы алынуы мүмкін."</string>
@@ -263,8 +263,8 @@
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Wi-Fi қоңыраулары"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Оператор бейне қоңыраулары"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS опциялары"</string>
-    <string name="cdma_options" msgid="4016822858172249884">"CDMA (кең жолақты әр түрлі кодты бірнеше қол жетімділік) опциялары"</string>
-    <string name="throttle_data_usage" msgid="3715677828160555808">"Дерекқор қолдану"</string>
+    <string name="cdma_options" msgid="4016822858172249884">"CDMA (кең жолақты әртүрлі кодты бірнеше қол жетімділік) опциялары"</string>
+    <string name="throttle_data_usage" msgid="3715677828160555808">"Дерек шығыны"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"Ағымдағы мерзімде қолданылған дерекқор"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"Дерекқор қолдану мерзімі"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"Дерекқор мөлшеріне қатысты саясат"</string>
@@ -372,7 +372,7 @@
     <item msgid="176474317493999285">"Hегізгі ғана"</item>
     <item msgid="1205664026446156265">"Aвтоматты"</item>
   </string-array>
-    <string name="cdma_subscription_title" msgid="1162564010076763284">"CDMA (кең жолақты әр түрлі кодты бірнеше қол жетімділік) жазылымы"</string>
+    <string name="cdma_subscription_title" msgid="1162564010076763284">"CDMA (кең жолақты әртүрлі кодты бірнеше қол жетімділік) жазылымы"</string>
     <string name="cdma_subscription_summary" msgid="2530890766115781140">"RUIM/SIM және NV арасында ауысу"</string>
     <string name="cdma_subscription_dialogtitle" msgid="2699527950523333110">"жазылым"</string>
   <string-array name="cdma_subscription_choices">
@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Қоңырауды қазір қосу мүмкін емес. Хабар жіберіп хабарласуға болады."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Қызметке қолдау көрсетілмейді"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Қоңырауларды ауыстыру мүмкін емес."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Қоңырауды жалғастыру мүмкін болмады."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Қоңырауды бөлу мүмкін емес."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Тасымалдау мүмкін емес."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Мәжіліс қоңырауларын өшіру."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Есту аппаратының қолдауын қосу"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Хабар жіберу функциясы бар қоңырау (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Дауыстық қоңырау кезінде хабар жіберу мүмкіндігін қосу"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT функциясы керең немесе есту не сөйлеу қабілеті төмен адамдарға көмек ретінде не дауысқа қосымша функциялар қажет болғанда қолданылады.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Толығырақ ақпарат&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT қоңыраулары хабар транскрипциясы ретінде сақталады\n       &lt;br&gt; - RTT функциясы бейне қоңыраулар үшін қолданылмайды"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Tелетайп өшірулі"</item>
     <item msgid="3971695875449640648">"Tелетайп толық функциялы"</item>

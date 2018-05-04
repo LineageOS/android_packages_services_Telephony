@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Çağrı şu anda eklenemiyor. Mesaj göndererek ulaşmayı deneyebilirsiniz."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Hizmet desteklenmiyor"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Çağrı geçişi yapılamıyor."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Çağrı devam ettirilemiyor."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Çağrı ayrılamıyor."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Aktarılamıyor."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Çağrılar konferans görüşmesi olarak birleştirilemiyor."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"İşitme cihazı uyumluluğunu aç"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Gerçek zamanlı mesaj (RTT) çağrısı"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Sesli aramada mesajlaşmaya izin verilir"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT; tam veya kısmi işitme engelli, konuşma engeli olan veya sesten fazlasına ihtiyaç duyan arayanlara yardımcı olur.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Daha fazla bilgi&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT çağrıları, mesaj çeviri yazısı olarak kaydedilir\n       &lt;br&gt; - RTT, görüntülü görüşmelerde kullanılamaz"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Kapalı"</item>
     <item msgid="3971695875449640648">"TTY Tam"</item>

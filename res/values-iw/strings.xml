@@ -495,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"לא ניתן להוסיף את השיחה כרגע. ניתן לנסות לשלוח הודעה."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"שירות לא נתמך"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"לא ניתן לעבור בין שיחות."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"לא ניתן להמשיך את השיחה."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"לא ניתן להפריד שיחה."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"לא ניתן להעביר."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"אין אפשרות לנהל שיחות ועידה."</string>
@@ -532,7 +533,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"הפעל תאימות למכשיר שמיעה"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"‏שיחת RTT (טקסט בזמן אמת)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"אפשר לשלוח הודעות טקסט בזמן שיחה"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"‏RTT (טקסט בזמן אמת) היא תכונת נגישות שעוזרת לחרשים, לקויי שמיעה, לקויי דיבור או אנשים שלא יכולים להסתפק רק בשיחות קוליות.&lt;br&gt;‏ &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>למידע נוסף&lt;/a&gt;‏\n      &lt;br&gt;&lt;br&gt; - שיחות RTT מתומללות ונשמרות כהודעות\n &lt;br&gt; - אי אפשר להשתמש ב-RTT לשיחות וידאו"</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"‏TTY כבוי"</item>
     <item msgid="3971695875449640648">"‏TTY מלא"</item>

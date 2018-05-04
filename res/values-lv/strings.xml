@@ -497,6 +497,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Pašlaik nevar pievienot zvanu. Varat mēģināt sūtīt īsziņu."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Pakalpojums netiek atbalstīts"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Nevar pārslēgt zvanus."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Nevar atsākt zvanu."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nevar nošķirt zvanu."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Nevar pāradresēt."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Nevar veikt konferences zvanus."</string>
@@ -534,7 +535,8 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Ieslēgt saderību ar dzirdes aparātiem"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Reāllaika teksta (RTT) zvans"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Atļaut ziņojumapmaiņu balss zvanā"</string>
-    <string name="rtt_mode_more_information" msgid="8587829103563257193">"RTT funkcionalitāte palīdz nedzirdīgiem un vājdzirdīgiem zvanītājiem, kā arī zvanītājiem, kuriem ir runas traucējumi vai ir nepieciešama ne tikai balss skaņa.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Uzzināt vairāk&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT zvani tiek saglabāti ziņojumu transkripcijas formātā.\n       &lt;br&gt; - RTT funkcionalitāte nav pieejama videozvaniem."</string>
+    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
+    <skip />
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Teletaips ir izslēgts"</item>
     <item msgid="3971695875449640648">"Viss teletaips"</item>
