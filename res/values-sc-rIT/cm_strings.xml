@@ -33,7 +33,11 @@
   <!-- Toast text for incoming call connecting through ECT -->
   <!-- Toast text for incoming call connected through ECT -->
   <!-- Mobile network settings, preferred network modes -->
+  <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA ebbia</string>
+  <string name="preferred_network_mode_global_choice">Globale</string>
+  <string name="msim_mobile_network_settings_title">Impostatziones retzas mòbiles SIM %d</string>
   <!-- Permission to modify network mode via intent -->
   <!-- Network mode picker dialog title -->
+  <string name="cdma_call_settings">Impostatziones mutidas CDMA</string>
   <!-- Mobile network settings, COLP -->
 </resources>
