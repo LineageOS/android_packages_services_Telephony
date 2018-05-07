@@ -532,8 +532,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"கேட்கும் சாதனத்தின் இணக்கத்தன்மையை இயக்கு"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"நிகழ்நேர உரை (RTT) அழைப்பு"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"குரல் அழைப்பிலேயே செய்தியிடலை அனுமதிக்கும்"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"காது கேளாதோர், கேட்பதற்குச் சிரமப்படுவோர், பேச இயலாதோர் அல்லது குரலைத் தாண்டி மற்ற வழிகளில் தகவல் தேவைப்படுவோருக்கு RTT பயன்முறை உதவுகிறது.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;மேலும் அறிக&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - டிரான்ஸ்கிரிப்ட் செய்யப்பட்ட செய்தியாக RTT அழைப்புகள் சேமிக்கப்படும்\n       &lt;br&gt; - வீடியோ அழைப்புகளுக்கு RTT பயன்முறை இல்லை"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ஐ முடக்கு"</item>
     <item msgid="3971695875449640648">"TTY ஐ இயக்கு"</item>

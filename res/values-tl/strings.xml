@@ -532,8 +532,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"I-on ang compatibility ng hearing aid"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Real-time na text (RTT) na tawag"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Payagan ang pagmemensahe sa isang voice call"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"Tinutulungan ng RTT ang mga tumatawag na bingi, mahina ang pandinig, may kapansanan sa pagsasalita, o kailangan ng higit pa sa boses lang.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Matuto pa&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Sine-save ang mga RTT na tawag bilang transcript ng mensahe\n       &lt;br&gt; - Hindi available ang RTT para sa mga video call"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"I-off ang TTY"</item>
     <item msgid="3971695875449640648">"Puno ang TTY"</item>

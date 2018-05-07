@@ -532,8 +532,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Kveikja á samhæfi við heyrnartæki"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"RTT-símtal (með texta í rauntíma)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Leyfa skilaboðasendingar í símtölum"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT (símtöl með texta í rauntíma) aðstoðar heyrnarlausa og fólk með heyrnarskerðingu eða skerta talgetu og þá sem þurfa að styðja sig við meira en bara hljóð.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Frekari upplýsingar&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-símtöl eru vistuð í umrituðum skilaboðum\n       &lt;br&gt; - RTT er ekki í boði fyrir myndsímtöl"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Slökkt á TTY"</item>
     <item msgid="3971695875449640648">"TTY að fullu"</item>

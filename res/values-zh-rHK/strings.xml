@@ -538,8 +538,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"開啟助聽器相容功能"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"即時文字短訊 (RTT) 通話"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"允許在語音通話中傳送訊息"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT 可協助耳聾、有聽力障礙、語言失能或不僅僅需要語音的通話者。&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;瞭解詳情&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT 通話內容會儲存為訊息轉錄內容 \n       &lt;br&gt; - RTT 不適用於視像通話"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"關閉 TTY"</item>
     <item msgid="3971695875449640648">"TTY 完整模式"</item>

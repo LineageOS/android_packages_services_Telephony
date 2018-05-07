@@ -532,8 +532,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"បើក​មុខងារដែលត្រូវគ្នានឹងឧបករណ៍​ជំនួយ​ការ​ស្ដាប់"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"ការហៅ​តាម​សារ​ជា​អក្សរ​ក្នុង​ពេល​ជាក់ស្ដែង"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"អនុញ្ញាត​ការផ្ញើសារ​នៅ​ក្នុង​ការហៅ​ជា​សំឡេង"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT ជួយ​អ្នក​ហៅ​ទូរសព្ទ​ដែល​​ថ្លង់ ពិបាក​ក្នុង​ការស្ដាប់ មិន​អាច​និយាយ​បាន ឬ​​មាន​តម្រូវការ​ក្រៅ​ពី​សំឡេង។&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ស្វែងយល់​បន្ថែម&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - ការហៅ​ទូរសព្ទតាម RTT ត្រូវ​បាន​រក្សាទុក​ជា​ប្រតិចារឹក​សារ\n       &lt;br&gt; - RTT មិន​មានសម្រាប់ការហៅ​ជា​វីដេអូ​​ទេ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"បិទ TTY"</item>
     <item msgid="3971695875449640648">"TTY ពេញ"</item>

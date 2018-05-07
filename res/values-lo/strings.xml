@@ -532,8 +532,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"ເປີດໃຊ້ການຊ່ວຍໄດ້ຍິນ"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"ການໂທ Real-time text (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ອະນຸຍາດໃຫ້ສົ່ງຂໍ້ຄວາມພາຍໃນການໂທສຽງໄດ້"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT ຈະຊ່ວຍຜູ້ໂທທີ່ຫູໜວກ, ມີບັນຫາໃນການໄດ້ຍິນ, ຂາດຄວາມສາມາດໃນການເວົ້າ ຫຼື ຕ້ອງການຫຼາຍກວ່າສຽງ.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ສຶກສາເພີ່ມເຕີມ&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - ການໂທ RTT ຈະຖືກບັນທຶກເປັນການຖອດຂໍ້ຄວາມ\n       &lt;br&gt; - RTT ບໍ່ສາມາດໃຊ້ກັບການໂທວິດີໂອໄດ້"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ປິດ"</item>
     <item msgid="3971695875449640648">"TTY ເຕັມ"</item>

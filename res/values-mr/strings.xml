@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD कोड चालू…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI कोड रद्द केला"</string>
     <string name="cancel" msgid="5044513931633602634">"रद्द करा"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD संदेश <xliff:g id="MIN_LEN">%d</xliff:g> आणि <xliff:g id="MAX_LEN">%d</xliff:g> वर्णांमधील असणे आवश्‍यक आहे. कृपया पुन्‍हा प्रयत्‍न करा."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD मेसेज <xliff:g id="MIN_LEN">%d</xliff:g> आणि <xliff:g id="MAX_LEN">%d</xliff:g> वर्णांमधील असणे आवश्‍यक आहे. कृपया पुन्‍हा प्रयत्‍न करा."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"परिषद कॉल व्यवस्थापित करा"</string>
     <string name="ok" msgid="3811371167865772377">"ठीक"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"स्पीकर"</string>
@@ -158,7 +158,7 @@
     <string name="vm_change_pin_error_mismatch" msgid="2754685537970757317">"जुना पिन जुळत नाही."</string>
     <string name="vm_change_pin_error_invalid" msgid="3972205462701668653">"नवीन पिन मध्ये अवैध वर्ण आहेत."</string>
     <string name="vm_change_pin_error_system_error" msgid="6610603326230000207">"पिन बदलण्यात अक्षम"</string>
-    <string name="vvm_unsupported_message_format" msgid="11795090778411977">"असमर्थित संदेश प्रकार, ऐकण्यासाठी <xliff:g id="NUMBER">%s</xliff:g> वर कॉल करा."</string>
+    <string name="vvm_unsupported_message_format" msgid="11795090778411977">"असमर्थित मेसेज प्रकार, ऐकण्यासाठी <xliff:g id="NUMBER">%s</xliff:g> वर कॉल करा."</string>
     <string name="network_settings_title" msgid="514120489499925574">"मोबाइल नेटवर्क"</string>
     <string name="label_available" msgid="1181658289009300430">"उपलब्ध नेटवर्क"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"शोधत आहे..."</string>
@@ -492,7 +492,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"मोबाइल नेटवर्क उपलब्‍ध नाही. कॉल करण्‍यासाठी वायरलेस नेटवर्कशी कनेक्‍ट करा."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"कॉल करण्यासाठी, एक वैध नंबर एंटर करा."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"कॉल अयशस्वी झाला."</string>
-    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"या वेळी कॉल जोडू शकत नाही. तुम्ही संदेश पाठवून संपर्क करण्याचा प्रयत्न करू शकता."</string>
+    <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"या वेळी कॉल जोडू शकत नाही. तुम्ही मेसेज पाठवून संपर्क करण्याचा प्रयत्न करू शकता."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"सेवा समर्थित नाही"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"कॉल स्विच करू शकत नाही."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"कॉल विभक्त करू शकत नाही."</string>
@@ -532,8 +532,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवणयंत्र सुसंगतता चालू करा"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"रीअल-टाइम टेक्‍स्‍ट (RTT) कॉल"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"व्‍हॉइस कॉल करताना मेसेजिंग करू शकतो"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT अशा कॉल करणार्‍यांना साहाय्य करते, ज्‍यांना बहिरेपणा आहे, ज्‍यांना कमी ऐकू येते किंवा बोलताना अडखळतात किंवा ज्‍यांना फक्‍त आवाज पुरेसा नसतो.&lt;br&gt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;अधिक जाणून घ्‍या&lt;a&gt;\n       &lt;br/&gt; - RTT cकॉल संदेश प्रतिलेख म्‍हणून सेव्‍ह केले आहेत\n       &lt;br/&gt; - RTT व्हिडिओ कॉलसाठी उपलब्‍ध नाही"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बंद"</item>
     <item msgid="3971695875449640648">"TTY पूर्ण"</item>
@@ -546,8 +545,8 @@
     <item msgid="899650777817315681">"सामान्य"</item>
     <item msgid="2883365539347850535">"दीर्घ"</item>
   </string-array>
-    <string name="network_info_message" msgid="7738596060242881930">"नेटवर्क संदेश"</string>
-    <string name="network_error_message" msgid="3394780436230411413">"एरर संदेश"</string>
+    <string name="network_info_message" msgid="7738596060242881930">"नेटवर्क मेसेज"</string>
+    <string name="network_error_message" msgid="3394780436230411413">"एरर मेसेज"</string>
     <string name="ota_title_activate" msgid="8616918561356194398">"आपला फोन सक्रिय करा"</string>
     <string name="ota_touch_activate" msgid="6553212803262586244">"आपली फोन सेवा सक्रिय करण्‍यासाठी एक विशिष्‍ट कॉल केला जाणे आवश्‍यक आहे. \n\n“सक्रिय करा” दाबल्‍यानंतर, आपला फोन सक्रिय करण्‍यासाठी प्रदान केलेल्‍या सूचना ऐका."</string>
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"सक्रिय करत आहे..."</string>
@@ -612,7 +611,7 @@
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"कडून Wi-Fi कॉल"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"वाय-फाय कॉल"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"उघडण्यासाठी पुन्हा टॅप करा"</string>
-    <string name="message_decode_error" msgid="3456481534066924855">"संदेश डीकोड करताना एक एरर आली."</string>
+    <string name="message_decode_error" msgid="3456481534066924855">"मेसेज डीकोड करताना एक एरर आली."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"सिम कार्डने आपली सेवा सक्रिय केली आहे आणि आपल्या फोनच्या रोमिंग क्षमता अपडेट केल्या."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"बरेच सक्रिय कॉल आहेत. कृपया नवीन एक कॉल करण्यापूर्वी विद्यमान कॉल समाप्त करा किंवा विलीन करा."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"कनेक्ट करण्यात अक्षम, कृपया एक वैध सिम कार्ड घाला."</string>
@@ -688,13 +687,13 @@
     <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"वापरकर्ता CUG चा सदस्य नाही"</string>
     <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"विसंगत गंतव्यस्थान"</string>
     <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"चुकीची परिवहन नेटवर्क निवड"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"शब्दार्थदृष्ट्या चुकीचा संदेश"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"शब्दार्थदृष्ट्या चुकीचा मेसेज"</string>
     <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"चुकीची अनिवार्य माहिती"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"संदेश प्रकार अस्तित्वात नाही किंवा अमलात आणलेला नाही"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"संदेश प्रकार प्रोटोकॉल स्थितीशी सुसंगत नाही"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"मेसेज प्रकार अस्तित्वात नाही किंवा अमलात आणलेला नाही"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"मेसेज प्रकार प्रोटोकॉल स्थितीशी सुसंगत नाही"</string>
     <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"माहिती घटक अस्तित्वात नाही किंवा अमलात आणलेला नाही"</string>
     <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"सशर्त IE एरर"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"संदेश प्रोटोकॉल स्थितीशी सुसंगत नाही"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"मेसेज प्रोटोकॉल स्थितीशी सुसंगत नाही"</string>
     <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"टाइमर एक्स्पायरीवर पुनर्प्राप्ती"</string>
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"प्रोटोकॉल एरर, अनिर्दिष्ट"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"अंतर्गत कार्य, अनिर्दिष्ट"</string>
