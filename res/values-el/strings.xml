@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Ενεργοποίηση συμβατότητας βοηθήματος ακρόασης"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Κλήση με αποστολή κειμένου σε πραγματικό χρόνο (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Να επιτρέπεται η ανταλλαγή μηνυμάτων σε μια φωνητική κλήση"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"Η λειτουργία RTT υποβοηθά καλούντες που αντιμετωπίζουν προβλήματα ακοής ή ομιλίας ή θέλουν κάτι περισσότερο από απλή φωνητική επικοινωνία.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Μάθετε περισσότερα&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Οι κλήσεις RTT αποθηκεύονται ως μεταγραφές μηνυμάτων\n       &lt;br&gt; - Η λειτουργία RTT δεν είναι διαθέσιμη για βιντεοκλήσεις"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Απενεργοποιήθηκε"</item>
     <item msgid="3971695875449640648">"TTY Full"</item>

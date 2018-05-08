@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"ଶ୍ରବଣ ଯନ୍ତ୍ର କମ୍ପ୍ୟାଟିବିଲିଟୀକୁ ଚାଲୁ କରନ୍ତୁ"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"ରିଅଲ୍-ଟାଇମ୍ ଟେକ୍ସଟ୍ (RTT) କଲ୍"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ଭଏସ୍ କଲ୍ କରିବା ମଧ୍ୟରେ ମେସେଜ୍ କରିବାକୁ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT ସେହି କଲର୍‌ମାନଙ୍କୁ ସହାୟତା କରିଥାଏ, ଯେଉଁମାନେ ବଧିର, କ୍ଷୀଣ ଶ୍ରବଣଶକ୍ତି, ମୂକ କିମ୍ବା ଭଏସ୍ ଅପେକ୍ଷା ଅଧିକ କିଛି ଆବଶ୍ୟକ କରନ୍ତି। &lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ଅଧିକ ଜାଣନ୍ତୁ&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - ମେସେଜ୍ ଟ୍ରାନସ୍କ୍ରିପ୍ଟ ଭାବେ RTT କଲ୍ ସେଭ୍ ହୋ‌ଇଛି\n       &lt;br&gt; - ଭିଡିଓ କଲ୍ ପାଇଁ RTT ଉପଲବ୍ଧ ନାହିଁ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ବନ୍ଦ ଅଛି"</item>
     <item msgid="3971695875449640648">"TTY ପୂର୍ଣ୍ଣ"</item>

@@ -418,7 +418,7 @@
     <string name="menu_edit" msgid="7143003705504672374">"Rediger kontakt"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Slet kontakt"</string>
     <string name="menu_dial" msgid="3223106222819685808">"Ring til kontaktperson"</string>
-    <string name="get_pin2" msgid="8204677063922225311">"Indtast PIN2-kode"</string>
+    <string name="get_pin2" msgid="8204677063922225311">"Angiv PIN2-kode"</string>
     <string name="name" msgid="7329028332786872378">"Navn"</string>
     <string name="number" msgid="7905950798349903858">"Nummer"</string>
     <string name="save" msgid="4094274636321939086">"Gem"</string>
@@ -447,7 +447,7 @@
     <string name="confirmPinLabel" msgid="257597715098070206">"Bekræft ny pinkode"</string>
     <string name="badPin" msgid="8955102849303984935">"Den gamle pinkode, du har indtastet, er forkert. Prøv igen."</string>
     <string name="mismatchPin" msgid="5923253370683071889">"PIN-koderne, som du har indtastet, stemmer ikke overens. Prøv igen."</string>
-    <string name="invalidPin" msgid="5981171102258684792">"Indtast en pinkode på mellem 4 og 8 tal."</string>
+    <string name="invalidPin" msgid="5981171102258684792">"Angiv en pinkode på mellem 4 og 8 tal."</string>
     <string name="disable_sim_pin" msgid="3419351358300716472">"Ryd SIM-kortets pinkode"</string>
     <string name="enable_sim_pin" msgid="4845145659651484248">"Indstil SIM-kortets pinkode"</string>
     <string name="enable_in_progress" msgid="3417917024688497010">"Pinkoden indstilles…"</string>
@@ -463,12 +463,12 @@
     <string name="badPuk2" msgid="7910064009531541708">"PUK-kode 2 er forkert. Prøv igen."</string>
     <string name="badPin2" msgid="6646896629970023109">"Gammel pinkode 2 er forkert. Prøv igen."</string>
     <string name="mismatchPin2" msgid="4177967478551851117">"De to pinkode 2 stemmer ikke overens. Prøv igen."</string>
-    <string name="invalidPin2" msgid="1757045131429105595">"Indtast en pinkode 2, som indeholder 4 til 8 cifre."</string>
-    <string name="invalidPuk2" msgid="7059081153334815973">"Indtast en PUK-kode 2, som indeholder 8 cifre."</string>
+    <string name="invalidPin2" msgid="1757045131429105595">"Angiv en pinkode 2, som indeholder 4 til 8 cifre."</string>
+    <string name="invalidPuk2" msgid="7059081153334815973">"Angiv en PUK-kode 2, som indeholder 8 cifre."</string>
     <string name="pin2_changed" msgid="3724522579945610956">"Pinkode 2 er opdateret"</string>
-    <string name="label_puk2_code" msgid="4688069961795341948">"Indtast PUK-kode 2"</string>
+    <string name="label_puk2_code" msgid="4688069961795341948">"Angiv PUK-kode 2"</string>
     <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"Forkert adgangskode. Pinkode 2 er nu blokeret. For at prøve igen skal du ændre pinkode 2."</string>
-    <string name="puk2_requested" msgid="5831015200030161434">"Forkert adgangskode. SIM-kortet er nu låst. Indtast PUK-kode 2."</string>
+    <string name="puk2_requested" msgid="5831015200030161434">"Forkert adgangskode. SIM-kortet er nu låst. Angiv PUK-kode 2."</string>
     <string name="puk2_blocked" msgid="3150263853077280049">"PUK2 er permanent blokeret."</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n"Du har <xliff:g id="NUMBER">%d</xliff:g> forsøg tilbage."</string>
     <string name="pin2_unblocked" msgid="7791600368153469078">"Pinkode 2 er ikke længere blokeret"</string>
@@ -496,7 +496,7 @@
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Ikke registreret på netværk."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Mobilnetværket er ikke tilgængeligt."</string>
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Mobilnetværk er ikke tilgængeligt. Opret forbindelse til et trådløst netværk for at foretage et opkald."</string>
-    <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Indtast et gyldigt nummer for at foretage et opkald."</string>
+    <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Angiv et gyldigt nummer for at foretage et opkald."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Opkald mislykkedes."</string>
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Opkaldet kan ikke tilføjes lige nu. Du kan prøve at sende en besked i stedet."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Tjenesten er ikke understøttet"</string>
@@ -539,8 +539,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Slå høreapparatskompatibilitet til"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Opkald via sms i realtid"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Tillad afsendelse af sms-beskeder i et taleopkald"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"Sms i realtid hjælper personer, som er døve, hørehæmmede, talehandicappede, eller som har brug for mere end bare tale, med at foretage opkald.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Få flere oplysninger&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Opkald via sms i realtid gemmes som en beskedtransskription\n       &lt;br&gt; – Sms i realtid er ikke tilgængeligt til videoopkald"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY fra"</item>
     <item msgid="3971695875449640648">"Fuld TTY-tilstand"</item>
