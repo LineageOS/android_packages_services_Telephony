@@ -537,8 +537,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Skakel gehoorapparaat-versoenbaarheid aan"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Intydse teksoproep (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Laat boodskappe binne \'n stemoproep toe"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT help bellers wat doof is, hardhorend is, \'n spraakgebrek het of meer as net stem benodig.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Kom meer te wete&lt;/a&gt;\n       &lt;br&amp;gtlt;br&gt; - RTT-oproepe word as \'n boodskaptranskripsie gestoor\n       &lt;br&amp;gt - RTT is nie vir video-oproepe beskikbaar nie"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY af"</item>
     <item msgid="3971695875449640648">"TTY vol"</item>

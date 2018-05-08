@@ -539,8 +539,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Вклучи компатибилност на слушни помагала"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Повик со „Текст во реално време“ (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Дозволете пораки во текот на гласовен повик"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"Функцијата RTT им помага на повикувачи коишто се глуви, слабо слушаат, имаат говорна мана или пак, им е потребно многу повеќе од глас.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Дознајте повеќе&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Повиците со RTT се зачувуваат како препис на порака\n       &lt;br&gt; - Функцијата RTT не е достапна за видеоповици"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY исклучени"</item>
     <item msgid="3971695875449640648">"TTY целосни"</item>

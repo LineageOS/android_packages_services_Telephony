@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Įjungti klausos aparato suderinamumą"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Tikralaikių teksto pranešimų (RTT) skambutis"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Leisti susirašinėti dalyvaujant balso skambutyje"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT padeda skambintojams, kurie yra kurti, neprigirdintys, sunkiai kalba arba kuriems reikia ne tik kalbėti.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Sužinokite daugiau&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT skambučiai išsaugomi kaip pranešimų nuorašai\n       &lt;br&gt; – RTT paslauga nepasiekiama dalyvaujant vaizdo skambučiuose"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY išjungta"</item>
     <item msgid="3971695875449640648">"TTY pilnas"</item>

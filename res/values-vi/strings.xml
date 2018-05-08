@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Bật khả năng tương thích trợ thính"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Cuộc gọi qua Tin nhắn theo thời gian thực (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Cho phép nhắn tin trong cuộc gọi thoại"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"Tin nhắn theo thời gian thực (RTT) trợ giúp những người gọi khiếm thính, bị suy giảm thính lực, không có khả năng nói hoặc cần thêm hỗ trợ ngoài giọng nói.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Tìm hiểu thêm&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Cuộc gọi qua RTT được lưu dưới dạng bản chép lời tin nhắn\n       &lt;br&gt; - Không thực hiện được cuộc gọi video qua RTT"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Tắt TTY"</item>
     <item msgid="3971695875449640648">"TTY Đầy"</item>
