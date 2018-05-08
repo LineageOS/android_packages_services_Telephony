@@ -14,4 +14,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Mobile network settings, preferred network modes -->
+  <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA ebbia</string>
+  <string name="preferred_network_mode_global_choice">Globale</string>
 </resources>
