@@ -66,8 +66,9 @@ public class NetworkOperators extends PreferenceCategory
     private int mSubId;
     private ProgressDialog mProgressDialog;
 
-    // There's two sets of Auto-Select UI in this class. {@link mNetworkSelect} is used for all
-    // pre-Pixel 3 devices, while {@link mChooseNetwork} is used for all devices after Pixel3.
+    // There's two sets of Auto-Select UI in this class.
+    // If {@code com.android.internal.R.bool.config_enableNewAutoSelectNetworkUI} set as true
+    // {@link mChooseNetwork} will be used, otherwise {@link mNetworkSelect} will be used.
     boolean mEnableNewManualSelectNetworkUI;
 
     public NetworkOperators(Context context, AttributeSet attrs) {
@@ -98,7 +99,7 @@ public class NetworkOperators extends PreferenceCategory
     /**
      * Update NetworkOperators instance if like subId or queryService are updated.
      *
-     * @param subId Corresponding subscription ID of this network.
+     * @param subId        Corresponding subscription ID of this network.
      * @param queryService The service to do network queries.
      */
     protected void update(final int subId, INetworkQueryService queryService) {
@@ -133,7 +134,7 @@ public class NetworkOperators extends PreferenceCategory
      * changes specifically on auto select button.
      *
      * @param preference is the preference to be changed, should be auto select button.
-     * @param newValue should be the value of whether autoSelect is checked.
+     * @param newValue   should be the value of whether autoSelect is checked.
      */
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -241,17 +242,17 @@ public class NetworkOperators extends PreferenceCategory
 
     private void selectNetworkAutomatic(boolean autoSelect) {
         if (DBG) logd("selectNetworkAutomatic: " + String.valueOf(autoSelect));
-        if (mEnableNewManualSelectNetworkUI) {
-            if (mChooseNetwork != null) {
-                mChooseNetwork.setEnabled(!autoSelect);
-            }
-        } else {
-            if (mNetworkSelect != null) {
-                mNetworkSelect.setEnabled(!autoSelect);
-            }
-        }
 
         if (autoSelect) {
+            if (mEnableNewManualSelectNetworkUI) {
+                if (mChooseNetwork != null) {
+                    mChooseNetwork.setEnabled(!autoSelect);
+                }
+            } else {
+                if (mNetworkSelect != null) {
+                    mNetworkSelect.setEnabled(!autoSelect);
+                }
+            }
             if (DBG) logd("select network automatically...");
             showAutoSelectProgressBar();
             mAutoSelect.setEnabled(false);
