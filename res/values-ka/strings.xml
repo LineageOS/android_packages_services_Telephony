@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"სმენის დახმარების თავსებადობის ჩართვა"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"ზარი შეტყობინებით რეალურ დროში (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"შეტყობინებების დაშვება ხმოვან ზარში"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT დახმარებას უწევს ყრუ, სმენადაქვეითებულ, შეზღუდული მეტყველების მქონე აბონენტებს, ან მათ, ვისაც სჭირდება მეტი, ვიდრე მხოლოდ ხმაა.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;შეიტყვეთ მეტი&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; — RTT ზარები ინახება შეტყობინების ტრანსკრიპტის სახით\n       &lt;br&gt; — RTT არ არის ხელმისაწვდომი ვიდეოზარებისთვის"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY გამორთულია"</item>
     <item msgid="3971695875449640648">"TTY სრული"</item>

@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Hidupkan kompatibilitas alat bantu dengar"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Panggilan pesan real-time (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Izinkan pengiriman pesan pada saat panggilan suara berlangsung"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT membantu penelepon yang tunarungu, kesulitan mendengar, memiliki gangguan berbicara, atau memerlukan lebih dari sekadar suara.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Pelajari lebih lanjut&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Panggilan RTT disimpan sebagai transkrip pesan\n       &lt;br&gt; - RTT tidak tersedia untuk video call"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Nonaktif"</item>
     <item msgid="3971695875449640648">"TTY Penuh"</item>

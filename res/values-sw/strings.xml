@@ -72,7 +72,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="1361715069911607109">"Sanidi mipangilio ya akaunti"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"Akaunti zote za simu"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"Chagua akaunti ambazo zinaweza kupiga simu"</string>
-    <string name="wifi_calling" msgid="739018212480165598">"Upigaji simu kwa Wi-Fi"</string>
+    <string name="wifi_calling" msgid="739018212480165598">"Kupiga simu kupitia Wi-Fi"</string>
     <string name="connection_service_default_label" msgid="1498481943805913754">"Huduma ya muunganisho iliyojengewa ndani"</string>
     <string name="voicemail" msgid="8693759337917898954">"Ujumbe wa sauti"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Ujumbe wa sauti (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Washa utangamano wa kifaa cha kusaidia kusikia"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Kutuma SMS katika Muda Halisi (RTT) wakati wa kupiga simu"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Ruhusu uandikaji wa ujumbe wakati unapiga simu"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT huwasaidia wapigaji simu ambao ni viziwi, wasioweza kusikia vyema, wenye matatizo ya kuzungumza au wanaohitaji kufanya zaidi ya kuzungumza.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Pata maelezo zaidi&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Simu za RTT huhifadhiwa kama manukuu ya ujumbe\n       &lt;br&gt; - RTT haipatikani kwa simu za video"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Zima TTY"</item>
     <item msgid="3971695875449640648">"TTY Kamili"</item>

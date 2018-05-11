@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवण सहायता अनुकूलता खोल्नुहोस्"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"द्रुत पाठ सन्देश (RTT) कल"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"भ्वाइस कलभित्रै सन्देश प्रवाह गर्ने अनुमति दिनुहोस्"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT ले बहिरा, सुन्नमा कठिन हुने, बोल्न नसक्ने र आवाज मात्र नभई कल गर्दा थप कुराहरू चाहिने  मान्छेहरूलाई सहायता गर्छ!&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;थप जान्नुहोस्&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT कलहरूलाई सन्देशसम्बन्धी ट्रान्सक्रिप्टका रूपमा सुरक्षित गरिन्छ\n      &lt;br&gt; - RTT भिडियो कलहरूमा उपलब्ध छैन"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बन्द"</item>
     <item msgid="3971695875449640648">"TTY भरी"</item>

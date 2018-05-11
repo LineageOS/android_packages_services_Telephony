@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Eshitish apparatlari bilan ishlash imkoniyatini yoqish"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"RTT chaqiruvi"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Video chaqiruvlar vaqtida xabarlar almashinuviga ruxsat berish"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT kar, eshitish qobiliyati va nutqiy faoliyati buzilgan shaxslarga mo‘ljallangan funksiyadir.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Batafsil&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT chaqiruvlari transkripsiya sifatida saqlanadi.\n       &lt;br&gt; – RTT funksiyasidan video chaqiruvlar vaqtida foydalanib bo‘lmaydi."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Teletayp o‘chiq"</item>
     <item msgid="3971695875449640648">"To‘liq funksiyali teletayp"</item>

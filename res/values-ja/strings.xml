@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"補聴機能の互換をON"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"リアルタイム テキスト（RTT）通話"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"音声通話中のメッセージ送信を許可する"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT は、聴覚障害や言語障害があるなど、音声だけではコミュニケーションを取ることが困難なユーザーをサポートする機能です。&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;詳細&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT 通話は文字に変換して保存されます\n       &lt;br&gt; - RTT はビデオ通話ではご利用いただけません"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY OFF"</item>
     <item msgid="3971695875449640648">"TTY フル"</item>

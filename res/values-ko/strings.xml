@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"보청기 호환 사용"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"실시간 문자 메시지(RTT) 통화"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"음성 통화 중 메시지 허용"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT는 청각 장애, 난청, 언어 장애가 있거나 음성 이외의 의사소통 수단이 필요한 발신자에게 도움이 됩니다.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;자세히 알아보기&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT 통화는 메시지 스크립트로 저장됩니다.\n       &lt;br&gt; - 화상 통화에서는 RTT를 사용할 수 없습니다."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY 사용 안함"</item>
     <item msgid="3971695875449640648">"TTY 전체"</item>

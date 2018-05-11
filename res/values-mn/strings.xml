@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"Сонсголын төхөөрөмж тааруулагчийг асаана уу"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Шууд мессежлэх (RTT) дуудлага"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Дуудлагын дотор зурвас бичихийг зөвшөөрөх"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT нь дүлий, хатуу чихтэй, хэл ярианы хөгжлийн бэрхшээлтэй, эсвэл хэн нэгний тусламжтай ярьдаг дуудлага хийгчдэд тусладаг.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Дэлгэрэнгүй үзэх&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT дуудлага нь зурвасын сийрүүлэг хэлбэрээр хадгалагдана\n       &lt;br&gt; - RTT нь видео дуудлага хийхэд боломжгүй"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Унтраасан"</item>
     <item msgid="3971695875449640648">"TTY Дүүрэн"</item>

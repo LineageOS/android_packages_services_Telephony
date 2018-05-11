@@ -533,8 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"ඇසීමේ සහාය සඳහා ගැලපීම සක්‍රිය කරන්න"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"තථ්‍ය-කාල පෙළ (RTT) ඇමතුම"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"හඬ ඇමතුමක් තුළ පණිවිඩ යැවීමට ඉඩ දෙන්න"</string>
-    <!-- no translation found for rtt_mode_more_information (6080420780730383030) -->
-    <skip />
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"බිහිරි, ශ්‍රවණ දුර්වලතා, කථන ආබාධයක් හෝ හඬට වඩා වැඩි දෙයක් අවශ්‍ය අමතන්නන්ට RTT සහාය දක්වයි.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;තව දැන ගන්න&lt;/a&gt;\n &lt;br&gt;&lt;br&gt; - RTT ඇමතුම් පණිවිඩ පිටපතත් ලෙස සුරැකේ \n &lt;br&gt; - වීඩියෝ ඇමතුම් සඳහා RTT ලබා ගත නොහැකිය"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY අක්‍රියයි"</item>
     <item msgid="3971695875449640648">"TTY පුර්ණයි"</item>
