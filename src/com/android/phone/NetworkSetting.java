@@ -535,8 +535,10 @@ public class NetworkSetting extends PreferenceActivity
                 TelephonyManager telephonyManager =
                         (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
                 String simOperatorName = telephonyManager.getSimOperatorName();
+                String simOperator = telephonyManager.getSimOperator();
 
-                if (DBG) log("Default sim operator: " + simOperatorName);
+                if (DBG) log("Default sim operator: " + simOperatorName + "(" +
+                         simOperator + ")");
 
                 // create a preference for each item in the list.
                 // just use the operator name instead of the mildly
@@ -555,7 +557,8 @@ public class NetworkSetting extends PreferenceActivity
                         carrier.setWidgetLayoutResource(R.layout.pref_network_select_lock);
                         carrier.setOrder(orderPrioHigh);
                         orderPrioHigh++;
-                    } else if (TextUtils.equals(getNetworkTitle(ni), simOperatorName)) {
+                    } else if (TextUtils.equals(getNetworkTitle(ni), simOperatorName) ||
+                            TextUtils.indexOf(ni.getOperatorNumeric(), simOperator) == 0) {
                         carrier.setWidgetLayoutResource(R.layout.pref_network_select_sim);
                         carrier.setOrder(orderPrioMin);
                     } else {
