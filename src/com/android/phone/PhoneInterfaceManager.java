@@ -2553,6 +2553,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * on a particular subscription
      */
     public String[] getForbiddenPlmns(int subId, int appType, String callingPackage) {
+
+        if ((mApp.checkCallingOrSelfPermission(
+                android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE)
+                == PackageManager.PERMISSION_GRANTED
+                || mApp.checkCallingOrSelfPermission(
+                android.Manifest.permission.READ_PHONE_STATE)
+                == PackageManager.PERMISSION_GRANTED)
+                && mAppOps.noteOp(
+                AppOpsManager.OP_READ_PHONE_STATE, Binder.getCallingUid(), callingPackage)
+                != AppOpsManager.MODE_ALLOWED) {
+            EventLog.writeEvent(0x534e4554, "73884967", Binder.getCallingUid(),
+                "getForbiddenPlmns calllingPackage: " + callingPackage);
+        }
+
         if (!canReadPhoneState(callingPackage, "getForbiddenPlmns")) {
             return null;
         }
