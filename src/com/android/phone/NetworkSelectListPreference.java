@@ -274,7 +274,6 @@ public class NetworkSelectListPreference extends ListPreference
     @Override
     protected void onDialogClosed(boolean positiveResult) {
         super.onDialogClosed(positiveResult);
-
         // If dismissed, we query NetworkSelectMode and update states of AutoSelect button.
         if (!positiveResult) {
             mNetworkOperators.getNetworkSelectionMode();
@@ -395,9 +394,7 @@ public class NetworkSelectListPreference extends ListPreference
             // connected after this activity is moved to background.
             loge("Fail to dismiss network load list dialog " + e);
         }
-
-        setEnabled(true);
-
+        mNetworkOperators.getNetworkSelectionMode();
         if (mCellInfoList != null) {
             // create a preference for each item in the list.
             // just use the operator name instead of the mildly
