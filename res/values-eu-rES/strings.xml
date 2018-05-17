@@ -509,9 +509,9 @@
     <string name="ota_title_activate" msgid="8616918561356194398">"Aktibatu telefonoa"</string>
     <string name="ota_touch_activate" msgid="6553212803262586244">"Telefono-zerbitzua aktibatzeko, dei berezi bat egin behar da.\n\n\"Aktibatu\" sakatu ondoren, telefonoa aktibatzeko, entzun ematen zaizkizun argibideak."</string>
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"Aktibatzen…"</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"Telefonoa datu mugikorren zerbitzua aktibatzen ari da.\n\nEragiketa 5 minutura arte luza daiteke."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"Telefonoa datu-konexioaren zerbitzua aktibatzen ari da.\n\nEragiketa 5 minutura arte luza daiteke."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Aktibazioa saltatu nahi duzu?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Aktibazioa saltatzen baduzu, ezingo dituzu deiak egin eta ezingo duzu datu mugikorren sareetara konektatu, baina Wi-Fi sareetara konektatu ahal izango duzu. Telefonoa aktibatzen duzun arte, pizten duzun bakoitzean eskatuko zaizu aktibatzeko."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Aktibazioa saltatzen baduzu, ezingo duzu deirik egin, ez eta datu-konexioaren sareetara konektatu ere, baina Wi-Fi sareetara konektatu ahal izango duzu. Telefonoa aktibatzen duzun arte, pizten duzun bakoitzean eskatuko zaizu aktibatzeko."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Saltatu"</string>
     <string name="ota_activate" msgid="1368528132525626264">"Aktibatu"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"Telefonoa aktibatuta dago."</string>

@@ -57,7 +57,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Mipangilio ya simu ya GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"Mipangilio ya simu ya CDMA"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"Mipangilio ya simu ya CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"Majina ya milango ya Mtandao"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"Majina ya milango ya mtandao"</string>
     <string name="settings_label" msgid="3876743539816984008">"Mipangilio ya mtandao"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Akaunti za simu"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Piga simu kutumia"</string>
@@ -71,7 +71,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="1361715069911607109">"Sanidi mipangilio ya akaunti"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"Akaunti zote za simu"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"Chagua akaunti ambazo zinaweza kupiga simu"</string>
-    <string name="wifi_calling" msgid="739018212480165598">"Upigaji simu kwa Wi-Fi"</string>
+    <string name="wifi_calling" msgid="739018212480165598">"Kupiga simu kupitia Wi-Fi"</string>
     <string name="connection_service_default_label" msgid="1498481943805913754">"Huduma ya muunganisho iliyojengewa ndani"</string>
     <string name="voicemail" msgid="8693759337917898954">"Ujumbe wa sauti"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Ujumbe wa sauti (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

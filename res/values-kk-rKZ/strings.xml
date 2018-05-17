@@ -57,7 +57,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM қоңырау параметрлері (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA қоңырауының параметрлері"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA қоңырау параметрлері (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"Кіру нүктесінің атаулары"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"APN"</string>
     <string name="settings_label" msgid="3876743539816984008">"Желі параметрлері"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Қоңырау шалу есептік жазбалары"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Келесінің көмегімен қоңыраулар шалу"</string>
@@ -203,7 +203,7 @@
     <item msgid="1508557726283094448">"EvDo-сыз CDMA"</item>
     <item msgid="4341433122263841224">"CDMA/EvDo aвто"</item>
     <item msgid="5958053792390386668">"GSM/WCDMA aвто"</item>
-    <item msgid="7913148405605373434">"WCDMA (кең жолақты әр түрлі кодты бірнеше қол жетімділік) ғана"</item>
+    <item msgid="7913148405605373434">"WCDMA (кең жолақты әртүрлі кодты бірнеше қол жетімділік) ғана"</item>
     <item msgid="1524224863879435516">"GSM (ұялы байланыстың жаһандық жүйесі) ғана"</item>
     <item msgid="3817924849415716259">"GSM/WCDMA қалаулы"</item>
   </string-array>
@@ -214,14 +214,14 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"Деректерді пайдалануға рұқсат ету"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Назар аударыңыз"</string>
     <string name="roaming" msgid="8871412572928323707">"Деректер роумингі"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Роуминг кезінде дерек қызметтеріне қосу"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Роуминг кезінде дерек қызметтеріне қосу"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Роуминг кезінде дерек тасымалдау қызметтеріне қосылу"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Роуминг кезінде дерек тасымалдау қызметтеріне қосылу"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Дерекқор байланысын жоғалтып алдыңыз, себебі үйдегі желінің дерекқор роумингін өшірілген күйінде қалдырғансыз."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Қомақты ақы алынуы мүмкін."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Деректер роумингіне рұқсат берілсін бе?"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS опциялары"</string>
-    <string name="cdma_options" msgid="4016822858172249884">"CDMA (кең жолақты әр түрлі кодты бірнеше қол жетімділік) опциялары"</string>
-    <string name="throttle_data_usage" msgid="3715677828160555808">"Дерекқор қолдану"</string>
+    <string name="cdma_options" msgid="4016822858172249884">"CDMA (кең жолақты әртүрлі кодты бірнеше қол жетімділік) опциялары"</string>
+    <string name="throttle_data_usage" msgid="3715677828160555808">"Дерек шығыны"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"Ағымдағы мерзімде қолданылған дерекқор"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"Дерекқор қолдану мерзімі"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"Дерекқор мөлшеріне қатысты саясат"</string>
@@ -329,7 +329,7 @@
     <item msgid="176474317493999285">"Hегізгі ғана"</item>
     <item msgid="1205664026446156265">"Aвтоматты"</item>
   </string-array>
-    <string name="cdma_subscription_title" msgid="1162564010076763284">"CDMA (кең жолақты әр түрлі кодты бірнеше қол жетімділік) жазылымы"</string>
+    <string name="cdma_subscription_title" msgid="1162564010076763284">"CDMA (кең жолақты әртүрлі кодты бірнеше қол жетімділік) жазылымы"</string>
     <string name="cdma_subscription_summary" msgid="2530890766115781140">"RUIM/SIM және NV арасында ауысу"</string>
     <string name="cdma_subscription_dialogtitle" msgid="2699527950523333110">"жазылым"</string>
   <string-array name="cdma_subscription_choices">

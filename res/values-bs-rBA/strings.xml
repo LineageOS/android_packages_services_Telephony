@@ -71,7 +71,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="1361715069911607109">"Konfiguriraj postavke računa"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"Svi računi za pozivanje"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"Odaberite koji računi mogu upućivati pozive"</string>
-    <string name="wifi_calling" msgid="739018212480165598">"Wi-Fi pozivanje"</string>
+    <string name="wifi_calling" msgid="739018212480165598">"WiFi pozivanje"</string>
     <string name="connection_service_default_label" msgid="1498481943805913754">"Ugrađena usluga povezivanja"</string>
     <string name="voicemail" msgid="8693759337917898954">"Govorna pošta"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Govorna pošta (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -459,7 +459,7 @@
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Nije moguće uputiti poziv(e)."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Nije moguće staviti pozive na čekanje."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Povežite se na bežičnu mrežu da uputite poziv."</string>
-    <string name="incall_error_promote_wfc" msgid="106510757624022064">"Omogućite Wi-Fi pozivanje da uputite poziv."</string>
+    <string name="incall_error_promote_wfc" msgid="106510757624022064">"Omogućite WiFi pozivanje da uputite poziv."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Hitni poziv"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Uključivanje radija u toku…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Nema mreže. Novi pokušaj u toku…"</string>
@@ -505,7 +505,7 @@
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"Aktivacija u toku..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"Telefon aktivira uslugu prijenosa mobilnih podataka.\n\nTo može potrajati do 5 minuta."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Preskočiti aktivaciju?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Ako preskočite aktivaciju, nećete moći upućivati pozive niti se povezati na mobilne podatkovne mreže (iako se možete povezati na Wi-Fi mreže). Dok ne aktivirate telefon, prikazivat će se upit za aktivaciju svaki put kada upalite telefon."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Ako preskočite aktivaciju, nećete moći upućivati pozive niti se povezati na mobilne podatkovne mreže (iako se možete povezati na WiFi mreže). Dok ne aktivirate telefon, prikazivat će se upit za aktivaciju svaki put kada upalite telefon."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Preskoči"</string>
     <string name="ota_activate" msgid="1368528132525626264">"Aktiviraj"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"Telefon je aktiviran."</string>
@@ -570,8 +570,8 @@
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"Samo hitni pozivi"</string>
     <string name="sim_description_default" msgid="4778679519938775515">"SIM kartica, utor: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Pristupačnost"</string>
-    <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"Wi-Fi poziv od"</string>
-    <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Wi-Fi poziv"</string>
+    <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"WiFi poziv od"</string>
+    <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"WiFi poziv"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Dodirnite ponovo da otvorite"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"Došlo je do greške prilikom dekodiranja poruke."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM kartica je aktivirala vašu uslugu i ažurirala mogućnosti rominga za telefon."</string>

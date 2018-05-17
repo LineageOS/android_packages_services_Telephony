@@ -319,7 +319,7 @@
     <string name="enable_disable_multi_category" msgid="626771003122899280">"Nhiều danh mục"</string>
     <string name="multi_category_enable" msgid="1179299804641721768">"Đã bật nhiều danh mục"</string>
     <string name="multi_category_disable" msgid="880104702904139505">"Đã vô hiệu hóa nhiều danh mục"</string>
-    <string name="network_lte" msgid="7702681952521375754">"LTE (được khuyến nghị)"</string>
+    <string name="network_lte" msgid="7702681952521375754">"LTE (khuyên dùng)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G (được khuyến nghị)"</string>
     <string name="network_global" msgid="1323190488685355309">"Toàn cầu"</string>
     <string name="cdma_system_select_title" msgid="5757657769327732833">"Chọn hệ thống"</string>
@@ -566,7 +566,7 @@
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"Cuộc gọi khẩn cấp"</string>
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"Chỉ gọi điện khẩn cấp"</string>
     <string name="sim_description_default" msgid="4778679519938775515">"Thẻ SIM, rãnh: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Trợ năng"</string>
+    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Hỗ trợ tiếp cận"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"Cuộc gọi qua Wi-Fi từ"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Cuộc gọi qua Wi-Fi"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Nhấn lại để mở"</string>

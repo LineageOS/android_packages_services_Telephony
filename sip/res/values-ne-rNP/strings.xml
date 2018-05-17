@@ -34,7 +34,7 @@
     <string name="sip_menu_save" msgid="7882219814563869225">"सुरक्षित गर्नुहोस्"</string>
     <string name="sip_menu_discard" msgid="2350421645423888438">"त्याग्नुहोस्"</string>
     <string name="alert_dialog_close" msgid="1326011828713435134">"प्रोफाइल बन्द गर्नुहोस्"</string>
-    <string name="alert_dialog_ok" msgid="4752048404605388940">"ठीक छ"</string>
+    <string name="alert_dialog_ok" msgid="4752048404605388940">"ठिक छ"</string>
     <string name="close_profile" msgid="3122414058856309881">"बन्द गर्नुहोस्"</string>
     <string name="registration_status_checking_status" msgid="6136793741862200337">"स्थिति जाँच गर्दै..."</string>
     <string name="registration_status_registering" msgid="2677183977796278749">"दर्ता गर्दै..."</string>

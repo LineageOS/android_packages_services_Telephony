@@ -319,7 +319,7 @@
     <string name="enable_disable_multi_category" msgid="626771003122899280">"ਮਲਟੀ-ਸ਼੍ਰੇਣੀ"</string>
     <string name="multi_category_enable" msgid="1179299804641721768">"ਮਲਟੀ-ਸ਼੍ਰੇਣੀ ਸਮਰਥਿਤ"</string>
     <string name="multi_category_disable" msgid="880104702904139505">"ਮਲਟੀ-ਸ਼੍ਰੇਣੀ ਅਸਮਰਥਿਤ"</string>
-    <string name="network_lte" msgid="7702681952521375754">"LTE ( ਸਿਫ਼ਾਰਸ਼  ਕੀਤਾ)"</string>
+    <string name="network_lte" msgid="7702681952521375754">"LTE (ਸਿਫ਼ਾਰਸ਼ੀ)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G ( ਸਿਫ਼ਾਰਸ਼  ਕੀਤਾ)"</string>
     <string name="network_global" msgid="1323190488685355309">"ਗਲੋਬਲ"</string>
     <string name="cdma_system_select_title" msgid="5757657769327732833">"ਸਿਸਟਮ ਚੁਣੋ"</string>

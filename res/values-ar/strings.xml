@@ -57,7 +57,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"‏إعدادات اتصال GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"‏إعدادات اتصال CDMA"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"‏إعدادات اتصال CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"الدخول إلى أسماء النقاط"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"أسماء نقاط الوصول"</string>
     <string name="settings_label" msgid="3876743539816984008">"إعدادات الشبكة"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"حسابات الاتصال"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"إجراء المكالمات باستخدام"</string>
@@ -89,7 +89,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"جارٍ تحميل الإعدادات…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"الرقم مخفي في المكالمات الصادرة"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"الرقم المعروض في المكالمات الصادرة"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"استخدام إعدادات المشغل الافتراضية لعرض رقمي في المكالمات الصادرة"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"استخدام إعدادات المشغل التلقائية لعرض رقمي في المكالمات الصادرة"</string>
     <string name="labelCW" msgid="6120513814915920200">"انتظار المكالمة"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"تنبيهي بالمكالمات الواردة أثناء المكالمة"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"تنبيهي بالمكالمات الواردة أثناء المكالمة"</string>
@@ -106,17 +106,17 @@
     <string name="messageCFB" msgid="3711089705936187129">"الرقم عند الانشغال"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"إعادة التوجيه إلى <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"تم الإيقاف"</string>
-    <string name="disable_cfb_forbidden" msgid="3506984333877998061">"لا يتيح مشغل شبكة الجوال تعطيل اعادة توجيه المكالمة عندما يكون هاتفك مشغولاً."</string>
+    <string name="disable_cfb_forbidden" msgid="3506984333877998061">"لا يتيح مشغل شبكة الجوال إيقاف اعادة توجيه المكالمة عندما يكون هاتفك مشغولاً."</string>
     <string name="labelCFNRy" msgid="1736067178393744351">"عند عدم الرد"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"الرقم عند عدم الرد"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"إعادة التوجيه إلى <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"تم الإيقاف"</string>
-    <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"لا يتيح مشغل شبكة الجوال تعطيل اعادة توجيه المكالمة عند عدم رد هاتفك."</string>
+    <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"لا يتيح مشغل شبكة الجوال إيقاف اعادة توجيه المكالمة عند عدم رد هاتفك."</string>
     <string name="labelCFNRc" msgid="2614827454402079766">"عند عدم الوصول"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"الرقم عند عدم الوصول"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"إعادة التوجيه إلى <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"معطّل"</string>
-    <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"لا يتيح مشغل شبكة الجوال تعطيل اعادة توجيه المكالمة عند عدم التمكن من الوصول إلى هاتفك."</string>
+    <string name="sum_cfnrc_disabled" msgid="7222141261321276464">"غير مفعّل"</string>
+    <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"لا يتيح مشغل شبكة الجوال إيقاف اعادة توجيه المكالمة عند عدم التمكن من الوصول إلى هاتفك."</string>
     <string name="updating_title" msgid="6146755386174019046">"إعدادات الاتصال"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"لا يمكن تغيير إعدادات المكالمات إلا بواسطة المستخدم الإداري."</string>
     <string name="call_settings_with_label" msgid="3401177261468593519">"الإعدادات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -136,7 +136,7 @@
     <string name="disable" msgid="4678348128118573672">"إيقاف"</string>
     <string name="change_num" msgid="239476305819844391">"تحديث"</string>
   <string-array name="clir_display_values">
-    <item msgid="5560134294467334594">"الشبكة الافتراضية"</item>
+    <item msgid="5560134294467334594">"الشبكة التلقائية"</item>
     <item msgid="7876195870037833661">"إخفاء الرقم"</item>
     <item msgid="1108394741608734023">"إظهار الرقم"</item>
   </string-array>
@@ -172,9 +172,9 @@
     <string name="select_automatically" msgid="5628402124471810174">"اختيار تلقائي"</string>
     <string name="sum_select_automatically" msgid="5614890115123292400">"اختيار الشبكة المفضلة تلقائيًا"</string>
     <string name="register_automatically" msgid="6017849844573519637">"التسجيل التلقائي..."</string>
-    <string name="preferred_network_mode_title" msgid="2336624679902659306">"نوع الشبكة المفضل"</string>
+    <string name="preferred_network_mode_title" msgid="2336624679902659306">"نوع الشبكة المفضّل"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"تغيير وضع تشغيل الشبكة"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"نوع الشبكة المفضل"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"نوع الشبكة المفضّل"</string>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"‏وضع الشبكة المفضل: تم تفضيل WCDMA"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"‏وضع الشبكة المفضل: GSM فقط"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"‏وضع الشبكة المفضل: WCDMA فقط"</string>
@@ -210,12 +210,12 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"‏وضع 4G LTE المحسّن"</string>
     <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"اتصال متقدم"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"‏استخدام خدمات LTE لتحسين الصوت والاتصالات الأخرى (مستحسن)"</string>
-    <string name="data_enabled" msgid="5972538663568715366">"تم تمكين البيانات"</string>
+    <string name="data_enabled" msgid="5972538663568715366">"تم تفعيل البيانات"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"السماح باستخدام البيانات"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"تنبيه"</string>
     <string name="roaming" msgid="8871412572928323707">"تجوال البيانات"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"اتصال بخدمات البيانات عند التجوال"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"اتصال بخدمات البيانات عند التجوال"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"الاتصال بخدمات البيانات عند التجوال"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"الاتصال بخدمات البيانات عند التجوال"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"لقد فقدت اتصال البيانات نظرًا لأنك أوقفت تشغيل تجوال البيانات بشبكتك الرئيسية."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"قد يكلف ذلك رسومًا مرتفعة."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"السماح بتجوال البيانات؟"</string>
@@ -234,34 +234,34 @@
     <string name="throttle_help_subtext" msgid="3633091498168446044">"مزيد من المعلومات حول سياسة استخدام بيانات الشبكة لمشغل شبكة الجوّال"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"‏الرسائل القصيرة SMS لبث الخلية"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"‏الرسائل القصيرة SMS لبث الخلية"</string>
-    <string name="cell_bc_sms_enable" msgid="6441688565738921084">"‏تم تمكين الرسائل القصيرة SMS لبث الخلية"</string>
-    <string name="cell_bc_sms_disable" msgid="3398365088309408749">"‏تم تعطيل الرسائل القصيرة SMS لبث الخلية"</string>
+    <string name="cell_bc_sms_enable" msgid="6441688565738921084">"‏تم تفعيل الرسائل القصيرة SMS لبث الخلية"</string>
+    <string name="cell_bc_sms_disable" msgid="3398365088309408749">"‏تم إيقاف الرسائل القصيرة SMS لبث الخلية"</string>
     <string name="cb_sms_settings" msgid="651715019785107312">"‏إعدادات الرسائل القصيرة SMS لبث الخلية"</string>
     <string name="enable_disable_emergency_broadcast" msgid="2157014609041245335">"بث الطوارئ"</string>
-    <string name="emergency_broadcast_enable" msgid="2645980025414010211">"تم تمكين بث الطوارئ"</string>
-    <string name="emergency_broadcast_disable" msgid="3665199821267569426">"تم تعطيل بث الطوارئ"</string>
+    <string name="emergency_broadcast_enable" msgid="2645980025414010211">"تم تفعيل بث الطوارئ"</string>
+    <string name="emergency_broadcast_disable" msgid="3665199821267569426">"تم إيقاف بث الطوارئ"</string>
     <string name="enable_disable_administrative" msgid="6501582322182059412">"إداري"</string>
-    <string name="administrative_enable" msgid="1750086122962032235">"تم تمكين الإداري"</string>
-    <string name="administrative_disable" msgid="8433273857248698539">"تم تعطيل الإداري"</string>
+    <string name="administrative_enable" msgid="1750086122962032235">"تم تفعيل الإداري"</string>
+    <string name="administrative_disable" msgid="8433273857248698539">"تم إيقاف الإداري"</string>
     <string name="enable_disable_maintenance" msgid="1819693083025106678">"الصيانة"</string>
-    <string name="maintenance_enable" msgid="8566636458770971189">"تم تمكين الصيانة"</string>
-    <string name="maintenance_disable" msgid="7340189100885066077">"تم تعطيل الصيانة"</string>
+    <string name="maintenance_enable" msgid="8566636458770971189">"تم تفعيل الصيانة"</string>
+    <string name="maintenance_disable" msgid="7340189100885066077">"تم إيقاف الصيانة"</string>
     <string name="general_news_settings" msgid="4968779723948432978">"أخبار عامة"</string>
     <string name="bf_news_settings" msgid="3935593091894685267">"أخبار الأعمال والأخبار المالية"</string>
     <string name="sports_news_settings" msgid="7649399631270052835">"أخبار رياضية"</string>
     <string name="entertainment_news_settings" msgid="5051153952959405035">"أخبار ترفيهية"</string>
     <string name="enable_disable_local" msgid="7890281063123416120">"محلي"</string>
-    <string name="local_enable" msgid="6370463247609136359">"تم تمكين الأخبار المحلية"</string>
-    <string name="local_disable" msgid="4405691986943795798">"تم تعطيل الأخبار المحلية"</string>
+    <string name="local_enable" msgid="6370463247609136359">"تم تفعيل الأخبار المحلية"</string>
+    <string name="local_disable" msgid="4405691986943795798">"تم إيقاف الأخبار المحلية"</string>
     <string name="enable_disable_regional" msgid="4905652414535565872">"إقليمي"</string>
-    <string name="regional_enable" msgid="4434680415437834759">"تم تمكين الأخبار الإقليمية"</string>
-    <string name="regional_disable" msgid="5359325527213850077">"تم تعطيل الأخبار الإقليمية"</string>
+    <string name="regional_enable" msgid="4434680415437834759">"تم تفعيل الأخبار الإقليمية"</string>
+    <string name="regional_disable" msgid="5359325527213850077">"تم إيقاف الأخبار الإقليمية"</string>
     <string name="enable_disable_national" msgid="236278090206880734">"إقليمي"</string>
-    <string name="national_enable" msgid="1172443648912246952">"تم تمكين الأخبار الإقليمية"</string>
-    <string name="national_disable" msgid="326018148178601166">"تم تعطيل الأخبار القومية"</string>
+    <string name="national_enable" msgid="1172443648912246952">"تم تفعيل الأخبار الإقليمية"</string>
+    <string name="national_disable" msgid="326018148178601166">"تم إيقاف الأخبار القومية"</string>
     <string name="enable_disable_international" msgid="7535348799604565592">"دولي"</string>
-    <string name="international_enable" msgid="5855356769925044927">"تم تمكين الأخبار الدولية"</string>
-    <string name="international_disable" msgid="2850648591041088931">"تم تعطيل الأخبار الدولية"</string>
+    <string name="international_enable" msgid="5855356769925044927">"تم تفعيل الأخبار الدولية"</string>
+    <string name="international_disable" msgid="2850648591041088931">"تم إيقاف الأخبار الدولية"</string>
     <string name="list_language_title" msgid="2841683501919760043">"اللغة"</string>
     <string name="list_language_summary" msgid="8109546531071241601">"حدد لغة الأخبار"</string>
   <string-array name="list_language_entries">
@@ -284,41 +284,41 @@
   </string-array>
     <string name="list_language_dtitle" msgid="5442908726538951934">"اللغات"</string>
     <string name="enable_disable_local_weather" msgid="986967454867219114">"الطقس المحلي"</string>
-    <string name="local_weather_enable" msgid="6199315114382448922">"تم تمكين الطقس المحلي"</string>
-    <string name="local_weather_disable" msgid="2510158089142626480">"تم تعطيل الطقس المحلي"</string>
+    <string name="local_weather_enable" msgid="6199315114382448922">"تم تفعيل الطقس المحلي"</string>
+    <string name="local_weather_disable" msgid="2510158089142626480">"تم إيقاف الطقس المحلي"</string>
     <string name="enable_disable_atr" msgid="8339572391278872343">"تقارير حركة المرور بالمنطقة"</string>
-    <string name="atr_enable" msgid="5541757457789181799">"تم تمكين تقارير حركة المرور بالمنطقة"</string>
-    <string name="atr_disable" msgid="7085558154727596455">"تم تعطيل تقارير حركة المرور بالمنطقة"</string>
+    <string name="atr_enable" msgid="5541757457789181799">"تم تفعيل تقارير حركة المرور بالمنطقة"</string>
+    <string name="atr_disable" msgid="7085558154727596455">"تم إيقاف تقارير حركة المرور بالمنطقة"</string>
     <string name="enable_disable_lafs" msgid="668189073721277199">"جداول مواعيد رحلات الطائرات المحلية"</string>
-    <string name="lafs_enable" msgid="2791978667205137052">"تم تمكين جداول مواعيد رحلات الطائرات المحلية"</string>
-    <string name="lafs_disable" msgid="2391212397725495350">"تم تعطيل جداول مواعيد رحلات الطائرات المحلية"</string>
+    <string name="lafs_enable" msgid="2791978667205137052">"تم تفعيل جداول مواعيد رحلات الطائرات المحلية"</string>
+    <string name="lafs_disable" msgid="2391212397725495350">"تم إيقاف جداول مواعيد رحلات الطائرات المحلية"</string>
     <string name="enable_disable_restaurants" msgid="6240381945336814024">"مطاعم"</string>
-    <string name="restaurants_enable" msgid="5137657479469118847">"تم تمكين المطاعم"</string>
-    <string name="restaurants_disable" msgid="3678480270938424092">"تم تعطيل المطاعم"</string>
+    <string name="restaurants_enable" msgid="5137657479469118847">"تم تفعيل المطاعم"</string>
+    <string name="restaurants_disable" msgid="3678480270938424092">"تم إيقاف المطاعم"</string>
     <string name="enable_disable_lodgings" msgid="1822029172658551202">"السكن"</string>
-    <string name="lodgings_enable" msgid="3230042508992850322">"تم تمكين السكن"</string>
-    <string name="lodgings_disable" msgid="3387879742320682391">"تم تعطيل السكن"</string>
+    <string name="lodgings_enable" msgid="3230042508992850322">"تم تفعيل السكن"</string>
+    <string name="lodgings_disable" msgid="3387879742320682391">"تم إيقاف السكن"</string>
     <string name="enable_disable_retail_directory" msgid="1357809784475660303">"دليل البيع بالتجزئة"</string>
-    <string name="retail_directory_enable" msgid="3280626290436111496">"تم تمكين دليل البيع بالتجزئة"</string>
-    <string name="retail_directory_disable" msgid="6479739816662879027">"تم تعطيل دليل البيع بالتجزئة"</string>
+    <string name="retail_directory_enable" msgid="3280626290436111496">"تم تفعيل دليل البيع بالتجزئة"</string>
+    <string name="retail_directory_disable" msgid="6479739816662879027">"تم إيقاف دليل البيع بالتجزئة"</string>
     <string name="enable_disable_advertisements" msgid="5999495926176182128">"الإعلانات"</string>
-    <string name="advertisements_enable" msgid="2050305021264683786">"تم تمكين الإعلانات"</string>
-    <string name="advertisements_disable" msgid="8350985908788707935">"تم تعطيل الإعلانات"</string>
+    <string name="advertisements_enable" msgid="2050305021264683786">"تم تفعيل الإعلانات"</string>
+    <string name="advertisements_disable" msgid="8350985908788707935">"تم إيقاف الإعلانات"</string>
     <string name="enable_disable_stock_quotes" msgid="6397810445293533603">"أسعار الأسهم"</string>
-    <string name="stock_quotes_enable" msgid="4384802470887170543">"تم تمكين أسعار الأسهم"</string>
-    <string name="stock_quotes_disable" msgid="4781450084565594998">"تم تعطيل أسعار الأسهم"</string>
+    <string name="stock_quotes_enable" msgid="4384802470887170543">"تم تفعيل أسعار الأسهم"</string>
+    <string name="stock_quotes_disable" msgid="4781450084565594998">"تم إيقاف أسعار الأسهم"</string>
     <string name="enable_disable_eo" msgid="4863043263443942494">"فرص وظائف"</string>
-    <string name="eo_enable" msgid="8623559062015685813">"تم تمكين فرص الوظائف"</string>
-    <string name="eo_disable" msgid="3863812478090907609">"تم تعطيل فرص الوظائف"</string>
+    <string name="eo_enable" msgid="8623559062015685813">"تم تفعيل فرص الوظائف"</string>
+    <string name="eo_disable" msgid="3863812478090907609">"تم إيقاف فرص الوظائف"</string>
     <string name="enable_disable_mhh" msgid="908214593528968522">"طبي والصحة والمستشفى"</string>
-    <string name="mhh_enable" msgid="5544500632306446815">"تم تمكين الطبي والصحة والمستشفى"</string>
-    <string name="mhh_disable" msgid="8998210550117117437">"تم تعطيل الطبي والصحة والمستشفى"</string>
+    <string name="mhh_enable" msgid="5544500632306446815">"تم تفعيل الطبي والصحة والمستشفى"</string>
+    <string name="mhh_disable" msgid="8998210550117117437">"تم إيقاف الطبي والصحة والمستشفى"</string>
     <string name="enable_disable_technology_news" msgid="3517184627114999149">"أخبار التكنولوجيا"</string>
-    <string name="technology_news_enable" msgid="7995209394210455181">"تم تمكين أخبار التكنولوجيا"</string>
-    <string name="technology_news_disable" msgid="5483490380561851946">"تم تعطيل أخبار التكنولوجيا"</string>
+    <string name="technology_news_enable" msgid="7995209394210455181">"تم تفعيل أخبار التكنولوجيا"</string>
+    <string name="technology_news_disable" msgid="5483490380561851946">"تم إيقاف أخبار التكنولوجيا"</string>
     <string name="enable_disable_multi_category" msgid="626771003122899280">"متعددة الفئات"</string>
-    <string name="multi_category_enable" msgid="1179299804641721768">"تم تمكين المتعددة الفئات"</string>
-    <string name="multi_category_disable" msgid="880104702904139505">"تم تعطيل متعددة الفئات"</string>
+    <string name="multi_category_enable" msgid="1179299804641721768">"تم تفعيل المتعددة الفئات"</string>
+    <string name="multi_category_disable" msgid="880104702904139505">"تم إيقاف متعددة الفئات"</string>
     <string name="network_lte" msgid="7702681952521375754">"‏LTE (مستحسن)"</string>
     <string name="network_4G" msgid="2723512640529983138">"الجيل الرابع (مستحسن)"</string>
     <string name="network_global" msgid="1323190488685355309">"عام"</string>
@@ -340,30 +340,30 @@
     <item msgid="7494167883478914080">"0"</item>
     <item msgid="6043847456049107742">"1"</item>
   </string-array>
-    <string name="cdma_activate_device" msgid="3793805892364814518">"تنشيط الجهاز"</string>
+    <string name="cdma_activate_device" msgid="3793805892364814518">"تفعيل الجهاز"</string>
     <string name="cdma_lte_data_service" msgid="4255018217292548962">"إعداد خدمة البيانات"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"إعدادات مشغل شبكة الجوّال"</string>
     <string name="fdn" msgid="7878832555095183202">"أرقام الاتصال الثابتة"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"أرقام الاتصال الثابت (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="8777755791892122369">"‏قائمة FDN"</string>
     <string name="fdn_list_with_label" msgid="7437232552210469217">"قائمة أرقام الاتصال الثابت (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="fdn_activation" msgid="2156479741307463576">"‏تنشيط FDN"</string>
-    <string name="fdn_enabled" msgid="5238109009915521240">"تم تمكين أرقام الاتصال الثابتة"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"تم تعطيل أرقام الاتصال الثابتة"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"‏تمكين FDN"</string>
-    <string name="disable_fdn" msgid="7944020890722540616">"‏تعطيل FDN"</string>
+    <string name="fdn_activation" msgid="2156479741307463576">"‏تفعيل FDN"</string>
+    <string name="fdn_enabled" msgid="5238109009915521240">"تم تفعيل أرقام الاتصال الثابتة"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"تم إيقاف أرقام الاتصال الثابتة"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"‏تفعيل FDN"</string>
+    <string name="disable_fdn" msgid="7944020890722540616">"‏إيقاف FDN"</string>
     <string name="change_pin2" msgid="2153563695382176676">"‏تغيير PIN2"</string>
-    <string name="enable_fdn_ok" msgid="7215588870329688132">"‏تعطيل FDN"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"‏تمكين FDN"</string>
+    <string name="enable_fdn_ok" msgid="7215588870329688132">"‏إيقاف FDN"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"‏تفعيل FDN"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"إدارة أرقام الاتصال الثابتة"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"‏تغيير رمز PIN للدخول إلى FDN"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"إدارة قائمة أرقام الهاتف"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"خصوصية الصوت"</string>
-    <string name="voice_privacy_summary" msgid="3159383389833516214">"تمكين وضع الخصوصية المحسن"</string>
+    <string name="voice_privacy_summary" msgid="3159383389833516214">"تفعيل وضع الخصوصية المحسن"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"‏وضع TTY"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"‏تعيين وضع TTY"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"إعادة المحاولة تلقائيًا"</string>
-    <string name="auto_retry_mode_summary" msgid="4973886004067532288">"تمكين وضع إعادة المحاولة التلقائي"</string>
+    <string name="auto_retry_mode_summary" msgid="4973886004067532288">"تفعيل وضع إعادة المحاولة التلقائي"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"‏لا يُسمح بتغيير وضع TTY أثناء مكالمة فيديو"</string>
     <string name="menu_add" msgid="1882023737425114762">"إضافة جهة اتصال"</string>
     <string name="menu_edit" msgid="7143003705504672374">"تعديل جهة الاتصال"</string>
@@ -389,7 +389,7 @@
     <string name="simContacts_empty" msgid="5270660846489561932">"‏ليس هناك جهات اتصال على شريحة SIM."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"حدد جهات اتصال لاستيرادها"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"‏عليك إيقاف وضع الطائرة لاستيراد جهات الاتصال من شريحة SIM."</string>
-    <string name="enable_pin" msgid="5422767284133234860">"‏تمكين/تعطيل رمز PIN لبطاقة SIM"</string>
+    <string name="enable_pin" msgid="5422767284133234860">"‏تفعيل/إيقاف رمز PIN لبطاقة SIM"</string>
     <string name="change_pin" msgid="9174186126330785343">"‏تغيير رمز PIN لبطاقة SIM"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"‏رمز PIN لبطاقة SIM:"</string>
     <string name="oldPinLabel" msgid="5287773661246368314">"‏رمز PIN القديم"</string>
@@ -459,7 +459,7 @@
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"يتعذر تحرير المكالمات."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"يتعذر وضع المكالمات قيد الانتظار."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"اتصل بشبكة لاسلكية لإجراء مكالمة."</string>
-    <string name="incall_error_promote_wfc" msgid="106510757624022064">"‏يمكنك تمكين اتصال Wi-Fi لإجراء مكالمة."</string>
+    <string name="incall_error_promote_wfc" msgid="106510757624022064">"‏يمكنك تفعيل اتصال Wi-Fi لإجراء مكالمة."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"مكالمة الطوارئ"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"جارٍ تشغيل اللاسلكي..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"لا تتوفر خدمة. جارٍ إعادة المحاولة…"</string>
@@ -500,22 +500,22 @@
   </string-array>
     <string name="network_info_message" msgid="7738596060242881930">"رسالة الشبكة"</string>
     <string name="network_error_message" msgid="3394780436230411413">"رسالة الخطأ"</string>
-    <string name="ota_title_activate" msgid="8616918561356194398">"تنشيط الهاتف"</string>
-    <string name="ota_touch_activate" msgid="6553212803262586244">"يلزم إجراء اتصال خاص لتنشيط خدمة الهاتف. \n\nبعد الضغط على \"تنشيط\"، استمع إلى الإرشادات المقدمة لتنشيط هاتفك."</string>
-    <string name="ota_hfa_activation_title" msgid="2234246934160473981">"جارٍ التنشيط..."</string>
+    <string name="ota_title_activate" msgid="8616918561356194398">"تفعيل الهاتف"</string>
+    <string name="ota_touch_activate" msgid="6553212803262586244">"يلزم إجراء اتصال خاص لتفعيل خدمة الهاتف. \n\nبعد الضغط على \"تفعيل\"، استمع إلى الإرشادات المقدمة لتفعيل هاتفك."</string>
+    <string name="ota_hfa_activation_title" msgid="2234246934160473981">"جارٍ التفعيل..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"يُجري الهاتف تنشيطًا لخدمة بيانات الجوّال.\n\nقد يستغرق هذا الأمر ما يصل إلى 5 دقائق."</string>
-    <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"هل تريد تخطي التنشيط؟"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"‏إذا تخطيت التنشيط، فلن تتمكن من إجراء مكالمات أو الاتصال بشبكات بيانات الجوال (ومع ذلك، يمكنك الاتصال بشبكات Wi-Fi). إلى أن تنشط هاتفك، ستتم مطالبتك بتنشيطه في كل مرة تشغله فيها."</string>
+    <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"هل تريد تخطي التفعيل؟"</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"‏إذا تخطيت عملية التفعيل، فلن تتمكّن من إجراء مكالمات أو الاتصال بشبكات بيانات الجوال (ومع ذلك، يمكنك الاتصال بشبكات Wi-Fi). وسيُطلَب منك تفعيل الهاتف عند تشغيله في كل مرة إلى حين تفعيله."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"تخطي"</string>
-    <string name="ota_activate" msgid="1368528132525626264">"تنشيط"</string>
-    <string name="ota_title_activate_success" msgid="6570240212263372046">"تم تنشيط الهاتف."</string>
-    <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"مشكلة في التنشيط"</string>
-    <string name="ota_listen" msgid="162923839877584937">"اتبع الإرشادات المنطوقة حتى تسمع ما يفيد بانتهاء التنشيط."</string>
+    <string name="ota_activate" msgid="1368528132525626264">"تفعيل"</string>
+    <string name="ota_title_activate_success" msgid="6570240212263372046">"تم تفعيل الهاتف."</string>
+    <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"مشكلة في التفعيل"</string>
+    <string name="ota_listen" msgid="162923839877584937">"اتبع الإرشادات المنطوقة حتى تسمع ما يفيد بانتهاء التفعيل."</string>
     <string name="ota_speaker" msgid="6904589278542719647">"مكبر الصوت"</string>
     <string name="ota_progress" msgid="460876637828044519">"جارٍ برمجة هاتفك…"</string>
     <string name="ota_failure" msgid="7713756181204620397">"تتعذر برمجة هاتفك"</string>
-    <string name="ota_successful" msgid="1880780692887077407">"تم تنشيط هاتفك الآن. قد يستغرق بدء الخدمة ما يصل إلى 15 دقيقة."</string>
-    <string name="ota_unsuccessful" msgid="8072141612635635357">"لم يتم تنشيط الهاتف. \nربما يلزمك البحث عن منطقة بها تغطية أفضل (بجانب نافذة أو بالخارج). \n\nحاول مرة أخرى أو اتصل بخدمة العملاء للحصول على مزيد من الخيارات."</string>
+    <string name="ota_successful" msgid="1880780692887077407">"تم تفعيل هاتفك الآن. قد يستغرق بدء الخدمة ما يصل إلى 15 دقيقة."</string>
+    <string name="ota_unsuccessful" msgid="8072141612635635357">"لم يتم تفعيل الهاتف. \nربما يلزمك البحث عن منطقة بها تغطية أفضل (بجانب نافذة أو بالخارج). \n\nحاول مرة أخرى أو اتصل بخدمة العملاء للحصول على مزيد من الخيارات."</string>
     <string name="ota_spc_failure" msgid="3909983542575030796">"إخفاقات في المواصفات الزائدة"</string>
     <string name="ota_call_end" msgid="4537279738134612388">"رجوع"</string>
     <string name="ota_try_again" msgid="7685477206465902290">"حاول مرة أخرى"</string>
@@ -523,7 +523,7 @@
     <string name="ecm_exit_dialog" msgid="4448531867763097533">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"تم الدخول إلى وضع هاتف معاودة الاتصال بالطوارئ"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"وضع هاتف معاودة الاتصال بالطوارئ"</string>
-    <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"تم تعطيل اتصال البيانات"</string>
+    <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"تم إيقاف اتصال البيانات"</string>
     <plurals name="phone_in_ecm_notification_time" formatted="false" msgid="8308381858502470919">
       <item quantity="zero">لن يتوفر اتصال بالبيانات لمدة <xliff:g id="COUNT_1">%s</xliff:g> من الدقائق</item>
       <item quantity="two">لن يتوفر اتصال بالبيانات لمدة دقيقتين (<xliff:g id="COUNT_1">%s</xliff:g>)</item>
@@ -572,7 +572,7 @@
     <string name="preference_category_ringtone" msgid="5197960752529332721">"نغمة الرنين والاهتزاز"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"‏بطاقات SIM مدمجة"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"تشغيل مكالمات الفيديو"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"‏لتشغيل مكالمات الفيديو، يجب عليك تمكين وضع 4G LTE المحسّن في إعدادات الشبكة."</string>
+    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"‏لتشغيل مكالمات الفيديو، يجب عليك تفعيل وضع 4G LTE المحسّن في إعدادات الشبكة."</string>
     <string name="enable_video_calling_dialog_settings" msgid="576528473599603249">"إعدادات الشبكة"</string>
     <string name="enable_video_calling_dialog_close" msgid="7411471282167927991">"إغلاق"</string>
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"مكالمات الطوارئ"</string>

@@ -214,8 +214,8 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"Gegevensgebruik toestaan"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Let op"</string>
     <string name="roaming" msgid="8871412572928323707">"Dataroaming"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Verbinding maken met gegevensservices tijdens roaming"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Verbinding maken met gegevensservices tijdens roaming"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Verbinding maken met dataservices tijdens roaming"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Verbinding maken met dataservices tijdens roaming"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"De gegevensverbinding is verbroken, omdat je je thuisnetwerk hebt verlaten terwijl dataroaming was uitgeschakeld."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Er kunnen hoge roamingkosten in rekening worden gebracht."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Dataroaming toestaan?"</string>

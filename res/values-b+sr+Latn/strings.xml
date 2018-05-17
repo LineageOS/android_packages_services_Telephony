@@ -57,7 +57,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Podešavanja GSM poziva (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA podešavanja poziva"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"Podešavanja CDMA poziva (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"Nazivi prist. tačaka"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"Nazivi pristupnih tačaka"</string>
     <string name="settings_label" msgid="3876743539816984008">"Mrežna podešavanja"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Nalozi za pozivanje"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Upućujte pozive pomoću"</string>

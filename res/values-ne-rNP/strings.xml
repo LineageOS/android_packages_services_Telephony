@@ -31,7 +31,7 @@
     <string name="cancel" msgid="5044513931633602634">"रद्द गर्नुहोस्"</string>
     <string name="enter_input" msgid="1810529547726803893">"USSD सन्देश  <xliff:g id="MIN_LEN">%d</xliff:g> र <xliff:g id="MAX_LEN">%d</xliff:g> अक्षरहरूका बीच हुनै पर्दछ। कृपया पुनःप्रयास गर्नुहोस्।"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"सम्मेलन कल प्रबन्ध गर्नुहोस्"</string>
-    <string name="ok" msgid="3811371167865772377">"ठीक छ"</string>
+    <string name="ok" msgid="3811371167865772377">"ठिक छ"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"स्पिकर"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"ह्यान्डसेट इयरपिस"</string>
     <string name="audio_mode_wired_headset" msgid="1465350758489175975">"तारसहितको हेडसेट"</string>
@@ -131,7 +131,7 @@
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS अनुरोध नयाँ SS अनुरोधमा परिमार्जन गरियो।"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"तपाईंको फोन अनुप्रयोग स्थिर डायल गर्ने नम्बर सेटिङहरू खोलिएको छ। केही कल-सम्बन्धित विशेषताहरूले कार्य गरिरहेका छैनन्।"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"यी सेटिङहरू हेर्नु पहिले रेडियो खोल्नुहोस्।"</string>
-    <string name="close_dialog" msgid="2365884406356986917">"ठीक छ"</string>
+    <string name="close_dialog" msgid="2365884406356986917">"ठिक छ"</string>
     <string name="enable" msgid="7248657275000173526">"सकृय पार्नुहोस्"</string>
     <string name="disable" msgid="4678348128118573672">"निस्कृय पार्नुहोस्"</string>
     <string name="change_num" msgid="239476305819844391">"अपडेट गर्नुहोस्"</string>
@@ -576,7 +576,7 @@
     <string name="change_pin_title" msgid="7790232089699034029">"भ्वाइस मेलको PIN परिवर्तन गर्नुहोस्"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"जारी राख्नुहोस्"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"रद्द गर्नुहोस्"</string>
-    <string name="change_pin_ok_label" msgid="6204308560844889926">"ठीक छ"</string>
+    <string name="change_pin_ok_label" msgid="6204308560844889926">"ठिक छ"</string>
     <string name="change_pin_enter_old_pin_header" msgid="419179847657548887">"आफ्नो पुरानो PIN को पुष्टि गर्नुहोस्"</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8579171678763615453">"जारी राख्नका लागि आफ्नो भ्वाइस मेलको PIN प्रविष्ट गर्नुहोस्।"</string>
     <string name="change_pin_enter_new_pin_header" msgid="2611191814590251532">"एउटा नयाँ PIN सेट गर्नुहोस्"</string>
