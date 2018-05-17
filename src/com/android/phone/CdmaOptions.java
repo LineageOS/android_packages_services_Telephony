@@ -26,9 +26,11 @@ import android.provider.Settings;
 import android.telephony.CarrierConfigManager;
 import android.text.TextUtils;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneConstants;
 import com.android.settingslib.RestrictedLockUtils;
 
 /**
@@ -52,6 +54,12 @@ public class CdmaOptions {
     private PreferenceFragment mPrefFragment;
     private PreferenceScreen mPrefScreen;
     private Phone mPhone;
+
+    // Constructor for CdmaOptionsTest, since PreferenceScreen is final and cannot be mocked
+    @VisibleForTesting
+    public CdmaOptions(Phone phone) {
+        mPhone = phone;
+    }
 
     public CdmaOptions(PreferenceFragment prefFragment, PreferenceScreen prefScreen, Phone phone) {
         mPrefFragment = prefFragment;
@@ -79,8 +87,7 @@ public class CdmaOptions {
         PersistableBundle carrierConfig =
                 PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
         // Some CDMA carriers want the APN settings.
-        boolean addAPNExpand =
-                carrierConfig.getBoolean(CarrierConfigManager.KEY_SHOW_APN_SETTING_CDMA_BOOL);
+        boolean addAPNExpand = shouldAddApnExpandPreference(carrierConfig);
         boolean addCdmaSubscription =
                 deviceSupportsNvAndRuim();
         // Read platform settings for carrier settings
@@ -94,6 +101,7 @@ public class CdmaOptions {
         // Calling add or remove explicitly to make sure they are updated.
 
         if (addAPNExpand) {
+            log("update: addAPNExpand");
             mButtonAPNExpand.setDisabledByAdmin(
                     MobileNetworkSettings.isDpcApnEnforced(mButtonAPNExpand.getContext())
                             ? RestrictedLockUtils.getDeviceOwner(mButtonAPNExpand.getContext())
@@ -134,6 +142,19 @@ public class CdmaOptions {
         } else {
             mPrefScreen.removePreference(mButtonCarrierSettings);
         }
+    }
+
+    /**
+     * Return whether we should add the APN expandable preference based on the phone type and
+     * carrier config
+     */
+    @VisibleForTesting
+    public boolean shouldAddApnExpandPreference(PersistableBundle config) {
+        if (mPhone.getPhoneType() == PhoneConstants.PHONE_TYPE_CDMA
+                && config.getBoolean(CarrierConfigManager.KEY_SHOW_APN_SETTING_CDMA_BOOL)) {
+            return true;
+        }
+        return false;
     }
 
     private boolean deviceSupportsNvAndRuim() {
