@@ -359,9 +359,9 @@
     <string name="enable_disable_technology_news" msgid="3517184627114999149">"तंत्रज्ञान बातम्या"</string>
     <string name="technology_news_enable" msgid="7995209394210455181">"तंत्रज्ञान बातम्या सक्षम केल्‍या"</string>
     <string name="technology_news_disable" msgid="5483490380561851946">"तंत्रज्ञान बातम्या अक्षम केल्‍या"</string>
-    <string name="enable_disable_multi_category" msgid="626771003122899280">"एकाधिक-श्रेणी"</string>
-    <string name="multi_category_enable" msgid="1179299804641721768">"एकाधिक-श्रेणी सक्षम केली"</string>
-    <string name="multi_category_disable" msgid="880104702904139505">"एकाधिक-श्रेणी अक्षम केली"</string>
+    <string name="enable_disable_multi_category" msgid="626771003122899280">"एकाधिक-वर्गवारी"</string>
+    <string name="multi_category_enable" msgid="1179299804641721768">"एकाधिक-वर्गवारी सक्षम केली"</string>
+    <string name="multi_category_disable" msgid="880104702904139505">"एकाधिक-वर्गवारी अक्षम केली"</string>
     <string name="network_lte" msgid="7702681952521375754">"LTE (शिफारस केलेले)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G (शिफारस केलेले)"</string>
     <string name="network_global" msgid="1323190488685355309">"जागतिक"</string>
@@ -424,7 +424,7 @@
     <string name="fdn_contact_updated" msgid="5497828782609005017">"निश्चित डायलिंग नंबर अपडेट केला."</string>
     <string name="delete_fdn_contact" msgid="6668958073074151717">"निश्चित डायलिंग नंबर हटवा"</string>
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"निश्चित डायलिंग नंबर हटवित आहे..."</string>
-    <string name="fdn_contact_deleted" msgid="7154162327112259569">"निश्चित डायलिंग नंबर हटविला."</string>
+    <string name="fdn_contact_deleted" msgid="7154162327112259569">"निश्चित डायलिंग नंबर हटवला."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"आपण चुकीचा पिन टाईप केल्‍याने FDN अपडेट केले नव्‍हते."</string>
     <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN अपडेट केलेले नाही, कारण क्रमांक २० अंकांनी जास्‍त होत आहेत."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN अपडेट केले नव्‍हते. PIN2 चुकीचा होता किंवा फोन नंबरला नकार दिला."</string>
@@ -533,7 +533,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवणयंत्र सुसंगतता चालू करा"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"रीअल-टाइम टेक्‍स्‍ट (RTT) कॉल"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"व्‍हॉइस कॉल करताना मेसेजिंग करू शकतो"</string>
-    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT अशा कॉल करणार्‍यांना साहाय्य करते, ज्‍यांना बहिरेपणा आहे, ज्‍यांना कमी ऐकू येते किंवा बोलताना अडखळतात किंवा ज्‍यांना फक्‍त आवाज पुरेसा नसतो.&lt;br&gt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;अधिक जाणून घ्‍या&lt;a&gt;\n       &lt;br/&gt; - RTT cकॉल संदेश प्रतिलेख म्‍हणून सेव्‍ह केले आहेत\n       &lt;br/&gt; - RTT व्हिडिओ कॉलसाठी उपलब्‍ध नाही"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT अशा कॉल करणार्‍यांना साहाय्य करते, ज्‍यांना बहिरेपणा आहे, ज्‍यांना कमी ऐकू येते किंवा बोलताना अडखळतात किंवा ज्‍यांना फक्‍त आवाज पुरेसा नसतो.&lt;br&gt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;अधिक जाणून घ्‍या&lt;a&gt;\n       &lt;br/&gt; - RTT cकॉल मेसेज प्रतिलेख म्‍हणून सेव्‍ह केले आहेत\n       &lt;br/&gt; - RTT व्हिडिओ कॉलसाठी उपलब्‍ध नाही"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बंद"</item>
     <item msgid="3971695875449640648">"TTY पूर्ण"</item>
