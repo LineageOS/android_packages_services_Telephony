@@ -26,8 +26,8 @@ import android.telephony.CarrierConfigManager;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.PhoneFactory;
 import com.android.settingslib.RestrictedLockUtils;
 
 /**
@@ -72,9 +72,11 @@ public class GsmUmtsOptions {
         boolean addAPNExpand = true;
         boolean addNetworkOperatorsCategory = true;
         boolean addCarrierSettings = true;
-        if (PhoneFactory.getDefaultPhone().getPhoneType() != PhoneConstants.PHONE_TYPE_GSM) {
+        Phone phone = PhoneGlobals.getPhone(subId);
+        if (phone == null) return;
+        if (phone.getPhoneType() != PhoneConstants.PHONE_TYPE_GSM) {
             log("Not a GSM phone");
-            mCategoryAPNExpand.setEnabled(false);
+            addAPNExpand = false;
             mNetworkOperator.setEnabled(false);
         } else {
             log("Not a CDMA phone");
@@ -96,7 +98,7 @@ public class GsmUmtsOptions {
             }
 
             if (carrierConfig.getBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL)) {
-                if (PhoneFactory.getDefaultPhone().isCspPlmnEnabled()) {
+                if (phone.isCspPlmnEnabled()) {
                     log("[CSP] Enabling Operator Selection menu.");
                     mNetworkOperator.setEnabled(true);
                 } else {
@@ -114,6 +116,7 @@ public class GsmUmtsOptions {
         // Calling add or remove explicitly to make sure they are updated.
 
         if (addAPNExpand) {
+            log("update: addAPNExpand");
             mButtonAPNExpand.setDisabledByAdmin(
                     MobileNetworkSettings.isDpcApnEnforced(mButtonAPNExpand.getContext())
                             ? RestrictedLockUtils.getDeviceOwner(mButtonAPNExpand.getContext())
