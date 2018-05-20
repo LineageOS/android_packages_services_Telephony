@@ -401,7 +401,7 @@
     <string name="sum_fdn" msgid="1959399454900272878">"ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍‌କୁ ପରିଚାଳନା କରନ୍ତୁ"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ଆକ୍ସେସ୍ ପାଇଁ PIN ବଦଳାନ୍ତୁ"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ଫୋନ୍ ନମ୍ବର୍ ତାଲିକାକୁ ପରିଚାଳନା କରନ୍ତୁ"</string>
-    <string name="voice_privacy" msgid="3776841382844614716">"ଭଏସ୍ ଗୋପନିୟତା"</string>
+    <string name="voice_privacy" msgid="3776841382844614716">"ଭଏସ୍ ଗୋପନୀୟତା"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"ଉନ୍ନତ ଗୋପନିୟ ମୋଡ୍‌କୁ ସକ୍ଷମ କରନ୍ତୁ"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY ମୋଡ୍"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"TTY ମୋଡ୍ ସେଟ୍ କରନ୍ତୁ"</string>
