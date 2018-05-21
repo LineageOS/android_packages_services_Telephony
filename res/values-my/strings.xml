@@ -606,7 +606,7 @@
     <string name="enable_video_calling_dialog_close" msgid="7411471282167927991">"ပိတ်ရန်"</string>
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"အရေးပေါ် ခေါ်ဆိုမှုများ"</string>
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"အရေးပေါ် ခေါ်ဆိုမှုသာလျှင်"</string>
-    <string name="sim_description_default" msgid="4778679519938775515">"SIM ကဒ်၊ အပေါက်: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
+    <string name="sim_description_default" msgid="4778679519938775515">"SIM ကတ်၊ အပေါက်: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"ရယူသုံးနိုင်မှု"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"အောက်ပါမှ Wi-Fi ခေါ်ခြင်း"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"ဝိုင်ဖိုင်ခေါ်ဆိုမှု"</string>

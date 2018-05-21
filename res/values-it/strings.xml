@@ -90,7 +90,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Caricamento impostazioni…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Numero nascosto per chiamate in uscita"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Numero visualizzato in chiamate in uscita"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Usa impostazioni operatore per visualizzare il mio numero in chiamate in uscita"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Usa impostazioni dell\'operatore per mostrare il mio numero nelle chiamate in uscita"</string>
     <string name="labelCW" msgid="6120513814915920200">"Avviso di chiamata"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Notifica chiamate in entrata durante telefonata"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Notifica chiamate in entrata durante telefonata"</string>
@@ -103,17 +103,17 @@
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Deviazione di tutte le chiamate al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"Numero non disponibile"</string>
     <string name="sum_cfu_disabled" msgid="8384177689501334080">"Non attiva"</string>
-    <string name="labelCFB" msgid="6139853033106283172">"Quando occupato"</string>
+    <string name="labelCFB" msgid="6139853033106283172">"Se occupato"</string>
     <string name="messageCFB" msgid="3711089705936187129">"Numero se occupato"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"Deviazione al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"Non attiva"</string>
     <string name="disable_cfb_forbidden" msgid="3506984333877998061">"Il tuo operatore non supporta la disattivazione dell\'inoltro chiamate quando il telefono è occupato."</string>
-    <string name="labelCFNRy" msgid="1736067178393744351">"Quando senza risposta"</string>
+    <string name="labelCFNRy" msgid="1736067178393744351">"Se non si risponde"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"Numero se non si risponde"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Deviazione al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Non attiva"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Il tuo operatore non supporta la disattivazione dell\'inoltro chiamate quando il telefono non risponde."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"Quando non raggiungibile"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"Se non raggiungibile"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Numero se non raggiungibile"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Deviazione al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Non attiva"</string>

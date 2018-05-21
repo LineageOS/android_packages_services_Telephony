@@ -255,7 +255,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"தொலைத்தொடர்பு நிறுவனம், eSIM, சிம், euicc, தொலைத்தொடர்பு நிறுவனங்களை மாற்று, தொலைத்தொடர்பு நிறுவனத்தைச் சேர்"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"மொபைல் டேட்டா"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"மொபைல் நெட்வொர்க்கைப் பயன்படுத்தி, தரவை அணுகு"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"மொபைல் நெட்வொர்க்கைப் பயன்படுத்தி, டேட்டாவை அணுகு"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"மொபைல் டேட்டாவை முடக்கவா?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"தேர்ந்தெடுக்க வேண்டும்"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"தரவிற்கான சிம்மை மாற்றவா?"</string>
@@ -557,7 +557,7 @@
     <string name="ota_activate" msgid="1368528132525626264">"செயல்படுத்து"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"மொபைல் செயல்படுத்தப்பட்டது."</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"செயல்படுத்துவதில் சிக்கல்"</string>
-    <string name="ota_listen" msgid="162923839877584937">"செயற்படுத்துதல் முடிந்தது என கேட்கும்வரை பேச்சுவடிவில் உள்ள வழிமுறைகளைப் பின்பற்றவும்."</string>
+    <string name="ota_listen" msgid="162923839877584937">"செயல்படுத்துதல் முடிந்தது என கேட்கும்வரை பேச்சுவடிவ வழிமுறைகளைப் பின்பற்றவும்."</string>
     <string name="ota_speaker" msgid="6904589278542719647">"ஸ்பீக்கர்"</string>
     <string name="ota_progress" msgid="460876637828044519">"மொபைலை அமைக்கிறது…"</string>
     <string name="ota_failure" msgid="7713756181204620397">"மொபைலை அமைக்க முடியவில்லை"</string>
