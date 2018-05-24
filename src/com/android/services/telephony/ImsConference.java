@@ -673,6 +673,7 @@ public class ImsConference extends Conference {
                     Log.i(this, "handleConferenceParticipantsUpdate: updateState, participant = %s",
                             participant);
                     connection.updateState(participant.getState());
+                    connection.setVideoState(parent.getVideoState());
                 }
             }
 
@@ -685,6 +686,7 @@ public class ImsConference extends Conference {
                                     newParticipant.getHandle(),
                                     newParticipant.getEndpoint()));
                     connection.updateState(newParticipant.getState());
+                    connection.setVideoState(parent.getVideoState());
                 }
             }
 
