@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Desblokeatu"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Baztertu"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"Sarea desblokeatzeko eskatzen…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Sarea desblokeatzeko eskaerak ez du arrakastarik izan."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Sarea desblokeatu egin da."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Erabiltzaile honek ez dauzka sare mugikorraren ezarpenak erabilgarri"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM deien ezarpenak"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM deien ezarpenak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

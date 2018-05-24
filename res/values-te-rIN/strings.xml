@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"అన్‌లాక్ చేయి"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"తీసివేయి"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"నెట్‌వర్క్ అన్‌లాక్‌ను అభ్యర్థిస్తోంది…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"నెట్‌వర్క్ అన్‌లాక్ అభ్యర్థన విఫలమైంది."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"నెట్‌వర్క్ అన్‌లాక్ విజయవంతమైంది."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"ఈ వినియోగదారుకి సెల్యులార్ నెట్‌వర్క్ సెట్టింగ్‌లు అందుబాటులో లేవు"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM కాల్ సెట్టింగ్‌లు"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM కాల్ సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"আনলক করুন"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"খারিজ করুন"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"নেটওয়ার্ক আনলকের অনুরোধ করা হচ্ছে..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"নেটওয়ার্ক আনলক করার অনুরোধ অসফল হয়েছে৷"</string>
-    <string name="unlock_success" msgid="6770085622238180152">"নেটওয়ার্ক আনলক সফল হয়েছে৷"</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"এই ব্যবহারকারীর জন্য সেলুলার নেটওয়ার্ক সেটিংস উপলব্ধ নয়"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM কল সেটিংস"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM কল সেটিংস (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
