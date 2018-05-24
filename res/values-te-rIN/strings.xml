@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"సిమ్ కార్డులో వాయిస్ మెయిల్ నంబర్ ఏదీ నిల్వ చేయబడలేదు."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"నంబర్‌ను జోడించు"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"మీ SIM కార్డు అన్‌బ్లాక్ చేయబడింది. మీ ఫోన్ అన్‌లాక్ చేయబడుతోంది…"</string>
-    <string name="label_ndp" msgid="780479633159517250">"SIM నెట్‌వర్క్ అన్‌లాక్ పిన్‌"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"అన్‌లాక్ చేయి"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"తీసివేయి"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"నెట్‌వర్క్ అన్‌లాక్‌ను అభ్యర్థిస్తోంది…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"నెట్‌వర్క్ అన్‌లాక్ అభ్యర్థన విఫలమైంది."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"నెట్‌వర్క్ అన్‌లాక్ విజయవంతమైంది."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"ఈ వినియోగదారుకి సెల్యులార్ నెట్‌వర్క్ సెట్టింగ్‌లు అందుబాటులో లేవు"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM కాల్ సెట్టింగ్‌లు"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM కాల్ సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

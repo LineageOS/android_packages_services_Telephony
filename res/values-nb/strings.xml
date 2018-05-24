@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Det er ikke lagret noe nummer for talepostkasse på SIM-kortet."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Legg til nummer"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM-kortet er blitt avblokkert. Telefonen låses opp…"</string>
-    <string name="label_ndp" msgid="780479633159517250">"PIN-kode for å fjerne operatørlås"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Lås opp"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Skjul"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"Spør om fjerning av operatørlås…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Fikk ikke fjerne operatørlås."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Operatørlåsen er fjernet."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Innstillingene for mobilnettverk er ikke tilgjengelige for denne brukeren"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Innstillinger for GSM-samtaler"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Anropsinnstillinger for GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Non hai ningún número de correo de voz almacenado na tarxeta SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Engadir número"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Desbloqueouse a tarxeta SIM. O teléfono estase desbloqueando..."</string>
-    <string name="label_ndp" msgid="780479633159517250">"PIN de desbloqueo da rede SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Desbloquear"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Rexeitar"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"Solicitando desbloqueo da rede..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Solicitude de desbloqueo da rede realizado correctamente."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Desbloqueo da rede realizado correctamente."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"A configuración de rede móbil non está dispoñible para este usuario"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Configuración de chamadas GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Configuración da chamada de GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

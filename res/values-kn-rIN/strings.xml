@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"ಸಿಮ್‌ ಕಾರ್ಡ್‌ನಲ್ಲಿ ಯಾವುದೇ ಧ್ವನಿಮೇಲ್‌ ಸಂಖ್ಯೆಯನ್ನು ಸಂಗ್ರಹಿಸಿಲ್ಲ."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"ಸಂಖ್ಯೆಯನ್ನು ಸೇರಿಸಿ"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"ನಿಮ್ಮ ಸಿಮ್‌ ಕಾರ್ಡ್‌ನ ನಿರ್ಬಂಧವನ್ನು ತೆಗೆಯಲಾಗಿದೆ. ನಿಮ್ಮ ಫೋನ್‌ ಅನ್‌ಲಾಕ್‌ ಆಗುತ್ತಿದೆ…"</string>
-    <string name="label_ndp" msgid="780479633159517250">"ಸಿಮ್‌ ನೆಟ್‌ವರ್ಕ್‌ನ ಅನ್‌ಲಾಕ್‌ ಮಾಡುವ ಪಿನ್‌"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ಅನ್‌ಲಾಕ್"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"ವಜಾಗೊಳಿಸಿ"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"ನೆಟ್‌ವರ್ಕ್‌ ಅನ್ನು ಅನ್‌ಲಾಕ್‌ ಮಾಡಲು ವಿನಂತಿಸಲಾಗುತ್ತಿದೆ…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"ನೆಟ್‌ವರ್ಕ್‌ ಅನ್‌ಲಾಕ್‌ ವಿನಂತಿಯು ಯಶಸ್ವಿಯಾಗಲಿಲ್ಲ."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"ನೆಟ್‌ವರ್ಕ್‌ ಅನ್‌ಲಾಕ್‌ ಯಶಸ್ವಿಯಾಗಿದೆ."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"ಸೆಲ್ಯುಲಾರ್‌ ನೆಟ್‌ವರ್ಕ್‌ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಈ ಬಳಕೆದಾರರಿಗೆ ಲಭ್ಯವಿಲ್ಲ"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM ಕರೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM ಕರೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM કાર્ડ પર કોઈ વૉઇસમેઇલ નંબર સંગ્રહિત નથી."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"નંબર ઉમેરો"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"તમારા SIM કાર્ડને અનાવરોધિત કરવામાં આવ્યું છે. તમારા ફોનને અનલૉક કરી રહ્યાં છે…"</string>
-    <string name="label_ndp" msgid="780479633159517250">"SIM નેટવર્ક અનલૉક PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"અનલૉક કરો"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"છોડી દો"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"નેટવર્ક અનલૉકની વિનંતી કરી રહ્યાં છે…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"નેટવર્ક અનલૉક વિનંતી અસફળ."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"નેટવર્ક અનલૉક સફળ."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"સેલ્યુલર નેટવર્ક સેટિંગ્સ આ વપરાશકર્તા માટે ઉપલબ્ધ નથી"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM કૉલ સેટિંગ્સ"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM કૉલ સેટિંગ્સ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

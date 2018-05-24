@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Na SIM kartě není uloženo žádné číslo hlasové schránky."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Přidat číslo"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM karta byla odblokována. Telefon se odblokovává..."</string>
-    <string name="label_ndp" msgid="780479633159517250">"Kód PIN odblokování sítě pro SIM kartu"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Odemknout"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Zavřít"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"Žádost o odblokování sítě..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Požadavek na odblokování sítě se nezdařil."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Síť byla úspěšně odblokována."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Nastavení mobilní sítě pro tohoto uživatele není dostupné."</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Nastavení hovorů GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Nastavení hovorů GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

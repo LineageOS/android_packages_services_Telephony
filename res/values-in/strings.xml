@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Tidak ada nomor kotak pesan tersimpan pada kartu SIM."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Tambahkan nomor"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Kartu SIM Anda tidak lagi dicekal. Ponsel Anda sedang dibuka kuncinya..."</string>
-    <string name="label_ndp" msgid="780479633159517250">"PIN pembuka kunci jaringan SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Buka kunci"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Tutup"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"Meminta membuka jaringan..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Permintaan buka kunci jaringan gagal."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Jaringan berhasil dibuka."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Setelan jaringan seluler tidak tersedia bagi pengguna ini"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Setelan panggilan GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Setelan panggilan telepon GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

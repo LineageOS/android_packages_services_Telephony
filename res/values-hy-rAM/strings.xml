@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM քարտում ձայնային փոստի ոչ մի համար գրանցված չէ:"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Ավելացնել համար"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Ձեր SIM քարտը ապակողպված է: Ձեր հեռախոսը ապակողպվում է..."</string>
-    <string name="label_ndp" msgid="780479633159517250">"SIM ցանցով PIN-ի ապակողպում"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Ապակողպել"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Անտեսել"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"Հայցվում է ցանցի ապակողպում..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Ցանցի ապակողպման հարցումը խափանվեց:"</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Ցանցի ապակողպումը խափանվեց"</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Բջջային ցանցի կարգավորումներն անհասանելի են այս օգտատիրոջ"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM զանգերի կարգավորումներ"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM զանգի կարգավորումներ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

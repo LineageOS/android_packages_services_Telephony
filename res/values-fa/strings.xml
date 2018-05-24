@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"شماره پست صوتی در سیم کارت ذخیره نشده است."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"افزودن شماره"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"قفل سیم کارت شما باز شده است. قفل گوشی در حال باز شدن است..."</string>
-    <string name="label_ndp" msgid="780479633159517250">"پین بازگشایی قفل شبکه سیم"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"بازگشایی قفل"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"رد کردن"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"در حال درخواست بازگشایی قفل شبکه..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"درخواست قفل گشایی شبکه ناموفق بود."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"قفل گشایی شبکه با موفقیت انجام شد."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"تنظیمات شبکه تلفن همراه برای این کاربر در دسترس نیست"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"‏تنظیمات تماس GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"‏تنظیمات تماس GSM (‏<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

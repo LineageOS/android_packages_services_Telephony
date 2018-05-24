@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM 카드에 저장된 음성사서함 번호가 없습니다."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"번호 추가"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM 카드의 잠금이 해제되었습니다. 휴대전화의 잠금해제 중..."</string>
-    <string name="label_ndp" msgid="780479633159517250">"SIM 네트워크 잠금해제 PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"잠금해제"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"취소"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"네트워크 잠금해제 요청 중..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"네트워크 잠금해제 요청이 실패했습니다."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"네트워크의 잠금을 해제했습니다."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"이 사용자는 이동통신망 설정을 사용할 수 없습니다."</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM 통화 설정"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM 통화 설정(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

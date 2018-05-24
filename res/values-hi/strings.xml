@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"सिम कार्ड पर कोई वॉयस मेल नंबर संग्रहीत नहीं है."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"नंबर जोड़ें"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"आपका सिम कार्ड अनब्लॉक कर दिया गया है. आपका फ़ोन अनलॉक किया जा रहा है..."</string>
-    <string name="label_ndp" msgid="780479633159517250">"सिम नेटवर्क अनलॉक पिन"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"अनब्लॉक करें"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"खारिज करें"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"नेटवर्क अनलॉक के लिए अनुरोध कर रहा है..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"नेटवर्क अनलॉक अनुरोध असफल."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"नेटवर्क अनलॉक सफल रहा."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"सेल्युलर नेटवर्क सेटिंग इस उपयोगकर्ता के लिए उपलब्ध नहीं हैं"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM कॉल सेटिंग"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM कॉल सेटिंग (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

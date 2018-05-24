@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM kartada birorta ham ovozli pochta raqami yo‘q."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Raqam qo‘shish"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"To‘sib qo‘yilgan SIM kartangiz ochildi. Telefoningiz qulfdan chiqarilmoqda…"</string>
-    <string name="label_ndp" msgid="780479633159517250">"SIM kartani tarmoqdagi qulfidan chiqarish PIN kodi"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Qulfdan chiqarish"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Rad etish"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"Tarmoqni qulfdan chiqarish so‘ralmoqda…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Tarmoqni qulfdan chiqarish so‘rovi muvaffaqiyatli amalga oshmadi."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Tarmoqni qulfdan chiqarish muvaffaqiyatli amalga oshdi."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Ushbu foydalanuvchi uchun mobil tarmoq sozlamalari mavjud emas"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM tarmog‘i qo‘ng‘iroq sozlamalari"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM qo‘ng‘iroq sozlamalari (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

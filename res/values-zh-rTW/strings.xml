@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM 卡中未儲存語音信箱號碼。"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"新增號碼"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"您的 SIM 卡已解鎖。正在解鎖手機中…"</string>
-    <string name="label_ndp" msgid="780479633159517250">"SIM 網路解鎖 PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"解除鎖定"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"關閉"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"正在要求解除網路鎖定…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"網路解鎖失敗。"</string>
-    <string name="unlock_success" msgid="6770085622238180152">"網路解鎖成功。"</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"這位使用者無法修改行動網路設定"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM 通話設定"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM 通話設定 (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

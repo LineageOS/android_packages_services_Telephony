@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Hakuna nambari ya ujumbe wa sauti iliyohifadhiwa katika SIM kadi."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Ongeza nambari"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Kadi yako ya simu imefunguliwa. Simu yangu inafungua…."</string>
-    <string name="label_ndp" msgid="780479633159517250">"PIN ya kufungua mtandao wa SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Fungua"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Ondoa"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"Inaomba mtandao ufunguliwe…."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Ombi la kufungua mtandao halijafaulu."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Umefaulu kufungua mtandao."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Mipangilio ya mitandao ya simu za mkononi haipatikani kwa mtumiaji huyu"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Mipangilio ya simu ya GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Mipangilio ya simu ya GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

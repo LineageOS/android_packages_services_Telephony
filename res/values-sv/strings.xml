@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Det finns inget nummer till röstbrevlådan sparat på SIM-kortet."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Lägg till nummer"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIM-kortets spärr har tagits bort. Låser upp telefonen…"</string>
-    <string name="label_ndp" msgid="780479633159517250">"PIN-kod för upplåsning av SIM-nätverk"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Lås upp"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Ta bort permanent"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"Försöker låsa upp nätverket…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Det gick inte att låsa upp nätverket."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Nätverket upplåst"</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Inställningarna för mobilnätverk är inte tillgängliga för den här användaren"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Samtalsinst. för GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Samtalsinställningar för GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

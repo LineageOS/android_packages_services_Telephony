@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM कार्डमा कुनै पनि भ्वाइसमेल नम्बर भण्डारण भएको छैन।"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"नम्बर थप्नुहोस्"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"तपाईँको SIM कार्ड अनब्लक गरिएको छ। तपाईँको फोन अनलक हुँदैछ ..."</string>
-    <string name="label_ndp" msgid="780479633159517250">"SIM नेटवर्क अनलक PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"अनलोक गर्नुहोस्"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"खारेज गर्नुहोस्"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"नेटवर्क अनलक गर्न अनुरोध गर्दै..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"नेटवर्क अनलक अनुरोध असफल"</string>
-    <string name="unlock_success" msgid="6770085622238180152">"नेटवर्क अनलक सफल।"</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"सेलुलर सञ्जाल सेटिङहरू यस प्रयोगकर्ताको लागि उपलब्ध छैनन्"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM कल सेटिङहरू"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM कल सेटिङहरू (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

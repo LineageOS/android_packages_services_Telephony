@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"На SIM-карце няма нумару галасавой пошты."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Дадаць нумар"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Ваша SIM-карта была разблакаваная. Ваш тэлефон разблакоўваецца..."</string>
-    <string name="label_ndp" msgid="780479633159517250">"PIN-код разблакавання сеткі SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Разблакаваць"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Адхіліць"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"Запыт разблакавання сеткі..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Запыт разблакавання сеткі няўдалы."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Сетка паспяхова разблакавана."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Налады мабільнай сеткі недаступныя для гэтага карыстальніка"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Налады выклікаў GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Налады выклікаў GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

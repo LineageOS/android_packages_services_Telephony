@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"ဆင်းမ်ကဒ်ပေါ်တွင် အသံစာပို့စနစ် နံပါတ် သိမ်းဆည်ထားခြင်း မရှိပါ"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"နံပါတ်ထပ်ထည့်ရန်"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"သင့် ဆင်းမ်ကဒ်အား ပိတ်ဆို့မှုကို ဖယ်ရှားပြီးပါပြီ။ သင့်ဖုန်းဟာ သော့ဖွင့်နေပါသည်…"</string>
-    <string name="label_ndp" msgid="780479633159517250">"ဆင်းမ်ကဒ် ကွန်ရက် သော့ဖွင့်သော ပင်နံပါတ်"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ဖွင့်ရန်"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"ပယ်ရန်"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"ကွန်ယက်သော့ဖွင့်ခြင်း တောင်းဆိုနေပါသည်…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"ကွန်ယက်ဖွင့်ရန် တောင်းဆိုမှု မအောင်မြင်ပါ"</string>
-    <string name="unlock_success" msgid="6770085622238180152">"ကွန်ယက်ဖွင့်ခြင်း မအောင်မြင်ပါ"</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"ဒီအသုံးပြုသူ အတွက် မိုဘိုင်း ကွန်ရက် ဆက်တင်များ မရှိ"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"ဂျီအက်စ်အမ် ခေါ်ဆိုမှု ဆက်တင်"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM ခေါ်ဆိုမှု ဆက်တင်များ ( <xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g> )"</string>

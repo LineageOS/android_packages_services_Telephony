@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIMカードにボイスメールの番号がありません。"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"番号を追加"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"SIMカードロックを解除しました。端末のロックを解除しています..."</string>
-    <string name="label_ndp" msgid="780479633159517250">"SIMネットワークのロック解除PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ロック解除"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"無効"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"ネットワークのロック解除をリクエスト中..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"ネットワークロックを解除できませんでした。"</string>
-    <string name="unlock_success" msgid="6770085622238180152">"ネットワークロックを解除しました。"</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"このユーザーはモバイルネットワーク設定を利用できません。"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM通話設定"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM通話設定（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>

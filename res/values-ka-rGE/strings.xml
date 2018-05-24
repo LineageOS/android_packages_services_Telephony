@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIM ბარათზე ხმოვანი ფოსტის ნომერი შენახული არ არის."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"ნომრის დამატება"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"თქვენი SIM ბარათი განიბლოკა. მიმდინარეობს თქვენი ტელეფონის განბლოკვა…"</string>
-    <string name="label_ndp" msgid="780479633159517250">"SIM ქსელის განბლოკვის PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"განბლოკვა"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"იგნორირება"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"ქსელის განბლოკვის მოთხოვნა…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"ქსელის განბლოკვის მოთხოვნა წარუმატებლად დასრულდა."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"ქსელის განბლოკვის მოთხოვნა წარმატებით დასრულდა."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"ფიჭური ქსელის პარამეტრები ამ მომხმარებლისათვის მიუწვდომელია"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM ზარის პარამეტრები"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM ზარის პარამეტრები (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

@@ -46,12 +46,8 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"Auf der SIM-Karte ist keine Mailbox-Nummer gespeichert."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Nummer hinzufügen"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"Deine SIM-Karte wurde entsperrt. Dein Telefon wird nun entsperrt..."</string>
-    <string name="label_ndp" msgid="780479633159517250">"PIN zur Entsperrung des SIM-Netzwerks"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Entsperren"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Verwerfen"</string>
-    <string name="requesting_unlock" msgid="6412629401033249351">"Netzwerkentsperrung wird angefordert..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Anfrage für Entsperrung des Netzwerks war nicht erfolgreich."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Entsperrung des Netzwerks nicht erfolgreich."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Die Einstellungen für Mobilfunknetze sind für diesen Nutzer nicht verfügbar."</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM-Anrufeinstellungen"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM-Anrufeinstellungen (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
