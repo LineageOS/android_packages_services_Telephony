@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Lås upp"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Ta bort permanent"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"Försöker låsa upp nätverket…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Det gick inte att låsa upp nätverket."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Nätverket upplåst"</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Inställningarna för mobilnätverk är inte tillgängliga för den här användaren"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Samtalsinst. för GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Samtalsinställningar för GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

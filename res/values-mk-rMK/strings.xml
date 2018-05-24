@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Отклучи"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Отфрли"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"Барање за отклучување мрежа..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Барањето за отклучување мрежа е неуспешно."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Отклучувањето мрежа е успешно."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Поставките за мобилна мрежа не се достапни за овој корисник"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM поставки на повик"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Поставки за повик преку GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

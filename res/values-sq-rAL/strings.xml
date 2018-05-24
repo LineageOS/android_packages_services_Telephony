@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Shkyçe"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Injoro"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"Po kërkon shkyçjen e rrjetit…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Kërkesa për shkyçjen e rrjetit ishte e pasuksesshme."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Shkyçja e rrjetit ishte e suksesshme."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Cilësimet e rrjetit celular nuk mundësohen për këtë përdorues"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Cilësimet e telefonatës GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Cilësimet e telefonatës GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

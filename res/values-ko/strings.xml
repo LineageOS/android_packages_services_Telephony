@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"잠금해제"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"취소"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"네트워크 잠금해제 요청 중..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"네트워크 잠금해제 요청이 실패했습니다."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"네트워크의 잠금을 해제했습니다."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"이 사용자는 이동통신망 설정을 사용할 수 없습니다."</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM 통화 설정"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM 통화 설정(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

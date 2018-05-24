@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"अनलॉक करा"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"डिसमिस करा"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"नेटवर्क अनलॉकची विनंती करत आहे..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"नेटवर्क अनलॉक विनंती अयशस्वी."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"नेटवर्क अनलॉक यशस्वी."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"या वापरकर्त्यासाठी सेल्युलर नेटवर्क सेटिंग्ज उपलब्ध नाहीत"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM कॉल सेटिंग्ज"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM कॉल सेटिंग्ज (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

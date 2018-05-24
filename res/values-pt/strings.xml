@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Desbloquear"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Dispensar"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"Solicitando o desbloqueio de rede…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Falha na solicitação de desbloqueio de rede."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Desbloqueio de rede bem-sucedido."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"As configurações da rede celular não estão disponíveis para este usuário"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"Configurações de chamada GSM"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"Configurações de chamada GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

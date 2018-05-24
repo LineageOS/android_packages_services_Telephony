@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Atbloķēt"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Noraidīt"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"Notiek tīkla atbloķēšanas pieprasīšana..."</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"Tīkla atbloķēšanas pieprasījums nav veiksmīgs."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"Tīkla atbloķēšana bija veiksmīga."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"Mobilā tīkla iestatījumi šim lietotājam nav pieejami."</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM zvanu iestatījumi"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM zvanu iestatījumi (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

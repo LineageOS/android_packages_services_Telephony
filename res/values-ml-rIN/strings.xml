@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"അൺലോക്കുചെയ്യുക"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"നിരസിക്കുക"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"നെറ്റ്‌വർക്ക് അൺലോക്ക് അഭ്യർത്ഥിക്കുന്നു…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"നെറ്റ്‌വർക്ക് അൺലോക്ക് അഭ്യർത്ഥന പരാജയപ്പെട്ടു."</string>
-    <string name="unlock_success" msgid="6770085622238180152">"നെറ്റ്‌വർക്ക് അൺലോക്ക് വിജയിച്ചു."</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"ഈ ഉപയോക്താവിന് സെല്ലുലാർ നെറ്റ്‌വർക്ക് ക്രമീകരണങ്ങൾ ലഭ്യമല്ല"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"GSM കോൾ ക്രമീകരണങ്ങൾ"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM കോൾ ക്രമീകരണം (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

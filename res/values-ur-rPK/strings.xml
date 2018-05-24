@@ -50,8 +50,6 @@
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"غیر مقفل کریں"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"برخاست کریں"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"نیٹ ورک غیر مقفل کرنے کی درخواست کر رہا ہے…"</string>
-    <string name="unlock_failed" msgid="6490531697031504225">"نیٹ ورک غیر مقفل کرنے کی درخواست ناکام ہوگئی۔"</string>
-    <string name="unlock_success" msgid="6770085622238180152">"نیٹ ورک غیر مقفل کرنا کامیاب رہا۔"</string>
     <string name="mobile_network_settings_not_available" msgid="3831911315358856062">"اس صارف کیلئے سیلولر نیٹ ورک کی ترتیبات دستیاب نہیں ہیں"</string>
     <string name="labelGSMMore" msgid="5930842194056092106">"‏GSM کال کی ترتیبات"</string>
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"‏GSM کال کی ترتیبات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
