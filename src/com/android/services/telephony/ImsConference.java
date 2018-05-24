@@ -692,6 +692,7 @@ public class ImsConference extends Conference implements Holdable {
                     Log.i(this, "handleConferenceParticipantsUpdate: updateState, participant = %s",
                             participant);
                     connection.updateState(participant.getState());
+                    connection.setVideoState(parent.getVideoState());
                 }
             }
 
@@ -704,6 +705,7 @@ public class ImsConference extends Conference implements Holdable {
                                     newParticipant.getHandle(),
                                     newParticipant.getEndpoint()));
                     connection.updateState(newParticipant.getState());
+                    connection.setVideoState(parent.getVideoState());
                 }
             }
 
