@@ -980,7 +980,10 @@ public class TelephonyConnectionService extends ConnectionService {
     private Phone getPhoneForAccount(PhoneAccountHandle accountHandle, boolean isEmergency) {
         Phone chosenPhone = null;
         if (isEmergency) {
-            return PhoneFactory.getPhone(PhoneUtils.getPhoneIdForECall());
+            int phoneId = PhoneUtils.getPhoneIdForECall();
+            if (phoneId != -1) {
+                return PhoneFactory.getPhone(phoneId);
+            }
         }
 
         int subId = PhoneUtils.getSubIdForPhoneAccountHandle(accountHandle);
