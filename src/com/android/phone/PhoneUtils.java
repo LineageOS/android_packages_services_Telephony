@@ -2576,7 +2576,7 @@ public class PhoneUtils {
     }
 
     public static int getPhoneIdForECall() {
-        int phoneId = 0;
+        int phoneId = -1;
         try {
             phoneId = getIExtTelephony().getPhoneIdForECall();
         } catch (RemoteException ex) {
