@@ -245,7 +245,8 @@ public class MobileNetworkSettings extends Activity  {
         // active subscriptions.
         if (sil != null) {
             for (SubscriptionInfo subInfo : sil) {
-                ImsManager imsManager = ImsManager.getInstance(context, subInfo.getSimSlotIndex());
+                int phoneId = SubscriptionManager.getPhoneId(subInfo.getSubscriptionId());
+                ImsManager imsManager = ImsManager.getInstance(context, phoneId);
                 PersistableBundle carrierConfig = carrierConfigManager.getConfigForSubId(
                         subInfo.getSubscriptionId());
                 if ((imsManager.isVolteEnabledByPlatform()
