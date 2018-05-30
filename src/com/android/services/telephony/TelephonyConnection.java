@@ -36,6 +36,7 @@ import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsCallProfile;
 import android.text.TextUtils;
@@ -96,6 +97,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private static final int MSG_CDMA_VOICE_PRIVACY_ON = 15;
     private static final int MSG_CDMA_VOICE_PRIVACY_OFF = 16;
     private static final int MSG_HANGUP = 17;
+    private static final int MSG_SET_CALL_RADIO_TECH = 18;
 
     private final Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
@@ -239,6 +241,31 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 case MSG_HANGUP:
                     int cause = (int) msg.obj;
                     hangup(cause);
+                    break;
+
+                case MSG_SET_CALL_RADIO_TECH:
+                    int vrat = (int) msg.obj;
+                    // Check whether Wi-Fi call tech is changed, it means call radio tech is:
+                    //  a) changed from IWLAN to other value, or
+                    //  b) changed from other value to IWLAN.
+                    //
+                    // In other word, below conditions are all met:
+                    // 1) {@link #getCallRadioTech} is different from new vrat
+                    // 2) Current call radio technology indicates Wi-Fi call, i.e. {@link #isWifi}
+                    //    is true, or new vrat indicates Wi-Fi call.
+                    boolean isWifiTechChange = getCallRadioTech() != vrat
+                            && (isWifi() || vrat == ServiceState.RIL_RADIO_TECHNOLOGY_IWLAN);
+
+                    // Step 1) Updates call radio tech firstly, so that afterwards Wi-Fi related
+                    // update actions are taken correctly.
+                    setCallRadioTech(vrat);
+
+                    // Step 2) Handles Wi-Fi call tech change.
+                    if (isWifiTechChange) {
+                        updateConnectionProperties();
+                        updateStatusHints();
+                        refreshDisableAddCall();
+                    }
                     break;
             }
         }
@@ -421,14 +448,14 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         }
 
         /**
-         * Used by {@link com.android.internal.telephony.Connection} to report a change in whether
-         * the call is being made over a wifi network.
+         * Used by {@link com.android.internal.telephony.Connection} to report a change for
+         * the call radio technology.
          *
-         * @param isWifi True if call is made over wifi.
+         * @param vrat the RIL Voice Radio Technology used for current connection.
          */
         @Override
-        public void onWifiChanged(boolean isWifi) {
-            setWifi(isWifi);
+        public void onCallRadioTechChanged(@ServiceState.RilRadioTechnology int vrat) {
+            mHandler.obtainMessage(MSG_SET_CALL_RADIO_TECH, vrat).sendToTarget();
         }
 
         /**
@@ -597,13 +624,6 @@ abstract class TelephonyConnection extends Connection implements Holdable {
      * current {@link #mOriginalConnection}.
      */
     private int mOriginalConnectionCapabilities;
-
-    /**
-     * Determines if the {@link TelephonyConnection} is using wifi.
-     * This is used when {@link TelephonyConnection#updateConnectionProperties()} is called to
-     * indicate whether a call has the {@link Connection#PROPERTY_WIFI} property.
-     */
-    private boolean mIsWifi;
 
     /**
      * Determines the audio quality is high for the {@link TelephonyConnection}.
@@ -1016,7 +1036,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
 
         newProperties = changeBitmask(newProperties, PROPERTY_HIGH_DEF_AUDIO,
                 hasHighDefAudioProperty());
-        newProperties = changeBitmask(newProperties, PROPERTY_WIFI, mIsWifi);
+        newProperties = changeBitmask(newProperties, PROPERTY_WIFI, isWifi());
         newProperties = changeBitmask(newProperties, PROPERTY_IS_EXTERNAL_CALL,
                 isExternalConnection());
         newProperties = changeBitmask(newProperties, PROPERTY_HAS_CDMA_VOICE_PRIVACY,
@@ -1103,11 +1123,12 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         // Set video state and capabilities
         setVideoState(mOriginalConnection.getVideoState());
         setOriginalConnectionCapabilities(mOriginalConnection.getConnectionCapabilities());
-        setWifi(mOriginalConnection.isWifi());
         setAudioModeIsVoip(mOriginalConnection.getAudioModeIsVoip());
         setVideoProvider(mOriginalConnection.getVideoProvider());
         setAudioQuality(mOriginalConnection.getAudioQuality());
         setTechnologyTypeExtra();
+
+        setCallRadioTech(mOriginalConnection.getCallRadioTech());
 
         // Post update of extras to the handler; extras are updated via the handler to ensure thread
         // safety. The Extras Bundle is cloned in case the original extras are modified while they
@@ -1225,7 +1246,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
 
         if (isCurrentVideoCall) {
             return true;
-        } else if (wasVideoCall && mIsWifi && !isVowifiEnabled) {
+        } else if (wasVideoCall && isWifi() && !isVowifiEnabled) {
             return true;
         }
         return false;
@@ -1260,7 +1281,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             return false;
         }
 
-        if (mIsWifi && !canWifiCallsBeHdAudio) {
+        if (isWifi() && !canWifiCallsBeHdAudio) {
             return false;
         }
 
@@ -1817,21 +1838,10 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     }
 
     /**
-     * Sets whether the call is using wifi. Used when rebuilding the capabilities to set or unset
-     * the {@link Connection#PROPERTY_WIFI} property.
-     */
-    public void setWifi(boolean isWifi) {
-        mIsWifi = isWifi;
-        updateConnectionProperties();
-        updateStatusHints();
-        refreshDisableAddCall();
-    }
-
-    /**
      * Whether the call is using wifi.
      */
     boolean isWifi() {
-        return mIsWifi;
+        return getCallRadioTech() == ServiceState.RIL_RADIO_TECHNOLOGY_IWLAN;
     }
 
     /**
@@ -2011,7 +2021,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     }
 
     private void updateStatusHints() {
-        if (mIsWifi && getPhone() != null) {
+        if (isWifi() && getPhone() != null) {
             int labelId = isValidRingingCall()
                     ? R.string.status_hint_label_incoming_wifi_call
                     : R.string.status_hint_label_wifi_call;
