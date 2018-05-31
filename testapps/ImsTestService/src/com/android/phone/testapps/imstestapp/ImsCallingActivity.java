@@ -87,7 +87,6 @@ public class ImsCallingActivity extends Activity {
         boolean isVoiceAvail = mCapVoiceAvailBox.isChecked();
         boolean isVideoAvail = mCapVideoAvailBox.isChecked();
         boolean isUtAvail = mCapUtAvailBox.isChecked();
-        // Not used yet
         boolean isSmsAvail = mCapSmsAvailBox.isChecked();
 
         MmTelFeature.MmTelCapabilities capabilities = new MmTelFeature.MmTelCapabilities();
@@ -99,6 +98,9 @@ public class ImsCallingActivity extends Activity {
         }
         if (isUtAvail) {
             capabilities.addCapabilities(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_UT);
+        }
+        if (isSmsAvail) {
+            capabilities.addCapabilities(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_SMS);
         }
         TestMmTelFeatureImpl.getInstance().sendCapabilitiesUpdate(capabilities);
     }
