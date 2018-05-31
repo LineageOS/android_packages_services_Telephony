@@ -399,7 +399,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                     PersistableBundle config =
                                             resultData.getParcelable(KEY_CONFIG_BUNDLE);
                                     saveConfigToXml(
-                                            mPlatformCarrierConfigPackage, iccid, config);
+                                            getCarrierPackageForPhoneId(phoneId), iccid, config);
                                     mConfigFromCarrierApp[phoneId] = config;
                                     sendMessage(
                                             obtainMessage(
