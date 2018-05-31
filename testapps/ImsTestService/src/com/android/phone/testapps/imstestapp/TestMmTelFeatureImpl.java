@@ -19,6 +19,7 @@ package com.android.phone.testapps.imstestapp;
 import android.telephony.ims.feature.CapabilityChangeRequest;
 import android.telephony.ims.feature.MmTelFeature;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
+import android.telephony.ims.stub.ImsSmsImplBase;
 import android.util.ArraySet;
 import android.util.SparseArray;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ import java.util.Set;
 public class TestMmTelFeatureImpl extends MmTelFeature {
 
     public static TestMmTelFeatureImpl sTestMmTelFeatureImpl;
+    public static TestImsSmsImpl sTestImsSmsImpl;
     private boolean mIsReady = false;
     // Enabled Capabilities - not status
     private SparseArray<MmTelCapabilities> mEnabledCapabilities = new SparseArray<>();
@@ -53,6 +55,13 @@ public class TestMmTelFeatureImpl extends MmTelFeature {
         return sTestMmTelFeatureImpl;
     }
 
+    public static TestImsSmsImpl getSmsInstance() {
+        if (sTestImsSmsImpl == null) {
+            sTestImsSmsImpl = new TestImsSmsImpl();
+        }
+        return sTestImsSmsImpl;
+    }
+
     public void addUpdateCallback(MmTelUpdateCallback callback) {
         mCallbacks.add(callback);
     }
@@ -76,6 +85,11 @@ public class TestMmTelFeatureImpl extends MmTelFeature {
             mEnabledCapabilities.get(pair.getRadioTech()).removeCapabilities(pair.getCapability());
         }
         mCallbacks.forEach(callback->callback.onEnabledCapabilityChanged());
+    }
+
+    @Override
+    public ImsSmsImplBase getSmsImplementation() {
+        return getSmsInstance();
     }
 
     @Override
