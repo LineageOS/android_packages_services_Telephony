@@ -97,6 +97,11 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnDismi
 
         // Register ECM timer reset notfication
         mPhone = PhoneGlobals.getPhone();
+        if (mPhone == null) {
+            android.util.EventLog.writeEvent(0x534e4554, "79995313", -1, "");
+            finish();
+            return;
+        }
         mPhone.registerForEcmTimerReset(mTimerResetHandler, ECM_TIMER_RESET, null);
 
         // Register receiver for intent closing the dialog
