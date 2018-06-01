@@ -96,14 +96,14 @@
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Notificar si hay una llamada entrante durante una llamada"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Ajustes de desvío de llamadas"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Desvío de llamadas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"Desvío de llamada"</string>
+    <string name="labelCF" msgid="2574386948026924737">"Desvío de llamadas"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Desviar siempre"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Usar siempre este número"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Desviar todas las llamadas"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Desviando todas las llamadas a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"Número no disponible"</string>
     <string name="sum_cfu_disabled" msgid="8384177689501334080">"Desactivado"</string>
-    <string name="labelCFB" msgid="6139853033106283172">"Cuando esté ocupado"</string>
+    <string name="labelCFB" msgid="6139853033106283172">"Cuando esté comunicando"</string>
     <string name="messageCFB" msgid="3711089705936187129">"Número cuando la línea esté ocupada"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"Desviando a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"Desactivado"</string>
@@ -113,7 +113,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Desviando a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Desactivado"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Tu operador no permite inhabilitar el desvío de llamadas si el teléfono no responde."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"Cuando no esté disponible"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"Cuando esté apagado o sin cobertura"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Número cuando no se pueda establecer la llamada"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Desviando a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Desactivado"</string>

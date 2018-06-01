@@ -29,7 +29,7 @@
     <string name="add_sip_account" msgid="800843669753980091">"खाते जोडा"</string>
     <string name="remove_sip_account" msgid="1367664438506503690">"खाते काढा"</string>
     <string name="sip_account_list" msgid="5610858485304821480">"SIP खाती"</string>
-    <string name="saving_account" msgid="5336529880235177448">"खाते जतन करत आहे..."</string>
+    <string name="saving_account" msgid="5336529880235177448">"खाते सेव्ह करत आहे..."</string>
     <string name="removing_account" msgid="5537351356808985756">"खाते काढत आहे..."</string>
     <string name="sip_menu_save" msgid="7882219814563869225">"सेव्ह करा"</string>
     <string name="sip_menu_discard" msgid="2350421645423888438">"टाकून द्या"</string>
