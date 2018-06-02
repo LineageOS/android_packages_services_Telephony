@@ -54,6 +54,8 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CellInfo;
+import android.telephony.CellInfoGsm;
+import android.telephony.CellInfoWcdma;
 import android.telephony.ClientRequestStats;
 import android.telephony.IccOpenLogicalChannelResponse;
 import android.telephony.LocationAccessPolicy;
@@ -142,8 +144,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     // Message codes used with mMainThreadHandler
     private static final int CMD_HANDLE_PIN_MMI = 1;
-    private static final int CMD_HANDLE_NEIGHBORING_CELL = 2;
-    private static final int EVENT_NEIGHBORING_CELL_DONE = 3;
     private static final int CMD_ANSWER_RINGING_CALL = 4;
     private static final int CMD_END_CALL = 5;  // not used yet
     private static final int CMD_TRANSMIT_APDU_LOGICAL_CHANNEL = 7;
@@ -362,28 +362,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     break;
                 }
-
-                case CMD_HANDLE_NEIGHBORING_CELL:
-                    request = (MainThreadRequest) msg.obj;
-                    onCompleted = obtainMessage(EVENT_NEIGHBORING_CELL_DONE,
-                            request);
-                    mPhone.getNeighboringCids(onCompleted, (WorkSource)request.argument);
-                    break;
-
-                case EVENT_NEIGHBORING_CELL_DONE:
-                    ar = (AsyncResult) msg.obj;
-                    request = (MainThreadRequest) ar.userObj;
-                    if (ar.exception == null && ar.result != null) {
-                        request.result = ar.result;
-                    } else {
-                        // create an empty list to notify the waiting thread
-                        request.result = new ArrayList<NeighboringCellInfo>(0);
-                    }
-                    // Wake up the requesting thread
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
-                    break;
 
                 case CMD_ANSWER_RINGING_CALL:
                     request = (MainThreadRequest) msg.obj;
@@ -1933,11 +1911,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // FIXME: use the P constant when available
         if (targetSdk > android.os.Build.VERSION_CODES.O_MR1 + 1) return null;
 
-        if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
-                callingPackage, Binder.getCallingUid(), Binder.getCallingPid(), true)) {
-            return null;
-        }
-
         if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
                 callingPackage) != AppOpsManager.MODE_ALLOWED) {
             return null;
@@ -1945,21 +1918,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         if (DBG_LOC) log("getNeighboringCellInfo: is active user");
 
-        ArrayList<NeighboringCellInfo> cells = null;
+        List<CellInfo> info = getAllCellInfo(callingPackage);
+        if (info == null) return null;
 
-        WorkSource workSource = getWorkSource(Binder.getCallingUid());
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            cells = (ArrayList<NeighboringCellInfo>) sendRequest(
-                    CMD_HANDLE_NEIGHBORING_CELL, workSource,
-                    SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-        } catch (RuntimeException e) {
-            Log.e(LOG_TAG, "getNeighboringCellInfo " + e);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
+        List<NeighboringCellInfo> neighbors = new ArrayList<NeighboringCellInfo>();
+        for (CellInfo ci : info) {
+            if (ci instanceof CellInfoGsm) {
+                neighbors.add(new NeighboringCellInfo((CellInfoGsm) ci));
+            } else if (ci instanceof CellInfoWcdma) {
+                neighbors.add(new NeighboringCellInfo((CellInfoWcdma) ci));
+            }
         }
-        return cells;
+        return (neighbors.size()) > 0 ? neighbors : null;
     }
 
 
