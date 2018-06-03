@@ -161,7 +161,7 @@
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"এই ধরণের বার্তা সমর্থিত নয় , শুোনার জন্য <xliff:g id="NUMBER">%s</xliff:g> এ কল করুন৷"</string>
     <string name="network_settings_title" msgid="514120489499925574">"মোবাইল নেটওয়ার্ক"</string>
     <string name="label_available" msgid="1181658289009300430">"উপলব্ধ নেটওয়ার্কগুলি"</string>
-    <string name="load_networks_progress" msgid="5230707536168902952">"অনুসন্ধান করছে..."</string>
+    <string name="load_networks_progress" msgid="5230707536168902952">"সার্চ করছে..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"কোনো নেটওয়ার্ক পাওয়া যায়নি৷"</string>
     <string name="network_query_error" msgid="8466081377231178298">"নেটওয়ার্ক পাওয়া যায়নি। আবার চেষ্টা করুন।"</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> এ নিবন্ধিত করা হচ্ছে…"</string>

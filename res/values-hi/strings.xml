@@ -335,9 +335,9 @@
     <string name="enable_disable_lafs" msgid="668189073721277199">"स्थानीय हवाई अड्डा उड़ान शेड्यूल"</string>
     <string name="lafs_enable" msgid="2791978667205137052">"स्थानीय हवाई अड्डा उड़ान शेड्यूल सक्षम"</string>
     <string name="lafs_disable" msgid="2391212397725495350">"स्थानीय हवाई अड्डा उड़ान शेड्यूल अक्षम किया गया"</string>
-    <string name="enable_disable_restaurants" msgid="6240381945336814024">"रेस्तरां"</string>
-    <string name="restaurants_enable" msgid="5137657479469118847">"रेस्तरां सक्षम किए गए"</string>
-    <string name="restaurants_disable" msgid="3678480270938424092">"रेस्तरां अक्षम किए गए"</string>
+    <string name="enable_disable_restaurants" msgid="6240381945336814024">"रेस्टोरेंट"</string>
+    <string name="restaurants_enable" msgid="5137657479469118847">"रेस्टोरेंट सक्षम किए गए"</string>
+    <string name="restaurants_disable" msgid="3678480270938424092">"रेस्टोरेंट अक्षम किए गए"</string>
     <string name="enable_disable_lodgings" msgid="1822029172658551202">"लॉजिंग"</string>
     <string name="lodgings_enable" msgid="3230042508992850322">"लॉजिंग सक्षम की गई"</string>
     <string name="lodgings_disable" msgid="3387879742320682391">"लॉजिंग अक्षम की गई"</string>
