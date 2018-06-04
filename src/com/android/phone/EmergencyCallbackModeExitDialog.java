@@ -80,10 +80,11 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnDismi
 
         mPhone = PhoneGlobals.getInstance().getPhoneInEcm();
         // Check if phone is in Emergency Callback Mode. If not, exit.
-        final boolean isInEcm = Boolean.parseBoolean(
-                SystemProperties.get(TelephonyProperties.PROPERTY_INECM_MODE));
-        Log.i(TAG, "ECMModeExitDialog launched - isInEcm: " + isInEcm + " phone:" + mPhone);
-        if (mPhone == null || !isInEcm) {
+        if (mPhone == null || !mPhone.isInEcm()) {
+            if (mPhone == null) {
+              android.util.EventLog.writeEvent(0x534e4554, "79995313", -1, "");
+            }
+            Log.i(TAG, "ECMModeExitDialog launched - isInEcm: false" + " phone:" + mPhone);
             finish();
             return;
         }
