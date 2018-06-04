@@ -942,8 +942,7 @@ public class MobileNetworkSettings extends Activity  {
                 // in case it is currently something else. That is possible if user
                 // changed the setting while roaming and is now back to home network.
                 settingsNetworkMode = preferredNetworkMode;
-            } else if (carrierConfig.getBoolean(
-                    CarrierConfigManager.KEY_WORLD_PHONE_BOOL) == true) {
+            } else if (isWorldMode()) {
                 prefSet.removePreference(mButtonEnabledNetworks);
                 // set the listener for the mButtonPreferredNetworkMode list preference so we can issue
                 // change Preferred Network Mode.
@@ -1824,6 +1823,7 @@ public class MobileNetworkSettings extends Activity  {
             return super.onOptionsItemSelected(item);
         }
 
+        // TODO: b/80541766 this should use the carrier config, not the resource overlay
         private boolean isWorldMode() {
             boolean worldModeOn = false;
             final String configString = getResources().getString(R.string.config_world_mode);
