@@ -18,6 +18,8 @@ package com.android.phone;
 
 import static android.telephony.ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -81,6 +83,13 @@ import com.android.phone.common.widget.ResizingTextEditText;
  * moved into a shared base class that would live in the framework?
  * Or could we figure out some way to move *this* class into apps/Contacts
  * also?
+ *
+ * TODO: Implement emergency dialer shortcut.
+ *  emergency dialer shortcut offer a local emergency number list. Directly click a number to
+ *  make an emergency phone call without entering numbers from dialpad.
+ *  TODO item:
+ *     1.implement emergency shortcut list UI.
+ *     2.integrate emergency phone number table.
  */
 public class EmergencyDialer extends Activity implements View.OnClickListener,
         View.OnLongClickListener, View.OnKeyListener, TextWatcher,
@@ -119,6 +128,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     ResizingTextEditText mDigits;
     private View mDialButton;
     private View mDelete;
+    private View mEmergencyShortcutView;
+    private View mDialpadView;
 
     private ToneGenerator mToneGenerator;
     private Object mToneGeneratorLock = new Object();
@@ -147,6 +158,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
     private boolean mIsWfcEmergencyCallingWarningEnabled;
     private float mDefaultDigitsTextSize;
+
+    private boolean mAreEmergencyDialerShortcutsEnabled;
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -273,6 +286,13 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         registerReceiver(mBroadcastReceiver, intentFilter);
 
         mEmergencyActionGroup = (EmergencyActionGroup) findViewById(R.id.emergency_action_group);
+
+        mAreEmergencyDialerShortcutsEnabled = Settings.Global.getInt(getContentResolver(),
+                Settings.Global.FASTER_EMERGENCY_PHONE_CALL_ENABLED, 0) != 0;
+
+        if (mAreEmergencyDialerShortcutsEnabled) {
+            setupEmergencyShortcutsView();
+        }
     }
 
     @Override
@@ -326,6 +346,19 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
         View view = findViewById(R.id.zero);
         view.setOnLongClickListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // If emergency dialer shortcut is enabled and Dialpad view is visible, pressing the
+        // back key will back to display FasterEmergencyDialer view.
+        // Otherwise, it would finish the activity.
+        if (mAreEmergencyDialerShortcutsEnabled && mDialpadView != null
+                && mDialpadView.getVisibility() == View.VISIBLE) {
+            switchView(mEmergencyShortcutView, mDialpadView, true);
+            return;
+        }
+        super.onBackPressed();
     }
 
     /**
@@ -396,6 +429,17 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             case R.id.digits: {
                 if (mDigits.length() != 0) {
                     mDigits.setCursorVisible(true);
+                }
+                return;
+            }
+            case R.id.floating_action_button_dialpad: {
+                switchView(mDialpadView, mEmergencyShortcutView, true);
+                return;
+            }
+            case R.id.emergency_info_button: {
+                Intent intent = (Intent) view.getTag(R.id.tag_intent);
+                if (intent != null) {
+                    startActivity(intent);
                 }
                 return;
             }
@@ -791,5 +835,78 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             mDigits.setResizeEnabled(false);
             Log.i(LOG_TAG, "hint - setting to " + mDigits.getScaledTextSize());
         }
+    }
+
+    private void setupEmergencyShortcutsView() {
+        mEmergencyShortcutView = findViewById(R.id.emergency_dialer_shortcuts);
+        mDialpadView = findViewById(R.id.emergency_dialer);
+
+        final View dialpadButton = findViewById(R.id.floating_action_button_dialpad);
+        dialpadButton.setOnClickListener(this);
+
+        final View emergencyInfoButton = findViewById(R.id.emergency_info_button);
+        emergencyInfoButton.setOnClickListener(this);
+
+        // EmergencyActionGroup is replaced by EmergencyInfoGroup.
+        mEmergencyActionGroup.setVisibility(View.GONE);
+
+        // Setup dialpad title.
+        final View emergencyDialpadTitle = findViewById(R.id.emergency_dialpad_title_container);
+        emergencyDialpadTitle.setVisibility(View.VISIBLE);
+
+        switchView(mEmergencyShortcutView, mDialpadView, false);
+    }
+
+    /**
+     * Switch two view.
+     *
+     * @param displayView the view would be displayed.
+     * @param hideView the view would be hidden.
+     * @param hasAnimation is {@code true} when the view should be displayed with animation.
+     */
+    private void switchView(View displayView, View hideView, boolean hasAnimation) {
+        if (displayView == null || hideView == null) {
+            return;
+        }
+
+        if (displayView.getVisibility() == View.VISIBLE) {
+            return;
+        }
+
+        if (hasAnimation) {
+            crossfade(hideView, displayView);
+        } else {
+            hideView.setVisibility(View.GONE);
+            displayView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * Fade out and fade in animation between two view transition.
+     */
+    private void crossfade(View fadeOutView, View fadeInView) {
+        if (fadeOutView == null || fadeInView == null) {
+            return;
+        }
+        final int shortAnimationDuration = getResources().getInteger(
+                android.R.integer.config_shortAnimTime);
+
+        fadeInView.setAlpha(0f);
+        fadeInView.setVisibility(View.VISIBLE);
+
+        fadeInView.animate()
+                .alpha(1f)
+                .setDuration(shortAnimationDuration)
+                .setListener(null);
+
+        fadeOutView.animate()
+                .alpha(0f)
+                .setDuration(shortAnimationDuration)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        fadeOutView.setVisibility(View.GONE);
+                    }
+                });
     }
 }
