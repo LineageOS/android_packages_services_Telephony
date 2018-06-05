@@ -1127,8 +1127,12 @@
     <!-- In-call screen: call failure message displayed in an error dialog when the user is connected to a wireless network, but wifi calling is turned off. [CHAR_LIMIT=NONE] -->
     <string name="incall_error_promote_wfc">Enable Wi-Fi calling to make a call.</string>
 
+    <!-- Title for the button of emergency information -->
+    <string name="emergency_information_title">Emergency information</string>
     <!-- Dialog title for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_title">Emergency call</string>
+    <!-- Title for the emergency dialpad UI -->
+    <string name="emergency_dialpad_title">Emergency calls only</string>
     <!-- Status message for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_message">Turning on radio\u2026</string>
     <!-- Status message for the "radio enable" UI for emergency calls -->
@@ -1371,6 +1375,13 @@
          [CHAR LIMIT=NONE]
     -->
     <string name="description_dial_button">dial</string>
+
+    <!-- String describing the Dialpad ImageButton
+
+         Used by AccessibilityService to announce the purpose of the button.
+         [CHAR LIMIT=NONE]
+    -->
+    <string name="description_dialpad_button">show dialpad</string>
 
     <!-- Visual voicemail on/off title [CHAR LIMIT=40] -->
     <string name="voicemail_visual_voicemail_switch_title">Visual Voicemail</string>
