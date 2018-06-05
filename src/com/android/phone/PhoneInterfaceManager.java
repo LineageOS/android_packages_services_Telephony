@@ -1173,12 +1173,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @return true is a call was ended
      */
     public boolean endCallForSubscriber(int subId) {
-        if (mApp.checkCallingOrSelfPermission(permission.MODIFY_PHONE_STATE)
-                != PackageManager.PERMISSION_GRANTED) {
-            Log.i(LOG_TAG, "endCall: called without modify phone state.");
+        Phone phone = getPhone(subId);
+        CallManager callManager = PhoneGlobals.getInstance().getCallManager();
+
+        // When device is in emergency callback mode or there is an active emergency call, do not
+        // allow the caller to end the call unless they hold modify phone state permission.
+        if (phone != null && callManager != null
+                && (phone.isInEcm() || PhoneUtils.isInEmergencyCall(callManager))
+                && mApp.checkCallingOrSelfPermission(permission.MODIFY_PHONE_STATE)
+                        != PackageManager.PERMISSION_GRANTED) {
+
+            Log.i(LOG_TAG, "endCall: called without modify phone state for emergency call.");
             EventLog.writeEvent(0x534e4554, "67862398", -1, "");
-            throw new SecurityException("MODIFY_PHONE_STATE permission required.");
+            throw new SecurityException(
+                    "MODIFY_PHONE_STATE permission required to end an emergency call.");
         }
+        enforceCallPermission();
         return (Boolean) sendRequest(CMD_END_CALL, null, new Integer(subId));
     }
 
