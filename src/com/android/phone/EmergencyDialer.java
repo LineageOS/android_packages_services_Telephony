@@ -58,7 +58,9 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.android.internal.colorextraction.ColorExtractor;
 import com.android.internal.colorextraction.ColorExtractor.GradientColors;
@@ -66,6 +68,9 @@ import com.android.internal.colorextraction.drawable.GradientDrawable;
 import com.android.phone.common.dialpad.DialpadKeyButton;
 import com.android.phone.common.util.ViewUtil;
 import com.android.phone.common.widget.ResizingTextEditText;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * EmergencyDialer is a special dialer that is used ONLY for dialing emergency calls.
@@ -85,15 +90,15 @@ import com.android.phone.common.widget.ResizingTextEditText;
  * also?
  *
  * TODO: Implement emergency dialer shortcut.
- *  emergency dialer shortcut offer a local emergency number list. Directly click a number to
- *  make an emergency phone call without entering numbers from dialpad.
+ *  Emergency dialer shortcut offer a local emergency number list. Directly clicking a call button
+ *  to place an emergency phone call without entering numbers from dialpad.
  *  TODO item:
- *     1.implement emergency shortcut list UI.
- *     2.integrate emergency phone number table.
+ *     1.integrate emergency phone number table.
  */
 public class EmergencyDialer extends Activity implements View.OnClickListener,
         View.OnLongClickListener, View.OnKeyListener, TextWatcher,
-        DialpadKeyButton.OnPressedListener, ColorExtractor.OnColorsChangedListener {
+        DialpadKeyButton.OnPressedListener, ColorExtractor.OnColorsChangedListener,
+        EmergencyShortcutButton.OnConfirmClickListener {
     // Keys used with onSaveInstanceState().
     private static final String LAST_NUMBER = "lastNumber";
 
@@ -130,6 +135,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     private View mDelete;
     private View mEmergencyShortcutView;
     private View mDialpadView;
+
+    private List<EmergencyShortcutButton> mEmergencyShortcutButtonList;
 
     private ToneGenerator mToneGenerator;
     private Object mToneGeneratorLock = new Object();
@@ -413,10 +420,25 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        mEmergencyActionGroup.onPreTouchEvent(ev);
+        onPreTouchEvent(ev);
         boolean handled = super.dispatchTouchEvent(ev);
-        mEmergencyActionGroup.onPostTouchEvent(ev);
+        onPostTouchEvent(ev);
         return handled;
+    }
+
+    @Override
+    public void onConfirmClick(EmergencyShortcutButton button) {
+        if (button == null) return;
+
+        String phoneNumber = button.getPhoneNumber();
+
+        if (!TextUtils.isEmpty(phoneNumber)) {
+            Log.d(LOG_TAG, "dial emergency number: " + phoneNumber);
+            TelecomManager tm = (TelecomManager) getSystemService(TELECOM_SERVICE);
+            tm.placeCall(Uri.fromParts(PhoneAccount.SCHEME_TEL, phoneNumber, null), null);
+        } else {
+            Log.d(LOG_TAG, "emergency number is empty");
+        }
     }
 
     @Override
@@ -859,7 +881,80 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         final View emergencyDialpadTitle = findViewById(R.id.emergency_dialpad_title_container);
         emergencyDialpadTitle.setVisibility(View.VISIBLE);
 
+        // TODO: Integrating emergency phone number table will get location information.
+        // Using null to present no location status.
+        setLocationInfo(null);
+
+        mEmergencyShortcutButtonList = new ArrayList<>();
+        setupEmergencyCallShortcutButton();
+
         switchView(mEmergencyShortcutView, mDialpadView, false);
+    }
+
+    private void setLocationInfo(String country) {
+        final View locationInfo = findViewById(R.id.location_info);
+
+        if (TextUtils.isEmpty(country)) {
+            locationInfo.setVisibility(View.INVISIBLE);
+        } else {
+            final TextView location = (TextView) locationInfo.findViewById(R.id.location_text);
+            location.setText(country);
+            locationInfo.setVisibility(View.VISIBLE);
+        }
+    }
+
+    // TODO: Integrate emergency phone number table.
+    // Using default layout(no location, phone number is 112, description is Emergency,
+    // and icon is cross shape) until integrating emergency phone number table.
+    private void setupEmergencyCallShortcutButton() {
+        final ViewGroup shortcutButtonContainer = findViewById(
+                R.id.emergency_shortcut_buttons_container);
+        shortcutButtonContainer.setClipToOutline(true);
+
+        final EmergencyShortcutButton button =
+                (EmergencyShortcutButton) getLayoutInflater().inflate(
+                        R.layout.emergency_shortcut_button,
+                        shortcutButtonContainer, false);
+
+        button.setPhoneNumber("112");
+        button.setPhoneDescription("Emergency");
+        button.setPhoneTypeIcon(R.drawable.ic_emergency_number_24);
+        button.setOnConfirmClickListener(this);
+
+        shortcutButtonContainer.addView(button);
+        mEmergencyShortcutButtonList.add(button);
+
+        //Set emergency number title for numerous buttons.
+        if (shortcutButtonContainer.getChildCount() > 1) {
+            final TextView emergencyNumberTitle = findViewById(R.id.emergency_number_title);
+            emergencyNumberTitle.setText(getString(R.string.numerous_emergency_numbers_title));
+        }
+    }
+
+    /**
+     * Called by the activity before a touch event is dispatched to the view hierarchy.
+     */
+    private void onPreTouchEvent(MotionEvent event) {
+        mEmergencyActionGroup.onPreTouchEvent(event);
+
+        if (mEmergencyShortcutButtonList != null) {
+            for (EmergencyShortcutButton button : mEmergencyShortcutButtonList) {
+                button.onPreTouchEvent(event);
+            }
+        }
+    }
+
+    /**
+     * Called by the activity after a touch event is dispatched to the view hierarchy.
+     */
+    private void onPostTouchEvent(MotionEvent event) {
+        mEmergencyActionGroup.onPostTouchEvent(event);
+
+        if (mEmergencyShortcutButtonList != null) {
+            for (EmergencyShortcutButton button : mEmergencyShortcutButtonList) {
+                button.onPostTouchEvent(event);
+            }
+        }
     }
 
     /**
