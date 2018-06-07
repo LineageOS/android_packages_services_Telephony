@@ -66,6 +66,11 @@
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_DEFAULT_NETWORK_AVAILABLE" />
     <protected-broadcast android:name= "com.android.internal.provider.action.VOICEMAIL_SMS_RECEIVED" />
     <protected-broadcast android:name= "com.android.intent.isim_refresh" />
+    <protected-broadcast android:name= "com.android.ims.ACTION_RCS_SERVICE_AVAILABLE" />
+    <protected-broadcast android:name= "com.android.ims.ACTION_RCS_SERVICE_UNAVAILABLE" />
+    <protected-broadcast android:name= "com.android.ims.ACTION_RCS_SERVICE_DIED" />
+    <protected-broadcast android:name= "com.android.ims.ACTION_PRESENCE_CHANGED" />
+    <protected-broadcast android:name= "com.android.ims.ACTION_PUBLISH_STATUS_CHANGED" />
     <protected-broadcast android:name= "com.android.ims.IMS_SERVICE_UP" />
     <protected-broadcast android:name= "com.android.ims.IMS_SERVICE_DOWN" />
     <protected-broadcast android:name= "com.android.ims.IMS_INCOMING_CALL" />
