@@ -4211,6 +4211,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         UiccSlotInfo[] infos = new UiccSlotInfo[slots.length];
         for (int i = 0; i < slots.length; i++) {
             UiccSlot slot = slots[i];
+            if (slot == null) {
+                continue;
+            }
 
             String cardId;
             UiccCard card = slot.getUiccCard();
