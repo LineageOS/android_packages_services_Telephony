@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Το αίτημα SS τροποποιήθηκε σε αίτημα DIAL."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Το αίτημα SS τροποποιήθηκε σε αίτημα USSD."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Το αίτημα SS τροποποιήθηκε σε νέο αίτημα SS."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Το αίτημα SS τροποποιήθηκε σε αίτημα Video DIAL."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Έχει ενεργοποιηθεί η προκαθορισμένων αριθμών κλήσης της εφαρμογής του τηλεφώνου σας. Γι αυτόν τον λόγο δεν λειτουργούν ορισμένες λειτουργίες που σχετίζονται με τις κλήσεις."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Πριν προβάλετε αυτές τις ρυθμίσεις, ενεργοποιήστε τον πομπό."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -167,6 +168,7 @@
     <string name="not_allowed" msgid="5613353860205691579">"Η κάρτα SIM δεν επιτρέπει τη σύνδεση με αυτό το δίκτυο."</string>
     <string name="connect_later" msgid="2308119155752343975">"Δεν είναι δυνατή η σύνδεση στο δίκτυο αυτήν τη στιγμή. Παρακαλούμε ξαναπροσπαθήστε αργότερα."</string>
     <string name="registration_done" msgid="495135664535876612">"Έγινε εγγραφή στο δίκτυο."</string>
+    <string name="already_auto" msgid="6067116884321285507">"Ήδη σε αυτόματη επιλογή."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Αυτόματη επιλογή δικτύου"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Δίκτυο"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Αυτόματη εγγραφή..."</string>
@@ -238,12 +240,13 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Σύνδεση στις υπηρεσίες δεδομένων κατά την περιαγωγή"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Χάσατε τη σύνδεση δεδομένων επειδή φύγατε από το οικείο δίκτυο έχοντας την περιαγωγή δεδομένων απενεργοποιημένη."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Ενδέχεται να επιβαρυνθείτε με σημαντικές χρεώσεις."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Επικοινωνήστε με τον πάροχο του δικτύου για τις τιμές."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Να επιτρέπεται η περιαγωγή δεδομένων;"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Χρήση δεδομένων"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> δεδομένα κινητής τηλεφωνίας σε χρήση μεταξύ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Σύνθετες ρυθμίσεις"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Εταιρεία κινητής τηλεφωνίας"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"εταιρεία κινητής τηλεφωνίας, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"εταιρεία κινητής τηλεφωνίας, esim, sim, euicc, αλλαγή εταιρείας κινητής τηλεφωνίας, προσθήκη εταιρείας κινητής τηλεφωνίας"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Δεδομένα κινητής τηλεφωνίας"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Πρόσβαση σε δεδομένα μέσω δικτύου κινητής τηλεφωνίας"</string>
@@ -417,7 +420,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Διαγραφή καθορισμένου αριθμού κλήσης…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Ο καθορισμένος αριθμός κλήσης διαγράφηκε."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Το FDN δεν ενημερώθηκε, επειδή πληκτρολογήσατε εσφαλμένο PIN."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"Το FDN δεν ενημερώθηκε, επειδή ο αριθμός είναι κενός ή ξεπερνάει τα 20 ψηφία."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"Το FDN δεν ενημερώθηκε, επειδή ο αριθμός ξεπερνάει τα 20 ψηφία."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Δεν έγινε ενημέρωση του FDN. Το PIN2 ήταν λανθασμένο ή ο αριθμός του τηλεφώνου απορρίφθηκε."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Αποτυχία λειτουργίας FDN."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Ανάγνωση από κάρτα SIM…"</string>
@@ -520,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Αποτυχία εισαγωγής επαφής"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Βοηθήματα ακρόασης"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Ενεργοποίηση συμβατότητας βοηθήματος ακρόασης"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"Ενεργοποίηση ή απενεργοποίηση RTT"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Απενεργοποιήθηκε"</item>
     <item msgid="3971695875449640648">"TTY Full"</item>
@@ -631,4 +636,107 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Μπορεί να χρειαστεί να προσθέσετε δεδομένα μέσω <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ΠΡΟΣΘΗΚΗ ΔΕΔΟΜΕΝΩΝ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ΑΚΥΡΩΣΗ"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Η κλήση τερματίστηκε"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Ο πομπός είναι απενεργοποιημένος"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Δεν υπάρχει κάρτα SIM ή σφάλμα κάρτας SIM"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Μη διαθέσιμο δίκτυο κινητής τηλεφωνίας"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Ανεκχώρητος αριθμός"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Δεν υπάρχει δρόμος προς τον προορισμό"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Μη αποδεκτό κανάλι"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Φραγή καθορισμένη από φορέα εκμετάλλευσης"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Κανονική απόλυση κλήσης"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Χρήστης κατειλημμένος"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Δεν υπάρχει απόκριση χρήστη"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Ειδοποίηση χρήστη, χωρίς απάντηση"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Απόρριψη κλήσης"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Ο αριθμός άλλαξε"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Υπερτέρηση"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Ανεπίλεκτη απόλυση χρήστη"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Προορισμός εκτός λειτουργίας"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Μη έγκυρη μορφή αριθμού (ατελής αριθμός)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Απόρριψη ευκολίας"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Απόκριση σε ΕΝΔΙΕΡΩΤΗΣΗ ΚΑΤΑΣΤΑΣΗΣ"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Κανονικό, απροσδιόριστο"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Δεν υπάρχει κύκλωμα/κανάλι διαθέσιμο"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Δίκτυο εκτός λειτουργίας"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Προσωρινή αποτυχία"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Συμφόρηση εξοπλισμού μεταγωγής"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Απόρριψη πληροφοριών πρόσβασης"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Αιτούμενο κύκλωμα/κανάλι μη διαθέσιμο"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Πόροι μη διαθέσιμοι, απροσδιόριστο"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Ποιότητα υπηρεσίας μη διαθέσιμη"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Δεν υπάρχει συνδρομητική εγγραφή για την αιτούμενη ευκολία"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Οι εισερχόμενες κλήσεις έχουν αποκλειστεί εντός του CUG"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Μη εξουσιοδοτημένη δυνατότητα κομιστή"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Η δυνατότητα κομιστή δεν είναι προς το παρόν διαθέσιμη"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Υπηρεσία ή επιλογή μη διαθέσιμη, απροσδιόριστο"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Η υπηρεσία κομιστή δεν υλοποιήθηκε"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM ίσο ή μεγαλύτερο του ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Αιτούμενη ευκολία μη υλοποιημένη"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Μόνο περιορισμένη κομιστική ικανότητα ψηφιακών πληροφοριών είναι διαθέσιμη"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Υπηρεσία ή επιλογή μη υλοποιημένη, απροσδιόριστο"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Μη έγκυρη τιμή αναγνωριστικού συναλλαγής"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Ο χρήστης δεν είναι μέλος του CUG"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Ασύμβατος προορισμός"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Επιλογή μη έγκυρου διαβατικού δικτύου"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Σημασιολογικώς λανθασμένο μήνυμα"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Μη έγκυρες υποχρεωτικές πληροφορίες"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Τύπος μηνύματος μη υπαρκτός ή μη υλοποιημένος"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Τύπος μηνύματος μη συμβατός με την κατάσταση πρωτοκόλλου"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Στοιχείο πληροφορίας μη υπαρκτό ή μη υλοποιημένο"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Σφάλμα συνθήκης IE"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Το μήνυμα δεν είναι συμβατό με την κατάσταση πρωτοκόλλου"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Ανάκαμψη με την εκπνοή του χρονομετρητή"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Σφάλμα πρωτοκόλλου, απροσδιόριστο"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Διασυνεργασία, απροσδιόριστη"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"Φραγή κλήσεων"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Ενεργό"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Ανενεργό"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Όλες οι εξερχόμενες"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Απενεργοποίηση φραγής όλων των εξερχόμενων κλήσεων;"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Φραγή όλων των εξερχόμενων κλήσεων;"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Εξερχόμενες διεθνείς"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Απενεργοποίηση φραγής των εξερχόμενων διεθνών κλήσεων;"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Φραγή εξερχόμενων διεθνών κλήσεων;"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"Εξερχόμενες διεθνείς σε περιαγωγή"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Απενεργοποίηση φραγής των εξερχόμενων διεθνών κλήσεων σε περιαγωγή;"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Φραγή των εξερχόμενων διεθνών κλήσεων σε περιαγωγή;"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Όλες οι εισερχόμενες"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Απενεργοποίηση φραγής όλων των εισερχόμενων κλήσεων;"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Φραγή όλων των εισερχόμενων κλήσεων;"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Εισερχόμενες διεθνείς σε περιαγωγή"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Απενεργοποίηση φραγής όλων των εισερχόμενων διεθνών κλήσεων σε περιαγωγή;"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Φραγή των εισερχόμενων διεθνών κλήσεων σε περιαγωγή;"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Απενεργοποίηση όλων"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Απενεργοποίηση όλων των ρυθμίσεων φραγής κλήσεων"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Η φραγή κλήσεων απενεργοποιήθηκε"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Αλλαγή κωδικού πρόσβασης"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Αλλαγή κωδικού φραγής πρόσβασης για φραγή κλήσεων."</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Δεν είναι δυνατή η αλλαγή του κωδικού πρόσβασης για φραγή κλήσεων."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Οι κωδικοί πρόσβασης δεν αντιστοιχούν μεταξύ τους"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Εισαγάγετε έναν κωδικό πρόσβασης με 4 αριθμούς"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Ο κωδικός πρόσβασης άλλαξε"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Παλιός κωδικός πρόσβασης"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Νέος κωδικός πρόσβασης"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Επιβεβαίωση κωδικού πρόσβασης"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Εισαγωγή κωδικού πρόσβασης"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Ρυθμίσεις φραγής κλήσεων"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Απενεργοποίηση όλων των ρυθμίσεων φραγής κλήσεων;"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Έγινε εκτροπή της κλήσης."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Η κλήση προωθήθηκε."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Η κλήση είναι σε αναμονή."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"Η φραγή αριθμού απορρίφθηκε."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Κλήση κλειστής ομάδας χρηστών."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Φραγή εισερχόμενων κλήσεων ενεργή."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Φραγή εξερχόμενων κλήσεων ενεργή."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Η προώθηση κλήσεων είναι ενεργή."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Η πρόσθετη κλήση προωθήθηκε."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Η εμφανής μεταφορά κλήσης ολοκληρώθηκε."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Η εμφανής μεταφορά κλήσης είναι σε εξέλιξη."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Κλήση σε αναμονή."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Η κλήση συνεχίστηκε."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Έγινε εκτροπή της κλήσης."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Έγινε προώθηση της κλήσης."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Συμμετοχή σε κλήση διάσκεψης."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Έγινε αποδέσμευση της κλήσης σε κράτηση."</string>
 </resources>

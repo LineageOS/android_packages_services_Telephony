@@ -36,6 +36,7 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract.PhoneLookup;
+import android.provider.Settings;
 import android.telecom.DefaultDialerManager;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
@@ -526,14 +527,16 @@ public class NotificationMgr {
     /**
      * Shows the "data disconnected due to roaming" notification, which
      * appears when you lose data connectivity because you're roaming and
-     * you have the "data roaming" feature turned off.
+     * you have the "data roaming" feature turned off for the given {@code subId}.
      */
-    void showDataDisconnectedRoaming() {
+    /* package */ void showDataDisconnectedRoaming(int subId) {
         if (DBG) log("showDataDisconnectedRoaming()...");
 
         // "Mobile network settings" screen / dialog
         Intent intent = new Intent(mContext, com.android.phone.MobileNetworkSettings.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, intent, 0);
+        intent.putExtra(Settings.EXTRA_SUB_ID, subId);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent contentIntent = PendingIntent.getActivity(mContext, subId, intent, 0);
 
         final CharSequence contentText = mContext.getText(R.string.roaming_reenable_message);
 

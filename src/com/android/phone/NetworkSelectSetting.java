@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.AsyncResult;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -50,6 +51,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,7 +62,7 @@ import java.util.Map;
 public class NetworkSelectSetting extends PreferenceFragment {
 
     private static final String TAG = "NetworkSelectSetting";
-    private static final boolean DBG = false;
+    private static final boolean DBG = true;
 
     private static final int EVENT_NETWORK_SELECTION_DONE = 1;
     private static final int EVENT_NETWORK_SCAN_RESULTS = 2;
@@ -84,6 +86,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
     private NetworkOperatorPreference mSelectedNetworkOperatorPreference;
     private TelephonyManager mTelephonyManager;
     private NetworkOperators mNetworkOperators;
+    private List<String> mForbiddenPlmns;
 
     private final Runnable mUpdateNetworkOperatorsRunnable = () -> {
         updateNetworkOperatorsPreferenceCategory();
@@ -103,7 +106,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
 
     @Override
     public void onCreate(Bundle icicle) {
-        logd("onCreate");
+        if (DBG) logd("onCreate");
         super.onCreate(icicle);
 
         mPhoneId = getArguments().getInt(NetworkSelectSettingActivity.KEY_PHONE_ID);
@@ -123,7 +126,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        logd("onViewCreated");
+        if (DBG) logd("onViewCreated");
         super.onViewCreated(view, savedInstanceState);
 
         if (getListView() != null) {
@@ -154,9 +157,18 @@ public class NetworkSelectSetting extends PreferenceFragment {
     public void onStart() {
         if (DBG) logd("onStart");
         super.onStart();
+        new AsyncTask<Void, Void, List<String>>() {
+            @Override
+            protected List<String> doInBackground(Void... voids) {
+                return Arrays.asList(mTelephonyManager.getForbiddenPlmns());
+            }
 
-        // Bind the NetworkQueryService
-        bindNetworkQueryService();
+            @Override
+            protected void onPostExecute(List<String> result) {
+                mForbiddenPlmns = result;
+                bindNetworkQueryService();
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     /**
@@ -382,8 +394,8 @@ public class NetworkSelectSetting extends PreferenceFragment {
         configConnectedNetworkOperatorsPreferenceCategory();
         for (int index = 0; index < mCellInfoList.size(); index++) {
             if (!mCellInfoList.get(index).isRegistered()) {
-                NetworkOperatorPreference pref =
-                        new NetworkOperatorPreference(mCellInfoList.get(index), getContext());
+                NetworkOperatorPreference pref = new NetworkOperatorPreference(
+                        mCellInfoList.get(index), getContext(), mForbiddenPlmns);
                 pref.setKey(CellInfoUtil.getNetworkTitle(mCellInfoList.get(index)));
                 pref.setOrder(index);
                 mNetworkOperatorsPreferences.addPreference(pref);
@@ -422,7 +434,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
             if (cellInfo != null) {
                 if (DBG) logd("Currently registered cell: " + cellInfo.toString());
                 NetworkOperatorPreference pref =
-                        new NetworkOperatorPreference(cellInfo, getContext());
+                        new NetworkOperatorPreference(cellInfo, getContext(), mForbiddenPlmns);
                 pref.setTitle(mTelephonyManager.getNetworkOperatorName());
                 pref.setSummary(R.string.network_connected);
                 // Update the signal strength icon, since the default signalStrength value would be
@@ -503,7 +515,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
         // Remove the current ConnectedNetworkOperatorsPreference
         removeConnectedNetworkOperatorPreference();
         final NetworkOperatorPreference pref =
-                new NetworkOperatorPreference(cellInfo, getContext());
+                new NetworkOperatorPreference(cellInfo, getContext(), mForbiddenPlmns);
         pref.setSummary(R.string.network_connected);
         mConnectedNetworkOperatorsPreference.addPreference(pref);
         PreferenceScreen preferenceScreen = getPreferenceScreen();

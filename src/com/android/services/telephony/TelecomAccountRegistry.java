@@ -461,6 +461,7 @@ final class TelecomAccountRegistry {
         /**
          * Where a device supports instant lettering and call subjects, retrieves the necessary
          * PhoneAccount extras for those features.
+         *
          * @return The {@link PhoneAccount} extras associated with the current subscription.
          */
         private Bundle getPhoneAccountExtras() {

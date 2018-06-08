@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Isicelo se-SS silungiselwe kusicelo SOKUDAYELA."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Isicelo se-SS silungiselwe kusicelo se-USSD."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Isicelo se-SS silungiselwe kusicelo esisha se-SS."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Isicelo se-SS silungiselwe kusicelo se-DIAL."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Izilungiselelo zezinombolo zokudayila okukhiyiwe kohlelo lokusebenza lwefoni yakho zikhanyisiwe. Njengomphumela, ezinye izici ezihlobene namakholi azisebenzi."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Sicela uvule umsakazo ngaphambi kokubuka lezi zilungiselelo."</string>
     <string name="close_dialog" msgid="2365884406356986917">"KULUNGILE"</string>
@@ -167,6 +168,7 @@
     <string name="not_allowed" msgid="5613353860205691579">"Ikhadi lakho le-SIM alivumeli uxhumano kulenethiwekhi."</string>
     <string name="connect_later" msgid="2308119155752343975">"Ayikwazi ukuxhuma kunethiwekhi okwamanje. Zama futhi ngemva kwesikhashana."</string>
     <string name="registration_done" msgid="495135664535876612">"Ibhalisiwe kwinethiwekhi"</string>
+    <string name="already_auto" msgid="6067116884321285507">"Sekuvele kusokhethweni lokuzenzakalela."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Khetha ngokuzenzakalela inethiwekhi"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Inethiwekhi"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Ukubhalisa okuzenzakalelayo..."</string>
@@ -238,12 +240,13 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Xhuma emasevisini edatha lapho uzulazula"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Ulahlekelwe uxhumano lwedatha ngoba ushiye inethiwekhi yakho yasekhaya inokuzulazula kwedatha okuvuliwe."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Ingahle uthole izindleko ezincane."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hlola ngomhlinzeki wakho wenethiwekhi ukuze uthole intengo."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vumela ukuhamba kwedatha?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Ukusebenzisa idatha"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> kusetshenziswe idatha yeselula engu-<xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Okuthuthukisiwe"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Inkampani yenethiwekhi"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"inkampani yenethiwekhi, i-esim, i-sim, i-euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"inkampani yenethiwekhi, i-esim, i-sim, i-euicc, shintsha izinkampani zenethiwekhi, engeza inkampani yenethiwekhi"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Idatha yeselula"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Finyelela kudatha usebenzisa inethiwekhi yeselula"</string>
@@ -421,7 +424,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Isusa othintana naye wokudayela okungaguquki..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Othintana naye wokudayela okungaguquki ususiwe"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"I-FDN ayivuselelwanga ngoba uthayiphe i-PIN engalungile."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"I-FDN ayizange ibuyekezwe ngoba inombolo ayinalutho noma idlula amadijithi angu-20."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"I-FDN ayizange ibuyekezwe ngoba inombolo yeza amadijithi angu-20."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"I-FDN ayibuyekeziwe. I-PIN2 kade ingalungile, noma inombolo yefoni yenqatshelwe."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Umsebenzi we-FDN wehlulekile."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Ifunda ekhadini le-SIM..."</string>
@@ -524,6 +527,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Yehlulekile ukungenisa oxhumana naye"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Izinsiza zokuzwa"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Vula ikhono lensiza yokuzwa"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"I-RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"Vula noma vala i-RTT"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"I-TTY Ivaliwe"</item>
     <item msgid="3971695875449640648">"I-TTY Igcwele"</item>
@@ -635,4 +640,107 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Kungenzeka kumele ungeze idatha nge-<xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ENGEZA IDATHA"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"KHANSELA"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Ikholi iqediwe"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Irediyo ivaliwe"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Alikho ikhadi le-SIM noma kunephutha lekhadi le-SIM"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Inethiwekhi yeselula ayitholakali"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Inombolo (akunikeziwe) enganikiwe"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Awukho umzila oya endaweni"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Isiteshi asamukelwe"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Umsebenzisi ocacisa ukuvimbela"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Ukusula ikholi evamile"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Umsebenzisi umatasa"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Akekho umsebenzisi ophendulayo"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Isexwayiso somsebenzisi, ayikho impendulo"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Ikholi inqatshiwe"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Inombolo ishintshile"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"I-Pre-emption"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Ukusula komsebenzisi ongakhethiwe"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Indawo okuyiwa kuyo ayikho"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Ifomethi yenombolo engavumelekile (inombolo engaphelele)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Indawo inqatshiwe"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Impendulo ku-STATUS ENQUIRY"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Okuvamile, akucacisiwe"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Ayikho i-circuit/isiteshi esithokalalayo"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Inethiwekhi ayikho"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Ukwehluleka kwesikhashana"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Ukushintsha ukulandelana kwezisetshenziswa"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Ulwazi lokufinyelela lulahliwe"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"I-circuit/isiteshi esiceliwe asitholakali"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Izisetshenziswa azitholakali, akucacisiwe"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Ikhwalithi yesevisi iyatholakala"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Amandla aceliwe awabhalisiwe"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Amakholi angenayo avinjelwe ngaphakathi kwe-CUG"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Amandla e-Bearer awagunyaziwe"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Amandla e-Bearer okwamanje awatholakali"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Isevisi noma inketho ayitholakali, akucacisiwe"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Isevisi ye-Bearer ayifakiwe"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"I-ACM ilingana noma inkulu kune-ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Amandla aceliwe awafakiwe"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Amandla kuphela e-bear olwazi lwedijithali olutholakalayo"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Isevisi noma inketho ayifakiwe, akucacisiwe"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Ivelu lesikhombi somsebenzi elingavumelekile"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Umsebenzisi akalona ilungu le-CUG"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Indawo okuyiwa kuyo ayifanelekile"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Ukhetho lwenetihwekhi yokuhamba elingavumelekile"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Imilayezo engalungile ngokuqonda"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Ulwazi olufunekayo olungavumelekile"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Uhlobo lomlayezo alukho noma alufakiwe"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Uhlobo lomlayezo aluhambisani nesimo sephrorhokholi"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Into yolwazi ayikho noma ayifakiwe"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Iphutha le-IE lesimo"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Umlayezo awuhambisani nesimo sephrothokholi"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Ukuphela kwesibali-sikhathi"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Iphutha lephrothokholi, akucacisiwe"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Inethiwekhi, akucacisiwe"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"Ukuvimba ikholi"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Vuliwe"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Valiwe"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Konke okuphumayo"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Khubaza ukuvimbela kwamakholi aphumayo?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Vimbela onke amakholi aphumayo?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Okuphumayo kwangamazwe"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Khubaza ukuvimbela kwamakholi wangamazwe aphumayo?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Vimbela amakholi wangamazwe aphumayo?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"ukuzula kwangamazwe okuphumayo"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Khubaza ukuvimbela kwangamazwe okuphumayo?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Vimbela ukuzula kwangamazwe okuphumayo?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Konke okungenayo"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Khubaza ukuvimbela onke amakholi angenayo?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Vimbela onke amakholi angenayo?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Ukuzula kwangamazwe okungenayo"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Khubaza ukuvimbela konke ukuzula kwangamazwe okungenayo?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Vimbela ukuzula kwangamazwe okungenayo?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Yeka ukusebenzisa konke"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Yeksa ukusebenzisa izilungiselelo zokuvimbela ikholi"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Ukuvimbela ikholi kuyekiswe ukusebenza"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Shintsha iphasiwedi"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Shintsha iphasiwedi yokuvimbela"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Ayikwazi ukushintsha iphasiwedi yokuvimbela."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Amaphasiwedi awafani"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Faka iphaiswedi enezinombolo ezingu-4"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Iphasiwedi ishintshiwe"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Iphasiwedi endala"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Iphasiwedi entsha"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Qinisekisa iphasiwedi"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Faka iphasiwedi"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Izilungiselelo zokuvimbela ikholi"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Yeka ukusebenzisa zonke izilungiselelo zokuvimbela?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Ikholi yehlisiwe."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Ikholi idluliselwe."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Ikholi ilindile."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"Ukuvimbela inombolo kunqatshiwe."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Ikholi yeqembu lomsebenzisi elivaliwe."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Amakholi angenayo avinjelwe."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Amakholi aphumayo avinjelwe."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Ukudlulisa amakholi kuyasebenza."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Ikholi engeziwe idluliselwe phambili."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Ukudlulisela ikholi esobala kuqedile."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Ikholi yokudlulisela esobala iyaqhubeka."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Ikholi imisiwe."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Ikholi iqaliswe kabusha."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Ikholi yehlisiwe."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Ikholi edluliselwe phambili."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Ijoyina ikholi yengqungquthela."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Ikholi ebanjiwe ikhululiwe."</string>
 </resources>

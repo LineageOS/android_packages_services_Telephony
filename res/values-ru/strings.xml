@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-запрос преобразован в DIAL-запрос."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-запрос преобразован в USSD-запрос."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-запрос преобразован в новый SS-запрос."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS-запрос преобразован в DIAL-запрос (видео)."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Разрешенные номера в приложении \"Телефон\" включены. В результате некоторые функции вызовов недоступны."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Чтобы увидеть настройки, включите приемопередатчик."</string>
     <string name="close_dialog" msgid="2365884406356986917">"ОК"</string>
@@ -167,6 +168,7 @@
     <string name="not_allowed" msgid="5613353860205691579">"Ваша SIM-карта не поддерживает подключение к этой сети."</string>
     <string name="connect_later" msgid="2308119155752343975">"Не удалось подключиться к сети. Повторите попытку позже."</string>
     <string name="registration_done" msgid="495135664535876612">"Регистрация в сети завершена."</string>
+    <string name="already_auto" msgid="6067116884321285507">"Всегда выбирается автоматически"</string>
     <string name="select_automatically" msgid="1046727200631770962">"Выбирать сеть автоматически"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Сеть"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Автоматическая регистрация..."</string>
@@ -238,12 +240,13 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Подключаться к службам передачи данных в роуминге"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Мобильный Интернет в роуминге отключен. Вы можете включить интернет-роуминг в настройках."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Возможны значительные расходы."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Информацию о тарифах вы можете получить у интернет-провайдера."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Разрешить интернет-роуминг?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Передача данных"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Объем мобильного трафика за период <xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Дополнительные настройки"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Оператор"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"оператор, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"оператор, esim, sim, euicc, сменить оператора, добавить оператора"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Мобильный Интернет"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Доступ к Интернету по мобильной сети"</string>
@@ -419,7 +422,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Выполняется удаление номера ограниченного набора…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Номер ограниченного набора удален."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Разрешенный номер не обновлен, так как введен неверный PIN-код."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"Разрешенный номер не обновлен, так как он не может быть пустым или содержать более 20 цифр"</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"Разрешенный номер не обновлен, так как не может содержать более 20 цифр"</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Список разрешенных номеров не обновлен. Указан неверный PIN2 или номер телефона."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Не удалось включить FDN"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Считывание с SIM-карты…"</string>
@@ -522,6 +525,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Не удалось импортировать контакт"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Слуховые аппараты"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Включить поддержку слухового аппарата"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"Текст в режиме реального времени"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"Включение и выключение текста в режиме реального времени"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Телетайп выключен"</item>
     <item msgid="3971695875449640648">"Полнофункциональный телетайп"</item>
@@ -637,4 +642,107 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Возможно, для этого вам потребуется обратиться к оператору связи (<xliff:g id="PROVIDER_NAME">%s</xliff:g>)."</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"АКТИВИРОВАТЬ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ОТМЕНА"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Вызов завершен"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Приемопередатчик отключен"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM-карта не установлена или произошла ошибка ее распознавания"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Мобильная сеть недоступна"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Неназначенный (нераспределенный) номер"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Сеть, через которую идет вызов, не обслуживает выбранное направление"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Недопустимый канал"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Запрет вызова, заданный оператором"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Нормальное завершение вызова"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Абонент занят"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Нет ответа"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Нет ответа от оборудования пользователя"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Вызов отклонен"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Номер изменился"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Приоритетное прерывание обслуживания"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Не выбран адресат"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Абонентский номер адресата не обслуживается"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Недопустимый формат номера (номер неполный)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Запрос на использование оборудования отклонен"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Ответ на статус запроса"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Нормальное состояние, не уточнено"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Схема или канал недоступны"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Сеть неисправна"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Временный сбой"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Сетевое оборудование перегружено"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Информация доступа отклонена"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Запрашиваемая схема или канал недоступны"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Ресурсы недоступны по неизвестной причине"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Запрошенное качество обслуживания не может быть предоставлено"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Нет подписки на запрашиваемое оборудование"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Входящие вызовы запрещены внутри закрытой абонентской группы"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Пропускная способность: отсутствует авторизация"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"В настоящее время сеть не может обеспечить запрошенную пропускную способность"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Сервис или параметр недоступны по неизвестной причине"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Не удается обеспечить запрошенную пропускную способность"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"Значение ACM равно значению ACMmax или превышает его"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Запрашиваемое оборудование не поддерживается"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Пропускная способность: есть доступ только к цифровой информации с ограниченным доступом"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Сервис или параметр не поддерживаются"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Недопустимое значение идентификатора транзакции"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Абонент не является участником закрытой группы"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Несовместимое целевое оборудование"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Недопустимый выбор транзитной сети"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Семантически неверное сообщение"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Недействительная обязательная информация"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Тип сообщения не существует или не поддерживается"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Тип сообщения несовместим с состоянием протокола"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Информационный элемент не существует или не поддерживается"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Условная ошибка IE"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Сообщение несовместимо с состоянием протокола"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Возврат по истечении срока действия таймера"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Неопределенная ошибка протокола"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Неизвестная ошибка межсетевого взаимодействия"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"Запрет вызовов"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Включено"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Отключено"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Все исходящие"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Отключить блокировку всех исходящих вызовов?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Заблокировать все исходящие вызовы?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Исходящие меджународные вызовы"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Отключить блокировку исходящих меджународных вызовов?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Заблокировать исходящие меджународные вызовы?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"Исходящие вызовы в роуминге"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Отключить блокировку исходящих вызовов в роуминге?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Заблокировать исходящие вызовы в роуминге?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Все входящие"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Отключить блокировку всех входящих вызовов?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Заблокировать все входящие вызовы?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Входящие вызовы в роуминге"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Отключить блокировку входящих вызовов в роуминге?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Заблокировать входящие вызовы в роуминге?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Отключить все"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Отключить все настройки запрета вызовов"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Настройки запрета вызовов отключены"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Изменить пароль"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Изменить пароль для функции запрета вызовов"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Не удалось изменить пароль"</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Пароли не совпадают"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Введите пароль из 4 цифр"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Пароль изменен"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Старый пароль"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Новый пароль"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Подтвердите пароль"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Введите пароль"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Настройки запрета вызовов"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Отключить все настройки запрета вызовов?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Абонент переадресовал вызов."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Переадресация вызова."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Ожидание вызова."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"В блокировке номера отказано."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Вызов: пользователь из закрытой группы."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Входящий вызов запрещен."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Исходящий вызов запрещен."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Переадресация вызова…"</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Дополнительный вызов переадресован."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Вызов переадресован."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Переадресация вызова…"</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Вызов на удержании."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Вызов возобновлен."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Переадресованный вызов."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Переадресация вызова."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Присоединение к конференц-вызову…"</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Вызов снят с удержания."</string>
 </resources>

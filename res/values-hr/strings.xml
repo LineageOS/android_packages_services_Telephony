@@ -130,6 +130,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS zahtjev izmijenjen je u DIAL zahtjev."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS zahtjev izmijenjen je u USSD zahtjev."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS zahtjev izmijenjen je u novi SS zahtjev."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS zahtjev izmijenjen je u Video DIAL zahtjev."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Uključena je postavka fiksnog biranja u aplikaciji telefona. Zbog toga ne rade neke značajke u vezi s pozivima."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Uključite radio prije pregleda ovih postavki."</string>
     <string name="close_dialog" msgid="2365884406356986917">"U redu"</string>
@@ -167,6 +168,7 @@
     <string name="not_allowed" msgid="5613353860205691579">"Vaša SIM kartica ne dopušta povezivanje s ovom mrežom."</string>
     <string name="connect_later" msgid="2308119155752343975">"Povezivanje s tom mrežom trenutačno nije moguće. Pokušajte kasnije."</string>
     <string name="registration_done" msgid="495135664535876612">"Registrirano na mreži."</string>
+    <string name="already_auto" msgid="6067116884321285507">"Automatski odabir već je otvoren."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Automatski odaberi mrežu"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Mreža"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatska prijava…"</string>
@@ -238,12 +240,13 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Poveži se s podatkovnim uslugama u roamingu"</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Izgubili ste podatkovnu vezu jer ste izašli iz matične mreže s isključenim roamingom podataka."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"To se može skupo naplaćivati."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Podatke o cijeni možete saznati od svojeg mrežnog operatera."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Želite li dopustiti roaming podataka?"</string>
     <string name="data_usage_title" msgid="8759619109516889802">"Potrošnja podataka"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Potrošeno je <xliff:g id="ID_1">%1$s</xliff:g> mobilnih podataka u sljedećem razdoblju: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Napredno"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Davatelj usluge"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operater, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"mobilni operater, esim, sim, euicc, promjena mobilnog operatera, dodavanje mobilnog operatera"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobilni podaci"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Pristupanje podacima pomoću mobilne mreže"</string>
@@ -417,7 +420,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Brisanje broja za fiksno biranje…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Izbrisan je broj za fiksno biranje."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN nije ažuriran jer ste upisali pogrešan PIN."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"FDN nije ažuriran jer je broj prazan ili premašuje 20 znamenki."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN nije ažuriran jer broj premašuje 20 znamenki."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN nije ažuriran. PIN2 nije točan ili je telefonski broj odbijen."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operacija FDN nije uspjela."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Čitanje sa SIM kartice…"</string>
@@ -520,6 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Uvoz kontakta nije uspio"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Pomoć za osobe oštećenog sluha"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Uključi kompatibilnost za pomoć osobama oštećenog sluha"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"Uključivanje ili isključivanje RTT-a"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Isključen je TTY"</item>
     <item msgid="3971695875449640648">"TTY je pun"</item>
@@ -633,4 +638,107 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Možda ćete trebati dodati podatke putem operatera <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"DODAJ PODATKE"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ODUSTANI"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Poziv je završio"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radio je isključen"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Nema SIM kartice ili pogreška SIM kartice"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobilna mreža nije dostupna"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Broj nije dodijeljen (nije određen)"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Nema rute do odredišta"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanal nije prihvatljiv"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Isključivanje koje je odredio operater"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Brisanje normalnog poziva"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Korisnik je zauzet"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Korisnik ne odgovara"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Upozorenje korisnika, nema odgovora"</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Poziv odbijen"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Broj je promijenjen"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Privremeni prekid"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Brisanje korisnika nije odabrano"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Odredište nije ispravno"</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Nevažeći format broja (nepotpuni broj)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Objekt je odbijen"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Odgovor na UPIT O STATUSU"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normalno, nije određeno"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Krug/kanal nije dostupan"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Mreža nije ispravna"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Privremeni neuspjeh"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Zastoj opreme za prebacivanje"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Informacije o pristupu su odbačene"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Zatraženi krug/kanal nije dostupan"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Resursi nisu dostupni, nije određeno"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Kvaliteta usluge nije dostupna"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Zatraženi objekt nema pretplatu"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Dolazni pozivi isključeni su iz CUG-a"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Kapacitet nositelja nije odobren"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Kapacitet nositelja trenutačno nije dostupan"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Usluga ili opcija nije dostupna, nije određeno"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Usluga nositelja nije implementirana"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM je jednak ili veći od ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Zatraženi objekt nije implementiran"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Dostupne su samo ograničene digitalne informacije o kapacitetu nositelja"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Usluga ili opcija nije implementirana, nije određeno"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Nevažeća vrijednost identifikatora transakcije"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Korisnik nije član CUG-a"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Odredište nije kompatibilno"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Nevažeći odabir prijelazne mreže"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Poruka nije semantički ispravna"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Nevažeće obavezne informacije"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Vrsta poruke ne postoji ili nije implementirana"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Vrsta poruke nije kompatibilna sa stanjem protokola"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Informativni element ne postoji ili se ne implementira"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Uvjetna IE pogreška"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Poruka nije kompatibilna sa stanjem protokola"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Vrijeme oporavka istječe"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Pogreška protokola, nije određeno"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Međukomunikacija, nije određeno"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"Zabrana poziva"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Uključeno"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Isključeno"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Sve odlazno"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Želite li onemogućiti blokiranje svih odlaznih poziva?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Želite li blokirati sve odlazne pozive?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Odlazni međunarodni pozivi"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Želite li onemogućiti blokiranje odlaznih međunarodnih poziva?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Želite li blokirati odlazne međunarodne pozive?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"Roaming za odlazne međunarodne pozive"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Želite li onemogućiti blokiranje roaminga za odlazne međunarodne pozive?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Želite li blokirati roaming za odlazne međunarodne pozive?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Sve dolazno"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Želite li onemogućiti blokiranje svih dolaznih poziva?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Želite li blokirati sve dolazne pozive?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Roaming za dolazne međunarodne pozive"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Želite li onemogućiti blokiranje roaminga za sve dolazne međunarodne pozive?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Želite li blokirati roamnig za dolazne međunarodne pozive?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Deaktiviraj sve"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Deaktiviranje svih postavki za zabranu poziva"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Zabrana poziva deaktivirana"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Promjena zaporke"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Promjena zaporke za zabranu poziva"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Zaporka za zabranu poziva ne može se promijeniti."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Zaporke se ne podudaraju"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Unesite zaporku s 4 brojke"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Zaporka promijenjena"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Stara zaporka"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Nova zaporka"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Potvrda zaporke"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Unesite zaporku"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Postavke za zabranu poziva"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Želite li deaktivirati sve postavke za zabranu poziva?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Poziv odbačen."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Poziv preusmjeren."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Poziv na čekanju."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"Blokiranje broja odbijeno."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Zatvoreni korisnički grupni poziv."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Dolazni pozivi su zabranjeni."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Odlazni pozivi su zabranjeni."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Preusmjeravanje poziva aktivno."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Dodatni poziv preusmjeren."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Prijenos eksplicitnog poziva dovršen."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Prijenos eksplicitnog poziva u tijeku."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Poziv na čekanju."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Poziv je nastavljen."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Poziv je odbačen."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Poziv preusmjeren."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Pridruživanje konferencijskom pozivu."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Poziv na čekanju je završen."</string>
 </resources>

@@ -170,8 +170,17 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             switch (msg.what) {
                 case EVENT_CLEAR_CONFIG:
                 {
+                    /* Ignore clear configuration request if device is being shutdown. */
+                    Phone phone = PhoneFactory.getPhone(phoneId);
+                    if (phone != null) {
+                        if (phone.isShuttingDown()) {
+                            break;
+                        }
+                    }
+
                     if (mConfigFromDefaultApp[phoneId] == null
                             && mConfigFromCarrierApp[phoneId] == null) break;
+
                     mConfigFromDefaultApp[phoneId] = null;
                     mConfigFromCarrierApp[phoneId] = null;
                     mServiceConnection[phoneId] = null;
@@ -752,7 +761,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private String getPackageVersion(String packageName) {
         try {
             PackageInfo info = mContext.getPackageManager().getPackageInfo(packageName, 0);
-            return Integer.toString(info.versionCode);
+            return Long.toString(info.getLongVersionCode());
         } catch (PackageManager.NameNotFoundException e) {
             return null;
         }

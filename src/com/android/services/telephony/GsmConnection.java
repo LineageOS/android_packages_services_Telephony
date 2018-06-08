@@ -76,7 +76,7 @@ final class GsmConnection extends TelephonyConnection {
         // hold for IMS calls.
         if (!shouldTreatAsEmergencyCall()) {
             capabilities |= CAPABILITY_SUPPORT_HOLD;
-            if (getState() == STATE_ACTIVE || getState() == STATE_HOLDING) {
+            if (isHoldable() && (getState() == STATE_ACTIVE || getState() == STATE_HOLDING)) {
                 capabilities |= CAPABILITY_HOLD;
             }
         }
