@@ -1037,6 +1037,8 @@ public class TelephonyConnectionService extends ConnectionService {
             }
             connection.setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
                     cause, e.getMessage()));
+            connection.clearOriginalConnection();
+            connection.destroy();
             return;
         }
 
@@ -1059,6 +1061,8 @@ public class TelephonyConnectionService extends ConnectionService {
             Log.d(this, "placeOutgoingConnection, phone.dial returned null");
             connection.setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
                     telephonyDisconnectCause, "Connection is null"));
+            connection.clearOriginalConnection();
+            connection.destroy();
         } else {
             connection.setOriginalConnection(originalConnection);
         }
