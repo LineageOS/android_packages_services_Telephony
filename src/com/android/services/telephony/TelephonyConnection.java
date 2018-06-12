@@ -554,7 +554,11 @@ abstract class TelephonyConnection extends Connection implements Holdable {
 
         @Override
         public void onRttInitiated() {
-            updateConnectionProperties();
+            if (mOriginalConnection != null) {
+                // if mOriginalConnection is null, the properties will get set when
+                // mOriginalConnection gets set.
+                updateConnectionProperties();
+            }
             sendRttInitiationSuccess();
         }
 
