@@ -837,7 +837,11 @@ abstract class TelephonyConnection extends Connection {
     public void onStartRtt(RttTextStream textStream) {
         if (isImsConnection()) {
             ImsPhoneConnection originalConnection = (ImsPhoneConnection) mOriginalConnection;
-            originalConnection.sendRttModifyRequest(textStream);
+            if (originalConnection.isRttEnabledForCall()) {
+                originalConnection.setCurrentRttTextStream(textStream);
+            } else {
+                originalConnection.sendRttModifyRequest(textStream);
+            }
         } else {
             Log.w(this, "onStartRtt - not in IMS, so RTT cannot be enabled.");
         }
