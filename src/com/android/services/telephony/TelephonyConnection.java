@@ -538,6 +538,7 @@ abstract class TelephonyConnection extends Connection {
         @Override
         public void onRttModifyResponseReceived(int status) {
             updateConnectionProperties();
+            refreshConferenceSupported();
             if (status == RttModifyStatus.SESSION_MODIFY_REQUEST_SUCCESS) {
                 sendRttInitiationSuccess();
             } else {
@@ -558,6 +559,7 @@ abstract class TelephonyConnection extends Connection {
                 // if mOriginalConnection is null, the properties will get set when
                 // mOriginalConnection gets set.
                 updateConnectionProperties();
+                refreshConferenceSupported();
             }
             sendRttInitiationSuccess();
         }
@@ -2094,6 +2096,9 @@ abstract class TelephonyConnection extends Connection {
         if (mTreatAsEmergencyCall) {
             isConferenceSupported = false;
             Log.d(this, "refreshConferenceSupported = false; emergency call");
+        } else if (isRtt()) {
+            isConferenceSupported = false;
+            Log.d(this, "refreshConferenceSupported = false; rtt call");
         } else if (!isConferencingSupported || isIms && !isImsConferencingSupported) {
             isConferenceSupported = false;
             Log.d(this, "refreshConferenceSupported = false; carrier doesn't support conf.");
