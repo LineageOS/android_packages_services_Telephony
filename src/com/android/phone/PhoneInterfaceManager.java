@@ -2745,15 +2745,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * @return true if the IMS resolver is busy resolving a binding and should not be considered
-     * available, false if the IMS resolver is idle.
-     */
-    public boolean isResolvingImsBinding() {
-        enforceModifyPermission();
-        return PhoneFactory.getImsResolver().isResolvingBinding();
-    }
-
-    /**
      * Sets the ImsService Package Name that Telephony will bind to.
      *
      * @param slotId the slot ID that the ImsService should bind for.
