@@ -25,21 +25,26 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.ContentObserver;
+import android.database.Cursor;
 import android.graphics.Point;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PersistableBundle;
 import android.provider.Settings;
 import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -167,6 +172,25 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     private float mDefaultDigitsTextSize;
 
     private boolean mAreEmergencyDialerShortcutsEnabled;
+
+    /** Key of emergency information user name */
+    private static final String KEY_EMERGENCY_INFO_NAME = "name";
+
+    /** Authority of emergency information */
+    private static final String AUTHORITY = "com.android.emergency.info.name";
+
+    /** Content path of emergency information name */
+    private static final String CONTENT_PATH = "name";
+
+    /** Content URI of emergency information */
+    private static final Uri CONTENT_URI = new Uri.Builder()
+            .scheme(ContentResolver.SCHEME_CONTENT)
+            .authority(AUTHORITY)
+            .path(CONTENT_PATH)
+            .build();
+
+    /** ContentObserver for monitoring emergency info name changes */
+    private ContentObserver mEmergencyInfoNameObserver;
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -317,6 +341,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             }
         }
         unregisterReceiver(mBroadcastReceiver);
+        if (mEmergencyInfoNameObserver != null) {
+            getContentResolver().unregisterContentObserver(mEmergencyInfoNameObserver);
+            mEmergencyInfoNameObserver = null;
+        }
     }
 
     @Override
@@ -363,7 +391,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     @Override
     public void onBackPressed() {
         // If emergency dialer shortcut is enabled and Dialpad view is visible, pressing the
-        // back key will back to display FasterEmergencyDialer view.
+        // back key will back to display EmergencyShortcutView view.
         // Otherwise, it would finish the activity.
         if (mAreEmergencyDialerShortcutsEnabled && mDialpadView != null
                 && mDialpadView.getVisibility() == View.VISIBLE) {
@@ -433,7 +461,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         String phoneNumber = button.getPhoneNumber();
 
         if (!TextUtils.isEmpty(phoneNumber)) {
-            Log.d(LOG_TAG, "dial emergency number: " + phoneNumber);
+            if (DBG) Log.d(LOG_TAG, "dial emergency number: " + Rlog.pii(LOG_TAG, phoneNumber));
             TelecomManager tm = (TelecomManager) getSystemService(TELECOM_SERVICE);
             tm.placeCall(Uri.fromParts(PhoneAccount.SCHEME_TEL, phoneNumber, null), null);
         } else {
@@ -889,6 +917,19 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         setupEmergencyCallShortcutButton();
 
         switchView(mEmergencyShortcutView, mDialpadView, false);
+
+        mEmergencyInfoNameObserver = new ContentObserver(new Handler()) {
+            @Override
+            public void onChange(boolean selfChange) {
+                super.onChange(selfChange);
+                getEmergencyInfoNameAsync();
+            }
+        };
+        // Register ContentProvider for monitoring emergency info name changes.
+        getContentResolver().registerContentObserver(CONTENT_URI, false,
+                mEmergencyInfoNameObserver);
+        // Query emergency info name.
+        getEmergencyInfoNameAsync();
     }
 
     private void setLocationInfo(String country) {
@@ -1008,5 +1049,39 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                         fadeOutView.setVisibility(View.GONE);
                     }
                 });
+    }
+
+    /**
+     * Get emergency info name from EmergencyInfo and then update EmergencyInfoGroup.
+     */
+    private void getEmergencyInfoNameAsync() {
+        new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... params) {
+                String name = "";
+                try (Cursor cursor = getContentResolver().query(CONTENT_URI, null, null, null,
+                        null)) {
+                    if (cursor != null && cursor.moveToFirst()) {
+                        int index = cursor.getColumnIndex(KEY_EMERGENCY_INFO_NAME);
+                        name = index > -1 ? cursor.getString(index) : "";
+                    }
+                } catch (IllegalArgumentException ex) {
+                    Log.w(LOG_TAG, "getEmergencyInfoNameAsync failed", ex);
+                }
+                return name;
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+                if (!isFinishing() && !isDestroyed()) {
+                    // Update emergency info with emergency info name
+                    EmergencyInfoGroup group = findViewById(R.id.emergency_info_group);
+                    if (group != null) {
+                        group.updateEmergencyInfo(result);
+                    }
+                }
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 }

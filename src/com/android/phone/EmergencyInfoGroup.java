@@ -25,6 +25,7 @@ import android.graphics.drawable.Drawable;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -45,9 +46,10 @@ import java.util.List;
 public class EmergencyInfoGroup extends LinearLayout {
 
     private ImageView mEmergencyInfoImage;
-    private TextView mEmergencyInfoName;
+    private TextView mEmergencyInfoNameTextView;
     private View mEmergencyInfoTitle;
     private View mEmergencyInfoButton;
+    private String mDefaultEmergencyInfoName;
 
     public EmergencyInfoGroup(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -59,7 +61,9 @@ public class EmergencyInfoGroup extends LinearLayout {
         mEmergencyInfoTitle = findViewById(R.id.emergency_info_title);
         mEmergencyInfoButton = findViewById(R.id.emergency_info_button);
         mEmergencyInfoImage = (ImageView) findViewById(R.id.emergency_info_image);
-        mEmergencyInfoName = (TextView) findViewById(R.id.emergency_info_name);
+        mEmergencyInfoNameTextView = (TextView) findViewById(R.id.emergency_info_name);
+        mDefaultEmergencyInfoName = getContext().getResources().getString(
+                R.string.emergency_information_title);
     }
 
     @Override
@@ -87,18 +91,6 @@ public class EmergencyInfoGroup extends LinearLayout {
                     .setPackage(packageName);
             mEmergencyInfoButton.setTag(R.id.tag_intent, intent);
             mEmergencyInfoImage.setImageDrawable(getCircularUserIcon());
-
-            /* TODO: Get user name.
-                if user name exist:
-                    1. mEmergencyInfoTitle show title.
-                    2. mEmergencyInfoName show user name.
-                if user name does not exist:
-                    1. mEmergencyInfoTitle hide.
-                    2. mEmergencyInfoName show app label. */
-            mEmergencyInfoTitle.setVisibility(View.INVISIBLE);
-            mEmergencyInfoName.setText(getContext().getResources().getString(
-                    R.string.emergency_information_title));
-
             visible = true;
         }
 
@@ -122,5 +114,20 @@ public class EmergencyInfoGroup extends LinearLayout {
         drawableUserIcon.setCircular(true);
 
         return drawableUserIcon;
+    }
+
+    void updateEmergencyInfo(String emergencyInfoName) {
+        String infoNameDescription;
+        if (TextUtils.isEmpty(emergencyInfoName)) {
+            mEmergencyInfoTitle.setVisibility(View.INVISIBLE);
+            mEmergencyInfoNameTextView.setText(mDefaultEmergencyInfoName);
+            infoNameDescription = mDefaultEmergencyInfoName;
+        } else {
+            mEmergencyInfoTitle.setVisibility(View.VISIBLE);
+            mEmergencyInfoNameTextView.setText(emergencyInfoName);
+            infoNameDescription = getContext().getString(
+                    R.string.emergency_information_button_content_description, emergencyInfoName);
+        }
+        mEmergencyInfoNameTextView.setContentDescription(infoNameDescription);
     }
 }
