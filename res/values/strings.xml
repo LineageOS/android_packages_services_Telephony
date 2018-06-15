@@ -1129,6 +1129,8 @@
 
     <!-- Title for the button of emergency information -->
     <string name="emergency_information_title">Emergency information</string>
+    <!-- Content description for the button of emergency information -->
+    <string name="emergency_information_button_content_description"><xliff:g id="user_name">%s</xliff:g>\'s emergency information</string>
     <!-- Dialog title for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_title">Emergency call</string>
     <!-- Title for the emergency dialpad UI -->
