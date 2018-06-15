@@ -102,14 +102,14 @@ public class EmergencyShortcutButton extends FrameLayout implements View.OnClick
     /**
      * Set emergency phone number description.
      */
-    public void setPhoneDescription(@NonNull String description) {
+    public void setPhoneDescription(@NonNull CharSequence description) {
         mPhoneTypeDescription.setText(description);
     }
 
     /**
      * Set emergency phone number.
      */
-    public void setPhoneNumber(@NonNull String number) {
+    public void setPhoneNumber(@NonNull CharSequence number) {
         mPhoneNumber.setText(number);
         mPhoneCallHint.setText(
                 getContext().getString(R.string.emergency_call_shortcut_hint, number));
@@ -117,7 +117,7 @@ public class EmergencyShortcutButton extends FrameLayout implements View.OnClick
         // Set content description for phone number.
         if (number.length() > 1) {
             StringBuilder stringBuilder = new StringBuilder();
-            for (char c : number.toCharArray()) {
+            for (char c : number.toString().toCharArray()) {
                 stringBuilder.append(c).append(" ");
             }
             mPhoneNumber.setContentDescription(stringBuilder.toString().trim());
