@@ -842,8 +842,11 @@ public class MobileNetworkSettings extends Activity  {
 
         @Override
         public void onDestroy() {
-            unbindNetworkQueryService();
             super.onDestroy();
+            unbindNetworkQueryService();
+            if (mMobileDataPref != null) {
+                mMobileDataPref.dispose();
+            }
         }
 
         @Override
