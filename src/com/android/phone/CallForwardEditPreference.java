@@ -69,22 +69,11 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
         this(context, null);
     }
 
-    void init(TimeConsumingPreferenceListener listener, boolean skipReading, Phone phone,
+    void init(TimeConsumingPreferenceListener listener, Phone phone,
             boolean replaceInvalidCFNumber) {
         mPhone = phone;
         mTcpListener = listener;
         mReplaceInvalidCFNumber = replaceInvalidCFNumber;
-
-        if (!skipReading) {
-            mPhone.getCallForwardingOption(reason,
-                    mHandler.obtainMessage(MyHandler.MESSAGE_GET_CF,
-                            // unused in this case
-                            CommandsInterface.CF_ACTION_DISABLE,
-                            MyHandler.MESSAGE_GET_CF, null));
-            if (mTcpListener != null) {
-                mTcpListener.onStarted(this, true);
-            }
-        }
     }
 
     @Override
@@ -174,6 +163,23 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
         }
         String voicemailNumber = mPhone.getVoiceMailNumber();
         setPhoneNumber(displayVoicemailNumber ? voicemailNumber : callForwardInfo.number);
+    }
+
+    /**
+     * Starts the Call Forwarding Option query to the network and calls
+     * {@link TimeConsumingPreferenceListener#onStarted}. Will call
+     * {@link TimeConsumingPreferenceListener#onFinished} when finished, or
+     * {@link TimeConsumingPreferenceListener#onError} if an error has occurred.
+     */
+    void startCallForwardOptionsQuery() {
+        mPhone.getCallForwardingOption(reason,
+                mHandler.obtainMessage(MyHandler.MESSAGE_GET_CF,
+                        // unused in this case
+                        CommandsInterface.CF_ACTION_DISABLE,
+                        MyHandler.MESSAGE_GET_CF, null));
+        if (mTcpListener != null) {
+            mTcpListener.onStarted(this, true);
+        }
     }
 
     private void updateSummaryText() {

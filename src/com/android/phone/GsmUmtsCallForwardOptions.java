@@ -16,7 +16,6 @@ import com.android.internal.telephony.Phone;
 
 import java.util.ArrayList;
 
-
 public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
     private static final String LOG_TAG = "GsmUmtsCallForwardOptions";
 
@@ -103,7 +102,10 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
         if (mFirstResume) {
             if (mIcicle == null) {
                 Log.d(LOG_TAG, "start to init ");
-                mPreferences.get(mInitIndex).init(this, false, mPhone, mReplaceInvalidCFNumbers);
+                CallForwardEditPreference pref = mPreferences.get(mInitIndex);
+                pref.init(this, mPhone, mReplaceInvalidCFNumbers);
+                pref.startCallForwardOptionsQuery();
+
             } else {
                 mInitIndex = mPreferences.size();
 
@@ -113,8 +115,8 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
                     CallForwardInfo cf = new CallForwardInfo();
                     cf.number = bundle.getString(KEY_NUMBER);
                     cf.status = bundle.getInt(KEY_STATUS);
+                    pref.init(this, mPhone, mReplaceInvalidCFNumbers);
                     pref.handleCallForwardResult(cf);
-                    pref.init(this, true, mPhone, mReplaceInvalidCFNumbers);
                 }
             }
             mFirstResume = false;
@@ -141,7 +143,9 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
     public void onFinished(Preference preference, boolean reading) {
         if (mInitIndex < mPreferences.size()-1 && !isFinishing()) {
             mInitIndex++;
-            mPreferences.get(mInitIndex).init(this, false, mPhone, mReplaceInvalidCFNumbers);
+            CallForwardEditPreference pref = mPreferences.get(mInitIndex);
+            pref.init(this, mPhone, mReplaceInvalidCFNumbers);
+            pref.startCallForwardOptionsQuery();
         }
 
         super.onFinished(preference, reading);
