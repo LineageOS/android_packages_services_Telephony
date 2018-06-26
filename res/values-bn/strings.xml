@@ -161,7 +161,7 @@
     <string name="vvm_unsupported_message_format" msgid="11795090778411977">"এই ধরণের বার্তা সমর্থিত নয় , শুোনার জন্য <xliff:g id="NUMBER">%s</xliff:g> এ কল করুন৷"</string>
     <string name="network_settings_title" msgid="514120489499925574">"মোবাইল নেটওয়ার্ক"</string>
     <string name="label_available" msgid="1181658289009300430">"উপলব্ধ নেটওয়ার্কগুলি"</string>
-    <string name="load_networks_progress" msgid="5230707536168902952">"অনুসন্ধান করছে..."</string>
+    <string name="load_networks_progress" msgid="5230707536168902952">"সার্চ করছে..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"কোনো নেটওয়ার্ক পাওয়া যায়নি৷"</string>
     <string name="network_query_error" msgid="8466081377231178298">"নেটওয়ার্ক পাওয়া যায়নি। আবার চেষ্টা করুন।"</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> এ নিবন্ধিত করা হচ্ছে…"</string>
@@ -504,7 +504,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"কলগুলি ধরে রাখা যাবে না।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"একটি কল করতে কোনো ওয়্যারলেস নেটওয়ার্কে সংযোগ করুন৷"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"কোনো কল করতে Wi-Fi কলিং সক্ষম করুন৷"</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"জরুরি তথ্য"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"জরুরি কল"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"শুধুমাত্র জরুরি কল"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"রেডিও চালু করা হচ্ছে…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"কোন পরিষেবা নেই৷ আবার চেষ্টা করা হচ্ছে..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"কোনো জরুরী কলের সময় বিমান মোডে প্রবেশ করা যাবে না৷"</string>
@@ -596,6 +598,7 @@
     <string name="selectContact" msgid="781975788478987237">"পরিচিতি বেছে নিন"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"ভয়েস কলিং সমর্থিত নয়"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ডায়াল করুন"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"ডায়ালপ্যাড দেখুন"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"ভিজ্যুয়াল ভয়েসমেল"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN সেট করুন"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"পিন পরিবর্তন করুন"</string>

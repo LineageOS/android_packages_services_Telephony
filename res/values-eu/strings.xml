@@ -510,7 +510,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Ezin dira zain utzi deiak."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Deia egiteko, konektatu haririk gabeko sare batera."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Deia egiteko, gaitu Wi-Fi bidezko deiak."</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"Larrialdietarako informazioa"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Larrialdi-deia"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Larrialdi-deiak soilik"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Irratia pizten…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Ez dago zerbitzurik. Berriro saiatzen…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Ezin da erabili hegaldi modua larrialdi-deietan."</string>
@@ -602,6 +604,7 @@
     <string name="selectContact" msgid="781975788478987237">"hautatu kontaktua"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Ez dira ahots-deiak onartzen"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"markatu"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"erakutsi markagailua"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Ikusizko erantzungailua"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Ezarri PIN kodea"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Aldatu PIN kodea"</string>

@@ -510,7 +510,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Не може да се задржат повици."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Поврзете се на безжична мрежа за да повикате."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Овозможете повикување преку Wi-Fi за воспоставување повик."</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"Информации за итни случаи"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Повик за итни случаи"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Само итни повици"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Вклучување радио..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Нема услуга. Се обидува повторно…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Не може да се постави авионски режим во текот на итен повик."</string>
@@ -602,6 +604,7 @@
     <string name="selectContact" msgid="781975788478987237">"избери контакт"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Гласовното повикување не е поддржано"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"бирај"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"прикажи копчиња за бирање"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Визуелна говорна пошта"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Поставете PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Променете PIN"</string>

@@ -390,7 +390,7 @@
     <item msgid="6043847456049107742">"1"</item>
   </string-array>
     <string name="cdma_activate_device" msgid="3793805892364814518">"Aktivér enhed"</string>
-    <string name="cdma_lte_data_service" msgid="4255018217292548962">"Opsætning af datatjeneste"</string>
+    <string name="cdma_lte_data_service" msgid="4255018217292548962">"Konfiguration af datatjeneste"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"Indst. for mobilselskab"</string>
     <string name="fdn" msgid="7878832555095183202">"Numre til begrænset opkald"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"Begrænset opkald (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -510,7 +510,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Opkald kan ikke sættes i venteposition."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Opret forbindelse til et trådløst netværk for at foretage et opkald."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktivér Wi-Fi-opkald for at foretage et opkald."</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"Oplysninger i nødsituationer"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Nødopkald"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Kun nødopkald"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Tænder for radio ..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Ingen tjeneste. Prøver igen..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Flytilstand kan ikke slås til under et nødopkald."</string>
@@ -602,6 +604,7 @@
     <string name="selectContact" msgid="781975788478987237">"vælg kontaktperson"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Taleopkald understøttes ikke"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ring op"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"vis numerisk tastatur"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuel telefonsvarer"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Angiv pinkode"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Skift pinkode"</string>

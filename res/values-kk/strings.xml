@@ -504,7 +504,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Қоңырауларды ұстау мүмкін емес."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Қоңырау шалу үшін сымсыз желіге қосылыңыз."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Қоңырау шалу үшін, Wi-Fi желісін қосыңыз."</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"Төтенше жағдайда қолданылатын деректер"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Төтенше қоңырау"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Тек қана төтенше жағдай қоңыраулары"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Радионы қосуда…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Қызмет жоқ. Әрекет қайталануда…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Жедел қызметке қоңырау шалу кезінде ұшақ режимін қолдану мүмкін емес."</string>
@@ -596,6 +598,7 @@
     <string name="selectContact" msgid="781975788478987237">"контакт таңдау"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Дауыс арқылы қоңырау шалу қолдауы жоқ"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"теру"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"теру тақтасын көрсету"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Визуалды дауыс поштасы"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN кодын орнату"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN кодты өзгерту"</string>

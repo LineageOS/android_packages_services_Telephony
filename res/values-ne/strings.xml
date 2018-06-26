@@ -504,7 +504,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"कल सञ्चालन गर्न सकिँदैन।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"एक कल गर्न एक ताररहितको सञ्जालमा जडान गर्नुहोस्।"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"कल गर्नका लागि Wi-Fi कलिङ सक्षम गर्नुहोस्।"</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"आपतकालीन जानकारी"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"आपतकालीन कल"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"आपतकालीन कलहरू मात्र"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"रेडियो खोल्दै..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"कुनै सेवा छैन। फेरि प्रयास गर्दै ..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"आपतकालीन कलको समयमा हवाइजहाज मोडमा प्रविष्ट गर्न सक्दैन।"</string>
@@ -596,6 +598,7 @@
     <string name="selectContact" msgid="781975788478987237">"सम्पर्क चयन गर्नुहोस्"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"भ्वाइस कल गर्ने समर्थित छैन"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"डायल"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"डायलप्याड देखाउनुहोस्"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"भिजुअल भ्वाइस मेल"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN सेट गर्नुहोस्"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN परिवर्तन गर्नुहोस्"</string>

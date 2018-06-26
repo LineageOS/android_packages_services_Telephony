@@ -504,7 +504,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Tidak dapat menunda panggilan."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Sambungkan ke rangkaian wayarles untuk membuat panggilan."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Dayakan panggilan Wi-Fi untuk membuat panggilan."</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"Maklumat kecemasan"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Panggilan kecemasan"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Panggilan kecemasan sahaja"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Menghidupkan radio..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Tiada perkhidmatan. Mencuba lagi..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Tidak dapat memasuki mod pesawat semasa panggilan kecemasan."</string>
@@ -596,6 +598,7 @@
     <string name="selectContact" msgid="781975788478987237">"pilih kenalan"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Panggilan suara tidak disokong"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"dail"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"tunjukkan pad pendail"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Mel Suara Visual"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Tetapkan PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Tukar PIN"</string>
