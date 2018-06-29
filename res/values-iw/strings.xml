@@ -504,7 +504,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"לא ניתן להחזיק שיחות."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"התחבר לרשת אלחוטית כדי לבצע שיחה."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"‏הפעל את \'שיחות Wi-Fi\' כדי להתקשר."</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"מידע למקרה חירום"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"שיחת חירום"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"שיחות חירום בלבד"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"מפעיל את הרדיו…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"אין שירות. מנסה שוב..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"אי אפשר לעבור למצב טיסה בזמן שיחת חירום."</string>
@@ -600,6 +602,7 @@
     <string name="selectContact" msgid="781975788478987237">"בחר איש קשר"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"חיוג קולי אינו נתמך"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"חייג"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"הצגת לוח החיוג"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"דואר קולי ויזואלי"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"הגדרת קוד גישה"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"שינוי קוד הגישה"</string>

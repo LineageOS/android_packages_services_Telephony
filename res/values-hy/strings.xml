@@ -510,7 +510,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Հնարավոր չէ հետաձգել զանգերը:"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Զանգ կատարելու համար միացեք անլար ցանցին:"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Զանգ կատարելու համար միացրեք «Զանգեր Wi-Fi ցանցի միջոցով» գործառույթը:"</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"Անհետաձգելի բուժօգնության տվյալներ"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Շտապ կանչ"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Միայն շտապ կանչեր"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Ռադիոն միացվում է..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Ծառայությունը մատչելի չէ: Նորից փորձեք…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Շտապ կանչի ժամանակ հնարավոր չէ մտնել ինքնաթիռի ռեժիմ:"</string>
@@ -602,6 +604,7 @@
     <string name="selectContact" msgid="781975788478987237">"ընտրել կոնտակտ"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Ձայնային զանգերը չեն սպասարկվում"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"համարհավաքել"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"ցուցադրել թվաշարը"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Տեսողական ձայնային փոստ"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Ընտրեք PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Փոխել PIN-ը"</string>

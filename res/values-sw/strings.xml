@@ -90,7 +90,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Mipangilio inapakia..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Nambari imefichwa kwa simu unayopiga"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Namba inaonekana kwa simu zinazopigwa"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Tumia mipangilio ya kiendesha chaguo msingi kuonyesha namba kwa simu zinazopigwa"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Tumia mipangilio ya kiendesha chaguomsingi kuonyesha namba kwa simu zinazopigwa"</string>
     <string name="labelCW" msgid="6120513814915920200">"Simu inayosubiri kupokewa"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Wakati ninapokea simu, niarifu kuhusu simu zingine zinazoingia"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Wakati ninapokea simu, niarifu kuhusu simu zingine zinazoingia"</string>
@@ -138,7 +138,7 @@
     <string name="disable" msgid="4678348128118573672">"Zima"</string>
     <string name="change_num" msgid="239476305819844391">"Sasisha"</string>
   <string-array name="clir_display_values">
-    <item msgid="5560134294467334594">"Chaguo msingi la mtandao"</item>
+    <item msgid="5560134294467334594">"Chaguomsingi la mtandao"</item>
     <item msgid="7876195870037833661">"Ficha nambari"</item>
     <item msgid="1108394741608734023">"Onyesha nambari"</item>
   </string-array>
@@ -504,7 +504,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Haiwezi kushikilia simu."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Unganisha kwenye mtandao pasiwaya ili upige simu."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Washa kipengele cha kupiga simu kupitia Wi-Fi ili upige simu."</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"Maelezo ya dharura"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Simu ya dharura"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Simu za dharura pekee"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Inawasha redio..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Hakuna huduma. Inajaribu tena..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Huwezi kuingia katika hali ya ndegeni huku simu ya dharura inaendelea."</string>
@@ -596,6 +598,7 @@
     <string name="selectContact" msgid="781975788478987237">"chagua anwani"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Upigaji simu za sauti hauhimiliwi"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"piga simu"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"onyesha vitufe vya kupiga simu"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Ujumbe wa Sauti Unaoonekana"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Weka PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Badilisha PIN"</string>

@@ -504,7 +504,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"ခေါ်ဆိုမှုများကို ကိုင်ထား၍မရပါ။"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ဖုန်းခေါ်ရန် ကြိုးမဲကွန်ယက်တစ်ခုသို့ ချိတ်ဆက်ပါ။"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"ဖုန်းဆက်ရန် Wi-Fi ခေါ်ဆိုခြင်းကို ဖွင့်ပါ။"</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"အရေးပေါ် အချက်အလက်"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"အရေးပေါ်ခေါ်ဆိုမှု"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"အရေးပေါ်ဖုန်းခေါ်ခြင်း သီးသန့်"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"ရေဒီယို ဖွင့်နေစဉ်…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"ဝန်ဆောင်မှု မရှိပါ။ ထပ်မံကြိုးစားပါ…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"အရေးပေါ်ဖုန်းခေါ်ဆိုနေစဉ် လေယာဉ်ပျံသန်းနေစဉ် သုံးသောစနစ်သို့ မဝင်ရောက်နိုင်ပါ"</string>
@@ -596,6 +598,7 @@
     <string name="selectContact" msgid="781975788478987237">"လိပ်စာရွေးပါ"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"အသံခေါ်ဆိုမှု ထောက်ံပံ့ခြင်းမရှိပါ"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ဖုန်းခေါ်ခြင်း"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"နံပါတ်အကွက် ပြရန်"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"အမြင် အသံမေးလ်"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"ပင်နံပါတ်သတ်မှတ်ရန်"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"ပင်နံပါတ်ပြောင်းပါ"</string>

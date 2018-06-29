@@ -504,7 +504,9 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"కాల్‌లను హోల్డ్ చేయలేరు."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"కాల్ చేయడానికి వైర్‌లెస్ నెట్‌వర్క్‌కు కనెక్ట్ చేయండి."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"కాల్‌ను చేయడానికి Wi-Fi కాలింగ్‌ను ప్రారంభించండి."</string>
+    <string name="emergency_information_title" msgid="4380389555729227377">"అత్యవసర సమాచారం"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"అత్యవసర కాల్"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"అత్యవసర కాల్‌లు మాత్రమే"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"రేడియోను ప్రారంభిస్తోంది…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"సేవ లేదు. మళ్లీ ప్రయత్నిస్తోంది…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"అత్యవసర కాల్‌లో ఉన్నప్పుడు ఎయిర్‌ప్లైన్ మోడ్‌లోకి ప్రవేశించలేరు."</string>
@@ -596,6 +598,7 @@
     <string name="selectContact" msgid="781975788478987237">"పరిచయాన్ని ఎంచుకోండి"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"వాయిస్ కాలింగ్‌కు మద్దతు లేదు"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"డయల్ చేయి"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"డయల్‌ప్యాడ్‌ను చూపు"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"దృశ్యమాన వాయిస్‌మెయిల్"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PINని సెట్ చేయండి"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PINను మార్చు"</string>
