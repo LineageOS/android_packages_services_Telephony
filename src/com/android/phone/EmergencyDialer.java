@@ -31,6 +31,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
@@ -135,6 +136,9 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     /** 90% opacity, different from other gradients **/
     private static final int BACKGROUND_GRADIENT_ALPHA = 230;
 
+    /** 85% opacity for black background **/
+    private static final int BLACK_BACKGROUND_GRADIENT_ALPHA = 217;
+
     ResizingTextEditText mDigits;
     private View mDialButton;
     private View mDelete;
@@ -231,10 +235,20 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         // Allow turning screen on
         setTurnScreenOn(true);
 
+        mAreEmergencyDialerShortcutsEnabled = Settings.Global.getInt(getContentResolver(),
+                Settings.Global.FASTER_EMERGENCY_PHONE_CALL_ENABLED, 0) != 0;
+
         mColorExtractor = new ColorExtractor(this);
-        GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK,
-                ColorExtractor.TYPE_EXTRA_DARK);
-        updateTheme(lockScreenColors.supportsDarkText());
+
+        // It does not support dark text theme, when emergency dialer shortcuts are enabled.
+        // And the background color is black with 85% opacity.
+        if (mAreEmergencyDialerShortcutsEnabled) {
+            updateTheme(false);
+        } else {
+            GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK,
+                    ColorExtractor.TYPE_EXTRA_DARK);
+            updateTheme(lockScreenColors.supportsDarkText());
+        }
 
         setContentView(R.layout.emergency_dialer);
 
@@ -252,7 +266,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE))
                 .getDefaultDisplay().getSize(displaySize);
         mBackgroundGradient.setScreenSize(displaySize.x, displaySize.y);
-        mBackgroundGradient.setAlpha(BACKGROUND_GRADIENT_ALPHA);
+        mBackgroundGradient.setAlpha(mAreEmergencyDialerShortcutsEnabled
+                ? BLACK_BACKGROUND_GRADIENT_ALPHA : BACKGROUND_GRADIENT_ALPHA);
         getWindow().setBackgroundDrawable(mBackgroundGradient);
 
         // Check for the presence of the keypad
@@ -317,9 +332,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         registerReceiver(mBroadcastReceiver, intentFilter);
 
         mEmergencyActionGroup = (EmergencyActionGroup) findViewById(R.id.emergency_action_group);
-
-        mAreEmergencyDialerShortcutsEnabled = Settings.Global.getInt(getContentResolver(),
-                Settings.Global.FASTER_EMERGENCY_PHONE_CALL_ENABLED, 0) != 0;
 
         if (mAreEmergencyDialerShortcutsEnabled) {
             setupEmergencyShortcutsView();
@@ -483,6 +495,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 return;
             }
             case R.id.floating_action_button_dialpad: {
+                mDigits.getText().clear();
                 switchView(mDialpadView, mEmergencyShortcutView, true);
                 return;
             }
@@ -588,13 +601,19 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     @Override
     protected void onStart() {
         super.onStart();
-
-        mColorExtractor.addOnColorsChangedListener(this);
-        GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK,
-                ColorExtractor.TYPE_EXTRA_DARK);
-        // Do not animate when view isn't visible yet, just set an initial state.
-        mBackgroundGradient.setColors(lockScreenColors, false);
-        updateTheme(lockScreenColors.supportsDarkText());
+        // It does not support dark text theme, when emergency dialer shortcuts are enabled.
+        // And set background color to black.
+        if (mAreEmergencyDialerShortcutsEnabled) {
+            mBackgroundGradient.setColors(Color.BLACK, Color.BLACK, false);
+            updateTheme(false);
+        } else {
+            mColorExtractor.addOnColorsChangedListener(this);
+            GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK,
+                    ColorExtractor.TYPE_EXTRA_DARK);
+            // Do not animate when view isn't visible yet, just set an initial state.
+            mBackgroundGradient.setColors(lockScreenColors, false);
+            updateTheme(lockScreenColors.supportsDarkText());
+        }
     }
 
     @Override
@@ -630,7 +649,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     @Override
     protected void onStop() {
         super.onStop();
-
         mColorExtractor.removeOnColorsChangedListener(this);
     }
 
@@ -1071,7 +1089,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 super.onPostExecute(result);
                 if (!isFinishing() && !isDestroyed()) {
                     // Update emergency info with emergency info name
-                    EmergencyInfoGroup group = findViewById(R.id.emergency_info_group);
+                    EmergencyInfoGroup group = findViewById(R.id.emergency_info_button);
                     if (group != null) {
                         group.updateEmergencyInfo(result);
                     }
