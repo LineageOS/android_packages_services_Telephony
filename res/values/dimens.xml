@@ -113,4 +113,30 @@
 
     <!-- The size of the "emergency calling unavailable" message shown in the emergency dialer -->
     <dimen name="emergency_call_warning_size">16sp</dimen>
+
+    <!-- Horizontal margin for the image on emergency dialer.-->
+    <dimen name="emergency_dialer_image_margin_horizontal">16dp</dimen>
+
+    <!-- Margin of dialpad button -->
+    <dimen name="emergency_dialer_dialpad_button_margin">16dp</dimen>
+
+    <!-- Horizontal margin for button of emergency shortcut. -->
+    <dimen name="emergency_shortcut_button_margin_horizontal">16dp</dimen>
+
+    <!-- Height and top margin for the emergency information button. -->
+    <dimen name="emergency_info_button_height">72dp</dimen>
+    <dimen name="emergency_info_button_margin_top">56dp</dimen>
+
+    <!-- The height and width for the image of emergency information. -->
+    <dimen name="emergency_info_image_height">56dp</dimen>
+    <dimen name="emergency_info_image_width">56dp</dimen>
+
+    <!-- The height and width for the function icon of emergency shortcuts. -->
+    <dimen name="emergency_shortcuts_function_icon_height">24dp</dimen>
+    <dimen name="emergency_shortcuts_function_icon_width">24dp</dimen>
+
+    <!-- The height and width for the dialpad button -->
+    <dimen name="dialpad_button_height">56dp</dimen>
+    <dimen name="dialpad_button_width">56dp</dimen>
+
 </resources>
