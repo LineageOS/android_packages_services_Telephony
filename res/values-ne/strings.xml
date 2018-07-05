@@ -136,7 +136,7 @@
     <string name="close_dialog" msgid="2365884406356986917">"ठिक छ"</string>
     <string name="enable" msgid="7248657275000173526">"सकृय पार्नुहोस्"</string>
     <string name="disable" msgid="4678348128118573672">"निस्कृय पार्नुहोस्"</string>
-    <string name="change_num" msgid="239476305819844391">"अपडेट गर्नुहोस्"</string>
+    <string name="change_num" msgid="239476305819844391">"अद्यावधिक गर्नुहोस्"</string>
   <string-array name="clir_display_values">
     <item msgid="5560134294467334594">"नेटवर्क पूर्वनिर्धारित"</item>
     <item msgid="7876195870037833661">"सङ्ख्या लुकाउनुहोस्"</item>

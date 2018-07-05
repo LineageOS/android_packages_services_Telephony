@@ -90,7 +90,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Mipangilio inapakia..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Nambari imefichwa kwa simu unayopiga"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Namba inaonekana kwa simu zinazopigwa"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Tumia mipangilio ya kiendesha chaguo msingi kuonyesha namba kwa simu zinazopigwa"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Tumia mipangilio ya kiendesha chaguomsingi kuonyesha namba kwa simu zinazopigwa"</string>
     <string name="labelCW" msgid="6120513814915920200">"Simu inayosubiri kupokewa"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Wakati ninapokea simu, niarifu kuhusu simu zingine zinazoingia"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Wakati ninapokea simu, niarifu kuhusu simu zingine zinazoingia"</string>
@@ -138,7 +138,7 @@
     <string name="disable" msgid="4678348128118573672">"Zima"</string>
     <string name="change_num" msgid="239476305819844391">"Sasisha"</string>
   <string-array name="clir_display_values">
-    <item msgid="5560134294467334594">"Chaguo msingi la mtandao"</item>
+    <item msgid="5560134294467334594">"Chaguomsingi la mtandao"</item>
     <item msgid="7876195870037833661">"Ficha nambari"</item>
     <item msgid="1108394741608734023">"Onyesha nambari"</item>
   </string-array>
