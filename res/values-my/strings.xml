@@ -506,7 +506,13 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"ဖုန်းဆက်ရန် Wi-Fi ခေါ်ဆိုခြင်းကို ဖွင့်ပါ။"</string>
     <string name="emergency_information_title" msgid="4380389555729227377">"အရေးပေါ် အချက်အလက်"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"အရေးပေါ်ခေါ်ဆိုမှု"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"အရေးပေါ်ဖုန်းခေါ်ခြင်း သီးသန့်"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"အရေးပေါ်ဖုန်းခေါ်ရန်သာ"</string>
+    <!-- no translation found for single_emergency_number_title (4959203129714396515) -->
+    <skip />
+    <!-- no translation found for numerous_emergency_numbers_title (754158099451343898) -->
+    <skip />
+    <!-- no translation found for emergency_call_shortcut_hint (6506167229097004348) -->
+    <skip />
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"ရေဒီယို ဖွင့်နေစဉ်…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"ဝန်ဆောင်မှု မရှိပါ။ ထပ်မံကြိုးစားပါ…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"အရေးပေါ်ဖုန်းခေါ်ဆိုနေစဉ် လေယာဉ်ပျံသန်းနေစဉ် သုံးသောစနစ်သို့ မဝင်ရောက်နိုင်ပါ"</string>
