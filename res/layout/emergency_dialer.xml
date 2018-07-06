@@ -33,6 +33,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <include layout="@layout/emergency_information"/>
+            <include layout="@layout/emergency_shortcut_buttons_group"/>
         </LinearLayout>
 
         <FrameLayout

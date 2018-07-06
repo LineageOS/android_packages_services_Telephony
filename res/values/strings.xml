@@ -1128,6 +1128,12 @@
     <string name="emergency_enable_radio_dialog_title">Emergency call</string>
     <!-- Title for the emergency dialpad UI -->
     <string name="emergency_dialpad_title">Emergency calls only</string>
+    <!-- Emergency dialer: Title of single emergency shortcut button -->
+    <string name="single_emergency_number_title">Emergency number</string>
+    <!-- Emergency dialer: Title of numerous emergency shortcut buttons -->
+    <string name="numerous_emergency_numbers_title">Emergency numbers</string>
+    <!-- Emergency dialer: Hint of selected emergency shortcut button -->
+    <string name="emergency_call_shortcut_hint">Tap again to call <xliff:g id="emergency_number">%s</xliff:g></string>
     <!-- Status message for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_message">Turning on radio\u2026</string>
     <!-- Status message for the "radio enable" UI for emergency calls -->
