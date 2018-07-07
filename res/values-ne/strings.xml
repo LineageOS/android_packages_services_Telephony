@@ -136,7 +136,7 @@
     <string name="close_dialog" msgid="2365884406356986917">"ठिक छ"</string>
     <string name="enable" msgid="7248657275000173526">"सकृय पार्नुहोस्"</string>
     <string name="disable" msgid="4678348128118573672">"निस्कृय पार्नुहोस्"</string>
-    <string name="change_num" msgid="239476305819844391">"अपडेट गर्नुहोस्"</string>
+    <string name="change_num" msgid="239476305819844391">"अद्यावधिक गर्नुहोस्"</string>
   <string-array name="clir_display_values">
     <item msgid="5560134294467334594">"नेटवर्क पूर्वनिर्धारित"</item>
     <item msgid="7876195870037833661">"सङ्ख्या लुकाउनुहोस्"</item>
@@ -507,6 +507,12 @@
     <string name="emergency_information_title" msgid="4380389555729227377">"आपतकालीन जानकारी"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"आपतकालीन कल"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"आपतकालीन कलहरू मात्र"</string>
+    <!-- no translation found for single_emergency_number_title (4959203129714396515) -->
+    <skip />
+    <!-- no translation found for numerous_emergency_numbers_title (754158099451343898) -->
+    <skip />
+    <!-- no translation found for emergency_call_shortcut_hint (6506167229097004348) -->
+    <skip />
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"रेडियो खोल्दै..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"कुनै सेवा छैन। फेरि प्रयास गर्दै ..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"आपतकालीन कलको समयमा हवाइजहाज मोडमा प्रविष्ट गर्न सक्दैन।"</string>

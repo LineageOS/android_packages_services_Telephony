@@ -226,6 +226,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private NetworkScanRequestTracker mNetworkScanRequestTracker;
 
+    private static final int TYPE_ALLOCATION_CODE_LENGTH = 8;
+    private static final int MANUFACTURER_CODE_LENGTH = 8;
+
     /**
      * A request object to use for transmitting data to an ICC.
      */
@@ -2028,6 +2031,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public String getTypeAllocationCodeForSlot(int slotIndex) {
+        Phone phone = PhoneFactory.getPhone(slotIndex);
+        String tac = null;
+        if (phone != null) {
+            String imei = phone.getImei();
+            tac = imei == null ? null : imei.substring(0, TYPE_ALLOCATION_CODE_LENGTH);
+        }
+        return tac;
+    }
+
+    @Override
     public String getMeidForSlot(int slotIndex, String callingPackage) {
         Phone phone = PhoneFactory.getPhone(slotIndex);
         if (phone == null) {
@@ -2045,6 +2059,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    @Override
+    public String getManufacturerCodeForSlot(int slotIndex) {
+        Phone phone = PhoneFactory.getPhone(slotIndex);
+        String manufacturerCode = null;
+        if (phone != null) {
+            String meid = phone.getMeid();
+            manufacturerCode = meid == null ? null : meid.substring(0, MANUFACTURER_CODE_LENGTH);
+        }
+        return manufacturerCode;
     }
 
     @Override
