@@ -1122,10 +1122,12 @@
     <!-- In-call screen: call failure message displayed in an error dialog when the user is connected to a wireless network, but wifi calling is turned off. [CHAR_LIMIT=NONE] -->
     <string name="incall_error_promote_wfc">Enable Wi-Fi calling to make a call.</string>
 
-    <!-- Title for the button of emergency information -->
-    <string name="emergency_information_title">Emergency information</string>
-    <!-- Content description for the button of emergency information -->
-    <string name="emergency_information_button_content_description"><xliff:g id="user_name">%s</xliff:g>\'s emergency information</string>
+    <!-- Hint for the button of emergency information -->
+    <string name="emergency_information_hint">Emergency information</string>
+    <!-- Hint for the owner of emergency information -->
+    <string name="emergency_information_owner_hint">Owner</string>
+    <!-- Content description for the owner of emergency information -->
+    <string name="emergency_information_owner_content_description"><xliff:g id="user_name">%s</xliff:g>\'s</string>
     <!-- Dialog title for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_title">Emergency call</string>
     <!-- Title for the emergency dialpad UI -->
