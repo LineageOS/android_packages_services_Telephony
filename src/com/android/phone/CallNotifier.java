@@ -563,13 +563,16 @@ public class CallNotifier extends Handler {
                     R.string.incall_error_supp_service_separate);
         } else if (r.result == Phone.SuppService.SWITCH) {
             if (DBG) log("onSuppServiceFailed: displaying switch failure message");
-            mApplication.getResources().getString(
+            mergeFailedString = mApplication.getResources().getString(
                     R.string.incall_error_supp_service_switch);
         } else if (r.result == Phone.SuppService.REJECT) {
             if (DBG) log("onSuppServiceFailed: displaying reject failure message");
-            mApplication.getResources().getString(
+            mergeFailedString = mApplication.getResources().getString(
                     R.string.incall_error_supp_service_reject);
-        } else {
+        } else if (r.result == Phone.SuppService.HANGUP) {
+            mergeFailedString = mApplication.getResources().getString(
+                    R.string.incall_error_supp_service_hangup);
+        }  else {
             if (DBG) log("onSuppServiceFailed: unknown failure");
             return;
         }
