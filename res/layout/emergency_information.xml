@@ -16,7 +16,7 @@
 <com.android.phone.EmergencyInfoGroup
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/emergency_info_button"
-    android:layout_height="@dimen/emergency_info_button_height"
+    android:layout_height="@dimen/emergency_info_button_singleline_height"
     android:layout_width="match_parent"
     android:layout_marginTop="@dimen/emergency_info_button_margin_top">
     <LinearLayout
@@ -38,7 +38,7 @@
         </FrameLayout>
         <LinearLayout
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center_vertical">
             <TextView
@@ -46,13 +46,16 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:includeFontPadding="false"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textAppearance="@style/HeadlineTextAppearance"/>
             <TextView
                 android:id="@+id/emergency_info_hint"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:paddingTop="9dp"
-                android:includeFontPadding="false"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:lineHeight="@dimen/emergency_info_hint_line_height"
                 android:alpha="0.7"
                 android:textAppearance="@style/SubtitleTextAppearance"
                 android:text="@string/emergency_information_hint"/>

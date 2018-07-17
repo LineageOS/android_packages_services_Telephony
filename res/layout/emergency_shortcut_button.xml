@@ -28,6 +28,7 @@
         <LinearLayout
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
+            android:layout_marginEnd="@dimen/emergency_info_image_width"
             android:layout_gravity="center_vertical|start"
             android:orientation="horizontal">
             <FrameLayout
@@ -44,7 +45,7 @@
             </FrameLayout>
             <LinearLayout
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_vertical"
                 android:orientation="vertical">
                 <TextView
@@ -52,14 +53,16 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:textAppearance="@style/HeadlineTextAppearance"/>
                 <TextView
                     android:id="@+id/phone_number_description"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:includeFontPadding="false"
-                    android:paddingTop="9dp"
                     android:alpha="0.8"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:textAppearance="@style/SubtitleTextAppearance"/>
             </LinearLayout>
         </LinearLayout>
@@ -88,6 +91,7 @@
         <LinearLayout
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
+            android:layout_marginEnd="@dimen/emergency_info_image_width"
             android:layout_gravity="center_vertical|start"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -106,12 +110,15 @@
             </FrameLayout>
             <FrameLayout
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:gravity="center_vertical">
                 <TextView
                     android:id="@+id/phone_call_hint"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:lineHeight="@dimen/phone_call_hint_line_height"
                     android:textAppearance="@style/ShortcutsHintTextAppearance"/>
             </FrameLayout>
         </LinearLayout>
