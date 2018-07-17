@@ -1126,8 +1126,6 @@
     <string name="emergency_information_hint">Emergency information</string>
     <!-- Hint for the owner of emergency information -->
     <string name="emergency_information_owner_hint">Owner</string>
-    <!-- Content description for the owner of emergency information -->
-    <string name="emergency_information_owner_content_description"><xliff:g id="user_name">%s</xliff:g>\'s</string>
     <!-- Dialog title for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_title">Emergency call</string>
     <!-- Title for the emergency dialpad UI -->

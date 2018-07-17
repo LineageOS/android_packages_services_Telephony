@@ -30,6 +30,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
@@ -46,6 +47,7 @@ import java.util.List;
 public class EmergencyInfoGroup extends FrameLayout {
     private ImageView mEmergencyInfoImage;
     private TextView mEmergencyInfoName;
+    private TextView mEmergencyInfoHint;
     private View mEmergencyInfoButton;
 
     public EmergencyInfoGroup(Context context, @Nullable AttributeSet attrs) {
@@ -58,6 +60,7 @@ public class EmergencyInfoGroup extends FrameLayout {
         mEmergencyInfoButton = findViewById(R.id.emergency_info_button);
         mEmergencyInfoImage = (ImageView) findViewById(R.id.emergency_info_image);
         mEmergencyInfoName = (TextView) findViewById(R.id.emergency_info_name);
+        mEmergencyInfoHint = (TextView) findViewById(R.id.emergency_info_hint);
     }
 
     @Override
@@ -66,6 +69,12 @@ public class EmergencyInfoGroup extends FrameLayout {
         if (visibility == View.VISIBLE) {
             setupButtonInfo();
         }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        updateLayoutHeight();
     }
 
     private void setupButtonInfo() {
@@ -130,14 +139,22 @@ public class EmergencyInfoGroup extends FrameLayout {
         return drawableUserIcon;
     }
 
+    private void updateLayoutHeight() {
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) getLayoutParams();
+        // Update height if mEmergencyInfoHint text line more than 1.
+        // EmergencyInfoGroup max line is 2, eclipse type "end" will be adopt if string too long.
+        params.height =
+                mEmergencyInfoHint.getLineCount() > 1 ? getResources().getDimensionPixelSize(
+                        R.dimen.emergency_info_button_multiline_height)
+                        : getResources().getDimensionPixelSize(
+                                R.dimen.emergency_info_button_singleline_height);
+        setLayoutParams(params);
+    }
+
     void updateEmergencyInfo(String emergencyInfoName) {
         if (TextUtils.isEmpty(emergencyInfoName)) {
             emergencyInfoName = getContext().getString(R.string.emergency_information_owner_hint);
         }
         mEmergencyInfoName.setText(emergencyInfoName);
-
-        final String infoNameDescription = getContext().getString(
-                R.string.emergency_information_owner_content_description, emergencyInfoName);
-        mEmergencyInfoName.setContentDescription(infoNameDescription);
     }
 }
