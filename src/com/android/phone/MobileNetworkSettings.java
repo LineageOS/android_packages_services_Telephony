@@ -1768,7 +1768,8 @@ public class MobileNetworkSettings extends Activity  {
                 }
             } else if (mImsMgr == null
                     || !mImsMgr.isWfcEnabledByPlatform()
-                    || !mImsMgr.isWfcProvisionedOnDevice()) {
+                    || !mImsMgr.isWfcProvisionedOnDevice()
+                    || !isImsServiceStateReady()) {
                 removePref = true;
             } else {
                 int resId = com.android.internal.R.string.wifi_calling_off_summary;
@@ -1811,24 +1812,19 @@ public class MobileNetworkSettings extends Activity  {
             PersistableBundle carrierConfig = PhoneGlobals.getInstance()
                     .getCarrierConfigForSubId(mPhone.getSubId());
 
-            try {
-                if ((mImsMgr == null
-                        || mImsMgr.getImsServiceState() != ImsFeature.STATE_READY
-                        || !mImsMgr.isVolteEnabledByPlatform()
-                        || !mImsMgr.isVolteProvisionedOnDevice()
-                        || carrierConfig.getBoolean(
-                        CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL))) {
-                    getPreferenceScreen().removePreference(mButton4glte);
-                } else {
-                    mButton4glte.setEnabled(is4gLtePrefEnabled(carrierConfig)
-                            && hasActiveSubscriptions());
-                    boolean enh4glteMode = mImsMgr.isEnhanced4gLteModeSettingEnabledByUser()
-                            && mImsMgr.isNonTtyOrTtyOnVolteEnabled();
-                    mButton4glte.setChecked(enh4glteMode);
-                }
-            } catch (ImsException ex) {
-                log("Exception when trying to get ImsServiceStatus: " + ex);
+            if ((mImsMgr == null
+                    || !mImsMgr.isVolteEnabledByPlatform()
+                    || !mImsMgr.isVolteProvisionedOnDevice()
+                    || !isImsServiceStateReady()
+                    || carrierConfig.getBoolean(
+                    CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL))) {
                 getPreferenceScreen().removePreference(mButton4glte);
+            } else {
+                mButton4glte.setEnabled(is4gLtePrefEnabled(carrierConfig)
+                        && hasActiveSubscriptions());
+                boolean enh4glteMode = mImsMgr.isEnhanced4gLteModeSettingEnabledByUser()
+                        && mImsMgr.isNonTtyOrTtyOnVolteEnabled();
+                mButton4glte.setChecked(enh4glteMode);
             }
         }
 
@@ -1843,6 +1839,7 @@ public class MobileNetworkSettings extends Activity  {
             if (mImsMgr != null
                     && mImsMgr.isVtEnabledByPlatform()
                     && mImsMgr.isVtProvisionedOnDevice()
+                    && isImsServiceStateReady()
                     && (carrierConfig.getBoolean(
                         CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
                         || mPhone.mDcTracker.isDataEnabled())) {
@@ -2110,6 +2107,21 @@ public class MobileNetworkSettings extends Activity  {
             } else {
                 mCdmaOptions.update(phone);
             }
+        }
+
+        private boolean isImsServiceStateReady() {
+            boolean isImsServiceStateReady = false;
+
+            try {
+                if (mImsMgr != null && mImsMgr.getImsServiceState() == ImsFeature.STATE_READY) {
+                    isImsServiceStateReady = true;
+                }
+            } catch (ImsException ex) {
+                loge("Exception when trying to get ImsServiceStatus: " + ex);
+            }
+
+            log("isImsServiceStateReady=" + isImsServiceStateReady);
+            return isImsServiceStateReady;
         }
     }
 }
