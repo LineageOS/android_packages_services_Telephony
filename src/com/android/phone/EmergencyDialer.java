@@ -38,6 +38,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.provider.Settings;
+import android.telecom.ParcelableCallAnalytics;
 import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
@@ -466,8 +467,11 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
         if (!TextUtils.isEmpty(phoneNumber)) {
             if (DBG) Log.d(LOG_TAG, "dial emergency number: " + Rlog.pii(LOG_TAG, phoneNumber));
+            Bundle extras = new Bundle();
+            extras.putInt(TelecomManager.EXTRA_CALL_SOURCE,
+                    ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_SHORTCUT);
             TelecomManager tm = (TelecomManager) getSystemService(TELECOM_SERVICE);
-            tm.placeCall(Uri.fromParts(PhoneAccount.SCHEME_TEL, phoneNumber, null), null);
+            tm.placeCall(Uri.fromParts(PhoneAccount.SCHEME_TEL, phoneNumber, null), extras);
         } else {
             Log.d(LOG_TAG, "emergency number is empty");
         }
@@ -725,8 +729,11 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 playTone(ToneGenerator.TONE_PROP_NACK);
                 return;
             }
+            Bundle extras = new Bundle();
+            extras.putInt(TelecomManager.EXTRA_CALL_SOURCE,
+                    ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_DIALPAD);
             TelecomManager tm = (TelecomManager) getSystemService(TELECOM_SERVICE);
-            tm.placeCall(Uri.fromParts(PhoneAccount.SCHEME_TEL, mLastNumber, null), null);
+            tm.placeCall(Uri.fromParts(PhoneAccount.SCHEME_TEL, mLastNumber, null), extras);
         } else {
             if (DBG) Log.d(LOG_TAG, "rejecting bad requested number " + mLastNumber);
 
