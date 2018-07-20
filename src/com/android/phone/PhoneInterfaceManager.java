@@ -1172,12 +1172,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @return true is a call was ended
      */
     public boolean endCallForSubscriber(int subId) {
-        if (mApp.checkCallingOrSelfPermission(permission.MODIFY_PHONE_STATE)
-                != PackageManager.PERMISSION_GRANTED) {
-            Log.i(LOG_TAG, "endCall: called without modify phone state.");
+        Phone phone = getPhone(subId);
+        CallManager callManager = PhoneGlobals.getInstance().getCallManager();
+
+        // When device is in emergency callback mode or there is an active emergency call, do not
+        // allow the caller to end the call unless they hold modify phone state permission.
+        if (phone != null && callManager != null
+                && (phone.isInEcm() || PhoneUtils.isInEmergencyCall(callManager))
+                && mApp.checkCallingOrSelfPermission(permission.MODIFY_PHONE_STATE)
+                        != PackageManager.PERMISSION_GRANTED) {
+
+            Log.i(LOG_TAG, "endCall: called without modify phone state for emergency call.");
             EventLog.writeEvent(0x534e4554, "67862398", -1, "");
-            throw new SecurityException("MODIFY_PHONE_STATE permission required.");
+            throw new SecurityException(
+                    "MODIFY_PHONE_STATE permission required to end an emergency call.");
         }
+        enforceCallPermission();
         return (Boolean) sendRequest(CMD_END_CALL, null, new Integer(subId));
     }
 
@@ -2468,9 +2478,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Get the forbidden PLMN List from the given app type (ex APPTYPE_USIM)
      * on a particular subscription
      */
-    public String[] getForbiddenPlmns(int subId, int appType) {
-        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PHONE_STATE,
-                "Requires READ_PHONE_STATE");
+    public String[] getForbiddenPlmns(int subId, int appType, String callingPackage) {
+
+        if ((mApp.checkCallingOrSelfPermission(
+                android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE)
+                == PackageManager.PERMISSION_GRANTED
+                || mApp.checkCallingOrSelfPermission(
+                android.Manifest.permission.READ_PHONE_STATE)
+                == PackageManager.PERMISSION_GRANTED)
+                && mAppOps.noteOp(
+                AppOpsManager.OP_READ_PHONE_STATE, Binder.getCallingUid(), callingPackage)
+                != AppOpsManager.MODE_ALLOWED) {
+            EventLog.writeEvent(0x534e4554, "73884967", Binder.getCallingUid(),
+                "getForbiddenPlmns calllingPackage: " + callingPackage);
+        }
+
+        if (!canReadPhoneState(callingPackage, "getForbiddenPlmns")) {
+            return null;
+        }
         if (appType != TelephonyManager.APPTYPE_USIM && appType != TelephonyManager.APPTYPE_SIM) {
             loge("getForbiddenPlmnList(): App Type must be USIM or SIM");
             return null;
