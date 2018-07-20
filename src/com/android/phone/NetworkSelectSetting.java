@@ -556,18 +556,18 @@ public class NetworkSelectSetting extends PreferenceFragment {
         if (DBG) logd("before aggregate: " + cellInfoList.toString());
         Map<String, CellInfo> map = new HashMap<>();
         for (CellInfo cellInfo: cellInfoList) {
-            String networkTitle = CellInfoUtil.getNetworkTitle(cellInfo);
-            if (cellInfo.isRegistered() || !map.containsKey(networkTitle)) {
-                map.put(networkTitle, cellInfo);
+            String plmn = CellInfoUtil.getOperatorInfoFromCellInfo(cellInfo).getOperatorNumeric();
+            if (cellInfo.isRegistered() || !map.containsKey(plmn)) {
+                map.put(plmn, cellInfo);
             } else {
-                if (map.get(networkTitle).isRegistered()
-                        || CellInfoUtil.getLevel(map.get(networkTitle))
+                if (map.get(plmn).isRegistered()
+                        || CellInfoUtil.getLevel(map.get(plmn))
                         > CellInfoUtil.getLevel(cellInfo)) {
                     // Skip if the stored cellInfo is registered or has higher signal strength level
                     continue;
                 }
                 // Otherwise replace it with the new CellInfo
-                map.put(networkTitle, cellInfo);
+                map.put(plmn, cellInfo);
             }
         }
         return new ArrayList<>(map.values());
