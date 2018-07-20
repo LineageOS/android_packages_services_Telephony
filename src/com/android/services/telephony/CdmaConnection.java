@@ -224,7 +224,8 @@ final class CdmaConnection extends TelephonyConnection {
             } catch (CallStateException e) {
                 Log.e(this, e, "Failed to hangup call waiting call");
             }
-            setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(telephonyDisconnectCause));
+            setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(telephonyDisconnectCause,
+                    null, getPhone().getPhoneId()));
         }
     }
 

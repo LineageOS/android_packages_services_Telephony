@@ -935,8 +935,14 @@ public class ImsConference extends Conference {
                 if (mConferenceHost == null) {
                     disconnectCause = new DisconnectCause(DisconnectCause.CANCELED);
                 } else {
-                    disconnectCause = DisconnectCauseUtil.toTelecomDisconnectCause(
-                            mConferenceHost.getOriginalConnection().getDisconnectCause());
+                    if (mConferenceHost.getPhone() != null) {
+                        disconnectCause = DisconnectCauseUtil.toTelecomDisconnectCause(
+                                mConferenceHost.getOriginalConnection().getDisconnectCause(),
+                                null, mConferenceHost.getPhone().getPhoneId());
+                    } else {
+                        disconnectCause = DisconnectCauseUtil.toTelecomDisconnectCause(
+                                mConferenceHost.getOriginalConnection().getDisconnectCause());
+                    }
                 }
                 setDisconnected(disconnectCause);
                 disconnectConferenceParticipants();
