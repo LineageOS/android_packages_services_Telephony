@@ -1199,7 +1199,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 wasVideoCall = call.wasVideoCall();
             }
 
-            isVowifiEnabled = ImsUtil.isWfcEnabled(phone.getContext());
+            isVowifiEnabled = ImsUtil.isWfcEnabled(phone.getContext(), phone.getPhoneId());
         }
 
         if (isCurrentVideoCall) {
@@ -1576,7 +1576,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                         setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
                                 mOriginalConnection.getDisconnectCause(),
                                 preciseDisconnectCause,
-                                mOriginalConnection.getVendorDisconnectCause()));
+                                mOriginalConnection.getVendorDisconnectCause(),
+                                getPhone().getPhoneId()));
                         close();
                     }
                     break;
@@ -2097,7 +2098,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         boolean isVoWifiEnabled = false;
         if (isIms) {
             ImsPhone imsPhone = (ImsPhone) phone;
-            isVoWifiEnabled = ImsUtil.isWfcEnabled(phone.getContext());
+            isVoWifiEnabled = ImsUtil.isWfcEnabled(phone.getContext(), phone.getPhoneId());
         }
         PhoneAccountHandle phoneAccountHandle = isIms ? PhoneUtils
                 .makePstnPhoneAccountHandle(phone.getDefaultPhone())
