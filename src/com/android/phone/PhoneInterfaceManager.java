@@ -1873,6 +1873,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // registered cell info, so return a NULL country instead.
         final long identity = Binder.clearCallingIdentity();
         try {
+            if (phoneId == SubscriptionManager.INVALID_PHONE_INDEX) {
+                // Get default phone in this case.
+                phoneId = SubscriptionManager.DEFAULT_PHONE_INDEX;
+            }
             final int subId = mSubscriptionController.getSubIdUsingPhoneId(phoneId);
             // Todo: fix this when we can get the actual cellular network info when the device
             // is on IWLAN.
