@@ -34,6 +34,8 @@ import android.util.Log;
 
 import com.android.internal.telephony.OperatorInfo;
 
+import java.util.List;
+
 /**
  * Add static Utility functions to get information from the CellInfo object.
  * TODO: Modify {@link CellInfo} for simplify those functions
@@ -165,5 +167,11 @@ public final class CellInfoUtil {
             oi = new OperatorInfo("", "", "");
         }
         return oi;
+    }
+
+    /** Checks whether the network operator is forbidden. */
+    public static boolean isForbidden(CellInfo cellInfo, List<String> forbiddenPlmns) {
+        String plmn = CellInfoUtil.getOperatorInfoFromCellInfo(cellInfo).getOperatorNumeric();
+        return forbiddenPlmns != null && forbiddenPlmns.contains(plmn);
     }
 }

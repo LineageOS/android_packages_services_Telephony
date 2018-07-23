@@ -20,6 +20,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncResult;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcel;
@@ -47,6 +48,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -76,6 +78,7 @@ public class NetworkSelectListPreference extends ListPreference
 
     private int mSubId;
     private NetworkOperators mNetworkOperators;
+    private List<String> mForbiddenPlmns;
 
     private ProgressDialog mProgressDialog;
     public NetworkSelectListPreference(Context context, AttributeSet attrs) {
@@ -89,10 +92,21 @@ public class NetworkSelectListPreference extends ListPreference
 
     @Override
     protected void onClick() {
-        // Start the one-time network scan via {@link Phone#getAvailableNetworks()}.
-        // {@link NetworkQueryService will return a {@link onResults()} callback first with a list
-        // of CellInfo, and then will return a {@link onComplete} indicating the scan completed.
-        loadNetworksList();
+        showProgressDialog(DIALOG_NETWORK_LIST_LOAD);
+        TelephonyManager telephonyManager = (TelephonyManager)
+                getContext().getSystemService(Context.TELEPHONY_SERVICE);
+        new AsyncTask<Void, Void, List<String>>() {
+            @Override
+            protected List<String> doInBackground(Void... voids) {
+                return Arrays.asList(telephonyManager.getForbiddenPlmns());
+            }
+
+            @Override
+            protected void onPostExecute(List<String> result) {
+                mForbiddenPlmns = result;
+                loadNetworksList();
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     private final Handler mHandler = new Handler() {
@@ -155,7 +169,7 @@ public class NetworkSelectListPreference extends ListPreference
 
         /** Returns the scan results to the user, this callback will be called only one time. */
         public void onResults(List<CellInfo> results) {
-            if (DBG) logd("get scan results.");
+            if (DBG) logd("get scan results: " + results.toString());
             Message msg = mHandler.obtainMessage(EVENT_NETWORK_SCAN_RESULTS, results);
             msg.sendToTarget();
         }
@@ -283,9 +297,6 @@ public class NetworkSelectListPreference extends ListPreference
 
     private void loadNetworksList() {
         if (DBG) logd("load networks list...");
-
-        showProgressDialog(DIALOG_NETWORK_LIST_LOAD);
-
         try {
             if (mNetworkQueryService != null) {
                 mNetworkQueryService.startNetworkQuery(mCallback, mPhoneId, false);
@@ -325,6 +336,10 @@ public class NetworkSelectListPreference extends ListPreference
                 // Display each operator name only once.
                 String networkTitle = getNetworkTitle(cellInfo);
                 if (!networkEntriesList.contains(networkTitle)) {
+                    if (CellInfoUtil.isForbidden(cellInfo, mForbiddenPlmns)) {
+                        networkTitle += " "
+                                + getContext().getResources().getString(R.string.forbidden_network);
+                    }
                     networkEntriesList.add(networkTitle);
                     networkEntryValuesList.add(getOperatorNumeric(cellInfo));
                 }

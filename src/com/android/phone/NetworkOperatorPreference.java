@@ -30,25 +30,30 @@ import android.view.Gravity;
 
 import com.android.settingslib.graph.SignalDrawable;
 
+import java.util.List;
+
 /**
  * A Preference represents a network operator in the NetworkSelectSetting fragment.
  */
 public class NetworkOperatorPreference extends Preference {
 
     private static final String TAG = "NetworkOperatorPref";
-    private static final boolean DBG = true;
+    private static final boolean DBG = false;
     // number of signal strength level
     public static final int NUMBER_OF_LEVELS = SignalStrength.NUM_SIGNAL_STRENGTH_BINS;
     private CellInfo mCellInfo;
+    private List<String> mForbiddenPlmns;
     private int mLevel = -1;
 
     // The following constants are used to draw signal icon.
     private static final Drawable EMPTY_DRAWABLE = new ColorDrawable(Color.TRANSPARENT);
     private static final int NO_CELL_DATA_CONNECTED_ICON = 0;
 
-    public NetworkOperatorPreference(CellInfo cellinfo, Context context) {
+    public NetworkOperatorPreference(
+            CellInfo cellinfo, Context context, List<String> forbiddenPlmns) {
         super(context);
         mCellInfo = cellinfo;
+        mForbiddenPlmns = forbiddenPlmns;
         refresh();
     }
 
@@ -61,7 +66,11 @@ public class NetworkOperatorPreference extends Preference {
      */
     public void refresh() {
         if (DBG) Log.d(TAG, "refresh the network: " + CellInfoUtil.getNetworkTitle(mCellInfo));
-        setTitle(CellInfoUtil.getNetworkTitle(mCellInfo));
+        String networkTitle = CellInfoUtil.getNetworkTitle(mCellInfo);
+        if (CellInfoUtil.isForbidden(mCellInfo, mForbiddenPlmns)) {
+            networkTitle += " " + getContext().getResources().getString(R.string.forbidden_network);
+        }
+        setTitle(networkTitle);
         int level = CellInfoUtil.getLevel(mCellInfo);
         if (DBG) Log.d(TAG, "refresh level: " + String.valueOf(level));
         if (mLevel != level) {
