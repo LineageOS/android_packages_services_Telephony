@@ -504,15 +504,14 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"ඇමතුම් රඳවා තැබීමට නොහැකිය."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ඇමතුමක් ගැනීමට රැහැන් රහිත ජාලයක් වෙත සම්බන්ධ වෙන්න."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"ඇමතුමක් කිරීමට Wi-Fi ඇමතීම සබල කරන්න."</string>
-    <string name="emergency_information_title" msgid="4380389555729227377">"හදිසි අවස්ථා තොරතුරු"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"හදිසි අවස්ථා තොරතුරු"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"හිමිකරු"</string>
+    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"<xliff:g id="USER_NAME">%s</xliff:g>ගේ"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"හදිසි ඇමතුම"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"හදිසි ඇමතුම් පමණි"</string>
-    <!-- no translation found for single_emergency_number_title (4959203129714396515) -->
-    <skip />
-    <!-- no translation found for numerous_emergency_numbers_title (754158099451343898) -->
-    <skip />
-    <!-- no translation found for emergency_call_shortcut_hint (6506167229097004348) -->
-    <skip />
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"හදිසි ඇමතුම් අංකය"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"හදිසි අවස්ථා අංක"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> අැමතීමට නැවත තට්ටු කරන්න"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"රේඩියෝව ආරම්භ කරමින්…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"සේවා නැත. නැවත උත්සාහ කරන්න…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"හදිසි අවස්ථා ඇමතුමක් අතරතුර ගුවන් යානා ප්‍රකාරය ඇතුළු කළ නොහැකිය."</string>
