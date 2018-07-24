@@ -97,6 +97,7 @@ public class EmergencyInfoGroup extends FrameLayout {
 
             visible = true;
         }
+        mEmergencyInfoName.setText(getUserName());
 
         setVisibility(visible ? View.VISIBLE : View.GONE);
     }
@@ -104,39 +105,33 @@ public class EmergencyInfoGroup extends FrameLayout {
     /**
      * Get user icon.
      *
-     * @return user icon, or anonymous avatar if user do not set photo.
+     * @return user icon, or default user icon if user do not set photo.
      */
     private Drawable getCircularUserIcon() {
-        final int userId = UserHandle.getCallingUserId();
-
         final UserManager userManager = (UserManager) getContext().getSystemService(
                 Context.USER_SERVICE);
-
-        // get user icon.
-        Bitmap bitmapUserIcon = userManager.getUserIcon(userId);
+        Bitmap bitmapUserIcon = userManager.getUserIcon(UserHandle.getCallingUserId());
 
         if (bitmapUserIcon == null) {
-            // use anonymous avatar.
-            return getContext().getDrawable(R.drawable.logo_avatar_anonymous_120);
+            // get default user icon.
+            final Drawable defaultUserIcon = UserIcons.getDefaultUserIcon(
+                    getContext().getResources(), UserHandle.myUserId(), false);
+            bitmapUserIcon = UserIcons.convertToBitmap(defaultUserIcon);
         }
-
-        // get default user icon.
-        Drawable drawableDefaultUserIcon = UserIcons.getDefaultUserIcon(
-                getContext().getResources(), userId, false);
-        Bitmap bitmapDefaultUserIcon = UserIcons.convertToBitmap(drawableDefaultUserIcon);
-
-        // User icon is default icon that means user do not set photo, replacing default icon
-        // with anonymous avatar on emergency info button.
-        if (bitmapUserIcon.sameAs(bitmapDefaultUserIcon)) {
-            return getContext().getDrawable(R.drawable.logo_avatar_anonymous_120);
-        }
-
-        // set user icon circular.
         RoundedBitmapDrawable drawableUserIcon = RoundedBitmapDrawableFactory.create(
                 getContext().getResources(), bitmapUserIcon);
         drawableUserIcon.setCircular(true);
 
         return drawableUserIcon;
+    }
+
+    private CharSequence getUserName() {
+        final UserManager userManager = (UserManager) getContext().getSystemService(
+                Context.USER_SERVICE);
+        final String userName = userManager.getUserName();
+
+        return TextUtils.isEmpty(userName) ? getContext().getText(
+                R.string.emergency_information_owner_hint) : userName;
     }
 
     private void updateLayoutHeight() {
@@ -149,12 +144,5 @@ public class EmergencyInfoGroup extends FrameLayout {
                         : getResources().getDimensionPixelSize(
                                 R.dimen.emergency_info_button_singleline_height);
         setLayoutParams(params);
-    }
-
-    void updateEmergencyInfo(String emergencyInfoName) {
-        if (TextUtils.isEmpty(emergencyInfoName)) {
-            emergencyInfoName = getContext().getString(R.string.emergency_information_owner_hint);
-        }
-        mEmergencyInfoName.setText(emergencyInfoName);
     }
 }
