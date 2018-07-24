@@ -504,15 +504,14 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Hindi makakapag-hold ng mga tawag."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Kumonekta sa isang wireless network upang makatawag."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"I-enable ang pagtawag sa Wi-Fi upang tumawag."</string>
-    <string name="emergency_information_title" msgid="4380389555729227377">"Impormasyong pang-emergency"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Impormasyong pang-emergency"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"May-ari"</string>
+    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"Kay <xliff:g id="USER_NAME">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Emergency na tawag"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Mga pang-emergency na tawag lang"</string>
-    <!-- no translation found for single_emergency_number_title (4959203129714396515) -->
-    <skip />
-    <!-- no translation found for numerous_emergency_numbers_title (754158099451343898) -->
-    <skip />
-    <!-- no translation found for emergency_call_shortcut_hint (6506167229097004348) -->
-    <skip />
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Numerong pang-emergency"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Mga numerong pang-emergency"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Mag-tap muli para tumawag sa <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Ino-on ang radyo…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Walang serbisyo. Sinusubukang muli…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Hindi maaaring ilagay sa ariplane mode habang nasa isang emergency na tawag."</string>

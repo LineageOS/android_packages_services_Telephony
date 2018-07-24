@@ -504,15 +504,14 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"কলসমূহ হ\'ল্ডত ৰাখিব নোৱাৰি।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"কল কৰিবলৈ কোনো বেতাঁৰ নেটৱৰ্কৰ সৈতে সংযোগ কৰক।"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"কল কৰিবৰ কাৰণে ৱাই-ফাই কলিং সুবিধা সক্ষম কৰক।"</string>
-    <string name="emergency_information_title" msgid="4380389555729227377">"জৰুৰীকালীন তথ্য"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"জৰুৰীকালীন তথ্য"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"গৰাকী"</string>
+    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"<xliff:g id="USER_NAME">%s</xliff:g>ৰ"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"জৰুৰীকালীন কল"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"জৰুৰীকালীন কল মাত্ৰ"</string>
-    <!-- no translation found for single_emergency_number_title (4959203129714396515) -->
-    <skip />
-    <!-- no translation found for numerous_emergency_numbers_title (754158099451343898) -->
-    <skip />
-    <!-- no translation found for emergency_call_shortcut_hint (6506167229097004348) -->
-    <skip />
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"জৰুৰীকালীন নম্বৰ"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"জৰুৰীকালীন নম্বৰসমূহ"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>ত কল কৰিবলৈ আকৌ টিপক"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"ৰেডিঅ\' অন কৰা হৈছে…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"কোনো সেৱা নাই। পুনৰ চেষ্টা কৰক…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"জৰুৰীকালীন কল চলি থাকোঁতে এয়াৰপ্লেইন ম\'ডত প্ৰৱেশ কৰিব নোৱাৰি।"</string>

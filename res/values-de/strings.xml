@@ -376,9 +376,9 @@
     <item msgid="176474317493999285">"Nur Heimatnetz"</item>
     <item msgid="1205664026446156265">"Automatisch"</item>
   </string-array>
-    <string name="cdma_subscription_title" msgid="1162564010076763284">"CDMA-Abonnement"</string>
+    <string name="cdma_subscription_title" msgid="1162564010076763284">"CDMA-Abo"</string>
     <string name="cdma_subscription_summary" msgid="2530890766115781140">"Zwischen RUIM/SIM und NV wechseln"</string>
-    <string name="cdma_subscription_dialogtitle" msgid="2699527950523333110">"Abonnement"</string>
+    <string name="cdma_subscription_dialogtitle" msgid="2699527950523333110">"Abo"</string>
   <string-array name="cdma_subscription_choices">
     <item msgid="2258014151300708431">"RUIM/SIM"</item>
     <item msgid="5127722015571873880">"NV"</item>
@@ -508,15 +508,14 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Anrufe können nicht gehalten werden."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Stelle zum Telefonieren eine WLAN-Verbindung her."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktiviere WLAN-Telefonie, um anzurufen."</string>
-    <string name="emergency_information_title" msgid="4380389555729227377">"Notfallinformationen"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Notfallinformationen"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Eigentümer"</string>
+    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"von <xliff:g id="USER_NAME">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Notruf"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Nur Notrufe"</string>
-    <!-- no translation found for single_emergency_number_title (4959203129714396515) -->
-    <skip />
-    <!-- no translation found for numerous_emergency_numbers_title (754158099451343898) -->
-    <skip />
-    <!-- no translation found for emergency_call_shortcut_hint (6506167229097004348) -->
-    <skip />
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Notrufnummer"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Notrufnummern"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Noch einmal tippen, um <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> anzurufen"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Mobilfunkverbindung wird aktiviert..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Kein Service. Erneuter Versuch..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Während eines Notrufs ist das Wechseln in den Flugmodus nicht möglich."</string>
