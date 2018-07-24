@@ -182,8 +182,6 @@
     <!-- Needed for emergency contact notification. -->
     <uses-permission android:name="android.permission.WRITE_BLOCKED_NUMBERS" />
     <uses-permission android:name="android.permission.NETWORK_SETTINGS" />
-    <!-- Needed for emergency info user name. -->
-    <uses-permission android:name="com.android.emergency.permission.READ_EMERGENCY_INFO_NAME"/>
 
     <!-- This tells the activity manager to not delay any of our activity
          start requests, even if they happen immediately after the user
