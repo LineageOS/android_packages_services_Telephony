@@ -1988,9 +1988,8 @@ abstract class TelephonyConnection extends Connection {
     }
 
     private void updateStatusHints() {
-        boolean isIncoming = isValidRingingCall();
-        if (mIsWifi && (isIncoming || getState() == STATE_ACTIVE)) {
-            int labelId = isIncoming
+        if (mIsWifi && getPhone() != null) {
+            int labelId = isValidRingingCall()
                     ? R.string.status_hint_label_incoming_wifi_call
                     : R.string.status_hint_label_wifi_call;
 
