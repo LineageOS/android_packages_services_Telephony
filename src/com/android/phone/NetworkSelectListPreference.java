@@ -105,7 +105,8 @@ public class NetworkSelectListPreference extends ListPreference
         new AsyncTask<Void, Void, List<String>>() {
             @Override
             protected List<String> doInBackground(Void... voids) {
-                return Arrays.asList(telephonyManager.getForbiddenPlmns());
+                String[] forbiddenPlmns = telephonyManager.getForbiddenPlmns();
+                return forbiddenPlmns != null ? Arrays.asList(forbiddenPlmns) : null;
             }
 
             @Override
