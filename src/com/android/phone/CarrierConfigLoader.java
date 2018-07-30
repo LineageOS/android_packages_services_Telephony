@@ -16,8 +16,6 @@
 
 package com.android.phone;
 
-import static android.Manifest.permission.READ_PHONE_STATE;
-import static android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE;
 import static android.service.carrier.CarrierService.ICarrierServiceWrapper.KEY_CONFIG_BUNDLE;
 import static android.service.carrier.CarrierService.ICarrierServiceWrapper.RESULT_ERROR;
 
@@ -777,22 +775,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     @Override public
     @NonNull
-    PersistableBundle getConfigForSubId(int subId) {
-        // TODO(b/73136824): Migrate to TelephonyPermissions#checkCallingOrSelfReadPhoneState.
-        try {
-            mContext.enforceCallingOrSelfPermission(READ_PRIVILEGED_PHONE_STATE, null);
-            // SKIP checking run-time READ_PHONE_STATE since using PRIVILEGED
-        } catch (SecurityException e) {
-            try {
-                mContext.enforceCallingOrSelfPermission(READ_PHONE_STATE, null);
-            } catch (SecurityException securityException) {
-                // If we don't have the runtime permission, but do have carrier privileges, that
-                // suffices for reading phone state.
-                if (!SubscriptionManager.isValidSubscriptionId(subId)) {
-                    throw securityException;
-                }
-                TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(subId, null);
-            }
+    PersistableBundle getConfigForSubId(int subId, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mContext, subId, callingPackage, "getCarrierConfig")) {
+            return new PersistableBundle();
         }
 
         int phoneId = SubscriptionManager.getPhoneId(subId);

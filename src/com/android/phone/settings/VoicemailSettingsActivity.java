@@ -568,12 +568,12 @@ public class VoicemailSettingsActivity extends PreferenceActivity
     private boolean getBooleanCarrierConfig(String key) {
         PersistableBundle b = PhoneGlobals.getInstance()
                 .getCarrierConfigForSubId(mPhone.getSubId());
-        if (b != null) {
-            return b.getBoolean(key);
-        } else {
-            // Return static default defined in CarrierConfigManager.
-            return CarrierConfigManager.getDefaultConfig().getBoolean(key);
+
+        if (b == null) {
+            b = PhoneGlobals.getInstance().getCarrierConfig();
         }
+
+        return b.getBoolean(key);
     }
 
 
