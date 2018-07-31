@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ddda8e1_bc10a779",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2018-07-31T16:06:06Z",
+      "side": 1,
+      "message": "trds? triple sim would be tsts",
+      "range": {
+        "startLine": 7,
+        "startChar": 62,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "640ace715c091e8b576263c0d5c8bcbb7f73d5ef",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
