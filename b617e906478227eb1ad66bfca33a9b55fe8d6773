@@ -16,6 +16,24 @@
       "revId": "b617e906478227eb1ad66bfca33a9b55fe8d6773",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e54f3b8a_04d37a2d",
+        "filename": "src/com/android/phone/NetworkSelectListPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2018-07-31T11:28:03Z",
+      "side": 0,
+      "message": "no, https://github.com/LineageOS/android_frameworks_base/blob/lineage-15.1/telephony/java/android/telephony/TelephonyManager.java#L1537",
+      "parentUuid": "71b2d9a0_da140f8e",
+      "revId": "b617e906478227eb1ad66bfca33a9b55fe8d6773",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
