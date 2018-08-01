@@ -20,6 +20,8 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.NonNull;
 import android.content.Context;
+import android.metrics.LogMaker;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,6 +30,9 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
 /**
  * Emergency shortcut button displays a local emergency phone number information(including phone
@@ -59,6 +64,12 @@ public class EmergencyShortcutButton extends FrameLayout implements View.OnClick
     private OnConfirmClickListener mOnConfirmClickListener;
 
     private boolean mConfirmViewHiding;
+
+    /**
+     * The time, in millis, since boot when user taps on shortcut button to reveal confirm view.
+     * This is used for metrics when calculating the interval between reveal tap and confirm tap.
+     */
+    private long mTimeOfRevealTapInMillis = 0;
 
     public EmergencyShortcutButton(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -184,6 +195,8 @@ public class EmergencyShortcutButton extends FrameLayout implements View.OnClick
         switch (view.getId()) {
             case R.id.emergency_call_number_info_view:
                 if (AccessibilityManager.getInstance(mContext).isTouchExplorationEnabled()) {
+                    // TalkBack itself includes a prompt to confirm click action implicitly,
+                    // so we don't need an additional confirmation with second tap on button.
                     if (mOnConfirmClickListener != null) {
                         mOnConfirmClickListener.onConfirmClick(this);
                     }
@@ -192,6 +205,15 @@ public class EmergencyShortcutButton extends FrameLayout implements View.OnClick
                 }
                 break;
             case R.id.emergency_call_confirm_view:
+                if (mTimeOfRevealTapInMillis != 0) {
+                    long timeBetweenTwoTaps =
+                            SystemClock.elapsedRealtime() - mTimeOfRevealTapInMillis;
+                    // Reset reveal time to zero for next reveal-confirm taps pair.
+                    mTimeOfRevealTapInMillis = 0;
+
+                    writeMetricsForConfirmTap(timeBetweenTwoTaps);
+                }
+
                 if (mOnConfirmClickListener != null) {
                     mOnConfirmClickListener.onConfirmClick(this);
                 }
@@ -203,6 +225,7 @@ public class EmergencyShortcutButton extends FrameLayout implements View.OnClick
         mConfirmViewHiding = false;
 
         mConfirmView.setVisibility(View.VISIBLE);
+        mTimeOfRevealTapInMillis = SystemClock.elapsedRealtime();
         int centerX = mCallNumberInfoView.getLeft() + mCallNumberInfoView.getWidth() / 2;
         int centerY = mCallNumberInfoView.getTop() + mCallNumberInfoView.getHeight() / 2;
         Animator reveal = ViewAnimationUtils.createCircularReveal(
@@ -239,6 +262,8 @@ public class EmergencyShortcutButton extends FrameLayout implements View.OnClick
             @Override
             public void onAnimationEnd(Animator animation) {
                 mConfirmView.setVisibility(INVISIBLE);
+                // Reset reveal time to zero for next reveal-confirm taps pair.
+                mTimeOfRevealTapInMillis = 0;
             }
         });
         reveal.start();
@@ -253,4 +278,12 @@ public class EmergencyShortcutButton extends FrameLayout implements View.OnClick
             hideSelectedButton();
         }
     };
+
+    private void writeMetricsForConfirmTap(long timeBetweenTwoTaps) {
+        LogMaker logContent = new LogMaker(MetricsEvent.EMERGENCY_DIALER_SHORTCUT_CONFIRM_TAP)
+                .setType(MetricsEvent.TYPE_ACTION)
+                .addTaggedData(MetricsEvent.FIELD_EMERGENCY_DIALER_SHORTCUT_TAPS_INTERVAL,
+                        timeBetweenTwoTaps);
+        MetricsLogger.action(logContent);
+    }
 }
