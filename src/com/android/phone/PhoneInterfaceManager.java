@@ -1939,9 +1939,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<NeighboringCellInfo> getNeighboringCellInfo(String callingPackage) {
-        mPhone.getContext().getSystemService(AppOpsManager.class)
-                .checkPackage(Binder.getCallingUid(), callingPackage);
+    public List<NeighboringCellInfo>
+            getNeighboringCellInfo(String callingPackage, int targetSdk) {
+        // FIXME: use the P constant when available
+        if (targetSdk > android.os.Build.VERSION_CODES.O_MR1 + 1) return null;
+
         if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
                 callingPackage, Binder.getCallingUid(), Binder.getCallingPid(), true)) {
             return null;
