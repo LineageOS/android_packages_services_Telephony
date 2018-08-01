@@ -40,6 +40,7 @@ final class CdmaConnection extends TelephonyConnection {
 
     private static final int MSG_CALL_WAITING_MISSED = 1;
     private static final int MSG_DTMF_SEND_CONFIRMATION = 2;
+    private static final int MSG_CDMA_LINE_CONTROL_INFO_REC = 3;
     private static final int TIMEOUT_CALL_WAITING_MILLIS = 20 * 1000;
 
     private final Handler mHandler = new Handler() {
@@ -53,6 +54,9 @@ final class CdmaConnection extends TelephonyConnection {
                     break;
                 case MSG_DTMF_SEND_CONFIRMATION:
                     handleBurstDtmfConfirmation();
+                    break;
+                case MSG_CDMA_LINE_CONTROL_INFO_REC:
+                    handleCdmaConnectionTimeReset();
                     break;
                 default:
                     break;
@@ -72,6 +76,7 @@ final class CdmaConnection extends TelephonyConnection {
     // Indicates that the DTMF confirmation from telephony is pending.
     private boolean mDtmfBurstConfirmationPending = false;
     private boolean mIsCallWaiting;
+    private boolean mIsConnectionTimeReset = false;
 
     CdmaConnection(
             Connection connection,
@@ -298,5 +303,34 @@ final class CdmaConnection extends TelephonyConnection {
         // We allow mute upon existing ECM mode and rebuild the capabilities.
         mAllowMute = true;
         super.handleExitedEcmMode();
+    }
+
+    private void handleCdmaConnectionTimeReset() {
+        boolean isImsCall = getOriginalConnection() instanceof ImsPhoneConnection;
+        if (!isImsCall && !mIsConnectionTimeReset && mIsOutgoing
+                && getOriginalConnection() != null
+                && getOriginalConnection().getState() == Call.State.ACTIVE
+                && getOriginalConnection().getDurationMillis() > 0) {
+            mIsConnectionTimeReset = true;
+            getOriginalConnection().resetConnectionTime();
+            resetConnectionTime();
+        }
+    }
+
+    @Override
+    void setOriginalConnection(com.android.internal.telephony.Connection originalConnection) {
+        super.setOriginalConnection(originalConnection);
+        if (getPhone() != null) {
+            getPhone().registerForLineControlInfo(mHandler, MSG_CDMA_LINE_CONTROL_INFO_REC, null);
+        }
+    }
+
+    @Override
+    protected void close() {
+        mIsConnectionTimeReset = false;
+        if (getPhone() != null) {
+            getPhone().unregisterForLineControlInfo(mHandler);
+        }
+        super.close();
     }
 }
