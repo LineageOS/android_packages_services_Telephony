@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಹಿಂತಿರುಗಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="response_error" msgid="6674110501330139405">"ನೆಟ್‌ವರ್ಕ್‌ನಿಂದ ಅನಿರೀಕ್ಷಿತ ಪ್ರತಿಕ್ರಿಯೆ."</string>
     <string name="exception_error" msgid="7027667130619518211">"ನೆಟ್‌ವರ್ಕ್‌ ಅಥವಾ ಸಿಮ್‌ ಕಾರ್ಡ್‌ ದೋಷ."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS ವಿನಂತಿಯನ್ನು DIAL ವಿನಂತಿಗೆ ಮಾರ್ಪಡಿಸಲಾಗಿದೆ."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS ವಿನಂತಿಯನ್ನು USSD ವಿನಂತಿಗೆ ಮಾರ್ಪಡಿಸಲಾಗಿದೆ."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS ವಿನಂತಿಯನ್ನು ಹೊಸ SS ವಿನಂತಿಗೆ ಮಾರ್ಪಡಿಸಲಾಗಿದೆ."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS ವಿನಂತಿಯನ್ನು ವೀಡಿಯೊ DIAL ವಿನಂತಿಗೆ ಮಾರ್ಪಡಿಸಲಾಗಿದೆ."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS ವಿನಂತಿಯನ್ನು ಸಾಮಾನ್ಯ ಕರೆಗೆ ಬದಲಾಯಿಸಲಾಗಿದೆ"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS ವಿನಂತಿಯನ್ನು USSD ವಿನಂತಿಗೆ ಬದಲಾಯಿಸಲಾಗಿದೆ"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"ಹೊಸ SS ವಿನಂತಿಗೆ ಬದಲಾಯಿಸಲಾಗಿದೆ"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS ವಿನಂತಿಯನ್ನು ವೀಡಿಯೊ ಕರೆಗೆ ಬದಲಾಯಿಸಲಾಗಿದೆ"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"ನಿಮ್ಮ ಫೋನ್‌ ಅಪ್ಲಿಕೇಶನ್‌‌ನ ಸ್ಥಿರ ಡಯಲಿಂಗ್‌‌ ಸಂಖ್ಯೆಗಳ ಸೆಟ್ಟಿಂಗ್‌ ಅನ್ನು ಆನ್‌ ಮಾಡಲಾಗಿದೆ. ಪರಿಣಾಮ, ಕೆಲವು ಕರೆ ಸಂಬಂಧಿತ ವೈಶಿಷ್ಟ್ಯಗಳು ಕಾರ್ಯ ನಿರ್ವಹಿಸುತ್ತಿಲ್ಲ."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"ಈ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸುವ ಮೊದಲು ರೇಡಿಯೋ ಆನ್ ಮಾಡಿ."</string>
     <string name="close_dialog" msgid="2365884406356986917">"ಸರಿ"</string>
@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"ಲಭ್ಯವಿರುವ ನೆಟ್‌ವರ್ಕ್‌ಗಳು"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"ಹುಡುಕಲಾಗುತ್ತಿದೆ…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"ಯಾವುದೇ ನೆಟ್‌ವರ್ಕ್‌ಗಳು ಕಂಡುಬಂದಿಲ್ಲ."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"ನೆಟ್‌ವರ್ಕ್‌ಗಳಿಗಾಗಿ ಹುಡುಕುತ್ತಿರುವಾಗ ದೋಷ."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"ನೆಟ್‌ವರ್ಕ್‌ಗಳನ್ನು ಹುಡುಕಲಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> ನಲ್ಲಿ ನೋಂದಾಯಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"ಈ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕವನ್ನು ನಿಮ್ಮ ಸಿಮ್‌ ಕಾರ್ಡ್‌ ಅನುಮತಿಸುವುದಿಲ್ಲ."</string>
     <string name="connect_later" msgid="2308119155752343975">"ಇದೀಗ ಈ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಪಡಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ನೆಟ್‌ವರ್ಕ್‌ ಕಾರ್ಯಾಚರಣಾ ಮೋಡ್‌ ಬದಲಿಸಿ"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ಬಯಸಿದ ನೆಟ್‌ವರ್ಕ್‌ ಪ್ರಕಾರ"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(ನಿಷೇಧಿತ)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"ನೆಟ್‌ವರ್ಕ್ ಆಯ್ಕೆಮಾಡಿ"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಲಾಗಿದೆ"</string>
+    <string name="network_connected" msgid="1288589103624338857">"ಸಂಪರ್ಕಗೊಂಡಿದೆ"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA ಗೆ ಪ್ರಾಶಸ್ತ್ಯ ನೀಡಲಾಗಿದೆ"</item>
     <item msgid="8442633436636425221">"GSM ಮಾತ್ರ"</item>
@@ -238,11 +243,12 @@
     <string name="roaming" msgid="7894878421600247140">"ರೋಮಿಂಗ್"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"ರೋಮಿಂಗ್‌ನಲ್ಲಿರುವಾಗ ಡೇಟಾ ಸೇವೆಗಳಿಗೆ ಸಂಪರ್ಕಿಸು"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ರೋಮಿಂಗ್‌ನಲ್ಲಿರುವಾಗ ಡೇಟಾ ಸೇವೆಗಳಿಗೆ ಸಂಪರ್ಕಿಸು"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"ಡೇಟಾ ರೋಮಿಂಗ್ ಅನ್ನು ಆಫ್‌ ಮಾಡಿರುವ ಸ್ಥಿತಿಯಲ್ಲಿ ನಿಮ್ಮ ಮುಖಪುಟ‌ ನೆಟ್‌ವರ್ಕ್‌ ಅನ್ನು ನೀವು ಇರಿಸಿರುವ ಕಾರಣ ನೀವು ಡೇಟಾ ಸಂಪರ್ಕವನ್ನು ಕಳೆದುಕೊಂಡಿರುವಿರಿ."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"ಡೇಟಾ ರೋಮಿಂಗ್ ಆಫ್ ಮಾಡಲಾಗಿದೆ. ಆನ್ ಮಾಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"ಮೊಬೈಲ್ ಡೇಟಾ ಸಂಪರ್ಕ ಕಡಿತಗೊಂಡಿದೆ"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"ನೀವು ಗಣನೀಯವಾಗಿ ಶುಲ್ಕಗಳನ್ನು ತೆರಬೇಕಾಗಬಹುದು."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ಬೆಲೆ ನಿಗದಿಗಾಗಿ ನಿಮ್ಮ ನೆಟ್‌ವರ್ಕ್ ಒದಗಿಸುವವರೊಂದಿಗೆ ಪರಿಶೀಲಿಸಿ."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ಡೇಟಾ ರೋಮಿಂಗ್ ಅನುಮತಿಸುವುದೇ?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"ಡೇಟಾ ಬಳಕೆ"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"ಅಪ್ಲಿಕೇಶನ್‌ ಡೇಟಾ ಬಳಕೆ"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> ಬಳಸಲಾದ ಮೊಬೈಲ್ ಡೇಟಾ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"ಸುಧಾರಿತ"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ವಾಹಕ"</string>
@@ -489,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"ಈ ಸಮಯದಲ್ಲಿ ಕರೆಯನ್ನು ಸೇರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಸಂದೇಶವನ್ನು ಕಳುಹಿಸುವ ಮೂಲಕ ನೀವು ಸಂಪರ್ಕಿಸಲು ಪ್ರಯತ್ನಿಸಬಹುದು."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"ಸೇವೆಯು ಬೆಂಬಲಿತವಾಗಿಲ್ಲ"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"ಕರೆಗಳನ್ನು ಬದಲಾಯಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"ಕರೆಯನ್ನು ಮುಂದುವರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"ಕರೆಯನ್ನು ಪ್ರತ್ಯೇಕಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"ವರ್ಗಾಯಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"ಕಾನ್ಫರೆನ್ಸ್ ಕರೆಗಳನ್ನು ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."</string>
@@ -503,6 +510,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"ತುರ್ತು ಕರೆ ಸಮಯದಲ್ಲಿ ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್‌ಗೆ ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ಇದು ತುರ್ತು ಸಂಖ್ಯೆಯಲ್ಲ."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ. ತುರ್ತು ಸಂಖ್ಯೆಯನ್ನು ಡಯಲ್ ಮಾಡಿ."</string>
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"ತುರ್ತು ಕರೆ ಮಾಡುವಿಕೆ ಲಭ್ಯವಿಲ್ಲ"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ಡಯಲ್‌ ಮಾಡಲು ಕೀಬೋರ್ಡ್‌ ಬಳಸಿ"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ಹೋಲ್ಡ್‌‌ ಮಾಡು"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ಮುಕ್ತಾಯ"</string>
@@ -523,8 +531,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"ಸಂಪರ್ಕ ಆಮದು ಮಾಡುವಲ್ಲಿ ವಿಫಲವಾಗಿದೆ"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"ಕೇಳುವಿಕೆ ಸಾಧನಗಳು"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"ಶ್ರವಣ ಸಾಧನ ಹೊಂದಾಣಿಕೆಯನ್ನು ಆನ್‌ ಮಾಡಿ"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"RTT ಆನ್‌ ಅಥವಾ ಆಫ್‌ ಮಾಡಿ"</string>
+    <string name="rtt_mode_title" msgid="6954652435543570121">"ನೈಜ-ಸಮಯ ಪಠ್ಯ (RTT) ಕರೆ"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"ಧ್ವನಿ ಕರೆಯ ಒಳಗೆ ಸಂದೇಶ ಕಳುಹಿಸುವಿಕೆಗೆ ಅನುಮತಿಸಿ"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"ಕಿವುಡರು, ಆಲಿಸುವಿಕೆಯ ದೋಷಗಳನ್ನು ಹೊಂದಿದವರು, ಮಾತನಾಡುವಿಕೆಯಲ್ಲಿ ದೋಷಗಳನ್ನು ಹೊಂದಿದವರು ಅಥವಾ ಧ್ವನಿ ಮೀರಿ ಬೇರೆ ರೀತಿಯಲ್ಲಿ ಕರೆ ಮಾಡಲು ಕಠಿಣರಾಗಿರುವವರಿಗೆ RTT ಮೋಡ್ ಸಹಾಯ ಮಾಡುತ್ತದೆ.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ&lt;/a&gt;\n   &lt;br&gt;&lt;br&gt; - RTT ಕರೆಗಳನ್ನು ಸಂದೇಶ ಪ್ರತಿಲಿಪಿಗಳಂತೆ ಉಳಿಸಲಾಗಿದೆ \n    &lt;br&gt; - ವೀಡಿಯೊ ಕರೆಗಳಿಗೆ RTT ಲಭ್ಯವಿಲ್ಲ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ಆಫ್"</item>
     <item msgid="3971695875449640648">"TTY ಪೂರ್ಣ"</item>
@@ -637,58 +646,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ಡೇಟಾ ಸೇರಿಸಿ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ರದ್ದುಮಾಡಿ"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"ಕರೆ ಅಂತ್ಯಗೊಂಡಿದೆ"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"ರೇಡಿಯೋ ಆಫ್ ಮಾಡಿ"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"ಯಾವುದೇ ಸಿಮ್‌ ಇಲ್ಲ ಅಥವಾ ಸಿಮ್ ಕಾರ್ಡ್ ದೋಷ"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಆನ್ ಆಗಿದೆ"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"ಸಿಮ್ ಕಾರ್ಡ್ ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"ಮೊಬೈಲ್ ನೆಟ್‌ವರ್ಕ್ ಲಭ್ಯವಿಲ್ಲ"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"ನಿಯೋಜಿಸದಿರುವ (ಹಂಚದ) ಸಂಖ್ಯೆ"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"ಗಮ್ಯಸ್ಥಾನಕ್ಕೆ ಯಾವುದೇ ಮಾರ್ಗವಿಲ್ಲ"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"ಚಾನಲ್ ಅನ್ನು ಅಂಗೀಕರಿಸಿಲ್ಲ"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"ಆಪರೇಟರ್ ಬಾರಿಂಗ್‌ ಅನ್ನು ಪತ್ತೆ ಹಚ್ಚುತ್ತದೆ"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"ಸಾಮಾನ್ಯ ಕರೆಯನ್ನು ತೆರವುಗೊಳಿಸಲಾಗುತ್ತಿದೆ"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"ನೀವು ಡಯಲ್‌ ಮಾಡಲು ಪ್ರಯತ್ನಿಸುತ್ತಿರುವ ಫೋನ್‌ ಸಂಖ್ಯೆಯು ತಪ್ಪಾಗಿದೆ. ದೋಷ ಕೋಡ್‌ 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 16."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"ಬಳಕೆದಾರರು ಕಾರ್ಯನಿರತರಾಗಿದ್ದಾರೆ"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"ಯಾವುದೇ ಬಳಕೆದಾರರು ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತಿಲ್ಲ"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"ಬಳಕೆದಾರರನ್ನು ಎಚ್ಚರಿಸುವುದು, ಯಾವುದೇ ಉತ್ತರವಿಲ್ಲ"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"ಬಳಕೆದಾರರು ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತಿಲ್ಲ"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 19."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"ಕರೆಯನ್ನು ತಿರಸ್ಕರಿಸಲಾಗಿದೆ"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"ಸಂಖ್ಯೆಯನ್ನು ಬದಲಾಯಿಸಲಾಗಿದೆ"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"ಮುಂಗಡ-ಎಂಪ್ಷನ್"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"ಆಯ್ಕೆ ಆಗದಿರುವ ಬಳಕೆದಾರರನ್ನು ತೆರವುಗೊಳಿಸಲಾಗುತ್ತಿದೆ"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"ಗಮ್ಯಸ್ಥಾನವು ಆದೇಶವನ್ನು ಹೊಂದಿಲ್ಲ"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 27."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"ಅಮಾನ್ಯ ಸಂಖ್ಯೆ ಸ್ವರೂಪ (ಅಪೂರ್ಣ ಸಂಖ್ಯೆ)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"ಸೌಲಭ್ಯಗಳನ್ನು ತಿರಸ್ಕರಿಸಲಾಗಿದೆ"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"STATUS ENQUIRY ಗೆ ಪ್ರತಿಕ್ರಿಯಿಸಿ"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"ಸಾಮಾನ್ಯ, ನಿರ್ದಿಷ್ಟಪಡಿಸದ"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"ಯಾವುದೇ ಸರ್ಕ್ಯೂಟ್/ಚಾನಲ್ ಲಭ್ಯವಿಲ್ಲ"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"ನೆಟ್‌ವರ್ಕ್‌ ಆದೇಶವನ್ನು ಹೊಂದಿಲ್ಲ"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"ತಾತ್ಕಾಲಿಕ ವೈಫಲ್ಯ"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"ಸಲಕರಣೆ ದಟ್ಟಣೆಯನ್ನು ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"ಪ್ರವೇಶ ಮಾಹಿತಿಯನ್ನು ತ್ಯಜಿಸಲಾಗಿದೆ"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"ವಿನಂತಿಸಿದ ಸರ್ಕ್ಯೂಟ್ / ಚಾನಲ್ ಲಭ್ಯವಿಲ್ಲ"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"ಸಂಪನ್ಮೂಲಗಳು ಲಭ್ಯವಿಲ್ಲ, ನಿರ್ದಿಷ್ಟಪಡಿಸಲಾಗಿಲ್ಲ"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"ಸೇವೆಯ ಗುಣಮಟ್ಟ ಲಭ್ಯವಿಲ್ಲ"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"ವಿನಂತಿಸಿದ ಸೌಲಭ್ಯವನ್ನು ಸಬ್‌ಸ್ಕ್ರೈಬ್ ಮಾಡಲಾಗಿದೆ"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"CUG ಒಳಗೆ ಒಳಬರುವ ಕರೆಗಳನ್ನು ತಡೆಹಿಡಿಯಲಾಗಿದೆ"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"ಬೇರರ್ ಸಾಮರ್ಥ್ಯವನ್ನು ದೃಢೀಕರಿಸಿಲ್ಲ"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"ಬೇರರ್ ಸಾಮರ್ಥ್ಯವು ಪ್ರಸ್ತುತ ಲಭ್ಯವಿಲ್ಲ"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"ಸೇವೆ ಅಥವಾ ಆಯ್ಕೆ ಲಭ್ಯವಿಲ್ಲ, ನಿರ್ದಿಷ್ಟಪಡಿಸಲಾಗಿಲ್ಲ"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"ಬೇರರ್ ಸೇವೆಯನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸಿಲ್ಲ"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM ACMmax ಗೆ ಸಮ ಅಥವಾ ಅದಕ್ಕಿಂತ ಹೆಚ್ಚು"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"ವಿನಂತಿಸಿದ ಸೌಲಭ್ಯಗಳು ಅನುಷ್ಠಾನಗೊಂಡಿಲ್ಲ"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"ನಿರ್ಬಂಧಿತ ಡಿಜಿಟಲ್ ಮಾಹಿತಿ ಬೇರರ್ ಸಾಮರ್ಥ್ಯ ಮಾತ್ರ ಲಭ್ಯವಿದೆ"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"ಸೇವೆ ಅಥವಾ ಆಯ್ಕೆ ಅನುಷ್ಠಾನಗೊಳಿಸಿಲ್ಲ, ನಿರ್ದಿಷ್ಟಪಡಿಸಲಾಗಿಲ್ಲ"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"ಅಮಾನ್ಯ ವಹಿವಾಟು ಗುರುತಿಸುವಿಕೆಯ ಮೌಲ್ಯ"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"ಬಳಕೆದಾರರು CUG ಯ ಸದಸ್ಯರಲ್ಲ"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"ಹೊಂದಿಕೆಯಾಗದ ಗಮ್ಯಸ್ಥಾನ"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"ಅಮಾನ್ಯ ಸಾರಿಗೆ ನೆಟ್‌ವರ್ಕ್‌ ಆಯ್ಕೆ"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"ಅರ್ಥಾತ್ ತಪ್ಪಾದ ಸಂದೇಶ"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"ಅಮಾನ್ಯ ಕಡ್ಡಾಯ ಮಾಹಿತಿ"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"ಸಂದೇಶದ ಪ್ರಕಾರವು ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ ಅಥವಾ ಅನುಷ್ಠಾನಗೊಂಡಿಲ್ಲ"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"ಸಂದೇಶ ಪ್ರಕಾರವು ಪ್ರೊಟೊಕಾಲ್ ಸ್ಥಿತಿಯೊಂದಿಗೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"ಮಾಹಿತಿ ಅಂಶವು ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ ಅಥವಾ ಅನುಷ್ಠಾನಗೊಂಡಿಲ್ಲ"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"ಷರತ್ತುಬದ್ಧ IE ದೋಷ"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"ಪ್ರೊಟೊಕಾಲ್ ಸ್ಥಿತಿಯೊಂದಿಗೆ ಸಂದೇಶವು ಹೊಂದಾಣಿಕೆಯಾಗುವುದಿಲ್ಲ"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"ಮರುಪಡುವಿಕೆಯ ಮುಕ್ತಾಯ ಸಮಯ"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"ಪ್ರೊಟೊಕಾಲ್ ದೋಷ, ನಿರ್ದಿಷ್ಟಪಡಿಸಲಾಗದ್ದು"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"ಇಂಟರ್‌ವರ್ಕಿಂಗ್, ನಿರ್ದಿಷ್ಟಪಡಿಸಲಾಗದ್ದು"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೋಷ ಕೋಡ್ 127."</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"ಕರೆ ನಿಷೇಧಿಸುವಿಕೆ"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"ಆನ್"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"ಆಫ್"</string>

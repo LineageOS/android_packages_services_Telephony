@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Tilbagefører indstillinger …"</string>
     <string name="response_error" msgid="6674110501330139405">"Uventet svar fra netværk."</string>
     <string name="exception_error" msgid="7027667130619518211">"Fejl på netværk eller SIM-kort."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-anmodningen blev ændret til en DIAL-anmodning."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-anmodningen blev ændret til en USSD-anmodning."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-anmodningen blev ændret til en ny SS-anmodning."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS-anmodningen er ændret til en DIAL-anmodning."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS-anmodningen blev ændret til et almindeligt opkald"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS-anmodningen blev ændret til en USSD-anmodning"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Der blev ændret til en SS-anmodning"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-anmodningen blev ændret til et videoopkald"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Indstillingen Begrænset opkald i appen Opkald er aktiveret. Derfor fungerer nogle opkaldsfunktioner ikke."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Tænd radioen, inden du får vist disse indstillinger."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Tilgængelige netværk"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Søger..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Der blev ikke fundet nogen netværk."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Der opstod en fejl, mens der blev søgt efter netværk."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Der kunne ikke findes netværk. Prøv igen."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Registrerer på <xliff:g id="NETWORK">%s</xliff:g> ..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"Dit SIM-kort tillader ikke en forbindelse til dette netværk."</string>
     <string name="connect_later" msgid="2308119155752343975">"Der kan ikke oprettes forbindelse til dette netværk lige nu. Prøv igen senere."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Skift netværksdriftstilstand"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Foretrukken netværkstype"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(forbudt)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Vælg netværk"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Afbrudt"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Forbundet"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Forbindelsen oprettes…"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Der kunne ikke oprettes forbindelse"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA foretrækkes"</item>
     <item msgid="8442633436636425221">"Kun GSM"</item>
@@ -238,11 +243,12 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Opret forbindelse til datatjenester under roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Opret forbindelse til datatjenester under roaming"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Du har mistet dataforbindelsen, fordi du har forladt dit hjemmenetværk, og dataroaming er slået fra."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Dataroaming er deaktiveret. Tryk for at aktivere."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobildataforbindelsen blev afbrudt"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Du kan risikere at skulle betale høje gebyrer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakt din netværksudbyder for at få oplyst priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillade dataroaming?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Dataforbrug"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Appens dataforbrug"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brugt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avanceret"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilselskab"</string>
@@ -384,7 +390,7 @@
     <item msgid="6043847456049107742">"1"</item>
   </string-array>
     <string name="cdma_activate_device" msgid="3793805892364814518">"Aktivér enhed"</string>
-    <string name="cdma_lte_data_service" msgid="4255018217292548962">"Opsætning af datatjeneste"</string>
+    <string name="cdma_lte_data_service" msgid="4255018217292548962">"Konfiguration af datatjeneste"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"Indst. for mobilselskab"</string>
     <string name="fdn" msgid="7878832555095183202">"Numre til begrænset opkald"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"Begrænset opkald (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -411,8 +417,8 @@
     <string name="menu_add" msgid="1882023737425114762">"Tilføj kontakt"</string>
     <string name="menu_edit" msgid="7143003705504672374">"Rediger kontakt"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Slet kontakt"</string>
-    <string name="menu_dial" msgid="3223106222819685808">"Ring til kontaktperson"</string>
-    <string name="get_pin2" msgid="8204677063922225311">"Indtast PIN2-kode"</string>
+    <string name="menu_dial" msgid="3223106222819685808">"Ring til kontakt"</string>
+    <string name="get_pin2" msgid="8204677063922225311">"Angiv PIN2-kode"</string>
     <string name="name" msgid="7329028332786872378">"Navn"</string>
     <string name="number" msgid="7905950798349903858">"Nummer"</string>
     <string name="save" msgid="4094274636321939086">"Gem"</string>
@@ -441,7 +447,7 @@
     <string name="confirmPinLabel" msgid="257597715098070206">"Bekræft ny pinkode"</string>
     <string name="badPin" msgid="8955102849303984935">"Den gamle pinkode, du har indtastet, er forkert. Prøv igen."</string>
     <string name="mismatchPin" msgid="5923253370683071889">"PIN-koderne, som du har indtastet, stemmer ikke overens. Prøv igen."</string>
-    <string name="invalidPin" msgid="5981171102258684792">"Indtast en pinkode på mellem 4 og 8 tal."</string>
+    <string name="invalidPin" msgid="5981171102258684792">"Angiv en pinkode på mellem 4 og 8 tal."</string>
     <string name="disable_sim_pin" msgid="3419351358300716472">"Ryd SIM-kortets pinkode"</string>
     <string name="enable_sim_pin" msgid="4845145659651484248">"Indstil SIM-kortets pinkode"</string>
     <string name="enable_in_progress" msgid="3417917024688497010">"Pinkoden indstilles…"</string>
@@ -457,12 +463,12 @@
     <string name="badPuk2" msgid="7910064009531541708">"PUK-kode 2 er forkert. Prøv igen."</string>
     <string name="badPin2" msgid="6646896629970023109">"Gammel pinkode 2 er forkert. Prøv igen."</string>
     <string name="mismatchPin2" msgid="4177967478551851117">"De to pinkode 2 stemmer ikke overens. Prøv igen."</string>
-    <string name="invalidPin2" msgid="1757045131429105595">"Indtast en pinkode 2, som indeholder 4 til 8 cifre."</string>
-    <string name="invalidPuk2" msgid="7059081153334815973">"Indtast en PUK-kode 2, som indeholder 8 cifre."</string>
+    <string name="invalidPin2" msgid="1757045131429105595">"Angiv en pinkode 2, som indeholder 4 til 8 cifre."</string>
+    <string name="invalidPuk2" msgid="7059081153334815973">"Angiv en PUK-kode 2, som indeholder 8 cifre."</string>
     <string name="pin2_changed" msgid="3724522579945610956">"Pinkode 2 er opdateret"</string>
-    <string name="label_puk2_code" msgid="4688069961795341948">"Indtast PUK-kode 2"</string>
+    <string name="label_puk2_code" msgid="4688069961795341948">"Angiv PUK-kode 2"</string>
     <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"Forkert adgangskode. Pinkode 2 er nu blokeret. For at prøve igen skal du ændre pinkode 2."</string>
-    <string name="puk2_requested" msgid="5831015200030161434">"Forkert adgangskode. SIM-kortet er nu låst. Indtast PUK-kode 2."</string>
+    <string name="puk2_requested" msgid="5831015200030161434">"Forkert adgangskode. SIM-kortet er nu låst. Angiv PUK-kode 2."</string>
     <string name="puk2_blocked" msgid="3150263853077280049">"PUK2 er permanent blokeret."</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n"Du har <xliff:g id="NUMBER">%d</xliff:g> forsøg tilbage."</string>
     <string name="pin2_unblocked" msgid="7791600368153469078">"Pinkode 2 er ikke længere blokeret"</string>
@@ -490,11 +496,12 @@
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Ikke registreret på netværk."</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Mobilnetværket er ikke tilgængeligt."</string>
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"Mobilnetværk er ikke tilgængeligt. Opret forbindelse til et trådløst netværk for at foretage et opkald."</string>
-    <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Indtast et gyldigt nummer for at foretage et opkald."</string>
+    <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"Angiv et gyldigt nummer for at foretage et opkald."</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"Opkald mislykkedes."</string>
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Opkaldet kan ikke tilføjes lige nu. Du kan prøve at sende en besked i stedet."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Tjenesten er ikke understøttet"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Kan ikke skifte opkald."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Opkaldet kan ikke genoptages."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Kan ikke adskille opkald."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Kan ikke overføre."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Der kunne ikke oprettes mødeopkald."</string>
@@ -509,6 +516,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Flytilstand kan ikke slås til under et nødopkald."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Kan ikke ringe op. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> er ikke et alarmnummer."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Kan ikke ringe op. Ring til et alarmnummer."</string>
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Det er ikke muligt at foretage nødopkald"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Brug tastatur til at ringe op"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Hold"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Afslut"</string>
@@ -529,8 +537,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontaktpersonen kunne ikke importeres"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Høreapparater"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Slå høreapparatskompatibilitet til"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Slå RTT til eller fra"</string>
+    <string name="rtt_mode_title" msgid="6954652435543570121">"Opkald via sms i realtid"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Tillad afsendelse af sms-beskeder i et taleopkald"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"Sms i realtid hjælper personer, som er døve, hørehæmmede, talehandicappede, eller som har brug for mere end bare tale, med at foretage opkald.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Få flere oplysninger&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Opkald via sms i realtid gemmes som en beskedtransskription\n       &lt;br&gt; – Sms i realtid er ikke tilgængeligt til videoopkald"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY fra"</item>
     <item msgid="3971695875449640648">"Fuld TTY-tilstand"</item>
@@ -571,8 +580,8 @@
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Dataforbindelsen er deaktiveret"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"Der er ingen dataforbindelse før kl. <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="one">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen applikationer, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
-      <item quantity="other">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen applikationer, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
+      <item quantity="one">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen apps, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
+      <item quantity="other">Telefonen vil være i tilstanden Nødopkald i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Mens denne tilstand er aktiveret, kan du ikke bruge nogen apps, der kræver dataforbindelse. Vil du afslutte denne tilstand nu?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
       <item quantity="one">Den valgte handling er ikke tilgængelig i tilstanden Nødopkald. Telefonen vil være i denne tilstand i <xliff:g id="COUNT_1">%s</xliff:g> minutter. Vil du afslutte denne tilstand nu?</item>
@@ -588,9 +597,9 @@
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Ikke angivet&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Andre indstillinger for opkald"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"Opkald via <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="contactPhoto" msgid="4713193418046639466">"billede af kontaktperson"</string>
+    <string name="contactPhoto" msgid="4713193418046639466">"billede af kontakt"</string>
     <string name="goPrivate" msgid="865837794424530980">"gør privat"</string>
-    <string name="selectContact" msgid="781975788478987237">"vælg kontaktperson"</string>
+    <string name="selectContact" msgid="781975788478987237">"vælg kontakt"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Taleopkald understøttes ikke"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ring op"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuel telefonsvarer"</string>
@@ -643,58 +652,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"TILFØJ DATA"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ANNULLER"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Opkaldet er afsluttet"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radioen er slukket"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Der er intet SIM-kort, eller også er der opstået en fejl med SIM-kortet"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Flytilstand er slået til"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"Der er ikke adgang til SIM-kortet"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobilnetværket er ikke tilgængeligt"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Ikke-tildelt (ikke-allokeret) nummer"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Der kan ikke routes til destinationen"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanalen kan ikke accepteres"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operatøren har konstateret spærring"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Normal opkaldsrydning"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Der opstod et problem med det telefonnummer, du prøver at ringe til. Fejlkode 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"Opkaldet kunne ikke foretages. Fejlkode 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"Opkaldet kunne ikke foretages. Fejlkode 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"Opkaldet kunne ikke foretages. Fejlkode 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"Opkaldet kunne ikke foretages. Fejlkode 16."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Brugeren er optaget"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Der er ingen brugere, der svarer"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Brugeradvarsel, intet svar"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Brugeren svarer ikke"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"Opkaldet kunne ikke foretages. Fejlkode 19."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Opkaldet blev afvist"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Nummeret blev ændret"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Forhåndstømning"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Den ikke-valgte bruger blev ryddet"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Destinationen er ude af drift"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"Opkaldet kunne ikke foretages. Fejlkode 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"Opkaldet kunne ikke foretages. Fejlkode 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"Opkaldet kunne ikke foretages. Fejlkode 27."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Ugyldigt nummerformat (ufuldstændigt nummer)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Anlægget blev afvist"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Svar på STAUTSFORESPØRGSEL"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal, uspecificeret"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Der er ingen tilgængelige kredsløb/kanaler"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Netværket er ude af drift"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Midlertidig fejl"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Overbelastning på grund af skiftet udstyr"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Adgangsoplysningerne blev kasseret"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Anmodet kredsløb/kanal er ikke tilgængelig"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Ressourcerne er utilgængelige, uspecificeret"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Der er ingen oplysninger om kvaliteten af tjenesten"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Det anmodede anlæg er ikke tilmeldt"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Indgående opkald spærres i CUG"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Bærekapaciteten blev ikke autoriseret"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Bærekapaciteten er ikke aktuelt tilgængelig"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Tjenesten eller valgmuligheden er ikke tilgængelig, uspecificeret"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Bærertjenesten er ikke implementeret"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM er lig med eller større end maks. ACM"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Det anmodede anlæg er ikke implementeret"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Det er kun begrænsede oplysninger om bæringskapacitet, der er tilgængelige"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Tjenesten eller valgmuligheden er ikke implementeret, uspecificeret"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Ugyldig værdi for transaktions-id"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Brugeren er ikke medlem af CUG"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Destinationen er inkompatibel"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Ugyldigt valg af transitnetværk"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Semantisk forkert esked"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Ugyldige obligatoriske oplysninger"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Beskedtypen er ikkeeksisterende eller ikke implementeret"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Beskedtypen er ikke kompatibel med protokoltilstanden"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Informationselementet er ikkeeksisterende eller ikke implementeret"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Betinget IE-fejl"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Beskeden er ikke kompatibel med protokoltilstanden"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Gendannelse ved udløb af timer"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokolfejl, uspecificeret"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Gensidig påvirkning, ikke angivet"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"Opkaldet kunne ikke foretages. Fejlkode 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Opkaldet kunne ikke foretages. Fejlkode 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"Opkaldet kunne ikke foretages. Fejlkode 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"Opkaldet kunne ikke foretages. Fejlkode 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"Opkaldet kunne ikke foretages. Fejlkode 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"Opkaldet kunne ikke foretages. Fejlkode 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"Opkaldet kunne ikke foretages. Fejlkode 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"Opkaldet kunne ikke foretages. Fejlkode 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"Opkaldet kunne ikke foretages. Fejlkode 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"Opkaldet kunne ikke foretages. Fejlkode 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"Opkaldet kunne ikke foretages. Fejlkode 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"Opkaldet kunne ikke foretages. Fejlkode 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"Opkaldet kunne ikke foretages. Fejlkode 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"Opkaldet kunne ikke foretages. Fejlkode 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"Opkaldet kunne ikke foretages. Fejlkode 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"Opkaldet kunne ikke foretages. Fejlkode 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"Opkaldet kunne ikke foretages. Fejlkode 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"Opkaldet kunne ikke foretages. Fejlkode 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"Opkaldet kunne ikke foretages. Fejlkode 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"Opkaldet kunne ikke foretages. Fejlkode 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"Opkaldet kunne ikke foretages. Fejlkode 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"Opkaldet kunne ikke foretages. Fejlkode 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"Opkaldet kunne ikke foretages. Fejlkode 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"Opkaldet kunne ikke foretages. Fejlkode 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"Opkaldet kunne ikke foretages. Fejlkode 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"Opkaldet kunne ikke foretages. Fejlkode 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"Opkaldet kunne ikke foretages. Fejlkode 96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"Opkaldet kunne ikke foretages. Fejlkode 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"Opkaldet kunne ikke foretages. Fejlkode 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"Opkaldet kunne ikke foretages. Fejlkode 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Opkaldet kunne ikke foretages. Fejlkode 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Opkaldet kunne ikke foretages. Fejlkode 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Opkaldet kunne ikke foretages. Fejlkode 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Opkaldet kunne ikke foretages. Fejlkode 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Opkaldet kunne ikke foretages. Fejlkode 127."</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Opkaldsspærring"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Til"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Fra"</string>

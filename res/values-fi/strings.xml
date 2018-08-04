@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Palautetaan asetuksia…"</string>
     <string name="response_error" msgid="6674110501330139405">"Odottamaton vastaus verkosta."</string>
     <string name="exception_error" msgid="7027667130619518211">"Verkko- tai SIM-korttivirhe."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-pyyntö muutettiin DIAL-pyynnöksi."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-pyyntö muutettiin USSD-pyynnöksi."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-pyyntö muutettiin uudeksi SS-pyynnöksi."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS-pyyntö muutettiin Video DIAL ‑pyynnöksi."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS-pyyntö vaihdettu tavalliseksi puheluksi"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS-pyyntö vaihdettu USSD-pyynnöksi"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Vaihdettu uudeksi SS-pyynnöksi"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-pyyntö vaihdettu videopuheluksi"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Puhelimesi sovelluksen sallitut numerot -toiminto on käytössä. Osa puheluihin liittyvistä ominaisuuksista ei toimi."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Käynnistä radio ennen näiden asetuksien tarkastelua."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Käytettävissä olevat verkot"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Haetaan…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Ei verkkoja."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Virhe haettaessa verkkoja."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Verkkoja ei löytynyt. Yritä uudelleen."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Rekisteröidään verkkoon <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"SIM-kortti ei anna muodostaa yhteyttä tähän verkkoon."</string>
     <string name="connect_later" msgid="2308119155752343975">"Tähän verkkoon ei saa yhteyttä juuri nyt. Yritä myöhemmin uudelleen."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Vaihda verkon käyttötilaa"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Ensisijainen verkko"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(kielletty)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Valitse verkko"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Yhteys katkaistu"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Yhdistetty"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Yhdistetään…"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Yhdistäminen epäonnistui"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Ensisijaisesti GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"Vain GSM"</item>
@@ -238,11 +243,12 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Yhdistä verkkoon roaming-tilassa."</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Yhdistä verkkoon roaming-tilassa."</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Menetit verkkoyhteyden, koska poistuit kotiverkkosi alueelta eikä tiedonsiirron roaming-tila ole käytössä."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Roaming ei ole käytössä. Ota käyttöön napauttamalla."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobiilidatayhteys katkesi"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Siitä voi aiheutua huomattavia kuluja."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Pyydä hintatiedot verkkopalvelun tarjoajaltasi."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Sallitaanko tiedonsiirto roaming-tilassa?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Datan käyttö"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Sovelluksen datan käyttö"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobiilidataa käytetty <xliff:g id="ID_2">%2$s</xliff:g>."</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Lisäasetukset"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operaattori"</string>
@@ -493,6 +499,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Puhelua ei voi lisätä juuri nyt. Voit sen sijaan yrittää lähettää viestin."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Palvelua ei tueta"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Puhelua ei voi vaihtaa."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Puhelua ei voi jatkaa."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Puhelua ei voi erottaa."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Puhelua ei voi siirtää."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Puhelujen yhdistäminen epäonnistui."</string>
@@ -507,6 +514,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Lentokonetilaa ei voi ottaa käyttöön hätäpuhelun aikana."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Puhelua ei voi soittaa. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ei ole hätänumero."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Puhelua ei voi soittaa. Valitse hätänumero."</string>
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Hätäpuhelut eivät ole käytettävissä"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Valitse numero näppäimistöstä"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Pitoon"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Loppu"</string>
@@ -527,8 +535,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontaktin tuominen epäonnistui"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Kuulolaitteet"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Ota kuulolaitteen yhteensopivuustoiminto käyttöön"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"Reaaliaikaiset tekstipuhelut"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Reaaliaikaiset tekstipuhelut käyttöön tai pois käytöstä"</string>
+    <string name="rtt_mode_title" msgid="6954652435543570121">"RTT-puhelu (puhelusta lähetettävä teksti)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Salli viestit äänipuheluissa"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT-toiminto auttaa kuuroja sekä käyttäjiä, joilla on kuulo‑ tai puhehäiriöitä tai jotka tarvitsevat muuta tukea pelkän puheen lisäksi.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lisätietoja&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT-puhelut tallennetaan transkriptioviestinä.\n       &lt;br&gt; – RTT ei ole käytettävissä videopuheluissa."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY pois käytöstä"</item>
     <item msgid="3971695875449640648">"TTY täynnä"</item>
@@ -641,58 +650,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"LISÄÄ DATAPAKETTI"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"PERUUTA"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Puhelu lopetettu"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radio pois käytöstä"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Ei SIM-korttia tai SIM-kortin virhe"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Lentokonetila on käytössä."</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"SIM-kortin käyttö epäonnistui."</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobiiliverkko ei ole käytettävissä"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Määrittämätön (kohdistamaton) numero"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Ei reittiä kohteeseen"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanava ei ole hyväksytty"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operaattorin määrittämä esto"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Puhelun normaali lopetus"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Puhelinnumerossa, johon yritit soittaa, havaittiin virhe. Virhekoodi 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"Soittaminen epäonnistui. Virhekoodi 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"Soittaminen epäonnistui. Virhekoodi 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"Soittaminen epäonnistui. Virhekoodi 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"Soittaminen epäonnistui. Virhekoodi 16."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Käyttäjä varattu"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Ei käyttäjän vastausta"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Käyttäjän varoitus, ei vastausta"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Käyttäjä ei vastaa"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"Soittaminen epäonnistui. Virhekoodi 19."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Puhelu hylätty"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Numero muuttunut"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Keskeytys"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Ei käyttäjän valitsemaa lopetusta"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Kohde on poistettu käytöstä"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"Soittaminen epäonnistui. Virhekoodi 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"Soittaminen epäonnistui. Virhekoodi 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"Soittaminen epäonnistui. Virhekoodi 27."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Virheellinen numeromuoto (puutteellinen numero)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Palvelu hylätty"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Vastaus TILAKYSELYYN"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normaali, määrittelemätön"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Yhtään piiriä/kanavaa ei ole käytettävissä"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Verkko pois käytöstä"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Väliaikainen vika"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Siirtolaitteiden ylikuormitus"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Pääsytiedot hylätty"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Pyydetty piiri/kanava ei ole käytettävissä"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Resurssit eivät ole käytettävissä, määrittelemätön"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Palvelun laatu ei ole käytettävissä"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Pyydettyä määritystä ei ole tilattu"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Saapuvat puhelut estetty CUG:ssa"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Kanavan ominaisuus ei ole sallittu"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Kanavan ominaisuus ei ole tällä hetkellä käytettävissä"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Palvelu tai asetus ei ole käytettävissä, määrittelemätön"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Kanavapalvelua ei ole otettu käyttöön"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM on sama tai suurempi kun ACMmax"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Pyydettyä määritystä ei ole otettu käyttöön"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Vain rajoitettu digitaalisen tiedon kanavaominaisuus on käytettävissä"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Palvelua tai asetusta ei ole otettu käyttöön, määrittelemätön"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Virheellinen tapahtuman tunnistearvo"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Käyttäjä ei ole CUG:n jäsen"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Yhteensopimaton kohde"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Virheellinen siirtoverkon valinta"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Semanttisesti virheellinen viesti"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Virheelliset pakolliset tiedot"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Viestin tyyppiä ei ole tai sitä ei ole otettu käyttöön"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Viestin tyyppi ei ole yhteensopiva protokollan tilan kanssa"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Tietoelementtiä ei ole tai sitä ei ole otettu käyttöön"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Ehdollinen IE-virhe"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Viesti ei ole yhteensopiva protokollan tilan kanssa"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Palauttaminen ajastetusta vanhenemisesta"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokollavirhe, määrittelemätön"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Yhteydessä, määrittelemätön"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"Soittaminen epäonnistui. Virhekoodi 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Soittaminen epäonnistui. Virhekoodi 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"Soittaminen epäonnistui. Virhekoodi 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"Soittaminen epäonnistui. Virhekoodi 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"Soittaminen epäonnistui. Virhekoodi 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"Soittaminen epäonnistui. Virhekoodi 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"Soittaminen epäonnistui. Virhekoodi 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"Soittaminen epäonnistui. Virhekoodi 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"Soittaminen epäonnistui. Virhekoodi 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"Soittaminen epäonnistui. Virhekoodi 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"Soittaminen epäonnistui. Virhekoodi 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"Soittaminen epäonnistui. Virhekoodi 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"Soittaminen epäonnistui. Virhekoodi 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"Soittaminen epäonnistui. Virhekoodi 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"Soittaminen epäonnistui. Virhekoodi 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"Soittaminen epäonnistui. Virhekoodi 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"Soittaminen epäonnistui. Virhekoodi 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"Soittaminen epäonnistui. Virhekoodi 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"Soittaminen epäonnistui. Virhekoodi 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"Soittaminen epäonnistui. Virhekoodi 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"Soittaminen epäonnistui. Virhekoodi 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"Soittaminen epäonnistui. Virhekoodi 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"Soittaminen epäonnistui. Virhekoodi 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"Soittaminen epäonnistui. Virhekoodi 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"Soittaminen epäonnistui. Virhekoodi 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"Soittaminen epäonnistui. Virhekoodi 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"Soittaminen epäonnistui. Virhekoodi 96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"Soittaminen epäonnistui. Virhekoodi 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"Soittaminen epäonnistui. Virhekoodi 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"Soittaminen epäonnistui. Virhekoodi 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Soittaminen epäonnistui. Virhekoodi 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Soittaminen epäonnistui. Virhekoodi 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Soittaminen epäonnistui. Virhekoodi 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Soittaminen epäonnistui. Virhekoodi 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Soittaminen epäonnistui. Virhekoodi 127."</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Puhelujen esto"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Käytössä"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Pois käytöstä"</string>

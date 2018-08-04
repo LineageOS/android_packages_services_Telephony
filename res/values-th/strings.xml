@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ข้อมูลมือถือ"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"เน็ตมือถือ"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"บริการโทรศัพท์"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"โปรแกรมโทรออกฉุกเฉิน"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"โทรศัพท์"</string>
@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"กำลังย้อนกลับการตั้งค่า…"</string>
     <string name="response_error" msgid="6674110501330139405">"พบการตอบกลับที่ไม่คาดหมายจากเครือข่าย"</string>
     <string name="exception_error" msgid="7027667130619518211">"ข้อผิดพลาดของเครือข่ายหรือซิมการ์ด"</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"คำขอ SS ที่แก้ไขเป็นคำขอ DIAL"</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"คำขอ SS ที่แก้ไขเป็นคำขอ USSD"</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"คำขอ SS ที่แก้ไขเป็นคำขอ SS ใหม่"</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"คำขอ SS ที่แก้ไขเป็นคำขอ Video DIAL"</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"คำขอ SS เปลี่ยนเป็นการโทรปกติแล้ว"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"คำขอ SS เปลี่ยนเป็นคำขอ USSD แล้ว"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"เปลี่ยนเป็นคำขอ SS ใหม่แล้ว"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"คำขอ SS เปลี่ยนเป็นวิดีโอคอลแล้ว"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"เนื่องจากมีการเปิดใช้การตั้งค่าการจำกัดหมายเลขโทรออกของแอปโทรศัพท์ จึงเป็นผลให้ฟีเจอร์ที่เกี่ยวกับการโทรบางอย่างไม่ทำงาน"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"เปิดวิทยุก่อนดูการตั้งค่าเหล่านี้"</string>
     <string name="close_dialog" msgid="2365884406356986917">"ตกลง"</string>
@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"เครือข่ายที่ใช้งานได้"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"กำลังค้นหา…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"ไม่พบเครือข่าย"</string>
-    <string name="network_query_error" msgid="6828516148953325006">"พบข้อผิดพลาดขณะค้นหาเครือข่าย"</string>
+    <string name="network_query_error" msgid="8466081377231178298">"ไม่พบเครือข่าย ลองอีกครั้ง"</string>
     <string name="register_on_network" msgid="9055203954040805084">"กำลังลงทะเบียนบน <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"ซิมการ์ดของคุณไม่อนุญาตให้เชื่อมต่อกับเครือข่ายนี้"</string>
     <string name="connect_later" msgid="2308119155752343975">"ไม่สามารถเชื่อมต่อเครือข่ายนี้ได้ในขณะนี้ ลองอีกครั้งในภายหลัง"</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"เปลี่ยนโหมดปฏิบัติการของเครือข่าย"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ประเภทเครือข่ายที่ต้องการ"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(ห้ามใช้)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"เลือกเครือข่าย"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"เลิกเชื่อมต่อแล้ว"</string>
+    <string name="network_connected" msgid="1288589103624338857">"เชื่อมต่อแล้ว"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"กำลังเชื่อมต่อ..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"เชื่อมต่อไม่ได้"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"ต้องการ GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"GSM เท่านั้น"</item>
@@ -238,17 +243,18 @@
     <string name="roaming" msgid="7894878421600247140">"โรมมิ่ง"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"เชื่อมต่ออินเทอร์เน็ตมือถือขณะโรมมิ่ง"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"เชื่อมต่ออินเทอร์เน็ตมือถือขณะโรมมิ่ง"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"การเชื่อมต่อข้อมูลของคุณหายไปเนื่องจากคุณออกจากเครือข่ายที่บ้านโดยปิดการโรมมิ่งข้อมูลไว้"</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"การโรมมิ่งข้อมูลปิดอยู่ แตะเพื่อเปิด"</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"การเชื่อมต่อข้อมูลผ่านมือถือถูกตัด"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"คุณอาจต้องเสียค่าใช้จ่ายมาก"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"โปรดสอบถามผู้ให้บริการเครือข่ายสำหรับข้อมูลเกี่ยวกับราคา"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"อนุญาตการโรมมิ่งอินเทอร์เน็ตไหม"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"ปริมาณการใช้อินเทอร์เน็ต"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"การใช้อินเทอร์เน็ตของแอป"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"เน็ตมือถือ <xliff:g id="ID_1">%1$s</xliff:g> ที่ใช้ระหว่าง <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"ขั้นสูง"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ผู้ให้บริการ"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"ผู้ให้บริการ, eSIM, ซิม, eUICC, เปลี่ยนผู้ให้บริการ, เพิ่มผู้ให้บริการ"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="4661165467914727157">"อินเทอร์เน็ตมือถือ"</string>
+    <string name="mobile_data_settings_title" msgid="4661165467914727157">"เน็ตมือถือ"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"เข้าถึงข้อมูลโดยใช้เครือข่ายมือถือ"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"ปิดเน็ตมือถือไหม"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"ต้องเลือก"</string>
@@ -489,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"เพิ่มการโทรไม่ได้ในขณะนี้ คุณสามารถพยายามติดต่อได้โดยการส่งข้อความ"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"บริการนี้ไม่ได้รับการสนับสนุน"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"ไม่สามารถสลับสายได้"</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"โทรต่อไม่ได้"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"ไม่สามารถแยกสายได้"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"ไม่สามารถโอนได้"</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"ประชุมทางโทรศัพท์ไม่ได้"</string>
@@ -503,6 +510,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"ไม่สามารถเข้าสู่โหมดบนเครื่องบินระหว่างการโทรหมายเลขฉุกเฉินได้"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"ไม่สามารถโทรได้ <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ไม่ใช่หมายเลขฉุกเฉิน"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ไม่สามารถโทรออก โทรหมายเลขฉุกเฉิน"</string>
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"หมายเลขฉุกเฉินไม่พร้อมใช้งาน"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ใช้แป้นพิมพ์กดหมายเลขโทรศัพท์"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"พักสาย"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"สิ้นสุด"</string>
@@ -523,8 +531,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"ไม่สามารถนำเข้ารายชื่อติดต่อ"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"เครื่องช่วยฟัง"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"เปิดการช่วยฟัง"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"เปิดหรือปิด RTT"</string>
+    <string name="rtt_mode_title" msgid="6954652435543570121">"การโทรระบบข้อความแบบเรียลไทม์ (RTT)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"อนุญาตให้รับส่งข้อความระหว่างการโทรด้วยเสียง"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT ช่วยเหลือผู้โทรที่หูหนวก ได้ยินไม่ชัด มีความบกพร่องในการพูด หรือต้องการการสื่อสารที่นอกเหนือจากเสียงพูด&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ดูข้อมูลเพิ่มเติม&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - สาย RTT จะบันทึกในรูปแบบการถอดเสียงเป็นข้อความ\n       &lt;br&gt; - RTT ใช้ไม่ได้สำหรับวิดีโอคอล"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"ปิด TTY"</item>
     <item msgid="3971695875449640648">"TTY เต็ม"</item>
@@ -637,58 +646,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"เพิ่มข้อมูล"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ยกเลิก"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"วางสายแล้ว"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"ปิดวิทยุ"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"ไม่มีซิมการ์ดหรือซิมการ์ดผิดปกติ"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"โหมดบนเครื่องบินเปิดอยู่"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"เข้าถึงซิมการ์ดไม่ได้"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"เครือข่ายมือถือใช้งานไม่ได้"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"หมายเลขที่ไม่ได้กำหนด (ไม่ได้จัดสรร)"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"ไม่มีเส้นทางไปยังปลายทาง"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"ช่องสัญญาณไม่เป็นที่ยอมรับ"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"ผู้ให้บริการระงับการใช้งาน"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"กำลังล้างข้อมูลการโทรปกติ"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"เกิดปัญหากับหมายเลขโทรศัพท์ที่คุณต้องการโทรหา รหัสข้อผิดพลาด 1"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 3"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 6"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 8"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 16"</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"สายผู้ใช้ไม่ว่าง"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"ผู้ใช้ไม่รับสาย"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"กำลังแจ้งเตือนผู้ใช้ แต่ไม่มีการรับสาย"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"ผู้ใช้ไม่รับสาย"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 19"</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"สายถูกตัด"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"เปลี่ยนหมายเลขแล้ว"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"การจองใช้สิทธิ์"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"กำลังล้างข้อมูลผู้ใช้ที่ไม่ได้เลือกไว้"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"ปลายทางขัดข้อง"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 25"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 26"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 27"</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"รูปแบบหมายเลขไม่ถูกต้อง (หมายเลขไม่สมบูรณ์)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"บริการถูกตัดสาย"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"ตอบกลับการสอบถามสถานะ"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"ปกติ (ไม่ระบุ)"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"ไม่มีวงจร/แชแนลพร้อมใช้งาน"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"เครือข่ายขัดข้อง"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"ใช้งานไม่ได้ชั่วคราว"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"กำลังสลับความคับคั่งของอุปกรณ์"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"ระบบยกเลิกข้อมูลการเข้าถึง"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"วงจร/แชแนลที่ร้องขอไม่พร้อมใช้งาน"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"ทรัพยากรไม่พร้อมใช้งาน (ไม่ระบุ)"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"คุณภาพของบริการไม่พร้อมใช้งาน"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"ยังไม่ได้สมัครใช้บริการที่ร้องขอ"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"ระงับสายเรียกเข้าภายใน CUG"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"ความสามารถของ Bearer ไม่ได้รับอนุญาต"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"ความสามารถของ Bearer ไม่พร้อมใช้งานในขณะนี้"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"บริการหรือตัวเลือกไม่พร้อมใช้งาน (ไม่ระบุ)"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"บริการ Bearer ยังใช้ไม่ได้"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM เท่ากับหรือมากกว่า ACMmax"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"บริการที่ร้องขอยังใช้ไม่ได้"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"ความสามารถของ Bearer สำหรับข้อมูลดิจิทัลพร้อมใช้งานแบบจำกัดเท่านั้น"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"บริการหรือตัวเลือกยังใช้ไม่ได้ (ไม่ระบุ)"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"ค่าตัวระบุธุรกรรมไม่ถูกต้อง"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"ผู้ใช้ไม่ใช่สมาชิกของ CUG"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"ปลายทางไม่สามารถใช้ร่วมกัน"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"การเลือกเครือข่ายเชื่อมต่อไม่ถูกต้อง"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"ความหมายของข้อความไม่ถูกต้อง"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"ข้อมูลที่ต้องระบุไม่ถูกต้อง"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"ประเภทข้อความไม่มีอยู่หรือยังใช้ไม่ได้"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"ประเภทข้อความใช้กับสถานะโปรโตคอลไม่ได้"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"องค์ประกอบข้อมูลไม่มีอยู่หรือยังใช้ไม่ได้"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"IE เกิดข้อผิดพลาดตามเงื่อนไข"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"ข้อความใช้กับสถานะโปรโตคอลไม่ได้"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"กู้คืนเมื่อครบกำหนดตัวจับเวลา"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"ข้อผิดพลาดของโปรโตคอล (ไม่ระบุ)"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"กำลังเชื่อมต่อเครือข่าย (ไม่ระบุ)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 29"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 30"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 31"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 34"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 38"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 41"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 42"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 43"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 44"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 47"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 49"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 50"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 55"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 57"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 58"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 63"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 65"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 68"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 69"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 70"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 79"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 81"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 87"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 88"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 91"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 95"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 96"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 97"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 98"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 99"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 100"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 01"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 02"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 11"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"โทรไม่สำเร็จ รหัสข้อผิดพลาด 27"</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"ระงับการโทร"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"เปิด"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"ปิด"</string>

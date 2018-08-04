@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Возврат к предыдущим настройкам…"</string>
     <string name="response_error" msgid="6674110501330139405">"Неожиданный отклик сети."</string>
     <string name="exception_error" msgid="7027667130619518211">"Ошибка сети или SIM-карты."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-запрос преобразован в DIAL-запрос."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-запрос преобразован в USSD-запрос."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-запрос преобразован в новый SS-запрос."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS-запрос преобразован в DIAL-запрос (видео)."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS-запрос преобразован в обычный вызов"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS-запрос преобразован в USSD-запрос"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Преобразовано в SS-запрос"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-запрос преобразован в видеовызов"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Разрешенные номера в приложении \"Телефон\" включены. В результате некоторые функции вызовов недоступны."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Чтобы увидеть настройки, включите приемопередатчик."</string>
     <string name="close_dialog" msgid="2365884406356986917">"ОК"</string>
@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Доступные сети"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Поиск…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Сети не найдены."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Ошибка поиска сетей."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Не удалось найти сети. Повторите попытку."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Регистрация в сети <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"Ваша SIM-карта не поддерживает подключение к этой сети."</string>
     <string name="connect_later" msgid="2308119155752343975">"Не удалось подключиться к сети. Повторите попытку позже."</string>
@@ -176,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Изменить режим работы сети"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Тип сети"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(доступ запрещен)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Выбрать сеть"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Подключения нет"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Подключено"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Подключение…"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Не удалось подключиться к сети"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA (предпочтительный режим)"</item>
     <item msgid="8442633436636425221">"Только GSM"</item>
@@ -238,11 +243,12 @@
     <string name="roaming" msgid="7894878421600247140">"Роуминг"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Подключаться к службам передачи данных в роуминге"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Подключаться к службам передачи данных в роуминге"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Мобильный Интернет в роуминге отключен. Вы можете включить интернет-роуминг в настройках."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Интернет-роуминг выключен. Нажмите, чтобы его включить."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Отсутствует подключение к мобильной сети"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Возможны значительные расходы."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Информацию о тарифах вы можете получить у интернет-провайдера."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Разрешить интернет-роуминг?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Передача данных"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Трафик приложения"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Объем мобильного трафика за период <xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Дополнительные настройки"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Оператор"</string>
@@ -491,6 +497,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Не удается позвонить. Попробуйте отправить сообщение."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Сервис не поддерживается"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Не удалось переключить вызов."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Не удалось возобновить вызов."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Не удалось разделить вызов."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Не удалось перенести."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Не удается создать конференц-вызов."</string>
@@ -505,6 +512,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Во время экстренного вызова перейти в режим полета нельзя"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Не удалось позвонить. Номер <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> не принадлежит экстренным службам."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Не удалось позвонить. Наберите номер экстренных служб."</string>
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Экстренные вызовы недоступны"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Используйте клавиатуру для набора номера"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Удерживать"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Завершить"</string>
@@ -525,8 +533,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Не удалось импортировать контакт"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Слуховые аппараты"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Включить поддержку слухового аппарата"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"Текст в режиме реального времени"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Включение и выключение текста в режиме реального времени"</string>
+    <string name="rtt_mode_title" msgid="6954652435543570121">"Вызов RTT"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Разрешить обмен сообщениями во время голосового вызова"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"Функция RTT предназначена для пользователей с нарушениями слуха и речи.&lt;br&gt;&lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Подробнее…&lt;/a&gt;\n&lt;br&gt;&lt;br&gt;– Вызовы RTT сохраняются как транскрипции.\n&lt;br&gt;– Функция RTT недоступна при видеовызове."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Телетайп выключен"</item>
     <item msgid="3971695875449640648">"Полнофункциональный телетайп"</item>
@@ -643,58 +652,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"АКТИВИРОВАТЬ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ОТМЕНА"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Вызов завершен"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Приемопередатчик отключен"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"SIM-карта не установлена или произошла ошибка ее распознавания"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Включен режим полета."</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"Нет доступа к SIM-карте."</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Мобильная сеть недоступна"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Неназначенный (нераспределенный) номер"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Сеть, через которую идет вызов, не обслуживает выбранное направление"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Недопустимый канал"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Запрет вызова, заданный оператором"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Нормальное завершение вызова"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Проблемы с набираемым номером (ошибка 1)."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"Не удалось выполнить вызов (ошибка 3)."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"Не удалось выполнить вызов (ошибка 6)."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"Не удалось выполнить вызов (ошибка 8)."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"Не удалось выполнить вызов (ошибка 16)."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Абонент занят"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Нет ответа"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Нет ответа от оборудования пользователя"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Пользователь не отвечает"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"Не удалось выполнить вызов (ошибка 19)."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Вызов отклонен"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Номер изменился"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Приоритетное прерывание обслуживания"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Не выбран адресат"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Абонентский номер адресата не обслуживается"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"Не удалось выполнить вызов (ошибка 25)."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"Не удалось выполнить вызов (ошибка 26)."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"Не удалось выполнить вызов (ошибка 27)."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Недопустимый формат номера (номер неполный)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Запрос на использование оборудования отклонен"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Ответ на статус запроса"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Нормальное состояние, не уточнено"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Схема или канал недоступны"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Сеть неисправна"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Временный сбой"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Сетевое оборудование перегружено"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Информация доступа отклонена"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Запрашиваемая схема или канал недоступны"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Ресурсы недоступны по неизвестной причине"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Запрошенное качество обслуживания не может быть предоставлено"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Нет подписки на запрашиваемое оборудование"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Входящие вызовы запрещены внутри закрытой абонентской группы"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Пропускная способность: отсутствует авторизация"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"В настоящее время сеть не может обеспечить запрошенную пропускную способность"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Сервис или параметр недоступны по неизвестной причине"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Не удается обеспечить запрошенную пропускную способность"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"Значение ACM равно значению ACMmax или превышает его"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Запрашиваемое оборудование не поддерживается"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Пропускная способность: есть доступ только к цифровой информации с ограниченным доступом"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Сервис или параметр не поддерживаются"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Недопустимое значение идентификатора транзакции"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Абонент не является участником закрытой группы"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Несовместимое целевое оборудование"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Недопустимый выбор транзитной сети"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Семантически неверное сообщение"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Недействительная обязательная информация"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Тип сообщения не существует или не поддерживается"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Тип сообщения несовместим с состоянием протокола"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Информационный элемент не существует или не поддерживается"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Условная ошибка IE"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Сообщение несовместимо с состоянием протокола"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Возврат по истечении срока действия таймера"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Неопределенная ошибка протокола"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Неизвестная ошибка межсетевого взаимодействия"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"Не удалось выполнить вызов (ошибка 29)."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Не удалось выполнить вызов (ошибка 30)."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"Не удалось выполнить вызов (ошибка 31)."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"Не удалось выполнить вызов (ошибка 34)."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"Не удалось выполнить вызов (ошибка 38)."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"Не удалось выполнить вызов (ошибка 41)."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"Не удалось выполнить вызов (ошибка 42)."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"Не удалось выполнить вызов (ошибка 43)."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"Не удалось выполнить вызов (ошибка 44)."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"Не удалось выполнить вызов (ошибка 47)."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"Не удалось выполнить вызов (ошибка 49)."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"Не удалось выполнить вызов (ошибка 50)."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"Не удалось выполнить вызов (ошибка 55)."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"Не удалось выполнить вызов (ошибка 57)."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"Не удалось выполнить вызов (ошибка 58)."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"Не удалось выполнить вызов (ошибка 63)."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"Не удалось выполнить вызов (ошибка 65)."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"Не удалось выполнить вызов (ошибка 68)."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"Не удалось выполнить вызов (ошибка 69)."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"Не удалось выполнить вызов (ошибка 70)."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"Не удалось выполнить вызов (ошибка 79)."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"Не удалось выполнить вызов (ошибка 81)."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"Не удалось выполнить вызов (ошибка 87)."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"Не удалось выполнить вызов (ошибка 88)."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"Не удалось выполнить вызов (ошибка 91)."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"Не удалось выполнить вызов (ошибка 95)."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"Не удалось выполнить вызов (ошибка 96)."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"Не удалось выполнить вызов (ошибка 97)."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"Не удалось выполнить вызов (ошибка 98)."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"Не удалось выполнить вызов (ошибка 99)."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Не удалось выполнить вызов (ошибка 100)"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Не удалось выполнить вызов (ошибка 101)"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Не удалось выполнить вызов (ошибка 102)"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Не удалось выполнить вызов (ошибка 111)"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Не удалось выполнить вызов (ошибка 127)"</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Запрет вызовов"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Включено"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Отключено"</string>
