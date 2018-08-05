@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">WCDMA മാത്രം</string>
   <string name="preferred_network_mode_gsm_only_choice">GSM മാത്രം</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM / WCDMA താല്‍പര്യപ്പെടുന്നു</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">ഇൻ-കോൾ സ്ക്രീൻ ക്രമീകരണങ്ങൾ</string>
+  <string name="show_ssn_label">ഇവന്റ് അറിയിപ്പ്</string>
+  <string name="show_ssn_summary">കോള്‍ കൈകാര്യം ചെയ്യുന്നതുമായി ബന്ധപ്പെട്ട വിവിധ നെറ്റ്‌വർക്ക് ഇവന്റുകൾക്ക് ഒരു അറിയിപ്പ് കാണിക്കുക</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">ഉപാധികളില്ലാതെ കോൾ ഫോര്‍വേഡ് ചെയ്യുന്നത് സജീവമാണ്.</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">നിബന്ധനകളോടെ കോൾ ഫോര്‍വേഡ് ചെയ്യുന്നത് സജീവമാണ്.</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">ഔട്ട്‌ഗോയിംഗ് കോള്‍ ഫോര്‍വേഡ് ചെയ്തു</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">അടച്ച ഉപയോക്തൃ ഗ്രൂപ്പിലെ കോള്‍</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">ഔട്ട്ഗോയിംഗ് കോളുകൾ തടഞ്ഞു</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">ഇൻകമിംഗ് കോളുകൾ വിദൂര കക്ഷി തടഞ്ഞു</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">സ്വന്തം നമ്പര്‍ ഒഴിവാക്കൽ നെറ്റ്‌വർക്ക് നിരാകരിച്ചു</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">വിദൂര കക്ഷി കോൾ ഫോർവേഡ് ചെയ്തു</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">ഇൻകമിംഗ് കോൾ ഫോർവേഡ് ചെയ്തു</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">ബഹു-കക്ഷി കോൾ</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">കോൾ വിദൂരമായി സ്വത്രന്തമാക്കി</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">കോൾ ഫോർവേഡ് ചെയ്തു</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">എക്സ്പ്ലിസിറ്റ് കോൾ ട്രാൻസ്ഫർ വഴി കോള്‍ കണക്റ്റ് ചെയ്യുന്നു</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">എക്സ്പ്ലിസിറ്റ് കോൾ ട്രാൻസ്ഫർ വഴി കോള്‍ കണക്റ്റ് ചെയ്തു</string>
 </resources>

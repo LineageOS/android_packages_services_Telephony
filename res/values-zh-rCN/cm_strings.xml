@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">仅 WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">仅 GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">首选 GSM/WCDMA</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">通话屏幕设置</string>
+  <string name="show_ssn_label">事件提醒</string>
+  <string name="show_ssn_summary">为通话处理相关的各种网络事件显示一个通知</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">启用无条件的来电转接</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">启用有条件的来电转接</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">呼出电话已被转接</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">在封闭用户组内通话</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">呼出电话被禁止</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">来电被对方禁止</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">自我号码抑制被网络拒绝</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">呼叫被对方转接</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">来电是被转接的</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">多方电话</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">呼叫被对方释放</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">呼叫被转接</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">呼叫正在通过显式呼叫转移进行连接</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">呼叫已通过显式呼叫转移连接</string>
 </resources>

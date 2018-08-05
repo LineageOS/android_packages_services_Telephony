@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">Тільки WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">Тільки GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Переважно GSM/WCDMA</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">Параметри екрану виклику</string>
+  <string name="show_ssn_label">Повідомлення про події</string>
+  <string name="show_ssn_summary">Показувати повідомлення щодо подій у мережі, які пов\'язані з викликом</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">Увімкнена безумовна переадресація виклику</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">Увімкнена умовна переадресація виклику</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">Вихідний виклик переадресовано</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">Виклик у приватну групу</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">Вихідний виклик заборонений</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">Вхідний виклик дистанційно заборонений</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">Приховування власного номеру вимкнено мережею</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">Виклик дистанційно переадресований</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">Вхідний дзвінок переадресовано</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Вхідний виклик-конференція</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">Виклик дистанційно скасований</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">Виклик переадресовано</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">Виклик з’єднується через явну передачу виклику</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">Виклик з’єднаний через явну передачу виклику</string>
 </resources>

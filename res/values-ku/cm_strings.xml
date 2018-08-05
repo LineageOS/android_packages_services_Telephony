@@ -35,4 +35,36 @@
   <string name="preferred_network_mode_wcdma_only_choice">WCDMA تەنیا</string>
   <string name="preferred_network_mode_gsm_only_choice">تەنیا GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA په‌سه‌ندکراو</string>
+  <!-- Advanced Settings -->
+  <string name="show_ssn_label">ئاگاداری ڕووداو</string>
+  <string name="show_ssn_summary">نیشاندانی ئاگادارکردنه‌وه‌ بۆ هێڵی ڕوداوی جیاواز بۆ په‌یوه‌ندی سه‌رپه‌رشتکراو</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">به‌دواکه‌وتنی په‌یوه‌ندی بێ مه‌رجی کارده‌کات</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">به‌دواکه‌وتنی په‌یوه‌ندی مه‌رجی کارده‌کات</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">په‌یوه‌ندی ده‌ره‌کی به‌دواکراوه‌</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">په‌یوه‌ندی له‌ نزیکه‌وه‌ بۆ به‌کارهێنانی کۆمەڵ</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">په‌یوه‌ندی ده‌ره‌وه‌ ڕێگری لێکرا</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">په‌یوه‌ندی ناوه‌کی ڕێگری لێکرا له‌ به‌شی دوور</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">ژماره‌ی خاوه‌نی کپکردن ڕه‌دکرایه‌وه‌ له‌لایه‌ن هێڵ</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">په‌یوه‌ندی به‌دوادواکه‌وتن له‌لایه‌ن دووره‌ به‌ش</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">په‌یوه‌ندی هاتوو به‌دوادواکه‌وت</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">فره‌-به‌ش په‌یوه‌ندی</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">په‌یوه‌ندی به‌ردرا له‌ دووریه‌وه‌</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">په‌یوه‌ندی به‌دوادواکه‌وت</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">په‌یوه‌ندی به‌ستن له‌گه‌ڵ گواستنه‌وه‌ی په‌یوه‌ندی ڕه‌وان</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">په‌یوه‌ندی به‌ستن له‌گه‌ڵ گواستنه‌وه‌ی په‌یوه‌ندی ڕه‌وان</string>
 </resources>

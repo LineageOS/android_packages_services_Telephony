@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">Толькі WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">Толькі GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA пераважна</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">Налады экрана выкліку</string>
+  <string name="show_ssn_label">Паведамленні пра падзеі</string>
+  <string name="show_ssn_summary">Паказваць паведамленьні пра розныя падзеі сеткі, звязаныя з выклікам</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">Уключана ўмоўнае пераадрасаванне выкліку</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">Уключана ўмоўнае пераадрасаванне выкліку</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">Уваходны выклік пераадрасаваны</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">Выклік у прыватную групу</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">Зыходныя выклікі забароненыя</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">Уваходныя выклікі забароненыя на адлеглым баку</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">ААН падчас гэтага выкліку адключаны сеткай</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">Выклік аддалена пераадрасаваны</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">Уваходны выклік пераадрасаваны</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Канферэнц-сувязь</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">Выклік аддалена адменены</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">Выклік быў пераадрасаваны</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">Выклік злучаецца праз выяўную перадачу выкліку</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">Выклік злучаны праз выяўную перадачу выкліку</string>
 </resources>

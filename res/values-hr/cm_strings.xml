@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">Samo WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">Samo GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA preferirano</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">Postavke zaslona u pozivu</string>
+  <string name="show_ssn_label">Obavijest o događaju</string>
+  <string name="show_ssn_summary">Prikaži obavijest za razne mrežne događaje vezane za upravljanje pozivom</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">Bezuvjetno prosljeđivanje poziva aktivno</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">Uvjetno prosljeđivanje poziva aktivno</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">Odlazni poziv prosljeđen</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">Poziv u zatvorenoj grupi korisnika</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">Odlazni pozivi zabranjeni</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">Dolazni pozivi su zabranjeni od udaljene stranke</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">Vlastiti broj je suzbijen od mreže</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">Poziv je proslijeđen od udaljene stranke</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">Dolazni poziv je proslijeđen</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Konferencijski poziv</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">Poziv je pušten na daljinu</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">Poziv je proslijeđen</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">Uspostavljanje poziva preko eksplicitnog transfer poziva</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">Uspostavljanje poziva preko eksplicitnog transfer poziva</string>
 </resources>

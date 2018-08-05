@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">Hanya WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">Hanya GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA diutamakan</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">Pengaturan layar panggilan</string>
+  <string name="show_ssn_label">Pemberitahuan acara</string>
+  <string name="show_ssn_summary">Tampilkan notifikasi untuk berbagai acara jaringan yang terkait penangangan panggilan</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">Penerusan panggilan tanpa syarat aktif</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">Penerusan panggilan bersyarat aktif</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">Panggilan keluar diteruskan</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">Panggilan grup pengguna tertutup</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">Panggilan keluar dicegah</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">Panggilan masuk yang dicegah oleh lawan bicara</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">Penyembunyian nomor sendiri ditolak oleh jaringan</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">Panggilan diteruskan oleh lawan bicara</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">Panggilan masuk diteruskan</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Panggilan multi-pihak</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">Panggilan dilepas dari jarak jauh</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">Panggilan diteruskan</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">Sambungan panggilan melalui transfer panggilan eksplisit</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">Panggilan tersambung melalui transfer panggilan eksplisit</string>
 </resources>

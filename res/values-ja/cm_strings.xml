@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">WCDMAのみ</string>
   <string name="preferred_network_mode_gsm_only_choice">GSMのみ</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA優先</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">通話画面の設定</string>
+  <string name="show_ssn_label">イベントの通知</string>
+  <string name="show_ssn_summary">通話の処理に関連するさまざまなネットワークイベントの通知を表示する</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">無条件の着信転送が有効です</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">条件付きの着信転送が有効です</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">発信は転送されます</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">クローズドユーザーグループでの通話</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">発信が阻止されました</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">リモートパーティで着信が阻止されました</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">発信者番号通知制限がネットワークによって拒否されました</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">通話はリモートパーティによって転送されました</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">着信は転送されます</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">マルチパーティ通話</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">リモートで通話が終了されました</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">着信は転送されました</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">特定呼転送経由で呼接続中</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">特定呼転送経由で呼接続されました</string>
 </resources>

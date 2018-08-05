@@ -35,4 +35,36 @@
   <string name="preferred_network_mode_wcdma_only_choice">僅 WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">僅 GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">首選 GSM/WCDMA</string>
+  <!-- Advanced Settings -->
+  <string name="show_ssn_label">事件通知</string>
+  <string name="show_ssn_summary">為通話處理相關的各種網絡事件顯示一個通知</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">開啟無條件地來電轉駁</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">開啟有條件地來電轉駁</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">撥出通話已轉駁</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">致電非公開使用者群組</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">禁止撥出電話</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">來電通話禁止於遠端系統</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">本機號碼被制止拒絕了網絡</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">由遠端系統啟用通話轉駁</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">來電通話已轉駁</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">多方通話</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">通話被對方釋放</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">通話被轉駁</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">致電透過顯式的來電轉接進行連接</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">致電透過顯式的來電轉接進行連接</string>
 </resources>

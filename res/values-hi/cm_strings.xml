@@ -35,4 +35,36 @@
   <string name="preferred_network_mode_wcdma_only_choice">केवल डब्ल्यूसीडीएमए</string>
   <string name="preferred_network_mode_gsm_only_choice">केवल जीएसएम</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">जीएसम/डब्ल्यूसीडीएमए बेहतर रहेगा</string>
+  <!-- Advanced Settings -->
+  <string name="show_ssn_label">घटना अधिसूचना</string>
+  <string name="show_ssn_summary">कॉल व्यवस्था से संबंधित विभिन्न नेटवर्क घटना के लिए अधिसूचना दिखाएँ</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">बिना शर्त कॉल अग्रेषण सक्रिय</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">सशर्त कॉल अग्रेषण सक्रिय</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">जावक कॉल को अग्रेषित किया जाता है</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">बंद उपयोगकर्ता समूह में कॉल करें</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">जावक कॉल को अवरुद्ध किया जाता है</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">आवको कॉलों को दूरस्थ पक्ष के पास अवरुद्ध किया जाता है</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">ख़ुद के नंबर को दबाने की क्रिया नेटवर्क द्वारा अ्वीकृत की गई</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">दूरस्थ पक्ष ने कॉल को अग्रेषित किया</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">आवक कॉल को अग्रेषित किया जाता है</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">बहु-पक्षीय कॉल</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">कॉल को दूरस्थ रूप से मुक्त किया जाता है</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">कॉल को अग्रेषित किया गया</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">कॉल को प्रत्यक्ष कॉल अंतरण के ज़रिए कनेक्ट हो रहा है</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">कॉल को प्रत्यक्ष कॉल अंतरण के ज़रिए कनेक्ट किया गया</string>
 </resources>

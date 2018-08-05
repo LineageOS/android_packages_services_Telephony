@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">WCDMA 전용</string>
   <string name="preferred_network_mode_gsm_only_choice">GSM 전용</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA 우선</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">통화 내 설정</string>
+  <string name="show_ssn_label">이벤트 알림</string>
+  <string name="show_ssn_summary">통화와 관련된 다양한 네트워크 이벤트에 대한 알림 표시</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">무조건 착신 전환 활성</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">조건부 착신 전환 활성</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">발신전화 전달</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">배타적 사용자 그룹 내 전화</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">전화 발신이 차단되었습니다</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">원격 그룹에서 오는 전화가 차단되었습니다</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">발신번호 표시 제한이 네트워크에 의해 거부되었습니다</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">원격 그룹에 의해 전화가 전달되었습니다</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">착신전화가 전달되었습니다</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">다자간 통화</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">원격으로 전화 연결이 해제되었습니다</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">착신전환되었습니다</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">명시적 전화 전달 서비스를 통한 전화 연결 중</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">명시적 전화 전달 서비스를 통한 전화 연결됨</string>
 </resources>

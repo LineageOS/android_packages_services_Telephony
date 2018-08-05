@@ -58,6 +58,7 @@
   <!-- Text of SIP-call registration status, still trying to register with SIP server [CHAR LIMIT=NONE] -->
   <string name="registration_status_still_trying">Yn dal i geisio\u2026</string>
   <!-- Text of SIP-call registration status, currently not receiving calls on this account [CHAR LIMIT=NONE] -->
+  <string name="registration_status_not_receiving">Dim yn derbyn galwadau.</string>
   <!-- Text of SIP-call registration status, no data connection [CHAR LIMIT=NONE] -->
   <!-- Text of SIP-call registration status, no Wi-Fi connection [CHAR LIMIT=NONE] -->
   <!-- Text of SIP-call registration status, registration process is not running due to some error [CHAR LIMIT=NONE] -->

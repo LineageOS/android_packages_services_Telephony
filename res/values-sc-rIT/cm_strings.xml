@@ -16,4 +16,20 @@
   <!-- Mobile network settings, preferred network modes -->
   <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA ebbia</string>
   <string name="preferred_network_mode_global_choice">Globale</string>
+  <!-- Advanced Settings -->
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <!-- Toast text for a forwarded MO call  -->
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <!-- In-call screen: status label when MO calls are barred -->
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <!-- Toast text for incoming call forward check received -->
+  <!-- Toast text for incoming call connecting through ECT -->
+  <!-- Toast text for incoming call connected through ECT -->
 </resources>

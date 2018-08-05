@@ -36,4 +36,36 @@
   <string name="preferred_network_mode_wcdma_only_choice">Just WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">Just GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA preferéiert</string>
+  <!-- Advanced Settings -->
+  <string name="show_ssn_label">Notifikatioun bei Evenementer</string>
+  <string name="show_ssn_summary">Bei verschiddenen Uruff-Evenementer eng Notifikatioun uweisen</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">Bédéngungslos Uruffweiderleedung aktiv</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">Bédéngungslos Uruffweiderleedung aktiv</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">De lafenden Uruff gëtt weidergeleet</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">Uruff an enger geschlossener Benotzergrupp</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">Erausgoend Uriff gespaart</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">Erakommend Uriff si beim Gespréichspartner gespaart</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">D\'Verstoppe vun der eegener Nummer gouf vum Netzwierk refuséiert</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">Uruff vum Gespréichspartner weidergeleet</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">Erakommenden Uruff gëtt weidergeleet</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Telefonskonferenz</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">Gehalenen Uruff vum Gespréichspartner ofgebrach</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">Uruff gouf weidergeleet</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">Uruff duerch eng explizit Weiderleedung verbonnen</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">Uruff duerch eng explizit Weiderleedung verbonnen</string>
 </resources>

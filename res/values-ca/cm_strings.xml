@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">Només WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">Només GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA preferent</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">Configuració de trucada en pantalla</string>
+  <string name="show_ssn_label">Notificació d\'esdeveniments</string>
+  <string name="show_ssn_summary">Mostra una notificació pels diferents esdeveniments de xarxa relacionats amb la gestió de trucades</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">Desviament sense condicions de trucades actiu</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">Desviament condicionat de trucades actiu</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">S\'ha desviat una trucada sortint</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">Truca en un grup d\'usuaris tancat</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">Trucades sortints excloses</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">Trucades entrants excloses a la part remota</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">Supressió del número propi rebutjada per la xarxa</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">Trucada desviada per la part remota</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">S\'ha desviat una trucada entrant</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Trucada Multi-conferència</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">Trucada alliberada remotament</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">S\'ha desviat la trucada</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">Connexió de la trucada a través d\'una transferència de trucada explícita</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">Trucada connectada a través d\'una transferència de trucada explícita</string>
 </resources>

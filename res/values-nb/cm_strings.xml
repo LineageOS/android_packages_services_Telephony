@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">kun WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">kun GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA foretrukket</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">Skjerminnstillinger under samtaler</string>
+  <string name="show_ssn_label">Hendelsesvarsling</string>
+  <string name="show_ssn_summary">Vis en melding for ulike nettverkshendelser relatert til anrop</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">Ubetinget viderekobling aktiv</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">Betinget viderekobling aktiv</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">Utgående samtale videresendes</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">Ringe i lukket brukergruppe</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">Utgående samtaler sperret</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">Innkommende samtaler sperret på eksterne parten</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">Eget nummer undertrykkelse avvist av nettverket</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">Samtale videresendt av eksterne parten</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">Innkommende anrop viderekobles</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Flerparti samtale</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">Ringe ut eksternt</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">Samtalen ble videresendt</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">Oppringing kobles til gjennom samtaleoverføring</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">Oppringing kobles til gjennom samtaleoverføring</string>
 </resources>

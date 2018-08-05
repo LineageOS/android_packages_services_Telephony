@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">‏WCDMA בלבד</string>
   <string name="preferred_network_mode_gsm_only_choice">GSM בלבד</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">‏GSM/WCDMA מועדף</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">הגדרות תצוגה במהלך שיחה</string>
+  <string name="show_ssn_label">התראת אירוע</string>
+  <string name="show_ssn_summary">הצג התראה לאירועי רשת שונים הקשורים בטיפול בשיחה</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">העברת שיחות לא מותנית פעילה</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">העברת שיחות מותנית פעילה</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">שיחה יוצאת מועברת</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">שיחה בקבוצת משתמשים סגורה</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">שיחות יוצאות חסומות</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">שיחות נכנסות חסומות בועידה מרוחקת</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">המספר המדוחק נדחה על ידי הרשת</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">שיחה הועברה על ידי צד מרוחק</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">שיחה נכנסת מועברת</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">שיחה משותפת</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">השיחה שוחררה מרחוק</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">השיחה הועברה</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">השיחה מתחברת דרך העברת שיחה מפורשת</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">השיחה חוברה דרך העברת שיחה מפורשת</string>
 </resources>

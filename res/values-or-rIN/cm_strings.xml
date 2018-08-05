@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">ସ୍ଵତଃ WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">ସ୍ଵତଃ GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">ଅଗ୍ରାଧିକାର GSM/WCDMA</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">ଇନ୍‍-କଲ୍‍ ସ୍କ୍ରିନ୍‍ ସେଟିଂସ୍‍</string>
+  <string name="show_ssn_label">ଘଟଣାକ୍ରମ ନିର୍ଦ୍ଦେଶାବଳି</string>
+  <string name="show_ssn_summary">କଲ୍‍ ହ୍ୟାଣ୍ଡଲିଙ୍ଗ ସହିତ ଜଡିତ ବିଭିନ୍ନ ନେଟ୍‍ୱାର୍କ୍‍ ଘଟଣାକ୍ରମ ପାଇଁ ଏକ ନିର୍ଦ୍ଦେଶାବଳି ଦେଖାନ୍ତୁ</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">ସର୍ତ୍ତ ନ ଥିବା ୍କଲ୍‍ ଅଗ୍ରଗାମୀ ସକ୍ରିୟତା</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">ସର୍ତ୍ତମୂଳକ କଲ୍‍ ଅଗ୍ରଗାମୀ ସକ୍ରିୟତା</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">ବହିର୍‍ମୁଖୀ କଲ୍‍ ଅଗ୍ରଗାମି ହୋଇଛି</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">ବନ୍ଦ ହୋଇସାରିଥିବା ଉପଭୋକ୍ତା ଗୋଠୀରେ କଲ୍‍ କରନ୍ତୁ</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">ବହିର୍ଗମନ କଲ୍‌ ବାର୍ ହୋଇଛି</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">ଆସୁଥିବା କଲ୍‍ ଦୂରରେ ଏକ ଦଳ ଦ୍ୱାରା ବେଆର୍‍ ହୋଇଛି</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">ନିଜର ନମ୍ବର ସପ୍ରେସନ୍‍ ନେଟ୍‍ୱାର୍କ ଦ୍ୱାରା ଅଗ୍ରାହ୍ୟ ହୋଇଛି</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">ଦୂରରେ ଏକ ଦଳ ଦ୍ୱାରା କଲ୍‍ ଅଗ୍ରଗାମି ହୋଇଛି</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">ଆସୁଥିବା କଲ୍‍ ଅଗ୍ରଗାମି ହୋଇଛି</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">ବହୁ-ଦଳୀୟ କଲ୍‍</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">କଲ୍‍ ଦୂରରେ ରିଲିଜ୍ ହୋଇଛି</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">କଲ୍‍ ଅଗ୍ରଗାମି ହୋଇଥିଲା</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">ବାହାରର କଲ୍‍ ଥାନାନ୍ତରଣ ମାଧ୍ୟମରେ କଲ୍‍ ସଂଯୋଗ</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">ବାହାରର କଲ୍‍ ଥାନାନ୍ତରଣ ମାଧ୍ୟମରେ କଲ୍‍ ସଂଯୋଗ</string>
 </resources>

@@ -37,4 +37,23 @@
   <string name="preferred_network_mode_wcdma_only_choice">vetëm WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">vetëm GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA e preferuar</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">Parametrat e ekranit gjatë telefonatës</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <!-- Toast text for a forwarded MO call  -->
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">Thirrjet dalëse janë të bllokuara</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Telefonatë shumëpalëshe</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <!-- Toast text for incoming call forward check received -->
+  <!-- Toast text for incoming call connecting through ECT -->
+  <!-- Toast text for incoming call connected through ECT -->
 </resources>

@@ -37,4 +37,37 @@
   <string name="preferred_network_mode_wcdma_only_choice">Sólo WCDMA</string>
   <string name="preferred_network_mode_gsm_only_choice">Sólo GSM</string>
   <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Preferencia de GSM/WCDMA</string>
+  <!-- Advanced Settings -->
+  <string name="incall_screen_settings">Ajustes de llamada en pantalla</string>
+  <string name="show_ssn_label">Notificación de eventos</string>
+  <string name="show_ssn_summary">Mostrar la notificación de eventos de red relacionados con la admin. de llamadas</string>
+  <!-- Toasts for various transient network events -->
+  <!-- Toast text for Unconditional Call Forwarding enabled  -->
+  <string name="call_notif_unconditionalCF">Desvío incondicional de llamada activo</string>
+  <!-- Toast text for Conditional Call Forwarding enabled  -->
+  <string name="call_notif_conditionalCF">Desvío condicional de llamada activo</string>
+  <!-- Toast text for a forwarded MO call  -->
+  <string name="call_notif_MOcall_forwarding">Reenvío de llamada saliente</string>
+  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
+  <string name="call_notif_cugcall">Llamada de grupo cerrado</string>
+  <!-- In-call screen: status label when MO calls are barred -->
+  <string name="call_notif_outgoing_barred">Llamadas salientes excluidas</string>
+  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
+  <string name="call_notif_incoming_barred">Llamadas entrantes excluidas en participante remoto</string>
+  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
+  <string name="call_notif_clir_suppression_rejected">Llamadas ocultas rechazadas</string>
+  <!-- In-call screen: status label when MO call gets deflected to another party -->
+  <string name="call_notif_call_deflected">Llamada desviada</string>
+  <!-- Toast text for incoming call being forwarded to other remote party  -->
+  <string name="call_notif_MTcall_forwarding">Llamada entrante desviada</string>
+  <!-- Toast text for incoming call which is part of MultiParty Call -->
+  <string name="call_notif_multipartycall">Llamada múltiple</string>
+  <!-- Toast text for incoming call which is answered,put on hold & then released -->
+  <string name="call_notif_callonhold_released">Llamada recuperada</string>
+  <!-- Toast text for incoming call forward check received -->
+  <string name="call_notif_forwardcheckreceived">Llamada enviada</string>
+  <!-- Toast text for incoming call connecting through ECT -->
+  <string name="call_notif_callconnectingect">Llamada conectándose por transferencia explícita de llamadas</string>
+  <!-- Toast text for incoming call connected through ECT -->
+  <string name="call_notif_callconnectedect">Llamada conectada por transferencia explícita de llamadas</string>
 </resources>
