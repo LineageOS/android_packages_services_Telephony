@@ -242,6 +242,7 @@ public class NetworkOperators extends PreferenceCategory
 
     private void selectNetworkAutomatic(boolean autoSelect) {
         if (DBG) logd("selectNetworkAutomatic: " + String.valueOf(autoSelect));
+
         if (autoSelect) {
             if (mEnableNewManualSelectNetworkUI) {
                 if (mChooseNetwork != null) {

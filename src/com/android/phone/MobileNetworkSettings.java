@@ -41,6 +41,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.PersistableBundle;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.ListPreference;
@@ -81,6 +82,7 @@ import com.android.phone.settings.PhoneAccountSettingsFragment;
 import com.android.settingslib.RestrictedLockUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -98,8 +100,27 @@ import java.util.List;
 
 public class MobileNetworkSettings extends Activity  {
 
+    // CID of the device.
+    private static final String KEY_CID = "ro.boot.cid";
+    // CIDs of devices which should not show anything related to eSIM.
+    private static final String KEY_ESIM_CID_IGNORE = "ro.setupwizard.esim_cid_ignore";
+    // System Property which is used to decide whether the default eSIM UI will be shown,
+    // the default value is false.
+    private static final String KEY_ENABLE_ESIM_UI_BY_DEFAULT =
+            "esim.enable_esim_system_ui_by_default";
+
     private enum TabState {
         NO_TABS, UPDATE, DO_NOTHING
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        MobileNetworkFragment fragment = (MobileNetworkFragment) getFragmentManager()
+                .findFragmentById(R.id.network_setting_content);
+        if (fragment != null) {
+            fragment.onIntentUpdate(intent);
+        }
     }
 
     @Override
@@ -128,7 +149,6 @@ public class MobileNetworkSettings extends Activity  {
         return super.onOptionsItemSelected(item);
     }
 
-
     /**
      * Whether to show the entry point to eUICC settings.
      *
@@ -142,10 +162,36 @@ public class MobileNetworkSettings extends Activity  {
         if (!euiccManager.isEnabled()) {
             return false;
         }
+
         ContentResolver cr = context.getContentResolver();
-        return Settings.Global.getInt(cr, Settings.Global.EUICC_PROVISIONED, 0) != 0
-                || Settings.Global.getInt(
-                cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+
+        TelephonyManager tm =
+                (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String currentCountry = tm.getNetworkCountryIso().toLowerCase();
+        String supportedCountries =
+                Settings.Global.getString(cr, Settings.Global.EUICC_SUPPORTED_COUNTRIES);
+        boolean inEsimSupportedCountries = false;
+        if (TextUtils.isEmpty(currentCountry)) {
+            inEsimSupportedCountries = true;
+        } else if (!TextUtils.isEmpty(supportedCountries)) {
+            List<String> supportedCountryList =
+                    Arrays.asList(TextUtils.split(supportedCountries.toLowerCase(), ","));
+            if (supportedCountryList.contains(currentCountry)) {
+                inEsimSupportedCountries = true;
+            }
+        }
+        final boolean esimIgnoredDevice =
+                Arrays.asList(TextUtils.split(SystemProperties.get(KEY_ESIM_CID_IGNORE, ""), ","))
+                        .contains(SystemProperties.get(KEY_CID, null));
+        final boolean enabledEsimUiByDefault =
+                SystemProperties.getBoolean(KEY_ENABLE_ESIM_UI_BY_DEFAULT, true);
+        final boolean euiccProvisioned =
+                Settings.Global.getInt(cr, Settings.Global.EUICC_PROVISIONED, 0) != 0;
+        final boolean inDeveloperMode =
+                Settings.Global.getInt(cr, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+
+        return (inDeveloperMode || euiccProvisioned
+                || (!esimIgnoredDevice && enabledEsimUiByDefault && inEsimSupportedCountries));
     }
 
     /**
@@ -385,6 +431,12 @@ public class MobileNetworkSettings extends Activity  {
             }
         }
 
+        public void onIntentUpdate(Intent intent) {
+            if (!mUnavailable) {
+                updateCurrentTab(intent);
+            }
+        }
+
         /**
          * Invoked on each preference click in this hierarchy, overrides
          * PreferenceActivity's implementation.  Used to make sure we track the
@@ -479,6 +531,15 @@ public class MobileNetworkSettings extends Activity  {
                 initializeSubscriptions();
             }
         };
+
+        private int getSlotIdFromIntent(Intent intent) {
+            Bundle data = intent.getExtras();
+            int subId = -1;
+            if (data != null) {
+                subId = data.getInt(Settings.EXTRA_SUB_ID, -1);
+            }
+            return SubscriptionManager.getSlotIndex(subId);
+        }
 
         private void initializeSubscriptions() {
             final Activity activity = getActivity();
@@ -643,6 +704,13 @@ public class MobileNetworkSettings extends Activity  {
                     mEmptyTabContent);
         }
 
+        private void updateCurrentTab(Intent intent) {
+            int slotId = getSlotIdFromIntent(intent);
+            if (slotId >= 0 && mTabHost != null && mTabHost.getCurrentTab() != slotId) {
+                mTabHost.setCurrentTab(slotId);
+            }
+        }
+
         @Override
         public void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
@@ -739,6 +807,7 @@ public class MobileNetworkSettings extends Activity  {
                 getActivity().setContentView(R.layout.telephony_disallowed_preference_screen);
             } else {
                 initializeSubscriptions();
+                updateCurrentTab(getActivity().getIntent());
             }
         }
 
@@ -1288,6 +1357,9 @@ public class MobileNetworkSettings extends Activity  {
                     if (carrierConfig != null && carrierConfig.getBoolean(
                             CarrierConfigManager.KEY_DISABLE_CHARGE_INDICATION_BOOL)) {
                         mPhone.setDataRoamingEnabled(true);
+                        MetricsLogger.action(getContext(),
+                                getMetricsEventCategory(getPreferenceScreen(), mButtonDataRoam),
+                                true);
                     } else {
                         // MetricsEvent with no value update.
                         MetricsLogger.action(getContext(),
@@ -1295,6 +1367,7 @@ public class MobileNetworkSettings extends Activity  {
                         // First confirm with a warning dialog about charges
                         mOkClicked = false;
                         RoamingDialogFragment fragment = new RoamingDialogFragment();
+                        fragment.setPhone(mPhone);
                         fragment.show(getFragmentManager(), ROAMING_TAG);
                         // Don't update the toggle unless the confirm button is actually pressed.
                         return false;
@@ -1700,6 +1773,7 @@ public class MobileNetworkSettings extends Activity  {
                 if (mImsMgr.isWfcEnabledByUser()) {
                     boolean isRoaming = mTelephonyManager.isNetworkRoaming();
                     int wfcMode = mImsMgr.getWfcMode(isRoaming);
+
                     switch (wfcMode) {
                         case ImsConfig.WfcModeFeatureValueConstants.WIFI_ONLY:
                             resId = com.android.internal.R.string.wfc_mode_wifi_only_summary;

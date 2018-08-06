@@ -78,6 +78,7 @@ public class NetworkSelectListPreference extends ListPreference
 
     private int mSubId;
     private NetworkOperators mNetworkOperators;
+    private boolean mNeedScanAgain;
     private List<String> mForbiddenPlmns;
 
     private ProgressDialog mProgressDialog;
