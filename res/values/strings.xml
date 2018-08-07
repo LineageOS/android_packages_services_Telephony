@@ -541,10 +541,12 @@
     <string name="roaming_notification_title">Lost mobile data connection</string>
     <!-- Mobile network settings screen, dialog message when user selects the Data roaming check box -->
     <string name="roaming_warning">You may incur significant charges.</string>
+    <!-- Mobile network settings screen, message asking the user to check their pricing with their Carrier, when enabling Data roaming. -->
+    <string name="roaming_check_price_warning">Check with your network provider for pricing.</string>
     <!-- Mobile network settings screen, dialog message title when user selects the Data roaming check box -->
     <string name="roaming_alert_title">Allow data roaming?</string>
     <!-- Mobile network settings screen, data usage setting check box name -->
-    <string name="data_usage_title">Data usage</string>
+    <string name="data_usage_title">App data usage</string>
     <!-- Summary about how much data has been used in a date range [CHAR LIMIT=100] -->
     <string name="data_usage_template"><xliff:g name="amount" example="200 MB">%1$s</xliff:g> mobile data used <xliff:g name="date_range" example="Jan 1 -- Feb 2">%2$s</xliff:g></string>
     <!-- Mobile network settings screen, Advanced button to show more items when clicked [CHAR LIMIT=50] -->
@@ -552,7 +554,7 @@
     <!-- Mobile network settings screen, name of the option to manage carrier profiles on devices which support embedded carrier profiles -->
     <string name="carrier_settings_euicc">Carrier</string>
     <!-- Keywords used to search the carrier menu for managing carrier profiles on devices which support embedded carrier profiles. eSIM/eUICC is embedded SIM card used to store this data.  -->
-    <string name="keywords_carrier_settings_euicc">carrier, esim, sim, euicc</string>
+    <string name="keywords_carrier_settings_euicc">carrier, esim, sim, euicc, switch carriers, add carrier</string>
     <!-- Mobile network settings screen, summary of the option to manage carrier profiles on devices which support embedded carrier profiles -->
     <string name="carrier_settings_euicc_summary"><xliff:g id="carrier_name">%1$s</xliff:g> &#8212; <xliff:g id="phone_number">%2$s</xliff:g></string>
     <!-- Mobile network settings screen, title of Mobile Data switch preference -->
@@ -1190,7 +1192,7 @@
     <string name="rtt_mode_title">Real-time text (RTT) call</string>
     <string name="rtt_mode_summary">Allow messaging within a voice call</string>
     <string name="rtt_mode_more_information">
-       RTT assists callers who are deaf, hard hearing, have a speech disability,
+       RTT assists callers who are deaf, hard of hearing, have a speech disability,
        or need more than voice alone.&lt;br>
        &lt;a href="<xliff:g example="http://www.google.com" id="url">http://support.google.com/mobile?p=telephony_rtt</xliff:g>">Learn more&lt;/a>
        &lt;br>&lt;br> - RTT calls are saved as a message transcript

@@ -127,9 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"원래 설정으로 되돌리는 중..."</string>
     <string name="response_error" msgid="6674110501330139405">"네트워크에서 예기치 않은 응답이 전송되었습니다."</string>
     <string name="exception_error" msgid="7027667130619518211">"네트워크 또는 SIM 카드 오류입니다."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS 요청이 DIAL 요청으로 수정되었습니다."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS 요청이 USSD 요청으로 수정되었습니다."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS 요청이 새로운 SS 요청으로 수정되었습니다."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS 요청이 일반 통화로 변경됨"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS 요청이 USSD 요청으로 변경됨"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"새 SS 요청으로 변경됨"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS 요청이 화상 통화로 변경됨"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"휴대전화 앱의 발신 제한 번호 설정을 사용하기 때문에 일부 통화 관련 기능이 작동되지 않습니다."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"이러한 설정을 보려면 무선을 사용해야 합니다."</string>
     <string name="close_dialog" msgid="2365884406356986917">"확인"</string>
@@ -162,11 +163,12 @@
     <string name="label_available" msgid="1181658289009300430">"사용 가능한 네트워크"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"검색 중..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"네트워크를 찾을 수 없습니다."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"네트워크를 검색하는 동안 오류가 발생했습니다."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"네트워크를 찾을 수 없습니다. 다시 시도해 보세요."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g>에 등록 중..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"SIM 카드에서 이 네트워크에 연결할 수 없습니다."</string>
     <string name="connect_later" msgid="2308119155752343975">"현재 네트워크에 연결할 수 없습니다. 나중에 다시 시도해 주세요."</string>
     <string name="registration_done" msgid="495135664535876612">"네트워크에 등록되었습니다."</string>
+    <string name="already_auto" msgid="6067116884321285507">"이미 자동 선택을 사용하는 중입니다."</string>
     <string name="select_automatically" msgid="1046727200631770962">"네트워크 자동 선택"</string>
     <string name="network_select_title" msgid="7733107364757544558">"네트워크"</string>
     <string name="register_automatically" msgid="6017849844573519637">"자동 등록..."</string>
@@ -174,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"네트워크 작동 모드 변경"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"기본 네트워크 유형"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(금지됨)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"네트워크 선택"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"연결 끊김"</string>
+    <string name="network_connected" msgid="1288589103624338857">"연결됨"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"연결 중..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"연결할 수 없음"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA로 기본 설정"</item>
     <item msgid="8442633436636425221">"GSM 전용"</item>
@@ -236,14 +243,16 @@
     <string name="roaming" msgid="7894878421600247140">"로밍"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"로밍 시 데이터 서비스에 연결"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"로밍 시 데이터 서비스에 연결"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"데이터 로밍을 사용 중지한 상태에서 홈 네트워크를 벗어났으므로 데이터 연결이 끊어졌습니다."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"데이터 로밍이 사용 중지되었습니다. 사용 설정하려면 탭하세요."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"모바일 데이터 연결 끊김"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"많은 요금이 부과될 수 있습니다."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"요금은 이동통신사에 문의하세요."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"데이터 로밍을 허용하시겠습니까?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"데이터 사용량"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> 기간에 사용된 모바일 데이터: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"앱 데이터 사용량"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>에 사용된 모바일 데이터: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"고급"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"이동통신사"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"이동통신사, eSIM, SIM, eUICC"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"이동통신사, esim, sim, euicc, 이동통신사 전환, 이동통신사 추가"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"모바일 데이터"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"모바일 네트워크를 사용하여 데이터 액세스"</string>
@@ -417,7 +426,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"발신 허용 번호를 삭제하는 중..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"발신 허용 번호가 삭제되었습니다."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"잘못된 PIN을 입력하여 FDN 업데이트 안됨"</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"숫자가 비어있거나 20자리를 초과하여 FDN을 업데이트하지 못했습니다."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"숫자가 20자리를 초과하여 FDN을 업데이트하지 못했습니다."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN이 업데이트되지 않았습니다. PIN2가 잘못되었거나 전화번호가 거부되었습니다."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN 작업이 실패했습니다."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM 카드에서 읽는 중..."</string>
@@ -486,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"현재는 통화를 추가할 수 없습니다. 메시지를 보내 연락해 보세요."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"지원되지 않는 서비스입니다."</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"통화를 전환할 수 없습니다."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"통화를 계속할 수 없습니다."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"통화를 분리할 수 없습니다."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"통화를 전환할 수 없습니다."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"다자간 통화를 할 수 없습니다."</string>
@@ -500,6 +510,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"긴급 통화 중에는 비행기 모드를 사용할 수 없습니다."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"전화를 걸 수 없습니다. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g>은(는) 긴급 번호가 아닙니다."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"전화를 걸 수 없습니다. 긴급 번호를 사용하세요."</string>
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"긴급 전화를 사용할 수 없음"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"키보드를 사용하여 전화걸기"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"대기"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"종료"</string>
@@ -520,6 +531,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"연락처를 가져오지 못했습니다."</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"보청기"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"보청기 호환 사용"</string>
+    <string name="rtt_mode_title" msgid="6954652435543570121">"실시간 문자 메시지(RTT) 통화"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"음성 통화 중 메시지 허용"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT는 청각 장애, 난청, 언어 장애가 있거나 음성 이외의 의사소통 수단이 필요한 발신자에게 도움이 됩니다.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;자세히 알아보기&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT 통화는 메시지 스크립트로 저장됩니다.\n       &lt;br&gt; - 화상 통화에서는 RTT를 사용할 수 없습니다."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY 사용 안함"</item>
     <item msgid="3971695875449640648">"TTY 전체"</item>
@@ -631,4 +645,107 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"<xliff:g id="PROVIDER_NAME">%s</xliff:g>을(를) 통해 데이터를 추가해야 할 수도 있습니다."</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"데이터 추가"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"취소"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"통화 종료됨"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"비행기 모드 사용 중"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"SIM 카드에 액세스할 수 없음"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"모바일 네트워크를 사용할 수 없음"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"전화를 걸려는 전화번호에 문제가 있습니다. 오류 코드 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"통화를 완료할 수 없습니다. 오류 코드 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"통화를 완료할 수 없습니다. 오류 코드 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"통화를 완료할 수 없습니다. 오류 코드 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"통화를 완료할 수 없습니다. 오류 코드 16."</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"사용자가 통화 중"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"사용자가 응답하지 않음"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"통화를 완료할 수 없습니다. 오류 코드 19."</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"통화 거부됨"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"번호가 변경됨"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"통화를 완료할 수 없습니다. 오류 코드 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"통화를 완료할 수 없습니다. 오류 코드 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"통화를 완료할 수 없습니다. 오류 코드 27."</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"번호 형식이 잘못됨(불완전한 번호)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"통화를 완료할 수 없습니다. 오류 코드 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"통화를 완료할 수 없습니다. 오류 코드 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"통화를 완료할 수 없습니다. 오류 코드 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"통화를 완료할 수 없습니다. 오류 코드 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"통화를 완료할 수 없습니다. 오류 코드 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"통화를 완료할 수 없습니다. 오류 코드 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"통화를 완료할 수 없습니다. 오류 코드 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"통화를 완료할 수 없습니다. 오류 코드 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"통화를 완료할 수 없습니다. 오류 코드 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"통화를 완료할 수 없습니다. 오류 코드 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"통화를 완료할 수 없습니다. 오류 코드 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"통화를 완료할 수 없습니다. 오류 코드 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"통화를 완료할 수 없습니다. 오류 코드 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"통화를 완료할 수 없습니다. 오류 코드 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"통화를 완료할 수 없습니다. 오류 코드 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"통화를 완료할 수 없습니다. 오류 코드 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"통화를 완료할 수 없습니다. 오류 코드 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"통화를 완료할 수 없습니다. 오류 코드 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"통화를 완료할 수 없습니다. 오류 코드 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"통화를 완료할 수 없습니다. 오류 코드 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"통화를 완료할 수 없습니다. 오류 코드 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"통화를 완료할 수 없습니다. 오류 코드 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"통화를 완료할 수 없습니다. 오류 코드 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"통화를 완료할 수 없습니다. 오류 코드 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"통화를 완료할 수 없습니다. 오류 코드 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"통화를 완료할 수 없습니다. 오류 코드 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"통화를 완료할 수 없습니다. 오류 코드 96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"통화를 완료할 수 없습니다. 오류 코드 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"통화를 완료할 수 없습니다. 오류 코드 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"통화를 완료할 수 없습니다. 오류 코드 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"통화를 완료할 수 없습니다. 오류 코드: 100"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"통화를 완료할 수 없습니다. 오류 코드: 101"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"통화를 완료할 수 없습니다. 오류 코드: 102"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"통화를 완료할 수 없습니다. 오류 코드: 111"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"통화를 완료할 수 없습니다. 오류 코드: 127"</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"착발신 제한"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"사용"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"사용 안함"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"모든 발신 전화"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"모든 발신 전화 차단을 중지하시겠습니까?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"모든 발신 전화를 차단하시겠습니까?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"국제 발신 전화"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"국제 발신 전화 차단을 중지하시겠습니까?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"국제 발신 전화를 차단하시겠습니까?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"국제 로밍 발신 전화"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"국제 로밍 발신 전화 차단을 중지하시겠습니까?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"국제 로밍 발신 전화를 차단하시겠습니까?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"모든 수신 전화"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"모든 수신 전화 차단을 중지하시겠습니까?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"모든 수신 전화를 차단하시겠습니까?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"국제 로밍 수신 전화"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"모든 국제 로밍 수신 전화 차단을 중지하시겠습니까?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"국제 로밍 수신 전화를 차단하시겠습니까?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"모두 비활성화"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"모든 착발신 제한 설정 비활성화"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"착발신 제한 비활성화됨"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"비밀번호 변경"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"착발신 제한 비밀번호 변경"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"착발신 제한 비밀번호를 변경할 수 없습니다."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"비밀번호가 일치하지 않습니다."</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"4자리 숫자로 비밀번호를 입력하세요."</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"비밀번호 변경됨"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"이전 비밀번호"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"새 비밀번호"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"비밀번호 확인"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"비밀번호 입력"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"착발신 제한 설정"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"모든 착발신 제한 설정을 비활성화하시겠습니까?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"통화가 착신전환되었습니다."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"통화가 착신전환되었습니다."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"통화 대기 중입니다."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"번호 차단이 거부되었습니다."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"비공개 사용자 그룹과의 통화입니다."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"수신 통화가 차단되었습니다."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"발신 통화가 차단되었습니다."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"착신전환이 활성화되었습니다."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"추가 통화가 착신전환되었습니다."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"명시적 통화 연결이 완료되었습니다."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"명시적 통화 연결이 진행 중입니다."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"통화 대기 중입니다."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"통화가 재개되었습니다."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"착신전환된 통화가 수신되었습니다."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"착신전환된 통화입니다."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"다자간 통화에 참여합니다."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"통화 보류가 해제되었습니다."</string>
 </resources>

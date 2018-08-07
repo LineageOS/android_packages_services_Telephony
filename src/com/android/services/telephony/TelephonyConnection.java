@@ -71,7 +71,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Base class for CDMA and GSM connections.
  */
-abstract class TelephonyConnection extends Connection {
+abstract class TelephonyConnection extends Connection implements Holdable {
     private static final int MSG_PRECISE_CALL_STATE_CHANGED = 1;
     private static final int MSG_RINGBACK_TONE = 2;
     private static final int MSG_HANDOVER_STATE_CHANGED = 3;
@@ -654,6 +654,13 @@ abstract class TelephonyConnection extends Connection {
     protected final boolean mIsOutgoing;
 
     /**
+     * Indicates whether the connection can be held. This filed combined with the state of the
+     * connection can determine whether {@link Connection#CAPABILITY_HOLD} should be added to the
+     * connection.
+     */
+    private boolean mIsHoldable;
+
+    /**
      * Indicates whether this call is using assisted dialing.
      */
     private boolean mIsUsingAssistedDialing;
@@ -960,10 +967,13 @@ abstract class TelephonyConnection extends Connection {
         }
         if (!shouldTreatAsEmergencyCall() && isImsConnection() && canHoldImsCalls()) {
             callCapabilities |= CAPABILITY_SUPPORT_HOLD;
-            if (getState() == STATE_ACTIVE || getState() == STATE_HOLDING) {
+            if (mIsHoldable && (getState() == STATE_ACTIVE || getState() == STATE_HOLDING)) {
                 callCapabilities |= CAPABILITY_HOLD;
             }
         }
+
+        Log.d(this, "buildConnectionCapabilities: isHoldable = "
+                + mIsHoldable + " State = " + getState() + " capabilities = " + callCapabilities);
 
         return callCapabilities;
     }
@@ -1695,9 +1705,7 @@ abstract class TelephonyConnection extends Connection {
      * @return {@code true} if the connection is external, {@code false} otherwise.
      */
     private boolean isExternalConnection() {
-        return can(mOriginalConnectionCapabilities, Capability.IS_EXTERNAL_CONNECTION)
-                && can(mOriginalConnectionCapabilities,
-                Capability.IS_EXTERNAL_CONNECTION);
+        return can(mOriginalConnectionCapabilities, Capability.IS_EXTERNAL_CONNECTION);
     }
 
     /**
@@ -2032,6 +2040,21 @@ abstract class TelephonyConnection extends Connection {
             mTelephonyListeners.remove(l);
         }
         return this;
+    }
+
+    @Override
+    public void setHoldable(boolean isHoldable) {
+        mIsHoldable = isHoldable;
+        updateConnectionCapabilities();
+    }
+
+    @Override
+    public boolean isChildHoldable() {
+        return getConference() != null;
+    }
+
+    public boolean isHoldable() {
+        return mIsHoldable;
     }
 
     /**

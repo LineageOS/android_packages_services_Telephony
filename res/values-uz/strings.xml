@@ -58,7 +58,7 @@
     <string name="labelGsmMore_with_label" msgid="2674012918829238901">"GSM qo‘ng‘iroq sozlamalari (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="1630676740428229339">"CDMA qo‘ng‘iroq sozlamalari"</string>
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA qo‘ng‘iroq sozlamalari (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="9043423184895642077">"Internetga kirish nuqtalari (APN)"</string>
+    <string name="apn_settings" msgid="9043423184895642077">"Internetga ulanish nuqtalari (APN)"</string>
     <string name="settings_label" msgid="3876743539816984008">"Tarmoq sozlamalari"</string>
     <string name="phone_accounts" msgid="6376603393888116364">"Chaqiruv uchun hisoblar"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Qo‘ng‘iroqlar uchun hisob"</string>
@@ -80,8 +80,8 @@
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Bildirishnomalar"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Favqulodda tarqatma xabarlar"</string>
     <string name="call_settings" msgid="6112441768261754562">"Chaqiruv sozlamalari"</string>
-    <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Qo‘shimcha sozlamalar"</string>
-    <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Qo‘shimcha sozlamalar (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Kengaytirilgan sozlamalar"</string>
+    <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Kengaytirilgan sozlamalar (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="4076647190996778012">"Qo‘shimcha qo‘ng‘iroq sozlamalari uchun faqat GSM"</string>
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"Qo‘shimcha CDMA qo‘ng‘iroq sozlamalari"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"Qo‘shimcha qo‘ng‘iroq sozlamalari uchun faqat CDMA"</string>
@@ -127,9 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Sozlamalar tiklanmoqda…"</string>
     <string name="response_error" msgid="6674110501330139405">"Tarmoqdan kutilmagan javob."</string>
     <string name="exception_error" msgid="7027667130619518211">"Tarmoq yoki SIM kartada xato."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS so‘rovi DIAL so‘roviga o‘zgartirildi."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS so‘rovi USSD so‘roviga o‘zgartirildi."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS so‘rovi yangi SS so‘roviga o‘zgartirildi."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS so‘rovi oddiy chaqiruvga o‘zgartirildi"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS so‘rovi USSD so‘roviga o‘zgartirildi"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Yangi SS so‘roviga o‘zgartirildi"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS so‘rovi video chaqiruvga o‘zgartirildi"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Telefon ilovasidagi ruxsat etilgan raqamlar yoqildi. Endim ba’zi qo‘ng‘iroq funksiyalari ishlamay qoladi."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Ushbu sozlamalarni ko‘rishdan oldin radioni yoqing."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -162,11 +163,12 @@
     <string name="label_available" msgid="1181658289009300430">"Mavjud tarmoqlar"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Qidirilmoqda…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Birorta ham tarmoq topilmadi."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Tarmoqlar izlanayotganda xato."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Hech qanday tarmoqni topilmadi. Qayta urining."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g>da ro‘yxatdan o‘tmoqda…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"SIM kartangiz ushbu tarmoqqa ulanishga ruxsat bermaydi."</string>
     <string name="connect_later" msgid="2308119155752343975">"Ushbu tarmoqqa hozirgi vaqtda ulanib bo‘lmaydi. Keyinroq urinib ko‘ring."</string>
     <string name="registration_done" msgid="495135664535876612">"Tarmoqda ro‘yxatdan o‘tgan."</string>
+    <string name="already_auto" msgid="6067116884321285507">"Avtomatik tanlash rejimiga allaqachon o‘rnatilgan."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Tarmoqni avtomatik tanlash"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Tarmoq"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Avtomatik ro‘yxatdan o‘tish…"</string>
@@ -174,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Tarmoq rejimini o‘zgartiring"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Tarmoq turi"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(taqiqlangan)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Tarmoqni tanlash"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Tarmoqqa ulanmagan"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Ulandi"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Ulanmoqda…"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Tarmoqqa ulanmadi"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA (tavsiya qilinadi)"</item>
     <item msgid="8442633436636425221">"Faqat GSM"</item>
@@ -236,14 +243,16 @@
     <string name="roaming" msgid="7894878421600247140">"Rouming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Rouming vaqtida mobil internetga ulanish"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Rouming vaqtida mobil internetga ulanish"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Internetga ulanish uzildi, chunki uy tarmog‘ingizni rouming internetini o\'chirgan holatda tark etdingiz."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Rouming-internet yoqilmagan. Uni yoqish uchun bosing."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobil internet uzildi"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Xarajati ancha yuqori bo‘lishi mumkin."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Paketlar narxlari haqidagi ma’lumotni internet provayderingizdan olishingiz mumkin."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Internet-roumingga ruxsat berilsinmi?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Trafik sarfi"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Ilova sarflagan trafik"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> davomida sarflangan mobil trafik: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Kengaytirilgan sozlamalar"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Aloqa operatori"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operator, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"operator, esim, sim, euicc, operatorni almashtirish, operator qo‘shish"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobil internet"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Mobil tarmoq orqali internetdan foydalanish"</string>
@@ -265,7 +274,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> maksimal darajadan oshib ketdi\nTrafik tezligi <xliff:g id="USED_1">%2$d</xliff:g> Kb/s’ga pasaydi"</string>
     <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ o‘tgan bosqichdan\nKeyingi bosqich <xliff:g id="USED_1">%2$d</xliff:g> kunda boshlanadi (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Agar trafik sarfi cheklovdan oshsa, ma’lumot uzatish tezligi <xliff:g id="USED">%1$d</xliff:g> Kb/s’ga pasayadi"</string>
-    <string name="throttle_help_subtext" msgid="5217706521499010816">"Tarmoq operatoringizning uyali tarmoq ma’lumotidan foydalanish siyosati haqida ko‘proq ma’lumot"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Aloqa operatoringizning mobil internetdan foydalanish siyosati haqida batafsil"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Uyali tarmoqdagi SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"Uyali tarmoqdagi SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"Uyali tarmoqdagi SMS yoqilb qo‘yilgan"</string>
@@ -417,7 +426,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Ruxsat berilgan raqamlar o‘chirilmoqda…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Ruxsat berilgan raqamlar o‘chirildi."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN yangilanmadi, chunki siz PIN-kodni noto‘g‘ri kiritdingiz."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"Ruxsat etilgan raqam bo‘sh yoki o‘rnatilgan 20 xonali cheklovdan oshganligi uchun yangilanmadi."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"Ruxsat etilgan raqam 20 xonali raqam cheklovidan oshganligi uchun yangilanmadi."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN yangilanmadi. PIN2 kodi xato yoki telefon raqami rad qilingan."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN jarayoni amalga oshmadi."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM-kartadan o‘qilmoqda…"</string>
@@ -486,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Qo‘ng‘iroq qilib bo‘lmayapti. Xabar yuborib ko‘ring."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Bu xizmat qo‘llab-quvvatlanmaydi"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Qo‘ng‘iroqlarni almashtirib bo‘lmadi."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Chaqiruv davom ettirilmadi"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Qo‘ng‘iroqni ajratib bo‘lmadi."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"O‘tkazib bo‘lmadi."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Konferensiya qo‘ng‘iroqlarini amalga oshirib bo‘lmaydi."</string>
@@ -500,6 +510,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Favqulodda qo‘ng‘iroq paytida parvoz rejimiga o‘tkazib bo‘lmaydi."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Qo‘ng‘iroq qilib bo‘lmadi. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> favqulodda raqam emas."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Qo‘ng‘iroq qilib bo‘lmadi. Favqulodda raqamga tering."</string>
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Favqulodda xizmat raqamiga chaqiruv qilib bo‘lmaydi"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Terish uchun tugmatagdan foydalaning"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Ushlab turish"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Tugatish"</string>
@@ -520,6 +531,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontaktni import qilib bo‘lmadi"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Eshitish apparatlari"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Eshitish apparatlari bilan ishlash imkoniyatini yoqish"</string>
+    <string name="rtt_mode_title" msgid="6954652435543570121">"RTT chaqiruvi"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Video chaqiruvlar vaqtida xabarlar almashinuviga ruxsat berish"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT kar, eshitish qobiliyati va nutqiy faoliyati buzilgan shaxslarga mo‘ljallangan funksiyadir.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Batafsil&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT chaqiruvlari transkripsiya sifatida saqlanadi.\n       &lt;br&gt; – RTT funksiyasidan video chaqiruvlar vaqtida foydalanib bo‘lmaydi."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Teletayp o‘chiq"</item>
     <item msgid="3971695875449640648">"To‘liq funksiyali teletayp"</item>
@@ -631,4 +645,107 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Mobil internet tarif rejasini, ehtimol, <xliff:g id="PROVIDER_NAME">%s</xliff:g> orqali yoqishingiz lozim bo‘ladi."</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"YOQISH"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"BEKOR QILISH"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Chaqiruv yakunlandi"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Parvoz rejimi yoniq"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"SIM kartaga kirishga ruxsat berilmagan"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Uyali aloqa tarmog‘idan foydalanib bo‘lmaydi"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Siz chaqiruv qilmoqchi bo‘lgan telefon raqami bilan muammo mavjud. Xatolik kodi: 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"Chaqiruv amalga oshmadi. Xatolik kodi: 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"Chaqiruv amalga oshmadi. Xatolik kodi: 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"Chaqiruv amalga oshmadi. Xatolik kodi: 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"Chaqiruv amalga oshmadi. Xatolik kodi: 16."</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Abonent band"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Foydalanuvchi javob bermayapti"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"Chaqiruv amalga oshmadi. Xatolik kodi: 19."</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Chaqiruv rad etildi"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Raqam o‘zgargan"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"Chaqiruv amalga oshmadi. Xatolik kodi: 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"Chaqiruv amalga oshmadi. Xatolik kodi: 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"Chaqiruv amalga oshmadi. Xatolik kodi: 27."</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Raqam formati xato (raqam to‘liq emas)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"Chaqiruv amalga oshmadi. Xatolik kodi: 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Chaqiruv amalga oshmadi. Xatolik kodi: 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"Chaqiruv amalga oshmadi. Xatolik kodi: 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"Chaqiruv amalga oshmadi. Xatolik kodi: 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"Chaqiruv amalga oshmadi. Xatolik kodi: 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"Chaqiruv amalga oshmadi. Xatolik kodi: 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"Chaqiruv amalga oshmadi. Xatolik kodi: 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"Chaqiruv amalga oshmadi. Xatolik kodi: 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"Chaqiruv amalga oshmadi. Xatolik kodi: 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"Chaqiruv amalga oshmadi. Xatolik kodi: 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"Chaqiruv amalga oshmadi. Xatolik kodi: 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"Chaqiruv amalga oshmadi. Xatolik kodi: 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"Chaqiruv amalga oshmadi. Xatolik kodi: 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"Chaqiruv amalga oshmadi. Xatolik kodi: 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"Chaqiruv amalga oshmadi. Xatolik kodi: 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"Chaqiruv amalga oshmadi. Xatolik kodi: 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"Chaqiruv amalga oshmadi. Xatolik kodi: 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"Chaqiruv amalga oshmadi. Xatolik kodi: 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"Chaqiruv amalga oshmadi. Xatolik kodi: 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"Chaqiruv amalga oshmadi. Xatolik kodi: 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"Chaqiruv amalga oshmadi. Xatolik kodi: 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"Chaqiruv amalga oshmadi. Xatolik kodi: 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"Chaqiruv amalga oshmadi. Xatolik kodi: 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"Chaqiruv amalga oshmadi. Xatolik kodi: 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"Chaqiruv amalga oshmadi. Xatolik kodi: 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"Chaqiruv amalga oshmadi. Xatolik kodi: 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"Chaqiruv amalga oshmadi. Xatolik kodi: 96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"Chaqiruv amalga oshmadi. Xatolik kodi: 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"Chaqiruv amalga oshmadi. Xatolik kodi: 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"Chaqiruv amalga oshmadi. Xatolik kodi: 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Chaqiruv amalga oshmadi. Xatolik kodi: 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Chaqiruv amalga oshmadi. Xatolik kodi: 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Chaqiruv amalga oshmadi. Xatolik kodi: 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Chaqiruv amalga oshmadi. Xatolik kodi: 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Chaqiruv amalga oshmadi. Xatolik kodi: 127."</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"Chaqiruvlarni taqiqlash"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Yoniq"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"O‘chiq"</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Barcha chiquvchi chaqiruvlar"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Barcha chiquvchi chaqiruvlarni bloklash bekor qilinsinmi?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Barcha chiquvchi chaqiruvlar bloklansinmi?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Chiquvchi xalqaro chaqiruvlar"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Chiquvchi xalqaro chaqiruvlarni bloklash bekor qilinsinmi?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Chiquvchi xalqaro chaqiruvlar bloklansinmi?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"Roumingda chiquvchi chaqiruvlar"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Roumingda chiquvchi chaqiruvlarni bloklash bekor qilinsinmi?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Roumingda chiquvchi chaqiruvlar bloklansinmi?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Barcha kiruvchi chaqiruvlar"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Barcha kiruvchi chaqiruvlarni bloklash bekor qilinsinmi?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Barcha kiruvchi chaqiruvlar bloklansinmi?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Roumingda kiruvchi chaqiruvlar"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Roumingda barcha kiruvchi chaqiruvlarni bloklash bekor qilinsinmi?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Roumingda kiruvchi chaqiruvlar bloklansinmi?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Barchasini faolsizlantirish"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Barcha chaqiruvlarni taqiqlash sozlamalarini faolsizlantirish"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Chaqiruvlarni taqiqlash xususiyati faolsizlantirildi"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Parolni o‘zgartirish"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Chaqiruvlarni taqiqlash xususiyati uchun parolni o‘zgartirish"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Chaqiruvlarni taqiqlash xususiyati uchun parolni o‘zgartirib bo‘lmadi."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Parollar bir-biriga mos kelmadi"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"4 ta raqamli parolni kiriting"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Parol o‘zgartirildi"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Eski parol"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Yangi parol"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Parolni tasdiqlang"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Parolni kiriting"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Chaqiruvlarni taqiqlash sozlamalari"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Barcha chaqiruvlarni taqiqlash sozlamalari faolsizlantirilsinmi?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Chiquvchi chaqiruv uzatildi."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Chiquvchi chaqiruv uzatildi."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Chiquvchi chaqiruv kutmoqda."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"Raqamni bloklash rad etildi."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Yopiq guruh abonentiga/abonentidan chaqiruv."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Kiruvchi chaqiruv taqiqlandi."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Chiquvchi chaqiruv taqiqlangan."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Chaqiruvni uzatish faol."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Ikkinchi liniyadagi chaqiruv uzatildi."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Chaqiruvni uzatish tugallandi."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Chaqiruv uzatilmoqda…"</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Chaqiruv kutish rejimiga o‘tkazildi."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Chaqiruv qayta tiklandi."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Uzatilgan kiruvchi chaqiruv."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Uzatilgan kiruvchi chaqiruv."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Konferens-aloqaga qo‘shilmoqda…"</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Chaqiruv kutish rejimidan chiqarildi."</string>
 </resources>

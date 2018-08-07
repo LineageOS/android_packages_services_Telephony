@@ -127,9 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Cofanie ustawień…"</string>
     <string name="response_error" msgid="6674110501330139405">"Nieoczekiwana odpowiedź z sieci."</string>
     <string name="exception_error" msgid="7027667130619518211">"Błąd sieci lub karty SIM."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Żądanie SS zostało zmienione na żądanie DIAL."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Żądanie SS zostało zmienione na żądanie USSD."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Żądanie SS zostało zmienione na nowe żądanie SS."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"Żądanie SS zmienione na zwykłe połączenie"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Żądanie SS zmienione na żądanie USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Zmieniono na nowe żądanie SS"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Żądanie SS zmienione na rozmowę wideo"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"W aplikacji Telefon włączone jest ustawienie Numery ustalone. W rezultacie niektóre funkcje związane z połączeniami nie działają."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Przed wyświetleniem tych ustawień włącz radio."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -162,11 +163,12 @@
     <string name="label_available" msgid="1181658289009300430">"Dostępne sieci"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Wyszukiwanie..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Nie znaleziono sieci."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Podczas wyszukiwania sieci wystąpił błąd."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Nie udało się znaleźć sieci. Spróbuj ponownie."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Rejestrowanie w <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"Karta SIM nie pozwala na połączenia z tą siecią."</string>
     <string name="connect_later" msgid="2308119155752343975">"Nie można teraz połączyć się z tą siecią. Spróbuj ponownie później."</string>
     <string name="registration_done" msgid="495135664535876612">"Zarejestrowano w sieci."</string>
+    <string name="already_auto" msgid="6067116884321285507">"Wybór automatyczny jest już włączony."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Automatycznie wybieraj sieć"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Sieć"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatyczna rejestracja..."</string>
@@ -174,6 +176,11 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Zmień tryb działania sieci"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Preferowany typ sieci"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(dostęp zabroniony)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Wybierz sieć"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Rozłączono"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Połączono"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Łączę..."</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Nie udało się połączyć"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Preferowany GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"Tylko GSM"</item>
@@ -236,14 +243,16 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Połącz z usługami transmisji danych podczas roamingu"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Połącz z usługami transmisji danych podczas roamingu"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Połączenie transmisji danych zostało utracone, ponieważ opuszczono sieć macierzystą przy wyłączonej opcji danych w roamingu."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Roaming danych jest wyłączony. Kliknij, aby go włączyć."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Utracono połączenie mobilnej transmisji danych"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Mogą się z tym wiązać wysokie opłaty."</string>
+    <string name="roaming_check_price_warning" msgid="7497570906830902550">"Aby poznać ceny, skontaktuj się z operatorem komórkowym."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Zezwolić na roaming danych?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Użycie danych"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Użycie danych przez aplikację"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Wykorzystano <xliff:g id="ID_1">%1$s</xliff:g> mobilnej transmisji danych w okresie <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Zaawansowane"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operator"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="783429609643157743">"operator, esim, sim, euicc"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"operator, esim, sim, euicc, przełącz operatora, dodaj operatora"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobilna transmisja danych"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Korzystaj z danych przy użyciu sieci komórkowej"</string>
@@ -417,7 +426,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Trwa usuwanie ustalonego numeru…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Usunięto ustalony numer."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Nie zaktualizowano usługi FDN, ponieważ wpisano nieprawidłowy kod PIN."</string>
-    <string name="fdn_invalid_number" msgid="8602417141715473998">"Nie zaktualizowano usługi FDN, ponieważ numer jest pusty lub zawiera ponad 20 cyfr."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"Nie zaktualizowano usługi FDN, ponieważ numer zawiera ponad 20 cyfr."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Nie zaktualizowano FDN. PIN2 był niepoprawny lub numer telefonu został odrzucony."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operacja FDN nie udała się."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Czytanie z karty SIM..."</string>
@@ -486,6 +495,7 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"W tej chwili nie możesz zadzwonić. Zamiast tego możesz wysłać wiadomość."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Usługa nie jest obsługiwana"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Nie można przełączyć połączeń."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Nie udało się wznowić połączenia."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nie można rozdzielić połączenia."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Nie można przekazać."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Nie można prowadzić rozmów konferencyjnych."</string>
@@ -500,6 +510,7 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Nie możesz włączyć trybu samolotowego podczas połączenia alarmowego."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Nie można dzwonić. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> nie jest numerem alarmowym."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Nie można dzwonić. Wybierz numer alarmowy."</string>
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Połączenia alarmowe niedostępne"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Aby zadzwonić, użyj klawiatury."</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Wstrzymaj"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Zakończ"</string>
@@ -520,6 +531,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Nie udało się zaimportować kontaktu"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Aparaty słuchowe"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Włącz funkcje zgodności z aparatem słuchowym"</string>
+    <string name="rtt_mode_title" msgid="6954652435543570121">"Połączenie RTT (wysyłanie SMS-ów w czasie rzeczywistym)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Zezwalaj na wymianę SMS-ów podczas rozmowy głosowej"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT pomaga osobom niesłyszącym, niedosłyszącym, mającym problemy z mówieniem oraz potrzebującym czegoś więcej oprócz głosu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Więcej informacji&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Połączenia RTT są zapisywane jako transkrypcje\n       &lt;br&gt; – Funkcja RTT jest niedostępna w przypadku rozmów wideo"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY wyłączony"</item>
     <item msgid="3971695875449640648">"TTY pełny"</item>
@@ -635,4 +649,107 @@
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Może być konieczne dodanie pakietu danych u operatora <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"DODAJ PAKIET DANYCH"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ANULUJ"</string>
+    <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Połączenie zakończone"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Tryb samolotowy jest włączony"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"Brak dostępu do karty SIM"</string>
+    <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Sieć komórkowa niedostępna"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Wystąpił problem z numerem telefonu, pod który chcesz zadzwonić. Kod błędu: 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"Nie udało się nawiązać połączenia. Kod błędu: 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"Nie udało się nawiązać połączenia. Kod błędu: 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"Nie udało się nawiązać połączenia. Kod błędu: 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"Nie udało się nawiązać połączenia. Kod błędu: 16."</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Użytkownik zajęty"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Użytkownik nie odpowiada"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"Nie udało się nawiązać połączenia. Kod błędu: 19."</string>
+    <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Połączenie odrzucone"</string>
+    <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Numer został zmieniony"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"Nie udało się nawiązać połączenia. Kod błędu: 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"Nie udało się nawiązać połączenia. Kod błędu: 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"Nie udało się nawiązać połączenia. Kod błędu: 27."</string>
+    <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Nieprawidłowy format numeru (numer niekompletny)"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"Nie udało się nawiązać połączenia. Kod błędu: 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Nie udało się nawiązać połączenia. Kod błędu: 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"Nie udało się nawiązać połączenia. Kod błędu: 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"Nie udało się nawiązać połączenia. Kod błędu: 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"Nie udało się nawiązać połączenia. Kod błędu: 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"Nie udało się nawiązać połączenia. Kod błędu: 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"Nie udało się nawiązać połączenia. Kod błędu: 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"Nie udało się nawiązać połączenia. Kod błędu: 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"Nie udało się nawiązać połączenia. Kod błędu: 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"Nie udało się nawiązać połączenia. Kod błędu: 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"Nie udało się nawiązać połączenia. Kod błędu: 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"Nie udało się nawiązać połączenia. Kod błędu: 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"Nie udało się nawiązać połączenia. Kod błędu: 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"Nie udało się nawiązać połączenia. Kod błędu: 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"Nie udało się nawiązać połączenia. Kod błędu: 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"Nie udało się nawiązać połączenia. Kod błędu: 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"Nie udało się nawiązać połączenia. Kod błędu: 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"Nie udało się nawiązać połączenia. Kod błędu: 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"Nie udało się nawiązać połączenia. Kod błędu: 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"Nie udało się nawiązać połączenia. Kod błędu: 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"Nie udało się nawiązać połączenia. Kod błędu: 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"Nie udało się nawiązać połączenia. Kod błędu: 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"Nie udało się nawiązać połączenia. Kod błędu: 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"Nie udało się nawiązać połączenia. Kod błędu: 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"Nie udało się nawiązać połączenia. Kod błędu: 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"Nie udało się nawiązać połączenia. Kod błędu: 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"Nie udało się nawiązać połączenia. Kod błędu: 96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"Nie udało się nawiązać połączenia. Kod błędu: 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"Nie udało się nawiązać połączenia. Kod błędu: 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"Nie udało się nawiązać połączenia. Kod błędu: 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Nie udało się nawiązać połączenia. Kod błędu: 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Nie udało się nawiązać połączenia. Kod błędu: 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Nie udało się nawiązać połączenia. Kod błędu: 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Nie udało się nawiązać połączenia. Kod błędu: 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Nie udało się nawiązać połączenia. Kod błędu: 127."</string>
+    <string name="labelCallBarring" msgid="3452870940716226978">"Blokada połączeń"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Wł."</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Wył."</string>
+    <string name="call_barring_baoc" msgid="1199843944333106035">"Wszystkie wychodzące"</string>
+    <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Wyłączyć blokowanie wszystkich połączeń wychodzących?"</string>
+    <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Blokować wszystkie połączenia wychodzące?"</string>
+    <string name="call_barring_baoic" msgid="3162154267825211826">"Wychodzące międzynarodowe"</string>
+    <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"Wyłączyć blokowanie wychodzących połączeń międzynarodowych?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"Blokować wychodzące połączenia międzynarodowe?"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"Wychodzące w roamingu międzynarodowym"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"Wyłączyć blokowanie połączeń wychodzących w roamingu międzynarodowym?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"Blokować połączenia wychodzące w roamingu międzynarodowym?"</string>
+    <string name="call_barring_baic" msgid="5272726081458339912">"Wszystkie przychodzące"</string>
+    <string name="call_barring_baic_enabled" msgid="2457134916223203380">"Wyłączyć blokowanie wszystkich połączeń przychodzących?"</string>
+    <string name="call_barring_baic_disabled" msgid="6945604947500275636">"Blokować wszystkie połączenia przychodzące?"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"Przychodzące w roamingu międzynarodowym"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"Wyłączyć blokowanie wszystkich połączeń przychodzących w roamingu międzynarodowym?"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"Blokować połączenia przychodzące w roamingu międzynarodowym?"</string>
+    <string name="call_barring_deactivate_all" msgid="5269788384941003415">"Dezaktywuj wszystkie"</string>
+    <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"Dezaktywuj wszystkie ustawienia blokady połączeń"</string>
+    <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Blokada połączeń dezaktywowana"</string>
+    <string name="call_barring_change_pwd" msgid="6887420609726284232">"Zmień hasło"</string>
+    <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Zmień hasło blokady połączeń"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Nie można zmienić hasła blokady połączeń."</string>
+    <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Hasła nie są identyczne"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Wpisz hasło składające się z czterech cyfr"</string>
+    <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Hasło zmienione"</string>
+    <string name="call_barring_old_pwd" msgid="6080515987320238522">"Stare hasło"</string>
+    <string name="call_barring_new_pwd" msgid="7048532299150269547">"Nowe hasło"</string>
+    <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"Potwierdź hasło"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"Wpisz hasło"</string>
+    <string name="call_barring_settings" msgid="80766145008623645">"Ustawienia blokady połączeń"</string>
+    <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Dezaktywować wszystkie ustawienia blokady połączeń?"</string>
+    <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Połączenie przekazane na inny numer."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Połączenie przekierowane."</string>
+    <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Oczekiwanie na połączenie."</string>
+    <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"Zablokowanie numeru odrzucone."</string>
+    <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"Połączenie z zamkniętą grupą użytkowników."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"Połączenia przychodzące są ograniczone."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"Połączenia wychodzące są ograniczone."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"Przekierowanie połączeń aktywne."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"Dodatkowe połączenie zostało przekierowane."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"Połączenie zostało przekierowane."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"Trwa przekierowywanie połączenia."</string>
+    <string name="supp_service_call_on_hold" msgid="1478976782361795422">"Połączenie wstrzymane."</string>
+    <string name="supp_service_call_resumed" msgid="1656475289958070674">"Połączenie wznowione."</string>
+    <string name="supp_service_deflected_call" msgid="138970419873492166">"Połączenie przekazane na inny numer."</string>
+    <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Połączenie przekierowane."</string>
+    <string name="supp_service_conference_call" msgid="4448616364004466832">"Dołączam do połączenia konferencyjnego."</string>
+    <string name="supp_service_held_call_released" msgid="2030677825038709779">"Wstrzymane połączenie zostało wznowione."</string>
 </resources>
