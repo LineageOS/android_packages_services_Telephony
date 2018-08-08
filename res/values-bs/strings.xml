@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI kȏd je otkazan"</string>
     <string name="cancel" msgid="5044513931633602634">"Otkaži"</string>
     <string name="enter_input" msgid="1810529547726803893">"USSD poruka mora imati između <xliff:g id="MIN_LEN">%d</xliff:g> i <xliff:g id="MAX_LEN">%d</xliff:g> znakova. Pokušajte ponovo."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"Upravljaj konferencijskim pozivom"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"Upravljanje konferencijskim pozivom"</string>
     <string name="ok" msgid="3811371167865772377">"Uredu"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Zvučnik"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Slušalice telefona"</string>
@@ -72,7 +72,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="1361715069911607109">"Konfiguriraj postavke računa"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"Svi računi za pozivanje"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"Odaberite koji računi mogu upućivati pozive"</string>
-    <string name="wifi_calling" msgid="739018212480165598">"WiFi pozivanje"</string>
+    <string name="wifi_calling" msgid="739018212480165598">"Pozivanje putem WiFi-ja"</string>
     <string name="connection_service_default_label" msgid="1498481943805913754">"Ugrađena usluga povezivanja"</string>
     <string name="voicemail" msgid="8693759337917898954">"Govorna pošta"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Govorna pošta (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -94,12 +94,12 @@
     <string name="labelCW" msgid="6120513814915920200">"Poziv na čekanju"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Tokom poziva, obavijesti me o dolaznim pozivima"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Tokom poziva, obavijesti me o dolaznim pozivima"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Postavke preusmjeravanja poziva"</string>
-    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Postavke preusmjeravanja poziva (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"Preusmjeravanje poziva"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"Uvijek preusmjeri"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Postavke prosljeđivanja poziva"</string>
+    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Postavke prosljeđivanja poziva (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="labelCF" msgid="2574386948026924737">"Prosljeđivanje poziva"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"Uvijek proslijedi"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Uvijek koristi ovaj broj"</string>
-    <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Preusmjeravanje svih poziva"</string>
+    <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Prosljeđivanje svih poziva"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Preusmjeravaju se svi pozivi na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"Broj je nedostupan"</string>
     <string name="sum_cfu_disabled" msgid="8384177689501334080">"Isključeno"</string>
@@ -107,17 +107,17 @@
     <string name="messageCFB" msgid="3711089705936187129">"Broj kada je zauzeto"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"Preusmjerava se na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"Isključeno"</string>
-    <string name="disable_cfb_forbidden" msgid="3506984333877998061">"Vaš operater ne podržava onemogućavanje preusmjeravanja poziva kada je telefon zauzet."</string>
+    <string name="disable_cfb_forbidden" msgid="3506984333877998061">"Vaš operater ne podržava onemogućavanje prosljeđivanja poziva kada je telefon zauzet."</string>
     <string name="labelCFNRy" msgid="1736067178393744351">"Kada nema odgovora"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"Broj kada nema odgovora"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Preusmjerava se na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Isključeno"</string>
-    <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Vaš operater ne podržava onemogućavanje preusmjeravanja poziva kada se ne odgovori na poziv."</string>
+    <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Vaš operater ne podržava onemogućavanje prosljeđivanja poziva kada se ne odgovori na poziv."</string>
     <string name="labelCFNRc" msgid="2614827454402079766">"Kada je nedostupno"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Broj kada je nedostupno"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Preusmjerava se na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Isključeno"</string>
-    <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Vaš operater ne podržava onemogućavanje preusmjeravanja poziva kada ste nedostupni."</string>
+    <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Vaš operater ne podržava onemogućavanje prosljeđivanja poziva kada ste nedostupni."</string>
     <string name="updating_title" msgid="6146755386174019046">"Postavke poziva"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Postavke poziva može promijeniti samo administrator."</string>
     <string name="call_settings_with_label" msgid="3401177261468593519">"Postavke (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -260,7 +260,7 @@
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Potreban izbor"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Promijeniti podatkovni SIM?"</string>
     <string name="sim_change_data_message" msgid="2163963581444907496">"Koristiti SIM karticu <xliff:g id="NEW_SIM">%1$s</xliff:g> umjesto SIM kartice <xliff:g id="OLD_SIM">%2$s</xliff:g> za prijenos podataka na mobilnoj mreži?"</string>
-    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"WiFi pozivanje"</string>
+    <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Pozivanje putem WiFi-ja"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Operater video pozivanja"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS opcije"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA opcije"</string>
@@ -403,11 +403,11 @@
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Upravljaj listom brojeva telefona"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Privatnost glasa"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Omogući poboljšani naćin rada za privatnost"</string>
-    <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY način rada"</string>
-    <string name="tty_mode_option_summary" msgid="1073835131534808732">"Postavi TTY način rada"</string>
+    <string name="tty_mode_option_title" msgid="9033098925144434669">"Način rada TTY"</string>
+    <string name="tty_mode_option_summary" msgid="1073835131534808732">"Postavi način rada TTY"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"Automatski ponovni pokušaj"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Omogući način rada za automatski ponovni pokušaj"</string>
-    <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Promjena TTY načina rada nije dozvoljena tokom video poziva"</string>
+    <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Promjena načina rada TTY nije dozvoljena tokom video poziva"</string>
     <string name="menu_add" msgid="1882023737425114762">"Dodaj kontakt"</string>
     <string name="menu_edit" msgid="7143003705504672374">"Uredi kontakt"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Izbriši kontakt"</string>
@@ -503,7 +503,7 @@
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Nije moguće uputiti poziv(e)."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Nije moguće staviti pozive na čekanje."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Povežite se na bežičnu mrežu da uputite poziv."</string>
-    <string name="incall_error_promote_wfc" msgid="106510757624022064">"Omogućite WiFi pozivanje da uputite poziv."</string>
+    <string name="incall_error_promote_wfc" msgid="106510757624022064">"Omogućite pozivanje putem WiFi-ja da uputite poziv."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Informacije za hitne slučajeve"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Vlasnik"</string>
     <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"Informacije korisnika <xliff:g id="USER_NAME">%s</xliff:g>"</string>
@@ -522,7 +522,7 @@
     <string name="onscreenHoldText" msgid="2285258239691145872">"Stavi na čekanje"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Prekini"</string>
     <string name="onscreenShowDialpadText" msgid="8561805492659639893">"Telefonska tipkovnica"</string>
-    <string name="onscreenMuteText" msgid="5011369181754261374">"Isključi zvuk poziva"</string>
+    <string name="onscreenMuteText" msgid="5011369181754261374">"Isključi zvuk"</string>
     <string name="onscreenAddCallText" msgid="5140385634712287403">"Dodaj poziv"</string>
     <string name="onscreenMergeCallsText" msgid="6640195098064538950">"Spoji pozive"</string>
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"Zamijeni"</string>
@@ -542,8 +542,8 @@
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Dozvolite razmjenu poruka tokom glasovnog poziva"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT pomaže pozivaocima koji su gluhi, imaju probleme sa sluhom ili govorom te onima kojima treba više od samog glasa.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saznajte više&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT pozivi se pohranjuju kao transkripti poruka\n       &lt;br&gt; - RTT nije dostupan za video pozive"</string>
   <string-array name="tty_mode_entries">
-    <item msgid="512950011423868021">"TTY je isključen"</item>
-    <item msgid="3971695875449640648">"TTY je pun"</item>
+    <item msgid="512950011423868021">"TTY Off"</item>
+    <item msgid="3971695875449640648">"TTY Full"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>
   </string-array>
