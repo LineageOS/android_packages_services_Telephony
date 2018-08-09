@@ -316,11 +316,20 @@
 
     <style name="HeadlineTextAppearance">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="SubtitleTextAppearance" parent="@style/HeadlineTextAppearance">
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="PhoneNumberTextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="PhoneCallHintTextAppearance" parent="@style/PhoneNumberTextAppearance">
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="ShortcutsHintTextAppearance" parent="@style/HeadlineTextAppearance">

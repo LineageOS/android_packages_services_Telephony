@@ -186,15 +186,15 @@ public abstract class EccShortcutAdapter extends BaseAdapter {
             switch (type) {
                 case POLICE:
                     description = mPoliceDescription;
-                    material.iconRes = R.drawable.ic_shield_white_24;
+                    material.iconRes = R.drawable.ic_local_police_gm2_24px;
                     break;
                 case AMBULANCE:
                     description = mAmbulanceDescription;
-                    material.iconRes = R.drawable.ic_emergency_number_24;
+                    material.iconRes = R.drawable.ic_local_hospital_gm2_24px;
                     break;
                 case FIRE:
                     description = mFireDescription;
-                    material.iconRes = R.drawable.ic_fire_white_24;
+                    material.iconRes = R.drawable.ic_local_fire_department_gm2_24px;
                     break;
                 default:
                     // ignore unknown types
@@ -204,7 +204,7 @@ public abstract class EccShortcutAdapter extends BaseAdapter {
                 material.description = description;
             } else {
                 // concatenate multiple types
-                material.iconRes = R.drawable.ic_emergency_number_24;
+                material.iconRes = R.drawable.ic_local_hospital_gm2_24px;
                 material.description = context.getString(R.string.description_concat_format,
                         material.description, description);
             }
