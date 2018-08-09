@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI код цуцлагдсан"</string>
     <string name="cancel" msgid="5044513931633602634">"Цуцлах"</string>
     <string name="enter_input" msgid="1810529547726803893">"USSD зурвасын үсгийн тоо <xliff:g id="MIN_LEN">%d</xliff:g> болон <xliff:g id="MAX_LEN">%d</xliff:g> хооронд байх шаардлагатай. Дахин оролдоно уу."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"Утсан хурлыг удирдах"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"Хурлын дуудлага удирдах"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Чанга яригч"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Утасны чихэвч"</string>
@@ -91,10 +91,10 @@
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Залгасан дуудлагуудад дугаарыг нууцална"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Залгасан дуудлагуудад дугаарыг харуулна"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Гарах дуудлагуудад миний дугаарыг харуулахдаа операторын үндсэн тохиргоог ашиглах"</string>
-    <string name="labelCW" msgid="6120513814915920200">"Дуудлага хүлээлгэнд"</string>
+    <string name="labelCW" msgid="6120513814915920200">"Дуудлага хүлээлгэх"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Дуудлагын дундуур өөр дуудлага ирвэл надад мэдэгдэх"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Дуудлагын дундуур өөр дуудлага ирвэл надад мэдэгдэх"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Дуудлага дамжуулах тохиргоо"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Дуудлага шилжүүлэх тохиргоо"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Дуудлага шилжүүлэх тохиргоонууд (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Дуудлага дамжуулах"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Байнга дамжуулах"</string>
@@ -108,7 +108,7 @@
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"<xliff:g id="PHONENUMBER">{0}</xliff:g> руу дамжуулж байна"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"Идэвхгүй"</string>
     <string name="disable_cfb_forbidden" msgid="3506984333877998061">"Таны оператороос утас завгүй байхад дуудлагыг дамжуулахыг зогсоох үйлчилгээг дэмждэггүй."</string>
-    <string name="labelCFNRy" msgid="1736067178393744351">"Дуудлагыг хүлээн авах боломжгүй бол"</string>
+    <string name="labelCFNRy" msgid="1736067178393744351">"Дуудлагад хариулаагүй үед"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"Хариулаагүй үед дугаар"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> руу дамжуулж байна"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Идэвхгүй"</string>
@@ -386,20 +386,20 @@
     <string name="cdma_activate_device" msgid="3793805892364814518">"Төхөөрөмжийг идэвхжүүлэх"</string>
     <string name="cdma_lte_data_service" msgid="4255018217292548962">"Дата үйлчилгээний тохиргоо"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"Операторын тохиргоо"</string>
-    <string name="fdn" msgid="7878832555095183202">"Тогтвортой Залгах Дугаар"</string>
+    <string name="fdn" msgid="7878832555095183202">"Тогтсон Залгах Дугаарууд"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"Тогтсон Дуудлагын Дугаарууд(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="8777755791892122369">"FDN жагсаалт"</string>
     <string name="fdn_list_with_label" msgid="7437232552210469217">"FDN жагсаалт (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"FDN идэвхжүүлэлт"</string>
-    <string name="fdn_enabled" msgid="5238109009915521240">"Тогтвортой Залгах Дугааруудыг идэвхжсэн"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"Тогтвортой Залгах Дугааруудыг идэвхгүйжүүлсэн"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"FDN идэвхжүүлэх"</string>
+    <string name="fdn_enabled" msgid="5238109009915521240">"Тогтсон Залгах Дугааруудыг идэвхжүүлсэн"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"Тогтсон Залгах Дугааруудыг идэвхгүйжүүлсэн"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"FDN-г идэвхжүүлэх"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"FDN-г идэвхгүйжүүлэх"</string>
     <string name="change_pin2" msgid="2153563695382176676">"PIN2 өөрчлөх"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN идэвхгүйжүүлэх"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN-г идэвхжүүлэх"</string>
-    <string name="sum_fdn" msgid="1959399454900272878">"Тогтвортой залгах дугаарыг удирдах"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN хаягийн PIN-г өөрчлөх"</string>
+    <string name="sum_fdn" msgid="1959399454900272878">"Тогтсон залгах дугааруудыг удирдах"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN хандалтын PIN-г өөрчлөх"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Утасны дугаарын жагсаалтыг удирдах"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Дууны нууцлал"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Сайжруулсан нууцлалын төлвийг идэвхжүүлэх"</string>

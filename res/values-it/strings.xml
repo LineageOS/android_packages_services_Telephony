@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Phone Services"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Chiamata di emergenza"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefono"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"Elenco FDN"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"Elenco numeri consentiti"</string>
     <string name="unknown" msgid="6878797917991465859">"Sconosciuto"</string>
     <string name="private_num" msgid="6713286113000232309">"Numero privato"</string>
     <string name="payphone" msgid="4793877574636445118">"Cabina telefonica"</string>
@@ -390,20 +390,20 @@
     <string name="cdma_activate_device" msgid="3793805892364814518">"Attiva dispositivo"</string>
     <string name="cdma_lte_data_service" msgid="4255018217292548962">"Imposta servizio dati"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"Impostazioni operatore"</string>
-    <string name="fdn" msgid="7878832555095183202">"Numeri selezione fissa (FDN)"</string>
-    <string name="fdn_with_label" msgid="187084204115493366">"Numeri selezione fissa (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"Elenco FDN"</string>
-    <string name="fdn_list_with_label" msgid="7437232552210469217">"Elenco FDN (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn" msgid="7878832555095183202">"Numeri consentiti"</string>
+    <string name="fdn_with_label" msgid="187084204115493366">"Numeri consentiti (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"Elenco numeri consentiti"</string>
+    <string name="fdn_list_with_label" msgid="7437232552210469217">"Elenco numeri consentiti (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Attivazione FDN"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Numeri di selezione fissa attivi"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"Numeri di selezione fissa non attivi"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"La funzionalità Numeri consentiti non è attiva"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Attiva FDN"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Disattiva FDN"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Cambia PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Disattiva FDN"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"Attiva FDN"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"Attiva numeri consentiti"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Gestisci numeri di selezione fissa"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Cambia PIN per accesso FDN"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Cambia PIN per accesso ai numeri consentiti"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gestisci elenco numeri"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Privacy pacchetti vocali"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Attiva modalità privacy ottimizzata"</string>
