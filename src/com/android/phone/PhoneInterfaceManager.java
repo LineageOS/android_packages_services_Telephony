@@ -1919,8 +1919,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @SuppressWarnings("unchecked")
     public List<NeighboringCellInfo>
             getNeighboringCellInfo(String callingPackage, int targetSdk) {
-        // FIXME: use the P constant when available
-        if (targetSdk > android.os.Build.VERSION_CODES.O_MR1 + 1) return null;
+        if (targetSdk > android.os.Build.VERSION_CODES.P) return null;
 
         if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
                 callingPackage) != AppOpsManager.MODE_ALLOWED) {
