@@ -1215,6 +1215,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             EventLog.writeEvent(0x534e4554, "67862398", -1, "");
             throw new SecurityException("MODIFY_PHONE_STATE permission required.");
         }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             return (Boolean) sendRequest(CMD_END_CALL, null, new Integer(subId));
@@ -1850,6 +1851,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // registered cell info, so return a NULL country instead.
         final long identity = Binder.clearCallingIdentity();
         try {
+            if (phoneId == SubscriptionManager.INVALID_PHONE_INDEX) {
+                // Get default phone in this case.
+                phoneId = SubscriptionManager.DEFAULT_PHONE_INDEX;
+            }
             final int subId = mSubscriptionController.getSubIdUsingPhoneId(phoneId);
             // Todo: fix this when we can get the actual cellular network info when the device
             // is on IWLAN.
@@ -2956,14 +2961,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 mApp, subId, callingPackage, "getForbiddenPlmns")) {
             return null;
         }
-        if (appType != TelephonyManager.APPTYPE_USIM && appType != TelephonyManager.APPTYPE_SIM) {
-            loge("getForbiddenPlmnList(): App Type must be USIM or SIM");
-            return null;
-        }
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            Object response = sendRequest(CMD_GET_FORBIDDEN_PLMNS, new Integer(appType), subId);
+            if (appType != TelephonyManager.APPTYPE_USIM
+                    && appType != TelephonyManager.APPTYPE_SIM) {
+                loge("getForbiddenPlmnList(): App Type must be USIM or SIM");
+                return null;
+            }
+            Object response = sendRequest(
+                    CMD_GET_FORBIDDEN_PLMNS, new Integer(appType), subId);
             if (response instanceof String[]) {
                 return (String[]) response;
             }
@@ -3194,21 +3201,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             return PhoneFactory.getImsResolver().getImsConfig(slotId, feature);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
-     * @return true if the IMS resolver is busy resolving a binding and should not be considered
-     * available, false if the IMS resolver is idle.
-     */
-    public boolean isResolvingImsBinding() {
-        enforceModifyPermission();
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return PhoneFactory.getImsResolver().isResolvingBinding();
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4349,14 +4341,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void requestModemActivityInfo(ResultReceiver result) {
         enforceModifyPermission();
-        ModemActivityInfo ret = null;
 
         final long identity = Binder.clearCallingIdentity();
         try {
+            ModemActivityInfo ret = null;
             synchronized (mLastModemActivityInfo) {
                 ModemActivityInfo info = (ModemActivityInfo) sendRequest(CMD_GET_MODEM_ACTIVITY_INFO,
                         null);
-                if (info != null) {
+                if (isModemActivityInfoValid(info)) {
                     int[] mergedTxTimeMs = new int[ModemActivityInfo.TX_POWER_LEVELS];
                     for (int i = 0; i < mergedTxTimeMs.length; i++) {
                         mergedTxTimeMs[i] =
@@ -4386,6 +4378,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    // Checks that ModemActivityInfo is valid. Sleep time, Idle time, Rx time and Tx time should be
+    // less than total activity duration.
+    private boolean isModemActivityInfoValid(ModemActivityInfo info) {
+        if (info == null) {
+            return false;
+        }
+        int activityDurationMs =
+            (int) (info.getTimestamp() - mLastModemActivityInfo.getTimestamp());
+        int totalTxTimeMs = 0;
+        for (int i = 0; i < info.getTxTimeMillis().length; i++) {
+            totalTxTimeMs += info.getTxTimeMillis()[i];
+        }
+        return (info.isValid()
+            && (info.getSleepTimeMillis() <= activityDurationMs)
+            && (info.getIdleTimeMillis() <= activityDurationMs)
+            && (info.getRxTimeMillis() <= activityDurationMs)
+            && (totalTxTimeMs <= activityDurationMs));
     }
 
     /**

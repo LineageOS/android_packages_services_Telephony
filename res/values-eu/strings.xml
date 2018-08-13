@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Ezarpenak leheneratzen…"</string>
     <string name="response_error" msgid="6674110501330139405">"Ez zen sarearen horrelako erantzunik espero."</string>
     <string name="exception_error" msgid="7027667130619518211">"Sarearen edo SIM txartelaren errorea."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS eskaera ohiko deira aldatu da"</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS eskaera USSD eskaerara aldatu da"</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"SS eskaera berrira aldatu da"</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS eskaera bideo-deira aldatu da"</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS eskaera DIAL eskaerara aldatu da."</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS eskaera USSD eskaerara aldatu da."</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS eskaera SS eskaera berrira aldatu da."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS eskaera Video DIAL eskaerara aldatu da."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Telefonoa aplikazioaren Markatze finkoko zenbakiak ezarpena aktibatuta duzu. Ondorioz, deiekin lotutako eginbide batzuk ez dira funtzionatzen ari."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Ezarpenak ikusi aurretik, piztu irratia."</string>
     <string name="close_dialog" msgid="2365884406356986917">"Ados"</string>
@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Sare erabilgarriak"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Bilatzen…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Ez da sarerik aurkitu."</string>
-    <string name="network_query_error" msgid="8466081377231178298">"Ezin izan da aurkitu sarerik. Saiatu berriro."</string>
+    <string name="network_query_error" msgid="6828516148953325006">"Errore bat gertatu da sareak bilatzean."</string>
     <string name="register_on_network" msgid="9055203954040805084">"<xliff:g id="NETWORK">%s</xliff:g> sarean erregistratzen…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"SIM txartelak ez dizu sare honetara konektatzea baimentzen."</string>
     <string name="connect_later" msgid="2308119155752343975">"Une honetan, ezin da sare horretara konektatu. Saiatu berriro geroago."</string>
@@ -176,11 +176,6 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Aldatu sarearen funtzionamendu modua"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Sare mota hobetsia"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(debekatuta)"</string>
-    <string name="choose_network_title" msgid="4023911977543009350">"Aukeratu sarea"</string>
-    <string name="network_disconnected" msgid="2227251609006103194">"Deskonektatuta"</string>
-    <string name="network_connected" msgid="1288589103624338857">"Konektatuta"</string>
-    <string name="network_connecting" msgid="4927203097283533783">"Konektatzen…"</string>
-    <string name="network_could_not_connect" msgid="8254009365807767243">"Ezin izan da konektatu"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA hobetsita"</item>
     <item msgid="8442633436636425221">"GSM soilik"</item>
@@ -243,12 +238,11 @@
     <string name="roaming" msgid="7894878421600247140">"Ibiltaritza"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Konektatu datu-zerbitzuetara ibiltaritzan"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Konektatu datu-zerbitzuetara ibiltaritzan"</string>
-    <string name="roaming_reenable_message" msgid="6843814381576397939">"Datu-ibiltaritza desaktibatuta dago. Sakatu aktibatzeko."</string>
-    <string name="roaming_notification_title" msgid="4749053220884743110">"Galdu da datu-konexioa"</string>
+    <string name="roaming_reenable_message" msgid="8913735676127858115">"Datu-konexioa galdu duzu ibiltaritza desaktibatuta izanda etxeko saretik irten zarelako."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Baliteke kostu handiak ordaindu behar izatea."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Eskatu prezioari buruzko informazioa sare-hornitzaileari."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Ibiltaritzako datuak baimendu nahi dituzu?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"Aplikazioak erabilitako datuak"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"Datuen erabilera"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Datuen <xliff:g id="ID_1">%1$s</xliff:g> erabili dira data hauen artean: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Ezarpen aurreratuak"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operadorea"</string>
@@ -489,7 +483,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Erantzungailuaren zenbakia ezezaguna da"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Ez dago zerbitzurik"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"Hautatutako sarea (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) ez dago erabilgarri"</string>
-    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Deitzeko, aktibatu sare mugikorra, desaktibatu hegaldi modua edo desaktibatu bateria-aurrezlea."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Deitzeko, aktibatu sare mugikorra, desaktibatu hegaldi modua edo desaktibatu bateria aurrezteko modua."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Deia egiteko, desaktibatu hegaldi modua."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Deia egiteko, desaktibatu hegaldi modua edo konektatu haririk gabeko sare batera."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Larrialdikoak ez diren deiak egiteko, irten larrialdi-deiak soilik jasotzeko modutik."</string>
@@ -501,7 +495,6 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Une honetan, ezin da egin deia. Deitu ordez, mezu bat bidaltzen saia zaitezke."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Ez da zerbitzua onartzen"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Ezin da deiz aldatu."</string>
-    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Ezin zaio berrekin deiari."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Ezin da deia bereizi."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Ezin da transferitu."</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Ezin da konferentzia-deirik egin."</string>
@@ -516,7 +509,6 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Ezin da erabili hegaldi modua larrialdi-deietan."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Ezin da deitu. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ez da larrialdietarako zenbakia."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Ezin da deitu. Markatu larrialdietarako zenbakia."</string>
-    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Ezin da egin larrialdi-deirik"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Erabili teklatua markatzeko"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Utzi zain"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Amaitu"</string>
@@ -537,9 +529,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Ezin izan da inportatu kontaktua"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Audiofonoak"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Aktibatu audiofonoen bateragarritasuna"</string>
-    <string name="rtt_mode_title" msgid="6954652435543570121">"Deietan testua bidaltzeko eginbidea"</string>
-    <string name="rtt_mode_summary" msgid="5146344277246544580">"Baimendu mezuak bidali eta jasotzea ahots-deien barruan"</string>
-    <string name="rtt_mode_more_information" msgid="6080420780730383030">"Deietan testua bidaltzeko eginbideak deitzaile gorrei, entzumen-arazoak dituztenei, hitz egiteko ezintasunen bat dutenei edota ahotsaz gain beste makuluren bat behar dutenei laguntzen die.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lortu informazio gehiago&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Deietan testua bidaltzeko eginbidearekin egindako deiak mezu-transkripzio gisa gordetzen dira.\n       &lt;br&gt; - Deietan testua bidaltzeko eginbidea ez da bateragarria bideo-deiekin."</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT txata"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"Aktibatu edo desaktibatu RTT txata"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desaktibatuta"</item>
     <item msgid="3971695875449640648">"TTY osoa"</item>
@@ -557,9 +548,9 @@
     <string name="ota_title_activate" msgid="8616918561356194398">"Aktibatu telefonoa"</string>
     <string name="ota_touch_activate" msgid="6553212803262586244">"Telefono-zerbitzua aktibatzeko, dei berezi bat egin behar da.\n\n\"Aktibatu\" sakatu ondoren, telefonoa aktibatzeko, entzun ematen zaizkizun argibideak."</string>
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"Aktibatzen…"</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"Telefonoa datu-konexioaren zerbitzua aktibatzen ari da.\n\nEragiketa 5 minutura arte luza daiteke."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"Telefonoa datu mugikorren zerbitzua aktibatzen ari da.\n\nEragiketa 5 minutura arte luza daiteke."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Aktibazioa saltatu nahi duzu?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Aktibazioa saltatzen baduzu, ezingo duzu deirik egin, ez eta datu-konexioaren sareetara konektatu ere, baina Wi-Fi sareetara konektatu ahal izango duzu. Telefonoa aktibatzen duzun arte, pizten duzun bakoitzean eskatuko zaizu aktibatzeko."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Aktibazioa saltatzen baduzu, ezingo dituzu deiak egin eta ezingo duzu datu mugikorren sareetara konektatu, baina Wi-Fi sareetara konektatu ahal izango duzu. Telefonoa aktibatzen duzun arte, pizten duzun bakoitzean eskatuko zaizu aktibatzeko."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Saltatu"</string>
     <string name="ota_activate" msgid="1368528132525626264">"Aktibatu"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"Telefonoa aktibatuta dago."</string>
@@ -619,7 +610,7 @@
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Wi-Fi deia"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Irekitzeko, sakatu berriro"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"Errore bat gertatu mezua deskodetzean."</string>
-    <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM txartel batek zerbitzua aktibatu du eta telefonoaren ibiltaritza-gaitasunak eguneratu ditu."</string>
+    <string name="callFailed_cdma_activation" msgid="2307989779233262164">"SIM txartel batek zerbitzua aktibatu du eta telefonoaren ibiltaritza-gaitasunak aldatu ditu."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Dei gehiegi daude aktibo. Amaitu edo bateratu abian diren deiak beste bat egin aurretik."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"Ezin da konektatu. Erabili balio duen SIM txartel bat."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Galdu egin da Wi-Fi konexioa. Amaitu da deia."</string>
@@ -646,64 +637,64 @@
     <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Gehitu datu-konexioa <xliff:g id="PROVIDER_NAME">%s</xliff:g> operadorearen bidez"</string>
     <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Ez dago ibiltaritza-planik"</string>
     <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Gehitu ibiltaritza-plan bat <xliff:g id="PROVIDER_NAME">%s</xliff:g> operadorearen bidez"</string>
-    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Datu-konexioa edo ibiltaritza-plan bat gehitzeko, jarri harremanetan zure operadorearekin (<xliff:g id="PROVIDER_NAME">%s</xliff:g>)."</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Datu mugikorrak edo ibiltaritza-plan bat gehitzeko, jarri harremanetan zure operadorearekin (<xliff:g id="PROVIDER_NAME">%s</xliff:g>)."</string>
     <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Datuak gehitu nahi dituzu?"</string>
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Agian datuak gehitu beharko dituzu <xliff:g id="PROVIDER_NAME">%s</xliff:g> operadorearen bidez"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"GEHITU DATUAK"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"UTZI"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Deia amaitu da"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Hegaldi modua aktibatuta dago"</string>
-    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"Ezin da atzitu SIM txartela"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Irratia desaktibatuta dago"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Ez dago SIM txartelik edo errore bat gertatu da SIM txartelarekin"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Sare mugikorra ez dago erabilgarri"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Arazoren bat dago markatzen ari zaren zenbakiarekin. Errore-kodea: 1."</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"Ezin izan da egin deia. Errore-kodea: 3."</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"Ezin izan da egin deia. Errore-kodea: 6."</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"Ezin izan da egin deia. Errore-kodea: 8."</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"Ezin izan da egin deia. Errore-kodea: 16."</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Esleitu gabeko zenbakia"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Ez dago helmugarako biderik"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanala ez da onartzen"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operadoreak zehaztutako debekua"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Dei-deskonexio normala"</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Erabiltzailea okupatuta dago"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Erabiltzaileak ez du erantzuten"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"Ezin izan da egin deia. Errore-kodea: 19."</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Erabiltzaileek ez dute erantzuten"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Erabiltzaileentzako alerta, ez dago erantzunik"</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Deia baztertu da"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Zenbakia aldatu da"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"Ezin izan da egin deia. Errore-kodea: 25."</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"Ezin izan da egin deia. Errore-kodea: 26."</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"Ezin izan da egin deia. Errore-kodea: 27."</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Harpidetza"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Hautatutako erabiltzailearen deia ez da deskonektatu"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Helmugak ez du funtzionatzen"</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Zenbaki-formatuak ez du balio (zenbakia ez dago osatuta)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"Ezin izan da egin deia. Errore-kodea: 29."</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Ezin izan da egin deia. Errore-kodea: 30."</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"Ezin izan da egin deia. Errore-kodea: 31."</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"Ezin izan da egin deia. Errore-kodea: 34."</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"Ezin izan da egin deia. Errore-kodea: 38."</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"Ezin izan da egin deia. Errore-kodea: 41."</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"Ezin izan da egin deia. Errore-kodea: 42."</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"Ezin izan da egin deia. Errore-kodea: 43."</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"Ezin izan da egin deia. Errore-kodea: 44."</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"Ezin izan da egin deia. Errore-kodea: 47."</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"Ezin izan da egin deia. Errore-kodea: 49."</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"Ezin izan da egin deia. Errore-kodea: 50."</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"Ezin izan da egin deia. Errore-kodea: 55."</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"Ezin izan da egin deia. Errore-kodea: 57."</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"Ezin izan da egin deia. Errore-kodea: 58."</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"Ezin izan da egin deia. Errore-kodea: 63."</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"Ezin izan da egin deia. Errore-kodea: 65."</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"Ezin izan da egin deia. Errore-kodea: 68."</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"Ezin izan da egin deia. Errore-kodea: 69."</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"Ezin izan da egin deia. Errore-kodea: 70."</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"Ezin izan da egin deia. Errore-kodea: 79."</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"Ezin izan da egin deia. Errore-kodea: 81."</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"Ezin izan da egin deia. Errore-kodea: 87."</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"Ezin izan da egin deia. Errore-kodea: 88."</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"Ezin izan da egin deia. Errore-kodea: 91."</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"Ezin izan da egin deia. Errore-kodea: 95."</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"Ezin izan da egin deia. Errore-kodea: 96."</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"Ezin izan da egin deia. Errore-kodea: 97."</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"Ezin izan da egin deia. Errore-kodea: 98."</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"Ezin izan da egin deia. Errore-kodea: 99."</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Ezin izan da egin deia. Errore-kodea: 100."</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Ezin izan da egin deia. Errore-kodea: 101."</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Ezin izan da egin deia. Errore-kodea: 102."</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Ezin izan da egin deia. Errore-kodea: 111."</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Ezin izan da egin deia. Errore-kodea: 127."</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Instalazioa baztertu da"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"EGOERARI BURUZKO GALDERARI emandako erantzuna"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normala, zehaztugabea"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Ez dago zirkuitorik/kanalik erabilgarri"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Sareak ez du funtzionatzen"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Aldi baterako hutsegitea"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Pilaketa ekipamenduz aldatzean"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Informazioa atzitzeko eskaera baztertu da"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Eskatutako zirkuitua/kanala ez dago erabilgarri"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Baliabideak ez daude erabilgarri, zehaztugabea"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Zerbitzuaren kalitatea ez dago erabilgarri"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Eskatutako instalazioa ez dago harpidetuta"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Erabiltzaile talde itxian deiak jasotzeko aukera debekatuta dago"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Jabearen gaitasuna ez da onartzen"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Jabearen gaitasuna ez dago erabilgarri une honetan"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Zerbitzua edo aukera ez dago erabilgarri, zehaztugabea"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Jabearen zerbitzua ez da ezarri"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACMmax datuak baino handiagoak edo berdinak dira ACM datuak"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Eskatutako instalazioa ez da ezarri"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Jabeak informazio digital murrizturako gaitasuna soilik du erabilgarri"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Zerbitzua edo aukera ez da ezarri, zehaztugabea"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Transakzioa identifikatzeko balioa okerra da"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Erabiltzailea ez da talde itxiko kidea"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Helmuga ez da bateragarria"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Garraiorako hautatutako sareak ez du balio"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Mezua semantikoki okerra da"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Derrigorrezko informazioak ez du balio"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Mezu mota ez dago edo ez da ezarri"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Mezu mota ez da bateragarria protokoloaren egoerarekin"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Informazio-elementua ez dago edo ez da ezarri"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Baldintzapeko IE errorea"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Mezua ez da bateragarria protokoloaren egoerarekin"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Berreskuratze-prozesua iraungi da"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokoloaren errorea, zehaztugabea"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Elkarlanean, zehaztugabea"</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Deiak debekatzeko aukerak"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Aktibatuta"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Desaktibatuta"</string>

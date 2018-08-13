@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Prebieha vrátenie predchádzajúcich nastavení…"</string>
     <string name="response_error" msgid="6674110501330139405">"Neočakávaná odpoveď siete."</string>
     <string name="exception_error" msgid="7027667130619518211">"Došlo k chybe siete alebo SIM karty."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"Žiadosť SS bola zmenená na bežný hovor"</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Žiadosť SS bola zmenená žiadosť USSD"</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Zmenené na novú žiadosť SS"</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Žiadosť SS bola zmenená na videohovor"</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Žiadosť SS bola upravená na žiadosť DIAL."</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Žiadosť SS bola upravená na žiadosť USSD."</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Žiadosť SS bola upravená na novú žiadosť SS."</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Žiadosť SS bola upravená na žiadosť Video DIAL."</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"V aplikácii Telefón je zapnutý režim povolených čísel. Z toho dôvodu nefungujú niektoré funkcie volania."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Pred zobrazením nastavení zapnite rádio."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"Dostupné siete"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Hľadá sa…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Nebola nájdená žiadna sieť."</string>
-    <string name="network_query_error" msgid="8466081377231178298">"Nepodarilo sa nájsť siete. Skúste to znova."</string>
+    <string name="network_query_error" msgid="6828516148953325006">"Pri vyhľadávaní sietí došlo k chybe."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Prebieha registrácia v sieti <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"Vaša SIM karta nepovoľuje pripojenie k tejto sieti."</string>
     <string name="connect_later" msgid="2308119155752343975">"V tejto chvíli sa nedá pripojiť k sieti. Skúste to znova neskôr."</string>
@@ -176,11 +176,6 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Zmeniť prevádzkový režim siete"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Preferovaný typ siete"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(zakázané)"</string>
-    <string name="choose_network_title" msgid="4023911977543009350">"Vybrať sieť"</string>
-    <string name="network_disconnected" msgid="2227251609006103194">"Odpojené"</string>
-    <string name="network_connected" msgid="1288589103624338857">"Pripojené"</string>
-    <string name="network_connecting" msgid="4927203097283533783">"Pripája sa..."</string>
-    <string name="network_could_not_connect" msgid="8254009365807767243">"Nepodarilo sa pripojiť"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA – preferované"</item>
     <item msgid="8442633436636425221">"Iba GSM"</item>
@@ -243,12 +238,11 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Pripájať sa k dátovým službám pri roamingu"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Pripájať sa k dátovým službám pri roamingu"</string>
-    <string name="roaming_reenable_message" msgid="6843814381576397939">"Dátový roaming je vypnutý. Klepnutím ho zapnete."</string>
-    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobilné dátové pripojenie bolo stratené"</string>
+    <string name="roaming_reenable_message" msgid="8913735676127858115">"Dátové pripojenie bolo prerušené, pretože ste opustili domovskú sieť a máte vypnutý dátový roaming."</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Môžu sa vám účtovať vysoké poplatky."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Informácie o cenách získate od svojho poskytovateľa siete."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Povoliť dátový roaming?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"Spotreba dát aplikácií"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"Spotreba dát"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Spotreba mobilných dát za obdobie <xliff:g id="ID_2">%2$s</xliff:g> je <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Rozšírené"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operátor"</string>
@@ -495,7 +489,6 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Hovor sa momentálne nedá pridať. Môžete namiesto toho skúsiť poslať správu."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Služba nie je podporovaná"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Nedajú sa prepínať hovory"</string>
-    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Hovor sa nedá obnoviť."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nedá sa rozdeliť hovor"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Nedá sa preniesť"</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Hovory nie je možné spojiť do konferenčného hovoru."</string>
@@ -510,7 +503,6 @@
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Počas tiesňového volania sa nedá zapnúť režim v lietadle."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Hovor nie je možné uskutočniť. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> nie je číslo tiesňového volania."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Hovor nie je možné uskutočniť. Vytočte číslo tiesňového volania."</string>
-    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Tiesňové volania nie sú k dispozícii"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Číslo vytočíte pomocou klávesnice."</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Podržať"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Koniec"</string>
@@ -531,9 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontakt sa nepodarilo importovať"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Načúvacie pomôcky"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Zapnúť režim kompatibility s načúvacou pomôckou"</string>
-    <string name="rtt_mode_title" msgid="6954652435543570121">"Posielanie okamžitého textu (RTT) počas hovorov"</string>
-    <string name="rtt_mode_summary" msgid="5146344277246544580">"Povoliť posielanie správ počas hlasového hovoru"</string>
-    <string name="rtt_mode_more_information" msgid="6080420780730383030">"Okamžitý text pomáha volajúcim, ktorí nepočujú, majú problémy so sluchom, rečovú poruchu alebo potrebujú viac ako samotný hlas.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Ďalšie informácie&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Okamžitý text poslaný počas hovoru sa uloží ako prepis správ\n       &lt;br&gt; – Okamžitý text nie je k dispozícii počas videohovorov"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"Zapnúť alebo vypnúť RTT"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Textový telefón vypnutý"</item>
     <item msgid="3971695875449640648">"Úplný textový telefón"</item>
@@ -650,58 +641,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"PRIDAŤ DÁTA"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ZRUŠIŤ"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Hovor bol ukončený"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Režim v lietadle je zapnutý"</string>
-    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"Nedá sa získať prístup k SIM karte"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Rádio je vypnuté"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Chýba SIM karta alebo došlo k chybe SIM karty"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobilná sieť nie je k dispozícii"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Vyskytol sa problém s telefónnym číslom, ktoré sa pokúšate vytočiť. Kód chyby 1."</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"Hovor sa nepodarilo uskutočniť. Kód chyby 3."</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"Hovor sa nepodarilo uskutočniť. Kód chyby 6."</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"Hovor sa nepodarilo uskutočniť. Kód chyby 8."</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"Hovor sa nepodarilo uskutočniť. Kód chyby 16."</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Nepridelené (nepriradené) číslo"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Chýba cesta k cieľu"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanál je neprijateľný"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Blokovanie stanovené prevádzkovateľom"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Odstraňovanie štandardného hovoru"</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Používateľ má obsadené"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Používateľ neodpovedá"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"Hovor sa nepodarilo uskutočniť. Kód chyby 19."</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Neodpovedá žiadny používateľ"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Vyzváňanie u používateľa, bez odpovede"</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Hovor bol zamietnutý"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Číslo bolo zmenené"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"Hovor sa nepodarilo uskutočniť. Kód chyby 25."</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"Hovor sa nepodarilo uskutočniť. Kód chyby 26."</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"Hovor sa nepodarilo uskutočniť. Kód chyby 27."</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Priradenie prednosti"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Odstraňovanie nevybratého používateľa"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Cieľ je mimo prevádzky"</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Neplatný formát čísla (neúplné číslo)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"Hovor sa nepodarilo uskutočniť. Kód chyby 29."</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Hovor sa nepodarilo uskutočniť. Kód chyby 30."</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"Hovor sa nepodarilo uskutočniť. Kód chyby 31."</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"Hovor sa nepodarilo uskutočniť. Kód chyby 34."</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"Hovor sa nepodarilo uskutočniť. Kód chyby 38."</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"Hovor sa nepodarilo uskutočniť. Kód chyby 41."</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"Hovor sa nepodarilo uskutočniť. Kód chyby 42."</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"Hovor sa nepodarilo uskutočniť. Kód chyby 43."</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"Hovor sa nepodarilo uskutočniť. Kód chyby 44."</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"Hovor sa nepodarilo uskutočniť. Kód chyby 47."</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"Hovor sa nepodarilo uskutočniť. Kód chyby 49."</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"Hovor sa nepodarilo uskutočniť. Kód chyby 50."</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"Hovor sa nepodarilo uskutočniť. Kód chyby 55."</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"Hovor sa nepodarilo uskutočniť. Kód chyby 57."</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"Hovor sa nepodarilo uskutočniť. Kód chyby 58."</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"Hovor sa nepodarilo uskutočniť. Kód chyby 63."</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"Hovor sa nepodarilo uskutočniť. Kód chyby 65."</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"Hovor sa nepodarilo uskutočniť. Kód chyby 68."</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"Hovor sa nepodarilo uskutočniť. Kód chyby 69."</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"Hovor sa nepodarilo uskutočniť. Kód chyby 70."</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"Hovor sa nepodarilo uskutočniť. Kód chyby 79."</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"Hovor sa nepodarilo uskutočniť. Kód chyby 81."</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"Hovor sa nepodarilo uskutočniť. Kód chyby 87."</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"Hovor sa nepodarilo uskutočniť. Kód chyby 88."</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"Hovor sa nepodarilo uskutočniť. Kód chyby 91."</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"Hovor sa nepodarilo uskutočniť. Kód chyby 95."</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"Hovor sa nepodarilo uskutočniť. Kód chyby 96."</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"Hovor sa nepodarilo uskutočniť. Kód chyby 97."</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"Hovor sa nepodarilo uskutočniť. Kód chyby 98."</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"Hovor sa nepodarilo uskutočniť. Kód chyby 99."</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Hovor sa nepodarilo uskutočniť. Kód chyby 100."</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Hovor sa nepodarilo uskutočniť. Kód chyby 101."</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Hovor sa nepodarilo uskutočniť. Kód chyby 102."</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Hovor sa nepodarilo uskutočniť. Kód chyby 111."</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Hovor sa nepodarilo uskutočniť. Kód chyby 127."</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Prostriedok bol zamietnutý"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Odpoveď na ZISTENIE STAVU"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Štandardné, nešpecifikované"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"K dispozícii nie je žiadny okruh alebo kanál"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Sieť je mimo prevádzky"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Dočasná chyba"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Nepriechodnosť prepájacieho zariadenia"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Informácie o prístupe boli zahodené"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Požadovaný okruh alebo kanál nie je k dispozícii"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Zdroje nie sú k dispozícii, nešpecifikované"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Kvalita služby nie je k dispozícii"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Nie je prihlásený odber požadovaného prostriedku"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Prichádzajúce hovory boli zablokované v rámci uzavretej skupiny používateľov"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Schopnosť nosnej služby nie je autorizovaná"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Schopnosť nosnej služby nie je momentálne k dispozícii"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Služba alebo možnosť nie je k dispozícii, nešpecifikované"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Nosná služba nie je implementovaná"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"Hodnota ACM je rovnaká alebo väčšia ako hodnota ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Požadovaný prostriedok nie je implementovaný"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"K dispozícii je iba obmedzená schopnosť nosnej služby digitálnych informácií"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Služba alebo možnosť nie je implementovaná, nešpecifikované"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Neplatná hodnota identifikátora transakcie"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Používateľ nie je členom uzavretej skupiny používateľov"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Nekompatibilný cieľ"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Neplatný výber tranzitnej siete"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Sémanticky nesprávna správa"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Neplatné povinné informácie"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Typ správy neexistuje alebo nie je implementovaný"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Typ správy nie je kompatibilný so stavom protokolu"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Informačný prvok neexistuje alebo nie je implementovaný"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Podmienečná chyba informačného prvku"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Správa nie je kompatibilná so stavom protokolu"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Obnovenie pri vypršaní časovača"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Chyba protokolu, nešpecifikované"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Spolupráca, nešpecifikované"</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Blokovanie hovorov"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Zapnuté"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Vypnuté"</string>

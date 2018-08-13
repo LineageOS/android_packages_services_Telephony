@@ -19,7 +19,7 @@
     <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ទិន្នន័យ​ទូរសព្ទចល័ត"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"សេវាកម្មទូរស័ព្ទ"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"អ្នក​ហៅ​នៅ​ពេល​មាន​អាសន្ន"</string>
-    <string name="phoneIconLabel" msgid="2331230813161304895">"ទូរសព្ទ"</string>
+    <string name="phoneIconLabel" msgid="2331230813161304895">"ទូរស័ព្ទ"</string>
     <string name="fdnListLabel" msgid="8630418672279521003">"បញ្ជី FDN"</string>
     <string name="unknown" msgid="6878797917991465859">"មិន​ស្គាល់"</string>
     <string name="private_num" msgid="6713286113000232309">"លេខ​ឯកជន"</string>
@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"ត្រឡប់​ការ​កំណត់…"</string>
     <string name="response_error" msgid="6674110501330139405">"ការ​ឆ្លើយ​តប​ដែល​មិន​រំពឹង​ទុក​ពី​​បណ្ដាញ​។"</string>
     <string name="exception_error" msgid="7027667130619518211">"បញ្ហា​ស៊ីមកាត ឬ​បណ្ដាញ។"</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"សំណើ SS បាន​ប្ដូរ​ទៅ​ការហៅ​ជា​ប្រចាំ"</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"សំណើ SS បាន​ប្ដូរ​ទៅ​សំណើ USSD"</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"បាន​ប្ដូរ​ទៅ​សំណើ SS ថ្មី"</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"សំណើ SS បាន​ប្ដូរ​ទៅ​ការហៅ​ជា​វីដេអូ"</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"សំណើ SS ត្រូវបានកែសម្រួលទៅសំណើនៃការហៅ។"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"សំណើ SS ត្រូវបានកែសម្រួលទៅសំណើសារ USSD។"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"សំណើ SS ត្រូវបានកែសម្រួលទៅតាមសំណើ SS ថ្មី។"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"បាន​កែប្រែ​សំណើ SS ទៅជា​សំណើ DIAL ជា​វីដេអូ។"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"បាន​បើក​ការ​កំណត់​លេខ​ហៅ​​ថេរ​​​នៃ​កម្មវិធី​ទូរស័ព្ទ​របស់​អ្នក។ ជា​លទ្ធផល លក្ខណៈ​មួយ​ចំនួន​ដែល​ទាក់ទង​នឹង​ការ​ហៅ​មិន​ដំណើរការ។"</string>
     <string name="radio_off_error" msgid="2304459933248513376">"បើក​​វិទ្យុ​មុន​ពេល​មើល​ការ​កំណត់​ទាំង​នេះ​។"</string>
     <string name="close_dialog" msgid="2365884406356986917">"យល់​ព្រម​"</string>
@@ -163,7 +163,7 @@
     <string name="label_available" msgid="1181658289009300430">"បណ្ដាញ​ដែល​មាន"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"កំពុង​ស្វែងរក..."</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"រក​មិន​ឃើញ​បណ្ដាញ។"</string>
-    <string name="network_query_error" msgid="8466081377231178298">"មិន​អាច​រក​ឃើញ​បណ្ដាញ​ទេ។ ព្យាយាម​ម្ដង​ទៀត។"</string>
+    <string name="network_query_error" msgid="6828516148953325006">"កំហុស​ខណៈ​ស្វែងរក​បណ្ដាញ។"</string>
     <string name="register_on_network" msgid="9055203954040805084">"ចុះឈ្មោះ​នៅ​លើ <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"មិន​អនុញ្ញាត​ឲ្យ​ស៊ីមកាត​របស់​អ្នក​តភ្ជាប់​ទៅ​បណ្ដាញ​នេះ​ទេ។"</string>
     <string name="connect_later" msgid="2308119155752343975">"មិន​អាច​តភ្ជាប់​ទៅ​បណ្ដាញ​ឥឡូវ​នេះ​បាន​ទេ។ ព្យាយាម​ម្ដងទៀត​ពេលក្រោយ។"</string>
@@ -176,11 +176,6 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ប្ដូរ​របៀប​ប្រតិបត្តិការ​បណ្ដាញ"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"ប្រភេទ​បណ្ដាញ​​ដែល​​ពេញចិត្ត"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(ហាម)"</string>
-    <string name="choose_network_title" msgid="4023911977543009350">"ជ្រើសរើសបណ្តាញ"</string>
-    <string name="network_disconnected" msgid="2227251609006103194">"បាន​ផ្ដាច់"</string>
-    <string name="network_connected" msgid="1288589103624338857">"បានភ្ជាប់"</string>
-    <string name="network_connecting" msgid="4927203097283533783">"កំពុង​ភ្ជាប់..."</string>
-    <string name="network_could_not_connect" msgid="8254009365807767243">"មិន​អាចភ្ជាប់​បានទេ"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"ប្រើ GSM/WCDMA ជា​អាទិភាព"</item>
     <item msgid="8442633436636425221">"GSM ប៉ុណ្ណោះ"</item>
@@ -243,12 +238,11 @@
     <string name="roaming" msgid="7894878421600247140">"រ៉ូ​មីង"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
-    <string name="roaming_reenable_message" msgid="6843814381576397939">"ការរ៉ូមីង​ទិន្នន័យ​ត្រូវ​បាន​បិទ។ ចុច ដើម្បី​បើក។"</string>
-    <string name="roaming_notification_title" msgid="4749053220884743110">"ដាច់​ការតភ្ជាប់​ទិន្នន័យ​ចល័ត"</string>
+    <string name="roaming_reenable_message" msgid="8913735676127858115">"អ្នក​បាន​បាត់បង់​ការ​តភ្ជាប់​ទិន្នន័យ ពីព្រោះ​អ្នក​បាន​ចាកចេញ​ពី​បណ្ដាញ​ដើម​របស់​អ្នក​ជាមួយ​រ៉ូមីង​ទិន្នន័យ​បាន​បិទ។"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"អាចនាំឲ្យមានការគិតប្រាក់ច្រើនពីអ្នក។"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ពិនិត្យមើល​តម្លៃ​ជាមួយ​ក្រុមហ៊ុន​ផ្ដល់​សេវា​​បណ្ដាញ​​របស់​អ្នក។"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"អនុញ្ញាតឲ្យរ៉ូមីងទិន្នន័យ?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"ការប្រើប្រាស់​ទិន្នន័យកម្មវិធី"</string>
+    <string name="data_usage_title" msgid="8759619109516889802">"ការ​ប្រើ​ប្រាស់ទិន្នន័យ"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"បានប្រើទិន្នន័យទូរសព្ទអស់ <xliff:g id="ID_1">%1$s</xliff:g> នៅថ្ងៃទី <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"កម្រិតខ្ពស់"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"ក្រុមហ៊ុន​បម្រើ​សេវា​ទូរសព្ទ"</string>
@@ -495,7 +489,6 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"មិន​អាច​បញ្ចូល​ការហៅបាន​ទេ​នៅពេល​នេះ។ អ្នក​អាច​ព្យាយាម​ទាក់ទង​​តាមរយៈ​ការផ្ញើសារ។"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"សេវាកម្មមិនត្រូវបានគាំទ្រទេ។"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"មិនអាចឆ្លាស់ការហៅបានទេ។"</string>
-    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"មិន​អាច​បន្ត​ការហៅ​ទូរសព្ទ​បាន​ទេ។"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"មិនអាចបំបែកការហៅបានទេ។"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"មិនអាចផ្ទេរបានទេ។"</string>
     <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"មិន​អាច​ហៅ​ជា​សន្និសីទ។"</string>
@@ -504,13 +497,12 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"មិនអាចរង់ចាំការហៅទេ"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ភ្ជាប់ទៅបណ្តាញឥតខ្សែដើម្បីធ្វើការហៅ។"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"បើក​ការ​ហៅ​តាម​​វ៉ាយហ្វាយ​ដើម្បី​ធ្វើ​ការ​ហៅ។"</string>
-    <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ការហៅ​ទូរសព្ទសង្គ្រោះ​បន្ទាន់"</string>
+    <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ការ​ហៅ​នៅ​ពេល​មាន​អាសន្ន"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"កំពុង​បើក​វិទ្យុ…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"គ្មានសេវាទេ។ ព្យាយាមម្តង…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"មិន​អាច​ចូល​ជា​របៀប​លើ​យន្តហោះ​​នៅ​អំឡុង​ការ​ហៅ​បន្ទាន់​បាន​ទេ។"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"មិនអាចហៅបានទេ។ <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> មិនមានជាលេខអាសន្នទេ។"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"មិនអាចហៅបានទេ។ ចុចហៅលេខអាសន្ន។"</string>
-    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"មិន​អាច​ហៅ​បន្ទាន់​បាន​ទេ"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ប្រើ​​ក្ដារចុច​ដើម្បី​ចុច​លេខ"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"រង់ចាំ"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"បញ្ចប់"</string>
@@ -531,9 +523,8 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"បានបរាជ័យក្នុងការនាំចូលទំនាក់ទំនង"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"ឧបករណ៍​ជំនួយការ​ស្ដាប់"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"បើក​មុខងារដែលត្រូវគ្នានឹងឧបករណ៍​ជំនួយ​ការ​ស្ដាប់"</string>
-    <string name="rtt_mode_title" msgid="6954652435543570121">"ការហៅ​តាម​សារ​ជា​អក្សរ​ក្នុង​ពេល​ជាក់ស្ដែង"</string>
-    <string name="rtt_mode_summary" msgid="5146344277246544580">"អនុញ្ញាត​ការផ្ញើសារ​នៅ​ក្នុង​ការហៅ​ជា​សំឡេង"</string>
-    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT ជួយ​អ្នក​ហៅ​ទូរសព្ទ​ដែល​​ថ្លង់ ពិបាក​ក្នុង​ការស្ដាប់ មិន​អាច​និយាយ​បាន ឬ​​មាន​តម្រូវការ​ក្រៅ​ពី​សំឡេង។&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ស្វែងយល់​បន្ថែម&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - ការហៅ​ទូរសព្ទតាម RTT ត្រូវ​បាន​រក្សាទុក​ជា​ប្រតិចារឹក​សារ\n       &lt;br&gt; - RTT មិន​មានសម្រាប់ការហៅ​ជា​វីដេអូ​​ទេ"</string>
+    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
+    <string name="rtt_mode_summary" msgid="7346441783429748083">"បើក ឬ​បិទ RTT"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"បិទ TTY"</item>
     <item msgid="3971695875449640648">"TTY ពេញ"</item>
@@ -646,58 +637,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"បញ្ចូល​ទិន្នន័យ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"បោះបង់"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"បាន​បញ្ចប់​ការ​ហៅ"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"មុខងារ​ពេល​ជិះ​យន្តហោះ​បើក"</string>
-    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"មិន​អាច​ចូល​ប្រើប្រាស់​ស៊ីម​កាត​បាន​ទេ"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"បិទ​វិទ្យុ"</string>
+    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"គ្មាន​ស៊ីម​កាត ឬ​បញ្ហា​ស៊ីម​កាត"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"មិនមានបណ្ដាញ​ទូរសព្ទចល័ត​"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"មាន​បញ្ហា​ជាមួយ​លេខ​ទូរសព្ទ​ដែល​អ្នក​កំពុង​ព្យាយាម​ចុច​ហៅ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 1។"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 3។"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 6។"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 8។"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 16។"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"លេខ​ដែលមិន​បាន​កំណត់ (មិន​បាន​បែងចែក)"</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"គ្មាន​ផ្លូវ​ទៅ​គោលដៅ"</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"ប៉ុស្ដិ៍​មិន​អាច​ទទួល​យក​​បានទេ"</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"ប្រតិបត្តិករ​បាន​កំណត់​ការរារាំង"</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"ការសម្អាត​ការហៅ​ទូរសព្ទ​ធម្មតា"</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"អ្នក​ប្រើប្រាស់​រវល់"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"អ្នក​ប្រើប្រាស់​មិន​ឆ្លើយតប"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 19។"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"គ្មាន​ការឆ្លើយតប​របស់​អ្នក​ប្រើប្រាស់"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"ការជូនដំណឹង​អ្នក​ប្រើប្រាស់ គ្មាន​ចម្លើយ"</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"បាន​ច្រាន​ចោល​ការហៅ"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"បាន​ប្ដូរ​លេខ"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 25។"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 26។"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 27។"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"ការទិញ​មុន"</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"គ្មាន​ការសម្អាត​អ្នក​ប្រើប្រាស់​ដែល​បាន​ជ្រើសរើស​ទេ"</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"គោលដៅ​មិនដំណើរការ"</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"ទ្រង់ទ្រាយ​លេខ​មិន​ត្រឹមត្រូវ (លេខ​មិន​ពេញលេញ)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 29។"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 30។"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 31។"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 34។"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 38។"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 41។"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 42។"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 43។"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 44។"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 47។"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 49។"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 50។"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 55។"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 57។"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 58។"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 63។"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 65។"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 68។"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 69។"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 70។"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 79។"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 81។"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 87។"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 88។"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 91។"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 95។"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 96។"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 97។"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 98។"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​គឺ 99។"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​ 100។"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា 101។"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា 102។"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា 111។"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"មិន​អាចហៅទូរសព្ទបានទេ។ លេខ​កូដ​មាន​បញ្ហា​ 127។"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"បាន​ច្រានចោល​កន្លែង"</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"ការឆ្លើយតប​ទៅ​សំណួរ​ស្ថានភាព"</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"ធម្មតា មិន​បាន​បញ្ជាក់"</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"មិន​មាន​សៀគ្វី/ប៉ុស្តិ៍​អាច​ប្រើបាន"</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"បណ្ដាញ​​មិន​ដំណើរការ"</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"ការមិនដំណើរការ​ជា​បណ្ដោះអាសន្ន"</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"មាន​បញ្ហា​ការប្ដូរ​ឧបករណ៍"</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"បោះបង់​ការចូលប្រើប្រាស់​ព័ត៌មាន"</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"មិនមានសៀគ្វី/ប៉ុស្តិ៍​ដែល​បាន​ស្នើ​ទេ"</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"អត់​មាន​ធនធាន មិន​បាន​បញ្ជាក់"</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"អត់​មាន​គុណភាព​សេវាកម្ម"</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"កន្លែង​ដែល​បាន​ស្នើ​មិន​បាន​ជាវ"</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"បាន​រារាំង​​ការហៅ​ចូល​នៅ​ក្នុង CUG"</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"សមត្ថភាព​បញ្ជូនសារ​មិន​ត្រូវបាន​​ផ្ដល់​សិទ្ធិ"</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"បច្ចុប្បន្ន​នេះមិនមានសមត្ថភាព​បញ្ជូនសារ​ទេ"</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"មិនមានសេវាកម្ម ឬ​ជម្រើស មិន​បាន​បញ្ជាក់"</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"សេវាកម្ម​បញ្ជូនសារ​មិន​ត្រូវបាន​អនុវត្ត"</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM ស្មើនឹង ឬ​ធំជាង ACMmax"</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"កន្លែង​ដែល​បាន​ស្នើ​មិន​បាន​អនុវត្ត"</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"មាន​តែ​សមត្ថភាព​បញ្ជូនសារ​ចំពោះព័ត៌មាន​ឌីជីថល​ដែល​បានដាក់​កំហិត​ប៉ុណ្ណោះ​"</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"សេវាកម្ម ឬ​ជម្រើស​មិន​បាន​អនុវត្ត មិន​បាន​បញ្ជាក់"</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"តម្លៃ​សម្គាល់​ប្រតិបត្តិការ​មិន​ត្រឹមត្រូវ"</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"អ្នក​ប្រើប្រាស់​មិន​មែន​ជា​សមាជិក​នៃ CUG"</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"គោលដៅ​មិន​ត្រូវគ្នា"</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"ការជ្រើសរើស​បណ្ដាញ​ឆ្លងកាត់​មិន​ត្រឹមត្រូវ"</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"អត្ថន័យ​សារ​មិន​ត្រឹមត្រូវ"</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"ព័ត៌មាន​ចាំបាច់​មិន​ត្រឹមត្រូវ"</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"ប្រភេទ​សារ​មិន​មាន ឬ​មិន​បាន​អនុវត្ត"</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"ប្រភេទ​សារ​មិន​ត្រូវគ្នា​ជាមួយ​ស្ថានភាព​វិធី"</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"ធាតុ​ព័ត៌មាន​មិន​មាន​ ឬ​មិន​បាន​អនុវត្ត"</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"បញ្ហា IE តាម​លក្ខខណ្ឌ"</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"សារ​មិន​ត្រូវគ្នា​ជាមួយ​ស្ថានភាព​វិធី"</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"ការសង្គ្រោះ​ហួស​ពេល​កំណត់"</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"បញ្ហា​វិធី មិន​បាន​បញ្ជាក់"</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"អន្តរ​ការងារ មិន​បាន​បញ្ជាក់"</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"ការរារាំង​ការហៅ​ទូរសព្ទ"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"បើក"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"បិទ"</string>
