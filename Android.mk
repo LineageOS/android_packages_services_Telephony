@@ -16,10 +16,10 @@ LOCAL_JAVA_LIBRARIES := \
         org.apache.http.legacy
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
-        android-support-v7-appcompat \
-        android-support-v7-preference \
-        android-support-v7-recyclerview \
-        android-support-v14-preference
+        androidx.appcompat_appcompat \
+        androidx.preference_preference \
+        androidx.recyclerview_recyclerview \
+        androidx.legacy_legacy-preference-v14
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
         guava \

@@ -16,12 +16,12 @@
 
 package com.android.services.telephony;
 
-import com.android.phone.PhoneUtils;
-
 import android.os.Handler;
 import android.telecom.Connection;
 import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
+
+import com.android.phone.PhoneUtils;
 
 import java.util.ArrayList;
 import java.util.List;

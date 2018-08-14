@@ -16,13 +16,6 @@
 
 package com.android.phone;
 
-import com.android.internal.telephony.CallerInfo;
-import com.android.internal.telephony.Connection;
-import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.TelephonyCapabilities;
-import com.android.phone.common.CallLogAsync;
-
 import android.net.Uri;
 import android.os.SystemProperties;
 import android.provider.CallLog.Calls;
@@ -30,6 +23,13 @@ import android.telephony.DisconnectCause;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.android.internal.telephony.CallerInfo;
+import com.android.internal.telephony.Connection;
+import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.TelephonyCapabilities;
+import com.android.phone.common.CallLogAsync;
 
 /**
  * Helper class for interacting with the call log.
