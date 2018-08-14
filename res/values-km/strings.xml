@@ -471,7 +471,7 @@
     <string name="voicemail_settings_number_label" msgid="8524164258691887790">"លេខ​សារ​ជា​សំឡេង"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"កំពុង​ហៅ"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"ការចុចហៅឡើងវិញ"</string>
-    <string name="card_title_conf_call" msgid="1162980346189744501">"ការ​ហៅ​ជា​សន្និសីទ"</string>
+    <string name="card_title_conf_call" msgid="1162980346189744501">"ការ​ហៅ​ជា​​ក្រុម"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"ការ​ហៅ​ចូល"</string>
     <string name="card_title_call_ended" msgid="5544730338889702298">"បាន​បញ្ចប់​ការ​ហៅ"</string>
     <string name="card_title_on_hold" msgid="821463117892339942">"រង់ចាំ"</string>
@@ -509,8 +509,8 @@
     <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"របស់ <xliff:g id="USER_NAME">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ការហៅ​ទូរសព្ទសង្គ្រោះ​បន្ទាន់"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"តែ​ការហៅទៅលេខសង្គ្រោះបន្ទាន់​ប៉ុណ្ណោះ"</string>
-    <string name="single_emergency_number_title" msgid="4959203129714396515">"លេខអាសន្ន"</string>
-    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"លេខអាសន្ន"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"លេខសង្គ្រោះបន្ទាន់"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"លេខសង្គ្រោះបន្ទាន់"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"ចុច​ម្ដង​ទៀត ដើម្បី​ហៅ​ <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"កំពុង​បើក​វិទ្យុ…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"គ្មានសេវាទេ។ ព្យាយាមម្តង…"</string>

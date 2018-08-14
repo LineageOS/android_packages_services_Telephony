@@ -60,7 +60,7 @@
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA-oproepinstellingen (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="9043423184895642077">"Namen toegangspunten"</string>
     <string name="settings_label" msgid="3876743539816984008">"Netwerkinstellingen"</string>
-    <string name="phone_accounts" msgid="6376603393888116364">"Oproepaccounts"</string>
+    <string name="phone_accounts" msgid="6376603393888116364">"Gespreksaccounts"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Bellen met"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"SIP-gesprekken uitvoeren met"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"Eerst vragen"</string>
@@ -79,7 +79,7 @@
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Meldingen"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Nooduitzendingen"</string>
-    <string name="call_settings" msgid="6112441768261754562">"Oproepinstellingen"</string>
+    <string name="call_settings" msgid="6112441768261754562">"Gespreksinstellingen"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Aanvullende instellingen"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Aanvullende instellingen (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="4076647190996778012">"Aanvullende oproepinstellingen voor alleen GSM"</string>
@@ -118,7 +118,7 @@
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Doorschakelen naar <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Uit"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Je provider biedt geen ondersteuning voor het uitschakelen van oproepdoorschakelingen wanneer je telefoon niet bereikbaar is."</string>
-    <string name="updating_title" msgid="6146755386174019046">"Oproepinstellingen"</string>
+    <string name="updating_title" msgid="6146755386174019046">"Gespreksinstellingen"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Oproepinstellingen kunnen alleen worden gewijzigd door de beheerder."</string>
     <string name="call_settings_with_label" msgid="3401177261468593519">"Instellingen (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="7970259216988931777">"Fout met oproepinstellingen"</string>

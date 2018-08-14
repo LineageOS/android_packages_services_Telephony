@@ -90,7 +90,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Chargement des paramètres…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Numéro masqué pour les appels sortants"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Numéro affiché pour les appels sortants"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utiliser les paramètres opérateur pour afficher mon numéro pour les appels sortants"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utiliser les paramètres opérateur pour afficher mon numéro dans les appels sortants"</string>
     <string name="labelCW" msgid="6120513814915920200">"Appel en attente"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Me signaler les appels entrants lorsque je suis en communication"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Me signaler les appels entrants lorsque je suis en communication"</string>
@@ -472,7 +472,7 @@
     <string name="pin2_unblocked" msgid="7791600368153469078">"Le NIP2 n\'est plus bloqué."</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"Erreur de réseau ou de carte SIM"</string>
     <string name="doneButton" msgid="2859593360997984240">"Terminé"</string>
-    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"N° messagerie vocale"</string>
+    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Numéro de messagerie vocale"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"Numérotation en cours…"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"Recomposition en cours..."</string>
     <string name="card_title_conf_call" msgid="1162980346189744501">"Conférence téléphonique"</string>

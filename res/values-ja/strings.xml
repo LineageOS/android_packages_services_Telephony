@@ -90,7 +90,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"設定の読み込み中…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"発信時に番号を通知しない"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"発信時に番号を通知する"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"発信者番号表示に通信事業者のデフォルト値を使用する"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"相手への自分の番号の表示は通信事業者のデフォルト設定に従う"</string>
     <string name="labelCW" msgid="6120513814915920200">"通話中着信"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"通話中も着信を知らせる"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"通話中も着信を知らせる"</string>
