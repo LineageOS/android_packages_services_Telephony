@@ -18,14 +18,12 @@ package com.android.phone;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.telephony.CarrierConfigManager;
 import android.view.MenuItem;
 
-import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 
 public class GsmUmtsCallOptions extends PreferenceActivity {

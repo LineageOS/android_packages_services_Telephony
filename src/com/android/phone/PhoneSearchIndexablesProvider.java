@@ -36,8 +36,9 @@ import android.os.UserManager;
 import android.provider.SearchIndexableResource;
 import android.provider.SearchIndexablesContract.RawData;
 import android.provider.SearchIndexablesProvider;
-import android.support.annotation.VisibleForTesting;
 import android.telephony.euicc.EuiccManager;
+
+import androidx.annotation.VisibleForTesting;
 
 public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
     private static final String TAG = "PhoneSearchIndexablesProvider";

@@ -18,6 +18,7 @@ package com.android.phone.testapps.imstestapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.telephony.ims.ImsReasonInfo;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.util.ArrayMap;
 import android.view.View;
@@ -27,7 +28,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.telephony.ims.ImsReasonInfo;
 
 import java.util.Map;
 

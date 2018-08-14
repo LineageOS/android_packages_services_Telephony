@@ -1,18 +1,18 @@
 package com.android.phone;
 
 import static com.android.phone.TimeConsumingPreferenceActivity.RESPONSE_ERROR;
-import com.android.internal.telephony.CommandException;
-import com.android.internal.telephony.CommandsInterface;
-import com.android.internal.telephony.Phone;
 
 import android.content.Context;
 import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Parcelable;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
 import android.util.Log;
+
+import com.android.internal.telephony.CommandException;
+import com.android.internal.telephony.CommandsInterface;
+import com.android.internal.telephony.Phone;
 
 /**
  * {@link ListPreference} for CLIR (Calling Line Identification Restriction).
