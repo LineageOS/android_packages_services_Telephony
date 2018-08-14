@@ -16,18 +16,18 @@
 
 package com.android.services.telephony;
 
-import com.android.internal.annotations.VisibleForTesting;
-import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneConstants;
-
 import android.net.Uri;
-import android.telecom.Connection;
 import android.telecom.ConferenceParticipant;
+import android.telecom.Connection;
 import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccount;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SubscriptionInfo;
 import android.text.TextUtils;
+
+import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneConstants;
 
 /**
  * Represents a participant in a conference call.

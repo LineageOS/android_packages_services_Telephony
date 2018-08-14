@@ -15,6 +15,8 @@
  */
 package com.android.phone.otasp;
 
+import static com.android.phone.PhoneGlobals.getPhone;
+
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -30,8 +32,6 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
-
-import static com.android.phone.PhoneGlobals.getPhone;
 
 /**
  * otasp activation service handles all logic related with OTASP call.

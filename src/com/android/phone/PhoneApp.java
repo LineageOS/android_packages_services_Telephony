@@ -17,7 +17,6 @@
 package com.android.phone;
 
 import android.app.Application;
-import android.content.res.Configuration;
 import android.os.UserHandle;
 
 import com.android.services.telephony.TelephonyGlobals;
