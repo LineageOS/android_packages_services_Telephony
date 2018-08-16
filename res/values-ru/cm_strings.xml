@@ -40,7 +40,7 @@
   <!-- Advanced Settings -->
   <string name="incall_screen_settings">Настройки экрана вызова</string>
   <string name="show_ssn_label">Уведомления о событиях</string>
-  <string name="show_ssn_summary">Показывать уведомления о разных событиях сети, связанных с вызовом</string>
+  <string name="show_ssn_summary">Отображение уведомлений о различных событиях сети, связанных с обработкой вызовов</string>
   <!-- Toasts for various transient network events -->
   <!-- Toast text for Unconditional Call Forwarding enabled  -->
   <string name="call_notif_unconditionalCF">Включена безусловная переадресация вызова</string>

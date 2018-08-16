@@ -97,7 +97,9 @@
   <!-- Default sip server/proxy port number. -->
   <!-- Default sip server/proxy transport protocol. -->
   <!-- Hint to show the advanced settings section. [CHAR LIMIT=NONE] -->
+  <string name="advanced_settings_show">▷ Cyffyrdda i ddangos y cwbl</string>
   <!-- Hint to hide the advanced settings section. [CHAR LIMIT=NONE] -->
+  <string name="advanced_settings_hide">▽ Cyffyrdda i guddio\'r cwbl</string>
   <!-- Text in an alert dialog telling the user that all input fields can not be left blank. [CHAR LIMIT=NONE] -->
   <string name="all_empty_alert">Rho fanylion cyfrif SIP newydd.</string>
   <!-- Text in an alert dialog telling the user that some input field (name of which is also part of the strings being translated above) is required and can not be left blank. [CHAR LIMIT=NONE] -->

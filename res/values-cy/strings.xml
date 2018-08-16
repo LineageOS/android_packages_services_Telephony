@@ -91,7 +91,7 @@
   <!-- Button label on SIM Network Depersonalization panel -->
   <string name="sim_ndp_unlock_text">Datgloi</string>
   <!-- Button label on SIM Network Depersonalization panel -->
-  <string name="sim_ndp_dismiss_text">Gwrthod</string>
+  <string name="sim_ndp_dismiss_text">Wfftio</string>
   <!-- Status message displayed on SIM Network Depersonalization panel -->
   <string name="requesting_unlock">Yn gofyn i ddatgloi\'r rhwydwaith\u2026</string>
   <!-- Error message displayed on SIM Network Depersonalization panel -->
@@ -982,7 +982,7 @@
   <!-- ECM: ECM exit dialog choice -->
   <!-- ECM: ECM exit dialog choice -->
   <!-- ECM: ECM exit dialog choice -->
-  <string name="alert_dialog_dismiss">Gwrthod</string>
+  <string name="alert_dialog_dismiss">Wfftio</string>
   <!-- For incoming calls, this is a string we can get from a CDMA network instead of
          the actual phone number, to indicate there's no number present.  DO NOT TRANSLATE. -->
   <!-- Preference for Voicemail service provider under "Voicemail" settings.
