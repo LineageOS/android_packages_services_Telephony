@@ -51,6 +51,7 @@ public final class PhoneSearchIndexablesProviderTest {
     private class PhoneSearchIndexablesTestProvider extends PhoneSearchIndexablesProvider {
         private boolean mIsEuiccSettingsHidden = false;
         private boolean mIsEnhanced4gLteHidden = false;
+        private boolean mIsWifiCallingHidden = false;
 
         @Override boolean isEuiccSettingsHidden() {
             return mIsEuiccSettingsHidden;
@@ -60,12 +61,20 @@ public final class PhoneSearchIndexablesProviderTest {
             return mIsEnhanced4gLteHidden;
         }
 
+        @Override boolean isWifiCallingHidden() {
+            return mIsWifiCallingHidden;
+        }
+
         public void setIsEuiccSettingsHidden(boolean isEuiccSettingsHidden) {
             mIsEuiccSettingsHidden = isEuiccSettingsHidden;
         }
 
         public void setIsEnhanced4gLteHidden(boolean isEnhanced4gLteHidden) {
             mIsEnhanced4gLteHidden = isEnhanced4gLteHidden;
+        }
+
+        public void setIsWifiCallingHidden(boolean isWifiCallingHidden) {
+            mIsWifiCallingHidden = isWifiCallingHidden;
         }
     }
 
@@ -115,25 +124,31 @@ public final class PhoneSearchIndexablesProviderTest {
         mProvider.setIsEnhanced4gLteHidden(false /* isEnhanced4gLteHidden */);
         mProvider.setIsEuiccSettingsHidden(false /* isEuiccSettingsHiden */);
         when(mUserManager.isAdminUser()).thenReturn(false);
-        Cursor cursor1 = mProvider.queryNonIndexableKeys(
+        Cursor cursor;
+        cursor = mProvider.queryNonIndexableKeys(
                 SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
-        assertThat(cursor1.getColumnNames()).isEqualTo(
+        assertThat(cursor.getColumnNames()).isEqualTo(
                 SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
-        assertThat(cursor1.getCount()).isEqualTo(16);
+        assertThat(cursor.getCount()).isEqualTo(16);
 
         when(mUserManager.isAdminUser()).thenReturn(true);
-        Cursor cursor2 = mProvider
+        cursor = mProvider
                 .queryNonIndexableKeys(SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
-        assertThat(cursor2.getCount()).isEqualTo(3);
+        assertThat(cursor.getCount()).isEqualTo(3);
 
         mProvider.setIsEuiccSettingsHidden(true /* isEuiccSettingsHidden */);
-        Cursor cursor3 = mProvider
+        cursor = mProvider
                 .queryNonIndexableKeys(SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
-        assertThat(cursor3.getCount()).isEqualTo(4);
+        assertThat(cursor.getCount()).isEqualTo(4);
 
         mProvider.setIsEnhanced4gLteHidden(true /* isEnhanced4gLteHidden */);
-        Cursor cursor4 = mProvider
+        cursor = mProvider
                 .queryNonIndexableKeys(SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
-        assertThat(cursor4.getCount()).isEqualTo(5);
+        assertThat(cursor.getCount()).isEqualTo(5);
+
+        mProvider.setIsWifiCallingHidden(true /* isWifiCallingHidden */);
+        cursor = mProvider
+                .queryNonIndexableKeys(SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS);
+        assertThat(cursor.getCount()).isEqualTo(6);
     }
 }
