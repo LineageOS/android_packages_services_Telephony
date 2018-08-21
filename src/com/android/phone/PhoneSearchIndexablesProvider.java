@@ -42,6 +42,11 @@ import androidx.annotation.VisibleForTesting;
 
 public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
     private static final String TAG = "PhoneSearchIndexablesProvider";
+
+    private static final String ESIM_LIST_PROFILE_KEY = "esim_list_profile";
+    private static final String ENHANCED_4G_LTE_KEY = "enhanced_4g_lte";
+    private static final String WIFI_CALLING_KEY = "wifi_calling_key";
+
     private UserManager mUserManager;
 
     private static SearchIndexableResource[] INDEXABLE_RES = new SearchIndexableResource[] {
@@ -113,10 +118,15 @@ public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
                 }
             } else {
                 if (isEuiccSettingsHidden()) {
-                    cursor.addRow(createNonIndexableRow("esim_list_profile" /* key */));
+                    cursor.addRow(createNonIndexableRow(ESIM_LIST_PROFILE_KEY));
                 }
+
                 if (isEnhanced4gLteHidden()) {
-                    cursor.addRow(createNonIndexableRow("enhanced_4g_lte" /* key */));
+                    cursor.addRow(createNonIndexableRow(ENHANCED_4G_LTE_KEY));
+                }
+
+                if (isWifiCallingHidden()) {
+                    cursor.addRow(createNonIndexableRow(WIFI_CALLING_KEY));
                 }
             }
 
@@ -139,6 +149,10 @@ public class PhoneSearchIndexablesProvider extends SearchIndexablesProvider {
 
     @VisibleForTesting boolean isEnhanced4gLteHidden() {
         return MobileNetworkSettings.hideEnhanced4gLteSettings(getContext());
+    }
+
+    boolean isWifiCallingHidden() {
+        return !MobileNetworkSettings.isWifiCallingEnabled(getContext());
     }
 
     private Object[] createNonIndexableRow(String key) {
