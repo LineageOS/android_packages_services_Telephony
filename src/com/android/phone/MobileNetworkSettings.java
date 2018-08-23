@@ -149,6 +149,45 @@ public class MobileNetworkSettings extends Activity  {
         return super.onOptionsItemSelected(item);
     }
 
+
+    /**
+     * Returns true if Wifi calling is enabled for at least one phone.
+     */
+    public static boolean isWifiCallingEnabled(Context context) {
+        int phoneCount = TelephonyManager.from(context).getPhoneCount();
+        for (int i = 0; i < phoneCount; i++) {
+            if (isWifiCallingEnabled(context, i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns true if Wifi calling is enabled for the specific phone with id {@code phoneId}.
+     */
+    public static boolean isWifiCallingEnabled(Context context, int phoneId) {
+        final PhoneAccountHandle simCallManager =
+                TelecomManager.from(context).getSimCallManager();
+
+        boolean isWifiCallingEnabled;
+        if (simCallManager != null) {
+            Intent intent = PhoneAccountSettingsFragment
+                    .buildPhoneAccountConfigureIntent(context, simCallManager);
+            PackageManager pm = context.getPackageManager();
+            isWifiCallingEnabled = intent != null
+                    && !pm.queryIntentActivities(intent, 0 /* flags */).isEmpty();
+        } else {
+            ImsManager imsMgr = ImsManager.getInstance(context, phoneId);
+            isWifiCallingEnabled = imsMgr != null
+                    && imsMgr.isWfcEnabledByPlatform()
+                    && imsMgr.isWfcProvisionedOnDevice()
+                    && isImsServiceStateReady(imsMgr);
+        }
+
+        return isWifiCallingEnabled;
+    }
+
     /**
      * Whether to show the entry point to eUICC settings.
      *
@@ -234,6 +273,22 @@ public class MobileNetworkSettings extends Activity  {
             enforceCursor.moveToFirst();
             return enforceCursor.getInt(0) > 0;
         }
+    }
+
+    private static boolean isImsServiceStateReady(ImsManager imsMgr) {
+        boolean isImsServiceStateReady = false;
+
+        try {
+            if (imsMgr != null && imsMgr.getImsServiceState() == ImsFeature.STATE_READY) {
+                isImsServiceStateReady = true;
+            }
+        } catch (ImsException ex) {
+            Log.e(MobileNetworkFragment.LOG_TAG,
+                    "Exception when trying to get ImsServiceStatus: " + ex);
+        }
+
+        Log.d(MobileNetworkFragment.LOG_TAG, "isImsServiceStateReady=" + isImsServiceStateReady);
+        return isImsServiceStateReady;
     }
 
     public static class MobileNetworkFragment extends PreferenceFragment implements
@@ -1746,31 +1801,23 @@ public class MobileNetworkSettings extends Activity  {
                 return;
             }
 
-            boolean removePref = false;
+            // Removes the preference if the wifi calling is disabled.
+            if (!isWifiCallingEnabled(getContext(), mPhone.getPhoneId())) {
+                mCallingCategory.removePreference(mWiFiCallingPref);
+                return;
+            }
+
             final PhoneAccountHandle simCallManager =
                     TelecomManager.from(getContext()).getSimCallManager();
 
             if (simCallManager != null) {
                 Intent intent = PhoneAccountSettingsFragment.buildPhoneAccountConfigureIntent(
                         getContext(), simCallManager);
-                if (intent != null) {
-                    PackageManager pm = mPhone.getContext().getPackageManager();
-                    List<ResolveInfo> resolutions = pm.queryIntentActivities(intent, 0);
-                    if (!resolutions.isEmpty()) {
-                        mWiFiCallingPref.setTitle(resolutions.get(0).loadLabel(pm));
-                        mWiFiCallingPref.setSummary(null);
-                        mWiFiCallingPref.setIntent(intent);
-                    } else {
-                        removePref = true;
-                    }
-                } else {
-                    removePref = true;
-                }
-            } else if (mImsMgr == null
-                    || !mImsMgr.isWfcEnabledByPlatform()
-                    || !mImsMgr.isWfcProvisionedOnDevice()
-                    || !isImsServiceStateReady()) {
-                removePref = true;
+                PackageManager pm = mPhone.getContext().getPackageManager();
+                List<ResolveInfo> resolutions = pm.queryIntentActivities(intent, 0);
+                mWiFiCallingPref.setTitle(resolutions.get(0).loadLabel(pm));
+                mWiFiCallingPref.setSummary(null);
+                mWiFiCallingPref.setIntent(intent);
             } else {
                 int resId = com.android.internal.R.string.wifi_calling_off_summary;
                 if (mImsMgr.isWfcEnabledByUser()) {
@@ -1795,13 +1842,9 @@ public class MobileNetworkSettings extends Activity  {
                 mWiFiCallingPref.setSummary(resId);
             }
 
-            if (removePref) {
-                mCallingCategory.removePreference(mWiFiCallingPref);
-            } else {
-                mCallingCategory.addPreference(mWiFiCallingPref);
-                mWiFiCallingPref.setEnabled(mTelephonyManager.getCallState(mPhone.getSubId())
-                        == TelephonyManager.CALL_STATE_IDLE && hasActiveSubscriptions());
-            }
+            mCallingCategory.addPreference(mWiFiCallingPref);
+            mWiFiCallingPref.setEnabled(mTelephonyManager.getCallState(mPhone.getSubId())
+                    == TelephonyManager.CALL_STATE_IDLE && hasActiveSubscriptions());
         }
 
         private void updateEnhanced4gLteState() {
@@ -1815,7 +1858,7 @@ public class MobileNetworkSettings extends Activity  {
             if ((mImsMgr == null
                     || !mImsMgr.isVolteEnabledByPlatform()
                     || !mImsMgr.isVolteProvisionedOnDevice()
-                    || !isImsServiceStateReady()
+                    || !isImsServiceStateReady(mImsMgr)
                     || carrierConfig.getBoolean(
                     CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL))) {
                 getPreferenceScreen().removePreference(mButton4glte);
@@ -1839,7 +1882,7 @@ public class MobileNetworkSettings extends Activity  {
             if (mImsMgr != null
                     && mImsMgr.isVtEnabledByPlatform()
                     && mImsMgr.isVtProvisionedOnDevice()
-                    && isImsServiceStateReady()
+                    && isImsServiceStateReady(mImsMgr)
                     && (carrierConfig.getBoolean(
                         CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
                         || mPhone.mDcTracker.isDataEnabled())) {
@@ -2107,21 +2150,6 @@ public class MobileNetworkSettings extends Activity  {
             } else {
                 mCdmaOptions.update(phone);
             }
-        }
-
-        private boolean isImsServiceStateReady() {
-            boolean isImsServiceStateReady = false;
-
-            try {
-                if (mImsMgr != null && mImsMgr.getImsServiceState() == ImsFeature.STATE_READY) {
-                    isImsServiceStateReady = true;
-                }
-            } catch (ImsException ex) {
-                loge("Exception when trying to get ImsServiceStatus: " + ex);
-            }
-
-            log("isImsServiceStateReady=" + isImsServiceStateReady);
-            return isImsServiceStateReady;
         }
     }
 }
