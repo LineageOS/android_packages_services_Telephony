@@ -102,6 +102,7 @@ import com.android.internal.telephony.MccTable;
 import com.android.internal.telephony.NetworkScanRequestTracker;
 import com.android.internal.telephony.OperatorInfo;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneConfigurationManager;
 import com.android.internal.telephony.PhoneConstantConversions;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
@@ -216,6 +217,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private MainThreadHandler mMainThreadHandler;
     private SubscriptionController mSubscriptionController;
     private SharedPreferences mTelephonySharedPreferences;
+    private PhoneConfigurationManager mPhoneConfigurationManager;
 
     private static final String PREF_CARRIERS_ALPHATAG_PREFIX = "carrier_alphtag_";
     private static final String PREF_CARRIERS_NUMBER_PREFIX = "carrier_number_";
@@ -1091,6 +1093,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 PreferenceManager.getDefaultSharedPreferences(mPhone.getContext());
         mSubscriptionController = SubscriptionController.getInstance();
         mNetworkScanRequestTracker = new NetworkScanRequestTracker();
+        mPhoneConfigurationManager = PhoneConfigurationManager.getInstance();
 
         publish();
     }
@@ -5180,6 +5183,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return TelephonyManager.UNKNOWN_CARRIER_ID_LIST_VERSION;
             }
             return phone.getCarrierIdListVersion();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int getNumberOfModemsWithSimultaneousDataConnections(int subId, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, "getNumberOfModemsWithSimultaneousDataConnections")) {
+            return -1;
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mPhoneConfigurationManager.getNumberOfModemsWithSimultaneousDataConnections();
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
