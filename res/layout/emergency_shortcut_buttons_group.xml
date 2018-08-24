@@ -28,13 +28,15 @@
         <FrameLayout
             android:id="@+id/emergency_number_title_container"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/emergency_number_title_container_width"
             android:layout_gravity="center_vertical|start">
             <TextView
                 android:id="@+id/emergency_number_title"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="start"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textAppearance="@style/SubtitleTextAppearance"
                 android:text="@string/single_emergency_number_title"/>
         </FrameLayout>
@@ -42,9 +44,11 @@
             android:id="@+id/location_info"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/emergency_number_title_container_width"
             android:layout_gravity="center_vertical|end"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:alpha="0.7">
             <ImageView
                 android:id="@+id/location_icon"
                 android:layout_width="@dimen/location_image_width"
@@ -55,7 +59,8 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:paddingStart="4dp"
-                android:alpha="0.7"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textAppearance="@style/SubtitleTextAppearance"/>
         </LinearLayout>
     </FrameLayout>
