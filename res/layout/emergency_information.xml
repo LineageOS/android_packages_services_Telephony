@@ -13,38 +13,65 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.android.phone.EmergencyInfoGroup xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/emergency_info_group"
-    android:layout_height="wrap_content"
+<com.android.phone.EmergencyInfoGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/emergency_info_button"
+    android:layout_height="@dimen/emergency_info_button_singleline_height"
     android:layout_width="match_parent"
-    android:layout_marginTop="48dp"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/emergency_info_title"
+    android:layout_marginTop="@dimen/emergency_info_button_margin_top">
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="56dp"
+        android:orientation="horizontal">
+        <FrameLayout
+            android:id="@+id/emergency_info_image_container"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginHorizontal="@dimen/emergency_dialer_image_margin_horizontal">
+            <ImageView
+                android:id="@+id/emergency_info_image"
+                android:layout_height="@dimen/emergency_info_image_height"
+                android:layout_width="@dimen/emergency_info_image_width"
+                android:scaleType="centerCrop"/>
+        </FrameLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+            <TextView
+                android:id="@+id/emergency_info_name"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textAppearance="@style/HeadlineTextAppearance"/>
+            <TextView
+                android:id="@+id/emergency_info_hint"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:lineHeight="@dimen/emergency_info_hint_line_height"
+                android:alpha="0.7"
+                android:textAppearance="@style/SubtitleTextAppearance"
+                android:text="@string/emergency_information_hint"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/arrow_go_next_container"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="start"
-        android:paddingBottom="12dp"
-        android:textStyle="bold"
-        android:text="@string/emergency_information_title"/>
-    <LinearLayout
-        android:id="@+id/emergency_info_button"
-        android:layout_height="64dp"
-        android:layout_width="match_parent"
-        android:layout_marginTop="2dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:background="@drawable/btn_emergency_shortcuts">
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginHorizontal="@dimen/emergency_dialer_image_margin_horizontal">
         <ImageView
-            android:id="@+id/emergency_info_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"/>
-        <TextView
-            android:id="@+id/emergency_info_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceButton"/>
-    </LinearLayout>
+            android:id="@+id/arrow_go_next"
+            android:layout_height="@dimen/emergency_shortcuts_function_icon_height"
+            android:layout_width="@dimen/emergency_shortcuts_function_icon_width"
+            android:src="@drawable/ic_arrow_go_next_18"/>
+    </FrameLayout>
 </com.android.phone.EmergencyInfoGroup>

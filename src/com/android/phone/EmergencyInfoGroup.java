@@ -25,8 +25,10 @@ import android.graphics.drawable.Drawable;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,11 +44,10 @@ import java.util.List;
  * EmergencyInfoGroup display user icon and user name. And it is an entry point to
  * Emergency Information.
  */
-public class EmergencyInfoGroup extends LinearLayout {
-
+public class EmergencyInfoGroup extends FrameLayout {
     private ImageView mEmergencyInfoImage;
     private TextView mEmergencyInfoName;
-    private View mEmergencyInfoTitle;
+    private TextView mEmergencyInfoHint;
     private View mEmergencyInfoButton;
 
     public EmergencyInfoGroup(Context context, @Nullable AttributeSet attrs) {
@@ -56,10 +57,10 @@ public class EmergencyInfoGroup extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mEmergencyInfoTitle = findViewById(R.id.emergency_info_title);
         mEmergencyInfoButton = findViewById(R.id.emergency_info_button);
         mEmergencyInfoImage = (ImageView) findViewById(R.id.emergency_info_image);
         mEmergencyInfoName = (TextView) findViewById(R.id.emergency_info_name);
+        mEmergencyInfoHint = (TextView) findViewById(R.id.emergency_info_hint);
     }
 
     @Override
@@ -68,6 +69,12 @@ public class EmergencyInfoGroup extends LinearLayout {
         if (visibility == View.VISIBLE) {
             setupButtonInfo();
         }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        updateLayoutHeight();
     }
 
     private void setupButtonInfo() {
@@ -88,23 +95,18 @@ public class EmergencyInfoGroup extends LinearLayout {
             mEmergencyInfoButton.setTag(R.id.tag_intent, intent);
             mEmergencyInfoImage.setImageDrawable(getCircularUserIcon());
 
-            /* TODO: Get user name.
-                if user name exist:
-                    1. mEmergencyInfoTitle show title.
-                    2. mEmergencyInfoName show user name.
-                if user name does not exist:
-                    1. mEmergencyInfoTitle hide.
-                    2. mEmergencyInfoName show app label. */
-            mEmergencyInfoTitle.setVisibility(View.INVISIBLE);
-            mEmergencyInfoName.setText(getContext().getResources().getString(
-                    R.string.emergency_information_title));
-
             visible = true;
         }
+        mEmergencyInfoName.setText(getUserName());
 
         setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 
+    /**
+     * Get user icon.
+     *
+     * @return user icon, or default user icon if user do not set photo.
+     */
     private Drawable getCircularUserIcon() {
         final UserManager userManager = (UserManager) getContext().getSystemService(
                 Context.USER_SERVICE);
@@ -113,14 +115,34 @@ public class EmergencyInfoGroup extends LinearLayout {
         if (bitmapUserIcon == null) {
             // get default user icon.
             final Drawable defaultUserIcon = UserIcons.getDefaultUserIcon(
-                    getContext().getResources(), UserHandle.getCallingUserId(), false);
+                    getContext().getResources(), UserHandle.myUserId(), false);
             bitmapUserIcon = UserIcons.convertToBitmap(defaultUserIcon);
         }
-
         RoundedBitmapDrawable drawableUserIcon = RoundedBitmapDrawableFactory.create(
                 getContext().getResources(), bitmapUserIcon);
         drawableUserIcon.setCircular(true);
 
         return drawableUserIcon;
+    }
+
+    private CharSequence getUserName() {
+        final UserManager userManager = (UserManager) getContext().getSystemService(
+                Context.USER_SERVICE);
+        final String userName = userManager.getUserName();
+
+        return TextUtils.isEmpty(userName) ? getContext().getText(
+                R.string.emergency_information_owner_hint) : userName;
+    }
+
+    private void updateLayoutHeight() {
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) getLayoutParams();
+        // Update height if mEmergencyInfoHint text line more than 1.
+        // EmergencyInfoGroup max line is 2, eclipse type "end" will be adopt if string too long.
+        params.height =
+                mEmergencyInfoHint.getLineCount() > 1 ? getResources().getDimensionPixelSize(
+                        R.dimen.emergency_info_button_multiline_height)
+                        : getResources().getDimensionPixelSize(
+                                R.dimen.emergency_info_button_singleline_height);
+        setLayoutParams(params);
     }
 }
