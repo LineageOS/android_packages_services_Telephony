@@ -54,4 +54,5 @@
 
     <color name="dialer_dialpad_touch_tint">#330288d1</color>
     <color name="floating_action_button_touch_tint">#80ffffff</color>
+    <color name="emergency_shortcut_confirm_button_background_color">#E25142</color>
 </resources>
