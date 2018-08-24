@@ -24,9 +24,6 @@
         android:id="@+id/emergency_dialer_shortcuts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="18dp"
-        android:paddingRight="18dp"
-        android:paddingBottom="@dimen/dialpad_bottom_padding"
         android:visibility="gone">
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,14 +35,14 @@
 
         <FrameLayout
             android:id="@+id/dialpad_button_container"
-            android:layout_width="@dimen/floating_action_button_width"
-            android:layout_height="@dimen/floating_action_button_height"
-            android:layout_gravity="bottom|end">
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/emergency_dialer_dialpad_button_margin">
             <ImageButton
                 android:id="@+id/floating_action_button_dialpad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_width="@dimen/dialpad_button_width"
+                android:layout_height="@dimen/dialpad_button_height"
                 android:background="@drawable/floating_action_button_red"
                 android:contentDescription="@string/description_dialpad_button"
                 android:src="@drawable/ic_dialpad_white_24"/>
