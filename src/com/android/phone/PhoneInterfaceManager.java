@@ -4998,6 +4998,54 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Checks if data roaming is enabled on the subscription with id {@code subId}.
+     *
+     * <p>Requires one of the following permissions:
+     * {@link android.Manifest.permission#ACCESS_NETWORK_STATE},
+     * {@link android.Manifest.permission#READ_PHONE_STATE} or that the calling app has carrier
+     * privileges.
+     *
+     * @param subId subscription id
+     * @return {@code true} if data roaming is enabled on this subscription, otherwise return
+     * {@code false}.
+     */
+    @Override
+    public boolean isDataRoamingEnabled(int subId) {
+        try {
+            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
+                    null);
+        } catch (Exception e) {
+            TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
+                    mApp, subId, "isDataRoamingEnabled");
+        }
+
+        Phone phone = getPhone(subId);
+        return phone != null ? phone.getDataRoamingEnabled() : false;
+    }
+
+
+    /**
+     * Enables/Disables the data roaming on the subscription with id {@code subId}.
+     *
+     * <p> Requires permission:
+     * {@link android.Manifest.permission#MODIFY_PHONE_STATE} or that the calling app has carrier
+     * privileges.
+     *
+     * @param subId subscription id
+     * @param isEnabled {@code true} means enable, {@code false} means disable.
+     */
+    @Override
+    public void setDataRoamingEnabled(int subId, boolean isEnabled) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "setDataRoamingEbaled");
+
+        Phone phone = getPhone(subId);
+        if (phone != null) {
+            phone.setDataRoamingEnabled(isEnabled);
+        }
+    }
+
     @Override
     public UiccSlotInfo[] getUiccSlotsInfo() {
         enforceReadPrivilegedPermission();
