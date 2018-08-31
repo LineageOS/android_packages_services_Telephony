@@ -79,7 +79,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.phone.settings.PhoneAccountSettingsFragment;
-import com.android.settingslib.RestrictedLockUtils;
+import com.android.settingslib.RestrictedLockUtilsInternal;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -982,7 +982,7 @@ public class MobileNetworkSettings extends Activity  {
             mButtonDataRoam.setChecked(mPhone.getDataRoamingEnabled());
             mButtonDataRoam.setDisabledByAdmin(false);
             if (mButtonDataRoam.isEnabled()) {
-                if (RestrictedLockUtils.hasBaseUserRestriction(context,
+                if (RestrictedLockUtilsInternal.hasBaseUserRestriction(context,
                         UserManager.DISALLOW_DATA_ROAMING, UserHandle.myUserId())) {
                     mButtonDataRoam.setEnabled(false);
                 } else {
