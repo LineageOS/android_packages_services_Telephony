@@ -1927,7 +1927,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @SuppressWarnings("unchecked")
     public List<NeighboringCellInfo>
             getNeighboringCellInfo(String callingPackage, int targetSdk) {
-        if (targetSdk > android.os.Build.VERSION_CODES.P) return null;
+        if (targetSdk >= android.os.Build.VERSION_CODES.Q) {
+            throw new SecurityException(
+                    "getNeighboringCellInfo() is unavailable to callers targeting Q+ SDK levels.");
+        }
 
         if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
                 callingPackage) != AppOpsManager.MODE_ALLOWED) {
