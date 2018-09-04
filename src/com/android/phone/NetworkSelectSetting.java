@@ -560,8 +560,8 @@ public class NetworkSelectSetting extends PreferenceFragment {
                 map.put(plmn, cellInfo);
             } else {
                 if (map.get(plmn).isRegistered()
-                        || CellInfoUtil.getLevel(map.get(plmn))
-                        > CellInfoUtil.getLevel(cellInfo)) {
+                        || map.get(plmn).getCellSignalStrength().getLevel()
+                        > cellInfo.getCellSignalStrength().getLevel()) {
                     // Skip if the stored cellInfo is registered or has higher signal strength level
                     continue;
                 }
