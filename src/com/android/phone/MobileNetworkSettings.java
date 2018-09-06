@@ -1129,7 +1129,7 @@ public class MobileNetworkSettings extends Activity  {
             }
         }
 
-        // Requires that mPhone is up to date
+        // Requires that mSubId is up to date
         void updateEnabledNetworksEntries() {
             final int phoneType = mPhone.getPhoneType();
             final PersistableBundle carrierConfig =
@@ -1974,6 +1974,7 @@ public class MobileNetworkSettings extends Activity  {
             CdmaSystemSelectListPreference systemSelect =
                     (CdmaSystemSelectListPreference)prefSet.findPreference
                             (BUTTON_CDMA_SYSTEM_SELECT_KEY);
+            systemSelect.setSubscriptionId(mSubId);
             if (systemSelect != null) {
                 systemSelect.setEnabled(enable);
             }
