@@ -19,7 +19,6 @@ package com.android.phone;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.AsyncResult;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -44,8 +43,7 @@ import android.util.Log;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.OperatorInfo;
-import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneFactory;
+import com.android.settingslib.utils.ThreadUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,7 +62,7 @@ public class NetworkSelectListPreference extends ListPreference
     private static final String LOG_TAG = "networkSelect";
     private static final boolean DBG = true;
 
-    private static final int EVENT_NETWORK_SELECTION_DONE = 1;
+    private static final int EVENT_MANUALLY_NETWORK_SELECTION_DONE = 1;
     private static final int EVENT_NETWORK_SCAN_RESULTS = 2;
     private static final int EVENT_NETWORK_SCAN_COMPLETED = 3;
 
@@ -72,13 +70,12 @@ public class NetworkSelectListPreference extends ListPreference
     private static final int DIALOG_NETWORK_SELECTION = 100;
     private static final int DIALOG_NETWORK_LIST_LOAD = 200;
 
-    private int mPhoneId = SubscriptionManager.INVALID_PHONE_INDEX;
     private List<CellInfo> mCellInfoList;
     private CellInfo mCellInfo;
 
     private int mSubId;
+    private TelephonyManager mTelephonyManager;
     private NetworkOperators mNetworkOperators;
-    private boolean mNeedScanAgain;
     private List<String> mForbiddenPlmns;
 
     private ProgressDialog mProgressDialog;
@@ -114,9 +111,8 @@ public class NetworkSelectListPreference extends ListPreference
     private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            AsyncResult ar;
             switch (msg.what) {
-                case EVENT_NETWORK_SELECTION_DONE:
+                case EVENT_MANUALLY_NETWORK_SELECTION_DONE:
                     if (DBG) logd("hideProgressPanel");
                     try {
                         dismissProgressBar();
@@ -124,16 +120,16 @@ public class NetworkSelectListPreference extends ListPreference
                     }
                     setEnabled(true);
 
-                    ar = (AsyncResult) msg.obj;
-                    if (ar.exception != null) {
-                        if (DBG) logd("manual network selection: failed!");
-                        mNetworkOperators.displayNetworkSelectionFailed(ar.exception);
-                    } else {
+                    boolean isSuccessed = (boolean) msg.obj;
+                    if (isSuccessed) {
                         if (DBG) {
                             logd("manual network selection: succeeded! "
                                     + getNetworkTitle(mCellInfo));
                         }
-                        mNetworkOperators.displayNetworkSelectionSucceeded(msg.arg1);
+                        mNetworkOperators.displayNetworkSelectionSucceeded();
+                    } else {
+                        if (DBG) logd("manual network selection: failed!");
+                        mNetworkOperators.displayNetworkSelectionFailed();
                     }
                     mNetworkOperators.getNetworkSelectionMode();
                     break;
@@ -236,14 +232,9 @@ public class NetworkSelectListPreference extends ListPreference
         // This preference should share the same progressDialog with networkOperators category.
         mProgressDialog = progressDialog;
 
-        if (SubscriptionManager.isValidSubscriptionId(mSubId)) {
-            mPhoneId = SubscriptionManager.getPhoneId(mSubId);
-        }
+        mTelephonyManager = TelephonyManager.from(getContext()).createForSubscriptionId(mSubId);
 
-        TelephonyManager telephonyManager = (TelephonyManager)
-                getContext().getSystemService(Context.TELEPHONY_SERVICE);
-
-        setSummary(telephonyManager.getNetworkOperatorName(mSubId));
+        setSummary(mTelephonyManager.getNetworkOperatorName());
 
         setOnPreferenceChangeListener(this);
     }
@@ -301,7 +292,8 @@ public class NetworkSelectListPreference extends ListPreference
         if (DBG) logd("load networks list...");
         try {
             if (mNetworkQueryService != null) {
-                mNetworkQueryService.startNetworkQuery(mCallback, mPhoneId, false);
+                mNetworkQueryService.startNetworkQuery(
+                        mCallback, mSubId, false /* isIncrementalResult */);
             } else {
                 displayNetworkQueryFailed(NetworkQueryService.QUERY_EXCEPTION);
             }
@@ -407,16 +399,21 @@ public class NetworkSelectListPreference extends ListPreference
         MetricsLogger.action(getContext(),
                 MetricsEvent.ACTION_MOBILE_NETWORK_MANUAL_SELECT_NETWORK);
 
-        Message msg = mHandler.obtainMessage(EVENT_NETWORK_SELECTION_DONE);
-        Phone phone = PhoneFactory.getPhone(mPhoneId);
-        if (phone != null) {
-            OperatorInfo operatorInfo = getOperatorInfoFromCellInfo(mCellInfo);
-            if (DBG) logd("manually selected network: " + operatorInfo.toString());
-            phone.selectNetworkManually(operatorInfo, true, msg);
-            displayNetworkSelectionInProgress();
+        if (SubscriptionManager.isValidSubscriptionId(mSubId)) {
+            ThreadUtils.postOnBackgroundThread(() -> {
+                final OperatorInfo operatorInfo = getOperatorInfoFromCellInfo(mCellInfo);
+                if (DBG) logd("manually selected network: " + operatorInfo.toString());
+                boolean isSuccessed = mTelephonyManager.setNetworkSelectionModeManual(
+                        operatorInfo.getOperatorNumeric(), true /* persistSelection */);
+                int mode = mTelephonyManager.getNetworkSelectionMode();
+                Message msg = mHandler.obtainMessage(EVENT_MANUALLY_NETWORK_SELECTION_DONE);
+                msg.obj = isSuccessed;
+                msg.sendToTarget();
+            });
         } else {
-            loge("Error selecting network. phone is null.");
+            loge("Error selecting network, subscription Id is invalid " + mSubId);
         }
+
         return true;
     }
 
