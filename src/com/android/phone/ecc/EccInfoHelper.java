@@ -27,6 +27,7 @@ import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoLte;
 import android.telephony.CellInfoWcdma;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.Rlog;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -45,6 +46,8 @@ import java.util.List;
  * Helper for retrieve ECC info for current country.
  */
 public class EccInfoHelper {
+    // Debug constants.
+    private static final boolean DBG = false;
     private static final String LOG_TAG = "EccInfoHelper";
 
     // country ISO to ECC list data source
@@ -164,14 +167,17 @@ public class EccInfoHelper {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(
                 Context.TELEPHONY_SERVICE);
         String iso = tm.getNetworkCountryIso();
-        Log.d(LOG_TAG, "Current country ISO is " + iso);
+        if (DBG) Log.d(LOG_TAG, "Current country ISO is " + Rlog.pii(LOG_TAG, iso));
 
         if (TextUtils.isEmpty(iso)) {
             // XXX: according to ServiceStateTracker's implementation, retrieve cell info in a
             // thread other than TelephonyManager's main thread.
             String mcc = getCurrentMccFromCellInfo(context);
             iso = MccTable.countryCodeForMcc(mcc);
-            Log.d(LOG_TAG, "Current mcc is " + mcc + ", mapping to ISO: " + iso);
+            if (DBG) {
+                Log.d(LOG_TAG, "Current mcc is " + Rlog.pii(LOG_TAG, mcc) + ", mapping to ISO: "
+                        + Rlog.pii(LOG_TAG, iso));
+            }
         }
         return iso;
     }
@@ -204,7 +210,7 @@ public class EccInfoHelper {
                     break;
                 }
             }
-            Log.d(LOG_TAG, "Retrieve MCC from cell info list: " + mcc);
+            if (DBG) Log.d(LOG_TAG, "Retrieve MCC from cell info list: " + Rlog.pii(LOG_TAG, mcc));
         } else {
             Log.w(LOG_TAG, "Cannot get cell info list.");
         }
