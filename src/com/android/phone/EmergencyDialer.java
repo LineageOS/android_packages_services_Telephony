@@ -54,6 +54,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.DialerKeyListener;
 import android.text.style.TtsSpan;
+import android.util.FeatureFlagUtils;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.HapticFeedbackConstants;
@@ -223,8 +224,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         // Allow turning screen on
         setTurnScreenOn(true);
 
-        mAreEmergencyDialerShortcutsEnabled = Settings.Global.getInt(getContentResolver(),
-                Settings.Global.FASTER_EMERGENCY_PHONE_CALL_ENABLED, 0) != 0;
+        mAreEmergencyDialerShortcutsEnabled = FeatureFlagUtils
+                .isEnabled(this, FeatureFlagUtils.EMERGENCY_DIAL_SHORTCUTS);
         Log.d(LOG_TAG, "Enable emergency dialer shortcut: "
                 + mAreEmergencyDialerShortcutsEnabled);
 
