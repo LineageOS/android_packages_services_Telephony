@@ -244,7 +244,7 @@
     <string name="roaming_enable" msgid="7331106985174381987">"เชื่อมต่ออินเทอร์เน็ตมือถือขณะโรมมิ่ง"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"เชื่อมต่ออินเทอร์เน็ตมือถือขณะโรมมิ่ง"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"การโรมมิ่งข้อมูลปิดอยู่ แตะเพื่อเปิด"</string>
-    <string name="roaming_notification_title" msgid="4749053220884743110">"การเชื่อมต่อข้อมูลผ่านมือถือถูกตัด"</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"การเชื่อมต่อเน็ตมือถือถูกตัด"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"คุณอาจต้องเสียค่าใช้จ่ายมาก"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"โปรดสอบถามผู้ให้บริการเครือข่ายสำหรับข้อมูลเกี่ยวกับราคา"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"อนุญาตการโรมมิ่งอินเทอร์เน็ตไหม"</string>
@@ -268,7 +268,7 @@
     <string name="throttle_current_usage" msgid="8762280193043815361">"ข้อมูลที่ใช้ในช่วงเวลาปัจจุบัน"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"ช่วงเวลาการใช้ข้อมูล"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"นโยบายอัตราการส่งข้อมูล"</string>
-    <string name="throttle_help" msgid="243651091785169900">"เรียนรู้เพิ่มเติม"</string>
+    <string name="throttle_help" msgid="243651091785169900">"ดูข้อมูลเพิ่มเติม"</string>
     <string name="throttle_status_subtext" msgid="1657318943142085170">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) จากช่วงสูงสุด <xliff:g id="USED_2">%3$s</xliff:g> \nช่วงถัดไปจะเริ่มในอีก <xliff:g id="USED_3">%4$d</xliff:g> วัน (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) จากช่วงสูงสุด <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g>เกินจำนวนสูงสุด\nอัตราการส่งข้อมูลถูกลดเหลือ<xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
@@ -506,7 +506,6 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"เปิดใช้การโทรผ่าน Wi-Fi เพื่อโทรออก"</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"ข้อมูลสำหรับกรณีฉุกเฉิน"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"เจ้าของ"</string>
-    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"ของ <xliff:g id="USER_NAME">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"หมายเลขฉุกเฉิน"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"หมายเลขฉุกเฉินเท่านั้น"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"หมายเลขฉุกเฉิน"</string>
@@ -518,6 +517,14 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"ไม่สามารถโทรได้ <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ไม่ใช่หมายเลขฉุกเฉิน"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ไม่สามารถโทรออก โทรหมายเลขฉุกเฉิน"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"หมายเลขฉุกเฉินไม่พร้อมใช้งาน"</string>
+    <!-- no translation found for police_type_description (5324410799919829693) -->
+    <skip />
+    <!-- no translation found for ambulance_type_description (4114815025408089866) -->
+    <skip />
+    <!-- no translation found for fire_type_description (7145996705197064710) -->
+    <skip />
+    <!-- no translation found for description_concat_format (7141070875487870177) -->
+    <skip />
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ใช้แป้นพิมพ์กดหมายเลขโทรศัพท์"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"พักสาย"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"สิ้นสุด"</string>
