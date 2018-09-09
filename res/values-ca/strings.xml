@@ -506,7 +506,6 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Activa les trucades per Wi-Fi per fer una trucada."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Informació d\'emergència"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Propietari"</string>
-    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"Informació d\'emergència: <xliff:g id="USER_NAME">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Trucada d\'emergència"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Només trucades d\'emergència"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Número d\'emergència"</string>
@@ -518,6 +517,10 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"No es pot trucar. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> no és un número d\'emergència."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"No es pot trucar. Marca un número d\'emergència."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Les trucades d\'emergència no estan disponibles"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Policia"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulància"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Foc"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Utilitzeu el teclat per marcar"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Posa en espera"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Final"</string>

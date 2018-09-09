@@ -506,7 +506,6 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"ກະລຸນາເປີດໃຊ້ການໂທ Wi-Fi ເພື່ອໂທ."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"ຂໍ້ມູນສຸກເສີນ"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"ເຈົ້າຂອງ"</string>
-    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"ຂອງ <xliff:g id="USER_NAME">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ໂທສຸກເສີນ"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"ໂທສຸກເສີນເທົ່ານັ້ນ"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"ເບີໂທສຸກເສີນ"</string>
@@ -518,6 +517,10 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"ບໍ່​ສາ​ມາດ​ໂທ​ໄດ້. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ບໍ່​ແມ່ນ​ເບີ​ໂທ​ສຸກ​ເສີນ."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ບໍ່​ສາ​ມາດ​ໂທ​ໄດ້. ກົດ​ເບີ​ໂທ​ສຸກ​ເສີນ."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"ບໍ່ສາມາດໂທສຸກເສີນໄດ້"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"ຕຳຫຼວດ"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"ລົດໂຮງໝໍ"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"ໄຟ"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ໃຊ້ແປ້ນພິມເພື່ອກົດໂທ"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ພັກສາຍຊົ່ວຄາວ"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ວາງສາຍ"</string>

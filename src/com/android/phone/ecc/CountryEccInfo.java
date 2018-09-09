@@ -19,7 +19,7 @@ package com.android.phone.ecc;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * ECC info of a country.
@@ -28,7 +28,7 @@ public class CountryEccInfo {
     private final String mFallbackEcc;
     private final EccInfo[] mEccInfoList;
 
-    public CountryEccInfo(String eccFallback, @NonNull List<EccInfo> eccInfoList) {
+    public CountryEccInfo(String eccFallback, @NonNull Collection<EccInfo> eccInfoList) {
         mFallbackEcc = eccFallback;
         mEccInfoList = eccInfoList.toArray(new EccInfo[eccInfoList.size()]);
     }

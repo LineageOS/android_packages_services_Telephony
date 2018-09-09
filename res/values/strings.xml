@@ -1152,6 +1152,19 @@
          emergency calling is not currently available. -->
     <string name="dial_emergency_calling_not_available">Emergency calling not available</string>
 
+    <!-- Text for description of police calling type -->
+    <string name="police_type_description">Police</string>
+    <!-- Text for description of ambulance calling type -->
+    <string name="ambulance_type_description">Ambulance</string>
+    <!-- Text for description of fire calling type -->
+    <string name="fire_type_description">Fire</string>
+
+    <!-- Format for concatenating multiple emergency type descriptions. The separator may differ in
+         different locales, for example arabic comma "،" is used in some countries. Some languages
+         may use full-width separator without leading or trailing spaces, eg. Ideographic comma "、"
+         in Chinese and Japanese. -->
+    <string name="description_concat_format">%1$s, %2$s</string>
+
     <!-- Displayed in the text entry box in the dialer when in landscape mode to guide the user
          to dial using the physical keyboard -->
     <string name="dialerKeyboardHintText">Use keyboard to dial</string>

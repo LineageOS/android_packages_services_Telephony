@@ -18,7 +18,7 @@ package com.android.phone.ecc;
 
 import androidx.annotation.NonNull;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Emergency call code info.
@@ -41,7 +41,7 @@ public class EccInfo {
         mTypes = new Type[]{ type };
     }
 
-    public EccInfo(@NonNull String number, @NonNull List<Type> types) {
+    public EccInfo(@NonNull String number, @NonNull Collection<Type> types) {
         mNumber = number;
         mTypes = types.toArray(new Type[types.size()]);
     }
