@@ -506,7 +506,6 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"ಕರೆ ಮಾಡಲು ವೈ-ಫೈ ಕರೆ ಮಾಡುವಿಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"ತುರ್ತು ಮಾಹಿತಿ"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"ಮಾಲೀಕರು"</string>
-    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"<xliff:g id="USER_NAME">%s</xliff:g> ಬಳಕೆದಾರ ಹೆಸರುಗಳು"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ತುರ್ತು ಕರೆಗಳು"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"ತುರ್ತು ಕರೆಗಳು ಮಾತ್ರ"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"ತುರ್ತು ಸಂಖ್ಯೆ"</string>
@@ -518,6 +517,10 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ಇದು ತುರ್ತು ಸಂಖ್ಯೆಯಲ್ಲ."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ. ತುರ್ತು ಸಂಖ್ಯೆಯನ್ನು ಡಯಲ್ ಮಾಡಿ."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"ತುರ್ತು ಕರೆ ಮಾಡುವಿಕೆ ಲಭ್ಯವಿಲ್ಲ"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"ಪೊಲೀಸ್"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"ಆಂಬುಲೆನ್ಸ್"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"ಬೆಂಕಿ"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ಡಯಲ್‌ ಮಾಡಲು ಕೀಬೋರ್ಡ್‌ ಬಳಸಿ"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ಹೋಲ್ಡ್‌‌ ಮಾಡು"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ಮುಕ್ತಾಯ"</string>
@@ -641,14 +644,14 @@
     <string name="change_pin_system_error" msgid="8308462387154257840">"ಪಿನ್ ಹೊಂದಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"ಡೇಟಾ ರೋಮಿಂಗ್‌ ಆಫ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"ಡೇಟಾ ರೋಮಿಂಗ್‌ ಆನ್ ಮಾಡಲಾಗಿದೆ"</string>
-    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"ಪ್ರಸ್ತುತ ರೋಮಿಂಗ್‌‌ನಲ್ಲಿದೆ, ಡೇಟಾ ಪ್ಲ್ಯಾನ್ ಅಗತ್ಯವಿದೆ"</string>
-    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"ಪ್ರಸ್ತುತ ರೋಮಿಂಗ್‌, ಡೇಟಾ ಪ್ಲ್ಯಾನ್ ಸಕ್ರಿಯವಾಗಿದೆ"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"ಪ್ರಸ್ತುತ ರೋಮಿಂಗ್‌‌ನಲ್ಲಿದೆ, ಡೇಟಾ ಪ್ಲಾನ್ ಅಗತ್ಯವಿದೆ"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"ಪ್ರಸ್ತುತ ರೋಮಿಂಗ್‌, ಡೇಟಾ ಪ್ಲಾನ್ ಸಕ್ರಿಯವಾಗಿದೆ"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"ಯಾವುದೇ ಮೊಬೈಲ್ ಡೇಟಾ ಉಳಿದಿಲ್ಲ"</string>
     <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"ಯಾವುದೇ ಮೊಬೈಲ್ ಡೇಟಾ ಉಳಿದಿಲ್ಲ"</string>
     <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ಮೊಬೈಲ್ ಡೇಟಾ ಸೇರಿಸಿ"</string>
-    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"ಯಾವುದೇ ರೋಮಿಂಗ್ ಪ್ಲ್ಯಾನ್ ಇಲ್ಲ"</string>
-    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ರೋಮಿಂಗ್ ಪ್ಲ್ಯಾನ್ ಸೇರಿಸಿ"</string>
-    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"ನಿಮ್ಮ ವಾಹಕ <xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ನೀವು ಮೊಬೈಲ್ ಡೇಟಾ ಅಥವಾ ರೋಮಿಂಗ್ ಪ್ಲ್ಯಾನ್ ಸೇರಿಸಬಹುದು."</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"ಯಾವುದೇ ರೋಮಿಂಗ್ ಪ್ಲಾನ್ ಇಲ್ಲ"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ರೋಮಿಂಗ್ ಪ್ಲಾನ್ ಸೇರಿಸಿ"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"ನಿಮ್ಮ ವಾಹಕ <xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ನೀವು ಮೊಬೈಲ್ ಡೇಟಾ ಅಥವಾ ರೋಮಿಂಗ್ ಪ್ಲಾನ್ ಸೇರಿಸಬಹುದು."</string>
     <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"ಡೇಟಾ ಸೇರಿಸುವುದೇ?"</string>
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ನೀವು ಡೇಟಾ ಸೇರಿಸಬೇಕಾಗಬಹುದು"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ಡೇಟಾ ಸೇರಿಸಿ"</string>

@@ -506,7 +506,6 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"కాల్‌ను చేయడానికి Wi-Fi కాలింగ్‌ను ప్రారంభించండి."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"అత్యవసర సమాచారం"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"యజమాని"</string>
-    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"<xliff:g id="USER_NAME">%s</xliff:g>లు"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"అత్యవసర కాల్"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"అత్యవసర కాల్‌లు మాత్రమే"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"అత్యవసర నంబర్"</string>
@@ -518,6 +517,10 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"కాల్ చేయలేరు. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> అత్యవసర నంబర్ కాదు."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"కాల్ చేయలేరు. అత్యవసర నంబర్‌ను డయల్ చేయండి."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"అత్యవసర కాలింగ్ అందుబాటులో లేదు"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"పోలీస్"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"అంబులెన్స్‌"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"అగ్ని"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"డయల్ చేయడానికి కీబోర్డ్‌ను ఉపయోగించండి"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"హోల్డ్ చేయి"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ముగించు"</string>

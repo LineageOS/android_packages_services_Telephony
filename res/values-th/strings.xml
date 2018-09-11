@@ -517,14 +517,10 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"ไม่สามารถโทรได้ <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ไม่ใช่หมายเลขฉุกเฉิน"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ไม่สามารถโทรออก โทรหมายเลขฉุกเฉิน"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"หมายเลขฉุกเฉินไม่พร้อมใช้งาน"</string>
-    <!-- no translation found for police_type_description (5324410799919829693) -->
-    <skip />
-    <!-- no translation found for ambulance_type_description (4114815025408089866) -->
-    <skip />
-    <!-- no translation found for fire_type_description (7145996705197064710) -->
-    <skip />
-    <!-- no translation found for description_concat_format (7141070875487870177) -->
-    <skip />
+    <string name="police_type_description" msgid="5324410799919829693">"ตำรวจ"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"รถพยาบาล"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"อัคคีภัย"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ใช้แป้นพิมพ์กดหมายเลขโทรศัพท์"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"พักสาย"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"สิ้นสุด"</string>

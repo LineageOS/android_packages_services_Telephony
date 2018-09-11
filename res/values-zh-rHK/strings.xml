@@ -512,7 +512,6 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"啟用 Wi-Fi 通話功能以撥打電話。"</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"緊急資料"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"擁有者"</string>
-    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"<xliff:g id="USER_NAME">%s</xliff:g>的緊急資料"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"緊急電話"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"只可撥打緊急電話"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"緊急電話號碼"</string>
@@ -524,6 +523,10 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"無法通話。<xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> 不是緊急號碼。"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"無法通話。撥打緊急號碼。"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"無法撥打緊急電話"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"警局"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"救護車"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"火"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s，%2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"使用鍵盤撥號"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"按住"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"結束"</string>

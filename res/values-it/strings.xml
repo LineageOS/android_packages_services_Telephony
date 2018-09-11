@@ -394,13 +394,13 @@
     <string name="fdn_with_label" msgid="187084204115493366">"Numeri consentiti (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="8777755791892122369">"Elenco numeri consentiti"</string>
     <string name="fdn_list_with_label" msgid="7437232552210469217">"Elenco numeri consentiti (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="fdn_activation" msgid="2156479741307463576">"Attivazione FDN"</string>
+    <string name="fdn_activation" msgid="2156479741307463576">"Attivazione numeri consentiti"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Numeri di selezione fissa attivi"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"La funzionalità Numeri consentiti non è attiva"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"Attiva FDN"</string>
-    <string name="disable_fdn" msgid="7944020890722540616">"Disattiva FDN"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"Attiva numeri consentiti"</string>
+    <string name="disable_fdn" msgid="7944020890722540616">"Disattiva numeri consentiti"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Cambia PIN2"</string>
-    <string name="enable_fdn_ok" msgid="7215588870329688132">"Disattiva FDN"</string>
+    <string name="enable_fdn_ok" msgid="7215588870329688132">"Disattiva numeri consentiti"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Attiva numeri consentiti"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Gestisci numeri di selezione fissa"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Cambia PIN per accesso ai numeri consentiti"</string>
@@ -429,10 +429,10 @@
     <string name="delete_fdn_contact" msgid="6668958073074151717">"Elimina numero selezione fissa"</string>
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Eliminazione numero selezione fissa..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Numero di selezione fissa eliminato."</string>
-    <string name="pin2_invalid" msgid="5470854099230755944">"FDN non aggiornato perché il PIN inserito non è corretto."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN non è stato aggiornato perché il numero supera le 20 cifre."</string>
-    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN non aggiornato. Il codice PIN2 non era corretto o il numero di telefono è stato rifiutato."</string>
-    <string name="fdn_failed" msgid="540018079008319747">"Operazione FDN non riuscita."</string>
+    <string name="pin2_invalid" msgid="5470854099230755944">"Numeri consentiti non aggiornati perché il PIN inserito non è corretto."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"I numeri consentiti non sono stati aggiornati perché il numero supera le 20 cifre."</string>
+    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Numeri consentiti non aggiornati. Il codice PIN2 non era corretto o il numero di telefono è stato rifiutato."</string>
+    <string name="fdn_failed" msgid="540018079008319747">"Operazione numeri consentiti non riuscita."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lettura da SIM..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"Nessun contatto presente nella SIM."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Seleziona contatti da importare"</string>
@@ -510,7 +510,6 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Attiva le chiamate tramite Wi-Fi per effettuare una chiamata."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Informazioni per le emergenze"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Proprietario"</string>
-    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"Di <xliff:g id="USER_NAME">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Chiamata di emergenza"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Solo chiamate di emergenza"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Numero di emergenza"</string>
@@ -522,6 +521,10 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"Impossibile chiamare. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> non è un numero di emergenza."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Impossibile chiamare. Componi un numero di emergenza."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Chiamate di emergenza non disponibili"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Polizia"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulanza"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Vigili del fuoco"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Usa tastiera"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"In attesa"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Chiudi"</string>
