@@ -73,6 +73,7 @@ import com.android.phone.common.util.ViewUtil;
 import com.android.phone.common.widget.ResizingTextEditText;
 import com.android.phone.ecc.CountryEccInfo;
 import com.android.phone.ecc.EccInfoHelper;
+import com.android.phone.ecc.IsoToEccProtobufRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -324,6 +325,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         mEmergencyActionGroup = (EmergencyActionGroup) findViewById(R.id.emergency_action_group);
 
         if (mAreEmergencyDialerShortcutsEnabled) {
+            mEccInfoHelper = new EccInfoHelper(new IsoToEccProtobufRepository());
             setupEmergencyShortcutsView();
         }
     }
