@@ -195,6 +195,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_GET_FORBIDDEN_PLMNS_DONE = 49;
     private static final int CMD_SWITCH_SLOTS = 50;
     private static final int EVENT_SWITCH_SLOTS_DONE = 51;
+    private static final int CMD_GET_NETWORK_SELECTION_MODE = 52;
+    private static final int EVENT_GET_NETWORK_SELECTION_MODE_DONE = 53;
+    private static final int CMD_GET_CDMA_ROAMING_MODE = 54;
+    private static final int EVENT_GET_CDMA_ROAMING_MODE_DONE = 55;
+    private static final int CMD_SET_CDMA_ROAMING_MODE = 56;
+    private static final int EVENT_SET_CDMA_ROAMING_MODE_DONE = 57;
+    private static final int CMD_SET_CDMA_SUBSCRIPTION_MODE = 58;
+    private static final int EVENT_SET_CDMA_SUBSCRIPTION_MODE_DONE = 59;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -323,40 +331,35 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             IccAPDUArgument iccArgument;
 
             switch (msg.what) {
-                 case CMD_HANDLE_USSD_REQUEST: {
-                     request = (MainThreadRequest) msg.obj;
-                     final Phone phone = getPhoneFromRequest(request);
-                     Pair<String, ResultReceiver> ussdObject = (Pair) request.argument;
-                     String ussdRequest =  ussdObject.first;
-                     ResultReceiver wrappedCallback = ussdObject.second;
+                case CMD_HANDLE_USSD_REQUEST: {
+                    request = (MainThreadRequest) msg.obj;
+                    final Phone phone = getPhoneFromRequest(request);
+                    Pair<String, ResultReceiver> ussdObject = (Pair) request.argument;
+                    String ussdRequest =  ussdObject.first;
+                    ResultReceiver wrappedCallback = ussdObject.second;
 
-                     if (!isUssdApiAllowed(request.subId)) {
-                         // Carrier does not support use of this API, return failure.
-                         Rlog.w(LOG_TAG, "handleUssdRequest: carrier does not support USSD apis.");
-                         UssdResponse response = new UssdResponse(ussdRequest, null);
-                         Bundle returnData = new Bundle();
-                         returnData.putParcelable(TelephonyManager.USSD_RESPONSE, response);
-                         wrappedCallback.send(TelephonyManager.USSD_RETURN_FAILURE, returnData);
+                    if (!isUssdApiAllowed(request.subId)) {
+                        // Carrier does not support use of this API, return failure.
+                        Rlog.w(LOG_TAG, "handleUssdRequest: carrier does not support USSD apis.");
+                        UssdResponse response = new UssdResponse(ussdRequest, null);
+                        Bundle returnData = new Bundle();
+                        returnData.putParcelable(TelephonyManager.USSD_RESPONSE, response);
+                        wrappedCallback.send(TelephonyManager.USSD_RETURN_FAILURE, returnData);
 
-                         request.result = true;
-                         synchronized (request) {
-                             request.notifyAll();
-                         }
-                         return;
-                     }
+                        request.result = true;
+                        notifyRequester(request);
+                        return;
+                    }
 
-                     try {
-                         request.result = phone != null ?
-                                 phone.handleUssdRequest(ussdRequest, wrappedCallback)
-                                 : false;
-                     } catch (CallStateException cse) {
-                         request.result = false;
-                     }
-                     // Wake up the requesting thread
-                     synchronized (request) {
-                         request.notifyAll();
-                     }
-                     break;
+                    try {
+                        request.result = phone != null
+                                ? phone.handleUssdRequest(ussdRequest, wrappedCallback) : false;
+                    } catch (CallStateException cse) {
+                        request.result = false;
+                    }
+                    // Wake up the requesting thread
+                    notifyRequester(request);
+                    break;
                 }
 
                 case CMD_HANDLE_PIN_MMI: {
@@ -366,9 +369,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             getPhoneFromRequest(request).handlePinMmi((String) request.argument)
                             : false;
                     // Wake up the requesting thread
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
                 }
 
@@ -378,9 +379,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     answerRingingCallInternal(answer_subId);
                     request.result = ""; // dummy result for notifying the waiting thread
                     // Wake up the requesting thread
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_END_CALL:
@@ -406,9 +405,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (DBG) log("CMD_END_CALL: " + (hungUp ? "hung up!" : "no call to hang up"));
                     request.result = hungUp;
                     // Wake up the requesting thread
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_TRANSMIT_APDU_LOGICAL_CHANNEL:
@@ -418,9 +415,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (uiccCard == null) {
                         loge("iccTransmitApduLogicalChannel: No UICC");
                         request.result = new IccIoResult(0x6F, 0, (byte[])null);
-                        synchronized (request) {
-                            request.notifyAll();
-                        }
+                        notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_TRANSMIT_APDU_LOGICAL_CHANNEL_DONE,
                             request);
@@ -447,9 +442,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             loge("iccTransmitApduLogicalChannel: Unknown exception");
                         }
                     }
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_TRANSMIT_APDU_BASIC_CHANNEL:
@@ -459,9 +452,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (uiccCard == null) {
                         loge("iccTransmitApduBasicChannel: No UICC");
                         request.result = new IccIoResult(0x6F, 0, (byte[])null);
-                        synchronized (request) {
-                            request.notifyAll();
-                        }
+                        notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_TRANSMIT_APDU_BASIC_CHANNEL_DONE,
                             request);
@@ -487,9 +478,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             loge("iccTransmitApduBasicChannel: Unknown exception");
                         }
                     }
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_EXCHANGE_SIM_IO:
@@ -499,9 +488,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (uiccCard == null) {
                         loge("iccExchangeSimIO: No UICC");
                         request.result = new IccIoResult(0x6F, 0, (byte[])null);
-                        synchronized (request) {
-                            request.notifyAll();
-                        }
+                        notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_EXCHANGE_SIM_IO_DONE,
                                 request);
@@ -519,9 +506,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     } else {
                         request.result = new IccIoResult(0x6f, 0, (byte[])null);
                     }
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_SEND_ENVELOPE:
@@ -530,9 +515,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (uiccCard == null) {
                         loge("sendEnvelopeWithStatus: No UICC");
                         request.result = new IccIoResult(0x6F, 0, (byte[])null);
-                        synchronized (request) {
-                            request.notifyAll();
-                        }
+                        notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_SEND_ENVELOPE_DONE, request);
                         uiccCard.sendEnvelopeWithStatus((String)request.argument, onCompleted);
@@ -555,9 +538,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             loge("sendEnvelopeWithStatus: exception:" + ar.exception);
                         }
                     }
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_OPEN_CHANNEL:
@@ -568,9 +549,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         loge("iccOpenLogicalChannel: No UICC");
                         request.result = new IccOpenLogicalChannelResponse(-1,
                             IccOpenLogicalChannelResponse.STATUS_MISSING_RESOURCE, null);
-                        synchronized (request) {
-                            request.notifyAll();
-                        }
+                        notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_OPEN_CHANNEL_DONE, request);
                         uiccCard.iccOpenLogicalChannel(openChannelArgs.first,
@@ -616,9 +595,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             IccOpenLogicalChannelResponse.INVALID_CHANNEL, errorCode, null);
                     }
                     request.result = openChannelResp;
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_CLOSE_CHANNEL:
@@ -627,9 +604,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (uiccCard == null) {
                         loge("iccCloseLogicalChannel: No UICC");
                         request.result = false;
-                        synchronized (request) {
-                            request.notifyAll();
-                        }
+                        notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_CLOSE_CHANNEL_DONE, request);
                         uiccCard.iccCloseLogicalChannel((Integer) request.argument, onCompleted);
@@ -662,9 +637,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             loge("nvReadItem: Unknown exception");
                         }
                     }
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_NV_WRITE_ITEM:
@@ -720,9 +693,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             loge("getPreferredNetworkType: Unknown exception");
                         }
                     }
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_SET_PREFERRED_NETWORK_TYPE:
@@ -746,9 +717,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     ar = (AsyncResult)msg.obj;
                     request = (MainThreadRequest)ar.userObj;
                     request.result = ar;
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_SET_VOICEMAIL_NUMBER:
@@ -808,9 +777,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         cellScanResult = new CellNetworkScanResult(errorCode, null);
                     }
                     request.result = cellScanResult;
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_SET_NETWORK_SELECTION_MODE_MANUAL:
@@ -852,9 +819,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (request.result == null) {
                         request.result = new ModemActivityInfo(0, 0, 0, null, 0, 0);
                     }
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_SET_ALLOWED_CARRIERS:
@@ -884,9 +849,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (request.result == null) {
                         request.result = new int[]{-1};
                     }
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_GET_ALLOWED_CARRIERS:
@@ -914,9 +877,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (request.result == null) {
                         request.result = new ArrayList<CarrierIdentifier>(0);
                     }
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case EVENT_GET_FORBIDDEN_PLMNS_DONE:
@@ -933,9 +894,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             loge("getForbiddenPlmns: Unknown exception");
                         }
                     }
-                    synchronized (request) {
-                        request.notifyAll();
-                    }
+                    notifyRequester(request);
                     break;
 
                 case CMD_GET_FORBIDDEN_PLMNS:
@@ -945,9 +904,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         loge("getForbiddenPlmns() UiccCard is null");
                         request.result = new IllegalArgumentException(
                                 "getForbiddenPlmns() UiccCard is null");
-                        synchronized (request) {
-                            request.notifyAll();
-                        }
+                        notifyRequester(request);
                         break;
                     }
                     Integer appType = (Integer) request.argument;
@@ -956,9 +913,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         loge("getForbiddenPlmns() no app with specified type -- "
                                 + appType);
                         request.result = new IllegalArgumentException("Failed to get UICC App");
-                        synchronized (request) {
-                            request.notifyAll();
-                        }
+                        notifyRequester(request);
                         break;
                     } else {
                         if (DBG) logv("getForbiddenPlmns() found app " + uiccApp.getAid()
@@ -980,14 +935,78 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     request.result = (ar.exception == null);
-                    synchronized (request) {
-                        request.notifyAll();
+                    notifyRequester(request);
+                    break;
+                case CMD_GET_NETWORK_SELECTION_MODE:
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_GET_NETWORK_SELECTION_MODE_DONE, request);
+                    getPhoneFromRequest(request).getNetworkSelectionMode(onCompleted);
+                    break;
+
+                case EVENT_GET_NETWORK_SELECTION_MODE_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception != null) {
+                        request.result = TelephonyManager.NETWORK_SELECTION_MODE_UNKNOWN;
+                    } else {
+                        int mode = ((int[]) ar.result)[0];
+                        if (mode == 0) {
+                            request.result = TelephonyManager.NETWORK_SELECTION_MODE_AUTO;
+                        } else {
+                            request.result = TelephonyManager.NETWORK_SELECTION_MODE_MANUAL;
+                        }
                     }
+                    notifyRequester(request);
+                    break;
+                case CMD_GET_CDMA_ROAMING_MODE:
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_GET_CDMA_ROAMING_MODE_DONE, request);
+                    getPhoneFromRequest(request).queryCdmaRoamingPreference(onCompleted);
+                    break;
+                case EVENT_GET_CDMA_ROAMING_MODE_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception != null) {
+                        request.result = TelephonyManager.CDMA_ROAMING_MODE_RADIO_DEFAULT;
+                    } else {
+                        request.result = ((int[]) ar.result)[0];
+                    }
+                    notifyRequester(request);
+                    break;
+                case CMD_SET_CDMA_ROAMING_MODE:
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_SET_CDMA_ROAMING_MODE_DONE, request);
+                    int mode = (int) request.argument;
+                    getPhoneFromRequest(request).setCdmaRoamingPreference(mode, onCompleted);
+                    break;
+                case EVENT_SET_CDMA_ROAMING_MODE_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    request.result = ar.exception == null;
+                    notifyRequester(request);
+                    break;
+                case CMD_SET_CDMA_SUBSCRIPTION_MODE:
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_SET_CDMA_SUBSCRIPTION_MODE_DONE, request);
+                    int subscriptionMode = (int) request.argument;
+                    getPhoneFromRequest(request).setCdmaSubscription(subscriptionMode, onCompleted);
+                    break;
+                case EVENT_SET_CDMA_SUBSCRIPTION_MODE_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    request.result = ar.exception == null;
+                    notifyRequester(request);
                     break;
 
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
                     break;
+            }
+        }
+
+        private void notifyRequester(MainThreadRequest request) {
+            synchronized (request) {
+                request.notifyAll();
             }
         }
 
@@ -1004,9 +1023,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     loge(command + ": Unknown exception");
                 }
             }
-            synchronized (request) {
-                request.notifyAll();
-            }
+            notifyRequester(request);
         }
     }
 
@@ -2598,6 +2615,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    @Override
+    public int getNetworkSelectionMode(int subId) {
+        return (int) sendRequest(CMD_GET_NETWORK_SELECTION_MODE, null /* argument */, subId);
+    }
+
     /**
      * Returns the network type for a subId
      */
@@ -3322,12 +3344,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "getCellNetworkScanResults");
 
-        final long identity = Binder.clearCallingIdentity();
+        long identity = Binder.clearCallingIdentity();
         try {
             if (DBG) log("getCellNetworkScanResults: subId " + subId);
-            CellNetworkScanResult result = (CellNetworkScanResult) sendRequest(
+            return (CellNetworkScanResult) sendRequest(
                     CMD_PERFORM_NETWORK_SCAN, null, subId);
-            return result;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -5015,16 +5036,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isDataRoamingEnabled(int subId) {
+        boolean isEnabled = false;
+        final long identity = Binder.clearCallingIdentity();
         try {
             mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
-                    null);
+                    null /* message */);
+            Phone phone = getPhone(subId);
+            isEnabled =  phone != null ? phone.getDataRoamingEnabled() : false;
         } catch (Exception e) {
             TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
                     mApp, subId, "isDataRoamingEnabled");
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
-
-        Phone phone = getPhone(subId);
-        return phone != null ? phone.getDataRoamingEnabled() : false;
+        return isEnabled;
     }
 
 
@@ -5040,12 +5065,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void setDataRoamingEnabled(int subId, boolean isEnabled) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, subId, "setDataRoamingEbaled");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                    mApp, subId, "setDataRoamingEnabled");
 
-        Phone phone = getPhone(subId);
-        if (phone != null) {
-            phone.setDataRoamingEnabled(isEnabled);
+            Phone phone = getPhone(subId);
+            if (phone != null) {
+                phone.setDataRoamingEnabled(isEnabled);
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
     }
 
@@ -5249,6 +5279,45 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             return mPhoneConfigurationManager.getNumberOfModemsWithSimultaneousDataConnections();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int getCdmaRoamingMode(int subId) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "getCdmaRoamingMode");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return (int) sendRequest(CMD_GET_CDMA_ROAMING_MODE, null /* argument */, subId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public boolean setCdmaRoamingMode(int subId, int mode) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "setCdmaRoamingMode");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return (boolean) sendRequest(CMD_SET_CDMA_ROAMING_MODE, mode, subId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public boolean setCdmaSubscriptionMode(int subId, int mode) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "setCdmaSubscriptionMode");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return (boolean) sendRequest(CMD_SET_CDMA_SUBSCRIPTION_MODE, mode, subId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
