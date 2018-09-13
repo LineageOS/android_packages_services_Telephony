@@ -506,7 +506,6 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"電話をかけるには Wi-Fi 通話を有効にしてください。"</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"緊急時情報"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"所有者"</string>
-    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"<xliff:g id="USER_NAME">%s</xliff:g> さんの"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"緊急通報"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"緊急通報のみ"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"緊急通報番号"</string>
@@ -518,6 +517,10 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"発信できません。<xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g>は緊急通報番号ではありません。"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"発信できません。緊急通報番号におかけください。"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"緊急通報はご利用いただけません"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"警察"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"救急車"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"消防車"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s、%2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"キーボードで番号を入力してください"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"保留"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"終了"</string>

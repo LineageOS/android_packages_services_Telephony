@@ -506,7 +506,6 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Bật gọi điện qua Wi-Fi để thực hiện cuộc gọi."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Thông tin khẩn cấp"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Chủ sở hữu"</string>
-    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"Thông tin khẩn cấp của <xliff:g id="USER_NAME">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Cuộc gọi khẩn cấp"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Chỉ cuộc gọi khẩn cấp"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Số khẩn cấp"</string>
@@ -518,6 +517,10 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"Không thực hiện được cuộc gọi. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> không phải là số khẩn cấp."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Không thực hiện được cuộc gọi. Hãy quay số khẩn cấp."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Không sử dụng được tính năng gọi khẩn cấp"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Cảnh sát"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Cấp cứu"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Hỏa hoạn"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Sử dụng bàn phím để quay số"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Giữ"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Kết thúc"</string>

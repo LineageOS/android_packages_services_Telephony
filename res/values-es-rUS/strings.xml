@@ -506,7 +506,6 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Habilita las llamadas con Wi-Fi para hacer una llamada."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Información de emergencia"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Propietario"</string>
-    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"De <xliff:g id="USER_NAME">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Llamada de emergencia"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Solo llamadas de emergencia"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Número de emergencia"</string>
@@ -518,6 +517,10 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"No se puede realizar la llamada. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> no es un número de emergencia."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"No se puede realizar la llamada. Marca un número de emergencia."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Las llamadas de emergencia no están disponibles"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Policía"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulancia"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Fuego"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Utilizar teclado para marcar"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Retener"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Finalizar"</string>

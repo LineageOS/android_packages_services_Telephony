@@ -506,7 +506,6 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Ενεργοποιήστε τη δυνατότητα κλήσεων μέσω Wi-Fi για να πραγματοποιήσετε μια κλήση."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Πληροφορίες έκτακτης ανάγκης"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Κάτοχος"</string>
-    <string name="emergency_information_owner_content_description" msgid="2375334661543174443">"Του χρήστη <xliff:g id="USER_NAME">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Κλήσεις επείγουσας ανάγκης"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Μόνο κλήσεις έκτακτης ανάγκης"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Αριθμός έκτακτης ανάγκης"</string>
@@ -518,6 +517,10 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"Δεν είναι δυνατή η κλήση. Το <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> δεν είναι αριθμός έκτακτης ανάγκης."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Δεν είναι δυνατή η κλήση. Πληκτρολογήστε έναν αριθμό έκτακτης ανάγκης."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Η δυνατότητα κλήσεων έκτακτης ανάγκης δεν είναι διαθέσιμη"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Αστυνομία"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ασθενοφόρο"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Πυρκαγιά"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Χρησιμοποιήστε το πληκτρολόγιο για να πραγματοποιήσετε καλέσετε έναν αριθμό"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Αναμονή"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Τέλος"</string>
