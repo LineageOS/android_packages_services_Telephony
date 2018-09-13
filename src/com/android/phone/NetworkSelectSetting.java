@@ -21,7 +21,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.os.AsyncResult;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -47,8 +46,7 @@ import android.view.ViewGroup;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.OperatorInfo;
-import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneFactory;
+import com.android.settingslib.utils.ThreadUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,7 +62,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
     private static final String TAG = "NetworkSelectSetting";
     private static final boolean DBG = true;
 
-    private static final int EVENT_NETWORK_SELECTION_DONE = 1;
+    private static final int EVENT_SET_NETWORK_SELECTION_MANUALLY_DONE = 1;
     private static final int EVENT_NETWORK_SCAN_RESULTS = 2;
     private static final int EVENT_NETWORK_SCAN_ERROR = 3;
     private static final int EVENT_NETWORK_SCAN_COMPLETED = 4;
@@ -81,11 +79,10 @@ public class NetworkSelectSetting extends PreferenceFragment {
     private View mProgressHeader;
     private Preference mStatusMessagePreference;
     private List<CellInfo> mCellInfoList;
-    private int mPhoneId = SubscriptionManager.INVALID_PHONE_INDEX;
+    private int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     private ViewGroup mFrameLayout;
     private NetworkOperatorPreference mSelectedNetworkOperatorPreference;
     private TelephonyManager mTelephonyManager;
-    private NetworkOperators mNetworkOperators;
     private List<String> mForbiddenPlmns;
 
     private final Runnable mUpdateNetworkOperatorsRunnable = () -> {
@@ -95,9 +92,9 @@ public class NetworkSelectSetting extends PreferenceFragment {
     /**
      * Create a new instance of this fragment.
      */
-    public static NetworkSelectSetting newInstance(int phoneId) {
+    public static NetworkSelectSetting newInstance(int subId) {
         Bundle args = new Bundle();
-        args.putInt(NetworkSelectSettingActivity.KEY_PHONE_ID, phoneId);
+        args.putInt(NetworkSelectSettingActivity.KEY_SUBSCRIPTION_ID, subId);
         NetworkSelectSetting fragment = new NetworkSelectSetting();
         fragment.setArguments(args);
 
@@ -109,7 +106,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
         if (DBG) logd("onCreate");
         super.onCreate(icicle);
 
-        mPhoneId = getArguments().getInt(NetworkSelectSettingActivity.KEY_PHONE_ID);
+        mSubId = getArguments().getInt(NetworkSelectSettingActivity.KEY_SUBSCRIPTION_ID);
 
         addPreferencesFromResource(R.xml.choose_network);
         mConnectedNetworkOperatorsPreference =
@@ -118,9 +115,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
                 (PreferenceCategory) findPreference(PREF_KEY_NETWORK_OPERATORS);
         mStatusMessagePreference = new Preference(getContext());
         mSelectedNetworkOperatorPreference = null;
-        mTelephonyManager = (TelephonyManager)
-                getContext().getSystemService(Context.TELEPHONY_SERVICE);
-        mNetworkOperators = new NetworkOperators(getContext());
+        mTelephonyManager = TelephonyManager.from(getContext()).createForSubscriptionId(mSubId);
         setRetainInstance(true);
     }
 
@@ -199,9 +194,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
                     MetricsEvent.ACTION_MOBILE_NETWORK_MANUAL_SELECT_NETWORK);
 
             // Connect to the network
-            Message msg = mHandler.obtainMessage(EVENT_NETWORK_SELECTION_DONE);
-            Phone phone = PhoneFactory.getPhone(mPhoneId);
-            if (phone != null) {
+            if (SubscriptionManager.isValidSubscriptionId(mSubId)) {
                 if (DBG) {
                     logd("Connect to the network: " + CellInfoUtil.getNetworkTitle(cellInfo));
                 }
@@ -218,14 +211,20 @@ public class NetworkSelectSetting extends PreferenceFragment {
                     }
                 }
 
-                // Select network manually via Phone
                 OperatorInfo operatorInfo = CellInfoUtil.getOperatorInfoFromCellInfo(cellInfo);
                 if (DBG) logd("manually selected network operator: " + operatorInfo.toString());
-                phone.selectNetworkManually(operatorInfo, true, msg);
+
+                ThreadUtils.postOnBackgroundThread(() -> {
+                    Message msg = mHandler.obtainMessage(EVENT_SET_NETWORK_SELECTION_MANUALLY_DONE);
+                    msg.obj = mTelephonyManager.setNetworkSelectionModeManual(
+                            operatorInfo.getOperatorNumeric(), true /* persistSelection */);
+                    msg.sendToTarget();
+                });
+
                 setProgressBarVisible(true);
                 return true;
             } else {
-                loge("Error selecting network. phone is null.");
+                loge("Error selecting network. Subscription Id is invalid.");
                 mSelectedNetworkOperatorPreference = null;
                 return false;
             }
@@ -257,23 +256,22 @@ public class NetworkSelectSetting extends PreferenceFragment {
     private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            AsyncResult ar;
             switch (msg.what) {
-                case EVENT_NETWORK_SELECTION_DONE:
+                case EVENT_SET_NETWORK_SELECTION_MANUALLY_DONE:
                     if (DBG) logd("network selection done: hide the progress header");
                     setProgressBarVisible(false);
 
-                    ar = (AsyncResult) msg.obj;
-                    if (ar.exception != null) {
+                    boolean isSuccessed = (boolean) msg.obj;
+                    if (isSuccessed) {
+                        if (DBG) logd("manual network selection: succeeded! ");
+                        // Set summary as "Connected" to the selected network.
+                        mSelectedNetworkOperatorPreference.setSummary(R.string.network_connected);
+                    } else {
                         if (DBG) logd("manual network selection: failed! ");
                         updateNetworkSelection();
                         // Set summary as "Couldn't connect" to the selected network.
                         mSelectedNetworkOperatorPreference.setSummary(
                                 R.string.network_could_not_connect);
-                    } else {
-                        if (DBG) logd("manual network selection: succeeded! ");
-                        // Set summary as "Connected" to the selected network.
-                        mSelectedNetworkOperatorPreference.setSummary(R.string.network_connected);
                     }
                     break;
 
@@ -316,7 +314,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
             if (mNetworkQueryService != null) {
                 if (DBG) logd("start network query");
                 mNetworkQueryService
-                        .startNetworkQuery(mCallback, mPhoneId, true /* is incremental result */);
+                        .startNetworkQuery(mCallback, mSubId, true /* is incremental result */);
             } else {
                 if (DBG) logd("unable to start network query, mNetworkQueryService is null");
                 addMessagePreference(R.string.network_query_error);
@@ -420,7 +418,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
         if (DBG) logd("Force config ConnectedNetworkOperatorsPreferenceCategory");
         if (mTelephonyManager.getDataState() == mTelephonyManager.DATA_CONNECTED) {
             // Try to get the network registration states
-            ServiceState ss = mTelephonyManager.getServiceStateForSubscriber(mPhoneId);
+            ServiceState ss = mTelephonyManager.getServiceState();
             List<NetworkRegistrationState> networkList =
                     ss.getNetworkRegistrationStates(AccessNetworkConstants.TransportType.WWAN);
             if (networkList == null || networkList.size() == 0) {
@@ -626,11 +624,10 @@ public class NetworkSelectSetting extends PreferenceFragment {
     private void updateNetworkSelection() {
         if (DBG) logd("Update notification about no service of user selected operator");
         final PhoneGlobals app = PhoneGlobals.getInstance();
-        Phone phone = PhoneFactory.getPhone(mPhoneId);
-        if (phone != null) {
-            ServiceState ss = mTelephonyManager.getServiceStateForSubscriber(phone.getSubId());
+        if (SubscriptionManager.isValidSubscriptionId(mSubId)) {
+            ServiceState ss = mTelephonyManager.getServiceState();
             if (ss != null) {
-                app.notificationMgr.updateNetworkSelection(ss.getState(), phone.getSubId());
+                app.notificationMgr.updateNetworkSelection(ss.getState(), mSubId);
             }
         }
     }
