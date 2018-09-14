@@ -22,6 +22,7 @@
     <!-- Emergency dialer shortcuts layout-->
     <FrameLayout
         android:id="@+id/emergency_dialer_shortcuts"
+        android:accessibilityPaneTitle="@string/emergencyDialerIconLabel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
@@ -52,6 +53,7 @@
     <!--Emergency Dialer Layout-->
     <FrameLayout
         android:id="@+id/emergency_dialer"
+        android:accessibilityPaneTitle="@string/pane_title_emergency_dialpad"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="36dp"

@@ -1399,6 +1399,13 @@
     -->
     <string name="description_dialpad_button">show dialpad</string>
 
+    <!-- Pane title of the Emergency Dialpad
+
+     Used by AccessibilityService to announce the purpose of the pane of emergency dialpad.
+     [CHAR LIMIT=NONE]
+    -->
+    <string name="pane_title_emergency_dialpad">Emergency Dialpad</string>
+
     <!-- Visual voicemail on/off title [CHAR LIMIT=40] -->
     <string name="voicemail_visual_voicemail_switch_title">Visual Voicemail</string>
 

@@ -62,8 +62,10 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.AccessibilityDelegate;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.accessibility.AccessibilityEvent;
 import android.widget.TextView;
 
 import com.android.internal.colorextraction.ColorExtractor;
@@ -171,6 +173,30 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
                 finishAndRemoveTask();
             }
+        }
+    };
+
+    /**
+     * Customize accessibility methods in View.
+     */
+    private AccessibilityDelegate mAccessibilityDelegate = new AccessibilityDelegate() {
+
+        /**
+         * Stop AccessiblityService from reading the title of a hidden View.
+         *
+         * <p>The crossfade animation will set the visibility of fade out view to {@link View.GONE}
+         * in the animation end. The view with an accessibility pane title would call the
+         * {@link AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED} event, which would trigger the
+         * accessibility service to read the pane title of fade out view instead of pane title of
+         * fade in view. So it need to filter out the event called by vanished pane.
+         */
+        @Override
+        public void onPopulateAccessibilityEvent(View host, AccessibilityEvent event) {
+            if (event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED
+                    && host.getVisibility() == View.GONE) {
+                return;
+            }
+            super.onPopulateAccessibilityEvent(host, event);
         }
     };
 
@@ -933,6 +959,9 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     private void setupEmergencyShortcutsView() {
         mEmergencyShortcutView = findViewById(R.id.emergency_dialer_shortcuts);
         mDialpadView = findViewById(R.id.emergency_dialer);
+
+        mEmergencyShortcutView.setAccessibilityDelegate(mAccessibilityDelegate);
+        mDialpadView.setAccessibilityDelegate(mAccessibilityDelegate);
 
         final View dialpadButton = findViewById(R.id.floating_action_button_dialpad);
         dialpadButton.setOnClickListener(this);
