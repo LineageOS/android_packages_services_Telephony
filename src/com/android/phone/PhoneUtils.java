@@ -19,7 +19,6 @@ package com.android.phone;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.bluetooth.IBluetoothHeadsetPhone;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
@@ -30,7 +29,6 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.VideoProfile;
@@ -106,9 +104,6 @@ public class PhoneUtils {
     /** Phone state changed event*/
     private static final int PHONE_STATE_CHANGED = -1;
 
-    /** check status then decide whether answerCall */
-    private static final int MSG_CHECK_STATUS_ANSWERCALL = 100;
-
     /** poll phone DISCONNECTING status interval */
     private static final int DISCONNECTING_POLLING_INTERVAL_MS = 200;
 
@@ -125,15 +120,6 @@ public class PhoneUtils {
      */
     private static final int THEME = com.android.internal.R.style.Theme_DeviceDefault_Dialog_Alert;
 
-    private static class FgRingCalls {
-        private Call fgCall;
-        private Call ringing;
-        public FgRingCalls(Call fg, Call ring) {
-            fgCall = fg;
-            ringing = ring;
-        }
-    }
-
     /** USSD information used to aggregate all USSD messages */
     private static AlertDialog sUssdDialog = null;
     private static StringBuilder sUssdMsg = new StringBuilder();
@@ -147,34 +133,6 @@ public class PhoneUtils {
      * Mute settings for each connection as needed.
      */
     private static class ConnectionHandler extends Handler {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MSG_CHECK_STATUS_ANSWERCALL:
-                    FgRingCalls frC = (FgRingCalls) msg.obj;
-                    // wait for finishing disconnecting
-                    // before check the ringing call state
-                    if ((frC.fgCall != null) &&
-                        (frC.fgCall.getState() == Call.State.DISCONNECTING) &&
-                        (msg.arg1 < DISCONNECTING_POLLING_TIMES_LIMIT)) {
-                        Message retryMsg =
-                            mConnectionHandler.obtainMessage(MSG_CHECK_STATUS_ANSWERCALL);
-                        retryMsg.arg1 = 1 + msg.arg1;
-                        retryMsg.obj = msg.obj;
-                        mConnectionHandler.sendMessageDelayed(retryMsg,
-                            DISCONNECTING_POLLING_INTERVAL_MS);
-                    // since hangupActiveCall() also accepts the ringing call
-                    // check if the ringing call was already answered or not
-                    // only answer it when the call still is ringing
-                    } else if (frC.ringing.isRinging()) {
-                        if (msg.arg1 == DISCONNECTING_POLLING_TIMES_LIMIT) {
-                            Log.e(LOG_TAG, "DISCONNECTING time out");
-                        }
-                        answerCall(frC.ringing);
-                    }
-                    break;
-            }
-        }
     }
 
     /**
@@ -192,294 +150,6 @@ public class PhoneUtils {
 
     /** This class is never instantiated. */
     private PhoneUtils() {
-    }
-
-    /**
-     * Answer the currently-ringing call.
-     *
-     * @return true if we answered the call, or false if there wasn't
-     *         actually a ringing incoming call, or some other error occurred.
-     *
-     * @see #answerAndEndHolding(CallManager, Call)
-     * @see #answerAndEndActive(CallManager, Call)
-     */
-    /* package */ static boolean answerCall(Call ringingCall) {
-        log("answerCall(" + ringingCall + ")...");
-        final PhoneGlobals app = PhoneGlobals.getInstance();
-        final CallNotifier notifier = app.notifier;
-
-        final Phone phone = ringingCall.getPhone();
-        final boolean phoneIsCdma = (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_CDMA);
-        boolean answered = false;
-        IBluetoothHeadsetPhone btPhone = null;
-
-        if (phoneIsCdma) {
-            // Stop any signalInfo tone being played when a Call waiting gets answered
-            if (ringingCall.getState() == Call.State.WAITING) {
-                notifier.stopSignalInfoTone();
-            }
-        }
-
-        if (ringingCall != null && ringingCall.isRinging()) {
-            if (DBG) log("answerCall: call state = " + ringingCall.getState());
-            try {
-                if (phoneIsCdma) {
-                    if (app.cdmaPhoneCallState.getCurrentCallState()
-                            == CdmaPhoneCallState.PhoneCallState.IDLE) {
-                        // This is the FIRST incoming call being answered.
-                        // Set the Phone Call State to SINGLE_ACTIVE
-                        app.cdmaPhoneCallState.setCurrentCallState(
-                                CdmaPhoneCallState.PhoneCallState.SINGLE_ACTIVE);
-                    } else {
-                        // This is the CALL WAITING call being answered.
-                        // Set the Phone Call State to CONF_CALL
-                        app.cdmaPhoneCallState.setCurrentCallState(
-                                CdmaPhoneCallState.PhoneCallState.CONF_CALL);
-                        // Enable "Add Call" option after answering a Call Waiting as the user
-                        // should be allowed to add another call in case one of the parties
-                        // drops off
-                        app.cdmaPhoneCallState.setAddCallMenuStateAfterCallWaiting(true);
-                    }
-                }
-
-                final boolean isRealIncomingCall = isRealIncomingCall(ringingCall.getState());
-
-                //if (DBG) log("sPhone.acceptCall");
-                app.mCM.acceptCall(ringingCall);
-                answered = true;
-
-                setAudioMode();
-            } catch (CallStateException ex) {
-                Log.w(LOG_TAG, "answerCall: caught " + ex, ex);
-
-                if (phoneIsCdma) {
-                    // restore the cdmaPhoneCallState and btPhone.cdmaSetSecondCallState:
-                    app.cdmaPhoneCallState.setCurrentCallState(
-                            app.cdmaPhoneCallState.getPreviousCallState());
-                    if (btPhone != null) {
-                        try {
-                            btPhone.cdmaSetSecondCallState(false);
-                        } catch (RemoteException e) {
-                            Log.e(LOG_TAG, Log.getStackTraceString(new Throwable()));
-                        }
-                    }
-                }
-            }
-        }
-        return answered;
-    }
-
-    /**
-     * Hangs up all active calls.
-     */
-    static void hangupAllCalls(CallManager cm) {
-        final Call ringing = cm.getFirstActiveRingingCall();
-        final Call fg = cm.getActiveFgCall();
-        final Call bg = cm.getFirstActiveBgCall();
-
-        // We go in reverse order, BG->FG->RINGING because hanging up a ringing call or an active
-        // call can move a bg call to a fg call which would force us to loop over each call
-        // several times.  This ordering works best to ensure we dont have any more calls.
-        if (bg != null && !bg.isIdle()) {
-            hangup(bg);
-        }
-        if (fg != null && !fg.isIdle()) {
-            hangup(fg);
-        }
-        if (ringing != null && !ringing.isIdle()) {
-            hangupRingingCall(fg);
-        }
-    }
-
-    /**
-     * Smart "hang up" helper method which hangs up exactly one connection,
-     * based on the current Phone state, as follows:
-     * <ul>
-     * <li>If there's a ringing call, hang that up.
-     * <li>Else if there's a foreground call, hang that up.
-     * <li>Else if there's a background call, hang that up.
-     * <li>Otherwise do nothing.
-     * </ul>
-     * @return true if we successfully hung up, or false
-     *              if there were no active calls at all.
-     */
-    static boolean hangup(CallManager cm) {
-        boolean hungup = false;
-        Call ringing = cm.getFirstActiveRingingCall();
-        Call fg = cm.getActiveFgCall();
-        Call bg = cm.getFirstActiveBgCall();
-
-        if (!ringing.isIdle()) {
-            log("hangup(): hanging up ringing call");
-            hungup = hangupRingingCall(ringing);
-        } else if (!fg.isIdle()) {
-            log("hangup(): hanging up foreground call");
-            hungup = hangup(fg);
-        } else if (!bg.isIdle()) {
-            log("hangup(): hanging up background call");
-            hungup = hangup(bg);
-        } else {
-            // No call to hang up!  This is unlikely in normal usage,
-            // since the UI shouldn't be providing an "End call" button in
-            // the first place.  (But it *can* happen, rarely, if an
-            // active call happens to disconnect on its own right when the
-            // user is trying to hang up..)
-            log("hangup(): no active call to hang up");
-        }
-        if (DBG) log("==> hungup = " + hungup);
-
-        return hungup;
-    }
-
-    static boolean hangupRingingCall(Call ringing) {
-        if (DBG) log("hangup ringing call");
-        int phoneType = ringing.getPhone().getPhoneType();
-        Call.State state = ringing.getState();
-
-        if (state == Call.State.INCOMING) {
-            // Regular incoming call (with no other active calls)
-            log("hangupRingingCall(): regular incoming call: hangup()");
-            return hangup(ringing);
-        } else {
-            // Unexpected state: the ringing call isn't INCOMING or
-            // WAITING, so there's no reason to have called
-            // hangupRingingCall() in the first place.
-            // (Presumably the incoming call went away at the exact moment
-            // we got here, so just do nothing.)
-            Log.w(LOG_TAG, "hangupRingingCall: no INCOMING or WAITING call");
-            return false;
-        }
-    }
-
-    static boolean hangupActiveCall(Call foreground) {
-        if (DBG) log("hangup active call");
-        return hangup(foreground);
-    }
-
-    static boolean hangupHoldingCall(Call background) {
-        if (DBG) log("hangup holding call");
-        return hangup(background);
-    }
-
-    /**
-     * Used in CDMA phones to end the complete Call session
-     * @param phone the Phone object.
-     * @return true if *any* call was successfully hung up
-     */
-    static boolean hangupRingingAndActive(Phone phone) {
-        boolean hungUpRingingCall = false;
-        boolean hungUpFgCall = false;
-        Call ringingCall = phone.getRingingCall();
-        Call fgCall = phone.getForegroundCall();
-
-        // Hang up any Ringing Call
-        if (!ringingCall.isIdle()) {
-            log("hangupRingingAndActive: Hang up Ringing Call");
-            hungUpRingingCall = hangupRingingCall(ringingCall);
-        }
-
-        // Hang up any Active Call
-        if (!fgCall.isIdle()) {
-            log("hangupRingingAndActive: Hang up Foreground Call");
-            hungUpFgCall = hangupActiveCall(fgCall);
-        }
-
-        return hungUpRingingCall || hungUpFgCall;
-    }
-
-    /**
-     * Trivial wrapper around Call.hangup(), except that we return a
-     * boolean success code rather than throwing CallStateException on
-     * failure.
-     *
-     * @return true if the call was successfully hung up, or false
-     *         if the call wasn't actually active.
-     */
-    static boolean hangup(Call call) {
-        try {
-            CallManager cm = PhoneGlobals.getInstance().mCM;
-
-            if (call.getState() == Call.State.ACTIVE && cm.hasActiveBgCall()) {
-                // handle foreground call hangup while there is background call
-                log("- hangup(Call): hangupForegroundResumeBackground...");
-                cm.hangupForegroundResumeBackground(cm.getFirstActiveBgCall());
-            } else {
-                log("- hangup(Call): regular hangup()...");
-                call.hangup();
-            }
-            return true;
-        } catch (CallStateException ex) {
-            Log.e(LOG_TAG, "Call hangup: caught " + ex, ex);
-        }
-
-        return false;
-    }
-
-    /**
-     * Trivial wrapper around Connection.hangup(), except that we silently
-     * do nothing (rather than throwing CallStateException) if the
-     * connection wasn't actually active.
-     */
-    static void hangup(Connection c) {
-        try {
-            if (c != null) {
-                c.hangup();
-            }
-        } catch (CallStateException ex) {
-            Log.w(LOG_TAG, "Connection hangup: caught " + ex, ex);
-        }
-    }
-
-    static boolean answerAndEndHolding(CallManager cm, Call ringing) {
-        if (DBG) log("end holding & answer waiting: 1");
-        if (!hangupHoldingCall(cm.getFirstActiveBgCall())) {
-            Log.e(LOG_TAG, "end holding failed!");
-            return false;
-        }
-
-        if (DBG) log("end holding & answer waiting: 2");
-        return answerCall(ringing);
-
-    }
-
-    /**
-     * Answers the incoming call specified by "ringing", and ends the currently active phone call.
-     *
-     * This method is useful when's there's an incoming call which we cannot manage with the
-     * current call. e.g. when you are having a phone call with CDMA network and has received
-     * a SIP call, then we won't expect our telephony can manage those phone calls simultaneously.
-     * Note that some types of network may allow multiple phone calls at once; GSM allows to hold
-     * an ongoing phone call, so we don't need to end the active call. The caller of this method
-     * needs to check if the network allows multiple phone calls or not.
-     *
-     * @see #answerCall(Call)
-     * @see InCallScreen#internalAnswerCall()
-     */
-    /* package */ static boolean answerAndEndActive(CallManager cm, Call ringing) {
-        if (DBG) log("answerAndEndActive()...");
-
-        // Unlike the answerCall() method, we *don't* need to stop the
-        // ringer or change audio modes here since the user is already
-        // in-call, which means that the audio mode is already set
-        // correctly, and that we wouldn't have started the ringer in the
-        // first place.
-
-        // hanging up the active call also accepts the waiting call
-        // while active call and waiting call are from the same phone
-        // i.e. both from GSM phone
-        Call fgCall = cm.getActiveFgCall();
-        if (!hangupActiveCall(fgCall)) {
-            Log.w(LOG_TAG, "end active call failed!");
-            return false;
-        }
-
-        mConnectionHandler.removeMessages(MSG_CHECK_STATUS_ANSWERCALL);
-        Message msg = mConnectionHandler.obtainMessage(MSG_CHECK_STATUS_ANSWERCALL);
-        msg.arg1 = 1;
-        msg.obj = new FgRingCalls(fgCall, ringing);
-        mConnectionHandler.sendMessage(msg);
-
-        return true;
     }
 
     /**
@@ -674,87 +344,6 @@ public class PhoneUtils {
             }
         }
         return builder.toString();
-    }
-
-    /**
-     * Wrapper function to control when to send an empty Flash command to the network.
-     * Mainly needed for CDMA networks, such as scenarios when we need to send a blank flash
-     * to the network prior to placing a 3-way call for it to be successful.
-     */
-    static void sendEmptyFlash(Phone phone) {
-        if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_CDMA) {
-            Call fgCall = phone.getForegroundCall();
-            if (fgCall.getState() == Call.State.ACTIVE) {
-                // Send the empty flash
-                if (DBG) Log.d(LOG_TAG, "onReceive: (CDMA) sending empty flash to network");
-                switchHoldingAndActive(phone.getBackgroundCall());
-            }
-        }
-    }
-
-    static void swap() {
-        final PhoneGlobals mApp = PhoneGlobals.getInstance();
-        if (!okToSwapCalls(mApp.mCM)) {
-            // TODO: throw an error instead?
-            return;
-        }
-
-        // Swap the fg and bg calls.
-        // In the future we may provide some way for user to choose among
-        // multiple background calls, for now, always act on the first background call.
-        PhoneUtils.switchHoldingAndActive(mApp.mCM.getFirstActiveBgCall());
-    }
-
-    /**
-     * @param heldCall is the background call want to be swapped
-     */
-    static void switchHoldingAndActive(Call heldCall) {
-        log("switchHoldingAndActive()...");
-        try {
-            CallManager cm = PhoneGlobals.getInstance().mCM;
-            if (heldCall.isIdle()) {
-                // no heldCall, so it is to hold active call
-                cm.switchHoldingAndActive(cm.getFgPhone().getBackgroundCall());
-            } else {
-                // has particular heldCall, so to switch
-                cm.switchHoldingAndActive(heldCall);
-            }
-            setAudioMode(cm);
-        } catch (CallStateException ex) {
-            Log.w(LOG_TAG, "switchHoldingAndActive: caught " + ex, ex);
-        }
-    }
-
-    static void mergeCalls() {
-        mergeCalls(PhoneGlobals.getInstance().mCM);
-    }
-
-    static void mergeCalls(CallManager cm) {
-        int phoneType = cm.getFgPhone().getPhoneType();
-        if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
-            log("mergeCalls(): CDMA...");
-            PhoneGlobals app = PhoneGlobals.getInstance();
-            if (app.cdmaPhoneCallState.getCurrentCallState()
-                    == CdmaPhoneCallState.PhoneCallState.THRWAY_ACTIVE) {
-                // Set the Phone Call State to conference
-                app.cdmaPhoneCallState.setCurrentCallState(
-                        CdmaPhoneCallState.PhoneCallState.CONF_CALL);
-
-                // Send flash cmd
-                // TODO: Need to change the call from switchHoldingAndActive to
-                // something meaningful as we are not actually trying to swap calls but
-                // instead are merging two calls by sending a Flash command.
-                log("- sending flash...");
-                switchHoldingAndActive(cm.getFirstActiveBgCall());
-            }
-        } else {
-            try {
-                log("mergeCalls(): calling cm.conference()...");
-                cm.conference(cm.getFirstActiveBgCall());
-            } catch (CallStateException ex) {
-                Log.w(LOG_TAG, "mergeCalls: caught " + ex, ex);
-            }
-        }
     }
 
     static void separateCall(Connection c) {
