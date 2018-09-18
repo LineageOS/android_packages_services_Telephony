@@ -1258,6 +1258,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             EventLog.writeEvent(0x534e4554, "67862398", -1, "");
             throw new SecurityException("MODIFY_PHONE_STATE permission required.");
         }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             return (Boolean) sendRequest(CMD_END_CALL, null, new Integer(subId));
