@@ -82,7 +82,6 @@ import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
 import android.util.ArraySet;
-import android.util.EventLog;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Slog;
@@ -148,8 +147,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     // Message codes used with mMainThreadHandler
     private static final int CMD_HANDLE_PIN_MMI = 1;
-    private static final int CMD_ANSWER_RINGING_CALL = 4;
-    private static final int CMD_END_CALL = 5;  // not used yet
     private static final int CMD_TRANSMIT_APDU_LOGICAL_CHANNEL = 7;
     private static final int EVENT_TRANSMIT_APDU_LOGICAL_CHANNEL_DONE = 8;
     private static final int CMD_OPEN_CHANNEL = 9;
@@ -375,41 +372,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     notifyRequester(request);
                     break;
                 }
-
-                case CMD_ANSWER_RINGING_CALL:
-                    request = (MainThreadRequest) msg.obj;
-                    int answer_subId = request.subId;
-                    answerRingingCallInternal(answer_subId);
-                    request.result = ""; // dummy result for notifying the waiting thread
-                    // Wake up the requesting thread
-                    notifyRequester(request);
-                    break;
-
-                case CMD_END_CALL:
-                    request = (MainThreadRequest) msg.obj;
-                    int end_subId = request.subId;
-                    final boolean hungUp;
-                    Phone phone = getPhone(end_subId);
-                    if (phone == null) {
-                        if (DBG) log("CMD_END_CALL: no phone for id: " + end_subId);
-                        break;
-                    }
-                    int phoneType = phone.getPhoneType();
-                    if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
-                        // CDMA: If the user presses the Power button we treat it as
-                        // ending the complete call session
-                        hungUp = PhoneUtils.hangupRingingAndActive(getPhone(end_subId));
-                    } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
-                        // GSM: End the call as per the Phone state
-                        hungUp = PhoneUtils.hangup(mCM);
-                    } else {
-                        throw new IllegalStateException("Unexpected phone type: " + phoneType);
-                    }
-                    if (DBG) log("CMD_END_CALL: " + (hungUp ? "hung up!" : "no call to hang up"));
-                    request.result = hungUp;
-                    // Wake up the requesting thread
-                    notifyRequester(request);
-                    break;
 
                 case CMD_TRANSMIT_APDU_LOGICAL_CHANNEL:
                     request = (MainThreadRequest) msg.obj;
@@ -1244,7 +1206,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @return true is a call was ended
      */
     public boolean endCall() {
-        return endCallForSubscriber(getDefaultSubscription());
+        return false;
     }
 
     /**
@@ -1252,76 +1214,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @return true is a call was ended
      */
     public boolean endCallForSubscriber(int subId) {
-        if (mApp.checkCallingOrSelfPermission(permission.MODIFY_PHONE_STATE)
-                != PackageManager.PERMISSION_GRANTED) {
-            Log.i(LOG_TAG, "endCall: called without modify phone state.");
-            EventLog.writeEvent(0x534e4554, "67862398", -1, "");
-            throw new SecurityException("MODIFY_PHONE_STATE permission required.");
-        }
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return (Boolean) sendRequest(CMD_END_CALL, null, new Integer(subId));
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
+        return false;
     }
 
     public void answerRingingCall() {
-        answerRingingCallForSubscriber(getDefaultSubscription());
+        // Deprecated.
     }
 
     public void answerRingingCallForSubscriber(int subId) {
-        if (DBG) log("answerRingingCall...");
-        // TODO: there should eventually be a separate "ANSWER_PHONE" permission,
-        // but that can probably wait till the big TelephonyManager API overhaul.
-        // For now, protect this call with the MODIFY_PHONE_STATE permission.
-        enforceModifyPermission();
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            sendRequest(CMD_ANSWER_RINGING_CALL, null, new Integer(subId));
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
-     * Make the actual telephony calls to implement answerRingingCall().
-     * This should only be called from the main thread of the Phone app.
-     * @see #answerRingingCall
-     *
-     * TODO: it would be nice to return true if we answered the call, or
-     * false if there wasn't actually a ringing incoming call, or some
-     * other error occurred.  (In other words, pass back the return value
-     * from PhoneUtils.answerCall() or PhoneUtils.answerAndEndActive().)
-     * But that would require calling this method via sendRequest() rather
-     * than sendRequestAsync(), and right now we don't actually *need* that
-     * return value, so let's just return void for now.
-     */
-    private void answerRingingCallInternal(int subId) {
-        final boolean hasRingingCall = !getPhone(subId).getRingingCall().isIdle();
-        if (hasRingingCall) {
-            final boolean hasActiveCall = !getPhone(subId).getForegroundCall().isIdle();
-            final boolean hasHoldingCall = !getPhone(subId).getBackgroundCall().isIdle();
-            if (hasActiveCall && hasHoldingCall) {
-                // Both lines are in use!
-                // TODO: provide a flag to let the caller specify what
-                // policy to use if both lines are in use.  (The current
-                // behavior is hardwired to "answer incoming, end ongoing",
-                // which is how the CALL button is specced to behave.)
-                PhoneUtils.answerAndEndActive(mCM, mCM.getFirstActiveRingingCall());
-                return;
-            } else {
-                // answerCall() will automatically hold the current active
-                // call, if there is one.
-                PhoneUtils.answerCall(mCM.getFirstActiveRingingCall());
-                return;
-            }
-        } else {
-            // No call was ringing.
-            return;
-        }
+        // Deprecated
     }
 
     /**

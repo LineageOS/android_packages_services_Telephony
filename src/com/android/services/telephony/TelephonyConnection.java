@@ -883,6 +883,13 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             Log.v(this, "Holding active call");
             try {
                 Phone phone = mOriginalConnection.getCall().getPhone();
+
+                // New behavior for IMS -- don't use the clunky switchHoldingAndActive logic.
+                if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS) {
+                    ImsPhone imsPhone = (ImsPhone) phone;
+                    imsPhone.holdActiveCall();
+                    return;
+                }
                 Call ringingCall = phone.getRingingCall();
 
                 // Although the method says switchHoldingAndActive, it eventually calls a RIL method
@@ -912,6 +919,13 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         Log.v(this, "performUnhold");
         if (Call.State.HOLDING == mConnectionState) {
             try {
+                Phone phone = mOriginalConnection.getCall().getPhone();
+                // New behavior for IMS -- don't use the clunky switchHoldingAndActive logic.
+                if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS) {
+                    ImsPhone imsPhone = (ImsPhone) phone;
+                    imsPhone.unholdHeldCall();
+                    return;
+                }
                 // Here's the deal--Telephony hold/unhold is weird because whenever there exists
                 // more than one call, one of them must always be active. In other words, if you
                 // have an active call and holding call, and you put the active call on hold, it
