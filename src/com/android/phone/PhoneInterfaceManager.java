@@ -284,15 +284,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // SubscriptionManager.INVALID_SUBSCRIPTION_ID
         public Integer subId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
 
+        public WorkSource workSource;
+
         public MainThreadRequest(Object argument) {
             this.argument = argument;
         }
 
-        public MainThreadRequest(Object argument, Integer subId) {
+        MainThreadRequest(Object argument, Integer subId, WorkSource workSource) {
             this.argument = argument;
             if (subId != null) {
                 this.subId = subId;
             }
+            this.workSource = workSource;
         }
     }
 
@@ -618,7 +621,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_NV_READ_ITEM:
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_NV_READ_ITEM_DONE, request);
-                    mPhone.nvReadItem((Integer) request.argument, onCompleted);
+                    mPhone.nvReadItem((Integer) request.argument, onCompleted, request.workSource);
                     break;
 
                 case EVENT_NV_READ_ITEM_DONE:
@@ -644,7 +647,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_NV_WRITE_ITEM_DONE, request);
                     Pair<Integer, String> idValue = (Pair<Integer, String>) request.argument;
-                    mPhone.nvWriteItem(idValue.first, idValue.second, onCompleted);
+                    mPhone.nvWriteItem(idValue.first, idValue.second, onCompleted,
+                            request.workSource);
                     break;
 
                 case EVENT_NV_WRITE_ITEM_DONE:
@@ -710,7 +714,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_INVOKE_OEM_RIL_REQUEST_RAW:
                     request = (MainThreadRequest)msg.obj;
                     onCompleted = obtainMessage(EVENT_INVOKE_OEM_RIL_REQUEST_RAW_DONE, request);
-                    mPhone.invokeOemRilRequestRaw((byte[])request.argument, onCompleted);
+                    mPhone.invokeOemRilRequestRaw((byte[]) request.argument, onCompleted);
                     break;
 
                 case EVENT_INVOKE_OEM_RIL_REQUEST_RAW_DONE:
@@ -797,7 +801,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_GET_MODEM_ACTIVITY_INFO:
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_GET_MODEM_ACTIVITY_INFO_DONE, request);
-                    mPhone.getModemActivityInfo(onCompleted);
+                    mPhone.getModemActivityInfo(onCompleted, request.workSource);
                     break;
 
                 case EVENT_GET_MODEM_ACTIVITY_INFO_DONE:
@@ -827,7 +831,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     onCompleted = obtainMessage(EVENT_SET_ALLOWED_CARRIERS_DONE, request);
                     mPhone.setAllowedCarriers(
                             (List<CarrierIdentifier>) request.argument,
-                            onCompleted);
+                            onCompleted, request.workSource);
                     break;
 
                 case EVENT_SET_ALLOWED_CARRIERS_DONE:
@@ -855,7 +859,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_GET_ALLOWED_CARRIERS:
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_GET_ALLOWED_CARRIERS_DONE, request);
-                    mPhone.getAllowedCarriers(onCompleted);
+                    mPhone.getAllowedCarriers(onCompleted, request.workSource);
                     break;
 
                 case EVENT_GET_ALLOWED_CARRIERS_DONE:
@@ -1033,7 +1037,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @see #sendRequestAsync
      */
     private Object sendRequest(int command, Object argument) {
-        return sendRequest(command, argument, SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        return sendRequest(command, argument,  SubscriptionManager.INVALID_SUBSCRIPTION_ID, null);
+    }
+
+    /**
+     * Posts the specified command to be executed on the main thread,
+     * waits for the request to complete, and returns the result.
+     * @see #sendRequestAsync
+     */
+    private Object sendRequest(int command, Object argument, WorkSource workSource) {
+        return sendRequest(command, argument,  SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                workSource);
     }
 
     /**
@@ -1042,11 +1056,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @see #sendRequestAsync
      */
     private Object sendRequest(int command, Object argument, Integer subId) {
+        return sendRequest(command, argument, subId, null);
+    }
+
+    /**
+     * Posts the specified command to be executed on the main thread,
+     * waits for the request to complete, and returns the result.
+     * @see #sendRequestAsync
+     */
+    private Object sendRequest(int command, Object argument, Integer subId, WorkSource workSource) {
         if (Looper.myLooper() == mMainThreadHandler.getLooper()) {
             throw new RuntimeException("This method will deadlock if called from the main thread.");
         }
 
-        MainThreadRequest request = new MainThreadRequest(argument, subId);
+        MainThreadRequest request = new MainThreadRequest(argument, subId, workSource);
         Message msg = mMainThreadHandler.obtainMessage(command, request);
         msg.sendToTarget();
 
@@ -3041,13 +3064,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public String nvReadItem(int itemID) {
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, getDefaultSubscription(), "nvReadItem");
 
         final long identity = Binder.clearCallingIdentity();
         try {
             if (DBG) log("nvReadItem: item " + itemID);
-            String value = (String) sendRequest(CMD_NV_READ_ITEM, itemID);
+            String value = (String) sendRequest(CMD_NV_READ_ITEM, itemID, workSource);
             if (DBG) log("nvReadItem: item " + itemID + " is \"" + value + '"');
             return value;
         } finally {
@@ -3065,6 +3089,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean nvWriteItem(int itemID, String itemValue) {
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, getDefaultSubscription(), "nvWriteItem");
 
@@ -3072,7 +3097,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             if (DBG) log("nvWriteItem: item " + itemID + " value \"" + itemValue + '"');
             Boolean success = (Boolean) sendRequest(CMD_NV_WRITE_ITEM,
-                    new Pair<Integer, String>(itemID, itemValue));
+                    new Pair<Integer, String>(itemID, itemValue), workSource);
             if (DBG) log("nvWriteItem: item " + itemID + ' ' + (success ? "ok" : "fail"));
             return success;
         } finally {
@@ -3964,7 +3989,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         int returnValue = 0;
         try {
-            AsyncResult result = (AsyncResult)sendRequest(CMD_INVOKE_OEM_RIL_REQUEST_RAW, oemReq);
+            AsyncResult result = (AsyncResult) sendRequest(CMD_INVOKE_OEM_RIL_REQUEST_RAW, oemReq);
             if(result.exception == null) {
                 if (result.result != null) {
                     byte[] responseData = (byte[])(result.result);
@@ -4368,13 +4393,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void requestModemActivityInfo(ResultReceiver result) {
         enforceModifyPermission();
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
 
         final long identity = Binder.clearCallingIdentity();
         try {
             ModemActivityInfo ret = null;
             synchronized (mLastModemActivityInfo) {
-                ModemActivityInfo info = (ModemActivityInfo) sendRequest(CMD_GET_MODEM_ACTIVITY_INFO,
-                        null);
+                ModemActivityInfo info = (ModemActivityInfo) sendRequest(
+                        CMD_GET_MODEM_ACTIVITY_INFO,
+                        null, workSource);
                 if (isModemActivityInfoValid(info)) {
                     int[] mergedTxTimeMs = new int[ModemActivityInfo.TX_POWER_LEVELS];
                     for (int i = 0; i < mergedTxTimeMs.length; i++) {
@@ -4721,6 +4748,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public int setAllowedCarriers(int slotIndex, List<CarrierIdentifier> carriers) {
         enforceModifyPermission();
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
 
         if (carriers == null) {
             throw new NullPointerException("carriers cannot be null");
@@ -4729,7 +4757,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int subId = SubscriptionManager.getSubId(slotIndex)[0];
-            int[] retVal = (int[]) sendRequest(CMD_SET_ALLOWED_CARRIERS, carriers, subId);
+            int[] retVal = (int[]) sendRequest(CMD_SET_ALLOWED_CARRIERS, carriers, subId,
+                    workSource);
             return retVal[0];
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -4747,11 +4776,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public List<CarrierIdentifier> getAllowedCarriers(int slotIndex) {
         enforceReadPrivilegedPermission();
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
 
         final long identity = Binder.clearCallingIdentity();
         try {
             int subId = SubscriptionManager.getSubId(slotIndex)[0];
-            return (List<CarrierIdentifier>) sendRequest(CMD_GET_ALLOWED_CARRIERS, null, subId);
+            return (List<CarrierIdentifier>) sendRequest(CMD_GET_ALLOWED_CARRIERS, null, subId,
+                    workSource);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4953,10 +4984,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         enforceModifyPermission();
         Phone phone = PhoneFactory.getPhone(slotIndex);
 
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
+
         final long identity = Binder.clearCallingIdentity();
         try {
             if (phone != null) {
-                phone.setSimPowerState(state);
+                phone.setSimPowerState(state, workSource);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
