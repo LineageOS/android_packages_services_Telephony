@@ -687,7 +687,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         if (getPhone() != null) {
             getPhone().setEchoSuppressionEnabled();
 
-            if (SystemProperties.getBoolean("ro.telephony.needsMuteByRil", false)) {
+            if (SystemProperties.getBoolean("ro.telephony.isHisiRIL", false)) {
                 getPhone().setMute(audioState.isMuted());
             }
         }
