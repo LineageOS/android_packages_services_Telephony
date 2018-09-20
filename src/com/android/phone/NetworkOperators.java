@@ -195,12 +195,6 @@ public class NetworkOperators extends PreferenceCategory
     // Used by both mAutoSelect and mNetworkSelect buttons.
     protected void displayNetworkSelectionFailed() {
         Toast.makeText(getContext(), R.string.connect_later, Toast.LENGTH_LONG).show();
-
-        final PhoneGlobals app = PhoneGlobals.getInstance();
-        ServiceState ss = mTelephonyManager.getServiceStateForSubscriber(mSubId);
-        if (ss != null) {
-            app.notificationMgr.updateNetworkSelection(ss.getState(), mSubId);
-        }
     }
 
     // Used by both mAutoSelect and mNetworkSelect buttons.
