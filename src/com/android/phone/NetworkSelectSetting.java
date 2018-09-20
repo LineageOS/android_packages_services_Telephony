@@ -21,6 +21,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -84,6 +85,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
     private NetworkOperatorPreference mSelectedNetworkOperatorPreference;
     private TelephonyManager mTelephonyManager;
     private List<String> mForbiddenPlmns;
+    private boolean mShow4GForLTE;
 
     private final Runnable mUpdateNetworkOperatorsRunnable = () -> {
         updateNetworkOperatorsPreferenceCategory();
@@ -116,6 +118,15 @@ public class NetworkSelectSetting extends PreferenceFragment {
         mStatusMessagePreference = new Preference(getContext());
         mSelectedNetworkOperatorPreference = null;
         mTelephonyManager = TelephonyManager.from(getContext()).createForSubscriptionId(mSubId);
+        try {
+            Context con = getActivity().createPackageContext("com.android.systemui", 0);
+            int id = con.getResources().getIdentifier("config_show4GForLTE",
+                    "bool", "com.android.systemui");
+            mShow4GForLTE = con.getResources().getBoolean(id);
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(TAG, "NameNotFoundException for show4GFotLTE");
+            mShow4GForLTE = false;
+        }
         setRetainInstance(true);
     }
 
@@ -394,7 +405,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
         for (int index = 0; index < mCellInfoList.size(); index++) {
             if (!mCellInfoList.get(index).isRegistered()) {
                 NetworkOperatorPreference pref = new NetworkOperatorPreference(
-                        mCellInfoList.get(index), getContext(), mForbiddenPlmns);
+                        mCellInfoList.get(index), getContext(), mForbiddenPlmns, mShow4GForLTE);
                 pref.setKey(CellInfoUtil.getNetworkTitle(mCellInfoList.get(index)));
                 pref.setOrder(index);
                 mNetworkOperatorsPreferences.addPreference(pref);
@@ -432,8 +443,8 @@ public class NetworkSelectSetting extends PreferenceFragment {
             CellInfo cellInfo = CellInfoUtil.wrapCellInfoWithCellIdentity(cellIdentity);
             if (cellInfo != null) {
                 if (DBG) logd("Currently registered cell: " + cellInfo.toString());
-                NetworkOperatorPreference pref =
-                        new NetworkOperatorPreference(cellInfo, getContext(), mForbiddenPlmns);
+                NetworkOperatorPreference pref = new NetworkOperatorPreference(
+                        cellInfo, getContext(), mForbiddenPlmns, mShow4GForLTE);
                 pref.setTitle(mTelephonyManager.getNetworkOperatorName());
                 pref.setSummary(R.string.network_connected);
                 // Update the signal strength icon, since the default signalStrength value would be
@@ -513,8 +524,8 @@ public class NetworkSelectSetting extends PreferenceFragment {
         if (DBG) logd("addConnectedNetworkOperatorPreference");
         // Remove the current ConnectedNetworkOperatorsPreference
         removeConnectedNetworkOperatorPreference();
-        final NetworkOperatorPreference pref =
-                new NetworkOperatorPreference(cellInfo, getContext(), mForbiddenPlmns);
+        final NetworkOperatorPreference pref = new NetworkOperatorPreference(
+                cellInfo, getContext(), mForbiddenPlmns, mShow4GForLTE);
         pref.setSummary(R.string.network_connected);
         mConnectedNetworkOperatorsPreference.addPreference(pref);
         PreferenceScreen preferenceScreen = getPreferenceScreen();
