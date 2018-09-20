@@ -57,6 +57,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.CellInfo;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoWcdma;
+import android.telephony.CellLocation;
 import android.telephony.ClientRequestStats;
 import android.telephony.IccOpenLogicalChannelResponse;
 import android.telephony.LocationAccessPolicy;
@@ -75,6 +76,8 @@ import android.telephony.TelephonyManager;
 import android.telephony.UiccSlotInfo;
 import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
+import android.telephony.cdma.CdmaCellLocation;
+import android.telephony.gsm.GsmCellLocation;
 import android.telephony.ims.aidl.IImsConfig;
 import android.telephony.ims.aidl.IImsMmTelFeature;
 import android.telephony.ims.aidl.IImsRcsFeature;
@@ -200,6 +203,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_SET_CDMA_ROAMING_MODE_DONE = 57;
     private static final int CMD_SET_CDMA_SUBSCRIPTION_MODE = 58;
     private static final int EVENT_SET_CDMA_SUBSCRIPTION_MODE_DONE = 59;
+    private static final int CMD_GET_ALL_CELL_INFO = 60;
+    private static final int EVENT_GET_ALL_CELL_INFO_DONE = 61;
+    private static final int CMD_GET_CELL_LOCATION = 62;
+    private static final int EVENT_GET_CELL_LOCATION_DONE = 63;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -963,6 +970,47 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request.result = ar.exception == null;
                     notifyRequester(request);
                     break;
+
+                case CMD_GET_ALL_CELL_INFO:
+                    request = (MainThreadRequest) msg.obj;
+                    Pair<Phone, WorkSource> args = (Pair<Phone, WorkSource>) request.argument;
+                    onCompleted = obtainMessage(EVENT_GET_ALL_CELL_INFO_DONE, request);
+                    ((Phone) args.first).getAllCellInfo(args.second, onCompleted);
+                    break;
+
+                case EVENT_GET_ALL_CELL_INFO_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    request.result = (ar.exception == null) ? ar.result : new ArrayList<CellInfo>();
+                    synchronized (request) {
+                        request.notifyAll();
+                    }
+                    break;
+
+                case CMD_GET_CELL_LOCATION: {
+                    request = (MainThreadRequest) msg.obj;
+                    WorkSource ws = (WorkSource) request.argument;
+                    Phone phone = getPhoneFromRequest(request);
+                    phone.getCellLocation(ws, obtainMessage(EVENT_GET_CELL_LOCATION_DONE, request));
+                    break;
+                }
+
+                case EVENT_GET_CELL_LOCATION_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null) {
+                        request.result = ar.result;
+                    } else {
+                        Phone phone = getPhoneFromRequest(request);
+                        request.result = (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_CDMA)
+                                ? new CdmaCellLocation() : new GsmCellLocation();
+                    }
+
+                    synchronized (request) {
+                        request.notifyAll();
+                    }
+                    break;
+                }
 
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
@@ -1777,12 +1825,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             if (DBG_LOC) log("getCellLocation: is active user");
             Bundle data = new Bundle();
-            Phone phone = getPhone(mSubscriptionController.getDefaultDataSubId());
-            if (phone == null) {
-                return null;
-            }
-
-            phone.getCellLocation(workSource).fillInNotifierBundle(data);
+            int subId = mSubscriptionController.getDefaultDataSubId();
+            CellLocation cl = (CellLocation) sendRequest(CMD_GET_CELL_LOCATION, workSource, subId);
+            cl.fillInNotifierBundle(data);
             return data;
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -1910,7 +1955,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             List<CellInfo> cellInfos = new ArrayList<CellInfo>();
             for (Phone phone : PhoneFactory.getPhones()) {
-                final List<CellInfo> info = phone.getAllCellInfo(workSource);
+                final List<CellInfo> info = (List<CellInfo>) sendRequest(
+                        CMD_GET_ALL_CELL_INFO,
+                        new Pair<Phone, WorkSource>(phone, workSource));
                 if (info != null) cellInfos.addAll(info);
             }
             return cellInfos;
