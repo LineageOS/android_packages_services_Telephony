@@ -17,9 +17,11 @@
 package com.android.services.telephony;
 
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -119,6 +121,23 @@ public class TelephonyConnectionService extends ConnectionService {
         }
     };
 
+    private final BroadcastReceiver mTtyBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            Log.v(this, "onReceive, action: %s", action);
+            if (action.equals(TelecomManager.ACTION_TTY_PREFERRED_MODE_CHANGED)) {
+                int newPreferredTtyMode = intent.getIntExtra(
+                        TelecomManager.EXTRA_TTY_PREFERRED_MODE, TelecomManager.TTY_MODE_OFF);
+
+                boolean isTtyNowEnabled = newPreferredTtyMode != TelecomManager.TTY_MODE_OFF;
+                if (isTtyNowEnabled != mIsTtyEnabled) {
+                    handleTtyModeChange(isTtyNowEnabled);
+                }
+            }
+        }
+    };
+
     private final TelephonyConferenceController mTelephonyConferenceController =
             new TelephonyConferenceController(mTelephonyConnectionServiceProxy);
     private final CdmaConferenceController mCdmaConferenceController =
@@ -131,6 +150,7 @@ public class TelephonyConnectionService extends ConnectionService {
     private RadioOnHelper mRadioOnHelper;
     private EmergencyTonePlayer mEmergencyTonePlayer;
     private HoldTracker mHoldTracker;
+    private boolean mIsTtyEnabled;
 
     // Contains one TelephonyConnection that has placed a call and a memory of which Phones it has
     // already tried to connect with. There should be only one TelephonyConnection trying to place a
@@ -263,6 +283,17 @@ public class TelephonyConnectionService extends ConnectionService {
         mEmergencyTonePlayer = new EmergencyTonePlayer(this);
         TelecomAccountRegistry.getInstance(this).setTelephonyConnectionService(this);
         mHoldTracker = new HoldTracker();
+        mIsTtyEnabled = isTtyModeEnabled(getApplicationContext());
+
+        IntentFilter intentFilter = new IntentFilter(
+                TelecomManager.ACTION_TTY_PREFERRED_MODE_CHANGED);
+        registerReceiver(mTtyBroadcastReceiver, intentFilter);
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        unregisterReceiver(mTtyBroadcastReceiver);
+        return super.onUnbind(intent);
     }
 
     @Override
@@ -633,8 +664,9 @@ public class TelephonyConnectionService extends ConnectionService {
         }
 
         final Context context = getApplicationContext();
-        if (VideoProfile.isVideo(request.getVideoState()) && isTtyModeEnabled(context) &&
-                !isEmergencyNumber) {
+        final boolean isTtyModeEnabled = isTtyModeEnabled(context);
+        if (VideoProfile.isVideo(request.getVideoState()) && isTtyModeEnabled
+                && !isEmergencyNumber) {
             return Connection.createFailedConnection(DisconnectCauseUtil.toTelecomDisconnectCause(
                     android.telephony.DisconnectCause.VIDEO_CALL_NOT_ALLOWED_WHILE_TTY_ENABLED,
                     null, phone.getPhoneId()));
@@ -670,7 +702,7 @@ public class TelephonyConnectionService extends ConnectionService {
         connection.setInitializing();
         connection.setVideoState(request.getVideoState());
         connection.setRttTextStream(request.getRttTextStream());
-
+        connection.setTtyEnabled(isTtyModeEnabled);
         return connection;
     }
 
@@ -1450,6 +1482,17 @@ public class TelephonyConnectionService extends ConnectionService {
                         "confirmation event");
                 telephonyConnection.sendConnectionEvent(
                         TelephonyManager.EVENT_NOTIFY_INTERNATIONAL_CALL_ON_WFC, null);
+            }
+        }
+    }
+
+    private void handleTtyModeChange(boolean isTtyEnabled) {
+        Log.i(this, "handleTtyModeChange; isTtyEnabled=%b", isTtyEnabled);
+        mIsTtyEnabled = isTtyEnabled;
+        for (Connection connection : getAllConnections()) {
+            if (connection instanceof TelephonyConnection) {
+                TelephonyConnection telephonyConnection = (TelephonyConnection) connection;
+                telephonyConnection.setTtyEnabled(isTtyEnabled);
             }
         }
     }
