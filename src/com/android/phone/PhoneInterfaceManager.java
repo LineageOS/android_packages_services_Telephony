@@ -57,6 +57,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.CellInfo;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoWcdma;
+import android.telephony.CellLocation;
 import android.telephony.ClientRequestStats;
 import android.telephony.IccOpenLogicalChannelResponse;
 import android.telephony.LocationAccessPolicy;
@@ -75,6 +76,8 @@ import android.telephony.TelephonyManager;
 import android.telephony.UiccSlotInfo;
 import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
+import android.telephony.cdma.CdmaCellLocation;
+import android.telephony.gsm.GsmCellLocation;
 import android.telephony.ims.aidl.IImsConfig;
 import android.telephony.ims.aidl.IImsMmTelFeature;
 import android.telephony.ims.aidl.IImsRcsFeature;
@@ -82,7 +85,6 @@ import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
 import android.util.ArraySet;
-import android.util.EventLog;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Slog;
@@ -148,8 +150,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     // Message codes used with mMainThreadHandler
     private static final int CMD_HANDLE_PIN_MMI = 1;
-    private static final int CMD_ANSWER_RINGING_CALL = 4;
-    private static final int CMD_END_CALL = 5;  // not used yet
     private static final int CMD_TRANSMIT_APDU_LOGICAL_CHANNEL = 7;
     private static final int EVENT_TRANSMIT_APDU_LOGICAL_CHANNEL_DONE = 8;
     private static final int CMD_OPEN_CHANNEL = 9;
@@ -203,6 +203,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_SET_CDMA_ROAMING_MODE_DONE = 57;
     private static final int CMD_SET_CDMA_SUBSCRIPTION_MODE = 58;
     private static final int EVENT_SET_CDMA_SUBSCRIPTION_MODE_DONE = 59;
+    private static final int CMD_GET_ALL_CELL_INFO = 60;
+    private static final int EVENT_GET_ALL_CELL_INFO_DONE = 61;
+    private static final int CMD_GET_CELL_LOCATION = 62;
+    private static final int EVENT_GET_CELL_LOCATION_DONE = 63;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -375,41 +379,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     notifyRequester(request);
                     break;
                 }
-
-                case CMD_ANSWER_RINGING_CALL:
-                    request = (MainThreadRequest) msg.obj;
-                    int answer_subId = request.subId;
-                    answerRingingCallInternal(answer_subId);
-                    request.result = ""; // dummy result for notifying the waiting thread
-                    // Wake up the requesting thread
-                    notifyRequester(request);
-                    break;
-
-                case CMD_END_CALL:
-                    request = (MainThreadRequest) msg.obj;
-                    int end_subId = request.subId;
-                    final boolean hungUp;
-                    Phone phone = getPhone(end_subId);
-                    if (phone == null) {
-                        if (DBG) log("CMD_END_CALL: no phone for id: " + end_subId);
-                        break;
-                    }
-                    int phoneType = phone.getPhoneType();
-                    if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
-                        // CDMA: If the user presses the Power button we treat it as
-                        // ending the complete call session
-                        hungUp = PhoneUtils.hangupRingingAndActive(getPhone(end_subId));
-                    } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
-                        // GSM: End the call as per the Phone state
-                        hungUp = PhoneUtils.hangup(mCM);
-                    } else {
-                        throw new IllegalStateException("Unexpected phone type: " + phoneType);
-                    }
-                    if (DBG) log("CMD_END_CALL: " + (hungUp ? "hung up!" : "no call to hang up"));
-                    request.result = hungUp;
-                    // Wake up the requesting thread
-                    notifyRequester(request);
-                    break;
 
                 case CMD_TRANSMIT_APDU_LOGICAL_CHANNEL:
                     request = (MainThreadRequest) msg.obj;
@@ -1002,6 +971,47 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     notifyRequester(request);
                     break;
 
+                case CMD_GET_ALL_CELL_INFO:
+                    request = (MainThreadRequest) msg.obj;
+                    Pair<Phone, WorkSource> args = (Pair<Phone, WorkSource>) request.argument;
+                    onCompleted = obtainMessage(EVENT_GET_ALL_CELL_INFO_DONE, request);
+                    ((Phone) args.first).getAllCellInfo(args.second, onCompleted);
+                    break;
+
+                case EVENT_GET_ALL_CELL_INFO_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    request.result = (ar.exception == null) ? ar.result : new ArrayList<CellInfo>();
+                    synchronized (request) {
+                        request.notifyAll();
+                    }
+                    break;
+
+                case CMD_GET_CELL_LOCATION: {
+                    request = (MainThreadRequest) msg.obj;
+                    WorkSource ws = (WorkSource) request.argument;
+                    Phone phone = getPhoneFromRequest(request);
+                    phone.getCellLocation(ws, obtainMessage(EVENT_GET_CELL_LOCATION_DONE, request));
+                    break;
+                }
+
+                case EVENT_GET_CELL_LOCATION_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null) {
+                        request.result = ar.result;
+                    } else {
+                        Phone phone = getPhoneFromRequest(request);
+                        request.result = (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_CDMA)
+                                ? new CdmaCellLocation() : new GsmCellLocation();
+                    }
+
+                    synchronized (request) {
+                        request.notifyAll();
+                    }
+                    break;
+                }
+
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
                     break;
@@ -1244,7 +1254,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @return true is a call was ended
      */
     public boolean endCall() {
-        return endCallForSubscriber(getDefaultSubscription());
+        return false;
     }
 
     /**
@@ -1252,76 +1262,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @return true is a call was ended
      */
     public boolean endCallForSubscriber(int subId) {
-        if (mApp.checkCallingOrSelfPermission(permission.MODIFY_PHONE_STATE)
-                != PackageManager.PERMISSION_GRANTED) {
-            Log.i(LOG_TAG, "endCall: called without modify phone state.");
-            EventLog.writeEvent(0x534e4554, "67862398", -1, "");
-            throw new SecurityException("MODIFY_PHONE_STATE permission required.");
-        }
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return (Boolean) sendRequest(CMD_END_CALL, null, new Integer(subId));
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
+        return false;
     }
 
     public void answerRingingCall() {
-        answerRingingCallForSubscriber(getDefaultSubscription());
+        // Deprecated.
     }
 
     public void answerRingingCallForSubscriber(int subId) {
-        if (DBG) log("answerRingingCall...");
-        // TODO: there should eventually be a separate "ANSWER_PHONE" permission,
-        // but that can probably wait till the big TelephonyManager API overhaul.
-        // For now, protect this call with the MODIFY_PHONE_STATE permission.
-        enforceModifyPermission();
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            sendRequest(CMD_ANSWER_RINGING_CALL, null, new Integer(subId));
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
-     * Make the actual telephony calls to implement answerRingingCall().
-     * This should only be called from the main thread of the Phone app.
-     * @see #answerRingingCall
-     *
-     * TODO: it would be nice to return true if we answered the call, or
-     * false if there wasn't actually a ringing incoming call, or some
-     * other error occurred.  (In other words, pass back the return value
-     * from PhoneUtils.answerCall() or PhoneUtils.answerAndEndActive().)
-     * But that would require calling this method via sendRequest() rather
-     * than sendRequestAsync(), and right now we don't actually *need* that
-     * return value, so let's just return void for now.
-     */
-    private void answerRingingCallInternal(int subId) {
-        final boolean hasRingingCall = !getPhone(subId).getRingingCall().isIdle();
-        if (hasRingingCall) {
-            final boolean hasActiveCall = !getPhone(subId).getForegroundCall().isIdle();
-            final boolean hasHoldingCall = !getPhone(subId).getBackgroundCall().isIdle();
-            if (hasActiveCall && hasHoldingCall) {
-                // Both lines are in use!
-                // TODO: provide a flag to let the caller specify what
-                // policy to use if both lines are in use.  (The current
-                // behavior is hardwired to "answer incoming, end ongoing",
-                // which is how the CALL button is specced to behave.)
-                PhoneUtils.answerAndEndActive(mCM, mCM.getFirstActiveRingingCall());
-                return;
-            } else {
-                // answerCall() will automatically hold the current active
-                // call, if there is one.
-                PhoneUtils.answerCall(mCM.getFirstActiveRingingCall());
-                return;
-            }
-        } else {
-            // No call was ringing.
-            return;
-        }
+        // Deprecated
     }
 
     /**
@@ -1876,12 +1825,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             if (DBG_LOC) log("getCellLocation: is active user");
             Bundle data = new Bundle();
-            Phone phone = getPhone(mSubscriptionController.getDefaultDataSubId());
-            if (phone == null) {
-                return null;
-            }
-
-            phone.getCellLocation(workSource).fillInNotifierBundle(data);
+            int subId = mSubscriptionController.getDefaultDataSubId();
+            CellLocation cl = (CellLocation) sendRequest(CMD_GET_CELL_LOCATION, workSource, subId);
+            cl.fillInNotifierBundle(data);
             return data;
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -2009,7 +1955,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             List<CellInfo> cellInfos = new ArrayList<CellInfo>();
             for (Phone phone : PhoneFactory.getPhones()) {
-                final List<CellInfo> info = phone.getAllCellInfo(workSource);
+                final List<CellInfo> info = (List<CellInfo>) sendRequest(
+                        CMD_GET_ALL_CELL_INFO,
+                        new Pair<Phone, WorkSource>(phone, workSource));
                 if (info != null) cellInfos.addAll(info);
             }
             return cellInfos;
