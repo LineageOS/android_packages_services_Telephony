@@ -112,6 +112,8 @@ import com.android.internal.telephony.ProxyController;
 import com.android.internal.telephony.RIL;
 import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.ServiceStateTracker;
+import com.android.internal.telephony.SmsApplication;
+import com.android.internal.telephony.SmsApplication.SmsApplicationData;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.euicc.EuiccConnector;
@@ -135,6 +137,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -5310,5 +5313,74 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    private void ensureUserRunning(int userId) {
+        if (!mUserManager.isUserRunning(userId)) {
+            throw new IllegalStateException("User " + userId + " does not exist or not running");
+        }
+    }
+
+    /**
+     * Returns a list of SMS apps on a given user.
+     *
+     * Only the shell user (UID 2000 or 0) can call it.
+     * Target user must be running.
+     */
+    @Override
+    public String[] getSmsApps(int userId) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "getSmsApps");
+        ensureUserRunning(userId);
+
+        final Collection<SmsApplicationData> apps =
+                SmsApplication.getApplicationCollectionAsUser(mApp, userId);
+
+        String[] ret = new String[apps.size()];
+        int i = 0;
+        for (SmsApplicationData app : apps) {
+            ret[i++] = app.mPackageName;
+        }
+        return ret;
+    }
+
+    /**
+     * Returns the default SMS app package name on a given user.
+     *
+     * Only the shell user (UID 2000 or 0) can call it.
+     * Target user must be running.
+     */
+    @Override
+    public String getDefaultSmsApp(int userId) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "getDefaultSmsApp");
+        ensureUserRunning(userId);
+
+        final ComponentName cn = SmsApplication.getDefaultSmsApplicationAsUser(mApp,
+                /* updateIfNeeded= */ true, userId);
+        return cn == null ? null : cn.getPackageName();
+    }
+
+    /**
+     * Set a package as the default SMS app on a given user.
+     *
+     * Only the shell user (UID 2000 or 0) can call it.
+     * Target user must be running.
+     */
+    @Override
+    public void setDefaultSmsApp(int userId, String packageName) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "setDefaultSmsApp");
+        ensureUserRunning(userId);
+
+        boolean found = false;
+        for (String pkg : getSmsApps(userId)) {
+            if (TextUtils.equals(packageName, pkg)) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            throw new IllegalArgumentException("Package " + packageName + " is not an SMS app");
+        }
+
+        SmsApplication.setDefaultApplicationAsUser(packageName, mApp, userId);
     }
 }
