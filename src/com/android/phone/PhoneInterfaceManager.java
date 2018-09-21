@@ -3285,24 +3285,30 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    /**
-     * Set the network selection mode to manual with the selected carrier.
+   /**
+     * Ask the radio to connect to the input network and change selection mode to manual.
+     *
+     * @param subId the id of the subscription.
+     * @param operatorInfo the operator information, included the PLMN, long name and short name of
+     * the operator to attach to.
+     * @param persistSelection whether the selection will persist until reboot. If true, only allows
+     * attaching to the selected PLMN until reboot; otherwise, attach to the chosen PLMN and resume
+     * normal network selection next time.
+     * @return {@code true} on success; {@code true} on any failure.
      */
     @Override
-    public boolean setNetworkSelectionModeManual(int subId, String operatorNumeric,
-            boolean persistSelection) {
+    public boolean setNetworkSelectionModeManual(
+            int subId, OperatorInfo operatorInfo, boolean persistSelection) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "setNetworkSelectionModeManual");
-
         final long identity = Binder.clearCallingIdentity();
         try {
-            OperatorInfo operator = new OperatorInfo(
-                /* operatorAlphaLong */ "",
-                /* operatorAlphaShort */ "",
-                    operatorNumeric);
-            if (DBG) log("setNetworkSelectionModeManual: subId:" + subId + " operator:" + operator);
-            ManualNetworkSelectionArgument arg = new ManualNetworkSelectionArgument(operator,
+            ManualNetworkSelectionArgument arg = new ManualNetworkSelectionArgument(operatorInfo,
                     persistSelection);
+            if (DBG) {
+                log("setNetworkSelectionModeManual: subId: " + subId
+                        + " operator: " + operatorInfo);
+            }
             return (Boolean) sendRequest(CMD_SET_NETWORK_SELECTION_MODE_MANUAL, arg, subId);
         } finally {
             Binder.restoreCallingIdentity(identity);
