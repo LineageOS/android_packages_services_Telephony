@@ -18,16 +18,17 @@ package com.android.phone;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PersistableBundle;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.telephony.AccessNetworkConstants;
+import android.telephony.CarrierConfigManager;
 import android.telephony.CellIdentity;
 import android.telephony.CellInfo;
 import android.telephony.NetworkRegistrationState;
@@ -83,7 +84,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
     private NetworkOperatorPreference mSelectedNetworkOperatorPreference;
     private TelephonyManager mTelephonyManager;
     private List<String> mForbiddenPlmns;
-    private boolean mShow4GForLTE;
+    private boolean mShow4GForLTE = true;
     private NetworkScanHelper mNetworkScanHelper;
     private final ExecutorService mNetworkScanExecutor = Executors.newFixedThreadPool(1);
 
@@ -120,14 +121,11 @@ public class NetworkSelectSetting extends PreferenceFragment {
         mTelephonyManager = TelephonyManager.from(getContext()).createForSubscriptionId(mSubId);
         mNetworkScanHelper = new NetworkScanHelper(
                 mTelephonyManager, mCallback, mNetworkScanExecutor);
-        try {
-            Context con = getActivity().createPackageContext("com.android.systemui", 0);
-            int id = con.getResources().getIdentifier("config_show4GForLTE",
-                    "bool", "com.android.systemui");
-            mShow4GForLTE = con.getResources().getBoolean(id);
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, "NameNotFoundException for show4GFotLTE");
-            mShow4GForLTE = false;
+        PersistableBundle bundle = ((CarrierConfigManager) getContext().getSystemService(
+                Context.CARRIER_CONFIG_SERVICE)).getConfigForSubId(mSubId);
+        if (bundle != null) {
+            mShow4GForLTE = bundle.getBoolean(
+                    CarrierConfigManager.KEY_SHOW_4G_FOR_LTE_DATA_ICON_BOOL);
         }
         setRetainInstance(true);
     }

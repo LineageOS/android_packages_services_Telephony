@@ -423,7 +423,7 @@ public class MobileNetworkSettings extends Activity  {
         CdmaOptions mCdmaOptions;
 
         private Preference mClickedPreference;
-        private boolean mShow4GForLTE;
+        private boolean mShow4GForLTE = true;
         private boolean mIsGlobalCdma;
         private boolean mOnlyAutoSelectInHomeNW;
         private boolean mUnavailable;
@@ -803,16 +803,6 @@ public class MobileNetworkSettings extends Activity  {
             mVideoCallingPref = (SwitchPreference) findPreference(BUTTON_VIDEO_CALLING_KEY);
             mMobileDataPref = (MobileDataPreference) findPreference(BUTTON_MOBILE_DATA_ENABLE_KEY);
             mDataUsagePref = (DataUsagePreference) findPreference(BUTTON_DATA_USAGE_KEY);
-
-            try {
-                Context con = activity.createPackageContext("com.android.systemui", 0);
-                int id = con.getResources().getIdentifier("config_show4GForLTE",
-                        "bool", "com.android.systemui");
-                mShow4GForLTE = con.getResources().getBoolean(id);
-            } catch (PackageManager.NameNotFoundException e) {
-                Log.e(LOG_TAG, "NameNotFoundException for show4GFotLTE");
-                mShow4GForLTE = false;
-            }
 
             //get UI object references
             PreferenceScreen prefSet = getPreferenceScreen();
@@ -1217,6 +1207,8 @@ public class MobileNetworkSettings extends Activity  {
         void updateEnabledNetworksEntries() {
             final int phoneType = mTelephonyManager.getPhoneType();
             final PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
+            mShow4GForLTE = carrierConfig != null ? carrierConfig.getBoolean(
+                    CarrierConfigManager.KEY_SHOW_4G_FOR_LTE_DATA_ICON_BOOL) : true;
             if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
                 final int lteForced = android.provider.Settings.Global.getInt(
                         getContext().getContentResolver(),
