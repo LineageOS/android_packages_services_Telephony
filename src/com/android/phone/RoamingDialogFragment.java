@@ -35,6 +35,7 @@ public class RoamingDialogFragment extends DialogFragment implements OnClickList
 
     public static final String SUB_ID_KEY = "sub_id_key";
 
+    private CarrierConfigManager mCarrierConfigManager;
     private int mSubId;
 
     /**
@@ -52,6 +53,7 @@ public class RoamingDialogFragment extends DialogFragment implements OnClickList
         super.onAttach(context);
         Bundle args = getArguments();
         mSubId = args.getInt(SUB_ID_KEY);
+        mCarrierConfigManager = new CarrierConfigManager(context);
 
         // Verify host activity implemented callback interface
         FragmentManager fragmentManager = getFragmentManager();
@@ -68,8 +70,7 @@ public class RoamingDialogFragment extends DialogFragment implements OnClickList
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         int title = R.string.roaming_alert_title;
-        PersistableBundle carrierConfig =
-                PhoneGlobals.getInstance().getCarrierConfigForSubId(mSubId);
+        PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
         if (carrierConfig != null && carrierConfig.getBoolean(
                 CarrierConfigManager.KEY_CHECK_PRICING_WITH_CARRIER_FOR_DATA_ROAMING_BOOL)) {
             title = R.string.roaming_check_price_warning;
