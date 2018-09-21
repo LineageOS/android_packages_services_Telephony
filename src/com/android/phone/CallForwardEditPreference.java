@@ -76,6 +76,11 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
         mReplaceInvalidCFNumber = replaceInvalidCFNumber;
     }
 
+    void restoreCallForwardInfo(CallForwardInfo cf) {
+        handleCallForwardResult(cf);
+        updateSummaryText();
+    }
+
     @Override
     protected void onBindDialogView(View view) {
         // default the button clicked to be the cancel button.
@@ -145,7 +150,7 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
         }
     }
 
-    void handleCallForwardResult(CallForwardInfo cf) {
+    private void handleCallForwardResult(CallForwardInfo cf) {
         callForwardInfo = cf;
         Log.d(LOG_TAG, "handleGetCFResponse done, callForwardInfo=" + callForwardInfo);
         // In some cases, the network can send call forwarding URIs for voicemail that violate the
