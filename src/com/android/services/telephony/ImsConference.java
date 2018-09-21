@@ -640,6 +640,7 @@ public class ImsConference extends Conference implements Holdable {
 
         setState(mConferenceHost.getState());
         updateStatusHints();
+        putExtras(mConferenceHost.getExtras());
     }
 
     /**
