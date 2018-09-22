@@ -613,6 +613,7 @@
     <string name="not_voice_capable" msgid="2739898841461577811">"Ez dira ahots-deiak onartzen"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"markatu"</string>
     <string name="description_dialpad_button" msgid="5220006811894230590">"erakutsi markagailua"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Larrialdietarako markagailua"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Ikusizko erantzungailua"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Ezarri PIN kodea"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Aldatu PIN kodea"</string>

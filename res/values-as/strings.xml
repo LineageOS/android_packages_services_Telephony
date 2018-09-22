@@ -607,6 +607,7 @@
     <string name="not_voice_capable" msgid="2739898841461577811">"ভইচ কলিং কৰাৰ সুবিধা নাই"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ডায়েল"</string>
     <string name="description_dialpad_button" msgid="5220006811894230590">"ডায়েলপেড দেখুৱাওক"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"জৰুৰীকালীন ডায়েলপেড"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"দৃশ্যগত ভইচমেইল"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"পিন ছেট কৰক"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"পিন সলনি কৰক"</string>
@@ -619,7 +620,7 @@
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"জৰুৰীকালীন কল"</string>
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"জৰুৰীকালীন কল মাত্ৰ"</string>
     <string name="sim_description_default" msgid="4778679519938775515">"ছিম কাৰ্ড, শ্লট: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"সাধ্য় সুবিধাসমূহ"</string>
+    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"সাধ্য সুবিধাসমূহ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"এওঁৰ পৰা ৱাই-ফাই কল আহিছে"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"ৱাই-ফাই কল"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"খুলিবলৈ পুনৰাই টিপক"</string>
