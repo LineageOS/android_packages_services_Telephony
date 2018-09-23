@@ -31,6 +31,7 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
     private static final String KEY_TOGGLE = "toggle";
     private static final String KEY_STATUS = "status";
     private static final String KEY_NUMBER = "number";
+    private static final String KEY_ENABLE = "enable";
 
     private CallForwardEditPreference mButtonCFU;
     private CallForwardEditPreference mButtonCFB;
@@ -112,11 +113,12 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
                 for (CallForwardEditPreference pref : mPreferences) {
                     Bundle bundle = mIcicle.getParcelable(pref.getKey());
                     pref.setToggled(bundle.getBoolean(KEY_TOGGLE));
+                    pref.setEnabled(bundle.getBoolean(KEY_ENABLE));
                     CallForwardInfo cf = new CallForwardInfo();
                     cf.number = bundle.getString(KEY_NUMBER);
                     cf.status = bundle.getInt(KEY_STATUS);
                     pref.init(this, mPhone, mReplaceInvalidCFNumbers);
-                    pref.handleCallForwardResult(cf);
+                    pref.restoreCallForwardInfo(cf);
                 }
             }
             mFirstResume = false;
@@ -131,6 +133,7 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
         for (CallForwardEditPreference pref : mPreferences) {
             Bundle bundle = new Bundle();
             bundle.putBoolean(KEY_TOGGLE, pref.isToggled());
+            bundle.putBoolean(KEY_ENABLE, pref.isEnabled());
             if (pref.callForwardInfo != null) {
                 bundle.putString(KEY_NUMBER, pref.callForwardInfo.number);
                 bundle.putInt(KEY_STATUS, pref.callForwardInfo.status);

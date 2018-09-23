@@ -264,6 +264,7 @@ final class TelephonyConferenceController {
                                 mTelephonyConference, connection);
                         mTelephonyConference.addConnection(connection);
                     }
+                    mTelephonyConference.updateCallRadioTechAfterCreation();
                     mConnectionService.addConference(mTelephonyConference);
                 } else {
                     Log.d(this, "Trigger recalculate later");
