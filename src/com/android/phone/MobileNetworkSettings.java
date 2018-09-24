@@ -239,15 +239,16 @@ public class MobileNetworkSettings extends Activity  {
      * doesn't set {@link CarrierConfigManager#KEY_HIDE_ENHANCED_4G_LTE_BOOL} to false.
      */
     public static boolean hideEnhanced4gLteSettings(Context context) {
-        List<SubscriptionInfo> sil =
+        final CarrierConfigManager carrierConfigManager = new CarrierConfigManager(context);
+        final List<SubscriptionInfo> sil =
                 SubscriptionManager.from(context).getActiveSubscriptionInfoList();
         // Check all active subscriptions. We only hide the button if it's disabled for all
         // active subscriptions.
         if (sil != null) {
             for (SubscriptionInfo subInfo : sil) {
                 ImsManager imsManager = ImsManager.getInstance(context, subInfo.getSimSlotIndex());
-                PersistableBundle carrierConfig = PhoneGlobals.getInstance()
-                        .getCarrierConfigForSubId(subInfo.getSubscriptionId());
+                PersistableBundle carrierConfig = carrierConfigManager.getConfigForSubId(
+                        subInfo.getSubscriptionId());
                 if ((imsManager.isVolteEnabledByPlatform()
                         && imsManager.isVolteProvisionedOnDevice())
                         || carrierConfig.getBoolean(
@@ -347,6 +348,7 @@ public class MobileNetworkSettings extends Activity  {
 
         private SubscriptionManager mSubscriptionManager;
         private TelephonyManager mTelephonyManager;
+        private CarrierConfigManager mCarrierConfigManager;
         private int mSubId;
 
         //UI objects
@@ -788,6 +790,7 @@ public class MobileNetworkSettings extends Activity  {
             mSubscriptionManager = SubscriptionManager.from(activity);
             mTelephonyManager = (TelephonyManager) activity.getSystemService(
                             Context.TELEPHONY_SERVICE);
+            mCarrierConfigManager = new CarrierConfigManager(getContext());
 
             if (icicle != null) {
                 mExpandAdvancedFields = icicle.getBoolean(EXPAND_ADVANCED_FIELDS, false);
@@ -1052,8 +1055,7 @@ public class MobileNetworkSettings extends Activity  {
                     android.provider.Settings.Global.PREFERRED_NETWORK_MODE + phoneSubId,
                     preferredNetworkMode);
 
-            PersistableBundle carrierConfig =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mSubId);
+            PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
             mIsGlobalCdma = isLteOnCdma
                     && carrierConfig.getBoolean(CarrierConfigManager.KEY_SHOW_CDMA_CHOICES_BOOL);
             if (carrierConfig.getBoolean(
@@ -1200,8 +1202,7 @@ public class MobileNetworkSettings extends Activity  {
         // Requires that mSubId is up to date
         void updateEnabledNetworksEntries() {
             final int phoneType = mTelephonyManager.getPhoneType();
-            final PersistableBundle carrierConfig =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mSubId);
+            final PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
             if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
                 final int lteForced = android.provider.Settings.Global.getInt(
                         getContext().getContentResolver(),
@@ -1444,8 +1445,8 @@ public class MobileNetworkSettings extends Activity  {
 
                 //normally called on the toggle click
                 if (!mButtonDataRoam.isChecked()) {
-                    PersistableBundle carrierConfig =
-                            PhoneGlobals.getInstance().getCarrierConfigForSubId(mSubId);
+                    PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(
+                            mSubId);
                     if (carrierConfig != null && carrierConfig.getBoolean(
                             CarrierConfigManager.KEY_DISABLE_CHARGE_INDICATION_BOOL)) {
                         mTelephonyManager.setDataRoamingEnabled(true);
@@ -1885,8 +1886,7 @@ public class MobileNetworkSettings extends Activity  {
                 return;
             }
 
-            PersistableBundle carrierConfig = PhoneGlobals.getInstance()
-                    .getCarrierConfigForSubId(mSubId);
+            PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
 
             if ((mImsMgr == null
                     || !mImsMgr.isVolteEnabledByPlatform()
@@ -1909,8 +1909,7 @@ public class MobileNetworkSettings extends Activity  {
                 return;
             }
 
-            PersistableBundle carrierConfig = PhoneGlobals.getInstance()
-                    .getCarrierConfigForSubId(mSubId);
+            PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
 
             if (mImsMgr != null
                     && mImsMgr.isVtEnabledByPlatform()
