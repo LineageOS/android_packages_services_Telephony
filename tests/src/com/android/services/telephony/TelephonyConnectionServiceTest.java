@@ -21,7 +21,6 @@ import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
@@ -817,6 +816,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         testServiceState.setEmergencyOnly(isEmergencyOnly);
         when(phone.getServiceState()).thenReturn(testServiceState);
         when(phone.getPhoneId()).thenReturn(phoneId);
+        when(phone.getDefaultPhone()).thenReturn(phone);
         return phone;
     }
 
