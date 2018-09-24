@@ -607,6 +607,7 @@
     <string name="not_voice_capable" msgid="2739898841461577811">"Appels vocaux non pris en charge"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"composer"</string>
     <string name="description_dialpad_button" msgid="5220006811894230590">"afficher le clavier"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Clavier d\'appel d\'urgence"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Messagerie vocale visuelle"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Définir un code"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Modifier le code"</string>

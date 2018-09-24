@@ -607,6 +607,7 @@
     <string name="not_voice_capable" msgid="2739898841461577811">"भ्वाइस कल गर्ने समर्थित छैन"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"डायल"</string>
     <string name="description_dialpad_button" msgid="5220006811894230590">"डायलप्याड देखाउनुहोस्"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"आपतकालीन डायलप्याड"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"भिजुअल भ्वाइस मेल"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN सेट गर्नुहोस्"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN परिवर्तन गर्नुहोस्"</string>
