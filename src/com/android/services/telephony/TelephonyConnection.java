@@ -602,6 +602,11 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 com.android.internal.telephony.Connection newConnection) {
             setOriginalConnection(newConnection);
         }
+
+        @Override
+        public void onIsNetworkEmergencyCallChanged(boolean isEmergencyCall) {
+            setIsNetworkIdentifiedEmergencyCall(isEmergencyCall);
+        }
     };
 
     protected com.android.internal.telephony.Connection mOriginalConnection;
@@ -638,6 +643,15 @@ abstract class TelephonyConnection extends Connection implements Holdable {
      * the network will treat the call as an emergency call.
      */
     private boolean mTreatAsEmergencyCall;
+
+    /**
+     * Indicates whether the network has identified this call as an emergency call.  Where
+     * {@link #mTreatAsEmergencyCall} is based on comparing dialed numbers to a list of known
+     * emergency numbers, this property is based on whether the network itself has identified the
+     * call as an emergency call (which can be the case for an incoming call from emergency
+     * services).
+     */
+    private boolean mIsNetworkIdentifiedEmergencyCall;
 
     /**
      * For video calls, indicates whether the outgoing video for the call can be paused using
@@ -1058,6 +1072,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         newProperties = changeBitmask(newProperties, PROPERTY_ASSISTED_DIALING_USED,
                 mIsUsingAssistedDialing);
         newProperties = changeBitmask(newProperties, PROPERTY_IS_RTT, isRtt());
+        newProperties = changeBitmask(newProperties, PROPERTY_NETWORK_IDENTIFIED_EMERGENCY_CALL,
+                isNetworkIdentifiedEmergencyCall());
 
         if (getConnectionProperties() != newProperties) {
             setConnectionProperties(newProperties);
@@ -1137,6 +1153,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         // Set video state and capabilities
         setVideoState(mOriginalConnection.getVideoState());
         setOriginalConnectionCapabilities(mOriginalConnection.getConnectionCapabilities());
+        setIsNetworkIdentifiedEmergencyCall(mOriginalConnection.isNetworkIdentifiedEmergencyCall());
         setAudioModeIsVoip(mOriginalConnection.getAudioModeIsVoip());
         setVideoProvider(mOriginalConnection.getVideoProvider());
         setAudioQuality(mOriginalConnection.getAudioQuality());
@@ -1856,6 +1873,27 @@ abstract class TelephonyConnection extends Connection implements Holdable {
      */
     boolean isWifi() {
         return getCallRadioTech() == ServiceState.RIL_RADIO_TECHNOLOGY_IWLAN;
+    }
+
+    /**
+     * Sets whether this call has been identified by the network as an emergency call.
+     * @param isNetworkIdentifiedEmergencyCall {@code true} if the network has identified this call
+     * as an emergency call, {@code false} otherwise.
+     */
+    public void setIsNetworkIdentifiedEmergencyCall(boolean isNetworkIdentifiedEmergencyCall) {
+        Log.d(this, "setIsNetworkIdentifiedEmergencyCall; callId=%s, "
+                + "isNetworkIdentifiedEmergencyCall=%b", getTelecomCallId(),
+                isNetworkIdentifiedEmergencyCall);
+        mIsNetworkIdentifiedEmergencyCall = isNetworkIdentifiedEmergencyCall;
+        updateConnectionProperties();
+    }
+
+    /**
+     * @return {@code true} if the network has identified this call as an emergency call,
+     * {@code false} otherwise.
+     */
+    public boolean isNetworkIdentifiedEmergencyCall() {
+        return mIsNetworkIdentifiedEmergencyCall;
     }
 
     /**
