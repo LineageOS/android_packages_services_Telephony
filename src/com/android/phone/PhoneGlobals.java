@@ -41,6 +41,7 @@ import android.os.UpdateLock;
 import android.os.UserManager;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
@@ -667,7 +668,9 @@ public class PhoneGlobals extends ContextWrapper {
         if (isAirplaneNewlyOn) {
             // If we are trying to turn off the radio, make sure there are no active
             // emergency calls.  If there are, switch airplane mode back to off.
-            if (PhoneUtils.isInEmergencyCall(mCM)) {
+            TelecomManager tm = (TelecomManager) context.getSystemService(TELECOM_SERVICE);
+
+            if (tm != null && tm.isInEmergencyCall()) {
                 // Switch airplane mode back to off.
                 ConnectivityManager.from(this).setAirplaneMode(false);
                 Toast.makeText(this, R.string.radio_off_during_emergency_call, Toast.LENGTH_LONG)
