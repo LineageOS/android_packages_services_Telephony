@@ -1330,20 +1330,6 @@ public class PhoneUtils {
         return audioManager.isSpeakerphoneOn();
     }
 
-    static boolean isInEmergencyCall(CallManager cm) {
-        Call fgCall = cm.getActiveFgCall();
-        // isIdle includes checks for the DISCONNECTING/DISCONNECTED state.
-        if(!fgCall.isIdle()) {
-            for (Connection cn : fgCall.getConnections()) {
-                if (PhoneNumberUtils.isLocalEmergencyNumber(PhoneGlobals.getInstance(),
-                        cn.getAddress())) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     /**
      * Get the mute state of foreground phone, which has the current
      * foreground call
