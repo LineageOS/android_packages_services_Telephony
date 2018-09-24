@@ -569,6 +569,9 @@ public class NotificationMgr {
     private void showNetworkSelection(String operator, int subId) {
         if (DBG) log("showNetworkSelection(" + operator + ")...");
 
+        if (!TextUtils.isEmpty(operator)) {
+            operator = String.format(" (%s)", operator);
+        }
         Notification.Builder builder = new Notification.Builder(mContext)
                 .setSmallIcon(android.R.drawable.stat_sys_warning)
                 .setContentTitle(mContext.getString(R.string.notification_network_selection_title))
