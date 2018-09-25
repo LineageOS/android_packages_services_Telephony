@@ -19,14 +19,13 @@ package com.android.phone;
 import android.app.Application;
 import android.os.UserHandle;
 
-import com.android.services.telephony.TelephonyGlobals;
+import com.android.services.telephony.TelecomAccountRegistry;
 
 /**
  * Top-level Application class for the Phone app.
  */
 public class PhoneApp extends Application {
     PhoneGlobals mPhoneGlobals;
-    TelephonyGlobals mTelephonyGlobals;
 
     public PhoneApp() {
     }
@@ -39,8 +38,7 @@ public class PhoneApp extends Application {
             mPhoneGlobals = new PhoneGlobals(this);
             mPhoneGlobals.onCreate();
 
-            mTelephonyGlobals = new TelephonyGlobals(this);
-            mTelephonyGlobals.onCreate();
+            TelecomAccountRegistry.getInstance(this).setupOnBoot();
         }
     }
 }
