@@ -867,6 +867,20 @@ public class PhoneGlobals extends ContextWrapper {
     }
 
     /**
+     * Called when the network selection on the subscription {@code subId} is changed by the user.
+     *
+     * @param subId the subscription id.
+     */
+    public void onNetworkSelectionChanged(int subId) {
+        Phone phone = getPhone(subId);
+        if (phone != null) {
+            notificationMgr.updateNetworkSelection(phone.getServiceState().getState(), subId);
+        } else {
+            Log.w(LOG_TAG, "onNetworkSelectionChanged on null phone, subId: " + subId);
+        }
+    }
+
+    /**
      * Dismisses the message waiting (voicemail) indicator.
      *
      * @param subId the subscription id we should dismiss the notification for.
