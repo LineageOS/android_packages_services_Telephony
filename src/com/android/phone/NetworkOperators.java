@@ -29,6 +29,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -193,25 +194,12 @@ public class NetworkOperators extends PreferenceCategory
 
     // Used by both mAutoSelect and mNetworkSelect buttons.
     protected void displayNetworkSelectionFailed() {
-        String status = getContext().getResources().getString(R.string.connect_later);
-
-        final PhoneGlobals app = PhoneGlobals.getInstance();
-        app.notificationMgr.postTransientNotification(
-                NotificationMgr.NETWORK_SELECTION_NOTIFICATION, status);
-
-        ServiceState ss = mTelephonyManager.getServiceStateForSubscriber(mSubId);
-        if (ss != null) {
-            app.notificationMgr.updateNetworkSelection(ss.getState(), mSubId);
-        }
+        Toast.makeText(getContext(), R.string.connect_later, Toast.LENGTH_LONG).show();
     }
 
     // Used by both mAutoSelect and mNetworkSelect buttons.
     protected void displayNetworkSelectionSucceeded() {
-        String status = getContext().getResources().getString(R.string.registration_done);
-
-        final PhoneGlobals app = PhoneGlobals.getInstance();
-        app.notificationMgr.postTransientNotification(
-                NotificationMgr.NETWORK_SELECTION_NOTIFICATION, status);
+        Toast.makeText(getContext(), R.string.registration_done, Toast.LENGTH_LONG).show();
     }
 
     private void selectNetworkAutomatic(boolean autoSelect) {

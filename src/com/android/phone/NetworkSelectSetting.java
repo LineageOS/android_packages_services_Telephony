@@ -218,7 +218,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
                 ThreadUtils.postOnBackgroundThread(() -> {
                     Message msg = mHandler.obtainMessage(EVENT_SET_NETWORK_SELECTION_MANUALLY_DONE);
                     msg.obj = mTelephonyManager.setNetworkSelectionModeManual(
-                            operatorInfo.getOperatorNumeric(), true /* persistSelection */);
+                            operatorInfo, true /* persistSelection */);
                     msg.sendToTarget();
                 });
 
@@ -269,7 +269,6 @@ public class NetworkSelectSetting extends PreferenceFragment {
                         mSelectedNetworkOperatorPreference.setSummary(R.string.network_connected);
                     } else {
                         if (DBG) logd("manual network selection: failed! ");
-                        updateNetworkSelection();
                         // Set summary as "Couldn't connect" to the selected network.
                         mSelectedNetworkOperatorPreference.setSummary(
                                 R.string.network_could_not_connect);
@@ -615,21 +614,6 @@ public class NetworkSelectSetting extends PreferenceFragment {
             // unbind the service.
             getContext().unbindService(mNetworkQueryServiceConnection);
             mShouldUnbind = false;
-        }
-    }
-
-    /**
-     * Call {@link NotificationMgr#updateNetworkSelection(int, int)} to send notification about
-     * no service of user selected operator
-     */
-    private void updateNetworkSelection() {
-        if (DBG) logd("Update notification about no service of user selected operator");
-        final PhoneGlobals app = PhoneGlobals.getInstance();
-        if (SubscriptionManager.isValidSubscriptionId(mSubId)) {
-            ServiceState ss = mTelephonyManager.getServiceState();
-            if (ss != null) {
-                app.notificationMgr.updateNetworkSelection(ss.getState(), mSubId);
-            }
         }
     }
 

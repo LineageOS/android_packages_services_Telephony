@@ -767,7 +767,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     break;
 
                 case EVENT_SET_NETWORK_SELECTION_MODE_MANUAL_DONE:
-                    handleNullReturnEvent(msg, "setNetworkSelectionModeManual");
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null) {
+                        request.result = true;
+                    } else {
+                        request.result = false;
+                        loge("setNetworkSelectionModeManual " + ar.exception);
+                    }
+                    notifyRequester(request);
+                    mApp.onNetworkSelectionChanged(request.subId);
                     break;
 
                 case CMD_GET_MODEM_ACTIVITY_INFO:
@@ -1172,9 +1181,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private Phone getPhone(int subId) {
         return PhoneFactory.getPhone(mSubscriptionController.getPhoneId(subId));
     }
-    //
-    // Implementation of the ITelephony interface.
-    //
 
     public void dial(String number) {
         dialForSubscriber(getPreferredVoiceSubscription(), number);
@@ -2591,6 +2597,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int getNetworkSelectionMode(int subId) {
+        if (!isActiveSubscription(subId)) {
+            return TelephonyManager.NETWORK_SELECTION_MODE_UNKNOWN;
+        }
+
         return (int) sendRequest(CMD_GET_NETWORK_SELECTION_MODE, null /* argument */, subId);
     }
 
@@ -2750,6 +2760,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private int getPreferredVoiceSubscription() {
         return mSubscriptionController.getDefaultVoiceSubId();
+    }
+
+    private boolean isActiveSubscription(int subId) {
+        return mSubscriptionController.isActiveSubId(subId);
     }
 
     /**
@@ -3279,6 +3293,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "setNetworkSelectionModeAutomatic");
 
+        if (!isActiveSubscription(subId)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             if (DBG) log("setNetworkSelectionModeAutomatic: subId " + subId);
@@ -3304,6 +3322,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId, OperatorInfo operatorInfo, boolean persistSelection) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "setNetworkSelectionModeManual");
+
+        if (!isActiveSubscription(subId)) {
+            return false;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             ManualNetworkSelectionArgument arg = new ManualNetworkSelectionArgument(operatorInfo,

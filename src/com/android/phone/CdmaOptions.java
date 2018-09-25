@@ -39,6 +39,7 @@ import com.android.settingslib.RestrictedLockUtilsInternal;
 public class CdmaOptions {
     private static final String LOG_TAG = "CdmaOptions";
 
+    private CarrierConfigManager mCarrierConfigManager;
     private CdmaSystemSelectListPreference mButtonCdmaSystemSelect;
     private CdmaSubscriptionListPreference mButtonCdmaSubscription;
     private RestrictedPreference mButtonAPNExpand;
@@ -59,6 +60,7 @@ public class CdmaOptions {
         mPrefFragment = prefFragment;
         mPrefScreen = prefScreen;
         mPrefFragment.addPreferencesFromResource(R.xml.cdma_options);
+        mCarrierConfigManager = new CarrierConfigManager(prefFragment.getContext());
 
         // Initialize preferences.
         mButtonCdmaSystemSelect = (CdmaSystemSelectListPreference) mPrefScreen
@@ -77,8 +79,7 @@ public class CdmaOptions {
         int phoneType = TelephonyManager.from(mPrefFragment.getContext())
                 .createForSubscriptionId(mSubId).getPhoneType();
 
-        PersistableBundle carrierConfig =
-                PhoneGlobals.getInstance().getCarrierConfigForSubId(mSubId);
+        PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
         // Some CDMA carriers want the APN settings.
         boolean addAPNExpand = shouldAddApnExpandPreference(phoneType, carrierConfig);
         boolean addCdmaSubscription =

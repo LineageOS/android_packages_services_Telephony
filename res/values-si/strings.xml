@@ -607,6 +607,7 @@
     <string name="not_voice_capable" msgid="2739898841461577811">"හඬ ඇමතීම සඳහා සහාය නොදක්වයි"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"අමතන්න"</string>
     <string name="description_dialpad_button" msgid="5220006811894230590">"ඇමතුම් පෑඩය පෙන්වන්න"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"හදිසි ඇමතුම් පෑඩය"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"දෘශ්‍ය හඬ තැපෑල"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN අංකය සකසන්න"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN අංකය වෙනස් කරන්න"</string>

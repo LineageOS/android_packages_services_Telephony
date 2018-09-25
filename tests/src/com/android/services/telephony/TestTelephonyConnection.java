@@ -74,6 +74,7 @@ public class TestTelephonyConnection extends TelephonyConnection {
                 any(Connection.PostDialListener.class));
         when(mMockPhone.getRingingCall()).thenReturn(mMockCall);
         when(mMockPhone.getContext()).thenReturn(null);
+        when(mMockPhone.getDefaultPhone()).thenReturn(mMockPhone);
         when(mMockCall.getState()).thenReturn(Call.State.ACTIVE);
         when(mMockCall.getPhone()).thenReturn(mMockPhone);
     }
@@ -105,6 +106,11 @@ public class TestTelephonyConnection extends TelephonyConnection {
     public void sendConnectionEvent(String event, Bundle extras) {
         mLastConnectionEvents.add(event);
         mLastConnectionEventExtras.add(extras);
+    }
+
+    @Override
+    void clearOriginalConnection() {
+        // Do nothing since the original connection is mock object
     }
 
     public int getNotifyPhoneAccountChangedCount() {

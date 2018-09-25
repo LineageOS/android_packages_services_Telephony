@@ -1005,7 +1005,9 @@ public class TelephonyConnectionService extends ConnectionService {
         }
 
         Queue<Phone> cachedPhones = mEmergencyRetryCache.second;
-        Phone phoneUsed = c.getPhone();
+        // Need to refer default phone considering ImsPhone because
+        // cachedPhones is a list that contains default phones.
+        Phone phoneUsed = c.getPhone().getDefaultPhone();
         if (phoneUsed == null) {
             return;
         }

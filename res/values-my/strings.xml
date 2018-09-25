@@ -607,6 +607,7 @@
     <string name="not_voice_capable" msgid="2739898841461577811">"အသံခေါ်ဆိုမှု ထောက်ံပံ့ခြင်းမရှိပါ"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ဖုန်းခေါ်ခြင်း"</string>
     <string name="description_dialpad_button" msgid="5220006811894230590">"နံပါတ်အကွက် ပြရန်"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"အရေးပေါ် နံပါတ်ကွက်"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"အမြင် အသံမေးလ်"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"ပင်နံပါတ်သတ်မှတ်ရန်"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"ပင်နံပါတ်ပြောင်းပါ"</string>
