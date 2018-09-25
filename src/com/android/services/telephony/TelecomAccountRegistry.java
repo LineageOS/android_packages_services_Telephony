@@ -64,7 +64,7 @@ import java.util.Optional;
  * Owns all data we have registered with Telecom including handling dynamic addition and
  * removal of SIMs and SIP accounts.
  */
-final class TelecomAccountRegistry {
+public final class TelecomAccountRegistry {
     private static final boolean DBG = false; /* STOP SHIP if true */
 
     // This icon is the one that is used when the Slot ID that we have for a particular SIM
@@ -659,7 +659,10 @@ final class TelecomAccountRegistry {
         mSubscriptionManager = SubscriptionManager.from(context);
     }
 
-    static synchronized final TelecomAccountRegistry getInstance(Context context) {
+    /**
+     * Get the singleton instance.
+     */
+    public static synchronized TelecomAccountRegistry getInstance(Context context) {
         if (sInstance == null && context != null) {
             sInstance = new TelecomAccountRegistry(context);
         }
@@ -828,7 +831,7 @@ final class TelecomAccountRegistry {
     /**
      * Sets up all the phone accounts for SIMs on first boot.
      */
-    void setupOnBoot() {
+    public void setupOnBoot() {
         // TODO: When this object "finishes" we should unregister by invoking
         // SubscriptionManager.getInstance(mContext).unregister(mOnSubscriptionsChangedListener);
         // This is not strictly necessary because it will be unregistered if the
