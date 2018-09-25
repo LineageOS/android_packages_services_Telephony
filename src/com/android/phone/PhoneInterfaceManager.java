@@ -764,7 +764,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     break;
 
                 case EVENT_SET_NETWORK_SELECTION_MODE_MANUAL_DONE:
-                    handleNullReturnEvent(msg, "setNetworkSelectionModeManual");
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null) {
+                        request.result = true;
+                    } else {
+                        request.result = false;
+                        loge("setNetworkSelectionModeManual " + ar.exception);
+                    }
+                    notifyRequester(request);
+                    mApp.onNetworkSelectionChanged(request.subId);
                     break;
 
                 case CMD_GET_MODEM_ACTIVITY_INFO:
