@@ -404,8 +404,7 @@ public class NetworkSelectListPreference extends ListPreference
                 final OperatorInfo operatorInfo = getOperatorInfoFromCellInfo(mCellInfo);
                 if (DBG) logd("manually selected network: " + operatorInfo.toString());
                 boolean isSuccessed = mTelephonyManager.setNetworkSelectionModeManual(
-                        operatorInfo.getOperatorNumeric(), true /* persistSelection */);
-                int mode = mTelephonyManager.getNetworkSelectionMode();
+                        operatorInfo, true /* persistSelection */);
                 Message msg = mHandler.obtainMessage(EVENT_MANUALLY_NETWORK_SELECTION_DONE);
                 msg.obj = isSuccessed;
                 msg.sendToTarget();
