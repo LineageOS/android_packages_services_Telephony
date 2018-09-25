@@ -695,6 +695,11 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private boolean mIsHoldable;
 
     /**
+     * Indicates whether TTY is enabled; used to determine whether a call is VT capable.
+     */
+    private boolean mIsTtyEnabled;
+
+    /**
      * Indicates whether this call is using assisted dialing.
      */
     private boolean mIsUsingAssistedDialing;
@@ -1862,8 +1867,10 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         capabilities = changeBitmask(capabilities, CAPABILITY_SUPPORTS_VT_REMOTE_BIDIRECTIONAL,
                 can(mOriginalConnectionCapabilities, Capability.SUPPORTS_VT_REMOTE_BIDIRECTIONAL));
 
+        boolean isLocalVideoSupported = can(mOriginalConnectionCapabilities,
+                Capability.SUPPORTS_VT_LOCAL_BIDIRECTIONAL) && !mIsTtyEnabled;
         capabilities = changeBitmask(capabilities, CAPABILITY_SUPPORTS_VT_LOCAL_BIDIRECTIONAL,
-                can(mOriginalConnectionCapabilities, Capability.SUPPORTS_VT_LOCAL_BIDIRECTIONAL));
+                isLocalVideoSupported);
 
         return capabilities;
     }
@@ -1998,6 +2005,15 @@ abstract class TelephonyConnection extends Connection implements Holdable {
      */
     public void setShowPreciseFailedCause(boolean showPreciseFailedCause) {
         mShowPreciseFailedCause = showPreciseFailedCause;
+    }
+
+    /**
+     * Sets whether TTY is enabled or not.
+     * @param isTtyEnabled
+     */
+    public void setTtyEnabled(boolean isTtyEnabled) {
+        mIsTtyEnabled = isTtyEnabled;
+        updateConnectionCapabilities();
     }
 
     /**
