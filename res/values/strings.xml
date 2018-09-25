@@ -1074,8 +1074,8 @@
     <!-- Label for the "No service" notification item, when expanded. -->
     <string name="notification_network_selection_title">No service</string>
     <!-- Label for the expanded "No service" notification item, including the
-         operator name set by user -->
-    <string name="notification_network_selection_text">Selected network (<xliff:g id="operator_name">%s</xliff:g>) unavailable</string>
+         operator name set by user. No space after "network", appended in nonempty value. -->
+    <string name="notification_network_selection_text">Selected network<xliff:g id="operator_name">%s</xliff:g> unavailable</string>
 
     <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
     <string name="incall_error_power_off" product="watch">Turn on mobile network, turn off airplane mode or turn off battery saver mode to make a call.</string>
