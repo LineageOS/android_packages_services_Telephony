@@ -1792,4 +1792,17 @@
     <!-- Message displayed to the user to indicate that a held call has been released /
          disconnected. -->
     <string name="supp_service_held_call_released">Held call has been released.</string>
+
+    <!-- In-call screen: error message shown when the user has attempted to place a new outgoing
+         call, but there is already a call in dialing state. -->
+    <string name="callFailed_already_dialing">Cannot place a call as another outgoing call is already dialing.</string>
+    <!-- In-call screen: error message shown when the user has attempted to place a new outgoing
+         call while there is already a call in ringing state. -->
+    <string name="callFailed_already_ringing">Cannot place a call as there is an unanswered incoming call.  Answer or reject the incoming call prior to placing a new call.</string>
+    <!-- In-call screen: error message shown when the user attempts to place a call, but calling has
+         been disabled using a debug property. -->
+    <string name="callFailed_calling_disabled">Cannot place a call as calling has been disabled using the ro.telephony.disable-call system property.</string>
+    <!-- In-call screen: error message shown when the user attempts to place a call, but calling has
+         been disabled using a debug property. -->
+    <string name="callFailed_too_many_calls">Cannot place a call a there are already two calls in progress.  Disconnect one of the calls or merge them into a conference prior to placing a new call.</string>
 </resources>
