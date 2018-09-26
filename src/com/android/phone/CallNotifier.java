@@ -253,23 +253,6 @@ public class CallNotifier extends Handler {
     }
 
     /**
-     * Resets the audio mode and speaker state when a call ends.
-     */
-    private void resetAudioStateAfterDisconnect() {
-        if (VDBG) log("resetAudioStateAfterDisconnect()...");
-
-        if (mBluetoothHeadset != null) {
-            mBluetoothHeadset.disconnectAudio();
-        }
-
-        // call turnOnSpeaker() with state=false and store=true even if speaker
-        // is already off to reset user requested speaker state.
-        PhoneUtils.turnOnSpeaker(mApplication, false, true);
-
-        PhoneUtils.setAudioMode(mCM);
-    }
-
-    /**
      * Helper class to play tones through the earpiece (or speaker / BT)
      * during a call, using the ToneGenerator.
      *
@@ -492,23 +475,6 @@ public class CallNotifier extends Handler {
                     toneGenerator.release();
                     mState = TONE_OFF;
                 }
-            }
-
-            // Finally, do the same cleanup we otherwise would have done
-            // in onDisconnect().
-            //
-            // (But watch out: do NOT do this if the phone is in use,
-            // since some of our tones get played *during* a call (like
-            // CALL_WAITING) and we definitely *don't*
-            // want to reset the audio mode / speaker / bluetooth after
-            // playing those!
-            // This call is really here for use with tones that get played
-            // *after* a call disconnects, like "busy" or "congestion" or
-            // "call ended", where the phone has already become idle but
-            // we need to defer the resetAudioStateAfterDisconnect() call
-            // till the tone finishes playing.)
-            if (mCM.getState() == PhoneConstants.State.IDLE) {
-                resetAudioStateAfterDisconnect();
             }
         }
     }
