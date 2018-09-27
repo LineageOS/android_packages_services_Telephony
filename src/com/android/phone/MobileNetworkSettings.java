@@ -24,12 +24,10 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.ContentObserver;
@@ -38,7 +36,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.SystemProperties;
@@ -426,53 +423,6 @@ public class MobileNetworkSettings extends Activity  {
 
         private final PhoneCallStateListener mPhoneStateListener = new PhoneCallStateListener();
 
-        /**
-         * Service connection code for the NetworkQueryService.
-         * Handles the work of binding to a local object so that we can make
-         * the appropriate service calls.
-         */
-
-        /** Local service interface */
-        private INetworkQueryService mNetworkQueryService = null;
-
-        private void setNetworkQueryService() {
-            mButtonNetworkSelect = (NetworkSelectListPreference) getPreferenceScreen()
-                    .findPreference(NetworkOperators.BUTTON_NETWORK_SELECT_KEY);
-            if (mButtonNetworkSelect != null) {
-                mButtonNetworkSelect.setNetworkQueryService(mNetworkQueryService);
-            }
-
-        }
-        /** Service connection */
-        private final ServiceConnection mNetworkQueryServiceConnection = new ServiceConnection() {
-
-            /** Handle the task of binding the local object to the service */
-            public void onServiceConnected(ComponentName className, IBinder service) {
-                if (DBG) log("connection created, binding local service.");
-                mNetworkQueryService = ((NetworkQueryService.LocalBinder) service).getService();
-                setNetworkQueryService();
-            }
-
-            /** Handle the task of cleaning up the local binding */
-            public void onServiceDisconnected(ComponentName className) {
-                if (DBG) log("connection disconnected, cleaning local binding.");
-                mNetworkQueryService = null;
-                setNetworkQueryService();
-            }
-        };
-
-        private void bindNetworkQueryService() {
-            getContext().startService(new Intent(getContext(), NetworkQueryService.class));
-            getContext().bindService(new Intent(getContext(), NetworkQueryService.class).setAction(
-                        NetworkQueryService.ACTION_LOCAL_BINDER),
-                        mNetworkQueryServiceConnection, Context.BIND_AUTO_CREATE);
-        }
-
-        private void unbindNetworkQueryService() {
-            // unbind the service.
-            getContext().unbindService(mNetworkQueryServiceConnection);
-        }
-
         @Override
         public void onPositiveButtonClick(DialogFragment dialog) {
             mTelephonyManager.setDataRoamingEnabled(true);
@@ -800,8 +750,6 @@ public class MobileNetworkSettings extends Activity  {
                 mExpandAdvancedFields = true;
             }
 
-            bindNetworkQueryService();
-
             addPreferencesFromResource(R.xml.network_setting_fragment);
 
             mButton4glte = (SwitchPreference)findPreference(BUTTON_4G_LTE_KEY);
@@ -905,7 +853,6 @@ public class MobileNetworkSettings extends Activity  {
         @Override
         public void onDestroy() {
             super.onDestroy();
-            unbindNetworkQueryService();
             if (mMobileDataPref != null) {
                 mMobileDataPref.dispose();
             }
@@ -1080,7 +1027,7 @@ public class MobileNetworkSettings extends Activity  {
                 if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
                     updateCdmaOptions(this, prefSet, mSubId);
                 } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
-                    updateGsmUmtsOptions(this, prefSet, phoneSubId, mNetworkQueryService);
+                    updateGsmUmtsOptions(this, prefSet, phoneSubId);
                 } else {
                     throw new IllegalStateException("Unexpected phone type: " + phoneType);
                 }
@@ -1096,7 +1043,7 @@ public class MobileNetworkSettings extends Activity  {
                 mButtonPreferredNetworkMode.setOnPreferenceChangeListener(this);
 
                 updateCdmaOptions(this, prefSet, mSubId);
-                updateGsmUmtsOptions(this, prefSet, phoneSubId, mNetworkQueryService);
+                updateGsmUmtsOptions(this, prefSet, phoneSubId);
             } else {
                 prefSet.removePreference(mButtonPreferredNetworkMode);
                 updateEnabledNetworksEntries();
@@ -1306,8 +1253,7 @@ public class MobileNetworkSettings extends Activity  {
                     mButtonEnabledNetworks.setEntryValues(
                             R.array.enabled_networks_values);
                 }
-                updateGsmUmtsOptions(this, getPreferenceScreen(), mSubId,
-                        mNetworkQueryService);
+                updateGsmUmtsOptions(this, getPreferenceScreen(), mSubId);
             } else {
                 throw new IllegalStateException("Unexpected phone type: " + phoneType);
             }
@@ -2051,7 +1997,7 @@ public class MobileNetworkSettings extends Activity  {
                 return;
             }
 
-            updateGsmUmtsOptions(this, prefSet, mSubId, mNetworkQueryService);
+            updateGsmUmtsOptions(this, prefSet, mSubId);
 
             PreferenceCategory networkOperatorCategory =
                     (PreferenceCategory) prefSet.findPreference(
@@ -2204,14 +2150,14 @@ public class MobileNetworkSettings extends Activity  {
         }
 
         private void updateGsmUmtsOptions(PreferenceFragment prefFragment,
-                PreferenceScreen prefScreen, final int subId, INetworkQueryService queryService) {
+                PreferenceScreen prefScreen, final int subId) {
             // We don't want to re-create GsmUmtsOptions if already exists. Otherwise, the
             // preferences inside it will also be re-created which causes unexpected behavior.
             // For example, the open dialog gets dismissed or detached after pause / resume.
             if (mGsmUmtsOptions == null) {
-                mGsmUmtsOptions = new GsmUmtsOptions(prefFragment, prefScreen, subId, queryService);
+                mGsmUmtsOptions = new GsmUmtsOptions(prefFragment, prefScreen, subId);
             } else {
-                mGsmUmtsOptions.update(subId, queryService);
+                mGsmUmtsOptions.update(subId);
             }
         }
 
