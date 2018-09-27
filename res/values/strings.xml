@@ -382,6 +382,8 @@
     <string name="already_auto">Already in automatic selection.</string>
     <!-- Available networks screen, name of switch button for whether to select network automatically -->
     <string name="select_automatically">Automatically select network</string>
+    <!-- Available networks screen, summary when button disallowed due to permanent automatic mode -->
+    <string name="manual_mode_disallowed_summary">Unavailable when connected to %1$s</string>
     <!-- Available networks screen, name of button when user wants to select network manually  -->
     <string name="network_select_title">Network</string>
     <string name="register_automatically">Automatic registration\u2026</string>
