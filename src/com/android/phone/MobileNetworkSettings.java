@@ -385,6 +385,7 @@ public class MobileNetworkSettings extends Activity  {
         private Preference mClickedPreference;
         private boolean mShow4GForLTE;
         private boolean mIsGlobalCdma;
+        private boolean mOnlyAutoSelectInHomeNW;
         private boolean mUnavailable;
 
         private class PhoneCallStateListener extends PhoneStateListener {
@@ -1166,6 +1167,8 @@ public class MobileNetworkSettings extends Activity  {
                     R.string.enhanced_4g_lte_mode_title_variant :
                     R.string.enhanced_4g_lte_mode_title;
 
+            mOnlyAutoSelectInHomeNW = carrierConfig.getBoolean(
+                    CarrierConfigManager.KEY_ONLY_AUTO_SELECT_IN_HOME_NETWORK_BOOL);
             mButton4glte.setTitle(enhanced4glteModeTitleId);
             mLteDataServicePref.setEnabled(hasActiveSubscriptions);
             Preference ps;
@@ -1196,6 +1199,20 @@ public class MobileNetworkSettings extends Activity  {
             ps = findPreference(CATEGORY_CALLING_KEY);
             if (ps != null) {
                 ps.setEnabled(hasActiveSubscriptions);
+            }
+            ps = findPreference(NetworkOperators.BUTTON_AUTO_SELECT_KEY);
+            if (ps != null) {
+                ps.setSummary(null);
+                if (mTelephonyManager.getServiceState().getRoaming()) {
+                    ps.setEnabled(true);
+                } else {
+                    ps.setEnabled(!mOnlyAutoSelectInHomeNW);
+                    if (mOnlyAutoSelectInHomeNW) {
+                        ps.setSummary(getResources().getString(
+                                R.string.manual_mode_disallowed_summary,
+                                mTelephonyManager.getSimOperatorName()));
+                    }
+                }
             }
         }
 
