@@ -470,7 +470,7 @@
     <string name="onscreenHoldText" msgid="2285258239691145872">"ধরে থাকুন"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"শেষ করুন"</string>
     <string name="onscreenShowDialpadText" msgid="8561805492659639893">"ডায়ালপ্যাড"</string>
-    <string name="onscreenMuteText" msgid="5011369181754261374">"নিঃশব্দ করুন"</string>
+    <string name="onscreenMuteText" msgid="5011369181754261374">"মিউট করুন"</string>
     <string name="onscreenAddCallText" msgid="5140385634712287403">"কল যোগ করুন"</string>
     <string name="onscreenMergeCallsText" msgid="6640195098064538950">"কলগুলি মার্জ করুন"</string>
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"সোয়াপ করুন"</string>

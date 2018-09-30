@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"전화 서비스"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"긴급 통화"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"휴대전화"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"FDN 목록"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"발신 허용 번호 목록"</string>
     <string name="unknown" msgid="6878797917991465859">"알 수 없음"</string>
     <string name="private_num" msgid="6713286113000232309">"비공개 번호"</string>
     <string name="payphone" msgid="4793877574636445118">"공중전화"</string>
@@ -59,7 +59,7 @@
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA 통화 설정(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="9043423184895642077">"APN"</string>
     <string name="settings_label" msgid="3876743539816984008">"네트워크 설정"</string>
-    <string name="phone_accounts" msgid="6376603393888116364">"전화 계정"</string>
+    <string name="phone_accounts" msgid="6376603393888116364">"통화 계정"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"전화 걸기 대상"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"SIP 전화 걸기 대상"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"확인 후 걸기"</string>
@@ -85,7 +85,7 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"추가 CDMA 통화 설정"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"CDMA 전용 통화 설정 추가"</string>
     <string name="labelNwService" msgid="4699970172021870983">"네트워크 서비스 설정"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"발신자 ID"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"발신번호 표시"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"설정 로드 중..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"발신자 표시 제한"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"발신전화의 번호 표시"</string>
@@ -345,18 +345,18 @@
     <string name="carrier_settings_title" msgid="9028166176523012300">"이동통신사 설정"</string>
     <string name="fdn" msgid="7878832555095183202">"발신 허용 번호"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"발신 허용 번호(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"FDN 목록"</string>
-    <string name="fdn_list_with_label" msgid="7437232552210469217">"FDN 목록(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"발신 허용 번호 목록"</string>
+    <string name="fdn_list_with_label" msgid="7437232552210469217">"발신 허용 번호 목록(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"FDN 활성화"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"발신 허용 번호 사용"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"발신 허용 번호 사용 중지됨"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"FDN 사용"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"발신 허용 번호 사용"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"FDN 사용 중지"</string>
     <string name="change_pin2" msgid="2153563695382176676">"PIN2 변경"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN 사용 중지"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN 사용"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"발신 허용 번호 사용"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"발신 허용 번호 관리"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN 액세스를 위해 PIN 변경"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"발신 허용 번호 액세스를 위해 PIN 변경"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"전화번호 목록 관리"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"음성 개인정보 보호"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"향상된 개인정보 보호 모드 사용"</string>

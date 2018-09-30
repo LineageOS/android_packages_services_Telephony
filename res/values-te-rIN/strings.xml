@@ -96,7 +96,7 @@
     <string name="call_forwarding_settings" msgid="3378927671091537173">"కాల్ ఫార్వర్డింగ్ సెట్టింగ్‌లు"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"కాల్ ఫార్వార్డింగ్ సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"కాల్ ఫార్వార్డింగ్"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"ఎల్లప్పుడూ ఫార్వార్డ్ చేయి"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"ఎల్లప్పుడూ ఫార్వర్డ్ చేయి"</string>
     <string name="messageCFU" msgid="3560082430662923687">"ఎల్లప్పుడూ ఈ నంబర్‌ను ఉపయోగించు"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"అన్ని కాల్‌లను ఫార్వార్డ్ చేస్తోంది"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"అన్ని కాల్‌లను <xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వార్డ్ చేస్తోంది"</string>
@@ -487,7 +487,7 @@
     <string name="hac_mode_title" msgid="8740268574688743289">"వినికిడి సహాయక సాధనాలు"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"వినికిడి సహాయక సాధనం అనుకూలతను ప్రారంభించండి"</string>
   <string-array name="tty_mode_entries">
-    <item msgid="512950011423868021">"TTY ఆఫ్‌లో ఉన్నవి"</item>
+    <item msgid="512950011423868021">"TTY ఆఫ్‌లో ఉంది"</item>
     <item msgid="3971695875449640648">"TTY సంపూర్ణంగా ఉన్నవి"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>

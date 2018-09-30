@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"Kod MMI został anulowany"</string>
     <string name="cancel" msgid="5044513931633602634">"Anuluj"</string>
     <string name="enter_input" msgid="1810529547726803893">"Komunikat USSD musi mieć od <xliff:g id="MIN_LEN">%d</xliff:g> do <xliff:g id="MAX_LEN">%d</xliff:g> znaków. Spróbuj ponownie."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"Zarządzaj połączeniem konferencyjnym"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"Zarządzaj poł. konferencyjnym"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Głośnik"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Słuchawka telefonu"</string>
@@ -93,7 +93,7 @@
     <string name="labelCW" msgid="6120513814915920200">"Połączenia oczekujące"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Podczas połączenia powiadamiaj mnie o połączeniach przychodzących"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Podczas połączenia powiadamiaj mnie o połączeniach przychodzących"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Ustawienia przekazywania połączeń"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Przekierowanie połączeń"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Ustawienia przekierowywania połączeń (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Przekierowanie połączeń"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Przekieruj wszystkie"</string>

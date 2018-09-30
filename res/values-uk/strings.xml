@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Телефонні служби"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Аварійний телефон"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Телефон"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"Список FDN"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"Список фіксованого набору"</string>
     <string name="unknown" msgid="6878797917991465859">"Невідомий"</string>
     <string name="private_num" msgid="6713286113000232309">"Приватний номер"</string>
     <string name="payphone" msgid="4793877574636445118">"Таксофон"</string>
@@ -91,8 +91,8 @@
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Номер відображ. у вихідних дзвінках"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Використовувати налаштування оператора для показу мого номера для вихідних дзвінків"</string>
     <string name="labelCW" msgid="6120513814915920200">"Паралельний виклик"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"Під час дзвінка сповіщати про вхідні дзвінки"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"Під час дзвінка сповіщати про вхідні дзвінки"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"Під час дзвінка сповіщати про вхідні виклики"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"Під час дзвінка сповіщати про вхідні виклики"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Переадресація"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Налаштування переадресації виклику (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Переадресація виклику"</string>
@@ -345,18 +345,18 @@
     <string name="carrier_settings_title" msgid="9028166176523012300">"Налаштування оператора"</string>
     <string name="fdn" msgid="7878832555095183202">"Номери фіксованого набору"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"Фіксовані номери (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"Список FDN"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"Список фіксованого набору"</string>
     <string name="fdn_list_with_label" msgid="7437232552210469217">"Фіксовані номери (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Активація FDN"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Номери фіксованого набору увімкнено"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"Номери фіксованого набору вимкнено"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"Увімк. FDN"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"Увімкнути фіксований набір"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Вимк. FDN"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Змінити PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Вимк. FDN"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"Увімк. FDN"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"Увімкнути фіксований набір"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Керув. номерами фікс. набору"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Змінити PIN-код для доступу FDN"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Змінити PIN-код для фіксованого набору"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Керувати списком номерів"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Конфіденційність Voice"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Увімкн. режим розшир. конфіденц."</string>
@@ -485,7 +485,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Імпортований контакт"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Контакт не імпортовано"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Слухові апарати"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Увімкнути функцію НАС"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Увімкнути підтримку слухових апаратів"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Телетайп вимкнено"</item>
     <item msgid="3971695875449640648">"Повнофункціональний телетайп"</item>

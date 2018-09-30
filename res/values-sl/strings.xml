@@ -485,7 +485,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Uvožen je bil stik"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Uvoz stika ni uspel"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Slušni pripomočki"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Vključi združljivost s slušnim pripomočkom"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Vključi združljivost s slušnimi pripomočki"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Način TTY izklopljen"</item>
     <item msgid="3971695875449640648">"TTY poln"</item>

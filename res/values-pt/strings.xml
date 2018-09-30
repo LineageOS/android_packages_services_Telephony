@@ -43,9 +43,9 @@
     <string name="pause_prompt_no" msgid="6686238803236884877">"Não"</string>
     <string name="wild_prompt_str" msgid="5543521676355533577">"Substituir caractere curinga por"</string>
     <string name="no_vm_number" msgid="4164780423805688336">"Número correio de voz ausente"</string>
-    <string name="no_vm_number_msg" msgid="1300729501030053828">"Não há um número correio de voz armazenado no cartão SIM."</string>
+    <string name="no_vm_number_msg" msgid="1300729501030053828">"Não há um número correio de voz armazenado no chip."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"Adicionar número"</string>
-    <string name="puk_unlocked" msgid="2284912838477558454">"O seu cartão SIM foi desbloqueado. O seu telefone está desbloqueando…"</string>
+    <string name="puk_unlocked" msgid="2284912838477558454">"O seu chip foi desbloqueado. O seu telefone está desbloqueando…"</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN de desbloqueio da rede SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Desbloquear"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Dispensar"</string>
@@ -125,11 +125,11 @@
     <string name="updating_settings" msgid="8171225533884883252">"Atualizando configurações…"</string>
     <string name="reverting_settings" msgid="4752151682666912828">"Revertendo configurações…"</string>
     <string name="response_error" msgid="6674110501330139405">"Resposta inesperada da rede."</string>
-    <string name="exception_error" msgid="7027667130619518211">"Erro de rede ou do cartão SIM."</string>
+    <string name="exception_error" msgid="7027667130619518211">"Erro de rede ou do chip."</string>
     <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Solicitação SS modificada para solicitação DIAL."</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Solicitação SS modificada para solicitação USSD."</string>
     <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Solicitação SS modificada para nova solicitação SS."</string>
-    <string name="fdn_check_failure" msgid="18200614306525434">"A configuração \"Números de chamada fixos\" do seu app Telefone está ativada. Por isso, alguns recursos relacionados a chamadas não funcionam."</string>
+    <string name="fdn_check_failure" msgid="18200614306525434">"A configuração \"Números de discagem fixa\" do seu app Telefone está ativada. Por isso, alguns recursos relacionados a chamadas não funcionam."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Ligue o rádio antes de ver essas configurações."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
     <string name="enable" msgid="7248657275000173526">"Ativar"</string>
@@ -164,7 +164,7 @@
     <string name="search_networks" msgid="1601136049300882441">"Pesquisar redes"</string>
     <string name="network_query_error" msgid="6828516148953325006">"Erro ao pesquisar redes."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Registrando na <xliff:g id="NETWORK">%s</xliff:g>…"</string>
-    <string name="not_allowed" msgid="5613353860205691579">"Seu cartão SIM não permite uma conexão com esta rede."</string>
+    <string name="not_allowed" msgid="5613353860205691579">"Seu chip não permite uma conexão com esta rede."</string>
     <string name="connect_later" msgid="2308119155752343975">"Não é possível se conectar a esta rede agora. Tente novamente mais tarde."</string>
     <string name="registration_done" msgid="495135664535876612">"Registrado na rede."</string>
     <string name="sum_carrier_select" msgid="3494252551249882718">"Selecione uma operadora de rede"</string>
@@ -343,24 +343,24 @@
     <string name="cdma_activate_device" msgid="3793805892364814518">"Ativar aparelho"</string>
     <string name="cdma_lte_data_service" msgid="4255018217292548962">"Configurar serviço de dados"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"Config. da operadora"</string>
-    <string name="fdn" msgid="7878832555095183202">"Chamadas fixas"</string>
-    <string name="fdn_with_label" msgid="187084204115493366">"Chamadas fixas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn" msgid="7878832555095183202">"Números de discagem fixa"</string>
+    <string name="fdn_with_label" msgid="187084204115493366">"Números de discagem fixa (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="8777755791892122369">"Lista FDN"</string>
     <string name="fdn_list_with_label" msgid="7437232552210469217">"Lista de FDNs (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Ativação do FDN"</string>
-    <string name="fdn_enabled" msgid="5238109009915521240">"Os números de chamadas fixas estão ativados"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"Os números de chamadas fixas estão desativados"</string>
+    <string name="fdn_enabled" msgid="5238109009915521240">"Os números de discagem fixa estão ativados"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"Os números de discagem fixa estão desativados"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Ativar FDN"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Desativar FDN"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Alterar PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Desativar FDN"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Ativar FDN"</string>
-    <string name="sum_fdn" msgid="1959399454900272878">"Gerenciar números de chamadas fixas"</string>
+    <string name="sum_fdn" msgid="1959399454900272878">"Gerenciar números de discagem fixa"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Alterar PIN para acesso FDN"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gerenciar lista de números telefônicos"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Privacidade de voz"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Ativar modo de privacidade aprimorado"</string>
-    <string name="tty_mode_option_title" msgid="9033098925144434669">"Modo TTD"</string>
+    <string name="tty_mode_option_title" msgid="9033098925144434669">"Modo TTY"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"Definir modo TTD"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"Repetir automaticamente"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Ativar modo Repetir automaticamente"</string>
@@ -385,21 +385,21 @@
     <string name="fdn_invalid_number" msgid="1494755047900009147">"O FDN não foi atualizado porque o número não pode exceder 20 dígitos."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"O FDN não foi atualizado. O PIN2 estava incorreto, ou o número de telefone foi rejeitado."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Falha na operação de FDN."</string>
-    <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lendo a partir do cartão SIM…"</string>
-    <string name="simContacts_empty" msgid="5270660846489561932">"Não há contatos no seu cartão SIM."</string>
+    <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lendo a partir do chip…"</string>
+    <string name="simContacts_empty" msgid="5270660846489561932">"Não há contatos no seu chip."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Selecione os contatos a serem importados"</string>
-    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Desative o modo avião para importar contatos do cartão SIM."</string>
-    <string name="enable_pin" msgid="5422767284133234860">"Ativar/desativar PIN do SIM"</string>
-    <string name="change_pin" msgid="9174186126330785343">"Alterar PIN do SIM"</string>
-    <string name="enter_pin_text" msgid="8532615714751931951">"PIN do SIM:"</string>
+    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Desative o modo avião para importar contatos do chip."</string>
+    <string name="enable_pin" msgid="5422767284133234860">"Ativar/desativar PIN do chip"</string>
+    <string name="change_pin" msgid="9174186126330785343">"Alterar PIN do chip"</string>
+    <string name="enter_pin_text" msgid="8532615714751931951">"PIN do chip:"</string>
     <string name="oldPinLabel" msgid="5287773661246368314">"PIN antigo"</string>
     <string name="newPinLabel" msgid="207488227285336897">"Novo PIN"</string>
     <string name="confirmPinLabel" msgid="257597715098070206">"Confirmar novo PIN"</string>
     <string name="badPin" msgid="8955102849303984935">"O PIN antigo digitado não está correto. Tente novamente."</string>
     <string name="mismatchPin" msgid="5923253370683071889">"Os PINs digitados não correspondem. Tente novamente."</string>
     <string name="invalidPin" msgid="5981171102258684792">"Digite um PIN com 4 a 8 números."</string>
-    <string name="disable_sim_pin" msgid="3419351358300716472">"Apagar PIN do SIM"</string>
-    <string name="enable_sim_pin" msgid="4845145659651484248">"Definir PIN do SIM"</string>
+    <string name="disable_sim_pin" msgid="3419351358300716472">"Apagar PIN do chip"</string>
+    <string name="enable_sim_pin" msgid="4845145659651484248">"Definir PIN do chip"</string>
     <string name="enable_in_progress" msgid="3417917024688497010">"Definindo PIN…"</string>
     <string name="enable_pin_ok" msgid="2918545971413270063">"PIN definido"</string>
     <string name="disable_pin_ok" msgid="2109571368635883688">"PIN apagado"</string>
@@ -418,11 +418,11 @@
     <string name="pin2_changed" msgid="3724522579945610956">"PIN2 atualizado"</string>
     <string name="label_puk2_code" msgid="4688069961795341948">"Inserir o código PUK2"</string>
     <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"Senha incorreta. PIN2 bloqueado. Para tentar novamente, altere o PIN 2."</string>
-    <string name="puk2_requested" msgid="5831015200030161434">"Senha incorreta. SIM bloqueado. Insira o PUK2."</string>
+    <string name="puk2_requested" msgid="5831015200030161434">"Senha incorreta. Chip bloqueado. Insira o PUK2."</string>
     <string name="puk2_blocked" msgid="3150263853077280049">"PUK2 permanentemente bloqueado."</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n"Você tem <xliff:g id="NUMBER">%d</xliff:g> tentativas restantes."</string>
     <string name="pin2_unblocked" msgid="7791600368153469078">"PIN2 não mais bloqueado"</string>
-    <string name="pin2_error_exception" msgid="1088689322248996699">"Erro de rede ou do cartão SIM"</string>
+    <string name="pin2_error_exception" msgid="1088689322248996699">"Erro de rede ou do chip"</string>
     <string name="doneButton" msgid="2859593360997984240">"Concluído"</string>
     <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Número correio de voz"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"Discando"</string>
@@ -480,7 +480,7 @@
     <string name="onscreenVideoCallText" msgid="4800924186056115442">"Videocham."</string>
     <string name="importSimEntry" msgid="6614358325359736031">"Importar"</string>
     <string name="importAllSimEntries" msgid="1503181169636198673">"Importar tudo"</string>
-    <string name="importingSimContacts" msgid="7374056215462575769">"Importando contatos do SIM"</string>
+    <string name="importingSimContacts" msgid="7374056215462575769">"Importando contatos do chip"</string>
     <string name="importToFDNfromContacts" msgid="2130620207013368580">"Importar dos contatos"</string>
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Contato importado"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Falha ao importar contato"</string>
@@ -558,20 +558,20 @@
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Alterar PIN"</string>
     <string name="voicemail_notification_ringtone_title" msgid="2609519527849101590">"Som"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Toque e vibração"</string>
-    <string name="pstn_connection_service_label" msgid="1743245930577325900">"Cartões SIM integrados"</string>
+    <string name="pstn_connection_service_label" msgid="1743245930577325900">"Chips integrados"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Ativar chamadas de vídeo"</string>
     <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"Para ativar a videochamada, ative o modo 4G LTE avançado nas configurações de rede."</string>
     <string name="enable_video_calling_dialog_settings" msgid="576528473599603249">"Configurações de rede"</string>
     <string name="enable_video_calling_dialog_close" msgid="7411471282167927991">"Fechar"</string>
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"Chamadas de emergência"</string>
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"Somente chamadas de emergência"</string>
-    <string name="sim_description_default" msgid="4778679519938775515">"Cartão SIM, slot: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
+    <string name="sim_description_default" msgid="4778679519938775515">"Chip, slot: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"Acessibilidade"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"Chamada via Wi-Fi de"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Chamada por Wi-Fi"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"Toque novamente para abrir"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"Ocorreu um erro ao decodificar a mensagem."</string>
-    <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Um cartão SIM ativou seu serviço e atualizou os recursos de roaming do smartphone."</string>
+    <string name="callFailed_cdma_activation" msgid="2307989779233262164">"Um chip ativou seu serviço e atualizou os recursos de roaming do smartphone."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"Há muitas chamadas ativas. Finalize ou mescle as chamadas existentes antes de fazer uma nova."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Alterar o PIN do correio de voz"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continuar"</string>

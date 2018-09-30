@@ -356,7 +356,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Онемогући број за фиксно бирање"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Омогући број за фиксно бирање"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Управљање бројевима за фиксно бирање"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Промени PIN за приступ броју за фиксно бирање"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Промена PIN-а за приступ броју за фиксно бирање"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Управљање листом телефонских бројева"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Приватност гласа"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Омогући побољшан режим приватности"</string>

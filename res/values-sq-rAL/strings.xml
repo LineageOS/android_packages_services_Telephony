@@ -349,7 +349,7 @@
     <string name="fdn_list_with_label" msgid="7437232552210469217">"Lista e FDN-së (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Aktivizimi i FDN-së"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Numrat me telefonim të përzgjedhur u aktivizuan"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"Numrat me telefonim të përzgjedhur u çaktivizuan"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"Numrat me telefonim të përzgjedhur janë të çaktivizuar"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Aktivizo FDN-në"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Çaktivizo FDN-në"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Ndrysho PIN2-shin"</string>

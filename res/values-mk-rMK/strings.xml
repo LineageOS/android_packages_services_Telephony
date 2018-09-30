@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI кодот е откажан"</string>
     <string name="cancel" msgid="5044513931633602634">"Откажи"</string>
     <string name="enter_input" msgid="1810529547726803893">"Пораката на USSD мора да биде меѓу <xliff:g id="MIN_LEN">%d</xliff:g> и <xliff:g id="MAX_LEN">%d</xliff:g> знаци. Обидете се повторно."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"Управувај со конференциски повик"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"Конференциски повик"</string>
     <string name="ok" msgid="3811371167865772377">"Во ред"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Звучник"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Слушалка"</string>
@@ -549,7 +549,7 @@
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Отфрли"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"Услуга"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"Поставување"</string>
-    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Нема поставка&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Не е поставен&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Други поставки на повици"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"Повикување преку <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"фотографија за контакт"</string>

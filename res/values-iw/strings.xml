@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"‏קוד MMI מבוטל"</string>
     <string name="cancel" msgid="5044513931633602634">"ביטול"</string>
     <string name="enter_input" msgid="1810529547726803893">"‏הודעת USSD חייבת להיות באורך של <xliff:g id="MIN_LEN">%d</xliff:g> עד <xliff:g id="MAX_LEN">%d</xliff:g> תווים. נסה שוב."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"נהל שיחת ועידה"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"ניהול שיחת ועידה"</string>
     <string name="ok" msgid="3811371167865772377">"אישור"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"רמקול"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"אוזניה"</string>
@@ -38,10 +38,10 @@
     <string name="audio_mode_bluetooth" msgid="3047641300848211128">"Bluetooth"</string>
     <string name="wait_prompt_str" msgid="7601815427707856238">"לשלוח את הצלילים הבאים?\n"</string>
     <string name="pause_prompt_str" msgid="1789964702154314806">"שולח צלילים\n"</string>
-    <string name="send_button" msgid="4106860097497818751">"שלח"</string>
+    <string name="send_button" msgid="4106860097497818751">"שליחה"</string>
     <string name="pause_prompt_yes" msgid="3564467212025151797">"כן"</string>
     <string name="pause_prompt_no" msgid="6686238803236884877">"לא"</string>
-    <string name="wild_prompt_str" msgid="5543521676355533577">"החלף את התו הכללי ב"</string>
+    <string name="wild_prompt_str" msgid="5543521676355533577">"החלפת התו הכללי ב"</string>
     <string name="no_vm_number" msgid="4164780423805688336">"חסר מספר של דואר קולי"</string>
     <string name="no_vm_number_msg" msgid="1300729501030053828">"‏בכרטיס ה-SIM לא מאוחסן מספר של דואר קולי."</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"הוסף מספר"</string>
@@ -89,10 +89,10 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"טוען הגדרות..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"המספר מוסתר בשיחות יוצאות"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"מספר המוצג בשיחות יוצאות"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"השתמש בהגדרות ברירת המחדל של המפעיל כדי להציג את המספר שלי בשיחות יוצאות"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"שימוש בהגדרות ברירת המחדל של המפעיל כדי להציג את המספר שלי בשיחות יוצאות"</string>
     <string name="labelCW" msgid="6120513814915920200">"שיחה ממתינה"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"במהלך שיחה, שלח לי התראה על שיחות נכנסות"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"במהלך שיחה, שלח לי התראות על שיחות נכנסות"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"במהלך שיחה, ברצוני לקבל התראה על שיחות נכנסות"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"במהלך שיחה, ברצוני לקבל התראות על שיחות נכנסות"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"הגדרות של העברת שיחות"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"הגדרות של העברת שיחות (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"העברת שיחות"</string>
@@ -330,7 +330,7 @@
     <item msgid="1205664026446156265">"אוטומטי"</item>
   </string-array>
     <string name="cdma_subscription_title" msgid="1162564010076763284">"‏הרשמה ל-CDMA"</string>
-    <string name="cdma_subscription_summary" msgid="2530890766115781140">"‏החלף בין RUIM/SIM ל-NV"</string>
+    <string name="cdma_subscription_summary" msgid="2530890766115781140">"‏החלפה בין RUIM/SIM ל-NV"</string>
     <string name="cdma_subscription_dialogtitle" msgid="2699527950523333110">"הרשמה"</string>
   <string-array name="cdma_subscription_choices">
     <item msgid="2258014151300708431">"RUIM/SIM"</item>
@@ -355,9 +355,9 @@
     <string name="change_pin2" msgid="2153563695382176676">"‏שנה PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"השבת מספרי חיוג קבועים"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"הפעל מספרי חיוג קבועים"</string>
-    <string name="sum_fdn" msgid="1959399454900272878">"נהל מספרי חיוג קבועים"</string>
+    <string name="sum_fdn" msgid="1959399454900272878">"ניהול מספרי חיוג קבועים"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"שנה את קוד הגישה למספרי חיוג קבועים"</string>
-    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"נהל רשימת מספרי טלפון"</string>
+    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ניהול רשימת מספרי טלפון"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"פרטיות קול"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"הפוך מצב פרטיות משופרת לפעיל"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"‏מצב TTY"</string>
@@ -417,7 +417,7 @@
     <string name="invalidPuk2" msgid="7059081153334815973">"‏הזן PUK2 שאורכו 8 ספרות."</string>
     <string name="pin2_changed" msgid="3724522579945610956">"‏PIN2 עודכן"</string>
     <string name="label_puk2_code" msgid="4688069961795341948">"‏הזן קוד PUK2"</string>
-    <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"‏סיסמה שגויה. PIN2 חסום כעת. כדי לנסות שוב, שנה את PIN 2."</string>
+    <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"‏סיסמה שגויה. PIN2 חסום כעת. כדי לנסות שוב, יש לשנות את PIN 2."</string>
     <string name="puk2_requested" msgid="5831015200030161434">"‏סיסמה שגויה. ה-SIM נעול כעת. הזן PUK2."</string>
     <string name="puk2_blocked" msgid="3150263853077280049">"‏PUK2 נחסם לצמיתות."</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n"נותרו לך עוד <xliff:g id="NUMBER">%d</xliff:g> ניסיונות."</string>
@@ -470,12 +470,12 @@
     <string name="onscreenHoldText" msgid="2285258239691145872">"השהה"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"סיום"</string>
     <string name="onscreenShowDialpadText" msgid="8561805492659639893">"לוח חיוג"</string>
-    <string name="onscreenMuteText" msgid="5011369181754261374">"השתק"</string>
-    <string name="onscreenAddCallText" msgid="5140385634712287403">"הוסף שיחה"</string>
-    <string name="onscreenMergeCallsText" msgid="6640195098064538950">"מזג שיחות"</string>
-    <string name="onscreenSwapCallsText" msgid="1602990689244030047">"החלף"</string>
-    <string name="onscreenManageCallsText" msgid="5473231160123254154">"נהל שיחות"</string>
-    <string name="onscreenManageConferenceText" msgid="6485935856534311346">"נהל ועידה"</string>
+    <string name="onscreenMuteText" msgid="5011369181754261374">"השתקה"</string>
+    <string name="onscreenAddCallText" msgid="5140385634712287403">"שיחה חדשה"</string>
+    <string name="onscreenMergeCallsText" msgid="6640195098064538950">"מיזוג שיחות"</string>
+    <string name="onscreenSwapCallsText" msgid="1602990689244030047">"החלפה"</string>
+    <string name="onscreenManageCallsText" msgid="5473231160123254154">"ניהול שיחות"</string>
+    <string name="onscreenManageConferenceText" msgid="6485935856534311346">"ניהול שיחת ועידה"</string>
     <string name="onscreenAudioText" msgid="1710087112800041743">"אודיו"</string>
     <string name="onscreenVideoCallText" msgid="4800924186056115442">"שיחת וידאו"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"ייבא"</string>
@@ -485,7 +485,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"איש הקשר יובא"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"ייבוא איש הקשר נכשל"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"מכשירי שמיעה"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"הפעל תאימות למכשיר שמיעה"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"הפעלת תאימות למכשיר שמיעה"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"‏TTY כבוי"</item>
     <item msgid="3971695875449640648">"‏TTY מלא"</item>

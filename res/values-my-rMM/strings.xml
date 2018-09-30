@@ -42,8 +42,8 @@
     <string name="pause_prompt_yes" msgid="3564467212025151797">"Yes"</string>
     <string name="pause_prompt_no" msgid="6686238803236884877">"No"</string>
     <string name="wild_prompt_str" msgid="5543521676355533577">"wildစာလုံးကို အစားထိုးရန်မှာ"</string>
-    <string name="no_vm_number" msgid="4164780423805688336">"အသံစာပို့စနစ် နံပါတ် ပျောက်နေပါသည်"</string>
-    <string name="no_vm_number_msg" msgid="1300729501030053828">"ဆင်းမ်ကဒ်ပေါ်တွင် အသံစာပို့စနစ် နံပါတ် သိမ်းဆည်ထားခြင်း မရှိပါ"</string>
+    <string name="no_vm_number" msgid="4164780423805688336">"အသံမေးလ် နံပါတ် ပျောက်နေပါသည်"</string>
+    <string name="no_vm_number_msg" msgid="1300729501030053828">"ဆင်းမ်ကဒ်ပေါ်တွင် အသံမေးလ် နံပါတ် သိမ်းဆည်ထားခြင်း မရှိပါ"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"နံပါတ်ထပ်ထည့်ရန်"</string>
     <string name="puk_unlocked" msgid="2284912838477558454">"သင့် ဆင်းမ်ကဒ်အား ပိတ်ဆို့မှုကို ဖယ်ရှားပြီးပါပြီ။ သင့်ဖုန်းဟာ သော့ဖွင့်နေပါသည်…"</string>
     <string name="label_ndp" msgid="780479633159517250">"ဆင်းမ်ကဒ် ကွန်ရက် သော့ဖွင့်သော ပင်နံပါတ်"</string>
@@ -73,8 +73,8 @@
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"ဖုန်းခေါ်ဆိုနိုင်သည့် အကောင့်များအား ရွေးရန်"</string>
     <string name="wifi_calling" msgid="739018212480165598">"Wi-Fi  ခေါ်ဆိုမှု"</string>
     <string name="connection_service_default_label" msgid="1498481943805913754">"တပ်ဆင်ပြီး ချိတ်ဆက်ရေး ဝန်ဆောင်မှု"</string>
-    <string name="voicemail" msgid="8693759337917898954">"အသံစာပို့စနစ်"</string>
-    <string name="voicemail_settings_with_label" msgid="152724978380748296">"အသံစာပို့စနစ် ( <xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g> )"</string>
+    <string name="voicemail" msgid="8693759337917898954">"အသံမေးလ်"</string>
+    <string name="voicemail_settings_with_label" msgid="152724978380748296">"အသံမေးလ် ( <xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g> )"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"အသံစာပို့နစ်အမှတ် -"</string>
     <string name="networks" msgid="8873030692174541976">"ကွန်ရက် အော်ပရေတာများ"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"အရေးပေါ် ထုတ်လွှင့်မှုများ"</string>
@@ -141,11 +141,11 @@
     <item msgid="1108394741608734023">"နံပါတ်ကို ပြပါ"</item>
   </string-array>
     <string name="vm_changed" msgid="380744030726254139">"အသံစာပို့စနစ်နံပါတ် ပြောင်းပြီးပါပြီ"</string>
-    <string name="vm_change_failed" msgid="3352934863246208918">"အသံစာပို့စနစ် နံပါတ်အား ပြောင်းလို့ မရပါ။\nဒီပြသနာ ဆက်ဖြစ်နေပါက သင့်ဖုန်းလိုင်းဝန်ဆောင်မှုဌာနကို ဆက်သွယ်ပါ"</string>
+    <string name="vm_change_failed" msgid="3352934863246208918">"အသံမေးလ် နံပါတ်အား ပြောင်းလို့ မရပါ။\nဒီပြသနာ ဆက်ဖြစ်နေပါက သင့်ဖုန်းလိုင်းဝန်ဆောင်မှုဌာနကို ဆက်သွယ်ပါ"</string>
     <string name="fw_change_failed" msgid="5298103228470214665">"forwarding နံပါတ်အား ပြောင်းလို့ မရပါ။\nဒီပြသနာ ဆက်ဖြစ်နေပါက သင့်ရဲ့ မိုဘိုင်း ဆက်သွယ်ရေးဝန်ဆောင်မှု ပေးသူကို ဆက်သွယ်ပါ"</string>
     <string name="fw_get_in_vm_failed" msgid="8862896836093833973">"လက်ရှိ forwarding နံပါတ် အပြင်အဆင်အား ရယူခြင်းနှင့် သိမ်းဆည်းခြင်း ပြုလုပ်မရပါ\nဘယ်လိုဖြစ်ဖြစ် ဝန်ဆောင်မှု ပေးသူ အသစ်ပြောင်းပါမလား။"</string>
     <string name="no_change" msgid="3186040086622435212">"အပြောင်းအလဲများ မပြုလုပ်ထားပါ"</string>
-    <string name="sum_voicemail_choose_provider" msgid="59911196126278922">"အသံစာပို့စနစ် ဝန်ဆောင်မှု ရွေးပါ"</string>
+    <string name="sum_voicemail_choose_provider" msgid="59911196126278922">"အသံမေးလ် ဝန်ဆောင်မှု ရွေးပါ"</string>
     <string name="voicemail_default" msgid="2001233554889016880">"သင့် မိုဘိုင်းဝန်ဆောင်မှုပေးသူ"</string>
     <string name="vm_change_pin_old_pin" msgid="7295220109886682573">"ပင်နံပါတ်အဟောင်း"</string>
     <string name="vm_change_pin_new_pin" msgid="5412922262839438097">"ပင်နံပါတ်အသစ်"</string>
@@ -350,14 +350,14 @@
     <string name="fdn_activation" msgid="2156479741307463576">"FDN အက်တီဗေးရှင်း ပြုလုပ်သည်"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"ပုံသေခေါ်ဆိုမှု နံပါတ်များအား ဖွင့်ထားသည်"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"ခေါ်ဆိုနိုင်သည့် နံပါတ်များကန့်သတ်မှုကို ပိတ်ထားသည်"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"FDN ကို သုံးနိုင်ရန်"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"FDN ဖွင့်ရန်"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"FDN ကို ပိတ်ထားရန်"</string>
     <string name="change_pin2" msgid="2153563695382176676">"ပင်နံပါတ်၂ ကို ပြောင်းရန်"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN ကို ပယ်ဖျက်ရန်"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN ကို သုံးနိုင်ရန်"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN ဖွင့်ရန်"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"ခေါ်ဆိုသည့်အခြေစိုက်နံပါတ်အားကြီးကြပ်သည်"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN သုံးစွဲမှုအတွက် ပင် နံပါတ်ပြောင်းပါ"</string>
-    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ဖုန်းနံပါတ်စာရင်းကို ကြီးကြပ်ရန်"</string>
+    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ဖုန်းနံပါတ်စာရင်းကို စီမံရန်"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"အသံလုံခြုံရေး"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"တိုးမြှင့်လုံခြုံရေးစနစ် ပြုလုပ်ခြင်း"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY မုဒ်"</string>
@@ -542,8 +542,8 @@
     <string name="alert_dialog_no" msgid="1476091437797628703">"No"</string>
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"ပယ်ရန်"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"ဝန်ဆောင်မှု"</string>
-    <string name="voicemail_settings" msgid="72448049107749316">"ပြင်ဆင်သတ်မှတ်သည်"</string>
-    <string name="voicemail_number_not_set" msgid="6724904736891087856">"မသတ်မှတ်ထားပါ"</string>
+    <string name="voicemail_settings" msgid="72448049107749316">"စနစ်သတ်မှတ်ခြင်း"</string>
+    <string name="voicemail_number_not_set" msgid="6724904736891087856">"သတ်မှတ်မထားပါ"</string>
     <string name="other_settings" msgid="3672912580359716394">"တခြားခေါ်ဆိုမှုဆိုင်ရာ ဆက်တင်"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> မှ ခေါ်ဆိုခြင်း"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"အဆက်အသွယ်များ၏ ဓာတ်ပုံ"</string>
