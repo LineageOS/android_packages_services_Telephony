@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"خدمات الهاتف"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"طالب الطوارئ"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"الهاتف"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"‏قائمة FDN"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"قائمة أرقام الاتصال الثابتة"</string>
     <string name="unknown" msgid="6878797917991465859">"غير معروف"</string>
     <string name="private_num" msgid="6713286113000232309">"رقم خاص"</string>
     <string name="payphone" msgid="4793877574636445118">"هاتف يعمل بالعملة"</string>
@@ -94,9 +94,9 @@
     <string name="labelCW" msgid="6120513814915920200">"انتظار المكالمة"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"تنبيهي بالمكالمات الواردة أثناء المكالمة"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"تنبيهي بالمكالمات الواردة أثناء المكالمة"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"إعدادات اعادة توجيه المكالمة"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"إعدادات إعادة توجيه المكالمات"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"إعدادات إعادة توجيه المكالمات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"اعادة توجيه المكالمة"</string>
+    <string name="labelCF" msgid="2574386948026924737">"إعادة توجيه المكالمات"</string>
     <string name="labelCFU" msgid="8147177368148660600">"إعادة التوجيه دومًا"</string>
     <string name="messageCFU" msgid="3560082430662923687">"استخدام هذا الرقم دائمًا"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"إعادة التوجيه كل المكالمات"</string>
@@ -388,18 +388,18 @@
     <string name="carrier_settings_title" msgid="9028166176523012300">"إعدادات مشغل شبكة الجوّال"</string>
     <string name="fdn" msgid="7878832555095183202">"أرقام الاتصال الثابتة"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"أرقام الاتصال الثابت (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"‏قائمة FDN"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"قائمة أرقام الاتصال الثابتة"</string>
     <string name="fdn_list_with_label" msgid="7437232552210469217">"قائمة أرقام الاتصال الثابت (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"‏تفعيل FDN"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"تم تفعيل أرقام الاتصال الثابتة"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"تم إيقاف أرقام الاتصال الثابتة"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"‏تفعيل FDN"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"تفعيل أرقام الاتصال الثابتة"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"‏إيقاف FDN"</string>
     <string name="change_pin2" msgid="2153563695382176676">"‏تغيير PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"‏إيقاف FDN"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"‏تفعيل FDN"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"تفعيل أرقام الاتصال الثابتة"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"إدارة أرقام الاتصال الثابتة"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"‏تغيير رمز PIN للدخول إلى FDN"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"‏تغيير رمز PIN للدخول إلى أرقام الاتصال الثابتة"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"إدارة قائمة أرقام الهاتف"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"خصوصية الصوت"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"تفعيل وضع الخصوصية المحسن"</string>
@@ -529,12 +529,12 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"تم استيراد جهة اتصال"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"تعذّر استيراد جهة اتصال"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"أدوات السمع المساعدة"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"تشغيل التوافق مع أداة السمع"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"تفعيل التوافق مع أداة السمع"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"مكالمة باستخدام الميزة \"مراسلة نصية في الوقت الفعلي\""</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"السماح بالمراسلة داخل مكالمة صوتية"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"‏تعمل الميزة \"مراسلة نصية في الوقت الفعلي\" على مساعدة المتصلين الذين يعانون من فقدان حاسة السمع أو من ضعف في السمع أو ليست لديهم القدرة على التحدث أو يحتاجون إلى ما هو أكثر من الصوت فقط.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;معرفة المزيد&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - يتم حفظ المكالمات التي تتم عن طريق الميزة \"مراسلة نصية في الوقت الفعلي\" كنص رسالة \n       &lt;br&gt; - لا تتوفر الميزة \"مراسلة نصية في الوقت الفعلي\" لمكالمات الفيديو"</string>
   <string-array name="tty_mode_entries">
-    <item msgid="512950011423868021">"‏إيقاف تشغيل TTY"</item>
+    <item msgid="512950011423868021">"‏TTY متوقّف"</item>
     <item msgid="3971695875449640648">"‏TTY مكتمل"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>

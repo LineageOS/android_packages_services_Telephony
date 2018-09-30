@@ -587,7 +587,7 @@
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Бас тарту"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"Қызмет"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"Орнату"</string>
-    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Реттелген жоқt&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Реттелген жоқ&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Басқа қоңырау параметрлері"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> арқылы шалу"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"контакт фотосуреті"</string>

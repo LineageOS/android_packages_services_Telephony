@@ -61,7 +61,7 @@
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA чалуунун жөндөөлөрү (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="9043423184895642077">"Туташуу түйүндөрү (APN)"</string>
     <string name="settings_label" msgid="3876743539816984008">"Тармак жөндөөлөрү"</string>
-    <string name="phone_accounts" msgid="6376603393888116364">"Чалуу үчүн каттоо эсептер"</string>
+    <string name="phone_accounts" msgid="6376603393888116364">"Чалуу аккаунттары"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Чалууларды төмөнкү менен жасоо"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"SIP чалууларын төмөнкү менен жасоо"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"Биринчи сурасын"</string>
@@ -91,13 +91,13 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Жөндөөлөр жүктөлүүдө…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Чыгуучу чалууларда номер жашырылган"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Чыгуучу чалууларда көрсөтүлчү номер"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Номеримди чыгуучу чалууларда көрсөтүү үчүн демейки оператор жөндөөлөрү колдонулсун"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Кимдир-бирөөгө чалып жатканда ага номерим көрүнүшү үчүн байланыш операторунун стандарттуу жөндөөлөрү колдонулат."</string>
     <string name="labelCW" msgid="6120513814915920200">"Чалууну кармап туруу"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"Бирөө менен сүйлөшүп жатканда мага келген чалуулар жөнүндө эскертилсин"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"Бирөө менен сүйлөшүп жатканда мага келген чалуулар жөнүндө эскертилсин"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Чалууну багыттоо жөндөөлөрү"</string>
-    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Чалууну багыттоо жөндөөлөрү (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"Чалууну багыттоо"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"Бирөө менен сүйлөшүп жатканда сизге келген чалуулар жөнүндө эскертилет"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"Бирөө менен сүйлөшүп жатканда сизге келген чалуулар жөнүндө эскертилет"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Башка номерге багыттоо"</string>
+    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Башка номерге багыттоо (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="labelCF" msgid="2574386948026924737">"Башка номерге багыттоо"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Ар дайым багыттоо"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Ар дайым ушул номерди колдонуу"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Бардык чалуулар багытталууда"</string>
@@ -401,7 +401,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Уруксат берлгн номерлрд өчр"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Уруксат берлгн номерлрд иштетүү"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Туруктуу терүү номерлерин башкаруу"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Уруксат берилген номерлердин тизмесине кирүү үчүн PIN кодду өзгөртүү"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Уруксат берилген номерлерди көрүү үчүн PIN кодду өзгөртөсүз"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Уруксат берилген номерлердин тизмесин башкаруу"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Үн купуялуулугу"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Жакшыртылган купуялык режимин иштетүү"</string>
@@ -532,7 +532,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Байланыш импорттолду"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Байланыш импорттолбой калды"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Угуу аппараты"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Угуу аппаратын колдоого алуу"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Угуу аппараты иштетилет"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Чалуу учурунда анык убакыттагы билдирүү (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Үн чалуунун учурунда жазышууга уруксат берүү"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT функциясы угуу жана сүйлөө жөндөмдүүлүгү бузулган адамдарга арналат.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Кеңири маалымат&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT функциясында чалуулар транскрипциялар катары сакталат\n       &lt;br&gt; - RTT функациясы видео чалууда жеткиликсиз болот"</string>
@@ -590,7 +590,7 @@
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Этибарга албоо"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"Кызмат"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"Жөндөө"</string>
-    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Орнотулган эмес&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Коюлган эмес&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Башка чалуу жөндөөлөрү"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> аркылуу чалуу"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"байланыштын сүрөтү"</string>

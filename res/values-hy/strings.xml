@@ -90,7 +90,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Կարգավորումները բեռնվում են..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Համարը թաքնված է ելքային զանգերի ժամանակ"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Համարը ցուցադրվում է ելքային զանգերի ժամանակ"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Օգտագործել լռելյայն օպերատորի կարգավորումները՝ ելքային զանգերի ժամանակ իմ համարը ցուցադրելու համար"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Օգտագործել օպերատորի ստանդարտ կարգավորումները՝ ելքային զանգերի ժամանակ իմ համարը ցուցադրելու համար"</string>
     <string name="labelCW" msgid="6120513814915920200">"Զանգի սպասում"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Զանգի ընթացքում տեղեկացնել ինձ մուտքային զանգերի մասին"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Զանգի ընթացքում տեղեկացնել ինձ մուտքային զանգերի մասին"</string>
@@ -541,7 +541,7 @@
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT-ն օգնում է այն բաժանորդներին, ովքեր լսողության և խոսքի դժվարություններ ունեն, կամ ովքեր լոկ ձայնով չեն բավարարվում:&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Իմանալ ավելին&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT զանգերը պահվում են որպես հաղորդագրության տառադրումներ\n       &lt;br&gt; – RTT-ն հասանելի չէ տեսազանգի ժամանակ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY-ն անջատված է"</item>
-    <item msgid="3971695875449640648">"TTY Full"</item>
+    <item msgid="3971695875449640648">"Լիարժեք TTY"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>
   </string-array>
@@ -601,7 +601,7 @@
     <string name="selectContact" msgid="781975788478987237">"ընտրել կոնտակտ"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Ձայնային զանգերը չեն սպասարկվում"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"համարհավաքել"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Տեսողական ձայնային փոստ"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Վիզուալ ձայնային փոստ"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Ընտրեք PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Փոխել PIN-ը"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Ձայներանգ &amp; Թրթռոց"</string>

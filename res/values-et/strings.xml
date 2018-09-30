@@ -395,11 +395,11 @@
     <string name="fdn_disabled" msgid="4700049736675368279">"Fikseeritud valimisnumbrid on keelatud"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Luba FDN"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Keela FDN"</string>
-    <string name="change_pin2" msgid="2153563695382176676">"Muuda PIN2-koodi"</string>
+    <string name="change_pin2" msgid="2153563695382176676">"PIN2-koodi muutmine"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Keela FDN"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Luba FDN"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Fikseeritud valimisnumbrite haldamine"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Muuda FDN-juurdepääsuks PIN-koodi"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN-juurdepääsuks PIN-koodi muutmine"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Telefoninumbrite loendi haldamine"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Häälvestluse privaatsus"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Luba täiendatud privaatsusrežiim"</string>
@@ -589,7 +589,7 @@
     <string name="voicemail_settings" msgid="72448049107749316">"Seadistus"</string>
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Määramata&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Muud kõneseaded"</string>
-    <string name="calling_via_template" msgid="4839419581866928142">"Kõne edastab <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="calling_via_template" msgid="4839419581866928142">"Operaator: <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"kontakti foto"</string>
     <string name="goPrivate" msgid="865837794424530980">"aktiveeri privaatrežiim"</string>
     <string name="selectContact" msgid="781975788478987237">"vali kontakt"</string>
