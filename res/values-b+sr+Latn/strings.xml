@@ -399,7 +399,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Onemogući broj za fiksno biranje"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Omogući broj za fiksno biranje"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Upravljanje brojevima za fiksno biranje"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Promeni PIN za pristup broju za fiksno biranje"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Promena PIN-a za pristup broju za fiksno biranje"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Upravljanje listom telefonskih brojeva"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Privatnost glasa"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Omogući poboljšan režim privatnosti"</string>
