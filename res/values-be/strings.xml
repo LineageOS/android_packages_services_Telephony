@@ -482,7 +482,8 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"Набраць <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Невядомы нумар галасавой пошты"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Не абслугоўваецца"</string>
-    <string name="notification_network_selection_text" msgid="2607085729661923269">"Выбраная сетка (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) недаступная"</string>
+    <!-- no translation found for notification_network_selection_text (7550380440576731104) -->
+    <skip />
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Каб пазваніць, уключыце мабільную сетку, выключыце рэжым палёту або рэжым эканоміі зараду."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Адключыце рэжым палёту, каб зрабіць выклік."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Адключыце рэжым палёту або падлучыцеся да бесправадной сеткі, каб зрабіць выклік."</string>
