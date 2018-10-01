@@ -73,5 +73,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" android:text=""/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height= "1dp"
+        android:paddingRight="4dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Capability Changed Events:"/>
+
+    <ListView
+        android:id="@+id/cap_cb_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 
 </LinearLayout>
