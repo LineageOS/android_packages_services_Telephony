@@ -528,8 +528,8 @@
     <string name="importToFDNfromContacts" msgid="2130620207013368580">"Import z kontaktov"</string>
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Kontakt bol importovaný"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontakt sa nepodarilo importovať"</string>
-    <string name="hac_mode_title" msgid="8740268574688743289">"Načúvacie pomôcky"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Zapnúť režim kompatibility s načúvacou pomôckou"</string>
+    <string name="hac_mode_title" msgid="8740268574688743289">"Načúvadlá"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Zapnúť kompatibilitu s načúvadlom"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Posielanie okamžitého textu (RTT) počas hovorov"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Povoliť posielanie správ počas hlasového hovoru"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Okamžitý text pomáha volajúcim, ktorí nepočujú, majú problémy so sluchom, rečovú poruchu alebo potrebujú viac ako samotný hlas.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Ďalšie informácie&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Okamžitý text poslaný počas hovoru sa uloží ako prepis správ\n       &lt;br&gt; – Okamžitý text nie je k dispozícii počas videohovorov"</string>

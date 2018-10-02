@@ -1173,15 +1173,19 @@ public class MobileNetworkSettings extends Activity  {
              * but you do need to remember that this all needs to work when subscriptions
              * change dynamically such as when hot swapping sims.
              */
-            boolean useVariant4glteTitle = carrierConfig.getBoolean(
-                    CarrierConfigManager.KEY_ENHANCED_4G_LTE_TITLE_VARIANT_BOOL);
-            int enhanced4glteModeTitleId = useVariant4glteTitle ?
-                    R.string.enhanced_4g_lte_mode_title_variant :
-                    R.string.enhanced_4g_lte_mode_title;
+            int variant4glteTitleIndex = carrierConfig.getInt(
+                    CarrierConfigManager.KEY_ENHANCED_4G_LTE_TITLE_VARIANT_INT);
+            String[] variantTitles = getContext().getResources()
+                    .getStringArray(R.array.enhanced_4g_lte_mode_title_variant);
+            // Default index 0 indicates the default title string
+            CharSequence enhanced4glteModeTitle = variantTitles[0];
+            if (variant4glteTitleIndex >= 0 && variant4glteTitleIndex < variantTitles.length) {
+                enhanced4glteModeTitle = variantTitles[variant4glteTitleIndex];
+            }
 
             mButtonPreferredNetworkMode.setEnabled(hasActiveSubscriptions);
             mButtonEnabledNetworks.setEnabled(hasActiveSubscriptions);
-            mButton4glte.setTitle(enhanced4glteModeTitleId);
+            mButton4glte.setTitle(enhanced4glteModeTitle);
             mLteDataServicePref.setEnabled(hasActiveSubscriptions);
             Preference ps;
             ps = findPreference(BUTTON_CELL_BROADCAST_SETTINGS);

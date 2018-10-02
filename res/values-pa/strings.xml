@@ -19,7 +19,7 @@
     <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ਮੋਬਾਈਲ ਡਾਟਾ"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"ਫ਼ੋਨ ਸੇਵਾਵਾਂ"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"ਐਮਰਜੈਂਸੀ ਡਾਇਲਰ"</string>
-    <string name="phoneIconLabel" msgid="2331230813161304895">"ਫੋਨ"</string>
+    <string name="phoneIconLabel" msgid="2331230813161304895">"ਫ਼ੋਨ"</string>
     <string name="fdnListLabel" msgid="8630418672279521003">"FDN ਸੂਚੀ"</string>
     <string name="unknown" msgid="6878797917991465859">"ਅਗਿਆਤ"</string>
     <string name="private_num" msgid="6713286113000232309">"ਨਿੱਜੀ ਨੰਬਰ"</string>
@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI ਕੋਡ ਰੱਦ ਕੀਤਾ"</string>
     <string name="cancel" msgid="5044513931633602634">"ਰੱਦ ਕਰੋ"</string>
     <string name="enter_input" msgid="1810529547726803893">"USSD ਸੁਨੇਹਾ <xliff:g id="MIN_LEN">%d</xliff:g> ਅਤੇ <xliff:g id="MAX_LEN">%d</xliff:g> ਅੱਖਰਾਂ ਵਿਚਕਾਰ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"ਕਾਨਫਰੰਸ ਕਾਲ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"ਕਾਨਫਰੰਸ ਕਾਲ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ"</string>
     <string name="ok" msgid="3811371167865772377">"ਠੀਕ"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"ਸਪੀਕਰ"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"ਹੈਂਡਸੈਟ ਈਅਰਪੀਸ"</string>
@@ -473,7 +473,7 @@
     <string name="card_title_redialing" msgid="8253487008234167266">"ਮੁੜ ਡਾਇਲ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="card_title_conf_call" msgid="1162980346189744501">"ਕਾਨਫਰੰਸ ਕਾਲ"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"ਇਨਕਮਿੰਗ ਕਾਲ"</string>
-    <string name="card_title_call_ended" msgid="5544730338889702298">"ਕਾਲ ਖ਼ਤਮ ਹੋਈ"</string>
+    <string name="card_title_call_ended" msgid="5544730338889702298">"ਕਾਲ ਸਮਾਪਤ ਹੋਈ"</string>
     <string name="card_title_on_hold" msgid="821463117892339942">"ਹੋਲਡ ਤੇ"</string>
     <string name="card_title_hanging_up" msgid="3999101620995182450">"ਹੈਂਗ ਅਪ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="card_title_in_call" msgid="6346543933068225205">"ਇਨ ਕਾਲ"</string>
@@ -511,13 +511,13 @@
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਇੱਕ ਐਮਰਜੈਂਸੀ ਨੰਬਰ ਡਾਇਲ ਕਰੋ।"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"ਸੰਕਟਕਾਲੀਨ ਕਾਲ ਉਪਲਬਧ ਨਹੀਂ ਹੈ"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ਡਾਇਲ ਕਰਨ ਲਈ ਕੀ-ਬੋਰਡ ਵਰਤੋ"</string>
-    <string name="onscreenHoldText" msgid="2285258239691145872">"ਹੋਲਡ ਕਰੋ"</string>
+    <string name="onscreenHoldText" msgid="2285258239691145872">"ਰੋਕ ਕੇ ਰੱਖੋ"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ਖ਼ਤਮ"</string>
     <string name="onscreenShowDialpadText" msgid="8561805492659639893">"ਡਾਇਲਪੈਡ"</string>
     <string name="onscreenMuteText" msgid="5011369181754261374">"ਮਿਊਟ ਕਰੋ"</string>
-    <string name="onscreenAddCallText" msgid="5140385634712287403">"ਕਾਲ ਜੋੜੋ"</string>
+    <string name="onscreenAddCallText" msgid="5140385634712287403">"ਕਾਲ ਸ਼ਾਮਲ ਕਰੋ"</string>
     <string name="onscreenMergeCallsText" msgid="6640195098064538950">"ਕਾਲਾਂ ਸ਼ਾਮਲ ਕਰੋ"</string>
-    <string name="onscreenSwapCallsText" msgid="1602990689244030047">"ਸਵੈਪ ਕਰੋ"</string>
+    <string name="onscreenSwapCallsText" msgid="1602990689244030047">"ਦੂਜੀ ਕਾਲ ਲਓ"</string>
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"ਕਾਲਾਂ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
     <string name="onscreenManageConferenceText" msgid="6485935856534311346">"ਕਾਨਫਰੰਸ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
     <string name="onscreenAudioText" msgid="1710087112800041743">" ਆਡੀਓ"</string>

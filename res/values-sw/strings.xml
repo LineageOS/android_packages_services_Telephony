@@ -529,7 +529,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Imeingiza anwani"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Imeshindwa kuingiza anwani"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Vifaa vya kusaidia kusikia"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Washa utangamano wa kifaa cha kusaidia kusikia"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Washa utumiaji wa kifaa cha kusaidia kusikia"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Kutuma SMS katika Muda Halisi (RTT) wakati wa kupiga simu"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Ruhusu uandikaji wa ujumbe wakati unapiga simu"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT huwasaidia wapigaji simu ambao ni viziwi, wasioweza kusikia vyema, wenye matatizo ya kuzungumza au wanaohitaji kufanya zaidi ya kuzungumza.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Pata maelezo zaidi&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Simu za RTT huhifadhiwa kama manukuu ya ujumbe\n       &lt;br&gt; - RTT haipatikani kwa simu za video"</string>

@@ -632,14 +632,14 @@
     <string name="change_pin_system_error" msgid="8308462387154257840">"ಪಿನ್ ಹೊಂದಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"ಡೇಟಾ ರೋಮಿಂಗ್‌ ಆಫ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"ಡೇಟಾ ರೋಮಿಂಗ್‌ ಆನ್ ಮಾಡಲಾಗಿದೆ"</string>
-    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"ಪ್ರಸ್ತುತ ರೋಮಿಂಗ್‌‌ನಲ್ಲಿದೆ, ಡೇಟಾ ಪ್ಲ್ಯಾನ್ ಅಗತ್ಯವಿದೆ"</string>
-    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"ಪ್ರಸ್ತುತ ರೋಮಿಂಗ್‌, ಡೇಟಾ ಪ್ಲ್ಯಾನ್ ಸಕ್ರಿಯವಾಗಿದೆ"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"ಪ್ರಸ್ತುತ ರೋಮಿಂಗ್‌‌ನಲ್ಲಿದೆ, ಡೇಟಾ ಪ್ಲಾನ್ ಅಗತ್ಯವಿದೆ"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"ಪ್ರಸ್ತುತ ರೋಮಿಂಗ್‌, ಡೇಟಾ ಪ್ಲಾನ್ ಸಕ್ರಿಯವಾಗಿದೆ"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"ಯಾವುದೇ ಮೊಬೈಲ್ ಡೇಟಾ ಉಳಿದಿಲ್ಲ"</string>
     <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"ಯಾವುದೇ ಮೊಬೈಲ್ ಡೇಟಾ ಉಳಿದಿಲ್ಲ"</string>
     <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ಮೊಬೈಲ್ ಡೇಟಾ ಸೇರಿಸಿ"</string>
-    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"ಯಾವುದೇ ರೋಮಿಂಗ್ ಪ್ಲ್ಯಾನ್ ಇಲ್ಲ"</string>
-    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ರೋಮಿಂಗ್ ಪ್ಲ್ಯಾನ್ ಸೇರಿಸಿ"</string>
-    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"ನಿಮ್ಮ ವಾಹಕ <xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ನೀವು ಮೊಬೈಲ್ ಡೇಟಾ ಅಥವಾ ರೋಮಿಂಗ್ ಪ್ಲ್ಯಾನ್ ಸೇರಿಸಬಹುದು."</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"ಯಾವುದೇ ರೋಮಿಂಗ್ ಪ್ಲಾನ್ ಇಲ್ಲ"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ರೋಮಿಂಗ್ ಪ್ಲಾನ್ ಸೇರಿಸಿ"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"ನಿಮ್ಮ ವಾಹಕ <xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ನೀವು ಮೊಬೈಲ್ ಡೇಟಾ ಅಥವಾ ರೋಮಿಂಗ್ ಪ್ಲಾನ್ ಸೇರಿಸಬಹುದು."</string>
     <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"ಡೇಟಾ ಸೇರಿಸುವುದೇ?"</string>
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ಮೂಲಕ ನೀವು ಡೇಟಾ ಸೇರಿಸಬೇಕಾಗಬಹುದು"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ಡೇಟಾ ಸೇರಿಸಿ"</string>

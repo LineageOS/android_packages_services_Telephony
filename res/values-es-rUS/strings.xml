@@ -116,7 +116,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"Cuando no esté disponible"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Número cuando no se puede establecer la llamada"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Reenviar a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Desactivar"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Desactivado"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando no se puede acceder a tu teléfono."</string>
     <string name="updating_title" msgid="6146755386174019046">"Config. de llamada"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Solo el usuario administrador puede cambiar la configuración de llamadas."</string>

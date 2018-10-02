@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Serveis del telèfon"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Marcador d\'emergència"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telèfon"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"Llista FDN"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"Llista d\'FDN"</string>
     <string name="unknown" msgid="6878797917991465859">"Desconegut"</string>
     <string name="private_num" msgid="6713286113000232309">"Número privat"</string>
     <string name="payphone" msgid="4793877574636445118">"Telèfon públic"</string>
@@ -388,18 +388,18 @@
     <string name="carrier_settings_title" msgid="9028166176523012300">"Configuració d\'operador"</string>
     <string name="fdn" msgid="7878832555095183202">"Números de marcatge fix"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"Números de marcatge fix (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"Llista FDN"</string>
-    <string name="fdn_list_with_label" msgid="7437232552210469217">"Llista FDN (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"Llista d\'FDN"</string>
+    <string name="fdn_list_with_label" msgid="7437232552210469217">"Llista d\'FDN (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Activació d\'FDN"</string>
-    <string name="fdn_enabled" msgid="5238109009915521240">"Números de marcatge fix activats"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"Números de marcatge fix desactivats"</string>
+    <string name="fdn_enabled" msgid="5238109009915521240">"Els números de marcatge fix estan activats"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"Els números de marcatge fix estan desactivats"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Activa FDN"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Desactiva FDN"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Canvia el PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Desactiva FDN"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Activa FDN"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Gestiona els números de marcatge fix"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Canvia el PIN per a l\'accés FDN"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Canvia el PIN per a l\'accés d\'FDN"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gestiona la llista de números de telèfon"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Privadesa de veu"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Activa el mode de millora de la privadesa"</string>
@@ -471,7 +471,7 @@
     <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Número de la bústia de veu"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"S\'està marcant"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"S\'està tornant a marcar"</string>
-    <string name="card_title_conf_call" msgid="1162980346189744501">"Trucada de conferència"</string>
+    <string name="card_title_conf_call" msgid="1162980346189744501">"Conferència telefònica"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"Trucada entrant"</string>
     <string name="card_title_call_ended" msgid="5544730338889702298">"Trucada finalitzada"</string>
     <string name="card_title_on_hold" msgid="821463117892339942">"En espera"</string>
