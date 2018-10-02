@@ -108,17 +108,12 @@ import java.util.Locale;
  * moved into a shared base class that would live in the framework?
  * Or could we figure out some way to move *this* class into apps/Contacts
  * also?
- *
- * TODO: Implement emergency dialer shortcut.
- *  Emergency dialer shortcut offer a local emergency number list. Directly clicking a call button
- *  to place an emergency phone call without entering numbers from dialpad.
- *  TODO item:
- *     1.integrate emergency phone number table.
  */
 public class EmergencyDialer extends Activity implements View.OnClickListener,
         View.OnLongClickListener, View.OnKeyListener, TextWatcher,
         DialpadKeyButton.OnPressedListener, ColorExtractor.OnColorsChangedListener,
-        EmergencyShortcutButton.OnConfirmClickListener, SensorEventListener {
+        EmergencyShortcutButton.OnConfirmClickListener, SensorEventListener,
+        EmergencyInfoGroup.OnConfirmClickListener {
 
     private class MetricsWriter {
         // Metrics constants indicating the entry type that user opened emergency dialer.
@@ -243,6 +238,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     private boolean mDTMFToneEnabled;
 
     private EmergencyActionGroup mEmergencyActionGroup;
+
+    private EmergencyInfoGroup mEmergencyInfoGroup;
 
     // close activity when screen turns off
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
@@ -451,6 +448,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
         mEmergencyActionGroup = (EmergencyActionGroup) findViewById(R.id.emergency_action_group);
 
+        mEmergencyInfoGroup = (EmergencyInfoGroup) findViewById(R.id.emergency_info_button);
+
         if (mAreEmergencyDialerShortcutsEnabled) {
             mEccInfoHelper = new EccInfoHelper(new IsoToEccProtobufRepository());
             setupEmergencyShortcutsView();
@@ -606,6 +605,17 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     }
 
     @Override
+    public void onConfirmClick(EmergencyInfoGroup button) {
+        if (button == null) return;
+
+        mUserActions |= MetricsWriter.USER_ACTION_OPEN_EMERGENCY_INFO;
+        Intent intent = (Intent) button.getTag(R.id.tag_intent);
+        if (intent != null) {
+            startActivity(intent);
+        }
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.deleteButton: {
@@ -627,14 +637,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 mUserActions |= MetricsWriter.USER_ACTION_OPEN_DIALPAD;
                 mDigits.getText().clear();
                 switchView(mDialpadView, mEmergencyShortcutView, true);
-                return;
-            }
-            case R.id.emergency_info_button: {
-                mUserActions |= MetricsWriter.USER_ACTION_OPEN_EMERGENCY_INFO;
-                Intent intent = (Intent) view.getTag(R.id.tag_intent);
-                if (intent != null) {
-                    startActivity(intent);
-                }
                 return;
             }
         }
@@ -1099,8 +1101,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         final View dialpadButton = findViewById(R.id.floating_action_button_dialpad);
         dialpadButton.setOnClickListener(this);
 
-        final View emergencyInfoButton = findViewById(R.id.emergency_info_button);
-        emergencyInfoButton.setOnClickListener(this);
+        mEmergencyInfoGroup.setOnConfirmClickListener(this);
 
         // EmergencyActionGroup is replaced by EmergencyInfoGroup.
         mEmergencyActionGroup.setVisibility(View.GONE);
@@ -1179,10 +1180,15 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                     shortcutButtonContainer.addView(button);
                 }
 
-                // update emergency numbers title for numerous buttons.
+                // Update emergency numbers title for numerous buttons.
                 if (mEmergencyShortcutButtonList.size() > 1) {
                     emergencyNumberTitle.setText(getString(
                             R.string.numerous_emergency_numbers_title));
+                    // Update mEmergencyInfoGroup margin to avoid UI overlay when
+                    // emergency shortcut button more than 2.
+                    if (mEmergencyShortcutButtonList.size() > 2) {
+                        mEmergencyInfoGroup.updateLayoutMargin();
+                    }
                 } else {
                     emergencyNumberTitle.setText(getText(R.string.single_emergency_number_title));
                 }
@@ -1205,6 +1211,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
      */
     private void onPreTouchEvent(MotionEvent event) {
         mEmergencyActionGroup.onPreTouchEvent(event);
+        mEmergencyInfoGroup.onPreTouchEvent(event);
 
         if (mEmergencyShortcutButtonList != null) {
             for (EmergencyShortcutButton button : mEmergencyShortcutButtonList) {
@@ -1218,6 +1225,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
      */
     private void onPostTouchEvent(MotionEvent event) {
         mEmergencyActionGroup.onPostTouchEvent(event);
+        mEmergencyInfoGroup.onPostTouchEvent(event);
 
         if (mEmergencyShortcutButtonList != null) {
             for (EmergencyShortcutButton button : mEmergencyShortcutButtonList) {
