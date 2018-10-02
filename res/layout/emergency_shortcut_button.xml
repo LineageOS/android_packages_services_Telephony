@@ -22,20 +22,21 @@
         android:id="@+id/emergency_call_number_info_view"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:background="@color/emergency_shortcut_button_background_color"
+        android:background="@drawable/btn_emergency_shortcuts"
         android:focusable="true"
         android:clickable="true">
         <LinearLayout
             android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:layout_marginEnd="@dimen/emergency_info_image_width"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="@dimen/emergency_shortcuts_margin_end"
             android:layout_gravity="center_vertical|start"
             android:orientation="horizontal">
             <FrameLayout
                 android:layout_height="@dimen/phone_number_type_circle_image_height"
                 android:layout_width="@dimen/phone_number_type_circle_image_width"
                 android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="@dimen/emergency_dialer_image_margin_horizontal"
+                android:layout_marginStart="@dimen/emergency_dialer_image_margin_start"
+                android:layout_marginEnd="@dimen/emergency_dialer_image_margin_end"
                 android:background="@drawable/phone_type_icon_background">
                 <ImageView
                     android:id="@+id/phone_type_icon"
@@ -55,21 +56,24 @@
                     android:includeFontPadding="false"
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:textAppearance="@style/HeadlineTextAppearance"/>
+                    android:lineHeight="@dimen/phone_number_line_height"
+                    android:fontFamily="google-sans"
+                    android:textAppearance="@style/PhoneNumberTextAppearance"/>
                 <TextView
                     android:id="@+id/phone_number_description"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:alpha="0.8"
+                    android:alpha="0.7"
                     android:maxLines="1"
                     android:ellipsize="end"
+                    android:fontFamily="sans-serif-medium"
                     android:textAppearance="@style/SubtitleTextAppearance"/>
             </LinearLayout>
         </LinearLayout>
         <FrameLayout
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginHorizontal="@dimen/emergency_dialer_image_margin_horizontal"
+            android:layout_marginEnd="@dimen/emergency_dialer_image_margin_end"
             android:layout_gravity="center_vertical|end">
             <ImageView
                 android:id="@+id/microphone_icon"
@@ -84,21 +88,22 @@
         android:id="@+id/emergency_call_confirm_view"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:background="@color/emergency_shortcut_confirm_button_background_color"
+        android:background="@drawable/btn_emergency_confirm_shortcuts"
         android:focusable="true"
         android:clickable="true"
         android:visibility="invisible">
         <LinearLayout
             android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:layout_marginEnd="@dimen/emergency_info_image_width"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="@dimen/emergency_shortcuts_margin_end"
             android:layout_gravity="center_vertical|start"
             android:gravity="center_vertical"
             android:orientation="horizontal">
             <FrameLayout
                 android:layout_height="@dimen/phone_number_type_circle_image_height"
                 android:layout_width="@dimen/phone_number_type_circle_image_width"
-                android:layout_marginHorizontal="@dimen/emergency_dialer_image_margin_horizontal"
+                android:layout_marginStart="@dimen/emergency_dialer_image_margin_start"
+                android:layout_marginEnd="@dimen/emergency_dialer_image_margin_end"
                 android:background="@drawable/phone_type_icon_background"
                 android:backgroundTint="@android:color/white">
                 <ImageView
@@ -119,13 +124,15 @@
                     android:maxLines="2"
                     android:ellipsize="end"
                     android:lineHeight="@dimen/phone_call_hint_line_height"
-                    android:textAppearance="@style/ShortcutsHintTextAppearance"/>
+                    android:fontFamily="google-sans"
+                    android:textAppearance="@style/PhoneCallHintTextAppearance"/>
             </FrameLayout>
         </LinearLayout>
         <FrameLayout
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginHorizontal="@dimen/emergency_dialer_image_margin_horizontal"
+            android:layout_marginStart="@dimen/emergency_dialer_image_margin_start"
+            android:layout_marginEnd="@dimen/emergency_dialer_image_margin_end"
             android:layout_gravity="center_vertical|end">
             <ImageView
                 android:layout_height="@dimen/phone_icon_height"
