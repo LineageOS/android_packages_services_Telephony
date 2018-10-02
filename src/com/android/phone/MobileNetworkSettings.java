@@ -77,7 +77,6 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
-import com.android.phone.settings.PhoneAccountSettingsFragment;
 import com.android.settingslib.RestrictedLockUtilsInternal;
 
 import java.util.ArrayList;
@@ -107,6 +106,9 @@ public class MobileNetworkSettings extends Activity  {
     // the default value is false.
     private static final String KEY_ENABLE_ESIM_UI_BY_DEFAULT =
             "esim.enable_esim_system_ui_by_default";
+
+    private static final String LEGACY_ACTION_CONFIGURE_PHONE_ACCOUNT =
+            "android.telecom.action.CONNECTION_SERVICE_CONFIGURE";
 
     private enum TabState {
         NO_TABS, UPDATE, DO_NOTHING
@@ -171,8 +173,8 @@ public class MobileNetworkSettings extends Activity  {
 
         boolean isWifiCallingEnabled;
         if (simCallManager != null) {
-            Intent intent = PhoneAccountSettingsFragment
-                    .buildPhoneAccountConfigureIntent(context, simCallManager);
+            Intent intent = MobileNetworkSettings.buildPhoneAccountConfigureIntent(
+                    context, simCallManager);
             PackageManager pm = context.getPackageManager();
             isWifiCallingEnabled = intent != null
                     && !pm.queryIntentActivities(intent, 0 /* flags */).isEmpty();
@@ -289,6 +291,47 @@ public class MobileNetworkSettings extends Activity  {
 
         Log.d(MobileNetworkFragment.LOG_TAG, "isImsServiceStateReady=" + isImsServiceStateReady);
         return isImsServiceStateReady;
+    }
+
+
+    private static Intent buildPhoneAccountConfigureIntent(
+            Context context, PhoneAccountHandle accountHandle) {
+        Intent intent = buildConfigureIntent(
+                context, accountHandle, TelecomManager.ACTION_CONFIGURE_PHONE_ACCOUNT);
+
+        if (intent == null) {
+            // If the new configuration didn't work, try the old configuration intent.
+            intent = buildConfigureIntent(
+                    context, accountHandle, LEGACY_ACTION_CONFIGURE_PHONE_ACCOUNT);
+            if (intent != null) {
+                Log.w(MobileNetworkFragment.LOG_TAG,
+                        "Phone account using old configuration intent: " + accountHandle);
+            }
+        }
+        return intent;
+    }
+
+    private static Intent buildConfigureIntent(
+            Context context, PhoneAccountHandle accountHandle, String actionStr) {
+        if (accountHandle == null || accountHandle.getComponentName() == null
+                || TextUtils.isEmpty(accountHandle.getComponentName().getPackageName())) {
+            return null;
+        }
+
+        // Build the settings intent.
+        Intent intent = new Intent(actionStr);
+        intent.setPackage(accountHandle.getComponentName().getPackageName());
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        intent.putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, accountHandle);
+
+        // Check to see that the phone account package can handle the setting intent.
+        PackageManager pm = context.getPackageManager();
+        List<ResolveInfo> resolutions = pm.queryIntentActivities(intent, 0);
+        if (resolutions.size() == 0) {
+            intent = null;  // set no intent if the package cannot handle it.
+        }
+
+        return intent;
     }
 
     public static class MobileNetworkFragment extends PreferenceFragment implements
@@ -1871,7 +1914,7 @@ public class MobileNetworkSettings extends Activity  {
                     TelecomManager.from(getContext()).getSimCallManager();
 
             if (simCallManager != null) {
-                Intent intent = PhoneAccountSettingsFragment.buildPhoneAccountConfigureIntent(
+                Intent intent = MobileNetworkSettings.buildPhoneAccountConfigureIntent(
                         getContext(), simCallManager);
                 PackageManager pm = getContext().getPackageManager();
                 List<ResolveInfo> resolutions = pm.queryIntentActivities(intent, 0);
