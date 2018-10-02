@@ -345,6 +345,7 @@ public class MobileNetworkSettings extends Activity  {
                 updateEnhanced4gLteState();
                 updateWiFiCallState();
                 updateVideoCallState();
+                updatePreferredNetworkType();
             }
 
             /*
@@ -1128,6 +1129,7 @@ public class MobileNetworkSettings extends Activity  {
             }
 
             updateEnhanced4gLteState();
+            updatePreferredNetworkType();
             updateCallingCategory();
 
             // Enable link to CMAS app settings depending on the value in config.xml.
@@ -1182,9 +1184,6 @@ public class MobileNetworkSettings extends Activity  {
             if (variant4glteTitleIndex >= 0 && variant4glteTitleIndex < variantTitles.length) {
                 enhanced4glteModeTitle = variantTitles[variant4glteTitleIndex];
             }
-
-            mButtonPreferredNetworkMode.setEnabled(hasActiveSubscriptions);
-            mButtonEnabledNetworks.setEnabled(hasActiveSubscriptions);
             mButton4glte.setTitle(enhanced4glteModeTitle);
             mLteDataServicePref.setEnabled(hasActiveSubscriptions);
             Preference ps;
@@ -1859,6 +1858,22 @@ public class MobileNetworkSettings extends Activity  {
                 }
             } else {
                 mCallingCategory.removePreference(mVideoCallingPref);
+            }
+        }
+
+        private void updatePreferredNetworkType() {
+            boolean enabled = mTelephonyManager.getCallState(
+                    mPhone.getSubId()) == TelephonyManager.CALL_STATE_IDLE
+                    && hasActiveSubscriptions();
+            Log.i(LOG_TAG, "updatePreferredNetworkType: " + enabled);
+            // TODO: Disentangle enabled networks vs preferred network mode, it looks like
+            // both buttons are shown to the user as "Preferred network type" and the options change
+            // based on what looks like World mode.
+            if (mButtonEnabledNetworks != null) {
+                mButtonEnabledNetworks.setEnabled(enabled);
+            }
+            if (mButtonPreferredNetworkMode != null) {
+                mButtonPreferredNetworkMode.setEnabled(enabled);
             }
         }
 
