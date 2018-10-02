@@ -990,7 +990,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case EVENT_GET_ALL_CELL_INFO_DONE:
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
-                    request.result = (ar.exception == null) ? ar.result : new ArrayList<CellInfo>();
+                    // If a timeout occurs, the response will be null
+                    request.result = (ar.exception == null && ar.result != null)
+                            ? ar.result : new ArrayList<CellInfo>();
                     synchronized (request) {
                         request.notifyAll();
                     }
