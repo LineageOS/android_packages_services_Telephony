@@ -41,6 +41,7 @@ import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.FeatureFlagUtils;
 import android.util.Pair;
 
 import com.android.internal.annotations.VisibleForTesting;
@@ -145,7 +146,10 @@ public class TelephonyConnectionService extends ConnectionService {
             new CdmaConferenceController(this);
     private final ImsConferenceController mImsConferenceController =
             new ImsConferenceController(TelecomAccountRegistry.getInstance(this),
-                    mTelephonyConnectionServiceProxy);
+                    mTelephonyConnectionServiceProxy,
+                    // FeatureFlagProxy; used to determine if standalone call emulation is enabled.
+                    // TODO: Move to carrier config
+                    () -> true);
 
     private ComponentName mExpectedComponentName = null;
     private RadioOnHelper mRadioOnHelper;
