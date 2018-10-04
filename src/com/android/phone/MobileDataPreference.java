@@ -63,6 +63,11 @@ public class MobileDataPreference extends DialogPreference {
         super(context, attrs, com.android.internal.R.attr.switchPreferenceStyle);
     }
 
+    // Must be called to avoid binder leakage.
+    void dispose() {
+        mListener.setListener(false, mSubId, getContext());
+    }
+
     @Override
     protected void onRestoreInstanceState(Parcelable s) {
         CellDataState state = (CellDataState) s;
