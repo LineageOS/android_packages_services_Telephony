@@ -1120,10 +1120,25 @@ public class TelephonyConnectionService extends ConnectionService {
         } catch (CallStateException e) {
             Log.e(this, e, "placeOutgoingConnection, phone.dial exception: " + e);
             int cause = android.telephony.DisconnectCause.OUTGOING_FAILURE;
-            if (e.getError() == CallStateException.ERROR_OUT_OF_SERVICE) {
-                cause = android.telephony.DisconnectCause.OUT_OF_SERVICE;
-            } else if (e.getError() == CallStateException.ERROR_POWER_OFF) {
-                cause = android.telephony.DisconnectCause.POWER_OFF;
+            switch (e.getError()) {
+                case CallStateException.ERROR_OUT_OF_SERVICE:
+                    cause = android.telephony.DisconnectCause.OUT_OF_SERVICE;
+                    break;
+                case CallStateException.ERROR_POWER_OFF:
+                    cause = android.telephony.DisconnectCause.POWER_OFF;
+                    break;
+                case CallStateException.ERROR_ALREADY_DIALING:
+                    cause = android.telephony.DisconnectCause.ALREADY_DIALING;
+                    break;
+                case CallStateException.ERROR_CALL_RINGING:
+                    cause = android.telephony.DisconnectCause.CANT_CALL_WHILE_RINGING;
+                    break;
+                case CallStateException.ERROR_CALLING_DISABLED:
+                    cause = android.telephony.DisconnectCause.CALLING_DISABLED;
+                    break;
+                case CallStateException.ERROR_TOO_MANY_CALLS:
+                    cause = android.telephony.DisconnectCause.TOO_MANY_ONGOING_CALLS;
+                    break;
             }
             connection.setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
                     cause, e.getMessage(), phone.getPhoneId()));
