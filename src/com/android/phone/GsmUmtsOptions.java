@@ -54,7 +54,7 @@ public class GsmUmtsOptions {
     private PreferenceScreen mPrefScreen;
 
     public GsmUmtsOptions(PreferenceFragment prefFragment, PreferenceScreen prefScreen,
-            final int subId, INetworkQueryService queryService) {
+            final int subId) {
         final Context context = prefFragment.getContext();
         mPrefFragment = prefFragment;
         mPrefScreen = prefScreen;
@@ -68,12 +68,12 @@ public class GsmUmtsOptions {
 
         mNetworkOperator.initialize();
 
-        update(subId, queryService);
+        update(subId);
     }
 
-    // Unlike mPrefFragment or mPrefScreen, subId or queryService may change during lifecycle of
-    // GsmUmtsOptions. When that happens, we update GsmUmtsOptions with new parameters.
-    protected void update(final int subId, INetworkQueryService queryService) {
+    // Unlike mPrefFragment or mPrefScreen, subId  may change during lifecycle of GsmUmtsOptions.
+    // When that happens, we update GsmUmtsOptions with new parameters.
+    protected void update(final int subId) {
         boolean addAPNExpand = true;
         boolean addNetworkOperatorsCategory = true;
         boolean addCarrierSettings = true;
@@ -151,7 +151,7 @@ public class GsmUmtsOptions {
 
         if (addNetworkOperatorsCategory) {
             mPrefScreen.addPreference(mNetworkOperator);
-            mNetworkOperator.update(subId, queryService);
+            mNetworkOperator.update(subId);
         } else {
             mPrefScreen.removePreference(mNetworkOperator);
         }

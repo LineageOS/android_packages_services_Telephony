@@ -24,7 +24,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.RemoteException;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.telephony.CellInfo;
@@ -39,15 +38,19 @@ import android.text.TextDirectionHeuristics;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.OperatorInfo;
+import com.android.phone.NetworkScanHelper.NetworkScanCallback;
 import com.android.settingslib.utils.ThreadUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 /**
@@ -65,16 +68,20 @@ public class NetworkSelectListPreference extends ListPreference
     private static final int EVENT_MANUALLY_NETWORK_SELECTION_DONE = 1;
     private static final int EVENT_NETWORK_SCAN_RESULTS = 2;
     private static final int EVENT_NETWORK_SCAN_COMPLETED = 3;
+    private static final int EVENT_NETWORK_SCAN_ERROR = 4;
 
     //dialog ids
     private static final int DIALOG_NETWORK_SELECTION = 100;
     private static final int DIALOG_NETWORK_LIST_LOAD = 200;
+
+    private final ExecutorService mNetworkScanExecutor = Executors.newFixedThreadPool(1);
 
     private List<CellInfo> mCellInfoList;
     private CellInfo mCellInfo;
 
     private int mSubId;
     private TelephonyManager mTelephonyManager;
+    private NetworkScanHelper mNetworkScanHelper;
     private NetworkOperators mNetworkOperators;
     private List<String> mForbiddenPlmns;
 
@@ -113,11 +120,7 @@ public class NetworkSelectListPreference extends ListPreference
             switch (msg.what) {
                 case EVENT_MANUALLY_NETWORK_SELECTION_DONE:
                     if (DBG) logd("hideProgressPanel");
-                    try {
-                        dismissProgressBar();
-                    } catch (IllegalArgumentException e) {
-                    }
-                    setEnabled(true);
+                    dismissProgressDialog();
 
                     boolean isSuccessed = (boolean) msg.obj;
                     if (isSuccessed) {
@@ -138,72 +141,51 @@ public class NetworkSelectListPreference extends ListPreference
                     results.removeIf(cellInfo -> cellInfo == null);
                     mCellInfoList = new ArrayList<>(results);
                     if (DBG) logd("CALLBACK_SCAN_RESULTS" + mCellInfoList.toString());
-
                     break;
 
                 case EVENT_NETWORK_SCAN_COMPLETED:
-                    try {
-                        if (mNetworkQueryService != null) {
-                            mNetworkQueryService.unregisterCallback(mCallback);
-                        }
-                    } catch (RemoteException e) {
-                        loge("onComplete: exception from unregisterCallback " + e);
-                    }
                     if (DBG) logd("scan complete, load the cellInfosList");
-                    // Modify UI to indicate users that the scan has completed.
+                    dismissProgressDialog();
                     networksListLoaded();
+                    break;
+                case EVENT_NETWORK_SCAN_ERROR:
+                    dismissProgressDialog();
+                    displayNetworkQueryFailed();
+                    mNetworkOperators.getNetworkSelectionMode();
+                    break;
             }
             return;
         }
     };
 
-    INetworkQueryService mNetworkQueryService = null;
-    /**
-     * This implementation of INetworkQueryServiceCallback is used to receive
-     * callback notifications from the network query service.
-     */
-    private final INetworkQueryServiceCallback mCallback = new INetworkQueryServiceCallback.Stub() {
-
-        /** Returns the scan results to the user, this callback will be called only one time. */
+    private final NetworkScanHelper.NetworkScanCallback mCallback = new NetworkScanCallback() {
         public void onResults(List<CellInfo> results) {
             if (DBG) logd("get scan results: " + results.toString());
             Message msg = mHandler.obtainMessage(EVENT_NETWORK_SCAN_RESULTS, results);
             msg.sendToTarget();
         }
 
-        /**
-         * Informs the user that the scan has stopped.
-         *
-         * This callback will be called when the scan is finished or cancelled by the user.
-         * The related NetworkScanRequest will be deleted after this callback.
-         */
         public void onComplete() {
             if (DBG) logd("network scan completed.");
             Message msg = mHandler.obtainMessage(EVENT_NETWORK_SCAN_COMPLETED);
             msg.sendToTarget();
         }
 
-        /**
-         * This callback will not be called, since the old Scan API won't send this callback.
-         */
-        public void onError(int error) {}
+        public void onError(int error) {
+            if (DBG) logd("network scan error.");
+            Message msg = mHandler.obtainMessage(EVENT_NETWORK_SCAN_ERROR);
+            msg.sendToTarget();
+        }
     };
 
     @Override
     //implemented for DialogInterface.OnCancelListener
     public void onCancel(DialogInterface dialog) {
         if (DBG) logd("user manually close the dialog");
-        // request that the service stop the query with this callback object.
-        try {
-            if (mNetworkQueryService != null) {
-                mNetworkQueryService.stopNetworkQuery();
-                mNetworkQueryService.unregisterCallback(mCallback);
-            }
-            // If cancelled, we query NetworkSelectMode and update states of AutoSelect button.
-            mNetworkOperators.getNetworkSelectionMode();
-        } catch (RemoteException e) {
-            loge("onCancel: exception from stopNetworkQuery " + e);
-        }
+        mNetworkScanHelper.stopNetworkQuery();
+
+        // If cancelled, we query NetworkSelectMode and update states of AutoSelect button.
+        mNetworkOperators.getNetworkSelectionMode();
     }
 
     @Override
@@ -215,23 +197,17 @@ public class NetworkSelectListPreference extends ListPreference
         }
     }
 
-    // This method is provided besides initialize() because bind to network query service
-    // may be binded after initialize(). In that case this method needs to be called explicitly
-    // to set mNetworkQueryService. Otherwise mNetworkQueryService will remain null.
-    public void setNetworkQueryService(INetworkQueryService queryService) {
-        mNetworkQueryService = queryService;
-    }
-
     // This initialize method needs to be called for this preference to work properly.
-    protected void initialize(int subId, INetworkQueryService queryService,
-                              NetworkOperators networkOperators, ProgressDialog progressDialog) {
+    protected void initialize(int subId, NetworkOperators networkOperators,
+            ProgressDialog progressDialog) {
         mSubId = subId;
-        mNetworkQueryService = queryService;
         mNetworkOperators = networkOperators;
         // This preference should share the same progressDialog with networkOperators category.
         mProgressDialog = progressDialog;
 
         mTelephonyManager = TelephonyManager.from(getContext()).createForSubscriptionId(mSubId);
+        mNetworkScanHelper = new NetworkScanHelper(
+                mTelephonyManager, mCallback, mNetworkScanExecutor);
 
         setSummary(mTelephonyManager.getNetworkOperatorName());
 
@@ -245,79 +221,32 @@ public class NetworkSelectListPreference extends ListPreference
     }
 
     private void destroy() {
-        try {
-            dismissProgressBar();
-        } catch (IllegalArgumentException e) {
-            loge("onDestroy: exception from dismissProgressBar " + e);
+        dismissProgressDialog();
+
+        if (mNetworkScanHelper != null) {
+            mNetworkScanHelper.stopNetworkQuery();
         }
 
-        try {
-            if (mNetworkQueryService != null) {
-                // used to un-register callback
-                mNetworkQueryService.unregisterCallback(mCallback);
-            }
-        } catch (RemoteException e) {
-            loge("onDestroy: exception from unregisterCallback " + e);
-        }
+        mNetworkScanExecutor.shutdown();
     }
 
     private void displayEmptyNetworkList() {
-        String status = getContext().getResources().getString(R.string.empty_networks_list);
-
-        final PhoneGlobals app = PhoneGlobals.getInstance();
-        app.notificationMgr.postTransientNotification(
-                NotificationMgr.NETWORK_SELECTION_NOTIFICATION, status);
+        Toast.makeText(getContext(), R.string.empty_networks_list, Toast.LENGTH_LONG).show();
     }
 
-    private void displayNetworkSelectionInProgress() {
-        showProgressDialog(DIALOG_NETWORK_SELECTION);
-    }
-
-    private void displayNetworkQueryFailed(int error) {
-        String status = getContext().getResources().getString(R.string.network_query_error);
-
-        try {
-            dismissProgressBar();
-        } catch (IllegalArgumentException e1) {
-            // do nothing
-        }
-
-        final PhoneGlobals app = PhoneGlobals.getInstance();
-        app.notificationMgr.postTransientNotification(
-                NotificationMgr.NETWORK_SELECTION_NOTIFICATION, status);
+    private void displayNetworkQueryFailed() {
+        Toast.makeText(getContext(), R.string.network_query_error, Toast.LENGTH_LONG).show();
     }
 
     private void loadNetworksList() {
         if (DBG) logd("load networks list...");
-        try {
-            if (mNetworkQueryService != null) {
-                mNetworkQueryService.startNetworkQuery(
-                        mCallback, mSubId, false /* isIncrementalResult */);
-            } else {
-                displayNetworkQueryFailed(NetworkQueryService.QUERY_EXCEPTION);
-            }
-        } catch (RemoteException e) {
-            loge("loadNetworksList: exception from startNetworkQuery " + e);
-            displayNetworkQueryFailed(NetworkQueryService.QUERY_EXCEPTION);
-        }
+        mNetworkScanHelper.startNetworkScan(
+                NetworkScanHelper.NETWORK_SCAN_TYPE_WAIT_FOR_ALL_RESULTS);
     }
 
     private void networksListLoaded() {
         if (DBG) logd("networks list loaded");
 
-        // update the state of the preferences.
-        if (DBG) logd("hideProgressPanel");
-
-        // Always try to dismiss the dialog because activity may
-        // be moved to background after dialog is shown.
-        try {
-            dismissProgressBar();
-        } catch (IllegalArgumentException e) {
-            // It's not a error in following scenario, we just ignore it.
-            // "Load list" dialog will not show, if NetworkQueryService is
-            // connected after this activity is moved to background.
-            loge("Fail to dismiss network load list dialog " + e);
-        }
         mNetworkOperators.getNetworkSelectionMode();
         if (mCellInfoList != null) {
             // create a preference for each item in the list.
@@ -345,9 +274,13 @@ public class NetworkSelectListPreference extends ListPreference
         }
     }
 
-    private void dismissProgressBar() {
+    private void dismissProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
+            try {
+                mProgressDialog.dismiss();
+            } catch (IllegalArgumentException ex) {
+                loge("Can't close the progress dialog " + ex);
+            }
         }
     }
 
@@ -356,7 +289,7 @@ public class NetworkSelectListPreference extends ListPreference
             mProgressDialog = new ProgressDialog(getContext());
         } else {
             // Dismiss progress bar if it's showing now.
-            dismissProgressBar();
+            dismissProgressDialog();
         }
 
         switch (id) {
