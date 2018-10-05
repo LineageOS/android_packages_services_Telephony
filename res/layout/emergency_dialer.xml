@@ -38,8 +38,8 @@
             android:id="@+id/dialpad_button_container"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/emergency_dialer_dialpad_button_margin">
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="@dimen/emergency_dialer_dialpad_button_margin">
             <ImageButton
                 android:id="@+id/floating_action_button_dialpad"
                 android:layout_width="@dimen/dialpad_button_width"
