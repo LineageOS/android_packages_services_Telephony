@@ -94,12 +94,11 @@ public class NetworkOperators extends PreferenceCategory
     }
 
     /**
-     * Update NetworkOperators instance if like subId or queryService are updated.
+     * Update NetworkOperators instance if like subId is updated.
      *
      * @param subId Corresponding subscription ID of this network.
-     * @param queryService The service to do network queries.
      */
-    protected void update(final int subId, INetworkQueryService queryService) {
+    protected void update(final int subId) {
         mSubId = subId;
         mTelephonyManager = TelephonyManager.from(getContext()).createForSubscriptionId(mSubId);
 
@@ -118,7 +117,7 @@ public class NetworkOperators extends PreferenceCategory
             }
         } else {
             if (mNetworkSelect != null) {
-                mNetworkSelect.initialize(mSubId, queryService, this, mProgressDialog);
+                mNetworkSelect.initialize(mSubId, this, mProgressDialog);
             }
         }
         getNetworkSelectionMode();
