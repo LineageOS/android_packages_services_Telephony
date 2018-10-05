@@ -214,9 +214,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
     private static final int BAD_EMERGENCY_NUMBER_DIALOG = 0;
 
-    /** 90% opacity, different from other gradients **/
-    private static final int BACKGROUND_GRADIENT_ALPHA = 230;
-
     /** 85% opacity for black background **/
     private static final int BLACK_BACKGROUND_GRADIENT_ALPHA = 217;
 
@@ -287,8 +284,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     private boolean mIsWfcEmergencyCallingWarningEnabled;
     private float mDefaultDigitsTextSize;
 
-    private boolean mAreEmergencyDialerShortcutsEnabled;
-
     private MetricsWriter mMetricsWriter;
     private SensorManager mSensorManager;
     private Sensor mProximitySensor;
@@ -355,22 +350,11 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
         getWindow().setAttributes(lp);
 
-        mAreEmergencyDialerShortcutsEnabled = Settings.Global.getInt(getContentResolver(),
-                Settings.Global.FASTER_EMERGENCY_PHONE_CALL_ENABLED, 0) != 0;
-        Log.d(LOG_TAG, "Enable emergency dialer shortcut: "
-                + mAreEmergencyDialerShortcutsEnabled);
-
         mColorExtractor = new ColorExtractor(this);
 
         // It does not support dark text theme, when emergency dialer shortcuts are enabled.
         // And the background color is black with 85% opacity.
-        if (mAreEmergencyDialerShortcutsEnabled) {
-            updateTheme(false);
-        } else {
-            GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK,
-                    ColorExtractor.TYPE_EXTRA_DARK);
-            updateTheme(lockScreenColors.supportsDarkText());
-        }
+        updateTheme(false);
 
         setContentView(R.layout.emergency_dialer);
 
@@ -388,8 +372,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE))
                 .getDefaultDisplay().getSize(displaySize);
         mBackgroundGradient.setScreenSize(displaySize.x, displaySize.y);
-        mBackgroundGradient.setAlpha(mAreEmergencyDialerShortcutsEnabled
-                ? BLACK_BACKGROUND_GRADIENT_ALPHA : BACKGROUND_GRADIENT_ALPHA);
+        mBackgroundGradient.setAlpha(BLACK_BACKGROUND_GRADIENT_ALPHA);
         getWindow().setBackgroundDrawable(mBackgroundGradient);
 
         // Check for the presence of the keypad
@@ -455,10 +438,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
         mEmergencyActionGroup = (EmergencyActionGroup) findViewById(R.id.emergency_action_group);
 
-        if (mAreEmergencyDialerShortcutsEnabled) {
-            mEccInfoHelper = new EccInfoHelper(new IsoToEccProtobufRepository());
-            setupEmergencyShortcutsView();
-        }
+        mEccInfoHelper = new EccInfoHelper(new IsoToEccProtobufRepository());
+        setupEmergencyShortcutsView();
     }
 
     @Override
@@ -523,8 +504,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         // If emergency dialer shortcut is enabled and Dialpad view is visible, pressing the
         // back key will back to display EmergencyShortcutView view.
         // Otherwise, it would finish the activity.
-        if (mAreEmergencyDialerShortcutsEnabled && mDialpadView != null
-                && mDialpadView.getVisibility() == View.VISIBLE) {
+        if (mDialpadView != null && mDialpadView.getVisibility() == View.VISIBLE) {
             switchView(mEmergencyShortcutView, mDialpadView, true);
             return;
         }
@@ -741,21 +721,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         mUserActions = MetricsWriter.USER_ACTION_NONE;
         mMetricsWriter.writeMetricsForEnter();
 
-        // It does not support dark text theme, when emergency dialer shortcuts are enabled.
-        // And set background color to black.
-        if (mAreEmergencyDialerShortcutsEnabled) {
-            mBackgroundGradient.setColors(Color.BLACK, Color.BLACK, false);
-            updateTheme(false);
-        } else {
-            mColorExtractor.addOnColorsChangedListener(this);
-            GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK,
-                    ColorExtractor.TYPE_EXTRA_DARK);
-            // Do not animate when view isn't visible yet, just set an initial state.
-            mBackgroundGradient.setColors(lockScreenColors, false);
-            updateTheme(lockScreenColors.supportsDarkText());
-        }
+        mBackgroundGradient.setColors(Color.BLACK, Color.BLACK, false);
+        updateTheme(false);
 
-        if (mAreEmergencyDialerShortcutsEnabled && mEccInfoHelper != null) {
+        if (mEccInfoHelper != null) {
             final Context context = this;
             mEccInfoHelper.getCountryEccInfoAsync(context,
                     new EccInfoHelper.CountryEccInfoResultCallback() {
