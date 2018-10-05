@@ -1119,8 +1119,10 @@
     <string name="incall_error_supp_service_separate">Can\'t separate call.</string>
     <!-- In-call screen: message displayed in an error dialog -->
     <string name="incall_error_supp_service_transfer">Can\'t transfer.</string>
-    <!-- In-call screen: message displayed in an error dialog -->
-    <string name="incall_error_supp_service_conference">Unable to conference calls.</string>
+    <!-- In-call screen: message displayed in an error dialog.  Shown when the user attempts to
+        merge calls to form a conference call, but there was an error which prevented this from
+        occurring. -->
+    <string name="incall_error_supp_service_conference">Unable to merge calls.</string>
     <!-- In-call screen: message displayed in an error dialog -->
     <string name="incall_error_supp_service_reject">Can\'t reject call.</string>
     <!-- In-call screen: message displayed in an error dialog -->
