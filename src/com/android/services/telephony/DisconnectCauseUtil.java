@@ -169,6 +169,10 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.SERVER_ERROR:
             case android.telephony.DisconnectCause.SERVER_UNREACHABLE:
             case android.telephony.DisconnectCause.TIMED_OUT:
+            case android.telephony.DisconnectCause.ALREADY_DIALING:
+            case android.telephony.DisconnectCause.CANT_CALL_WHILE_RINGING:
+            case android.telephony.DisconnectCause.CALLING_DISABLED:
+            case android.telephony.DisconnectCause.TOO_MANY_ONGOING_CALLS:
             case android.telephony.DisconnectCause.UNOBTAINABLE_NUMBER:
             case android.telephony.DisconnectCause.VOICEMAIL_NUMBER_MISSING:
             case android.telephony.DisconnectCause.DIAL_MODIFIED_TO_USSD:
@@ -320,6 +324,18 @@ public class DisconnectCauseUtil {
 
             case android.telephony.DisconnectCause.DATA_LIMIT_REACHED:
                 resourceId = R.string.callFailed_data_limit_reached;
+                break;
+            case android.telephony.DisconnectCause.ALREADY_DIALING:
+                resourceId = R.string.callFailed_already_dialing;
+                break;
+            case android.telephony.DisconnectCause.CANT_CALL_WHILE_RINGING:
+                resourceId = R.string.callFailed_already_ringing;
+                break;
+            case android.telephony.DisconnectCause.CALLING_DISABLED:
+                resourceId = R.string.callFailed_calling_disabled;
+                break;
+            case android.telephony.DisconnectCause.TOO_MANY_ONGOING_CALLS:
+                resourceId = R.string.callFailed_too_many_calls;
                 break;
 
             case android.telephony.DisconnectCause.IMS_SIP_ALTERNATE_EMERGENCY_CALL:
@@ -688,6 +704,18 @@ public class DisconnectCauseUtil {
 
             case android.telephony.DisconnectCause.WIFI_LOST:
                 resourceId = R.string.callFailed_wifi_lost;
+                break;
+            case android.telephony.DisconnectCause.ALREADY_DIALING:
+                resourceId = R.string.callFailed_already_dialing;
+                break;
+            case android.telephony.DisconnectCause.CANT_CALL_WHILE_RINGING:
+                resourceId = R.string.callFailed_already_ringing;
+                break;
+            case android.telephony.DisconnectCause.CALLING_DISABLED:
+                resourceId = R.string.callFailed_calling_disabled;
+                break;
+            case android.telephony.DisconnectCause.TOO_MANY_ONGOING_CALLS:
+                resourceId = R.string.callFailed_too_many_calls;
                 break;
 
             case android.telephony.DisconnectCause.IMS_SIP_ALTERNATE_EMERGENCY_CALL:
