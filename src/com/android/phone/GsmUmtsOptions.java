@@ -28,7 +28,6 @@ import android.telephony.TelephonyManager;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
-import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.settingslib.RestrictedLockUtilsInternal;
 
@@ -79,8 +78,6 @@ public class GsmUmtsOptions {
         boolean addCarrierSettings = true;
         final TelephonyManager telephonyManager = TelephonyManager.from(mPrefFragment.getContext())
                 .createForSubscriptionId(subId);
-        Phone phone = PhoneGlobals.getPhone(subId);
-        if (phone == null) return;
         if (telephonyManager.getPhoneType() != PhoneConstants.PHONE_TYPE_GSM) {
             log("Not a GSM phone");
             addAPNExpand = false;
@@ -104,7 +101,7 @@ public class GsmUmtsOptions {
             }
 
             if (carrierConfig.getBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL)) {
-                if (phone.isCspPlmnEnabled()) {
+                if (telephonyManager.isManualNetworkSelectionAllowed()) {
                     log("[CSP] Enabling Operator Selection menu.");
                     mNetworkOperator.setEnabled(true);
                 } else {
