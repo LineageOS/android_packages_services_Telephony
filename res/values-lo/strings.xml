@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"ລົງທະບຽນໃນເຄືອຂ່າຍແລ້ວ."</string>
     <string name="already_auto" msgid="6067116884321285507">"ມີຢູ່ໃນການເລືອກອັດຕະໂນມັດຢູ່ແລ້ວ"</string>
     <string name="select_automatically" msgid="1046727200631770962">"ເລືອກເຄືອຂ່າຍອັດຕະໂນມັດ"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"ບໍ່ສາມາດໃຊ້ໄດ້ໃນເວລາເຊື່ອມຕໍ່ຫາ %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"ເຄືອຂ່າຍ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ກຳລັງລົງທະບຽນອັດຕະໂນມັດ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ປະ​ເພດ​ເຄືອ​ຂ່າຍທີ່ຕ້ອງການ"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"ກຳລັງໂທ"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"ເຄືອຂ່າຍ"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"ໂໝດ Enhanced 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"ການໂທຂັ້ນສູງ"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ໃຊ້​ການ​ບໍ​ລິ​ການ LTE ເພື່ອ​ປັບ​ປຸງ​ສຽງ ແລະ​ການ​ບໍ​ລິ​ການ​ອື່ນໆ (ແນະ​ນຳ)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ເປີດໃຊ້ເດຕາ"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"​ອະ​ນຸ​ຍາດ​ໃຫ້​ໃຊ້​ຂໍ້​ມູນ"</string>
@@ -506,6 +507,7 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"ກະລຸນາເປີດໃຊ້ການໂທ Wi-Fi ເພື່ອໂທ."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"ຂໍ້ມູນສຸກເສີນ"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"ເຈົ້າຂອງ"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"ແຕະອີກເທື່ອໜຶ່ງເພື່ອເບິ່ງຂໍ້ມູນ"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ໂທສຸກເສີນ"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"ໂທສຸກເສີນເທົ່ານັ້ນ"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"ເບີໂທສຸກເສີນ"</string>
@@ -760,4 +762,12 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ໂອນສາຍແລ້ວ."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"ກຳລັງເຂົ້າຮ່ວມການປະຊຸມສາຍ."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ວາງສາຍທີ່ພັກໄວ້ແລ້ວ."</string>
+    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
+    <skip />
+    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
+    <skip />
+    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
+    <skip />
+    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
+    <skip />
 </resources>

@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"در شبکه ثبت شد."</string>
     <string name="already_auto" msgid="6067116884321285507">"درحال‌حاضر در حالت انتخاب خودکار است."</string>
     <string name="select_automatically" msgid="1046727200631770962">"انتخاب خودکار شبکه"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"‏هنگام اتصال به %1$s دردسترس نیست"</string>
     <string name="network_select_title" msgid="7733107364757544558">"شبکه"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ثبت خودکار..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"نوع شبکه برگزیده"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"درحال تماس"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"شبکه"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"‏حالت پیشرفته 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"تماس پیشرفته"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"‏استفاده از سرویس‌های LTE جهت بهبود ارتباطات صوتی و سایر ارتباطات (توصیه می‌شود)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"داده‌ها فعال شدند"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"استفاده از داده مجاز است"</string>
@@ -506,6 +507,7 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"‏برای برقراری تماس، تماس Wi-Fi را فعال کنید."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"اطلاعات اضطراری"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"مالک"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"برای دیدن اطلاعات، دوباره ضربه بزنید"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"تماس اضطراری"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"فقط تماس‌های اضطراری"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"شماره تلفن اضطراری"</string>
@@ -760,4 +762,12 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"تماس بازارسال شده است."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"درحال پیوستن به تماس کنفرانسی."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"تماس نگه‌داشته‌شده آزاد شده است."</string>
+    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
+    <skip />
+    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
+    <skip />
+    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
+    <skip />
+    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
+    <skip />
 </resources>

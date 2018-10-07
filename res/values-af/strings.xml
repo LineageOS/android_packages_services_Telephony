@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"Geregistreer op die netwerk."</string>
     <string name="already_auto" msgid="6067116884321285507">"Reeds in outomatiese seleksie."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Kies outomaties netwerk"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"Onbeskikbaar wanneer aan %1$s gekoppel"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Netwerk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Outomatiese registrasie..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Voorkeurnetwerktipe"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"Oproepe"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Netwerk"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Verbeterde 4G LTE-modus"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Gevorderde oproepe"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Gebruik LTE-dienste om stem- en ander kommunikasie te verbeter (aanbeveel)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Data geaktiveer"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Laat datagebruik toe"</string>
@@ -486,8 +487,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"Bel <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Stemboodskapnommer onbekend"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Geen diens nie"</string>
-    <!-- no translation found for notification_network_selection_text (7550380440576731104) -->
-    <skip />
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"Geselekteerde netwerk <xliff:g id="OPERATOR_NAME">%s</xliff:g> nie beskikbaar nie"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Skakel selnetwerk aan, skakel vliegtuigmodus af of skakel batterybespaardermodus af om \'n oproep te maak."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Skakel vliegtuigmodus af om \'n oproep te maak."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Skakel vliegtuigmodus af of koppel aan \'n draadlose netwerk om \'n oproep te maak."</string>
@@ -511,6 +511,7 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktiveer Wi-Fi-oproepe om \'n oproep te maak."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Noodinligting"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Eienaar"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tik weer om inligting te bekyk"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Noodoproep"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Net noodoproepe"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Noodnommer"</string>
@@ -765,4 +766,12 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Aangestuurde oproep."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Sluit tans by konferensieoproep aan."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Oproep wat aangehou is, is weer aktief."</string>
+    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
+    <skip />
+    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
+    <skip />
+    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
+    <skip />
+    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
+    <skip />
 </resources>

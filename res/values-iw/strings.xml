@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"רשום ברשת."</string>
     <string name="already_auto" msgid="6067116884321285507">"הבחירה האוטומטית כבר מופעלת."</string>
     <string name="select_automatically" msgid="1046727200631770962">"בחירה אוטומטית של הרשת"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"‏אי אפשר להתחבר לרשת הזו כשמחוברים אל %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"רשת"</string>
     <string name="register_automatically" msgid="6017849844573519637">"רישום אוטומטי..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"סוג רשת מועדף"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"שיחות"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"רשת"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"‏מצב 4G LTE משופר"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"שיחה משופרת"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"‏השתמש בשירותי LTE כדי לשפר את הקול ודרכי תקשורת אחרות (מומלץ)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"נתונים מופעלים"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"התר שימוש בנתונים"</string>
@@ -506,6 +507,7 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"‏הפעל את \'שיחות Wi-Fi\' כדי להתקשר."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"מידע למקרה חירום"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"בעלים"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"אפשר להקיש שוב כדי להציג את הפרטים"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"שיחת חירום"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"שיחות חירום בלבד"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"מספר חירום"</string>
@@ -764,4 +766,12 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"השיחה הועברה."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"אנחנו מצרפים אותך לשיחת הוועידה."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"השיחה שוחררה מהמתנה."</string>
+    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
+    <skip />
+    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
+    <skip />
+    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
+    <skip />
+    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
+    <skip />
 </resources>
