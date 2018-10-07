@@ -161,8 +161,7 @@ public class RemoteVvmTaskManager extends Service {
                 continue;
             }
             bindIntent.setPackage(packageName);
-            ResolveInfo info = context.getPackageManager()
-                    .resolveService(bindIntent, PackageManager.MATCH_ALL);
+            ResolveInfo info = context.getPackageManager().resolveService(bindIntent, 0);
             if (info == null) {
                 continue;
             }
@@ -171,13 +170,6 @@ public class RemoteVvmTaskManager extends Service {
                         "Component " + info.getComponentInfo() + " is not a service, ignoring");
                 continue;
             }
-
-            if (!info.serviceInfo.isEnabled()) {
-                VvmLog.i(TAG,
-                        "Component " + info.getComponentInfo() + " is disabled, ignoring");
-                continue;
-            }
-
             if (!android.Manifest.permission.BIND_VISUAL_VOICEMAIL_SERVICE
                     .equals(info.serviceInfo.permission)) {
                 VvmLog.w(TAG, "package " + info.serviceInfo.packageName

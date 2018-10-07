@@ -4991,6 +4991,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public boolean isManualNetworkSelectionAllowed(int subId) {
+        boolean isAllowed = true;
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
+                    mApp, subId, "isManualNetworkSelectionAllowed");
+            Phone phone = getPhone(subId);
+            if (phone != null) {
+                isAllowed = phone.isCspPlmnEnabled();
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return isAllowed;
+    }
+
+    @Override
     public UiccSlotInfo[] getUiccSlotsInfo() {
         enforceReadPrivilegedPermission();
 

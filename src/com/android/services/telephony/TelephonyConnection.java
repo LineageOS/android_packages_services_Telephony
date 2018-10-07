@@ -892,7 +892,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             if (originalConnection.isRttEnabledForCall()) {
                 originalConnection.setCurrentRttTextStream(textStream);
             } else {
-                originalConnection.sendRttModifyRequest(textStream);
+                originalConnection.startRtt(textStream);
             }
         } else {
             Log.w(this, "onStartRtt - not in IMS, so RTT cannot be enabled.");
@@ -901,7 +901,16 @@ abstract class TelephonyConnection extends Connection implements Holdable {
 
     @Override
     public void onStopRtt() {
-        Log.i(this, "Stopping RTT currently not supported. Doing nothing.");
+        if (isImsConnection()) {
+            ImsPhoneConnection originalConnection = (ImsPhoneConnection) mOriginalConnection;
+            if (originalConnection.isRttEnabledForCall()) {
+                originalConnection.stopRtt();
+            } else {
+                Log.w(this, "onStopRtt - not in RTT call, ignoring");
+            }
+        } else {
+            Log.w(this, "onStopRtt - not in IMS, ignoring");
+        }
     }
 
     @Override

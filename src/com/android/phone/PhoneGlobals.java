@@ -62,8 +62,6 @@ import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.dataconnection.DataConnectionReasons;
 import com.android.internal.telephony.dataconnection.DataConnectionReasons.DataDisallowedReasonType;
 import com.android.internal.util.IndentingPrintWriter;
-import com.android.phone.anas.AlternativeNetworkAccessService;
-import com.android.phone.common.CallLogAsync;
 import com.android.phone.settings.SettingsConstants;
 import com.android.phone.vvm.CarrierVvmPackageInstalledReceiver;
 import com.android.services.telephony.sip.SipAccountRegistry;
@@ -329,7 +327,6 @@ public class PhoneGlobals extends ContextWrapper {
             phoneMgr = PhoneInterfaceManager.init(this, PhoneFactory.getDefaultPhone());
 
             configLoader = CarrierConfigLoader.init(this);
-            AlternativeNetworkAccessService.initInstance(this);
 
             // Create the CallNotifier singleton, which handles
             // asynchronous events from the telephony layer (like
