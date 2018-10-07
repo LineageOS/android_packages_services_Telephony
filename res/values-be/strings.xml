@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Выклік"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Сетка"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Удасканалены рэжым 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Пашыраны выклік"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Карыстайцеся службамі LTE, каб палепшыць галасавую і іншую сувязь (рэкаменд.)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Дадзеныя ўключаныя"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Дазволіць выкарыстанне даных"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Немагчыма ўтрымліваць выклікі."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Падлучыцеся да бесправадной сеткі, каб зрабіць выклік."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Дазволіць выклік па Wi-Fi-тэлефаніі."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Даныя для экстранных сітуацый"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Уладальнік"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Каб паглядзець інфармацыю, націсніце яшчэ раз"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Экстраны выклік"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Толькі экстраныя выклікі"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Нумар экстраннай службы"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Нумары экстраннай службы"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Каб патэлефанаваць на нумар <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>, націсніце яшчэ раз."</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Уключэнне радыё..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Не абслугоўваецца. Паўтор спробы..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Немагчыма ўвайсцi ў рэжым палёту падчас экстранага выклiку"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Выклік немагчымы. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> не з\'яўляецца нумарам экстраннай службы."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Выклік немагчымы. Набраць нумар экстраннай службы."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Экстранныя выклікі недаступныя"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Паліцыя"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Хуткая дапамога"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Пажарная служба"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Выкарыстоўвайце клавіятуру, каб набраць нумар"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Утрымліваць"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Скончыць"</string>
@@ -599,6 +610,8 @@
     <string name="selectContact" msgid="781975788478987237">"выбраць кантакт"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Галасавы выклік не падтрымліваецца"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"набор"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"паказаць панэль набору"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Панэль набору нумара экстраннай службы"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Візуальная галасавая пошта"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Задаць PIN-код"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Змяніць PIN-код"</string>
