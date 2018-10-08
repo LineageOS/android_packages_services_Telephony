@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"नेटवर्क पर पंजीकृत."</string>
     <string name="already_auto" msgid="6067116884321285507">"पहले से ऑटोमैटिक चयन में है."</string>
     <string name="select_automatically" msgid="1046727200631770962">"अपने आप नेटवर्क चुनें"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"%1$s से कनेक्ट किए जाने पर उपलब्ध नहीं है"</string>
     <string name="network_select_title" msgid="7733107364757544558">"नेटवर्क"</string>
     <string name="register_automatically" msgid="6017849844573519637">"स्वचालित पंजीकरण..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"पसंदीदा नेटवर्क प्रकार"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"कॉलिंग"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"नेटवर्क"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"उन्नत 4G LTE मोड"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"उन्नत कॉलिंग"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ध्‍वनि और अन्‍य संचारों को बेहतर बनाने हेतु LTE सेवाओं का उपयोग करें (अनुशंसित)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"डेटा सक्षम किया गया"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"डेटा उपयोग करने दें"</string>
@@ -482,8 +483,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"<xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g> डायल करें"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"वॉयस मेल नंबर अज्ञात"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"कोई सेवा नहीं"</string>
-    <!-- no translation found for notification_network_selection_text (7550380440576731104) -->
-    <skip />
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"चुना गया नेटवर्क<xliff:g id="OPERATOR_NAME">%s</xliff:g> मौजूद नहीं है"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"कॉल करने के लिए मोबाइल नेटवर्क चालू करें, हवाई जहाज़ मोड या बैटरी सेवर मोड बंद करें."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"कॉल करने के लिए हवाई जहाज़ मोड बंद करें."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"कॉल करने के लिए हवाई जहाज़ मोड बंद करें या किसी वायरलेस नेटवर्क से कनेक्‍ट करें."</string>
@@ -507,6 +507,7 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"कॉल करने के लिए वाई-फ़ाई कॉलिंग सक्षम करें."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"आपातकालीन जानकारी"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"मालिक"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"जानकारी देखने के लिए फिर से टैप करें"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"आपातकालीन कॉल"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"सिर्फ़ आपातकालीन कॉल"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"आपातकालीन नंबर"</string>
@@ -761,4 +762,12 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"दूसरे नंबर पर भेजा गया कॉल."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"कॉन्फ़्रेंस कॉल में शामिल हो रहे/रही हैं."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"होल्ड किए गए कॉल को होल्ड से हटा दिया गया है."</string>
+    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
+    <skip />
+    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
+    <skip />
+    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
+    <skip />
+    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
+    <skip />
 </resources>

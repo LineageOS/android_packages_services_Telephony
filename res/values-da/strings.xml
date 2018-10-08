@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"Registreret på netværket."</string>
     <string name="already_auto" msgid="6067116884321285507">"Automatisk valg bruges allerede."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Vælg netværk automatisk"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"Ikke tilgængelig, når der er forbindelse til %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Netværk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatisk registrering..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Foretrukken netværkstype"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"Opkald"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Netværk"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Udvidet 4G LTE-tilstand"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Avancerede opkald"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Anvend LTE-tjenester til at forbedre tale og anden kommunikation (anbefalet)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Data aktiveret"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Tillad dataforbrug"</string>
@@ -512,6 +513,7 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktivér Wi-Fi-opkald for at foretage et opkald."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Oplysninger i nødsituationer"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Ejer"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tryk igen for at se oplysninger"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Nødopkald"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Kun nødopkald"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Alarmnummer"</string>
@@ -766,4 +768,12 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Videresendt opkald."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Du deltager i konferenceopkaldet."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Det parkerede opkald er blevet frigivet."</string>
+    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
+    <skip />
+    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
+    <skip />
+    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
+    <skip />
+    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
+    <skip />
 </resources>

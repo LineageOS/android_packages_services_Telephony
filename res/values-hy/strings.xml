@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"Գրանցված է ցանցում:"</string>
     <string name="already_auto" msgid="6067116884321285507">"Արդեն նշել եք ավտոմատ ընտրությունը:"</string>
     <string name="select_automatically" msgid="1046727200631770962">"Ավտոմատ ընտրել ցանցը"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"Հասանելի չէ, երբ միացած է «%1$s» ցանցին"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Ցանց"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Ավտոմատ գրանցում..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Ցանցի նախընտրելի տեսակը"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"Զանգ"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Ցանց"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Ընդլայնված 4G LTE ռեժիմ"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Ընդլայնված զանգ"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Ձայնի և կապի որակը բարելավելու համար օգտվեք LTE ծառայություններից (հանձնարարելի)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Տվյալները միացված են"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Թույլատրել տվյալների օգտագործումը"</string>
@@ -512,6 +513,7 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Զանգ կատարելու համար միացրեք «Զանգեր Wi-Fi ցանցի միջոցով» գործառույթը:"</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Անհետաձգելի բուժօգնության տվյալներ"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Սեփականատեր"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Կրկին հպեք՝ տեղեկությունները դիտելու համար"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Շտապ կանչ"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Միայն շտապ կանչեր"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Արտակարգ ծառայություն"</string>
@@ -766,4 +768,12 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Վերահասցեավորված զանգ"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Միացում կոնֆերանս զանգի"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Զանգը հանվեց սպասման ռեժիմից:"</string>
+    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
+    <skip />
+    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
+    <skip />
+    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
+    <skip />
+    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
+    <skip />
 </resources>

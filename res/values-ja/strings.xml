@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"ネットワークに登録されました。"</string>
     <string name="already_auto" msgid="6067116884321285507">"すでに自動選択が適用されています。"</string>
     <string name="select_automatically" msgid="1046727200631770962">"ネットワークを自動的に選択"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"%1$s に接続中はご利用いただけません"</string>
     <string name="network_select_title" msgid="7733107364757544558">"ネットワーク"</string>
     <string name="register_automatically" msgid="6017849844573519637">"自動登録..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"優先ネットワークタイプ"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"通話"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"ネットワーク"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"4G LTE拡張モード"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"高度な通話機能"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"LTEサービスを使用して音声などの通信を改善する（推奨）"</string>
     <string name="data_enabled" msgid="5972538663568715366">"データ通信を有効にする"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"データ使用を許可"</string>
@@ -506,6 +507,7 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"電話をかけるには Wi-Fi 通話を有効にしてください。"</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"緊急時情報"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"所有者"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"もう一度タップすると情報を確認できます"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"緊急通報"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"緊急通報のみ"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"緊急通報番号"</string>
@@ -760,4 +762,12 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"転送されてきた電話。"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"グループ通話に参加しようとしています。"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"通話の保留が解除されました。"</string>
+    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
+    <skip />
+    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
+    <skip />
+    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
+    <skip />
+    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
+    <skip />
 </resources>

@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"Nakarehistro sa network."</string>
     <string name="already_auto" msgid="6067116884321285507">"Nasa awtomatiko nang pagpili."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Awtomatikong piliin ang network"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"Hindi available kapag nakakonekta sa %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Network"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Awtomatikong pagpaparehistro..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Gustong uri ng network"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"Tumatawag"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Network"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Enhanced 4G LTE Mode"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Advanced na Pagtawag"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Gamitin ang LTE upang pahusayin ang voice at ibang komunikasyon (inirerekomenda)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Pinagana ang data"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Payagan ang paggamit ng data"</string>
@@ -482,8 +483,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"I-dial ang <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Hindi kilala ang numero ng voicemail"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Walang serbisyo"</string>
-    <!-- no translation found for notification_network_selection_text (7550380440576731104) -->
-    <skip />
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"Hindi available ang piniling network na (<xliff:g id="OPERATOR_NAME">%s</xliff:g>)"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"I-on ang mobile network, i-off ang airplane mode o i-off ang battery saver mode upang tumawag."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"I-off ang airplane mode upang makatawag."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"I-off ang airplane mode o kumonekta sa isang wireless network upang makatawag."</string>
@@ -507,6 +507,7 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"I-enable ang pagtawag sa Wi-Fi upang tumawag."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Impormasyong pang-emergency"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"May-ari"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"I-tap muli para tingnan ang impormasyon"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Emergency na tawag"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Mga pang-emergency na tawag lang"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Numerong pang-emergency"</string>
@@ -761,4 +762,12 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Ipinasa ang tawag."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Sumasali sa conference call."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Inalis ang pag-hold sa tawag."</string>
+    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
+    <skip />
+    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
+    <skip />
+    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
+    <skip />
+    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
+    <skip />
 </resources>

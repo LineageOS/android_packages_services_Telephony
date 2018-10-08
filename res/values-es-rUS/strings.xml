@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"Registrado en la red."</string>
     <string name="already_auto" msgid="6067116884321285507">"Ya está en selección automática."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Seleccionar red de forma automática"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"No disponible cuando te conectas a %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Red"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Registro automático…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tipo de red preferido"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"Llamando"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Red"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Modo 4G LTE mejorado"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Llamadas avanzadas"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Usa servicios de LTE para mejorar comunicaciones de voz y otras (recomendado)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Usar paquete de datos"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Permitir el uso de datos"</string>
@@ -506,6 +507,7 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Habilita las llamadas con Wi-Fi para hacer una llamada."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Información de emergencia"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Propietario"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Vuelve a presionar para ver la información"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Llamada de emergencia"</string>
     <string name="emergency_dialpad_title" msgid="6052294225467269233">"Solo llamadas de emergencia"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Número de emergencia"</string>
@@ -760,4 +762,12 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Llamada desviada."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Uniéndose a la conferencia."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Se desconectó la llamada en espera."</string>
+    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
+    <skip />
+    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
+    <skip />
+    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
+    <skip />
+    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
+    <skip />
 </resources>
