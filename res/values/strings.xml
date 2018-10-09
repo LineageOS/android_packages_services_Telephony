@@ -1815,4 +1815,22 @@
     <!-- In-call screen: error message shown when the user attempts to place a call, but calling has
          been disabled using a debug property. -->
     <string name="callFailed_too_many_calls">Cannot place a call a there are already two calls in progress.  Disconnect one of the calls or merge them into a conference prior to placing a new call.</string>
+    <!-- Message displayed to the user when they attempt to edit options for a supplementary service
+         (call waiting, call barring, call forwarding, and caller ID), but they are required to
+         enable mobile data first. -->
+    <string name="supp_service_over_ut_precautions">To use <xliff:g id="supp service">%s</xliff:g>, make sure mobile data is turned on. You can change this in mobile network settings.</string>
+    <!-- Message displayed to the user when they attempt to edit options for a supplementary service
+         (call waiting, call barring, call forwarding, and caller ID) in roaming, but they are
+         required to enable mobile data and data roaming first. -->
+    <string name="supp_service_over_ut_precautions_roaming">To use <xliff:g id="supp service">%s</xliff:g>, make sure mobile data and data roaming are turned on. You can change these in mobile network settings.</string>
+    <!-- Message displayed to the user when they attempt to edit options for a supplementary service
+         (call waiting, call barring, call forwarding, and caller ID), but they are
+         required to enable mobile data first for each sim. -->
+    <string name="supp_service_over_ut_precautions_dual_sim">To use <xliff:g id="supp service">%1$s</xliff:g>, make sure mobile data is turned on for SIM <xliff:g id="sim number">%2$d</xliff:g>. You can change this in mobile network settings.</string>
+    <!-- Message displayed to the user when they attempt to edit options for a supplementary service
+         (call waiting, call barring, call forwarding, and caller ID) in roaming device, but
+         they are required to enable mobile data and data roaming first for each sim. -->
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim">To use <xliff:g id="supp service">%1$s</xliff:g>, make sure mobile data and data roaming are turned on for SIM <xliff:g id="sim number">%2$d</xliff:g>. You can change these in mobile network settings.</string>
+    <!-- supplementary services over ut precaution exit dialog choice -->
+    <string name="supp_service_over_ut_precautions_dialog_dismiss">Dismiss</string>
 </resources>

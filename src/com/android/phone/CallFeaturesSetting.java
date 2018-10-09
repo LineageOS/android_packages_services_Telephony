@@ -49,6 +49,7 @@ import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.phone.settings.PhoneAccountSettingsFragment;
+import com.android.phone.settings.SuppServicesUiUtil;
 import com.android.phone.settings.VoicemailSettingsActivity;
 import com.android.phone.settings.fdn.FdnSetting;
 
@@ -114,6 +115,37 @@ public class CallFeaturesSetting extends PreferenceActivity
             android.provider.Settings.Global.putInt(mPhone.getContext().getContentResolver(),
                     android.provider.Settings.Global.CALL_AUTO_RETRY,
                     mButtonAutoRetry.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == preferenceScreen.findPreference(
+                GsmUmtsCallOptions.CALL_FORWARDING_KEY)) {
+            return doSsOverUtPrecautions(preference);
+        } else if (preference == preferenceScreen.findPreference(
+                GsmUmtsCallOptions.CALL_BARRING_KEY)) {
+            return doSsOverUtPrecautions(preference);
+        }
+        return false;
+    }
+
+    private boolean doSsOverUtPrecautions(Preference preference) {
+        PersistableBundle b = null;
+        if (mSubscriptionInfoHelper.hasSubId()) {
+            b = PhoneGlobals.getInstance().getCarrierConfigForSubId(
+                    mSubscriptionInfoHelper.getSubId());
+        } else {
+            b = PhoneGlobals.getInstance().getCarrierConfig();
+        }
+
+        String configKey;
+        if (preference.getKey().equals(GsmUmtsCallOptions.CALL_FORWARDING_KEY)) {
+            configKey = CarrierConfigManager.KEY_CALL_FORWARDING_OVER_UT_WARNING_BOOL;
+        } else {
+            configKey = CarrierConfigManager.KEY_CALL_BARRING_OVER_UT_WARNING_BOOL;
+        }
+        if (b != null && b.getBoolean(configKey)
+                && mPhone != null
+                && SuppServicesUiUtil.isSsOverUtPrecautions(this, mPhone)) {
+            SuppServicesUiUtil.showBlockingSuppServicesDialog(this, mPhone,
+                    preference.getKey()).show();
             return true;
         }
         return false;
