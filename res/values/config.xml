@@ -137,7 +137,7 @@
     <!-- DEPRECATED: Use CarrierConfigManager#KEY_PREFER_2G_BOOL -->
     <bool name="config_prefer_2g" translatable="false">true</bool>
     <!-- Show enabled lte option for lte device -->
-    <bool name="config_enabled_lte" translatable="false">false</bool>
+    <bool name="config_enabled_lte" translatable="false">true</bool>
     <!-- Show enabled tdscdma option for device -->
     <bool name="config_support_tdscdma" translatable="false">false</bool>
     <!-- Show enabled tdscdma option for device when connect roaming network -->
