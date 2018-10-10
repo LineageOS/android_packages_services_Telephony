@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"کال کی جا رہی ہے"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"نیٹ ورک"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"‏Enhanced 4G LTE وضع"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"اعلی درجے کی کالنگ"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"‏صوتی اور دیگر مواصلات کو بہتر بنانے کیلئے LTE سروسز استعمال کریں (تجویز کردہ)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ڈیٹا فعال ہوگیا"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ڈیٹا کے استعمال کی اجازت دیں"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"کالز کو ہولڈ نہیں کیا جا سکتا۔"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"کال کرنے کیلئے کسی وائرلیس نیٹ ورک سے منسلک ہوں۔"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"‏کال کرنے کیلئے Wi-Fi کالنگ فعال کریں۔"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"ہنگامی معلومات"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"مالک"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"معلومات دیکھنے کیلئے دوبارہ تھپتھپائیں"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ہنگامی کال"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"صرف ہنگامی کالز"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"ایمرجنسی نمبر"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"ایمرجنسی نمبرز"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> کو کال کرنے کے لئے دوبارہ تھپتھپائيں"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"ریڈیو آن کر رہا ہے…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"کوئی سروس نہیں ہے۔ دوبارہ کوشش کی جا رہی ہے…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"ہنگامی کال کے دوران ہوائی جہاز موڈ میں داخل نہیں ہو سکتا۔"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"کال نہیں کی جا سکتی۔ <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ایک ہنگامی نمبر نہیں ہے۔"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"کال نہیں کی جا سکتی۔ ایک ہنگامی نمبر ڈائل کریں۔"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"ہنگامی کالنگ دستیاب نہیں ہے"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"پولیس"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"ایمبولینس"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"آگ"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ڈائل کرنے کیلئے کی بورڈ استعمال کریں"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ہولڈ کریں"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ختم کریں"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"رابطہ منتخب کریں"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"صوتی کالنگ تعاون یافتہ نہیں ہے"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ڈائل کریں"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"ڈائل پیڈ دکھائیں"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"ایمرجنسی ڈائل پیڈ"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"بصری صوتی میل"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"‏PIN سیٹ کریں"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"‏PIN تبدیل کریں"</string>

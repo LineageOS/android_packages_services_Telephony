@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"കോൾചെയ്യുന്നു"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"നെറ്റ്‌വർക്ക്"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"മെച്ചപ്പെടുത്തിയ 4G LTE മോഡ്"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"വിപുലമായ കോളിംഗ്"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"വോയ്‌സ്, മറ്റ് ആശയവിനിമയങ്ങൾ (ശുപാർശിതം) എന്നിവ മികച്ചതാക്കുന്നതിന് LTE സേവനങ്ങൾ ഉപയോഗിക്കുക"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ഡാറ്റ പ്രവർത്തനക്ഷമമാക്കി"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ഡാറ്റ ഉപയോഗം അനുവദിക്കുക"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"കോളുകൾ ഹോൾഡുചെയ്യാൻ കഴിയില്ല."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ഒരു കോൾ വിളിക്കാൻ വയർലെസ്സ് നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റുചെയ്യുക."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"കോൾ ചെയ്യാൻ Wi-Fi കോളിംഗ് പ്രവർത്തനക്ഷമമാക്കുക."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"അടിയന്തര വിവരം"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"ഉടമ"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"വിവരങ്ങൾ കാണാൻ വീണ്ടും ടാപ്പ് ചെയ്യുക"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"അടിയന്തര കോൾ"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"അടിയന്തര കോളുകൾ മാത്രം"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"അടിയന്തര നമ്പർ"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"അടിയന്തര നമ്പറുകൾ"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>-ലേക്ക് വിളിക്കാൻ വീണ്ടും ടാപ്പ് ചെയ്യുക"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"റേഡിയോ ഓൺ ചെയ്യുന്നു…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"സേവനമൊന്നുമില്ല. വീണ്ടും ശ്രമിക്കുന്നു…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"അടിയന്തര കോളിലായിരിക്കുമ്പോൾ, ഫ്ലൈറ്റ് മോഡ് ഓണാക്കാനാകില്ല."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"കോൾ ചെയ്യാനാവില്ല. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> എന്നത് ഒരു അടിയന്തിര നമ്പരല്ല."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"കോൾ ചെയ്യാനാവില്ല. ഒരു അടിയന്തിര കോൾ നമ്പർ ഡയൽചെയ്യുക."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"എമർജൻസി കോളിംഗ് ലഭ്യമല്ല"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"പോലീസ്"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"ആംബുലൻസ്"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"തീ"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ഡയൽ ചെയ്യാൻ കീബോർഡ് ഉപയോഗിക്കുക"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ഹോള്‍ഡുചെയ്യുക"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"അവസാനിപ്പിക്കുക"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"കോൺടാക്റ്റ് തിരഞ്ഞെടുക്കുക"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"വോയ്‌സ് കോൾ ചെയ്യുന്നതിനെ പിന്തുണയ്‌ക്കുന്നില്ല"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ഡയൽ ചെയ്യുക"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"ഡയൽപാഡ് കാണിക്കുക"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"അടിയന്തര ഡയൽപാഡ്"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"വിഷ്വൽ വോയ്‌സ്‌മെയിൽ"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"പിൻ സജ്ജമാക്കുക"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"പിൻ മാറ്റുക"</string>

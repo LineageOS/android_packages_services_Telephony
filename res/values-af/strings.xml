@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Oproepe"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Netwerk"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Verbeterde 4G LTE-modus"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Gevorderde oproepe"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Gebruik LTE-dienste om stem- en ander kommunikasie te verbeter (aanbeveel)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Data geaktiveer"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Laat datagebruik toe"</string>
@@ -507,13 +507,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Kan nie oproepe aanhou nie."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Koppel aan \'n draadlose netwerk om \'n oproep te maak."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktiveer Wi-Fi-oproepe om \'n oproep te maak."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Noodinligting"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Eienaar"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tik weer om inligting te bekyk"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Noodoproep"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Net noodoproepe"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Noodnommer"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Noodnommers"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tik weer om <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> te bel"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Skakel tans radio aan…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Geen sein nie. Probeer tans weer …"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Kan nie gedurende \'n noodoproep na vliegtuigmodus verander nie."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Kan nie bel nie. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> is nie \'n noodnommer nie."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Kan nie bel nie. Skakel \'n noodnommer."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Noodoproepe is nie bekikbaar nie"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Polisie"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulans"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Brand"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Gebruik sleutelbord om te bel"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Hou aan"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Einde"</string>
@@ -599,6 +610,8 @@
     <string name="selectContact" msgid="781975788478987237">"kies kontak"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Stembel nie ondersteun nie"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"bel"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"wys belblad"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Noodoproepbelblad"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuele stemboodskapdiens"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Stel PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Verander PIN"</string>
