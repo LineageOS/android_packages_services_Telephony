@@ -4923,6 +4923,31 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Get the current modem radio state for the given slot.
+     * @param slotIndex slot index.
+     * @param callingPackage the name of the package making the call.
+     * @return the current radio power state from the modem
+     */
+    @Override
+    public int getRadioPowerState(int slotIndex, String callingPackage) {
+        Phone phone = PhoneFactory.getPhone(slotIndex);
+        if (phone != null) {
+            if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                    mApp, phone.getSubId(), callingPackage, "getRadioPowerState")) {
+                return TelephonyManager.RADIO_POWER_UNAVAILABLE;
+            }
+
+            final long identity = Binder.clearCallingIdentity();
+            try {
+                return phone.getRadioPowerState();
+            } finally {
+                Binder.restoreCallingIdentity(identity);
+            }
+        }
+        return TelephonyManager.RADIO_POWER_UNAVAILABLE;
+    }
+
+    /**
      * Checks if data roaming is enabled on the subscription with id {@code subId}.
      *
      * <p>Requires one of the following permissions:
