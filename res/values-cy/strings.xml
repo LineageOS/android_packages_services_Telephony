@@ -64,9 +64,11 @@
   <!-- In-call screen: body text of the dialog that appears when we encounter
          the "wait" character in a phone number to be dialed; this dialog asks the
          user if it's OK to send the numbers following the "wait". -->
+  <string name="wait_prompt_str">Anfon y tonau canlynol?\n</string>
   <!-- In-call screen: body text of the dialog that appears when we encounter
          the "PAUSE" character in a phone number to be dialed; this dialog gives
          informative message to the user to show the sending numbers following the "Pause". -->
+  <string name="pause_prompt_str">Yn anfon tonau\n</string>
   <!-- In-call screen: button label on the "wait" prompt dialog -->
   <string name="send_button">Anfon</string>
   <!-- In-call screen: button label on the "wait" prompt dialog in CDMA Mode-->
@@ -83,6 +85,7 @@
   <!-- Button label on the "Missing voicemail number" dialog -->
   <string name="add_vm_number_str">Ychwanegu rhif</string>
   <!--Toast in Call settings when asked to launch voicemail for a guest user -->
+  <string name="voice_number_setting_primary_user_only">Dim ond y prif ddefnyddiwr gall newid gosodiadau lleisbost.</string>
   <!-- Status message displayed on SIM PIN unlock panel -->
   <string name="puk_unlocked">Mae dy gerdyn SIM wedi ei dadrwystro. Mae dy ffôn yn datgloi\u2026</string>
   <!-- network depersonalization -->
@@ -322,6 +325,7 @@
   <!-- Mobile network settings screen title -->
   <string name="mobile_networks">Gosodiadau rhwydwaith symudol</string>
   <!-- Mobile network settings screen title/heading -->
+  <string name="network_settings_title">Rhwydwaith symudol</string>
   <!-- Available networks screen title/heading -->
   <string name="label_available">Rhwydweithiau ar gael</string>
   <!-- Mobile network settings screen, toast when searching for available networks -->
@@ -339,11 +343,14 @@
   <!-- Available networks screen, toast when registered on a specific network -->
   <string name="registration_done">Wedi cofrestru ar y rhwydwaith.</string>
   <!-- Available networks screen, name of switch button for whether to select network automatically -->
+  <string name="select_automatically">Dewis rhwydwaith yn awtomatig</string>
   <!-- Available networks screen, name of button when user wants to select network manually  -->
+  <string name="network_select_title">Rhwydwaith</string>
   <string name="register_automatically">Cofrestriad awtomatig\u2026</string>
   <string name="preferred_network_mode_title">Math o rwydwaith a ffafrir</string>
   <string name="preferred_network_mode_summary">Newid modd gweithredu\'r rhwydwaith</string>
   <string name="preferred_network_mode_dialogtitle">Math o rwydwaith a ffafrir</string>
+  <string name="forbidden_network">(gwaharddedig)</string>
   <!-- Mobile network settings, summary for preferred network mode WCDMA preferred[CHAR LIMIT=100] -->
   <string name="preferred_network_mode_wcdma_perf_summary">Modd rhwydwaith a ffafrir: Ffafrio WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode GSM [CHAR LIMIT=100] -->
@@ -422,7 +429,9 @@
     <item>Ffafrio GSM/WCDMA</item>
   </string-array>
   <!-- Mobile network settings screen, name for call settings category -->
+  <string name="call_category">Galw</string>
   <!-- Mobile network settings screen, name for network operator category -->
+  <string name="network_operator_category">Rhwydwaith</string>
   <!-- Mobile network 4G title [CHAR LIMIT=30] -->
   <string name="enhanced_4g_lte_mode_title">Modd 4G LTE Gwell</string>
   <!-- Carrier variant of Enhaced 4G LTE Mode title.  [CHAR LIMIT=50] -->
@@ -436,6 +445,7 @@
   <!-- Mobile network settings screen, title for alert dialog -->
   <string name="dialog_alert_title">Sylw</string>
   <!-- Mobile network settings screen, setting check box name -->
+  <string name="roaming">Crwydro</string>
   <!-- Mobile network settings screen, setting summary text when check box is selected -->
   <string name="roaming_enable">Cysylltu â gwasanaethau data wrth grwydro tramor</string>
   <!-- Mobile network settings screen, setting summary text when check box is clear -->
@@ -451,16 +461,24 @@
   <!-- Mobile network settings screen, data usage setting check box name -->
   <string name="data_usage_title">Defnydd data</string>
   <!-- Summary about how much data has been used in a date range [CHAR LIMIT=100] -->
+  <string name="data_usage_template"><xliff:g name="amount" example="200 MB">%1$s</xliff:g> o ddata symudol wedi\'i ddefnyddio <xliff:g name="date_range" example="Jan 1 -- Feb 2">%2$s</xliff:g></string>
   <!-- Mobile network settings screen, Advanced button to show more items when clicked [CHAR LIMIT=50] -->
+  <string name="advanced_options_title">Uwch</string>
   <!-- Mobile network settings screen, name of the option to manage carrier profiles on devices which support embedded carrier profiles -->
+  <string name="carrier_settings_euicc">Darparwr</string>
   <!-- Keywords used to search the carrier menu for managing carrier profiles on devices which support embedded carrier profiles. eSIM/eUICC is embedded SIM card used to store this data.  -->
+  <string name="keywords_carrier_settings_euicc">cyflenwr, darparwr, esim, sim, euicc</string>
   <!-- Mobile network settings screen, summary of the option to manage carrier profiles on devices which support embedded carrier profiles -->
+  <string name="carrier_settings_euicc_summary"><xliff:g id="carrier_name">%1$s</xliff:g> &#8212; <xliff:g id="phone_number">%2$s</xliff:g></string>
   <!-- Mobile network settings screen, title of Mobile Data switch preference -->
+  <string name="mobile_data_settings_title">Data symudol</string>
   <!-- Mobile network settings screen, title of Mobile data switch preference -->
   <!-- Message to show when user trying to turn off mobile data, in single sim mode [CHAR LIMIT=100]-->
   <!-- When a SIM preference hasn't been selected yet, this string is displayed as the pref summary until the user chooses a SIM subscription from the preference list [CHAR LIMIT=50] -->
   <!-- Title asking user if they wish to change the default sim for cellular data.  [CHAR LIMIT=30] -->
+  <string name="sim_change_data_title">Newid SIM data?</string>
   <!-- Message confirming the user wishes to change the default data SIM from one to another.  [CHAR LIMIT=NONE] -->
+  <string name="sim_change_data_message">Defnyddio <xliff:g id="new_sim">%1$s</xliff:g> yn lle <xliff:g id="old_sim">%2$s</xliff:g> ar gyfer data symudol?</string>
   <!-- Mobile network settings screen, title of Wi-Fi calling setting -->
   <string name="wifi_calling_settings_title">Galwadau Wi-Fi</string>
   <!-- Mobile network settings screen, title of Video calling setting -->
@@ -975,6 +993,7 @@
   <!-- ECM: Notification body -->
   <string name="phone_in_ecm_call_notification_text">Analluogwyd cysylltiad data</string>
   <!-- ECM: Displays the time when ECM will end, Example: "No Data Connection until 10:45 AM" -->
+  <string name="phone_in_ecm_notification_complete_time">Dim cysylltiad data tan <xliff:g id="completeTime">%s</xliff:g></string>
   <!-- ECM: Dialog box message for exiting from the notifications screen -->
   <!-- ECM: Dialog box message for exiting from any other app -->
   <!-- ECM: Dialog box message while in emergency call -->
@@ -1021,7 +1040,7 @@
   <!-- Title for the category "ringtone", which is shown above ringtone and vibration
          related settings.
          [CHAR LIMIT=30] -->
-  <string name="preference_category_ringtone">Tôn Canu a Dirgrynu</string>
+  <string name="preference_category_ringtone">Tôn Caniad a Dirgrynu</string>
   <!-- String resource for the font-family to use for the call setting activity's title
          Do not translate. -->
   <string name="call_settings_title_font_family">sans-serif ysgafn</string>
@@ -1069,6 +1088,8 @@ Mae cerdyn SIM wedi actifadu dy wasanaeth a diweddaru gallu dy ffôn i grwydro t
 Mae gormod o alwadau ar eu canol. Diwedda neu gyfuno rhai o\'r galwadau cyfredol cyn gwneud galwad newydd.
     </string>
   <!-- Call failure reason: If the network does not accept the emergency call request, e.g., because IMEI was used as identification and this capability is not supported -->
+  <string name="callFailed_imei_not_accepted">
+Methu â chysylltu. Rho gerdyn SIM dilys, plîs.    </string>
   <!-- Call failure reason displayed when an in-progress WIFI call fails due to a loss of WIFI
          connectivity, or the WIFI signal has degraded to the point the call cannot continue. -->
   <!-- Call failure reason displayed when the user's outgoing call cannot be placed due to a low
@@ -1110,7 +1131,11 @@ Mae gormod o alwadau ar eu canol. Diwedda neu gyfuno rhai o\'r galwadau cyfredol
   <!-- The setting option summary for adding roaming data plan -->
   <!-- The setting option footer for adding data either prepaid or roaming -->
   <!-- activate data plan dialogue title for either prepaid or roaming -->
+  <string name="mobile_data_activate_diag_title">Ychwanegu data?</string>
   <!-- activate data plan dialogue message for either prepaid or roaming -->
+  <string name="mobile_data_activate_diag_message">Mae\'n bosib y bydd angen ychwanegu data trwy <xliff:g id="provider_name">%s</xliff:g></string>
   <!-- activate data plan dialogue button for adding data, which will take users out of the setting page -->
+  <string name="mobile_data_activate_button">YCHWANEGU DATA</string>
   <!-- activate data plan dialogue button for cancel further actions-->
+  <string name="mobile_data_activate_cancel_button">DIDDYMU</string>
 </resources>
