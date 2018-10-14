@@ -39,19 +39,25 @@
   <!-- In-call screen: status label for a call that's on hold -->
   <string name="onHold">N\'espera</string>
   <!-- Possible error messages with outgoing calls -->
+  <string name="mmiStarted">Anicióse\'l códigu MMI</string>
   <!-- Dialog label when a USSD code starts running -->
+  <string name="ussdRunning">Códigu USSD n\'execución\u2026</string>
   <!-- Dialog label when an MMI code is canceled -->
+  <string name="mmiCancelled">Encaboxóse\'l códigu MMI</string>
   <!-- Label for "cancel" button on the MMI dialog -->
   <string name="cancel">Encaboxar</string>
   <!-- Toast string displayed to user if the input in MMI dialog is < 1 or > 160 -->
   <string name="enter_input">El mensaxe USSD ha tener ente <xliff:g id="min_len">%d</xliff:g> y <xliff:g id="max_len">%d</xliff:g> caráuteres. Volvi tentalo, por favor.</string>
   <!-- Label for "Manage conference call" panel [CHAR LIMIT=40] -->
+  <string name="manageConferenceLabel">Xestionar conferencia telefónica</string>
   <!-- Positive button label ("OK") used in several dialogs in the phone UI [CHAR LIMIT=10] -->
   <string name="ok">ACEUTAR</string>
   <!-- "Audio mode" popup menu: Item label to select the speakerphone [CHAR LIMIT=25] -->
   <string name="audio_mode_speaker">Altavoz</string>
   <!-- "Audio mode" popup menu: Item label to select the handset earpiece [CHAR LIMIT=25] -->
+  <string name="audio_mode_earpiece">Auricular</string>
   <!-- "Audio mode" popup menu: Item label to select the wired headset [CHAR LIMIT=25] -->
+  <string name="audio_mode_wired_headset">Auriculares con cable</string>
   <!-- "Audio mode" popup menu: Item label to select the bluetooth headset [CHAR LIMIT=25] -->
   <string name="audio_mode_bluetooth">Bluetooth</string>
   <!-- post dial -->
@@ -77,14 +83,18 @@
   <!-- Title of the "Missing voicemail number" dialog -->
   <string name="no_vm_number">Falta\'l númberu del buzón de voz.</string>
   <!-- Body text of the "Missing voicemail number" dialog -->
+  <string name="no_vm_number_msg">Nun s\'atroxó dengún númberu de buzón de voz na tarxeta SIM.</string>
   <!-- Button label on the "Missing voicemail number" dialog -->
   <string name="add_vm_number_str">Amestar númberu</string>
   <!--Toast in Call settings when asked to launch voicemail for a guest user -->
   <string name="voice_number_setting_primary_user_only">Namái l\'usuariu primariu pue camudar los axustes del buzón de voz pa llamaes.</string>
   <!-- Status message displayed on SIM PIN unlock panel -->
+  <string name="puk_unlocked">Desbloquióse la tarxeta SIM. El teléfonu ta desbloquiándose\u2026</string>
   <!-- network depersonalization -->
   <!-- Label text for PIN entry widget on SIM Network Depersonalization panel -->
+  <string name="PERSOSUBSTATE_SIM_NETWORK_ENTRY">PIN del desbloquéu de rede de la SIM</string>
   <!-- Button label on SIM Network Depersonalization panel -->
+  <string name="sim_ndp_unlock_text">Desbloquiar</string>
   <!-- Button label on SIM Network Depersonalization panel -->
   <string name="sim_ndp_dismiss_text">Escartar</string>
   <!-- Status message displayed on SIM Network Depersonalization panel -->
@@ -129,7 +139,9 @@
   <!-- Title for setting to select Wi-Fi call manager account -->
   <!-- Built-in label for the default connection service setting. -->
   <!-- Call settings screen, setting option name -->
+  <string name="voicemail">Buzón de voz</string>
   <!-- Title of the "Voicemail" settings screen, with a text label identifying which SIM the settings are for. -->
+  <string name="voicemail_settings_with_label">Buzón de voz (<xliff:g id="subscriptionlabel" example="Mock Carrier">%s</xliff:g>)</string>
   <!-- Call forwarding dialog box, voicemail number prefix -->
   <!-- Mobile network settings screen, setting option name -->
   <!-- Cell Broadcast settings title.  [CHAR LIMIT=50] -->
@@ -143,6 +155,7 @@
   <!-- Call setting screen, nework service setting name -->
   <!-- Call settings screen, setting option name -->
   <!-- Additional call settings screen, setting summary text when the setting is being loaded [CHAR LIMIT=40] -->
+  <string name="sum_loading_settings">Cargando axustes\u2026</string>
   <!-- Additional call settings screen, setting summary text when Caller ID is hidden -->
   <!-- Additional call settings screen, setting summary text when Caller ID is shown -->
   <!-- Additional call settings screen, setting summary text for default Caller ID value -->
@@ -218,6 +231,7 @@
   <!-- Call settings screen, displayed when vm provider supplied forwarding number change fails-->
   <!-- Call settings screen, displayed when forwarding number read fails-->
   <!-- Call settings screen, Set voicemail number dialog text -->
+  <string name="no_change">Nun se ficieron cambeos.</string>
   <!-- Call settings screen, "Voicemail" provider setting summary text when no provider is selected -->
   <!-- Call settings screen, "Voicemail" screen, default option - Your Carrier -->
   <!-- Hint for the old PIN field in the change vociemail PIN dialog -->
@@ -242,8 +256,11 @@
   <!-- Mobile network settings screen title -->
   <string name="mobile_networks">Axustes de rede móvil</string>
   <!-- Available networks screen title/heading -->
+  <string name="label_available">Redes disponibles</string>
   <!-- Mobile network settings screen, toast when searching for available networks -->
+  <string name="load_networks_progress">Guetando\u2026</string>
   <!-- Available networks screen, text when no networks are found -->
+  <string name="empty_networks_list">Nun s\'alcontraron redes.</string>
   <!-- Available networks screen, setting option name -->
   <!-- Available networks screen, toast when an error is encountered when searching for networks -->
   <string name="network_query_error">Fallu entrín se guetaben redes.</string>
@@ -260,23 +277,39 @@
   <string name="preferred_network_mode_title">Triba preferida de rede</string>
   <string name="preferred_network_mode_dialogtitle">Triba preferida de rede</string>
   <!-- Mobile network settings, summary for preferred network mode WCDMA preferred[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_wcdma_perf_summary">Mou preferíu de rede: WCDMA preferíu</string>
   <!-- Mobile network settings, summary for preferred network mode GSM [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_gsm_only_summary">Mou preferíu de rede: namái GSM</string>
   <!-- Mobile network settings, summary for preferred network mode WCDMA only [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_wcdma_only_summary">Mou preferíu de rede: namái WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode GSM / UMTS [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_gsm_wcdma_summary">Mou preferíu de rede: GSM / WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode CDMA [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_cdma_summary">Mou preferíu de rede: CDMA</string>
   <!-- Mobile network settings, summary for preferred network mode CDMA / EvDo [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_cdma_evdo_summary">Mou preferíu de rede: CDMA / EvDo</string>
   <!-- Mobile network settings, summary for preferred network mode CDMA only [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_cdma_only_summary">Mou preferíu de rede: namái CDMA</string>
   <!-- Mobile network settings, summary for preferred network mode EvDo only [CHAR LIMIT=100] -->
   <string name="preferred_network_mode_evdo_only_summary">Mou preferíu de rede: namái EvDo</string>
   <!-- Mobile network settings, summary for preferred network mode CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary">Mou preferíu de rede: CDMA/EvDo/GSM/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_summary">Mou preferíu de rede: LTE </string>
   <!-- Mobile network settings, summary for preferred network mode GSM/WCDMA/LTE [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_gsm_wcdma_summary">Mou preferíu de rede: GSM/WCDMA/LTE</string>
   <!-- Mobile network settings, summary for preferred network mode CDMA+LTE/EVDO[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_cdma_evdo_summary">Mou preferíu de rede: CDMA+LTE/EVDO</string>
   <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_global_summary">Mou preferíu de rede: Global</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / WCDMA[CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_wcdma_summary">Mou preferíu de rede: LTE/WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / GSM / UMTS [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_gsm_umts_summary">Mou preferíu de rede: LTE / GSM / UMTS</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / CDMA [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_lte_cdma_summary">Mou preferíu de rede: LTE/CDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TDSCDMTA [CHAR LIMIT=100] -->
+  <string name="preferred_network_mode_tdscdma_summary">Mou preferíu de rede: TDSCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode TDSCDMA / WCDMA[CHAR LIMIT=100] -->
   <string name="preferred_network_mode_tdscdma_wcdma_summary">Mou preferíu de rede: TDSCDMA / WCDMA</string>
   <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA[CHAR LIMIT=100] -->
@@ -484,6 +517,7 @@
   <!-- SIM PIN2 screen: error message displayed in a dialog -->
   <!-- SIM PIN2 screen: error message -->
   <!-- SIM PIN2 screen: error message -->
+  <string name="pin2_attempts">\nTienes <xliff:g id="number">%d</xliff:g> intentos restantes.</string>
   <!-- SIM PIN screen: status message displayed in a popup (toast) -->
   <!-- SIM PIN screen: error message shown in dialog when there is a network or sim error.
          [CHAR LIMIT=NONE] -->
@@ -496,9 +530,12 @@
   <!-- In-call screen: status label for a call in the "dialing" state -->
   <!-- In-call screen: status label for a re-dialing call -->
   <!-- In-call screen: status label for a conference call -->
+  <string name="card_title_conf_call">Conferencia telefónica</string>
   <!-- In-call screen: status label for an incoming call -->
+  <string name="card_title_incoming_call">Llamada entrante</string>
   <!-- In-call screen: status label displayed briefly after a call ends -->
   <!-- In-call screen: status label for call that's on hold -->
+  <string name="card_title_on_hold">N\'espera</string>
   <!-- In-call screen: status label for a call that's in the process of hanging up -->
   <!-- In-call screen: status label for a call that's in CDMA flash mode -->
   <!-- Notification strings -->
@@ -639,6 +676,7 @@
          [CHAR LIMIT=40] -->
   <string name="voicemail_settings">Configuración</string>
   <!-- String to display in voicemail number summary when no voicemail num is set -->
+  <string name="voicemail_number_not_set">&lt;Nun s\'afitó&gt;</string>
   <!-- Title displayed above settings coming after voicemail in the call features screen -->
   <!-- Title displayed in the overlay when a call is placed using a 3rd party provider.
          [CHAR LIMIT=40] -->
@@ -676,6 +714,9 @@
   <!-- Label for enabling video calling. -->
   <!-- Message for dialog shown when the user tries to turn on video calling but enhanced 4G LTE
          is disabled. They have to turn on Enhanced 4G LTE capability in network settings first. -->
+  <string name="enable_video_calling_dialog_msg">
+        P\'activar les videollamaes, precises activar el mou de 4G LTE ameyoráu nos axustes de rede.
+    </string>
   <!-- Label for action button in dialog which opens mobile network settings, for video calling
          setting. -->
   <string name="enable_video_calling_dialog_settings">Axustes de rede</string>
@@ -701,6 +742,9 @@
   <!-- String used in place of a message that could not be properly decoded (e.g. bad base64
        data was received.) [CHAR LIMIT=none] -->
   <!-- Call failure reason: SIM card and roaming capabilities have already been activated. [CHAR LIMIT=NONE]-->
+  <string name="callFailed_cdma_activation">
+        Una tarxeta SIM activó\'l serviciu y anovó les capacidaes d\'itinerancia del teléfonu.
+    </string>
   <!-- Call failure reason: Cannot add a call because there are already too many active calls. -->
   <string name="callFailed_cdma_call_limit">
         Hai milenta llamaes actives. Fina o amiesta una enantes de facer otra, por favor.
@@ -728,4 +772,8 @@
   <string name="change_pin_succeeded">Anovóse\'l PIN del buzón de voz</string>
   <!-- The error message to show if the server reported an error while attempting to change the voicemail PIN -->
   <string name="change_pin_system_error">Nun pue afitase\'l PIN</string>
+  <string name="label_ndp">PIN del desbloquéu de rede de la SIM</string>
+  <string name="requesting_unlock">Solicitando\'l desbloquéu de rede\u2026</string>
+  <string name="unlock_failed">La solicitú del desbloquéu de rede nun tuvo ésitu.</string>
+  <string name="unlock_success">El desbloquéu de rede tuvo ésitu.</string>
 </resources>

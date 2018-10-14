@@ -1011,4 +1011,8 @@
   <!-- The error message for th confirm new pin step in change voicemail PIN activity, if the pin doen't match the one previously entered -->
   <!-- The toast to show after the voicemail PIN has been successfully changed -->
   <!-- The error message to show if the server reported an error while attempting to change the voicemail PIN -->
+  <string name="label_ndp">PINی کردنەوەی تۆڕی سیمکارت</string>
+  <string name="requesting_unlock">داوا بۆ کردنەوەی تۆڕ\u2026</string>
+  <string name="unlock_failed">داواکردن بۆ کردنەوەی تۆڕ سەرکەوتوو نەبوو.</string>
+  <string name="unlock_success">کردنەوەی تۆڕ سەرکەوتوو بوو.</string>
 </resources>

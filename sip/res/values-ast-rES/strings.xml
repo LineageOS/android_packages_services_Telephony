@@ -62,6 +62,7 @@
   <!-- Text of SIP-call registration status, still trying to register with SIP server [CHAR LIMIT=NONE] -->
   <string name="registration_status_still_trying">Entá tentándolo\u2026</string>
   <!-- Text of SIP-call registration status, currently not receiving calls on this account [CHAR LIMIT=NONE] -->
+  <string name="registration_status_not_receiving">Nun se reciben llamaes.</string>
   <!-- Text of SIP-call registration status, no data connection [CHAR LIMIT=NONE] -->
   <string name="registration_status_no_data">Paró\'l rexistru de la cuenta porque nun hai conexón a internet.</string>
   <!-- Text of SIP-call registration status, no Wi-Fi connection [CHAR LIMIT=NONE] -->
@@ -69,6 +70,7 @@
   <!-- Text of SIP-call registration status, registration process is not running due to some error [CHAR LIMIT=NONE] -->
   <string name="registration_status_not_running">El rexistru de la cuenta nun tuvo ésitu.</string>
   <!-- Text of SIP-call registration status, currently we can receive calls on this account [CHAR LIMIT=NONE] -->
+  <string name="registration_status_done">Recíbense llamaes.</string>
   <!-- Text of SIP-call registration status, registration failed with a reason; will try again later [CHAR LIMIT=NONE] -->
   <!-- Text of SIP-call registration status, registration failed due to invalid credentials [CHAR LIMIT=NONE] -->
   <string name="registration_status_invalid_credentials">El rexistru de la cuenta nun tuvo ésitu: Nome d\'usuariu o contraseña incorreutos.</string>
@@ -113,15 +115,21 @@
   <!-- Default sip server/proxy port number. -->
   <!-- Default sip server/proxy transport protocol. -->
   <!-- Hint to show the advanced settings section. [CHAR LIMIT=NONE] -->
+  <string name="advanced_settings_show">▷ Toca p\'amosar too</string>
   <!-- Hint to hide the advanced settings section. [CHAR LIMIT=NONE] -->
+  <string name="advanced_settings_hide">▽ Toca p\'anubrir too</string>
   <!-- Text in an alert dialog telling the user that all input fields can not be left blank. [CHAR LIMIT=NONE] -->
   <string name="all_empty_alert">Introduz los detalles de la cuenta SIP nueva.</string>
   <!-- Text in an alert dialog telling the user that some input field (name of which is also part of the strings being translated above) is required and can not be left blank. [CHAR LIMIT=NONE] -->
+  <string name="empty_alert">Ríquese\'l campu <xliff:g id="input_field_name" example="Username, Password...">%s</xliff:g> polo que nun pue dexase baleru.</string>
   <!-- Showing that port number is out of range in an alert dialog. [CHAR LIMIT=NONE] -->
   <string name="not_a_valid_port">El númberu de puertu debería tar ente 1000 y 65534.</string>
   <!-- Message of the alert dialog to notify user that there is no Internet connectivity. [CHAR LIMIT=NONE] -->
+  <string name="no_internet_available">Pa facer una llamada SIP, comprueba la conexón a internet.</string>
   <!-- Message of the alert dialog to notify user that there is no Wi-Fi connectivity. [CHAR LIMIT=NONE] -->
+  <string name="no_wifi_available">Precises tar coneutáu a una rede Wi-FI pa facer llamaes SIP (usa los axustes de Conexones y redes).</string>
   <!-- Message of the alert dialog to notify user that SIP call is not supported. [CHAR LIMIT=NONE] -->
+  <string name="no_voip">Nun se sofiten les llamaes SIP</string>
   <!-- Option for whether the SIP service should send keepalive messages. [CHAR LIMIT=40] -->
   <!-- Option for whether the SIP service should send keepalive messages. [CHAR LIMIT=40] -->
   <string translatable="true" name="sip_always_send_keepalive">Unviar siempres</string>
