@@ -1834,13 +1834,9 @@ public class MobileNetworkSettings extends Activity  {
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             switch(requestCode) {
                 case REQUEST_CODE_EXIT_ECM:
-                    Boolean isChoiceYes = data.getBooleanExtra(
-                            EmergencyCallbackModeExitDialog.EXTRA_EXIT_ECM_RESULT, false);
-                    if (isChoiceYes) {
+                    if (resultCode != Activity.RESULT_CANCELED) {
                         // If the phone exits from ECM mode, show the CDMA Options
                         mCdmaOptions.showDialog(mClickedPreference);
-                    } else {
-                        // do nothing
                     }
                     break;
 
