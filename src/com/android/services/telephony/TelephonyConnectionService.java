@@ -518,7 +518,8 @@ public class TelephonyConnectionService extends ConnectionService {
                 // Notify Telecom of the new Connection type.
                 // TODO: Switch out the underlying connection instead of creating a new
                 // one and causing UI Jank.
-                addExistingConnection(PhoneUtils.makePstnPhoneAccountHandle(phone), repConnection);
+                addExistingConnection(PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
+                        phone, "", isEmergencyNumber), repConnection);
                 // Remove the old connection from Telecom after.
                 originalConnection.setDisconnected(
                         DisconnectCauseUtil.toTelecomDisconnectCause(
