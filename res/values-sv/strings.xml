@@ -94,8 +94,8 @@
     <string name="labelCW" msgid="6120513814915920200">"Samtal väntar"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Meddela mig om inkommande samtal under pågående samtal"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Meddela mig om inkommande samtal under pågående samtal"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Inställningar vidarebefordning"</string>
-    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Inställningar för vidarebefordran av samtal (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Inställningar för vidarebefordran"</string>
+    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Inställningar för vidarebefordran (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Vidarekoppla samtal"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Vidarebefordra alltid"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Använd alltid detta nummer"</string>
@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Återställer inställningarna…"</string>
     <string name="response_error" msgid="6674110501330139405">"Oväntat svar från nätverket."</string>
     <string name="exception_error" msgid="7027667130619518211">"Nätverks- eller SIM-kortsfel."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"SS-begäran har ändrats till en DIAL-begäran."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"SS-begäran har ändrats till en USSD-begäran."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"SS-begäran har ändrats till en ny SS-begäran."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"SS-begäran ändrad till Video DIAL-begäran."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"SS-begäran har ändrats till standardsamtal"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS-begäran har ändrats till en USSD-begäran"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Har ändrats till en ny SS-begäran"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-begäran har ändrats till videosamtal"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Inställningen Fasta nummer i mobilappen är aktiverad. Därför fungerar inte vissa samtalsfunktioner."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Sätt på radion innan du visar inställningarna."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -163,19 +163,25 @@
     <string name="label_available" msgid="1181658289009300430">"Tillgängliga nätverk"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Söker…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Hittade inga nätverk."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Ett fel uppstod när vi sökte efter nätverk."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Det gick inte att hitta nätverk. Försök igen."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Registrerar på <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="5613353860205691579">"Ditt SIM-kort tillåter inte anslutning till detta nätverk."</string>
     <string name="connect_later" msgid="2308119155752343975">"Det går inte att ansluta till det här nätverket just nu. Försök igen senare."</string>
     <string name="registration_done" msgid="495135664535876612">"Registrerad på nätverk."</string>
     <string name="already_auto" msgid="6067116884321285507">"Redan automatiskt val."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Välj nätverk automatiskt"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"Ej tillgänglig när ansluten till %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Nätverk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatisk registrering ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Önskad nätverkstyp"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Ändra nätverksläge"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Önskad nätverkstyp"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(förbjudet)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Välj nätverk"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Frånkopplad"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Ansluten"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Ansluter …"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Det gick inte att ansluta"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"Föredrar GSM/WCDMA"</item>
     <item msgid="8442633436636425221">"Endast GSM"</item>
@@ -230,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"Ringer upp"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Nätverk"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Förbättrat 4G LTE-läge"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Avancerade samtal"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Använd LTE-tjänster för att förbättra bl.a. röstkommunikation (rekommenderas)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Data är aktiverat"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Tillåt dataanvändning"</string>
@@ -238,11 +244,12 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Anslut till datatjänster vid roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Anslut till datatjänster vid roaming"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Du förlorade dataanslutningen eftersom du lämnade ditt hemnätverk utan att aktivera dataroaming."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Dataroaming är avstängd. Tryck för att aktivera."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Mobildataanslutningen avbruten"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Detta kan leda till höga kostnader."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakta din nätoperatör för priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vill du tillåta dataroaming?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Dataanvändning"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Appens dataanvändning"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata använt mellan <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avancerat"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operatör"</string>
@@ -482,7 +489,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"Ring <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Nummer till röstbrevlåda okänt"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Ingen tjänst"</string>
-    <string name="notification_network_selection_text" msgid="2607085729661923269">"Det valda nätverket (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) är inte tillgängligt"</string>
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"Det valda nätverket <xliff:g id="OPERATOR_NAME">%s</xliff:g> är inte tillgängligt"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Aktivera mobilt nätverk, stäng av flygplansläget eller batterisparläget för att ringa ett samtal."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Inaktivera flygplansläget om du vill ringa."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Inaktivera flygplansläget eller anslut till ett trådlöst nätverk om du vill ringa."</string>
@@ -495,20 +502,34 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Det går inte att lägga till samtalet just nu. Ta istället kontakt genom att skicka ett meddelande."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Tjänsten stöds inte"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Det gick inte att växla mellan samtal."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Det går inte att återuppta samtalet."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Det gick inte att koppla isär samtalen."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Det gick inte att överföra."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Det gick inte att ringa konferenssamtal."</string>
+    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
+    <skip />
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Det gick inte att avvisa samtalet."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Det gick inte att släppa samtal."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Det går inte att hålla kvar samtal."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Anslut till ett trådlöst nätverk om du vill ringa."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktivera Wi-Fi-samtal för att ringa."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Krisinformation"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Ägare"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tryck igen för att visa information"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Nödsamtal"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Endast nödsamtal"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Larmnummer"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Larmnummer"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tryck igen om du vill ringa <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Sätter på radion…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Ingen tjänst. Försök igen …"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Det går inte att aktivera flygplansläge under nödsamtal."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Det gick inte att ringa. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> är inget nödnummer."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Det gick inte att ringa. Slå ett nödnummer."</string>
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Nödsamtal ej tillgängligt"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Polis"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulans"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Brand"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Använd tangentbordet om du vill ringa"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Parkera"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Avsluta"</string>
@@ -529,8 +550,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Det gick inte att importera kontakter"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Hörapparater"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Aktivera kompatibilitet med hörapparat"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Slå på eller av RTT"</string>
+    <string name="rtt_mode_title" msgid="6954652435543570121">"RTT-samtal (realtidstext)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Tillåt meddelanden i röstsamtal"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT hjälper döva, hörselskadade och personer med talsvårigheter eller som behöver mer än endast röst.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Läs mer&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-samtal sparas som en meddelandetranskription\n       &lt;br&gt; - RTT är inte tillgängligt för videosamtal"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY av"</item>
     <item msgid="3971695875449640648">"TTY är full"</item>
@@ -593,6 +615,8 @@
     <string name="selectContact" msgid="781975788478987237">"välj kontakt"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Röstsamtal stöds inte"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ring upp"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"visa knappsats"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Knappsats för nödsituationer"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuell röstbrevlåda"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Ställ in pinkod"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Byt pinkod"</string>
@@ -643,58 +667,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"LÄGG TILL DATA"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"AVBRYT"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Samtal avslutat"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radio av"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Inget SIM-kort eller SIM-kortsfel"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Flygplansläge är aktiverat"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"Det går inte att komma åt SIM-kortet"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Inget mobilt nätverk tillgängligt"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Ej tilldelat nummer"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Ingen väg till destination"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Kanal inte godkänd"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operatör bestämde spärrning"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Normal samtalsclearing"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Något är fel med telefonnumret du försöker ringa. Felkod 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"16."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Användare upptagen"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Användare svarar inte"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Användarvarning, inget svar"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Användaren svarar inte"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"19."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Samtal avvisat"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Nummer ändrat"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Blockering"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Ingen vald användarclearing"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Destination fungerar inte"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"27."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Ogiltigt nummerformat (ofullständigt nummer)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Funktion avvisad"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Svar på STATUS ENQUIRY"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal, ej angiven"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Ingen tillgänglig krets/kanal"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Nätverket fungerar inte"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Tillfälligt fel"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Överbelastad växel"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Åtkomstinformation slängd"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Begärd krets/kanal inte tillgänglig"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Resurser inte tillgängliga, ej angivna"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Tjänstekvalitet inte tillgänglig."</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Begärd funktion inte prenumererad"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Inkommande samtal spärrade inom CUG"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Bearer-funktioner inte auktoriserade"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Bearer-funktioner för närvarande inte tillgängliga"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Tjänst eller alternativ inte tillgänglig, ej angivet"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Bearer-tjänst inte implementerad"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM är lika med eller större än ACMmax"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Begärd funktion inte implementerad"</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Endast begränsad bearer-funktion för digital information finns tillgänglig"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Tjänst eller alternativ implementerat, ej angivet"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Ogiltigt transaktionsidentifierarvärde"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Användare inte CUG-medlem"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Inkompatibel destination"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Ogiltigt transitnätval"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Semantiskt felaktigt meddelande"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Ogiltig obligatorisk information"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Meddelandetyp finns inte eller är inte implementerad"</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Meddelandetyp inte kompatibel med protokollstatus"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Informationselement finns inte eller är inte implementerat"</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Villkorligt IE-fel"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Meddelande inte kompatibelt med protokollstatus"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Återställning vid timerutgång"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Protokollfel, ej angivet"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Interworking, ej angiven"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Samtalet kunde inte slutföras. Felkod 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Det gick inte att slutföra samtalet. Felkod 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Det gick inte att slutföra samtalet. Felkod 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Det gick inte att slutföra samtalet. Felkod 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Det gick inte att slutföra samtalet. Felkod 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Det gick inte att slutföra samtalet. Felkod 127."</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Samtalsspärr"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"På"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Av"</string>
@@ -745,4 +769,8 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Vidarekopplat samtal."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Ansluter till konferenssamtal."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Parkerat samtal återupptaget."</string>
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Det går inte att ringa ett samtal eftersom ett annat utgående samtal ringer upp."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Det går inte att ringa eftersom det finns ett obesvarat inkommande samtal. Svara eller avvisa det innan du ringer ett nytt samtal."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Det går inte att ringa eftersom uppringning har inaktiverats med systemegenskapen ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Det går inte att ringa eftersom det redan finns två pågående samtal. Koppla bort ett eller slå ihop dem till en konferens innan du ringer ett nytt samtal."</string>
 </resources>

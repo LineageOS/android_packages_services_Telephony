@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefon – Servicii"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Telefon de urgență"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefon"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"Listă NAR"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"Listă FDN"</string>
     <string name="unknown" msgid="6878797917991465859">"Necunoscut"</string>
     <string name="private_num" msgid="6713286113000232309">"Număr privat"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefon public"</string>
@@ -90,7 +90,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Se încarcă setările…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Număr ascuns în apelurile de ieșire"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Numărul afișat în apelurile de ieșire"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utilizați setările prestabilite ale operatorului, pentru a vă afișa numărul în apelurile de ieșire"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utilizați setările prestabilite ale operatorului pentru a vă afișa numărul în apelurile efectuate"</string>
     <string name="labelCW" msgid="6120513814915920200">"Apel în așteptare"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Anunță-mă dacă primesc un apel în timpul unei convorbiri"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Anunță-mă dacă primesc un apel în timpul unei convorbiri"</string>
@@ -127,10 +127,10 @@
     <string name="reverting_settings" msgid="4752151682666912828">"Se revine la setări..."</string>
     <string name="response_error" msgid="6674110501330139405">"Răspuns neașteptat de la rețea."</string>
     <string name="exception_error" msgid="7027667130619518211">"Eroare de rețea sau de card SIM."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="2816779198916570502">"Solicitarea SS a fost transformată în solicitare DIAL."</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="7490626178582654236">"Solicitarea SS a fost transformată în solicitare USSD."</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="5057846756489053759">"Solicitarea SS a fost transformată în solicitare SS nouă."</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="3091186225006683939">"Solicitarea SS a fost modificată într-o solicitare DIAL video."</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="4440038807310535377">"Solicitarea SS a fost schimbată cu un apel obișnuit"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"Solicitarea SS a fost schimbată cu o solicitare USSD"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Schimbat cu o solicitare SS nouă"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"Solicitarea SS a fost schimbată cu un apel video"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Setarea Numere cu apelări restricționate din aplicația Telefon este activată. Ca rezultat, unele funcții legate de apelare nu pot fi utilizate."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Activați semnalul radio, înainte de a vizualiza aceste setări."</string>
     <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
@@ -163,19 +163,25 @@
     <string name="label_available" msgid="1181658289009300430">"Rețele disponibile"</string>
     <string name="load_networks_progress" msgid="5230707536168902952">"Se caută…"</string>
     <string name="empty_networks_list" msgid="4249426905018815316">"Nicio rețea găsită."</string>
-    <string name="network_query_error" msgid="6828516148953325006">"Eroare la căutarea rețelelor."</string>
+    <string name="network_query_error" msgid="8466081377231178298">"Nu s-au găsit rețele. Încercați din nou."</string>
     <string name="register_on_network" msgid="9055203954040805084">"Se înregistrează pe <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="5613353860205691579">"Cardul dvs. SIM nu permite conexiunea la această rețea."</string>
     <string name="connect_later" msgid="2308119155752343975">"Nu se poate efectua conectarea la această rețea chiar acum. Încercați din nou mai târziu."</string>
     <string name="registration_done" msgid="495135664535876612">"Înregistrat în rețea."</string>
     <string name="already_auto" msgid="6067116884321285507">"Deja în selecție automată."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Selectați automat rețeaua"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"Indisponibil când este conectat la %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Rețea"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Înregistrare automată..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Tipul de rețea preferat"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Schimbați modul de operare a rețelei"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Tipul de rețea preferat"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(interzis)"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Alegeți o rețea"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Deconectat"</string>
+    <string name="network_connected" msgid="1288589103624338857">"Conectat"</string>
+    <string name="network_connecting" msgid="4927203097283533783">"Se conectează…"</string>
+    <string name="network_could_not_connect" msgid="8254009365807767243">"Nu s-a putut conecta"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="3628460389382468528">"GSM/WCDMA preferată"</item>
     <item msgid="8442633436636425221">"Numai GSM"</item>
@@ -230,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"Se apelează"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Rețea"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Mod 4G LTE îmbunătățit"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Apelare avansată"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Folosiți servicii LTE pt. a îmbunătăți comunicări vocale și altele (recomandat)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Date activate"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Permiteți utilizarea datelor"</string>
@@ -238,11 +244,12 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Conectați-vă la serviciile de date în roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Conectați-vă la serviciile de date în roaming"</string>
-    <string name="roaming_reenable_message" msgid="8913735676127858115">"Ați pierdut conectivitatea la date, deoarece ați părăsit rețeaua de domiciliu neavând activat roamingul de date."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Roamingul de date este dezactivat. Atingeți pentru a-l activa."</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"S-a pierdut conexiunea de date mobile"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Se pot acumula costuri mari."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Consultați furnizorul de rețea în privința prețurilor."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permiteți roamingul de date?"</string>
-    <string name="data_usage_title" msgid="8759619109516889802">"Utilizarea datelor"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Date utilizate de aplicație"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de date mobile utilizate în intervalul <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avansate"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operator"</string>
@@ -382,16 +389,16 @@
     <string name="carrier_settings_title" msgid="9028166176523012300">"Setări operator"</string>
     <string name="fdn" msgid="7878832555095183202">"Numere apeluri restricționate"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"Numere pentru apeluri restricționate (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"Listă NAR"</string>
-    <string name="fdn_list_with_label" msgid="7437232552210469217">"Listă NAR (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"Listă FDN"</string>
+    <string name="fdn_list_with_label" msgid="7437232552210469217">"Listă FDN (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Activați NAR"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Numerele cu apelări restricționate sunt activate"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"Numerele pentru apeluri restricționate sunt dezactivate"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"Activați NAR"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"Activați FDN"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Dezactivați NAR"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Schimbați codul PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Dezactivați NAR"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"Activați NAR"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"Activați FDN"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Gestionați numerele cu apelări restricționate"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Schimbați codul PIN pentru acces la NAR"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gestionați lista numerelor de telefon"</string>
@@ -476,7 +483,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"Apelați <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Număr mesagerie vocală necunoscut"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Fără serviciu"</string>
-    <string name="notification_network_selection_text" msgid="2607085729661923269">"Rețeaua selectată (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) nu este disponibilă"</string>
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"Rețeaua selectată (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) nu este disponibilă"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Activați rețeaua mobilă, dezactivați modul avion sau modul de economisire a bateriei pentru a iniția un apel."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Pentru a apela, dezactivați modul Avion."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Pentru a apela, dezactivați modul Avion sau conectați-vă la o rețea wireless."</string>
@@ -489,20 +496,34 @@
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"Apelul nu poate fi inițiat în acest moment. Puteți lua legătura cu persoana respectivă trimițându-i un mesaj."</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"Serviciul nu este compatibil"</string>
     <string name="incall_error_supp_service_switch" msgid="5237002176899962862">"Apelurile nu pot fi comutate."</string>
+    <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Nu se poate relua apelul."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Apelul nu poate fi separat."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Nu se poate transfera."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Teleconferința nu se poate efectua."</string>
+    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
+    <skip />
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Apelul nu poate fi respins."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Apelurile nu pot fi eliberate."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Apelurile nu pot fi puse în așteptare."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Pentru a apela, conectați-vă la o rețea wireless."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Activați apelarea prin Wi-Fi pentru a iniția un apel."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Informații în caz de urgență"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Proprietar"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Atingeți din nou pentru a vedea informațiile"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Apel de urgență"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Numai apeluri de urgență"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Număr de urgență"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numere de urgență"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Atingeți din nou pentru a apela <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Se activează semnalul radio..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Fără semnal. Se încearcă din nou..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Nu se poate intra în modul avion în timpul unui apel de urgență."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Nu se poate apela. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> nu este un număr de urgență."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Nu se poate apela. Formați un număr de urgență."</string>
+    <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Apelurile de urgență nu sunt disponibile."</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Poliție"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulanță"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Pompieri"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Utilizați tastatura pentru a forma"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Rețineți"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Terminat"</string>
@@ -523,8 +544,9 @@
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Persoana de contact nu a fost importată"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Aparate auditive"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"Activați compatibilitatea cu aparatele auditive"</string>
-    <string name="rtt_mode_title" msgid="5868105073514206953">"RTT"</string>
-    <string name="rtt_mode_summary" msgid="7346441783429748083">"Activați sau dezactivați RTT"</string>
+    <string name="rtt_mode_title" msgid="6954652435543570121">"Apel de tipul Text în timp real (TTR)"</string>
+    <string name="rtt_mode_summary" msgid="5146344277246544580">"Permiteți schimbul de mesaje în timpul unui apel vocal"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"TTR oferă asistență apelanților fără auz, cu deficiențe de auz, care au dizabilități de vorbire sau care au nevoie de mai mult decât de voce.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Aflați mai multe&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Apelurile RTT sunt salvate ca transcrierea unui mesaj\n       &lt;br&gt; - Serviciul TTR nu este disponibil pentru apelurile video."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY dezactivat"</item>
     <item msgid="3971695875449640648">"TTY integral"</item>
@@ -589,6 +611,8 @@
     <string name="selectContact" msgid="781975788478987237">"selectarea unei persoane din agendă"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Apelarea vocală nu este acceptată"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"apelare"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"afișați tastatura numerică"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Tastatură pentru apeluri de urgență"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Mesagerie vocală vizuală"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Setați codul PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Schimbați codul PIN"</string>
@@ -639,58 +663,58 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ADĂUGAȚI DATE"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ANULAȚI"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Apel încheiat"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="3773036949107147708">"Radio oprit"</string>
-    <string name="clh_callFailed_simError_txt" msgid="757650590524277969">"Niciun card SIM sau eroare de card SIM"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Modul Avion este activat"</string>
+    <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"Nu se poate accesa cardul SIM"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Rețeaua mobilă nu este disponibilă"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="7635996793232604064">"Număr neatribuit (nealocat)"</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="8561586745288855167">"Nicio rută către destinație"</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="8048626924246611459">"Canalul nu poate fi acceptat"</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="6889705714244076823">"Operatorul a stabilit blocarea"</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="2810975267106345820">"Se șterg apelurile normale"</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"A apărut o problemă legată de numărul de telefon pe care încercați să-l apelați. Cod de eroare 1."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="2259464183880140671">"Nu s-a finalizat apelul. Cod de eroare 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="3159336281525222855">"Nu s-a finalizat apelul. Cod de eroare 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="1831977101604817389">"Nu s-a finalizat apelul. Cod de eroare 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="7369313431310446847">"Nu s-a finalizat apelul. Cod de eroare 16."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="2736095995784746915">"Utilizatorul este ocupat"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="1421543095873040084">"Niciun utilizator nu răspunde"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="6606245970376797447">"Alertare utilizator, niciun răspuns"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="3675206502567252162">"Utilizatorul nu răspunde"</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="363445537769733281">"Nu s-a finalizat apelul. Cod de eroare 19."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="8001665478195793223">"Apelul a fost respins"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="5127909898925154242">"Numărul a fost modificat"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="6864702416751338567">"Preempțiune"</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="8725898326616836656">"Se șterg utilizatorii neselectați"</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="6626355413556362437">"Destinația nu este disponibilă"</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="1100414016302714854">"Nu s-a finalizat apelul. Cod de eroare 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="6248192300127702626">"Nu s-a finalizat apelul. Cod de eroare 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="4879936907430554772">"Nu s-a finalizat apelul. Cod de eroare 27."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="6987646655639655370">"Format de număr nevalid (număr incomplet)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="4539787567476563415">"Facilitatea a fost respinsă"</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="178503536263624366">"Răspuns la INTEROGAREA STĂRII"</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="2777574148560245427">"Normal, nespecificat"</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="2894749820848784700">"Niciun circuit/canal disponibil"</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="807472585030492179">"Rețeaua nu funcționează"</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="1985847623937655151">"Eroare temporară"</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="465517139462928431">"Se comută congestia echipamentelor"</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="132851305339579892">"Informațiile de acces au fost șterse"</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="2316345471851443847">"Circuitul/canalul solicitat nu este disponibil"</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="4460267429142724322">"Resurse indisponibile, nespecificate"</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="7315823047206338755">"Calitatea serviciului nu este disponibilă"</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="1688438372518949530">"Facilitatea solicitată nu este abonată"</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="3922231620226043342">"Apelurile primite sunt blocate în CUG"</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="6515594235334537340">"Capacitatea de transport nu a fost autorizată"</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="8013567156449692135">"Capacitatea de transport nu este disponibilă în prezent"</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="8663374141880847414">"Serviciul sau opțiunea nu sunt disponibile, nespecificat"</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="2772484977847973583">"Serviciul de transport nu este implementat"</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="2192709279981159761">"ACM este egală sau mai mare decât ACMmax"</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="406404292085779118">"Facilitatea solicitată nu este implementată."</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="4817899794531157207">"Este disponibilă numai capacitatea de transport restricționat de informații digitale"</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="2968655784896862505">"Serviciul sau opțiunea nu sunt implementate, nespecificat"</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3843478518660918642">"Valoare nevalidă de identificare a tranzacției"</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="8462852903153938988">"Utilizatorul nu este membru CUG"</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="2580750652910253219">"Destinație incompatibilă"</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6589916900457111005">"Selecție nevalidă a rețelei de tranzit"</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="2329284157442218683">"Mesaj incorect din punct de vedere semantic"</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="9081556111928912676">"Informații obligatorii nevalide"</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="2641350895896546715">"Elementul de informații este inexistent sau nu a fost implementat."</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="6598180735494982466">"Tipul de mesaj nu este compatibil cu starea protocolului"</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="4725610801664706983">"Elementul de informații este inexistent sau nu a fost implementat."</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="9140031076499566143">"Eroare IE condițională"</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="6586005128633024271">"Mesajul nu este compatibil cu starea protocolului"</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="3680765722923600294">"Recuperare la expirarea timpului"</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Eroare de protocol, nespecificată"</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Inter-colaborare, nespecificată"</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1028912823639389563">"Nu s-a finalizat apelul. Cod de eroare 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="1250833944238081212">"Nu s-a finalizat apelul. Cod de eroare 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="8765640093649364786">"Nu s-a finalizat apelul. Cod de eroare 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="6884477141997665736">"Nu s-a finalizat apelul. Cod de eroare 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="76447023032000125">"Nu s-a finalizat apelul. Cod de eroare 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5057716306945664356">"Nu s-a finalizat apelul. Cod de eroare 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="4958831706265227632">"Nu s-a finalizat apelul. Cod de eroare 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="5033636666434831179">"Nu s-a finalizat apelul. Cod de eroare 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="3221429183862933558">"Nu s-a finalizat apelul. Cod de eroare 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="1385943395137055442">"Nu s-a finalizat apelul. Cod de eroare 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="8464132603057397297">"Nu s-a finalizat apelul. Cod de eroare 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="3853815238079666882">"Nu s-a finalizat apelul. Cod de eroare 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="6791665425652545510">"Nu s-a finalizat apelul. Cod de eroare 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="2975453855928450909">"Nu s-a finalizat apelul. Cod de eroare 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="753763978405557873">"Nu s-a finalizat apelul. Cod de eroare 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="1714515856150546668">"Nu s-a finalizat apelul. Cod de eroare 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="5433179845809692163">"Nu s-a finalizat apelul. Cod de eroare 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="4339523227014428123">"Nu s-a finalizat apelul. Cod de eroare 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="5217500914101821728">"Nu s-a finalizat apelul. Cod de eroare 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2423146296631060723">"Nu s-a finalizat apelul. Cod de eroare 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="873208782556277597">"Nu s-a finalizat apelul. Cod de eroare 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="3926779129494281620">"Nu s-a finalizat apelul. Cod de eroare 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="2517559636224367413">"Nu s-a finalizat apelul. Cod de eroare 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="7994154962189949306">"Nu s-a finalizat apelul. Cod de eroare 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="5847046471813330674">"Nu s-a finalizat apelul. Cod de eroare 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="5419940790658960361">"Nu s-a finalizat apelul. Cod de eroare 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3350178645665420102">"Nu s-a finalizat apelul. Cod de eroare 96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="7080310506268713895">"Nu s-a finalizat apelul. Cod de eroare 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="5251558113020693277">"Nu s-a finalizat apelul. Cod de eroare 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="1643642065908165846">"Nu s-a finalizat apelul. Cod de eroare 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="1622467860490603665">"Nu s-a finalizat apelul. Cod de eroare 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3776039646804248109">"Nu s-a finalizat apelul. Cod de eroare 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="4529313282997136028">"Nu s-a finalizat apelul. Cod de eroare 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="4900075501687505296">"Nu s-a finalizat apelul. Cod de eroare 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Nu s-a finalizat apelul. Cod de eroare 127."</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Restricționarea apelurilor"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Activat"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Dezactivat"</string>
@@ -741,4 +765,8 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Apel redirecționat"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Vă conectați la conferința telefonică."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Apelul în așteptare a fost deconectat."</string>
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nu se poate iniția un apel când se efectuează deja alt apel."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nu se poate iniția un apel când primiți un apel la care nu ați răspuns. Răspundeți sau respingeți apelul primit înainte de a iniția un apel nou."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nu se poate iniția un apel deoarece apelarea a fost dezactivată folosindu-se funcția de sistem ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Nu se poate iniția un apel când există deja două apeluri în desfășurare. Deconectați unul dintre ele sau îmbinați-le într-o conferință înainte de a iniția un apel nou."</string>
 </resources>
