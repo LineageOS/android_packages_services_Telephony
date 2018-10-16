@@ -25,6 +25,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.ComponentInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -1811,10 +1812,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Returns the target SDK version number for a given package name.
+     *
+     * @return target SDK if the package is found or INT_MAX.
+     */
+    private int getTargetSdk(String packageName) {
+        try {
+            final ApplicationInfo ai =
+                    mPhone.getContext().getPackageManager().getApplicationInfo(packageName, 0);
+            if (ai != null) return ai.targetSdkVersion;
+        } catch (PackageManager.NameNotFoundException unexpected) {
+        }
+        return Integer.MAX_VALUE;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
-    public List<NeighboringCellInfo>
-            getNeighboringCellInfo(String callingPackage, int targetSdk) {
+    public List<NeighboringCellInfo> getNeighboringCellInfo(String callingPackage) {
+        final int targetSdk = getTargetSdk(callingPackage);
         if (targetSdk >= android.os.Build.VERSION_CODES.Q) {
             throw new SecurityException(
                     "getNeighboringCellInfo() is unavailable to callers targeting Q+ SDK levels.");
