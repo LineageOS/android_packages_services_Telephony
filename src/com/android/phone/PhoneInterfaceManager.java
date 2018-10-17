@@ -985,7 +985,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) msg.obj;
                     Pair<Phone, WorkSource> args = (Pair<Phone, WorkSource>) request.argument;
                     onCompleted = obtainMessage(EVENT_GET_ALL_CELL_INFO_DONE, request);
-                    ((Phone) args.first).getAllCellInfo(args.second, onCompleted);
+                    ((Phone) args.first).requestCellInfoUpdate(args.second, onCompleted);
                     break;
 
                 case EVENT_GET_ALL_CELL_INFO_DONE:
