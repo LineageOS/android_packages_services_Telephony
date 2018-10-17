@@ -171,7 +171,7 @@
     <string name="already_auto" msgid="6067116884321285507">"Automatski odabir se već koristi."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Automatski odaberi mrežu"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Mreža"</string>
-    <string name="register_automatically" msgid="6017849844573519637">"Automatska registracija u toku…"</string>
+    <string name="register_automatically" msgid="6017849844573519637">"Automatska registracija…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Preferirana vrsta mreže"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Promijeni način rada mreže"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Preferirana vrsta mreže"</string>
