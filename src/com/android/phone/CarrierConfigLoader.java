@@ -70,6 +70,7 @@ import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -134,6 +135,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private static final int EVENT_FETCH_CARRIER_TIMEOUT = 15;
 
     private static final int BIND_TIMEOUT_MILLIS = 30000;
+
+    // Length limit of gid1 for naming config file.
+    private static final int GID1_LENGTH_LIMIT = 20;
 
     // Tags used for saving and restoring XML documents.
     private static final String TAG_DOCUMENT = "carrier_config";
@@ -216,8 +220,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 case EVENT_DO_FETCH_DEFAULT:
                 {
                     final String iccid = getIccIdForPhoneId(phoneId);
+                    final String gid1 = getGid1ForPhoneId(phoneId);
                     final PersistableBundle config =
-                            restoreConfigFromXml(mPlatformCarrierConfigPackage, iccid);
+                            restoreConfigFromXml(mPlatformCarrierConfigPackage, iccid, gid1);
                     if (config != null) {
                         log(
                                 "Loaded config from XML. package="
@@ -258,6 +263,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     }
                     final CarrierIdentifier carrierId = getCarrierIdForPhoneId(phoneId);
                     final String iccid = getIccIdForPhoneId(phoneId);
+                    final String gid1 = getGid1ForPhoneId(phoneId);
                     // ResultReceiver callback will execute in this Handler's thread.
                     final ResultReceiver resultReceiver =
                             new ResultReceiver(this) {
@@ -278,8 +284,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                     }
                                     PersistableBundle config =
                                             resultData.getParcelable(KEY_CONFIG_BUNDLE);
-                                    saveConfigToXml(
-                                            mPlatformCarrierConfigPackage, iccid, config);
+                                    saveConfigToXml(mPlatformCarrierConfigPackage,
+                                            iccid, gid1, config);
                                     mConfigFromDefaultApp[phoneId] = config;
                                     sendMessage(
                                             obtainMessage(
@@ -335,8 +341,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 {
                     final String carrierPackageName = getCarrierPackageForPhoneId(phoneId);
                     final String iccid = getIccIdForPhoneId(phoneId);
+                    final String gid1 = getGid1ForPhoneId(phoneId);
                     final PersistableBundle config =
-                            restoreConfigFromXml(carrierPackageName, iccid);
+                            restoreConfigFromXml(carrierPackageName, iccid, gid1);
                     if (config != null) {
                         log(
                                 "Loaded config from XML. package="
@@ -376,6 +383,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     }
                     final CarrierIdentifier carrierId = getCarrierIdForPhoneId(phoneId);
                     final String iccid = getIccIdForPhoneId(phoneId);
+                    final String gid1 = getGid1ForPhoneId(phoneId);
                     // ResultReceiver callback will execute in this Handler's thread.
                     final ResultReceiver resultReceiver =
                             new ResultReceiver(this) {
@@ -396,8 +404,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                     }
                                     PersistableBundle config =
                                             resultData.getParcelable(KEY_CONFIG_BUNDLE);
-                                    saveConfigToXml(
-                                            getCarrierPackageForPhoneId(phoneId), iccid, config);
+                                    saveConfigToXml(getCarrierPackageForPhoneId(phoneId),
+                                            iccid, gid1, config);
                                     mConfigFromCarrierApp[phoneId] = config;
                                     sendMessage(
                                             obtainMessage(
@@ -599,6 +607,21 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         return phone.getIccSerialNumber();
     }
 
+    private String getGid1ForPhoneId(int phoneId) {
+        if (!SubscriptionManager.isValidPhoneId(phoneId)) {
+            return null;
+        }
+        Phone phone = PhoneFactory.getPhone(phoneId);
+        if (phone == null) {
+            return null;
+        }
+        String gid1 = phone.getGroupIdLevel1();
+        if (gid1 == null) {
+            return null;
+        }
+        return gid1.substring(0, Math.min(gid1.length(), GID1_LENGTH_LIMIT));
+    }
+
     /**
      * Writes a bundle to an XML file.
      *
@@ -610,9 +633,12 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
      *
      * @param packageName the name of the package from which we fetched this bundle.
      * @param iccid the ICCID of the subscription for which this bundle was fetched.
+     * @param extras First 20 characters of gid1 of the subscription for which the bundle
+     *               was fetched.
      * @param config the bundle to be written. Null will be treated as an empty bundle.
      */
-    private void saveConfigToXml(String packageName, String iccid, PersistableBundle config) {
+    private void saveConfigToXml(String packageName, String iccid, String extras,
+            PersistableBundle config) {
         if (packageName == null || iccid == null) {
             loge("Cannot save config with null packageName or iccid.");
             return;
@@ -635,7 +661,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         FileOutputStream outFile = null;
         try {
             outFile = new FileOutputStream(
-                    new File(mContext.getFilesDir(), getFilenameForConfig(packageName, iccid)));
+                    new File(mContext.getFilesDir(), getFilenameForConfig(packageName,
+                            iccid, extras)));
             FastXmlSerializer out = new FastXmlSerializer();
             out.setOutput(outFile, "utf-8");
             out.startDocument("utf-8", true);
@@ -670,10 +697,13 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
      *
      * @param packageName the name of the package from which we fetched this bundle.
      * @param iccid the ICCID of the subscription for which this bundle was fetched.
+     * @param extras First 20 characters of gid1 of the subscription for which the bundle
+     *               was fetched.
      * @return the bundle from the XML file. Returns null if there is no saved config, the saved
      *         version does not match, or reading config fails.
      */
-    private PersistableBundle restoreConfigFromXml(String packageName, String iccid) {
+    private PersistableBundle restoreConfigFromXml(String packageName, String iccid,
+            String extras) {
         final String version = getPackageVersion(packageName);
         if (version == null) {
             loge("Failed to get package version for: " + packageName);
@@ -688,7 +718,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         FileInputStream inFile = null;
         try {
             inFile = new FileInputStream(
-                    new File(mContext.getFilesDir(), getFilenameForConfig(packageName, iccid)));
+                    new File(mContext.getFilesDir(), getFilenameForConfig(packageName, iccid,
+                            extras)));
             XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
             parser.setInput(inFile, "utf-8");
 
@@ -751,7 +782,11 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     }
 
     /** Builds a canonical file name for a config file. */
-    private String getFilenameForConfig(@NonNull String packageName, @NonNull String iccid) {
+    private String getFilenameForConfig(@NonNull String packageName, @NonNull String iccid,
+            String extras) {
+        if (extras != null) {
+            return "carrierconfig-" + packageName + "-" + iccid + "-" + extras + ".xml";
+        }
         return "carrierconfig-" + packageName + "-" + iccid + ".xml";
     }
 
