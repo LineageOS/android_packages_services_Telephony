@@ -292,10 +292,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // SubscriptionManager.INVALID_SUBSCRIPTION_ID
         public Integer subId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
 
+        // In cases where subId is unavailable, the caller needs to specify the phone.
+        public Phone phone;
+
         public WorkSource workSource;
 
         public MainThreadRequest(Object argument) {
             this.argument = argument;
+        }
+
+        MainThreadRequest(Object argument, Phone phone, WorkSource workSource) {
+            this.argument = argument;
+            if (phone != null) {
+                this.phone = phone;
+            }
+            this.workSource = workSource;
         }
 
         MainThreadRequest(Object argument, Integer subId, WorkSource workSource) {
@@ -986,9 +997,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_GET_ALL_CELL_INFO:
                     request = (MainThreadRequest) msg.obj;
-                    Pair<Phone, WorkSource> args = (Pair<Phone, WorkSource>) request.argument;
                     onCompleted = obtainMessage(EVENT_GET_ALL_CELL_INFO_DONE, request);
-                    ((Phone) args.first).requestCellInfoUpdate(args.second, onCompleted);
+                    request.phone.requestCellInfoUpdate(request.workSource, onCompleted);
                     break;
 
                 case EVENT_GET_ALL_CELL_INFO_DONE:
@@ -1062,7 +1072,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @see #sendRequestAsync
      */
     private Object sendRequest(int command, Object argument) {
-        return sendRequest(command, argument,  SubscriptionManager.INVALID_SUBSCRIPTION_ID, null);
+        return sendRequest(
+                command, argument, SubscriptionManager.INVALID_SUBSCRIPTION_ID, null, null);
     }
 
     /**
@@ -1072,7 +1083,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     private Object sendRequest(int command, Object argument, WorkSource workSource) {
         return sendRequest(command, argument,  SubscriptionManager.INVALID_SUBSCRIPTION_ID,
-                workSource);
+                null, workSource);
     }
 
     /**
@@ -1081,7 +1092,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @see #sendRequestAsync
      */
     private Object sendRequest(int command, Object argument, Integer subId) {
-        return sendRequest(command, argument, subId, null);
+        return sendRequest(command, argument, subId, null, null);
     }
 
     /**
@@ -1089,12 +1100,40 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * waits for the request to complete, and returns the result.
      * @see #sendRequestAsync
      */
-    private Object sendRequest(int command, Object argument, Integer subId, WorkSource workSource) {
+    private Object sendRequest(int command, Object argument, int subId, WorkSource workSource) {
+        return sendRequest(command, argument, subId, null, workSource);
+    }
+
+    /**
+     * Posts the specified command to be executed on the main thread,
+     * waits for the request to complete, and returns the result.
+     * @see #sendRequestAsync
+     */
+    private Object sendRequest(int command, Object argument, Phone phone, WorkSource workSource) {
+        return sendRequest(
+                command, argument, SubscriptionManager.INVALID_SUBSCRIPTION_ID, phone, workSource);
+    }
+
+    /**
+     * Posts the specified command to be executed on the main thread,
+     * waits for the request to complete, and returns the result.
+     * @see #sendRequestAsync
+     */
+    private Object sendRequest(
+            int command, Object argument, Integer subId, Phone phone, WorkSource workSource) {
         if (Looper.myLooper() == mMainThreadHandler.getLooper()) {
             throw new RuntimeException("This method will deadlock if called from the main thread.");
         }
 
-        MainThreadRequest request = new MainThreadRequest(argument, subId, workSource);
+        MainThreadRequest request = null;
+        if (subId != SubscriptionManager.INVALID_SUBSCRIPTION_ID && phone != null) {
+            throw new IllegalArgumentException("subId and phone cannot both be specified!");
+        } else if (phone != null) {
+            request = new MainThreadRequest(argument, phone, workSource);
+        } else {
+            request = new MainThreadRequest(argument, subId, workSource);
+        }
+
         Message msg = mMainThreadHandler.obtainMessage(command, request);
         msg.sendToTarget();
 
@@ -1877,8 +1916,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             List<CellInfo> cellInfos = new ArrayList<CellInfo>();
             for (Phone phone : PhoneFactory.getPhones()) {
                 final List<CellInfo> info = (List<CellInfo>) sendRequest(
-                        CMD_GET_ALL_CELL_INFO,
-                        new Pair<Phone, WorkSource>(phone, workSource));
+                        CMD_GET_ALL_CELL_INFO, null, phone, workSource);
                 if (info != null) cellInfos.addAll(info);
             }
             return cellInfos;
