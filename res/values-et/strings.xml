@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"Võrku registreeritud."</string>
     <string name="already_auto" msgid="6067116884321285507">"On juba automaatses valikus."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Vali võrk automaatselt"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"Pole saadaval, kui ühendus on loodud võrguteenuse pakkujaga %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Võrk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automaatne registreerimine ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Eelistatud võrgutüüp"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"Helistamine"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Võrk"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Tõhustatud 4G LTE režiim"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Täpsem helistamine"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Kasutage hääl- ja muu suhtluse täiustamiseks LTE-teenuseid (soovitatav)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Andmeside lubatud"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Luba andmekasutus"</string>
@@ -395,11 +396,11 @@
     <string name="fdn_disabled" msgid="4700049736675368279">"Fikseeritud valimisnumbrid on keelatud"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Luba FDN"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Keela FDN"</string>
-    <string name="change_pin2" msgid="2153563695382176676">"Muuda PIN2-koodi"</string>
+    <string name="change_pin2" msgid="2153563695382176676">"PIN2-koodi muutmine"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Keela FDN"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Luba FDN"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Fikseeritud valimisnumbrite haldamine"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Muuda FDN-juurdepääsuks PIN-koodi"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN-juurdepääsuks PIN-koodi muutmine"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Telefoninumbrite loendi haldamine"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Häälvestluse privaatsus"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Luba täiendatud privaatsusrežiim"</string>
@@ -482,7 +483,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"Valige <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Kõneposti number teadmata"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Teenus puudub"</string>
-    <string name="notification_network_selection_text" msgid="2607085729661923269">"Valitud võrk (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) pole saadaval"</string>
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"Valitud operaatori <xliff:g id="OPERATOR_NAME">%s</xliff:g> võrk pole saadaval"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Helistamiseks lülitage mobiilsidevõrk sisse, lennu- või akusäästjarežiim välja."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Helistamiseks lülitage lennurežiim välja."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Helistamiseks lülitage lennurežiim välja või looge ühendus traadita võrguga."</string>
@@ -498,19 +499,31 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Kõnet ei saa jätkata."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Kõnet ei saa eraldada."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Ei saa üle kanda."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Konverentskõnesid ei saa teha."</string>
+    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
+    <skip />
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Kõnet ei saa tagasi lükata."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Kõnet (kõnesid) ei saa vabastada."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Kõnesid ei saa ootele panna."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Helistamiseks looge ühendus traadita võrguga."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Lubage helistamiseks WiFi-kõned."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Hädaabiteave"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Omanik"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Teabe vaatamiseks puudutage uuesti"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Hädaabikõne"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Ainult hädaabikõned"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Hädaabinumber"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Hädaabinumbrid"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Puudutage uuesti, et helistada numbril <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Raadioside sisselülitamine ..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Teenus puudub. Uuesti proovimine ..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Hädaabikõne ajal ei saa lennurežiimi aktiveerida."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Ei saa helistada. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ei ole hädaabikõne number."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Ei saa helistada. Valige hädaabinumber."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Hädaabikõned pole saadaval"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Politsei"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Kiirabiauto"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Tuletõrje"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Kasutage valimiseks klaviatuuri"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Pane ootele"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Lõpeta"</string>
@@ -590,12 +603,14 @@
     <string name="voicemail_settings" msgid="72448049107749316">"Seadistus"</string>
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Määramata&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Muud kõneseaded"</string>
-    <string name="calling_via_template" msgid="4839419581866928142">"Kõne edastab <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="calling_via_template" msgid="4839419581866928142">"Operaator: <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"kontakti foto"</string>
     <string name="goPrivate" msgid="865837794424530980">"aktiveeri privaatrežiim"</string>
     <string name="selectContact" msgid="781975788478987237">"vali kontakt"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Tavakõnesid ei toetata"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"helista"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"kuva valimisklahvistik"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Hädaabi valimisklahvistik"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuaalne kõnepost"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN-koodi määramine"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN-koodi muutmine"</string>
@@ -748,4 +763,8 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Edasisuunatud kõne."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Konverentskõnega liitumine."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Ootel olnud kõne vabastati."</string>
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Kõnet ei saa teha, kuna teist väljuvat kõnet juba valitakse."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Kõnet ei saa teha, kuna telefonis on sissetulev vastamata kõne. Enne uue kõne tegemist vastake kõnele või katkestage see."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Kõnet ei saa teha, kuna helistamine on süsteemi atribuudiga ro.telephony.disable-call keelatud."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Kõnet ei saa teha, kuna kaks kõnet on juba pooleli. Enne uue kõne tegemist katkestage üks kõnedest või liitke need konverentskõnedeks."</string>
 </resources>

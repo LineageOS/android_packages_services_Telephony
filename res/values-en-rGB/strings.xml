@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"Registered on network."</string>
     <string name="already_auto" msgid="6067116884321285507">"Already in automatic selection."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Automatically select network"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"Unavailable when connected to %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Network"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatic registration..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Preferred network type"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"Calling"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Network"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Enhanced 4G LTE Mode"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Advanced calling"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Use LTE services to improve voice and other communications (recommended)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Data enabled"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Allow data usage"</string>
@@ -482,7 +483,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"Dial <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Voicemail number unknown"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"No service"</string>
-    <string name="notification_network_selection_text" msgid="2607085729661923269">"Selected network (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) unavailable"</string>
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"Selected network<xliff:g id="OPERATOR_NAME">%s</xliff:g> unavailable"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Turn on mobile network, turn off airplane mode or turn off battery saver mode to make a call."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Turn off aeroplane mode to make a call."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Turn off aeroplane mode or connect to a wireless network to make a call."</string>
@@ -498,19 +499,30 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Can\'t resume call."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Can\'t separate call."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Can\'t transfer."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Unable to conference calls."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Unable to merge calls."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Can\'t reject call."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Can\'t release call(s)."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Can\'t hold calls."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Connect to a wireless network to make a call."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Enable Wi-Fi calling to make a call."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Emergency information"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Owner"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tap again to view info"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Emergency call"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Emergency calls only"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Emergency number"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Emergency numbers"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tap again to call <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Turning on radio…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"No service. Trying again…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Cannot enter aeroplane mode during an emergency call."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Can\'t call. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> is not an emergency number."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Can\'t call. Dial an emergency number."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Emergency calling not available"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Police"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulance"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Fire"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Use keyboard to dial"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Hold"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"End"</string>
@@ -596,6 +608,8 @@
     <string name="selectContact" msgid="781975788478987237">"select contact"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Voice calling not supported"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"dial"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"show dial pad"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Emergency dial pad"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visual Voicemail"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Set PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Change PIN"</string>
@@ -748,4 +762,8 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Forwarded call."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Joining conference call."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Held call has been released."</string>
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Cannot place a call as another outgoing call is already dialling."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Cannot place a call as there is an unanswered incoming call. Answer or reject the incoming call prior to placing a new call."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Cannot place a call as calling has been disabled using the ro.telephony.disable-call system property."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Cannot place a call a there are already two calls in progress. Disconnect one of the calls or merge them into a conference prior to placing a new call."</string>
 </resources>

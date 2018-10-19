@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"ลงทะเบียนบนเครือข่ายแล้ว"</string>
     <string name="already_auto" msgid="6067116884321285507">"อยู่ในการเลือกอัตโนมัติแล้ว"</string>
     <string name="select_automatically" msgid="1046727200631770962">"เลือกเครือข่ายโดยอัตโนมัติ"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"ใช้งานไม่ได้เมื่อเชื่อมต่อกับ %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"เครือข่าย"</string>
     <string name="register_automatically" msgid="6017849844573519637">"การลงทะเบียนอัตโนมัติ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ประเภทเครือข่ายที่ต้องการ"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"กำลังโทร"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"เครือข่าย"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"โหมด 4G LTE ที่ปรับปรุงแล้ว"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"การโทรขั้นสูง"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ใช้บริการ LTE เพื่อปรับปรุงเสียงและการติดต่อสื่อสารด้วยวิธีอื่นๆ (แนะนำ)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"เปิดใช้งานข้อมูลแล้ว"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"อนุญาตการใช้ข้อมูล"</string>
@@ -244,7 +245,7 @@
     <string name="roaming_enable" msgid="7331106985174381987">"เชื่อมต่ออินเทอร์เน็ตมือถือขณะโรมมิ่ง"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"เชื่อมต่ออินเทอร์เน็ตมือถือขณะโรมมิ่ง"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"การโรมมิ่งข้อมูลปิดอยู่ แตะเพื่อเปิด"</string>
-    <string name="roaming_notification_title" msgid="4749053220884743110">"การเชื่อมต่อข้อมูลผ่านมือถือถูกตัด"</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"การเชื่อมต่อเน็ตมือถือถูกตัด"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"คุณอาจต้องเสียค่าใช้จ่ายมาก"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"โปรดสอบถามผู้ให้บริการเครือข่ายสำหรับข้อมูลเกี่ยวกับราคา"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"อนุญาตการโรมมิ่งอินเทอร์เน็ตไหม"</string>
@@ -268,7 +269,7 @@
     <string name="throttle_current_usage" msgid="8762280193043815361">"ข้อมูลที่ใช้ในช่วงเวลาปัจจุบัน"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"ช่วงเวลาการใช้ข้อมูล"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"นโยบายอัตราการส่งข้อมูล"</string>
-    <string name="throttle_help" msgid="243651091785169900">"เรียนรู้เพิ่มเติม"</string>
+    <string name="throttle_help" msgid="243651091785169900">"ดูข้อมูลเพิ่มเติม"</string>
     <string name="throttle_status_subtext" msgid="1657318943142085170">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) จากช่วงสูงสุด <xliff:g id="USED_2">%3$s</xliff:g> \nช่วงถัดไปจะเริ่มในอีก <xliff:g id="USED_3">%4$d</xliff:g> วัน (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) จากช่วงสูงสุด <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g>เกินจำนวนสูงสุด\nอัตราการส่งข้อมูลถูกลดเหลือ<xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
@@ -482,7 +483,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"หมุนหมายเลข <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"ไม่ทราบหมายเลขข้อความเสียง"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"ไม่มีบริการ"</string>
-    <string name="notification_network_selection_text" msgid="2607085729661923269">"เครือข่ายที่เลือกไว้ (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) ไม่พร้อมใช้งาน"</string>
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"เครือข่ายที่เลือกไว้<xliff:g id="OPERATOR_NAME">%s</xliff:g> ไม่พร้อมใช้งาน"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"เปิดเครือข่ายมือถือ ปิดโหมดบนเครื่องบิน หรือปิดโหมดประหยัดแบตเตอรี่เพื่อโทรออก"</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"ปิดโหมดบนเครื่องบินเพื่อโทรออก"</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"ปิดโหมดบนเครื่องบินหรือเชื่อมต่อเครือข่ายไร้สายเพื่อโทรออก"</string>
@@ -498,19 +499,31 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"โทรต่อไม่ได้"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"ไม่สามารถแยกสายได้"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"ไม่สามารถโอนได้"</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"ประชุมทางโทรศัพท์ไม่ได้"</string>
+    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
+    <skip />
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"ไม่สามารถปฏิเสธสายได้"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"ไม่สามารถเริ่มการโทรได้"</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"ไม่สามารถถือสายรอได้"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"เชื่อมต่อเครือข่ายไร้สายเพื่อโทรออก"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"เปิดใช้การโทรผ่าน Wi-Fi เพื่อโทรออก"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"ข้อมูลสำหรับกรณีฉุกเฉิน"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"เจ้าของ"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"แตะอีกครั้งเพื่อดูข้อมูล"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"หมายเลขฉุกเฉิน"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"หมายเลขฉุกเฉินเท่านั้น"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"หมายเลขฉุกเฉิน"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"หมายเลขฉุกเฉิน"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"แตะอีกครั้งเพื่อโทรหา <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"กำลังเปิดวิทยุ…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"ไม่มีบริการ โปรดลองอีกครั้ง…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"ไม่สามารถเข้าสู่โหมดบนเครื่องบินระหว่างการโทรหมายเลขฉุกเฉินได้"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"ไม่สามารถโทรได้ <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ไม่ใช่หมายเลขฉุกเฉิน"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ไม่สามารถโทรออก โทรหมายเลขฉุกเฉิน"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"หมายเลขฉุกเฉินไม่พร้อมใช้งาน"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"ตำรวจ"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"รถพยาบาล"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"อัคคีภัย"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ใช้แป้นพิมพ์กดหมายเลขโทรศัพท์"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"พักสาย"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"สิ้นสุด"</string>
@@ -596,6 +609,8 @@
     <string name="selectContact" msgid="781975788478987237">"เลือกรายชื่อติดต่อ"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"ไม่สนับสนุนการโทรออกด้วยเสียง"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"หมุนหมายเลข"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"แสดงแป้นหมายเลข"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"แป้นหมายเลขฉุกเฉิน"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"ข้อความเสียงพร้อมภาพ"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"ตั้งค่า PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"เปลี่ยน PIN"</string>
@@ -748,4 +763,8 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"สายโอน"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"กำลังเข้าร่วมการประชุมสาย"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"สายที่พักไว้หลุดไปแล้ว"</string>
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"ไม่สามารถโทรออกได้เนื่องจากมีสายโทรออกอยู่แล้ว"</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"ไม่สามารถโทรออกได้เนื่องจากมีสายเรียกเข้าที่ยังไม่ได้รับ รับหรือปฏิเสธสายเรียกเข้าก่อนโทรออกใหม่"</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ไม่สามารถโทรออกได้เนื่องจากมีการปิดใช้การโทรโดยใช้คุณสมบัติของระบบ ro.telephony.disable-call"</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"ไม่สามารถโทรออกได้เนื่องจากมีการโทรสองสายกำลังดำเนินการอยู่ ตัดการเชื่อมต่อหนึ่งสายหรือรวมเป็นการประชุมสายก่อนโทรออกใหม่"</string>
 </resources>

@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"ජාලය මත ලියාපදිංචි වෙමින්."</string>
     <string name="already_auto" msgid="6067116884321285507">"දැනටමත් ස්වයංක්‍රිය තේරීමේ සිටී."</string>
     <string name="select_automatically" msgid="1046727200631770962">"ස්වයංක්‍රියව ජාලය තෝරන්න"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"%1$s වෙත සම්බන්ධ වූ විට ලබා ගත නොහැකිය"</string>
     <string name="network_select_title" msgid="7733107364757544558">"ජාලය"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ස්වයංක්‍රීය ලියාපදිංචිය..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ප්‍රියකරන ජාල වර්ගය"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"අමතමින්"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"ජාලය"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"දියුණු කරන ලද 4G LTE මෝඩය"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"උසස් ඇමතුම්"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"හඬ සහ වෙනත් සන්නිවේදනයන් දියුණු කිරීමට LTE සේවාව භාවිතා කරන්න (නිර්දේශ කළ)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"දත්ත සබලයි"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"දත්ත භාවිතයට ඉඩ දෙන්න"</string>
@@ -482,7 +483,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"<xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g> අමතන්න"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"හඬතැපැල් අංකය නොදනී"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"සේවාව නැත"</string>
-    <string name="notification_network_selection_text" msgid="2607085729661923269">"තෝරා ඇති ජාලය (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) නොමැත"</string>
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"තේරූ ජාලය(<xliff:g id="OPERATOR_NAME">%s</xliff:g>) නොමැත"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"ජංගම ජාලය ක්‍රියාත්මක කරන්න, ඇමතුමක් ගැනීමට ගුවන් යානා ප්‍රකාරය හෝ බැටරි සුරැකුම් ප්‍රකාරය ක්‍රියාවිරහිත කරන්න."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"ඇමතුමක් ගැනීමට ගුවන් යානා මාදිලිය අක්‍රිය කරන්න."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"ඇමතුමක් ලබා ගැනීමට ගුවන් යානා මෝඩය අක්‍රිය කරන්න හෝ රැහැන් රහිත ජාලයකට සම්බන්ධ වෙන්න."</string>
@@ -498,19 +499,31 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"ඇමතුම නැවත පටන් ගැනීමට නොහැකිය."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"ඇමතුම වෙන් කිරීම කළ නොහැක."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"මාරු කිරීමට නොහැක."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"සම්මන්ත්‍රණ ඇමතුම් ලබාගත නොහැකි විය."</string>
+    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
+    <skip />
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"ඇමතුම ප්‍රතික්ෂේප කළ නොහැක."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"ඇමතුම(ම්) මුදාහැරීම කළ නොහැක."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"ඇමතුම් රඳවා තැබීමට නොහැකිය."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ඇමතුමක් ගැනීමට රැහැන් රහිත ජාලයක් වෙත සම්බන්ධ වෙන්න."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"ඇමතුමක් කිරීමට Wi-Fi ඇමතීම සබල කරන්න."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"හදිසි අවස්ථා තොරතුරු"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"හිමිකරු"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"තොරතුරු බැලීම සඳහා නැවත තට්ටු කරන්න"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"හදිසි ඇමතුම"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"හදිසි ඇමතුම් පමණි"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"හදිසි ඇමතුම් අංකය"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"හදිසි අවස්ථා අංක"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> අැමතීමට නැවත තට්ටු කරන්න"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"රේඩියෝව ආරම්භ කරමින්…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"සේවා නැත. නැවත උත්සාහ කරන්න…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"හදිසි අවස්ථා ඇමතුමක් අතරතුර ගුවන් යානා ප්‍රකාරය ඇතුළු කළ නොහැකිය."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"ඇමතුම් ලබාගැනීම කළ නොහැක. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> මෙය හදිස්සි ඇමතුම් අංකයක් නොවේ."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ඇමතිය නොහැක. හදිසි අංකයක් අමතන්න."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"හදිසි අවස්ථා ඇමතුම ලබා ගත නොහැකිය"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"පොලීසිය"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"ගිලන් රථය"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"ගින්න"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ඇමතීමට කිරීමට යතුරු පුවරුව භාවිතා කරන්න"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"රඳවා සිටින්න"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"අවසානයි"</string>
@@ -596,6 +609,8 @@
     <string name="selectContact" msgid="781975788478987237">"සම්බන්ධතාවය තෝරාගන්න"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"හඬ ඇමතීම සඳහා සහාය නොදක්වයි"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"අමතන්න"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"ඇමතුම් පෑඩය පෙන්වන්න"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"හදිසි ඇමතුම් පෑඩය"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"දෘශ්‍ය හඬ තැපෑල"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN අංකය සකසන්න"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN අංකය වෙනස් කරන්න"</string>
@@ -748,4 +763,8 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"යොමු කළ ඇමතුම."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"සම්මන්ත්‍රණ ඇමතුමට එක් වෙමින්."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"රඳවා ගත් ඇමතුම නිදහස් කර ඇත."</string>
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"තවත් යන ඇමතුමක් දැනටමත් ඩයල් කරමින් පවතින නිසා අැමතුමක් ගැනීමට නොහැකිය."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"පිළිතුරු නොදුන් එන ඇමතුමක් තිබෙන නිසා අැමතුමක් ගැනීමට නොහැකිය. නව ඇමතුමක් ගැනීමට පෙර එන අැමතුමට පිළිතුරු දෙන්න නැතහොත් ප්‍රතික්ෂේප කරන්න."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ඇමතුම ro.telephony.disable-call පද්ධති ගුණාංගය භාවිතයෙන් ඇමතුම අබල කර ඇති නිසා ඇමතුමක් ගැනීමට නොහැකිය."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"දැනටමත් ඇමතුම් දෙකක් කෙරෙමින් පවතින නිසා ඇමතුමක් ගැනීමට නොහැකිය. නව ඇමතුමක් ගැනීමට පෙරාතුව ඇමතුම්වලින් එකක් විසන්ධි කරන්න නැතහොත් ඒවා සම්මන්ත්‍රණයකට ඒකාබද්ධ කරන්න."</string>
 </resources>
