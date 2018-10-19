@@ -19,6 +19,7 @@ package com.android.phone.settings;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
@@ -64,12 +65,9 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
                 // support multi sim configuration.
                 TelephonyManager telephonyManager =
                         (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
-                final boolean isVolteTtySupported = getVolteTtySupported();
-                final boolean isVolteCurrentlyEnabled =
-                        ImsManager.isVolteEnabledByPlatform(mContext);
-                pref.setEnabled((isVolteTtySupported && isVolteCurrentlyEnabled &&
-                        !isVideoCallOrConferenceInProgress()) ||
-                        (telephonyManager.getCallState() == TelephonyManager.CALL_STATE_IDLE));
+                final boolean isVolteTtySupported = isVolteTtySupportedInAnySlot();
+                pref.setEnabled((isVolteTtySupported && !isVideoCallOrConferenceInProgress())
+                        || (telephonyManager.getCallState() == TelephonyManager.CALL_STATE_IDLE));
             }
         }
     };
@@ -183,11 +181,38 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
         return false;
     }
 
-    private boolean getVolteTtySupported() {
+    private boolean isVolteTtySupportedInAnySlot() {
+        final Phone[] phones = PhoneFactory.getPhones();
+        if (phones == null) {
+            if (DBG) Log.d(LOG_TAG, "isVolteTtySupportedInAnySlot: No phones found.");
+            return false;
+        }
+
         CarrierConfigManager configManager =
                 (CarrierConfigManager) mContext.getSystemService(Context.CARRIER_CONFIG_SERVICE);
-        return configManager.getConfig().getBoolean(
-                CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL);
+        for (Phone phone : phones) {
+            // Check if this phone supports VoLTE.
+            ImsManager imsManager = ImsManager.getInstance(mContext, phone.getPhoneId());
+            boolean volteEnabled = false;
+            if (imsManager != null) {
+                volteEnabled = imsManager.isVolteEnabledByPlatform();
+            }
+
+            // Check if this phone suports VoLTE TTY.
+            boolean volteTtySupported = false;
+            PersistableBundle carrierConfig = configManager.getConfigForSubId(phone.getSubId());
+            if (carrierConfig != null) {
+                volteTtySupported = carrierConfig.getBoolean(
+                        CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL);
+            }
+
+            if (volteEnabled && volteTtySupported) {
+                // VoLTE TTY is supported on this phone that also suports VoLTE.
+                return true;
+            }
+        }
+        // VoLTE TTY was not supported on any phone that also supports VoLTE.
+        return false;
     }
 
     private boolean isVideoCallOrConferenceInProgress() {
