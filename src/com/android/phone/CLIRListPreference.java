@@ -7,7 +7,6 @@ import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.ListPreference;
-import android.telephony.CarrierConfigManager;
 import android.util.AttributeSet;
 import android.util.Log;
 
@@ -27,12 +26,6 @@ public class CLIRListPreference extends ListPreference {
     private Phone mPhone;
     private TimeConsumingPreferenceListener mTcpListener;
 
-    private final String[] mEntries = getContext().getResources()
-            .getStringArray(R.array.clir_display_values);
-    private final String[] mValues = getContext().getResources()
-            .getStringArray(R.array.clir_values);
-    private boolean mConfigSupportNetworkDefault;
-
     int clirArray[];
 
     public CLIRListPreference(Context context, AttributeSet attrs) {
@@ -47,7 +40,7 @@ public class CLIRListPreference extends ListPreference {
     protected void onDialogClosed(boolean positiveResult) {
         super.onDialogClosed(positiveResult);
 
-        mPhone.setOutgoingCallerIdDisplay(convertValueToCLIRMode(getValue()),
+        mPhone.setOutgoingCallerIdDisplay(findIndexOfValue(getValue()),
                 mHandler.obtainMessage(MyHandler.MESSAGE_SET_CLIR));
         if (mTcpListener != null) {
             mTcpListener.onStarted(this, false);
@@ -58,19 +51,6 @@ public class CLIRListPreference extends ListPreference {
             TimeConsumingPreferenceListener listener, boolean skipReading, Phone phone) {
         mPhone = phone;
         mTcpListener = listener;
-        mConfigSupportNetworkDefault = PhoneGlobals.getInstance()
-                .getCarrierConfigForSubId(mPhone.getSubId())
-                .getBoolean(CarrierConfigManager.KEY_SUPPORT_CLIR_NETWORK_DEFAULT_BOOL);
-        // When "Network default" is not supported, create entries with remaining two values.
-        if (!mConfigSupportNetworkDefault) {
-            String[] noNetworkDefaultEntries = {mEntries[CommandsInterface.CLIR_INVOCATION],
-                    mEntries[CommandsInterface.CLIR_SUPPRESSION]};
-            String[] noNetworkDefaultValues = {mValues[CommandsInterface.CLIR_INVOCATION],
-                    mValues[CommandsInterface.CLIR_SUPPRESSION]};
-            setEntries(noNetworkDefaultEntries);
-            setEntryValues(noNetworkDefaultValues);
-        }
-
         if (!skipReading) {
             Log.i(LOG_TAG, "init: requesting CLIR");
             mPhone.getOutgoingCallerIdDisplay(mHandler.obtainMessage(MyHandler.MESSAGE_GET_CLIR,
@@ -112,10 +92,7 @@ public class CLIRListPreference extends ListPreference {
                 value = CommandsInterface.CLIR_DEFAULT;
                 break;
         }
-        value = (!mConfigSupportNetworkDefault && value == CommandsInterface.CLIR_DEFAULT)
-                ? CommandsInterface.CLIR_SUPPRESSION : value;
-
-        setValue(mValues[value]);
+        setValueIndex(value);
 
         // set the string summary to reflect the value
         int summary = R.string.sum_default_caller_id;
@@ -131,25 +108,6 @@ public class CLIRListPreference extends ListPreference {
                 break;
         }
         setSummary(summary);
-    }
-
-    /**
-     * When "Network default" is hidden, UI list index(0-1) doesn't match CLIR Mode(0-2 for Modem).
-     * In order to send request to Modem, it is necessary to convert value to CLIR Mode.
-     * ("Hide" = CommandsInterface.CLIR_INVOCATION, "Show" = CommandsInterface.CLIR_SUPPRESSION)
-     *
-     * @param String of entry value.
-     * @return "CommandInterface.CLIR_*" for Modem.
-     */
-    private int convertValueToCLIRMode(String value) {
-        if (mValues[CommandsInterface.CLIR_INVOCATION].equals(value)) {
-            return CommandsInterface.CLIR_INVOCATION;
-        } else if (mValues[CommandsInterface.CLIR_SUPPRESSION].equals(value)) {
-            return CommandsInterface.CLIR_SUPPRESSION;
-        } else {
-            return mConfigSupportNetworkDefault ? CommandsInterface.CLIR_DEFAULT :
-                    CommandsInterface.CLIR_SUPPRESSION;
-        }
     }
 
     private class MyHandler extends Handler {
