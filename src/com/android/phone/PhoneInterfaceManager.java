@@ -1782,6 +1782,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // registered cell info, so return a NULL country instead.
         final long identity = Binder.clearCallingIdentity();
         try {
+            if (phoneId == SubscriptionManager.INVALID_PHONE_INDEX) {
+                // Get default phone in this case.
+                phoneId = SubscriptionManager.DEFAULT_PHONE_INDEX;
+            }
             final int subId = mSubscriptionController.getSubIdUsingPhoneId(phoneId);
             // Todo: fix this when we can get the actual cellular network info when the device
             // is on IWLAN.
@@ -2920,14 +2924,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 mApp, subId, callingPackage, "getForbiddenPlmns")) {
             return null;
         }
-        if (appType != TelephonyManager.APPTYPE_USIM && appType != TelephonyManager.APPTYPE_SIM) {
-            loge("getForbiddenPlmnList(): App Type must be USIM or SIM");
-            return null;
-        }
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            Object response = sendRequest(CMD_GET_FORBIDDEN_PLMNS, new Integer(appType), subId);
+            if (appType != TelephonyManager.APPTYPE_USIM
+                    && appType != TelephonyManager.APPTYPE_SIM) {
+                loge("getForbiddenPlmnList(): App Type must be USIM or SIM");
+                return null;
+            }
+            Object response = sendRequest(
+                    CMD_GET_FORBIDDEN_PLMNS, new Integer(appType), subId);
             if (response instanceof String[]) {
                 return (String[]) response;
             }
@@ -4314,11 +4320,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void requestModemActivityInfo(ResultReceiver result) {
         enforceModifyPermission();
-        ModemActivityInfo ret = null;
         WorkSource workSource = getWorkSource(Binder.getCallingUid());
 
         final long identity = Binder.clearCallingIdentity();
         try {
+            ModemActivityInfo ret = null;
             synchronized (mLastModemActivityInfo) {
                 ModemActivityInfo info = (ModemActivityInfo) sendRequest(
                         CMD_GET_MODEM_ACTIVITY_INFO,
@@ -4362,7 +4368,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return false;
         }
         int activityDurationMs =
-                (int) (info.getTimestamp() - mLastModemActivityInfo.getTimestamp());
+            (int) (info.getTimestamp() - mLastModemActivityInfo.getTimestamp());
         int totalTxTimeMs = 0;
         for (int i = 0; i < info.getTxTimeMillis().length; i++) {
             totalTxTimeMs += info.getTxTimeMillis()[i];

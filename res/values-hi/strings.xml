@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"नेटवर्क पर पंजीकृत."</string>
     <string name="already_auto" msgid="6067116884321285507">"पहले से ऑटोमैटिक चयन में है."</string>
     <string name="select_automatically" msgid="1046727200631770962">"अपने आप नेटवर्क चुनें"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"%1$s से कनेक्ट किए जाने पर उपलब्ध नहीं है"</string>
     <string name="network_select_title" msgid="7733107364757544558">"नेटवर्क"</string>
     <string name="register_automatically" msgid="6017849844573519637">"स्वचालित पंजीकरण..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"पसंदीदा नेटवर्क प्रकार"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"कॉलिंग"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"नेटवर्क"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"उन्नत 4G LTE मोड"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"उन्नत कॉलिंग"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ध्‍वनि और अन्‍य संचारों को बेहतर बनाने हेतु LTE सेवाओं का उपयोग करें (अनुशंसित)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"डेटा सक्षम किया गया"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"डेटा उपयोग करने दें"</string>
@@ -403,7 +404,7 @@
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"फ़ोन नंबर सूची प्रबंधित करें"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"ध्वनि निजता"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"उन्नत निजता मोड सक्षम करें"</string>
-    <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY मोड"</string>
+    <string name="tty_mode_option_title" msgid="9033098925144434669">"टेलीटाइपराइटर (TTY) मोड"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"TTY मोड सेट करें"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"स्वतः पुन: प्रयास"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"स्वतः पुन: प्रयास मोड सक्षम करें"</string>
@@ -482,7 +483,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"<xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g> डायल करें"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"वॉयस मेल नंबर अज्ञात"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"कोई सेवा नहीं"</string>
-    <string name="notification_network_selection_text" msgid="2607085729661923269">"चयनित नेटवर्क (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) अनुपलब्ध"</string>
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"चुना गया नेटवर्क<xliff:g id="OPERATOR_NAME">%s</xliff:g> मौजूद नहीं है"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"कॉल करने के लिए मोबाइल नेटवर्क चालू करें, हवाई जहाज़ मोड या बैटरी सेवर मोड बंद करें."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"कॉल करने के लिए हवाई जहाज़ मोड बंद करें."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"कॉल करने के लिए हवाई जहाज़ मोड बंद करें या किसी वायरलेस नेटवर्क से कनेक्‍ट करें."</string>
@@ -498,19 +499,31 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"कॉल फिर से शुरू नहीं की जा सकती."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"कॉल अलग नहीं किया जा सकता."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"ट्रांसफर नहीं किया जा सकता."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"कॉंन्फ़्रेंस कॉल करने में असमर्थ."</string>
+    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
+    <skip />
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"कॉल अस्‍वीकार नहीं किया जा सकता."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"कॉल रिलीज़ नहीं किया जा सकता (किए जा सकते)."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"कॉल होल्ड नहीं किए जा सकते."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"कॉल करने के लिए किसी वायरलेस नेटवर्क से कनेक्‍ट करें."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"कॉल करने के लिए वाई-फ़ाई कॉलिंग सक्षम करें."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"आपातकालीन जानकारी"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"मालिक"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"जानकारी देखने के लिए फिर से टैप करें"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"आपातकालीन कॉल"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"सिर्फ़ आपातकालीन कॉल"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"आपातकालीन नंबर"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"आपातकालीन नंबर"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> पर कॉल करने के लिए दोबारा टैप करें"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"रेडियो चालू कर रहा है..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"कोई सेवा नहीं. पुन: प्रयास किया जा रहा है…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"आपातकालीन कॉल के दौरान हवाई जहाज़ मोड चालू नहीं किया जा सकता."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"कॉल नहीं किया जा सकता. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> एक आपातकालीन नंबर नहीं है."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"कॉल नहीं किया जा सकता. आपातकालीन नबर डायल करें."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"आपातकालीन कॉल करने की सुविधा उपलब्ध नहीं है"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"पुलिस"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"एम्बुलेंस"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"आग"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"डायल करने के लिए कीबोर्ड का उपयोग करें"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"होल्ड करें"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"समाप्त"</string>
@@ -596,6 +609,8 @@
     <string name="selectContact" msgid="781975788478987237">"संपर्क को चुनें"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"ध्वनि कॉल करना समर्थित नहीं है"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"डायल करें"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"डायलपैड देखें"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"आपातकालीन डायलपैड"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"विज़ुअल वॉइसमेल"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"पिन सेट करें"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"पिन बदलें"</string>
@@ -748,4 +763,8 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"दूसरे नंबर पर भेजा गया कॉल."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"कॉन्फ़्रेंस कॉल में शामिल हो रहे/रही हैं."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"होल्ड किए गए कॉल को होल्ड से हटा दिया गया है."</string>
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"कॉल नहीं किया जा सकता, क्योंकि कोई दूसरा किया गया कॉल (आउटगोइंग) पहले से ही डायल हो रहा है."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"कॉल नहीं किया जा सकता, क्योंकि एक आने वाले कॉल (इनकमिंग) का जवाब नहीं दिया जा रहा है. नया कॉल करने से पहले आने वाले कॉल (इनकमिंग) का जवाब दें या उसे अस्वीकार करें."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"कॉल नहीं किया जा सकता क्योंकि कॉलिंग की सुविधा को ROS.टेलीफ़ोनी की कॉल बंद करें सिस्टम प्रॉपर्टी का उपयोग करके बंद कर दिया गया है."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"कॉल नहीं किया जा सकता, क्योंकि पहले से ही दो कॉल जारी हैं. नया कॉल करने से पहले उनमें से किसी एक कॉल को बंद करें या उन्हें कॉन्फ़्रेंस में मर्ज करें."</string>
 </resources>

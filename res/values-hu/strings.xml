@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"Regisztrálva a hálózaton."</string>
     <string name="already_auto" msgid="6067116884321285507">"Már automatikus kiválasztás van beállítva."</string>
     <string name="select_automatically" msgid="1046727200631770962">"Hálózat automatikus kiválasztása"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"Nem áll rendelkezése a következőhöz való csatlakozáskor: %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Hálózat"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatikus regisztráció..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Preferált hálózattípus"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"Hívás"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Hálózat"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Javított 4G LTE mód"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Továbbfejlesztett telefonhívás"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"LTE-szolgáltatások használata hang- és egyéb kommunikáció javításához (ajánlott)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Adatok engedélyezése"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Adatforgalom engedélyezése"</string>
@@ -482,7 +483,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"<xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g> tárcsázása"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"A hangposta száma ismeretlen"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Nincs szolgáltatás"</string>
-    <string name="notification_network_selection_text" msgid="2607085729661923269">"A kiválasztott hálózat (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) nem érhető el"</string>
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"A kiválasztott hálózat (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) nem érhető el"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"A hívás indításához kapcsolja be a hálózatot, és kapcsolja ki a repülős vagy akkumulátorkímélő üzemmódot."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Repülős üzemmód kikapcsolása hívás indításához."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Hívás indításához kapcsolja ki a repülős üzemmódot, illetve csatlakozzon egy vezeték nélküli hálózathoz."</string>
@@ -498,19 +499,31 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Nem sikerült folytatni a hívást."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"A híváselkülönítés sikertelen."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Az átirányítás sikertelen."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Nem lehet konferenciahívást folytatni."</string>
+    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
+    <skip />
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"A híváselutasítás sikertelen."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"A tartásban lévő hívás(ok) folytatása sikertelen."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"A hívások nem tarthatók."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Hívás indításához csatlakozzon egy vezeték nélküli hálózathoz."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Engedélyezze a Wi-Fi-hívást a hívásindításhoz."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Segélyhívási információk"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Tulajdonos"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Koppints újra az információk megtekintéséhez"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Segélyhívás"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Csak segélyhívások"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Segélyhívó szám"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Segélyhívó számok"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Koppintson újra a következő hívásához: <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Rádió bekapcsolása..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Nincs szolgáltatás. Újrapróbálkozás folyamatban…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Segélyhívás során nem engedélyezheti a Repülős üzemmódot."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"A hívás sikertelen. A(z) <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> szám nem segélyhívószám."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"A hívás sikertelen. Tárcsázzon segélyhívószámot."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"A segélyhívási funkció nem áll rendelkezésre"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Rendőrség"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Mentők"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Tűzoltóság"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"A tárcsázáshoz használja a billentyűzetet"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Tartás"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Befejezés"</string>
@@ -596,6 +609,8 @@
     <string name="selectContact" msgid="781975788478987237">"névjegy kijelölése"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"A hanghívás nem támogatott"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"tárcsázás"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"tárcsázó megjelenítése"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Segélyhívás tárcsázója"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Vizuális hangpostaüzenet"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN-kód beállítása"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN-kód módosítása"</string>
@@ -748,4 +763,8 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Átirányított hívás."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Csatlakozás konferenciahíváshoz."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Várakoztatott hívás feloldva."</string>
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nem kezdeményezhet hívást, mert folyamatban van egy másik kimenő hívás indítása."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nem kezdeményezhet hívást, mert folyamatban van egy megválaszolatlan bejövő hívás. Mielőtt új hívást indítana, vegye fel, vagy utasítsa el a bejövő hívást."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nem kezdeményezhet hívást, mivel a hívás le van tiltva ro.telephony.disable-call rendszertulajdonsággal."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Nem kezdeményezhet hívást, mivel már két hívás van folyamatban. Mielőtt új hívást indítana, tegye le az egyiket, vagy egyesítse őket egy konferenciahívásban."</string>
 </resources>

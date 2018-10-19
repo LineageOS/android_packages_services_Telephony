@@ -96,7 +96,7 @@
     <string name="sum_cw_disabled" msgid="3648693907300104575">"அழைப்பில் இருக்கும்போதும் உள்வரும் அழைப்புகளைப் பற்றி எனக்குத் தெரிவி"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"அழைப்பைத் திருப்பிவிடுதல்"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"அழைப்பைத் திருப்பிவிடுதல் (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"அழைப்புப் பகிர்வு"</string>
+    <string name="labelCF" msgid="2574386948026924737">"அழைப்பு திருப்பிவிடுதல்"</string>
     <string name="labelCFU" msgid="8147177368148660600">"எப்போதும் திருப்பிவிடு"</string>
     <string name="messageCFU" msgid="3560082430662923687">"எப்போதும் இதைப் பயன்படுத்து"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"எல்லா அழைப்புகளையும் பகிர்"</string>
@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"நெட்வொர்க்கில் பதிவுசெய்யப்பட்டது."</string>
     <string name="already_auto" msgid="6067116884321285507">"ஏற்கனவே தன்னியக்க தேர்வில் உள்ளது."</string>
     <string name="select_automatically" msgid="1046727200631770962">"நெட்வொர்க்கைத் தானாகத் தேர்ந்தெடு"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"%1$s இல் இணைக்கப்பட்டிருக்கும் போது கிடைக்காது"</string>
     <string name="network_select_title" msgid="7733107364757544558">"நெட்வொர்க்"</string>
     <string name="register_automatically" msgid="6017849844573519637">"தானியங்கு பதிவு…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"தேர்ந்தெடுத்த நெட்வொர்க் வகை"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"அழைப்பு"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"நெட்வொர்க்"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"மேம்பட்ட 4G LTE பயன்முறை"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"மேம்பட்ட அழைப்பு"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"குரல் மற்றும் பிற தொடர்புமுறைகளை மேம்படுத்த, LTE சேவைகளைப் பயன்படுத்தவும் (பரிந்துரைக்கப்பட்டது)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"தரவு இயக்கப்பட்டது"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"டேட்டா உபயோகத்தை அனுமதி"</string>
@@ -400,7 +401,7 @@
     <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN ஐ இயக்கு"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"நிலையான அழைப்பு எண்களை நிர்வகி"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN அணுகலுக்கான பின்னை மாற்று"</string>
-    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"மொபைல் எண் பட்டியலை நிர்வகி"</string>
+    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ஃபோன் எண் பட்டியலை நிர்வகி"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"குரல் தனிப்பட்ட முறை"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"மேம்பட்ட தனிப்பட்ட முறையை இயக்கு"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY பயன்முறை"</string>
@@ -482,7 +483,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"<xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g> ஐ அழை"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"குரலஞ்சல் எண் அறியப்படவில்லை"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"சேவை இல்லை"</string>
-    <string name="notification_network_selection_text" msgid="2607085729661923269">"தேர்ந்தெடுத்த நெட்வொர்க் (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) கிடைக்கவில்லை"</string>
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"தேர்ந்தெடுத்த நெட்வொர்க் <xliff:g id="OPERATOR_NAME">%s</xliff:g> கிடைக்கவில்லை"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"அழைக்க, மொபைல் நெட்வொர்க்கை இயக்கவும், விமானப் பயன்முறை அல்லது பேட்டரி சேமிப்பான் பயன்முறையை முடக்கவும்."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"அழைக்க, விமானப் பயன்முறையை முடக்கவும்."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"அழைக்க, விமானப் பயன்முறையை முடக்கவும் அல்லது வயர்லெஸ் நெட்வொர்க்குடன் இணைக்கவும்."</string>
@@ -498,19 +499,31 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"அழைப்பைத் தொடர முடியவில்லை."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"அழைப்பைப் பிரிக்க முடியாது."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"மாற்ற முடியாது."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"குழு அழைப்புகளை மேற்கொள்ள முடியவில்லை."</string>
+    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
+    <skip />
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"அழைப்பை நிராகரிக்க முடியாது."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"அழைப்பை(அழைப்புகளை) விடுவிக்க முடியாது."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"அழைப்புகளை ஹோல்டு செய்ய முடியாது."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"அழைக்க, வயர்லெஸ் நெட்வொர்க்குடன் இணைக்கவும்."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"அழைக்க, வைஃபை அழைப்பை இயக்கவும்."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"அவசரத் தகவல்"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"உரிமையாளர்"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"தகவலைப் பார்க்க, மீண்டும் தட்டவும்"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"அவசரகால அழைப்பு"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"அவசர அழைப்புகள் மட்டும்"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"அவசர எண்"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"அவசர எண்கள்"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> என்ற எண்ணை அழைக்க, மீண்டும் தட்டவும்"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"ரேடியோவை இயக்குகிறது…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"சேவை இல்லை. மீண்டும் முயற்சிக்கிறது…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"அவசர அழைப்பின் போது, விமானப் பயன்முறையை இயக்க முடியாது."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"<xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> அவசர அழைப்பு எண் இல்லை என்பதால் அழைக்க முடியாது."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"அழைக்க முடியாது. அவசர அழைப்பு எண்ணை அழைக்கவும்."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"அவசர அழைப்பு வசதி இல்லை"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"காவல்"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"ஆம்புலன்ஸ்"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"தீயணைப்பு"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"டயல் செய்வதற்கு விசைப்பலகையைப் பயன்படுத்துக"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"காத்திரு"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"முடி"</string>
@@ -535,7 +548,7 @@
     <string name="rtt_mode_summary" msgid="5146344277246544580">"குரல் அழைப்பிலேயே செய்தியிடலை அனுமதிக்கும்"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"காது கேளாதோர், கேட்பதற்குச் சிரமப்படுவோர், பேச இயலாதோர் அல்லது குரலைத் தாண்டி மற்ற வழிகளில் தகவல் தேவைப்படுவோருக்கு RTT பயன்முறை உதவுகிறது.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;மேலும் அறிக&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - டிரான்ஸ்கிரிப்ட் செய்யப்பட்ட செய்தியாக RTT அழைப்புகள் சேமிக்கப்படும்\n       &lt;br&gt; - வீடியோ அழைப்புகளுக்கு RTT பயன்முறை இல்லை"</string>
   <string-array name="tty_mode_entries">
-    <item msgid="512950011423868021">"TTY ஐ முடக்கு"</item>
+    <item msgid="512950011423868021">"TTY முடக்கத்தில்"</item>
     <item msgid="3971695875449640648">"TTY ஐ இயக்கு"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>
@@ -596,6 +609,8 @@
     <string name="selectContact" msgid="781975788478987237">"தொடர்பைத் தேர்ந்தெடுக்கவும்"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"குரல் அழைப்பு ஆதரிக்கப்படவில்லை"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"டயல்"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"டயல்பேடைக் காட்டும் பட்டன்"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"அவசரகால டயல்பேட்"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"விஷூவல் குரலஞ்சல்"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"பின்னை அமை"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"பின்னை மாற்றவும்"</string>
@@ -748,4 +763,8 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"பகிரப்பட்ட அழைப்பு."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"குழு அழைப்பில் சேர்கிறீர்கள்."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ஹோல்டில் இருந்த அழைப்புத் துண்டிக்கப்பட்டது."</string>
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"ஏற்கனவே ஒரு அழைப்பு டயல் ஆகிக்கொண்டிருப்பதால், இந்த அழைப்பைச் செய்ய முடியாது."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"உள்வரும் அழைப்பிற்கு இன்னும் பதிலளிக்காததால், இந்த அழைப்பைச் செய்ய முடியாது. புதிதாக ஒரு அழைப்பைச் செய்வதற்கு முன்னர், உள்வரும் அழைப்பிற்குப் பதிலளிக்கவும் அல்லது நிராகரிக்கவும்."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call எனும் சிஸ்டம் பிராப்பர்ட்டியைப் பயன்படுத்தி அழைப்பதற்கான வசதி முடக்கப்பட்டுள்ளதால், இந்த அழைப்பைச் செய்ய முடியாது."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"இரண்டு அழைப்புகள் ஏற்கனவே செயலில் இருப்பதால், இந்த அழைப்பைச் செய்ய முடியாது. புதிதாக ஒரு அழைப்பைச் செய்வதற்கு முன்னர், ஏதாவது ஒரு அழைப்பைத் துண்டிக்கவும் அல்லது அவற்றை இணைத்து குழு அழைப்பாக மாற்றவும்."</string>
 </resources>

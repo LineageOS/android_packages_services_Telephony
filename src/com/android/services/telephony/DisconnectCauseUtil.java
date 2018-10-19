@@ -191,6 +191,7 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.IMEI_NOT_ACCEPTED:
             case android.telephony.DisconnectCause.WIFI_LOST:
             case android.telephony.DisconnectCause.IMS_ACCESS_BLOCKED:
+            case android.telephony.DisconnectCause.IMS_SIP_ALTERNATE_EMERGENCY_CALL:
                 return DisconnectCause.ERROR;
 
             case android.telephony.DisconnectCause.DIALED_MMI:
@@ -335,6 +336,10 @@ public class DisconnectCauseUtil {
                 break;
             case android.telephony.DisconnectCause.TOO_MANY_ONGOING_CALLS:
                 resourceId = R.string.callFailed_too_many_calls;
+                break;
+
+            case android.telephony.DisconnectCause.IMS_SIP_ALTERNATE_EMERGENCY_CALL:
+                resourceId = R.string.incall_error_power_off;
                 break;
 
             default:
@@ -711,6 +716,10 @@ public class DisconnectCauseUtil {
                 break;
             case android.telephony.DisconnectCause.TOO_MANY_ONGOING_CALLS:
                 resourceId = R.string.callFailed_too_many_calls;
+                break;
+
+            case android.telephony.DisconnectCause.IMS_SIP_ALTERNATE_EMERGENCY_CALL:
+                resourceId = R.string.incall_error_power_off;
                 break;
 
             default:

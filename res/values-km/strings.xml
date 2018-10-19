@@ -170,6 +170,7 @@
     <string name="registration_done" msgid="495135664535876612">"បាន​ចុះឈ្មោះ​នៅ​លើ​បណ្ដាញ។"</string>
     <string name="already_auto" msgid="6067116884321285507">"នៅ​ក្នុង​ការ​ជ្រើសរើស​ស្វ័យប្រវត្តិ​រួចហើយ។"</string>
     <string name="select_automatically" msgid="1046727200631770962">"ជ្រើសរើស​បណ្ដាញ​ដោយស្វ័យប្រវត្តិ"</string>
+    <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"មិន​អាច​ប្រើបាន​នៅ​ពេល​បាន​​​ភ្ជាប់​ជា​មួយ %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"បណ្ដាញ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ការ​ចុះ​ឈ្មោះ​ដោយ​ស្វ័យ​ប្រវត្តិ ..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ប្រភេទ​បណ្ដាញ​​ដែល​​ពេញចិត្ត"</string>
@@ -235,7 +236,7 @@
     <string name="call_category" msgid="5863978196309462052">"កំពុង​ហៅ"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"បណ្ដាញ"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"​របៀប 4G LTE ធ្វើឲ្យ​ប្រសើរ​ឡើង"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"ការ​ហៅ​ទូរសព្ទ​កម្រិត​ខ្ពស់"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ប្រើសេវាកម្ម LTE ដើម្បីធ្វើឲ្យសម្លេង និងការទំនាក់ទំនងផ្សេងទៀតប្រសើរឡើង (បានណែនាំ)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"បាន​បើក​ទិន្នន័យ"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"អនុញ្ញាត​​ឲ្យ​​ប្រើ​ប្រាស់​ទិន្នន័យ"</string>
@@ -471,7 +472,7 @@
     <string name="voicemail_settings_number_label" msgid="8524164258691887790">"លេខ​សារ​ជា​សំឡេង"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"កំពុង​ហៅ"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"ការចុចហៅឡើងវិញ"</string>
-    <string name="card_title_conf_call" msgid="1162980346189744501">"ការ​ហៅ​ជា​សន្និសីទ"</string>
+    <string name="card_title_conf_call" msgid="1162980346189744501">"ការ​ហៅ​ជា​​ក្រុម"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"ការ​ហៅ​ចូល"</string>
     <string name="card_title_call_ended" msgid="5544730338889702298">"បាន​បញ្ចប់​ការ​ហៅ"</string>
     <string name="card_title_on_hold" msgid="821463117892339942">"រង់ចាំ"</string>
@@ -482,7 +483,7 @@
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"ចុច <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"មិន​ស្គាល់​ចំនួន​សារ​ជា​សំឡេង"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"គ្មាន​សេវា"</string>
-    <string name="notification_network_selection_text" msgid="2607085729661923269">"បណ្ដាញ​ដែល​បាន​ជ្រើស ( <xliff:g id="OPERATOR_NAME">%s</xliff:g> ) មិន​អាច​ប្រើ​បាន​ទេ"</string>
+    <string name="notification_network_selection_text" msgid="7550380440576731104">"បណ្ដាញ​ដែល​បាន​ជ្រើសរើស <xliff:g id="OPERATOR_NAME">%s</xliff:g> មិន​អាច​ប្រើប្រាស់​បាន​ទេ"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"បើក​បណ្ដាញ​ទូរសព្ទ​ចល័ត បិទ​មុខងារ​ពេល​ជិះ​យន្តហោះ ឬ​បិទ​មុខងារ​កម្មវិធី​សន្សំថ្ម ដើម្បី​ហៅ​ទូរសព្ទ។"</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"បិទរបៀបយន្តហោះដើម្បីធ្វើការហៅ។"</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"បិទរបៀបយន្តហោះ ឬភ្ជាប់ទៅបណ្តាញឥតខ្សែដើម្បីធ្វើការហៅ។"</string>
@@ -498,19 +499,31 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"មិន​អាច​បន្ត​ការហៅ​ទូរសព្ទ​បាន​ទេ។"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"មិនអាចបំបែកការហៅបានទេ។"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"មិនអាចផ្ទេរបានទេ។"</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"មិន​អាច​ហៅ​ជា​សន្និសីទ។"</string>
+    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
+    <skip />
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"មិនអាចបដិសេធការហៅបានទេ។"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"មិនអាចបញ្ចេញការហៅបានទេ។"</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"មិនអាចរង់ចាំការហៅទេ"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ភ្ជាប់ទៅបណ្តាញឥតខ្សែដើម្បីធ្វើការហៅ។"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"បើក​ការ​ហៅ​តាម​​វ៉ាយហ្វាយ​ដើម្បី​ធ្វើ​ការ​ហៅ។"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"ព័ត៌មានសង្គ្រោះបន្ទាន់"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"ម្ចាស់"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"ចុច​ម្ដង​ទៀត ដើម្បីមើល​ព័ត៌មាន"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ការហៅ​ទូរសព្ទសង្គ្រោះ​បន្ទាន់"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"តែ​ការហៅទៅលេខសង្គ្រោះបន្ទាន់​ប៉ុណ្ណោះ"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"លេខសង្គ្រោះបន្ទាន់"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"លេខសង្គ្រោះបន្ទាន់"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"ចុច​ម្ដង​ទៀត ដើម្បី​ហៅ​ <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"កំពុង​បើក​វិទ្យុ…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"គ្មានសេវាទេ។ ព្យាយាមម្តង…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"មិន​អាច​ចូល​ជា​របៀប​លើ​យន្តហោះ​​នៅ​អំឡុង​ការ​ហៅ​បន្ទាន់​បាន​ទេ។"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"មិនអាចហៅបានទេ។ <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> មិនមានជាលេខអាសន្នទេ។"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"មិនអាចហៅបានទេ។ ចុចហៅលេខអាសន្ន។"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"មិន​អាច​ហៅ​បន្ទាន់​បាន​ទេ"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"ប៉ូលិស"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"រថយន្ត​សង្គ្រោះ​បន្ទាន់"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"អគ្គិភ័យ"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ប្រើ​​ក្ដារចុច​ដើម្បី​ចុច​លេខ"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"រង់ចាំ"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"បញ្ចប់"</string>
@@ -596,6 +609,8 @@
     <string name="selectContact" msgid="781975788478987237">"ជ្រើស​ទំនាក់ទំនង"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"មិន​គាំទ្រ​ការ​ហៅ​ជា​សំឡេង"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ចុច"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"បង្ហាញ​បន្ទះ​លេខ"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"បន្ទះ​លេខ​​សង្គ្រោះបន្ទាន់"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"សារជាសំឡេងអាចមើលឃើញ"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"កំណត់លេខកូដ PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"ប្ដូរ​​លេខ​កូដ PIN"</string>
@@ -748,4 +763,8 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"បាន​បញ្ជូនបន្តការហៅទូរសព្ទ។"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"កំពុង​ចូលរួម​ការហៅ​ជា​ក្រុម។"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ការហៅ​ដែល​បាន​រង់ចាំត្រូវបាន​ផ្ដាច់។"</string>
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​ទេ ដោយ​សារ​​មាន​គេ​​កំពុង​ហៅ​ទូរសព្ទ​ចេញ​រួច​ហើយ​។"</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​ទេ ដោយសារ​​​មាន​ការ​ហៅ​ទូរសព្ទ​ចូល​​មួយ​មិន​បាន​ឆ្លើយ។ ឆ្លើយតប ឬ​បដិសេធ​ការ​ហៅ​ទូរសព្ទចូល​ មុន​ពេល​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​ថ្មី​មួយ​ទៀត។"</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​ទេ ដោយសារ​មាន​​ការ​ហៅ​ទូរសព្ទ​​មួយ​ត្រូវ​បាន​បិទ​​តាមរយៈ​ការប្រើ​ប្រាស់​លក្ខណៈ​ប្រព័ន្ធ ro.telephony.disable-call ។"</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​​ទេ ដោយសារ​​មាន​ការ​ហៅ​ទូរសព្ទ​ពីរ​កំពុង​​ដំណើរការ​​រួច​ហើយ។ ផ្ដាច់​ការ​ហៅ​ទូរសព្ទ​មួយ ឬ​បញ្ចូល​ការ​ហៅ​ទូរសព្ទ​ទាំងពីរ​​ចូលគ្នា​​ជា​​ការ​ប្រជុំ​មួយ ​មុន​នឹង​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​ថ្មី​មួយ។"</string>
 </resources>
