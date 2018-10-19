@@ -532,7 +532,7 @@
     <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवण सहायक साधन संगतता चालू करें"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"(आरटीटी) कॉल से रीयल-टाइम में मैसेज भेजें"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"वॉइस कॉल में मैसेज भेजने की अनुमति दें"</string>
-    <string name="rtt_mode_more_information" msgid="6080420780730383030">"आरटीटी उन कॉल करने वालों की मदद करता है, जो बधिर हैं, ऊंचा सुनते हैं, जिन्हें बोलने में दिक्कत है या जिनके लिए सिर्फ़ आवाज़ काफ़ी नहीं होती.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;अधिक जानें&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - आरटीटी कॉल, मैसेज लेख के रूप में सेव किए जाते हैं\n       &lt;br&gt; - वीडियो कॉल के लिए आरटीटी उपलब्ध नहीं है"</string>
+    <string name="rtt_mode_more_information" msgid="6080420780730383030">"आरटीटी उन कॉल करने वालों की मदद करता है, जो सुन नहीं सकते हैं, ऊंचा सुनते हैं, जिन्हें बोलने में दिक्कत है या जिनके लिए सिर्फ़ आवाज़ काफ़ी नहीं होती.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ज़्यादा  जानें&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - आरटीटी कॉल, मैसेज लेख के रूप में सेव किए जाते हैं\n       &lt;br&gt; - वीडियो कॉल के लिए आरटीटी उपलब्ध नहीं है"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बंद"</item>
     <item msgid="3971695875449640648">"TTY पूर्ण"</item>

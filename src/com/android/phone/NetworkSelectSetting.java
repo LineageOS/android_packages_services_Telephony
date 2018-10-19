@@ -160,7 +160,8 @@ public class NetworkSelectSetting extends PreferenceFragment {
         new AsyncTask<Void, Void, List<String>>() {
             @Override
             protected List<String> doInBackground(Void... voids) {
-                return Arrays.asList(mTelephonyManager.getForbiddenPlmns());
+                String[] forbiddenPlmns = mTelephonyManager.getForbiddenPlmns();
+                return forbiddenPlmns != null ? Arrays.asList(forbiddenPlmns) : null;
             }
 
             @Override
