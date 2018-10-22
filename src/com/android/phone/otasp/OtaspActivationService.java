@@ -28,6 +28,7 @@ import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 
+import com.android.internal.telephony.GsmCdmaConnection;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.phone.PhoneGlobals;
@@ -45,8 +46,10 @@ import com.android.phone.PhoneUtils;
 public class OtaspActivationService extends Service {
     private static final String TAG = OtaspActivationService.class.getSimpleName();
     private static final boolean DBG = true;
-    /* non-interactive otasp number */
-    private static final String OTASP_NUMBER = "*22899";
+    /**
+     * non-interactive otasp number
+     */
+    private static final String OTASP_NUMBER = GsmCdmaConnection.OTASP_NUMBER;
 
     /**
      * Otasp call follows with SIM reloading which might triggers a retry loop on activation

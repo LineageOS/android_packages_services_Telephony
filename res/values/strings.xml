@@ -1804,7 +1804,11 @@
     <!-- Message displayed to the user to indicate that a held call has been released /
          disconnected. -->
     <string name="supp_service_held_call_released">Held call has been released.</string>
-
+    <!-- In-call screen: error message shown when the user attempts to place a call, but the device
+         is currently in the process of being provisioned for service.  Provisioning is the process
+         by which a device confirms which services are available to the user by contacting the
+         mobile service provider. -->
+    <string name="callFailed_otasp_provisioning_in_process">Cannot place a call as the device is currently being provisioned.</string>
     <!-- In-call screen: error message shown when the user has attempted to place a new outgoing
          call, but there is already a call in dialing state. -->
     <string name="callFailed_already_dialing">Cannot place a call as another outgoing call is already dialing.</string>
