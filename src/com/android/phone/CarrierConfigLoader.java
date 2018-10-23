@@ -93,6 +93,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private PersistableBundle[] mConfigFromDefaultApp;
     // Carrier configs from privileged carrier config app, indexed by phoneID.
     private PersistableBundle[] mConfigFromCarrierApp;
+    // Carrier configs that are provided via the override test API, indexed by phone ID.
+    private PersistableBundle[] mOverrideConfigs;
     // Service connection for binding to config app.
     private CarrierServiceConnection[] mServiceConnection;
     // Whether we have sent config change bcast for each phone id.
@@ -494,6 +496,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         int numPhones = TelephonyManager.from(context).getPhoneCount();
         mConfigFromDefaultApp = new PersistableBundle[numPhones];
         mConfigFromCarrierApp = new PersistableBundle[numPhones];
+        mOverrideConfigs = new PersistableBundle[numPhones];
         mServiceConnection = new CarrierServiceConnection[numPhones];
         mHasSentConfigChange = new boolean[numPhones];
         // Make this service available through ServiceManager.
@@ -782,9 +785,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         mHandler.sendMessage(mHandler.obtainMessage(EVENT_DO_FETCH_DEFAULT, phoneId, -1));
     }
 
-    @Override public
-    @NonNull
-    PersistableBundle getConfigForSubId(int subId, String callingPackage) {
+    @Override
+    public @NonNull PersistableBundle getConfigForSubId(int subId, String callingPackage) {
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
                 mContext, subId, callingPackage, "getCarrierConfig")) {
             return new PersistableBundle();
@@ -803,8 +805,36 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 retConfig.putAll(config);
                 retConfig.putBoolean(CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL, true);
             }
+            config = mOverrideConfigs[phoneId];
+            if (config != null) {
+                retConfig.putAll(config);
+                retConfig.putBoolean(CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL, true);
+            }
         }
         return retConfig;
+    }
+
+    @Override
+    public void overrideConfig(int subscriptionId, PersistableBundle overrides) {
+        mContext.enforceCallingOrSelfPermission(
+                android.Manifest.permission.MODIFY_PHONE_STATE, null);
+        int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
+        if (!SubscriptionManager.isValidPhoneId(phoneId)) {
+            log("Ignore invalid phoneId: " + phoneId + " for subId: " + subscriptionId);
+            return;
+        }
+
+        if (overrides == null) {
+            mOverrideConfigs[phoneId] = new PersistableBundle();
+            return;
+        }
+
+        if (mOverrideConfigs[phoneId] == null) {
+            mOverrideConfigs[phoneId] = overrides;
+        } else {
+            mOverrideConfigs[phoneId].putAll(overrides);
+        }
+        broadcastConfigChangedIntent(phoneId);
     }
 
     @Override
@@ -881,6 +911,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             pw.println("");
             // display ConfigFromCarrierApp
             printConfig(mConfigFromCarrierApp[i], pw, "mConfigFromCarrierApp");
+            pw.println("");
+            printConfig(mOverrideConfigs[i], pw, "mOverrideConfigs");
         }
     }
 
