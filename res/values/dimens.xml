@@ -128,8 +128,8 @@
     <dimen name="emergency_number_title_group_padding_horizontal">16dp</dimen>
 
     <!-- Height and vertical margin for the emergency information button. -->
-    <dimen name="emergency_info_button_height">96dp</dimen>
-    <dimen name="emergency_info_button_margin_vertical">56dp</dimen>
+    <dimen name="emergency_info_button_height">80dp</dimen>
+    <dimen name="emergency_info_button_margin_vertical">40dp</dimen>
     <dimen name="emergency_info_button_fix_margin_vertical">40dp</dimen>
 
     <!-- Margin for the emergency information button text. -->
@@ -155,7 +155,7 @@
     <dimen name="location_image_width">16dp</dimen>
 
     <!-- The height for button of emergency shortcut. -->
-    <dimen name="emergency_shortcut_button_height">96dp</dimen>
+    <dimen name="emergency_shortcut_button_height">80dp</dimen>
 
     <!-- The height and width for the circle image of phone number type.-->
     <dimen name="phone_number_type_circle_image_height">40dp</dimen>
@@ -197,4 +197,9 @@
     <!-- The width for emergency number title container.-->
     <dimen name="emergency_number_title_container_width">210dp</dimen>
 
+    <!-- The text size for emergency number title.-->
+    <dimen name="emergency_number_title_text_size">13sp</dimen>
+
+    <!-- The text size for emergency location.-->
+    <dimen name="emergency_location_text_size">13sp</dimen>
 </resources>
