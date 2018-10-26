@@ -131,7 +131,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS zahtjev je izmijenjen u USSD zahtjev"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Izmijenjeno u novi SS zahtjev"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS zahtjev je izmijenjen u video poziv"</string>
-    <string name="fdn_check_failure" msgid="18200614306525434">"Uključena je postavka brojeva fiksnog biranja u Aplikaciji za telefon. Zbog toga ne rade neke funkcije vezane za pozive."</string>
+    <string name="fdn_check_failure" msgid="18200614306525434">"Uključena je postavka brojeva fiksnog biranja u aplikaciji Telefon. Zbog toga ne rade neke funkcije vezane za pozive."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Uključite radio prije prikazivanja ovih postavki."</string>
     <string name="close_dialog" msgid="2365884406356986917">"Uredu"</string>
     <string name="enable" msgid="7248657275000173526">"Uključi"</string>
@@ -172,7 +172,7 @@
     <string name="select_automatically" msgid="1046727200631770962">"Automatski odaberi mrežu"</string>
     <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"Nedostupno kada ste povezani na mrežu %1$s"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Mreža"</string>
-    <string name="register_automatically" msgid="6017849844573519637">"Automatska registracija u toku…"</string>
+    <string name="register_automatically" msgid="6017849844573519637">"Automatska registracija…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Preferirana vrsta mreže"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Promijeni način rada mreže"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Preferirana vrsta mreže"</string>
@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Nije moguće nastaviti poziv."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nije moguće odvojiti poziv."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Prijenos nije moguć."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Nije moguće uspostaviti konferencijske pozive."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Nije moguće spajanje poziva."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Nije moguće odbiti poziv."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Nije moguće uputiti poziv(e)."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Nije moguće staviti pozive na čekanje."</string>
@@ -764,12 +764,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Poziv je proslijeđen."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Pridruživanje konferencijskom pozivu."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Čekanje poziva na čekanju je prekinuto."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nije moguće uputiti poziv zbog uspostavljanja drugog odlaznog poziva."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nije moguće uputiti poziv zbog neodgovorenog dolaznog poziva. Odgovorite ili odbijte dolazni poziv prije upućivanja novog poziva."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nije moguće uputiti poziv zbog onemogućenog pozivanja putem sistemske funkcije ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Nije moguće uputiti poziv jer su dva poziva već u toku. Prekinite jedan od njih ili ih objedinite u konferencijski poziv prije upućivanja novog poziva."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"Za korištenje usluge <xliff:g id="SUPP_SERVICE">%s</xliff:g>, provjerite je li uključen prijenos podataka na mobilnoj mreži. Ovo možete promijeniti u postavkama mobilne mreže."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"Za korištenje usluge <xliff:g id="SUPP_SERVICE">%s</xliff:g>, provjerite jesu li uključeni prijenos podataka na mobilnoj mreži i roming podataka. Ovo možete promijeniti u postavkama mobilne mreže."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Za korištenje usluge <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, provjerite je li za SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> uključen prijenos podataka na mobilnoj mreži. Ovo možete promijeniti u postavkama mobilne mreže."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Za korištenje usluge <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, provjerite jesu li za SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> uključeni prijenos podataka na mobilnoj mreži i roming podataka. Ovo možete promijeniti u postavkama mobilne mreže."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Odbaci"</string>
 </resources>

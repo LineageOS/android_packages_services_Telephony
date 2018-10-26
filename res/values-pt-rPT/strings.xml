@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Não é possível retomar a chamada."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Não é possível separar a chamada."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Não é possível transferir."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Não é possível efectuar chamadas de conferência."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Não é possível intercalar as chamadas."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Não é possível rejeitar a chamada."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Não é possível libertar a(s) chamada(s)."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Não é possível colocar as chamadas em espera."</string>
@@ -762,12 +762,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"A chamada foi reencaminhada."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Está a participar na conferência."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"A chamada em espera foi desligada."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Não é possível efetuar uma chamada porque já está a ser efetuada outra chamada."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Não pode efetuar uma chamada porque há uma chamada recebida não atendida. Atenda ou rejeite a chamada recebida antes de efetuar uma nova chamada."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Não pode efetuar uma chamada porque as chamadas foram desativadas através da propriedade de sistema ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Não pode efetuar uma chamada porque já estão em curso duas chamadas. Desligue uma das chamadas ou una-as numa conferência antes de efetuar uma nova chamada."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"Para utilizar o/a <xliff:g id="SUPP_SERVICE">%s</xliff:g>, certifique-se de que os dados móveis estão ativados. Pode alterar esta definição nas definições de rede móvel."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"Para utilizar o/a <xliff:g id="SUPP_SERVICE">%s</xliff:g>, certifique-se de que os dados móveis e o roaming de dados estão ativados. Pode alterar estas definições nas definições de rede móvel."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Para utilizar o/a <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, certifique-se de que os dados móveis estão ativados para o SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Pode alterar esta definição nas definições de rede móvel."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Para utilizar o/a <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, certifique-se de que os dados móveis e o roaming de dados estão ativados para o SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Pode alterar estas definições nas definições de rede móvel."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Ignorar"</string>
 </resources>

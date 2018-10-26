@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"ບໍ່ສາມາດສືບຕໍ່ການໂທໄດ້."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"ບໍ່​ສາ​ມາດ​ແຍກ​ສາຍ​ໂທ​ໄດ້."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"ບໍ່​ສາ​ມາດ​ໂອນ​ໄດ້."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"ບໍ່ສາມາດປະຊຸມສາຍໄດ້."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"ບໍ່ສາມາດຮວມສາຍໄດ້."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"ບໍ່​ສາ​ມາດ​ປະ​ຕິ​ເສດ​ສາຍ​ໂທ​ໄດ້."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"ບໍ່​ສາ​ມາດ​ປ່ອຍ​ສາຍ​ໂທ​ໄດ້."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"ບໍ່ສາມາດພັກສາຍໄດ້."</string>
@@ -762,12 +762,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ໂອນສາຍແລ້ວ."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"ກຳລັງເຂົ້າຮ່ວມການປະຊຸມສາຍ."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ວາງສາຍທີ່ພັກໄວ້ແລ້ວ."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"ບໍ່ສາມາດໂທອອກໄດ້ເນື່ອງຈາກກຳລັງມີສາຍໂທອອກຢູ່ກ່ອນແລ້ວ."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"ບໍ່ສາມາດໂທອອກໄດ້ເນື່ອງຈາກມີສາຍທີ່ກຳລັງໂທເຂົ້າມາທີ່ຍັງບໍ່ໄດ້ຮັບຢູ່. ກະລຸນາຮັບສາຍ ຫຼື ວາງສາຍທີ່ກຳລັງໂທເຂົ້າມາກ່ອນຈະໂທໃໝ່."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ບໍ່ສາມາດໂທໄດ້ເນື່ອງຈາກມີການປິດການໂທໂດຍໃຊ້ຄຸນສົມບັດລະບົບ ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"ບໍ່ສາມາດໂທໄດ້ເນື່ອງຈາກມີສອງສາຍກຳລັງໂທຢູ່. ກະລຸນາຕັດການເຊື່ອມຕໍ່ສາຍໃດໜຶ່ງອອກ ຫຼື ຮວມສາຍເປັນການປະຊຸມສາຍກ່ອນໂທໃໝ່."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"ເພື່ອໃຊ້ <xliff:g id="SUPP_SERVICE">%s</xliff:g>, ກະລຸນາກວດສອບວ່າເປີດໃຊ້ອິນເຕີເນັດມືຖືແລ້ວ. ທ່ານສາມາດປ່ຽນໄດ້ໃນການຕັ້ງຄ່າເຄືອຂ່າຍ."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"ເພື່ອໃຊ້ <xliff:g id="SUPP_SERVICE">%s</xliff:g>, ກະລຸນາກວດສອບວ່າເປີດໃຊ້ອິນເຕີເນັດມືຖື ແລະ ການໂຣມມິງອິນເຕີເນັດແລ້ວ. ທ່ານສາມາດປ່ຽນໄດ້ໃນການຕັ້ງຄ່າເຄືອຂ່າຍ."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"ເພື່ອໃຊ້ <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, ກະລຸນາກວດສອບວ່າເປີດໃຊ້ອິນເຕີເນັດມືຖືສຳລັບຊິມ <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ແລ້ວ. ທ່ານສາມາດປ່ຽນໄດ້ໃນການຕັ້ງຄ່າເຄືອຂ່າຍ."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"ເພື່ອໃຊ້ <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, ກະລຸນາກວດສອບວ່າເປີດໃຊ້ອິນເຕີເນັດມືຖື ແລະ ການໂຣມມິງອິນເຕີເນັດສຳລັບຊິມ <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ແລ້ວ. ທ່ານສາມາດປ່ຽນໄດ້ໃນການຕັ້ງຄ່າເຄືອຂ່າຍ."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"ປິດໄວ້"</string>
 </resources>

@@ -505,7 +505,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Det går inte att återuppta samtalet."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Det gick inte att koppla isär samtalen."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Det gick inte att överföra."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Det gick inte att ringa konferenssamtal."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Det går inte att koppla ihop samtal."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Det gick inte att avvisa samtalet."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Det gick inte att släppa samtal."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Det går inte att hålla kvar samtal."</string>
@@ -768,12 +768,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Vidarekopplat samtal."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Ansluter till konferenssamtal."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Parkerat samtal återupptaget."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Det går inte att ringa ett samtal eftersom ett annat utgående samtal ringer upp."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Det går inte att ringa eftersom det finns ett obesvarat inkommande samtal. Svara eller avvisa det innan du ringer ett nytt samtal."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Det går inte att ringa eftersom uppringning har inaktiverats med systemegenskapen ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Det går inte att ringa eftersom det redan finns två pågående samtal. Koppla bort ett eller slå ihop dem till en konferens innan du ringer ett nytt samtal."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"Använd <xliff:g id="SUPP_SERVICE">%s</xliff:g> genom att säkerställa att mobildata är aktiverat. Det går att ändra i inställningarna för mobilt nätverk."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"Använd <xliff:g id="SUPP_SERVICE">%s</xliff:g> genom att säkerställa att mobildata och dataroaming är aktiverat. Det går att ändra i inställningarna för mobilt nätverk."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Använd <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> genom att säkerställa att mobildata är aktiverat för SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Det går att ändra i inställningarna för mobilt nätverk."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Använd <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> genom att säkerställa att mobildata och dataroaming är aktiverat för SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Det går att ändra i inställningarna för mobilt nätverk."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Stäng"</string>
 </resources>

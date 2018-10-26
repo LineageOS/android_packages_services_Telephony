@@ -505,7 +505,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"無法恢復通話。"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"無法分割通話。"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"無法轉接。"</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"無法進行多方通話。"</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"無法合併通話。"</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"無法拒接來電。"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"無法掛斷電話。"</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"無法保留通話。"</string>
@@ -768,12 +768,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"來電轉駁。"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"正在加入會議通話。"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"保留中的通話已斷線。"</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"你正在撥出其他電話，因此無法再撥號。"</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"你尚未接聽來電，因此無法撥打電話。你必須先決定接聽或拒接來電，才能再撥打電話。"</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"通話功能已透過 ro.telephony.disable-call system 屬性停用，因此無法撥打電話。"</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"你目前有兩場正在進行的通話，因此無法撥打電話。你必須掛斷其中一場通話或將通話合併成會議，才能再撥打電話。"</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"如要使用<xliff:g id="SUPP_SERVICE">%s</xliff:g>，請確認行動數據功能已開啟。你可以前往行動網路設定進行變更。"</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"如要使用<xliff:g id="SUPP_SERVICE">%s</xliff:g>，請確認行動數據功能和漫遊服務已開啟。你可以前往行動網路設定進行變更。"</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"如要使用<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>，請確認 SIM 卡 <xliff:g id="SIM_NUMBER">%2$d</xliff:g> 的行動數據功能已開啟。你可以前往行動網路設定進行變更。"</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"如要使用<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>，請確認 SIM 卡 <xliff:g id="SIM_NUMBER">%2$d</xliff:g> 的行動數據功能和漫遊服務已開啟。你可以前往行動網路設定進行變更。"</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"關閉"</string>
 </resources>
