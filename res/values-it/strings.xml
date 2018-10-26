@@ -503,7 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Impossibile riprendere la chiamata."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Impossibile separare la chiamata."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Impossibile trasferire."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Audioconferenze non disponibili"</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Impossibile unire le chiamate."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Impossibile rifiutare la chiamata."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Impossibile riagganciare."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Impossibile mettere in attesa le chiamate."</string>
@@ -766,12 +766,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Trasferimento di chiamata."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Accesso all\'audioconferenza."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"La chiamata in attesa è stata chiusa."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Impossibile effettuare una chiamata perché è già presente un\'altra chiamata in uscita in composizione."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Impossibile effettuare una chiamata perché è presente una chiamata in arrivo senza risposta. Rispondi o rifiuta la chiamata in arrivo prima di effettuare una nuova chiamata."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Impossibile effettuare una chiamata perché le chiamate sono state disattivate utilizzando la proprietà di sistema ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Impossibile effettuare una chiamata perché sono già presenti due chiamate in corso. Unisci le chiamate in una conferenza o scollegane una prima di effettuare una nuova chiamata."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"Per utilizzare <xliff:g id="SUPP_SERVICE">%s</xliff:g>, assicurati che i dati mobili siano attivi. Puoi modificare questa opzione nelle impostazioni della rete mobile."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"Per utilizzare <xliff:g id="SUPP_SERVICE">%s</xliff:g>, assicurati che i dati mobili e il roaming dei dati siano attivi. Puoi modificare queste opzioni nelle impostazioni della rete mobile."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Per utilizzare <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, assicurati che i dati mobili siano attivi per la SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Puoi modificare questa opzione nelle impostazioni della rete mobile."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Per utilizzare <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, assicurati che i dati mobili e il roaming dei dati siano attivi per la SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Puoi modificare queste opzioni nelle impostazioni della rete mobile."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Ignora"</string>
 </resources>

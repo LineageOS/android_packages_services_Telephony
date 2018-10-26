@@ -503,7 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Puhelua ei voi jatkaa."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Puhelua ei voi erottaa."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Puhelua ei voi siirtää."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Puhelujen yhdistäminen epäonnistui."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Puhelujen yhdistäminen epäonnistui."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Puhelua ei voi hylätä."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Puheluja ei voi vapauttaa."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Puhelujen pito ei onnistu."</string>
@@ -766,12 +766,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Siirretty puhelu."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Liitytään puhelinneuvotteluun."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Pidossa ollut puhelu on vapautettu."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Puhelua ei voida soittaa, koska toisen lähtevän puhelun soittaminen on kesken."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Puhelua ei voida soittaa, koska saapuvaan puheluun ei ole vielä vastattu. Vastaa saapuvaan puheluun tai hylkää se, ennen kuin soitat uuden puhelun."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Puhelua ei voida soittaa, koska soittaminen on poistettu käytöstä ro.telephony.disable-call-järjestelmätoiminnolla."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Puhelua ei voida soittaa, koska kaksi puhelua on jo käynnissä. Katkaise toinen puheluista tai yhdistä puhelut puhelinneuvotteluksi ennen uuden puhelun soittamista."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> toimii, jos mobiilidata on käytössä. Voit ottaa mobiilidatan käyttöön mobiiliverkkoasetuksista."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> toimii, jos mobiilidata ja roaming ovat käytössä. Voit ottaa ne käyttöön mobiiliverkkoasetuksista."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> toimii, jos mobiilidata on käytössä SIM-kortilla <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Voit ottaa mobiilidatan käyttöön mobiiliverkkoasetuksista."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> toimii, jos mobiilidata ja roaming ovat käytössä SIM-kortilla <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Voit ottaa ne käyttöön mobiiliverkkoasetuksista."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Ohita"</string>
 </resources>

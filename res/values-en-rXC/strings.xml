@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‎‎‎‏‏‎‎‏‏‎‎‏‎‏‎‏‏‏‏‎‏‎‎‎‎‏‎‏‎‎‎‏‎‎‎‎‎‎‏‏‏‎‎‎‏‎‏‏‏‎‏‎‎‏‎‏‏‏‎‎‎‎Can\'t resume call.‎‏‎‎‏‎"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‎‎‎‏‎‎‎‎‏‎‎‎‏‏‎‎‏‏‏‎‎‎‎‏‏‎‏‎‎‎‎‏‏‎‏‎‏‏‏‎‎‎‎‎‏‎‎‎‎‏‎‏‎‏‏‏‏‎‎Can\'t separate call.‎‏‎‎‏‎"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‎‎‎‏‏‎‏‎‏‏‎‏‎‎‎‏‎‎‎‎‏‏‏‎‎‏‎‎‎‏‎‎‎‎‏‏‏‏‏‎‎‎‏‎‏‎‏‏‏‎‎‏‎‎‏‏‏‎‎Can\'t transfer.‎‏‎‎‏‎"</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‎‎‎‏‎‏‏‎‎‎‏‏‎‎‎‏‎‎‎‎‏‏‎‏‏‎‎‏‏‏‏‏‏‏‏‎‎‎‏‏‏‎‎‎‎‏‎‎‎‏‏‏‎‏‏‎‎‎‎‎‎‎Unable to conference calls.‎‏‎‎‏‎"</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‎‎‎‏‏‎‎‎‏‏‏‏‏‏‏‎‎‎‎‏‎‏‎‎‏‏‎‏‎‎‎‏‎‏‎‎‎‏‏‎‎‏‎‏‏‎‏‏‎‎‎‏‏‏‎‎‎‎‏‏‎‎Unable to merge calls.‎‏‎‎‏‎"</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‎‎‏‏‏‎‎‎‎‏‎‏‎‏‎‏‏‎‏‎‎‎‎‏‎‏‎‏‏‎‏‏‎‎‎‎‏‎‏‏‏‏‏‎‎‎‏‎‏‎‎‎‎‏‎‏‏‎‎Can\'t reject call.‎‏‎‎‏‎"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‏‏‎‎‏‎‏‏‎‎‏‎‏‏‎‎‏‎‏‎‏‎‎‏‏‏‎‏‏‏‎‎‏‏‏‏‎‎‏‎‏‏‎‏‎‏‎‏‎‏‏‎‏‏‏‎‏‎‎Can\'t release call(s).‎‏‎‎‏‎"</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‎‏‏‏‎‏‎‎‏‎‎‎‎‏‎‎‎‏‎‏‎‏‏‏‏‎‎‎‏‏‎‏‎‎‎‏‎‎‎‏‏‏‏‏‏‎‏‏‎‎‎‏‏‎‏‏‏‏‏‏‎‎Can\'t hold calls.‎‏‎‎‏‎"</string>
@@ -762,12 +762,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‏‏‏‏‎‏‎‎‏‎‏‏‎‏‎‏‎‏‎‏‏‎‎‏‏‏‎‎‏‏‏‎‎‏‏‏‏‏‏‎‎‏‎‎‏‎‎‎‏‏‏‎‎‏‎‏‏‏‎‏‏‎Forwarded call.‎‏‎‎‏‎"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‏‏‏‎‏‏‎‏‏‏‏‎‎‏‎‏‎‏‎‎‏‎‎‎‎‎‎‏‏‎‏‏‎‎‏‏‎‎‏‏‏‏‎‎‏‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎Joining conference call.‎‏‎‎‏‎"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‎‏‏‏‏‎‎‎‎‏‎‏‏‏‎‎‏‏‎‏‎‏‎‏‎‏‏‏‎‎‏‎‎‎‎‏‏‏‎‏‎‏‏‎‎‎‏‏‏‏‏‎‏‎‎‎‎‎‏‎‎‏‏‎Held call has been released.‎‏‎‎‏‎"</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‏‎‎‏‏‏‏‎‎‏‏‏‏‎‎‏‏‎‏‎‏‏‎‎‏‎‎‏‏‎‎‎‎‎‎‎‏‏‎‏‎‏‎‏‏‎‎‎‏‎‎Cannot place a call as another outgoing call is already dialing.‎‏‎‎‏‎"</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‎‏‎‏‏‏‎‎‎‎‏‎‏‎‎‏‏‎‎‏‏‏‏‎‎‏‏‏‏‏‏‎‎‏‏‎‎‎‏‎‏‏‎‏‏‎‏‎‎‎‏‎‏‏‎‏‏‏‏‏‏‎Cannot place a call as there is an unanswered incoming call. Answer or reject the incoming call prior to placing a new call.‎‏‎‎‏‎"</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‎‎‏‎‏‏‎‏‏‎‏‎‏‏‎‎‏‎‎‏‏‏‏‎‎‎‎‏‎‏‏‏‏‏‎‏‎‏‎‏‏‎‎‏‏‎‎‏‎‎‎‏‎‎‏‏‎‏‎Cannot place a call as calling has been disabled using the ro.telephony.disable-call system property.‎‏‎‎‏‎"</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‎‏‎‎‏‏‏‏‏‎‏‎‎‎‎‎‎‏‎‎‏‏‎‏‏‎‏‎‎‎‎‏‎‎‏‏‎‎‏‏‏‏‏‎‎‏‏‏‎‎‎‎‏‎‎‎‎‏‏‏‎‎Cannot place a call a there are already two calls in progress. Disconnect one of the calls or merge them into a conference prior to placing a new call.‎‏‎‎‏‎"</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‎‎‎‏‏‏‎‎‏‏‎‏‏‏‎‏‎‏‏‏‏‎‏‏‏‏‎‏‏‎‎‎‏‎‎‎‎‏‏‎‎‏‎‎‎‏‏‏‏‏‎‎‏‏‏‏‎‎‏‏‎‎To use ‎‏‎‎‏‏‎<xliff:g id="SUPP_SERVICE">%s</xliff:g>‎‏‎‎‏‏‏‎, make sure mobile data is turned on. You can change this in mobile network settings.‎‏‎‎‏‎"</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‎‏‏‎‏‏‎‎‎‏‎‏‎‏‎‎‎‏‏‎‎‎‏‎‎‎‎‏‎‎‏‏‏‏‏‏‎‏‏‏‎‎‏‏‏‎‏‎‎‏‏‏‎‏‎‎‎‏‎‏‏‎‎‎To use ‎‏‎‎‏‏‎<xliff:g id="SUPP_SERVICE">%s</xliff:g>‎‏‎‎‏‏‏‎, make sure mobile data and data roaming are turned on. You can change these in mobile network settings.‎‏‎‎‏‎"</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‎‏‏‎‏‏‏‎‏‎‏‏‎‏‎‏‎‎‎‏‏‏‏‎‎‏‎‎‎‏‏‏‎‏‏‎‏‏‏‎‏‏‎‏‏‎‏‎‎‏‎‎‎‎‏‎‎‎‎‎‏‎‎‎To use ‎‏‎‎‏‏‎<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>‎‏‎‎‏‏‏‎, make sure mobile data is turned on for SIM ‎‏‎‎‏‏‎<xliff:g id="SIM_NUMBER">%2$d</xliff:g>‎‏‎‎‏‏‏‎. You can change this in mobile network settings.‎‏‎‎‏‎"</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‎‏‏‏‏‏‏‏‎‎‎‏‏‎‎‏‏‎‏‎‎‎‎‏‎‎‏‎‏‎‏‎‏‎‎‏‏‎‎‏‎‏‏‎‎‎‏‎‏‎‏‎‏‎‎‎‎‎‎‎‏‎To use ‎‏‎‎‏‏‎<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>‎‏‎‎‏‏‏‎, make sure mobile data and data roaming are turned on for SIM ‎‏‎‎‏‏‎<xliff:g id="SIM_NUMBER">%2$d</xliff:g>‎‏‎‎‏‏‏‎. You can change these in mobile network settings.‎‏‎‎‏‎"</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‎‎‏‏‎‎‎‏‏‏‏‎‎‎‏‏‏‎‎‎‎‏‏‏‎‎‏‎‏‏‏‎‏‏‏‏‏‏‎‏‎‎‏‎‏‎‎‏‎‎‎‎‎‎‎‎‏‎‏‏‎‎Dismiss‎‏‎‎‏‎"</string>
 </resources>

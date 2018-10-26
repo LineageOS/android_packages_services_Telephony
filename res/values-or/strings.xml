@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"କଲ୍‍କୁ ପୁଣି ଆରମ୍ଭ କରିହେବ ନାହିଁ।"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"କଲ୍‌କୁ ଅଲଗା କରିହେବ ନାହିଁ।"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"ଟ୍ରାନ୍ସଫର୍ କରିହେବ ନାହିଁ।"</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"କନଫରେନ୍ସ କଲ୍ କରିବାରେ ଅକ୍ଷମ।"</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"କଲ୍‍ଗୁଡିକୁ ମିଶ୍ରଣ କରାଯାଇପାରିଲା ନାହିଁ।"</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"କଲ୍‌କୁ ପ୍ରତ୍ୟାକ୍ଷାନ କରିହେବ ନାହିଁ।"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"କଲ୍(ଗୁଡ଼ିକୁ)କୁ ରିଲିଜ୍ କରାଯାଇପରିବ ନାହିଁ।"</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"କଲ୍‍କୁ ହୋଲ୍ଡ କରାଯାଇପାରିବ ନାହିଁ।"</string>
@@ -762,12 +762,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ଫରୱାର୍ଡ କରାଯାଇଥିବା କଲ୍।"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"କନଫରେନ୍ସ କଲ୍‌ରେ ଯୋଗ ଦେବା।"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ହୋଲ୍ଡ କରାଯାଇଥିବା କଲ୍‌ରୁ ହୋଲ୍ଡ ହଟାଇଦିଆଗଲା।"</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"ପୂର୍ବରୁ ଅନ୍ୟ ଏକ ଆଉଟ୍‌ଗୋଇଂ କଲ୍ ଡାଏଲ୍ କରାଯାଉଥିବା ଯୋଗୁଁ ଏକ କଲ୍ କରିପାରିବେ ନାହିଁ।"</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"ଗୋଟିଏ ଉତ୍ତର ଦିଆଯାଇନଥିବା ଇନ୍‌କମିଂ କଲ୍ ଯୋଗୁଁ ଅନ୍ୟ ଏକ କଲ୍ କରିପାରିବେ ନାହିଁ । ଏକ ନୂତନ କଲ୍ କରିବା ପୂର୍ବରୁ ଇନ୍‌କମିଂ କଲ୍‌ଟିର ଉତ୍ତର ଦିଅନ୍ତୁ କିମ୍ବା ଏହାକୁ ଅଗ୍ରାହ୍ୟ କରନ୍ତୁ।"</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call ସିଷ୍ଟମ୍ ଗୁଣର ପ୍ରୟୋଗ କରି କଲ୍ କରିବାର ସୁବିଧାକୁ ଅକ୍ଷମ କରାଯାଇଥିବା ଯୋଗୁଁ ଏକ କଲ୍ କରାଯାଇପାରିବ ନାହିଁ।"</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"ଏକାସଙ୍ଗେ ଦୁଇଟି କଲ୍ ପ୍ରକ୍ରିୟାରେ ଥିବା ଯୋଗୁଁ ଏକ କଲ୍ କରାଯାଇପାରିବ ନାହିଁ। ଏକ ନୂତନ କଲ୍ କରିବା ପୂର୍ବରୁ ଗୋଟିଏ କଲ୍‌କୁ ବିଚ୍ଛିନ୍ନ କରନ୍ତୁ କିମ୍ବା ଉଭୟ କଲ୍‌କୁ ଯୋଡ଼ି ଏକ କନ୍ଫରେନସ୍ କଲ୍‌ରେ ପରିଣତ କରନ୍ତୁ।"</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ମୋବାଇଲ୍ ଡାଟା ଚାଲୁଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଂସ୍‌ରେ ବଦଳାଇପାରିବେ।"</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ମୋବାଇଲ୍ ଡାଟା ଏବଂ ଡାଟା ରୋମିଂ ଚାଲୁ ଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଂସ୍‌ରେ ବଦଳାଇପାରିବେ।"</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ସିମ୍ <xliff:g id="SIM_NUMBER">%2$d</xliff:g>ରେ ମୋବାଇଲ୍ ଡାଟା ଚାଲୁ ଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଂସ୍‌ରେ ବଦଳାଇପାରିବେ।"</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ସିମ୍ <xliff:g id="SIM_NUMBER">%2$d</xliff:g>ରେ ମୋବାଇଲ୍ ଡାଟା ଏବଂ ଡାଟା ରୋମିଂ ଚାଲୁ ଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଂସ୍‌ରେ ବଦଳାଇପାରିବେ।"</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"ଖାରଜ କରନ୍ତୁ"</string>
 </resources>

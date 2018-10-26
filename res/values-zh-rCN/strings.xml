@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"无法恢复通话。"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"无法单独通话。"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"无法转移呼叫。"</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"无法进行电话会议。"</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"无法合并通话。"</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"无法拒接来电。"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"无法挂断电话。"</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"无法保持通话。"</string>
@@ -762,12 +762,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"已转接来电。"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"正在加入电话会议。"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"保持的通话已中断。"</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"由于已在拨打另一个电话，因此无法拨打新电话。"</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"由于有未接来电，因此无法拨打电话。请先接听或拒绝来电，然后才能拨打新电话。"</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"通话功能已经由 ro.telephony.disable-call 系统属性停用，因此无法拨打电话。"</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"由于已有两个正在进行的通话，因此无法拨打电话。请先中断其中一个通话或将两个通话合并到同一个会议中，然后才能拨打新电话。"</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"要使用<xliff:g id="SUPP_SERVICE">%s</xliff:g>服务，请确保已开启移动数据。您可以在移动网络设置中进行更改。"</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"要使用<xliff:g id="SUPP_SERVICE">%s</xliff:g>服务，请确保已开启移动数据和数据网络漫游。您可以在移动网路设置中进行更改。"</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"要使用<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>服务，请确保已为 SIM (<xliff:g id="SIM_NUMBER">%2$d</xliff:g>) 开启移动数据。您可以在移动网络设置中进行更改。"</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"要使用<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>服务，请确保已为 SIM (<xliff:g id="SIM_NUMBER">%2$d</xliff:g>) 开启移动数据和数据网络漫游。您可以在移动网络设置中进行更改。"</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"关闭"</string>
 </resources>

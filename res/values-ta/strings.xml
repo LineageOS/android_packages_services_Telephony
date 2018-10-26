@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"அழைப்பைத் தொடர முடியவில்லை."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"அழைப்பைப் பிரிக்க முடியாது."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"மாற்ற முடியாது."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"குழு அழைப்புகளை மேற்கொள்ள முடியவில்லை."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"அழைப்புகளை இணைக்க முடியவில்லை."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"அழைப்பை நிராகரிக்க முடியாது."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"அழைப்பை(அழைப்புகளை) விடுவிக்க முடியாது."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"அழைப்புகளை ஹோல்டு செய்ய முடியாது."</string>
@@ -762,12 +762,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"பகிரப்பட்ட அழைப்பு."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"குழு அழைப்பில் சேர்கிறீர்கள்."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ஹோல்டில் இருந்த அழைப்புத் துண்டிக்கப்பட்டது."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"ஏற்கனவே ஒரு அழைப்பு டயல் ஆகிக்கொண்டிருப்பதால், இந்த அழைப்பைச் செய்ய முடியாது."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"உள்வரும் அழைப்பிற்கு இன்னும் பதிலளிக்காததால், இந்த அழைப்பைச் செய்ய முடியாது. புதிதாக ஒரு அழைப்பைச் செய்வதற்கு முன்னர், உள்வரும் அழைப்பிற்குப் பதிலளிக்கவும் அல்லது நிராகரிக்கவும்."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call எனும் சிஸ்டம் பிராப்பர்ட்டியைப் பயன்படுத்தி அழைப்பதற்கான வசதி முடக்கப்பட்டுள்ளதால், இந்த அழைப்பைச் செய்ய முடியாது."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"இரண்டு அழைப்புகள் ஏற்கனவே செயலில் இருப்பதால், இந்த அழைப்பைச் செய்ய முடியாது. புதிதாக ஒரு அழைப்பைச் செய்வதற்கு முன்னர், ஏதாவது ஒரு அழைப்பைத் துண்டிக்கவும் அல்லது அவற்றை இணைத்து குழு அழைப்பாக மாற்றவும்."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>ஐப் பயன்படுத்த, மொபைல் டேட்டா இயக்கத்தில் இருப்பதை உறுதிப்படுத்திக் கொள்ளவும். இதை மொபைல் நெட்வொர்க் அமைப்புகளில் மாற்றலாம்."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>ஐப் பயன்படுத்த, மொபைல் டேட்டாவும் டேட்டா ரோமிங்கும் இயக்கத்தில் இருப்பதை உறுதிப்படுத்திக் கொள்ளவும். இவற்றை மொபைல் நெட்வொர்க் அமைப்புகளில் மாற்றலாம்."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>ஐப் பயன்படுத்த, <xliff:g id="SIM_NUMBER">%2$d</xliff:g> சிம்மிற்கான மொபைல் டேட்டா இயக்கத்தில் இருப்பதை உறுதிப்படுத்திக் கொள்ளவும். இதை மொபைல் நெட்வொர்க் அமைப்புகளில் மாற்றலாம்."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>ஐப் பயன்படுத்த, <xliff:g id="SIM_NUMBER">%2$d</xliff:g> சிம்மிற்கான மொபைல் டேட்டாவும் டேட்டா ரோமிங்கும் இயக்கத்தில் இருப்பதை உறுதிப்படுத்திக் கொள்ளவும். இவற்றை மொபைல் நெட்வொர்க் அமைப்புகளில் மாற்றலாம்."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"நிராகரி"</string>
 </resources>

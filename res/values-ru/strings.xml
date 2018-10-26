@@ -501,7 +501,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Не удалось возобновить вызов."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Не удалось разделить вызов."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Не удалось перенести."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Не удается создать конференц-вызов."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Не удалось объединить вызовы"</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Не удалось отклонить вызов."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Не удалось разъединить."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Удержание невозможно."</string>
@@ -768,12 +768,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Переадресация вызова."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Присоединение к конференц-вызову…"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Вызов снят с удержания."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Невозможно позвонить, поскольку ещё не завершен другой исходящий вызов."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Невозможно позвонить, поскольку вы не ответили на входящий вызов. Примите или отклоните текущий звонок."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Невозможно позвонить, поскольку вызовы запрещены системным свойством ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Невозможно позвонить, поскольку ещё не завершены два текущих вызова. Чтобы начать звонок, сбросьте один из вызовов или объедините их в конференцию."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"Для работы этого сервиса (<xliff:g id="SUPP_SERVICE">%s</xliff:g>) необходимо подключение к мобильному Интернету. Этот параметр можно изменить в настройках мобильной сети."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"Для работы этого сервиса (<xliff:g id="SUPP_SERVICE">%s</xliff:g>) необходимо подключение к мобильному Интернету и интернет-роумингу. Эти параметры можно изменить в настройках мобильной сети."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Для работы этого сервиса (<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>) необходимо подключение к мобильному Интернету через SIM-карту <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Этот параметр можно изменить в настройках мобильной сети."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Для работы этого сервиса (<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>) необходимо подключение к мобильному Интернету и доступ к интернет-роумингу через SIM-карту <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Эти параметры можно изменить в настройках мобильной сети."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Закрыть"</string>
 </resources>

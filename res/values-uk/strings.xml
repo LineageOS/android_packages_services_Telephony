@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Не вдається відновити виклик."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Неможливо розділити виклик."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Неможливо перенести."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Неможл. створ. конференц-викл."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Не вдалося об’єднати виклики."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Неможливо відхилити виклик."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Неможливо телефонувати."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Не можна призупиняти виклики."</string>
@@ -766,12 +766,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Переадресований виклик."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Приєднання до конференц-виклику."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Утримуваний виклик скасовано."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Неможливо здійснити виклик, оскільки ви вже телефонуєте на інший номер."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Неможливо здійснити виклик. Прийміть або відхиліть вхідний виклик, перш ніж здійснювати новий."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Неможливо здійснити виклик, оскільки дзвінки вимкнено за допомогою системного параметра ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Неможливо здійснити виклик, оскільки наразі вже тривають два виклики. Припиніть один із викликів або з’єднайте їх у конференцію, перш ніж здійснити новий виклик."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"Щоб використовувати <xliff:g id="SUPP_SERVICE">%s</xliff:g>, потрібно ввімкнути мобільне передавання даних (у налаштуваннях мобільної мережі)."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"Щоб використовувати <xliff:g id="SUPP_SERVICE">%s</xliff:g>, потрібно ввімкнути мобільне передавання й роумінг даних (у налаштуваннях мобільної мережі)."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Щоб використовувати <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, потрібно ввімкнути мобільне передавання даних для SIM-карти <xliff:g id="SIM_NUMBER">%2$d</xliff:g> (у налаштуваннях мобільної мережі)."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Щоб використовувати <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, потрібно ввімкнути мобільне передавання й роумінг даних для SIM-карти <xliff:g id="SIM_NUMBER">%2$d</xliff:g> (у налаштуваннях мобільної мережі)."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Закрити"</string>
 </resources>
