@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"يتعذر استئناف المكالمة."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"يتعذر فصل المكالمة."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"يتعذر النقل."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"يتعذر إجراء مكالمات جماعية."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"يتعذَّر دمج المكالمات."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"يتعذر رفض المكالمة."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"يتعذر تحرير المكالمات."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"يتعذر وضع المكالمات قيد الانتظار."</string>
@@ -770,12 +770,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"تمت إعادة توجيه المكالمة."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"الانضمام إلى مكالمة جماعية."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"تم إلغاء تعليق المكالمة المعلقة."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"لا يمكن إجراء مكالمة لأنّ هناك مكالمة صادرة أخرى تجري بالفعل."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"لا يمكن إجراء مكالمة لأنّ هناك مكالمة واردة لم يتم الرد عليها. يُرجى الرد على المكالمة الواردة أو رفضها قبل إجراء مكالمة جديدة."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"‏لا يمكن إجراء مكالمة لأنّه قد تم إيقاف وظيفة الاتصال باستخدام ميزة النظام ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"لا يمكن إجراء مكالمة لأنّ هناك مكالمتين قيد التقدّم بالفعل. يمكنك إنهاء إحدى المكالمتين أو دمجهما في مكالمة جماعية قبل إجراء مكالمة جديدة."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"لاستخدام <xliff:g id="SUPP_SERVICE">%s</xliff:g>، تأكّد من تفعيل بيانات الجوّال. يمكنك تغيير هذا الإعداد في إعدادات شبكة الجوّال."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"لاستخدام <xliff:g id="SUPP_SERVICE">%s</xliff:g>، تأكّد من تفعيل بيانات الجوّال وتجوال البيانات. يمكنك تغيير هذين الإعدادين في إعدادات شبكة الجوّال."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"‏لاستخدام <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>، تأكّد من تفعيل بيانات الجوّال لشريحة SIM رقم <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. يمكنك تغيير هذا الإعداد في إعدادات شبكة الجوّال."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"‏لاستخدام <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>، تأكّد من تفعيل بيانات الجوّال وتجوال البيانات لشريحة SIM رقم <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. يمكنك تغيير هذين الإعدادين في إعدادات شبكة الجوّال."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"رفض"</string>
 </resources>

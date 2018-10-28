@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"V hovoru není možné pokračovat."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Hovor nelze rozdělit."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Hovor nelze předat."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Hovory nelze spojit do konferenčního hovoru."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Hovory se nepodařilo spojit."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Hovor nelze odmítnout."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Hovor nelze ukončit."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Hovory nelze podržet."</string>
@@ -766,12 +766,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Přesměrovaný hovor."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Připojování ke konferenčnímu hovoru."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Podržený hovor byl odpojen."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nemůžete provést hovor, když už se jeden odchozí hovor vytáčí."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nemůžete provést hovor, protože máte nepřijatý příchozí hovor. Přijměte nebo odmítněte příchozí hovor, než provedete nový."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nemůžete provést hovor, protože volání bylo zakázáno systémovým příkazem ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Nemůžete provést hovor, protože už probíhají dva hovory. Odpojte jeden hovor nebo je slučte do konference, než provedete nový hovor."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data. Můžete to změnit v nastavení mobilní sítě."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data a datový roaming. Můžete to změnit v nastavení mobilní sítě."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data pro SIM kartu <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Můžete to změnit v nastavení mobilní sítě."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data a datový roaming pro SIM kartu <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Můžete to změnit v nastavení mobilní sítě."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Zavřít"</string>
 </resources>

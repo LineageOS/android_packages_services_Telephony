@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"कॉल फिर से शुरू नहीं की जा सकती."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"कॉल अलग नहीं किया जा सकता."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"ट्रांसफर नहीं किया जा सकता."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"कॉंन्फ़्रेंस कॉल करने में असमर्थ."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"कॉल मर्ज नहीं किए जा सकते."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"कॉल अस्‍वीकार नहीं किया जा सकता."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"कॉल रिलीज़ नहीं किया जा सकता (किए जा सकते)."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"कॉल होल्ड नहीं किए जा सकते."</string>
@@ -762,12 +762,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"दूसरे नंबर पर भेजा गया कॉल."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"कॉन्फ़्रेंस कॉल में शामिल हो रहे/रही हैं."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"होल्ड किए गए कॉल को होल्ड से हटा दिया गया है."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"कॉल नहीं किया जा सकता, क्योंकि कोई दूसरा किया गया कॉल (आउटगोइंग) पहले से ही डायल हो रहा है."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"कॉल नहीं किया जा सकता, क्योंकि एक आने वाले कॉल (इनकमिंग) का जवाब नहीं दिया जा रहा है. नया कॉल करने से पहले आने वाले कॉल (इनकमिंग) का जवाब दें या उसे अस्वीकार करें."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"कॉल नहीं किया जा सकता क्योंकि कॉलिंग की सुविधा को ROS.टेलीफ़ोनी की कॉल बंद करें सिस्टम प्रॉपर्टी का उपयोग करके बंद कर दिया गया है."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"कॉल नहीं किया जा सकता, क्योंकि पहले से ही दो कॉल जारी हैं. नया कॉल करने से पहले उनमें से किसी एक कॉल को बंद करें या उन्हें कॉन्फ़्रेंस में मर्ज करें."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> का उपयोग करने के लिए, पक्का करें कि मोबाइल डेटा चालू है. आप मोबाइल नेटवर्क सेटिंग में जाकर इसे बदल सकते हैं."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> का उपयोग करने के लिए पक्का करें कि मोबाइल डेटा और डेटा रोमिंग चालू हैं. आप मोबाइल नेटवर्क सेटिंग में जाकर इन्हें बदल सकते हैं."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> का उपयोग करने के लिए पक्का करें कि सिम <xliff:g id="SIM_NUMBER">%2$d</xliff:g> का डेटा चालू है. आप मोबाइल नेटवर्क सेटिंग में जाकर इसे बदल सकते हैं."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> का उपयोग करने के लिए पक्का करें कि सिम <xliff:g id="SIM_NUMBER">%2$d</xliff:g> का मोबाइल डेटा और डेटा रोमिंग चालू हैं. आप मोबाइल नेटवर्क सेटिंग में जाकर इन्हें बदल सकते हैं."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"खारिज करें"</string>
 </resources>

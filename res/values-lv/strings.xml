@@ -501,7 +501,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Nevar atsākt zvanu."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nevar nošķirt zvanu."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Nevar pāradresēt."</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"Nevar veikt konferences zvanus."</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Nevar apvienot zvanus."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Nevar noraidīt zvanu."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Nevar pārtraukt zvanu(-us)."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Nevar aizturēt zvanus."</string>
@@ -766,12 +766,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Pāradresēts zvans."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Notiek pievienošanās konferences zvanam."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Tika atvienots aizturēts zvans."</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nevar veikt zvanu, jo jau tiek sastādīts numurs citam izejošajam zvanam."</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nevar veikt zvanu, jo ir neatbildēts ienākošais zvans. Pirms jauna zvana veikšanas atbildiet uz ienākošo zvanu vai noraidiet to."</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nevar veikt zvanu, jo zvanīšana ir atspējota, izmantojot sistēmas rekvizītu ro.telephony.disable-call."</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"Nevar veikt zvanu, jo pašlaik jau notiek divi zvani. Pirms jauna zvana veikšanas pārtrauciet vienu no pašreizējiem zvaniem vai apvienojiet tos konferences zvanā."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"Lai izmantotu pakalpojumu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, jāieslēdz mobilie dati. Tos var ieslēgt mobilā tīkla iestatījumos."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"Lai izmantotu pakalpojumu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, jāieslēdz mobilie dati un datu viesabonēšana. Tos var ieslēgt mobilā tīkla iestatījumos."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Lai izmantotu pakalpojumu <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, jāieslēdz mobilie dati SIM kartei <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Tos var ieslēgt mobilā tīkla iestatījumos."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Lai izmantotu pakalpojumu <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, jāieslēdz mobilie dati un datu viesabonēšana SIM kartei <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Tos var ieslēgt mobilā tīkla iestatījumos."</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Nerādīt"</string>
 </resources>

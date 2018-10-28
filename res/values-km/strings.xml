@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"មិន​អាច​បន្ត​ការហៅ​ទូរសព្ទ​បាន​ទេ។"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"មិនអាចបំបែកការហៅបានទេ។"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"មិនអាចផ្ទេរបានទេ។"</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"មិន​អាច​ហៅ​ជា​សន្និសីទ។"</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"មិន​អាច​ដាក់​ការហៅ​ទូរសព្ទ​បញ្ចូល​គ្នា​បាន​ទេ។"</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"មិនអាចបដិសេធការហៅបានទេ។"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"មិនអាចបញ្ចេញការហៅបានទេ។"</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"មិនអាចរង់ចាំការហៅទេ"</string>
@@ -762,12 +762,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"បាន​បញ្ជូនបន្តការហៅទូរសព្ទ។"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"កំពុង​ចូលរួម​ការហៅ​ជា​ក្រុម។"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ការហៅ​ដែល​បាន​រង់ចាំត្រូវបាន​ផ្ដាច់។"</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​ទេ ដោយ​សារ​​មាន​គេ​​កំពុង​ហៅ​ទូរសព្ទ​ចេញ​រួច​ហើយ​។"</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​ទេ ដោយសារ​​​មាន​ការ​ហៅ​ទូរសព្ទ​ចូល​​មួយ​មិន​បាន​ឆ្លើយ។ ឆ្លើយតប ឬ​បដិសេធ​ការ​ហៅ​ទូរសព្ទចូល​ មុន​ពេល​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​ថ្មី​មួយ​ទៀត។"</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​ទេ ដោយសារ​មាន​​ការ​ហៅ​ទូរសព្ទ​​មួយ​ត្រូវ​បាន​បិទ​​តាមរយៈ​ការប្រើ​ប្រាស់​លក្ខណៈ​ប្រព័ន្ធ ro.telephony.disable-call ។"</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​​ទេ ដោយសារ​​មាន​ការ​ហៅ​ទូរសព្ទ​ពីរ​កំពុង​​ដំណើរការ​​រួច​ហើយ។ ផ្ដាច់​ការ​ហៅ​ទូរសព្ទ​មួយ ឬ​បញ្ចូល​ការ​ហៅ​ទូរសព្ទ​ទាំងពីរ​​ចូលគ្នា​​ជា​​ការ​ប្រជុំ​មួយ ​មុន​នឹង​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​ថ្មី​មួយ។"</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"ដើម្បីប្រើប្រាស់ <xliff:g id="SUPP_SERVICE">%s</xliff:g> សូម​ប្រាកដថា​ទិន្នន័យ​ទូរសព្ទ​​ចល័ត​ត្រូវ​បាន​បើក។ អ្នក​អាចផ្លាស់​ប្ដូរ​​ជម្រើស​នេះ​នៅ​ក្នុង​ការ​កំណត់​បណ្ដាញ​​ទូរសព្ទ​ចល័ត។"</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"ដើម្បី​ប្រើប្រាស់ <xliff:g id="SUPP_SERVICE">%s</xliff:g> សូម​ប្រាកដថា​ទិន្នន័យ​ទូរសព្ទ​​ចល័ត និង​ការ​រ៉ូមីង​ទិន្នន័យ​ត្រូវ​បាន​បើក។ អ្នក​អាច​ផ្លាស់ប្ដូរ​ជម្រើស​ទាំង​នេះ​នៅ​ក្នុង​ការ​កំណត់​បណ្ដាញ​​ទូរសព្ទ​ចល័ត។"</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"ដើម្បី​ប្រើប្រាស់ <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> សូម​ប្រាកដថា​ទិន្នន័យទូរសព្ទ​​ចល័ត​ត្រូវ​បាន​បើក​សម្រាប់​ស៊ីម <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ។ អ្នក​អាចផ្លាស់​ប្ដូរ​​ជម្រើស​នេះ​​នៅ​ក្នុង​ការ​កំណត់​បណ្ដាញ​​ទូរសព្ទ​ចល័ត។"</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"ដើម្បី​ប្រើប្រាស់ <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> សូម​ប្រាកដថា​ទិន្នន័យ​ទូរសព្ទ​ចល័ត និង​ការ​រ៉ូមីង​ទិន្នន័យ​ត្រូវ​បាន​បើក​សម្រាប់​ស៊ីម <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ។ អ្នក​អាចផ្លាស់​ប្ដូរ​​ជម្រើស​ទាំង​នេះ​នៅ​ក្នុង​ការ​កំណត់​បណ្ដាញ​​ទូរសព្ទ​ចល័ត។"</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"បដិសេធ"</string>
 </resources>

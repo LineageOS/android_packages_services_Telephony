@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"কল অব্য়াহত ৰাখিব নোৱাৰি।"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"কল পৃথক কৰিব নোৱাৰি।"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"স্থানান্তৰ কৰিব নোৱাৰি।"</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"কল কনফাৰেন্স কৰিব পৰা নাই।"</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"কল একেলগ কৰিব পৰা নগ\'ল"</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"কল প্ৰত্যাখান কৰিব নোৱাৰি।"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"কল(সমূহ) কাটিব নোৱাৰি।"</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"কলসমূহ হ\'ল্ডত ৰাখিব নোৱাৰি।"</string>
@@ -762,12 +762,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ফৰৱাৰ্ড কৰা কল।"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"কনফাৰেঞ্চ কলত অংশ গ্ৰহণ কৰিবলৈ লোৱা হৈছে।"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"হ\'ল্ড কৰি থোৱা কলটো মুকলি কৰি দিয়া হ\'ল।"</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"অইন এটা বহিৰ্গামী কল ডায়েল কৰি থকাৰ কাৰণে বেলেগ কল কৰিব নোৱাৰি।"</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"বেলেগ কল কৰিব নোৱাৰি, কাৰণ এটা অন্তৰ্গামী কল এতিয়াও সক্ৰিয় হৈ আছে যাৰ উত্তৰ দিয়া হোৱা নাই। নতুন কল এটা কৰাৰ আগেয়ে সেই কলটোৰ উত্তৰ দিয়ক বা কলটো প্ৰত্যাখ্যান কৰক।"</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"কোনো কল কৰিব নোৱাৰি কাৰণ ro.telephony.disable-call ছিষ্টেম প্ৰ’পাৰ্টি ব্যৱহাৰ কৰি কল কৰাৰ সুবিধা অক্ষম কৰা হৈছে।"</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"কোনো কল কৰিব নোৱাৰি কাৰণ ইতিমধ্যে দুটা বেলেগ কল চলি আছে। নতুন এটা কল কৰাৰ আগেয়ে সেই দুটাৰ ভিতৰত এটাৰ সংযোগ বিচ্ছিন্ন কৰক বা কল দুটা একত্ৰিত কৰি এটা কনফাৰেন্স কললৈ সলনি কৰক।"</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ব্যৱহাৰ কৰিবলৈ ম’বাইল ডেটা অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ব্যৱহাৰ কৰিবলৈ ম’বাইল ডেটা আৰু ডেটা ৰ’মিং অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ব্যৱহাৰ কৰিবলৈ <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ছিমত ম’বাইল ডেটা অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ব্যৱহাৰ কৰিবলৈ <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ছিমত ম’বাইল ডেটা আৰু ডেটা ৰ’মিং অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"অগ্ৰাহ্য কৰক"</string>
 </resources>

@@ -38,7 +38,8 @@
                 android:ellipsize="end"
                 android:lineHeight="@dimen/emergency_number_title_line_height"
                 android:fontFamily="sans-serif-medium"
-                android:textAppearance="@style/SubtitleTextAppearance"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/emergency_number_title_text_size"
                 android:text="@string/single_emergency_number_title"/>
         </FrameLayout>
         <LinearLayout
@@ -63,7 +64,8 @@
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:lineHeight="@dimen/location_text_line_height"
-                android:textAppearance="@style/SubtitleTextAppearance"/>
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/emergency_location_text_size"/>
         </LinearLayout>
     </FrameLayout>
     <LinearLayout

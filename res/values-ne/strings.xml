@@ -499,7 +499,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"कल सुचारु गर्न सकिएन"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"कल अलग गर्न सक्दैन।"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"हस्तान्तरण गर्न सक्दैन।"</string>
-    <string name="incall_error_supp_service_conference" msgid="2505727299596357312">"सम्मेलन कलहरू गर्न असमर्थ।"</string>
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"कलहरू गाभ्न सकिएन।"</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"कल अस्वीकार गर्न सक्दैन।"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"कल (हरू) जारी गर्न सकिँदैन ।"</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"कल सञ्चालन गर्न सकिँदैन।"</string>
@@ -762,12 +762,13 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"कल फर्वार्ड गरियो।"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"सम्मेलन कलमा सामेल हुँदै छ।"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"होल्डमा राखिएको कललाई विच्छेद गरियो।"</string>
-    <!-- no translation found for callFailed_already_dialing (4652915396769232226) -->
-    <skip />
-    <!-- no translation found for callFailed_already_ringing (7747655701540586943) -->
-    <skip />
-    <!-- no translation found for callFailed_calling_disabled (7257184079619449933) -->
-    <skip />
-    <!-- no translation found for callFailed_too_many_calls (3023051919216926990) -->
-    <skip />
+    <string name="callFailed_already_dialing" msgid="4652915396769232226">"अर्को बहिर्गमन कल पहिले नै डायल भएका हुनाले कल गर्न सकिँदैन।"</string>
+    <string name="callFailed_already_ringing" msgid="7747655701540586943">"जवाफ नदिइएको आगमन कल जारी रहेकाले नयाँ कल गर्न सकिँदैन। कुनै नयाँ कल गर्नुअघि आगमन कलको जवाफ दिनुहोस् वा त्यसलाई अस्वीकार गर्नुहोस्।"</string>
+    <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call प्रणालीको गुण प्रयोग गरेर कल गर्ने सुविधा असक्षम पारिएको हुनाले कल गर्न सकिँदैन।"</string>
+    <string name="callFailed_too_many_calls" msgid="3023051919216926990">"पहिले नै दुईवटा कलहरू जारी रहेकाले कुनै नयाँ कल गर्न सकिँदैन। नयाँ कल गर्नुअघि हाल जारी कलहरूमध्ये कुनै एउटा कल विच्छेद गर्नुहोस् वा ती दुवैलाई सम्मेलन कलमा गाभ्नुहोस्।"</string>
+    <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> प्रयोग गर्न मोबाइल डेटा सक्रिय गरिएको कुरा सुनिश्चित गर्नुहोस्। तपाईं मोबाइल नेटवर्कका सेटिङहरूमा गई यसलाई बदल्न सक्नुहुन्छ।"</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> प्रयोग गर्न मोबाइल डेटा र डेटा रोमिङ सक्रिय गरिएको कुरा सुनिश्चित गर्नुहोस्। तपाईं मोबाइल नेटवर्कका सेटिङहरूमा गई यी कुराहरू बदल्न सक्नुहुन्छ।"</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> प्रयोग गर्न SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> मा मोबाइल डेटा सक्रिय गरिएको कुरा सुनिश्चित गर्नुहोस्। तपाईं मोबाइल नेटवर्कका सेटिङहरूमा गई यसलाई बदल्न सक्नुहुन्छ।"</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> प्रयोग गर्न SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> मा मोबाइल डेटा र डेटा रोमिङ सक्रिय गरिएको कुरा सुनिश्चित गर्नुहोस्। तपाईं मोबाइल नेटवर्कका सेटिङहरूमा गई यी कुराहरू बदल्न सक्नुहुन्छ।"</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"खारेज गर्नुहोस्"</string>
 </resources>
