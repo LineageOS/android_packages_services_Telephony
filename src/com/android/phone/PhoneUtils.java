@@ -912,6 +912,12 @@ public class PhoneUtils {
             // been assigned for the PUK unlock / SIM READY process.
             app.setPukEntryProgressDialog(pd);
 
+        } else if ((app.getPUKEntryActivity() != null) && (state == MmiCode.State.FAILED)) {
+            createUssdDialog(app, context, text,
+                    WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+            // In case of failure to unlock, we'll need to reset the
+            // PUK unlock activity, so that the user may try again.
+            app.setPukEntryActivity(null);
         } else {
             // In case of failure to unlock, we'll need to reset the
             // PUK unlock activity, so that the user may try again.
@@ -922,42 +928,8 @@ public class PhoneUtils {
             // A USSD in a pending state means that it is still
             // interacting with the user.
             if (state != MmiCode.State.PENDING) {
-                log("displayMMIComplete: MMI code has finished running.");
-
-                log("displayMMIComplete: Extended NW displayMMIInitiate (" + text + ")");
-                if (text == null || text.length() == 0)
-                    return;
-
-                // displaying system alert dialog on the screen instead of
-                // using another activity to display the message.  This
-                // places the message at the forefront of the UI.
-
-                if (sUssdDialog == null) {
-                    sUssdDialog = new AlertDialog.Builder(context, THEME)
-                            .setPositiveButton(R.string.ok, null)
-                            .setCancelable(true)
-                            .setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                @Override
-                                public void onDismiss(DialogInterface dialog) {
-                                    sUssdMsg.setLength(0);
-                                }
-                            })
-                            .create();
-
-                    sUssdDialog.getWindow().setType(
-                            WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-                    sUssdDialog.getWindow().addFlags(
-                            WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-                }
-                if (sUssdMsg.length() != 0) {
-                    sUssdMsg
-                            .insert(0, "\n")
-                            .insert(0, app.getResources().getString(R.string.ussd_dialog_sep))
-                            .insert(0, "\n");
-                }
-                sUssdMsg.insert(0, text);
-                sUssdDialog.setMessage(sUssdMsg.toString());
-                sUssdDialog.show();
+                createUssdDialog(app, context, text,
+                        WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
             } else {
                 log("displayMMIComplete: USSD code has requested user input. Constructing input "
                         + "dialog.");
@@ -1069,6 +1041,46 @@ public class PhoneUtils {
                         .setTextColor(context.getResources().getColor(R.color.dialer_theme_color));
             }
         }
+    }
+
+    private static void createUssdDialog(PhoneGlobals app, Context context, CharSequence text,
+            int windowType) {
+        log("displayMMIComplete: MMI code has finished running.");
+
+        log("displayMMIComplete: Extended NW displayMMIInitiate (" + text + ")");
+        if (text == null || text.length() == 0) {
+            return;
+        }
+
+        // displaying system alert dialog on the screen instead of
+        // using another activity to display the message.  This
+        // places the message at the forefront of the UI.
+
+        if (sUssdDialog == null) {
+            sUssdDialog = new AlertDialog.Builder(context, THEME)
+                    .setPositiveButton(R.string.ok, null)
+                    .setCancelable(true)
+                    .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            sUssdMsg.setLength(0);
+                        }
+                    })
+                    .create();
+
+            sUssdDialog.getWindow().setType(windowType);
+            sUssdDialog.getWindow().addFlags(
+                    WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        }
+        if (sUssdMsg.length() != 0) {
+            sUssdMsg
+                    .insert(0, "\n")
+                    .insert(0, app.getResources().getString(R.string.ussd_dialog_sep))
+                    .insert(0, "\n");
+        }
+        sUssdMsg.insert(0, text);
+        sUssdDialog.setMessage(sUssdMsg.toString());
+        sUssdDialog.show();
     }
 
     /**
