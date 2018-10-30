@@ -4269,21 +4269,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public int getRadioAccessFamily(int phoneId, String callingPackage) {
         Phone phone = PhoneFactory.getPhone(phoneId);
+        int raf = RadioAccessFamily.RAF_UNKNOWN;
         if (phone == null) {
-            return RadioAccessFamily.RAF_UNKNOWN;
+            return raf;
         }
-        int subId = phone.getSubId();
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, "getRadioAccessFamily")) {
-            return RadioAccessFamily.RAF_UNKNOWN;
-        }
-
         final long identity = Binder.clearCallingIdentity();
         try {
-            return ProxyController.getInstance().getRadioAccessFamily(phoneId);
+            TelephonyPermissions
+                    .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                            mApp, phone.getSubId(), "getRadioAccessFamily");
+            raf = ProxyController.getInstance().getRadioAccessFamily(phoneId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+        return raf;
     }
 
     @Override
