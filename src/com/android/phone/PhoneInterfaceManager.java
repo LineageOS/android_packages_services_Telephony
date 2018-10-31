@@ -54,6 +54,7 @@ import android.service.carrier.CarrierIdentifier;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.emergency.EmergencyNumber;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CellInfo;
 import android.telephony.CellInfoGsm;
@@ -5691,5 +5692,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         SmsApplication.setDefaultApplicationAsUser(packageName, mApp, userId);
+    }
+
+    @Override
+    public Map<Integer, List<EmergencyNumber>> getCurrentEmergencyNumberList(
+            String callingPackage) {
+        // TODO connect with internal content
+        return null;
+    }
+
+    @Override
+    public boolean isCurrentEmergencyNumber(String number) {
+        // TODO connect with internal content
+        return false;
     }
 }
