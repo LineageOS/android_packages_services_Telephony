@@ -3739,7 +3739,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Check TETHER_DUN_REQUIRED and TETHER_DUN_APN settings, net.tethering.noprovisioning
-     * SystemProperty, and config_tether_apndata to decide whether DUN APN is required for
+     * SystemProperty to decide whether DUN APN is required for
      * tethering.
      *
      * @return 0: Not required. 1: required. 2: Not set.
@@ -3753,8 +3753,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             int dunRequired = Settings.Global.getInt(mPhone.getContext().getContentResolver(),
                     Settings.Global.TETHER_DUN_REQUIRED, 2);
-            // If not set, check net.tethering.noprovisioning, TETHER_DUN_APN setting and
-            // config_tether_apndata.
+            // If not set, check net.tethering.noprovisioning, TETHER_DUN_APN setting
             if (dunRequired == 2 && mPhone.hasMatchedTetherApnSetting()) {
                 dunRequired = 1;
             }
