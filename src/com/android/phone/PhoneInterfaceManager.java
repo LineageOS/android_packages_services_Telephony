@@ -5660,4 +5660,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
     }
+
+    @Override
+    public List<String> getCertsFromCarrierPrivilegeAccessRules(int subId) {
+        enforceReadPrivilegedPermission("getCertsFromCarrierPrivilegeAccessRules");
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            return null;
+        }
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            UiccProfile profile = UiccController.getInstance()
+                    .getUiccProfileForPhone(phone.getPhoneId());
+            if (profile != null) {
+                return profile.getCertsFromCarrierPrivilegeAccessRules();
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return null;
+    }
 }
