@@ -131,7 +131,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS zahtjev je izmijenjen u USSD zahtjev"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"Izmijenjeno u novi SS zahtjev"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS zahtjev je izmijenjen u video poziv"</string>
-    <string name="fdn_check_failure" msgid="18200614306525434">"Uključena je postavka brojeva fiksnog biranja u Aplikaciji za telefon. Zbog toga ne rade neke funkcije vezane za pozive."</string>
+    <string name="fdn_check_failure" msgid="18200614306525434">"Uključena je postavka brojeva fiksnog biranja u aplikaciji Telefon. Zbog toga ne rade neke funkcije vezane za pozive."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Uključite radio prije prikazivanja ovih postavki."</string>
     <string name="close_dialog" msgid="2365884406356986917">"Uredu"</string>
     <string name="enable" msgid="7248657275000173526">"Uključi"</string>
