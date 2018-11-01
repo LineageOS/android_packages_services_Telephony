@@ -166,8 +166,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_NV_WRITE_ITEM_DONE = 16;
     private static final int CMD_NV_WRITE_CDMA_PRL = 17;
     private static final int EVENT_NV_WRITE_CDMA_PRL_DONE = 18;
-    private static final int CMD_NV_RESET_CONFIG = 19;
-    private static final int EVENT_NV_RESET_CONFIG_DONE = 20;
+    private static final int CMD_RESET_MODEM_CONFIG = 19;
+    private static final int EVENT_RESET_MODEM_CONFIG_DONE = 20;
     private static final int CMD_GET_PREFERRED_NETWORK_TYPE = 21;
     private static final int EVENT_GET_PREFERRED_NETWORK_TYPE_DONE = 22;
     private static final int CMD_SET_PREFERRED_NETWORK_TYPE = 23;
@@ -211,6 +211,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_GET_ALL_CELL_INFO_DONE = 61;
     private static final int CMD_GET_CELL_LOCATION = 62;
     private static final int EVENT_GET_CELL_LOCATION_DONE = 63;
+    private static final int CMD_MODEM_REBOOT = 64;
+    private static final int EVENT_CMD_MODEM_REBOOT_DONE = 65;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -649,14 +651,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     handleNullReturnEvent(msg, "nvWriteCdmaPrl");
                     break;
 
-                case CMD_NV_RESET_CONFIG:
+                case CMD_RESET_MODEM_CONFIG:
                     request = (MainThreadRequest) msg.obj;
-                    onCompleted = obtainMessage(EVENT_NV_RESET_CONFIG_DONE, request);
-                    mPhone.nvResetConfig((Integer) request.argument, onCompleted);
+                    onCompleted = obtainMessage(EVENT_RESET_MODEM_CONFIG_DONE, request);
+                    mPhone.resetModemConfig(onCompleted);
                     break;
 
-                case EVENT_NV_RESET_CONFIG_DONE:
-                    handleNullReturnEvent(msg, "nvResetConfig");
+                case EVENT_RESET_MODEM_CONFIG_DONE:
+                    handleNullReturnEvent(msg, "resetModemConfig");
                     break;
 
                 case CMD_GET_PREFERRED_NETWORK_TYPE:
@@ -1036,6 +1038,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     break;
                 }
+
+                case CMD_MODEM_REBOOT:
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_RESET_MODEM_CONFIG_DONE, request);
+                    mPhone.rebootModem(onCompleted);
+                    break;
+
+                case EVENT_CMD_MODEM_REBOOT_DONE:
+                    handleNullReturnEvent(msg, "rebootModem");
+                    break;
 
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
@@ -3353,26 +3365,56 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Perform the specified type of NV config reset.
+     * Rollback modem configurations to factory default except some config which are in whitelist.
      * Used for device configuration by some CDMA operators.
      *
-     * @param resetType the type of reset to perform (1 == factory reset; 2 == NV-only reset)
+     * @param slotIndex - device slot.
+     *
      * @return true on success; false on any failure
      */
     @Override
-    public boolean nvResetConfig(int resetType) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, getDefaultSubscription(), "nvResetConfig");
+    public boolean resetModemConfig(int slotIndex) {
+        Phone phone = PhoneFactory.getPhone(slotIndex);
+        if (phone != null) {
+            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                    mApp, phone.getSubId(), "resetModemConfig");
 
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            if (DBG) log("nvResetConfig: type " + resetType);
-            Boolean success = (Boolean) sendRequest(CMD_NV_RESET_CONFIG, resetType);
-            if (DBG) log("nvResetConfig: type " + resetType + ' ' + (success ? "ok" : "fail"));
-            return success;
-        } finally {
-            Binder.restoreCallingIdentity(identity);
+            final long identity = Binder.clearCallingIdentity();
+            try {
+                Boolean success = (Boolean) sendRequest(CMD_RESET_MODEM_CONFIG, null);
+                if (DBG) log("resetModemConfig:" + ' ' + (success ? "ok" : "fail"));
+                return success;
+            } finally {
+                Binder.restoreCallingIdentity(identity);
+            }
         }
+        return false;
+    }
+
+    /**
+     * Generate a radio modem reset. Used for device configuration by some CDMA operators.
+     *
+     * @param slotIndex - device slot.
+     *
+     * @return true on success; false on any failure
+     */
+    @Override
+    public boolean rebootModem(int slotIndex) {
+        Phone phone = PhoneFactory.getPhone(slotIndex);
+        if (phone != null) {
+            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                    mApp, phone.getSubId(), "rebootModem");
+
+            final long identity = Binder.clearCallingIdentity();
+            try {
+                Boolean success = (Boolean) sendRequest(CMD_MODEM_REBOOT, null);
+                if (DBG) log("rebootModem:" + ' ' + (success ? "ok" : "fail"));
+                return success;
+            } finally {
+                Binder.restoreCallingIdentity(identity);
+            }
+        }
+        return false;
     }
 
     public String[] getPcscfAddress(String apnType, String callingPackage) {
