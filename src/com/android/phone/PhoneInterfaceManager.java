@@ -4414,7 +4414,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    public boolean isRttSupported() {
+    /**
+     * Determines whether the device currently supports RTT (Real-time text). Based both on carrier
+     * support for the feature and device firmware support.
+     *
+     * @return {@code true} if the device and carrier both support RTT, {@code false} otherwise.
+     */
+    @Override
+    public boolean isRttSupported(int subscriptionId) {
         final long identity = Binder.clearCallingIdentity();
         try {
             boolean isCarrierSupported = mApp.getCarrierConfigForSubId(
@@ -4428,10 +4435,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    public boolean isRttEnabled() {
+    /**
+     * Determines whether the user has turned on RTT. Only returns true if the device and carrier
+     * both also support RTT.
+     */
+    public boolean isRttEnabled(int subscriptionId) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            return isRttSupported() && Settings.Secure.getInt(
+            return isRttSupported(subscriptionId) && Settings.Secure.getInt(
                     mPhone.getContext().getContentResolver(),
                     Settings.Secure.RTT_CALLING_MODE, 0) != 0;
         } finally {
