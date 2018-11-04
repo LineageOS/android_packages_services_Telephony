@@ -109,7 +109,8 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             mButtonHac = null;
         }
 
-        if (PhoneGlobals.getInstance().phoneMgr.isRttSupported()) {
+        if (PhoneGlobals.getInstance().phoneMgr
+                .isRttSupported(SubscriptionManager.getDefaultVoiceSubscriptionId())) {
             // TODO: this is going to be a on/off switch for now. Ask UX about how to integrate
             // this settings with TTY
             boolean rttOn = Settings.Secure.getInt(
