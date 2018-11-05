@@ -519,7 +519,7 @@
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Hindi available ang emergency na pagtawag"</string>
     <string name="police_type_description" msgid="5324410799919829693">"Pulis"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulansya"</string>
-    <string name="fire_type_description" msgid="7145996705197064710">"Apoy"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Sunog"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Gamitin ang keyboard upang mag-dial"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"I-hold"</string>

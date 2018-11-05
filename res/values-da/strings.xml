@@ -248,14 +248,14 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Du kan risikere at skulle betale høje gebyrer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakt din netværksudbyder for at få oplyst priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillade dataroaming?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"Appens dataforbrug"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Dataforbrug fra apps"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brugt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avanceret"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilselskab"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"mobilselskab, esim, sim-kort, euicc, skift mobilselskab, tilføj mobilselskab"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobildata"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Få adgang til data via mobilnetværk"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Brug data via mobilnetværk"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Vil du deaktivere mobildata?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Du har ikke valgt endnu"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Skift SIM-kortet til data?"</string>
@@ -509,7 +509,7 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Opkald kan ikke sættes i venteposition."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Opret forbindelse til et trådløst netværk for at foretage et opkald."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktivér Wi-Fi-opkald for at foretage et opkald."</string>
-    <string name="emergency_information_hint" msgid="399011533038204351">"Oplysninger i nødsituationer"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Info til nødsituationer"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Ejer"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tryk igen for at se oplysninger"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Nødopkald"</string>
