@@ -538,6 +538,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         @Override
         public void onRttModifyResponseReceived(int status) {
             updateConnectionProperties();
+            refreshConferenceSupported();
             if (status == RttModifyStatus.SESSION_MODIFY_REQUEST_SUCCESS) {
                 sendRttInitiationSuccess();
             } else {
@@ -554,7 +555,12 @@ abstract class TelephonyConnection extends Connection implements Holdable {
 
         @Override
         public void onRttInitiated() {
-            updateConnectionProperties();
+            if (mOriginalConnection != null) {
+                // if mOriginalConnection is null, the properties will get set when
+                // mOriginalConnection gets set.
+                updateConnectionProperties();
+                refreshConferenceSupported();
+            }
             sendRttInitiationSuccess();
         }
 
@@ -562,6 +568,12 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         public void onRttTerminated() {
             updateConnectionProperties();
             sendRttSessionRemotelyTerminated();
+        }
+
+        @Override
+        public void onOriginalConnectionReplaced(
+                com.android.internal.telephony.Connection newConnection) {
+            setOriginalConnection(newConnection);
         }
     };
 
@@ -2117,6 +2129,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         if (mTreatAsEmergencyCall) {
             isConferenceSupported = false;
             Log.d(this, "refreshConferenceSupported = false; emergency call");
+        } else if (isRtt()) {
+            isConferenceSupported = false;
+            Log.d(this, "refreshConferenceSupported = false; rtt call");
         } else if (!isConferencingSupported || isIms && !isImsConferencingSupported) {
             isConferenceSupported = false;
             Log.d(this, "refreshConferenceSupported = false; carrier doesn't support conf.");
