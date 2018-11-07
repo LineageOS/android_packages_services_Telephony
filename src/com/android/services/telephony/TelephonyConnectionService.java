@@ -1140,6 +1140,9 @@ public class TelephonyConnectionService extends ConnectionService {
                 case CallStateException.ERROR_TOO_MANY_CALLS:
                     cause = android.telephony.DisconnectCause.TOO_MANY_ONGOING_CALLS;
                     break;
+                case CallStateException.ERROR_OTASP_PROVISIONING_IN_PROCESS:
+                    cause = android.telephony.DisconnectCause.OTASP_PROVISIONING_IN_PROCESS;
+                    break;
             }
             connection.setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
                     cause, e.getMessage(), phone.getPhoneId()));
