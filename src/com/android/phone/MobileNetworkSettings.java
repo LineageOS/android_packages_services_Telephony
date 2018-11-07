@@ -1867,10 +1867,23 @@ public class MobileNetworkSettings extends Activity  {
                 return;
             }
 
+            // See what Telecom thinks the SIM call manager is.
             final PhoneAccountHandle simCallManager =
                     TelecomManager.from(getContext()).getSimCallManager();
 
-            if (simCallManager != null) {
+            // Check which SIM call manager is for the current sub ID.
+            PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
+            String currentSubSimCallManager = null;
+            if (carrierConfig != null) {
+                currentSubSimCallManager = carrierConfig.getString(
+                        CarrierConfigManager.KEY_DEFAULT_SIM_CALL_MANAGER_STRING);
+            }
+
+            // Only try to configure the phone account if this is the sim call manager for the
+            // current sub.
+            if (simCallManager != null
+                    && simCallManager.getComponentName().flattenToString().equals(
+                    currentSubSimCallManager)) {
                 Intent intent = MobileNetworkSettings.buildPhoneAccountConfigureIntent(
                         getContext(), simCallManager);
                 PackageManager pm = getContext().getPackageManager();
