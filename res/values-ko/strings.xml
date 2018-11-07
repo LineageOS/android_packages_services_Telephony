@@ -131,7 +131,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS 요청이 USSD 요청으로 변경됨"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"새 SS 요청으로 변경됨"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS 요청이 화상 통화로 변경됨"</string>
-    <string name="fdn_check_failure" msgid="18200614306525434">"휴대전화 앱의 발신 제한 번호 설정을 사용하기 때문에 일부 통화 관련 기능이 작동되지 않습니다."</string>
+    <string name="fdn_check_failure" msgid="18200614306525434">"전화 앱의 발신 제한 번호 설정을 사용하기 때문에 일부 통화 관련 기능이 작동되지 않습니다."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"이러한 설정을 보려면 무선을 사용해야 합니다."</string>
     <string name="close_dialog" msgid="2365884406356986917">"확인"</string>
     <string name="enable" msgid="7248657275000173526">"사용"</string>

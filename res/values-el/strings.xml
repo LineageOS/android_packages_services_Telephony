@@ -249,7 +249,7 @@
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Επικοινωνήστε με τον πάροχο του δικτύου για τις τιμές."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Να επιτρέπεται η περιαγωγή δεδομένων;"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Χρήση δεδομένων εφαρμογής"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> δεδομένα κινητής τηλεφωνίας σε χρήση μεταξύ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> δεδομένων κινητής τηλεφωνίας χρησιμοποιήθηκαν μεταξύ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Σύνθετες ρυθμίσεις"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Εταιρεία κινητής τηλεφωνίας"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"εταιρεία κινητής τηλεφωνίας, esim, sim, euicc, αλλαγή εταιρείας κινητής τηλεφωνίας, προσθήκη εταιρείας κινητής τηλεφωνίας"</string>
@@ -519,7 +519,7 @@
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Η δυνατότητα κλήσεων έκτακτης ανάγκης δεν είναι διαθέσιμη"</string>
     <string name="police_type_description" msgid="5324410799919829693">"Αστυνομία"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Ασθενοφόρο"</string>
-    <string name="fire_type_description" msgid="7145996705197064710">"Πυρκαγιά"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Πυροσβεστική"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Χρησιμοποιήστε το πληκτρολόγιο για να πραγματοποιήσετε καλέσετε έναν αριθμό"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Αναμονή"</string>
