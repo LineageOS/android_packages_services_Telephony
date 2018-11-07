@@ -441,7 +441,6 @@ public class NetworkSelectSetting extends PreferenceFragment {
 
                 mConnectedNetworkOperatorsPreference.addPreference(pref);
             } else {
-                loge("Invalid CellIfno: " + cellInfo.toString());
                 // Remove the connected network operators category
                 removeConnectedNetworkOperatorPreference();
             }
