@@ -2058,6 +2058,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    @Override
+    public int getSubscriptionMNOCarrierId(int subId) {
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            final Phone phone = getPhone(subId);
+            return phone == null ? TelephonyManager.UNKNOWN_CARRIER_ID : phone.getMNOCarrierId();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
     //
     // Internal helper methods.
     //
