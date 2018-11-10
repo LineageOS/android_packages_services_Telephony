@@ -40,7 +40,22 @@ import java.util.zip.GZIPInputStream;
 public class IsoToEccProtobufRepository implements IsoToEccRepository {
     private static final String LOG_TAG = "EccRepository";
 
-    private Map<String, CountryEccInfo> mEccTable = null;
+    private static IsoToEccProtobufRepository sInstance;
+
+    /**
+     * Returns the singleton instance of IsoToEccProtobufRepository
+     */
+    public static synchronized IsoToEccProtobufRepository getInstance() {
+        if (sInstance == null) {
+            sInstance = new IsoToEccProtobufRepository();
+        }
+        return sInstance;
+    }
+
+    private final Map<String, CountryEccInfo> mEccTable = new HashMap<>();
+
+    private IsoToEccProtobufRepository() {
+    }
 
     @Override
     @Nullable
@@ -50,24 +65,28 @@ public class IsoToEccProtobufRepository implements IsoToEccRepository {
             return null;
         }
 
-        if (mEccTable == null) {
-            mEccTable = initMappingTable(context);
+        synchronized (mEccTable) {
+            return mEccTable.get(iso.toUpperCase());
         }
-        return mEccTable.get(iso.toUpperCase());
     }
 
-    private Map<String, CountryEccInfo> initMappingTable(@NonNull Context context)
-            throws IOException {
+    /**
+     * Loads the mapping table.
+     */
+    public void loadMappingTable(@NonNull Context context) {
         ProtobufEccData.AllInfo allEccData = null;
 
         long startTime = SystemClock.uptimeMillis();
-        allEccData = parseEccData(new BufferedInputStream(
-                context.getAssets().open("eccdata")));
+        try {
+            allEccData = parseEccData(new BufferedInputStream(
+                    context.getAssets().open("eccdata")));
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Failed to retrieve ECC: ", e);
+        }
         long endTime = SystemClock.uptimeMillis();
 
         if (allEccData == null) {
-            // Returns an empty table.
-            return new HashMap<>();
+            return;
         }
 
         if (Log.isLoggable(LOG_TAG, Log.DEBUG)) {
@@ -77,16 +96,17 @@ public class IsoToEccProtobufRepository implements IsoToEccRepository {
         }
 
         // Converts to run-time data from Protobuf data.
-        Map<String, CountryEccInfo> table = new HashMap<>();
-        for (ProtobufEccData.CountryInfo countryData : allEccData.getCountriesList()) {
-            if (countryData.hasIsoCode()) {
-                CountryEccInfo countryInfo = loadCountryEccInfo(countryData);
-                if (countryInfo != null) {
-                    table.put(countryData.getIsoCode().toUpperCase(), countryInfo);
+        synchronized (mEccTable) {
+            mEccTable.clear();
+            for (ProtobufEccData.CountryInfo countryData : allEccData.getCountriesList()) {
+                if (countryData.hasIsoCode()) {
+                    CountryEccInfo countryInfo = loadCountryEccInfo(countryData);
+                    if (countryInfo != null) {
+                        mEccTable.put(countryData.getIsoCode().toUpperCase(), countryInfo);
+                    }
                 }
             }
         }
-        return table;
     }
 
     private ProtobufEccData.AllInfo parseEccData(InputStream input) throws IOException {
