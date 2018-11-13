@@ -768,6 +768,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Viderekoblet anrop."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Blir med i konferansesamtalen."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Anropet som var på vent, er frigitt."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Kan ikke foreta et anrop fordi enheten er i ferd med å bli klargjort for administrering."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Du kan ikke ringe fordi telefonen allerede slår nummeret for et annet utgående anrop."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Du kan ikke ringe fordi du ikke har svart på et innkommende anrop. Svar på eller avvis det innkommende anropet før du ringer på nytt."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Du kan ikke ringe fordi anrop er deaktivert ved hjelp av systemegenskapen ro.telephony.disable-call."</string>

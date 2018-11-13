@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Átirányított hívás."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Csatlakozás konferenciahíváshoz."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Várakoztatott hívás feloldva."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Nem indítható hívás, mivel az eszköz kiépítés alatt áll."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nem kezdeményezhet hívást, mert folyamatban van egy másik kimenő hívás indítása."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nem kezdeményezhet hívást, mert folyamatban van egy megválaszolatlan bejövő hívás. Mielőtt új hívást indítana, vegye fel, vagy utasítsa el a bejövő hívást."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nem kezdeményezhet hívást, mivel a hívás le van tiltva ro.telephony.disable-call rendszertulajdonsággal."</string>

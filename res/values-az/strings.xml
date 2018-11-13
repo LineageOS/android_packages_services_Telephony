@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Yönləndirilmiş zəng."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Konfrans zənginə qoşulursunuz."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Gözləmədə olan zəngin bağlantısı kəsildi."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Hazırda cihaz təmin edildiyindən zəng etmək mümkün deyil."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Başqa gedən zəngin nömrəsi yığıldığına görə zəng etmək mümkün deyil."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Cavabsız gələn zəng olduğuna görə zəng etmək mümkün deyil. Yeni zəng etməzdən əvvəl gələn zəngə cavab verin və ya imtina edin."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Zəng ro.telephony.disable-call sistem funksiyası ilə deaktiv edildiyinə görə zəng etmək mümkün deyil."</string>

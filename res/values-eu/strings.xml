@@ -768,6 +768,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Desbideratu da deia."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Konferentzia-deian sartzen."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Askatu da zain utzitako deia."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Ezin da egin deia, une honetan gailua hornitzen ari delako."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Ezin da egin deia, beste dei bat abian delako."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Ezin da egin deia, oraindik erantzun ez diozun dei bat jasotzen ari zarelako. Beste dei bat egin aurretik, erantzun deiari edo bazter ezazu."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Ezin da egin deia, deiak egiteko aukera desgaitu egin delako sistemaren ro.telephony.disable-call propietatea erabilita."</string>

@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"สายโอน"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"กำลังเข้าร่วมการประชุมสาย"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"สายที่พักไว้หลุดไปแล้ว"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"ไม่สามารถโทรออกได้เนื่องจากอุปกรณ์กำลังมีการจัดสรรอยู่"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"ไม่สามารถโทรออกได้เนื่องจากมีสายโทรออกอยู่แล้ว"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"ไม่สามารถโทรออกได้เนื่องจากมีสายเรียกเข้าที่ยังไม่ได้รับ รับหรือปฏิเสธสายเรียกเข้าก่อนโทรออกใหม่"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ไม่สามารถโทรออกได้เนื่องจากมีการปิดใช้การโทรโดยใช้คุณสมบัติของระบบ ro.telephony.disable-call"</string>

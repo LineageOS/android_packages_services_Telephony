@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Uzatilgan kiruvchi chaqiruv."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Konferens-aloqaga qo‘shilmoqda…"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Chaqiruv kutish rejimidan chiqarildi."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Telefon qilish imkonsiz: qurilma tayyorlanmoqda"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Telefon qilish imkonsiz, chunki siz allaqachon boshqa raqamga telefon qilmoqdasiz."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Telefon qilish imkonsiz. Telefon qilish uchun avval kiruvchi chaqiruvni qabul qiling yoki rad eting."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Telefon qilish imkonsiz, chunki chaqiruvlar ro.telephony.disable-call tizim parametrida faolsizlantirilgan."</string>

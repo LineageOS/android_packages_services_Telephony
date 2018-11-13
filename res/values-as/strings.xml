@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ফৰৱাৰ্ড কৰা কল।"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"কনফাৰেঞ্চ কলত অংশ গ্ৰহণ কৰিবলৈ লোৱা হৈছে।"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"হ\'ল্ড কৰি থোৱা কলটো মুকলি কৰি দিয়া হ\'ল।"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"ডিভাইচটোত বৰ্তমান তৃতীয় পক্ষৰ পৰিচালনাৰ সুবিধা সক্ষম থকাৰ বাবে কল কৰিব নোৱাৰি।"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"অইন এটা বহিৰ্গামী কল ডায়েল কৰি থকাৰ কাৰণে বেলেগ কল কৰিব নোৱাৰি।"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"বেলেগ কল কৰিব নোৱাৰি, কাৰণ এটা অন্তৰ্গামী কল এতিয়াও সক্ৰিয় হৈ আছে যাৰ উত্তৰ দিয়া হোৱা নাই। নতুন কল এটা কৰাৰ আগেয়ে সেই কলটোৰ উত্তৰ দিয়ক বা কলটো প্ৰত্যাখ্যান কৰক।"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"কোনো কল কৰিব নোৱাৰি কাৰণ ro.telephony.disable-call ছিষ্টেম প্ৰ’পাৰ্টি ব্যৱহাৰ কৰি কল কৰাৰ সুবিধা অক্ষম কৰা হৈছে।"</string>

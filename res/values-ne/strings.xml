@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"कल फर्वार्ड गरियो।"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"सम्मेलन कलमा सामेल हुँदै छ।"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"होल्डमा राखिएको कललाई विच्छेद गरियो।"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"यन्त्र हाल प्रावधानीकरण गरिँदै हुनाले कल गर्न सकिँदैन।"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"अर्को बहिर्गमन कल पहिले नै डायल भएका हुनाले कल गर्न सकिँदैन।"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"जवाफ नदिइएको आगमन कल जारी रहेकाले नयाँ कल गर्न सकिँदैन। कुनै नयाँ कल गर्नुअघि आगमन कलको जवाफ दिनुहोस् वा त्यसलाई अस्वीकार गर्नुहोस्।"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call प्रणालीको गुण प्रयोग गरेर कल गर्ने सुविधा असक्षम पारिएको हुनाले कल गर्न सकिँदैन।"</string>

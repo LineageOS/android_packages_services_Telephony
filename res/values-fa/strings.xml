@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"تماس بازارسال شده است."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"درحال پیوستن به تماس کنفرانسی."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"تماس نگه‌داشته‌شده آزاد شده است."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"نمی‌توانید تماسی برقرار کنید، چون دستگاه درحال‌حاضر درحال تأیید خدمات دردسترس برای کاربران است."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"نمی‌توانید تماسی برقرار کنید، چون تماس خروجی دیگری درحال شماره‌گیری است."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"نمی‌توانید تماسی برقرار کنید، چون تماس ورودی بی‌پاسخی درحال شماره‌گیری است. قبل از برقراری تماس جدید، به آن پاسخ دهید یا آن را رد کنید."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"‏نمی‌توانید تماسی برقرار کنید چون برقراری تماس تلفنی با استفاده از مشخصه سیستم ro.telephony.disable-call غیرفعال شده است."</string>

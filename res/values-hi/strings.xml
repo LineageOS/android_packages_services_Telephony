@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"दूसरे नंबर पर भेजा गया कॉल."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"कॉन्फ़्रेंस कॉल में शामिल हो रहे/रही हैं."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"होल्ड किए गए कॉल को होल्ड से हटा दिया गया है."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"कॉल नहीं किया जा सकता क्योंकि इस समय डिवाइस का प्रावधान किया जा रहा है."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"कॉल नहीं किया जा सकता, क्योंकि कोई दूसरा किया गया कॉल (आउटगोइंग) पहले से ही डायल हो रहा है."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"कॉल नहीं किया जा सकता, क्योंकि एक आने वाले कॉल (इनकमिंग) का जवाब नहीं दिया जा रहा है. नया कॉल करने से पहले आने वाले कॉल (इनकमिंग) का जवाब दें या उसे अस्वीकार करें."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"कॉल नहीं किया जा सकता क्योंकि कॉलिंग की सुविधा को ROS.टेलीफ़ोनी की कॉल बंद करें सिस्टम प्रॉपर्टी का उपयोग करके बंद कर दिया गया है."</string>

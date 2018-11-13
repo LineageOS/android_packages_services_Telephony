@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ზარი გადამისამართდა."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"მიმდინარეობს საკონფერენციო ზართან შეერთება."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ზარი გათავისუფლდა მოცდის რეჟიმიდან."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"ზარის განთავსება შეუძლებელია, რადგან მიმდინარეობს მოწყობილობის მიერ სერვისების უზრუნველყოფის დადასტურება."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"ზარის განხორციელება შეუძლებელია, რადგან სხვა გამავალი ზარი უკვე იკრიფება."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"ზარის განხორციელება შეუძლებელია, რადგან გაქვთ უპასუხო შემომავალი ზარი. უპასუხეთ ან უარყავით შემომავალი ზარი ახალი ზარის განხორციელებამდე."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ზარის განხორციელება შეუძლებელია, რადგან დარეკვა გამორთულია ro.telephony.disable-call სისტემის თვისების გამოყენებით."</string>

@@ -766,6 +766,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Переадресований виклик."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Приєднання до конференц-виклику."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Утримуваний виклик скасовано."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Неможливо здійснити виклик, оскільки наразі збирається інформація про доступність послуги."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Неможливо здійснити виклик, оскільки ви вже телефонуєте на інший номер."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Неможливо здійснити виклик. Прийміть або відхиліть вхідний виклик, перш ніж здійснювати новий."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Неможливо здійснити виклик, оскільки дзвінки вимкнено за допомогою системного параметра ro.telephony.disable-call."</string>

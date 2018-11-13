@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ໂອນສາຍແລ້ວ."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"ກຳລັງເຂົ້າຮ່ວມການປະຊຸມສາຍ."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ວາງສາຍທີ່ພັກໄວ້ແລ້ວ."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"ບໍ່ສາມາດໂທໄດ້ເນື່ອງຈາກຕອນນີ້ອຸປະກອນກຳລັງຖືກຈັດຫາມາຢູ່."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"ບໍ່ສາມາດໂທອອກໄດ້ເນື່ອງຈາກກຳລັງມີສາຍໂທອອກຢູ່ກ່ອນແລ້ວ."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"ບໍ່ສາມາດໂທອອກໄດ້ເນື່ອງຈາກມີສາຍທີ່ກຳລັງໂທເຂົ້າມາທີ່ຍັງບໍ່ໄດ້ຮັບຢູ່. ກະລຸນາຮັບສາຍ ຫຼື ວາງສາຍທີ່ກຳລັງໂທເຂົ້າມາກ່ອນຈະໂທໃໝ່."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ບໍ່ສາມາດໂທໄດ້ເນື່ອງຈາກມີການປິດການໂທໂດຍໃຊ້ຄຸນສົມບັດລະບົບ ro.telephony.disable-call."</string>

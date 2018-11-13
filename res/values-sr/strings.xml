@@ -764,6 +764,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Прослеђен позив."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Улазите у конференцијски позив."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Позив више није на чекању."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Тренутно не можете да упутите позив зато што се уређају додељује услуга."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Не можете да позовете јер се већ упућује други одлазни позив."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Не можете да позовете јер имате долазни позив на који нисте одговорили. Одговорите на долазни позив или га одбијте пре упућивања новог позива."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Не можете да позовете јер је позивање онемогућено преко својства система ro.telephony.disable-call."</string>

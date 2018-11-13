@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ထပ်ဆင့်ပို့ထားသော ခေါ်ဆိုမှု။"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"အစည်းအဝေးခေါ်ဆိုမှုကို ချိတ်ဆက်နေပါသည်။"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ကိုင်ထားသော ဖုန်းကို ချလိုက်ပါပြီ။"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"ကိရိယာကို လတ်တလော ပြင်ဆင်နေသဖြင့် ဖုန်းခေါ်၍ မရနိုင်ပါ။"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"အထွက်ခေါ်ဆိုမှု ပြုလုပ်ထားသဖြင့် ဖုန်းထပ်ခေါ်၍ မရနိုင်ပါ။"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"မဖြေကြားရသေးသော အဝင်ခေါ်ဆိုမှု ရှိနေသဖြင့် ဖုန်းခေါ်၍ မရနိုင်ပါ။ ဖုန်းခေါ်ဆိုမှုအသစ် မပြုလုပ်မီ ဖုန်းကိုင်ပါ (သို့) ငြင်းပယ်ပါ။"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call စနစ် မူပိုင်ခွင့် အသုံးပြုပြီး ခေါ်ဆိုခြင်းကို ပိတ်ထားသဖြင့် ဖုန်းခေါ်၍ မရနိုင်ပါ။"</string>

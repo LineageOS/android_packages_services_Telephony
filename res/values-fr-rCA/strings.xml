@@ -766,6 +766,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Appel transféré."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Connexion à la conférence téléphonique en cours…"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"L\'appel en attente a été déconnecté."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Impossible de passer un appel, car l\'appareil est en cours d\'approvisionnement."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Impossible de passer un appel, car un autre appel sortant est déjà en cours de composition."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Impossible de passer un appel, car il y a un appel entrant sans réponse. Répondez à l\'appel entrant ou refusez-le avant de passer un nouvel appel."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Impossible de passer un appel, car la fonction d\'appel a été désactivée à l\'aide de la propriété système ro.telephony.disable-call."</string>

@@ -766,6 +766,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Peradresuotas skambutis."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Prisijungiama prie konferencinio skambučio."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Sulaikytas skambutis nutrauktas."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Negalite skambinti, nes įrenginys šiuo metu yra rengiamas naudoti."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Negalite skambinti, nes šiuo metu vykdomas kitas siunčiamasis skambutis."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Negalite skambinti, nes yra neatsakytas gaunamasis skambutis. Atsiliepkite arba atmeskite gaunamąjį skambutį prieš pradėdami naują."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Negalite skambinti, nes skambinimo funkcija išjungta naudojant sistemos ypatybę „ro.telephony.disable-call“."</string>

@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"کال کو آگے منتقل کیا گیا۔"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"کانفرنس کال میں شمولیت ہو رہی ہے۔"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ہولڈ پر رکھی کال جاری ہو گئی۔"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"کال نہیں کی جا سکتی کیوںکہ فی الحال آلہ فراہم کیا جا رہا ہے۔"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"کال نہیں کی جا سکتی کیونکہ باہر جانے والی دوسری کال پہلے سے ڈائل کی جا رہی ہے۔"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"ایک جواب نہ ملنے والی موصول ہونے والی کال کی وجہ سے کال نہیں کی جا سکتی۔ نئی کال کرنے کے لیے پہلے موصول ہونے والی کال کا جواب دیں یا مسترد کریں۔"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"‏ro.telephony.disable-call سسٹم کی خصوصیت کے ذریعے کال کرنے کو غیر فعال کر دیے جانے کی وجہ سے کال نہیں کی جا سکتی۔"</string>

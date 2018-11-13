@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Chamada desviada."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Entrando na conferencia telefónica."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Desconectouse a chamada retida."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Non puideches chamar porque se está realizando o aprovisionamento do dispositivo."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Non podes facer unha chamada porque xa hai outra en curso."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Non podes chamar porque te están chamando nestes momentos. Para poder facer unha chamada, primeiro tes que responder á outra ou rexeitala."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Non podes realizar unha chamada porque se desactivou esa función a través da propiedade do sistema ro.telephony.disable-call."</string>

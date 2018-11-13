@@ -549,8 +549,8 @@
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desativado"</item>
     <item msgid="3971695875449640648">"TTY completo"</item>
-    <item msgid="1937509904407445684">"TTY HCO"</item>
-    <item msgid="5644925873488772224">"TTY VCO"</item>
+    <item msgid="1937509904407445684">"TTD HCO"</item>
+    <item msgid="5644925873488772224">"TTD VCO"</item>
   </string-array>
     <string name="dtmf_tones_title" msgid="5163153771291340803">"Tons DTMF"</string>
     <string name="dtmf_tones_summary" msgid="3351820372864020331">"Definir duração dos tons DTMF"</string>
@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"A chamada foi encaminhada."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Participando da teleconferência."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"A chamada em espera foi desconectada."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Não é possível ligar porque o dispositivo está sendo provisionado no momento,"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Não é possível ligar porque há outra chamada sendo realizada."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Não é possível ligar porque há uma chamada recebida que não foi atendida. Atenda ou rejeite essa chamada antes de fazer outra."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Não é possível ligar porque as chamadas foram desativadas pela propriedade \"ro.telephony.disable-call system\"."</string>

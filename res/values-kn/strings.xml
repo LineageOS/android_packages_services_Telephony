@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ಫಾರ್ವರ್ಡ್ ಮಾಡಲಾದ ಕರೆ."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"ಕಾನ್ಫರೆನ್ಸ್ ಕರೆಗೆ ಸೇರಿಕೊಳ್ಳುತ್ತಿದ್ದಾರೆ."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ಹೋಲ್ಡ್‌ ಮಾಡಿದ ಕರೆಯನ್ನು ಕಡಿತಗೊಳಿಸಲಾಗಿದೆ."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"ಪ್ರಸ್ತುತವಾಗಿ ಸಾಧನಕ್ಕೆ ಸೇವೆಯನ್ನು ಒದಗಿಸುತ್ತಿರುವುದರಿಂದ ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"ಹೊಸ ಕರೆಯನ್ನು ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ ಏಕೆಂದರೆ ಮತ್ತೊಂದು ಕರೆಯನ್ನು ಈಗಾಗಲೇ ಮಾಡಲಾಗುತ್ತಿದೆ."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"ಉತ್ತರಿಸದೇ ಒಳಬರುವ ಕರೆ ಬರುತ್ತಿರುವುದರಿಂದ ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ. ಹೊಸ ಕರೆಯನ್ನು ಮಾಡುವ ಮೊದಲು ಕರೆಗೆ ಉತ್ತರ ನೀಡಿ ಅಥವಾ ತಿರಸ್ಕರಿಸಿ."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ಕರೆ ವೈಶಿಷ್ಟ್ಯವನ್ನು ro.telephony.disable-call ಸಿಸ್ಟಂ ಗುಣಲಕ್ಷಣದಿಂದ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿರುತ್ತದೆ, ಆದ್ದರಿಂದ ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>

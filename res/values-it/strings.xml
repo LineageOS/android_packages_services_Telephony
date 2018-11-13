@@ -766,6 +766,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Trasferimento di chiamata."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Accesso all\'audioconferenza."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"La chiamata in attesa è stata chiusa."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Impossibile effettuare una chiamata perché il dispositivo è attualmente in fase di provisioning."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Impossibile effettuare una chiamata perché è già presente un\'altra chiamata in uscita in composizione."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Impossibile effettuare una chiamata perché è presente una chiamata in arrivo senza risposta. Rispondi o rifiuta la chiamata in arrivo prima di effettuare una nuova chiamata."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Impossibile effettuare una chiamata perché le chiamate sono state disattivate utilizzando la proprietà di sistema ro.telephony.disable-call."</string>

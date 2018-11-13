@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"A chamada foi reencaminhada."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Está a participar na conferência."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"A chamada em espera foi desligada."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Não é possível efetuar uma chamada porque o dispositivo está atualmente a ser aprovisionado."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Não é possível efetuar uma chamada porque já está a ser efetuada outra chamada."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Não pode efetuar uma chamada porque há uma chamada recebida não atendida. Atenda ou rejeite a chamada recebida antes de efetuar uma nova chamada."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Não pode efetuar uma chamada porque as chamadas foram desativadas através da propriedade de sistema ro.telephony.disable-call."</string>
