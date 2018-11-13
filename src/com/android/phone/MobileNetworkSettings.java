@@ -788,13 +788,6 @@ public class MobileNetworkSettings extends Activity  {
             int max = mSubscriptionManager.getActiveSubscriptionInfoCountMax();
             mActiveSubInfos = new ArrayList<SubscriptionInfo>(max);
 
-            IntentFilter intentFilter = new IntentFilter(
-                    TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
-            activity.registerReceiver(mPhoneChangeReceiver, intentFilter);
-
-            activity.getContentResolver().registerContentObserver(ENFORCE_MANAGED_URI, false,
-                    mDpcEnforcedContentObserver);
-
             Log.i(LOG_TAG, "onCreate:-");
         }
 
@@ -822,6 +815,10 @@ public class MobileNetworkSettings extends Activity  {
             @Override
             public void onReceive(Context context, Intent intent) {
                 Log.i(LOG_TAG, "onReceive:");
+                if (getActivity() == null || getContext() == null) {
+                    // Received broadcast and activity is in the process of being torn down.
+                    return;
+                }
                 // When the radio changes (ex: CDMA->GSM), refresh all options.
                 updateBody();
             }
@@ -835,6 +832,10 @@ public class MobileNetworkSettings extends Activity  {
             @Override
             public void onChange(boolean selfChange) {
                 Log.i(LOG_TAG, "DPC enforced onChange:");
+                if (getActivity() == null || getContext() == null) {
+                    // Received content change and activity is in the process of being torn down.
+                    return;
+                }
                 updateBody();
             }
         }
@@ -843,11 +844,6 @@ public class MobileNetworkSettings extends Activity  {
         public void onDestroy() {
             unbindNetworkQueryService();
             super.onDestroy();
-            if (getActivity() != null) {
-                getActivity().unregisterReceiver(mPhoneChangeReceiver);
-                getActivity().getContentResolver().unregisterContentObserver(
-                        mDpcEnforcedContentObserver);
-            }
         }
 
         @Override
@@ -883,6 +879,13 @@ public class MobileNetworkSettings extends Activity  {
             updateCallingCategory();
 
             mSubscriptionManager.addOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
+
+            final Context context = getActivity();
+            IntentFilter intentFilter = new IntentFilter(
+                    TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
+            context.registerReceiver(mPhoneChangeReceiver, intentFilter);
+            context.getContentResolver().registerContentObserver(ENFORCE_MANAGED_URI, false,
+                    mDpcEnforcedContentObserver);
 
             Log.i(LOG_TAG, "onResume:-");
 
@@ -1220,6 +1223,10 @@ public class MobileNetworkSettings extends Activity  {
 
             mSubscriptionManager
                     .removeOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
+
+            final Context context = getActivity();
+            context.unregisterReceiver(mPhoneChangeReceiver);
+            context.getContentResolver().unregisterContentObserver(mDpcEnforcedContentObserver);
             if (DBG) log("onPause:-");
         }
 
