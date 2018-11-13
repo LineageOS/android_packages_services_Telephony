@@ -208,7 +208,7 @@
     <item msgid="3817924849415716259">"GSM/WCDMAを優先"</item>
   </string-array>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"4G LTE拡張モード"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"高度な通話機能"</string>
+    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"拡張モードでの通話"</string>
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"LTEサービスを使用して音声などの通信を改善する（推奨）"</string>
     <string name="data_enabled" msgid="5972538663568715366">"データ通信を有効にする"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"データ使用を許可"</string>
