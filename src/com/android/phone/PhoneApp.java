@@ -19,6 +19,7 @@ package com.android.phone;
 import android.app.Application;
 import android.os.UserHandle;
 
+import com.android.phone.ecc.IsoToEccProtobufRepository;
 import com.android.services.telephony.TelecomAccountRegistry;
 
 /**
@@ -40,5 +41,10 @@ public class PhoneApp extends Application {
 
             TelecomAccountRegistry.getInstance(this).setupOnBoot();
         }
+
+        new Thread(() -> {
+            // Preload ECC table in background.
+            IsoToEccProtobufRepository.getInstance().loadMappingTable(PhoneApp.this);
+        }).start();
     }
 }

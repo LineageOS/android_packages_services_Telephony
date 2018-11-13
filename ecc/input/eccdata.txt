@@ -808,7 +808,7 @@ countries {
 countries {
   iso_code: "GB"
   eccs {
-    phone_number: "112"
+    phone_number: "999"
     types: POLICE
     types: AMBULANCE
     types: FIRE
