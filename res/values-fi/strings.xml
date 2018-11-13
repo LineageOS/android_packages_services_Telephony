@@ -766,6 +766,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Siirretty puhelu."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Liitytään puhelinneuvotteluun."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Pidossa ollut puhelu on vapautettu."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Puhelua ei voida soittaa, koska laitetta valmistellaan parhaillaan."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Puhelua ei voida soittaa, koska toisen lähtevän puhelun soittaminen on kesken."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Puhelua ei voida soittaa, koska saapuvaan puheluun ei ole vielä vastattu. Vastaa saapuvaan puheluun tai hylkää se, ennen kuin soitat uuden puhelun."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Puhelua ei voida soittaa, koska soittaminen on poistettu käytöstä ro.telephony.disable-call-järjestelmätoiminnolla."</string>

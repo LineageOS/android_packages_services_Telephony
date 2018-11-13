@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Framsent símtal."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Tekur þátt í símafundi."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Símtal í bið heldur áfram."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Ekki er hægt að hringja símtal þar sem verið er að úthluta tækinu."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Ekki er hægt að hringja símtal þar sem þegar er verið að hringja annað símtal."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Ekki er hægt að hringja símtal þar sem ósvarað símtal er að berast. Svaraðu eða hafnaðu símtalinu áður en þú hringir nýtt símtal."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Ekki er hægt að hringja símtal þar sem símtöl hafa verið gerð óvirk með því að nota kerfiseiginleikann ro.telephony.disable-call."</string>

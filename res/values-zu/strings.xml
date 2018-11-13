@@ -766,6 +766,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Ikholi edluliselwe phambili."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Ijoyina ikholi yengqungquthela."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Ikholi ebanjiwe ikhululiwe."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Ayikwazi ukubeka ikholi njengoba idivayisi okwamanje iyanikezwa."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Ayikwazi ukubeka ikholi njengoba enye ikholi ephumayo isivele iyadayela."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Ayikwazi ukubeka ikholi njengoba kunekholi engenayo engaphenduliwe. Phendula noma nqaba ikholi engenayo ngaphambi kokubeka ikholi entsha."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Ayikwazi ukubeka ikholi njengoba ukushaya kukhutshaziwe kusetshenziswa isistimu ye-ro.telephony.disable-call."</string>

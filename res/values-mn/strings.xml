@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Дамжуулсан дуудлага."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Хурлын дуудлагад нэгдэж байна."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Хүлээлгэсэн дуудлагыг холбосон."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Одоогоор төхөөрөмжийг бэлдэж байгаа тул дуудлага хийх боломжгүй байна."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Өөр залгасан дугаар руу аль хэдийн залгаж байх үед дуудлага хийх боломжгүй."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Хариулаагүй ирсэн дуудлага байх үед дуудлага хийх боломжгүй. Шинэ дуудлага хийхийн өмнө ирсэн дуудлагад хариулах эсвэл татгалзана уу."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call системийн өмчийг ашиглан дуудлагыг цуцалсан бол дуудлага хийх боломжгүй."</string>

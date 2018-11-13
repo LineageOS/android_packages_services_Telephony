@@ -766,6 +766,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Połączenie przekierowane."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Dołączam do połączenia konferencyjnego."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Wstrzymane połączenie zostało wznowione."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Nie można nawiązać połączenia, ponieważ urządzenie jest w tej chwili rejestrowane."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nie można nawiązać połączenia, ponieważ inne połączenie jest już nawiązywane."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nie można nawiązać połączenia, ponieważ masz nieodebrane połączenie przychodzące. Odbierz je lub odrzuć przed nawiązaniem nowego."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nie można nawiązać połączenia, ponieważ ta funkcja została wyłączona przy użyciu właściwości systemowej ro.telephony.disable-call."</string>

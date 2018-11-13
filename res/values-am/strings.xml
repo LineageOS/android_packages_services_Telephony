@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"የተላለፈ ጥሪ።"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"የጉባዔ ጥሪን በመቀላቀል ላይ።"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"የተያዘ ጥሪ ተለቅቋል።"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"መሳሪያው አሁን እየቀረበ በመሆኑ ጥሪ ማድረግ አይቻልም።"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"ሊላ ወጪ ጥሪ እየደወለ ስለሆነ ጥሪ ማድረግ አይቻልም።"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"ያልተመለሰ ገቢ ጥሪ ስላለ ጥሪ ማድረግ አይቻልም። አዲስ ጥሪ ከማድረግዎ በፊት ገቢውን ጥሪ ይመልሱ ወይም ይዝጉ።"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ጥሪ ማድረግ አይቻልም ምክንያቱም ጥሪ ማድረግ በ ro.telephony.disable-call የስርዓት ባህሪ ተሰናክልሏል።"</string>

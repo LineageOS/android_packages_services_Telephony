@@ -764,6 +764,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Apel redirecționat"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Vă conectați la conferința telefonică."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Apelul în așteptare a fost deconectat."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Nu se poate iniția un apel, deoarece, momentan, are loc provizionarea dispozitivului."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nu se poate iniția un apel când se efectuează deja alt apel."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nu se poate iniția un apel când primiți un apel la care nu ați răspuns. Răspundeți sau respingeți apelul primit înainte de a iniția un apel nou."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nu se poate iniția un apel deoarece apelarea a fost dezactivată folosindu-se funcția de sistem ro.telephony.disable-call."</string>

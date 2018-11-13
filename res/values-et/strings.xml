@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Edasisuunatud kõne."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Konverentskõnega liitumine."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Ootel olnud kõne vabastati."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Kõnet ei saa teha, kuna seadet valmistatakse praegu ette."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Kõnet ei saa teha, kuna teist väljuvat kõnet juba valitakse."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Kõnet ei saa teha, kuna telefonis on sissetulev vastamata kõne. Enne uue kõne tegemist vastake kõnele või katkestage see."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Kõnet ei saa teha, kuna helistamine on süsteemi atribuudiga ro.telephony.disable-call keelatud."</string>

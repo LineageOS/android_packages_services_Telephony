@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ਕਾਲ ਅੱਗੇ ਭੇਜੀ ਗਈ।"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"ਕਾਨਫਰੰਸ ਕਾਲ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਇਆ ਜਾ ਰਿਹਾ ਹੈ।"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ਰੋਕ ਕੇ ਰੱਖੀ ਕਾਲ ਮੁੜ-ਸ਼ੁਰੂ ਹੋਈ।"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ ਕਿਉਂਕਿ ਇਸ ਵੇਲੇ ਡੀਵਾਈਸ ਦਾ ਪ੍ਰਬੰਧਨ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ।"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ ਕਿਉਂਕਿ ਇੱਕ ਹੋਰ ਆਊਟਗੋਇੰਗ ਕਾਲ ਪਹਿਲਾਂ ਹੀ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ।"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ ਕਿਉਂਕਿ ਇੱਕ ਜਵਾਬ ਨਾ ਦਿੱਤੀ ਗਈ ਇਨਕਮਿੰਗ ਕਾਲ ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਆ ਰਹੀ ਹੈ। ਨਵੀਂ ਕਾਲ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਇਨਕਮਿੰਗ ਕਾਲ ਦਾ ਜਵਾਬ ਦਿਓ ਜਾਂ ਅਸਵੀਕਾਰ ਕਰੋ।"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ ਕਿਉਂਕਿ ਕਾਲਿੰਗ ਨੂੰ ro.telephony.disable-call ਸਿਸਟਮ ਪ੍ਰਾਪਰਟੀ ਵਰਤ ਕੇ ਬੰਦ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ।"</string>

@@ -768,6 +768,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Vidarekopplat samtal."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Ansluter till konferenssamtal."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Parkerat samtal återupptaget."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Det går inte att ringa ett samtal eftersom enheten för närvarande tillhandahålls."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Det går inte att ringa ett samtal eftersom ett annat utgående samtal ringer upp."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Det går inte att ringa eftersom det finns ett obesvarat inkommande samtal. Svara eller avvisa det innan du ringer ett nytt samtal."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Det går inte att ringa eftersom uppringning har inaktiverats med systemegenskapen ro.telephony.disable-call."</string>

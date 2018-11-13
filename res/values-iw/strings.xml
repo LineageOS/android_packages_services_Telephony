@@ -766,6 +766,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"השיחה הועברה."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"אנחנו מצרפים אותך לשיחת הוועידה."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"השיחה שוחררה מהמתנה."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"אי אפשר להתקשר כי הקצאת המכשיר לא הסתיימה."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"אי אפשר להתקשר כי יש שיחה יוצאת אחרת."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"אי אפשר להתקשר כי יש שיחה נכנסת אחרת. צריך לענות לשיחה או לדחות אותה ורק אז לנסות להתקשר למספר אחר."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"‏אי אפשר להתקשר כי השיחות הושבתו באמצעות מאפיין המערכת ro.telephony.disable-call."</string>

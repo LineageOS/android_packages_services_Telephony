@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Telefonatë e transferuar."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Po bashkohesh në një telefonatë konferencë."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Telefonata në pritje u shkëput."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Telefonata nuk mund të kryhet sepse pajisja po përgatitet aktualisht."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nuk mund të kryhet një telefonatë pasi një telefonatë tjetër dalëse është duke u kryer tashmë."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nuk mund të kryhet një telefonatë sepse është një telefonatë hyrëse që nuk ka marrë përgjigje. Përgjigju ose refuzoje telefonatën hyrëse para se të kryesh një telefonatë të re."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nuk mund të kryhet një telefonatë sepse telefonata është çaktivizuar duke përdorur vetinë e sistemit ro.telephony.disable-call."</string>

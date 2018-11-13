@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ফরওয়ার্ড করা কল।"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"কনফারেন্স কলে যোগ দেওয়া হচ্ছে।"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"হোল্ডে থাকা কলটি রিলিজ করা রয়েছে।"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"কল করা যাবে না কারণ ডিভাইসটি বর্তমানে প্রভিশনিং করা হচ্ছে।"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"আপনি আগেই আউটগোয়িং কল ডায়াল করেছেন তাই অন্য কল করা যাবে না।"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"কল করতে পারবেন না কারণ এমন একটি ইনকামিং কল আছে যার উত্তর দেওয়া হয়নি। নতুন কল করতে বর্তমান কলটির উত্তর দিন অথবা প্রত্যাখান করুন।"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"\'ro.telephony কল বন্ধ করা সিস্টেম প্রপার্টি\' ব্যবহার করে কল বন্ধ করা হয়েছে তাই কল করা যাবে না।"</string>

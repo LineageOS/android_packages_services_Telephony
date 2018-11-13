@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"已转接来电。"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"正在加入电话会议。"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"保持的通话已中断。"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"由于设备正在配置中，因此无法拨打电话。"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"由于已在拨打另一个电话，因此无法拨打新电话。"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"由于有未接来电，因此无法拨打电话。请先接听或拒绝来电，然后才能拨打新电话。"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"通话功能已经由 ro.telephony.disable-call 系统属性停用，因此无法拨打电话。"</string>

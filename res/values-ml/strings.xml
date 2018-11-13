@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"കൈമാറിയ കോൾ."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"കോൺഫറൻസ് കോളിൽ ചേരുന്നു."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ഹോൾഡ് ചെയ്‌ത കോൾ സ്വതന്ത്രമാക്കി."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"ഉപകരണം നിലവിൽ പ്രൊവിഷൻ ചെയ്‌തുകൊണ്ടിരിക്കുന്നതിനാൽ, ഒരു കോൾ നടത്താനാവില്ല."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"മറ്റൊരു ഔട്ട്ഗോയിംഗ് കോൾ മുമ്പേ തന്നെ ഡയൽ ചെയ്യുന്നതിനാൽ, ഒരു കോൾ നടത്താനാവില്ല."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"മറുപടി ലഭിക്കാത്ത ഒരു ഇൻ‌കമിംഗ് കോൾ ഉള്ളതിനാൽ, ഒരു കോൾ നടത്താനാവില്ല. ഒരു പുതിയ കോൾ നടത്തുന്നതിന് മുൻപായി ഇൻകമിംഗ് കോളിന് മറുപടി നൽകുക അല്ലെങ്കിൽ നിരസിക്കുക."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-കോൾ സിസ്‌റ്റം പ്രോപ്പർട്ടി ഉപയോഗിച്ച് കോൾ ചെയ്യൽ പ്രവർത്തനരഹിതമാക്കിയതിനാൽ ഒരു കോൾ നടത്താനാവില്ല."</string>

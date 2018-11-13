@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Yönlendirilmiş çağrı."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Konferans çağrısına katılınıyor."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Beklemedeki çağrı serbest bırakıldı."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Şu anda cihazın temel hazırlığı yapılmakta olduğu için arama yapılamıyor."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Zaten aranmakta olan bir numara olduğu için arama yapılamıyor."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Cevaplanmamış bir gelen arama olduğu için arama yapılamıyor. Yeni bir arama yapmadan önce gelen aramayı cevaplayın veya reddedin."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Telefon etme ro.telephony.disable-call sistem özelliği kullanılarak devre dışı bırakıldığı için arama yapılamıyor."</string>
