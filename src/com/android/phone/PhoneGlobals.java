@@ -248,7 +248,8 @@ public class PhoneGlobals extends ContextWrapper {
                     // This is the same procedure that is triggered in the SipIncomingCallReceiver
                     // upon BOOT_COMPLETED.
                     UserManager userManager = UserManager.get(sMe);
-                    if (userManager != null && userManager.isUserUnlocked()) {
+                    if (userManager != null && userManager.isUserUnlocked()
+                            && !isDataEncrypted()) {
                         SipUtil.startSipService();
                     }
                     break;
@@ -685,6 +686,11 @@ public class PhoneGlobals extends ContextWrapper {
         }
     }
 
+    private static boolean isDataEncrypted() {
+        String voldState = SystemProperties.get("vold.decrypt");
+        return "1".equals(voldState) || "trigger_restart_min_framework".equals(voldState);
+    }
+
     /**
      * Receiver for misc intent broadcasts the Phone app cares about.
      */
@@ -762,7 +768,7 @@ public class PhoneGlobals extends ContextWrapper {
             String action = intent.getAction();
 
             SipAccountRegistry sipAccountRegistry = SipAccountRegistry.getInstance();
-            if (action.equals(Intent.ACTION_BOOT_COMPLETED)) {
+            if (action.equals(Intent.ACTION_BOOT_COMPLETED) && !isDataEncrypted()) {
                 SipUtil.startSipService();
             } else if (action.equals(SipManager.ACTION_SIP_SERVICE_UP)
                     || action.equals(SipManager.ACTION_SIP_CALL_OPTION_CHANGED)) {
