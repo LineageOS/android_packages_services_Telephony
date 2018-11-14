@@ -530,6 +530,16 @@
 
     <!-- Mobile network 4G summary [CHAR LIMIT=80] -->
     <string name="enhanced_4g_lte_mode_summary">Use LTE services to improve voice and other communications (recommended)</string>
+    <string name="enhanced_4g_lte_mode_summary_o2">Use 4G services to improve voice and other communications (recommended)</string>
+    <!-- Carrier variant of Enhaced 4G LTE Mode summary.  [CHAR LIMIT=80] -->
+    <string-array name="enhanced_4g_lte_mode_sumary_variant">
+        <!-- 0: Default -->
+        <item>@string/enhanced_4g_lte_mode_summary</item>
+        <!-- 1: Verizon -->
+        <item>@string/enhanced_4g_lte_mode_summary</item>
+        <!-- 2: O2 UK -->
+        <item>@string/enhanced_4g_lte_mode_summary_o2</item>
+    </string-array>
 
     <!-- Mobile network settings screen, data enabling checkbox name -->
     <string name="data_enabled">Data enabled</string>
