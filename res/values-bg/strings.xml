@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Пренасочено обаждане."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Присъединявате се към конферентно обаждане."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Задържаното обаждане бе освободено."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Не може да се извърши обаждане, тъй като в момента устройството се обезпечава."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Не може да се извърши обаждане, тъй като в момента се набира друго изходящо обаждане."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Не може да се извърши обаждане, тъй като има неотговорено входящо обаждане. Отговорете му или го отхвърлете, преди да извършите ново обаждане."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Не може да се извърши обаждане, тъй като обажданията са деактивирани чрез системното свойство ro.telephony.disable-call."</string>

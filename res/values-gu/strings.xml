@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"કૉલ ફોર્વર્ડ કર્યો."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"કૉન્ફરન્સ કૉલમાં જોડાઈ રહ્યાં છીએ."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"હોલ્ડ કરેલ કૉલ રિલીઝ કર્યો."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"હાલમાં, આ ડિવાઇસ પર સેવાઓની જોગવાઈ કરવામાં આવી રહી હોવાના કારણે કૉલ કરી શકાતો નથી."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"કૉલ કરી શકાતો નથી કારણ કે બીજો આઉટગોઇંગ કૉલ પહેલાંથી ડાયલ કરવામાં આવી રહ્યો છે."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"કૉલ કરી શકાતો નથી કારણ કે ઇનકમિંગ કૉલનો જવાબ આપવામાં આવી રહ્યો નથી. નવો કૉલ કરતા પૂર્વે ઇનકમિંગ કૉલનો જવાબ આપો અથવા નકારો."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"કૉલ કરી શકાતો નથી કેમકે કૉલિંગની સુવિધા ro.telephony.disable-call સિસ્ટમ પ્રોપર્ટીનો ઉપયોગ કરીને બંધ કરવામાં આવી છે."</string>

@@ -770,6 +770,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"تمت إعادة توجيه المكالمة."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"الانضمام إلى مكالمة جماعية."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"تم إلغاء تعليق المكالمة المعلقة."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"لا يمكن إجراء مكالمة لأنّنا نتحقَّق حاليًا من إمكانية عمل الخدمة على جهازك."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"لا يمكن إجراء مكالمة لأنّ هناك مكالمة صادرة أخرى تجري بالفعل."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"لا يمكن إجراء مكالمة لأنّ هناك مكالمة واردة لم يتم الرد عليها. يُرجى الرد على المكالمة الواردة أو رفضها قبل إجراء مكالمة جديدة."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"‏لا يمكن إجراء مكالمة لأنّه قد تم إيقاف وظيفة الاتصال باستخدام ميزة النظام ro.telephony.disable-call."</string>

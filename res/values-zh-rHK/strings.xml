@@ -768,6 +768,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"來電已轉駁。"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"正在加入電話會議。"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"通話已取消保留。"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"目前正在佈建裝置，無法撥打電話。"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"系統正在撥打另一通電話，因此無法撥打電話。"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"由於目前有尚未接聽的來電，因此無法撥打電話。請先接聽或拒絕來電，然後再撥打電話。"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"通話功能已由 ro.telephony.disable-call 系統屬性停用，因此無法撥打電話。"</string>

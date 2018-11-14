@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"បាន​បញ្ជូនបន្តការហៅទូរសព្ទ។"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"កំពុង​ចូលរួម​ការហៅ​ជា​ក្រុម។"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ការហៅ​ដែល​បាន​រង់ចាំត្រូវបាន​ផ្ដាច់។"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​ទេ ដោយសារ​​ឧបករណ៍​កំពុង​​ទទួល​សេវាកម្មនៅពេល​នេះ។"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​ទេ ដោយ​សារ​​មាន​គេ​​កំពុង​ហៅ​ទូរសព្ទ​ចេញ​រួច​ហើយ​។"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​ទេ ដោយសារ​​​មាន​ការ​ហៅ​ទូរសព្ទ​ចូល​​មួយ​មិន​បាន​ឆ្លើយ។ ឆ្លើយតប ឬ​បដិសេធ​ការ​ហៅ​ទូរសព្ទចូល​ មុន​ពេល​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​ថ្មី​មួយ​ទៀត។"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"មិន​អាច​ធ្វើ​ការ​ហៅ​ទូរសព្ទ​បាន​ទេ ដោយសារ​មាន​​ការ​ហៅ​ទូរសព្ទ​​មួយ​ត្រូវ​បាន​បិទ​​តាមរយៈ​ការប្រើ​ប្រាស់​លក្ខណៈ​ប្រព័ន្ធ ro.telephony.disable-call ។"</string>

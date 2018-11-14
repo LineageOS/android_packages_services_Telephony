@@ -766,6 +766,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Preusmerjeni klic."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Pridruževanje konferenčnemu klicu."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Zadržani klici so sproščeni."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Klica ni mogoče opraviti, ker trenutno poteka priprava naprave za uporabo."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Klica ni mogoče opraviti, ker že poteka vzpostavljanje drugega odhodnega klica."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Klica ni mogoče opraviti, ker imate dohodni klic, na katerega še niste odgovorili. Preden začnete z opravljanjem novega klica, sprejmite ali zavrnite dohodni klic."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Klica ni mogoče opraviti, ker je klicanje onemogočeno zaradi sistemske lastnosti ro.telephony.disable-call."</string>

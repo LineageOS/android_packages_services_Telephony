@@ -768,6 +768,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Переадресация вызова."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Присоединение к конференц-вызову…"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Вызов снят с удержания."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Невозможно позвонить: выполняется подготовка устройства"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Невозможно позвонить, поскольку ещё не завершен другой исходящий вызов."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Невозможно позвонить, поскольку вы не ответили на входящий вызов. Примите или отклоните текущий звонок."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Невозможно позвонить, поскольку вызовы запрещены системным свойством ro.telephony.disable-call."</string>

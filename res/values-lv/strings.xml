@@ -766,6 +766,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Pāradresēts zvans."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Notiek pievienošanās konferences zvanam."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Tika atvienots aizturēts zvans."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Nevar veikt zvanu, jo pašlaik tiek veikts ierīces nodrošināšanas process."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nevar veikt zvanu, jo jau tiek sastādīts numurs citam izejošajam zvanam."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nevar veikt zvanu, jo ir neatbildēts ienākošais zvans. Pirms jauna zvana veikšanas atbildiet uz ienākošo zvanu vai noraidiet to."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nevar veikt zvanu, jo zvanīšana ir atspējota, izmantojot sistēmas rekvizītu ro.telephony.disable-call."</string>

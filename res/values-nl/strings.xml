@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Doorgeschakeld gesprek."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Deelnemen aan telefonische vergadering…"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"In de wacht gezette gesprek is vrijgegeven."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Kan geen gesprek plaatsen omdat het apparaat momenteel wordt geregistreerd."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Kan gesprek niet plaatsen omdat er al een uitgaand gesprek is gestart."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Kan gesprek niet plaatsen omdat er een niet-beantwoord inkomend gesprek is. Beantwoord of weiger het inkomende gesprek voordat je een nieuw gesprek plaatst."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Kan gesprek niet plaatsen omdat bellen is uitgeschakeld via de systeemeigenschap ro.telephony.disable-call."</string>

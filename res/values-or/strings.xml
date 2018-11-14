@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ଫରୱାର୍ଡ କରାଯାଇଥିବା କଲ୍।"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"କନଫରେନ୍ସ କଲ୍‌ରେ ଯୋଗ ଦେବା।"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"ହୋଲ୍ଡ କରାଯାଇଥିବା କଲ୍‌ରୁ ହୋଲ୍ଡ ହଟାଇଦିଆଗଲା।"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"ଡିଭାଇସ୍‍ଟି ବର୍ତ୍ତମାନ ବ୍ୟବସ୍ଥିତ ହେଉଥିବା ଯୋଗୁଁ ଡିଭାଇସ୍‍ଭାବରେ ଏକ କଲ୍‍ କରି ହେବ ନାହିଁ।"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"ପୂର୍ବରୁ ଅନ୍ୟ ଏକ ଆଉଟ୍‌ଗୋଇଂ କଲ୍ ଡାଏଲ୍ କରାଯାଉଥିବା ଯୋଗୁଁ ଏକ କଲ୍ କରିପାରିବେ ନାହିଁ।"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"ଗୋଟିଏ ଉତ୍ତର ଦିଆଯାଇନଥିବା ଇନ୍‌କମିଂ କଲ୍ ଯୋଗୁଁ ଅନ୍ୟ ଏକ କଲ୍ କରିପାରିବେ ନାହିଁ । ଏକ ନୂତନ କଲ୍ କରିବା ପୂର୍ବରୁ ଇନ୍‌କମିଂ କଲ୍‌ଟିର ଉତ୍ତର ଦିଅନ୍ତୁ କିମ୍ବା ଏହାକୁ ଅଗ୍ରାହ୍ୟ କରନ୍ତୁ।"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call ସିଷ୍ଟମ୍ ଗୁଣର ପ୍ରୟୋଗ କରି କଲ୍ କରିବାର ସୁବିଧାକୁ ଅକ୍ଷମ କରାଯାଇଥିବା ଯୋଗୁଁ ଏକ କଲ୍ କରାଯାଇପାରିବ ନାହିଁ।"</string>

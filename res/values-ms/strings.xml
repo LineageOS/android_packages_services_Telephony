@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Panggilan dimajukan."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Menyertai panggilan sidang."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Panggilan yang ditunda telah dilepaskan."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Tidak dapat membuat panggilan kerana peranti sedang diperuntukkan."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Tidak dapat membuat panggilan kerana panggilan keluar lain sudah pun mendail."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Tidak dapat membuat panggilan kerana terdapat panggilan masuk yang tidak dijawab. Jawab atau tolak panggilan masuk itu sebelum membuat panggilan baharu."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Tidak dapat membuat panggilan kerana panggilan telah dilumpuhkan menggunakan sifat sistem ro.telephony.disable-call."</string>

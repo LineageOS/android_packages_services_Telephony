@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"යොමු කළ ඇමතුම."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"සම්මන්ත්‍රණ ඇමතුමට එක් වෙමින්."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"රඳවා ගත් ඇමතුම නිදහස් කර ඇත."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"උපාංගය දැනට සුදානම් කරමින් පවතින නිසා ඇමතුමක් ගැනීමට නොහැකිය."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"තවත් යන ඇමතුමක් දැනටමත් ඩයල් කරමින් පවතින නිසා අැමතුමක් ගැනීමට නොහැකිය."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"පිළිතුරු නොදුන් එන ඇමතුමක් තිබෙන නිසා අැමතුමක් ගැනීමට නොහැකිය. නව ඇමතුමක් ගැනීමට පෙර එන අැමතුමට පිළිතුරු දෙන්න නැතහොත් ප්‍රතික්ෂේප කරන්න."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ඇමතුම ro.telephony.disable-call පද්ධති ගුණාංගය භාවිතයෙන් ඇමතුම අබල කර ඇති නිසා ඇමතුමක් ගැනීමට නොහැකිය."</string>

@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Қоңырау басқа нөмірге бағытталды."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Мәжіліс қоңырауына қосылуда."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Күтудегі қоңырау жалғанды."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Қоңырау шалу мүмкін емес, себебі қазіргі уақытта құрылғыға қолжетімді қызметтер тексерілуде."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Қоңырау шалу мүмкін емес, себебі басқа шығыс қоңырау орындалуда."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Қоңырау шалу мүмкін емес, себебі жауап берілмеген кіріс қоңырау бар. Кіріс қоңырауға жауап беріңіз немесе оны өшіріңіз."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Қоңырау шалу мүмкін емес, себебі қоңырау шалу функциясы ro.telephony.disable-call жүйелік параметрі арқылы өшірілген."</string>

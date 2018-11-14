@@ -521,7 +521,7 @@
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Hindi available ang emergency na pagtawag"</string>
     <string name="police_type_description" msgid="5324410799919829693">"Pulis"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulansya"</string>
-    <string name="fire_type_description" msgid="7145996705197064710">"Apoy"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Sunog"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Gamitin ang keyboard upang mag-dial"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"I-hold"</string>
@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Ipinasa ang tawag."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Sumasali sa conference call."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Inalis ang pag-hold sa tawag."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Hindi maaaring tumawag dahil kasalukuyang pino-provision ang device."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Hindi maaaring tumawag dahil mayroon nang dina-dial na isa pang papalabas na tawag."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Hindi maaaring tumawag dahil mayroong hindi nasagot na papasok na tawag. Sagutin o tanggihan ang papasok na tawag bago gumawa ng bagong pagtawag."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Hindi maaaring tumawag dahil na-disable ang pagtawag gamit ang ro.telephony.disable-call na system property."</string>

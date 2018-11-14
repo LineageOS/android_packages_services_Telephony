@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"कॉल फॉरवर्ड केला."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"कॉन्‍फरन्‍स कॉलमध्‍ये सामील होत आहे."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"घेतलेला कॉल बंद केला."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"सध्या डिव्हाइसची तरतूद केली जात असल्यामुळे कॉल करू शकत नाही."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"दुसरा आउटगोइंग कॉल आधीच डायल होत असल्यामुळे कॉल करू शकत नाही."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"अनुत्तरित इनकमिंग कॉल असल्यामुळे कॉल करू शकत नाही. नवीन कॉल करण्याआधी इनकमिंग कॉलला उत्तर द्या किंवा तो नाकारा."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call सिस्टम प्रॉपर्टी वापरून कॉल करणे बंद केले गेल्यामुळे कॉल करू शकत नाही."</string>

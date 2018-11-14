@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Panggilan diteruskan."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Bergabung ke panggilan konferensi."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Panggilan yang ditahan telah terputus."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Tidak dapat melakukan panggilan karena saat ini perangkat dalam proses penyediaan."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Tidak dapat melakukan panggilan karena panggilan keluar lainnya sedang berlangsung."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Tidak dapat melakukan panggilan karena ada panggilan masuk yang belum terjawab. Jawab atau tolak panggilan masuk sebelum melakukan panggilan."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Tidak dapat melakukan panggilan karena panggilan telah dinonaktifkan menggunakan properti sistem ro.telephony.disable-call"</string>

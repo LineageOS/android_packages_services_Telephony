@@ -765,6 +765,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Чалуу башка номерден багытталды."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Конференц-чалууга кошулуу."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Чалуу күтүү режиминен чыгарылды."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Чалуу аткарылбайт, анткени түзмөк учурда даярдалып жатат."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Чалуу аткарылбайт, анткени башка чыгуучу чалуу терилүүдө."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Чалуу аткарылбайт, анткени кирүүчү чалууга жооп берилген жок. Жаңы чалуу аткаруудан мурун кирүүчү чалууга жооп берип же четке кагыңыз."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Чалуу аткарылбайт, анткени чалуу ro.telephony.disable-call тутуму аркылуу өчүрүлгөн."</string>

@@ -768,6 +768,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Проследен повик."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Се придружувате на конференциски повик."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Повикот на чекање е прекинат."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Не може да се воспостави повик затоа што уредот се подготвува во моментов."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Не може да се воспостави повик затоа што веќе се бира друг појдовен повик."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Не може да се воспостави повик затоа што има неодговорен дојдовен повик. Одговорете или одбијте го дојдовниот повик пред воспоставувањето на новиот повик."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Не може да се воспостави повик затоа што повикувањето е оневозможено со системското својство ro.telephony.disable-call."</string>

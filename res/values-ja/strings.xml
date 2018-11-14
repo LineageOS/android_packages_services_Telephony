@@ -762,6 +762,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"転送されてきた電話。"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"グループ通話に参加しようとしています。"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"通話の保留が解除されました。"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"現在この端末のプロビジョニングを行っているため、通話を発信することはできません。"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"すでに別の通話を発信中のため、新しく通話を発信することはできません。"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"通話を着信中のため、新しく通話を発信することはできません。着信中の通話に応答するか、通話を拒否すると、新しく通話を発信できるようになります。"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call システム プロパティを使用して通話機能が無効に設定されているため、通話を発信することはできません。"</string>
