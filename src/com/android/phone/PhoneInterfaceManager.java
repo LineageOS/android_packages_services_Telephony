@@ -82,6 +82,7 @@ import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsConfig;
+import android.telephony.ims.aidl.IImsConfigCallback;
 import android.telephony.ims.aidl.IImsMmTelFeature;
 import android.telephony.ims.aidl.IImsRcsFeature;
 import android.telephony.ims.aidl.IImsRegistration;
@@ -2900,6 +2901,96 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             return ImsManager.getInstance(mPhone.getContext(),
                     getSlotIndexOrException(subId)).isTtyOnVoLteCapable();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void registerImsProvisioningChangedCallback(int subId, IImsConfigCallback callback) {
+        enforceReadPrivilegedPermission("registerImsProvisioningChangedCallback");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().addConfigCallback(callback);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void unregisterImsProvisioningChangedCallback(int subId, IImsConfigCallback callback) {
+        enforceReadPrivilegedPermission("unregisterImsProvisioningChangedCallback");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().removeConfigCallback(callback);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int getImsProvisioningInt(int subId, int key) {
+        enforceReadPrivilegedPermission("getImsProvisioningInt");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            return ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().getConfigInt(key);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public String getImsProvisioningString(int subId, int key) {
+        enforceReadPrivilegedPermission("getImsProvisioningString");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            return ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().getConfigString(key);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int setImsProvisioningInt(int subId, int key, int value) {
+        enforceReadPrivilegedPermission("setImsProvisioningInt");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            return ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().setConfig(key, value);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int setImsProvisioningString(int subId, int key, String value) {
+        enforceReadPrivilegedPermission("setImsProvisioningString");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            return ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().setConfig(key, value);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
