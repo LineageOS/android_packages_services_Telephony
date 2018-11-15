@@ -370,7 +370,7 @@
     <!-- Mobile network settings, summary for preferred network mode CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
     <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: CDMA/EvDo/GSM/WCDMA</string>
     <!-- Mobile network settings, summary for preferred network mode LTE [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_lte_summary">Modd rhwydwaith a ffafrir: LTE</string>
+    <string name="preferred_network_mode_lte_summary">Modd rhwydwaith a ffafrir: LTE </string>
     <!-- Mobile network settings, summary for preferred network mode GSM/WCDMA/LTE [CHAR LIMIT=100] -->
     <string name="preferred_network_mode_lte_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: GSM/WCDMA/LTE</string>
     <!-- Mobile network settings, summary for preferred network mode CDMA+LTE/EVDO[CHAR LIMIT=100] -->
@@ -404,8 +404,8 @@
     <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
     <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
     <string-array name="preferred_network_mode_choices">
-        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
-        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
+        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
         <item>LTE/TDSCDMA/GSM/WCDMA</item>
         <item>LTE/TDSCDMA/WCDMA</item>
         <item>TDSCDMA/GSM/WCDMA</item>
@@ -1016,7 +1016,7 @@
     <string name="other_settings">Gosodiadau galwadau eraill</string>
     <!-- Title displayed in the overlay when a call is placed using a 3rd party provider.
          [CHAR LIMIT=40] -->
-    <string name="calling_via_template">Yn galw trwy <xliff:g id="provider_name">%s</xliff:g></string>
+    <string name="calling_via_template">Yn galw gyda <xliff:g id="provider_name">%s</xliff:g></string>
     <!-- Use this as a default to describe the contact photo; currently for screen readers through accessibility. -->
     <string name="contactPhoto">llun y cyswllt</string>
     <!-- Use this to describe the separate conference call button; currently for screen readers through accessibility. -->
@@ -1050,7 +1050,7 @@
     <string name="enable_video_calling_title">Galluogi galwadau fideo</string>
     <!-- Message for dialog shown when the user tries to turn on video calling but enhanced 4G LTE
          is disabled. They have to turn on Enhanced 4G LTE capability in network settings first. -->
-    <string name="enable_video_calling_dialog_msg">Er mwyn galluogi galwadau fideo, rhaid galluogi Modd 4G LTE Gwell yn y gosodiadau rhwydwaith.</string>
+    <string name="enable_video_calling_dialog_msg">Er mwyn galluogi galwadau fideo, rhaid galluogi Modd 4G LTE Gwell yn y gosodiadau rhwydwaith.    </string>
     <!-- Label for action button in dialog which opens mobile network settings, for video calling
          setting. -->
     <string name="enable_video_calling_dialog_settings">Gosodiadau rhwydwaith</string>
@@ -1080,11 +1080,12 @@
        data was received.) [CHAR LIMIT=none] -->
     <string name="message_decode_error">Roedd gwall wrth ddadgodio\'r neges.</string>
     <!-- Call failure reason: SIM card and roaming capabilities have already been activated. [CHAR LIMIT=NONE]-->
-    <string name="callFailed_cdma_activation">Mae cerdyn SIM wedi actifadu dy wasanaeth a diweddaru gallu dy ffôn i grwydro tramor.</string>
+    <string name="callFailed_cdma_activation">Mae cerdyn SIM wedi actifadu dy wasanaeth a diweddaru gallu dy ffôn i grwydro tramor.    </string>
     <!-- Call failure reason: Cannot add a call because there are already too many active calls. -->
-    <string name="callFailed_cdma_call_limit">Mae gormod o alwadau ar eu canol. Diwedda neu gyfuno rhai o\'r galwadau cyfredol cyn gwneud galwad newydd.</string>
+    <string name="callFailed_cdma_call_limit">Mae gormod o alwadau ar eu canol. Diwedda neu gyfuno rhai o\'r galwadau cyfredol cyn gwneud galwad newydd.
+    </string>
     <!-- Call failure reason: If the network does not accept the emergency call request, e.g., because IMEI was used as identification and this capability is not supported -->
-    <string name="callFailed_imei_not_accepted">Methu â chysylltu. Rho gerdyn SIM dilys, plîs.</string>
+    <string name="callFailed_imei_not_accepted">Methu â chysylltu. Rho gerdyn SIM dilys, plîs.    </string>
     <!-- Call failure reason displayed when an in-progress WIFI call fails due to a loss of WIFI
          connectivity, or the WIFI signal has degraded to the point the call cannot continue. -->
     <!-- Call failure reason displayed when the user's outgoing call cannot be placed due to a low
