@@ -1149,15 +1149,22 @@ public class MobileNetworkSettings extends Activity  {
                     CarrierConfigManager.KEY_ENHANCED_4G_LTE_TITLE_VARIANT_INT);
             CharSequence[] variantTitles = getContext().getResources()
                     .getTextArray(R.array.enhanced_4g_lte_mode_title_variant);
-            // Default index 0 indicates the default title string
+            CharSequence[] variantSumaries = getContext().getResources()
+                    .getTextArray(R.array.enhanced_4g_lte_mode_sumary_variant);
+            // Default index 0 indicates the default title/sumary string
             CharSequence enhanced4glteModeTitle = variantTitles[0];
+            CharSequence enhanced4glteModeSummary = variantSumaries[0];
             if (variant4glteTitleIndex >= 0 && variant4glteTitleIndex < variantTitles.length) {
                 enhanced4glteModeTitle = variantTitles[variant4glteTitleIndex];
+            }
+            if (variant4glteTitleIndex >= 0 && variant4glteTitleIndex < variantSumaries.length) {
+                enhanced4glteModeSummary = variantSumaries[variant4glteTitleIndex];
             }
 
             mOnlyAutoSelectInHomeNW = carrierConfig.getBoolean(
                     CarrierConfigManager.KEY_ONLY_AUTO_SELECT_IN_HOME_NETWORK_BOOL);
             mButton4glte.setTitle(enhanced4glteModeTitle);
+            mButton4glte.setSummary(enhanced4glteModeSummary);
             mLteDataServicePref.setEnabled(hasActiveSubscriptions);
             Preference ps;
             ps = findPreference(BUTTON_CELL_BROADCAST_SETTINGS);
