@@ -2968,7 +2968,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int setImsProvisioningInt(int subId, int key, int value) {
-        enforceReadPrivilegedPermission("setImsProvisioningInt");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
+                "setImsProvisioningInt");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -2983,7 +2984,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int setImsProvisioningString(int subId, int key, String value) {
-        enforceReadPrivilegedPermission("setImsProvisioningString");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
+                "setImsProvisioningString");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
