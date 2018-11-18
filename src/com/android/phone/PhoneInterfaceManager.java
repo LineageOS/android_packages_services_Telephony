@@ -61,6 +61,7 @@ import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoWcdma;
 import android.telephony.CellLocation;
 import android.telephony.ClientRequestStats;
+import android.telephony.ICellInfoCallback;
 import android.telephony.IccOpenLogicalChannelResponse;
 import android.telephony.LocationAccessPolicy;
 import android.telephony.ModemActivityInfo;
@@ -82,6 +83,7 @@ import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsConfig;
+import android.telephony.ims.aidl.IImsConfigCallback;
 import android.telephony.ims.aidl.IImsMmTelFeature;
 import android.telephony.ims.aidl.IImsRcsFeature;
 import android.telephony.ims.aidl.IImsRegistration;
@@ -217,6 +219,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_GET_CELL_LOCATION_DONE = 63;
     private static final int CMD_MODEM_REBOOT = 64;
     private static final int EVENT_CMD_MODEM_REBOOT_DONE = 65;
+    private static final int CMD_REQUEST_CELL_INFO_UPDATE = 66;
+    private static final int EVENT_REQUEST_CELL_INFO_UPDATE_DONE = 67;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1000,13 +1004,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request.result = ar.exception == null;
                     notifyRequester(request);
                     break;
-
                 case CMD_GET_ALL_CELL_INFO:
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_GET_ALL_CELL_INFO_DONE, request);
                     request.phone.requestCellInfoUpdate(request.workSource, onCompleted);
                     break;
-
                 case EVENT_GET_ALL_CELL_INFO_DONE:
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
@@ -1017,22 +1019,45 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         request.notifyAll();
                     }
                     break;
-
-                case CMD_GET_CELL_LOCATION: {
+                case CMD_REQUEST_CELL_INFO_UPDATE:
+                    request = (MainThreadRequest) msg.obj;
+                    request.phone.requestCellInfoUpdate(request.workSource,
+                            obtainMessage(EVENT_REQUEST_CELL_INFO_UPDATE_DONE, request));
+                    break;
+                case EVENT_REQUEST_CELL_INFO_UPDATE_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    ICellInfoCallback cb = (ICellInfoCallback) request.argument;
+                    try {
+                        if (ar.exception != null) {
+                            // something went wrong... the response is null
+                            Log.e(LOG_TAG, "Exception retrieving CellInfo=" + ar.exception);
+                            cb.onCellInfo(null);
+                        } else if (ar.result == null) {
+                            // timeout occurred, so force the result to non-null "empty"
+                            Log.w(LOG_TAG, "Timeout Waiting for CellInfo!");
+                            cb.onCellInfo(new ArrayList<CellInfo>());
+                        } else {
+                            // use the result as returned
+                            cb.onCellInfo((List<CellInfo>) ar.result);
+                        }
+                    } catch (RemoteException re) {
+                        Log.w(LOG_TAG, "Discarded CellInfo due to Callback RemoteException");
+                    }
+                    break;
+                case CMD_GET_CELL_LOCATION:
                     request = (MainThreadRequest) msg.obj;
                     WorkSource ws = (WorkSource) request.argument;
                     Phone phone = getPhoneFromRequest(request);
                     phone.getCellLocation(ws, obtainMessage(EVENT_GET_CELL_LOCATION_DONE, request));
                     break;
-                }
-
-                case EVENT_GET_CELL_LOCATION_DONE: {
+                case EVENT_GET_CELL_LOCATION_DONE:
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     if (ar.exception == null) {
                         request.result = ar.result;
                     } else {
-                        Phone phone = getPhoneFromRequest(request);
+                        phone = getPhoneFromRequest(request);
                         request.result = (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_CDMA)
                                 ? new CdmaCellLocation() : new GsmCellLocation();
                     }
@@ -1041,18 +1066,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         request.notifyAll();
                     }
                     break;
-                }
-
                 case CMD_MODEM_REBOOT:
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_RESET_MODEM_CONFIG_DONE, request);
                     mPhone.rebootModem(onCompleted);
                     break;
-
                 case EVENT_CMD_MODEM_REBOOT_DONE:
                     handleNullReturnEvent(msg, "rebootModem");
                     break;
-
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
                     break;
@@ -1178,10 +1199,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Same as {@link #sendRequestAsync(int)} except it takes an argument.
-     * @see {@link #sendRequest(int,Object)}
+     * @see {@link #sendRequest(int)}
      */
     private void sendRequestAsync(int command, Object argument) {
-        MainThreadRequest request = new MainThreadRequest(argument);
+        sendRequestAsync(command, argument, null, null);
+    }
+
+    /**
+     * Same as {@link #sendRequestAsync(int,Object)} except it takes a Phone and WorkSource.
+     * @see {@link #sendRequest(int,Object)}
+     */
+    private void sendRequestAsync(
+            int command, Object argument, Phone phone, WorkSource workSource) {
+        MainThreadRequest request = new MainThreadRequest(argument, phone, workSource);
         Message msg = mMainThreadHandler.obtainMessage(command, request);
         msg.sendToTarget();
     }
@@ -1915,6 +1945,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return (neighbors.size()) > 0 ? neighbors : null;
     }
 
+    private List<CellInfo> getCachedCellInfo() {
+        List<CellInfo> cellInfos = new ArrayList<CellInfo>();
+        for (Phone phone : PhoneFactory.getPhones()) {
+            List<CellInfo> info = phone.getAllCellInfo();
+            if (info != null) cellInfos.addAll(info);
+        }
+        return cellInfos;
+    }
 
     @Override
     public List<CellInfo> getAllCellInfo(String callingPackage) {
@@ -1923,6 +1961,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
                 callingPackage, Binder.getCallingUid(), Binder.getCallingPid(), true)) {
             return null;
+        }
+
+        final int targetSdk = getTargetSdk(callingPackage);
+        if (targetSdk >= android.os.Build.VERSION_CODES.Q) {
+            return getCachedCellInfo();
         }
 
         if (DBG_LOC) log("getAllCellInfo: is active user");
@@ -1939,6 +1982,34 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    @Override
+    public void requestCellInfoUpdate(int subId, ICellInfoCallback cb, String callingPackage) {
+        requestCellInfoUpdateInternal(
+                subId, cb, callingPackage, getWorkSource(Binder.getCallingUid()));
+    }
+
+    @Override
+    public void requestCellInfoUpdateWithWorkSource(
+            int subId, ICellInfoCallback cb, String callingPackage, WorkSource workSource) {
+        enforceModifyPermission();
+        requestCellInfoUpdateInternal(subId, cb, callingPackage, workSource);
+    }
+
+    private void requestCellInfoUpdateInternal(
+            int subId, ICellInfoCallback cb, String callingPackage, WorkSource workSource) {
+        mPhone.getContext().getSystemService(AppOpsManager.class)
+                .checkPackage(Binder.getCallingUid(), callingPackage);
+        if (!LocationAccessPolicy.canAccessCellLocation(mPhone.getContext(),
+                callingPackage, Binder.getCallingUid(), Binder.getCallingPid(), true)) {
+            return;
+        }
+
+        final Phone phone = getPhone(subId);
+        if (phone == null) throw new IllegalArgumentException("Invalid Subscription Id: " + subId);
+
+        sendRequestAsync(CMD_REQUEST_CELL_INFO_UPDATE, cb, phone, workSource);
     }
 
     @Override
@@ -2900,6 +2971,98 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             return ImsManager.getInstance(mPhone.getContext(),
                     getSlotIndexOrException(subId)).isTtyOnVoLteCapable();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void registerImsProvisioningChangedCallback(int subId, IImsConfigCallback callback) {
+        enforceReadPrivilegedPermission("registerImsProvisioningChangedCallback");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().addConfigCallback(callback);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void unregisterImsProvisioningChangedCallback(int subId, IImsConfigCallback callback) {
+        enforceReadPrivilegedPermission("unregisterImsProvisioningChangedCallback");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().removeConfigCallback(callback);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int getImsProvisioningInt(int subId, int key) {
+        enforceReadPrivilegedPermission("getImsProvisioningInt");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            return ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().getConfigInt(key);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public String getImsProvisioningString(int subId, int key) {
+        enforceReadPrivilegedPermission("getImsProvisioningString");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            return ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().getConfigString(key);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int setImsProvisioningInt(int subId, int key, int value) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
+                "setImsProvisioningInt");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            return ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().setConfig(key, value);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int setImsProvisioningString(int subId, int key, String value) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
+                "setImsProvisioningString");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            return ImsManager.getInstance(mPhone.getContext(), getSlotIndexOrException(subId))
+                    .getConfigInterface().setConfig(key, value);
+        } catch (ImsException e) {
+            throw new IllegalArgumentException(e.getMessage());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
