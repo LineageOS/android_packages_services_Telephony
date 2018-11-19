@@ -22,11 +22,20 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.WindowManager;
 
+import com.android.internal.telephony.MmiCode;
 import com.android.internal.telephony.Phone;
+import com.android.phone.CarrierXmlParser;
 import com.android.phone.GsmUmtsAdditionalCallOptions;
 import com.android.phone.GsmUmtsCallOptions;
+import com.android.phone.PhoneGlobals;
+import com.android.phone.PhoneUtils;
 import com.android.phone.R;
+
+import java.util.HashMap;
 
 /**
  * Utility class to help supplementary service functions and UI.
@@ -34,11 +43,14 @@ import com.android.phone.R;
 public class SuppServicesUiUtil {
     static final String LOG_TAG = "SuppServicesUiUtil";
 
+    private static final String CLIR_ACTIVATE = "#31#";
+    private static final String CLIR_DEACTIVATE = "*31#";
+
     /**
      * show dialog for supplementary services over ut precaution.
      *
-     * @param context The context.
-     * @param phone   The Phone object.
+     * @param context       The context.
+     * @param phone         The Phone object.
      * @param preferenceKey The preference's key.
      */
     public static Dialog showBlockingSuppServicesDialog(Context context, Phone phone,
@@ -139,5 +151,89 @@ public class SuppServicesUiUtil {
                 (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         return telephonyManager.isNetworkRoaming(phone.getSubId())
                 && !phone.getDataRoamingEnabled();
+    }
+
+    /**
+     * To handle caller id's ussd response message which sets caller id activate or deactivate,
+     * and then sync caller id's ussd value to ss value if this command successful.
+     *
+     * @param context context to get strings.
+     * @param mmiCode MMI result.
+     * @return Text from response message is displayed on dialog .
+     * @hide
+     */
+    public static CharSequence handleCallerIdUssdResponse(PhoneGlobals app, Context context,
+            Phone phone, MmiCode mmiCode) {
+        if (TextUtils.isEmpty(mmiCode.getDialString())) {
+            return mmiCode.getMessage();
+        }
+
+        TelephonyManager telephonyManager = new TelephonyManager(context, phone.getSubId());
+        int carrierId = telephonyManager.getSimCarrierId();
+        if (carrierId == TelephonyManager.UNKNOWN_CARRIER_ID) {
+            return mmiCode.getMessage();
+        }
+
+        CarrierXmlParser carrierXmlParser = new CarrierXmlParser(context, carrierId);
+        CarrierXmlParser.SsEntry.SSAction ssAction = carrierXmlParser.getCallerIdUssdCommandAction(
+                mmiCode.getDialString());
+        Log.d(LOG_TAG, "handleCallerIdUssdResponse: ssAction =" + ssAction);
+
+        if (ssAction == CarrierXmlParser.SsEntry.SSAction.UNKNOWN) {
+            return mmiCode.getMessage();
+        }
+
+        HashMap<String, String> analysisResult = carrierXmlParser.getFeature(
+                CarrierXmlParser.FEATURE_CALLER_ID)
+                .getResponseSet(ssAction,
+                        mmiCode.getMessage().toString());
+        Log.d(LOG_TAG, "handleCallerIdUssdResponse: analysisResult =" + analysisResult);
+        if (analysisResult.get(CarrierXmlParser.TAG_RESPONSE_STATUS).equals(
+                CarrierXmlParser.TAG_COMMAND_RESULT_DEFINITION_OK)) {
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    TelephonyManager.UssdResponseCallback ussdCallback =
+                            new TelephonyManager.UssdResponseCallback() {
+                                @Override
+                                public void onReceiveUssdResponse(
+                                        final TelephonyManager telephonyManager,
+                                        String request, CharSequence response) {
+                                    Log.d(LOG_TAG, "handleCallerIdUssdResponse: response ="
+                                            + response.toString());
+                                    PhoneUtils.createUssdDialog(app, context, response.toString(),
+                                            WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+                                }
+
+                                @Override
+                                public void onReceiveUssdResponseFailed(
+                                        final TelephonyManager telephonyManager,
+                                        String request, int failureCode) {
+                                    Log.d(LOG_TAG, "handleCallerIdUssdResponse: failureCode ="
+                                            + failureCode);
+                                    PhoneUtils.createUssdDialog(app, context,
+                                            context.getText(R.string.response_error),
+                                            WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+                                }
+                            };
+
+                    String clir = "";
+                    if (ssAction == CarrierXmlParser.SsEntry.SSAction.UPDATE_ACTIVATE) {
+                        clir = CLIR_ACTIVATE;
+                    } else {
+                        clir = CLIR_DEACTIVATE;
+                    }
+                    TelephonyManager telephonyManager =
+                            (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                    telephonyManager.sendUssdRequest(clir, ussdCallback, null);
+                }
+            }).start();
+
+            return "";
+        } else {
+            return context.getText(
+                    com.android.internal.R.string.mmiError);
+        }
     }
 }
