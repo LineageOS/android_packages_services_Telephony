@@ -366,7 +366,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 Log.d(LOG_TAG, "ECC info is unavailable. Disable emergency dialer shortcut.");
             }
         }
-        mAreEmergencyDialerShortcutsEnabled = false;
         Log.d(LOG_TAG, "Enable emergency dialer shortcut: "
                 + mAreEmergencyDialerShortcutsEnabled);
 
