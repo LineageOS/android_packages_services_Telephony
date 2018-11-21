@@ -179,7 +179,7 @@ public class ImsRegistrationActivity extends Activity {
         try {
             mImsManager = ImsMmTelManager.createForSubscriptionId(this,
                     SubscriptionManager.getDefaultVoiceSubscriptionId());
-            mImsManager.addImsRegistrationCallback(getMainExecutor(), mRegistrationCallback);
+            mImsManager.registerImsRegistrationCallback(getMainExecutor(), mRegistrationCallback);
         } catch (IllegalArgumentException e) {
             Log.w("ImsCallingActivity", "illegal subscription ID.");
         }
@@ -219,7 +219,7 @@ public class ImsRegistrationActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        mImsManager.removeImsRegistrationCallback(mRegistrationCallback);
+        mImsManager.unregisterImsRegistrationCallback(mRegistrationCallback);
         mImsManager = null;
     }
 
