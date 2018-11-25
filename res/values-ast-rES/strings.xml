@@ -282,7 +282,7 @@
     <!-- Mobile network settings, summary for preferred network mode CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
     <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary">Mou preferíu de rede: CDMA/EvDo/GSM/WCDMA</string>
     <!-- Mobile network settings, summary for preferred network mode LTE [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_lte_summary">Mou preferíu de rede: LTE</string>
+    <string name="preferred_network_mode_lte_summary">Mou preferíu de rede: LTE </string>
     <!-- Mobile network settings, summary for preferred network mode GSM/WCDMA/LTE [CHAR LIMIT=100] -->
     <string name="preferred_network_mode_lte_gsm_wcdma_summary">Mou preferíu de rede: GSM/WCDMA/LTE</string>
     <!-- Mobile network settings, summary for preferred network mode CDMA+LTE/EVDO[CHAR LIMIT=100] -->
@@ -316,8 +316,8 @@
     <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
     <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Mou preferíu de rede: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
     <string-array name="preferred_network_mode_choices">
-        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
-        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
+        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
         <item>LTE/TDSCDMA/GSM/WCDMA</item>
         <item>LTE/TDSCDMA/WCDMA</item>
         <item>TDSCDMA/GSM/WCDMA</item>
@@ -703,7 +703,8 @@
     <!-- Label for enabling video calling. -->
     <!-- Message for dialog shown when the user tries to turn on video calling but enhanced 4G LTE
          is disabled. They have to turn on Enhanced 4G LTE capability in network settings first. -->
-    <string name="enable_video_calling_dialog_msg">P\'activar les videollamaes, precises activar el mou de 4G LTE ameyoráu nos axustes de rede.</string>
+    <string name="enable_video_calling_dialog_msg">        P\'activar les videollamaes, precises activar el mou de 4G LTE ameyoráu nos axustes de rede.
+    </string>
     <!-- Label for action button in dialog which opens mobile network settings, for video calling
          setting. -->
     <string name="enable_video_calling_dialog_settings">Axustes de rede</string>
@@ -727,9 +728,11 @@
     <!-- String used in place of a message that could not be properly decoded (e.g. bad base64
        data was received.) [CHAR LIMIT=none] -->
     <!-- Call failure reason: SIM card and roaming capabilities have already been activated. [CHAR LIMIT=NONE]-->
-    <string name="callFailed_cdma_activation">Una tarxeta SIM activó\'l serviciu y anovó les capacidaes d\'itinerancia del teléfonu.</string>
+    <string name="callFailed_cdma_activation">        Una tarxeta SIM activó\'l serviciu y anovó les capacidaes d\'itinerancia del teléfonu.
+    </string>
     <!-- Call failure reason: Cannot add a call because there are already too many active calls. -->
-    <string name="callFailed_cdma_call_limit">Hai milenta llamaes actives. Fina o amiesta una enantes de facer otra, por favor.</string>
+    <string name="callFailed_cdma_call_limit">        Hai milenta llamaes actives. Fina o amiesta una enantes de facer otra, por favor.
+    </string>
     <!-- Call failure reason: If the network does not accept the emergency call request, e.g., because IMEI was used as identification and this capability is not supported -->
     <!-- Call failure reason displayed when an in-progress WIFI call fails due to a loss of WIFI
          connectivity, or the WIFI signal has degraded to the point the call cannot continue. -->

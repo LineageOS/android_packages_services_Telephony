@@ -339,7 +339,7 @@
     <!-- Mobile network settings, summary for preferred network mode CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
     <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary">جۆری تۆڕی پەسەندکراو: CDMA/EvDo/GSM/WCDMA</string>
     <!-- Mobile network settings, summary for preferred network mode LTE [CHAR LIMIT=100] -->
-    <string name="preferred_network_mode_lte_summary">جۆری تۆڕی پەسەندکراو: LTE</string>
+    <string name="preferred_network_mode_lte_summary">جۆری تۆڕی پەسەندکراو: LTE </string>
     <!-- Mobile network settings, summary for preferred network mode GSM/WCDMA/LTE [CHAR LIMIT=100] -->
     <string name="preferred_network_mode_lte_gsm_wcdma_summary">جۆری تۆڕی پەسەندکراو: GSM/WCDMA/LTE</string>
     <!-- Mobile network settings, summary for preferred network mode CDMA+LTE/EVDO[CHAR LIMIT=100] -->
@@ -361,8 +361,8 @@
     <!-- Mobile network settings, summary for preferred network mode TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
     <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
     <string-array name="preferred_network_mode_choices">
-        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
-        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
+        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
         <item>LTE/TDSCDMA/GSM/WCDMA</item>
         <item>LTE/TDSCDMA/WCDMA</item>
         <item>TDSCDMA/GSM/WCDMA</item>

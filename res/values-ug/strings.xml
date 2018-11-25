@@ -64,7 +64,7 @@
     <!-- Title of the "Missing voicemail number" dialog -->
     <string name="no_vm_number">ئۈنخەت نومۇرى كەم</string>
     <!-- Body text of the "Missing voicemail number" dialog -->
-    <string name="no_vm_number_msg">SIM كارتىغا ئۈنخەت نومۇرى يوق.</string>
+    <string name="no_vm_number_msg"> SIM كارتىغا ئۈنخەت نومۇرى يوق.</string>
     <!-- Button label on the "Missing voicemail number" dialog -->
     <string name="add_vm_number_str">نومۇر قوش</string>
     <!--Toast in Call settings when asked to launch voicemail for a guest user -->
@@ -310,8 +310,8 @@
     <!-- Mobile network settings, summary for preferred network mode TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
     <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
     <string-array name="preferred_network_mode_choices">
-        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
-        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
+        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
         <item>LTE/TDSCDMA/GSM/WCDMA</item>
         <item>LTE/TDSCDMA/WCDMA</item>
         <item>TDSCDMA/GSM/WCDMA</item>

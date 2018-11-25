@@ -364,8 +364,8 @@
     <!-- Mobile network settings, summary for preferred network mode TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
     <!-- Mobile network settings, summary for preferred network mode LTE / TDSCDMA / CDMA / EvDo / GSM / WCDMA[CHAR LIMIT=100] -->
     <string-array name="preferred_network_mode_choices">
-        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
-        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
+        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
         <item>LTE/TDSCDMA/GSM/WCDMA</item>
         <item>LTE/TDSCDMA/WCDMA</item>
         <item>TDSCDMA/GSM/WCDMA</item>
@@ -859,7 +859,7 @@
     <!-- Title of skip activation dialog -->
     <string name="ota_skip_activation_dialog_title">Aktivéierung iwwersprangen\?</string>
     <!-- Message displayed in skip activation dialog  -->
-    <string name="ota_skip_activation_dialog_message">Wann s du d\'Aktivéierung iwwerspréngs, kanns du keng Uriff maachen oder dech mam mobillen Datennetzwierk connectéieren (mat WLAN-Netzwierker bleift et awer méiglech). Bis de däin Telefon aktivéiers hues, gëss de all Kéier gefrot en z\'aktivéiere wann s de en uschalts.</string>
+    <string name="ota_skip_activation_dialog_message">Wann s du d\'Aktivéierung iwwerspréngs, kanns du keng Uriff maachen oder dech mam mobillen Datennetzwierk connectéieren (mat WLAN-Netzwierker bleift et awer méiglech). Bis de däin Telefon aktivéiers hues, gëss de all Kéier gefrot en z\'aktivéiere wann s de en uschalts. </string>
     <!-- Label shown on dialog button that allows the user to skip activation -->
     <string name="ota_skip_activation_dialog_skip_label">Iwwersprangen</string>
     <!-- Button label within the OTA activation screen -->
