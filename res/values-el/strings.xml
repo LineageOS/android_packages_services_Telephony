@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Βελτιωμένη λειτουργία 4G LTE"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Χρήση υπηρεσιών LTE για τη βελτίωση της φωνητικής επικοινωνίας και άλλου είδους επικοινωνιών (συνιστάται)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Χρήση υπηρεσιών 4G για τη βελτίωση της φωνητικής επικοινωνίας και άλλου είδους επικοινωνιών (συνιστάται)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Ενεργοποίηση δεδομένων"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Επιτρέπεται η χρήση δεδομένων"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Προσοχή"</string>

@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Enhanced 4G LTE Mode"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"आवाज र अन्य सञ्चार सुधार गर्न LTE सेवाहरूको प्रयोग गर्नुहोस् (सिफारिस गरिएको)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"आवाज र अन्य सञ्चार सुधार गर्न 4G सेवाहरूको प्रयोग गर्नुहोस् (सिफारिस गरिएको)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"डेटा सक्षम भयो"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"डेटा उपयोगलाई अनुमति दिनुहोस्"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"ध्यानाकर्षण"</string>
@@ -762,7 +766,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"कल फर्वार्ड गरियो।"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"सम्मेलन कलमा सामेल हुँदै छ।"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"होल्डमा राखिएको कललाई विच्छेद गरियो।"</string>
-    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"यन्त्र हाल प्रावधानीकरण गरिँदै हुनाले कल गर्न सकिँदैन।"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"यन्त्रमा हाल सेवाहरूको व्यवस्था गरिँदै हुनाले कल गर्न सकिँदैन।"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"अर्को बहिर्गमन कल पहिले नै डायल भएका हुनाले कल गर्न सकिँदैन।"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"जवाफ नदिइएको आगमन कल जारी रहेकाले नयाँ कल गर्न सकिँदैन। कुनै नयाँ कल गर्नुअघि आगमन कलको जवाफ दिनुहोस् वा त्यसलाई अस्वीकार गर्नुहोस्।"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call प्रणालीको गुण प्रयोग गरेर कल गर्ने सुविधा असक्षम पारिएको हुनाले कल गर्न सकिँदैन।"</string>
