@@ -26,6 +26,7 @@ import android.content.pm.ResolveInfo;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.FeatureFlagUtils;
 
 import java.util.List;
 
@@ -33,6 +34,24 @@ import java.util.List;
  * A helper to query activities of emergency assistance.
  */
 public class EmergencyAssistanceHelper {
+
+    /**
+     * Get intent action of target emergency app.
+     *
+     * @param context The context of the application.
+     * @return A string of intent action to launch target emergency app by feature flag, it will be
+     * used for team food.
+     */
+    public static String getIntentAction(Context context) {
+        if (FeatureFlagUtils.isEnabled(context, FeatureFlagUtils.SAFETY_HUB)) {
+            String action = context.getResources().getString(R.string.config_emergency_app_intent);
+            if (!action.isEmpty()) {
+                return action;
+            }
+        }
+
+        return TelephonyManager.ACTION_EMERGENCY_ASSISTANCE;
+    }
 
     /**
      * Query activities of emergency assistance.
@@ -46,7 +65,7 @@ public class EmergencyAssistanceHelper {
 
         if (infos == null || infos.isEmpty()) {
             PackageManager packageManager = context.getPackageManager();
-            Intent queryIntent = new Intent(TelephonyManager.ACTION_EMERGENCY_ASSISTANCE);
+            Intent queryIntent = new Intent(getIntentAction(context));
             infos = packageManager.queryIntentActivities(queryIntent, 0);
 
             PackageInfo bestMatch = null;
@@ -93,7 +112,7 @@ public class EmergencyAssistanceHelper {
         List<ResolveInfo> infos = null;
 
         if (!TextUtils.isEmpty(assistPackage)) {
-            Intent queryIntent = new Intent(TelephonyManager.ACTION_EMERGENCY_ASSISTANCE)
+            Intent queryIntent = new Intent(getIntentAction(context))
                     .setPackage(assistPackage);
             infos = context.getPackageManager().queryIntentActivities(queryIntent, 0);
         }
