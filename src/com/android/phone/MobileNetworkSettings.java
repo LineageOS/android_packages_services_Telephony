@@ -57,6 +57,7 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
+import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.feature.ImsFeature;
 import android.text.TextUtils;
 import android.util.Log;
@@ -884,6 +885,18 @@ public class MobileNetworkSettings extends Activity  {
             }
         }
 
+        private final ProvisioningManager.Callback mProvisioningCallback =
+                new ProvisioningManager.Callback() {
+            @Override
+            public void onProvisioningIntChanged(int item, int value) {
+                if (item == ImsConfig.ConfigConstants.VOICE_OVER_WIFI_SETTING_ENABLED
+                        || item == ImsConfig.ConfigConstants.VLT_SETTING_ENABLED
+                        || item == ImsConfig.ConfigConstants.LVC_SETTING_ENABLED) {
+                    updateBody();
+                }
+            }
+        };
+
         @Override
         public void onDestroy() {
             super.onDestroy();
@@ -932,6 +945,15 @@ public class MobileNetworkSettings extends Activity  {
             context.registerReceiver(mPhoneChangeReceiver, intentFilter);
             context.getContentResolver().registerContentObserver(ENFORCE_MANAGED_URI, false,
                     mDpcEnforcedContentObserver);
+
+            // Register callback for provisioning changes.
+            try {
+                if (mImsMgr != null) {
+                    mImsMgr.getConfigInterface().addConfigCallback(mProvisioningCallback);
+                }
+            } catch (ImsException e) {
+                Log.w(LOG_TAG, "onResume: Unable to register callback for provisioning changes.");
+            }
 
             Log.i(LOG_TAG, "onResume:-");
 
@@ -1325,6 +1347,17 @@ public class MobileNetworkSettings extends Activity  {
             final Context context = getActivity();
             context.unregisterReceiver(mPhoneChangeReceiver);
             context.getContentResolver().unregisterContentObserver(mDpcEnforcedContentObserver);
+
+            // Remove callback for provisioning changes.
+            try {
+                if (mImsMgr != null) {
+                    mImsMgr.getConfigInterface().removeConfigCallback(
+                            mProvisioningCallback.getBinder());
+                }
+            } catch (ImsException e) {
+                Log.w(LOG_TAG, "onPause: Unable to remove callback for provisioning changes");
+            }
+
             if (DBG) log("onPause:-");
         }
 
