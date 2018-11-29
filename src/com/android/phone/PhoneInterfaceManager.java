@@ -1716,6 +1716,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // registered cell info, so return a NULL country instead.
         final long identity = Binder.clearCallingIdentity();
         try {
+            if (phoneId == SubscriptionManager.INVALID_PHONE_INDEX) {
+                // Get default phone in this case.
+                phoneId = SubscriptionManager.DEFAULT_PHONE_INDEX;
+            }
             final int subId = mSubscriptionController.getSubIdUsingPhoneId(phoneId);
             // Todo: fix this when we can get the actual cellular network info when the device
             // is on IWLAN.
@@ -2745,15 +2749,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * @return true if the IMS resolver is busy resolving a binding and should not be considered
-     * available, false if the IMS resolver is idle.
-     */
-    public boolean isResolvingImsBinding() {
-        enforceModifyPermission();
-        return PhoneFactory.getImsResolver().isResolvingBinding();
-    }
-
-    /**
      * Sets the ImsService Package Name that Telephony will bind to.
      *
      * @param slotId the slot ID that the ImsService should bind for.
@@ -3683,7 +3678,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         synchronized (mLastModemActivityInfo) {
             ModemActivityInfo info = (ModemActivityInfo) sendRequest(CMD_GET_MODEM_ACTIVITY_INFO,
                     null);
-            if (info != null) {
+            if (isModemActivityInfoValid(info)) {
                 int[] mergedTxTimeMs = new int[ModemActivityInfo.TX_POWER_LEVELS];
                 for (int i = 0; i < mergedTxTimeMs.length; i++) {
                     mergedTxTimeMs[i] =
@@ -3710,6 +3705,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         Bundle bundle = new Bundle();
         bundle.putParcelable(TelephonyManager.MODEM_ACTIVITY_RESULT_KEY, ret);
         result.send(0, bundle);
+    }
+
+    // Checks that ModemActivityInfo is valid. Sleep time, Idle time, Rx time and Tx time should be
+    // less than total activity duration.
+    private boolean isModemActivityInfoValid(ModemActivityInfo info) {
+        if (info == null) {
+            return false;
+        }
+        int activityDurationMs =
+            (int) (info.getTimestamp() - mLastModemActivityInfo.getTimestamp());
+        int totalTxTimeMs = 0;
+        for (int i = 0; i < info.getTxTimeMillis().length; i++) {
+            totalTxTimeMs += info.getTxTimeMillis()[i];
+        }
+        return (info.isValid()
+            && (info.getSleepTimeMillis() <= activityDurationMs)
+            && (info.getIdleTimeMillis() <= activityDurationMs)
+            && (info.getRxTimeMillis() <= activityDurationMs)
+            && (totalTxTimeMs <= activityDurationMs));
     }
 
     /**
