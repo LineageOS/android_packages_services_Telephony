@@ -151,6 +151,8 @@ public class CarrierXmlParser {
                 for (int i = 0; i <= groupSize; i++) {
                     if (!TextUtils.isEmpty(m.group(i))) {
                         mParserStr.add(m.group(i));
+                    } else {
+                        mParserStr.add("");
                     }
                 }
             }
