@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"மேம்பட்ட 4G LTE பயன்முறை"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"குரல் மற்றும் பிற தொடர்புமுறைகளை மேம்படுத்த, LTE சேவைகளைப் பயன்படுத்தவும் (பரிந்துரைக்கப்பட்டது)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"குரல் மற்றும் பிற தகவல்தொடர்புகளை மேம்படுத்த, 4G சேவைகளைப் பயன்படுத்தவும் (பரிந்துரைக்கப்பட்டது)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"தரவு இயக்கப்பட்டது"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"டேட்டா உபயோகத்தை அனுமதி"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"கவனம் தேவை"</string>

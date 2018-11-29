@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"વિસ્તૃત 4G LTE મોડ"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"વૉઇસ અને અન્ય સંચારોને બહેતર બનાવવા માટે LTE સેવાઓનો ઉપયોગ કરો (ભલામણ કરેલ)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"વૉઇસ અને અન્ય સંચારોને વધુ સારા બનાવવા માટે 4G સેવાઓનો ઉપયોગ કરો (ભલામણ કરેલ)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"ડેટા સક્ષમ કરેલ છે"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ડેટા વપરાશની મંજૂરી આપો"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"ધ્યાન આપો"</string>
