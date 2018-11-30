@@ -16,6 +16,8 @@
 
 package com.android.phone;
 
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+
 import static com.android.internal.telephony.PhoneConstants.SUBSCRIPTION_KEY;
 
 import android.Manifest.permission;
@@ -66,6 +68,7 @@ import android.telephony.LocationAccessPolicy;
 import android.telephony.ModemActivityInfo;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.NetworkScanRequest;
+import android.telephony.PhoneNumberRange;
 import android.telephony.RadioAccessFamily;
 import android.telephony.Rlog;
 import android.telephony.ServiceState;
@@ -105,6 +108,7 @@ import com.android.internal.telephony.CarrierResolver;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.DefaultPhoneNotifier;
+import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IccCard;
 import com.android.internal.telephony.LocaleTracker;
@@ -2372,6 +2376,30 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    @Override
+    public void requestNumberVerification(PhoneNumberRange range, long timeoutMillis,
+            INumberVerificationCallback callback, String callingPackage) {
+        if (mApp.checkCallingOrSelfPermission(android.Manifest.permission.MODIFY_PHONE_STATE)
+                != PERMISSION_GRANTED) {
+            throw new SecurityException("Caller must hold the MODIFY_PHONE_STATE permission");
+        }
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+
+        String authorizedPackage = NumberVerificationManager.getAuthorizedPackage(mApp);
+        if (!TextUtils.equals(callingPackage, authorizedPackage)) {
+            throw new SecurityException("Calling package must be configured in the device config");
+        }
+
+        if (range == null) {
+            throw new NullPointerException("Range must be non-null");
+        }
+
+        timeoutMillis = Math.min(timeoutMillis,
+                TelephonyManager.MAX_NUMBER_VERIFICATION_TIMEOUT_MILLIS);
+
+        NumberVerificationManager.getInstance().requestVerification(range, callback, timeoutMillis);
     }
 
     /**
@@ -5336,7 +5364,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     protected void dump(FileDescriptor fd, PrintWriter writer, String[] args) {
         if (mPhone.getContext().checkCallingOrSelfPermission(android.Manifest.permission.DUMP)
-                != PackageManager.PERMISSION_GRANTED) {
+                != PERMISSION_GRANTED) {
             writer.println("Permission Denial: can't dump Phone from pid="
                     + Binder.getCallingPid()
                     + ", uid=" + Binder.getCallingUid()
