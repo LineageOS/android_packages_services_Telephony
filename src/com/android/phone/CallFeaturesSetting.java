@@ -35,6 +35,7 @@ import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.AccessNetworkConstants.TransportType;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
@@ -335,7 +336,7 @@ public class CallFeaturesSetting extends PreferenceActivity
         if (mImsMgr.isVtEnabledByPlatform() && mImsMgr.isVtProvisionedOnDevice()
                 && (carrierConfig.getBoolean(
                         CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
-                || mPhone.mDcTracker.isDataEnabled())) {
+                || mPhone.getDcTracker(TransportType.WWAN).isDataEnabled())) {
             boolean currentValue =
                     mImsMgr.isEnhanced4gLteModeSettingEnabledByUser()
                     ? mImsMgr.isVtEnabledByUser() : false;
