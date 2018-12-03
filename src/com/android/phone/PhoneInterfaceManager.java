@@ -2600,17 +2600,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Returns the unread count of voicemails
-     */
-    public int getVoiceMessageCount() {
-        return getVoiceMessageCountForSubscriber(getDefaultSubscription());
-    }
-
-    /**
      * Returns the unread count of voicemails for a subId
      */
     @Override
-    public int getVoiceMessageCountForSubscriber( int subId) {
+    public int getVoiceMessageCountForSubscriber(int subId, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, "getVoiceMessageCountForSubscriber")) {
+            return 0;
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             final Phone phone = getPhone(subId);
