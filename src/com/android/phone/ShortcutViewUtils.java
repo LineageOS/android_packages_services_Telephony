@@ -16,12 +16,19 @@
 
 package com.android.phone;
 
+import android.content.Context;
+import android.telecom.PhoneAccount;
+import android.telecom.PhoneAccountHandle;
+import android.telecom.TelecomManager;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.emergency.EmergencyNumber;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +54,177 @@ class ShortcutViewUtils {
         PROMOTED_CATEGORIES_BITMASK = bitmask;
     }
 
+    // Info and emergency call capability of every phone.
+    static class PhoneInfo {
+        private final PhoneAccountHandle mHandle;
+        private final boolean mCanPlaceEmergencyCall;
+        private final int mSubId;
+        private final String mCountryIso;
+        private final List<EmergencyNumber> mPromotedEmergencyNumbers;
+
+        private PhoneInfo(int subId, String countryIso,
+                List<EmergencyNumber> promotedEmergencyNumbers) {
+            this(null, true, subId, countryIso, promotedEmergencyNumbers);
+        }
+
+        private PhoneInfo(PhoneAccountHandle handle, boolean canPlaceEmergencyCall, int subId,
+                String countryIso, List<EmergencyNumber> promotedEmergencyNumbers) {
+            mHandle = handle;
+            mCanPlaceEmergencyCall = canPlaceEmergencyCall;
+            mSubId = subId;
+            mCountryIso = countryIso;
+            mPromotedEmergencyNumbers = promotedEmergencyNumbers;
+        }
+
+        public PhoneAccountHandle getPhoneAccountHandle() {
+            return mHandle;
+        }
+
+        public boolean canPlaceEmergencyCall() {
+            return mCanPlaceEmergencyCall;
+        }
+
+        public int getSubId() {
+            return mSubId;
+        }
+
+        public String getCountryIso() {
+            return mCountryIso;
+        }
+
+        public List<EmergencyNumber> getPromotedEmergencyNumbers() {
+            return mPromotedEmergencyNumbers;
+        }
+
+        public boolean isSufficientForEmergencyCall() {
+            // Checking mCountryIso because the emergency number list is not reliable to be
+            // suggested to users if the device didn't camp to any network. In this case, users
+            // can still try to dial emergency numbers with dial pad.
+            return mCanPlaceEmergencyCall && mPromotedEmergencyNumbers != null
+                    && !TextUtils.isEmpty(mCountryIso);
+        }
+
+        public boolean hasPromotedEmergencyNumber(String number) {
+            for (EmergencyNumber emergencyNumber : mPromotedEmergencyNumbers) {
+                if (emergencyNumber.getNumber().equalsIgnoreCase(number)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("{");
+            if (mHandle != null) {
+                sb.append("handle=").append(mHandle.getId()).append(", ");
+            }
+            sb.append("subId=").append(mSubId)
+                    .append(", canPlaceEmergencyCall=").append(mCanPlaceEmergencyCall)
+                    .append(", networkCountryIso=").append(mCountryIso);
+            if (mPromotedEmergencyNumbers != null) {
+                sb.append(", emergencyNumbers=");
+                for (EmergencyNumber emergencyNumber : mPromotedEmergencyNumbers) {
+                    sb.append(emergencyNumber.getNumber()).append(":")
+                            .append(emergencyNumber).append(",");
+                }
+            }
+            sb.append("}");
+            return sb.toString();
+        }
+    }
+
+    /**
+     * Picks a preferred phone (SIM slot) which is sufficient for emergency call and can provide
+     * promoted emergency numbers.
+     *
+     * A promoted emergency number should be dialed out over the preferred phone. Other emergency
+     * numbers should be still dialable over the system default phone.
+     *
+     * @return A preferred phone and its promoted emergency number, or null if no phone/promoted
+     * emergency numbers available.
+     */
+    @Nullable
+    static PhoneInfo pickPreferredPhone(@NonNull Context context) {
+        TelephonyManager telephonyManager = context.getSystemService(TelephonyManager.class);
+        if (telephonyManager.getPhoneCount() <= 0) {
+            Log.w(LOG_TAG, "No phone available!");
+            return null;
+        }
+
+        Map<Integer, List<EmergencyNumber>> promotedLists =
+                getPromotedEmergencyNumberLists(telephonyManager);
+        if (promotedLists == null || promotedLists.isEmpty()) {
+            return null;
+        }
+
+        // For a multi-phone device, tries the default phone account.
+        TelecomManager telecomManager = context.getSystemService(TelecomManager.class);
+        PhoneAccountHandle defaultHandle = telecomManager.getDefaultOutgoingPhoneAccount(
+                PhoneAccount.SCHEME_TEL);
+        if (defaultHandle != null) {
+            PhoneInfo phone = loadPhoneInfo(defaultHandle, telephonyManager, telecomManager,
+                    promotedLists);
+            if (phone.isSufficientForEmergencyCall()) {
+                return phone;
+            }
+            Log.w(LOG_TAG, "Default PhoneAccount is insufficient for emergency call: "
+                    + phone.toString());
+        } else {
+            Log.w(LOG_TAG, "Missing default PhoneAccount! Is this really a phone device?");
+        }
+
+        // Looks for any one phone which supports emergency call.
+        List<PhoneAccountHandle> allHandles = telecomManager.getCallCapablePhoneAccounts();
+        if (allHandles != null && !allHandles.isEmpty()) {
+            for (PhoneAccountHandle handle : allHandles) {
+                PhoneInfo phone = loadPhoneInfo(handle, telephonyManager, telecomManager,
+                        promotedLists);
+                if (phone.isSufficientForEmergencyCall()) {
+                    return phone;
+                } else {
+                    if (Log.isLoggable(LOG_TAG, Log.DEBUG)) {
+                        Log.d(LOG_TAG, "PhoneAccount " + phone.toString()
+                                + " is insufficient for emergency call.");
+                    }
+                }
+            }
+        }
+
+        Log.w(LOG_TAG, "No PhoneAccount available for emergency call!");
+        return null;
+    }
+
+    private static PhoneInfo loadPhoneInfo(@NonNull PhoneAccountHandle handle,
+            @NonNull TelephonyManager telephonyManager, @NonNull TelecomManager telecomManager,
+            Map<Integer, List<EmergencyNumber>> promotedLists) {
+        boolean canPlaceEmergencyCall = false;
+        int subId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        String countryIso = null;
+        List<EmergencyNumber> emergencyNumberList = null;
+
+        PhoneAccount phoneAccount = telecomManager.getPhoneAccount(handle);
+        if (phoneAccount != null) {
+            canPlaceEmergencyCall = phoneAccount.hasCapabilities(
+                    PhoneAccount.CAPABILITY_PLACE_EMERGENCY_CALLS);
+            subId = telephonyManager.getSubIdForPhoneAccount(phoneAccount);
+        }
+
+        TelephonyManager subTelephonyManager = telephonyManager.createForSubscriptionId(subId);
+        if (subTelephonyManager != null) {
+            countryIso = subTelephonyManager.getNetworkCountryIso();
+        }
+
+        if (promotedLists != null) {
+            emergencyNumberList = promotedLists.get(subId);
+        }
+
+        return new PhoneInfo(handle, canPlaceEmergencyCall, subId, countryIso, emergencyNumberList);
+    }
+
     @NonNull
-    static Map<Integer, List<EmergencyNumber>> getPromotedEmergencyNumberLists(
+    private static Map<Integer, List<EmergencyNumber>> getPromotedEmergencyNumberLists(
             @NonNull TelephonyManager telephonyManager) {
         Map<Integer, List<EmergencyNumber>> allLists =
                 telephonyManager.getCurrentEmergencyNumberList();
