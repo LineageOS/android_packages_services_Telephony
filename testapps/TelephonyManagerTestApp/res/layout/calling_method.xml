@@ -58,11 +58,12 @@
         android:ellipsize="marquee"
         android:textSize="30sp" />
 
-    <ListView
-        android:id="@android:id/list"
+    <LinearLayout
+        android:id="@+id/method_params"
+        android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent">
-    </ListView>
+    </LinearLayout>
 
     <Button
         android:id="@+id/go_button"
@@ -72,10 +73,18 @@
         android:layout_height="50dip">
     </Button>
 
-    <TextView
-        android:id="@+id/return_value"
+
+    <ScrollView
+        android:id="@+id/return_value_wrapper"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="marquee"
-        android:textSize="15sp" />
+        android:scrollbars="vertical"
+        android:fillViewport="true">
+        <TextView
+            android:id="@+id/return_value"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:ellipsize="marquee"
+            android:textSize="15sp" />
+    </ScrollView>
 </LinearLayout>

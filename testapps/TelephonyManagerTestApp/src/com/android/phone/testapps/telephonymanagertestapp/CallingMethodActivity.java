@@ -16,27 +16,28 @@
 
 package com.android.phone.testapps.telephonymanagertestapp;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
 
 /**
  * Activity to call a specific method of TelephonyManager.
  */
-public class CallingMethodActivity extends ListActivity {
+public class CallingMethodActivity extends Activity {
     private Class[] mParameterTypes;
     private Object[] mParameterValues;
+    EditText[] mEditTexts;
     private Button mGoButton;
     private Method mMethod;
     private TextView mReturnValue;
@@ -57,10 +58,11 @@ public class CallingMethodActivity extends ListActivity {
         mGoButton = findViewById(R.id.go_button);
         mReturnValue = findViewById(R.id.return_value);
         mSubIdField = findViewById(R.id.sub_id_value);
-        setListAdapter(new ParameterListAdapter());
 
         mParameterTypes = mMethod.getParameterTypes();
         mParameterValues = new Object[mParameterTypes.length];
+        mEditTexts = new EditText[mParameterTypes.length];
+        populateParamList();
 
         String tags = Modifier.toString(mMethod.getModifiers()) + ' '
                 + TelephonyManagerTestApp.getShortTypeName(mMethod.getReturnType().toString());
@@ -76,13 +78,18 @@ public class CallingMethodActivity extends ListActivity {
             int subId = Integer.parseInt(mSubIdField.getText().toString());
 
             for (int i = 0; i < mParameterTypes.length; i++) {
-                String text = ((EditText) getListAdapter().getItem(i)).getText().toString();
+                String text = mEditTexts[i].getText().toString();
                 if (mParameterTypes[i] == int.class) {
                     mParameterValues[i] = Integer.parseInt(text);
                 } else if (mParameterTypes[i] == boolean.class) {
                     mParameterValues[i] = Boolean.parseBoolean(text);
-                } else if (mParameterTypes[i] == Long.class) {
+                } else if (mParameterTypes[i] == long.class) {
                     mParameterValues[i] = Long.parseLong(text);
+                } else if (mParameterTypes[i] == String.class) {
+                    mParameterValues[i] = text;
+                } else {
+                    mParameterValues[i] =
+                            ParameterParser.get(this).executeParser(mParameterTypes[i], text);
                 }
             }
             Log.d(TelephonyManagerTestApp.TAG, "Invoking method " + mMethod.getName());
@@ -103,50 +110,22 @@ public class CallingMethodActivity extends ListActivity {
             }
 
         } catch (Exception exception) {
-            Log.d(TelephonyManagerTestApp.TAG, "NoSuchMethodException " + exception);
-            mReturnValue.setText("NoSuchMethodException " + exception);
+            Log.d(TelephonyManagerTestApp.TAG, "Exception: " + exception);
+            StringWriter s = new StringWriter();
+            PrintWriter stack = new PrintWriter(s);
+            exception.printStackTrace(stack);
+            mReturnValue.setText("Exception " + exception.getMessage() + "\n" + s.toString());
         }
     }
 
-    private class ParameterListAdapter extends BaseAdapter {
-        ArrayList<EditText> mEditTexts = new ArrayList<>();
-        @Override
-        public int getCount() {
-            return mParameterTypes == null ? 0 : mParameterTypes.length;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup container) {
-            if (mParameterTypes == null || mParameterTypes.length <= position) {
-                return null;
-            }
-
-            if (convertView == null) {
-                convertView = getLayoutInflater().inflate(
-                        R.layout.parameter_field, container, false);
-            }
-
-            Class aClass = mParameterTypes[position];
-
-            ((TextView) convertView.findViewById(R.id.field_name)).setText(
+    private void populateParamList() {
+        for (int i = 0; i < mParameterTypes.length; i++) {
+            View view = getLayoutInflater().inflate(R.layout.parameter_field, null);
+            Class aClass = mParameterTypes[i];
+            ((TextView) view.findViewById(R.id.field_name)).setText(
                     TelephonyManagerTestApp.getShortTypeName(aClass.toString()) + ": ");
-            mEditTexts.add(convertView.findViewById(R.id.field_value));
-
-            return convertView;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            if (mEditTexts == null || mEditTexts.size() <= position) {
-                return null;
-            }
-
-            return mEditTexts.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
+            mEditTexts[i] = view.findViewById(R.id.field_value);
+            ((LinearLayout) findViewById(R.id.method_params)).addView(view);
         }
     }
 }
