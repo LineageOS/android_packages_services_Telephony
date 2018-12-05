@@ -46,6 +46,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.data.ApnSetting;
 import android.util.LocalLog;
 import android.util.Log;
 import android.widget.Toast;
@@ -62,7 +63,6 @@ import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.dataconnection.DataConnectionReasons;
 import com.android.internal.telephony.dataconnection.DataConnectionReasons.DataDisallowedReasonType;
 import com.android.internal.util.IndentingPrintWriter;
-import com.android.phone.common.CallLogAsync;
 import com.android.phone.settings.SettingsConstants;
 import com.android.phone.vvm.CarrierVvmPackageInstalledReceiver;
 import com.android.services.telephony.sip.SipAccountRegistry;
@@ -713,7 +713,7 @@ public class PhoneGlobals extends ContextWrapper {
         }
 
         DataConnectionReasons reasons = new DataConnectionReasons();
-        boolean dataAllowed = phone.isDataAllowed(reasons);
+        boolean dataAllowed = phone.isDataAllowed(ApnSetting.TYPE_DEFAULT, reasons);
         mDataRoamingNotifLog.log("dataAllowed=" + dataAllowed + ", reasons=" + reasons);
         if (VDBG) Log.v(LOG_TAG, "dataAllowed=" + dataAllowed + ", reasons=" + reasons);
         if (!mNoDataDueToRoaming
