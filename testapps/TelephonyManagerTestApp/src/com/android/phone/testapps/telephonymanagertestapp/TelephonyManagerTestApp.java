@@ -158,7 +158,7 @@ public class TelephonyManagerTestApp extends ListActivity implements
             mFilteredMethods.addAll(mMethods);
         } else {
             for (Method method : mMethods) {
-                if (method.getName().contains(text)) {
+                if (method.getName().toLowerCase().contains(text.toLowerCase())) {
                     mFilteredMethods.add(method);
                 }
             }
