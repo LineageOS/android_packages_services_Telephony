@@ -18,19 +18,12 @@ set -o errexit
 LOCAL_TOOLSET_DIR="${ECC_ROOT}/conversion_toolset_v1"
 source "${LOCAL_TOOLSET_DIR}/env.sh"
 
+echo "Converting eccdata..."
 ${ANDROID_BUILD_TOP}/prebuilts/tools/linux-x86_64/protoc/bin/protoc \
   --encode=ecc.AllInfo proto/protobuf_ecc_data.proto \
   < "${INPUT_DATA}" > "${RAW_DATA}"
 
-echo
-echo "Starting strict verification"
-"${PYTHON_COMMAND}" -B \
-  "${LOCAL_TOOLSET_DIR}/verify_protobuf_compatibility.py" \
-  --input="${RAW_DATA}" --strict
-echo "Passed strict verification"
-
-echo
-echo "Compressing and encoding eccdata"
+echo "Compressing eccdata..."
 gzip -c < "${RAW_DATA}" > "${OUTPUT_DATA}"
-echo "Done"
 
+echo "Done"
