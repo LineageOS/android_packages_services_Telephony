@@ -53,15 +53,8 @@ mkdir -p "${INTERMEDIATE_DIR}"
 source "${TOOLSET_DIR}/gen_eccdata.sh"
 echo
 
-# Check compatibility with every previous version
-rm -rf "${INTERMEDIATE_DIR}/*"
-source ${ECC_ROOT}/conversion_toolset_v1/verify_eccdata_compatibility.sh
-#rm -rf "${INTERMEDIATE_DIR}/*"
-#source ${ECC_ROOT}/conversion_toolset_v2/verify_eccdata_compatibility.sh
-#rm -rf "${INTERMEDIATE_DIR}/*"
-#source ${ECC_ROOT}/conversion_toolset_v3/verify_eccdata_compatibility.sh
-#...
-
-echo
-echo "Passed all compatibility verification!"
-
+echo "To verify data compatibility:"
+echo "  1. make TeleService"
+echo "  2. push TeleService.apk to system/priv-app/TeleService"
+echo "  3. reboot device"
+echo "  4. run 'atest TeleServiceTests:IsoToEccProtobufRepositoryTest#testEccDataContent'"
