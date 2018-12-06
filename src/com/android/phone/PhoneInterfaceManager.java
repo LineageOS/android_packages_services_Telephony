@@ -5719,6 +5719,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public int getCardIdForDefaultEuicc(int subId, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, "getCardIdForDefaultEuicc")) {
+            return TelephonyManager.INVALID_CARD_ID;
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return UiccController.getInstance().getCardIdForDefaultEuicc();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
     public void setRadioIndicationUpdateMode(int subId, int filters, int mode) {
         enforceModifyPermission();
         final Phone phone = getPhone(subId);
