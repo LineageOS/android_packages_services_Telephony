@@ -439,6 +439,8 @@ public class TelephonyShellCommand extends ShellCommand {
     }
 
     private boolean checkShellUid() {
-        return Binder.getCallingUid() == Process.SHELL_UID;
+        // adb can run as root or as shell, depending on whether the device is rooted.
+        return Binder.getCallingUid() == Process.SHELL_UID
+                || Binder.getCallingUid() == Process.ROOT_UID;
     }
 }
