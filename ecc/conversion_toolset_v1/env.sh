@@ -20,19 +20,3 @@ OUTPUT_DATA="${OUTPUT_DIR}/eccdata"
 PROTOBUF_DIR="${LOCAL_TOOLSET_DIR}/proto"
 PROTOBUF_FILE="${PROTOBUF_DIR}/protobuf_ecc_data.proto"
 RAW_DATA="${INTERMEDIATE_DIR}/eccdata.raw"
-
-read -d "" PYTHON_COMMAND << END || :
-${ANDROID_BUILD_TOP}/prebuilts/python/${KERNEL}-x86/2.7.5/bin/python
-END
-PYTHONPATH="${PYTHONPATH}:${INTERMEDIATE_DIR}"
-PYTHONPATH="${PYTHONPATH}:${ANDROID_BUILD_TOP}/external/nanopb-c/generator/"
-
-if ! [ -x "${PYTHON_COMMAND}" ] ; then
-  echo "Missing ${PYTHON_COMMAND}." 1>&2
-  exit 1
-fi
-
-"${PROTOC_COMMAND}" \
-  --python_out="${INTERMEDIATE_DIR}" \
-  --proto_path="${PROTOBUF_DIR}" \
-  "${PROTOBUF_FILE}"

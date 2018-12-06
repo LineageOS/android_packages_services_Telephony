@@ -25,6 +25,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -107,6 +108,11 @@ public class IsoToEccProtobufRepository implements IsoToEccRepository {
                 }
             }
         }
+    }
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    Map<String, CountryEccInfo> getEccTable() {
+        return mEccTable;
     }
 
     private ProtobufEccData.AllInfo parseEccData(InputStream input) throws IOException {
