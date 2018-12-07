@@ -2132,17 +2132,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public int getSubscriptionMNOCarrierId(int subId) {
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            final Phone phone = getPhone(subId);
-            return phone == null ? TelephonyManager.UNKNOWN_CARRIER_ID : phone.getMNOCarrierId();
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    @Override
     public int getSubscriptionPreciseCarrierId(int subId) {
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -2166,7 +2155,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public int getCarrierIdFromMccMnc(int slotIndex, String mccmnc) {
+    public int getCarrierIdFromMccMnc(int slotIndex, String mccmnc, boolean isSubscriptionMccMnc) {
+        if (!isSubscriptionMccMnc) {
+            enforceReadPrivilegedPermission("getCarrierIdFromMccMnc");
+        }
         final Phone phone = PhoneFactory.getPhone(slotIndex);
         if (phone == null) {
             return TelephonyManager.UNKNOWN_CARRIER_ID;
