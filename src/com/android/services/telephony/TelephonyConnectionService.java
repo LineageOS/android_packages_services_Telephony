@@ -433,7 +433,7 @@ public class TelephonyConnectionService extends ConnectionService {
                         // been powered on and isn't in the UNAVAILABLE state, even if it is
                         // reporting the OUT_OF_SERVICE state.
                         return (phone.getState() == PhoneConstants.State.OFFHOOK)
-                            || phone.getServiceStateTracker().isRadioOn();
+                            || phone.getServiceState().getState() != ServiceState.STATE_POWER_OFF;
                     } else {
                         // It is not an emergency number, so wait until we are in service and ready
                         // to make calls. This can happen when we power down the radio on bluetooth

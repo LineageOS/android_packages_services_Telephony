@@ -55,6 +55,7 @@ public class TelephonyShellCommand extends ShellCommand {
     private static final String SMS_SET_DEFAULT_APP = "set-default-app";
 
     private static final String NUMBER_VERIFICATION_OVERRIDE_PACKAGE = "override-package";
+    private static final String NUMBER_VERIFICATION_FAKE_CALL = "fake-call";
 
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
@@ -141,6 +142,9 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("  numverify override-package PACKAGE_NAME;");
         pw.println("    Set the authorized package for number verification.");
         pw.println("    Leave the package name blank to reset.");
+        pw.println("  numverify fake-call NUMBER;");
+        pw.println("    Fake an incoming call from NUMBER. This is for testing. Output will be");
+        pw.println("    1 if the call would have been intercepted, 0 otherwise.");
     }
 
     private int handleImsCommand() {
@@ -175,12 +179,19 @@ public class TelephonyShellCommand extends ShellCommand {
             return 0;
         }
 
+        if (!checkShellUid()) {
+            return -1;
+        }
+
         switch (arg) {
             case NUMBER_VERIFICATION_OVERRIDE_PACKAGE: {
-                if (!checkShellUid()) {
-                    return -1;
-                }
                 NumberVerificationManager.overrideAuthorizedPackage(getNextArg());
+                return 0;
+            }
+            case NUMBER_VERIFICATION_FAKE_CALL: {
+                boolean val = NumberVerificationManager.getInstance()
+                        .checkIncomingCall(getNextArg());
+                getOutPrintWriter().println(val ? "1" : "0");
                 return 0;
             }
         }
@@ -439,6 +450,8 @@ public class TelephonyShellCommand extends ShellCommand {
     }
 
     private boolean checkShellUid() {
-        return Binder.getCallingUid() == Process.SHELL_UID;
+        // adb can run as root or as shell, depending on whether the device is rooted.
+        return Binder.getCallingUid() == Process.SHELL_UID
+                || Binder.getCallingUid() == Process.ROOT_UID;
     }
 }
