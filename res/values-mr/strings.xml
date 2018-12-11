@@ -253,7 +253,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"आपल्‍याला लक्षणीय रोमिंग शुल्‍क लागू शकते."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"किंमतींबद्दल तुमच्या नेटवर्क प्रदात्याला विचारा."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिंगला अनुमती द्यायची?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"अॅप डेटा वापर"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"अ‍ॅप डेटा वापर"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> दरम्यान <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा वापरला गेला"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"प्रगत"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"वाहक"</string>
@@ -590,8 +590,8 @@
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"डेटा कनेक्शन अक्षम केले"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> पर्यंत कोणतेही डेटा कनेक्‍शन नाही"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="one">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अॅप्लिकेशन वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
-      <item quantity="other">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अॅप्लिकेशन वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
+      <item quantity="one">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अ‍ॅप्लिकेशन वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
+      <item quantity="other">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अ‍ॅप्लिकेशन वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
       <item quantity="one">आणीबाणी कॉलबॅक मोडमध्ये असताना निवडलेली क्रिया उपलब्ध नसते. फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी या मोडमध्ये राहील. तुम्ही आता बाहेर पडू इच्छिता?</item>
