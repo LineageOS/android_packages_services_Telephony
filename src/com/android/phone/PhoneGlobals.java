@@ -330,7 +330,7 @@ public class PhoneGlobals extends ContextWrapper {
             // The asynchronous caching will start just after this call.
             callerInfoCache = CallerInfoCache.init(this);
 
-            phoneMgr = PhoneInterfaceManager.init(this, PhoneFactory.getDefaultPhone());
+            phoneMgr = PhoneInterfaceManager.init(this);
 
             configLoader = CarrierConfigLoader.init(this);
 
