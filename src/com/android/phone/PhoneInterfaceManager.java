@@ -1693,7 +1693,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId = mSubscriptionController.getDefaultDataSubId();
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                phone.setUserDataEnabled(true);
+                phone.getDataEnabledSettings().setUserDataEnabled(true);
                 return true;
             } else {
                 return false;
@@ -1713,7 +1713,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId = mSubscriptionController.getDefaultDataSubId();
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                phone.setUserDataEnabled(false);
+                phone.getDataEnabledSettings().setUserDataEnabled(false);
                 return true;
             } else {
                 return false;
@@ -4039,7 +4039,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = PhoneFactory.getPhone(phoneId);
             if (phone != null) {
                 if (DBG) log("setUserDataEnabled: subId=" + subId + " enable=" + enable);
-                phone.setUserDataEnabled(enable);
+                phone.getDataEnabledSettings().setUserDataEnabled(enable);
             } else {
                 loge("setUserDataEnabled: no phone found. Invalid subId=" + subId);
             }
@@ -4127,7 +4127,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (DBG) log("isDataEnabled: subId=" + subId + " phoneId=" + phoneId);
             Phone phone = PhoneFactory.getPhone(phoneId);
             if (phone != null) {
-                boolean retVal = phone.isDataEnabled();
+                boolean retVal = phone.getDataEnabledSettings().isDataEnabled();
                 if (DBG) log("isDataEnabled: subId=" + subId + " retVal=" + retVal);
                 return retVal;
             } else {
@@ -5430,7 +5430,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             Phone phone = getPhone(subId);
             if (phone != null) {
-                phone.setPolicyDataEnabled(enabled);
+                phone.getDataEnabledSettings().setPolicyDataEnabled(enabled);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
