@@ -71,7 +71,7 @@ public class GsmUmtsOptions {
     protected void update(final int subId, INetworkQueryService queryService) {
         boolean addAPNExpand = true;
         boolean addNetworkOperatorsCategory = true;
-        boolean addCarrierSettings = true;
+        boolean addCarrierSettings = false;
         Phone phone = PhoneGlobals.getPhone(subId);
         if (phone == null) return;
         if (phone.getPhoneType() != PhoneConstants.PHONE_TYPE_GSM) {
