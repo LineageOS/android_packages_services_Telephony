@@ -5369,6 +5369,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Action set from carrier signalling broadcast receivers to reset all carrier actions
+     * @param subId the subscription ID that this action applies to.
+     * {@hide}
+     */
+    @Override
+    public void carrierActionResetAll(int subId) {
+        enforceModifyPermission();
+        final Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("carrierAction: ResetAll fails with invalid sibId: " + subId);
+            return;
+        }
+        try {
+            phone.carrierActionResetAll();
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "carrierAction: ResetAll fails. Exception ex=" + e);
+        }
+    }
+
+    /**
      * Called when "adb shell dumpsys phone" is invoked. Dump is also automatically invoked when a
      * bug report is being generated.
      */
