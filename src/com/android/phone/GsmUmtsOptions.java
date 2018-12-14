@@ -68,7 +68,7 @@ public class GsmUmtsOptions {
     protected void update(final int subId, INetworkQueryService queryService) {
         boolean addAPNExpand = true;
         boolean addNetworkOperatorsCategory = true;
-        boolean addCarrierSettings = true;
+        boolean addCarrierSettings = false;
         if (PhoneFactory.getDefaultPhone().getPhoneType() != PhoneConstants.PHONE_TYPE_GSM) {
             log("Not a GSM phone");
             mCategoryAPNExpand.setEnabled(false);
