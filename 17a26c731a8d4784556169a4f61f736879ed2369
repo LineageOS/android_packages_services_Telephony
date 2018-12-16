@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92180268_7f241b10",
+        "filename": "res/values/config.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-12-16T19:19:07Z",
+      "side": 1,
+      "message": "As an aside, maybe we should upstream a patch to remove this overlay?",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 58
+      },
+      "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77bb826e_cbb5865a",
+        "filename": "src/com/android/services/telephony/TelephonyConnection.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-12-16T19:19:07Z",
+      "side": 1,
+      "message": "Make it final ?",
+      "range": {
+        "startLine": 676,
+        "startChar": 20,
+        "endLine": 676,
+        "endChar": 46
+      },
+      "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
