@@ -117,6 +117,30 @@
       "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67492519_1751f4a7",
+        "filename": "src/com/android/services/telephony/TelephonyConnection.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2018-12-16T19:39:46Z",
+      "side": 1,
+      "message": "actually, If i just add final here I end up with \u0027error: cannot assign a value to final variable mSendMicMuteToAudioManager\u0027.",
+      "parentUuid": "d0390a25_d2673ed2",
+      "range": {
+        "startLine": 676,
+        "startChar": 20,
+        "endLine": 676,
+        "endChar": 46
+      },
+      "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
