@@ -141,6 +141,30 @@
       "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24375772_7276517e",
+        "filename": "src/com/android/services/telephony/TelephonyConnection.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-12-16T20:59:10Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we keep the default value as false?",
+      "parentUuid": "67492519_1751f4a7",
+      "range": {
+        "startLine": 676,
+        "startChar": 20,
+        "endLine": 676,
+        "endChar": 46
+      },
+      "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
