@@ -69,7 +69,6 @@ import android.telephony.ModemActivityInfo;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.NetworkScanRequest;
 import android.telephony.PhoneNumberRange;
-import android.telephony.PhoneNumberUtils;
 import android.telephony.RadioAccessFamily;
 import android.telephony.Rlog;
 import android.telephony.ServiceState;
@@ -153,11 +152,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Implementation of the ITelephony interface.
@@ -5365,6 +5362,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Action set from carrier signalling broadcast receivers to reset all carrier actions
+     * @param subId the subscription ID that this action applies to.
+     * {@hide}
+     */
+    @Override
+    public void carrierActionResetAll(int subId) {
+        enforceModifyPermission();
+        final Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("carrierAction: ResetAll fails with invalid sibId: " + subId);
+            return;
+        }
+        try {
+            phone.carrierActionResetAll();
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "carrierAction: ResetAll fails. Exception ex=" + e);
+        }
+    }
+
+    /**
      * Called when "adb shell dumpsys phone" is invoked. Dump is also automatically invoked when a
      * bug report is being generated.
      */
@@ -5724,6 +5741,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public int getCardIdForDefaultEuicc(int subId, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, "getCardIdForDefaultEuicc")) {
+            return TelephonyManager.INVALID_CARD_ID;
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return UiccController.getInstance().getCardIdForDefaultEuicc();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
     public void setRadioIndicationUpdateMode(int subId, int filters, int mode) {
         enforceModifyPermission();
         final Phone phone = getPhone(subId);
@@ -5973,12 +6005,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         final long identity = Binder.clearCallingIdentity();
         try {
-            Map<Integer, List<EmergencyNumber>> results = getEmergencyNumberListInternal();
-            // Use ecclist to construct Emergency number list for backward compatibality
-            if (results.isEmpty()) {
-                results = getEmergencyNumberListFromEccList();
+            Map<Integer, List<EmergencyNumber>> emergencyNumberListInternal = new HashMap<>();
+            for (Phone phone: PhoneFactory.getPhones()) {
+                if (phone.getEmergencyNumberTracker() != null
+                        && phone.getEmergencyNumberTracker().getEmergencyNumberList() != null) {
+                    emergencyNumberListInternal.put(
+                            phone.getSubId(),
+                            phone.getEmergencyNumberTracker().getEmergencyNumberList());
+                }
             }
-            return results;
+            return emergencyNumberListInternal;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -5994,40 +6030,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         final long identity = Binder.clearCallingIdentity();
         try {
-            Map<Integer, List<EmergencyNumber>> emergencyNumberLists =
-                    getEmergencyNumberListInternal();
-
-            String defaultCountryIso = getNetworkCountryIsoForPhone(defaultPhone.getPhoneId());
-
-            if (!emergencyNumberLists.isEmpty()) {
-                for (List<EmergencyNumber> emergencyNumberList : emergencyNumberLists.values()) {
-                    if (emergencyNumberList != null) {
-                        for (EmergencyNumber num : emergencyNumberList) {
-                            // According to com.android.i18n.phonenumbers.ShortNumberInfo, in
-                            // these countries, if extra digits are added to an emergency number,
-                            // it no longer connects to the emergency service.
-                            Set<String> countriesRequiredForExactMatch = new HashSet<>();
-                            countriesRequiredForExactMatch.add("br");
-                            countriesRequiredForExactMatch.add("cl");
-                            countriesRequiredForExactMatch.add("ni");
-                            if (exactMatch || countriesRequiredForExactMatch.contains(
-                                    defaultCountryIso)) {
-                                if (num.getNumber().equals(number)) {
-                                    return true;
-                                }
-                            } else {
-                                if (number.startsWith(num.getNumber())) {
-                                    return true;
-                                }
-                            }
-
-                        }
+            for (Phone phone: PhoneFactory.getPhones()) {
+                if (phone.getEmergencyNumberTracker() != null
+                        && phone.getEmergencyNumberTracker() != null) {
+                    if (phone.getEmergencyNumberTracker().isEmergencyNumber(
+                            number, exactMatch)) {
+                        return true;
                     }
                 }
-            } else {
-                // For backward compatibility for devices launched before Q
-                return PhoneNumberUtils.isEmergencyNumberInternal(number, exactMatch,
-                        defaultCountryIso);
             }
             return false;
         } finally {
