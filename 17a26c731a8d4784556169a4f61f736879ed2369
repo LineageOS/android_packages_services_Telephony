@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35903b81_70f2f003",
+        "filename": "res/values/config.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2018-12-16T19:21:02Z",
+      "side": 1,
+      "message": "Well, we could do that for AOSP but here I want to actually reuse it.",
+      "parentUuid": "92180268_7f241b10",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 58
+      },
+      "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77bb826e_cbb5865a",
         "filename": "src/com/android/services/telephony/TelephonyConnection.java",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2018-12-16T19:19:07Z",
       "side": 1,
       "message": "Make it final ?",
+      "range": {
+        "startLine": 676,
+        "startChar": 20,
+        "endLine": 676,
+        "endChar": 46
+      },
+      "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0390a25_d2673ed2",
+        "filename": "src/com/android/services/telephony/TelephonyConnection.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2018-12-16T19:21:02Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "77bb826e_cbb5865a",
       "range": {
         "startLine": 676,
         "startChar": 20,
