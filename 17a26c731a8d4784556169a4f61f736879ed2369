@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "84118bab_60f00efa",
+        "filename": "res/values/config.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-12-16T19:29:47Z",
+      "side": 1,
+      "message": "Yeah, that makes sense, for us. A quick check showed no usages of this before you started using it here. (I\u0027m also noting this because I can\u0027t submit patches to AOSP and am hoping this might prod someone else into doing so :)",
+      "parentUuid": "35903b81_70f2f003",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 58
+      },
+      "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77bb826e_cbb5865a",
         "filename": "src/com/android/services/telephony/TelephonyConnection.java",
         "patchSetId": 7
