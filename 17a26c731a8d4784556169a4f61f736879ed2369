@@ -189,6 +189,30 @@
       "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f4e2645_c14d3710",
+        "filename": "src/com/android/services/telephony/TelephonyConnection.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2018-12-16T21:37:55Z",
+      "side": 1,
+      "message": "Oh btw i forgot to remove `\u003d true` when trying to add `final` but now if I do that I get `error: variable mSendMicMuteToAudioManager might not have been initialized` instead.",
+      "parentUuid": "90db98c3_13f06f1f",
+      "range": {
+        "startLine": 676,
+        "startChar": 20,
+        "endLine": 676,
+        "endChar": 46
+      },
+      "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
