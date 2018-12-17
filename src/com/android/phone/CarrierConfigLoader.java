@@ -526,17 +526,17 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         Intent intent = new Intent(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
         intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT |
                 Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND);
-        // Include subId extra only if SIM records are loaded
+        // Include subId/carrier id extra only if SIM records are loaded
         TelephonyManager telephonyManager = TelephonyManager.from(mContext);
         int simApplicationState = telephonyManager.getSimApplicationState();
         if (addSubIdExtra && (simApplicationState != TelephonyManager.SIM_STATE_UNKNOWN
                 && simApplicationState != TelephonyManager.SIM_STATE_NOT_READY)) {
             SubscriptionManager.putPhoneIdAndSubIdExtra(intent, phoneId);
+            intent.putExtra(TelephonyManager.EXTRA_PRECISE_CARRIER_ID,
+                    getPreciseCarrierIdForPhoneId(phoneId));
+            intent.putExtra(TelephonyManager.EXTRA_CARRIER_ID, getCarrierIdForPhoneId(phoneId));
         }
         intent.putExtra(CarrierConfigManager.EXTRA_SLOT_INDEX, phoneId);
-        intent.putExtra(TelephonyManager.EXTRA_PRECISE_CARRIER_ID,
-                getPreciseCarrierIdForPhoneId(phoneId));
-        intent.putExtra(TelephonyManager.EXTRA_CARRIER_ID, getCarrierIdForPhoneId(phoneId));
         ActivityManager.broadcastStickyIntent(intent, UserHandle.USER_ALL);
         mHasSentConfigChange[phoneId] = true;
     }
