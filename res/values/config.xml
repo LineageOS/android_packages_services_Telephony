@@ -249,5 +249,5 @@
     <bool name="config_support_telephony_audio_device">false</bool>
 
     <!-- Intent action to launch target emergency app. -->
-    <string name="config_emergency_app_intent"></string>
+    <string name="config_emergency_app_intent" translatable="false"></string>
 </resources>
