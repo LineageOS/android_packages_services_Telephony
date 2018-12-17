@@ -213,6 +213,30 @@
       "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fe36ae9_2b5843f9",
+        "filename": "src/com/android/services/telephony/TelephonyConnection.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2018-12-17T06:54:37Z",
+      "side": 1,
+      "message": "You can\u0027t have it final unless you cover all the assignment cases in all the constructors.\nRight now, you\u0027d be assigning it only when phone is not null (line 692).\nYou could do it this way: \n\n```\nmSendMicMuteToAudioManager \u003d phone \u003d\u003d null ? true : phone.getContext().getResources.getBoolean(R.bool.send_mic_mute_to_AudioManager);\n```\n\nAlso check for other constructors (if any)",
+      "parentUuid": "1f4e2645_c14d3710",
+      "range": {
+        "startLine": 676,
+        "startChar": 20,
+        "endLine": 676,
+        "endChar": 46
+      },
+      "revId": "17a26c731a8d4784556169a4f61f736879ed2369",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
