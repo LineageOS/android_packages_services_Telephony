@@ -393,7 +393,8 @@
 
         <!-- Activation service that trigger OTASP sim provisioning -->
         <service android:name=".otasp.OtaspActivationService" android:launchMode="singleInstance"
-                 androidprv:systemUserOnly="true">
+            androidprv:systemUserOnly="true"
+            android:permission="android.permission.MODIFY_PHONE_STATE">
             <intent-filter>
                 <action android:name="android.service.simActivation.SimActivationService" />
             </intent-filter>
