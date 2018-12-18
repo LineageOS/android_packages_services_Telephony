@@ -78,6 +78,7 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyHistogram;
 import android.telephony.TelephonyManager;
+import android.telephony.UiccCardInfo;
 import android.telephony.UiccSlotInfo;
 import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
@@ -5645,6 +5646,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
         return isAllowed;
+    }
+
+    @Override
+    public UiccCardInfo[] getUiccCardsInfo() {
+        enforceReadPrivilegedPermission("getUiccCardsInfo");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            ArrayList<UiccCardInfo> cards = UiccController.getInstance().getAllUiccCardInfos();
+            return cards.toArray(new UiccCardInfo[cards.size()]);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 
     @Override
