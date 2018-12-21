@@ -265,6 +265,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final String PREF_CARRIERS_SUBSCRIBER_PREFIX = "carrier_subscriber_";
     private static final String PREF_PROVISION_IMS_MMTEL_PREFIX = "provision_ims_mmtel_";
 
+    // String to store multi SIM allowed
+    private static final String PREF_MULTI_SIM_RESTRICTED = "multisim_restricted";
+
     // The AID of ISD-R.
     private static final String ISDR_AID = "A0000005591010FFFFFFFF8900000100";
 
@@ -6444,6 +6447,40 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             } else {
                 return (Boolean) sendRequest(CMD_REQUEST_ENABLE_MODEM, enable, phone, null);
             }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void setMultisimCarrierRestriction(boolean isMultisimCarrierRestricted) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mTelephonySharedPreferences.edit()
+                    .putBoolean(PREF_MULTI_SIM_RESTRICTED, isMultisimCarrierRestricted)
+                    .commit();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public boolean isMultisimCarrierRestricted() {
+        enforceReadPrivilegedPermission("isMultisimCarrierRestricted");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // If the device has less than 2 SIM cards, indicate that multisim is restricted.
+            int numPhysicalSlots = UiccController.getInstance().getUiccSlots().length;
+            if (numPhysicalSlots < 2) {
+                loge("isMultisimCarrierRestricted: requires at least 2 cards");
+                return true;
+            }
+
+            // Default value is false. Multi SIM is allowed unless explicitly restricted.
+            return mTelephonySharedPreferences.getBoolean(PREF_MULTI_SIM_RESTRICTED, false);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
