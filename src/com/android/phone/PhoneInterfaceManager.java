@@ -3948,8 +3948,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public int getPreferredNetworkType(int subId) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, subId, "getPreferredNetworkType");
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                        mApp, subId, "getPreferredNetworkType");
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -5251,7 +5252,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            int subId = SubscriptionManager.getSubId(slotIndex)[0];
+            int[] subIds = SubscriptionManager.getSubId(slotIndex);
+            int subId = (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID);
             int[] retVal = (int[]) sendRequest(CMD_SET_ALLOWED_CARRIERS, carriers, subId,
                     workSource);
             return retVal[0];
@@ -5275,7 +5277,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            int subId = SubscriptionManager.getSubId(slotIndex)[0];
+            int[] subIds = SubscriptionManager.getSubId(slotIndex);
+            int subId = (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID);
             return (List<CarrierIdentifier>) sendRequest(CMD_GET_ALLOWED_CARRIERS, null, subId,
                     workSource);
         } finally {
