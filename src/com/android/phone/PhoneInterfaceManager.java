@@ -69,6 +69,7 @@ import android.telephony.ModemActivityInfo;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.NetworkScanRequest;
 import android.telephony.PhoneNumberRange;
+import android.telephony.PhoneNumberUtils;
 import android.telephony.RadioAccessFamily;
 import android.telephony.Rlog;
 import android.telephony.ServiceState;
@@ -152,9 +153,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Implementation of the ITelephony interface.
@@ -5994,14 +5998,143 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public Map<Integer, List<EmergencyNumber>> getCurrentEmergencyNumberList(
             String callingPackage) {
-        // TODO connect with internal content
-        return null;
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, getDefaultSubscription(), callingPackage, "getCurrentEmergencyNumberList")) {
+            throw new SecurityException("Requires READ_PHONE_STATE permission.");
+        }
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Map<Integer, List<EmergencyNumber>> results = getEmergencyNumberListInternal();
+            // Use ecclist to construct Emergency number list for backward compatibality
+            if (results.isEmpty()) {
+                results = getEmergencyNumberListFromEccList();
+            }
+            return results;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 
     @Override
-    public boolean isCurrentEmergencyNumber(String number) {
-        // TODO connect with internal content
-        return false;
+    public boolean isCurrentEmergencyNumber(String number, boolean exactMatch) {
+        final Phone defaultPhone = getDefaultPhone();
+        if (!exactMatch) {
+            TelephonyPermissions
+                    .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                            mApp, defaultPhone.getSubId(), "isCurrentEmergencyNumber(Potential)");
+        }
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Map<Integer, List<EmergencyNumber>> emergencyNumberLists =
+                    getEmergencyNumberListInternal();
+
+            String defaultCountryIso = getNetworkCountryIsoForPhone(defaultPhone.getPhoneId());
+
+            if (!emergencyNumberLists.isEmpty()) {
+                for (List<EmergencyNumber> emergencyNumberList : emergencyNumberLists.values()) {
+                    if (emergencyNumberList != null) {
+                        for (EmergencyNumber num : emergencyNumberList) {
+                            // According to com.android.i18n.phonenumbers.ShortNumberInfo, in
+                            // these countries, if extra digits are added to an emergency number,
+                            // it no longer connects to the emergency service.
+                            Set<String> countriesRequiredForExactMatch = new HashSet<>();
+                            countriesRequiredForExactMatch.add("br");
+                            countriesRequiredForExactMatch.add("cl");
+                            countriesRequiredForExactMatch.add("ni");
+                            if (exactMatch || countriesRequiredForExactMatch.contains(
+                                    defaultCountryIso)) {
+                                if (num.getNumber().equals(number)) {
+                                    return true;
+                                }
+                            } else {
+                                if (number.startsWith(num.getNumber())) {
+                                    return true;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            } else {
+                // For backward compatibility for devices launched before Q
+                return PhoneNumberUtils.isEmergencyNumberInternal(number, exactMatch,
+                        defaultCountryIso);
+            }
+            return false;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    private Map<Integer, List<EmergencyNumber>> getEmergencyNumberListInternal() {
+        Map<Integer, List<EmergencyNumber>> emergencyNumberListInternal = new HashMap<>();
+
+        for (Phone phone: PhoneFactory.getPhones()) {
+            if (phone.getEmergencyNumberTracker() != null
+                    && phone.getEmergencyNumberTracker().getEmergencyNumberList() != null) {
+                emergencyNumberListInternal.put(
+                        phone.getSubId(),
+                        phone.getEmergencyNumberTracker().getEmergencyNumberList());
+            }
+        }
+        return emergencyNumberListInternal;
+    }
+
+    private List<EmergencyNumber> getEmergencyNumberListFromEccList(int subscriptionId) {
+        SubscriptionManager sm = (SubscriptionManager) mApp.getSystemService(
+                Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        List<EmergencyNumber> emergencyNumberList = new ArrayList<>();
+        int slotId = sm.getSlotIndex(subscriptionId);
+
+        String ecclist = (slotId <= 0) ? "ril.ecclist" : ("ril.ecclist" + slotId);
+        String emergencyNumbers = SystemProperties.get(ecclist, "");
+        if (TextUtils.isEmpty(emergencyNumbers)) {
+            // then read-only ecclist property since old RIL only uses this
+            emergencyNumbers = SystemProperties.get("ro.ril.ecclist");
+        }
+        if (!TextUtils.isEmpty(emergencyNumbers)) {
+            // searches through the comma-separated list for a match,
+            // return true if one is found.
+            for (String emergencyNum : emergencyNumbers.split(",")) {
+                emergencyNumberList.add(new EmergencyNumber(emergencyNum, "", "",
+                        EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_UNSPECIFIED, 0));
+            }
+        }
+        emergencyNumbers = ((slotId < 0) ? "112,911,000,08,110,118,119,999" : "112,911");
+        for (String emergencyNum : emergencyNumbers.split(",")) {
+            emergencyNumberList.add(new EmergencyNumber(emergencyNum, "", "",
+                    EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_UNSPECIFIED, 0));
+        }
+        EmergencyNumber.mergeSameNumbersInEmergencyNumberList(emergencyNumberList);
+        return emergencyNumberList;
+    }
+
+    /**
+     * Get Emergency number list based on EccList. This util is used for solving backward
+     * compatibility if device does not support the 1.4 IRadioIndication HAL that reports
+     * emergency number list.
+     *
+     * @return Map including the key as the active subscription ID (Note: if there is no active
+     *         subscription, the key is {@link SubscriptionManager#getDefaultSubscriptionId})
+     *         and the value as the list of {@link EmergencyNumber}.
+     */
+    private Map<Integer, List<EmergencyNumber>> getEmergencyNumberListFromEccList() {
+        Map<Integer, List<EmergencyNumber>> results = new HashMap<>();
+        SubscriptionManager sm = (SubscriptionManager) mApp.getSystemService(
+                Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        int[] activeSubscriptionIds = sm.getActiveSubscriptionIdList();
+
+        if (activeSubscriptionIds.length == 0) {
+            int defaultSubscriptionId = getDefaultSubscription();
+            results.put(defaultSubscriptionId,
+                    getEmergencyNumberListFromEccList(defaultSubscriptionId));
+        } else {
+            for (int activeSubscriptionId : activeSubscriptionIds) {
+                results.put(activeSubscriptionId,
+                        getEmergencyNumberListFromEccList(activeSubscriptionId));
+            }
+        }
+        return results;
     }
 
     @Override
