@@ -72,7 +72,9 @@
     <!-- In-call screen: button label on the "wait" prompt dialog -->
     <string name="send_button">Anfon</string>
     <!-- In-call screen: button label on the "wait" prompt dialog in CDMA Mode-->
+    <string name="pause_prompt_yes">Ie</string>
     <!-- In-call screen: button label on the "wait" prompt dialog in CDMA Mode-->
+    <string name="pause_prompt_no">Na</string>
     <!-- In-call screen: on the "wild" character dialog, this is the label
          for a text widget that lets the user enter the digits that should
          replace the "wild" character. -->
@@ -473,8 +475,11 @@
     <!-- Mobile network settings screen, title of Mobile Data switch preference -->
     <string name="mobile_data_settings_title">Data symudol</string>
     <!-- Mobile network settings screen, title of Mobile data switch preference -->
+    <string name="mobile_data_settings_summary">Cyrchu data trwy rwydwaith symudol</string>
     <!-- Message to show when user trying to turn off mobile data, in single sim mode [CHAR LIMIT=100]-->
+    <string name="data_usage_disable_mobile">Troi data symudol i ffwrdd?</string>
     <!-- When a SIM preference hasn't been selected yet, this string is displayed as the pref summary until the user chooses a SIM subscription from the preference list [CHAR LIMIT=50] -->
+    <string name="sim_selection_required_pref">Mae\'n rhaid dewis</string>
     <!-- Title asking user if they wish to change the default sim for cellular data.  [CHAR LIMIT=30] -->
     <string name="sim_change_data_title">Newid SIM data?</string>
     <!-- Message confirming the user wishes to change the default data SIM from one to another.  [CHAR LIMIT=NONE] -->
@@ -482,6 +487,7 @@
     <!-- Mobile network settings screen, title of Wi-Fi calling setting -->
     <string name="wifi_calling_settings_title">Galwadau Wi-Fi</string>
     <!-- Mobile network settings screen, title of Video calling setting -->
+    <string name="video_calling_settings_title">Galwadau fideo trwy\'r darparwr symudol</string>
     <!-- USSD aggregation dialog box: separator strings between messages (new-lines will be added before and after) -->
     <string name="gsm_umts_options">Dewisiadau GSM/UMTS</string>
     <string name="cdma_options">Dewisiadau CDMA</string>
@@ -500,6 +506,7 @@
     <string name="throttle_data_rate_reduced_subtext"><xliff:g id="used">%1$s</xliff:g> yn fwy na\'r uchafswm\nCyfradd data wedi ei lleihau <xliff:g id="used">%2$d</xliff:g> Kb/e</string>
     <string name="throttle_time_frame_subtext"><xliff:g id="used">%1$d</xliff:g>\u066A o\'r cyfnod wedi pasio\nCyfnod nesaf yn dechrau ymhen<xliff:g id="used">%2$d</xliff:g> diwrnod (<xliff:g id="used">%3$s</xliff:g>)</string>
     <string name="throttle_rate_subtext">Cyfradd data yn cael ei lleihau i <xliff:g id="used">%1$d</xliff:g> Kb/e os yw defnydd yn mynd yn fwy na\'r terfyn</string>
+    <string name="throttle_help_subtext">Rhagor o wybodaeth am bolisi defnydd data dy ddarparwr rhwydwaith symudol</string>
     <string name="cell_broadcast_sms">SMS Darllediad Cellol</string>
     <string name="enable_disable_cell_bc_sms">SMS Darllediad Cellol</string>
     <string name="cell_bc_sms_enable">Galluogwyd SMS Darllediad Cellol</string>
@@ -540,6 +547,15 @@
         <item>Coreeg</item>
         <item>Tsieineeg</item>
         <item>Hebraeg</item>
+    </string-array>
+    <string-array name="list_language_values">
+        <item>"1"</item>
+        <item>"2"</item>
+        <item>"3"</item>
+        <item>"4"</item>
+        <item>"5"</item>
+        <item>"6"</item>
+        <item>"7"</item>
     </string-array>
     <string name="list_language_dtitle">Ieithoedd</string>
     <string name="enable_disable_local_weather">Tywydd Lleol</string>
@@ -663,6 +679,7 @@
     <!-- FDN list screen: menu item label -->
     <string name="menu_delete">Dileu cyswllt</string>
     <!-- FDN list screen: menu item label -->
+    <string name="menu_dial">Deialu cyswllt</string>
     <!-- FDN related strings -->
     <!-- Label for PIN2 entry screen -->
     <string name="get_pin2">Math PIN2</string>
@@ -824,11 +841,13 @@
          operator name set by user -->
     <string name="notification_network_selection_text">Rhwydwaith a ddewiswyd (<xliff:g id="operator_name">%s</xliff:g>) dim ar gael</string>
     <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
+    <string name="incall_error_power_off" product="watch">I wneud galwad rhai troi\'r rhwydwaith symudol ymlaen, troi modd awyren i ffwrdd neu droi modd arbed batri i fwrdd.</string>
     <!-- In-call screen: call failure message displayed in an error dialog. [CHAR_LIMIT=NONE] -->
     <string name="incall_error_power_off" product="default">Rhaid diffodd modd awyren er mwyn gwneud galwad.</string>
     <!-- In-call screen: call failure message displayed in an error dialog when in airplane mode, WFC is enabled, not wifi-only, and not connected to wireless networks. [CHAR_LIMIT=NONE] -->
     <string name="incall_error_power_off_wfc">Diffodda modd awyren neu gysylltu â rhwydwaith diwifr i wneud galwad.</string>
     <!-- In-call screen: call failure message displayed when the user attempts to make a non-emergency call while the phone is in emergency callback mode. -->
+    <string name="incall_error_ecm_emergency_only">Rhaid gadael modd Galwad Nôl mewn Argyfwng i wneud galwad na sy\'n argyfyngus.</string>
     <!-- In-call screen: call failure message displayed in an error dialog.
          This string is currently unused (see comments in InCallScreen.java.) -->
     <string name="incall_error_emergency_only">Heb gofrestru ar y rhwydwaith.</string>
@@ -841,6 +860,7 @@
     <!-- In-call screen: call failure message displayed in an error dialog -->
     <string name="incall_error_call_failed">Methodd y galwad.</string>
     <!-- In-call screen: call failure message displayed in an error dialog -->
+    <string name="incall_error_cannot_add_call">Ni ellir gwneud y galwad ar hyn o bryd. Gellir ceisio anfon neges.</string>
     <!-- In-call screen: message displayed in an error dialog -->
     <string name="incall_error_supp_service_unknown">Gwasanaeth heb ei gefnogi</string>
     <!-- In-call screen: message displayed in an error dialog -->
@@ -989,17 +1009,43 @@
     <!-- Emergency Callback Mode (ECM) -->
     <string name="ecm_exit_dialog">EcmExitDialog</string>
     <!-- ECM: Status bar notification message -->
+    <string name="phone_entered_ecm_text">Wedi dechrau Modd Galwad Nôl mewn Argyfwng</string>
     <!-- ECM: Notification title -->
+    <string name="phone_in_ecm_notification_title">Modd Galwad Nôl mewn Argyfwng</string>
     <!-- ECM: Notification body -->
     <string name="phone_in_ecm_call_notification_text">Analluogwyd cysylltiad data</string>
     <!-- ECM: Displays the time when ECM will end, Example: "No Data Connection until 10:45 AM" -->
     <string name="phone_in_ecm_notification_complete_time">Dim cysylltiad data tan <xliff:g id="completeTime">%s</xliff:g></string>
     <!-- ECM: Dialog box message for exiting from the notifications screen -->
+    <plurals name="alert_dialog_exit_ecm">
+        <item quantity="zero">Bydd y ffôn mewn modd Galwad Nôl mewn Argyfwng am <xliff:g id="count">%s</xliff:g> munudau. Tra yn y modd hwn, ni ellir defnyddio unrhyw ap sy\'n defnyddio cysylltiad data. Wyt ti am adael nawr?</item>
+        <!-- number of minutes is one -->
+        <item quantity="one">Bydd y ffôn mewn modd Galwad Nôl mewn Argyfwng am <xliff:g id="count">%s</xliff:g> munud. Tra yn y modd hwn, ni ellir defnyddio unrhyw ap sy\'n defnyddio cysylltiad data. Wyt ti am adael nawr?</item>
+        <item quantity="two">Bydd y ffôn mewn modd Galwad Nôl mewn Argyfwng am <xliff:g id="count">%s</xliff:g> funud. Tra yn y modd hwn, ni ellir defnyddio unrhyw ap sy\'n defnyddio cysylltiad data. Wyt ti am adael nawr?</item>
+        <item quantity="few">Bydd y ffôn mewn modd Galwad Nôl mewn Argyfwng am <xliff:g id="count">%s</xliff:g> munud. Tra yn y modd hwn, ni ellir defnyddio unrhyw ap sy\'n defnyddio cysylltiad data. Wyt ti am adael nawr?</item>
+        <item quantity="many">Bydd y ffôn mewn modd Galwad Nôl mewn Argyfwng am <xliff:g id="count">%s</xliff:g> munud. Tra yn y modd hwn, ni ellir defnyddio unrhyw ap sy\'n defnyddio cysylltiad data. Wyt ti am adael nawr?</item>
+        <!-- number of minutes is not equal to one -->
+        <item quantity="other">Bydd y ffôn mewn modd Galwad Nôl mewn Argyfwng am <xliff:g id="count">%s</xliff:g> munud. Tra yn y modd hwn, ni ellir defnyddio unrhyw ap sy\'n defnyddio cysylltiad data. Wyt ti am adael nawr?</item>
+    </plurals>
     <!-- ECM: Dialog box message for exiting from any other app -->
+    <plurals name="alert_dialog_not_avaialble_in_ecm">
+        <item quantity="zero">Dyw\'r weithred honno ddim ar gael tra ym modd Galwad Nôl mewn Argyfwng. Bydd y ffôn yn y modd hwn am <xliff:g id="count">%s</xliff:g> munudau. Wyt ti am adael nawr?</item>
+        <!-- number of minutes is one -->
+        <item quantity="one">Dyw\'r weithred honno ddim ar gael tra ym modd Galwad Nôl mewn Argyfwng. Bydd y ffôn yn y modd hwn am <xliff:g id="count">%s</xliff:g> munud. Wyt ti am adael nawr?</item>
+        <item quantity="two">Dyw\'r weithred honno ddim ar gael tra ym modd Galwad Nôl mewn Argyfwng. Bydd y ffôn yn y modd hwn am <xliff:g id="count">%s</xliff:g> funud. Wyt ti am adael nawr?</item>
+        <item quantity="few">Dyw\'r weithred honno ddim ar gael tra ym modd Galwad Nôl mewn Argyfwng. Bydd y ffôn yn y modd hwn am <xliff:g id="count">%s</xliff:g> munud. Wyt ti am adael nawr?</item>
+        <item quantity="many">Dyw\'r weithred honno ddim ar gael tra ym modd Galwad Nôl mewn Argyfwng. Bydd y ffôn yn y modd hwn am <xliff:g id="count">%s</xliff:g> munud. Wyt ti am adael nawr?</item>
+        <!-- number of minutes is not equal to one -->
+        <item quantity="other">Dyw\'r weithred honno ddim ar gael tra ym modd Galwad Nôl mewn Argyfwng. Bydd y ffôn yn y modd hwn am <xliff:g id="count">%s</xliff:g> munud. Wyt ti am adael nawr?</item>
+    </plurals>
     <!-- ECM: Dialog box message while in emergency call -->
+    <string name="alert_dialog_in_ecm_call">Dyw\'r weithred honno ddim ar gael ar ganol galwad brys.</string>
     <!-- ECM: Progress text -->
+    <string name="progress_dialog_exiting_ecm">Yn gadael Modd Galwad Nôl mewn Argyfwng</string>
     <!-- ECM: ECM exit dialog choice -->
+    <string name="alert_dialog_yes">Gadael</string>
     <!-- ECM: ECM exit dialog choice -->
+    <string name="alert_dialog_no">Peidio â Gadael</string>
     <!-- ECM: ECM exit dialog choice -->
     <string name="alert_dialog_dismiss">Wfftio</string>
     <!-- For incoming calls, this is a string we can get from a CDMA network instead of
@@ -1025,6 +1071,7 @@
     <string name="selectContact">dewis cyswllt</string>
     <!-- Dialog title to notify user that Voice calling is not supported
          on this device. [CHAR LIMIT=40] -->
+    <string name="not_voice_capable">Ni chefnogir galwadau llais</string>
     <!-- String describing the Dial ImageButton
 
          Used by AccessibilityService to announce the purpose of the button.
@@ -1043,7 +1090,6 @@
     <string name="preference_category_ringtone">Tôn Caniad a Dirgrynu</string>
     <!-- String resource for the font-family to use for the call setting activity's title
          Do not translate. -->
-    <string name="call_settings_title_font_family">sans-serif ysgafn</string>
     <!-- Label for PSTN connection service. -->
     <string name="pstn_connection_service_label">Cardiau SIM sy\'n rhan o\'r ddyfais</string>
     <!-- Label for enabling video calling. -->
@@ -1088,10 +1134,14 @@
     <string name="callFailed_imei_not_accepted">Methu â chysylltu. Rho gerdyn SIM dilys, plîs.    </string>
     <!-- Call failure reason displayed when an in-progress WIFI call fails due to a loss of WIFI
          connectivity, or the WIFI signal has degraded to the point the call cannot continue. -->
+    <string name="callFailed_wifi_lost">        Collwyd y cysylltiad Wi-Fi. Galwad ar ben.
+    </string>
     <!-- Call failure reason displayed when the user's outgoing call cannot be placed due to a low
          battery. -->
+    <string name="dialFailed_low_battery">Ni ellir gwneud y galwad fideo am nad os digon o bŵer yn y batri.</string>
     <!-- Call failure reason displayed when the user's call is ended due to a low battery. This
          message is shown when an in-progress call is ended due to the battery being low. -->
+    <string name="callFailed_low_battery">Daeth yr alwad fideo i ben oherwydd batri isel.</string>
     <!-- The title for the change voicemail PIN activity -->
     <string name="change_pin_title">Newid PIN Lleisbost</string>
     <!-- The label for the continue button in change voicemail PIN activity -->
@@ -1117,15 +1167,25 @@
     <!-- The error message to show if the server reported an error while attempting to change the voicemail PIN -->
     <string name="change_pin_system_error">Methwyd â gosod y PIN</string>
     <!-- The subtext for mobile data setting. shown if roaming settings turned off -->
+    <string name="mobile_data_status_roaming_turned_off_subtext">Mae data wrth grwydro wedi ei droi ffwrdd</string>
     <!-- The subtext for mobile data setting. shown if roaming settings turned on -->
+    <string name="mobile_data_status_roaming_turned_on_subtext">Mae data wrth grwydro wedi ei droi ymlaen</string>
     <!-- The subtext for mobile data setting. shown if currently roaming, have roaming settings turned on but don't have a roaming data plan-->
+    <string name="mobile_data_status_roaming_without_plan_subtext">Yn crwydro ar hyn o bryd, angen cynllun data</string>
     <!-- The subtext for mobile data setting. shown if currently roaming, have roaming settings turned and have an active roaming data plan-->
+    <string name="mobile_data_status_roaming_with_plan_subtext">Yn crwydro ar hyn o bryd, cynllun data yn weithredol</string>
     <!-- The subtext for mobile data setting. shown if not in roaming and prepaid sim has run out of balance -->
+    <string name="mobile_data_status_no_plan_subtext">Dim data symudol ar ôl</string>
     <!-- The setting option name for activate prepaid mobile data plan -->
+    <string name="mobile_data_activate_prepaid">Dim data symudol ar ôl</string>
     <!-- The setting option summary for activate prepaid mobile data plan -->
+    <string name="mobile_data_activate_prepaid_summary">Ychwanegu data symudol trwy <xliff:g id="provider_name">%s</xliff:g></string>
     <!-- The setting option name for for adding roaming data plan -->
+    <string name="mobile_data_activate_roaming_plan">Dim cynllun data crwydro</string>
     <!-- The setting option summary for adding roaming data plan -->
+    <string name="mobile_data_activate_roaming_plan_summary">Ychwanegu cynllun crwydro dramor gyda <xliff:g id="provider_name">%s</xliff:g></string>
     <!-- The setting option footer for adding data either prepaid or roaming -->
+    <string name="mobile_data_activate_footer">Mae\'n bosib ychwanegu cynllun data symudol neu gynllun data wrth grwydro gyda dy ddarparwr, <xliff:g id="provider_name">%s</xliff:g>.</string>
     <!-- activate data plan dialogue title for either prepaid or roaming -->
     <string name="mobile_data_activate_diag_title">Ychwanegu data?</string>
     <!-- activate data plan dialogue message for either prepaid or roaming -->
