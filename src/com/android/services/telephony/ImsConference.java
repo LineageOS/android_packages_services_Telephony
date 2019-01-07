@@ -990,8 +990,7 @@ public class ImsConference extends Conference implements Holdable {
                 setStatusHints(new StatusHints(
                         context.getString(R.string.status_hint_label_wifi_call),
                         Icon.createWithResource(
-                                context.getResources(),
-                                R.drawable.ic_signal_wifi_4_bar_24dp),
+                                context, R.drawable.ic_signal_wifi_4_bar_24dp),
                         null /* extras */));
             }
         } else {
