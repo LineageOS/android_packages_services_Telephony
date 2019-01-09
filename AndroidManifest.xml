@@ -258,39 +258,6 @@
                   android:theme="@android:style/Theme.Translucent.NoTitleBar"
                   android:exported="false"/>
 
-        <!-- "Mobile network settings" screen, used on both
-             non-voice-capable tablets and regular phone devices. -->
-        <activity android:name="MobileNetworkSettings"
-            android:label="@string/network_settings_title"
-            android:theme="@style/NetworkOperatorsSettingsTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.settings.NETWORK_OPERATOR_SETTINGS" />
-                <action android:name="android.settings.DATA_ROAMING_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity-alias android:name="Settings"
-            android:targetActivity="MobileNetworkSettings" />
-
-        <!-- networks setting -->
-        <!-- "Choose network" screen. Used only when the Automatically
-             select network turned off-->
-        <activity android:name="NetworkSelectSettingActivity"
-            android:label="@string/choose_network_title"
-            android:theme="@style/NetworkOperatorsSettingsTheme"
-            android:configChanges="orientation|screenSize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <!-- service to handle network query requests sent to RIL -->
-        <service android:name="NetworkQueryService" />
-
         <activity android:name="GsmUmtsCallOptions"
                 android:label="@string/gsm_umts_options"
                 android:theme="@style/DialerSettingsLight">
