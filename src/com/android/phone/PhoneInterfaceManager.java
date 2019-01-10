@@ -7106,6 +7106,33 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    @Override
+    public boolean isApplicationOnUicc(int subId, int appType) {
+        enforceReadPrivilegedPermission("isApplicationOnUicc");
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            return false;
+        }
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            UiccCard uiccCard = phone.getUiccCard();
+            if (uiccCard == null) {
+                return false;
+            }
+            UiccProfile uiccProfile = uiccCard.getUiccProfile();
+            if (uiccProfile == null) {
+                return false;
+            }
+            if (TelephonyManager.APPTYPE_SIM <= appType
+                    && appType <= TelephonyManager.APPTYPE_ISIM) {
+                return uiccProfile.isApplicationOnIcc(AppType.values()[appType]);
+            }
+            return false;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
     /**
      * Get whether making changes to modem configurations will trigger reboot.
      * Return value defaults to true.
