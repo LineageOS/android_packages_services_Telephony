@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD-kode kører ..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI-nummer annulleret"</string>
     <string name="cancel" msgid="5044513931633602634">"Annuller"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD-meddelelse skal være mellem <xliff:g id="MIN_LEN">%d</xliff:g> og <xliff:g id="MAX_LEN">%d</xliff:g> tegn. Prøv igen."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD-meddelelse skal være mellem <xliff:g id="MIN_LEN">%1$d</xliff:g> og <xliff:g id="MAX_LEN">%2$d</xliff:g> tegn. Prøv igen."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Administrer telefonmøde"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Højttaler"</string>
@@ -77,7 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Telefonsvarer"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Telefonsvarer (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Underretninger"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notifikationer"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Nødudsendelser"</string>
     <string name="call_settings" msgid="6112441768261754562">"Indstillinger for opkald"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Yderligere indstillinger"</string>
@@ -443,7 +443,7 @@
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Læser fra SIM-kort ..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"Der er ingen kontakter på dit SIM-kort."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Vælg kontakter, der skal importeres"</string>
-    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Slå flytilstand fra for at importere kontaktpersoner fra SIM-kortet."</string>
+    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Slå flytilstand fra for at importere kontakter fra SIM-kortet."</string>
     <string name="enable_pin" msgid="5422767284133234860">"Aktiver/deaktiver pinkode til SIM-kort"</string>
     <string name="change_pin" msgid="9174186126330785343">"Skift pinkode til SIM-kort"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"Pinkode til SIM-kort:"</string>

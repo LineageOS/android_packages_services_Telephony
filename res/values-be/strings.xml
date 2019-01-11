@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Запускаецца USSD-код..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Код MMI адменены"</string>
     <string name="cancel" msgid="5044513931633602634">"Адмяніць"</string>
-    <string name="enter_input" msgid="1810529547726803893">"Паведамленне USSD павінна складацца з наступнай колькасцi знакаў:  ад <xliff:g id="MIN_LEN">%d</xliff:g> да <xliff:g id="MAX_LEN">%d</xliff:g>. Паспрабуйце яшчэ раз."</string>
+    <string name="enter_input" msgid="1810529547726803893">"Паведамленне USSD павінна складацца з наступнай колькасцi знакаў:  ад <xliff:g id="MIN_LEN">%1$d</xliff:g> да <xliff:g id="MAX_LEN">%2$d</xliff:g>. Паспрабуйце яшчэ раз."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Кіраванне канферэнц-выклікам"</string>
     <string name="ok" msgid="3811371167865772377">"ОК"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Дынамік"</string>
@@ -537,7 +537,7 @@
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"Пераключыць"</string>
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"Кіраваць выклікамі"</string>
     <string name="onscreenManageConferenceText" msgid="6485935856534311346">"Кірав. канферэнцыяй"</string>
-    <string name="onscreenAudioText" msgid="1710087112800041743">"Аўдыё"</string>
+    <string name="onscreenAudioText" msgid="1710087112800041743">"Аўдыя"</string>
     <string name="onscreenVideoCallText" msgid="4800924186056115442">"Відэавыклік"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"Імпартаваць"</string>
     <string name="importAllSimEntries" msgid="1503181169636198673">"Імпартаваць усе"</string>
