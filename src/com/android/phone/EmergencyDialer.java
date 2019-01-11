@@ -139,6 +139,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         private MetricsLogger mMetricsLogger = new MetricsLogger();
 
         public void writeMetricsForEnter() {
+            if (!mIsShortcutViewEnabled) {
+                return;
+            }
+
             int entryType = getIntent().getIntExtra(EXTRA_ENTRY_TYPE, ENTRY_TYPE_UNKNOWN);
             KeyguardManager keyguard = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
             mMetricsLogger.write(new LogMaker(MetricsEvent.EMERGENCY_DIALER)
@@ -149,6 +153,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         }
 
         public void writeMetricsForExit() {
+            if (!mIsShortcutViewEnabled) {
+                return;
+            }
+
             int entryType = getIntent().getIntExtra(EXTRA_ENTRY_TYPE, ENTRY_TYPE_UNKNOWN);
             long userStayDuration = SystemClock.elapsedRealtime() - mUserEnterTimeMillis;
             mMetricsLogger.write(new LogMaker(MetricsEvent.EMERGENCY_DIALER)
@@ -161,6 +169,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
         public void writeMetricsForMakingCall(int callSource, int phoneNumberType,
                 boolean hasShortcut) {
+            if (!mIsShortcutViewEnabled) {
+                return;
+            }
+
             mMetricsLogger.write(new LogMaker(MetricsEvent.EMERGENCY_DIALER_MAKE_CALL)
                     .setType(MetricsEvent.TYPE_ACTION)
                     .setSubtype(callSource)
