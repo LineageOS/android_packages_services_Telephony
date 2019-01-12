@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Mã USSD đang chạy…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Mã MMI đã bị hủy"</string>
     <string name="cancel" msgid="5044513931633602634">"Hủy"</string>
-    <string name="enter_input" msgid="1810529547726803893">"Tin nhắn USSD phải có độ dài trong khoảng từ <xliff:g id="MIN_LEN">%d</xliff:g> đến <xliff:g id="MAX_LEN">%d</xliff:g> ký tự. Vui lòng thử lại."</string>
+    <string name="enter_input" msgid="1810529547726803893">"Tin nhắn USSD phải có độ dài trong khoảng từ <xliff:g id="MIN_LEN">%1$d</xliff:g> đến <xliff:g id="MAX_LEN">%2$d</xliff:g> ký tự. Vui lòng thử lại."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Quản lý cuộc gọi hội nghị"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Loa"</string>
@@ -299,8 +299,8 @@
     <string name="sports_news_settings" msgid="7649399631270052835">"Tin tức Thể thao"</string>
     <string name="entertainment_news_settings" msgid="5051153952959405035">"Tin tức Giải trí"</string>
     <string name="enable_disable_local" msgid="7890281063123416120">"Địa phương"</string>
-    <string name="local_enable" msgid="6370463247609136359">"Đã bật tin tức địa phương"</string>
-    <string name="local_disable" msgid="4405691986943795798">"Đã vô hiệu hóa tin tức địa phương"</string>
+    <string name="local_enable" msgid="6370463247609136359">"Đã bật tin trong nước"</string>
+    <string name="local_disable" msgid="4405691986943795798">"Đã tắt tin trong nước"</string>
     <string name="enable_disable_regional" msgid="4905652414535565872">"Khu vực"</string>
     <string name="regional_enable" msgid="4434680415437834759">"Bật tin tức khu vực"</string>
     <string name="regional_disable" msgid="5359325527213850077">"Đã vô hiệu hóa tin tức khu vực"</string>
