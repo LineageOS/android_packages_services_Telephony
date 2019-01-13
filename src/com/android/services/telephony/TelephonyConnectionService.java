@@ -52,6 +52,7 @@ import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.RIL;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
@@ -316,7 +317,8 @@ public class TelephonyConnectionService extends ConnectionService {
         if (PhoneAccount.SCHEME_VOICEMAIL.equals(scheme)) {
             // TODO: We don't check for SecurityException here (requires
             // CALL_PRIVILEGED permission).
-            final Phone phone = getPhoneForAccount(request.getAccountHandle(), false);
+            final Phone phone = getPhoneForAccount(request.getAccountHandle(), false,
+                    handle.getSchemeSpecificPart());
             if (phone == null) {
                 Log.d(this, "onCreateOutgoingConnection, phone is null");
                 return Connection.createFailedConnection(
@@ -354,7 +356,8 @@ public class TelephonyConnectionService extends ConnectionService {
                                 "Unable to parse number"));
             }
 
-            final Phone phone = getPhoneForAccount(request.getAccountHandle(), false);
+            final Phone phone = getPhoneForAccount(request.getAccountHandle(), false,
+                    handle.getSchemeSpecificPart());
             if (phone != null && CDMA_ACTIVATION_CODE_REGEX_PATTERN.matcher(number).matches()) {
                 // Obtain the configuration for the outgoing phone's SIM. If the outgoing number
                 // matches the *228 regex pattern, fail the call. This number is used for OTASP, and
@@ -381,7 +384,8 @@ public class TelephonyConnectionService extends ConnectionService {
         // Convert into emergency number if necessary
         // This is required in some regions (e.g. Taiwan).
         if (!PhoneNumberUtils.isLocalEmergencyNumber(this, number)) {
-            final Phone phone = getPhoneForAccount(request.getAccountHandle(), false);
+            final Phone phone = getPhoneForAccount(request.getAccountHandle(), false,
+                    handle.getSchemeSpecificPart());
             // We only do the conversion if the phone is not in service. The un-converted
             // emergency numbers will go to the correct destination when the phone is in-service,
             // so they will only need the special emergency call setup when the phone is out of
@@ -459,7 +463,8 @@ public class TelephonyConnectionService extends ConnectionService {
             }
 
             // Get the right phone object from the account data passed in.
-            final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber);
+            final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber,
+                    handle.getSchemeSpecificPart());
             Connection resultConnection = getTelephonyConnection(request, numberToDial,
                     isEmergencyNumber, handle, phone);
             // If there was a failure, the resulting connection will not be a TelephonyConnection,
@@ -504,7 +509,7 @@ public class TelephonyConnectionService extends ConnectionService {
             // Get the right phone object since the radio has been turned on
             // successfully.
             final Phone phone = getPhoneForAccount(request.getAccountHandle(),
-                    isEmergencyNumber);
+                    isEmergencyNumber, handle.getSchemeSpecificPart());
             // If the PhoneType of the Phone being used is different than the Default Phone, then we
             // need create a new Connection using that PhoneType and replace it in Telecom.
             if (phone.getPhoneType() != originalPhoneType) {
@@ -722,7 +727,8 @@ public class TelephonyConnectionService extends ConnectionService {
                     "Treat as an Emergency Call.");
             isEmergency = true;
         }
-        Phone phone = getPhoneForAccount(accountHandle, isEmergency);
+        Phone phone = getPhoneForAccount(accountHandle, isEmergency,
+                request.getAddress().getSchemeSpecificPart());
         if (phone == null) {
             return Connection.createFailedConnection(
                     DisconnectCauseUtil.toTelecomDisconnectCause(
@@ -833,7 +839,8 @@ public class TelephonyConnectionService extends ConnectionService {
                     "Treat as an Emergency Call.");
             isEmergency = true;
         }
-        Phone phone = getPhoneForAccount(accountHandle, isEmergency);
+        Phone phone = getPhoneForAccount(accountHandle, isEmergency,
+                request.getAddress().getSchemeSpecificPart());
         if (phone == null) {
             return Connection.createFailedConnection(
                     DisconnectCauseUtil.toTelecomDisconnectCause(
@@ -1223,7 +1230,8 @@ public class TelephonyConnectionService extends ConnectionService {
         return false;
     }
 
-    private Phone getPhoneForAccount(PhoneAccountHandle accountHandle, boolean isEmergency) {
+    private Phone getPhoneForAccount(PhoneAccountHandle accountHandle, boolean isEmergency,
+                                     String emergencyNumberAddress) {
         Phone chosenPhone = null;
         int subId = PhoneUtils.getSubIdForPhoneAccountHandle(accountHandle);
         if (subId != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
@@ -1237,11 +1245,53 @@ public class TelephonyConnectionService extends ConnectionService {
                 .getServiceState().getState())) {
             Log.d(this, "getPhoneForAccount: phone for phone acct handle %s is out of service "
                     + "or invalid for emergency call.", accountHandle);
-            chosenPhone = getFirstPhoneForEmergencyCall();
+            chosenPhone = getPhoneForEmergencyCall(emergencyNumberAddress);
             Log.d(this, "getPhoneForAccount: using subId: " +
                     (chosenPhone == null ? "null" : chosenPhone.getSubId()));
         }
         return chosenPhone;
+    }
+
+    /**
+     * Get the Phone to use for an emergency call of the given emergency number address:
+     *  a) If there are multiple Phones with the Subscriptions that support the emergency number
+     *     address, and one of them is the default voice Phone, consider the default voice phone
+     *     if 1.4 HAL is supported, or if it is available for emergency call.
+     *  b) If there are multiple Phones with the Subscriptions that support the emergency number
+     *     address, and none of them is the default voice Phone, use one of these Phones if 1.4 HAL
+     *     is supported, or if it is available for emergency call.
+     *  c) If there is no Phone that supports the emergency call for the address, use the defined
+     *     Priority list to select the Phone via {@link #getFirstPhoneForEmergencyCall}.
+     */
+    public Phone getPhoneForEmergencyCall(String emergencyNumberAddress) {
+        // Find the list of available Phones for the given emergency number address
+        List<Phone> potentialEmergencyPhones = new ArrayList<>();
+        int defaultVoicePhoneId = mSubscriptionManagerProxy.getDefaultVoicePhoneId();
+        for (Phone phone : mPhoneFactoryProxy.getPhones()) {
+            if (phone.getEmergencyNumberTracker() != null) {
+                if (phone.getEmergencyNumberTracker().isEmergencyNumber(
+                        emergencyNumberAddress, true)) {
+                    if (phone.getHalVersion().greaterOrEqual(RIL.RADIO_HAL_VERSION_1_4)
+                            || isAvailableForEmergencyCalls(phone)) {
+                        // a)
+                        if (phone.getPhoneId() == defaultVoicePhoneId) {
+                            Log.i(this, "getPhoneForEmergencyCall, Phone Id that supports"
+                                    + " emergency number: " + phone.getPhoneId());
+                            return phone;
+                        }
+                        potentialEmergencyPhones.add(phone);
+                    }
+                }
+            }
+        }
+        // b)
+        if (potentialEmergencyPhones.size() > 0) {
+            Log.i(this, "getPhoneForEmergencyCall, Phone Id that supports emergency number:"
+                    + potentialEmergencyPhones.get(0).getPhoneId());
+            return potentialEmergencyPhones.get(0);
+        }
+        // c)
+        return getFirstPhoneForEmergencyCall();
     }
 
     /**
