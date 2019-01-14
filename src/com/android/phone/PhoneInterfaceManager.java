@@ -1039,13 +1039,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     ICellInfoCallback cb = (ICellInfoCallback) request.argument;
                     try {
                         if (ar.exception != null) {
-                            // something went wrong... the response is null
                             Log.e(LOG_TAG, "Exception retrieving CellInfo=" + ar.exception);
-                            cb.onCellInfo(null);
+                            cb.onError(TelephonyManager.CellInfoCallback.ERROR_MODEM_ERROR,
+                                    new android.os.ParcelableException(ar.exception));
                         } else if (ar.result == null) {
-                            // timeout occurred, so force the result to non-null "empty"
                             Log.w(LOG_TAG, "Timeout Waiting for CellInfo!");
-                            cb.onCellInfo(new ArrayList<CellInfo>());
+                            cb.onError(TelephonyManager.CellInfoCallback.ERROR_TIMEOUT, null);
                         } else {
                             // use the result as returned
                             cb.onCellInfo((List<CellInfo>) ar.result);
