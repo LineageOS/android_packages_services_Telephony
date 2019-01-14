@@ -46,6 +46,7 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
 import android.telephony.TelephonyManager;
+import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.feature.MmTelFeature;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
@@ -114,10 +115,10 @@ public class TelecomAccountRegistry {
             }
 
             try {
-                mMmTelManager = ImsMmTelManager.createForSubscriptionId(mContext, getSubId());
+                mMmTelManager = ImsMmTelManager.createForSubscriptionId(getSubId());
             } catch (IllegalArgumentException e) {
                 Log.i(this, "Not registering MmTel capabilities listener because the subid '"
-                        + getSubId() + "' is invalid");
+                        + getSubId() + "' is invalid: " + e.getMessage());
                 return;
             }
 
@@ -151,9 +152,9 @@ public class TelecomAccountRegistry {
             try {
                 mMmTelManager.registerMmTelCapabilityCallback(mContext.getMainExecutor(),
                         mMmtelCapabilityCallback);
-            } catch (IllegalStateException e) {
+            } catch (ImsException e) {
                 Log.w(this, "registerMmTelCapabilityCallback: registration failed, no ImsService"
-                        + " available.");
+                        + " available. Exception: " + e.getMessage());
                 return;
             }
         }
