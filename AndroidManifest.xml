@@ -425,6 +425,24 @@
             </intent-filter>
         </activity>
 
+        <!--
+            Handler for EuiccManager's privileged action intents. These are locked down so that only
+            privileged processes can start them.
+        -->
+        <activity android:name=".euicc.EuiccPrivilegedActionUiDispatcherActivity"
+                  android:permission="android.permission.CALL_PRIVILEGED">
+            <!-- Max out priority to ensure nobody else will handle these intents. -->
+            <intent-filter android:priority="1000">
+                <action android:name=
+                            "android.telephony.euicc.action.TOGGLE_SUBSCRIPTION_PRIVILEGED" />
+                <action android:name=
+                            "android.telephony.euicc.action.DELETE_SUBSCRIPTION_PRIVILEGED" />
+                <action android:name=
+                            "android.telephony.euicc.action.RENAME_SUBSCRIPTION_PRIVILEGED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="EmergencyCallbackModeExitDialog"
             android:excludeFromRecents="true"
             android:label="@string/ecm_exit_dialog"
