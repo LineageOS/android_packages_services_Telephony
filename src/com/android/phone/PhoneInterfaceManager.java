@@ -2925,8 +2925,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            boolean isRoaming = TelephonyManager.from(
+                    getPhone(subId).getContext()).isNetworkRoaming(subId);
             ImsManager.getInstance(mApp,
-                    getSlotIndexOrException(subId)).setWfcNonPersistent(isCapable, mode);
+                    getSlotIndexOrException(subId)).setWfcNonPersistent(isCapable, mode, isRoaming);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
