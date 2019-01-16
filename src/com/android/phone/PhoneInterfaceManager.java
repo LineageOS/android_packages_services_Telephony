@@ -229,6 +229,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_CMD_MODEM_REBOOT_DONE = 65;
     private static final int CMD_REQUEST_CELL_INFO_UPDATE = 66;
     private static final int EVENT_REQUEST_CELL_INFO_UPDATE_DONE = 67;
+    private static final int CMD_REQUEST_ENABLE_MODEM = 68;
+    private static final int EVENT_ENABLE_MODEM_DONE = 69;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1082,6 +1084,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     break;
                 case EVENT_CMD_MODEM_REBOOT_DONE:
                     handleNullReturnEvent(msg, "rebootModem");
+                    break;
+                case CMD_REQUEST_ENABLE_MODEM:
+                    request = (MainThreadRequest) msg.obj;
+                    boolean enable = (boolean) request.argument;
+                    onCompleted = obtainMessage(EVENT_ENABLE_MODEM_DONE, request);
+                    PhoneConfigurationManager.getInstance()
+                            .enablePhone(request.phone, enable, onCompleted);
+                    break;
+                case EVENT_ENABLE_MODEM_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    request.result = (ar.exception == null);
+                    notifyRequester(request);
                     break;
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
@@ -6080,5 +6095,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
         return null;
+    }
+
+    /**
+     * Enable or disable a modem stack.
+     */
+    @Override
+    public boolean enableModemForSlot(int slotIndex, boolean enable) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = PhoneFactory.getPhone(slotIndex);
+            if (phone == null) {
+                return false;
+            } else {
+                return (Boolean) sendRequest(CMD_REQUEST_ENABLE_MODEM, enable, phone, null);
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 }
