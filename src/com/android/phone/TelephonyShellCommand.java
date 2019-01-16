@@ -22,11 +22,14 @@ import android.os.RemoteException;
 import android.os.ShellCommand;
 import android.os.UserHandle;
 import android.telephony.SubscriptionManager;
+import android.telephony.emergency.EmergencyNumber;
 import android.util.Log;
 
 import com.android.internal.telephony.ITelephony;
+import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 /**
  * Takes actions based on the adb commands given by "adb shell cmd phone ...". Be careful, no
@@ -44,6 +47,7 @@ public class TelephonyShellCommand extends ShellCommand {
     private static final String IMS_SUBCOMMAND = "ims";
     private static final String SMS_SUBCOMMAND = "sms";
     private static final String NUMBER_VERIFICATION_SUBCOMMAND = "numverify";
+    private static final String EMERGENCY_NUMBER_TEST_MODE = "emergency-number-test-mode";
 
     private static final String IMS_SET_CARRIER_SERVICE = "set-ims-service";
     private static final String IMS_GET_CARRIER_SERVICE = "get-ims-service";
@@ -79,6 +83,8 @@ public class TelephonyShellCommand extends ShellCommand {
             }
             case NUMBER_VERIFICATION_SUBCOMMAND:
                 return handleNumberVerificationCommand();
+            case EMERGENCY_NUMBER_TEST_MODE:
+                return handleEmergencyNumberTestModeCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -95,8 +101,11 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("    IMS Commands.");
         pw.println("  sms");
         pw.println("    SMS Commands.");
+        pw.println("  emergency-number-test-mode");
+        pw.println("    Emergency Number Test Mode Commands.");
         onHelpIms();
         onHelpSms();
+        onHelpEmergencyNumber();
     }
 
     private void onHelpIms() {
@@ -147,6 +156,20 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("    1 if the call would have been intercepted, 0 otherwise.");
     }
 
+    private void onHelpEmergencyNumber() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Emergency Number Test Mode Commands:");
+        pw.println("  emergency-number-test-mode ");
+        pw.println("    Add(-a), Clear(-c), Print (-p) or Remove(-r) the emergency number list in"
+                + " the test mode");
+        pw.println("      -a <emergency number address>: add an emergency number address for the"
+                + " test mode, only allows '0'-'9', '*', or '#'.");
+        pw.println("      -c: clear the emergency number list in the test mode.");
+        pw.println("      -r <emergency number address>: remove an existing emergency number"
+                + " address added by the test mode, only allows '0'-'9', '*', or '#'.");
+        pw.println("      -p: get the full emergency number list in the test mode.");
+    }
+
     private int handleImsCommand() {
         String arg = getNextArg();
         if (arg == null) {
@@ -170,6 +193,91 @@ public class TelephonyShellCommand extends ShellCommand {
         }
 
         return -1;
+    }
+
+    private int handleEmergencyNumberTestModeCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        String opt = getNextOption();
+        if (opt == null) {
+            onHelpEmergencyNumber();
+            return 0;
+        }
+
+        switch (opt) {
+            case "-a": {
+                String emergencyNumberCmd = getNextArgRequired();
+                if (emergencyNumberCmd == null
+                        || !EmergencyNumber.validateEmergencyNumberAddress(emergencyNumberCmd)) {
+                    errPw.println("An emergency number (only allow '0'-'9', '*', or '#') needs"
+                            + " to be specified after -a in the command ");
+                    return -1;
+                }
+                try {
+                    mInterface.updateEmergencyNumberListTestMode(
+                            EmergencyNumberTracker.ADD_EMERGENCY_NUMBER_TEST_MODE,
+                            new EmergencyNumber(emergencyNumberCmd, "", "",
+                                    EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_UNSPECIFIED,
+                                    new ArrayList<String>(),
+                                    EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST,
+                                    EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN));
+                } catch (RemoteException ex) {
+                    Log.w(LOG_TAG, "emergency-number-test-mode -a " + emergencyNumberCmd
+                            + ", error " + ex.getMessage());
+                    errPw.println("Exception: " + ex.getMessage());
+                    return -1;
+                }
+                break;
+            }
+            case "-c": {
+                try {
+                    mInterface.updateEmergencyNumberListTestMode(
+                            EmergencyNumberTracker.RESET_EMERGENCY_NUMBER_TEST_MODE, null);
+                } catch (RemoteException ex) {
+                    Log.w(LOG_TAG, "emergency-number-test-mode -c " + "error " + ex.getMessage());
+                    errPw.println("Exception: " + ex.getMessage());
+                    return -1;
+                }
+                break;
+            }
+            case "-r": {
+                String emergencyNumberCmd = getNextArgRequired();
+                if (emergencyNumberCmd == null
+                        || !EmergencyNumber.validateEmergencyNumberAddress(emergencyNumberCmd)) {
+                    errPw.println("An emergency number (only allow '0'-'9', '*', or '#') needs"
+                            + " to be specified after -r in the command ");
+                    return -1;
+                }
+                try {
+                    mInterface.updateEmergencyNumberListTestMode(
+                            EmergencyNumberTracker.REMOVE_EMERGENCY_NUMBER_TEST_MODE,
+                            new EmergencyNumber(emergencyNumberCmd, "", "",
+                                    EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_UNSPECIFIED,
+                                    new ArrayList<String>(),
+                                    EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST,
+                                    EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN));
+                } catch (RemoteException ex) {
+                    Log.w(LOG_TAG, "emergency-number-test-mode -r " + emergencyNumberCmd
+                            + ", error " + ex.getMessage());
+                    errPw.println("Exception: " + ex.getMessage());
+                    return -1;
+                }
+                break;
+            }
+            case "-p": {
+                try {
+                    getOutPrintWriter().println(mInterface.getEmergencyNumberListTestMode());
+                } catch (RemoteException ex) {
+                    Log.w(LOG_TAG, "emergency-number-test-mode -p " + "error " + ex.getMessage());
+                    errPw.println("Exception: " + ex.getMessage());
+                    return -1;
+                }
+                break;
+            }
+            default:
+                onHelpEmergencyNumber();
+                break;
+        }
+        return 0;
     }
 
     private int handleNumberVerificationCommand() {
