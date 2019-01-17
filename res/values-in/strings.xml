@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Kode USSD sedang berjalan…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Kode MMI dibatalkan"</string>
     <string name="cancel" msgid="5044513931633602634">"Batal"</string>
-    <string name="enter_input" msgid="1810529547726803893">"Pesan USSD harus antara <xliff:g id="MIN_LEN">%d</xliff:g> dan <xliff:g id="MAX_LEN">%d</xliff:g> karakter. Coba lagi."</string>
+    <string name="enter_input" msgid="1810529547726803893">"Pesan USSD harus antara <xliff:g id="MIN_LEN">%1$d</xliff:g> dan <xliff:g id="MAX_LEN">%2$d</xliff:g> karakter. Coba lagi."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Kelola konferensi telepon"</string>
     <string name="ok" msgid="3811371167865772377">"Oke"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Speaker"</string>

@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD კოდი გაშვებულია…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI კოდი გაუქმდა"</string>
     <string name="cancel" msgid="5044513931633602634">"გაუქმება"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD შეტყობინება უნდა შედგებოდეს მინიმუმ <xliff:g id="MIN_LEN">%d</xliff:g>-სა და მაქსიმუმ <xliff:g id="MAX_LEN">%d</xliff:g> სიმბოლოსგან. გთხოვთ, სცადოთ ისევ."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD შეტყობინება უნდა შედგებოდეს მინიმუმ <xliff:g id="MIN_LEN">%1$d</xliff:g>-სა და მაქსიმუმ <xliff:g id="MAX_LEN">%2$d</xliff:g> სიმბოლოსგან. გთხოვთ, სცადოთ ისევ."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"საკონფერენციო ზარის მართვა"</string>
     <string name="ok" msgid="3811371167865772377">"კარგი"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"სპიკერი"</string>
