@@ -130,6 +130,7 @@ import com.android.internal.telephony.SmsApplication;
 import com.android.internal.telephony.SmsApplication.SmsApplicationData;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyPermissions;
+import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.euicc.EuiccConnector;
 import com.android.internal.telephony.uicc.IccIoResult;
 import com.android.internal.telephony.uicc.IccUtils;
@@ -153,9 +154,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Implementation of the ITelephony interface.
@@ -6056,6 +6059,52 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 }
             }
             return false;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Update emergency number list for test mode.
+     */
+    @Override
+    public void updateEmergencyNumberListTestMode(int action, EmergencyNumber num) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "updateEmergencyNumberListTestMode");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            for (Phone phone: PhoneFactory.getPhones()) {
+                EmergencyNumberTracker tracker = phone.getEmergencyNumberTracker();
+                if (tracker != null) {
+                    tracker.executeEmergencyNumberTestModeCommand(action, num);
+                }
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Get the full emergency number list for test mode.
+     */
+    @Override
+    public List<String> getEmergencyNumberListTestMode() {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "getEmergencyNumberListTestMode");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Set<String> emergencyNumbers = new HashSet<>();
+            for (Phone phone: PhoneFactory.getPhones()) {
+                EmergencyNumberTracker tracker = phone.getEmergencyNumberTracker();
+                if (tracker != null) {
+                    for (EmergencyNumber num : tracker.getEmergencyNumberList()) {
+                        emergencyNumbers.add(num.getNumber());
+                    }
+                }
+            }
+            return new ArrayList<>(emergencyNumbers);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
