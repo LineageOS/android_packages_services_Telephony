@@ -236,6 +236,17 @@ public class CallFeaturesSetting extends PreferenceActivity
         TelephonyManager telephonyManager = getSystemService(TelephonyManager.class)
                 .createForSubscriptionId(mPhone.getSubId());
 
+        // Note: The PhoneAccountSettingsActivity accessible via the
+        // android.telecom.action.CHANGE_PHONE_ACCOUNTS intent is accessible directly from
+        // the AOSP Dialer settings page on multi-sim devices.
+        // Where a device does NOT make the PhoneAccountSettingsActivity directly accessible from
+        // its Dialer app, this check must be modified in the device's AOSP branch to ensure that
+        // the PhoneAccountSettingsActivity is always accessible.
+        if (telephonyManager.isMultiSimEnabled()) {
+            Preference phoneAccountSettingsPreference = findPreference(PHONE_ACCOUNT_SETTINGS_KEY);
+            getPreferenceScreen().removePreference(phoneAccountSettingsPreference);
+        }
+
         PreferenceScreen prefSet = getPreferenceScreen();
         mVoicemailSettingsScreen =
                 (PreferenceScreen) findPreference(VOICEMAIL_SETTING_SCREEN_PREF_KEY);
