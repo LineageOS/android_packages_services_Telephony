@@ -5681,13 +5681,37 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public UiccCardInfo[] getUiccCardsInfo() {
-        enforceReadPrivilegedPermission("getUiccCardsInfo");
+    public List<UiccCardInfo> getUiccCardsInfo(String callingPackage) {
+        if (checkCarrierPrivilegesForPackageAnyPhone(callingPackage)
+                != TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
+            throw new SecurityException("Caller does not have carrier privileges on any UICC.");
+        }
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ArrayList<UiccCardInfo> cards = UiccController.getInstance().getAllUiccCardInfos();
-            return cards.toArray(new UiccCardInfo[cards.size()]);
+            UiccController uiccController = UiccController.getInstance();
+            ArrayList<UiccCardInfo> cardInfos = uiccController.getAllUiccCardInfos();
+
+            ApplicationInfo ai = mApp.getPackageManager().getApplicationInfo(callingPackage, 0);
+            if ((ai.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
+                // Remove private info if the caller doesn't have access
+                ArrayList<UiccCardInfo> filteredInfos = new ArrayList<>();
+                for (UiccCardInfo cardInfo : cardInfos) {
+                    UiccCard card = uiccController.getUiccCard(cardInfo.getSlotIndex());
+                    UiccProfile profile = card.getUiccProfile();
+                    if (profile.getCarrierPrivilegeStatus(mApp.getPackageManager(), callingPackage)
+                            != TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
+                        filteredInfos.add(cardInfo.getUnprivileged());
+                    } else {
+                        filteredInfos.add(cardInfo);
+                    }
+                }
+                return filteredInfos;
+            }
+            return cardInfos;
+        } catch (PackageManager.NameNotFoundException e) {
+            // This should not happen since we pass the package info in from TelephonyManager
+            throw new SecurityException("Invalid calling package.");
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -5767,11 +5791,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int getCardIdForDefaultEuicc(int subId, String callingPackage) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, "getCardIdForDefaultEuicc")) {
-            return TelephonyManager.INVALID_CARD_ID;
-        }
-
         final long identity = Binder.clearCallingIdentity();
         try {
             return UiccController.getInstance().getCardIdForDefaultEuicc();
