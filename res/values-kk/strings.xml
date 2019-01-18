@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD коды қосулы…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI коды жарамсыздандырылған"</string>
     <string name="cancel" msgid="5044513931633602634">"Тоқтату"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD хабары <xliff:g id="MIN_LEN">%d</xliff:g> және <xliff:g id="MAX_LEN">%d</xliff:g> аралығындағы таңбалардан тұруы тиіс. Қайта әрекеттеніп көріңіз"</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD хабары <xliff:g id="MIN_LEN">%1$d</xliff:g> және <xliff:g id="MAX_LEN">%2$d</xliff:g> аралығындағы таңбалардан тұруы тиіс. Қайта әрекеттеніп көріңіз"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Мәжіліс қоңырауын басқару"</string>
     <string name="ok" msgid="3811371167865772377">"Жарайды"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Үндеткіш"</string>

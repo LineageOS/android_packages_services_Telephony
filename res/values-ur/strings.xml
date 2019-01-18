@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"‏USSD کوڈ چل رہا ہے…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"‏MMI کوڈ منسوخ ہوگیا"</string>
     <string name="cancel" msgid="5044513931633602634">"منسوخ کریں"</string>
-    <string name="enter_input" msgid="1810529547726803893">"‏USSD پیغام <xliff:g id="MIN_LEN">%d</xliff:g> اور <xliff:g id="MAX_LEN">%d</xliff:g> حروف کے بیچ ہونا چاہیے۔ براہ کرم دوبارہ کوشش کریں۔"</string>
+    <string name="enter_input" msgid="1810529547726803893">"‏USSD پیغام <xliff:g id="MIN_LEN">%1$d</xliff:g> اور <xliff:g id="MAX_LEN">%2$d</xliff:g> حروف کے بیچ ہونا چاہیے۔ براہ کرم دوبارہ کوشش کریں۔"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"کانفرنس کال کا نظم کریں"</string>
     <string name="ok" msgid="3811371167865772377">"ٹھیک ہے"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"اسپیکر"</string>

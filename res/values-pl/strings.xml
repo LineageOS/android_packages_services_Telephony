@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Uruchomiony kod USSD..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Kod MMI został anulowany"</string>
     <string name="cancel" msgid="5044513931633602634">"Anuluj"</string>
-    <string name="enter_input" msgid="1810529547726803893">"Komunikat USSD musi mieć od <xliff:g id="MIN_LEN">%d</xliff:g> do <xliff:g id="MAX_LEN">%d</xliff:g> znaków. Spróbuj ponownie."</string>
+    <string name="enter_input" msgid="1810529547726803893">"Komunikat USSD musi mieć od <xliff:g id="MIN_LEN">%1$d</xliff:g> do <xliff:g id="MAX_LEN">%2$d</xliff:g> znaków. Spróbuj ponownie."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Zarządzaj poł. konferencyjnym"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Głośnik"</string>
