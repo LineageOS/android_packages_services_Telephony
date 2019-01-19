@@ -52,11 +52,11 @@ import android.os.UserManager;
 import android.os.WorkSource;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.service.carrier.CarrierIdentifier;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
+import android.telephony.CarrierRestrictionRules;
 import android.telephony.CellInfo;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoWcdma;
@@ -840,10 +840,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_SET_ALLOWED_CARRIERS:
                     request = (MainThreadRequest) msg.obj;
+                    CarrierRestrictionRules argument =
+                            (CarrierRestrictionRules) request.argument;
                     onCompleted = obtainMessage(EVENT_SET_ALLOWED_CARRIERS_DONE, request);
-                    defaultPhone.setAllowedCarriers(
-                            (List<CarrierIdentifier>) request.argument,
-                            onCompleted, request.workSource);
+                    defaultPhone.setAllowedCarriers(argument, onCompleted, request.workSource);
                     break;
 
                 case EVENT_SET_ALLOWED_CARRIERS_DONE:
@@ -852,18 +852,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (ar.exception == null && ar.result != null) {
                         request.result = ar.result;
                     } else {
-                        if (ar.result == null) {
-                            loge("setAllowedCarriers: Empty response");
-                        } else if (ar.exception instanceof CommandException) {
-                            loge("setAllowedCarriers: CommandException: " +
-                                    ar.exception);
+                        request.result = TelephonyManager.SET_CARRIER_RESTRICTION_ERROR;
+                        if (ar.exception instanceof CommandException) {
+                            loge("setAllowedCarriers: CommandException: " + ar.exception);
+                            CommandException.Error error =
+                                    ((CommandException) (ar.exception)).getCommandError();
+                            if (error == CommandException.Error.REQUEST_NOT_SUPPORTED) {
+                                request.result =
+                                        TelephonyManager.SET_CARRIER_RESTRICTION_NOT_SUPPORTED;
+                            }
                         } else {
                             loge("setAllowedCarriers: Unknown exception");
                         }
-                    }
-                    // Result cannot be null. Return -1 on error.
-                    if (request.result == null) {
-                        request.result = new int[]{-1};
                     }
                     notifyRequester(request);
                     break;
@@ -880,6 +880,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (ar.exception == null && ar.result != null) {
                         request.result = ar.result;
                     } else {
+                        request.result = new IllegalStateException(
+                            "Failed to get carrier restrictions");
                         if (ar.result == null) {
                             loge("getAllowedCarriers: Empty response");
                         } else if (ar.exception instanceof CommandException) {
@@ -888,10 +890,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         } else {
                             loge("getAllowedCarriers: Unknown exception");
                         }
-                    }
-                    // Result cannot be null. Return empty list of CarrierIdentifier.
-                    if (request.result == null) {
-                        request.result = new ArrayList<CarrierIdentifier>(0);
                     }
                     notifyRequester(request);
                     break;
@@ -5262,27 +5260,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * {@hide}
-     * Set the allowed carrier list for slotIndex
+     * Set the allowed carrier list and the excluded carrier list, indicating the priority between
+     * the two lists.
      * Require system privileges. In the future we may add this to carrier APIs.
      *
-     * @return The number of carriers set successfully, should match length of carriers
+     * @return Integer with the result of the operation, as defined in {@link TelephonyManager}.
      */
     @Override
-    public int setAllowedCarriers(int slotIndex, List<CarrierIdentifier> carriers) {
+    @TelephonyManager.SetCarrierRestrictionResult
+    public int setAllowedCarriers(CarrierRestrictionRules carrierRestrictionRules) {
         enforceModifyPermission();
         WorkSource workSource = getWorkSource(Binder.getCallingUid());
 
-        if (carriers == null) {
-            throw new NullPointerException("carriers cannot be null");
+        if (carrierRestrictionRules == null) {
+            throw new NullPointerException("carrier restriction cannot be null");
         }
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            int[] subIds = SubscriptionManager.getSubId(slotIndex);
-            int subId = (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-            int[] retVal = (int[]) sendRequest(CMD_SET_ALLOWED_CARRIERS, carriers, subId,
+            return (int) sendRequest(CMD_SET_ALLOWED_CARRIERS, carrierRestrictionRules,
                     workSource);
-            return retVal[0];
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -5290,23 +5287,29 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * {@hide}
-     * Get the allowed carrier list for slotIndex.
+     * Get the allowed carrier list and the excluded carrier list, including the priority between
+     * the two lists.
      * Require system privileges. In the future we may add this to carrier APIs.
      *
-     * @return List of {@link android.service.telephony.CarrierIdentifier}; empty list
-     * means all carriers are allowed.
+     * @return {@link android.telephony.CarrierRestrictionRules}
      */
     @Override
-    public List<CarrierIdentifier> getAllowedCarriers(int slotIndex) {
+    public CarrierRestrictionRules getAllowedCarriers() {
         enforceReadPrivilegedPermission("getAllowedCarriers");
         WorkSource workSource = getWorkSource(Binder.getCallingUid());
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            int[] subIds = SubscriptionManager.getSubId(slotIndex);
-            int subId = (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-            return (List<CarrierIdentifier>) sendRequest(CMD_GET_ALLOWED_CARRIERS, null, subId,
-                    workSource);
+            Object response = sendRequest(CMD_GET_ALLOWED_CARRIERS, null, workSource);
+            if (response instanceof CarrierRestrictionRules) {
+                return (CarrierRestrictionRules) response;
+            }
+            // Response is an Exception of some kind,
+            // which is signalled to the user as a NULL retval
+            return null;
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "getAllowedCarriers. Exception ex=" + e);
+            return null;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
