@@ -278,7 +278,7 @@
     <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
     <skip />
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datatempo verminder na <xliff:g id="USED">%1$d</xliff:g> Kb/s as datagebruiklimiet oorskry word"</string>
-    <string name="throttle_help_subtext" msgid="5217706521499010816">"Meer inligting oor jou draer se mobielenetwerk-datagebruikbeleid"</string>
+    <string name="throttle_help_subtext" msgid="5217706521499010816">"Meer inligting oor jou diensverskaffer se mobielenetwerk-datagebruikbeleid"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Seluitsending-SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4851147873691392255">"Seluitsending-SMS"</string>
     <string name="cell_bc_sms_enable" msgid="6441688565738921084">"Seluitsending-SMS geaktiveer"</string>
