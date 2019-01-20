@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"‏در حال اجرای کد USSD..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"‏کد MMI لغو شد"</string>
     <string name="cancel" msgid="5044513931633602634">"لغو"</string>
-    <string name="enter_input" msgid="1810529547726803893">"‏طول پیام USSD باید بین <xliff:g id="MIN_LEN">%d</xliff:g> تا <xliff:g id="MAX_LEN">%d</xliff:g> نویسه باشد. لطفاً دوباره امتحان کنید."</string>
+    <string name="enter_input" msgid="1810529547726803893">"‏طول پیام USSD باید بین <xliff:g id="MIN_LEN">%1$d</xliff:g> تا <xliff:g id="MAX_LEN">%2$d</xliff:g> نویسه باشد. لطفاً دوباره امتحان کنید."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"مدیریت تماس کنفرانس"</string>
     <string name="ok" msgid="3811371167865772377">"تأیید"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"بلندگو"</string>
@@ -97,7 +97,7 @@
     <string name="call_forwarding_settings" msgid="3378927671091537173">"تنظیمات هدایت تماس"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"تنظیمات هدایت تماس (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"هدایت تماس"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"همیشه هدایت"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"همیشه بازارسال"</string>
     <string name="messageCFU" msgid="3560082430662923687">"همیشه از این شماره استفاده شود"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"هدایت همه تماس‌ها"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"هدایت همه تماس‌ها به <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>

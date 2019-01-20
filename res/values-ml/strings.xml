@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD കോഡ് പ്രവർത്തിക്കുന്നു…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI കോഡ് റദ്ദാക്കി"</string>
     <string name="cancel" msgid="5044513931633602634">"റദ്ദാക്കുക"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD സന്ദേശങ്ങൾ <xliff:g id="MIN_LEN">%d</xliff:g> മുതൽ <xliff:g id="MAX_LEN">%d</xliff:g> വരെ പ്രതീകങ്ങൾക്കിടയിലായിരിക്കണം. വീണ്ടും ശ്രമിക്കുക."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD സന്ദേശങ്ങൾ <xliff:g id="MIN_LEN">%1$d</xliff:g> മുതൽ <xliff:g id="MAX_LEN">%2$d</xliff:g> വരെ പ്രതീകങ്ങൾക്കിടയിലായിരിക്കണം. വീണ്ടും ശ്രമിക്കുക."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"കോൺഫറൻസ് കോൾ നിയന്ത്രിക്കുക"</string>
     <string name="ok" msgid="3811371167865772377">"ശരി"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"സ്പീക്കർ"</string>

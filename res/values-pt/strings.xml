@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Código USSD em execução…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Código MMI cancelado"</string>
     <string name="cancel" msgid="5044513931633602634">"Cancelar"</string>
-    <string name="enter_input" msgid="1810529547726803893">"A mensagem USSD deve ter de <xliff:g id="MIN_LEN">%d</xliff:g> a <xliff:g id="MAX_LEN">%d</xliff:g> caracteres. Tente novamente."</string>
+    <string name="enter_input" msgid="1810529547726803893">"A mensagem USSD deve ter de <xliff:g id="MIN_LEN">%1$d</xliff:g> a <xliff:g id="MAX_LEN">%2$d</xliff:g> caracteres. Tente novamente."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Gerenciar teleconferência"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Alto-falante"</string>
@@ -421,15 +421,15 @@
     <string name="name" msgid="7329028332786872378">"Nome"</string>
     <string name="number" msgid="7905950798349903858">"Número"</string>
     <string name="save" msgid="4094274636321939086">"Salvar"</string>
-    <string name="add_fdn_contact" msgid="2481915899633353976">"Adicionar número de chamadas fixas"</string>
-    <string name="adding_fdn_contact" msgid="7627379633721940991">"Adicionando número de chamadas fixas…"</string>
-    <string name="fdn_contact_added" msgid="7458335758501736665">"Número de chamadas fixas adicionado."</string>
-    <string name="edit_fdn_contact" msgid="7976936035587081480">"Editar o número de chamadas fixas"</string>
-    <string name="updating_fdn_contact" msgid="8370929876849803600">"Atualizando o número de chamadas fixas…"</string>
-    <string name="fdn_contact_updated" msgid="5497828782609005017">"Número de chamadas fixas atualizado."</string>
-    <string name="delete_fdn_contact" msgid="6668958073074151717">"Excluir número de chamadas fixas"</string>
-    <string name="deleting_fdn_contact" msgid="5669163206349319969">"Excluindo número de chamadas fixas…"</string>
-    <string name="fdn_contact_deleted" msgid="7154162327112259569">"Número de chamadas fixas excluído."</string>
+    <string name="add_fdn_contact" msgid="2481915899633353976">"Adicionar número de discagem fixa"</string>
+    <string name="adding_fdn_contact" msgid="7627379633721940991">"Adicionando número de discagem fixa…"</string>
+    <string name="fdn_contact_added" msgid="7458335758501736665">"Número de discagem fixa adicionado."</string>
+    <string name="edit_fdn_contact" msgid="7976936035587081480">"Editar o número de discagem fixa"</string>
+    <string name="updating_fdn_contact" msgid="8370929876849803600">"Atualizando o número de discagem fixa…"</string>
+    <string name="fdn_contact_updated" msgid="5497828782609005017">"Número de discagem fixa atualizado."</string>
+    <string name="delete_fdn_contact" msgid="6668958073074151717">"Excluir número de discagem fixa"</string>
+    <string name="deleting_fdn_contact" msgid="5669163206349319969">"Excluindo número de discagem fixa…"</string>
+    <string name="fdn_contact_deleted" msgid="7154162327112259569">"Número de discagem fixa excluído."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"O FDN não foi atualizado porque você digitou um PIN incorreto."</string>
     <string name="fdn_invalid_number" msgid="2062898833049589309">"O FDN não foi atualizado porque o número excede 20 dígitos."</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"O FDN não foi atualizado. O PIN2 estava incorreto, ou o número de telefone foi rejeitado."</string>

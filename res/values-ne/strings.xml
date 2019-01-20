@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD कोड चल्दै..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI कोड रद्द गरियो।"</string>
     <string name="cancel" msgid="5044513931633602634">"रद्द गर्नुहोस्"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD सन्देश  <xliff:g id="MIN_LEN">%d</xliff:g> र <xliff:g id="MAX_LEN">%d</xliff:g> अक्षरहरूका बीच हुनै पर्दछ। कृपया पुनःप्रयास गर्नुहोस्।"</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD सन्देश  <xliff:g id="MIN_LEN">%1$d</xliff:g> र <xliff:g id="MAX_LEN">%2$d</xliff:g> अक्षरहरूका बीच हुनै पर्दछ। कृपया पुनःप्रयास गर्नुहोस्।"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"सम्मेलन कल प्रबन्ध गर्नुहोस्"</string>
     <string name="ok" msgid="3811371167865772377">"ठिक छ"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"स्पिकर"</string>
@@ -462,12 +462,12 @@
     <string name="badPuk2" msgid="7910064009531541708">"PUK2 गलत। फेरि प्रयास गर्नुहोस्।"</string>
     <string name="badPin2" msgid="6646896629970023109">"पुरानो PIN2 गलत। फेरि प्रयास गर्नुहोस्।"</string>
     <string name="mismatchPin2" msgid="4177967478551851117">"PIN2हरू मेल खाएनन्। फेरि प्रयास गर्नुहोस्।"</string>
-    <string name="invalidPin2" msgid="1757045131429105595">"4 देखि 8 नम्बरको एक PIN2 प्रविष्ट गर्नुहोस्।"</string>
-    <string name="invalidPuk2" msgid="7059081153334815973">"8 नम्बरको एक PUK2 प्रविष्ट गर्नुहोस्।"</string>
+    <string name="invalidPin2" msgid="1757045131429105595">"4 देखि 8 नम्बरको एक PIN2 प्रविष्टि गर्नुहोस्।"</string>
+    <string name="invalidPuk2" msgid="7059081153334815973">"8 नम्बरको एक PUK2 प्रविष्टि गर्नुहोस्।"</string>
     <string name="pin2_changed" msgid="3724522579945610956">"PIN2 अद्यावधिक गरियो"</string>
-    <string name="label_puk2_code" msgid="4688069961795341948">"PUK2 कोड प्रविष्ट गर्नुहोस्"</string>
+    <string name="label_puk2_code" msgid="4688069961795341948">"PUK2 कोड प्रविष्टि गर्नुहोस्"</string>
     <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"पासवर्ड गलत छ। PIN2 अहिले ब्लक गरिएको छ। पिन 2 परिवर्तन, फेरि प्रयास गर्नुहोस्।"</string>
-    <string name="puk2_requested" msgid="5831015200030161434">"पासवर्ड गलत छ। सिम अब ब्लक गरिएको छ। PUK2 प्रविष्ट गर्नुहोस्।"</string>
+    <string name="puk2_requested" msgid="5831015200030161434">"पासवर्ड गलत छ। सिम अब ब्लक गरिएको छ। PUK2 प्रविष्टि गर्नुहोस्।"</string>
     <string name="puk2_blocked" msgid="3150263853077280049">"PUK2 स्थायी रूपमा रोक्का गरियो।"</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n" तपाईंसँग <xliff:g id="NUMBER">%d</xliff:g> प्रयास बाँकी छन्।"</string>
     <string name="pin2_unblocked" msgid="7791600368153469078">"PIN2 अब ब्लक गरिएको छैन"</string>
@@ -495,7 +495,7 @@
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"नेटवर्कमा दर्ता भएको छैन।"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"मोबाइल नेटवर्क उपलब्ध छैन।"</string>
     <string name="incall_error_out_of_service_wfc" msgid="8741629779555132471">"मोबाइल नेटवर्क उपलब्ध छैन। कल गर्न तारविनाको नेटवर्कमा जडान गर्नुहोस्।"</string>
-    <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"एक कल गर्नको लागि, एक वैध नम्बर प्रविष्ट गर्नुहोस्।"</string>
+    <string name="incall_error_no_phone_number_supplied" msgid="1150414018684246528">"एक कल गर्नको लागि, एक वैध नम्बर प्रविष्टि गर्नुहोस्।"</string>
     <string name="incall_error_call_failed" msgid="5891978320269774095">"कल विफल भयो।"</string>
     <string name="incall_error_cannot_add_call" msgid="8878159278947023326">"यतिबेला कल गर्न सकिएन। तपाईंले कुनै सन्देश पठाएर सम्पर्क गर्ने प्रयास गर्न सक्नुहुन्छ।"</string>
     <string name="incall_error_supp_service_unknown" msgid="655570339115407698">"सेवा समर्थित छैन"</string>
@@ -642,7 +642,7 @@
     <string name="change_pin_cancel_label" msgid="353535488390948596">"रद्द गर्नुहोस्"</string>
     <string name="change_pin_ok_label" msgid="6204308560844889926">"ठिक छ"</string>
     <string name="change_pin_enter_old_pin_header" msgid="419179847657548887">"आफ्नो पुरानो PIN को पुष्टि गर्नुहोस्"</string>
-    <string name="change_pin_enter_old_pin_hint" msgid="8579171678763615453">"जारी राख्नका लागि आफ्नो भ्वाइस मेलको PIN प्रविष्ट गर्नुहोस्।"</string>
+    <string name="change_pin_enter_old_pin_hint" msgid="8579171678763615453">"जारी राख्नका लागि आफ्नो भ्वाइस मेलको PIN प्रविष्टि गर्नुहोस्।"</string>
     <string name="change_pin_enter_new_pin_header" msgid="2611191814590251532">"एउटा नयाँ PIN सेट गर्नुहोस्"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2322940054329689309">"PIN <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> अङ्कको हुनु पर्छ।"</string>
     <string name="change_pin_confirm_pin_header" msgid="8113764019347322170">"तपाईँको PIN को पुष्टि गर्नुहोस्"</string>
@@ -741,12 +741,12 @@
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"कल ब्यारिङको पासवर्ड परिवर्तन गर्नुहोस्"</string>
     <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"कल ब्यारिङको पासवर्ड परिवर्तन गर्न सकिएन।"</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"पासवर्डहरू मेल खाँदैनन्"</string>
-    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"कुनै ४ अङ्कको पासवर्ड प्रविष्ट गर्नुहोस्"</string>
+    <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"कुनै ४ अङ्कको पासवर्ड प्रविष्टि गर्नुहोस्"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"पासवर्ड परिवर्तन गरियो"</string>
     <string name="call_barring_old_pwd" msgid="6080515987320238522">"पुरानो पासवर्ड"</string>
     <string name="call_barring_new_pwd" msgid="7048532299150269547">"नयाँ पासवर्ड"</string>
     <string name="call_barring_confirm_pwd" msgid="1947167278466285411">"पासवर्ड निश्चित गर्नुहोस्"</string>
-    <string name="messageCallBarring" msgid="2412123220272136055">"पासवर्ड प्रविष्ट गर्नुहोस्"</string>
+    <string name="messageCallBarring" msgid="2412123220272136055">"पासवर्ड प्रविष्टि गर्नुहोस्"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"कल ब्यारिङसम्बन्धी सेटिङहरू"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"कल ब्यारिङसम्बन्धी सबै सेटिङहरू निष्क्रिय पार्ने हो?"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"कल अर्को नम्बरमा स्थानान्तरण गरियो।"</string>

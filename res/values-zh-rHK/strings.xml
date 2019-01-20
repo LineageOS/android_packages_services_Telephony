@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"正在執行 USSD 碼..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI 碼已取消"</string>
     <string name="cancel" msgid="5044513931633602634">"取消"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD 訊息必須介乎 <xliff:g id="MIN_LEN">%d</xliff:g> 至 <xliff:g id="MAX_LEN">%d</xliff:g> 個字元，請再試一次。"</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD 訊息必須介乎 <xliff:g id="MIN_LEN">%1$d</xliff:g> 至 <xliff:g id="MAX_LEN">%2$d</xliff:g> 個字元，請再試一次。"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"管理會議通話"</string>
     <string name="ok" msgid="3811371167865772377">"確定"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"揚聲器"</string>
