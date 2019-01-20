@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD కోడ్ అమలు చేయబడుతోంది…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI కోడ్ రద్దు చేయబడింది"</string>
     <string name="cancel" msgid="5044513931633602634">"రద్దు చేయి"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD సందేశం తప్పనిసరిగా <xliff:g id="MIN_LEN">%d</xliff:g> మరియు <xliff:g id="MAX_LEN">%d</xliff:g> అక్షరాల మధ్య ఉండాలి. దయచేసి మళ్లీ ప్రయత్నించండి."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD సందేశం తప్పనిసరిగా <xliff:g id="MIN_LEN">%1$d</xliff:g> మరియు <xliff:g id="MAX_LEN">%2$d</xliff:g> అక్షరాల మధ్య ఉండాలి. దయచేసి మళ్లీ ప్రయత్నించండి."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"కాన్ఫరెన్స్ కాల్‌ను నిర్వహించండి"</string>
     <string name="ok" msgid="3811371167865772377">"సరే"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"స్పీకర్"</string>

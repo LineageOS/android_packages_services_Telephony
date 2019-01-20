@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD kodea exekutatzen…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI kodea bertan behera utzi da"</string>
     <string name="cancel" msgid="5044513931633602634">"Utzi"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD mezuak <xliff:g id="MIN_LEN">%d</xliff:g> eta <xliff:g id="MAX_LEN">%d</xliff:g> karaktere bitartekoa izan behar du. Saiatu berriro."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD mezuak <xliff:g id="MIN_LEN">%1$d</xliff:g> eta <xliff:g id="MAX_LEN">%2$d</xliff:g> karaktere bitartekoa izan behar du. Saiatu berriro."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Kudeatu konferentzia-deia"</string>
     <string name="ok" msgid="3811371167865772377">"Ados"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Bozgorailua"</string>

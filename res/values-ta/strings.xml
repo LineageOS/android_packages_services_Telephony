@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD குறியீடு இயங்குகிறது…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI குறியீடு ரத்தானது"</string>
     <string name="cancel" msgid="5044513931633602634">"ரத்துசெய்"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD செய்தி <xliff:g id="MIN_LEN">%d</xliff:g> மற்றும் <xliff:g id="MAX_LEN">%d</xliff:g> எழுத்துக்குறிகளுக்கு இடையே இருக்க வேண்டும். மீண்டும் முயற்சிக்கவும்."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD செய்தி <xliff:g id="MIN_LEN">%1$d</xliff:g> மற்றும் <xliff:g id="MAX_LEN">%2$d</xliff:g> எழுத்துக்குறிகளுக்கு இடையே இருக்க வேண்டும். மீண்டும் முயற்சிக்கவும்."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"குழு அழைப்பை நிர்வகிக்கவும்"</string>
     <string name="ok" msgid="3811371167865772377">"சரி"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"ஸ்பீக்கர்"</string>

@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Kodi USSD po punon…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Kodi MMI u anulua"</string>
     <string name="cancel" msgid="5044513931633602634">"Anulo"</string>
-    <string name="enter_input" msgid="1810529547726803893">"Mesazhi USSD duhet të jetë mes karaktereve <xliff:g id="MIN_LEN">%d</xliff:g> dhe <xliff:g id="MAX_LEN">%d</xliff:g>. Provo sërish."</string>
+    <string name="enter_input" msgid="1810529547726803893">"Mesazhi USSD duhet të jetë mes karaktereve <xliff:g id="MIN_LEN">%1$d</xliff:g> dhe <xliff:g id="MAX_LEN">%2$d</xliff:g>. Provo sërish."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Menaxho telefonatën-konferencë"</string>
     <string name="ok" msgid="3811371167865772377">"Në rregull"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Altoparlant"</string>

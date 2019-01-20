@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"កូដ USSD កំពុង​ដំណើរការ…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"បាន​បោះបង់​កូដ MMI"</string>
     <string name="cancel" msgid="5044513931633602634">"បោះ​បង់​"</string>
-    <string name="enter_input" msgid="1810529547726803893">"សារ USSD ត្រូវ​តែ​មាន​តួអក្សរ​ចន្លោះ <xliff:g id="MIN_LEN">%d</xliff:g> និង <xliff:g id="MAX_LEN">%d</xliff:g> ។ សូម​ព្យាយាម​ម្ដងទៀត​។"</string>
+    <string name="enter_input" msgid="1810529547726803893">"សារ USSD ត្រូវ​តែ​មាន​តួអក្សរ​ចន្លោះ <xliff:g id="MIN_LEN">%1$d</xliff:g> និង <xliff:g id="MAX_LEN">%2$d</xliff:g> ។ សូម​ព្យាយាម​ម្ដងទៀត​។"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"គ្រប់គ្រង​ការ​ហៅ​​ជា​សន្និសីទ"</string>
     <string name="ok" msgid="3811371167865772377">"យល់​ព្រម​"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"អូប៉ាល័រ"</string>
