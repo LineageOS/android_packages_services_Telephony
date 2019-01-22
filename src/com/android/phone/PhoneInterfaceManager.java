@@ -4836,51 +4836,28 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String getLocaleFromDefaultSim() {
+    public String getSimLocaleForSubscriber(int subId) {
+        enforceReadPrivilegedPermission("getSimLocaleForSubscriber, subId: " + subId);
+        final Phone phone = getPhone(subId);
+        if (phone == null) {
+            log("getSimLocaleForSubscriber, invalid subId");
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
-            // We query all subscriptions instead of just the active ones, because
-            // this might be called early on in the provisioning flow when the
-            // subscriptions potentially aren't active yet.
-            final List<SubscriptionInfo> slist = getAllSubscriptionInfoList();
-            if (slist == null || slist.isEmpty()) {
-                return null;
-            }
-
-            // This function may be called very early, say, from the setup wizard, at
-            // which point we won't have a default subscription set. If that's the case
-            // we just choose the first, which will be valid in "most cases".
-            final int defaultSubId = getDefaultSubscription();
-            SubscriptionInfo info = null;
-            if (defaultSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-                info = slist.get(0);
-            } else {
-                for (SubscriptionInfo item : slist) {
-                    if (item.getSubscriptionId() == defaultSubId) {
-                        info = item;
-                        break;
-                    }
-                }
-
-                if (info == null) {
-                    return null;
-                }
-            }
-
+            final SubscriptionInfo info = mSubscriptionController.getActiveSubscriptionInfo(subId,
+                    phone.getContext().getOpPackageName());
             // Try and fetch the locale from the carrier properties or from the SIM language
             // preferences (EF-PL and EF-LI)...
             final int mcc = info.getMcc();
-            final Phone defaultPhone = getPhone(info.getSubscriptionId());
             String simLanguage = null;
-            if (defaultPhone != null) {
-                final Locale localeFromDefaultSim = defaultPhone.getLocaleFromSimAndCarrierPrefs();
-                if (localeFromDefaultSim != null) {
-                    if (!localeFromDefaultSim.getCountry().isEmpty()) {
-                        if (DBG) log("Using locale from default SIM:" + localeFromDefaultSim);
-                        return localeFromDefaultSim.toLanguageTag();
-                    } else {
-                        simLanguage = localeFromDefaultSim.getLanguage();
-                    }
+            final Locale localeFromDefaultSim = phone.getLocaleFromSimAndCarrierPrefs();
+            if (localeFromDefaultSim != null) {
+                if (!localeFromDefaultSim.getCountry().isEmpty()) {
+                    if (DBG) log("Using locale from subId: " + subId + " locale: "
+                            + localeFromDefaultSim);
+                    return localeFromDefaultSim.toLanguageTag();
+                } else {
+                    simLanguage = localeFromDefaultSim.getLanguage();
                 }
             }
 
@@ -4890,7 +4867,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // determined from the SIM MCC to provide an exact locale.
             final Locale mccLocale = MccTable.getLocaleFromMcc(mApp, mcc, simLanguage);
             if (mccLocale != null) {
-                if (DBG) log("No locale from default SIM, using mcc locale:" + mccLocale);
+                if (DBG) log("No locale from SIM, using mcc locale:" + mccLocale);
                 return mccLocale.toLanguageTag();
             }
 
