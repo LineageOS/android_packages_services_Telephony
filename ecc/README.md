@@ -30,4 +30,4 @@ Steps to update the ECC database:
 4. Make TeleService
 5. Push TeleService.apk to system/priv-app/TeleService
 6. Reboot device
-7. run 'atest TeleServiceTests:IsoToEccProtobufRepositoryTest#testEccDataContent'
+7. run 'atest TeleServiceTests:EccDataTest#testEccDataContent'
