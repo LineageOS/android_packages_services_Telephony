@@ -563,8 +563,8 @@
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"מפעיל..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"הטלפון מפעיל את שירותי הנתונים שלך לנייד.\n\nהתהליך עשוי לארוך עד 5 דקות."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"לדלג על ההפעלה?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"‏אם תדלג על ההפעלה, לא תוכל להתקשר או להתחבר לרשתות נתונים לנייד (אך תוכל להתחבר לרשתות Wi-Fi). עד שתפעיל את הטלפון, תתבקש להפעיל אותו בכל פעם שתדליק אותו."</string>
-    <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"דלג"</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"‏אם מדלגים על ההפעלה, אי אפשר להתקשר או להתחבר לרשתות נתונים לנייד (אך אפשר להתחבר לרשתות Wi-Fi). עד להפעלת הטלפון תופיע הודעה שמבקשת לבצע את ההפעלה בכל פעם שמדליקים את הטלפון."</string>
+    <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"דילוג"</string>
     <string name="ota_activate" msgid="1368528132525626264">"הפעל"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"הטלפון מופעל."</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"בעיה בהפעלה"</string>
