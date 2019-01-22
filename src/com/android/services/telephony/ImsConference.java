@@ -29,11 +29,14 @@ import android.telecom.DisconnectCause;
 import android.telecom.Log;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.StatusHints;
+import android.telecom.TelecomManager;
 import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
+import android.util.FeatureFlagUtils;
 import android.util.Pair;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Phone;
@@ -44,11 +47,13 @@ import com.android.phone.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Represents an IMS conference call.
@@ -66,6 +71,13 @@ import java.util.Map;
  * the participants.
  */
 public class ImsConference extends Conference implements Holdable {
+
+    /**
+     * Abstracts out fetching a feature flag.  Makes testing easier.
+     */
+    public interface FeatureFlagProxy {
+        boolean isUsingSinglePartyCallEmulation();
+    }
 
     /**
      * Listener used to respond to changes to conference participants.  At the conference level we
@@ -241,6 +253,25 @@ public class ImsConference extends Conference implements Holdable {
     private final Object mUpdateSyncRoot = new Object();
 
     private boolean mIsHoldable;
+    private boolean mCouldManageConference;
+    private FeatureFlagProxy mFeatureFlagProxy;
+    private boolean mIsEmulatingSinglePartyCall = false;
+    /**
+     * Where {@link #mIsEmulatingSinglePartyCall} is {@code true}, contains the
+     * {@link ConferenceParticipantConnection#getUserEntity()} and
+     * {@link ConferenceParticipantConnection#getEndpoint()} of the single participant which this
+     * conference pretends to be.
+     */
+    private Pair<Uri, Uri> mLoneParticipantIdentity = null;
+
+    /**
+     * The {@link ConferenceParticipantConnection#getUserEntity()} and
+     * {@link ConferenceParticipantConnection#getEndpoint()} of the conference host as they appear
+     * in the CEP.  This is determined when we scan the first conference event package.
+     * It is possible that this will be {@code null} for carriers which do not include the host
+     * in the CEP.
+     */
+    private Pair<Uri, Uri> mHostParticipantIdentity = null;
 
     public void updateConferenceParticipantsAfterCreation() {
         if (mConferenceHost != null) {
@@ -254,19 +285,21 @@ public class ImsConference extends Conference implements Holdable {
 
     /**
      * Initializes a new {@link ImsConference}.
-     *
-     * @param telephonyConnectionService The connection service responsible for adding new
+     *  @param telephonyConnectionService The connection service responsible for adding new
      *                                   conferene participants.
      * @param conferenceHost The telephony connection hosting the conference.
      * @param phoneAccountHandle The phone account handle associated with the conference.
+     * @param featureFlagProxy
      */
     public ImsConference(TelecomAccountRegistry telecomAccountRegistry,
-                         TelephonyConnectionServiceProxy telephonyConnectionService,
-            TelephonyConnection conferenceHost, PhoneAccountHandle phoneAccountHandle) {
+            TelephonyConnectionServiceProxy telephonyConnectionService,
+            TelephonyConnection conferenceHost, PhoneAccountHandle phoneAccountHandle,
+            FeatureFlagProxy featureFlagProxy) {
 
         super(phoneAccountHandle);
 
         mTelecomAccountRegistry = telecomAccountRegistry;
+        mFeatureFlagProxy = featureFlagProxy;
 
         // Specify the connection time of the conference to be the connection time of the original
         // connection.
@@ -561,16 +594,25 @@ public class ImsConference extends Conference implements Holdable {
     }
 
     /**
-     * Updates the manage conference capability of the conference.  Where there are one or more
-     * conference event package participants, the conference management is permitted.  Where there
-     * are no conference event package participants, conference management is not permitted.
+     * Updates the manage conference capability of the conference.
+     *
+     * The following cases are handled:
+     * <ul>
+     *     <li>There is only a single participant in the conference -- manage conference is
+     *     disabled.</li>
+     *     <li>There is more than one participant in the conference -- manage conference is
+     *     enabled.</li>
+     *     <li>No conference event package data is available -- manage conference is disabled.</li>
+     * </ul>
      * <p>
      * Note: We add and remove {@link Connection#CAPABILITY_CONFERENCE_HAS_NO_CHILDREN} to ensure
      * that the conference is represented appropriately on Bluetooth devices.
      */
     private void updateManageConference() {
         boolean couldManageConference = can(Connection.CAPABILITY_MANAGE_CONFERENCE);
-        boolean canManageConference = !mConferenceParticipantConnections.isEmpty();
+        boolean canManageConference = mFeatureFlagProxy.isUsingSinglePartyCallEmulation()
+                ? mConferenceParticipantConnections.size() > 1
+                : mConferenceParticipantConnections.size() != 0;
         Log.v(this, "updateManageConference was :%s is:%s", couldManageConference ? "Y" : "N",
                 canManageConference ? "Y" : "N");
 
@@ -649,7 +691,8 @@ public class ImsConference extends Conference implements Holdable {
      * @param parent The connection which was notified of the conference participant.
      * @param participants The conference participant information.
      */
-    private void handleConferenceParticipantsUpdate(
+    @VisibleForTesting
+    public void handleConferenceParticipantsUpdate(
             TelephonyConnection parent, List<ConferenceParticipant> participants) {
 
         if (participants == null) {
@@ -668,64 +711,102 @@ public class ImsConference extends Conference implements Holdable {
         // update adds new participants, and the second does something like update the status of one
         // of the participants, we can get into a situation where the participant is added twice.
         synchronized (mUpdateSyncRoot) {
+            int oldParticipantCount = mConferenceParticipantConnections.size();
             boolean newParticipantsAdded = false;
             boolean oldParticipantsRemoved = false;
             ArrayList<ConferenceParticipant> newParticipants = new ArrayList<>(participants.size());
             HashSet<Pair<Uri,Uri>> participantUserEntities = new HashSet<>(participants.size());
 
-            // Add any new participants and update existing.
-            for (ConferenceParticipant participant : participants) {
-                Pair<Uri,Uri> userEntity = new Pair<>(participant.getHandle(),
-                        participant.getEndpoint());
+            // Determine if the conference event package represents a single party conference.
+            // A single party conference is one where there is no other participant other than the
+            // conference host and one other participant.
+            boolean isSinglePartyConference = participants.stream()
+                    .filter(p -> {
+                        Pair<Uri, Uri> pIdent = new Pair<>(p.getHandle(), p.getEndpoint());
+                        return !Objects.equals(mHostParticipantIdentity, pIdent);
+                    })
+                    .count() == 1;
 
-                participantUserEntities.add(userEntity);
-                if (!mConferenceParticipantConnections.containsKey(userEntity)) {
-                    // Some carriers will also include the conference host in the CEP.  We will
-                    // filter that out here.
-                    if (!isParticipantHost(mConferenceHostAddress, participant.getHandle())) {
-                        createConferenceParticipantConnection(parent, participant);
-                        newParticipants.add(participant);
-                        newParticipantsAdded = true;
+            // We will only process the CEP data if:
+            // 1. We're not emulating a single party call.
+            // 2. We're emulating a single party call and the CEP contains more than just the
+            //    single party
+            if ((mIsEmulatingSinglePartyCall && !isSinglePartyConference) ||
+                !mIsEmulatingSinglePartyCall) {
+                // Add any new participants and update existing.
+                for (ConferenceParticipant participant : participants) {
+                    Pair<Uri, Uri> userEntity = new Pair<>(participant.getHandle(),
+                            participant.getEndpoint());
+
+                    participantUserEntities.add(userEntity);
+                    if (!mConferenceParticipantConnections.containsKey(userEntity)) {
+                        // Some carriers will also include the conference host in the CEP.  We will
+                        // filter that out here.
+                        if (!isParticipantHost(mConferenceHostAddress, participant.getHandle())) {
+                            createConferenceParticipantConnection(parent, participant);
+                            newParticipants.add(participant);
+                            newParticipantsAdded = true;
+                        } else {
+                            // Track the identity of the conference host; its useful to know when
+                            // we look at the CEP in the future.
+                            mHostParticipantIdentity = userEntity;
+                        }
+                    } else {
+                        ConferenceParticipantConnection connection =
+                                mConferenceParticipantConnections.get(userEntity);
+                        Log.i(this,
+                                "handleConferenceParticipantsUpdate: updateState, participant = %s",
+                                participant);
+                        connection.updateState(participant.getState());
+                        connection.setVideoState(parent.getVideoState());
                     }
-                } else {
-                    ConferenceParticipantConnection connection =
-                            mConferenceParticipantConnections.get(userEntity);
-                    Log.i(this, "handleConferenceParticipantsUpdate: updateState, participant = %s",
-                            participant);
-                    connection.updateState(participant.getState());
-                    connection.setVideoState(parent.getVideoState());
+                }
+
+                // Set state of new participants.
+                if (newParticipantsAdded) {
+                    // Set the state of the new participants at once and add to the conference
+                    for (ConferenceParticipant newParticipant : newParticipants) {
+                        ConferenceParticipantConnection connection =
+                                mConferenceParticipantConnections.get(new Pair<>(
+                                        newParticipant.getHandle(),
+                                        newParticipant.getEndpoint()));
+                        connection.updateState(newParticipant.getState());
+                        connection.setVideoState(parent.getVideoState());
+                    }
+                }
+
+                // Finally, remove any participants from the conference that no longer exist in the
+                // conference event package data.
+                Iterator<Map.Entry<Pair<Uri, Uri>, ConferenceParticipantConnection>> entryIterator =
+                        mConferenceParticipantConnections.entrySet().iterator();
+                while (entryIterator.hasNext()) {
+                    Map.Entry<Pair<Uri, Uri>, ConferenceParticipantConnection> entry =
+                            entryIterator.next();
+
+                    if (!participantUserEntities.contains(entry.getKey())) {
+                        ConferenceParticipantConnection participant = entry.getValue();
+                        participant.setDisconnected(new DisconnectCause(DisconnectCause.CANCELED));
+                        participant.removeConnectionListener(mParticipantListener);
+                        mTelephonyConnectionService.removeConnection(participant);
+                        removeConnection(participant);
+                        entryIterator.remove();
+                        oldParticipantsRemoved = true;
+                    }
                 }
             }
 
-            // Set state of new participants.
-            if (newParticipantsAdded) {
-                // Set the state of the new participants at once and add to the conference
-                for (ConferenceParticipant newParticipant : newParticipants) {
-                    ConferenceParticipantConnection connection =
-                            mConferenceParticipantConnections.get(new Pair<>(
-                                    newParticipant.getHandle(),
-                                    newParticipant.getEndpoint()));
-                    connection.updateState(newParticipant.getState());
-                    connection.setVideoState(parent.getVideoState());
-                }
-            }
-
-            // Finally, remove any participants from the conference that no longer exist in the
-            // conference event package data.
-            Iterator<Map.Entry<Pair<Uri, Uri>, ConferenceParticipantConnection>> entryIterator =
-                    mConferenceParticipantConnections.entrySet().iterator();
-            while (entryIterator.hasNext()) {
-                Map.Entry<Pair<Uri, Uri>, ConferenceParticipantConnection> entry =
-                        entryIterator.next();
-
-                if (!participantUserEntities.contains(entry.getKey())) {
-                    ConferenceParticipantConnection participant = entry.getValue();
-                    participant.setDisconnected(new DisconnectCause(DisconnectCause.CANCELED));
-                    participant.removeConnectionListener(mParticipantListener);
-                    mTelephonyConnectionService.removeConnection(participant);
-                    removeConnection(participant);
-                    entryIterator.remove();
-                    oldParticipantsRemoved = true;
+            int newParticipantCount = mConferenceParticipantConnections.size();
+            Log.v(this, "handleConferenceParticipantsUpdate: oldParticipantCount=%d, "
+                            + "newParticipantcount=%d", oldParticipantCount, newParticipantCount);
+            // If the single party call emulation fature flag is enabled, we can potentially treat
+            // the conference as a single party call when there is just one participant.
+            if (mFeatureFlagProxy.isUsingSinglePartyCallEmulation()) {
+                if (oldParticipantCount > 1 && newParticipantCount == 1) {
+                    // If number of participants goes to 1, emulate a single party call.
+                    startEmulatingSinglePartyCall();
+                } else if (mIsEmulatingSinglePartyCall && !isSinglePartyConference) {
+                    // Number of participants increased, so stop emulating a single party call.
+                    stopEmulatingSinglePartyCall();
                 }
             }
 
@@ -735,6 +816,89 @@ public class ImsConference extends Conference implements Holdable {
                 updateManageConference();
             }
         }
+    }
+
+    /**
+     * Called after {@link #startEmulatingSinglePartyCall()} to cause the conference to appear as
+     * if it is a conference again.
+     * 1. Tell telecom we're a conference again.
+     * 2. Restore {@link Connection#CAPABILITY_MANAGE_CONFERENCE} capability.
+     * 3. Null out the name/address.
+     */
+    private void stopEmulatingSinglePartyCall() {
+        Log.i(this, "stopEmulatingSinglePartyCall: conference now has more than one"
+                + " participant; make it look conference-like again.");
+        mIsEmulatingSinglePartyCall = false;
+
+        if (mCouldManageConference) {
+            int currentCapabilities = getConnectionCapabilities();
+            currentCapabilities |= Connection.CAPABILITY_MANAGE_CONFERENCE;
+            setConnectionCapabilities(currentCapabilities);
+        }
+
+        // Null out the address/name so it doesn't look like a single party call
+        setAddress(null, TelecomManager.PRESENTATION_UNKNOWN);
+        setCallerDisplayName(null, TelecomManager.PRESENTATION_UNKNOWN);
+
+        // Copy the conference connect time back to the previous lone participant.
+        ConferenceParticipantConnection loneParticipant =
+                mConferenceParticipantConnections.get(mLoneParticipantIdentity);
+        if (loneParticipant != null) {
+            Log.d(this,
+                    "stopEmulatingSinglePartyCall: restored lone participant connect time");
+            loneParticipant.setConnectTimeMillis(getConnectionTime());
+            loneParticipant.setConnectionStartElapsedRealTime(getConnectionStartElapsedRealTime());
+        }
+
+        // Tell Telecom its a conference again.
+        setConferenceState(true);
+    }
+
+    /**
+     * Called when a conference drops to a single participant. Causes this conference to present
+     * itself to Telecom as if it was a single party call.
+     * 1. Remove the participant from Telecom and from local tracking; when we get a new CEP in
+     *    the future we'll just re-add the participant anyways.
+     * 2. Tell telecom we're not a conference.
+     * 3. Remove {@link Connection#CAPABILITY_MANAGE_CONFERENCE} capability.
+     * 4. Set the name/address to that of the single participant.
+     */
+    private void startEmulatingSinglePartyCall() {
+        Log.i(this, "startEmulatingSinglePartyCall: conference has a single "
+                + "participant; downgrade to single party call.");
+
+        mIsEmulatingSinglePartyCall = true;
+        Iterator<ConferenceParticipantConnection> valueIterator =
+                mConferenceParticipantConnections.values().iterator();
+        if (valueIterator.hasNext()) {
+            ConferenceParticipantConnection entry = valueIterator.next();
+
+            // Set the conference name/number to that of the remaining participant.
+            setAddress(entry.getAddress(), entry.getAddressPresentation());
+            setCallerDisplayName(entry.getCallerDisplayName(),
+                    entry.getCallerDisplayNamePresentation());
+            setConnectionStartElapsedRealTime(entry.getConnectElapsedTimeMillis());
+            setConnectionTime(entry.getConnectTimeMillis());
+            mLoneParticipantIdentity = new Pair<>(entry.getUserEntity(), entry.getEndpoint());
+
+            // Remove the participant from Telecom.  It'll get picked up in a future CEP update
+            // again anyways.
+            entry.setDisconnected(new DisconnectCause(DisconnectCause.CANCELED,
+                    "EMULATING_SINGLE_CALL"));
+            entry.removeConnectionListener(mParticipantListener);
+            mTelephonyConnectionService.removeConnection(entry);
+            removeConnection(entry);
+            valueIterator.remove();
+        }
+
+        // Have Telecom pretend its not a conference.
+        setConferenceState(false);
+
+        // Remove manage conference capability.
+        mCouldManageConference = can(Connection.CAPABILITY_MANAGE_CONFERENCE);
+        int currentCapabilities = getConnectionCapabilities();
+        currentCapabilities &= ~Connection.CAPABILITY_MANAGE_CONFERENCE;
+        setConnectionCapabilities(currentCapabilities);
     }
 
     /**
