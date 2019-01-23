@@ -21,6 +21,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
@@ -115,7 +116,10 @@ public class TelecomAccountRegistry {
             }
 
             try {
-                mMmTelManager = ImsMmTelManager.createForSubscriptionId(getSubId());
+                if (mPhone.getContext().getPackageManager().hasSystemFeature(
+                        PackageManager.FEATURE_TELEPHONY_IMS)) {
+                    mMmTelManager = ImsMmTelManager.createForSubscriptionId(getSubId());
+                }
             } catch (IllegalArgumentException e) {
                 Log.i(this, "Not registering MmTel capabilities listener because the subid '"
                         + getSubId() + "' is invalid: " + e.getMessage());
