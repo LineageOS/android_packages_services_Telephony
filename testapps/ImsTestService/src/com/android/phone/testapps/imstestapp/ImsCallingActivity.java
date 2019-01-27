@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.telephony.SubscriptionManager;
+import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.feature.MmTelFeature;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
@@ -162,12 +163,12 @@ public class ImsCallingActivity extends Activity {
         mListView = (ListView) findViewById(R.id.cap_cb_list);
         mListView.setAdapter(mCapabiltyEventAdapter);
         try {
-            mImsManager = ImsMmTelManager.createForSubscriptionId(this,
+            mImsManager = ImsMmTelManager.createForSubscriptionId(
                     SubscriptionManager.getDefaultVoiceSubscriptionId());
             Log.i("ImsCallingActivity", "onResume");
             mImsManager.registerMmTelCapabilityCallback(getMainExecutor(), mCapabilityCallback);
-        } catch (IllegalArgumentException e) {
-            Log.w("ImsCallingActivity", "illegal subscription ID.");
+        } catch (IllegalArgumentException | ImsException e) {
+            Log.w("ImsCallingActivity", "Exception: " + e.getMessage());
         }
     }
 
