@@ -5122,6 +5122,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final Phone phone = getPhone(subId);
         if (phone == null) {
             log("getSimLocaleForSubscriber, invalid subId");
+            return null;
         }
         final long identity = Binder.clearCallingIdentity();
         try {
