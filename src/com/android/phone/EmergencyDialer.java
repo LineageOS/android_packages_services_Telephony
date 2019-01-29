@@ -83,9 +83,6 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.phone.common.dialpad.DialpadKeyButton;
 import com.android.phone.common.util.ViewUtil;
 import com.android.phone.common.widget.ResizingTextEditText;
-import com.android.phone.ecc.CountryEccInfo;
-import com.android.phone.ecc.EccInfoHelper;
-import com.android.phone.ecc.IsoToEccProtobufRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -235,7 +232,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     private View mEmergencyShortcutView;
     private View mDialpadView;
 
-    private EccInfoHelper mEccInfoHelper;
+    private ShortcutViewUtils.PhoneInfo mPhoneInfo;
 
     private List<EmergencyShortcutButton> mEmergencyShortcutButtonList;
     private EccShortcutAdapter mShortcutAdapter;
@@ -363,14 +360,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 configMgr.getConfigForSubId(SubscriptionManager.getDefaultVoiceSubscriptionId());
 
         mIsShortcutViewEnabled = false;
+        mPhoneInfo = null;
         if (canEnableShortcutView(carrierConfig)) {
-            TelephonyManager tm = getSystemService(TelephonyManager.class);
-            String countryIso = tm.getNetworkCountryIso();
-            if (TextUtils.isEmpty(countryIso)) {
-                Log.d(LOG_TAG, "Unable to determine the country of current network.");
-            } else if (!EccInfoHelper.isCountryEccInfoAvailable(this, countryIso)) {
-                Log.d(LOG_TAG, "ECC info is unavailable.");
-            } else {
+            mPhoneInfo = ShortcutViewUtils.pickPreferredPhone(this);
+            if (mPhoneInfo != null) {
                 mIsShortcutViewEnabled = true;
             }
         }
@@ -469,7 +462,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         mEmergencyInfoGroup = (EmergencyInfoGroup) findViewById(R.id.emergency_info_button);
 
         if (mIsShortcutViewEnabled) {
-            mEccInfoHelper = new EccInfoHelper(IsoToEccProtobufRepository.getInstance());
             setupEmergencyShortcutsView();
         }
     }
@@ -611,11 +603,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
         if (!TextUtils.isEmpty(phoneNumber)) {
             if (DBG) Log.d(LOG_TAG, "dial emergency number: " + Rlog.pii(LOG_TAG, phoneNumber));
-            Bundle extras = new Bundle();
-            extras.putInt(TelecomManager.EXTRA_CALL_SOURCE,
-                    ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_SHORTCUT);
-            TelecomManager tm = (TelecomManager) getSystemService(TELECOM_SERVICE);
-            tm.placeCall(Uri.fromParts(PhoneAccount.SCHEME_TEL, phoneNumber, null), extras);
+            placeCall(phoneNumber, ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_SHORTCUT,
+                    mPhoneInfo);
         } else {
             Log.d(LOG_TAG, "emergency number is empty");
         }
@@ -769,30 +758,9 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             updateTheme(lockScreenColors.supportsDarkText());
         }
 
-        if (mIsShortcutViewEnabled && mEccInfoHelper != null) {
-            final Context context = this;
-            mEccInfoHelper.getCountryEccInfoAsync(context,
-                    new EccInfoHelper.CountryEccInfoResultCallback() {
-                        @Override
-                        public void onSuccess(String iso, CountryEccInfo countryEccInfo) {
-                            Log.d(LOG_TAG, "Retrieve ECC info success, country ISO: "
-                                    + Rlog.pii(LOG_TAG, iso));
-                            updateLocationAndEccInfo(iso, countryEccInfo);
-                        }
-
-                        @Override
-                        public void onDetectCountryFailed() {
-                            Log.w(LOG_TAG, "Cannot detect current country.");
-                            updateLocationAndEccInfo(null, null);
-                        }
-
-                        @Override
-                        public void onRetrieveCountryEccInfoFailed(String iso) {
-                            Log.w(LOG_TAG, "Retrieve ECC info failed, country ISO: "
-                                    + Rlog.pii(LOG_TAG, iso));
-                            updateLocationAndEccInfo(iso, null);
-                        }
-                    });
+        if (mIsShortcutViewEnabled) {
+            mPhoneInfo = ShortcutViewUtils.pickPreferredPhone(this);
+            updateLocationAndEccInfo();
         }
     }
 
@@ -897,7 +865,20 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         // nothing and just returns input number.
         mLastNumber = PhoneNumberUtils.convertToEmergencyNumber(this, mLastNumber);
 
-        if (PhoneNumberUtils.isLocalEmergencyNumber(this, mLastNumber)) {
+        boolean isEmergencyNumber = false;
+        ShortcutViewUtils.PhoneInfo phoneToMakeCall = null;
+        if (mPhoneInfo != null) {
+            isEmergencyNumber = mPhoneInfo.hasPromotedEmergencyNumber(mLastNumber);
+            if (isEmergencyNumber) {
+                phoneToMakeCall = mPhoneInfo;
+            }
+        }
+        if (!isEmergencyNumber) {
+            TelephonyManager tm = getSystemService(TelephonyManager.class);
+            isEmergencyNumber = tm.isCurrentEmergencyNumber(mLastNumber);
+        }
+
+        if (isEmergencyNumber) {
             if (DBG) Log.d(LOG_TAG, "placing call to " + mLastNumber);
 
             // place the call if it is a valid number
@@ -910,11 +891,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             mMetricsWriter.writeMetricsForMakingCall(MetricsWriter.CALL_SOURCE_DIALPAD,
                     MetricsWriter.PHONE_NUMBER_TYPE_EMERGENCY, isShortcutNumber(mLastNumber));
 
-            Bundle extras = new Bundle();
-            extras.putInt(TelecomManager.EXTRA_CALL_SOURCE,
-                    ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_DIALPAD);
-            TelecomManager tm = (TelecomManager) getSystemService(TELECOM_SERVICE);
-            tm.placeCall(Uri.fromParts(PhoneAccount.SCHEME_TEL, mLastNumber, null), extras);
+            placeCall(mLastNumber, ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_DIALPAD,
+                    phoneToMakeCall);
         } else {
             if (DBG) Log.d(LOG_TAG, "rejecting bad requested number " + mLastNumber);
 
@@ -926,6 +904,20 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             showDialog(BAD_EMERGENCY_NUMBER_DIALOG);
         }
         mDigits.getText().delete(0, mDigits.getText().length());
+    }
+
+    private void placeCall(String number, int callSource, ShortcutViewUtils.PhoneInfo phone) {
+        Bundle extras = new Bundle();
+        extras.putInt(TelecomManager.EXTRA_CALL_SOURCE, callSource);
+
+        if (phone != null && phone.getPhoneAccountHandle() != null) {
+            // Requests to dial through the specified phone.
+            extras.putParcelable(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE,
+                    phone.getPhoneAccountHandle());
+        }
+
+        TelecomManager tm = this.getSystemService(TelecomManager.class);
+        tm.placeCall(Uri.fromParts(PhoneAccount.SCHEME_TEL, number, null), extras);
     }
 
     /**
@@ -1071,7 +1063,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         AsyncTask<Void, Void, Boolean> showWfcWarningTask = new AsyncTask<Void, Void, Boolean>() {
             @Override
             protected Boolean doInBackground(Void... voids) {
-                TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+                TelephonyManager tm = getSystemService(TelephonyManager.class);
                 boolean isWfcAvailable = tm.isWifiCallingAvailable();
                 ServiceState ss = tm.getServiceState();
                 boolean isCellAvailable =
@@ -1143,14 +1135,15 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         mEmergencyShortcutButtonList = new ArrayList<>();
         setupEmergencyCallShortcutButton();
 
-        updateLocationAndEccInfo(null, null);
+        updateLocationAndEccInfo();
 
         switchView(mEmergencyShortcutView, mDialpadView, false);
     }
 
-    private void setLocationInfo(String countryIso) {
+    private void setLocationInfo() {
         final View locationInfo = findViewById(R.id.location_info);
 
+        String countryIso = mPhoneInfo != null ? mPhoneInfo.getCountryIso() : null;
         String countryName = null;
         if (!TextUtils.isEmpty(countryIso)) {
             Locale locale = Locale.getDefault();
@@ -1227,11 +1220,11 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         mShortcutAdapter.registerDataSetObserver(mShortcutDataSetObserver);
     }
 
-    private void updateLocationAndEccInfo(String iso, CountryEccInfo countryEccInfo) {
+    private void updateLocationAndEccInfo() {
         if (!isFinishing() && !isDestroyed()) {
-            setLocationInfo(iso);
+            setLocationInfo();
             if (mShortcutAdapter != null) {
-                mShortcutAdapter.updateCountryEccInfo(this, countryEccInfo);
+                mShortcutAdapter.updateCountryEccInfo(this, mPhoneInfo);
             }
         }
     }
