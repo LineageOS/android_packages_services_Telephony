@@ -250,7 +250,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"漫遊時連線到數據傳輸服務"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"漫遊服務已關閉，輕觸即可開啟。"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"行動數據連線中斷"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"您可能需要支付可觀的費用。"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"你可能需要支付可觀的費用。"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"請向你的網路供應商洽詢定價。"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"允許漫遊服務？"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"應用程式數據用量"</string>
