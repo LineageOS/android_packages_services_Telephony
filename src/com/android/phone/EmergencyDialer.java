@@ -810,10 +810,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     }
 
     private boolean canEnableShortcutView(PersistableBundle carrierConfig) {
-        if (!getResources().getBoolean(R.bool.config_emergency_shortcut_view_enabled)) {
-            // Disables shortcut view by project.
-            return false;
-        }
         if (!carrierConfig.getBoolean(
                 CarrierConfigManager.KEY_SUPPORT_EMERGENCY_DIALER_SHORTCUT_BOOL)) {
             Log.d(LOG_TAG, "Disables shortcut view by carrier requirement");
