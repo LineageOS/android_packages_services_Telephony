@@ -71,6 +71,8 @@ import java.util.List;
 import java.util.Queue;
 import java.util.regex.Pattern;
 
+import javax.annotation.Nullable;
+
 /**
  * Service for making GSM and CDMA connections.
  */
@@ -321,8 +323,8 @@ public class TelephonyConnectionService extends ConnectionService {
         if (PhoneAccount.SCHEME_VOICEMAIL.equals(scheme)) {
             // TODO: We don't check for SecurityException here (requires
             // CALL_PRIVILEGED permission).
-            final Phone phone = getPhoneForAccount(request.getAccountHandle(), false,
-                    handle.getSchemeSpecificPart());
+            final Phone phone = getPhoneForAccount(request.getAccountHandle(),
+                    false /* isEmergencyCall */, null /* not an emergency call */);
             if (phone == null) {
                 Log.d(this, "onCreateOutgoingConnection, phone is null");
                 return Connection.createFailedConnection(
@@ -360,8 +362,8 @@ public class TelephonyConnectionService extends ConnectionService {
                                 "Unable to parse number"));
             }
 
-            final Phone phone = getPhoneForAccount(request.getAccountHandle(), false,
-                    handle.getSchemeSpecificPart());
+            final Phone phone = getPhoneForAccount(request.getAccountHandle(),
+                    false /* isEmergencyCall*/, null /* not an emergency call */);
             if (phone != null && CDMA_ACTIVATION_CODE_REGEX_PATTERN.matcher(number).matches()) {
                 // Obtain the configuration for the outgoing phone's SIM. If the outgoing number
                 // matches the *228 regex pattern, fail the call. This number is used for OTASP, and
@@ -468,7 +470,8 @@ public class TelephonyConnectionService extends ConnectionService {
 
             // Get the right phone object from the account data passed in.
             final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber,
-                    handle.getSchemeSpecificPart());
+                    /* Note: when not an emergency, handle can be null for unknown callers */
+                    handle == null ? null : handle.getSchemeSpecificPart());
             Connection resultConnection = getTelephonyConnection(request, numberToDial,
                     isEmergencyNumber, handle, phone);
             // If there was a failure, the resulting connection will not be a TelephonyConnection,
@@ -512,8 +515,9 @@ public class TelephonyConnectionService extends ConnectionService {
         if (isRadioReady) {
             // Get the right phone object since the radio has been turned on
             // successfully.
-            final Phone phone = getPhoneForAccount(request.getAccountHandle(),
-                    isEmergencyNumber, handle.getSchemeSpecificPart());
+            final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber,
+                    /* Note: when not an emergency, handle can be null for unknown callers */
+                    handle == null ? null : handle.getSchemeSpecificPart());
             // If the PhoneType of the Phone being used is different than the Default Phone, then we
             // need create a new Connection using that PhoneType and replace it in Telecom.
             if (phone.getPhoneType() != originalPhoneType) {
@@ -732,7 +736,8 @@ public class TelephonyConnectionService extends ConnectionService {
             isEmergency = true;
         }
         Phone phone = getPhoneForAccount(accountHandle, isEmergency,
-                request.getAddress().getSchemeSpecificPart());
+                /* Note: when not an emergency, handle can be null for unknown callers */
+                request.getAddress() == null ? null : request.getAddress().getSchemeSpecificPart());
         if (phone == null) {
             return Connection.createFailedConnection(
                     DisconnectCauseUtil.toTelecomDisconnectCause(
@@ -844,7 +849,8 @@ public class TelephonyConnectionService extends ConnectionService {
             isEmergency = true;
         }
         Phone phone = getPhoneForAccount(accountHandle, isEmergency,
-                request.getAddress().getSchemeSpecificPart());
+                /* Note: when not an emergency, handle can be null for unknown callers */
+                request.getAddress() == null ? null : request.getAddress().getSchemeSpecificPart());
         if (phone == null) {
             return Connection.createFailedConnection(
                     DisconnectCauseUtil.toTelecomDisconnectCause(
@@ -1234,8 +1240,17 @@ public class TelephonyConnectionService extends ConnectionService {
         return false;
     }
 
+    /**
+     * Determines which {@link Phone} will be used to place the call.
+     * @param accountHandle The {@link PhoneAccountHandle} which was sent from Telecom to place the
+     *      call on.
+     * @param isEmergency {@code true} if this is an emergency call, {@code false} otherwise.
+     * @param emergencyNumberAddress When {@code isEmergency} is {@code true}, will be the phone
+     *      of the emergency call.  Otherwise, this can be {@code null}  .
+     * @return
+     */
     private Phone getPhoneForAccount(PhoneAccountHandle accountHandle, boolean isEmergency,
-                                     String emergencyNumberAddress) {
+                                     @Nullable String emergencyNumberAddress) {
         Phone chosenPhone = null;
         int subId = PhoneUtils.getSubIdForPhoneAccountHandle(accountHandle);
         if (subId != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
