@@ -316,6 +316,8 @@ public class TelecomAccountRegistry {
                     && isImsVoiceAvailable()) {
                 capabilities |= PhoneAccount.CAPABILITY_RTT;
                 mIsRttCapable = true;
+            } else {
+                mIsRttCapable = false;
             }
 
             extras.putBoolean(PhoneAccount.EXTRA_SUPPORTS_VIDEO_CALLING_FALLBACK,
