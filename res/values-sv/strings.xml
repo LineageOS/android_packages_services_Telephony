@@ -281,9 +281,7 @@
     <!-- no translation found for throttle_data_usage_subtext (6029276011123694701) -->
     <skip />
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> maxvärdet har överskridits\nDatahastigheten har sänkts till <xliff:g id="USED_1">%2$d</xliff:g> kbit/s"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ av cykeln har gått\nNästa period börjar om <xliff:g id="USED_1">%2$d</xliff:g> dagar (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datahastigheten sänks till <xliff:g id="USED">%1$d</xliff:g> kbit/s om dataanvändningsgränsen överskrids"</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Mer information om operatörens dataanvändningspolicy för mobilnätverket"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Cell Broadcast SMS"</string>
