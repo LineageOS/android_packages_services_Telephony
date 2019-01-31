@@ -6534,4 +6534,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
     }
+
+    /**
+     * Get whether reboot is required or not after making changes to modem configurations.
+     * Return value defaults to false
+     */
+    @Override
+    public boolean isRebootRequiredForModemConfigChange() {
+        enforceReadPrivilegedPermission("isRebootRequiredForModemConfigChange");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mPhoneConfigurationManager.isRebootRequiredForModemConfigChange();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
 }
