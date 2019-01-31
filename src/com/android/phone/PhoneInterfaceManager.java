@@ -6505,4 +6505,33 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
     }
+
+    /**
+     * Switch configs to enable multi-sim or switch back to single-sim
+     * @param numOfSims number of active sims we want to switch to
+     */
+    @Override
+    public void switchMultiSimConfig(int numOfSims) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, SubscriptionManager.DEFAULT_SUBSCRIPTION_ID, "switchMultiSimConfig");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mPhoneConfigurationManager.switchMultiSimConfig(numOfSims);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Get how many sims have been activated on the phone
+     */
+    @Override
+    public int getNumOfActiveSims() {
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mPhoneConfigurationManager.getNumOfActiveSims();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
 }
