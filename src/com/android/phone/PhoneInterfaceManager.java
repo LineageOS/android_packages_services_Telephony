@@ -6551,4 +6551,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    @Override
+    public int[] getSlotsMapping() {
+        enforceReadPrivilegedPermission("getSlotsMapping");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            int phoneCount = TelephonyManager.getDefault().getPhoneCount();
+            // All logical slots should have a mapping to a physical slot.
+            int[] logicalSlotsMapping = new int[phoneCount];
+            UiccSlotInfo[] slotInfos = getUiccSlotsInfo();
+            for (int i = 0; i < slotInfos.length; i++) {
+                if (SubscriptionManager.isValidPhoneId(slotInfos[i].getLogicalSlotIdx())) {
+                    logicalSlotsMapping[slotInfos[i].getLogicalSlotIdx()] = i;
+                }
+            }
+            return logicalSlotsMapping;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
 }
