@@ -484,7 +484,7 @@ public class MobileNetworkSettings extends Activity  {
 
         public void onIntentUpdate(Intent intent) {
             if (!mUnavailable) {
-                updateCurrentTab(intent);
+                updateCurrentTab(intent.getExtras());
             }
         }
 
@@ -582,8 +582,7 @@ public class MobileNetworkSettings extends Activity  {
             }
         };
 
-        private int getSlotIdFromIntent(Intent intent) {
-            Bundle data = intent.getExtras();
+        private int getSlotIdFromBundle(Bundle data) {
             int subId = -1;
             if (data != null) {
                 subId = data.getInt(Settings.EXTRA_SUB_ID, -1);
@@ -753,8 +752,8 @@ public class MobileNetworkSettings extends Activity  {
                     mEmptyTabContent);
         }
 
-        private void updateCurrentTab(Intent intent) {
-            int slotId = getSlotIdFromIntent(intent);
+        private void updateCurrentTab(Bundle data) {
+            int slotId = getSlotIdFromBundle(data);
             if (slotId >= 0 && mTabHost != null && mTabHost.getCurrentTab() != slotId) {
                 mTabHost.setCurrentTab(slotId);
             }
@@ -767,6 +766,9 @@ public class MobileNetworkSettings extends Activity  {
             // If advanced fields are already expanded, we save it and expand it
             // when it's re-created.
             outState.putBoolean(EXPAND_ADVANCED_FIELDS, mExpandAdvancedFields);
+
+            // Save subId of currently shown tab.
+            outState.putInt(Settings.EXTRA_SUB_ID, mSubId);
         }
 
         @Override
@@ -850,7 +852,12 @@ public class MobileNetworkSettings extends Activity  {
                 getActivity().setContentView(R.layout.telephony_disallowed_preference_screen);
             } else {
                 initializeSubscriptions();
-                updateCurrentTab(getActivity().getIntent());
+
+                if (savedInstanceState != null) {
+                    updateCurrentTab(savedInstanceState);
+                } else {
+                    updateCurrentTab(getActivity().getIntent().getExtras());
+                }
             }
         }
 
