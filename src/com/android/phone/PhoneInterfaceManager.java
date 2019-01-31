@@ -6611,19 +6611,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Get how many sims have been activated on the phone
-     */
-    @Override
-    public int getNumOfActiveSims() {
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return mPhoneConfigurationManager.getNumOfActiveSims();
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
      * Get whether reboot is required or not after making changes to modem configurations.
      * Return value defaults to true
      */
