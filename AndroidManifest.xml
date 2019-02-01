@@ -22,10 +22,6 @@
         android:sharedUserLabel="@string/phoneAppLabel"
 >
 
-    <uses-sdk
-        android:minSdkVersion="23"
-        android:targetSdkVersion="26" />
-
     <original-package android:name="com.android.phone" />
 
     <protected-broadcast android:name="android.telecom.action.TTY_PREFERRED_MODE_CHANGED" />
