@@ -4272,8 +4272,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public int getPreferredNetworkType(int subId) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, subId, "getPreferredNetworkType");
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                        mApp, subId, "getPreferredNetworkType");
 
         final long identity = Binder.clearCallingIdentity();
         try {
