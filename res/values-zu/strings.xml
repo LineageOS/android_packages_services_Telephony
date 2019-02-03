@@ -279,9 +279,7 @@
     <skip />
     <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) ye- <xliff:g id="USED_2">%3$s</xliff:g> isikhathi esiphezulu"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g>okuphezulu kufinyelelwe\nIsilinganiso sedatha sehliselwe ku- <xliff:g id="USED_1">%2$d</xliff:g> ama-Kb"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ lesikhathi esiphelile\nIsikhathi esilandelayo siqala ezinsukwini <xliff:g id="USED_1">%2$d</xliff:g> ezingu <xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Isilinganiso sedatha sehliselwe ku-<xliff:g id="USED">%1$d</xliff:g> ama-Kb uma ukusebenzisa umkhawulo wedatha ufinyelelwe"</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Olunye ulwazi mayelana nenqubomgomo yokusebenzisa idatha yenethiwekhi yesiphathi sakho sefoni."</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"I-SMS Yokusakaza Iseli"</string>
