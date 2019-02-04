@@ -5132,6 +5132,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             final SubscriptionInfo info = mSubscriptionController.getActiveSubscriptionInfo(subId,
                     phone.getContext().getOpPackageName());
+            if (info == null) {
+                log("getSimLocaleForSubscriber, inactive subId: " + subId);
+                return null;
+            }
             // Try and fetch the locale from the carrier properties or from the SIM language
             // preferences (EF-PL and EF-LI)...
             final int mcc = info.getMcc();
