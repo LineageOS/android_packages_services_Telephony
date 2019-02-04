@@ -156,6 +156,10 @@ public class TelecomAccountRegistry {
                 Log.w(this, "registerMmTelCapabilityCallback: registration failed, no ImsService"
                         + " available. Exception: " + e.getMessage());
                 return;
+            } catch (IllegalArgumentException e) {
+                Log.w(this, "registerMmTelCapabilityCallback: registration failed, invalid"
+                        + " subscription, Exception" + e.getMessage());
+                return;
             }
         }
 
