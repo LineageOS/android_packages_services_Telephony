@@ -47,6 +47,7 @@ import com.android.internal.telephony.CallFailCause;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Connection.Capability;
 import com.android.internal.telephony.Connection.PostDialListener;
+import com.android.internal.telephony.GsmCdmaConnection;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.gsm.SuppServiceNotification;
@@ -96,6 +97,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private static final int MSG_CDMA_VOICE_PRIVACY_ON = 15;
     private static final int MSG_CDMA_VOICE_PRIVACY_OFF = 16;
     private static final int MSG_HANGUP = 17;
+
+    private boolean mIsForwarded;
+    private boolean mRemoteIncomingCallsBarred;
 
     private final Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
@@ -251,10 +255,31 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private void handleSuppServiceNotification(SuppServiceNotification ssn) {
         Log.i(this, "handleSuppServiceNotification: type=%d, code=%d", ssn.notificationType,
                 ssn.code);
-        if (ssn.notificationType == SuppServiceNotification.NOTIFICATION_TYPE_CODE_1
-                && ssn.code == SuppServiceNotification.CODE_1_CALL_FORWARDED) {
-            sendConnectionEvent(TelephonyManager.EVENT_CALL_FORWARDED, null);
+
+        if (ssn.notificationType == SuppServiceNotification.NOTIFICATION_TYPE_CODE_2) {
+            if (ssn.code == SuppServiceNotification.CODE_2_CALL_ON_HOLD) {
+                sendConnectionEvent(EVENT_CALL_REMOTELY_HELD, null);
+            } else if (ssn.code == SuppServiceNotification.CODE_2_CALL_RETRIEVED) {
+                sendConnectionEvent(EVENT_CALL_REMOTELY_UNHELD, null);
+            } else if (ssn.code ==
+                    SuppServiceNotification.CODE_2_ADDITIONAL_CALL_FORWARDED) {
+                sendConnectionEvent(EVENT_ADDITIONAL_CALL_FORWARDED, null);
+            }
+        } else if (ssn.notificationType == SuppServiceNotification.NOTIFICATION_TYPE_CODE_1) {
+            if (mOriginalConnection != null
+                    && ssn.code == SuppServiceNotification.CODE_1_CALL_FORWARDED) {
+                sendConnectionEvent(TelephonyManager.EVENT_CALL_FORWARDED, null);
+            }
+            if (ssn.code == SuppServiceNotification.CODE_1_CALL_IS_WAITING) {
+                if (getState() == STATE_DIALING) {
+                    sendConnectionEvent(EVENT_DIALING_IS_WAITING, null);
+                }
+            } else if (ssn.code == SuppServiceNotification.CODE_1_INCOMING_CALLS_BARRED) {
+                mRemoteIncomingCallsBarred = true;
+            }
         }
+
+        updateConnectionProperties();
         sendSuppServiceNotificationEvent(ssn.notificationType, ssn.code);
     }
 
@@ -1014,6 +1039,15 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         Phone phone = getPhone();
         if (phone != null && phone.isInEcm()) {
             connectionProperties |= PROPERTY_EMERGENCY_CALLBACK_MODE;
+        }
+        if (mOriginalConnection instanceof GsmCdmaConnection) {
+            GsmCdmaConnection gc = (GsmCdmaConnection) mOriginalConnection;
+            if (gc.isForwarded()) {
+                connectionProperties |= PROPERTY_WAS_FORWARDED;
+            }
+        }
+        if (mRemoteIncomingCallsBarred) {
+            connectionProperties |= PROPERTY_REMOTE_INCOMING_CALLS_BARRED;
         }
 
         return connectionProperties;
