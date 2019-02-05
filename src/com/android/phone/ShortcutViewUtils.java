@@ -96,12 +96,12 @@ class ShortcutViewUtils {
             return mPromotedEmergencyNumbers;
         }
 
-        public boolean isSufficientForEmergencyCall() {
+        public boolean isSufficientForEmergencyCall(@NonNull Context context) {
             // Checking mCountryIso because the emergency number list is not reliable to be
             // suggested to users if the device didn't camp to any network. In this case, users
             // can still try to dial emergency numbers with dial pad.
             return mCanPlaceEmergencyCall && mPromotedEmergencyNumbers != null
-                    && !TextUtils.isEmpty(mCountryIso);
+                    && isSupportedCountry(context, mCountryIso);
         }
 
         public boolean hasPromotedEmergencyNumber(String number) {
@@ -166,7 +166,7 @@ class ShortcutViewUtils {
         if (defaultHandle != null) {
             PhoneInfo phone = loadPhoneInfo(defaultHandle, telephonyManager, telecomManager,
                     promotedLists);
-            if (phone.isSufficientForEmergencyCall()) {
+            if (phone.isSufficientForEmergencyCall(context)) {
                 return phone;
             }
             Log.w(LOG_TAG, "Default PhoneAccount is insufficient for emergency call: "
@@ -181,7 +181,7 @@ class ShortcutViewUtils {
             for (PhoneAccountHandle handle : allHandles) {
                 PhoneInfo phone = loadPhoneInfo(handle, telephonyManager, telecomManager,
                         promotedLists);
-                if (phone.isSufficientForEmergencyCall()) {
+                if (phone.isSufficientForEmergencyCall(context)) {
                     return phone;
                 } else {
                     if (Log.isLoggable(LOG_TAG, Log.DEBUG)) {
@@ -194,6 +194,21 @@ class ShortcutViewUtils {
 
         Log.w(LOG_TAG, "No PhoneAccount available for emergency call!");
         return null;
+    }
+
+    private static boolean isSupportedCountry(@NonNull Context context, String countryIso) {
+        if (TextUtils.isEmpty(countryIso)) {
+            return false;
+        }
+
+        String[] countrysToEnableShortcutView = context.getResources().getStringArray(
+                R.array.config_countries_to_enable_shortcut_view);
+        for (String supportedCountry : countrysToEnableShortcutView) {
+            if (countryIso.equalsIgnoreCase(supportedCountry)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static PhoneInfo loadPhoneInfo(@NonNull PhoneAccountHandle handle,
