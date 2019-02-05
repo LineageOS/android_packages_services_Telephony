@@ -90,6 +90,9 @@
     <protected-broadcast android:name= "android.telephony.action.SUBSCRIPTION_PRECISE_CARRIER_IDENTITY_CHANGED" />
     <protected-broadcast android:name= "android.telephony.action.NETWORK_COUNTRY_CHANGED" />
 
+    <!-- For Vendor Debugging in Telephony -->
+    <protected-broadcast android:name="android.telephony.debug.action.DEBUG_EVENT" />
+
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
