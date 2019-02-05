@@ -254,6 +254,7 @@
     <!-- Intent action to launch target emergency app. -->
     <string name="config_emergency_app_intent" translatable="false"></string>
 
-    <!-- Flag indicating whether shortcut view of promoted emergency numbers should be enabled. -->
-    <bool name="config_emergency_shortcut_view_enabled">false</bool>
+    <!-- The country list that shortcut view can be enabled. -->
+    <string-array name="config_countries_to_enable_shortcut_view" translatable="false">
+    </string-array>
 </resources>
