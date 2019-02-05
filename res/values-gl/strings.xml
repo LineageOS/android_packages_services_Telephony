@@ -94,8 +94,8 @@
     <string name="labelCW" msgid="6120513814915920200">"Chamada en espera"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Durante unha chamada, avisarme das chamadas entrantes"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Durante unha chamada, avisarme das chamadas entrantes"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Config. desvío de chamadas"</string>
-    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Config. desvío de chamadas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Axustes de desvío de chamadas"</string>
+    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Axustes de desvío de chamadas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Desvío de chamadas"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Desviar sempre"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Utilizar sempre este número"</string>
@@ -103,17 +103,17 @@
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Desvío de todas as chamadas ao <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"O número non está dispoñible"</string>
     <string name="sum_cfu_disabled" msgid="8384177689501334080">"Desactivado"</string>
-    <string name="labelCFB" msgid="6139853033106283172">"Cando estea ocupado"</string>
+    <string name="labelCFB" msgid="6139853033106283172">"Cando estea comunicando"</string>
     <string name="messageCFB" msgid="3711089705936187129">"Número cando está ocupado"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"Desvío a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"Desactivado"</string>
     <string name="disable_cfb_forbidden" msgid="3506984333877998061">"O teu operador non admite a desactivación do desvío de chamadas cando o teléfono está ocupado."</string>
-    <string name="labelCFNRy" msgid="1736067178393744351">"Cando non se responda"</string>
+    <string name="labelCFNRy" msgid="1736067178393744351">"Cando non responda"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"Número cando non hai resposta"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Desvío ao <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Desactivado"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"O teu operador non admite a desactivación do desvío de chamadas cando o teléfono non responde."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"Cando non se poida contactar"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"Cando estea apagado ou sen conbertura"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Número cando non se pode contactar"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Desvío ao <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Desactivado"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Chamando"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Rede"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Modo LTE 4G mellorado"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Chamadas avanzadas"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Usa os servizos LTE para mellorar a comunicación por voz e outras (recomendado)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Datos activados"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Permitir o uso de datos"</string>
@@ -392,7 +392,7 @@
     <string name="fdn_list_with_label" msgid="7437232552210469217">"Lista de NMF (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Activación de NMF"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Os números de marcación fixa están activados"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"Os números de marcación fixa están desactivados"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"Os números de marcación fixa (NMF) están desactivados"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Activar NMF"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Desactivar NMF"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Cambiar PIN2"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Non se poden poñer as chamadas en espera."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Conéctate a unha rede sen fíos para facer unha chamada."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Activa as chamadas por wifi para facer unha chamada."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Información de urxencia"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Propietario"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Toca de novo para consultar a información"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Chamada de urxencia"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Só chamadas de urxencia"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Número de urxencia"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Números de urxencia"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Toca de novo para chamar ao <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Activando radio..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Sen servizo. Tentando de novo…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Non se pode activar o modo avión durante unha chamada de urxencia."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Non se pode chamar. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> non é un número de urxencia."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Non se pode chamar. Marcar un número de urxencia."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"As chamadas de urxencia non están dispoñibles"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Policía"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulancia"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Bombeiros"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Utiliza o teclado para chamar"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Poñer en espera"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Finalizar"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"seleccionar contacto"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Chamadas de voz non compatibles"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"marcar"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"mostrar teclado de marcación"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Teclado de urxencia"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Correo de voz visual"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Establecer PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Cambiar PIN"</string>

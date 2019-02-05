@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"Kod MMI został anulowany"</string>
     <string name="cancel" msgid="5044513931633602634">"Anuluj"</string>
     <string name="enter_input" msgid="1810529547726803893">"Komunikat USSD musi mieć od <xliff:g id="MIN_LEN">%d</xliff:g> do <xliff:g id="MAX_LEN">%d</xliff:g> znaków. Spróbuj ponownie."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"Zarządzaj połączeniem konferencyjnym"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"Zarządzaj poł. konferencyjnym"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Głośnik"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Słuchawka telefonu"</string>
@@ -94,7 +94,7 @@
     <string name="labelCW" msgid="6120513814915920200">"Połączenia oczekujące"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Podczas połączenia powiadamiaj mnie o połączeniach przychodzących"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Podczas połączenia powiadamiaj mnie o połączeniach przychodzących"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Ustawienia przekazywania połączeń"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Przekierowanie połączeń"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Ustawienia przekierowywania połączeń (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Przekierowanie połączeń"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Przekieruj wszystkie"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Połączenia"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Sieć"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Tryb rozszerzonego 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Zaawansowane połączenia"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Użyj usług LTE, by poprawić łączność głosową i inną (zalecane)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Włączone przesyłanie danych"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Zezwalaj na użycie danych"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Nie można zawieszać połączeń."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Połącz się z siecią bezprzewodową, by zadzwonić."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Włącz Połączenia przez Wi-Fi, aby nawiązać połączenie."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Informacje alarmowe"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Właściciel"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Kliknij ponownie, aby wyświetlić informacje"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Połączenie alarmowe"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Tylko połączenia alarmowe"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Numer alarmowy"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numery alarmowe"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Kliknij jeszcze raz, aby zadzwonić pod <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Trwa włączanie sieci bezprzewodowych..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Brak sieci. Próbuję ponownie…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Nie możesz włączyć trybu samolotowego podczas połączenia alarmowego."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Nie można dzwonić. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> nie jest numerem alarmowym."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Nie można dzwonić. Wybierz numer alarmowy."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Połączenia alarmowe niedostępne"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Policja"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Karetka pogotowia"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Straż pożarna"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Aby zadzwonić, użyj klawiatury."</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Wstrzymaj"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Zakończ"</string>
@@ -599,6 +610,8 @@
     <string name="selectContact" msgid="781975788478987237">"wybierz kontakt"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Połączenia głosowe nie są obsługiwane"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"wybierz numer"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"pokaż klawiaturę"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Klawiatura alarmowa"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Wizualna poczta głosowa"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Ustaw kod PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Zmień PIN"</string>

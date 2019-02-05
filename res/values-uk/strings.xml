@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Телефонні служби"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Аварійний телефон"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Телефон"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"Список FDN"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"Список фіксованого набору"</string>
     <string name="unknown" msgid="6878797917991465859">"Невідомий"</string>
     <string name="private_num" msgid="6713286113000232309">"Приватний номер"</string>
     <string name="payphone" msgid="4793877574636445118">"Таксофон"</string>
@@ -92,8 +92,8 @@
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Номер відображ. у вихідних дзвінках"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Використовувати налаштування оператора для показу мого номера для вихідних дзвінків"</string>
     <string name="labelCW" msgid="6120513814915920200">"Паралельний виклик"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"Під час дзвінка сповіщати про вхідні дзвінки"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"Під час дзвінка сповіщати про вхідні дзвінки"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"Під час дзвінка сповіщати про вхідні виклики"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"Під час дзвінка сповіщати про вхідні виклики"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Переадресація"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Налаштування переадресації виклику (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Переадресація виклику"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Виклики"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Мережа"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Розширений режим 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Дзвінки з розширеними можливостями"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Використ. служби LTE для покращення голосового й інших типів зв’язку (рекоменд.)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Передавання даних"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Дозволити використання даних"</string>
@@ -388,18 +388,18 @@
     <string name="carrier_settings_title" msgid="9028166176523012300">"Налаштування оператора"</string>
     <string name="fdn" msgid="7878832555095183202">"Номери фіксованого набору"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"Фіксовані номери (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"Список FDN"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"Список фіксованого набору"</string>
     <string name="fdn_list_with_label" msgid="7437232552210469217">"Фіксовані номери (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Активація FDN"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Номери фіксованого набору увімкнено"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"Номери фіксованого набору вимкнено"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"Увімк. FDN"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"Увімкнути фіксований набір"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Вимк. FDN"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Змінити PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Вимк. FDN"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"Увімк. FDN"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"Увімкнути фіксований набір"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Керув. номерами фікс. набору"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Змінити PIN-код для доступу FDN"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Змінити PIN-код для фіксованого набору"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Керувати списком номерів"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Конфіденційність Voice"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Увімкн. режим розшир. конфіденц."</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Не можна призупиняти виклики."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Щоб зателефонувати, під’єднайтеся до бездротової мережі."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Щоб мати змогу телефонувати, увімкніть виклики через Wi-Fi."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Дані для екстрених випадків"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Власник"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Торкніться ще раз, щоб переглянути відомості"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Аварійний виклик"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Лише екстрені виклики"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Екстрений номер"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Екстрені номери"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Торкніться ще раз, щоб зателефонувати на номер <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Увімкнення радіо…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Зв’язку немає. Повторна спроба…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Неможливо перейти в режим польоту під час екстреного виклику."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Неможливо зателефонувати. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> – не є екстреним номером."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Неможливо зателефонувати. Наберіть екстрений номер."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Екстрені виклики недоступні"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Поліція"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Швидка допомога"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Пожежно-рятувальна служба"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Викор. клав. для набору"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Утрим."</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Закінч."</string>
@@ -529,7 +540,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Імпортований контакт"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Контакт не імпортовано"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Слухові апарати"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Увімкнути функцію НАС"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Увімкнути підтримку слухових апаратів"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Виклик із передаванням тексту в реальному часі"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Дозволити передавання повідомлень під час голосового виклику"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Функція RTT буде корисною для осіб із вадами слуху чи порушеннями мовлення, а також тих людей, для яких голосового спілкування недостатньо.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Докладніше&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT-виклики зберігаються як транскрибований текст\n       &lt;br&gt; – Функція RTT не підтримується для відеодзвінків"</string>
@@ -599,6 +610,8 @@
     <string name="selectContact" msgid="781975788478987237">"вибрати контакт"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Голосові дзвінки не підтримуються"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"дзвонити"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"показати цифрову клавіатуру"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Цифрова клавіатура для екстрених викликів"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Візуальна голосова пошта"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Установити PIN-код"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Змінити PIN-код"</string>

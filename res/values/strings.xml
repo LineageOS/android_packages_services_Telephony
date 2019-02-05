@@ -517,7 +517,15 @@
     <!-- Mobile network 4G title [CHAR LIMIT=30] -->
     <string name="enhanced_4g_lte_mode_title">Enhanced 4G LTE Mode</string>
     <!-- Carrier variant of Enhaced 4G LTE Mode title.  [CHAR LIMIT=50] -->
-    <string name="enhanced_4g_lte_mode_title_variant">Advanced Calling</string>
+    <string-array name="enhanced_4g_lte_mode_title_variant">
+        <!-- 0: Default -->
+        <item>@string/enhanced_4g_lte_mode_title</item>
+        <!-- 1: Verizon -->
+        <item>Advanced Calling</item>
+        <!-- 2: O2 UK -->
+        <item>4G Calling</item>
+    </string-array>
+
     <!-- Mobile network 4G summary [CHAR LIMIT=80] -->
     <string name="enhanced_4g_lte_mode_summary">Use LTE services to improve voice and other communications (recommended)</string>
 
@@ -1119,8 +1127,22 @@
     <!-- In-call screen: call failure message displayed in an error dialog when the user is connected to a wireless network, but wifi calling is turned off. [CHAR_LIMIT=NONE] -->
     <string name="incall_error_promote_wfc">Enable Wi-Fi calling to make a call.</string>
 
+    <!-- Hint for the button of emergency information -->
+    <string name="emergency_information_hint">Emergency information</string>
+    <!-- Hint for the owner of emergency information -->
+    <string name="emergency_information_owner_hint">Owner</string>
+    <!-- Hint for confirm the emergency information -->
+    <string name="emergency_information_confirm_hint">Tap again to view info</string>
     <!-- Dialog title for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_title">Emergency call</string>
+    <!-- Title for the emergency dialpad UI -->
+    <string name="emergency_dialpad_title">Emergency calls only</string>
+    <!-- Emergency dialer: Title of single emergency shortcut button -->
+    <string name="single_emergency_number_title">Emergency number</string>
+    <!-- Emergency dialer: Title of numerous emergency shortcut buttons -->
+    <string name="numerous_emergency_numbers_title">Emergency numbers</string>
+    <!-- Emergency dialer: Hint of selected emergency shortcut button -->
+    <string name="emergency_call_shortcut_hint">Tap again to call <xliff:g id="emergency_number">%s</xliff:g></string>
     <!-- Status message for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_message">Turning on radio\u2026</string>
     <!-- Status message for the "radio enable" UI for emergency calls -->
@@ -1136,6 +1158,19 @@
     <!-- Message displayed over top of the emergency dialer dialpad indicating to the user that
          emergency calling is not currently available. -->
     <string name="dial_emergency_calling_not_available">Emergency calling not available</string>
+
+    <!-- Text for description of police calling type -->
+    <string name="police_type_description">Police</string>
+    <!-- Text for description of ambulance calling type -->
+    <string name="ambulance_type_description">Ambulance</string>
+    <!-- Text for description of fire calling type -->
+    <string name="fire_type_description">Fire</string>
+
+    <!-- Format for concatenating multiple emergency type descriptions. The separator may differ in
+         different locales, for example arabic comma "،" is used in some countries. Some languages
+         may use full-width separator without leading or trailing spaces, eg. Ideographic comma "、"
+         in Chinese and Japanese. -->
+    <string name="description_concat_format">%1$s, %2$s</string>
 
     <!-- Displayed in the text entry box in the dialer when in landscape mode to guide the user
          to dial using the physical keyboard -->
@@ -1363,6 +1398,20 @@
          [CHAR LIMIT=NONE]
     -->
     <string name="description_dial_button">dial</string>
+
+    <!-- String describing the Dialpad ImageButton
+
+         Used by AccessibilityService to announce the purpose of the button.
+         [CHAR LIMIT=NONE]
+    -->
+    <string name="description_dialpad_button">show dialpad</string>
+
+    <!-- Pane title of the Emergency Dialpad
+
+     Used by AccessibilityService to announce the purpose of the pane of emergency dialpad.
+     [CHAR LIMIT=NONE]
+    -->
+    <string name="pane_title_emergency_dialpad">Emergency Dialpad</string>
 
     <!-- Visual voicemail on/off title [CHAR LIMIT=40] -->
     <string name="voicemail_visual_voicemail_switch_title">Visual Voicemail</string>

@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Po telefonon"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Rrjeti"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Modaliteti i përparuar 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Telefonatë e avancuar"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Përdor shërbimet LTE për të përmirësuar komunikimet zanore dhe të tjera (rekomandohet)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Të dhënat janë të aktivizuara"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Lejo përdorimin e të dhënave"</string>
@@ -392,7 +392,7 @@
     <string name="fdn_list_with_label" msgid="7437232552210469217">"Lista e FDN-së (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Aktivizimi i FDN-së"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Numrat me telefonim të përzgjedhur u aktivizuan"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"Numrat me telefonim të përzgjedhur u çaktivizuan"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"Numrat me telefonim të përzgjedhur janë të çaktivizuar"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Aktivizo FDN-në"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Çaktivizo FDN-në"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Ndrysho PIN2-shin"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Telefonatat nuk mund të mbahen në pritje."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Lidhu me një rrjet me valë për të bërë një telefonatë."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktivizo telefonatat nëpërmjet rrjetit Wi-Fi për të bërë një telefonatë."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Informacioni i urgjencës"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Zotëruesi"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Trokit përsëri për të shikuar informacionet"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Telefonata e urgjencës"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Vetëm telefonata urgjente"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Numri i urgjencës"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numrat e urgjencës"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Trokit përsëri për të telefonuar <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Po aktivizon radion…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Nuk ka shërbim. Po provon sërish…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Nuk mund të hysh në modalitetin e aeroplanit gjatë telefonatave të urgjencës."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Nuk mund të telefonohet. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> nuk është numër urgjence."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Nuk mund të telefonohet. Formo një numër urgjence."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Telefonatat e urgjencës nuk ofrohen"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Policia"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulancë"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Zjarr"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Përdor tastierën për të formuar numrin"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Në pritje"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Përfundo"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"përzgjidh kontaktin"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Telefonata zanore nuk mbështetet"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"formo numrin"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"shfaq bllokun e formimit të numrit"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Blloku i formimit të numrit të urgjencës"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Posta zanore vizuale"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Konfiguro kodin PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Ndrysho kodin PIN"</string>

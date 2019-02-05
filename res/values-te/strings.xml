@@ -97,7 +97,7 @@
     <string name="call_forwarding_settings" msgid="3378927671091537173">"కాల్ ఫార్వర్డింగ్ సెట్టింగ్‌లు"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"కాల్ ఫార్వార్డింగ్ సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"కాల్ ఫార్వార్డింగ్"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"ఎల్లప్పుడూ ఫార్వార్డ్ చేయి"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"ఎల్లప్పుడూ ఫార్వర్డ్ చేయి"</string>
     <string name="messageCFU" msgid="3560082430662923687">"ఎల్లప్పుడూ ఈ నంబర్‌ను ఉపయోగించు"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"అన్ని కాల్‌లను ఫార్వార్డ్ చేస్తోంది"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"అన్ని కాల్‌లను <xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వార్డ్ చేస్తోంది"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"కాలింగ్"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"నెట్‌వర్క్"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"మెరుగుపరిచిన 4G LTE మోడ్"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"అధునాతన కాలింగ్"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"వాయిస్, ఇతర కమ్యూనికే. మెరుగుపరచడానికి LTE సేవలను ఉపయోగించు (సిఫార్సు చేయబడింది)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"డేటా ప్రారంభించబడింది"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"డేటా వినియోగాన్ని అనుమతించు"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"కాల్‌లను హోల్డ్ చేయలేరు."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"కాల్ చేయడానికి వైర్‌లెస్ నెట్‌వర్క్‌కు కనెక్ట్ చేయండి."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"కాల్‌ను చేయడానికి Wi-Fi కాలింగ్‌ను ప్రారంభించండి."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"అత్యవసర సమాచారం"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"యజమాని"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"సమాచారాన్ని చూడడానికి మళ్లీ నొక్కండి"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"అత్యవసర కాల్"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"అత్యవసర కాల్‌లు మాత్రమే"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"అత్యవసర నంబర్"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"అత్యవసర నంబర్‌లు"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>కు కాల్ చేయడానికి మళ్లీ నొక్కండి"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"రేడియోను ప్రారంభిస్తోంది…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"సేవ లేదు. మళ్లీ ప్రయత్నిస్తోంది…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"అత్యవసర కాల్‌లో ఉన్నప్పుడు ఎయిర్‌ప్లైన్ మోడ్‌లోకి ప్రవేశించలేరు."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"కాల్ చేయలేరు. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> అత్యవసర నంబర్ కాదు."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"కాల్ చేయలేరు. అత్యవసర నంబర్‌ను డయల్ చేయండి."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"అత్యవసర కాలింగ్ అందుబాటులో లేదు"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"పోలీస్"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"అంబులెన్స్‌"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"అగ్ని"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"డయల్ చేయడానికి కీబోర్డ్‌ను ఉపయోగించండి"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"హోల్డ్ చేయి"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ముగించు"</string>
@@ -534,7 +545,7 @@
     <string name="rtt_mode_summary" msgid="5146344277246544580">"వాయిస్ కాల్‌లో సందేశాలు పంపడానికి అనుమతించండి"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"బధిరులు, వినికిడి సమస్యలు ఉన్న వారు, మాట్లాడటంలో సమస్యలు ఉన్న వారు లేదా కేవలం వాయిస్‌తో అర్థం చేసుకోలేని కాలర్‌లకు RTT సహాయపడుతుంది.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;మరింత తెలుసుకోండి&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT కాల్‌లు సందేశ లిపి మార్పు వలె సేవ్ చేయబడతాయి\n       &lt;br&gt; - వీడియో కాల్‌ల కోసం RTT అందుబాటులో లేదు"</string>
   <string-array name="tty_mode_entries">
-    <item msgid="512950011423868021">"TTY ఆఫ్‌లో ఉన్నవి"</item>
+    <item msgid="512950011423868021">"TTY ఆఫ్‌లో ఉంది"</item>
     <item msgid="3971695875449640648">"TTY సంపూర్ణంగా ఉన్నవి"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"పరిచయాన్ని ఎంచుకోండి"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"వాయిస్ కాలింగ్‌కు మద్దతు లేదు"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"డయల్ చేయి"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"డయల్‌ప్యాడ్‌ను చూపు"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"అత్యవసర డయల్‌ప్యాడ్"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"దృశ్యమాన వాయిస్‌మెయిల్"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PINని సెట్ చేయండి"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PINను మార్చు"</string>
