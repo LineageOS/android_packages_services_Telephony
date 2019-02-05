@@ -2819,6 +2819,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } catch (ImsException e) {
             Log.w(LOG_TAG, "IMS isCapable - service unavailable: " + e.getMessage());
             return false;
+        } catch (IllegalArgumentException e) {
+            Log.i(LOG_TAG, "isCapable: " + subId + " is inactive, returning false.");
+            return false;
         } finally {
             Binder.restoreCallingIdentity(token);
         }
@@ -3403,7 +3406,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private int getSlotIndexOrException(int subId) throws IllegalArgumentException {
         int slotId = SubscriptionManager.getSlotIndex(subId);
         if (!SubscriptionManager.isValidSlotIndex(slotId)) {
-            throw new IllegalArgumentException("Invalid Subscription Id.");
+            throw new IllegalArgumentException("Invalid Subscription Id, subId=" + subId);
         }
         return slotId;
     }
