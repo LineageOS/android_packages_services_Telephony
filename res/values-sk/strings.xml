@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Volanie"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Sieť"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Zlepšený režim 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Rozšírené volanie"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Použiť služby LTE na vylepšenie hlasu a ďalších komunikácií (odporúčané)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Povoliť dát. prenosy"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Povoliť využívanie dát"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Hovory nie je možné podržať."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Ak chcete volať, pripojte sa k bezdrôtovej sieti"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Na uskutočnenie hovoru povoľte volanie cez Wi‑Fi."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Tiesňové informácie"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Vlastník"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Informácie si zobrazíte opätovným klepnutím"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Tiesňové volanie"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Len tiesňové volania"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Číslo tiesňovej linky"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Čísla tiesňovej linky"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Opätovným klepnutím zavoláte <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Prebieha zapínanie rádia..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Žiadna služba. Prebieha opätovný pokus…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Počas tiesňového volania sa nedá zapnúť režim v lietadle."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Hovor nie je možné uskutočniť. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> nie je číslo tiesňového volania."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Hovor nie je možné uskutočniť. Vytočte číslo tiesňového volania."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Tiesňové volania nie sú k dispozícii"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Polícia"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Záchranka"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Hasiči"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Číslo vytočíte pomocou klávesnice."</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Podržať"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Koniec"</string>
@@ -528,8 +539,8 @@
     <string name="importToFDNfromContacts" msgid="2130620207013368580">"Import z kontaktov"</string>
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Kontakt bol importovaný"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Kontakt sa nepodarilo importovať"</string>
-    <string name="hac_mode_title" msgid="8740268574688743289">"Načúvacie pomôcky"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Zapnúť režim kompatibility s načúvacou pomôckou"</string>
+    <string name="hac_mode_title" msgid="8740268574688743289">"Načúvadlá"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Zapnúť kompatibilitu s načúvadlom"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Posielanie okamžitého textu (RTT) počas hovorov"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Povoliť posielanie správ počas hlasového hovoru"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Okamžitý text pomáha volajúcim, ktorí nepočujú, majú problémy so sluchom, rečovú poruchu alebo potrebujú viac ako samotný hlas.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Ďalšie informácie&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Okamžitý text poslaný počas hovoru sa uloží ako prepis správ\n       &lt;br&gt; – Okamžitý text nie je k dispozícii počas videohovorov"</string>
@@ -599,6 +610,8 @@
     <string name="selectContact" msgid="781975788478987237">"vybrať kontakt"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Hlasové volanie nie je podporované"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"vytáčanie"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"zobraziť číselnú klávesnicu"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Číselná klávesnica na tiesňové volanie"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Vizuálna hlasová schránka"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Nastavenie kódu PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Zmena kódu PIN"</string>

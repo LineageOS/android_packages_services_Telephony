@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"Kode MMI dibatalkan"</string>
     <string name="cancel" msgid="5044513931633602634">"Batal"</string>
     <string name="enter_input" msgid="1810529547726803893">"Pesan USSD harus antara <xliff:g id="MIN_LEN">%d</xliff:g> dan <xliff:g id="MAX_LEN">%d</xliff:g> karakter. Coba lagi."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"Kelola penggilan telewicara"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"Kelola konferensi telepon"</string>
     <string name="ok" msgid="3811371167865772377">"Oke"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Speaker"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Earpiece handset"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Memanggil"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Jaringan"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Mode LTE 4G yang Ditingkatkan"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Panggilan Telepon Lanjutan"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Gunakan layanan LTE untuk menyempurnakan suara dan komunikasi lainnya (disarankan)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Data diaktifkan"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Izinkan penggunaan data"</string>
@@ -386,13 +386,13 @@
     <string name="cdma_activate_device" msgid="3793805892364814518">"Aktifkan perangkat"</string>
     <string name="cdma_lte_data_service" msgid="4255018217292548962">"Siapkan layanan data"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"Setelan operator"</string>
-    <string name="fdn" msgid="7878832555095183202">"Nomor Panggilan Tetap"</string>
+    <string name="fdn" msgid="7878832555095183202">"Panggilan Terbatas (FDN)"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"Nomor Panggilan Tetap (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="8777755791892122369">"Daftar FDN"</string>
     <string name="fdn_list_with_label" msgid="7437232552210469217">"Daftar NPT (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Aktivasi FDN"</string>
-    <string name="fdn_enabled" msgid="5238109009915521240">"Nomor Panggilan Tetap diaktifkan"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"Nomor Panggilan Tetap dinonaktifkan"</string>
+    <string name="fdn_enabled" msgid="5238109009915521240">"Panggilan Terbatas (FDN) diaktifkan"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"Panggilan Terbatas (FDN) dinonaktifkan"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Aktifkan FDN"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Nonaktifkan FDN"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Ubah PIN2"</string>
@@ -471,7 +471,7 @@
     <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Nomor kotak pesan"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"Memanggil"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"Memanggil ulang"</string>
-    <string name="card_title_conf_call" msgid="1162980346189744501">"Telewicara"</string>
+    <string name="card_title_conf_call" msgid="1162980346189744501">"Konferensi telepon"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"Panggilan masuk"</string>
     <string name="card_title_call_ended" msgid="5544730338889702298">"Panggilan diakhiri"</string>
     <string name="card_title_on_hold" msgid="821463117892339942">"Ditangguhkan"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Tidak dapat menahan panggilan."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Sambungkan ke jaringan nirkabel untuk melakukan panggilan"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktifkan panggilan Wi-Fi untuk melakukan panggilan."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Informasi darurat"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Pemilik"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tap lagi untuk melihat info"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Panggilan darurat"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Panggilan darurat saja"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Nomor darurat"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Nomor darurat"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tap lagi untuk menelepon <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Menghidupkan radio..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Tidak ada layanan. Mencoba lagi…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Tidak dapat masuk ke mode pesawat selama panggilan darurat."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Tidak dapat menelepon. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> bukan nomor darurat."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Tidak dapat menelepon. Panggil nomor darurat."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Panggilan darurat tidak tersedia"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Kantor Polisi"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulans"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Pemadam Kebakaran"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Gunakan keyboard untuk memanggil"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Tahan"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Akhiri"</string>
@@ -529,7 +540,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Kontak diimpor"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Gagal mengimpor kontak"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Alat bantu dengar"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Hidupkan kompatibilitas alat bantu dengar"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Aktifkan kompatibilitas alat bantu dengar"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Panggilan pesan real-time (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Izinkan pengiriman pesan pada saat panggilan suara berlangsung"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT membantu penelepon yang tunarungu, kesulitan mendengar, memiliki gangguan berbicara, atau memerlukan lebih dari sekadar suara.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Pelajari lebih lanjut&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Panggilan RTT disimpan sebagai transkrip pesan\n       &lt;br&gt; - RTT tidak tersedia untuk video call"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"pilih kontak"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Panggilan suara tidak didukung"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"panggil"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"tampilkan dialpad"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Tombol Nomor Darurat"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Kotak Pesan Visual"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Setel PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Ubah PIN"</string>

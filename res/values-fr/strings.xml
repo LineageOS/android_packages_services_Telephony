@@ -90,7 +90,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Chargement des paramètres…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Numéro masqué pour les appels sortants"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Numéro affiché pour les appels sortants"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utiliser les paramètres opérateur pour afficher mon numéro pour les appels sortants"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utiliser les paramètres opérateur pour afficher mon numéro dans les appels sortants"</string>
     <string name="labelCW" msgid="6120513814915920200">"Appel en attente"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Me signaler les appels entrants lorsque je suis en communication"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Me signaler les appels entrants lorsque je suis en communication"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Appels"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Réseau"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Mode LTE 4G avancé"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Appel avancé"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Utiliser les services LTE pour améliorer les communications vocales et autres (recommandé)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Données activées"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Autoriser la consommation des données"</string>
@@ -399,7 +399,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Désactiver numéros autorisés"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Activer les numéros autorisés"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Gérer la liste de numéros autorisés"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Modifier le code PIN pour l\'accès aux numéros autorisés"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Modifier le code pour l\'accès aux numéros autorisés"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gérer la liste des numéros de téléphone"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Confidentialité voix"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Activer le mode de confidentialité amélioré"</string>
@@ -468,12 +468,12 @@
     <string name="pin2_unblocked" msgid="7791600368153469078">"Le code PIN2 n\'est plus bloqué."</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"Erreur de réseau ou de carte SIM."</string>
     <string name="doneButton" msgid="2859593360997984240">"OK"</string>
-    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"N° messagerie vocale"</string>
+    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Numéro de messagerie vocale"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"Appel en cours…"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"Rappel en cours..."</string>
     <string name="card_title_conf_call" msgid="1162980346189744501">"Conférence téléphonique"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"Appel entrant"</string>
-    <string name="card_title_call_ended" msgid="5544730338889702298">"Fin de l\'appel"</string>
+    <string name="card_title_call_ended" msgid="5544730338889702298">"Appel terminé"</string>
     <string name="card_title_on_hold" msgid="821463117892339942">"En attente"</string>
     <string name="card_title_hanging_up" msgid="3999101620995182450">"Fin de l\'appel.."</string>
     <string name="card_title_in_call" msgid="6346543933068225205">"Appel en cours"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Impossible de mettre les appels en attente."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Connectez-vous à un réseau sans fil pour passer un appel."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Pour passer un appel, veuillez activer les appels Wi-Fi."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Informations d\'urgence"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Propriétaire"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Appuyer à nouveau pour afficher les informations"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Appel d\'urgence"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Appels d\'urgence uniquement"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Numéro d\'urgence"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numéros d\'urgence"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Appuyez à nouveau pour appeler le <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Activation du signal radio..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Aucun service disponible. Nouvelle tentative en cours…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Vous ne pouvez pas activer le mode Avion au cours d\'un appel d\'urgence."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Impossible d\'émettre l\'appel. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> n\'est pas un numéro d\'urgence."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Impossible d\'émettre l\'appel. Veuillez composer un numéro d\'urgence."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Appels d\'urgence non disponibles"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Police"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulance"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Pompiers"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Utilisez le clavier pour composer un numéro."</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"En attente"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Raccrocher"</string>
@@ -529,7 +540,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Contact importé"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Échec de l\'importation du contact."</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Assistance auditive"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Activer la compatibilité avec les prothèses auditives"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Activer la compatibilité avec les appareils auditifs"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Appel texte en temps réel"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Autoriser l\'échange de messages pendant les appels vocaux"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"La fonctionnalité de texte en temps réel vient en aide aux personnes sourdes, malentendantes, qui ont un trouble de la parole, ou qui ont besoin d\'une transcription en plus de la voix.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;En savoir plus&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les appels texte en temps réel sont enregistrés sous forme transcrite\n       &lt;br&gt; - Le mode texte en temps réel n\'est pas disponible pour les appels vidéo"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"sélectionner un contact"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Appels vocaux non pris en charge"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"composer"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"afficher le clavier"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Clavier d\'appel d\'urgence"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Messagerie vocale visuelle"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Définir un code"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Modifier le code"</string>

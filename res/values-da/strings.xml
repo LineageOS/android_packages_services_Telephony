@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Opkald"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Netværk"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Udvidet 4G LTE-tilstand"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Avancerede opkald"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Anvend LTE-tjenester til at forbedre tale og anden kommunikation (anbefalet)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Data aktiveret"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Tillad dataforbrug"</string>
@@ -248,14 +248,14 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Du kan risikere at skulle betale høje gebyrer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakt din netværksudbyder for at få oplyst priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillade dataroaming?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"Appens dataforbrug"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Dataforbrug fra apps"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brugt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avanceret"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilselskab"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"mobilselskab, esim, sim-kort, euicc, skift mobilselskab, tilføj mobilselskab"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobildata"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Få adgang til data via mobilnetværk"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Brug data via mobilnetværk"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Vil du deaktivere mobildata?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Du har ikke valgt endnu"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Skift SIM-kortet til data?"</string>
@@ -509,13 +509,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Opkald kan ikke sættes i venteposition."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Opret forbindelse til et trådløst netværk for at foretage et opkald."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktivér Wi-Fi-opkald for at foretage et opkald."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Info til nødsituationer"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Ejer"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tryk igen for at se oplysninger"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Nødopkald"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Kun nødopkald"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Alarmnummer"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Alarmnumre"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tryk igen for at ringe til <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Tænder for radio ..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Ingen tjeneste. Prøver igen..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Flytilstand kan ikke slås til under et nødopkald."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Kan ikke ringe op. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> er ikke et alarmnummer."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Kan ikke ringe op. Ring til et alarmnummer."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Det er ikke muligt at foretage nødopkald"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Politi"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulance"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Brand"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Brug tastatur til at ringe op"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Hold"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Afslut"</string>
@@ -601,6 +612,8 @@
     <string name="selectContact" msgid="781975788478987237">"vælg kontakt"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Taleopkald understøttes ikke"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ring op"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"vis numerisk tastatur"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Numerisk tastatur til nødopkald"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuel telefonsvarer"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Angiv pinkode"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Skift pinkode"</string>
