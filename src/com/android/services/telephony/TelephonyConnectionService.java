@@ -40,8 +40,8 @@ import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.emergency.EmergencyNumber;
 import android.text.TextUtils;
-import android.util.FeatureFlagUtils;
 import android.util.Pair;
 
 import com.android.internal.annotations.VisibleForTesting;
@@ -68,6 +68,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.regex.Pattern;
 
@@ -208,26 +209,47 @@ public class TelephonyConnectionService extends ConnectionService {
     };
 
     // TelephonyManager Proxy interface for testing
+    @VisibleForTesting
     public interface TelephonyManagerProxy {
         int getPhoneCount();
         boolean hasIccCard(int slotId);
+        boolean isCurrentEmergencyNumber(String number);
+        Map<Integer, List<EmergencyNumber>> getCurrentEmergencyNumberList();
     }
 
-    private TelephonyManagerProxy mTelephonyManagerProxy = new TelephonyManagerProxy() {
-        private final TelephonyManager sTelephonyManager = TelephonyManager.getDefault();
+    private TelephonyManagerProxy mTelephonyManagerProxy;
+
+    private class TelephonyManagerProxyImpl implements TelephonyManagerProxy {
+        private final TelephonyManager mTelephonyManager;
+
+
+        TelephonyManagerProxyImpl(Context context) {
+            mTelephonyManager = new TelephonyManager(context);
+        }
 
         @Override
         public int getPhoneCount() {
-            return sTelephonyManager.getPhoneCount();
+            return mTelephonyManager.getPhoneCount();
         }
 
         @Override
         public boolean hasIccCard(int slotId) {
-            return sTelephonyManager.hasIccCard(slotId);
+            return mTelephonyManager.hasIccCard(slotId);
         }
-    };
+
+        @Override
+        public boolean isCurrentEmergencyNumber(String number) {
+            return mTelephonyManager.isCurrentEmergencyNumber(number);
+        }
+
+        @Override
+        public Map<Integer, List<EmergencyNumber>> getCurrentEmergencyNumberList() {
+            return mTelephonyManager.getCurrentEmergencyNumberList();
+        }
+    }
 
     //PhoneFactory proxy interface for testing
+    @VisibleForTesting
     public interface PhoneFactoryProxy {
         Phone getPhone(int index);
         Phone getDefaultPhone();
@@ -286,6 +308,7 @@ public class TelephonyConnectionService extends ConnectionService {
     public void onCreate() {
         super.onCreate();
         Log.initLogging(this);
+        setTelephonyManagerProxy(new TelephonyManagerProxyImpl(getApplicationContext()));
         mExpectedComponentName = new ComponentName(this, this.getClass());
         mEmergencyTonePlayer = new EmergencyTonePlayer(this);
         TelecomAccountRegistry.getInstance(this).setTelephonyConnectionService(this);
@@ -387,9 +410,13 @@ public class TelephonyConnectionService extends ConnectionService {
             }
         }
 
+        final boolean isEmergencyNumber = mTelephonyManagerProxy.isCurrentEmergencyNumber(number);
+        // Find out if this is a test emergency number
+        final boolean isTestEmergencyNumber = isEmergencyNumberTestNumber(number);
+
         // Convert into emergency number if necessary
         // This is required in some regions (e.g. Taiwan).
-        if (!PhoneNumberUtils.isLocalEmergencyNumber(this, number)) {
+        if (isEmergencyNumber) {
             final Phone phone = getPhoneForAccount(request.getAccountHandle(), false,
                     handle.getSchemeSpecificPart());
             // We only do the conversion if the phone is not in service. The un-converted
@@ -407,9 +434,6 @@ public class TelephonyConnectionService extends ConnectionService {
             }
         }
         final String numberToDial = number;
-
-        final boolean isEmergencyNumber =
-                PhoneNumberUtils.isLocalEmergencyNumber(this, numberToDial);
 
 
         final boolean isAirplaneModeOn = Settings.Global.getInt(getContentResolver(),
@@ -437,7 +461,12 @@ public class TelephonyConnectionService extends ConnectionService {
 
                 @Override
                 public boolean isOkToCall(Phone phone, int serviceState) {
-                    if (isEmergencyNumber) {
+                    // HAL 1.4 introduced a new variant of dial for emergency calls, which includes
+                    // an isTesting parameter. For HAL 1.4+, do not wait for IN_SERVICE, this will
+                    // be handled at the RIL/vendor level by emergencyDial(...).
+                    boolean waitForInServiceToDialEmergency = isTestEmergencyNumber
+                            && phone.getHalVersion().less(RIL.RADIO_HAL_VERSION_1_4);
+                    if (isEmergencyNumber && !waitForInServiceToDialEmergency) {
                         // We currently only look to make sure that the radio is on before dialing.
                         // We should be able to make emergency calls at any time after the radio has
                         // been powered on and isn't in the UNAVAILABLE state, even if it is
@@ -445,9 +474,10 @@ public class TelephonyConnectionService extends ConnectionService {
                         return (phone.getState() == PhoneConstants.State.OFFHOOK)
                             || phone.getServiceState().getState() != ServiceState.STATE_POWER_OFF;
                     } else {
-                        // It is not an emergency number, so wait until we are in service and ready
-                        // to make calls. This can happen when we power down the radio on bluetooth
-                        // to save power on watches.
+                        // Wait until we are in service and ready to make calls. This can happen
+                        // when we power down the radio on bluetooth to save power on watches or if
+                        // it is a test emergency number and we have to wait for the device to move
+                        // IN_SERVICE before the call can take place over normal routing.
                         return (phone.getState() == PhoneConstants.State.OFFHOOK)
                             || serviceState == ServiceState.STATE_IN_SERVICE;
                     }
@@ -485,6 +515,24 @@ public class TelephonyConnectionService extends ConnectionService {
             }
             return resultConnection;
         }
+    }
+
+    private boolean isEmergencyNumberTestNumber(String number) {
+        Map<Integer, List<EmergencyNumber>> list =
+                mTelephonyManagerProxy.getCurrentEmergencyNumberList();
+        // Do not worry about which subscription the test emergency call is on yet, only detect that
+        // it is an emergency.
+        for (Integer sub : list.keySet()) {
+            for (EmergencyNumber eNumber : list.get(sub)) {
+                if (number.equals(eNumber.getNumber())
+                        && eNumber.isFromSources(EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST)) {
+                    Log.i(this, "isEmergencyNumberTestNumber: " + number + " has been detected as "
+                            + "a test emergency number.,");
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
