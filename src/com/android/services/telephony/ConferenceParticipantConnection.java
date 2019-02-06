@@ -33,11 +33,6 @@ import com.android.internal.telephony.PhoneConstants;
  * Represents a participant in a conference call.
  */
 public class ConferenceParticipantConnection extends Connection {
-    /**
-     * RFC5767 states that a SIP URI with an unknown number should use an address of
-     * {@code anonymous@anonymous.invalid}.  E.g. the host name is anonymous.invalid.
-     */
-    private static final String ANONYMOUS_INVALID_HOST = "anonymous.invalid";
 
     /**
      * The user entity URI For the conference participant.
@@ -65,7 +60,7 @@ public class ConferenceParticipantConnection extends Connection {
 
         mParentConnection = parentConnection;
 
-        int presentation = getParticipantPresentation(participant);
+        int presentation = participant.getParticipantPresentation();
         Uri address;
         if (presentation != PhoneConstants.PRESENTATION_ALLOWED) {
             address = null;
@@ -161,53 +156,7 @@ public class ConferenceParticipantConnection extends Connection {
         setConnectionCapabilities(capabilities);
     }
 
-    /**
-     * Determines the number presentation for a conference participant.  Per RFC5767, if the host
-     * name contains {@code anonymous.invalid} we can assume that there is no valid caller ID
-     * information for the caller, otherwise we'll assume that the URI can be shown.
-     *
-     * @param participant The conference participant.
-     * @return The number presentation.
-     */
-    private int getParticipantPresentation(ConferenceParticipant participant) {
-        Uri address = participant.getHandle();
-        if (address == null) {
-            return PhoneConstants.PRESENTATION_RESTRICTED;
-        }
 
-        String number = address.getSchemeSpecificPart();
-        // If no number, bail early and set restricted presentation.
-        if (TextUtils.isEmpty(number)) {
-            return PhoneConstants.PRESENTATION_RESTRICTED;
-        }
-        // Per RFC3261, the host name portion can also potentially include extra information:
-        // E.g. sip:anonymous1@anonymous.invalid;legid=1
-        // In this case, hostName will be anonymous.invalid and there is an extra parameter for
-        // legid=1.
-        // Parameters are optional, and the address (e.g. test@test.com) will always be the first
-        // part, with any parameters coming afterwards.
-        String hostParts[] = number.split("[;]");
-        String addressPart = hostParts[0];
-
-        // Get the number portion from the address part.
-        // This will typically be formatted similar to: 6505551212@test.com
-        String numberParts[] = addressPart.split("[@]");
-
-        // If we can't parse the host name out of the URI, then there is probably other data
-        // present, and is likely a valid SIP URI.
-        if (numberParts.length != 2) {
-            return PhoneConstants.PRESENTATION_ALLOWED;
-        }
-        String hostName = numberParts[1];
-
-        // If the hostname portion of the SIP URI is the invalid host string, presentation is
-        // restricted.
-        if (hostName.equals(ANONYMOUS_INVALID_HOST)) {
-            return PhoneConstants.PRESENTATION_RESTRICTED;
-        }
-
-        return PhoneConstants.PRESENTATION_ALLOWED;
-    }
 
     /**
      * Attempts to build a tel: style URI from a conference participant.
@@ -311,6 +260,10 @@ public class ConferenceParticipantConnection extends Connection {
         sb.append(Log.pii(mParentConnection.getAddress()));
         sb.append(" state:");
         sb.append(Connection.stateToString(getState()));
+        sb.append(" connectTime:");
+        sb.append(getConnectTimeMillis());
+        sb.append(" connectElapsedTime:");
+        sb.append(getConnectElapsedTimeMillis());
         sb.append("]");
 
         return sb.toString();
