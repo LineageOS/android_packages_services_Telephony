@@ -6521,7 +6521,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Get whether reboot is required or not after making changes to modem configurations.
-     * Return value defaults to false
+     * Return value defaults to true
      */
     @Override
     public boolean isRebootRequiredForModemConfigChange() {
