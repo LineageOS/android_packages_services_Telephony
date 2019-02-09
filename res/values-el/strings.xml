@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Κλήση"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Δίκτυο"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Βελτιωμένη λειτουργία 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Προηγμένες λειτουργίες κλήσης"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Χρήση υπηρεσιών LTE για τη βελτίωση της φωνητικής επικοινωνίας και άλλου είδους επικοινωνιών (συνιστάται)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Ενεργοποίηση δεδομένων"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Επιτρέπεται η χρήση δεδομένων"</string>
@@ -249,7 +249,7 @@
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Επικοινωνήστε με τον πάροχο του δικτύου για τις τιμές."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Να επιτρέπεται η περιαγωγή δεδομένων;"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Χρήση δεδομένων εφαρμογής"</string>
-    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> δεδομένα κινητής τηλεφωνίας σε χρήση μεταξύ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
+    <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> δεδομένων κινητής τηλεφωνίας χρησιμοποιήθηκαν μεταξύ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Σύνθετες ρυθμίσεις"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Εταιρεία κινητής τηλεφωνίας"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"εταιρεία κινητής τηλεφωνίας, esim, sim, euicc, αλλαγή εταιρείας κινητής τηλεφωνίας, προσθήκη εταιρείας κινητής τηλεφωνίας"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Δεν είναι δυνατή η αναμονή κλήσεων."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Συνδεθείτε σε ασύρματο δίκτυο για να πραγματοποιήσετε μια κλήση."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Ενεργοποιήστε τη δυνατότητα κλήσεων μέσω Wi-Fi για να πραγματοποιήσετε μια κλήση."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Πληροφορίες έκτακτης ανάγκης"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Κάτοχος"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Πατήστε ξανά για προβολή πληροφοριών"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Κλήσεις επείγουσας ανάγκης"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Μόνο κλήσεις έκτακτης ανάγκης"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Αριθμός έκτακτης ανάγκης"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Αριθμοί έκτακτης ανάγκης"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Πατήστε ξανά για να καλέσετε τον αριθμό <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Ενεργοποίηση πομπού..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Δεν υπάρχει υπηρεσία. Νέα προσπάθεια…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Δεν είναι δυνατή η ενεργοποίηση της λειτουργίας πτήσης κατά τη διάρκεια μιας κλήσης έκτακτης ανάγκης."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Δεν είναι δυνατή η κλήση. Το <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> δεν είναι αριθμός έκτακτης ανάγκης."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Δεν είναι δυνατή η κλήση. Πληκτρολογήστε έναν αριθμό έκτακτης ανάγκης."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Η δυνατότητα κλήσεων έκτακτης ανάγκης δεν είναι διαθέσιμη"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Αστυνομία"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ασθενοφόρο"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Πυροσβεστική"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Χρησιμοποιήστε το πληκτρολόγιο για να πραγματοποιήσετε καλέσετε έναν αριθμό"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Αναμονή"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Τέλος"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"επιλογή επαφής"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Η φωνητική κλήση δεν υποστηρίζεται"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"κλήση"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"εμφάνιση πληκτρολογίου κλήσης"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Πληκτρολόγιο έκτακτης ανάγκης"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Οπτικός αυτόματος τηλεφ."</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Ορισμός PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Αλλαγή PIN"</string>

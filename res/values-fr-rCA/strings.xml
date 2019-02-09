@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Données mobiles"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Données cellulaires"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Services téléphoniques"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Appels d\'urgence"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Téléphone"</string>
@@ -90,7 +90,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Chargement des paramètres…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Numéro masqué pour les appels sortants"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Numéro affiché pour les appels sortants"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utiliser les paramètres opérateur pour afficher mon numéro pour les appels sortants"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utiliser les paramètres opérateur pour afficher mon numéro dans les appels sortants"</string>
     <string name="labelCW" msgid="6120513814915920200">"Appel en attente"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Me signaler les appels entrants lorsque je suis en communication"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Me signaler les appels entrants lorsque je suis en communication"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Appels"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Réseau"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Mode LTE 4G avancé"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Appel avancé"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Utiliser les services LTE pour améliorer les communications vocales et autres (recommandé)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Données activées"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Autoriser l\'utilisation des données"</string>
@@ -244,7 +244,7 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Se connecter aux services de données lors de l\'itinérance"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Se connecter aux services de données lors de l\'itinérance"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"L\'itinérance des données est désactivée. Touchez pour l\'activer."</string>
-    <string name="roaming_notification_title" msgid="4749053220884743110">"Connexion de données mobiles perdue"</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Connexion de données cellulaires perdue"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Des frais importants peuvent s\'appliquer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Communiquez avec votre fournisseur réseau pour connaître les tarifs."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Autoriser les données en itinérance?"</string>
@@ -259,7 +259,7 @@
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Désactiver les données mobiles?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Sélection requise"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Changer de SIM pour les données?"</string>
-    <string name="sim_change_data_message" msgid="2163963581444907496">"Utiliser la carte SIM <xliff:g id="NEW_SIM">%1$s</xliff:g> au lieu de la carte <xliff:g id="OLD_SIM">%2$s</xliff:g> pour les données mobiles?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"Utiliser la carte SIM <xliff:g id="NEW_SIM">%1$s</xliff:g> au lieu de la carte <xliff:g id="OLD_SIM">%2$s</xliff:g> pour les données cellulaires?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Appels Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Appels vidéo par l\'entremise du fournisseur de services"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Options GSM/UMTS"</string>
@@ -472,7 +472,7 @@
     <string name="pin2_unblocked" msgid="7791600368153469078">"Le NIP2 n\'est plus bloqué."</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"Erreur de réseau ou de carte SIM"</string>
     <string name="doneButton" msgid="2859593360997984240">"Terminé"</string>
-    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"N° messagerie vocale"</string>
+    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Numéro de messagerie vocale"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"Numérotation en cours…"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"Recomposition en cours..."</string>
     <string name="card_title_conf_call" msgid="1162980346189744501">"Conférence téléphonique"</string>
@@ -507,13 +507,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Impossible de mettre les appels en attente."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Connectez-vous à un réseau Wi-Fi pour faire un appel."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Activez les appels Wi-Fi pour faire un appel."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Renseignements en cas d\'urgence"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Propriétaire"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Touchez à nouveau pour afficher les renseignements"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Appel d\'urgence"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Appels d\'urgence uniquement"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Numéro d\'urgence"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numéros d\'urgence"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Touchez à nouveau pour composer le <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Activation du signal radio..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Aucun service. Nouvel essai en cours..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Impossible d\'activer le mode Avion durant un appel d\'urgence."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Appel impossible. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> n\'est pas un numéro d\'urgence."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Appel impossible. Composez un numéro d\'urgence."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Appels d\'urgence non disponibles"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Police"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulance"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Incendie"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Utilisez le clavier pour composer un numéro."</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Attente"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Terminé"</string>
@@ -556,7 +567,7 @@
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"Activation en cours…"</string>
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"Le téléphone est en train d\'activer votre service de données cellulaires.\n\nCela peut prendre jusqu\'à cinq minutes."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Ignorer l\'activation?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Si vous poursuivez sans activer votre mobile, vous ne pourrez ni téléphoner, ni vous connecter à des réseaux de données mobiles. La connexion à un réseau Wi-Fi reste possible. Vous serez invité à effectuer l\'activation à chaque démarrage du téléphone."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Si vous poursuivez sans activer votre appareil mobile, vous ne pourrez ni téléphoner, ni vous connecter à des réseaux de données cellulaires. La connexion à un réseau Wi-Fi reste possible. Vous serez invité à effectuer l\'activation à chaque démarrage du téléphone."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Passer"</string>
     <string name="ota_activate" msgid="1368528132525626264">"Activer"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"Votre téléphone est activé"</string>
@@ -599,6 +610,8 @@
     <string name="selectContact" msgid="781975788478987237">"sélectionner un contact"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Appels vocaux non pris en charge"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"composer"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"afficher le clavier numérique"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Clavier numérique d\'urgence"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Messagerie vocale visuelle"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Définir le NIP"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Modifier le NIP"</string>
@@ -638,12 +651,12 @@
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"L\'itinérance de données est activée"</string>
     <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"En itinérance. Un forfait de données est requis"</string>
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"En itinérance. Le forfait de données est actif"</string>
-    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Il ne reste plus de données mobiles"</string>
-    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Il ne reste plus de données mobiles"</string>
-    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Ajouter des données mobiles par l\'intermédiaire de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Il ne reste plus de données cellulaires"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Il ne reste plus de données cellulaires"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Ajouter des données cellulaires par l\'intermédiaire de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Aucun forfait d\'itinérance"</string>
     <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Ajouter un forfait d\'itinérance par l\'intermédiaire de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Vous pouvez ajouter des données mobiles ou un forfait d\'itinérance par l\'intermédiaire de votre fournisseur de services, <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Vous pouvez ajouter des données cellulaires ou un forfait d\'itinérance par l\'intermédiaire de votre fournisseur de services, <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
     <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Ajouter des données?"</string>
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Vous devrez peut-être ajouter des données par l\'intermédiaire de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"AJOUTER DES DONNÉES"</string>

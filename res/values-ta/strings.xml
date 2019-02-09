@@ -96,7 +96,7 @@
     <string name="sum_cw_disabled" msgid="3648693907300104575">"அழைப்பில் இருக்கும்போதும் உள்வரும் அழைப்புகளைப் பற்றி எனக்குத் தெரிவி"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"அழைப்பைத் திருப்பிவிடுதல்"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"அழைப்பைத் திருப்பிவிடுதல் (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"அழைப்புப் பகிர்வு"</string>
+    <string name="labelCF" msgid="2574386948026924737">"அழைப்பு திருப்பிவிடுதல்"</string>
     <string name="labelCFU" msgid="8147177368148660600">"எப்போதும் திருப்பிவிடு"</string>
     <string name="messageCFU" msgid="3560082430662923687">"எப்போதும் இதைப் பயன்படுத்து"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"எல்லா அழைப்புகளையும் பகிர்"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"அழைப்பு"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"நெட்வொர்க்"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"மேம்பட்ட 4G LTE பயன்முறை"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"மேம்பட்ட அழைப்பு"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"குரல் மற்றும் பிற தொடர்புமுறைகளை மேம்படுத்த, LTE சேவைகளைப் பயன்படுத்தவும் (பரிந்துரைக்கப்பட்டது)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"தரவு இயக்கப்பட்டது"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"டேட்டா உபயோகத்தை அனுமதி"</string>
@@ -400,7 +400,7 @@
     <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN ஐ இயக்கு"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"நிலையான அழைப்பு எண்களை நிர்வகி"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN அணுகலுக்கான பின்னை மாற்று"</string>
-    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"மொபைல் எண் பட்டியலை நிர்வகி"</string>
+    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ஃபோன் எண் பட்டியலை நிர்வகி"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"குரல் தனிப்பட்ட முறை"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"மேம்பட்ட தனிப்பட்ட முறையை இயக்கு"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY பயன்முறை"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"அழைப்புகளை ஹோல்டு செய்ய முடியாது."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"அழைக்க, வயர்லெஸ் நெட்வொர்க்குடன் இணைக்கவும்."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"அழைக்க, வைஃபை அழைப்பை இயக்கவும்."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"அவசரத் தகவல்"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"உரிமையாளர்"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"தகவலைப் பார்க்க, மீண்டும் தட்டவும்"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"அவசரகால அழைப்பு"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"அவசர அழைப்புகள் மட்டும்"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"அவசர எண்"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"அவசர எண்கள்"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> என்ற எண்ணை அழைக்க, மீண்டும் தட்டவும்"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"ரேடியோவை இயக்குகிறது…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"சேவை இல்லை. மீண்டும் முயற்சிக்கிறது…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"அவசர அழைப்பின் போது, விமானப் பயன்முறையை இயக்க முடியாது."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"<xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> அவசர அழைப்பு எண் இல்லை என்பதால் அழைக்க முடியாது."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"அழைக்க முடியாது. அவசர அழைப்பு எண்ணை அழைக்கவும்."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"அவசர அழைப்பு வசதி இல்லை"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"காவல்"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"ஆம்புலன்ஸ்"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"தீயணைப்பு"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"டயல் செய்வதற்கு விசைப்பலகையைப் பயன்படுத்துக"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"காத்திரு"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"முடி"</string>
@@ -534,7 +545,7 @@
     <string name="rtt_mode_summary" msgid="5146344277246544580">"குரல் அழைப்பிலேயே செய்தியிடலை அனுமதிக்கும்"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"காது கேளாதோர், கேட்பதற்குச் சிரமப்படுவோர், பேச இயலாதோர் அல்லது குரலைத் தாண்டி மற்ற வழிகளில் தகவல் தேவைப்படுவோருக்கு RTT பயன்முறை உதவுகிறது.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;மேலும் அறிக&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - டிரான்ஸ்கிரிப்ட் செய்யப்பட்ட செய்தியாக RTT அழைப்புகள் சேமிக்கப்படும்\n       &lt;br&gt; - வீடியோ அழைப்புகளுக்கு RTT பயன்முறை இல்லை"</string>
   <string-array name="tty_mode_entries">
-    <item msgid="512950011423868021">"TTY ஐ முடக்கு"</item>
+    <item msgid="512950011423868021">"TTY முடக்கத்தில்"</item>
     <item msgid="3971695875449640648">"TTY ஐ இயக்கு"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"தொடர்பைத் தேர்ந்தெடுக்கவும்"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"குரல் அழைப்பு ஆதரிக்கப்படவில்லை"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"டயல்"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"டயல்பேடைக் காட்டும் பட்டன்"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"அவசரகால டயல்பேட்"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"விஷூவல் குரலஞ்சல்"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"பின்னை அமை"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"பின்னை மாற்றவும்"</string>

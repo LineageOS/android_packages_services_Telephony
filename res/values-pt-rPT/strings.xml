@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Chamadas"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Rede"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Modo 4G LTE avançado"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Chamadas avançadas"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Utilizar os serviços LTE para melhorar a voz e outras comunicações (recomendado)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Dados ativados"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Permitir a utilização de dados"</string>
@@ -471,7 +471,7 @@
     <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Número do correio de voz"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"A marcar"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"A marcar novamente"</string>
-    <string name="card_title_conf_call" msgid="1162980346189744501">"Chamada de conferência"</string>
+    <string name="card_title_conf_call" msgid="1162980346189744501">"Conferência"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"Chamada recebida"</string>
     <string name="card_title_call_ended" msgid="5544730338889702298">"Chamada terminada"</string>
     <string name="card_title_on_hold" msgid="821463117892339942">"Em espera"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Não é possível colocar as chamadas em espera."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Ligue-se a uma rede sem fios para fazer uma chamada."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Ativar as chamadas através de Wi-Fi para fazer uma chamada."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Informações de emergência"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Proprietário"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Toque novamente para ver informações"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Chamada de emergência"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Apenas chamadas de emergência"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Número de emergência"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Números de emergência"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Toque novamente para ligar <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"A ligar o rádio..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Sem serviço. A tentar novamente…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Não é possível entrar em modo de voo durante uma chamada de emergência."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Não é possível telefonar. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> não é um número de emergência."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Não é possível telefonar. Marque um número de emergência."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Chamadas de emergência não disponíveis"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Polícia"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulância"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Fogo"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Utilizar o teclado para marcar"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Suspender"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Terminar"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"seleccionar contacto"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Chamadas de voz não suportadas"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"marcar"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"mostrar o teclado"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Teclado de emergência"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Correio de voz visual"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Definir PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Alterar PIN"</string>
