@@ -905,6 +905,13 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     private void placeCall(String number, int callSource, ShortcutViewUtils.PhoneInfo phone) {
         Bundle extras = new Bundle();
         extras.putInt(TelecomManager.EXTRA_CALL_SOURCE, callSource);
+        /**
+         * This is used for Telecom and Telephony to tell modem user's intent is emergency call,
+         * when the dialed number is ambiguous and identified as both emergency number and any
+         * other non-emergency number; e.g. in some situation, 611 could be both an emergency
+         * number in a country and a non-emergency number of a carrier's customer service hotline.
+         */
+        extras.putBoolean(TelecomManager.EXTRA_IS_USER_INTENT_EMERGENCY_CALL, true);
 
         if (phone != null && phone.getPhoneAccountHandle() != null) {
             // Requests to dial through the specified phone.
