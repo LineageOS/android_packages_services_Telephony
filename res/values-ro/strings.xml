@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefon – Servicii"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Telefon de urgență"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefon"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"Listă NAR"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"Listă FDN"</string>
     <string name="unknown" msgid="6878797917991465859">"Necunoscut"</string>
     <string name="private_num" msgid="6713286113000232309">"Număr privat"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefon public"</string>
@@ -90,7 +90,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Se încarcă setările…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Număr ascuns în apelurile de ieșire"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Numărul afișat în apelurile de ieșire"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utilizați setările prestabilite ale operatorului, pentru a vă afișa numărul în apelurile de ieșire"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utilizați setările prestabilite ale operatorului pentru a vă afișa numărul în apelurile efectuate"</string>
     <string name="labelCW" msgid="6120513814915920200">"Apel în așteptare"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Anunță-mă dacă primesc un apel în timpul unei convorbiri"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Anunță-mă dacă primesc un apel în timpul unei convorbiri"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Se apelează"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Rețea"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Mod 4G LTE îmbunătățit"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Apelare avansată"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Folosiți servicii LTE pt. a îmbunătăți comunicări vocale și altele (recomandat)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Date activate"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Permiteți utilizarea datelor"</string>
@@ -388,16 +388,16 @@
     <string name="carrier_settings_title" msgid="9028166176523012300">"Setări operator"</string>
     <string name="fdn" msgid="7878832555095183202">"Numere apeluri restricționate"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"Numere pentru apeluri restricționate (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"Listă NAR"</string>
-    <string name="fdn_list_with_label" msgid="7437232552210469217">"Listă NAR (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"Listă FDN"</string>
+    <string name="fdn_list_with_label" msgid="7437232552210469217">"Listă FDN (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Activați NAR"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Numerele cu apelări restricționate sunt activate"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"Numerele pentru apeluri restricționate sunt dezactivate"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"Activați NAR"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"Activați FDN"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Dezactivați NAR"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Schimbați codul PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Dezactivați NAR"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"Activați NAR"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"Activați FDN"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Gestionați numerele cu apelări restricționate"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Schimbați codul PIN pentru acces la NAR"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gestionați lista numerelor de telefon"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Apelurile nu pot fi puse în așteptare."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Pentru a apela, conectați-vă la o rețea wireless."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Activați apelarea prin Wi-Fi pentru a iniția un apel."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Informații în caz de urgență"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Proprietar"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Atingeți din nou pentru a vedea informațiile"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Apel de urgență"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Numai apeluri de urgență"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Număr de urgență"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numere de urgență"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Atingeți din nou pentru a apela <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Se activează semnalul radio..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Fără semnal. Se încearcă din nou..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Nu se poate intra în modul avion în timpul unui apel de urgență."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Nu se poate apela. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> nu este un număr de urgență."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Nu se poate apela. Formați un număr de urgență."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Apelurile de urgență nu sunt disponibile."</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Poliție"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulanță"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Pompieri"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Utilizați tastatura pentru a forma"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Rețineți"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Terminat"</string>
@@ -597,6 +608,8 @@
     <string name="selectContact" msgid="781975788478987237">"selectarea unei persoane din agendă"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Apelarea vocală nu este acceptată"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"apelare"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"afișați tastatura numerică"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Tastatură pentru apeluri de urgență"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Mesagerie vocală vizuală"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Setați codul PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Schimbați codul PIN"</string>

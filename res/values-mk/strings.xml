@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI кодот е откажан"</string>
     <string name="cancel" msgid="5044513931633602634">"Откажи"</string>
     <string name="enter_input" msgid="1810529547726803893">"Пораката на USSD мора да биде меѓу <xliff:g id="MIN_LEN">%d</xliff:g> и <xliff:g id="MAX_LEN">%d</xliff:g> знаци. Обидете се повторно."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"Управувај со конференциски повик"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"Конференциски повик"</string>
     <string name="ok" msgid="3811371167865772377">"Во ред"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Звучник"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Слушалка"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Повикување"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Мрежа"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Режим на подобрени 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Напредно повикување"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Користете ги услугите на LTE за да ја подобрите гласовната и другите видови комуникација (препорачано)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Податоците се овозможени"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Дозволи користење интернет"</string>
@@ -509,13 +509,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Не може да се задржат повици."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Поврзете се на безжична мрежа за да повикате."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Овозможете повикување преку Wi-Fi за воспоставување повик."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Информации за итни случаи"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Сопственик"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Допрете повторно за приказ на информации"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Повик за итни случаи"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Само итни повици"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Број за итни случаи"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Броеви за итни случаи"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Допрете еднаш за да го повикате <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Вклучување радио..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Нема услуга. Се обидува повторно…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Не може да се постави авионски режим во текот на итен повик."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Не може да повика. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> не е број за итни повици."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Не може да повика. Бирајте го бројот за итни повици."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Итните повици не се достапни"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Полиција"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Брза помош"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Оган"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Користи тастатурата за бирање"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Почекај"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Заврши"</string>
@@ -593,7 +604,7 @@
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Отфрли"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"Услуга"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"Поставување"</string>
-    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Нема поставка&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Не е поставен&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Други поставки на повици"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"Повикување преку <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"фотографија за контакт"</string>
@@ -601,6 +612,8 @@
     <string name="selectContact" msgid="781975788478987237">"избери контакт"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Гласовното повикување не е поддржано"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"бирај"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"прикажи копчиња за бирање"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Копчиња за бирање за итни случаи"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Визуелна говорна пошта"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Поставете PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Променете PIN"</string>

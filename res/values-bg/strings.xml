@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Извършва се обаждане"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Мрежа"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Подобрен режим с 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Разширени обаждания"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Ползване на LTE услуги за подобряване на гласовите и др. комуникации (препоръч.)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Данните са активирани"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Разрешаване на преноса на данни"</string>
@@ -399,7 +399,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Деактивиране на FDN"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Активиране на FDN"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Управление на фиксираните номера за набиране"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Промяна на PIN за достъп до FDN"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Промяна на ПИН за достъп до FDN"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Управление на списъка с телефонни номера"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Гласова поверителност"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Активиране на разширен режим на поверителност"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Не може да се извършват обаждания."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Свържете се с безжична мрежа, за да осъществите обаждане."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"За да извършите обаждане, активирайте обажданията през Wi-Fi."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Информация за спешни случаи"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Собственик"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Докоснете отново, за да видите информация"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Спешно обаждане"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Само спешни обаждания"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Спешен номер"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Спешни номера"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Докоснете отново за обаждане на <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Радиото се включва…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Няма услуга. Извършва се нов опит…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Не може да се влезе в самолетен режим по време на спешно обаждане."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Не може да се извърши обаждане. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> не е номер за спешни случаи."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Не може да се извърши обаждане. Наберете номер за спешни случаи."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Не се предлагат спешни обаждания"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Полиция"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Линейка"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Пожар"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Използвайте клавиатурата за набиране"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Задържане"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Край"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"избиране на контакта"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Гласови обаждания не се поддържат"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"набиране"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"показване на клавиатурата за набиране"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Клавиатура за спешно обаждане"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Визуална гласова поща"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Задаване на ПИН"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Промяна на ПИН"</string>

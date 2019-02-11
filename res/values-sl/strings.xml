@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Klicanje"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Omrežje"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Izboljšan način 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Napredno klicanje"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Uporaba storitev LTE za izboljšanje glas. in drugih komunikacij (priporočeno)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Podatki omogočeni"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Dovoli prenos podatkov"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Klicev ni mogoče zadržati."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Povežite se v omrežje Wi-Fi, če želite opraviti klic."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Če želite opraviti klic, omogočite klicanja prek Wi-Fi-ja."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Informacije za nujne primere"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Lastnik"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Znova se dotaknite, da si ogledate podatke"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Klic v sili"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Le klici v sili"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Številka za klic v sili"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Številke za klic v sili"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Znova se dotaknite, da pokličete <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Vklop radia …"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Ni signala. Vnovičen poskus …"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Načina za letalo ni mogoče vklopiti med klicem v sili."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Klicanje ni mogoče. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ni številka za klic v sili."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Klicanje ni mogoče. Opravite klic v sili."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Klicanje v sili ni na voljo"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Policija"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Nujna medicinska pomoč"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Gasilci"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Za klicanje uporabite tipkovnico"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Zadrži"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Konec"</string>
@@ -529,7 +540,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Uvožen je bil stik"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Uvoz stika ni uspel"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Slušni pripomočki"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Vključi združljivost s slušnim pripomočkom"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Vključi združljivost s slušnimi pripomočki"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Klic s sprotnim besedilom (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Dovoli izmenjavo sporočil v glasovnem klicu"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Funkcija RTT pomaga klicateljem, ki so gluhi, naglušni, imajo govorno motnjo ali potrebujejo več kot samo glas.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Več o tem&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Klici RTT se shranijo kot prepis sporočila\n       &lt;br&gt; – RTT ni na voljo pri videoklicih"</string>
@@ -599,6 +610,8 @@
     <string name="selectContact" msgid="781975788478987237">"izbira stika"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Glasovno klicanje ni podprto"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"klicanje"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"prikaži številčnico"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Tipkovnica za klic v sili"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Vizualno sporočilo v odzivniku"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Nastavitev kode PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Sprememba kode PIN"</string>

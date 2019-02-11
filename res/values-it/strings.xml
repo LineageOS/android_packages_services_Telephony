@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Phone Services"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Chiamata di emergenza"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefono"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"Elenco FDN"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"Elenco numeri consentiti"</string>
     <string name="unknown" msgid="6878797917991465859">"Sconosciuto"</string>
     <string name="private_num" msgid="6713286113000232309">"Numero privato"</string>
     <string name="payphone" msgid="4793877574636445118">"Cabina telefonica"</string>
@@ -102,21 +102,21 @@
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Deviazione di tutte le chiamate"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Deviazione di tutte le chiamate al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"Numero non disponibile"</string>
-    <string name="sum_cfu_disabled" msgid="8384177689501334080">"Non attiva"</string>
+    <string name="sum_cfu_disabled" msgid="8384177689501334080">"Off"</string>
     <string name="labelCFB" msgid="6139853033106283172">"Se occupato"</string>
     <string name="messageCFB" msgid="3711089705936187129">"Numero se occupato"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"Deviazione al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfb_disabled" msgid="4913145177320506827">"Non attiva"</string>
+    <string name="sum_cfb_disabled" msgid="4913145177320506827">"Off"</string>
     <string name="disable_cfb_forbidden" msgid="3506984333877998061">"Il tuo operatore non supporta la disattivazione dell\'inoltro chiamate quando il telefono è occupato."</string>
     <string name="labelCFNRy" msgid="1736067178393744351">"Se non si risponde"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"Numero se non si risponde"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Deviazione al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Non attiva"</string>
+    <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Off"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Il tuo operatore non supporta la disattivazione dell\'inoltro chiamate quando il telefono non risponde."</string>
     <string name="labelCFNRc" msgid="2614827454402079766">"Se non raggiungibile"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Numero se non raggiungibile"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Deviazione al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Non attiva"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Off"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Il tuo operatore non supporta la disattivazione dell\'inoltro chiamate quando il telefono non è raggiungibile."</string>
     <string name="updating_title" msgid="6146755386174019046">"Impostazioni chiamate"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Le impostazioni delle chiamate possono essere modificate solo dall\'utente amministratore."</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Chiamata in corso"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Rete"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Modalità 4G LTE avanzata"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Chiamata avanzata"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Usa i servizi LTE per migliorare la voce e le altre comunicazioni (consigliato)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Dati attivati"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Consenti l\'utilizzo dei dati"</string>
@@ -390,20 +390,20 @@
     <string name="cdma_activate_device" msgid="3793805892364814518">"Attiva dispositivo"</string>
     <string name="cdma_lte_data_service" msgid="4255018217292548962">"Imposta servizio dati"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"Impostazioni operatore"</string>
-    <string name="fdn" msgid="7878832555095183202">"Numeri selezione fissa (FDN)"</string>
-    <string name="fdn_with_label" msgid="187084204115493366">"Numeri selezione fissa (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"Elenco FDN"</string>
-    <string name="fdn_list_with_label" msgid="7437232552210469217">"Elenco FDN (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="fdn_activation" msgid="2156479741307463576">"Attivazione FDN"</string>
+    <string name="fdn" msgid="7878832555095183202">"Numeri consentiti"</string>
+    <string name="fdn_with_label" msgid="187084204115493366">"Numeri consentiti (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"Elenco numeri consentiti"</string>
+    <string name="fdn_list_with_label" msgid="7437232552210469217">"Elenco numeri consentiti (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn_activation" msgid="2156479741307463576">"Attivazione numeri consentiti"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Numeri di selezione fissa attivi"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"Numeri di selezione fissa non attivi"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"Attiva FDN"</string>
-    <string name="disable_fdn" msgid="7944020890722540616">"Disattiva FDN"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"La funzionalità Numeri consentiti non è attiva"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"Attiva numeri consentiti"</string>
+    <string name="disable_fdn" msgid="7944020890722540616">"Disattiva numeri consentiti"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Cambia PIN2"</string>
-    <string name="enable_fdn_ok" msgid="7215588870329688132">"Disattiva FDN"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"Attiva FDN"</string>
+    <string name="enable_fdn_ok" msgid="7215588870329688132">"Disattiva numeri consentiti"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"Attiva numeri consentiti"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Gestisci numeri di selezione fissa"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Cambia PIN per accesso FDN"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Cambia PIN per accesso ai numeri consentiti"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gestisci elenco numeri"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Privacy pacchetti vocali"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Attiva modalità privacy ottimizzata"</string>
@@ -429,10 +429,10 @@
     <string name="delete_fdn_contact" msgid="6668958073074151717">"Elimina numero selezione fissa"</string>
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Eliminazione numero selezione fissa..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Numero di selezione fissa eliminato."</string>
-    <string name="pin2_invalid" msgid="5470854099230755944">"FDN non aggiornato perché il PIN inserito non è corretto."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN non è stato aggiornato perché il numero supera le 20 cifre."</string>
-    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN non aggiornato. Il codice PIN2 non era corretto o il numero di telefono è stato rifiutato."</string>
-    <string name="fdn_failed" msgid="540018079008319747">"Operazione FDN non riuscita."</string>
+    <string name="pin2_invalid" msgid="5470854099230755944">"Numeri consentiti non aggiornati perché il PIN inserito non è corretto."</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"I numeri consentiti non sono stati aggiornati perché il numero supera le 20 cifre."</string>
+    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Numeri consentiti non aggiornati. Il codice PIN2 non era corretto o il numero di telefono è stato rifiutato."</string>
+    <string name="fdn_failed" msgid="540018079008319747">"Operazione numeri consentiti non riuscita."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lettura da SIM..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"Nessun contatto presente nella SIM."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Seleziona contatti da importare"</string>
@@ -507,13 +507,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Impossibile mettere in attesa le chiamate."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Connettiti a una rete wireless per effettuare una chiamata."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Attiva le chiamate tramite Wi-Fi per effettuare una chiamata."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Informazioni per le emergenze"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Proprietario"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tocca di nuovo per visualizzare le informazioni"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Chiamata di emergenza"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Solo chiamate di emergenza"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Numero di emergenza"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numeri di emergenza"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tocca ancora per chiamare <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Attivazione segnale cellulare..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Nessun servizio. Nuovo tentativo…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Impossibile attivare la modalità aereo durante una chiamata di emergenza."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Impossibile chiamare. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> non è un numero di emergenza."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Impossibile chiamare. Componi un numero di emergenza."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Chiamate di emergenza non disponibili"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Polizia"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulanza"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Vigili del fuoco"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Usa tastiera"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"In attesa"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Chiudi"</string>
@@ -599,6 +610,8 @@
     <string name="selectContact" msgid="781975788478987237">"seleziona contatto"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Chiamate vocali non supportate"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"componi"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"mostra tastierino"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Tastierino di emergenza"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Leggi la segreteria"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Imposta PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Cambia PIN"</string>
@@ -702,7 +715,7 @@
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="8294907817156524790">"Errore protocollo, non specificato"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Interfunzionamento, non specificato"</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Blocco chiamate"</string>
-    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Attivo"</string>
+    <string name="sum_call_barring_enabled" msgid="6804489690436703488">"On"</string>
     <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Non attivo"</string>
     <string name="call_barring_baoc" msgid="1199843944333106035">"Tutte le chiamate in uscita"</string>
     <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Disattivare il blocco di tutte le chiamate in uscita?"</string>

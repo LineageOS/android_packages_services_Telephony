@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"কলিং"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"নেটওয়ার্ক"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"উন্নত 4G LTE মোড"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"উন্নত কলিং"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ভয়েস এবং অন্যান্য যোগাযোগব্যবস্থা উন্নত করতে LTE পরিষেবা ব্যবহার করুন (প্রস্তাবিত)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ডেটা সক্ষম করা হয়েছে"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ডেটা ব্যবহারের অনুমতি দিন"</string>
@@ -503,18 +503,29 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"কলগুলি ধরে রাখা যাবে না।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"একটি কল করতে কোনো ওয়্যারলেস নেটওয়ার্কে সংযোগ করুন৷"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"কোনো কল করতে Wi-Fi কলিং সক্ষম করুন৷"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"জরুরি তথ্য"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"মালিক"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"তথ্য দেখার জন্য আবার ট্যাপ করুন"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"জরুরি কল"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"শুধুমাত্র জরুরি কল"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"জরুরি নম্বর"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"জরুরি নম্বর"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>-এ আবার কল করার জন্য ট্যাপ করুন"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"রেডিও চালু করা হচ্ছে…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"কোন পরিষেবা নেই৷ আবার চেষ্টা করা হচ্ছে..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"কোনো জরুরী কলের সময় বিমান মোডে প্রবেশ করা যাবে না৷"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"কল করা যাবে না৷ <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> কোনো জরুরী নম্বর নয়৷"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"কল করা যাবে না৷ কোনো জরুরী নম্বর ডায়াল করুন৷"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"জরুরি কল করা যাবে না"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"পুলিশ"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"অ্যাম্বুলেন্স"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"আগুন"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ডায়াল করতে কীবোর্ড ব্যবহার করুন"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ধরে থাকুন"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"শেষ করুন"</string>
     <string name="onscreenShowDialpadText" msgid="8561805492659639893">"ডায়ালপ্যাড"</string>
-    <string name="onscreenMuteText" msgid="5011369181754261374">"নিঃশব্দ করুন"</string>
+    <string name="onscreenMuteText" msgid="5011369181754261374">"মিউট করুন"</string>
     <string name="onscreenAddCallText" msgid="5140385634712287403">"কল যোগ করুন"</string>
     <string name="onscreenMergeCallsText" msgid="6640195098064538950">"কলগুলি মার্জ করুন"</string>
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"সোয়াপ করুন"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"পরিচিতি বেছে নিন"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"ভয়েস কলিং সমর্থিত নয়"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ডায়াল করুন"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"ডায়ালপ্যাড দেখুন"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"জরুরি ডায়ালপ্যাড"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"ভিজ্যুয়াল ভয়েসমেল"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN সেট করুন"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"পিন পরিবর্তন করুন"</string>

@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"전화 서비스"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"긴급 통화"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"휴대전화"</string>
-    <string name="fdnListLabel" msgid="8630418672279521003">"FDN 목록"</string>
+    <string name="fdnListLabel" msgid="8630418672279521003">"발신 허용 번호 목록"</string>
     <string name="unknown" msgid="6878797917991465859">"알 수 없음"</string>
     <string name="private_num" msgid="6713286113000232309">"비공개 번호"</string>
     <string name="payphone" msgid="4793877574636445118">"공중전화"</string>
@@ -60,7 +60,7 @@
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"CDMA 통화 설정(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="9043423184895642077">"APN"</string>
     <string name="settings_label" msgid="3876743539816984008">"네트워크 설정"</string>
-    <string name="phone_accounts" msgid="6376603393888116364">"전화 계정"</string>
+    <string name="phone_accounts" msgid="6376603393888116364">"통화 계정"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"전화 걸기 대상"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"SIP 전화 걸기 대상"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"확인 후 걸기"</string>
@@ -86,7 +86,7 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"추가 CDMA 통화 설정"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"CDMA 전용 통화 설정 추가"</string>
     <string name="labelNwService" msgid="4699970172021870983">"네트워크 서비스 설정"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"발신자 ID"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"발신번호 표시"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"설정 로드 중..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"발신자 표시 제한"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"발신전화의 번호 표시"</string>
@@ -131,7 +131,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS 요청이 USSD 요청으로 변경됨"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"새 SS 요청으로 변경됨"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS 요청이 화상 통화로 변경됨"</string>
-    <string name="fdn_check_failure" msgid="18200614306525434">"휴대전화 앱의 발신 제한 번호 설정을 사용하기 때문에 일부 통화 관련 기능이 작동되지 않습니다."</string>
+    <string name="fdn_check_failure" msgid="18200614306525434">"전화 앱의 발신 제한 번호 설정을 사용하기 때문에 일부 통화 관련 기능이 작동되지 않습니다."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"이러한 설정을 보려면 무선을 사용해야 합니다."</string>
     <string name="close_dialog" msgid="2365884406356986917">"확인"</string>
     <string name="enable" msgid="7248657275000173526">"사용"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"통화"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"네트워크"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"향상된 4G LTE 모드"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"고급 통화"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"LTE 서비스를 사용하여 음성 및 기타 통신을 개선할 수 있습니다(권장)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"데이터 사용"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"데이터 사용 허용"</string>
@@ -388,18 +388,18 @@
     <string name="carrier_settings_title" msgid="9028166176523012300">"이동통신사 설정"</string>
     <string name="fdn" msgid="7878832555095183202">"발신 허용 번호"</string>
     <string name="fdn_with_label" msgid="187084204115493366">"발신 허용 번호(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="8777755791892122369">"FDN 목록"</string>
-    <string name="fdn_list_with_label" msgid="7437232552210469217">"FDN 목록(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="manage_fdn_list" msgid="8777755791892122369">"발신 허용 번호 목록"</string>
+    <string name="fdn_list_with_label" msgid="7437232552210469217">"발신 허용 번호 목록(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"FDN 활성화"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"발신 허용 번호 사용"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"발신 허용 번호 사용 중지됨"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"FDN 사용"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"발신 허용 번호 사용"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"FDN 사용 중지"</string>
     <string name="change_pin2" msgid="2153563695382176676">"PIN2 변경"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN 사용 중지"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN 사용"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"발신 허용 번호 사용"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"발신 허용 번호 관리"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN 액세스를 위해 PIN 변경"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"발신 허용 번호 액세스를 위해 PIN 변경"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"전화번호 목록 관리"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"음성 개인정보 보호"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"향상된 개인정보 보호 모드 사용"</string>
@@ -483,7 +483,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"알 수 없는 음성사서함 번호"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"서비스 불가"</string>
     <string name="notification_network_selection_text" msgid="2607085729661923269">"선택한 네트워크(<xliff:g id="OPERATOR_NAME">%s</xliff:g>)를 사용할 수 없음"</string>
-    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"전화를 걸려면 모바일 네트워크를 사용 설정하고 비행기 모드 또는 배터리 세이버 모드를 사용 중지하세요."</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"전화를 걸려면 모바일 네트워크를 사용 설정하고 비행기 모드 또는 절전 모드를 사용 중지하세요."</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"전화를 걸려면 비행기 모드를 사용 중지하세요."</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"전화를 걸려면 비행기 모드를 사용 중지하거나 무선 네트워크에 연결하세요."</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"일반 전화를 걸려면 긴급 콜백 모드를 해제하세요."</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"통화를 보류할 수 없습니다."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"전화를 걸려면 무선 네트워크에 연결하세요."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"전화를 걸려면 Wi-Fi 통화를 사용 설정하세요."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"긴급 상황 정보"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"소유자"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"정보를 보려면 다시 탭하세요."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"긴급 전화"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"긴급 전화 전용"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"긴급 전화번호"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"긴급 전화번호"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>(으)로 전화하려면 다시 탭하세요."</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"무선을 켜는 중..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"서비스를 사용할 수 없습니다. 다시 시도 중..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"긴급 통화 중에는 비행기 모드를 사용할 수 없습니다."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"전화를 걸 수 없습니다. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g>은(는) 긴급 번호가 아닙니다."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"전화를 걸 수 없습니다. 긴급 번호를 사용하세요."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"긴급 전화를 사용할 수 없음"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"경찰서"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"구급차"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"화재"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"키보드를 사용하여 전화걸기"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"대기"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"종료"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"연락처 선택"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"음성통화 지원되지 않음"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"전화걸기"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"다이얼패드 표시"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"긴급 다이얼패드"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"시각적 음성사서함"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN 설정"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN 변경"</string>

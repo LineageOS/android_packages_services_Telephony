@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Tumatawag"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Network"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Enhanced 4G LTE Mode"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Advanced na Pagtawag"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Gamitin ang LTE upang pahusayin ang voice at ibang komunikasyon (inirerekomenda)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Pinagana ang data"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Payagan ang paggamit ng data"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Hindi makakapag-hold ng mga tawag."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Kumonekta sa isang wireless network upang makatawag."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"I-enable ang pagtawag sa Wi-Fi upang tumawag."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Impormasyong pang-emergency"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"May-ari"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"I-tap muli para tingnan ang impormasyon"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Emergency na tawag"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Mga pang-emergency na tawag lang"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Numerong pang-emergency"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Mga numerong pang-emergency"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Mag-tap muli para tumawag sa <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Ino-on ang radyo…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Walang serbisyo. Sinusubukang muli…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Hindi maaaring ilagay sa ariplane mode habang nasa isang emergency na tawag."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Hindi makatawag. Ang <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ay hindi isang emergency na numero."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Hindi makatawag. Mag-dial ng emergency na numero."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Hindi available ang emergency na pagtawag"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Pulis"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulansya"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Sunog"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Gamitin ang keyboard upang mag-dial"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"I-hold"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Wakasan"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"pumili ng contact"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Hindi suportado ang voice calling"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"Mag-dial"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"ipakita ang dialpad"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Pang-emergency na Dialpad"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visual Voicemail"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Magtakda ng PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Baguhin ang PIN"</string>

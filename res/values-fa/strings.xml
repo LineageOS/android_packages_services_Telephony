@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"درحال تماس"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"شبکه"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"‏حالت پیشرفته 4G LTE"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"تماس پیشرفته"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"‏استفاده از سرویس‌های LTE جهت بهبود ارتباطات صوتی و سایر ارتباطات (توصیه می‌شود)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"داده‌ها فعال شدند"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"استفاده از داده مجاز است"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"نگه‌داشتن تماس‌ها ممکن نیست."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"برای برقراری تماس، به یک شبکه بی‌سیم وصل شوید"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"‏برای برقراری تماس، تماس Wi-Fi را فعال کنید."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"اطلاعات اضطراری"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"مالک"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"برای دیدن اطلاعات، دوباره ضربه بزنید"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"تماس اضطراری"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"فقط تماس‌های اضطراری"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"شماره تلفن اضطراری"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"شماره تلفن‌های اضطراری"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"برای تماس با <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> دوباره ضربه بزنید"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"در حال روشن کردن رادیو..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"سرویسی در دسترس نیست. دوباره امتحان کنید..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"در طول تماس اضطراری نمی‌توانید به حالت هواپیما بروید."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"نمی‌توانید تماس بگیرید. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> یک شماره اضطراری نیست."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"نمی‌ توانید تماس بگیرید. یک شماره اضطراری را شماره‌گیری کنید."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"تماس اضطراری دردسترس نیست"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"پلیس"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"آمبولانس"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"آتش"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"‏%1$s،‏ %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"استفاده از صفحه‌کلید برای شماره گیری"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"نگهداشت"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"پایان"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"انتخاب حساب"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"تماس صوتی پشتیبانی نمی‌شود"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"شماره گیری"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"نمایش صفحه شماره گیری"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"صفحه شماره‌گیری اضطراری"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"پست صوتی تصویری"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"تنظیم پین"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"تغییر پین"</string>

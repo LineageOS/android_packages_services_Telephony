@@ -19,7 +19,7 @@
     <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"ਮੋਬਾਈਲ ਡਾਟਾ"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"ਫ਼ੋਨ ਸੇਵਾਵਾਂ"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"ਐਮਰਜੈਂਸੀ ਡਾਇਲਰ"</string>
-    <string name="phoneIconLabel" msgid="2331230813161304895">"ਫੋਨ"</string>
+    <string name="phoneIconLabel" msgid="2331230813161304895">"ਫ਼ੋਨ"</string>
     <string name="fdnListLabel" msgid="8630418672279521003">"FDN ਸੂਚੀ"</string>
     <string name="unknown" msgid="6878797917991465859">"ਅਗਿਆਤ"</string>
     <string name="private_num" msgid="6713286113000232309">"ਨਿੱਜੀ ਨੰਬਰ"</string>
@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI ਕੋਡ ਰੱਦ ਕੀਤਾ"</string>
     <string name="cancel" msgid="5044513931633602634">"ਰੱਦ ਕਰੋ"</string>
     <string name="enter_input" msgid="1810529547726803893">"USSD ਸੁਨੇਹਾ <xliff:g id="MIN_LEN">%d</xliff:g> ਅਤੇ <xliff:g id="MAX_LEN">%d</xliff:g> ਅੱਖਰਾਂ ਵਿਚਕਾਰ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"ਕਾਨਫਰੰਸ ਕਾਲ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"ਕਾਨਫਰੰਸ ਕਾਲ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ"</string>
     <string name="ok" msgid="3811371167865772377">"ਠੀਕ"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"ਸਪੀਕਰ"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"ਹੈਂਡਸੈਟ ਈਅਰਪੀਸ"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"ਕਾਲਿੰਗ"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"ਨੈੱਟਵਰਕ"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"ਵਿਸਤ੍ਰਿਤ 4G LTE ਮੋਡ"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"ਉੱਨਤ ਕਾਲਿੰਗ"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ਵੌਇਸ ਅਤੇ ਹੋਰ ਸੰਚਾਰ ਬਿਹਤਰ ਬਣਾਉਣ ਲਈ  LTE ਸੇਵਾਵਾਂ ਵਰਤੋ ( ਸਿਫ਼ਾਰਸ਼  ਕੀਤਾ)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ਡਾਟਾ ਸਮਰਥਿਤ"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ਡਾਟਾ ਵਰਤੋਂ ਦੀ ਆਗਿਆ ਦਿਓ"</string>
@@ -473,7 +473,7 @@
     <string name="card_title_redialing" msgid="8253487008234167266">"ਮੁੜ ਡਾਇਲ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="card_title_conf_call" msgid="1162980346189744501">"ਕਾਨਫਰੰਸ ਕਾਲ"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"ਇਨਕਮਿੰਗ ਕਾਲ"</string>
-    <string name="card_title_call_ended" msgid="5544730338889702298">"ਕਾਲ ਖ਼ਤਮ ਹੋਈ"</string>
+    <string name="card_title_call_ended" msgid="5544730338889702298">"ਕਾਲ ਸਮਾਪਤ ਹੋਈ"</string>
     <string name="card_title_on_hold" msgid="821463117892339942">"ਹੋਲਡ ਤੇ"</string>
     <string name="card_title_hanging_up" msgid="3999101620995182450">"ਹੈਂਗ ਅਪ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="card_title_in_call" msgid="6346543933068225205">"ਇਨ ਕਾਲ"</string>
@@ -503,21 +503,32 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"ਕਾਲਾਂ ਹੋਲਡ ਨਹੀਂ ਕੀਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ ਇੱਕ ਵਾਇਰਲੈਸ ਨੈਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ Wi-Fi ਕਾਲਿੰਗ ਯੋਗ ਬਣਾਓ।"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"ਸੰਕਟਕਾਲੀਨ ਜਾਣਕਾਰੀ"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"ਮਾਲਕ"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"ਜਾਣਕਾਰੀ ਦੇਖਣ ਲਈ ਦੁਬਾਰਾ ਟੈਪ ਕਰੋ"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ਐਮਰਜੈਂਸੀ ਕਾਲ"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"ਸਿਰਫ਼ ਐਮਰਜੈਂਸੀ ਕਾਲਾਂ"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"ਸੰਕਟਕਾਲੀਨ ਨੰਬਰ"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"ਸੰਕਟਕਾਲੀਨ ਨੰਬਰ"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> \'ਤੇ ਕਾਲ ਕਰਨ ਲਈ ਦੁਬਾਰਾ ਟੈਪ ਕਰੋ"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"ਰੇਡੀਓ ਚਾਲੂ ਕਰ ਰਿਹਾ ਹੈ…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"ਕੋਈ ਸੇਵਾ ਨਹੀਂ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"ਕਿਸੇ ਐਮਰਜੈਂਸੀ ਕਾਲ ਦੌਰਾਨ ਜਹਾਜ਼ ਮੋਡ ਵਿੱਚ ਦਾਖਲ ਨਹੀਂ ਹੋਇਆ ਜਾ ਸਕਦਾ।"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"ਕਾਲ ਨਹੀਂ ਕਰ ਸਕਦਾ। <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ਇੱਕ ਐਮਰਜੈਂਸੀ ਨੰਬਰ ਨਹੀਂ ਹੈ।"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਇੱਕ ਐਮਰਜੈਂਸੀ ਨੰਬਰ ਡਾਇਲ ਕਰੋ।"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"ਸੰਕਟਕਾਲੀਨ ਕਾਲ ਉਪਲਬਧ ਨਹੀਂ ਹੈ"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"ਪੁਲਿਸ"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"ਐਂਬੂਲੈਂਸ"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"ਅੱਗ"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ਡਾਇਲ ਕਰਨ ਲਈ ਕੀ-ਬੋਰਡ ਵਰਤੋ"</string>
-    <string name="onscreenHoldText" msgid="2285258239691145872">"ਹੋਲਡ ਕਰੋ"</string>
+    <string name="onscreenHoldText" msgid="2285258239691145872">"ਰੋਕ ਕੇ ਰੱਖੋ"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ਖ਼ਤਮ"</string>
     <string name="onscreenShowDialpadText" msgid="8561805492659639893">"ਡਾਇਲਪੈਡ"</string>
     <string name="onscreenMuteText" msgid="5011369181754261374">"ਮਿਊਟ ਕਰੋ"</string>
-    <string name="onscreenAddCallText" msgid="5140385634712287403">"ਕਾਲ ਜੋੜੋ"</string>
+    <string name="onscreenAddCallText" msgid="5140385634712287403">"ਕਾਲ ਸ਼ਾਮਲ ਕਰੋ"</string>
     <string name="onscreenMergeCallsText" msgid="6640195098064538950">"ਕਾਲਾਂ ਸ਼ਾਮਲ ਕਰੋ"</string>
-    <string name="onscreenSwapCallsText" msgid="1602990689244030047">"ਸਵੈਪ ਕਰੋ"</string>
+    <string name="onscreenSwapCallsText" msgid="1602990689244030047">"ਦੂਜੀ ਕਾਲ ਲਓ"</string>
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"ਕਾਲਾਂ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
     <string name="onscreenManageConferenceText" msgid="6485935856534311346">"ਕਾਨਫਰੰਸ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
     <string name="onscreenAudioText" msgid="1710087112800041743">" ਆਡੀਓ"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"ਸੰਪਰਕ ਚੁਣੋ"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"ਵੌਇਸ ਕਾਲਿੰਗ ਸਮਰਥਿਤ ਨਹੀਂ"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ਡਾਇਲ ਕਰੋ"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"ਡਾਇਲਪੈਡ ਦਿਖਾਓ"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"ਸੰਕਟਕਾਲੀਨ ਡਾਇਲਪੈਡ"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"ਵਿਜੁਅਲ ਵੌਇਸਮੇਲ"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN ਸੈੱਟ ਕਰੋ"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN ਬਦਲੋ"</string>
