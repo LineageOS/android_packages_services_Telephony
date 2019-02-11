@@ -72,7 +72,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="1361715069911607109">"Hisob sozlamalarini shakllantirish"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"Barcha qo‘ng‘iroq hisoblari"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"Qo‘ng‘iroqlarni amalga oshirish mumkin bo‘lgan hisoblarni tanlang"</string>
-    <string name="wifi_calling" msgid="739018212480165598">"Wi-Fi qo‘ng‘iroq"</string>
+    <string name="wifi_calling" msgid="739018212480165598">"Wi-Fi chaqiruv"</string>
     <string name="connection_service_default_label" msgid="1498481943805913754">"Ichki o‘rnatilgan ulanish xizmati"</string>
     <string name="voicemail" msgid="8693759337917898954">"Ovozli pochta"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Ovozli pochta (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -88,14 +88,14 @@
     <string name="labelNwService" msgid="4699970172021870983">"Tarmoq xizmati sozlamalari"</string>
     <string name="labelCallerId" msgid="3888899447379069198">"Raqamni aniqlash xizmati"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"Sozlamalar yuklanmoqda…"</string>
-    <string name="sum_hide_caller_id" msgid="1071407020290873782">"Chiquvchi qo‘ng‘iroqlarda raqam ko‘rsatilmasin"</string>
-    <string name="sum_show_caller_id" msgid="6768534125447290401">"Raqam chiquvchi qo‘ng‘iroqlarda ko‘rsatilsin"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Chiquvchi qo‘ng‘iroqlarda telefon raqamimni ko‘rsatish uchun operatorning standart sozlamalaridan foydalanilsin"</string>
+    <string name="sum_hide_caller_id" msgid="1071407020290873782">"Chiquvchi chaqiruvlarda raqam berkitilsin"</string>
+    <string name="sum_show_caller_id" msgid="6768534125447290401">"Chiquvchi chaqiruvlarda chiqadigan raqam"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Chiquvchi chaqiruvlarda telefon raqamingizni chiqarish uchun operatorning standart sozlamalari ishlatiladi"</string>
     <string name="labelCW" msgid="6120513814915920200">"Chaqiruvni kutish"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Suhbat vaqtida kiruvchi chaqiruv kelsa, sizga xabar qilinadi"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Suhbat vaqtida kiruvchi chaqiruv kelsa, sizga xabar qilinadi"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Chaqiruvni yo‘naltirish"</string>
-    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Chaqiruvni yo‘naltirish (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Chaqiruvni uzatish"</string>
+    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Chaqiruvni uzatish (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Chaqiruvlarni uzatish"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Har doim uzatish"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Qo‘ng‘iroq har doim ushbu raqamga yo‘naltirilsin"</string>
@@ -113,7 +113,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> raqamiga yo‘naltiriladi"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"O‘chiq"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Telefoningiz javob bermayotganda qo‘ng‘iroqlarni boshqa raqamga yo‘naltirishni o‘chirish xususiyati operatoringizda yo‘q."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"Agar raqamga tushib bo‘lmasa"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"Agar raqam tarmoqdan tashqarida bo‘lsa"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Ushbu raqamga yo‘naltirilsin"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> raqamiga yo‘naltiriladi"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"O‘chiq"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Chaqiruvlar"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Tarmoq"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Kuchaytirilgan 4G LTE rejimi"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Keng imkoniyatli qo‘ng‘iroqlar"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Ovozli va boshqa aloqalarni yaxshilash uchun LTE xizmatlaridan foydalaning"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Internet yoqildi"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Mobil internetdan foydalanishga ruxsat"</string>
@@ -395,12 +395,12 @@
     <string name="fdn_disabled" msgid="4700049736675368279">"Ruxsat etilgan raqamlar cheklovi yoqilmagan"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Ruxsat etilgan raqamlar cheklovini yoqish"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"FDNni o‘chirib qo‘yish"</string>
-    <string name="change_pin2" msgid="2153563695382176676">"PIN2 kodni o‘zgartirish"</string>
+    <string name="change_pin2" msgid="2153563695382176676">"PIN2 kodni almashtirish"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDNni o‘chirib qo‘yish"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Ruxsat etilgan raqamlar cheklovini yoqish"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Ruxsat etilgan raqamlarni boshqarish"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Ruxsat etilgan raqamlar ro‘yxatiga kirishda ishlatiladigan PIN kodni o‘zgartirish"</string>
-    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Ruxsat etilgan raqamlar ro‘yxatini boshqarish"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Ruxsat etilgan raqamlarga kirishda ishlatiladigan PIN kodni almashtirish"</string>
+    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Ruxsat etilgan raqamlarni boshqarish"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Shaxsiy ovoz"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Maxfiylikni kuchaytirish rejimini yoqish"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"Teletayp rejimi"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Qo‘ng‘iroqlarni ushlab turib bo‘lmadi."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Qo‘ng‘iroq qilish uchun simsiz tarmoqqa ulaning"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Qo‘ng‘iroq qilish uchun Wi-Fi qo‘ng‘iroqlar funksiyasini yoqing."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Favqulodda vaziyatlar uchun axborot"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Egasi"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Axborotni ochish uchun yana bir marta bosing"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Favqulodda chaqiruv"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Faqat favqulodda chaqiruvlar"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Favqulodda xizmat raqami"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Favqulodda xizmat raqamlari"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> raqamiga chaqiruv qilish uchun yana bir marta bosing"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Radio yoqilmoqda…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Aloqa yo‘q. Qayta urinilmoqda…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Favqulodda qo‘ng‘iroq paytida parvoz rejimiga o‘tkazib bo‘lmaydi."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Qo‘ng‘iroq qilib bo‘lmadi. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> favqulodda raqam emas."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Qo‘ng‘iroq qilib bo‘lmadi. Favqulodda raqamga tering."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Favqulodda xizmat raqamiga chaqiruv qilib bo‘lmaydi"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Politsiya"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Tez tibbiy yordam"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"O‘t o‘chirish xizmati"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Terish uchun tugmatagdan foydalaning"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Ushlab turish"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Tugatish"</string>
@@ -521,7 +532,7 @@
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"Qo‘ng‘iroqlarni boshqarish"</string>
     <string name="onscreenManageConferenceText" msgid="6485935856534311346">"Konferensiyani boshqarish"</string>
     <string name="onscreenAudioText" msgid="1710087112800041743">"Audio"</string>
-    <string name="onscreenVideoCallText" msgid="4800924186056115442">"Video qo‘ng‘iroq"</string>
+    <string name="onscreenVideoCallText" msgid="4800924186056115442">"Video"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"Import qilish"</string>
     <string name="importAllSimEntries" msgid="1503181169636198673">"Barchasini import qilish"</string>
     <string name="importingSimContacts" msgid="7374056215462575769">"SIM karta kontaktlarini import qilish"</string>
@@ -534,7 +545,7 @@
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Video chaqiruvlar vaqtida xabarlar almashinuviga ruxsat berish"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT kar, eshitish qobiliyati va nutqiy faoliyati buzilgan shaxslarga mo‘ljallangan funksiyadir.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Batafsil&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT chaqiruvlari transkripsiya sifatida saqlanadi.\n       &lt;br&gt; – RTT funksiyasidan video chaqiruvlar vaqtida foydalanib bo‘lmaydi."</string>
   <string-array name="tty_mode_entries">
-    <item msgid="512950011423868021">"Teletayp o‘chiq"</item>
+    <item msgid="512950011423868021">"Teletayp yoqilmagan"</item>
     <item msgid="3971695875449640648">"To‘liq funksiyali teletayp"</item>
     <item msgid="1937509904407445684">"Suhbatdoshni eshitish imkoniyati bor teletayp"</item>
     <item msgid="5644925873488772224">"Ovozni uzatish imkoniyati bor teletayp"</item>
@@ -568,8 +579,8 @@
     <string name="ota_try_again" msgid="7685477206465902290">"Yana urinib ko‘ring"</string>
     <string name="ota_next" msgid="3904945374358235910">"Keyingisi"</string>
     <string name="ecm_exit_dialog" msgid="4448531867763097533">"EcmExitDialog"</string>
-    <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Favqulodda teskari qo‘ng‘iroq rejimi kiritildi"</string>
-    <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Favqulodda teskari qo‘ng‘iroq rejimi"</string>
+    <string name="phone_entered_ecm_text" msgid="6266424252578731203">"Favqulodda teskari chaqiruv rejimida"</string>
+    <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Favqulodda teskari chaqiruv rejimi"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Internetga ulanish o‘chirildi"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> gacha internetga ulanib bo‘lmaydi"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
@@ -595,9 +606,11 @@
     <string name="selectContact" msgid="781975788478987237">"kontaktni tanlash"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Ovozli qo‘ng‘iroq ishlamaydi"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"terish"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"klaviaturani ochish"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Favqulodda chaqiruvlar"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Vizual ovozli pochta"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN kodni o‘rnatish"</string>
-    <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN kodni o‘zgartirish"</string>
+    <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN kodni almashtirish"</string>
     <string name="preference_category_ringtone" msgid="5197960752529332721">"Qo‘ng‘iroq ohangi &amp; tebranish"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Ichki o‘rnatilgan SIM kartalar"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Video qo\'ng\'iroqni yoqib qo\'yish"</string>

@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"କଲ୍ କରାଯାଉଛି"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"ନେଟ୍‌ୱର୍କ"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"ଉନ୍ନତ 4G LTE ମୋଡ୍‍"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"ଉନ୍ନତ କଲିଙ୍ଗ"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ଭଏସ୍ ଓ ଅନ୍ୟାନ୍ୟ ଯୋଗାଯୋଗ(ପରାମର୍ଶିତ)କୁ ଉନ୍ନତ କରିବା ପାଇଁ LTE ସେବା ବ୍ୟବହାର କରନ୍ତୁ"</string>
     <string name="data_enabled" msgid="5972538663568715366">"ଡାଟା ସକ୍ଷମ ହୋ‌ଇଛି"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ଡାଟାର ବ୍ୟବହାରକୁ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"କଲ୍‍କୁ ହୋଲ୍ଡ କରାଯାଇପାରିବ ନାହିଁ।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ଗୋଟିଏ କଲ୍ କରିବା ପାଇଁ ଏକ ତାରବିହୀନ ନେଟ୍‌ୱର୍କ ସହ କନେକ୍ଟ କରନ୍ତୁ।"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"ଗୋଟିଏ କଲ୍ କରିବା ପାଇଁ ୱାଇ-ଫାଇ କଲିଙ୍ଗକୁ ସକ୍ଷମ କରନ୍ତୁ।"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"ଆପତ୍ତକାଳୀନ ସୂଚନା"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"ମାଲିକ"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"ସୂଚନା ଦେଖିବାକୁ ପୁଣିଥରେ ଟାପ୍‍ କରନ୍ତୁ"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ଜରୁରୀକାଳିନ କଲ୍‌"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"କେବଳ ଜରୁରୀକାଳୀନ କଲ୍‌"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"ଜରୁରୀକାଳୀନ ନମ୍ବର୍‌"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"ଜରୁରୀକାଳୀନ ନମ୍ବର୍‌"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>ରେ କଲ୍‌ କରନ୍ତୁ"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"ରେଡିଓକୁ ଚାଲୁ କରାଯାଉଛି…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"କୌଣସି ସେବା ନାହିଁ। ପୁଣି ଚେଷ୍ଟାକରାଯାଉଛି…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"ଗୋଟିଏ ଜରୁରିକାଳୀନ କଲ୍ କରିବାବେଳେ ଏୟାରପ୍ଲେନ୍ ମୋଡ୍‌କୁ ପ୍ରବେଶ କରାଯାଇପାରିବ ନାହିଁ।"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"କଲ୍ କରିପାରିବେ ନାହିଁ। <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ଗୋଟିଏ ଜରୁରିକାଳୀନ ନମ୍ବର୍ ନୁହେଁ।"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"କଲ୍ କରିପାରିବେ ନାହିଁ। ଗୋଟିଏ ଜରୁରିକାଳୀନ ନମ୍ବର୍ ଡାଏଲ୍ କରନ୍ତୁ।"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"ଜରୁରିକାଳୀନ କଲ୍ କରିବା ଉପଲବ୍ଧ ନାହିଁ"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"ପୋଲିସ୍‍"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"ଆମ୍ବୁଲେନ୍ସ"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"ନିଆଁ"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ଡାଏଲ୍ କରିବା ପାଇଁ କୀବୋର୍ଡକୁ ବ୍ୟବହାର କରନ୍ତୁ"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"ହୋଲ୍ଡ କରନ୍ତୁ"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"ସମାପ୍ତ କରନ୍ତୁ"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"ଯୋଗାଯୋଗକୁ ଚୟନ କରନ୍ତୁ"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"ଭଏସ୍ କଲ୍ ସପୋର୍ଟ କରୁନାହିଁ"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"ଡାଏଲ୍ କରନ୍ତୁ"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"ଡାୟଲ୍‍ପ୍ୟାଡ୍‍ ଦେଖାନ୍ତୁ"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"ଜରୁରୀକାଳୀନ ଡାୟଲ୍‍ପ୍ୟାଡ୍‍"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"ଭିଜୁଆଲ୍ ଭଏସମେଲ୍"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN ସେଟ୍ କରନ୍ତୁ"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN ବଦଳାନ୍ତୁ"</string>

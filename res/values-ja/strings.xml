@@ -90,7 +90,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"設定の読み込み中…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"発信時に番号を通知しない"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"発信時に番号を通知する"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"発信者番号表示に通信事業者のデフォルト値を使用する"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"相手への自分の番号の表示は通信事業者のデフォルト設定に従う"</string>
     <string name="labelCW" msgid="6120513814915920200">"通話中着信"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"通話中も着信を知らせる"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"通話中も着信を知らせる"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"通話"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"ネットワーク"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"4G LTE拡張モード"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"高度な通話機能"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"LTEサービスを使用して音声などの通信を改善する（推奨）"</string>
     <string name="data_enabled" msgid="5972538663568715366">"データ通信を有効にする"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"データ使用を許可"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"通話を保留にできません。"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"電話をかけるには無線ネットワークに接続してください。"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"電話をかけるには Wi-Fi 通話を有効にしてください。"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"緊急時情報"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"所有者"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"もう一度タップすると情報を確認できます"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"緊急通報"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"緊急通報のみ"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"緊急通報番号"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"緊急通報番号一覧"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"もう一度タップすると <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> 宛に発信できます"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"無線通信をONにしています..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"通信サービスはありません。もう一度お試しください…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"緊急通報中に機内モードに切り替えることはできません。"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"発信できません。<xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g>は緊急通報番号ではありません。"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"発信できません。緊急通報番号におかけください。"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"緊急通報はご利用いただけません"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"警察"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"救急車"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"消防車"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s、%2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"キーボードで番号を入力してください"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"保留"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"終了"</string>
@@ -595,6 +606,8 @@
     <string name="selectContact" msgid="781975788478987237">"連絡先を選択"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"音声通話はサポートされていません"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"発信"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"ダイヤルパッドを表示"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"緊急通報ダイヤルパッド"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"ビジュアルボイスメール"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"PIN の設定"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"PIN の変更"</string>

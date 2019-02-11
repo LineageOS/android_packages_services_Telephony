@@ -86,7 +86,7 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"CDMA deien ezarpen gehigarriak"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"CDMA soilik motako deietarako ezarpen gehigarriak"</string>
     <string name="labelNwService" msgid="4699970172021870983">"Sareko zerbitzuen ezarpenak"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"Deien identifikazio-zerbitzua"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"Deitzailearen IDa"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"Ezarpenak kargatzen…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Ezkutatu zenbakia irteerako deietan"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Erakutsi zenbakia irteerako deietan"</string>
@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Deiak"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Sarea"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"4G LTE modu hobetua"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Deitzeko aukera aurreratuak"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Erabili LTE zerbitzuak ahotsa eta bestelako komunikazioak hobetzeko (gomendatua)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Datuak gaituta"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Onartu datuak erabiltzea"</string>
@@ -509,13 +509,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Ezin dira zain utzi deiak."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Deia egiteko, konektatu haririk gabeko sare batera."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Deia egiteko, gaitu Wi-Fi bidezko deiak."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Larrialdietarako informazioa"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Jabea"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Informazioa ikusteko, sakatu berriro"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Larrialdi-deia"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Larrialdi-deiak soilik"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Larrialdietarako zenbakia"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Larrialdietarako zenbakiak"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Sakatu berriro <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> zenbakira deitzeko"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Irratia pizten…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Ez dago zerbitzurik. Berriro saiatzen…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Ezin da erabili hegaldi modua larrialdi-deietan."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Ezin da deitu. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ez da larrialdietarako zenbakia."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Ezin da deitu. Markatu larrialdietarako zenbakia."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Ezin da egin larrialdi-deirik"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Polizia"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Anbulantzia"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Sua"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Erabili teklatua markatzeko"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Utzi zain"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Amaitu"</string>
@@ -534,8 +545,8 @@
     <string name="importToFDNfromContacts" msgid="2130620207013368580">"Inportatu kontaktuetatik"</string>
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Inportatu da kontaktua"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Ezin izan da inportatu kontaktua"</string>
-    <string name="hac_mode_title" msgid="8740268574688743289">"Audiofonoak"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Aktibatu audiofonoen bateragarritasuna"</string>
+    <string name="hac_mode_title" msgid="8740268574688743289">"Audifonoak"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Aktibatu audifonoen bateragarritasuna"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Deietan testua bidaltzeko eginbidea"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Baimendu mezuak bidali eta jasotzea ahots-deien barruan"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Deietan testua bidaltzeko eginbideak deitzaile gorrei, entzumen-arazoak dituztenei, hitz egiteko ezintasunen bat dutenei edota ahotsaz gain beste makuluren bat behar dutenei laguntzen die.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lortu informazio gehiago&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Deietan testua bidaltzeko eginbidearekin egindako deiak mezu-transkripzio gisa gordetzen dira.\n       &lt;br&gt; - Deietan testua bidaltzeko eginbidea ez da bateragarria bideo-deiekin."</string>
@@ -601,6 +612,8 @@
     <string name="selectContact" msgid="781975788478987237">"hautatu kontaktua"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Ez dira ahots-deiak onartzen"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"markatu"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"erakutsi markagailua"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Larrialdietarako markagailua"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Ikusizko erantzungailua"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Ezarri PIN kodea"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Aldatu PIN kodea"</string>

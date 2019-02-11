@@ -235,7 +235,7 @@
     <string name="call_category" msgid="5863978196309462052">"Pozivanje"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Mreža"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Poboljšani 4G LTE režim"</string>
-    <string name="enhanced_4g_lte_mode_title_variant" msgid="4871126028907265406">"Napredno pozivanje"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Korišćenje LTE usluga za poboljšanje glasovnih i drugih komunikacija (preporučeno)"</string>
     <string name="data_enabled" msgid="5972538663568715366">"Podaci su omogućeni"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Omogućavanje potrošnje podataka"</string>
@@ -399,7 +399,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Onemogući broj za fiksno biranje"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Omogući broj za fiksno biranje"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Upravljanje brojevima za fiksno biranje"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Promeni PIN za pristup broju za fiksno biranje"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Promena PIN-a za pristup broju za fiksno biranje"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Upravljanje listom telefonskih brojeva"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Privatnost glasa"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Omogući poboljšan režim privatnosti"</string>
@@ -503,13 +503,24 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Nije moguće stavljati pozive na čekanje."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Povežite se na bežičnu mrežu da biste uputili poziv."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Omogućite pozivanje preko Wi-Fi-ja da biste uputili poziv."</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Informacije za hitne slučajeve"</string>
+    <string name="emergency_information_owner_hint" msgid="688331472291637149">"Vlasnik"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Dodirnite ponovo da biste videli informacije"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Hitan poziv"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Samo hitni pozivi"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Broj hitne službe"</string>
+    <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Brojevi telefona hitnih službi"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Dodirnite ponovo da biste pozvali <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Uključivanje radija…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Nema mreže. Ponovni pokušaj…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Ulazak u režim rada u avionu nije moguć tokom hitnog poziva."</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Poziv nije uspeo. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> nije broj za hitne slučajeve."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Poziv nije uspeo. Pozovite broj za hitne slučajeve."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Upućivanje hitnih poziva nije dostupno"</string>
+    <string name="police_type_description" msgid="5324410799919829693">"Policija"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Hitna pomoć"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Vatrogasci"</string>
+    <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Koristite tastaturu za pozivanje"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Čekanje"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Završi"</string>
@@ -597,6 +608,8 @@
     <string name="selectContact" msgid="781975788478987237">"izaberite kontakt"</string>
     <string name="not_voice_capable" msgid="2739898841461577811">"Audio pozivi nisu podržani"</string>
     <string name="description_dial_button" msgid="7459705245418435351">"biranje"</string>
+    <string name="description_dialpad_button" msgid="5220006811894230590">"prikažite numeričku tastaturu"</string>
+    <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Numerička tastatura za hitne pozive"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Vizuelna govorna pošta"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Podesite PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Promenite PIN"</string>
