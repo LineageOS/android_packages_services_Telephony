@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Données mobiles"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Données cellulaires"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Services téléphoniques"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Appels d\'urgence"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Téléphone"</string>
@@ -245,7 +245,7 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Se connecter aux services de données lors de l\'itinérance"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Se connecter aux services de données lors de l\'itinérance"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"L\'itinérance des données est désactivée. Touchez pour l\'activer."</string>
-    <string name="roaming_notification_title" msgid="4749053220884743110">"Connexion de données mobiles perdue"</string>
+    <string name="roaming_notification_title" msgid="4749053220884743110">"Connexion de données cellulaires perdue"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Des frais importants peuvent s\'appliquer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Communiquez avec votre fournisseur réseau pour connaître les tarifs."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Autoriser les données en itinérance?"</string>
@@ -260,7 +260,7 @@
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Désactiver les données mobiles?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Sélection requise"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Changer de SIM pour les données?"</string>
-    <string name="sim_change_data_message" msgid="2163963581444907496">"Utiliser la carte SIM <xliff:g id="NEW_SIM">%1$s</xliff:g> au lieu de la carte <xliff:g id="OLD_SIM">%2$s</xliff:g> pour les données mobiles?"</string>
+    <string name="sim_change_data_message" msgid="2163963581444907496">"Utiliser la carte SIM <xliff:g id="NEW_SIM">%1$s</xliff:g> au lieu de la carte <xliff:g id="OLD_SIM">%2$s</xliff:g> pour les données cellulaires?"</string>
     <string name="wifi_calling_settings_title" msgid="7741961465416430470">"Appels Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="539714564273795574">"Appels vidéo par l\'entremise du fournisseur de services"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Options GSM/UMTS"</string>
@@ -570,7 +570,7 @@
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"Activation en cours…"</string>
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"Le téléphone est en train d\'activer votre service de données cellulaires.\n\nCela peut prendre jusqu\'à cinq minutes."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Ignorer l\'activation?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Si vous poursuivez sans activer votre mobile, vous ne pourrez ni téléphoner, ni vous connecter à des réseaux de données mobiles. La connexion à un réseau Wi-Fi reste possible. Vous serez invité à effectuer l\'activation à chaque démarrage du téléphone."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Si vous poursuivez sans activer votre appareil mobile, vous ne pourrez ni téléphoner, ni vous connecter à des réseaux de données cellulaires. La connexion à un réseau Wi-Fi reste possible. Vous serez invité à effectuer l\'activation à chaque démarrage du téléphone."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Passer"</string>
     <string name="ota_activate" msgid="1368528132525626264">"Activer"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"Votre téléphone est activé"</string>
@@ -654,12 +654,12 @@
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"L\'itinérance de données est activée"</string>
     <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"En itinérance. Un forfait de données est requis"</string>
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"En itinérance. Le forfait de données est actif"</string>
-    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Il ne reste plus de données mobiles"</string>
-    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Il ne reste plus de données mobiles"</string>
-    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Ajouter des données mobiles par l\'intermédiaire de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"Il ne reste plus de données cellulaires"</string>
+    <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"Il ne reste plus de données cellulaires"</string>
+    <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"Ajouter des données cellulaires par l\'intermédiaire de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"Aucun forfait d\'itinérance"</string>
     <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"Ajouter un forfait d\'itinérance par l\'intermédiaire de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Vous pouvez ajouter des données mobiles ou un forfait d\'itinérance par l\'intermédiaire de votre fournisseur de services, <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"Vous pouvez ajouter des données cellulaires ou un forfait d\'itinérance par l\'intermédiaire de votre fournisseur de services, <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
     <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"Ajouter des données?"</string>
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"Vous devrez peut-être ajouter des données par l\'intermédiaire de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"AJOUTER DES DONNÉES"</string>
