@@ -1322,6 +1322,34 @@ public class PhoneUtils {
     }
 
     /**
+     * Register ICC status for all phones.
+     */
+    static final void registerIccStatus(Handler handler, int event, int phoneId) {
+        Phone[] phones = PhoneFactory.getPhones();
+        IccCard sim = phones[phoneId].getIccCard();
+        if (sim != null) {
+            if (VDBG) {
+                Log.v(LOG_TAG, "register for ICC status, phone " + phones[phoneId].getPhoneId());
+            }
+            sim.registerForNetworkLocked(handler, event, phones[phoneId]);
+        }
+    }
+
+    /**
+     * Unregister ICC status for a specific phone.
+     */
+    static final void unregisterIccStatus(Handler handler, int phoneId) {
+        Phone[] phones = PhoneFactory.getPhones();
+        IccCard sim = phones[phoneId].getIccCard();
+        if (sim != null) {
+            if (VDBG) {
+                Log.v(LOG_TAG, "unregister for ICC status, phone " + phones[phoneId].getPhoneId());
+            }
+            sim.unregisterForNetworkLocked(handler);
+        }
+    }
+
+    /**
      * Set the radio power on/off state for all phones.
      *
      * @param enabled true means on, false means off.
