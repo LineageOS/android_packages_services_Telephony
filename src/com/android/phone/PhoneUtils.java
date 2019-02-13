@@ -19,7 +19,6 @@ package com.android.phone;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -1292,6 +1291,34 @@ public class PhoneUtils {
                 if (VDBG) Log.v(LOG_TAG, "register for ICC status, phone " + phone.getPhoneId());
                 sim.registerForNetworkLocked(handler, event, phone);
             }
+        }
+    }
+
+    /**
+     * Register ICC status for all phones.
+     */
+    static final void registerIccStatus(Handler handler, int event, int phoneId) {
+        Phone[] phones = PhoneFactory.getPhones();
+        IccCard sim = phones[phoneId].getIccCard();
+        if (sim != null) {
+            if (VDBG) {
+                Log.v(LOG_TAG, "register for ICC status, phone " + phones[phoneId].getPhoneId());
+            }
+            sim.registerForNetworkLocked(handler, event, phones[phoneId]);
+        }
+    }
+
+    /**
+     * Unregister ICC status for a specific phone.
+     */
+    static final void unregisterIccStatus(Handler handler, int phoneId) {
+        Phone[] phones = PhoneFactory.getPhones();
+        IccCard sim = phones[phoneId].getIccCard();
+        if (sim != null) {
+            if (VDBG) {
+                Log.v(LOG_TAG, "unregister for ICC status, phone " + phones[phoneId].getPhoneId());
+            }
+            sim.unregisterForNetworkLocked(handler);
         }
     }
 
