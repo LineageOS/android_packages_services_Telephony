@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.telephony.CellInfo;
 import android.telephony.CellLocation;
 import android.telephony.PhoneStateListener;
+import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.util.SparseArray;
 import android.widget.Button;
@@ -74,6 +75,11 @@ public class TelephonyRegistryTestApp extends Activity {
         @Override
         public void onSrvccStateChanged(int srvccState) {
             notify("onSrvccStateChanged", srvccState);
+        }
+
+        @Override
+        public void onServiceStateChanged(ServiceState state) {
+            notify("onServiceStateChanged", state);
         }
 
         private void notify(String method, Object data) {
