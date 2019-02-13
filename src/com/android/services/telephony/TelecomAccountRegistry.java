@@ -1015,10 +1015,16 @@ public class TelecomAccountRegistry {
                     Log.d(this, "Phone with subscription id %d", subscriptionId);
                     // setupAccounts can be called multiple times during service changes. Don't add an
                     // account if the Icc has not been set yet.
-                    if (subscriptionId >= 0 && phone.getFullIccSerialNumber() != null) {
-                        mAccounts.add(new AccountEntry(phone, false /* emergency */,
-                                false /* isDummy */));
-                    }
+                    if (!SubscriptionManager.isValidSubscriptionId(subscriptionId)
+                            || phone.getFullIccSerialNumber() == null) return;
+                    // Don't add account if it's opportunistic subscription, which is considered
+                    // data only for now.
+                    SubscriptionInfo info = SubscriptionManager.from(mContext)
+                            .getActiveSubscriptionInfo(subscriptionId);
+                    if (info == null || info.isOpportunistic()) return;
+
+                    mAccounts.add(new AccountEntry(phone, false /* emergency */,
+                            false /* isDummy */));
                 }
             }
 
