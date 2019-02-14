@@ -6178,7 +6178,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         cardId,
                         cardState,
                         slot.getPhoneId(),
-                        slot.isExtendedApduSupported());
+                        slot.isExtendedApduSupported(),
+                        slot.isRemovable());
             }
             return infos;
         } finally {
