@@ -38,6 +38,7 @@ import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.feature.ImsFeature;
 import android.util.Log;
 import android.view.MenuItem;
@@ -214,10 +215,32 @@ public class CallFeaturesSetting extends PreferenceActivity
         }
     };
 
+    private final ProvisioningManager.Callback mProvisioningCallback =
+            new ProvisioningManager.Callback() {
+        @Override
+        public void onProvisioningIntChanged(int item, int value) {
+            if (item == ImsConfig.ConfigConstants.VOICE_OVER_WIFI_SETTING_ENABLED
+                    || item == ImsConfig.ConfigConstants.VLT_SETTING_ENABLED
+                    || item == ImsConfig.ConfigConstants.LVC_SETTING_ENABLED) {
+                updateVtWfc();
+            }
+        }
+    };
+
     @Override
     protected void onPause() {
         super.onPause();
         listenPhoneState(false);
+
+        // Remove callback for provisioning changes.
+        try {
+            if (mImsMgr != null) {
+                mImsMgr.getConfigInterface().removeConfigCallback(
+                        mProvisioningCallback.getBinder());
+            }
+        } catch (ImsException e) {
+            Log.w(LOG_TAG, "onPause: Unable to remove callback for provisioning changes");
+        }
     }
 
     @Override
@@ -310,7 +333,24 @@ public class CallFeaturesSetting extends PreferenceActivity
                 }
             }
         }
+        updateVtWfc();
 
+        // Register callback for provisioning changes.
+        try {
+            if (mImsMgr != null) {
+                mImsMgr.getConfigInterface().addConfigCallback(mProvisioningCallback);
+            }
+        } catch (ImsException e) {
+            Log.w(LOG_TAG, "onResume: Unable to register callback for provisioning changes.");
+        }
+    }
+
+    private void updateVtWfc() {
+        PreferenceScreen prefSet = getPreferenceScreen();
+        TelephonyManager telephonyManager = getSystemService(TelephonyManager.class)
+                .createForSubscriptionId(mPhone.getSubId());
+        PersistableBundle carrierConfig =
+                PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
         if (mImsMgr.isVtEnabledByPlatform() && mImsMgr.isVtProvisionedOnDevice()
                 && (carrierConfig.getBoolean(
                         CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
@@ -320,6 +360,7 @@ public class CallFeaturesSetting extends PreferenceActivity
                     ? mImsMgr.isVtEnabledByUser() : false;
             mEnableVideoCalling.setChecked(currentValue);
             mEnableVideoCalling.setOnPreferenceChangeListener(this);
+            prefSet.addPreference(mEnableVideoCalling);
         } else {
             prefSet.removePreference(mEnableVideoCalling);
         }
@@ -335,6 +376,7 @@ public class CallFeaturesSetting extends PreferenceActivity
                     mButtonWifiCalling.setTitle(resolutions.get(0).loadLabel(pm));
                     mButtonWifiCalling.setSummary(null);
                     mButtonWifiCalling.setIntent(intent);
+                    prefSet.addPreference(mButtonWifiCalling);
                 } else {
                     prefSet.removePreference(mButtonWifiCalling);
                 }
@@ -363,6 +405,7 @@ public class CallFeaturesSetting extends PreferenceActivity
                 }
             }
             mButtonWifiCalling.setSummary(resId);
+            prefSet.addPreference(mButtonWifiCalling);
         }
 
         try {
