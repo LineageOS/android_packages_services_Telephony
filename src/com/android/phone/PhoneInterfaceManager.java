@@ -6061,9 +6061,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public List<UiccCardInfo> getUiccCardsInfo(String callingPackage) {
-        if (checkCarrierPrivilegesForPackageAnyPhone(callingPackage)
-                != TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
-            throw new SecurityException("Caller does not have carrier privileges on any UICC.");
+        try {
+            enforceReadPrivilegedPermission("getUiccCardsInfo");
+        } catch (SecurityException e) {
+            // even without READ_PRIVILEGED_PHONE_STATE, we allow the call to continue if the caller
+            // has carrier privileges on an active UICC
+            if (checkCarrierPrivilegesForPackageAnyPhone(callingPackage)
+                        != TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
+                throw new SecurityException("Caller does not have carrier privileges on any UICC");
+            }
         }
 
         final long identity = Binder.clearCallingIdentity();
