@@ -35,6 +35,7 @@ import android.net.NetworkStats;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -157,6 +158,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -1843,9 +1845,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public Bundle getCellLocation(String callingPackage) {
         mApp.getSystemService(AppOpsManager.class)
                 .checkPackage(Binder.getCallingUid(), callingPackage);
-        if (!LocationAccessPolicy.canAccessCellLocation(mApp, callingPackage,
-                Binder.getCallingUid(), Binder.getCallingPid(), true)) {
-            return null;
+
+        LocationAccessPolicy.LocationPermissionResult locationResult =
+                LocationAccessPolicy.checkLocationPermission(mApp,
+                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                .setCallingPackage(callingPackage)
+                                .setCallingPid(Binder.getCallingPid())
+                                .setCallingUid(Binder.getCallingUid())
+                                .setMethod("getCellLocation")
+                                .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                .build());
+        switch (locationResult) {
+            case DENIED_HARD:
+                throw new SecurityException("Not allowed to access cell location");
+            case DENIED_SOFT:
+                return new Bundle();
         }
 
         WorkSource workSource = getWorkSource(Binder.getCallingUid());
@@ -1995,9 +2009,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public List<CellInfo> getAllCellInfo(String callingPackage) {
         mApp.getSystemService(AppOpsManager.class)
                 .checkPackage(Binder.getCallingUid(), callingPackage);
-        if (!LocationAccessPolicy.canAccessCellLocation(mApp,
-                callingPackage, Binder.getCallingUid(), Binder.getCallingPid(), true)) {
-            return null;
+
+        LocationAccessPolicy.LocationPermissionResult locationResult =
+                LocationAccessPolicy.checkLocationPermission(mApp,
+                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                .setCallingPackage(callingPackage)
+                                .setCallingPid(Binder.getCallingPid())
+                                .setCallingUid(Binder.getCallingUid())
+                                .setMethod("getAllCellInfo")
+                                .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                .build());
+        switch (locationResult) {
+            case DENIED_HARD:
+                throw new SecurityException("Not allowed to access cell info");
+            case DENIED_SOFT:
+                return new ArrayList<>();
         }
 
         final int targetSdk = getTargetSdk(callingPackage);
@@ -2038,9 +2064,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId, ICellInfoCallback cb, String callingPackage, WorkSource workSource) {
         mApp.getSystemService(AppOpsManager.class)
                 .checkPackage(Binder.getCallingUid(), callingPackage);
-        if (!LocationAccessPolicy.canAccessCellLocation(mApp, callingPackage,
-                Binder.getCallingUid(), Binder.getCallingPid(), true)) {
-            return;
+
+        LocationAccessPolicy.LocationPermissionResult locationResult =
+                LocationAccessPolicy.checkLocationPermission(mApp,
+                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                .setCallingPackage(callingPackage)
+                                .setCallingPid(Binder.getCallingPid())
+                                .setCallingUid(Binder.getCallingUid())
+                                .setMethod("requestCellInfoUpdate")
+                                .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                .build());
+        switch (locationResult) {
+            case DENIED_HARD:
+                throw new SecurityException("Not allowed to access cell info");
+            case DENIED_SOFT:
+                return;
         }
 
         final Phone phone = getPhone(subId);
@@ -4189,9 +4227,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Scans for available networks.
      */
     @Override
-    public CellNetworkScanResult getCellNetworkScanResults(int subId) {
+    public CellNetworkScanResult getCellNetworkScanResults(int subId, String callingPackage) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "getCellNetworkScanResults");
+        LocationAccessPolicy.LocationPermissionResult locationResult =
+                LocationAccessPolicy.checkLocationPermission(mApp,
+                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                .setCallingPackage(callingPackage)
+                                .setCallingPid(Binder.getCallingPid())
+                                .setCallingUid(Binder.getCallingUid())
+                                .setMethod("getCellNetworkScanResults")
+                                .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                .build());
+        switch (locationResult) {
+            case DENIED_HARD:
+                throw new SecurityException("Not allowed to access scan results -- location");
+            case DENIED_SOFT:
+                return null;
+        }
 
         long identity = Binder.clearCallingIdentity();
         try {
@@ -4214,17 +4267,29 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public int requestNetworkScan(int subId, NetworkScanRequest request, Messenger messenger,
-            IBinder binder) {
+            IBinder binder, String callingPackage) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "requestNetworkScan");
 
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return mNetworkScanRequestTracker.startNetworkScan(
-                    request, messenger, binder, getPhone(subId));
-        } finally {
-            Binder.restoreCallingIdentity(identity);
+        LocationAccessPolicy.LocationPermissionResult locationResult =
+                LocationAccessPolicy.checkLocationPermission(mApp,
+                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                .setCallingPackage(callingPackage)
+                                .setCallingPid(Binder.getCallingPid())
+                                .setCallingUid(Binder.getCallingUid())
+                                .setMethod("requestNetworkScan")
+                                .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                .build());
+        switch (locationResult) {
+            case DENIED_HARD:
+                throw new SecurityException("Not allowed to request network scan -- location");
+            case DENIED_SOFT:
+                return -1;
         }
+
+        return mNetworkScanRequestTracker.startNetworkScan(
+                request, messenger, binder, getPhone(subId),
+                callingPackage);
     }
 
     /**
@@ -5269,6 +5334,31 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return null;
         }
 
+        LocationAccessPolicy.LocationPermissionResult fineLocationResult =
+                LocationAccessPolicy.checkLocationPermission(mApp,
+                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                .setCallingPackage(callingPackage)
+                                .setCallingPid(Binder.getCallingPid())
+                                .setCallingUid(Binder.getCallingUid())
+                                .setMethod("getServiceStateForSubscriber")
+                                .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                .build());
+
+        LocationAccessPolicy.LocationPermissionResult coarseLocationResult =
+                LocationAccessPolicy.checkLocationPermission(mApp,
+                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                .setCallingPackage(callingPackage)
+                                .setCallingPid(Binder.getCallingPid())
+                                .setCallingUid(Binder.getCallingUid())
+                                .setMethod("getServiceStateForSubscriber")
+                                .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
+                                .build());
+        // We don't care about hard or soft here -- all we need to know is how much info to scrub.
+        boolean hasFinePermission =
+                fineLocationResult == LocationAccessPolicy.LocationPermissionResult.ALLOWED;
+        boolean hasCoarsePermission =
+                coarseLocationResult == LocationAccessPolicy.LocationPermissionResult.ALLOWED;
+
         final long identity = Binder.clearCallingIdentity();
         try {
             final Phone phone = getPhone(subId);
@@ -5276,7 +5366,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return null;
             }
 
-            return phone.getServiceState();
+            ServiceState ss = phone.getServiceState();
+
+            // Scrub out the location info in ServiceState depending on what level of access
+            // the caller has.
+            if (hasFinePermission) return ss;
+            if (hasCoarsePermission) return ss.sanitizeLocationInfo(false);
+            return ss.sanitizeLocationInfo(true);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }

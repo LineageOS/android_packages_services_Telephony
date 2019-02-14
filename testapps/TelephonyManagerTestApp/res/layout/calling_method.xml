@@ -73,7 +73,6 @@
         android:layout_height="50dip">
     </Button>
 
-
     <ScrollView
         android:id="@+id/return_value_wrapper"
         android:layout_width="fill_parent"
