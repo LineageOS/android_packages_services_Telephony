@@ -19,6 +19,7 @@ package com.android.phone.testapps.imstestapp;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.telephony.AccessNetworkConstants;
 import android.telephony.SubscriptionManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsMmTelManager;
@@ -150,8 +151,8 @@ public class ImsRegistrationActivity extends Activity {
     private static final Map<Integer, String> REG_TECH_STRING = new ArrayMap<>(2);
     static {
         REG_TECH_STRING.put(ImsRegistrationImplBase.REGISTRATION_TECH_NONE, "NONE");
-        REG_TECH_STRING.put(ImsRegistrationImplBase.REGISTRATION_TECH_LTE, "LTE");
-        REG_TECH_STRING.put(ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN, "IWLAN");
+        REG_TECH_STRING.put(AccessNetworkConstants.TransportType.WWAN, "WWAN");
+        REG_TECH_STRING.put(AccessNetworkConstants.TransportType.WLAN, "WLAN");
     }
 
 
