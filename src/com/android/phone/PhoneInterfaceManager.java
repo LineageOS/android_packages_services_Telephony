@@ -6649,6 +6649,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    private void updateModemStateMetrics() {
+        TelephonyMetrics metrics = TelephonyMetrics.getInstance();
+        // TODO: check the state for each modem if the api is ready.
+        metrics.updateEnabledModemBitmap((1 << TelephonyManager.from(mApp).getPhoneCount()) - 1);
+    }
+
     @Override
     public int[] getSlotsMapping() {
         enforceReadPrivilegedPermission("getSlotsMapping");
@@ -6669,11 +6675,4 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
     }
-
-    private void updateModemStateMetrics() {
-        TelephonyMetrics metrics = TelephonyMetrics.getInstance();
-        // TODO: check the state for each modem if the api is ready.
-        metrics.updateEnabledModemBitmap((1 << TelephonyManager.from(mApp).getPhoneCount()) - 1);
-    }
-
 }
