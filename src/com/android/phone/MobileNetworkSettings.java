@@ -58,6 +58,7 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
+import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.feature.ImsFeature;
 import android.text.TextUtils;
 import android.util.Log;
@@ -890,6 +891,18 @@ public class MobileNetworkSettings extends Activity  {
             }
         }
 
+        private final ProvisioningManager.Callback mProvisioningCallback =
+                new ProvisioningManager.Callback() {
+            @Override
+            public void onProvisioningIntChanged(int item, int value) {
+                if (item == ImsConfig.ConfigConstants.VOICE_OVER_WIFI_SETTING_ENABLED
+                        || item == ImsConfig.ConfigConstants.VLT_SETTING_ENABLED
+                        || item == ImsConfig.ConfigConstants.LVC_SETTING_ENABLED) {
+                    updateBody();
+                }
+            }
+        };
+
         @Override
         public void onDestroy() {
             super.onDestroy();
@@ -938,6 +951,15 @@ public class MobileNetworkSettings extends Activity  {
             context.registerReceiver(mPhoneChangeReceiver, intentFilter);
             context.getContentResolver().registerContentObserver(ENFORCE_MANAGED_URI, false,
                     mDpcEnforcedContentObserver);
+
+            // Register callback for provisioning changes.
+            try {
+                if (mImsMgr != null) {
+                    mImsMgr.getConfigInterface().addConfigCallback(mProvisioningCallback);
+                }
+            } catch (ImsException e) {
+                Log.w(LOG_TAG, "onResume: Unable to register callback for provisioning changes.");
+            }
 
             Log.i(LOG_TAG, "onResume:-");
 
@@ -1331,6 +1353,17 @@ public class MobileNetworkSettings extends Activity  {
             final Context context = getActivity();
             context.unregisterReceiver(mPhoneChangeReceiver);
             context.getContentResolver().unregisterContentObserver(mDpcEnforcedContentObserver);
+
+            // Remove callback for provisioning changes.
+            try {
+                if (mImsMgr != null) {
+                    mImsMgr.getConfigInterface().removeConfigCallback(
+                            mProvisioningCallback.getBinder());
+                }
+            } catch (ImsException e) {
+                Log.w(LOG_TAG, "onPause: Unable to remove callback for provisioning changes");
+            }
+
             if (DBG) log("onPause:-");
         }
 
@@ -1862,10 +1895,23 @@ public class MobileNetworkSettings extends Activity  {
                 return;
             }
 
+            // See what Telecom thinks the SIM call manager is.
             final PhoneAccountHandle simCallManager =
                     TelecomManager.from(getContext()).getSimCallManager();
 
-            if (simCallManager != null) {
+            // Check which SIM call manager is for the current sub ID.
+            PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
+            String currentSubSimCallManager = null;
+            if (carrierConfig != null) {
+                currentSubSimCallManager = carrierConfig.getString(
+                        CarrierConfigManager.KEY_DEFAULT_SIM_CALL_MANAGER_STRING);
+            }
+
+            // Only try to configure the phone account if this is the sim call manager for the
+            // current sub.
+            if (simCallManager != null
+                    && simCallManager.getComponentName().flattenToString().equals(
+                    currentSubSimCallManager)) {
                 Intent intent = MobileNetworkSettings.buildPhoneAccountConfigureIntent(
                         getContext(), simCallManager);
                 PackageManager pm = getContext().getPackageManager();
