@@ -761,7 +761,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         }
 
         if (mIsShortcutViewEnabled) {
-            mPhoneInfo = ShortcutViewUtils.pickPreferredPhone(this);
             updateLocationAndEccInfo();
         }
     }
