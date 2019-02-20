@@ -38,6 +38,9 @@ import java.util.List;
  * view container calls {@link #getView}.
  */
 public abstract class EccShortcutAdapter extends BaseAdapter {
+    // GSM default emergency number, used when country's fallback ECC(112 or 911) not available.
+    private static final String FALLBACK_EMERGENCY_NUMBER = "112";
+
     private List<EccDisplayMaterial> mEccDisplayMaterialList;
 
     private CharSequence mPoliceDescription;
