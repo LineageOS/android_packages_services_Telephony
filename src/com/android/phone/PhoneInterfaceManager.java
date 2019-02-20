@@ -114,6 +114,7 @@ import com.android.internal.telephony.CarrierResolver;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.DefaultPhoneNotifier;
+import com.android.internal.telephony.HalVersion;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IccCard;
@@ -158,7 +159,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -6650,5 +6650,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    /**
+     * Get the IRadio HAL Version
+     */
+    @Override
+    public int getRadioHalVersion() {
+        Phone phone = getDefaultPhone();
+        if (phone == null) return -1;
+        HalVersion hv = phone.getHalVersion();
+        if (hv.equals(HalVersion.UNKNOWN)) return -1;
+        return hv.major * 100 + hv.minor;
     }
 }
