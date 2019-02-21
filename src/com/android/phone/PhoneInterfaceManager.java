@@ -2894,9 +2894,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setAdvancedCallingSetting(int subId, boolean isEnabled) {
+    public void setAdvancedCallingSettingEnabled(int subId, boolean isEnabled) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
-                "setAdvancedCallingSetting");
+                "setAdvancedCallingSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -2921,9 +2921,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setVtSetting(int subId, boolean isEnabled) {
+    public void setVtSettingEnabled(int subId, boolean isEnabled) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
-                "setVtSetting");
+                "setVtSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -2947,9 +2947,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setVoWiFiSetting(int subId, boolean isEnabled) {
+    public void setVoWiFiSettingEnabled(int subId, boolean isEnabled) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
-                "setVoWiFiSetting");
+                "setVoWiFiSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -2973,9 +2973,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setVoWiFiRoamingSetting(int subId, boolean isEnabled) {
+    public void setVoWiFiRoamingSettingEnabled(int subId, boolean isEnabled) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
-                "setVoWiFiRoamingSetting");
+                "setVoWiFiRoamingSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
