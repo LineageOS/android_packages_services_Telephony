@@ -364,7 +364,11 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         mIsShortcutViewEnabled = false;
         mPhoneInfo = null;
         if (canEnableShortcutView(carrierConfig)) {
-            mPhoneInfo = ShortcutViewUtils.pickPreferredPhone(this);
+            if (!isAirplaneModeOn()) {
+                mPhoneInfo = ShortcutViewUtils.pickPreferredPhone(this);
+            } else {
+                Log.d(LOG_TAG, "Disables shortcut view in airplane mode");
+            }
             if (mPhoneInfo != null) {
                 mIsShortcutViewEnabled = true;
             }
@@ -821,6 +825,11 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             return false;
         }
         return true;
+    }
+
+    private boolean isAirplaneModeOn() {
+        return Settings.Global.getInt(getContentResolver(),
+                Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
     }
 
     /**
