@@ -16,13 +16,16 @@
 
 package com.android.phone.ecc;
 
-import android.annotation.NonNull;
-import android.annotation.Nullable;
 import android.content.Context;
 import android.os.SystemClock;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -32,42 +35,59 @@ import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
 /**
- * Provide the mapping of country ISO to ECC. The data is stored in Protocol Buffers format,
- * compressed with GZIP and encoded to base64 string.
+ * Provides a mapping table from country ISO to ECC info. The data is stored in Protocol Buffers
+ * binary format, compressed with GZIP.
  */
 public class IsoToEccProtobufRepository implements IsoToEccRepository {
     private static final String LOG_TAG = "EccRepository";
 
-    private Map<String, CountryEccInfo> mEccTable = null;
+    private static IsoToEccProtobufRepository sInstance;
+
+    /**
+     * Returns the singleton instance of IsoToEccProtobufRepository
+     */
+    public static synchronized IsoToEccProtobufRepository getInstance() {
+        if (sInstance == null) {
+            sInstance = new IsoToEccProtobufRepository();
+        }
+        return sInstance;
+    }
+
+    private final Map<String, CountryEccInfo> mEccTable = new HashMap<>();
+
+    private IsoToEccProtobufRepository() {
+    }
 
     @Override
     @Nullable
-    public CountryEccInfo getCountryEccInfo(@NonNull Context context, @Nullable String iso)
+    public CountryEccInfo getCountryEccInfo(@NonNull Context context, String iso)
             throws IOException {
-        if (iso != null) {
-            iso = iso.toUpperCase();
-        } else {
+        if (TextUtils.isEmpty(iso)) {
             return null;
         }
 
-        if (mEccTable == null) {
-            mEccTable = initMappingTable(context);
+        synchronized (mEccTable) {
+            return mEccTable.get(iso.toUpperCase());
         }
-        return mEccTable.get(iso);
     }
 
-    private Map<String, CountryEccInfo> initMappingTable(@NonNull Context context)
-            throws IOException {
+    /**
+     * Loads the mapping table.
+     */
+    public void loadMappingTable(@NonNull Context context) {
         ProtobufEccData.AllInfo allEccData = null;
 
         long startTime = SystemClock.uptimeMillis();
-        allEccData = parseEccData(new BufferedInputStream(
-                context.getAssets().open("eccdata")));
+        try {
+            allEccData = parseEccData(new BufferedInputStream(
+                    context.getAssets().open("eccdata")));
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Failed to retrieve ECC: ", e);
+        }
         long endTime = SystemClock.uptimeMillis();
 
         if (allEccData == null) {
-            // Return an empty table.
-            return new HashMap<>();
+            return;
         }
 
         if (Log.isLoggable(LOG_TAG, Log.DEBUG)) {
@@ -76,17 +96,23 @@ public class IsoToEccProtobufRepository implements IsoToEccRepository {
                     + ", initialized = " + allEccData.isInitialized());
         }
 
-        // Convert to run-time data from Protobuf data.
-        Map<String, CountryEccInfo> table = new HashMap<>();
-        for (ProtobufEccData.CountryInfo countryData : allEccData.getCountriesList()) {
-            if (countryData.hasIsoCode()) {
-                CountryEccInfo countryInfo = loadCountryEccInfo(countryData);
-                if (countryInfo != null) {
-                    table.put(countryData.getIsoCode().toUpperCase(), countryInfo);
+        // Converts to run-time data from Protobuf data.
+        synchronized (mEccTable) {
+            mEccTable.clear();
+            for (ProtobufEccData.CountryInfo countryData : allEccData.getCountriesList()) {
+                if (countryData.hasIsoCode()) {
+                    CountryEccInfo countryInfo = loadCountryEccInfo(countryData);
+                    if (countryInfo != null) {
+                        mEccTable.put(countryData.getIsoCode().toUpperCase(), countryInfo);
+                    }
                 }
             }
         }
-        return table;
+    }
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    Map<String, CountryEccInfo> getEccTable() {
+        return mEccTable;
     }
 
     private ProtobufEccData.AllInfo parseEccData(InputStream input) throws IOException {
@@ -114,7 +140,7 @@ public class IsoToEccProtobufRepository implements IsoToEccRepository {
                     eccTypes.add(EccInfo.Type.FIRE);
                     break;
                 default:
-                    // Ignore unknown types.
+                    // Ignores unknown types.
             }
         }
 
@@ -135,7 +161,7 @@ public class IsoToEccProtobufRepository implements IsoToEccRepository {
             if (existentEccInfo == null) {
                 eccInfoMap.put(key, eccInfo);
             } else {
-                // Merge types of duplicated ecc info objects.
+                // Merges types of duplicated ECC info objects.
                 ArraySet<EccInfo.Type> eccTypes = new ArraySet<>(
                         eccInfo.getTypesCount() + existentEccInfo.getTypesCount());
                 for (EccInfo.Type type : eccInfo.getTypes()) {
