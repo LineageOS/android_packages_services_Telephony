@@ -37,6 +37,7 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.feature.ImsFeature;
@@ -386,6 +387,10 @@ public class CallFeaturesSetting extends PreferenceActivity
         } else if (!mImsMgr.isWfcEnabledByPlatform() || !mImsMgr.isWfcProvisionedOnDevice()) {
             prefSet.removePreference(mButtonWifiCalling);
         } else {
+            String title = SubscriptionManager.getResourcesForSubId(mPhone.getContext(),
+                    mPhone.getSubId()).getString(R.string.wifi_calling);
+            mButtonWifiCalling.setTitle(title);
+
             int resId = com.android.internal.R.string.wifi_calling_off_summary;
             if (mImsMgr.isWfcEnabledByUser()) {
                 boolean isRoaming = telephonyManager.isNetworkRoaming();
