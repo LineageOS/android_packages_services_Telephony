@@ -242,7 +242,7 @@ class ShortcutViewUtils {
     private static Map<Integer, List<EmergencyNumber>> getPromotedEmergencyNumberLists(
             @NonNull TelephonyManager telephonyManager) {
         Map<Integer, List<EmergencyNumber>> allLists =
-                telephonyManager.getCurrentEmergencyNumberList();
+                telephonyManager.getEmergencyNumberList();
         if (allLists == null || allLists.isEmpty()) {
             Log.w(LOG_TAG, "Unable to retrieve emergency number lists!");
             return new ArrayMap<>();
