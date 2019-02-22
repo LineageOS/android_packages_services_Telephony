@@ -239,12 +239,12 @@ public class TelephonyConnectionService extends ConnectionService {
 
         @Override
         public boolean isCurrentEmergencyNumber(String number) {
-            return mTelephonyManager.isCurrentEmergencyNumber(number);
+            return mTelephonyManager.isEmergencyNumber(number);
         }
 
         @Override
         public Map<Integer, List<EmergencyNumber>> getCurrentEmergencyNumberList() {
-            return mTelephonyManager.getCurrentEmergencyNumberList();
+            return mTelephonyManager.getEmergencyNumberList();
         }
     }
 
