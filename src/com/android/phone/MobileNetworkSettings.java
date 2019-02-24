@@ -1920,6 +1920,10 @@ public class MobileNetworkSettings extends Activity  {
                 mWiFiCallingPref.setSummary(null);
                 mWiFiCallingPref.setIntent(intent);
             } else {
+                String title = SubscriptionManager.getResourcesForSubId(getContext(), mSubId)
+                        .getString(R.string.wifi_calling_settings_title);
+                mWiFiCallingPref.setTitle(title);
+
                 int resId = com.android.internal.R.string.wifi_calling_off_summary;
                 if (mImsMgr.isWfcEnabledByUser()) {
                     boolean isRoaming = mTelephonyManager.isNetworkRoaming();
