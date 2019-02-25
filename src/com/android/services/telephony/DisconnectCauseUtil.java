@@ -249,6 +249,10 @@ public class DisconnectCauseUtil {
                 resourceId = R.string.callFailed_userBusy;
                 break;
 
+            case android.telephony.DisconnectCause.CDMA_REORDER:
+                resourceId = R.string.callFailed_NetworkBusy;
+                break;
+
             case android.telephony.DisconnectCause.CONGESTION:
                 resourceId = R.string.callFailed_congestion;
                 break;
@@ -555,6 +559,10 @@ public class DisconnectCauseUtil {
 
             case android.telephony.DisconnectCause.CDMA_ALREADY_ACTIVATED:
                 resourceId = R.string.callFailed_cdma_activation;
+                break;
+
+            case android.telephony.DisconnectCause.CDMA_REORDER:
+                resourceId = R.string.callFailed_NetworkBusy;
                 break;
 
             case android.telephony.DisconnectCause.FDN_BLOCKED:
