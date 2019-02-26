@@ -589,7 +589,7 @@
     <!-- Mobile network 4G title [CHAR LIMIT=30] -->
     <string name="enhanced_4g_lte_mode_title">Enhanced 4G LTE Mode</string>
     <!-- Carrier variant of Enhaced 4G LTE Mode title.  [CHAR LIMIT=50] -->
-    <string-array name="enhanced_4g_lte_mode_title_variant">
+    <string-array name="enhanced_4g_lte_mode_title_variant" translatable="false">
         <!-- 0: Default -->
         <item>@string/enhanced_4g_lte_mode_title</item>
         <!-- 1: Verizon -->
