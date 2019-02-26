@@ -96,7 +96,7 @@
     <!-- Button label on SIM Network Depersonalization panel -->
     <string name="sim_ndp_unlock_text">Datgloi</string>
     <!-- Button label on SIM Network Depersonalization panel -->
-    <string name="sim_ndp_dismiss_text">Wfftio</string>
+    <string name="sim_ndp_dismiss_text">Gwrthod</string>
     <!-- Status message displayed on SIM Network Depersonalization panel -->
     <string name="requesting_unlock">Yn gofyn i ddatgloi\'r rhwydwaith\u2026</string>
     <!-- Error message displayed on SIM Network Depersonalization panel -->
@@ -261,6 +261,10 @@
     <string name="exception_error">Gwall rhwydwaith neu gerdyn SIM.</string>
     <!-- Status message displayed in the "Call settings error" dialog when
          current SS request is modified to a different request by STK CC -->
+    <string name="stk_cc_ss_to_dial_error">Newidiwyd cais SS i alwad arferol</string>
+    <string name="stk_cc_ss_to_ussd_error">Newidiwyd cais SS i gais USSD</string>
+    <string name="stk_cc_ss_to_ss_error">Newidiwyd i gais SS newydd</string>
+    <string name="stk_cc_ss_to_dial_video_error">Newidiwyd cais SS i alwad fideo</string>
     <!-- Status message displayed in the "Call settings error" dialog when operation fails due to FDN
          [CHAR LIMIT=NONE] -->
     <string name="fdn_check_failure">Mae gosodiad Rhifau Deialu Gosodedig dy ap Ffôn wedi ei droi ymlaen. O ganlyniad, dyw rhai nodweddion galwadau ddim yn gweithio.</string>
@@ -319,7 +323,7 @@
     <!-- Error message for the voicemail PIN change if operation has failed -->
     <string name="vm_change_pin_error_system_error">Methu â newid y PIN</string>
     <!-- Message to replace the transcription if a visual voicemail message is not supported-->
-    <string name="vvm_unsupported_message_format">Math diarth o neges. Galwa <xliff:g id="number" example="*86">%s</xliff:g> i wrando arno.</string>
+    <string name="vvm_unsupported_message_format">Math diarth o neges. Galwa <xliff:g id="number" example="*86">%s</xliff:g> i wrando arni.</string>
     <!-- networks setting strings -->
     <!-- Mobile network settings screen title/heading -->
     <string name="network_settings_title">Rhwydwaith symudol</string>
@@ -330,6 +334,7 @@
     <!-- Available networks screen, text when no networks are found -->
     <string name="empty_networks_list">Ni chanfuwyd unrhyw rwydweithiau.</string>
     <!-- Available networks screen, toast when an error is encountered when searching for networks -->
+    <string name="network_query_error">Methwyd â chanfod rhwydweithiau. Rho gynnig arall arni.</string>
     <!-- Available networks screen, toast when registering on a specific network -->
     <string name="register_on_network">Yn cofrestru ar <xliff:g id="network">%s</xliff:g>\u2026</string>
     <!-- Available networks screen, toast when SIM card isn't allowed on a network -->
@@ -339,6 +344,7 @@
     <!-- Available networks screen, toast when registered on a specific network -->
     <string name="registration_done">Wedi cofrestru ar y rhwydwaith.</string>
     <!-- Available networks, toast when user selects automatic selection  -->
+    <string name="already_auto">Eisoes yn y dewis awtomatig.</string>
     <!-- Available networks screen, name of switch button for whether to select network automatically -->
     <string name="select_automatically">Dewis rhwydwaith yn awtomatig</string>
     <!-- Available networks screen, name of button when user wants to select network manually  -->
@@ -349,10 +355,15 @@
     <string name="preferred_network_mode_dialogtitle">Math o rwydwaith a ffafrir</string>
     <string name="forbidden_network">(gwaharddedig)</string>
     <!-- Available networks screen, name of button when user wants to select network manually  -->
+    <string name="choose_network_title">Dewis rhwydwaith</string>
     <!-- Available networks screen, text when no networks connected -->
+    <string name="network_disconnected">Heb gysylltu</string>
     <!-- Available networks screen, text when network connected -->
+    <string name="network_connected">Wedi cysylltu</string>
     <!-- Available networks screen, text when a network is connecting -->
+    <string name="network_connecting">Yn cysylltu...</string>
     <!-- Available networks screen, text when a network cannot be connected -->
+    <string name="network_could_not_connect">Methwyd â chysylltu</string>
     <!-- The preferred network modes in Mobile network settings -->
     <string-array name="preferred_network_mode_choices">
         <item>Ffafrio GSM/WCDMA</item>
@@ -442,7 +453,14 @@
     <!-- Mobile network 4G title [CHAR LIMIT=30] -->
     <string name="enhanced_4g_lte_mode_title">Modd 4G LTE Gwell</string>
     <!-- Carrier variant of Enhaced 4G LTE Mode title.  [CHAR LIMIT=50] -->
-    <string name="enhanced_4g_lte_mode_title_variant">Galwadau Uwch</string>
+    <string-array name="enhanced_4g_lte_mode_title_variant">
+        <!-- 0: Default -->
+        <item>@string/enhanced_4g_lte_mode_title</item>
+        <!-- 1: Verizon -->
+        <item>Galwadau Uwch</item>
+        <!-- 2: O2 UK -->
+        <item>4G Calling</item>
+    </string-array>
     <!-- Mobile network 4G summary [CHAR LIMIT=80] -->
     <string name="enhanced_4g_lte_mode_summary">Defnyddio gwasanaethau LTE i wella llais a chyfathrebu arall (argymhellir)</string>
     <!-- Mobile network settings screen, data enabling checkbox name -->
@@ -460,13 +478,17 @@
     <!-- Mobile network settings UI: notification message shown when you
          lose data connectivity because you're roaming and you have the
          "data roaming" feature turned off. -->
+    <string name="roaming_reenable_message">Mae crwydro data i ffwrdd. Tapia i\'w droi ymlaen.</string>
     <!-- Roaming notification tile, notifying lost of roaming data connection -->
+    <string name="roaming_notification_title">Wedi colli cysylltiad symudol</string>
     <!-- Mobile network settings screen, dialog message when user selects the Data roaming check box -->
     <string name="roaming_warning">Mae\'n bosib y bydd costau sylweddol.</string>
     <!-- Mobile network settings screen, message asking the user to check their pricing with their Carrier, when enabling Data roaming. -->
+    <string name="roaming_check_price_warning">Gwiria gyda dy ddarparwr rhwydwaith am brisiau.</string>
     <!-- Mobile network settings screen, dialog message title when user selects the Data roaming check box -->
     <string name="roaming_alert_title">Caniatáu data crwydro?</string>
     <!-- Mobile network settings screen, data usage setting check box name -->
+    <string name="data_usage_title">Defnydd data apiau</string>
     <!-- Summary about how much data has been used in a date range [CHAR LIMIT=100] -->
     <string name="data_usage_template"><xliff:g name="amount" example="200 MB">%1$s</xliff:g> o ddata symudol wedi\'i ddefnyddio <xliff:g name="date_range" example="Jan 1 -- Feb 2">%2$s</xliff:g></string>
     <!-- Mobile network settings screen, Advanced button to show more items when clicked [CHAR LIMIT=50] -->
@@ -474,12 +496,13 @@
     <!-- Mobile network settings screen, name of the option to manage carrier profiles on devices which support embedded carrier profiles -->
     <string name="carrier_settings_euicc">Darparwr</string>
     <!-- Keywords used to search the carrier menu for managing carrier profiles on devices which support embedded carrier profiles. eSIM/eUICC is embedded SIM card used to store this data.  -->
+    <string name="keywords_carrier_settings_euicc">darparwr, gwasanaeth, esim, sim, euicc, cwmni, newid, ychwanegu, symudol</string>
     <!-- Mobile network settings screen, summary of the option to manage carrier profiles on devices which support embedded carrier profiles -->
     <string name="carrier_settings_euicc_summary"><xliff:g id="carrier_name">%1$s</xliff:g> &#8212; <xliff:g id="phone_number">%2$s</xliff:g></string>
     <!-- Mobile network settings screen, title of Mobile Data switch preference -->
     <string name="mobile_data_settings_title">Data symudol</string>
     <!-- Mobile network settings screen, title of Mobile data switch preference -->
-    <string name="mobile_data_settings_summary">Cyrchu data trwy rwydwaith symudol</string>
+    <string name="mobile_data_settings_summary">Defnyddio\'r rhwydwaith symudol fel cysylltiad data</string>
     <!-- Message to show when user trying to turn off mobile data, in single sim mode [CHAR LIMIT=100]-->
     <string name="data_usage_disable_mobile">Troi data symudol i ffwrdd?</string>
     <!-- When a SIM preference hasn't been selected yet, this string is displayed as the pref summary until the user chooses a SIM subscription from the preference list [CHAR LIMIT=50] -->
@@ -714,6 +737,7 @@
     <!-- FDN settings: error message displayed in a popup (toast) -->
     <string name="pin2_invalid">Ni ddiweddarwyd y rhif deialu gosodedig am fod y PIN yn anghywir.</string>
     <!-- FDN settings: error message displayed in a popup (toast) -->
+    <string name="fdn_invalid_number">Ni ddiweddarwyd y rhif deialu gosodedig gan na all y rhif fod yn hirach nag 20 digid.</string>
     <!-- FDN settings: error message displayed in a popup (toast), when the entered
          FDN number was inappropriate, OR, PIN2 the user entered was incorrect.
          Because of API restriction, there's no way to determine which is the exact
@@ -884,8 +908,15 @@
     <string name="incall_error_wfc_only_no_wireless_network">Cysyllta â rhwydwaith diwifr i wneud galwad.</string>
     <!-- In-call screen: call failure message displayed in an error dialog when the user is connected to a wireless network, but wifi calling is turned off. [CHAR_LIMIT=NONE] -->
     <string name="incall_error_promote_wfc">Galluoga galwadau Wi-Fi er mwyn gwneud galwad.</string>
+    <!-- Hint for the button of emergency information -->
+    <!-- Hint for the owner of emergency information -->
+    <!-- Hint for confirm the emergency information -->
     <!-- Dialog title for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_title">Galwad brys</string>
+    <!-- Title for the emergency dialpad UI -->
+    <!-- Emergency dialer: Title of single emergency shortcut button -->
+    <!-- Emergency dialer: Title of numerous emergency shortcut buttons -->
+    <!-- Emergency dialer: Hint of selected emergency shortcut button -->
     <!-- Status message for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_message">Yn troi radio ymlaen\u2026</string>
     <!-- Status message for the "radio enable" UI for emergency calls -->
@@ -899,6 +930,14 @@
     <string name="dial_emergency_empty_error">Methu â galw. Deiala rif argyfwng.</string>
     <!-- Message displayed over top of the emergency dialer dialpad indicating to the user that
          emergency calling is not currently available. -->
+    <string name="dial_emergency_calling_not_available">Dyw galwadau brys ddim ar gael</string>
+    <!-- Text for description of police calling type -->
+    <!-- Text for description of ambulance calling type -->
+    <!-- Text for description of fire calling type -->
+    <!-- Format for concatenating multiple emergency type descriptions. The separator may differ in
+         different locales, for example arabic comma "،" is used in some countries. Some languages
+         may use full-width separator without leading or trailing spaces, eg. Ideographic comma "、"
+         in Chinese and Japanese. -->
     <!-- Displayed in the text entry box in the dialer when in landscape mode to guide the user
          to dial using the physical keyboard -->
     <string name="dialerKeyboardHintText">Defnyddio bysellfwrdd i ddeialu</string>
@@ -943,6 +982,11 @@
     <string name="hac_mode_summary">Troi cydweddiad cymorth clyw ymlaen</string>
     <!-- RTT settings: used to turn on/off Real-Time Text, an accessibility feature similar to
          TTY that allows users to send text over a phone call. -->
+    <string name="rtt_mode_summary">Caniatáu negesu o fewn galwad llais</string>
+    <string name="rtt_mode_more_information">       Mae RTT yn cynorthwyo galwyr sy\'n fyddar, â nam ar eu clyw, neu gydag anhawster llefaru.&lt;br&gt;
+       &lt;a href=\"<xliff:g example="http://www.google.com" id="url">http://support.google.com/mobile?p=telephony_rtt</xliff:g>\"&gt;Dysgu mwy&lt;/a&gt;
+       &lt;br&gt;&lt;br&gt; - Mae galwadau RTT yn cael eu cadw fel trawsgrifiadau negeseuon
+       &lt;br&gt; - Dyw RTT ddim ar gael ar gyfer galwadau fideo</string>
     <!-- Service option entries.  -->
     <string-array name="tty_mode_entries">
         <item>TTY i ffwrdd</item>
@@ -1054,7 +1098,7 @@
     <!-- ECM: ECM exit dialog choice -->
     <string name="alert_dialog_no">Peidio â Gadael</string>
     <!-- ECM: ECM exit dialog choice -->
-    <string name="alert_dialog_dismiss">Wfftio</string>
+    <string name="alert_dialog_dismiss">Gwrthod</string>
     <!-- For incoming calls, this is a string we can get from a CDMA network instead of
          the actual phone number, to indicate there's no number present.  DO NOT TRANSLATE. -->
     <!-- Preference for Voicemail service provider under "Voicemail" settings.
@@ -1085,6 +1129,16 @@
          [CHAR LIMIT=NONE]
     -->
     <string name="description_dial_button">deialu</string>
+    <!-- String describing the Dialpad ImageButton
+
+         Used by AccessibilityService to announce the purpose of the button.
+         [CHAR LIMIT=NONE]
+    -->
+    <!-- Pane title of the Emergency Dialpad
+
+     Used by AccessibilityService to announce the purpose of the pane of emergency dialpad.
+     [CHAR LIMIT=NONE]
+    -->
     <!-- Visual voicemail on/off title [CHAR LIMIT=40] -->
     <string name="voicemail_visual_voicemail_switch_title">Lleisbost Gweledol</string>
     <!-- Voicemail change PIN dialog title [CHAR LIMIT=40] -->
@@ -1097,6 +1151,7 @@
     <string name="preference_category_ringtone">Tôn Caniad a Dirgrynu</string>
     <!-- String resource for the font-family to use for the call setting activity's title
          Do not translate. -->
+    <string name="call_settings_title_font_family">sans-serif-light</string>
     <!-- Label for PSTN connection service. -->
     <string name="pstn_connection_service_label">Cardiau SIM sy\'n rhan o\'r ddyfais</string>
     <!-- Label for enabling video calling. -->
@@ -1123,11 +1178,14 @@
     <!-- Status hint label for a call being made over a wifi network. [CHAR LIMIT=25] -->
     <string name="status_hint_label_wifi_call">Galwad Wi-Fi</string>
     <!-- DO NOT TRANSLATE. Internal key for a visual voicemail preference. -->
+    <string name="voicemail_visual_voicemail_key">voicemail_visual_voicemail_key</string>
     <!-- DO NOT TRANSLATE. Internal key for a voicemail change pin preference. -->
     <!-- DO NOT TRANSLATE. Internal key for tty mode preference. -->
+    <string name="tty_mode_key">button_tty_mode_key</string>
     <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
+    <string name="wifi_calling_settings_key">button_wifi_calling_settings_key</string>
     <!-- Hint appearing below a selected action on the emergency dialer telling user to tap again to execute the action [CHAR LIMIT=NONE] -->
-    <string name="emergency_action_launch_hint">Tara eto i agor</string>
+    <string name="emergency_action_launch_hint">Tapia eto i agor</string>
     <!-- Strings for IMAP -->
     <!-- String used in place of a message that could not be properly decoded (e.g. bad base64
        data was received.) [CHAR LIMIT=none] -->
@@ -1205,92 +1263,145 @@
     <!-- In-call screen: status label displayed briefly after a call ends -->
     <string name="clh_card_title_call_ended_txt">Galwad wedi dod i ben</string>
     <!-- In-call screen: call failure reason (radio is off) -->
+    <string name="clh_callFailed_powerOff_txt">Radio i ffwrdd</string>
     <!-- In-call screen: call failure reason (SIM error) -->
+    <string name="clh_callFailed_simError_txt">Dim cerdyn SIM neu wall cerdyn SIM</string>
     <!-- In-call screen: call failure message displayed in an error dialog -->
+    <string name="clh_incall_error_out_of_service_txt">Rhwydwaith symudol dim ar gael</string>
     <!-- See CallFailCause for details on what causes each message -->
     <!-- In-call screen: call failure reason (Cause Number 1) -->
     <!-- In-call screen: call failure reason (Cause Number 3) -->
     <!-- In-call screen: call failure reason (Cause Number 6) -->
+    <string name="clh_callFailed_channel_unacceptable_txt">Sianel annerbyniol</string>
     <!-- In-call screen: call failure reason (Cause Number 8) -->
     <!-- In-call screen: call failure reason (Cause Number 16) -->
     <!-- In-call screen: call failure reason (Cause Number 17) -->
+    <string name="clh_callFailed_user_busy_txt">Defnyddiwr yn brysur</string>
     <!-- In-call screen: call failure reason (Cause Number 18) -->
+    <string name="clh_callFailed_no_user_responding_txt">Dim defnyddiwr yn ymateb</string>
     <!-- In-call screen: call failure reason (Cause Number 19) -->
+    <string name="clh_callFailed_user_alerting_txt">Defnyddiwr yn cael hysbysiad, dim ateb</string>
     <!-- In-call screen: call failure reason (Cause Number 21) -->
+    <string name="clh_callFailed_call_rejected_txt">Gwrthodwyd y galwad</string>
     <!-- In-call screen: call failure reason (Cause Number 22) -->
+    <string name="clh_callFailed_number_changed_txt">Rhif wedi newid</string>
     <!-- In-call screen: call failure reason (Cause Number 25) -->
     <!-- In-call screen: call failure reason (Cause Number 26) -->
     <!-- In-call screen: call failure reason (Cause Number 27) -->
     <!-- In-call screen: call failure reason (Cause Number 28) -->
+    <string name="clh_callFailed_invalid_number_format_txt">Fformat rhif annilys (rhif anghyflawn)</string>
     <!-- In-call screen: call failure reason (Cause Number 29) -->
     <!-- In-call screen: call failure reason (Cause Number 30) -->
     <!-- In-call screen: call failure reason (Cause Number 31) -->
+    <string name="clh_callFailed_normal_unspecified_txt">Arferol, amhenodol</string>
     <!-- In-call screen: call failure reason (Cause Number 34) -->
+    <string name="clh_callFailed_no_circuit_available_txt">Dim cylched/sianel ar gael</string>
     <!-- In-call screen: call failure reason (Cause Number 38) -->
+    <string name="clh_callFailed_network_out_of_order_txt">Problem gyda\'r rhwydwaith</string>
     <!-- In-call screen: call failure reason (Cause Number 41) -->
+    <string name="clh_callFailed_temporary_failure_txt">Problem dros dro</string>
     <!-- In-call screen: call failure reason (Cause Number 42) -->
     <!-- In-call screen: call failure reason (Cause Number 43) -->
     <!-- In-call screen: call failure reason (Cause Number 44) -->
+    <string name="clh_callFailed_requested_circuit_txt">Dyw\'r cylched/sianel dewiswyd ddim ar gael</string>
     <!-- In-call screen: call failure reason (Cause Number 47) -->
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt">Adnoddau ddim ar gael, amhenodol</string>
     <!-- In-call screen: call failure reason (Cause Number 49) -->
     <!-- In-call screen: call failure reason (Cause Number 50) -->
     <!-- In-call screen: call failure reason (Cause Number 55) -->
     <!-- In-call screen: call failure reason (Cause Number 57) -->
     <!-- In-call screen: call failure reason (Cause Number 58) -->
     <!-- In-call screen: call failure reason (Cause Number 63) -->
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt">Gwasanaeth neu ddewis dim ar gael, amhenodol</string>
     <!-- In-call screen: call failure reason (Cause Number 65) -->
     <!-- In-call screen: call failure reason (Cause Number 68) -->
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt">ACM yn gydradd â neu\'n fwy na ACMmax</string>
     <!-- In-call screen: call failure reason (Cause Number 69) -->
     <!-- In-call screen: call failure reason (Cause Number 70) -->
     <!-- In-call screen: call failure reason (Cause Number 79) -->
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt">Gwasanaeth neu ddewis heb ei roi ar waith, amhenodol</string>
     <!-- In-call screen: call failure reason (Cause Number 81) -->
     <!-- In-call screen: call failure reason (Cause Number 87) -->
     <!-- In-call screen: call failure reason (Cause Number 88) -->
+    <string name="clh_callFailed_incompatible_destination_txt">Cyrchfan anghydnaws</string>
     <!-- In-call screen: call failure reason (Cause Number 91) -->
     <!-- In-call screen: call failure reason (Cause Number 95) -->
     <!-- In-call screen: call failure reason (Cause Number 96) -->
     <!-- In-call screen: call failure reason (Cause Number 97) -->
     <!-- In-call screen: call failure reason (Cause Number 98) -->
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt">Math o neges ddim yn gydnaws â\'r statws protocol</string>
     <!-- In-call screen: call failure reason (Cause Number 99) -->
     <!-- In-call screen: call failure reason (Cause Number 100) -->
     <!-- In-call screen: call failure reason (Cause Number 101) -->
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt">Neges ddim yn gydnaws â\'r statws protocol</string>
     <!-- In-call screen: call failure reason (Cause Number 102) -->
     <!-- In-call screen: call failure reason (Cause Number 111) -->
+    <string name="clh_callFailed_protocol_Error_unspecified_txt">Gwall protocol, amhenodol</string>
     <!-- In-call screen: call failure reason (Cause Number 127) -->
+    <string name="clh_callFailed_interworking_unspecified_txt">Rhyngweithio, amhenodol</string>
     <!-- Call settings screen, setting option name -->
     <!-- Call barring settings screen, setting summary text when a call barring option is activated -->
+    <string name="sum_call_barring_enabled">Ymlaen</string>
     <!-- Call barring settings screen, setting summary text when a call barring option is deactivated -->
     <string name="sum_call_barring_disabled">I ffwrdd</string>
     <!-- Call barring settings screen, setting option name -->
     <!-- Call barring settings screen, Disable blocking of all outgoing calls -->
+    <string name="call_barring_baoc_enabled">Analluogi rhwystro pob galwad allan?</string>
     <!-- Call barring settings screen, Block all outgoing calls -->
+    <string name="call_barring_baoc_disabled">Rhwystro pob galwad allan?</string>
     <!-- Call barring settings screen, setting option name -->
     <!-- Call barring settings screen, Disable blocking of outgoing international calls -->
+    <string name="call_barring_baoic_enabled">Analluogi rhwystro gwneud galwadau rhyngwladol?</string>
     <!-- Call barring settings screen, Block outgoing international calls-->
+    <string name="call_barring_baoic_disabled">Rhwystro rhag gwneud galwadau rhyngwladol?</string>
     <!-- Call barring settings screen, setting option name -->
+    <string name="call_barring_baoicr">Gwneud galwadau rhyngwladol wrth grwydro</string>
     <!-- Call barring settings screen, Disable blocking of outgoing international roaming -->
+    <string name="call_barring_baoicr_enabled">Analluogi rhwystro gwneud galwadau rhyngwladol wrth grwydro?</string>
     <!-- Call barring settings screen, Block outgoing international roaming -->
+    <string name="call_barring_baoicr_disabled">Rhwystro rhag gwneud galwadau rhyngwladol wrth grwydro?</string>
     <!-- Call barring settings screen, setting option name -->
+    <string name="call_barring_baic">Pob galwad i mewn</string>
     <!-- Call barring settings screen, Disable blocking of all incoming calls -->
+    <string name="call_barring_baic_enabled">Analluogi rhwystro derbyn pob galwad?</string>
     <!-- Call barring settings screen, Block all incoming calls -->
+    <string name="call_barring_baic_disabled">Rhwystro pob galwad i mewn?</string>
     <!-- Call barring settings screen, setting option name -->
+    <string name="call_barring_baicr">Derbyn galwadau rhyngwladol wrth grwydro</string>
     <!-- Call barring settings screen, Disable blocking of all incoming international roaming -->
+    <string name="call_barring_baicr_enabled">Analluogi rhwystro derbyn galwadau rhyngwladol wrth grwydro?</string>
     <!-- Call barring settings screen, Block incoming international roaming-->
+    <string name="call_barring_baicr_disabled">Rhwystro rhag derbyn galwadau rhyngwladol wrth grwydro?</string>
     <!-- Call barring settings screen, setting option name -->
+    <string name="call_barring_deactivate_all">Analluogi\'r cwbl</string>
     <!-- Call barring settings screen, setting summary text when BAAll check box is selected -->
+    <string name="call_barring_deactivate_all_description">Analluogi pob gosodiad cyfyngu galwadau</string>
     <!-- Call barring settings screen, deactivate all successfully -->
+    <string name="call_barring_deactivate_success">Wedi analluogi cyfyngu galwadau</string>
     <!-- Call barring settings screen, change password -->
+    <string name="call_barring_change_pwd">Newid cyfrinair</string>
     <!-- Call barring settings screen, change password -->
+    <string name="call_barring_change_pwd_description">Newid cyfrinair cyfyngu galwadau</string>
     <!-- Call barring settings screen, not possible to change call barring password -->
+    <string name="call_barring_change_pwd_description_disabled">Methu â newid cyfrinair cyfyngu galwadau.</string>
     <!-- Call barring settings screen, change password -->
+    <string name="call_barring_pwd_not_match">Dyw\'r cyfrineiriau ddim yr un fath</string>
     <!-- Call barring settings screen, change password -->
+    <string name="call_barring_right_pwd_number">Rho gyfrinair gyda 4 rhif</string>
     <!-- Call barring settings screen, change password -->
+    <string name="call_barring_change_pwd_success">Wedi newid y cyfrinair</string>
     <!-- Call barring settings screen, change password -->
+    <string name="call_barring_old_pwd">Hen gyfrinair</string>
     <!-- Call barring settings screen, change password -->
+    <string name="call_barring_new_pwd">Cyfrinair newydd</string>
     <!-- Call barring settings screen, change password -->
+    <string name="call_barring_confirm_pwd">Cadarnhau dy gyfrinair</string>
     <!-- Call forwarding dialog box, text field label -->
+    <string name="messageCallBarring">Rho gyfrinair</string>
     <!-- Call barring settings screen, section heading -->
+    <string name="call_barring_settings">Gosodiadau cyfyngu galwadau</string>
     <!-- Call barring settings screen, deactivate all call barring settings -->
+    <string name="call_barring_deactivate_all_no_password">Analluogi holl osodiadau cyfyngu galwadau?</string>
     <!-- Message displayed to the user when an outgoing call is deflected.  This means that the
          party the user is calling has chosen to send the call to another phone number. -->
     <!-- Message displayed to the user when an outgoing call is forwarded to another number.
@@ -1302,6 +1413,7 @@
     <!-- Message displayed to the user to inform them that the call is to or from a number which is
          part of a closed user group.  A closed user group is a network feature which restricts
          calls on a device to members of the closed user group. -->
+    <string name="supp_service_closed_user_group_call">Galwad grŵp defnyddwyr caeedig.</string>
     <!-- Message displayed to the user when incoming call barring is active.  This means that the
          user has enabled the network feature which prevents all incoming calls. -->
     <!-- Message displayed to the user when outgoing call barring is active.  This means that the
@@ -1325,6 +1437,7 @@
     <!-- Message displayed to the user to indicate that an incoming call was forwarded from another
          number. -->
     <!-- Message displayed to the user to indicate that they are joining a conference call. -->
+    <string name="supp_service_conference_call">Yn ymuno â galwad grŵp.</string>
     <!-- Message displayed to the user to indicate that a held call has been released /
          disconnected. -->
 </resources>
