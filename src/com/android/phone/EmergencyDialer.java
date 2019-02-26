@@ -111,13 +111,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         EmergencyInfoGroup.OnConfirmClickListener {
 
     private class MetricsWriter {
-        // Metrics constants indicating the entry type that user opened emergency dialer.
-        // This info is sent from system UI with EXTRA_ENTRY_TYPE. Please make them being
-        // in sync with those in com.android.systemui.util.EmergencyDialerConstants.
-        public static final int ENTRY_TYPE_UNKNOWN = 0;
-        public static final int ENTRY_TYPE_LOCKSCREEN_BUTTON = 1;
-        public static final int ENTRY_TYPE_POWER_MENU = 2;
-
         // Metrics constants indicating the UI that user made phone call.
         public static final int CALL_SOURCE_DIALPAD = 0;
         public static final int CALL_SOURCE_SHORTCUT = 1;
@@ -140,11 +133,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 return;
             }
 
-            int entryType = getIntent().getIntExtra(EXTRA_ENTRY_TYPE, ENTRY_TYPE_UNKNOWN);
             KeyguardManager keyguard = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
             mMetricsLogger.write(new LogMaker(MetricsEvent.EMERGENCY_DIALER)
                     .setType(MetricsEvent.TYPE_OPEN)
-                    .setSubtype(entryType)
+                    .setSubtype(mEntryType)
                     .addTaggedData(MetricsEvent.FIELD_EMERGENCY_DIALER_IS_SCREEN_LOCKED,
                             keyguard.isKeyguardLocked() ? 1 : 0));
         }
@@ -154,11 +146,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 return;
             }
 
-            int entryType = getIntent().getIntExtra(EXTRA_ENTRY_TYPE, ENTRY_TYPE_UNKNOWN);
             long userStayDuration = SystemClock.elapsedRealtime() - mUserEnterTimeMillis;
             mMetricsLogger.write(new LogMaker(MetricsEvent.EMERGENCY_DIALER)
                     .setType(MetricsEvent.TYPE_CLOSE)
-                    .setSubtype(entryType)
+                    .setSubtype(mEntryType)
                     .addTaggedData(MetricsEvent.FIELD_EMERGENCY_DIALER_USER_ACTIONS, mUserActions)
                     .addTaggedData(
                             MetricsEvent.FIELD_EMERGENCY_DIALER_DURATION_MS, userStayDuration));
@@ -194,6 +185,13 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
      */
     public static final String EXTRA_ENTRY_TYPE =
             "com.android.phone.EmergencyDialer.extra.ENTRY_TYPE";
+
+    // Constants indicating the entry type that user opened emergency dialer.
+    // This info is sent from system UI with EXTRA_ENTRY_TYPE. Please make them being
+    // in sync with those in com.android.systemui.util.EmergencyDialerConstants.
+    public static final int ENTRY_TYPE_UNKNOWN = 0;
+    public static final int ENTRY_TYPE_LOCKSCREEN_BUTTON = 1;
+    public static final int ENTRY_TYPE_POWER_MENU = 2;
 
     // List of dialer button IDs.
     private static final int[] DIALER_KEYS = new int[]{
@@ -292,6 +290,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     private boolean mIsWfcEmergencyCallingWarningEnabled;
     private float mDefaultDigitsTextSize;
 
+    private int mEntryType;
     private boolean mIsShortcutViewEnabled;
 
     private MetricsWriter mMetricsWriter;
@@ -343,6 +342,9 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        mEntryType = getIntent().getIntExtra(EXTRA_ENTRY_TYPE, ENTRY_TYPE_UNKNOWN);
+        Log.d(LOG_TAG, "Launched from " + entryTypeToString(mEntryType));
 
         mMetricsWriter = new MetricsWriter();
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -810,6 +812,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     }
 
     private boolean canEnableShortcutView(PersistableBundle carrierConfig) {
+        if (mEntryType != ENTRY_TYPE_POWER_MENU) {
+            Log.d(LOG_TAG, "Disables shortcut view since it's not launched from power menu");
+            return false;
+        }
         if (!carrierConfig.getBoolean(
                 CarrierConfigManager.KEY_SUPPORT_EMERGENCY_DIALER_SHORTCUT_BOOL)) {
             Log.d(LOG_TAG, "Disables shortcut view by carrier requirement");
@@ -903,6 +909,9 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     }
 
     private void placeCall(String number, int callSource, ShortcutViewUtils.PhoneInfo phone) {
+        Log.d(LOG_TAG, "Place emergency call from " + callSourceToString(callSource)
+                + ", entry = " + entryTypeToString(mEntryType));
+
         Bundle extras = new Bundle();
         extras.putInt(TelecomManager.EXTRA_CALL_SOURCE, callSource);
         /**
@@ -1337,5 +1346,27 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             }
         }
         return isShortcut;
+    }
+
+    private String entryTypeToString(int entryType) {
+        switch (entryType) {
+            case ENTRY_TYPE_LOCKSCREEN_BUTTON:
+                return "LockScreen";
+            case ENTRY_TYPE_POWER_MENU:
+                return "PowerMenu";
+            default:
+                return "Unknown-" + entryType;
+        }
+    }
+
+    private String callSourceToString(int callSource) {
+        switch (callSource) {
+            case ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_DIALPAD:
+                return "DialPad";
+            case ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_SHORTCUT:
+                return "Shortcut";
+            default:
+                return "Unknown-" + callSource;
+        }
     }
 }
