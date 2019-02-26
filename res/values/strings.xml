@@ -1761,6 +1761,9 @@
     <string name="call_barring_settings">Call barring settings</string>
     <!-- Call barring settings screen, deactivate all call barring settings -->
     <string name="call_barring_deactivate_all_no_password">Deactivate all call barring settings?</string>
+    <!-- In-call screen: error message shown when the user attempts to place a call, but the network
+         does not have enough resources (e.g. it is busy) and the call cannot be placed. -->
+    <string name="callFailed_NetworkBusy">Network is busy.  Please try your call again later.</string>
     <!-- Message displayed to the user when an outgoing call is deflected.  This means that the
          party the user is calling has chosen to send the call to another phone number. -->
     <string name="supp_service_notification_call_deflected">Call deflected.</string>
