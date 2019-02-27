@@ -683,6 +683,7 @@ public class TelecomAccountRegistry {
         @Override
         public void onSubscriptionsChanged() {
             // Any time the SubscriptionInfo changes...rerun the setup
+            Log.i(this, "onSubscriptionsChanged - update accounts");
             tearDownAccounts();
             setupAccounts();
         }
@@ -1003,37 +1004,48 @@ public class TelecomAccountRegistry {
         // Go through SIM-based phones and register ourselves -- registering an existing account
         // will cause the existing entry to be replaced.
         Phone[] phones = PhoneFactory.getPhones();
-        Log.d(this, "Found %d phones.  Attempting to register.", phones.length);
+        Log.i(this, "setupAccounts: Found %d phones.  Attempting to register.", phones.length);
 
         final boolean phoneAccountsEnabled = mContext.getResources().getBoolean(
                 R.bool.config_pstn_phone_accounts_enabled);
 
         synchronized (mAccountsLock) {
-            if (phoneAccountsEnabled) {
-                for (Phone phone : phones) {
-                    int subscriptionId = phone.getSubId();
-                    Log.d(this, "Phone with subscription id %d", subscriptionId);
-                    // setupAccounts can be called multiple times during service changes. Don't add an
-                    // account if the Icc has not been set yet.
-                    if (!SubscriptionManager.isValidSubscriptionId(subscriptionId)
-                            || phone.getFullIccSerialNumber() == null) return;
-                    // Don't add account if it's opportunistic subscription, which is considered
-                    // data only for now.
-                    SubscriptionInfo info = SubscriptionManager.from(mContext)
-                            .getActiveSubscriptionInfo(subscriptionId);
-                    if (info == null || info.isOpportunistic()) return;
+            try {
+                if (phoneAccountsEnabled) {
+                    for (Phone phone : phones) {
+                        int subscriptionId = phone.getSubId();
+                        Log.i(this, "setupAccounts: Phone with subscription id %d", subscriptionId);
+                        // setupAccounts can be called multiple times during service changes.
+                        // Don't add an account if the Icc has not been set yet.
+                        if (!SubscriptionManager.isValidSubscriptionId(subscriptionId)
+                                || phone.getFullIccSerialNumber() == null) {
+                            Log.d(this, "setupAccounts: skipping invalid subid %d", subscriptionId);
+                            continue;
+                        }
+                        // Don't add account if it's opportunistic subscription, which is considered
+                        // data only for now.
+                        SubscriptionInfo info = SubscriptionManager.from(mContext)
+                                .getActiveSubscriptionInfo(subscriptionId);
+                        if (info == null || info.isOpportunistic()) {
+                            Log.d(this, "setupAccounts: skipping unknown or opportunistic subid %d",
+                                    subscriptionId);
+                            continue;
+                        }
 
-                    mAccounts.add(new AccountEntry(phone, false /* emergency */,
-                            false /* isDummy */));
+                        mAccounts.add(new AccountEntry(phone, false /* emergency */,
+                                false /* isDummy */));
+                    }
                 }
-            }
-
-            // If we did not list ANY accounts, we need to provide a "default" SIM account
-            // for emergency numbers since no actual SIM is needed for dialing emergency
-            // numbers but a phone account is.
-            if (mAccounts.isEmpty()) {
-                mAccounts.add(new AccountEntry(PhoneFactory.getDefaultPhone(), true /* emergency */,
-                        false /* isDummy */));
+            } finally {
+                // If we did not list ANY accounts, we need to provide a "default" SIM account
+                // for emergency numbers since no actual SIM is needed for dialing emergency
+                // numbers but a phone account is.
+                if (mAccounts.isEmpty()) {
+                    Log.i(this, "setupAccounts: adding default");
+                    mAccounts.add(
+                            new AccountEntry(PhoneFactory.getDefaultPhone(), true /* emergency */,
+                                    false /* isDummy */));
+                }
             }
 
             // Add a fake account entry.
