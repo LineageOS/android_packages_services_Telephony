@@ -1100,7 +1100,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) msg.obj;
                     boolean enable = (boolean) request.argument;
                     onCompleted = obtainMessage(EVENT_ENABLE_MODEM_DONE, request);
-                    onCompleted.arg1 = enable ? 1 : 0;
                     PhoneConfigurationManager.getInstance()
                             .enablePhone(request.phone, enable, onCompleted);
                     break;
@@ -1108,9 +1107,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     request.result = (ar.exception == null);
-                    //update the cache as modem status has changed
-                    mPhoneConfigurationManager.addToPhoneStatusCache(
-                            request.phone.getPhoneId(), msg.arg1 == 1);
                     updateModemStateMetrics();
                     notifyRequester(request);
                     break;
