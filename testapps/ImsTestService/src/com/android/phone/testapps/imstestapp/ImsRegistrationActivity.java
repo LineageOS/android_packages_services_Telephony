@@ -121,8 +121,8 @@ public class ImsRegistrationActivity extends Activity {
         }
 
         @Override
-        public void onDeregistered(ImsReasonInfo info) {
-            Log.i("ImsRegistrationActivity", "onDeregistered: " + info);
+        public void onUnregistered(ImsReasonInfo info) {
+            Log.i("ImsRegistrationActivity", "onUnregistered: " + info);
             mRegItems.add(new RegItem("Deregistered", info.toString()));
             triggerAdapterChange();
         }
