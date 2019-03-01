@@ -2462,7 +2462,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         timeoutMillis = Math.min(timeoutMillis,
-                TelephonyManager.MAX_NUMBER_VERIFICATION_TIMEOUT_MILLIS);
+                TelephonyManager.getMaxNumberVerificationTimeoutMillis());
 
         NumberVerificationManager.getInstance().requestVerification(range, callback, timeoutMillis);
     }
