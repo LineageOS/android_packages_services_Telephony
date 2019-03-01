@@ -318,15 +318,14 @@ public class NetworkSelectListPreference extends ListPreference
         mProgressDialog = progressDialog;
         mNeedScanAgain = false;
 
+        if (SubscriptionManager.isValidSubscriptionId(mSubId)) {
+            mPhoneId = SubscriptionManager.getPhoneId(mSubId);
+        }
+
         TelephonyManager telephonyManager = (TelephonyManager)
                 getContext().getSystemService(Context.TELEPHONY_SERVICE);
 
-        if (SubscriptionManager.isValidSubscriptionId(mSubId)) {
-            mPhoneId = SubscriptionManager.getPhoneId(mSubId);
-            setSummary(telephonyManager.getNetworkOperatorName(mSubId));
-        } else {
-            setSummary(telephonyManager.getNetworkOperatorName());
-        }
+        setSummary(telephonyManager.getNetworkOperatorName());
 
         setOnPreferenceChangeListener(this);
     }
