@@ -294,7 +294,6 @@ public class NetworkSelectListPreference extends ListPreference
 
     @Override
     protected void onDialogClosed(boolean positiveResult) {
-        super.onDialogClosed(positiveResult);
         // If dismissed, we query NetworkSelectMode and update states of AutoSelect button.
         if (!positiveResult) {
             mNetworkOperators.getNetworkSelectionMode();
