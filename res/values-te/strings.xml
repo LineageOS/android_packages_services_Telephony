@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"పాస్‌వర్డ్‌ని నమోదు చేయండి"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"కాల్ బేరింగ్ సెట్టింగ్‌లు"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"అన్ని కాల్ బేరింగ్ సెట్టింగ్‌లను నిష్క్రియం చేయాలా?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"నెట్‌వర్క్ బిజీగా ఉంది. దయచేసి తిరిగి తర్వాత కాల్ చేయండి."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"కాల్ మళ్లించబడింది."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"కాల్ ఫార్వార్డ్ చేయబడింది."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"కాల్ నిరీక్షణలో ఉంది."</string>

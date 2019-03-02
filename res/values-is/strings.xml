@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Slá inn aðgangsorð"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Stillingar fyrir útilokun símtala"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Slökkva á öllum stillingum fyrir útilokun símtala?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Símkerfið er upptekið. Reyndu að hringja aftur síðar."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Símtal flutt."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Símtal framsent."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Símtal er í bið."</string>

@@ -753,6 +753,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Wpisz hasło"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Ustawienia blokady połączeń"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Dezaktywować wszystkie ustawienia blokady połączeń?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Sieć jest zajęta. Spróbuj zadzwonić później."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Połączenie przekazane na inny numer."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Połączenie przekierowane."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Oczekiwanie na połączenie."</string>

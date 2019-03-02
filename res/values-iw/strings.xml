@@ -753,6 +753,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"זה המקום להזין סיסמה"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"ההגדרות של חסימת שיחות"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"להשבית את כל ההגדרות של חסימת שיחות?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"יש עומס על הרשת. אפשר לנסות להתקשר שוב מאוחר יותר."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"השיחה נותבה למספר אחר."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"השיחה הועברה."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"שיחה ממתינה."</string>

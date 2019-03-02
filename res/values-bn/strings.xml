@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"পাসওয়ার্ড লিখুন"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"কল নিষিদ্ধ করার সেটিংস"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"কল নিষিদ্ধ করার সমস্ত সেটিংস নিষ্ক্রিয় করবেন?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"নেটওয়ার্ক ব্যস্ত আছে। পরে আবার কল করার চেষ্টা করুন।"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"কল ডিফ্লেক্ট করা হয়েছে।"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"কল ফরওয়ার্ড করা হয়েছে।"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"কল অপেক্ষায় রয়েছে।"</string>

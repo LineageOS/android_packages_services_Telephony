@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Introduzir palavra-passe"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Definições de barramento de chamadas"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Desativar todas as definições de barramento de chamadas?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"A rede está ocupada. Tente efetuar novamente a chamada mais tarde."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"A chamada foi desviada."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"A chamada foi reencaminhada."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"A chamada foi colocada em espera."</string>

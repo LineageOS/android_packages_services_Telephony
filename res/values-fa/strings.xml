@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"گذرواژه را وارد کنید"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"تنظیمات محدودیت تماس"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"همه تنظیمات محدودیت تماس غیرفعال شود؟"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"شبکه مشغول است. لطفاً بعداً دوباره تماس بگیرید."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"تماس برگردانده شد."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"تماس هدایت شد."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"تماس درحال انتظار است."</string>

@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"ପାସ୍‌ୱର୍ଡ ପ୍ରବେଶ କରନ୍ତୁ"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"କଲ୍ ରୋକିବା ସେଟିଙ୍ଗ"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"ସମସ୍ତ କଲ୍ ରୋକିବା ସେଟିଙ୍ଗକୁ ନିଷ୍କ୍ରିୟ କରିବେ?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"ନେଟ୍‌ୱର୍କ ବ୍ୟସ୍ତ ଅଛି। ଦୟାକରି ଆପଣ ପରେ ପୁଣି କଲ୍‌ ଚେଷ୍ଟା କରିବା ପାଇଁ ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"କଲ୍ ଅନ୍ୟ ପାଖକୁ ଯିବା ବଦଳରେ ନିଜ ପାଖକୁ ଆସିଯାଇଛି।"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"କଲ୍‌କୁ ଫରୱାର୍ଡ କରାଯାଇଛି।"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"କଲ୍ ଅପେକ୍ଷାରେ ଅଛି।"</string>

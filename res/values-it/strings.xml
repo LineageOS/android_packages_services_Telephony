@@ -751,6 +751,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Inserisci password"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Impostazioni di blocco chiamate"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Disattivare tutte le impostazioni di blocco chiamate?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"La rete è occupata. Riprova a chiamare di nuovo più tardi."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Chiamata deviata."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Trasferimento di chiamata."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Chiamata in attesa."</string>

@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"비밀번호 입력"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"착발신 제한 설정"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"모든 착발신 제한 설정을 비활성화하시겠습니까?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"네트워크 사용량이 많습니다. 나중에 다시 전화해 주세요."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"통화가 착신전환되었습니다."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"통화가 착신전환되었습니다."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"통화 대기 중입니다."</string>

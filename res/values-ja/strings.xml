@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"パスワードを入力"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"通話制限設定"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"通話制限設定をすべて無効にしますか？"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"ネットワークがビジー状態です。しばらくしてからもう一度通話を発信してみてください。"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"通話が転送されました。"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"通話が転送されました。"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"応答保留中です。"</string>
