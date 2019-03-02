@@ -751,6 +751,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"輸入密碼"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"通話限制設定"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"要停用所有通話限制設定嗎？"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"目前忙線中，請稍後再撥號。"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"通話已自動轉接。"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"來電轉駁。"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"正在等待對方接聽電話。"</string>

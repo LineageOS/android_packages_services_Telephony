@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"បញ្ចូល​ពាក្យសម្ងាត់"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"ការកំណត់​​ការរារាំង​ការហៅ​ទូរសព្ទ"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"បិទ​ដំណើរការ​នៃការកំណត់​ការរារាំង​ការហៅ​​ទូរសព្ទទាំងអស់​ដែរ​​ទេ?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"បណ្ដាញ​កំពុង​រវល់។ សូម​ព្យាយាម​​ការ​ហៅ​ទូរសព្ទ​របស់​អ្នក​ម្ដង​ទៀត​នៅ​ពេល​ក្រោយ។"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"បាន​ហៅ​ទៅ​លេខ​ផ្សេង។"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"បាន​បញ្ជូនបន្តការហៅទូរសព្ទ។"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"ការហៅ​កំពុង​រង់ចាំ។"</string>

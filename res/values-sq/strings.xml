@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Fut fjalëkalimin"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Cilësimet e bllokimit të telefonatave"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Të çaktivizohen të gjitha cilësimet e bllokimit të telefonatave?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Rrjeti është i zënë. Provo ta kryesh telefonatën përsëri më vonë."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Telefonata u devijua."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Telefonata u transferua."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Telefonata është në pritje."</string>

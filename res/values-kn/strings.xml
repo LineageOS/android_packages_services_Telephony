@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"ಕರೆ ನಿಷೇಧಿಸುವಿಕೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"ಎಲ್ಲಾ ಕರೆ ನಿಷೇಧಿಸುವಿಕೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುವುದೇ?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"ನೆಟ್‌ವರ್ಕ್ ಕಾರ್ಯನಿರತವಾಗಿದೆ ನಿಮ್ಮ ಕರೆಯನ್ನು ಪುನಃ ನಂತರ ಪ್ರಯತ್ನಿಸಿ"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"ಕರೆ ಫಾರ್ವರ್ಡ್ ಮಾಡಲಾಗಿದೆ."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"ಕರೆಯನ್ನು ಫಾರ್ವರ್ಡ್ ಮಾಡಲಾಗಿದೆ."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"ಕರೆಯು ನಿರೀಕ್ಷಣೆಯಲ್ಲಿದೆ."</string>

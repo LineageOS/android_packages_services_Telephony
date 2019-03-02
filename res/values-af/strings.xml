@@ -751,6 +751,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Voer wagwoord in"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Oproepstuitinginstellings"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Deaktiveer alle oproepstuitinginstellings?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Netwerk is besig. Probeer asseblief later weer bel."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Oproep is afgelei."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Oproep is aangestuur."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Oproep wag."</string>

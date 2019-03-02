@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"পাছৱৰ্ড দিয়ক"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"কল প্ৰতিবন্ধক ছেটিংসমূহ"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"সকলো কল প্ৰতিবন্ধক ছেটিং নিষ্ক্ৰিয় কৰেনে?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"নেটৱৰ্ক ব্যস্ত। অনুগ্ৰহ কৰি কিছুসময় পিছত আকৌ কল কৰাৰ চেষ্টা কৰক।"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"কলটো বিচ্যুত কৰা হৈছে।"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"কলটো ফৰৱাৰ্ড কৰা হ’ল।"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"কল অপেক্ষাৰত।"</string>

@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"പാസ്‌വേഡ് നൽകുക"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"കോൾ തടയൽ ക്രമീകരണം"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"എല്ലാ കോൾ തടയൽ ക്രമീകരണവും നിർജ്ജീവമാക്കണോ?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"നെറ്റ്‌വർക്ക് തിരക്കിലാണ്. കോൾ ചെയ്യാൻ പിന്നീട് വീണ്ടും ശ്രമിക്കുക."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"കോൾ വഴി തിരിച്ചുവിട്ടു."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"കോൾ കൈമാറി."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"കോൾ വെയ്‌റ്റിംഗിലാണ്."</string>

@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"ໃສ່ລະຫັດຜ່ານ"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"ການຕັ້ງຄ່າການຍົກເລີກການໂທ"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"ປິດການຕັ້ງຄ່າການຍົກເລີກການໂທທັງໝົດບໍ?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"ເຄືອຂ່າຍບໍ່ຫວ່າງ. ກະລຸນາລອງໂທໃໝ່ໃນພາຍຫຼັງ."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"ໂອນສາຍມາແລ້ວ."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"ໂອນສາຍໄປແລ້ວ."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"ກຳລັງລໍຖ້າສາຍ."</string>

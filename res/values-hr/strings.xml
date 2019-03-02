@@ -751,6 +751,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Unesite zaporku"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Postavke za zabranu poziva"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Želite li deaktivirati sve postavke za zabranu poziva?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Mreža je zauzeta. Pokušajte ponovno uputiti poziv kasnije."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Poziv odbačen."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Poziv preusmjeren."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Poziv na čekanju."</string>

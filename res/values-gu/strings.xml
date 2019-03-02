@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"પાસવર્ડ દાખલ કરો"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"કૉલ બારિંગની સેટિંગ"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"કૉલ બારિંગની બધી સેટિંગ નિષ્ક્રિય કરીએ?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"નેટવર્ક વ્યસ્ત છે. કૃપા કરીને કૉલ કરવાનો પછીથી ફરી પ્રયાસ કરો."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"કૉલ બીજે વાળ્યો."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"કૉલ ફોર્વર્ડ કર્યો."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"કૉલ પ્રતીક્ષામાં છે."</string>

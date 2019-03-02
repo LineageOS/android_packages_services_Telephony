@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"கடவுச்சொல்லை உள்ளிடவும்"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"அழைப்புத் தடுப்பு அமைப்புகள்"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"எல்லா அழைப்புத் தடுப்பு அமைப்புகளையும் முடக்கவா?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"நெட்வொர்க் பிஸியாக உள்ளது. பிறகு அழைக்கவும்."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"அழைப்புத் திருப்பிவிடப்பட்டது."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"அழைப்புப் பகிரப்பட்டது."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"அழைப்புக் காத்திருப்பில் உள்ளது."</string>
