@@ -1100,6 +1100,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) msg.obj;
                     boolean enable = (boolean) request.argument;
                     onCompleted = obtainMessage(EVENT_ENABLE_MODEM_DONE, request);
+                    onCompleted.arg1 = enable ? 1 : 0;
                     PhoneConfigurationManager.getInstance()
                             .enablePhone(request.phone, enable, onCompleted);
                     break;
@@ -1107,6 +1108,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     request.result = (ar.exception == null);
+                    //update the cache as modem status has changed
+                    mPhoneConfigurationManager.addToPhoneStatusCache(
+                            request.phone.getPhoneId(), msg.arg1 == 1);
                     updateModemStateMetrics();
                     notifyRequester(request);
                     break;
@@ -2462,7 +2466,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         timeoutMillis = Math.min(timeoutMillis,
-                TelephonyManager.MAX_NUMBER_VERIFICATION_TIMEOUT_MILLIS);
+                TelephonyManager.getMaxNumberVerificationTimeoutMillis());
 
         NumberVerificationManager.getInstance().requestVerification(range, callback, timeoutMillis);
     }
@@ -2896,9 +2900,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setAdvancedCallingSetting(int subId, boolean isEnabled) {
+    public void setAdvancedCallingSettingEnabled(int subId, boolean isEnabled) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
-                "setAdvancedCallingSetting");
+                "setAdvancedCallingSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -2923,9 +2927,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setVtSetting(int subId, boolean isEnabled) {
+    public void setVtSettingEnabled(int subId, boolean isEnabled) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
-                "setVtSetting");
+                "setVtSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -2949,9 +2953,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setVoWiFiSetting(int subId, boolean isEnabled) {
+    public void setVoWiFiSettingEnabled(int subId, boolean isEnabled) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
-                "setVoWiFiSetting");
+                "setVoWiFiSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -2975,9 +2979,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setVoWiFiRoamingSetting(int subId, boolean isEnabled) {
+    public void setVoWiFiRoamingSettingEnabled(int subId, boolean isEnabled) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
-                "setVoWiFiRoamingSetting");
+                "setVoWiFiRoamingSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.

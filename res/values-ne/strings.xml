@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"पासवर्ड प्रविष्टि गर्नुहोस्"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"कल ब्यारिङसम्बन्धी सेटिङहरू"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"कल ब्यारिङसम्बन्धी सबै सेटिङहरू निष्क्रिय पार्ने हो?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"नेटवर्क व्यस्त छ। कृपया पछि फेरि कल गरी हेर्नुहोस्।"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"कल अर्को नम्बरमा स्थानान्तरण गरियो।"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"कल फर्वार्ड गरियो।"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"कल प्रतीक्षामा छ।"</string>

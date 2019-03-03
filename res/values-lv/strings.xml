@@ -751,6 +751,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Ievadiet paroli"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Zvanu aizliegšanas iestatījumi"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Vai deaktivizēt visus zvanu aizliegšanas iestatījumus?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Tīkls ir aizņemts. Lūdzu, vēlāk mēģiniet zvanīt vēlreiz."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Zvans novirzīts."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Zvans pāradresēts."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Notiek zvana gaidīšana."</string>

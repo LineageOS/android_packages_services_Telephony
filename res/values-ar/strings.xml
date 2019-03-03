@@ -757,6 +757,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"إدخال كلمة المرور"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"إعدادات منع الاتصال"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"هل تريد إيقاف كل إعدادات منع الاتصال؟"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"الشبكة مشغولة. يُرجى إعادة الاتّصال في وقتٍ لاحق."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"تم انحراف المكالمة."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"تمت إعادة توجيه المكالمة."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"المكالمة قيد الانتظار."</string>

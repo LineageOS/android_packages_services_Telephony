@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Ilagay ang password"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Mga setting ng pag-bar ng tawag"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"I-deactivate ang lahat ng setting ng pag-bar ng tawag?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Busy ang network. Pakisubukan muling tumawag sa ibang pagkakataon."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Na-deflect ang tawag."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Ipinasa ang tawag."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"May naghihintay na tawag."</string>

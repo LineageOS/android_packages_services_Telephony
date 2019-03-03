@@ -749,6 +749,7 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Nhập mật khẩu"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Cài đặt chặn cuộc gọi"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Bạn muốn hủy kích hoạt tất cả cài đặt chặn cuộc gọi?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Tất cả các nhân viên hỗ trợ hiện đang bận. Vui lòng thử gọi lại sau."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Đã chuyển hướng cuộc gọi."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Đã chuyển tiếp cuộc gọi."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Cuộc gọi đang chờ."</string>
