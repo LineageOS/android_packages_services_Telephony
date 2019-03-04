@@ -40,9 +40,9 @@
     <color name="phone_settings_actionbar_text_color">#FFFFFF</color>
     <!-- Background color of action bars.  Ensure this stays in sync with Dialer
          actionbar_background_color. -->
-    <color name="actionbar_background_color">@color/dialer_theme_color</color>
+    <color name="actionbar_background_color">#fafafa</color>
     <!-- Dark variant of the action bar color.  Ensure this stays in sync with Dialer version. -->
-    <color name="actionbar_background_color_dark">@color/dialer_theme_color_dark</color>
+    <color name="actionbar_background_color_dark">#fafafa</color>
     <!-- Color for icons in the actionbar. Ensure this stays in sync with Dialer version. -->
     <color name="actionbar_icon_color">#ffffff</color>
 
@@ -56,4 +56,11 @@
     <color name="floating_action_button_touch_tint">#80ffffff</color>
     <color name="emergency_shortcut_button_background_color">#40FFFFFF</color>
     <color name="emergency_shortcut_confirm_button_background_color">#E25142</color>
+
+    <!-- Color matches dialer settings light M2 theme.-->
+    <color name="dialer_background_color">#fafafa</color>
+    <color name="dialer_divider_color">#d8d8d8</color>
+    <color name="dialer_primary_text_color">#202124</color>
+    <color name="dialer_secondary_text_color">#5f6368</color>
+
 </resources>
