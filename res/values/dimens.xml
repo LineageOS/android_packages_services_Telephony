@@ -202,4 +202,13 @@
 
     <!-- The text size for emergency location.-->
     <dimen name="emergency_location_text_size">13sp</dimen>
+
+    <!-- The text size for titles in settings page.-->
+    <dimen name="dialer_head1_font_size">18dp</dimen>
+
+    <!-- The text size for items in settings page.-->
+    <dimen name="dialer_primary2_font_size">16dp</dimen>
+
+    <!-- The text size for description in settings page.-->
+    <dimen name="dialer_secondary_font_size">14dp</dimen>
 </resources>
