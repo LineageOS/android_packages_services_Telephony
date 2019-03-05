@@ -6605,33 +6605,37 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            // If the device has less than 2 SIM cards, indicate that multisim is restricted.
-            int numPhysicalSlots = UiccController.getInstance().getUiccSlots().length;
-            if (numPhysicalSlots < 2) {
-                loge("isMultisimSupported: requires at least 2 cards");
-                return false;
-            }
-            // Check if the hardware supports multisim functionality. If usage of multisim is not
-            // supported by the modem, indicate that it is restricted.
-            PhoneCapability staticCapability =
-                    mPhoneConfigurationManager.getStaticPhoneCapability();
-            if (staticCapability == null) {
-                loge("isMultisimSupported: no static configuration available");
-                return false;
-            }
-            if (staticCapability.logicalModemList.size() < 2) {
-                loge("isMultisimSupported: maximum number of modem is < 2");
-                return false;
-            }
-            // Check if support of multiple SIMs is restricted by carrier
-            if (mTelephonySharedPreferences.getBoolean(PREF_MULTI_SIM_RESTRICTED, false)) {
-                return false;
-            }
-
-            return true;
+            return isMultisimSupportedInternal();
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    private boolean isMultisimSupportedInternal() {
+        // If the device has less than 2 SIM cards, indicate that multisim is restricted.
+        int numPhysicalSlots = UiccController.getInstance().getUiccSlots().length;
+        if (numPhysicalSlots < 2) {
+            loge("isMultisimSupportedInternal: requires at least 2 cards");
+            return false;
+        }
+        // Check if the hardware supports multisim functionality. If usage of multisim is not
+        // supported by the modem, indicate that it is restricted.
+        PhoneCapability staticCapability =
+                mPhoneConfigurationManager.getStaticPhoneCapability();
+        if (staticCapability == null) {
+            loge("isMultisimSupportedInternal: no static configuration available");
+            return false;
+        }
+        if (staticCapability.logicalModemList.size() < 2) {
+            loge("isMultisimSupportedInternal: maximum number of modem is < 2");
+            return false;
+        }
+        // Check if support of multiple SIMs is restricted by carrier
+        if (mTelephonySharedPreferences.getBoolean(PREF_MULTI_SIM_RESTRICTED, false)) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -6643,7 +6647,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, SubscriptionManager.DEFAULT_SUBSCRIPTION_ID, "switchMultiSimConfig");
         final long identity = Binder.clearCallingIdentity();
+
         try {
+            //only proceed if multi-sim is not restricted
+            if (!isMultisimSupportedInternal()) {
+                loge("switchMultiSimConfig not possible. It is restricted or not supported.");
+                return;
+            }
             mPhoneConfigurationManager.switchMultiSimConfig(numOfSims);
         } finally {
             Binder.restoreCallingIdentity(identity);
