@@ -267,8 +267,7 @@ public class TelecomAccountRegistry {
                 capabilities |= PhoneAccount.CAPABILITY_PLACE_EMERGENCY_CALLS;
             }
 
-            if (PhoneGlobals.getInstance().phoneMgr.isRttEnabled(subId)
-                    && isImsVoiceAvailable()) {
+            if (isRttCurrentlySupported()) {
                 capabilities |= PhoneAccount.CAPABILITY_RTT;
                 mIsRttCapable = true;
             } else {
@@ -586,17 +585,28 @@ public class TelecomAccountRegistry {
         }
 
         public void updateRttCapability() {
-            boolean hasVoiceAvailability = isImsVoiceAvailable();
-
-            boolean isRttSupported = PhoneGlobals.getInstance().phoneMgr
-                    .isRttEnabled(mPhone.getSubId());
-
-            boolean isRttEnabled = hasVoiceAvailability && isRttSupported;
+            boolean isRttEnabled = isRttCurrentlySupported();
             if (isRttEnabled != mIsRttCapable) {
                 Log.i(this, "updateRttCapability - changed, new value: " + isRttEnabled);
                 mAccount = registerPstnPhoneAccount(mIsEmergency, mIsDummy);
             }
         }
+
+        /**
+         * Determines whether RTT is supported given the current state of the
+         * device.
+         */
+        private boolean isRttCurrentlySupported() {
+            boolean hasVoiceAvailability = isImsVoiceAvailable();
+
+            boolean isRttSupported = PhoneGlobals.getInstance().phoneMgr
+                    .isRttEnabled(mPhone.getSubId());
+
+            boolean isRoaming = mTelephonyManager.isNetworkRoaming(mPhone.getSubId());
+
+            return hasVoiceAvailability && isRttSupported && !isRoaming;
+        }
+
         /**
          * Indicates whether this account supports pausing video calls.
          * @return {@code true} if the account supports pausing video calls, {@code false}
@@ -719,6 +729,12 @@ public class TelecomAccountRegistry {
             if (newState == ServiceState.STATE_IN_SERVICE && mServiceState != newState) {
                 tearDownAccounts();
                 setupAccounts();
+            } else {
+                synchronized (mAccountsLock) {
+                    for (AccountEntry account : mAccounts) {
+                        account.updateRttCapability();
+                    }
+                }
             }
             mServiceState = newState;
         }
