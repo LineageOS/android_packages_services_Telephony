@@ -6640,12 +6640,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Switch configs to enable multi-sim or switch back to single-sim
+     * Note: Switch from multi-sim to single-sim is only possible with MODIFY_PHONE_STATE
+     * permission, but the other way around is possible with either MODIFY_PHONE_STATE
+     * or carrier privileges
      * @param numOfSims number of active sims we want to switch to
      */
     @Override
     public void switchMultiSimConfig(int numOfSims) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, SubscriptionManager.DEFAULT_SUBSCRIPTION_ID, "switchMultiSimConfig");
+        if (numOfSims == 1) {
+            enforceModifyPermission();
+        } else {
+            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                    mApp, SubscriptionManager.DEFAULT_SUBSCRIPTION_ID, "switchMultiSimConfig");
+        }
         final long identity = Binder.clearCallingIdentity();
 
         try {
