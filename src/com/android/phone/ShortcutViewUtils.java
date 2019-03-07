@@ -17,9 +17,12 @@
 package com.android.phone;
 
 import android.content.Context;
+import android.os.PersistableBundle;
+import android.provider.Settings;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.emergency.EmergencyNumber;
@@ -52,6 +55,64 @@ class ShortcutViewUtils {
             bitmask |= category;
         }
         PROMOTED_CATEGORIES_BITMASK = bitmask;
+    }
+
+    static class Config {
+        private final boolean mCanEnableShortcutView;
+        private PhoneInfo mPhoneInfo = null;
+
+        Config(@NonNull Context context, PersistableBundle carrierConfig, int entryType) {
+            mCanEnableShortcutView = canEnableShortcutView(carrierConfig, entryType);
+            refresh(context);
+        }
+
+        void refresh(@NonNull Context context) {
+            if (mCanEnableShortcutView && !isAirplaneModeOn(context)) {
+                mPhoneInfo = ShortcutViewUtils.pickPreferredPhone(context);
+            } else {
+                mPhoneInfo = null;
+            }
+        }
+
+        boolean isEnabled() {
+            return mPhoneInfo != null;
+        }
+
+        PhoneInfo getPhoneInfo() {
+            return mPhoneInfo;
+        }
+
+        String getCountryIso() {
+            if (mPhoneInfo == null) {
+                return null;
+            }
+            return mPhoneInfo.getCountryIso();
+        }
+
+        boolean hasPromotedEmergencyNumber(String number) {
+            if (mPhoneInfo == null) {
+                return false;
+            }
+            return mPhoneInfo.hasPromotedEmergencyNumber(number);
+        }
+
+        private boolean canEnableShortcutView(PersistableBundle carrierConfig, int entryType) {
+            if (entryType != EmergencyDialer.ENTRY_TYPE_POWER_MENU) {
+                Log.d(LOG_TAG, "Disables shortcut view since it's not launched from power menu");
+                return false;
+            }
+            if (carrierConfig == null || !carrierConfig.getBoolean(
+                    CarrierConfigManager.KEY_SUPPORT_EMERGENCY_DIALER_SHORTCUT_BOOL)) {
+                Log.d(LOG_TAG, "Disables shortcut view by carrier requirement");
+                return false;
+            }
+            return true;
+        }
+
+        private boolean isAirplaneModeOn(@NonNull Context context) {
+            return Settings.Global.getInt(context.getContentResolver(),
+                    Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
+        }
     }
 
     // Info and emergency call capability of every phone.
