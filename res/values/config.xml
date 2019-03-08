@@ -247,4 +247,10 @@
          When this is true, the Telephony stack is able to add additional audio to the outgoing
          audio stream which the remote party will be able to hear. -->
     <bool name="config_support_telephony_audio_device">false</bool>
+
+    <!-- Flag indicating if network query through TelephonyManager.requestNetworkScan() should be
+         disabled.
+         If set to true, it will send network query through Phone.getAvailableNetworks() directly
+         rather than attempt to query through TelephonyManager.requestNetworkScan() first. -->
+    <bool name="config_requestNetworkScan_disable">false</bool>
 </resources>
