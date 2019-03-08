@@ -633,7 +633,7 @@
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"נגישות"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"‏שיחת Wi-Fi מאת"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"‏שיחת Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="4906759256275562674">"הקש שוב כדי לפתוח"</string>
+    <string name="emergency_action_launch_hint" msgid="4906759256275562674">"יש להקיש שוב כדי לפתוח"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"אירעה שגיאה בעת פענוח ההודעה."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"‏כרטיס SIM הפעיל את השירות שלך ועדכן את יכולות הנדידה של הטלפון."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"יש יותר מדי שיחות פעילות. כדי להתחיל שיחה חדשה עליך לסיים או למזג חלק מהשיחות הפעילות."</string>
