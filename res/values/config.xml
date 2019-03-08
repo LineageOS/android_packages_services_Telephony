@@ -261,4 +261,10 @@
          slot. If true, telephony will always try to place the emergency call on the subscription
          associated with default data first, instead of using the default voice configuration.-->
     <bool name="config_gnss_supl_requires_default_data_for_emergency">false</bool>
+
+    <!-- Flag indicating if network query through TelephonyManager.requestNetworkScan() should be
+         disabled.
+         If set to true, it will send network query through Phone.getAvailableNetworks() directly
+         rather than attempt to query through TelephonyManager.requestNetworkScan() first. -->
+    <bool name="config_disable_TelephonyManager_network_scan">false</bool>
 </resources>
