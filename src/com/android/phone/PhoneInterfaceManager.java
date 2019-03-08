@@ -2212,23 +2212,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public int getSubscriptionPreciseCarrierId(int subId) {
+    public int getSubscriptionSpecificCarrierId(int subId) {
         final long identity = Binder.clearCallingIdentity();
         try {
             final Phone phone = getPhone(subId);
             return phone == null ? TelephonyManager.UNKNOWN_CARRIER_ID
-                    : phone.getPreciseCarrierId();
+                    : phone.getSpecificCarrierId();
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
 
     @Override
-    public String getSubscriptionPreciseCarrierName(int subId) {
+    public String getSubscriptionSpecificCarrierName(int subId) {
         final long identity = Binder.clearCallingIdentity();
         try {
             final Phone phone = getPhone(subId);
-            return phone == null ? null : phone.getPreciseCarrierName();
+            return phone == null ? null : phone.getSpecificCarrierName();
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
