@@ -93,7 +93,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
         mButtonHac = (SwitchPreference) findPreference(BUTTON_HAC_KEY);
         mButtonRtt = (SwitchPreference) findPreference(BUTTON_RTT_KEY);
 
-        if (PhoneGlobals.getInstance().phoneMgr.isTtyModeSupported()) {
+        if (PhoneGlobals.getInstance().phoneMgr.isTtyModeSupported() && isTtySupportedByCarrier()) {
             mButtonTty.init();
         } else {
             getPreferenceScreen().removePreference(mButtonTty);
@@ -190,5 +190,16 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             }
         }
         return false;
+    }
+
+    /**
+     * Determines if the device supports TTY per carrier config.
+     * @return {@code true} if the carrier supports TTY, {@code false} otherwise.
+     */
+    private boolean isTtySupportedByCarrier() {
+        CarrierConfigManager configManager =
+                (CarrierConfigManager) mContext.getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        return configManager.getConfig().getBoolean(
+                CarrierConfigManager.KEY_TTY_SUPPORTED_BOOL);
     }
 }
