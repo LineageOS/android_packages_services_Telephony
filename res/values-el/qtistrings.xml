@@ -31,130 +31,82 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-  <!-- IMS settings related strings -->
-  <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">Ρυθμίσεις IMS</string>
-  <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN ξεκλειδώματος υποσυνόλου δικτύου SIM</string>
-  <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">PIN ξεκλειδώματος εταιρικής SIM</string>
-  <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">PIN ξεκλειδώματος παρόχου SIM</string>
-  <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN ξεκλειδώματος SIM</string>
-  <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN ξεκλειδώματος RUIM δικτύου 1</string>
-  <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN ξεκλειδώματος RUIM δικτύου 2</string>
-  <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN ξεκλειδώματος HRPD RUIM</string>
-  <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN ξεκλειδώματος εταιρικής RUIM</string>
-  <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">PIN ξεκλειδώματος παρόχου RUIM</string>
-  <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN ξεκλειδώματος RUIM</string>
-  <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Εισάγετε PUK</string>
-  <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Αίτηση ξεκλειδώματος υποσυνόλου δικτύου SIM\u2026</string>
-  <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Αίτηση ξεκλειδώματος παρόχου SIM\u2026</string>
-  <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Αίτηση ξεκλειδώματος εταιρικής SIM\u2026</string>
-  <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Αίτηση ξεκλειδώματος SIM\u2026</string>
-  <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Αίτηση ξεκλειδώματος RUIM δικτύου 1\u2026</string>
-  <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Αίτηση ξεκλειδώματος RUIM δικτύου 2\u2026</string>
-  <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Αίτηση ξεκλειδώματος HRPD RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Αίτηση ξεκλειδώματος παρόχου RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Αίτηση ξεκλειδώματος εταιρικής RUIM\u2026</string>
-  <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Αίτηση ξεκλειδώματος RUIM\u2026</string>
-  <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Αίτηση ξεκλειδώματος PUK\u2026</string>
-  <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Αποτυχία ξεκλειδώματος υποσυνόλου δικτύου SIM.</string>
-  <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Αποτυχία ξεκλειδώματος παρόχου SIM.</string>
-  <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Αποτυχία ξεκλειδώματος εταιρικής SIM.</string>
-  <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Αποτυχία ξεκλειδώματος SIM.</string>
-  <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Αποτυχία ξεκλειδώματος RUIM δικτύου 1.</string>
-  <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Αποτυχία ξεκλειδώματος RUIM δικτύου 2.</string>
-  <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Αποτυχία ξεκλειδώματος HRPD RUIM.</string>
-  <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Αποτυχία ξεκλειδώματος παρόχου RUIM.</string>
-  <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Αποτυχία ξεκλειδώματος εταιρικής RUIM.</string>
-  <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Αποτυχία ξεκλειδώματος RUIM.</string>
-  <!-- Error message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
-  <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Το ξεκλείδωμα του υποσυνόλου δικτύου SIM ήταν επιτυχές.</string>
-  <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Το ξεκλείδωμα του παρόχου SIM ήταν επιτυχές.</string>
-  <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Το ξεκλείδωμα της εταιρικής SIM ήταν επιτυχές.</string>
-  <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Το ξεκλείδωμα της SIM ήταν επιτυχές.</string>
-  <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Το ξεκλείδωμα του RUIM δικτύου 1 ήταν επιτυχές.</string>
-  <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Το ξεκλείδωμα του RUIM δικτύου 2 ήταν επιτυχές.</string>
-  <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">Το ξεκλείδωμα HRPD RUIM ήταν επιτυχές.</string>
-  <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Το ξεκλείδωμα του παρόχου RUIM ήταν επιτυχές.</string>
-  <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Το ξεκλείδωμα της εταιρικής RUIM ήταν επιτυχές.</string>
-  <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">Το ξεκλείδωμα της RUIM ήταν επιτυχές.</string>
-  <!-- Success message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
-  <string name="preferred_network_mode_dialogtitle_cmcc">Λειτουργία δικτύου</string>
-  <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (αυτόματο)"</string>
-  <string name="preferred_network_mode_3g_2g_auto">"3G/2G (αυτόματο)"</string>
-  <string name="cf_setting_mobile_data_alert">Παρακαλούμε ενεργοποιήστε τα δεδομένα κινητής τηλεφωνίας και βεβαιωθείτε ότι το Wi-Fi είναι ανενεργό</string>
-  <string name="cf_setting_mobile_data_roaming_alert">Παρακαλούμε ενεργοποιήστε την περιαγωγή δεδομένων</string>
-  <string name="no_mobile_data">Τα δεδομένα κινητής τηλεφωνίας δεν είναι διαθέσιμα</string>
-  <string name="no_mobile_data_roaming">Η περιαγωγή δεδομένων δεν είναι διαθέσιμη</string>
-  <string name="srvcc_video_message">"Η βίντεο κλήση έχει υποβαθμιστεί σε 2G/3G φωνητική κλήση, επειδή το δίκτυο 4G δεν είναι διαθέσιμο."</string>
-  <string name="srvcc_message">"Η 4G φωνητική κλήση έχει υποβαθμιστεί σε 2G/3G φωνητική κλήση, επειδή το δίκτυο 4G δεν είναι διαθέσιμο."</string>
-  <!-- call forwarding settings related strings -->
-  <string name="labelCFType">Ρυθμίσεις προώθησης κλήσεων</string>
-  <string name="labelCFVoice">Φωνή</string>
-  <string name="labelCFVideo">Βίντεο</string>
-  <string name="call_forward_option">Επιλογές προώθησης κλήσεων</string>
+    <string name="ims_settings">Ρυθμίσεις IMS</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN ξεκλειδώματος υποσυνόλου δικτύου SIM</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">PIN ξεκλειδώματος εταιρικής SIM</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">PIN ξεκλειδώματος παρόχου SIM</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN ξεκλειδώματος SIM</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN ξεκλειδώματος RUIM δικτύου 1</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN ξεκλειδώματος RUIM δικτύου 2</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN ξεκλειδώματος HRPD RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN ξεκλειδώματος εταιρικής RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">PIN ξεκλειδώματος παρόχου RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN ξεκλειδώματος RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Εισάγετε PUK</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Αίτηση ξεκλειδώματος υποσυνόλου δικτύου SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Αίτηση ξεκλειδώματος παρόχου SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Αίτηση ξεκλειδώματος εταιρικής SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Αίτηση ξεκλειδώματος SIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Αίτηση ξεκλειδώματος RUIM δικτύου 1\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Αίτηση ξεκλειδώματος RUIM δικτύου 2\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Αίτηση ξεκλειδώματος HRPD RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Αίτηση ξεκλειδώματος παρόχου RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Αίτηση ξεκλειδώματος εταιρικής RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Αίτηση ξεκλειδώματος RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Αίτηση ξεκλειδώματος PUK\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Αποτυχία ξεκλειδώματος υποσυνόλου δικτύου SIM.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Αποτυχία ξεκλειδώματος παρόχου SIM.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Αποτυχία ξεκλειδώματος εταιρικής SIM.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Αποτυχία ξεκλειδώματος SIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Αποτυχία ξεκλειδώματος RUIM δικτύου 1.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Αποτυχία ξεκλειδώματος RUIM δικτύου 2.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Αποτυχία ξεκλειδώματος HRPD RUIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Αποτυχία ξεκλειδώματος παρόχου RUIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Αποτυχία ξεκλειδώματος εταιρικής RUIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Αποτυχία ξεκλειδώματος RUIM.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Αποτυχία ξεκλειδώματος PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Το ξεκλείδωμα του υποσυνόλου δικτύου SIM ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Το ξεκλείδωμα του παρόχου SIM ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Το ξεκλείδωμα της εταιρικής SIM ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Το ξεκλείδωμα της SIM ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Το ξεκλείδωμα του RUIM δικτύου 1 ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Το ξεκλείδωμα του RUIM δικτύου 2 ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">Το ξεκλείδωμα HRPD RUIM ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Το ξεκλείδωμα του παρόχου RUIM ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Το ξεκλείδωμα της εταιρικής RUIM ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">Το ξεκλείδωμα της RUIM ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Το ξεκλείδωμα του PUK ήταν επιτυχές.</string>
+    <string name="preferred_network_mode_dialogtitle_cmcc">Λειτουργία δικτύου</string>
+    <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (αυτόματο)"</string>
+    <string name="preferred_network_mode_3g_2g_auto">"3G/2G (αυτόματο)"</string>
+    <string name="cf_setting_mobile_data_alert">Παρακαλούμε ενεργοποιήστε τα δεδομένα κινητής τηλεφωνίας και βεβαιωθείτε ότι το Wi-Fi είναι ανενεργό</string>
+    <string name="cf_setting_mobile_data_roaming_alert">Παρακαλούμε ενεργοποιήστε την περιαγωγή δεδομένων</string>
+    <string name="no_mobile_data">Τα δεδομένα κινητής τηλεφωνίας δεν είναι διαθέσιμα</string>
+    <string name="no_mobile_data_roaming">Η περιαγωγή δεδομένων δεν είναι διαθέσιμη</string>
+    <string name="srvcc_video_message">"Η βίντεο κλήση έχει υποβαθμιστεί σε 2G/3G φωνητική κλήση, επειδή το δίκτυο 4G δεν είναι διαθέσιμο."</string>
+    <string name="srvcc_message">"Η 4G φωνητική κλήση έχει υποβαθμιστεί σε 2G/3G φωνητική κλήση, επειδή το δίκτυο 4G δεν είναι διαθέσιμο."</string>
+    <string name="labelCFType">Ρυθμίσεις προώθησης κλήσεων</string>
+    <string name="labelCFVoice">Φωνή</string>
+    <string name="labelCFVideo">Βίντεο</string>
+    <string name="call_forward_option">Επιλογές προώθησης κλήσεων</string>
 </resources>

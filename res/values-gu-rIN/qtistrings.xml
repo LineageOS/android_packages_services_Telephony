@@ -31,117 +31,69 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-  <!-- IMS settings related strings -->
-  <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">IMS સેટિંગ્સ</string>
-  <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">SIM નેટવર્ક સબસેટ અનલૉક PIN</string>
-  <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">SIM કૉર્પોરેટ અનલૉક PIN</string>
-  <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">SIM સેવા પ્રદાતા અનલૉક PIN</string>
-  <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM અનલૉક PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">RUIM નેટવર્ક 1 અનલૉક PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">RUIM નેટવર્ક 2 અનલૉક PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM HRPD અનલૉક PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">RUIM કૉર્પોરેટ અનલૉક PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">RUIM સેવા પ્રદાતા અનલૉક PIN</string>
-  <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">RUIM અનલૉક PIN</string>
-  <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">PUK દાખલ કરો</string>
-  <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">SIM નેટવર્ક સબસેટ અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
-  <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">SIM સેવા પ્રદાતા અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
-  <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">SIM કૉર્પોરેટ અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
-  <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">SIM અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
-  <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">RUIM નેટવર્ક 1 અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
-  <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">RUIM નેટવર્ક 2 અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
-  <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">RUIM HRPD અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
-  <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">RUIM સેવા પ્રદાતા અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
-  <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">RUIM કૉર્પોરેટ અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
-  <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">RUIM અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
-  <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">PUK અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
-  <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">SIM નેટવર્ક સબસેટ અનલૉક વિનંતી અસફળ.</string>
-  <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">SIM સેવા પ્રદાતા અનલૉક વિનંતી અસફળ.</string>
-  <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">SIM કૉર્પોરેટ અનલૉક વિનંતી અસફળ.</string>
-  <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">SIM અનલૉક વિનંતી અસફળ.</string>
-  <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">RUIM નેટવર્ક 1 અનલૉક વિનંતી અસફળ.</string>
-  <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">RUIM નેટવર્ક 2 અનલૉક વિનંતી અસફળ.</string>
-  <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">RUIM HRPD અનલૉક વિનંતી અસફળ.</string>
-  <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">RUIM સેવા પ્રદાતા અનલૉક વિનંતી અસફળ.</string>
-  <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">RUIM કૉર્પોરેટ અનલૉક વિનંતી અસફળ.</string>
-  <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">RUIM અનલૉક વિનંતી અસફળ.</string>
-  <!-- Error message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">PUK અનલૉક અસફળ.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">PUK અનલૉક અસફળ.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">PUK અનલૉક અસફળ.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">PUK અનલૉક અસફળ.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">PUK અનલૉક અસફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">PUK અનલૉક અસફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">PUK અનલૉક અસફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">PUK અનલૉક અસફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">PUK અનલૉક અસફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">PUK અનલૉક અસફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">PUK અનલૉક અસફળ.</string>
-  <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">SIM નેટવર્ક સબસેટ અનલૉક સફળ.</string>
-  <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">SIM સેવા પ્રદાતા અનલૉક સફળ.</string>
-  <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM કૉર્પોરેટ અનલૉક સફળ.</string>
-  <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM અનલૉક સફળ.</string>
-  <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">RUIM નેટવર્ક 1 અનલૉક સફળ.</string>
-  <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">RUIM નેટવર્ક 2 અનલૉક સફળ.</string>
-  <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD અનલૉક સફળ.</string>
-  <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM સેવા પ્રદાતા અનલૉક સફળ.</string>
-  <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM કૉર્પોરેટ અનલૉક સફળ.</string>
-  <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM અનલૉક સફળ.</string>
-  <!-- Success message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
-  <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
-  <!-- call forwarding settings related strings -->
+    <string name="ims_settings">IMS સેટિંગ્સ</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">SIM નેટવર્ક સબસેટ અનલૉક PIN</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">SIM કૉર્પોરેટ અનલૉક PIN</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">SIM સેવા પ્રદાતા અનલૉક PIN</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM અનલૉક PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">RUIM નેટવર્ક 1 અનલૉક PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">RUIM નેટવર્ક 2 અનલૉક PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM HRPD અનલૉક PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">RUIM કૉર્પોરેટ અનલૉક PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">RUIM સેવા પ્રદાતા અનલૉક PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">RUIM અનલૉક PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">PUK દાખલ કરો</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">SIM નેટવર્ક સબસેટ અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">SIM સેવા પ્રદાતા અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">SIM કૉર્પોરેટ અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">SIM અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">RUIM નેટવર્ક 1 અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">RUIM નેટવર્ક 2 અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">RUIM HRPD અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">RUIM સેવા પ્રદાતા અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">RUIM કૉર્પોરેટ અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">RUIM અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">PUK અનલૉક માટે વિનંતી કરીએ છીએ\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">SIM નેટવર્ક સબસેટ અનલૉક વિનંતી અસફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">SIM સેવા પ્રદાતા અનલૉક વિનંતી અસફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">SIM કૉર્પોરેટ અનલૉક વિનંતી અસફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ERROR">SIM અનલૉક વિનંતી અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">RUIM નેટવર્ક 1 અનલૉક વિનંતી અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">RUIM નેટવર્ક 2 અનલૉક વિનંતી અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">RUIM HRPD અનલૉક વિનંતી અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">RUIM સેવા પ્રદાતા અનલૉક વિનંતી અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">RUIM કૉર્પોરેટ અનલૉક વિનંતી અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">RUIM અનલૉક વિનંતી અસફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">PUK અનલૉક અસફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">PUK અનલૉક અસફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">PUK અનલૉક અસફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">PUK અનલૉક અસફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">PUK અનલૉક અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">PUK અનલૉક અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">PUK અનલૉક અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">PUK અનલૉક અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">PUK અનલૉક અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">PUK અનલૉક અસફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">PUK અનલૉક અસફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">SIM નેટવર્ક સબસેટ અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">SIM સેવા પ્રદાતા અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM કૉર્પોરેટ અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">RUIM નેટવર્ક 1 અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">RUIM નેટવર્ક 2 અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM સેવા પ્રદાતા અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM કૉર્પોરેટ અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">PUK અનલૉક સફળ.</string>
 </resources>

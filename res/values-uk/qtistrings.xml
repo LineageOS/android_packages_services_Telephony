@@ -31,130 +31,82 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-  <!-- IMS settings related strings -->
-  <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">IMS налаштування</string>
-  <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN-код розблокування приватної мережі SIM</string>
-  <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">Корпоративний PIN-код розблокування SIM</string>
-  <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">PIN-код розблокування оператора SIM</string>
-  <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN-код розблокування SIM</string>
-  <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN-код розблокування мережі 1 RUIM</string>
-  <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN-код розблокування мережі 2 RUIM</string>
-  <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN-код розблокування HRPD RUIM</string>
-  <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">Корпоративний PIN-код розблокування RUIM</string>
-  <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">PIN-код розблокування оператора RUIM</string>
-  <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN-код розблокування RUIM</string>
-  <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Введіть PUK-код</string>
-  <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Запит розблокування приватної мережі SIM\u2026</string>
-  <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Запит розблокування оператора SIM\u2026</string>
-  <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Запит розблокування корпоративної SIM\u2026</string>
-  <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Запит розблокування SIM\u2026</string>
-  <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Запит розблокування мережі 1 RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Запит розблокування мережі 2 RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Запит розблокування HRPD RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Запит розблокування оператора RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Запит розблокування корпоративної RUIM\u2026</string>
-  <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Запит розблокування RUIM\u2026</string>
-  <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Запит розблокування PUK-кодом\u2026</string>
-  <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Не вдалося виконати запит на розблокування приватної мережі SIM.</string>
-  <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Не вдалося виконати запит на розблокування оператора SIM.</string>
-  <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Не вдалося виконати запит на розблокування корпоративної SIM.</string>
-  <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Не вдалося виконати запит на розблокування SIM.</string>
-  <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Не вдалося виконати запит на розблокування мережі 1 RUIM.</string>
-  <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Не вдалося виконати запит на розблокування мережі 2 RUIM.</string>
-  <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Не вдалося виконати запит на розблокування мережі RUIM HRPD.</string>
-  <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Не вдалося виконати запит на розблокування оператора RUIM.</string>
-  <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Не вдалося виконати запит на розблокування корпоративної RUIM.</string>
-  <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Не вдалося виконати запит на розблокування RUIM.</string>
-  <!-- Error message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
-  <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Розблокування приватної мережі SIM виконано успішно.</string>
-  <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Оператор SIM розблокований.</string>
-  <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Корпоративна SIM розблокована.</string>
-  <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM-карта розблокована.</string>
-  <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Мережа 1 RUIM розблокована.</string>
-  <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Мережа 2 RUIM розблокована.</string>
-  <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD розблокована.</string>
-  <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Оператор RUIM розблокований.</string>
-  <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Корпоративна RUIM розблокована.</string>
-  <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM-карта розблокована.</string>
-  <!-- Success message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
-  <string name="preferred_network_mode_dialogtitle_cmcc">Режим мережі</string>
-  <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (авто)"</string>
-  <string name="preferred_network_mode_3g_2g_auto">"3G/2G (авто)"</string>
-  <string name="cf_setting_mobile_data_alert">Будь ласка, увімкніть передачу даних і переконайтеся, що Wi-Fi вимкнено</string>
-  <string name="cf_setting_mobile_data_roaming_alert">Будь ласка, увімкніть роумінг даних</string>
-  <string name="no_mobile_data">Передача даних недоступна</string>
-  <string name="no_mobile_data_roaming">Роумінг даних недоступний</string>
-  <string name="srvcc_video_message">"Відеодзвінок був понижений до 2G/3G голосового виклику, оскільки мережі 4G недоступні."</string>
-  <string name="srvcc_message">"Голосовий виклик 4G був понижений до 2G/3G голосового виклику, оскільки мережі 4G недоступні."</string>
-  <!-- call forwarding settings related strings -->
-  <string name="labelCFType">Налаштування переадресації викликів</string>
-  <string name="labelCFVoice">Голос</string>
-  <string name="labelCFVideo">Відео</string>
-  <string name="call_forward_option">Параметри переадресації викликів</string>
+    <string name="ims_settings">IMS налаштування</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN-код розблокування приватної мережі SIM</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">Корпоративний PIN-код розблокування SIM</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">PIN-код розблокування оператора SIM</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN-код розблокування SIM</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN-код розблокування мережі 1 RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN-код розблокування мережі 2 RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN-код розблокування HRPD RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">Корпоративний PIN-код розблокування RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">PIN-код розблокування оператора RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN-код розблокування RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Введіть PUK-код</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Запит розблокування приватної мережі SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Запит розблокування оператора SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Запит розблокування корпоративної SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Запит розблокування SIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Запит розблокування мережі 1 RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Запит розблокування мережі 2 RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Запит розблокування HRPD RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Запит розблокування оператора RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Запит розблокування корпоративної RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Запит розблокування RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Запит розблокування PUK-кодом\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Не вдалося виконати запит на розблокування приватної мережі SIM.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Не вдалося виконати запит на розблокування оператора SIM.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Не вдалося виконати запит на розблокування корпоративної SIM.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Не вдалося виконати запит на розблокування SIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Не вдалося виконати запит на розблокування мережі 1 RUIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Не вдалося виконати запит на розблокування мережі 2 RUIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Не вдалося виконати запит на розблокування мережі RUIM HRPD.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Не вдалося виконати запит на розблокування оператора RUIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Не вдалося виконати запит на розблокування корпоративної RUIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Не вдалося виконати запит на розблокування RUIM.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Не вдалося виконати запит на розблокування PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Розблокування приватної мережі SIM виконано успішно.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Оператор SIM розблокований.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Корпоративна SIM розблокована.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM-карта розблокована.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Мережа 1 RUIM розблокована.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Мережа 2 RUIM розблокована.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD розблокована.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Оператор RUIM розблокований.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Корпоративна RUIM розблокована.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM-карта розблокована.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Розблокування PUK-кодом виконано.</string>
+    <string name="preferred_network_mode_dialogtitle_cmcc">Режим мережі</string>
+    <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (авто)"</string>
+    <string name="preferred_network_mode_3g_2g_auto">"3G/2G (авто)"</string>
+    <string name="cf_setting_mobile_data_alert">Будь ласка, увімкніть передачу даних і переконайтеся, що Wi-Fi вимкнено</string>
+    <string name="cf_setting_mobile_data_roaming_alert">Будь ласка, увімкніть роумінг даних</string>
+    <string name="no_mobile_data">Передача даних недоступна</string>
+    <string name="no_mobile_data_roaming">Роумінг даних недоступний</string>
+    <string name="srvcc_video_message">"Відеодзвінок був понижений до 2G/3G голосового виклику, оскільки мережі 4G недоступні."</string>
+    <string name="srvcc_message">"Голосовий виклик 4G був понижений до 2G/3G голосового виклику, оскільки мережі 4G недоступні."</string>
+    <string name="labelCFType">Налаштування переадресації викликів</string>
+    <string name="labelCFVoice">Голос</string>
+    <string name="labelCFVideo">Відео</string>
+    <string name="call_forward_option">Параметри переадресації викликів</string>
 </resources>

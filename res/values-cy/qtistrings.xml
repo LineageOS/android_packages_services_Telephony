@@ -31,65 +31,82 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-  <!-- IMS settings related strings -->
-  <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <!-- Status message displayed on PUK Depersonalization panel -->
-  <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <!-- Error message displayed on PUK Depersonalization panel -->
-  <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <!-- Success message displayed on PUK Depersonalization panel -->
-  <string name="preferred_network_mode_dialogtitle_cmcc">Modd rhwydwaith</string>
-  <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (awto)"</string>
-  <string name="preferred_network_mode_3g_2g_auto">"3G/2G (awto)"</string>
-  <string name="cf_setting_mobile_data_alert">Tro data symudol ymlaen a gwneud yn siŵr bod Wi-Fi i ffwrdd.</string>
-  <string name="cf_setting_mobile_data_roaming_alert">Rho ddata crwydro ar waith</string>
-  <string name="no_mobile_data">Dyw data symudol ddim ar gael.</string>
-  <string name="no_mobile_data_roaming">Dyw crwydro data ddim ar gael.</string>
-  <string name="srvcc_video_message">"Mae galwad fideo wedi ei israddio i alwad llais 2G/3G gan nad yw'r rhwydwaith 4G ar gael."</string>
-  <string name="srvcc_message">"Mae galwad llais 4G wedi ei israddio i alwad 2G/3G gan nad yw'r rhwydwaith 4G ar gael."</string>
-  <!-- call forwarding settings related strings -->
-  <string name="labelCFType">Gosodiadau dargyfeirio galwadau</string>
-  <string name="labelCFVoice">Llais</string>
-  <string name="labelCFVideo">Fideo</string>
-  <string name="call_forward_option">Dewisiadau dargyfeirio galwadau</string>
+    <string name="ims_settings">Gosodiadau IMS</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN datgloi is-set rhwydwaith SIM</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">PIN datgloi SIM corfforaethol</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">PIN datgloi darparwr gwasanaeth SIM</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN datgloi SIM</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN datgloi Rhwydwaith RUIM 1</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN datgloi Rhwydwaith RUIM 2</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN datgloi RUIM HRPD</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN datgloi RUIM corfforaethol</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">PIN datgloi darparwr gwasanaeth RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN datgloi RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Rho\'r PUK</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Yn gofyn i ddatgloi is-set rhwydwaith SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Yn gofyn i ddatgloi darparwr gwasanaeth SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Yn gofyn i ddatgloi corfforaeth y SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Yn gofyn i ddatgloi\'r SIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Yn gofyn i ddatgloi rhwydwaith RUIM 1\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Yn gofyn i ddatgloi rhwydwaith RUIM 2\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Yn gofyn i ddatgloi RUIM HRPD\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Yn gofyn i ddatgloi darparwr gwasanaeth RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Yn gofyn i ddatgloi corfforaeth y RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Yn gofyn i ddatgloi\'r RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Yn gofyn i ddatgloi\'r PUK\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Methodd y cais i ddatgloi rhwydwaith is-set y SIM.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Cais i ddatgloi darparydd gwasanaeth y SIM yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Cais i ddatgloi\'r SIM corfforaethol yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Cais i ddatgloi\'r SIM yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Methodd cais datgloi rhwydwaith RUIM 1.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Methodd cais datgloi rhwydwaith RUIM 2.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Cais i ddatgloi HRPD RUIM yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Cais i ddatgloi darparydd gwasanaeth RUIM yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Cais i ddatgloi\'r RUIM corfforaethol yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Cais i ddatgloi\'r RUIM yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Llwyddodd y cais i ddatgloi is-set rhwydwaith y SIM.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Datglowyd darparydd gwasanaeth SIM yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Datglowyd SIM corfforaethol yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Datglowyd y SIM yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Cafodd rhwydwaith RUIM 1 ei ddatgloi yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Cafodd rhwydwaith RUIM 2 ei ddatgloi yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">Datglowyd RUIM HRPD yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Datglowyd darparydd gwasanaeth RUIM yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Datglowyd RUIM corfforaethol yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">Datglowyd RUIM yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">Datglowyd y PUK yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">Datglowyd y PUK yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">Datglowyd y PUK yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">Datglowyd y PUK yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">Datglowyd y PUK yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">Datglowyd y PUK yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Datglowyd y PUK yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">Datglowyd y PUK yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Datglowyd y PUK yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Datglowyd y PUK yn llwyddiannus.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Datglowyd y PUK yn llwyddiannus.</string>
+    <string name="preferred_network_mode_dialogtitle_cmcc">Modd rhwydwaith</string>
+    <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (awto)"</string>
+    <string name="preferred_network_mode_3g_2g_auto">"3G/2G (awto)"</string>
+    <string name="cf_setting_mobile_data_alert">Tro data symudol ymlaen a gwneud yn siŵr bod Wi-Fi i ffwrdd.</string>
+    <string name="cf_setting_mobile_data_roaming_alert">Rho ddata crwydro ar waith</string>
+    <string name="no_mobile_data">Dyw data symudol ddim ar gael.</string>
+    <string name="no_mobile_data_roaming">Dyw crwydro data ddim ar gael.</string>
+    <string name="srvcc_video_message">"Mae galwad fideo wedi ei israddio i alwad llais 2G/3G gan nad yw'r rhwydwaith 4G ar gael."</string>
+    <string name="srvcc_message">"Mae galwad llais 4G wedi ei israddio i alwad 2G/3G gan nad yw'r rhwydwaith 4G ar gael."</string>
+    <string name="labelCFType">Gosodiadau dargyfeirio galwadau</string>
+    <string name="labelCFVoice">Llais</string>
+    <string name="labelCFVideo">Fideo</string>
+    <string name="call_forward_option">Dewisiadau dargyfeirio galwadau</string>
 </resources>

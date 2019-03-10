@@ -31,117 +31,69 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-  <!-- IMS settings related strings -->
-  <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">การตั้งค่า IMS</string>
-  <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN ปลดล็อกซิมการ์ดเครือข่ายย่อย</string>
-  <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">PIN ปลดล็อคซิมของบริษัท</string>
-  <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">รหัสปลดล็อคผู้ให้บริการซิม</string>
-  <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN ปลดล็อคซิม</string>
-  <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN ปลดล็อค RUIM เครือข่าย 1</string>
-  <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN ปลดล็อค RUIM เครือข่าย 2</string>
-  <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN ปลดล็อค RUIM HRPD</string>
-  <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN ปลดล็อค RUIM ของบริษัท</string>
-  <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">รหัสปลดล็อคผู้ให้บริการ RUIM</string>
-  <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN ปลดล็อค RUIM</string>
-  <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">ใส่ PUK</string>
-  <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">กำลังขอปลดล็อคย่อยเครือข่ายซิม\u2026</string>
-  <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">กำลังขอปลดล็อคผู้ให้บริการซิม\u2026</string>
-  <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">กำลังขอปลดล็อดซิมการ์ดบริษัท\u2026</string>
-  <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">กำลังขอปลดล็อดซิมการ์ด\u2026</string>
-  <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">กำลังขอปลดล็อด RUIM เครือข่าย1\u2026</string>
-  <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">กำลังขอปลดล็อค RUIM เครือข่าย 2\u2026</string>
-  <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">กำลังขอปลดล็อค RUIM HRPD\u2026</string>
-  <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">กำลังขอปลดล็อคผู้ให้บริการ RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">กำลังขอปลดล็อคบริษัทสำหรับ RUIM\u2026</string>
-  <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">กำลังขอปลดล็อค RUIM\u2026</string>
-  <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">กำลังขอปลดล็อค PUK\u2026</string>
-  <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">ขอปลดล็อคย่อยเครือข่ายซิมไม่สำเร็จ</string>
-  <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">ปลดล็อคผู้ให้บริการซิมไม่สำเร็จ</string>
-  <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">ปลดล็อคซิมบริษัทไม่สำเร็จ</string>
-  <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">ปลดล็อคซิมไม่สำเร็จ</string>
-  <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">ปลดล็อค RUIM เครือข่าย 1 ไม่สำเร็จ</string>
-  <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">ปลดล็อค RUIM เครือข่าย 2 ไม่สำเร็จ</string>
-  <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">ปลดล็อค RUIM HRPD ไม่สำเร็จ</string>
-  <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">ปลดล็อค RUIM ของผู้ให้บริการไม่สำเร็จ</string>
-  <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">ปลดล็อค RUIM ของบริษัทไม่สำเร็จ</string>
-  <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">ปลดล็อค RUIM ไม่สำเร็จ</string>
-  <!-- Error message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">ปลดล็อคซิมเครือข่ายย่อยสำเร็จ</string>
-  <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">ปลดล็อคผู้ให้บริการซิมสำเร็จ</string>
-  <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">ปลดล็อคซิมบริษัทสำเร็จ</string>
-  <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">ปลดล็อคซิมสำเร็จ</string>
-  <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">ปลดล็อค RUIM เครือข่าย 1 สำเร็จ</string>
-  <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">ปลดล็อค RUIM เครือข่าย 2 สำเร็จ</string>
-  <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">ปลดล็อค RUIM HRPD สำเร็จ</string>
-  <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">ปลดล็อค RUIM ผู้ให้บริการสำเร็จ</string>
-  <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">ปลดล็อค RUIM ของบริษัทสำเร็จ</string>
-  <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">ปลดล็อค RUIM สำเร็จ</string>
-  <!-- Success message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
-  <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
-  <!-- call forwarding settings related strings -->
+    <string name="ims_settings">การตั้งค่า IMS</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">PIN ปลดล็อกซิมการ์ดเครือข่ายย่อย</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">PIN ปลดล็อคซิมของบริษัท</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">รหัสปลดล็อคผู้ให้บริการซิม</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">PIN ปลดล็อคซิม</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">PIN ปลดล็อค RUIM เครือข่าย 1</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">PIN ปลดล็อค RUIM เครือข่าย 2</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">PIN ปลดล็อค RUIM HRPD</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">PIN ปลดล็อค RUIM ของบริษัท</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">รหัสปลดล็อคผู้ให้บริการ RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">PIN ปลดล็อค RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">ใส่ PUK</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">กำลังขอปลดล็อคย่อยเครือข่ายซิม\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">กำลังขอปลดล็อคผู้ให้บริการซิม\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">กำลังขอปลดล็อดซิมการ์ดบริษัท\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">กำลังขอปลดล็อดซิมการ์ด\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">กำลังขอปลดล็อด RUIM เครือข่าย1\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">กำลังขอปลดล็อค RUIM เครือข่าย 2\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">กำลังขอปลดล็อค RUIM HRPD\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">กำลังขอปลดล็อคผู้ให้บริการ RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">กำลังขอปลดล็อคบริษัทสำหรับ RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">กำลังขอปลดล็อค RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">กำลังขอปลดล็อค PUK\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">ขอปลดล็อคย่อยเครือข่ายซิมไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">ปลดล็อคผู้ให้บริการซิมไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">ปลดล็อคซิมบริษัทไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ERROR">ปลดล็อคซิมไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">ปลดล็อค RUIM เครือข่าย 1 ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">ปลดล็อค RUIM เครือข่าย 2 ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">ปลดล็อค RUIM HRPD ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">ปลดล็อค RUIM ของผู้ให้บริการไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">ปลดล็อค RUIM ของบริษัทไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">ปลดล็อค RUIM ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">ปลดล็อคซิมเครือข่ายย่อยสำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">ปลดล็อคผู้ให้บริการซิมสำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">ปลดล็อคซิมบริษัทสำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">ปลดล็อคซิมสำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">ปลดล็อค RUIM เครือข่าย 1 สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">ปลดล็อค RUIM เครือข่าย 2 สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">ปลดล็อค RUIM HRPD สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">ปลดล็อค RUIM ผู้ให้บริการสำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">ปลดล็อค RUIM ของบริษัทสำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">ปลดล็อค RUIM สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">ปลดล็อค PUK ไม่สำเร็จ</string>
 </resources>

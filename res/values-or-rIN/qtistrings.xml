@@ -31,74 +31,39 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-  <!-- IMS settings related strings -->
-  <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
   <string name="ims_settings">IMS ସେଟିଙ୍ଗ</string>
-  <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">SIM ନେଟ୍‍ୱାର୍କ ସବ୍‍ସେଟ୍‍ ଅନ୍‍ଲକ୍‍ PIN</string>
-  <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">SIM କର୍ପୋରେଟ୍‍ ଅ‍ନ୍ଲକ୍‍ PIN</string>
-  <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">SIM ସେବା ପ୍ରଦାମକାରୀ ଅନ୍‍ଲକ୍‍ PIN</string>
-  <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM ଅ‍ନ୍ଲକ୍‍ PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">RUIM ନେଟ୍‍ୱାର୍କ 1 ଅନ୍‍ଲକ୍‍ PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">RUIM ନେଟ୍‍ୱାର୍କ 2 ଅନ୍‍ଲକ୍‍ PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM HRPD ଅନ୍‍ଲକ୍‍ PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">RUIM କର୍ପୋରେଟ୍‍ ଅ‍ନ୍ଲକ୍‍ PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">RUIM ସେବା ପ୍ରଦାମକାରୀ ଅନ୍‍ଲକ୍‍ PIN</string>
-  <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">RUIM ଅ‍ନ୍ଲକ୍‍ PIN</string>
-  <!-- Label text for PUK entry widget on Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">PUK ପ୍ରବେଶ କରନ୍ତୁ</string>
-  <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">SIM ନେଟ୍‍ୱାର୍କ୍‍ ସବ୍‍ସେଟ୍‍ ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି\u2026</string>
-  <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">SIM ସେବା ପ୍ରଦାନକାରୀ‍ ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି\u2026</string>
-  <!-- Status message displayed on SIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">SIM କର୍ପୋରେଟ୍‍‍ ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି\u2026</string>
-  <!-- Status message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">SIM ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି\u2026</string>
-  <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">RUIM ନେଟ୍‍ୱାର୍କ୍‍ 1 ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି\u2026</string>
-  <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">RUIM ନେଟ୍‍ୱାର୍କ୍‍ 2 ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି\u2026</string>
-  <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">RUIM HRPD ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି\u2026</string>
-  <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">RUIM ସେବା ପ୍ରଦାନକାରୀ‍ ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି\u2026</string>
-  <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">RUIM କର୍ପୋରେଟ୍‍‍ ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି\u2026</string>
-  <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">RUIM ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି\u2026</string>
-  <!-- Status message displayed on PUK Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">PUK ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି\u2026</string>
-  <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">SIM ନେଟ୍‍ୱାର୍କ୍‍ ସବ୍‍ସେଟ୍‍ ଅନ୍‍ଲକ୍‍ ଅନୁରୋଧ ସଫଳ ହୋଇନାହିଁ।</string>
-  <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">SIM ସେବା ପ୍ରଦାନକାରୀ‍ ଅନ୍‍ଲକ୍‍ ଅନୁରୋଧ ସଫଳ ହୋଇନାହିଁ।</string>
-  <!-- Error message displayed on SIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">SIM କର୍ପୋରେଟ୍‍ ଅନ୍‍ଲକ୍‍ ଅନୁରୋଧ ସଫଳ ହୋଇନାହିଁ।</string>
-  <!-- Error message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_ERROR">SIM ଅନ୍‍ଲକ୍‍ ଅନୁରୋଧ ସଫଳ ହୋଇନାହିଁ।</string>
-  <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">RUIM ନେଟ୍‍ୱାର୍କ୍‍ 1 ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ ସଫଳ ହୋଇନାହିଁ।</string>
-  <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">RUIM ନେଟ୍‍ୱାର୍କ୍‍ 2 ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ ସଫଳ ହୋଇନାହିଁ।</string>
-  <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">RUIM HRPD ଅନ୍‍ଲକ୍‍ ପାଇଁ ଅନୁରୋଧ ସଫଳ ହୋଇନାହିଁ।</string>
-  <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">RUIM ସେବା ପ୍ରଦାନକାରୀ‍ ଅନ୍‍ଲକ୍‍ ଅନୁରୋଧ ସଫଳ ହୋଇନାହିଁ।</string>
-  <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">RUIM କର୍ପୋରେଟ୍‍ ଅନ୍‍ଲକ୍‍ ଅନୁରୋଧ ସଫଳ ହୋଇନାହିଁ।</string>
-  <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">RUIM ଅନ୍‍ଲକ୍‍ ଅନୁରୋଧ ସଫଳ ହୋଇନାହିଁ।</string>
-  <!-- Error message displayed on PUK Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇନାହିଁ।</string>
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇନାହିଁ।</string>
   <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇନାହିଁ।</string>
@@ -110,27 +75,16 @@
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇନାହିଁ।</string>
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇନାହିଁ।</string>
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇନାହିଁ।</string>
-  <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">SIM ନେଟ୍‍ୱାର୍କ୍‍ ସବ୍‍ସେଟ୍‍ ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
-  <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">SIM ସେବା ପ୍ରଦାନକାରୀ‍‍ ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
-  <!-- Success message displayed on SIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM କର୍ପୋରେଟ୍‍ ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
-  <!-- Success message displayed on SIM SIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
-  <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">RUIM ନେଟ୍‍ୱାର୍କ୍‍ 1 ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
-  <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">RUIM ନେଟ୍‍ୱାର୍କ୍‍ 2 ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
-  <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
-  <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM ସେବା ପ୍ରଦାନକାରୀ‍‍ ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
-  <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM କର୍ପୋରେଟ୍‍ ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
-  <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
   <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
-  <!-- Success message displayed on PUK Depersonalization panel -->
   <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
   <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
   <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
@@ -142,6 +96,4 @@
   <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
   <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
   <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">PUK ଅନ୍‍ଲକ୍‍ ସଫଳ ହୋଇଛି।</string>
-  <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
-  <!-- call forwarding settings related strings -->
 </resources>

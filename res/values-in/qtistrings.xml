@@ -31,129 +31,81 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-  <!-- IMS settings related strings -->
-  <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">Pengaturan IMS</string>
-  <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">Jaringan SIM membuka himpunan bagian PIN</string>
-  <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">Korporat SIM membuka PIN</string>
-  <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">Penyedia layanan SIM membuka PIN</string>
-  <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM membuka PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">Jaringan 1 RUIM membuka PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">Jaringan 2 RUIM membuka PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM HRPD membuka PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">RUIM korporat membuka PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">Penyedia layanan RUIM membuka PIN</string>
-  <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">RUIM membuka PIN</string>
-  <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Memasukkan PUK</string>
-  <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Meminta buka kunci himpunan bagian jaringan SIM\u2026</string>
-  <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Meminta penyedia layanan SIM membuka\u2026</string>
-  <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Meminta SIM korporat membuka\u2026</string>
-  <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Meminta SIM membuka\u2026</string>
-  <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Meminta jaringan 1 RUIM membuka\u2026</string>
-  <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Meminta jaringan 2 RUIM membuka \u2026</string>
-  <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Meminta RUIM HRPD membuka\u2026</string>
-  <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Meminta penyedia layanan RUIM membuka\u2026</string>
-  <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Meminta korporat RUIM membuka\u2026</string>
-  <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Meminta RUIM membuka\u2026</string>
-  <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Meminta PUK membuka\u2026</string>
-  <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Permintaan buka kunci himpunan bagian jaringan SIM tidak berhasil.</string>
-  <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Permintaan membuka kunci layanan penyedia SIM tidak berhasil.</string>
-  <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Permintaan membuka kunci korporat SIM tidak berhasil.</string>
-  <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Permintaan membuka kunci SIM tidak berhasil.</string>
-  <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Permintaan buka kunci jaringan 1 RUIM tidak berhasil.</string>
-  <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Permintaan buka kunci jaringan 2 RUIM tidak berhasil.</string>
-  <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Permintaan membuka kunci HRPD RUIM tidak berhasil.</string>
-  <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Permintaan membuka kunci layanan penyedia RUIM tidak berhasil.</string>
-  <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Permintaan membuka kunci korporat RUIM tidak berhasil.</string>
-  <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Permintaan membuka kunci RUIM tidak berhasil.</string>
-  <!-- Error message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
-  <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Tidak berhasil membuka kunci himpunan bagian jaringan SIM.</string>
-  <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Berhasil membuka kunci penyedia layanan SIM.</string>
-  <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Berhasil membuka kunci korporat SIM.</string>
-  <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Berhasil membuka kunci SIM.</string>
-  <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Berhasil membuka kunci jaringan 1 RUIM.</string>
-  <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Berhasil membuka kunci jaringan 2 RUIM.</string>
-  <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">Berhasil membuka kunci RUIM HRPD.</string>
-  <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Berhasil membuka kunci layanan penyedia RUIM.</string>
-  <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Berhasil membuka kunci korporat RUIM.</string>
-  <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">Berhasil membuka kunci RUIM.</string>
-  <!-- Success message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
-  <string name="preferred_network_mode_dialogtitle_cmcc">Mode jaringan</string>
-  <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (otomatis)"</string>
-  <string name="preferred_network_mode_3g_2g_auto">"3G/2G (otomatis)"</string>
-  <string name="cf_setting_mobile_data_alert">Silakan hidupkan data seluler dan pastikan bahwa Wi-Fi mati</string>
-  <string name="cf_setting_mobile_data_roaming_alert">Silakan aktifkan data roaming</string>
-  <string name="no_mobile_data">Mobile data saat ini tidak tersedia</string>
-  <string name="no_mobile_data_roaming">Data roaming saat ini tidak tersedia</string>
-  <string name="srvcc_video_message">"Panggilan video telah diturunkan ke 2G / 3G panggilan suara, karena jaringan 4G tidak tersedia."</string>
-  <string name="srvcc_message">"panggilan suara 4G telah diturunkan ke panggilan suara 2G/3G, karena jaringan 4G tidak tersedia."</string>
-  <!-- call forwarding settings related strings -->
-  <string name="labelCFType">Setelan pengalihan panggilan</string>
-  <string name="labelCFVoice">Suara</string>
-  <string name="labelCFVideo">Video</string>
-  <string name="call_forward_option">Pilihan pengalihan panggilan</string>
+    <string name="ims_settings">Pengaturan IMS</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">Jaringan SIM membuka himpunan bagian PIN</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">Korporat SIM membuka PIN</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">Penyedia layanan SIM membuka PIN</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM membuka PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">Jaringan 1 RUIM membuka PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">Jaringan 2 RUIM membuka PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM HRPD membuka PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">RUIM korporat membuka PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">Penyedia layanan RUIM membuka PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">RUIM membuka PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Memasukkan PUK</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Meminta buka kunci himpunan bagian jaringan SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Meminta penyedia layanan SIM membuka\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Meminta SIM korporat membuka\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Meminta SIM membuka\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Meminta jaringan 1 RUIM membuka\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Meminta jaringan 2 RUIM membuka \u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Meminta RUIM HRPD membuka\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Meminta penyedia layanan RUIM membuka\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Meminta korporat RUIM membuka\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Meminta RUIM membuka\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Meminta PUK membuka\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Permintaan buka kunci himpunan bagian jaringan SIM tidak berhasil.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Permintaan membuka kunci layanan penyedia SIM tidak berhasil.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Permintaan membuka kunci korporat SIM tidak berhasil.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Permintaan membuka kunci SIM tidak berhasil.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Permintaan buka kunci jaringan 1 RUIM tidak berhasil.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Permintaan buka kunci jaringan 2 RUIM tidak berhasil.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Permintaan membuka kunci HRPD RUIM tidak berhasil.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Permintaan membuka kunci layanan penyedia RUIM tidak berhasil.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Permintaan membuka kunci korporat RUIM tidak berhasil.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Permintaan membuka kunci RUIM tidak berhasil.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Tidak dapat membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Tidak berhasil membuka kunci himpunan bagian jaringan SIM.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Berhasil membuka kunci penyedia layanan SIM.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Berhasil membuka kunci korporat SIM.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">Berhasil membuka kunci SIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Berhasil membuka kunci jaringan 1 RUIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Berhasil membuka kunci jaringan 2 RUIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">Berhasil membuka kunci RUIM HRPD.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Berhasil membuka kunci layanan penyedia RUIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Berhasil membuka kunci korporat RUIM.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">Berhasil membuka kunci RUIM.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Berhasil membuka kunci PUK.</string>
+    <string name="preferred_network_mode_dialogtitle_cmcc">Mode jaringan</string>
+    <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (otomatis)"</string>
+    <string name="preferred_network_mode_3g_2g_auto">"3G/2G (otomatis)"</string>
+    <string name="cf_setting_mobile_data_alert">Silakan hidupkan data seluler dan pastikan bahwa Wi-Fi mati</string>
+    <string name="cf_setting_mobile_data_roaming_alert">Silakan aktifkan data roaming</string>
+    <string name="no_mobile_data">Mobile data saat ini tidak tersedia</string>
+    <string name="no_mobile_data_roaming">Data roaming saat ini tidak tersedia</string>
+    <string name="srvcc_video_message">"Panggilan video telah diturunkan ke 2G / 3G panggilan suara, karena jaringan 4G tidak tersedia."</string>
+    <string name="srvcc_message">"panggilan suara 4G telah diturunkan ke panggilan suara 2G/3G, karena jaringan 4G tidak tersedia."</string>
+    <string name="labelCFType">Setelan pengalihan panggilan</string>
+    <string name="labelCFVoice">Suara</string>
+    <string name="labelCFVideo">Video</string>
+    <string name="call_forward_option">Pilihan pengalihan panggilan</string>
 </resources>

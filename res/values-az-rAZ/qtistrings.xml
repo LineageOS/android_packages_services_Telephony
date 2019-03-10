@@ -31,116 +31,68 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-  <!-- IMS settings related strings -->
-  <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">SIM alt şəbəkə kilid açma PINi</string>
-  <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">SIM şirkət kilidi açma PINi</string>
-  <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">SIM servis təchizatçısı kilidi açma PINi</string>
-  <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM kilidi açma PINi</string>
-  <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">1. RUIM şəbəkəsi kilid açma PINi</string>
-  <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">2. RUIM şəbəkəsi kilid açma PINi</string>
-  <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM HRPD kilidi açma PINi</string>
-  <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">RUIM şirkət kilid açma PINi</string>
-  <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">RUIM servis təchizatçısı kilid açma PINi</string>
-  <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">RUIM kilidi açma PINi</string>
-  <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">PUK daxil edin</string>
-  <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">SIM alt şəbəkəsi kilid açma sorğusu göndərilir\u2026</string>
-  <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">SIM servis təchizatçısı kilidi açma sorğusu göndərilir\u2026</string>
-  <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">SIM şirkət kilidi açma sorğulanır\u2026</string>
-  <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">SIM kilid açma sorğusu göndərilir\u2026</string>
-  <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">1. RUIM şəbəkəsi kilid açma sorğusu göndərilir\u2026</string>
-  <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">2. RUIM şəbəkəsi kilid açma sorğusu göndərilir\u2026</string>
-  <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">RUIM HRPD kilid açma sorğusu göndərilir\u2026</string>
-  <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">RUIM servis təchizatçısı kilidi açma sorğusu göndərilir\u2026</string>
-  <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">RUIM şirkət kilidi açma sorğulanır\u2026</string>
-  <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">RUIM kilidi açma sorğulanır\u2026</string>
-  <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">PUK kilidi açma sorğulanır\u2026</string>
-  <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">SIM alt şəbəkəsi kilid açma sorğusu uğursuz oldu.</string>
-  <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">SIM servis təchizatçısı kilidini açma sorğusu uğursuz oldu.</string>
-  <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">SIM şirkət kilidini açma sorğusu uğursuz oldu.</string>
-  <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">SIM kilid açma sorğusu uğursuz oldu.</string>
-  <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">1. RUIM şəbəkə kilid açma sorğusu uğursuz oldu.</string>
-  <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">2. RUIM şəbəkə kilid açma sorğusu uğursuz oldu.</string>
-  <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">RUIM HRPD kilid açma sorğusu uğursuz oldu.</string>
-  <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">RUIM servis təchizatçısı kilidini açma sorğusu uğursuz oldu.</string>
-  <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">RUIM şirkət kilidini açma sorğusu uğursuz oldu.</string>
-  <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">RUIM kilid açma sorğusu uğursuz oldu.</string>
-  <!-- Error message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
-  <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">SIM alt şəbəkə kilidi uğurla açıldı.</string>
-  <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">SIM servis təchizatçısı kilidi uğurla açıldı.</string>
-  <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM şirkət kilidi uğurla açıldı.</string>
-  <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM kilidi uğurla açıldı.</string>
-  <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">1. RUIM şəbəkəsi kilidi uğurla açıldı.</string>
-  <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">2. RUIM şəbəkəsi kilidi uğurla açıldı.</string>
-  <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD kilidi uğurla açıldı.</string>
-  <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM servis təchizatçı kilidi uğurla açıldı.</string>
-  <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM şirkət kilidi uğurla açıldı.</string>
-  <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM kilidi uğurla açıldı.</string>
-  <!-- Success message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
-  <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
-  <!-- call forwarding settings related strings -->
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">SIM alt şəbəkə kilid açma PINi</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">SIM şirkət kilidi açma PINi</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">SIM servis təchizatçısı kilidi açma PINi</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM kilidi açma PINi</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">1. RUIM şəbəkəsi kilid açma PINi</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">2. RUIM şəbəkəsi kilid açma PINi</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM HRPD kilidi açma PINi</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">RUIM şirkət kilid açma PINi</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">RUIM servis təchizatçısı kilid açma PINi</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">RUIM kilidi açma PINi</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">PUK daxil edin</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">SIM alt şəbəkəsi kilid açma sorğusu göndərilir\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">SIM servis təchizatçısı kilidi açma sorğusu göndərilir\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">SIM şirkət kilidi açma sorğulanır\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">SIM kilid açma sorğusu göndərilir\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">1. RUIM şəbəkəsi kilid açma sorğusu göndərilir\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">2. RUIM şəbəkəsi kilid açma sorğusu göndərilir\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">RUIM HRPD kilid açma sorğusu göndərilir\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">RUIM servis təchizatçısı kilidi açma sorğusu göndərilir\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">RUIM şirkət kilidi açma sorğulanır\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">RUIM kilidi açma sorğulanır\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">PUK kilidi açma sorğulanır\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">SIM alt şəbəkəsi kilid açma sorğusu uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">SIM servis təchizatçısı kilidini açma sorğusu uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">SIM şirkət kilidini açma sorğusu uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ERROR">SIM kilid açma sorğusu uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">1. RUIM şəbəkə kilid açma sorğusu uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">2. RUIM şəbəkə kilid açma sorğusu uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">RUIM HRPD kilid açma sorğusu uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">RUIM servis təchizatçısı kilidini açma sorğusu uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">RUIM şirkət kilidini açma sorğusu uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">RUIM kilid açma sorğusu uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">PUK kilid açma uğursuz oldu.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">SIM alt şəbəkə kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">SIM servis təchizatçısı kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM şirkət kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">1. RUIM şəbəkəsi kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">2. RUIM şəbəkəsi kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM servis təchizatçı kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM şirkət kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">PUK kilidi uğurla açıldı.</string>
 </resources>

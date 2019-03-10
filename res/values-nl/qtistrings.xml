@@ -31,130 +31,82 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-  <!-- IMS settings related strings -->
-  <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">IMS-instellingen</string>
-  <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">Netwerksubset SIM-ontgrendelings-PIN</string>
-  <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">Zakelijke SIM-ontgrendelings-PIN</string>
-  <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">Netwerkaanbieder SIM-ontgrendelings-PIN</string>
-  <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM-ontgrendelings-PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">Netwerk1 RUIM-ontgrendelings-PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">Netwerk2 RUIM-ontgrendelings-PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">HRPD RUIM-ontgrendelings-PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">Zakelijke RUIM-ontgrendelings-PIN</string>
-  <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">Netwerkaanbieder RUIM-ontgrendelings-PIN</string>
-  <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">RUIM-ontgrendelings-PIN</string>
-  <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Pukcode invoeren</string>
-  <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Verzoek om ontgrendelen netwerksubset-SIM\u2026</string>
-  <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Verzoek om ontgrendelen netwerkaanbieder-SIM\u2026</string>
-  <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Verzoek om ontgrendelen zakelijke SIM\u2026</string>
-  <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Verzoek om ontgrendelen SIM\u2026</string>
-  <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Verzoek om ontgrendelen netwerk1-RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Verzoek om ontgrendelen netwerk2-RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Verzoek om ontgrendelen HRPD-RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Verzoek om ontgrendelen netwerkaanbieder-RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Verzoek om ontgrendelen zakelijke RUIM\u2026</string>
-  <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Verzoek om ontgrendelen RUIM\u2026</string>
-  <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Verzoek om ontgrendelen PUK\u2026</string>
-  <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Verzoek voor ontgrendelen netwerksubset-SIM mislukt.</string>
-  <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Verzoek voor ontgrendelen netwerkaanbieder-SIM mislukt.</string>
-  <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Verzoek voor ontgrendelen zakelijke SIM mislukt.</string>
-  <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Verzoek voor ontgrendelen SIM mislukt.</string>
-  <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Verzoek voor ontgrendelen netwerk1-RUIM mislukt.</string>
-  <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Verzoek voor ontgrendelen netwerk2-RUIM mislukt.</string>
-  <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Verzoek voor ontgrendelen HRPD-RUIM mislukt.</string>
-  <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Verzoek voor ontgrendelen netwerkaanbieder-RUIM mislukt.</string>
-  <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Verzoek voor ontgrendelen zakelijke RUIM mislukt.</string>
-  <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Verzoek voor ontgrendelen RUIM mislukt.</string>
-  <!-- Error message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
-  <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Netwerksubset-SIM ontgrendeld.</string>
-  <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Netwerkaanbieder-SIM ontgrendeld.</string>
-  <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Zakelijke SIM ontgrendeld.</string>
-  <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM ontgrendeld.</string>
-  <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Netwerk1-RUIM ontgrendeld.</string>
-  <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Netwerk2-RUIM ontgrendeld.</string>
-  <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">HRPD-RUIM ontgrendeld.</string>
-  <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Netwerkaanbieder-RUIM ontgrendeld.</string>
-  <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Zakelijke RUIM ontgrendeld.</string>
-  <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM ontgrendeld.</string>
-  <!-- Success message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">PUK ontgrendeld.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">PUK ontgrendeld.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">PUK ontgrendeld.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK ontgrendeld.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">PUK ontgrendeld.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">PUK ontgrendeld.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">PUK ontgrendeld.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">PUK ontgrendeld.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">PUK ontgrendeld.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK ontgrendeld.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">PUK ontgrendeld.</string>
-  <string name="preferred_network_mode_dialogtitle_cmcc">Netwerkmodus</string>
-  <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (auto)"</string>
-  <string name="preferred_network_mode_3g_2g_auto">"3G/2G (auto)"</string>
-  <string name="cf_setting_mobile_data_alert">Schakel mobiele gegevens in en zorg dat wifi uitgeschakeld is</string>
-  <string name="cf_setting_mobile_data_roaming_alert">Schakel gegevensroaming in</string>
-  <string name="no_mobile_data">Mobiele gegevensverbinding niet beschikbaar</string>
-  <string name="no_mobile_data_roaming">Gegevensroaming niet beschikbaar</string>
-  <string name="srvcc_video_message">"Video-oproep is gedegradeerd naar 2G/3G-gesprek, omdat het 4G-netwerk niet beschikbaar is."</string>
-  <string name="srvcc_message">"4G-spraakoproep is gedegradeerd naar 2G/3G-gesprek, omdat het 4G-netwerk niet beschikbaar is."</string>
-  <!-- call forwarding settings related strings -->
-  <string name="labelCFType">Doorschakel-instellingen</string>
-  <string name="labelCFVoice">Spraak</string>
-  <string name="labelCFVideo">Video</string>
-  <string name="call_forward_option">Doorschakel-instellingen</string>
+    <string name="ims_settings">IMS-instellingen</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">Netwerksubset SIM-ontgrendelings-PIN</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">Zakelijke SIM-ontgrendelings-PIN</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">Netwerkaanbieder SIM-ontgrendelings-PIN</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">SIM-ontgrendelings-PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">Netwerk1 RUIM-ontgrendelings-PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">Netwerk2 RUIM-ontgrendelings-PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">HRPD RUIM-ontgrendelings-PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">Zakelijke RUIM-ontgrendelings-PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">Netwerkaanbieder RUIM-ontgrendelings-PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">RUIM-ontgrendelings-PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Pukcode invoeren</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Verzoek om ontgrendelen netwerksubset-SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Verzoek om ontgrendelen netwerkaanbieder-SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Verzoek om ontgrendelen zakelijke SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Verzoek om ontgrendelen SIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Verzoek om ontgrendelen netwerk1-RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Verzoek om ontgrendelen netwerk2-RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Verzoek om ontgrendelen HRPD-RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Verzoek om ontgrendelen netwerkaanbieder-RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Verzoek om ontgrendelen zakelijke RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Verzoek om ontgrendelen RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Verzoek om ontgrendelen PUK\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">Verzoek voor ontgrendelen netwerksubset-SIM mislukt.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">Verzoek voor ontgrendelen netwerkaanbieder-SIM mislukt.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">Verzoek voor ontgrendelen zakelijke SIM mislukt.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ERROR">Verzoek voor ontgrendelen SIM mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">Verzoek voor ontgrendelen netwerk1-RUIM mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">Verzoek voor ontgrendelen netwerk2-RUIM mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">Verzoek voor ontgrendelen HRPD-RUIM mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">Verzoek voor ontgrendelen netwerkaanbieder-RUIM mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Verzoek voor ontgrendelen zakelijke RUIM mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Verzoek voor ontgrendelen RUIM mislukt.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Verzoek voor ontgrendelen PUK mislukt.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Netwerksubset-SIM ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Netwerkaanbieder-SIM ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">Zakelijke SIM ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Netwerk1-RUIM ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Netwerk2-RUIM ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">HRPD-RUIM ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Netwerkaanbieder-RUIM ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">Zakelijke RUIM ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">PUK ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">PUK ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">PUK ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">PUK ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">PUK ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">PUK ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">PUK ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">PUK ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK ontgrendeld.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">PUK ontgrendeld.</string>
+    <string name="preferred_network_mode_dialogtitle_cmcc">Netwerkmodus</string>
+    <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (auto)"</string>
+    <string name="preferred_network_mode_3g_2g_auto">"3G/2G (auto)"</string>
+    <string name="cf_setting_mobile_data_alert">Schakel mobiele gegevens in en zorg dat wifi uitgeschakeld is</string>
+    <string name="cf_setting_mobile_data_roaming_alert">Schakel gegevensroaming in</string>
+    <string name="no_mobile_data">Mobiele gegevensverbinding niet beschikbaar</string>
+    <string name="no_mobile_data_roaming">Gegevensroaming niet beschikbaar</string>
+    <string name="srvcc_video_message">"Video-oproep is gedegradeerd naar 2G/3G-gesprek, omdat het 4G-netwerk niet beschikbaar is."</string>
+    <string name="srvcc_message">"4G-spraakoproep is gedegradeerd naar 2G/3G-gesprek, omdat het 4G-netwerk niet beschikbaar is."</string>
+    <string name="labelCFType">Doorschakel-instellingen</string>
+    <string name="labelCFVoice">Spraak</string>
+    <string name="labelCFVideo">Video</string>
+    <string name="call_forward_option">Doorschakel-instellingen</string>
 </resources>

@@ -31,130 +31,82 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-  <!-- IMS settings related strings -->
-  <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <string name="ims_settings">Paramètres IMS</string>
-  <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">Code PIN de déverrouillage de la SIM de sous-réseau</string>
-  <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">Code PIN d\'entreprise de déverrouillage de la carte SIM</string>
-  <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">Code PIN de déverrouillage de la carte SIM du prestataire de services</string>
-  <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">Code PIN de déverrouillage de la carte SIM</string>
-  <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">Code PIN de déverrouillage du Réseau RUIM 1</string>
-  <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">Code PIN de déverrouillage du réseau RUIM 2</string>
-  <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">Code PIN de déverrouillage de RUIM HRPD</string>
-  <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">Code PIN de déverrouillage du RUIM d\'entreprise</string>
-  <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">Code PIN de déverrouillage du fournisseur de service RUIM</string>
-  <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">Code PIN de déverrouillage du RUIM</string>
-  <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Entrer le code PUK</string>
-  <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Requête de déverrouillage du sous réseau SIM\u2026</string>
-  <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Requête de déverrouillage du fournisseur de service SIM\u2026</string>
-  <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Requête de déverrouillage SIM entreprise\u2026</string>
-  <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Requête de déverrouillage SIM\u2026</string>
-  <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Requête de déverrouillage du réseau 1 RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Requête de déverrouillage du réseau 2 RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Requête de déverrouillage de RUIM HRPD\u2026</string>
-  <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Requête de déverrouillage du fournisseur de service RUIM\u2026</string>
-  <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Requête de déverrouillage du RUIM d\'entreprise\u2026</string>
-  <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Requête de déverrouillage RUIM\u2026</string>
-  <!-- Status message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Requête de déverrouillage PUK\u2026</string>
-  <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">La demande de déverrouillage de la SIM de sous-réseau a échoué.</string>
-  <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">La demande de déverrouillage du prestataire de services de la SIM a échoué.</string>
-  <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">La demande de déverrouillage de la carte SIM d\'entreprise a échoué.</string>
-  <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_ERROR">La demande de déverrouillage de la carte SIM a échoué.</string>
-  <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">La requête de déverrouillage du réseau 1 RUIM a échoué.</string>
-  <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">La requête de déverrouillage du réseau 2 RUIM a échoué.</string>
-  <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">La requête de déverrouillage RUIM HRPD a échoué.</string>
-  <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">La requête de déverrouillage du fournisseur de réseau RUIM a échoué.</string>
-  <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">La requête de déverrouillage RUIM d\'entreprise a échoué.</string>
-  <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">La requête de déverrouillage RUIM a échoué.</string>
-  <!-- Error message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
-  <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Sous réseau SIM déverrouillé avec succès.</string>
-  <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Fournisseur de services SIM déverrouillé avec succès.</string>
-  <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM d\'entreprise débloqué avec succès.</string>
-  <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM déverrouillée avec succès.</string>
-  <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Réseau 1 RUIM déverrouillé avec succès.</string>
-  <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Réseau 2 RUIM déverrouillé avec succès.</string>
-  <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD déverrouillé avec succès.</string>
-  <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Service RUIM déverrouillé avec succès.</string>
-  <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM d\'entreprise déverrouillé avec succès.</string>
-  <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM déverrouillé avec succès.</string>
-  <!-- Success message displayed on PUK Depersonalization panel -->
-  <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
-  <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
-  <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
-  <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
-  <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
-  <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
-  <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
-  <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
-  <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
-  <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
-  <string name="preferred_network_mode_dialogtitle_cmcc">Mode réseau</string>
-  <!-- Mobile network settings, summary for preferred network mode 4G/3G/2G [CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (auto)"</string>
-  <string name="preferred_network_mode_3g_2g_auto">"3G/2G (auto)"</string>
-  <string name="cf_setting_mobile_data_alert">Veuillez activer les données mobiles et vous assurer que le Wi-Fi est désactivé</string>
-  <string name="cf_setting_mobile_data_roaming_alert">Veuillez activer l\'itinérance de données</string>
-  <string name="no_mobile_data">Données mobiles non disponibles</string>
-  <string name="no_mobile_data_roaming">Itinérance de données indisponible</string>
-  <string name="srvcc_video_message">"Appel vidéo transformé en appel vocal 2G/3G car le réseau 4G est indisponible."</string>
-  <string name="srvcc_message">"Appel vocal 4G transformé en appel vocal 2G/3G car le réseau 4G est indisponible."</string>
-  <!-- call forwarding settings related strings -->
-  <string name="labelCFType">Paramètres de transfert d\'appel</string>
-  <string name="labelCFVoice">Voix</string>
-  <string name="labelCFVideo">Vidéo</string>
-  <string name="call_forward_option">Options de transfert d’appel</string>
+    <string name="ims_settings">Paramètres IMS</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">Code PIN de déverrouillage de la SIM de sous-réseau</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">Code PIN d\'entreprise de déverrouillage de la carte SIM</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">Code PIN de déverrouillage de la carte SIM du prestataire de services</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">Code PIN de déverrouillage de la carte SIM</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">Code PIN de déverrouillage du Réseau RUIM 1</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">Code PIN de déverrouillage du réseau RUIM 2</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">Code PIN de déverrouillage de RUIM HRPD</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">Code PIN de déverrouillage du RUIM d\'entreprise</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">Code PIN de déverrouillage du fournisseur de service RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">Code PIN de déverrouillage du RUIM</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">Entrer le code PUK</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">Requête de déverrouillage du sous réseau SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">Requête de déverrouillage du fournisseur de service SIM\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">Requête de déverrouillage SIM entreprise\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">Requête de déverrouillage SIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">Requête de déverrouillage du réseau 1 RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">Requête de déverrouillage du réseau 2 RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">Requête de déverrouillage de RUIM HRPD\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">Requête de déverrouillage du fournisseur de service RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">Requête de déverrouillage du RUIM d\'entreprise\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">Requête de déverrouillage RUIM\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">Requête de déverrouillage PUK\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">La demande de déverrouillage de la SIM de sous-réseau a échoué.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">La demande de déverrouillage du prestataire de services de la SIM a échoué.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">La demande de déverrouillage de la carte SIM d\'entreprise a échoué.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ERROR">La demande de déverrouillage de la carte SIM a échoué.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">La requête de déverrouillage du réseau 1 RUIM a échoué.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">La requête de déverrouillage du réseau 2 RUIM a échoué.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">La requête de déverrouillage RUIM HRPD a échoué.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">La requête de déverrouillage du fournisseur de réseau RUIM a échoué.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">La requête de déverrouillage RUIM d\'entreprise a échoué.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">La requête de déverrouillage RUIM a échoué.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">Échec du déverrouillage du code PUK.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">Sous réseau SIM déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">Fournisseur de services SIM déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">SIM d\'entreprise débloqué avec succès.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">SIM déverrouillée avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">Réseau 1 RUIM déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Réseau 2 RUIM déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">Service RUIM déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM d\'entreprise déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">Code PUK déverrouillé avec succès.</string>
+    <string name="preferred_network_mode_dialogtitle_cmcc">Mode réseau</string>
+    <string name="preferred_network_mode_4g_3g_2g_auto">"4G/3G/2G (auto)"</string>
+    <string name="preferred_network_mode_3g_2g_auto">"3G/2G (auto)"</string>
+    <string name="cf_setting_mobile_data_alert">Veuillez activer les données mobiles et vous assurer que le Wi-Fi est désactivé</string>
+    <string name="cf_setting_mobile_data_roaming_alert">Veuillez activer l\'itinérance de données</string>
+    <string name="no_mobile_data">Données mobiles non disponibles</string>
+    <string name="no_mobile_data_roaming">Itinérance de données indisponible</string>
+    <string name="srvcc_video_message">"Appel vidéo transformé en appel vocal 2G/3G car le réseau 4G est indisponible."</string>
+    <string name="srvcc_message">"Appel vocal 4G transformé en appel vocal 2G/3G car le réseau 4G est indisponible."</string>
+    <string name="labelCFType">Paramètres de transfert d\'appel</string>
+    <string name="labelCFVoice">Voix</string>
+    <string name="labelCFVideo">Vidéo</string>
+    <string name="call_forward_option">Options de transfert d’appel</string>
 </resources>
