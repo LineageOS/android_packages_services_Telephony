@@ -57,7 +57,7 @@
     <string name="labelGsmMore_with_label">Gosodiadau galwadau GSM (<xliff:g id="subscriptionlabel" example="T-Mobile">%s</xliff:g>)</string>
     <string name="labelCDMAMore">Gosodiadau galwadau CDMA</string>
     <string name="labelCdmaMore_with_label">Gosodiadau galwadau CDMA (<xliff:g id="subscriptionlabel" example="Verizon">%s</xliff:g>)</string>
-    <string name="apn_settings">Enwau Pwyntiau Mynediad</string>
+    <string name="apn_settings">Enwau Pwyntiau Mynediad (APN)</string>
     <string name="settings_label">Gosodiadau rhwydwaith</string>
     <string name="phone_accounts">Cyfrifon galw</string>
     <string name="phone_accounts_make_calls_with">Gwneud galwadau gyda</string>
@@ -482,8 +482,8 @@
     <string name="incall_error_out_of_service">Dim rhwydwaith symudol ar gael.</string>
     <string name="incall_error_out_of_service_wfc">Dyw\'r rhwydwaith symudol ddim ar gael. Cysyllta â\'r rwydwaith diwifr i wneud galwad.</string>
     <string name="incall_error_no_phone_number_supplied">I wneud galwad, rho rif dilys.</string>
-    <string name="incall_error_call_failed">Methodd y galwad.</string>
-    <string name="incall_error_cannot_add_call">Ni ellir gwneud y galwad ar hyn o bryd. Gellir ceisio anfon neges.</string>
+    <string name="incall_error_call_failed">Methodd yr alwad.</string>
+    <string name="incall_error_cannot_add_call">Ni ellir gwneud yr alwad ar hyn o bryd. Gellir ceisio anfon neges.</string>
     <string name="incall_error_supp_service_unknown">Gwasanaeth heb ei gefnogi</string>
     <string name="incall_error_supp_service_switch">Methu â newid rhwng galwadau.</string>
     <string name="incall_error_supp_service_separate">Methu â gwahanu\'r alwad.</string>
@@ -620,7 +620,7 @@
     <string name="callFailed_imei_not_accepted">Methu â chysylltu. Rho gerdyn SIM dilys, plîs.    </string>
     <string name="callFailed_wifi_lost">        Collwyd y cysylltiad Wi-Fi. Galwad ar ben.
     </string>
-    <string name="dialFailed_low_battery">Ni ellir gwneud y galwad fideo am nad os digon o bŵer yn y batri.</string>
+    <string name="dialFailed_low_battery">Ni ellir gwneud yr alwad fideo am nad os digon o bŵer yn y batri.</string>
     <string name="callFailed_low_battery">Daeth yr alwad fideo i ben oherwydd batri isel.</string>
     <string name="change_pin_title">Newid PIN Lleisbost</string>
     <string name="change_pin_continue_label">Parhau</string>

@@ -36,4 +36,21 @@
     <string name="preferred_network_mode_wcdma_only_choice">WCDMA yn unig</string>
     <string name="preferred_network_mode_gsm_only_choice">GSM yn unig</string>
     <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Ffafrir GSM/WCDMA</string>
+    <string name="incall_screen_settings">Gosodiadau sgrin yn ystod galwad</string>
+    <string name="show_ssn_label">Hysbysiad digwyddiad</string>
+    <string name="show_ssn_summary">Dangos hysbysiad am wahanol ddigwyddiadau rhwydwaith yn ymwneud ag ymdrin â galwadau</string>
+    <string name="call_notif_unconditionalCF">Mae dargyfeirio galwadau heb amod yn weithredol</string>
+    <string name="call_notif_conditionalCF">Mae dargyfeirio galwadau ar amod yn weithredol</string>
+    <string name="call_notif_MOcall_forwarding">Dargyfeirir yr alwad allan</string>
+    <string name="call_notif_cugcall">Galwad mewn grŵp defnyddwyr caeedig</string>
+    <string name="call_notif_outgoing_barred">Rhwystrwyd galwadau allan</string>
+    <string name="call_notif_incoming_barred">Mae\'r derbynnydd wedi rhwystro derbyn galwadau</string>
+    <string name="call_notif_clir_suppression_rejected">Atal dy rif dy hun wedi\'i wrthod gan y rhwydwaith</string>
+    <string name="call_notif_call_deflected">Dargyfeiriwyd yr alwad gan y derbynnydd</string>
+    <string name="call_notif_MTcall_forwarding">Dargyfeirir galwad i mewn</string>
+    <string name="call_notif_multipartycall">Galwad aml-berson</string>
+    <string name="call_notif_callonhold_released">Rhyddhawyd yr alwad o bell</string>
+    <string name="call_notif_forwardcheckreceived">Cafodd yr alwad ei dargyfeirio</string>
+    <string name="call_notif_callconnectingect">Galwad yn cysylltu trwy drosglwyddiad galwad penodol</string>
+    <string name="call_notif_callconnectedect">Galwad wedi\'i chysylltu trwy drosglwyddiad galwad penodol</string>
 </resources>
