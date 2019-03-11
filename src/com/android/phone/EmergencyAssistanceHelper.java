@@ -17,7 +17,6 @@
 package com.android.phone;
 
 import android.app.role.RoleManager;
-import android.app.role.RoleManagerCallback;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -143,12 +142,8 @@ public class EmergencyAssistanceHelper {
         try {
             context.getSystemService(RoleManager.class).addRoleHolderAsUser(
                     RoleManager.ROLE_EMERGENCY, pkgName, 0, Process.myUserHandle(),
-                    AsyncTask.THREAD_POOL_EXECUTOR, new RoleManagerCallback() {
-                        @Override
-                        public void onSuccess() {
-                        }
-                        @Override
-                        public void onFailure() {
+                    AsyncTask.THREAD_POOL_EXECUTOR, successful -> {
+                        if (!successful) {
                             Log.e(TAG, "Failed to set emergency default app.");
                         }
                     });
