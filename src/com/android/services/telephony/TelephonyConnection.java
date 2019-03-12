@@ -932,12 +932,6 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             try {
                 Phone phone = mOriginalConnection.getCall().getPhone();
 
-                // New behavior for IMS -- don't use the clunky switchHoldingAndActive logic.
-                if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS) {
-                    ImsPhone imsPhone = (ImsPhone) phone;
-                    imsPhone.holdActiveCall();
-                    return;
-                }
                 Call ringingCall = phone.getRingingCall();
 
                 // Although the method says switchHoldingAndActive, it eventually calls a RIL method
@@ -951,6 +945,12 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 // could "fake" hold by silencing the audio and microphone streams for this call
                 // instead of actually putting it on hold.
                 if (ringingCall.getState() != Call.State.WAITING) {
+                    // New behavior for IMS -- don't use the clunky switchHoldingAndActive logic.
+                    if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS) {
+                        ImsPhone imsPhone = (ImsPhone) phone;
+                        imsPhone.holdActiveCall();
+                        return;
+                    }
                     phone.switchHoldingAndActive();
                 }
 
