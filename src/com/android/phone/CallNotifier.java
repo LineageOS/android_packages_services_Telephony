@@ -552,7 +552,8 @@ public class CallNotifier extends Handler {
     }
 
     public void updatePhoneStateListeners(boolean isRefresh, int updateType, int subIdToUpdate) {
-        List<SubscriptionInfo> subInfos = mSubscriptionManager.getActiveSubscriptionInfoList();
+        List<SubscriptionInfo> subInfos = SubscriptionController.getInstance()
+                .getActiveSubscriptionInfoList(mApplication.getOpPackageName());
 
         // Sort sub id list based on slot id, so that CFI/MWI notifications will be updated for
         // slot 0 first then slot 1. This is needed to ensure that when CFI or MWI is enabled for
