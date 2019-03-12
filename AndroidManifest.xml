@@ -91,7 +91,7 @@
     <protected-broadcast android:name= "android.telephony.action.NETWORK_COUNTRY_CHANGED" />
 
     <!-- For Vendor Debugging in Telephony -->
-    <protected-broadcast android:name="android.telephony.action.DEBUG_EVENT" />
+    <protected-broadcast android:name="android.telephony.action.ANOMALY_REPORTED" />
 
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
