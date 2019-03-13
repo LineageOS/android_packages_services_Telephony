@@ -50,11 +50,13 @@ public class EmergencyAssistanceHelper {
      * used for team food.
      */
     public static String getIntentAction(Context context) {
-        if (FeatureFlagUtils.isEnabled(context, FeatureFlagUtils.SAFETY_HUB)) {
-            String action = context.getResources().getString(R.string.config_emergency_app_intent);
-            if (!action.isEmpty()) {
-                return action;
+        String action = context.getResources().getString(R.string.config_emergency_app_intent);
+        if (!action.isEmpty()) {
+            // TODO: remove feature flag and this temporary intent once Emergency app was replaced.
+            if (!FeatureFlagUtils.isEnabled(context, FeatureFlagUtils.SAFETY_HUB)) {
+                return "com.android.emergency.action.EMERGENCY_ASSISTANCE";
             }
+            return action;
         }
 
         return TelephonyManager.ACTION_EMERGENCY_ASSISTANCE;
