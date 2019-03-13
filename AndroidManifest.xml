@@ -578,18 +578,6 @@
             </intent-filter>
         </service>
 
-        <provider
-                android:name="PhoneSearchIndexablesProvider"
-                android:authorities="com.android.phone"
-                android:multiprocess="false"
-                android:grantUriPermissions="true"
-                android:permission="android.permission.READ_SEARCH_INDEXABLES"
-                android:exported="true">
-            <intent-filter>
-                <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER" />
-            </intent-filter>
-        </provider>
-
         <receiver
           android:name="com.android.phone.vvm.VvmSmsReceiver"
             android:exported="false"
