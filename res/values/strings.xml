@@ -1190,6 +1190,9 @@
          emergency calling is not currently available. -->
     <string name="dial_emergency_calling_not_available">Emergency calling not available</string>
 
+    <!-- Only handle pin entry when phone user is system-->
+    <string name="pin_puk_system_user_only">Only the owner of the device can enter PIN/PUK codes.</string>
+
     <!-- Text for description of police calling type -->
     <string name="police_type_description">Police</string>
     <!-- Text for description of ambulance calling type -->
