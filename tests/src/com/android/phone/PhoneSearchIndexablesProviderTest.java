@@ -28,8 +28,9 @@ import android.database.Cursor;
 import android.os.UserManager;
 import android.provider.SearchIndexablesContract;
 import android.provider.Settings;
-import android.support.test.runner.AndroidJUnit4;
 import android.telephony.euicc.EuiccManager;
+
+import androidx.test.runner.AndroidJUnit4;
 
 import org.junit.Before;
 import org.junit.Test;
