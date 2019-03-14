@@ -55,6 +55,7 @@ import com.android.internal.telephony.ICarrierConfigLoader;
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.SubscriptionInfoUpdater;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.util.FastXmlSerializer;
 import com.android.internal.util.IndentingPrintWriter;
@@ -100,6 +101,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private CarrierServiceConnection[] mServiceConnection;
     // Whether we have sent config change bcast for each phone id.
     private boolean[] mHasSentConfigChange;
+    // SubscriptionInfoUpdater
+    private final SubscriptionInfoUpdater mSubscriptionInfoUpdater;
 
     // Broadcast receiver for Boot intents, register intent filter in construtor.
     private final BroadcastReceiver mBootReceiver = new ConfigLoaderBroadcastReceiver();
@@ -137,6 +140,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private static final int EVENT_FETCH_DEFAULT_TIMEOUT = 14;
     // Fetching config timed out from a carrier app.
     private static final int EVENT_FETCH_CARRIER_TIMEOUT = 15;
+    // SubscriptionInfoUpdater has finished updating the sub for the carrier config.
+    private static final int EVENT_SUBSCRIPTION_INFO_UPDATED = 16;
 
     private static final int BIND_TIMEOUT_MILLIS = 30000;
 
@@ -243,7 +248,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                     BIND_TIMEOUT_MILLIS);
                         } else {
                             // Send broadcast if bind fails.
-                            broadcastConfigChangedIntent(phoneId);
+                            notifySubscriptionInfoUpdater(phoneId);
                             // TODO: We *must* call unbindService even if bindService returns false.
                             // (And possibly if SecurityException was thrown.)
                             loge("binding to default app: "
@@ -278,7 +283,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                     if (resultCode == RESULT_ERROR || resultData == null) {
                                         // On error, abort config fetching.
                                         loge("Failed to get carrier config");
-                                        broadcastConfigChangedIntent(phoneId);
+                                        notifySubscriptionInfoUpdater(phoneId);
                                         return;
                                     }
                                     PersistableBundle config =
@@ -320,6 +325,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     removeMessages(EVENT_FETCH_DEFAULT_TIMEOUT);
                     broadcastConfigChangedIntent(phoneId);
                     loge("bind/fetch time out from " + mPlatformCarrierConfigPackage);
+                    notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
 
@@ -336,7 +342,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         log("Found carrier config app: " + carrierPackageName);
                         sendMessage(obtainMessage(EVENT_DO_FETCH_CARRIER, phoneId, -1));
                     } else {
-                        broadcastConfigChangedIntent(phoneId);
+                        notifySubscriptionInfoUpdater(phoneId);
                     }
                     break;
                 }
@@ -370,6 +376,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                             // Send broadcast if bind fails.
                             broadcastConfigChangedIntent(phoneId);
                             loge("bind to carrier app: " + carrierPackageName + " fails");
+                            notifySubscriptionInfoUpdater(phoneId);
                         }
                     }
                     break;
@@ -402,6 +409,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                         loge("Failed to get carrier config from carrier app: "
                                                 + getCarrierPackageForPhoneId(phoneId));
                                         broadcastConfigChangedIntent(phoneId);
+                                        notifySubscriptionInfoUpdater(phoneId);
                                         return;
                                     }
                                     PersistableBundle config =
@@ -442,6 +450,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     removeMessages(EVENT_FETCH_CARRIER_TIMEOUT);
                     broadcastConfigChangedIntent(phoneId);
                     loge("bind/fetch from carrier app timeout");
+                    notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
 
@@ -453,7 +462,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                             && mServiceConnection[phoneId] == null) {
                         break;
                     }
-                    broadcastConfigChangedIntent(phoneId);
+                    notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
 
@@ -476,6 +485,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     }
                     break;
                 }
+
+                case EVENT_SUBSCRIPTION_INFO_UPDATED:
+                    broadcastConfigChangedIntent(phoneId);
+                    break;
             }
         }
     }
@@ -514,6 +527,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         // Make this service available through ServiceManager.
         ServiceManager.addService(Context.CARRIER_CONFIG_SERVICE, this);
         log("CarrierConfigLoader has started");
+        mSubscriptionInfoUpdater = PhoneFactory.getSubscriptionInfoUpdater();
         mHandler.sendEmptyMessage(EVENT_CHECK_SYSTEM_UPDATE);
     }
 
@@ -532,6 +546,24 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             }
             return sInstance;
         }
+    }
+
+    private void notifySubscriptionInfoUpdater(int phoneId) {
+        String configPackagename;
+        PersistableBundle configToSend;
+        int carrierId = getSpecificCarrierIdForPhoneId(phoneId);
+        // Prefer the carrier privileged carrier app, but if there is not one, use the platform
+        // default carrier app.
+        if (mConfigFromCarrierApp[phoneId] != null) {
+            configPackagename = getCarrierPackageForPhoneId(phoneId);
+            configToSend = mConfigFromCarrierApp[phoneId];
+        } else {
+            configPackagename = mPlatformCarrierConfigPackage;
+            configToSend = mConfigFromDefaultApp[phoneId];
+        }
+        mSubscriptionInfoUpdater.updateSubscriptionByCarrierConfigAndNotifyComplete(
+                phoneId, configPackagename, configToSend,
+                mHandler.obtainMessage(EVENT_SUBSCRIPTION_INFO_UPDATED, phoneId, -1));
     }
 
     private void broadcastConfigChangedIntent(int phoneId) {
