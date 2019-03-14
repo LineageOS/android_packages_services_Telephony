@@ -722,6 +722,15 @@ public class TelecomAccountRegistry {
         }
     };
 
+    private BroadcastReceiver mLocaleChangeReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.i(this, "Locale change; re-registering phone accounts.");
+            tearDownAccounts();
+            setupAccounts();
+        }
+    };
+
     private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
         @Override
         public void onServiceStateChanged(ServiceState serviceState) {
@@ -954,6 +963,11 @@ public class TelecomAccountRegistry {
         filter.addAction(Intent.ACTION_USER_SWITCHED);
         filter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
         mContext.registerReceiver(mReceiver, filter);
+
+        //We also need to listen for locale changes
+        //(e.g. system language changed -> SIM card name changed)
+        mContext.registerReceiver(mLocaleChangeReceiver,
+                new IntentFilter(Intent.ACTION_LOCALE_CHANGED));
 
         // Listen to the RTT system setting so that we update it when the user flips it.
         ContentObserver rttUiSettingObserver = new ContentObserver(
