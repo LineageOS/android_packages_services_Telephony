@@ -6291,7 +6291,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public void setCarrierTestOverride(int subId, String mccmnc, String imsi, String iccid, String
-            gid1, String gid2, String plmn, String spn) {
+            gid1, String gid2, String plmn, String spn, String carrierPrivilegeRules, String apn) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
@@ -6301,7 +6301,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 loge("setCarrierTestOverride fails with invalid subId: " + subId);
                 return;
             }
-            phone.setCarrierTestOverride(mccmnc, imsi, iccid, gid1, gid2, plmn, spn);
+            phone.setCarrierTestOverride(mccmnc, imsi, iccid, gid1, gid2, plmn, spn,
+                    carrierPrivilegeRules, apn);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
