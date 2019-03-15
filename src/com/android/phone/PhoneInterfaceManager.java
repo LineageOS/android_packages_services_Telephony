@@ -4393,18 +4393,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Check whether DUN APN is required for tethering.
+     * Check whether DUN APN is required for tethering with subId.
      *
+     * @param subId the id of the subscription to require tethering.
      * @return {@code true} if DUN APN is required for tethering.
      * @hide
      */
     @Override
-    public boolean getTetherApnRequired() {
+    public boolean getTetherApnRequiredForSubscriber(int subId) {
         enforceModifyPermission();
         final long identity = Binder.clearCallingIdentity();
-        final Phone defaultPhone = getDefaultPhone();
+        final Phone phone = getPhone(subId);
         try {
-            return defaultPhone.hasMatchedTetherApnSetting();
+            if (phone != null) {
+                return phone.hasMatchedTetherApnSetting();
+            } else {
+                return false;
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
