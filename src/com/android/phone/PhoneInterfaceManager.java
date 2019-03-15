@@ -24,6 +24,7 @@ import android.Manifest.permission;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -53,6 +54,7 @@ import android.os.UserManager;
 import android.os.WorkSource;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.provider.Telephony;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
@@ -5311,9 +5313,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 setDataRoamingEnabled(subId, getDefaultDataRoamingEnabled(subId));
                 CarrierInfoManager.deleteAllCarrierKeysForImsiEncryption(mApp);
             }
+            // There has been issues when Sms raw table somehow stores orphan
+            // fragments. They lead to garbled message when new fragments come
+            // in and combined with those stale ones. In case this happens again,
+            // user can reset all network settings which will clean up this table.
+            cleanUpSmsRawTable(getDefaultPhone().getContext());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    private void cleanUpSmsRawTable(Context context) {
+        ContentResolver resolver = context.getContentResolver();
+        Uri uri = Uri.withAppendedPath(Telephony.Sms.CONTENT_URI, "raw/permanentDelete");
+        resolver.delete(uri, null, null);
     }
 
     @Override
