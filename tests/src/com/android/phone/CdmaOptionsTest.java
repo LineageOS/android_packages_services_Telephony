@@ -18,8 +18,9 @@ package com.android.phone;
 import static com.google.common.truth.Truth.assertThat;
 
 import android.os.PersistableBundle;
-import android.support.test.runner.AndroidJUnit4;
 import android.telephony.CarrierConfigManager;
+
+import androidx.test.runner.AndroidJUnit4;
 
 import com.android.internal.telephony.PhoneConstants;
 
