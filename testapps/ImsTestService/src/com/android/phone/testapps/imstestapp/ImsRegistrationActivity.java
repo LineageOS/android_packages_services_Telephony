@@ -151,8 +151,8 @@ public class ImsRegistrationActivity extends Activity {
     private static final Map<Integer, String> REG_TECH_STRING = new ArrayMap<>(2);
     static {
         REG_TECH_STRING.put(ImsRegistrationImplBase.REGISTRATION_TECH_NONE, "NONE");
-        REG_TECH_STRING.put(AccessNetworkConstants.TransportType.WWAN, "WWAN");
-        REG_TECH_STRING.put(AccessNetworkConstants.TransportType.WLAN, "WLAN");
+        REG_TECH_STRING.put(AccessNetworkConstants.TRANSPORT_TYPE_WWAN, "WWAN");
+        REG_TECH_STRING.put(AccessNetworkConstants.TRANSPORT_TYPE_WLAN, "WLAN");
     }
 
 
