@@ -24,6 +24,7 @@ import android.Manifest.permission;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -53,6 +54,7 @@ import android.os.UserManager;
 import android.os.WorkSource;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.provider.Telephony;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
@@ -138,6 +140,7 @@ import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.euicc.EuiccConnector;
+import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.metrics.TelephonyMetrics;
 import com.android.internal.telephony.uicc.IccIoResult;
 import com.android.internal.telephony.uicc.IccUtils;
@@ -4116,7 +4119,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            PhoneFactory.getImsResolver().enableIms(slotId);
+            ImsResolver resolver = PhoneFactory.getImsResolver();
+            if (resolver == null) {
+                // may happen if the device does not support IMS.
+                return;
+            }
+            resolver.enableIms(slotId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4131,7 +4139,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            PhoneFactory.getImsResolver().disableIms(slotId);
+            ImsResolver resolver = PhoneFactory.getImsResolver();
+            if (resolver == null) {
+                // may happen if the device does not support IMS.
+                return;
+            }
+            resolver.disableIms(slotId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4148,7 +4161,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return PhoneFactory.getImsResolver().getMmTelFeatureAndListen(slotId, callback);
+            ImsResolver resolver = PhoneFactory.getImsResolver();
+            if (resolver == null) {
+                // may happen if the device does not support IMS.
+                return null;
+            }
+            return resolver.getMmTelFeatureAndListen(slotId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4165,7 +4183,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return PhoneFactory.getImsResolver().getRcsFeatureAndListen(slotId, callback);
+            ImsResolver resolver = PhoneFactory.getImsResolver();
+            if (resolver == null) {
+                // may happen if the device does not support IMS.
+                return null;
+            }
+            return resolver.getRcsFeatureAndListen(slotId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4173,14 +4196,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Returns the {@link IImsRegistration} structure associated with the slotId and feature
-     * specified.
+     * specified or null if IMS is not supported on the slot specified.
      */
     public IImsRegistration getImsRegistration(int slotId, int feature) throws RemoteException {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return PhoneFactory.getImsResolver().getImsRegistration(slotId, feature);
+            ImsResolver resolver = PhoneFactory.getImsResolver();
+            if (resolver == null) {
+                // may happen if the device does not support IMS.
+                return null;
+            }
+            return resolver.getImsRegistration(slotId, feature);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4188,14 +4216,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Returns the {@link IImsConfig} structure associated with the slotId and feature
-     * specified.
+     * specified or null if IMS is not supported on the slot specified.
      */
     public IImsConfig getImsConfig(int slotId, int feature) throws RemoteException {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return PhoneFactory.getImsResolver().getImsConfig(slotId, feature);
+            ImsResolver resolver = PhoneFactory.getImsResolver();
+            if (resolver == null) {
+                // may happen if the device does not support IMS.
+                return null;
+            }
+            return resolver.getImsConfig(slotId, feature);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4220,8 +4253,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return PhoneFactory.getImsResolver().overrideImsServiceConfiguration(slotId,
-                    isCarrierImsService, packageName);
+            ImsResolver resolver = PhoneFactory.getImsResolver();
+            if (resolver == null) {
+                // may happen if the device does not support IMS.
+                return false;
+            }
+            return resolver.overrideImsServiceConfiguration(slotId, isCarrierImsService,
+                    packageName);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4243,8 +4281,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return PhoneFactory.getImsResolver().getImsServiceConfiguration(slotId,
-                    isCarrierImsService);
+            ImsResolver resolver = PhoneFactory.getImsResolver();
+            if (resolver == null) {
+                // may happen if the device does not support IMS.
+                return "";
+            }
+            return resolver.getImsServiceConfiguration(slotId, isCarrierImsService);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -5271,9 +5313,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 setDataRoamingEnabled(subId, getDefaultDataRoamingEnabled(subId));
                 CarrierInfoManager.deleteAllCarrierKeysForImsiEncryption(mApp);
             }
+            // There has been issues when Sms raw table somehow stores orphan
+            // fragments. They lead to garbled message when new fragments come
+            // in and combined with those stale ones. In case this happens again,
+            // user can reset all network settings which will clean up this table.
+            cleanUpSmsRawTable(getDefaultPhone().getContext());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    private void cleanUpSmsRawTable(Context context) {
+        ContentResolver resolver = context.getContentResolver();
+        Uri uri = Uri.withAppendedPath(Telephony.Sms.CONTENT_URI, "raw/permanentDelete");
+        resolver.delete(uri, null, null);
     }
 
     @Override
