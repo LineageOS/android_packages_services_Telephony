@@ -1302,8 +1302,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     private Phone getPhoneFromRequest(MainThreadRequest request) {
-        return (request.subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID)
-                ? getDefaultPhone() : getPhone(request.subId);
+        if (request.phone != null) {
+            return request.phone;
+        } else {
+            return getPhoneFromSubId(request.subId);
+        }
+    }
+
+    private Phone getPhoneFromSubId(int subId) {
+        return (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID)
+                ? getDefaultPhone() : getPhone(subId);
     }
 
     private UiccCard getUiccCardFromRequest(MainThreadRequest request) {
@@ -3659,13 +3667,43 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return TelephonyManager.WifiCallingChoices.ALWAYS_USE;
     }
 
+    private Phone getPhoneFromSlotIdOrThrowException(int slotIndex) {
+        int phoneId = UiccController.getInstance().getPhoneIdFromSlotId(slotIndex);
+        if (phoneId == -1) {
+            throw new IllegalArgumentException("Given slot index: " + slotIndex
+                    + " does not correspond to an active phone");
+        }
+        return PhoneFactory.getPhone(phoneId);
+    }
+
     @Override
     public IccOpenLogicalChannelResponse iccOpenLogicalChannel(
             int subId, String callingPackage, String aid, int p2) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "iccOpenLogicalChannel");
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        if (DBG) {
+            log("iccOpenLogicalChannel: subId=" + subId + " aid=" + aid + " p2=" + p2);
+        }
+        return iccOpenLogicalChannelWithPermission(getPhoneFromSubId(subId), callingPackage, aid,
+                p2);
+    }
 
+
+    @Override
+    public IccOpenLogicalChannelResponse iccOpenLogicalChannelBySlot(
+            int slotIndex, String callingPackage, String aid, int p2) {
+        enforceModifyPermission();
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        if (DBG) {
+            log("iccOpenLogicalChannelBySlot: slot=" + slotIndex + " aid=" + aid + " p2=" + p2);
+        }
+        return iccOpenLogicalChannelWithPermission(getPhoneFromSlotIdOrThrowException(slotIndex),
+                callingPackage, aid, p2);
+    }
+
+    private IccOpenLogicalChannelResponse iccOpenLogicalChannelWithPermission(Phone phone,
+            String callingPackage, String aid, int p2) {
         final long identity = Binder.clearCallingIdentity();
         try {
             if (TextUtils.equals(ISDR_AID, aid)) {
@@ -3680,12 +3718,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 }
             }
 
-            if (DBG) {
-                log("iccOpenLogicalChannel: subId=" + subId + " aid=" + aid + " p2=" + p2);
-            }
             IccOpenLogicalChannelResponse response = (IccOpenLogicalChannelResponse) sendRequest(
-                    CMD_OPEN_CHANNEL, new Pair<String, Integer>(aid, p2), subId);
-            if (DBG) log("iccOpenLogicalChannel: " + response);
+                    CMD_OPEN_CHANNEL, new Pair<String, Integer>(aid, p2), phone,
+                    null /* workSource */);
+            if (DBG) log("iccOpenLogicalChannelWithPermission: " + response);
             return response;
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -3696,15 +3732,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean iccCloseLogicalChannel(int subId, int channel) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "iccCloseLogicalChannel");
+        if (DBG) log("iccCloseLogicalChannel: subId=" + subId + " chnl=" + channel);
+        return iccCloseLogicalChannelWithPermission(getPhoneFromSubId(subId), channel);
+    }
 
+    @Override
+    public boolean iccCloseLogicalChannelBySlot(int slotIndex, int channel) {
+        enforceModifyPermission();
+        if (DBG) log("iccCloseLogicalChannelBySlot: slotIndex=" + slotIndex + " chnl=" + channel);
+        return iccCloseLogicalChannelWithPermission(getPhoneFromSlotIdOrThrowException(slotIndex),
+                channel);
+    }
+
+    private boolean iccCloseLogicalChannelWithPermission(Phone phone, int channel) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            if (DBG) log("iccCloseLogicalChannel: subId=" + subId + " chnl=" + channel);
             if (channel < 0) {
                 return false;
             }
-            Boolean success = (Boolean) sendRequest(CMD_CLOSE_CHANNEL, channel, subId);
-            if (DBG) log("iccCloseLogicalChannel: " + success);
+            Boolean success = (Boolean) sendRequest(CMD_CLOSE_CHANNEL, channel, phone,
+                    null /* workSource */);
+            if (DBG) log("iccCloseLogicalChannelWithPermission: " + success);
             return success;
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -3716,22 +3764,41 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int command, int p1, int p2, int p3, String data) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "iccTransmitApduLogicalChannel");
+        if (DBG) {
+            log("iccTransmitApduLogicalChannel: subId=" + subId + " chnl=" + channel
+                    + " cla=" + cla + " cmd=" + command + " p1=" + p1 + " p2=" + p2 + " p3="
+                    + p3 + " data=" + data);
+        }
+        return iccTransmitApduLogicalChannelWithPermission(getPhoneFromSubId(subId), channel, cla,
+                command, p1, p2, p3, data);
+    }
 
+    @Override
+    public String iccTransmitApduLogicalChannelBySlot(int slotIndex, int channel, int cla,
+            int command, int p1, int p2, int p3, String data) {
+        enforceModifyPermission();
+        if (DBG) {
+            log("iccTransmitApduLogicalChannelBySlot: slotIndex=" + slotIndex + " chnl=" + channel
+                    + " cla=" + cla + " cmd=" + command + " p1=" + p1 + " p2=" + p2 + " p3="
+                    + p3 + " data=" + data);
+        }
+        return iccTransmitApduLogicalChannelWithPermission(
+                getPhoneFromSlotIdOrThrowException(slotIndex), channel, cla, command, p1, p2, p3,
+                data);
+    }
+
+    private String iccTransmitApduLogicalChannelWithPermission(Phone phone, int channel, int cla,
+            int command, int p1, int p2, int p3, String data) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            if (DBG) {
-                log("iccTransmitApduLogicalChannel: subId=" + subId + " chnl=" + channel
-                        + " cla=" + cla + " cmd=" + command + " p1=" + p1 + " p2=" + p2 + " p3="
-                        + p3 + " data=" + data);
-            }
-
             if (channel < 0) {
                 return "";
             }
 
             IccIoResult response = (IccIoResult) sendRequest(CMD_TRANSMIT_APDU_LOGICAL_CHANNEL,
-                    new IccAPDUArgument(channel, cla, command, p1, p2, p3, data), subId);
-            if (DBG) log("iccTransmitApduLogicalChannel: " + response);
+                    new IccAPDUArgument(channel, cla, command, p1, p2, p3, data), phone,
+                    null /* workSource */);
+            if (DBG) log("iccTransmitApduLogicalChannelWithPermission: " + response);
 
             // Append the returned status code to the end of the response payload.
             String s = Integer.toHexString(
@@ -3751,7 +3818,33 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "iccTransmitApduBasicChannel");
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        if (DBG) {
+            log("iccTransmitApduBasicChannel: subId=" + subId + " cla=" + cla + " cmd="
+                    + command + " p1=" + p1 + " p2=" + p2 + " p3=" + p3 + " data=" + data);
+        }
+        return iccTransmitApduBasicChannelWithPermission(getPhoneFromSubId(subId), callingPackage,
+                cla, command, p1, p2, p3, data);
+    }
 
+    @Override
+    public String iccTransmitApduBasicChannelBySlot(int slotIndex, String callingPackage, int cla,
+            int command, int p1, int p2, int p3, String data) {
+        enforceModifyPermission();
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        if (DBG) {
+            log("iccTransmitApduBasicChannelBySlot: slotIndex=" + slotIndex + " cla=" + cla
+                    + " cmd=" + command + " p1=" + p1 + " p2=" + p2 + " p3=" + p3
+                    + " data=" + data);
+        }
+
+        return iccTransmitApduBasicChannelWithPermission(
+                getPhoneFromSlotIdOrThrowException(slotIndex), callingPackage, cla, command, p1,
+                p2, p3, data);
+    }
+
+    // open APDU basic channel assuming the caller has sufficient permissions
+    private String iccTransmitApduBasicChannelWithPermission(Phone phone, String callingPackage,
+            int cla, int command, int p1, int p2, int p3, String data) {
         final long identity = Binder.clearCallingIdentity();
         try {
             if (command == SELECT_COMMAND && p1 == SELECT_P1 && p2 == SELECT_P2 && p3 == SELECT_P3
@@ -3767,14 +3860,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 }
             }
 
-            if (DBG) {
-                log("iccTransmitApduBasicChannel: subId=" + subId + " cla=" + cla + " cmd="
-                        + command + " p1=" + p1 + " p2=" + p2 + " p3=" + p3 + " data=" + data);
-            }
-
             IccIoResult response = (IccIoResult) sendRequest(CMD_TRANSMIT_APDU_BASIC_CHANNEL,
-                    new IccAPDUArgument(0, cla, command, p1, p2, p3, data), subId);
-            if (DBG) log("iccTransmitApduBasicChannel: " + response);
+                    new IccAPDUArgument(0, cla, command, p1, p2, p3, data), phone,
+                    null /* workSource */);
+            if (DBG) log("iccTransmitApduBasicChannelWithPermission: " + response);
 
             // Append the returned status code to the end of the response payload.
             String s = Integer.toHexString(
