@@ -6586,10 +6586,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public Map<Integer, List<EmergencyNumber>> getCurrentEmergencyNumberList(
+    public Map<Integer, List<EmergencyNumber>> getEmergencyNumberList(
             String callingPackage) {
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, getDefaultSubscription(), callingPackage, "getCurrentEmergencyNumberList")) {
+                mApp, getDefaultSubscription(), callingPackage, "getEmergencyNumberList")) {
             throw new SecurityException("Requires READ_PHONE_STATE permission.");
         }
         final long identity = Binder.clearCallingIdentity();
@@ -6610,12 +6610,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public boolean isCurrentEmergencyNumber(String number, boolean exactMatch) {
+    public boolean isEmergencyNumber(String number, boolean exactMatch) {
         final Phone defaultPhone = getDefaultPhone();
         if (!exactMatch) {
             TelephonyPermissions
                     .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
-                            mApp, defaultPhone.getSubId(), "isCurrentEmergencyNumber(Potential)");
+                            mApp, defaultPhone.getSubId(), "isEmergencyNumber(Potential)");
         }
         final long identity = Binder.clearCallingIdentity();
         try {

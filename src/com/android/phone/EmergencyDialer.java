@@ -851,7 +851,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             phoneToMakeCall = mShortcutViewConfig.getPhoneInfo();
         } else {
             TelephonyManager tm = getSystemService(TelephonyManager.class);
-            isEmergencyNumber = tm.isCurrentEmergencyNumber(mLastNumber);
+            isEmergencyNumber = tm.isEmergencyNumber(mLastNumber);
         }
 
         if (isEmergencyNumber) {
