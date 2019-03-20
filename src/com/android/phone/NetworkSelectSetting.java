@@ -31,7 +31,7 @@ import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CellIdentity;
 import android.telephony.CellInfo;
-import android.telephony.NetworkRegistrationState;
+import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -382,7 +382,7 @@ public class NetworkSelectSetting extends PreferenceFragment {
      * Config the connected network operator preference when the page was created. When user get
      * into this page, the device might or might not have data connection.
      *   - If the device has data:
-     *     1. use {@code ServiceState#getNetworkRegistrationStates()} to get the currently
+     *     1. use {@code ServiceState#getNetworkRegistrationInfoList()} to get the currently
      *        registered cellIdentity, wrap it into a CellInfo;
      *     2. set the signal strength level as strong;
      *     3. use {@link TelephonyManager#getNetworkOperatorName()} to get the title of the
@@ -396,10 +396,11 @@ public class NetworkSelectSetting extends PreferenceFragment {
         if (mTelephonyManager.getDataState() == mTelephonyManager.DATA_CONNECTED) {
             // Try to get the network registration states
             ServiceState ss = mTelephonyManager.getServiceState();
-            List<NetworkRegistrationState> networkList =
-                    ss.getNetworkRegistrationStates(AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
+            List<NetworkRegistrationInfo> networkList =
+                    ss.getNetworkRegistrationInfoListForTransportType(
+                            AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
             if (networkList == null || networkList.size() == 0) {
-                loge("getNetworkRegistrationStates return null");
+                loge("getNetworkRegistrationInfoList return null");
                 // Remove the connected network operators category
                 removeConnectedNetworkOperatorPreference();
                 return;
