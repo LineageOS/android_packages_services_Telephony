@@ -324,7 +324,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     final String carrierPackageName = getCarrierPackageForPhoneId(phoneId);
                     if (carrierPackageName != null) {
                         log("Found carrier config app: " + carrierPackageName);
-                        sendMessage(obtainMessage(EVENT_DO_FETCH_CARRIER, phoneId));
+                        sendMessage(obtainMessage(EVENT_DO_FETCH_CARRIER, phoneId, -1));
                     } else {
                         broadcastConfigChangedIntent(phoneId);
                     }
