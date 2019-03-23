@@ -405,8 +405,8 @@
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Жетілдірілген құпиялылық режимін қосу"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"Tелетайп режимі"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"Телетайп режиміне реттеу"</string>
-    <string name="auto_retry_mode_title" msgid="4073265511427813322">"Қайта авто әрекеттену"</string>
-    <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Қайта авто әрекеттену режимін қосу"</string>
+    <string name="auto_retry_mode_title" msgid="4073265511427813322">"Әрекетті автоматты қайталау"</string>
+    <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Әрекетті автоматты қайталау режимін қосу"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Бейне қоңырау барысында Телетайп режимін өзгертуге рұқсат етілмеген"</string>
     <string name="menu_add" msgid="1882023737425114762">"Байланыс қосу"</string>
     <string name="menu_edit" msgid="7143003705504672374">"Байланыс өңдеу"</string>
