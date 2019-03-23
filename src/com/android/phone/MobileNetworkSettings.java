@@ -454,11 +454,10 @@ public class MobileNetworkSettings extends Activity  {
                     return;
                 }
 
-                PhoneCallStateListener.this.mSubId = subId;
-
                 mTelephonyManager.listen(this, PhoneStateListener.LISTEN_NONE);
 
-                // Now, listen to new subId if it's valid.
+                // Now, listen to new subId if it's valid. register the listener with
+                // mTelephonyManager instance created for the new subId.
                 if (SubscriptionManager.isValidSubscriptionId(subId)) {
                     mTelephonyManager.listen(this, PhoneStateListener.LISTEN_CALL_STATE);
                 }
@@ -935,7 +934,8 @@ public class MobileNetworkSettings extends Activity  {
                 updatePreferredNetworkUIFromDb();
             }
 
-            mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+            mTelephonyManager.createForSubscriptionId(mSubId)
+                    .listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
 
             // NOTE: Buttons will be enabled/disabled in mPhoneStateListener
             updateEnhanced4gLteState();
