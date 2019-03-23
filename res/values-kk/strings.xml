@@ -77,6 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"Дауыстық пошта"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Дауыстық пошта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ДХ:"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Хабарландырулар"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Жедел таратылымдар"</string>
     <string name="call_settings" msgid="6112441768261754562">"Қоңырау параметрлері"</string>
@@ -410,8 +416,8 @@
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Жетілдірілген құпиялылық режимін қосу"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"Tелетайп режимі"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"Телетайп режиміне реттеу"</string>
-    <string name="auto_retry_mode_title" msgid="4073265511427813322">"Қайта авто әрекеттену"</string>
-    <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Қайта авто әрекеттену режимін қосу"</string>
+    <string name="auto_retry_mode_title" msgid="4073265511427813322">"Әрекетті автоматты қайталау"</string>
+    <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Әрекетті автоматты қайталау режимін қосу"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Бейне қоңырау барысында Телетайп режимін өзгертуге рұқсат етілмеген"</string>
     <string name="menu_add" msgid="1882023737425114762">"Байланыс қосу"</string>
     <string name="menu_edit" msgid="7143003705504672374">"Байланыс өңдеу"</string>
