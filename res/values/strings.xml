@@ -1771,6 +1771,10 @@
     <!-- In-call screen: error message shown when the user attempts to place a call, but the network
          does not have enough resources (e.g. it is busy) and the call cannot be placed. -->
     <string name="callFailed_NetworkBusy">Network is busy.  Please try your call again later.</string>
+    <!-- In-call screen: error message shown when the user attempts to place a call, but the network
+         does not have enough resources (e.g. it is congested) and the call cannot be placed. -->
+    <string name="callFailed_NetworkCongested">Network is congested.  Contact your mobile operator
+    for assistance.</string>
     <!-- Message displayed to the user when an outgoing call is deflected.  This means that the
          party the user is calling has chosen to send the call to another phone number. -->
     <string name="supp_service_notification_call_deflected">Call deflected.</string>
