@@ -77,6 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"ボイスメール"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"ボイスメール（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"通知"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"緊急速報メール"</string>
     <string name="call_settings" msgid="6112441768261754562">"通話設定"</string>
