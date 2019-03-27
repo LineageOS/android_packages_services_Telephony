@@ -28,9 +28,10 @@ import static org.mockito.Mockito.when;
 
 import android.os.AsyncResult;
 import android.os.Handler;
-import android.support.test.runner.AndroidJUnit4;
 import android.telephony.ServiceState;
 import android.test.suitebuilder.annotation.SmallTest;
+
+import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.Phone;

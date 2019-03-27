@@ -18,8 +18,8 @@ package com.android.phone.ecc;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.InstrumentationRegistry;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
 import com.android.phone.ecc.nano.ProtobufEccData;
