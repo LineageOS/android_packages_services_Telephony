@@ -6741,6 +6741,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Whether a modem stack is enabled or not.
+     */
+    @Override
+    public boolean isModemEnabledForSlot(int slotIndex, String callingPackage) {
+        Phone phone = PhoneFactory.getPhone(slotIndex);
+        if (phone == null) return false;
+
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, phone.getSubId(), callingPackage, "isModemEnabledForSlot")) {
+            throw new SecurityException("Requires READ_PHONE_STATE permission.");
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return PhoneConfigurationManager.getInstance().getPhoneStatus(phone);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
     @Override
     public void setMultiSimCarrierRestriction(boolean isMultiSimCarrierRestricted) {
         enforceModifyPermission();
