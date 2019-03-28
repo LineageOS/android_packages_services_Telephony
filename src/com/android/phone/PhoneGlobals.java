@@ -226,7 +226,8 @@ public class PhoneGlobals extends ContextWrapper {
                     // Marks the event where the SIM goes into ready state.
                     // Right now, this is only used for the PUK-unlocking
                     // process.
-                    if (msg.obj.equals(IccCardConstants.INTENT_VALUE_ICC_READY)) {
+                    if (msg.obj.equals(IccCardConstants.INTENT_VALUE_ICC_READY)
+                            || msg.obj.equals(IccCardConstants.INTENT_VALUE_ICC_LOADED)) {
                         // when the right event is triggered and there
                         // are UI objects in the foreground, we close
                         // them to display the lock panel.
