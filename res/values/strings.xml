@@ -175,6 +175,13 @@
     <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
     <string name="voicemail_notifications_key" translatable="false">voicemail_notification_key</string>
 
+    <!-- Title for Make and receive calls category. -->
+    <string name="make_and_receive_calls">Make &amp; receive calls</string>
+    <!-- Title for the button to launch smart forwarding which will configure call forwarding on both SIMs to forward the call to the other SIM number when its not reachable. -->
+    <string name="smart_forwarding_settings_menu">Smart Forwarding</string>
+    <!-- Description of smart forwarding setting. -->
+    <string name="smart_forwarding_settings_menu_summary">When one number isn\'t reachable, always forward calls to your other number</string>
+
     <!-- Voicemail notifications title. The user clicks on this preference navigate to the system settings screen for that channel
     .[CHAR LIMIT=30] -->
     <string name="voicemail_notifications_preference_title">Notifications</string>

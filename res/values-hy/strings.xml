@@ -77,6 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"Ձայնային փոստ"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Ձայնային փոստ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ՁՓ՝"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Ծանուցումներ"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Ծանուցումներ արտակարգ իրավիճակների մասին"</string>
     <string name="call_settings" msgid="6112441768261754562">"Զանգի կարգավորումներ"</string>
@@ -439,7 +445,7 @@
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Ընթերցում է SIM քարտից..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"Ձեր SIM քարտում կոնտակտներ չկան:"</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Ընտրեք կոնտակտները ներմուծման համար"</string>
-    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Կոնտակտները SIM քարտից ներմուծելու համար անջատեք Ինքնաթիռի ռեժիմը:"</string>
+    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Կոնտակտները SIM քարտից ներմուծելու համար անջատեք Ավիառեժիմը:"</string>
     <string name="enable_pin" msgid="5422767284133234860">"Միացնել/անջատել SIM PIN-ը"</string>
     <string name="change_pin" msgid="9174186126330785343">"Փոխել SIM PIN-ը"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"SIM PIN՝"</string>
@@ -491,8 +497,8 @@
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Ծառայություններ չկան"</string>
     <string name="notification_network_selection_text" msgid="7550380440576731104">"Ընտրված ցանցը (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) անհասանելի է"</string>
     <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Զանգ կատարելու համար միացեք բջջային ցանցին, անջատեք ինքնաթիռի կամ էներգախնայման ռեժիմը:"</string>
-    <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Զանգ կատարելու համար անջատեք Ինքնաթիռի ռեժիմը:"</string>
-    <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Զանգ կատարելու համար անջատեք Ինքնաթիռի ռեժիմը կամ միացեք անլար ցանցին:"</string>
+    <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Զանգ կատարելու համար անջատեք Ավիառեժիմը:"</string>
+    <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Զանգ կատարելու համար անջատեք Ավիառեժիմը կամ միացեք անլար ցանցին:"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Սովորական զանգ կատարելու համար դուրս եկեք շտապ կանչի ռեժիմից։"</string>
     <string name="incall_error_emergency_only" msgid="4678640422710818317">"Ցանցում գրանցված չէ:"</string>
     <string name="incall_error_out_of_service" msgid="8587993036435080418">"Բջջային ցանցն անհասանելի է:"</string>
@@ -521,7 +527,7 @@
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Կրկին հպեք՝ <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> համարին զանգելու համար"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Ռադիոն միացվում է..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Ծառայությունը մատչելի չէ: Նորից փորձեք…"</string>
-    <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Շտապ կանչի ժամանակ հնարավոր չէ մտնել ինքնաթիռի ռեժիմ:"</string>
+    <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Շտապ կանչի ժամանակ հնարավոր չէ մտնել Ավիառեժիմ:"</string>
     <string name="dial_emergency_error" msgid="1509085166367420355">"Հնարավոր չէ զանգել: <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> համարը արտակարգ իրավիճակի համար չէ:"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Հնարավոր չէ զանգել: Հավաքեք արտակարգ իրավիճակի որևէ համար:"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Շտապ կանչերը հասանելի չեն"</string>
@@ -666,7 +672,7 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"ԱՎԵԼԱՑՆԵԼ ԹՐԱՖԻԿԸ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"ՉԵՂԱՐԿԵԼ"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Զանգն ավարտվել է"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Ինքնաթիռի ռեժիմը միացած է"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Ավիառեժիմը միացած է"</string>
     <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"SIM քարտի սխալ"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Բջջային ցանցն անհասանելի է"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Զանգվող բաժանորդի հեռախոսահամարի հետ խնդիր կա: Սխալի կոդը՝ 1:"</string>
