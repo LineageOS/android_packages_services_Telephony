@@ -215,6 +215,7 @@ public class MobileNetworkSettings extends Activity  {
         private ListPreference mButtonPreferredNetworkMode;
         private ListPreference mButtonEnabledNetworks;
         private RestrictedSwitchPreference mButtonDataRoam;
+        private SwitchPreference mButtonEuRoam;
         private SwitchPreference mButton4glte;
         private Preference mLteDataServicePref;
         private Preference mEuiccSettingsPref;
@@ -397,6 +398,9 @@ public class MobileNetworkSettings extends Activity  {
                 return true;
             } else if (preference == mButtonDataRoam) {
                 // Do not disable the preference screen if the user clicks Data roaming.
+                return true;
+            } else if (preference == mButtonEuRoam) {
+                // Do not disable the preference screen if the user clicks EU roaming
                 return true;
             } else if (preference == mEuiccSettingsPref) {
                 Intent intent = new Intent(EuiccManager.ACTION_MANAGE_EMBEDDED_SUBSCRIPTIONS);
@@ -644,6 +648,8 @@ public class MobileNetworkSettings extends Activity  {
 
             mButtonDataRoam = (RestrictedSwitchPreference) prefSet.findPreference(
                     BUTTON_ROAMING_KEY);
+            mButtonEuRoam = (SwitchPreference) prefSet.findPreference(BUTTON_EU_ROAMING_KEY);
+            mButtonEuRoam.setOnPreferenceChangeListener(this);
             mButtonPreferredNetworkMode = (ListPreference) prefSet.findPreference(
                     BUTTON_PREFERED_NETWORK_MODE);
             mButtonEnabledNetworks = (ListPreference) prefSet.findPreference(
@@ -763,6 +769,7 @@ public class MobileNetworkSettings extends Activity  {
 
             prefSet.addPreference(mMobileDataPref);
             prefSet.addPreference(mButtonDataRoam);
+            prefSet.addPreference(mButtonEuRoam);
             prefSet.addPreference(mDataUsagePref);
 
             // Customized preferences needs to be initialized with subId.
@@ -785,6 +792,11 @@ public class MobileNetworkSettings extends Activity  {
                             UserManager.DISALLOW_DATA_ROAMING);
                 }
             }
+
+            mButtonEuRoam.setEnabled(mButtonDataRoam.isEnabled() && !mButtonDataRoam.isChecked());
+            boolean euRoamingEnabled = android.provider.Settings.Global.getInt(getContentResolver(),
+                    android.provider.Settings.Global.EU_ROAMING, 0) != 0;
+            mButtonEuRoam.setChecked(euRoamingEnabled);
         }
 
         private void updateBody() {
@@ -1211,6 +1223,10 @@ public class MobileNetworkSettings extends Activity  {
                     mPhone.setDataRoamingEnabled(false);
                 }
                 return true;
+            } else if (preference == mButtonEuRoam) {
+                android.provider.Settings.Global.putInt(getContentResolver(),
+                        android.provider.Settings.Global.EU_ROAMING,
+                        (Boolean) objValue ? 1 : 0);
             } else if (preference == mVideoCallingPref) {
                 // If mButton4glte is not checked, mVideoCallingPref should be disabled.
                 // So it only makes sense to call phoneMgr.enableVideoCalling if it's checked.

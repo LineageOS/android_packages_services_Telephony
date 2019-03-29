@@ -71,4 +71,8 @@
     <string name="call_notif_callconnectingect">Call connecting through explicit call transfer</string>
     <!-- Toast text for incoming call connected through ECT -->
     <string name="call_notif_callconnectedect">Call connected through explicit call transfer</string>
+
+    <!-- EU Roaming -->
+    <string name="eu_roaming_title">EU Roaming</string>
+    <string name="eu_roaming_summary">Connect to data services when roaming within the EU</string>
 </resources>
