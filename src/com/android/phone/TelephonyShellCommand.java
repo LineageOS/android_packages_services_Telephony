@@ -163,10 +163,10 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("    Add(-a), Clear(-c), Print (-p) or Remove(-r) the emergency number list in"
                 + " the test mode");
         pw.println("      -a <emergency number address>: add an emergency number address for the"
-                + " test mode, only allows '0'-'9', '*', or '#'.");
+                + " test mode, only allows '0'-'9', '*', '#' or '+'.");
         pw.println("      -c: clear the emergency number list in the test mode.");
         pw.println("      -r <emergency number address>: remove an existing emergency number"
-                + " address added by the test mode, only allows '0'-'9', '*', or '#'.");
+                + " address added by the test mode, only allows '0'-'9', '*', '#' or '+'.");
         pw.println("      -p: get the full emergency number list in the test mode.");
     }
 
@@ -208,7 +208,7 @@ public class TelephonyShellCommand extends ShellCommand {
                 String emergencyNumberCmd = getNextArgRequired();
                 if (emergencyNumberCmd == null
                         || !EmergencyNumber.validateEmergencyNumberAddress(emergencyNumberCmd)) {
-                    errPw.println("An emergency number (only allow '0'-'9', '*', or '#') needs"
+                    errPw.println("An emergency number (only allow '0'-'9', '*', '#' or '+') needs"
                             + " to be specified after -a in the command ");
                     return -1;
                 }
@@ -243,7 +243,7 @@ public class TelephonyShellCommand extends ShellCommand {
                 String emergencyNumberCmd = getNextArgRequired();
                 if (emergencyNumberCmd == null
                         || !EmergencyNumber.validateEmergencyNumberAddress(emergencyNumberCmd)) {
-                    errPw.println("An emergency number (only allow '0'-'9', '*', or '#') needs"
+                    errPw.println("An emergency number (only allow '0'-'9', '*', '#' or '+') needs"
                             + " to be specified after -r in the command ");
                     return -1;
                 }
