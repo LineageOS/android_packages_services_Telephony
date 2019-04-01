@@ -1152,8 +1152,6 @@
     <string name="emergency_information_confirm_hint">Tap again to view info</string>
     <!-- Dialog title for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_title">Emergency call</string>
-    <!-- Title for the emergency dialpad UI -->
-    <string name="emergency_dialpad_title">Emergency calls only</string>
     <!-- Emergency dialer: Title of single emergency shortcut button -->
     <string name="single_emergency_number_title">Emergency number</string>
     <!-- Emergency dialer: Title of numerous emergency shortcut buttons -->
