@@ -66,25 +66,6 @@
             android:layout_gravity="bottom"
             android:orientation="vertical">
 
-            <!--Emergency dialer shortcuts implement EmergencyInfoGroup to replace
-            EmergencyActionGroup. Using a title to indicate the dialpad is emergency calls only.-->
-            <FrameLayout
-                android:id="@+id/emergency_dialpad_title_container"
-                android:layout_height="64dp"
-                android:layout_width="match_parent"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
-                android:visibility="gone">
-                <TextView
-                    android:id="@+id/emergency_dialpad_title"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="center"
-                    android:textStyle="bold"
-                    android:maxLines="1"
-                    android:text="@string/emergency_dialpad_title"/>
-            </FrameLayout>
-
             <!-- FrameLayout -->
             <com.android.phone.EmergencyActionGroup
                 android:id="@+id/emergency_action_group"
