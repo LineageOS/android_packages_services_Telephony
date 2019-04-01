@@ -6196,11 +6196,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isDataRoamingEnabled(int subId) {
+        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
+                null /* message */);
+
         boolean isEnabled = false;
         final long identity = Binder.clearCallingIdentity();
         try {
-            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
-                    null /* message */);
             Phone phone = getPhone(subId);
             isEnabled =  phone != null ? phone.getDataRoamingEnabled() : false;
         } catch (Exception e) {
@@ -6225,11 +6226,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void setDataRoamingEnabled(int subId, boolean isEnabled) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "setDataRoamingEnabled");
+
         final long identity = Binder.clearCallingIdentity();
         try {
-            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                    mApp, subId, "setDataRoamingEnabled");
-
             Phone phone = getPhone(subId);
             if (phone != null) {
                 phone.setDataRoamingEnabled(isEnabled);
@@ -6241,11 +6242,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean isManualNetworkSelectionAllowed(int subId) {
+        TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isManualNetworkSelectionAllowed");
+
         boolean isAllowed = true;
         final long identity = Binder.clearCallingIdentity();
         try {
-            TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
-                    mApp, subId, "isManualNetworkSelectionAllowed");
             Phone phone = getPhone(subId);
             if (phone != null) {
                 isAllowed = phone.isCspPlmnEnabled();
