@@ -525,7 +525,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private void broadcastConfigChangedIntent(int phoneId, boolean addSubIdExtra) {
         Intent intent = new Intent(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
         intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT |
-                Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND);
+                Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND |
+                Intent.FLAG_RECEIVER_FOREGROUND);
         // Include subId/carrier id extra only if SIM records are loaded
         TelephonyManager telephonyManager = TelephonyManager.from(mContext);
         int simApplicationState = telephonyManager.getSimApplicationState();
