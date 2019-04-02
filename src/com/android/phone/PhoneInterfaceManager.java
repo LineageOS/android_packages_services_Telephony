@@ -74,6 +74,7 @@ import android.telephony.NetworkScanRequest;
 import android.telephony.PhoneCapability;
 import android.telephony.PhoneNumberRange;
 import android.telephony.RadioAccessFamily;
+import android.telephony.RadioAccessSpecifier;
 import android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
@@ -82,6 +83,7 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyHistogram;
 import android.telephony.TelephonyManager;
+import android.telephony.TelephonyScanManager;
 import android.telephony.UiccCardInfo;
 import android.telephony.UiccSlotInfo;
 import android.telephony.UssdResponse;
@@ -4423,7 +4425,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             IBinder binder, String callingPackage) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "requestNetworkScan");
-
         LocationAccessPolicy.LocationPermissionResult locationResult =
                 LocationAccessPolicy.checkLocationPermission(mApp,
                         new LocationAccessPolicy.LocationPermissionQuery.Builder()
@@ -4433,16 +4434,52 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setMethod("requestNetworkScan")
                                 .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
                                 .build());
-        switch (locationResult) {
-            case DENIED_HARD:
-                throw new SecurityException("Not allowed to request network scan -- location");
-            case DENIED_SOFT:
-                return -1;
+        if (locationResult != LocationAccessPolicy.LocationPermissionResult.ALLOWED) {
+            SecurityException e = checkNetworkRequestForSanitizedLocationAccess(request);
+            if (e != null) {
+                if (locationResult == LocationAccessPolicy.LocationPermissionResult.DENIED_HARD) {
+                    throw e;
+                } else {
+                    return TelephonyScanManager.INVALID_SCAN_ID;
+                }
+            }
         }
-
         return mNetworkScanRequestTracker.startNetworkScan(
                 request, messenger, binder, getPhone(subId),
                 callingPackage);
+    }
+
+    private SecurityException checkNetworkRequestForSanitizedLocationAccess(
+            NetworkScanRequest request) {
+        if (mApp.checkCallingOrSelfPermission(android.Manifest.permission.NETWORK_SCAN)
+                != PERMISSION_GRANTED) {
+            return new SecurityException("permission.NETWORK_SCAN is needed for network scans"
+                    + " without location access.");
+        }
+
+        if (request.getSpecifiers() != null && request.getSpecifiers().length > 0) {
+            for (RadioAccessSpecifier ras : request.getSpecifiers()) {
+                if (ras.getBands() != null && ras.getBands().length > 0) {
+                    return new SecurityException("Specific bands must not be"
+                            + " scanned without location access.");
+                }
+                if (ras.getChannels() != null && ras.getChannels().length > 0) {
+                    return new SecurityException("Specific channels must not be"
+                            + " scanned without location access.");
+                }
+            }
+        }
+
+        List<String> allowedMccMncs =
+                NetworkScanRequestTracker.getAllowedMccMncsForLocationRestrictedScan(mApp);
+        for (String mccmnc : request.getPlmns()) {
+            if (!allowedMccMncs.contains(mccmnc)) {
+                return new SecurityException("Requested mccmnc " + mccmnc + " is not known to the"
+                        + " device and cannot be scanned for without location access.");
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -6183,11 +6220,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isDataRoamingEnabled(int subId) {
+        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
+                null /* message */);
+
         boolean isEnabled = false;
         final long identity = Binder.clearCallingIdentity();
         try {
-            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
-                    null /* message */);
             Phone phone = getPhone(subId);
             isEnabled =  phone != null ? phone.getDataRoamingEnabled() : false;
         } catch (Exception e) {
@@ -6212,11 +6250,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void setDataRoamingEnabled(int subId, boolean isEnabled) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "setDataRoamingEnabled");
+
         final long identity = Binder.clearCallingIdentity();
         try {
-            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                    mApp, subId, "setDataRoamingEnabled");
-
             Phone phone = getPhone(subId);
             if (phone != null) {
                 phone.setDataRoamingEnabled(isEnabled);
@@ -6228,11 +6266,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean isManualNetworkSelectionAllowed(int subId) {
+        TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isManualNetworkSelectionAllowed");
+
         boolean isAllowed = true;
         final long identity = Binder.clearCallingIdentity();
         try {
-            TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
-                    mApp, subId, "isManualNetworkSelectionAllowed");
             Phone phone = getPhone(subId);
             if (phone != null) {
                 isAllowed = phone.isCspPlmnEnabled();

@@ -1111,13 +1111,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
         mEmergencyInfoGroup.setOnConfirmClickListener(this);
 
-        // EmergencyActionGroup is replaced by EmergencyInfoGroup.
-        mEmergencyActionGroup.setVisibility(View.GONE);
-
-        // Setup dialpad title.
-        final View emergencyDialpadTitle = findViewById(R.id.emergency_dialpad_title_container);
-        emergencyDialpadTitle.setVisibility(View.VISIBLE);
-
         mEmergencyShortcutButtonList = new ArrayList<>();
         setupEmergencyCallShortcutButton();
 
