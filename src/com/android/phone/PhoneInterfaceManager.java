@@ -6991,12 +6991,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Get whether reboot is required or not after making changes to modem configurations.
-     * Return value defaults to true
+     * Get whether making changes to modem configurations will trigger reboot.
+     * Return value defaults to true.
      */
     @Override
-    public boolean isRebootRequiredForModemConfigChange() {
-        enforceReadPrivilegedPermission("isRebootRequiredForModemConfigChange");
+    public boolean doesSwitchMultiSimConfigTriggerReboot(int subId, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, "doesSwitchMultiSimConfigTriggerReboot")) {
+            return false;
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             return mPhoneConfigurationManager.isRebootRequiredForModemConfigChange();
