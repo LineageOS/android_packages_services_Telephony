@@ -4459,10 +4459,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         if (request.getSpecifiers() != null && request.getSpecifiers().length > 0) {
             for (RadioAccessSpecifier ras : request.getSpecifiers()) {
-                if (ras.getBands() != null && ras.getBands().length > 0) {
-                    return new SecurityException("Specific bands must not be"
-                            + " scanned without location access.");
-                }
                 if (ras.getChannels() != null && ras.getChannels().length > 0) {
                     return new SecurityException("Specific channels must not be"
                             + " scanned without location access.");
