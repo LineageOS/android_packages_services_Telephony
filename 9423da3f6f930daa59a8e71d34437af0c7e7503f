@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86aa1733_3965ddb8",
+        "filename": "src/com/android/phone/NetworkQueryService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-04-04T22:27:24Z",
+      "side": 1,
+      "message": "isRequestNetworkScanDisabled, with \"d\" at the end perhaps?",
+      "range": {
+        "startLine": 198,
+        "startChar": 42,
+        "endLine": 198,
+        "endChar": 69
+      },
+      "revId": "9423da3f6f930daa59a8e71d34437af0c7e7503f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
