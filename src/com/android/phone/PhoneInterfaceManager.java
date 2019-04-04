@@ -74,6 +74,7 @@ import android.telephony.NetworkScanRequest;
 import android.telephony.PhoneCapability;
 import android.telephony.PhoneNumberRange;
 import android.telephony.RadioAccessFamily;
+import android.telephony.RadioAccessSpecifier;
 import android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
@@ -82,6 +83,7 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyHistogram;
 import android.telephony.TelephonyManager;
+import android.telephony.TelephonyScanManager;
 import android.telephony.UiccCardInfo;
 import android.telephony.UiccSlotInfo;
 import android.telephony.UssdResponse;
@@ -2797,6 +2799,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public boolean isInEmergencySmsMode() {
+        enforceReadPrivilegedPermission("isInEmergencySmsMode");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            for (Phone phone : PhoneFactory.getPhones()) {
+                if (phone.isInEmergencySmsMode()) {
+                    return true;
+                }
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return false;
+    }
+
+    @Override
     public void registerImsRegistrationCallback(int subId, IImsRegistrationCallback c)
             throws RemoteException {
         enforceReadPrivilegedPermission("registerImsRegistrationCallback");
@@ -4407,7 +4425,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             IBinder binder, String callingPackage) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "requestNetworkScan");
-
         LocationAccessPolicy.LocationPermissionResult locationResult =
                 LocationAccessPolicy.checkLocationPermission(mApp,
                         new LocationAccessPolicy.LocationPermissionQuery.Builder()
@@ -4417,16 +4434,52 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setMethod("requestNetworkScan")
                                 .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
                                 .build());
-        switch (locationResult) {
-            case DENIED_HARD:
-                throw new SecurityException("Not allowed to request network scan -- location");
-            case DENIED_SOFT:
-                return -1;
+        if (locationResult != LocationAccessPolicy.LocationPermissionResult.ALLOWED) {
+            SecurityException e = checkNetworkRequestForSanitizedLocationAccess(request);
+            if (e != null) {
+                if (locationResult == LocationAccessPolicy.LocationPermissionResult.DENIED_HARD) {
+                    throw e;
+                } else {
+                    return TelephonyScanManager.INVALID_SCAN_ID;
+                }
+            }
         }
-
         return mNetworkScanRequestTracker.startNetworkScan(
                 request, messenger, binder, getPhone(subId),
                 callingPackage);
+    }
+
+    private SecurityException checkNetworkRequestForSanitizedLocationAccess(
+            NetworkScanRequest request) {
+        if (mApp.checkCallingOrSelfPermission(android.Manifest.permission.NETWORK_SCAN)
+                != PERMISSION_GRANTED) {
+            return new SecurityException("permission.NETWORK_SCAN is needed for network scans"
+                    + " without location access.");
+        }
+
+        if (request.getSpecifiers() != null && request.getSpecifiers().length > 0) {
+            for (RadioAccessSpecifier ras : request.getSpecifiers()) {
+                if (ras.getBands() != null && ras.getBands().length > 0) {
+                    return new SecurityException("Specific bands must not be"
+                            + " scanned without location access.");
+                }
+                if (ras.getChannels() != null && ras.getChannels().length > 0) {
+                    return new SecurityException("Specific channels must not be"
+                            + " scanned without location access.");
+                }
+            }
+        }
+
+        List<String> allowedMccMncs =
+                NetworkScanRequestTracker.getAllowedMccMncsForLocationRestrictedScan(mApp);
+        for (String mccmnc : request.getPlmns()) {
+            if (!allowedMccMncs.contains(mccmnc)) {
+                return new SecurityException("Requested mccmnc " + mccmnc + " is not known to the"
+                        + " device and cannot be scanned for without location access.");
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -4524,18 +4577,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Check whether DUN APN is required for tethering.
+     * Check whether DUN APN is required for tethering with subId.
      *
+     * @param subId the id of the subscription to require tethering.
      * @return {@code true} if DUN APN is required for tethering.
      * @hide
      */
     @Override
-    public boolean getTetherApnRequired() {
+    public boolean getTetherApnRequiredForSubscriber(int subId) {
         enforceModifyPermission();
         final long identity = Binder.clearCallingIdentity();
-        final Phone defaultPhone = getDefaultPhone();
+        final Phone phone = getPhone(subId);
         try {
-            return defaultPhone.hasMatchedTetherApnSetting();
+            if (phone != null) {
+                return phone.hasMatchedTetherApnSetting();
+            } else {
+                return false;
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -6162,11 +6220,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isDataRoamingEnabled(int subId) {
+        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
+                null /* message */);
+
         boolean isEnabled = false;
         final long identity = Binder.clearCallingIdentity();
         try {
-            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
-                    null /* message */);
             Phone phone = getPhone(subId);
             isEnabled =  phone != null ? phone.getDataRoamingEnabled() : false;
         } catch (Exception e) {
@@ -6191,11 +6250,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void setDataRoamingEnabled(int subId, boolean isEnabled) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "setDataRoamingEnabled");
+
         final long identity = Binder.clearCallingIdentity();
         try {
-            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                    mApp, subId, "setDataRoamingEnabled");
-
             Phone phone = getPhone(subId);
             if (phone != null) {
                 phone.setDataRoamingEnabled(isEnabled);
@@ -6207,11 +6266,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean isManualNetworkSelectionAllowed(int subId) {
+        TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isManualNetworkSelectionAllowed");
+
         boolean isAllowed = true;
         final long identity = Binder.clearCallingIdentity();
         try {
-            TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
-                    mApp, subId, "isManualNetworkSelectionAllowed");
             Phone phone = getPhone(subId);
             if (phone != null) {
                 isAllowed = phone.isCspPlmnEnabled();
@@ -6725,14 +6785,35 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Whether a modem stack is enabled or not.
+     */
     @Override
-    public void setMultisimCarrierRestriction(boolean isMultisimCarrierRestricted) {
+    public boolean isModemEnabledForSlot(int slotIndex, String callingPackage) {
+        Phone phone = PhoneFactory.getPhone(slotIndex);
+        if (phone == null) return false;
+
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, phone.getSubId(), callingPackage, "isModemEnabledForSlot")) {
+            throw new SecurityException("Requires READ_PHONE_STATE permission.");
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return PhoneConfigurationManager.getInstance().getPhoneStatus(phone);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void setMultiSimCarrierRestriction(boolean isMultiSimCarrierRestricted) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
         try {
             mTelephonySharedPreferences.edit()
-                    .putBoolean(PREF_MULTI_SIM_RESTRICTED, isMultisimCarrierRestricted)
+                    .putBoolean(PREF_MULTI_SIM_RESTRICTED, isMultiSimCarrierRestricted)
                     .commit();
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -6740,45 +6821,47 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public boolean isMultisimSupported(String callingPackage) {
+    @TelephonyManager.IsMultiSimSupportedResult
+    public int isMultiSimSupported(String callingPackage) {
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp,
-                getDefaultPhone().getSubId(), callingPackage, "isMultisimSupported")) {
-            return false;
+                getDefaultPhone().getSubId(), callingPackage, "isMultiSimSupported")) {
+            return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return isMultisimSupportedInternal();
+            return isMultiSimSupportedInternal();
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
 
-    private boolean isMultisimSupportedInternal() {
+    @TelephonyManager.IsMultiSimSupportedResult
+    private int isMultiSimSupportedInternal() {
         // If the device has less than 2 SIM cards, indicate that multisim is restricted.
         int numPhysicalSlots = UiccController.getInstance().getUiccSlots().length;
         if (numPhysicalSlots < 2) {
-            loge("isMultisimSupportedInternal: requires at least 2 cards");
-            return false;
+            loge("isMultiSimSupportedInternal: requires at least 2 cards");
+            return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
         // Check if the hardware supports multisim functionality. If usage of multisim is not
         // supported by the modem, indicate that it is restricted.
         PhoneCapability staticCapability =
                 mPhoneConfigurationManager.getStaticPhoneCapability();
         if (staticCapability == null) {
-            loge("isMultisimSupportedInternal: no static configuration available");
-            return false;
+            loge("isMultiSimSupportedInternal: no static configuration available");
+            return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
         if (staticCapability.logicalModemList.size() < 2) {
-            loge("isMultisimSupportedInternal: maximum number of modem is < 2");
-            return false;
+            loge("isMultiSimSupportedInternal: maximum number of modem is < 2");
+            return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
         // Check if support of multiple SIMs is restricted by carrier
         if (mTelephonySharedPreferences.getBoolean(PREF_MULTI_SIM_RESTRICTED, false)) {
-            return false;
+            return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_CARRIER;
         }
 
-        return true;
+        return TelephonyManager.MULTISIM_ALLOWED;
     }
 
     /**
@@ -6800,7 +6883,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         try {
             //only proceed if multi-sim is not restricted
-            if (!isMultisimSupportedInternal()) {
+            if (isMultiSimSupportedInternal() != TelephonyManager.MULTISIM_ALLOWED) {
                 loge("switchMultiSimConfig not possible. It is restricted or not supported.");
                 return;
             }
@@ -6811,12 +6894,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Get whether reboot is required or not after making changes to modem configurations.
-     * Return value defaults to true
+     * Get whether making changes to modem configurations will trigger reboot.
+     * Return value defaults to true.
      */
     @Override
-    public boolean isRebootRequiredForModemConfigChange() {
-        enforceReadPrivilegedPermission("isRebootRequiredForModemConfigChange");
+    public boolean doesSwitchMultiSimConfigTriggerReboot(int subId, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, "doesSwitchMultiSimConfigTriggerReboot")) {
+            return false;
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             return mPhoneConfigurationManager.isRebootRequiredForModemConfigChange();
