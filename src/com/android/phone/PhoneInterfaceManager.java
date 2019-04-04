@@ -4443,6 +4443,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (locationResult == LocationAccessPolicy.LocationPermissionResult.DENIED_HARD) {
                     throw e;
                 } else {
+                    loge(e.getMessage());
                     return TelephonyScanManager.INVALID_SCAN_ID;
                 }
             }
