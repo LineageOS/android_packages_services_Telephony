@@ -22,6 +22,30 @@
       "revId": "9423da3f6f930daa59a8e71d34437af0c7e7503f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "067b117d_33357f81",
+        "filename": "src/com/android/phone/NetworkQueryService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 20357
+      },
+      "writtenOn": "2019-04-05T02:39:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86aa1733_3965ddb8",
+      "range": {
+        "startLine": 198,
+        "startChar": 42,
+        "endLine": 198,
+        "endChar": 69
+      },
+      "revId": "9423da3f6f930daa59a8e71d34437af0c7e7503f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
