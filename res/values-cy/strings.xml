@@ -234,11 +234,6 @@
     <string name="call_category">Galw</string>
     <string name="network_operator_category">Rhwydwaith</string>
     <string name="enhanced_4g_lte_mode_title">Modd 4G LTE Gwell</string>
-    <string-array name="enhanced_4g_lte_mode_title_variant">
-        <item>@string/enhanced_4g_lte_mode_title</item>
-        <item>Galwadau Uwch</item>
-        <item>Galwadau 4G</item>
-    </string-array>
     <string name="enhanced_4g_lte_mode_summary">Defnyddio gwasanaethau LTE i wella llais a chyfathrebu arall (argymhellir)</string>
     <string name="data_enabled">Galluogwyd data</string>
     <string name="data_enable_summary">Caniatáu defnyddio data</string>
