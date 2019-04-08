@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"البريد الصوتي"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"البريد الصوتي (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"إجراء المكالمات وتلقيها"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"إعادة توجيه ذكية"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"عندما يتعذر الوصول إلى أحد الأرقام، تتم إعادة توجيه المكالمات دومًا إلى رقمك الآخر"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"الإشعارات"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"عمليات البث في حالات الطوارئ"</string>
     <string name="call_settings" msgid="6112441768261754562">"إعدادات الاتصال"</string>
@@ -519,7 +516,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"المالك"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"انقر مجددًا لعرض المعلومات."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"مكالمة الطوارئ"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"مكالمات طوارئ فقط"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"رقم الطوارئ"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"أرقام الطوارئ"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"انقر مجددًا للاتصال بالرقم <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -764,6 +760,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"إعدادات منع الاتصال"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"هل تريد إيقاف كل إعدادات منع الاتصال؟"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"الشبكة مشغولة. يُرجى إعادة الاتّصال في وقتٍ لاحق."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"الشبكة مزدحمة. اتصل بمشغّل شبكة الجوّال للحصول على مساعدة."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"تم انحراف المكالمة."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"تمت إعادة توجيه المكالمة."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"المكالمة قيد الانتظار."</string>
