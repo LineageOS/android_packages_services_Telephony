@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Ivoyisimeyili"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Ivoyisimeyili (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Yenza uphinde wamukele amakholi"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Ukudluliselwa phambili okuhlakaniphile"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Uma inombolo eyodwa ingafinyeleleki, hlala njalo udlulisela amakholi kwenye inombolo yakho"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Izaziso"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Ukusakazwa okuphuthumayo"</string>
     <string name="call_settings" msgid="6112441768261754562">"Izilungiselelo zekholi"</string>
@@ -521,7 +518,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Umnikazi"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Thepha futhi ukuze ubuke ulwazi"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Ikholi ephuthumayo"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Amakholi aphuthumayo kuphela"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Inombolo ephuthumayo"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Izinombolo zesimo esiphuthumayo"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Thepha futhi ukuze ushayele u-<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -758,6 +754,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Izilungiselelo zokuvimbela ikholi"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Yeka ukusebenzisa zonke izilungiselelo zokuvimbela?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Inethiwekhi imatasa. Sicela uzame ikholi yakho futhi ngemuva kwesikhathi."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Inethiwekhi iminyene. Xhumana ne-opharetha yakho yeselula ukuze uthole usizo."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Ikholi yehlisiwe."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Ikholi idluliselwe."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Ikholi ilindile."</string>

@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"صوتی میل"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"صوتی میل (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"کالز کریں اور وصول کریں"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"اسمارٹ فارورڈنگ"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"ایک نمبر کے قابل رسائی نہ ہونے کی صورت میں کالز کو ہمیشہ دوسرے نمبر پر فارورڈ کریں"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"اطلاعات"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"ہنگامی براڈکاسٹس"</string>
     <string name="call_settings" msgid="6112441768261754562">"کال کی ترتیبات"</string>
@@ -519,7 +516,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"مالک"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"معلومات دیکھنے کیلئے دوبارہ تھپتھپائیں"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ہنگامی کال"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"صرف ہنگامی کالز"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"ایمرجنسی نمبر"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"ایمرجنسی نمبرز"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> کو کال کرنے کے لئے دوبارہ تھپتھپائيں"</string>
@@ -756,6 +752,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"کال میں رکاوٹ کی ترتیبات"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"کال میں رکاوٹ والی سبھی ترتیبات کو غیر فعال کریں؟"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"نیٹ ورک مصروف ہے۔ براہ کرم بعد میں دوبارہ اپنی کال آزمائیں۔"</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"نیٹ ورک مصروف ہے۔ مدد کے لیے اپنے موبائل آپریٹر سے رابطہ کریں۔"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"کال کو مُنصرف کیا گیا۔"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"کال آگے منتقل کر دی گئی۔"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"کال انتظار میں ہے۔"</string>

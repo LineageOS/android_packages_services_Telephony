@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"پست صوتی"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"پست صوتی (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"برقراری و دریافت تماس"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"بازارسال هوشمند"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"وقتی شماره‌ای قابل دسترسی نیست، همیشه تماس‌ها را به شماره دیگری بازارسال کنید."</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"اعلان‌ها"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"پخش هشدارهای اضطراری"</string>
     <string name="call_settings" msgid="6112441768261754562">"تنظیمات تماس"</string>
@@ -519,7 +516,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"مالک"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"برای دیدن اطلاعات، دوباره ضربه بزنید"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"تماس اضطراری"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"فقط تماس‌های اضطراری"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"شماره تلفن اضطراری"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"شماره تلفن‌های اضطراری"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"برای تماس با <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> دوباره ضربه بزنید"</string>
@@ -756,6 +752,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"تنظیمات محدودیت تماس"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"همه تنظیمات محدودیت تماس غیرفعال شود؟"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"شبکه مشغول است. لطفاً بعداً دوباره تماس بگیرید."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"شبکه شلوغ است. برای کمک، با اپراتور دستگاه همراه تماس بگیرید."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"تماس برگردانده شد."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"تماس هدایت شد."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"تماس درحال انتظار است."</string>

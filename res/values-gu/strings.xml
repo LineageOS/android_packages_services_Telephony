@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"વૉઇસમેઇલ"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"વૉઇસમેઇલ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"કૉલ કરો અને પ્રાપ્ત કરો"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"સ્માર્ટ ફૉરવર્ડિંગ"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"એક નંબર પર પહોંચી શકાય તેમ ન હોય, ત્યારે હંમેશાં તમારા અન્ય નંબર પર કૉલ ફૉરવર્ડ કરો"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"સૂચનાઓ"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"કટોકટીના બ્રોડકાસ્ટ્સ"</string>
     <string name="call_settings" msgid="6112441768261754562">"કૉલ સેટિંગ્સ"</string>
@@ -412,8 +409,8 @@
     <string name="sum_fdn" msgid="1959399454900272878">"ફિક્સ્ડ ડાયલિંગ નંબર્સને સંચાલિત કરો"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ઍક્સેસ માટે PIN બદલો"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ફોન નંબર સૂચિને સંચાલિત કરો"</string>
-    <string name="voice_privacy" msgid="3776841382844614716">"વૉઇસ ગોપનીયતા"</string>
-    <string name="voice_privacy_summary" msgid="3159383389833516214">"વધારેલ ગોપનીયતા મોડ સક્ષમ કરો"</string>
+    <string name="voice_privacy" msgid="3776841382844614716">"વૉઇસ પ્રાઇવસી"</string>
+    <string name="voice_privacy_summary" msgid="3159383389833516214">"વધારેલ પ્રાઇવસી મોડ ચાલુ કરો"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY મોડ"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"TTY મોડ સેટ કરો"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"સ્વતઃ-પુનઃપ્રયાસ કરો"</string>
@@ -519,7 +516,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"માલિક"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"માહિતી જોવા માટે ફરીથી ટૅપ કરો"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"કટોકટીનો કૉલ"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"ફક્ત કટોકટીના કૉલ"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"કટોકટીનો નંબર"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"કટોકટીના નંબર"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>ને ફરીથી કૉલ કરવા માટે ટૅપ કરો"</string>
@@ -756,6 +752,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"કૉલ બારિંગની સેટિંગ"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"કૉલ બારિંગની બધી સેટિંગ નિષ્ક્રિય કરીએ?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"નેટવર્ક વ્યસ્ત છે. કૃપા કરીને કૉલ કરવાનો પછીથી ફરી પ્રયાસ કરો."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"નેટવર્ક ખૂબ ભરાયેલું છે. સહાય માટે મોબાઇલ ઑપરેટરનો સંપર્ક કરો."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"કૉલ બીજે વાળ્યો."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"કૉલ ફોર્વર્ડ કર્યો."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"કૉલ પ્રતીક્ષામાં છે."</string>
