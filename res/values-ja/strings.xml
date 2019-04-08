@@ -33,7 +33,7 @@
     <string name="manageConferenceLabel" msgid="4691922394301969053">"グループ通話オプション"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"スピーカー"</string>
-    <string name="audio_mode_earpiece" msgid="4156527186373869107">"モバイル端末のイヤホン"</string>
+    <string name="audio_mode_earpiece" msgid="4156527186373869107">"モバイルデバイスのイヤホン"</string>
     <string name="audio_mode_wired_headset" msgid="1465350758489175975">"有線ヘッドセット"</string>
     <string name="audio_mode_bluetooth" msgid="3047641300848211128">"Bluetooth"</string>
     <string name="wait_prompt_str" msgid="7601815427707856238">"次の番号を送信しますか？\n"</string>
@@ -46,7 +46,7 @@
     <string name="no_vm_number_msg" msgid="1300729501030053828">"SIMカードにボイスメールの番号がありません。"</string>
     <string name="add_vm_number_str" msgid="4676479471644687453">"番号を追加"</string>
     <string name="voice_number_setting_primary_user_only" msgid="6596604364907022416">"ボイスメール設定を変更できるのはメインユーザーのみに限られています。"</string>
-    <string name="puk_unlocked" msgid="2284912838477558454">"SIMカードロックを解除しました。端末のロックを解除しています..."</string>
+    <string name="puk_unlocked" msgid="2284912838477558454">"SIMカードロックを解除しました。デバイスのロックを解除しています..."</string>
     <string name="label_ndp" msgid="780479633159517250">"SIMネットワークのロック解除PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"ロック解除"</string>
     <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"無効"</string>
@@ -67,7 +67,7 @@
     <string name="phone_accounts_default_account_label" msgid="4183772241814460014">"利用できるネットワークなし"</string>
     <string name="phone_accounts_settings_header" msgid="4141710640883261094">"設定"</string>
     <string name="phone_accounts_choose_accounts" msgid="5232948804226424002">"アカウントを選択"</string>
-    <string name="phone_accounts_selection_header" msgid="1365215726106915865">"モバイル端末アカウント"</string>
+    <string name="phone_accounts_selection_header" msgid="1365215726106915865">"モバイルデバイスアカウント"</string>
     <string name="phone_accounts_add_sip_account" msgid="2023821743341923271">"SIPアカウントを追加"</string>
     <string name="phone_accounts_configure_account_settings" msgid="1361715069911607109">"アカウントを設定"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="207619531589278471">"すべての通話アカウント"</string>
@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"ボイスメール"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"ボイスメール（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"通話の発着と着信"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"スマート転送"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"電話がつながらない場合、必ず別の電話番号に通話を転送する"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"通知"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"緊急速報メール"</string>
     <string name="call_settings" msgid="6112441768261754562">"通話設定"</string>
@@ -394,7 +391,7 @@
     <item msgid="7494167883478914080">"0"</item>
     <item msgid="6043847456049107742">"1"</item>
   </string-array>
-    <string name="cdma_activate_device" msgid="3793805892364814518">"端末を有効にする"</string>
+    <string name="cdma_activate_device" msgid="3793805892364814518">"デバイスを有効にする"</string>
     <string name="cdma_lte_data_service" msgid="4255018217292548962">"データサービスの設定"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"携帯通信会社の設定"</string>
     <string name="fdn" msgid="7878832555095183202">"発信番号制限"</string>
@@ -519,7 +516,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"所有者"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"もう一度タップすると情報を確認できます"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"緊急通報"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"緊急通報のみ"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"緊急通報番号"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"緊急通報番号一覧"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"もう一度タップすると <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> 宛に発信できます"</string>
@@ -573,19 +569,19 @@
     <string name="ota_title_activate" msgid="8616918561356194398">"携帯電話を有効にする"</string>
     <string name="ota_touch_activate" msgid="6553212803262586244">"通話サービスを有効にするには特別な通話が必要です。\n\n[有効にする]を押してから、流れてくる音声に従って電話を有効にしてください。"</string>
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"有効にしています..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"端末はモバイルデータサービスを有効にしています。\n\nこの処理には5分ほどかかることがあります。"</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"デバイスはモバイルデータサービスを有効にしています。\n\nこの処理には5分ほどかかることがあります。"</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"スキップして有効にしない"</string>
     <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"スキップして有効にしない場合、通話やモバイルデータネットワークの接続ができません（Wi-Fiネットワークには接続できます）。携帯を有効にするまでは、電源を入れるたびに有効にするかどうかを尋ねるメッセージが表示されます。"</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"スキップ"</string>
     <string name="ota_activate" msgid="1368528132525626264">"有効にする"</string>
-    <string name="ota_title_activate_success" msgid="6570240212263372046">"モバイル端末が有効になりました。"</string>
+    <string name="ota_title_activate_success" msgid="6570240212263372046">"モバイルデバイスが有効になりました。"</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"有効にする際のエラー"</string>
     <string name="ota_listen" msgid="162923839877584937">"完了したというメッセージが流れるまで音声ガイダンスに従ってください。"</string>
     <string name="ota_speaker" msgid="6904589278542719647">"スピーカー"</string>
     <string name="ota_progress" msgid="460876637828044519">"プログラムを設定しています…"</string>
     <string name="ota_failure" msgid="7713756181204620397">"プログラムを設定できませんでした"</string>
     <string name="ota_successful" msgid="1880780692887077407">"携帯が有効に設定されました。サービスが開始されるまで最大で15分ほどかかることがあります。"</string>
-    <string name="ota_unsuccessful" msgid="8072141612635635357">"モバイル端末を有効にできませんでした。\n電波状態が悪い可能性があります。\n\n電波の良い場所（窓のそばや屋外）に移動してもう一度お試しいただくか、カスタマーサービスに他の方法をお問い合わせください。"</string>
+    <string name="ota_unsuccessful" msgid="8072141612635635357">"モバイルデバイスを有効にできませんでした。\n電波状態が悪い可能性があります。\n\n電波の良い場所（窓のそばや屋外）に移動してもう一度お試しいただくか、カスタマーサービスに他の方法をお問い合わせください。"</string>
     <string name="ota_spc_failure" msgid="3909983542575030796">"超過SPCによる失敗"</string>
     <string name="ota_call_end" msgid="4537279738134612388">"戻る"</string>
     <string name="ota_try_again" msgid="7685477206465902290">"再試行"</string>
@@ -756,6 +752,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"通話制限設定"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"通話制限設定をすべて無効にしますか？"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"ネットワークがビジー状態です。しばらくしてからもう一度通話を発信してみてください。"</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"ネットワークが混雑しています。サポートが必要な場合は携帯通信会社にお問い合わせください。"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"通話が転送されました。"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"通話が転送されました。"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"応答保留中です。"</string>
@@ -773,7 +770,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"転送されてきた電話。"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"グループ通話に参加しようとしています。"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"通話の保留が解除されました。"</string>
-    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"現在この端末のプロビジョニングを行っているため、通話を発信することはできません。"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"現在このデバイスのプロビジョニングを行っているため、通話を発信することはできません。"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"すでに別の通話を発信中のため、新しく通話を発信することはできません。"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"通話を着信中のため、新しく通話を発信することはできません。着信中の通話に応答するか、通話を拒否すると、新しく通話を発信できるようになります。"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call システム プロパティを使用して通話機能が無効に設定されているため、通話を発信することはできません。"</string>

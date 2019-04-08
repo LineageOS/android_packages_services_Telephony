@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Ձայնային փոստ"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Ձայնային փոստ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ՁՓ՝"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Զանգեք և զանգեր ստացեք"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Խելացի վերահասցեավորում"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Երբ համարներից մեկն անհասանելի է, միշտ վերահասցեավորեք զանգերը ձեր մյուս համարին"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Ծանուցումներ"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Ծանուցումներ արտակարգ իրավիճակների մասին"</string>
     <string name="call_settings" msgid="6112441768261754562">"Զանգի կարգավորումներ"</string>
@@ -496,7 +493,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Ձայնային փոստի համարն անհայտ է"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Ծառայություններ չկան"</string>
     <string name="notification_network_selection_text" msgid="7550380440576731104">"Ընտրված ցանցը (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) անհասանելի է"</string>
-    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Զանգ կատարելու համար միացեք բջջային ցանցին, անջատեք ինքնաթիռի կամ էներգախնայման ռեժիմը:"</string>
+    <string name="incall_error_power_off" product="watch" msgid="2007450435656211658">"Զանգ կատարելու համար միացեք բջջային ցանցին, անջատեք մարտկոցի տնտեսումը կամ ավիառեժիմը:"</string>
     <string name="incall_error_power_off" product="default" msgid="2947938060513306698">"Զանգ կատարելու համար անջատեք Ավիառեժիմը:"</string>
     <string name="incall_error_power_off_wfc" msgid="8711428920632416575">"Զանգ կատարելու համար անջատեք Ավիառեժիմը կամ միացեք անլար ցանցին:"</string>
     <string name="incall_error_ecm_emergency_only" msgid="738708660612388692">"Սովորական զանգ կատարելու համար դուրս եկեք շտապ կանչի ռեժիմից։"</string>
@@ -521,7 +518,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Սեփականատեր"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Կրկին հպեք՝ տեղեկությունները դիտելու համար"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Շտապ կանչ"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Միայն շտապ կանչեր"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Արտակարգ ծառայություն"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Արտակարգ ծառայությունների հեռախոսահամարներ"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Կրկին հպեք՝ <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> համարին զանգելու համար"</string>
@@ -758,6 +754,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Զանգերի արգելափակման կարգավորումներ"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Անջատե՞լ զանգերի արգելափակման բոլոր կարգավորումները"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Ցանցը զբաղված է: Ավելի ուշ նորից փորձեք զանգել:"</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Ցանցը ծանրաբեռնված է: Օգնության համար դիմեք ձեր բջջային օպերատորին:"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Զանգը վերահասցեավորվեց:"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Զանգը վերահասցեավորվեց:"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Զանգը սպասման մեջ է:"</string>

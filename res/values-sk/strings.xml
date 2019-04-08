@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Hlasová schránka"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Hlasová schránka (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"HS:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Uskutočňovanie a prijímanie hovorov"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Inteligentné presmerovanie"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Keď je jedno číslo nedostupné, hovory budú vždy presmerované na druhé číslo"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Upozornenia"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Núdzové vysielania"</string>
     <string name="call_settings" msgid="6112441768261754562">"Nastavenia hovorov"</string>
@@ -519,7 +516,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Vlastník"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Informácie si zobrazíte opätovným klepnutím"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Tiesňové volanie"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Len tiesňové volania"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Číslo tiesňovej linky"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Čísla tiesňovej linky"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Opätovným klepnutím zavoláte <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -760,6 +756,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Nastavenia blokovania hovorov"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Deaktivovať všetky nastavenia blokovania hovorov?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Sieť je zaneprázdnená. Skúste svoj hovor zopakovať neskôr."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Sieť je zahltená. O pomoc požiadajte svojho mobilného operátora."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Hovor bol odklonený."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Hovor bol presmerovaný."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Hovor čaká."</string>
