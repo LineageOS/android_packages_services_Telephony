@@ -186,9 +186,6 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         }
                     }
 
-                    if (mConfigFromDefaultApp[phoneId] == null
-                            && mConfigFromCarrierApp[phoneId] == null) break;
-
                     mConfigFromDefaultApp[phoneId] = null;
                     mConfigFromCarrierApp[phoneId] = null;
                     mServiceConnection[phoneId] = null;
@@ -586,6 +583,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             intent.putExtra(TelephonyManager.EXTRA_CARRIER_ID, getCarrierIdForPhoneId(phoneId));
         }
         intent.putExtra(CarrierConfigManager.EXTRA_SLOT_INDEX, phoneId);
+        log("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId);
         ActivityManager.broadcastStickyIntent(intent, UserHandle.USER_ALL);
         mHasSentConfigChange[phoneId] = true;
     }
