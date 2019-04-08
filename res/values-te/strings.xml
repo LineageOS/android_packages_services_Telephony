@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"వాయిస్ మెయిల్"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"వాయిస్ మెయిల్ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"కాల్‌లను చేయండి &amp; స్వీకరించండి"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"స్మార్ట్ ఫార్వర్డ్‌ను ప్రారంభించు"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"ఒక నంబర్‌ను చేరుకోలేకపోయినప్పుడు, మీ ఇతర నంబర్‌లకు కాల్‌లను ఎల్లప్పుడూ ఫార్వర్డ్ చేయబడతాయి."</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"నోటిఫికేషన్‌లు"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"అత్యవసర ప్రసారాలు"</string>
     <string name="call_settings" msgid="6112441768261754562">"కాల్ సెట్టింగ్‌లు"</string>
@@ -519,7 +516,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"యజమాని"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"సమాచారాన్ని చూడడానికి మళ్లీ నొక్కండి"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"అత్యవసర కాల్"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"అత్యవసర కాల్‌లు మాత్రమే"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"అత్యవసర నంబర్"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"అత్యవసర నంబర్‌లు"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>కు కాల్ చేయడానికి మళ్లీ నొక్కండి"</string>
@@ -756,6 +752,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"కాల్ బేరింగ్ సెట్టింగ్‌లు"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"అన్ని కాల్ బేరింగ్ సెట్టింగ్‌లను నిష్క్రియం చేయాలా?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"నెట్‌వర్క్ బిజీగా ఉంది. దయచేసి తిరిగి తర్వాత కాల్ చేయండి."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"నెట్‌వర్క్‌లో అంతరాయం ఏర్పడింది. సహాయం కోసం మీ మొబైల్ ఆపరేటర్‌ను సంప్రదించండి."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"కాల్ మళ్లించబడింది."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"కాల్ ఫార్వార్డ్ చేయబడింది."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"కాల్ నిరీక్షణలో ఉంది."</string>
