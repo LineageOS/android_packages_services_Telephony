@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Buzón de voz"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Buzón de voz (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Buzón de voz:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Hacer y recibir llamadas"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Desvío inteligente"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Cuando no se puede contactar con un número, las llamadas se desvían siempre a otro número"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notificaciones"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Difusiones de emergencia"</string>
     <string name="call_settings" msgid="6112441768261754562">"Ajustes de llamadas"</string>
@@ -521,7 +518,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Propietario"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tocar de nuevo para ver la información"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Llamada de emergencia"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Solo llamadas de emergencia"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Número de emergencia"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Números de emergencia"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tocar de nuevo para llamar al <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -758,6 +754,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Ajustes de bloqueo de llamadas"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"¿Quieres desactivar todos los ajustes de bloqueo de llamadas?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"La red está ocupada. Intenta llamar de nuevo más tarde."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"La red está saturada. Ponte en contacto con tu operador de telefonía móvil para solicitar ayuda."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Se ha derivado la llamada."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Se ha desviado la llamada."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"La llamada está en espera."</string>

@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Thư thoại"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Thư thoại (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Thư thoại:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Thực hiện và nhận cuộc gọi"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Chuyển tiếp thông minh"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Khi không thể gọi được một số, luôn chuyển tiếp cuộc gọi đến số khác"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Thông báo"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Phát sóng trong tình huống khẩn cấp"</string>
     <string name="call_settings" msgid="6112441768261754562">"Cài đặt cuộc gọi"</string>
@@ -519,7 +516,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Chủ sở hữu"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Nhấn lại để xem thông tin"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Cuộc gọi khẩn cấp"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Chỉ cuộc gọi khẩn cấp"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Số khẩn cấp"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Số khẩn cấp"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Nhấn lại để gọi <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -756,6 +752,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Cài đặt chặn cuộc gọi"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Bạn muốn hủy kích hoạt tất cả cài đặt chặn cuộc gọi?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Tất cả các nhân viên hỗ trợ hiện đang bận. Vui lòng thử gọi lại sau."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Đang nghẽn mạng. Hãy liên hệ với nhà mạng di động để được trợ giúp."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Đã chuyển hướng cuộc gọi."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Đã chuyển tiếp cuộc gọi."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Cuộc gọi đang chờ."</string>

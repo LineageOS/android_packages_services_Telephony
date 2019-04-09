@@ -77,12 +77,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Ujumbe wa sauti"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Ujumbe wa sauti (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Kupiga na kupokea simu"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Usambazaji Mahiri"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Ikiwa nambari moja haiwezi kufikiwa, sambaza simu kwa nambari nyingine kila wakati"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Arifa"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Matangazo ya dharura"</string>
     <string name="call_settings" msgid="6112441768261754562">"Mipangilio ya simu"</string>
@@ -519,7 +516,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Mmiliki"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Gusa tena ili uangalie maelezo"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Simu ya dharura"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Simu za dharura pekee"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Nambari ya dharura"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Nambari za dharura"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Gusa tena ili upige <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -756,6 +752,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Mipangilio ya kuzuia upigaji simu"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Je, ungependa kuzima mipangilio yote ya kuzuia upigaji simu?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Mtandao unatumika. Tafadhali jaribu kupiga simu yako tena baadaye."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Kuna msongamano kwenye mtandao. Wasiliana na mtoa huduma wako wa simu kwa usaidizi."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Simu unayopiga imeelekezwa kwingine."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Simu imesambazwa."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Simu inasubiri."</string>
