@@ -435,7 +435,8 @@
 
         <!-- Handler for EuiccManager's public-facing intents. -->
         <activity android:name=".euicc.EuiccUiDispatcherActivity"
-            android:theme="@android:style/Theme.NoDisplay">
+            android:theme="@android:style/Theme.NoDisplay"
+            android:permission="android.permission.MODIFY_PHONE_STATE">
             <!-- Max out priority to ensure nobody else will handle these intents. -->
             <intent-filter android:priority="1000">
                 <action android:name=
