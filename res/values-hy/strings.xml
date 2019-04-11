@@ -573,7 +573,7 @@
     <string name="ota_hfa_activation_title" msgid="2234246934160473981">"Ակտիվացվում է..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"Հեռախոսը ակտիվացնում է ձեր բջջային տվյալների ծառայությունը:\n\nՍա կարող է տևել մինչև 5 րոպե:"</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"Բաց թողնե՞լ ակտիվացումը"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Եթե ​​դուք բաց թողնեք ակտիվացումը, դուք չեք կարող կատարել զանգեր և միանալ բջջային տվյալների ցանցերին (թեև դուք կարող եք միանալ Wi-Fi ցանցերին): Մինչև դուք չակտիվացնեեք ձեր հեռախոսը, ձեզ հարցվելու է ակտիվացնել յուրաքանչյուր անգամ, երբ դուք միացնեք այն:"</string>
+    <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"Եթե ​​դուք բաց թողնեք ակտիվացումը, դուք չեք կարող կատարել զանգեր և միանալ բջջային տվյալների ցանցերին (թեև դուք կարող եք միանալ Wi-Fi ցանցերին): Մինչև դուք չակտիվացնեեք ձեր հեռախոսը, ձեզ հարցվելու է ակտիվացնել յուրաքանչյուր անգամ, երբ միացնեք այն:"</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"Բաց թողնել"</string>
     <string name="ota_activate" msgid="1368528132525626264">"Ակտիվացնել"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"Հեռախոսն ակտիվացված է:"</string>
