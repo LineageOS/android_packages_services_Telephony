@@ -17,6 +17,7 @@
 package com.android.phone;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static android.telephony.data.ApnSetting.TYPE_MMS;
 
 import static com.android.internal.telephony.PhoneConstants.SUBSCRIPTION_KEY;
 
@@ -141,6 +142,7 @@ import com.android.internal.telephony.SmsApplication;
 import com.android.internal.telephony.SmsApplication.SmsApplicationData;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyPermissions;
+import com.android.internal.telephony.dataconnection.ApnSettingUtils;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.euicc.EuiccConnector;
 import com.android.internal.telephony.ims.ImsResolver;
@@ -6966,5 +6968,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         HalVersion hv = phone.getHalVersion();
         if (hv.equals(HalVersion.UNKNOWN)) return -1;
         return hv.major * 100 + hv.minor;
+    }
+
+    /**
+     *  Mms is allowed if
+     *  1) user data is turned on, or
+     *  2) Mms is un-metered, or
+     *  3) alwaysAllowMms setting is turned on.
+     */
+    @Override
+    public boolean isMmsDataEnabled(int subId, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, "isMmsDataEnabled")) {
+            throw new SecurityException("Needs READ_PHONE_STATE for isMmsDataEnabled");
+        }
+
+        // Now that all security checks passes, perform the operation as ourselves.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone == null) return false;
+
+            boolean isMetered = ApnSettingUtils.isMeteredApnType(ApnSetting.getApnTypeString(
+                    TYPE_MMS), phone);
+            return !isMetered || phone.getDataEnabledSettings().isDataEnabled(TYPE_MMS);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 }
