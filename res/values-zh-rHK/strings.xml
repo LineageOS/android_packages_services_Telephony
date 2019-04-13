@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"正在執行 USSD 碼..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI 碼已取消"</string>
     <string name="cancel" msgid="5044513931633602634">"取消"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD 訊息必須介乎 <xliff:g id="MIN_LEN">%d</xliff:g> 至 <xliff:g id="MAX_LEN">%d</xliff:g> 個字元，請再試一次。"</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD 訊息必須介乎 <xliff:g id="MIN_LEN">%1$d</xliff:g> 至 <xliff:g id="MAX_LEN">%2$d</xliff:g> 個字元，請再試一次。"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"管理會議通話"</string>
     <string name="ok" msgid="3811371167865772377">"確定"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"揚聲器"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"強化 4G LTE 模式"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"使用 LTE 服務改善語音及其他通訊 (建議)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"使用 4G 服務改善語音及其他通訊 (建議)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"啟用流動數據"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"允許使用數據"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"注意"</string>
@@ -273,13 +277,9 @@
     <!-- String.format failed for translation -->
     <!-- no translation found for throttle_status_subtext (1657318943142085170) -->
     <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_data_usage_subtext (6029276011123694701) -->
-    <skip />
+    <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪)，週期上限為 <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"已達 <xliff:g id="USED_0">%1$s</xliff:g> 上限\n資料速率降低至 <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"已經過 <xliff:g id="USED_0">%1$d</xliff:g>٪  的循環週期\n下一週期會在 <xliff:g id="USED_1">%2$d</xliff:g> 天後開始 (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"若已達資料用量上限，資料傳輸速率會降低至 <xliff:g id="USED">%1$d</xliff:g> Kb/秒"</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"更多有關流動網絡供應商流動網絡資料使用政策的資訊"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"區域廣播 SMS"</string>
@@ -515,7 +515,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"擁有者"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"再次輕按即可查看資訊"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"緊急電話"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"只可撥打緊急電話"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"緊急電話號碼"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"緊急電話號碼"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"再次輕按即可撥打 <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -751,6 +750,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"輸入密碼"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"通話限制設定"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"要停用所有通話限制設定嗎？"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"網絡忙碌中。請稍後再撥。"</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"網絡壅塞。請通知您的流動網絡供應商提供協助。"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"通話已轉向。"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"通話已轉駁。"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"通話尚待接聽。"</string>
@@ -768,6 +769,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"來電已轉駁。"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"正在加入電話會議。"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"通話已取消保留。"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"目前正在佈建裝置，無法撥打電話。"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"系統正在撥打另一通電話，因此無法撥打電話。"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"由於目前有尚未接聽的來電，因此無法撥打電話。請先接聽或拒絕來電，然後再撥打電話。"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"通話功能已由 ro.telephony.disable-call 系統屬性停用，因此無法撥打電話。"</string>

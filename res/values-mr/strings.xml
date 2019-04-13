@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD कोड चालू…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI कोड रद्द केला"</string>
     <string name="cancel" msgid="5044513931633602634">"रद्द करा"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD मेसेज <xliff:g id="MIN_LEN">%d</xliff:g> आणि <xliff:g id="MAX_LEN">%d</xliff:g> वर्णांमधील असणे आवश्‍यक आहे. कृपया पुन्‍हा प्रयत्‍न करा."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD मेसेज <xliff:g id="MIN_LEN">%1$d</xliff:g> आणि <xliff:g id="MAX_LEN">%2$d</xliff:g> वर्णांमधील असणे आवश्‍यक आहे. कृपया पुन्‍हा प्रयत्‍न करा."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"कॉन्फरन्स कॉल व्यवस्थापित करा"</string>
     <string name="ok" msgid="3811371167865772377">"ठीक"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"स्पीकर"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"वर्धित 4G LTE मोड"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"व्‍हॉइस आणि इतर संप्रेषणे (शिफारस केलेली) सुधारित करण्‍यासाठी LTE सेवांचा वापर करा"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"व्‍हॉइस आणि इतर संभाषणे (शिफारस केलेली) सुधारित करण्‍यासाठी LTE सेवांचा वापर करा"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"डेटा सक्षम केला"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"डेटा वापरास अनुमती द्या"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"लक्ष द्या"</string>
@@ -249,7 +253,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"आपल्‍याला लक्षणीय रोमिंग शुल्‍क लागू शकते."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"किंमतींबद्दल तुमच्या नेटवर्क प्रदात्याला विचारा."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिंगला अनुमती द्यायची?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"अॅप डेटा वापर"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"अ‍ॅप डेटा वापर"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> दरम्यान <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा वापरला गेला"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"प्रगत"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"वाहक"</string>
@@ -432,8 +436,8 @@
     <string name="fdn_failed" msgid="540018079008319747">"FDN कार्य अयशस्‍वी झाले."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"सिक कार्डमधून वाचत आहे..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"आपल्‍या सिम कार्डवर कोणतेही संपर्क नाहीत."</string>
-    <string name="simContacts_title" msgid="1861472842524839921">"आयात करण्यासाठी संपर्क निवडा"</string>
-    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"सिम कार्डमधील संपर्क आयात करण्‍यासाठी विमान मोड बंद करा."</string>
+    <string name="simContacts_title" msgid="1861472842524839921">"इंपोर्ट करण्यासाठी संपर्क निवडा"</string>
+    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"सिम कार्डमधील संपर्क इंपोर्ट करण्‍यासाठी विमान मोड बंद करा."</string>
     <string name="enable_pin" msgid="5422767284133234860">"सिम पिन सक्षम करा/अक्षम करा"</string>
     <string name="change_pin" msgid="9174186126330785343">"सिम पिन बदला"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"सिम पिन"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"कॉल पुन्‍हा सुरू करू शकत नाही."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"कॉल विभक्त करू शकत नाही."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"हस्तांतर करू शकत नाही."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"कॉल विलीन करता आले नाहीत."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"कॉल नाकारू शकत नाही."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"कॉल रिलीज करू शकत नाही."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"कॉल सुरु ठेवू शकत नाही."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"मालक"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"माहिती पाहण्यासाठी पुन्हा टॅप करा"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"आणीबाणीचा कॉल"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"फक्त आणीबाणी कॉल"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"आणीबाणी नंबर"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"आणीबाणी नंबर"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> ला कॉल करण्यासाठी पुन्हा टॅप करा"</string>
@@ -536,12 +538,12 @@
     <string name="onscreenManageConferenceText" msgid="6485935856534311346">"परिषद व्यवस्थापित करा"</string>
     <string name="onscreenAudioText" msgid="1710087112800041743">"ऑडिओ"</string>
     <string name="onscreenVideoCallText" msgid="4800924186056115442">"व्हिडिओ कॉल"</string>
-    <string name="importSimEntry" msgid="6614358325359736031">"आयात"</string>
-    <string name="importAllSimEntries" msgid="1503181169636198673">"सर्व आयात करा"</string>
-    <string name="importingSimContacts" msgid="7374056215462575769">"सिम संपर्क आयात करत आहे"</string>
-    <string name="importToFDNfromContacts" msgid="2130620207013368580">"संपर्कांमधून आयात करा"</string>
-    <string name="singleContactImportedMsg" msgid="6868483416182599206">"आयात केलेला संपर्क"</string>
-    <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"संपर्क आयात करण्यात अयशस्वी"</string>
+    <string name="importSimEntry" msgid="6614358325359736031">"इंपोर्ट"</string>
+    <string name="importAllSimEntries" msgid="1503181169636198673">"सर्व इंपोर्ट करा"</string>
+    <string name="importingSimContacts" msgid="7374056215462575769">"सिम संपर्क इंपोर्ट करत आहे"</string>
+    <string name="importToFDNfromContacts" msgid="2130620207013368580">"संपर्कांमधून इंपोर्ट करा"</string>
+    <string name="singleContactImportedMsg" msgid="6868483416182599206">"इंपोर्ट केलेला संपर्क"</string>
+    <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"संपर्क इंपोर्ट करण्यात अयशस्वी"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"श्रवणयंत्रे"</string>
     <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवणयंत्र सुसंगतता चालू करा"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"रीअल-टाइम टेक्‍स्‍ट (RTT) कॉल"</string>
@@ -587,8 +589,8 @@
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"डेटा कनेक्शन अक्षम केले"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> पर्यंत कोणतेही डेटा कनेक्‍शन नाही"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="one">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अॅप्लिकेशन वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
-      <item quantity="other">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अॅप्लिकेशन वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
+      <item quantity="one">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अ‍ॅप्लिकेशन वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
+      <item quantity="other">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अ‍ॅप्लिकेशन वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
       <item quantity="one">आणीबाणी कॉलबॅक मोडमध्ये असताना निवडलेली क्रिया उपलब्ध नसते. फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी या मोडमध्ये राहील. तुम्ही आता बाहेर पडू इच्छिता?</item>
@@ -746,6 +748,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"पासवर्ड टाका"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"कॉल बारिंग सेटिंग्ज"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"सर्व कॉल बारिंग़ सेटिंग्ज बंद करायच्या का?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"नेटवर्क व्यस्त आहे कृपया तुमचा कॉल नंतर पुन्हा करण्याचा प्रयत्न करा."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"नेटवर्क उपलब्ध नाही. साहाय्यासाठी तुमच्या मोबाइल ऑपरेटरशी संपर्क साधा."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"कॉल वळवला."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"कॉल फॉरवर्ड केला."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"कॉल प्रतीक्षेत आहे."</string>
@@ -763,6 +767,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"कॉल फॉरवर्ड केला."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"कॉन्‍फरन्‍स कॉलमध्‍ये सामील होत आहे."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"घेतलेला कॉल बंद केला."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"सध्या डिव्हाइसची तरतूद केली जात असल्यामुळे कॉल करू शकत नाही."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"दुसरा आउटगोइंग कॉल आधीच डायल होत असल्यामुळे कॉल करू शकत नाही."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"अनुत्तरित इनकमिंग कॉल असल्यामुळे कॉल करू शकत नाही. नवीन कॉल करण्याआधी इनकमिंग कॉलला उत्तर द्या किंवा तो नाकारा."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call सिस्टम प्रॉपर्टी वापरून कॉल करणे बंद केले गेल्यामुळे कॉल करू शकत नाही."</string>

@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD-kode kjører…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI-kode avbrutt"</string>
     <string name="cancel" msgid="5044513931633602634">"Avbryt"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD-meldingen må ha <xliff:g id="MIN_LEN">%d</xliff:g> til <xliff:g id="MAX_LEN">%d</xliff:g> tegn. Prøv på nytt."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD-meldingen må ha <xliff:g id="MIN_LEN">%1$d</xliff:g> til <xliff:g id="MAX_LEN">%2$d</xliff:g> tegn. Prøv på nytt."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Administrer konferansesamtale"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Høyttaler"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Forbedret 4G LTE-modus"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Bruk LTE-tjenester for å forbedre stemme- og andre typer kommunikasjon (anbefalt)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Bruk 4G-tjenester for å forbedre stemmekommunikasjon og andre typer kommunikasjon (anbefalt)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Data aktivert"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Tillat databruk"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Obs!"</string>
@@ -277,9 +281,7 @@
     <!-- no translation found for throttle_data_usage_subtext (6029276011123694701) -->
     <skip />
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> har overskredet maksimumsgrensen\nDatahastigheten er redusert til <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ av syklusen er fullført\nNeste periode starter om <xliff:g id="USED_1">%2$d</xliff:g> dager (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datahastigheten reduseres til <xliff:g id="USED">%1$d</xliff:g> Kb/s hvis databruken overskrider grenseverdien"</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Les mer om mobiloperatørens retningslinjer for bruk av nettverksdata"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Kringkastings-SMS"</string>
@@ -505,8 +507,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Kan ikke gjenoppta anropet."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Kan ikke splitte opp samtale."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Kan ikke overføre."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Kan ikke slå sammen anropene."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Kan ikke avvise anropet."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Kan ikke frigjøre samtale(r)."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Kan ikke sette samtaler på vent."</string>
@@ -516,7 +517,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Eier"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Trykk på nytt for å se informasjon"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Nødanrop"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Bare nødanrop"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Nødnummer"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Nødnumre"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Trykk igjen for å ringe <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -752,6 +752,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Skriv inn passordet"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Innstillinger for anropsblokkering"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Vil du deaktivere alle innstillinger for anropsblokkering?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Nettverket er opptatt. Prøv å ringe på nytt senere."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Nettverket er for travelt. Kontakt mobiloperatøren din for å få hjelp."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Anropet er omdirigert."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Anropet er viderekoblet."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Et anrop venter."</string>
@@ -769,6 +771,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Viderekoblet anrop."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Blir med i konferansesamtalen."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Anropet som var på vent, er frigitt."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Kan ikke foreta et anrop fordi enheten er i ferd med å bli klargjort for administrering."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Du kan ikke ringe fordi telefonen allerede slår nummeret for et annet utgående anrop."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Du kan ikke ringe fordi du ikke har svart på et innkommende anrop. Svar på eller avvis det innkommende anropet før du ringer på nytt."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Du kan ikke ringe fordi anrop er deaktivert ved hjelp av systemegenskapen ro.telephony.disable-call."</string>

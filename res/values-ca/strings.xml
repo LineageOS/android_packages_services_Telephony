@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"S\'està executant el codi USSD..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Codi MMI cancel·lat"</string>
     <string name="cancel" msgid="5044513931633602634">"Cancel·la"</string>
-    <string name="enter_input" msgid="1810529547726803893">"El missatge USSD ha de contenir entre <xliff:g id="MIN_LEN">%d</xliff:g> i <xliff:g id="MAX_LEN">%d</xliff:g> caràcters. Torna-ho a provar."</string>
+    <string name="enter_input" msgid="1810529547726803893">"El missatge USSD ha de contenir entre <xliff:g id="MIN_LEN">%1$d</xliff:g> i <xliff:g id="MAX_LEN">%2$d</xliff:g> caràcters. Torna-ho a provar."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Gestiona la trucada de conferència"</string>
     <string name="ok" msgid="3811371167865772377">"D\'acord"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Altaveu"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Mode 4G LTE millorat"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Utilitza els serveis LTE per millorar la veu i la comunicació (opció recomanada)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Utilitza els serveis 4G per millorar la veu i la comunicació (opció recomanada)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Dades activades"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Permet l\'ús de dades"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Atenció"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"No es pot reprendre la trucada."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"No es pot separar la trucada."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"No es poden realitzar transferències."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"No es poden combinar les trucades."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"No es pot rebutjar la trucada."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"No es poden alliberar trucades."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"No es poden posar les trucades en espera."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Propietari"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Torna a tocar per veure la informació"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Trucada d\'emergència"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Només trucades d\'emergència"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Número d\'emergència"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Números d\'emergència"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Torna a tocar per trucar al número <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -746,6 +748,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Escriu la contrasenya"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Configuració de restricció de trucades"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Vols desactivar la configuració de restricció de trucades?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"La xarxa està ocupada. Torna a provar de trucar més tard."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"La xarxa està congestionada. Contacta amb l\'operador mòbil per obtenir assistència."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"S\'ha derivat la trucada."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"S\'ha desviat la trucada."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"La trucada està en espera."</string>
@@ -763,6 +767,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"S\'ha desviat la trucada."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"T\'estàs unint a la conferència."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"S\'ha desconnectat la trucada en espera."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"No es pot fer la trucada perquè s\'està duent a terme el proveïment del dispositiu."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"No es pot fer la trucada perquè ja hi ha una trucada sortint en curs."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"No es pot fer la trucada perquè hi ha una trucada entrant sense resposta. Respon-hi o rebutja-la abans de fer més trucades."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"No es pot fer la trucada perquè l\'opció de trucar s\'ha desactivat mitjançant la propietat del sistema ro.telephony.disable-call."</string>

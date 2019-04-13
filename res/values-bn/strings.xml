@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD কোড চলছে…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI কোড বাতিল করা হয়েছে"</string>
     <string name="cancel" msgid="5044513931633602634">"বাতিল করুন"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD বার্তাকে আবশ্যিকভাবে <xliff:g id="MIN_LEN">%d</xliff:g> ও <xliff:g id="MAX_LEN">%d</xliff:g> অক্ষরের মধ্যে হতে হবে৷ দয়া করে আবার চেষ্টা করুন৷"</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD বার্তাকে আবশ্যিকভাবে <xliff:g id="MIN_LEN">%1$d</xliff:g> ও <xliff:g id="MAX_LEN">%2$d</xliff:g> অক্ষরের মধ্যে হতে হবে৷ দয়া করে আবার চেষ্টা করুন৷"</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"কনফারেন্স কল পরিচালনা করুন"</string>
     <string name="ok" msgid="3811371167865772377">"ঠিক আছে"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"স্পিকার"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"উন্নত 4G LTE মোড"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ভয়েস এবং অন্যান্য যোগাযোগব্যবস্থা উন্নত করতে LTE পরিষেবা ব্যবহার করুন (প্রস্তাবিত)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"ভয়েস এবং অন্যান্য যোগাযোগ ব্যবস্থা (সাজেস্ট করা হয়েছে) আরও ভাল করতে 4G পরিষেবা ব্যবহার করুন"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"ডেটা সক্ষম করা হয়েছে"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"ডেটা ব্যবহারের অনুমতি দিন"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"খেয়াল করুন"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"কলটি চালানো যাচ্ছে না।"</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"কল আলাদা করা যাবে না৷"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"হস্তান্তর করা যাবে না৷"</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"কলগুলি মার্জ করা যাচ্ছে না।"</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"কল প্রত্যাখ্যান কলা যাবে না৷"</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"কল(গুলি) কাটা যাবে না৷"</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"কলগুলি ধরে রাখা যাবে না।"</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"মালিক"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"তথ্য দেখার জন্য আবার ট্যাপ করুন"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"জরুরি কল"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"শুধুমাত্র জরুরি কল"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"জরুরি নম্বর"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"জরুরি নম্বর"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>-এ আবার কল করার জন্য ট্যাপ করুন"</string>
@@ -746,6 +748,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"পাসওয়ার্ড লিখুন"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"কল নিষিদ্ধ করার সেটিংস"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"কল নিষিদ্ধ করার সমস্ত সেটিংস নিষ্ক্রিয় করবেন?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"নেটওয়ার্ক ব্যস্ত আছে। পরে আবার কল করার চেষ্টা করুন।"</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"নেটওয়ার্ক ব্যস্ত আছে। সাহায্যের জন্য আপনার মোবাইল অপারেটরের সাথে যোগাযোগ করুন।"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"কল ডিফ্লেক্ট করা হয়েছে।"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"কল ফরওয়ার্ড করা হয়েছে।"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"কল অপেক্ষায় রয়েছে।"</string>
@@ -763,6 +767,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"ফরওয়ার্ড করা কল।"</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"কনফারেন্স কলে যোগ দেওয়া হচ্ছে।"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"হোল্ডে থাকা কলটি রিলিজ করা রয়েছে।"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"কল করা যাবে না কারণ ডিভাইসটি বর্তমানে প্রভিশনিং করা হচ্ছে।"</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"আপনি আগেই আউটগোয়িং কল ডায়াল করেছেন তাই অন্য কল করা যাবে না।"</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"কল করতে পারবেন না কারণ এমন একটি ইনকামিং কল আছে যার উত্তর দেওয়া হয়নি। নতুন কল করতে বর্তমান কলটির উত্তর দিন অথবা প্রত্যাখান করুন।"</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"\'ro.telephony কল বন্ধ করা সিস্টেম প্রপার্টি\' ব্যবহার করে কল বন্ধ করা হয়েছে তাই কল করা যাবে না।"</string>

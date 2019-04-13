@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Kode USSD sedang berjalan…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Kode MMI dibatalkan"</string>
     <string name="cancel" msgid="5044513931633602634">"Batal"</string>
-    <string name="enter_input" msgid="1810529547726803893">"Pesan USSD harus antara <xliff:g id="MIN_LEN">%d</xliff:g> dan <xliff:g id="MAX_LEN">%d</xliff:g> karakter. Coba lagi."</string>
+    <string name="enter_input" msgid="1810529547726803893">"Pesan USSD harus antara <xliff:g id="MIN_LEN">%1$d</xliff:g> dan <xliff:g id="MAX_LEN">%2$d</xliff:g> karakter. Coba lagi."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Kelola konferensi telepon"</string>
     <string name="ok" msgid="3811371167865772377">"Oke"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Speaker"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Mode LTE 4G yang Ditingkatkan"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Gunakan layanan LTE untuk menyempurnakan suara dan komunikasi lainnya (disarankan)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Gunakan layanan 4G untuk menyempurnakan suara dan komunikasi lainnya (disarankan)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Data diaktifkan"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Izinkan penggunaan data"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Perhatian"</string>
@@ -249,7 +253,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Anda dapat dikenakan biaya yang cukup besar."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hubungi penyedia jaringan untuk mengetahui harganya."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Izinkan roaming data?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"Penggunaan data aplikasi"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Penggunaan kuota aplikasi"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> data seluler digunakan pada <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Lanjutan"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operator"</string>
@@ -257,7 +261,7 @@
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Data seluler"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Akses data menggunakan jaringan seluler"</string>
-    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Nonaktifkan data seluler?"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Nonaktifkan kuota seluler?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Perlu memilih SIM"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Ubah SIM data?"</string>
     <string name="sim_change_data_message" msgid="2163963581444907496">"Gunakan <xliff:g id="NEW_SIM">%1$s</xliff:g> dan bukan <xliff:g id="OLD_SIM">%2$s</xliff:g> untuk data seluler?"</string>
@@ -265,7 +269,7 @@
     <string name="video_calling_settings_title" msgid="539714564273795574">"Video call operator"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Opsi GSM//UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"Opsi CDMA"</string>
-    <string name="throttle_data_usage" msgid="3715677828160555808">"Penggunaan data"</string>
+    <string name="throttle_data_usage" msgid="3715677828160555808">"Penggunaan kuota"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"Data yang digunakan dalam periode saat ini"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"Periode penggunaan data"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"Kebijakan kecepatan data"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Tidak dapat melanjutkan panggilan."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Tidak dapat memisahkan panggilan telepon."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Tidak dapat mentransfer."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Tidak dapat menggabungkan panggilan."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Tidak dapat menolak panggilan telepon."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Tidak dapat melepas panggilan telepon."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Tidak dapat menahan panggilan."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Pemilik"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tap lagi untuk melihat info"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Panggilan darurat"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Panggilan darurat saja"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Nomor darurat"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Nomor darurat"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tap lagi untuk menelepon <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -746,6 +748,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Masukkan sandi"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Setelan pemblokiran panggilan"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Nonaktifkan semua setelan pemblokiran panggilan?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Jaringan sedang sibuk. Coba hubungi lagi di lain waktu."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Jaringan sedang padat. Hubungi operator seluler Anda untuk mendapatkan bantuan."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Panggilan dialihkan."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Panggilan diteruskan."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Panggilan menunggu."</string>
@@ -763,6 +767,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Panggilan diteruskan."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Bergabung ke panggilan konferensi."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Panggilan yang ditahan telah terputus."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Tidak dapat melakukan panggilan karena saat ini perangkat dalam proses penyediaan."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Tidak dapat melakukan panggilan karena panggilan keluar lainnya sedang berlangsung."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Tidak dapat melakukan panggilan karena ada panggilan masuk yang belum terjawab. Jawab atau tolak panggilan masuk sebelum melakukan panggilan."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Tidak dapat melakukan panggilan karena panggilan telah dinonaktifkan menggunakan properti sistem ro.telephony.disable-call"</string>

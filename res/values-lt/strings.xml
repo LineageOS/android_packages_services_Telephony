@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Paleistas USSD kodas..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Atšauktas MMI kodas"</string>
     <string name="cancel" msgid="5044513931633602634">"Atšaukti"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD pranešimą gali sudaryti nuo <xliff:g id="MIN_LEN">%d</xliff:g> iki <xliff:g id="MAX_LEN">%d</xliff:g> simbol. Bandykite dar kartą."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD pranešimą gali sudaryti nuo <xliff:g id="MIN_LEN">%1$d</xliff:g> iki <xliff:g id="MAX_LEN">%2$d</xliff:g> simbol. Bandykite dar kartą."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Valdyti konferencinį skambutį"</string>
     <string name="ok" msgid="3811371167865772377">"Gerai"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Garsiakalbis"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Patobulintas 4G LTE režimas"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Naudoti LTE paslaugas „Voice“ ir kitiems ryšiams patobulinti (rekomenduojama)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Naudoti 4G paslaugas „Voice“ ir kitiems ryšiams patobulinti (rekomenduojama)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Duomenys įgalinti"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Leisti naudoti duomenis"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Dėmesio"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Nepavyko pratęsti skambučio."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nepavyko atskirti skambučio."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Nepavyko peradresuoti."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Nepavyko sujungti skambučių."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Nepavyko atmesti skambučio."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Nepavyko atjungti skamb."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Negalima sulaikyti skambučių."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Savininkas"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Palieskite dar kartą, kad peržiūrėtumėte informaciją"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Skambutis pagalbos numeriu"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Tik skambučiai pagalbos numeriu"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Pagalbos numeris"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Pagalbos numeriai"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Palieskite dar kartą, kad paskambintumėte numeriu <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -750,6 +752,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Įveskite slaptažodį"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Skambučių blokavimo nustatymai"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Išaktyvinti visus skambučių blokavimo nustatymus?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Tinklas užimtas. Vėliau pabandykite dar kartą paskambinti."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Tinklas perpildytas. Dėl pagalbos susisiekite su mobiliojo ryšio operatoriumi."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Skambutis nukreiptas."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Skambutis peradresuojamas."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Laukiantis skambutis."</string>
@@ -767,6 +771,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Peradresuotas skambutis."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Prisijungiama prie konferencinio skambučio."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Sulaikytas skambutis nutrauktas."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Negalite skambinti, nes įrenginys šiuo metu yra rengiamas naudoti."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Negalite skambinti, nes šiuo metu vykdomas kitas siunčiamasis skambutis."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Negalite skambinti, nes yra neatsakytas gaunamasis skambutis. Atsiliepkite arba atmeskite gaunamąjį skambutį prieš pradėdami naują."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Negalite skambinti, nes skambinimo funkcija išjungta naudojant sistemos ypatybę „ro.telephony.disable-call“."</string>

@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD kods darbojas…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI kods ir atcelts"</string>
     <string name="cancel" msgid="5044513931633602634">"Atcelt"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD ziņojumam ir jābūt <xliff:g id="MIN_LEN">%d</xliff:g>–<xliff:g id="MAX_LEN">%d</xliff:g> rakstzīmes garam. Lūdzu, mēģiniet vēlreiz."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD ziņojumam ir jābūt <xliff:g id="MIN_LEN">%1$d</xliff:g>–<xliff:g id="MAX_LEN">%2$d</xliff:g> rakstzīmes garam. Lūdzu, mēģiniet vēlreiz."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Pārvaldīt konferences zvanu"</string>
     <string name="ok" msgid="3811371167865772377">"Labi"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Skaļrunis"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Uzlabota 4G LTE režīms"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Lietojiet LTE pakalpojumus, lai uzlabotu balss un cita veida saziņu (ieteicams)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Lietojiet 4G pakalpojumus, lai uzlabotu balss un cita veida saziņu (ieteicams)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Dati ir iespējoti."</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Atļaut datu izmantošanu"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Uzmanību!"</string>
@@ -273,9 +277,7 @@
     <string name="throttle_status_subtext" msgid="1657318943142085170">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) no <xliff:g id="USED_2">%3$s</xliff:g> perioda maksimuma\nNākamais periods sākas pēc <xliff:g id="USED_3">%4$d</xliff:g> dienas(-ām) (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) no <xliff:g id="USED_2">%3$s</xliff:g> perioda maksimuma"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> maksimums ir pārsniegts\nDatu ātrums ir samazināts līdz <xliff:g id="USED_1">%2$d</xliff:g> Kb/s."</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ no cikla ir pagājis(-uši)\nNākamais periods sākas pēc <xliff:g id="USED_1">%2$d</xliff:g> dienas(-ām) (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datu ātrums tiek samazināts līdz <xliff:g id="USED">%1$d</xliff:g> Kb/s, ja ir pārsniegts datu lietojuma ierobežojums."</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Papildinformācija par mobilo sakaru operatora mobilā tīkla datu lietošanas politiku"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Šūnu apraides īsziņa"</string>
@@ -501,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Nevar atsākt zvanu."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nevar nošķirt zvanu."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Nevar pāradresēt."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Nevar apvienot zvanus."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Nevar noraidīt zvanu."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Nevar pārtraukt zvanu(-us)."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Nevar aizturēt zvanus."</string>
@@ -512,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Īpašnieks"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Pieskarieties vēlreiz, lai skatītu informāciju."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Ārkārtas zvans"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Tikai ārkārtas izsaukumi"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Ārkārtas numurs"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Ārkārtas numuri"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Pieskarieties vēlreiz, lai zvanītu uz numuru <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -750,6 +750,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Ievadiet paroli"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Zvanu aizliegšanas iestatījumi"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Vai deaktivizēt visus zvanu aizliegšanas iestatījumus?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Tīkls ir aizņemts. Lūdzu, vēlāk mēģiniet zvanīt vēlreiz."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Tīkls ir pārpildīts. Lai saņemtu palīdzību, sazinieties ar savu mobilo sakaru operatoru."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Zvans novirzīts."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Zvans pāradresēts."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Notiek zvana gaidīšana."</string>
@@ -767,6 +769,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Pāradresēts zvans."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Notiek pievienošanās konferences zvanam."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Tika atvienots aizturēts zvans."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Nevar veikt zvanu, jo pašlaik tiek veikts ierīces nodrošināšanas process."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nevar veikt zvanu, jo jau tiek sastādīts numurs citam izejošajam zvanam."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nevar veikt zvanu, jo ir neatbildēts ienākošais zvans. Pirms jauna zvana veikšanas atbildiet uz ienākošo zvanu vai noraidiet to."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nevar veikt zvanu, jo zvanīšana ir atspējota, izmantojot sistēmas rekvizītu ro.telephony.disable-call."</string>

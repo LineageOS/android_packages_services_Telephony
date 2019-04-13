@@ -29,13 +29,13 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD kodea exekutatzen…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI kodea bertan behera utzi da"</string>
     <string name="cancel" msgid="5044513931633602634">"Utzi"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD mezuak <xliff:g id="MIN_LEN">%d</xliff:g> eta <xliff:g id="MAX_LEN">%d</xliff:g> karaktere bitartekoa izan behar du. Saiatu berriro."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD mezuak <xliff:g id="MIN_LEN">%1$d</xliff:g> eta <xliff:g id="MAX_LEN">%2$d</xliff:g> karaktere bitartekoa izan behar du. Saiatu berriro."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Kudeatu konferentzia-deia"</string>
     <string name="ok" msgid="3811371167865772377">"Ados"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Bozgorailua"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Aurikularrak"</string>
     <string name="audio_mode_wired_headset" msgid="1465350758489175975">"Kabledun entzungailua"</string>
-    <string name="audio_mode_bluetooth" msgid="3047641300848211128">"Bluetooth"</string>
+    <string name="audio_mode_bluetooth" msgid="3047641300848211128">"Bluetooth entzungailua"</string>
     <string name="wait_prompt_str" msgid="7601815427707856238">"Ondorengo tonuak bidali?\n"</string>
     <string name="pause_prompt_str" msgid="1789964702154314806">"Tonuak bidaltzen\n"</string>
     <string name="send_button" msgid="4106860097497818751">"Bidali"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"4G LTE modu hobetua"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Erabili LTE zerbitzuak ahotsa eta bestelako komunikazioak hobetzeko (gomendatua)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Erabili 4G zerbitzuak ahotsa eta bestelako komunikazioak hobetzeko (gomendatua)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Datuak gaituta"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Onartu datuak erabiltzea"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Erne"</string>
@@ -273,13 +277,9 @@
     <!-- String.format failed for translation -->
     <!-- no translation found for throttle_status_subtext (1657318943142085170) -->
     <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_data_usage_subtext (6029276011123694701) -->
-    <skip />
+    <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g>/<xliff:g id="USED_2">%3$s</xliff:g> erabilita (٪ <xliff:g id="USED_1">%2$d</xliff:g>) muga-epean"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> muga gainditu duzu\nDatu-abiadura murriztu zaizu. <xliff:g id="USED_1">%2$d</xliff:g> Kb/s duzu orain."</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"Zikloaren ٪  <xliff:g id="USED_0">%1$d</xliff:g> igaro da\nHurrengo aldia <xliff:g id="USED_1">%2$d</xliff:g> egun barru hasten da (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datuak erabiltzeko muga gainditzen bada, datu-abiadura <xliff:g id="USED">%1$d</xliff:g> Kb/s izango da"</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Informazio gehiago zure operadoreak sare mugikorretako datu-erabileraren inguruan dituen gidalerroei buruz"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Sare mugikor bidezko SMS igorpenak"</string>
@@ -505,8 +505,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Ezin zaio berrekin deiari."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Ezin da deia bereizi."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Ezin da transferitu."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Ezin dira bateratu deiak."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Ezin da deia baztertu."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Ezin dira deiak bereizi."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Ezin dira zain utzi deiak."</string>
@@ -516,7 +515,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Jabea"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Informazioa ikusteko, sakatu berriro"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Larrialdi-deia"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Larrialdi-deiak soilik"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Larrialdietarako zenbakia"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Larrialdietarako zenbakiak"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Sakatu berriro <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> zenbakira deitzeko"</string>
@@ -752,6 +750,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Idatzi pasahitza"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Deiak debekatzeko ezarpenak"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Deiak debekatzeko ezarpen guztiak desaktibatu nahi dituzu?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Sarea okupatuta dago. Saiatu berriro deitzen geroago."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Sareak gainezka egin du. Laguntza lortzeko, jarri mugikorraren operadorearekin harremanetan."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Automatikoki desbideratu da deia."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Desbideratu da deia."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Deia zain dago."</string>
@@ -769,6 +769,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Desbideratu da deia."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Konferentzia-deian sartzen."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Askatu da zain utzitako deia."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Ezin da egin deia, une honetan gailua hornitzen ari delako."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Ezin da egin deia, beste dei bat abian delako."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Ezin da egin deia, oraindik erantzun ez diozun dei bat jasotzen ari zarelako. Beste dei bat egin aurretik, erantzun deiari edo bazter ezazu."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Ezin da egin deia, deiak egiteko aukera desgaitu egin delako sistemaren ro.telephony.disable-call propietatea erabilita."</string>

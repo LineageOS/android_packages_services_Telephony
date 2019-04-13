@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD код ажиллаж байна…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI код цуцлагдсан"</string>
     <string name="cancel" msgid="5044513931633602634">"Цуцлах"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD зурвасын үсгийн тоо <xliff:g id="MIN_LEN">%d</xliff:g> болон <xliff:g id="MAX_LEN">%d</xliff:g> хооронд байх шаардлагатай. Дахин оролдоно уу."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD зурвасын үсгийн тоо <xliff:g id="MIN_LEN">%1$d</xliff:g> болон <xliff:g id="MAX_LEN">%2$d</xliff:g> хооронд байх шаардлагатай. Дахин оролдоно уу."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Хурлын дуудлага удирдах"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Чанга яригч"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Сайжруулсан 4G LTE горим"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"LTE-г ашиглан дуут болон бусад төрлийн харилцаа холбооны хэрэгслийг сайжруул (зөвлөхүйц)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"4G үйлчилгээг дуу хоолой болон бусад харилцаа холбоог (санал болгосон) сайжруулахад ашиглах"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Өгөгдөл идэвхжсэн"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Дата ашиглалтыг зөвшөөрөх"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Анхааруулга"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Дуудлагыг үргэлжлүүлэх боломжгүй."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Дуудлагыг салгаж чадахгүй байна."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Шилжүүлэх боломжгүй байна."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Дуудлагуудыг нэгтгэх боломжгүй."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Дуудлага татгалзах боломжгүй байна."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Дуудлага чөлөөлөх боломжгүй байна."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Дуудлагыг хадгалах боломжгүй байна."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Эзэмшигч"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Мэдээллийг үзэхийн тулд дахин товшино уу"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Ослын дуудлага"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Зөвхөн яаралтай дуудлага"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Яаралтай тусламжийн дугаар"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Яаралтай тусламжийн дугаарууд"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>-д дуудлага хийхийн тулд товшино уу"</string>
@@ -746,6 +748,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Нууц үг оруулна уу"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Дуудлага хаах тохиргоо"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Бүх дуудлага хаах тохиргоог идэвхгүй болгох уу?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Сүлжээ завгүй байна. Та дуудлагаа дараа дахин оролдоно уу."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Сүлжээ ачаалалтай байна. Туслалцаа авахын тулд мобайл оператортойгоо холбогдоно уу."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Дуудлагыг шилжүүлсэн."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Дуудлагыг дамжуулсан."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Дуудлагыг хүлээлгэж байна."</string>
@@ -763,6 +767,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Дамжуулсан дуудлага."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Хурлын дуудлагад нэгдэж байна."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Хүлээлгэсэн дуудлагыг холбосон."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Одоогоор төхөөрөмжийг бэлдэж байгаа тул дуудлага хийх боломжгүй байна."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Өөр залгасан дугаар руу аль хэдийн залгаж байх үед дуудлага хийх боломжгүй."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Хариулаагүй ирсэн дуудлага байх үед дуудлага хийх боломжгүй. Шинэ дуудлага хийхийн өмнө ирсэн дуудлагад хариулах эсвэл татгалзана уу."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call системийн өмчийг ашиглан дуудлагыг цуцалсан бол дуудлага хийх боломжгүй."</string>

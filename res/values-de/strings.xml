@@ -29,9 +29,9 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD-Code wird ausgeführt..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI-Code abgebrochen"</string>
     <string name="cancel" msgid="5044513931633602634">"Abbrechen"</string>
-    <string name="enter_input" msgid="1810529547726803893">"Die USSD-Nachricht muss zwischen <xliff:g id="MIN_LEN">%d</xliff:g> und <xliff:g id="MAX_LEN">%d</xliff:g> Zeichen lang sein. Bitte versuche es noch einmal."</string>
+    <string name="enter_input" msgid="1810529547726803893">"Die USSD-Nachricht muss zwischen <xliff:g id="MIN_LEN">%1$d</xliff:g> und <xliff:g id="MAX_LEN">%2$d</xliff:g> Zeichen lang sein. Bitte versuche es noch einmal."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Telefonkonferenz verwalten"</string>
-    <string name="ok" msgid="3811371167865772377">"OK"</string>
+    <string name="ok" msgid="3811371167865772377">"Ok"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Lautsprecher"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Handy-Kopfhörer"</string>
     <string name="audio_mode_wired_headset" msgid="1465350758489175975">"Kabelgebundenes Headset"</string>
@@ -133,7 +133,7 @@
     <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-Anfrage wurde in Videoanruf geändert"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Da die Anrufbegrenzung in deiner Telefon-App aktiviert ist, funktionieren nicht alle Anruffunktionen."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Aktiviere deine Mobilfunkverbindung, bevor du diese Einstellungen anzeigst."</string>
-    <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
+    <string name="close_dialog" msgid="2365884406356986917">"Ok"</string>
     <string name="enable" msgid="7248657275000173526">"Aktivieren"</string>
     <string name="disable" msgid="4678348128118573672">"Deaktivieren"</string>
     <string name="change_num" msgid="239476305819844391">"Aktualisieren"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Erweiterter 4G LTE-Modus"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Zur Verbesserung von Sprache und Kommunikation LTE-Dienste verwenden (empfohlen)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Zur Verbesserung von Sprache und Kommunikation 4G-Dienste verwenden (empfohlen)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Daten aktiviert"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Datennutzung zulassen"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Achtung"</string>
@@ -273,11 +277,9 @@
     <!-- String.format failed for translation -->
     <!-- no translation found for throttle_status_subtext (1657318943142085170) -->
     <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_data_usage_subtext (6029276011123694701) -->
-    <skip />
+    <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) des maximalen Zeitraums von <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"Maximum von <xliff:g id="USED_0">%1$s</xliff:g> wurde überschritten.\nDatenrate wurde auf <xliff:g id="USED_1">%2$d</xliff:g> kbit/s reduziert."</string>
-    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g> % des Zyklus sind verstrichen. \nDer nächste Zeitraum beginnt in <xliff:g id="USED_1">%2$d</xliff:g> Tagen (<xliff:g id="USED_2">%3$s</xliff:g>)."</string>
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ des Zyklus sind verstrichen. \nDer nächste Zeitraum beginnt in <xliff:g id="USED_1">%2$d</xliff:g> Tagen (<xliff:g id="USED_2">%3$s</xliff:g>)."</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datenrate wird auf <xliff:g id="USED">%1$d</xliff:g> kbit/s reduziert, wenn Datennutzungslimit überschritten wird."</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Weitere Informationen über die Richtlinien deines Mobilfunkanbieters zur Nutzung der Mobilfunknetzdaten"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Cell Broadcast SMS"</string>
@@ -439,7 +441,7 @@
     <string name="simContacts_title" msgid="1861472842524839921">"Kontakte für Import auswählen"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Deaktiviere den Flugmodus, um Kontakte von der SIM-Karte zu importieren."</string>
     <string name="enable_pin" msgid="5422767284133234860">"PIN-Abfrage für SIM-Karte aktivieren/deaktivieren"</string>
-    <string name="change_pin" msgid="9174186126330785343">"PIN ändern"</string>
+    <string name="change_pin" msgid="9174186126330785343">"SIM-PIN ändern"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"PIN der SIM-Karte:"</string>
     <string name="oldPinLabel" msgid="5287773661246368314">"Alte PIN"</string>
     <string name="newPinLabel" msgid="207488227285336897">"Neue PIN"</string>
@@ -503,8 +505,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Anruf kann nicht fortgesetzt werden."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Anruf kann nicht getrennt werden."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Anruf kann nicht übergeben werden."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Anrufe können nicht zusammengeführt werden."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Anruf kann nicht abgelehnt werden."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Anrufe können nicht freigegeben werden."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Anrufe können nicht gehalten werden."</string>
@@ -514,7 +515,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Eigentümer"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Noch einmal tippen, um Informationen anzuzeigen"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Notruf"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Nur Notrufe"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Notrufnummer"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Notrufnummern"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Noch einmal tippen, um <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> anzurufen"</string>
@@ -526,7 +526,7 @@
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Notruf nicht verfügbar"</string>
     <string name="police_type_description" msgid="5324410799919829693">"Polizei"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Krankenwagen"</string>
-    <string name="fire_type_description" msgid="7145996705197064710">"Feuer"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Feuerwehr"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Zum Wählen Tastatur verwenden"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Halten"</string>
@@ -611,7 +611,7 @@
     <string name="contactPhoto" msgid="4713193418046639466">"Kontaktbild"</string>
     <string name="goPrivate" msgid="865837794424530980">"privat sprechen"</string>
     <string name="selectContact" msgid="781975788478987237">"Kontakt wählen"</string>
-    <string name="not_voice_capable" msgid="2739898841461577811">"Sprachanruf wird nicht unterstützt."</string>
+    <string name="not_voice_capable" msgid="2739898841461577811">"Audioanruf wird nicht unterstützt."</string>
     <string name="description_dial_button" msgid="7459705245418435351">"Wählen"</string>
     <string name="description_dialpad_button" msgid="5220006811894230590">"Wähltasten anzeigen"</string>
     <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Wähltasten für Notruf"</string>
@@ -641,7 +641,7 @@
     <string name="change_pin_title" msgid="7790232089699034029">"Mailbox-PIN ändern"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Weiter"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Abbrechen"</string>
-    <string name="change_pin_ok_label" msgid="6204308560844889926">"OK"</string>
+    <string name="change_pin_ok_label" msgid="6204308560844889926">"Ok"</string>
     <string name="change_pin_enter_old_pin_header" msgid="419179847657548887">"Alte PIN bestätigen"</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8579171678763615453">"Gib zum Fortfahren deine Mailbox-PIN ein."</string>
     <string name="change_pin_enter_new_pin_header" msgid="2611191814590251532">"Neue PIN festlegen"</string>
@@ -750,6 +750,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Passwort eingeben"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Einstellungen zur Anrufsperre"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Alle Einstellungen zur Anrufsperre deaktivieren?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Das Netzwerk ist ausgelastet. Bitte versuche es später noch einmal."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Das Netzwerk ist überlastet. Bitte wende dich an deinen Mobilfunkanbieter, wenn du Hilfe benötigst."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Anruf umgeleitet."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Anruf weitergeleitet."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Anklopfen."</string>
@@ -767,6 +769,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Anruf weitergeleitet."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"An Telefonkonferenz teilnehmen."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Gehaltener Anruf wurde beendet."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Der Anruf kann nicht getätigt werden, da das Gerät gerade bereitgestellt wird."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Anruf nicht möglich, da bereits ein anderer ausgehender Anruf aufgebaut wird."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Anruf nicht möglich, da ein nicht angenommener eingehender Anruf vorhanden ist. Nimm den eingehenden Anruf an oder lehne ihn ab, bevor du einen neuen Anruf startest."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Anruf nicht möglich, weil Anrufe über die Systemeigenschaft \"ro.telephony.disable-call\" deaktiviert wurden."</string>

@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Esecuzione codice USSD..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Codice MMI annullato"</string>
     <string name="cancel" msgid="5044513931633602634">"Annulla"</string>
-    <string name="enter_input" msgid="1810529547726803893">"Il messaggio USSD deve essere compreso tra <xliff:g id="MIN_LEN">%d</xliff:g> e <xliff:g id="MAX_LEN">%d</xliff:g> caratteri. Riprova."</string>
+    <string name="enter_input" msgid="1810529547726803893">"Il messaggio USSD deve essere compreso tra <xliff:g id="MIN_LEN">%1$d</xliff:g> e <xliff:g id="MAX_LEN">%2$d</xliff:g> caratteri. Riprova."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Gestisci audioconferenza"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Vivavoce"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Modalità 4G LTE avanzata"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Usa i servizi LTE per migliorare la voce e le altre comunicazioni (consigliato)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Usa i servizi 4G per migliorare la voce e le altre comunicazioni (consigliato)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Dati attivati"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Consenti l\'utilizzo dei dati"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Attenzione"</string>
@@ -273,11 +277,9 @@
     <!-- String.format failed for translation -->
     <!-- no translation found for throttle_status_subtext (1657318943142085170) -->
     <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_data_usage_subtext (6029276011123694701) -->
-    <skip />
+    <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) del <xliff:g id="USED_2">%3$s</xliff:g> max periodo"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> max superato\nVelocità dati ridotta a <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
-    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>% del ciclo trascorso\nIl periodo succ. inizia tra <xliff:g id="USED_1">%2$d</xliff:g> gg (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ del ciclo trascorso\nIl periodo succ. inizia tra <xliff:g id="USED_1">%2$d</xliff:g> gg (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Velocità dati ridotta a <xliff:g id="USED">%1$d</xliff:g> Kb/s se limite utilizzo dati superato"</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Informazioni sulla norme di utilizzo dati della rete cellulare del gestore"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"SMS cell broadcast"</string>
@@ -503,8 +505,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Impossibile riprendere la chiamata."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Impossibile separare la chiamata."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Impossibile trasferire."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Impossibile unire le chiamate."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Impossibile rifiutare la chiamata."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Impossibile riagganciare."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Impossibile mettere in attesa le chiamate."</string>
@@ -514,7 +515,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Proprietario"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tocca di nuovo per visualizzare le informazioni"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Chiamata di emergenza"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Solo chiamate di emergenza"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Numero di emergenza"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numeri di emergenza"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tocca ancora per chiamare <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -750,6 +750,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Inserisci password"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Impostazioni di blocco chiamate"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Disattivare tutte le impostazioni di blocco chiamate?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"La rete è occupata. Riprova a chiamare di nuovo più tardi."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"La rete è congestionata. Contatta il tuo gestore di telefonia mobile per ricevere assistenza."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Chiamata deviata."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Trasferimento di chiamata."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Chiamata in attesa."</string>
@@ -767,6 +769,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Trasferimento di chiamata."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Accesso all\'audioconferenza."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"La chiamata in attesa è stata chiusa."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Impossibile effettuare una chiamata perché il dispositivo è attualmente in fase di provisioning."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Impossibile effettuare una chiamata perché è già presente un\'altra chiamata in uscita in composizione."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Impossibile effettuare una chiamata perché è presente una chiamata in arrivo senza risposta. Rispondi o rifiuta la chiamata in arrivo prima di effettuare una nuova chiamata."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Impossibile effettuare una chiamata perché le chiamate sono state disattivate utilizzando la proprietà di sistema ro.telephony.disable-call."</string>
