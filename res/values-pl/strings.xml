@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Uruchomiony kod USSD..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Kod MMI został anulowany"</string>
     <string name="cancel" msgid="5044513931633602634">"Anuluj"</string>
-    <string name="enter_input" msgid="1810529547726803893">"Komunikat USSD musi mieć od <xliff:g id="MIN_LEN">%d</xliff:g> do <xliff:g id="MAX_LEN">%d</xliff:g> znaków. Spróbuj ponownie."</string>
+    <string name="enter_input" msgid="1810529547726803893">"Komunikat USSD musi mieć od <xliff:g id="MIN_LEN">%1$d</xliff:g> do <xliff:g id="MAX_LEN">%2$d</xliff:g> znaków. Spróbuj ponownie."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Zarządzaj poł. konferencyjnym"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Głośnik"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Tryb rozszerzonego 4G LTE"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Użyj usług LTE, by poprawić łączność głosową i inną (zalecane)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Użyj usług 4G, by poprawić łączność głosową i inną (zalecane)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Włączone przesyłanie danych"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Zezwalaj na użycie danych"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Uwaga"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Nie udało się wznowić połączenia."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nie można rozdzielić połączenia."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Nie można przekazać."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Nie udało się scalić połączeń."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Nie można odrzucić połączenia."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Nie można zwolnić połączeń."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Nie można zawieszać połączeń."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Właściciel"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Kliknij ponownie, aby wyświetlić informacje"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Połączenie alarmowe"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Tylko połączenia alarmowe"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Numer alarmowy"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numery alarmowe"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Kliknij jeszcze raz, aby zadzwonić pod <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -750,6 +752,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Wpisz hasło"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Ustawienia blokady połączeń"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Dezaktywować wszystkie ustawienia blokady połączeń?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Sieć jest zajęta. Spróbuj zadzwonić później."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Sieć jest przeciążona. Skontaktuj się z operatorem i poproś o pomoc."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Połączenie przekazane na inny numer."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Połączenie przekierowane."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Oczekiwanie na połączenie."</string>
@@ -767,6 +771,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Połączenie przekierowane."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Dołączam do połączenia konferencyjnego."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Wstrzymane połączenie zostało wznowione."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Nie można nawiązać połączenia, ponieważ urządzenie jest w tej chwili rejestrowane."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nie można nawiązać połączenia, ponieważ inne połączenie jest już nawiązywane."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nie można nawiązać połączenia, ponieważ masz nieodebrane połączenie przychodzące. Odbierz je lub odrzuć przed nawiązaniem nowego."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nie można nawiązać połączenia, ponieważ ta funkcja została wyłączona przy użyciu właściwości systemowej ro.telephony.disable-call."</string>

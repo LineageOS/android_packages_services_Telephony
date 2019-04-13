@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD-code uitvoeren..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI-code geannuleerd"</string>
     <string name="cancel" msgid="5044513931633602634">"Annuleren"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD-bericht moet tussen <xliff:g id="MIN_LEN">%d</xliff:g> en <xliff:g id="MAX_LEN">%d</xliff:g> tekens lang zijn. Probeer het opnieuw."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD-bericht moet tussen <xliff:g id="MIN_LEN">%1$d</xliff:g> en <xliff:g id="MAX_LEN">%2$d</xliff:g> tekens lang zijn. Probeer het opnieuw."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Telefonische vergadering beheren"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Luidspreker"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Geoptimaliseerde 4G LTE-modus"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"LTE-services gebruiken voor betere spraak- en andere communicatie (aanbevolen)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"4G-services gebruiken voor betere gesproken en andere communicatie (aanbevolen)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Gegevenstoegang aan"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Gegevensgebruik toestaan"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Let op"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Kan gesprek niet hervatten."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Kan gesprek niet scheiden."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Kan niet doorschakelen."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Kan gesprekken niet samenvoegen."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Kan gesprek niet weigeren."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Kan gesprek(ken) niet vrijgeven."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Kan gesprekken niet in de wacht zetten."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Eigenaar"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tik nogmaals om informatie weer te geven"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Noodoproep"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Alleen noodoproepen"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Alarmnummer"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Alarmnummers"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tik nogmaals om <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> te bellen"</string>
@@ -746,6 +748,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Wachtwoord invoeren"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Blokkeerinstellingen voor gesprekken"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Alle blokkeerinstellingen voor gesprekken deactiveren?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Netwerk is bezet. Probeer je gesprek later opnieuw uit te voeren."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Het netwerk is overbelast. Neem contact op met je mobiele provider voor hulp."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Gesprek doorgeschakeld naar ander nummer."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Gesprek doorgeschakeld."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Wisselgesprek."</string>
@@ -763,6 +767,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Doorgeschakeld gesprek."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Deelnemen aan telefonische vergadering…"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"In de wacht gezette gesprek is vrijgegeven."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Kan geen gesprek plaatsen omdat het apparaat momenteel wordt geregistreerd."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Kan gesprek niet plaatsen omdat er al een uitgaand gesprek is gestart."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Kan gesprek niet plaatsen omdat er een niet-beantwoord inkomend gesprek is. Beantwoord of weiger het inkomende gesprek voordat je een nieuw gesprek plaatst."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Kan gesprek niet plaatsen omdat bellen is uitgeschakeld via de systeemeigenschap ro.telephony.disable-call."</string>

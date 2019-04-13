@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Tumatakbo ang USSD code…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Kinansela ang MMI code"</string>
     <string name="cancel" msgid="5044513931633602634">"Kanselahin"</string>
-    <string name="enter_input" msgid="1810529547726803893">"Dapat na nasa pagitan ng <xliff:g id="MIN_LEN">%d</xliff:g> at <xliff:g id="MAX_LEN">%d</xliff:g> (na) character ang mensaheng USSD. Pakisubukang muli."</string>
+    <string name="enter_input" msgid="1810529547726803893">"Dapat na nasa pagitan ng <xliff:g id="MIN_LEN">%1$d</xliff:g> at <xliff:g id="MAX_LEN">%2$d</xliff:g> (na) character ang mensaheng USSD. Pakisubukang muli."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Pamahalaan ang conference call"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Speaker"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Enhanced 4G LTE Mode"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Gamitin ang LTE upang pahusayin ang voice at ibang komunikasyon (inirerekomenda)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Gamitin ang mga serbisyo ng 4G para pahusayin ang mga tawag at iba pang komunikasyon (inirerekomenda)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Pinagana ang data"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Payagan ang paggamit ng data"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Bigyang-pansin"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Hindi maituloy ang tawag."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Hindi mapaghiwalay ang tawag"</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Hindi mailipat."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Hindi na-merge ang mga tawag."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Hindi matanggihan ang tawag."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Hindi mailabas ang (mga) tawag."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Hindi makakapag-hold ng mga tawag."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"May-ari"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"I-tap muli para tingnan ang impormasyon"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Emergency na tawag"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Mga pang-emergency na tawag lang"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Numerong pang-emergency"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Mga numerong pang-emergency"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Mag-tap muli para tumawag sa <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -522,7 +524,7 @@
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Hindi available ang emergency na pagtawag"</string>
     <string name="police_type_description" msgid="5324410799919829693">"Pulis"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulansya"</string>
-    <string name="fire_type_description" msgid="7145996705197064710">"Apoy"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Sunog"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Gamitin ang keyboard upang mag-dial"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"I-hold"</string>
@@ -746,6 +748,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Ilagay ang password"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Mga setting ng pag-bar ng tawag"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"I-deactivate ang lahat ng setting ng pag-bar ng tawag?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Busy ang network. Pakisubukan muling tumawag sa ibang pagkakataon."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Mabagal ang network. Makipag-ugnayan sa iyong mobile operator para sa tulong."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Na-deflect ang tawag."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Ipinasa ang tawag."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"May naghihintay na tawag."</string>
@@ -763,6 +767,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Ipinasa ang tawag."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Sumasali sa conference call."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Inalis ang pag-hold sa tawag."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Hindi maaaring tumawag dahil kasalukuyang pino-provision ang device."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Hindi maaaring tumawag dahil mayroon nang dina-dial na isa pang papalabas na tawag."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Hindi maaaring tumawag dahil mayroong hindi nasagot na papasok na tawag. Sagutin o tanggihan ang papasok na tawag bago gumawa ng bagong pagtawag."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Hindi maaaring tumawag dahil na-disable ang pagtawag gamit ang ro.telephony.disable-call na system property."</string>

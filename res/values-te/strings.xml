@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD కోడ్ అమలు చేయబడుతోంది…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI కోడ్ రద్దు చేయబడింది"</string>
     <string name="cancel" msgid="5044513931633602634">"రద్దు చేయి"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD సందేశం తప్పనిసరిగా <xliff:g id="MIN_LEN">%d</xliff:g> మరియు <xliff:g id="MAX_LEN">%d</xliff:g> అక్షరాల మధ్య ఉండాలి. దయచేసి మళ్లీ ప్రయత్నించండి."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD సందేశం తప్పనిసరిగా <xliff:g id="MIN_LEN">%1$d</xliff:g> మరియు <xliff:g id="MAX_LEN">%2$d</xliff:g> అక్షరాల మధ్య ఉండాలి. దయచేసి మళ్లీ ప్రయత్నించండి."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"కాన్ఫరెన్స్ కాల్‌ను నిర్వహించండి"</string>
     <string name="ok" msgid="3811371167865772377">"సరే"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"స్పీకర్"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"మెరుగుపరిచిన 4G LTE మోడ్"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"వాయిస్, ఇతర కమ్యూనికే. మెరుగుపరచడానికి LTE సేవలను ఉపయోగించు (సిఫార్సు చేయబడింది)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"వాయిస్, ఇతర కమ్యూనికేషన్‌లను మెరుగుపరచడానికి 4G సేవలను ఉపయోగించండి (సిఫార్సు చేయబడింది)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"డేటా ప్రారంభించబడింది"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"డేటా వినియోగాన్ని అనుమతించు"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"హెచ్చరిక"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"కాల్‌ను పునఃప్రారంభించలేరు."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"కాల్‌ను వేరు చేయలేరు."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"బదిలీ చేయలేరు."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"కాల్‌లను విలీనం చేయడం సాధ్యపడలేదు."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"కాల్‌ను తిరస్కరించలేరు."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"కాల్(ల)ను విడిచిపెట్టలేరు."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"కాల్‌లను హోల్డ్ చేయలేరు."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"యజమాని"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"సమాచారాన్ని చూడడానికి మళ్లీ నొక్కండి"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"అత్యవసర కాల్"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"అత్యవసర కాల్‌లు మాత్రమే"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"అత్యవసర నంబర్"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"అత్యవసర నంబర్‌లు"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>కు కాల్ చేయడానికి మళ్లీ నొక్కండి"</string>
@@ -623,7 +625,7 @@
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"అత్యవసర కాల్‌లు"</string>
     <string name="sim_description_emergency_calls" msgid="7535215397212301562">"అత్యవసర కాలింగ్ మాత్రమే"</string>
     <string name="sim_description_default" msgid="4778679519938775515">"SIM కార్డ్, స్లాట్: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"ప్రాప్యత సామర్థ్యం"</string>
+    <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"యాక్సెస్‌ సామర్థ్యం"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"వీరి నుండి Wi-Fi కాల్"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"Wi-Fi కాల్"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"తెరవడానికి మళ్లీ నొక్కండి"</string>
@@ -746,6 +748,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"పాస్‌వర్డ్‌ని నమోదు చేయండి"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"కాల్ బేరింగ్ సెట్టింగ్‌లు"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"అన్ని కాల్ బేరింగ్ సెట్టింగ్‌లను నిష్క్రియం చేయాలా?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"నెట్‌వర్క్ బిజీగా ఉంది. దయచేసి తిరిగి తర్వాత కాల్ చేయండి."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"నెట్‌వర్క్‌లో అంతరాయం ఏర్పడింది. సహాయం కోసం మీ మొబైల్ ఆపరేటర్‌ను సంప్రదించండి."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"కాల్ మళ్లించబడింది."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"కాల్ ఫార్వార్డ్ చేయబడింది."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"కాల్ నిరీక్షణలో ఉంది."</string>
@@ -763,6 +767,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"కాల్ ఫార్వార్డ్ చేయబడింది."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"కాన్ఫరెన్స్ కాల్‌లో చేరుతున్నారు"</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"హోల్డ్‌లో ఉంచిన కాల్ ప్రారంభించబడింది."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"వినియోగదారుకు ప్రస్తుతం ఏ సేవలు అందుబాటులో ఉన్నాయనే విచారణ పనిలో పరికరం ఉన్నందున కాల్ చేయడం సాధ్యం కాదు."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"ఇంకొక అవుట్‌గోయింగ్ కాల్ ఇప్పటికే చేస్తున్నందున మరో కాల్ చేయడం సాధ్యపడదు."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"మాట్లాడాల్సిన ఇన్‌కమింగ్ కాల్ వస్తున్నందున బయటికి కాల్ చేయడం సాధ్యపడదు. కొత్త కాల్ చేయడం కంటే ముందుగా ఇన్‌కమింగ్ కాల్‌కి జవాబివ్వండి లేదా కాల్ నిరాకరించండి."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"ro.telephony.disable-call సిస్టమ్ లక్షణాన్ని ఉపయోగించి కాలింగ్‌ని నిలిపివేసినందున, ఇప్పుడు కాల్ చేయలేరు."</string>

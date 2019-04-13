@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"‏جارٍ تشغيل رمز USSD..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"‏تم إلغاء رمز MMI"</string>
     <string name="cancel" msgid="5044513931633602634">"إلغاء"</string>
-    <string name="enter_input" msgid="1810529547726803893">"‏يجب أن تتراوح حروف رسالة USSD بين <xliff:g id="MIN_LEN">%d</xliff:g> و<xliff:g id="MAX_LEN">%d</xliff:g>. يُرجى إعادة المحاولة."</string>
+    <string name="enter_input" msgid="1810529547726803893">"‏يجب أن تتراوح حروف رسالة USSD بين <xliff:g id="MIN_LEN">%1$d</xliff:g> و<xliff:g id="MAX_LEN">%2$d</xliff:g>. يُرجى إعادة المحاولة."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"إدارة مكالمة جماعية"</string>
     <string name="ok" msgid="3811371167865772377">"موافق"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"السماعة"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"‏وضع 4G LTE المحسّن"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"‏استخدام خدمات LTE لتحسين الصوت والاتصالات الأخرى (مستحسن)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"‏استخدام خدمات 4G لتحسين الصوت والاتصالات الأخرى (مُستحسَن)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"تم تفعيل البيانات"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"السماح باستخدام البيانات"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"تنبيه"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"يتعذر استئناف المكالمة."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"يتعذر فصل المكالمة."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"يتعذر النقل."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"يتعذَّر دمج المكالمات."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"يتعذر رفض المكالمة."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"يتعذر تحرير المكالمات."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"يتعذر وضع المكالمات قيد الانتظار."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"المالك"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"انقر مجددًا لعرض المعلومات."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"مكالمة الطوارئ"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"مكالمات طوارئ فقط"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"رقم الطوارئ"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"أرقام الطوارئ"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"انقر مجددًا للاتصال بالرقم <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -567,7 +569,7 @@
     <string name="ota_hfa_activation_dialog_message" msgid="8092479227918463415">"يُجري الهاتف تنشيطًا لخدمة بيانات الجوّال.\n\nقد يستغرق هذا الأمر ما يصل إلى 5 دقائق."</string>
     <string name="ota_skip_activation_dialog_title" msgid="2943366608272261306">"هل تريد تخطي التفعيل؟"</string>
     <string name="ota_skip_activation_dialog_message" msgid="2440770373498870550">"‏إذا تخطيت عملية التفعيل، فلن تتمكّن من إجراء مكالمات أو الاتصال بشبكات بيانات الجوال (ومع ذلك، يمكنك الاتصال بشبكات Wi-Fi). وسيُطلَب منك تفعيل الهاتف عند تشغيله في كل مرة إلى حين تفعيله."</string>
-    <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"تخطي"</string>
+    <string name="ota_skip_activation_dialog_skip_label" msgid="3458532775091563208">"التخطّي"</string>
     <string name="ota_activate" msgid="1368528132525626264">"تفعيل"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"تم تفعيل الهاتف."</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"مشكلة في التفعيل"</string>
@@ -754,6 +756,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"إدخال كلمة المرور"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"إعدادات منع الاتصال"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"هل تريد إيقاف كل إعدادات منع الاتصال؟"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"الشبكة مشغولة. يُرجى إعادة الاتّصال في وقتٍ لاحق."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"الشبكة مزدحمة. اتصل بمشغّل شبكة الجوّال للحصول على مساعدة."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"تم انحراف المكالمة."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"تمت إعادة توجيه المكالمة."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"المكالمة قيد الانتظار."</string>
@@ -771,6 +775,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"تمت إعادة توجيه المكالمة."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"الانضمام إلى مكالمة جماعية."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"تم إلغاء تعليق المكالمة المعلقة."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"لا يمكن إجراء مكالمة لأنّنا نتحقَّق حاليًا من إمكانية عمل الخدمة على جهازك."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"لا يمكن إجراء مكالمة لأنّ هناك مكالمة صادرة أخرى تجري بالفعل."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"لا يمكن إجراء مكالمة لأنّ هناك مكالمة واردة لم يتم الرد عليها. يُرجى الرد على المكالمة الواردة أو رفضها قبل إجراء مكالمة جديدة."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"‏لا يمكن إجراء مكالمة لأنّه قد تم إيقاف وظيفة الاتصال باستخدام ميزة النظام ro.telephony.disable-call."</string>

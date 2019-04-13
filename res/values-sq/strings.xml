@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"Kodi USSD po punon…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Kodi MMI u anulua"</string>
     <string name="cancel" msgid="5044513931633602634">"Anulo"</string>
-    <string name="enter_input" msgid="1810529547726803893">"Mesazhi USSD duhet të jetë mes karaktereve <xliff:g id="MIN_LEN">%d</xliff:g> dhe <xliff:g id="MAX_LEN">%d</xliff:g>. Provo sërish."</string>
+    <string name="enter_input" msgid="1810529547726803893">"Mesazhi USSD duhet të jetë mes karaktereve <xliff:g id="MIN_LEN">%1$d</xliff:g> dhe <xliff:g id="MAX_LEN">%2$d</xliff:g>. Provo sërish."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Menaxho telefonatën-konferencë"</string>
     <string name="ok" msgid="3811371167865772377">"Në rregull"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Altoparlant"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Modaliteti i përparuar 4G LTE"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Përdor shërbimet LTE për të përmirësuar komunikimet zanore dhe të tjera (rekomandohet)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Përdor shërbimet 4G për të përmirësuar komunikimet zanore dhe të tjera (rekomandohet)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Të dhënat janë të aktivizuara"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Lejo përdorimin e të dhënave"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Kujdes!"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Telefonata nuk mund të vazhdojë."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Nuk mund të ndajë telefonatën."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Nuk mund të transferojë."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Telefonatat nuk mund të shkrihen."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Nuk mund të refuzojë telefonatën."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Nuk mund të lëshojë telefonatën(at)."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Telefonatat nuk mund të mbahen në pritje."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Zotëruesi"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Trokit përsëri për të shikuar informacionet"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Telefonata e urgjencës"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Vetëm telefonata urgjente"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Numri i urgjencës"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numrat e urgjencës"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Trokit përsëri për të telefonuar <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -746,6 +748,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Fut fjalëkalimin"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Cilësimet e bllokimit të telefonatave"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Të çaktivizohen të gjitha cilësimet e bllokimit të telefonatave?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Rrjeti është i zënë. Provo ta kryesh telefonatën përsëri më vonë."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Rrjeti është i mbingarkuar. Kontakto me operatorin tënd celular për ndihmë."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Telefonata u devijua."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Telefonata u transferua."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Telefonata është në pritje."</string>
@@ -763,6 +767,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Telefonatë e transferuar."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Po bashkohesh në një telefonatë konferencë."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Telefonata në pritje u shkëput."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Telefonata nuk mund të kryhet sepse pajisja po përgatitet aktualisht."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Nuk mund të kryhet një telefonatë pasi një telefonatë tjetër dalëse është duke u kryer tashmë."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Nuk mund të kryhet një telefonatë sepse është një telefonatë hyrëse që nuk ka marrë përgjigje. Përgjigju ose refuzoje telefonatën hyrëse para se të kryesh një telefonatë të re."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Nuk mund të kryhet një telefonatë sepse telefonata është çaktivizuar duke përdorur vetinë e sistemit ro.telephony.disable-call."</string>

@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD-kod körs…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI-koden har annullerats"</string>
     <string name="cancel" msgid="5044513931633602634">"Avbryt"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD-meddelandet måste innehålla mellan <xliff:g id="MIN_LEN">%d</xliff:g> och <xliff:g id="MAX_LEN">%d</xliff:g> tecken. Försök igen."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD-meddelandet måste innehålla mellan <xliff:g id="MIN_LEN">%1$d</xliff:g> och <xliff:g id="MAX_LEN">%2$d</xliff:g> tecken. Försök igen."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Hantera konferenssamtal"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Högtalare"</string>
@@ -89,7 +89,7 @@
     <string name="labelCallerId" msgid="3888899447379069198">"Nummerpresentatör"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"Inställningarna läses in ..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Dolt nummer i utgående samtal"</string>
-    <string name="sum_show_caller_id" msgid="6768534125447290401">"Nummer som visas för utgående samtal"</string>
+    <string name="sum_show_caller_id" msgid="6768534125447290401">"Nummer visas för utgående samtal"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Använd operatörens standardinställningar när mitt nummer visas för utgående samtal"</string>
     <string name="labelCW" msgid="6120513814915920200">"Samtal väntar"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Meddela mig om inkommande samtal under pågående samtal"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Förbättrat 4G LTE-läge"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Använd LTE-tjänster för att förbättra bl.a. röstkommunikation (rekommenderas)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Använd 4G-tjänster för att förbättra bl.a. röstkommunikation (rekommenderas)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Data är aktiverat"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Tillåt dataanvändning"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Obs!"</string>
@@ -277,9 +281,7 @@
     <!-- no translation found for throttle_data_usage_subtext (6029276011123694701) -->
     <skip />
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> maxvärdet har överskridits\nDatahastigheten har sänkts till <xliff:g id="USED_1">%2$d</xliff:g> kbit/s"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ av cykeln har gått\nNästa period börjar om <xliff:g id="USED_1">%2$d</xliff:g> dagar (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datahastigheten sänks till <xliff:g id="USED">%1$d</xliff:g> kbit/s om dataanvändningsgränsen överskrids"</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Mer information om operatörens dataanvändningspolicy för mobilnätverket"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Cell Broadcast SMS"</string>
@@ -505,8 +507,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Det går inte att återuppta samtalet."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Det gick inte att koppla isär samtalen."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Det gick inte att överföra."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Det går inte att koppla ihop samtal."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Det gick inte att avvisa samtalet."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Det gick inte att släppa samtal."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Det går inte att hålla kvar samtal."</string>
@@ -516,7 +517,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Ägare"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tryck igen för att visa information"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Nödsamtal"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Endast nödsamtal"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Larmnummer"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Larmnummer"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tryck igen om du vill ringa <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -752,6 +752,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Ange lösenord"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Inställningar för samtalsspärr"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Nätverket är upptaget. Försök att ringa igen senare."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Nätverket är överbelastat. Kontakta mobiloperatören för hjälp."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Samtal avböjt."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Samtal vidarekopplat."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Samtal väntar."</string>
@@ -769,6 +771,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Vidarekopplat samtal."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Ansluter till konferenssamtal."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Parkerat samtal återupptaget."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Det går inte att ringa ett samtal eftersom enheten för närvarande tillhandahålls."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Det går inte att ringa ett samtal eftersom ett annat utgående samtal ringer upp."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Det går inte att ringa eftersom det finns ett obesvarat inkommande samtal. Svara eller avvisa det innan du ringer ett nytt samtal."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Det går inte att ringa eftersom uppringning har inaktiverats med systemegenskapen ro.telephony.disable-call."</string>

@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD кôд је покренут…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI кôд је отказан"</string>
     <string name="cancel" msgid="5044513931633602634">"Откажи"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD порука мора да има између <xliff:g id="MIN_LEN">%d</xliff:g> и <xliff:g id="MAX_LEN">%d</xliff:g> знакова. Пробајте поново."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD порука мора да има између <xliff:g id="MIN_LEN">%1$d</xliff:g> и <xliff:g id="MAX_LEN">%2$d</xliff:g> знакова. Пробајте поново."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Управљање конференцијским позивом"</string>
     <string name="ok" msgid="3811371167865772377">"Потврди"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Звучник"</string>
@@ -238,11 +238,15 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Побољшани 4G LTE режим"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Коришћење LTE услуга за побољшање гласовних и других комуникација (препоручено)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Користи 4G услуге за побољшање гласовне и друге комуникације (препоручено)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Подаци су омогућени"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Омогућавање потрошње података"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Пажња"</string>
     <string name="roaming" msgid="7894878421600247140">"Роминг"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Повезивање са услугом за податке током роминга"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Повежи са услугом за податке током роминга"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Повезивање са услугом за податке током роминга"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Пренос података у ромингу је искључен. Додирните да бисте га укључили."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Изгубили сте везу за пренос мобилних података"</string>
@@ -499,8 +503,7 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Нисмо успели да наставимо позив."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Раздвајање позива није успело."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Пребацивање није успело."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Обједињавање позива није успело."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Одбијање позива није успело."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Успостављање позива није успело."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Није могуће стављати позиве на чекање."</string>
@@ -510,7 +513,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Власник"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Додирните поново да бисте видели информације"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Хитан позив"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Само хитни позиви"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Број хитне службе"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Бројеви телефона хитних служби"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Додирните поново да бисте позвали <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -748,6 +750,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Унесите лозинку"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Подешавања ограничавања позива"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Желите ли да деактивирате сва подешавања ограничавања позива?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Мрежа је заузета. Пробајте поново да упутите позив касније."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Мрежа је загушена. Затражите помоћ од мобилног оператера."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Позив је преусмерен."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Позив је прослеђен."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Позив је на чекању."</string>
@@ -765,6 +769,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Прослеђен позив."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Улазите у конференцијски позив."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Позив више није на чекању."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Тренутно не можете да упутите позив зато што се уређају додељује услуга."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Не можете да позовете јер се већ упућује други одлазни позив."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Не можете да позовете јер имате долазни позив на који нисте одговорили. Одговорите на долазни позив или га одбијте пре упућивања новог позива."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Не можете да позовете јер је позивање онемогућено преко својства система ro.telephony.disable-call."</string>

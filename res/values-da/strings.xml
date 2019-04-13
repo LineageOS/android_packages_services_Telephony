@@ -29,7 +29,7 @@
     <string name="ussdRunning" msgid="485588686340541690">"USSD-kode kører ..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI-nummer annulleret"</string>
     <string name="cancel" msgid="5044513931633602634">"Annuller"</string>
-    <string name="enter_input" msgid="1810529547726803893">"USSD-meddelelse skal være mellem <xliff:g id="MIN_LEN">%d</xliff:g> og <xliff:g id="MAX_LEN">%d</xliff:g> tegn. Prøv igen."</string>
+    <string name="enter_input" msgid="1810529547726803893">"USSD-meddelelse skal være mellem <xliff:g id="MIN_LEN">%1$d</xliff:g> og <xliff:g id="MAX_LEN">%2$d</xliff:g> tegn. Prøv igen."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Administrer telefonmøde"</string>
     <string name="ok" msgid="3811371167865772377">"OK"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Højttaler"</string>
@@ -77,7 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Telefonsvarer"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Telefonsvarer (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Underretninger"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notifikationer"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Nødudsendelser"</string>
     <string name="call_settings" msgid="6112441768261754562">"Indstillinger for opkald"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Yderligere indstillinger"</string>
@@ -238,6 +238,10 @@
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Udvidet 4G LTE-tilstand"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
     <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"Anvend LTE-tjenester til at forbedre tale og anden kommunikation (anbefalet)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"Anvend 4G-tjenester til at forbedre tale og anden kommunikation (anbefalet)"</string>
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
+    <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (8852017734075358040) -->
     <string name="data_enabled" msgid="5972538663568715366">"Data aktiveret"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"Tillad dataforbrug"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Bemærk!"</string>
@@ -249,14 +253,14 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Du kan risikere at skulle betale høje gebyrer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakt din netværksudbyder for at få oplyst priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillade dataroaming?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"Appens dataforbrug"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Dataforbrug fra apps"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brugt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avanceret"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilselskab"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"mobilselskab, esim, sim-kort, euicc, skift mobilselskab, tilføj mobilselskab"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobildata"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Få adgang til data via mobilnetværk"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Brug data via mobilnetværk"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Vil du deaktivere mobildata?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Du har ikke valgt endnu"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Skift SIM-kortet til data?"</string>
@@ -273,13 +277,9 @@
     <!-- String.format failed for translation -->
     <!-- no translation found for throttle_status_subtext (1657318943142085170) -->
     <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_data_usage_subtext (6029276011123694701) -->
-    <skip />
+    <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) af <xliff:g id="USED_2">%3$s</xliff:g> periodens maksimum"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> maksimum er overskredet\nDatahastigheden er nedsat til <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ af forløbet er gennemført\nNæste periode om <xliff:g id="USED_1">%2$d</xliff:g> dage (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datahastigheden er nedsat til <xliff:g id="USED">%1$d</xliff:g> Kb/s, hvis datagrænsen overskrides"</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Oplysninger om mobilselskabets politik om databrug på netværket"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Cell Broadcast-sms"</string>
@@ -439,7 +439,7 @@
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Læser fra SIM-kort ..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"Der er ingen kontakter på dit SIM-kort."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Vælg kontakter, der skal importeres"</string>
-    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Slå flytilstand fra for at importere kontaktpersoner fra SIM-kortet."</string>
+    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Slå flytilstand fra for at importere kontakter fra SIM-kortet."</string>
     <string name="enable_pin" msgid="5422767284133234860">"Aktiver/deaktiver pinkode til SIM-kort"</string>
     <string name="change_pin" msgid="9174186126330785343">"Skift pinkode til SIM-kort"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"Pinkode til SIM-kort:"</string>
@@ -505,18 +505,16 @@
     <string name="incall_error_supp_service_resume" msgid="7147983409782027448">"Opkaldet kan ikke genoptages."</string>
     <string name="incall_error_supp_service_separate" msgid="7224393405134545246">"Kan ikke adskille opkald."</string>
     <string name="incall_error_supp_service_transfer" msgid="7235952238189391438">"Kan ikke overføre."</string>
-    <!-- no translation found for incall_error_supp_service_conference (2530955482970678150) -->
-    <skip />
+    <string name="incall_error_supp_service_conference" msgid="2530955482970678150">"Opkaldene kunne ikke flettes."</string>
     <string name="incall_error_supp_service_reject" msgid="8998568661508655638">"Kan ikke afvise opkaldet."</string>
     <string name="incall_error_supp_service_hangup" msgid="7434513517153834426">"Kan ikke frigive et eller flere opkald."</string>
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Opkald kan ikke sættes i venteposition."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Opret forbindelse til et trådløst netværk for at foretage et opkald."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktivér Wi-Fi-opkald for at foretage et opkald."</string>
-    <string name="emergency_information_hint" msgid="399011533038204351">"Oplysninger i nødsituationer"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Info til nødsituationer"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Ejer"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tryk igen for at se oplysninger"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Nødopkald"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Kun nødopkald"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Alarmnummer"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Alarmnumre"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tryk igen for at ringe til <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -752,6 +750,8 @@
     <string name="messageCallBarring" msgid="2412123220272136055">"Angiv adgangskode"</string>
     <string name="call_barring_settings" msgid="80766145008623645">"Indstillinger for opkaldsspærring"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Vil du deaktivere alle indstillinger for opkaldsspærring?"</string>
+    <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Netværket er optaget. Prøv at ringe igen senere."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Netværket er belastet. Kontakt din mobiludbyder for at få hjælp."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Opkaldet er viderestillet."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Opkaldet er videresendt."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Opkaldet er i venteposition."</string>
@@ -769,6 +769,7 @@
     <string name="supp_service_forwarded_call" msgid="4509980341645679803">"Videresendt opkald."</string>
     <string name="supp_service_conference_call" msgid="4448616364004466832">"Du deltager i konferenceopkaldet."</string>
     <string name="supp_service_held_call_released" msgid="2030677825038709779">"Det parkerede opkald er blevet frigivet."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="6361786376484384454">"Opkaldet kan ikke foretages, fordi enheden pt. provisioneres."</string>
     <string name="callFailed_already_dialing" msgid="4652915396769232226">"Der kan ikke foretages et opkald, fordi et udgående opkald allerede ringer."</string>
     <string name="callFailed_already_ringing" msgid="7747655701540586943">"Der kan ikke foretages et opkald, fordi et indgående opkald ringer. Besvar eller afvis det indgående opkald, før du foretager et nyt opkald."</string>
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"Der kan ikke foretages et opkald, fordi foretagelse af opkald er blevet deaktiveret ved hjælp af systemegenskaben ro.telephony.disable-call."</string>
