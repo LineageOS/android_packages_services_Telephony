@@ -4470,16 +4470,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
         }
 
-        // STOPSHIP Revisit PLMN check (b/130253962).
-        //List<String> allowedMccMncs =
-        //        NetworkScanRequestTracker.getAllowedMccMncsForLocationRestrictedScan(mApp);
-        //for (String mccmnc : request.getPlmns()) {
-        //    if (!allowedMccMncs.contains(mccmnc)) {
-        //        return new SecurityException("Requested mccmnc " + mccmnc + " is not known to the"
-        //                + " device and cannot be scanned for without location access.");
-        //    }
-        //}
-
         return null;
     }
 
