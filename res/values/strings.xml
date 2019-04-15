@@ -42,6 +42,10 @@
     <string name="payphone">Payphone</string>
     <!-- In-call screen: status label for a call that's on hold -->
     <string name="onHold">On hold</string>
+    <!-- Title for carrier MMI message -->
+    <string name="carrier_mmi_msg_title">(<xliff:g id="mmicarrier" example="T-Mobile">%s</xliff:g>) Message</string>
+    <!-- Default title for carrier MMI message -->
+    <string name="default_carrier_mmi_msg_title">Carrier Message</string>
     <!-- Possible error messages with outgoing calls --><skip/>
     <string name="mmiStarted">MMI code started</string>
     <!-- Dialog label when a USSD code starts running -->
