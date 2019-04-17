@@ -253,7 +253,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Rouming vaqtida mobil internetga ulanish"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Rouming-internet yoqilmagan. Uni yoqish uchun bosing."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Mobil internet uzildi"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"Xarajati ancha yuqori bo‘lishi mumkin."</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"Roumingda internet narxi ancha yuqori."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Paketlar narxlari haqidagi ma’lumotni internet provayderingizdan olishingiz mumkin."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Internet-roumingga ruxsat berilsinmi?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Ilova sarflagan trafik"</string>
@@ -264,7 +264,7 @@
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobil internet"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Mobil tarmoq orqali internetdan foydalanish"</string>
-    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Mobil internet o‘chirib qo‘yilsinmi?"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Mobil internet uzilsinmi?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"SIM kartani tanlang"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"SIM karta o‘zgartirilsinmi?"</string>
     <string name="sim_change_data_message" msgid="2163963581444907496">"Mobil internet uchun <xliff:g id="OLD_SIM">%2$s</xliff:g> o‘rniga <xliff:g id="NEW_SIM">%1$s</xliff:g> SIM kartasidan foydalanilsinmi?"</string>

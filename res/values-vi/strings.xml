@@ -253,7 +253,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Tính năng Chuyển vùng dữ liệu bị tắt. Nhấn để bật."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Đã mất kết nối dữ liệu di động"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"Bạn có thể phải chịu các khoản phí đáng kể."</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"Bạn có thể phải trả một khoản phí lớn."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hãy liên hệ với nhà cung cấp mạng của bạn để biết giá cước."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Cho phép chuyển vùng dữ liệu?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Mức sử dụng dữ liệu của ứng dụng"</string>
@@ -263,7 +263,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"nhà mạng, esim, sim, euicc, chuyển nhà mạng, thêm nhà mạng"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Dữ liệu di động"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Truy cập dữ liệu bằng mạng di động"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Sử dụng dữ liệu qua mạng di động"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Tắt dữ liệu di động?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Bắt buộc lựa chọn"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Thay đổi SIM cho dữ liệu di động?"</string>
