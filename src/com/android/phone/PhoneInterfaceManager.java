@@ -5543,6 +5543,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setCallingPid(Binder.getCallingPid())
                                 .setCallingUid(Binder.getCallingUid())
                                 .setMethod("getServiceStateForSubscriber")
+                                .setLogAsInfo(true)
                                 .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
                                 .build());
 
@@ -5553,6 +5554,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setCallingPid(Binder.getCallingPid())
                                 .setCallingUid(Binder.getCallingUid())
                                 .setMethod("getServiceStateForSubscriber")
+                                .setLogAsInfo(true)
                                 .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
                                 .build());
         // We don't care about hard or soft here -- all we need to know is how much info to scrub.
