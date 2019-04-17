@@ -924,8 +924,12 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     @Override
     public void overrideConfig(int subscriptionId, PersistableBundle overrides) {
+        // SHELL UID already has MODIFY_PHONE_STATE implicitly so we do not have to check it, but
+        // the API signature explicitly declares that the method caller have MODIFY_PHONE_STATE, so
+        // calling this as well to be safe.
         mContext.enforceCallingOrSelfPermission(
                 android.Manifest.permission.MODIFY_PHONE_STATE, null);
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "overrideConfig");
         int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             log("Ignore invalid phoneId: " + phoneId + " for subId: " + subscriptionId);
@@ -942,7 +946,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         } else {
             mOverrideConfigs[phoneId].putAll(overrides);
         }
-        broadcastConfigChangedIntent(phoneId);
+
+        notifySubscriptionInfoUpdater(phoneId);
     }
 
     @Override
