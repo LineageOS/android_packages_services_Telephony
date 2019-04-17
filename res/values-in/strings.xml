@@ -256,7 +256,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"Anda dapat dikenakan biaya yang cukup besar."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hubungi penyedia jaringan untuk mengetahui harganya."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Izinkan roaming data?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"Penggunaan data aplikasi"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Penggunaan kuota aplikasi"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> data seluler digunakan pada <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Lanjutan"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operator"</string>
@@ -264,7 +264,7 @@
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Data seluler"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Akses data menggunakan jaringan seluler"</string>
-    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Nonaktifkan data seluler?"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Nonaktifkan kuota seluler?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Perlu memilih SIM"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Ubah SIM data?"</string>
     <string name="sim_change_data_message" msgid="2163963581444907496">"Gunakan <xliff:g id="NEW_SIM">%1$s</xliff:g> dan bukan <xliff:g id="OLD_SIM">%2$s</xliff:g> untuk data seluler?"</string>
@@ -272,7 +272,7 @@
     <string name="video_calling_settings_title" msgid="539714564273795574">"Video call operator"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"Opsi GSM//UMTS"</string>
     <string name="cdma_options" msgid="4016822858172249884">"Opsi CDMA"</string>
-    <string name="throttle_data_usage" msgid="3715677828160555808">"Penggunaan data"</string>
+    <string name="throttle_data_usage" msgid="3715677828160555808">"Penggunaan kuota"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"Data yang digunakan dalam periode saat ini"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"Periode penggunaan data"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"Kebijakan kecepatan data"</string>
