@@ -209,6 +209,11 @@ public class ImsConference extends Conference implements Holdable {
             Log.v(this, "onExtrasRemoved: c=" + c + " key=" + keys);
             removeExtras(keys);
         }
+
+        @Override
+        public void onConnectionEvent(Connection c, String event, Bundle extras) {
+            sendConnectionEvent(event, extras);
+        }
     };
 
     /**
