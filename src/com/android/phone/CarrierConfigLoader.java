@@ -174,7 +174,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         @Override
         public void handleMessage(Message msg) {
             final int phoneId = msg.arg1;
-            log("mHandler: " + msg.what + " phoneId: " + phoneId);
+            logWithLocalLog("mHandler: " + msg.what + " phoneId: " + phoneId);
             switch (msg.what) {
                 case EVENT_CLEAR_CONFIG:
                 {
@@ -975,7 +975,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     public void updateConfigForPhoneId(int phoneId, String simState) {
         mContext.enforceCallingOrSelfPermission(
                 android.Manifest.permission.MODIFY_PHONE_STATE, null);
-        log("update config for phoneId: " + phoneId + " simState: " + simState);
+        logWithLocalLog("update config for phoneId: " + phoneId + " simState: " + simState);
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             return;
         }
