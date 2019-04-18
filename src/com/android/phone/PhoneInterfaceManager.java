@@ -17,7 +17,6 @@
 package com.android.phone;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static android.telephony.data.ApnSetting.TYPE_MMS;
 
 import static com.android.internal.telephony.PhoneConstants.SUBSCRIPTION_KEY;
 
@@ -6958,16 +6957,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     *  Mms is allowed if
+     * Return whether data is enabled for certain APN type. This will tell if framework will accept
+     * corresponding network requests on a subId.
+     *
+     *  Data is enabled if:
      *  1) user data is turned on, or
-     *  2) Mms is un-metered, or
-     *  3) alwaysAllowMms setting is turned on.
+     *  2) APN is un-metered for this subscription, or
+     *  3) APN type is whitelisted. E.g. MMS is whitelisted if
+     *  {@link SubscriptionManager#setAlwaysAllowMmsData} is turned on.
+     *
+     * @return whether data is allowed for a apn type.
+     *
+     * @hide
      */
     @Override
-    public boolean isMmsDataEnabled(int subId, String callingPackage) {
+    public boolean isDataEnabledForApn(int apnType, int subId, String callingPackage) {
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, "isMmsDataEnabled")) {
-            throw new SecurityException("Needs READ_PHONE_STATE for isMmsDataEnabled");
+                mApp, subId, callingPackage, "isDataEnabledForApn")) {
+            throw new SecurityException("Needs READ_PHONE_STATE for isDataEnabledForApn");
         }
 
         // Now that all security checks passes, perform the operation as ourselves.
@@ -6977,8 +6984,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (phone == null) return false;
 
             boolean isMetered = ApnSettingUtils.isMeteredApnType(ApnSetting.getApnTypeString(
-                    TYPE_MMS), phone);
-            return !isMetered || phone.getDataEnabledSettings().isDataEnabled(TYPE_MMS);
+                    apnType), phone);
+            return !isMetered || phone.getDataEnabledSettings().isDataEnabled(apnType);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public boolean isApnMetered(int apnType, int subId) {
+        enforceReadPrivilegedPermission("isApnMetered");
+
+        // Now that all security checks passes, perform the operation as ourselves.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone == null) return true; // By default return true.
+
+            return ApnSettingUtils.isMeteredApnType(ApnSetting.getApnTypeString(
+                    apnType), phone);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
