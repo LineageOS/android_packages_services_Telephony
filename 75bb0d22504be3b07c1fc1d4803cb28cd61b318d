@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29dce962_c447ef4b",
+        "filename": "src/com/android/phone/NetworkQueryService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 19369
+      },
+      "writtenOn": "2019-04-18T18:36:20Z",
+      "side": 1,
+      "message": "after this should be a y",
+      "range": {
+        "startLine": 202,
+        "startChar": 70,
+        "endLine": 202,
+        "endChar": 71
+      },
+      "revId": "75bb0d22504be3b07c1fc1d4803cb28cd61b318d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
