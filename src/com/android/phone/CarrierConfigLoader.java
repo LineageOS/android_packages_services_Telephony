@@ -174,7 +174,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         @Override
         public void handleMessage(Message msg) {
             final int phoneId = msg.arg1;
-            log("mHandler: " + msg.what + " phoneId: " + phoneId);
+            logWithLocalLog("mHandler: " + msg.what + " phoneId: " + phoneId);
             switch (msg.what) {
                 case EVENT_CLEAR_CONFIG:
                 {
@@ -924,8 +924,12 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     @Override
     public void overrideConfig(int subscriptionId, PersistableBundle overrides) {
+        // SHELL UID already has MODIFY_PHONE_STATE implicitly so we do not have to check it, but
+        // the API signature explicitly declares that the method caller have MODIFY_PHONE_STATE, so
+        // calling this as well to be safe.
         mContext.enforceCallingOrSelfPermission(
                 android.Manifest.permission.MODIFY_PHONE_STATE, null);
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "overrideConfig");
         int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             log("Ignore invalid phoneId: " + phoneId + " for subId: " + subscriptionId);
@@ -942,7 +946,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         } else {
             mOverrideConfigs[phoneId].putAll(overrides);
         }
-        broadcastConfigChangedIntent(phoneId);
+
+        notifySubscriptionInfoUpdater(phoneId);
     }
 
     @Override
@@ -975,7 +980,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     public void updateConfigForPhoneId(int phoneId, String simState) {
         mContext.enforceCallingOrSelfPermission(
                 android.Manifest.permission.MODIFY_PHONE_STATE, null);
-        log("update config for phoneId: " + phoneId + " simState: " + simState);
+        logWithLocalLog("update config for phoneId: " + phoneId + " simState: " + simState);
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             return;
         }
