@@ -4448,9 +4448,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 }
             }
         }
-        return mNetworkScanRequestTracker.startNetworkScan(
-                request, messenger, binder, getPhone(subId),
-                callingPackage);
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mNetworkScanRequestTracker.startNetworkScan(
+                    request, messenger, binder, getPhone(subId),
+                    callingPackage);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 
     private SecurityException checkNetworkRequestForSanitizedLocationAccess(
