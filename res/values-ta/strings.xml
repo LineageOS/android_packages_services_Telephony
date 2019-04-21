@@ -256,7 +256,7 @@
     <string name="roaming_warning" msgid="1603164667540144353">"குறிப்பிடத்தக்க பேமெண்ட்கள் இருக்கலாம்."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"உங்கள் நெட்வொர்க் வழங்குநர் விதிக்கும் கட்டணத்தைப் பார்க்கவும்."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"தரவு ரோமிங்கை அனுமதிக்கவா?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"பயன்பாட்டின் டேட்டா உபயோகம்"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"ஆப்ஸ் டேட்டா உபயோகம்"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g> மொபைல் டேட்டா பயன்படுத்தப்பட்டது"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"மேம்பட்டவை"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"தொலைத்தொடர்பு நிறுவனம்"</string>

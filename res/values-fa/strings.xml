@@ -248,14 +248,14 @@
     <string name="data_enabled" msgid="5972538663568715366">"داده‌ها فعال شدند"</string>
     <string name="data_enable_summary" msgid="2382798156640007971">"استفاده از داده مجاز است"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"توجه"</string>
-    <string name="roaming" msgid="7894878421600247140">"رومینگ"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"اتصال به سرویس‌های داده هنگام رومینگ"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"اتصال به سرویس‌های داده هنگام رومینگ"</string>
-    <string name="roaming_reenable_message" msgid="6843814381576397939">"رومینگ داده خاموش شده است. برای روشن کردن آن، ضربه بزنید."</string>
+    <string name="roaming" msgid="7894878421600247140">"فراگردی"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"اتصال به سرویس‌های داده هنگام فراگردی"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"اتصال به سرویس‌های داده هنگام فراگردی"</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"فراگردی داده خاموش شده است. برای روشن کردن آن، ضربه بزنید."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"اتصال داده تلفن همراه قطع شد"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"شاید هزینه زیادی برای شما داشته باشد."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"برای قیمت با ارائه‌دهنده شبکه‌تان بررسی کنید."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"رومینگ داده مجاز است؟"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"فراگردی داده مجاز است؟"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"مصرف داده برنامه"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> داده تلفن همراه مصرف‌شده در <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"پیشرفته"</string>
@@ -374,7 +374,7 @@
     <string name="network_4G" msgid="2723512640529983138">"‏4G (توصیه شده)"</string>
     <string name="network_global" msgid="1323190488685355309">"سراسری"</string>
     <string name="cdma_system_select_title" msgid="5757657769327732833">"انتخاب سیستم"</string>
-    <string name="cdma_system_select_summary" msgid="60460043745797517">"‏تغییر حالت رومینگ CDMA"</string>
+    <string name="cdma_system_select_summary" msgid="60460043745797517">"‏تغییر حالت فراگردی CDMA"</string>
     <string name="cdma_system_select_dialogtitle" msgid="6083355415165359075">"انتخاب سیستم"</string>
   <string-array name="cdma_system_select_choices">
     <item msgid="176474317493999285">"فقط خانه"</item>
@@ -633,7 +633,7 @@
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"‏تماس Wi-Fi"</string>
     <string name="emergency_action_launch_hint" msgid="4906759256275562674">"دوباره ضربه بزنید تا باز شود"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"هنگام رمزگشایی پیام، خطایی روی داد."</string>
-    <string name="callFailed_cdma_activation" msgid="2307989779233262164">"یک سیم‌کارت سرویس شما را فعال کرده است و قابلیت‌های رومینگ تلفنتان را به‌روز کرده است."</string>
+    <string name="callFailed_cdma_activation" msgid="2307989779233262164">"یک سیم‌کارت سرویس شما را فعال کرده است و قابلیت‌های فراگردی تلفنتان را به‌روز کرده است."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"تعداد زیادی تماس فعال وجود دارد. قبل از برقراری تماس جدید، لطفاً به تماس‌های موجود پایان دهید یا آنها را ادغام کنید."</string>
     <string name="callFailed_imei_not_accepted" msgid="132192626901238542">"مرتبط نشد، لطفاً سیم کارت معتبری را وارد کنید."</string>
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"اتصال وای‌فای قطع شد. تماس پایان یافت."</string>
@@ -651,16 +651,16 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="4795052654904027909">"پین‌ها با یکدیگر مطابقت ندارند"</string>
     <string name="change_pin_succeeded" msgid="2022852286442211151">"پین پست صوتی به‌روزرسانی شد"</string>
     <string name="change_pin_system_error" msgid="8308462387154257840">"پین تنظیم نشد"</string>
-    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"رومینگ داده خاموش است"</string>
-    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"رومینگ داده روشن است"</string>
-    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"درحال رومینگ، به طرح داده نیاز است"</string>
-    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"درحال رومینگ، طرح داده فعال است"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="935636805765823307">"فراگردی داده خاموش است"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="1335176927083781041">"فراگردی داده روشن است"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="3568412513831673037">"درحال فراگردی، به طرح داده نیاز است"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="8721998948811064377">"درحال فراگردی، طرح داده فعال است"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="4887747337017565725">"داده دستگاه همراهی باقی نمانده است"</string>
     <string name="mobile_data_activate_prepaid" msgid="7447025165850512683">"داده دستگاه همراهی باقی نمانده است"</string>
     <string name="mobile_data_activate_prepaid_summary" msgid="5705389791791637666">"افزودن داده دستگاه همراه ازطریق <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"بدون طرح رومینگ"</string>
-    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"افزودن طرح رومینگ ازطریق <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"می‌توانید ازطریق شرکت مخابراتی‌تان (<xliff:g id="PROVIDER_NAME">%s</xliff:g>)، طرح داده یا رومینگ اضافه کنید."</string>
+    <string name="mobile_data_activate_roaming_plan" msgid="5998161536947086264">"بدون طرح فراگردی"</string>
+    <string name="mobile_data_activate_roaming_plan_summary" msgid="511202908883425459">"افزودن طرح فراگردی ازطریق <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_footer" msgid="5979019929980140594">"می‌توانید ازطریق شرکت مخابراتی‌تان (<xliff:g id="PROVIDER_NAME">%s</xliff:g>)، طرح داده یا فراگردی اضافه کنید."</string>
     <string name="mobile_data_activate_diag_title" msgid="9044252207707864493">"داده اضافه شود؟"</string>
     <string name="mobile_data_activate_diag_message" msgid="8216154678758451453">"ممکن است لازم باشد ازطریق <xliff:g id="PROVIDER_NAME">%s</xliff:g> داده اضافه کنید"</string>
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"افزودن داده"</string>
@@ -727,15 +727,15 @@
     <string name="call_barring_baoic" msgid="3162154267825211826">"خروجی بین‌المللی"</string>
     <string name="call_barring_baoic_enabled" msgid="2634377543147258105">"مسدود کردن تماس‌های بین‌المللی خروجی غیرفعال شود؟"</string>
     <string name="call_barring_baoic_disabled" msgid="5817895648306183464">"تماس‌های بین‌المللی خروجی مسدود شود؟"</string>
-    <string name="call_barring_baoicr" msgid="8951699885885742076">"رومینگ بین‌المللی خروجی"</string>
-    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"مسدود کردن رومینگ بین‌المللی خروجی غیرفعال شود؟"</string>
-    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"رومینگ بین‌المللی خروجی مسدود شود؟"</string>
+    <string name="call_barring_baoicr" msgid="8951699885885742076">"فراگردی بین‌المللی خروجی"</string>
+    <string name="call_barring_baoicr_enabled" msgid="2519630715322138317">"مسدود کردن فراگردی بین‌المللی خروجی غیرفعال شود؟"</string>
+    <string name="call_barring_baoicr_disabled" msgid="5831267468931377699">"فراگردی بین‌المللی خروجی مسدود شود؟"</string>
     <string name="call_barring_baic" msgid="5272726081458339912">"همه ورودی‌ها"</string>
     <string name="call_barring_baic_enabled" msgid="2457134916223203380">"مسدود کردن همه تماس‌های ورودی غیرفعال شود؟"</string>
     <string name="call_barring_baic_disabled" msgid="6945604947500275636">"همه تماس‌های ورودی مسدود شود؟"</string>
-    <string name="call_barring_baicr" msgid="5728784220691481693">"رومینگ بین‌المللی ورودی"</string>
-    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"مسدود کردن رومینگ بین‌المللی ورودی غیرفعال شود؟"</string>
-    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"رومینگ بین‌المللی ورودی مسدود شود؟"</string>
+    <string name="call_barring_baicr" msgid="5728784220691481693">"فراگردی بین‌المللی ورودی"</string>
+    <string name="call_barring_baicr_enabled" msgid="6533336994391716127">"مسدود کردن فراگردی بین‌المللی ورودی غیرفعال شود؟"</string>
+    <string name="call_barring_baicr_disabled" msgid="6746329853943256566">"فراگردی بین‌المللی ورودی مسدود شود؟"</string>
     <string name="call_barring_deactivate_all" msgid="5269788384941003415">"غیرفعال کردن همه"</string>
     <string name="call_barring_deactivate_all_description" msgid="4972365443287257704">"غیرفعال کردن همه تنظیمات محدودیت تماس"</string>
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"محدودیت تماس غیرفعال شد"</string>
@@ -776,8 +776,8 @@
     <string name="callFailed_calling_disabled" msgid="7257184079619449933">"‏نمی‌توانید تماسی برقرار کنید چون برقراری تماس تلفنی با استفاده از مشخصه سیستم ro.telephony.disable-call غیرفعال شده است."</string>
     <string name="callFailed_too_many_calls" msgid="3023051919216926990">"نمی‌توانید تماسی برقرار کنید، چون هم‌اکنون دو تماس دیگر درحال انجام است. قبل از برقراری تماس جدید، یکی از تماس‌ها را قطع کنید یا آن‌ها را به‌صورت کنفرانسی ادغام کنید."</string>
     <string name="supp_service_over_ut_precautions" msgid="2565837355815074278">"برای استفاده از <xliff:g id="SUPP_SERVICE">%s</xliff:g>، مطمئن شوید داده‌ تلفن همراه روشن شده باشد. می‌توانید در تنظیمات شبکه تلفن همراه این تنظیم را تغییر دهید."</string>
-    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"برای استفاده از <xliff:g id="SUPP_SERVICE">%s</xliff:g>، مطمئن شوید داده‌ تلفن همراه و رومینگ داده روشن شده باشد. می‌توانید در تنظیمات شبکه تلفن همراه، این تنظیمات را تغییر دهید."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"برای استفاده از <xliff:g id="SUPP_SERVICE">%s</xliff:g>، مطمئن شوید داده‌ تلفن همراه و فراگردی داده روشن شده باشد. می‌توانید در تنظیمات شبکه تلفن همراه، این تنظیمات را تغییر دهید."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"برای استفاده از <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>، مطمئن شوید داده تلفن همراه برای سیم‌کارت <xliff:g id="SIM_NUMBER">%2$d</xliff:g> روشن باشد. می‌توانید در تنظیمات شبکه تلفن همراه این تنظیم را تغییر دهید."</string>
-    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"برای استفاده از <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>، مطمئن شوید داده تلفن همراه و رومینگ داده برای سیم‌کارت <xliff:g id="SIM_NUMBER">%2$d</xliff:g> روشن باشد. می‌توانید در تنظیمات شبکه تلفن همراه این تنظیمات را تغییر دهید."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"برای استفاده از <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>، مطمئن شوید داده تلفن همراه و فراگردی داده برای سیم‌کارت <xliff:g id="SIM_NUMBER">%2$d</xliff:g> روشن باشد. می‌توانید در تنظیمات شبکه تلفن همراه این تنظیمات را تغییر دهید."</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"رد کردن"</string>
 </resources>
