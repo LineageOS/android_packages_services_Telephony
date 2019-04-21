@@ -264,7 +264,7 @@
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Բջջային ինտերնետ"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Օգտվել բջջային ինտերնետից"</string>
-    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Անջատե՞լ բջջային ինտերնետը։"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Անջատե՞լ բջջային ինտերնետը"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Ընտրեք SIM քարտը"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Փոխե՞լ բջջային ինտերնետի SIM-ը"</string>
     <string name="sim_change_data_message" msgid="2163963581444907496">"Օգտագործե՞լ <xliff:g id="NEW_SIM">%1$s</xliff:g> քարտը <xliff:g id="OLD_SIM">%2$s</xliff:g> քարտի փոխարեն բջջային ինտերնետի համար:"</string>
