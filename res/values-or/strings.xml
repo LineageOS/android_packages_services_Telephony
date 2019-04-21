@@ -35,7 +35,7 @@
     <string name="audio_mode_speaker" msgid="27649582100085266">"ସ୍ପିକର୍‌"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"ହ୍ୟାଣ୍ଡସେଟ୍ ଇୟରପିସ୍"</string>
     <string name="audio_mode_wired_headset" msgid="1465350758489175975">"ଖରାପ୍‌ଥିବା ହେଡସେଟ୍"</string>
-    <string name="audio_mode_bluetooth" msgid="3047641300848211128">"ବ୍ଲୁ-ଟୂଥ୍‍‌"</string>
+    <string name="audio_mode_bluetooth" msgid="3047641300848211128">"ବ୍ଲୁଟୂଥ୍‍‌"</string>
     <string name="wait_prompt_str" msgid="7601815427707856238">"ନିମ୍ନଲିଖିତ ଟୋନ୍ ପଠାନ୍ତୁ?\n"</string>
     <string name="pause_prompt_str" msgid="1789964702154314806">"ଟୋନ୍ ପଠାଯାଉଛି \n"</string>
     <string name="send_button" msgid="4106860097497818751">"ପଠାନ୍ତୁ"</string>
