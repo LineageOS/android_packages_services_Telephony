@@ -35,7 +35,7 @@
     <string name="audio_mode_speaker" msgid="27649582100085266">"ସ୍ପିକର୍‌"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"ହ୍ୟାଣ୍ଡସେଟ୍ ଇୟରପିସ୍"</string>
     <string name="audio_mode_wired_headset" msgid="1465350758489175975">"ଖରାପ୍‌ଥିବା ହେଡସେଟ୍"</string>
-    <string name="audio_mode_bluetooth" msgid="3047641300848211128">"ବ୍ଲୁ-ଟୂଥ୍‍‌"</string>
+    <string name="audio_mode_bluetooth" msgid="3047641300848211128">"ବ୍ଲୁଟୂଥ୍‍‌"</string>
     <string name="wait_prompt_str" msgid="7601815427707856238">"ନିମ୍ନଲିଖିତ ଟୋନ୍ ପଠାନ୍ତୁ?\n"</string>
     <string name="pause_prompt_str" msgid="1789964702154314806">"ଟୋନ୍ ପଠାଯାଉଛି \n"</string>
     <string name="send_button" msgid="4106860097497818751">"ପଠାନ୍ତୁ"</string>
@@ -174,7 +174,7 @@
     <string name="already_auto" msgid="6067116884321285507">"ପୂର୍ବରୁ ସ୍ଵାଚାଳିତ ଚୟନରେ ଅଛି।"</string>
     <string name="select_automatically" msgid="1046727200631770962">"ସ୍ଵଚାଳିତ ଭାବେ ନେଟ୍‌ୱର୍କ ଚୟନ କରନ୍ତୁ"</string>
     <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"%1$s ସହ କନେକ୍ଟ ହେଲେ ଉପଲବ୍ଧ ହେବ ନାହିଁ"</string>
-    <string name="network_select_title" msgid="7733107364757544558">"ନେଟ୍‌ୱର୍କ"</string>
+    <string name="network_select_title" msgid="7733107364757544558">"ନେଟ୍‌ୱାର୍କ"</string>
     <string name="register_automatically" msgid="6017849844573519637">"ସ୍ଵଚାଳିତ ପଞ୍ଜୀକରଣ…"</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"ନିଜ ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ପ୍ରକାର"</string>
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"ନେଟ୍‌ୱର୍କ ଅପରେଟିଙ୍ଗ ମୋଡ୍‌କୁ ବଦଳାନ୍ତୁ"</string>
@@ -512,7 +512,7 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"କଲ୍‍କୁ ହୋଲ୍ଡ କରାଯାଇପାରିବ ନାହିଁ।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"ଗୋଟିଏ କଲ୍ କରିବା ପାଇଁ ଏକ ତାରବିହୀନ ନେଟ୍‌ୱର୍କ ସହ କନେକ୍ଟ କରନ୍ତୁ।"</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"ଗୋଟିଏ କଲ୍ କରିବା ପାଇଁ ୱାଇ-ଫାଇ କଲିଙ୍ଗକୁ ସକ୍ଷମ କରନ୍ତୁ।"</string>
-    <string name="emergency_information_hint" msgid="399011533038204351">"ଆପତ୍ତକାଳୀନ ସୂଚନା"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"ଜରୁରୀକାଳୀନ ସୂଚନା"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"ମାଲିକ"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"ସୂଚନା ଦେଖିବାକୁ ପୁଣିଥରେ ଟାପ୍‍ କରନ୍ତୁ"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ଜରୁରୀକାଳିନ କଲ୍‌"</string>
