@@ -6292,14 +6292,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public List<UiccCardInfo> getUiccCardsInfo(String callingPackage) {
+        boolean hasReadPermission = false;
         try {
             enforceReadPrivilegedPermission("getUiccCardsInfo");
+            hasReadPermission = true;
         } catch (SecurityException e) {
             // even without READ_PRIVILEGED_PHONE_STATE, we allow the call to continue if the caller
             // has carrier privileges on an active UICC
             if (checkCarrierPrivilegesForPackageAnyPhone(callingPackage)
                         != TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
-                throw new SecurityException("Caller does not have carrier privileges on any UICC");
+                throw new SecurityException("Caller does not have permission.");
             }
         }
 
@@ -6307,27 +6309,30 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             UiccController uiccController = UiccController.getInstance();
             ArrayList<UiccCardInfo> cardInfos = uiccController.getAllUiccCardInfos();
-
-            ApplicationInfo ai = mApp.getPackageManager().getApplicationInfo(callingPackage, 0);
-            if ((ai.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
-                // Remove private info if the caller doesn't have access
-                ArrayList<UiccCardInfo> filteredInfos = new ArrayList<>();
-                for (UiccCardInfo cardInfo : cardInfos) {
-                    UiccCard card = uiccController.getUiccCard(cardInfo.getSlotIndex());
-                    UiccProfile profile = card.getUiccProfile();
-                    if (profile.getCarrierPrivilegeStatus(mApp.getPackageManager(), callingPackage)
-                            != TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
-                        filteredInfos.add(cardInfo.getUnprivileged());
-                    } else {
-                        filteredInfos.add(cardInfo);
-                    }
-                }
-                return filteredInfos;
+            if (hasReadPermission) {
+                return cardInfos;
             }
-            return cardInfos;
-        } catch (PackageManager.NameNotFoundException e) {
-            // This should not happen since we pass the package info in from TelephonyManager
-            throw new SecurityException("Invalid calling package.");
+
+            // Remove private info if the caller doesn't have access
+            ArrayList<UiccCardInfo> filteredInfos = new ArrayList<>();
+            for (UiccCardInfo cardInfo : cardInfos) {
+                // For an inactive eUICC, the UiccCard will be null even though the UiccCardInfo
+                // is available
+                UiccCard card = uiccController.getUiccCardForSlot(cardInfo.getSlotIndex());
+                if (card == null || card.getUiccProfile() == null) {
+                    // assume no access if the card or profile is unavailable
+                    filteredInfos.add(cardInfo.getUnprivileged());
+                    continue;
+                }
+                UiccProfile profile = card.getUiccProfile();
+                if (profile.getCarrierPrivilegeStatus(mApp.getPackageManager(), callingPackage)
+                        == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
+                    filteredInfos.add(cardInfo);
+                } else {
+                    filteredInfos.add(cardInfo.getUnprivileged());
+                }
+            }
+            return filteredInfos;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
