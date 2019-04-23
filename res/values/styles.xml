@@ -154,6 +154,7 @@
     </style>
 
     <style name="SettingsLight" parent="android:Theme.Material.Light">
+        <item name="android:forceDarkAllowed">true</item>
         <item name="android:windowBackground">@color/phone_settings_background_color</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:actionBarStyle">@style/DialtactsActionBarStyle</item>
@@ -183,11 +184,13 @@
 
     <style name="DialerAlertDialogTheme"
         parent="@android:style/Theme.Material.Light.Dialog">
+        <item name="android:forceDarkAllowed">true</item>
         <item name="android:colorAccent">@color/dialer_theme_color</item>
         <item name="android:textColor">?android:attr/textColorPrimaryInverseDisableOnly</item>
     </style>
 
     <style name="NetworkOperatorsSettingsTheme" parent="@android:style/Theme.DeviceDefault.Settings">
+        <item name="android:forceDarkAllowed">true</item>
         <item name="android:switchPreferenceStyle">@style/SettingsSwitchPreference</item>
         <item name="android:preferenceCategoryStyle">@style/SettingsPreferenceCategory</item>
         <item name="android:preferenceStyle">@style/SettingsPreference</item>
@@ -202,6 +205,7 @@
     </style>
 
     <style name="Empty" parent="@android:style/Theme.Material.Light">
+        <item name="android:forceDarkAllowed">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -268,6 +272,7 @@
     </style>
 
     <style name="EmergencyDialerTheme" parent="@*android:style/Theme.DeviceDefault.Settings.Dark.NoActionBar">
+        <item name="android:forceDarkAllowed">true</item>
         <item name="android:colorPrimaryDark">?android:attr/colorPrimary</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowShowWallpaper">true</item>
@@ -279,6 +284,7 @@
     </style>
 
     <style name="EmergencyDialerThemeDark" parent="@style/EmergencyDialerTheme">
+        <item name="android:forceDarkAllowed">true</item>
         <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
         <item name="emergencyButtonBackgroundColor">#19414549</item>
         <item name="android:colorControlHighlight">#40000000</item>
@@ -287,10 +293,12 @@
 
     <style name="EmergencyDialerAlertDialogTheme"
            parent="@android:style/Theme.Material.Dialog">
+        <item name="android:forceDarkAllowed">true</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="SimImportTheme" parent="@android:style/Theme.Material.Light">
+        <item name="android:forceDarkAllowed">true</item>
         <item name="android:actionBarStyle">@style/TelephonyActionBarStyle</item>
         <item name="android:colorPrimaryDark">@color/dialer_theme_color_dark</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_back_arrow</item>
@@ -298,6 +306,7 @@
     </style>
 
     <style name="OutgoingCallBroadcasterTheme" parent="@android:style/Theme.Holo.NoActionBar">
+        <item name="android:forceDarkAllowed">true</item>
         <item name="android:windowBackground">@android:color/black</item>
 
         <item name="*android:windowAnimationStyle">@style/OutgoingAnimationStyle</item>
@@ -322,6 +331,7 @@
     </style>
 
     <style name="CallSettingsWithoutDividerTheme" parent="SettingsLight">
+        <item name="android:forceDarkAllowed">true</item>
         <item name="android:listDivider">@null</item>
     </style>
 
