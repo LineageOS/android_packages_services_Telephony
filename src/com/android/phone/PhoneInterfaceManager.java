@@ -121,6 +121,7 @@ import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.DefaultPhoneNotifier;
 import com.android.internal.telephony.HalVersion;
+import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IccCard;
@@ -140,6 +141,7 @@ import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.SmsApplication;
 import com.android.internal.telephony.SmsApplication.SmsApplicationData;
 import com.android.internal.telephony.SmsController;
+import com.android.internal.telephony.SmsPermissions;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.dataconnection.ApnSettingUtils;
@@ -157,6 +159,7 @@ import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.telephony.uicc.UiccSlot;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
 import com.android.internal.util.HexDump;
+import com.android.phone.settings.PickSmsSubscriptionActivity;
 import com.android.phone.vvm.PhoneAccountHandleConverter;
 import com.android.phone.vvm.RemoteVvmTaskManager;
 import com.android.phone.vvm.VisualVoicemailSettingsUtil;
@@ -7034,6 +7037,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    @Override
+    public void enqueueSmsPickResult(String callingPackage, IIntegerConsumer pendingSubIdResult) {
+        SmsPermissions permissions = new SmsPermissions(getDefaultPhone(), mApp,
+                (AppOpsManager) mApp.getSystemService(Context.APP_OPS_SERVICE));
+        if (!permissions.checkCallingCanSendSms(callingPackage, "Sending message")) {
+            throw new SecurityException("Requires SEND_SMS permission to perform this operation");
+        }
+        PickSmsSubscriptionActivity.addPendingResult(pendingSubIdResult);
+        Intent intent = new Intent();
+        intent.setClass(mApp, PickSmsSubscriptionActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // Bring up choose default SMS subscription dialog right now
+        intent.putExtra(PickSmsSubscriptionActivity.DIALOG_TYPE_KEY,
+                PickSmsSubscriptionActivity.SMS_PICK_FOR_MESSAGE);
+        mApp.startActivity(intent);
     }
 
     @Override
