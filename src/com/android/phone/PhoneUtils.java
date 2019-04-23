@@ -429,7 +429,7 @@ public class PhoneUtils {
             app.setPukEntryProgressDialog(pd);
 
         } else if ((app.getPUKEntryActivity() != null) && (state == MmiCode.State.FAILED)) {
-            createUssdDialog(app, context, text,
+            createUssdDialog(app, context, text, phone,
                     WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
             // In case of failure to unlock, we'll need to reset the
             // PUK unlock activity, so that the user may try again.
@@ -444,7 +444,7 @@ public class PhoneUtils {
             // A USSD in a pending state means that it is still
             // interacting with the user.
             if (state != MmiCode.State.PENDING) {
-                createUssdDialog(app, context, text,
+                createUssdDialog(app, context, text, phone,
                         WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
             } else {
                 log("displayMMIComplete: USSD code has requested user input. Constructing input "
@@ -559,8 +559,17 @@ public class PhoneUtils {
         }
     }
 
-    private static void createUssdDialog(PhoneGlobals app, Context context, CharSequence text,
-            int windowType) {
+    /**
+     * It displays the message dialog for user about the mmi code result message.
+     *
+     * @param app This is {@link PhoneGlobals}
+     * @param context Context to get strings.
+     * @param text This is message's result.
+     * @param phone This is phone to create sssd dialog.
+     * @param windowType The new window type. {@link WindowManager.LayoutParams}.
+     */
+    public static void createUssdDialog(PhoneGlobals app, Context context, CharSequence text,
+            Phone phone, int windowType) {
         log("displayMMIComplete: MMI code has finished running.");
 
         log("displayMMIComplete: Extended NW displayMMIInitiate (" + text + ")");
@@ -593,6 +602,13 @@ public class PhoneUtils {
                     .insert(0, "\n")
                     .insert(0, app.getResources().getString(R.string.ussd_dialog_sep))
                     .insert(0, "\n");
+        }
+        if (phone != null && phone.getCarrierName() != null) {
+            sUssdDialog.setTitle(app.getResources().getString(R.string.carrier_mmi_msg_title,
+                    phone.getCarrierName()));
+        } else {
+            sUssdDialog
+                    .setTitle(app.getResources().getString(R.string.default_carrier_mmi_msg_title));
         }
         sUssdMsg.insert(0, text);
         sUssdDialog.setMessage(sUssdMsg.toString());
