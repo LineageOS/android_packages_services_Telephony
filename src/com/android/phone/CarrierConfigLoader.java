@@ -957,21 +957,17 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             log("Ignore invalid phoneId: " + phoneId + " for subId: " + subId);
             return;
         }
-        String callingPackageName = mContext.getPackageManager().getNameForUid(
-                Binder.getCallingUid());
-        // TODO: Check that the calling packages is privileged for subId specifically.
-        int privilegeStatus = TelephonyManager.from(mContext).checkCarrierPrivilegesForPackage(
-                callingPackageName);
-        // Requires the calling app to be either a carrier privileged app or
+
+        // Requires the calling app to be either a carrier privileged app for this subId or
         // system privileged app with MODIFY_PHONE_STATE permission.
-        if (privilegeStatus != TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
-            mContext.enforceCallingOrSelfPermission(android.Manifest.permission.MODIFY_PHONE_STATE,
-                    "Require carrier privileges or MODIFY_PHONE_STATE permission.");
-        }
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mContext, subId,
+                "Require carrier privileges or MODIFY_PHONE_STATE permission.");
 
         // This method should block until deleting has completed, so that an error which prevents us
         // from clearing the cache is passed back to the carrier app. With the files successfully
         // deleted, this can return and we will eventually bind to the carrier app.
+        String callingPackageName = mContext.getPackageManager().getNameForUid(
+                Binder.getCallingUid());
         clearCachedConfigForPackage(callingPackageName);
         updateConfigForPhoneId(phoneId);
     }
