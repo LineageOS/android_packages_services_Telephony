@@ -4449,11 +4449,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 }
             }
         }
+        int callingUid = Binder.getCallingUid();
+        int callingPid = Binder.getCallingPid();
         final long identity = Binder.clearCallingIdentity();
         try {
             return mNetworkScanRequestTracker.startNetworkScan(
                     request, messenger, binder, getPhone(subId),
-                    callingPackage);
+                    callingUid, callingPid, callingPackage);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4490,9 +4492,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "stopNetworkScan");
 
+        int callingUid = Binder.getCallingUid();
         final long identity = Binder.clearCallingIdentity();
         try {
-            mNetworkScanRequestTracker.stopNetworkScan(scanId);
+            mNetworkScanRequestTracker.stopNetworkScan(scanId, callingUid);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
