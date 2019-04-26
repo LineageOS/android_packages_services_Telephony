@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"מספר פרטי"</string>
     <string name="payphone" msgid="4793877574636445118">"טלפון ציבורי"</string>
     <string name="onHold" msgid="9035493194749959955">"בהמתנה"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) הודעה"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"הודעה מהספק הסלולרי"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"‏קוד MMI הופעל"</string>
     <string name="ussdRunning" msgid="485588686340541690">"‏קוד USSD פועל…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"‏קוד MMI מבוטל"</string>
