@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"ಖಾಸಗಿ ಸಂಖ್ಯೆ"</string>
     <string name="payphone" msgid="4793877574636445118">"ಪೇಫೋನ್"</string>
     <string name="onHold" msgid="9035493194749959955">"ತಡೆಹಿಡಿಯಲಾಗಿದೆ"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) ಸಂದೇಶ"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"ವಾಹಕದ ಸಂದೇಶ"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI ಕೋಡ್‌ ಪ್ರಾರಂಭಿಸಲಾಗಿದೆ"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD ಕೋಡ್‌ ಚಾಲನೆಯಲ್ಲಿದೆ…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI ಕೋಡ್‌ ರದ್ದು ಮಾಡಲಾಗಿದೆ"</string>
