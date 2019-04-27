@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"ເບີສ່ວນໂຕ"</string>
     <string name="payphone" msgid="4793877574636445118">"ຕູ້​ໂທ​ລະ​ສັບ​ສາ​ທາ​ລະ​ນະ"</string>
     <string name="onHold" msgid="9035493194749959955">"ພັກສາຍຊົ່ວຄາວ"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) ຂໍ້ຄວາມ"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"ຂໍ້ຄວາມຜູ້ໃຫ້ບໍລິການ"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"ເລີ່ມລະຫັດ MMI ແລ້ວ"</string>
     <string name="ussdRunning" msgid="485588686340541690">"ກຳລັງແລ່ນລະຫັດ USSD..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"ຍົກເລີກລະຫັດ MMI ແລ້ວ"</string>

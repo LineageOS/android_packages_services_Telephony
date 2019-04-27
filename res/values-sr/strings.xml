@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Приватан број"</string>
     <string name="payphone" msgid="4793877574636445118">"Телефонска говорница"</string>
     <string name="onHold" msgid="9035493194749959955">"На чекању"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) Порука"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Порука мобилног оператера"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Покренут је MMI кôд."</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD кôд је покренут…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI кôд је отказан"</string>

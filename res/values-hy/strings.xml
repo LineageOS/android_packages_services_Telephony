@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Գաղտնի համար"</string>
     <string name="payphone" msgid="4793877574636445118">"Բջջային տերմինալ"</string>
     <string name="onHold" msgid="9035493194749959955">"Սպասում"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Հաղորդագրություն (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Հաղորդագրություն օպերատորից"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI կոդը մեկնարկել է"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD կոդը գործարկվում է..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI կոդը չեղարկված է"</string>

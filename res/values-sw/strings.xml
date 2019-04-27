@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">" Number isiyojulikana"</string>
     <string name="payphone" msgid="4793877574636445118">"Simu ya kulipia"</string>
     <string name="onHold" msgid="9035493194749959955">"Inangoja"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Ujumbe wa <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Ujumbe wa Mtoa Huduma"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Msimbo wa MMI  umeanza"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Msimbo wa USSD unafungua"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Msimbo wa MMI umeghairiwa"</string>
