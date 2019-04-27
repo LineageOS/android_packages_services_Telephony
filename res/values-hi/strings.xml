@@ -240,7 +240,7 @@
     <string name="network_operator_category" msgid="4830701959205735636">"नेटवर्क"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"बेहतर 4G LTE मोड"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (4447454259719947406) -->
-    <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ध्‍वनि और अन्‍य संचारों को बेहतर बनाने हेतु LTE सेवाओं का उपयोग करें (अनुशंसित)"</string>
+    <string name="enhanced_4g_lte_mode_summary" msgid="2332175070522125850">"ध्‍वनि और अन्‍य संचारों को बेहतर बनाने के लिए LTE सेवाओं का उपयोग करें (अनुशंसित)"</string>
     <string name="enhanced_4g_lte_mode_summary_o2" msgid="2467813449068614988">"ध्वनि और दूसरे संचारों को बेहतर बनाने के लिए 4G सेवाओं का इस्तेमाल करें (सुझाया गया)"</string>
     <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2602242047481988063) -->
     <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (989876442920201921) -->
@@ -435,7 +435,7 @@
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"फ़िक्स्ड डायलिंग नंबर हटाया गया."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN पे नई जानकारी नहीं है क्योंकि आपने गलत पिन लिखा है."</string>
     <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN अपडेट नहीं किया जा सका, क्योंकि नंबर में 20 से ज़्यादा अंक हैं."</string>
-    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN पे नई जानकारी नहीं है. PIN2 गलत था, या फ़ोन नंबर अस्वीकृत था."</string>
+    <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN पे नई जानकारी नहीं है. PIN2 गलत था, या फ़ोन नंबर नामंजूर था."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN की कार्यवाही विफल रही."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"सिम कार्ड से पढ़ रहा है…"</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"आपके सिम कार्ड पर कोई संपर्क नहीं है."</string>
