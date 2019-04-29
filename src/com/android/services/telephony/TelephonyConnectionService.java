@@ -177,6 +177,8 @@ public class TelephonyConnectionService extends ConnectionService {
         public int capabilities;
         // By default, we will assume that the slots are not locked.
         public boolean isLocked = false;
+        // Is the emergency number associated with the slot
+        public boolean hasDialedEmergencyNumber = false;
 
         public SlotStatus(int slotId, int capabilities) {
             this.slotId = slotId;
@@ -1356,10 +1358,15 @@ public class TelephonyConnectionService extends ConnectionService {
         if (potentialEmergencyPhones.size() > 0) {
             Log.i(this, "getPhoneForEmergencyCall, Phone Id that supports emergency number:"
                     + potentialEmergencyPhones.get(0).getPhoneId());
-            return potentialEmergencyPhones.get(0);
+            return getFirstPhoneForEmergencyCall(potentialEmergencyPhones);
         }
         // c)
         return getFirstPhoneForEmergencyCall();
+    }
+
+    @VisibleForTesting
+    public Phone getFirstPhoneForEmergencyCall() {
+        return getFirstPhoneForEmergencyCall(null);
     }
 
     /**
@@ -1367,20 +1374,25 @@ public class TelephonyConnectionService extends ConnectionService {
      *  list (for multi-SIM devices):
      *  1) The User's SIM preference for Voice calling
      *  2) The First Phone that is currently IN_SERVICE or is available for emergency calling
-     *  3) If there is a PUK locked SIM, compare the SIMs that are not PUK locked. If all the SIMs
-     *     are locked, skip to condition 4).
-     *  4) The Phone with more Capabilities.
-     *  5) The First Phone that has a SIM card in it (Starting from Slot 0...N)
-     *  6) The Default Phone (Currently set as Slot 0)
+     *  3) Prioritize phones that have the dialed emergency number as part of their emergency
+     *     number list
+     *  4) If there is a PUK locked SIM, compare the SIMs that are not PUK locked. If all the SIMs
+     *     are locked, skip to condition 5).
+     *  5) The Phone with more Capabilities.
+     *  6) The First Phone that has a SIM card in it (Starting from Slot 0...N)
+     *  7) The Default Phone (Currently set as Slot 0)
      */
     @VisibleForTesting
-    public Phone getFirstPhoneForEmergencyCall() {
+    public Phone getFirstPhoneForEmergencyCall(List<Phone> phonesWithEmergencyNumber) {
         // 1)
         int phoneId = mSubscriptionManagerProxy.getDefaultVoicePhoneId();
         if (phoneId != SubscriptionManager.INVALID_PHONE_INDEX) {
             Phone defaultPhone = mPhoneFactoryProxy.getPhone(phoneId);
             if (defaultPhone != null && isAvailableForEmergencyCalls(defaultPhone)) {
-                return defaultPhone;
+                if (phonesWithEmergencyNumber == null
+                        || phonesWithEmergencyNumber.contains(defaultPhone)) {
+                    return defaultPhone;
+                }
             }
         }
 
@@ -1394,25 +1406,38 @@ public class TelephonyConnectionService extends ConnectionService {
             }
             // 2)
             if (isAvailableForEmergencyCalls(phone)) {
-                // the slot has the radio on & state is in service.
-                Log.i(this, "getFirstPhoneForEmergencyCall, radio on & in service, Phone Id:" + i);
-                return phone;
+                if (phonesWithEmergencyNumber == null
+                        || phonesWithEmergencyNumber.contains(phone)) {
+                    // the slot has the radio on & state is in service.
+                    Log.i(this,
+                            "getFirstPhoneForEmergencyCall, radio on & in service, Phone Id:" + i);
+                    return phone;
+                }
             }
-            // 4)
+            // 5)
             // Store the RAF Capabilities for sorting later.
             int radioAccessFamily = phone.getRadioAccessFamily();
             SlotStatus status = new SlotStatus(i, radioAccessFamily);
             phoneSlotStatus.add(status);
             Log.i(this, "getFirstPhoneForEmergencyCall, RAF:" +
                     Integer.toHexString(radioAccessFamily) + " saved for Phone Id:" + i);
-            // 3)
+            // 4)
             // Report Slot's PIN/PUK lock status for sorting later.
             int simState = mSubscriptionManagerProxy.getSimStateForSlotIdx(i);
             if (simState == TelephonyManager.SIM_STATE_PIN_REQUIRED ||
                     simState == TelephonyManager.SIM_STATE_PUK_REQUIRED) {
                 status.isLocked = true;
             }
-            // 5)
+            // 3) Store if the Phone has the corresponding emergency number
+            if (phonesWithEmergencyNumber != null) {
+                for (Phone phoneWithEmergencyNumber : phonesWithEmergencyNumber) {
+                    if (phoneWithEmergencyNumber != null
+                            && phoneWithEmergencyNumber.getPhoneId() == i) {
+                        status.hasDialedEmergencyNumber = true;
+                    }
+                }
+            }
+            // 6)
             if (firstPhoneWithSim == null && mTelephonyManagerProxy.hasIccCard(i)) {
                 // The slot has a SIM card inserted, but is not in service, so keep track of this
                 // Phone. Do not return because we want to make sure that none of the other Phones
@@ -1422,19 +1447,28 @@ public class TelephonyConnectionService extends ConnectionService {
                         firstPhoneWithSim.getPhoneId());
             }
         }
-        // 6)
+        // 7)
         if (firstPhoneWithSim == null && phoneSlotStatus.isEmpty()) {
-            // No Phones available, get the default.
-            Log.i(this, "getFirstPhoneForEmergencyCall, return default phone");
-            return mPhoneFactoryProxy.getDefaultPhone();
+            if (phonesWithEmergencyNumber == null || phonesWithEmergencyNumber.isEmpty()) {
+                // No Phones available, get the default
+                Log.i(this, "getFirstPhoneForEmergencyCall, return default phone");
+                return  mPhoneFactoryProxy.getDefaultPhone();
+            }
+            return phonesWithEmergencyNumber.get(0);
         } else {
-            // 4)
+            // 5)
             final int defaultPhoneId = mPhoneFactoryProxy.getDefaultPhone().getPhoneId();
             final Phone firstOccupiedSlot = firstPhoneWithSim;
             if (!phoneSlotStatus.isEmpty()) {
                 // Only sort if there are enough elements to do so.
                 if (phoneSlotStatus.size() > 1) {
                     Collections.sort(phoneSlotStatus, (o1, o2) -> {
+                        if (!o1.hasDialedEmergencyNumber && o2.hasDialedEmergencyNumber) {
+                            return -1;
+                        }
+                        if (o1.hasDialedEmergencyNumber && !o2.hasDialedEmergencyNumber) {
+                            return 1;
+                        }
                         // First start by seeing if either of the phone slots are locked. If they
                         // are, then sort by non-locked SIM first. If they are both locked, sort
                         // by capability instead.
@@ -1480,7 +1514,7 @@ public class TelephonyConnectionService extends ConnectionService {
                         "with highest capability");
                 return mPhoneFactoryProxy.getPhone(mostCapablePhoneId);
             } else {
-                // 5)
+                // 6)
                 return firstPhoneWithSim;
             }
         }
