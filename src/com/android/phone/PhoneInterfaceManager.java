@@ -172,6 +172,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
@@ -248,6 +249,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_REQUEST_CELL_INFO_UPDATE_DONE = 67;
     private static final int CMD_REQUEST_ENABLE_MODEM = 68;
     private static final int EVENT_ENABLE_MODEM_DONE = 69;
+    private static final int CMD_GET_MODEM_STATUS = 70;
+    private static final int EVENT_GET_MODEM_STATUS_DONE = 71;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1117,10 +1120,42 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     request.result = (ar.exception == null);
+                    int phoneId = request.phone.getPhoneId();
                     //update the cache as modem status has changed
-                    mPhoneConfigurationManager.addToPhoneStatusCache(
-                            request.phone.getPhoneId(), msg.arg1 == 1);
-                    updateModemStateMetrics();
+                    if ((boolean) request.result) {
+                        mPhoneConfigurationManager.addToPhoneStatusCache(phoneId, msg.arg1 == 1);
+                        updateModemStateMetrics();
+                    } else {
+                        Log.e(LOG_TAG, msg.what + " failure. Not updating modem status."
+                                + ar.exception);
+                    }
+                    notifyRequester(request);
+                    break;
+                case CMD_GET_MODEM_STATUS:
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_GET_MODEM_STATUS_DONE, request);
+                    PhoneConfigurationManager.getInstance()
+                            .getPhoneStatusFromModem(request.phone, onCompleted);
+                    break;
+                case EVENT_GET_MODEM_STATUS_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    int id = request.phone.getPhoneId();
+                    if (ar.exception == null && ar.result != null) {
+                        request.result = ar.result;
+                        //update the cache as modem status has changed
+                        mPhoneConfigurationManager.addToPhoneStatusCache(id,
+                                (boolean) request.result);
+                    } else {
+                        // Return true if modem status cannot be retrieved. For most cases,
+                        // modem status is on. And for older version modems, GET_MODEM_STATUS
+                        // and disable modem are not supported. Modem is always on.
+                        // TODO: this should be fixed in R to support a third
+                        // status UNKNOWN b/131631629
+                        request.result = true;
+                        Log.e(LOG_TAG, msg.what + " failure. Not updating modem status."
+                                + ar.exception);
+                    }
                     notifyRequester(request);
                     break;
                 default:
@@ -6796,7 +6831,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return PhoneConfigurationManager.getInstance().getPhoneStatus(phone);
+            try {
+                return mPhoneConfigurationManager.getPhoneStatusFromCache(phone.getPhoneId());
+            } catch (NoSuchElementException ex) {
+                return (Boolean) sendRequest(CMD_GET_MODEM_STATUS, null, phone, null);
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
