@@ -3813,7 +3813,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int command, int p1, int p2, int p3, String data) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            if (channel < 0) {
+            if (channel <= 0) {
                 return "";
             }
 
