@@ -29,7 +29,6 @@ import android.os.Binder;
 import android.os.Process;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import android.util.FeatureFlagUtils;
 import android.util.Log;
 
 import com.android.internal.util.CollectionUtils;
@@ -51,10 +50,6 @@ public class EmergencyAssistanceHelper {
     public static String getIntentAction(Context context) {
         String action = context.getResources().getString(R.string.config_emergency_app_intent);
         if (!action.isEmpty()) {
-            // TODO: remove feature flag and this temporary intent once Emergency app was replaced.
-            if (!FeatureFlagUtils.isEnabled(context, FeatureFlagUtils.SAFETY_HUB)) {
-                return "com.android.emergency.action.EMERGENCY_ASSISTANCE";
-            }
             return action;
         }
 
