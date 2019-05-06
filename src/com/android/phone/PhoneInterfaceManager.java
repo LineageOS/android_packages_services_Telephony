@@ -6365,11 +6365,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     continue;
                 }
 
-                String cardId = null;
+                String cardId;
                 UiccCard card = slot.getUiccCard();
                 if (card != null) {
                     cardId = card.getCardId();
-                } else if (!slot.isEuicc()) {
+                } else {
                     cardId = slot.getIccId();
                 }
 
