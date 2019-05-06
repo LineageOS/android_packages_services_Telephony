@@ -410,6 +410,10 @@ public class CallFeaturesSetting extends PreferenceActivity
                 }
             }
             mButtonWifiCalling.setSummary(resId);
+            Intent intent = mButtonWifiCalling.getIntent();
+            if (intent != null) {
+                intent.putExtra(Settings.EXTRA_SUB_ID, mPhone.getSubId());
+            }
             prefSet.addPreference(mButtonWifiCalling);
         }
 
