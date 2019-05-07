@@ -49,7 +49,7 @@
     <string name="puk_unlocked" msgid="2284912838477558454">"La tarjeta SIM se ha desbloqueado. El teléfono se está desbloqueando..."</string>
     <string name="label_ndp" msgid="780479633159517250">"PIN de desbloqueo de red de tarjeta SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="683628237760543009">"Desbloquear"</string>
-    <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Descartar"</string>
+    <string name="sim_ndp_dismiss_text" msgid="1604823375752456947">"Cerrar"</string>
     <string name="requesting_unlock" msgid="6412629401033249351">"Solicitando desbloqueo de red..."</string>
     <string name="unlock_failed" msgid="6490531697031504225">"La solicitud de desbloqueo de red no se ha realizado correctamente."</string>
     <string name="unlock_success" msgid="6770085622238180152">"El desbloqueo de red se ha realizado correctamente."</string>
@@ -272,11 +272,9 @@
     <!-- String.format failed for translation -->
     <!-- no translation found for throttle_status_subtext (1657318943142085170) -->
     <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_data_usage_subtext (6029276011123694701) -->
-    <skip />
+    <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) de periodo máx de <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"Máx de <xliff:g id="USED_0">%1$s</xliff:g> superado.\nFrec datos reducida a <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
-    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>% del ciclo transcurrido.\nPróx periodo en <xliff:g id="USED_1">%2$d</xliff:g> días (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g>٪ del ciclo transcurrido.\nPróx periodo en <xliff:g id="USED_1">%2$d</xliff:g> días (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Frec datos se reduce a <xliff:g id="USED">%1$d</xliff:g> Kb/s si se supera límite uso datos"</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Más información sobre política de uso de datos móviles de tu operador"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"SMS de difusión móvil"</string>
@@ -599,7 +597,7 @@
     <string name="progress_dialog_exiting_ecm" msgid="4835734101617817074">"Saliendo del modo de devolución de llamada de emergencia"</string>
     <string name="alert_dialog_yes" msgid="6674268047820703974">"Sí"</string>
     <string name="alert_dialog_no" msgid="1476091437797628703">"No"</string>
-    <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Descartar"</string>
+    <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Cerrar"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"Servicio"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"Configuración"</string>
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;No definido&gt;"</string>

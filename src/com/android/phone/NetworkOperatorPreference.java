@@ -44,16 +44,18 @@ public class NetworkOperatorPreference extends Preference {
     private CellInfo mCellInfo;
     private List<String> mForbiddenPlmns;
     private int mLevel = -1;
+    private boolean mShow4GForLTE;
 
     // The following constants are used to draw signal icon.
     private static final Drawable EMPTY_DRAWABLE = new ColorDrawable(Color.TRANSPARENT);
     private static final int NO_CELL_DATA_CONNECTED_ICON = 0;
 
     public NetworkOperatorPreference(
-            CellInfo cellinfo, Context context, List<String> forbiddenPlmns) {
+            CellInfo cellinfo, Context context, List<String> forbiddenPlmns, boolean show4GForLTE) {
         super(context);
         mCellInfo = cellinfo;
         mForbiddenPlmns = forbiddenPlmns;
+        mShow4GForLTE = show4GForLTE;
         refresh();
     }
 
@@ -90,7 +92,8 @@ public class NetworkOperatorPreference extends Preference {
         if (networkType == TelephonyManager.NETWORK_TYPE_CDMA) {
             return R.drawable.signal_strength_1x;
         } else if (networkType == TelephonyManager.NETWORK_TYPE_LTE) {
-            return R.drawable.signal_strength_lte;
+            return mShow4GForLTE
+                ? R.drawable.signal_strength_4g : R.drawable.signal_strength_lte;
         } else if (networkType == TelephonyManager.NETWORK_TYPE_UMTS) {
             return R.drawable.signal_strength_3g;
         } else if (networkType == TelephonyManager.NETWORK_TYPE_GSM) {
