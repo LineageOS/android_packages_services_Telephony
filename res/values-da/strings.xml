@@ -77,7 +77,7 @@
     <string name="voicemail" msgid="8693759337917898954">"Telefonsvarer"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Telefonsvarer (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Underretninger"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notifikationer"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Nødudsendelser"</string>
     <string name="call_settings" msgid="6112441768261754562">"Indstillinger for opkald"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Yderligere indstillinger"</string>
@@ -272,13 +272,9 @@
     <!-- String.format failed for translation -->
     <!-- no translation found for throttle_status_subtext (1657318943142085170) -->
     <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_data_usage_subtext (6029276011123694701) -->
-    <skip />
+    <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) af <xliff:g id="USED_2">%3$s</xliff:g> periodens maksimum"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> maksimum er overskredet\nDatahastigheden er nedsat til <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ af forløbet er gennemført\nNæste periode om <xliff:g id="USED_1">%2$d</xliff:g> dage (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datahastigheden er nedsat til <xliff:g id="USED">%1$d</xliff:g> Kb/s, hvis datagrænsen overskrides"</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Oplysninger om mobilselskabets politik om databrug på netværket"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Cell Broadcast-sms"</string>
@@ -438,7 +434,7 @@
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Læser fra SIM-kort ..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"Der er ingen kontakter på dit SIM-kort."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Vælg kontakter, der skal importeres"</string>
-    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Slå flytilstand fra for at importere kontaktpersoner fra SIM-kortet."</string>
+    <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Slå flytilstand fra for at importere kontakter fra SIM-kortet."</string>
     <string name="enable_pin" msgid="5422767284133234860">"Aktiver/deaktiver pinkode til SIM-kort"</string>
     <string name="change_pin" msgid="9174186126330785343">"Skift pinkode til SIM-kort"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"Pinkode til SIM-kort:"</string>
