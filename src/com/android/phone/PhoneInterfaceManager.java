@@ -3971,7 +3971,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new NullPointerException("carriers cannot be null");
         }
 
-        int subId = SubscriptionManager.getSubId(slotIndex)[0];
+        int[] subIds = SubscriptionManager.getSubId(slotIndex);
+        int subId = (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID);
         int[] retVal = (int[]) sendRequest(CMD_SET_ALLOWED_CARRIERS, carriers, subId);
         return retVal[0];
     }
@@ -3987,7 +3988,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public List<CarrierIdentifier> getAllowedCarriers(int slotIndex) {
         enforceReadPrivilegedPermission();
-        int subId = SubscriptionManager.getSubId(slotIndex)[0];
+
+        int[] subIds = SubscriptionManager.getSubId(slotIndex);
+        int subId = (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID);
         return (List<CarrierIdentifier>) sendRequest(CMD_GET_ALLOWED_CARRIERS, null, subId);
     }
 
@@ -4054,6 +4057,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             phone.carrierActionReportDefaultNetworkStatus(report);
         } catch (Exception e) {
             Log.e(LOG_TAG, "carrierAction: ReportDefaultNetworkStatus fails. Exception ex=" + e);
+        }
+    }
+
+    /**
+     * Action set from carrier signalling broadcast receivers to reset all carrier actions
+     * @param subId the subscription ID that this action applies to.
+     * {@hide}
+     */
+    @Override
+    public void carrierActionResetAll(int subId) {
+        enforceModifyPermission();
+        final Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("carrierAction: ResetAll fails with invalid sibId: " + subId);
+            return;
+        }
+        try {
+            phone.carrierActionResetAll();
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "carrierAction: ResetAll fails. Exception ex=" + e);
         }
     }
 

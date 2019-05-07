@@ -89,7 +89,7 @@
     <string name="labelCallerId" msgid="3888899447379069198">"Nummerpresentatör"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"Inställningarna läses in ..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Dolt nummer i utgående samtal"</string>
-    <string name="sum_show_caller_id" msgid="6768534125447290401">"Nummer som visas för utgående samtal"</string>
+    <string name="sum_show_caller_id" msgid="6768534125447290401">"Nummer visas för utgående samtal"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Använd operatörens standardinställningar när mitt nummer visas för utgående samtal"</string>
     <string name="labelCW" msgid="6120513814915920200">"Samtal väntar"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Meddela mig om inkommande samtal under pågående samtal"</string>
@@ -276,9 +276,7 @@
     <!-- no translation found for throttle_data_usage_subtext (6029276011123694701) -->
     <skip />
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"<xliff:g id="USED_0">%1$s</xliff:g> maxvärdet har överskridits\nDatahastigheten har sänkts till <xliff:g id="USED_1">%2$d</xliff:g> kbit/s"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (7732763021560399960) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="7732763021560399960">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ av cykeln har gått\nNästa period börjar om <xliff:g id="USED_1">%2$d</xliff:g> dagar (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="2149102656120726855">"Datahastigheten sänks till <xliff:g id="USED">%1$d</xliff:g> kbit/s om dataanvändningsgränsen överskrids"</string>
     <string name="throttle_help_subtext" msgid="5217706521499010816">"Mer information om operatörens dataanvändningspolicy för mobilnätverket"</string>
     <string name="cell_broadcast_sms" msgid="5584192824053625842">"Cell Broadcast SMS"</string>
