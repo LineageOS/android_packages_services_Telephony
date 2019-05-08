@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"หมายเลขส่วนตัว"</string>
     <string name="payphone" msgid="4793877574636445118">"โทรศัพท์สาธารณะ"</string>
     <string name="onHold" msgid="9035493194749959955">"พักสาย"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"ข้อความ (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"ข้อความ <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"ข้อความของผู้ให้บริการ"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"เริ่มรหัส MMI แล้ว"</string>
     <string name="ussdRunning" msgid="485588686340541690">"กำลังรันรหัส USSD..."</string>

@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"Salainen numero"</string>
     <string name="payphone" msgid="4793877574636445118">"Maksupuhelin"</string>
     <string name="onHold" msgid="9035493194749959955">"Pidossa"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) Viesti"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"<xliff:g id="MMICARRIER">%s</xliff:g>-viesti"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Operaattorin viesti"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI-koodi aloitettu"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD-koodi käytössä..."</string>

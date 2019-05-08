@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"निजी नंबर"</string>
     <string name="payphone" msgid="4793877574636445118">"पे-फ़ोन"</string>
     <string name="onHold" msgid="9035493194749959955">"होल्ड पर"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) मैसेज"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"<xliff:g id="MMICARRIER">%s</xliff:g> मैसेज"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"मोबाइल और इंटरनेट सेवा देने वाली कंपनी का मैसेज"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI कोड प्रारंभ किया गया"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD कोड चल रहा है…"</string>
@@ -136,7 +136,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS अनुरोध को USSD अनुरोध में बदला गया"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"नए SS अनुरोध में बदला गया"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS अनुरोध को वीडियो कॉल में बदला गया"</string>
-    <string name="fdn_check_failure" msgid="18200614306525434">"आपके फ़ोन ऐप्स की फ़िक्‍स्‍ड डायलिंग नंबर सेटिंग चालू है. इसके परिणामस्‍वरूप, कॉल से संबंधित कुछ सुविधाएं कार्य नहीं कर रही हैं."</string>
+    <string name="fdn_check_failure" msgid="18200614306525434">"आपके फ़ोन ऐप्स की फ़िक्‍स्‍ड डायलिंग नंबर सेटिंग चालू है. इसके परिणामस्‍वरूप, कॉल से संबंधित कुछ सुविधाएं काम नहीं कर रही हैं."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"इन सेटिंग को देखने के पहले रेडियो चालू करें."</string>
     <string name="close_dialog" msgid="2365884406356986917">"ठीक है"</string>
     <string name="enable" msgid="7248657275000173526">"चालू करें"</string>
@@ -449,8 +449,8 @@
     <string name="oldPinLabel" msgid="5287773661246368314">"पुराना पिन"</string>
     <string name="newPinLabel" msgid="207488227285336897">"नया पिन"</string>
     <string name="confirmPinLabel" msgid="257597715098070206">"नए पिन की दुबारा पूछें"</string>
-    <string name="badPin" msgid="8955102849303984935">"आपके द्वारा लिखा गया पुराना पिन सही नहीं है. फिर से प्रयास करें."</string>
-    <string name="mismatchPin" msgid="5923253370683071889">"आपके द्वारा लिखे गए पिन का मिलान नहीं होता. फिर से प्रयास करें."</string>
+    <string name="badPin" msgid="8955102849303984935">"  लिखा गया पुराना पिन सही नहीं है. फिर से प्रयास करें."</string>
+    <string name="mismatchPin" msgid="5923253370683071889">"  लिखे गए पिन का मिलान नहीं होता. फिर से प्रयास करें."</string>
     <string name="invalidPin" msgid="5981171102258684792">"कोई ऐसा पिन लिखें, जिसमें 4 से 8 अंक हों."</string>
     <string name="disable_sim_pin" msgid="3419351358300716472">"सिम पिन साफ़ करें"</string>
     <string name="enable_sim_pin" msgid="4845145659651484248">"सिम पिन सेट करें"</string>
@@ -624,7 +624,7 @@
     <string name="preference_category_ringtone" msgid="5197960752529332721">"रिंगटोन और कंपन"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"अंतर्निहित सिम कार्ड"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"वीडियो कॉलिंग चालू करें"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"वीडियो कॉलिंग चालू करने के लिए, आपको नेटवर्क सेटिंग में उन्‍नत 4G LTE मोड सक्षम करना होगा."</string>
+    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"वीडियो कॉलिंग चालू करने के लिए, आपको नेटवर्क सेटिंग में बेहतर 4G LTE मोड सक्षम करना होगा."</string>
     <string name="enable_video_calling_dialog_settings" msgid="576528473599603249">"नेटवर्क सेटिंग"</string>
     <string name="enable_video_calling_dialog_close" msgid="7411471282167927991">"बंद करें"</string>
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"आपातकालीन कॉल"</string>
