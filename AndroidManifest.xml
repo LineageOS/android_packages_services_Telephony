@@ -468,6 +468,7 @@
             privileged processes can start them.
         -->
         <activity android:name=".euicc.EuiccPrivilegedActionUiDispatcherActivity"
+                  android:theme="@android:style/Theme.NoDisplay"
                   android:permission="android.permission.CALL_PRIVILEGED">
             <!-- Max out priority to ensure nobody else will handle these intents. -->
             <intent-filter android:priority="1000">
