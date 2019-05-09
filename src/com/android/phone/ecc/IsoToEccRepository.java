@@ -16,9 +16,10 @@
 
 package com.android.phone.ecc;
 
-import android.annotation.NonNull;
-import android.annotation.Nullable;
 import android.content.Context;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.io.IOException;
 

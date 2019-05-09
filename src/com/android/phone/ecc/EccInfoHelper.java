@@ -16,8 +16,6 @@
 
 package com.android.phone.ecc;
 
-import android.annotation.NonNull;
-import android.annotation.Nullable;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.provider.Settings;
@@ -35,6 +33,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.android.internal.telephony.MccTable;
 
 import java.io.IOException;
@@ -48,6 +49,32 @@ public class EccInfoHelper {
     // Debug constants.
     private static final boolean DBG = false;
     private static final String LOG_TAG = "EccInfoHelper";
+
+    /**
+     * Check if current CountryEccInfo is available for current environment.
+     */
+    public static boolean isCountryEccInfoAvailable(Context context, String countryIso) {
+        CountryEccInfo countryEccInfo;
+        try {
+            countryEccInfo = IsoToEccProtobufRepository.getInstance()
+                    .getCountryEccInfo(context, countryIso);
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Failed to retrieve ECC: ", e);
+            return false;
+        }
+
+        if (countryEccInfo == null) {
+            return false;
+        }
+        for (EccInfo entry : countryEccInfo.getEccInfoList()) {
+            if (!PhoneNumberUtils.isEmergencyNumber(entry.getNumber())) {
+                // The CountryEccInfo is unavailable if any ecc number in the local table was
+                // declined.
+                return false;
+            }
+        }
+        return true;
+    }
 
     // country ISO to ECC list data source
     private IsoToEccRepository mEccRepo;
@@ -135,7 +162,8 @@ public class EccInfoHelper {
         }.execute();
     }
 
-    private @NonNull CountryEccInfo getDialableCountryEccInfo(CountryEccInfo countryEccInfo) {
+    @NonNull
+    private CountryEccInfo getDialableCountryEccInfo(CountryEccInfo countryEccInfo) {
         ArrayList<EccInfo> dialableECCList = new ArrayList<>();
         String dialableFallback = null;
 
@@ -154,7 +182,8 @@ public class EccInfoHelper {
         return new CountryEccInfo(dialableFallback, dialableECCList);
     }
 
-    private @Nullable String getCurrentCountryIso(@NonNull Context context) {
+    @Nullable
+    private String getCurrentCountryIso(@NonNull Context context) {
         // Do not detect country ISO if airplane mode is on
         int airplaneMode = Settings.System.getInt(context.getContentResolver(),
                 Settings.Global.AIRPLANE_MODE_ON, 0);
@@ -172,7 +201,7 @@ public class EccInfoHelper {
             // XXX: according to ServiceStateTracker's implementation, retrieve cell info in a
             // thread other than TelephonyManager's main thread.
             String mcc = getCurrentMccFromCellInfo(context);
-            iso = countryCodeForMcc(mcc);
+            iso = MccTable.countryCodeForMcc(mcc);
             if (DBG) {
                 Log.d(LOG_TAG, "Current mcc is " + Rlog.pii(LOG_TAG, mcc) + ", mapping to ISO: "
                         + Rlog.pii(LOG_TAG, iso));
@@ -181,18 +210,11 @@ public class EccInfoHelper {
         return iso;
     }
 
-    private String countryCodeForMcc(String mcc) {
-        try {
-            return MccTable.countryCodeForMcc(Integer.parseInt(mcc));
-        } catch (NumberFormatException ex) {
-            return "";
-        }
-    }
-
     // XXX: According to ServiceStateTracker implementation, to actually get current cell info,
     // this method must be called in a separate thread from ServiceStateTracker, which is the
     // main thread of Telephony service.
-    private @Nullable String getCurrentMccFromCellInfo(@NonNull Context context) {
+    @Nullable
+    private String getCurrentMccFromCellInfo(@NonNull Context context) {
         // retrieve mcc info from base station even no SIM present.
         TelephonyManager tm = (TelephonyManager) context.getSystemService(
                 Context.TELEPHONY_SERVICE);
