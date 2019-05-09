@@ -53,7 +53,7 @@
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:lineHeight="@dimen/emergency_info_name_line_height"
-                    android:fontFamily="google-sans"
+                    android:fontFamily="@*android:string/config_headlineFontFamily"
                     android:textAppearance="@style/HeadlineTextAppearance"/>
                 <TextView
                     android:id="@+id/emergency_info_hint"
@@ -99,7 +99,7 @@
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:lineHeight="@dimen/confirmed_emergency_info_line_height"
-                android:fontFamily="google-sans"
+                android:fontFamily="@*android:string/config_headlineFontFamily"
                 android:textAppearance="@style/PhoneCallHintTextAppearance"
                 android:text="@string/emergency_information_confirm_hint"/>
         </LinearLayout>
