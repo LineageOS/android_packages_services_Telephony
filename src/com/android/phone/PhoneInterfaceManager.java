@@ -4978,7 +4978,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String[] getMergedSubscriberIds(String callingPackage) {
+    public String[] getMergedSubscriberIds(int subId, String callingPackage) {
         // This API isn't public, so no need to provide a valid subscription ID - we're not worried
         // about carrier-privileged callers not having access.
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
@@ -4987,6 +4987,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return null;
         }
 
+        // Clear calling identity, when calling TelephonyManager, because callerUid must be
+        // the process, where TelephonyManager was instantiated.
+        // Otherwise AppOps check will fail.
         final long identity  = Binder.clearCallingIdentity();
         try {
             final Context context = mApp;
@@ -4995,12 +4998,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             // Figure out what subscribers are currently active
             final ArraySet<String> activeSubscriberIds = new ArraySet<>();
-            // Clear calling identity, when calling TelephonyManager, because callerUid must be
-            // the process, where TelephonyManager was instantiated.
-            // Otherwise AppOps check will fail.
 
-            final int[] subIds = sub.getActiveSubscriptionIdList();
-            for (int subId : subIds) {
+            // Only consider subs which match the current subId
+            // This logic can be simplified. See b/131189269 for progress.
+            if (isActiveSubscription(subId)) {
                 activeSubscriberIds.add(tele.getSubscriberId(subId));
             }
 
