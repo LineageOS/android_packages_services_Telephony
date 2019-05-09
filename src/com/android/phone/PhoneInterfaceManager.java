@@ -2136,6 +2136,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             case DENIED_HARD:
                 throw new SecurityException("Not allowed to access cell info");
             case DENIED_SOFT:
+                try {
+                    cb.onCellInfo(new ArrayList<CellInfo>());
+                } catch (RemoteException re) {
+                    // Drop without consequences
+                }
                 return;
         }
 
