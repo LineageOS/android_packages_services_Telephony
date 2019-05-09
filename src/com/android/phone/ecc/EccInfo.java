@@ -16,7 +16,7 @@
 
 package com.android.phone.ecc;
 
-import android.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.Collection;
 
