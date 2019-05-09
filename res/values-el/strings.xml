@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"Απόκρυψη"</string>
     <string name="payphone" msgid="4793877574636445118">"Τηλέφωνο με χρέωση"</string>
     <string name="onHold" msgid="9035493194749959955">"Σε αναμονή"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) Μήνυμα"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"Μήνυμα <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Μήνυμα φορέα"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Έναρξη κώδικα MMI"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Ο κώδικας USSD εκτελείται..."</string>

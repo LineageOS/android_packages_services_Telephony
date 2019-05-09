@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"Varjatud number"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefoniautomaat"</string>
     <string name="onHold" msgid="9035493194749959955">"Ootel"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) sõnum"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"Sõnum operaatorilt <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Operaatori sõnum"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI-kood käivitus"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD-kood töötab ..."</string>

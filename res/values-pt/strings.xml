@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"Número privado"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefone público"</string>
     <string name="onHold" msgid="9035493194749959955">"Em espera"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Mensagem (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"Mensagem da operadora <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Mensagem da operadora"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Código MMI iniciado"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Código USSD em execução…"</string>
