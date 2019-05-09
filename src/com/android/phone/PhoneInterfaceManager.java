@@ -2139,7 +2139,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return;
         }
 
-        final Phone phone = getPhone(subId);
+
+        final Phone phone = getPhoneFromSubId(subId);
         if (phone == null) throw new IllegalArgumentException("Invalid Subscription Id: " + subId);
 
         sendRequestAsync(CMD_REQUEST_CELL_INFO_UPDATE, cb, phone, workSource);
