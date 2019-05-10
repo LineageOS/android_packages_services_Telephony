@@ -25,7 +25,8 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
         guava \
-        volley
+        volley \
+        android-support-annotations
 
 LOCAL_SRC_FILES := $(call all-java-files-under, $(src_dirs))
 LOCAL_SRC_FILES += $(call all-proto-files-under, ecc/proto)
