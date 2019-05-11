@@ -469,6 +469,7 @@
             privileged processes can start them.
         -->
         <activity android:name=".euicc.EuiccPrivilegedActionUiDispatcherActivity"
+                  android:theme="@android:style/Theme.NoDisplay"
                   android:permission="android.permission.CALL_PRIVILEGED">
             <!-- Max out priority to ensure nobody else will handle these intents. -->
             <intent-filter android:priority="1000">
@@ -605,6 +606,14 @@
         <receiver
             android:name="com.android.internal.telephony.uicc.ShowInstallAppNotificationReceiver"
             android:exported="false"/>
+
+        <activity
+            android:name="com.android.phone.settings.PickSmsSubscriptionActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/Theme.Transparent"/>
 
         <service
             android:name="com.android.phone.vvm.RemoteVvmTaskManager"

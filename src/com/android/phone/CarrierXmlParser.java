@@ -18,6 +18,7 @@ package com.android.phone;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;
+import android.support.annotation.VisibleForTesting;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -95,7 +96,9 @@ public class CarrierXmlParser {
     private static final String ATTR_DEFINITION_KEY = "definition";
 
     HashMap<String, SsFeature> mFeatureMaps;
-    private static String sParserFormat = "";
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    static String sParserFormat = "";
 
     // TAG_ENTRY_NUMBER and TAG_ENTRY_TIME is xml's entry value.
     // This is mapping user's input value. For example: number,time ...
@@ -155,6 +158,8 @@ public class CarrierXmlParser {
                         mParserStr.add("");
                     }
                 }
+            } else {
+                Log.d(LOG_TAG, "no match");
             }
         }
 

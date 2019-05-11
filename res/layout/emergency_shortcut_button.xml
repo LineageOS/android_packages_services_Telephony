@@ -57,7 +57,7 @@
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:lineHeight="@dimen/phone_number_line_height"
-                    android:fontFamily="google-sans"
+                    android:fontFamily="@*android:string/config_headlineFontFamily"
                     android:textAppearance="@style/PhoneNumberTextAppearance"/>
                 <TextView
                     android:id="@+id/phone_number_description"
@@ -124,7 +124,7 @@
                     android:maxLines="2"
                     android:ellipsize="end"
                     android:lineHeight="@dimen/phone_call_hint_line_height"
-                    android:fontFamily="google-sans"
+                    android:fontFamily="@*android:string/config_headlineFontFamily"
                     android:textAppearance="@style/PhoneCallHintTextAppearance"/>
             </FrameLayout>
         </LinearLayout>
