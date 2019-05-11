@@ -2136,10 +2136,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             case DENIED_HARD:
                 throw new SecurityException("Not allowed to access cell info");
             case DENIED_SOFT:
+                try {
+                    cb.onCellInfo(new ArrayList<CellInfo>());
+                } catch (RemoteException re) {
+                    // Drop without consequences
+                }
                 return;
         }
 
-        final Phone phone = getPhone(subId);
+
+        final Phone phone = getPhoneFromSubId(subId);
         if (phone == null) throw new IllegalArgumentException("Invalid Subscription Id: " + subId);
 
         sendRequestAsync(CMD_REQUEST_CELL_INFO_UPDATE, cb, phone, workSource);
@@ -3067,10 +3073,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
-            boolean isRoaming = TelephonyManager.from(
-                    getPhone(subId).getContext()).isNetworkRoaming(subId);
             ImsManager.getInstance(mApp,
-                    getSlotIndexOrException(subId)).setWfcNonPersistent(isCapable, mode, isRoaming);
+                    getSlotIndexOrException(subId)).setWfcNonPersistent(isCapable, mode);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4980,7 +4984,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String[] getMergedSubscriberIds(String callingPackage) {
+    public String[] getMergedSubscriberIds(int subId, String callingPackage) {
         // This API isn't public, so no need to provide a valid subscription ID - we're not worried
         // about carrier-privileged callers not having access.
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
@@ -4989,6 +4993,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return null;
         }
 
+        // Clear calling identity, when calling TelephonyManager, because callerUid must be
+        // the process, where TelephonyManager was instantiated.
+        // Otherwise AppOps check will fail.
         final long identity  = Binder.clearCallingIdentity();
         try {
             final Context context = mApp;
@@ -4997,12 +5004,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             // Figure out what subscribers are currently active
             final ArraySet<String> activeSubscriberIds = new ArraySet<>();
-            // Clear calling identity, when calling TelephonyManager, because callerUid must be
-            // the process, where TelephonyManager was instantiated.
-            // Otherwise AppOps check will fail.
 
-            final int[] subIds = sub.getActiveSubscriptionIdList();
-            for (int subId : subIds) {
+            // Only consider subs which match the current subId
+            // This logic can be simplified. See b/131189269 for progress.
+            if (isActiveSubscription(subId)) {
                 activeSubscriberIds.add(tele.getSubscriberId(subId));
             }
 

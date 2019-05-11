@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"Số cá nhân"</string>
     <string name="payphone" msgid="4793877574636445118">"Điện thoại công cộng"</string>
     <string name="onHold" msgid="9035493194749959955">"Đang chờ"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Tin nhắn (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"Tin nhắn <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Tin nhắn nhà mạng"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Đã bắt đầu mã MMI"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Mã USSD đang chạy…"</string>

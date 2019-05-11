@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"非通知設定"</string>
     <string name="payphone" msgid="4793877574636445118">"公衆電話"</string>
     <string name="onHold" msgid="9035493194749959955">"保留中"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"（<xliff:g id="MMICARRIER">%s</xliff:g>）メッセージ"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"<xliff:g id="MMICARRIER">%s</xliff:g> からのメッセージ"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"携帯通信会社独自のメッセージ"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMIコードの開始"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSDコードを実行中..."</string>

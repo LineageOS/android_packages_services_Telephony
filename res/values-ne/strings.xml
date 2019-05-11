@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"निजी नम्बर"</string>
     <string name="payphone" msgid="4793877574636445118">"पेफोन"</string>
     <string name="onHold" msgid="9035493194749959955">"होल्डमा"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) सन्देश"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"<xliff:g id="MMICARRIER">%s</xliff:g> को सन्देश"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"सेवा प्रदायकको सन्देश"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI कोड सुरु भयो"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD कोड चल्दै..."</string>

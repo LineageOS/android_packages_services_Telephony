@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"Özel numara"</string>
     <string name="payphone" msgid="4793877574636445118">"Ankesörlü telefon"</string>
     <string name="onHold" msgid="9035493194749959955">"Beklemede"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) Mesajı"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"<xliff:g id="MMICARRIER">%s</xliff:g> Mesajı"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Operatör Mesajı"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI kodu başlatıldı"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD kodu çalışıyor…"</string>

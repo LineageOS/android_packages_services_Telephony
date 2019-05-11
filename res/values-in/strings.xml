@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"Nomor pribadi"</string>
     <string name="payphone" msgid="4793877574636445118">"Telepon Umum"</string>
     <string name="onHold" msgid="9035493194749959955">"Ditangguhkan"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Pesan (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"<xliff:g id="MMICARRIER">%s</xliff:g> Message"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Pesan Operator"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Kode MMI dimulai"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Kode USSD sedang berjalan…"</string>

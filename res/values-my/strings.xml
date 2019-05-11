@@ -25,7 +25,7 @@
     <string name="private_num" msgid="6713286113000232309">"လျို့ဝှက် နံပါတ်"</string>
     <string name="payphone" msgid="4793877574636445118">"ငွေပေးရသည့်ဖုန်း"</string>
     <string name="onHold" msgid="9035493194749959955">"ခဏ ကိုင်ထားစဉ်"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) မက်ဆေ့ဂျ်"</string>
+    <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"<xliff:g id="MMICARRIER">%s</xliff:g> မက်ဆေ့ဂျ်"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"ဖုန်းလိုင်းဝန်ဆောင်မှု မက်ဆေ့ဂျ်"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMIကုတ်နံပါတ်ကို စတင်ပြီးပါပြီ"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD ကုဒ် လုပ်ဆောင်နေပါသည်…"</string>
