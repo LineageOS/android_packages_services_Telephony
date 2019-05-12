@@ -257,7 +257,7 @@
     <string name="roaming_notification_title" msgid="4749053220884743110">"Mobildatatilkoblingen er tapt"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Det kan medføre betydelige kostnader."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Sjekk med nettverksleverandøren din for priser."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillate roaming?"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillate data-roaming?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Appens databruk"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brukt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avansert"</string>
