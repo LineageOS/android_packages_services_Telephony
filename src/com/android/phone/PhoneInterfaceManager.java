@@ -3391,10 +3391,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         CarrierConfigManager configManager = new CarrierConfigManager(context);
         PersistableBundle c = configManager.getConfigForSubId(subId);
         boolean requireUtProvisioning = c.getBoolean(
-                // By default, this config is true (even if there is no SIM). We also check to make
-                // sure the subscription needs provisioning here, so we do not need to check for
-                // the no-SIM case, where we would normally shortcut this to false.
-                CarrierConfigManager.KEY_CARRIER_SUPPORTS_SS_OVER_UT_BOOL, true)
+                CarrierConfigManager.KEY_CARRIER_SUPPORTS_SS_OVER_UT_BOOL, false)
                 && c.getBoolean(CarrierConfigManager.KEY_CARRIER_UT_PROVISIONING_REQUIRED_BOOL,
                 false);
         boolean requireVoiceVtProvisioning = c.getBoolean(
