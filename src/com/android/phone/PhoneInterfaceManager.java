@@ -79,7 +79,6 @@ import android.telephony.RadioAccessSpecifier;
 import android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
-import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyHistogram;
@@ -140,6 +139,7 @@ import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.SmsApplication;
 import com.android.internal.telephony.SmsApplication.SmsApplicationData;
+import com.android.internal.telephony.SmsController;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.dataconnection.ApnSettingUtils;
@@ -164,7 +164,6 @@ import com.android.phone.vvm.VisualVoicemailSmsFilterConfig;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -2655,22 +2654,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
         enforceVisualVoicemailPackage(callingPackage, subId);
         enforceSendSmsPermission();
-        // Make the calls as the phone process.
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            SmsManager smsManager = SmsManager.getSmsManagerForSubscriptionId(subId);
-            if (port == 0) {
-                smsManager.sendTextMessageWithSelfPermissions(number, null, text,
-                        sentIntent, null, false);
-            } else {
-                byte[] data = text.getBytes(StandardCharsets.UTF_8);
-                smsManager.sendDataMessageWithSelfPermissions(number, null,
-                        (short) port, data, sentIntent, null);
-            }
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
+        SmsController smsController = PhoneFactory.getSmsController();
+        smsController.sendVisualVoicemailSmsForSubscriber(callingPackage, subId, number, port, text,
+                sentIntent);
     }
+
     /**
      * Sets the voice activation state of a given subId.
      */
