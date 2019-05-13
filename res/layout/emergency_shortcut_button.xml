@@ -80,7 +80,7 @@
                 android:layout_height="@dimen/phone_icon_height"
                 android:layout_width="@dimen/phone_icon_width"
                 android:src="@drawable/ic_emergency_callback_mode"
-                android:tint="@color/emergency_call_icon"
+                android:tint="@color/emergency_call_icon_color"
                 android:scaleType="centerInside"/>
         </FrameLayout>
     </FrameLayout>
@@ -140,7 +140,7 @@
                 android:layout_height="@dimen/phone_icon_height"
                 android:layout_width="@dimen/phone_icon_width"
                 android:src="@drawable/ic_emergency_callback_mode"
-                android:tint="@color/emergency_call_icon"
+                android:tint="@color/emergency_call_icon_color"
                 android:scaleType="centerInside"/>
         </FrameLayout>
     </FrameLayout>
