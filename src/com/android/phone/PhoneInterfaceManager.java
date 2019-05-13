@@ -6410,6 +6410,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     cardId = slot.getIccId();
                 }
 
+                if (cardId != null) {
+                    // if cardId is an ICCID, strip off trailing Fs before exposing to user
+                    // if cardId is an EID, it's all digits so this is fine
+                    cardId = IccUtils.stripTrailingFs(cardId);
+                }
+
                 int cardState = 0;
                 switch (slot.getCardState()) {
                     case CARDSTATE_ABSENT:
