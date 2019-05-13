@@ -27,4 +27,44 @@
         <item name="android:dialogTheme">@style/DialerAlertDialogTheme</item>
     </style>
 
+    <style name="EmergencyInfoNameTextAppearance">
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/emergency_info_name_text_size</item>
+    </style>
+
+    <style name="EmergencyInfoHintTextAppearance">
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+        <item name="android:textColor">@color/white_70_percent</item>
+        <item name="android:textSize">@dimen/emergency_info_hint_text_size</item>
+    </style>
+
+    <style name="EmergencyInfoTapHintTextAppearance">
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/emergency_info_tap_hint_text_size</item>
+    </style>
+
+    <style name="ShortcutViewHintTextAppearance">
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="PhoneNumberTextAppearance">
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/emergency_shortcut_number_text_size</item>
+    </style>
+
+    <style name="PhoneNumberTypeAppearance">
+        <item name="android:fontFamily">roboto</item>
+        <item name="android:textColor">@color/white_70_percent</item>
+        <item name="android:textSize">@dimen/emergency_shortcut_type_text_size</item>
+    </style>
+
+    <style name="PhoneNumberTapHintAppearance">
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/emergency_shortcut_tap_hint_text_size</item>
+    </style>
 </resources>
