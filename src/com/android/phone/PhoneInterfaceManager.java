@@ -3391,10 +3391,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         CarrierConfigManager configManager = new CarrierConfigManager(context);
         PersistableBundle c = configManager.getConfigForSubId(subId);
         boolean requireUtProvisioning = c.getBoolean(
-                // By default, this config is true (even if there is no SIM). We also check to make
-                // sure the subscription needs provisioning here, so we do not need to check for
-                // the no-SIM case, where we would normally shortcut this to false.
-                CarrierConfigManager.KEY_CARRIER_SUPPORTS_SS_OVER_UT_BOOL, true)
+                CarrierConfigManager.KEY_CARRIER_SUPPORTS_SS_OVER_UT_BOOL, false)
                 && c.getBoolean(CarrierConfigManager.KEY_CARRIER_UT_PROVISIONING_REQUIRED_BOOL,
                 false);
         boolean requireVoiceVtProvisioning = c.getBoolean(
@@ -3855,7 +3852,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int command, int p1, int p2, int p3, String data) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            if (channel < 0) {
+            if (channel <= 0) {
                 return "";
             }
 
@@ -6414,6 +6411,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     cardId = card.getCardId();
                 } else {
                     cardId = slot.getIccId();
+                }
+
+                if (cardId != null) {
+                    // if cardId is an ICCID, strip off trailing Fs before exposing to user
+                    // if cardId is an EID, it's all digits so this is fine
+                    cardId = IccUtils.stripTrailingFs(cardId);
                 }
 
                 int cardState = 0;
