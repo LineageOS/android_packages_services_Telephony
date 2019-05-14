@@ -91,6 +91,7 @@ import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.data.ApnSetting;
+import android.telephony.data.ApnSetting.ApnType;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.gsm.GsmCellLocation;
 import android.telephony.ims.ProvisioningManager;
@@ -7053,8 +7054,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = getPhone(subId);
             if (phone == null) return false;
 
-            boolean isMetered = ApnSettingUtils.isMeteredApnType(ApnSetting.getApnTypeString(
-                    apnType), phone);
+            boolean isMetered = ApnSettingUtils.isMeteredApnType(apnType, phone);
             return !isMetered || phone.getDataEnabledSettings().isDataEnabled(apnType);
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -7062,7 +7062,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public boolean isApnMetered(int apnType, int subId) {
+    public boolean isApnMetered(@ApnType int apnType, int subId) {
         enforceReadPrivilegedPermission("isApnMetered");
 
         // Now that all security checks passes, perform the operation as ourselves.
@@ -7071,8 +7071,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = getPhone(subId);
             if (phone == null) return true; // By default return true.
 
-            return ApnSettingUtils.isMeteredApnType(ApnSetting.getApnTypeString(
-                    apnType), phone);
+            return ApnSettingUtils.isMeteredApnType(apnType, phone);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
