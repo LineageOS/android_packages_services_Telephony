@@ -622,7 +622,7 @@
     <string name="preference_category_ringtone" msgid="5197960752529332721">"रिंगटोन और कंपन"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"अंतर्निहित सिम कार्ड"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"वीडियो कॉलिंग चालू करें"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"वीडियो कॉलिंग चालू करने के लिए, आपको नेटवर्क सेटिंग में उन्‍नत 4G LTE मोड सक्षम करना होगा."</string>
+    <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"वीडियो कॉलिंग चालू करने के लिए, आपको नेटवर्क सेटिंग में बेहतर 4G LTE मोड सक्षम करना होगा."</string>
     <string name="enable_video_calling_dialog_settings" msgid="576528473599603249">"नेटवर्क सेटिंग"</string>
     <string name="enable_video_calling_dialog_close" msgid="7411471282167927991">"बंद करें"</string>
     <string name="sim_label_emergency_calls" msgid="4847699229529306397">"आपातकालीन कॉल"</string>
