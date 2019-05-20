@@ -138,6 +138,19 @@ public abstract class EccShortcutAdapter extends BaseAdapter {
         }
     }
 
+    boolean hasShortcut(String number) {
+        if (mEccDisplayMaterialList == null) {
+            return false;
+        }
+
+        for (EccDisplayMaterial displayMaterial : mEccDisplayMaterialList) {
+            if (displayMaterial.number.equals(number)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Nullable
     private String pickEmergencyNumberForCategory(int category,
             @NonNull List<EmergencyNumber> emergencyNumbers) {
