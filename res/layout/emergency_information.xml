@@ -62,7 +62,6 @@
                     android:maxLines="2"
                     android:ellipsize="end"
                     android:lineHeight="@dimen/emergency_info_hint_line_height"
-                    android:alpha="0.7"
                     android:textAppearance="@style/EmergencyInfoHintTextAppearance"
                     android:text="@string/emergency_information_hint"/>
             </LinearLayout>
