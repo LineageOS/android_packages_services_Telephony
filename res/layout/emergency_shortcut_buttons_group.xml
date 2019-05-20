@@ -48,8 +48,7 @@
             android:layout_marginStart="@dimen/emergency_number_title_container_width"
             android:layout_gravity="center_vertical|end"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:alpha="0.7">
+            android:orientation="horizontal">
             <ImageView
                 android:id="@+id/location_icon"
                 android:layout_width="@dimen/location_image_width"
