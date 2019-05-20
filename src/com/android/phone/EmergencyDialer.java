@@ -1097,11 +1097,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 if (mEmergencyShortcutButtonList.size() > 1) {
                     emergencyNumberTitle.setText(getString(
                             R.string.numerous_emergency_numbers_title));
-                    // Update mEmergencyInfoGroup margin to avoid UI overlay when
-                    // emergency shortcut button more than 2.
-                    if (mEmergencyShortcutButtonList.size() > 2) {
-                        mEmergencyInfoGroup.updateLayoutMargin();
-                    }
                 } else {
                     emergencyNumberTitle.setText(getText(R.string.single_emergency_number_title));
                 }
