@@ -3507,7 +3507,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public int getNetworkTypeForSubscriber(int subId, String callingPackage) {
-        if (getTargetSdk(callingPackage) >= android.os.Build.VERSION_CODES.Q
+        final int targetSdk = getTargetSdk(callingPackage);
+        if (targetSdk > android.os.Build.VERSION_CODES.Q) {
+            return getDataNetworkTypeForSubscriber(subId, callingPackage);
+        } else if (targetSdk == android.os.Build.VERSION_CODES.Q
                 && !TelephonyPermissions.checkCallingOrSelfReadPhoneStateNoThrow(
                         mApp, subId, callingPackage, "getNetworkTypeForSubscriber")) {
             return TelephonyManager.NETWORK_TYPE_UNKNOWN;
