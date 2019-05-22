@@ -96,6 +96,7 @@ public class TelecomAccountRegistry {
         private boolean mIsVideoConferencingSupported;
         private boolean mIsMergeOfWifiCallsAllowedWhenVoWifiOff;
         private boolean mIsManageImsConferenceCallSupported;
+        private boolean mIsUsingSimCallManager;
         private boolean mIsShowPreciseFailedCause;
 
         AccountEntry(Phone phone, boolean isEmergency, boolean isDummy) {
@@ -343,6 +344,7 @@ public class TelecomAccountRegistry {
             mIsMergeOfWifiCallsAllowedWhenVoWifiOff =
                     isCarrierMergeOfWifiCallsAllowedWhenVoWifiOff();
             mIsManageImsConferenceCallSupported = isCarrierManageImsConferenceCallSupported();
+            mIsUsingSimCallManager = isCarrierUsingSimCallManager();
             mIsShowPreciseFailedCause = isCarrierShowPreciseFailedCause();
 
             if (isEmergency && mContext.getResources().getBoolean(
@@ -521,6 +523,19 @@ public class TelecomAccountRegistry {
         }
 
         /**
+         * Determines from carrier config whether the carrier uses a sim call manager.
+         *
+         * @return {@code true} if the carrier uses a sim call manager,
+         *         {@code false} otherwise.
+         */
+        private boolean isCarrierUsingSimCallManager() {
+            PersistableBundle b =
+                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
+            return !TextUtils.isEmpty(
+                    b.getString(CarrierConfigManager.KEY_DEFAULT_SIM_CALL_MANAGER_STRING));
+        }
+
+        /**
          * Determines from carrier config whether showing percise call diconnect cause to user
          * is supported.
          *
@@ -659,6 +674,15 @@ public class TelecomAccountRegistry {
          */
         public boolean isManageImsConferenceCallSupported() {
             return mIsManageImsConferenceCallSupported;
+        }
+
+        /**
+         * Indicates whether this account uses a sim call manger.
+         * @return {@code true} if the account uses a sim call manager,
+         *         {@code false} otherwise.
+         */
+        public boolean isUsingSimCallManager() {
+            return mIsUsingSimCallManager;
         }
 
         /**
@@ -924,7 +948,7 @@ public class TelecomAccountRegistry {
      * @param handle The phone account handle to find the subscription address for.
      * @return The address.
      */
-    Uri getAddress(PhoneAccountHandle handle) {
+    public Uri getAddress(PhoneAccountHandle handle) {
         synchronized (mAccountsLock) {
             for (AccountEntry entry : mAccounts) {
                 if (entry.getPhoneAccountHandle().equals(handle)) {
@@ -933,6 +957,24 @@ public class TelecomAccountRegistry {
             }
         }
         return null;
+    }
+
+    /**
+     * Returns whethere a the subscription associated with a {@link PhoneAccountHandle} is using a
+     * sim call manager.
+     *
+     * @param handle The phone account handle to find the subscription address for.
+     * @return {@code true} if a sim call manager is in use, {@code false} otherwise.
+     */
+    public boolean isUsingSimCallManager(PhoneAccountHandle handle) {
+        synchronized (mAccountsLock) {
+            for (AccountEntry entry : mAccounts) {
+                if (entry.getPhoneAccountHandle().equals(handle)) {
+                    return entry.isUsingSimCallManager();
+                }
+            }
+        }
+        return false;
     }
 
     /**

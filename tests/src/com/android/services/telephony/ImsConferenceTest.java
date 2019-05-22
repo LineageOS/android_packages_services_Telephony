@@ -32,6 +32,7 @@ import android.net.Uri;
 import android.os.Looper;
 import android.telecom.ConferenceParticipant;
 import android.telecom.Connection;
+import android.telecom.PhoneAccountHandle;
 import android.test.suitebuilder.annotation.SmallTest;
 
 import com.android.internal.telephony.PhoneConstants;
@@ -53,9 +54,6 @@ public class ImsConferenceTest {
     @Mock
     private TelecomAccountRegistry mMockTelecomAccountRegistry;
 
-    @Mock
-    private com.android.internal.telephony.Connection mOriginalConnection;
-
     private TestTelephonyConnection mConferenceHost;
 
     @Before
@@ -66,11 +64,16 @@ public class ImsConferenceTest {
         }
         mConferenceHost = new TestTelephonyConnection();
         mConferenceHost.setManageImsConferenceCallSupported(true);
+        when(mMockTelecomAccountRegistry.getAddress(any(PhoneAccountHandle.class)))
+                .thenReturn(null);
     }
 
     @Test
     @SmallTest
     public void testSinglePartyEmulation() {
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(any(PhoneAccountHandle.class)))
+                .thenReturn(false);
+
         ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
                 mMockTelephonyConnectionServiceProxy, mConferenceHost,
                 null /* phoneAccountHandle */, () -> true /* featureFlagProxy */);
@@ -100,9 +103,51 @@ public class ImsConferenceTest {
         assertEquals(2, imsConference.getNumberOfParticipants());
     }
 
+    /**
+     * Verify that we do not use single party emulation when a sim call manager is in use.
+     */
+    @Test
+    @SmallTest
+    public void testNoSinglePartyEmulationWithSimCallManager() {
+        // Make it look like there is a sim call manager in use.
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(
+                any(PhoneAccountHandle.class))).thenReturn(true);
+
+        ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
+                mMockTelephonyConnectionServiceProxy, mConferenceHost,
+                null /* phoneAccountHandle */, () -> true /* featureFlagProxy */);
+
+        ConferenceParticipant participant1 = new ConferenceParticipant(
+                Uri.parse("tel:6505551212"),
+                "A",
+                Uri.parse("sip:6505551212@testims.com"),
+                Connection.STATE_ACTIVE);
+        ConferenceParticipant participant2 = new ConferenceParticipant(
+                Uri.parse("tel:6505551213"),
+                "A",
+                Uri.parse("sip:6505551213@testims.com"),
+                Connection.STATE_ACTIVE);
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2));
+        assertEquals(2, imsConference.getNumberOfParticipants());
+
+        // Because we're not using single party emulation, should still be one participant.
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1));
+        assertEquals(1, imsConference.getNumberOfParticipants());
+
+        // Back to 2!
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2));
+        assertEquals(2, imsConference.getNumberOfParticipants());
+    }
+
     @Test
     @SmallTest
     public void testNormalConference() {
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(any(PhoneAccountHandle.class)))
+                .thenReturn(false);
+
         ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
                 mMockTelephonyConnectionServiceProxy, mConferenceHost,
                 null /* phoneAccountHandle */, () -> false /* featureFlagProxy */);
