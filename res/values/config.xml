@@ -257,4 +257,11 @@
     <!-- The country list that shortcut view can be enabled. -->
     <string-array name="config_countries_to_enable_shortcut_view" translatable="false">
     </string-array>
+
+    <!-- When an emergency call is placed and the carrier supports network initiated SUPL requests
+         for location, this configuration dictates whether or not the modem supports SUPL requests
+         being handled on the logical slot that is not currently configured as the default data
+         slot. If true, telephony will always try to place the emergency call on the subscription
+         associated with default data first, instead of using the default voice configuration.-->
+    <bool name="config_gnss_supl_requires_default_data_for_emergency">false</bool>
 </resources>
