@@ -54,6 +54,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.RIL;
+import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
@@ -582,8 +583,11 @@ public class TelephonyConnectionService extends ConnectionService {
                 // Notify Telecom of the new Connection type.
                 // TODO: Switch out the underlying connection instead of creating a new
                 // one and causing UI Jank.
+                boolean noActiveSimCard = SubscriptionController.getInstance()
+                        .getActiveSubInfoCount(phone.getContext().getOpPackageName()) == 0;
+                // If there's no active sim card and the device is in emergency mode, use E account.
                 addExistingConnection(PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
-                        phone, "", isEmergencyNumber), repConnection);
+                        phone, "", isEmergencyNumber && noActiveSimCard), repConnection);
                 // Remove the old connection from Telecom after.
                 originalConnection.setDisconnected(
                         DisconnectCauseUtil.toTelecomDisconnectCause(
