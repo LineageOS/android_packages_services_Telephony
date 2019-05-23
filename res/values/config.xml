@@ -251,9 +251,6 @@
          audio stream which the remote party will be able to hear. -->
     <bool name="config_support_telephony_audio_device">false</bool>
 
-    <!-- Intent action to launch target emergency app. -->
-    <string name="config_emergency_app_intent" translatable="false"></string>
-
     <!-- The country list that shortcut view can be enabled. -->
     <string-array name="config_countries_to_enable_shortcut_view" translatable="false">
     </string-array>
