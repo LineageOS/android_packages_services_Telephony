@@ -56,6 +56,7 @@ import android.text.TextUtils;
 import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.SubscriptionController;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
 import com.android.phone.R;
@@ -84,6 +85,7 @@ public class TelecomAccountRegistry {
         private final PstnPhoneCapabilitiesNotifier mPhoneCapabilitiesNotifier;
         private boolean mIsEmergency;
         private boolean mIsRttCapable;
+        private boolean mIsEmergencyPreferred;
         private MmTelFeature.MmTelCapabilities mMmTelCapabilities;
         private ImsMmTelManager.CapabilityCallback mMmtelCapabilityCallback;
         private ImsMmTelManager mMmTelManager;
@@ -271,6 +273,11 @@ public class TelecomAccountRegistry {
                 capabilities |= PhoneAccount.CAPABILITY_PLACE_EMERGENCY_CALLS;
             }
 
+            mIsEmergencyPreferred = isEmergencyPreferredAccount(subId);
+            if (mIsEmergencyPreferred) {
+                capabilities |= PhoneAccount.CAPABILITY_EMERGENCY_PREFERRED;
+            }
+
             if (isRttCurrentlySupported()) {
                 capabilities |= PhoneAccount.CAPABILITY_RTT;
                 mIsRttCapable = true;
@@ -407,6 +414,36 @@ public class TelecomAccountRegistry {
 
         public int getSubId() {
             return mPhone.getSubId();
+        }
+
+        /**
+         * In some cases, we need to try sending the emergency call over this PhoneAccount due to
+         * restrictions and limitations in MSIM configured devices. This includes the following:
+         * 1) The device does not support GNSS SUPL requests on the non-DDS subscription due to
+         *   modem limitations. If the device does not support SUPL on non-DDS, we need to try the
+         *   emergency call on the DDS subscription first to allow for SUPL to be completed.
+         *
+         * @return true if Telecom should prefer this PhoneAccount, false if there is no preference
+         * needed.
+         */
+        private boolean isEmergencyPreferredAccount(int subId) {
+            final boolean gnssSuplRequiresDefaultData = mContext.getResources().getBoolean(
+                    R.bool.config_gnss_supl_requires_default_data_for_emergency);
+            if (!gnssSuplRequiresDefaultData) {
+                // No preference is necessary.
+                return false;
+            }
+
+            // Only set a preference on MSIM devices
+            if (mTelephonyManager.getPhoneCount() <= 1) {
+                return false;
+            }
+            // Check to see if this PhoneAccount is associated with the default Data subscription.
+            if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+                return false;
+            }
+            SubscriptionController controller = SubscriptionController.getInstance();
+            return controller != null && (controller.getDefaultDataSubId() == subId);
         }
 
         /**
@@ -596,6 +633,14 @@ public class TelecomAccountRegistry {
             }
         }
 
+        public void updateDefaultDataSubId() {
+            boolean isEmergencyPreferred = isEmergencyPreferredAccount(mPhone.getSubId());
+            if (isEmergencyPreferred != mIsEmergencyPreferred) {
+                Log.i(this, "updateDefaultDataSubId - changed, new value: " + isEmergencyPreferred);
+                mAccount = registerPstnPhoneAccount(mIsEmergency, mIsDummy);
+            }
+        }
+
         /**
          * Determines whether RTT is supported given the current state of the
          * device.
@@ -742,6 +787,15 @@ public class TelecomAccountRegistry {
                 }
             }
             mServiceState = newState;
+        }
+
+        @Override
+        public void onActiveDataSubscriptionIdChanged(int subId) {
+            synchronized (mAccountsLock) {
+                for (AccountEntry account : mAccounts) {
+                    account.updateDefaultDataSubId();
+                }
+            }
         }
     };
 
@@ -951,7 +1005,8 @@ public class TelecomAccountRegistry {
 
         // We also need to listen for changes to the service state (e.g. emergency -> in service)
         // because this could signal a removal or addition of a SIM in a single SIM phone.
-        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_SERVICE_STATE);
+        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_SERVICE_STATE
+                | PhoneStateListener.LISTEN_ACTIVE_DATA_SUBSCRIPTION_ID_CHANGE);
 
         // Listen for user switches.  When the user switches, we need to ensure that if the current
         // use is not the primary user we disable video calling.
