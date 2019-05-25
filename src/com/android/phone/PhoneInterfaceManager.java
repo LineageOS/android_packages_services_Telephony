@@ -2805,27 +2805,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    /**
-     * Returns the data network type.
-     * Legacy call, permission-free.
-     *
-     * @Deprecated to be removed Q3 2013 use {@link #getDataNetworkType}.
-     */
-    @Override
-    public int getNetworkType() {
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            final Phone phone = getPhone(getDefaultSubscription());
-            if (phone != null) {
-                return phone.getServiceState().getDataNetworkType();
-            } else {
-                return TelephonyManager.NETWORK_TYPE_UNKNOWN;
-            }
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
     @Override
     public int getNetworkSelectionMode(int subId) {
         if (!isActiveSubscription(subId)) {
@@ -3530,12 +3509,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Returns the network type for a subId
+     * Returns the data network type for a subId; does not throw SecurityException.
      */
     @Override
     public int getNetworkTypeForSubscriber(int subId, String callingPackage) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, "getNetworkTypeForSubscriber")) {
+        if (getTargetSdk(callingPackage) >= android.os.Build.VERSION_CODES.Q
+                && !TelephonyPermissions.checkCallingOrSelfReadPhoneStateNoThrow(
+                        mApp, subId, callingPackage, "getNetworkTypeForSubscriber")) {
             return TelephonyManager.NETWORK_TYPE_UNKNOWN;
         }
 
@@ -4470,7 +4450,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
                                 .build());
         if (locationResult != LocationAccessPolicy.LocationPermissionResult.ALLOWED) {
-            SecurityException e = checkNetworkRequestForSanitizedLocationAccess(request);
+            SecurityException e = checkNetworkRequestForSanitizedLocationAccess(request, subId);
             if (e != null) {
                 if (locationResult == LocationAccessPolicy.LocationPermissionResult.DENIED_HARD) {
                     throw e;
@@ -4493,11 +4473,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     private SecurityException checkNetworkRequestForSanitizedLocationAccess(
-            NetworkScanRequest request) {
-        if (mApp.checkCallingOrSelfPermission(android.Manifest.permission.NETWORK_SCAN)
-                != PERMISSION_GRANTED) {
-            return new SecurityException("permission.NETWORK_SCAN is needed for network scans"
-                    + " without location access.");
+            NetworkScanRequest request, int subId) {
+        boolean hasCarrierPriv = getCarrierPrivilegeStatusForUid(subId, Binder.getCallingUid())
+                == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
+        boolean hasNetworkScanPermission =
+                mApp.checkCallingOrSelfPermission(android.Manifest.permission.NETWORK_SCAN)
+                == PERMISSION_GRANTED;
+
+        if (!hasCarrierPriv && !hasNetworkScanPermission) {
+            return new SecurityException("permission.NETWORK_SCAN or carrier privileges is needed"
+                    + " for network scans without location access.");
         }
 
         if (request.getSpecifiers() != null && request.getSpecifiers().length > 0) {
