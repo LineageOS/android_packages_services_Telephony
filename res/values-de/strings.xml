@@ -446,7 +446,7 @@
     <string name="simContacts_title" msgid="1861472842524839921">"Kontakte für Import auswählen"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Deaktiviere den Flugmodus, um Kontakte von der SIM-Karte zu importieren."</string>
     <string name="enable_pin" msgid="5422767284133234860">"PIN-Abfrage für SIM-Karte aktivieren/deaktivieren"</string>
-    <string name="change_pin" msgid="9174186126330785343">"SIM-PIN ändern"</string>
+    <string name="change_pin" msgid="9174186126330785343">"PIN für SIM-Karte ändern"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"PIN der SIM-Karte:"</string>
     <string name="oldPinLabel" msgid="5287773661246368314">"Alte PIN"</string>
     <string name="newPinLabel" msgid="207488227285336897">"Neue PIN"</string>

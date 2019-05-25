@@ -621,7 +621,7 @@
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuele voicemail"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Pincode instellen"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Pincode wijzigen"</string>
-    <string name="preference_category_ringtone" msgid="5197960752529332721">"Beltoon en trillen"</string>
+    <string name="preference_category_ringtone" msgid="5197960752529332721">"Ringtone en trillen"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Ingebouwde simkaarten"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Videogesprekken inschakelen"</string>
     <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"Als je videogesprekken wilt inschakelen, moet je de geoptimaliseerde 4G LTE-modus inschakelen in de netwerkinstellingen."</string>
