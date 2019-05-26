@@ -477,7 +477,7 @@
     <string name="pin2_attempts" msgid="720736232885011507">\n"आपके पास <xliff:g id="NUMBER">%d</xliff:g> प्रयास शेष हैं."</string>
     <string name="pin2_unblocked" msgid="7791600368153469078">"PIN2 अब अवरोधित नहीं है"</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"नेटवर्क या SIM कार्ड गड़बड़ी"</string>
-    <string name="doneButton" msgid="2859593360997984240">"पूर्ण"</string>
+    <string name="doneButton" msgid="2859593360997984240">"पूरा हो गया"</string>
     <string name="voicemail_settings_number_label" msgid="8524164258691887790">"वॉइसमेल नबंर"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"डायल हो रहा है"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"फिर से डायल हो रहा है"</string>
@@ -556,7 +556,7 @@
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"आरटीटी उन कॉल करने वालों की मदद करता है, जो सुन नहीं सकते हैं, ऊंचा सुनते हैं, जिन्हें बोलने में दिक्कत है या जिनके लिए सिर्फ़ आवाज़ काफ़ी नहीं होती.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ज़्यादा  जानें&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - आरटीटी कॉल, मैसेज लेख के रूप में सेव किए जाते हैं\n       &lt;br&gt; - वीडियो कॉल के लिए आरटीटी उपलब्ध नहीं है"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बंद"</item>
-    <item msgid="3971695875449640648">"TTY पूर्ण"</item>
+    <item msgid="3971695875449640648">"TTY पूरा हुआ"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>
   </string-array>
@@ -578,7 +578,7 @@
     <string name="ota_activate" msgid="1368528132525626264">"सक्रिय करें"</string>
     <string name="ota_title_activate_success" msgid="6570240212263372046">"फ़ोन सक्रिय हो गया."</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"सक्रियण में समस्या"</string>
-    <string name="ota_listen" msgid="162923839877584937">"जब तक आप यह न सुनें कि सक्रियण पूर्ण हो गया है, कहे गए निर्देशों का पालन करें."</string>
+    <string name="ota_listen" msgid="162923839877584937">"जब तक आप यह न सुनें कि चालू करना पूरा हो गया है, कहे गए निर्देशों का पालन करें."</string>
     <string name="ota_speaker" msgid="6904589278542719647">"स्‍पीकर"</string>
     <string name="ota_progress" msgid="460876637828044519">"आपका फ़ोन प्रोग्राम किया जा रहा है…"</string>
     <string name="ota_failure" msgid="7713756181204620397">"आपके फ़ोन को प्रोग्राम नहीं किया जा सका"</string>
