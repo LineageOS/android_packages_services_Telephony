@@ -13,6 +13,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
     <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
     <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
     <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
@@ -34,6 +36,7 @@
     <string name="preferred_network_mode_wcdma_only_choice">Yalnız WCDMA</string>
     <string name="preferred_network_mode_gsm_only_choice">Yalnız GSM</string>
     <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA üstünlük verilən</string>
+    <string name="incall_screen_settings">Zəng daxili ekran tənzimləmələri</string>
     <string name="show_ssn_label">Tədbir bildirişi</string>
     <string name="show_ssn_summary">Zəng etmək üsulu ilə bağlı müxtəlif şəbəkə hadisələri üçün bildiriş göstər</string>
     <string name="call_notif_unconditionalCF">Şərtsiz zəng yönləndirmə aktivdir</string>
@@ -48,6 +51,6 @@
     <string name="call_notif_multipartycall">Çox tərəfli zəng</string>
     <string name="call_notif_callonhold_released">Zəngə geri qayıdıldı</string>
     <string name="call_notif_forwardcheckreceived">Zəng yönləndirildi</string>
-    <string name="call_notif_callconnectingect">Açıq zəng ötürmə vasitəsilə bağlanılır</string>
-    <string name="call_notif_callconnectedect">Açıq zəng ötürmə vasitəsilə bağlanıldı</string>
+    <string name="call_notif_callconnectingect">Açıq zəng ötürmə vasitəsilə bağlantı qurulur</string>
+    <string name="call_notif_callconnectedect">Açıq zəng ötürmə vasitəsilə bağlantı quruldu</string>
 </resources>
