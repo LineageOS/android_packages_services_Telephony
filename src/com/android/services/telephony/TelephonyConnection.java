@@ -2203,7 +2203,6 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         boolean isIms = phone.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS;
         boolean isVoWifiEnabled = false;
         if (isIms) {
-            ImsPhone imsPhone = (ImsPhone) phone;
             isVoWifiEnabled = ImsUtil.isWfcEnabled(phone.getContext(), phone.getPhoneId());
         }
         PhoneAccountHandle phoneAccountHandle = isIms ? PhoneUtils
