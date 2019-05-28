@@ -259,6 +259,8 @@ public class ImsConference extends Conference implements Holdable {
     private boolean mCouldManageConference;
     private FeatureFlagProxy mFeatureFlagProxy;
     private boolean mIsEmulatingSinglePartyCall = false;
+    private boolean mIsUsingSimCallManager = false;
+
     /**
      * Where {@link #mIsEmulatingSinglePartyCall} is {@code true}, contains the
      * {@link ConferenceParticipantConnection#getUserEntity()} and
@@ -616,6 +618,7 @@ public class ImsConference extends Conference implements Holdable {
     private void updateManageConference() {
         boolean couldManageConference = can(Connection.CAPABILITY_MANAGE_CONFERENCE);
         boolean canManageConference = mFeatureFlagProxy.isUsingSinglePartyCallEmulation()
+                && mIsEmulatingSinglePartyCall
                 ? mConferenceParticipantConnections.size() > 1
                 : mConferenceParticipantConnections.size() != 0;
         Log.v(this, "updateManageConference was :%s is:%s", couldManageConference ? "Y" : "N",
@@ -675,6 +678,9 @@ public class ImsConference extends Conference implements Holdable {
 
             mConferenceHostAddress = new Uri[hostAddresses.size()];
             mConferenceHostAddress = hostAddresses.toArray(mConferenceHostAddress);
+
+            mIsUsingSimCallManager = mTelecomAccountRegistry.isUsingSimCallManager(
+                    mConferenceHostPhoneAccountHandle);
         }
 
         mConferenceHost.addConnectionListener(mConferenceHostListener);
@@ -829,8 +835,18 @@ public class ImsConference extends Conference implements Holdable {
      * 1. Tell telecom we're a conference again.
      * 2. Restore {@link Connection#CAPABILITY_MANAGE_CONFERENCE} capability.
      * 3. Null out the name/address.
+     *
+     * Note: Single party call emulation is disabled if the conference is taking place via a
+     * sim call manager.  Emulating a single party call requires properties of the conference to be
+     * changed (connect time, address, conference state) which cannot be guaranteed to be relayed
+     * correctly by the sim call manager to Telecom.
      */
     private void stopEmulatingSinglePartyCall() {
+        if (mIsUsingSimCallManager) {
+            Log.i(this, "stopEmulatingSinglePartyCall: using sim call manager; skip.");
+            return;
+        }
+
         Log.i(this, "stopEmulatingSinglePartyCall: conference now has more than one"
                 + " participant; make it look conference-like again.");
         mIsEmulatingSinglePartyCall = false;
@@ -867,8 +883,18 @@ public class ImsConference extends Conference implements Holdable {
      * 2. Tell telecom we're not a conference.
      * 3. Remove {@link Connection#CAPABILITY_MANAGE_CONFERENCE} capability.
      * 4. Set the name/address to that of the single participant.
+     *
+     * Note: Single party call emulation is disabled if the conference is taking place via a
+     * sim call manager.  Emulating a single party call requires properties of the conference to be
+     * changed (connect time, address, conference state) which cannot be guaranteed to be relayed
+     * correctly by the sim call manager to Telecom.
      */
     private void startEmulatingSinglePartyCall() {
+        if (mIsUsingSimCallManager) {
+            Log.i(this, "startEmulatingSinglePartyCall: using sim call manager; skip.");
+            return;
+        }
+
         Log.i(this, "startEmulatingSinglePartyCall: conference has a single "
                 + "participant; downgrade to single party call.");
 
