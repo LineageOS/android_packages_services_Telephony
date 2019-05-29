@@ -7066,28 +7066,4 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 PickSmsSubscriptionActivity.SMS_PICK_FOR_MESSAGE);
         mApp.startActivity(intent);
     }
-
-    @Override
-    public String getMmsUAProfUrl(int subId) {
-        //TODO investigate if this API should require proper permission check in R
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return SubscriptionManager.getResourcesForSubId(getDefaultPhone().getContext(), subId)
-                    .getString(com.android.internal.R.string.config_mms_user_agent_profile_url);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    @Override
-    public String getMmsUserAgent(int subId) {
-        //TODO investigate if this API should require proper permission check in R
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return SubscriptionManager.getResourcesForSubId(getDefaultPhone().getContext(), subId)
-                    .getString(com.android.internal.R.string.config_mms_user_agent);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
 }

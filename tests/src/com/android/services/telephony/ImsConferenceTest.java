@@ -16,9 +16,11 @@
 
 package com.android.services.telephony;
 
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.any;
@@ -30,8 +32,10 @@ import static org.junit.Assert.assertFalse;
 
 import android.net.Uri;
 import android.os.Looper;
+import android.telecom.Conference;
 import android.telecom.ConferenceParticipant;
 import android.telecom.Connection;
+import android.telecom.PhoneAccountHandle;
 import android.test.suitebuilder.annotation.SmallTest;
 
 import com.android.internal.telephony.PhoneConstants;
@@ -53,9 +57,6 @@ public class ImsConferenceTest {
     @Mock
     private TelecomAccountRegistry mMockTelecomAccountRegistry;
 
-    @Mock
-    private com.android.internal.telephony.Connection mOriginalConnection;
-
     private TestTelephonyConnection mConferenceHost;
 
     @Before
@@ -66,11 +67,122 @@ public class ImsConferenceTest {
         }
         mConferenceHost = new TestTelephonyConnection();
         mConferenceHost.setManageImsConferenceCallSupported(true);
+        when(mMockTelecomAccountRegistry.getAddress(any(PhoneAccountHandle.class)))
+                .thenReturn(null);
     }
 
     @Test
     @SmallTest
     public void testSinglePartyEmulation() {
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(any(PhoneAccountHandle.class)))
+                .thenReturn(false);
+
+        ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
+                mMockTelephonyConnectionServiceProxy, mConferenceHost,
+                null /* phoneAccountHandle */, () -> true /* featureFlagProxy */);
+
+        ConferenceParticipant participant1 = new ConferenceParticipant(
+                Uri.parse("tel:6505551212"),
+                "A",
+                Uri.parse("sip:6505551212@testims.com"),
+                Connection.STATE_ACTIVE);
+        ConferenceParticipant participant2 = new ConferenceParticipant(
+                Uri.parse("tel:6505551213"),
+                "A",
+                Uri.parse("sip:6505551213@testims.com"),
+                Connection.STATE_ACTIVE);
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2));
+        assertEquals(2, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(2)).addExistingConnection(
+                any(PhoneAccountHandle.class), any(Connection.class),
+                eq(imsConference));
+
+        // Because we're pretending its a single party, there should be no participants any more.
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1));
+        assertEquals(0, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(2)).removeConnection(
+                any(Connection.class));
+        reset(mMockTelephonyConnectionServiceProxy);
+
+        // Back to 2!
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2));
+        assertEquals(2, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(2)).addExistingConnection(
+                any(PhoneAccountHandle.class), any(Connection.class),
+                eq(imsConference));
+    }
+
+    /**
+     * We have seen a scenario on a carrier where a conference event package comes in just prior to
+     * the call disconnecting with only the conference host in it.  This caused a problem because
+     * it triggered exiting single party conference mode (due to a bug) and caused the call to not
+     * be logged.
+     */
+    @Test
+    @SmallTest
+    public void testSinglePartyEmulationWithPreDisconnectParticipantUpdate() {
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(any(PhoneAccountHandle.class)))
+                .thenReturn(false);
+
+        ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
+                mMockTelephonyConnectionServiceProxy, mConferenceHost,
+                null /* phoneAccountHandle */, () -> true /* featureFlagProxy */);
+
+        final boolean[] isConferenceState = new boolean[1];
+        Conference.Listener conferenceListener = new Conference.Listener() {
+            @Override
+            public void onConferenceStateChanged(Conference c, boolean isConference) {
+                super.onConferenceStateChanged(c, isConference);
+                isConferenceState[0] = isConference;
+            }
+        };
+        imsConference.addListener(conferenceListener);
+
+        ConferenceParticipant participant1 = new ConferenceParticipant(
+                Uri.parse("tel:6505551212"),
+                "A",
+                Uri.parse("sip:6505551212@testims.com"),
+                Connection.STATE_ACTIVE);
+        ConferenceParticipant participant2 = new ConferenceParticipant(
+                Uri.parse("tel:6505551213"),
+                "A",
+                Uri.parse("sip:6505551213@testims.com"),
+                Connection.STATE_ACTIVE);
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2));
+        assertEquals(2, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(2)).addExistingConnection(
+                any(PhoneAccountHandle.class), any(Connection.class),
+                eq(imsConference));
+
+        // Because we're pretending its a single party, there should be only a single participant.
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1));
+        assertEquals(0, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(2)).removeConnection(
+                any(Connection.class));
+
+        // Emulate a pre-disconnect conference event package; there will be zero participants.
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList());
+
+        // We should still not be considered a conference (hence we should be logging this call).
+        assertFalse(isConferenceState[0]);
+    }
+
+    /**
+     * Verify that we do not use single party emulation when a sim call manager is in use.
+     */
+    @Test
+    @SmallTest
+    public void testNoSinglePartyEmulationWithSimCallManager() {
+        // Make it look like there is a sim call manager in use.
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(
+                any(PhoneAccountHandle.class))).thenReturn(true);
+
         ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
                 mMockTelephonyConnectionServiceProxy, mConferenceHost,
                 null /* phoneAccountHandle */, () -> true /* featureFlagProxy */);
@@ -89,10 +201,10 @@ public class ImsConferenceTest {
                 Arrays.asList(participant1, participant2));
         assertEquals(2, imsConference.getNumberOfParticipants());
 
-        // Because we're pretending its a single party, there should be no participants any more.
+        // Because we're not using single party emulation, should still be one participant.
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1));
-        assertEquals(0, imsConference.getNumberOfParticipants());
+        assertEquals(1, imsConference.getNumberOfParticipants());
 
         // Back to 2!
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
@@ -103,6 +215,9 @@ public class ImsConferenceTest {
     @Test
     @SmallTest
     public void testNormalConference() {
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(any(PhoneAccountHandle.class)))
+                .thenReturn(false);
+
         ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
                 mMockTelephonyConnectionServiceProxy, mConferenceHost,
                 null /* phoneAccountHandle */, () -> false /* featureFlagProxy */);
