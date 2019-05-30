@@ -143,7 +143,7 @@ public class EmergencyActionGroup extends FrameLayout implements View.OnClickLis
                 ComponentName name = EmergencyAssistanceHelper.getComponentName(info);
 
                 button.setTag(R.id.tag_intent,
-                        new Intent(EmergencyAssistanceHelper.getIntentAction(getContext()))
+                        new Intent(EmergencyAssistanceHelper.getIntentAction())
                                 .setComponent(name));
                 button.setText(info.loadLabel(getContext().getPackageManager()));
                 visible = true;
