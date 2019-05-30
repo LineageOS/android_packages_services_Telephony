@@ -43,16 +43,9 @@ public class EmergencyAssistanceHelper {
     /**
      * Get intent action of target emergency app.
      *
-     * @param context The context of the application.
-     * @return A string of intent action to launch target emergency app by feature flag, it will be
-     * used for team food.
+     * @return A string of intent action to launch target emergency app.
      */
-    public static String getIntentAction(Context context) {
-        String action = context.getResources().getString(R.string.config_emergency_app_intent);
-        if (!action.isEmpty()) {
-            return action;
-        }
-
+    public static String getIntentAction() {
         return TelephonyManager.ACTION_EMERGENCY_ASSISTANCE;
     }
 
@@ -68,7 +61,7 @@ public class EmergencyAssistanceHelper {
         List<ResolveInfo> infos = queryAssistActivities(context, assistPackage);
         if (infos == null || infos.isEmpty()) {
             PackageManager packageManager = context.getPackageManager();
-            Intent queryIntent = new Intent(getIntentAction(context));
+            Intent queryIntent = new Intent(getIntentAction());
             infos = packageManager.queryIntentActivities(queryIntent, 0);
 
             PackageInfo bestMatch = null;
@@ -112,7 +105,7 @@ public class EmergencyAssistanceHelper {
         List<ResolveInfo> infos = null;
 
         if (!TextUtils.isEmpty(assistPackage)) {
-            Intent queryIntent = new Intent(getIntentAction(context))
+            Intent queryIntent = new Intent(getIntentAction())
                     .setPackage(assistPackage);
             infos = context.getPackageManager().queryIntentActivities(queryIntent, 0);
         }
