@@ -16,6 +16,7 @@
 
 package com.android.services.telephony;
 
+import android.annotation.NonNull;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -53,6 +54,7 @@ import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.PhoneSwitcher;
 import com.android.internal.telephony.RIL;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
@@ -71,6 +73,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 import javax.annotation.Nullable;
@@ -79,6 +83,10 @@ import javax.annotation.Nullable;
  * Service for making GSM and CDMA connections.
  */
 public class TelephonyConnectionService extends ConnectionService {
+
+    // Timeout before we continue with the emergency call without waiting for DDS switch response
+    // from the modem.
+    private static final int DEFAULT_DATA_SWITCH_TIMEOUT_MS = 1000;
 
     // If configured, reject attempts to dial numbers matching this pattern.
     private static final Pattern CDMA_ACTIVATION_CODE_REGEX_PATTERN =
@@ -505,19 +513,39 @@ public class TelephonyConnectionService extends ConnectionService {
             final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber,
                     /* Note: when not an emergency, handle can be null for unknown callers */
                     handle == null ? null : handle.getSchemeSpecificPart());
-            Connection resultConnection = getTelephonyConnection(request, numberToDial,
-                    isEmergencyNumber, handle, phone);
-            // If there was a failure, the resulting connection will not be a TelephonyConnection,
-            // so don't place the call!
-            if (resultConnection instanceof TelephonyConnection) {
-                if (request.getExtras() != null && request.getExtras().getBoolean(
-                        TelecomManager.EXTRA_USE_ASSISTED_DIALING, false)) {
-                    ((TelephonyConnection) resultConnection).setIsUsingAssistedDialing(true);
-                }
-                placeOutgoingConnection((TelephonyConnection) resultConnection, phone, request);
+            if (!isEmergencyNumber) {
+                final Connection resultConnection = getTelephonyConnection(request, numberToDial,
+                        false, handle, phone);
+                return placeOutgoingConnection(request, resultConnection, phone);
+            } else {
+                final Connection resultConnection = getTelephonyConnection(request, numberToDial,
+                        true, handle, phone);
+                CompletableFuture<Boolean> phoneFuture = delayDialForDdsSwitch(phone);
+                phoneFuture.whenComplete((result, error) -> {
+                    if (error != null) {
+                        Log.w(this, "onCreateOutgoingConn - delayDialForDdsSwitch exception= "
+                                + error.getMessage());
+                    }
+                    Log.i(this, "onCreateOutgoingConn - delayDialForDdsSwitch result = " + result);
+                    placeOutgoingConnection(request, resultConnection, phone);
+                });
+                return resultConnection;
             }
-            return resultConnection;
         }
+    }
+
+    private Connection placeOutgoingConnection(ConnectionRequest request,
+            Connection resultConnection, Phone phone) {
+        // If there was a failure, the resulting connection will not be a TelephonyConnection,
+        // so don't place the call!
+        if (resultConnection instanceof TelephonyConnection) {
+            if (request.getExtras() != null && request.getExtras().getBoolean(
+                    TelecomManager.EXTRA_USE_ASSISTED_DIALING, false)) {
+                ((TelephonyConnection) resultConnection).setIsUsingAssistedDialing(true);
+            }
+            placeOutgoingConnection((TelephonyConnection) resultConnection, phone, request);
+        }
+        return resultConnection;
     }
 
     private boolean isEmergencyNumberTestNumber(String number) {
@@ -564,40 +592,26 @@ public class TelephonyConnectionService extends ConnectionService {
                     + "placement.");
             return;
         }
+        // Get the right phone object since the radio has been turned on successfully.
         if (isRadioReady) {
-            // Get the right phone object since the radio has been turned on
-            // successfully.
             final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber,
                     /* Note: when not an emergency, handle can be null for unknown callers */
                     handle == null ? null : handle.getSchemeSpecificPart());
-            // If the PhoneType of the Phone being used is different than the Default Phone, then we
-            // need create a new Connection using that PhoneType and replace it in Telecom.
-            if (phone.getPhoneType() != originalPhoneType) {
-                Connection repConnection = getTelephonyConnection(request, numberToDial,
-                        isEmergencyNumber, handle, phone);
-                // If there was a failure, the resulting connection will not be a
-                // TelephonyConnection, so don't place the call, just return!
-                if (repConnection instanceof TelephonyConnection) {
-                    placeOutgoingConnection((TelephonyConnection) repConnection, phone, request);
-                }
-                // Notify Telecom of the new Connection type.
-                // TODO: Switch out the underlying connection instead of creating a new
-                // one and causing UI Jank.
-                boolean noActiveSimCard = SubscriptionController.getInstance()
-                        .getActiveSubInfoCount(phone.getContext().getOpPackageName()) == 0;
-                // If there's no active sim card and the device is in emergency mode, use E account.
-                addExistingConnection(PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
-                        phone, "", isEmergencyNumber && noActiveSimCard), repConnection);
-                // Remove the old connection from Telecom after.
-                originalConnection.setDisconnected(
-                        DisconnectCauseUtil.toTelecomDisconnectCause(
-                                android.telephony.DisconnectCause.OUTGOING_CANCELED,
-                                "Reconnecting outgoing Emergency Call.",
-                                phone.getPhoneId()));
-                originalConnection.destroy();
+            if (!isEmergencyNumber) {
+                adjustAndPlaceOutgoingConnection(phone, originalConnection, request, numberToDial,
+                        handle, originalPhoneType, false);
             } else {
-                placeOutgoingConnection((TelephonyConnection) originalConnection, phone, request);
+                delayDialForDdsSwitch(phone).whenComplete((result, error) -> {
+                    if (error != null) {
+                        Log.w(this, "handleOnComplete - delayDialForDdsSwitch exception= "
+                                + error.getMessage());
+                    }
+                    Log.i(this, "handleOnComplete - delayDialForDdsSwitch result = " + result);
+                    adjustAndPlaceOutgoingConnection(phone, originalConnection, request,
+                            numberToDial, handle, originalPhoneType, true);
+                });
             }
+
         } else {
             Log.w(this, "onCreateOutgoingConnection, failed to turn on radio");
             originalConnection.setDisconnected(
@@ -605,6 +619,39 @@ public class TelephonyConnectionService extends ConnectionService {
                             android.telephony.DisconnectCause.POWER_OFF,
                             "Failed to turn on radio."));
             originalConnection.destroy();
+        }
+    }
+
+    private void adjustAndPlaceOutgoingConnection(Phone phone, Connection connectionToEvaluate,
+            ConnectionRequest request, String numberToDial, Uri handle, int originalPhoneType,
+            boolean isEmergencyNumber) {
+        // If the PhoneType of the Phone being used is different than the Default Phone, then we
+        // need to create a new Connection using that PhoneType and replace it in Telecom.
+        if (phone.getPhoneType() != originalPhoneType) {
+            Connection repConnection = getTelephonyConnection(request, numberToDial,
+                    isEmergencyNumber, handle, phone);
+            // If there was a failure, the resulting connection will not be a TelephonyConnection,
+            // so don't place the call, just return!
+            if (repConnection instanceof TelephonyConnection) {
+                placeOutgoingConnection((TelephonyConnection) repConnection, phone, request);
+            }
+            // Notify Telecom of the new Connection type.
+            // TODO: Switch out the underlying connection instead of creating a new
+            // one and causing UI Jank.
+            boolean noActiveSimCard = SubscriptionController.getInstance()
+                    .getActiveSubInfoCount(phone.getContext().getOpPackageName()) == 0;
+            // If there's no active sim card and the device is in emergency mode, use E account.
+            addExistingConnection(PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
+                    phone, "", isEmergencyNumber && noActiveSimCard), repConnection);
+            // Remove the old connection from Telecom after.
+            connectionToEvaluate.setDisconnected(
+                    DisconnectCauseUtil.toTelecomDisconnectCause(
+                            android.telephony.DisconnectCause.OUTGOING_CANCELED,
+                            "Reconnecting outgoing Emergency Call.",
+                            phone.getPhoneId()));
+            connectionToEvaluate.destroy();
+        } else {
+            placeOutgoingConnection((TelephonyConnection) connectionToEvaluate, phone, request);
         }
     }
 
@@ -1315,8 +1362,7 @@ public class TelephonyConnectionService extends ConnectionService {
         // If this is an emergency call and the phone we originally planned to make this call
         // with is not in service or was invalid, try to find one that is in service, using the
         // default as a last chance backup.
-        if (isEmergency && (chosenPhone == null || ServiceState.STATE_IN_SERVICE != chosenPhone
-                .getServiceState().getState())) {
+        if (isEmergency && (chosenPhone == null || !isAvailableForEmergencyCalls(chosenPhone))) {
             Log.d(this, "getPhoneForAccount: phone for phone acct handle %s is out of service "
                     + "or invalid for emergency call.", accountHandle);
             chosenPhone = getPhoneForEmergencyCall(emergencyNumberAddress);
@@ -1324,6 +1370,98 @@ public class TelephonyConnectionService extends ConnectionService {
                     (chosenPhone == null ? "null" : chosenPhone.getSubId()));
         }
         return chosenPhone;
+    }
+
+    private CompletableFuture<Boolean> delayDialForDdsSwitch(Phone phone) {
+        if (phone == null) {
+            return CompletableFuture.completedFuture(Boolean.TRUE);
+        }
+        return possiblyOverrideDefaultDataForEmergencyCall(phone)
+                .completeOnTimeout(false, DEFAULT_DATA_SWITCH_TIMEOUT_MS,
+                        TimeUnit.MILLISECONDS);
+    }
+
+    /**
+     * If needed, block until Default Data subscription is switched for outgoing emergency call.
+     *
+     * In some cases, we need to try to switch the Default Data subscription before placing the
+     * emergency call on DSDS devices. This includes the following situation:
+     * - The modem does not support processing GNSS SUPL requests on the non-default data
+     * subscription. For some carriers that do not provide a control plane fallback mechanism, the
+     * SUPL request will be dropped and we will not be able to get the user's location for the
+     * emergency call. In this case, we need to swap default data temporarily.
+     * @param phone Evaluates whether or not the default data should be moved to the phone
+     *              specified. Should not be null.
+     */
+    private CompletableFuture<Boolean> possiblyOverrideDefaultDataForEmergencyCall(
+            @NonNull Phone phone) {
+        TelephonyManager telephony = TelephonyManager.from(phone.getContext());
+        int phoneCount = telephony.getPhoneCount();
+        // Do not override DDS if this is a single SIM device.
+        if (phoneCount <= PhoneConstants.MAX_PHONE_COUNT_SINGLE_SIM) {
+            return CompletableFuture.completedFuture(Boolean.TRUE);
+        }
+
+        CarrierConfigManager cfgManager = (CarrierConfigManager)
+                phone.getContext().getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (cfgManager == null) {
+            // For some reason CarrierConfigManager is unavailable. Do not block emergency call.
+            Log.w(this, "possiblyOverrideDefaultDataForEmergencyCall: couldn't get"
+                    + "CarrierConfigManager");
+            return CompletableFuture.completedFuture(Boolean.TRUE);
+        }
+        // Only override default data if we are IN_SERVICE and on a home network. We don't want to
+        // perform a DDS switch of we are on a roaming network, where SUPL may not be available.
+        boolean isPhoneAvailableForEmergency = isAvailableForEmergencyCalls(phone);
+        boolean isRoaming = phone.getServiceState().getVoiceRoaming();
+        if (!isPhoneAvailableForEmergency || isRoaming) {
+            Log.d(this, "possiblyOverrideDefaultDataForEmergencyCall: not switching DDS, avail = "
+                    + isPhoneAvailableForEmergency + ", roaming = " + isRoaming);
+            return CompletableFuture.completedFuture(Boolean.TRUE);
+        }
+
+        // Do not switch Default data if this device supports emergency SUPL on non-DDS.
+        final boolean gnssSuplRequiresDefaultData = phone.getContext().getResources().getBoolean(
+                R.bool.config_gnss_supl_requires_default_data_for_emergency);
+        if (!gnssSuplRequiresDefaultData) {
+            Log.d(this, "possiblyOverrideDefaultDataForEmergencyCall: not switching DDS, does not "
+                    + "require DDS switch.");
+            return CompletableFuture.completedFuture(Boolean.TRUE);
+        }
+
+        final boolean supportsCpFallback = cfgManager.getConfigForSubId(phone.getSubId())
+                .getInt(CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
+                        CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_CP_ONLY)
+                != CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_DP_ONLY;
+        if (supportsCpFallback) {
+            Log.d(this, "possiblyOverrideDefaultDataForEmergencyCall: not switching DDS, carrier "
+                    + "supports CP fallback.");
+            // Do not try to swap default data if we support CS fallback, do not want to introduce
+            // a lag in emergency call setup time if possible.
+            return CompletableFuture.completedFuture(Boolean.TRUE);
+        }
+
+        // Get extension time, may be 0 for some carriers that support ECBM as well. Use
+        // CarrierConfig default if format fails.
+        int extensionTime = 0;
+        try {
+            extensionTime = Integer.valueOf(cfgManager.getConfigForSubId(phone.getSubId())
+                    .getString(CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0"));
+        } catch (NumberFormatException e) {
+            // Just use default.
+        }
+        CompletableFuture<Boolean> modemResultFuture = new CompletableFuture<>();
+        try {
+            Log.d(this, "possiblyOverrideDefaultDataForEmergencyCall: overriding DDS for "
+                    + extensionTime + "seconds");
+            PhoneSwitcher.getInstance().overrideDefaultDataForEmergency(phone.getPhoneId(),
+                    extensionTime, modemResultFuture);
+            // Catch all exceptions, we want to continue with emergency call if possible.
+        } catch (Exception e) {
+            Log.w(this, "possiblyOverrideDefaultDataForEmergencyCall: exception = "
+                    + e.getMessage());
+        }
+        return modemResultFuture;
     }
 
     /**
