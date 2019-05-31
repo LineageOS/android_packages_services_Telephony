@@ -393,6 +393,9 @@ public class ImsConference extends Conference implements Holdable {
                 Connection.PROPERTY_IS_EXTERNAL_CALL,
                 can(properties, Connection.PROPERTY_IS_EXTERNAL_CALL));
 
+        conferenceProperties = changeBitmask(conferenceProperties,
+                Connection.PROPERTY_REMOTELY_HOSTED, !isConferenceHost());
+
         return conferenceProperties;
     }
 
@@ -677,6 +680,16 @@ public class ImsConference extends Conference implements Holdable {
             mConferenceHostAddress = hostAddresses.toArray(mConferenceHostAddress);
         }
 
+        // If the conference is not hosted on this device copy over the address and presentation and
+        // connect times so that we can log this appropriately in the call log.
+        if (!isConferenceHost()) {
+            setAddress(mConferenceHost.getAddress(), mConferenceHost.getAddressPresentation());
+            setCallerDisplayName(mConferenceHost.getCallerDisplayName(),
+                    mConferenceHost.getCallerDisplayNamePresentation());
+            setConnectionStartElapsedRealTime(mConferenceHost.getConnectElapsedTimeMillis());
+            setConnectionTime(mConferenceHost.getConnectTimeMillis());
+        }
+
         mConferenceHost.addConnectionListener(mConferenceHostListener);
         mConferenceHost.addTelephonyConnectionListener(mTelephonyConnectionListener);
         setConnectionCapabilities(applyHostCapabilities(getConnectionCapabilities(),
@@ -922,7 +935,8 @@ public class ImsConference extends Conference implements Holdable {
         // Create and add the new connection in holding state so that it does not become the
         // active call.
         ConferenceParticipantConnection connection = new ConferenceParticipantConnection(
-                parent.getOriginalConnection(), participant);
+                parent.getOriginalConnection(), participant,
+                !isConferenceHost() /* isRemotelyHosted */);
         connection.addConnectionListener(mParticipantListener);
         if (participant.getConnectTime() == 0) {
             connection.setConnectTimeMillis(parent.getConnectTimeMillis());
