@@ -7096,4 +7096,36 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
     }
+
+    @Override
+    public boolean setDataAllowedDuringVoiceCall(int subId, boolean allow) {
+        enforceModifyPermission();
+
+        // Now that all security checks passes, perform the operation as ourselves.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone == null) return false;
+
+            return phone.getDataEnabledSettings().setAllowDataDuringVoiceCall(allow);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public boolean isDataAllowedInVoiceCall(int subId) {
+        enforceReadPrivilegedPermission("isDataAllowedInVoiceCall");
+
+        // Now that all security checks passes, perform the operation as ourselves.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone == null) return false;
+
+            return phone.getDataEnabledSettings().isDataAllowedInVoiceCall();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
 }
