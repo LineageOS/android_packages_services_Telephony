@@ -796,6 +796,7 @@ public class PhoneGlobals extends ContextWrapper {
         pw.println("mNoDataDueToRoaming=" + mNoDataDueToRoaming);
         pw.println("mDefaultDataSubId=" + mDefaultDataSubId);
         pw.println("mDataRoamingNotifLog:");
+        pw.println("isSmsCapable=" + TelephonyManager.from(this).isSmsCapable());
         pw.increaseIndent();
         mDataRoamingNotifLog.dump(fd, pw, args);
         pw.decreaseIndent();
