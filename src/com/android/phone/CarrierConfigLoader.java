@@ -935,10 +935,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
         if (overrides == null) {
             mOverrideConfigs[phoneId] = new PersistableBundle();
-            return;
-        }
-
-        if (mOverrideConfigs[phoneId] == null) {
+        } else if (mOverrideConfigs[phoneId] == null) {
             mOverrideConfigs[phoneId] = overrides;
         } else {
             mOverrideConfigs[phoneId].putAll(overrides);
