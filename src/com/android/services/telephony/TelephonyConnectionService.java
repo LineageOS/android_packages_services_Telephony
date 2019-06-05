@@ -490,7 +490,10 @@ public class TelephonyConnectionService extends ConnectionService {
                         // it is a test emergency number and we have to wait for the device to move
                         // IN_SERVICE before the call can take place over normal routing.
                         return (phone.getState() == PhoneConstants.State.OFFHOOK)
-                            || serviceState == ServiceState.STATE_IN_SERVICE;
+                                // Do not wait for voice in service on opportunistic SIMs.
+                                || SubscriptionController.getInstance().isOpportunistic(
+                                        phone.getSubId())
+                                || serviceState == ServiceState.STATE_IN_SERVICE;
                     }
                 }
             });
