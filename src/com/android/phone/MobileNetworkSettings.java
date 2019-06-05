@@ -150,12 +150,17 @@ public class MobileNetworkSettings extends Activity  {
 
 
     /**
-     * Returns true if Wifi calling is enabled for at least one phone.
+     * Returns true if Wifi calling is enabled for at least one subscription.
      */
     public static boolean isWifiCallingEnabled(Context context) {
-        int phoneCount = TelephonyManager.from(context).getPhoneCount();
-        for (int i = 0; i < phoneCount; i++) {
-            if (isWifiCallingEnabled(context, i)) {
+        SubscriptionManager subManager = context.getSystemService(SubscriptionManager.class);
+        if (subManager == null) {
+            Log.e(MobileNetworkFragment.LOG_TAG,
+                    "isWifiCallingEnabled: couldn't get system service.");
+            return false;
+        }
+        for (int subId : subManager.getActiveSubscriptionIdList()) {
+            if (isWifiCallingEnabled(context, subId)) {
                 return true;
             }
         }
@@ -163,11 +168,12 @@ public class MobileNetworkSettings extends Activity  {
     }
 
     /**
-     * Returns true if Wifi calling is enabled for the specific phone with id {@code phoneId}.
+     * Returns true if Wifi calling is enabled for the specific subscription with id {@code subId}.
      */
-    public static boolean isWifiCallingEnabled(Context context, int phoneId) {
+    public static boolean isWifiCallingEnabled(Context context, int subId) {
         final PhoneAccountHandle simCallManager =
-                TelecomManager.from(context).getSimCallManager();
+                TelecomManager.from(context).getSimCallManagerForSubscription(subId);
+        final int phoneId = SubscriptionManager.getSlotIndex(subId);
 
         boolean isWifiCallingEnabled;
         if (simCallManager != null) {
@@ -1889,14 +1895,14 @@ public class MobileNetworkSettings extends Activity  {
             }
 
             // Removes the preference if the wifi calling is disabled.
-            if (!isWifiCallingEnabled(getContext(), SubscriptionManager.getPhoneId(mSubId))) {
+            if (!isWifiCallingEnabled(getContext(), mSubId)) {
                 mCallingCategory.removePreference(mWiFiCallingPref);
                 return;
             }
 
             // See what Telecom thinks the SIM call manager is.
             final PhoneAccountHandle simCallManager =
-                    TelecomManager.from(getContext()).getSimCallManager();
+                    TelecomManager.from(getContext()).getSimCallManagerForSubscription(mSubId);
 
             // Check which SIM call manager is for the current sub ID.
             PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);

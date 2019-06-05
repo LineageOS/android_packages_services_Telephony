@@ -375,7 +375,8 @@ public class CallFeaturesSetting extends PreferenceActivity
             prefSet.removePreference(mEnableVideoCalling);
         }
 
-        final PhoneAccountHandle simCallManager = mTelecomManager.getSimCallManager();
+        final PhoneAccountHandle simCallManager = mTelecomManager.getSimCallManagerForSubscription(
+                mPhone.getSubId());
         if (simCallManager != null) {
             Intent intent = PhoneAccountSettingsFragment.buildPhoneAccountConfigureIntent(
                     this, simCallManager);
