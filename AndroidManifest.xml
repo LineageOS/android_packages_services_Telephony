@@ -616,6 +616,14 @@
             android:name="com.android.internal.telephony.uicc.ShowInstallAppNotificationReceiver"
             android:exported="false"/>
 
+        <activity
+            android:name="com.android.phone.settings.PickSmsSubscriptionActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/Theme.Transparent"/>
+
         <service
             android:name="com.android.phone.vvm.RemoteVvmTaskManager"
             android:exported="false"/>
