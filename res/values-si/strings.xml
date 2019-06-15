@@ -247,7 +247,7 @@
     <string name="roaming_notification_title" msgid="4749053220884743110">"ජංගම දත්ත සම්බන්ධතාව නැතිවීම"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"ඔබ සැලකිය යුතු ගාස්තු ඇති විය හැකිය."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"මිල ගණන් සඳහා ඔබගේ ජාල සැපයුම්කරු සමඟ පරීක්ෂා කරන්න."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"දත්ත රෝමින් සඳහා අවසර දෙන්න ද?"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"දත්ත රෝමින් සඳහා අවසර දෙන්නද?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"යෙදුම් දත්ත භාවිතය"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> <xliff:g id="ID_1">%1$s</xliff:g>ක ජංගම දත්ත භාවිත කරන ලදී"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"උසස්"</string>

@@ -102,21 +102,21 @@
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Barcha qo‘ng‘iroqlar yo‘naltirilmoqda"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Barcha qo‘ng‘iroqlar <xliff:g id="PHONENUMBER">{0}</xliff:g>ga yo‘naltirilmoqda"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"Raqam mavjud emas"</string>
-    <string name="sum_cfu_disabled" msgid="8384177689501334080">"O‘chiq"</string>
+    <string name="sum_cfu_disabled" msgid="8384177689501334080">"Yoqilmagan"</string>
     <string name="labelCFB" msgid="6139853033106283172">"Agar raqam band bo‘lsa"</string>
     <string name="messageCFB" msgid="3711089705936187129">"Ushbu raqamga yo‘naltirilsin"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"<xliff:g id="PHONENUMBER">{0}</xliff:g> raqamiga yo‘naltiriladi"</string>
-    <string name="sum_cfb_disabled" msgid="4913145177320506827">"O‘chiq"</string>
+    <string name="sum_cfb_disabled" msgid="4913145177320506827">"Yoqilmagan"</string>
     <string name="disable_cfb_forbidden" msgid="3506984333877998061">"Telefoningiz band bo‘lganda qo‘ng‘iroqlarni boshqa raqamga yo‘naltirishni o‘chirish xususiyati tarmoq operatoringizda yo‘q."</string>
     <string name="labelCFNRy" msgid="1736067178393744351">"Agar javob berilmasa"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"Ushbu raqamga yo‘naltirilsin"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> raqamiga yo‘naltiriladi"</string>
-    <string name="sum_cfnry_disabled" msgid="3884684060443538097">"O‘chiq"</string>
+    <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Yoqilmagan"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Telefoningiz javob bermayotganda qo‘ng‘iroqlarni boshqa raqamga yo‘naltirishni o‘chirish xususiyati operatoringizda yo‘q."</string>
     <string name="labelCFNRc" msgid="2614827454402079766">"Agar raqam tarmoqdan tashqarida bo‘lsa"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Ushbu raqamga yo‘naltirilsin"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> raqamiga yo‘naltiriladi"</string>
-    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"O‘chiq"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Yoqilmagan"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Telefoningiz o‘chiq bo‘lganida qo‘ng‘iroqlarni boshqa raqamga yo‘naltirishni o‘chirish xususiyati tarmoq operatoringizda yo‘q."</string>
     <string name="updating_title" msgid="6146755386174019046">"Chaqiruv sozlamalari"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Faqat administrator qo‘ng‘iroq sozlamalarini o‘zgartirishi mumkin."</string>
@@ -245,7 +245,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Rouming vaqtida mobil internetga ulanish"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Rouming-internet yoqilmagan. Uni yoqish uchun bosing."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Mobil internet uzildi"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"Xarajati ancha yuqori bo‘lishi mumkin."</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"Roumingda internet narxi ancha yuqori."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Paketlar narxlari haqidagi ma’lumotni internet provayderingizdan olishingiz mumkin."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Internet-roumingga ruxsat berilsinmi?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Ilova sarflagan trafik"</string>
@@ -256,7 +256,7 @@
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Mobil internet"</string>
     <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Mobil tarmoq orqali internetdan foydalanish"</string>
-    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Mobil internet o‘chirib qo‘yilsinmi?"</string>
+    <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Mobil internet uzilsinmi?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"SIM kartani tanlang"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"SIM karta o‘zgartirilsinmi?"</string>
     <string name="sim_change_data_message" msgid="2163963581444907496">"Mobil internet uchun <xliff:g id="OLD_SIM">%2$s</xliff:g> o‘rniga <xliff:g id="NEW_SIM">%1$s</xliff:g> SIM kartasidan foydalanilsinmi?"</string>
@@ -712,7 +712,7 @@
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="8838850798491763729">"Tarmoqlar o‘rtasidagi o‘zaro aloqada xatolik yuz berdi"</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Chaqiruvlarni taqiqlash"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Yoniq"</string>
-    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"O‘chiq"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Yoqilmagan"</string>
     <string name="call_barring_baoc" msgid="1199843944333106035">"Barcha chiquvchi chaqiruvlar"</string>
     <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Barcha chiquvchi chaqiruvlarni bloklash bekor qilinsinmi?"</string>
     <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Barcha chiquvchi chaqiruvlar bloklansinmi?"</string>

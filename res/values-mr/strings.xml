@@ -584,12 +584,12 @@
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"डेटा कनेक्शन अक्षम केले"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"<xliff:g id="COMPLETETIME">%s</xliff:g> पर्यंत कोणतेही डेटा कनेक्‍शन नाही"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="7179911675595441201">
-      <item quantity="one">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अ‍ॅप्लिकेशन वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
       <item quantity="other">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अ‍ॅप्लिकेशन वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
+      <item quantity="one">फोन <xliff:g id="COUNT_0">%s</xliff:g> मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अ‍ॅप वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="8042973425225093895">
-      <item quantity="one">आणीबाणी कॉलबॅक मोडमध्ये असताना निवडलेली क्रिया उपलब्ध नसते. फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटासाठी या मोडमध्ये राहील. तुम्ही आता बाहेर पडू इच्छिता?</item>
       <item quantity="other">आणीबाणी कॉलबॅक मोडमध्ये असताना निवडलेली क्रिया उपलब्ध नसते. फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी या मोडमध्ये राहील. तुम्ही आता बाहेर पडू इच्छिता?</item>
+      <item quantity="one">आणीबाणी कॉलबॅक मोडमध्ये असताना निवडलेली क्रिया उपलब्ध नसते. फोन <xliff:g id="COUNT_0">%s</xliff:g> मिनिटासाठी या मोडमध्ये राहील. तुम्ही आता बाहेर पडू इच्छिता?</item>
     </plurals>
     <string name="alert_dialog_in_ecm_call" msgid="1886723687211887104">"आणीबाणीच्‍या कॉलमध्‍ये असताना निवडलेली क्रिया उपलब्‍ध नसते."</string>
     <string name="progress_dialog_exiting_ecm" msgid="4835734101617817074">"आणीबाणी कॉलबॅक मोडमधून बाहेर पडत आहे"</string>
@@ -752,8 +752,8 @@
     <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"जाणारे कॉल अवरोधित केले."</string>
     <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"कॉल फॉरवर्ड होत आहे."</string>
     <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"अतिरिक्‍त कॉल फॉरवर्ड केला."</string>
-    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"भडक कॉल ट्रांसफर करणे पूर्ण झाले."</string>
-    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"भडक कॉल ट्रांसफर होत आहे."</string>
+    <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"भडक कॉल ट्रान्सफर करणे पूर्ण झाले."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"भडक कॉल ट्रान्सफर होत आहे."</string>
     <string name="supp_service_call_on_hold" msgid="1478976782361795422">"कॉल होल्डवर आहे."</string>
     <string name="supp_service_call_resumed" msgid="1656475289958070674">"कॉल पुन्‍‍‍‍हा सुरू झाला."</string>
     <string name="supp_service_deflected_call" msgid="138970419873492166">"कॉल वळवला."</string>

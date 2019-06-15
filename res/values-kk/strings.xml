@@ -507,7 +507,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Иесі"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Ақпаратты көру үшін қайта түртіңіз"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Төтенше қоңырау"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Тек қана төтенше жағдай қоңыраулары"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Құтқару қызметіне ғана қоңырау шалынады"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Төтенше жағдай қызметі"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Төтенше жағдай қызметтері"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> нөміріне қоңырау шалу үшін, түймені қайта түртіңіз"</string>

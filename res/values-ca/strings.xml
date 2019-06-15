@@ -176,7 +176,7 @@
     <string name="preferred_network_mode_summary" msgid="1434820673166126609">"Canvia el mode de funcionament de la xarxa"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Tipus de xarxa preferit"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(prohibit)"</string>
-    <string name="choose_network_title" msgid="4023911977543009350">"Tria la xarxa"</string>
+    <string name="choose_network_title" msgid="4023911977543009350">"Tria una xarxa"</string>
     <string name="network_disconnected" msgid="2227251609006103194">"Desconnectat"</string>
     <string name="network_connected" msgid="1288589103624338857">"Connectat"</string>
     <string name="network_connecting" msgid="4927203097283533783">"S\'està connectant..."</string>
@@ -206,32 +206,32 @@
     <item msgid="2828588917858484655">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
     <item msgid="4989979948139945854">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
   </string-array>
-    <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Mode de xarxa preferit: WCDMA preferit"</string>
-    <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Mode de xarxa preferit: només GSM"</string>
-    <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Mode de xarxa preferit: només WCDMA"</string>
-    <string name="preferred_network_mode_gsm_wcdma_summary" msgid="3161255745326408587">"Mode de xarxa preferit: GSM/WCDMA"</string>
-    <string name="preferred_network_mode_cdma_summary" msgid="3175690187294334241">"Mode de xarxa preferit: CDMA"</string>
-    <string name="preferred_network_mode_cdma_evdo_summary" msgid="8332063064712726618">"Mode de xarxa preferit: CDMA / EvDo"</string>
-    <string name="preferred_network_mode_cdma_only_summary" msgid="1309770926198634150">"Mode de xarxa preferit: només CDMA"</string>
-    <string name="preferred_network_mode_evdo_only_summary" msgid="8472220691721269155">"Mode de xarxa preferit: només EvDo"</string>
-    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary" msgid="4726682079415227330">"Mode de xarxa preferit: CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_summary" msgid="574752287596469136">"Mode de xarxa preferit: LTE"</string>
-    <string name="preferred_network_mode_lte_gsm_wcdma_summary" msgid="8455358514068283935">"Mode de xarxa preferit: GSM/WCDMA/LTE"</string>
-    <string name="preferred_network_mode_lte_cdma_evdo_summary" msgid="228702246343742853">"Mode de xarxa preferit: CDMA+LTE/EVDO"</string>
-    <string name="preferred_network_mode_global_summary" msgid="1633134285545730364">"Mode de xarxa preferit: Global"</string>
-    <string name="preferred_network_mode_lte_wcdma_summary" msgid="9180775701594742750">"Mode de xarxa preferit: LTE/WCDMA"</string>
-    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Mode de xarxa preferit: LTE/GSM/UMTS"</string>
-    <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Mode de xarxa preferit: LTE/CDMA"</string>
-    <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Mode de xarxa preferit: TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Mode de xarxa preferit: TDSCDMA/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Mode de xarxa preferit: LTE/TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Mode de xarxa preferit: TDSCDMA/GSM"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Mode de xarxa preferit: LTE/GSM/TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Mode de xarxa preferit: TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Mode de xarxa preferit: LTE/TDSCDMA/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Mode de xarxa preferit: LTE/TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Mode de xarxa preferit: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Mode de xarxa preferit: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_wcdma_perf_summary" msgid="8521677230113533809">"Mode de xarxa preferent: WCDMA preferit"</string>
+    <string name="preferred_network_mode_gsm_only_summary" msgid="3352445413437453511">"Mode de xarxa preferent: només GSM"</string>
+    <string name="preferred_network_mode_wcdma_only_summary" msgid="2836897236221063413">"Mode de xarxa preferent: només WCDMA"</string>
+    <string name="preferred_network_mode_gsm_wcdma_summary" msgid="3161255745326408587">"Mode de xarxa preferent: GSM/WCDMA"</string>
+    <string name="preferred_network_mode_cdma_summary" msgid="3175690187294334241">"Mode de xarxa preferent: CDMA"</string>
+    <string name="preferred_network_mode_cdma_evdo_summary" msgid="8332063064712726618">"Mode de xarxa preferent: CDMA / EvDo"</string>
+    <string name="preferred_network_mode_cdma_only_summary" msgid="1309770926198634150">"Mode de xarxa preferent: només CDMA"</string>
+    <string name="preferred_network_mode_evdo_only_summary" msgid="8472220691721269155">"Mode de xarxa preferent: només EvDo"</string>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary" msgid="4726682079415227330">"Mode de xarxa preferent: CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_summary" msgid="574752287596469136">"Mode de xarxa preferent: LTE"</string>
+    <string name="preferred_network_mode_lte_gsm_wcdma_summary" msgid="8455358514068283935">"Mode de xarxa preferent: GSM/WCDMA/LTE"</string>
+    <string name="preferred_network_mode_lte_cdma_evdo_summary" msgid="228702246343742853">"Mode de xarxa preferent: CDMA+LTE/EVDO"</string>
+    <string name="preferred_network_mode_global_summary" msgid="1633134285545730364">"Mode de xarxa preferent: Global"</string>
+    <string name="preferred_network_mode_lte_wcdma_summary" msgid="9180775701594742750">"Mode de xarxa preferent: LTE/WCDMA"</string>
+    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"Mode de xarxa preferent: LTE/GSM/UMTS"</string>
+    <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Mode de xarxa preferent: LTE/CDMA"</string>
+    <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"Mode de xarxa preferent: TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"Mode de xarxa preferent: TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"Mode de xarxa preferent: LTE/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"Mode de xarxa preferent: TDSCDMA/GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"Mode de xarxa preferent: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"Mode de xarxa preferent: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"Mode de xarxa preferent: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"Mode de xarxa preferent: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"Mode de xarxa preferent: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"Mode de xarxa preferent: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="call_category" msgid="5863978196309462052">"Trucades"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"Xarxa"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"Mode 4G LTE millorat"</string>
@@ -245,7 +245,7 @@
     <string name="roaming_disable" msgid="1843417228755568110">"Estableix connexió amb serveis de dades en itinerància"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"La itinerància de dades està desactivada. Toca per activar-la."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"S\'ha perdut la connexió de dades mòbils"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"És possible que se\'t facturin càrrecs elevats."</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"És possible que s\'apliquin càrrecs elevats."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Contacta amb el proveïdor de xarxa per saber els preus."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permetre la itinerància de dades?"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Ús de dades de l\'aplicació"</string>

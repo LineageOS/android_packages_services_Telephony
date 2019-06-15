@@ -31,7 +31,7 @@
     <string name="cancel" msgid="5044513931633602634">"Abbrechen"</string>
     <string name="enter_input" msgid="1810529547726803893">"Die USSD-Nachricht muss zwischen <xliff:g id="MIN_LEN">%d</xliff:g> und <xliff:g id="MAX_LEN">%d</xliff:g> Zeichen lang sein. Bitte versuche es noch einmal."</string>
     <string name="manageConferenceLabel" msgid="4691922394301969053">"Telefonkonferenz verwalten"</string>
-    <string name="ok" msgid="3811371167865772377">"OK"</string>
+    <string name="ok" msgid="3811371167865772377">"Ok"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Lautsprecher"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Handy-Kopfhörer"</string>
     <string name="audio_mode_wired_headset" msgid="1465350758489175975">"Kabelgebundenes Headset"</string>
@@ -133,7 +133,7 @@
     <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS-Anfrage wurde in Videoanruf geändert"</string>
     <string name="fdn_check_failure" msgid="18200614306525434">"Da die Anrufbegrenzung in deiner Telefon-App aktiviert ist, funktionieren nicht alle Anruffunktionen."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"Aktiviere deine Mobilfunkverbindung, bevor du diese Einstellungen anzeigst."</string>
-    <string name="close_dialog" msgid="2365884406356986917">"OK"</string>
+    <string name="close_dialog" msgid="2365884406356986917">"Ok"</string>
     <string name="enable" msgid="7248657275000173526">"Aktivieren"</string>
     <string name="disable" msgid="4678348128118573672">"Deaktivieren"</string>
     <string name="change_num" msgid="239476305819844391">"Aktualisieren"</string>
@@ -169,7 +169,7 @@
     <string name="connect_later" msgid="2308119155752343975">"Momentan kann keine Verbindung zu diesem Netzwerk aufgebaut werden. Bitte versuche es später noch einmal."</string>
     <string name="registration_done" msgid="495135664535876612">"In Netzwerk registriert."</string>
     <string name="already_auto" msgid="6067116884321285507">"Bereits automatisch ausgewählt."</string>
-    <string name="select_automatically" msgid="1046727200631770962">"Netzwerk automatisch auswählen"</string>
+    <string name="select_automatically" msgid="1046727200631770962">"Netz automatisch auswählen"</string>
     <string name="network_select_title" msgid="7733107364757544558">"Netzwerk"</string>
     <string name="register_automatically" msgid="6017849844573519637">"Automatische Registrierung..."</string>
     <string name="preferred_network_mode_title" msgid="2336624679902659306">"Bevorzugter Netzwerktyp"</string>
@@ -241,14 +241,14 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"Datennutzung zulassen"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Achtung"</string>
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Bei Roaming mit Datendienst verbinden"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Bei Roaming mit Datendienst verbinden"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Mobile Daten auch bei Roaming nutzen"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Mobile Daten auch bei Roaming nutzen"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Daten-Roaming ist deaktiviert. Zum Aktivieren tippen."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Keine mobile Datenverbindung"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Es können hohe Gebühren anfallen."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Wende dich an deinen Netzwerkanbieter, um Preisinformationen zu erhalten."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Daten-Roaming zulassen?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"Datennutzung durch Apps"</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"Datenverbrauch durch Apps"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Im Zeitraum <xliff:g id="ID_2">%2$s</xliff:g> genutzte mobile Daten: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Erweitert"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Mobilfunkanbieter"</string>
@@ -436,7 +436,7 @@
     <string name="simContacts_title" msgid="1861472842524839921">"Kontakte für Import auswählen"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Deaktiviere den Flugmodus, um Kontakte von der SIM-Karte zu importieren."</string>
     <string name="enable_pin" msgid="5422767284133234860">"PIN-Abfrage für SIM-Karte aktivieren/deaktivieren"</string>
-    <string name="change_pin" msgid="9174186126330785343">"PIN ändern"</string>
+    <string name="change_pin" msgid="9174186126330785343">"PIN für SIM-Karte ändern"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"PIN der SIM-Karte:"</string>
     <string name="oldPinLabel" msgid="5287773661246368314">"Alte PIN"</string>
     <string name="newPinLabel" msgid="207488227285336897">"Neue PIN"</string>
@@ -606,7 +606,7 @@
     <string name="contactPhoto" msgid="4713193418046639466">"Kontaktbild"</string>
     <string name="goPrivate" msgid="865837794424530980">"privat sprechen"</string>
     <string name="selectContact" msgid="781975788478987237">"Kontakt wählen"</string>
-    <string name="not_voice_capable" msgid="2739898841461577811">"Sprachanruf wird nicht unterstützt."</string>
+    <string name="not_voice_capable" msgid="2739898841461577811">"Audioanruf wird nicht unterstützt."</string>
     <string name="description_dial_button" msgid="7459705245418435351">"Wählen"</string>
     <string name="description_dialpad_button" msgid="5220006811894230590">"Wähltasten anzeigen"</string>
     <string name="pane_title_emergency_dialpad" msgid="1148505414688493134">"Wähltasten für Notruf"</string>
@@ -636,7 +636,7 @@
     <string name="change_pin_title" msgid="7790232089699034029">"Mailbox-PIN ändern"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Weiter"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Abbrechen"</string>
-    <string name="change_pin_ok_label" msgid="6204308560844889926">"OK"</string>
+    <string name="change_pin_ok_label" msgid="6204308560844889926">"Ok"</string>
     <string name="change_pin_enter_old_pin_header" msgid="419179847657548887">"Alte PIN bestätigen"</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8579171678763615453">"Gib zum Fortfahren deine Mailbox-PIN ein."</string>
     <string name="change_pin_enter_new_pin_header" msgid="2611191814590251532">"Neue PIN festlegen"</string>

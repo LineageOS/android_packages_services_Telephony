@@ -264,7 +264,7 @@
     <string name="video_calling_settings_title" msgid="539714564273795574">"സേവനദായക വീഡിയോ കോളിംഗ്"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS ഓപ്‌ഷനുകൾ"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA ഓപ്‌ഷനുകൾ"</string>
-    <string name="throttle_data_usage" msgid="3715677828160555808">"ഡാറ്റ ഉപയോഗം"</string>
+    <string name="throttle_data_usage" msgid="3715677828160555808">"ഡാറ്റാ ഉപയോഗം"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"നിലവിലെ കാലയളവിൽ ഉപയോഗിച്ച ഡാറ്റ"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"ഡാറ്റ ഉപയോഗ കാലയളവ്"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"ഡാറ്റ നിരക്ക് നയം"</string>

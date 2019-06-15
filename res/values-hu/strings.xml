@@ -507,7 +507,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Tulajdonos"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Koppints újra az információk megtekintéséhez"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Segélyhívás"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Csak segélyhívások"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Csak segélyhívás"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Segélyhívó szám"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Segélyhívó számok"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Koppintson újra a következő hívásához: <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
