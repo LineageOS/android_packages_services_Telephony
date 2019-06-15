@@ -351,9 +351,9 @@
     <string name="enable_disable_lodgings" msgid="1822029172658551202">"숙박 정보"</string>
     <string name="lodgings_enable" msgid="3230042508992850322">"숙박 정보 사용"</string>
     <string name="lodgings_disable" msgid="3387879742320682391">"숙박 정보 사용 중지"</string>
-    <string name="enable_disable_retail_directory" msgid="1357809784475660303">"소매점 디렉토리"</string>
-    <string name="retail_directory_enable" msgid="3280626290436111496">"소매점 디렉토리 사용"</string>
-    <string name="retail_directory_disable" msgid="6479739816662879027">"소매점 디렉토리 사용 중지"</string>
+    <string name="enable_disable_retail_directory" msgid="1357809784475660303">"소매점 디렉터리"</string>
+    <string name="retail_directory_enable" msgid="3280626290436111496">"소매점 디렉터리 사용"</string>
+    <string name="retail_directory_disable" msgid="6479739816662879027">"소매점 디렉터리 사용 중지"</string>
     <string name="enable_disable_advertisements" msgid="5999495926176182128">"광고"</string>
     <string name="advertisements_enable" msgid="2050305021264683786">"광고 사용"</string>
     <string name="advertisements_disable" msgid="8350985908788707935">"광고 사용 중지"</string>
