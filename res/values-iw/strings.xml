@@ -763,7 +763,7 @@
     <string name="supp_service_clir_suppression_rejected" msgid="1581851661582189045">"חסימת המספר נדחתה."</string>
     <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"שיחה עם קבוצת משתמשים סגורה."</string>
     <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"אי אפשר לקבל שיחות נכנסות."</string>
-    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"אי אפשר לבצע שיחות יוצאות."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"אי אפשר להוציא שיחות."</string>
     <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"העברת השיחות פעילה."</string>
     <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"שיחה נוספת הועברה."</string>
     <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"העברת השיחה שנבחרה הסתיימה."</string>
