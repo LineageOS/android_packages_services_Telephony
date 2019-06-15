@@ -607,7 +607,7 @@
     <string name="progress_dialog_exiting_ecm" msgid="4835734101617817074">"Выхад з рэжыму экстранага выкліку"</string>
     <string name="alert_dialog_yes" msgid="6674268047820703974">"Так"</string>
     <string name="alert_dialog_no" msgid="1476091437797628703">"Не"</string>
-    <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Скасаваць"</string>
+    <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Адхіліць"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"Сэрвіс"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"Наладка"</string>
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Не заданы&gt;"</string>
@@ -783,5 +783,5 @@
     <string name="supp_service_over_ut_precautions_roaming" msgid="1597142936802114092">"Уключыце перадачу мабільных даных і інтэрнэт-роўмінг для выкарыстання сэрвісу <xliff:g id="SUPP_SERVICE">%s</xliff:g>. Гэта можна зрабіць у наладах мабільнай сеткі."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Уключыце перадачу мабільных даных на SIM-карце <xliff:g id="SIM_NUMBER">%2$d</xliff:g> для выкарыстання сэрвісу <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>. Гэта можна зрабіць у наладах мабільнай сеткі."</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Уключыце перадачу мабільных даных і інтэрнэт-роўмінг на SIM-карце <xliff:g id="SIM_NUMBER">%2$d</xliff:g> для выкарыстання сэрвісу <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>. Гэта можна зрабіць у наладах мабільнай сеткі."</string>
-    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Закрыць"</string>
+    <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Адхіліць"</string>
 </resources>
