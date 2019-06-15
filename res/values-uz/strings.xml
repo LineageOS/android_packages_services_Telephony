@@ -105,21 +105,21 @@
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Barcha qo‘ng‘iroqlar yo‘naltirilmoqda"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Barcha qo‘ng‘iroqlar <xliff:g id="PHONENUMBER">{0}</xliff:g>ga yo‘naltirilmoqda"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"Raqam mavjud emas"</string>
-    <string name="sum_cfu_disabled" msgid="8384177689501334080">"O‘chiq"</string>
+    <string name="sum_cfu_disabled" msgid="8384177689501334080">"Yoqilmagan"</string>
     <string name="labelCFB" msgid="6139853033106283172">"Agar raqam band bo‘lsa"</string>
     <string name="messageCFB" msgid="3711089705936187129">"Ushbu raqamga yo‘naltirilsin"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"<xliff:g id="PHONENUMBER">{0}</xliff:g> raqamiga yo‘naltiriladi"</string>
-    <string name="sum_cfb_disabled" msgid="4913145177320506827">"O‘chiq"</string>
+    <string name="sum_cfb_disabled" msgid="4913145177320506827">"Yoqilmagan"</string>
     <string name="disable_cfb_forbidden" msgid="3506984333877998061">"Telefoningiz band bo‘lganda qo‘ng‘iroqlarni boshqa raqamga yo‘naltirishni o‘chirish xususiyati tarmoq operatoringizda yo‘q."</string>
     <string name="labelCFNRy" msgid="1736067178393744351">"Agar javob berilmasa"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"Ushbu raqamga yo‘naltirilsin"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> raqamiga yo‘naltiriladi"</string>
-    <string name="sum_cfnry_disabled" msgid="3884684060443538097">"O‘chiq"</string>
+    <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Yoqilmagan"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Telefoningiz javob bermayotganda qo‘ng‘iroqlarni boshqa raqamga yo‘naltirishni o‘chirish xususiyati operatoringizda yo‘q."</string>
     <string name="labelCFNRc" msgid="2614827454402079766">"Agar raqam tarmoqdan tashqarida bo‘lsa"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Ushbu raqamga yo‘naltirilsin"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> raqamiga yo‘naltiriladi"</string>
-    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"O‘chiq"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Yoqilmagan"</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Telefoningiz o‘chiq bo‘lganida qo‘ng‘iroqlarni boshqa raqamga yo‘naltirishni o‘chirish xususiyati tarmoq operatoringizda yo‘q."</string>
     <string name="updating_title" msgid="6146755386174019046">"Chaqiruv sozlamalari"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Faqat administrator qo‘ng‘iroq sozlamalarini o‘zgartirishi mumkin."</string>
@@ -720,7 +720,7 @@
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="6701560054199411045">"Chaqiruv amalga oshmadi. Xatolik kodi: 127."</string>
     <string name="labelCallBarring" msgid="3452870940716226978">"Chaqiruvlarni taqiqlash"</string>
     <string name="sum_call_barring_enabled" msgid="6804489690436703488">"Yoniq"</string>
-    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"O‘chiq"</string>
+    <string name="sum_call_barring_disabled" msgid="5900772179198857783">"Yoqilmagan"</string>
     <string name="call_barring_baoc" msgid="1199843944333106035">"Barcha chiquvchi chaqiruvlar"</string>
     <string name="call_barring_baoc_enabled" msgid="8112118391869380361">"Barcha chiquvchi chaqiruvlarni bloklash bekor qilinsinmi?"</string>
     <string name="call_barring_baoc_disabled" msgid="7806697133004697974">"Barcha chiquvchi chaqiruvlar bloklansinmi?"</string>

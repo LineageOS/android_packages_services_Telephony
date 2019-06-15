@@ -65,7 +65,7 @@
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"આના વડે SIP કૉલ્સ કરો"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"પહેલાં પૂછો"</string>
     <string name="phone_accounts_default_account_label" msgid="4183772241814460014">"કોઇ નેટવર્ક ઉપલબ્ધ નથી"</string>
-    <string name="phone_accounts_settings_header" msgid="4141710640883261094">"સેટિંગ્સ"</string>
+    <string name="phone_accounts_settings_header" msgid="4141710640883261094">"સેટિંગ"</string>
     <string name="phone_accounts_choose_accounts" msgid="5232948804226424002">"એકાઉન્ટ્સ પસંદ કરો"</string>
     <string name="phone_accounts_selection_header" msgid="1365215726106915865">"ફોન એકાઉન્ટ્સ"</string>
     <string name="phone_accounts_add_sip_account" msgid="2023821743341923271">"SIP એકાઉન્ટ ઉમેરો"</string>
@@ -80,7 +80,7 @@
     <string name="make_and_receive_calls" msgid="1258596928285972166">"કૉલ કરો અને પ્રાપ્ત કરો"</string>
     <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"સ્માર્ટ ફૉરવર્ડિંગ"</string>
     <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"એક નંબર પર પહોંચી શકાય તેમ ન હોય, ત્યારે હંમેશાં તમારા અન્ય નંબર પર કૉલ ફૉરવર્ડ કરો"</string>
-    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"સૂચનાઓ"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"નોટિફિકેશન"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"કટોકટીના બ્રોડકાસ્ટ્સ"</string>
     <string name="call_settings" msgid="6112441768261754562">"કૉલ સેટિંગ્સ"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"વધારાની સેટિંગ્સ"</string>
@@ -123,8 +123,8 @@
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"જ્યારે તમારો ફોન પહોંચયોગ્ય ન હોય ત્યારે તમારા કેરિઅર કૉલ ફોરવર્ડિંગને અક્ષમ કરવાને સમર્થન આપતા નથી."</string>
     <string name="updating_title" msgid="6146755386174019046">"કૉલ સેટિંગ્સ"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"કૉલ સેટિંગ્સને ફક્ત એડમિન વપરાશકર્તા દ્વારા જ બદલી શકાય છે."</string>
-    <string name="call_settings_with_label" msgid="3401177261468593519">"સેટિંગ્સ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="error_updating_title" msgid="7970259216988931777">"કૉલ સેટિંગ્સની ભૂલ"</string>
+    <string name="call_settings_with_label" msgid="3401177261468593519">"સેટિંગ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="error_updating_title" msgid="7970259216988931777">"કૉલ સેટિંગની ભૂલ"</string>
     <string name="reading_settings" msgid="1920291699287055284">"સેટિંગ્સ વાંચી રહ્યાં છે…"</string>
     <string name="updating_settings" msgid="8171225533884883252">"સેટિંગ્સ અપડેટ કરી રહ્યાં છે..."</string>
     <string name="reverting_settings" msgid="4752151682666912828">"સેટિંગ્સ પાછી ફરાવી રહ્યાં છે…"</string>
