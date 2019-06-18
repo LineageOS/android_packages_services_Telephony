@@ -1871,10 +1871,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public int getDataState() {
+    public int getDataState(int subId) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            Phone phone = getPhone(mSubscriptionController.getDefaultDataSubId());
+            final Phone phone = getPhone(subId);
             if (phone != null) {
                 return PhoneConstantConversions.convertDataState(phone.getDataConnectionState());
             } else {
@@ -1887,10 +1887,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public int getDataActivity() {
+    public int getDataActivity(int subId) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            Phone phone = getPhone(mSubscriptionController.getDefaultDataSubId());
+            final Phone phone = getPhone(subId);
             if (phone != null) {
                 return DefaultPhoneNotifier.convertDataActivityState(phone.getDataActivityState());
             } else {
