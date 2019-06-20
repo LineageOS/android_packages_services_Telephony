@@ -154,9 +154,9 @@
     <string name="dialer_default_class" translatable="false">com.android.dialer.DialtactsActivity</string>
 
     <!-- Package name for the mobile network settings [DO NOT TRANSLATE] -->
-    <string name="mobile_network_settings_package" translatable="false">com.android.phone</string>
+    <string name="mobile_network_settings_package" translatable="false">com.android.settings</string>
     <!-- Class name for the mobile network settings activity [DO NOT TRANSLATE] -->
-    <string name="mobile_network_settings_class" translatable="false">com.android.phone.MobileNetworkSettings</string>
+    <string name="mobile_network_settings_class" translatable="false">com.android.settings.network.telephony.MobileNetworkActivity</string>
 
     <!-- CDMA activation goes through HFA -->
     <!-- DEPRECATED: Use CarrierConfigManager#KEY_USE_HFA_FOR_PROVISIONING_BOOL -->

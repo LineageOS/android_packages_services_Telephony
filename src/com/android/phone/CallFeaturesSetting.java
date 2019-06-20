@@ -19,6 +19,7 @@ package com.android.phone;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -70,9 +71,7 @@ import java.util.List;
  * is from the package com.android.contacts.
  *
  * For the "Mobile network settings" screen under the main Settings app,
- * See {@link MobileNetworkSettings}.
- *
- * @see com.android.phone.MobileNetworkSettings
+ * See {@link com.android.settings.network.telephony.MobileNetworkActivity}.
  */
 public class CallFeaturesSetting extends PreferenceActivity
         implements Preference.OnPreferenceChangeListener {
@@ -174,8 +173,12 @@ public class CallFeaturesSetting extends PreferenceActivity
                         new Dialog.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                startActivity(new Intent(mPhone.getContext(),
-                                        com.android.phone.MobileNetworkSettings.class));
+                                Intent intent = new Intent(Intent.ACTION_MAIN);
+                                ComponentName mobileNetworkSettingsComponent = new ComponentName(
+                                        getString(R.string.mobile_network_settings_package),
+                                        getString(R.string.mobile_network_settings_class));
+                                intent.setComponent(mobileNetworkSettingsComponent);
+                                startActivity(intent);
                             }
                         };
                 builder.setMessage(getResources().getString(
