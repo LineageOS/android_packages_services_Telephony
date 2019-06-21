@@ -387,15 +387,9 @@ public class CallFeaturesSetting extends PreferenceActivity
                 .createForSubscriptionId(mPhone.getSubId());
         PersistableBundle carrierConfig =
                 PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-        boolean editableWfcRoamingMode = true;
-        boolean useWfcHomeModeForRoaming = false;
-        if (carrierConfig != null) {
-            editableWfcRoamingMode = carrierConfig.getBoolean(
-                    CarrierConfigManager.KEY_EDITABLE_WFC_ROAMING_MODE_BOOL);
-            useWfcHomeModeForRoaming = carrierConfig.getBoolean(
+        boolean useWfcHomeModeForRoaming = carrierConfig.getBoolean(
                     CarrierConfigManager.KEY_USE_WFC_HOME_NETWORK_MODE_IN_ROAMING_NETWORK_BOOL,
                     false);
-        }
         if (mImsMgr.isVtEnabledByPlatform() && mImsMgr.isVtProvisionedOnDevice()
                 && (carrierConfig.getBoolean(
                         CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
@@ -439,8 +433,8 @@ public class CallFeaturesSetting extends PreferenceActivity
             int resId = com.android.internal.R.string.wifi_calling_off_summary;
             if (mImsMgr.isWfcEnabledByUser()) {
                 boolean isRoaming = telephonyManager.isNetworkRoaming();
-                boolean wfcRoamingEnabled = editableWfcRoamingMode && !useWfcHomeModeForRoaming;
-                int wfcMode = mImsMgr.getWfcMode(isRoaming && wfcRoamingEnabled);
+                // Also check carrier config for roaming mode
+                int wfcMode = mImsMgr.getWfcMode(isRoaming && !useWfcHomeModeForRoaming);
                 switch (wfcMode) {
                     case ImsConfig.WfcModeFeatureValueConstants.WIFI_ONLY:
                         resId = com.android.internal.R.string.wfc_mode_wifi_only_summary;
