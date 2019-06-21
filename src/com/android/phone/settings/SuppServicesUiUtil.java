@@ -18,6 +18,7 @@ package com.android.phone.settings;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -66,8 +67,12 @@ public class SuppServicesUiUtil {
                 new Dialog.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        context.startActivity(new Intent(context,
-                                com.android.phone.MobileNetworkSettings.class));
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        ComponentName mobileNetworkSettingsComponent = new ComponentName(
+                                context.getString(R.string.mobile_network_settings_package),
+                                context.getString(R.string.mobile_network_settings_class));
+                        intent.setComponent(mobileNetworkSettingsComponent);
+                        context.startActivity(intent);
                     }
                 };
         return builder.setMessage(message)
