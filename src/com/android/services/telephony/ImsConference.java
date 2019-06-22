@@ -212,6 +212,12 @@ public class ImsConference extends Conference implements Holdable {
 
         @Override
         public void onConnectionEvent(Connection c, String event, Bundle extras) {
+            if (Connection.EVENT_MERGE_START.equals(event)) {
+                // Do not pass a merge start event on the underlying host connection; we only
+                // indicate a merge has started on the connections which are merged into a
+                // conference.
+                return;
+            }
             sendConnectionEvent(event, extras);
         }
     };

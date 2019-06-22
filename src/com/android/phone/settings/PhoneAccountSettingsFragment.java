@@ -8,7 +8,6 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Icon;
 import android.net.sip.SipManager;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.os.UserManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -39,6 +38,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PhoneAccountSettingsFragment extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener,
@@ -558,12 +558,17 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
 
         List<SubscriptionInfo> subscriptions =
                 mSubscriptionManager.getActiveSubscriptionInfoList();
-        if ((subscriptions == null) || (subscriptions.size() <= 1)) {
+        if (subscriptions == null) {
+            return null;
+        }
+        Stream<SubscriptionInfo> effectiveSubscriptions = subscriptions
+                .stream()
+                .filter(subInfo -> !subInfo.isOpportunistic());
+        if (effectiveSubscriptions.count() < 2) {
             return null;
         }
 
-        List<String> componentNames = subscriptions
-                .stream()
+        List<String> componentNames = effectiveSubscriptions
                 .map(subInfo -> configManager.getConfigForSubId(subInfo.getSubscriptionId()))
                 .filter(bundle -> (bundle != null))
                 .map(bundle -> bundle.getString(
