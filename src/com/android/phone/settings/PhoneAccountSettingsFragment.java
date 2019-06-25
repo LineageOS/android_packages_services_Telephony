@@ -38,7 +38,6 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class PhoneAccountSettingsFragment extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener,
@@ -561,14 +560,15 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
         if (subscriptions == null) {
             return null;
         }
-        Stream<SubscriptionInfo> effectiveSubscriptions = subscriptions
-                .stream()
-                .filter(subInfo -> !subInfo.isOpportunistic());
-        if (effectiveSubscriptions.count() < 2) {
+
+        List<SubscriptionInfo> effectiveSubscriptions = subscriptions.stream()
+                .filter(subInfo -> !subInfo.isOpportunistic())
+                .collect(Collectors.toList());
+        if (effectiveSubscriptions.size() < 2) {
             return null;
         }
 
-        List<String> componentNames = effectiveSubscriptions
+        List<String> componentNames = effectiveSubscriptions.stream()
                 .map(subInfo -> configManager.getConfigForSubId(subInfo.getSubscriptionId()))
                 .filter(bundle -> (bundle != null))
                 .map(bundle -> bundle.getString(
