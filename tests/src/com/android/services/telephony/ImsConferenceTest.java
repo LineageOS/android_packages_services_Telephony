@@ -32,6 +32,7 @@ import static org.junit.Assert.assertFalse;
 
 import android.net.Uri;
 import android.os.Looper;
+import android.telecom.Call;
 import android.telecom.Conference;
 import android.telecom.ConferenceParticipant;
 import android.telecom.Connection;
@@ -85,12 +86,14 @@ public class ImsConferenceTest {
                 Uri.parse("tel:6505551212"),
                 "A",
                 Uri.parse("sip:6505551212@testims.com"),
-                Connection.STATE_ACTIVE);
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
         ConferenceParticipant participant2 = new ConferenceParticipant(
                 Uri.parse("tel:6505551213"),
                 "A",
                 Uri.parse("sip:6505551213@testims.com"),
-                Connection.STATE_ACTIVE);
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1, participant2));
         assertEquals(2, imsConference.getNumberOfParticipants());
@@ -145,12 +148,14 @@ public class ImsConferenceTest {
                 Uri.parse("tel:6505551212"),
                 "A",
                 Uri.parse("sip:6505551212@testims.com"),
-                Connection.STATE_ACTIVE);
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
         ConferenceParticipant participant2 = new ConferenceParticipant(
                 Uri.parse("tel:6505551213"),
                 "A",
                 Uri.parse("sip:6505551213@testims.com"),
-                Connection.STATE_ACTIVE);
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1, participant2));
         assertEquals(2, imsConference.getNumberOfParticipants());
@@ -191,12 +196,14 @@ public class ImsConferenceTest {
                 Uri.parse("tel:6505551212"),
                 "A",
                 Uri.parse("sip:6505551212@testims.com"),
-                Connection.STATE_ACTIVE);
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
         ConferenceParticipant participant2 = new ConferenceParticipant(
                 Uri.parse("tel:6505551213"),
                 "A",
                 Uri.parse("sip:6505551213@testims.com"),
-                Connection.STATE_ACTIVE);
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1, participant2));
         assertEquals(2, imsConference.getNumberOfParticipants());
@@ -226,12 +233,14 @@ public class ImsConferenceTest {
                 Uri.parse("tel:6505551212"),
                 "A",
                 Uri.parse("sip:6505551212@testims.com"),
-                Connection.STATE_ACTIVE);
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
         ConferenceParticipant participant2 = new ConferenceParticipant(
                 Uri.parse("tel:6505551213"),
                 "A",
                 Uri.parse("sip:6505551213@testims.com"),
-                Connection.STATE_ACTIVE);
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1, participant2));
         assertEquals(2, imsConference.getNumberOfParticipants());
