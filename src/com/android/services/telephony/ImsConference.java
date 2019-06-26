@@ -981,6 +981,10 @@ public class ImsConference extends Conference implements Holdable {
             connection.setConnectTimeMillis(participant.getConnectTime());
             connection.setConnectionStartElapsedRealTime(participant.getConnectElapsedTime());
         }
+        // Indicate whether this is an MT or MO call to Telecom; the participant has the cached
+        // data from the time of merge.
+        connection.setCallDirection(participant.getCallDirection());
+
         Log.i(this, "createConferenceParticipantConnection: participant=%s, connection=%s",
                 participant, connection);
 
