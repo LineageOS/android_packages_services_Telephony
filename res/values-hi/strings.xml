@@ -407,7 +407,7 @@
     <string name="disable_fdn" msgid="7944020890722540616">"FDN अक्षम करें"</string>
     <string name="change_pin2" msgid="2153563695382176676">"पिन2 बदलें"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN अक्षम करें"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN सक्षम करें"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"एफ़डीएन चालू करें"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"फ़िक्स्ड डायलिंग नंबर प्रबंधित करें"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"एफ़डीएन एक्सेस के लिए पिन बदलें"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"फ़ोन नंबर सूची प्रबंधित करें"</string>
@@ -478,7 +478,7 @@
     <string name="pin2_unblocked" msgid="7791600368153469078">"PIN2 अब अवरोधित नहीं है"</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"नेटवर्क या SIM कार्ड गड़बड़ी"</string>
     <string name="doneButton" msgid="2859593360997984240">"पूरा हो गया"</string>
-    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"वॉइसमेल नबंर"</string>
+    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"वॉइसमेल नंबर"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"डायल हो रहा है"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"फिर से डायल हो रहा है"</string>
     <string name="card_title_conf_call" msgid="1162980346189744501">"कॉन्फ़्रेंस कॉल"</string>
@@ -549,8 +549,8 @@
     <string name="importToFDNfromContacts" msgid="2130620207013368580">"संपर्कों से आयात करें"</string>
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"संपर्क आयात किया गया"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"संपर्क आयात करने में विफल"</string>
-    <string name="hac_mode_title" msgid="8740268574688743289">"श्रवण सहायक साधन"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवण सहायक साधन संगतता चालू करें"</string>
+    <string name="hac_mode_title" msgid="8740268574688743289">"कान की मशीन"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"कान की मशीन के साथ संगतता चालू करें"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"(आरटीटी) कॉल से रीयल-टाइम में मैसेज भेजें"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"वॉइस कॉल में मैसेज भेजने की अनुमति दें"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"आरटीटी उन कॉल करने वालों की मदद करता है, जो सुन नहीं सकते हैं, ऊंचा सुनते हैं, जिन्हें बोलने में दिक्कत है या जिनके लिए सिर्फ़ आवाज़ काफ़ी नहीं होती.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ज़्यादा  जानें&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - आरटीटी कॉल, मैसेज लेख के रूप में सेव किए जाते हैं\n       &lt;br&gt; - वीडियो कॉल के लिए आरटीटी उपलब्ध नहीं है"</string>

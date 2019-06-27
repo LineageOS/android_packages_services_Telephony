@@ -101,7 +101,7 @@
     <string name="sum_cw_disabled" msgid="3648693907300104575">"کال کے دوران، مجھے آنے والی کالوں سے مطلع کریں"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"کال آگے منتقل کرنے کی ترتیبات"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"کال فارورڈنگ ترتیبات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"کال آگے منتقل کرنا"</string>
+    <string name="labelCF" msgid="2574386948026924737">"کال فارورڈنگ"</string>
     <string name="labelCFU" msgid="8147177368148660600">"ہمیشہ آگے منتقل کریں"</string>
     <string name="messageCFU" msgid="3560082430662923687">"ہمیشہ یہ نمبر استعمال کریں"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"سبھی کالیں آگے منتقل کر رہا ہے"</string>

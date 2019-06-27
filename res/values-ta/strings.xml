@@ -118,7 +118,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> க்குப் பகிர்"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"ஆஃப்"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"பதிலளிக்காமல் இருக்கும்போது, அழைப்பு பகிர்தலை முடக்குவதை ஆபரேட்டர் ஆதரிக்கவில்லை."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"தொடர்புகொள்ள முடியாமல் இருக்கும்போது"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"தொடர்புகொள்ள முடியாதபோது"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"தொடர்பு கிடைக்காதபோது:"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> க்குப் பகிர்"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"ஆஃப்"</string>

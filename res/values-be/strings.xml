@@ -95,11 +95,11 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Загрузка налад..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Нумар схаваны з выходных выклікаў"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Нумар, якi паказваецца ў выходных выкліках"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Выкарыстоўваць налады па змаўчаннi, каб аператар мог адлюстроўваць мой нумар у выходных выкліках"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Выкарыстоўваць налады аператара для паказу майго нумара пры выходных выкліках"</string>
     <string name="labelCW" msgid="6120513814915920200">"Чаканне выкліку"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Паведамляць пра ўваходныя выклікі падчас размовы"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Паведамляць пра ўваходныя выклікі падчас размовы"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Налады пераадрасацыі выкліку"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Пераадрасацыя"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Налады пераадрасацыі выкліку (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Пераадрасацыя выкліку"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Заўсёды пераадрасоўваць"</string>
@@ -108,7 +108,7 @@
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Пераадрасацыя ўсіх тэлефанаванняў на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"Нумар недаступны"</string>
     <string name="sum_cfu_disabled" msgid="8384177689501334080">"Выкл."</string>
-    <string name="labelCFB" msgid="6139853033106283172">"Калі заняты"</string>
+    <string name="labelCFB" msgid="6139853033106283172">"Калі нумар заняты"</string>
     <string name="messageCFB" msgid="3711089705936187129">"Нумар, калі занята"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"Пераадрасацыя на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"Выкл."</string>
@@ -118,7 +118,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Пераадрасацыя на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Выкл."</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Ваш аператар не падтрымлівае адключэнне перанакіравання выклікаў, калі тэлефон не адказвае."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"Калі недасягальны"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"Калі нумар недаступны"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Нумар, калі недаступны"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Пераадрасацыя на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Выключаны"</string>
@@ -612,7 +612,7 @@
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Адхіліць"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"Сэрвіс"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"Наладка"</string>
-    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Не заданы&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Не зададзены&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Іншыя налады выкліку"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"Званкі праз правайдара <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"фатаграфія кантакта"</string>

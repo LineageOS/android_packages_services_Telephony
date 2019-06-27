@@ -440,7 +440,7 @@
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN이 업데이트되지 않았습니다. PIN2가 잘못되었거나 전화번호가 거부되었습니다."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN 작업이 실패했습니다."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM 카드에서 읽는 중..."</string>
-    <string name="simContacts_empty" msgid="5270660846489561932">"SIM 카드에 주소록이 없습니다."</string>
+    <string name="simContacts_empty" msgid="5270660846489561932">"SIM 카드에 연락처가 없습니다."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"가져올 주소록 선택"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"SIM 카드에서 연락처를 가져오려면 비행기 모드를 사용 중지하세요."</string>
     <string name="enable_pin" msgid="5422767284133234860">"SIM PIN 사용/사용 중지"</string>

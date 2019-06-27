@@ -139,7 +139,7 @@
     <string name="fdn_check_failure" msgid="18200614306525434">"הגדרת מספרי החיוג הקבועים של אפליקציית הטלפון שלך מופעלת. כתוצאה מכך, חלק מהתכונות הקשורות לשיחות לא פועלות."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"הפעל את הרדיו לפני ההצגה של הגדרות אלה."</string>
     <string name="close_dialog" msgid="2365884406356986917">"אישור"</string>
-    <string name="enable" msgid="7248657275000173526">"הפעל"</string>
+    <string name="enable" msgid="7248657275000173526">"הפעלה"</string>
     <string name="disable" msgid="4678348128118573672">"כבה"</string>
     <string name="change_num" msgid="239476305819844391">"עדכן"</string>
   <string-array name="clir_display_values">
@@ -405,11 +405,11 @@
     <string name="fdn_disabled" msgid="4700049736675368279">"מספרי חיוג קבועים מושבתים"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"הפעלת מספרי חיוג קבועים"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"השבתת מספרי חיוג קבועים"</string>
-    <string name="change_pin2" msgid="2153563695382176676">"‏שנה PIN2"</string>
+    <string name="change_pin2" msgid="2153563695382176676">"‏שינוי PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"השבת מספרי חיוג קבועים"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"הפעלה של מספרי חיוג קבועים"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"ניהול מספרי חיוג קבועים"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"שנה את קוד הגישה למספרי חיוג קבועים"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"שינוי קוד הגישה למספרי חיוג קבועים"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ניהול רשימת מספרי טלפון"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"פרטיות קול"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"הפעלת מצב פרטיות משופרת"</string>
@@ -612,7 +612,7 @@
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"סגור"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"שירות"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"הגדרות"</string>
-    <string name="voicemail_number_not_set" msgid="6724904736891087856">"‏&lt;לא הוגדר&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;לא מוגדר&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"הגדרות שיחה אחרות"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"שיחה באמצעות <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"תמונה של איש קשר"</string>

@@ -91,12 +91,12 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"অতিরিক্ত CDMA কল সেটিংস"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"শুধুমাত্র CDMA এর জন্য অতিরিক্ত কল সেটিংস"</string>
     <string name="labelNwService" msgid="4699970172021870983">"নেটওয়ার্ক পরিষেবার সেটিংস"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"কলার ID"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"কলার আইডি"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"সেটিংস লোড করা হচ্ছে..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"আউটগোয়িং কলগুলির ক্ষেত্রে নম্বর লুকানো থাকবে"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"আউটগোয়িং কলগুলির ক্ষেত্রে নম্বর প্রদর্শিত হবে"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"আউটগোয়িং কলের ক্ষেত্রে আমার নম্বর প্রদর্শন করার জন্য ডিফল্ট অপারেটর সেটিংস ব্যবহার করুন"</string>
-    <string name="labelCW" msgid="6120513814915920200">"কল অপেক্ষমান"</string>
+    <string name="labelCW" msgid="6120513814915920200">"কল ওয়েটিং"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"একটি কল চলাকালীন, ইনকামিং কলগুলি সম্পর্কে আমাকে জানান"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"একটি কল চলাকালীন, ইনকামিং কলগুলি সম্পর্কে আমাকে জানান"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"কল ফরওয়ার্ড করার সেটিংস"</string>
@@ -118,7 +118,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> এ ফরওয়ার্ড করা হচ্ছে"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"বন্ধ আছে"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"আপনার অপারেটর আপনার ফোনে যখন উত্তর করা যাচ্ছে না তখন কল ফরওয়ার্ডিংকে অক্ষম করা সমর্থন করে না৷"</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"যখন অনুপলব্ধ থাকে"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"যখন অনুপলভ্য থাকে"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"যখন সংযোগ স্থাপন করা যাচ্ছে না তখনকার নম্বর"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> এ ফরওয়ার্ড করা হচ্ছে"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"বন্ধ আছে"</string>
@@ -396,18 +396,18 @@
     <string name="cdma_activate_device" msgid="3793805892364814518">"ডিভাইস সক্রিয় করুন"</string>
     <string name="cdma_lte_data_service" msgid="4255018217292548962">"ডেটা পরিষেবা সেট-আপ করুন"</string>
     <string name="carrier_settings_title" msgid="9028166176523012300">"ক্যারিয়ার সেটিংস"</string>
-    <string name="fdn" msgid="7878832555095183202">"স্থায়ী ডায়ালের নম্বরগুলি"</string>
-    <string name="fdn_with_label" msgid="187084204115493366">"ফিক্সড ডায়ালিং নাম্বার (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn" msgid="7878832555095183202">"ফিক্সড ডায়ালিং নম্বর"</string>
+    <string name="fdn_with_label" msgid="187084204115493366">"ফিক্সড ডায়ালিং নম্বর (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="8777755791892122369">"FDN তালিকা"</string>
     <string name="fdn_list_with_label" msgid="7437232552210469217">"FDN তালিকা (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"FDN সক্রিয়করণ"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"স্থায়ী ডায়ালের নম্বরগুলি সক্ষম করা হয়েছে"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"স্থায়ী ডায়ালের নম্বরগুলি অক্ষম করা হয়েছে৷"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"FDN সক্ষম করুন"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"FDN চালু করুন"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"FDN অক্ষম করুন"</string>
     <string name="change_pin2" msgid="2153563695382176676">"PIN2 পরিবর্তন করুন"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN অক্ষম করুন"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN সক্ষম করুন"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN চালু করুন"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"স্থায়ী ডায়াল করার নম্বরগুলি পরিচালনা করুন"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN অ্যাক্সেসের জন্য পিন পরিবর্তন করুন"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ফোন নম্বরের তালিকা পরিচালনা করুন"</string>
@@ -461,11 +461,11 @@
     <string name="pin_changed" msgid="4455736268023261662">"পিন আপডেট হয়েছে"</string>
     <string name="puk_requested" msgid="5921393215789090200">"পাসওয়ার্ডটি ভুল৷ পিন এখন অবরুদ্ধ৷ PUK এর জন্য অনুরোধ করা হয়েছে৷"</string>
     <string name="enter_pin2_text" msgid="8339444124477720345">"PIN2"</string>
-    <string name="oldPin2Label" msgid="8559146795026261502">"পুরোনো PIN2"</string>
+    <string name="oldPin2Label" msgid="8559146795026261502">"পুরনো PIN2"</string>
     <string name="newPin2Label" msgid="4573956902204349054">"নতুন PIN2"</string>
     <string name="confirmPin2Label" msgid="8100319484454787708">"নতুন PIN2 নিশ্চিত করুন"</string>
     <string name="badPuk2" msgid="7910064009531541708">"PUK2 ভুল৷ আবার চেষ্টা করুন৷"</string>
-    <string name="badPin2" msgid="6646896629970023109">"পুরানো PIN2 ভুল৷ আবার চেষ্টা করুন৷"</string>
+    <string name="badPin2" msgid="6646896629970023109">"পুরনো PIN2 ভুল৷ আবার চেষ্টা করুন৷"</string>
     <string name="mismatchPin2" msgid="4177967478551851117">"PIN2s মেলে নি৷ আবার চেষ্টা করুন৷"</string>
     <string name="invalidPin2" msgid="1757045131429105595">"৪ থেকে ৮ সংখ্যার একটি PIN2 লিখুন৷"</string>
     <string name="invalidPuk2" msgid="7059081153334815973">"৮ সংখ্যার একটি PIN2 লিখুন৷"</string>

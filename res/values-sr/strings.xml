@@ -102,7 +102,7 @@
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Подешавања преусмеравања позива"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Подешавања преусмеравања позива (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Преусмеравање позива"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"Увек проследи"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"Увек прослеђуј"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Увек користи овај број"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Прослеђивање свих позива"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Прослеђивање свих позива на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
@@ -251,8 +251,8 @@
     <string name="data_enable_summary" msgid="2382798156640007971">"Омогућавање потрошње података"</string>
     <string name="dialog_alert_title" msgid="6751344986194435476">"Пажња"</string>
     <string name="roaming" msgid="7894878421600247140">"Роминг"</string>
-    <string name="roaming_enable" msgid="7331106985174381987">"Повежи са услугом за податке током роминга"</string>
-    <string name="roaming_disable" msgid="1843417228755568110">"Повезивање са услугом за податке током роминга"</string>
+    <string name="roaming_enable" msgid="7331106985174381987">"Повежи са услугом за податке у ромингу"</string>
+    <string name="roaming_disable" msgid="1843417228755568110">"Повежи са услугом за податке у ромингу"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Пренос података у ромингу је искључен. Додирните да бисте га укључили."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Изгубили сте везу за пренос мобилних података"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Могу да настану значајни трошкови."</string>
@@ -556,7 +556,7 @@
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Текст у реалном времену (RTT) помаже позиваоцима који су глуви, слабо чују, имају тешкоће у говору или којима је потребно нешто више од гласа.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Сазнајте више&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT позиви се чувају као транскрипт поруке\n       &lt;br&gt; – RTT није доступан за видео позиве"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY је искључен"</item>
-    <item msgid="3971695875449640648">"TTY је пун"</item>
+    <item msgid="3971695875449640648">"Комплетни TTY"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>
   </string-array>

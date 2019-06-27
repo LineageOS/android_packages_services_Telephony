@@ -91,11 +91,11 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"Configuración adicional de chamadas CDMA"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"Configuración de chamadas só CDMA adicionais"</string>
     <string name="labelNwService" msgid="4699970172021870983">"Configuración do servizo de rede"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"identificador de chamada"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"Identificador de chamada"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"Cargando a configuración..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Número oculto nas chamadas saíntes"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Número mostrado nas chamadas saíntes"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utiliza a configuración predeterminada do operador para mostrar o meu número nas chamadas saíntes"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Utilizar a configuración predeterminada do operador para mostrar o meu número nas chamadas saíntes"</string>
     <string name="labelCW" msgid="6120513814915920200">"Chamada en espera"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Durante unha chamada, avisarme das chamadas entrantes"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Durante unha chamada, avisarme das chamadas entrantes"</string>
@@ -118,7 +118,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Desvío ao <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Desactivado"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"O teu operador non admite a desactivación do desvío de chamadas cando o teléfono non responde."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"Cando estea apagado ou sen conbertura"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"Cando estea apagado ou sen cobertura"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Número cando non se pode contactar"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Desvío ao <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Desactivado"</string>

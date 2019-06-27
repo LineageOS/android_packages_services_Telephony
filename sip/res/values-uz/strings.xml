@@ -53,7 +53,7 @@
     <string name="domain_address_title" msgid="1968479941328225423">"Server"</string>
     <string name="username_title" msgid="6770064611005663470">"Foydalanuvchi nomi"</string>
     <string name="password_title" msgid="5289013731515564295">"Parol"</string>
-    <string name="display_name_title" msgid="579241787583079773">"Ko‘rsatiladigan ism"</string>
+    <string name="display_name_title" msgid="579241787583079773">"Chiqadigan ism"</string>
     <string name="proxy_address_title" msgid="6890163365640631841">"Proksi-server manzili"</string>
     <string name="port_title" msgid="6693965912656593862">"Port raqami"</string>
     <string name="transport_title" msgid="889155457465372527">"Protokol"</string>
@@ -75,6 +75,6 @@
     <string name="no_wifi_available" msgid="1955023904229673488">"SIP qo‘ng‘iroqlarini amalga oshirish uchun biror Wi-Fi tarmog‘iga ulanish lozim (“Simsiz tarmoqlar” sozlamalaridan foydalaning)"</string>
     <string name="no_voip" msgid="3038021971231952704">"SIP qo‘ng‘iroqlari qo‘llab-quvvatlanmaydi"</string>
     <string name="sip_system_decide" msgid="5577696249416700671">"Avtomatik"</string>
-    <string name="sip_always_send_keepalive" msgid="4773022409239823318">"Doimo jo‘natilsin"</string>
+    <string name="sip_always_send_keepalive" msgid="4773022409239823318">"Doim yuborilsin"</string>
     <string name="sip_connection_service_label" msgid="6935325004265884453">"Ichki o‘rnatilgan SIP qo‘ng‘iroqlari"</string>
 </resources>
