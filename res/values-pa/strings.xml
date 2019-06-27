@@ -89,7 +89,7 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"ਵਾਧੂ CDMA ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"ਵਾਧੂ ਕੇਵਲ CDMA ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="labelNwService" msgid="4699970172021870983">"ਨੈਟਵਰਕ ਸੇਵਾ ਸੈਟਿੰਗਾਂ"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"ਕਾਲਰ ID"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"ਕਾਲਰ ਆਈ.ਡੀ."</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"ਸੈਟਿੰਗਾਂ ਨੂੰ ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"ਆਊਟਗੋਇੰਗ ਕਾਲਾਂ ਵਿੱਚ ਲੁਕਾਇਆ ਨੰਬਰ"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"ਆਊਟਗੋਇੰਗ ਕਾਲਾਂ ਵਿੱਚ ਡਿਸਪਲੇ ਕੀਤਾ ਨੰਬਰ"</string>
@@ -97,16 +97,16 @@
     <string name="labelCW" msgid="6120513814915920200">"ਕਾਲ ਉਡੀਕ ਵਿੱਚ"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"ਕਿਸੇ ਕਾਲ ਦੇ ਦੌਰਾਨ, ਮੈਨੂੰ ਇਨਕਮਿੰਗ ਕਾਲਾਂ ਦੀ ਸੂਚਨਾ ਦਿਓ"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"ਕਿਸੇ ਕਾਲ ਦੇ ਦੌਰਾਨ, ਮੈਨੂੰ ਇਨਕਮਿੰਗ ਕਾਲਾਂ ਦੀ ਸੂਚਨਾ ਦਿਓ"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"ਕਾਲ ਫੌਰਵਾਰਡਿੰਗ ਸੈਟਿੰਗਾਂ"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"ਕਾਲ ਫਾਰਵਰਡਿੰਗ ਸੈਟਿੰਗਾਂ"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"ਕਾਲ ਫੌਰਵਾਰਡਿੰਗ ਸੈਟਿੰਗਾਂ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"ਕਾਲ ਫੌਰਵਾਰਡਿੰਗ"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"ਹਮੇਸ਼ਾਂ ਫੌਰਵਰਡ ਕਰੋ"</string>
+    <string name="labelCF" msgid="2574386948026924737">"ਕਾਲ ਫਾਰਵਰਡਿੰਗ"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"ਹਮੇਸ਼ਾਂ ਫਾਰਵਰਡ ਕਰੋ"</string>
     <string name="messageCFU" msgid="3560082430662923687">"ਹਮੇਸ਼ਾਂ ਇਹ ਨੰਬਰ ਵਰਤੋ"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"ਸਾਰੀਆਂ ਕਾਲਾਂ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"ਸਾਰੀਆਂ ਕਾਲਾਂ <xliff:g id="PHONENUMBER">{0}</xliff:g> ਨੂੰ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"ਨੰਬਰ ਅਣਉਪਲਬਧ ਹੈ"</string>
     <string name="sum_cfu_disabled" msgid="8384177689501334080">"ਬੰਦ"</string>
-    <string name="labelCFB" msgid="6139853033106283172">"ਜਦੋਂ ਰੁਝੇਵਾਂ ਹੋਵੇ"</string>
+    <string name="labelCFB" msgid="6139853033106283172">"ਜਦੋਂ ਵਿਅਸਤ ਹੋਵੇ"</string>
     <string name="messageCFB" msgid="3711089705936187129">"ਜਦੋਂ ਰੁੱਝਾ ਹੋਵੇ ਤਾਂ ਨੰਬਰ"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"<xliff:g id="PHONENUMBER">{0}</xliff:g> ਨੂੰ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"ਬੰਦ"</string>
@@ -116,7 +116,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> ਨੂੰ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"ਬੰਦ"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"ਜਦੋਂ ਤੁਹਾਡਾ ਫੋਨ ਜਵਾਬ ਨਹੀਂ ਦਿੰਦਾ ਤਾਂ ਤੁਹਾਡਾ ਓਪਰੇਟਰ ਕਾਲ ਫੌਰਵਾਰਡਿੰਗ ਨੂੰ ਅਸਮਰੱਥ ਬਣਾਉਣ ਦਾ ਸਮਰਥਨ ਨਹੀਂ ਕਰਦਾ।"</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"ਜਦੋਂ ਪਹੁੰਚਯੋਗ ਨਾ ਹੋਵੇ"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"ਜਦੋਂ ਪਹੁੰਚ ਵਿੱਚ ਨਾ ਹੋਵੇ"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"ਜਦੋਂ ਨਾ ਪਹੁੰਚਯੋਗ ਹੋਵੇ ਤਾਂ ਨੰਬਰ"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> ਨੂੰ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"ਬੰਦ"</string>
@@ -400,15 +400,15 @@
     <string name="fdn_list_with_label" msgid="7437232552210469217">"FDN ਸੂਚੀ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"FDN ਸਕਿਰਿਆਕਰਨ"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰ ਸਮਰਥਿਤ ਹਨ"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰ ਅਯੋਗ ਬਣਾਏ ਗਏ ਹਨ"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"FDN ਨੂੰ ਯੋਗ ਬਣਾਓ"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰ ਬੰਦ ਕੀਤੇ ਗਏ ਹਨ"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"FDN ਨੂੰ ਚਾਲੂ ਕਰੋ"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"FDN ਨੂੰ ਅਸਮਰੱਥ ਬਣਾਓ"</string>
     <string name="change_pin2" msgid="2153563695382176676">"PIN2 ਬਦਲੋ"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN ਨੂੰ ਅਸਮਰੱਥ ਬਣਾਓ"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN ਨੂੰ ਯੋਗ ਬਣਾਓ"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN ਨੂੰ ਚਾਲੂ ਕਰੋ"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰਾਂ ਨੂੰ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ਪਹੁੰਚ ਲਈ PIN ਬਦਲੋ"</string>
-    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ਫ਼ੋਨ ਨੰਬਰ ਸੂਚੀ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ਪਹੁੰਚ ਲਈ ਪਿੰਨ ਬਦਲੋ"</string>
+    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ਫ਼ੋਨ ਨੰਬਰ ਸੂਚੀ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"ਵੌਇਸ ਪ੍ਰਾਈਵੇਸੀ"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"ਵਿਸਤ੍ਰਿਤ ਪ੍ਰਾਈਵੇਸੀ ਮੋਡ ਸਮਰੱਥ ਬਣਾਓ"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY ਮੋਡ"</string>
