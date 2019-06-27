@@ -69,7 +69,8 @@ public class ConferenceParticipantConnection extends Connection {
             address = null;
         } else {
             String countryIso = getCountryIso(parentConnection.getCall().getPhone());
-            address = getParticipantAddress(participant.getHandle(), countryIso);
+            address = ConferenceParticipant.getParticipantAddress(participant.getHandle(),
+                    countryIso);
         }
         setAddress(address, presentation);
         setVideoState(parentConnection.getVideoState());
@@ -163,64 +164,6 @@ public class ConferenceParticipantConnection extends Connection {
         if (isRemotelyHosted) {
             setConnectionProperties(PROPERTY_REMOTELY_HOSTED);
         }
-    }
-
-
-
-    /**
-     * Attempts to build a tel: style URI from a conference participant.
-     * Conference event package data contains SIP URIs, so we try to extract the phone number and
-     * format into a typical tel: style URI.
-     *
-     * @param address The conference participant's address.
-     * @param countryIso The country ISO of the current subscription; used when formatting the
-     *                   participant phone number to E.164 format.
-     * @return The participant's address URI.
-     */
-    @VisibleForTesting
-    public static Uri getParticipantAddress(Uri address, String countryIso) {
-        if (address == null) {
-            return address;
-        }
-        // Even if address is already in tel: format, still parse it and rebuild.
-        // This is to recognize tel URIs such as:
-        // tel:6505551212;phone-context=ims.mnc012.mcc034.3gppnetwork.org
-
-        // Conference event package participants are identified using SIP URIs (see RFC3261).
-        // A valid SIP uri has the format: sip:user:password@host:port;uri-parameters?headers
-        // Per RFC3261, the "user" can be a telephone number.
-        // For example: sip:1650555121;phone-context=blah.com@host.com
-        // In this case, the phone number is in the user field of the URI, and the parameters can be
-        // ignored.
-        //
-        // A SIP URI can also specify a phone number in a format similar to:
-        // sip:+1-212-555-1212@something.com;user=phone
-        // In this case, the phone number is again in user field and the parameters can be ignored.
-        // We can get the user field in these instances by splitting the string on the @, ;, or :
-        // and looking at the first found item.
-        String number = address.getSchemeSpecificPart();
-        if (TextUtils.isEmpty(number)) {
-            return address;
-        }
-
-        String numberParts[] = number.split("[@;:]");
-        if (numberParts.length == 0) {
-            return address;
-        }
-        number = numberParts[0];
-
-        // Attempt to format the number in E.164 format and use that as part of the TEL URI.
-        // RFC2806 recommends to format telephone numbers using E.164 since it is independent of
-        // how the dialing of said numbers takes place.
-        // If conversion to E.164 fails, the returned value is null.  In that case, fallback to the
-        // number which was in the CEP data.
-        String formattedNumber = null;
-        if (!TextUtils.isEmpty(countryIso)) {
-            formattedNumber = PhoneNumberUtils.formatNumberToE164(number, countryIso);
-        }
-
-        return Uri.fromParts(PhoneAccount.SCHEME_TEL,
-                formattedNumber != null ? formattedNumber : number, null);
     }
 
     /**
