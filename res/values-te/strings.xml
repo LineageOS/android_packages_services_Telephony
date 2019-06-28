@@ -93,9 +93,9 @@
     <string name="labelNwService" msgid="4699970172021870983">"నెట్‌వర్క్ సేవ సెట్టింగ్‌లు"</string>
     <string name="labelCallerId" msgid="3888899447379069198">"కాలర్ ID"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"సెట్టింగ్‌లను లోడ్ చేస్తోంది…"</string>
-    <string name="sum_hide_caller_id" msgid="1071407020290873782">"అవుట్‌గోయింగ్ కాల్‌ల్లో నంబర్ దాచబడుతుంది"</string>
-    <string name="sum_show_caller_id" msgid="6768534125447290401">"అవుట్‌గోయింగ్ కాల్‌ల్లో నంబర్ ప్రదర్శించబడుతుంది"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"అవుట్‌గోయింగ్ కాల్‌ల్లో నా నంబర్‌ను ప్రదర్శించడానికి డిఫాల్ట్ ఆపరేటర్ సెట్టింగ్‌లను ఉపయోగించు"</string>
+    <string name="sum_hide_caller_id" msgid="1071407020290873782">"అవుట్‌గోయింగ్ కాల్స్‌లో నంబర్ దాచబడుతుంది"</string>
+    <string name="sum_show_caller_id" msgid="6768534125447290401">"అవుట్‌గోయింగ్ కాల్స్‌లో నంబర్ ప్రదర్శించబడుతుంది"</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"అవుట్‌గోయింగ్ కాల్స్‌లో నా నంబర్‌ను ప్రదర్శించడానికి డిఫాల్ట్ ఆపరేటర్ సెట్టింగ్‌లను ఉపయోగించు"</string>
     <string name="labelCW" msgid="6120513814915920200">"కాల్ నిరీక్షణ"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"కాల్ సమయంలో, ఇన్‌కమింగ్ కాల్‌ల గురించి నాకు తెలియజేయి"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"కాల్ సమయంలో, ఇన్‌కమింగ్ కాల్‌ల గురించి నాకు తెలియజేయి"</string>
@@ -380,7 +380,7 @@
     <string name="cdma_system_select_dialogtitle" msgid="6083355415165359075">"సిస్టమ్ ఎంపిక"</string>
   <string-array name="cdma_system_select_choices">
     <item msgid="176474317493999285">"ఇల్లు మాత్రమే"</item>
-    <item msgid="1205664026446156265">"స్వయంచాలకం"</item>
+    <item msgid="1205664026446156265">"ఆటోమేటిక్‌"</item>
   </string-array>
     <string name="cdma_subscription_title" msgid="1162564010076763284">"CDMA చందా"</string>
     <string name="cdma_subscription_summary" msgid="2530890766115781140">"RUIM/SIM మరియు NV మధ్య మార్చండి"</string>
@@ -409,7 +409,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDNని నిలిపివేయి"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"FDNని ప్రారంభించు"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌లను నిర్వహించండి"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ప్రాప్యత కోసం పిన్‌ను మార్చండి"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN యాక్సెస్‌ కోసం పిన్‌ను మార్చండి"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ఫోన్ నంబర్ జాబితాను నిర్వహించండి"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"వాయిస్ గోప్యత"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"మెరుగైన గోప్యతా మోడ్‌ను ప్రారంభించండి"</string>

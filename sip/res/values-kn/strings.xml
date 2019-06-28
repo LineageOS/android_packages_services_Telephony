@@ -53,11 +53,11 @@
     <string name="domain_address_title" msgid="1968479941328225423">"ಸರ್ವರ್"</string>
     <string name="username_title" msgid="6770064611005663470">"ಬಳಕೆದಾರಹೆಸರು"</string>
     <string name="password_title" msgid="5289013731515564295">"ಪಾಸ್‌ವರ್ಡ್"</string>
-    <string name="display_name_title" msgid="579241787583079773">"ಹೆಸರು ಪ್ರದರ್ಶಿಸು"</string>
+    <string name="display_name_title" msgid="579241787583079773">"ಪ್ರದರ್ಶನ ಹೆಸರು"</string>
     <string name="proxy_address_title" msgid="6890163365640631841">"ಹೊರಹೋಗುವ ಪ್ರಾಕ್ಸಿ ವಿಳಾಸ"</string>
     <string name="port_title" msgid="6693965912656593862">"ಪೋರ್ಟ್ ಸಂಖ್ಯೆ"</string>
     <string name="transport_title" msgid="889155457465372527">"ಸಾರಿಗೆ ಪ್ರಕಾರ"</string>
-    <string name="send_keepalive_title" msgid="599627072150501159">"ಜೀವಂತವಾಗಿ ಇರಿಸು ಅನ್ನು ಕಳುಹಿಸಿ"</string>
+    <string name="send_keepalive_title" msgid="599627072150501159">"ಕೀಪ್‍‍‍‍-‍ಅಲೈವ್ ಅನ್ನು ಕಳುಹಿಸಿ"</string>
     <string name="advanced_settings" msgid="6622996380747040711">"ಐಚ್ಛಿಕ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="auth_username_title" msgid="8262491689004708265">"ದೃಢೀಕರಣ ಬಳಕೆದಾರಹೆಸರು"</string>
     <string name="auth_username_summary" msgid="941160241371436473">"ದೃಢೀಕರಣಕ್ಕಾಗಿ ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಬಳಸಲಾಗಿದೆ"</string>

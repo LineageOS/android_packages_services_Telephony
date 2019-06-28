@@ -62,7 +62,7 @@
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"Configurações de chamada CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="9043423184895642077">"Nomes dos pontos de acesso"</string>
     <string name="settings_label" msgid="3876743539816984008">"Configurações de rede"</string>
-    <string name="phone_accounts" msgid="6376603393888116364">"Contas de chamada"</string>
+    <string name="phone_accounts" msgid="6376603393888116364">"Contas para chamadas"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Fazer chamadas com"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"Fazer chamadas SIP com"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"Perguntar primeiro"</string>
@@ -85,8 +85,8 @@
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notificações"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Transmissões de emergência"</string>
     <string name="call_settings" msgid="6112441768261754562">"Configurações de chamadas"</string>
-    <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Config. adicionais"</string>
-    <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Config. adicionais (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Configurações adicionais"</string>
+    <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Configurações adicionais (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="4076647190996778012">"Configurações adicionais somente de chamada GSM"</string>
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"Configurações de chamada CDMA adicionais"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"Configurações adicionais somente de chamada CDMA"</string>
@@ -97,11 +97,11 @@
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Número exibido nas chamadas enviadas"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Usar configurações padrão da operadora para exibir meu número em chamadas efetuadas"</string>
     <string name="labelCW" msgid="6120513814915920200">"Chamada em espera"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"Durante uma chamada, me avise sobre chamadas recebidas"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"Durante uma chamada, me avise sobre chamadas recebidas"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Config. de encaminhamento de chamada"</string>
-    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Config. de encaminhamento de chamada (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"Encaminhamento"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"Notificar sobre a entrada de outras chamadas durante uma ligação"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"Notificar sobre a entrada de outras chamadas durante uma ligação"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Configurações de encaminhamento de chamada"</string>
+    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Configurações de encaminhamento de chamada (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="labelCF" msgid="2574386948026924737">"Encaminhamento de chamada"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Sempre encaminhar"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Sempre usar este número"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Encaminhando todas as chamadas"</string>
@@ -403,11 +403,11 @@
     <string name="fdn_activation" msgid="2156479741307463576">"Ativação do FDN"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Os números de discagem fixa estão ativados"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"Os números de discagem fixa estão desativados"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"Ativar FDN"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"Ativar FDN (nº de discagem fixa)"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Desativar FDN"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Alterar PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Desativar FDN"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"Ativar FDN"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"Ativar FDN (nº de discagem fixa)"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Gerenciar números de discagem fixa"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Alterar PIN para acesso FDN"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gerenciar lista de números telefônicos"</string>

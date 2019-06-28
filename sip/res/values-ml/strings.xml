@@ -59,8 +59,8 @@
     <string name="transport_title" msgid="889155457465372527">"ട്രാൻസ്‌പോർട്ട് തരം"</string>
     <string name="send_keepalive_title" msgid="599627072150501159">"\'സജീവമായി തുടരുക\'യെന്ന് അയയ്‌ക്കുക"</string>
     <string name="advanced_settings" msgid="6622996380747040711">"ഓപ്‌ഷണൽ ക്രമീകരണങ്ങൾ"</string>
-    <string name="auth_username_title" msgid="8262491689004708265">"പ്രാമാണീകരണ ഉപയോക്തൃനാമം"</string>
-    <string name="auth_username_summary" msgid="941160241371436473">"പ്രാമാണീകരണത്തിന് ഉപയോഗിച്ച ഉപയോക്തൃനാമം"</string>
+    <string name="auth_username_title" msgid="8262491689004708265">"പരിശോധിച്ചുറപ്പിച്ച ഉപയോക്തൃനാമം"</string>
+    <string name="auth_username_summary" msgid="941160241371436473">"പരിശോധിച്ചുറപ്പിക്കാൻ ഉപയോഗിച്ച ഉപയോക്തൃനാമം"</string>
     <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;ക്രമീകരിച്ചിട്ടില്ല&gt;"</string>
     <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;ക്രമീകരിച്ചിട്ടില്ല&gt;"</string>
     <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;ക്രമീകരിച്ചിട്ടില്ല&gt;"</string>

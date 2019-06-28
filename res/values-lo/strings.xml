@@ -91,7 +91,7 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"ການຕັ້ງຄ່າການໂທ CDMA ເພີ່ມເຕີມ"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"ການຕັ້ງຄ່າການໂທສະເພາະ CDMA ເພີ່ມເຕີມ"</string>
     <string name="labelNwService" msgid="4699970172021870983">"ການຕັ້ງຄ່າບໍລິການເຄືອຂ່າຍ"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"ໝາຍເລກຜູ່ໂທ"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"ໝາຍເລກຜູ້ໂທ"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"ກຳລັງໂຫລດການຕັ້ງຄ່າ..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"ເບີໂທຖືກເຊື່ອງໃນເວລາໂທອອກ"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"ໝາຍເລກທີ່ສະແດງໃນເວລາໂທອອກ"</string>
@@ -102,7 +102,7 @@
     <string name="call_forwarding_settings" msgid="3378927671091537173">"ການຕັ້ງຄ່າໂອນສາຍ"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"ການ​ຕັ້ງ​ຄ່າ​ການ​ໂອນ​ສາຍ​ໂທ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"ການໂອນສາຍ"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"ໂອນສາຍທຸກຄັ້ງ"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"ໂອນສາຍທຸກເທື່ອ"</string>
     <string name="messageCFU" msgid="3560082430662923687">"ໃຊ້ເບີນີ້ສະເໝີ"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"ໂອນສາຍທັງໝົດ"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"ໂອນສາຍທັງໝົດໄປທີ່ <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>

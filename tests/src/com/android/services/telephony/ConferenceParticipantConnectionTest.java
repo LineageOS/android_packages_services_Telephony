@@ -16,7 +16,7 @@
 
 package com.android.services.telephony;
 
-import static com.android.services.telephony.ConferenceParticipantConnection.getParticipantAddress;
+import static android.telecom.ConferenceParticipant.getParticipantAddress;
 
 import static org.junit.Assert.assertEquals;
 
