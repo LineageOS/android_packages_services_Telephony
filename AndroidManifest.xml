@@ -62,6 +62,7 @@
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_RESET" />
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_DEFAULT_NETWORK_AVAILABLE" />
     <protected-broadcast android:name= "com.android.internal.telephony.ACTION_LINE1_NUMBER_ERROR_DETECTED" />
+    <protected-broadcast android:name= "com.android.internal.telephony.ACTION_REPORT_RADIO_BUG" />
     <protected-broadcast android:name= "com.android.internal.provider.action.VOICEMAIL_SMS_RECEIVED" />
     <protected-broadcast android:name= "com.android.intent.isim_refresh" />
     <protected-broadcast android:name= "com.android.ims.ACTION_RCS_SERVICE_AVAILABLE" />
