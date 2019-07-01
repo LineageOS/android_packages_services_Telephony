@@ -16,19 +16,19 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="sip_settings" msgid="3768482698061677257">"SIP सेटिंग"</string>
+    <string name="sip_settings" msgid="3768482698061677257">"एसआईपी सेटिंग"</string>
     <string name="sip_accounts" msgid="85559497282185405">"SIP खाते"</string>
     <string name="sip_accounts_title" msgid="2082527045326874519">"खाते"</string>
     <string name="sip_receive_calls" msgid="426678617137462173">"इनकमिंग कॉल प्राप्त करें"</string>
-    <string name="sip_receive_calls_summary" msgid="946161517528227523">"अधिक बैटरीलाइफ़ काल का उपयोग करती है"</string>
-    <string name="sip_call_options_title" msgid="8421210494703869806">"SIP कॉलिंग का उपयोग करें"</string>
+    <string name="sip_receive_calls_summary" msgid="946161517528227523">"ज़्यादा बैटरी का इस्तेमाल करती है"</string>
+    <string name="sip_call_options_title" msgid="8421210494703869806">"एसआईपी कॉलिंग का उपयोग करें"</string>
     <string name="sip_call_options_wifi_only_title" msgid="5112579243580893890">"SIP कॉलिंग का उपयोग करें (केवल वाई-फ़ाई)"</string>
     <string name="sip_call_options_entry_1" msgid="7217659161237099900">"डेटा नेटवर्क उपलब्ध होने पर सभी कॉल के लिए"</string>
     <string name="sip_call_options_entry_2" msgid="1815335903940609729">"केवल SIP कॉल के लिए"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="1358513095551847314">"सभी कॉल के लिए"</string>
     <string name="add_sip_account" msgid="800843669753980091">"खाता जोड़ें"</string>
     <string name="remove_sip_account" msgid="1367664438506503690">"खाता हटाएं"</string>
-    <string name="sip_account_list" msgid="5610858485304821480">"SIP खाते"</string>
+    <string name="sip_account_list" msgid="5610858485304821480">"एसआईपी खाते"</string>
     <string name="saving_account" msgid="5336529880235177448">"खाता सहेज रहा है..."</string>
     <string name="removing_account" msgid="5537351356808985756">"खाता निकाल रहा है..."</string>
     <string name="sip_menu_save" msgid="7882219814563869225">"जोड़ें"</string>

@@ -25,7 +25,8 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
         guava \
-        volley
+        volley \
+        android-support-annotations
 
 LOCAL_SRC_FILES := $(call all-java-files-under, $(src_dirs))
 LOCAL_SRC_FILES += $(call all-proto-files-under, ecc/proto)
@@ -39,8 +40,7 @@ LOCAL_USE_AAPT2 := true
 
 LOCAL_AAPT_FLAGS := \
     --extra-packages com.android.phone.common \
-    --extra-packages com.android.services.telephony.sip \
-    --legacy \
+    --extra-packages com.android.services.telephony.sip
 
 LOCAL_PACKAGE_NAME := TeleService
 LOCAL_PRIVATE_PLATFORM_APIS := true

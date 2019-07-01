@@ -30,8 +30,8 @@ public class GsmUmtsCallOptions extends PreferenceActivity {
     private static final String LOG_TAG = "GsmUmtsCallOptions";
     private final boolean DBG = (PhoneGlobals.DBG_LEVEL >= 2);
 
-    private static final String CALL_FORWARDING_KEY = "call_forwarding_key";
-    private static final String CALL_BARRING_KEY = "call_barring_key";
+    public static final String CALL_FORWARDING_KEY = "call_forwarding_key";
+    public static final String CALL_BARRING_KEY = "call_barring_key";
     private static final String ADDITIONAL_GSM_SETTINGS_KEY = "additional_gsm_call_settings_key";
 
     @Override

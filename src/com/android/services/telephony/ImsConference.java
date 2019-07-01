@@ -259,6 +259,8 @@ public class ImsConference extends Conference implements Holdable {
     private boolean mCouldManageConference;
     private FeatureFlagProxy mFeatureFlagProxy;
     private boolean mIsEmulatingSinglePartyCall = false;
+    private boolean mIsUsingSimCallManager = false;
+
     /**
      * Where {@link #mIsEmulatingSinglePartyCall} is {@code true}, contains the
      * {@link ConferenceParticipantConnection#getUserEntity()} and
@@ -392,6 +394,9 @@ public class ImsConference extends Conference implements Holdable {
         conferenceProperties = changeBitmask(conferenceProperties,
                 Connection.PROPERTY_IS_EXTERNAL_CALL,
                 can(properties, Connection.PROPERTY_IS_EXTERNAL_CALL));
+
+        conferenceProperties = changeBitmask(conferenceProperties,
+                Connection.PROPERTY_REMOTELY_HOSTED, !isConferenceHost());
 
         return conferenceProperties;
     }
@@ -616,6 +621,7 @@ public class ImsConference extends Conference implements Holdable {
     private void updateManageConference() {
         boolean couldManageConference = can(Connection.CAPABILITY_MANAGE_CONFERENCE);
         boolean canManageConference = mFeatureFlagProxy.isUsingSinglePartyCallEmulation()
+                && mIsEmulatingSinglePartyCall
                 ? mConferenceParticipantConnections.size() > 1
                 : mConferenceParticipantConnections.size() != 0;
         Log.v(this, "updateManageConference was :%s is:%s", couldManageConference ? "Y" : "N",
@@ -675,6 +681,19 @@ public class ImsConference extends Conference implements Holdable {
 
             mConferenceHostAddress = new Uri[hostAddresses.size()];
             mConferenceHostAddress = hostAddresses.toArray(mConferenceHostAddress);
+
+            mIsUsingSimCallManager = mTelecomAccountRegistry.isUsingSimCallManager(
+                    mConferenceHostPhoneAccountHandle);
+        }
+
+        // If the conference is not hosted on this device copy over the address and presentation and
+        // connect times so that we can log this appropriately in the call log.
+        if (!isConferenceHost()) {
+            setAddress(mConferenceHost.getAddress(), mConferenceHost.getAddressPresentation());
+            setCallerDisplayName(mConferenceHost.getCallerDisplayName(),
+                    mConferenceHost.getCallerDisplayNamePresentation());
+            setConnectionStartElapsedRealTime(mConferenceHost.getConnectElapsedTimeMillis());
+            setConnectionTime(mConferenceHost.getConnectTimeMillis());
         }
 
         mConferenceHost.addConnectionListener(mConferenceHostListener);
@@ -725,12 +744,16 @@ public class ImsConference extends Conference implements Holdable {
             // Determine if the conference event package represents a single party conference.
             // A single party conference is one where there is no other participant other than the
             // conference host and one other participant.
+            // Note: We consider 0 to still be a single party conference since some carriers will
+            // send a conference event package with JUST the host in it when the conference is
+            // disconnected.  We don't want to change back to conference mode prior to disconnection
+            // or we will not log the call.
             boolean isSinglePartyConference = participants.stream()
                     .filter(p -> {
                         Pair<Uri, Uri> pIdent = new Pair<>(p.getHandle(), p.getEndpoint());
                         return !Objects.equals(mHostParticipantIdentity, pIdent);
                     })
-                    .count() == 1;
+                    .count() <= 1;
 
             // We will only process the CEP data if:
             // 1. We're not emulating a single party call.
@@ -829,8 +852,18 @@ public class ImsConference extends Conference implements Holdable {
      * 1. Tell telecom we're a conference again.
      * 2. Restore {@link Connection#CAPABILITY_MANAGE_CONFERENCE} capability.
      * 3. Null out the name/address.
+     *
+     * Note: Single party call emulation is disabled if the conference is taking place via a
+     * sim call manager.  Emulating a single party call requires properties of the conference to be
+     * changed (connect time, address, conference state) which cannot be guaranteed to be relayed
+     * correctly by the sim call manager to Telecom.
      */
     private void stopEmulatingSinglePartyCall() {
+        if (mIsUsingSimCallManager) {
+            Log.i(this, "stopEmulatingSinglePartyCall: using sim call manager; skip.");
+            return;
+        }
+
         Log.i(this, "stopEmulatingSinglePartyCall: conference now has more than one"
                 + " participant; make it look conference-like again.");
         mIsEmulatingSinglePartyCall = false;
@@ -867,8 +900,18 @@ public class ImsConference extends Conference implements Holdable {
      * 2. Tell telecom we're not a conference.
      * 3. Remove {@link Connection#CAPABILITY_MANAGE_CONFERENCE} capability.
      * 4. Set the name/address to that of the single participant.
+     *
+     * Note: Single party call emulation is disabled if the conference is taking place via a
+     * sim call manager.  Emulating a single party call requires properties of the conference to be
+     * changed (connect time, address, conference state) which cannot be guaranteed to be relayed
+     * correctly by the sim call manager to Telecom.
      */
     private void startEmulatingSinglePartyCall() {
+        if (mIsUsingSimCallManager) {
+            Log.i(this, "startEmulatingSinglePartyCall: using sim call manager; skip.");
+            return;
+        }
+
         Log.i(this, "startEmulatingSinglePartyCall: conference has a single "
                 + "participant; downgrade to single party call.");
 
@@ -922,7 +965,8 @@ public class ImsConference extends Conference implements Holdable {
         // Create and add the new connection in holding state so that it does not become the
         // active call.
         ConferenceParticipantConnection connection = new ConferenceParticipantConnection(
-                parent.getOriginalConnection(), participant);
+                parent.getOriginalConnection(), participant,
+                !isConferenceHost() /* isRemotelyHosted */);
         connection.addConnectionListener(mParticipantListener);
         if (participant.getConnectTime() == 0) {
             connection.setConnectTimeMillis(parent.getConnectTimeMillis());
@@ -931,6 +975,10 @@ public class ImsConference extends Conference implements Holdable {
             connection.setConnectTimeMillis(participant.getConnectTime());
             connection.setConnectionStartElapsedRealTime(participant.getConnectElapsedTime());
         }
+        // Indicate whether this is an MT or MO call to Telecom; the participant has the cached
+        // data from the time of merge.
+        connection.setCallDirection(participant.getCallDirection());
+
         Log.i(this, "createConferenceParticipantConnection: participant=%s, connection=%s",
                 participant, connection);
 

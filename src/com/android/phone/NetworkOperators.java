@@ -128,7 +128,7 @@ public class NetworkOperators extends PreferenceCategory
      * changes specifically on auto select button.
      *
      * @param preference is the preference to be changed, should be auto select button.
-     * @param newValue should be the value of whether autoSelect is checked.
+     * @param newValue   should be the value of whether autoSelect is checked.
      */
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {

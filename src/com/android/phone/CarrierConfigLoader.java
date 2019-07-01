@@ -316,12 +316,17 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 case EVENT_BIND_DEFAULT_TIMEOUT:
                 case EVENT_FETCH_DEFAULT_TIMEOUT:
                 {
-                    // If a ResponseReceiver callback is in the queue when this happens, we will
-                    // unbind twice and throw an exception.
-                    mContext.unbindService(mServiceConnection[phoneId]);
-                    removeMessages(EVENT_FETCH_DEFAULT_TIMEOUT);
-                    broadcastConfigChangedIntent(phoneId);
                     loge("bind/fetch time out from " + mPlatformCarrierConfigPackage);
+                    removeMessages(EVENT_FETCH_DEFAULT_TIMEOUT);
+                    // If we attempted to bind to the app, but the service connection is null due to
+                    // the race condition that clear config event happens before bind/fetch complete
+                    // then config was cleared while we were waiting and we should not continue.
+                    if (mServiceConnection[phoneId] != null) {
+                        // If a ResponseReceiver callback is in the queue when this happens, we will
+                        // unbind twice and throw an exception.
+                        mContext.unbindService(mServiceConnection[phoneId]);
+                        broadcastConfigChangedIntent(phoneId);
+                    }
                     notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
@@ -441,16 +446,20 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 case EVENT_BIND_CARRIER_TIMEOUT:
                 case EVENT_FETCH_CARRIER_TIMEOUT:
                 {
-                    // If a ResponseReceiver callback is in the queue when this happens, we will
-                    // unbind twice and throw an exception.
-                    mContext.unbindService(mServiceConnection[phoneId]);
-                    removeMessages(EVENT_FETCH_CARRIER_TIMEOUT);
-                    broadcastConfigChangedIntent(phoneId);
                     loge("bind/fetch from carrier app timeout");
+                    removeMessages(EVENT_FETCH_CARRIER_TIMEOUT);
+                    // If we attempted to bind to the app, but the service connection is null due to
+                    // the race condition that clear config event happens before bind/fetch complete
+                    // then config was cleared while we were waiting and we should not continue.
+                    if (mServiceConnection[phoneId] != null) {
+                        // If a ResponseReceiver callback is in the queue when this happens, we will
+                        // unbind twice and throw an exception.
+                        mContext.unbindService(mServiceConnection[phoneId]);
+                        broadcastConfigChangedIntent(phoneId);
+                    }
                     notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
-
                 case EVENT_FETCH_CARRIER_DONE:
                 {
                     // If we attempted to bind to the app, but the service connection is null, then

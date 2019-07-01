@@ -82,9 +82,11 @@ public class TestTelephonyConnection extends TelephonyConnection {
                 any(Connection.PostDialListener.class));
         when(mMockPhone.getRingingCall()).thenReturn(mMockCall);
         when(mMockPhone.getContext()).thenReturn(mMockContext);
+        when(mMockPhone.getCurrentSubscriberUris()).thenReturn(null);
         when(mMockContext.getResources()).thenReturn(mMockResources);
         when(mMockResources.getBoolean(anyInt())).thenReturn(false);
         when(mMockPhone.getDefaultPhone()).thenReturn(mMockPhone);
+        when(mMockPhone.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_IMS);
         when(mMockCall.getState()).thenReturn(Call.State.ACTIVE);
         when(mMockCall.getPhone()).thenReturn(mMockPhone);
     }

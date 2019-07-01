@@ -610,8 +610,8 @@ public class CallNotifier extends Handler {
         for (int i = 0; i < subInfos.size(); i++) {
             int subId = subInfos.get(i).getSubscriptionId();
             if (!mPhoneStateListeners.containsKey(subId)) {
-                CallNotifierPhoneStateListener listener = new CallNotifierPhoneStateListener(subId);
-                mTelephonyManager.listen(listener,
+                CallNotifierPhoneStateListener listener = new CallNotifierPhoneStateListener();
+                mTelephonyManager.createForSubscriptionId(subId).listen(listener,
                         PhoneStateListener.LISTEN_MESSAGE_WAITING_INDICATOR
                         | PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR);
                 mPhoneStateListeners.put(subId, listener);
@@ -762,8 +762,8 @@ public class CallNotifier extends Handler {
             };
 
     private class CallNotifierPhoneStateListener extends PhoneStateListener {
-        public CallNotifierPhoneStateListener(int subId) {
-            super(subId);
+        public CallNotifierPhoneStateListener() {
+            super();
         }
 
         @Override
