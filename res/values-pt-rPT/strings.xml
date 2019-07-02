@@ -413,7 +413,7 @@
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gerir a lista telefónica"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Privacidade de voz"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Ativar modo de privacidade optimizado"</string>
-    <string name="tty_mode_option_title" msgid="9033098925144434669">"Modo TTY"</string>
+    <string name="tty_mode_option_title" msgid="9033098925144434669">"Modo de teletipo"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"Definir modo TTY"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"Nova tentativa automática"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Ativar modo Nova tentativa automática"</string>
@@ -549,16 +549,16 @@
     <string name="importToFDNfromContacts" msgid="2130620207013368580">"Importar a partir dos contactos"</string>
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Contacto importado"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Falha ao importar o contacto"</string>
-    <string name="hac_mode_title" msgid="8740268574688743289">"Aparelhos auxiliares de audição"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Ativar compatibilidade com aparelho auxiliar de audição"</string>
+    <string name="hac_mode_title" msgid="8740268574688743289">"Aparelhos auditivos"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Ativar compatibilidade com aparelho auditivo"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Chamada com Mensagens de texto em tempo real (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permitir envio de mensagens numa chamada de voz"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"A RTT assiste os autores de chamadas surdos, com deficiências auditivas, dificuldades da fala ou que precisem de mais do que apenas a voz.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saiba mais&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - As chamadas RTT são guardadas como transcrição de mensagem\n       &lt;br&gt; - A RTT não está disponível para videochamadas"</string>
   <string-array name="tty_mode_entries">
-    <item msgid="512950011423868021">"TTY desativado"</item>
-    <item msgid="3971695875449640648">"TTY total"</item>
-    <item msgid="1937509904407445684">"TTY HCO"</item>
-    <item msgid="5644925873488772224">"TTY VCO"</item>
+    <item msgid="512950011423868021">"Teletipo desativado"</item>
+    <item msgid="3971695875449640648">"Teletipo completo"</item>
+    <item msgid="1937509904407445684">"Teletipo HCO"</item>
+    <item msgid="5644925873488772224">"Teletipo VCO"</item>
   </string-array>
     <string name="dtmf_tones_title" msgid="5163153771291340803">"Tons DTMF"</string>
     <string name="dtmf_tones_summary" msgid="3351820372864020331">"Definir o tamanho dos toques DTMF"</string>

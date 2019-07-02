@@ -24,7 +24,7 @@
     <string name="unknown" msgid="6878797917991465859">"Unbekannt"</string>
     <string name="private_num" msgid="6713286113000232309">"Private Nummer"</string>
     <string name="payphone" msgid="4793877574636445118">"Münztelefon"</string>
-    <string name="onHold" msgid="9035493194749959955">"Gehaltener Anruf"</string>
+    <string name="onHold" msgid="9035493194749959955">"Anruf wird gehalten"</string>
     <string name="carrier_mmi_msg_title" msgid="2264333074811244588">"Nachricht von <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
     <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Nachricht vom Mobilfunkanbieter"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI-Code gestartet"</string>
@@ -486,7 +486,7 @@
     <string name="card_title_conf_call" msgid="1162980346189744501">"Telefonkonferenz"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"Eingehender Anruf"</string>
     <string name="card_title_call_ended" msgid="5544730338889702298">"Anruf beendet"</string>
-    <string name="card_title_on_hold" msgid="821463117892339942">"Gehaltener Anruf"</string>
+    <string name="card_title_on_hold" msgid="821463117892339942">"Anruf wird gehalten"</string>
     <string name="card_title_hanging_up" msgid="3999101620995182450">"Auflegen"</string>
     <string name="card_title_in_call" msgid="6346543933068225205">"Anruf"</string>
     <string name="notification_voicemail_title" msgid="8933468752045550523">"Neue Nachricht"</string>
