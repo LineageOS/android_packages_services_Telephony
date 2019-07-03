@@ -57,6 +57,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.SubscriptionInfoUpdater;
 import com.android.internal.telephony.TelephonyPermissions;
+import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.FastXmlSerializer;
 import com.android.internal.util.IndentingPrintWriter;
 
@@ -572,15 +573,22 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT |
                 Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND |
                 Intent.FLAG_RECEIVER_FOREGROUND);
-        // Include subId/carrier id extra only if SIM records are loaded
-        TelephonyManager telephonyManager = TelephonyManager.from(mContext);
-        int simApplicationState = telephonyManager.getSimApplicationState();
-        if (addSubIdExtra && (simApplicationState != TelephonyManager.SIM_STATE_UNKNOWN
-                && simApplicationState != TelephonyManager.SIM_STATE_NOT_READY)) {
-            SubscriptionManager.putPhoneIdAndSubIdExtra(intent, phoneId);
-            intent.putExtra(TelephonyManager.EXTRA_SPECIFIC_CARRIER_ID,
-                    getSpecificCarrierIdForPhoneId(phoneId));
-            intent.putExtra(TelephonyManager.EXTRA_CARRIER_ID, getCarrierIdForPhoneId(phoneId));
+        if (addSubIdExtra) {
+            int simApplicationState = TelephonyManager.SIM_STATE_UNKNOWN;
+            int[] subIds = SubscriptionManager.getSubId(phoneId);
+            if (!ArrayUtils.isEmpty(subIds)) {
+                TelephonyManager telMgr = TelephonyManager.from(mContext)
+                        .createForSubscriptionId(subIds[0]);
+                simApplicationState = telMgr.getSimApplicationState();
+            }
+            // Include subId/carrier id extra only if SIM records are loaded
+            if (simApplicationState != TelephonyManager.SIM_STATE_UNKNOWN
+                    && simApplicationState != TelephonyManager.SIM_STATE_NOT_READY) {
+                SubscriptionManager.putPhoneIdAndSubIdExtra(intent, phoneId);
+                intent.putExtra(TelephonyManager.EXTRA_SPECIFIC_CARRIER_ID,
+                        getSpecificCarrierIdForPhoneId(phoneId));
+                intent.putExtra(TelephonyManager.EXTRA_CARRIER_ID, getCarrierIdForPhoneId(phoneId));
+            }
         }
         intent.putExtra(CarrierConfigManager.EXTRA_SLOT_INDEX, phoneId);
         log("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId);
