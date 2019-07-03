@@ -572,6 +572,12 @@
     <string name="roaming_check_price_warning">Check with your network provider for pricing.</string>
     <!-- Mobile network settings screen, dialog message title when user selects the Data roaming check box -->
     <string name="roaming_alert_title">Allow data roaming?</string>
+    <!-- Notification title for limited sim function during dual sim -->
+    <string name="limited_sim_function_notification_title">Limited SIM functionality</string>
+    <!-- Notification message for limited sim function during dual sim -->
+    <string name="limited_sim_function_with_phone_num_notification_message"><xliff:g id="carrier_name">%1$s</xliff:g> calls and data services may be blocked while using <xliff:g id="phone_number">%2$s</xliff:g>.</string>
+    <!-- Notification message for limited sim function during dual sim -->
+    <string name="limited_sim_function_notification_message"><xliff:g id="carrier_name">%1$s</xliff:g> calls and data services may be blocked while using another SIM. Tap to make changes.</string>
     <!-- Mobile network settings screen, data usage setting check box name -->
     <string name="data_usage_title">App data usage</string>
     <!-- Summary about how much data has been used in a date range [CHAR LIMIT=100] -->
