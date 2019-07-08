@@ -53,7 +53,7 @@
     <string name="domain_address_title" msgid="1968479941328225423">"Сервер"</string>
     <string name="username_title" msgid="6770064611005663470">"Імя карыстальніка"</string>
     <string name="password_title" msgid="5289013731515564295">"Пароль"</string>
-    <string name="display_name_title" msgid="579241787583079773">"Бачнае імя"</string>
+    <string name="display_name_title" msgid="579241787583079773">"Бачная назва"</string>
     <string name="proxy_address_title" msgid="6890163365640631841">"Адрас выходнага проксі-сервера"</string>
     <string name="port_title" msgid="6693965912656593862">"Нумар порта"</string>
     <string name="transport_title" msgid="889155457465372527">"Тып транспарту"</string>
