@@ -365,7 +365,7 @@ public class NotificationMgr {
                     .setColor(res.getColor(R.color.dialer_theme_color))
                     .setOngoing(carrierConfig.getBoolean(
                             CarrierConfigManager.KEY_VOICEMAIL_NOTIFICATION_PERSISTENT_BOOL))
-                    .setChannel(NotificationChannelController.CHANNEL_ID_VOICE_MAIL)
+                    .setChannelId(NotificationChannelController.CHANNEL_ID_VOICE_MAIL)
                     .setOnlyAlertOnce(isRefresh);
 
             final Notification notification = builder.build();
@@ -530,7 +530,7 @@ public class NotificationMgr {
                     .setContentText(mContext.getString(R.string.sum_cfu_enabled_indicator))
                     .setShowWhen(false)
                     .setOngoing(true)
-                    .setChannel(NotificationChannelController.CHANNEL_ID_CALL_FORWARD)
+                    .setChannelId(NotificationChannelController.CHANNEL_ID_CALL_FORWARD)
                     .setOnlyAlertOnce(isRefresh);
 
             Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -580,7 +580,7 @@ public class NotificationMgr {
                 .setContentTitle(mContext.getText(R.string.roaming_notification_title))
                 .setColor(mContext.getResources().getColor(R.color.dialer_theme_color))
                 .setContentText(contentText)
-                .setChannel(NotificationChannelController.CHANNEL_ID_MOBILE_DATA_STATUS)
+                .setChannelId(NotificationChannelController.CHANNEL_ID_MOBILE_DATA_STATUS)
                 .setContentIntent(contentIntent);
         final Notification notif =
                 new Notification.BigTextStyle(builder).bigText(contentText).build();
@@ -614,7 +614,7 @@ public class NotificationMgr {
                         mContext.getString(R.string.notification_network_selection_text, operator))
                 .setShowWhen(false)
                 .setOngoing(true)
-                .setChannel(NotificationChannelController.CHANNEL_ID_ALERT);
+                .setChannelId(NotificationChannelController.CHANNEL_ID_ALERT);
 
         // create the target network operators settings intent
         Intent intent = new Intent(Intent.ACTION_MAIN);
