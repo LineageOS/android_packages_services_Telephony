@@ -1708,7 +1708,12 @@ public class MobileNetworkSettings extends Activity  {
                     } else {
                         if (isWorldMode()) {
                             controlCdmaOptions(true);
-                            controlGsmOptions(false);
+                            if (showNetworkOptionByPhoneType()
+                                    && mPhone.getPhoneType() == PhoneConstants.PHONE_TYPE_GSM) {
+                                controlGsmOptions(true);
+                            } else {
+                                controlGsmOptions(false);
+                            }
                         }
                         mButtonEnabledNetworks.setValue(
                                 Integer.toString(Phone.NT_MODE_LTE_CDMA_EVDO_GSM_WCDMA));
@@ -1931,20 +1936,59 @@ public class MobileNetworkSettings extends Activity  {
             return super.onOptionsItemSelected(item);
         }
 
-        private boolean isWorldMode() {
-            boolean worldModeOn = false;
-            final String configString = getResources().getString(R.string.config_world_mode);
+        private boolean showNetworkOptionByPhoneType() {
+            boolean showByPhoneType = false;
+            final String configString = getResources().getString(
+                    R.string.config_show_gsm_option);
 
             if (!TextUtils.isEmpty(configString)) {
                 String[] configArray = configString.split(";");
-                // Check if we have World mode configuration set to True only or config is set to True
-                // and SIM GID value is also set and matches to the current SIM GID.
+                // Check if we have showNetworkOptionByPhoneType configuration set to True only
+                // or config is set to True and SIM SPN value is also set and matches to the
+                // current SIM SPN.
+                if (configArray != null && (
+                        (configArray.length == 1 && configArray[0].equalsIgnoreCase("true"))
+                                || (configArray.length == 2 && !TextUtils.isEmpty(configArray[1])
+                                && mTelephonyManager != null
+                                && configArray[1].equalsIgnoreCase(
+                                mTelephonyManager.getSimOperatorName())))) {
+                    showByPhoneType = true;
+                }
+            }
+            Log.d(LOG_TAG, "showNetworkOptionByPhoneType=" + showByPhoneType);
+
+            return showByPhoneType;
+        }
+
+        private boolean isWorldMode() {
+            boolean worldModeOn = false;
+            final String configString = getResources().getString(R.string.config_world_mode);
+            final String configStringSpn = getResources().getString(R.string.config_world_mode_spn);
+
+            if (!TextUtils.isEmpty(configString)) {
+                String[] configArray = configString.split(";");
+                // Check if we have World mode configuration set to True only or config is set to
+                // True and SIM GID value is also set and matches to the current SIM GID.
                 if (configArray != null &&
                         ((configArray.length == 1 && configArray[0].equalsIgnoreCase("true"))
                                 || (configArray.length == 2 && !TextUtils.isEmpty(configArray[1])
                                 && mTelephonyManager != null
                                 && configArray[1].equalsIgnoreCase(
-                                        mTelephonyManager.getGroupIdLevel1())))) {
+                                mTelephonyManager.getGroupIdLevel1())))) {
+                    worldModeOn = true;
+                }
+            }
+            if (!worldModeOn && !TextUtils.isEmpty(configStringSpn)) {
+                String[] configArray = configStringSpn.split(";");
+                // Check if we have World mode configuration set to True only or config is set to
+                // True and SIM SPN value is also set and matches to the current SIM SPN.
+                if (configArray != null
+                        && configArray.length == 2 && !TextUtils.isEmpty(configArray[0])
+                        && !TextUtils.isEmpty(configArray[1])
+                        && configArray[0].equalsIgnoreCase("true")
+                        && mTelephonyManager != null
+                        && configArray[1].equalsIgnoreCase(
+                        mTelephonyManager.getSimOperatorName())) {
                     worldModeOn = true;
                 }
             }

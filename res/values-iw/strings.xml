@@ -397,16 +397,16 @@
     <string name="disable_fdn" msgid="7944020890722540616">"השבתת מספרי חיוג קבועים"</string>
     <string name="change_pin2" msgid="2153563695382176676">"‏שנה PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"השבת מספרי חיוג קבועים"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"הפעל מספרי חיוג קבועים"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"הפעלה של מספרי חיוג קבועים"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"ניהול מספרי חיוג קבועים"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"שנה את קוד הגישה למספרי חיוג קבועים"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ניהול רשימת מספרי טלפון"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"פרטיות קול"</string>
-    <string name="voice_privacy_summary" msgid="3159383389833516214">"הפוך מצב פרטיות משופרת לפעיל"</string>
+    <string name="voice_privacy_summary" msgid="3159383389833516214">"הפעלת מצב פרטיות משופרת"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"‏מצב TTY"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"‏הגדר מצב TTY"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"ניסיון חוזר אוטומטי"</string>
-    <string name="auto_retry_mode_summary" msgid="4973886004067532288">"אפשר מצב \'ניסיון חוזר\'."</string>
+    <string name="auto_retry_mode_summary" msgid="4973886004067532288">"הפעלת מצב \'ניסיון חוזר\'."</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"‏שינוי מצב TTY אינו מותר במהלך שיחת וידאו"</string>
     <string name="menu_add" msgid="1882023737425114762">"הוסף איש קשר"</string>
     <string name="menu_edit" msgid="7143003705504672374">"ערוך איש קשר"</string>
@@ -433,7 +433,7 @@
     <string name="simContacts_empty" msgid="5270660846489561932">"‏אין אנשי קשר בכרטיס ה-SIM."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"בחר אנשי קשר לייבוא"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"‏בטל את מצב טיסה כדי לייבא אנשי קשר מכרטיס ה-SIM."</string>
-    <string name="enable_pin" msgid="5422767284133234860">"‏הפוך לפעיל/השבת PIN של SIM"</string>
+    <string name="enable_pin" msgid="5422767284133234860">"‏הפעלה/השבתה של ה-PIN של SIM"</string>
     <string name="change_pin" msgid="9174186126330785343">"‏שנה PIN של SIM"</string>
     <string name="enter_pin_text" msgid="8532615714751931951">"‏PIN של SIM:"</string>
     <string name="oldPinLabel" msgid="5287773661246368314">"‏PIN ישן"</string>
@@ -576,7 +576,7 @@
     <string name="ota_unsuccessful" msgid="8072141612635635357">"הטלפון שלך לא הופעל. \nייתכן שעליך למצוא מקום שהקליטה בו טובה יותר (ליד חלון או בחוץ). \n\nנסה שוב או התקשר לשירות לקוחות לקבלת אפשרויות נוספות."</string>
     <string name="ota_spc_failure" msgid="3909983542575030796">"‏כשלים מרובים של SPC"</string>
     <string name="ota_call_end" msgid="4537279738134612388">"הקודם"</string>
-    <string name="ota_try_again" msgid="7685477206465902290">"נסה שוב"</string>
+    <string name="ota_try_again" msgid="7685477206465902290">"נסו שוב"</string>
     <string name="ota_next" msgid="3904945374358235910">"הבא"</string>
     <string name="ecm_exit_dialog" msgid="4448531867763097533">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="6266424252578731203">"נכנס למצב חירום של התקשרות חזרה"</string>
@@ -627,7 +627,7 @@
     <string name="accessibility_settings_activity_title" msgid="8562004288733103868">"נגישות"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="5932176406432044638">"‏שיחת Wi-Fi מאת"</string>
     <string name="status_hint_label_wifi_call" msgid="8900805254974653903">"‏שיחת Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="4906759256275562674">"הקש שוב כדי לפתוח"</string>
+    <string name="emergency_action_launch_hint" msgid="4906759256275562674">"יש להקיש שוב כדי לפתוח"</string>
     <string name="message_decode_error" msgid="3456481534066924855">"אירעה שגיאה בעת פענוח ההודעה."</string>
     <string name="callFailed_cdma_activation" msgid="2307989779233262164">"‏כרטיס SIM הפעיל את השירות שלך ועדכן את יכולות הנדידה של הטלפון."</string>
     <string name="callFailed_cdma_call_limit" msgid="1556916577171457086">"יש יותר מדי שיחות פעילות. כדי להתחיל שיחה חדשה עליך לסיים או למזג חלק מהשיחות הפעילות."</string>
