@@ -119,6 +119,189 @@ public class ImsConferenceTest {
     }
 
     /**
+     * Tests CEPs with disconnected participants present with disconnected state.
+     */
+    @Test
+    @SmallTest
+    public void testDisconnectParticipantViaDisconnectState() {
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(any(PhoneAccountHandle.class)))
+                .thenReturn(false);
+
+        ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
+                mMockTelephonyConnectionServiceProxy, mConferenceHost,
+                null /* phoneAccountHandle */, () -> true /* featureFlagProxy */);
+
+        // Start off with 3 participants.
+        ConferenceParticipant participant1 = new ConferenceParticipant(
+                Uri.parse("tel:6505551212"),
+                "A",
+                Uri.parse("sip:6505551212@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
+        ConferenceParticipant participant2 = new ConferenceParticipant(
+                Uri.parse("tel:6505551213"),
+                "A",
+                Uri.parse("sip:6505551213@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
+
+        ConferenceParticipant participant3 = new ConferenceParticipant(
+                Uri.parse("tel:6505551214"),
+                "A",
+                Uri.parse("sip:6505551214@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2, participant3));
+        assertEquals(3, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(3)).addExistingConnection(
+                any(PhoneAccountHandle.class), any(Connection.class),
+                eq(imsConference));
+
+
+        // Mark one participant as disconnected.
+        ConferenceParticipant participant3Disconnected = new ConferenceParticipant(
+                Uri.parse("tel:6505551214"),
+                "A",
+                Uri.parse("sip:6505551214@testims.com"),
+                Connection.STATE_DISCONNECTED,
+                Call.Details.DIRECTION_INCOMING);
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2, participant3Disconnected));
+        assertEquals(2, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(1)).removeConnection(
+                any(Connection.class));
+        reset(mMockTelephonyConnectionServiceProxy);
+
+        // Now remove it from another CEP update; should still be the same number of participants
+        // and no updates.
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2));
+        assertEquals(2, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, never()).removeConnection(
+                any(Connection.class));
+        verify(mMockTelephonyConnectionServiceProxy, never()).addExistingConnection(
+                any(PhoneAccountHandle.class), any(Connection.class),
+                any(Conference.class));
+    }
+
+    /**
+     * Tests CEPs with removed participants.
+     */
+    @Test
+    @SmallTest
+    public void testDisconnectParticipantViaRemoval() {
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(any(PhoneAccountHandle.class)))
+                .thenReturn(false);
+
+        ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
+                mMockTelephonyConnectionServiceProxy, mConferenceHost,
+                null /* phoneAccountHandle */, () -> true /* featureFlagProxy */);
+
+        // Start off with 3 participants.
+        ConferenceParticipant participant1 = new ConferenceParticipant(
+                Uri.parse("tel:6505551212"),
+                "A",
+                Uri.parse("sip:6505551212@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
+        ConferenceParticipant participant2 = new ConferenceParticipant(
+                Uri.parse("tel:6505551213"),
+                "A",
+                Uri.parse("sip:6505551213@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
+
+        ConferenceParticipant participant3 = new ConferenceParticipant(
+                Uri.parse("tel:6505551214"),
+                "A",
+                Uri.parse("sip:6505551214@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2, participant3));
+        assertEquals(3, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(3)).addExistingConnection(
+                any(PhoneAccountHandle.class), any(Connection.class),
+                eq(imsConference));
+        reset(mMockTelephonyConnectionServiceProxy);
+
+        // Remove one from the CEP (don't disconnect first); should have 2 participants now.
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2));
+        assertEquals(2, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(1)).removeConnection(
+                any(Connection.class));
+        verify(mMockTelephonyConnectionServiceProxy, never()).addExistingConnection(
+                any(PhoneAccountHandle.class), any(Connection.class),
+                any(Conference.class));
+    }
+
+    /**
+     * Typically when a participant disconnects from a conference it is either:
+     * 1. Removed from a subsequent CEP update.
+     * 2. Marked as disconnected in a CEP update, and then removed from another CEP update.
+     *
+     * When a participant disconnects from a conference, some carriers will mark the disconnected
+     * participant as disconnected, but fail to send another CEP update with it removed.
+     *
+     * This test verifies that we can still enter single party emulation in this case.
+     */
+    @Test
+    @SmallTest
+    public void testSinglePartyEmulationEnterOnDisconnectParticipant() {
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(any(PhoneAccountHandle.class)))
+                .thenReturn(false);
+
+        ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
+                mMockTelephonyConnectionServiceProxy, mConferenceHost,
+                null /* phoneAccountHandle */, () -> true /* featureFlagProxy */);
+
+        // Setup the initial conference state with 2 participants.
+        ConferenceParticipant participant1 = new ConferenceParticipant(
+                Uri.parse("tel:6505551212"),
+                "A",
+                Uri.parse("sip:6505551212@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
+        ConferenceParticipant participant2 = new ConferenceParticipant(
+                Uri.parse("tel:6505551213"),
+                "A",
+                Uri.parse("sip:6505551213@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2));
+        assertEquals(2, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(2)).addExistingConnection(
+                any(PhoneAccountHandle.class), any(Connection.class),
+                eq(imsConference));
+
+        // Some carriers keep disconnected participants around in the CEP; this will cause problems
+        // when we want to enter single party conference mode. Verify that this case is handled.
+        ConferenceParticipant participant2Disconnected = new ConferenceParticipant(
+                Uri.parse("tel:6505551213"),
+                "A",
+                Uri.parse("sip:6505551213@testims.com"),
+                Connection.STATE_DISCONNECTED,
+                Call.Details.DIRECTION_INCOMING);
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2Disconnected));
+        assertEquals(0, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(2)).removeConnection(
+                any(Connection.class));
+        reset(mMockTelephonyConnectionServiceProxy);
+
+        // Pretend to merge someone else into the conference.
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2));
+        assertEquals(2, imsConference.getNumberOfParticipants());
+        verify(mMockTelephonyConnectionServiceProxy, times(2)).addExistingConnection(
+                any(PhoneAccountHandle.class), any(Connection.class),
+                eq(imsConference));
+    }
+
+    /**
      * We have seen a scenario on a carrier where a conference event package comes in just prior to
      * the call disconnecting with only the conference host in it.  This caused a problem because
      * it triggered exiting single party conference mode (due to a bug) and caused the call to not
