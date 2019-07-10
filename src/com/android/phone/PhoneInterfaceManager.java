@@ -1410,7 +1410,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // from the context of the phone app.
         enforceCallPermission();
 
-        if (mAppOps.noteOp(AppOpsManager.OP_CALL_PHONE, Binder.getCallingUid(), callingPackage)
+        if (mAppOps.noteOp(AppOpsManager.OPSTR_CALL_PHONE, Binder.getCallingUid(), callingPackage)
                 != AppOpsManager.MODE_ALLOWED) {
             return;
         }
@@ -2035,7 +2035,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     "getNeighboringCellInfo() is unavailable to callers targeting Q+ SDK levels.");
         }
 
-        if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
+        if (mAppOps.noteOp(AppOpsManager.OPSTR_NEIGHBORING_CELLS, Binder.getCallingUid(),
                 callingPackage) != AppOpsManager.MODE_ALLOWED) {
             return null;
         }
