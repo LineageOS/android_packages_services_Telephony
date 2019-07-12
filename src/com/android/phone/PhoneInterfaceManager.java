@@ -44,6 +44,7 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
+import android.os.ParcelUuid;
 import android.os.PersistableBundle;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
@@ -5048,6 +5049,49 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return resultArray;
         } finally {
             Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public String[] getMergedSubscriberIdsFromGroup(int subId, String callingPackage) {
+        enforceReadPrivilegedPermission("getMergedSubscriberIdsFromGroup");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            final TelephonyManager telephonyManager = mApp.getSystemService(
+                    TelephonyManager.class);
+            String subscriberId = telephonyManager.getSubscriberId(subId);
+            if (subscriberId == null) {
+                if (DBG) {
+                    log("getMergedSubscriberIdsFromGroup can't find subscriberId for subId "
+                            + subId);
+                }
+                return null;
+            }
+
+            final SubscriptionInfo info = SubscriptionController.getInstance()
+                    .getSubscriptionInfo(subId);
+            final ParcelUuid groupUuid = info.getGroupUuid();
+            // If it doesn't belong to any group, return just subscriberId of itself.
+            if (groupUuid == null) {
+                return new String[]{subscriberId};
+            }
+
+            // Get all subscriberIds from the group.
+            final List<String> mergedSubscriberIds = new ArrayList<>();
+            final List<SubscriptionInfo> groupInfos = SubscriptionController.getInstance()
+                    .getSubscriptionsInGroup(groupUuid, mApp.getOpPackageName());
+            for (SubscriptionInfo subInfo : groupInfos) {
+                subscriberId = telephonyManager.getSubscriberId(subInfo.getSubscriptionId());
+                if (subscriberId != null) {
+                    mergedSubscriberIds.add(subscriberId);
+                }
+            }
+
+            return mergedSubscriberIds.toArray(new String[mergedSubscriberIds.size()]);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+
         }
     }
 
