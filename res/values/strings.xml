@@ -1797,4 +1797,8 @@
     <!-- Message displayed to the user to indicate that a held call has been released /
          disconnected. -->
     <string name="supp_service_held_call_released">Held call has been released.</string>
+    <!-- Configuration setting for world mode Format is <true;SPN if any to be checked>-->
+    <string translatable="false" name="config_world_mode_spn">false</string>
+    <!-- Configuration setting for mobile network settings show network option by phoneType. Format is <true;SPN if any to be checked>-->
+    <string translatable="false" name="config_show_gsm_option">false</string>
 </resources>
