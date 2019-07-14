@@ -402,7 +402,7 @@
     <string name="fdn_list_with_label" msgid="7437232552210469217">"Liste de numéros autorisés (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"Activation des numéros autorisés"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"La liste de numéros autorisés est activée."</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"La liste des numéros autorisés est désactivée."</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"La liste des numéros autorisés est désactivée"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Activer les numéros autorisés"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Désactiver numéros autorisés"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Modifier le NIP2"</string>

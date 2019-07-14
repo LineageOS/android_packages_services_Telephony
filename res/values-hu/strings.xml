@@ -403,7 +403,7 @@
     <string name="fdn_disabled" msgid="4700049736675368279">"A fix hívószámok letiltva"</string>
     <string name="enable_fdn" msgid="3740191529180493851">"Fix hívószám engedélyezése"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Fix hívószám letiltása"</string>
-    <string name="change_pin2" msgid="2153563695382176676">"PIN2 kód módosítása"</string>
+    <string name="change_pin2" msgid="2153563695382176676">"PIN2-kód módosítása"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Fix hívószám letiltása"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"Fix hívószám engedélyezése"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Fix hívószámok kezelése"</string>
@@ -459,11 +459,11 @@
     <string name="pin_changed" msgid="4455736268023261662">"PIN-kód frissítve"</string>
     <string name="puk_requested" msgid="5921393215789090200">"A jelszó helytelen. PIN-kód letiltva. Adja meg a PUK kódot."</string>
     <string name="enter_pin2_text" msgid="8339444124477720345">"PIN2"</string>
-    <string name="oldPin2Label" msgid="8559146795026261502">"Régi PIN2 kód"</string>
+    <string name="oldPin2Label" msgid="8559146795026261502">"Régi PIN2-kód"</string>
     <string name="newPin2Label" msgid="4573956902204349054">"Új PIN2 kód"</string>
     <string name="confirmPin2Label" msgid="8100319484454787708">"Erősítse meg az új PIN2-kódot"</string>
     <string name="badPuk2" msgid="7910064009531541708">"A PUK2 kód helytelen. Próbálja újra."</string>
-    <string name="badPin2" msgid="6646896629970023109">"A régi PIN2 kód helytelen. Próbálja újra."</string>
+    <string name="badPin2" msgid="6646896629970023109">"A régi PIN2-kód helytelen. Próbálja újra."</string>
     <string name="mismatchPin2" msgid="4177967478551851117">"A PIN2 kódok nem egyeznek. Próbálja újra."</string>
     <string name="invalidPin2" msgid="1757045131429105595">"4–8 számjegyből álló PIN2 kódot adjon meg."</string>
     <string name="invalidPuk2" msgid="7059081153334815973">"8 számjegyből álló PUK2 kódot adjon meg."</string>

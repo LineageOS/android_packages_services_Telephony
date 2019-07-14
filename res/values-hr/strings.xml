@@ -548,7 +548,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Uvezeni kontakt"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Uvoz kontakta nije uspio"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Pomoć za osobe oštećenog sluha"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Uključi kompatibilnost za pomoć osobama oštećenog sluha"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Uključi kompatibilnost za slušne aparate"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"RTT (tekst u stvarnom vremenu) poziv"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Omogućavanje slanja poruka u glasovnom pozivu"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT pomaže pozivateljima koji su gluhi, imaju oštećenje sluha, govornu manu ili im treba više od samo glasa.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saznajte više&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT pozivi spremaju se kao prijepis poruke\n       &lt;br&gt; – RTT nije dostupan za videopozive"</string>

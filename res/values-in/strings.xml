@@ -74,8 +74,8 @@
     <string name="phone_accounts_all_calling_accounts_summary" msgid="8594186415822657011">"Pilih akun mana yang dapat melakukan panggilan telepon"</string>
     <string name="wifi_calling" msgid="739018212480165598">"Panggilan Wi-Fi"</string>
     <string name="connection_service_default_label" msgid="1498481943805913754">"Layanan sambungan di dalamnya"</string>
-    <string name="voicemail" msgid="8693759337917898954">"Kotak Pesan"</string>
-    <string name="voicemail_settings_with_label" msgid="152724978380748296">"Kotak pesan (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="voicemail" msgid="8693759337917898954">"Pesan suara"</string>
+    <string name="voicemail_settings_with_label" msgid="152724978380748296">"Pesan suara (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
     <string name="make_and_receive_calls" msgid="1258596928285972166">"Melakukan &amp; menerima panggilan"</string>
     <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Smart Forwarding"</string>
@@ -89,14 +89,14 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"Setelan panggilan CDMA tambahan"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"Setelan panggilan khusus CDMA tambahan"</string>
     <string name="labelNwService" msgid="4699970172021870983">"Setelan layanan jaringan"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"Nomor Penelepon"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"ID Penelepon"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"Memuat setelan..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Nomor disembunyikan selama panggilan keluar"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Nomor ditampilkan selama panggilan keluar"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Gunakan setelan operator default untuk menampilkan nomor saya pada panggilan keluar"</string>
     <string name="labelCW" msgid="6120513814915920200">"Nada tunggu"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"Selama panggilan, beritahukan panggilan masuk kepada saya"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"Selama panggilan, beritahukan panggilan masuk kepada saya"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"Selama panggilan, beri tahukan panggilan masuk kepada saya"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"Selama panggilan, beri tahukan panggilan masuk kepada saya"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Setelan penerusan panggilan"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Setelan penerusan panggilan (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Penerusan panggilan"</string>
@@ -251,7 +251,7 @@
     <string name="roaming" msgid="7894878421600247140">"Roaming"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Sambungkan ke layanan data ketika roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Sambungkan ke layanan data ketika roaming"</string>
-    <string name="roaming_reenable_message" msgid="6843814381576397939">"Roaming data dinonaktifkan. Tap untuk mengaktifkan."</string>
+    <string name="roaming_reenable_message" msgid="6843814381576397939">"Roaming data dinonaktifkan. Ketuk untuk mengaktifkan."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Koneksi data seluler terputus"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Anda dapat dikenakan biaya yang cukup besar."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hubungi penyedia jaringan untuk mengetahui harganya."</string>
@@ -438,7 +438,7 @@
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN tidak diperbarui. PIN2 salah, atau nomor telepon ditolak."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operasi FDN gagal."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Membaca dari kartu SIM…"</string>
-    <string name="simContacts_empty" msgid="5270660846489561932">"Tidak ada kontak pada Kartu SIM."</string>
+    <string name="simContacts_empty" msgid="5270660846489561932">"Tidak ada kontak pada kartu SIM."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"Pilih kontak untuk diimpor"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Nonaktifkan mode pesawat untuk mengimpor kontak dari kartu SIM."</string>
     <string name="enable_pin" msgid="5422767284133234860">"Aktifkan/nonaktifkan PIN SIM"</string>
@@ -459,7 +459,7 @@
     <string name="pin_changed" msgid="4455736268023261662">"PIN diperbarui"</string>
     <string name="puk_requested" msgid="5921393215789090200">"Sandi salah. PIN kini diblokir. PUK diperlukan."</string>
     <string name="enter_pin2_text" msgid="8339444124477720345">"PIN2"</string>
-    <string name="oldPin2Label" msgid="8559146795026261502">"PIN2 yang lama"</string>
+    <string name="oldPin2Label" msgid="8559146795026261502">"PIN2 lama"</string>
     <string name="newPin2Label" msgid="4573956902204349054">"PIN2 Baru"</string>
     <string name="confirmPin2Label" msgid="8100319484454787708">"Konfirmasi PIN2 baru"</string>
     <string name="badPuk2" msgid="7910064009531541708">"PUK2 salah. Coba lagi."</string>
@@ -476,7 +476,7 @@
     <string name="pin2_unblocked" msgid="7791600368153469078">"PIN2 tidak lagi diblokir"</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"Kesalahan jaringan atau kartu SIM"</string>
     <string name="doneButton" msgid="2859593360997984240">"Selesai"</string>
-    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Nomor kotak pesan"</string>
+    <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Nomor pesan suara"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"Memanggil"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"Memanggil ulang"</string>
     <string name="card_title_conf_call" msgid="1162980346189744501">"Konferensi telepon"</string>
@@ -514,11 +514,11 @@
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Aktifkan panggilan Wi-Fi untuk melakukan panggilan."</string>
     <string name="emergency_information_hint" msgid="399011533038204351">"Informasi darurat"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Pemilik"</string>
-    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tap lagi untuk melihat info"</string>
+    <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Ketuk lagi untuk melihat info"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Panggilan darurat"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Nomor darurat"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Nomor darurat"</string>
-    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tap lagi untuk menelepon <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
+    <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Ketuk lagi untuk menelepon <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Menghidupkan radio..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Tidak ada layanan. Mencoba lagi…"</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Tidak dapat masuk ke mode pesawat selama panggilan darurat."</string>
@@ -534,7 +534,7 @@
     <string name="onscreenEndCallText" msgid="4403855834875398585">"Akhiri"</string>
     <string name="onscreenShowDialpadText" msgid="8561805492659639893">"Dialpad"</string>
     <string name="onscreenMuteText" msgid="5011369181754261374">"Bisukan"</string>
-    <string name="onscreenAddCallText" msgid="5140385634712287403">"Tambahkan panggilan"</string>
+    <string name="onscreenAddCallText" msgid="5140385634712287403">"+ panggilan"</string>
     <string name="onscreenMergeCallsText" msgid="6640195098064538950">"Gabungkan panggilan"</string>
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"Tukar"</string>
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"Kelola panggilan"</string>

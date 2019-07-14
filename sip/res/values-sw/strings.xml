@@ -48,8 +48,8 @@
     <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"Usajili wa akaunti hujafaulu: Jina la mtumiaji au nenosiri sio sahihi."</string>
     <string name="registration_status_server_unreachable" msgid="7710275557045148634">"Usajili wa akaunti haujafaulu: Kagua jina la seva."</string>
     <string name="third_party_account_summary" msgid="9041060473615403041">"Akaunti hii inatumika kwa sasa na programu ya <xliff:g id="ACCOUNT_OWNER">%s</xliff:g>."</string>
-    <string name="sip_edit_title" msgid="1967247832635750410">"Maelezo ya akaunti ya SIP"</string>
-    <string name="sip_edit_new_title" msgid="266414118302574305">"Maelezo ya akaunti ya SIP"</string>
+    <string name="sip_edit_title" msgid="1967247832635750410">"Akaunti ya SIP: maelezo"</string>
+    <string name="sip_edit_new_title" msgid="266414118302574305">"Akaunti ya SIP: maelezo"</string>
     <string name="domain_address_title" msgid="1968479941328225423">"Seva"</string>
     <string name="username_title" msgid="6770064611005663470">"Mtumiaji"</string>
     <string name="password_title" msgid="5289013731515564295">"Nenosiri"</string>
@@ -60,12 +60,12 @@
     <string name="send_keepalive_title" msgid="599627072150501159">"Tuma weka-hai"</string>
     <string name="advanced_settings" msgid="6622996380747040711">"Mipangilio ya hiari"</string>
     <string name="auth_username_title" msgid="8262491689004708265">"Jina la mtumiaji la uthibitishaji"</string>
-    <string name="auth_username_summary" msgid="941160241371436473">"Jina la mtumiaji hutumika kwa uthibitishaji"</string>
-    <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;Haijawekwa&gt;"</string>
-    <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;Haijawekwa&gt;"</string>
+    <string name="auth_username_summary" msgid="941160241371436473">"Jina la mtumiaji hutumiwa kuthibitisha"</string>
+    <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;Hajawekwa&gt;"</string>
+    <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;Halijawekwa&gt;"</string>
     <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;Haijawekwa&gt;"</string>
     <string name="display_name_summary" msgid="7155076491675565407">"&lt;Sawa na jina la mtumiaji&gt;"</string>
-    <string name="optional_summary" msgid="2363105560396317624">"&amp;lt Ni hiari &gt;"</string>
+    <string name="optional_summary" msgid="2363105560396317624">"&lt;Ni hiari&gt;"</string>
     <string name="advanced_settings_show" msgid="7838761602853998622">"▷ Gusa ili uonyeshe yote"</string>
     <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ Gusa ili ufiche zote"</string>
     <string name="all_empty_alert" msgid="4087734950375192387">"Weka maelezo ya akaunti mpya ya SIP."</string>

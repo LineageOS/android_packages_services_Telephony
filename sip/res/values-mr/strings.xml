@@ -59,15 +59,15 @@
     <string name="transport_title" msgid="889155457465372527">"वाहतूक प्रकार"</string>
     <string name="send_keepalive_title" msgid="599627072150501159">"चैतन्‍यमय-ठेवा पाठवा"</string>
     <string name="advanced_settings" msgid="6622996380747040711">"पर्यायी सेटिंग्ज"</string>
-    <string name="auth_username_title" msgid="8262491689004708265">"प्रमाणीकरण वापरकर्तानाव"</string>
+    <string name="auth_username_title" msgid="8262491689004708265">"ऑथेंटिकेशन वापरकर्ता नाव"</string>
     <string name="auth_username_summary" msgid="941160241371436473">"प्रमाणीकरणासाठी वापरकर्तानाव वापरले"</string>
     <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;सेट नाही&gt;"</string>
     <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;सेट नाही&gt;"</string>
     <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;सेट नाही&gt;"</string>
-    <string name="display_name_summary" msgid="7155076491675565407">"&lt;वापरकर्तानावासमान&gt;"</string>
+    <string name="display_name_summary" msgid="7155076491675565407">"&lt;वापरकर्ता नावासारखे&gt;"</string>
     <string name="optional_summary" msgid="2363105560396317624">"&lt;पर्यायी&gt;"</string>
-    <string name="advanced_settings_show" msgid="7838761602853998622">"▷ सर्व दर्शविण्‍यासाठी स्‍पर्श करा"</string>
-    <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ सर्व लपविण्‍यासाठी स्‍पर्श करा"</string>
+    <string name="advanced_settings_show" msgid="7838761602853998622">"▷ सर्व दाखवण्‍यासाठी स्‍पर्श करा"</string>
+    <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ सर्व लपवण्‍यासाठी स्‍पर्श करा"</string>
     <string name="all_empty_alert" msgid="4087734950375192387">"नवीन SIP खात्याचा तपशील एंटर करा."</string>
     <string name="empty_alert" msgid="6659484914371384024">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> आवश्‍यक आहे आणि रिक्त सोडले जाऊ शकत नाही."</string>
     <string name="not_a_valid_port" msgid="7931422555587011830">"पोर्ट नंबर 1000 आणि 65534 मध्‍ये असावा."</string>

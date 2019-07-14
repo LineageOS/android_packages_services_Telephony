@@ -479,7 +479,7 @@
     <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Дауыстық пошта нөмірі"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"Теруде"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"Қайта терілуде"</string>
-    <string name="card_title_conf_call" msgid="1162980346189744501">"Мәжіліс қоңырауы"</string>
+    <string name="card_title_conf_call" msgid="1162980346189744501">"Конференциялық қоңырау"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"Келген қоңырау"</string>
     <string name="card_title_call_ended" msgid="5544730338889702298">"Қоңырау аяқталды"</string>
     <string name="card_title_on_hold" msgid="821463117892339942">"Күтуде"</string>

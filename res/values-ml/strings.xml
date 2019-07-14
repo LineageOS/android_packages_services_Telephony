@@ -407,7 +407,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN പ്രവർത്തനരഹിതമാക്കുക"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN പ്രവർത്തനക്ഷമമാക്കുക"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"സ്ഥിര ഡയലിംഗ് നമ്പറുകൾ നിയന്ത്രിക്കുക"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ആക്‌സസ്സിനായി പിൻ മാറ്റുക"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ആക്‌സസിനായി പിൻ മാറ്റുക"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ഫോൺ നമ്പർ ലിസ്റ്റ് നിയന്ത്രിക്കുക"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"വോയ്‌സ് സ്വകാര്യത"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"മെച്ചപ്പെടുത്തിയ സ്വകാര്യതാ മോഡ് പ്രവർത്തനക്ഷമമാക്കി"</string>
