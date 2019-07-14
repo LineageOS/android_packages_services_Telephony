@@ -95,11 +95,11 @@
     <string name="sum_show_caller_id" msgid="6768534125447290401">"केल्‍या जाणार्‍या कॉलमध्‍ये नंबर प्रदर्शित केला"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"माझा नंबर केल्‍या जाणार्‍या कॉलमध्‍ये प्रदर्शित करण्‍यासाठी डीफॉल्‍ट ऑपरेटर सेटिंग्‍जचा वापर करा"</string>
     <string name="labelCW" msgid="6120513814915920200">"कॉल प्रतीक्षा"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"कॉल दरम्यान, येणार्‍या कॉलबद्दल मला सूचित करा"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"मला कॉल दरम्यान येणार्‍या कॉलबद्दल सूचित करा"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"कॉल दरम्यान, येणार्‍या कॉलबद्दल मला सूचित करा"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"कॉल फॉरवर्डिंग सेटिंग्ज"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>) कॉल फॉरवर्डिंग सेटिंग्ज"</string>
-    <string name="labelCF" msgid="2574386948026924737">"कॉल अग्रेषण"</string>
+    <string name="labelCF" msgid="2574386948026924737">"कॉल फॉरवर्डिंग"</string>
     <string name="labelCFU" msgid="8147177368148660600">"नेहमी फॉरवर्ड करा"</string>
     <string name="messageCFU" msgid="3560082430662923687">"नेहमी हा नंबर वापरा"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"सर्व कॉल अग्रेषित करत आहे"</string>
@@ -116,7 +116,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> वर अग्रेषित करत आहे"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"बंद"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"तुमचा फोन उत्तर देत नसताना तुमचा ऑपरेटर कॉल अग्रेषण करणे अक्षम करण्‍यास समर्थन करीत नाही."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"पोहचण्‍यायोग्‍य नसताना"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"आउट ऑफ रीच असताना"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"नंबर पोहचण्‍यायोग्‍य नसताना"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> वर अग्रेषित करत आहे"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"बंद"</string>
@@ -407,7 +407,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN अक्षम करा"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN सक्षम करा"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"निश्चित डायलिंग नंबर व्‍यवस्‍थापित करा"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN प्रवेशासाठी पिन बदला"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN अ‍ॅक्सेससाठी पिन बदला"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"फोन नंबर सूची व्यवस्थापित करा"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"आवाज गोपनीयता"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"वर्धित गोपनीयता मोड सक्षम करा"</string>
@@ -548,7 +548,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"इंपोर्ट केलेला संपर्क"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"संपर्क इंपोर्ट करण्यात अयशस्वी"</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"श्रवणयंत्रे"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवणयंत्र सुसंगतता चालू करा"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"श्रवणयंत्र कंपॅटिबिलिटी चालू करा"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"रीअल-टाइम टेक्‍स्‍ट (RTT) कॉल"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"व्‍हॉइस कॉल करताना मेसेजिंग करू शकतो"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT अशा कॉल करणार्‍यांना साहाय्य करते, ज्‍यांना बहिरेपणा आहे, ज्‍यांना कमी ऐकू येते किंवा बोलताना अडखळतात किंवा ज्‍यांना फक्‍त आवाज पुरेसा नसतो.&lt;br&gt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;अधिक जाणून घ्‍या&lt;a&gt;\n       &lt;br/&gt; - RTT cकॉल मेसेज प्रतिलेख म्‍हणून सेव्‍ह केले आहेत\n       &lt;br/&gt; - RTT व्हिडिओ कॉलसाठी उपलब्‍ध नाही"</string>

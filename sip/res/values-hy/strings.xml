@@ -56,16 +56,16 @@
     <string name="display_name_title" msgid="579241787583079773">"Ցուցադրվող անունը"</string>
     <string name="proxy_address_title" msgid="6890163365640631841">"Պրոքսի-սերվերի հասցեն"</string>
     <string name="port_title" msgid="6693965912656593862">"Միացքի համարը"</string>
-    <string name="transport_title" msgid="889155457465372527">"Փոխանցման միջոց"</string>
+    <string name="transport_title" msgid="889155457465372527">"Հաղորդակարգ"</string>
     <string name="send_keepalive_title" msgid="599627072150501159">"Ուղարկել keep-alive"</string>
-    <string name="advanced_settings" msgid="6622996380747040711">"Ընտրովի կարգավորումներ"</string>
+    <string name="advanced_settings" msgid="6622996380747040711">"Լրացուցիչ կարգավորումներ"</string>
     <string name="auth_username_title" msgid="8262491689004708265">"Նույնականացման օգտանուն"</string>
-    <string name="auth_username_summary" msgid="941160241371436473">"Օգտանունն օգտագործվել է նույնականացման համար"</string>
+    <string name="auth_username_summary" msgid="941160241371436473">"Նույնականացման համար օգտագործվող օգտանունը"</string>
     <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;Սահմանված չէ&gt;"</string>
     <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;Սահմանված չէ&gt;"</string>
     <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;Սահմանված չէ&gt;"</string>
     <string name="display_name_summary" msgid="7155076491675565407">"&lt;Նույնը, ինչ օգտանունը&gt;"</string>
-    <string name="optional_summary" msgid="2363105560396317624">"&lt;Ընտրովի&gt;"</string>
+    <string name="optional_summary" msgid="2363105560396317624">"&lt;Պարտադիր չէ&gt;"</string>
     <string name="advanced_settings_show" msgid="7838761602853998622">"▷ Հպեք՝ տեսնելու համար"</string>
     <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ Հպեք՝ թաքցնելու ամենը"</string>
     <string name="all_empty_alert" msgid="4087734950375192387">"Մուտքագրեք նոր SIP հաշվի տվյալները:"</string>

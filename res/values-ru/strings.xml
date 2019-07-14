@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"Код MMI отменен"</string>
     <string name="cancel" msgid="5044513931633602634">"Отмена"</string>
     <string name="enter_input" msgid="1810529547726803893">"Допустимая длина USSD-сообщения: <xliff:g id="MIN_LEN">%1$d</xliff:g>–<xliff:g id="MAX_LEN">%2$d</xliff:g> символов. Повторите попытку."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"Управление конференц-связью"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"Настройка конференц-вызова"</string>
     <string name="ok" msgid="3811371167865772377">"ОК"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Динамик"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Динамик гарнитуры"</string>
@@ -93,7 +93,7 @@
     <string name="sum_loading_settings" msgid="1826692909391168620">"Загрузка настроек…"</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"Скрывать номер при исходящих вызовах"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Номер, отображающийся при исходящих вызовах"</string>
-    <string name="sum_default_caller_id" msgid="1954518825510901365">"Использовать стандартные настройки оператора для показа моего номера при исходящих вызовах."</string>
+    <string name="sum_default_caller_id" msgid="1954518825510901365">"Использовать стандартные настройки оператора для показа моего номера при исходящих вызовах"</string>
     <string name="labelCW" msgid="6120513814915920200">"Параллельный вызов"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Извещать меня о входящих вызовах во время разговора"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Извещать меня о входящих вызовах во время разговора"</string>

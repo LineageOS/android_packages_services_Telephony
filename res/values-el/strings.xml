@@ -554,7 +554,7 @@
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Η λειτουργία RTT υποβοηθά καλούντες που αντιμετωπίζουν προβλήματα ακοής ή ομιλίας ή θέλουν κάτι περισσότερο από απλή φωνητική επικοινωνία.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Μάθετε περισσότερα&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Οι κλήσεις RTT αποθηκεύονται ως μεταγραφές μηνυμάτων\n       &lt;br&gt; - Η λειτουργία RTT δεν είναι διαθέσιμη για βιντεοκλήσεις"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Απενεργοποιήθηκε"</item>
-    <item msgid="3971695875449640648">"TTY Full"</item>
+    <item msgid="3971695875449640648">"TTY πλήρες"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>
   </string-array>

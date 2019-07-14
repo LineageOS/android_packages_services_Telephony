@@ -95,8 +95,8 @@
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Número exibido nas chamadas enviadas"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Usar configurações padrão da operadora para exibir meu número em chamadas efetuadas"</string>
     <string name="labelCW" msgid="6120513814915920200">"Chamada em espera"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"Durante uma chamada, me avise sobre chamadas recebidas"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"Durante uma chamada, me avise sobre chamadas recebidas"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"Notificar sobre a entrada de outras chamadas durante uma ligação"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"Notificar sobre a entrada de outras chamadas durante uma ligação"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Configurações de encaminhamento de chamada"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Configurações de encaminhamento de chamada (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Encaminhamento de chamada"</string>
@@ -405,7 +405,7 @@
     <string name="disable_fdn" msgid="7944020890722540616">"Desativar FDN"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Alterar PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Desativar FDN"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"Ativar FDN"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"Ativar FDN (nº de discagem fixa)"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Gerenciar números de discagem fixa"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Alterar PIN para acesso FDN"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gerenciar lista de números telefônicos"</string>

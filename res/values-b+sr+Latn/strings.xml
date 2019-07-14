@@ -100,7 +100,7 @@
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Podešavanja preusmeravanja poziva"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Podešavanja preusmeravanja poziva (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Preusmeravanje poziva"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"Uvek prosledi"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"Uvek prosleđuj"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Uvek koristi ovaj broj"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Prosleđivanje svih poziva"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"Prosleđivanje svih poziva na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
@@ -554,7 +554,7 @@
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Tekst u realnom vremenu (RTT) pomaže pozivaocima koji su gluvi, slabo čuju, imaju teškoće u govoru ili kojima je potrebno nešto više od glasa.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saznajte više&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT pozivi se čuvaju kao transkript poruke\n       &lt;br&gt; – RTT nije dostupan za video pozive"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY je isključen"</item>
-    <item msgid="3971695875449640648">"TTY je pun"</item>
+    <item msgid="3971695875449640648">"Kompletni TTY"</item>
     <item msgid="1937509904407445684">"TTY HCO"</item>
     <item msgid="5644925873488772224">"TTY VCO"</item>
   </string-array>
