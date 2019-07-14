@@ -30,7 +30,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"El código MMI se ha cancelado."</string>
     <string name="cancel" msgid="5044513931633602634">"Cancelar"</string>
     <string name="enter_input" msgid="1810529547726803893">"El mensaje USSD debe tener entre <xliff:g id="MIN_LEN">%1$d</xliff:g> y <xliff:g id="MAX_LEN">%2$d</xliff:g> caracteres. Inténtalo de nuevo."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"Administrar conferencia telefónica"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"Gestionar conferencia telefónica"</string>
     <string name="ok" msgid="3811371167865772377">"Aceptar"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Altavoz"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Auricular"</string>
@@ -540,7 +540,7 @@
     <string name="onscreenMergeCallsText" msgid="6640195098064538950">"Llamada a tres"</string>
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"Cambiar"</string>
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"Administrar llamadas"</string>
-    <string name="onscreenManageConferenceText" msgid="6485935856534311346">"Administrar conferencia"</string>
+    <string name="onscreenManageConferenceText" msgid="6485935856534311346">"Gestionar conferencia telefónica"</string>
     <string name="onscreenAudioText" msgid="1710087112800041743">"Audio"</string>
     <string name="onscreenVideoCallText" msgid="4800924186056115442">"Videollamada"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"Importar"</string>

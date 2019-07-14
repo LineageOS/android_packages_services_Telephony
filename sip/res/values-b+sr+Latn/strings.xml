@@ -57,7 +57,7 @@
     <string name="proxy_address_title" msgid="6890163365640631841">"Odlazna adresa proksija"</string>
     <string name="port_title" msgid="6693965912656593862">"Broj porta"</string>
     <string name="transport_title" msgid="889155457465372527">"Tip prenosa"</string>
-    <string name="send_keepalive_title" msgid="599627072150501159">"Pošalji keep-alive poruku"</string>
+    <string name="send_keepalive_title" msgid="599627072150501159">"Održavanje veze porukama"</string>
     <string name="advanced_settings" msgid="6622996380747040711">"Opcionalna podešavanja"</string>
     <string name="auth_username_title" msgid="8262491689004708265">"Korisničko ime za potvrdu identiteta"</string>
     <string name="auth_username_summary" msgid="941160241371436473">"Za potvrdu identiteta koristi se korisničko ime"</string>

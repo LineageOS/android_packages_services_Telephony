@@ -579,7 +579,7 @@
     <string name="ota_title_activate_success" msgid="6570240212263372046">"Foon is geaktiveer."</string>
     <string name="ota_title_problem_with_activation" msgid="7095824491970084367">"Probleem met aktivering"</string>
     <string name="ota_listen" msgid="162923839877584937">"Volg die gesproke instruksies tot jy hoor dat aktivering afgehandel is."</string>
-    <string name="ota_speaker" msgid="6904589278542719647">"Spreker"</string>
+    <string name="ota_speaker" msgid="6904589278542719647">"268365499155266197"</string>
     <string name="ota_progress" msgid="460876637828044519">"Programmeer tans jou foon …"</string>
     <string name="ota_failure" msgid="7713756181204620397">"Kon nie jou foon programmeer nie"</string>
     <string name="ota_successful" msgid="1880780692887077407">"Jou foon is nou geaktiveer. Dit kan tot 15 minute duur vir die diens om te begin."</string>

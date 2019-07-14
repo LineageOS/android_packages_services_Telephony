@@ -64,7 +64,7 @@
     <string name="default_preference_summary_username" msgid="8404717434312826082">"‏&lt;تنظیم نشده&gt;"</string>
     <string name="default_preference_summary_password" msgid="4464464672997027904">"‏&lt;تنظیم نشده&gt;"</string>
     <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"‏&lt;تنظیم نشده&gt;"</string>
-    <string name="display_name_summary" msgid="7155076491675565407">"‏&lt;مانند نام کاربری&gt;"</string>
+    <string name="display_name_summary" msgid="7155076491675565407">"&lt;همان نام کاربری&gt;"</string>
     <string name="optional_summary" msgid="2363105560396317624">"‏&lt;اختیاری&gt;"</string>
     <string name="advanced_settings_show" msgid="7838761602853998622">"▷ جهت نمایش همه لمس کنید"</string>
     <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ برای پنهان کردن همه لمس کنید"</string>

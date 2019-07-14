@@ -57,13 +57,13 @@
     <string name="proxy_address_title" msgid="6890163365640631841">"Địa chỉ proxy đi"</string>
     <string name="port_title" msgid="6693965912656593862">"Số cổng"</string>
     <string name="transport_title" msgid="889155457465372527">"Loại truyền tải"</string>
-    <string name="send_keepalive_title" msgid="599627072150501159">"Gửi giữ kết nối"</string>
-    <string name="advanced_settings" msgid="6622996380747040711">"Cài đặt tùy chọn"</string>
+    <string name="send_keepalive_title" msgid="599627072150501159">"Gửi gói tin giữ kết nối"</string>
+    <string name="advanced_settings" msgid="6622996380747040711">"Các mục cài đặt khác"</string>
     <string name="auth_username_title" msgid="8262491689004708265">"Tên người dùng xác thực"</string>
     <string name="auth_username_summary" msgid="941160241371436473">"Tên người dùng để xác thực"</string>
-    <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;Chưa được đặt&gt;"</string>
-    <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;Chưa được đặt&gt;"</string>
-    <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;Chưa được đặt&gt;"</string>
+    <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;Chưa đặt&gt;"</string>
+    <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;Chưa đặt&gt;"</string>
+    <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;Chưa đặt&gt;"</string>
     <string name="display_name_summary" msgid="7155076491675565407">"&lt;Giống như tên người dùng&gt;"</string>
     <string name="optional_summary" msgid="2363105560396317624">"&lt;Tùy chọn&gt;"</string>
     <string name="advanced_settings_show" msgid="7838761602853998622">"▷ Chạm để hiển thị tất cả"</string>
