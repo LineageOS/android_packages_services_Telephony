@@ -48,16 +48,16 @@
     <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"Эсеп катталбай калды: Колдонуучунун ысымы же сырсөзү туура эмес."</string>
     <string name="registration_status_server_unreachable" msgid="7710275557045148634">"Эсеп катталбай калды. Сервердин аталышын текшериңиз."</string>
     <string name="third_party_account_summary" msgid="9041060473615403041">"Бул каттоэсепти учурда <xliff:g id="ACCOUNT_OWNER">%s</xliff:g> колдонмосу пайдаланууда."</string>
-    <string name="sip_edit_title" msgid="1967247832635750410">"SIP каттоо эсебинин чоо-жайы"</string>
-    <string name="sip_edit_new_title" msgid="266414118302574305">"SIP каттоо эсебинин чоо-жайы"</string>
+    <string name="sip_edit_title" msgid="1967247832635750410">"SIP аккаунтунун чоо-жайы"</string>
+    <string name="sip_edit_new_title" msgid="266414118302574305">"SIP аккаунтунун чоо-жайы"</string>
     <string name="domain_address_title" msgid="1968479941328225423">"Сервер"</string>
     <string name="username_title" msgid="6770064611005663470">"Колдонуучу ысымы"</string>
     <string name="password_title" msgid="5289013731515564295">"Сырсөз"</string>
     <string name="display_name_title" msgid="579241787583079773">"Экрандын аталышы"</string>
     <string name="proxy_address_title" msgid="6890163365640631841">"Чыгуучу прокси дареги"</string>
     <string name="port_title" msgid="6693965912656593862">"Порт номери"</string>
-    <string name="transport_title" msgid="889155457465372527">"Унаа түрү"</string>
-    <string name="send_keepalive_title" msgid="599627072150501159">"Туташууну текшерген билдирүүнү жөнөтүү"</string>
+    <string name="transport_title" msgid="889155457465372527">"Протокол"</string>
+    <string name="send_keepalive_title" msgid="599627072150501159">"Keep-alive жөнөтүү"</string>
     <string name="advanced_settings" msgid="6622996380747040711">"Кошумча жөндөөлөр"</string>
     <string name="auth_username_title" msgid="8262491689004708265">"Аныктыкты текшерүүчү колдонуучунун ысымы"</string>
     <string name="auth_username_summary" msgid="941160241371436473">"Колдонуучунун ысымы аныктыкты текшерүү үчүн колдонулат"</string>
@@ -68,7 +68,7 @@
     <string name="optional_summary" msgid="2363105560396317624">"&lt;Кошумча&gt;"</string>
     <string name="advanced_settings_show" msgid="7838761602853998622">"▷ Бардыгын көрсөтүү үчүн тийип коюңуз"</string>
     <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ Бардыгын жашыруу үчүн тийип коюңуз"</string>
-    <string name="all_empty_alert" msgid="4087734950375192387">"Жаңы SIP каттоо эсебинин чоо-жайын киргизиңиз."</string>
+    <string name="all_empty_alert" msgid="4087734950375192387">"Жаңы SIP аккаунтунун чоо-жайын киргизиңиз."</string>
     <string name="empty_alert" msgid="6659484914371384024">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> талап кылынат жана бош калтырганга болбойт."</string>
     <string name="not_a_valid_port" msgid="7931422555587011830">"Порттун номери 1000 баштап 65534 чейин болушу керек."</string>
     <string name="no_internet_available" msgid="5523747991760017298">"SIP чалуу жайгаштыруу үчүн, адегенде Интернет туташууңузду текшериңиз."</string>

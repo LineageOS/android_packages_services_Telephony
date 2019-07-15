@@ -59,7 +59,7 @@
     <string name="transport_title" msgid="889155457465372527">"Тээврийн хэлбэр"</string>
     <string name="send_keepalive_title" msgid="599627072150501159">"Идэвхитэй байлгах мессеж илгээх"</string>
     <string name="advanced_settings" msgid="6622996380747040711">"Сонголтын тохиргоо"</string>
-    <string name="auth_username_title" msgid="8262491689004708265">"Гэрчлэлийн хэрэглэгчийн нэр"</string>
+    <string name="auth_username_title" msgid="8262491689004708265">"Баталгуужуулах хэрэглэгчийн нэр"</string>
     <string name="auth_username_summary" msgid="941160241371436473">"Гэрчлэлд ашигласан хэрэглэгчийн нэр"</string>
     <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;Тохируулаагүй&gt;"</string>
     <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;Тохируулаагүй&gt;"</string>

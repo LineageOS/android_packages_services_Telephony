@@ -605,7 +605,7 @@
     <string name="alert_dialog_no" msgid="1476091437797628703">"ਨਹੀਂ"</string>
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"ਖਾਰਜ ਕਰੋ"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"ਸੇਵਾ"</string>
-    <string name="voicemail_settings" msgid="72448049107749316">"ਸਥਾਪਤ ਕਰੋ"</string>
+    <string name="voicemail_settings" msgid="72448049107749316">"ਸੈੱਟਅੱਪ ਕਰੋ"</string>
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;ਸੈੱਟ ਨਹੀਂ ਕੀਤਾ&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"ਹੋਰ ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ਰਾਹੀਂ ਕਾਲ ਕਰ ਰਿਹਾ ਹੈ"</string>

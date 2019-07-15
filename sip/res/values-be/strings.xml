@@ -53,12 +53,12 @@
     <string name="domain_address_title" msgid="1968479941328225423">"Сервер"</string>
     <string name="username_title" msgid="6770064611005663470">"Імя карыстальніка"</string>
     <string name="password_title" msgid="5289013731515564295">"Пароль"</string>
-    <string name="display_name_title" msgid="579241787583079773">"Бачная назва"</string>
+    <string name="display_name_title" msgid="579241787583079773">"Бачнае імя"</string>
     <string name="proxy_address_title" msgid="6890163365640631841">"Адрас выходнага проксі-сервера"</string>
     <string name="port_title" msgid="6693965912656593862">"Нумар порта"</string>
-    <string name="transport_title" msgid="889155457465372527">"Тып транспарту"</string>
+    <string name="transport_title" msgid="889155457465372527">"Пратакол"</string>
     <string name="send_keepalive_title" msgid="599627072150501159">"Адправіць паведамленне праверкі актыўнасці"</string>
-    <string name="advanced_settings" msgid="6622996380747040711">"Неабавязковыя налады"</string>
+    <string name="advanced_settings" msgid="6622996380747040711">"Дадатковыя налады"</string>
     <string name="auth_username_title" msgid="8262491689004708265">"Імя карыстальніка для праверкі сапраўднасці"</string>
     <string name="auth_username_summary" msgid="941160241371436473">"Імя карыстальніка, якое выкарыстоўваецца для праверкі сапраўднасці"</string>
     <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;Не зададзены&gt;"</string>

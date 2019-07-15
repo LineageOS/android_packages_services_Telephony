@@ -26,7 +26,7 @@
     <string name="payphone" msgid="4793877574636445118">"Telefono publikoa"</string>
     <string name="onHold" msgid="9035493194749959955">"Zain"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI kodea hasi da"</string>
-    <string name="ussdRunning" msgid="485588686340541690">"USSD kodea exekutatzen…"</string>
+    <string name="ussdRunning" msgid="485588686340541690">"USSD kodea abiarazten…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI kodea bertan behera utzi da"</string>
     <string name="cancel" msgid="5044513931633602634">"Utzi"</string>
     <string name="enter_input" msgid="1810529547726803893">"USSD mezuak <xliff:g id="MIN_LEN">%1$d</xliff:g> eta <xliff:g id="MAX_LEN">%2$d</xliff:g> karaktere bitartekoa izan behar du. Saiatu berriro."</string>
@@ -97,7 +97,7 @@
     <string name="labelCW" msgid="6120513814915920200">"Deiak zain"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Deiak abian dauden bitartean, eman sarrerako deien berri"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Deiak abian dauden bitartean, eman sarrerako deien berri"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Dei-desbideratzeen ezarpenak"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Dei-desbideratzearen ezarpenak"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Deiak desbideratzeko ezarpenak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Dei-desbideratzea"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Desbideratu beti"</string>
@@ -487,8 +487,8 @@
     <string name="card_title_on_hold" msgid="821463117892339942">"Zain"</string>
     <string name="card_title_hanging_up" msgid="3999101620995182450">"Deia amaitzen"</string>
     <string name="card_title_in_call" msgid="6346543933068225205">"Deia abian"</string>
-    <string name="notification_voicemail_title" msgid="8933468752045550523">"Ahots-mezu berria"</string>
-    <string name="notification_voicemail_title_count" msgid="4366360747660929916">"Ahots-mezu berriak (<xliff:g id="COUNT">%d</xliff:g>)"</string>
+    <string name="notification_voicemail_title" msgid="8933468752045550523">"Erantzungailuko mezu berria"</string>
+    <string name="notification_voicemail_title_count" msgid="4366360747660929916">"Erantzungailuko mezu berriak (<xliff:g id="COUNT">%d</xliff:g>)"</string>
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"Markatu <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Erantzungailuaren zenbakia ezezaguna da"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Ez dago zerbitzurik"</string>
