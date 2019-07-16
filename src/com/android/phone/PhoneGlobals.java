@@ -527,6 +527,9 @@ public class PhoneGlobals extends ContextWrapper {
                 maybeTurnCellOn(context, isAirplaneNewlyOn);
                 break;
         }
+        for (Phone phone : PhoneFactory.getPhones()) {
+            phone.getServiceStateTracker().onAirplaneModeChanged(isAirplaneNewlyOn);
+        }
     }
 
     /*
