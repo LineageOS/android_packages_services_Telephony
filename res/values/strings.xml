@@ -1542,6 +1542,15 @@
          message is shown when an in-progress call is ended due to the battery being low. -->
     <string name="callFailed_low_battery">Video call ended due to low battery.</string>
 
+    <!-- In-call screen: error message shown when the user attempts to place an emergency call
+         over wifi calling (WFC), but emergency services are not available in the current
+         location. -->
+    <string name="callFailed_emergency_call_over_wfc_not_available">Emergency calls over Wi-Fi calling not available in this location.</string>
+
+    <!-- In-call screen: error message shown when the user attempts to place a call over wifi
+         calling (WFC), but wifi calling is not available in the current location. -->
+    <string name="callFailed_wfc_service_not_available_in_this_location">Wi-Fi calling is not available in this location.</string>
+
     <!-- The title for the change voicemail PIN activity -->
     <string name="change_pin_title">Change Voicemail PIN</string>
     <!-- The label for the continue button in change voicemail PIN activity -->
