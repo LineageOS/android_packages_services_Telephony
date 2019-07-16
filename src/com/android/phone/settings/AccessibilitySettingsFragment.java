@@ -33,6 +33,7 @@ import android.util.Log;
 import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.SubscriptionController;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.R;
 
@@ -109,8 +110,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             mButtonHac = null;
         }
 
-        if (PhoneGlobals.getInstance().phoneMgr
-                .isRttSupported(SubscriptionManager.getDefaultVoiceSubscriptionId())) {
+        if (shouldShowRttSetting()) {
             // TODO: this is going to be a on/off switch for now. Ask UX about how to integrate
             // this settings with TTY
             boolean rttOn = Settings.Secure.getInt(
@@ -190,6 +190,21 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             }
         }
         return false;
+    }
+
+    private boolean shouldShowRttSetting() {
+        int subscriptionId = SubscriptionManager.getDefaultVoiceSubscriptionId();
+        if (subscriptionId == SubscriptionManager.INVALID_SUBSCRIPTION_ID
+                || subscriptionId == SubscriptionManager.DEFAULT_SUBSCRIPTION_ID) {
+            for (int subId : SubscriptionController.getInstance().getActiveSubIdList(true)) {
+                if (PhoneGlobals.getInstance().phoneMgr.isRttSupported(subId)) {
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            return PhoneGlobals.getInstance().phoneMgr.isRttSupported(subscriptionId);
+        }
     }
 
     /**
