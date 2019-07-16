@@ -28,6 +28,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.ims.ImsManager;
@@ -113,6 +114,11 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
                 .isRttSupported(SubscriptionManager.getDefaultVoiceSubscriptionId())) {
             // TODO: this is going to be a on/off switch for now. Ask UX about how to integrate
             // this settings with TTY
+            if (TelephonyManager.getDefault().isNetworkRoaming(
+                    SubscriptionManager.getDefaultVoiceSubscriptionId())) {
+                mButtonRtt.setSummary(TextUtils.concat(getText(R.string.rtt_mode_summary), "\n",
+                        getText(R.string.no_rtt_when_roaming)));
+            }
             boolean rttOn = Settings.Secure.getInt(
                     mContext.getContentResolver(), Settings.Secure.RTT_CALLING_MODE, 0) != 0;
             mButtonRtt.setChecked(rttOn);
