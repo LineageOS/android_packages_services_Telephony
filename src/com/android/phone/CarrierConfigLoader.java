@@ -20,7 +20,6 @@ import static android.service.carrier.CarrierService.ICarrierServiceWrapper.KEY_
 import static android.service.carrier.CarrierService.ICarrierServiceWrapper.RESULT_ERROR;
 
 import android.annotation.NonNull;
-import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -40,7 +39,6 @@ import android.os.PersistableBundle;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
-import android.os.UserHandle;
 import android.preference.PreferenceManager;
 import android.service.carrier.CarrierIdentifier;
 import android.service.carrier.CarrierService;
@@ -523,7 +521,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         pkgFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
         pkgFilter.addAction(Intent.ACTION_PACKAGE_REPLACED);
         pkgFilter.addDataScheme("package");
-        context.registerReceiverAsUser(mPackageReceiver, UserHandle.ALL, pkgFilter, null, null);
+        context.registerReceiver(mPackageReceiver, pkgFilter);
 
         int numPhones = TelephonyManager.from(context).getPhoneCount();
         mConfigFromDefaultApp = new PersistableBundle[numPhones];
@@ -601,7 +599,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
         intent.putExtra(CarrierConfigManager.EXTRA_SLOT_INDEX, phoneId);
         log("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId);
-        ActivityManager.broadcastStickyIntent(intent, UserHandle.USER_ALL);
+        mContext.sendBroadcast(intent);
         mHasSentConfigChange[phoneId] = true;
     }
 
