@@ -1256,6 +1256,8 @@
        &lt;br>&lt;br> - RTT calls are saved as a message transcript
        &lt;br> - RTT is not available for video calls</string>
 
+    <string name="no_rtt_when_roaming">Note: RTT is not available while roaming</string>
+
     <!-- Service option entries.  -->
     <string-array name="tty_mode_entries">
         <item>TTY Off</item>
