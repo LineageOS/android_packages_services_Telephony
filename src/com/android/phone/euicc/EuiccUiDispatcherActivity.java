@@ -18,15 +18,15 @@ package com.android.phone.euicc;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.Activity;
+import android.app.AppGlobals;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.pm.IPackageManager;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.RemoteException;
-import android.os.ServiceManager;
+import android.permission.IPermissionManager;
 import android.service.euicc.EuiccService;
 import android.telephony.euicc.EuiccManager;
 import android.util.Log;
@@ -47,8 +47,7 @@ public class EuiccUiDispatcherActivity extends Activity {
             PackageManager.MATCH_SYSTEM_ONLY | PackageManager.MATCH_DEBUG_TRIAGED_MISSING
                     | PackageManager.GET_RESOLVED_FILTER;
 
-    private final IPackageManager mPackageManager = IPackageManager.Stub
-            .asInterface(ServiceManager.getService("package"));
+    private final IPermissionManager mPermissionManager = AppGlobals.getPermissionManager();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -137,7 +136,7 @@ public class EuiccUiDispatcherActivity extends Activity {
     @VisibleForTesting
     protected void grantDefaultPermissionsToActiveLuiApp(ActivityInfo activityInfo) {
         try {
-            mPackageManager.grantDefaultPermissionsToActiveLuiApp(
+            mPermissionManager.grantDefaultPermissionsToActiveLuiApp(
                     activityInfo.packageName, getUserId());
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to grant permissions to active LUI app.", e);
@@ -150,7 +149,7 @@ public class EuiccUiDispatcherActivity extends Activity {
         try {
             Set<String> luiApps = getAllLuiAppPackageNames(intent);
             String[] luiAppsArray = luiApps.toArray(new String[luiApps.size()]);
-            mPackageManager.revokeDefaultPermissionsFromLuiApps(luiAppsArray, getUserId());
+            mPermissionManager.revokeDefaultPermissionsFromLuiApps(luiAppsArray, getUserId());
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to revoke LUI app permissions.");
             throw e.rethrowAsRuntimeException();
