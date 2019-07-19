@@ -33,7 +33,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.android.internal.telephony.Phone;
 import com.android.internal.util.ArrayUtils;
 
 import java.util.ArrayList;
@@ -228,8 +227,8 @@ class ShortcutViewUtils {
         PhoneAccountHandle defaultHandle = telecomManager.getDefaultOutgoingPhoneAccount(
                 PhoneAccount.SCHEME_TEL);
         if (defaultHandle != null) {
-            PhoneInfo phone = loadPhoneInfo(defaultHandle, telephonyManager, telecomManager,
-                    promotedLists);
+            PhoneInfo phone = loadPhoneInfo(context, defaultHandle, telephonyManager,
+                    telecomManager, promotedLists);
             if (phone.isSufficientForEmergencyCall(context)) {
                 return phone;
             }
@@ -243,7 +242,7 @@ class ShortcutViewUtils {
         List<PhoneAccountHandle> allHandles = telecomManager.getCallCapablePhoneAccounts();
         if (allHandles != null && !allHandles.isEmpty()) {
             for (PhoneAccountHandle handle : allHandles) {
-                PhoneInfo phone = loadPhoneInfo(handle, telephonyManager, telecomManager,
+                PhoneInfo phone = loadPhoneInfo(context, handle, telephonyManager, telecomManager,
                         promotedLists);
                 if (phone.isSufficientForEmergencyCall(context)) {
                     return phone;
@@ -275,8 +274,11 @@ class ShortcutViewUtils {
         return false;
     }
 
-    private static PhoneInfo loadPhoneInfo(@NonNull PhoneAccountHandle handle,
-            @NonNull TelephonyManager telephonyManager, @NonNull TelecomManager telecomManager,
+    private static PhoneInfo loadPhoneInfo(
+            @NonNull Context context,
+            @NonNull PhoneAccountHandle handle,
+            @NonNull TelephonyManager telephonyManager,
+            @NonNull TelecomManager telecomManager,
             Map<Integer, List<EmergencyNumber>> promotedLists) {
         boolean canPlaceEmergencyCall = false;
         int subId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
@@ -296,21 +298,20 @@ class ShortcutViewUtils {
         }
 
         if (promotedLists != null) {
-            emergencyNumberList = removeCarrierSpecificPrefixes(handle, promotedLists.get(subId));
+            emergencyNumberList = removeCarrierSpecificPrefixes(context, subId,
+                    promotedLists.get(subId));
         }
 
         return new PhoneInfo(handle, canPlaceEmergencyCall, subId, countryIso, emergencyNumberList);
     }
 
     @Nullable
-    private static String[] getCarrierSpecificPrefixes(@NonNull PhoneAccountHandle handle) {
-        Phone phone = PhoneUtils.getPhoneForPhoneAccountHandle(handle);
-        CarrierConfigManager configMgr = phone.getContext().getSystemService(
-                CarrierConfigManager.class);
+    private static String[] getCarrierSpecificPrefixes(@NonNull Context context, int subId) {
+        CarrierConfigManager configMgr = context.getSystemService(CarrierConfigManager.class);
         if (configMgr == null) {
             return null;
         }
-        PersistableBundle b = configMgr.getConfigForSubId(phone.getSubId());
+        PersistableBundle b = configMgr.getConfigForSubId(subId);
         return b == null ? null : b.getStringArray(
                 CarrierConfigManager.KEY_EMERGENCY_NUMBER_PREFIX_STRING_ARRAY);
     }
@@ -320,9 +321,10 @@ class ShortcutViewUtils {
     // prefixes.
     @NonNull
     private static List<EmergencyNumber> removeCarrierSpecificPrefixes(
-            @NonNull PhoneAccountHandle handle,
+            @NonNull Context context,
+            int subId,
             @NonNull List<EmergencyNumber> emergencyNumberList) {
-        String[] prefixes = getCarrierSpecificPrefixes(handle);
+        String[] prefixes = getCarrierSpecificPrefixes(context, subId);
         if (ArrayUtils.isEmpty(prefixes)) {
             return emergencyNumberList;
         }
