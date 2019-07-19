@@ -600,11 +600,8 @@ countries {
 countries {
   iso_code: "DE"
   eccs {
-    phone_number: "110"
-    types: POLICE
-  }
-  eccs {
     phone_number: "112"
+    types: POLICE
     types: AMBULANCE
     types: FIRE
   }
