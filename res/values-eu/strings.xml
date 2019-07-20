@@ -556,6 +556,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Deietan testua bidaltzeko eginbidea"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Baimendu mezuak bidali eta jasotzea ahots-deien barruan"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Deietan testua bidaltzeko eginbideak deitzaile gorrei, entzumen-arazoak dituztenei, hitz egiteko ezintasunen bat dutenei edota ahotsaz gain beste makuluren bat behar dutenei laguntzen die.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lortu informazio gehiago&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Deietan testua bidaltzeko eginbidearekin egindako deiak mezu-transkripzio gisa gordetzen dira.\n       &lt;br&gt; - Deietan testua bidaltzeko eginbidea ez da bateragarria bideo-deiekin."</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Oharra: Deietan testua bidaltzeko eginbidea ez dago erabilgarri ibiltaritzan"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desaktibatuta"</item>
     <item msgid="3971695875449640648">"TTY osoa"</item>

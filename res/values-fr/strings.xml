@@ -550,10 +550,11 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Contact importé"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Échec de l\'importation du contact."</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Assistance auditive"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Activer la compatibilité avec les appareils auditifs"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Activer la compatibilité avec les prothèses auditives"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Appel texte en temps réel"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Autoriser l\'échange de messages pendant les appels vocaux"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"La fonctionnalité de texte en temps réel vient en aide aux personnes sourdes, malentendantes, qui ont un trouble de la parole, ou qui ont besoin d\'une transcription en plus de la voix.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;En savoir plus&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les appels texte en temps réel sont enregistrés sous forme transcrite\n       &lt;br&gt; - Le mode texte en temps réel n\'est pas disponible pour les appels vidéo"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Remarque : La fonctionnalité de texte en temps réel n\'est pas disponible en itinérance"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Mode TTY désactivé"</item>
     <item msgid="3971695875449640648">"TTY complet"</item>

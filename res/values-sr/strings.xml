@@ -554,6 +554,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Позив са текстом у реалном времену (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Дозволите размену порука у аудио позиву"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Текст у реалном времену (RTT) помаже позиваоцима који су глуви, слабо чују, имају тешкоће у говору или којима је потребно нешто више од гласа.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Сазнајте више&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT позиви се чувају као транскрипт поруке\n       &lt;br&gt; – RTT није доступан за видео позиве"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Напомена: Текст у реалном времену није доступан у ромингу"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY је искључен"</item>
     <item msgid="3971695875449640648">"Комплетни TTY"</item>

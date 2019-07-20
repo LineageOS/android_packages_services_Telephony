@@ -556,6 +556,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Chiamate con Real-time text (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Consenti l\'utilizzo di messaggi durante le chiamate vocali"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT aiuta i chiamanti con disabilità uditive o del linguaggio e le persone che hanno bisogno di un supporto scritto oltre alla voce.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Ulteriori informazioni&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Le chiamate RTT vengono salvare come una trascrizione in messaggi\n       &lt;br&gt; - RTT non è disponibile per le videochiamate"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Nota: la funzionalità RTT non è disponibile in roaming"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY disattivato"</item>
     <item msgid="3971695875449640648">"TTY completo"</item>

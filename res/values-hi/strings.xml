@@ -173,7 +173,7 @@
     <string name="not_allowed" msgid="5613353860205691579">"आपका सिम कार्ड इस नेटवर्क पर कनेक्शन की अनुमति नहीं देता है."</string>
     <string name="connect_later" msgid="2308119155752343975">"अभी इस नेटवर्क से कनेक्ट नहीं कर सकते. बाद में फिर से प्रयास करें."</string>
     <string name="registration_done" msgid="495135664535876612">"नेटवर्क पर पंजीकृत."</string>
-    <string name="already_auto" msgid="6067116884321285507">"पहले से ऑटोमैटिक चयन में है."</string>
+    <string name="already_auto" msgid="6067116884321285507">"पहले से अपने आप चुनाव के लिए है."</string>
     <string name="select_automatically" msgid="1046727200631770962">"अपने आप नेटवर्क चुनें"</string>
     <string name="manual_mode_disallowed_summary" msgid="70662262085937277">"%1$s से कनेक्ट किए जाने पर उपलब्ध नहीं है"</string>
     <string name="network_select_title" msgid="7733107364757544558">"नेटवर्क"</string>
@@ -375,9 +375,9 @@
     <string name="network_lte" msgid="7702681952521375754">"LTE (सुझाये गये)"</string>
     <string name="network_4G" msgid="2723512640529983138">"4G (सुझाये गये)"</string>
     <string name="network_global" msgid="1323190488685355309">"वैश्विक"</string>
-    <string name="cdma_system_select_title" msgid="5757657769327732833">"सिस्टम चयन"</string>
+    <string name="cdma_system_select_title" msgid="5757657769327732833">"सिस्टम चुनें"</string>
     <string name="cdma_system_select_summary" msgid="60460043745797517">"CDMA रोमिंग मोड बदलें"</string>
-    <string name="cdma_system_select_dialogtitle" msgid="6083355415165359075">"सिस्टम चयन"</string>
+    <string name="cdma_system_select_dialogtitle" msgid="6083355415165359075">"सिस्टम चुनें"</string>
   <string-array name="cdma_system_select_choices">
     <item msgid="176474317493999285">"केवल होम"</item>
     <item msgid="1205664026446156265">"स्वचालित"</item>
@@ -419,7 +419,7 @@
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"अपने आप फिर से प्रयास मोड सक्षम करें"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"वीडियो कॉल के दौरान TTY मोड में बदलाव की अनुमति नहीं है"</string>
     <string name="menu_add" msgid="1882023737425114762">"संपर्क जोड़ें"</string>
-    <string name="menu_edit" msgid="7143003705504672374">"संपर्क संपादित करें"</string>
+    <string name="menu_edit" msgid="7143003705504672374">"संपर्क में बदलाव करें"</string>
     <string name="menu_delete" msgid="3977150783449642851">"संपर्क हटाएं"</string>
     <string name="menu_dial" msgid="3223106222819685808">"संपर्क डायल करें"</string>
     <string name="get_pin2" msgid="8204677063922225311">"पिन2 लिखें"</string>
@@ -429,7 +429,7 @@
     <string name="add_fdn_contact" msgid="2481915899633353976">"फ़िक्स्ड डायलिंग नंबर जोड़ें"</string>
     <string name="adding_fdn_contact" msgid="7627379633721940991">"फ़िक्स्ड डायलिंग नंबर जोड़ रहा है..."</string>
     <string name="fdn_contact_added" msgid="7458335758501736665">"फ़िक्स्ड डायलिंग नंबर जोड़ा गया."</string>
-    <string name="edit_fdn_contact" msgid="7976936035587081480">"फ़िक्स्ड डायलिंग नंबर संपादित करें"</string>
+    <string name="edit_fdn_contact" msgid="7976936035587081480">"फ़िक्स्ड डायलिंग नंबर में बदलाव करें"</string>
     <string name="updating_fdn_contact" msgid="8370929876849803600">"फ़िक्स्ड डायलिंग नंबर के लिए नई जानकारी…"</string>
     <string name="fdn_contact_updated" msgid="5497828782609005017">"फ़िक्स्ड डायलिंग नंबर के लिए नई जानकारी."</string>
     <string name="delete_fdn_contact" msgid="6668958073074151717">"फ़िक्स्ड डायलिंग नंबर हटाएं"</string>
@@ -554,6 +554,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"(आरटीटी) कॉल से रीयल-टाइम में मैसेज भेजें"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"वॉइस कॉल में मैसेज भेजने की अनुमति दें"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"आरटीटी उन कॉल करने वालों की मदद करता है, जो सुन नहीं सकते हैं, ऊंचा सुनते हैं, जिन्हें बोलने में दिक्कत है या जिनके लिए सिर्फ़ आवाज़ काफ़ी नहीं होती.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ज़्यादा  जानें&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - आरटीटी कॉल, मैसेज लेख के रूप में सेव किए जाते हैं\n       &lt;br&gt; - वीडियो कॉल के लिए आरटीटी उपलब्ध नहीं है"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"नोट: रोमिंग के दौरान आरटीटी (रीयल-टाइम में मैसेज भेजना) सुविधा उपलब्ध नहीं है"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY बंद"</item>
     <item msgid="3971695875449640648">"TTY पूरा हुआ"</item>

@@ -554,6 +554,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Обаждане с текстово съобщение в реално време (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Позволяване на съобщения в рамките на гласово обаждане"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT подпомага обаждащи се, които са глухи, имат затруднения със слуха, говорно увреждане или се нуждаят от повече от само глас.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Научете повече&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT обажданията се запазват като препис на съобщение.\n       &lt;br&gt; – RTT не е налице за видеообаждания."</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Забележка: ТСРВ не е налице при роуминг"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY е изкл."</item>
     <item msgid="3971695875449640648">"Пълен TTY режим"</item>

@@ -554,6 +554,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Kutuma SMS katika Muda Halisi (RTT) wakati wa kupiga simu"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Ruhusu uandikaji wa ujumbe wakati unapiga simu"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT huwasaidia wapigaji simu ambao ni viziwi, wasioweza kusikia vyema, wenye matatizo ya kuzungumza au wanaohitaji kufanya zaidi ya kuzungumza.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Pata maelezo zaidi&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Simu za RTT huhifadhiwa kama manukuu ya ujumbe\n       &lt;br&gt; - RTT haipatikani kwa simu za video"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Kumbuka: RTT haipatikani wakati unatumia mitandao ya ng\'ambo"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Zima TTY"</item>
     <item msgid="3971695875449640648">"TTY Kamili"</item>
