@@ -556,6 +556,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Opkald via sms i realtid"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Tillad afsendelse af sms-beskeder i et taleopkald"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Sms i realtid hjælper personer, som er døve, hørehæmmede, talehandicappede, eller som har brug for mere end bare tale, med at foretage opkald.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Få flere oplysninger&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Opkald via sms i realtid gemmes som en beskedtransskription\n       &lt;br&gt; – Sms i realtid er ikke tilgængeligt til videoopkald"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Bemærk! RTT er ikke tilgængeligt under roaming"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY fra"</item>
     <item msgid="3971695875449640648">"Fuld TTY-tilstand"</item>

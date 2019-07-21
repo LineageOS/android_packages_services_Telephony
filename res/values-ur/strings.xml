@@ -554,6 +554,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"‏ریئل ٹائم ٹیکسٹ (RTT) کال"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"صوتی کال کے اندر پیغام رسانی کی اجازت دیں"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"‏RTT ایسے کالرز کو اسسٹ کرتا ہے جو بہرے ہیں، اونچا سنتے ہیں، بولنے سے معزور ہیں یا ان کیلئے صرف آواز ہی کافی نہیں ہے۔‎&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;‎مزید جانیں‎&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT کالز پیغام ٹرانسکرپٹ کے بطور محفوظ کی جاتی ہیں\n       ‎&lt;br&gt; - RTT ویڈیو کالز کیلئے دستیاب نہیں ہے"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"‏نوٹ: رومنگ میں ہوتے ہوئے RTT دستیاب نہیں ہے"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"‏TTY آف"</item>
     <item msgid="3971695875449640648">"‏TTY مکمل"</item>

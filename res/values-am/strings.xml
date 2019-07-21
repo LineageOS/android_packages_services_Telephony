@@ -554,6 +554,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"ቅጽበታዊ ጽሁፍ (አርቲቲ) ጥሪ"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"በድምጽ ጥሪ ውስጥ መልዕክት መላክን ፍቀድ"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"አርቲቲ መስማት የተሳናቸው፣ የመስማት ችግር ያለባቸው፣ መስማት ያሚያዳግታቸው እና የንግግር አካል ጉዳት ያለባቸውን ወይም ከድምጽ በላይ የሚያስፈልጋቸውን ደዋዮች ይረዳል።&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;የበለጠ ለመረዳት&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - አርቲቲ ጥሪዎች እንደ የመልዕክት ጽሁፍ ግልባጭ ይቀመጣሉ\n       &lt;br&gt; - አርቲቲ ለቪዲዮ ጥሪዎች አይገኝም"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"ማስታወሻ፦ አርቲቲ በዝውውር ላይ እያሉ አይገኝም።"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ጠፍቷል"</item>
     <item msgid="3971695875449640648">"TTY ሙሉ"</item>

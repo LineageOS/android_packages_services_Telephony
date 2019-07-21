@@ -556,6 +556,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"RTT զանգ (հաղորդագրություն զանգի միջոցով)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Թույլատրել հաղորդագրությունների ուղարկումն ու ստացումը զանգի միջոցով"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT-ն օգնում է այն բաժանորդներին, ովքեր լսողության և խոսքի դժվարություններ ունեն, կամ ովքեր լոկ ձայնով չեն բավարարվում:&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Իմանալ ավելին&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT զանգերը պահվում են որպես հաղորդագրության տառադրումներ\n       &lt;br&gt; – RTT-ն հասանելի չէ տեսազանգի ժամանակ"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"RTT գործառույթը հասանելի չէ ռոումինգում"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY-ն անջատված է"</item>
     <item msgid="3971695875449640648">"Լիարժեք TTY"</item>
