@@ -92,7 +92,7 @@ public class NotificationMgr {
     static final int NETWORK_SELECTION_NOTIFICATION = 2;
     static final int VOICEMAIL_NOTIFICATION = 3;
     static final int CALL_FORWARD_NOTIFICATION = 4;
-    static final int DATA_DISCONNECTED_ROAMING_NOTIFICATION = 5;
+    static final int DATA_ROAMING_NOTIFICATION = 5;
     static final int SELECTED_OPERATOR_FAIL_NOTIFICATION = 6;
     static final int LIMITED_SIM_FUNCTION_NOTIFICATION = 7;
 
@@ -569,23 +569,39 @@ public class NotificationMgr {
     }
 
     /**
-     * Shows the "data disconnected due to roaming" notification, which
+     * Shows either:
+     * 1) the "Data roaming is on" notification, which
+     * appears when you're roaming and you have the "data roaming" feature turned on for the
+     * given {@code subId}.
+     * or
+     * 2) the "data disconnected due to roaming" notification, which
      * appears when you lose data connectivity because you're roaming and
      * you have the "data roaming" feature turned off for the given {@code subId}.
+     * @param subId which subscription it's notifying about.
+     * @param roamingOn whether currently roaming is on or off. If true, we show notification
+     *                  1) above; else we show notification 2).
      */
-    /* package */ void showDataDisconnectedRoaming(int subId) {
-        if (DBG) log("showDataDisconnectedRoaming()...");
+    /* package */ void showDataRoamingNotification(int subId, boolean roamingOn) {
+        if (DBG) {
+            log("showDataRoamingNotification() roaming " + (roamingOn ? "on" : "off")
+                    + " on subId " + subId);
+        }
 
         // "Mobile network settings" screen / dialog
         Intent intent = new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS);
         intent.putExtra(Settings.EXTRA_SUB_ID, subId);
         PendingIntent contentIntent = PendingIntent.getActivity(mContext, subId, intent, 0);
 
-        final CharSequence contentText = mContext.getText(R.string.roaming_reenable_message);
+        CharSequence contentTitle = mContext.getText(roamingOn
+                ? R.string.roaming_on_notification_title
+                : R.string.roaming_notification_title);
+        CharSequence contentText = mContext.getText(roamingOn
+                ? R.string.roaming_enabled_message
+                : R.string.roaming_reenable_message);
 
         final Notification.Builder builder = new Notification.Builder(mContext)
                 .setSmallIcon(android.R.drawable.stat_sys_warning)
-                .setContentTitle(mContext.getText(R.string.roaming_notification_title))
+                .setContentTitle(contentTitle)
                 .setColor(mContext.getResources().getColor(R.color.dialer_theme_color))
                 .setContentText(contentText)
                 .setChannel(NotificationChannelController.CHANNEL_ID_MOBILE_DATA_STATUS)
@@ -593,15 +609,15 @@ public class NotificationMgr {
         final Notification notif =
                 new Notification.BigTextStyle(builder).bigText(contentText).build();
         mNotificationManager.notifyAsUser(
-                null /* tag */, DATA_DISCONNECTED_ROAMING_NOTIFICATION, notif, UserHandle.ALL);
+                null /* tag */, DATA_ROAMING_NOTIFICATION, notif, UserHandle.ALL);
     }
 
     /**
-     * Turns off the "data disconnected due to roaming" notification.
+     * Turns off the "data disconnected due to roaming" or "Data roaming is on" notification.
      */
-    /* package */ void hideDataDisconnectedRoaming() {
-        if (DBG) log("hideDataDisconnectedRoaming()...");
-        mNotificationManager.cancel(DATA_DISCONNECTED_ROAMING_NOTIFICATION);
+    /* package */ void hideDataRoamingNotification() {
+        if (DBG) log("hideDataRoamingNotification()...");
+        mNotificationManager.cancel(DATA_ROAMING_NOTIFICATION);
     }
 
     /**

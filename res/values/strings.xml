@@ -564,8 +564,13 @@
          lose data connectivity because you're roaming and you have the
          "data roaming" feature turned off. -->
     <string name="roaming_reenable_message">Data roaming is turned off. Tap to turn on.</string>
+    <!-- Mobile network settings UI: notification message shown when you
+         are roaming and you have the "data roaming" feature turned on. -->
+    <string name="roaming_enabled_message">Roaming charges may apply. Tap to modify.</string>
     <!-- Roaming notification tile, notifying lost of roaming data connection -->
     <string name="roaming_notification_title">Lost mobile data connection</string>
+    <!-- Roaming notification tile, notifying continued roaming data connection -->
+    <string name="roaming_on_notification_title">Data roaming is on</string>
     <!-- Mobile network settings screen, dialog message when user selects the Data roaming check box -->
     <string name="roaming_warning">You may incur significant charges.</string>
     <!-- Mobile network settings screen, message asking the user to check their pricing with their Carrier, when enabling Data roaming. -->
