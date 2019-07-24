@@ -49,6 +49,7 @@ import android.os.PersistableBundle;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
+import android.os.ServiceSpecificException;
 import android.os.ShellCallback;
 import android.os.SystemProperties;
 import android.os.UserHandle;
@@ -94,6 +95,7 @@ import android.telephony.data.ApnSetting;
 import android.telephony.data.ApnSetting.ApnType;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.gsm.GsmCellLocation;
+import android.telephony.ims.ImsException;
 import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsConfig;
@@ -111,7 +113,6 @@ import android.util.Log;
 import android.util.Pair;
 import android.util.Slog;
 
-import com.android.ims.ImsException;
 import com.android.ims.ImsManager;
 import com.android.ims.internal.IImsServiceFeatureCallback;
 import com.android.internal.telephony.CallManager;
@@ -2854,6 +2855,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                     .addRegistrationCallbackForSubscription(c, subId);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(token);
         }
@@ -2870,7 +2873,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
                 ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                         .removeRegistrationCallbackForSubscription(c, subId);
-            } catch (IllegalArgumentException e) {
+            } catch (ImsException e) {
                 Log.i(LOG_TAG, "unregisterImsRegistrationCallback: " + subId
                         + "is inactive, ignoring unregister.");
                 // If the subscription is no longer active, just return, since the callback
@@ -2888,6 +2891,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                     .addCapabilitiesCallbackForSubscription(c, subId);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(token);
         }
@@ -2905,7 +2910,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
                 ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                         .removeCapabilitiesCallbackForSubscription(c, subId);
-            } catch (IllegalArgumentException e) {
+            } catch (ImsException e) {
                 Log.i(LOG_TAG, "unregisterMmTelCapabilityCallback: " + subId
                         + "is inactive, ignoring unregister.");
                 // If the subscription is no longer active, just return, since the callback
@@ -2922,10 +2927,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             return ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).queryMmTelCapability(capability, regTech);
-        } catch (ImsException e) {
+        } catch (com.android.ims.ImsException e) {
             Log.w(LOG_TAG, "IMS isCapable - service unavailable: " + e.getMessage());
             return false;
-        } catch (IllegalArgumentException e) {
+        } catch (ImsException e) {
             Log.i(LOG_TAG, "isCapable: " + subId + " is inactive, returning false.");
             return false;
         } finally {
@@ -2954,6 +2959,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             return ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).isEnhanced4gLteModeSettingEnabledByUser();
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(token);
         }
@@ -2968,6 +2975,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).setEnhanced4gLteModeSetting(isEnabled);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -2979,8 +2988,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
-            return ImsManager.getInstance(mApp,
-                    getSlotIndexOrException(subId)).isVtEnabledByUser();
+            return ImsManager.getInstance(mApp, getSlotIndexOrException(subId)).isVtEnabledByUser();
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -2994,6 +3004,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp, getSlotIndexOrException(subId)).setVtSetting(isEnabled);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3007,6 +3019,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             return ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).isWfcEnabledByUser();
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3020,6 +3034,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp, getSlotIndexOrException(subId)).setWfcSetting(isEnabled);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3033,6 +3049,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             return ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).isWfcRoamingEnabledByUser();
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3047,6 +3065,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).setWfcRoamingSetting(isEnabled);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3061,6 +3081,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).setWfcNonPersistent(isCapable, mode);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3074,6 +3096,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             return ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).getWfcMode(false /*isRoaming*/);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3088,6 +3112,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).setWfcMode(mode, false /*isRoaming*/);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3101,6 +3127,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             return ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).getWfcMode(true /*isRoaming*/);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3115,6 +3143,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).setWfcMode(mode, true /*isRoaming*/);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3127,8 +3157,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
-            ImsManager.getInstance(mApp,
-                    getSlotIndexOrException(subId)).setRttEnabled(isEnabled);
+            ImsManager.getInstance(mApp, getSlotIndexOrException(subId)).setRttEnabled(isEnabled);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3142,6 +3173,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             return ImsManager.getInstance(mApp,
                     getSlotIndexOrException(subId)).isTtyOnVoLteCapable();
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3155,6 +3188,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                     .addProvisioningCallbackForSubscription(callback, subId);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3171,7 +3206,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                     .removeProvisioningCallbackForSubscription(callback, subId);
-        } catch (IllegalArgumentException e) {
+        } catch (ImsException e) {
             Log.i(LOG_TAG, "unregisterImsProvisioningChangedCallback: " + subId
                     + "is inactive, ignoring unregister.");
             // If the subscription is no longer active, just return, since the callback will already
@@ -3230,7 +3265,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     cacheMmTelCapabilityProvisioning(subId, capability, tech, isProvisioned);
                     try {
                         ims.changeMmTelCapability(capability, tech, isProvisioned);
-                    } catch (ImsException e) {
+                    } catch (com.android.ims.ImsException e) {
                         loge("setImsProvisioningStatusForCapability: couldn't change UT capability"
                                 + ", Exception" + e.getMessage());
                     }
@@ -3418,7 +3453,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return ImsConfigImplBase.CONFIG_RESULT_UNKNOWN;
             }
             return ImsManager.getInstance(mApp, slotId).getConfigInterface().getConfigInt(key);
-        } catch (ImsException e) {
+        } catch (com.android.ims.ImsException e) {
             Log.w(LOG_TAG, "getImsProvisioningInt: ImsService is not available for subscription '"
                     + subId + "' for key:" + key);
             return ImsConfigImplBase.CONFIG_RESULT_UNKNOWN;
@@ -3443,7 +3478,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return ProvisioningManager.STRING_QUERY_RESULT_ERROR_GENERIC;
             }
             return ImsManager.getInstance(mApp, slotId).getConfigInterface().getConfigString(key);
-        } catch (ImsException e) {
+        } catch (com.android.ims.ImsException e) {
             Log.w(LOG_TAG, "getImsProvisioningString: ImsService is not available for sub '"
                     + subId + "' for key:" + key);
             return ProvisioningManager.STRING_QUERY_RESULT_ERROR_NOT_READY;
@@ -3469,7 +3504,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return ImsConfigImplBase.CONFIG_RESULT_FAILED;
             }
             return ImsManager.getInstance(mApp, slotId).getConfigInterface().setConfig(key, value);
-        } catch (ImsException e) {
+        } catch (com.android.ims.ImsException e) {
             Log.w(LOG_TAG, "setImsProvisioningInt: ImsService unavailable for sub '" + subId
                     + "' for key:" + key);
             return ImsConfigImplBase.CONFIG_RESULT_FAILED;
@@ -3495,7 +3530,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return ImsConfigImplBase.CONFIG_RESULT_FAILED;
             }
             return ImsManager.getInstance(mApp, slotId).getConfigInterface().setConfig(key, value);
-        } catch (ImsException e) {
+        } catch (com.android.ims.ImsException e) {
             Log.w(LOG_TAG, "setImsProvisioningString: ImsService unavailable for sub '" + subId
                     + "' for key:" + key);
             return ImsConfigImplBase.CONFIG_RESULT_FAILED;
@@ -3504,10 +3539,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    private int getSlotIndexOrException(int subId) throws IllegalArgumentException {
+    private int getSlotIndexOrException(int subId) throws ImsException {
         int slotId = SubscriptionManager.getSlotIndex(subId);
         if (!SubscriptionManager.isValidSlotIndex(slotId)) {
-            throw new IllegalArgumentException("Invalid Subscription Id, subId=" + subId);
+            throw new ImsException("Invalid Subscription Id, subId=" + subId,
+                    ImsException.CODE_ERROR_INVALID_SUBSCRIPTION);
         }
         return slotId;
     }
