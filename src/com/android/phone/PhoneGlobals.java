@@ -46,6 +46,7 @@ import android.telecom.TelecomManager;
 import android.telephony.AnomalyReporter;
 import android.telephony.CarrierConfigManager;
 import android.telephony.ServiceState;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.data.ApnSetting;
@@ -73,6 +74,7 @@ import com.android.services.telephony.sip.SipUtil;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Global state for the telephony subsystem when running in the primary
@@ -649,6 +651,7 @@ public class PhoneGlobals extends ContextWrapper {
                 // Roaming status could be overridden by carrier config, so we need to update it.
                 if (VDBG) Log.v(LOG_TAG, "carrier config changed.");
                 updateDataRoamingStatus();
+                updateLimitedSimFunctionForDualSim();
             } else if (action.equals(TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED)) {
                 // We also need to pay attention when default data subscription changes.
                 if (VDBG) Log.v(LOG_TAG, "default data sub changed.");
@@ -753,6 +756,38 @@ public class PhoneGlobals extends ContextWrapper {
             mDataRoamingNotifLog.log("Hide. data allowed=" + dataAllowed + ", reasons=" + reasons);
             mHandler.sendEmptyMessage(EVENT_DATA_ROAMING_OK);
         }
+    }
+
+    private void updateLimitedSimFunctionForDualSim() {
+        if (DBG) Log.d(LOG_TAG, "updateLimitedSimFunctionForDualSim");
+        // check conditions to display limited SIM function notification under dual SIM
+        SubscriptionManager subMgr = (SubscriptionManager) getSystemService(
+                Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        List<SubscriptionInfo> subList = subMgr.getActiveSubscriptionInfoList(false);
+        if (subList != null && subList.size() > 1) {
+            CarrierConfigManager configMgr = (CarrierConfigManager)
+                    getSystemService(Context.CARRIER_CONFIG_SERVICE);
+            for (SubscriptionInfo info : subList) {
+                PersistableBundle b = configMgr.getConfigForSubId(info.getSubscriptionId());
+                if (b != null) {
+                    if (b.getBoolean(CarrierConfigManager
+                            .KEY_LIMITED_SIM_FUNCTION_NOTIFICATION_FOR_DSDS_BOOL)) {
+                        notificationMgr.showLimitedSimFunctionWarningNotification(
+                                info.getSubscriptionId(),
+                                info.getDisplayName().toString());
+                    } else {
+                        notificationMgr.dismissLimitedSimFunctionWarningNotification(
+                                info.getSubscriptionId());
+                    }
+                }
+            }
+        } else {
+            // cancel notifications for all subs
+            notificationMgr.dismissLimitedSimFunctionWarningNotification(
+                    SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        }
+        notificationMgr.dismissLimitedSimFunctionWarningNotificationForInactiveSubs();
+
     }
 
     public Phone getPhoneInEcm() {
