@@ -2033,7 +2033,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private int getTargetSdk(String packageName) {
         try {
             final ApplicationInfo ai = mApp.getPackageManager().getApplicationInfoAsUser(
-                    packageName, 0, UserHandle.getUserId(Binder.getCallingUid()));
+                    packageName, 0, UserHandle.getUserHandleForUid(Binder.getCallingUid()));
             if (ai != null) return ai.targetSdkVersion;
         } catch (PackageManager.NameNotFoundException unexpected) {
             loge("Failed to get package info for pkg="
