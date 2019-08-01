@@ -44,7 +44,7 @@
     <!-- Dark variant of the action bar color.  Ensure this stays in sync with Dialer version. -->
     <color name="actionbar_background_color_dark">#ffffff</color>
     <!-- Color for icons in the actionbar. Ensure this stays in sync with Dialer version. -->
-    <color name="actionbar_icon_color">#ffffff</color>
+    <color name="actionbar_icon_color">#5f6368</color>
 
     <!-- Color for the setting text. -->
     <color name="setting_primary_color">#333333</color>
