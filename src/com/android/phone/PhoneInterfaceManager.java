@@ -4903,7 +4903,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     packages = pm.getInstalledPackagesAsUser(
                         PackageManager.MATCH_DISABLED_COMPONENTS
                             | PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS
-                            | PackageManager.GET_SIGNATURES, UserHandle.USER_SYSTEM);
+                            | PackageManager.GET_SIGNING_CERTIFICATES,
+                            UserHandle.USER_SYSTEM);
                 }
                 for (int p = packages.size() - 1; p >= 0; p--) {
                     PackageInfo pkgInfo = packages.get(p);
