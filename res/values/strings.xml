@@ -568,8 +568,13 @@
          lose data connectivity because you're roaming and you have the
          "data roaming" feature turned off. -->
     <string name="roaming_reenable_message">Data roaming is turned off. Tap to turn on.</string>
+    <!-- Mobile network settings UI: notification message shown when you
+         are roaming and you have the "data roaming" feature turned on. -->
+    <string name="roaming_enabled_message">Roaming charges may apply. Tap to modify.</string>
     <!-- Roaming notification tile, notifying lost of roaming data connection -->
     <string name="roaming_notification_title">Lost mobile data connection</string>
+    <!-- Roaming notification tile, notifying continued roaming data connection -->
+    <string name="roaming_on_notification_title">Data roaming is on</string>
     <!-- Mobile network settings screen, dialog message when user selects the Data roaming check box -->
     <string name="roaming_warning">You may incur significant charges.</string>
     <!-- Mobile network settings screen, message asking the user to check their pricing with their Carrier, when enabling Data roaming. -->
@@ -578,10 +583,10 @@
     <string name="roaming_alert_title">Allow data roaming?</string>
     <!-- Notification title for limited sim function during dual sim -->
     <string name="limited_sim_function_notification_title">Limited SIM functionality</string>
-    <!-- Notification message for limited sim function during dual sim -->
+    <!-- Notification message for limited sim function during dual sim [CHAR LIMIT=80]-->
     <string name="limited_sim_function_with_phone_num_notification_message"><xliff:g id="carrier_name">%1$s</xliff:g> calls and data services may be blocked while using <xliff:g id="phone_number">%2$s</xliff:g>.</string>
-    <!-- Notification message for limited sim function during dual sim -->
-    <string name="limited_sim_function_notification_message"><xliff:g id="carrier_name">%1$s</xliff:g> calls and data services may be blocked while using another SIM. Tap to make changes.</string>
+    <!-- Notification message for limited sim function during dual sim [CHAR LIMIT=80]-->
+    <string name="limited_sim_function_notification_message"><xliff:g id="carrier_name">%1$s</xliff:g> calls and data services may be blocked while using another SIM.</string>
     <!-- Mobile network settings screen, data usage setting check box name -->
     <string name="data_usage_title">App data usage</string>
     <!-- Summary about how much data has been used in a date range [CHAR LIMIT=100] -->
@@ -1547,6 +1552,15 @@
     <!-- Call failure reason displayed when the user's call is ended due to a low battery. This
          message is shown when an in-progress call is ended due to the battery being low. -->
     <string name="callFailed_low_battery">Video call ended due to low battery.</string>
+
+    <!-- In-call screen: error message shown when the user attempts to place an emergency call
+         over wifi calling (WFC), but emergency services are not available in the current
+         location. -->
+    <string name="callFailed_emergency_call_over_wfc_not_available">Emergency calls over Wi-Fi calling not available in this location.</string>
+
+    <!-- In-call screen: error message shown when the user attempts to place a call over wifi
+         calling (WFC), but wifi calling is not available in the current location. -->
+    <string name="callFailed_wfc_service_not_available_in_this_location">Wi-Fi calling is not available in this location.</string>
 
     <!-- The title for the change voicemail PIN activity -->
     <string name="change_pin_title">Change Voicemail PIN</string>
