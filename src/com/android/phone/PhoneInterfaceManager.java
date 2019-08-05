@@ -1967,10 +1967,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = PhoneFactory.getPhone(phoneId);
             if (phone != null) {
                 ServiceStateTracker sst = phone.getServiceStateTracker();
+                EmergencyNumberTracker emergencyNumberTracker = phone.getEmergencyNumberTracker();
                 if (sst != null) {
                     LocaleTracker lt = sst.getLocaleTracker();
                     if (lt != null) {
-                        return lt.getCurrentCountry();
+                        if (!TextUtils.isEmpty(lt.getCurrentCountry())) {
+                            return lt.getCurrentCountry();
+                        } else if (emergencyNumberTracker != null) {
+                            return emergencyNumberTracker.getEmergencyCountryIso();
+                        }
                     }
                 }
             }
