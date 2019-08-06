@@ -106,7 +106,12 @@
     <string name="all_day">\u0020Tol día\u0020</string>
     <string name="time_interval_char">: </string>
     <string name="time_start">\u0020De\u0020</string>
+    <string name="time_start_hour">hora d\'aniciu</string>
+    <string name="time_start_minute">minutu d\'aniciu</string>
     <string name="time_end">\u0020Pa\u0020</string>
+    <string name="time_next_day">\u0020próximu día\u0020</string>
+    <string name="time_end_hour">hora d\'acabar</string>
+    <string name="time_end_minute">minutu d\'acabar</string>
     <string name="time_formate_am">AM</string>
     <string name="time_formate_pm">PM</string>
     <string name="cf_setting_mobile_data_alert">Activa los datos móviles y asegúrate que la WLAN ta desactivada</string>
@@ -210,6 +215,7 @@
     <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary">Mou preferíu de rede: LTE/TDSCDMA/GSM/WCDMA</string>
     <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary">Mou preferíu de rede: TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
     <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Mou preferíu de rede: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="callFailed_incoming_cb_enabled">La multi-conferencia tien prohibíes toles llamaes entrantes.</string>
     <string name="callUnanswered_forwarded">Llamada non contestada y reunviada</string>
     <string-array name="preferred_network_mode_choices">
         <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>

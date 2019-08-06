@@ -47,4 +47,5 @@
     <string name="perm_change_mobile_network_desc">Lejon një aplikacion të modifikojë profilin aktual të rrjetit.</string>
     <string name="choose_network_mode_title">Zgjidh profilin e rrjetit</string>
     <string name="choose_network_mode_system_default">Sipas sistemit</string>
+    <string name="cdma_call_settings">Cilësimet e thirrjeve CDMA</string>
 </resources>

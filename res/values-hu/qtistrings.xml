@@ -31,7 +31,7 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-    <string name="ims_settings">IMS beállítások</string>
+    <string name="ims_settings">IMS-beállítások</string>
     <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">SIM hálózati subset feloldó PIN</string>
     <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">Vállalati SIM feloldó PIN</string>
     <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">Szolgáltatói SIM feloldó PIN</string>
