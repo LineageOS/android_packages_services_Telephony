@@ -659,8 +659,9 @@ public class NotificationMgr {
         final Notification notification = new Notification.BigTextStyle(builder).bigText(
                 contentText).build();
 
-        notifyAsUser(Integer.toString(subId), LIMITED_SIM_FUNCTION_NOTIFICATION, notification,
-                UserHandle.ALL);
+        mNotificationManager.notifyAsUser(Integer.toString(subId),
+                LIMITED_SIM_FUNCTION_NOTIFICATION,
+                notification, UserHandle.ALL);
         mLimitedSimFunctionNotify.add(subId);
     }
 
@@ -672,12 +673,12 @@ public class NotificationMgr {
         if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             // dismiss all notifications
             for (int id : mLimitedSimFunctionNotify) {
-                cancelAsUser(Integer.toString(id),
+                mNotificationManager.cancelAsUser(Integer.toString(id),
                         LIMITED_SIM_FUNCTION_NOTIFICATION, UserHandle.ALL);
             }
             mLimitedSimFunctionNotify.clear();
         } else if (mLimitedSimFunctionNotify.contains(subId)) {
-            cancelAsUser(Integer.toString(subId),
+            mNotificationManager.cancelAsUser(Integer.toString(subId),
                     LIMITED_SIM_FUNCTION_NOTIFICATION, UserHandle.ALL);
             mLimitedSimFunctionNotify.remove(subId);
         }
@@ -693,7 +694,7 @@ public class NotificationMgr {
         // from the old SIM if both old & new SIM configured to display the notification.
         mLimitedSimFunctionNotify.removeIf(id -> {
             if (!mSubscriptionManager.isActiveSubId(id)) {
-                cancelAsUser(Integer.toString(id),
+                mNotificationManager.cancelAsUser(Integer.toString(id),
                         LIMITED_SIM_FUNCTION_NOTIFICATION, UserHandle.ALL);
                 return true;
             }
