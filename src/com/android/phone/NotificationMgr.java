@@ -27,7 +27,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.UserInfo;
 import android.content.res.Resources;
@@ -113,6 +112,7 @@ public class NotificationMgr {
     private PhoneGlobals mApp;
 
     private Context mContext;
+    private NotificationManager mNotificationManager;
     private StatusBarManager mStatusBarManager;
     private UserManager mUserManager;
     private Toast mToast;
@@ -160,6 +160,8 @@ public class NotificationMgr {
     private NotificationMgr(PhoneGlobals app) {
         mApp = app;
         mContext = app;
+        mNotificationManager =
+                (NotificationManager) app.getSystemService(Context.NOTIFICATION_SERVICE);
         mStatusBarManager =
                 (StatusBarManager) app.getSystemService(Context.STATUS_BAR_SERVICE);
         mUserManager = (UserManager) app.getSystemService(Context.USER_SERVICE);
@@ -384,7 +386,7 @@ public class NotificationMgr {
                         && !user.isManagedProfile()) {
                     if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, vmCount, vmNumber,
                             pendingIntent, isSettingsIntent, userHandle, isRefresh)) {
-                        notifyAsUser(
+                        mNotificationManager.notifyAsUser(
                                 Integer.toString(subId) /* tag */,
                                 VOICEMAIL_NOTIFICATION,
                                 notification,
@@ -402,7 +404,7 @@ public class NotificationMgr {
                         && !user.isManagedProfile()) {
                     if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, 0, null, null,
                             false, userHandle, isRefresh)) {
-                        cancelAsUser(
+                        mNotificationManager.cancelAsUser(
                                 Integer.toString(subId) /* tag */,
                                 VOICEMAIL_NOTIFICATION,
                                 userHandle);
@@ -546,7 +548,7 @@ public class NotificationMgr {
                     intent, mSubscriptionManager.getActiveSubscriptionInfo(subId));
             builder.setContentIntent(PendingIntent.getActivity(mContext, subId /* requestCode */,
                     intent, 0));
-            notifyAsUser(
+            mNotificationManager.notifyAsUser(
                     Integer.toString(subId) /* tag */,
                     CALL_FORWARD_NOTIFICATION,
                     builder.build(),
@@ -558,7 +560,7 @@ public class NotificationMgr {
                     continue;
                 }
                 UserHandle userHandle = user.getUserHandle();
-                cancelAsUser(
+                mNotificationManager.cancelAsUser(
                         Integer.toString(subId) /* tag */,
                         CALL_FORWARD_NOTIFICATION,
                         userHandle);
@@ -606,35 +608,8 @@ public class NotificationMgr {
                 .setContentIntent(contentIntent);
         final Notification notif =
                 new Notification.BigTextStyle(builder).bigText(contentText).build();
-        notifyAsUser(null /* tag */, DATA_ROAMING_NOTIFICATION, notif, UserHandle.ALL);
-    }
-
-    private void notifyAsUser(String tag, int id, Notification notification, UserHandle user) {
-        try {
-            Context contextForUser =
-                    mContext.createPackageContextAsUser(mContext.getPackageName(), 0, user);
-            NotificationManager notificationManager =
-                    (NotificationManager) contextForUser.getSystemService(
-                            Context.NOTIFICATION_SERVICE);
-            notificationManager.notify(tag, id, notification);
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(LOG_TAG, "unable to notify for user " + user);
-            e.printStackTrace();
-        }
-    }
-
-    private void cancelAsUser(String tag, int id, UserHandle user) {
-        try {
-            Context contextForUser =
-                    mContext.createPackageContextAsUser(mContext.getPackageName(), 0, user);
-            NotificationManager notificationManager =
-                    (NotificationManager) contextForUser.getSystemService(
-                            Context.NOTIFICATION_SERVICE);
-            notificationManager.cancel(tag, id);
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(LOG_TAG, "unable to cancel for user " + user);
-            e.printStackTrace();
-        }
+        mNotificationManager.notifyAsUser(
+                null /* tag */, DATA_ROAMING_NOTIFICATION, notif, UserHandle.ALL);
     }
 
     /**
@@ -642,7 +617,7 @@ public class NotificationMgr {
      */
     /* package */ void hideDataRoamingNotification() {
         if (DBG) log("hideDataRoamingNotification()...");
-        cancelAsUser(null, DATA_ROAMING_NOTIFICATION, UserHandle.ALL);
+        mNotificationManager.cancel(DATA_ROAMING_NOTIFICATION);
     }
 
     /**
@@ -756,7 +731,7 @@ public class NotificationMgr {
                 mContext.getString(R.string.mobile_network_settings_class)));
         intent.putExtra(GsmUmtsOptions.EXTRA_SUB_ID, subId);
         builder.setContentIntent(PendingIntent.getActivity(mContext, 0, intent, 0));
-        notifyAsUser(
+        mNotificationManager.notifyAsUser(
                 Integer.toString(subId) /* tag */,
                 SELECTED_OPERATOR_FAIL_NOTIFICATION,
                 builder.build(),
@@ -769,7 +744,7 @@ public class NotificationMgr {
      */
     private void cancelNetworkSelection(int subId) {
         if (DBG) log("cancelNetworkSelection()...");
-        cancelAsUser(
+        mNotificationManager.cancelAsUser(
                 Integer.toString(subId) /* tag */, SELECTED_OPERATOR_FAIL_NOTIFICATION,
                 UserHandle.ALL);
     }
