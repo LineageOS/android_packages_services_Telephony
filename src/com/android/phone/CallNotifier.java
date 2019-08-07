@@ -392,7 +392,7 @@ public class CallNotifier extends Handler {
             try {
                 int stream;
                 if (mBluetoothHeadset != null) {
-                    stream = mBluetoothHeadset.isAudioOn() ? AudioManager.STREAM_BLUETOOTH_SCO:
+                    stream = isBluetoothAudioOn() ? AudioManager.STREAM_BLUETOOTH_SCO :
                         AudioManager.STREAM_VOICE_CALL;
                 } else {
                     stream = AudioManager.STREAM_VOICE_CALL;
@@ -477,6 +477,11 @@ public class CallNotifier extends Handler {
                 }
             }
         }
+    }
+
+    // Returns whether there are any connected Bluetooth audio devices
+    private boolean isBluetoothAudioOn() {
+        return mBluetoothHeadset.getConnectedDevices().size() > 0;
     }
 
     /**
