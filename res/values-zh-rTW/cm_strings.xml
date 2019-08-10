@@ -16,189 +16,142 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Advanced Settings -->
-  <string name="incall_screen_settings">來電畫面設定</string>
-  <string name="show_ssn_label">事件通知</string>
-  <string name="show_ssn_summary">處理通話時顯示各種相關網路訊息</string>
-  <string name="incall_echo_cancellation">通話降噪</string>
-  <string name="enable_aec_label">回音消除</string>
-  <string name="enable_aec_summary">在通話期間為對方降低環境噪音</string>
-  <!-- Blacklist preferences -->
-  <string name="blacklist_title">已封鎖來電名單</string>
-  <string name="blacklist_summary_disabled">已停用</string>
-  <string name="blacklist_summary">您將不會收到任何在已封鎖來電名單上的電話號碼的來電或簡訊</string>
-  <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
-  <string name="mwi_notification_title">訊息等後指示</string>
-  <string name="mwi_notification_summary">顯示訊息等待指示器語音信箱通知 (需要重新啟動)</string>
-  <!-- My Phone Number -->
-  <string name="phone_number_label">我的電話號碼</string>
-  <string name="phone_number_summary">設定本機號碼</string>
-  <string name="set_my_number_failed">設定電話號碼失敗</string>
-  <!-- Toasts for various transient network events -->
-  <!-- Toast text for Unconditional Call Forwarding enabled  -->
-  <string name="call_notif_unconditionalCF">無限制來電轉接啟用中</string>
-  <!-- Toast text for Conditional Call Forwarding enabled  -->
-  <string name="call_notif_conditionalCF">限制來電轉接啟用中</string>
-  <!-- Toast text for a forwarded MO call  -->
-  <string name="call_notif_MOcall_forwarding">撥出電話已轉接</string>
-  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
-  <string name="call_notif_cugcall">致電非公開使用者群組</string>
-  <!-- In-call screen: status label when MO calls are barred -->
-  <string name="call_notif_outgoing_barred">禁止撥出電話</string>
-  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
-  <string name="call_notif_incoming_barred">對方禁止來電通話</string>
-  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
-  <string name="call_notif_clir_suppression_rejected">本機號碼隱藏被網路拒絕了</string>
-  <!-- In-call screen: status label when MO call gets deflected to another party -->
-  <string name="call_notif_call_deflected">由遠端系統啟用通話轉接</string>
-  <!-- Toast text for incoming call being forwarded to other remote party  -->
-  <string name="call_notif_MTcall_forwarding">來電通話已轉接</string>
-  <!-- Toast text for incoming call which is part of MultiParty Call -->
-  <string name="call_notif_multipartycall">多方通話</string>
-  <!-- Toast text for incoming call which is answered,put on hold & then released -->
-  <string name="call_notif_callonhold_released">通話被對方釋放</string>
-  <!-- Toast text for incoming call forward check received -->
-  <string name="call_notif_forwardcheckreceived">通話已轉接</string>
-  <!-- Toast text for incoming call connecting through ECT -->
-  <string name="call_notif_callconnectingect">致電正透過顯式的來電轉接進行連接</string>
-  <!-- Toast text for incoming call connected through ECT -->
-  <string name="call_notif_callconnectedect">致電已透過顯式的來電轉接進行連接</string>
-  <!-- Status message displayed on SIM Network Depersonalization panel -->
-  <string name="requesting_unlock_cm">正在請求 SIM 卡網路解鎖\u2026</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_failed_cm">SIM 卡網路解鎖請求失敗。</string>
-  <!-- Success message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_success_cm">SIM 網路解鎖成功</string>
-  <!-- Call forwarding settings screen, setting timer info for cfut case -->
-  <string name="all_day">全天</string>
-  <string name="time_start">寄件者</string>
-  <string name="time_end">收件者</string>
-  <string name="time_hour">小時</string>
-  <string name="time_minute">分鐘</string>
-  <string name="time_formate_am">上午</string>
-  <string name="time_formate_pm">下午</string>
-  <!-- Mobile network settings, preferred network modes -->
-  <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_global_summary_cm">偏好網路模式：全球 (CDMA/EvDo/LTE/GSM/WCDMA)</string>
-  <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
-  <string name="callFailed_incoming_cb_enabled">對方已拒接所有來電。</string>
-  <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
-  <string name="callUnanswered_forwarded">來電未接聽並已轉接</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_summary">偏好網路模式：TD-SCDMA / WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_summary">偏好網路模式：TD-SCDMA / LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_summary">偏好網路模式：TD-SCDMA / GSM</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_lte_summary">偏好網路模式：TD-SCDMA/GSM/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">偏好網路模式：TD-SCDMA/GSM/WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">偏好網路模式：TD-SCDMA/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">偏好網路模式：TD-SCDMA/GSM/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">偏好網路模式：TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">偏好網路模式：TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
-  <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_only_choice">僅限 TD-SCDMA</string>
-  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
-  <string name="preferred_network_mode_lte_choice">LTE</string>
-  <string name="preferred_network_mode_global_choice">全球</string>
-  <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_evdo_only_choice">僅限 EvDo</string>
-  <string name="preferred_network_mode_cdma_wo_evdo_choice">有 CDMA (無 EvDo)</string>
-  <string name="preferred_network_mode_cdma_evdo_auto_choice">自動 CDMA/EvDo</string>
-  <string name="preferred_network_mode_gsm_wcdma_auto_choice">自動 GSM/WCDMA</string>
-  <string name="preferred_network_mode_wcdma_only_choice">僅限 WCDMA</string>
-  <string name="preferred_network_mode_gsm_only_choice">僅限 GSM</string>
-  <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA 優先</string>
-  <string name="call_barring">限制通話</string>
-  <string name="call_barring_outgoing">限制撥出通話</string>
-  <string-array name="call_barring_outgoing_display_values">
-    <item>關閉</item>
-    <item>國際漫遊通話</item>
-    <item>國際通話</item>
-    <item>撥出通話</item>
-  </string-array>
-  <string-array name="call_barring_incoming_display_values">
-    <item>關閉</item>
-    <item>漫遊服務</item>
-    <item>全部</item>
-  </string-array>
-  <string name="call_barring_incoming">限制來電</string>
-  <string name="input_password">輸入您的密碼</string>
-  <string name="invalidPsw">輸入有效的密碼 (4-8 位數字)</string>
-  <string name="labelCbCancelAll">停用通話限制</string>
-  <string name="labelCbChangePassword">變更密碼</string>
-  <string name="psw_enter_old">舊密碼</string>
-  <string name="psw_enter_new">新密碼</string>
-  <string name="psw_reenter_new">重新輸入您的密碼</string>
-  <string name="no_call_barring">已停用通話限制</string>
-  <string name="cb_psw_dont_match">密碼不符</string>
-  <!-- FDN settings: error message displayed in a popup (toast) -->
-  <string name="fdn_invalid_number_cm">FDN 尚未更新，因為數字為空或超過 20 位。</string>
-  <string name="fdn_service_unavailable">FDN 服務無法使用。</string>
-  <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <string name="exportContacts">正在匯出電話通訊錄至 SIM 卡\u2026</string>
-  <!-- Title of the List shown for SIM Contacts Management Activity.  -->
-  <string name="simContacts_title_cm">管理 SIM 卡聯絡人</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_local_low_battery">電量不足，通話失敗。</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_low_battery">遠端裝置電量不足，通話失敗。</string>
-  <!-- Sim contacts management -->
-  <string name="contactScreen">管理 SIM 卡聯絡人</string>
-  <string name="exportContactScreen">匯出電話聯絡人至 SIM 卡</string>
-  <string name="addSimEntries">新增 SIM 卡聯絡人</string>
-  <string name="deleteAllSimEntries">刪除所有 SIM 卡聯絡人</string>
-  <string name="deleteSimContacts">正在刪除 SIM 卡聯絡人\u2026</string>
-  <string name="editContact">編輯</string>
-  <string name="sendSms">傳送簡訊</string>
-  <string name="delete">刪除</string>
-  <string name="dial">撥號</string>
-  <string name="enterName">輸入名稱：</string>
-  <string name="enterNumber">輸入電話號碼：</string>
-  <string name="hintName">名稱</string>
-  <string name="hintPhonenumber">電話號碼</string>
-  <string name="contactAddSuccess">成功新增聯絡人至 SIM 卡</string>
-  <string name="contactAddFailed">將聯絡人新增至 SIM 卡失敗</string>
-  <string name="contactUpdateSuccess">已成功更新 SIM 卡中的聯絡人</string>
-  <string name="contactUpdateFailed">未能更新 SIM 卡中的聯絡人</string>
-  <string name="contactdeleteSuccess">聯絡人已從 SIM 卡成功地刪除</string>
-  <string name="contactdeleteFailed">無法從 SIM 卡刪除聯絡人</string>
-  <string name="allContactdeleteSuccess">所有聯絡人已從 SIM 卡成功地刪除</string>
-  <string name="allContactdeleteFailed">無法從 SIM 卡刪除所有聯絡人</string>
-  <string name="exportAllcontatsSuccess">所有聯絡人已從 SIM 卡成功地匯出</string>
-  <string name="exportAllcontatsFailed">無法匯出所有聯絡人到 SIM 卡</string>
-  <string name="exportAllcontatsNoContacts">未找到要匯出到 SIM 卡的聯絡人</string>
-  <string name="msim_mobile_network_settings_title">SIM 卡 %d 行動網路設定</string>
-  <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">變更網路模式</string>
-  <string name="perm_change_mobile_network_desc">允許應用程式修改目前的網路模式。</string>
-  <!-- Mobile network settings, COLP -->
-  <string name="connected_line_identification_title">連線號碼識別</string>
-  <string name="connected_line_identification_summary">如果對方號碼不在通話紀錄中顯示，停用此選項</string>
-  <!-- Network mode picker dialog title -->
-  <string name="choose_network_mode_title">選擇網路模式</string>
-  <string name="choose_network_mode_system_default">系統預設</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
-  <string name="unlock_failed_remaining_retries">解鎖請求失敗，還剩 %1$d 重試的機會。</string>
-  <!-- Call forward: IMS: Media tag support -->
-  <string name="labelCFType">來電轉接設定</string>
-  <string name="labelCFVoice">聲音</string>
-  <string name="labelCFVideo">影片</string>
-  <string name="call_forward_option">來電轉接選項</string>
+    <string name="incall_screen_settings">來電畫面設定</string>
+    <string name="show_ssn_label">事件通知</string>
+    <string name="show_ssn_summary">處理通話時顯示各種相關網路訊息</string>
+    <string name="incall_echo_cancellation">通話降噪</string>
+    <string name="enable_aec_label">回音消除</string>
+    <string name="enable_aec_summary">在通話期間為對方降低環境噪音</string>
+    <string name="blacklist_title">已封鎖來電名單</string>
+    <string name="blacklist_summary_disabled">已停用</string>
+    <string name="blacklist_summary">您將不會收到任何在已封鎖來電名單上的電話號碼的來電或簡訊</string>
+    <string name="mwi_notification_title">訊息等後指示</string>
+    <string name="mwi_notification_summary">顯示訊息等待指示器語音信箱通知 (需要重新啟動)</string>
+    <string name="phone_number_label">我的電話號碼</string>
+    <string name="phone_number_summary">設定本機號碼</string>
+    <string name="set_my_number_failed">設定電話號碼失敗</string>
+    <string name="call_notif_unconditionalCF">無限制來電轉接啟用中</string>
+    <string name="call_notif_conditionalCF">限制來電轉接啟用中</string>
+    <string name="call_notif_MOcall_forwarding">撥出電話已轉接</string>
+    <string name="call_notif_cugcall">致電非公開使用者群組</string>
+    <string name="call_notif_outgoing_barred">禁止撥出電話</string>
+    <string name="call_notif_incoming_barred">對方禁止來電通話</string>
+    <string name="call_notif_clir_suppression_rejected">本機號碼隱藏被網路拒絕了</string>
+    <string name="call_notif_call_deflected">由遠端系統啟用通話轉接</string>
+    <string name="call_notif_MTcall_forwarding">來電通話已轉接</string>
+    <string name="call_notif_multipartycall">多方通話</string>
+    <string name="call_notif_callonhold_released">通話被對方釋放</string>
+    <string name="call_notif_forwardcheckreceived">通話已轉接</string>
+    <string name="call_notif_callconnectingect">致電正透過顯式的來電轉接進行連接</string>
+    <string name="call_notif_callconnectedect">致電已透過顯式的來電轉接進行連接</string>
+    <string name="requesting_unlock_cm">正在請求 SIM 卡網路解鎖\u2026</string>
+    <string name="unlock_failed_cm">SIM 卡網路解鎖請求失敗。</string>
+    <string name="unlock_success_cm">SIM 網路解鎖成功</string>
+    <string name="all_day">全天</string>
+    <string name="time_start">寄件者</string>
+    <string name="time_end">收件者</string>
+    <string name="time_hour">小時</string>
+    <string name="time_minute">分鐘</string>
+    <string name="time_formate_am">上午</string>
+    <string name="time_formate_pm">下午</string>
+    <string name="preferred_network_mode_global_summary_cm">偏好網路模式：全球 (CDMA/EvDo/LTE/GSM/WCDMA)</string>
+    <string name="callFailed_incoming_cb_enabled">對方已拒接所有來電。</string>
+    <string name="callUnanswered_forwarded">來電未接聽並已轉接</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_summary">偏好網路模式：TD-SCDMA / WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_summary">偏好網路模式：TD-SCDMA / LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_summary">偏好網路模式：TD-SCDMA / GSM</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_summary">偏好網路模式：TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">偏好網路模式：TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">偏好網路模式：TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">偏好網路模式：TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">偏好網路模式：TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">偏好網路模式：TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_only_choice">僅限 TD-SCDMA</string>
+    <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
+    <string name="preferred_network_mode_lte_choice">LTE</string>
+    <string name="preferred_network_mode_global_choice">全球</string>
+    <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_evdo_only_choice">僅限 EvDo</string>
+    <string name="preferred_network_mode_cdma_wo_evdo_choice">有 CDMA (無 EvDo)</string>
+    <string name="preferred_network_mode_cdma_evdo_auto_choice">自動 CDMA/EvDo</string>
+    <string name="preferred_network_mode_gsm_wcdma_auto_choice">自動 GSM/WCDMA</string>
+    <string name="preferred_network_mode_wcdma_only_choice">僅限 WCDMA</string>
+    <string name="preferred_network_mode_gsm_only_choice">僅限 GSM</string>
+    <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA 優先</string>
+    <string name="call_barring">限制通話</string>
+    <string name="call_barring_outgoing">限制撥出通話</string>
+    <string-array name="call_barring_outgoing_display_values">
+        <item>關閉</item>
+        <item>國際漫遊通話</item>
+        <item>國際通話</item>
+        <item>撥出通話</item>
+    </string-array>
+    <string-array name="call_barring_incoming_display_values">
+        <item>關閉</item>
+        <item>漫遊服務</item>
+        <item>全部</item>
+    </string-array>
+    <string name="call_barring_incoming">限制來電</string>
+    <string name="input_password">輸入您的密碼</string>
+    <string name="invalidPsw">輸入有效的密碼 (4-8 位數字)</string>
+    <string name="labelCbCancelAll">停用通話限制</string>
+    <string name="labelCbChangePassword">變更密碼</string>
+    <string name="psw_enter_old">舊密碼</string>
+    <string name="psw_enter_new">新密碼</string>
+    <string name="psw_reenter_new">重新輸入您的密碼</string>
+    <string name="no_call_barring">已停用通話限制</string>
+    <string name="cb_psw_dont_match">密碼不符</string>
+    <string name="fdn_invalid_number_cm">FDN 尚未更新，因為數字為空或超過 20 位。</string>
+    <string name="fdn_service_unavailable">FDN 服務無法使用。</string>
+    <string name="exportContacts">正在匯出電話通訊錄至 SIM 卡\u2026</string>
+    <string name="simContacts_title_cm">管理 SIM 卡聯絡人</string>
+    <string name="incall_error_local_low_battery">電量不足，通話失敗。</string>
+    <string name="incall_error_low_battery">遠端裝置電量不足，通話失敗。</string>
+    <string name="contactScreen">管理 SIM 卡聯絡人</string>
+    <string name="exportContactScreen">匯出電話聯絡人至 SIM 卡</string>
+    <string name="addSimEntries">新增 SIM 卡聯絡人</string>
+    <string name="deleteAllSimEntries">刪除所有 SIM 卡聯絡人</string>
+    <string name="deleteSimContacts">正在刪除 SIM 卡聯絡人\u2026</string>
+    <string name="editContact">編輯</string>
+    <string name="sendSms">傳送簡訊</string>
+    <string name="delete">刪除</string>
+    <string name="dial">撥號</string>
+    <string name="enterName">輸入名稱：</string>
+    <string name="enterNumber">輸入電話號碼：</string>
+    <string name="hintName">名稱</string>
+    <string name="hintPhonenumber">電話號碼</string>
+    <string name="contactAddSuccess">成功新增聯絡人至 SIM 卡</string>
+    <string name="contactAddFailed">將聯絡人新增至 SIM 卡失敗</string>
+    <string name="contactUpdateSuccess">已成功更新 SIM 卡中的聯絡人</string>
+    <string name="contactUpdateFailed">未能更新 SIM 卡中的聯絡人</string>
+    <string name="contactdeleteSuccess">聯絡人已從 SIM 卡成功地刪除</string>
+    <string name="contactdeleteFailed">無法從 SIM 卡刪除聯絡人</string>
+    <string name="allContactdeleteSuccess">所有聯絡人已從 SIM 卡成功地刪除</string>
+    <string name="allContactdeleteFailed">無法從 SIM 卡刪除所有聯絡人</string>
+    <string name="exportAllcontatsSuccess">所有聯絡人已從 SIM 卡成功地匯出</string>
+    <string name="exportAllcontatsFailed">無法匯出所有聯絡人到 SIM 卡</string>
+    <string name="exportAllcontatsNoContacts">未找到要匯出到 SIM 卡的聯絡人</string>
+    <string name="msim_mobile_network_settings_title">SIM 卡 %d 行動網路設定</string>
+    <string name="perm_change_mobile_network">變更網路模式</string>
+    <string name="perm_change_mobile_network_desc">允許應用程式修改目前的網路模式。</string>
+    <string name="connected_line_identification_title">連線號碼識別</string>
+    <string name="connected_line_identification_summary">如果對方號碼不在通話紀錄中顯示，停用此選項</string>
+    <string name="choose_network_mode_title">選擇網路模式</string>
+    <string name="choose_network_mode_system_default">系統預設</string>
+    <string name="unlock_failed_remaining_retries">解鎖請求失敗，還剩 %1$d 重試的機會。</string>
+    <string name="labelCFType">來電轉接設定</string>
+    <string name="labelCFVoice">聲音</string>
+    <string name="labelCFVideo">影片</string>
+    <string name="call_forward_option">來電轉接選項</string>
 </resources>

@@ -16,189 +16,142 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Advanced Settings -->
-  <string name="incall_screen_settings">Instellingen scherm tijdens gesprek</string>
-  <string name="show_ssn_label">Gebeurtenissen melden</string>
-  <string name="show_ssn_summary">Melding weergeven van netwerkgebeurtenissen tijdens gesprekken</string>
-  <string name="incall_echo_cancellation">Ruisonderdrukking tijdens gesprek</string>
-  <string name="enable_aec_label">Echo-onderdrukking</string>
-  <string name="enable_aec_summary">Omgevingsgeluid voor de andere partij verminderen tijdens gesprekken</string>
-  <!-- Blacklist preferences -->
-  <string name="blacklist_title">Zwarte lijst</string>
-  <string name="blacklist_summary_disabled">Uitgeschakeld</string>
-  <string name="blacklist_summary">U ontvangt geen inkomende oproepen of berichten van telefoonnummers op de zwarte lijst</string>
-  <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
-  <string name="mwi_notification_title">Voicemailmeldingen</string>
-  <string name="mwi_notification_summary">Melding weergeven voor nieuwe voicemailberichten (herstarten vereist)</string>
-  <!-- My Phone Number -->
-  <string name="phone_number_label">Mijn telefoonnummer</string>
-  <string name="phone_number_summary">Telefoonnummer instellen voor deze telefoon</string>
-  <string name="set_my_number_failed">Fout bij het instellen van telefoonnummer</string>
-  <!-- Toasts for various transient network events -->
-  <!-- Toast text for Unconditional Call Forwarding enabled  -->
-  <string name="call_notif_unconditionalCF">Permanent doorschakelen actief</string>
-  <!-- Toast text for Conditional Call Forwarding enabled  -->
-  <string name="call_notif_conditionalCF">Voorwaardelijk doorschakelen actief</string>
-  <!-- Toast text for a forwarded MO call  -->
-  <string name="call_notif_MOcall_forwarding">Oproep wordt doorgeschakeld</string>
-  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
-  <string name="call_notif_cugcall">Oproep binnen besloten gebruikersgroep</string>
-  <!-- In-call screen: status label when MO calls are barred -->
-  <string name="call_notif_outgoing_barred">Uitgaande oproepen geblokkeerd</string>
-  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
-  <string name="call_notif_incoming_barred">Inkomende oproepen geblokkeerd</string>
-  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
-  <string name="call_notif_clir_suppression_rejected">Niet tonen eigen telefoonnummer afgewezen</string>
-  <!-- In-call screen: status label when MO call gets deflected to another party -->
-  <string name="call_notif_call_deflected">Oproep door ontvanger doorgeschakeld</string>
-  <!-- Toast text for incoming call being forwarded to other remote party  -->
-  <string name="call_notif_MTcall_forwarding">Inkomende oproep doorgeschakeld</string>
-  <!-- Toast text for incoming call which is part of MultiParty Call -->
-  <string name="call_notif_multipartycall">Groepsgesprek</string>
-  <!-- Toast text for incoming call which is answered,put on hold & then released -->
-  <string name="call_notif_callonhold_released">Oproep door ontvanger vrijgegeven</string>
-  <!-- Toast text for incoming call forward check received -->
-  <string name="call_notif_forwardcheckreceived">Oproep werd doorgeschakeld</string>
-  <!-- Toast text for incoming call connecting through ECT -->
-  <string name="call_notif_callconnectingect">Oproep verbinden via centrale</string>
-  <!-- Toast text for incoming call connected through ECT -->
-  <string name="call_notif_callconnectedect">Oproep verbonden via centrale</string>
-  <!-- Status message displayed on SIM Network Depersonalization panel -->
-  <string name="requesting_unlock_cm">Verzoek om ontgrendelen netwerk-SIM\u2026</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_failed_cm">Verzoek voor ontgrendelen netwerk mislukt.</string>
-  <!-- Success message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_success_cm">SIM-netwerk ontgrendeld.</string>
-  <!-- Call forwarding settings screen, setting timer info for cfut case -->
-  <string name="all_day">Hele dag</string>
-  <string name="time_start">Van</string>
-  <string name="time_end">Tot</string>
-  <string name="time_hour">Uur</string>
-  <string name="time_minute">Minuut</string>
-  <string name="time_formate_am">AM</string>
-  <string name="time_formate_pm">PM</string>
-  <!-- Mobile network settings, preferred network modes -->
-  <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_global_summary_cm">Voorkeursnetwerkmodus: Wereldwijd (CDMA/EVDO/LTE/GSM/WCDMA)</string>
-  <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
-  <string name="callFailed_incoming_cb_enabled">Andere partij blokkeert alle oproepen.</string>
-  <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
-  <string name="callUnanswered_forwarded">Gesprek onbeantwoord en doorgeschakeld</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_summary">Voorkeursnetwerkmodus: TD-SCDMA/WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_summary">Voorkeursnetwerkmodus: TD-SCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_summary">Voorkeursnetwerkmodus: TD-SCDMA/GSM</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Voorkeursnetwerkmodus: TD-SCDMA/GSM/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Voorkeursnetwerkmodus: TD-SCDMA/GSM/WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Voorkeursnetwerkmodus: TD-SCDMA/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Voorkeursnetwerkmodus: TD-SCDMA/GSM/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Voorkeursnetwerkmodus: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Voorkeursnetwerkmodus: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
-  <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_only_choice">Alleen TD-SCDMA</string>
-  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
-  <string name="preferred_network_mode_lte_choice">LTE</string>
-  <string name="preferred_network_mode_global_choice">Wereldwijd</string>
-  <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_evdo_only_choice">Alleen EvDo</string>
-  <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA zonder EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo automatisch</string>
-  <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA automatisch</string>
-  <string name="preferred_network_mode_wcdma_only_choice">Alleen WCDMA</string>
-  <string name="preferred_network_mode_gsm_only_choice">Alleen GSM</string>
-  <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Voorkeur voor GSM/WCDMA</string>
-  <string name="call_barring">Oproepen blokkeren</string>
-  <string name="call_barring_outgoing">Uitgaande oproepen blokkeren</string>
-  <string-array name="call_barring_outgoing_display_values">
-    <item>Uit</item>
-    <item>Internationale roamingoproepen</item>
-    <item>Internationale oproepen</item>
-    <item>Uitgaande oproepen</item>
-  </string-array>
-  <string-array name="call_barring_incoming_display_values">
-    <item>Uit</item>
-    <item>Roaming</item>
-    <item>Alle</item>
-  </string-array>
-  <string name="call_barring_incoming">Inkomende oproepen blokkeren</string>
-  <string name="input_password">Wachtwoord invoeren</string>
-  <string name="invalidPsw">Voer een geldig wachtwoord in (4-8 cijfers)</string>
-  <string name="labelCbCancelAll">Oproepblokkering uitschakelen</string>
-  <string name="labelCbChangePassword">Wachtwoord wijzigen</string>
-  <string name="psw_enter_old">Oud wachtwoord</string>
-  <string name="psw_enter_new">Nieuw wachtwoord</string>
-  <string name="psw_reenter_new">Wachtwoord nogmaals invoeren</string>
-  <string name="no_call_barring">Oproepblokkering uitgeschakeld</string>
-  <string name="cb_psw_dont_match">Wachtwoorden komen niet overeen</string>
-  <!-- FDN settings: error message displayed in a popup (toast) -->
-  <string name="fdn_invalid_number_cm">FDN niet bijgewerkt omdat het getal leeg is of langer is dan 20 cijfers.</string>
-  <string name="fdn_service_unavailable">FDN-service niet beschikbaar.</string>
-  <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <string name="exportContacts">Contacten exporteren naar simkaart\u2026</string>
-  <!-- Title of the List shown for SIM Contacts Management Activity.  -->
-  <string name="simContacts_title_cm">Contacten op simkaart beheren</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_local_low_battery">Oproep mislukt als gevolg van lage accuspanning.</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_low_battery">Oproep mislukt als gevolg van lage accuspanning van het andere toestel.</string>
-  <!-- Sim contacts management -->
-  <string name="contactScreen">SIM-contacten beheren</string>
-  <string name="exportContactScreen">Telefooncontacten exporteren naar SIM</string>
-  <string name="addSimEntries">SIM-contact toevoegen</string>
-  <string name="deleteAllSimEntries">Alle SIM-contacten verwijderen</string>
-  <string name="deleteSimContacts">SIM-contacten verwijderen\u2026</string>
-  <string name="editContact">Aanpassen</string>
-  <string name="sendSms">Sms versturen</string>
-  <string name="delete">Verwijderen</string>
-  <string name="dial">Bellen</string>
-  <string name="enterName">Naam invoeren:</string>
-  <string name="enterNumber">Telefoonnummer invoeren:</string>
-  <string name="hintName">Naam</string>
-  <string name="hintPhonenumber">Telefoonnummer</string>
-  <string name="contactAddSuccess">Contact toegevoegd aan SIM</string>
-  <string name="contactAddFailed">Kan contact niet toevoegen aan SIM</string>
-  <string name="contactUpdateSuccess">Contact bijgewerkt op SIM</string>
-  <string name="contactUpdateFailed">Kan contact niet bijwerken op SIM</string>
-  <string name="contactdeleteSuccess">Contact verwijderd van SIM</string>
-  <string name="contactdeleteFailed">Kan contact niet verwijderen van SIM</string>
-  <string name="allContactdeleteSuccess">Alle contacten verwijderd van SIM</string>
-  <string name="allContactdeleteFailed">Kan niet alle contacten verwijderen van SIM</string>
-  <string name="exportAllcontatsSuccess">Alle contacten geëxporteerd naar SIM</string>
-  <string name="exportAllcontatsFailed">Kan niet alle contacten exporteren naar SIM</string>
-  <string name="exportAllcontatsNoContacts">Geen contacten gevonden om te exporteren naar SIM</string>
-  <string name="msim_mobile_network_settings_title">Instellingen mobiel netwerk SIM %d</string>
-  <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">netwerkmodus wijzigen</string>
-  <string name="perm_change_mobile_network_desc">Hiermee kan de app de huidige netwerkmodus wijzigen.</string>
-  <!-- Mobile network settings, COLP -->
-  <string name="connected_line_identification_title">Verbindingsidentificatie</string>
-  <string name="connected_line_identification_summary">Schakel deze optie uit als nummers van ontvangers niet weergegeven worden in de oproepgeschiedenis</string>
-  <!-- Network mode picker dialog title -->
-  <string name="choose_network_mode_title">Netwerkmodus kiezen</string>
-  <string name="choose_network_mode_system_default">Systeemstandaard</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
-  <string name="unlock_failed_remaining_retries">Verzoek tot ontgrendelen mislukt, %1$d pogingen resterend.</string>
-  <!-- Call forward: IMS: Media tag support -->
-  <string name="labelCFType">Doorschakel-instellingen</string>
-  <string name="labelCFVoice">Spraak</string>
-  <string name="labelCFVideo">Video</string>
-  <string name="call_forward_option">Doorschakel-instellingen</string>
+    <string name="incall_screen_settings">Instellingen scherm tijdens gesprek</string>
+    <string name="show_ssn_label">Gebeurtenissen melden</string>
+    <string name="show_ssn_summary">Melding weergeven van netwerkgebeurtenissen tijdens gesprekken</string>
+    <string name="incall_echo_cancellation">Ruisonderdrukking tijdens gesprek</string>
+    <string name="enable_aec_label">Echo-onderdrukking</string>
+    <string name="enable_aec_summary">Omgevingsgeluid voor de andere partij verminderen tijdens gesprekken</string>
+    <string name="blacklist_title">Zwarte lijst</string>
+    <string name="blacklist_summary_disabled">Uitgeschakeld</string>
+    <string name="blacklist_summary">U ontvangt geen inkomende oproepen of berichten van telefoonnummers op de zwarte lijst</string>
+    <string name="mwi_notification_title">Voicemailmeldingen</string>
+    <string name="mwi_notification_summary">Melding weergeven voor nieuwe voicemailberichten (herstarten vereist)</string>
+    <string name="phone_number_label">Mijn telefoonnummer</string>
+    <string name="phone_number_summary">Telefoonnummer instellen voor deze telefoon</string>
+    <string name="set_my_number_failed">Fout bij het instellen van telefoonnummer</string>
+    <string name="call_notif_unconditionalCF">Permanent doorschakelen actief</string>
+    <string name="call_notif_conditionalCF">Voorwaardelijk doorschakelen actief</string>
+    <string name="call_notif_MOcall_forwarding">Oproep wordt doorgeschakeld</string>
+    <string name="call_notif_cugcall">Oproep binnen besloten gebruikersgroep</string>
+    <string name="call_notif_outgoing_barred">Uitgaande oproepen geblokkeerd</string>
+    <string name="call_notif_incoming_barred">Inkomende oproepen geblokkeerd</string>
+    <string name="call_notif_clir_suppression_rejected">Niet tonen eigen telefoonnummer afgewezen</string>
+    <string name="call_notif_call_deflected">Oproep door ontvanger doorgeschakeld</string>
+    <string name="call_notif_MTcall_forwarding">Inkomende oproep doorgeschakeld</string>
+    <string name="call_notif_multipartycall">Groepsgesprek</string>
+    <string name="call_notif_callonhold_released">Oproep door ontvanger vrijgegeven</string>
+    <string name="call_notif_forwardcheckreceived">Oproep werd doorgeschakeld</string>
+    <string name="call_notif_callconnectingect">Oproep verbinden via centrale</string>
+    <string name="call_notif_callconnectedect">Oproep verbonden via centrale</string>
+    <string name="requesting_unlock_cm">Verzoek om ontgrendelen netwerk-SIM\u2026</string>
+    <string name="unlock_failed_cm">Verzoek voor ontgrendelen netwerk mislukt.</string>
+    <string name="unlock_success_cm">SIM-netwerk ontgrendeld.</string>
+    <string name="all_day">Hele dag</string>
+    <string name="time_start">Van</string>
+    <string name="time_end">Tot</string>
+    <string name="time_hour">Uur</string>
+    <string name="time_minute">Minuut</string>
+    <string name="time_formate_am">AM</string>
+    <string name="time_formate_pm">PM</string>
+    <string name="preferred_network_mode_global_summary_cm">Voorkeursnetwerkmodus: Wereldwijd (CDMA/EVDO/LTE/GSM/WCDMA)</string>
+    <string name="callFailed_incoming_cb_enabled">Andere partij blokkeert alle oproepen.</string>
+    <string name="callUnanswered_forwarded">Gesprek onbeantwoord en doorgeschakeld</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_summary">Voorkeursnetwerkmodus: TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_summary">Voorkeursnetwerkmodus: TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_summary">Voorkeursnetwerkmodus: TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Voorkeursnetwerkmodus: TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Voorkeursnetwerkmodus: TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Voorkeursnetwerkmodus: TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Voorkeursnetwerkmodus: TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Voorkeursnetwerkmodus: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Voorkeursnetwerkmodus: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_only_choice">Alleen TD-SCDMA</string>
+    <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
+    <string name="preferred_network_mode_lte_choice">LTE</string>
+    <string name="preferred_network_mode_global_choice">Wereldwijd</string>
+    <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_evdo_only_choice">Alleen EvDo</string>
+    <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA zonder EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo automatisch</string>
+    <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA automatisch</string>
+    <string name="preferred_network_mode_wcdma_only_choice">Alleen WCDMA</string>
+    <string name="preferred_network_mode_gsm_only_choice">Alleen GSM</string>
+    <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Voorkeur voor GSM/WCDMA</string>
+    <string name="call_barring">Oproepen blokkeren</string>
+    <string name="call_barring_outgoing">Uitgaande oproepen blokkeren</string>
+    <string-array name="call_barring_outgoing_display_values">
+        <item>Uit</item>
+        <item>Internationale roamingoproepen</item>
+        <item>Internationale oproepen</item>
+        <item>Uitgaande oproepen</item>
+    </string-array>
+    <string-array name="call_barring_incoming_display_values">
+        <item>Uit</item>
+        <item>Roaming</item>
+        <item>Alle</item>
+    </string-array>
+    <string name="call_barring_incoming">Inkomende oproepen blokkeren</string>
+    <string name="input_password">Wachtwoord invoeren</string>
+    <string name="invalidPsw">Voer een geldig wachtwoord in (4-8 cijfers)</string>
+    <string name="labelCbCancelAll">Oproepblokkering uitschakelen</string>
+    <string name="labelCbChangePassword">Wachtwoord wijzigen</string>
+    <string name="psw_enter_old">Oud wachtwoord</string>
+    <string name="psw_enter_new">Nieuw wachtwoord</string>
+    <string name="psw_reenter_new">Wachtwoord nogmaals invoeren</string>
+    <string name="no_call_barring">Oproepblokkering uitgeschakeld</string>
+    <string name="cb_psw_dont_match">Wachtwoorden komen niet overeen</string>
+    <string name="fdn_invalid_number_cm">FDN niet bijgewerkt omdat het getal leeg is of langer is dan 20 cijfers.</string>
+    <string name="fdn_service_unavailable">FDN-service niet beschikbaar.</string>
+    <string name="exportContacts">Contacten exporteren naar simkaart\u2026</string>
+    <string name="simContacts_title_cm">Contacten op simkaart beheren</string>
+    <string name="incall_error_local_low_battery">Oproep mislukt als gevolg van lage accuspanning.</string>
+    <string name="incall_error_low_battery">Oproep mislukt als gevolg van lage accuspanning van het andere toestel.</string>
+    <string name="contactScreen">SIM-contacten beheren</string>
+    <string name="exportContactScreen">Telefooncontacten exporteren naar SIM</string>
+    <string name="addSimEntries">SIM-contact toevoegen</string>
+    <string name="deleteAllSimEntries">Alle SIM-contacten verwijderen</string>
+    <string name="deleteSimContacts">SIM-contacten verwijderen\u2026</string>
+    <string name="editContact">Aanpassen</string>
+    <string name="sendSms">Sms versturen</string>
+    <string name="delete">Verwijderen</string>
+    <string name="dial">Bellen</string>
+    <string name="enterName">Naam invoeren:</string>
+    <string name="enterNumber">Telefoonnummer invoeren:</string>
+    <string name="hintName">Naam</string>
+    <string name="hintPhonenumber">Telefoonnummer</string>
+    <string name="contactAddSuccess">Contact toegevoegd aan SIM</string>
+    <string name="contactAddFailed">Kan contact niet toevoegen aan SIM</string>
+    <string name="contactUpdateSuccess">Contact bijgewerkt op SIM</string>
+    <string name="contactUpdateFailed">Kan contact niet bijwerken op SIM</string>
+    <string name="contactdeleteSuccess">Contact verwijderd van SIM</string>
+    <string name="contactdeleteFailed">Kan contact niet verwijderen van SIM</string>
+    <string name="allContactdeleteSuccess">Alle contacten verwijderd van SIM</string>
+    <string name="allContactdeleteFailed">Kan niet alle contacten verwijderen van SIM</string>
+    <string name="exportAllcontatsSuccess">Alle contacten geëxporteerd naar SIM</string>
+    <string name="exportAllcontatsFailed">Kan niet alle contacten exporteren naar SIM</string>
+    <string name="exportAllcontatsNoContacts">Geen contacten gevonden om te exporteren naar SIM</string>
+    <string name="msim_mobile_network_settings_title">Instellingen mobiel netwerk SIM %d</string>
+    <string name="perm_change_mobile_network">netwerkmodus wijzigen</string>
+    <string name="perm_change_mobile_network_desc">Hiermee kan de app de huidige netwerkmodus wijzigen.</string>
+    <string name="connected_line_identification_title">Verbindingsidentificatie</string>
+    <string name="connected_line_identification_summary">Schakel deze optie uit als nummers van ontvangers niet weergegeven worden in de oproepgeschiedenis</string>
+    <string name="choose_network_mode_title">Netwerkmodus kiezen</string>
+    <string name="choose_network_mode_system_default">Systeemstandaard</string>
+    <string name="unlock_failed_remaining_retries">Verzoek tot ontgrendelen mislukt, %1$d pogingen resterend.</string>
+    <string name="labelCFType">Doorschakel-instellingen</string>
+    <string name="labelCFVoice">Spraak</string>
+    <string name="labelCFVideo">Video</string>
+    <string name="call_forward_option">Doorschakel-instellingen</string>
 </resources>

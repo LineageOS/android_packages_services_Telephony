@@ -16,189 +16,142 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Advanced Settings -->
-  <string name="incall_screen_settings">Skjerminnstillinger under samtaler</string>
-  <string name="show_ssn_label">Hendelsesvarsling</string>
-  <string name="show_ssn_summary">Vis en melding for ulike nettverkshendelser relatert til anrop</string>
-  <string name="incall_echo_cancellation">Samtale støyreduksjon</string>
-  <string name="enable_aec_label">Ekkoreduksjon</string>
-  <string name="enable_aec_summary">Reduser bakgrunnsstøy for den eksterne parten under stemmesamtaler</string>
-  <!-- Blacklist preferences -->
-  <string name="blacklist_title">Blokkert anropsliste</string>
-  <string name="blacklist_summary_disabled">Deaktivert</string>
-  <string name="blacklist_summary">Du vil ikke motta innkommende samtaler eller meldinger fra telefonnumre på listen over blokkerte telefonnummer</string>
-  <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
-  <string name="mwi_notification_title">Melding venter indikator</string>
-  <string name="mwi_notification_summary">Vis melding på vente-indikator hvis noen voicemail varsler (omstart kreves)</string>
-  <!-- My Phone Number -->
-  <string name="phone_number_label">Telefonnummeret mitt</string>
-  <string name="phone_number_summary">Angi telefonnummeret for denne enheten</string>
-  <string name="set_my_number_failed">Kunne ikke angi telefonnummer</string>
-  <!-- Toasts for various transient network events -->
-  <!-- Toast text for Unconditional Call Forwarding enabled  -->
-  <string name="call_notif_unconditionalCF">Ubetinget viderekobling aktiv</string>
-  <!-- Toast text for Conditional Call Forwarding enabled  -->
-  <string name="call_notif_conditionalCF">Betinget viderekobling aktiv</string>
-  <!-- Toast text for a forwarded MO call  -->
-  <string name="call_notif_MOcall_forwarding">Utgående samtale videresendes</string>
-  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
-  <string name="call_notif_cugcall">Ringe i lukket brukergruppe</string>
-  <!-- In-call screen: status label when MO calls are barred -->
-  <string name="call_notif_outgoing_barred">Utgående samtaler sperret</string>
-  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
-  <string name="call_notif_incoming_barred">Innkommende samtaler sperret på eksterne parten</string>
-  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
-  <string name="call_notif_clir_suppression_rejected">Eget nummer undertrykkelse avvist av nettverket</string>
-  <!-- In-call screen: status label when MO call gets deflected to another party -->
-  <string name="call_notif_call_deflected">Samtale videresendt av eksterne parten</string>
-  <!-- Toast text for incoming call being forwarded to other remote party  -->
-  <string name="call_notif_MTcall_forwarding">Innkommende anrop viderekobles</string>
-  <!-- Toast text for incoming call which is part of MultiParty Call -->
-  <string name="call_notif_multipartycall">Flerparti samtale</string>
-  <!-- Toast text for incoming call which is answered,put on hold & then released -->
-  <string name="call_notif_callonhold_released">Ringe ut eksternt</string>
-  <!-- Toast text for incoming call forward check received -->
-  <string name="call_notif_forwardcheckreceived">Samtalen ble videresendt</string>
-  <!-- Toast text for incoming call connecting through ECT -->
-  <string name="call_notif_callconnectingect">Oppringing kobles til gjennom samtaleoverføring</string>
-  <!-- Toast text for incoming call connected through ECT -->
-  <string name="call_notif_callconnectedect">Oppringing kobles til gjennom samtaleoverføring</string>
-  <!-- Status message displayed on SIM Network Depersonalization panel -->
-  <string name="requesting_unlock_cm">Ber om SIM nettverk opplåsning\u2026</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_failed_cm">SIM nettverk opplåsningsforespørsel mislyktes.</string>
-  <!-- Success message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_success_cm">SIM nettverk opplåsning mislyktes.</string>
-  <!-- Call forwarding settings screen, setting timer info for cfut case -->
-  <string name="all_day">Hele dagen</string>
-  <string name="time_start">Fra</string>
-  <string name="time_end">Til</string>
-  <string name="time_hour">Time</string>
-  <string name="time_minute">Minutt</string>
-  <string name="time_formate_am">AM</string>
-  <string name="time_formate_pm">PM</string>
-  <!-- Mobile network settings, preferred network modes -->
-  <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_global_summary_cm">Foretrukket nettverksmodus: Global (CDMA/EvDo/LTE/GSM/WCDMA)</string>
-  <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
-  <string name="callFailed_incoming_cb_enabled">Gruppen har sperret alle innkommende oppringinger.</string>
-  <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
-  <string name="callUnanswered_forwarded">Ubesvarte og videresendte anrop</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_summary">Foretrukket nettverksmodus: TD-SCDMA / WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_summary">Foretrukket nettverksmodus: TD-SCDMA / LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_summary">Foretrukket nettverksmodus: TD-SCDMA / GSM</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Foretrukket nettverksmodus: TD-SCDMA/GSM/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Foretrukket nettverksmodus: TD-SCDMA/GSM/WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Foretrukket nettverksmodus: TD-SCDMA/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Foretrukket nettverksmodus: TD-SCDMA/GSM/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Foretrukket nettverksmodus: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Foretrukket nettverksmodus: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
-  <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA only</string>
-  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
-  <string name="preferred_network_mode_lte_choice">LTE</string>
-  <string name="preferred_network_mode_global_choice">Global</string>
-  <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_evdo_only_choice">Kun EvDo</string>
-  <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA uten EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo automatisk</string>
-  <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA automatisk</string>
-  <string name="preferred_network_mode_wcdma_only_choice">kun WCDMA</string>
-  <string name="preferred_network_mode_gsm_only_choice">kun GSM</string>
-  <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA foretrukket</string>
-  <string name="call_barring">Ringesperring</string>
-  <string name="call_barring_outgoing">Utgående samtaleblokkering</string>
-  <string-array name="call_barring_outgoing_display_values">
-    <item>Av</item>
-    <item>Internasjonale roaming samtaler</item>
-    <item>Internasjonale samtaler</item>
-    <item>Utgående samtaler</item>
-  </string-array>
-  <string-array name="call_barring_incoming_display_values">
-    <item>Av</item>
-    <item>Roaming</item>
-    <item>Alle</item>
-  </string-array>
-  <string name="call_barring_incoming">Innkommende samtaleblokkering</string>
-  <string name="input_password">Angi passordet</string>
-  <string name="invalidPsw">Angi et gyldig passord (4-8 sifre)</string>
-  <string name="labelCbCancelAll">Deaktiver ringesperring</string>
-  <string name="labelCbChangePassword">Endre passord</string>
-  <string name="psw_enter_old">Gammelt passord</string>
-  <string name="psw_enter_new">Nytt passord</string>
-  <string name="psw_reenter_new">Oppgi passord på nytt</string>
-  <string name="no_call_barring">Nummersperring deaktivert</string>
-  <string name="cb_psw_dont_match">Passordene samsvarer ikke</string>
-  <!-- FDN settings: error message displayed in a popup (toast) -->
-  <string name="fdn_invalid_number_cm">FDN ble ikke oppdatert fordi nummeret er tomt eller har fler enn 20 siffer.</string>
-  <string name="fdn_service_unavailable">FDN tjenesten er ikke tilgjengelig.</string>
-  <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <string name="exportContacts">Eksporterer kontakter til SIM-kort\u2026</string>
-  <!-- Title of the List shown for SIM Contacts Management Activity.  -->
-  <string name="simContacts_title_cm">Administrere SIM-kortkontakter</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_local_low_battery">Oppringingen mislyktes på grunn av lavt batterinivå.</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_low_battery">Anrop feilet fordi ekstern enhet har lavt batteri.</string>
-  <!-- Sim contacts management -->
-  <string name="contactScreen">Administrere SIM-kontakter</string>
-  <string name="exportContactScreen">Eksportere telefonkontakter til SIM</string>
-  <string name="addSimEntries">Legge til SIM-kontakt</string>
-  <string name="deleteAllSimEntries">Slette alle SIM-kontakter</string>
-  <string name="deleteSimContacts">Sletter SIM kontakter\u2026</string>
-  <string name="editContact">Endre</string>
-  <string name="sendSms">Send SMS</string>
-  <string name="delete">Slett</string>
-  <string name="dial">Ring opp</string>
-  <string name="enterName">Skriv inn navn:</string>
-  <string name="enterNumber">Angi telefonnummer:</string>
-  <string name="hintName">Navn</string>
-  <string name="hintPhonenumber">Mobilnummer</string>
-  <string name="contactAddSuccess">Kontakten ble lagret på SIM-kort</string>
-  <string name="contactAddFailed">Klarte ikke lagre kontakten på SIM-kort</string>
-  <string name="contactUpdateSuccess">Kontakten er oppdatert på SIM-kort</string>
-  <string name="contactUpdateFailed">Klarte ikke oppdatere kontakt på SIM-kort</string>
-  <string name="contactdeleteSuccess">Kontakten ble slettet fra SIM-kort</string>
-  <string name="contactdeleteFailed">Klarte ikke slette kontakt fra SIM-kort</string>
-  <string name="allContactdeleteSuccess">Slettet alle kontakter fra SIM-kort</string>
-  <string name="allContactdeleteFailed">Klarte ikke slette alle kontakter fra SIM-kort</string>
-  <string name="exportAllcontatsSuccess">Eksportering av alle kontakter til SIM-kort var vellykket</string>
-  <string name="exportAllcontatsFailed">Eksportering av alle kontakter til SIM-kort mislyktes</string>
-  <string name="exportAllcontatsNoContacts">Ingen kontakter funnet for eksportering</string>
-  <string name="msim_mobile_network_settings_title">SIM %d mobilnettverk innstillinger</string>
-  <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">endre nettverksmodus</string>
-  <string name="perm_change_mobile_network_desc">Gir en app tilgang til å endre gjeldende nettverksmodus.</string>
-  <!-- Mobile network settings, COLP -->
-  <string name="connected_line_identification_title">Tilkoblet linje identifikasjon</string>
-  <string name="connected_line_identification_summary">Deaktiver dette alternativet hvis mottakernes nummere ikke vises i anropsloggen</string>
-  <!-- Network mode picker dialog title -->
-  <string name="choose_network_mode_title">Velg nettverksmodus</string>
-  <string name="choose_network_mode_system_default">Systemstandard</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
-  <string name="unlock_failed_remaining_retries">Opplåsingsforespørsel mislykket, %1$d forsøk igjen.</string>
-  <!-- Call forward: IMS: Media tag support -->
-  <string name="labelCFType">Samtaleviderekobling innstillinger</string>
-  <string name="labelCFVoice">Stemme</string>
-  <string name="labelCFVideo">Video</string>
-  <string name="call_forward_option">Samtaleviderekobling innstillinger</string>
+    <string name="incall_screen_settings">Skjerminnstillinger under samtaler</string>
+    <string name="show_ssn_label">Hendelsesvarsling</string>
+    <string name="show_ssn_summary">Vis en melding for ulike nettverkshendelser relatert til anrop</string>
+    <string name="incall_echo_cancellation">Samtale støyreduksjon</string>
+    <string name="enable_aec_label">Ekkoreduksjon</string>
+    <string name="enable_aec_summary">Reduser bakgrunnsstøy for den eksterne parten under stemmesamtaler</string>
+    <string name="blacklist_title">Blokkert anropsliste</string>
+    <string name="blacklist_summary_disabled">Deaktivert</string>
+    <string name="blacklist_summary">Du vil ikke motta innkommende samtaler eller meldinger fra telefonnumre på listen over blokkerte telefonnummer</string>
+    <string name="mwi_notification_title">Melding venter indikator</string>
+    <string name="mwi_notification_summary">Vis melding på vente-indikator hvis noen voicemail varsler (omstart kreves)</string>
+    <string name="phone_number_label">Telefonnummeret mitt</string>
+    <string name="phone_number_summary">Angi telefonnummeret for denne enheten</string>
+    <string name="set_my_number_failed">Kunne ikke angi telefonnummer</string>
+    <string name="call_notif_unconditionalCF">Ubetinget viderekobling aktiv</string>
+    <string name="call_notif_conditionalCF">Betinget viderekobling aktiv</string>
+    <string name="call_notif_MOcall_forwarding">Utgående samtale videresendes</string>
+    <string name="call_notif_cugcall">Ringe i lukket brukergruppe</string>
+    <string name="call_notif_outgoing_barred">Utgående samtaler sperret</string>
+    <string name="call_notif_incoming_barred">Innkommende samtaler sperret på eksterne parten</string>
+    <string name="call_notif_clir_suppression_rejected">Eget nummer undertrykkelse avvist av nettverket</string>
+    <string name="call_notif_call_deflected">Samtale videresendt av eksterne parten</string>
+    <string name="call_notif_MTcall_forwarding">Innkommende anrop viderekobles</string>
+    <string name="call_notif_multipartycall">Flerparti samtale</string>
+    <string name="call_notif_callonhold_released">Ringe ut eksternt</string>
+    <string name="call_notif_forwardcheckreceived">Samtalen ble videresendt</string>
+    <string name="call_notif_callconnectingect">Oppringing kobles til gjennom samtaleoverføring</string>
+    <string name="call_notif_callconnectedect">Oppringing kobles til gjennom samtaleoverføring</string>
+    <string name="requesting_unlock_cm">Ber om SIM nettverk opplåsning\u2026</string>
+    <string name="unlock_failed_cm">SIM nettverk opplåsningsforespørsel mislyktes.</string>
+    <string name="unlock_success_cm">SIM nettverk opplåsning mislyktes.</string>
+    <string name="all_day">Hele dagen</string>
+    <string name="time_start">Fra</string>
+    <string name="time_end">Til</string>
+    <string name="time_hour">Time</string>
+    <string name="time_minute">Minutt</string>
+    <string name="time_formate_am">AM</string>
+    <string name="time_formate_pm">PM</string>
+    <string name="preferred_network_mode_global_summary_cm">Foretrukket nettverksmodus: Global (CDMA/EvDo/LTE/GSM/WCDMA)</string>
+    <string name="callFailed_incoming_cb_enabled">Gruppen har sperret alle innkommende oppringinger.</string>
+    <string name="callUnanswered_forwarded">Ubesvarte og videresendte anrop</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_summary">Foretrukket nettverksmodus: TD-SCDMA / WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_summary">Foretrukket nettverksmodus: TD-SCDMA / LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_summary">Foretrukket nettverksmodus: TD-SCDMA / GSM</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Foretrukket nettverksmodus: TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Foretrukket nettverksmodus: TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Foretrukket nettverksmodus: TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Foretrukket nettverksmodus: TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Foretrukket nettverksmodus: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Foretrukket nettverksmodus: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA only</string>
+    <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
+    <string name="preferred_network_mode_lte_choice">LTE</string>
+    <string name="preferred_network_mode_global_choice">Global</string>
+    <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_evdo_only_choice">Kun EvDo</string>
+    <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA uten EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo automatisk</string>
+    <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA automatisk</string>
+    <string name="preferred_network_mode_wcdma_only_choice">kun WCDMA</string>
+    <string name="preferred_network_mode_gsm_only_choice">kun GSM</string>
+    <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA foretrukket</string>
+    <string name="call_barring">Ringesperring</string>
+    <string name="call_barring_outgoing">Utgående samtaleblokkering</string>
+    <string-array name="call_barring_outgoing_display_values">
+        <item>Av</item>
+        <item>Internasjonale roaming samtaler</item>
+        <item>Internasjonale samtaler</item>
+        <item>Utgående samtaler</item>
+    </string-array>
+    <string-array name="call_barring_incoming_display_values">
+        <item>Av</item>
+        <item>Roaming</item>
+        <item>Alle</item>
+    </string-array>
+    <string name="call_barring_incoming">Innkommende samtaleblokkering</string>
+    <string name="input_password">Angi passordet</string>
+    <string name="invalidPsw">Angi et gyldig passord (4-8 sifre)</string>
+    <string name="labelCbCancelAll">Deaktiver ringesperring</string>
+    <string name="labelCbChangePassword">Endre passord</string>
+    <string name="psw_enter_old">Gammelt passord</string>
+    <string name="psw_enter_new">Nytt passord</string>
+    <string name="psw_reenter_new">Oppgi passord på nytt</string>
+    <string name="no_call_barring">Nummersperring deaktivert</string>
+    <string name="cb_psw_dont_match">Passordene samsvarer ikke</string>
+    <string name="fdn_invalid_number_cm">FDN ble ikke oppdatert fordi nummeret er tomt eller har fler enn 20 siffer.</string>
+    <string name="fdn_service_unavailable">FDN tjenesten er ikke tilgjengelig.</string>
+    <string name="exportContacts">Eksporterer kontakter til SIM-kort\u2026</string>
+    <string name="simContacts_title_cm">Administrere SIM-kortkontakter</string>
+    <string name="incall_error_local_low_battery">Oppringingen mislyktes på grunn av lavt batterinivå.</string>
+    <string name="incall_error_low_battery">Anrop feilet fordi ekstern enhet har lavt batteri.</string>
+    <string name="contactScreen">Administrere SIM-kontakter</string>
+    <string name="exportContactScreen">Eksportere telefonkontakter til SIM</string>
+    <string name="addSimEntries">Legge til SIM-kontakt</string>
+    <string name="deleteAllSimEntries">Slette alle SIM-kontakter</string>
+    <string name="deleteSimContacts">Sletter SIM kontakter\u2026</string>
+    <string name="editContact">Endre</string>
+    <string name="sendSms">Send SMS</string>
+    <string name="delete">Slett</string>
+    <string name="dial">Ring opp</string>
+    <string name="enterName">Skriv inn navn:</string>
+    <string name="enterNumber">Angi telefonnummer:</string>
+    <string name="hintName">Navn</string>
+    <string name="hintPhonenumber">Mobilnummer</string>
+    <string name="contactAddSuccess">Kontakten ble lagret på SIM-kort</string>
+    <string name="contactAddFailed">Klarte ikke lagre kontakten på SIM-kort</string>
+    <string name="contactUpdateSuccess">Kontakten er oppdatert på SIM-kort</string>
+    <string name="contactUpdateFailed">Klarte ikke oppdatere kontakt på SIM-kort</string>
+    <string name="contactdeleteSuccess">Kontakten ble slettet fra SIM-kort</string>
+    <string name="contactdeleteFailed">Klarte ikke slette kontakt fra SIM-kort</string>
+    <string name="allContactdeleteSuccess">Slettet alle kontakter fra SIM-kort</string>
+    <string name="allContactdeleteFailed">Klarte ikke slette alle kontakter fra SIM-kort</string>
+    <string name="exportAllcontatsSuccess">Eksportering av alle kontakter til SIM-kort var vellykket</string>
+    <string name="exportAllcontatsFailed">Eksportering av alle kontakter til SIM-kort mislyktes</string>
+    <string name="exportAllcontatsNoContacts">Ingen kontakter funnet for eksportering</string>
+    <string name="msim_mobile_network_settings_title">SIM %d mobilnettverk innstillinger</string>
+    <string name="perm_change_mobile_network">endre nettverksmodus</string>
+    <string name="perm_change_mobile_network_desc">Gir en app tilgang til å endre gjeldende nettverksmodus.</string>
+    <string name="connected_line_identification_title">Tilkoblet linje identifikasjon</string>
+    <string name="connected_line_identification_summary">Deaktiver dette alternativet hvis mottakernes nummere ikke vises i anropsloggen</string>
+    <string name="choose_network_mode_title">Velg nettverksmodus</string>
+    <string name="choose_network_mode_system_default">Systemstandard</string>
+    <string name="unlock_failed_remaining_retries">Opplåsingsforespørsel mislykket, %1$d forsøk igjen.</string>
+    <string name="labelCFType">Samtaleviderekobling innstillinger</string>
+    <string name="labelCFVoice">Stemme</string>
+    <string name="labelCFVideo">Video</string>
+    <string name="call_forward_option">Samtaleviderekobling innstillinger</string>
 </resources>

@@ -16,189 +16,142 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Advanced Settings -->
-  <string name="incall_screen_settings">Параметри екрану виклику</string>
-  <string name="show_ssn_label">Повідомлення про події</string>
-  <string name="show_ssn_summary">Показувати повідомлення щодо подій у мережі, які пов\'язані з викликом</string>
-  <string name="incall_echo_cancellation">Зниження шуму під час дзвінка</string>
-  <string name="enable_aec_label">Усунення відлуння</string>
-  <string name="enable_aec_summary">Зменшення навколишнього шуму співрозмовника під час голосових викликів</string>
-  <!-- Blacklist preferences -->
-  <string name="blacklist_title">Список заблокованих абонентів</string>
-  <string name="blacklist_summary_disabled">Вимкнено</string>
-  <string name="blacklist_summary">Ви не будете отримувати вхідні дзвінки чи повідомлення від абонентів, які знаходяться у списку заблокованих</string>
-  <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
-  <string name="mwi_notification_title">Індикатор очікування повідомлення</string>
-  <string name="mwi_notification_summary">Показувати індикатор очікування повідомлення сповіщень голосової пошти (потребує перезавантаження)</string>
-  <!-- My Phone Number -->
-  <string name="phone_number_label">Мій номер телефону</string>
-  <string name="phone_number_summary">Встановити телефонний номер для цього пристрою</string>
-  <string name="set_my_number_failed">Не вдалося встановити номер телефону</string>
-  <!-- Toasts for various transient network events -->
-  <!-- Toast text for Unconditional Call Forwarding enabled  -->
-  <string name="call_notif_unconditionalCF">Увімкнена безумовна переадресація виклику</string>
-  <!-- Toast text for Conditional Call Forwarding enabled  -->
-  <string name="call_notif_conditionalCF">Увімкнена умовна переадресація виклику</string>
-  <!-- Toast text for a forwarded MO call  -->
-  <string name="call_notif_MOcall_forwarding">Вихідний виклик переадресовано</string>
-  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
-  <string name="call_notif_cugcall">Виклик у приватну групу</string>
-  <!-- In-call screen: status label when MO calls are barred -->
-  <string name="call_notif_outgoing_barred">Вихідний виклик заборонений</string>
-  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
-  <string name="call_notif_incoming_barred">Вхідний виклик дистанційно заборонений</string>
-  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
-  <string name="call_notif_clir_suppression_rejected">Приховування власного номеру вимкнено мережею</string>
-  <!-- In-call screen: status label when MO call gets deflected to another party -->
-  <string name="call_notif_call_deflected">Виклик дистанційно переадресований</string>
-  <!-- Toast text for incoming call being forwarded to other remote party  -->
-  <string name="call_notif_MTcall_forwarding">Вхідний дзвінок переадресовано</string>
-  <!-- Toast text for incoming call which is part of MultiParty Call -->
-  <string name="call_notif_multipartycall">Вхідний виклик-конференція</string>
-  <!-- Toast text for incoming call which is answered,put on hold & then released -->
-  <string name="call_notif_callonhold_released">Виклик дистанційно скасований</string>
-  <!-- Toast text for incoming call forward check received -->
-  <string name="call_notif_forwardcheckreceived">Виклик переадресовано</string>
-  <!-- Toast text for incoming call connecting through ECT -->
-  <string name="call_notif_callconnectingect">Виклик з’єднується через явну передачу виклику</string>
-  <!-- Toast text for incoming call connected through ECT -->
-  <string name="call_notif_callconnectedect">Виклик з’єднаний через явну передачу виклику</string>
-  <!-- Status message displayed on SIM Network Depersonalization panel -->
-  <string name="requesting_unlock_cm">Запит розблокування мережі SIM\u2026</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_failed_cm">Не вдалося виконати запит на розблокування мережі SIM.</string>
-  <!-- Success message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_success_cm">Розблокування мережі SIM виконано успішно.</string>
-  <!-- Call forwarding settings screen, setting timer info for cfut case -->
-  <string name="all_day">Увесь день</string>
-  <string name="time_start">Від</string>
-  <string name="time_end">Кому</string>
-  <string name="time_hour">Година</string>
-  <string name="time_minute">Хвилина</string>
-  <string name="time_formate_am">AM</string>
-  <string name="time_formate_pm">PM</string>
-  <!-- Mobile network settings, preferred network modes -->
-  <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_global_summary_cm">Пріоритетний режим мережі: Глобальний (CDMA/EvDo/LTE/GSM/WCDMA)</string>
-  <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
-  <string name="callFailed_incoming_cb_enabled">Абонент заборонив усі вхідні дзвінки.</string>
-  <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
-  <string name="callUnanswered_forwarded">Виклик залишився без відповіді та був переадресований</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_summary">Пріоритетний режим мережі: TD-SCDMA/WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_summary">Пріоритетний режим мережі: TD-SCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_summary">Пріоритетний режим мережі: TD-SCDMA/GSM</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Пріоритетний режим мережі: TD-SCDMA/GSM/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Пріоритетний режим мережі: TD-SCDMA/GSM/WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Пріоритетний режим мережі: TD-SCDMA/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Пріоритетний режим мережі: TD-SCDMA/GSM/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Бажаний режим мережі: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Пріоритетний режим мережі: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
-  <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_only_choice">Тільки TD-SCDMA</string>
-  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
-  <string name="preferred_network_mode_lte_choice">LTE</string>
-  <string name="preferred_network_mode_global_choice">Глобальний</string>
-  <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_evdo_only_choice">Тільки EvDo</string>
-  <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA без EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo авторежим</string>
-  <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA авторежим</string>
-  <string name="preferred_network_mode_wcdma_only_choice">Тільки WCDMA</string>
-  <string name="preferred_network_mode_gsm_only_choice">Тільки GSM</string>
-  <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Переважно GSM/WCDMA</string>
-  <string name="call_barring">Заборона виклику</string>
-  <string name="call_barring_outgoing">Заборона вихідного виклику</string>
-  <string-array name="call_barring_outgoing_display_values">
-    <item>Вимк</item>
-    <item>Міжнародні дзвінки у роумінгу</item>
-    <item>Міжнародні дзвінки</item>
-    <item>Вихідні дзвінки</item>
-  </string-array>
-  <string-array name="call_barring_incoming_display_values">
-    <item>Вимк</item>
-    <item>Роумінг</item>
-    <item>Усі</item>
-  </string-array>
-  <string name="call_barring_incoming">Заборона вхідного виклику</string>
-  <string name="input_password">Введіть свій пароль</string>
-  <string name="invalidPsw">Введіть припустимий пароль (4-8 цифр)</string>
-  <string name="labelCbCancelAll">Вимкнення заборони виклику</string>
-  <string name="labelCbChangePassword">Змінити пароль</string>
-  <string name="psw_enter_old">Старий пароль</string>
-  <string name="psw_enter_new">Новий пароль</string>
-  <string name="psw_reenter_new">введіть пароль ще раз</string>
-  <string name="no_call_barring">Заборона викликів відключена</string>
-  <string name="cb_psw_dont_match">Паролі не збігаються</string>
-  <!-- FDN settings: error message displayed in a popup (toast) -->
-  <string name="fdn_invalid_number_cm">FDN не було оновлено оскільки номер пустий, або перевищує 20 цифр.</string>
-  <string name="fdn_service_unavailable">Служба FDN недоступна.</string>
-  <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <string name="exportContacts">Експортування контактів на SIM-карту\u2026</string>
-  <!-- Title of the List shown for SIM Contacts Management Activity.  -->
-  <string name="simContacts_title_cm">Керувати контактами SIM-карти</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_local_low_battery">Виклик не вдалося через низький рівень заряду акумулятора.</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_low_battery">Виклик не вдалося через низький рівень заряду акумулятора віддаленого пристрою.</string>
-  <!-- Sim contacts management -->
-  <string name="contactScreen">Керування контактами SIM-картки</string>
-  <string name="exportContactScreen">Експортувати контакти телефону на SIM-карту</string>
-  <string name="addSimEntries">Додати SIM-контакт</string>
-  <string name="deleteAllSimEntries">Видалити всі контакти SIM</string>
-  <string name="deleteSimContacts">Видалення SIM-контактів\u2026</string>
-  <string name="editContact">Змінити</string>
-  <string name="sendSms">Надсилання SMS</string>
-  <string name="delete">Видалити</string>
-  <string name="dial">Виклик</string>
-  <string name="enterName">Введіть ім\'я:</string>
-  <string name="enterNumber">Введіть номер телефону:</string>
-  <string name="hintName">Ім’я</string>
-  <string name="hintPhonenumber">Номер телефону</string>
-  <string name="contactAddSuccess">Контакт успішно додано на SIM-картку</string>
-  <string name="contactAddFailed">Не вдалося додати контакт до SIM-карти</string>
-  <string name="contactUpdateSuccess">Контакт на SIM-карті оновлений</string>
-  <string name="contactUpdateFailed">Не вдалося оновити контакт на SIM-картці</string>
-  <string name="contactdeleteSuccess">Контакт видалений з SIM-картки</string>
-  <string name="contactdeleteFailed">Не вдалося видалити контакт з SIM-картки</string>
-  <string name="allContactdeleteSuccess">Успішно видалено всі контакти з SIM-картки</string>
-  <string name="allContactdeleteFailed">Не вдалося видалити всі контакти з SIM-картки</string>
-  <string name="exportAllcontatsSuccess">Успішно експортовано всі контакти до SIM-картки</string>
-  <string name="exportAllcontatsFailed">Не вдалося експортувати всі контакти до SIM-картки</string>
-  <string name="exportAllcontatsNoContacts">Не знайдено контактів для експорту до SIM-картки</string>
-  <string name="msim_mobile_network_settings_title">Налаштування мобільної мережі SIM %d</string>
-  <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">змінити налаштування мережі</string>
-  <string name="perm_change_mobile_network_desc">Дозволяє програмі змінити поточні налаштування мережі.</string>
-  <!-- Mobile network settings, COLP -->
-  <string name="connected_line_identification_title">Ідентифікація абонента</string>
-  <string name="connected_line_identification_summary">Вимкніть цей параметр, якщо в історії викликів не відображаються номери абонентів</string>
-  <!-- Network mode picker dialog title -->
-  <string name="choose_network_mode_title">Вибір режиму мережі</string>
-  <string name="choose_network_mode_system_default">За замовчуванням системи</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
-  <string name="unlock_failed_remaining_retries">Невдалий запит на розблокування, залишилося %1$d спроб.</string>
-  <!-- Call forward: IMS: Media tag support -->
-  <string name="labelCFType">Налаштування переадресації викликів</string>
-  <string name="labelCFVoice">Голос</string>
-  <string name="labelCFVideo">Відео</string>
-  <string name="call_forward_option">Параметри переадресації викликів</string>
+    <string name="incall_screen_settings">Параметри екрану виклику</string>
+    <string name="show_ssn_label">Повідомлення про події</string>
+    <string name="show_ssn_summary">Показувати повідомлення щодо подій у мережі, які пов\'язані з викликом</string>
+    <string name="incall_echo_cancellation">Зниження шуму під час дзвінка</string>
+    <string name="enable_aec_label">Усунення відлуння</string>
+    <string name="enable_aec_summary">Зменшення навколишнього шуму співрозмовника під час голосових викликів</string>
+    <string name="blacklist_title">Список заблокованих абонентів</string>
+    <string name="blacklist_summary_disabled">Вимкнено</string>
+    <string name="blacklist_summary">Ви не будете отримувати вхідні дзвінки чи повідомлення від абонентів, які знаходяться у списку заблокованих</string>
+    <string name="mwi_notification_title">Індикатор очікування повідомлення</string>
+    <string name="mwi_notification_summary">Показувати індикатор очікування повідомлення сповіщень голосової пошти (потребує перезавантаження)</string>
+    <string name="phone_number_label">Мій номер телефону</string>
+    <string name="phone_number_summary">Встановити телефонний номер для цього пристрою</string>
+    <string name="set_my_number_failed">Не вдалося встановити номер телефону</string>
+    <string name="call_notif_unconditionalCF">Увімкнена безумовна переадресація виклику</string>
+    <string name="call_notif_conditionalCF">Увімкнена умовна переадресація виклику</string>
+    <string name="call_notif_MOcall_forwarding">Вихідний виклик переадресовано</string>
+    <string name="call_notif_cugcall">Виклик у приватну групу</string>
+    <string name="call_notif_outgoing_barred">Вихідний виклик заборонений</string>
+    <string name="call_notif_incoming_barred">Вхідний виклик дистанційно заборонений</string>
+    <string name="call_notif_clir_suppression_rejected">Приховування власного номеру вимкнено мережею</string>
+    <string name="call_notif_call_deflected">Виклик дистанційно переадресований</string>
+    <string name="call_notif_MTcall_forwarding">Вхідний дзвінок переадресовано</string>
+    <string name="call_notif_multipartycall">Вхідний виклик-конференція</string>
+    <string name="call_notif_callonhold_released">Виклик дистанційно скасований</string>
+    <string name="call_notif_forwardcheckreceived">Виклик переадресовано</string>
+    <string name="call_notif_callconnectingect">Виклик з’єднується через явну передачу виклику</string>
+    <string name="call_notif_callconnectedect">Виклик з’єднаний через явну передачу виклику</string>
+    <string name="requesting_unlock_cm">Запит розблокування мережі SIM\u2026</string>
+    <string name="unlock_failed_cm">Не вдалося виконати запит на розблокування мережі SIM.</string>
+    <string name="unlock_success_cm">Розблокування мережі SIM виконано успішно.</string>
+    <string name="all_day">Увесь день</string>
+    <string name="time_start">Від</string>
+    <string name="time_end">Кому</string>
+    <string name="time_hour">Година</string>
+    <string name="time_minute">Хвилина</string>
+    <string name="time_formate_am">AM</string>
+    <string name="time_formate_pm">PM</string>
+    <string name="preferred_network_mode_global_summary_cm">Пріоритетний режим мережі: Глобальний (CDMA/EvDo/LTE/GSM/WCDMA)</string>
+    <string name="callFailed_incoming_cb_enabled">Абонент заборонив усі вхідні дзвінки.</string>
+    <string name="callUnanswered_forwarded">Виклик залишився без відповіді та був переадресований</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_summary">Пріоритетний режим мережі: TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_summary">Пріоритетний режим мережі: TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_summary">Пріоритетний режим мережі: TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Пріоритетний режим мережі: TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Пріоритетний режим мережі: TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Пріоритетний режим мережі: TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Пріоритетний режим мережі: TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Бажаний режим мережі: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Пріоритетний режим мережі: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_only_choice">Тільки TD-SCDMA</string>
+    <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
+    <string name="preferred_network_mode_lte_choice">LTE</string>
+    <string name="preferred_network_mode_global_choice">Глобальний</string>
+    <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_evdo_only_choice">Тільки EvDo</string>
+    <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA без EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo авторежим</string>
+    <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA авторежим</string>
+    <string name="preferred_network_mode_wcdma_only_choice">Тільки WCDMA</string>
+    <string name="preferred_network_mode_gsm_only_choice">Тільки GSM</string>
+    <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Переважно GSM/WCDMA</string>
+    <string name="call_barring">Заборона виклику</string>
+    <string name="call_barring_outgoing">Заборона вихідного виклику</string>
+    <string-array name="call_barring_outgoing_display_values">
+        <item>Вимк</item>
+        <item>Міжнародні дзвінки у роумінгу</item>
+        <item>Міжнародні дзвінки</item>
+        <item>Вихідні дзвінки</item>
+    </string-array>
+    <string-array name="call_barring_incoming_display_values">
+        <item>Вимк</item>
+        <item>Роумінг</item>
+        <item>Усі</item>
+    </string-array>
+    <string name="call_barring_incoming">Заборона вхідного виклику</string>
+    <string name="input_password">Введіть свій пароль</string>
+    <string name="invalidPsw">Введіть припустимий пароль (4-8 цифр)</string>
+    <string name="labelCbCancelAll">Вимкнення заборони виклику</string>
+    <string name="labelCbChangePassword">Змінити пароль</string>
+    <string name="psw_enter_old">Старий пароль</string>
+    <string name="psw_enter_new">Новий пароль</string>
+    <string name="psw_reenter_new">введіть пароль ще раз</string>
+    <string name="no_call_barring">Заборона викликів відключена</string>
+    <string name="cb_psw_dont_match">Паролі не збігаються</string>
+    <string name="fdn_invalid_number_cm">FDN не було оновлено оскільки номер пустий, або перевищує 20 цифр.</string>
+    <string name="fdn_service_unavailable">Служба FDN недоступна.</string>
+    <string name="exportContacts">Експортування контактів на SIM-карту\u2026</string>
+    <string name="simContacts_title_cm">Керувати контактами SIM-карти</string>
+    <string name="incall_error_local_low_battery">Виклик не вдалося через низький рівень заряду акумулятора.</string>
+    <string name="incall_error_low_battery">Виклик не вдалося через низький рівень заряду акумулятора віддаленого пристрою.</string>
+    <string name="contactScreen">Керування контактами SIM-картки</string>
+    <string name="exportContactScreen">Експортувати контакти телефону на SIM-карту</string>
+    <string name="addSimEntries">Додати SIM-контакт</string>
+    <string name="deleteAllSimEntries">Видалити всі контакти SIM</string>
+    <string name="deleteSimContacts">Видалення SIM-контактів\u2026</string>
+    <string name="editContact">Змінити</string>
+    <string name="sendSms">Надсилання SMS</string>
+    <string name="delete">Видалити</string>
+    <string name="dial">Виклик</string>
+    <string name="enterName">Введіть ім\'я:</string>
+    <string name="enterNumber">Введіть номер телефону:</string>
+    <string name="hintName">Ім’я</string>
+    <string name="hintPhonenumber">Номер телефону</string>
+    <string name="contactAddSuccess">Контакт успішно додано на SIM-картку</string>
+    <string name="contactAddFailed">Не вдалося додати контакт до SIM-карти</string>
+    <string name="contactUpdateSuccess">Контакт на SIM-карті оновлений</string>
+    <string name="contactUpdateFailed">Не вдалося оновити контакт на SIM-картці</string>
+    <string name="contactdeleteSuccess">Контакт видалений з SIM-картки</string>
+    <string name="contactdeleteFailed">Не вдалося видалити контакт з SIM-картки</string>
+    <string name="allContactdeleteSuccess">Успішно видалено всі контакти з SIM-картки</string>
+    <string name="allContactdeleteFailed">Не вдалося видалити всі контакти з SIM-картки</string>
+    <string name="exportAllcontatsSuccess">Успішно експортовано всі контакти до SIM-картки</string>
+    <string name="exportAllcontatsFailed">Не вдалося експортувати всі контакти до SIM-картки</string>
+    <string name="exportAllcontatsNoContacts">Не знайдено контактів для експорту до SIM-картки</string>
+    <string name="msim_mobile_network_settings_title">Налаштування мобільної мережі SIM %d</string>
+    <string name="perm_change_mobile_network">змінити налаштування мережі</string>
+    <string name="perm_change_mobile_network_desc">Дозволяє програмі змінити поточні налаштування мережі.</string>
+    <string name="connected_line_identification_title">Ідентифікація абонента</string>
+    <string name="connected_line_identification_summary">Вимкніть цей параметр, якщо в історії викликів не відображаються номери абонентів</string>
+    <string name="choose_network_mode_title">Вибір режиму мережі</string>
+    <string name="choose_network_mode_system_default">За замовчуванням системи</string>
+    <string name="unlock_failed_remaining_retries">Невдалий запит на розблокування, залишилося %1$d спроб.</string>
+    <string name="labelCFType">Налаштування переадресації викликів</string>
+    <string name="labelCFVoice">Голос</string>
+    <string name="labelCFVideo">Відео</string>
+    <string name="call_forward_option">Параметри переадресації викликів</string>
 </resources>

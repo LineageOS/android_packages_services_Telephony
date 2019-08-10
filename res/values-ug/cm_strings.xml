@@ -16,183 +16,136 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Advanced Settings -->
-  <string name="incall_screen_settings">سۆزلىشىش ئېكران تەڭشىكى</string>
-  <string name="show_ssn_label">ھادىسە ئۇقتۇرۇشى</string>
-  <string name="show_ssn_summary">چاقىرىشنى بىر تەرەپ قىلىشقا ئائىت ھەر خىل تور ھادىسىلىرى ئۈچۈن ئۇقتۇرۇشتىن بىرنى كۆرسىتىدۇ</string>
-  <string name="incall_echo_cancellation">سۆزلىشىش شاۋقۇنىنى پەسەيتىش</string>
-  <string name="enable_aec_label">ئەكىس سادانى پەسەيتىش</string>
-  <string name="enable_aec_summary">سۆزلىشىش جەريانىدا قارشى تەرەپكە سۆزلىشىش شاۋقۇنىنى پەسەيتىشنى تەمىنلەش</string>
-  <!-- Blacklist preferences -->
-  <string name="blacklist_title">چاقىرىش قارا تىزىملىكى</string>
-  <string name="blacklist_summary_disabled">چەكلەنگەن</string>
-  <string name="blacklist_summary">سىز قارا تىزىملىكتىكى نومۇردىن تېلېفون ياكى ئۇچۇر قۇبۇل قىلالمايسىز</string>
-  <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
-  <string name="mwi_notification_title">ئۇچۇر كۈتۈش كۆرسەتكۈچى</string>
-  <string name="mwi_notification_summary">ئۈنخەت ئۇقتۇرۇشىنىڭ ئۇچۇر كۈتۈش كۆرسەتكۈچىنى كۆرسىتىدۇ(قايتا قوزغىتىش تەلەپ قىلىنىدۇ)</string>
-  <!-- My Phone Number -->
-  <string name="phone_number_label">تېلېفون نومۇرۇم</string>
-  <string name="phone_number_summary">بۇ ئۈسكۈنە ئۈچۈن تېلېفون نومۇر تەڭشىكى</string>
-  <!-- Toasts for various transient network events -->
-  <!-- Toast text for Unconditional Call Forwarding enabled  -->
-  <string name="call_notif_unconditionalCF">شەرتسىز ئۇلاپ يەتكۈزۈش ئاكتىپ</string>
-  <!-- Toast text for Conditional Call Forwarding enabled  -->
-  <string name="call_notif_conditionalCF">شەرلىك ئۇلاپ يەتكۈزۈش ئاكتىپ</string>
-  <!-- Toast text for a forwarded MO call  -->
-  <string name="call_notif_MOcall_forwarding">چاقىرغان تېلېفون ئۇلاپ يەتكۈزۈلدى</string>
-  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
-  <string name="call_notif_cugcall">يېپىق گۇرۇپپىدا چاقىر</string>
-  <!-- In-call screen: status label when MO calls are barred -->
-  <string name="call_notif_outgoing_barred">چىققان چاقىرىشلار چەكلەندى</string>
-  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
-  <string name="call_notif_incoming_barred">چاقىرىلىشنى قارشى تەرەپ چەكلىدى</string>
-  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
-  <string name="call_notif_clir_suppression_rejected">	ئۆز نومۇرىنى چەكلەشنى تور رەت قىلدى</string>
-  <!-- In-call screen: status label when MO call gets deflected to another party -->
-  <string name="call_notif_call_deflected">چاقىرىشنى قارشى تەرەپ ئۇلاپ يەتكۈزدى</string>
-  <!-- Toast text for incoming call being forwarded to other remote party  -->
-  <string name="call_notif_MTcall_forwarding">چاقىرىلىش ئۇلاپ يەتكۈزۈلدى</string>
-  <!-- Toast text for incoming call which is part of MultiParty Call -->
-  <string name="call_notif_multipartycall">كۆپ تەرەپ چاقىرىش</string>
-  <!-- Toast text for incoming call which is answered,put on hold & then released -->
-  <string name="call_notif_callonhold_released">چاقىرىشنى قارشى تەرەپ قويۇۋەتتى</string>
-  <!-- Toast text for incoming call forward check received -->
-  <string name="call_notif_forwardcheckreceived">چاقىرىش ئۇلاپ يەتكۈزۈلدى</string>
-  <!-- Toast text for incoming call connecting through ECT -->
-  <string name="call_notif_callconnectingect">چاقىرىش ئاشكارە چاقىرىشنى ئۇلاپ يەتكۈزۈش ئارقىلىق ئۇلىنىۋاتىدۇ</string>
-  <!-- Toast text for incoming call connected through ECT -->
-  <string name="call_notif_callconnectedect">چاقىرىش ئاشكارە چاقىرىشنى ئۇلاپ يەتكۈزۈش ئارقىلىق ئۇلاندى</string>
-  <!-- Status message displayed on SIM Network Depersonalization panel -->
-  <string name="requesting_unlock_cm">SIM كارتا تورىنىڭ قۇلۇپىنى ئېچىشنى ئىلتىماس قىلىۋاتىدۇ\u2026</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_failed_cm">SIM كارتا تورىنىڭ قۇلۇپىنى ئېچىش ئىلتىماسى مەغلۇپ بولدى.</string>
-  <!-- Success message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_success_cm">SIM كارتا تورىنىڭ قۇلۇپى مۇۋەپپەقىيەتلىك ئېچىلدى.</string>
-  <!-- Call forwarding settings screen, setting timer info for cfut case -->
-  <string name="all_day">پۈتۈن كۈن</string>
-  <string name="time_start">دىن</string>
-  <string name="time_end">گە</string>
-  <string name="time_hour">سائەت</string>
-  <string name="time_minute">مىنۇت</string>
-  <string name="time_formate_am">چ ب</string>
-  <string name="time_formate_pm">چ ك</string>
-  <!-- Mobile network settings, preferred network modes -->
-  <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_global_summary_cm">ئالدىن بەلگىلەنگەن تور ھالىتى: دۇنيا (CDMA/EvDo/LTE/GSM/WCDMA)</string>
-  <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
-  <string name="callFailed_incoming_cb_enabled">قارشى تەرەپ بارلىق چاقىرىلىشلارنى توستى.</string>
-  <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
-  <string name="callUnanswered_forwarded">چاقىرىشتا ئىنكاس يوق ھەمدە ئۇلاپ يەتكۈزۈلدى</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/GSM</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_lte_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/GSM/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/GSM/WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">ئالدىن بەلگىلەنگەن تور ھالىتى:TD-SCDMA/GSM/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">ئالدىن تاللىندىغان تور تىپى: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
-  <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA لا</string>
-  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
-  <string name="preferred_network_mode_lte_choice">LTE</string>
-  <string name="preferred_network_mode_global_choice">دۇنيا</string>
-  <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_evdo_only_choice">EvDo لا</string>
-  <string name="preferred_network_mode_cdma_wo_evdo_choice">EvDo ئىقتىدارى يوق، CDMA</string>
-  <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo ئاپتوماتىك</string>
-  <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA ئاپتوماتىك</string>
-  <string name="preferred_network_mode_wcdma_only_choice">WCDMA لا</string>
-  <string name="preferred_network_mode_gsm_only_choice">GSM لا</string>
-  <string name="preferred_network_mode_gsm_wcdma_preferred_choice">ئالدىن بەلگىلەنگەن GSM/WCDMA</string>
-  <string name="call_barring">چاقىرىشنى چەكلەش</string>
-  <string name="call_barring_outgoing">تېلېفون ئۇرۇشنى چەكلەش</string>
-  <string-array name="call_barring_outgoing_display_values">
-    <item>تاقاش</item>
-    <item>خەلقارالىق سەييارە چاقىرىش</item>
-    <item>خەلقارالىق ئۇزۇن يوللۇق</item>
-    <item>ئۇرغان تېلېفون</item>
-  </string-array>
-  <string-array name="call_barring_incoming_display_values">
-    <item>تاقاش</item>
-    <item>سەييارە</item>
-    <item>ھەممە</item>
-  </string-array>
-  <string name="call_barring_incoming">تېلېفون كېلىشنى چەكلەش</string>
-  <string name="input_password">پارولىڭىزنى كىرگۈزۈڭ</string>
-  <string name="invalidPsw">بىر ئىناۋەتلىك پارول كىرگۈزۈڭ(4-8 خانىلىك)</string>
-  <string name="labelCbCancelAll">چاقىرىشنى چەكلەشنى تاقاش</string>
-  <string name="labelCbChangePassword">پارول ئۆزگەرتىڭ</string>
-  <string name="psw_enter_old">كونا پارول</string>
-  <string name="psw_enter_new">يېڭى پارول</string>
-  <string name="psw_reenter_new">يېڭى پارولنى قايتا كىرگۈزۈڭ</string>
-  <string name="no_call_barring">چاقىرىشنى چەكلەش تاقالدى</string>
-  <string name="cb_psw_dont_match">پارول ئۇدۇللاشمىدى</string>
-  <!-- FDN settings: error message displayed in a popup (toast) -->
-  <string name="fdn_invalid_number_cm">نومۇر قورۇق ياكى 20 خاندىن ئارتۇق، FDN نى يېڭىليالمىدى.</string>
-  <string name="fdn_service_unavailable">FDN مۇلازىمىتىنى ئىشلەتكىلى بولمايدۇ.</string>
-  <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <string name="exportContacts">ئالاقەداشلارنى SIM كارتىغا چىقىرىۋاتىدۇ\u2026</string>
-  <!-- Title of the List shown for SIM Contacts Management Activity.  -->
-  <string name="simContacts_title_cm">SIM كارتىدىكى ئالاقەداشلارنى باشقۇرۇش</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_local_low_battery">توك مىقدارى تۆۋەن، چاقىرىش مەغلۇب بولدى.</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_low_battery">يىراق مۇساپلىك ئۈسكىنىنىڭ توك مىقدارى تۆۋەن، چاقىرىش مەغلۇب بولدى.</string>
-  <!-- Sim contacts management -->
-  <string name="contactScreen">SIM دىكى ئالاقەداشلارنى باشقۇرۇش</string>
-  <string name="exportContactScreen">تېلېفوندىكى ئالاقەداشلارنى SIM غا چىقىرىدۇ</string>
-  <string name="addSimEntries">SIM ئالاقەداش قوش</string>
-  <string name="deleteAllSimEntries">بارلىق SIM ئالاقەداشلارنى ئۆچۈر</string>
-  <string name="deleteSimContacts">SIM ئالاقەداشلارنى ئۆچۈرۈۋاتىدۇ\u2026</string>
-  <string name="editContact">تەھرىر</string>
-  <string name="sendSms">قىسقا ئۇچۇر يوللا</string>
-  <string name="delete">ئۆچۈر</string>
-  <string name="dial">نومۇر بۇرا</string>
-  <string name="enterName">ئىسىم كىرگۈزۈڭ:</string>
-  <string name="enterNumber">تېلېفون نومۇرىنى كىرگۈزۈڭ:</string>
-  <string name="hintName">ئاتى</string>
-  <string name="hintPhonenumber">تېلېفون نومۇرى</string>
-  <string name="contactAddSuccess">ئالاقەداش SIM غا مۇۋەپپەقىيەتلىك قوشۇلدى</string>
-  <string name="contactAddFailed">ئالاقەداشنى SIM غا قوشالمىدى</string>
-  <string name="contactUpdateSuccess">SIM دىكى ئالاقەداشلارنى مۇۋەپپەقىيەتلىك يېڭىلىدى</string>
-  <string name="contactUpdateFailed">SIM دىكى ئالاقەداشلارنى يېڭىلىيالمىدى</string>
-  <string name="contactdeleteSuccess">ئالاقەداش SIM دىن مۇۋەپپەقىيەتلىك ئۆچۈرۈلدى</string>
-  <string name="contactdeleteFailed">ئالاقەداشنى SIM دىن ئۆچۈرەلمىدى</string>
-  <string name="allContactdeleteSuccess">SIM دىكى ھەممە ئالاقەداشنى مۇۋەپپەقىيەتلىك ئۆچۈردى</string>
-  <string name="allContactdeleteFailed">SIM دىكى ھەممە ئالاقەداشنى ئۆچۈرەلمىدى</string>
-  <string name="exportAllcontatsSuccess">ھەممە ئالاقەداشنى SIM غا مۇۋەپپەقىيەتلىك چىقاردى</string>
-  <string name="exportAllcontatsFailed">ھەممە ئالاقەداشنى SIM غا چىقىرالمىدى</string>
-  <string name="exportAllcontatsNoContacts">SIM غا چىقىرىدىغان ئالاقەداشنى تاپالمىدى</string>
-  <string name="msim_mobile_network_settings_title">كارتا %d نىڭ كۆچمە تور تەڭشىكى</string>
-  <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">تور ھالىتىنى ئۆزگەرتىش</string>
-  <string name="perm_change_mobile_network_desc">ئەپنىڭ نۆۋەتتىكى كۆچمە تور ھالىتىنى ئۆزگەرتىشكە يول قويۇش.</string>
-  <!-- Mobile network settings, COLP -->
-  <string name="connected_line_identification_title">سىم ئۇلاپ تونۇتۇش</string>
-  <string name="connected_line_identification_summary">ئەگەر كەلگەن تېلېفون نومۇرى سۆزلىشىش خاتىرىسىدە كۆرۈنمىسە، بۇ تاللانمىنى تاقىۋېتىڭ</string>
-  <!-- Network mode picker dialog title -->
-  <string name="choose_network_mode_title">تور ھالىتىنى تاللاش</string>
-  <string name="choose_network_mode_system_default">سىستېما كۆڭۈلدىكى</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
-  <!-- Call forward: IMS: Media tag support -->
+    <string name="incall_screen_settings">سۆزلىشىش ئېكران تەڭشىكى</string>
+    <string name="show_ssn_label">ھادىسە ئۇقتۇرۇشى</string>
+    <string name="show_ssn_summary">چاقىرىشنى بىر تەرەپ قىلىشقا ئائىت ھەر خىل تور ھادىسىلىرى ئۈچۈن ئۇقتۇرۇشتىن بىرنى كۆرسىتىدۇ</string>
+    <string name="incall_echo_cancellation">سۆزلىشىش شاۋقۇنىنى پەسەيتىش</string>
+    <string name="enable_aec_label">ئەكىس سادانى پەسەيتىش</string>
+    <string name="enable_aec_summary">سۆزلىشىش جەريانىدا قارشى تەرەپكە سۆزلىشىش شاۋقۇنىنى پەسەيتىشنى تەمىنلەش</string>
+    <string name="blacklist_title">چاقىرىش قارا تىزىملىكى</string>
+    <string name="blacklist_summary_disabled">چەكلەنگەن</string>
+    <string name="blacklist_summary">سىز قارا تىزىملىكتىكى نومۇردىن تېلېفون ياكى ئۇچۇر قۇبۇل قىلالمايسىز</string>
+    <string name="mwi_notification_title">ئۇچۇر كۈتۈش كۆرسەتكۈچى</string>
+    <string name="mwi_notification_summary">ئۈنخەت ئۇقتۇرۇشىنىڭ ئۇچۇر كۈتۈش كۆرسەتكۈچىنى كۆرسىتىدۇ(قايتا قوزغىتىش تەلەپ قىلىنىدۇ)</string>
+    <string name="phone_number_label">تېلېفون نومۇرۇم</string>
+    <string name="phone_number_summary">بۇ ئۈسكۈنە ئۈچۈن تېلېفون نومۇر تەڭشىكى</string>
+    <string name="call_notif_unconditionalCF">شەرتسىز ئۇلاپ يەتكۈزۈش ئاكتىپ</string>
+    <string name="call_notif_conditionalCF">شەرلىك ئۇلاپ يەتكۈزۈش ئاكتىپ</string>
+    <string name="call_notif_MOcall_forwarding">چاقىرغان تېلېفون ئۇلاپ يەتكۈزۈلدى</string>
+    <string name="call_notif_cugcall">يېپىق گۇرۇپپىدا چاقىر</string>
+    <string name="call_notif_outgoing_barred">چىققان چاقىرىشلار چەكلەندى</string>
+    <string name="call_notif_incoming_barred">چاقىرىلىشنى قارشى تەرەپ چەكلىدى</string>
+    <string name="call_notif_clir_suppression_rejected">ئۆز نومۇرىنى چەكلەشنى تور رەت قىلدى</string>
+    <string name="call_notif_call_deflected">چاقىرىشنى قارشى تەرەپ ئۇلاپ يەتكۈزدى</string>
+    <string name="call_notif_MTcall_forwarding">چاقىرىلىش ئۇلاپ يەتكۈزۈلدى</string>
+    <string name="call_notif_multipartycall">كۆپ تەرەپ چاقىرىش</string>
+    <string name="call_notif_callonhold_released">چاقىرىشنى قارشى تەرەپ قويۇۋەتتى</string>
+    <string name="call_notif_forwardcheckreceived">چاقىرىش ئۇلاپ يەتكۈزۈلدى</string>
+    <string name="call_notif_callconnectingect">چاقىرىش ئاشكارە چاقىرىشنى ئۇلاپ يەتكۈزۈش ئارقىلىق ئۇلىنىۋاتىدۇ</string>
+    <string name="call_notif_callconnectedect">چاقىرىش ئاشكارە چاقىرىشنى ئۇلاپ يەتكۈزۈش ئارقىلىق ئۇلاندى</string>
+    <string name="requesting_unlock_cm">SIM كارتا تورىنىڭ قۇلۇپىنى ئېچىشنى ئىلتىماس قىلىۋاتىدۇ\u2026</string>
+    <string name="unlock_failed_cm">SIM كارتا تورىنىڭ قۇلۇپىنى ئېچىش ئىلتىماسى مەغلۇپ بولدى.</string>
+    <string name="unlock_success_cm">SIM كارتا تورىنىڭ قۇلۇپى مۇۋەپپەقىيەتلىك ئېچىلدى.</string>
+    <string name="all_day">پۈتۈن كۈن</string>
+    <string name="time_start">دىن</string>
+    <string name="time_end">گە</string>
+    <string name="time_hour">سائەت</string>
+    <string name="time_minute">مىنۇت</string>
+    <string name="time_formate_am">چ ب</string>
+    <string name="time_formate_pm">چ ك</string>
+    <string name="preferred_network_mode_global_summary_cm">ئالدىن بەلگىلەنگەن تور ھالىتى: دۇنيا (CDMA/EvDo/LTE/GSM/WCDMA)</string>
+    <string name="callFailed_incoming_cb_enabled">قارشى تەرەپ بارلىق چاقىرىلىشلارنى توستى.</string>
+    <string name="callUnanswered_forwarded">چاقىرىشتا ئىنكاس يوق ھەمدە ئۇلاپ يەتكۈزۈلدى</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">ئالدىن بەلگىلەنگەن تور ھالىتى:TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">ئالدىن تاللىندىغان تور تىپى: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">ئالدىن بەلگىلەنگەن تور ھالىتى: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA لا</string>
+    <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
+    <string name="preferred_network_mode_lte_choice">LTE</string>
+    <string name="preferred_network_mode_global_choice">دۇنيا</string>
+    <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_evdo_only_choice">EvDo لا</string>
+    <string name="preferred_network_mode_cdma_wo_evdo_choice">EvDo ئىقتىدارى يوق، CDMA</string>
+    <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo ئاپتوماتىك</string>
+    <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA ئاپتوماتىك</string>
+    <string name="preferred_network_mode_wcdma_only_choice">WCDMA لا</string>
+    <string name="preferred_network_mode_gsm_only_choice">GSM لا</string>
+    <string name="preferred_network_mode_gsm_wcdma_preferred_choice">ئالدىن بەلگىلەنگەن GSM/WCDMA</string>
+    <string name="call_barring">چاقىرىشنى چەكلەش</string>
+    <string name="call_barring_outgoing">تېلېفون ئۇرۇشنى چەكلەش</string>
+    <string-array name="call_barring_outgoing_display_values">
+        <item>تاقاش</item>
+        <item>خەلقارالىق سەييارە چاقىرىش</item>
+        <item>خەلقارالىق ئۇزۇن يوللۇق</item>
+        <item>ئۇرغان تېلېفون</item>
+    </string-array>
+    <string-array name="call_barring_incoming_display_values">
+        <item>تاقاش</item>
+        <item>سەييارە</item>
+        <item>ھەممە</item>
+    </string-array>
+    <string name="call_barring_incoming">تېلېفون كېلىشنى چەكلەش</string>
+    <string name="input_password">پارولىڭىزنى كىرگۈزۈڭ</string>
+    <string name="invalidPsw">بىر ئىناۋەتلىك پارول كىرگۈزۈڭ(4-8 خانىلىك)</string>
+    <string name="labelCbCancelAll">چاقىرىشنى چەكلەشنى تاقاش</string>
+    <string name="labelCbChangePassword">پارول ئۆزگەرتىڭ</string>
+    <string name="psw_enter_old">كونا پارول</string>
+    <string name="psw_enter_new">يېڭى پارول</string>
+    <string name="psw_reenter_new">يېڭى پارولنى قايتا كىرگۈزۈڭ</string>
+    <string name="no_call_barring">چاقىرىشنى چەكلەش تاقالدى</string>
+    <string name="cb_psw_dont_match">پارول ئۇدۇللاشمىدى</string>
+    <string name="fdn_invalid_number_cm">نومۇر قورۇق ياكى 20 خاندىن ئارتۇق، FDN نى يېڭىليالمىدى.</string>
+    <string name="fdn_service_unavailable">FDN مۇلازىمىتىنى ئىشلەتكىلى بولمايدۇ.</string>
+    <string name="exportContacts">ئالاقەداشلارنى SIM كارتىغا چىقىرىۋاتىدۇ\u2026</string>
+    <string name="simContacts_title_cm">SIM كارتىدىكى ئالاقەداشلارنى باشقۇرۇش</string>
+    <string name="incall_error_local_low_battery">توك مىقدارى تۆۋەن، چاقىرىش مەغلۇب بولدى.</string>
+    <string name="incall_error_low_battery">يىراق مۇساپلىك ئۈسكىنىنىڭ توك مىقدارى تۆۋەن، چاقىرىش مەغلۇب بولدى.</string>
+    <string name="contactScreen">SIM دىكى ئالاقەداشلارنى باشقۇرۇش</string>
+    <string name="exportContactScreen">تېلېفوندىكى ئالاقەداشلارنى SIM غا چىقىرىدۇ</string>
+    <string name="addSimEntries">SIM ئالاقەداش قوش</string>
+    <string name="deleteAllSimEntries">بارلىق SIM ئالاقەداشلارنى ئۆچۈر</string>
+    <string name="deleteSimContacts">SIM ئالاقەداشلارنى ئۆچۈرۈۋاتىدۇ\u2026</string>
+    <string name="editContact">تەھرىر</string>
+    <string name="sendSms">قىسقا ئۇچۇر يوللا</string>
+    <string name="delete">ئۆچۈر</string>
+    <string name="dial">نومۇر بۇرا</string>
+    <string name="enterName">ئىسىم كىرگۈزۈڭ:</string>
+    <string name="enterNumber">تېلېفون نومۇرىنى كىرگۈزۈڭ:</string>
+    <string name="hintName">ئاتى</string>
+    <string name="hintPhonenumber">تېلېفون نومۇرى</string>
+    <string name="contactAddSuccess">ئالاقەداش SIM غا مۇۋەپپەقىيەتلىك قوشۇلدى</string>
+    <string name="contactAddFailed">ئالاقەداشنى SIM غا قوشالمىدى</string>
+    <string name="contactUpdateSuccess">SIM دىكى ئالاقەداشلارنى مۇۋەپپەقىيەتلىك يېڭىلىدى</string>
+    <string name="contactUpdateFailed">SIM دىكى ئالاقەداشلارنى يېڭىلىيالمىدى</string>
+    <string name="contactdeleteSuccess">ئالاقەداش SIM دىن مۇۋەپپەقىيەتلىك ئۆچۈرۈلدى</string>
+    <string name="contactdeleteFailed">ئالاقەداشنى SIM دىن ئۆچۈرەلمىدى</string>
+    <string name="allContactdeleteSuccess">SIM دىكى ھەممە ئالاقەداشنى مۇۋەپپەقىيەتلىك ئۆچۈردى</string>
+    <string name="allContactdeleteFailed">SIM دىكى ھەممە ئالاقەداشنى ئۆچۈرەلمىدى</string>
+    <string name="exportAllcontatsSuccess">ھەممە ئالاقەداشنى SIM غا مۇۋەپپەقىيەتلىك چىقاردى</string>
+    <string name="exportAllcontatsFailed">ھەممە ئالاقەداشنى SIM غا چىقىرالمىدى</string>
+    <string name="exportAllcontatsNoContacts">SIM غا چىقىرىدىغان ئالاقەداشنى تاپالمىدى</string>
+    <string name="msim_mobile_network_settings_title">كارتا %d نىڭ كۆچمە تور تەڭشىكى</string>
+    <string name="perm_change_mobile_network">تور ھالىتىنى ئۆزگەرتىش</string>
+    <string name="perm_change_mobile_network_desc">ئەپنىڭ نۆۋەتتىكى كۆچمە تور ھالىتىنى ئۆزگەرتىشكە يول قويۇش.</string>
+    <string name="connected_line_identification_title">سىم ئۇلاپ تونۇتۇش</string>
+    <string name="connected_line_identification_summary">ئەگەر كەلگەن تېلېفون نومۇرى سۆزلىشىش خاتىرىسىدە كۆرۈنمىسە، بۇ تاللانمىنى تاقىۋېتىڭ</string>
+    <string name="choose_network_mode_title">تور ھالىتىنى تاللاش</string>
+    <string name="choose_network_mode_system_default">سىستېما كۆڭۈلدىكى</string>
 </resources>

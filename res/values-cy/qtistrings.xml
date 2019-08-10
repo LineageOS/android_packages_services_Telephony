@@ -31,51 +31,49 @@
   -->
 <!-- The xml contains Qti specific resource strings neede for any value added features. -->
 <resources>
-  <!-- IMS settings related strings -->
-  <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
-  <!-- Label text for PIN entry widget on SIM Network Subset Depersonalization panel -->
-  <!-- Label text for PIN entry widget on SIM Corporate Depersonalization panel -->
-  <!-- Label text for PIN entry widget on SIM Service Provider Depersonalization panel -->
-  <!-- Label text for PIN entry widget on SIM SIM Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM Network1 Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM Network2 Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM Hrpd Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM Corporate Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM Service Provider Depersonalization panel -->
-  <!-- Label text for PIN entry widget on RUIM RUIM Depersonalization panel -->
-  <!-- Label text for PUK entry widget on Depersonalization panel -->
-  <!-- Status message displayed on SIM Network Subset Depersonalization panel -->
-  <!-- Status message displayed on SIM Service Provider Depersonalization panel -->
-  <!-- Status message displayed on SIM Corporate Depersonalization panel -->
-  <!-- Status message displayed on SIM SIM Depersonalization panel -->
-  <!-- Status message displayed on RUIM Network1 Depersonalization panel -->
-  <!-- Status message displayed on RUIM Network2 Depersonalization panel -->
-  <!-- Status message displayed on RUIM Hrpd Depersonalization panel -->
-  <!-- Status message displayed on RUIM Service Provider Depersonalization panel -->
-  <!-- Status message displayed on RUIM Corporate Depersonalization panel -->
-  <!-- Status message displayed on RUIM RUIM Depersonalization panel -->
-  <!-- Status message displayed on PUK Depersonalization panel -->
-  <!-- Error message displayed on SIM Network Subset Depersonalization panel -->
-  <!-- Error message displayed on SIM Service Provider Depersonalization panel -->
-  <!-- Error message displayed on SIM Corporate Depersonalization panel -->
-  <!-- Error message displayed on SIM SIM Depersonalization panel -->
-  <!-- Error message displayed on RUIM Network1 Depersonalization panel -->
-  <!-- Error message displayed on RUIM Network2 Depersonalization panel -->
-  <!-- Error message displayed on RUIM Hrpd Depersonalization panel -->
-  <!-- Error message displayed on RUIM Service Provider Depersonalization panel -->
-  <!-- Error message displayed on RUIM Corporate Depersonalization panel -->
-  <!-- Error message displayed on RUIM RUIM Depersonalization panel -->
-  <!-- Error message displayed on PUK Depersonalization panel -->
-  <!-- Success message displayed on SIM Network Subset Depersonalization panel -->
-  <!-- Success message displayed on SIM Service Provider Depersonalization panel -->
-  <!-- Success message displayed on SIM Corporate Depersonalization panel -->
-  <!-- Success message displayed on SIM SIM Depersonalization panel -->
-  <!-- Success message displayed on RUIM Network1 Depersonalization panel -->
-  <!-- Success message displayed on RUIM Network2 Depersonalization panel -->
-  <!-- Success message displayed on RUIM Hrpd Depersonalization panel -->
-  <!-- Success message displayed on RUIM Service Provider Depersonalization panel -->
-  <!-- Success message displayed on RUIM Corporate Depersonalization panel -->
-  <!-- Success message displayed on RUIM RUIM Depersonalization panel -->
-  <!-- Success message displayed on PUK Depersonalization panel -->
-  <!-- Preferred networks -->
+    <string name="ims_settings">Gosodiadau IMS</string>
+    <string name="label_nsdp">PIN datgloi is-set rhwydwaith SIM</string>
+    <string name="label_cdp">PIN datgloi SIM corfforaethol</string>
+    <string name="label_spdp">PIN datgloi darparwr gwasanaeth SIM</string>
+    <string name="label_sdp">PIN datgloi SIM</string>
+    <string name="label_rn1dp">PIN datgloi Rhwydwaith RUIM 1</string>
+    <string name="label_rn2dp">PIN datgloi Rhwydwaith RUIM 2</string>
+    <string name="label_rhrpd">PIN datgloi RUIM HRPD</string>
+    <string name="label_rcdp">PIN datgloi RUIM corfforaethol</string>
+    <string name="label_rspdp">PIN datgloi darparwr gwasanaeth RUIM</string>
+    <string name="label_rdp">PIN datgloi RUIM</string>
+    <string name="label_puk">Rho\'r PUK</string>
+    <string name="requesting_nw_subset_unlock">Yn gofyn i ddatgloi is-set rhwydwaith SIM\u2026</string>
+    <string name="requesting_sp_unlock">Yn gofyn i ddatgloi darparwr gwasanaeth SIM\u2026</string>
+    <string name="requesting_corporate_unlock">Yn gofyn i ddatgloi corfforaeth y SIM\u2026</string>
+    <string name="requesting_sim_unlock">Yn gofyn i ddatgloi\'r SIM\u2026</string>
+    <string name="requesting_rnw1_unlock">Yn gofyn i ddatgloi rhwydwaith RUIM 1\u2026</string>
+    <string name="requesting_rnw2_unlock">Yn gofyn i ddatgloi rhwydwaith RUIM 2\u2026</string>
+    <string name="requesting_rhrpd_unlock">Yn gofyn i ddatgloi RUIM HRPD\u2026</string>
+    <string name="requesting_rsp_unlock">Yn gofyn i ddatgloi darparwr gwasanaeth RUIM\u2026</string>
+    <string name="requesting_rc_unlock">Yn gofyn i ddatgloi corfforaeth y RUIM\u2026</string>
+    <string name="requesting_ruim_unlock">Yn gofyn i ddatgloi\'r RUIM\u2026</string>
+    <string name="requesting_puk_unlock">Yn gofyn i ddatgloi\'r PUK\u2026</string>
+    <string name="nw_subset_unlock_failed">Methodd y cais i ddatgloi rhwydwaith is-set y SIM.</string>
+    <string name="sp_unlock_failed">Cais i ddatgloi darparydd gwasanaeth y SIM yn aflwyddiannus.</string>
+    <string name="corporate_unlock_failed">Cais i ddatgloi\'r SIM corfforaethol yn aflwyddiannus.</string>
+    <string name="sim_unlock_failed">Cais i ddatgloi\'r SIM yn aflwyddiannus.</string>
+    <string name="rnw1_unlock_failed">Methodd cais datgloi rhwydwaith RUIM 1.</string>
+    <string name="rnw2_unlock_failed">Methodd cais datgloi rhwydwaith RUIM 2.</string>
+    <string name="rhrpd_unlock_failed">Cais i ddatgloi HRPD RUIM yn aflwyddiannus.</string>
+    <string name="rsp_unlock_failed">Cais i ddatgloi darparydd gwasanaeth RUIM yn aflwyddiannus.</string>
+    <string name="rc_unlock_failed">Cais i ddatgloi\'r RUIM corfforaethol yn aflwyddiannus.</string>
+    <string name="ruim_unlock_failed">Cais i ddatgloi\'r RUIM yn aflwyddiannus.</string>
+    <string name="puk_unlock_failed">Datgloi PUK yn aflwyddiannus.</string>
+    <string name="nw_subset_unlock_success">Llwyddodd y cais i ddatgloi is-set rhwydwaith y SIM.</string>
+    <string name="sp_unlock_success">Datglowyd darparydd gwasanaeth SIM yn llwyddiannus.</string>
+    <string name="corporate_unlock_success">Datglowyd SIM corfforaethol yn llwyddiannus.</string>
+    <string name="sim_unlock_success">Datglowyd y SIM yn llwyddiannus.</string>
+    <string name="rnw1_unlock_success">Cafodd rhwydwaith RUIM 1 ei ddatgloi yn llwyddiannus.</string>
+    <string name="rnw2_unlock_success">Cafodd rhwydwaith RUIM 2 ei ddatgloi yn llwyddiannus.</string>
+    <string name="rhrpd_unlock_success">Datglowyd RUIM HRPD yn llwyddiannus.</string>
+    <string name="rsp_unlock_success">Datglowyd darparydd gwasanaeth RUIM yn llwyddiannus.</string>
+    <string name="rc_unlock_success">Datglowyd RUIM corfforaethol yn llwyddiannus.</string>
+    <string name="ruim_unlock_success">Datglowyd RUIM yn llwyddiannus.</string>
+    <string name="puk_unlock_success">Datglowyd y PUK yn llwyddiannus.</string>
 </resources>

@@ -16,183 +16,142 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Advanced Settings -->
-  <string name="incall_screen_settings">إعدادات الشاشة عند المكالمة</string>
-  <string name="show_ssn_label">إشعار الحدث</string>
-  <string name="show_ssn_summary">إظهار إشعار لمختلف أحداث الشبكة المتصلة بالتعامل مع المكالمات</string>
-  <string name="incall_echo_cancellation">تقليل الضوضاء في المكالمة</string>
-  <string name="enable_aec_label">إلغاء الصدى</string>
-  <string name="enable_aec_summary">تقليل الضوضاء المحيطة للطرف البعيد أثناء المكالمات الصوتية</string>
-  <!-- Blacklist preferences -->
-  <string name="blacklist_title">حظر قائمة المتصل</string>
-  <string name="blacklist_summary_disabled">معطل</string>
-  <string name="blacklist_summary">لن تتلقى المكالمات أو الرسائل الواردة من أرقام الهاتف في قائمة المتصلين المحظورين</string>
-  <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
-  <string name="mwi_notification_title">مؤشر انتظار رسالة</string>
-  <string name="mwi_notification_summary">يظهر تبليغات البريد الصوتي لمؤشر انتظار الرسالة (مطلوب إعادة التشغيل)</string>
-  <!-- My Phone Number -->
-  <string name="phone_number_label">رقم هاتفي</string>
-  <string name="phone_number_summary">تعيين رقم الهاتف لهذا الجهاز</string>
-  <!-- Toasts for various transient network events -->
-  <!-- Toast text for Unconditional Call Forwarding enabled  -->
-  <string name="call_notif_unconditionalCF">تنشيط إعادة توجيه المكالمة غير المشروطة</string>
-  <!-- Toast text for Conditional Call Forwarding enabled  -->
-  <string name="call_notif_conditionalCF">إعادة توجيه مكالمة مشروطة نشطة</string>
-  <!-- Toast text for a forwarded MO call  -->
-  <string name="call_notif_MOcall_forwarding">إعادة توجيه المكالمة الصادرة</string>
-  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
-  <string name="call_notif_cugcall">الإتصال في مجموعة مستخدمين مغلقة</string>
-  <!-- In-call screen: status label when MO calls are barred -->
-  <string name="call_notif_outgoing_barred">تم منع المكالمات الصادرة</string>
-  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
-  <string name="call_notif_incoming_barred">المكالمات الواردة منعت من قبل طرف عن بعد</string>
-  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
-  <string name="call_notif_clir_suppression_rejected">الرقم اللذي تمتلكه رفض من قبل شبكة</string>
-  <!-- In-call screen: status label when MO call gets deflected to another party -->
-  <string name="call_notif_call_deflected">إعادة توجيه المكالمة بواسطة طرف عن بعد</string>
-  <!-- Toast text for incoming call being forwarded to other remote party  -->
-  <string name="call_notif_MTcall_forwarding">إعادة توجيه المكالمة الواردة</string>
-  <!-- Toast text for incoming call which is part of MultiParty Call -->
-  <string name="call_notif_multipartycall">مكالمة متعددة الأطراف</string>
-  <!-- Toast text for incoming call which is answered,put on hold & then released -->
-  <string name="call_notif_callonhold_released">مكالمه صادرة عن بعد</string>
-  <!-- Toast text for incoming call forward check received -->
-  <string name="call_notif_forwardcheckreceived">تمت إعادة توجيه المكالمة</string>
-  <!-- Toast text for incoming call connecting through ECT -->
-  <string name="call_notif_callconnectingect">اتصال المكالمة عبر عملية نقل المكالمات الواضحة</string>
-  <!-- Toast text for incoming call connected through ECT -->
-  <string name="call_notif_callconnectedect">تم اتصال المكالمة عبر عملية نقل المكالمات الصريحة</string>
-  <!-- Status message displayed on SIM Network Depersonalization panel -->
-  <string name="requesting_unlock_cm">طلب إلغاء تأمين شبكة SIM/u2026</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_failed_cm">فشل طلب إلغاء تأمين شبكة SIM.</string>
-  <!-- Success message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_success_cm">نجح إلغاء قفل شبكة SIM.</string>
-  <!-- Call forwarding settings screen, setting timer info for cfut case -->
-  <string name="all_day">طوال اليوم</string>
-  <string name="time_start">من</string>
-  <string name="time_end">إلى</string>
-  <string name="time_hour">ساعة</string>
-  <string name="time_minute">دقيقة</string>
-  <string name="time_formate_am">ص</string>
-  <string name="time_formate_pm">م</string>
-  <!-- Mobile network settings, preferred network modes -->
-  <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_global_summary_cm">وضع الشبكة المفضل: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
-  <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
-  <string name="callFailed_incoming_cb_enabled">حظر الطرف الآخر كافة المكالمات الواردة.</string>
-  <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
-  <string name="callUnanswered_forwarded">المكالمة لم يتم الرد عليها وتم إعادة توجيهها</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_summary">وضع الشبكة المفضل: TD-SCDMA/WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_summary">وضع الشبكة المفضل: TD-SCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_summary">وضع الشبكة المفضل: TD-SCDMA/GSM</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_lte_summary">وضع الشبكة المفضل:TD-SCDMA/TD-SCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">وضع الشبكة المفضل: TD-SCDMA/SCDMA/gsm</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">وضع الشبكة المفضل:TD-SCDMA/TD-SCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">وضع الشبكة المفضل:TD-SCDMA/TD-SCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">وضع الشبكة المفضل: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">وضع الشبكة المفضل: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
-  <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA فقط</string>
-  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
-  <string name="preferred_network_mode_lte_choice">LTE</string>
-  <string name="preferred_network_mode_global_choice">عالمي</string>
-  <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_evdo_only_choice">EvDo فقط</string>
-  <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA w/o EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo تلقائي</string>
-  <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA تلقائي</string>
-  <string name="preferred_network_mode_wcdma_only_choice">WCDMA فقط</string>
-  <string name="preferred_network_mode_gsm_only_choice">GSM فقط</string>
-  <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA المفضل</string>
-  <string name="call_barring">حظر المكالمات</string>
-  <string name="call_barring_outgoing">حظر المكالمات الصادرة</string>
-  <string-array name="call_barring_outgoing_display_values">
-    <item>إيقاف تشغيل</item>
-    <item>مكالمات التجوال الدولي</item>
-    <item>المكالمات الدولية</item>
-    <item>المكالمات الصادرة</item>
-  </string-array>
-  <string-array name="call_barring_incoming_display_values">
-    <item>إيقاف تشغيل</item>
-    <item>تجوال</item>
-    <item>الكل</item>
-  </string-array>
-  <string name="call_barring_incoming">حظر المكالمات الواردة</string>
-  <string name="input_password">أدخل كلمة مرورك</string>
-  <string name="invalidPsw">أدخل كلمة مرور صالحة (4-8 أرقام)</string>
-  <string name="labelCbCancelAll">تعطيل حظر المكالمات</string>
-  <string name="labelCbChangePassword">تغيير كلمة المرور</string>
-  <string name="psw_enter_old">كلمة المرور القديمة</string>
-  <string name="psw_enter_new">كلمة المرور الجديدة</string>
-  <string name="psw_reenter_new">أعد إدخال كلمة مرورك</string>
-  <string name="no_call_barring">حظر المكالمات معطل</string>
-  <string name="cb_psw_dont_match">كلمتا المرور لا تتطابقان</string>
-  <!-- FDN settings: error message displayed in a popup (toast) -->
-  <string name="fdn_invalid_number_cm">لم يتم تحديث FDN لأن حقل العدد فارغ أو يتجاوز 20 رقماً.</string>
-  <string name="fdn_service_unavailable">لا تتوفر خدمة FDN.</string>
-  <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <string name="exportContacts">تصدير جهات الاتصال إلى بطاقة SIM\u2026</string>
-  <!-- Title of the List shown for SIM Contacts Management Activity.  -->
-  <string name="simContacts_title_cm">إدارة جهات اتصال بطاقة SIM</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_local_low_battery">فشلت المكالمة بسبب ضعف البطارية.</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_low_battery">فشلت المكالمة بسبب ضعف البطارية للجهاز البعيد.</string>
-  <!-- Sim contacts management -->
-  <string name="contactScreen">إدارة جهات ااتصال SIM</string>
-  <string name="exportContactScreen">تصدير جهات اتصال الهاتف إلى SIM</string>
-  <string name="addSimEntries">إضافة جهة اتصال SIM</string>
-  <string name="deleteAllSimEntries">حذف كافة جهات اتصال SIM</string>
-  <string name="deleteSimContacts">حذف جهات إتصال SIM\u2026</string>
-  <string name="editContact">تحرير</string>
-  <string name="sendSms">إرسال الرسالة النصية القصيرة</string>
-  <string name="delete">حذف</string>
-  <string name="dial">طلب</string>
-  <string name="enterName">أدخل الاسم:</string>
-  <string name="enterNumber">أدخل رقم الهاتف:</string>
-  <string name="hintName">الاسم</string>
-  <string name="hintPhonenumber">رقم الهاتف</string>
-  <string name="contactAddSuccess">تمت اضافة جهة اتصال بنجاح الى SIM</string>
-  <string name="contactAddFailed">فشل في إضافة جهة اتصال إلى SIM</string>
-  <string name="contactUpdateSuccess">نجاح تحديث جهة الاتصال في SIM</string>
-  <string name="contactUpdateFailed">فشل تحديث جهة الاتصال في SIM</string>
-  <string name="contactdeleteSuccess">حذف جهة اتصال من SIM بنجاح</string>
-  <string name="contactdeleteFailed">فشل في حذف جهة اتصال من SIM</string>
-  <string name="allContactdeleteSuccess">حذف كافة جهات الاتصال من SIM بنجاح</string>
-  <string name="allContactdeleteFailed">فشل في حذف كافة جهات الاتصال من بطاقة SIM</string>
-  <string name="exportAllcontatsSuccess">تصدير كافة جهات الاتصال إلى بطاقة SIM بنجاح</string>
-  <string name="exportAllcontatsFailed">فشل تصدير كافة جهات الاتصال إلى بطاقة SIM</string>
-  <string name="exportAllcontatsNoContacts">عدم العثور على جهات اتصال للتصدير إلى بطاقة SIM</string>
-  <string name="msim_mobile_network_settings_title">إعدادات شبكة الهاتف الخلوي SIM %d</string>
-  <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">تغيير وضع الشبكة</string>
-  <string name="perm_change_mobile_network_desc">يسمح للتطبيق بتعديل وضع الشبكة الحالي.</string>
-  <!-- Mobile network settings, COLP -->
-  <string name="connected_line_identification_title">تعريف الخط المتصل</string>
-  <string name="connected_line_identification_summary">تعطيل هذا الخيار إذا لم يظهر أعداد المستلمين في سجل المكالمات</string>
-  <!-- Network mode picker dialog title -->
-  <string name="choose_network_mode_title">اختيار وضع الشبكة</string>
-  <string name="choose_network_mode_system_default">الإعداد الافتراضي للنظام</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
-  <!-- Call forward: IMS: Media tag support -->
+    <string name="incall_screen_settings">إعدادات الشاشة عند المكالمة</string>
+    <string name="show_ssn_label">إشعار الحدث</string>
+    <string name="show_ssn_summary">إظهار إشعار لمختلف أحداث الشبكة المتصلة بالتعامل مع المكالمات</string>
+    <string name="incall_echo_cancellation">تقليل الضوضاء في المكالمة</string>
+    <string name="enable_aec_label">إلغاء الصدى</string>
+    <string name="enable_aec_summary">تقليل الضوضاء المحيطة للطرف البعيد أثناء المكالمات الصوتية</string>
+    <string name="blacklist_title">حظر قائمة المتصل</string>
+    <string name="blacklist_summary_disabled">معطل</string>
+    <string name="blacklist_summary">لن تتلقى المكالمات أو الرسائل الواردة من أرقام الهاتف في قائمة المتصلين المحظورين</string>
+    <string name="mwi_notification_title">مؤشر انتظار رسالة</string>
+    <string name="mwi_notification_summary">يظهر تبليغات البريد الصوتي لمؤشر انتظار الرسالة (مطلوب إعادة التشغيل)</string>
+    <string name="phone_number_label">رقم هاتفي</string>
+    <string name="phone_number_summary">تعيين رقم الهاتف لهذا الجهاز</string>
+    <string name="set_my_number_failed">فشل تعيين رقم الهاتف</string>
+    <string name="call_notif_unconditionalCF">تنشيط إعادة توجيه المكالمة غير المشروطة</string>
+    <string name="call_notif_conditionalCF">إعادة توجيه مكالمة مشروطة نشطة</string>
+    <string name="call_notif_MOcall_forwarding">إعادة توجيه المكالمة الصادرة</string>
+    <string name="call_notif_cugcall">الإتصال في مجموعة مستخدمين مغلقة</string>
+    <string name="call_notif_outgoing_barred">تم منع المكالمات الصادرة</string>
+    <string name="call_notif_incoming_barred">المكالمات الواردة منعت من قبل طرف عن بعد</string>
+    <string name="call_notif_clir_suppression_rejected">الرقم اللذي تمتلكه رفض من قبل شبكة</string>
+    <string name="call_notif_call_deflected">إعادة توجيه المكالمة بواسطة طرف عن بعد</string>
+    <string name="call_notif_MTcall_forwarding">إعادة توجيه المكالمة الواردة</string>
+    <string name="call_notif_multipartycall">مكالمة متعددة الأطراف</string>
+    <string name="call_notif_callonhold_released">مكالمه صادرة عن بعد</string>
+    <string name="call_notif_forwardcheckreceived">تمت إعادة توجيه المكالمة</string>
+    <string name="call_notif_callconnectingect">اتصال المكالمة عبر عملية نقل المكالمات الواضحة</string>
+    <string name="call_notif_callconnectedect">تم اتصال المكالمة عبر عملية نقل المكالمات الصريحة</string>
+    <string name="requesting_unlock_cm">طلب إلغاء تأمين شبكة SIM/u2026</string>
+    <string name="unlock_failed_cm">فشل طلب إلغاء تأمين شبكة SIM.</string>
+    <string name="unlock_success_cm">نجح إلغاء قفل شبكة SIM.</string>
+    <string name="all_day">طوال اليوم</string>
+    <string name="time_start">من</string>
+    <string name="time_end">إلى</string>
+    <string name="time_hour">ساعة</string>
+    <string name="time_minute">دقيقة</string>
+    <string name="time_formate_am">ص</string>
+    <string name="time_formate_pm">م</string>
+    <string name="preferred_network_mode_global_summary_cm">وضع الشبكة المفضل: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="callFailed_incoming_cb_enabled">حظر الطرف الآخر كافة المكالمات الواردة.</string>
+    <string name="callUnanswered_forwarded">المكالمة لم يتم الرد عليها وتم إعادة توجيهها</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_summary">وضع الشبكة المفضل: TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_summary">وضع الشبكة المفضل: TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_summary">وضع الشبكة المفضل: TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_summary">وضع الشبكة المفضل:TD-SCDMA/TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">وضع الشبكة المفضل: TD-SCDMA/SCDMA/gsm</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">وضع الشبكة المفضل:TD-SCDMA/TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">وضع الشبكة المفضل:TD-SCDMA/TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">وضع الشبكة المفضل: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">وضع الشبكة المفضل: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA فقط</string>
+    <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
+    <string name="preferred_network_mode_lte_choice">LTE</string>
+    <string name="preferred_network_mode_global_choice">عالمي</string>
+    <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_evdo_only_choice">EvDo فقط</string>
+    <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA w/o EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo تلقائي</string>
+    <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA تلقائي</string>
+    <string name="preferred_network_mode_wcdma_only_choice">WCDMA فقط</string>
+    <string name="preferred_network_mode_gsm_only_choice">GSM فقط</string>
+    <string name="preferred_network_mode_gsm_wcdma_preferred_choice">GSM/WCDMA المفضل</string>
+    <string name="call_barring">حظر المكالمات</string>
+    <string name="call_barring_outgoing">حظر المكالمات الصادرة</string>
+    <string-array name="call_barring_outgoing_display_values">
+        <item>إيقاف تشغيل</item>
+        <item>مكالمات التجوال الدولي</item>
+        <item>المكالمات الدولية</item>
+        <item>المكالمات الصادرة</item>
+    </string-array>
+    <string-array name="call_barring_incoming_display_values">
+        <item>إيقاف تشغيل</item>
+        <item>تجوال</item>
+        <item>الكل</item>
+    </string-array>
+    <string name="call_barring_incoming">حظر المكالمات الواردة</string>
+    <string name="input_password">أدخل كلمة مرورك</string>
+    <string name="invalidPsw">أدخل كلمة مرور صالحة (4-8 أرقام)</string>
+    <string name="labelCbCancelAll">تعطيل حظر المكالمات</string>
+    <string name="labelCbChangePassword">تغيير كلمة المرور</string>
+    <string name="psw_enter_old">كلمة المرور القديمة</string>
+    <string name="psw_enter_new">كلمة المرور الجديدة</string>
+    <string name="psw_reenter_new">أعد إدخال كلمة مرورك</string>
+    <string name="no_call_barring">حظر المكالمات معطل</string>
+    <string name="cb_psw_dont_match">كلمتا المرور لا تتطابقان</string>
+    <string name="fdn_invalid_number_cm">لم يتم تحديث FDN لأن حقل العدد فارغ أو يتجاوز 20 رقماً.</string>
+    <string name="fdn_service_unavailable">لا تتوفر خدمة FDN.</string>
+    <string name="exportContacts">تصدير جهات الاتصال إلى بطاقة SIM\u2026</string>
+    <string name="simContacts_title_cm">إدارة جهات اتصال بطاقة SIM</string>
+    <string name="incall_error_local_low_battery">فشلت المكالمة بسبب ضعف البطارية.</string>
+    <string name="incall_error_low_battery">فشلت المكالمة بسبب ضعف البطارية للجهاز البعيد.</string>
+    <string name="contactScreen">إدارة جهات ااتصال SIM</string>
+    <string name="exportContactScreen">تصدير جهات اتصال الهاتف إلى SIM</string>
+    <string name="addSimEntries">إضافة جهة اتصال SIM</string>
+    <string name="deleteAllSimEntries">حذف كافة جهات اتصال SIM</string>
+    <string name="deleteSimContacts">حذف جهات إتصال SIM\u2026</string>
+    <string name="editContact">تحرير</string>
+    <string name="sendSms">إرسال الرسالة النصية القصيرة</string>
+    <string name="delete">حذف</string>
+    <string name="dial">طلب</string>
+    <string name="enterName">أدخل الاسم:</string>
+    <string name="enterNumber">أدخل رقم الهاتف:</string>
+    <string name="hintName">الاسم</string>
+    <string name="hintPhonenumber">رقم الهاتف</string>
+    <string name="contactAddSuccess">تمت اضافة جهة اتصال بنجاح الى SIM</string>
+    <string name="contactAddFailed">فشل في إضافة جهة اتصال إلى SIM</string>
+    <string name="contactUpdateSuccess">نجاح تحديث جهة الاتصال في SIM</string>
+    <string name="contactUpdateFailed">فشل تحديث جهة الاتصال في SIM</string>
+    <string name="contactdeleteSuccess">حذف جهة اتصال من SIM بنجاح</string>
+    <string name="contactdeleteFailed">فشل في حذف جهة اتصال من SIM</string>
+    <string name="allContactdeleteSuccess">حذف كافة جهات الاتصال من SIM بنجاح</string>
+    <string name="allContactdeleteFailed">فشل في حذف كافة جهات الاتصال من بطاقة SIM</string>
+    <string name="exportAllcontatsSuccess">تصدير كافة جهات الاتصال إلى بطاقة SIM بنجاح</string>
+    <string name="exportAllcontatsFailed">فشل تصدير كافة جهات الاتصال إلى بطاقة SIM</string>
+    <string name="exportAllcontatsNoContacts">عدم العثور على جهات اتصال للتصدير إلى بطاقة SIM</string>
+    <string name="msim_mobile_network_settings_title">إعدادات شبكة الهاتف الخلوي SIM %d</string>
+    <string name="perm_change_mobile_network">تغيير وضع الشبكة</string>
+    <string name="perm_change_mobile_network_desc">يسمح للتطبيق بتعديل وضع الشبكة الحالي.</string>
+    <string name="connected_line_identification_title">تعريف الخط المتصل</string>
+    <string name="connected_line_identification_summary">تعطيل هذا الخيار إذا لم يظهر أعداد المستلمين في سجل المكالمات</string>
+    <string name="choose_network_mode_title">اختيار وضع الشبكة</string>
+    <string name="choose_network_mode_system_default">الإعداد الافتراضي للنظام</string>
+    <string name="unlock_failed_remaining_retries">طلب الفتح لم ينجح، لديك %1$d محاولة متبقية.</string>
+    <string name="labelCFType">إعدادات اعادة توجيه المكالمة</string>
+    <string name="labelCFVoice">صوتية</string>
+    <string name="labelCFVideo">فيديو</string>
+    <string name="call_forward_option">خيارات اعادة توجيه المكالمة</string>
 </resources>

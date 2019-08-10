@@ -16,189 +16,142 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Advanced Settings -->
-  <string name="incall_screen_settings">Nastavení obrazovky při hovoru</string>
-  <string name="show_ssn_label">Upozornění na událost</string>
-  <string name="show_ssn_summary">Zobrazit upozornění na různé události sítě, které souvisejí s hovory</string>
-  <string name="incall_echo_cancellation">Redukce šumu v hovoru</string>
-  <string name="enable_aec_label">Potlačení ozvěny</string>
-  <string name="enable_aec_summary">Aktivní snížení okolního hluku při telefonování</string>
-  <!-- Blacklist preferences -->
-  <string name="blacklist_title">Seznam blokovaných čísel</string>
-  <string name="blacklist_summary_disabled">Vypnuta</string>
-  <string name="blacklist_summary">Nebudou se přijímat příchozí hovory nebo zprávy od telefonní čísla na seznamu blokovaných čísel</string>
-  <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
-  <string name="mwi_notification_title">Upozornění na hlasovou zprávu</string>
-  <string name="mwi_notification_summary">Zobrazit upozornění na čekající hlasovou zprávu (vyžaduje restart)</string>
-  <!-- My Phone Number -->
-  <string name="phone_number_label">Moje telefonní číslo</string>
-  <string name="phone_number_summary">Nastavení telefonního čísla pro toto zařízení</string>
-  <string name="set_my_number_failed">Nepodařilo se nastavit telefonní číslo</string>
-  <!-- Toasts for various transient network events -->
-  <!-- Toast text for Unconditional Call Forwarding enabled  -->
-  <string name="call_notif_unconditionalCF">Nepodmíněné přesměrování hovorů aktivní</string>
-  <!-- Toast text for Conditional Call Forwarding enabled  -->
-  <string name="call_notif_conditionalCF">Podmíněné přesměrování hovorů aktivní</string>
-  <!-- Toast text for a forwarded MO call  -->
-  <string name="call_notif_MOcall_forwarding">Odchozí hovor byl přesměrován</string>
-  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
-  <string name="call_notif_cugcall">Hovor v uzavřené skupině</string>
-  <!-- In-call screen: status label when MO calls are barred -->
-  <string name="call_notif_outgoing_barred">Odchozí hovory blokovány</string>
-  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
-  <string name="call_notif_incoming_barred">Příchozí hovory blokovány</string>
-  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
-  <string name="call_notif_clir_suppression_rejected">Skrytí telefonního čísla odmítnuto sítí</string>
-  <!-- In-call screen: status label when MO call gets deflected to another party -->
-  <string name="call_notif_call_deflected">Hovor přesměrován</string>
-  <!-- Toast text for incoming call being forwarded to other remote party  -->
-  <string name="call_notif_MTcall_forwarding">Příchozí hovor přesměrován</string>
-  <!-- Toast text for incoming call which is part of MultiParty Call -->
-  <string name="call_notif_multipartycall">Skupinový hovor</string>
-  <!-- Toast text for incoming call which is answered,put on hold & then released -->
-  <string name="call_notif_callonhold_released">Hovor ukončen druhou stranou</string>
-  <!-- Toast text for incoming call forward check received -->
-  <string name="call_notif_forwardcheckreceived">Hovor byl přesměrován</string>
-  <!-- Toast text for incoming call connecting through ECT -->
-  <string name="call_notif_callconnectingect">Hovor bude spojen na přímo (ECT)</string>
-  <!-- Toast text for incoming call connected through ECT -->
-  <string name="call_notif_callconnectedect">Hovor je spojen na přímo (ECT)</string>
-  <!-- Status message displayed on SIM Network Depersonalization panel -->
-  <string name="requesting_unlock_cm">Požadavek SIM na odemknutí sítě\u2026</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_failed_cm">Požadavek odemknutí SIM sítě neúspěšný.</string>
-  <!-- Success message displayed on SIM Network Depersonalization panel -->
-  <string name="unlock_success_cm">Odemknutí sítě SIM provedeno.</string>
-  <!-- Call forwarding settings screen, setting timer info for cfut case -->
-  <string name="all_day">Celý den</string>
-  <string name="time_start">Od</string>
-  <string name="time_end">Do</string>
-  <string name="time_hour">Hodina</string>
-  <string name="time_minute">Minuta</string>
-  <string name="time_formate_am">Dop.</string>
-  <string name="time_formate_pm">Odp.</string>
-  <!-- Mobile network settings, preferred network modes -->
-  <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_global_summary_cm">Upřednostňovaný režim sítě: globální (CDMA/EvDo/LTE/GSM/WCDMA)</string>
-  <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
-  <string name="callFailed_incoming_cb_enabled">Volaná skupina odmítá všechny příchozí hovory.</string>
-  <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
-  <string name="callUnanswered_forwarded">Zavolat (nepřijaté a přesměrované)</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_summary">Upřednostňovaný režim sítě: TD-SCDMA/WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_summary">Upřednostňovaný režim sítě: TD-SCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_summary">Upřednostňovaný režim sítě: TD-SCDMA/GSM</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Upřednostňovaný režim sítě: TD-SCDMA/GSM/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Upřednostňovaný režim sítě: TD-SCDMA/GSM/WCDMA</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Upřednostňovaný režim sítě: TD-SCDMA/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Upřednostňovaný režim sítě: TD-SCDMA/GSM/WCDMA/LTE</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Upřednostňované sítě: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Upřednostňovaný režim sítě: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
-  <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
-  <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
-  <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
-  <string name="preferred_network_mode_td_scdma_only_choice">Pouze TD-SCDMA</string>
-  <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
-  <string name="preferred_network_mode_lte_choice">LTE</string>
-  <string name="preferred_network_mode_global_choice">Globální</string>
-  <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
-  <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
-  <string name="preferred_network_mode_evdo_only_choice">Pouze EvDo</string>
-  <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA bez EvDo</string>
-  <string name="preferred_network_mode_cdma_evdo_auto_choice">Automaticky CDMA/EvDo</string>
-  <string name="preferred_network_mode_gsm_wcdma_auto_choice">Automaticky GSM/WCDMA</string>
-  <string name="preferred_network_mode_wcdma_only_choice">Pouze WCDMA</string>
-  <string name="preferred_network_mode_gsm_only_choice">Pouze GSM</string>
-  <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Preferované WCDMA/GSM</string>
-  <string name="call_barring">Blokování hovorů</string>
-  <string name="call_barring_outgoing">Blokování odchozích hovorů</string>
-  <string-array name="call_barring_outgoing_display_values">
-    <item>Vypnuto</item>
-    <item>Mezinárodní hovory v rámci roamingu</item>
-    <item>Mezinárodní hovory</item>
-    <item>Odchozí hovory</item>
-  </string-array>
-  <string-array name="call_barring_incoming_display_values">
-    <item>Vypnuto</item>
-    <item>Roaming</item>
-    <item>Všechny</item>
-  </string-array>
-  <string name="call_barring_incoming">Blokování příchozích hovorů</string>
-  <string name="input_password">Zadejte heslo</string>
-  <string name="invalidPsw">Zadejte správné heslo (4-8 číslic)</string>
-  <string name="labelCbCancelAll">Zrušit blokování hovorů</string>
-  <string name="labelCbChangePassword">Změna hesla</string>
-  <string name="psw_enter_old">Původní heslo</string>
-  <string name="psw_enter_new">Nové heslo</string>
-  <string name="psw_reenter_new">Zadejte heslo znovu</string>
-  <string name="no_call_barring">Blokování hovorů zakázáno</string>
-  <string name="cb_psw_dont_match">Hesla se neshodují</string>
-  <!-- FDN settings: error message displayed in a popup (toast) -->
-  <string name="fdn_invalid_number_cm">FDN nebylo aktualizováno, protože číslo chybí nebo přesahuje 20 číslic.</string>
-  <string name="fdn_service_unavailable">Služba FDN není dostupná.</string>
-  <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <string name="exportContacts">Export kontaktů na kartu SIM\u2026</string>
-  <!-- Title of the List shown for SIM Contacts Management Activity.  -->
-  <string name="simContacts_title_cm">Spravovat kontakty na SIM kartě</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_local_low_battery">Volání se nezdařilo z důvodu vybité baterie.</string>
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <string name="incall_error_low_battery">Volání se nezdařilo z důvodu vybité baterie na vzdáleném zařízení.</string>
-  <!-- Sim contacts management -->
-  <string name="contactScreen">Spravovat kontakty SIM</string>
-  <string name="exportContactScreen">Exportovat telefonní kontakty na kartu SIM</string>
-  <string name="addSimEntries">Přidat kontakt SIM</string>
-  <string name="deleteAllSimEntries">Smazat všechny kontatky SIM</string>
-  <string name="deleteSimContacts">Mazání kontaktů SIM\u2026</string>
-  <string name="editContact">Upravit</string>
-  <string name="sendSms">Odeslat SMS</string>
-  <string name="delete">Smazat</string>
-  <string name="dial">Volat</string>
-  <string name="enterName">Zadejte jméno:</string>
-  <string name="enterNumber">Zadejte telefonní číslo:</string>
-  <string name="hintName">Jméno</string>
-  <string name="hintPhonenumber">Telefonní číslo</string>
-  <string name="contactAddSuccess">Kontakt na SIM kartu úspěšně přidán</string>
-  <string name="contactAddFailed">Přidání kontaktu na SIM kartu selhalo</string>
-  <string name="contactUpdateSuccess">Kontakt na SIM kartě úspěšně změněn</string>
-  <string name="contactUpdateFailed">Změna kontaktu na SIM kartě selhala</string>
-  <string name="contactdeleteSuccess">Kontakt na kartě SIM úspěšně smazán</string>
-  <string name="contactdeleteFailed">Smazání kontaktu na SIM kartě selhalo</string>
-  <string name="allContactdeleteSuccess">Úspěšně smazány všechny kontakty na kartě SIM</string>
-  <string name="allContactdeleteFailed">Smazání všech kontaktů na SIM kartě selhalo</string>
-  <string name="exportAllcontatsSuccess">Úspěšně exportovány všechny kontakty na SIM kartu</string>
-  <string name="exportAllcontatsFailed">Export všech kontaktů na SIM kartu selhal</string>
-  <string name="exportAllcontatsNoContacts">Nenalezen žádný kontakt pro export na SIM kartu</string>
-  <string name="msim_mobile_network_settings_title">Nastavení mobilní sítě SIM %d</string>
-  <!-- Permission to modify network mode via intent -->
-  <string name="perm_change_mobile_network">změnit režim sítě</string>
-  <string name="perm_change_mobile_network_desc">Umožňuje změnit stávající režim sítě.</string>
-  <!-- Mobile network settings, COLP -->
-  <string name="connected_line_identification_title">Identifikace linky</string>
-  <string name="connected_line_identification_summary">Zakažte tuto funkci pokud se nezobrazují telefonní čísla volaných či volajících v historii volání</string>
-  <!-- Network mode picker dialog title -->
-  <string name="choose_network_mode_title">Vybrat režim sítě</string>
-  <string name="choose_network_mode_system_default">Výchozí systémové</string>
-  <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
-  <string name="unlock_failed_remaining_retries">Neúspěšná žádost o odemknutí, zbývá pokusů %1$d.</string>
-  <!-- Call forward: IMS: Media tag support -->
-  <string name="labelCFType">Nastavení přesměrování volání</string>
-  <string name="labelCFVoice">Hlas</string>
-  <string name="labelCFVideo">Video</string>
-  <string name="call_forward_option">Nastavení přesměrování volání</string>
+    <string name="incall_screen_settings">Nastavení obrazovky při hovoru</string>
+    <string name="show_ssn_label">Upozornění na událost</string>
+    <string name="show_ssn_summary">Zobrazit upozornění na různé události sítě, které souvisejí s hovory</string>
+    <string name="incall_echo_cancellation">Redukce šumu v hovoru</string>
+    <string name="enable_aec_label">Potlačení ozvěny</string>
+    <string name="enable_aec_summary">Aktivní snížení okolního hluku při telefonování</string>
+    <string name="blacklist_title">Seznam blokovaných čísel</string>
+    <string name="blacklist_summary_disabled">Vypnuta</string>
+    <string name="blacklist_summary">Nebudou se přijímat příchozí hovory nebo zprávy od telefonní čísla na seznamu blokovaných čísel</string>
+    <string name="mwi_notification_title">Upozornění na hlasovou zprávu</string>
+    <string name="mwi_notification_summary">Zobrazit upozornění na čekající hlasovou zprávu (vyžaduje restart)</string>
+    <string name="phone_number_label">Moje telefonní číslo</string>
+    <string name="phone_number_summary">Nastavení telefonního čísla pro toto zařízení</string>
+    <string name="set_my_number_failed">Nepodařilo se nastavit telefonní číslo</string>
+    <string name="call_notif_unconditionalCF">Nepodmíněné přesměrování hovorů aktivní</string>
+    <string name="call_notif_conditionalCF">Podmíněné přesměrování hovorů aktivní</string>
+    <string name="call_notif_MOcall_forwarding">Odchozí hovor byl přesměrován</string>
+    <string name="call_notif_cugcall">Hovor v uzavřené skupině</string>
+    <string name="call_notif_outgoing_barred">Odchozí hovory blokovány</string>
+    <string name="call_notif_incoming_barred">Příchozí hovory blokovány</string>
+    <string name="call_notif_clir_suppression_rejected">Skrytí telefonního čísla odmítnuto sítí</string>
+    <string name="call_notif_call_deflected">Hovor přesměrován</string>
+    <string name="call_notif_MTcall_forwarding">Příchozí hovor přesměrován</string>
+    <string name="call_notif_multipartycall">Skupinový hovor</string>
+    <string name="call_notif_callonhold_released">Hovor ukončen druhou stranou</string>
+    <string name="call_notif_forwardcheckreceived">Hovor byl přesměrován</string>
+    <string name="call_notif_callconnectingect">Hovor bude spojen na přímo (ECT)</string>
+    <string name="call_notif_callconnectedect">Hovor je spojen na přímo (ECT)</string>
+    <string name="requesting_unlock_cm">Požadavek SIM na odemknutí sítě\u2026</string>
+    <string name="unlock_failed_cm">Požadavek odemknutí SIM sítě neúspěšný.</string>
+    <string name="unlock_success_cm">Odemknutí sítě SIM provedeno.</string>
+    <string name="all_day">Celý den</string>
+    <string name="time_start">Od</string>
+    <string name="time_end">Do</string>
+    <string name="time_hour">Hodina</string>
+    <string name="time_minute">Minuta</string>
+    <string name="time_formate_am">Dop.</string>
+    <string name="time_formate_pm">Odp.</string>
+    <string name="preferred_network_mode_global_summary_cm">Upřednostňovaný režim sítě: globální (CDMA/EvDo/LTE/GSM/WCDMA)</string>
+    <string name="callFailed_incoming_cb_enabled">Volaná skupina odmítá všechny příchozí hovory.</string>
+    <string name="callUnanswered_forwarded">Zavolat (nepřijaté a přesměrované)</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_summary">Upřednostňovaný režim sítě: TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_summary">Upřednostňovaný režim sítě: TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_summary">Upřednostňovaný režim sítě: TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Upřednostňovaný režim sítě: TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Upřednostňovaný režim sítě: TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Upřednostňovaný režim sítě: TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Upřednostňovaný režim sítě: TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Upřednostňované sítě: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Upřednostňovaný režim sítě: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_only_choice">Pouze TD-SCDMA</string>
+    <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
+    <string name="preferred_network_mode_lte_choice">LTE</string>
+    <string name="preferred_network_mode_global_choice">Globální</string>
+    <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_evdo_only_choice">Pouze EvDo</string>
+    <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA bez EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_auto_choice">Automaticky CDMA/EvDo</string>
+    <string name="preferred_network_mode_gsm_wcdma_auto_choice">Automaticky GSM/WCDMA</string>
+    <string name="preferred_network_mode_wcdma_only_choice">Pouze WCDMA</string>
+    <string name="preferred_network_mode_gsm_only_choice">Pouze GSM</string>
+    <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Preferované WCDMA/GSM</string>
+    <string name="call_barring">Blokování hovorů</string>
+    <string name="call_barring_outgoing">Blokování odchozích hovorů</string>
+    <string-array name="call_barring_outgoing_display_values">
+        <item>Vypnuto</item>
+        <item>Mezinárodní hovory v rámci roamingu</item>
+        <item>Mezinárodní hovory</item>
+        <item>Odchozí hovory</item>
+    </string-array>
+    <string-array name="call_barring_incoming_display_values">
+        <item>Vypnuto</item>
+        <item>Roaming</item>
+        <item>Všechny</item>
+    </string-array>
+    <string name="call_barring_incoming">Blokování příchozích hovorů</string>
+    <string name="input_password">Zadejte heslo</string>
+    <string name="invalidPsw">Zadejte správné heslo (4-8 číslic)</string>
+    <string name="labelCbCancelAll">Zrušit blokování hovorů</string>
+    <string name="labelCbChangePassword">Změna hesla</string>
+    <string name="psw_enter_old">Původní heslo</string>
+    <string name="psw_enter_new">Nové heslo</string>
+    <string name="psw_reenter_new">Zadejte heslo znovu</string>
+    <string name="no_call_barring">Blokování hovorů zakázáno</string>
+    <string name="cb_psw_dont_match">Hesla se neshodují</string>
+    <string name="fdn_invalid_number_cm">FDN nebylo aktualizováno, protože číslo chybí nebo přesahuje 20 číslic.</string>
+    <string name="fdn_service_unavailable">Služba FDN není dostupná.</string>
+    <string name="exportContacts">Export kontaktů na kartu SIM\u2026</string>
+    <string name="simContacts_title_cm">Spravovat kontakty na SIM kartě</string>
+    <string name="incall_error_local_low_battery">Volání se nezdařilo z důvodu vybité baterie.</string>
+    <string name="incall_error_low_battery">Volání se nezdařilo z důvodu vybité baterie na vzdáleném zařízení.</string>
+    <string name="contactScreen">Spravovat kontakty SIM</string>
+    <string name="exportContactScreen">Exportovat telefonní kontakty na kartu SIM</string>
+    <string name="addSimEntries">Přidat kontakt SIM</string>
+    <string name="deleteAllSimEntries">Smazat všechny kontatky SIM</string>
+    <string name="deleteSimContacts">Mazání kontaktů SIM\u2026</string>
+    <string name="editContact">Upravit</string>
+    <string name="sendSms">Odeslat SMS</string>
+    <string name="delete">Smazat</string>
+    <string name="dial">Volat</string>
+    <string name="enterName">Zadejte jméno:</string>
+    <string name="enterNumber">Zadejte telefonní číslo:</string>
+    <string name="hintName">Jméno</string>
+    <string name="hintPhonenumber">Telefonní číslo</string>
+    <string name="contactAddSuccess">Kontakt na SIM kartu úspěšně přidán</string>
+    <string name="contactAddFailed">Přidání kontaktu na SIM kartu selhalo</string>
+    <string name="contactUpdateSuccess">Kontakt na SIM kartě úspěšně změněn</string>
+    <string name="contactUpdateFailed">Změna kontaktu na SIM kartě selhala</string>
+    <string name="contactdeleteSuccess">Kontakt na kartě SIM úspěšně smazán</string>
+    <string name="contactdeleteFailed">Smazání kontaktu na SIM kartě selhalo</string>
+    <string name="allContactdeleteSuccess">Úspěšně smazány všechny kontakty na kartě SIM</string>
+    <string name="allContactdeleteFailed">Smazání všech kontaktů na SIM kartě selhalo</string>
+    <string name="exportAllcontatsSuccess">Úspěšně exportovány všechny kontakty na SIM kartu</string>
+    <string name="exportAllcontatsFailed">Export všech kontaktů na SIM kartu selhal</string>
+    <string name="exportAllcontatsNoContacts">Nenalezen žádný kontakt pro export na SIM kartu</string>
+    <string name="msim_mobile_network_settings_title">Nastavení mobilní sítě SIM %d</string>
+    <string name="perm_change_mobile_network">změnit režim sítě</string>
+    <string name="perm_change_mobile_network_desc">Umožňuje změnit stávající režim sítě.</string>
+    <string name="connected_line_identification_title">Identifikace linky</string>
+    <string name="connected_line_identification_summary">Zakažte tuto funkci pokud se nezobrazují telefonní čísla volaných či volajících v historii volání</string>
+    <string name="choose_network_mode_title">Vybrat režim sítě</string>
+    <string name="choose_network_mode_system_default">Výchozí systémové</string>
+    <string name="unlock_failed_remaining_retries">Neúspěšná žádost o odemknutí, zbývá pokusů %1$d.</string>
+    <string name="labelCFType">Nastavení přesměrování volání</string>
+    <string name="labelCFVoice">Hlas</string>
+    <string name="labelCFVideo">Video</string>
+    <string name="call_forward_option">Nastavení přesměrování volání</string>
 </resources>

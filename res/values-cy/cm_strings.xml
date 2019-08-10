@@ -16,51 +16,142 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Advanced Settings -->
-  <!-- Blacklist preferences -->
-  <!-- Sprint MWI Quirk: Phantom message wait indicator workaround -->
-  <!-- My Phone Number -->
-  <!-- Toasts for various transient network events -->
-  <!-- Toast text for Unconditional Call Forwarding enabled  -->
-  <!-- Toast text for Conditional Call Forwarding enabled  -->
-  <!-- Toast text for a forwarded MO call  -->
-  <!-- Toast text for MO call, when the caller & callee both belng to a CUG group -->
-  <!-- In-call screen: status label when MO calls are barred -->
-  <!-- Toast text for MO calls, when incoming calls are barred at remote party -->
-  <!-- Toast text for MO calls when CLIR Suppression is rejected -->
-  <!-- In-call screen: status label when MO call gets deflected to another party -->
-  <!-- Toast text for incoming call being forwarded to other remote party  -->
-  <!-- Toast text for incoming call which is part of MultiParty Call -->
-  <!-- Toast text for incoming call which is answered,put on hold & then released -->
-  <!-- Toast text for incoming call forward check received -->
-  <!-- Toast text for incoming call connecting through ECT -->
-  <!-- Toast text for incoming call connected through ECT -->
-  <!-- Status message displayed on SIM Network Depersonalization panel -->
-  <!-- Error message displayed on SIM Network Depersonalization panel -->
-  <!-- Success message displayed on SIM Network Depersonalization panel -->
-  <!-- Call forwarding settings screen, setting timer info for cfut case -->
-  <!-- Mobile network settings, preferred network modes -->
-  <!-- Mobile network settings, summary for preferred network mode Global[CHAR LIMIT=100] -->
-  <!-- In-call screen: call failure reason (call denied because call barring is ON on MT side ) -->
-  <!-- In-call screen: status label for an incoming call that is not answered and forwarded  -->
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA[CHAR LIMIT=100] -->
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE[CHAR LIMIT=100] -->
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM[CHAR LIMIT=100] -->
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/LTE[CHAR LIMIT=100] -->
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA[CHAR LIMIT=100] -->
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/WCDMA/LTE[CHAR LIMIT=100] -->
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/GSM/WCDMA/LTE[CHAR LIMIT=100] -->
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <!-- Mobile network settings, summary for preferred network mode TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA[CHAR LIMIT=100] -->
-  <!-- FDN settings: error message displayed in a popup (toast) -->
-  <!-- Title of the activity shown for Exporting contacts to SIM.  -->
-  <!-- Title of the List shown for SIM Contacts Management Activity.  -->
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <!-- In-call screen: call failure message displayed in errror dialog -->
-  <!-- Sim contacts management -->
-  <!-- Permission to modify network mode via intent -->
-  <!-- Mobile network settings, COLP -->
-  <!-- Network mode picker dialog title -->
-  <!-- Error message displayed on SIM Network Depersonalization panel with # of retries remaining -->
-  <!-- Call forward: IMS: Media tag support -->
+    <string name="incall_screen_settings">Gosodiadau sgrin yn ystod galwad</string>
+    <string name="show_ssn_label">Hysbysiad digwyddiad</string>
+    <string name="show_ssn_summary">Dangos hysbysiad am wahanol ddigwyddiadau rhwydwaith yn ymwneud ag ymdrin â galwadau</string>
+    <string name="incall_echo_cancellation">Lleihad sŵn mewn galwad</string>
+    <string name="enable_aec_label">Diddymu atsain</string>
+    <string name="enable_aec_summary">Lleihau sŵn amgylcheddol i\'r galwr arall yn ystod galwadau llais</string>
+    <string name="blacklist_title">Rhestr galwyr wedi\'u rhwystro</string>
+    <string name="blacklist_summary_disabled">Analluogwyd</string>
+    <string name="blacklist_summary">Ni fyddi\'n derbyn galwadau na negeseuon oddi wrth rifau ffôn ar y rhestr galwyr wedi eu rhwystro</string>
+    <string name="mwi_notification_title">Dangosydd neges yn aros</string>
+    <string name="mwi_notification_summary">Dangos hysbysiadau lleisbost bod negeseuon yn aros (angen ailddechrau)</string>
+    <string name="phone_number_label">Fy rif ffôn</string>
+    <string name="phone_number_summary">Gosod y rhif ffôn ar gyfer y ddyfais hon</string>
+    <string name="set_my_number_failed">Methwyd â gosod y rhif ffôn</string>
+    <string name="call_notif_unconditionalCF">Mae dargyfeirio galwadau heb amod yn weithredol</string>
+    <string name="call_notif_conditionalCF">Mae dargyfeirio galwadau ar amod yn weithredol</string>
+    <string name="call_notif_MOcall_forwarding">Dargyfeirir yr alwad allan</string>
+    <string name="call_notif_cugcall">Galwad mewn grŵp defnyddwyr caeedig</string>
+    <string name="call_notif_outgoing_barred">Rhwystrwyd galwadau allan</string>
+    <string name="call_notif_incoming_barred">Mae\'r derbynnydd wedi rhwystro derbyn galwadau</string>
+    <string name="call_notif_clir_suppression_rejected">Atal dy rif dy hun wedi\'i wrthod gan y rhwydwaith</string>
+    <string name="call_notif_call_deflected">Dargyfeiriwyd yr alwad gan y derbynnydd</string>
+    <string name="call_notif_MTcall_forwarding">Dargyfeirir galwad i mewn</string>
+    <string name="call_notif_multipartycall">Galwad aml-berson</string>
+    <string name="call_notif_callonhold_released">Rhyddhawyd yr alwad o bell</string>
+    <string name="call_notif_forwardcheckreceived">Cafodd yr alwad ei dargyfeirio</string>
+    <string name="call_notif_callconnectingect">Galwad yn cysylltu trwy drosglwyddiad galwad penodol</string>
+    <string name="call_notif_callconnectedect">Galwad wedi\'i chysylltu trwy drosglwyddiad galwad penodol</string>
+    <string name="requesting_unlock_cm">Yn gofyn i ddatgloi rhwydwaith y SIM\u2026</string>
+    <string name="unlock_failed_cm">Methodd y cais i ddatgloi rhwydwaith y SIM.</string>
+    <string name="unlock_success_cm">Llwyddodd y cais i ddatgloi rhwydwaith y SIM.</string>
+    <string name="all_day">Pob diwrnod</string>
+    <string name="time_start">O</string>
+    <string name="time_end">Hyd at</string>
+    <string name="time_hour">Awr</string>
+    <string name="time_minute">Munud</string>
+    <string name="time_formate_am">AM</string>
+    <string name="time_formate_pm">PM</string>
+    <string name="preferred_network_mode_global_summary_cm">Modd rhwydwaith a ffafrir: Byd eang (CDMA/EvDo/LTE/GSM/WCDMA)</string>
+    <string name="callFailed_incoming_cb_enabled">Mae\'r parti wedi gwahardd derbyn unrhyw alwadau.</string>
+    <string name="callUnanswered_forwarded">Galwad heb ei ateb ac wedi ei dargyfeirio</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_summary">Modd rhwydwaith a ffafrir: TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_summary">Modd rhwydwaith a ffafrir: TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_summary">Modd rhwydwaith a ffafrir: TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Modd rhwydwaith a ffafrir: TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Modd rhwydwaith a ffafrir: TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Modd rhwydwaith a ffafrir: TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Modd rhwydwaith a ffafrir: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA yn unig</string>
+    <string name="preferred_network_mode_lte_wcdma_choice">LTE / WCDMA</string>
+    <string name="preferred_network_mode_lte_choice">4G</string>
+    <string name="preferred_network_mode_global_choice">Byd-eang</string>
+    <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA + LTE/EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_evdo_only_choice">EvDo yn unig</string>
+    <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA heb EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo awto</string>
+    <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA awto</string>
+    <string name="preferred_network_mode_wcdma_only_choice">WCDMA yn unig</string>
+    <string name="preferred_network_mode_gsm_only_choice">GSM yn unig</string>
+    <string name="preferred_network_mode_gsm_wcdma_preferred_choice">Ffafrir GSM/WCDMA</string>
+    <string name="call_barring">Rhwystro galwadau</string>
+    <string name="call_barring_outgoing">Rhwystro galwadau allan</string>
+    <string-array name="call_barring_outgoing_display_values">
+        <item>I ffwrdd</item>
+        <item>Galwadau crwydro rhyngwladol</item>
+        <item>Galwadau rhyngwladol</item>
+        <item>Galwadau allan</item>
+    </string-array>
+    <string-array name="call_barring_incoming_display_values">
+        <item>I ffwrdd</item>
+        <item>Crwydro</item>
+        <item>Y cwbl</item>
+    </string-array>
+    <string name="call_barring_incoming">Rhwystro galwadau i mewn</string>
+    <string name="input_password">Rho dy gyfrinair</string>
+    <string name="invalidPsw">Rho gyfrinair dilys (4 i 8 digid)</string>
+    <string name="labelCbCancelAll">Analluogi rhwystro galwadau</string>
+    <string name="labelCbChangePassword">Newid cyfrinair</string>
+    <string name="psw_enter_old">Hen gyfrinair</string>
+    <string name="psw_enter_new">Cyfrinair newydd</string>
+    <string name="psw_reenter_new">Rho dy gyfrinair eto</string>
+    <string name="no_call_barring">Rhwystro galwadau wedi\'i analluogi</string>
+    <string name="cb_psw_dont_match">Dyw\'r cyfrineiriau ddim yr un fath</string>
+    <string name="fdn_invalid_number_cm">Ni ddiweddarwyd FDN gan fod y rhif yn wag neu\'n hirach na 20 digid.</string>
+    <string name="fdn_service_unavailable">Gwasanaeth FDN ddim ar gael.</string>
+    <string name="exportContacts">Yn allforio cysylltiadau i gerdyn SIM\u2026</string>
+    <string name="simContacts_title_cm">Rheoli cysylltiadau\'r cerdyn SIM</string>
+    <string name="incall_error_local_low_battery">Methodd yr alwad oherwydd batri isel.</string>
+    <string name="incall_error_low_battery">Methodd yr alwad gan fod batri\'r ddyfais bell yn isel.</string>
+    <string name="contactScreen">Rheoli cysylltiadau\'r cerdyn SIM</string>
+    <string name="exportContactScreen">Allforio cysylltiadau\'r ffôn i\'r SIM</string>
+    <string name="addSimEntries">Ychwanegu cyswllt SIM</string>
+    <string name="deleteAllSimEntries">Dileu pob cyswllt SIM</string>
+    <string name="deleteSimContacts">Yn dileu cysylltiadau SIM\u2026</string>
+    <string name="editContact">Golygu</string>
+    <string name="sendSms">Anfon SMS</string>
+    <string name="delete">Dileu</string>
+    <string name="dial">Deialu</string>
+    <string name="enterName">Rho enw:</string>
+    <string name="enterNumber">Rho rif ffôn:</string>
+    <string name="hintName">Enw</string>
+    <string name="hintPhonenumber">Rhif ffôn</string>
+    <string name="contactAddSuccess">Ychwanegwyd y cyswllt i\'r SIM yn llwyddiannus</string>
+    <string name="contactAddFailed">Methwyd ag ychwanegu cyswllt i\'r SIM</string>
+    <string name="contactUpdateSuccess">Diweddarwyd y cyswllt ar y SIM yn llwyddiannus</string>
+    <string name="contactUpdateFailed">Methwyd â diweddaru\'r cyswllt ar y SIM</string>
+    <string name="contactdeleteSuccess">Dileuwyd y cyswllt oddi ar y SIM yn llwyddiannus</string>
+    <string name="contactdeleteFailed">Methwyd â dileu\'r cyswllt o\'r SIM</string>
+    <string name="allContactdeleteSuccess">Dileuwyd pob cyswllt oddi ar y SIM yn llwyddiannus</string>
+    <string name="allContactdeleteFailed">Methwyd â dileu pob cyswllt oddi ar y SIM</string>
+    <string name="exportAllcontatsSuccess">Allforiwyd pob cyswllt i\'r SIM yn llwyddiannus</string>
+    <string name="exportAllcontatsFailed">Methwyd ag allforio pob cyswllt i\'r SIM</string>
+    <string name="exportAllcontatsNoContacts">Ni chanfuwyd cysyllteion i\'w allforio i\'r SIM</string>
+    <string name="msim_mobile_network_settings_title">Gosodiadau rhwydwaith symudol SIM %d</string>
+    <string name="perm_change_mobile_network">newid rhwydwaith symudol</string>
+    <string name="perm_change_mobile_network_desc">Mae\'n caniatáu i ap addasu\'r modd rhwydwaith cyfredol.</string>
+    <string name="connected_line_identification_title">Adnabyddiad llinell wedi\'i chysylltu</string>
+    <string name="connected_line_identification_summary">Analluoga\'r dewis hwn os nad yw rhifau\'r defnyddwyr yn ymddangos yn dy hanes galwadau</string>
+    <string name="choose_network_mode_title">Dewis modd rhwydwaith</string>
+    <string name="choose_network_mode_system_default">Rhagosodiad y system</string>
+    <string name="unlock_failed_remaining_retries">Cais i ddatgloi yn aflwyddiannus; %1$d ymdrech yn weddill.</string>
+    <string name="labelCFType">Gosodiadau dargyfeirio galwadau</string>
+    <string name="labelCFVoice">Llais</string>
+    <string name="labelCFVideo">Fideo</string>
+    <string name="call_forward_option">Dewisiadau dargyfeirio galwadau</string>
 </resources>
