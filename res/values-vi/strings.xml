@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Tính năng Chuyển vùng dữ liệu bị tắt. Nhấn để bật."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Có thể áp dụng phí chuyển vùng. Nhấn để sửa đổi."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Đã mất kết nối dữ liệu di động"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Chuyển vùng dữ liệu đang bật"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Bạn có thể phải trả một khoản phí lớn."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hãy liên hệ với nhà cung cấp mạng của bạn để biết giá cước."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Cho phép chuyển vùng dữ liệu?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Chức năng SIM bị giới hạn"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Các cuộc gọi và dịch vụ dữ liệu của nhà mạng <xliff:g id="CARRIER_NAME">%1$s</xliff:g> có thể bị chặn khi bạn sử dụng số <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Các cuộc gọi và dịch vụ dữ liệu của nhà mạng <xliff:g id="CARRIER_NAME">%1$s</xliff:g> có thể bị chặn khi bạn sử dụng một SIM khác."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Mức sử dụng dữ liệu của ứng dụng"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Đã dùng <xliff:g id="ID_1">%1$s</xliff:g> dữ liệu di động: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Nâng cao"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Mất kết nối Wi-Fi. Đã kết thúc cuộc gọi."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Không thể thực hiện cuộc gọi video của bạn do pin yếu."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Cuộc gọi video đã kết thúc do pin yếu."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Không thể thực hiện cuộc gọi khẩn cấp bằng tính năng gọi qua Wi-Fi ở vị trí này."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Không thể sử dụng tính năng gọi qua Wi-Fi ở vị trí này."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Thay đổi mã PIN thư thoại"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Tiếp tục"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Hủy"</string>

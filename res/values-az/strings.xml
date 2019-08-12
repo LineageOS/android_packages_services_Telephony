@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Rouminq zamanı data xidmətlərinə qoşulun"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Rouminq zamanı data xidmətlərinə qoşulun"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Data rominqi deaktivdir. Aktiv etmək üçün klikləyin."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Rominq xərcləri çıxıla bilər. Dəyişmək üçün toxunun."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Mobil data bağlantısı itdi"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Data rominqi aktivdir"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Sizə əhəmiyyətli xərclər tətbiq edilə bilər."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Qiymətləndirmə üçün şəbəkə provayderi ilə yoxlayın."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Məlumat rominqinə icazə verilsin?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Məhdud SIM funksionallığı"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> nömrəsindən istifadə edərkən <xliff:g id="CARRIER_NAME">%1$s</xliff:g> zəng və data xidmətləri bloklana bilər."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Başqa SIM-dən istifadə edərkən <xliff:g id="CARRIER_NAME">%1$s</xliff:g> zəng və data xidmətləri bloklana bilər."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Tətbiq data istifadəsi"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> ərzində <xliff:g id="ID_1">%1$s</xliff:g> mobil data istifadə edildi"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Qabaqcıl"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi bağlantısı kəsildi. Zəng başa çatdı."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Batareya az olduğu üçün video zəng edə bilməzsiniz."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Batareya az olduğuna görə video zəng bitdi."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Wi-Fi zəngi ilə təcili zənglər etmək bu məkanda əlçatan deyil."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Wi-Fi zəngi bu məkanda əlçatan deyil."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Səsli poçtun PIN kodunu dəyişin"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Davam edin"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Ləğv edin"</string>

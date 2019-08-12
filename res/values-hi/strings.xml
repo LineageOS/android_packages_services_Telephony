@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"रोमिंग के समय डेटा सेवाएं कनेक्ट करें"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"रोमिंग के समय डेटा सेवाएं कनेक्ट करें"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"डेटा रोमिंग बंद है. चालू करने के लिए टैप करें."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"रोमिंग शुल्क लागू हो सकते हैं. बदलाव करने के लिए टैप करें."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"मोबाइल डेटा कनेक्शन उपलब्ध नहीं है"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"डेटा रोमिंग की सुविधा चालू है"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"आपको बहुत ज़्यादा शुल्‍क देना पड़ सकता है."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"कीमतों की जानकारी के लिए आपको नेटवर्क सेवा देने वाली कंपनी से संपर्क करें."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिंग की अनुमति दें?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"सिम से सीमित सुविधाएं मिलेंगी"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> का इस्तेमाल करते समय <xliff:g id="CARRIER_NAME">%1$s</xliff:g> के कॉल और डेटा सेवाओं पर रोक लगाई जा सकती है."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"किसी और सिम का इस्तेमाल करते समय <xliff:g id="CARRIER_NAME">%1$s</xliff:g> की कॉल और डेटा सेवाएं ब्लॉक की जा सकती हैं."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ऐप्लिकेशन का डेटा खर्च"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> में <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा का उपयोग किया गया"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"बेहतर विकल्प"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"वाई-फ़ाई कनेक्शन चला गया. कॉल खत्म हो गया."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"बैटरी कम होने के कारण आप वीडियो कॉल नहीं कर सकते."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"बैटरी कम होने के कारण वीडियो कॉल खत्म हो गया."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"इस जगह वाई-फ़ाई कॉलिंग सुविधा के ज़रिए आपातकालीन कॉल नहीं किए जा सकते."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"इस जगह वाई-फ़ाई कॉलिंग की सुविधा उपलब्ध नहीं है."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"वॉइसमेल पिन बदलें"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"जारी रखें"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"अभी नहीं"</string>
