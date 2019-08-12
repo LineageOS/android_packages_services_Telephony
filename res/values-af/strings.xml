@@ -254,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Verbind met datadienste tydens swerwing"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Verbind met datadienste tydens swerwing"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Dataswerwing is afgeskakel. Tik om aan te skakel."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Swerwingkostes kan moontlik geld. Tik om te wysig."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Verlore mobiele dataverbinding"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Dataswerwing is aan"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Dit kan baie duur wees."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Bevestig met jou netwerkverskaffer vir prysberekening."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Laat dataswerwing toe?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Beperkte SIM-funksionaliteit"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> oproepe- en datadienste kan geblokkeer word terwyl <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> gebruik word."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> oproepe- en datadienste kan geblokkeer word terwyl \'n ander SIM gebruik word."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Programdatagebruik"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruik <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Gevorderd"</string>
@@ -644,6 +649,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi-verbinding verloor. Oproep is beëindig."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Jou video-oproep kan nie gemaak word nie weens lae battery."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Video-oproep het geëindig weens lae battery."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Noodoproepe oor Wi-Fi-oproepe is nie in hierdie ligging beskikbaar nie."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Wi-Fi-oproepe is nie in hierdie ligging beskikbaar nie."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Verander stemboodskap-PIN"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Gaan voort"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Kanselleer"</string>
