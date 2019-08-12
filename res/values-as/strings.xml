@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"ৰ’মিঙৰ সময়ত ডেটা সেৱাৰ সৈতে সংযোগ কৰক"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ৰ’মিঙৰ সময়ত ডেটা সেৱাৰ সৈতে সংযোগ কৰক"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ডেটা ৰ\'মিং অফ হৈ আছে। অন কৰিবলৈ টিপক"</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"ৰ’মিং মাচুল প্ৰযোজ্য হ’ব পাৰে। সংশোধন কৰিবলৈ টিপক।"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"ম’বাইল ডেটা বিচ্ছিন্ন হৈছে"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"ডেটা ৰ’মিং অন আছে"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"আপুনি যথেষ্ট পৰিমাণৰ খৰচ বহন কৰিবলগীয়া হ’ব পাৰে।"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"দৰ-দাম জানিবলৈ আপোনাৰ বাহকৰ সৈতে যোগাযোগ কৰক।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ডেটা ৰ\'মিঙৰ অনুমতি দিবনে?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"ছিমৰ সীমিত কাৰ্যকাৰিতা"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> ব্যৱহাৰ কৰি থাকোঁতে <xliff:g id="CARRIER_NAME">%1$s</xliff:g>ৰ কল আৰু ডেটা সেৱাবোৰ অৱৰোধ কৰা হ’ব পাৰে।"</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"অন্য এটা ছিম ব্যৱহাৰ কৰি থাকোঁতে <xliff:g id="CARRIER_NAME">%1$s</xliff:g>ৰ কল আৰু ডেটা সেৱাবোৰ অৱৰোধ কৰা হ’ব পাৰে।"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"এপৰ ডেটা ব্যৱহাৰ"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> ব্যৱহৃত ম’বাইল ডেটা <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"উচ্চখাপৰ ছেটিংসমূহ"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"ৱাই-ফাইৰ সৈতে সংযোগ বিচ্ছিন্ন হৈছে। কলৰ অন্ত পৰিছে।"</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"বেটাৰি কম থকাৰ বাবে ভিডিঅ\' কল কৰিব নোৱাৰি।"</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"বেটাৰি কম থকাৰ বাবে ভিডিঅ\' কলৰ অন্ত পৰিছে।"</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"এই অৱস্থানটোত ৱাই-ফাই কলিঙৰ জৰিয়তে জৰুৰীকালীন কল কৰাৰ সুবিধা উপলব্ধ নহয়।"</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"এই অৱস্থানটোত ৱাই-ফাই কলিং উপলব্ধ নহয়।"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ভইচমেইলৰ পিন সলনি কৰক"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"অব্যাহত ৰাখক"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"বাতিল কৰক"</string>

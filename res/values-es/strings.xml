@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Conectarse a servicios de datos en itinerancia"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Conectarse a servicios de datos en itinerancia"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"La itinerancia de datos está desactivada. Toca para activarla."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Pueden aplicarse cargos de itinerancia. Toca para modificar este ajuste."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Se ha perdido la conexión de datos móviles"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"La itinerancia de datos está activada"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"El coste de este servicio puede ser significativo."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Ponte en contacto con tu proveedor de red para consultar el precio."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"¿Permitir itinerancia de datos?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Funcionalidad de SIM limitada"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Puede los servicios de datos y llamadas de <xliff:g id="CARRIER_NAME">%1$s</xliff:g> se bloqueen mientras se utilice el <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Puede que los servicios de datos y llamadas de <xliff:g id="CARRIER_NAME">%1$s</xliff:g> se bloqueen al usar otra SIM."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Uso de datos de la aplicación"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Se han usado <xliff:g id="ID_1">%1$s</xliff:g> en el periodo del <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avanzado"</string>
@@ -641,6 +646,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Se ha perdido la conexión Wi-Fi. La llamada ha finalizado."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"No se puede realizar la videollamada porque queda poca batería."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Se ha finalizado la videollamada porque queda poca batería."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Las llamadas de emergencia por Wi-Fi no están disponibles en esta ubicación."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Las llamadas por Wi-Fi no están disponibles en esta ubicación."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Cambiar el PIN del buzón de voz"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continuar"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Cancelar"</string>

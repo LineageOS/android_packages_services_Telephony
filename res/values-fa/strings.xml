@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"اتصال به سرویس‌های داده هنگام فراگردی"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"اتصال به سرویس‌های داده هنگام فراگردی"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"فراگردی داده خاموش شده است. برای روشن کردن آن، ضربه بزنید."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"ممکن است هزینه‌های فراگردی اعمال شود. برای اصلاح ضربه بزنید."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"اتصال داده تلفن همراه قطع شد"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"فراگردی داده روشن است"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"شاید هزینه زیادی برای شما داشته باشد."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"برای قیمت با ارائه‌دهنده شبکه‌تان بررسی کنید."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"فراگردی داده مجاز است؟"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"عملکرد محدود سیم‌کارت"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"ممکن است درحین استفاده از <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>، سرویس‌های داده و تماس <xliff:g id="CARRIER_NAME">%1$s</xliff:g> مسدود شوند."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"ممکن است درحین استفاده از سیم‌کارت دیگر، سرویس‌های داده و تماس <xliff:g id="CARRIER_NAME">%1$s</xliff:g> مسدود شوند."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"مصرف داده برنامه"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> داده تلفن همراه مصرف‌شده در <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"پیشرفته"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"اتصال وای‌فای قطع شد. تماس پایان یافت."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"به دلیل شارژ کم باتری، نمی‌توان تماسی برقرار کرد."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"تماس ویدیویی به‌دلیل شارژ کم باتری پایان یافت."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"‏در این مکان تماس اضطراری با «تماس ازطریق Wi-Fi» امکان‌پذیر نیست."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"‏در این مکان تماس ازطریق Wi-Fi امکان‌پذیر نیست."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"تغییر پین پست صوتی"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ادامه"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"لغو"</string>
