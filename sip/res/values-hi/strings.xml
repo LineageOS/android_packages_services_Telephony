@@ -39,11 +39,11 @@
     <string name="registration_status_checking_status" msgid="6136793741862200337">"स्थिति की जाँच हो रही है..."</string>
     <string name="registration_status_registering" msgid="2677183977796278749">"पंजीकरण जारी है..."</string>
     <string name="registration_status_still_trying" msgid="7648151061205513458">"अब भी प्रयास कर रहा है..."</string>
-    <string name="registration_status_not_receiving" msgid="7620333886153361090">"कॉल प्राप्त नहीं हो रहे हैं."</string>
+    <string name="registration_status_not_receiving" msgid="7620333886153361090">"कॉल नहीं मिल रहे हैं."</string>
     <string name="registration_status_no_data" msgid="2541999976218192413">"खाता पंजीकरण रुक गया क्योंकि कोई इंटरनेट कनेक्शन उपलब्ध नहीं है."</string>
     <string name="registration_status_no_wifi_data" msgid="9154717387473039546">"कोई वाई-फ़ाई  कनेक्शन न होने के कारण खाता पंजीकरण रोका गया."</string>
     <string name="registration_status_not_running" msgid="514205414303796800">"खाता पंजीकरण विफल."</string>
-    <string name="registration_status_done" msgid="3264961069247314253">"कॉल प्राप्त हो रहे हैं"</string>
+    <string name="registration_status_done" msgid="3264961069247314253">"कॉल मिल रहे हैं"</string>
     <string name="registration_status_failed_try_later" msgid="2199970021756384317">"खाता पंजीकरण विफल: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>); बाद में फिर से प्रयास करें"</string>
     <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"खाता पंजीकरण विफल: गलत उपयोगकर्ता नाम या पासवर्ड."</string>
     <string name="registration_status_server_unreachable" msgid="7710275557045148634">"खाता पंजीकरण विफल: सर्वर नाम जाँचें."</string>
