@@ -254,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"রোমিংয়ে থাকাকালীন ডেটা পরিষেবাগুলির সাথে সংযোগ স্থাপন করুন"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"রোমিংয়ে থাকাকালীন ডেটা পরিষেবাগুলির সাথে সংযোগ স্থাপন করুন"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ডেটা রোমিং বন্ধ আছে। চালু করতে ট্যাপ করুন।"</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"রোমিং চার্জ প্রযোজ্য হতে পারে। পরিবর্তন করতে ট্যাপ করুন।"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"মোবাইল ডেটার কানেকশন কেটে গেছে"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"\'ডেটা রোমিং\' বিকল্পটি চালু আছে"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"আপনাকে উল্লেখযোগ্য পরিমাণে চার্জ করা হতে পারে৷"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"খরচের বিষয়ে জানতে নেটওয়ার্ক প্রদানকারীর সাথে যোগাযোগ করুন।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ডেটা রোমিংয়ের অনুমতি দেবেন?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"সিমের কিছু কাজ করবে না"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> ব্যবহার করার সময় <xliff:g id="CARRIER_NAME">%1$s</xliff:g> কল এবং ডেটা পরিষেবা হয়তো ব্লক করা থাকতে পারে।"</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"অন্য সিম ব্যবহার করার সময় <xliff:g id="CARRIER_NAME">%1$s</xliff:g> কল এবং ডেটা পরিষেবা হয়ত ব্লক হয়ে যেতে পারে।"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"অ্যাপ ডেটার ব্যবহার"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> এর মধ্যে <xliff:g id="ID_1">%1$s</xliff:g> মোবাইল ডেটা ব্যবহার করা হয়েছে"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"উন্নত"</string>
@@ -642,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"ওয়াই-ফাই সংযোগ বিচ্ছিন্ন হয়েছে। কল কেটে গেছে।"</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"চার্জ খুব কম, তাই ভিডিও কল করা যাবে না।"</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"চার্জ খুব কম, তাই ভিডিও কল বন্ধ করা হয়েছে।"</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"এই লোকেশনে \'ওয়াই-ফাই কলিং\' ফিচার ব্যবহার করে জরুরি কল করার সুবিধা নেই।"</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"\'ওয়াই-ফাই কলিং\' ফিচার এই লোকেশনে উপলভ্য নেই।"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ভয়েসমেলের PIN পরিবর্তন করুন"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"চালিয়ে যান"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"বাতিল করুন"</string>

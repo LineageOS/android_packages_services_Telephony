@@ -254,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ការរ៉ូមីង​ទិន្នន័យ​ត្រូវ​បាន​បិទ។ ចុច ដើម្បី​បើក។"</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"អាច​មាន​ការគិត​ថ្លៃ​រ៉ូមីង។ ចុច​ដើម្បី​កែប្រែ។"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"ដាច់​ការតភ្ជាប់​ទិន្នន័យ​ចល័ត"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"ការរ៉ូមីង​ទិន្នន័យ​ត្រូវ​បាន​បើក"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"អាចនាំឲ្យមានការគិតប្រាក់ច្រើនពីអ្នក។"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ពិនិត្យមើល​តម្លៃ​ជាមួយ​ក្រុមហ៊ុន​ផ្ដល់​សេវា​​បណ្ដាញ​​របស់​អ្នក។"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"អនុញ្ញាតឲ្យរ៉ូមីងទិន្នន័យ?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"មុខងារ​ស៊ីម​មាន​កម្រិត"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"សេវាកម្ម​ទិន្នន័យ និង​ការហៅ​ទូរសព្ទ​តាម <xliff:g id="CARRIER_NAME">%1$s</xliff:g> អាច​ត្រូវ​បាន​ទប់ស្កាត់ ពេល​ប្រើប្រាស់ <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>។"</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"សេវាកម្មទិន្នន័យ និងការហៅទូរសព្ទតាម <xliff:g id="CARRIER_NAME">%1$s</xliff:g> អាចត្រូវបានទប់ស្កាត់ ពេលប្រើស៊ីម​ផ្សេង។"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ការប្រើប្រាស់​ទិន្នន័យកម្មវិធី"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"បានប្រើទិន្នន័យទូរសព្ទអស់ <xliff:g id="ID_1">%1$s</xliff:g> នៅថ្ងៃទី <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"កម្រិតខ្ពស់"</string>
@@ -642,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"បាត់ការភ្ជាប់ Wi-Fi។ បានបញ្ចប់ការហៅទូរស័ព្ទ។"</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"ការហៅ​ជា​វីដេអូ​របស់​អ្នក​មិន​អាច​ធ្វើ​បាន​ទេ ដោយ​សារ​ខ្សោយ​ថ្ម។"</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"ការហៅ​ជា​វីដេអូ​ត្រូវ​បាន​បញ្ចប់​ ដោយ​សារ​ខ្សោយ​ថ្ម។"</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"មិន​អាច​ធ្វើ​ការហៅ​ទៅ​លេខ​សង្គ្រោះ​បន្ទាន់​ដោយ​ប្រើ​ការហៅ​តាម Wi-Fi នៅ​ទីតាំង​នេះ​បាន​ទេ។"</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"មិន​អាច​ប្រើ​ការហៅ​តាម Wi-Fi នៅ​ទីតាំង​នេះ​បាន​ទេ។"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ប្ដូរ​លេខ​កូដ PIN ជា​​សារ​សំឡេង"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"បន្ត"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"បោះបង់"</string>
