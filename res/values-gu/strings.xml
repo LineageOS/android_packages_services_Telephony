@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"જ્યારે રોમિંગ હોય ત્યારે ડેટા સેવાઓથી કનેક્ટ કરો"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"જ્યારે રોમિંગ હોય ત્યારે ડેટા સેવાઓથી કનેક્ટ કરો"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ડેટા રોમિંગ બંધ છે. ચાલુ કરવા માટે ટૅપ કરો."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"રોમિંગ શુલ્ક લાગુ થઈ શકે છે. સંશોધિત કરવા માટે ટૅપ કરો."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"કોઈ મોબાઇલ ડેટા કનેક્શન રહ્યું નથી"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"ડેટા રોમિંગ ચાલુ છે"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"તમારાથી આંશિક શુલ્ક લઈ શકાય છે."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"કિંમત માટે તમારા નેટવર્ક પ્રદાતા સાથે તપાસો."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ડેટા રોમિંગને મંજૂરી આપીએ?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"સિમની મર્યાદિત કાર્યક્ષમતા"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>નો ઉપયોગ કરતી વખતે <xliff:g id="CARRIER_NAME">%1$s</xliff:g>ના કૉલ અને ડેટાની સેવાઓ બ્લૉક થઈ શકે છે."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"બીજા સિમનો ઉપયોગ કરતી વખતે <xliff:g id="CARRIER_NAME">%1$s</xliff:g>ના કૉલ અને ડેટાની સેવાઓ બ્લૉક થઈ શકે છે."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ઍપ ડેટા વપરાશ"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> મોબાઇલ ડેટાનો ઉપયોગ <xliff:g id="ID_2">%2$s</xliff:g> ના રોજ સુધી કરવામાં આવ્યો"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"વિગતવાર"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi કનેક્શન ગુમાવ્યું. કૉલ સમાપ્ત થયો."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"બૅટરી ઓછી હોવાને કારણે તમારો વીડિઓ કૉલ કનેક્ટ કરી શકાતો નથી."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"બૅટરી ઓછી હોવાને કારણે વીડિઓ કૉલ સમાપ્ત થયો છે."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"આ સ્થાનમાં વાઇ-ફાઇ કૉલિંગ પર ઇમર્જન્સી કૉલ કરવાની સુવિધા ઉપલબ્ધ નથી."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"આ સ્થાનમાં વાઇ-ફાઇ કૉલિંગ ઉપલબ્ધ નથી."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"વૉઇસમેઇલ PIN બદલો"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ચાલુ રાખો"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"રદ કરો"</string>

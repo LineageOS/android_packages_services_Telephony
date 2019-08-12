@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"ரோமிங்கின் போது டேட்டா சேவைகளுடன் இணை"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ரோமிங்கின் போது டேட்டா சேவைகளுடன் இணை"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"டேட்டா ரோமிங் முடக்கத்தில் உள்ளது. இயக்க, தட்டவும்."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"ரோமிங் கட்டணங்கள் விதிக்கப்படக்கூடும். மாற்ற தட்டவும்."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"மொபைல் டேட்டா இணைப்பு இல்லை"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"டேட்டா ரோமிங் இயக்கத்தில்"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"குறிப்பிடத்தக்க பேமெண்ட்கள் இருக்கலாம்."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"உங்கள் நெட்வொர்க் வழங்குநர் விதிக்கும் கட்டணத்தைப் பார்க்கவும்."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"தரவு ரோமிங்கை அனுமதிக்கவா?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"SIMமின் செயல்பாடு வரம்பிடப்பட்டது"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> எண்ணைப் பயன்படுத்தும் போது <xliff:g id="CARRIER_NAME">%1$s</xliff:g> அழைப்புகளும் டேட்டா சேவைகளும் தடுக்கப்படக்கூடும்."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"வேறொரு SIMமில் <xliff:g id="CARRIER_NAME">%1$s</xliff:g> அழைப்புகளும் டேட்டா சேவைகளும் தடுக்கப்படக்கூடும்."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ஆப்ஸ் டேட்டா உபயோகம்"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g> மொபைல் டேட்டா பயன்படுத்தப்பட்டது"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"மேம்பட்டவை"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"வைஃபை இணைப்பு துண்டிக்கப்பட்டதால், அழைப்பு முடிந்தது."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"பேட்டரி அளவு குறைவாக இருப்பதால், வீடியோ அழைப்பைச் செய்ய முடியாது."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"பேட்டரி அளவு குறைவாக இருப்பதால், வீடியோ அழைப்பு முடிந்தது."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"இந்த இடத்தில் வைஃபை மூலமாக அவசர அழைப்புகளைச் செய்யும் வசதி இல்லை."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"இந்த இடத்தில் வைஃபை மூலம் அழைக்க முடியாது."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"குரலஞ்சல் பின்னை மாற்றவும்"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"தொடர்க"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"ரத்துசெய்"</string>

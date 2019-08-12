@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"රෝමින් අතරතුර දත්ත සේවා වෙත සම්බන්ධ වන්න"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"රෝමින් අතරතුර දත්ත සේවා වෙත සම්බන්ධ වන්න"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"දත්ත රෝමිං ක්‍රියාවිරහිත කර ඇත. ක්‍රියාත්මක කිරීමට තට්ටු කරන්න."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"රෝමින් ගාස්තු අදාළ විය හැක. වෙනස් කිරීමට තට්ටු කරන්න."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"ජංගම දත්ත සම්බන්ධතාව නැතිවීම"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"දත්ත රෝමිං ක්‍රියාත්මකයි"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"ඔබ සැලකිය යුතු ගාස්තු ඇති විය හැකිය."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"මිල ගණන් සඳහා ඔබගේ ජාල සැපයුම්කරු සමඟ පරීක්ෂා කරන්න."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"දත්ත රෝමින් සඳහා අවසර දෙන්නද?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"සීමිත SIM ක්‍රියාකාරීත්වය"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> භාවිත කරන අතරතුර <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ඇමතුම් සහ දත්ත සේවා අවහිර විය හැකිය."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"වෙනත් SIM එකක් භාවිත කරන අතරතුර <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ඇමතුම් සහ දත්ත සේවා අවහිර විය හැකිය."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"යෙදුම් දත්ත භාවිතය"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> <xliff:g id="ID_1">%1$s</xliff:g>ක ජංගම දත්ත භාවිත කරන ලදී"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"උසස්"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi සම්බන්ධතාවය අහිමි විය. ඇමතුම අවසන් විය."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"අඩු බැටරිය නිසා ඔබගේ වීඩියෝ ඇමතුම සිදු කළ නොහැකිය."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"අඩු බැටරිය හේතුවෙන් වීඩියෝ ඇමතුම අවසන් විය."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Wi-Fi හරහා හදිසි ඇමතුම් මෙම ස්ථානයේ ලබා ගත නොහැකිය."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Wi-Fi ඇමතුම මෙම ස්ථානයෙහි ලබා ගත නොහැකිය."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"හඬ තැපැල් PIN අංකය වෙනස් කරන්න"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"දිගටම කර ගෙන යන්න"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"අවලංගු කරන්න"</string>
