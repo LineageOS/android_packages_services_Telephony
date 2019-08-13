@@ -254,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Σύνδεση στις υπηρεσίες δεδομένων κατά την περιαγωγή"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Σύνδεση στις υπηρεσίες δεδομένων κατά την περιαγωγή"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Η περιαγωγή δεδομένων είναι απενεργοποιημένη. Πατήστε για να την ενεργοποιήσετε."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Ενδέχεται να ισχύουν χρεώσεις περιαγωγής. Πατήστε για τροποποίηση."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Απώλεια σύνδεσης δεδομένων κινητής τηλεφωνίας"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Η περιαγωγή δεδομένων είναι ενεργοποιημένη"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Ενδέχεται να επιβαρυνθείτε με σημαντικές χρεώσεις."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Επικοινωνήστε με τον πάροχο του δικτύου για τις τιμές."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Να επιτρέπεται η περιαγωγή δεδομένων;"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Περιορισμένη λειτουργικότητα SIM"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Οι κλήσεις και οι υπηρεσίες δεδομένων από την <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ενδέχεται να αποκλειστούν κατά τη χρήση του αριθμού <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Κλήσεις και υπηρεσίες δεδομένων από <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ίσως αποκλειστούν κατά τη χρήση άλλης SIM."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Χρήση δεδομένων εφαρμογής"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> δεδομένων κινητής τηλεφωνίας χρησιμοποιήθηκαν μεταξύ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Σύνθετες ρυθμίσεις"</string>
@@ -642,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Η σύνδεση Wi-Fi χάθηκε. Η κλήση τερματίστηκε."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Η βιντεοκλήση δεν μπορεί να πραγματοποιηθεί λόγω χαμηλής στάθμης μπαταρίας"</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Η βιντεοκλήση τερματίστηκε λόγω χαμηλής στάθμης μπαταρίας"</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Η δυνατότητα κλήσεων Wi-Fi δεν είναι διαθέσιμη για κλήσεις έκτακτης ανάγκης σε αυτήν την τοποθεσία."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Η δυνατότητα κλήσεων Wi-Fi δεν είναι διαθέσιμη σε αυτήν την τοποθεσία."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Αλλαγή PIN αυτόματου τηλεφωνητή"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Συνέχεια"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Ακύρωση"</string>

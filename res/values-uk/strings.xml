@@ -254,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Підключатися до служб передавання даних у роумінгу"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Підключатися до служб передавання даних у роумінгу"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Роумінг даних вимкнено. Натисніть, щоб увімкнути."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Може стягуватися плата за роумінг. Натисніть, щоб змінити."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Від’єднано від мобільного Інтернету"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Роумінг даних увімкнено"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Може стягуватися значна плата."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Докладніше про ціни можна дізнатися в оператора мережі."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Дозволити роумінг даних?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Обмежені функції SIM-карти"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Виклики та сервіси даних оператора <xliff:g id="CARRIER_NAME">%1$s</xliff:g> може бути заблоковано, коли ви використовуєте <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Коли працює інша SIM-карта, виклики й сервіси даних <xliff:g id="CARRIER_NAME">%1$s</xliff:g> може бути заблоковано."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Використання трафіку додатками"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> мобільного трафіку використано в період <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Додатково"</string>
@@ -646,6 +651,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Утрачено з’єднання Wi-Fi. Виклик завершено."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Відеодзвінок не вдалося виконати через низький заряд акумулятора."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Відеодзвінок завершився через низький заряд акумулятора."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"У цьому регіоні недоступні екстрені виклики через Wi-Fi."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Дзвінки через Wi-Fi недоступні в цьому регіоні."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Змінити PIN-код голосової пошти"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Продовжити"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Скасувати"</string>

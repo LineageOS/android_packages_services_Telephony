@@ -254,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"الاتصال بخدمات البيانات عند التجوال"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"الاتصال بخدمات البيانات عند التجوال"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"تم إيقاف تجوال البيانات. انقر للتفعيل."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"قد تسري رسوم تجوال. انقر للتعديل."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"اتصال بيانات الجوّال مفقود"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"تم تفعيل \"تجوال البيانات\""</string>
     <string name="roaming_warning" msgid="1603164667540144353">"قد يكلف ذلك رسومًا مرتفعة."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"راجع مقدم الشبكة للتعرف على الأسعار."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"السماح بتجوال البيانات؟"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"‏وظائف محدودة لشريحة SIM"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"ربما يتم حظر المكالمات وخدمات البيانات المُقدّمة من <xliff:g id="CARRIER_NAME">%1$s</xliff:g> أثناء استخدام <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"‏ربما يتم حظر المكالمات وخدمات البيانات المقدّمة من <xliff:g id="CARRIER_NAME">%1$s</xliff:g> أثناء استخدام شريحة SIM أخرى."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"استخدام بيانات التطبيق"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"تم استخدام <xliff:g id="ID_1">%1$s</xliff:g> من بيانات الجوّال خلال الفترة بين <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"إعدادات متقدمة"</string>
@@ -650,6 +655,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"‏تم فقدان اتصال Wi-Fi. تم إنهاء المكالمة."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"يتعذر إجراء مكالمة الفيديو نتيجة لانخفاض طاقة البطارية."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"تم إنهاء مكالمة الفيديو نتيجة لانخفاض طاقة البطارية."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"‏لا تتوفّر ميزة إجراء \"مكالمات الطوارئ\" عبر Wi-Fi في هذا الموقع الجغرافي."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"‏لا تتوفّر ميزة \"الاتصال عبر Wi-Fi\" في هذا الموقع الجغرافي."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"تغيير رقم التعريف الشخصي للبريد الصوتي"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"متابعة"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"إلغاء"</string>

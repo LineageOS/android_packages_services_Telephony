@@ -254,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"డేటా రోమింగ్ ఆఫ్ చేయబడింది. ఆన్ చేయడానికి నొక్కండి."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"రోమింగ్ ఛార్జీలు వర్తించవచ్చు. మార్చడానికి నొక్కండి."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"మొబైల్ డేటా కనెక్షన్‌ని కోల్పోయారు"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"డేటా రోమింగ్ ఆన్‌లో ఉంది"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"మీకు గణనీయ ఛార్జీలు విధించబడవచ్చు."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ధరల కోసం మీ నెట్‌వర్క్ ప్రదాతను అడగండి."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"డేటా రోమింగ్‌ను అనుమతించాలా?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"SIM పనితీరు పరిమితంగా ఉంది"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> ఉపయోగిస్తున్నప్పుడు <xliff:g id="CARRIER_NAME">%1$s</xliff:g> కాల్‌లు మరియు డేటా సేవలు బ్లాక్ చేయబడవచ్చు."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"వేరొక SIMను ఉపయోగిస్తున్నప్పుడు <xliff:g id="CARRIER_NAME">%1$s</xliff:g> కాల్‌లు మరియు డేటా సేవలు బ్లాక్ చేయబడవచ్చు."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"యాప్ డేటా వినియోగం"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> మధ్య కాలంలో <xliff:g id="ID_1">%1$s</xliff:g> మొబైల్ డేటా ఉపయోగించబడింది"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"అధునాతనం"</string>
@@ -642,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi కనెక్షన్ పోయింది. కాల్ ముగిసింది."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"తక్కువ బ్యాటరీ కారణంగా మీ వీడియో కాల్ చేయడం సాధ్యపడదు."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"తక్కువ బ్యాటరీ కారణంగా వీడియో కాల్ ముగిసింది."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Wi-Fi కాలింగ్ ద్వారా అత్యవసర కాల్‌లు ఈ స్థానంలో అందుబాటులో లేవు."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"ఈ స్థానంలో Wi-Fi కాలింగ్ అందుబాటులో లేదు."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"వాయిస్ మెయిల్ PINని మార్చండి"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"కొనసాగించు"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"రద్దు చేయి"</string>

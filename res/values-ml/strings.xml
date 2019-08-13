@@ -254,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"റോമിംഗിലാകുമ്പോൾ ഡാറ്റ സേവനങ്ങളുമായി കണ‌ക്റ്റുചെയ്യുക"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"റോമിംഗിലാകുമ്പോൾ ഡാറ്റ സേവനങ്ങളുമായി കണ‌ക്റ്റുചെയ്യുക"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ഡാറ്റ റോമിംഗ് ഓഫാണ്. ഓണാക്കാൻ ടാപ്പ് ചെയ്യുക."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"റോമിംഗ് നിരക്കുകൾ ബാധകമാകാം. പരിഷ്‌ക്കരിക്കാൻ ടാപ്പ് ചെയ്യുക."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"മൊബൈൽ ഡാറ്റ കണക്ഷൻ നഷ്‌ടപ്പെട്ടു"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"ഡാറ്റ റോമിംഗ് ഓണാണ്"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"നിങ്ങളിൽ നിന്ന് നിർദ്ദിഷ്‌ട നിരക്കുകൾ ഈടാക്കിയേക്കാം."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"നിരക്കിനായി നിങ്ങളുടെ നെറ്റ്‌വർക്ക് ദാതാവിനെ ബന്ധപ്പെടുക."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ഡാറ്റ റോമിംഗ് അനുവദിക്കണോ?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"പരിമിതമായ സിം പ്രവർത്തനം"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> ഉപയോഗിക്കുമ്പോൾ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> കോളുകളും ഡാറ്റാ സേവനങ്ങളും ബ്ലോക്ക് ചെയ്‌തേക്കാം."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"മറ്റൊരു SIM ഉപയോഗിക്കുമ്പോൾ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> കോളുകളും ഡാറ്റാ സേവനവും ബ്ലോക്ക് ചെയ്‌തേക്കാം."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ആപ്പ് ഡാറ്റ ഉപയോഗം"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> തീയതികൾക്കിടയിൽ <xliff:g id="ID_1">%1$s</xliff:g> മൊബൈൽ ഡാറ്റ ഉപയോഗിച്ചു"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"വിപുലമായത്"</string>
@@ -642,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi കണക്ഷൻ പോയതിനാൽ കോൾ അവസാനിച്ചു."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"ബാറ്ററിയി ചാർജ്ജ് കുറവായതിനാൽ വീഡിയോ കോൾ ചെയ്യാനായില്ല."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"ബാറ്ററി ചാർജ്ജ് കുറവായതിനാൽ വീഡിയോ കോൾ അവസാനിച്ചു."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"വൈഫൈ കോളിംഗ് വഴിയുള്ള എമർജൻസി കോളുകൾ ഈ ലൊക്കേഷനിൽ ലഭ്യമല്ല."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"വൈഫൈ കോളിംഗ് ഈ ലൊക്കേഷനിൽ ലഭ്യമല്ല."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"വോയ്‌സ്മെയിൽ പിൻ മാറ്റുക"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"തുടരുക"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"റദ്ദാക്കുക"</string>
