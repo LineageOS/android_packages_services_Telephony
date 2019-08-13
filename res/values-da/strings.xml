@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Opret forbindelse til datatjenester under roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Opret forbindelse til datatjenester under roaming"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Dataroaming er deaktiveret. Tryk for at aktivere."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Du skal muligvis betale roaminggebyrer. Tryk for at ændre."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Mobildataforbindelsen blev afbrudt"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Dataroaming er aktiveret"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Du kan risikere at skulle betale høje gebyrer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakt din netværksudbyder for at få oplyst priser."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillade dataroaming?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"SIM-kortets funktionalitet er begrænset"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Opkalds- og datatjenester fra <xliff:g id="CARRIER_NAME">%1$s</xliff:g> blokeres muligvis, mens <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> bruges."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Opkalds- og datatjenester fra <xliff:g id="CARRIER_NAME">%1$s</xliff:g> blokeres muligvis, mens der bruges et andet SIM-kort."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Dataforbrug i apps"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brugt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avanceret"</string>
@@ -641,6 +646,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Du mistede Wi-Fi-forbindelsen. Opkaldet blev afsluttet."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Du kan ikke foretage videoopkaldet på grund af lavt batteriniveau."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Videoopkaldet blev afsluttet på grund af lavt batteriniveau."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Det er ikke muligt at foretage nødopkald som Wi-Fi-opkald i dette land."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Det er ikke muligt at foretage Wi-Fi-opkald i dette land."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Skift pinkode til din telefonsvarer"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Fortsæt"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Annuller"</string>

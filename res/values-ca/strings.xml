@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Estableix connexió amb serveis de dades en itinerància"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Estableix connexió amb serveis de dades en itinerància"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"La itinerància de dades està desactivada. Toca per activar-la."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Es poden aplicar càrrecs per itinerància. Toca per modificar la configuració."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"S\'ha perdut la connexió de dades mòbils"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"La itinerància de dades està activada"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"És possible que s\'apliquin càrrecs elevats."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Contacta amb el proveïdor de xarxa per saber els preus."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permetre la itinerància de dades?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Funcionalitat de la SIM limitada"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Pot ser que les trucades i els serveis de dades de <xliff:g id="CARRIER_NAME">%1$s</xliff:g> es bloquegin mentre fas servir el número <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Les trucades i dades que t\'ofereix <xliff:g id="CARRIER_NAME">%1$s</xliff:g> es poden bloquejar quan tens una altra SIM."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Ús de dades de l\'aplicació"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"S\'han utilitzat <xliff:g id="ID_1">%1$s</xliff:g> en el període <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Configuració avançada"</string>
@@ -587,7 +592,7 @@
     <string name="ota_try_again" msgid="7685477206465902290">"Torna-ho a provar"</string>
     <string name="ota_next" msgid="3904945374358235910">"Següent"</string>
     <string name="ecm_exit_dialog" msgid="4448531867763097533">"EcmExitDialog"</string>
-    <string name="phone_entered_ecm_text" msgid="6266424252578731203">"S\'ha activat al mode de devolució de trucada d\'emergència"</string>
+    <string name="phone_entered_ecm_text" msgid="6266424252578731203">"S\'ha entrat al mode de devolució de trucada d\'emergència"</string>
     <string name="phone_in_ecm_notification_title" msgid="3226896828951687085">"Mode de devolució de trucada d\'emergència"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="4611608947314729773">"Connexió de dades desactivada"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7730376844178948351">"No hi haurà connexió de dades fins a les <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"La trucada ha finalitzat perquè s\'ha perdut la connexió Wi-Fi."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"No pots iniciar la videotrucada perquè queda poca bateria."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"La videotrucada ha finalitzat perquè queda poca bateria."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Les trucades d\'emergència per Wi-Fi no estan disponibles en aquesta ubicació."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Les trucades per Wi-Fi no estan disponibles en aquesta ubicació."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Canvia el PIN per a la bústia de veu"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continua"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Cancel·la"</string>

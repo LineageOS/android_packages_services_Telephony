@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Sambung ke perkhidmatan data semasa perayauan"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Sambung ke perkhidmatan data semasa perayauan"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Perayauan data dimatikan. Ketik untuk menghidupkan."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Caj perayauan mungkin dikenakan. Ketik untuk mengubah suai."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Sambungan data mudah alih terputus"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Perayauan data dihidupkan"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Anda mungkin dikenakan caj yang tinggi."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Semak dengan penyedia rangkaian untuk mendapatkan harga."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Benarkan perayauan data?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Fungsi SIM terhad"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Perkhidmatan panggilan dan data <xliff:g id="CARRIER_NAME">%1$s</xliff:g> mungkin disekat semasa menggunakan <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Perkhidmatan panggilan dan data <xliff:g id="CARRIER_NAME">%1$s</xliff:g> mungkin disekat semasa menggunakan SIM lain."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Penggunaan data apl"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> data mudah alih digunakan <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Terperinci"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Sambungan Wi-Fi terputus. Panggilan ditamatkan."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Panggilan video anda tidak dapat dibuat kerana kuasa bateri rendah."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Panggilan video ditamatkan kerana kuasa bateri rendah."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Panggilan kecemasan melalui panggilan Wi-Fi tidak tesedia di lokasi ini."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Panggilan Wi-Fi tidak tersedia di lokasi ini."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Tukar PIN Mel Suara"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Teruskan"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Batal"</string>

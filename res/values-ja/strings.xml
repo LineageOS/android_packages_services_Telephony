@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"ローミング時にデータサービスに接続する"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ローミング時にデータサービスに接続する"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"データ ローミングが OFF になっています。タップして ON にしてください。"</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"ローミング料金が発生する場合があります。タップすると設定を変更できます。"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"モバイルデータ通信が切断されました"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"データ ローミングが ON になっています"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"高額な通信料が発生することがあります。"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"価格設定については、ネットワーク プロバイダにお問い合わせください。"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"データ ローミングを許可しますか？"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"SIM 機能の制限"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> の通話およびデータサービスは、<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> を使用している間はブロックされる可能性があります。"</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"別の SIM を使用中は、<xliff:g id="CARRIER_NAME">%1$s</xliff:g> の通話とデータサービスがブロックされる可能性があります。"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"アプリのデータ使用量"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>のモバイルデータ使用量: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"詳細設定"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi 接続が失われたため、通話が終了しました。"</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"電池残量が低下しているため、ビデオハングアウトを行えません。"</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"電池残量が低下したため、ビデオハングアウトが終了しました。"</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"この場所では Wi-Fi 通話による緊急通報はご利用いただけません。"</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"この場所では Wi-Fi 通話はご利用いただけません。"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ボイスメール PIN の変更"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"続行"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"キャンセル"</string>

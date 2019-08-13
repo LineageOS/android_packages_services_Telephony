@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Se connecter aux services de données lors de l\'itinérance"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Se connecter aux services de données lors de l\'itinérance"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"L\'itinérance des données est désactivée. Appuyez pour l\'activer."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Des frais d\'itinérance peuvent s\'appliquer. Appuyez pour modifier."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Perte de la connexion des données mobiles"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"L\'itinérance des données est activée"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Des frais importants peuvent s\'appliquer."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Vérifiez le tarif auprès de votre opérateur."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Autoriser l\'itinérance des données ?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Fonction de la carte SIM limitée"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Les appels et les services de données disponibles avec <xliff:g id="CARRIER_NAME">%1$s</xliff:g> sont susceptibles d\'être bloqués lorsque vous utilisez le numéro <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Les appels et services de données <xliff:g id="CARRIER_NAME">%1$s</xliff:g> peuvent être bloqués avec une deuxième SIM."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Consommation des données par les applications"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de données mobiles utilisées pendant la période suivante : <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Paramètres avancés"</string>
@@ -548,7 +553,7 @@
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Contact importé"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Échec de l\'importation du contact."</string>
     <string name="hac_mode_title" msgid="8740268574688743289">"Assistance auditive"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Activer la compatibilité avec les appareils auditifs"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Activer la compatibilité avec les prothèses auditives"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Appel texte en temps réel"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Autoriser l\'échange de messages pendant les appels vocaux"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"La fonctionnalité de texte en temps réel vient en aide aux personnes sourdes, malentendantes, qui ont un trouble de la parole, ou qui ont besoin d\'une transcription en plus de la voix.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;En savoir plus&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les appels texte en temps réel sont enregistrés sous forme transcrite\n       &lt;br&gt; - Le mode texte en temps réel n\'est pas disponible pour les appels vidéo"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Connexion Wi-Fi perdue. L\'appel a été interrompu."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Votre appel vidéo n\'a pas abouti par manque de batterie."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Appel vidéo interrompu par manque de batterie."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Les appels d\'urgence via la fonctionnalité Appels Wi-Fi ne sont pas disponibles dans cette zone géographique."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"La fonctionnalité Appels Wi-Fi n\'est pas disponible dans cette zone géographique."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Modifier le code de la boîte vocale"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continuer"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Annuler"</string>

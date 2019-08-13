@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"漫遊時連線到數據傳輸服務"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"漫遊時連線到數據傳輸服務"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"漫遊服務已關閉，輕觸即可開啟。"</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"可能需要支付漫遊費用。輕觸即可修改。"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"行動數據連線中斷"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"漫遊服務已開啟"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"你可能需要支付可觀的費用。"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"請向你的網路供應商洽詢定價。"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"允許漫遊服務？"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"SIM 卡功能受限"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"使用 <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> 時，「<xliff:g id="CARRIER_NAME">%1$s</xliff:g>」的通話和數據服務可能會遭到封鎖。"</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"當你使用另一張 SIM 卡時，「<xliff:g id="CARRIER_NAME">%1$s</xliff:g>」的通話和數據服務可能會遭到封鎖。"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"應用程式數據用量"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>期間使用了 <xliff:g id="ID_1">%1$s</xliff:g> 的行動數據"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"進階"</string>
@@ -641,6 +646,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi 連線中斷，因此通話已結束。"</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"電量不足，因此無法發起視訊通話。"</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"電量不足，因此視訊通話已結束。"</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"無法在這個地區透過 Wi-Fi 通話功能撥打緊急電話。"</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"這個地區不支援 Wi-Fi 通話功能。"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"變更語音信箱密碼"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"繼續"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"取消"</string>
