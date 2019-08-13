@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"रोमिङको समयमा डेटा सेवामा जडान गर्नुहोस्"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"रोमिङको समयमा डेटा सेवा जडान गर्नुहोस्"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"डेटा रोमिङ सक्रिय गरियो। सक्रिय गर्न ट्याप गर्नुहोस्।"</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"रोमिङ शुल्क लाग्न सक्छ। परिमार्जन गर्न ट्याप गर्नुहोस्"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"मोबाइल डेटाको जडान टुट्यो"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"डेटा रोमिङ सक्रिय छ"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"तपाईंलाई अत्यन्त धेरै शुल्क लाग्न सक्छ।"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"मूल्यसम्बन्धी जानकारीको लागि आफ्नो नेटवर्क प्रदायकलाई सोध्नुहोस्।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"डेटा रोमिङको अनुमति दिने हो?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"SIM को सीमित सुविधा"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>.प्रयोग गर्दा <xliff:g id="CARRIER_NAME">%1$s</xliff:g> का कल तथा डेटा सेवाहरूलाई रोक लगाइन सक्छ"</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"अर्को SIM प्रयोग गर्दा <xliff:g id="CARRIER_NAME">%1$s</xliff:g> कल तथा डेटा सेवहरूलाई रोक लगाइन सक्छ।"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"अनुप्रयोगले गरेको डेटाको प्रयोग"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> सम्म <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा प्रयोग भयो"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"उन्नत"</string>
@@ -639,6 +644,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi जडान विच्छेद भयो। कल समाप्त भयो।"</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"ब्याट्रीको चार्ज स्तर कम हुनाले तपाईं भिडियो कल गर्न सक्नुहुन्न।"</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"ब्याट्रीको चार्ज स्तर कम हुनाले भिडियो कल बन्द भयो।"</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"यो स्थानमा Wi-Fi कलिङमार्फत आपतकालीन कलहरू गर्ने सुविधा उपलब्ध छैन।"</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"यो स्थानमा Wi-Fi कलिङ उपलब्ध छैन।"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"भ्वाइस मेलको PIN परिवर्तन गर्नुहोस्"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"जारी राख्नुहोस्"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"रद्द गर्नुहोस्"</string>

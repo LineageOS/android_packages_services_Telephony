@@ -252,10 +252,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Yhdistä verkkoon roaming-tilassa."</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Yhdistä verkkoon roaming-tilassa."</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Roaming ei ole käytössä. Ota käyttöön napauttamalla."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Puhelusta saatetaan periä roaming-maksuja. Muokkaa napauttamalla."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Mobiilidatayhteys katkesi"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Roaming on käytössä"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Siitä voi aiheutua huomattavia kuluja."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Pyydä hintatiedot verkkopalvelun tarjoajaltasi."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Sallitaanko tiedonsiirto roaming-tilassa?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Rajoituksia SIM-kortin toiminnassa"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Operaattorin <xliff:g id="CARRIER_NAME">%1$s</xliff:g> puhelut ja datapalvelut saatetaan estää, kun puhelinnumero <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> on käytössä."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Operaattorin <xliff:g id="CARRIER_NAME">%1$s</xliff:g> puhelut ja datapalvelut voidaan estää, kun käytössä on toinen SIM."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Sovelluksen datan käyttö"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobiilidataa käytetty <xliff:g id="ID_2">%2$s</xliff:g>."</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Lisäasetukset"</string>
@@ -641,6 +646,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi-yhteys katkesi, ja puhelu lopetettiin."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Videopuhelua ei voi soittaa, koska akun virta on vähissä."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Videopuhelu lopetettiin, koska akun virta on vähissä."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Tässä paikassa ei voi soittaa hätäpuheluja Wi-Fi-yhteyden avulla."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Wi-Fi-puheluja ei voi soittaa tässä paikassa."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Vaihda vastaajan PIN-koodi."</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Jatka"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Peruuta"</string>
