@@ -26,6 +26,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.os.UserHandle;
 import android.permission.IPermissionManager;
 import android.service.euicc.EuiccService;
 import android.telephony.euicc.EuiccManager;
@@ -137,7 +138,7 @@ public class EuiccUiDispatcherActivity extends Activity {
     protected void grantDefaultPermissionsToActiveLuiApp(ActivityInfo activityInfo) {
         try {
             mPermissionManager.grantDefaultPermissionsToActiveLuiApp(
-                    activityInfo.packageName, getUserId());
+                    activityInfo.packageName, UserHandle.myUserId());
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to grant permissions to active LUI app.", e);
         }
@@ -149,7 +150,8 @@ public class EuiccUiDispatcherActivity extends Activity {
         try {
             Set<String> luiApps = getAllLuiAppPackageNames(intent);
             String[] luiAppsArray = luiApps.toArray(new String[luiApps.size()]);
-            mPermissionManager.revokeDefaultPermissionsFromLuiApps(luiAppsArray, getUserId());
+            mPermissionManager.revokeDefaultPermissionsFromLuiApps(luiAppsArray,
+                UserHandle.myUserId());
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to revoke LUI app permissions.");
             throw e.rethrowAsRuntimeException();
