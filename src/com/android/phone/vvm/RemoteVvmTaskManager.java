@@ -226,6 +226,11 @@ public class RemoteVvmTaskManager extends Service {
         Assert.isMainThread();
         mTaskReferenceCount++;
 
+        if (intent == null) {
+            VvmLog.i(TAG, "received intent is null");
+            checkReference();
+            return START_NOT_STICKY;
+        }
         PhoneAccountHandle phoneAccountHandle = intent.getExtras()
                 .getParcelable(VisualVoicemailService.DATA_PHONE_ACCOUNT_HANDLE);
         int subId = PhoneAccountHandleConverter.toSubId(phoneAccountHandle);
