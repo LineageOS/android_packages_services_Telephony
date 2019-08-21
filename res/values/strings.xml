@@ -1773,7 +1773,7 @@
     <!-- Call barring settings screen, change password -->
     <string name="call_barring_change_pwd_description">Change call barring password</string>
     <!-- Call barring settings screen, not possible to change call barring password -->
-    <string name="call_barring_change_pwd_description_disabled">Cannot change call barring password.</string>
+    <string name="call_barring_change_pwd_description_disabled">Cannot change call barring password</string>
     <!-- Call barring settings screen, change password -->
     <string name="call_barring_pwd_not_match">Passwords do not match</string>
     <!-- Call barring settings screen, change password -->
