@@ -5320,14 +5320,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Determines whether the user has turned on RTT. Only returns true if the device and carrier
-     * both also support RTT.
+     * Determines whether the user has turned on RTT. If the carrier wants to ignore the user-set
+     * RTT setting, will return true if the device and carrier both support RTT.
+     * Otherwise. only returns true if the device and carrier both also support RTT.
      */
     public boolean isRttEnabled(int subscriptionId) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            return isRttSupported(subscriptionId) && Settings.Secure.getInt(
+            boolean isRttSupported = isRttSupported(subscriptionId);
+            boolean isUserRttSettingOn = Settings.Secure.getInt(
                     mApp.getContentResolver(), Settings.Secure.RTT_CALLING_MODE, 0) != 0;
+            boolean shouldIgnoreUserRttSetting = mApp.getCarrierConfigForSubId(subscriptionId)
+                    .getBoolean(CarrierConfigManager.KEY_IGNORE_RTT_MODE_SETTING_BOOL);
+            return isRttSupported && (isUserRttSettingOn || shouldIgnoreUserRttSetting);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
