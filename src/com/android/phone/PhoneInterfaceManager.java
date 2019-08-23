@@ -2470,9 +2470,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mApp.enforceCallingOrSelfPermission(android.Manifest.permission.CALL_PHONE, null);
     }
 
-    private void enforceConnectivityInternalPermission() {
-        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.CONNECTIVITY_INTERNAL,
-                "ConnectivityService");
+    private void enforceSettingsPermission() {
+        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.NETWORK_SETTINGS, null);
     }
 
     private String createTelUrl(String number) {
@@ -5915,7 +5914,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public void factoryReset(int subId) {
-        enforceConnectivityInternalPermission();
+        enforceSettingsPermission();
         if (mUserManager.hasUserRestriction(UserManager.DISALLOW_NETWORK_RESET)) {
             return;
         }
