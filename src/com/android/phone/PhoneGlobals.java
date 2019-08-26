@@ -410,9 +410,9 @@ public class PhoneGlobals extends ContextWrapper {
                     android.provider.Settings.System.HEARING_AID,
                     0);
             AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-            audioManager.setParameter(SettingsConstants.HAC_KEY,
-                    hac == SettingsConstants.HAC_ENABLED
-                            ? SettingsConstants.HAC_VAL_ON : SettingsConstants.HAC_VAL_OFF);
+            audioManager.setParameters(
+                    SettingsConstants.HAC_KEY + "=" + (hac == SettingsConstants.HAC_ENABLED
+                            ? SettingsConstants.HAC_VAL_ON : SettingsConstants.HAC_VAL_OFF));
         }
     }
 
