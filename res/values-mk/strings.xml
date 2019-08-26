@@ -753,7 +753,7 @@
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Забраната на повици е деактивирана"</string>
     <string name="call_barring_change_pwd" msgid="6887420609726284232">"Променете ја лозинката"</string>
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Променете ја лозинката за забрана на повици"</string>
-    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Не може да се промени лозинката за забрана на повици."</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="4040168949678570166">"Не може да се промени лозинката за забрана на повици"</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Лозинките не се совпаѓаат"</string>
     <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Внесете лозинка со 4 броеви"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Лозинката е променета"</string>

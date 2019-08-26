@@ -753,7 +753,7 @@
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Se ha desactivado el bloqueo de llamadas"</string>
     <string name="call_barring_change_pwd" msgid="6887420609726284232">"Cambiar contraseña"</string>
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Cambiar la contraseña de bloqueo de llamadas"</string>
-    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"No se puede cambiar la contraseña de bloqueo de llamadas."</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="4040168949678570166">"No se puede cambiar la contraseña de bloqueo de llamadas"</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Las contraseñas no coinciden"</string>
     <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Introduce una contraseña con 4 números"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Se ha cambiado la contraseña"</string>
