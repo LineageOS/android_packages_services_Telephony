@@ -751,7 +751,7 @@
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"कॉल रोकें सुविधा निष्क्रिय की गई"</string>
     <string name="call_barring_change_pwd" msgid="6887420609726284232">"पासवर्ड बदलें"</string>
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"कॉल रोकें सुविधा का पासवर्ड बदलें"</string>
-    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"कॉल रोकें सुविधा का पासवर्ड बदला नहीं जा सकता."</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="4040168949678570166">"कॉल रोकें सुविधा का पासवर्ड बदला नहीं जा सकता"</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"पासवर्ड मेल नहीं खाते"</string>
     <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"4 संख्याओं वाला एक पासवर्ड डालें"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"पासवर्ड बदल दिया गया"</string>

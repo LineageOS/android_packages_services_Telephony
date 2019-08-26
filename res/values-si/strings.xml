@@ -751,7 +751,7 @@
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"ඇමතුම් අවහිර කිරීම අක්‍රිය කරන ලදී"</string>
     <string name="call_barring_change_pwd" msgid="6887420609726284232">"මුරපදය වෙනස් කරන්න"</string>
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"ඇමතුම් අවහිර කිරීම් මුරපදය වෙනස් කරන්න"</string>
-    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"ඇමතුම් අවහිර කිරීම් මුරපදය වෙනස් කළ නොහැකිය."</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="4040168949678570166">"ඇමතුම් අවහිර කිරීම් මුරපදය වෙනස් කළ නොහැකිය"</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"මුරපද නොගැළපෙයි"</string>
     <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"අංක 4ක් සහිත මුරපදයක් ඇතුළු කරන්න"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"මුරපදය වෙනස් කරන ලදී"</string>

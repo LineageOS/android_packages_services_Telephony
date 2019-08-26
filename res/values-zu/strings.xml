@@ -755,7 +755,7 @@
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Ukuvimbela ikholi kuyekiswe ukusebenza"</string>
     <string name="call_barring_change_pwd" msgid="6887420609726284232">"Shintsha iphasiwedi"</string>
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Shintsha iphasiwedi yokuvimbela"</string>
-    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Ayikwazi ukushintsha iphasiwedi yokuvimbela."</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="4040168949678570166">"Ayikwazi ukushintsha iphasiwedi yokuvimbela ikholi"</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Amaphasiwedi awafani"</string>
     <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Faka iphaiswedi enezinombolo ezingu-4"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Iphasiwedi ishintshiwe"</string>

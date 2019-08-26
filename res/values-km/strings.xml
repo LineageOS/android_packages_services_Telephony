@@ -751,7 +751,7 @@
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"បាន​បិទ​ដំណើរការ​នៃការរារាំង​​ការហៅ​ទូរសព្ទ"</string>
     <string name="call_barring_change_pwd" msgid="6887420609726284232">"ប្ដូរ​ពាក្យ​សម្ងាត់"</string>
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"ប្ដូរ​ពាក្យ​សម្ងាត់​រារាំង​ការហៅ"</string>
-    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"មិន​អាច​ប្ដូរ​ពាក្យ​សម្ងាត់​រារាំង​ការហៅ​បាន​ទេ"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="4040168949678570166">"មិន​អាច​ប្ដូរ​ពាក្យ​សម្ងាត់​ដែល​រារាំង​ការហៅ​ទូរសព្ទ​បាន​ទេ"</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"ពាក្យ​សម្ងាត់​មិន​ដូច​គ្នា"</string>
     <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"បញ្ចូល​ពាក្យ​សម្ងាត់​​​មាន 4 លេខ"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"បានប្តូរពាក្យសម្ងាត់"</string>
