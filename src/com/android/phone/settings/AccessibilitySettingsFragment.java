@@ -157,9 +157,9 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             Settings.System.putInt(mContext.getContentResolver(), Settings.System.HEARING_AID, hac);
 
             // Update HAC Value in AudioManager.
-            mAudioManager.setParameter(SettingsConstants.HAC_KEY,
-                    hac == SettingsConstants.HAC_ENABLED
-                            ? SettingsConstants.HAC_VAL_ON : SettingsConstants.HAC_VAL_OFF);
+            mAudioManager.setParameters(
+                    SettingsConstants.HAC_KEY + "=" + (hac == SettingsConstants.HAC_ENABLED
+                            ? SettingsConstants.HAC_VAL_ON : SettingsConstants.HAC_VAL_OFF));
             return true;
         } else if (preference == mButtonRtt) {
             Log.i(LOG_TAG, "RTT setting changed -- now " + mButtonRtt.isChecked());
