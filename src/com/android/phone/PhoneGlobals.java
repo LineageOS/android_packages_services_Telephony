@@ -593,7 +593,9 @@ public class PhoneGlobals extends ContextWrapper {
 
             if (tm != null && tm.isInEmergencyCall()) {
                 // Switch airplane mode back to off.
-                ConnectivityManager.from(this).setAirplaneMode(false);
+                ConnectivityManager cm =
+                        (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
+                cm.setAirplaneMode(false);
                 Toast.makeText(this, R.string.radio_off_during_emergency_call, Toast.LENGTH_LONG)
                         .show();
                 Log.i(LOG_TAG, "Ignoring airplane mode: emergency call. Turning airplane off");
