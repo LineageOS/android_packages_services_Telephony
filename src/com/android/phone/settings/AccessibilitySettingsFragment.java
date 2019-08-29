@@ -166,7 +166,8 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             for (int subId : SubscriptionController.getInstance().getActiveSubIdList(true)) {
                 if (!configManager.getConfigForSubId(subId).getBoolean(
                         CarrierConfigManager.KEY_IGNORE_RTT_MODE_SETTING_BOOL, false)) {
-                    ImsManager imsManager = ImsManager.getInstance(getContext(), subId);
+                    int phoneId = SubscriptionController.getInstance().getPhoneId(subId);
+                    ImsManager imsManager = ImsManager.getInstance(getContext(), phoneId);
                     imsManager.setRttEnabled(mButtonRtt.isChecked());
                 }
             }
