@@ -755,7 +755,7 @@
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Zapora klicev je deaktivirana"</string>
     <string name="call_barring_change_pwd" msgid="6887420609726284232">"Sprememba gesla"</string>
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Spremenite geslo za zaporo klicev"</string>
-    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Gesla za zaporo klicev ni mogoče spremeniti."</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="4040168949678570166">"Gesla za zaporo klicev ni mogoče spremeniti"</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Gesli se ne ujemata"</string>
     <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Vnesite geslo s 4 številkami"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Geslo je spremenjeno."</string>

@@ -751,7 +751,7 @@
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"ခေါ်ဆိုမှုပိတ်ပင်ခြင်းကို ပယ်ဖျက်ပြီးပါပြီ"</string>
     <string name="call_barring_change_pwd" msgid="6887420609726284232">"စကားဝှက် ပြောင်းရန်"</string>
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"ခေါ်ဆိုမှုပိတ်ပင်သော စကားဝှက်ကို ပြောင်းပါ"</string>
-    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"ခေါ်ဆိုမှုပိတ်ပင်သော စကားဝှက်ကို မပြောင်းနိုင်ပါ။"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="4040168949678570166">"ခေါ်ဆိုမှုပိတ်ပင်သော စကားဝှက်ကို မပြောင်းနိုင်ပါ"</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"စကားဝှက်များက ထပ်တူမကျပါ"</string>
     <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"နံပါတ် ၄ လုံးနှင့် စကားဝှက် ထည့်ရန်"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"စကားဝှက်ကို ပြောင်းလိုက်ပါပြီ"</string>

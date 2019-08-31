@@ -754,7 +754,7 @@
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Чалууларга тыюу салуу функциясы өчүрүлдү"</string>
     <string name="call_barring_change_pwd" msgid="6887420609726284232">"Сызсөздү өзгөртүү"</string>
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Чалууларга тыюу салуу функциясынын сырсөзүн өзгөртүү"</string>
-    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Чалууларга тыюу салуу функциясынын сырсөзү өзгөртүлбөй койду"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="4040168949678570166">"Чалууларга тыюу салуу сырсөзү өзгөртүлбөй койду"</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"Сырсөздөр дал келбейт"</string>
     <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"4 сандан турагн сырсөздү киргизиңиз"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"Сырсөз өзгөртүлдү"</string>
