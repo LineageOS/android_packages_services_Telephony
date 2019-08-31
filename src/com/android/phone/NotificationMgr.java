@@ -376,12 +376,11 @@ public class NotificationMgr {
 
             final Notification notification = builder.build();
             List<UserInfo> users = mUserManager.getUsers(true);
-            for (int i = 0; i < users.size(); i++) {
-                final UserInfo user = users.get(i);
+            for (UserInfo user : users) {
                 final UserHandle userHandle = user.getUserHandle();
                 if (!mUserManager.hasUserRestriction(
                         UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
-                        && !user.isManagedProfile()) {
+                        && !mUserManager.isManagedProfile(userHandle.getIdentifier())) {
                     if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, vmCount, vmNumber,
                             pendingIntent, isSettingsIntent, userHandle, isRefresh)) {
                         notifyAsUser(
@@ -394,12 +393,11 @@ public class NotificationMgr {
             }
         } else {
             List<UserInfo> users = mUserManager.getUsers(true /* excludeDying */);
-            for (int i = 0; i < users.size(); i++) {
-                final UserInfo user = users.get(i);
+            for (UserInfo user : users) {
                 final UserHandle userHandle = user.getUserHandle();
                 if (!mUserManager.hasUserRestriction(
                         UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
-                        && !user.isManagedProfile()) {
+                        && !mUserManager.isManagedProfile(userHandle.getIdentifier())) {
                     if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, 0, null, null,
                             false, userHandle, isRefresh)) {
                         cancelAsUser(
@@ -554,7 +552,7 @@ public class NotificationMgr {
         } else {
             List<UserInfo> users = mUserManager.getUsers(true);
             for (UserInfo user : users) {
-                if (user.isManagedProfile()) {
+                if (mUserManager.isManagedProfile(user.getUserHandle().getIdentifier())) {
                     continue;
                 }
                 UserHandle userHandle = user.getUserHandle();
@@ -679,7 +677,7 @@ public class NotificationMgr {
                 .setContentText(contentText)
                 .setOnlyAlertOnce(true)
                 .setOngoing(true)
-                .setChannel(NotificationChannelController.CHANNEL_ID_SIM_HIGH_PRIORITY)
+                .setChannelId(NotificationChannelController.CHANNEL_ID_SIM_HIGH_PRIORITY)
                 .setContentIntent(contentIntent);
         final Notification notification = new Notification.BigTextStyle(builder).bigText(
                 contentText).build();

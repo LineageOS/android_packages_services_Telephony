@@ -68,7 +68,7 @@ public class RestrictedSwitchPreference extends SwitchPreference {
 
     public void checkRestrictionAndSetDisabled(String userRestriction) {
         UserManager um = UserManager.get(mContext);
-        UserHandle user = UserHandle.of(um.getUserHandle());
+        UserHandle user = UserHandle.of(UserHandle.myUserId());
         boolean disabledByAdmin = um.hasUserRestriction(userRestriction, user)
                 && !um.hasBaseUserRestriction(userRestriction, user);
         setDisabledByAdmin(disabledByAdmin);

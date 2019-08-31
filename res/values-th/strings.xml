@@ -751,7 +751,7 @@
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"ปิดใช้งานการระงับการโทรแล้ว"</string>
     <string name="call_barring_change_pwd" msgid="6887420609726284232">"เปลี่ยนรหัสผ่าน"</string>
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"เปลี่ยนรหัสผ่านระงับการโทร"</string>
-    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"เปลี่ยนรหัสผ่านระงับการโทรไม่ได้"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="4040168949678570166">"เปลี่ยนรหัสผ่านเพื่อระงับการโทรไม่ได้"</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"รหัสผ่านไม่ตรงกัน"</string>
     <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"ป้อนรหัสผ่านเป็นตัวเลข 4 ตัว"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"เปลี่ยนรหัสผ่านแล้ว"</string>

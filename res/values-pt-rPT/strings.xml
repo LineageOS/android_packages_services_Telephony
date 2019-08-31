@@ -446,7 +446,7 @@
     <string name="fdn_failed" msgid="540018079008319747">"Falha de FDN."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"A ler a partir do cartão SIM..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"Sem contactos no cartão SIM."</string>
-    <string name="simContacts_title" msgid="1861472842524839921">"Seleccione os contactos a importar"</string>
+    <string name="simContacts_title" msgid="1861472842524839921">"Selecione os contactos a importar"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Desative o modo de avião para importar contactos do cartão SIM."</string>
     <string name="enable_pin" msgid="5422767284133234860">"Ativar/desativar o PIN do cartão SIM"</string>
     <string name="change_pin" msgid="9174186126330785343">"Alterar o PIN do cartão SIM"</string>
@@ -751,7 +751,7 @@
     <string name="call_barring_deactivate_success" msgid="8014685598632000936">"Barramento de chamadas desativado"</string>
     <string name="call_barring_change_pwd" msgid="6887420609726284232">"Alterar palavra-passe"</string>
     <string name="call_barring_change_pwd_description" msgid="5505087790260233953">"Alterar palavra-passe de barramento de chamadas"</string>
-    <string name="call_barring_change_pwd_description_disabled" msgid="7630770327645349957">"Não é possível alterar a palavra-passe de barramento de chamadas"</string>
+    <string name="call_barring_change_pwd_description_disabled" msgid="4040168949678570166">"Não é possível alterar a palavra-passe de barramento de chamadas."</string>
     <string name="call_barring_pwd_not_match" msgid="6716711689350314525">"As palavras-passe não correspondem"</string>
     <string name="call_barring_right_pwd_number" msgid="2902966502520410446">"Introduza uma palavra-passe com 4 números"</string>
     <string name="call_barring_change_pwd_success" msgid="3278310763742760321">"A palavra-passe foi alterada"</string>
