@@ -29,7 +29,7 @@ import android.telephony.TelephonyManager;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.PhoneConstants;
-import com.android.settingslib.RestrictedLockUtils;
+import com.android.settingslib.RestrictedLockUtilsInternal;
 
 /**
  * List of Network-specific settings screens.
@@ -122,7 +122,8 @@ public class GsmUmtsOptions {
             log("update: addAPNExpand");
             mButtonAPNExpand.setDisabledByAdmin(
                     MobileNetworkSettings.isDpcApnEnforced(mButtonAPNExpand.getContext())
-                            ? RestrictedLockUtils.getDeviceOwner(mButtonAPNExpand.getContext())
+                            ? RestrictedLockUtilsInternal.getDeviceOwner(
+                                    mButtonAPNExpand.getContext())
                             : null);
             mButtonAPNExpand.setOnPreferenceClickListener(
                     new Preference.OnPreferenceClickListener() {
