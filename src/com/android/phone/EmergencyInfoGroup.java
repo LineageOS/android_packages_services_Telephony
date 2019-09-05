@@ -127,7 +127,7 @@ public class EmergencyInfoGroup extends FrameLayout implements View.OnClickListe
         if (infos != null && infos.size() > 0) {
             final String packageName = infos.get(0).activityInfo.packageName;
             final Intent intent = new Intent(
-                    EmergencyAssistanceHelper.getIntentAction(getContext()))
+                    EmergencyAssistanceHelper.getIntentAction())
                     .setPackage(packageName);
             setTag(R.id.tag_intent, intent);
             setUserIcon();

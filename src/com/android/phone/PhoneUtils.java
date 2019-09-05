@@ -25,9 +25,11 @@ import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PersistableBundle;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.VideoProfile;
+import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SubscriptionManager;
 import android.text.TextUtils;
@@ -53,6 +55,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.phone.CallGatewayManager.RawGatewayInfo;
+import com.android.phone.settings.SuppServicesUiUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -383,6 +386,22 @@ public class PhoneUtils {
                 text = null;
                 break;
             case COMPLETE:
+                PersistableBundle b = null;
+                if (SubscriptionManager.isValidSubscriptionId(phone.getSubId())) {
+                    b = app.getCarrierConfigForSubId(
+                            phone.getSubId());
+                } else {
+                    b = app.getCarrierConfig();
+                }
+
+                if (b.getBoolean(CarrierConfigManager.KEY_USE_CALLER_ID_USSD_BOOL)) {
+                    text = SuppServicesUiUtil.handleCallerIdUssdResponse(app, context, phone,
+                            mmiCode);
+                    if (mmiCode.getMessage() != null && !text.equals(mmiCode.getMessage())) {
+                        break;
+                    }
+                }
+
                 if (app.getPUKEntryActivity() != null) {
                     // if an attempt to unPUK the device was made, we specify
                     // the title and the message here.

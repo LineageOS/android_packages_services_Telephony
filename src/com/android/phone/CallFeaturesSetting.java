@@ -19,6 +19,7 @@ package com.android.phone;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -51,6 +52,7 @@ import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.phone.settings.PhoneAccountSettingsFragment;
+import com.android.phone.settings.SuppServicesUiUtil;
 import com.android.phone.settings.VoicemailSettingsActivity;
 import com.android.phone.settings.fdn.FdnSetting;
 
@@ -69,9 +71,7 @@ import java.util.List;
  * is from the package com.android.contacts.
  *
  * For the "Mobile network settings" screen under the main Settings app,
- * See {@link MobileNetworkSettings}.
- *
- * @see com.android.phone.MobileNetworkSettings
+ * See {@link com.android.settings.network.telephony.MobileNetworkActivity}.
  */
 public class CallFeaturesSetting extends PreferenceActivity
         implements Preference.OnPreferenceChangeListener {
@@ -117,6 +117,37 @@ public class CallFeaturesSetting extends PreferenceActivity
                     android.provider.Settings.Global.CALL_AUTO_RETRY,
                     mButtonAutoRetry.isChecked() ? 1 : 0);
             return true;
+        } else if (preference == preferenceScreen.findPreference(
+                GsmUmtsCallOptions.CALL_FORWARDING_KEY)) {
+            return doSsOverUtPrecautions(preference);
+        } else if (preference == preferenceScreen.findPreference(
+                GsmUmtsCallOptions.CALL_BARRING_KEY)) {
+            return doSsOverUtPrecautions(preference);
+        }
+        return false;
+    }
+
+    private boolean doSsOverUtPrecautions(Preference preference) {
+        PersistableBundle b = null;
+        if (mSubscriptionInfoHelper.hasSubId()) {
+            b = PhoneGlobals.getInstance().getCarrierConfigForSubId(
+                    mSubscriptionInfoHelper.getSubId());
+        } else {
+            b = PhoneGlobals.getInstance().getCarrierConfig();
+        }
+
+        String configKey;
+        if (preference.getKey().equals(GsmUmtsCallOptions.CALL_FORWARDING_KEY)) {
+            configKey = CarrierConfigManager.KEY_CALL_FORWARDING_OVER_UT_WARNING_BOOL;
+        } else {
+            configKey = CarrierConfigManager.KEY_CALL_BARRING_OVER_UT_WARNING_BOOL;
+        }
+        if (b != null && b.getBoolean(configKey)
+                && mPhone != null
+                && SuppServicesUiUtil.isSsOverUtPrecautions(this, mPhone)) {
+            SuppServicesUiUtil.showBlockingSuppServicesDialog(this, mPhone,
+                    preference.getKey()).show();
+            return true;
         }
         return false;
     }
@@ -142,8 +173,12 @@ public class CallFeaturesSetting extends PreferenceActivity
                         new Dialog.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                startActivity(new Intent(mPhone.getContext(),
-                                        com.android.phone.MobileNetworkSettings.class));
+                                Intent intent = new Intent(Intent.ACTION_MAIN);
+                                ComponentName mobileNetworkSettingsComponent = new ComponentName(
+                                        getString(R.string.mobile_network_settings_package),
+                                        getString(R.string.mobile_network_settings_class));
+                                intent.setComponent(mobileNetworkSettingsComponent);
+                                startActivity(intent);
                             }
                         };
                 builder.setMessage(getResources().getString(

@@ -31,7 +31,7 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.PhoneConstants;
-import com.android.settingslib.RestrictedLockUtils;
+import com.android.settingslib.RestrictedLockUtilsInternal;
 
 /**
  * List of Phone-specific settings screens.
@@ -98,7 +98,8 @@ public class CdmaOptions {
             log("update: addAPNExpand");
             mButtonAPNExpand.setDisabledByAdmin(
                     MobileNetworkSettings.isDpcApnEnforced(mButtonAPNExpand.getContext())
-                            ? RestrictedLockUtils.getDeviceOwner(mButtonAPNExpand.getContext())
+                            ? RestrictedLockUtilsInternal.getDeviceOwner(
+                                    mButtonAPNExpand.getContext())
                             : null);
             mButtonAPNExpand.setOnPreferenceClickListener(
                     new Preference.OnPreferenceClickListener() {

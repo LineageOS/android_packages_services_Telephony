@@ -2194,8 +2194,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return null;
         }
         int subId = phone.getSubId();
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, "getImeiForSlot")) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadDeviceIdentifiers(mApp, subId,
+                callingPackage, "getImeiForSlot")) {
             return null;
         }
 
@@ -2226,8 +2226,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         int subId = phone.getSubId();
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, "getMeidForSlot")) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadDeviceIdentifiers(mApp, subId,
+                callingPackage, "getMeidForSlot")) {
             return null;
         }
 
@@ -4505,7 +4505,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
                                 .build());
         if (locationResult != LocationAccessPolicy.LocationPermissionResult.ALLOWED) {
-            SecurityException e = checkNetworkRequestForSanitizedLocationAccess(request);
+            SecurityException e = checkNetworkRequestForSanitizedLocationAccess(request, subId);
             if (e != null) {
                 if (locationResult == LocationAccessPolicy.LocationPermissionResult.DENIED_HARD) {
                     throw e;
@@ -4528,11 +4528,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     private SecurityException checkNetworkRequestForSanitizedLocationAccess(
-            NetworkScanRequest request) {
-        if (mApp.checkCallingOrSelfPermission(android.Manifest.permission.NETWORK_SCAN)
-                != PERMISSION_GRANTED) {
-            return new SecurityException("permission.NETWORK_SCAN is needed for network scans"
-                    + " without location access.");
+            NetworkScanRequest request, int subId) {
+        boolean hasCarrierPriv = getCarrierPrivilegeStatusForUid(subId, Binder.getCallingUid())
+                == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
+        boolean hasNetworkScanPermission =
+                mApp.checkCallingOrSelfPermission(android.Manifest.permission.NETWORK_SCAN)
+                == PERMISSION_GRANTED;
+
+        if (!hasCarrierPriv && !hasNetworkScanPermission) {
+            return new SecurityException("permission.NETWORK_SCAN or carrier privileges is needed"
+                    + " for network scans without location access.");
         }
 
         if (request.getSpecifiers() != null && request.getSpecifiers().length > 0) {
@@ -4816,17 +4821,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public int checkCarrierPrivilegesForPackage(String pkgName) {
-        final Phone defaultPhone = getDefaultPhone();
-        if (TextUtils.isEmpty(pkgName))
+    public int checkCarrierPrivilegesForPackage(int subId, String pkgName) {
+        if (TextUtils.isEmpty(pkgName)) {
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
-        UiccCard card = UiccController.getInstance().getUiccCard(defaultPhone.getPhoneId());
+        }
+
+        int phoneId = SubscriptionManager.getPhoneId(subId);
+        UiccCard card = UiccController.getInstance().getUiccCard(phoneId);
         if (card == null) {
-            loge("checkCarrierPrivilegesForPackage: No UICC");
+            loge("checkCarrierPrivilegesForPackage: No UICC on subId " + subId);
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
         }
-        return card.getCarrierPrivilegeStatus(defaultPhone.getContext().getPackageManager(),
-                pkgName);
+
+        return card.getCarrierPrivilegeStatus(mApp.getPackageManager(), pkgName);
     }
 
     @Override
@@ -4865,33 +4872,39 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public List<String> getPackagesWithCarrierPrivileges() {
+    public List<String> getPackagesWithCarrierPrivileges(int phoneId) {
         PackageManager pm = mApp.getPackageManager();
         List<String> privilegedPackages = new ArrayList<>();
         List<PackageInfo> packages = null;
-        for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
-            UiccCard card = UiccController.getInstance().getUiccCard(i);
-            if (card == null) {
-                // No UICC in that slot.
-                continue;
-            }
+        UiccCard card = UiccController.getInstance().getUiccCard(phoneId);
+        // has UICC in that slot.
+        if (card != null) {
             if (card.hasCarrierPrivilegeRules()) {
                 if (packages == null) {
                     // Only check packages in user 0 for now
                     packages = pm.getInstalledPackagesAsUser(
                             PackageManager.MATCH_DISABLED_COMPONENTS
-                            | PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS
-                            | PackageManager.GET_SIGNATURES, UserHandle.USER_SYSTEM);
+                                    | PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS
+                                    | PackageManager.GET_SIGNATURES, UserHandle.USER_SYSTEM);
                 }
                 for (int p = packages.size() - 1; p >= 0; p--) {
                     PackageInfo pkgInfo = packages.get(p);
                     if (pkgInfo != null && pkgInfo.packageName != null
                             && card.getCarrierPrivilegeStatus(pkgInfo)
-                                == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
+                            == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
                         privilegedPackages.add(pkgInfo.packageName);
                     }
                 }
             }
+        }
+        return privilegedPackages;
+    }
+
+    @Override
+    public List<String> getPackagesWithCarrierPrivilegesForAllPhones() {
+        List<String> privilegedPackages = new ArrayList<>();
+        for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
+           privilegedPackages.addAll(getPackagesWithCarrierPrivileges(i));
         }
         return privilegedPackages;
     }
@@ -5020,6 +5033,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return null;
         }
 
+        // Clear calling identity, when calling TelephonyManager, because callerUid must be
+        // the process, where TelephonyManager was instantiated.
+        // Otherwise AppOps check will fail.
         final long identity  = Binder.clearCallingIdentity();
         try {
             final Context context = mApp;
@@ -5028,17 +5044,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             // Figure out what subscribers are currently active
             final ArraySet<String> activeSubscriberIds = new ArraySet<>();
-            // Clear calling identity, when calling TelephonyManager, because callerUid must be
-            // the process, where TelephonyManager was instantiated.
-            // Otherwise AppOps check will fail.
 
-            final int[] subIds = sub.getActiveSubscriptionIdList();
-            for (int id : subIds) {
-                // Only consider subs which match the current subId
-                // This logic can be simplified. See b/131189269 for progress.
-                if (subId != id) {
-                    continue;
-                }
+            // Only consider subs which match the current subId
+            // This logic can be simplified. See b/131189269 for progress.
+            if (isActiveSubscription(subId)) {
                 activeSubscriberIds.add(tele.getSubscriberId(subId));
             }
 
@@ -5334,8 +5343,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return null;
         }
         int subId = phone.getSubId();
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, "getDeviceId")) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadDeviceIdentifiers(mApp, subId,
+                callingPackage, "getDeviceId")) {
             return null;
         }
 
@@ -5484,6 +5493,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             final SubscriptionInfo info = mSubscriptionController.getActiveSubscriptionInfo(subId,
                     phone.getContext().getOpPackageName());
+            if (info == null) {
+                log("getSimLocaleForSubscriber, inactive subId: " + subId);
+                return null;
+            }
             // Try and fetch the locale from the carrier properties or from the SIM language
             // preferences (EF-PL and EF-LI)...
             final int mcc = info.getMcc();
@@ -5553,12 +5566,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (isModemActivityInfoValid(info)) {
                     int[] mergedTxTimeMs = new int[ModemActivityInfo.TX_POWER_LEVELS];
                     for (int i = 0; i < mergedTxTimeMs.length; i++) {
-                        mergedTxTimeMs[i] =
-                                info.getTxTimeMillis()[i] + mLastModemActivityInfo.getTxTimeMillis()[i];
+                        mergedTxTimeMs[i] = info.getTxTimeMillis()[i]
+                                + mLastModemActivityInfo.getTxTimeMillis()[i];
                     }
                     mLastModemActivityInfo.setTimestamp(info.getTimestamp());
-                    mLastModemActivityInfo.setSleepTimeMillis(
-                            info.getSleepTimeMillis() + mLastModemActivityInfo.getSleepTimeMillis());
+                    mLastModemActivityInfo.setSleepTimeMillis(info.getSleepTimeMillis()
+                            + mLastModemActivityInfo.getSleepTimeMillis());
                     mLastModemActivityInfo.setIdleTimeMillis(
                             info.getIdleTimeMillis() + mLastModemActivityInfo.getIdleTimeMillis());
                     mLastModemActivityInfo.setTxTimeMillis(mergedTxTimeMs);
@@ -6587,7 +6600,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public void setCarrierTestOverride(int subId, String mccmnc, String imsi, String iccid, String
-            gid1, String gid2, String plmn, String spn) {
+            gid1, String gid2, String plmn, String spn, String carrierPrivilegeRules, String apn) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
@@ -6597,7 +6610,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 loge("setCarrierTestOverride fails with invalid subId: " + subId);
                 return;
             }
-            phone.setCarrierTestOverride(mccmnc, imsi, iccid, gid1, gid2, plmn, spn);
+            phone.setCarrierTestOverride(mccmnc, imsi, iccid, gid1, gid2, plmn, spn,
+                    carrierPrivilegeRules, apn);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
