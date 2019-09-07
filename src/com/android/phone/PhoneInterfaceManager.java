@@ -62,6 +62,7 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CarrierRestrictionRules;
+import android.telephony.CellIdentity;
 import android.telephony.CellInfo;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoWcdma;
@@ -256,6 +257,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_ENABLE_MODEM_DONE = 69;
     private static final int CMD_GET_MODEM_STATUS = 70;
     private static final int EVENT_GET_MODEM_STATUS_DONE = 71;
+    private static final int CMD_SET_FORBIDDEN_PLMNS = 72;
+    private static final int EVENT_SET_FORBIDDEN_PLMNS_DONE = 73;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1162,6 +1165,50 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 + ar.exception);
                     }
                     notifyRequester(request);
+                    break;
+                case EVENT_SET_FORBIDDEN_PLMNS_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null && ar.result != null) {
+                        request.result = ar.result;
+                    } else {
+                        request.result = -1;
+                        loge("Failed to set Forbidden Plmns");
+                        if (ar.result == null) {
+                            loge("setForbidenPlmns: Empty response");
+                        } else if (ar.exception != null) {
+                            loge("setForbiddenPlmns: Exception: " + ar.exception);
+                            request.result = -1;
+                        } else {
+                            loge("setForbiddenPlmns: Unknown exception");
+                        }
+                    }
+                    notifyRequester(request);
+                    break;
+                case CMD_SET_FORBIDDEN_PLMNS:
+                    request = (MainThreadRequest) msg.obj;
+                    uiccCard = getUiccCardFromRequest(request);
+                    if (uiccCard == null) {
+                        loge("setForbiddenPlmns: UiccCard is null");
+                        request.result = -1;
+                        notifyRequester(request);
+                        break;
+                    }
+                    Pair<Integer, List<String>> setFplmnsArgs =
+                            (Pair<Integer, List<String>>) request.argument;
+                    appType = setFplmnsArgs.first;
+                    List<String> fplmns = setFplmnsArgs.second;
+                    uiccApp = uiccCard.getApplicationByType(appType);
+                    if (uiccApp == null) {
+                        loge("setForbiddenPlmns: no app with specified type -- " + appType);
+                        request.result = -1;
+                        loge("Failed to get UICC App");
+                        notifyRequester(request);
+                    } else {
+                        onCompleted = obtainMessage(EVENT_SET_FORBIDDEN_PLMNS_DONE, request);
+                        ((SIMRecords) uiccApp.getIccRecords())
+                                .setForbiddenPlmns(onCompleted, fplmns);
+                    }
                     break;
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
@@ -4028,9 +4075,50 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (response instanceof String[]) {
                 return (String[]) response;
             }
-            // Response is an Exception of some kind,
+            // Response is an Exception of some kind
             // which is signalled to the user as a NULL retval
             return null;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Set the forbidden PLMN list from the given app type (ex APPTYPE_USIM) on a particular
+     * subscription.
+     *
+     * @param subId the id of the subscription.
+     * @param appType the uicc app type, must be USIM or SIM.
+     * @param fplmns the Forbiden plmns list that needed to be written to the SIM.
+     * @param callingPackage the op Package name.
+     * @return number of fplmns that is successfully written to the SIM.
+     */
+    public int setForbiddenPlmns(
+            int subId, int appType, List<String> fplmns, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, "setForbiddenPlmns")) {
+            if (DBG) logv("no permissions for setForbiddenplmns");
+            throw new IllegalStateException("No Permissions for setForbiddenPlmns");
+        }
+        if (appType != TelephonyManager.APPTYPE_USIM && appType != TelephonyManager.APPTYPE_SIM) {
+            loge("setForbiddenPlmnList(): App Type must be USIM or SIM");
+            throw new IllegalArgumentException("Invalid appType: App Type must be USIM or SIM");
+        }
+        if (fplmns == null) {
+            throw new IllegalArgumentException("Fplmn List provided is null");
+        }
+        for (String fplmn : fplmns) {
+            if (!CellIdentity.isValidPlmn(fplmn)) {
+                throw new IllegalArgumentException("Invalid fplmn provided: " + fplmn);
+            }
+        }
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Object response = sendRequest(
+                    CMD_SET_FORBIDDEN_PLMNS,
+                    new Pair<Integer, List<String>>(new Integer(appType), fplmns),
+                    subId);
+            return (int) response;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
