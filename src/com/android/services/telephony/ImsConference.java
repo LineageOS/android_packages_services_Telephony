@@ -212,6 +212,12 @@ public class ImsConference extends Conference implements Holdable {
 
         @Override
         public void onConnectionEvent(Connection c, String event, Bundle extras) {
+            if (Connection.EVENT_MERGE_START.equals(event)) {
+                // Do not pass a merge start event on the underlying host connection; we only
+                // indicate a merge has started on the connections which are merged into a
+                // conference.
+                return;
+            }
             sendConnectionEvent(event, extras);
         }
     };
@@ -744,6 +750,10 @@ public class ImsConference extends Conference implements Holdable {
             // Determine if the conference event package represents a single party conference.
             // A single party conference is one where there is no other participant other than the
             // conference host and one other participant.
+            // We purposely exclude participants which have a disconnected state in the conference
+            // event package; some carriers are known to keep a disconnected participant around in
+            // subsequent CEP updates with a state of disconnected, even though its no longer part
+            // of the conference.
             // Note: We consider 0 to still be a single party conference since some carriers will
             // send a conference event package with JUST the host in it when the conference is
             // disconnected.  We don't want to change back to conference mode prior to disconnection
@@ -751,7 +761,8 @@ public class ImsConference extends Conference implements Holdable {
             boolean isSinglePartyConference = participants.stream()
                     .filter(p -> {
                         Pair<Uri, Uri> pIdent = new Pair<>(p.getHandle(), p.getEndpoint());
-                        return !Objects.equals(mHostParticipantIdentity, pIdent);
+                        return !Objects.equals(mHostParticipantIdentity, pIdent)
+                                && p.getState() != Connection.STATE_DISCONNECTED;
                     })
                     .count() <= 1;
 
@@ -766,7 +777,14 @@ public class ImsConference extends Conference implements Holdable {
                     Pair<Uri, Uri> userEntity = new Pair<>(participant.getHandle(),
                             participant.getEndpoint());
 
-                    participantUserEntities.add(userEntity);
+                    // We will exclude disconnected participants from the hash set of tracked
+                    // participants.  Some carriers are known to leave disconnected participants in
+                    // the conference event package data which would cause them to be present in the
+                    // conference even though they're disconnected.  Removing them from the hash set
+                    // here means we'll clean them up below.
+                    if (participant.getState() != Connection.STATE_DISCONNECTED) {
+                        participantUserEntities.add(userEntity);
+                    }
                     if (!mConferenceParticipantConnections.containsKey(userEntity)) {
                         // Some carriers will also include the conference host in the CEP.  We will
                         // filter that out here.

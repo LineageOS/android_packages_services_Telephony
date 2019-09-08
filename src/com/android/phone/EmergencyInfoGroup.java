@@ -35,7 +35,6 @@ import android.view.ViewAnimationUtils;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
@@ -284,18 +283,4 @@ public class EmergencyInfoGroup extends FrameLayout implements View.OnClickListe
             hideSelectedButton();
         }
     };
-
-    /**
-     * Update layout margin when emergency shortcut button more than 2.
-     */
-    public void updateLayoutMargin() {
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) getLayoutParams();
-
-        params.topMargin = getResources().getDimensionPixelSize(
-                R.dimen.emergency_info_button_fix_margin_vertical);
-        params.bottomMargin = getResources().getDimensionPixelSize(
-                R.dimen.emergency_info_button_fix_margin_vertical);
-
-        setLayoutParams(params);
-    }
 }
