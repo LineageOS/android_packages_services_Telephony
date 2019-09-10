@@ -31,9 +31,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 LOCAL_SRC_FILES := $(call all-java-files-under, $(src_dirs))
 LOCAL_SRC_FILES += $(call all-proto-files-under, ecc/proto)
 LOCAL_SRC_FILES += \
-        src/com/android/phone/EventLogTags.logtags \
-        src/com/android/phone/INetworkQueryService.aidl \
-        src/com/android/phone/INetworkQueryServiceCallback.aidl
+        src/com/android/phone/EventLogTags.logtags
 LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, $(res_dirs))
 LOCAL_ASSET_DIR := $(addprefix $(LOCAL_PATH)/, $(asset_dirs))
 LOCAL_USE_AAPT2 := true
