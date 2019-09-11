@@ -866,7 +866,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     // Result cannot be null. Return ModemActivityInfo with all fields set to 0.
                     if (request.result == null) {
-                        request.result = new ModemActivityInfo(0, 0, 0, null, 0, 0);
+                        request.result = new ModemActivityInfo(0, 0, 0, null, 0);
                     }
                     notifyRequester(request);
                     break;
@@ -5643,7 +5643,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     private final ModemActivityInfo mLastModemActivityInfo =
-            new ModemActivityInfo(0, 0, 0, new int[0], 0, 0);
+            new ModemActivityInfo(0, 0, 0, new int[0], 0);
 
     /**
      * Responds to the ResultReceiver with the {@link android.telephony.ModemActivityInfo} object
@@ -5667,27 +5667,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         null, workSource);
                 if (isModemActivityInfoValid(info)) {
                     int[] mergedTxTimeMs = new int[ModemActivityInfo.TX_POWER_LEVELS];
+                    int[] txTimeMs = info.getTransmitTimeMillis();
+                    int[] lastModemTxTimeMs = mLastModemActivityInfo.getTransmitTimeMillis();
                     for (int i = 0; i < mergedTxTimeMs.length; i++) {
-                        mergedTxTimeMs[i] = info.getTxTimeMillis()[i]
-                                + mLastModemActivityInfo.getTxTimeMillis()[i];
+                        mergedTxTimeMs[i] = txTimeMs[i] + lastModemTxTimeMs[i];
                     }
                     mLastModemActivityInfo.setTimestamp(info.getTimestamp());
                     mLastModemActivityInfo.setSleepTimeMillis(info.getSleepTimeMillis()
                             + mLastModemActivityInfo.getSleepTimeMillis());
                     mLastModemActivityInfo.setIdleTimeMillis(
                             info.getIdleTimeMillis() + mLastModemActivityInfo.getIdleTimeMillis());
-                    mLastModemActivityInfo.setTxTimeMillis(mergedTxTimeMs);
-                    mLastModemActivityInfo.setRxTimeMillis(
-                            info.getRxTimeMillis() + mLastModemActivityInfo.getRxTimeMillis());
-                    mLastModemActivityInfo.setEnergyUsed(
-                            info.getEnergyUsed() + mLastModemActivityInfo.getEnergyUsed());
+                    mLastModemActivityInfo.setTransmitTimeMillis(mergedTxTimeMs);
+                    mLastModemActivityInfo.setReceiveTimeMillis(
+                            info.getReceiveTimeMillis() + mLastModemActivityInfo
+                                .getReceiveTimeMillis());
                 }
+
                 ret = new ModemActivityInfo(mLastModemActivityInfo.getTimestamp(),
                         mLastModemActivityInfo.getSleepTimeMillis(),
                         mLastModemActivityInfo.getIdleTimeMillis(),
-                        mLastModemActivityInfo.getTxTimeMillis(),
-                        mLastModemActivityInfo.getRxTimeMillis(),
-                        mLastModemActivityInfo.getEnergyUsed());
+                        mLastModemActivityInfo.getTransmitTimeMillis(),
+                        mLastModemActivityInfo.getReceiveTimeMillis());
             }
             Bundle bundle = new Bundle();
             bundle.putParcelable(TelephonyManager.MODEM_ACTIVITY_RESULT_KEY, ret);
@@ -5706,13 +5706,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         int activityDurationMs =
             (int) (info.getTimestamp() - mLastModemActivityInfo.getTimestamp());
         int totalTxTimeMs = 0;
-        for (int i = 0; i < info.getTxTimeMillis().length; i++) {
-            totalTxTimeMs += info.getTxTimeMillis()[i];
+        int[] txTimeMs = info.getTransmitTimeMillis();
+        for (int i = 0; i < info.getTransmitPowerInfo().size(); i++) {
+            totalTxTimeMs += txTimeMs[i];
         }
         return (info.isValid()
             && (info.getSleepTimeMillis() <= activityDurationMs)
             && (info.getIdleTimeMillis() <= activityDurationMs)
-            && (info.getRxTimeMillis() <= activityDurationMs)
+            && (info.getReceiveTimeMillis() <= activityDurationMs)
             && (totalTxTimeMs <= activityDurationMs));
     }
 
