@@ -755,7 +755,7 @@ public class NotificationMgr {
         intent.setComponent(new ComponentName(
                 mContext.getString(R.string.mobile_network_settings_package),
                 mContext.getString(R.string.mobile_network_settings_class)));
-        intent.putExtra(GsmUmtsOptions.EXTRA_SUB_ID, subId);
+        intent.putExtra(Settings.EXTRA_SUB_ID, subId);
         builder.setContentIntent(PendingIntent.getActivity(mContext, 0, intent, 0));
         notifyAsUser(
                 Integer.toString(subId) /* tag */,
