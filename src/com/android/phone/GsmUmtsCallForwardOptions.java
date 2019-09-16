@@ -18,6 +18,7 @@ import com.android.internal.telephony.Phone;
 import java.util.ArrayList;
 
 public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
+    private static final boolean DBG = (PhoneGlobals.DBG_LEVEL >= 2);
     private static final String LOG_TAG = "GsmUmtsCallForwardOptions";
 
     private static final String NUM_PROJECTION[] = {
@@ -62,6 +63,7 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
         mPhone = mSubscriptionInfoHelper.getPhone();
 
         PersistableBundle b = null;
+        boolean supportCFNRc = true;
         if (mSubscriptionInfoHelper.hasSubId()) {
             b = PhoneGlobals.getInstance().getCarrierConfigForSubId(
                     mSubscriptionInfoHelper.getSubId());
@@ -73,6 +75,8 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
                     CarrierConfigManager.KEY_CALL_FORWARDING_MAP_NON_NUMBER_TO_VOICEMAIL_BOOL);
             mCallForwardByUssd = b.getBoolean(
                     CarrierConfigManager.KEY_USE_CALL_FORWARDING_USSD_BOOL);
+            supportCFNRc = b.getBoolean(
+                    CarrierConfigManager.KEY_CALL_FORWARDING_WHEN_UNREACHABLE_SUPPORTED_BOOL);
         }
 
         PreferenceScreen prefSet = getPreferenceScreen();
@@ -89,7 +93,16 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
         mPreferences.add(mButtonCFU);
         mPreferences.add(mButtonCFB);
         mPreferences.add(mButtonCFNRy);
-        mPreferences.add(mButtonCFNRc);
+
+        if (supportCFNRc) {
+            mPreferences.add(mButtonCFNRc);
+        } else {
+            // When CFNRc is not supported, mButtonCFNRc is grayed out from the menu.
+            // Default state for the preferences in this PreferenceScreen is disabled.
+            // Only preferences listed in the ArrayList mPreferences will be enabled.
+            // By not adding mButtonCFNRc to mPreferences it will be kept disabled.
+            if (DBG) Log.d(LOG_TAG, "onCreate: CFNRc is not supported, grey out the item.");
+        }
 
         if (mCallForwardByUssd) {
             //the call forwarding ussd command's behavior is similar to the call forwarding when
