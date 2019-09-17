@@ -665,11 +665,10 @@ public class NotificationMgr {
 
         final CharSequence contentText = TextUtils.isEmpty(line1Num) ?
             String.format(mContext.getText(
-                R.string.limited_sim_function_notification_message).toString(),
-                carrierName, line1Num) :
+                R.string.limited_sim_function_notification_message).toString(), carrierName) :
             String.format(mContext.getText(
                 R.string.limited_sim_function_with_phone_num_notification_message).toString(),
-                carrierName);
+                carrierName, line1Num);
         final Notification.Builder builder = new Notification.Builder(mContext)
                 .setSmallIcon(R.drawable.ic_sim_card)
                 .setContentTitle(mContext.getText(
