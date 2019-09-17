@@ -263,7 +263,7 @@
     <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Baliteke <xliff:g id="CARRIER_NAME">%1$s</xliff:g> bidezko deiak eta datu-zerbitzuak blokeatuta egotea beste SIM txartel bat erabiltzean."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Aplikazioak erabilitako datuak"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Datuen <xliff:g id="ID_1">%1$s</xliff:g> erabili dira data hauen artean: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
-    <string name="advanced_options_title" msgid="8074895510265488035">"Ezarpen aurreratuak"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"Aurreratuak"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operadorea"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"operadorea, esim, esim txartela, sim, sim txartela, euicc, euicc txartela, aldatu operadoreak, aldatu operadorez, aldatu operadorea, gehitu operadorea, gehitu operadoreak"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
