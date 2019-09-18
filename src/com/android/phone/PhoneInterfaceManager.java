@@ -159,6 +159,7 @@ import com.android.internal.telephony.uicc.UiccCardApplication;
 import com.android.internal.telephony.uicc.UiccController;
 import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.telephony.uicc.UiccSlot;
+import com.android.internal.telephony.uicc.IccCardApplicationStatus.AppType;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
 import com.android.internal.util.HexDump;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
@@ -7105,6 +7106,33 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return;
             }
             mPhoneConfigurationManager.switchMultiSimConfig(numOfSims);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public boolean isApplicationOnUicc(int subId, int appType) {
+        enforceReadPrivilegedPermission("isApplicationOnUicc");
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            return false;
+        }
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            UiccCard uiccCard = phone.getUiccCard();
+            if (uiccCard == null) {
+                return false;
+            }
+            UiccProfile uiccProfile = uiccCard.getUiccProfile();
+            if (uiccProfile == null) {
+                return false;
+            }
+            if (TelephonyManager.APPTYPE_SIM <= appType
+                    && appType <= TelephonyManager.APPTYPE_ISIM) {
+                return uiccProfile.isApplicationOnIcc(AppType.values()[appType]);
+            }
+            return false;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
