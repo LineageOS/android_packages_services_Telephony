@@ -27,7 +27,6 @@ import android.os.PersistableBundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.telephony.CarrierConfigManager;
-import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -423,9 +422,7 @@ public class GsmUmtsCallBarringOptions extends TimeConsumingPreferenceActivity
         boolean useDisableaAll = true;
 
         ImsPhone imsPhone = mPhone != null ? (ImsPhone) mPhone.getImsPhone() : null;
-        if (imsPhone != null
-                && ((imsPhone.getServiceState().getState() == ServiceState.STATE_IN_SERVICE)
-                        || imsPhone.isUtEnabled())) {
+        if (imsPhone != null && imsPhone.isUtEnabled()) {
             usePassword = false;
             useDisableaAll = false;
         }
