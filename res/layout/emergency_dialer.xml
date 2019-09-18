@@ -108,7 +108,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:backgroundTint="#ffe53935"
+                        android:backgroundTint="#ffe32926"
                         android:focusable="false"
                         android:clickable="false"
                         style="?android:attr/buttonStyle"/>
