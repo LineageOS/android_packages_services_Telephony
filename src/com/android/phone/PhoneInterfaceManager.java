@@ -159,6 +159,7 @@ import com.android.internal.telephony.uicc.UiccCardApplication;
 import com.android.internal.telephony.uicc.UiccController;
 import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.telephony.uicc.UiccSlot;
+import com.android.internal.telephony.uicc.IccCardApplicationStatus.AppType;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
 import com.android.internal.util.HexDump;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
@@ -4939,7 +4940,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     packages = pm.getInstalledPackagesAsUser(
                         PackageManager.MATCH_DISABLED_COMPONENTS
                             | PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS
-                            | PackageManager.GET_SIGNATURES, UserHandle.USER_SYSTEM);
+                            | PackageManager.GET_SIGNING_CERTIFICATES,
+                            UserHandle.USER_SYSTEM);
                 }
                 for (int p = packages.size() - 1; p >= 0; p--) {
                     PackageInfo pkgInfo = packages.get(p);
@@ -7105,6 +7107,33 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return;
             }
             mPhoneConfigurationManager.switchMultiSimConfig(numOfSims);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public boolean isApplicationOnUicc(int subId, int appType) {
+        enforceReadPrivilegedPermission("isApplicationOnUicc");
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            return false;
+        }
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            UiccCard uiccCard = phone.getUiccCard();
+            if (uiccCard == null) {
+                return false;
+            }
+            UiccProfile uiccProfile = uiccCard.getUiccProfile();
+            if (uiccProfile == null) {
+                return false;
+            }
+            if (TelephonyManager.APPTYPE_SIM <= appType
+                    && appType <= TelephonyManager.APPTYPE_ISIM) {
+                return uiccProfile.isApplicationOnIcc(AppType.values()[appType]);
+            }
+            return false;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
