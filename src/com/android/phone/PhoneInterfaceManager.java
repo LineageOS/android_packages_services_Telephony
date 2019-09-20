@@ -151,6 +151,7 @@ import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.euicc.EuiccConnector;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.metrics.TelephonyMetrics;
+import com.android.internal.telephony.uicc.IccCardApplicationStatus.AppType;
 import com.android.internal.telephony.uicc.IccIoResult;
 import com.android.internal.telephony.uicc.IccUtils;
 import com.android.internal.telephony.uicc.SIMRecords;
@@ -159,7 +160,6 @@ import com.android.internal.telephony.uicc.UiccCardApplication;
 import com.android.internal.telephony.uicc.UiccController;
 import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.telephony.uicc.UiccSlot;
-import com.android.internal.telephony.uicc.IccCardApplicationStatus.AppType;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
 import com.android.internal.util.HexDump;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
@@ -2874,18 +2874,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
-        Binder.withCleanCallingIdentity(() -> {
-            try {
-                // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
-                ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
-                        .removeRegistrationCallbackForSubscription(c, subId);
-            } catch (ImsException e) {
-                Log.i(LOG_TAG, "unregisterImsRegistrationCallback: " + subId
-                        + "is inactive, ignoring unregister.");
-                // If the subscription is no longer active, just return, since the callback
-                // will already have been removed internally.
-            }
-        });
+        final long token = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
+            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
+                    .removeRegistrationCallbackForSubscription(c, subId);
+        } catch (ImsException e) {
+            Log.i(LOG_TAG, "unregisterImsRegistrationCallback: " + subId
+                    + "is inactive, ignoring unregister.");
+            // If the subscription is no longer active, just return, since the callback
+            // will already have been removed internally.
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
     }
 
     @Override
@@ -2907,22 +2908,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void unregisterMmTelCapabilityCallback(int subId, IImsCapabilityCallback c) {
         enforceReadPrivilegedPermission("unregisterMmTelCapabilityCallback");
-
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
-        Binder.withCleanCallingIdentity(() -> {
-            try {
-                // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
-                ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
+
+        final long token = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
+            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                         .removeCapabilitiesCallbackForSubscription(c, subId);
-            } catch (ImsException e) {
-                Log.i(LOG_TAG, "unregisterMmTelCapabilityCallback: " + subId
-                        + "is inactive, ignoring unregister.");
-                // If the subscription is no longer active, just return, since the callback
-                // will already have been removed internally.
-            }
-        });
+        } catch (ImsException e) {
+            Log.i(LOG_TAG, "unregisterMmTelCapabilityCallback: " + subId
+                     + "is inactive, ignoring unregister.");
+             // If the subscription is no longer active, just return, since the callback
+             // will already have been removed internally.
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
     }
 
     @Override
