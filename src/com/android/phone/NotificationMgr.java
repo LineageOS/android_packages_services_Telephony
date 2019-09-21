@@ -638,8 +638,16 @@ public class NotificationMgr {
         // Navigate to "Network Selection Settings" which list all subscriptions.
         PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0,
                 new Intent(ACTION_MOBILE_NETWORK_LIST), 0);
-        String line1Num = mTelephonyManager.getLine1Number(subId);
-
+        // Display phone number from the other sub
+        String line1Num = null;
+        SubscriptionManager subMgr = (SubscriptionManager) mContext.getSystemService(
+            Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        List<SubscriptionInfo> subList = subMgr.getActiveSubscriptionInfoList(false);
+        for (SubscriptionInfo sub : subList) {
+            if (sub.getSubscriptionId() != subId) {
+                line1Num = mTelephonyManager.getLine1Number(sub.getSubscriptionId());
+            }
+        }
         final CharSequence contentText = TextUtils.isEmpty(line1Num) ?
             String.format(mContext.getText(
                 R.string.limited_sim_function_notification_message).toString(), carrierName) :
