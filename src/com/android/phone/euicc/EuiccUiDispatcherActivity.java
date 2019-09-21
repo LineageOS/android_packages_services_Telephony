@@ -154,7 +154,7 @@ public class EuiccUiDispatcherActivity extends Activity {
                 UserHandle.myUserId());
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to revoke LUI app permissions.");
-            throw e.rethrowAsRuntimeException();
+            throw new RuntimeException(e);
         }
     }
 
