@@ -374,6 +374,10 @@ public class PhoneGlobals extends ContextWrapper {
             // register for MMI/USSD
             mCM.registerForMmiComplete(mHandler, MMI_COMPLETE, null);
 
+            // Initialize cell status using current airplane mode.
+            handleAirplaneModeChange(this, Settings.Global.getInt(getContentResolver(),
+                    Settings.Global.AIRPLANE_MODE_ON, AIRPLANE_OFF));
+
             // Register for misc other intent broadcasts.
             IntentFilter intentFilter =
                     new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
