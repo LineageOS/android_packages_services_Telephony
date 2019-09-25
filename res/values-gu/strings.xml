@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"ખાનગી નંબર"</string>
     <string name="payphone" msgid="4793877574636445118">"પેફોન"</string>
     <string name="onHold" msgid="9035493194749959955">"હોલ્ડ પર"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) સંદેશ"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"કૅરિઅરનો સંદેશ"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI કોડ પ્રારંભ કર્યો"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD કોડ ચાલે છે…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI કોડ રદ કર્યો"</string>
@@ -65,7 +67,7 @@
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"આના વડે SIP કૉલ્સ કરો"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"પહેલાં પૂછો"</string>
     <string name="phone_accounts_default_account_label" msgid="4183772241814460014">"કોઇ નેટવર્ક ઉપલબ્ધ નથી"</string>
-    <string name="phone_accounts_settings_header" msgid="4141710640883261094">"સેટિંગ્સ"</string>
+    <string name="phone_accounts_settings_header" msgid="4141710640883261094">"સેટિંગ"</string>
     <string name="phone_accounts_choose_accounts" msgid="5232948804226424002">"એકાઉન્ટ્સ પસંદ કરો"</string>
     <string name="phone_accounts_selection_header" msgid="1365215726106915865">"ફોન એકાઉન્ટ્સ"</string>
     <string name="phone_accounts_add_sip_account" msgid="2023821743341923271">"SIP એકાઉન્ટ ઉમેરો"</string>
@@ -77,13 +79,10 @@
     <string name="voicemail" msgid="8693759337917898954">"વૉઇસમેઇલ"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"વૉઇસમેઇલ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
-    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"સૂચનાઓ"</string>
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"કૉલ કરો અને પ્રાપ્ત કરો"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"સ્માર્ટ ફૉરવર્ડિંગ"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"એક નંબર પર પહોંચી શકાય તેમ ન હોય, ત્યારે હંમેશાં તમારા અન્ય નંબર પર કૉલ ફૉરવર્ડ કરો"</string>
+    <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"નોટિફિકેશન"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"કટોકટીના બ્રોડકાસ્ટ્સ"</string>
     <string name="call_settings" msgid="6112441768261754562">"કૉલ સેટિંગ્સ"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"વધારાની સેટિંગ્સ"</string>
@@ -126,8 +125,8 @@
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"જ્યારે તમારો ફોન પહોંચયોગ્ય ન હોય ત્યારે તમારા કેરિઅર કૉલ ફોરવર્ડિંગને અક્ષમ કરવાને સમર્થન આપતા નથી."</string>
     <string name="updating_title" msgid="6146755386174019046">"કૉલ સેટિંગ્સ"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"કૉલ સેટિંગ્સને ફક્ત એડમિન વપરાશકર્તા દ્વારા જ બદલી શકાય છે."</string>
-    <string name="call_settings_with_label" msgid="3401177261468593519">"સેટિંગ્સ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="error_updating_title" msgid="7970259216988931777">"કૉલ સેટિંગ્સની ભૂલ"</string>
+    <string name="call_settings_with_label" msgid="3401177261468593519">"સેટિંગ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="error_updating_title" msgid="7970259216988931777">"કૉલ સેટિંગની ભૂલ"</string>
     <string name="reading_settings" msgid="1920291699287055284">"સેટિંગ્સ વાંચી રહ્યાં છે…"</string>
     <string name="updating_settings" msgid="8171225533884883252">"સેટિંગ્સ અપડેટ કરી રહ્યાં છે..."</string>
     <string name="reverting_settings" msgid="4752151682666912828">"સેટિંગ્સ પાછી ફરાવી રહ્યાં છે…"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"જ્યારે રોમિંગ હોય ત્યારે ડેટા સેવાઓથી કનેક્ટ કરો"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"જ્યારે રોમિંગ હોય ત્યારે ડેટા સેવાઓથી કનેક્ટ કરો"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ડેટા રોમિંગ બંધ છે. ચાલુ કરવા માટે ટૅપ કરો."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"રોમિંગ શુલ્ક લાગુ થઈ શકે છે. સંશોધિત કરવા માટે ટૅપ કરો."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"કોઈ મોબાઇલ ડેટા કનેક્શન રહ્યું નથી"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"ડેટા રોમિંગ ચાલુ છે"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"તમારાથી આંશિક શુલ્ક લઈ શકાય છે."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"કિંમત માટે તમારા નેટવર્ક પ્રદાતા સાથે તપાસો."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ડેટા રોમિંગને મંજૂરી આપીએ?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"સિમની મર્યાદિત કાર્યક્ષમતા"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>નો ઉપયોગ કરતી વખતે <xliff:g id="CARRIER_NAME">%1$s</xliff:g>ના કૉલ અને ડેટાની સેવાઓ બ્લૉક થઈ શકે છે."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"બીજા સિમનો ઉપયોગ કરતી વખતે <xliff:g id="CARRIER_NAME">%1$s</xliff:g>ના કૉલ અને ડેટાની સેવાઓ બ્લૉક થઈ શકે છે."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ઍપ ડેટા વપરાશ"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> મોબાઇલ ડેટાનો ઉપયોગ <xliff:g id="ID_2">%2$s</xliff:g> ના રોજ સુધી કરવામાં આવ્યો"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"વિગતવાર"</string>
@@ -412,8 +416,8 @@
     <string name="sum_fdn" msgid="1959399454900272878">"ફિક્સ્ડ ડાયલિંગ નંબર્સને સંચાલિત કરો"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ઍક્સેસ માટે PIN બદલો"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ફોન નંબર સૂચિને સંચાલિત કરો"</string>
-    <string name="voice_privacy" msgid="3776841382844614716">"વૉઇસ ગોપનીયતા"</string>
-    <string name="voice_privacy_summary" msgid="3159383389833516214">"વધારેલ ગોપનીયતા મોડ સક્ષમ કરો"</string>
+    <string name="voice_privacy" msgid="3776841382844614716">"વૉઇસ પ્રાઇવસી"</string>
+    <string name="voice_privacy_summary" msgid="3159383389833516214">"વધારેલ પ્રાઇવસી મોડ ચાલુ કરો"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY મોડ"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"TTY મોડ સેટ કરો"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"સ્વતઃ-પુનઃપ્રયાસ કરો"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"માલિક"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"માહિતી જોવા માટે ફરીથી ટૅપ કરો"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"કટોકટીનો કૉલ"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"ફક્ત કટોકટીના કૉલ"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"કટોકટીનો નંબર"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"કટોકટીના નંબર"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>ને ફરીથી કૉલ કરવા માટે ટૅપ કરો"</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"રિઅલ-ટાઇમ ટેક્સ્ટ(RTT) કૉલ"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"વૉઇસ કૉલ અંતર્ગત સંદેશ મોકલવાની મંજૂરી આપો"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT બહેરા, સાંભળવા અને બોલવામાં મુશ્કેલી પડતી હોય અથવા વૉઇસ કરતાં પણ વધુ કંઈકની જરૂર હોય એવા કૉલરની સહાય કરે છે.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;વધુ જાણો&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT કૉલને સંદેશ ટ્રાન્સક્રિપ્ટ તરીકે સાચવવામાં આવે છે\n       &lt;br&gt; - RTT વીડિઓ કૉલ માટે ઉપલબ્ધ નથી"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"નોંધ: રોમિંગ વખતે RTT ઉપલબ્ધ નથી"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY બંધ"</item>
     <item msgid="3971695875449640648">"TTY સંપૂર્ણ"</item>
@@ -643,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi કનેક્શન ગુમાવ્યું. કૉલ સમાપ્ત થયો."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"બૅટરી ઓછી હોવાને કારણે તમારો વીડિઓ કૉલ કનેક્ટ કરી શકાતો નથી."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"બૅટરી ઓછી હોવાને કારણે વીડિઓ કૉલ સમાપ્ત થયો છે."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"આ સ્થાનમાં વાઇ-ફાઇ કૉલિંગ પર ઇમર્જન્સી કૉલ કરવાની સુવિધા ઉપલબ્ધ નથી."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"આ સ્થાનમાં વાઇ-ફાઇ કૉલિંગ ઉપલબ્ધ નથી."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"વૉઇસમેઇલ PIN બદલો"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ચાલુ રાખો"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"રદ કરો"</string>
@@ -756,6 +762,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"કૉલ બારિંગની સેટિંગ"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"કૉલ બારિંગની બધી સેટિંગ નિષ્ક્રિય કરીએ?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"નેટવર્ક વ્યસ્ત છે. કૃપા કરીને કૉલ કરવાનો પછીથી ફરી પ્રયાસ કરો."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"નેટવર્ક ખૂબ ભરાયેલું છે. સહાય માટે મોબાઇલ ઑપરેટરનો સંપર્ક કરો."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"કૉલ બીજે વાળ્યો."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"કૉલ ફોર્વર્ડ કર્યો."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"કૉલ પ્રતીક્ષામાં છે."</string>

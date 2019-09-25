@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Частен номер"</string>
     <string name="payphone" msgid="4793877574636445118">"Обществен телефон"</string>
     <string name="onHold" msgid="9035493194749959955">"Задържане на обаждането"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) Съобщение"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Съобщение от оператора"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI кодът бе стартиран"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD кодът се изпълнява…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI кодът бе анулиран"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Гласова поща"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Гласова поща (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Извършване и получаване на обаждания"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Интелигентно препращане"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Когато единия номер е недостъпен, винаги препращайте обажданията към другия си номер"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Известия"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Спешни излъчвания"</string>
     <string name="call_settings" msgid="6112441768261754562">"Настройки за обаждане"</string>
@@ -98,8 +97,8 @@
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Показване на номера при изходящи обаждания"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Използване на стандартните настройки на оператора за показване на номера ми при изходящи обаждания"</string>
     <string name="labelCW" msgid="6120513814915920200">"Изчакващо обаждане"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"Да бъда уведомяван/а за вх. обаждания по време на разговор"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"Да бъда уведомяван/а за вх. обаждания по време на разговор"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"Да получавам известие за вх. обаждания по време на разговор"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"Да получавам известие за вх. обаждания по време на разговор"</string>
     <string name="call_forwarding_settings" msgid="3378927671091537173">"Настройки за пренасочване на обажданията"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Настройки за пренасочване на обаждане (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Пренасочване на обаждания"</string>
@@ -119,7 +118,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Пренасочва се към <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Изключено"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Операторът ви не поддържа деактивиране на пренасочването на обаждания, когато телефонът ви не отговаря."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"Когато няма достъп"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"Когато е извън обхват"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Номер, когато няма достъп"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Пренасочва се към <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Изкл."</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Свързване с услуги за данни при роуминг"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Свързване с услуги за данни при роуминг"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Роумингът на данни е изключен. Докоснете за включване."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Възможно е да бъдете таксувани за роуминг. Докоснете за промяна."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Мобилната връзка за данни прекъсна"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Роумингът на данни е включен"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Това може да доведе до високи такси."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"За цени се обърнете към оператора си."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Да се разреши ли роуминг на данни?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Ограничена функционалност на SIM картата"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Обажданията и услугите за данни от <xliff:g id="CARRIER_NAME">%1$s</xliff:g> може да са блокирани, докато използвате <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Обажданията и услугите за данни от <xliff:g id="CARRIER_NAME">%1$s</xliff:g> може да са блокирани с друга SIM карта."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Пренос на данни от приложенията"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> мобилни данни са използвани за периода <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Разширени"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Собственик"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Докоснете отново, за да видите информация"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Спешно обаждане"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Само спешни обаждания"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Спешен номер"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Спешни номера"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Докоснете отново за обаждане на <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Обаждане с текстово съобщение в реално време (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Позволяване на съобщения в рамките на гласово обаждане"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT подпомага обаждащи се, които са глухи, имат затруднения със слуха, говорно увреждане или се нуждаят от повече от само глас.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Научете повече&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT обажданията се запазват като препис на съобщение.\n       &lt;br&gt; – RTT не е налице за видеообаждания."</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Забележка: ТСРВ не е налице при роуминг"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY е изкл."</item>
     <item msgid="3971695875449640648">"Пълен TTY режим"</item>
@@ -643,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Връзката с Wi-Fi прекъсна. Обаждането завърши."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Видеообаждането ви не може да се извърши, защото батерията е изтощена."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Видеообаждането завърши заради изтощена батерия."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"В това местоположение не са възможни спешни обаждания през Wi-Fi."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"В това местоположение не са възможни обаждания през Wi-Fi."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Промяна на ПИН за гласовата поща"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Напред"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Отказ"</string>
@@ -756,6 +762,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Настройки за забрана на обажданията"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Да се деактивират ли всички настройки за забрана за обаждания?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Мрежата е заета. Моля, опитайте да се обадите отново по-късно."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Мрежата е претоварена. Свържете се с мобилния си оператор за съдействие."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Обаждането е отклонено."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Обаждането е пренасочено."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Обаждането чака."</string>

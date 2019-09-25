@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Número particular"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefone público"</string>
     <string name="onHold" msgid="9035493194749959955">"Em espera"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Mensagem (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Mensagem do Operador"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Código de MMI iniciado"</string>
     <string name="ussdRunning" msgid="485588686340541690">"A executar código USSD..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Código de MMI cancelado"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Correio de voz"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Correio de voz (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Correio de voz:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Efetuar e receber chamadas"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Encaminhamento inteligente"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Quando um número não se encontrar disponível, encaminhar sempre as chamadas para o seu outro número"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notificações"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Transmissões de emergência"</string>
     <string name="call_settings" msgid="6112441768261754562">"Definições de chamada"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Ligar a serviços de dados em roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Ligar a serviços de dados em roaming"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"O roaming de dados está desativado. Toque para ativar."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Podem aplicar-se custos de roaming. Toque para modificar."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"A ligação de dados móveis foi perdida"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"O roaming de dados está ativo"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Podem ser cobrados custos significativos."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Consulte o seu fornecedor de serviços de rede para obter preços."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"Pretende permitir roaming de dados?"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"Permitir roaming de dados?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Funcionalidade de SIM limitada"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"As chamadas e os serviços de dados da <xliff:g id="CARRIER_NAME">%1$s</xliff:g> podem ficar bloqueados ao utilizar o número <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"As chamadas e serviços de dados da <xliff:g id="CARRIER_NAME">%1$s</xliff:g> podem ser bloqueados se utilizar outro SIM."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Utilização de dados da aplicação"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de dados móveis utilizados entre <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avançadas"</string>
@@ -414,7 +418,7 @@
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gerir a lista telefónica"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Privacidade de voz"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Ativar modo de privacidade optimizado"</string>
-    <string name="tty_mode_option_title" msgid="9033098925144434669">"Modo TTY"</string>
+    <string name="tty_mode_option_title" msgid="9033098925144434669">"Modo de teletipo"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"Definir modo TTY"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"Nova tentativa automática"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Ativar modo Nova tentativa automática"</string>
@@ -442,7 +446,7 @@
     <string name="fdn_failed" msgid="540018079008319747">"Falha de FDN."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"A ler a partir do cartão SIM..."</string>
     <string name="simContacts_empty" msgid="5270660846489561932">"Sem contactos no cartão SIM."</string>
-    <string name="simContacts_title" msgid="1861472842524839921">"Seleccione os contactos a importar"</string>
+    <string name="simContacts_title" msgid="1861472842524839921">"Selecione os contactos a importar"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"Desative o modo de avião para importar contactos do cartão SIM."</string>
     <string name="enable_pin" msgid="5422767284133234860">"Ativar/desativar o PIN do cartão SIM"</string>
     <string name="change_pin" msgid="9174186126330785343">"Alterar o PIN do cartão SIM"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Proprietário"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Toque novamente para ver informações"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Chamada de emergência"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Apenas chamadas de emergência"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Número de emergência"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Números de emergência"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Toque novamente para ligar <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -551,16 +554,17 @@
     <string name="importToFDNfromContacts" msgid="2130620207013368580">"Importar a partir dos contactos"</string>
     <string name="singleContactImportedMsg" msgid="6868483416182599206">"Contacto importado"</string>
     <string name="failedToImportSingleContactMsg" msgid="415399285420353917">"Falha ao importar o contacto"</string>
-    <string name="hac_mode_title" msgid="8740268574688743289">"Aparelhos auxiliares de audição"</string>
-    <string name="hac_mode_summary" msgid="6833851160514929341">"Ativar compatibilidade com aparelho auxiliar de audição"</string>
+    <string name="hac_mode_title" msgid="8740268574688743289">"Aparelhos auditivos"</string>
+    <string name="hac_mode_summary" msgid="6833851160514929341">"Ativar compatibilidade com aparelho auditivo"</string>
     <string name="rtt_mode_title" msgid="6954652435543570121">"Chamada com Mensagens de texto em tempo real (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permitir envio de mensagens numa chamada de voz"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"A RTT assiste os autores de chamadas surdos, com deficiências auditivas, dificuldades da fala ou que precisem de mais do que apenas a voz.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saiba mais&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - As chamadas RTT são guardadas como transcrição de mensagem\n       &lt;br&gt; - A RTT não está disponível para videochamadas"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Nota: a RTT não está disponível em roaming"</string>
   <string-array name="tty_mode_entries">
-    <item msgid="512950011423868021">"TTY desativado"</item>
-    <item msgid="3971695875449640648">"TTY total"</item>
-    <item msgid="1937509904407445684">"TTY HCO"</item>
-    <item msgid="5644925873488772224">"TTY VCO"</item>
+    <item msgid="512950011423868021">"Teletipo desativado"</item>
+    <item msgid="3971695875449640648">"Teletipo completo"</item>
+    <item msgid="1937509904407445684">"Teletipo HCO"</item>
+    <item msgid="5644925873488772224">"Teletipo VCO"</item>
   </string-array>
     <string name="dtmf_tones_title" msgid="5163153771291340803">"Tons DTMF"</string>
     <string name="dtmf_tones_summary" msgid="3351820372864020331">"Definir o tamanho dos toques DTMF"</string>
@@ -643,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"A ligação Wi-Fi foi perdida. A chamada foi terminada."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"A sua videochamada não pôde ser efetuada devido a bateria fraca."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"A videochamada terminou devido a bateria fraca."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"As chamadas de emergência através de Chamadas Wi-Fi não estão disponíveis nesta localização."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"A funcionalidade Chamadas Wi-Fi não está disponível nesta localização."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Alterar o PIN do correio de voz"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continuar"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Cancelar"</string>
@@ -756,6 +762,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Definições de barramento de chamadas"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Desativar todas as definições de barramento de chamadas?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"A rede está ocupada. Tente efetuar novamente a chamada mais tarde."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"A rede está congestionada. Contacte o seu operador móvel para obter assistência."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"A chamada foi desviada."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"A chamada foi reencaminhada."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"A chamada foi colocada em espera."</string>

@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Приватний номер"</string>
     <string name="payphone" msgid="4793877574636445118">"Таксофон"</string>
     <string name="onHold" msgid="9035493194749959955">"Очікує"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Повідомлення (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Повідомлення від оператора"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Код MMI запущено"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Виконується запит USSD…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Код MMI скасовано"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Голосова пошта"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Голосова пошта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"ГП:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Здійснення й отримання дзвінків"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Розумна переадресація"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Завжди переадресовувати дзвінки на доступний номер"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Сповіщення"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Повідомлення екстрених служб"</string>
     <string name="call_settings" msgid="6112441768261754562">"Виклики"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Підключатися до служб передавання даних у роумінгу"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Підключатися до служб передавання даних у роумінгу"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Роумінг даних вимкнено. Натисніть, щоб увімкнути."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Може стягуватися плата за роумінг. Натисніть, щоб змінити."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Від’єднано від мобільного Інтернету"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Роумінг даних увімкнено"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Може стягуватися значна плата."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Докладніше про ціни можна дізнатися в оператора мережі."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Дозволити роумінг даних?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Обмежені функції SIM-карти"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Виклики та сервіси даних оператора <xliff:g id="CARRIER_NAME">%1$s</xliff:g> може бути заблоковано, коли ви використовуєте <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Коли працює інша SIM-карта, виклики й сервіси даних <xliff:g id="CARRIER_NAME">%1$s</xliff:g> може бути заблоковано."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Використання трафіку додатками"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> мобільного трафіку використано в період <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Додатково"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Власник"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Торкніться ще раз, щоб переглянути відомості"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Аварійний виклик"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Лише екстрені виклики"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Екстрений номер"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Екстрені номери"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Торкніться ще раз, щоб зателефонувати на номер <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Виклик із передаванням тексту в реальному часі"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Дозволити передавання повідомлень під час голосового виклику"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Функція RTT буде корисною для осіб із вадами слуху чи порушеннями мовлення, а також тих людей, для яких голосового спілкування недостатньо.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Докладніше&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT-виклики зберігаються як транскрибований текст\n       &lt;br&gt; – Функція RTT не підтримується для відеодзвінків"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Примітка. У роумінгу функція RTT недоступна."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Телетайп вимкнено"</item>
     <item msgid="3971695875449640648">"Повнофункціональний телетайп"</item>
@@ -614,7 +618,7 @@
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"Відхилити"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"Обслуговування"</string>
     <string name="voicemail_settings" msgid="72448049107749316">"Налаштування"</string>
-    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Не встановлено&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Не введено&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Інші налаштування виклику"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"Виклик через <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"фото контакта"</string>
@@ -647,6 +651,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Утрачено з’єднання Wi-Fi. Виклик завершено."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Відеодзвінок не вдалося виконати через низький заряд акумулятора."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Відеодзвінок завершився через низький заряд акумулятора."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"У цьому регіоні недоступні екстрені виклики через Wi-Fi."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Дзвінки через Wi-Fi недоступні в цьому регіоні."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Змінити PIN-код голосової пошти"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Продовжити"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Скасувати"</string>
@@ -760,6 +766,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Налаштування заборони дзвінків"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Дезактивувати всі налаштування заборони дзвінків?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Мережа зайнята. Зателефонуйте пізніше."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Мережа перевантажена. Зверніться до свого мобільного оператора."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Виклик переспрямовано."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Виклик переадресовано."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Очікування відповіді."</string>

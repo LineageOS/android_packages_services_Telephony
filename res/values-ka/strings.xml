@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"დაფარული ნომერი"</string>
     <string name="payphone" msgid="4793877574636445118">"გადახდის ტელეფონი"</string>
     <string name="onHold" msgid="9035493194749959955">"შეყოვნების რეჟიმში"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) შეტყობინება"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"ოპერატორის შეტყობინება"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI კოდი დაიწყო"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD კოდი გაშვებულია…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI კოდი გაუქმდა"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"ხმოვანი ფოსტა"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"ხმოვანი ფოსტა (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"დარეკვა და ზარების მიღება"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"გონიერი გადამისამართება"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"როდესაც ერთი ნომერი მიუწვდომელია, ზარები ყოველთვის გადამისამართდეს თქვენს სხვა ნომერზე"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"შეტყობინებები"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"სასწრაფო გადაცემები"</string>
     <string name="call_settings" msgid="6112441768261754562">"ზარის პარამეტრები"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"როუმინგში ყოფნისას მობილურ მონაცემთა გადაცემის სერვისებთან დაკავშირება"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"როუმინგში ყოფნისას მობილურ მონაცემთა გადაცემის სერვისებთან დაკავშირება"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ინტერნეტის როუმინგი გამორთულია. შეეხეთ ჩასართავად."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"შესაძლოა დაგეკისროთ როუმინგის გადასახადები. შეეხეთ შესაცვლელად"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"მობილურ ინტერნეტთან კავშირი დაიკარგა"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"ინტერნეტის როუმინგი ჩართულია"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"თქვენ შეიძლება წარმოგეშვათ მნიშვნელოვანი ხარჯები."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ფასები შეამოწმეთ თქვენი ქსელი პროვაიდერთან."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"გსურთ, ჩაირთოს ინტერნეტის როუმინგი?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"SIM ბარათის შეზღუდული ფუნქციონალობა"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>-ის ზარებისა და მობილური ინტერნეტის სერვისები შეიძლება დაიბლოკოს <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>-ის გამოყენებისას."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> ზარები და მობ.ინტ. სერვისები შეიძლება დაიბლოკოს სხვა SIM ბარათის გამოყენებისას."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"აპის მონაცემთა გამოყენება"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> მობილური ინტერნეტი გამოყენებულია: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"გაფართოებული"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"მფლობელი"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"ინფორმაციის სანახავად შეეხეთ ხელახლა"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"გადაუდებელი ზარი"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"მხოლოდ გადაუდებელი დახმარების ზარები"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"გადაუდებელი დახმარების სამსახურის ნომერი"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"გადაუდებელი დახმარების სამსახურების ნომრები"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"შეეხეთ ხელახლა <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>-ზე დასარეკად"</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"ზარი შეტყობინებით რეალურ დროში (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"შეტყობინებების დაშვება ხმოვან ზარში"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT დახმარებას უწევს ყრუ, სმენადაქვეითებულ, შეზღუდული მეტყველების მქონე აბონენტებს, ან მათ, ვისაც სჭირდება მეტი, ვიდრე მხოლოდ ხმაა.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;შეიტყვეთ მეტი&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; — RTT ზარები ინახება შეტყობინების ტრანსკრიპტის სახით\n       &lt;br&gt; — RTT არ არის ხელმისაწვდომი ვიდეოზარებისთვის"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"შენიშვნა: RTT მიუწვდომელია როუმინგის დროს"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY გამორთულია"</item>
     <item msgid="3971695875449640648">"TTY სრული"</item>
@@ -643,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi კავშირი დაიკარგა. ზარი დასრულდა."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"თქვენი ვიდეოზარის განხორციელება შეუძლებელია, რადგან ბატარეა არასაკმარისად არის დამუხტული."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"ვიდეოზარი დასრულდა, რადგან ბატარეა არასაკმარისად არის დამუხტული."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"გადაუდებელი ზარები მიუწვდომელია Wi-Fi დარეკვით ამ მდებარეობაში."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Wi-Fi დარეკვა მიუწვდომელია ამ მდებარეობაში."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ხმოვანი ფოსტის PIN-კოდის შეცვლა"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"გაგრძელება"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"გაუქმება"</string>
@@ -756,6 +762,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"ზარების აკრძალვის პარამეტრები"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"გსურთ ზარების აკრძალვის ყველა პარამეტრის დეაქტივაცია?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"ქსელი დაკავებულია. გთხოვთ, სცადოთ დარეკვა მოგვიანებით."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"ქსელი დატვირთულია. დახმარებისთვის დაუკავშირდით თქვენს მობილურ ოპერატორს."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"მოხდა ზარის აცილება."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"ზარი გადამისამართდა."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"ზარი იცდის."</string>

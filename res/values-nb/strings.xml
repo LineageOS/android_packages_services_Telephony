@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Hemmelig nummer"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefonkiosk"</string>
     <string name="onHold" msgid="9035493194749959955">"Parkert"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) melding"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Operatørmelding"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI-kode påbegynt"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD-kode kjører…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI-kode avbrutt"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Talepostkasse"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Talepostkasse (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Svarer:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Ring og motta anrop"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Smart viderekobling"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Når ett av numrene ikke kan nås, viderekobles anrop alltid det andre nummeret ditt"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Varsler"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Nødvarsler"</string>
     <string name="call_settings" msgid="6112441768261754562">"Samtaleinnstillinger"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Koble til datatjenester ved roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Koble til datatjenester ved roaming"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Data-roaming er slått av. Trykk for å slå på."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Roamingavgifter kan påløpe. Trykk for å endre."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Mobildatatilkoblingen er tapt"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Dataroaming er på"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Det kan medføre betydelige kostnader."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Sjekk med nettverksleverandøren din for priser."</string>
-    <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillate roaming?"</string>
+    <string name="roaming_alert_title" msgid="3654815360303826008">"Vil du tillate data-roaming?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Begrensede SIM-kortfunksjoner"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Det kan hende <xliff:g id="CARRIER_NAME">%1$s</xliff:g>-anrop og -datatjenester blir blokkert mens du bruker <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>-anrop og -datatjenester kan bli blokkert mens du bruker et annet SIM-kort."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Appens databruk"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brukt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avansert"</string>
@@ -486,7 +490,7 @@
     <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Nummer til talepostkasse"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"Ringer"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"Slår nummer på nytt"</string>
-    <string name="card_title_conf_call" msgid="1162980346189744501">"Telefonmøte"</string>
+    <string name="card_title_conf_call" msgid="1162980346189744501">"Konferansesamtale"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"Innkommende anrop"</string>
     <string name="card_title_call_ended" msgid="5544730338889702298">"Samtalen er avsluttet"</string>
     <string name="card_title_on_hold" msgid="821463117892339942">"Parkert"</string>
@@ -519,11 +523,10 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Kan ikke sette samtaler på vent."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Koble til et trådløst nettverk for å ringe."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Slå på telefonanrop via Wi-Fi for å ringe."</string>
-    <string name="emergency_information_hint" msgid="399011533038204351">"Opplysninger for nødstilfeller"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Nødinformasjon"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Eier"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Trykk på nytt for å se informasjon"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Nødanrop"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Bare nødanrop"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Nødnummer"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Nødnumre"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Trykk igjen for å ringe <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -560,6 +563,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Sanntidstekst-anrop (STT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Tillat meldingsutveksling i talesamtaler"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"STT er til hjelp for brukere som er døve, tunghørte, har talefunksjonshemning eller trenger mer enn bare tale.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Finn ut mer&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – STT-anrop lagres som meldingstranskripsjoner\n       &lt;br&gt; – STT er ikke tilgjengelig for videoanrop"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Merk: RTT er ikke tilgjengelig ved roaming"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY av"</item>
     <item msgid="3971695875449640648">"TTY full"</item>
@@ -647,6 +651,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Samtalen ble avsluttet fordi Wi-Fi-forbindelsen ble brutt."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Kan ikke utføre videoanropet på grunn av lite batteristrøm."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Videosamtalen ble avsluttet på grunn av lite batteristrøm."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Nødanrop via Wi-Fi-anrop er ikke tilgjengelig på dette stedet."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Wi-Fi-anrop er ikke tilgjengelige på dette stedet."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Endre PIN-kode for talemeldinger"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Fortsett"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Avbryt"</string>
@@ -760,6 +766,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Innstillinger for anropsblokkering"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Vil du deaktivere alle innstillinger for anropsblokkering?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Nettverket er opptatt. Prøv å ringe på nytt senere."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Nettverket er for travelt. Kontakt mobiloperatøren din for å få hjelp."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Anropet er omdirigert."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Anropet er viderekoblet."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Et anrop venter."</string>

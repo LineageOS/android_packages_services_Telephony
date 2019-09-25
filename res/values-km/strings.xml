@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"លេខ​ឯកជន"</string>
     <string name="payphone" msgid="4793877574636445118">"ទូរស័ព្ទសាធារណៈ"</string>
     <string name="onHold" msgid="9035493194749959955">"រង់ចាំ"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"សារ (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"សារ​ក្រុមហ៊ុន​សេវា​ទូរសព្ទ"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"បាន​ចាប់ផ្ដើម​កូដ MMI"</string>
     <string name="ussdRunning" msgid="485588686340541690">"កូដ USSD កំពុង​ដំណើរការ…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"បាន​បោះបង់​កូដ MMI"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"សារ​ជា​សំឡេង"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"សារជាសម្លេង (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"ហៅ និង​ទទួល​ទូរសព្ទ"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"ការបញ្ជូន​បន្ត​ឆ្លាតវៃ"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"នៅ​ពេល​លេខ​ទូរសព្ទ​មួយ​មិន​អាច​ឱ្យ​ទាក់ទង​បាន បញ្ជូន​ការហៅ​ទូរសព្ទ​ទៅ​លេខ​ផ្សេង​របស់​អ្នក​ជានិច្ច"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"ការ​ជូនដំណឹង"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"ការ​ផ្សាយ​ពេល​មាន​អាសន្ន"</string>
     <string name="call_settings" msgid="6112441768261754562">"កំណត់​ការ​ហៅ"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"តភ្ជាប់​ទៅ​កាន់​សេវា​កម្ម​ទិន្នន័យ​នៅ​ពេល​ដែល​រ៉ូ​មីង"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ការរ៉ូមីង​ទិន្នន័យ​ត្រូវ​បាន​បិទ។ ចុច ដើម្បី​បើក។"</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"អាច​មាន​ការគិត​ថ្លៃ​រ៉ូមីង។ ចុច​ដើម្បី​កែប្រែ។"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"ដាច់​ការតភ្ជាប់​ទិន្នន័យ​ចល័ត"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"ការរ៉ូមីង​ទិន្នន័យ​ត្រូវ​បាន​បើក"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"អាចនាំឲ្យមានការគិតប្រាក់ច្រើនពីអ្នក។"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ពិនិត្យមើល​តម្លៃ​ជាមួយ​ក្រុមហ៊ុន​ផ្ដល់​សេវា​​បណ្ដាញ​​របស់​អ្នក។"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"អនុញ្ញាតឲ្យរ៉ូមីងទិន្នន័យ?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"មុខងារ​ស៊ីម​មាន​កម្រិត"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"សេវាកម្ម​ទិន្នន័យ និង​ការហៅ​ទូរសព្ទ​តាម <xliff:g id="CARRIER_NAME">%1$s</xliff:g> អាច​ត្រូវ​បាន​ទប់ស្កាត់ ពេល​ប្រើប្រាស់ <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>។"</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"សេវាកម្មទិន្នន័យ និងការហៅទូរសព្ទតាម <xliff:g id="CARRIER_NAME">%1$s</xliff:g> អាចត្រូវបានទប់ស្កាត់ ពេលប្រើស៊ីម​ផ្សេង។"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ការប្រើប្រាស់​ទិន្នន័យកម្មវិធី"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"បានប្រើទិន្នន័យទូរសព្ទអស់ <xliff:g id="ID_1">%1$s</xliff:g> នៅថ្ងៃទី <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"កម្រិតខ្ពស់"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"ម្ចាស់"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"ចុច​ម្ដង​ទៀត ដើម្បីមើល​ព័ត៌មាន"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ការហៅ​ទូរសព្ទសង្គ្រោះ​បន្ទាន់"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"តែ​ការហៅទៅលេខសង្គ្រោះបន្ទាន់​ប៉ុណ្ណោះ"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"លេខសង្គ្រោះបន្ទាន់"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"លេខសង្គ្រោះបន្ទាន់"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"ចុច​ម្ដង​ទៀត ដើម្បី​ហៅ​ <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -534,7 +537,7 @@
     <string name="fire_type_description" msgid="7145996705197064710">"អគ្គិភ័យ"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"ប្រើ​​ក្ដារចុច​ដើម្បី​ចុច​លេខ"</string>
-    <string name="onscreenHoldText" msgid="2285258239691145872">"រង់ចាំ"</string>
+    <string name="onscreenHoldText" msgid="2285258239691145872">"ដាក់ឱ្យរង់ចាំ"</string>
     <string name="onscreenEndCallText" msgid="4403855834875398585">"បញ្ចប់"</string>
     <string name="onscreenShowDialpadText" msgid="8561805492659639893">"បន្ទះ​លេខ"</string>
     <string name="onscreenMuteText" msgid="5011369181754261374">"ស្ងាត់"</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"ការហៅ​តាម​សារ​ជា​អក្សរ​ក្នុង​ពេល​ជាក់ស្ដែង"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"អនុញ្ញាត​ការផ្ញើសារ​នៅ​ក្នុង​ការហៅ​ជា​សំឡេង"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT ជួយ​អ្នក​ហៅ​ទូរសព្ទ​ដែល​​ថ្លង់ ពិបាក​ក្នុង​ការស្ដាប់ មិន​អាច​និយាយ​បាន ឬ​​មាន​តម្រូវការ​ក្រៅ​ពី​សំឡេង។&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ស្វែងយល់​បន្ថែម&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - ការហៅ​ទូរសព្ទតាម RTT ត្រូវ​បាន​រក្សាទុក​ជា​ប្រតិចារឹក​សារ\n       &lt;br&gt; - RTT មិន​មានសម្រាប់ការហៅ​ជា​វីដេអូ​​ទេ"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"ចំណាំ៖ RTT មិន​អាច​ប្រើ​បាន​ទេ ពេល​រ៉ូមីង"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"បិទ TTY"</item>
     <item msgid="3971695875449640648">"TTY ពេញ"</item>
@@ -643,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"បាត់ការភ្ជាប់ Wi-Fi។ បានបញ្ចប់ការហៅទូរស័ព្ទ។"</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"ការហៅ​ជា​វីដេអូ​របស់​អ្នក​មិន​អាច​ធ្វើ​បាន​ទេ ដោយ​សារ​ខ្សោយ​ថ្ម។"</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"ការហៅ​ជា​វីដេអូ​ត្រូវ​បាន​បញ្ចប់​ ដោយ​សារ​ខ្សោយ​ថ្ម។"</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"មិន​អាច​ធ្វើ​ការហៅ​ទៅ​លេខ​សង្គ្រោះ​បន្ទាន់​ដោយ​ប្រើ​ការហៅ​តាម Wi-Fi នៅ​ទីតាំង​នេះ​បាន​ទេ។"</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"មិន​អាច​ប្រើ​ការហៅ​តាម Wi-Fi នៅ​ទីតាំង​នេះ​បាន​ទេ។"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ប្ដូរ​លេខ​កូដ PIN ជា​​សារ​សំឡេង"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"បន្ត"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"បោះបង់"</string>
@@ -756,6 +762,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"ការកំណត់​​ការរារាំង​ការហៅ​ទូរសព្ទ"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"បិទ​ដំណើរការ​នៃការកំណត់​ការរារាំង​ការហៅ​​ទូរសព្ទទាំងអស់​ដែរ​​ទេ?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"បណ្ដាញ​កំពុង​រវល់។ សូម​ព្យាយាម​​ការ​ហៅ​ទូរសព្ទ​របស់​អ្នក​ម្ដង​ទៀត​នៅ​ពេល​ក្រោយ។"</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"បណ្ដាញ​មាន​ការកក​ស្ទះ។ ទាក់ទង​ទៅ​ប្រតិបត្តិករ​ឧបករណ៍​ចល័ត​របស់​អ្នក​សម្រាប់​ជំនួយ។"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"បាន​ហៅ​ទៅ​លេខ​ផ្សេង។"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"បាន​បញ្ជូនបន្តការហៅទូរសព្ទ។"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"ការហៅ​កំពុង​រង់ចាំ។"</string>
