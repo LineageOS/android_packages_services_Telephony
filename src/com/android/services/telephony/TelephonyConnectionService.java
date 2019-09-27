@@ -25,6 +25,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.provider.Settings;
 import android.telecom.Conference;
 import android.telecom.Connection;
@@ -176,6 +179,8 @@ public class TelephonyConnectionService extends ConnectionService {
     // destroyed.
     @VisibleForTesting
     public Pair<WeakReference<TelephonyConnection>, Queue<Phone>> mEmergencyRetryCache;
+    private Handler mDdsSwitchHandler;
+    private HandlerThread mHandlerThread;
 
     /**
      * Keeps track of the status of a SIM slot.
@@ -329,11 +334,17 @@ public class TelephonyConnectionService extends ConnectionService {
         IntentFilter intentFilter = new IntentFilter(
                 TelecomManager.ACTION_TTY_PREFERRED_MODE_CHANGED);
         registerReceiver(mTtyBroadcastReceiver, intentFilter);
+
+        mHandlerThread = new HandlerThread("DdsSwitchHandlerThread");
+        mHandlerThread.start();
+        Looper looper = mHandlerThread.getLooper();
+        mDdsSwitchHandler = new Handler(looper);
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
         unregisterReceiver(mTtyBroadcastReceiver);
+        mHandlerThread.quitSafely();
         return super.onUnbind(intent);
     }
 
@@ -523,14 +534,14 @@ public class TelephonyConnectionService extends ConnectionService {
             } else {
                 final Connection resultConnection = getTelephonyConnection(request, numberToDial,
                         true, handle, phone);
-                CompletableFuture<Boolean> phoneFuture = delayDialForDdsSwitch(phone);
-                phoneFuture.whenComplete((result, error) -> {
-                    if (error != null) {
-                        Log.w(this, "onCreateOutgoingConn - delayDialForDdsSwitch exception= "
-                                + error.getMessage());
+                mDdsSwitchHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        boolean result = delayDialForDdsSwitch(phone);
+                        Log.i(this,
+                                "onCreateOutgoingConn - delayDialForDdsSwitch result = " + result);
+                        placeOutgoingConnection(request, resultConnection, phone);
                     }
-                    Log.i(this, "onCreateOutgoingConn - delayDialForDdsSwitch result = " + result);
-                    placeOutgoingConnection(request, resultConnection, phone);
                 });
                 return resultConnection;
             }
@@ -604,14 +615,14 @@ public class TelephonyConnectionService extends ConnectionService {
                 adjustAndPlaceOutgoingConnection(phone, originalConnection, request, numberToDial,
                         handle, originalPhoneType, false);
             } else {
-                delayDialForDdsSwitch(phone).whenComplete((result, error) -> {
-                    if (error != null) {
-                        Log.w(this, "handleOnComplete - delayDialForDdsSwitch exception= "
-                                + error.getMessage());
+                mDdsSwitchHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        boolean result = delayDialForDdsSwitch(phone);
+                        Log.i(this, "handleOnComplete - delayDialForDdsSwitch result = " + result);
+                        adjustAndPlaceOutgoingConnection(phone, originalConnection, request,
+                                numberToDial, handle, originalPhoneType, true);
                     }
-                    Log.i(this, "handleOnComplete - delayDialForDdsSwitch result = " + result);
-                    adjustAndPlaceOutgoingConnection(phone, originalConnection, request,
-                            numberToDial, handle, originalPhoneType, true);
                 });
             }
 
@@ -1375,13 +1386,22 @@ public class TelephonyConnectionService extends ConnectionService {
         return chosenPhone;
     }
 
-    private CompletableFuture<Boolean> delayDialForDdsSwitch(Phone phone) {
+    /**
+     * If needed, block until the the default data is is switched for outgoing emergency call, or
+     * timeout expires.
+     */
+    private boolean delayDialForDdsSwitch(Phone phone) {
         if (phone == null) {
-            return CompletableFuture.completedFuture(Boolean.TRUE);
+            return true;
         }
-        return possiblyOverrideDefaultDataForEmergencyCall(phone)
-                .completeOnTimeout(false, DEFAULT_DATA_SWITCH_TIMEOUT_MS,
-                        TimeUnit.MILLISECONDS);
+        try {
+            return possiblyOverrideDefaultDataForEmergencyCall(phone).get(
+                    DEFAULT_DATA_SWITCH_TIMEOUT_MS, TimeUnit.MILLISECONDS);
+        } catch (Exception e) {
+            Log.w(this, "onCreateOutgoingConn - delayDialForDdsSwitch exception= "
+                    + e.getMessage());
+            return false;
+        }
     }
 
     /**
