@@ -517,7 +517,7 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"કૉલ્સને હોલ્ડ કરી શકતાં નથી."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"કૉલ કરવા માટે વાયરલેસ નેટવર્કથી કનેક્ટ કરો."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"કૉલ કરવા માટે Wi-Fi કૉલિંગ સક્ષમ કરો."</string>
-    <string name="emergency_information_hint" msgid="399011533038204351">"કટોકટીની માહિતી"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"ઇમર્જન્સીની માહિતી"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"માલિક"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"માહિતી જોવા માટે ફરીથી ટૅપ કરો"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"કટોકટીનો કૉલ"</string>

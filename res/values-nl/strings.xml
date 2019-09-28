@@ -532,7 +532,7 @@
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Noodoproepen niet beschikbaar"</string>
     <string name="police_type_description" msgid="5324410799919829693">"Politie"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulance"</string>
-    <string name="fire_type_description" msgid="7145996705197064710">"Vuur"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Brand"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Toetsen gebruiken om te bellen"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"In de wacht"</string>

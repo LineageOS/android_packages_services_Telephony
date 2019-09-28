@@ -517,7 +517,7 @@
     <string name="incall_error_supp_service_hold" msgid="7967020511232222078">"Қоңырауларды ұстау мүмкін емес."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="1782466780452640089">"Қоңырау шалу үшін сымсыз желіге қосылыңыз."</string>
     <string name="incall_error_promote_wfc" msgid="106510757624022064">"Қоңырау шалу үшін, Wi-Fi желісін қосыңыз."</string>
-    <string name="emergency_information_hint" msgid="399011533038204351">"Төтенше жағдайда қолданылатын деректер"</string>
+    <string name="emergency_information_hint" msgid="399011533038204351">"Төтенше жағдайға арналған ақпарат"</string>
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Иесі"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Ақпаратты көру үшін қайта түртіңіз"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Төтенше қоңырау"</string>
@@ -532,7 +532,7 @@
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Төтенше жағдай қызметіне қоңырау шалу мүмкіндігі жоқ"</string>
     <string name="police_type_description" msgid="5324410799919829693">"Полиция"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Жедел жәрдем"</string>
-    <string name="fire_type_description" msgid="7145996705197064710">"Өрт"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Өрт қызметі"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Теру үшін пернетақтаны қолдану"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Күту"</string>

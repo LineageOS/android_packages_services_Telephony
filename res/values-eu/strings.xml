@@ -478,7 +478,7 @@
     <string name="label_puk2_code" msgid="4688069961795341948">"Idatzi PUK2 kodea"</string>
     <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"Pasahitza ez da zuzena. PIN2 kodea blokeatu egin da. Berriro saiatzeko, aldatu PIN2 kodea."</string>
     <string name="puk2_requested" msgid="5831015200030161434">"Pasahitza ez da zuzena. SIM txartela blokeatu egin da. Idatzi PUK2 kodea."</string>
-    <string name="puk2_blocked" msgid="3150263853077280049">"PUK2 kodea betirako blokeatu da."</string>
+    <string name="puk2_blocked" msgid="3150263853077280049">"PUK2 kodea betiko blokeatu da."</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n"<xliff:g id="NUMBER">%d</xliff:g> saiakera gelditzen zaizkizu."</string>
     <string name="pin2_unblocked" msgid="7791600368153469078">"PIN2 kodea desblokeatu da"</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"Sarearen edo SIM txartelaren errorea"</string>
