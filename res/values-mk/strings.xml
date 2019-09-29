@@ -534,7 +534,7 @@
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Итните повици не се достапни"</string>
     <string name="police_type_description" msgid="5324410799919829693">"Полиција"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Брза помош"</string>
-    <string name="fire_type_description" msgid="7145996705197064710">"Оган"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"Пожарна"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Користи тастатурата за бирање"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"Почекај"</string>

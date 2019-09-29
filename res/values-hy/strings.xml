@@ -141,7 +141,7 @@
     <string name="disable" msgid="4678348128118573672">"Անջատել"</string>
     <string name="change_num" msgid="239476305819844391">"Նորացնել"</string>
   <string-array name="clir_display_values">
-    <item msgid="5560134294467334594">"Լռելյայն ցանց"</item>
+    <item msgid="5560134294467334594">"Կանխադրված ցանց"</item>
     <item msgid="7876195870037833661">"Թաքցնել համարը"</item>
     <item msgid="1108394741608734023">"Ցուցադրել համարը"</item>
   </string-array>

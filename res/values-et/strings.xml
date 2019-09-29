@@ -531,7 +531,7 @@
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Ei saa helistada. Valige hädaabinumber."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Hädaabikõned pole saadaval"</string>
     <string name="police_type_description" msgid="5324410799919829693">"Politsei"</string>
-    <string name="ambulance_type_description" msgid="4114815025408089866">"Kiirabiauto"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Kiirabi"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"Tuletõrje"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Kasutage valimiseks klaviatuuri"</string>
@@ -673,7 +673,7 @@
     <string name="mobile_data_activate_button" msgid="3682400969184405446">"LISA ANDMEMAHTU"</string>
     <string name="mobile_data_activate_cancel_button" msgid="1708022171547398765">"TÜHISTA"</string>
     <string name="clh_card_title_call_ended_txt" msgid="4072101334811753823">"Kõne lõpetati"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Lennurežiim on sisse lülitatud"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="1049579267090569308">"Lennukirežiim on sisse lülitatud"</string>
     <string name="clh_callFailed_simError_txt" msgid="7273306159809203315">"SIM-kaardile ei pääse juurde"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="3974373603657193827">"Mobiilsidevõrk pole saadaval"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="4722164461846838251">"Probleem telefoninumbriga, mida püüate valida. Veakood 1."</string>

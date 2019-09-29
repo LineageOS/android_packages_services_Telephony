@@ -81,7 +81,7 @@
     <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Intelligente Weiterleitung"</string>
     <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Wenn eine Nummer nicht erreichbar ist, werden Anrufe immer an deine andere Nummer weitergeleitet"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Benachrichtigungen"</string>
-    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Notfallbenachrichtigungen"</string>
+    <string name="cell_broadcast_settings" msgid="8740238216690502563">"Notfall-Broadcasts"</string>
     <string name="call_settings" msgid="6112441768261754562">"Anrufeinstellungen"</string>
     <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Zusätzliche Einstellungen"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Weitere Einstellungen (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

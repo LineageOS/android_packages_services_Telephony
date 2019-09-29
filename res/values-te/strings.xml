@@ -532,7 +532,7 @@
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"అత్యవసర కాలింగ్ అందుబాటులో లేదు"</string>
     <string name="police_type_description" msgid="5324410799919829693">"పోలీస్"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"అంబులెన్స్‌"</string>
-    <string name="fire_type_description" msgid="7145996705197064710">"అగ్ని"</string>
+    <string name="fire_type_description" msgid="7145996705197064710">"అగ్నిమాపక శాఖ"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"డయల్ చేయడానికి కీబోర్డ్‌ను ఉపయోగించండి"</string>
     <string name="onscreenHoldText" msgid="2285258239691145872">"హోల్డ్ చేయి"</string>
