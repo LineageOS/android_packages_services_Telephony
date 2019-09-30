@@ -1234,6 +1234,11 @@ public class TelephonyConnectionService extends ConnectionService {
         com.android.internal.telephony.Connection originalConnection = null;
         try {
             if (phone != null) {
+                EmergencyNumber emergencyNumber =
+                        phone.getEmergencyNumberTracker().getEmergencyNumber(number);
+                if (emergencyNumber != null) {
+                    phone.notifyOutgoingEmergencyCall(emergencyNumber);
+                }
                 originalConnection = phone.dial(number, new ImsPhone.ImsDialArgs.Builder()
                         .setVideoState(videoState)
                         .setIntentExtras(extras)
