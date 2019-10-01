@@ -829,7 +829,7 @@ public class ImsConference extends Conference implements Holdable {
             // If the single party call emulation fature flag is enabled, we can potentially treat
             // the conference as a single party call when there is just one participant.
             if (mFeatureFlagProxy.isUsingSinglePartyCallEmulation()) {
-                if (oldParticipantCount > 1 && newParticipantCount == 1) {
+                if (oldParticipantCount != 1 && newParticipantCount == 1) {
                     // If number of participants goes to 1, emulate a single party call.
                     startEmulatingSinglePartyCall();
                 } else if (mIsEmulatingSinglePartyCall && !isSinglePartyConference) {
@@ -1311,5 +1311,13 @@ public class ImsConference extends Conference implements Holdable {
     public boolean isFullConference() {
         return isMaximumConferenceSizeEnforced()
                 && getNumberOfParticipants() >= getMaximumConferenceSize();
+    }
+
+    /**
+     * @return {@code True} if the ImsConference is emulating single party call.
+     */
+    @VisibleForTesting
+    public boolean isEmulatingSinglePartyCall() {
+        return mIsEmulatingSinglePartyCall;
     }
 }
