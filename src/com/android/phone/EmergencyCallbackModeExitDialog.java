@@ -68,6 +68,7 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnCance
     private boolean mInEmergencyCall = false;
     private static final int ECM_TIMER_RESET = 1;
     private Phone mPhone = null;
+    private boolean mIsResumed = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,18 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnCance
         IntentFilter filter = new IntentFilter();
         filter.addAction(TelephonyIntents.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED);
         registerReceiver(mEcmExitReceiver, filter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mIsResumed = true;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mIsResumed = false;
     }
 
     @Override
@@ -176,7 +189,7 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnCance
      * Shows Emergency Callback Mode dialog and starts countdown timer
      */
     private void showEmergencyCallbackModeExitDialog() {
-        if (!this.isResumed()) {
+        if (!mIsResumed) {
             Log.w(TAG, "Tried to show dialog, but activity was already finished");
             return;
         }
