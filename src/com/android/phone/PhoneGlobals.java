@@ -37,7 +37,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.PowerManager;
-import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.UserManager;
 import android.preference.PreferenceManager;
@@ -494,19 +493,6 @@ public class PhoneGlobals extends ContextWrapper {
      */
     void setPukEntryProgressDialog(ProgressDialog dialog) {
         mPUKEntryProgressDialog = dialog;
-    }
-
-    /**
-     * If we are not currently keeping the screen on, then poke the power
-     * manager to wake up the screen for the user activity timeout duration.
-     */
-    /* package */ void wakeUpScreen() {
-        synchronized (this) {
-            if (mWakeState == WakeState.SLEEP) {
-                if (DBG) Log.d(LOG_TAG, "pulse screen lock");
-                mPowerManager.wakeUp(SystemClock.uptimeMillis(), "android.phone:WAKE");
-            }
-        }
     }
 
     KeyguardManager getKeyguardManager() {
