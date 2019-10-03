@@ -33,6 +33,7 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.StatusHints;
 import android.telecom.TelecomManager;
 import android.telecom.VideoProfile;
+import android.telephony.Annotation.RilRadioTechnology;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.PhoneNumberUtils;
@@ -465,7 +466,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
          * @param vrat the RIL Voice Radio Technology used for current connection.
          */
         @Override
-        public void onCallRadioTechChanged(@ServiceState.RilRadioTechnology int vrat) {
+        public void onCallRadioTechChanged(@RilRadioTechnology int vrat) {
             mHandler.obtainMessage(MSG_SET_CALL_RADIO_TECH, vrat).sendToTarget();
         }
 
