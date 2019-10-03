@@ -16,19 +16,16 @@
 
 package com.android.services.telephony;
 
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.reset;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.times;
-
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import android.net.Uri;
 import android.os.Looper;
@@ -39,15 +36,10 @@ import android.telecom.Connection;
 import android.telecom.PhoneAccountHandle;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import com.android.internal.telephony.PhoneConstants;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import java.util.Arrays;
 
@@ -176,6 +168,31 @@ public class ImsConferenceTest {
 
         // We should still not be considered a conference (hence we should be logging this call).
         assertFalse(isConferenceState[0]);
+    }
+
+    /**
+     * Verify that the single party emulate correctly when the conference start with only
+     * one participant.
+     */
+    @Test
+    @SmallTest
+    public void testSinglePartyEmulationWithOneParticipantAtBeginning() {
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(any(PhoneAccountHandle.class)))
+                .thenReturn(false);
+
+        ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
+                mMockTelephonyConnectionServiceProxy, mConferenceHost,
+                null /* phoneAccountHandle */, () -> true /* featureFlagProxy */);
+
+        ConferenceParticipant participant1 = new ConferenceParticipant(
+                Uri.parse("tel:6505551212"),
+                "A",
+                Uri.parse("sip:6505551212@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1));
+        assertTrue(imsConference.isEmulatingSinglePartyCall());
     }
 
     /**
