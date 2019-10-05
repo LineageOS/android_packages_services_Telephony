@@ -803,8 +803,10 @@ public class TelecomAccountRegistry {
                 Log.i(this, "User changed, re-registering phone accounts.");
 
                 int userHandleId = intent.getIntExtra(Intent.EXTRA_USER_HANDLE, 0);
-                UserHandle currentUserHandle = new UserHandle(userHandleId);
-                mIsPrimaryUser = UserManager.get(mContext).getPrimaryUser().getUserHandle()
+                UserHandle currentUserHandle = UserHandle.of(userHandleId);
+                UserManager userManager =
+                        (UserManager) context.getSystemService(Context.USER_SERVICE);
+                mIsPrimaryUser = userManager.getPrimaryUser().getUserHandle()
                         .equals(currentUserHandle);
 
                 // Any time the user changes, re-register the accounts.

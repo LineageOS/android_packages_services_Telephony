@@ -533,7 +533,7 @@
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Ei saa helistada. Valige hädaabinumber."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Hädaabikõned pole saadaval"</string>
     <string name="police_type_description" msgid="5324410799919829693">"Politsei"</string>
-    <string name="ambulance_type_description" msgid="4114815025408089866">"Kiirabiauto"</string>
+    <string name="ambulance_type_description" msgid="4114815025408089866">"Kiirabi"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"Tuletõrje"</string>
     <string name="description_concat_format" msgid="7141070875487870177">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="9192914825413747792">"Kasutage valimiseks klaviatuuri"</string>

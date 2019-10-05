@@ -153,7 +153,7 @@ public class EmergencyInfoGroup extends FrameLayout implements View.OnClickListe
     private Drawable getCircularUserIcon() {
         final UserManager userManager = (UserManager) getContext().getSystemService(
                 Context.USER_SERVICE);
-        Bitmap bitmapUserIcon = userManager.getUserIcon(UserHandle.getCallingUserId());
+        Bitmap bitmapUserIcon = userManager.getUserIcon();
 
         if (bitmapUserIcon == null) {
             // get default user icon.

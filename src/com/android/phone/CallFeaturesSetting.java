@@ -202,7 +202,8 @@ public class CallFeaturesSetting extends PreferenceActivity
         if (DBG) log("onCreate: Intent is " + getIntent());
 
         // Make sure we are running as an admin user.
-        if (!UserManager.get(this).isAdminUser()) {
+        UserManager userManager = (UserManager) getSystemService(Context.USER_SERVICE);
+        if (!userManager.isAdminUser()) {
             Toast.makeText(this, R.string.call_settings_admin_user_only,
                     Toast.LENGTH_SHORT).show();
             finish();

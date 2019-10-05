@@ -226,18 +226,18 @@
     <string name="preferred_network_mode_lte_cdma_evdo_summary" msgid="228702246343742853">"ନିଜ ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: CDMA+LTE/EVDO"</string>
     <string name="preferred_network_mode_global_summary" msgid="1633134285545730364">"ନିଜ ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: ଗ୍ଲୋବାଲ୍"</string>
     <string name="preferred_network_mode_lte_wcdma_summary" msgid="9180775701594742750">"ନିଜ ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE / WCDMA"</string>
-    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"ପସନ୍ଦଦାର୍ ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE / GSM / UMTS"</string>
+    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="633315028976225026">"ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"ନିଜ ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE / CDMA"</string>
-    <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"ପସନ୍ଦଦାର୍ ନେଟ୍‌ୱର୍କ ମୋଡ୍: TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"ପସନ୍ଦଦାର୍ ନେଟ୍‌ୱର୍କ ମୋଡ୍: TDSCDMA / WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"ପସନ୍ଦଦାର୍ ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE / TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"ପସନ୍ଦଦାର୍ ନେଟ୍‌ୱର୍କ ମୋଡ୍: TDSCDMA / GSM"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"ପସନ୍ଦଦାର୍ ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE/GSM/TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"ପସନ୍ଦଦାର୍ ନେଟ୍‌ୱର୍କ ମୋଡ୍: TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"ପସନ୍ଦଦାର୍ ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE/TDSCDMA/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"ପସନ୍ଦଦାର୍ ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE/TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"ପସନ୍ଦଦାର୍ ନେଟ୍‌ୱର୍କ ମୋଡ୍: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"ପସନ୍ଦଦାର୍ ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_summary" msgid="8021016193718678775">"ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="2405154895437348623">"ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: TDSCDMA / WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="2104702896644235637">"ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE / TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="4893784445338396204">"ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: TDSCDMA / GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1815169717046729757">"ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2195358773359424099">"ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="1181424059695667803">"ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2526539326505354382">"ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="8195248059196614939">"ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="5596733053095592791">"ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="call_category" msgid="5863978196309462052">"କଲ୍ କରାଯାଉଛି"</string>
     <string name="network_operator_category" msgid="4830701959205735636">"ନେଟ୍‌ୱର୍କ"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="522191650223239171">"ଉନ୍ନତ 4G LTE ମୋଡ୍‍"</string>

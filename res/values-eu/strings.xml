@@ -313,9 +313,9 @@
     <string name="enable_disable_local" msgid="7890281063123416120">"Tokikoa"</string>
     <string name="local_enable" msgid="6370463247609136359">"Tokiko albisteak gaituta"</string>
     <string name="local_disable" msgid="4405691986943795798">"Tokiko albisteak desgaituta"</string>
-    <string name="enable_disable_regional" msgid="4905652414535565872">"Eskualdekoak"</string>
-    <string name="regional_enable" msgid="4434680415437834759">"Eskualdeko albisteak gaituta"</string>
-    <string name="regional_disable" msgid="5359325527213850077">"Eskualdeko albisteak desgaituta"</string>
+    <string name="enable_disable_regional" msgid="4905652414535565872">"Tokikoak"</string>
+    <string name="regional_enable" msgid="4434680415437834759">"Tokiko albisteak gaituta"</string>
+    <string name="regional_disable" msgid="5359325527213850077">"Tokiko albisteak desgaituta"</string>
     <string name="enable_disable_national" msgid="236278090206880734">"Nazionalak"</string>
     <string name="national_enable" msgid="1172443648912246952">"Albiste nazionalak gaituta"</string>
     <string name="national_disable" msgid="326018148178601166">"Albiste nazionalak desgaituta"</string>
