@@ -112,17 +112,17 @@
     <string name="messageCFB" msgid="3711089705936187129">"Número no caso de estar ocupado"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"A encaminhar para <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"Desativado"</string>
-    <string name="disable_cfb_forbidden" msgid="3506984333877998061">"O seu operador não suporta a desativação do reencaminhamento de chamadas quando o telemóvel está ocupado."</string>
+    <string name="disable_cfb_forbidden" msgid="3506984333877998061">"O seu operador não suporta a desativação do encaminhamento de chamadas quando o telemóvel está ocupado."</string>
     <string name="labelCFNRy" msgid="1736067178393744351">"Quando não tiver atendido"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"Número no caso de não atender"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"A encaminhar para <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Desativado"</string>
-    <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"O operador não suporta a desativação do reencaminhamento de chamadas quando o telemóvel não atende."</string>
+    <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"O operador não suporta a desativação do encaminhamento de chamadas quando o telemóvel não atende."</string>
     <string name="labelCFNRc" msgid="2614827454402079766">"Quando estiver inacessível"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Número no caso de estar inacessível"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"A encaminhar para <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Desativado"</string>
-    <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"O seu operador não suporta a desativação do reencaminhamento de chamadas quando o telemóvel não está acessível."</string>
+    <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"O seu operador não suporta a desativação do encaminhamento de chamadas quando o telemóvel não está acessível."</string>
     <string name="updating_title" msgid="6146755386174019046">"Definições de chamadas"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"As definições de chamadas só podem ser alteradas pelo utilizador gestor."</string>
     <string name="call_settings_with_label" msgid="3401177261468593519">"Definições (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -770,7 +770,7 @@
     <string name="supp_service_closed_user_group_call" msgid="5761735840904590950">"A chamada pertence a um grupo de utilizadores fechado."</string>
     <string name="supp_service_incoming_calls_barred" msgid="3248813207307882723">"As chamadas recebidas foram barradas."</string>
     <string name="supp_service_outgoing_calls_barred" msgid="1962644621292054081">"As chamadas efetuadas foram barradas."</string>
-    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"O reencaminhamento de chamadas está ativado."</string>
+    <string name="supp_service_call_forwarding_active" msgid="1253134771682248735">"O encaminhamento de chamadas está ativado."</string>
     <string name="supp_service_additional_call_forwarded" msgid="5228624725214727315">"A chamada adicional foi reencaminhada."</string>
     <string name="supp_service_additional_ect_connected" msgid="6396964292513707102">"A transferência da chamada explícita foi concluída."</string>
     <string name="supp_service_additional_ect_connecting" msgid="5443373059716058480">"A transferência da chamada explícita está em curso."</string>
