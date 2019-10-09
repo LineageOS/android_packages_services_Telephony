@@ -53,7 +53,7 @@ public class RadioOnHelper implements RadioOnStateListener.Callback {
             return;
         }
         mListeners = new ArrayList<>(2);
-        for (int i = 0; i < TelephonyManager.getDefault().getMaxPhoneCount(); i++) {
+        for (int i = 0; i < TelephonyManager.getDefault().getSupportedModemCount(); i++) {
             mListeners.add(new RadioOnStateListener());
         }
     }
@@ -76,7 +76,7 @@ public class RadioOnHelper implements RadioOnStateListener.Callback {
         mCallback = callback;
         mInProgressListeners.clear();
         mIsRadioOnCallingEnabled = false;
-        for (int i = 0; i < TelephonyManager.getDefault().getMaxPhoneCount(); i++) {
+        for (int i = 0; i < TelephonyManager.getDefault().getSupportedModemCount(); i++) {
             Phone phone = PhoneFactory.getPhone(i);
             if (phone == null) {
                 continue;
