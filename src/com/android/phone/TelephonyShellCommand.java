@@ -20,7 +20,6 @@ import android.os.Binder;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.ShellCommand;
-import android.os.UserHandle;
 import android.telephony.SubscriptionManager;
 import android.telephony.emergency.EmergencyNumber;
 import android.util.Log;
@@ -45,7 +44,6 @@ public class TelephonyShellCommand extends ShellCommand {
     private static final int DEFAULT_PHONE_ID = 0;
 
     private static final String IMS_SUBCOMMAND = "ims";
-    private static final String SMS_SUBCOMMAND = "sms";
     private static final String NUMBER_VERIFICATION_SUBCOMMAND = "numverify";
     private static final String EMERGENCY_NUMBER_TEST_MODE = "emergency-number-test-mode";
 
@@ -53,10 +51,6 @@ public class TelephonyShellCommand extends ShellCommand {
     private static final String IMS_GET_CARRIER_SERVICE = "get-ims-service";
     private static final String IMS_ENABLE = "enable";
     private static final String IMS_DISABLE = "disable";
-
-    private static final String SMS_GET_APPS = "get-apps";
-    private static final String SMS_GET_DEFAULT_APP = "get-default-app";
-    private static final String SMS_SET_DEFAULT_APP = "set-default-app";
 
     private static final String NUMBER_VERIFICATION_OVERRIDE_PACKAGE = "override-package";
     private static final String NUMBER_VERIFICATION_FAKE_CALL = "fake-call";
@@ -78,9 +72,6 @@ public class TelephonyShellCommand extends ShellCommand {
             case IMS_SUBCOMMAND: {
                 return handleImsCommand();
             }
-            case SMS_SUBCOMMAND: {
-                return handleSmsCommand();
-            }
             case NUMBER_VERIFICATION_SUBCOMMAND:
                 return handleNumberVerificationCommand();
             case EMERGENCY_NUMBER_TEST_MODE:
@@ -99,12 +90,9 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("    Print this help text.");
         pw.println("  ims");
         pw.println("    IMS Commands.");
-        pw.println("  sms");
-        pw.println("    SMS Commands.");
         pw.println("  emergency-number-test-mode");
         pw.println("    Emergency Number Test Mode Commands.");
         onHelpIms();
-        onHelpSms();
         onHelpEmergencyNumber();
     }
 
@@ -132,18 +120,6 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("    disables IMS for the SIM slot specified, or for the default voice SIM");
         pw.println("    slot if none is specified.");
     }
-
-    private void onHelpSms() {
-        PrintWriter pw = getOutPrintWriter();
-        pw.println("SMS Commands:");
-        pw.println("  sms get-apps [--user USER_ID]");
-        pw.println("    Print all SMS apps on a user.");
-        pw.println("  sms get-default-app [--user USER_ID]");
-        pw.println("    Get the default SMS app.");
-        pw.println("  sms set-default-app [--user USER_ID] PACKAGE_NAME");
-        pw.println("    Set PACKAGE_NAME as the default SMS app.");
-    }
-
 
     private void onHelpNumberVerification() {
         PrintWriter pw = getOutPrintWriter();
@@ -474,87 +450,6 @@ public class TelephonyShellCommand extends ShellCommand {
             slotId = DEFAULT_PHONE_ID;
         }
         return slotId;
-    }
-
-    private int handleSmsCommand() {
-        String arg = getNextArg();
-        if (arg == null) {
-            onHelpSms();
-            return 0;
-        }
-
-        try {
-            switch (arg) {
-                case SMS_GET_APPS: {
-                    return handleSmsGetApps();
-                }
-                case SMS_GET_DEFAULT_APP: {
-                    return handleSmsGetDefaultApp();
-                }
-                case SMS_SET_DEFAULT_APP: {
-                    return handleSmsSetDefaultApp();
-                }
-                default:
-                    getErrPrintWriter().println("Unknown command " + arg);
-            }
-        } catch (RemoteException e) {
-            getErrPrintWriter().println("RemoteException: " + e.getMessage());
-        }
-
-        return -1;
-    }
-
-    private int maybeParseUserIdArg() {
-        int userId = UserHandle.USER_SYSTEM;
-        String opt;
-        while ((opt = getNextOption()) != null) {
-            switch (opt) {
-                case "--user": {
-                    try {
-                        userId = Integer.parseInt(getNextArgRequired());
-                    } catch (NumberFormatException e) {
-                        getErrPrintWriter().println("Invalid user ID for --user");
-                        return -1;
-                    }
-                    break;
-                }
-            }
-        }
-        return userId;
-    }
-
-    private int handleSmsGetApps() throws RemoteException {
-        final int userId = maybeParseUserIdArg();
-        if (userId < 0) {
-            return -1;
-        }
-
-        for (String packageName : mInterface.getSmsApps(userId)) {
-            getOutPrintWriter().println(packageName);
-        }
-        return 0;
-    }
-
-    private int handleSmsGetDefaultApp() throws RemoteException {
-        final int userId = maybeParseUserIdArg();
-        if (userId < 0) {
-            return -1;
-        }
-
-        getOutPrintWriter().println(mInterface.getDefaultSmsApp(userId));
-        return 0;
-    }
-
-    private int handleSmsSetDefaultApp() throws RemoteException {
-        final int userId = maybeParseUserIdArg();
-        if (userId < 0) {
-            return -1;
-        }
-
-        String packageName = getNextArgRequired();
-        mInterface.setDefaultSmsApp(userId, packageName);
-        getOutPrintWriter().println("SMS app set to " + mInterface.getDefaultSmsApp(userId));
-        return 0;
     }
 
     private boolean checkShellUid() {
