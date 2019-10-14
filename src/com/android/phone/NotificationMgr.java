@@ -64,6 +64,7 @@ import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.internal.telephony.util.NotificationChannelController;
 import com.android.phone.settings.VoicemailSettingsActivity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -375,9 +376,8 @@ public class NotificationMgr {
                     .setOnlyAlertOnce(isRefresh);
 
             final Notification notification = builder.build();
-            List<UserInfo> users = mUserManager.getUsers(true);
-            for (UserInfo user : users) {
-                final UserHandle userHandle = user.getUserHandle();
+            List<UserHandle> users = getUsersExcludeDying();
+            for (UserHandle userHandle : users) {
                 if (!hasUserRestriction(
                         UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
                         && !mUserManager.isManagedProfile(userHandle.getIdentifier())) {
@@ -392,9 +392,8 @@ public class NotificationMgr {
                 }
             }
         } else {
-            List<UserInfo> users = mUserManager.getUsers(true /* excludeDying */);
-            for (UserInfo user : users) {
-                final UserHandle userHandle = user.getUserHandle();
+            List<UserHandle> users = getUsersExcludeDying();
+            for (UserHandle userHandle : users) {
                 if (!hasUserRestriction(
                         UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
                         && !mUserManager.isManagedProfile(userHandle.getIdentifier())) {
@@ -408,6 +407,16 @@ public class NotificationMgr {
                 }
             }
         }
+    }
+
+    private List<UserHandle> getUsersExcludeDying() {
+        long[] serialNumbersOfUsers =
+                mUserManager.getSerialNumbersOfUsers(/* excludeDying= */ true);
+        List<UserHandle> users = new ArrayList<>(serialNumbersOfUsers.length);
+        for (long serialNumber : serialNumbersOfUsers) {
+            users.add(mUserManager.getUserForSerialNumber(serialNumber));
+        }
+        return users;
     }
 
     private boolean hasUserRestriction(String restrictionKey, UserHandle userHandle) {
