@@ -1159,7 +1159,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                && isShowingOriginalDialString()) {
             Log.i(this, "new original dial string is null, convert to: "
                    +  mOriginalConnection.getOrigDialString());
-            originalConnection.setConverted(mOriginalConnection.getOrigDialString());
+            originalConnection.restoreDialedNumberAfterConversion(
+                    mOriginalConnection.getOrigDialString());
         }
 
         clearOriginalConnection();
