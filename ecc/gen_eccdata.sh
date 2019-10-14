@@ -34,7 +34,7 @@ case $(uname -s) in
 esac
 
 read -d "" PROTOC_COMMAND << END || :
-${ANDROID_BUILD_TOP}/prebuilts/tools/${KERNEL}-x86_64/protoc/bin/protoc
+${ANDROID_BUILD_TOP}/prebuilts/misc/${KERNEL}-x86/protobuf/aprotoc
 END
 if ! [ -x "${PROTOC_COMMAND}" ] ; then
   echo "Missing ${PROTOC_COMMAND}." 1>&2
