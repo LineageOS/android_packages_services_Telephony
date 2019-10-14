@@ -6500,7 +6500,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (card != null) {
                     cardId = card.getCardId();
                 } else {
-                    cardId = slot.getIccId();
+                    cardId = slot.getEid();
+                    if (TextUtils.isEmpty(cardId)) {
+                        cardId = slot.getIccId();
+                    }
                 }
 
                 if (cardId != null) {
