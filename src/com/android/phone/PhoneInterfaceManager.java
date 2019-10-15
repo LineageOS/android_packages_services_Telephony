@@ -6897,7 +6897,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     private void ensureUserRunning(int userId) {
-        if (!mUserManager.isUserRunning(userId)) {
+        if (!mUserManager.isUserRunning(UserHandle.of(userId))) {
             throw new IllegalStateException("User " + userId + " does not exist or not running");
         }
     }
