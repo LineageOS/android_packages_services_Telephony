@@ -110,6 +110,25 @@ public class ImsConference extends Conference implements Holdable {
                handleOriginalConnectionChange();
             }
         }
+
+        /**
+         * Handles changes to conference participant data as reported by the conference host
+         * connection.
+         *
+         * @param c The connection.
+         * @param participants The participant information.
+         */
+        @Override
+        public void onConferenceParticipantsChanged(android.telecom.Connection c,
+                List<ConferenceParticipant> participants) {
+
+            if (c == null || participants == null) {
+                return;
+            }
+            Log.v(this, "onConferenceParticipantsChanged: %d participants", participants.size());
+            TelephonyConnection telephonyConnection = (TelephonyConnection) c;
+            handleConferenceParticipantsUpdate(telephonyConnection, participants);
+        }
     };
 
     /**
@@ -138,25 +157,6 @@ public class ImsConference extends Conference implements Holdable {
         @Override
         public void onDisconnected(android.telecom.Connection c, DisconnectCause disconnectCause) {
             setDisconnected(disconnectCause);
-        }
-
-        /**
-         * Handles changes to conference participant data as reported by the conference host
-         * connection.
-         *
-         * @param c The connection.
-         * @param participants The participant information.
-         */
-        @Override
-        public void onConferenceParticipantsChanged(android.telecom.Connection c,
-                List<ConferenceParticipant> participants) {
-
-            if (c == null || participants == null) {
-                return;
-            }
-            Log.v(this, "onConferenceParticipantsChanged: %d participants", participants.size());
-            TelephonyConnection telephonyConnection = (TelephonyConnection) c;
-            handleConferenceParticipantsUpdate(telephonyConnection, participants);
         }
 
         @Override

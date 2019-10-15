@@ -1344,6 +1344,7 @@ public class TelephonyConnectionService extends ConnectionService {
             returnConnection.setShowPreciseFailedCause(
                     TelecomAccountRegistry.getInstance(this).isShowPreciseFailedCause(
                             phoneAccountHandle));
+            returnConnection.setTelephonyConnectionService(this);
         }
         return returnConnection;
     }
