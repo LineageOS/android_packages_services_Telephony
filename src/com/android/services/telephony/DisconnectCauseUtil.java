@@ -18,10 +18,14 @@ package com.android.services.telephony;
 
 import android.content.Context;
 import android.media.ToneGenerator;
+import android.os.PersistableBundle;
 import android.telecom.DisconnectCause;
+import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 
 import com.android.internal.telephony.CallFailCause;
+import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneFactory;
 import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.common.R;
@@ -102,7 +106,7 @@ public class DisconnectCauseUtil {
                         telephonyPerciseDisconnectCause),
                 toTelecomDisconnectCauseDescription(context, telephonyDisconnectCause, phoneId),
                 toTelecomDisconnectReason(context,telephonyDisconnectCause, reason, phoneId),
-                toTelecomDisconnectCauseTone(telephonyDisconnectCause));
+                toTelecomDisconnectCauseTone(telephonyDisconnectCause, phoneId));
     }
 
     /**
@@ -807,11 +811,22 @@ public class DisconnectCauseUtil {
     /**
      * Returns the tone to play for the disconnect cause, or UNKNOWN if none should be played.
      */
-    private static int toTelecomDisconnectCauseTone(int telephonyDisconnectCause) {
-        switch (telephonyDisconnectCause) {
-            case android.telephony.DisconnectCause.BUSY:
+    private static int toTelecomDisconnectCauseTone(int telephonyDisconnectCause, int phoneId) {
+        Phone phone = PhoneFactory.getPhone(phoneId);
+        PersistableBundle config;
+        if (phone != null) {
+            config = PhoneGlobals.getInstance().getCarrierConfigForSubId(phone.getSubId());
+        } else {
+            config = PhoneGlobals.getInstance().getCarrierConfig();
+        }
+        int[] busyToneArray = config.getIntArray(
+                CarrierConfigManager.KEY_DISCONNECT_CAUSE_PLAY_BUSYTONE_INT_ARRAY);
+        for (int busyTone : busyToneArray) {
+            if (busyTone == telephonyDisconnectCause) {
                 return ToneGenerator.TONE_SUP_BUSY;
-
+            }
+        }
+        switch (telephonyDisconnectCause) {
             case android.telephony.DisconnectCause.CONGESTION:
                 return ToneGenerator.TONE_SUP_CONGESTION;
 
