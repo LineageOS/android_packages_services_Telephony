@@ -948,6 +948,23 @@ public class TelephonyConnectionService extends ConnectionService {
     }
 
     @Override
+    public void onCreateIncomingConnectionFailed(PhoneAccountHandle connectionManagerPhoneAccount,
+            ConnectionRequest request) {
+        Phone phone = getPhoneForAccount(request.getAccountHandle(), false, null);
+        Call ringingCall = phone.getRingingCall();
+        if (ringingCall.isRinging()) {
+            try {
+                Log.i(this, "onCreateIncomingConnectionFailed: hanging up ringing call "
+                        + ringingCall);
+                ringingCall.hangup();
+            } catch (CallStateException e) {
+                Log.w(this, "onCreateIncomingConnectionFailed: couldn't hang up ringing call "
+                        + ringingCall);
+            }
+        }
+    }
+
+    @Override
     public void triggerConferenceRecalculate() {
         if (mTelephonyConferenceController.shouldRecalculate()) {
             mTelephonyConferenceController.recalculate();
