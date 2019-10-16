@@ -18,6 +18,7 @@ package com.android.phone;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
+import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_IMS;
 import static com.android.internal.telephony.PhoneConstants.SUBSCRIPTION_KEY;
 
 import android.Manifest.permission;
@@ -150,6 +151,8 @@ import com.android.internal.telephony.dataconnection.ApnSettingUtils;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.euicc.EuiccConnector;
 import com.android.internal.telephony.ims.ImsResolver;
+import com.android.internal.telephony.imsphone.ImsPhone;
+import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
 import com.android.internal.telephony.metrics.TelephonyMetrics;
 import com.android.internal.telephony.uicc.IccCardApplicationStatus.AppType;
 import com.android.internal.telephony.uicc.IccIoResult;
@@ -7259,6 +7262,34 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (phone == null) return false;
 
             return phone.getDataEnabledSettings().isDataAllowedInVoiceCall();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Updates whether conference event pacakge handling is enabled.
+     * @param isCepEnabled {@code true} if CEP handling is enabled (default), or {@code false}
+     *                                 otherwise.
+     */
+    @Override
+    public void setCepEnabled(boolean isCepEnabled) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "setCepEnabled");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Rlog.i(LOG_TAG, "setCepEnabled isCepEnabled=" + isCepEnabled);
+            for (Phone phone : PhoneFactory.getPhones()) {
+                Phone defaultPhone = phone.getImsPhone();
+                if (defaultPhone != null && defaultPhone.getPhoneType() == PHONE_TYPE_IMS) {
+                    ImsPhone imsPhone = (ImsPhone) defaultPhone;
+                    ImsPhoneCallTracker imsPhoneCallTracker =
+                            (ImsPhoneCallTracker) imsPhone.getCallTracker();
+                    imsPhoneCallTracker.setConferenceEventPackageEnabled(isCepEnabled);
+                    Rlog.i(LOG_TAG, "setCepEnabled isCepEnabled=" + isCepEnabled + ", for imsPhone "
+                            + imsPhone.getMsisdn());
+                }
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
