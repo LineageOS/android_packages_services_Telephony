@@ -53,6 +53,10 @@ public class TelephonyShellCommand extends ShellCommand {
     private static final String IMS_GET_CARRIER_SERVICE = "get-ims-service";
     private static final String IMS_ENABLE = "enable";
     private static final String IMS_DISABLE = "disable";
+    // Used to disable or enable processing of conference event package data from the network.
+    // This is handy for testing scenarios where CEP data does not exist on a network which does
+    // support CEP data.
+    private static final String IMS_CEP = "conference-event-package";
 
     private static final String SMS_GET_APPS = "get-apps";
     private static final String SMS_GET_DEFAULT_APP = "get-default-app";
@@ -131,6 +135,8 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("  ims disable [-s SLOT_ID]");
         pw.println("    disables IMS for the SIM slot specified, or for the default voice SIM");
         pw.println("    slot if none is specified.");
+        pw.println("  ims conference-event-package [enable/disable]");
+        pw.println("    enables or disables handling or network conference event package data.");
     }
 
     private void onHelpSms() {
@@ -189,6 +195,9 @@ public class TelephonyShellCommand extends ShellCommand {
             }
             case IMS_DISABLE: {
                 return handleDisableIms();
+            }
+            case IMS_CEP: {
+                return handleCepChange();
             }
         }
 
@@ -462,6 +471,22 @@ public class TelephonyShellCommand extends ShellCommand {
         }
         if (VDBG) {
             Log.v(LOG_TAG, "ims disable -s " + slotId);
+        }
+        return 0;
+    }
+
+    private int handleCepChange() {
+        Log.i(LOG_TAG, "handleCepChange");
+        String opt = getNextArg();
+        if (opt == null) {
+            return -1;
+        }
+        boolean isCepEnabled = opt.equals("enable");
+
+        try {
+            mInterface.setCepEnabled(isCepEnabled);
+        } catch (RemoteException e) {
+            return -1;
         }
         return 0;
     }
