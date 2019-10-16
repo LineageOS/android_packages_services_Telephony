@@ -2776,7 +2776,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (phone != null) {
                 phone.setDataActivationState(activationState);
             } else {
-                loge("setVoiceActivationState fails with invalid subId: " + subId);
+                loge("setDataActivationState fails with invalid subId: " + subId);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -4958,13 +4958,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public int getCarrierPrivilegeStatusForUid(int subId, int uid) {
         final Phone phone = getPhone(subId);
         if (phone == null) {
-            loge("getCarrierPrivilegeStatus: Invalid subId");
+            loge("getCarrierPrivilegeStatusForUid: Invalid subId");
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
         }
         UiccProfile profile =
                 UiccController.getInstance().getUiccProfileForPhone(phone.getPhoneId());
         if (profile == null) {
-            loge("getCarrierPrivilegeStatus: No UICC");
+            loge("getCarrierPrivilegeStatusForUid: No UICC");
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
         }
         return getCarrierPrivilegeStatusFromCarrierConfigRules(
@@ -5020,7 +5020,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         UiccCard card = UiccController.getInstance().getUiccCard(phoneId);
         if (card == null) {
-            loge("getCarrierPackageNamesForIntent: No UICC");
+            loge("getCarrierPackageNamesForIntentAndPhone: No UICC");
             return null ;
         }
         return card.getCarrierPackageNamesForIntent(mApp.getPackageManager(), intent);
