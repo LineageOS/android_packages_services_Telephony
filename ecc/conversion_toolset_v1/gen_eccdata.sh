@@ -19,7 +19,7 @@ LOCAL_TOOLSET_DIR="${ECC_ROOT}/conversion_toolset_v1"
 source "${LOCAL_TOOLSET_DIR}/env.sh"
 
 echo "Converting eccdata..."
-${ANDROID_BUILD_TOP}/prebuilts/tools/linux-x86_64/protoc/bin/protoc \
+${ANDROID_BUILD_TOP}/prebuilts/misc/${KERNEL}-x86/protobuf/aprotoc \
   --encode=ecc.AllInfo proto/protobuf_ecc_data.proto \
   < "${INPUT_DATA}" > "${RAW_DATA}"
 
