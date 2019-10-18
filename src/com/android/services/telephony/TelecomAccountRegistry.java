@@ -35,7 +35,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.PersistableBundle;
 import android.os.UserHandle;
-import android.os.UserManager;
 import android.provider.Settings;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
@@ -804,10 +803,7 @@ public class TelecomAccountRegistry {
 
                 int userHandleId = intent.getIntExtra(Intent.EXTRA_USER_HANDLE, 0);
                 UserHandle currentUserHandle = UserHandle.of(userHandleId);
-                UserManager userManager =
-                        (UserManager) context.getSystemService(Context.USER_SERVICE);
-                mIsPrimaryUser = userManager.getPrimaryUser().getUserHandle()
-                        .equals(currentUserHandle);
+                mIsPrimaryUser = currentUserHandle.isSystem();
 
                 // Any time the user changes, re-register the accounts.
                 tearDownAccounts();
