@@ -46,6 +46,7 @@ import com.android.TelephonyTestBase;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Connection;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.gsm.SuppServiceNotification;
 
 import org.junit.After;
@@ -72,6 +73,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Mock TelephonyConnectionService.TelephonyManagerProxy mTelephonyManagerProxy;
     @Mock TelephonyConnectionService.SubscriptionManagerProxy mSubscriptionManagerProxy;
     @Mock TelephonyConnectionService.PhoneFactoryProxy mPhoneFactoryProxy;
+    @Mock EmergencyNumberTracker mEmergencyNumberTracker;
 
     TelephonyConnectionService mTestConnectionService;
 
@@ -818,6 +820,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         when(phone.getServiceState()).thenReturn(testServiceState);
         when(phone.getPhoneId()).thenReturn(phoneId);
         when(phone.getDefaultPhone()).thenReturn(phone);
+        when(phone.getEmergencyNumberTracker()).thenReturn(mEmergencyNumberTracker);
+        when(mEmergencyNumberTracker.getEmergencyNumber(anyString())).thenReturn(null);
         return phone;
     }
 
