@@ -23,6 +23,7 @@ import android.telecom.PhoneAccountHandle;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -31,6 +32,7 @@ import com.android.internal.telephony.Call;
 import com.android.internal.telephony.Connection;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -56,6 +58,9 @@ public class TestTelephonyConnection extends TelephonyConnection {
     @Mock
     Resources mMockResources;
 
+    @Mock
+    EmergencyNumberTracker mEmergencyNumberTracker;
+
     private Phone mMockPhone;
     private int mNotifyPhoneAccountChangedCount = 0;
     private List<String> mLastConnectionEvents = new ArrayList<>();
@@ -80,6 +85,8 @@ public class TestTelephonyConnection extends TelephonyConnection {
         doNothing().when(mMockRadioConnection).addListener(any(Connection.Listener.class));
         doNothing().when(mMockRadioConnection).addPostDialListener(
                 any(Connection.PostDialListener.class));
+        when(mEmergencyNumberTracker.getEmergencyNumber(anyString())).thenReturn(null);
+        when(mMockPhone.getEmergencyNumberTracker()).thenReturn(mEmergencyNumberTracker);
         when(mMockPhone.getRingingCall()).thenReturn(mMockCall);
         when(mMockPhone.getContext()).thenReturn(mMockContext);
         when(mMockPhone.getCurrentSubscriberUris()).thenReturn(null);
