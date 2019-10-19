@@ -794,4 +794,91 @@
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data pro SIM kartu <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Můžete to změnit v nastavení mobilní sítě."</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data a datový roaming pro SIM kartu <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Můžete to změnit v nastavení mobilní sítě."</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Zavřít"</string>
+    <string name="radio_info_data_connection_enable" msgid="5791637077797729311">"Povolit datové připojení"</string>
+    <string name="radio_info_data_connection_disable" msgid="9028822504877773144">"Zakázat datové připojení"</string>
+    <string name="volte_provisioned_switch_string" msgid="1394051796024284160">"Poskytnutí VoLTE"</string>
+    <string name="vt_provisioned_switch_string" msgid="2392736863413388180">"Zajištění videohovoru"</string>
+    <string name="wfc_provisioned_switch_string" msgid="7077270261545093108">"Zajištění volání přes Wi-Fi"</string>
+    <string name="eab_provisioned_switch_string" msgid="793700585260677822">"Zajištění EAB/přítomnosti"</string>
+    <string name="cbrs_data_switch_string" msgid="2717460177342559687">"Data CBRS"</string>
+    <string name="dsds_switch_string" msgid="1584067974668266474">"Aktivovat DSDS"</string>
+    <string name="dsds_dialog_title" msgid="3987891679204664973">"Restartovat zařízení?"</string>
+    <string name="dsds_dialog_message" msgid="4839383881298996559">"Ke změně nastavení je nutné restartovat zařízení."</string>
+    <string name="dsds_dialog_confirm" msgid="5658607488389433209">"Restartovat"</string>
+    <string name="dsds_dialog_cancel" msgid="2332482983314535971">"Zrušit"</string>
+    <string name="radio_info_radio_power" msgid="3197814106269756338">"Výkon mobilního přijímače"</string>
+    <string name="radioInfo_menu_viewADN" msgid="8157521617774683881">"Zobrazit adresář SIM karty"</string>
+    <string name="radioInfo_menu_viewFDN" msgid="2688688788097552349">"Zobrazit povolená telefonní čísla"</string>
+    <string name="radioInfo_menu_viewSDN" msgid="1369044132596800516">"Zobrazit čísla volání služeb"</string>
+    <string name="radioInfo_menu_getIMS" msgid="1903636613815926161">"Stav služby IMS"</string>
+    <string name="radio_info_ims_reg_status_title" msgid="6684191300020755567">"Stav IMS"</string>
+    <string name="radio_info_ims_reg_status_registered" msgid="1624801379938618583">"Registrováno"</string>
+    <string name="radio_info_ims_reg_status_not_registered" msgid="6373416281874001636">"Bez registrace"</string>
+    <string name="radio_info_ims_feature_status_available" msgid="6838492688972476959">"K dispozici"</string>
+    <string name="radio_info_ims_feature_status_unavailable" msgid="5961126036687673382">"Není k dispozici"</string>
+    <string name="radio_info_ims_reg_status" msgid="5627113102160798161">"Registrace IMS: <xliff:g id="STATUS">%1$s</xliff:g>\nVolání přes LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nVolání přes Wi-Fi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideohovory: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nRozhraní UT: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radioInfo_service_in" msgid="213948507638906391">"V provozu"</string>
+    <string name="radioInfo_service_out" msgid="1663775355255962705">"Mimo provoz"</string>
+    <string name="radioInfo_service_emergency" msgid="4995960081039410044">"Pouze tísňová volání"</string>
+    <string name="radioInfo_service_off" msgid="2004877283088431892">"Bezdrátový modul je vypnut"</string>
+    <string name="radioInfo_roaming_in" msgid="7972162764330241405">"Roaming"</string>
+    <string name="radioInfo_roaming_not" msgid="1517046855316268494">"Bez roamingu"</string>
+    <string name="radioInfo_phone_idle" msgid="3842451875395210085">"Nečinné"</string>
+    <string name="radioInfo_phone_ringing" msgid="3495254865874923877">"Vyzvánění"</string>
+    <string name="radioInfo_phone_offhook" msgid="9025079393890376475">"Probíhá hovor"</string>
+    <string name="radioInfo_data_disconnected" msgid="8760151893300132735">"Odpojeno"</string>
+    <string name="radioInfo_data_connecting" msgid="8939201656582630105">"Připojování"</string>
+    <string name="radioInfo_data_connected" msgid="5747343830421265426">"Připojeno"</string>
+    <string name="radioInfo_data_suspended" msgid="7097865203453504891">"Pozastaveno"</string>
+    <string name="radioInfo_unknown" msgid="6062057756843316580">"Neznámé"</string>
+    <string name="radioInfo_display_packets" msgid="7979215102668713597">"pakety"</string>
+    <string name="radioInfo_display_bytes" msgid="4317422116221941054">"B"</string>
+    <string name="radioInfo_display_dbm" msgid="2805604362853367515">"dBm"</string>
+    <string name="radioInfo_display_asu" msgid="4770234772576941977">"asu"</string>
+    <string name="radioInfo_lac" msgid="7943726640835847607">"LAC"</string>
+    <string name="radioInfo_cid" msgid="8357865174787359252">"CID"</string>
+    <string name="radio_info_subid" msgid="4090664764881346812">"Stávající subId:"</string>
+    <string name="radio_info_dds" msgid="1689012310213686695">"SubId výchozí datové SIM karty:"</string>
+    <string name="radio_info_dl_kbps" msgid="4293678516674363232">"Rychlost stahování (kB/s):"</string>
+    <string name="radio_info_ul_kbps" msgid="5013363806530336667">"Rychlost nahrávání (kB/s):"</string>
+    <string name="radio_info_signal_location_label" msgid="6196477714345817742">"Informace o poloze mobilní sítě (podpora ukončena):"</string>
+    <string name="radio_info_phy_chan_config" msgid="2296197957826074272">"Konfigurace fyzického kanálu LTE:"</string>
+    <string name="radio_info_cell_info_refresh_rate" msgid="8224592422585623740">"Interval obnovení informací o mobilní síti:"</string>
+    <string name="radio_info_cellinfo_label" msgid="4640050297091408627">"Všechny údaje o měření mobilní sítě:"</string>
+    <string name="radio_info_gprs_service_label" msgid="4341880601921268265">"Datová služba:"</string>
+    <string name="radio_info_roaming_label" msgid="3577916622329527197">"Roaming:"</string>
+    <string name="radio_info_imei_label" msgid="7435478087413078973">"IMEI:"</string>
+    <string name="radio_info_call_redirect_label" msgid="2223669286498038884">"Přesměrování hovoru:"</string>
+    <string name="radio_info_ppp_resets_label" msgid="5904467261187213855">"Počet obnovení protokolu PPP od spuštění:"</string>
+    <string name="radio_info_current_network_label" msgid="4543579732055294094">"Aktuální síť:"</string>
+    <string name="radio_info_ppp_received_label" msgid="9008497726844951286">"Přijatá data:"</string>
+    <string name="radio_info_gsm_service_label" msgid="8568604516243164323">"Hlasová služba:"</string>
+    <string name="radio_info_signal_strength_label" msgid="6249787779987615555">"Síla signálu:"</string>
+    <string name="radio_info_call_status_label" msgid="4920189437939502937">"Stav hlasového hovoru:"</string>
+    <string name="radio_info_ppp_sent_label" msgid="7540726057223209642">"Odeslaná data:"</string>
+    <string name="radio_info_message_waiting_label" msgid="3266001528464108752">"Čekající zpráva:"</string>
+    <string name="radio_info_phone_number_label" msgid="7365940037971389336">"Telefonní číslo:"</string>
+    <string name="radio_info_band_mode_label" msgid="2246076557203309581">"Zvolit pásmo bezdrátového modulu"</string>
+    <string name="radio_info_voice_network_type_label" msgid="2188571505624236641">"Typ hlasové sítě:"</string>
+    <string name="radio_info_data_network_type_label" msgid="1722314883398773640">"Typ datové sítě:"</string>
+    <string name="phone_index_label" msgid="8084719174141913663">"Vybrat telefonní seznam"</string>
+    <string name="radio_info_set_perferred_label" msgid="5524824181787022626">"Nastavit upřednostňovaný typ sítě:"</string>
+    <string name="radio_info_ping_hostname_v4" msgid="2624746152951610302">"Ping názvu hostitele (www.google.com) IPv4:"</string>
+    <string name="radio_info_ping_hostname_v6" msgid="1367085516027002673">"Ping názvu hostitele (www.google.com) IPv6:"</string>
+    <string name="radio_info_http_client_test" msgid="6880321234240444725">"Test klienta HTTP:"</string>
+    <string name="ping_test_label" msgid="2994755457539465712">"Spustit test Ping"</string>
+    <string name="radio_info_smsc_label" msgid="5371852992077116124">"SMSC:"</string>
+    <string name="radio_info_smsc_update_label" msgid="473231644807199700">"Aktualizovat"</string>
+    <string name="radio_info_smsc_refresh_label" msgid="2501002507398765793">"Obnovit"</string>
+    <string name="radio_info_toggle_dns_check_label" msgid="7957464764830779267">"Přepnout kontrolu DNS"</string>
+    <string name="oem_radio_info_label" msgid="4094770698605583079">"Informace a nastavení specifické pro výrobce OEM"</string>
+    <string name="band_mode_title" msgid="4190112708745417805">"Nastavit režim pásma bezdrátového modulu"</string>
+    <string name="band_mode_loading" msgid="1441172378272880576">"Načítání seznamu pásem…"</string>
+    <string name="band_mode_set" msgid="4017175505341018983">"Nastavit"</string>
+    <string name="band_mode_failed" msgid="2249972027798774743">"Neúspěšné"</string>
+    <string name="band_mode_succeeded" msgid="7155289931310744235">"Úspěšné"</string>
+    <string name="phone_info_label" product="tablet" msgid="2184343562798442963">"Informace o tabletu"</string>
+    <string name="phone_info_label" product="default" msgid="5714412771821532807">"Informace o telefonu"</string>
+    <string name="carrier_provisioning" msgid="2131940589459538869">"Informace o zprovoznění služby u operátora"</string>
+    <string name="trigger_carrier_provisioning" msgid="4747905722309095554">"Spustit zprovoznění služby u operátora"</string>
 </resources>

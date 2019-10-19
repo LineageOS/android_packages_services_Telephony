@@ -790,4 +790,91 @@
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ব্যৱহাৰ কৰিবলৈ <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ছিমত ম’বাইল ডেটা অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ব্যৱহাৰ কৰিবলৈ <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ছিমত ম’বাইল ডেটা আৰু ডেটা ৰ’মিং অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"অগ্ৰাহ্য কৰক"</string>
+    <string name="radio_info_data_connection_enable" msgid="5791637077797729311">"ডেটা সংযোগ সক্ৰিয় কৰক"</string>
+    <string name="radio_info_data_connection_disable" msgid="9028822504877773144">"ডেটা সংযোগ নিষ্ক্ৰিয় কৰক"</string>
+    <string name="volte_provisioned_switch_string" msgid="1394051796024284160">"VoLTE প্ৰ’ভিজন কৰা হৈছে"</string>
+    <string name="vt_provisioned_switch_string" msgid="2392736863413388180">"ভিডিঅ’ কলিং প্ৰ’ভিজন কৰা হৈছে"</string>
+    <string name="wfc_provisioned_switch_string" msgid="7077270261545093108">"ৱাইফাই কলিং প্ৰ\'ভিজন কৰা হৈছে"</string>
+    <string name="eab_provisioned_switch_string" msgid="793700585260677822">"EAB/উপস্থিতিক প্ৰ’ভিজন কৰা হৈছে"</string>
+    <string name="cbrs_data_switch_string" msgid="2717460177342559687">"Cbrs ডেটা"</string>
+    <string name="dsds_switch_string" msgid="1584067974668266474">"DSDS সক্ষম কৰক"</string>
+    <string name="dsds_dialog_title" msgid="3987891679204664973">"ডিভাইচটো ৰিষ্টার্ট কৰিবনে?"</string>
+    <string name="dsds_dialog_message" msgid="4839383881298996559">"আপুনি এই ছেটিংটো সলনি কৰিবলৈ আপোনাৰ ডিভাইচটো ৰিষ্টার্ট কৰিব লাগিব।"</string>
+    <string name="dsds_dialog_confirm" msgid="5658607488389433209">"ৰিষ্টাৰ্ট কৰক"</string>
+    <string name="dsds_dialog_cancel" msgid="2332482983314535971">"বাতিল কৰক"</string>
+    <string name="radio_info_radio_power" msgid="3197814106269756338">"ম’বাইলৰ ৰেডিঅ’ পাৱাৰ"</string>
+    <string name="radioInfo_menu_viewADN" msgid="8157521617774683881">"ছিম ঠিকনা সূচী চাওক"</string>
+    <string name="radioInfo_menu_viewFDN" msgid="2688688788097552349">"ফিক্সড্ ডায়েলিং নম্বৰসমূহ চাওক"</string>
+    <string name="radioInfo_menu_viewSDN" msgid="1369044132596800516">"সেৱা ডায়েলিং নম্বৰসমূহ চাওক"</string>
+    <string name="radioInfo_menu_getIMS" msgid="1903636613815926161">"IMS সেৱাৰ স্থিতি"</string>
+    <string name="radio_info_ims_reg_status_title" msgid="6684191300020755567">"IMSৰ স্থিতি"</string>
+    <string name="radio_info_ims_reg_status_registered" msgid="1624801379938618583">"পঞ্জীকৃত"</string>
+    <string name="radio_info_ims_reg_status_not_registered" msgid="6373416281874001636">"পঞ্জীকৃত নহয়"</string>
+    <string name="radio_info_ims_feature_status_available" msgid="6838492688972476959">"উপলব্ধ"</string>
+    <string name="radio_info_ims_feature_status_unavailable" msgid="5961126036687673382">"উপলব্ধ নহয়"</string>
+    <string name="radio_info_ims_reg_status" msgid="5627113102160798161">"IMS পঞ্জীয়ন: <xliff:g id="STATUS">%1$s</xliff:g>\nভইচ অভাৰ LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nভইচ অভাৰ ৱাই-ফাই: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nভিডিঅ’ কলিং: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT ইণ্টাৰফে’চ: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radioInfo_service_in" msgid="213948507638906391">"সেৱাত আছে"</string>
+    <string name="radioInfo_service_out" msgid="1663775355255962705">"সেৱাত নাই"</string>
+    <string name="radioInfo_service_emergency" msgid="4995960081039410044">"কেৱল জৰুৰীকালীন কলসমূহ"</string>
+    <string name="radioInfo_service_off" msgid="2004877283088431892">"ৰেডিঅ’ অফ হৈ আছে"</string>
+    <string name="radioInfo_roaming_in" msgid="7972162764330241405">"ৰ’মিং"</string>
+    <string name="radioInfo_roaming_not" msgid="1517046855316268494">"ৰ’মিঙত নাই"</string>
+    <string name="radioInfo_phone_idle" msgid="3842451875395210085">"নিষ্ক্ৰিয়"</string>
+    <string name="radioInfo_phone_ringing" msgid="3495254865874923877">"ৰিং হৈ আছে"</string>
+    <string name="radioInfo_phone_offhook" msgid="9025079393890376475">"কল চলি আছে"</string>
+    <string name="radioInfo_data_disconnected" msgid="8760151893300132735">"সংযোগ বিচ্ছিন্ন হৈছে"</string>
+    <string name="radioInfo_data_connecting" msgid="8939201656582630105">"সংযোগ কৰি থকা হৈছে"</string>
+    <string name="radioInfo_data_connected" msgid="5747343830421265426">"সংযোগ কৰা হ’ল"</string>
+    <string name="radioInfo_data_suspended" msgid="7097865203453504891">"নিলম্বন কৰা হৈছে"</string>
+    <string name="radioInfo_unknown" msgid="6062057756843316580">"অজ্ঞাত"</string>
+    <string name="radioInfo_display_packets" msgid="7979215102668713597">"পিকেটিএছ"</string>
+    <string name="radioInfo_display_bytes" msgid="4317422116221941054">"বাইটসমূহ"</string>
+    <string name="radioInfo_display_dbm" msgid="2805604362853367515">"ডিবিএম"</string>
+    <string name="radioInfo_display_asu" msgid="4770234772576941977">"এএছইউ"</string>
+    <string name="radioInfo_lac" msgid="7943726640835847607">"LAC"</string>
+    <string name="radioInfo_cid" msgid="8357865174787359252">"CID"</string>
+    <string name="radio_info_subid" msgid="4090664764881346812">"বৰ্তমানৰ ছাবআইডি:"</string>
+    <string name="radio_info_dds" msgid="1689012310213686695">"ডিফ’ল্ট ডেটা ছিমৰ ছাবআইডি:"</string>
+    <string name="radio_info_dl_kbps" msgid="4293678516674363232">"DL বেণ্ডৱিথ (কেবিপিএছ):"</string>
+    <string name="radio_info_ul_kbps" msgid="5013363806530336667">"UL বেণ্ডৱিথ (কেবিপিএছ):"</string>
+    <string name="radio_info_signal_location_label" msgid="6196477714345817742">"চেল অৱস্থানৰ তথ্য (অনুমোদিত নহয়):"</string>
+    <string name="radio_info_phy_chan_config" msgid="2296197957826074272">"LTE ফিজিকেল চেনেলৰ কনফিগাৰেশ্বন:"</string>
+    <string name="radio_info_cell_info_refresh_rate" msgid="8224592422585623740">"চেল তথ্য ৰিফ্ৰেশ্বৰ হাৰ:"</string>
+    <string name="radio_info_cellinfo_label" msgid="4640050297091408627">"সকলো চেল পৰিমাপৰ তথ্য:"</string>
+    <string name="radio_info_gprs_service_label" msgid="4341880601921268265">"ডেটা সেৱা:"</string>
+    <string name="radio_info_roaming_label" msgid="3577916622329527197">"ৰ’মিং:"</string>
+    <string name="radio_info_imei_label" msgid="7435478087413078973">"IMEI:"</string>
+    <string name="radio_info_call_redirect_label" msgid="2223669286498038884">"কল ৰিডাইৰেক্ট কৰক:"</string>
+    <string name="radio_info_ppp_resets_label" msgid="5904467261187213855">"বুট কৰাৰ পাছত PPP ৰিছেট কৰাৰ সংখ্যা:"</string>
+    <string name="radio_info_current_network_label" msgid="4543579732055294094">"বৰ্তমানৰ নেটৱৰ্ক:"</string>
+    <string name="radio_info_ppp_received_label" msgid="9008497726844951286">"লাভ কৰা ডেটা:"</string>
+    <string name="radio_info_gsm_service_label" msgid="8568604516243164323">"ভইচ সেৱা:"</string>
+    <string name="radio_info_signal_strength_label" msgid="6249787779987615555">"সংকেতৰ ক্ষমতা:"</string>
+    <string name="radio_info_call_status_label" msgid="4920189437939502937">"ভইচ কলৰ স্থিতি:"</string>
+    <string name="radio_info_ppp_sent_label" msgid="7540726057223209642">"প্ৰেৰণ কৰা ডেটা:"</string>
+    <string name="radio_info_message_waiting_label" msgid="3266001528464108752">"বাৰ্তা অপেক্ষাৰত:"</string>
+    <string name="radio_info_phone_number_label" msgid="7365940037971389336">"ফ’ন নম্বৰ:"</string>
+    <string name="radio_info_band_mode_label" msgid="2246076557203309581">"ৰেডিঅ’ বেণ্ড বাছনি কৰক"</string>
+    <string name="radio_info_voice_network_type_label" msgid="2188571505624236641">"ভইচ নেটৱৰ্কৰ প্ৰকাৰ:"</string>
+    <string name="radio_info_data_network_type_label" msgid="1722314883398773640">"ডেটা নেটৱৰ্কৰ প্ৰকাৰ:"</string>
+    <string name="phone_index_label" msgid="8084719174141913663">"ফ’নৰ ইনডেক্স বাছনি কৰক"</string>
+    <string name="radio_info_set_perferred_label" msgid="5524824181787022626">"পচন্দৰ নেটৱৰ্কৰ প্ৰকাৰ ছেট কৰক:"</string>
+    <string name="radio_info_ping_hostname_v4" msgid="2624746152951610302">"হ\'ষ্টনাম(www.google.com) IPv4 পিং কৰক:"</string>
+    <string name="radio_info_ping_hostname_v6" msgid="1367085516027002673">"হ\'ষ্টনাম(www.google.com) IPv6 পিং কৰক:"</string>
+    <string name="radio_info_http_client_test" msgid="6880321234240444725">"HTTP ক্লায়েণ্ট পৰীক্ষা:"</string>
+    <string name="ping_test_label" msgid="2994755457539465712">"পিং পৰীক্ষা কৰক"</string>
+    <string name="radio_info_smsc_label" msgid="5371852992077116124">"SMSC:"</string>
+    <string name="radio_info_smsc_update_label" msgid="473231644807199700">"আপডে’ট কৰক"</string>
+    <string name="radio_info_smsc_refresh_label" msgid="2501002507398765793">"ৰিফ্ৰেশ্ব কৰক"</string>
+    <string name="radio_info_toggle_dns_check_label" msgid="7957464764830779267">"DNS পৰীক্ষা ট’গল কৰক"</string>
+    <string name="oem_radio_info_label" msgid="4094770698605583079">"OEM বিশেষক তথ্য/ছেটিংসমূহ"</string>
+    <string name="band_mode_title" msgid="4190112708745417805">"ৰেডিঅ’ৰ বেণ্ড ম’ড ছেট কৰক"</string>
+    <string name="band_mode_loading" msgid="1441172378272880576">"বেণ্ড সূচীখন ল’ড কৰি থকা হৈছে…"</string>
+    <string name="band_mode_set" msgid="4017175505341018983">"ছেট কৰক"</string>
+    <string name="band_mode_failed" msgid="2249972027798774743">"বিফল"</string>
+    <string name="band_mode_succeeded" msgid="7155289931310744235">"সফল"</string>
+    <string name="phone_info_label" product="tablet" msgid="2184343562798442963">"টেবলেটৰ তথ্য"</string>
+    <string name="phone_info_label" product="default" msgid="5714412771821532807">"ফ\'নৰ তথ্য"</string>
+    <string name="carrier_provisioning" msgid="2131940589459538869">"বাহকৰ প্ৰ’ভিজনিং তথ্য"</string>
+    <string name="trigger_carrier_provisioning" msgid="4747905722309095554">"বাহকৰ প্ৰ’ভিজনিং সূচনা কৰক"</string>
 </resources>
