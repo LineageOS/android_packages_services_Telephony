@@ -792,4 +792,91 @@
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"如要使用<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>，請確認 SIM 卡 <xliff:g id="SIM_NUMBER">%2$d</xliff:g> 的行動數據功能已開啟。你可以前往行動網路設定進行變更。"</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"如要使用<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>，請確認 SIM 卡 <xliff:g id="SIM_NUMBER">%2$d</xliff:g> 的行動數據功能和漫遊服務已開啟。你可以前往行動網路設定進行變更。"</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"關閉"</string>
+    <string name="radio_info_data_connection_enable" msgid="5791637077797729311">"啟用數據連線"</string>
+    <string name="radio_info_data_connection_disable" msgid="9028822504877773144">"停用數據連線"</string>
+    <string name="volte_provisioned_switch_string" msgid="1394051796024284160">"已佈建 VoLTE"</string>
+    <string name="vt_provisioned_switch_string" msgid="2392736863413388180">"已建立視訊通話"</string>
+    <string name="wfc_provisioned_switch_string" msgid="7077270261545093108">"已建立 Wi-Fi 通話"</string>
+    <string name="eab_provisioned_switch_string" msgid="793700585260677822">"EAB/顯示狀態：已啟用"</string>
+    <string name="cbrs_data_switch_string" msgid="2717460177342559687">"CBRS 資料"</string>
+    <string name="dsds_switch_string" msgid="1584067974668266474">"啟用 DSDS"</string>
+    <string name="dsds_dialog_title" msgid="3987891679204664973">"要重新啟動裝置嗎？"</string>
+    <string name="dsds_dialog_message" msgid="4839383881298996559">"你必須重新啟動裝置，才能變更這項設定。"</string>
+    <string name="dsds_dialog_confirm" msgid="5658607488389433209">"重新啟動"</string>
+    <string name="dsds_dialog_cancel" msgid="2332482983314535971">"取消"</string>
+    <string name="radio_info_radio_power" msgid="3197814106269756338">"行動無線電電源"</string>
+    <string name="radioInfo_menu_viewADN" msgid="8157521617774683881">"查看 SIM 通訊錄"</string>
+    <string name="radioInfo_menu_viewFDN" msgid="2688688788097552349">"查看固定撥號"</string>
+    <string name="radioInfo_menu_viewSDN" msgid="1369044132596800516">"查看服務撥號號碼"</string>
+    <string name="radioInfo_menu_getIMS" msgid="1903636613815926161">"IMS 服務狀態"</string>
+    <string name="radio_info_ims_reg_status_title" msgid="6684191300020755567">"IMS 狀態"</string>
+    <string name="radio_info_ims_reg_status_registered" msgid="1624801379938618583">"已註冊"</string>
+    <string name="radio_info_ims_reg_status_not_registered" msgid="6373416281874001636">"未註冊"</string>
+    <string name="radio_info_ims_feature_status_available" msgid="6838492688972476959">"可供使用"</string>
+    <string name="radio_info_ims_feature_status_unavailable" msgid="5961126036687673382">"無法使用"</string>
+    <string name="radio_info_ims_reg_status" msgid="5627113102160798161">"IMS 註冊狀態：<xliff:g id="STATUS">%1$s</xliff:g>\nVoLTE：<xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nVoWi-Fi：<xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\n視訊通話：<xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT 介面：<xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radioInfo_service_in" msgid="213948507638906391">"服務中"</string>
+    <string name="radioInfo_service_out" msgid="1663775355255962705">"無服務"</string>
+    <string name="radioInfo_service_emergency" msgid="4995960081039410044">"僅可撥打緊急電話"</string>
+    <string name="radioInfo_service_off" msgid="2004877283088431892">"關閉無線電"</string>
+    <string name="radioInfo_roaming_in" msgid="7972162764330241405">"漫遊"</string>
+    <string name="radioInfo_roaming_not" msgid="1517046855316268494">"未使用漫遊服務"</string>
+    <string name="radioInfo_phone_idle" msgid="3842451875395210085">"閒置"</string>
+    <string name="radioInfo_phone_ringing" msgid="3495254865874923877">"鈴響中"</string>
+    <string name="radioInfo_phone_offhook" msgid="9025079393890376475">"通話中"</string>
+    <string name="radioInfo_data_disconnected" msgid="8760151893300132735">"已中斷連線"</string>
+    <string name="radioInfo_data_connecting" msgid="8939201656582630105">"連線中"</string>
+    <string name="radioInfo_data_connected" msgid="5747343830421265426">"已連線"</string>
+    <string name="radioInfo_data_suspended" msgid="7097865203453504891">"待命"</string>
+    <string name="radioInfo_unknown" msgid="6062057756843316580">"不明"</string>
+    <string name="radioInfo_display_packets" msgid="7979215102668713597">"pkts"</string>
+    <string name="radioInfo_display_bytes" msgid="4317422116221941054">"位元組"</string>
+    <string name="radioInfo_display_dbm" msgid="2805604362853367515">"dBm"</string>
+    <string name="radioInfo_display_asu" msgid="4770234772576941977">"asu"</string>
+    <string name="radioInfo_lac" msgid="7943726640835847607">"LAC"</string>
+    <string name="radioInfo_cid" msgid="8357865174787359252">"客戶 ID"</string>
+    <string name="radio_info_subid" msgid="4090664764881346812">"目前的子 ID："</string>
+    <string name="radio_info_dds" msgid="1689012310213686695">"預設資料 SIM 卡的子 ID："</string>
+    <string name="radio_info_dl_kbps" msgid="4293678516674363232">"下行頻寬 (kbps)："</string>
+    <string name="radio_info_ul_kbps" msgid="5013363806530336667">"上行頻寬 (kbps)："</string>
+    <string name="radio_info_signal_location_label" msgid="6196477714345817742">"行動網路位置資訊 (已不適用)："</string>
+    <string name="radio_info_phy_chan_config" msgid="2296197957826074272">"LTE 實體通道設定："</string>
+    <string name="radio_info_cell_info_refresh_rate" msgid="8224592422585623740">"行動網路資訊重新整理頻率："</string>
+    <string name="radio_info_cellinfo_label" msgid="4640050297091408627">"所有行動網路測量資訊："</string>
+    <string name="radio_info_gprs_service_label" msgid="4341880601921268265">"數據服務："</string>
+    <string name="radio_info_roaming_label" msgid="3577916622329527197">"漫遊："</string>
+    <string name="radio_info_imei_label" msgid="7435478087413078973">"IMEI："</string>
+    <string name="radio_info_call_redirect_label" msgid="2223669286498038884">"來電轉接："</string>
+    <string name="radio_info_ppp_resets_label" msgid="5904467261187213855">"啟動後重設 PPP 的次數："</string>
+    <string name="radio_info_current_network_label" msgid="4543579732055294094">"目前的網路："</string>
+    <string name="radio_info_ppp_received_label" msgid="9008497726844951286">"已接收的數據："</string>
+    <string name="radio_info_gsm_service_label" msgid="8568604516243164323">"語音服務："</string>
+    <string name="radio_info_signal_strength_label" msgid="6249787779987615555">"訊號強度："</string>
+    <string name="radio_info_call_status_label" msgid="4920189437939502937">"語音通話狀態："</string>
+    <string name="radio_info_ppp_sent_label" msgid="7540726057223209642">"已傳送的數據："</string>
+    <string name="radio_info_message_waiting_label" msgid="3266001528464108752">"留言待取："</string>
+    <string name="radio_info_phone_number_label" msgid="7365940037971389336">"電話號碼："</string>
+    <string name="radio_info_band_mode_label" msgid="2246076557203309581">"選取無線電頻帶"</string>
+    <string name="radio_info_voice_network_type_label" msgid="2188571505624236641">"語音網路類型："</string>
+    <string name="radio_info_data_network_type_label" msgid="1722314883398773640">"數據網路類型："</string>
+    <string name="phone_index_label" msgid="8084719174141913663">"選取電話索引"</string>
+    <string name="radio_info_set_perferred_label" msgid="5524824181787022626">"設定偏好的網路類型："</string>
+    <string name="radio_info_ping_hostname_v4" msgid="2624746152951610302">"連線偵測 (ping) 主機名稱 (www.google.com) IPv4："</string>
+    <string name="radio_info_ping_hostname_v6" msgid="1367085516027002673">"連線偵測 (ping) 主機名稱 (www.google.com) IPv6："</string>
+    <string name="radio_info_http_client_test" msgid="6880321234240444725">"HTTP 用戶端測試："</string>
+    <string name="ping_test_label" msgid="2994755457539465712">"執行連線偵測 (ping) 測試"</string>
+    <string name="radio_info_smsc_label" msgid="5371852992077116124">"SMSC："</string>
+    <string name="radio_info_smsc_update_label" msgid="473231644807199700">"更新"</string>
+    <string name="radio_info_smsc_refresh_label" msgid="2501002507398765793">"重新整理"</string>
+    <string name="radio_info_toggle_dns_check_label" msgid="7957464764830779267">"切換 DNS 檢查"</string>
+    <string name="oem_radio_info_label" msgid="4094770698605583079">"原始設備製造商 (OEM) 專用資訊/設定"</string>
+    <string name="band_mode_title" msgid="4190112708745417805">"設定無線電頻帶模式"</string>
+    <string name="band_mode_loading" msgid="1441172378272880576">"正在載入頻帶清單…"</string>
+    <string name="band_mode_set" msgid="4017175505341018983">"設定"</string>
+    <string name="band_mode_failed" msgid="2249972027798774743">"失敗"</string>
+    <string name="band_mode_succeeded" msgid="7155289931310744235">"成功"</string>
+    <string name="phone_info_label" product="tablet" msgid="2184343562798442963">"平板電腦資訊"</string>
+    <string name="phone_info_label" product="default" msgid="5714412771821532807">"手機資訊"</string>
+    <string name="carrier_provisioning" msgid="2131940589459538869">"電信業者佈建資訊"</string>
+    <string name="trigger_carrier_provisioning" msgid="4747905722309095554">"觸發電信業者佈建程序"</string>
 </resources>

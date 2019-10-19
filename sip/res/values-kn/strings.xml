@@ -27,7 +27,7 @@
     <string name="sip_call_options_entry_2" msgid="1815335903940609729">"ಕೇವಲ ಎಸ್‌ಐಪಿ ಕರೆಗಳಿಗೆ ಮಾತ್ರ"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="1358513095551847314">"ಎಲ್ಲ ಕರೆಗಳಿಗಾಗಿ"</string>
     <string name="add_sip_account" msgid="800843669753980091">"ಖಾತೆ ಸೇರಿಸಿ"</string>
-    <string name="remove_sip_account" msgid="1367664438506503690">"ಖಾತೆಯನ್ನು ತೆಗೆದುಹಾಕು"</string>
+    <string name="remove_sip_account" msgid="1367664438506503690">"ಖಾತೆಯನ್ನು ತೆಗೆದುಹಾಕಿ"</string>
     <string name="sip_account_list" msgid="5610858485304821480">"ಎಸ್‌ಐಪಿ ಖಾತೆಗಳು"</string>
     <string name="saving_account" msgid="5336529880235177448">"ಖಾತೆಯನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="removing_account" msgid="5537351356808985756">"ಖಾತೆಯನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತಿದೆ…"</string>
