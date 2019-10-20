@@ -21,8 +21,12 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
+import android.content.Context;
+
+import androidx.test.InstrumentationRegistry;
 import androidx.test.filters.FlakyTest;
 import androidx.test.rule.ActivityTestRule;
 
@@ -52,6 +56,8 @@ public class CallFeaturesSettingTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mActivity = mRule.getActivity();
+        Context targetContext = InstrumentationRegistry.getTargetContext();
+        doReturn(targetContext).when(mMockPhone).getContext();
     }
 
     @FlakyTest
