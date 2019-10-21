@@ -794,4 +794,91 @@
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Använd <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> genom att säkerställa att mobildata är aktiverat för SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Det går att ändra i inställningarna för mobilt nätverk."</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Använd <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> genom att säkerställa att mobildata och dataroaming är aktiverat för SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Det går att ändra i inställningarna för mobilt nätverk."</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Stäng"</string>
+    <string name="radio_info_data_connection_enable" msgid="5791637077797729311">"Aktivera dataanslutning"</string>
+    <string name="radio_info_data_connection_disable" msgid="9028822504877773144">"Inaktivera dataanslutning"</string>
+    <string name="volte_provisioned_switch_string" msgid="1394051796024284160">"VoLTE-administrerad"</string>
+    <string name="vt_provisioned_switch_string" msgid="2392736863413388180">"Videosamtal tillhandahålls"</string>
+    <string name="wfc_provisioned_switch_string" msgid="7077270261545093108">"Wi-Fi-samtal tillhandahålls"</string>
+    <string name="eab_provisioned_switch_string" msgid="793700585260677822">"EAB/Presence tillhandahålls"</string>
+    <string name="cbrs_data_switch_string" msgid="2717460177342559687">"Data via CBRS"</string>
+    <string name="dsds_switch_string" msgid="1584067974668266474">"Aktivera DSDS"</string>
+    <string name="dsds_dialog_title" msgid="3987891679204664973">"Vill du starta om enheten?"</string>
+    <string name="dsds_dialog_message" msgid="4839383881298996559">"Du måste starta om enheten för att ändra den här inställningen."</string>
+    <string name="dsds_dialog_confirm" msgid="5658607488389433209">"Starta om"</string>
+    <string name="dsds_dialog_cancel" msgid="2332482983314535971">"Avbryt"</string>
+    <string name="radio_info_radio_power" msgid="3197814106269756338">"Strömförsörjning för mobilradio"</string>
+    <string name="radioInfo_menu_viewADN" msgid="8157521617774683881">"Visa SIM-adressbok"</string>
+    <string name="radioInfo_menu_viewFDN" msgid="2688688788097552349">"Visa Fasta nummer"</string>
+    <string name="radioInfo_menu_viewSDN" msgid="1369044132596800516">"Visa tjänstenummer"</string>
+    <string name="radioInfo_menu_getIMS" msgid="1903636613815926161">"Status för IMS-tjänst"</string>
+    <string name="radio_info_ims_reg_status_title" msgid="6684191300020755567">"IMS-status"</string>
+    <string name="radio_info_ims_reg_status_registered" msgid="1624801379938618583">"Registrerad"</string>
+    <string name="radio_info_ims_reg_status_not_registered" msgid="6373416281874001636">"Inte registrerad"</string>
+    <string name="radio_info_ims_feature_status_available" msgid="6838492688972476959">"Tillgänglig"</string>
+    <string name="radio_info_ims_feature_status_unavailable" msgid="5961126036687673382">"Inte tillgängligt"</string>
+    <string name="radio_info_ims_reg_status" msgid="5627113102160798161">"IMS-registrering: <xliff:g id="STATUS">%1$s</xliff:g>\nRöst via LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nRöst via Wi-Fi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideosamtal: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT-gränssnitt: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radioInfo_service_in" msgid="213948507638906391">"I tjänst"</string>
+    <string name="radioInfo_service_out" msgid="1663775355255962705">"Ur funktion"</string>
+    <string name="radioInfo_service_emergency" msgid="4995960081039410044">"Endast nödsamtal"</string>
+    <string name="radioInfo_service_off" msgid="2004877283088431892">"Stäng av radio"</string>
+    <string name="radioInfo_roaming_in" msgid="7972162764330241405">"Roaming"</string>
+    <string name="radioInfo_roaming_not" msgid="1517046855316268494">"Ingen roaming"</string>
+    <string name="radioInfo_phone_idle" msgid="3842451875395210085">"Inaktiv"</string>
+    <string name="radioInfo_phone_ringing" msgid="3495254865874923877">"Ringer"</string>
+    <string name="radioInfo_phone_offhook" msgid="9025079393890376475">"Pågående samtal"</string>
+    <string name="radioInfo_data_disconnected" msgid="8760151893300132735">"Frånkopplad"</string>
+    <string name="radioInfo_data_connecting" msgid="8939201656582630105">"Ansluter"</string>
+    <string name="radioInfo_data_connected" msgid="5747343830421265426">"Ansluten"</string>
+    <string name="radioInfo_data_suspended" msgid="7097865203453504891">"Tillfälligt avstängt"</string>
+    <string name="radioInfo_unknown" msgid="6062057756843316580">"Okänt"</string>
+    <string name="radioInfo_display_packets" msgid="7979215102668713597">"paket"</string>
+    <string name="radioInfo_display_bytes" msgid="4317422116221941054">"bytes"</string>
+    <string name="radioInfo_display_dbm" msgid="2805604362853367515">"dBm"</string>
+    <string name="radioInfo_display_asu" msgid="4770234772576941977">"asu"</string>
+    <string name="radioInfo_lac" msgid="7943726640835847607">"LAC"</string>
+    <string name="radioInfo_cid" msgid="8357865174787359252">"CID"</string>
+    <string name="radio_info_subid" msgid="4090664764881346812">"Nuvarande subId:"</string>
+    <string name="radio_info_dds" msgid="1689012310213686695">"SubId för standarddata på SIM-kortet:"</string>
+    <string name="radio_info_dl_kbps" msgid="4293678516674363232">"Bandbredd för nedladdning (kbps):"</string>
+    <string name="radio_info_ul_kbps" msgid="5013363806530336667">"Bandbredd för uppladdning (kbps):"</string>
+    <string name="radio_info_signal_location_label" msgid="6196477714345817742">"Platsinformation för mast (utfasad):"</string>
+    <string name="radio_info_phy_chan_config" msgid="2296197957826074272">"Fysisk kanalkonfiguration för LTE:"</string>
+    <string name="radio_info_cell_info_refresh_rate" msgid="8224592422585623740">"Frekvens för uppdatering av mastinformation:"</string>
+    <string name="radio_info_cellinfo_label" msgid="4640050297091408627">"Alla information om mastmätning:"</string>
+    <string name="radio_info_gprs_service_label" msgid="4341880601921268265">"Datatjänst:"</string>
+    <string name="radio_info_roaming_label" msgid="3577916622329527197">"Roaming:"</string>
+    <string name="radio_info_imei_label" msgid="7435478087413078973">"IMEI-kod:"</string>
+    <string name="radio_info_call_redirect_label" msgid="2223669286498038884">"Vidarekoppling av samtal:"</string>
+    <string name="radio_info_ppp_resets_label" msgid="5904467261187213855">"Antal återställningar av köpkraftsparitet sedan start:"</string>
+    <string name="radio_info_current_network_label" msgid="4543579732055294094">"Aktuellt nätverk:"</string>
+    <string name="radio_info_ppp_received_label" msgid="9008497726844951286">"Mottagen data:"</string>
+    <string name="radio_info_gsm_service_label" msgid="8568604516243164323">"Rösttjänst:"</string>
+    <string name="radio_info_signal_strength_label" msgid="6249787779987615555">"Signalstyrka:"</string>
+    <string name="radio_info_call_status_label" msgid="4920189437939502937">"Status på videosamtal:"</string>
+    <string name="radio_info_ppp_sent_label" msgid="7540726057223209642">"Skickad data:"</string>
+    <string name="radio_info_message_waiting_label" msgid="3266001528464108752">"Meddelande väntar:"</string>
+    <string name="radio_info_phone_number_label" msgid="7365940037971389336">"Telefonnummer:"</string>
+    <string name="radio_info_band_mode_label" msgid="2246076557203309581">"Välj radioband"</string>
+    <string name="radio_info_voice_network_type_label" msgid="2188571505624236641">"Nätverkstyp för röst:"</string>
+    <string name="radio_info_data_network_type_label" msgid="1722314883398773640">"Typ av datanätverk:"</string>
+    <string name="phone_index_label" msgid="8084719174141913663">"Välj telefonindex"</string>
+    <string name="radio_info_set_perferred_label" msgid="5524824181787022626">"Ställ in önskad nätverkstyp:"</string>
+    <string name="radio_info_ping_hostname_v4" msgid="2624746152951610302">"Pinga värdnamn(www.google.com) IPv4:"</string>
+    <string name="radio_info_ping_hostname_v6" msgid="1367085516027002673">"Pinga värdnamn(www.google.com) IPv6:"</string>
+    <string name="radio_info_http_client_test" msgid="6880321234240444725">"Test av HTTP-klient:"</string>
+    <string name="ping_test_label" msgid="2994755457539465712">"Köra pingtest"</string>
+    <string name="radio_info_smsc_label" msgid="5371852992077116124">"SMSC:"</string>
+    <string name="radio_info_smsc_update_label" msgid="473231644807199700">"Uppdatera"</string>
+    <string name="radio_info_smsc_refresh_label" msgid="2501002507398765793">"Uppdatera"</string>
+    <string name="radio_info_toggle_dns_check_label" msgid="7957464764830779267">"Aktivera och inaktivera DNS-kontroll"</string>
+    <string name="oem_radio_info_label" msgid="4094770698605583079">"OEM-specifik information/inställningar"</string>
+    <string name="band_mode_title" msgid="4190112708745417805">"Konfigurera radiobandsläget"</string>
+    <string name="band_mode_loading" msgid="1441172378272880576">"Läser in bandlista …"</string>
+    <string name="band_mode_set" msgid="4017175505341018983">"Ange"</string>
+    <string name="band_mode_failed" msgid="2249972027798774743">"Misslyckades"</string>
+    <string name="band_mode_succeeded" msgid="7155289931310744235">"Lyckades"</string>
+    <string name="phone_info_label" product="tablet" msgid="2184343562798442963">"Information om surfplattan"</string>
+    <string name="phone_info_label" product="default" msgid="5714412771821532807">"Telefoninformation"</string>
+    <string name="carrier_provisioning" msgid="2131940589459538869">"Information om operatörsadministration"</string>
+    <string name="trigger_carrier_provisioning" msgid="4747905722309095554">"Aktivera operatörsadministration"</string>
 </resources>

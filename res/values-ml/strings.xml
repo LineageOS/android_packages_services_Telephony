@@ -790,4 +790,91 @@
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ഉപയോഗിക്കാൻ, SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> എന്നതിനായി മൊബൈൽ ഡാറ്റ ഓണാണ് എന്ന് ഉറപ്പാക്കുക. നിങ്ങൾക്ക് ഇത് മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണത്തിൽ മാറ്റാം."</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> എന്നത് ഉപയോഗിക്കാൻ, മൊബൈൽ ഡാറ്റയും ഡാറ്റ റോമിംഗും, SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> എന്നതിനായി ഓണാണ് എന്ന് ഉറപ്പാക്കുക. നിങ്ങൾക്ക് ഇത് മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണത്തിൽ മാറ്റാം."</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"നിരസിക്കുക"</string>
+    <string name="radio_info_data_connection_enable" msgid="5791637077797729311">"ഡാറ്റാ കണക്ഷൻ പ്രവർത്തനക്ഷമമാക്കുക"</string>
+    <string name="radio_info_data_connection_disable" msgid="9028822504877773144">"ഡാറ്റ കണക്ഷൻ പ്രവർത്തനരഹിതമാക്കുക"</string>
+    <string name="volte_provisioned_switch_string" msgid="1394051796024284160">"VoLTE ഏർപ്പെടുത്തി"</string>
+    <string name="vt_provisioned_switch_string" msgid="2392736863413388180">"വീഡിയോ കോളിംഗ് ഏർപ്പെടുത്തി"</string>
+    <string name="wfc_provisioned_switch_string" msgid="7077270261545093108">"വൈഫൈ കോളിംഗ് ഏർപ്പെടുത്തി"</string>
+    <string name="eab_provisioned_switch_string" msgid="793700585260677822">"EAB/സാന്നിധ്യം ഏർപ്പെടുത്തി"</string>
+    <string name="cbrs_data_switch_string" msgid="2717460177342559687">"Cbrs ഡാറ്റ"</string>
+    <string name="dsds_switch_string" msgid="1584067974668266474">"DSDS പ്രവർത്തനക്ഷമമാക്കുക"</string>
+    <string name="dsds_dialog_title" msgid="3987891679204664973">"ഉപകരണം റീസ്‌റ്റാർട്ട് ചെയ്യണോ?"</string>
+    <string name="dsds_dialog_message" msgid="4839383881298996559">"ഈ ക്രമീകരണം മാറ്റാൻ നിങ്ങളുടെ ഉപകരണം റീസ്‌റ്റാർട്ട് ചെയ്യേണ്ടതുണ്ട്."</string>
+    <string name="dsds_dialog_confirm" msgid="5658607488389433209">"റീസ്റ്റാർട്ട് ചെയ്യുക"</string>
+    <string name="dsds_dialog_cancel" msgid="2332482983314535971">"റദ്ദാക്കുക"</string>
+    <string name="radio_info_radio_power" msgid="3197814106269756338">"മൊബൈൽ റേഡിയോ പവർ"</string>
+    <string name="radioInfo_menu_viewADN" msgid="8157521617774683881">"സിം വിലാസ പുസ്‌തകം കാണുക"</string>
+    <string name="radioInfo_menu_viewFDN" msgid="2688688788097552349">"സ്ഥിര ഡയലിംഗ് നമ്പറുകൾ കാണുക"</string>
+    <string name="radioInfo_menu_viewSDN" msgid="1369044132596800516">"സർവീസ് ഡയലിംഗ് നമ്പറുകൾ കാണുക"</string>
+    <string name="radioInfo_menu_getIMS" msgid="1903636613815926161">"IMS സേവന നില"</string>
+    <string name="radio_info_ims_reg_status_title" msgid="6684191300020755567">"IMS നില"</string>
+    <string name="radio_info_ims_reg_status_registered" msgid="1624801379938618583">"രജിസ്റ്റർ ചെയ്‌തു"</string>
+    <string name="radio_info_ims_reg_status_not_registered" msgid="6373416281874001636">"രജിസ്‌റ്റർ ചെയ്‌തിട്ടില്ല"</string>
+    <string name="radio_info_ims_feature_status_available" msgid="6838492688972476959">"ലഭ്യമാണ്"</string>
+    <string name="radio_info_ims_feature_status_unavailable" msgid="5961126036687673382">"ലഭ്യമല്ല"</string>
+    <string name="radio_info_ims_reg_status" msgid="5627113102160798161">"IMS രജിസ്ട്രേഷൻ: <xliff:g id="STATUS">%1$s</xliff:g>\nLTE വഴി ശബ്ദം: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nവൈഫൈ വഴി ശബ്ദം: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nവീഡിയോ കോളിംഗ്: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT ഇന്റർഫേസ്: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radioInfo_service_in" msgid="213948507638906391">"സേവനത്തിലാണ്"</string>
+    <string name="radioInfo_service_out" msgid="1663775355255962705">"സേവനം ലഭ്യമല്ല"</string>
+    <string name="radioInfo_service_emergency" msgid="4995960081039410044">"അടിയന്തര കോളുകൾ മാത്രം"</string>
+    <string name="radioInfo_service_off" msgid="2004877283088431892">"റേഡിയോ ഓഫാണ്"</string>
+    <string name="radioInfo_roaming_in" msgid="7972162764330241405">"റോമിംഗ്"</string>
+    <string name="radioInfo_roaming_not" msgid="1517046855316268494">"റോമിംഗ് അല്ല"</string>
+    <string name="radioInfo_phone_idle" msgid="3842451875395210085">"നിഷ്ക്രിയം"</string>
+    <string name="radioInfo_phone_ringing" msgid="3495254865874923877">"റിംഗ് ചെയ്യുന്നു"</string>
+    <string name="radioInfo_phone_offhook" msgid="9025079393890376475">"കോൾ പുരോഗതിയിലാണ്"</string>
+    <string name="radioInfo_data_disconnected" msgid="8760151893300132735">"വിച്ഛേദിച്ചു"</string>
+    <string name="radioInfo_data_connecting" msgid="8939201656582630105">"കണക്‌റ്റ് ചെയ്യുന്നു"</string>
+    <string name="radioInfo_data_connected" msgid="5747343830421265426">"കണക്‌റ്റ് ചെയ്‌തു"</string>
+    <string name="radioInfo_data_suspended" msgid="7097865203453504891">"താൽക്കാലികമായി റദ്ദാക്കി"</string>
+    <string name="radioInfo_unknown" msgid="6062057756843316580">"അജ്ഞാതം"</string>
+    <string name="radioInfo_display_packets" msgid="7979215102668713597">"pkts"</string>
+    <string name="radioInfo_display_bytes" msgid="4317422116221941054">"ബൈറ്റുകൾ"</string>
+    <string name="radioInfo_display_dbm" msgid="2805604362853367515">"dBm"</string>
+    <string name="radioInfo_display_asu" msgid="4770234772576941977">"asu"</string>
+    <string name="radioInfo_lac" msgid="7943726640835847607">"LAC"</string>
+    <string name="radioInfo_cid" msgid="8357865174787359252">"CID"</string>
+    <string name="radio_info_subid" msgid="4090664764881346812">"നിലവിലെ ഉപ‌ഐഡി:"</string>
+    <string name="radio_info_dds" msgid="1689012310213686695">"ഡിഫോൾട്ട് ഡാറ്റാ സിമ്മിന്റെ ഉപഐഡി:"</string>
+    <string name="radio_info_dl_kbps" msgid="4293678516674363232">"DL ബാൻഡ്‌വിത്ത് (kbps):"</string>
+    <string name="radio_info_ul_kbps" msgid="5013363806530336667">"UL ബാൻഡ്‍വിത്ത് (kbps):"</string>
+    <string name="radio_info_signal_location_label" msgid="6196477714345817742">"സെൽ ലൊക്കേഷൻ വിവരങ്ങൾ (അവസാനിപ്പിച്ചു):"</string>
+    <string name="radio_info_phy_chan_config" msgid="2296197957826074272">"LTE ഫിസിക്കൽ ചാനൽ കോൺഫിഗറേഷൻ:"</string>
+    <string name="radio_info_cell_info_refresh_rate" msgid="8224592422585623740">"സെൽ വിവരങ്ങൾ പുതുക്കിയെടുക്കൽ നിരക്ക്:"</string>
+    <string name="radio_info_cellinfo_label" msgid="4640050297091408627">"എല്ലാ സെൽ അളവ് വിവരങ്ങളും:"</string>
+    <string name="radio_info_gprs_service_label" msgid="4341880601921268265">"ഡാറ്റ സേവനം:"</string>
+    <string name="radio_info_roaming_label" msgid="3577916622329527197">"റോമിംഗ്:"</string>
+    <string name="radio_info_imei_label" msgid="7435478087413078973">"IMEI:"</string>
+    <string name="radio_info_call_redirect_label" msgid="2223669286498038884">"കോൾ റീഡയറക്‌ട് ചെയ്യുക:"</string>
+    <string name="radio_info_ppp_resets_label" msgid="5904467261187213855">"ബൂട്ട് ചെയ്‌തതിന് ശേഷമുള്ള PPP റീസെറ്റ് ചെയ്തതിന്റെ എണ്ണം:"</string>
+    <string name="radio_info_current_network_label" msgid="4543579732055294094">"നിലവിലെ നെറ്റ്‌വർക്ക്:"</string>
+    <string name="radio_info_ppp_received_label" msgid="9008497726844951286">"ലഭിച്ച ഡാറ്റ:"</string>
+    <string name="radio_info_gsm_service_label" msgid="8568604516243164323">"ശബ്ദ സേവനം:"</string>
+    <string name="radio_info_signal_strength_label" msgid="6249787779987615555">"സിഗ്‌നൽ ശക്തി:"</string>
+    <string name="radio_info_call_status_label" msgid="4920189437939502937">"വോയ്‌സ് കോൾ നില:"</string>
+    <string name="radio_info_ppp_sent_label" msgid="7540726057223209642">"അയച്ച ഡാറ്റ:"</string>
+    <string name="radio_info_message_waiting_label" msgid="3266001528464108752">"സന്ദേശം കാത്തിരിക്കുന്നു:"</string>
+    <string name="radio_info_phone_number_label" msgid="7365940037971389336">"ഫോൺ നമ്പർ:"</string>
+    <string name="radio_info_band_mode_label" msgid="2246076557203309581">"റേഡിയോ ബാൻഡ് തിരഞ്ഞെടുക്കുക"</string>
+    <string name="radio_info_voice_network_type_label" msgid="2188571505624236641">"വോയ്സ് നെറ്റ്‌വർക്ക് തരം:"</string>
+    <string name="radio_info_data_network_type_label" msgid="1722314883398773640">"ഡാറ്റ നെറ്റ്‌വർക്ക് തരം:"</string>
+    <string name="phone_index_label" msgid="8084719174141913663">"ഫോൺ സൂചിക തിരഞ്ഞെടുക്കുക"</string>
+    <string name="radio_info_set_perferred_label" msgid="5524824181787022626">"തിരഞ്ഞെടുത്ത നെറ്റ്‌വർക്ക് തരം സജ്ജീകരിക്കുക:"</string>
+    <string name="radio_info_ping_hostname_v4" msgid="2624746152951610302">"ഹോസ്റ്റുനാമം(www.google.com) IPv4 പിംഗ് ചെയ്യുക:"</string>
+    <string name="radio_info_ping_hostname_v6" msgid="1367085516027002673">"ഹോസ്റ്റുനാമം(www.google.com) IPv6 പിംഗ് ചെയ്യുക:"</string>
+    <string name="radio_info_http_client_test" msgid="6880321234240444725">"HTTP ക്ലയന്റ് പരിശോധന:"</string>
+    <string name="ping_test_label" msgid="2994755457539465712">"പിംഗ് പരിശോധന റൺ ചെയ്യുക"</string>
+    <string name="radio_info_smsc_label" msgid="5371852992077116124">"SMSC:"</string>
+    <string name="radio_info_smsc_update_label" msgid="473231644807199700">"അപ്ഡേറ്റ് ചെയ്യുക"</string>
+    <string name="radio_info_smsc_refresh_label" msgid="2501002507398765793">"പുതുക്കിയെടുക്കുക"</string>
+    <string name="radio_info_toggle_dns_check_label" msgid="7957464764830779267">"DNS പരിശോധന മാറ്റുക"</string>
+    <string name="oem_radio_info_label" msgid="4094770698605583079">"OEM-നിർദ്ദിഷ്‌ട വിവരം/ക്രമീകരണം"</string>
+    <string name="band_mode_title" msgid="4190112708745417805">"റേഡിയോ ബാൻഡ് മോഡ് സജ്ജീകരിക്കുക"</string>
+    <string name="band_mode_loading" msgid="1441172378272880576">"ബാൻഡ് ലിസ്‌റ്റ് ലോഡ് ചെയ്യുന്നു…"</string>
+    <string name="band_mode_set" msgid="4017175505341018983">"സജ്ജീകരിക്കുക"</string>
+    <string name="band_mode_failed" msgid="2249972027798774743">"പരാജയപ്പെട്ടു"</string>
+    <string name="band_mode_succeeded" msgid="7155289931310744235">"വിജയകരം"</string>
+    <string name="phone_info_label" product="tablet" msgid="2184343562798442963">"ടാബ്‌ലെറ്റ് വിവരം"</string>
+    <string name="phone_info_label" product="default" msgid="5714412771821532807">"ഫോൺ വിവരം"</string>
+    <string name="carrier_provisioning" msgid="2131940589459538869">"കാരിയർ പ്രൊവിഷനിംഗ് വിവരം"</string>
+    <string name="trigger_carrier_provisioning" msgid="4747905722309095554">"കാരിയർ പ്രൊവിഷനിംഗ് തുടങ്ങുക"</string>
 </resources>

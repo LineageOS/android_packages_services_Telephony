@@ -792,4 +792,91 @@
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"Да бисте користили <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, уверите се да су за SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> укључени мобилни подаци. То можете да промените у подешавањима мобилне мреже."</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"Да бисте користили <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, уверите се да су за SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> укључени мобилни подаци и пренос података у ромингу. То можете да промените у подешавањима мобилне мреже."</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Одбаци"</string>
+    <string name="radio_info_data_connection_enable" msgid="5791637077797729311">"Омогући везу за пренос података"</string>
+    <string name="radio_info_data_connection_disable" msgid="9028822504877773144">"Онемогући везу за пренос података"</string>
+    <string name="volte_provisioned_switch_string" msgid="1394051796024284160">"Додељено за VoLTE"</string>
+    <string name="vt_provisioned_switch_string" msgid="2392736863413388180">"Видео позиви су додељени"</string>
+    <string name="wfc_provisioned_switch_string" msgid="7077270261545093108">"Позивање преко Wi-Fi-ја је додељено"</string>
+    <string name="eab_provisioned_switch_string" msgid="793700585260677822">"Додељен је EAB/присуство"</string>
+    <string name="cbrs_data_switch_string" msgid="2717460177342559687">"Подаци CBRS-а"</string>
+    <string name="dsds_switch_string" msgid="1584067974668266474">"Омогући DSDS"</string>
+    <string name="dsds_dialog_title" msgid="3987891679204664973">"Желите да рестартујете уређај?"</string>
+    <string name="dsds_dialog_message" msgid="4839383881298996559">"Треба да рестартујте уређај да бисте променили ово подешавање."</string>
+    <string name="dsds_dialog_confirm" msgid="5658607488389433209">"Рестартуј"</string>
+    <string name="dsds_dialog_cancel" msgid="2332482983314535971">"Откажи"</string>
+    <string name="radio_info_radio_power" msgid="3197814106269756338">"Напајање за радио на мобилним уређајима"</string>
+    <string name="radioInfo_menu_viewADN" msgid="8157521617774683881">"Прикажи адресар SIM-а"</string>
+    <string name="radioInfo_menu_viewFDN" msgid="2688688788097552349">"Прикажи бројеве за фиксно бирање"</string>
+    <string name="radioInfo_menu_viewSDN" msgid="1369044132596800516">"Прикажи бројеве за сервисно бирање"</string>
+    <string name="radioInfo_menu_getIMS" msgid="1903636613815926161">"Статус услуге IMS"</string>
+    <string name="radio_info_ims_reg_status_title" msgid="6684191300020755567">"Статус IMS-а"</string>
+    <string name="radio_info_ims_reg_status_registered" msgid="1624801379938618583">"Регистровано je"</string>
+    <string name="radio_info_ims_reg_status_not_registered" msgid="6373416281874001636">"Није регистровано"</string>
+    <string name="radio_info_ims_feature_status_available" msgid="6838492688972476959">"Доступно"</string>
+    <string name="radio_info_ims_feature_status_unavailable" msgid="5961126036687673382">"Није доступно"</string>
+    <string name="radio_info_ims_reg_status" msgid="5627113102160798161">"Регистрација IMS-а: <xliff:g id="STATUS">%1$s</xliff:g>\nГлас преко LTE-а: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nГлас преко Wi-Fi-ја: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nВидео позив: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT интерфејс: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radioInfo_service_in" msgid="213948507638906391">"Ради"</string>
+    <string name="radioInfo_service_out" msgid="1663775355255962705">"Не ради"</string>
+    <string name="radioInfo_service_emergency" msgid="4995960081039410044">"Само хитни позиви"</string>
+    <string name="radioInfo_service_off" msgid="2004877283088431892">"Радио је искључен"</string>
+    <string name="radioInfo_roaming_in" msgid="7972162764330241405">"Роминг"</string>
+    <string name="radioInfo_roaming_not" msgid="1517046855316268494">"Није у ромингу"</string>
+    <string name="radioInfo_phone_idle" msgid="3842451875395210085">"Неактивно"</string>
+    <string name="radioInfo_phone_ringing" msgid="3495254865874923877">"Звони"</string>
+    <string name="radioInfo_phone_offhook" msgid="9025079393890376475">"Позив је у току"</string>
+    <string name="radioInfo_data_disconnected" msgid="8760151893300132735">"Веза је прекинута"</string>
+    <string name="radioInfo_data_connecting" msgid="8939201656582630105">"Повезује се"</string>
+    <string name="radioInfo_data_connected" msgid="5747343830421265426">"Повезано је"</string>
+    <string name="radioInfo_data_suspended" msgid="7097865203453504891">"Суспендовано"</string>
+    <string name="radioInfo_unknown" msgid="6062057756843316580">"Непознато"</string>
+    <string name="radioInfo_display_packets" msgid="7979215102668713597">"пак."</string>
+    <string name="radioInfo_display_bytes" msgid="4317422116221941054">"бајт(ов)а"</string>
+    <string name="radioInfo_display_dbm" msgid="2805604362853367515">"dBm"</string>
+    <string name="radioInfo_display_asu" msgid="4770234772576941977">"asu"</string>
+    <string name="radioInfo_lac" msgid="7943726640835847607">"LAC"</string>
+    <string name="radioInfo_cid" msgid="8357865174787359252">"ИД клијента"</string>
+    <string name="radio_info_subid" msgid="4090664764881346812">"Актуелни subID:"</string>
+    <string name="radio_info_dds" msgid="1689012310213686695">"SubID подразумеваног SIM-а за податке:"</string>
+    <string name="radio_info_dl_kbps" msgid="4293678516674363232">"DL пропусни опсег (kbps):"</string>
+    <string name="radio_info_ul_kbps" msgid="5013363806530336667">"UL пропусни опсег (kbps):"</string>
+    <string name="radio_info_signal_location_label" msgid="6196477714345817742">"Информације о локацији предајника (застарело):"</string>
+    <string name="radio_info_phy_chan_config" msgid="2296197957826074272">"Конфигурација LTE физичког канала:"</string>
+    <string name="radio_info_cell_info_refresh_rate" msgid="8224592422585623740">"Учесталост освежавања информација о предајнику:"</string>
+    <string name="radio_info_cellinfo_label" msgid="4640050297091408627">"Све информације о мерењу за предајник:"</string>
+    <string name="radio_info_gprs_service_label" msgid="4341880601921268265">"Услуга преноса података:"</string>
+    <string name="radio_info_roaming_label" msgid="3577916622329527197">"Роминг:"</string>
+    <string name="radio_info_imei_label" msgid="7435478087413078973">"IMEI:"</string>
+    <string name="radio_info_call_redirect_label" msgid="2223669286498038884">"Преусмеравање позива:"</string>
+    <string name="radio_info_ppp_resets_label" msgid="5904467261187213855">"Број PPP ресетовања од укључивања:"</string>
+    <string name="radio_info_current_network_label" msgid="4543579732055294094">"Актуелна мрежа:"</string>
+    <string name="radio_info_ppp_received_label" msgid="9008497726844951286">"Примљени подаци:"</string>
+    <string name="radio_info_gsm_service_label" msgid="8568604516243164323">"Гласовна услуга:"</string>
+    <string name="radio_info_signal_strength_label" msgid="6249787779987615555">"Јачина сигнала:"</string>
+    <string name="radio_info_call_status_label" msgid="4920189437939502937">"Статус аудио позива:"</string>
+    <string name="radio_info_ppp_sent_label" msgid="7540726057223209642">"Послати подаци:"</string>
+    <string name="radio_info_message_waiting_label" msgid="3266001528464108752">"Порука на чекању:"</string>
+    <string name="radio_info_phone_number_label" msgid="7365940037971389336">"Број телефона:"</string>
+    <string name="radio_info_band_mode_label" msgid="2246076557203309581">"Изаберите радијски опсег"</string>
+    <string name="radio_info_voice_network_type_label" msgid="2188571505624236641">"Тип гласовне мреже:"</string>
+    <string name="radio_info_data_network_type_label" msgid="1722314883398773640">"Тип мреже за пренос података:"</string>
+    <string name="phone_index_label" msgid="8084719174141913663">"Изаберите индекс телефона"</string>
+    <string name="radio_info_set_perferred_label" msgid="5524824181787022626">"Подесите жељени тип мреже:"</string>
+    <string name="radio_info_ping_hostname_v4" msgid="2624746152951610302">"IPv4 имена хоста за пинговање (www.google.com):"</string>
+    <string name="radio_info_ping_hostname_v6" msgid="1367085516027002673">"IPv6 имена хоста за пинговање (www.google.com):"</string>
+    <string name="radio_info_http_client_test" msgid="6880321234240444725">"Тест за HTTP клијента:"</string>
+    <string name="ping_test_label" msgid="2994755457539465712">"Покрени тест пинговања"</string>
+    <string name="radio_info_smsc_label" msgid="5371852992077116124">"SMSC:"</string>
+    <string name="radio_info_smsc_update_label" msgid="473231644807199700">"Ажурирај"</string>
+    <string name="radio_info_smsc_refresh_label" msgid="2501002507398765793">"Освежи"</string>
+    <string name="radio_info_toggle_dns_check_label" msgid="7957464764830779267">"Укључи/искључи проверу DNS-а"</string>
+    <string name="oem_radio_info_label" msgid="4094770698605583079">"Информације/подешавања специфична за произвођача оригиналне опреме"</string>
+    <string name="band_mode_title" msgid="4190112708745417805">"Подесите режим радијског опсега"</string>
+    <string name="band_mode_loading" msgid="1441172378272880576">"Учитава се листа опсега…"</string>
+    <string name="band_mode_set" msgid="4017175505341018983">"Подеси"</string>
+    <string name="band_mode_failed" msgid="2249972027798774743">"Није успело"</string>
+    <string name="band_mode_succeeded" msgid="7155289931310744235">"Успело је"</string>
+    <string name="phone_info_label" product="tablet" msgid="2184343562798442963">"Информације о таблету"</string>
+    <string name="phone_info_label" product="default" msgid="5714412771821532807">"Информације о телефону"</string>
+    <string name="carrier_provisioning" msgid="2131940589459538869">"Информације о додели мобилног оператера"</string>
+    <string name="trigger_carrier_provisioning" msgid="4747905722309095554">"Покретање доделе мобилног оператера"</string>
 </resources>
