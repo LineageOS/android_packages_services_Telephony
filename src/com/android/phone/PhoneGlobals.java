@@ -146,6 +146,7 @@ public class PhoneGlobals extends ContextWrapper {
     CallerInfoCache callerInfoCache;
     NotificationMgr notificationMgr;
     public PhoneInterfaceManager phoneMgr;
+    public ImsRcsController imsRcsController;
     CarrierConfigLoader configLoader;
 
     private Phone phoneInEcm;
@@ -358,6 +359,8 @@ public class PhoneGlobals extends ContextWrapper {
             callerInfoCache = CallerInfoCache.init(this);
 
             phoneMgr = PhoneInterfaceManager.init(this);
+
+            imsRcsController = ImsRcsController.init(this);
 
             configLoader = CarrierConfigLoader.init(this);
 
