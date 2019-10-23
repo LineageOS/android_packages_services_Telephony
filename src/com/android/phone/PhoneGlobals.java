@@ -43,6 +43,7 @@ import android.os.UpdateLock;
 import android.os.UserManager;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.sysprop.TelephonyProperties;
 import android.telecom.TelecomManager;
 import android.telephony.AnomalyReporter;
 import android.telephony.CarrierConfigManager;
@@ -568,7 +569,7 @@ public class PhoneGlobals extends ContextWrapper {
         Log.i(LOG_TAG, "Turning radio off - airplane");
         Settings.Global.putInt(context.getContentResolver(), Settings.Global.CELL_ON,
                  PhoneConstants.CELL_OFF_DUE_TO_AIRPLANE_MODE_FLAG);
-        SystemProperties.set("persist.radio.airplane_mode_on", "1");
+        TelephonyProperties.airplane_mode_on(true); // true means int value 1
         Settings.Global.putInt(getContentResolver(), Settings.Global.ENABLE_CELLULAR_ON_BOOT, 0);
         PhoneUtils.setRadioPower(false);
     }
@@ -579,7 +580,7 @@ public class PhoneGlobals extends ContextWrapper {
                 PhoneConstants.CELL_ON_FLAG);
         Settings.Global.putInt(getContentResolver(), Settings.Global.ENABLE_CELLULAR_ON_BOOT,
                 1);
-        SystemProperties.set("persist.radio.airplane_mode_on", "0");
+        TelephonyProperties.airplane_mode_on(false); // false means int value 0
         PhoneUtils.setRadioPower(true);
     }
 
