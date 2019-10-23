@@ -428,7 +428,7 @@ public class EditFdnContactScreen extends Activity {
             }
 
             if (v == mNameField) {
-                mNumberField.requestFocus();
+                mButton.requestFocus();
             } else if (v == mNumberField) {
                 mButton.requestFocus();
             } else if (v == mButton) {
