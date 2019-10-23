@@ -99,6 +99,7 @@ import android.telephony.emergency.EmergencyNumber;
 import android.telephony.gsm.GsmCellLocation;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ProvisioningManager;
+import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsConfig;
 import android.telephony.ims.aidl.IImsConfigCallback;
@@ -2938,6 +2939,74 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 // will already have been removed internally.
             }
         });
+    }
+
+    /**
+     * Get the IMS service registration state for the MmTelFeature associated with this sub id.
+     */
+    @Override
+    public void getImsMmTelRegistrationState(int subId, IIntegerConsumer consumer) {
+        enforceReadPrivilegedPermission("getImsMmTelRegistrationState");
+        if (!ImsManager.isImsSupportedOnDevice(mApp)) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+        final long token = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone == null) {
+                Log.w(LOG_TAG, "getImsMmTelRegistrationState: called with an invalid subscription '"
+                        + subId + "'");
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_INVALID_SUBSCRIPTION);
+            }
+            phone.getImsRegistrationState(regState -> {
+                try {
+                    consumer.accept((regState == null)
+                            ? RegistrationManager.REGISTRATION_STATE_NOT_REGISTERED : regState);
+                } catch (RemoteException e) {
+                    // Ignore if the remote process is no longer available to call back.
+                    Log.w(LOG_TAG, "getImsMmTelRegistrationState: callback not available.");
+                }
+            });
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
+    }
+
+    /**
+     * Get the transport type for the IMS service registration state.
+     */
+    @Override
+    public void getImsMmTelRegistrationTransportType(int subId, IIntegerConsumer consumer) {
+        enforceReadPrivilegedPermission("getImsMmTelRegistrationTransportType");
+        if (!ImsManager.isImsSupportedOnDevice(mApp)) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+        final long token = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone == null) {
+                Log.w(LOG_TAG, "getImsMmTelRegistrationState: called with an invalid subscription '"
+                        + subId + "'");
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_INVALID_SUBSCRIPTION);
+            }
+            phone.getImsRegistrationTech(regTech -> {
+                // Convert registration tech from ImsRegistrationImplBase -> RegistrationManager
+                int regTechConverted = (regTech == null)
+                        ? ImsRegistrationImplBase.REGISTRATION_TECH_NONE : regTech;
+                regTechConverted = RegistrationManager.IMS_REG_TO_ACCESS_TYPE_MAP.get(
+                        regTechConverted);
+                try {
+                    consumer.accept(regTechConverted);
+                } catch (RemoteException e) {
+                    // Ignore if the remote process is no longer available to call back.
+                    Log.w(LOG_TAG, "getImsMmTelRegistrationState: callback not available.");
+                }
+            });
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
     }
 
     @Override
