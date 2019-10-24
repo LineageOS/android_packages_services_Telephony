@@ -40,8 +40,6 @@ import com.android.internal.telephony.imsphone.ImsPhoneConnection;
 import com.android.phone.NumberVerificationManager;
 import com.android.phone.PhoneUtils;
 
-import com.google.common.base.Preconditions;
-
 import java.util.Objects;
 
 /**
@@ -93,7 +91,9 @@ final class PstnIncomingCallNotifier {
      * @param phone The phone object for listening to incoming calls.
      */
     PstnIncomingCallNotifier(Phone phone) {
-        Preconditions.checkNotNull(phone);
+        if (phone == null) {
+            throw new NullPointerException();
+        }
 
         mPhone = phone;
 
