@@ -23,6 +23,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.WallpaperColors;
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -31,6 +32,7 @@ import android.content.IntentFilter;
 import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.net.Uri;
@@ -68,9 +70,6 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.TextView;
 
-import com.android.internal.colorextraction.ColorExtractor;
-import com.android.internal.colorextraction.ColorExtractor.GradientColors;
-import com.android.internal.colorextraction.drawable.ScrimDrawable;
 import com.android.phone.EmergencyDialerMetricsLogger.DialedFrom;
 import com.android.phone.EmergencyDialerMetricsLogger.PhoneNumberType;
 import com.android.phone.EmergencyDialerMetricsLogger.UiModeErrorCode;
@@ -100,7 +99,8 @@ import java.util.Locale;
  */
 public class EmergencyDialer extends Activity implements View.OnClickListener,
         View.OnLongClickListener, View.OnKeyListener, TextWatcher,
-        DialpadKeyButton.OnPressedListener, ColorExtractor.OnColorsChangedListener,
+        DialpadKeyButton.OnPressedListener,
+        WallpaperManager.OnColorsChangedListener,
         EmergencyShortcutButton.OnConfirmClickListener,
         EmergencyInfoGroup.OnConfirmClickListener {
 
@@ -212,8 +212,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     private String mLastNumber; // last number we tried to dial. Used to restore error dialog.
 
     // Background gradient
-    private ColorExtractor mColorExtractor;
-    private ScrimDrawable mBackgroundDrawable;
+    private ColorDrawable mBackgroundDrawable;
     private boolean mSupportsDarkText;
 
     private boolean mIsWfcEmergencyCallingWarningEnabled;
@@ -276,15 +275,13 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         Log.d(LOG_TAG, "Enable emergency dialer shortcut: "
                 + mShortcutViewConfig.isEnabled());
 
-        mColorExtractor = new ColorExtractor(this);
-
         if (mShortcutViewConfig.isEnabled()) {
             // Shortcut view doesn't support dark text theme.
             updateTheme(false);
         } else {
-            GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK,
-                    ColorExtractor.TYPE_EXTRA_DARK);
-            updateTheme(lockScreenColors.supportsDarkText());
+            WallpaperColors wallpaperColors =
+                    getWallpaperManager().getWallpaperColors(WallpaperManager.FLAG_LOCK);
+            updateTheme(supportsDarkText(wallpaperColors));
         }
 
         setContentView(R.layout.emergency_dialer);
@@ -298,7 +295,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         mDefaultDigitsTextSize = mDigits.getScaledTextSize();
         maybeAddNumberFormatting();
 
-        mBackgroundDrawable = new ScrimDrawable();
+        mBackgroundDrawable = new ColorDrawable();
         Point displaySize = new Point();
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE))
                 .getDefaultDisplay().getSize(displaySize);
@@ -647,15 +644,18 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
         if (mShortcutViewConfig.isEnabled()) {
             // Shortcut view doesn't support dark text theme.
-            mBackgroundDrawable.setColor(Color.BLACK, false);
+            mBackgroundDrawable.setColor(Color.BLACK);
             updateTheme(false);
         } else {
-            mColorExtractor.addOnColorsChangedListener(this);
-            GradientColors lockScreenColors = mColorExtractor.getColors(WallpaperManager.FLAG_LOCK,
-                    ColorExtractor.TYPE_EXTRA_DARK);
-            // Do not animate when view isn't visible yet, just set an initial state.
-            mBackgroundDrawable.setColor(lockScreenColors.getMainColor(), false);
-            updateTheme(lockScreenColors.supportsDarkText());
+            WallpaperManager wallpaperManager = getWallpaperManager();
+            if (wallpaperManager.isWallpaperSupported()) {
+                wallpaperManager.addOnColorsChangedListener(this, null);
+            }
+
+            WallpaperColors wallpaperColors =
+                    wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_LOCK);
+            mBackgroundDrawable.setColor(getPrimaryColor(wallpaperColors));
+            updateTheme(supportsDarkText(wallpaperColors));
         }
 
         if (mShortcutViewConfig.isEnabled()) {
@@ -696,7 +696,11 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     @Override
     protected void onStop() {
         super.onStop();
-        mColorExtractor.removeOnColorsChangedListener(this);
+
+        WallpaperManager wallpaperManager = getWallpaperManager();
+        if (wallpaperManager.isWallpaperSupported()) {
+            wallpaperManager.removeOnColorsChangedListener(this);
+        }
     }
 
     /**
@@ -937,12 +941,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     }
 
     @Override
-    public void onColorsChanged(ColorExtractor extractor, int which) {
+    public void onColorsChanged(WallpaperColors colors, int which) {
         if ((which & WallpaperManager.FLAG_LOCK) != 0) {
-            GradientColors colors = extractor.getColors(WallpaperManager.FLAG_LOCK,
-                    ColorExtractor.TYPE_EXTRA_DARK);
-            mBackgroundDrawable.setColor(colors.getMainColor(), true /* animated */);
-            updateTheme(colors.supportsDarkText());
+            mBackgroundDrawable.setColor(getPrimaryColor(colors));
+            updateTheme(supportsDarkText(colors));
         }
     }
 
@@ -1230,5 +1232,29 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             default:
                 return "Unknown-" + callSource;
         }
+    }
+
+    private WallpaperManager getWallpaperManager() {
+        return getSystemService(WallpaperManager.class);
+    }
+
+    private static boolean supportsDarkText(WallpaperColors colors) {
+        if (colors != null) {
+            return (colors.getColorHints() & WallpaperColors.HINT_SUPPORTS_DARK_TEXT) != 0;
+        }
+        // It's possible that wallpaper colors are null (e.g. when colors are being
+        // processed or a live wallpaper is used). In this case, fallback to same
+        // behavior as when shortcut view is enabled.
+        return false;
+    }
+
+    private static int getPrimaryColor(WallpaperColors colors) {
+        if (colors != null) {
+            return colors.getPrimaryColor().toArgb();
+        }
+        // It's possible that wallpaper colors are null (e.g. when colors are being
+        // processed or a live wallpaper is used). In this case, fallback to same
+        // behavior as when shortcut view is enabled.
+        return Color.BLACK;
     }
 }
