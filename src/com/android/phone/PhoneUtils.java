@@ -45,8 +45,8 @@ import android.widget.Toast;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
-import com.android.internal.telephony.CallerInfo;
-import com.android.internal.telephony.CallerInfoAsyncQuery;
+import android.telephony.CallerInfo;
+import android.telephony.CallerInfoAsyncQuery;
 import com.android.internal.telephony.Connection;
 import com.android.internal.telephony.IccCard;
 import com.android.internal.telephony.MmiCode;
@@ -835,7 +835,7 @@ public class PhoneUtils {
             // Store CNAP information retrieved from the Connection (we want to do this
             // here regardless of whether the number is empty or not).
             cit.currentInfo.cnapName =  c.getCnapName();
-            cit.currentInfo.name = cit.currentInfo.cnapName; // This can still get overwritten
+            cit.currentInfo.setName(cit.currentInfo.cnapName); // This can still get overwritten
                                                              // by ContactInfo later
             cit.currentInfo.numberPresentation = c.getNumberPresentation();
             cit.currentInfo.namePresentation = c.getCnapNamePresentation();
@@ -854,7 +854,7 @@ public class PhoneUtils {
                 number = modifyForSpecialCnapCases(context, cit.currentInfo, number,
                         cit.currentInfo.numberPresentation);
 
-                cit.currentInfo.phoneNumber = number;
+                cit.currentInfo.setPhoneNumber(number);
                 // For scenarios where we may receive a valid number from the network but a
                 // restricted/unavailable presentation, we do not want to perform a contact query
                 // (see note on isFinal above). So we set isFinal to true here as well.
@@ -913,14 +913,14 @@ public class PhoneUtils {
                     // Store CNAP information retrieved from the Connection
                     cit.currentInfo.cnapName =  c.getCnapName();
                     // This can still get overwritten by ContactInfo
-                    cit.currentInfo.name = cit.currentInfo.cnapName;
+                    cit.currentInfo.setName(cit.currentInfo.cnapName);
                     cit.currentInfo.numberPresentation = c.getNumberPresentation();
                     cit.currentInfo.namePresentation = c.getCnapNamePresentation();
 
                     updatedNumber = modifyForSpecialCnapCases(context, cit.currentInfo,
                             updatedNumber, cit.currentInfo.numberPresentation);
 
-                    cit.currentInfo.phoneNumber = updatedNumber;
+                    cit.currentInfo.setPhoneNumber(updatedNumber);
                     if (DBG) {
                         log("startGetCallerInfo: updatedNumber="
                                 + toLogSafePhoneNumber(updatedNumber));
@@ -951,7 +951,7 @@ public class PhoneUtils {
                     // Store CNAP information retrieved from the Connection
                     cit.currentInfo.cnapName = c.getCnapName();  // This can still get
                                                                  // overwritten by ContactInfo
-                    cit.currentInfo.name = cit.currentInfo.cnapName;
+                    cit.currentInfo.setName(cit.currentInfo.cnapName);
                     cit.currentInfo.numberPresentation = c.getNumberPresentation();
                     cit.currentInfo.namePresentation = c.getCnapNamePresentation();
 
@@ -1032,7 +1032,7 @@ public class PhoneUtils {
                     // ...but copy over the (few) things we care about
                     // from the original CallerInfo object:
                     if (newCi != null) {
-                        newCi.phoneNumber = ci.phoneNumber; // To get formatted phone number
+                        newCi.setPhoneNumber(ci.getPhoneNumber()); // To get formatted phone number
                         newCi.geoDescription = ci.geoDescription; // To get geo description string
                         ci = newCi;
                     }
@@ -1054,14 +1054,14 @@ public class PhoneUtils {
 
         String compactName = null;
         if (ci != null) {
-            if (TextUtils.isEmpty(ci.name)) {
+            if (TextUtils.isEmpty(ci.getName())) {
                 // Perform any modifications for special CNAP cases to
                 // the phone number being displayed, if applicable.
-                compactName = modifyForSpecialCnapCases(context, ci, ci.phoneNumber,
+                compactName = modifyForSpecialCnapCases(context, ci, ci.getPhoneNumber(),
                                                         ci.numberPresentation);
             } else {
                 // Don't call modifyForSpecialCnapCases on regular name. See b/2160795.
-                compactName = ci.name;
+                compactName = ci.getName();
             }
         }
 
