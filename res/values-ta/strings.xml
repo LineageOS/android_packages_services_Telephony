@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"தனிப்பட்ட எண்"</string>
     <string name="payphone" msgid="4793877574636445118">"கட்டணத் தொலைபேசி"</string>
     <string name="onHold" msgid="9035493194749959955">"காத்திருப்பில்"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) மெசேஜ்"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"மொபைல் நிறுவன மெசேஜ்"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI குறியீடு தொடங்கியது"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD குறியீடு இயங்குகிறது…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI குறியீடு ரத்தானது"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"குரலஞ்சல்"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"குரலஞ்சல் (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"அழைப்புகளைச் செய்வது, பெறுவது"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"ஸ்மார்ட்டாக முன்னனுப்புதல்"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"ஓர் எண்ணைத் தொடர்பு கொள்ள முடியாத போது உங்களது மற்றொரு எண்ணிற்கு அழைப்புகளை எப்போதும் முன்னனுப்பும்"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"அறிவிப்புகள்"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"அவசரகால அலைபரப்புகள்"</string>
     <string name="call_settings" msgid="6112441768261754562">"அழைப்பு அமைப்பு"</string>
@@ -119,7 +118,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> க்குப் பகிர்"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"ஆஃப்"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"பதிலளிக்காமல் இருக்கும்போது, அழைப்பு பகிர்தலை முடக்குவதை ஆபரேட்டர் ஆதரிக்கவில்லை."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"தொடர்புகொள்ள முடியாமல் இருக்கும்போது"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"தொடர்புகொள்ள முடியாதபோது"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"தொடர்பு கிடைக்காதபோது:"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> க்குப் பகிர்"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"ஆஃப்"</string>
@@ -137,7 +136,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="6095812685884176176">"SS கோரிக்கை, USSD கோரிக்கைக்கு மாற்றப்பட்டது"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="7920654012697945858">"புதிய SS கோரிக்கைக்கு மாற்றப்பட்டது"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="3873905132181743781">"SS கோரிக்கை, வீடியோ அழைப்பிற்கு மாற்றப்பட்டது"</string>
-    <string name="fdn_check_failure" msgid="18200614306525434">"மொபைல் பயன்பாட்டின் நிலையான அழைப்பு எண்களுக்கான அமைப்பு இயக்கப்பட்டது. இதன் விளைவாக, அழைப்பு தொடர்பான சில அம்சங்கள் செயல்படவில்லை."</string>
+    <string name="fdn_check_failure" msgid="18200614306525434">"மொபைல் ஆப்ஸின் நிலையான அழைப்பு எண்களுக்கான அமைப்பு இயக்கப்பட்டது. இதன் விளைவாக, அழைப்பு தொடர்பான சில அம்சங்கள் செயல்படவில்லை."</string>
     <string name="radio_off_error" msgid="2304459933248513376">"அமைப்புகளைப் பார்ப்பதற்கு முன், ரேடியோவை இயக்கவும்."</string>
     <string name="close_dialog" msgid="2365884406356986917">"சரி"</string>
     <string name="enable" msgid="7248657275000173526">"இயக்கு"</string>
@@ -255,11 +254,16 @@
     <string name="roaming_enable" msgid="7331106985174381987">"ரோமிங்கின் போது டேட்டா சேவைகளுடன் இணை"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ரோமிங்கின் போது டேட்டா சேவைகளுடன் இணை"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"டேட்டா ரோமிங் முடக்கத்தில் உள்ளது. இயக்க, தட்டவும்."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"ரோமிங் கட்டணங்கள் விதிக்கப்படக்கூடும். மாற்ற தட்டவும்."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"மொபைல் டேட்டா இணைப்பு இல்லை"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"டேட்டா ரோமிங் இயக்கத்தில்"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"குறிப்பிடத்தக்க பேமெண்ட்கள் இருக்கலாம்."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"உங்கள் நெட்வொர்க் வழங்குநர் விதிக்கும் கட்டணத்தைப் பார்க்கவும்."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"தரவு ரோமிங்கை அனுமதிக்கவா?"</string>
-    <string name="data_usage_title" msgid="4042209259808900283">"பயன்பாட்டின் டேட்டா உபயோகம்"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"SIMமின் செயல்பாடு வரம்பிடப்பட்டது"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> எண்ணைப் பயன்படுத்தும் போது <xliff:g id="CARRIER_NAME">%1$s</xliff:g> அழைப்புகளும் டேட்டா சேவைகளும் தடுக்கப்படக்கூடும்."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"வேறொரு SIMமில் <xliff:g id="CARRIER_NAME">%1$s</xliff:g> அழைப்புகளும் டேட்டா சேவைகளும் தடுக்கப்படக்கூடும்."</string>
+    <string name="data_usage_title" msgid="4042209259808900283">"ஆப்ஸ் டேட்டா உபயோகம்"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g> மொபைல் டேட்டா பயன்படுத்தப்பட்டது"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"மேம்பட்டவை"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"தொலைத்தொடர்பு நிறுவனம்"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"உரிமையாளர்"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"தகவலைப் பார்க்க, மீண்டும் தட்டவும்"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"அவசரகால அழைப்பு"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"அவசர அழைப்புகள் மட்டும்"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"அவசர எண்"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"அவசர எண்கள்"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> என்ற எண்ணை அழைக்க, மீண்டும் தட்டவும்"</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"நிகழ்நேர உரை (RTT) அழைப்பு"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"குரல் அழைப்பிலேயே செய்தியிடலை அனுமதிக்கும்"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"காது கேளாதோர், கேட்பதற்குச் சிரமப்படுவோர், பேச இயலாதோர் அல்லது குரலைத் தாண்டி மற்ற வழிகளில் தகவல் தேவைப்படுவோருக்கு RTT பயன்முறை உதவுகிறது.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;மேலும் அறிக&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - டிரான்ஸ்கிரிப்ட் செய்யப்பட்ட செய்தியாக RTT அழைப்புகள் சேமிக்கப்படும்\n       &lt;br&gt; - வீடியோ அழைப்புகளுக்கு RTT பயன்முறை இல்லை"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"கவனத்தில் கொள்ளவும்: ரோமிங்கில் உள்ள போது RTT கிடையாது"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY முடக்கத்தில்"</item>
     <item msgid="3971695875449640648">"TTY ஐ இயக்கு"</item>
@@ -643,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"வைஃபை இணைப்பு துண்டிக்கப்பட்டதால், அழைப்பு முடிந்தது."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"பேட்டரி அளவு குறைவாக இருப்பதால், வீடியோ அழைப்பைச் செய்ய முடியாது."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"பேட்டரி அளவு குறைவாக இருப்பதால், வீடியோ அழைப்பு முடிந்தது."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"இந்த இடத்தில் வைஃபை மூலமாக அவசர அழைப்புகளைச் செய்யும் வசதி இல்லை."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"இந்த இடத்தில் வைஃபை மூலம் அழைக்க முடியாது."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"குரலஞ்சல் பின்னை மாற்றவும்"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"தொடர்க"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"ரத்துசெய்"</string>
@@ -756,6 +762,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"அழைப்புத் தடுப்பு அமைப்புகள்"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"எல்லா அழைப்புத் தடுப்பு அமைப்புகளையும் முடக்கவா?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"நெட்வொர்க் பிஸியாக உள்ளது. பிறகு அழைக்கவும்."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"நெட்வொர்க் பிஸியாக உள்ளது. உதவிக்கு உங்கள் மொபைல் ஆபரேட்டரைத் தொடர்பு கொள்ளவும்."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"அழைப்புத் திருப்பிவிடப்பட்டது."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"அழைப்புப் பகிரப்பட்டது."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"அழைப்புக் காத்திருப்பில் உள்ளது."</string>

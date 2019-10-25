@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"비공개 번호"</string>
     <string name="payphone" msgid="4793877574636445118">"공중전화"</string>
     <string name="onHold" msgid="9035493194749959955">"대기 중"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) 메시지"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"이동통신사 메시지"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI 코드 시작됨"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD 코드 실행 중..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI 코드 취소됨"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"음성사서함"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"음성사서함(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"전화 걸기 및 받기"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"스마트 착신전환"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"전화번호에 연결할 수 없을 때 항상 다른 전화번호로 착신전환합니다."</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"알림"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"긴급 방송"</string>
     <string name="call_settings" msgid="6112441768261754562">"통화 설정"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"로밍 시 데이터 서비스에 연결"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"로밍 시 데이터 서비스에 연결"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"데이터 로밍이 사용 중지되었습니다. 사용 설정하려면 탭하세요."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"로밍 요금이 부과될 수 있습니다. 수정하려면 탭하세요."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"모바일 데이터 연결 끊김"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"데이터 로밍 사용"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"많은 요금이 부과될 수 있습니다."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"요금은 이동통신사에 문의하세요."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"데이터 로밍을 허용하시겠습니까?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"제한된 SIM 기능"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>번을 사용하는 동안 <xliff:g id="CARRIER_NAME">%1$s</xliff:g> 통화 및 데이터 서비스가 차단될 수 있습니다."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"다른 SIM을 사용하는 동안 <xliff:g id="CARRIER_NAME">%1$s</xliff:g> 통화 및 데이터 서비스가 차단될 수 있습니다."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"앱 데이터 사용량"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g>에 사용된 모바일 데이터: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"고급"</string>
@@ -352,9 +356,9 @@
     <string name="enable_disable_lodgings" msgid="1822029172658551202">"숙박 정보"</string>
     <string name="lodgings_enable" msgid="3230042508992850322">"숙박 정보 사용"</string>
     <string name="lodgings_disable" msgid="3387879742320682391">"숙박 정보 사용 중지"</string>
-    <string name="enable_disable_retail_directory" msgid="1357809784475660303">"소매점 디렉토리"</string>
-    <string name="retail_directory_enable" msgid="3280626290436111496">"소매점 디렉토리 사용"</string>
-    <string name="retail_directory_disable" msgid="6479739816662879027">"소매점 디렉토리 사용 중지"</string>
+    <string name="enable_disable_retail_directory" msgid="1357809784475660303">"소매점 디렉터리"</string>
+    <string name="retail_directory_enable" msgid="3280626290436111496">"소매점 디렉터리 사용"</string>
+    <string name="retail_directory_disable" msgid="6479739816662879027">"소매점 디렉터리 사용 중지"</string>
     <string name="enable_disable_advertisements" msgid="5999495926176182128">"광고"</string>
     <string name="advertisements_enable" msgid="2050305021264683786">"광고 사용"</string>
     <string name="advertisements_disable" msgid="8350985908788707935">"광고 사용 중지"</string>
@@ -441,7 +445,7 @@
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN이 업데이트되지 않았습니다. PIN2가 잘못되었거나 전화번호가 거부되었습니다."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN 작업이 실패했습니다."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM 카드에서 읽는 중..."</string>
-    <string name="simContacts_empty" msgid="5270660846489561932">"SIM 카드에 주소록이 없습니다."</string>
+    <string name="simContacts_empty" msgid="5270660846489561932">"SIM 카드에 연락처가 없습니다."</string>
     <string name="simContacts_title" msgid="1861472842524839921">"가져올 주소록 선택"</string>
     <string name="simContacts_airplaneMode" msgid="5254946758982621072">"SIM 카드에서 연락처를 가져오려면 비행기 모드를 사용 중지하세요."</string>
     <string name="enable_pin" msgid="5422767284133234860">"SIM PIN 사용/사용 중지"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"소유자"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"정보를 보려면 다시 탭하세요."</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"긴급 전화"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"긴급 전화 전용"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"긴급 전화번호"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"긴급 전화번호"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>(으)로 전화하려면 다시 탭하세요."</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"실시간 문자 메시지(RTT) 통화"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"음성 통화 중 메시지 허용"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT는 청각 장애, 난청, 언어 장애가 있거나 음성 이외의 의사소통 수단이 필요한 발신자에게 도움이 됩니다.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;자세히 알아보기&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT 통화는 메시지 스크립트로 저장됩니다.\n       &lt;br&gt; - 화상 통화에서는 RTT를 사용할 수 없습니다."</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"참고: 로밍 중에는 RTT를 사용할 수 없습니다."</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY 사용 안함"</item>
     <item msgid="3971695875449640648">"TTY 전체"</item>
@@ -643,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi 연결이 끊어져 통화가 종료되었습니다."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"배터리 부족으로 화상 통화를 할 수 없습니다."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"배터리 부족으로 화상 통화가 종료되었습니다."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Wi-Fi를 통한 긴급 전화는 이 지역에서 사용할 수 없습니다."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"이 지역에서는 Wi-Fi 통화를 사용할 수 없습니다."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"음성사서함 PIN 변경"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"계속"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"취소"</string>
@@ -756,6 +762,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"착발신 제한 설정"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"모든 착발신 제한 설정을 비활성화하시겠습니까?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"네트워크 사용량이 많습니다. 나중에 다시 전화해 주세요."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"네트워크 사용량이 많습니다. 이동통신사에 지원을 요청해 보세요."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"통화가 착신전환되었습니다."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"통화가 착신전환되었습니다."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"통화 대기 중입니다."</string>

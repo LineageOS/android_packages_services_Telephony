@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Número privado"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefone público"</string>
     <string name="onHold" msgid="9035493194749959955">"Em espera"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Mensagem (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Mensagem da operadora"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Código MMI iniciado"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Código USSD em execução…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Código MMI cancelado"</string>
@@ -60,7 +62,7 @@
     <string name="labelCdmaMore_with_label" msgid="6333588719319970399">"Configurações de chamada CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="9043423184895642077">"Nomes dos pontos de acesso"</string>
     <string name="settings_label" msgid="3876743539816984008">"Configurações de rede"</string>
-    <string name="phone_accounts" msgid="6376603393888116364">"Contas de chamada"</string>
+    <string name="phone_accounts" msgid="6376603393888116364">"Contas para chamadas"</string>
     <string name="phone_accounts_make_calls_with" msgid="1969188078933152231">"Fazer chamadas com"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4677789312053828493">"Fazer chamadas SIP com"</string>
     <string name="phone_accounts_ask_every_time" msgid="4346499067149985702">"Perguntar primeiro"</string>
@@ -77,17 +79,14 @@
     <string name="voicemail" msgid="8693759337917898954">"Correio de voz"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Correio de voz (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Fazer e receber chamadas"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Encaminhamento inteligente"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Quando um número não está disponível, sempre encaminha as chamadas para outro número"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notificações"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Transmissões de emergência"</string>
     <string name="call_settings" msgid="6112441768261754562">"Configurações de chamadas"</string>
-    <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Config. adicionais"</string>
-    <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Config. adicionais (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="additional_gsm_call_settings" msgid="1391795981938800617">"Configurações adicionais"</string>
+    <string name="additional_gsm_call_settings_with_label" msgid="1385241520708457376">"Configurações adicionais (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="4076647190996778012">"Configurações adicionais somente de chamada GSM"</string>
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"Configurações de chamada CDMA adicionais"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"Configurações adicionais somente de chamada CDMA"</string>
@@ -98,11 +97,11 @@
     <string name="sum_show_caller_id" msgid="6768534125447290401">"Número exibido nas chamadas enviadas"</string>
     <string name="sum_default_caller_id" msgid="1954518825510901365">"Usar configurações padrão da operadora para exibir meu número em chamadas efetuadas"</string>
     <string name="labelCW" msgid="6120513814915920200">"Chamada em espera"</string>
-    <string name="sum_cw_enabled" msgid="8083061901633671397">"Durante uma chamada, me avise sobre chamadas recebidas"</string>
-    <string name="sum_cw_disabled" msgid="3648693907300104575">"Durante uma chamada, me avise sobre chamadas recebidas"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Config. de encaminhamento de chamada"</string>
-    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Config. de encaminhamento de chamada (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"Encaminhamento"</string>
+    <string name="sum_cw_enabled" msgid="8083061901633671397">"Notificar sobre a entrada de outras chamadas durante uma ligação"</string>
+    <string name="sum_cw_disabled" msgid="3648693907300104575">"Notificar sobre a entrada de outras chamadas durante uma ligação"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Configurações de encaminhamento de chamada"</string>
+    <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Configurações de encaminhamento de chamada (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="labelCF" msgid="2574386948026924737">"Encaminhamento de chamada"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Sempre encaminhar"</string>
     <string name="messageCFU" msgid="3560082430662923687">"Sempre usar este número"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"Encaminhando todas as chamadas"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Conectar aos serviços de dados quando estiver em roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Conectar aos serviços de dados quando estiver em roaming"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"O roaming de dados está desativado. Toque para ativá-lo."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Sujeito a cobrança por uso de roaming. Toque para modificar"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"A conexão de dados móveis foi perdida"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"O roaming de dados está ativado"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Pode haver cobranças significativas."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Consulte os preços com seu provedor de rede."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Permitir roaming de dados?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Funcionalidade limitada do chip"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Talvez os serviços de dados e as chamadas da operadora <xliff:g id="CARRIER_NAME">%1$s</xliff:g> sejam bloqueados se você usar <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Talvez os serviços de dados e as chamadas da <xliff:g id="CARRIER_NAME">%1$s</xliff:g> sejam bloqueados com outro chip."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Uso de dados do app"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> de dados móveis usados em <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avançadas"</string>
@@ -404,11 +408,11 @@
     <string name="fdn_activation" msgid="2156479741307463576">"Ativação do FDN"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"Os números de discagem fixa estão ativados"</string>
     <string name="fdn_disabled" msgid="4700049736675368279">"Os números de discagem fixa estão desativados"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"Ativar FDN"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"Ativar FDN (nº de discagem fixa)"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"Desativar FDN"</string>
     <string name="change_pin2" msgid="2153563695382176676">"Alterar PIN2"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"Desativar FDN"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"Ativar FDN"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"Ativar FDN (nº de discagem fixa)"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"Gerenciar números de discagem fixa"</string>
     <string name="sum_fdn_change_pin" msgid="6666549734792827932">"Alterar PIN para acesso FDN"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Gerenciar lista de números telefônicos"</string>
@@ -519,15 +523,14 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Proprietário"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Toque novamente para ver as informações"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Chamada de emergência"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Só chamadas de emergência"</string>
-    <string name="single_emergency_number_title" msgid="4959203129714396515">"Número de emergência"</string>
+    <string name="single_emergency_number_title" msgid="4959203129714396515">"Telefone de emergência"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Números de emergência"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Toque novamente para ligar para <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="207613549344420291">"Ativando o rádio…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="5960061579996526883">"Sem serviço. Tentando novamente..."</string>
     <string name="radio_off_during_emergency_call" msgid="2535800034010306830">"Não é possível usar o modo avião durante uma chamada de emergência."</string>
-    <string name="dial_emergency_error" msgid="1509085166367420355">"Não é possível realizar chamadas. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> não é um número de emergência."</string>
-    <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Não é possível realizar chamadas. Disque um número de emergência."</string>
+    <string name="dial_emergency_error" msgid="1509085166367420355">"Não é possível realizar chamadas. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> não é um telefone de emergência."</string>
+    <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Não é possível realizar chamadas. Disque o número de telefone de emergência."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Chamada de emergência indisponível"</string>
     <string name="police_type_description" msgid="5324410799919829693">"Polícia"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulância"</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Chamada com mensagem de texto em tempo real (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permitir o envio de mensagens de texto em uma chamada de voz"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"A RTT ajuda os autores das chamadas com deficiências como surdez, dificuldade de audição ou fala ou que precisam de outros recursos além de voz.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saiba mais&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; — As chamadas RTT são salvas como transcrições de mensagem\n       &lt;br&gt; — A RTT não está disponível para videochamadas"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Observação: a RTT não está disponível em roaming"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desativado"</item>
     <item msgid="3971695875449640648">"TTY completo"</item>
@@ -643,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Conexão Wi-Fi perdida. Chamada encerrada."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Não é possível fazer sua videochamada devido à bateria baixa."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"A videochamada foi encerrada devido à bateria baixa."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"As chamadas de emergência no Wi-Fi não estão disponíveis neste local."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"As chamadas no Wi-Fi não estão disponíveis neste local."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Alterar o PIN do correio de voz"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continuar"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Cancelar"</string>
@@ -756,6 +762,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Configurações do bloqueio de chamadas"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Desativar todas as configurações do bloqueio de chamadas?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"A rede está ocupada. Ligue novamente mais tarde."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"A rede está congestionada. Entre em contato com sua operadora para receber ajuda."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Chamada desviada."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Chamada encaminhada."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Chamada em espera."</string>

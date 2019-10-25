@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Özel numara"</string>
     <string name="payphone" msgid="4793877574636445118">"Ankesörlü telefon"</string>
     <string name="onHold" msgid="9035493194749959955">"Beklemede"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) Mesajı"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Operatör Mesajı"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI kodu başlatıldı"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD kodu çalışıyor…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI kodu iptal edildi"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Sesli mesaj"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Sesli mesaj (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Arama yapma ve alma"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Akıllı Yönlendirme"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Bir numaraya ulaşılamadığında arama her zaman diğer numaranıza yönlendirilir"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Bildirimler"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Acil durum yayınları"</string>
     <string name="call_settings" msgid="6112441768261754562">"Çağrı ayarları"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Dolaşımdayken veri hizmetlerine bağlan"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Dolaşımdayken veri hizmetlerine bağlan"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Veri dolaşımı devre dışı bırakıldı. Etkinleştirmek için dokunun."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Dolaşım ücretleri alınabilir. Değiştirmek için dokunun."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Mobil veri bağlantısı koptu"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Veri dolaşımı açık"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Kayda değer ücretler ödeyebilirsiniz."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Fiyat bilgisi için ağ sağlayıcınıza başvurun."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Veri dolaşımına izin verilsin mi?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Sınırlı SIM işlevselliği"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> kullanılırken <xliff:g id="CARRIER_NAME">%1$s</xliff:g> aramaları ve veri hizmetleri engellenebilir."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Başka bir SIM kullanılırken <xliff:g id="CARRIER_NAME">%1$s</xliff:g> aramaları ve veri hizmetleri engellenebilir."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Uygulama veri kullanımı"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> arasında <xliff:g id="ID_1">%1$s</xliff:g> mobil veri kullanıldı"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Gelişmiş"</string>
@@ -279,7 +283,7 @@
     <string name="throttle_current_usage" msgid="8762280193043815361">"Geçerli dönemde kullanılan veri"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"Veri kullanım dönemi"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"Veri hızı politikası"</string>
-    <string name="throttle_help" msgid="243651091785169900">"Daha fazla bilgi edinin"</string>
+    <string name="throttle_help" msgid="243651091785169900">"Daha fazla bilgi"</string>
     <string name="throttle_status_subtext" msgid="1657318943142085170">"<xliff:g id="USED_0">%1$s</xliff:g> (٪<xliff:g id="USED_1">%2$d</xliff:g>) / <xliff:g id="USED_2">%3$s</xliff:g> dönem maksimumu\nBir sonraki dönem <xliff:g id="USED_3">%4$d</xliff:g> gün sonra başlıyor (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="6029276011123694701">"Maksimum dönem <xliff:g id="USED_0">%1$s</xliff:g> (٪<xliff:g id="USED_1">%2$d</xliff:g>) / <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="7492763592720107737">"Maksimum değer <xliff:g id="USED_0">%1$s</xliff:g> aşıldı\nVeri hızı <xliff:g id="USED_1">%2$d</xliff:g> Kb/s\'ye düşürüldü"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Sahip"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Bilgileri görüntülemek için tekrar dokunun"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Acil durum çağrısı"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Yalnızca acil durum aramaları için"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Acil durum numarası"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Acil durum numaraları"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> numaralı telefonu aramak için tekrar dokunun"</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Gerçek zamanlı mesaj (RTT) çağrısı"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Sesli aramada mesajlaşmaya izin verilir"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT; tam veya kısmi işitme engelli, konuşma engeli olan veya sesten fazlasına ihtiyaç duyan arayanlara yardımcı olur.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Daha fazla bilgi&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT çağrıları, mesaj çeviri yazısı olarak kaydedilir\n       &lt;br&gt; - RTT, görüntülü görüşmelerde kullanılamaz"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Not: Dolaşım sırasında RTT kullanılamaz"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY Kapalı"</item>
     <item msgid="3971695875449640648">"TTY Tam"</item>
@@ -643,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Kablosuz bağlantı koptu. Çağrı sona erdi."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Pil seviyesi düşük olduğundan görüntülü görüşme yapılamaz."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Pil seviyesi düşük olduğundan görüntülü görüşme sonlandırıldı."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Bu konumda, kablosuz çağrı üzerinden acil durum araması yapılamaz."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Bu konumda kablosuz çağrı kullanılamaz."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Sesli Mesaj PIN\'ini Değiştirin"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Devam"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"İptal"</string>
@@ -756,6 +762,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Çağrı engelleme ayarları"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Tüm çağrı engelleme ayarları devre dışı bırakılsın mı?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Ağ meşgul. Lütfen daha sonra tekrar aramayı deneyin."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Ağ fazla dolu. Yardım almak için cep telefonu operatörünüzle iletişime geçin."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Çarının yönü değiştirildi."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Çağrı yönlendirildi."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Çağrı bekliyor."</string>
