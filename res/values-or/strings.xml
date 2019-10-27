@@ -532,6 +532,8 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"କଲ୍ କରିପାରିବେ ନାହିଁ। <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ଗୋଟିଏ ଜରୁରିକାଳୀନ ନମ୍ବର୍ ନୁହେଁ।"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"କଲ୍ କରିପାରିବେ ନାହିଁ। ଗୋଟିଏ ଜରୁରିକାଳୀନ ନମ୍ବର୍ ଡାଏଲ୍ କରନ୍ତୁ।"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"ଜରୁରିକାଳୀନ କଲ୍ କରିବା ଉପଲବ୍ଧ ନାହିଁ"</string>
+    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
+    <skip />
     <string name="police_type_description" msgid="5324410799919829693">"ପୋଲିସ୍‍"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"ଆମ୍ବୁଲେନ୍ସ"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"ନିଆଁ"</string>
