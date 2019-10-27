@@ -532,6 +532,8 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"કૉલ કરી શકાતો નથી. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> એ કટોકટીનો નંબર નથી."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"કૉલ કરી શકાતો નથી. કટોકટીનો નંબર ડાયલ કરો!"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"કટોકટીમાં કૉલ કરવાની સુવિધા ઉપલબ્ધ નથી"</string>
+    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
+    <skip />
     <string name="police_type_description" msgid="5324410799919829693">"પોલીસ"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"એમ્બ્યુલન્સ"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"આગ"</string>

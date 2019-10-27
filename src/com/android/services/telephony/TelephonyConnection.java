@@ -103,6 +103,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private static final int MSG_HANGUP = 17;
     private static final int MSG_SET_CALL_RADIO_TECH = 18;
     private static final int MSG_ON_CONNECTION_EVENT = 19;
+    private static final int MSG_REDIAL_CONNECTION_CHANGED = 20;
 
     private final Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
@@ -113,10 +114,20 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                     updateState();
                     break;
                 case MSG_HANDOVER_STATE_CHANGED:
-                    Log.v(TelephonyConnection.this, "MSG_HANDOVER_STATE_CHANGED");
+                case MSG_REDIAL_CONNECTION_CHANGED:
+                    String what = (msg.what == MSG_HANDOVER_STATE_CHANGED)
+                            ? "MSG_HANDOVER_STATE_CHANGED" : "MSG_REDIAL_CONNECTION_CHANGED";
+                    Log.v(TelephonyConnection.this, what);
                     AsyncResult ar = (AsyncResult) msg.obj;
                     com.android.internal.telephony.Connection connection =
                          (com.android.internal.telephony.Connection) ar.result;
+                    if (connection == null) {
+                        setDisconnected(DisconnectCauseUtil
+                                .toTelecomDisconnectCause(DisconnectCause.OUT_OF_NETWORK,
+                                        "handover failure, no connection"));
+                        close();
+                        break;
+                    }
                     if (mOriginalConnection != null) {
                         if (connection != null &&
                             ((connection.getAddress() != null &&
@@ -131,7 +142,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                         }
                     } else {
                         Log.w(TelephonyConnection.this,
-                                "MSG_HANDOVER_STATE_CHANGED: mOriginalConnection==null - invalid state (not cleaned up)");
+                                what + ": mOriginalConnection==null - invalid state (not cleaned up)");
                     }
                     break;
                 case MSG_RINGBACK_TONE:
@@ -1179,6 +1190,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 mHandler, MSG_PRECISE_CALL_STATE_CHANGED, null);
         getPhone().registerForHandoverStateChanged(
                 mHandler, MSG_HANDOVER_STATE_CHANGED, null);
+        getPhone().registerForRedialConnectionChanged(
+                mHandler, MSG_REDIAL_CONNECTION_CHANGED, null);
         getPhone().registerForRingbackTone(mHandler, MSG_RINGBACK_TONE, null);
         getPhone().registerForSuppServiceNotification(mHandler, MSG_SUPP_SERVICE_NOTIFY, null);
         getPhone().registerForOnHoldTone(mHandler, MSG_ON_HOLD_TONE, null);
@@ -1427,6 +1440,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 getPhone().unregisterForPreciseCallStateChanged(mHandler);
                 getPhone().unregisterForRingbackTone(mHandler);
                 getPhone().unregisterForHandoverStateChanged(mHandler);
+                getPhone().unregisterForRedialConnectionChanged(mHandler);
                 getPhone().unregisterForDisconnect(mHandler);
                 getPhone().unregisterForSuppServiceNotification(mHandler);
                 getPhone().unregisterForOnHoldTone(mHandler);
