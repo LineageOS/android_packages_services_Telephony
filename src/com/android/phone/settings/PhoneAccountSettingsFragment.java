@@ -8,7 +8,6 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Icon;
 import android.net.sip.SipManager;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.os.UserManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -558,12 +557,18 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
 
         List<SubscriptionInfo> subscriptions =
                 mSubscriptionManager.getActiveSubscriptionInfoList();
-        if ((subscriptions == null) || (subscriptions.size() <= 1)) {
+        if (subscriptions == null) {
             return null;
         }
 
-        List<String> componentNames = subscriptions
-                .stream()
+        List<SubscriptionInfo> effectiveSubscriptions = subscriptions.stream()
+                .filter(subInfo -> !subInfo.isOpportunistic())
+                .collect(Collectors.toList());
+        if (effectiveSubscriptions.size() < 2) {
+            return null;
+        }
+
+        List<String> componentNames = effectiveSubscriptions.stream()
                 .map(subInfo -> configManager.getConfigForSubId(subInfo.getSubscriptionId()))
                 .filter(bundle -> (bundle != null))
                 .map(bundle -> bundle.getString(

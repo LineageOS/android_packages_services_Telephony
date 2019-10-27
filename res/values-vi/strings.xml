@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Số cá nhân"</string>
     <string name="payphone" msgid="4793877574636445118">"Điện thoại công cộng"</string>
     <string name="onHold" msgid="9035493194749959955">"Đang chờ"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Tin nhắn (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Tin nhắn nhà mạng"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Đã bắt đầu mã MMI"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Mã USSD đang chạy…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Mã MMI đã bị hủy"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Thư thoại"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Thư thoại (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Thư thoại:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Thực hiện và nhận cuộc gọi"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Chuyển tiếp thông minh"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Khi không thể gọi được một số, luôn chuyển tiếp cuộc gọi đến số khác"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Thông báo"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Phát sóng trong tình huống khẩn cấp"</string>
     <string name="call_settings" msgid="6112441768261754562">"Cài đặt cuộc gọi"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Tính năng Chuyển vùng dữ liệu bị tắt. Nhấn để bật."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Có thể áp dụng phí chuyển vùng. Nhấn để sửa đổi."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Đã mất kết nối dữ liệu di động"</string>
-    <string name="roaming_warning" msgid="1603164667540144353">"Bạn có thể phải chịu các khoản phí đáng kể."</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Chuyển vùng dữ liệu đang bật"</string>
+    <string name="roaming_warning" msgid="1603164667540144353">"Bạn có thể phải trả một khoản phí lớn."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Hãy liên hệ với nhà cung cấp mạng của bạn để biết giá cước."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Cho phép chuyển vùng dữ liệu?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Chức năng SIM bị giới hạn"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Các cuộc gọi và dịch vụ dữ liệu của nhà mạng <xliff:g id="CARRIER_NAME">%1$s</xliff:g> có thể bị chặn khi bạn sử dụng số <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Các cuộc gọi và dịch vụ dữ liệu của nhà mạng <xliff:g id="CARRIER_NAME">%1$s</xliff:g> có thể bị chặn khi bạn sử dụng một SIM khác."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Mức sử dụng dữ liệu của ứng dụng"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Đã dùng <xliff:g id="ID_1">%1$s</xliff:g> dữ liệu di động: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Nâng cao"</string>
@@ -266,7 +270,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"nhà mạng, esim, sim, euicc, chuyển nhà mạng, thêm nhà mạng"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"Dữ liệu di động"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Truy cập dữ liệu bằng mạng di động"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"Sử dụng dữ liệu qua mạng di động"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"Tắt dữ liệu di động?"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"Bắt buộc lựa chọn"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"Thay đổi SIM cho dữ liệu di động?"</string>
@@ -414,11 +418,11 @@
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"Quản lý danh sách số điện thoại"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"Bảo mật của Voice"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"Bật chế độ bảo mật tăng cường"</string>
-    <string name="tty_mode_option_title" msgid="9033098925144434669">"Chế độ TTY"</string>
-    <string name="tty_mode_option_summary" msgid="1073835131534808732">"Đặt chế độ TTY"</string>
+    <string name="tty_mode_option_title" msgid="9033098925144434669">"Chế độ Máy điện báo đánh chữ (TTY)"</string>
+    <string name="tty_mode_option_summary" msgid="1073835131534808732">"Đặt chế độ Máy điện báo đánh chữ (TTY)"</string>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"Tự động thử lại"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"Bật chế độ Tự động thử lại"</string>
-    <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Không được phép thay đổi Chế độ TTY trong cuộc gọi điện video"</string>
+    <string name="tty_mode_not_allowed_video_call" msgid="3795846787901909176">"Không được phép thay đổi Chế độ Máy điện báo đánh chữ (TTY) trong cuộc gọi video"</string>
     <string name="menu_add" msgid="1882023737425114762">"Thêm liên hệ"</string>
     <string name="menu_edit" msgid="7143003705504672374">"Chỉnh sửa liên hệ"</string>
     <string name="menu_delete" msgid="3977150783449642851">"Xóa liên hệ"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Chủ sở hữu"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Nhấn lại để xem thông tin"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Cuộc gọi khẩn cấp"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Chỉ cuộc gọi khẩn cấp"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Số khẩn cấp"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Số khẩn cấp"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Nhấn lại để gọi <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Cuộc gọi qua Tin nhắn theo thời gian thực (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Cho phép nhắn tin trong cuộc gọi thoại"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Tin nhắn theo thời gian thực (RTT) trợ giúp những người gọi khiếm thính, bị suy giảm thính lực, không có khả năng nói hoặc cần thêm hỗ trợ ngoài giọng nói.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Tìm hiểu thêm&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Cuộc gọi qua RTT được lưu dưới dạng bản chép lời tin nhắn\n       &lt;br&gt; - Không thực hiện được cuộc gọi video qua RTT"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Lưu ý: Không thể sử dụng tin nhắn theo thời gian thực (RTT) trong khi chuyển vùng"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Tắt TTY"</item>
     <item msgid="3971695875449640648">"TTY Đầy đủ"</item>
@@ -643,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Mất kết nối Wi-Fi. Đã kết thúc cuộc gọi."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Không thể thực hiện cuộc gọi video của bạn do pin yếu."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Cuộc gọi video đã kết thúc do pin yếu."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Không thể thực hiện cuộc gọi khẩn cấp bằng tính năng gọi qua Wi-Fi ở vị trí này."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Không thể sử dụng tính năng gọi qua Wi-Fi ở vị trí này."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Thay đổi mã PIN thư thoại"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Tiếp tục"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Hủy"</string>
@@ -756,6 +762,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Cài đặt chặn cuộc gọi"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Bạn muốn hủy kích hoạt tất cả cài đặt chặn cuộc gọi?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Tất cả các nhân viên hỗ trợ hiện đang bận. Vui lòng thử gọi lại sau."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Đang nghẽn mạng. Hãy liên hệ với nhà mạng di động để được trợ giúp."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Đã chuyển hướng cuộc gọi."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Đã chuyển tiếp cuộc gọi."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Cuộc gọi đang chờ."</string>

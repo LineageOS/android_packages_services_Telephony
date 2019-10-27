@@ -20,7 +20,7 @@
     <string name="sip_accounts" msgid="85559497282185405">"គណនី SIP"</string>
     <string name="sip_accounts_title" msgid="2082527045326874519">"គណនី"</string>
     <string name="sip_receive_calls" msgid="426678617137462173">"ទទួល​ការ​ហៅ​ចូល"</string>
-    <string name="sip_receive_calls_summary" msgid="946161517528227523">"ប្រើថាមពលថ្មច្រើន"</string>
+    <string name="sip_receive_calls_summary" msgid="946161517528227523">"ប្រើថាមពលថ្មច្រើនថែមទៀត"</string>
     <string name="sip_call_options_title" msgid="8421210494703869806">"ប្រើការហៅ SIP"</string>
     <string name="sip_call_options_wifi_only_title" msgid="5112579243580893890">"ប្រើការហៅ SIP (Wi-Fi តែប៉ុណ្ណោះ)"</string>
     <string name="sip_call_options_entry_1" msgid="7217659161237099900">"សម្រាប់​ការ​ហៅ​ទាំងអស់ នៅ​ពេល​បណ្ដាញ​ទិន្នន័យ​អាច​ប្រើ​បាន"</string>
@@ -66,8 +66,8 @@
     <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;មិន​បាន​កំណត់&gt;"</string>
     <string name="display_name_summary" msgid="7155076491675565407">"&lt;ដូច​ឈ្មោះ​អ្នកប្រើ&gt;"</string>
     <string name="optional_summary" msgid="2363105560396317624">"&lt;ជា​ជម្រើស&gt;"</string>
-    <string name="advanced_settings_show" msgid="7838761602853998622">"ប៉ះ ▷ ដើម្បី​បង្ហាញ​ទាំងអស់"</string>
-    <string name="advanced_settings_hide" msgid="3480554978705290228">"ប៉ះ ▽ ដើម្បី​លាក់​ទាំងអស់"</string>
+    <string name="advanced_settings_show" msgid="7838761602853998622">"▷ ចុចដើម្បី​បង្ហាញ​ទាំងអស់"</string>
+    <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ ចុចដើម្បី​លាក់​ទាំងអស់"</string>
     <string name="all_empty_alert" msgid="4087734950375192387">"បញ្ចូលព័ត៌មានលម្អិតអំពីគណនី SIP ថ្មី"</string>
     <string name="empty_alert" msgid="6659484914371384024">"មិន​​អាច​ទុក​ឲ្យ​នៅ​ទទេ និង​បាន​ទាមទារ <xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> ។"</string>
     <string name="not_a_valid_port" msgid="7931422555587011830">"លេខ​ច្រក​គួរតែ​នៅ​ចន្លោះ ១០០០ និង ៦៥៥៣៤។"</string>

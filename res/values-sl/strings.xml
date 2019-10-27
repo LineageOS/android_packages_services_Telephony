@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Zasebna številka"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefonska govorilnica"</string>
     <string name="onHold" msgid="9035493194749959955">"Zadržano"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Sporočilo (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Sporočilo operaterja"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Koda MMI zagnana"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Koda USSD se izvaja ..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Koda MMI preklicana"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Glasovna pošta"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Odzivnik (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Opravljanje in sprejemanje klicev"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Pametno posredovanje"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Če številka ni dosegljiva, vedno posredujte klice na svojo drugo številko."</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Obvestila"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Oddaje v sili"</string>
     <string name="call_settings" msgid="6112441768261754562">"Nastavitve klicev"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Med gostovanjem vzpostavi povezavo s podatkovnimi storitvami"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Med gostovanjem vzpostavi povezavo s podatkovnimi storitvami"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Podatkovno gostovanje je izklopljeno. Dotaknite se, da ga vklopite."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Morda boste morali plačati stroške gostovanja. Dotaknite se, da spremenite."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Mobilna podatkovna povezava je prekinjena"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Podatkovno gostovanje je vklopljeno"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Stroški utegnejo biti veliki."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Preverite cene pri operaterju omrežja."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Želite dovoliti podatkovno gostovanje?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Omejena funkcionalnost kartice SIM"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Klici in podatkovne storitve prek operaterja <xliff:g id="CARRIER_NAME">%1$s</xliff:g> bodo pri uporabi številke <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> morda blokirane."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Klici in podatk. storitve <xliff:g id="CARRIER_NAME">%1$s</xliff:g> bodo pri uporabi druge kartice SIM morda blokirane."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Prenos podatkov aplikacije"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"V obdobju <xliff:g id="ID_2">%2$s</xliff:g> je bilo v mobilnem omrežju prenesenih <xliff:g id="ID_1">%1$s</xliff:g> podatkov"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Dodatno"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Lastnik"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Znova se dotaknite, da si ogledate podatke"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Klic v sili"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Le klici v sili"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Številka za klic v sili"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Številke za klic v sili"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Znova se dotaknite, da pokličete <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Klic s sprotnim besedilom (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Dovoli izmenjavo sporočil v glasovnem klicu"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Funkcija RTT pomaga klicateljem, ki so gluhi, naglušni, imajo govorno motnjo ali potrebujejo več kot samo glas.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Več o tem&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Klici RTT se shranijo kot prepis sporočila\n       &lt;br&gt; – RTT ni na voljo pri videoklicih"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Opomba: RTT ni na voljo med gostovanjem"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"Način TTY izklopljen"</item>
     <item msgid="3971695875449640648">"TTY poln"</item>
@@ -647,6 +651,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Povezava Wi-Fi je bila prekinjena. Klic je končan."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Videoklica ni mogoče vzpostaviti, ker je baterija je skoraj prazna."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Videoklic se je končal, ker je baterija je skoraj prazna."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Klici v sili s klicanjem prek Wi-Fi-ja niso na voljo na tej lokaciji."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Klicanje prek Wi-Fi-ja ni na voljo na tej lokaciji."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Sprememba kode PIN za sporočila v odzivniku"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Naprej"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Prekliči"</string>
@@ -760,6 +766,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Nastavitve zapore klicev"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Želite deaktivirati vse nastavitve za zaporo klicev?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Omrežje je zasedeno. Poskusite znova poklicati pozneje."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Omrežje je zasedeno. Za pomoč se obrnite na mobilnega operaterja."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Klic je preusmerjen z druge številke."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Klic je preusmerjen."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Čakajoči klic."</string>

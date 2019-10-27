@@ -25,6 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Numër privat"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefon me pagesë"</string>
     <string name="onHold" msgid="9035493194749959955">"Në pritje"</string>
+    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Mesazh (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
+    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Mesazh i operatorit celular"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Kodi MMI filloi"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Kodi USSD po punon…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Kodi MMI u anulua"</string>
@@ -77,12 +79,9 @@
     <string name="voicemail" msgid="8693759337917898954">"Posta zanore"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Posta zanore (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
-    <skip />
-    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
-    <skip />
+    <string name="make_and_receive_calls" msgid="1258596928285972166">"Bëj dhe merr telefonata"</string>
+    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Transferimi inteligjent"</string>
+    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Kur një numër nuk është i arritshëm, transferoji gjithmonë telefonatat te numri yt tjetër"</string>
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Njoftimet"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Transmetimet e urgjencës"</string>
     <string name="call_settings" msgid="6112441768261754562">"Cilësimet e telefonatës"</string>
@@ -255,10 +254,15 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Lidhu me shërbimet e të dhënave kur je në roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Lidhu me shërbimin e të dhënave kur je në roaming"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Roaming për të dhënat është çaktivizuar. Trokit për ta aktivizuar."</string>
+    <string name="roaming_enabled_message" msgid="7176375330428295945">"Mund të zbatohen tarifat e roaming-ut. Trokit për ta modifikuar."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Lidhja e të dhënave celulare ka humbur"</string>
+    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Roaming për të dhënat është aktiv"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Mund të shkaktohen tarifa të larta."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Kontakto me ofruesin e rrjetit për çmimin."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Të lejohet përdorimi i të dhënave kur je në roaming?"</string>
+    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Funksionalitet i kufizuar i kartës SIM"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Shërbimet e telefonatave dhe të të dhënave të <xliff:g id="CARRIER_NAME">%1$s</xliff:g> mund të bllokohen kur përdoret <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
+    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Shërbimet e telefonatave dhe të dhënave të <xliff:g id="CARRIER_NAME">%1$s</xliff:g> bllokohen kur përdoret SIM tjetër."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Përdorimi i të dhënave të aplikacioneve"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> të dhëna celulare të përdorura mes datave <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Të përparuara"</string>
@@ -519,7 +523,6 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Zotëruesi"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Trokit përsëri për të shikuar informacionet"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Telefonata e urgjencës"</string>
-    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Vetëm telefonata urgjente"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Numri i urgjencës"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numrat e urgjencës"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Trokit përsëri për të telefonuar <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -556,6 +559,7 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Telefonata me tekst në kohë reale (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Lejo mesazhet brenda një telefonate zanore"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Funksioni RTT ndihmon telefonuesit që janë të shurdhër, kanë vështirësi me dëgjimin, kanë një aftësi të kufizuar të të folurit ose që kanë nevojë për më shumë se thjesht zërin.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Mëso më shumë&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Telefonatat RTT ruhen si një transkript mesazhi\n       &lt;br&gt; - Funksioni RTT nuk ofrohet për telefonatat me video"</string>
+    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Shënim. Veçoria RTT nuk ofrohet kur je në roaming"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY i çaktivizuar"</item>
     <item msgid="3971695875449640648">"TTY i plotë"</item>
@@ -643,6 +647,8 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Lidhja Wi-Fi ka humbur. Telefonata u mbyll."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Telefonata me video nuk mund të kryhet për shkak të nivelit të ulët të baterisë."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Telefonata me video u mbyll për shkak të nivelit të ulët të baterisë."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Telefonatat e urgjencës nëpërmjet \"Telefonatave me Wi-Fi\" nuk ofrohen në këtë vendndodhje."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"\"Telefonatat me Wi-Fi\" nuk ofrohen në këtë vendndodhje."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Ndrysho kodin PIN të postës zanore"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Vazhdo"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Anulo"</string>
@@ -756,6 +762,7 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Cilësimet e bllokimit të telefonatave"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Të çaktivizohen të gjitha cilësimet e bllokimit të telefonatave?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Rrjeti është i zënë. Provo ta kryesh telefonatën përsëri më vonë."</string>
+    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Rrjeti është i mbingarkuar. Kontakto me operatorin tënd celular për ndihmë."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Telefonata u devijua."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Telefonata u transferua."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Telefonata është në pritje."</string>

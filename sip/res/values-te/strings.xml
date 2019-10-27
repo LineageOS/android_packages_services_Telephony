@@ -57,14 +57,14 @@
     <string name="proxy_address_title" msgid="6890163365640631841">"అవుట్‌బౌండ్ ప్రాక్సీ చిరునామా"</string>
     <string name="port_title" msgid="6693965912656593862">"పోర్ట్ సంఖ్య"</string>
     <string name="transport_title" msgid="889155457465372527">"రవాణా రకం"</string>
-    <string name="send_keepalive_title" msgid="599627072150501159">"సక్రియంగా ఉంచే సందేశం పంపండి"</string>
+    <string name="send_keepalive_title" msgid="599627072150501159">"యాక్టివ్‌గా ఉంచే సందేశం పంపండి"</string>
     <string name="advanced_settings" msgid="6622996380747040711">"ఐచ్ఛిక సెట్టింగ్‌లు"</string>
     <string name="auth_username_title" msgid="8262491689004708265">"ప్రామాణీకరణ వినియోగదారు పేరు"</string>
     <string name="auth_username_summary" msgid="941160241371436473">"ప్రామాణీకరణ కోసం వినియోగదారు పేరు ఉపయోగించబడింది"</string>
     <string name="default_preference_summary_username" msgid="8404717434312826082">"&lt;సెట్ చేయలేదు&gt;"</string>
     <string name="default_preference_summary_password" msgid="4464464672997027904">"&lt;సెట్ చేయలేదు&gt;"</string>
     <string name="default_preference_summary_domain_address" msgid="4871971710197441673">"&lt;సెట్ చేయలేదు&gt;"</string>
-    <string name="display_name_summary" msgid="7155076491675565407">"&lt;వినియోగదారు పేరు మాదిరే&gt;"</string>
+    <string name="display_name_summary" msgid="7155076491675565407">"&lt;వినియోగదారు పేరు మాదిరిగానే&gt;"</string>
     <string name="optional_summary" msgid="2363105560396317624">"&lt;ఐచ్ఛికం&gt;"</string>
     <string name="advanced_settings_show" msgid="7838761602853998622">"▷ అన్నీ చూపడానికి తాకండి"</string>
     <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ అన్నీ దాచడానికి తాకండి"</string>
@@ -74,7 +74,7 @@
     <string name="no_internet_available" msgid="5523747991760017298">"SIP కాల్ చేయడానికి, ముందుగా మీ ఇంటర్నెట్ కనెక్షన్‌ను తనిఖీ చేయండి."</string>
     <string name="no_wifi_available" msgid="1955023904229673488">"మీరు SIP కాల్‌లు చేయడం కోసం Wi-Fi నెట్‌వర్క్‌కు కనెక్ట్ అవ్వడం అవసరం (వైర్‌లెస్ &amp; నెట్‌వర్క్ సెట్టింగ్‌లను ఉపయోగించండి)."</string>
     <string name="no_voip" msgid="3038021971231952704">"SIP కాలింగ్‌కి మద్దతు లేదు"</string>
-    <string name="sip_system_decide" msgid="5577696249416700671">"స్వయంచాలకం"</string>
+    <string name="sip_system_decide" msgid="5577696249416700671">"1205664026446156265"</string>
     <string name="sip_always_send_keepalive" msgid="4773022409239823318">"ఎల్లప్పుడూ పంపు"</string>
     <string name="sip_connection_service_label" msgid="6935325004265884453">"అంతర్నిర్మిత SIP కాలింగ్"</string>
 </resources>

@@ -46,7 +46,9 @@
                 android:layout_height="@dimen/dialpad_button_height"
                 android:background="@drawable/floating_action_button_red"
                 android:contentDescription="@string/description_dialpad_button"
-                android:src="@drawable/ic_dialpad_white_24"/>
+                android:src="@drawable/ic_dialpad_white_24"
+                android:scaleType="centerInside"
+                android:backgroundTint="@color/emergency_dialpad_fab_tint_color"/>
         </FrameLayout>
     </FrameLayout>
 
