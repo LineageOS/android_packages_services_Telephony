@@ -532,6 +532,8 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"కాల్ చేయలేరు. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> అత్యవసర నంబర్ కాదు."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"కాల్ చేయలేరు. అత్యవసర నంబర్‌ను డయల్ చేయండి."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"అత్యవసర కాలింగ్ అందుబాటులో లేదు"</string>
+    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
+    <skip />
     <string name="police_type_description" msgid="5324410799919829693">"పోలీస్"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"అంబులెన్స్‌"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"అగ్నిమాపక శాఖ"</string>
