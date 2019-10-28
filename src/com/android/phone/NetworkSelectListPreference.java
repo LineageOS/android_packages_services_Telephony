@@ -424,16 +424,24 @@ public class NetworkSelectListPreference extends ListPreference
             for (CellInfo cellInfo: mCellInfoList) {
                 // Display each operator name only once.
                 String networkTitle = getNetworkTitle(cellInfo);
+                String operator = getOperatorNumeric(cellInfo);
+                String uniqueOperator = operator;
+                int i = 1;
+                while (networkEntryValuesList.contains(uniqueOperator) ||
+                        forbiddenEntryValuesList.contains(uniqueOperator)) {
+                    uniqueOperator = operator + "_" + i;
+                    i++;
+                }
                 if (!networkEntriesList.contains(networkTitle)) {
                     if (CellInfoUtil.isForbidden(cellInfo, mForbiddenPlmns)) {
                         networkTitle += " "
                                 + getContext().getResources().getString(R.string.forbidden_network);
                         forbiddenEntriesList.add(networkTitle);
-                        forbiddenEntryValuesList.add(getOperatorNumeric(cellInfo));
+                        forbiddenEntryValuesList.add(uniqueOperator);
                         forbiddenCellInfos.add(cellInfo);
                     } else {
                         networkEntriesList.add(networkTitle);
-                        networkEntryValuesList.add(getOperatorNumeric(cellInfo));
+                        networkEntryValuesList.add(uniqueOperator);
                         sortedCellInfos.add(cellInfo);
                     }
                 }
