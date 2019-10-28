@@ -417,6 +417,8 @@ public class NetworkSelectListPreference extends ListPreference
             // confusing mcc/mnc.
             List<CharSequence> networkEntriesList = new ArrayList<>();
             List<CharSequence> networkEntryValuesList = new ArrayList<>();
+            List<CharSequence> forbiddenEntryValuesList = new ArrayList<>();
+            List<CharSequence> forbiddenEntriesList = new ArrayList<>();
             for (CellInfo cellInfo: mCellInfoList) {
                 // Display each operator name only once.
                 String networkTitle = getNetworkTitle(cellInfo);
@@ -424,11 +426,17 @@ public class NetworkSelectListPreference extends ListPreference
                     if (CellInfoUtil.isForbidden(cellInfo, mForbiddenPlmns)) {
                         networkTitle += " "
                                 + getContext().getResources().getString(R.string.forbidden_network);
+                        forbiddenEntriesList.add(networkTitle);
+                        forbiddenEntryValuesList.add(getOperatorNumeric(cellInfo));
+                    } else {
+                        networkEntriesList.add(networkTitle);
+                        networkEntryValuesList.add(getOperatorNumeric(cellInfo));
                     }
-                    networkEntriesList.add(networkTitle);
-                    networkEntryValuesList.add(getOperatorNumeric(cellInfo));
                 }
             }
+            // append forbidden networks so they are displayed last
+            networkEntriesList.addAll(forbiddenEntriesList);
+            networkEntryValuesList.addAll(forbiddenEntryValuesList);
             setEntries(networkEntriesList.toArray(new CharSequence[networkEntriesList.size()]));
             setEntryValues(networkEntryValuesList.toArray(
                     new CharSequence[networkEntryValuesList.size()]));
