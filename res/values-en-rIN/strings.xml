@@ -25,8 +25,6 @@
     <string name="private_num" msgid="6713286113000232309">"Private number"</string>
     <string name="payphone" msgid="4793877574636445118">"Payphone"</string>
     <string name="onHold" msgid="9035493194749959955">"On hold"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) Message"</string>
-    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Operator message"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI code started"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD code running…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI code cancelled"</string>
@@ -79,9 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"Voicemail"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Voicemail (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <string name="make_and_receive_calls" msgid="1258596928285972166">"Make &amp; receive calls"</string>
-    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Smart forwarding"</string>
-    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"When one number isn\'t reachable, always forward calls to your other number"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notifications"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Emergency broadcasts"</string>
     <string name="call_settings" msgid="6112441768261754562">"Call settings"</string>
@@ -254,15 +255,10 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Connect to data services when roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Connect to data services when roaming"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Data roaming is turned off. Tap to turn on."</string>
-    <string name="roaming_enabled_message" msgid="7176375330428295945">"Roaming charges may apply. Tap to modify."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Lost mobile data connection"</string>
-    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Data roaming is on"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"You may incur significant charges."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Check with your network provider for pricing."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Allow data roaming?"</string>
-    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Limited SIM functionality"</string>
-    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> calls and data services may be blocked while using <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
-    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> calls and data services may be blocked while using another SIM."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"App data usage"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobile data used <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Advanced"</string>
@@ -523,6 +519,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Owner"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tap again to view info"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Emergency call"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Emergency calls only"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Emergency number"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Emergency numbers"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tap again to call <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -559,7 +556,6 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Real-time text (RTT) call"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Allow messaging within a voice call"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT assists callers who are deaf, hard of hearing, have a speech disability or need more than voice alone.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Learn more&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT calls are saved as a message transcript\n       &lt;br&gt; – RTT is not available for video calls"</string>
-    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Note: RTT is not available while roaming"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY off"</item>
     <item msgid="3971695875449640648">"TTY full"</item>
@@ -647,8 +643,6 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi connection lost. Call ended."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Your video call cannot be placed due to low battery."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Video call ended due to low battery."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Emergency calls over Wi-Fi calling not available in this location."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Wi-Fi calling is not available in this location."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Change Voicemail PIN"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continue"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Cancel"</string>
@@ -762,7 +756,6 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Call barring settings"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Deactivate all call barring settings?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Network is busy. Please try placing your call again later."</string>
-    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Network is congested. Contact your mobile operator for assistance."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Call deflected."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Call forwarded."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Call is waiting."</string>

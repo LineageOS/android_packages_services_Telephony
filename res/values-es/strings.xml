@@ -25,14 +25,12 @@
     <string name="private_num" msgid="6713286113000232309">"Número privado"</string>
     <string name="payphone" msgid="4793877574636445118">"Teléfono público"</string>
     <string name="onHold" msgid="9035493194749959955">"En espera"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Mensaje de <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
-    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Mensaje del operador"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"El código MMI se ha iniciado."</string>
     <string name="ussdRunning" msgid="485588686340541690">"Código USSD en ejecución..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"El código MMI se ha cancelado."</string>
     <string name="cancel" msgid="5044513931633602634">"Cancelar"</string>
     <string name="enter_input" msgid="1810529547726803893">"El mensaje USSD debe tener entre <xliff:g id="MIN_LEN">%1$d</xliff:g> y <xliff:g id="MAX_LEN">%2$d</xliff:g> caracteres. Inténtalo de nuevo."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"Gestionar conferencia telefónica"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"Administrar conferencia telefónica"</string>
     <string name="ok" msgid="3811371167865772377">"Aceptar"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Altavoz"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Auricular"</string>
@@ -79,9 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"Buzón de voz"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Buzón de voz (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Buzón de voz:"</string>
-    <string name="make_and_receive_calls" msgid="1258596928285972166">"Hacer y recibir llamadas"</string>
-    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Desvío inteligente"</string>
-    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Cuando no se puede contactar con un número, las llamadas se desvían siempre a otro número"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Notificaciones"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Difusiones de emergencia"</string>
     <string name="call_settings" msgid="6112441768261754562">"Ajustes de llamadas"</string>
@@ -183,7 +184,7 @@
     <string name="preferred_network_mode_dialogtitle" msgid="4048082093347807230">"Tipo de red preferida"</string>
     <string name="forbidden_network" msgid="4384929668343563440">"(prohibida)"</string>
     <string name="choose_network_title" msgid="4023911977543009350">"Elegir red"</string>
-    <string name="network_disconnected" msgid="2227251609006103194">"Desconectado"</string>
+    <string name="network_disconnected" msgid="2227251609006103194">"Desconectada"</string>
     <string name="network_connected" msgid="1288589103624338857">"Conectada"</string>
     <string name="network_connecting" msgid="4927203097283533783">"Conectando..."</string>
     <string name="network_could_not_connect" msgid="8254009365807767243">"No se ha podido conectar"</string>
@@ -254,15 +255,10 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Conectarse a servicios de datos en itinerancia"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Conectarse a servicios de datos en itinerancia"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"La itinerancia de datos está desactivada. Toca para activarla."</string>
-    <string name="roaming_enabled_message" msgid="7176375330428295945">"Pueden aplicarse cargos de itinerancia. Toca para modificar este ajuste."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Se ha perdido la conexión de datos móviles"</string>
-    <string name="roaming_on_notification_title" msgid="5102274082214238655">"La itinerancia de datos está activada"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"El coste de este servicio puede ser significativo."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Ponte en contacto con tu proveedor de red para consultar el precio."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"¿Permitir itinerancia de datos?"</string>
-    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Funcionalidad de SIM limitada"</string>
-    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Puede los servicios de datos y llamadas de <xliff:g id="CARRIER_NAME">%1$s</xliff:g> se bloqueen mientras se utilice el <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
-    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Puede que los servicios de datos y llamadas de <xliff:g id="CARRIER_NAME">%1$s</xliff:g> se bloqueen al usar otra SIM."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Uso de datos de la aplicación"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Se han usado <xliff:g id="ID_1">%1$s</xliff:g> en el periodo del <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Avanzado"</string>
@@ -525,6 +521,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Propietario"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tocar de nuevo para ver la información"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Llamada de emergencia"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Solo llamadas de emergencia"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Número de emergencia"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Números de emergencia"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tocar de nuevo para llamar al <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -547,7 +544,7 @@
     <string name="onscreenMergeCallsText" msgid="6640195098064538950">"Llamada a tres"</string>
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"Cambiar"</string>
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"Administrar llamadas"</string>
-    <string name="onscreenManageConferenceText" msgid="6485935856534311346">"Gestionar conferencia telefónica"</string>
+    <string name="onscreenManageConferenceText" msgid="6485935856534311346">"Administrar conferencia"</string>
     <string name="onscreenAudioText" msgid="1710087112800041743">"Audio"</string>
     <string name="onscreenVideoCallText" msgid="4800924186056115442">"Videollamada"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"Importar"</string>
@@ -561,7 +558,6 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Llamada de texto en tiempo real (TTR)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Permitir mensajes en una llamada de voz"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"La función TTR (texto en tiempo real) ofrece asistencia a las personas sordas o con discapacidades auditivas, que tienen algún trastorno del habla o que necesitan una transcripción además de la voz para comunicarse.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Más información&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Las llamadas de TTR se guardan como la transcripción de un mensaje.\n       &lt;br&gt; - La función TTR no está disponible en videollamadas."</string>
-    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Nota: TTR no está disponible en itinerancia"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desactivado"</item>
     <item msgid="3971695875449640648">"TTY completo"</item>
@@ -649,8 +645,6 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Se ha perdido la conexión Wi-Fi. La llamada ha finalizado."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"No se puede realizar la videollamada porque queda poca batería."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Se ha finalizado la videollamada porque queda poca batería."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Las llamadas de emergencia por Wi-Fi no están disponibles en esta ubicación."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Las llamadas por Wi-Fi no están disponibles en esta ubicación."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Cambiar el PIN del buzón de voz"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Continuar"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Cancelar"</string>
@@ -764,7 +758,6 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Ajustes de bloqueo de llamadas"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"¿Quieres desactivar todos los ajustes de bloqueo de llamadas?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"La red está ocupada. Intenta llamar de nuevo más tarde."</string>
-    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"La red está saturada. Ponte en contacto con tu operador de telefonía móvil para solicitar ayuda."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Se ha derivado la llamada."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Se ha desviado la llamada."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"La llamada está en espera."</string>

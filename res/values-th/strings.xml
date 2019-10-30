@@ -25,8 +25,6 @@
     <string name="private_num" msgid="6713286113000232309">"หมายเลขส่วนตัว"</string>
     <string name="payphone" msgid="4793877574636445118">"โทรศัพท์สาธารณะ"</string>
     <string name="onHold" msgid="9035493194749959955">"พักสาย"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"ข้อความ (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
-    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"ข้อความของผู้ให้บริการ"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"เริ่มรหัส MMI แล้ว"</string>
     <string name="ussdRunning" msgid="485588686340541690">"กำลังรันรหัส USSD..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"ยกเลิกรหัส MMI แล้ว"</string>
@@ -79,9 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"ข้อความเสียง"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"ข้อความเสียง (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <string name="make_and_receive_calls" msgid="1258596928285972166">"โทรออกและรับสาย"</string>
-    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"การโอนสายอัจฉริยะ"</string>
-    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"เมื่อหมายเลขหนึ่งติดต่อไม่ได้ ให้โอนสายไปยังหมายเลขอื่นทุกครั้ง"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"การแจ้งเตือน"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"การเผยแพร่ข้อมูลฉุกเฉิน"</string>
     <string name="call_settings" msgid="6112441768261754562">"การตั้งค่าการโทร"</string>
@@ -254,15 +255,10 @@
     <string name="roaming_enable" msgid="7331106985174381987">"เชื่อมต่ออินเทอร์เน็ตมือถือขณะโรมมิ่ง"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"เชื่อมต่ออินเทอร์เน็ตมือถือขณะโรมมิ่ง"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"การโรมมิ่งข้อมูลปิดอยู่ แตะเพื่อเปิด"</string>
-    <string name="roaming_enabled_message" msgid="7176375330428295945">"อาจมีค่าบริการโรมมิ่ง แตะเพื่อแก้ไข"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"การเชื่อมต่อเน็ตมือถือถูกตัด"</string>
-    <string name="roaming_on_notification_title" msgid="5102274082214238655">"การโรมมิ่งข้อมูลเปิดอยู่"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"คุณอาจต้องเสียค่าใช้จ่ายมาก"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"โปรดสอบถามผู้ให้บริการเครือข่ายสำหรับข้อมูลเกี่ยวกับราคา"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"อนุญาตการโรมมิ่งอินเทอร์เน็ตไหม"</string>
-    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"การใช้งาน SIM ถูกจำกัด"</string>
-    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"บริการโทรออกและอินเทอร์เน็ตของ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> อาจถูกบล็อกขณะใช้ <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"บริการโทรออกและอินเทอร์เน็ตของ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> อาจถูกบล็อกขณะใช้ SIM อื่น"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"การใช้อินเทอร์เน็ตของแอป"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"เน็ตมือถือ <xliff:g id="ID_1">%1$s</xliff:g> ที่ใช้ระหว่าง <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"ขั้นสูง"</string>
@@ -270,7 +266,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"ผู้ให้บริการ, eSIM, ซิม, eUICC, เปลี่ยนผู้ให้บริการ, เพิ่มผู้ให้บริการ"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="4661165467914727157">"เน็ตมือถือ"</string>
-    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"เข้าถึงอินเทอร์เน็ตโดยใช้เครือข่ายมือถือ"</string>
+    <string name="mobile_data_settings_summary" msgid="5087255915840576895">"เข้าถึงข้อมูลโดยใช้เครือข่ายมือถือ"</string>
     <string name="data_usage_disable_mobile" msgid="3577275288809667615">"ปิดเน็ตมือถือไหม"</string>
     <string name="sim_selection_required_pref" msgid="7049424902961844236">"ต้องเลือก"</string>
     <string name="sim_change_data_title" msgid="5332425991853799280">"เปลี่ยนซิมอินเทอร์เน็ตไหม"</string>
@@ -523,6 +519,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"เจ้าของ"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"แตะอีกครั้งเพื่อดูข้อมูล"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"หมายเลขฉุกเฉิน"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"หมายเลขฉุกเฉินเท่านั้น"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"หมายเลขฉุกเฉิน"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"หมายเลขฉุกเฉิน"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"แตะอีกครั้งเพื่อโทรหา <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -559,7 +556,6 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"การโทรระบบข้อความแบบเรียลไทม์ (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"อนุญาตให้รับส่งข้อความระหว่างการโทรด้วยเสียง"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT ช่วยเหลือผู้โทรที่หูหนวก ได้ยินไม่ชัด มีความบกพร่องในการพูด หรือต้องการการสื่อสารที่นอกเหนือจากเสียงพูด&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ดูข้อมูลเพิ่มเติม&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - สาย RTT จะบันทึกในรูปแบบการถอดเสียงเป็นข้อความ\n       &lt;br&gt; - RTT ใช้ไม่ได้สำหรับวิดีโอคอล"</string>
-    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"หมายเหตุ: RTT ไม่พร้อมใช้งานขณะโรมมิ่ง"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"ปิด TTY"</item>
     <item msgid="3971695875449640648">"TTY เต็ม"</item>
@@ -647,8 +643,6 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"การเชื่อมต่อ Wi-Fi ถูกตัด วางสายแล้ว"</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"ไม่สามารถใช้วิดีโอคอลได้เนื่องจากแบตเตอรี่เหลือน้อย"</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"วิดีโอคอลสิ้นสุดแล้วเนื่องจากแบตเตอรี่เหลือน้อย"</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"การโทรฉุกเฉินผ่าน Wi-Fi ไม่พร้อมใช้งานในพื้นที่นี้"</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"การโทรผ่าน Wi-Fi ไม่พร้อมใช้งานในพื้นที่นี้"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"เปลี่ยน PIN ข้อความเสียง"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ดำเนินการต่อ"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"ยกเลิก"</string>
@@ -762,7 +756,6 @@
     <string name="call_barring_settings" msgid="80766145008623645">"การตั้งค่าระงับการโทร"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"ปิดใช้งานการตั้งค่าระงับการโทรทั้งหมดไหม"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"เครือข่ายไม่ว่าง โปรดลองโทรอีกครั้ง"</string>
-    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"เครือข่ายแออัด ติดต่อโอเปอเรเตอร์อุปกรณ์เคลื่อนที่เพื่อขอความช่วยเหลือ"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"มีการส่งต่อสาย"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"มีการโอนสาย"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"กำลังรอสาย"</string>
