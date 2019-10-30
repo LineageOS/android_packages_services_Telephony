@@ -49,12 +49,18 @@ public class RadioOnHelper implements RadioOnStateListener.Callback {
     }
 
     private void setupListeners() {
-        if (mListeners != null) {
-            return;
+        if (mListeners == null) {
+            mListeners = new ArrayList<>(2);
         }
-        mListeners = new ArrayList<>(2);
-        for (int i = 0; i < TelephonyManager.getDefault().getSupportedModemCount(); i++) {
+        int activeModems = TelephonyManager.from(mContext).getActiveModemCount();
+        // Add new listeners if active modem count increased.
+        while (mListeners.size() < activeModems) {
             mListeners.add(new RadioOnStateListener());
+        }
+        // Clean up listeners if active modem count decreased.
+        while (mListeners.size() > activeModems) {
+            mListeners.get(mListeners.size() - 1).cleanup();
+            mListeners.remove(mListeners.size() - 1);
         }
     }
     /**
@@ -76,7 +82,7 @@ public class RadioOnHelper implements RadioOnStateListener.Callback {
         mCallback = callback;
         mInProgressListeners.clear();
         mIsRadioOnCallingEnabled = false;
-        for (int i = 0; i < TelephonyManager.getDefault().getSupportedModemCount(); i++) {
+        for (int i = 0; i < TelephonyManager.from(mContext).getActiveModemCount(); i++) {
             Phone phone = PhoneFactory.getPhone(i);
             if (phone == null) {
                 continue;
