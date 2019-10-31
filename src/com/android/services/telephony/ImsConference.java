@@ -21,19 +21,19 @@ import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.telecom.ConferenceParticipant;
 import android.telecom.Connection;
 import android.telecom.Connection.VideoProvider;
 import android.telecom.DisconnectCause;
-import android.telecom.Log;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.StatusHints;
 import android.telecom.TelecomManager;
 import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.Rlog;
 import android.util.Pair;
 
+import com.android.ims.internal.ConferenceParticipant;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
@@ -68,6 +68,8 @@ import java.util.Objects;
  * the participants.
  */
 public class ImsConference extends TelephonyConferenceBase implements Holdable {
+
+    private static final String LOG_TAG = "ImsConference";
 
     /**
      * Abstracts out fetching a feature flag.  Makes testing easier.
@@ -168,7 +170,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
                         return;
                     }
 
-                    sendConnectionEvent(event, extras);
+                    sendConferenceEvent(event, extras);
                 }
 
                 @Override
@@ -328,15 +330,15 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
 
         conferenceCapabilities = changeBitmask(conferenceCapabilities,
                     Connection.CAPABILITY_SUPPORTS_VT_LOCAL_BIDIRECTIONAL,
-                    can(capabilities, Connection.CAPABILITY_SUPPORTS_VT_LOCAL_BIDIRECTIONAL));
+                (capabilities & Connection.CAPABILITY_SUPPORTS_VT_LOCAL_BIDIRECTIONAL) != 0);
 
         if (isVideoConferencingSupported) {
             conferenceCapabilities = changeBitmask(conferenceCapabilities,
                     Connection.CAPABILITY_SUPPORTS_VT_REMOTE_BIDIRECTIONAL,
-                    can(capabilities, Connection.CAPABILITY_SUPPORTS_VT_REMOTE_BIDIRECTIONAL));
+                    (capabilities & Connection.CAPABILITY_SUPPORTS_VT_REMOTE_BIDIRECTIONAL) != 0);
             conferenceCapabilities = changeBitmask(conferenceCapabilities,
                     Connection.CAPABILITY_CAN_UPGRADE_TO_VIDEO,
-                    can(capabilities, Connection.CAPABILITY_CAN_UPGRADE_TO_VIDEO));
+                    (capabilities & Connection.CAPABILITY_CAN_UPGRADE_TO_VIDEO) != 0);
         } else {
             // If video conferencing is not supported, explicitly turn off the remote video
             // capability and the ability to upgrade to video.
@@ -349,7 +351,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
 
         conferenceCapabilities = changeBitmask(conferenceCapabilities,
                 Connection.CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO,
-                can(capabilities, Connection.CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO));
+                (capabilities & Connection.CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO) != 0);
 
         conferenceCapabilities = changeBitmask(conferenceCapabilities,
                 Connection.CAPABILITY_CAN_PAUSE_VIDEO,
@@ -368,15 +370,15 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
     private int applyHostProperties(int conferenceProperties, int properties) {
         conferenceProperties = changeBitmask(conferenceProperties,
                 Connection.PROPERTY_HIGH_DEF_AUDIO,
-                can(properties, Connection.PROPERTY_HIGH_DEF_AUDIO));
+                (properties & Connection.PROPERTY_HIGH_DEF_AUDIO) != 0);
 
         conferenceProperties = changeBitmask(conferenceProperties,
                 Connection.PROPERTY_WIFI,
-                can(properties, Connection.PROPERTY_WIFI));
+                (properties & Connection.PROPERTY_WIFI) != 0);
 
         conferenceProperties = changeBitmask(conferenceProperties,
                 Connection.PROPERTY_IS_EXTERNAL_CALL,
-                can(properties, Connection.PROPERTY_IS_EXTERNAL_CALL));
+                (properties & Connection.PROPERTY_IS_EXTERNAL_CALL) != 0);
 
         conferenceProperties = changeBitmask(conferenceProperties,
                 Connection.PROPERTY_REMOTELY_HOSTED, !isConferenceHost());
@@ -602,7 +604,8 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
      * that the conference is represented appropriately on Bluetooth devices.
      */
     private void updateManageConference() {
-        boolean couldManageConference = can(Connection.CAPABILITY_MANAGE_CONFERENCE);
+        boolean couldManageConference =
+                (getConnectionCapabilities() & Connection.CAPABILITY_MANAGE_CONFERENCE) != 0;
         boolean canManageConference = mFeatureFlagProxy.isUsingSinglePartyCallEmulation()
                 && mIsEmulatingSinglePartyCall
                 ? mConferenceParticipantConnections.size() > 1
@@ -822,8 +825,8 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
                     if (!participantUserEntities.contains(entry.getKey())) {
                         ConferenceParticipantConnection participant = entry.getValue();
                         participant.setDisconnected(new DisconnectCause(DisconnectCause.CANCELED));
-                        mTelephonyConnectionService.removeConnection(participant);
                         removeTelephonyConnection(participant);
+                        participant.destroy();
                         entryIterator.remove();
                         oldParticipantsRemoved = true;
                     }
@@ -940,8 +943,8 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
             // again anyways.
             entry.setDisconnected(new DisconnectCause(DisconnectCause.CANCELED,
                     DisconnectCause.REASON_EMULATING_SINGLE_CALL));
-            mTelephonyConnectionService.removeConnection(entry);
             removeTelephonyConnection(entry);
+            entry.destroy();
             valueIterator.remove();
         }
 
@@ -949,7 +952,8 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
         setConferenceState(false);
 
         // Remove manage conference capability.
-        mCouldManageConference = can(Connection.CAPABILITY_MANAGE_CONFERENCE);
+        mCouldManageConference =
+                (getConnectionCapabilities() & Connection.CAPABILITY_MANAGE_CONFERENCE) != 0;
         int currentCapabilities = getConnectionCapabilities();
         currentCapabilities &= ~Connection.CAPABILITY_MANAGE_CONFERENCE;
         setConnectionCapabilities(currentCapabilities);
@@ -1009,7 +1013,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
             mConferenceParticipantConnections.remove(new Pair<>(participant.getUserEntity(),
                     participant.getEndpoint()));
         }
-        mTelephonyConnectionService.removeConnection(participant);
+        participant.destroy();
     }
 
     /**
@@ -1025,7 +1029,6 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
                 // Mark disconnect cause as cancelled to ensure that the call is not logged in the
                 // call log.
                 connection.setDisconnected(new DisconnectCause(DisconnectCause.CANCELED));
-                mTelephonyConnectionService.removeConnection(connection);
                 connection.destroy();
                 handleConnectionDestruction(connection);
             }
@@ -1086,7 +1089,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
             boolean isHost = PhoneNumberUtils.compare(hostNumber, number);
 
             Log.v(this, "isParticipantHost(%s) : host: %s, participant %s", (isHost ? "Y" : "N"),
-                    Log.pii(hostNumber), Log.pii(number));
+                    Rlog.pii(LOG_TAG, hostNumber), Rlog.pii(LOG_TAG, number));
 
             if (isHost) {
                 return true;
@@ -1209,8 +1212,8 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
      */
     private boolean isVideoCapable() {
         int capabilities = mConferenceHost.getConnectionCapabilities();
-        return can(capabilities, Connection.CAPABILITY_SUPPORTS_VT_LOCAL_BIDIRECTIONAL)
-                && can(capabilities, Connection.CAPABILITY_SUPPORTS_VT_REMOTE_BIDIRECTIONAL);
+        return (capabilities & Connection.CAPABILITY_SUPPORTS_VT_LOCAL_BIDIRECTIONAL) != 0
+                && (capabilities & Connection.CAPABILITY_SUPPORTS_VT_REMOTE_BIDIRECTIONAL) != 0;
     }
 
     private void updateStatusHints() {
