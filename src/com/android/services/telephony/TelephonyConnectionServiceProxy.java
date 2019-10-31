@@ -36,4 +36,10 @@ public interface TelephonyConnectionServiceProxy {
     void addExistingConnection(PhoneAccountHandle phoneAccountHandle,
                                Connection connection, Conference conference);
     void addConnectionToConferenceController(TelephonyConnection connection);
+
+    /**
+     * Called when a connection's conference membership changes.
+     * @param connection The connection.
+     */
+    void onConferenceMembershipChanged(Connection connection);
 }
