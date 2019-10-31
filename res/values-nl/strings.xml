@@ -25,8 +25,6 @@
     <string name="private_num" msgid="6713286113000232309">"Privénummer"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefooncel"</string>
     <string name="onHold" msgid="9035493194749959955">"In de wacht"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"Bericht (<xliff:g id="MMICARRIER">%s</xliff:g>)"</string>
-    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Bericht van provider"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI-code gestart"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD-code uitvoeren..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI-code geannuleerd"</string>
@@ -79,9 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"Voicemail"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Voicemail (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <string name="make_and_receive_calls" msgid="1258596928285972166">"Bellen en gebeld worden"</string>
-    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Slim doorschakelen"</string>
-    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Wanneer één nummer niet bereikbaar is, worden gesprekken altijd doorgeschakeld naar je andere nummer"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Meldingen"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Nooduitzendingen"</string>
     <string name="call_settings" msgid="6112441768261754562">"Gespreksinstellingen"</string>
@@ -113,12 +114,12 @@
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"Doorschakelen naar <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"Uit"</string>
     <string name="disable_cfb_forbidden" msgid="3506984333877998061">"Je provider biedt geen ondersteuning voor het uitschakelen van oproepdoorschakelingen wanneer je telefoon bezet is."</string>
-    <string name="labelCFNRy" msgid="1736067178393744351">"Indien niet opgenomen"</string>
+    <string name="labelCFNRy" msgid="1736067178393744351">"Indien onbeantwoord"</string>
     <string name="messageCFNRy" msgid="672317899884380374">"Nummer indien onbeantwoord"</string>
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"Doorschakelen naar <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"Uit"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"Je provider biedt geen ondersteuning voor het uitschakelen van oproepdoorschakelingen wanneer je telefoon niet wordt opgenomen."</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"Indien geen bereik"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"Indien niet bereikbaar"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Nummer indien onbereikbaar"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Doorschakelen naar <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Uit"</string>
@@ -254,15 +255,10 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Verbinding maken met dataservices tijdens roaming"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Verbinding maken met dataservices tijdens roaming"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Dataroaming is uitgeschakeld. Tik om in te schakelen."</string>
-    <string name="roaming_enabled_message" msgid="7176375330428295945">"Er kunnen kosten voor roaming in rekening worden gebracht. Tik om te wijzigen."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Mobiele internetverbinding is verbroken"</string>
-    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Dataroaming is ingeschakeld"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Er kunnen hoge roamingkosten in rekening worden gebracht."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Neem contact op met je netwerkprovider over de prijzen."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Dataroaming toestaan?"</string>
-    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Beperkte simkaartfunctionaliteit"</string>
-    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Gesprekken en dataservices van <xliff:g id="CARRIER_NAME">%1$s</xliff:g> kunnen worden geblokkeerd terwijl je <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> gebruikt."</string>
-    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>-gesprekken en -dataservices kunnen worden geblokkeerd voor een andere simkaart."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Datagebruik van app"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruikt van <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Geavanceerd"</string>
@@ -523,6 +519,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Eigenaar"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Tik nogmaals om informatie weer te geven"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Noodoproep"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Alleen noodoproepen"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Alarmnummer"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Alarmnummers"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Tik nogmaals om <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> te bellen"</string>
@@ -559,7 +556,6 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Realtime tekstoproep (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Berichten in een audiogesprek toestaan"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT helpt bellers die doof of slechthorend zijn, een spraakbeperking hebben of meer dan alleen een stem nodig hebben.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Meer informatie&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-gesprekken worden opgeslagen als berichttranscript.\n       &lt;br&gt; - RTT is niet beschikbaar voor videogesprekken"</string>
-    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Let op: RTT is niet beschikbaar tijdens roaming"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY uit"</item>
     <item msgid="3971695875449640648">"TTY vol"</item>
@@ -627,7 +623,7 @@
     <string name="voicemail_visual_voicemail_switch_title" msgid="5012622186976275457">"Visuele voicemail"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="2797924461029093837">"Pincode instellen"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="6035421908626121564">"Pincode wijzigen"</string>
-    <string name="preference_category_ringtone" msgid="5197960752529332721">"Ringtone en trillen"</string>
+    <string name="preference_category_ringtone" msgid="5197960752529332721">"Beltoon en trillen"</string>
     <string name="pstn_connection_service_label" msgid="1743245930577325900">"Ingebouwde simkaarten"</string>
     <string name="enable_video_calling_title" msgid="7237253660669000899">"Videogesprekken inschakelen"</string>
     <string name="enable_video_calling_dialog_msg" msgid="8948186136957417948">"Als je videogesprekken wilt inschakelen, moet je de geoptimaliseerde 4G LTE-modus inschakelen in de netwerkinstellingen."</string>
@@ -647,8 +643,6 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wifi-verbinding verbroken. Gesprek beëindigd."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Je videogesprek kan niet worden gestart omdat de batterij bijna leeg is."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Videogesprek beëindigd omdat batterij bijna leeg is."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Noodoproepen met bellen via wifi niet beschikbaar op deze locatie."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Bellen via wifi is niet beschikbaar op deze locatie."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Voicemailpincode wijzigen"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Doorgaan"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Annuleren"</string>
@@ -762,7 +756,6 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Blokkeerinstellingen voor gesprekken"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Alle blokkeerinstellingen voor gesprekken deactiveren?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Netwerk is bezet. Probeer je gesprek later opnieuw uit te voeren."</string>
-    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Het netwerk is overbelast. Neem contact op met je mobiele provider voor hulp."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Gesprek doorgeschakeld naar ander nummer."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Gesprek doorgeschakeld."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Wisselgesprek."</string>

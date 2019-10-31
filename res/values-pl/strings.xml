@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Dane mobilne"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="8576272342240415145">"Mobile Data"</string>
     <string name="phoneAppLabel" product="default" msgid="6790717591729922998">"Telefon – usługi"</string>
     <string name="emergencyDialerIconLabel" msgid="7812140032168171053">"Numery alarmowe"</string>
     <string name="phoneIconLabel" msgid="2331230813161304895">"Telefon"</string>
@@ -25,8 +25,6 @@
     <string name="private_num" msgid="6713286113000232309">"Numer prywatny"</string>
     <string name="payphone" msgid="4793877574636445118">"Automat telefoniczny"</string>
     <string name="onHold" msgid="9035493194749959955">"Oczekujące"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) Wiadomość"</string>
-    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Wiadomość od operatora"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Kod MMI został rozpoczęty"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Uruchomiony kod USSD..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Kod MMI został anulowany"</string>
@@ -79,9 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"Poczta głosowa"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Poczta głosowa (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Poczta głosowa:"</string>
-    <string name="make_and_receive_calls" msgid="1258596928285972166">"Nawiązywanie i odbieranie połączeń"</string>
-    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Inteligentne przekierowywanie"</string>
-    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Gdy jeden numer jest niedostępny, zawsze kieruj połączenia na inny numer"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Powiadomienia"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Komunikaty alarmowe"</string>
     <string name="call_settings" msgid="6112441768261754562">"Ustawienia połączeń"</string>
@@ -121,7 +122,7 @@
     <string name="labelCFNRc" msgid="2614827454402079766">"Gdy niedostępny"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"Przekieruj na numer"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"Przekierowanie na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Wyłączone"</string>
+    <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"Wył."</string>
     <string name="disable_cfnrc_forbidden" msgid="5646361343094064333">"Twój operator nie umożliwia wyłączenia przekazywania połączeń, gdy numer jest nieosiągalny."</string>
     <string name="updating_title" msgid="6146755386174019046">"Ustawienia połączeń"</string>
     <string name="call_settings_admin_user_only" msgid="4526094783818216374">"Ustawienia połączeń może zmieniać tylko użytkownik będący administratorem."</string>
@@ -254,15 +255,10 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Połącz z usługami transmisji danych podczas roamingu"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Połącz z usługami transmisji danych podczas roamingu"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Roaming danych jest wyłączony. Kliknij, aby go włączyć."</string>
-    <string name="roaming_enabled_message" msgid="7176375330428295945">"Mogą zostać naliczone opłaty za roaming. Kliknij, aby zmodyfikować."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Utracono połączenie mobilnej transmisji danych"</string>
-    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Roaming danych jest włączony"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Mogą się z tym wiązać wysokie opłaty."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Aby poznać ceny, skontaktuj się z operatorem komórkowym."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Zezwolić na roaming danych?"</string>
-    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Ograniczona funkcjonalność karty SIM"</string>
-    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Połączenia i usługi transmisji danych w sieci operatora <xliff:g id="CARRIER_NAME">%1$s</xliff:g> mogą być zablokowane, gdy używasz numeru <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
-    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Połączenia i transmisja danych w <xliff:g id="CARRIER_NAME">%1$s</xliff:g> mogą być zablokowane przy innej karcie SIM."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Użycie danych przez aplikację"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Wykorzystano <xliff:g id="ID_1">%1$s</xliff:g> mobilnej transmisji danych w okresie <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Zaawansowane"</string>
@@ -523,6 +519,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Właściciel"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Kliknij ponownie, aby wyświetlić informacje"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Połączenie alarmowe"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Tylko połączenia alarmowe"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Numer alarmowy"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Numery alarmowe"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Kliknij jeszcze raz, aby zadzwonić pod <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -559,7 +556,6 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Połączenie RTT (wysyłanie SMS-ów w czasie rzeczywistym)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Zezwalaj na wymianę SMS-ów podczas rozmowy głosowej"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT pomaga osobom niesłyszącym, niedosłyszącym, mającym problemy z mówieniem oraz potrzebującym czegoś więcej oprócz głosu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Więcej informacji&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Połączenia RTT są zapisywane jako transkrypcje\n       &lt;br&gt; – Funkcja RTT jest niedostępna w przypadku rozmów wideo"</string>
-    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Uwaga: funkcja RTT jest niedostępna podczas roamingu"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY wyłączony"</item>
     <item msgid="3971695875449640648">"TTY pełny"</item>
@@ -651,8 +647,6 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Utracono połączenie Wi-Fi. Rozmowa została zakończona."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Nie możesz rozpocząć rozmowy wideo z powodu słabej baterii."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Rozmowa wideo została zakończona z powodu słabej baterii."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"W tej lokalizacji nie można wykonywać połączeń alarmowych przez Wi-Fi."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"W tej lokalizacji nie można wykonywać połączeń przez Wi-Fi."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Zmień kod PIN poczty głosowej"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Dalej"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Anuluj"</string>
@@ -766,7 +760,6 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Ustawienia blokady połączeń"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Dezaktywować wszystkie ustawienia blokady połączeń?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Sieć jest zajęta. Spróbuj zadzwonić później."</string>
-    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Sieć jest przeciążona. Skontaktuj się z operatorem i poproś o pomoc."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Połączenie przekazane na inny numer."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Połączenie przekierowane."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Oczekiwanie na połączenie."</string>

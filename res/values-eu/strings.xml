@@ -25,10 +25,8 @@
     <string name="private_num" msgid="6713286113000232309">"Zenbaki pribatua"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefono publikoa"</string>
     <string name="onHold" msgid="9035493194749959955">"Zain"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) mezua"</string>
-    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Operadorearen mezua"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI kodea hasi da"</string>
-    <string name="ussdRunning" msgid="485588686340541690">"USSD kodea abiarazten…"</string>
+    <string name="ussdRunning" msgid="485588686340541690">"USSD kodea exekutatzen…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI kodea bertan behera utzi da"</string>
     <string name="cancel" msgid="5044513931633602634">"Utzi"</string>
     <string name="enter_input" msgid="1810529547726803893">"USSD mezuak <xliff:g id="MIN_LEN">%1$d</xliff:g> eta <xliff:g id="MAX_LEN">%2$d</xliff:g> karaktere bitartekoa izan behar du. Saiatu berriro."</string>
@@ -36,8 +34,8 @@
     <string name="ok" msgid="3811371167865772377">"Ados"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Bozgorailua"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Aurikularrak"</string>
-    <string name="audio_mode_wired_headset" msgid="1465350758489175975">"Entzungailu kableduna"</string>
-    <string name="audio_mode_bluetooth" msgid="3047641300848211128">"Bluetooth entzungailua"</string>
+    <string name="audio_mode_wired_headset" msgid="1465350758489175975">"Kabledun entzungailua"</string>
+    <string name="audio_mode_bluetooth" msgid="3047641300848211128">"Bluetooth"</string>
     <string name="wait_prompt_str" msgid="7601815427707856238">"Ondorengo tonuak bidali?\n"</string>
     <string name="pause_prompt_str" msgid="1789964702154314806">"Tonuak bidaltzen\n"</string>
     <string name="send_button" msgid="4106860097497818751">"Bidali"</string>
@@ -79,9 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"Erantzungailua"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Erantzungailua (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"Erantzungailua:"</string>
-    <string name="make_and_receive_calls" msgid="1258596928285972166">"Egin eta jaso deiak"</string>
-    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Desbideratze adimenduna"</string>
-    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Zenbakietako bat eskuragarri ez dagoenean, beste zenbakira desbideratuko dira deiak"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Jakinarazpenak"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Larrialdietako igorpenak"</string>
     <string name="call_settings" msgid="6112441768261754562">"Deien ezarpenak"</string>
@@ -99,7 +100,7 @@
     <string name="labelCW" msgid="6120513814915920200">"Deiak zain"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"Deiak abian dauden bitartean, eman sarrerako deien berri"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"Deiak abian dauden bitartean, eman sarrerako deien berri"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"Dei-desbideratzearen ezarpenak"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"Dei-desbideratzeen ezarpenak"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"Deiak desbideratzeko ezarpenak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"Dei-desbideratzea"</string>
     <string name="labelCFU" msgid="8147177368148660600">"Desbideratu beti"</string>
@@ -254,18 +255,13 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Konektatu datu-zerbitzuetara ibiltaritzan"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Konektatu datu-zerbitzuetara ibiltaritzan"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Datu-ibiltaritza desaktibatuta dago. Sakatu aktibatzeko."</string>
-    <string name="roaming_enabled_message" msgid="7176375330428295945">"Baliteke ibiltaritza-kostuak ordaindu behar izatea. Sakatu aldatzeko."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Galdu da datu-konexioa"</string>
-    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Aktibatuta dago datu-ibiltaritza"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Baliteke kostu handiak ordaindu behar izatea."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Eskatu prezioari buruzko informazioa sare-hornitzaileari."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Ibiltaritzako datuak baimendu nahi dituzu?"</string>
-    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"SIMaren funtzionaltasuna mugatua da"</string>
-    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Baliteke <xliff:g id="CARRIER_NAME">%1$s</xliff:g> bidezko deiak eta datu-zerbitzuak blokeatuta egotea <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> telefono-zenbakia erabiltzean."</string>
-    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Baliteke <xliff:g id="CARRIER_NAME">%1$s</xliff:g> bidezko deiak eta datu-zerbitzuak blokeatuta egotea beste SIM txartel bat erabiltzean."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Aplikazioak erabilitako datuak"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"Datuen <xliff:g id="ID_1">%1$s</xliff:g> erabili dira data hauen artean: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
-    <string name="advanced_options_title" msgid="8074895510265488035">"Aurreratuak"</string>
+    <string name="advanced_options_title" msgid="8074895510265488035">"Ezarpen aurreratuak"</string>
     <string name="carrier_settings_euicc" msgid="6714062862127226405">"Operadorea"</string>
     <string name="keywords_carrier_settings_euicc" msgid="6861505396475991277">"operadorea, esim, esim txartela, sim, sim txartela, euicc, euicc txartela, aldatu operadoreak, aldatu operadorez, aldatu operadorea, gehitu operadorea, gehitu operadoreak"</string>
     <string name="carrier_settings_euicc_summary" msgid="5115001942761995457">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
@@ -480,7 +476,7 @@
     <string name="label_puk2_code" msgid="4688069961795341948">"Idatzi PUK2 kodea"</string>
     <string name="fdn_enable_puk2_requested" msgid="4991074891459554705">"Pasahitza ez da zuzena. PIN2 kodea blokeatu egin da. Berriro saiatzeko, aldatu PIN2 kodea."</string>
     <string name="puk2_requested" msgid="5831015200030161434">"Pasahitza ez da zuzena. SIM txartela blokeatu egin da. Idatzi PUK2 kodea."</string>
-    <string name="puk2_blocked" msgid="3150263853077280049">"PUK2 kodea betiko blokeatu da."</string>
+    <string name="puk2_blocked" msgid="3150263853077280049">"PUK2 kodea betirako blokeatu da."</string>
     <string name="pin2_attempts" msgid="720736232885011507">\n"<xliff:g id="NUMBER">%d</xliff:g> saiakera gelditzen zaizkizu."</string>
     <string name="pin2_unblocked" msgid="7791600368153469078">"PIN2 kodea desblokeatu da"</string>
     <string name="pin2_error_exception" msgid="1088689322248996699">"Sarearen edo SIM txartelaren errorea"</string>
@@ -494,8 +490,8 @@
     <string name="card_title_on_hold" msgid="821463117892339942">"Zain"</string>
     <string name="card_title_hanging_up" msgid="3999101620995182450">"Deia amaitzen"</string>
     <string name="card_title_in_call" msgid="6346543933068225205">"Deia abian"</string>
-    <string name="notification_voicemail_title" msgid="8933468752045550523">"Erantzungailuko mezu berria"</string>
-    <string name="notification_voicemail_title_count" msgid="4366360747660929916">"Erantzungailuko mezu berriak (<xliff:g id="COUNT">%d</xliff:g>)"</string>
+    <string name="notification_voicemail_title" msgid="8933468752045550523">"Ahots-mezu berria"</string>
+    <string name="notification_voicemail_title_count" msgid="4366360747660929916">"Ahots-mezu berriak (<xliff:g id="COUNT">%d</xliff:g>)"</string>
     <string name="notification_voicemail_text_format" msgid="4447323569453981685">"Markatu <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="760963466895609716">"Erantzungailuaren zenbakia ezezaguna da"</string>
     <string name="notification_network_selection_title" msgid="4224455487793492772">"Ez dago zerbitzurik"</string>
@@ -525,6 +521,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Jabea"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Informazioa ikusteko, sakatu berriro"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Larrialdi-deia"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Larrialdi-deiak soilik"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Larrialdietarako zenbakia"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Larrialdietarako zenbakiak"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Sakatu berriro <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> zenbakira deitzeko"</string>
@@ -561,7 +558,6 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Deietan testua bidaltzeko eginbidea"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Baimendu mezuak bidali eta jasotzea ahots-deien barruan"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Deietan testua bidaltzeko eginbideak deitzaile gorrei, entzumen-arazoak dituztenei, hitz egiteko ezintasunen bat dutenei edota ahotsaz gain beste makuluren bat behar dutenei laguntzen die.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lortu informazio gehiago&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Deietan testua bidaltzeko eginbidearekin egindako deiak mezu-transkripzio gisa gordetzen dira.\n       &lt;br&gt; - Deietan testua bidaltzeko eginbidea ez da bateragarria bideo-deiekin."</string>
-    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Oharra: Deietan testua bidaltzeko eginbidea ez dago erabilgarri ibiltaritzan"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY desaktibatuta"</item>
     <item msgid="3971695875449640648">"TTY osoa"</item>
@@ -649,8 +645,6 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Galdu egin da Wi-Fi konexioa. Amaitu da deia."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Ezin da egin deia, bateria gutxi gelditzen delako."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Bideo-deia amaitu egin da bateria gutxi gelditzen delako."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Ez daude erabilgarri wifi bidezko larrialdi-deiak kokapen honetan."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Ez daude erabilgarri wifi bidezko deiak kokapen honetan."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Aldatu erantzungailuaren PIN kodea"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Egin aurrera"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Utzi"</string>
@@ -764,7 +758,6 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Deiak debekatzeko ezarpenak"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Deiak debekatzeko ezarpen guztiak desaktibatu nahi dituzu?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Sarea okupatuta dago. Saiatu berriro deitzen geroago."</string>
-    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Sareak gainezka egin du. Laguntza lortzeko, jarri mugikorraren operadorearekin harremanetan."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Automatikoki desbideratu da deia."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Desbideratu da deia."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Deia zain dago."</string>
