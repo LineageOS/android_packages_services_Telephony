@@ -18,7 +18,6 @@ package com.android.services.telephony;
 
 import android.content.Context;
 import android.os.PersistableBundle;
-import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.PhoneAccountHandle;
 import android.telephony.CarrierConfigManager;
@@ -32,7 +31,7 @@ import java.util.List;
 /**
  * CDMA-based conference call.
  */
-public class CdmaConference extends Conference implements Holdable {
+public class CdmaConference extends TelephonyConferenceBase implements Holdable {
     private int mCapabilities;
     private int mProperties;
     private boolean mIsHoldable;

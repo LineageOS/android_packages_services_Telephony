@@ -48,7 +48,8 @@ import java.util.List;
  * the conference from being created for 3 seconds. This is a more pleasant experience for the user.
  */
 final class CdmaConferenceController {
-    private final Connection.Listener mConnectionListener = new Connection.Listener() {
+    private final TelephonyConnection.TelephonyConnectionListener mTelephonyConnectionListener =
+            new TelephonyConnection.TelephonyConnectionListener() {
                 @Override
                 public void onStateChanged(Connection c, int state) {
                     recalculateConference();
@@ -139,7 +140,7 @@ final class CdmaConferenceController {
 
     private void addInternal(CdmaConnection connection) {
         mCdmaConnections.add(connection);
-        connection.addConnectionListener(mConnectionListener);
+        connection.addTelephonyConnectionListener(mTelephonyConnectionListener);
         recalculateConference();
     }
 
@@ -151,7 +152,7 @@ final class CdmaConferenceController {
             return;
         }
 
-        connection.removeConnectionListener(mConnectionListener);
+        connection.removeTelephonyConnectionListener(mTelephonyConnectionListener);
         mCdmaConnections.remove(connection);
         recalculateConference();
     }
@@ -197,14 +198,14 @@ final class CdmaConferenceController {
             for (CdmaConnection connection : conferenceConnections) {
                 if (!existingChildConnections.contains(connection)) {
                     Log.i(this, "Adding connection to conference call: %s", connection);
-                    mConference.addConnection(connection);
+                    mConference.addTelephonyConnection(connection);
                 }
                 existingChildConnections.remove(connection);
             }
 
             // 3) Remove any lingering old/disconnected/destroyed connections
             for (Connection oldConnection : existingChildConnections) {
-                mConference.removeConnection(oldConnection);
+                mConference.removeTelephonyConnection(oldConnection);
                 Log.i(this, "Removing connection from conference call: %s", oldConnection);
             }
 
@@ -212,13 +213,13 @@ final class CdmaConferenceController {
             if (isNewlyCreated) {
                 Log.d(this, "Adding the conference call");
                 mConference.updateCallRadioTechAfterCreation();
-                mConnectionService.addConference(mConference);
+                mConnectionService.addTelephonyConference(mConference);
             }
         } else if (conferenceConnections.isEmpty()) {
             // There are no more connection so if we still have a conference, lets remove it.
             if (mConference != null) {
                 Log.i(this, "Destroying the CDMA conference connection.");
-                mConference.destroy();
+                mConference.destroyTelephonyConference();
                 mConference = null;
             }
         }
