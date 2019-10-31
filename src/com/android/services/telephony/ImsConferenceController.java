@@ -22,6 +22,7 @@ import android.telecom.Connection;
 import android.telecom.ConnectionService;
 import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
+import android.telephony.Rlog;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
@@ -38,11 +39,13 @@ import java.util.stream.Collectors;
  * Manages conferences for IMS connections.
  */
 public class ImsConferenceController {
+    private static final String LOG_TAG = "ImsConferenceController";
 
     /**
      * Conference listener; used to receive notification when a conference has been disconnected.
      */
-    private final Conference.Listener mConferenceListener = new Conference.Listener() {
+    private final TelephonyConferenceBase.TelephonyConferenceListener mConferenceListener =
+            new TelephonyConferenceBase.TelephonyConferenceListener() {
         @Override
         public void onDestroyed(Conference conference) {
             if (Log.VERBOSE) {
@@ -69,13 +72,13 @@ public class ImsConferenceController {
 
         @Override
         public void onStateChanged(Connection c, int state) {
-            Log.v(this, "onStateChanged: %s", Log.pii(c.getAddress()));
+            Log.v(this, "onStateChanged: %s", Rlog.pii(LOG_TAG, c.getAddress()));
             recalculate();
         }
 
         @Override
         public void onDisconnected(Connection c, DisconnectCause disconnectCause) {
-            Log.v(this, "onDisconnected: %s", Log.pii(c.getAddress()));
+            Log.v(this, "onDisconnected: %s", Rlog.pii(LOG_TAG, c.getAddress()));
             recalculate();
         }
 
@@ -379,7 +382,7 @@ public class ImsConferenceController {
         ImsConference conference = new ImsConference(mTelecomAccountRegistry, mConnectionService,
                 conferenceHostConnection, phoneAccountHandle, mFeatureFlagProxy);
         conference.setState(conferenceHostConnection.getState());
-        conference.addListener(mConferenceListener);
+        conference.addTelephonyConferenceListener(mConferenceListener);
         conference.updateConferenceParticipantsAfterCreation();
         mConnectionService.addConference(conference);
         conferenceHostConnection.setTelecomCallId(conference.getTelecomCallId());

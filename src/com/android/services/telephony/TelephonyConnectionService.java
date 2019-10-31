@@ -110,10 +110,6 @@ public class TelephonyConnectionService extends ConnectionService {
             TelephonyConnectionService.this.addTelephonyConference(mImsConference);
         }
         @Override
-        public void removeConnection(Connection connection) {
-            TelephonyConnectionService.this.removeConnection(connection);
-        }
-        @Override
         public void addExistingConnection(PhoneAccountHandle phoneAccountHandle,
                                           Connection connection) {
             TelephonyConnectionService.this
@@ -128,11 +124,6 @@ public class TelephonyConnectionService extends ConnectionService {
         @Override
         public void addConnectionToConferenceController(TelephonyConnection connection) {
             TelephonyConnectionService.this.addConnectionToConferenceController(connection);
-        }
-
-        @Override
-        public void onConferenceMembershipChanged(Connection connection) {
-            mHoldTracker.updateHoldCapability(connection.getPhoneAccountHandle());
         }
     };
 
@@ -329,7 +320,6 @@ public class TelephonyConnectionService extends ConnectionService {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.initLogging(this);
         setTelephonyManagerProxy(new TelephonyManagerProxyImpl(getApplicationContext()));
         mExpectedComponentName = new ComponentName(this, this.getClass());
         mEmergencyTonePlayer = new EmergencyTonePlayer(this);
@@ -1784,7 +1774,8 @@ public class TelephonyConnectionService extends ConnectionService {
 
                     // If the CDMA conference has not been merged, add-call will not work, so fail
                     // this request to add a call.
-                    if (cdmaConf.can(Connection.CAPABILITY_MERGE_CONFERENCE)) {
+                    if ((cdmaConf.getConnectionCapabilities()
+                            & Connection.CAPABILITY_MERGE_CONFERENCE) != 0) {
                         return Connection.createFailedConnection(new DisconnectCause(
                                     DisconnectCause.RESTRICTED,
                                     null,
@@ -1861,6 +1852,6 @@ public class TelephonyConnectionService extends ConnectionService {
      */
     public void addTelephonyConference(@NonNull TelephonyConferenceBase conference) {
         addConference(conference);
-        conference.addListener(mTelephonyConferenceListener);
+        conference.addTelephonyConferenceListener(mTelephonyConferenceListener);
     }
 }
