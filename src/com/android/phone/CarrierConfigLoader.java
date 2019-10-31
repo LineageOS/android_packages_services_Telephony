@@ -568,6 +568,13 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             configPackagename = mPlatformCarrierConfigPackage;
             configToSend = mConfigFromDefaultApp[phoneId];
         }
+
+        // mOverrideConfigs is for testing. And it will override current configs.
+        PersistableBundle config = mOverrideConfigs[phoneId];
+        if (config != null) {
+            configToSend.putAll(config);
+        }
+
         mSubscriptionInfoUpdater.updateSubscriptionByCarrierConfigAndNotifyComplete(
                 phoneId, configPackagename, configToSend,
                 mHandler.obtainMessage(EVENT_SUBSCRIPTION_INFO_UPDATED, phoneId, -1));
