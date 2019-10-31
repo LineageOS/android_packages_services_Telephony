@@ -439,7 +439,7 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"正在刪除固定撥號…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"已刪除固定撥號。"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"您所輸入的 PIN 不正確，因此未更新 FDN。"</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"固定撥號的號碼超過 20 位數，因此無法更新。"</string>
+    <string name="fdn_invalid_number" msgid="2062898833049589309">"固定撥號的號碼超過 <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> 位數，因此無法更新。"</string>
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"未更新 FDN。可能是因為 PIN2 碼不正確或電話號碼遭拒。"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN 操作失敗。"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"正在從 SIM 卡讀取…"</string>
