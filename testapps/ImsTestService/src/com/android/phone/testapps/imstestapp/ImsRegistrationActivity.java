@@ -24,6 +24,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.ImsReasonInfo;
+import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.util.ArrayMap;
 import android.util.Log;
@@ -103,8 +104,8 @@ public class ImsRegistrationActivity extends Activity {
     }
 
 
-    private final ImsMmTelManager.RegistrationCallback mRegistrationCallback =
-            new ImsMmTelManager.RegistrationCallback() {
+    private final RegistrationManager.RegistrationCallback mRegistrationCallback =
+            new RegistrationManager.RegistrationCallback() {
 
         @Override
         public void onRegistered(int imsRadioTech) {
@@ -181,7 +182,7 @@ public class ImsRegistrationActivity extends Activity {
         try {
             mImsManager = ImsMmTelManager.createForSubscriptionId(
                     SubscriptionManager.getDefaultVoiceSubscriptionId());
-            mImsManager.registerImsRegistrationCallback(getMainExecutor(), mRegistrationCallback);
+            mImsManager.registerImsRegistrationCallback(mRegistrationCallback, getMainExecutor());
         } catch (IllegalArgumentException | ImsException e) {
             Log.w("ImsCallingActivity", "illegal subscription ID.");
         }
