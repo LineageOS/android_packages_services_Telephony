@@ -532,8 +532,7 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"Tidak dapat menelepon. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> bukan nomor darurat."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Tidak dapat menelepon. Panggil nomor darurat."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Panggilan darurat tidak tersedia"</string>
-    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
-    <skip />
+    <string name="pin_puk_system_user_only" msgid="8673106128409478406">"Hanya pemilik perangkat yang dapat memasukkan kode PIN/PUK."</string>
     <string name="police_type_description" msgid="5324410799919829693">"Kantor Polisi"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulans"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"Pemadam Kebakaran"</string>

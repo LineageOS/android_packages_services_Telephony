@@ -532,8 +532,7 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"Không thực hiện được cuộc gọi. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> không phải là số khẩn cấp."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Không thực hiện được cuộc gọi. Hãy quay số khẩn cấp."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Không sử dụng được tính năng gọi khẩn cấp"</string>
-    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
-    <skip />
+    <string name="pin_puk_system_user_only" msgid="8673106128409478406">"Chỉ chủ sở hữu của thiết bị này mới có thể nhập mã PIN/PUK."</string>
     <string name="police_type_description" msgid="5324410799919829693">"Cảnh sát"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Cấp cứu"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"Hỏa hoạn"</string>

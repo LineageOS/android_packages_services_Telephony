@@ -532,8 +532,7 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"Выклік немагчымы. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> не з\'яўляецца нумарам экстраннай службы."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Выклік немагчымы. Набраць нумар экстраннай службы."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Экстранныя выклікі недаступныя"</string>
-    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
-    <skip />
+    <string name="pin_puk_system_user_only" msgid="8673106128409478406">"Толькі ўладальнік прылады можа ўводзіць PIN-код ці PUK-код."</string>
     <string name="police_type_description" msgid="5324410799919829693">"Паліцыя"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Хуткая дапамога"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"Пажарная служба"</string>
