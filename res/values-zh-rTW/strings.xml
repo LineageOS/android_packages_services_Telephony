@@ -534,8 +534,7 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"無法通話。<xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> 不是緊急號碼。"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"無法通話。只能撥打緊急號碼。"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"無法撥打緊急電話"</string>
-    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
-    <skip />
+    <string name="pin_puk_system_user_only" msgid="8673106128409478406">"只有裝置的擁有者才能輸入 PIN/PUK 碼。"</string>
     <string name="police_type_description" msgid="5324410799919829693">"警察局"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"救護車"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"火警"</string>

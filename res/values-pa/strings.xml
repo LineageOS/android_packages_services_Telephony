@@ -532,8 +532,7 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"ਕਾਲ ਨਹੀਂ ਕਰ ਸਕਦਾ। <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ਇੱਕ ਐਮਰਜੈਂਸੀ ਨੰਬਰ ਨਹੀਂ ਹੈ।"</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਇੱਕ ਐਮਰਜੈਂਸੀ ਨੰਬਰ ਡਾਇਲ ਕਰੋ।"</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"ਸੰਕਟਕਾਲੀਨ ਕਾਲ ਉਪਲਬਧ ਨਹੀਂ ਹੈ"</string>
-    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
-    <skip />
+    <string name="pin_puk_system_user_only" msgid="8673106128409478406">"ਸਿਰਫ਼ ਡੀਵਾਈਸ ਦਾ ਮਾਲਕ ਪਿੰਨ/PUK ਕੋਡ ਦਾਖਲ ਕਰ ਸਕਦਾ ਹੈ।"</string>
     <string name="police_type_description" msgid="5324410799919829693">"ਪੁਲਿਸ"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"ਐਂਬੂਲੈਂਸ"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"ਅੱਗ"</string>
