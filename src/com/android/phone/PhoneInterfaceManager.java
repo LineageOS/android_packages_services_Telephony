@@ -5724,6 +5724,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public int getSubIdForPhoneAccountHandle(
+            PhoneAccountHandle phoneAccountHandle, String callingPackage) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp, getDefaultSubscription(),
+                callingPackage, "getSubIdForPhoneAccountHandle")) {
+            throw new SecurityException("Requires READ_PHONE_STATE permission.");
+        }
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return PhoneUtils.getSubIdForPhoneAccountHandle(phoneAccountHandle);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
     public @Nullable PhoneAccountHandle getPhoneAccountHandleForSubscriptionId(int subscriptionId) {
         final long identity = Binder.clearCallingIdentity();
         try {
