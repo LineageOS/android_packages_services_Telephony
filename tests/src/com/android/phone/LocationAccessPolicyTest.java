@@ -21,6 +21,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 
 import android.Manifest;
@@ -188,10 +189,10 @@ public class LocationAccessPolicyTest {
                 ? PackageManager.PERMISSION_GRANTED : PackageManager.PERMISSION_DENIED);
 
         when(mAppOpsManager.noteOpNoThrow(eq(AppOpsManager.OP_FINE_LOCATION),
-                anyInt(), anyString()))
+                anyInt(), anyString(), nullable(String.class), nullable(String.class)))
                 .thenReturn(s.fineAppOp);
         when(mAppOpsManager.noteOpNoThrow(eq(AppOpsManager.OP_COARSE_LOCATION),
-                anyInt(), anyString()))
+                anyInt(), anyString(), nullable(String.class), nullable(String.class)))
                 .thenReturn(s.coarseAppOp);
 
         if (s.isDynamicLocationEnabled) {
@@ -220,6 +221,7 @@ public class LocationAccessPolicyTest {
         return new LocationAccessPolicy.LocationPermissionQuery.Builder()
                 .setMethod("test")
                 .setCallingPackage("com.android.test")
+                .setCallingFeatureId(null)
                 .setCallingPid(10001)
                 .setCallingUid(10001);
     }
