@@ -7400,10 +7400,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isDataEnabledForApn(int apnType, int subId, String callingPackage) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, "isDataEnabledForApn")) {
-            throw new SecurityException("Needs READ_PHONE_STATE for isDataEnabledForApn");
-        }
+        enforceReadPrivilegedPermission("Needs READ_PRIVILEGED_PHONE_STATE for "
+                + "isDataEnabledForApn");
 
         // Now that all security checks passes, perform the operation as ourselves.
         final long identity = Binder.clearCallingIdentity();
