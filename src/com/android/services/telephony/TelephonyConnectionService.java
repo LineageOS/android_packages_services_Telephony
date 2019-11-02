@@ -103,11 +103,11 @@ public class TelephonyConnectionService extends ConnectionService {
         }
         @Override
         public void addConference(TelephonyConference mTelephonyConference) {
-            TelephonyConnectionService.this.addConference(mTelephonyConference);
+            TelephonyConnectionService.this.addTelephonyConference(mTelephonyConference);
         }
         @Override
         public void addConference(ImsConference mImsConference) {
-            TelephonyConnectionService.this.addConference(mImsConference);
+            TelephonyConnectionService.this.addTelephonyConference(mImsConference);
         }
         @Override
         public void removeConnection(Connection connection) {
@@ -129,11 +129,9 @@ public class TelephonyConnectionService extends ConnectionService {
         public void addConnectionToConferenceController(TelephonyConnection connection) {
             TelephonyConnectionService.this.addConnectionToConferenceController(connection);
         }
-    };
 
-    private final Connection.Listener mConnectionListener = new Connection.Listener() {
         @Override
-        public void onConferenceChanged(Connection connection, Conference conference) {
+        public void onConferenceMembershipChanged(Connection connection) {
             mHoldTracker.updateHoldCapability(connection.getPhoneAccountHandle());
         }
     };
@@ -317,6 +315,14 @@ public class TelephonyConnectionService extends ConnectionService {
         @Override
         public void onOriginalConnectionRetry(TelephonyConnection c, boolean isPermanentFailure) {
             retryOutgoingOriginalConnection(c, isPermanentFailure);
+        }
+    };
+
+    private final TelephonyConferenceBase.TelephonyConferenceListener mTelephonyConferenceListener =
+            new TelephonyConferenceBase.TelephonyConferenceListener() {
+        @Override
+        public void onConferenceMembershipChanged(Connection connection) {
+            mHoldTracker.updateHoldCapability(connection.getPhoneAccountHandle());
         }
     };
 
@@ -628,11 +634,10 @@ public class TelephonyConnectionService extends ConnectionService {
 
         } else {
             Log.w(this, "onCreateOutgoingConnection, failed to turn on radio");
-            originalConnection.setDisconnected(
+            closeOrDestroyConnection(originalConnection,
                     DisconnectCauseUtil.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.POWER_OFF,
                             "Failed to turn on radio."));
-            originalConnection.destroy();
         }
     }
 
@@ -658,12 +663,11 @@ public class TelephonyConnectionService extends ConnectionService {
             addExistingConnection(PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
                     phone, "", isEmergencyNumber && noActiveSimCard), repConnection);
             // Remove the old connection from Telecom after.
-            connectionToEvaluate.setDisconnected(
+            closeOrDestroyConnection(connectionToEvaluate,
                     DisconnectCauseUtil.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.OUTGOING_CANCELED,
                             "Reconnecting outgoing Emergency Call.",
                             phone.getPhoneId()));
-            connectionToEvaluate.destroy();
         } else {
             placeOutgoingConnection((TelephonyConnection) connectionToEvaluate, phone, request);
         }
@@ -829,8 +833,8 @@ public class TelephonyConnectionService extends ConnectionService {
                             phone.getPhoneId()));
         }
         connection.setAddress(handle, PhoneConstants.PRESENTATION_ALLOWED);
-        connection.setInitializing();
-        connection.setVideoState(request.getVideoState());
+        connection.setTelephonyConnectionInitializing();
+        connection.setTelephonyVideoState(request.getVideoState());
         connection.setRttTextStream(request.getRttTextStream());
         connection.setTtyEnabled(isTtyModeEnabled);
         return connection;
@@ -1087,7 +1091,6 @@ public class TelephonyConnectionService extends ConnectionService {
     @Override
     public void onConnectionAdded(Connection connection) {
         if (connection instanceof Holdable && !isExternalConnection(connection)) {
-            connection.addConnectionListener(mConnectionListener);
             mHoldTracker.addHoldable(
                     connection.getPhoneAccountHandle(), (Holdable) connection);
         }
@@ -1218,9 +1221,7 @@ public class TelephonyConnectionService extends ConnectionService {
         } else {
             // We have run out of Phones to use. Disconnect the call and destroy the connection.
             Log.i(this, "retryOutgoingOriginalConnection, no more Phones to use. Disconnecting.");
-            c.setDisconnected(new DisconnectCause(DisconnectCause.ERROR));
-            c.clearOriginalConnection();
-            c.destroy();
+            closeOrDestroyConnection(c, new DisconnectCause(DisconnectCause.ERROR));
         }
     }
 
@@ -1282,10 +1283,10 @@ public class TelephonyConnectionService extends ConnectionService {
                     cause = android.telephony.DisconnectCause.OTASP_PROVISIONING_IN_PROCESS;
                     break;
             }
-            connection.setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
-                    cause, e.getMessage(), phone.getPhoneId()));
-            connection.clearOriginalConnection();
-            connection.destroy();
+            connection.setTelephonyConnectionDisconnected(
+                    DisconnectCauseUtil.toTelecomDisconnectCause(cause, e.getMessage(),
+                            phone.getPhoneId()));
+            connection.close();
             return;
         }
 
@@ -1306,10 +1307,10 @@ public class TelephonyConnectionService extends ConnectionService {
                 startActivity(intent);
             }
             Log.d(this, "placeOutgoingConnection, phone.dial returned null");
-            connection.setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
-                    telephonyDisconnectCause, "Connection is null", phone.getPhoneId()));
-            connection.clearOriginalConnection();
-            connection.destroy();
+            connection.setTelephonyConnectionDisconnected(
+                    DisconnectCauseUtil.toTelecomDisconnectCause(telephonyDisconnectCause,
+                            "Connection is null", phone.getPhoneId()));
+            connection.close();
         } else {
             connection.setOriginalConnection(originalConnection);
         }
@@ -1824,7 +1825,7 @@ public class TelephonyConnectionService extends ConnectionService {
                 // are potentially placing an international call on WFC.
                 Log.i(this, "placeOutgoingConnection - sending international call on WFC " +
                         "confirmation event");
-                telephonyConnection.sendConnectionEvent(
+                telephonyConnection.sendTelephonyConnectionEvent(
                         TelephonyManager.EVENT_NOTIFY_INTERNATIONAL_CALL_ON_WFC, null);
             }
         }
@@ -1839,5 +1840,27 @@ public class TelephonyConnectionService extends ConnectionService {
                 telephonyConnection.setTtyEnabled(isTtyEnabled);
             }
         }
+    }
+
+    private void closeOrDestroyConnection(Connection connection, DisconnectCause cause) {
+        if (connection instanceof TelephonyConnection) {
+            TelephonyConnection telephonyConnection = (TelephonyConnection) connection;
+            telephonyConnection.setTelephonyConnectionDisconnected(cause);
+            // Close destroys the connection and notifies TelephonyConnection listeners.
+            telephonyConnection.close();
+        } else {
+            connection.setDisconnected(cause);
+            connection.destroy();
+        }
+    }
+
+    /**
+     * Adds a {@link Conference} to the telephony ConnectionService and registers a listener for
+     * changes to the conference.  Should be used instead of {@link #addConference(Conference)}.
+     * @param conference The conference.
+     */
+    public void addTelephonyConference(@NonNull TelephonyConferenceBase conference) {
+        addConference(conference);
+        conference.addListener(mTelephonyConferenceListener);
     }
 }

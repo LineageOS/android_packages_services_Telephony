@@ -532,8 +532,7 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"Δεν είναι δυνατή η κλήση. Το <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> δεν είναι αριθμός έκτακτης ανάγκης."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Δεν είναι δυνατή η κλήση. Πληκτρολογήστε έναν αριθμό έκτακτης ανάγκης."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Η δυνατότητα κλήσεων έκτακτης ανάγκης δεν είναι διαθέσιμη"</string>
-    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
-    <skip />
+    <string name="pin_puk_system_user_only" msgid="8673106128409478406">"Μόνο ο κάτοχος της συσκευής έχει τη δυνατότητα εισαγωγής κωδικών PIN/PUK."</string>
     <string name="police_type_description" msgid="5324410799919829693">"Αστυνομία"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Ασθενοφόρο"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"Πυροσβεστική"</string>

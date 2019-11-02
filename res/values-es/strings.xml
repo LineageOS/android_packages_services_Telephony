@@ -32,7 +32,7 @@
     <string name="mmiCancelled" msgid="2771923949751842276">"El código MMI se ha cancelado."</string>
     <string name="cancel" msgid="5044513931633602634">"Cancelar"</string>
     <string name="enter_input" msgid="1810529547726803893">"El mensaje USSD debe tener entre <xliff:g id="MIN_LEN">%1$d</xliff:g> y <xliff:g id="MAX_LEN">%2$d</xliff:g> caracteres. Inténtalo de nuevo."</string>
-    <string name="manageConferenceLabel" msgid="4691922394301969053">"Gestionar conferencia telefónica"</string>
+    <string name="manageConferenceLabel" msgid="4691922394301969053">"Gestionar llamada de conferencia"</string>
     <string name="ok" msgid="3811371167865772377">"Aceptar"</string>
     <string name="audio_mode_speaker" msgid="27649582100085266">"Altavoz"</string>
     <string name="audio_mode_earpiece" msgid="4156527186373869107">"Auricular"</string>
@@ -488,7 +488,7 @@
     <string name="voicemail_settings_number_label" msgid="8524164258691887790">"Número del buzón de voz"</string>
     <string name="card_title_dialing" msgid="5769417478498348054">"Llamando"</string>
     <string name="card_title_redialing" msgid="8253487008234167266">"Marcando otra vez"</string>
-    <string name="card_title_conf_call" msgid="1162980346189744501">"Conferencia telefónica"</string>
+    <string name="card_title_conf_call" msgid="1162980346189744501">"Llamada de conferencia"</string>
     <string name="card_title_incoming_call" msgid="7364539451234646909">"Llamada entrante"</string>
     <string name="card_title_call_ended" msgid="5544730338889702298">"Llamada finalizada"</string>
     <string name="card_title_on_hold" msgid="821463117892339942">"En espera"</string>
@@ -534,8 +534,7 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"No se puede establecer la llamada. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> no es un número de emergencia."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"No se puede establecer la llamada. Marca un número de emergencia."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"No se pueden hacer llamadas de emergencia"</string>
-    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
-    <skip />
+    <string name="pin_puk_system_user_only" msgid="8673106128409478406">"Solo el propietario del dispositivo puede introducir el código PIN o PUK."</string>
     <string name="police_type_description" msgid="5324410799919829693">"Policía"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulancia"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"Bomberos"</string>
@@ -549,7 +548,7 @@
     <string name="onscreenMergeCallsText" msgid="6640195098064538950">"Llamada a tres"</string>
     <string name="onscreenSwapCallsText" msgid="1602990689244030047">"Cambiar"</string>
     <string name="onscreenManageCallsText" msgid="5473231160123254154">"Administrar llamadas"</string>
-    <string name="onscreenManageConferenceText" msgid="6485935856534311346">"Gestionar conferencia telefónica"</string>
+    <string name="onscreenManageConferenceText" msgid="6485935856534311346">"Gestionar llamada de conferencia"</string>
     <string name="onscreenAudioText" msgid="1710087112800041743">"Audio"</string>
     <string name="onscreenVideoCallText" msgid="4800924186056115442">"Videollamada"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"Importar"</string>

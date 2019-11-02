@@ -532,8 +532,7 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"Zəng etmək mümkün deyil. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> fövqəladə nömrə deyil."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Zəng etmək mümkün deyil. Fövqəladə nömrəni yığ."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Təcili zəng əlçatan deyil"</string>
-    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
-    <skip />
+    <string name="pin_puk_system_user_only" msgid="8673106128409478406">"Yalnız cihazın sahibi PIN/PUK kodlarını daxil edə bilər."</string>
     <string name="police_type_description" msgid="5324410799919829693">"Polis"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Təcili yardım"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"Yanğın"</string>

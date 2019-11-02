@@ -534,8 +534,7 @@
     <string name="dial_emergency_error" msgid="1509085166367420355">"Puhelua ei voi soittaa. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ei ole hätänumero."</string>
     <string name="dial_emergency_empty_error" msgid="9130194953830414638">"Puhelua ei voi soittaa. Valitse hätänumero."</string>
     <string name="dial_emergency_calling_not_available" msgid="5675557523782491826">"Hätäpuhelut eivät ole käytettävissä"</string>
-    <!-- no translation found for pin_puk_system_user_only (8673106128409478406) -->
-    <skip />
+    <string name="pin_puk_system_user_only" msgid="8673106128409478406">"Vain laitteen omistaja voi lisätä PIN- ja PUK-koodeja."</string>
     <string name="police_type_description" msgid="5324410799919829693">"Poliisi"</string>
     <string name="ambulance_type_description" msgid="4114815025408089866">"Ambulanssi"</string>
     <string name="fire_type_description" msgid="7145996705197064710">"Palokunta"</string>

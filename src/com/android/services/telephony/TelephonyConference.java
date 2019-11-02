@@ -16,7 +16,6 @@
 
 package com.android.services.telephony;
 
-import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.PhoneAccountHandle;
 
@@ -30,7 +29,7 @@ import java.util.List;
  * TelephonyConnection-based conference call for GSM conferences and IMS conferences (which may
  * be either GSM-based or CDMA-based).
  */
-public class TelephonyConference extends Conference implements Holdable {
+public class TelephonyConference extends TelephonyConferenceBase implements Holdable {
 
     private boolean mIsHoldable;
 

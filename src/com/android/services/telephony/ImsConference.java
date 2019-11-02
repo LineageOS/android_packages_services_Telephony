@@ -21,7 +21,6 @@ import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.telecom.Conference;
 import android.telecom.ConferenceParticipant;
 import android.telecom.Connection;
 import android.telecom.Connection.VideoProvider;
@@ -68,7 +67,7 @@ import java.util.Objects;
  * connection and is responsible for managing the conference participant connections which represent
  * the participants.
  */
-public class ImsConference extends Conference implements Holdable {
+public class ImsConference extends TelephonyConferenceBase implements Holdable {
 
     /**
      * Abstracts out fetching a feature flag.  Makes testing easier.
@@ -78,149 +77,127 @@ public class ImsConference extends Conference implements Holdable {
     }
 
     /**
-     * Listener used to respond to changes to conference participants.  At the conference level we
-     * are most concerned with handling destruction of a conference participant.
-     */
-    private final Connection.Listener mParticipantListener = new Connection.Listener() {
-        /**
-         * Participant has been destroyed.  Remove it from the conference.
-         *
-         * @param connection The participant which was destroyed.
-         */
-        @Override
-        public void onDestroyed(Connection connection) {
-            ConferenceParticipantConnection participant =
-                    (ConferenceParticipantConnection) connection;
-            removeConferenceParticipant(participant);
-            updateManageConference();
-        }
-
-    };
-
-    /**
      * Listener used to respond to changes to the underlying radio connection for the conference
      * host connection.  Used to respond to SRVCC changes.
      */
     private final TelephonyConnection.TelephonyConnectionListener mTelephonyConnectionListener =
             new TelephonyConnection.TelephonyConnectionListener() {
 
-        @Override
-        public void onOriginalConnectionConfigured(TelephonyConnection c) {
-            if (c == mConferenceHost) {
-               handleOriginalConnectionChange();
-            }
-        }
+                /**
+                 * Updates the state of the conference based on the new state of the host.
+                 *
+                 * @param c The host connection.
+                 * @param state The new state
+                 */
+                @Override
+                public void onStateChanged(android.telecom.Connection c, int state) {
+                    setState(state);
+                }
 
-        /**
-         * Handles changes to conference participant data as reported by the conference host
-         * connection.
-         *
-         * @param c The connection.
-         * @param participants The participant information.
-         */
-        @Override
-        public void onConferenceParticipantsChanged(android.telecom.Connection c,
-                List<ConferenceParticipant> participants) {
+                /**
+                 * Disconnects the conference when its host connection disconnects.
+                 *
+                 * @param c The host connection.
+                 * @param disconnectCause The host connection disconnect cause.
+                 */
+                @Override
+                public void onDisconnected(android.telecom.Connection c,
+                        DisconnectCause disconnectCause) {
+                    setDisconnected(disconnectCause);
+                }
 
-            if (c == null || participants == null) {
-                return;
-            }
-            Log.v(this, "onConferenceParticipantsChanged: %d participants", participants.size());
-            TelephonyConnection telephonyConnection = (TelephonyConnection) c;
-            handleConferenceParticipantsUpdate(telephonyConnection, participants);
-        }
-    };
+                @Override
+                public void onVideoStateChanged(android.telecom.Connection c, int videoState) {
+                    Log.d(this, "onVideoStateChanged video state %d", videoState);
+                    setVideoState(c, videoState);
+                }
 
-    /**
-     * Listener used to respond to changes to the connection to the IMS conference server.
-     */
-    private final android.telecom.Connection.Listener mConferenceHostListener =
-            new android.telecom.Connection.Listener() {
+                @Override
+                public void onVideoProviderChanged(android.telecom.Connection c,
+                        Connection.VideoProvider videoProvider) {
+                    Log.d(this, "onVideoProviderChanged: Connection: %s, VideoProvider: %s", c,
+                            videoProvider);
+                    setVideoProvider(c, videoProvider);
+                }
 
-        /**
-         * Updates the state of the conference based on the new state of the host.
-         *
-         * @param c The host connection.
-         * @param state The new state
-         */
-        @Override
-        public void onStateChanged(android.telecom.Connection c, int state) {
-            setState(state);
-        }
+                @Override
+                public void onConnectionCapabilitiesChanged(Connection c,
+                        int connectionCapabilities) {
+                    Log.d(this, "onConnectionCapabilitiesChanged: Connection: %s,"
+                            + " connectionCapabilities: %s", c, connectionCapabilities);
+                    int capabilites = ImsConference.this.getConnectionCapabilities();
+                    boolean isVideoConferencingSupported = mConferenceHost == null ? false :
+                            mConferenceHost.isCarrierVideoConferencingSupported();
+                    setConnectionCapabilities(
+                            applyHostCapabilities(capabilites, connectionCapabilities,
+                                    isVideoConferencingSupported));
+                }
 
-        /**
-         * Disconnects the conference when its host connection disconnects.
-         *
-         * @param c The host connection.
-         * @param disconnectCause The host connection disconnect cause.
-         */
-        @Override
-        public void onDisconnected(android.telecom.Connection c, DisconnectCause disconnectCause) {
-            setDisconnected(disconnectCause);
-        }
+                @Override
+                public void onConnectionPropertiesChanged(Connection c, int connectionProperties) {
+                    Log.d(this, "onConnectionPropertiesChanged: Connection: %s,"
+                            + " connectionProperties: %s", c, connectionProperties);
+                    int properties = ImsConference.this.getConnectionProperties();
+                    setConnectionProperties(applyHostProperties(properties, connectionProperties));
+                }
 
-        @Override
-        public void onVideoStateChanged(android.telecom.Connection c, int videoState) {
-            Log.d(this, "onVideoStateChanged video state %d", videoState);
-            setVideoState(c, videoState);
-        }
+                @Override
+                public void onStatusHintsChanged(Connection c, StatusHints statusHints) {
+                    Log.v(this, "onStatusHintsChanged");
+                    updateStatusHints();
+                }
 
-        @Override
-        public void onVideoProviderChanged(android.telecom.Connection c,
-                Connection.VideoProvider videoProvider) {
-            Log.d(this, "onVideoProviderChanged: Connection: %s, VideoProvider: %s", c,
-                    videoProvider);
-            setVideoProvider(c, videoProvider);
-        }
+                @Override
+                public void onExtrasChanged(Connection c, Bundle extras) {
+                    Log.v(this, "onExtrasChanged: c=" + c + " Extras=" + extras);
+                    putExtras(extras);
+                }
 
-        @Override
-        public void onConnectionCapabilitiesChanged(Connection c, int connectionCapabilities) {
-            Log.d(this, "onConnectionCapabilitiesChanged: Connection: %s," +
-                    " connectionCapabilities: %s", c, connectionCapabilities);
-            int capabilites = ImsConference.this.getConnectionCapabilities();
-            boolean isVideoConferencingSupported = mConferenceHost == null ? false :
-                    mConferenceHost.isCarrierVideoConferencingSupported();
-            setConnectionCapabilities(applyHostCapabilities(capabilites, connectionCapabilities,
-                    isVideoConferencingSupported));
-        }
+                @Override
+                public void onExtrasRemoved(Connection c, List<String> keys) {
+                    Log.v(this, "onExtrasRemoved: c=" + c + " key=" + keys);
+                    removeExtras(keys);
+                }
 
-        @Override
-        public void onConnectionPropertiesChanged(Connection c, int connectionProperties) {
-            Log.d(this, "onConnectionPropertiesChanged: Connection: %s," +
-                    " connectionProperties: %s", c, connectionProperties);
-            int properties = ImsConference.this.getConnectionProperties();
-            setConnectionProperties(applyHostProperties(properties, connectionProperties));
-        }
+                @Override
+                public void onConnectionEvent(Connection c, String event, Bundle extras) {
+                    if (Connection.EVENT_MERGE_START.equals(event)) {
+                        // Do not pass a merge start event on the underlying host connection; only
+                        // indicate a merge has started on the connections which are merged into a
+                        // conference.
+                        return;
+                    }
 
-        @Override
-        public void onStatusHintsChanged(Connection c, StatusHints statusHints) {
-            Log.v(this, "onStatusHintsChanged");
-            updateStatusHints();
-        }
+                    sendConnectionEvent(event, extras);
+                }
 
-        @Override
-        public void onExtrasChanged(Connection c, Bundle extras) {
-            Log.v(this, "onExtrasChanged: c=" + c + " Extras=" + extras);
-            putExtras(extras);
-        }
+                @Override
+                public void onOriginalConnectionConfigured(TelephonyConnection c) {
+                    if (c == mConferenceHost) {
+                        handleOriginalConnectionChange();
+                    }
+                }
 
-        @Override
-        public void onExtrasRemoved(Connection c, List<String> keys) {
-            Log.v(this, "onExtrasRemoved: c=" + c + " key=" + keys);
-            removeExtras(keys);
-        }
+                /**
+                 * Handles changes to conference participant data as reported by the conference host
+                 * connection.
+                 *
+                 * @param c The connection.
+                 * @param participants The participant information.
+                 */
+                @Override
+                public void onConferenceParticipantsChanged(android.telecom.Connection c,
+                        List<ConferenceParticipant> participants) {
 
-        @Override
-        public void onConnectionEvent(Connection c, String event, Bundle extras) {
-            if (Connection.EVENT_MERGE_START.equals(event)) {
-                // Do not pass a merge start event on the underlying host connection; we only
-                // indicate a merge has started on the connections which are merged into a
-                // conference.
-                return;
-            }
-            sendConnectionEvent(event, extras);
-        }
-    };
+                    if (c == null || participants == null) {
+                        return;
+                    }
+                    Log.v(this, "onConferenceParticipantsChanged: %d participants",
+                            participants.size());
+                    TelephonyConnection telephonyConnection = (TelephonyConnection) c;
+                    handleConferenceParticipantsUpdate(telephonyConnection, participants);
+                }
+            };
 
     /**
      * The telephony connection service; used to add new participant connections to Telecom.
@@ -447,7 +424,7 @@ public class ImsConference extends Conference implements Holdable {
      * Invoked when the Conference and all its {@link Connection}s should be disconnected.
      * <p>
      * Hangs up the call via the conference host connection.  When the host connection has been
-     * successfully disconnected, the {@link #mConferenceHostListener} listener receives an
+     * successfully disconnected, the {@link #mTelephonyConnectionListener} listener receives an
      * {@code onDestroyed} event, which triggers the conference participant connections to be
      * disconnected.
      */
@@ -702,7 +679,6 @@ public class ImsConference extends Conference implements Holdable {
             setConnectionTime(mConferenceHost.getConnectTimeMillis());
         }
 
-        mConferenceHost.addConnectionListener(mConferenceHostListener);
         mConferenceHost.addTelephonyConnectionListener(mTelephonyConnectionListener);
         setConnectionCapabilities(applyHostCapabilities(getConnectionCapabilities(),
                 mConferenceHost.getConnectionCapabilities(),
@@ -804,6 +780,13 @@ public class ImsConference extends Conference implements Holdable {
                                 "handleConferenceParticipantsUpdate: updateState, participant = %s",
                                 participant);
                         connection.updateState(participant.getState());
+                        if (participant.getState() == Connection.STATE_DISCONNECTED) {
+                            /**
+                             * Per {@link ConferenceParticipantConnection#updateState(int)}, we will
+                             * destroy the connection when its disconnected.
+                             */
+                            handleConnectionDestruction(connection);
+                        }
                         connection.setVideoState(parent.getVideoState());
                     }
                 }
@@ -817,6 +800,13 @@ public class ImsConference extends Conference implements Holdable {
                                         newParticipant.getHandle(),
                                         newParticipant.getEndpoint()));
                         connection.updateState(newParticipant.getState());
+                        /**
+                         * Per {@link ConferenceParticipantConnection#updateState(int)}, we will
+                         * destroy the connection when its disconnected.
+                         */
+                        if (newParticipant.getState() == Connection.STATE_DISCONNECTED) {
+                            handleConnectionDestruction(connection);
+                        }
                         connection.setVideoState(parent.getVideoState());
                     }
                 }
@@ -832,9 +822,8 @@ public class ImsConference extends Conference implements Holdable {
                     if (!participantUserEntities.contains(entry.getKey())) {
                         ConferenceParticipantConnection participant = entry.getValue();
                         participant.setDisconnected(new DisconnectCause(DisconnectCause.CANCELED));
-                        participant.removeConnectionListener(mParticipantListener);
                         mTelephonyConnectionService.removeConnection(participant);
-                        removeConnection(participant);
+                        removeTelephonyConnection(participant);
                         entryIterator.remove();
                         oldParticipantsRemoved = true;
                     }
@@ -951,9 +940,8 @@ public class ImsConference extends Conference implements Holdable {
             // again anyways.
             entry.setDisconnected(new DisconnectCause(DisconnectCause.CANCELED,
                     DisconnectCause.REASON_EMULATING_SINGLE_CALL));
-            entry.removeConnectionListener(mParticipantListener);
             mTelephonyConnectionService.removeConnection(entry);
-            removeConnection(entry);
+            removeTelephonyConnection(entry);
             valueIterator.remove();
         }
 
@@ -985,7 +973,6 @@ public class ImsConference extends Conference implements Holdable {
         ConferenceParticipantConnection connection = new ConferenceParticipantConnection(
                 parent.getOriginalConnection(), participant,
                 !isConferenceHost() /* isRemotelyHosted */);
-        connection.addConnectionListener(mParticipantListener);
         if (participant.getConnectTime() == 0) {
             connection.setConnectTimeMillis(parent.getConnectTimeMillis());
             connection.setConnectionStartElapsedRealTime(parent.getConnectElapsedTimeMillis());
@@ -1007,7 +994,7 @@ public class ImsConference extends Conference implements Holdable {
 
         mTelephonyConnectionService.addExistingConnection(mConferenceHostPhoneAccountHandle,
                 connection, this);
-        addConnection(connection);
+        addTelephonyConnection(connection);
     }
 
     /**
@@ -1018,7 +1005,6 @@ public class ImsConference extends Conference implements Holdable {
     private void removeConferenceParticipant(ConferenceParticipantConnection participant) {
         Log.i(this, "removeConferenceParticipant: %s", participant);
 
-        participant.removeConnectionListener(mParticipantListener);
         synchronized(mUpdateSyncRoot) {
             mConferenceParticipantConnections.remove(new Pair<>(participant.getUserEntity(),
                     participant.getEndpoint()));
@@ -1036,12 +1022,12 @@ public class ImsConference extends Conference implements Holdable {
             for (ConferenceParticipantConnection connection :
                     mConferenceParticipantConnections.values()) {
 
-                connection.removeConnectionListener(mParticipantListener);
                 // Mark disconnect cause as cancelled to ensure that the call is not logged in the
                 // call log.
                 connection.setDisconnected(new DisconnectCause(DisconnectCause.CANCELED));
                 mTelephonyConnectionService.removeConnection(connection);
                 connection.destroy();
+                handleConnectionDestruction(connection);
             }
             mConferenceParticipantConnections.clear();
         }
@@ -1154,7 +1140,7 @@ public class ImsConference extends Conference implements Holdable {
                         mConferenceHost.isOutgoingCall());
                 // This is a newly created conference connection as a result of SRVCC
                 c.setConferenceSupported(true);
-                c.setConnectionProperties(
+                c.setTelephonyConnectionProperties(
                         c.getConnectionProperties() | Connection.PROPERTY_IS_DOWNGRADED_CONFERENCE);
                 c.updateState();
                 // Copy the connect time from the conferenceHost
@@ -1163,12 +1149,11 @@ public class ImsConference extends Conference implements Holdable {
                 mTelephonyConnectionService.addExistingConnection(phoneAccountHandle, c);
                 mTelephonyConnectionService.addConnectionToConferenceController(c);
             } // CDMA case not applicable for SRVCC
-            mConferenceHost.removeConnectionListener(mConferenceHostListener);
             mConferenceHost.removeTelephonyConnectionListener(mTelephonyConnectionListener);
             mConferenceHost = null;
             setDisconnected(new DisconnectCause(DisconnectCause.OTHER));
             disconnectConferenceParticipants();
-            destroy();
+            destroyTelephonyConference();
         }
 
         updateStatusHints();
@@ -1207,7 +1192,7 @@ public class ImsConference extends Conference implements Holdable {
                 }
                 setDisconnected(disconnectCause);
                 disconnectConferenceParticipants();
-                destroy();
+                destroyTelephonyConference();
                 break;
             case Connection.STATE_ACTIVE:
                 setActive();
@@ -1337,5 +1322,16 @@ public class ImsConference extends Conference implements Holdable {
     @VisibleForTesting
     public boolean isEmulatingSinglePartyCall() {
         return mIsEmulatingSinglePartyCall;
+    }
+
+    /**
+     * Handles destruction of a {@link ConferenceParticipantConnection}.
+     * We remove the participant from the list of tracked participants in the conference and
+     * update whether the conference can be managed.
+     * @param participant the conference participant.
+     */
+    private void handleConnectionDestruction(ConferenceParticipantConnection participant) {
+        removeConferenceParticipant(participant);
+        updateManageConference();
     }
 }
