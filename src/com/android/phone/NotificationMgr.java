@@ -379,7 +379,7 @@ public class NotificationMgr {
             for (int i = 0; i < users.size(); i++) {
                 final UserInfo user = users.get(i);
                 final UserHandle userHandle = user.getUserHandle();
-                if (!mUserManager.hasUserRestriction(
+                if (!hasUserRestriction(
                         UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
                         && !user.isManagedProfile()) {
                     if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, vmCount, vmNumber,
@@ -397,7 +397,7 @@ public class NotificationMgr {
             for (int i = 0; i < users.size(); i++) {
                 final UserInfo user = users.get(i);
                 final UserHandle userHandle = user.getUserHandle();
-                if (!mUserManager.hasUserRestriction(
+                if (!hasUserRestriction(
                         UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
                         && !user.isManagedProfile()) {
                     if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, 0, null, null,
@@ -410,6 +410,12 @@ public class NotificationMgr {
                 }
             }
         }
+    }
+
+    private boolean hasUserRestriction(String restrictionKey, UserHandle userHandle) {
+        final List<UserManager.EnforcingUser> sources = mUserManager
+                .getUserRestrictionSources(restrictionKey, userHandle);
+        return (sources != null && !sources.isEmpty());
     }
 
     /**
