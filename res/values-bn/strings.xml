@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ডায়াল করার জন্য স্থির নম্বর মোছা হচ্ছে..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"স্থায়ী ডায়ালের নম্বর মুছে ফেলা হয়েছে৷"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"আপনি একটি ভুল পিন টাইপ করায় FDN আপডেট করা হয়নি৷"</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"নম্বরটিতে ২০টির বেশি সংখ্যা আছে, তাই FDN আপডেট করা হয়নি।"</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN আপডেট করা হয়নি৷ PIN2 ভুল ছিল, বা ফোন নম্বর বাতিল করা হয়েছে৷"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN অপারেশন ব্যর্থ হয়েছে৷"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"সিম কার্ড থেকে পড়া হচ্ছে…"</string>

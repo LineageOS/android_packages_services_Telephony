@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"დაშვებული დარეკვის კონტაქტის წაშლა…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"დაშვებული ნომერი წაიშალა."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN არ განახლდა, რადგან არასწორი PIN შეიყვანეთ."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN არ განახლებულა, რადგან რიცხვი 20 ციფრზე მეტს შეიცავს."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN არ განახლდა. PIN2 არასწორია ან ტელეფონის ნომერი უარყოფილია."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN ოპერაცია ვერ განხორციელდა."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"მიმდინარეობს SIM ბარათიდან წაკითხვა…"</string>

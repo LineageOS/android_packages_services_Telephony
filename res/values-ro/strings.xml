@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Se șterge numărul cu apelări restricționate..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Numărul cu apelări restricționate a fost șters."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"NAR nu a fost actualizat, deoarece ați introdus un cod PIN incorect."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"NAR nu a fost actualizat deoarece numărul depășește 20 de cifre."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"NAR nu a fost actualizat. Codul PIN2 a fost incorect sau numărul de telefon a fost respins."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operațiunea NAR nu a reușit."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Se citește de pe cardul SIM..."</string>

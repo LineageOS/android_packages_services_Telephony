@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Tinatanggal ang fixed dialing number…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Tinanggal ang fixed dialing number."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Hindi na-update ang FDN dahil maling PIN ang iyong na-type."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"Hindi na-update ang FDN dahil ang bilang ay lampas sa 20 digit."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Hindi na-update ang FDN. Hindi wasto ang PIN2, o tinanggihan ang numero ng telepono."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Nagbigo ang operasyon ng FDN."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Nagbabasa mula sa SIM card…"</string>

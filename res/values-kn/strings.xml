@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ಸ್ಥಿರ ಡಯಲಿಂಗ್‌‌ ಸಂಖ್ಯೆಯನ್ನು ಅಳಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ಸ್ಥಿರ ಡಯಲಿಂಗ್ ಸಂಖ್ಯೆಯನ್ನು ಅಳಿಸಲಾಗಿದೆ."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"ನೀವು ತಪ್ಪಾದ ಪಿನ್‌ ಟೈಪ್‌ ಮಾಡಿರುವ ಕಾರಣ ಎಫ್‌ಡಿಎನ್‌ ಅನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"ಸಂಖ್ಯೆಯು 20 ಅಂಕೆಗಳನ್ನು ಮೀರಿರುವುದರಿಂದ FDN ಅನ್ನು ಅಪ್‌ಡೇಟ್ ಮಾಡಲಾಗಿಲ್ಲ."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"ಎಫ್‌ಡಿಎನ್‌ ಅನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ. PIN2 ತಪ್ಪಾಗಿದೆ ಅಥವಾ ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ತಿರಸ್ಕರಿಸಲಾಗಿದೆ."</string>
     <string name="fdn_failed" msgid="540018079008319747">"ಎಫ್‌ಡಿಎನ್‌ ಕಾರ್ಯಾಚರಣೆ ವಿಫಲವಾಗಿದೆ."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"ಸಿಮ್‌ ಕಾರ್ಡ್‌ನಿಂದ ಓದಲಾಗುತ್ತಿದೆ…"</string>

@@ -445,7 +445,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Isusa othintana naye wokudayela okungaguquki..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Othintana naye wokudayela okungaguquki ususiwe"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"I-FDN ayivuselelwanga ngoba uthayiphe i-PIN engalungile."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"I-FDN ayizange ibuyekezwe ngoba inombolo yeza amadijithi angu-20."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"I-FDN ayibuyekeziwe. I-PIN2 kade ingalungile, noma inombolo yefoni yenqatshelwe."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Umsebenzi we-FDN wehlulekile."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Ifunda ekhadini le-SIM..."</string>

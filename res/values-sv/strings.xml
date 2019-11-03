@@ -445,7 +445,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Tar bort fast nummer…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Det fasta numret har tagits bort."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN uppdaterades inte eftersom du skrev en felaktig PIN-kod."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN uppdaterades inte eftersom numret översteg 20 siffror."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN uppdaterades inte. Antingen har du angivit fel PIN2, eller så avvisades telefonnumret."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Det gick inte att ringa till fast uppringningsnummer."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Läser från SIM-kort…"</string>

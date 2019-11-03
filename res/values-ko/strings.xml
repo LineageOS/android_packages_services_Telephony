@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"발신 허용 번호를 삭제하는 중..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"발신 허용 번호가 삭제되었습니다."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"잘못된 PIN을 입력하여 FDN 업데이트 안됨"</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"숫자가 20자리를 초과하여 FDN을 업데이트하지 못했습니다."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN이 업데이트되지 않았습니다. PIN2가 잘못되었거나 전화번호가 거부되었습니다."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN 작업이 실패했습니다."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM 카드에서 읽는 중..."</string>
