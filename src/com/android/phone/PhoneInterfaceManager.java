@@ -2927,18 +2927,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
-        Binder.withCleanCallingIdentity(() -> {
-            try {
-                // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
-                ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
-                        .removeRegistrationCallbackForSubscription(c, subId);
-            } catch (ImsException e) {
-                Log.i(LOG_TAG, "unregisterImsRegistrationCallback: " + subId
-                        + "is inactive, ignoring unregister.");
-                // If the subscription is no longer active, just return, since the callback
-                // will already have been removed internally.
-            }
-        });
+        final long token = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
+            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
+                    .removeRegistrationCallbackForSubscription(c, subId);
+        } catch (ImsException e) {
+            Log.i(LOG_TAG, "unregisterImsRegistrationCallback: " + subId
+                    + "is inactive, ignoring unregister.");
+            // If the subscription is no longer active, just return, since the callback
+            // will already have been removed internally.
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
     }
 
     /**
@@ -3032,22 +3033,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void unregisterMmTelCapabilityCallback(int subId, IImsCapabilityCallback c) {
         enforceReadPrivilegedPermission("unregisterMmTelCapabilityCallback");
-
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
-        Binder.withCleanCallingIdentity(() -> {
-            try {
-                // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
-                ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
+
+        final long token = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
+            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                         .removeCapabilitiesCallbackForSubscription(c, subId);
-            } catch (ImsException e) {
-                Log.i(LOG_TAG, "unregisterMmTelCapabilityCallback: " + subId
-                        + "is inactive, ignoring unregister.");
-                // If the subscription is no longer active, just return, since the callback
-                // will already have been removed internally.
-            }
-        });
+        } catch (ImsException e) {
+            Log.i(LOG_TAG, "unregisterMmTelCapabilityCallback: " + subId
+                     + "is inactive, ignoring unregister.");
+             // If the subscription is no longer active, just return, since the callback
+             // will already have been removed internally.
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
     }
 
     @Override
