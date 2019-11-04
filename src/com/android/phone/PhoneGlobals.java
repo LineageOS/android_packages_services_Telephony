@@ -274,7 +274,8 @@ public class PhoneGlobals extends ContextWrapper {
                     // not want this running if the device is still in the FBE encrypted state.
                     // This is the same procedure that is triggered in the SipIncomingCallReceiver
                     // upon BOOT_COMPLETED.
-                    UserManager userManager = UserManager.get(sMe);
+                    UserManager userManager =
+                            (UserManager) sMe.getSystemService(Context.USER_SERVICE);
                     if (userManager != null && userManager.isUserUnlocked()) {
                         SipUtil.startSipService();
                     }
