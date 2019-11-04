@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Брисање броја за фиксно бирање…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Избрисан је број за фиксно бирање."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Број за фиксно бирање није ажуриран јер сте унели нетачан PIN кôд."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"Број за фиксно бирање није ажуриран јер има више од 20 цифара."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN није ажуриран. PIN2 је нетачан или је број телефона одбачен."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Радња са бројем за фиксно бирање није успела."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Чита се са SIM картице…"</string>

@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Brisanje broja fiksnog biranja u toku…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Broj fiksnog biranja je izbrisan."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN nije ažuriran jer ste upisali netačan PIN."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN nije ažuriran jer broj ima više od 20 cifara."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN nije ažuriran. PIN2 je netačan ili je broj telefona odbijen."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN operacija nije uspjela."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Čitanje sa SIM kartice u toku…"</string>
@@ -795,7 +796,7 @@
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"Odbaci"</string>
     <string name="radio_info_data_connection_enable" msgid="5791637077797729311">"Omogućite vezu za prijenos podataka"</string>
     <string name="radio_info_data_connection_disable" msgid="9028822504877773144">"Onemogući vezu za prijenos podataka"</string>
-    <string name="volte_provisioned_switch_string" msgid="1394051796024284160">"Dodjeljuje se preko VoLTE-a"</string>
+    <string name="volte_provisioned_switch_string" msgid="1394051796024284160">"VoLTE omogućen"</string>
     <string name="vt_provisioned_switch_string" msgid="2392736863413388180">"Video poziv obezbijeđen"</string>
     <string name="wfc_provisioned_switch_string" msgid="7077270261545093108">"WiFi poziv obezbijeđen"</string>
     <string name="eab_provisioned_switch_string" msgid="793700585260677822">"EAB/Omogućeno prisustvo"</string>

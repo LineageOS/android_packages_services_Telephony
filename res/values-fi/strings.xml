@@ -443,7 +443,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Poistetaan sallittua numeroa…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Sallittu numero poistettu."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Sallittuja numeroita ei päivitetty, koska annoit väärän PIN-koodin."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"Sallittuja numeroita ei päivitetty, koska numerossa oli yli 20 merkkiä."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN-numeroa ei päivitetty. PIN2 on virheellinen tai puhelinnumero hylättiin."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN-toiminto epäonnistui."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Luetaan SIM-korttia…"</string>

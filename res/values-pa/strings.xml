@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰ ਮਿਟਾ ਰਿਹਾ ਹੈ…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰ ਮਿਟਾਇਆ।"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਸੀ ਕਿਉਂਕਿ ਤੁਸੀਂ ਇੱਕ ਗ਼ਲਤ PIN ਟਾਈਪ ਕੀਤਾ ਸੀ।"</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਕਿਉਂਕਿ ਨੰਬਰ 20 ਅੰਕਾਂ ਤੋਂ ਵੱਧ ਹੈ।"</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਸੀ। PIN2 ਗ਼ਲਤ ਸੀ ਜਾਂ ਫ਼ੋਨ ਨੰਬਰ ਅਸਵੀਕਾਰ ਕੀਤਾ ਗਿਆ ਸੀ।"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN ਓਪਰੇਸ਼ਨ ਅਸਫਲ।"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM ਕਾਰਡ ਤੋਂ ਪੜ੍ਹ ਰਿਹਾ ਹੈ…"</string>

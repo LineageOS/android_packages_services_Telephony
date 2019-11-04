@@ -443,7 +443,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Выполняется удаление номера ограниченного набора…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Номер ограниченного набора удален."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Разрешенный номер не обновлен, так как введен неверный PIN-код."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"Разрешенный номер не обновлен, так как не может содержать более 20 цифр"</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Список разрешенных номеров не обновлен. Указан неверный PIN2 или номер телефона."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Не удалось включить FDN"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Считывание с SIM-карты…"</string>

@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"מוחק מספר חיוג קבוע..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"מספר חיוג קבוע נמחק."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"רשימת מספרי חיוג קבועים לא עודכנה מכיוון שקוד הגישה שגוי."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"‏ה-FDN לא עודכן בגלל שהמספר ארוך מ-20 תווים."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"רשימת מספרי החיוג הקבועים לא עודכנה. קוד הגישה היה שגוי או שמספר הטלפון נדחה."</string>
     <string name="fdn_failed" msgid="540018079008319747">"‏פעולת FDN נכשלה."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"‏קורא מכרטיס SIM…"</string>

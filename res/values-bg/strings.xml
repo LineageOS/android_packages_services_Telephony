@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Фиксираните номера за набиране се изтриват…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Фиксираните номера за набиране са изтрити."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN не бе актуализирано, защото сте въвели неправилен ПИН."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN не бе актуализиран, защото номерът надвишава 20 цифри."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN не е актуализирано. PIN2 бе неправилен или телефонният номер бе отхвърлен."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Операцията с фиксираните номера за набиране (FDN) не бе успешна."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Четене на данни от SIM картата…"</string>

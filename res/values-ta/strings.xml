@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"நிலையான அழைப்பு எண்ணை நீக்குகிறது…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"நிலையான அழைப்பு எண் நீக்கப்பட்டது."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"தவறான பின்னை உள்ளிட்டுள்ளதால், FDN புதுப்பிக்கப்படவில்லை."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"உள்ளிட்ட எண் 20 இலக்கங்களுக்கும் அதிகமாக உள்ளதால் FDN புதுப்பிக்கப்படவில்லை."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN புதுப்பிக்கப்படவில்லை. PIN2 தவறானது அல்லது மொபைல் எண் நிராகரிக்கப்பட்டது."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN செயல்பாடு தோல்வி."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"சிம் கார்டில் இருப்பதைப் படிக்கிறது…"</string>

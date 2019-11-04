@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ফিক্সড্ ডায়েলিং নম্বৰ মচি থকা হৈছে…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ফিক্সড্ ডায়েলিং নম্বৰ মচা হ’ল।"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"আপুনি ভুল পিন টাইপ কৰা কাৰণে FDN আপডে’ট কৰা নহ\'ল।"</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN আপডে’ট কৰা নহ\'ল কাৰণ নম্বৰটো ২০টা অংকতকৈ বেছি হৈছে।"</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN আপডে’ট কৰা নহ\'ল। PIN2টো ভুল আছিল বা ফ\'নটো নম্বৰটো নাকচ কৰা হৈছে।"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN অপাৰেশ্বন বিফল হ’ল।"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"ছিম কাৰ্ডৰ পৰা পঢ়ি থকা হৈছে…"</string>

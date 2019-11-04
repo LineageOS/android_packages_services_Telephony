@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"A eliminar números autorizados..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Números autorizados eliminados."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Os números autorizados não foram atualizados porque introduziu um PIN incorreto."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"O FDN não foi atualizado porque o número excede os 20 dígitos."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Não foram atualizados os números autorizados. O PIN2 estava errado ou o número de telefone foi rejeitado."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Falha de FDN."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"A ler a partir do cartão SIM..."</string>

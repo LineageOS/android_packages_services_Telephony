@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ກຳລັງລຶບເບີໂທຈຳກັດການໂທອອກ..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ລຶບໝາຍເລກຈຳກັດການໂທອອກແລ້ວ."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN ບໍ່ໄດ້ອັບເດດເທື່ອ ເນື່ອງຈາກທ່ານໃສ່ລະຫັດ PIN ບໍ່ຖືກຕ້ອງ."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"ບໍ່ໄດ້ອັບເດດ FDN ເນື່ອງຈາກເບີໂທເກີນ 20 ຕົວເລກ."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN ບໍ່ໄດ້ອັບເດດເທື່ອ. ລະຫັດ PIN2 ບໍ່ຖືກຕ້ອງ ຫຼືເບີໂທລະສັບຖືກປະຕິເສດ."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN ເຮັດວຽກລົ້ມເຫຼວ!"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"ກຳລັງອ່ານຈາກ SIM card..."</string>

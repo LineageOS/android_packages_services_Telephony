@@ -443,7 +443,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"正在刪除固定撥號…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"固定撥號已刪除。"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"您所輸入的 PIN 碼不正確，FDN 未更新。"</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"號碼超過 20 位數，FDN 未更新。"</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN 無法更新。PIN2 碼不正確或電話號碼被拒。"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN 操作失敗。"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"正在從 SIM 卡讀取..."</string>

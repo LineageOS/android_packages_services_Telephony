@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Тұрақты теру нөмірін өшіруде…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Тұрақты теру нөмірі жойылды."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"ТТН жаңартылмады, себебі қате PIN код терілді."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN жаңартылмады, себебі нөмір 20 саннан аспауы тиіс."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"ТТН жаңартылмады. PIN2 қате болды немесе телефон нөмірі қабылданбады."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Тұрақты теру нөмірлерінің жұмысы орындалмады."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM картасынан оқу…"</string>
