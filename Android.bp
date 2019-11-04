@@ -38,11 +38,14 @@ android_app {
     ],
 
     srcs: [
+        ":framework-telephony-stack-shared-srcs",
         "src/**/*.java",
         "sip/src/**/*.java",
         "ecc/proto/**/*.proto",
         "src/com/android/phone/EventLogTags.logtags",
     ],
+
+    jarjar_rules: ":jarjar-rules-shared",
 
     resource_dirs: [
         "res",
