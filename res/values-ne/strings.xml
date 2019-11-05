@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"स्थिर डायल गर्ने नम्बर मेट्दै..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"स्थिर डायल गर्ने नम्बर मेटियो।"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN अद्यावधिक भएको थिएन किनकि तपाईंले गलत PIN टाइप गर्नुभयो।"</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"उक्त सङ्ख्याले २० अङ्कको अधिकतम सीमा नाघेकाले FDN अद्यावधिक गरिएन।"</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN अद्यावधिक भएको थिएन। PIN2 गलत थियो वा फोन नम्बर अस्वीकार भएको थियो।"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN कार्य बिफल भयो।"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"SIM कार्ड पढ्दै..."</string>

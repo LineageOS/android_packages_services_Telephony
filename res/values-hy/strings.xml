@@ -443,7 +443,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Ջնջվում է ամրակայված հեռախոսահամարը ..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Թույլատրված հեռախոսահամարը ջնջված է:"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN-ը չի թարմացվել, քանի որ դուք մուտքագրել եք սխալ PIN:"</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN-ը չթարմացվեց, քանի որ համարը գերազանցում է 20 նիշը:"</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN-ը չի թարմացվել: PIN2-ը սխալ է կամ հեռախոսահամարը մերժված է:"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN գործողությունը ձախողվեց:"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Ընթերցում է SIM քարտից..."</string>

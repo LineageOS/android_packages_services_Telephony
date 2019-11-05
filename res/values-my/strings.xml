@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"ခေါ်ဆိုသည့်အခြေစိုက်နံပါတ်အားဖျက်နေသည်"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"ပုံသေ ခေါ်ဆိုမှု နံပါတ် ဖျက်ပြီး"</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"ပင်နံပါတ် မမှန်သောကြောင့် FDNကို အဆင့်မြှင့်တင်ခြင်းမပြုလုပ်နိုင်ပါ"</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"နံပါတ်တွင် ဂဏန်းအလုံး ၂၀ ကျော်နေသဖြင့် FDN ကို အပ်ဒိတ်လုပ်၍ မရပါ။"</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN ပြောင်းလဲမှု မဖြစ်ပါ။ ပင်နံပါတ် ၂ မှားယွင်းခြင်း သို့မဟုတ် ဖုန်းနံပါတ်ကို ငြင်းဖယ်ခံရခြင်း တစ်ခုခုဖြစ်ပါသည်"</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN လုပ်ဆောင်ချက် မအောင်မြင်ပါ"</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"ဆင်းမ်ကဒ်မှ ဖတ်နေပါသည်..."</string>

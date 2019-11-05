@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Trinamas fiksuoto rinkimo numeris..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Ištrintas fiksuoto rinkimo numeris."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN neatnaujintas, nes įvedėte neteisingą PIN kodą."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN neatnaujintas, nes numeris viršija 20 skaitmenų apribojimą."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN nebuvo atnaujintas. Įvestas PIN2 kodas buvo netinkamas arba telefono numeris buvo atmestas."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Nepavyko atlikti FDN operacijos."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Skaitoma iš SIM kortelės..."</string>

@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Eliminando número de marcación fixa..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Eliminouse o número de marcación fixa."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Non se actualizaron os NMF porque escribiches un PIN incorrecto."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"Non se puido actualizar o NMP porque o número supera os 20 díxitos."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Non se actualizaron os NMF. O PIN2 era incorrecto ou rexeitouse o número de teléfono."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Produciuse un fallo no funcionamento dos NMF."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lendo da tarxeta SIM..."</string>

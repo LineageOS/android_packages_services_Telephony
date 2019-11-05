@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Vast nummer verwijderen..."</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Vast nummer verwijderd."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"FDN is niet bijgewerkt omdat je een onjuiste pincode hebt ingevoerd."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"FDN is niet geüpdatet omdat het nummer langer is dan twintig tekens."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"FDN is niet bijgewerkt. De PIN2 was onjuist of het telefoonnummer is geweigerd."</string>
     <string name="fdn_failed" msgid="540018079008319747">"FDN-bewerking mislukt."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Lezen vanaf simkaart..."</string>

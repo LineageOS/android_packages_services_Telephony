@@ -441,7 +441,8 @@
     <string name="deleting_fdn_contact" msgid="5669163206349319969">"Odstraňuje sa povolené číslo…"</string>
     <string name="fdn_contact_deleted" msgid="7154162327112259569">"Povolené číslo bolo odstránené."</string>
     <string name="pin2_invalid" msgid="5470854099230755944">"Povolené čísla neboli aktualizované. Zadali ste nesprávny kód PIN."</string>
-    <string name="fdn_invalid_number" msgid="2062898833049589309">"Režim povolených čísel nebol aktualizovaný, pretože číslo obsahuje viac než 20 číslic."</string>
+    <!-- no translation found for fdn_invalid_number (1751203846440428295) -->
+    <skip />
     <string name="pin2_or_fdn_invalid" msgid="6025144083384701197">"Povolené čísla neboli aktualizované. Kód PIN2 je nesprávny alebo bolo telefónne číslo odmietnuté."</string>
     <string name="fdn_failed" msgid="540018079008319747">"Operácia s povolenými číslami zlyhala."</string>
     <string name="simContacts_emptyLoading" msgid="2203331234764498011">"Prebieha čítanie zo SIM karty..."</string>
