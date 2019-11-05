@@ -6423,7 +6423,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void onShellCommand(FileDescriptor in, FileDescriptor out, FileDescriptor err,
             String[] args, ShellCallback callback, ResultReceiver resultReceiver)
             throws RemoteException {
-        (new TelephonyShellCommand(this)).exec(this, in, out, err, args, callback, resultReceiver);
+        (new TelephonyShellCommand(this, getDefaultPhone().getContext()))
+                .exec(this, in, out, err, args, callback, resultReceiver);
     }
 
     /**
