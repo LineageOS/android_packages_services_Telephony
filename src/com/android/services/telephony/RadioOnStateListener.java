@@ -231,7 +231,7 @@ public class RadioOnStateListener {
      * Note we don't call this method simply after a successful call to placeCall(), since it's
      * still possible the call will disconnect very quickly with an OUT_OF_SERVICE error.
      */
-    private void cleanup() {
+    public void cleanup() {
         Log.d(this, "cleanup()");
 
         // This will send a failure call back if callback has yet to be invoked.  If the callback
