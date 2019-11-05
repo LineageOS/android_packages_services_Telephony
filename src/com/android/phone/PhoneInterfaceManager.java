@@ -1077,11 +1077,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     try {
                         if (ar.exception != null) {
                             Log.e(LOG_TAG, "Exception retrieving CellInfo=" + ar.exception);
-                            cb.onError(TelephonyManager.CellInfoCallback.ERROR_MODEM_ERROR,
-                                    new android.os.ParcelableException(ar.exception));
+                            cb.onError(
+                                    TelephonyManager.CellInfoCallback.ERROR_MODEM_ERROR,
+                                    ar.exception.getClass().getName(),
+                                    ar.exception.toString());
                         } else if (ar.result == null) {
                             Log.w(LOG_TAG, "Timeout Waiting for CellInfo!");
-                            cb.onError(TelephonyManager.CellInfoCallback.ERROR_TIMEOUT, null);
+                            cb.onError(TelephonyManager.CellInfoCallback.ERROR_TIMEOUT, null, null);
                         } else {
                             // use the result as returned
                             cb.onCellInfo((List<CellInfo>) ar.result);
