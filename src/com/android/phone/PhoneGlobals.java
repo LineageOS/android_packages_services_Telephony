@@ -39,7 +39,6 @@ import android.os.PersistableBundle;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.SystemProperties;
-import android.os.UpdateLock;
 import android.os.UserManager;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -186,8 +185,6 @@ public class PhoneGlobals extends ContextWrapper {
     private PowerManager.WakeLock mWakeLock;
     private PowerManager.WakeLock mPartialWakeLock;
     private KeyguardManager mKeyguardManager;
-
-    private UpdateLock mUpdateLock;
 
     private int mDefaultDataSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     private final LocalLog mDataRoamingNotifLog = new LocalLog(50);
@@ -347,12 +344,6 @@ public class PhoneGlobals extends ContextWrapper {
                     | PowerManager.ON_AFTER_RELEASE, LOG_TAG);
 
             mKeyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
-
-            // Get UpdateLock to suppress system-update related events (e.g. dialog show-up)
-            // during phone calls.
-            mUpdateLock = new UpdateLock("phone");
-
-            if (DBG) Log.d(LOG_TAG, "onCreate: mUpdateLock: " + mUpdateLock);
 
             // Create the CallerInfoCache singleton, which remembers custom ring tone and
             // send-to-voicemail settings.
