@@ -70,9 +70,6 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.TextView;
 
-import com.android.phone.EmergencyDialerMetricsLogger.DialedFrom;
-import com.android.phone.EmergencyDialerMetricsLogger.PhoneNumberType;
-import com.android.phone.EmergencyDialerMetricsLogger.UiModeErrorCode;
 import com.android.phone.common.dialpad.DialpadKeyButton;
 import com.android.phone.common.util.ViewUtil;
 import com.android.phone.common.widget.ResizingTextEditText;
@@ -221,8 +218,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     private int mEntryType;
     private ShortcutViewUtils.Config mShortcutViewConfig;
 
-    private EmergencyDialerMetricsLogger mMetricsLogger;
-
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
         // Do nothing
@@ -256,8 +251,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
-        mMetricsLogger = new EmergencyDialerMetricsLogger(this);
 
         mEntryType = getIntent().getIntExtra(EXTRA_ENTRY_TYPE, ENTRY_TYPE_UNKNOWN);
         Log.d(LOG_TAG, "Launched from " + entryTypeToString(mEntryType));
@@ -498,10 +491,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         if (!TextUtils.isEmpty(phoneNumber)) {
             if (DBG) Log.d(LOG_TAG, "dial emergency number: " + Rlog.pii(LOG_TAG, phoneNumber));
 
-            // Write metrics when user has intention to make a call from a shortcut button.
-            mMetricsLogger.logPlaceCall(DialedFrom.SHORTCUT, PhoneNumberType.HAS_SHORTCUT,
-                    mShortcutViewConfig.getPhoneInfo());
-
             placeCall(phoneNumber, ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_SHORTCUT,
                     mShortcutViewConfig.getPhoneInfo());
         } else {
@@ -638,10 +627,6 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     protected void onStart() {
         super.onStart();
 
-        mMetricsLogger.logLaunchEmergencyDialer(mEntryType,
-                mShortcutViewConfig.isEnabled() ? UiModeErrorCode.SUCCESS
-                        : UiModeErrorCode.UNSPECIFIED_ERROR);
-
         if (mShortcutViewConfig.isEnabled()) {
             // Shortcut view doesn't support dark text theme.
             mBackgroundDrawable.setColor(Color.BLACK);
@@ -745,28 +730,20 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         // nothing and just returns input number.
         mLastNumber = PhoneNumberUtils.convertToEmergencyNumber(this, mLastNumber);
 
-        @DialedFrom final int dialedFrom =
-                mShortcutViewConfig.isEnabled() ? DialedFrom.FASTER_LAUNCHER_DIALPAD
-                        : DialedFrom.TRADITIONAL_DIALPAD;
-        @PhoneNumberType final int phoneNumberType;
-
         boolean isEmergencyNumber;
         ShortcutViewUtils.PhoneInfo phoneToMakeCall = null;
         if (mShortcutAdapter != null && mShortcutAdapter.hasShortcut(mLastNumber)) {
             isEmergencyNumber = true;
             phoneToMakeCall = mShortcutViewConfig.getPhoneInfo();
-            phoneNumberType = PhoneNumberType.HAS_SHORTCUT;
         } else if (mShortcutViewConfig.hasPromotedEmergencyNumber(mLastNumber)) {
             // If a number from SIM/network/... is categoried as police/ambulance/fire,
             // hasPromotedEmergencyNumber() will return true, but it maybe not promoted as a
             // shortcut button because a number provided by database has higher priority.
             isEmergencyNumber = true;
             phoneToMakeCall = mShortcutViewConfig.getPhoneInfo();
-            phoneNumberType = PhoneNumberType.NO_SHORTCUT;
         } else {
             isEmergencyNumber = getSystemService(TelephonyManager.class)
                     .isEmergencyNumber(mLastNumber);
-            phoneNumberType = PhoneNumberType.NO_SHORTCUT;
         }
 
         if (isEmergencyNumber) {
@@ -779,18 +756,10 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 return;
             }
 
-            // Write metrics when user has intention to make a call from dialpad
-            mMetricsLogger.logPlaceCall(dialedFrom, phoneNumberType, phoneToMakeCall);
-
             placeCall(mLastNumber, ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_DIALPAD,
                     phoneToMakeCall);
         } else {
             if (DBG) Log.d(LOG_TAG, "rejecting bad requested number " + mLastNumber);
-
-            // Write metrics when user has intention to make a call of a non-emergency number, even
-            // this number is rejected.
-            mMetricsLogger.logPlaceCall(dialedFrom, PhoneNumberType.NOT_EMERGENCY_NUMBER,
-                    phoneToMakeCall);
 
             showDialog(BAD_EMERGENCY_NUMBER_DIALOG);
         }
