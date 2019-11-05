@@ -16,10 +16,15 @@
 
 package com.android.phone;
 
+import android.content.Context;
 import android.os.Binder;
+import android.os.Build;
+import android.os.PersistableBundle;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.ShellCommand;
+import android.telephony.CarrierConfigManager;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.emergency.EmergencyNumber;
 import android.util.Log;
@@ -29,6 +34,9 @@ import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeSet;
 
 /**
  * Takes actions based on the adb commands given by "adb shell cmd phone ...". Be careful, no
@@ -46,6 +54,7 @@ public class TelephonyShellCommand extends ShellCommand {
     private static final String IMS_SUBCOMMAND = "ims";
     private static final String NUMBER_VERIFICATION_SUBCOMMAND = "numverify";
     private static final String EMERGENCY_NUMBER_TEST_MODE = "emergency-number-test-mode";
+    private static final String CARRIER_CONFIG_SUBCOMMAND = "cc";
 
     private static final String IMS_SET_CARRIER_SERVICE = "set-ims-service";
     private static final String IMS_GET_CARRIER_SERVICE = "get-ims-service";
@@ -59,11 +68,60 @@ public class TelephonyShellCommand extends ShellCommand {
     private static final String NUMBER_VERIFICATION_OVERRIDE_PACKAGE = "override-package";
     private static final String NUMBER_VERIFICATION_FAKE_CALL = "fake-call";
 
+    private static final String CC_GET_VALUE = "get-value";
+    private static final String CC_SET_VALUE = "set-value";
+    private static final String CC_CLEAR_VALUES = "clear-values";
+
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
 
-    public TelephonyShellCommand(ITelephony binder) {
+    private SubscriptionManager mSubscriptionManager;
+    private CarrierConfigManager mCarrierConfigManager;
+
+    private enum CcType {
+        BOOLEAN, DOUBLE, DOUBLE_ARRAY, INT, INT_ARRAY, LONG, LONG_ARRAY, STRING,
+                STRING_ARRAY, UNKNOWN
+    }
+
+    // Maps carrier config keys to type. It is possible to infer the type for most carrier config
+    // keys by looking at the end of the string which usually tells the type.
+    // For instance: "xxxx_string", "xxxx_string_array", etc.
+    // The carrier config keys in this map does not follow this convention. It is therefore not
+    // possible to infer the type for these keys by looking at the string.
+    private static final Map<String, CcType> CC_TYPE_MAP = new HashMap<String, CcType>() {{
+            put(CarrierConfigManager.Gps.KEY_A_GLONASS_POS_PROTOCOL_SELECT_STRING, CcType.STRING);
+            put(CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, CcType.STRING);
+            put(CarrierConfigManager.Gps.KEY_GPS_LOCK_STRING, CcType.STRING);
+            put(CarrierConfigManager.Gps.KEY_LPP_PROFILE_STRING, CcType.STRING);
+            put(CarrierConfigManager.Gps.KEY_NFW_PROXY_APPS_STRING, CcType.STRING);
+            put(CarrierConfigManager.Gps.KEY_SUPL_ES_STRING, CcType.STRING);
+            put(CarrierConfigManager.Gps.KEY_SUPL_HOST_STRING, CcType.STRING);
+            put(CarrierConfigManager.Gps.KEY_SUPL_MODE_STRING, CcType.STRING);
+            put(CarrierConfigManager.Gps.KEY_SUPL_PORT_STRING, CcType.STRING);
+            put(CarrierConfigManager.Gps.KEY_SUPL_VER_STRING, CcType.STRING);
+            put(CarrierConfigManager.Gps.KEY_USE_EMERGENCY_PDN_FOR_EMERGENCY_SUPL_STRING,
+                    CcType.STRING);
+            put(CarrierConfigManager.KEY_CARRIER_APP_NO_WAKE_SIGNAL_CONFIG_STRING_ARRAY,
+                    CcType.STRING_ARRAY);
+            put(CarrierConfigManager.KEY_CARRIER_APP_WAKE_SIGNAL_CONFIG_STRING_ARRAY,
+                    CcType.STRING_ARRAY);
+            put(CarrierConfigManager.KEY_CARRIER_CALL_SCREENING_APP_STRING, CcType.STRING);
+            put(CarrierConfigManager.KEY_MMS_EMAIL_GATEWAY_NUMBER_STRING, CcType.STRING);
+            put(CarrierConfigManager.KEY_MMS_HTTP_PARAMS_STRING, CcType.STRING);
+            put(CarrierConfigManager.KEY_MMS_NAI_SUFFIX_STRING, CcType.STRING);
+            put(CarrierConfigManager.KEY_MMS_UA_PROF_TAG_NAME_STRING, CcType.STRING);
+            put(CarrierConfigManager.KEY_MMS_UA_PROF_URL_STRING, CcType.STRING);
+            put(CarrierConfigManager.KEY_MMS_USER_AGENT_STRING, CcType.STRING);
+            put(CarrierConfigManager.KEY_RATCHET_RAT_FAMILIES, CcType.STRING_ARRAY);
+        }
+    };
+
+    public TelephonyShellCommand(ITelephony binder, Context context) {
         mInterface = binder;
+        mCarrierConfigManager =
+                (CarrierConfigManager) context.getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        mSubscriptionManager = (SubscriptionManager)
+                context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
     }
 
     @Override
@@ -80,6 +138,9 @@ public class TelephonyShellCommand extends ShellCommand {
                 return handleNumberVerificationCommand();
             case EMERGENCY_NUMBER_TEST_MODE:
                 return handleEmergencyNumberTestModeCommand();
+            case CARRIER_CONFIG_SUBCOMMAND: {
+                return handleCcCommand();
+            }
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -96,8 +157,11 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("    IMS Commands.");
         pw.println("  emergency-number-test-mode");
         pw.println("    Emergency Number Test Mode Commands.");
+        pw.println("  cc");
+        pw.println("    Carrier Config Commands.");
         onHelpIms();
         onHelpEmergencyNumber();
+        onHelpCc();
     }
 
     private void onHelpIms() {
@@ -150,6 +214,33 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("      -r <emergency number address>: remove an existing emergency number"
                 + " address added by the test mode, only allows '0'-'9', '*', '#' or '+'.");
         pw.println("      -p: get the full emergency number list in the test mode.");
+    }
+
+    private void onHelpCc() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Carrier Config Commands:");
+        pw.println("  cc get-value [-s SLOT_ID] [KEY]");
+        pw.println("    Print carrier config values.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read carrier config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("    KEY: The key to the carrier config value to print. All values are printed");
+        pw.println("         if KEY is not specified.");
+        pw.println("  cc set-value [-s SLOT_ID] KEY [NEW_VALUE]");
+        pw.println("    Set carrier config KEY to NEW_VALUE.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to set carrier config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("    NEW_VALUE specifies the new value for carrier config KEY. Null will be");
+        pw.println("      used if NEW_VALUE is not set. Strings should be encapsulated with");
+        pw.println("      quotation marks. Spaces needs to be escaped. Example: \"Hello\\ World\"");
+        pw.println("      Separate items in arrays with space . Example: \"item1\" \"item2\"");
+        pw.println("  cc clear-values [-s SLOT_ID]");
+        pw.println("    Clear all carrier override values that has previously been set");
+        pw.println("    with set-value");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to clear carrier config values for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
     }
 
     private int handleImsCommand() {
@@ -477,9 +568,486 @@ public class TelephonyShellCommand extends ShellCommand {
         return slotId;
     }
 
+    // Get the subId from argument SLOT_ID if it was provided. Otherwise use the default
+    // subscription.
+    private int getSubIdFromArgumentSlotId(String tag) {
+        PrintWriter errPw = getErrPrintWriter();
+        int subId = SubscriptionManager.getDefaultSubscriptionId();
+        String opt;
+
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-s": {
+                    try {
+                        subId = slotStringToSubId(tag, getNextArgRequired());
+                    } catch (IllegalArgumentException e) {
+                        // Missing slot id
+                        errPw.println(tag + "SLOT_ID expected after -s.");
+                        return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+                    }
+                    break;
+                }
+                default: {
+                    errPw.println(tag + "Unknown option " + opt);
+                    return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+                }
+            }
+        }
+        return subId;
+    }
+
+    private int slotStringToSubId(String tag, String slotString) {
+        int slotId = -1;
+        try {
+            slotId = Integer.parseInt(slotString);
+        } catch (NumberFormatException e) {
+            getErrPrintWriter().println(tag + slotString + " is not a valid SLOT_ID.");
+            return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        }
+
+        SubscriptionInfo subInfo =
+                mSubscriptionManager.getActiveSubscriptionInfoForSimSlotIndex(slotId);
+        if (subInfo == null) {
+            getErrPrintWriter().println(tag + "No subscription found in slot " + slotId + ".");
+            return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        }
+        return subInfo.getSubscriptionId();
+    }
+
     private boolean checkShellUid() {
         // adb can run as root or as shell, depending on whether the device is rooted.
         return Binder.getCallingUid() == Process.SHELL_UID
                 || Binder.getCallingUid() == Process.ROOT_UID;
+    }
+
+    private int handleCcCommand() {
+        // Verify that the user is allowed to run the command. Only allowed in rooted device in a
+        // non user build.
+        if (Binder.getCallingUid() != Process.ROOT_UID || Build.IS_USER) {
+            getErrPrintWriter().println("cc: Permission denied.");
+            return -1;
+        }
+
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpCc();
+            return 0;
+        }
+
+        switch (arg) {
+            case CC_GET_VALUE: {
+                return handleCcGetValue();
+            }
+            case CC_SET_VALUE: {
+                return handleCcSetValue();
+            }
+            case CC_CLEAR_VALUES: {
+                return handleCcClearValues();
+            }
+            default: {
+                getErrPrintWriter().println("cc: Unknown argument: " + arg);
+            }
+        }
+        return -1;
+    }
+
+    // cc get-value
+    private int handleCcGetValue() {
+        PrintWriter errPw = getErrPrintWriter();
+        String tag = CARRIER_CONFIG_SUBCOMMAND + " " + CC_GET_VALUE + ": ";
+        String key = null;
+
+        // Get the subId from the SLOT_ID-argument.
+        int subId = getSubIdFromArgumentSlotId(tag);
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            errPw.println(tag + "No valid subscription found.");
+            return -1;
+        }
+
+        // Get bundle containing all carrier configuration values.
+        PersistableBundle bundle = mCarrierConfigManager.getConfigForSubId(subId);
+        if (bundle == null) {
+            errPw.println(tag + "No carrier config values found for subId " + subId + ".");
+            return -1;
+        }
+
+        // Get the key.
+        key = getNextArg();
+        if (key != null) {
+            // A key was provided. Verify if it is a valid key
+            if (!bundle.containsKey(key)) {
+                errPw.println(tag + key + " is not a valid key.");
+                return -1;
+            }
+
+            // Print the carrier config value for key.
+            getOutPrintWriter().println(ccValueToString(key, getType(tag, key, bundle), bundle));
+        } else {
+            // No key provided. Show all values.
+            // Iterate over a sorted list of all carrier config keys and print them.
+            TreeSet<String> sortedSet = new TreeSet<String>(bundle.keySet());
+            for (String k : sortedSet) {
+                getOutPrintWriter().println(ccValueToString(k, getType(tag, k, bundle), bundle));
+            }
+        }
+        return 0;
+    }
+
+    // cc set-value
+    private int handleCcSetValue() {
+        PrintWriter errPw = getErrPrintWriter();
+        String tag = CARRIER_CONFIG_SUBCOMMAND + " " + CC_SET_VALUE + ": ";
+
+        // Get the subId from the SLOT_ID-argument.
+        int subId = getSubIdFromArgumentSlotId(tag);
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            errPw.println(tag + "No valid subscription found.");
+            return -1;
+        }
+
+        // Get bundle containing all current carrier configuration values.
+        PersistableBundle originalValues = mCarrierConfigManager.getConfigForSubId(subId);
+        if (originalValues == null) {
+            errPw.println(tag + "No carrier config values found for subId " + subId + ".");
+            return -1;
+        }
+
+        // Get the key.
+        String key = getNextArg();
+        if (key == null || key.equals("")) {
+            errPw.println(tag + "KEY is missing");
+            return -1;
+        }
+
+        // Verify if the key is valid
+        if (!originalValues.containsKey(key)) {
+            errPw.println(tag + key + " is not a valid key.");
+            return -1;
+        }
+
+        // Remaining arguments is a list of new values. Add them all into an ArrayList.
+        ArrayList<String> valueList = new ArrayList<String>();
+        while (peekNextArg() != null) {
+            valueList.add(getNextArg());
+        }
+
+        // Find the type of the carrier config value
+        CcType type = getType(tag, key, originalValues);
+        if (type == CcType.UNKNOWN) {
+            errPw.println(tag + "ERROR: Not possible to override key with unknown type.");
+            return -1;
+        }
+
+        // Create an override bundle containing the key and value that should be overriden.
+        PersistableBundle overrideBundle = getOverrideBundle(tag, type, key, valueList);
+        if (overrideBundle == null) {
+            return -1;
+        }
+
+        // Override the value
+        mCarrierConfigManager.overrideConfig(subId, overrideBundle);
+
+        // Find bundle containing all new carrier configuration values after the override.
+        PersistableBundle newValues = mCarrierConfigManager.getConfigForSubId(subId);
+        if (newValues == null) {
+            errPw.println(tag + "No carrier config values found for subId " + subId + ".");
+            return -1;
+        }
+
+        // Print the original and new value.
+        String originalValueString = ccValueToString(key, type, originalValues);
+        String newValueString = ccValueToString(key, type, newValues);
+        getOutPrintWriter().println("Previous value: \n" + originalValueString);
+        getOutPrintWriter().println("New value: \n" + newValueString);
+
+        return 0;
+    }
+
+    // cc clear-values
+    private int handleCcClearValues() {
+        PrintWriter errPw = getErrPrintWriter();
+        String tag = CARRIER_CONFIG_SUBCOMMAND + " " + CC_CLEAR_VALUES + ": ";
+
+        // Get the subId from the SLOT_ID-argument.
+        int subId = getSubIdFromArgumentSlotId(tag);
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            errPw.println(tag + "No valid subscription found.");
+            return -1;
+        }
+
+        // Clear all values that has previously been set.
+        mCarrierConfigManager.overrideConfig(subId, null);
+        getOutPrintWriter()
+                .println("All previously set carrier config override values has been cleared");
+        return 0;
+    }
+
+    private CcType getType(String tag, String key, PersistableBundle bundle) {
+        // Find the type by checking the type of the current value stored in the bundle.
+        Object value = bundle.get(key);
+
+        if (CC_TYPE_MAP.containsKey(key)) {
+            return CC_TYPE_MAP.get(key);
+        } else if (value != null) {
+            if (value instanceof Boolean) {
+                return CcType.BOOLEAN;
+            } else if (value instanceof Double) {
+                return CcType.DOUBLE;
+            } else if (value instanceof double[]) {
+                return CcType.DOUBLE_ARRAY;
+            } else if (value instanceof Integer) {
+                return CcType.INT;
+            } else if (value instanceof int[]) {
+                return CcType.INT_ARRAY;
+            } else if (value instanceof Long) {
+                return CcType.LONG;
+            } else if (value instanceof long[]) {
+                return CcType.LONG_ARRAY;
+            } else if (value instanceof String) {
+                return CcType.STRING;
+            } else if (value instanceof String[]) {
+                return CcType.STRING_ARRAY;
+            }
+        } else {
+            // Current value was null and can therefore not be used in order to find the type.
+            // Check the name of the key to infer the type. This check is not needed for primitive
+            // data types (boolean, double, int and long), since they can not be null.
+            if (key.endsWith("double_array")) {
+                return CcType.DOUBLE_ARRAY;
+            }
+            if (key.endsWith("int_array")) {
+                return CcType.INT_ARRAY;
+            }
+            if (key.endsWith("long_array")) {
+                return CcType.LONG_ARRAY;
+            }
+            if (key.endsWith("string")) {
+                return CcType.STRING;
+            }
+            if (key.endsWith("string_array") || key.endsWith("strings")) {
+                return CcType.STRING_ARRAY;
+            }
+        }
+
+        // Not possible to infer the type by looking at the current value or the key.
+        PrintWriter errPw = getErrPrintWriter();
+        errPw.println(tag + "ERROR: " + key + " has unknown type.");
+        return CcType.UNKNOWN;
+    }
+
+    private String ccValueToString(String key, CcType type, PersistableBundle bundle) {
+        String result;
+        StringBuilder valueString = new StringBuilder();
+        String typeString = type.toString();
+        Object value = bundle.get(key);
+
+        if (value == null) {
+            valueString.append("null");
+        } else {
+            switch (type) {
+                case DOUBLE_ARRAY: {
+                    // Format the string representation of the int array as value1 value2......
+                    double[] valueArray = (double[]) value;
+                    for (int i = 0; i < valueArray.length; i++) {
+                        if (i != 0) {
+                            valueString.append(" ");
+                        }
+                        valueString.append(valueArray[i]);
+                    }
+                    break;
+                }
+                case INT_ARRAY: {
+                    // Format the string representation of the int array as value1 value2......
+                    int[] valueArray = (int[]) value;
+                    for (int i = 0; i < valueArray.length; i++) {
+                        if (i != 0) {
+                            valueString.append(" ");
+                        }
+                        valueString.append(valueArray[i]);
+                    }
+                    break;
+                }
+                case LONG_ARRAY: {
+                    // Format the string representation of the int array as value1 value2......
+                    long[] valueArray = (long[]) value;
+                    for (int i = 0; i < valueArray.length; i++) {
+                        if (i != 0) {
+                            valueString.append(" ");
+                        }
+                        valueString.append(valueArray[i]);
+                    }
+                    break;
+                }
+                case STRING: {
+                    valueString.append("\"" + value.toString() + "\"");
+                    break;
+                }
+                case STRING_ARRAY: {
+                    // Format the string representation of the string array as "value1" "value2"....
+                    String[] valueArray = (String[]) value;
+                    for (int i = 0; i < valueArray.length; i++) {
+                        if (i != 0) {
+                            valueString.append(" ");
+                        }
+                        if (valueArray[i] != null) {
+                            valueString.append("\"" + valueArray[i] + "\"");
+                        } else {
+                            valueString.append("null");
+                        }
+                    }
+                    break;
+                }
+                default: {
+                    valueString.append(value.toString());
+                }
+            }
+        }
+        return String.format("%-70s %-15s %s", key, typeString, valueString);
+    }
+
+    private PersistableBundle getOverrideBundle(String tag, CcType type, String key,
+            ArrayList<String> valueList) {
+        PrintWriter errPw = getErrPrintWriter();
+        PersistableBundle bundle = new PersistableBundle();
+
+        // First verify that a valid number of values has been provided for the type.
+        switch (type) {
+            case BOOLEAN:
+            case DOUBLE:
+            case INT:
+            case LONG: {
+                if (valueList.size() != 1) {
+                    errPw.println(tag + "Expected 1 value for type " + type
+                            + ". Found: " + valueList.size());
+                    return null;
+                }
+                break;
+            }
+            case STRING: {
+                if (valueList.size() > 1) {
+                    errPw.println(tag + "Expected 0 or 1 values for type " + type
+                            + ". Found: " + valueList.size());
+                    return null;
+                }
+                break;
+            }
+        }
+
+        // Parse the value according to type and add it to the Bundle.
+        switch (type) {
+            case BOOLEAN: {
+                if ("true".equalsIgnoreCase(valueList.get(0))) {
+                    bundle.putBoolean(key, true);
+                } else if ("false".equalsIgnoreCase(valueList.get(0))) {
+                    bundle.putBoolean(key, false);
+                } else {
+                    errPw.println(tag + "Unable to parse " + valueList.get(0) + " as a " + type);
+                    return null;
+                }
+                break;
+            }
+            case DOUBLE: {
+                try {
+                    bundle.putDouble(key, Double.parseDouble(valueList.get(0)));
+                } catch (NumberFormatException nfe) {
+                    // Not a valid double
+                    errPw.println(tag + "Unable to parse " + valueList.get(0) + " as a " + type);
+                    return null;
+                }
+                break;
+            }
+            case DOUBLE_ARRAY: {
+                double[] valueDoubleArray = null;
+                if (valueList.size() > 0) {
+                    valueDoubleArray = new double[valueList.size()];
+                    for (int i = 0; i < valueList.size(); i++) {
+                        try {
+                            valueDoubleArray[i] = Double.parseDouble(valueList.get(i));
+                        } catch (NumberFormatException nfe) {
+                            // Not a valid double
+                            errPw.println(
+                                    tag + "Unable to parse " + valueList.get(i) + " as a double.");
+                            return null;
+                        }
+                    }
+                }
+                bundle.putDoubleArray(key, valueDoubleArray);
+                break;
+            }
+            case INT: {
+                try {
+                    bundle.putInt(key, Integer.parseInt(valueList.get(0)));
+                } catch (NumberFormatException nfe) {
+                    // Not a valid integer
+                    errPw.println(tag + "Unable to parse " + valueList.get(0) + " as an " + type);
+                    return null;
+                }
+                break;
+            }
+            case INT_ARRAY: {
+                int[] valueIntArray = null;
+                if (valueList.size() > 0) {
+                    valueIntArray = new int[valueList.size()];
+                    for (int i = 0; i < valueList.size(); i++) {
+                        try {
+                            valueIntArray[i] = Integer.parseInt(valueList.get(i));
+                        } catch (NumberFormatException nfe) {
+                            // Not a valid integer
+                            errPw.println(tag
+                                    + "Unable to parse " + valueList.get(i) + " as an integer.");
+                            return null;
+                        }
+                    }
+                }
+                bundle.putIntArray(key, valueIntArray);
+                break;
+            }
+            case LONG: {
+                try {
+                    bundle.putLong(key, Long.parseLong(valueList.get(0)));
+                } catch (NumberFormatException nfe) {
+                    // Not a valid long
+                    errPw.println(tag + "Unable to parse " + valueList.get(0) + " as a " + type);
+                    return null;
+                }
+                break;
+            }
+            case LONG_ARRAY: {
+                long[] valueLongArray = null;
+                if (valueList.size() > 0) {
+                    valueLongArray = new long[valueList.size()];
+                    for (int i = 0; i < valueList.size(); i++) {
+                        try {
+                            valueLongArray[i] = Long.parseLong(valueList.get(i));
+                        } catch (NumberFormatException nfe) {
+                            // Not a valid long
+                            errPw.println(
+                                    tag + "Unable to parse " + valueList.get(i) + " as a long");
+                            return null;
+                        }
+                    }
+                }
+                bundle.putLongArray(key, valueLongArray);
+                break;
+            }
+            case STRING: {
+                String value = null;
+                if (valueList.size() > 0) {
+                    value = valueList.get(0);
+                }
+                bundle.putString(key, value);
+                break;
+            }
+            case STRING_ARRAY: {
+                String[] valueStringArray = null;
+                if (valueList.size() > 0) {
+                    valueStringArray = new String[valueList.size()];
+                    valueList.toArray(valueStringArray);
+                }
+                bundle.putStringArray(key, valueStringArray);
+                break;
+            }
+        }
+        return bundle;
     }
 }
