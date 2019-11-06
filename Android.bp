@@ -22,7 +22,6 @@ android_app {
         "telephony-common",
         "voip-common",
         "ims-common",
-        "org.apache.http.legacy",
         "libprotobuf-java-lite",
     ],
 
@@ -32,7 +31,6 @@ android_app {
         "androidx.recyclerview_recyclerview",
         "androidx.legacy_legacy-preference-v14",
         "guava",
-        "volley",
         "android-support-annotations",
         "com.android.phone.common-lib",
     ],
