@@ -182,7 +182,7 @@ public class ImsRegistrationActivity extends Activity {
         try {
             mImsManager = ImsMmTelManager.createForSubscriptionId(
                     SubscriptionManager.getDefaultVoiceSubscriptionId());
-            mImsManager.registerImsRegistrationCallback(mRegistrationCallback, getMainExecutor());
+            mImsManager.registerImsRegistrationCallback(getMainExecutor(), mRegistrationCallback);
         } catch (IllegalArgumentException | ImsException e) {
             Log.w("ImsCallingActivity", "illegal subscription ID.");
         }
