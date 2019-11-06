@@ -147,6 +147,7 @@ public class ImsConferenceController {
         mTelephonyConnections.add(connection);
         connection.addTelephonyConnectionListener(mTelephonyConnectionListener);
         recalculateConference();
+        recalculateConferenceable();
     }
 
     /**
