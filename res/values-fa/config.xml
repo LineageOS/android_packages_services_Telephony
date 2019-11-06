@@ -24,5 +24,5 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="system_visual_voicemail_client" msgid="1787338073957698459"></string>
+    <string name="system_visual_voicemail_client" msgid="8236140562734796837"></string>
 </resources>

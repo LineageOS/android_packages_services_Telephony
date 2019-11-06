@@ -589,6 +589,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         // mOverrideConfigs is for testing. And it will override current configs.
         PersistableBundle config = mOverrideConfigs[phoneId];
         if (config != null) {
+            configToSend = new PersistableBundle(configToSend);
             configToSend.putAll(config);
         }
 
