@@ -4911,7 +4911,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @hide
      */
     @Override
-    public boolean getTetherApnRequiredForSubscriber(int subId) {
+    public boolean isTetherApnRequiredForSubscriber(int subId) {
         enforceModifyPermission();
         final long identity = Binder.clearCallingIdentity();
         final Phone phone = getPhone(subId);
