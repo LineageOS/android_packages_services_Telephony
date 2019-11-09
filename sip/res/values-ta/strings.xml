@@ -47,7 +47,7 @@
     <string name="registration_status_failed_try_later" msgid="7855389184910312091">"கணக்குப் பதிவு தோல்வி: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>); பிறகு முயலவும்"</string>
     <string name="registration_status_invalid_credentials" msgid="8896714049938660777">"கணக்குப் பதிவு தோல்வி: பயனர்பெயர் அல்லது கடவுச்சொல் தவறானது."</string>
     <string name="registration_status_server_unreachable" msgid="3832339558868965604">"கணக்குப் பதிவு தோல்வி: சேவையகப் பெயரைச் சரிபார்க்கவும்."</string>
-    <string name="third_party_account_summary" msgid="5918779106950859167">"தற்போது <xliff:g id="ACCOUNT_OWNER">%s</xliff:g> பயன்பாட்டினால் கணக்குப் பயன்படுத்தப்படுகிறது."</string>
+    <string name="third_party_account_summary" msgid="5918779106950859167">"தற்போது <xliff:g id="ACCOUNT_OWNER">%s</xliff:g> ஆப்ஸால் கணக்குப் பயன்படுத்தப்படுகிறது."</string>
     <string name="sip_edit_title" msgid="7438891546610820307">"SIP கணக்கு விவரங்கள்"</string>
     <string name="sip_edit_new_title" msgid="8394790068979636381">"SIP கணக்கு விவரங்கள்"</string>
     <string name="domain_address_title" msgid="8238078615181248579">"சேவையகம்"</string>
