@@ -260,10 +260,8 @@
     <string name="roaming_warning" msgid="7855681468067171971">"Ingahle uthole izindleko ezincane."</string>
     <string name="roaming_check_price_warning" msgid="8212484083990570215">"Hlola ngomhlinzeki wakho wenethiwekhi ukuze uthole intengo."</string>
     <string name="roaming_alert_title" msgid="5689615818220960940">"Vumela ukuhamba kwedatha?"</string>
-    <!-- no translation found for limited_sim_function_notification_title (612715399099846281) -->
-    <skip />
-    <!-- no translation found for limited_sim_function_with_phone_num_notification_message (5928988883403677610) -->
-    <skip />
+    <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Ukusebenza okukhawulelwe kwe-SIM"</string>
+    <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Amakholi e-<xliff:g id="CARRIER_NAME">%1$s</xliff:g> namasevisi edatha angavinjelwa kusetshenziswa u-<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Amakholi e-<xliff:g id="CARRIER_NAME">%1$s</xliff:g> namasevisi edatha angavinjelwa ngenkathi kusetshenziswa enye i-SIM."</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Ukusetshenziswa kwedatha yohlelo lokusebenza"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> kusetshenziswe idatha yeselula engu-<xliff:g id="ID_2">%2$s</xliff:g>"</string>

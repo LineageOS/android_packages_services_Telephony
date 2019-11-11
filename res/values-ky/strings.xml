@@ -16,8 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for phoneAppLabel (1916019789885839910) -->
-    <skip />
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Мобилдик Интернет"</string>
     <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Телефон кызматтары"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Өзгөчө кырдаалдагы тергич"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Телефон"</string>
@@ -290,8 +289,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> жогорку чегинен ашып кетти\nДайындардын ылдамдыгы <xliff:g id="USED_1">%2$d</xliff:g> кб/сек. болуп азайтылды"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"Циклдин <xliff:g id="USED_0">%1$d</xliff:g>٪ аяктады\nКийинки период <xliff:g id="USED_1">%2$d</xliff:g> күндөн кийин башталат (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="7221971817325779535">"Эгер дайындарды колдонуу чегинен ашып кетсе, дайындардын ылдамдыгы <xliff:g id="USED">%1$d</xliff:g> кб/сек. болуп азайтылат"</string>
-    <!-- no translation found for throttle_help_subtext (2817114897095534807) -->
-    <skip />
+    <string name="throttle_help_subtext" msgid="2817114897095534807">"Операторуңуздун мобилдик тармак дайындарын пайдалануу саясаты тууралуу көбүрөөк маалымат"</string>
     <string name="cell_broadcast_sms" msgid="4053449797289031063">"Уюлдук жөнөтүү SMS\'и"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4759958924031721350">"Уюлдук жөнөтүү SMS\'и"</string>
     <string name="cell_bc_sms_enable" msgid="2019708772024632073">"Уюлдук жөнөтүү SMS\'и иштетилген"</string>
@@ -505,8 +503,7 @@
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Чалуу үчүн учак режимин өчүрүңүз же зымсыз тармакка туташыңыз."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Кадимки шартта чалуу үчүн шашылыш кайра чалуу режиминен чыгыңыз."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Тармакта катталган эмес."</string>
-    <!-- no translation found for incall_error_out_of_service (1927265196942672791) -->
-    <skip />
+    <string name="incall_error_out_of_service" msgid="1927265196942672791">"Мобилдик тармак жок."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Мобилдик тармак жеткиликтүү эмес. Чалуу үчүн зымсыз тармакка туташыңыз."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Чалуу үчүн, жарактуу номер киргизиңиз."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Чалынбай калды."</string>
