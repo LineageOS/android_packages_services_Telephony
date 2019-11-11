@@ -50,7 +50,7 @@
     <protected-broadcast android:name="android.provider.Telephony.WAP_PUSH_DELIVER" />
     <protected-broadcast android:name="android.provider.Telephony.WAP_PUSH_RECEIVED" />
     <protected-broadcast android:name="android.provider.Telephony.SMS_CB_RECEIVED" />
-    <protected-broadcast android:name="android.provider.Telephony.SMS_EMERGENCY_CB_RECEIVED" />
+    <protected-broadcast android:name="android.provider.action.SMS_EMERGENCY_CB_RECEIVED" />
     <protected-broadcast android:name="android.provider.Telephony.SECRET_CODE" />
     <protected-broadcast android:name= "com.android.internal.stk.command" />
     <protected-broadcast android:name= "com.android.internal.stk.session_end" />
