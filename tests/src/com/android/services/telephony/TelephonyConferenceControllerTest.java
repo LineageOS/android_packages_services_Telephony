@@ -48,7 +48,7 @@ public class TelephonyConferenceControllerTest {
     private TelephonyConnectionServiceProxy mMockTelephonyConnectionServiceProxy;
 
     @Mock
-    private Conference.Listener mMockListener;
+    private TelephonyConferenceBase.TelephonyConferenceListener mMockListener;
 
     private TestTelephonyConnection mTestTelephonyConnectionA;
     private TestTelephonyConnection mTestTelephonyConnectionB;
@@ -158,7 +158,7 @@ public class TelephonyConferenceControllerTest {
         verify(mMockTelephonyConnectionServiceProxy).addConference(argumentCaptor.capture());
 
         // add a listener to the added conference
-        argumentCaptor.getValue().addListener(mMockListener);
+        argumentCaptor.getValue().addTelephonyConferenceListener(mMockListener);
 
         verify(mMockListener, never()).onDestroyed(any(Conference.class));
 
