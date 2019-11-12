@@ -25,6 +25,7 @@ import android.os.SystemClock;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.Rlog;
 import android.text.TextUtils;
 
 import com.android.internal.telephony.Call;
@@ -47,6 +48,8 @@ import java.util.Objects;
  * occurence. One instance of these exists for each of the telephony-based call services.
  */
 final class PstnIncomingCallNotifier {
+    private static final String LOG_TAG = "PstnIncomingCallNotifier";
+
     /** New ringing connection event code. */
     private static final int EVENT_NEW_RINGING_CONNECTION = 100;
     private static final int EVENT_CDMA_CALL_WAITING = 101;
@@ -181,7 +184,7 @@ final class PstnIncomingCallNotifier {
                     // Presentation of the number is allowed, so we ensure the number matches the
                     // one in the call waiting information.
                     Log.i(this, "handleCdmaCallWaiting: inform telecom of waiting call; "
-                            + "number = %s", Log.pii(number));
+                            + "number = %s", Rlog.pii(LOG_TAG, number));
                     sendIncomingCallIntent(connection);
                 } else {
                     Log.w(this, "handleCdmaCallWaiting: presentation or number do not match, not"
@@ -248,7 +251,8 @@ final class PstnIncomingCallNotifier {
                     // connection already disconnected. Do nothing
                 }
             } else {
-                TelecomManager.from(mPhone.getContext()).addNewUnknownCall(handle, extras);
+                TelecomManager tm = mPhone.getContext().getSystemService(TelecomManager.class);
+                tm.addNewUnknownCall(handle, extras);
             }
         } else {
             Log.i(this, "swapped an old connection, new one is: %s", connection);
@@ -283,7 +287,8 @@ final class PstnIncomingCallNotifier {
                 // connection already disconnected. Do nothing
             }
         } else {
-            TelecomManager.from(mPhone.getContext()).addNewIncomingCall(handle, extras);
+            TelecomManager tm = mPhone.getContext().getSystemService(TelecomManager.class);
+            tm.addNewIncomingCall(handle, extras);
         }
     }
 

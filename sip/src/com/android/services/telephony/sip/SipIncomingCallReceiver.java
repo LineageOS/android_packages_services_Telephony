@@ -73,7 +73,7 @@ public class SipIncomingCallReceiver extends BroadcastReceiver {
         if (accountHandle != null) {
             Bundle extras = new Bundle();
             extras.putParcelable(SipUtil.EXTRA_INCOMING_CALL_INTENT, intent);
-            TelecomManager tm = TelecomManager.from(context);
+            TelecomManager tm = context.getSystemService(TelecomManager.class);
             PhoneAccount phoneAccount = tm.getPhoneAccount(accountHandle);
             if (phoneAccount != null && phoneAccount.isEnabled()) {
                 tm.addNewIncomingCall(accountHandle, extras);
