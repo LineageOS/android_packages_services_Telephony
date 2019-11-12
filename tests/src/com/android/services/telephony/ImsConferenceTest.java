@@ -31,10 +31,11 @@ import android.net.Uri;
 import android.os.Looper;
 import android.telecom.Call;
 import android.telecom.Conference;
-import android.telecom.ConferenceParticipant;
 import android.telecom.Connection;
 import android.telecom.PhoneAccountHandle;
 import android.test.suitebuilder.annotation.SmallTest;
+
+import com.android.ims.internal.ConferenceParticipant;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -97,8 +98,6 @@ public class ImsConferenceTest {
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1));
         assertEquals(0, imsConference.getNumberOfParticipants());
-        verify(mMockTelephonyConnectionServiceProxy, times(2)).removeConnection(
-                any(Connection.class));
         reset(mMockTelephonyConnectionServiceProxy);
 
         // Back to 2!
@@ -161,8 +160,6 @@ public class ImsConferenceTest {
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1, participant2, participant3Disconnected));
         assertEquals(2, imsConference.getNumberOfParticipants());
-        verify(mMockTelephonyConnectionServiceProxy, times(1)).removeConnection(
-                any(Connection.class));
         reset(mMockTelephonyConnectionServiceProxy);
 
         // Now remove it from another CEP update; should still be the same number of participants
@@ -170,8 +167,6 @@ public class ImsConferenceTest {
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1, participant2));
         assertEquals(2, imsConference.getNumberOfParticipants());
-        verify(mMockTelephonyConnectionServiceProxy, never()).removeConnection(
-                any(Connection.class));
         verify(mMockTelephonyConnectionServiceProxy, never()).addExistingConnection(
                 any(PhoneAccountHandle.class), any(Connection.class),
                 any(Conference.class));
@@ -222,8 +217,6 @@ public class ImsConferenceTest {
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1, participant2));
         assertEquals(2, imsConference.getNumberOfParticipants());
-        verify(mMockTelephonyConnectionServiceProxy, times(1)).removeConnection(
-                any(Connection.class));
         verify(mMockTelephonyConnectionServiceProxy, never()).addExistingConnection(
                 any(PhoneAccountHandle.class), any(Connection.class),
                 any(Conference.class));
@@ -280,8 +273,6 @@ public class ImsConferenceTest {
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1, participant2Disconnected));
         assertEquals(0, imsConference.getNumberOfParticipants());
-        verify(mMockTelephonyConnectionServiceProxy, times(2)).removeConnection(
-                any(Connection.class));
         reset(mMockTelephonyConnectionServiceProxy);
 
         // Pretend to merge someone else into the conference.
@@ -310,14 +301,14 @@ public class ImsConferenceTest {
                 null /* phoneAccountHandle */, () -> true /* featureFlagProxy */);
 
         final boolean[] isConferenceState = new boolean[1];
-        Conference.Listener conferenceListener = new Conference.Listener() {
+        TelephonyConferenceBase.TelephonyConferenceListener conferenceListener =
+                new TelephonyConferenceBase.TelephonyConferenceListener() {
             @Override
-            public void onConferenceStateChanged(Conference c, boolean isConference) {
-                super.onConferenceStateChanged(c, isConference);
-                isConferenceState[0] = isConference;
+            public void onConferenceMembershipChanged(Connection connection) {
+                isConferenceState[0] = connection.getConference() != null;
             }
         };
-        imsConference.addListener(conferenceListener);
+        imsConference.addTelephonyConferenceListener(conferenceListener);
 
         ConferenceParticipant participant1 = new ConferenceParticipant(
                 Uri.parse("tel:6505551212"),
@@ -342,8 +333,6 @@ public class ImsConferenceTest {
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1));
         assertEquals(0, imsConference.getNumberOfParticipants());
-        verify(mMockTelephonyConnectionServiceProxy, times(2)).removeConnection(
-                any(Connection.class));
 
         // Emulate a pre-disconnect conference event package; there will be zero participants.
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,

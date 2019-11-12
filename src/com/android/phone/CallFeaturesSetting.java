@@ -214,7 +214,7 @@ public class CallFeaturesSetting extends PreferenceActivity
         mSubscriptionInfoHelper.setActionBarTitle(
                 getActionBar(), getResources(), R.string.call_settings_with_label);
         mPhone = mSubscriptionInfoHelper.getPhone();
-        mTelecomManager = TelecomManager.from(this);
+        mTelecomManager = getSystemService(TelecomManager.class);
     }
 
     private void updateImsManager(Phone phone) {

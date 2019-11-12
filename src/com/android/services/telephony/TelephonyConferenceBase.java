@@ -20,6 +20,8 @@ import android.annotation.NonNull;
 import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.PhoneAccountHandle;
+import android.telecom.TelecomManager;
+import android.telephony.ServiceState;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -32,6 +34,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * all of these conferences use.
  */
 public class TelephonyConferenceBase extends Conference {
+    private static final String TAG = "TelephonyConferenceBase";
+
     /**
      * Listener for conference events.
      */
@@ -40,7 +44,13 @@ public class TelephonyConferenceBase extends Conference {
          * Listener called when a connection is added or removed from a conference.
          * @param connection The connection.
          */
-        public void onConferenceMembershipChanged(Connection connection) {};
+        public void onConferenceMembershipChanged(Connection connection) {}
+
+        /**
+         * Listener called when a conference is destroyed.
+         * @param conference The conference.
+         */
+        public void onDestroyed(Conference conference) {}
     }
 
     private final Set<TelephonyConferenceListener> mListeners = Collections.newSetFromMap(
@@ -50,7 +60,7 @@ public class TelephonyConferenceBase extends Conference {
      * Adds a listener to this conference.
      * @param listener The listener.
      */
-    public void addListener(@NonNull TelephonyConferenceListener listener) {
+    public void addTelephonyConferenceListener(@NonNull TelephonyConferenceListener listener) {
         mListeners.add(listener);
     }
 
@@ -58,7 +68,7 @@ public class TelephonyConferenceBase extends Conference {
      * Removes a listener from this conference.
      * @param listener The listener.
      */
-    public void removeListener(@NonNull TelephonyConferenceListener listener) {
+    public void removeTelephonyConferenceListener(@NonNull TelephonyConferenceListener listener) {
         mListeners.remove(listener);
     }
 
@@ -114,6 +124,46 @@ public class TelephonyConferenceBase extends Conference {
             removeTelephonyConnection(connectionIterator.next());
         }
         destroy();
+        notifyDestroyed();
+    }
+
+    /**
+     * Updates RIL voice radio technology used for current conference after its creation.
+     */
+    public void updateCallRadioTechAfterCreation() {
+        final Connection primaryConnection = getPrimaryConnection();
+        if (primaryConnection != null && primaryConnection instanceof TelephonyConnection) {
+            TelephonyConnection telephonyConnection = (TelephonyConnection) primaryConnection;
+            putExtra(TelecomManager.EXTRA_CALL_NETWORK_TYPE,
+                    ServiceState.rilRadioTechnologyToNetworkType(
+                            telephonyConnection.getCallRadioTech()));
+        } else {
+            Log.w(TAG, "No primary connection found while updateCallRadioTechAfterCreation");
+        }
+    }
+
+    /**
+     * Removes the specified capability from the set of capabilities of this {@code Conference}.
+     *
+     * @param capability The capability to remove from the set.
+     */
+    public void removeCapability(int capability) {
+        int newCapabilities = getConnectionCapabilities();
+        newCapabilities &= ~capability;
+
+        setConnectionCapabilities(newCapabilities);
+    }
+
+    /**
+     * Adds the specified capability to the set of capabilities of this {@code Conference}.
+     *
+     * @param capability The capability to add to the set.
+     */
+    public void addCapability(int capability) {
+        int newCapabilities = getConnectionCapabilities();
+        newCapabilities |= capability;
+
+        setConnectionCapabilities(newCapabilities);
     }
 
     /**
@@ -124,6 +174,15 @@ public class TelephonyConferenceBase extends Conference {
     private void notifyConferenceMembershipChanged(@NonNull Connection connection) {
         for (TelephonyConferenceListener listener : mListeners) {
             listener.onConferenceMembershipChanged(connection);
+        }
+    }
+
+    /**
+     * Notifies {@link TelephonyConferenceListener}s of a conference being destroyed
+     */
+    private void notifyDestroyed() {
+        for (TelephonyConferenceListener listener : mListeners) {
+            listener.onDestroyed(this);
         }
     }
 }
