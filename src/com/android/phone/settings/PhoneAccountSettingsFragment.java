@@ -101,7 +101,7 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        mTelecomManager = TelecomManager.from(getActivity());
+        mTelecomManager = getActivity().getSystemService(TelecomManager.class);
         mTelephonyManager = TelephonyManager.from(getActivity());
         mSubscriptionManager = SubscriptionManager.from(getActivity());
     }

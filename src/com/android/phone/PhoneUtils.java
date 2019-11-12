@@ -31,6 +31,7 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.Rlog;
 import android.telephony.SubscriptionManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -223,7 +224,7 @@ public class PhoneUtils {
                                           MmiCode mmiCode,
                                           Message buttonCallbackMessage,
                                           Dialog previousAlert) {
-        log("displayMMIInitiate: " + android.telecom.Log.pii(mmiCode.toString()));
+        log("displayMMIInitiate: " + Rlog.pii(LOG_TAG, mmiCode.toString()));
         if (previousAlert != null) {
             previousAlert.dismiss();
         }
