@@ -2637,7 +2637,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public Bundle getVisualVoicemailSettings(String callingPackage, int subId) {
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
-        String systemDialer = TelecomManager.from(mApp).getSystemDialerPackage();
+        TelecomManager tm = mApp.getSystemService(TelecomManager.class);
+        String systemDialer = tm.getSystemDialerPackage();
         if (!TextUtils.equals(callingPackage, systemDialer)) {
             throw new SecurityException("caller must be system dialer");
         }
@@ -2863,8 +2864,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void sendDialerSpecialCode(String callingPackage, String inputCode) {
         final Phone defaultPhone = getDefaultPhone();
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
-        String defaultDialer = TelecomManager.from(defaultPhone.getContext())
-                .getDefaultDialerPackage();
+        TelecomManager tm = defaultPhone.getContext().getSystemService(TelecomManager.class);
+        String defaultDialer = tm.getDefaultDialerPackage();
         if (!TextUtils.equals(callingPackage, defaultDialer)) {
             TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(
                     getDefaultSubscription(), "sendDialerSpecialCode");
@@ -5563,7 +5564,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean isTtyModeSupported() {
-        TelecomManager telecomManager = TelecomManager.from(mApp);
+        TelecomManager telecomManager = mApp.getSystemService(TelecomManager.class);
         return telecomManager.isTtySupported();
     }
 
@@ -6022,8 +6023,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             PhoneAccountHandle phoneAccountHandle, Uri uri) {
         final Phone defaultPhone = getDefaultPhone();
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
-        if (!TextUtils.equals(callingPackage,
-                TelecomManager.from(defaultPhone.getContext()).getDefaultDialerPackage())) {
+        TelecomManager tm = defaultPhone.getContext().getSystemService(TelecomManager.class);
+        if (!TextUtils.equals(callingPackage, tm.getDefaultDialerPackage())) {
             TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                     mApp, PhoneUtils.getSubIdForPhoneAccountHandle(phoneAccountHandle),
                     "setVoicemailRingtoneUri");
@@ -6079,8 +6080,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             PhoneAccountHandle phoneAccountHandle, boolean enabled) {
         final Phone defaultPhone = getDefaultPhone();
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
-        if (!TextUtils.equals(callingPackage,
-                TelecomManager.from(defaultPhone.getContext()).getDefaultDialerPackage())) {
+        TelecomManager tm = defaultPhone.getContext().getSystemService(TelecomManager.class);
+        if (!TextUtils.equals(callingPackage, tm.getDefaultDialerPackage())) {
             TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                     mApp, PhoneUtils.getSubIdForPhoneAccountHandle(phoneAccountHandle),
                     "setVoicemailVibrationEnabled");

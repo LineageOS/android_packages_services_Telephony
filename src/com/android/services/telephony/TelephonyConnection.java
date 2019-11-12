@@ -29,7 +29,6 @@ import android.os.Message;
 import android.os.PersistableBundle;
 import android.telecom.CallAudioState;
 import android.telecom.Conference;
-import android.telecom.ConferenceParticipant;
 import android.telecom.Connection;
 import android.telecom.ConnectionService;
 import android.telecom.PhoneAccount;
@@ -40,6 +39,7 @@ import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsCallProfile;
@@ -47,6 +47,7 @@ import android.text.TextUtils;
 import android.util.Pair;
 
 import com.android.ims.ImsCall;
+import com.android.ims.internal.ConferenceParticipant;
 import com.android.internal.os.SomeArgs;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallFailCause;
@@ -78,6 +79,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * Base class for CDMA and GSM connections.
  */
 abstract class TelephonyConnection extends Connection implements Holdable {
+    private static final String LOG_TAG = "TelephonyConnection";
+
     private static final int MSG_PRECISE_CALL_STATE_CHANGED = 1;
     private static final int MSG_RINGBACK_TONE = 2;
     private static final int MSG_HANDOVER_STATE_CHANGED = 3;
@@ -1608,8 +1611,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                         for (String key : extras.keySet()) {
                             Object value = extras.get(key);
                             if (value instanceof String) {
-                                Log.d(this, "updateExtras Key=" + Log.pii(key) +
-                                             " value=" + Log.pii((String)value));
+                                Log.d(this, "updateExtras Key=" + Rlog.pii(LOG_TAG, key)
+                                        + " value=" + Rlog.pii(LOG_TAG, value));
                             }
                         }
                     }
@@ -1632,7 +1635,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                     Log.d(this, "Extras update not required");
                 }
             } else {
-                Log.d(this, "updateExtras extras: " + Log.pii(extras));
+                Log.d(this, "updateExtras extras: " + Rlog.pii(LOG_TAG, extras));
             }
         }
     }
@@ -2392,7 +2395,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         sb.append(" properties:");
         sb.append(propertiesToString(getConnectionProperties()));
         sb.append(" address:");
-        sb.append(Log.pii(getAddress()));
+        sb.append(Rlog.pii(LOG_TAG, getAddress()));
         sb.append(" originalConnection:");
         sb.append(mOriginalConnection);
         sb.append(" partOfConf:");
@@ -2553,6 +2556,50 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     public void setTelephonyStatusHints(@Nullable StatusHints statusHints) {
         setStatusHints(statusHints);
         notifyStatusHintsChanged(statusHints);
+    }
+
+    /**
+     * Sets RIL voice radio technology used for current connection.
+     * <p>
+     * This property is set by the Telephony {@link ConnectionService}.
+     *
+     * @param vrat the RIL Voice Radio Technology used for current connection,
+     *             see {@code RIL_RADIO_TECHNOLOGY_*} in {@link android.telephony.ServiceState}.
+     */
+    public final void setCallRadioTech(@ServiceState.RilRadioTechnology int vrat) {
+        Bundle extras = getExtras();
+        if (extras == null) {
+            extras = new Bundle();
+        }
+        extras.putInt(TelecomManager.EXTRA_CALL_NETWORK_TYPE,
+                ServiceState.rilRadioTechnologyToNetworkType(vrat));
+        putExtras(extras);
+        // Propagates the call radio technology to its parent {@link android.telecom.Conference}
+        // This action only covers non-IMS CS conference calls.
+        // For IMS PS call conference call, it can be updated via its host connection
+        // {@link #Listener.onExtrasChanged} event.
+        if (getConference() != null) {
+            getConference().putExtra(TelecomManager.EXTRA_CALL_NETWORK_TYPE,
+                    ServiceState.rilRadioTechnologyToNetworkType(vrat));
+        }
+    }
+
+    /**
+     * Returns RIL voice radio technology used for current connection.
+     * <p>
+     * Used by the Telephony {@link ConnectionService}.
+     *
+     * @return the RIL voice radio technology used for current connection,
+     *         see {@code RIL_RADIO_TECHNOLOGY_*} in {@link android.telephony.ServiceState}.
+     */
+    public final @ServiceState.RilRadioTechnology int getCallRadioTech() {
+        int voiceNetworkType = TelephonyManager.NETWORK_TYPE_UNKNOWN;
+        Bundle extras = getExtras();
+        if (extras != null) {
+            voiceNetworkType = extras.getInt(TelecomManager.EXTRA_CALL_NETWORK_TYPE,
+                    TelephonyManager.NETWORK_TYPE_UNKNOWN);
+        }
+        return ServiceState.networkTypeToRilRadioTechnology(voiceNetworkType);
     }
 
     /**

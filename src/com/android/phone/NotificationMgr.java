@@ -42,7 +42,6 @@ import android.os.UserManager;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract.PhoneLookup;
 import android.provider.Settings;
-import android.telecom.DefaultDialerManager;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
@@ -164,7 +163,7 @@ public class NotificationMgr {
                 (StatusBarManager) app.getSystemService(Context.STATUS_BAR_SERVICE);
         mUserManager = (UserManager) app.getSystemService(Context.USER_SERVICE);
         mSubscriptionManager = SubscriptionManager.from(mContext);
-        mTelecomManager = TelecomManager.from(mContext);
+        mTelecomManager = app.getSystemService(TelecomManager.class);
         mTelephonyManager = (TelephonyManager) app.getSystemService(Context.TELEPHONY_SERVICE);
     }
 
@@ -472,8 +471,8 @@ public class NotificationMgr {
     }
 
     private Intent getShowVoicemailIntentForDefaultDialer(UserHandle userHandle) {
-        String dialerPackage = DefaultDialerManager
-                .getDefaultDialerApplication(mContext, userHandle.getIdentifier());
+        String dialerPackage = mContext.getSystemService(TelecomManager.class)
+                .getDefaultDialerPackage(userHandle.getIdentifier());
         return new Intent(TelephonyManager.ACTION_SHOW_VOICEMAIL_NOTIFICATION)
                 .setPackage(dialerPackage);
     }
