@@ -469,6 +469,21 @@
             </intent-filter>
         </activity>
 
+        <!--
+            Handler for EuiccManager's public action intents. These are public and do not require
+            any special permissions to start, although the calling package name should be
+            whitelisted by the underlying eUICC service implementation (i.e. the LPA).
+        -->
+        <activity android:name=".euicc.EuiccPublicActionUiDispatcherActivity"
+            android:theme="@android:style/Theme.NoDisplay">
+            <!-- Max out priority to ensure nobody else will handle these intents. -->
+            <intent-filter android:priority="1000">
+                <action android:name=
+                    "android.telephony.euicc.action.START_EUICC_ACTIVATION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="EmergencyCallbackModeExitDialog"
             android:excludeFromRecents="true"
             android:label="@string/ecm_exit_dialog"
