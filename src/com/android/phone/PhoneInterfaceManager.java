@@ -2426,6 +2426,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mApp.enforceCallingOrSelfPermission(android.Manifest.permission.MODIFY_PHONE_STATE, null);
     }
 
+    private void enforceActiveEmergencySessionPermission() {
+        mApp.enforceCallingOrSelfPermission(
+                android.Manifest.permission.READ_ACTIVE_EMERGENCY_SESSION, null);
+    }
+
     /**
      * Make sure the caller has the CALL_PHONE permission.
      *
@@ -7228,6 +7233,57 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 }
             }
             return new ArrayList<>(emergencyNumbers);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int getEmergencyNumberDbVersion(int subId) {
+        enforceReadPrivilegedPermission("getEmergencyNumberDbVersion");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            final Phone phone = getPhone(subId);
+            if (phone == null) {
+                loge("getEmergencyNumberDbVersion fails with invalid subId: " + subId);
+                return TelephonyManager.INVALID_EMERGENCY_NUMBER_DB_VERSION;
+            }
+            return phone.getEmergencyNumberDbVersion();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void notifyOtaEmergencyNumberDbInstalled() {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            for (Phone phone: PhoneFactory.getPhones()) {
+                EmergencyNumberTracker tracker = phone.getEmergencyNumberTracker();
+                if (tracker != null) {
+                    tracker.updateOtaEmergencyNumberDatabase();
+                }
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void updateTestOtaEmergencyNumberDbFilePath(String otaFilePath) {
+        enforceActiveEmergencySessionPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            for (Phone phone: PhoneFactory.getPhones()) {
+                EmergencyNumberTracker tracker = phone.getEmergencyNumberTracker();
+                if (tracker != null) {
+                    tracker.updateTestOtaEmergencyNumberDbFilePath(otaFilePath);
+                }
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
