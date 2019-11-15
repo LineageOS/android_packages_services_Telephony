@@ -815,7 +815,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
         final TelephonyConnection connection =
                 createConnectionFor(phone, null, true /* isOutgoing */, request.getAccountHandle(),
-                        request.getTelecomCallId(), request.getAddress(), request.getVideoState());
+                        request.getTelecomCallId());
         if (connection == null) {
             return Connection.createFailedConnection(
                     DisconnectCauseUtil.toTelecomDisconnectCause(
@@ -874,15 +874,9 @@ public class TelephonyConnectionService extends ConnectionService {
             return Connection.createCanceledConnection();
         }
 
-        // We should rely on the originalConnection to get the video state.  The request coming
-        // from Telecom does not know the video state of the incoming call.
-        int videoState = originalConnection != null ? originalConnection.getVideoState() :
-                VideoProfile.STATE_AUDIO_ONLY;
-
         TelephonyConnection connection =
                 createConnectionFor(phone, originalConnection, false /* isOutgoing */,
-                        request.getAccountHandle(), request.getTelecomCallId(),
-                        request.getAddress(), videoState);
+                        request.getAccountHandle(), request.getTelecomCallId());
         handleIncomingRtt(request, originalConnection);
         if (connection == null) {
             return Connection.createCanceledConnection();
@@ -941,18 +935,56 @@ public class TelephonyConnectionService extends ConnectionService {
     @Override
     public void onCreateIncomingConnectionFailed(PhoneAccountHandle connectionManagerPhoneAccount,
             ConnectionRequest request) {
-        Phone phone = getPhoneForAccount(request.getAccountHandle(), false, null);
-        Call ringingCall = phone.getRingingCall();
-        if (ringingCall.isRinging()) {
-            try {
-                Log.i(this, "onCreateIncomingConnectionFailed: hanging up ringing call "
-                        + ringingCall);
-                ringingCall.hangup();
-            } catch (CallStateException e) {
-                Log.w(this, "onCreateIncomingConnectionFailed: couldn't hang up ringing call "
-                        + ringingCall);
-            }
+        Log.i(this, "onCreateIncomingConnectionFailed, request: " + request);
+        // If there is an incoming emergency CDMA Call (while the phone is in ECBM w/ No SIM),
+        // make sure the PhoneAccount lookup retrieves the default Emergency Phone.
+        PhoneAccountHandle accountHandle = request.getAccountHandle();
+        boolean isEmergency = false;
+        if (accountHandle != null && PhoneUtils.EMERGENCY_ACCOUNT_HANDLE_ID.equals(
+                accountHandle.getId())) {
+            Log.w(this, "onCreateIncomingConnectionFailed:Emergency call failed... ");
+            isEmergency = true;
         }
+        Phone phone = getPhoneForAccount(accountHandle, isEmergency,
+                /* Note: when not an emergency, handle can be null for unknown callers */
+                request.getAddress() == null ? null : request.getAddress().getSchemeSpecificPart());
+        if (phone == null) {
+            Log.w(this, "onCreateIncomingConnectionFailed: can not find corresponding phone.");
+            return;
+        }
+
+        Call call = phone.getRingingCall();
+        if (!call.getState().isRinging()) {
+            Log.w(this, "onCreateIncomingConnectionFailed, no ringing call found for failed call");
+            return;
+        }
+
+        com.android.internal.telephony.Connection originalConnection =
+                call.getState() == Call.State.WAITING
+                        ? call.getLatestConnection() : call.getEarliestConnection();
+        TelephonyConnection knownConnection =
+                getConnectionForOriginalConnection(originalConnection);
+        if (knownConnection != null) {
+            Log.w(this, "onCreateIncomingConnectionFailed, original connection already registered."
+                    + " Hanging it up.");
+            knownConnection.onAbort();
+            return;
+        }
+
+        TelephonyConnection connection =
+                createConnectionFor(phone, originalConnection, false /* isOutgoing */,
+                        request.getAccountHandle(), request.getTelecomCallId());
+        if (connection == null) {
+            Log.w(this, "onCreateIncomingConnectionFailed, TelephonyConnection created as null, "
+                    + "ignoring.");
+            return;
+        }
+
+        // We have to do all of this work because in some cases, hanging up the call maps to
+        // different underlying signaling (CDMA), which is already encapsulated in
+        // TelephonyConnection.
+        connection.onReject();
+        connection.close();
     }
 
     @Override
@@ -1054,8 +1086,8 @@ public class TelephonyConnectionService extends ConnectionService {
         TelephonyConnection connection =
                 createConnectionFor(phone, unknownConnection,
                         !unknownConnection.isIncoming() /* isOutgoing */,
-                        request.getAccountHandle(), request.getTelecomCallId(),
-                        request.getAddress(), videoState);
+                        request.getAccountHandle(), request.getTelecomCallId()
+                );
 
         if (connection == null) {
             return Connection.createCanceledConnection();
@@ -1329,9 +1361,7 @@ public class TelephonyConnectionService extends ConnectionService {
             com.android.internal.telephony.Connection originalConnection,
             boolean isOutgoing,
             PhoneAccountHandle phoneAccountHandle,
-            String telecomCallId,
-            Uri address,
-            int videoState) {
+            String telecomCallId) {
         TelephonyConnection returnConnection = null;
         int phoneType = phone.getPhoneType();
         if (phoneType == TelephonyManager.PHONE_TYPE_GSM) {
@@ -1360,15 +1390,20 @@ public class TelephonyConnectionService extends ConnectionService {
 
     private boolean isOriginalConnectionKnown(
             com.android.internal.telephony.Connection originalConnection) {
+        return (getConnectionForOriginalConnection(originalConnection) != null);
+    }
+
+    private TelephonyConnection getConnectionForOriginalConnection(
+            com.android.internal.telephony.Connection originalConnection) {
         for (Connection connection : getAllConnections()) {
             if (connection instanceof TelephonyConnection) {
                 TelephonyConnection telephonyConnection = (TelephonyConnection) connection;
                 if (telephonyConnection.getOriginalConnection() == originalConnection) {
-                    return true;
+                    return telephonyConnection;
                 }
             }
         }
-        return false;
+        return null;
     }
 
     /**
