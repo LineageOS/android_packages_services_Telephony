@@ -1708,13 +1708,8 @@ public class TelephonyConnectionService extends ConnectionService {
         return true;
     }
 
-    @Override
-    public void removeConnection(Connection connection) {
-        super.removeConnection(connection);
-        if (connection instanceof TelephonyConnection) {
-            TelephonyConnection telephonyConnection = (TelephonyConnection) connection;
-            telephonyConnection.removeTelephonyConnectionListener(mTelephonyConnectionListener);
-        }
+    TelephonyConnection.TelephonyConnectionListener getTelephonyConnectionListener() {
+        return mTelephonyConnectionListener;
     }
 
     /**
