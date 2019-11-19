@@ -35,6 +35,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
@@ -116,7 +117,7 @@ public class CallBarringEditPreference extends EditPinPreference {
         if (!skipReading) {
             // Query call barring status
             mPhone.getCallBarring(mFacility, "", mHandler.obtainMessage(
-                    MyHandler.MESSAGE_GET_CALL_BARRING), 0);
+                    MyHandler.MESSAGE_GET_CALL_BARRING), CommandsInterface.SERVICE_CLASS_VOICE);
             if (mTcpListener != null) {
                 mTcpListener.onStarted(this, true);
             }
@@ -235,7 +236,8 @@ public class CallBarringEditPreference extends EditPinPreference {
             }
             // Send set call barring message to RIL layer.
             mPhone.setCallBarring(mFacility, !mIsActivated, password,
-                    mHandler.obtainMessage(MyHandler.MESSAGE_SET_CALL_BARRING), 0);
+                    mHandler.obtainMessage(MyHandler.MESSAGE_SET_CALL_BARRING),
+                    CommandsInterface.SERVICE_CLASS_VOICE);
             if (mTcpListener != null) {
                 mTcpListener.onStarted(this, false);
             }
@@ -374,7 +376,7 @@ public class CallBarringEditPreference extends EditPinPreference {
                     "",
                     obtainMessage(MESSAGE_GET_CALL_BARRING, 0, MESSAGE_SET_CALL_BARRING,
                             ar.exception),
-                    0);
+                    CommandsInterface.SERVICE_CLASS_VOICE);
         }
     }
 }
