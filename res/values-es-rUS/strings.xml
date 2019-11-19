@@ -44,10 +44,10 @@
     <string name="pause_prompt_yes" msgid="8184132073048369575">"Sí"</string>
     <string name="pause_prompt_no" msgid="2145264674774138579">"No"</string>
     <string name="wild_prompt_str" msgid="5858910969703305375">"Reemplazar el carácter comodín con"</string>
-    <string name="no_vm_number" msgid="6623853880546176930">"Falta el número de correo de voz"</string>
-    <string name="no_vm_number_msg" msgid="5165161462411372504">"No hay un número de correo de voz almacenado en la tarjeta SIM."</string>
+    <string name="no_vm_number" msgid="6623853880546176930">"Falta el número del buzón de voz"</string>
+    <string name="no_vm_number_msg" msgid="5165161462411372504">"No hay un número de buzón de voz almacenado en la tarjeta SIM."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"Agregar número"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Solo el usuario principal puede cambiar la configuración del correo de voz."</string>
+    <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Solo el usuario principal puede cambiar la configuración del buzón de voz."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Tu tarjeta SIM ha sido desbloqueada. Tu dispositivo está desbloqueando..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN de desbloqueo de red de tarjeta SIM"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Desbloquear"</string>
@@ -76,7 +76,7 @@
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Elige las cuentas que pueden realizar llamadas."</string>
     <string name="wifi_calling" msgid="3650509202851355742">"Llamada por Wi-Fi"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Servicio de conexión integrado"</string>
-    <string name="voicemail" msgid="7697769412804195032">"Correo de voz"</string>
+    <string name="voicemail" msgid="7697769412804195032">"Buzón de voz"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Buzón de voz (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="7746778673131551185">"Correo de voz:"</string>
     <string name="make_and_receive_calls" msgid="4868913166494621109">"Realiza y recibe llamadas"</string>
@@ -147,7 +147,7 @@
     <item msgid="6813323051965618926">"Ocultar número"</item>
     <item msgid="9150034130629852635">"Mostrar número"</item>
   </string-array>
-    <string name="vm_changed" msgid="4739599044379692505">"Número de correo de voz cambiado."</string>
+    <string name="vm_changed" msgid="4739599044379692505">"Número de buzón de voz cambiado."</string>
     <string name="vm_change_failed" msgid="7877733929455763566">"No se pudo cambiar el número del buzón de voz.\nSi el problema continua, ponte en contacto con tu proveedor."</string>
     <string name="fw_change_failed" msgid="9179241823460192148">"No se pudo cambiar el número de desvío.\nSi el problema continua, ponte en contacto con tu proveedor."</string>
     <string name="fw_get_in_vm_failed" msgid="2432678237218183844">"No se pudo recuperar ni guardar la configuración del número actual de reenvío.\n¿Deseas cambiar de proveedor de todos modos?"</string>
@@ -483,7 +483,7 @@
     <string name="pin2_unblocked" msgid="4481107908727789303">"El PIN2 ya no está bloqueado."</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Error en la red o en la tarjeta SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"Finalizado"</string>
-    <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Correo de voz"</string>
+    <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Número de buzón de voz"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"Marcando"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Volviendo a marcar"</string>
     <string name="card_title_conf_call" msgid="901197309274457427">"Llamada en conferencia"</string>
@@ -492,10 +492,10 @@
     <string name="card_title_on_hold" msgid="9028319436626975207">"En espera"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"Colgando"</string>
     <string name="card_title_in_call" msgid="8231896539567594265">"En llamada"</string>
-    <string name="notification_voicemail_title" msgid="3932876181831601351">"Correo de voz nuevo"</string>
-    <string name="notification_voicemail_title_count" msgid="2806950319222327082">"Correo de voz nuevo (<xliff:g id="COUNT">%d</xliff:g>)"</string>
+    <string name="notification_voicemail_title" msgid="3932876181831601351">"Nuevo mensaje de voz"</string>
+    <string name="notification_voicemail_title_count" msgid="2806950319222327082">"Nuevo mensaje de voz (<xliff:g id="COUNT">%d</xliff:g>)"</string>
     <string name="notification_voicemail_text_format" msgid="5720947141702312537">"Marcar <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
-    <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Número de correo de voz desconocido"</string>
+    <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Número de buzón de voz desconocido"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Sin servicio"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"La red seleccionada (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) no está disponible"</string>
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Activa la red móvil y desactiva el modo de avión o el modo de ahorro de batería para realizar una llamada."</string>
