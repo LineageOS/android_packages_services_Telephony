@@ -30,10 +30,9 @@ android_app {
         "androidx.preference_preference",
         "androidx.recyclerview_recyclerview",
         "androidx.legacy_legacy-preference-v14",
+        "guava",
         "android-support-annotations",
         "com.android.phone.common-lib",
-        "guava",
-        "PlatformProperties",
     ],
 
     srcs: [
