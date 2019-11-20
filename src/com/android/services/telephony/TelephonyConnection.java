@@ -136,7 +136,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                         if (connection != null &&
                             ((connection.getAddress() != null &&
                             mOriginalConnection.getAddress() != null &&
-                            mOriginalConnection.getAddress().contains(connection.getAddress())) ||
+                            mOriginalConnection.getAddress().equals(connection.getAddress())) ||
                             connection.getState() == mOriginalConnection.getStateBeforeHandover())) {
                             Log.d(TelephonyConnection.this,
                                     "SettingOriginalConnection " + mOriginalConnection.toString()
