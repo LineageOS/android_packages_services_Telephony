@@ -763,6 +763,11 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private boolean mShowPreciseFailedCause;
 
     /**
+     * Provides a DisconnectCause associated with a hang up request.
+     */
+    private int mHangupDisconnectCause = DisconnectCause.NOT_VALID;
+
+    /**
      * Listeners to our TelephonyConnection specific callbacks
      */
     private final Set<TelephonyConnectionListener> mTelephonyListeners = Collections.newSetFromMap(
@@ -1481,6 +1486,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
 
     protected void hangup(int telephonyDisconnectCode) {
         if (mOriginalConnection != null) {
+            mHangupDisconnectCause = telephonyDisconnectCode;
             try {
                 // Hanging up a ringing call requires that we invoke call.hangup() as opposed to
                 // connection.hangup(). Without this change, the party originating the call
@@ -1733,9 +1739,16 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                             preciseDisconnectCause =
                                     mOriginalConnection.getPreciseDisconnectCause();
                         }
+                        int disconnectCause = mOriginalConnection.getDisconnectCause();
+                        if ((mHangupDisconnectCause != DisconnectCause.NOT_VALID)
+                                && (mHangupDisconnectCause != disconnectCause)) {
+                            Log.i(LOG_TAG, "setDisconnected: override cause: " + disconnectCause
+                                    + " -> " + mHangupDisconnectCause);
+                            disconnectCause = mHangupDisconnectCause;
+                        }
                         setTelephonyConnectionDisconnected(
                                 DisconnectCauseUtil.toTelecomDisconnectCause(
-                                        mOriginalConnection.getDisconnectCause(),
+                                        disconnectCause,
                                         preciseDisconnectCause,
                                         mOriginalConnection.getVendorDisconnectCause(),
                                         getPhone().getPhoneId()));

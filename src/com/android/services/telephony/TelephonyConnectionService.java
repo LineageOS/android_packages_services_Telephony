@@ -1290,6 +1290,19 @@ public class TelephonyConnectionService extends ConnectionService {
                         phone.getEmergencyNumberTracker().getEmergencyNumber(number);
                 if (emergencyNumber != null) {
                     phone.notifyOutgoingEmergencyCall(emergencyNumber);
+                    // If we do not support holding ongoing calls for an outgoing emergency call,
+                    // disconnect the ongoing calls.
+                    if (!shouldHoldForEmergencyCall(phone) && !getAllConnections().isEmpty()) {
+                        for (Connection c : getAllConnections()) {
+                            if (!c.equals(connection)
+                                    && c.getState() != Connection.STATE_DISCONNECTED
+                                    && c instanceof TelephonyConnection) {
+                                ((TelephonyConnection) c).hangup(
+                                        android.telephony.DisconnectCause
+                                                .OUTGOING_EMERGENCY_CALL_PLACED);
+                            }
+                        }
+                    }
                 }
                 originalConnection = phone.dial(number, new ImsPhone.ImsDialArgs.Builder()
                         .setVideoState(videoState)
@@ -1354,6 +1367,18 @@ public class TelephonyConnectionService extends ConnectionService {
         } else {
             connection.setOriginalConnection(originalConnection);
         }
+    }
+
+    private boolean shouldHoldForEmergencyCall(Phone phone) {
+        CarrierConfigManager cfgManager = (CarrierConfigManager)
+                phone.getContext().getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (cfgManager == null) {
+            // For some reason CarrierConfigManager is unavailable, return default
+            Log.w(this, "shouldHoldForEmergencyCall: couldn't get CarrierConfigManager");
+            return true;
+        }
+        return cfgManager.getConfigForSubId(phone.getSubId()).getBoolean(
+                CarrierConfigManager.KEY_ALLOW_HOLD_CALL_DURING_EMERGENCY_BOOL, true);
     }
 
     private TelephonyConnection createConnectionFor(
