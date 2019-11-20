@@ -4900,7 +4900,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @hide
      */
     @Override
-    public boolean isTetherApnRequiredForSubscriber(int subId) {
+    public boolean isTetheringApnRequiredForSubscriber(int subId) {
         enforceModifyPermission();
         final long identity = Binder.clearCallingIdentity();
         final Phone phone = getPhone(subId);
