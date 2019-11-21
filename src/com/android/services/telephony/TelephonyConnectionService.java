@@ -182,6 +182,8 @@ public class TelephonyConnectionService extends ConnectionService {
         public boolean isLocked = false;
         // Is the emergency number associated with the slot
         public boolean hasDialedEmergencyNumber = false;
+        //SimState
+        public int simState;
 
         public SlotStatus(int slotId, int capabilities) {
             this.slotId = slotId;
@@ -1664,6 +1666,8 @@ public class TelephonyConnectionService extends ConnectionService {
             // 4)
             // Report Slot's PIN/PUK lock status for sorting later.
             int simState = mSubscriptionManagerProxy.getSimStateForSlotIdx(i);
+            // Record SimState.
+            status.simState = simState;
             if (simState == TelephonyManager.SIM_STATE_PIN_REQUIRED ||
                     simState == TelephonyManager.SIM_STATE_PUK_REQUIRED) {
                 status.isLocked = true;
@@ -1707,6 +1711,15 @@ public class TelephonyConnectionService extends ConnectionService {
                             return -1;
                         }
                         if (o1.hasDialedEmergencyNumber && !o2.hasDialedEmergencyNumber) {
+                            return 1;
+                        }
+                        // Sort by non-absent SIM.
+                        if (o1.simState == TelephonyManager.SIM_STATE_ABSENT
+                                && o2.simState != TelephonyManager.SIM_STATE_ABSENT) {
+                            return -1;
+                        }
+                        if (o2.simState == TelephonyManager.SIM_STATE_ABSENT
+                                && o1.simState != TelephonyManager.SIM_STATE_ABSENT) {
                             return 1;
                         }
                         // First start by seeing if either of the phone slots are locked. If they
