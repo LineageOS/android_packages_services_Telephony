@@ -29,7 +29,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.content.pm.UserInfo;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Handler;
@@ -564,16 +563,15 @@ public class NotificationMgr {
                     builder.build(),
                     UserHandle.ALL);
         } else {
-            List<UserInfo> users = mUserManager.getUsers(true);
-            for (UserInfo user : users) {
-                if (mUserManager.isManagedProfile(user.getUserHandle().getIdentifier())) {
+            List<UserHandle> users = getUsersExcludeDying();
+            for (UserHandle user : users) {
+                if (mUserManager.isManagedProfile(user.getIdentifier())) {
                     continue;
                 }
-                UserHandle userHandle = user.getUserHandle();
                 cancelAsUser(
                         Integer.toString(subId) /* tag */,
                         CALL_FORWARD_NOTIFICATION,
-                        userHandle);
+                        user);
             }
         }
     }
