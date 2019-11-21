@@ -23,11 +23,13 @@ import static junit.framework.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
@@ -39,6 +41,7 @@ import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.test.suitebuilder.annotation.SmallTest;
 
+import androidx.test.InstrumentationRegistry;
 import androidx.test.filters.FlakyTest;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -769,6 +772,11 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // registration to occur.
         Phone phone = c.getPhone();
         c.setOriginalConnection(c.getOriginalConnection());
+
+        // Use a real context since the method SubscriptionManager.getResourcesForSubId()
+        // needs to interact with a real context.
+        Context targetContext = InstrumentationRegistry.getTargetContext();
+        doReturn(targetContext).when(phone).getContext();
 
         // When the registration occurs, we'll capture the handler and message so we can post our
         // own messages to it.
