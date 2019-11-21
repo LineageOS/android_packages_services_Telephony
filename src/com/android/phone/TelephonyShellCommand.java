@@ -18,7 +18,6 @@ package com.android.phone;
 
 import android.content.Context;
 import android.os.Binder;
-import android.os.Build;
 import android.os.PersistableBundle;
 import android.os.Process;
 import android.os.RemoteException;
@@ -31,6 +30,7 @@ import android.util.Log;
 
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
+import com.android.internal.telephony.util.TelephonyUtils;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -623,7 +623,7 @@ public class TelephonyShellCommand extends ShellCommand {
     private int handleCcCommand() {
         // Verify that the user is allowed to run the command. Only allowed in rooted device in a
         // non user build.
-        if (Binder.getCallingUid() != Process.ROOT_UID || Build.IS_USER) {
+        if (Binder.getCallingUid() != Process.ROOT_UID || TelephonyUtils.IS_USER) {
             getErrPrintWriter().println("cc: Permission denied.");
             return -1;
         }
