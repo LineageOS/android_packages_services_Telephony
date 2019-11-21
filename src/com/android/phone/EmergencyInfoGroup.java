@@ -207,26 +207,21 @@ public class EmergencyInfoGroup extends FrameLayout implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.emergency_info_view:
-                AccessibilityManager accessibilityMgr =
-                        (AccessibilityManager) mContext.getSystemService(
-                                Context.ACCESSIBILITY_SERVICE);
-                if (accessibilityMgr.isTouchExplorationEnabled()) {
-                    if (mOnConfirmClickListener != null) {
-                        mOnConfirmClickListener.onConfirmClick(this);
-                    }
-                } else {
-                    revealSelectedButton();
-                }
-                break;
-            case R.id.emergency_info_confirm_view:
+        if (view.getId() == R.id.emergency_info_view) {
+            AccessibilityManager accessibilityMgr =
+                    (AccessibilityManager) mContext.getSystemService(
+                            Context.ACCESSIBILITY_SERVICE);
+            if (accessibilityMgr.isTouchExplorationEnabled()) {
                 if (mOnConfirmClickListener != null) {
                     mOnConfirmClickListener.onConfirmClick(this);
                 }
-                break;
-            default:
-                break;
+            } else {
+                revealSelectedButton();
+            }
+        } else if (view.getId() == R.id.emergency_info_confirm_view) {
+            if (mOnConfirmClickListener != null) {
+                mOnConfirmClickListener.onConfirmClick(this);
+            }
         }
     }
 
