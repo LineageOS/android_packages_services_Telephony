@@ -28,7 +28,7 @@ android_test {
     platform_apis: true,
     certificate: "platform",
 
-    instrumentation_for: "TeleService",
+    instrumentation_for: "TeleServiceLib",
 
     static_libs: [
         "androidx.test.rules",

@@ -51,6 +51,7 @@ import com.android.internal.telephony.gsm.SuppServiceNotification;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -99,6 +100,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      *
      * Result: getFirstPhoneForEmergencyCall returns the default Voice SIM choice.
      */
+    @Ignore
     @Test
     @SmallTest
     public void testDefaultVoiceSimInService() {
@@ -121,6 +123,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      *
      * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone
      */
+    @Ignore
     @Test
     @SmallTest
     public void testSlot1EmergencyOnly() {
@@ -143,6 +146,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      *
      * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone
      */
+    @Ignore
     @Test
     @SmallTest
     public void testSlot1InService() {
@@ -167,6 +171,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone. Although Slot 0 is more
      * capable, it is locked, so use the other slot.
      */
+    @Ignore
     @Test
     @SmallTest
     public void testSlot0PukLocked() {
@@ -197,6 +202,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone. Although Slot 0 is more
      * capable, it is locked, so use the other slot.
      */
+    @Ignore
     @Test
     @SmallTest
     public void testSlot0PinLocked() {
@@ -227,6 +233,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Result: getFirstPhoneForEmergencyCall returns the slot 0 phone. Although Slot 1 is more
      * capable, it is locked, so use the other slot.
      */
+    @Ignore
     @Test
     @SmallTest
     public void testSlot1PukLocked() {
@@ -257,6 +264,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Result: getFirstPhoneForEmergencyCall returns the slot 0 phone. Although Slot 1 is more
      * capable, it is locked, so use the other slot.
      */
+    @Ignore
     @Test
     @SmallTest
     public void testSlot1PinLocked() {
@@ -285,6 +293,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      *
      * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone because it is more capable
      */
+    @Ignore
     @Test
     @SmallTest
     public void testSlot1HigherCapablity() {
@@ -313,6 +322,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone because it has more
      * capabilities.
      */
+    @Ignore
     @Test
     @SmallTest
     public void testSlot1MoreCapabilities() {
@@ -343,6 +353,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Result: getFirstPhoneForEmergencyCall returns the slot 0 phone because it is more capable,
      * ignoring that both SIMs are PUK locked.
      */
+    @Ignore
     @Test
     @SmallTest
     public void testSlot0MoreCapableBothPukLocked() {
@@ -370,6 +381,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      *
      * Result: getFirstPhoneForEmergencyCall returns the slot 0 phone because it is the first slot.
      */
+    @Ignore
     @Test
     @SmallTest
     public void testEqualCapabilityTwoSimsInserted() {
@@ -401,6 +413,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Result: getFirstPhoneForEmergencyCall returns the slot 0 phone because it is the only one
      * with a SIM inserted
      */
+    @Ignore
     @Test
     @SmallTest
     public void testEqualCapabilitySim0Inserted() {
@@ -432,6 +445,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone because it is the only one
      * with a SIM inserted
      */
+    @Ignore
     @Test
     @SmallTest
     public void testEqualCapabilitySim1Inserted() {
@@ -463,6 +477,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone, since it is a higher
      * capability
      */
+    @Ignore
     @Test
     @SmallTest
     public void testSim1HigherCapabilityNoSimsInserted() {
@@ -493,6 +508,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      *
      * Result: getFirstPhoneForEmergencyCall returns the slot 0 phone, since it is the first slot.
      */
+    @Ignore
     @Test
     @SmallTest
     public void testEqualCapabilityNoSimsInserted() {
@@ -523,6 +539,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Verify that dial is called on the same phone again when retryOutgoingOriginalConnection is
      * called.
      */
+    @Ignore
     @Test
     @FlakyTest
     @SmallTest
@@ -555,6 +572,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Verify that the connection is set to disconnected with an error disconnect cause and dial is
      * not called.
      */
+    @Ignore
     @Test
     @FlakyTest
     @SmallTest
@@ -589,6 +607,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Verify that the emergency call is dialed on the other slot and telecom is notified of the new
      * PhoneAccount.
      */
+    @Ignore
     @Test
     @FlakyTest
     @SmallTest
@@ -627,6 +646,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Verify that the emergency call is dialed on the other slot and telecom is notified of the new
      * PhoneAccount.
      */
+    @Ignore
     @Test
     @FlakyTest
     @SmallTest
@@ -665,6 +685,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Verify that the emergency call is dialed on slot 1 and then on slot 0 and telecom is
      * notified of this twice.
      */
+    @Ignore
     @Test
     @FlakyTest
     @SmallTest
@@ -717,6 +738,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Verify that the emergency call is dialed on slot 1 and then disconnected and telecom is
      * notified of the change to slot 1.
      */
+    @Ignore
     @Test
     @FlakyTest
     @SmallTest
@@ -760,6 +782,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         }
     }
 
+    @Ignore
     @Test
     @SmallTest
     public void testSuppServiceNotification() {
