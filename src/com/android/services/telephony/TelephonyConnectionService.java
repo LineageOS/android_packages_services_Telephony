@@ -182,6 +182,8 @@ public class TelephonyConnectionService extends ConnectionService {
         public boolean isLocked = false;
         // Is the emergency number associated with the slot
         public boolean hasDialedEmergencyNumber = false;
+        //SimState
+        public int simState;
 
         public SlotStatus(int slotId, int capabilities) {
             this.slotId = slotId;
@@ -1290,6 +1292,19 @@ public class TelephonyConnectionService extends ConnectionService {
                         phone.getEmergencyNumberTracker().getEmergencyNumber(number);
                 if (emergencyNumber != null) {
                     phone.notifyOutgoingEmergencyCall(emergencyNumber);
+                    // If we do not support holding ongoing calls for an outgoing emergency call,
+                    // disconnect the ongoing calls.
+                    if (!shouldHoldForEmergencyCall(phone) && !getAllConnections().isEmpty()) {
+                        for (Connection c : getAllConnections()) {
+                            if (!c.equals(connection)
+                                    && c.getState() != Connection.STATE_DISCONNECTED
+                                    && c instanceof TelephonyConnection) {
+                                ((TelephonyConnection) c).hangup(
+                                        android.telephony.DisconnectCause
+                                                .OUTGOING_EMERGENCY_CALL_PLACED);
+                            }
+                        }
+                    }
                 }
                 originalConnection = phone.dial(number, new ImsPhone.ImsDialArgs.Builder()
                         .setVideoState(videoState)
@@ -1354,6 +1369,18 @@ public class TelephonyConnectionService extends ConnectionService {
         } else {
             connection.setOriginalConnection(originalConnection);
         }
+    }
+
+    private boolean shouldHoldForEmergencyCall(Phone phone) {
+        CarrierConfigManager cfgManager = (CarrierConfigManager)
+                phone.getContext().getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (cfgManager == null) {
+            // For some reason CarrierConfigManager is unavailable, return default
+            Log.w(this, "shouldHoldForEmergencyCall: couldn't get CarrierConfigManager");
+            return true;
+        }
+        return cfgManager.getConfigForSubId(phone.getSubId()).getBoolean(
+                CarrierConfigManager.KEY_ALLOW_HOLD_CALL_DURING_EMERGENCY_BOOL, true);
     }
 
     private TelephonyConnection createConnectionFor(
@@ -1639,6 +1666,8 @@ public class TelephonyConnectionService extends ConnectionService {
             // 4)
             // Report Slot's PIN/PUK lock status for sorting later.
             int simState = mSubscriptionManagerProxy.getSimStateForSlotIdx(i);
+            // Record SimState.
+            status.simState = simState;
             if (simState == TelephonyManager.SIM_STATE_PIN_REQUIRED ||
                     simState == TelephonyManager.SIM_STATE_PUK_REQUIRED) {
                 status.isLocked = true;
@@ -1682,6 +1711,15 @@ public class TelephonyConnectionService extends ConnectionService {
                             return -1;
                         }
                         if (o1.hasDialedEmergencyNumber && !o2.hasDialedEmergencyNumber) {
+                            return 1;
+                        }
+                        // Sort by non-absent SIM.
+                        if (o1.simState == TelephonyManager.SIM_STATE_ABSENT
+                                && o2.simState != TelephonyManager.SIM_STATE_ABSENT) {
+                            return -1;
+                        }
+                        if (o2.simState == TelephonyManager.SIM_STATE_ABSENT
+                                && o1.simState != TelephonyManager.SIM_STATE_ABSENT) {
                             return 1;
                         }
                         // First start by seeing if either of the phone slots are locked. If they
