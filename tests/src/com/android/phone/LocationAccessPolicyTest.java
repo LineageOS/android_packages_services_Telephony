@@ -35,6 +35,7 @@ import android.os.UserHandle;
 import android.telephony.LocationAccessPolicy;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -172,6 +173,7 @@ public class LocationAccessPolicyTest {
     }
 
 
+    @Ignore
     @Test
     public void test() {
         setupScenario(mScenario);
