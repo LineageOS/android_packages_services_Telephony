@@ -461,16 +461,15 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
     @Override
     public boolean onKey(View view, int keyCode, KeyEvent event) {
-        switch (view.getId()) {
-            case R.id.digits:
-                // Happen when "Done" button of the IME is pressed. This can happen when this
-                // Activity is forced into landscape mode due to a desk dock.
-                if (keyCode == KeyEvent.KEYCODE_ENTER
-                        && event.getAction() == KeyEvent.ACTION_UP) {
-                    placeCall();
-                    return true;
-                }
-                break;
+        if (view.getId()
+                == R.id.digits) { // Happen when "Done" button of the IME is pressed. This can
+            // happen when this
+            // Activity is forced into landscape mode due to a desk dock.
+            if (keyCode == KeyEvent.KEYCODE_ENTER
+                    && event.getAction() == KeyEvent.ACTION_UP) {
+                placeCall();
+                return true;
+            }
         }
         return false;
     }
@@ -510,27 +509,22 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.deleteButton: {
-                keyPressed(KeyEvent.KEYCODE_DEL);
-                return;
+        if (view.getId() == R.id.deleteButton) {
+            keyPressed(KeyEvent.KEYCODE_DEL);
+            return;
+        } else if (view.getId() == R.id.floating_action_button) {
+            view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+            placeCall();
+            return;
+        } else if (view.getId() == R.id.digits) {
+            if (mDigits.length() != 0) {
+                mDigits.setCursorVisible(true);
             }
-            case R.id.floating_action_button: {
-                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-                placeCall();
-                return;
-            }
-            case R.id.digits: {
-                if (mDigits.length() != 0) {
-                    mDigits.setCursorVisible(true);
-                }
-                return;
-            }
-            case R.id.floating_action_button_dialpad: {
-                mDigits.getText().clear();
-                switchView(mDialpadView, mEmergencyShortcutView, true);
-                return;
-            }
+            return;
+        } else if (view.getId() == R.id.floating_action_button_dialpad) {
+            mDigits.getText().clear();
+            switchView(mDialpadView, mEmergencyShortcutView, true);
+            return;
         }
     }
 
@@ -539,67 +533,54 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         if (!pressed) {
             return;
         }
-        switch (view.getId()) {
-            case R.id.one: {
-                playTone(ToneGenerator.TONE_DTMF_1);
-                keyPressed(KeyEvent.KEYCODE_1);
-                return;
-            }
-            case R.id.two: {
-                playTone(ToneGenerator.TONE_DTMF_2);
-                keyPressed(KeyEvent.KEYCODE_2);
-                return;
-            }
-            case R.id.three: {
-                playTone(ToneGenerator.TONE_DTMF_3);
-                keyPressed(KeyEvent.KEYCODE_3);
-                return;
-            }
-            case R.id.four: {
-                playTone(ToneGenerator.TONE_DTMF_4);
-                keyPressed(KeyEvent.KEYCODE_4);
-                return;
-            }
-            case R.id.five: {
-                playTone(ToneGenerator.TONE_DTMF_5);
-                keyPressed(KeyEvent.KEYCODE_5);
-                return;
-            }
-            case R.id.six: {
-                playTone(ToneGenerator.TONE_DTMF_6);
-                keyPressed(KeyEvent.KEYCODE_6);
-                return;
-            }
-            case R.id.seven: {
-                playTone(ToneGenerator.TONE_DTMF_7);
-                keyPressed(KeyEvent.KEYCODE_7);
-                return;
-            }
-            case R.id.eight: {
-                playTone(ToneGenerator.TONE_DTMF_8);
-                keyPressed(KeyEvent.KEYCODE_8);
-                return;
-            }
-            case R.id.nine: {
-                playTone(ToneGenerator.TONE_DTMF_9);
-                keyPressed(KeyEvent.KEYCODE_9);
-                return;
-            }
-            case R.id.zero: {
-                playTone(ToneGenerator.TONE_DTMF_0);
-                keyPressed(KeyEvent.KEYCODE_0);
-                return;
-            }
-            case R.id.pound: {
-                playTone(ToneGenerator.TONE_DTMF_P);
-                keyPressed(KeyEvent.KEYCODE_POUND);
-                return;
-            }
-            case R.id.star: {
-                playTone(ToneGenerator.TONE_DTMF_S);
-                keyPressed(KeyEvent.KEYCODE_STAR);
-                return;
-            }
+        if (view.getId() == R.id.one) {
+            playTone(ToneGenerator.TONE_DTMF_1);
+            keyPressed(KeyEvent.KEYCODE_1);
+            return;
+        } else if (view.getId() == R.id.two) {
+            playTone(ToneGenerator.TONE_DTMF_2);
+            keyPressed(KeyEvent.KEYCODE_2);
+            return;
+        } else if (view.getId() == R.id.three) {
+            playTone(ToneGenerator.TONE_DTMF_3);
+            keyPressed(KeyEvent.KEYCODE_3);
+            return;
+        } else if (view.getId() == R.id.four) {
+            playTone(ToneGenerator.TONE_DTMF_4);
+            keyPressed(KeyEvent.KEYCODE_4);
+            return;
+        } else if (view.getId() == R.id.five) {
+            playTone(ToneGenerator.TONE_DTMF_5);
+            keyPressed(KeyEvent.KEYCODE_5);
+            return;
+        } else if (view.getId() == R.id.six) {
+            playTone(ToneGenerator.TONE_DTMF_6);
+            keyPressed(KeyEvent.KEYCODE_6);
+            return;
+        } else if (view.getId() == R.id.seven) {
+            playTone(ToneGenerator.TONE_DTMF_7);
+            keyPressed(KeyEvent.KEYCODE_7);
+            return;
+        } else if (view.getId() == R.id.eight) {
+            playTone(ToneGenerator.TONE_DTMF_8);
+            keyPressed(KeyEvent.KEYCODE_8);
+            return;
+        } else if (view.getId() == R.id.nine) {
+            playTone(ToneGenerator.TONE_DTMF_9);
+            keyPressed(KeyEvent.KEYCODE_9);
+            return;
+        } else if (view.getId() == R.id.zero) {
+            playTone(ToneGenerator.TONE_DTMF_0);
+            keyPressed(KeyEvent.KEYCODE_0);
+            return;
+        } else if (view.getId() == R.id.pound) {
+            playTone(ToneGenerator.TONE_DTMF_P);
+            keyPressed(KeyEvent.KEYCODE_POUND);
+            return;
+        } else if (view.getId() == R.id.star) {
+            playTone(ToneGenerator.TONE_DTMF_S);
+            keyPressed(KeyEvent.KEYCODE_STAR);
+            return;
         }
     }
 
@@ -609,16 +590,13 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     @Override
     public boolean onLongClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.deleteButton: {
-                mDigits.getText().clear();
-                return true;
-            }
-            case R.id.zero: {
-                removePreviousDigitIfPossible();
-                keyPressed(KeyEvent.KEYCODE_PLUS);
-                return true;
-            }
+        if (id == R.id.deleteButton) {
+            mDigits.getText().clear();
+            return true;
+        } else if (id == R.id.zero) {
+            removePreviousDigitIfPossible();
+            keyPressed(KeyEvent.KEYCODE_PLUS);
+            return true;
         }
         return false;
     }
