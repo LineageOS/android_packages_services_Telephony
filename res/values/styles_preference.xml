@@ -29,10 +29,6 @@
         <item name="android:singleLineTitle">false</item>
     </style>
 
-    <style name="SettingsPreferenceCategory" parent="@*android:style/Preference.DeviceDefault.Category">
-        <item name="android:layout">@layout/preference_category_material_settings_with_divider</item>
-    </style>
-
     <style name="SettingsDialogPreference" parent="@*android:style/Preference.DeviceDefault.DialogPreference">
         <item name="android:singleLineTitle">false</item>
         <item name="android:iconSpaceReserved">true</item>

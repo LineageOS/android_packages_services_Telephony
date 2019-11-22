@@ -189,15 +189,6 @@
         <item name="android:textColor">?android:attr/textColorPrimaryInverseDisableOnly</item>
     </style>
 
-    <style name="NetworkOperatorsSettingsTheme" parent="@android:style/Theme.DeviceDefault.Settings">
-        <item name="android:forceDarkAllowed">true</item>
-        <item name="android:switchPreferenceStyle">@style/SettingsSwitchPreference</item>
-        <item name="android:preferenceCategoryStyle">@style/SettingsPreferenceCategory</item>
-        <item name="android:preferenceStyle">@style/SettingsPreference</item>
-        <item name="android:dialogPreferenceStyle">@style/SettingsDialogPreference</item>
-        <item name="android:preferenceScreenStyle">@style/SettingsPreferenceScreen</item>
-    </style>
-
     <style name="TrimmedHorizontalProgressBar" parent="android:Widget.Material.ProgressBar.Horizontal">
         <item name="android:indeterminateDrawable">@drawable/progress_indeterminate_horizontal_material_trimmed</item>
         <item name="android:minHeight">3dip</item>
