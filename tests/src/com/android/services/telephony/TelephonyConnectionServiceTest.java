@@ -283,6 +283,37 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
     /**
      * Prerequisites:
+     * - MSIM Device, only slot 1 inserted and PUK locked
+     * - slot 1 has higher capabilities
+     *
+     * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone because it is the only one
+     * with a SIM inserted (even if it is PUK locked)
+     */
+    @Test
+    @SmallTest
+    public void testSlot1PinLockedAndSlot0Absent() {
+        Phone slot0Phone = makeTestPhone(SLOT_0_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                false /*isEmergencyOnly*/);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                false /*isEmergencyOnly*/);
+        setDefaultPhone(slot0Phone);
+        setupDeviceConfig(slot0Phone, slot1Phone, SLOT_0_PHONE_ID);
+        setPhoneSlotState(SLOT_0_PHONE_ID, TelephonyManager.SIM_STATE_ABSENT);
+        setPhoneSlotState(SLOT_1_PHONE_ID, TelephonyManager.SIM_STATE_PIN_REQUIRED);
+        // Slot 1 has more capabilities
+        setPhoneRadioAccessFamily(slot0Phone, RadioAccessFamily.RAF_GSM);
+        setPhoneRadioAccessFamily(slot1Phone, RadioAccessFamily.RAF_LTE);
+        // Slot 1 has SIM inserted.
+        setSlotHasIccCard(SLOT_0_PHONE_ID, false /*isInserted*/);
+        setSlotHasIccCard(SLOT_1_PHONE_ID, true /*isInserted*/);
+
+        Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
+
+        assertEquals(slot1Phone, resultPhone);
+    }
+
+    /**
+     * Prerequisites:
      * - MSIM Device, two slots with SIMs inserted
      * - Slot 1 is LTE capable, Slot 0 is GSM capable
      *
