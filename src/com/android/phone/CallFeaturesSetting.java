@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.UserManager;
@@ -181,9 +182,9 @@ public class CallFeaturesSetting extends PreferenceActivity
                                 startActivity(intent);
                             }
                         };
-                builder.setMessage(getResources().getString(
+                builder.setMessage(getResourcesForSubId().getString(
                                 R.string.enable_video_calling_dialog_msg))
-                        .setNeutralButton(getResources().getString(
+                        .setNeutralButton(getResourcesForSubId().getString(
                                 R.string.enable_video_calling_dialog_settings),
                                 networkSettingsClickListener)
                         .setPositiveButton(android.R.string.ok, null)
@@ -211,9 +212,9 @@ public class CallFeaturesSetting extends PreferenceActivity
         }
 
         mSubscriptionInfoHelper = new SubscriptionInfoHelper(this, getIntent());
-        mSubscriptionInfoHelper.setActionBarTitle(
-                getActionBar(), getResources(), R.string.call_settings_with_label);
         mPhone = mSubscriptionInfoHelper.getPhone();
+        mSubscriptionInfoHelper.setActionBarTitle(
+                getActionBar(), getResourcesForSubId(), R.string.call_settings_with_label);
         mTelecomManager = getSystemService(TelecomManager.class);
     }
 
@@ -315,7 +316,7 @@ public class CallFeaturesSetting extends PreferenceActivity
         mButtonAutoRetry = (SwitchPreference) findPreference(BUTTON_RETRY_KEY);
 
         mEnableVideoCalling = (SwitchPreference) findPreference(ENABLE_VIDEO_CALLING_KEY);
-        mButtonWifiCalling = findPreference(getResources().getString(
+        mButtonWifiCalling = findPreference(getResourcesForSubId().getString(
                 R.string.wifi_calling_settings_key));
 
         PersistableBundle carrierConfig =
@@ -424,8 +425,7 @@ public class CallFeaturesSetting extends PreferenceActivity
         } else if (!mImsMgr.isWfcEnabledByPlatform() || !mImsMgr.isWfcProvisionedOnDevice()) {
             prefSet.removePreference(mButtonWifiCalling);
         } else {
-            String title = SubscriptionManager.getResourcesForSubId(mPhone.getContext(),
-                    mPhone.getSubId()).getString(R.string.wifi_calling);
+            String title = getResourcesForSubId().getString(R.string.wifi_calling);
             mButtonWifiCalling.setTitle(title);
 
             int resId = com.android.internal.R.string.wifi_calling_off_summary;
@@ -447,7 +447,7 @@ public class CallFeaturesSetting extends PreferenceActivity
                         if (DBG) log("Unexpected WFC mode value: " + wfcMode);
                 }
             }
-            mButtonWifiCalling.setSummary(resId);
+            mButtonWifiCalling.setSummary(getResourcesForSubId().getString(resId));
             Intent intent = mButtonWifiCalling.getIntent();
             if (intent != null) {
                 intent.putExtra(Settings.EXTRA_SUB_ID, mPhone.getSubId());
@@ -509,9 +509,9 @@ public class CallFeaturesSetting extends PreferenceActivity
         setIntent(newIntent);
 
         mSubscriptionInfoHelper = new SubscriptionInfoHelper(this, getIntent());
-        mSubscriptionInfoHelper.setActionBarTitle(
-                getActionBar(), getResources(), R.string.call_settings_with_label);
         mPhone = mSubscriptionInfoHelper.getPhone();
+        mSubscriptionInfoHelper.setActionBarTitle(
+                getActionBar(), getResourcesForSubId(), R.string.call_settings_with_label);
     }
 
     private static void log(String msg) {
@@ -539,5 +539,13 @@ public class CallFeaturesSetting extends PreferenceActivity
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         activity.startActivity(intent);
         activity.finish();
+    }
+
+    private Resources getResourcesForSubId() {
+        if (mPhone != null) {
+            return SubscriptionManager.getResourcesForSubId(mPhone.getContext(), mPhone.getSubId());
+        } else {
+            return getResources();
+        }
     }
 }

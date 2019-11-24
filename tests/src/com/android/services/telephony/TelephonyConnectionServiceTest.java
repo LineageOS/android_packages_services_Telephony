@@ -23,11 +23,13 @@ import static junit.framework.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
@@ -39,6 +41,7 @@ import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.test.suitebuilder.annotation.SmallTest;
 
+import androidx.test.InstrumentationRegistry;
 import androidx.test.filters.FlakyTest;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -276,6 +279,37 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
 
         assertEquals(slot0Phone, resultPhone);
+    }
+
+    /**
+     * Prerequisites:
+     * - MSIM Device, only slot 1 inserted and PUK locked
+     * - slot 1 has higher capabilities
+     *
+     * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone because it is the only one
+     * with a SIM inserted (even if it is PUK locked)
+     */
+    @Test
+    @SmallTest
+    public void testSlot1PinLockedAndSlot0Absent() {
+        Phone slot0Phone = makeTestPhone(SLOT_0_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                false /*isEmergencyOnly*/);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                false /*isEmergencyOnly*/);
+        setDefaultPhone(slot0Phone);
+        setupDeviceConfig(slot0Phone, slot1Phone, SLOT_0_PHONE_ID);
+        setPhoneSlotState(SLOT_0_PHONE_ID, TelephonyManager.SIM_STATE_ABSENT);
+        setPhoneSlotState(SLOT_1_PHONE_ID, TelephonyManager.SIM_STATE_PIN_REQUIRED);
+        // Slot 1 has more capabilities
+        setPhoneRadioAccessFamily(slot0Phone, RadioAccessFamily.RAF_GSM);
+        setPhoneRadioAccessFamily(slot1Phone, RadioAccessFamily.RAF_LTE);
+        // Slot 1 has SIM inserted.
+        setSlotHasIccCard(SLOT_0_PHONE_ID, false /*isInserted*/);
+        setSlotHasIccCard(SLOT_1_PHONE_ID, true /*isInserted*/);
+
+        Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
+
+        assertEquals(slot1Phone, resultPhone);
     }
 
     /**
@@ -769,6 +803,11 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // registration to occur.
         Phone phone = c.getPhone();
         c.setOriginalConnection(c.getOriginalConnection());
+
+        // Use a real context since the method SubscriptionManager.getResourcesForSubId()
+        // needs to interact with a real context.
+        Context targetContext = InstrumentationRegistry.getTargetContext();
+        doReturn(targetContext).when(phone).getContext();
 
         // When the registration occurs, we'll capture the handler and message so we can post our
         // own messages to it.

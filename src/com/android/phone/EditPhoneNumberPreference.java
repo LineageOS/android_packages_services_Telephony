@@ -136,9 +136,9 @@ public class EditPhoneNumberPreference extends EditTextPreference {
         a.recycle();
 
         //get the summary settings, use CheckBoxPreference as the standard.
-        a = context.obtainStyledAttributes(attrs, android.R.styleable.CheckBoxPreference, 0, 0);
-        mSummaryOn = a.getString(android.R.styleable.CheckBoxPreference_summaryOn);
-        mSummaryOff = a.getString(android.R.styleable.CheckBoxPreference_summaryOff);
+        a = context.obtainStyledAttributes(attrs, R.styleable.CheckBoxPreference, 0, 0);
+        mSummaryOn = a.getString(R.styleable.CheckBoxPreference_summaryOn);
+        mSummaryOff = a.getString(R.styleable.CheckBoxPreference_summaryOff);
         a.recycle();
     }
 

@@ -19,6 +19,7 @@ package com.android.services.telephony;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.AsyncResult;
@@ -42,6 +43,7 @@ import android.telephony.DisconnectCause;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.Rlog;
 import android.telephony.ServiceState;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsCallProfile;
 import android.text.TextUtils;
@@ -405,7 +407,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             }
         }
         if (messageId != -1 && getPhone() != null && getPhone().getContext() != null) {
-            return getPhone().getContext().getText(messageId);
+            Resources res = SubscriptionManager.getResourcesForSubId(
+                    getPhone().getContext(), getPhone().getSubId());
+            return res.getText(messageId);
         } else {
             return null;
         }
@@ -2200,8 +2204,10 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                     : R.string.status_hint_label_wifi_call;
 
             Context context = getPhone().getContext();
+            Resources res =
+                    SubscriptionManager.getResourcesForSubId(context, getPhone().getSubId());
             setTelephonyStatusHints(new StatusHints(
-                    context.getString(labelId),
+                    res.getString(labelId),
                     Icon.createWithResource(
                             context, R.drawable.ic_signal_wifi_4_bar_24dp),
                     null /* extras */));

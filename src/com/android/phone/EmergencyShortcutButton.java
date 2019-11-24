@@ -182,26 +182,23 @@ public class EmergencyShortcutButton extends FrameLayout implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.emergency_call_number_info_view:
-                AccessibilityManager accessibilityMgr =
-                        (AccessibilityManager) mContext.getSystemService(
-                                Context.ACCESSIBILITY_SERVICE);
-                if (accessibilityMgr.isTouchExplorationEnabled()) {
-                    // TalkBack itself includes a prompt to confirm click action implicitly,
-                    // so we don't need an additional confirmation with second tap on button.
-                    if (mOnConfirmClickListener != null) {
-                        mOnConfirmClickListener.onConfirmClick(this);
-                    }
-                } else {
-                    revealSelectedButton();
-                }
-                break;
-            case R.id.emergency_call_confirm_view:
+        if (view.getId() == R.id.emergency_call_number_info_view) {
+            AccessibilityManager accessibilityMgr =
+                    (AccessibilityManager) mContext.getSystemService(
+                            Context.ACCESSIBILITY_SERVICE);
+            if (accessibilityMgr.isTouchExplorationEnabled()) {
+                // TalkBack itself includes a prompt to confirm click action implicitly,
+                // so we don't need an additional confirmation with second tap on button.
                 if (mOnConfirmClickListener != null) {
                     mOnConfirmClickListener.onConfirmClick(this);
                 }
-                break;
+            } else {
+                revealSelectedButton();
+            }
+        } else if (view.getId() == R.id.emergency_call_confirm_view) {
+            if (mOnConfirmClickListener != null) {
+                mOnConfirmClickListener.onConfirmClick(this);
+            }
         }
     }
 
