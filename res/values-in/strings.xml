@@ -183,8 +183,8 @@
     <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"Jenis jaringan yang dipilih"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(terlarang)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"Pilih jaringan"</string>
-    <string name="network_disconnected" msgid="8844141106841160825">"Tidak tersambung"</string>
-    <string name="network_connected" msgid="2760235679963580224">"Tersambung"</string>
+    <string name="network_disconnected" msgid="8844141106841160825">"Terputus"</string>
+    <string name="network_connected" msgid="2760235679963580224">"Terhubung"</string>
     <string name="network_connecting" msgid="160901383582774987">"Menyambungkan..."</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"Tidak dapat tersambung"</string>
   <string-array name="preferred_network_mode_choices">
@@ -823,7 +823,7 @@
     <string name="radioInfo_phone_idle" msgid="2191653783170757819">"Tidak ada aktivitas"</string>
     <string name="radioInfo_phone_ringing" msgid="8100354169567413370">"Berdering"</string>
     <string name="radioInfo_phone_offhook" msgid="7564601639749936170">"Panggilan sedang Berlangsung"</string>
-    <string name="radioInfo_data_disconnected" msgid="8085447971880814541">"Sambungan terputus"</string>
+    <string name="radioInfo_data_disconnected" msgid="8085447971880814541">"Terputus"</string>
     <string name="radioInfo_data_connecting" msgid="925092271092152472">"Menghubungkan"</string>
     <string name="radioInfo_data_connected" msgid="7637335645634239508">"Terhubung"</string>
     <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Ditangguhkan"</string>
