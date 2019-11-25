@@ -19,10 +19,12 @@ package com.android.phone;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
@@ -108,6 +110,50 @@ public class CallFeaturesSetting extends PreferenceActivity
     /*
      * Click Listeners, handle click based on objects attached to UI.
      */
+
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            log("onReceive: " + intent.getAction());
+
+            if (Intent.ACTION_AIRPLANE_MODE_CHANGED.equals(intent.getAction())) {
+                log("ACTION_AIRPLANE_MODE_CHANGED");
+
+                boolean isAirplaneModeOn = intent.getBooleanExtra("state", false);
+                handleAirplaneModeChange(isAirplaneModeOn);
+            }
+        }
+    };
+
+    private void handleAirplaneModeChange(boolean isAirplaneModeOn) {
+        PersistableBundle b = null;
+        if (mSubscriptionInfoHelper.hasSubId()) {
+            b = PhoneGlobals.getInstance().getCarrierConfigForSubId(
+                    mSubscriptionInfoHelper.getSubId());
+        } else {
+            b = PhoneGlobals.getInstance().getCarrierConfig();
+        }
+
+        if (b != null && b.getBoolean(
+                CarrierConfigManager.KEY_DISABLE_SUPPLEMENTARY_SERVICES_IN_AIRPLANE_MODE_BOOL)) {
+            PreferenceScreen preferenceScreen = getPreferenceScreen();
+            Preference callForwarding = preferenceScreen.findPreference(
+                    GsmUmtsCallOptions.CALL_FORWARDING_KEY);
+            Preference callBarring = preferenceScreen.findPreference(
+                    GsmUmtsCallOptions.CALL_BARRING_KEY);
+            Preference additional = preferenceScreen.findPreference(
+                    GsmUmtsCallOptions.ADDITIONAL_GSM_SETTINGS_KEY);
+            if (callForwarding != null) {
+                callForwarding.setEnabled(!isAirplaneModeOn);
+            }
+            if (callBarring != null) {
+                callBarring.setEnabled(!isAirplaneModeOn);
+            }
+            if (additional != null) {
+                additional.setEnabled(!isAirplaneModeOn);
+            }
+        }
+    }
 
     // Click listener for all toggle events
     @Override
@@ -267,6 +313,7 @@ public class CallFeaturesSetting extends PreferenceActivity
     protected void onPause() {
         super.onPause();
         listenPhoneState(false);
+        unregisterReceiver(mReceiver);
 
         // Remove callback for provisioning changes.
         try {
@@ -379,6 +426,10 @@ public class CallFeaturesSetting extends PreferenceActivity
         } catch (ImsException e) {
             Log.w(LOG_TAG, "onResume: Unable to register callback for provisioning changes.");
         }
+
+        IntentFilter intentFilter =
+                new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        registerReceiver(mReceiver, intentFilter);
     }
 
     private void updateVtWfc() {
