@@ -877,7 +877,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     // Result cannot be null. Return ModemActivityInfo with all fields set to 0.
                     if (request.result == null) {
-                        request.result = new ModemActivityInfo(0, 0, 0, null, 0);
+                        request.result = new ModemActivityInfo(0, 0, 0, new int[0], 0);
                     }
                     notifyRequester(request);
                     break;
