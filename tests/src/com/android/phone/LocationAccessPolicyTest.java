@@ -188,10 +188,10 @@ public class LocationAccessPolicyTest {
                 anyInt(), anyInt())).thenReturn(s.appHasCoarseManifest
                 ? PackageManager.PERMISSION_GRANTED : PackageManager.PERMISSION_DENIED);
 
-        when(mAppOpsManager.noteOpNoThrow(eq(AppOpsManager.OP_FINE_LOCATION),
+        when(mAppOpsManager.noteOpNoThrow(eq(AppOpsManager.OPSTR_FINE_LOCATION),
                 anyInt(), anyString(), nullable(String.class), nullable(String.class)))
                 .thenReturn(s.fineAppOp);
-        when(mAppOpsManager.noteOpNoThrow(eq(AppOpsManager.OP_COARSE_LOCATION),
+        when(mAppOpsManager.noteOpNoThrow(eq(AppOpsManager.OPSTR_COARSE_LOCATION),
                 anyInt(), anyString(), nullable(String.class), nullable(String.class)))
                 .thenReturn(s.coarseAppOp);
 
