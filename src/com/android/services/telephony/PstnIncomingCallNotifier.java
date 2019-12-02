@@ -288,7 +288,11 @@ final class PstnIncomingCallNotifier {
             }
         } else {
             TelecomManager tm = mPhone.getContext().getSystemService(TelecomManager.class);
-            tm.addNewIncomingCall(handle, extras);
+            if (connection.isMultiparty()) {
+                tm.addNewIncomingConference(handle, extras);
+            } else {
+                tm.addNewIncomingCall(handle, extras);
+            }
         }
     }
 

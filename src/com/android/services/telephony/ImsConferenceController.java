@@ -52,7 +52,18 @@ public class ImsConferenceController {
                 Log.v(ImsConferenceController.class, "onDestroyed: %s", conference);
             }
 
+            if (conference instanceof ImsConference) {
+                // Ims Conference call ended, so UE may now have the ability to initiate
+                // an Adhoc Conference call. Hence, try enabling adhoc conference capability
+                mTelecomAccountRegistry.refreshAdhocConference(true);
+            }
             mImsConferences.remove(conference);
+        }
+
+        @Override
+        public void onStateChanged(Conference conference, int oldState, int newState) {
+            Log.v(this, "onStateChanged: Conference = " + conference);
+            recalculateConferenceable();
         }
     };
 
@@ -101,10 +112,11 @@ public class ImsConferenceController {
     private final ArrayList<TelephonyConnection> mTelephonyConnections = new ArrayList<>();
 
     /**
-     * List of known {@link ImsConference}s.  Realistically there will only ever be a single
-     * concurrent IMS conference.
+     * List of known {@link ImsConference}s. There can be upto maximum two Ims conference calls.
+     * One conference call can be a host conference call and another conference call formed as a
+     * result of accepting incoming conference call.
      */
-    private final ArrayList<ImsConference> mImsConferences = new ArrayList<>(1);
+    private final ArrayList<ImsConference> mImsConferences = new ArrayList<>(2);
 
     private TelecomAccountRegistry mTelecomAccountRegistry;
 
@@ -120,6 +132,17 @@ public class ImsConferenceController {
         mConnectionService = connectionService;
         mTelecomAccountRegistry = telecomAccountRegistry;
         mFeatureFlagProxy = featureFlagProxy;
+    }
+
+    void addConference(ImsConference conference) {
+        if (mImsConferences.contains(conference)) {
+            // Adding a duplicate realistically shouldn't happen.
+            Log.w(this, "addConference - conference already tracked; conference=%s", conference);
+            return;
+        }
+        mImsConferences.add(conference);
+        conference.addTelephonyConferenceListener(mConferenceListener);
+        recalculateConferenceable();
     }
 
     /**
@@ -250,6 +273,11 @@ public class ImsConferenceController {
                 continue;
             }
 
+            // Since UE cannot host two conference calls, remove the ability to initiate
+            // another conference call as there already exists a conference call, which
+            // is hosted on this device.
+            mTelecomAccountRegistry.refreshAdhocConference(false);
+
             switch (conference.getState()) {
                 case Connection.STATE_ACTIVE:
                     //fall through
@@ -360,6 +388,10 @@ public class ImsConferenceController {
             Log.v(this, "Start new ImsConference - connection: %s", connection);
         }
 
+        if (connection.isAdhocConferenceCall()) {
+            Log.w(this, "start new ImsConference - control should never come here");
+            return;
+        }
         // Make a clone of the connection which will become the Ims conference host connection.
         // This is necessary since the Connection Service does not support removing a connection
         // from Telecom.  Instead we create a new instance and remove the old one from telecom.

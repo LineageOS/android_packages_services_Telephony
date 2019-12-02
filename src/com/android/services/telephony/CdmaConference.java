@@ -73,6 +73,16 @@ public class CdmaConference extends TelephonyConferenceBase implements Holdable 
     }
 
     @Override
+    public void onAnswer(int videoState) {
+        Log.e(this, new Exception(), "Answer not supported for CDMA conference call.");
+    }
+
+    @Override
+    public void onReject() {
+        Log.e(this, new Exception(), "Reject not supported for CDMA conference call.");
+    }
+
+    @Override
     public void onHold() {
         Log.e(this, new Exception(), "Hold not supported for CDMA conference call.");
     }

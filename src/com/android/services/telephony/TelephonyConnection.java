@@ -114,6 +114,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private static final int MSG_ON_CONNECTION_EVENT = 19;
     private static final int MSG_REDIAL_CONNECTION_CHANGED = 20;
 
+    private List<Uri> mParticipants;
+    private boolean mIsAdhocConferenceCall;
+
     private final Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
@@ -163,7 +166,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                                 "not foreground connection, skipping");
                         return;
                     }
-                    setRingbackRequested((Boolean) ((AsyncResult) msg.obj).result);
+                    boolean ringback = (Boolean) ((AsyncResult) msg.obj).result;
+                    setRingbackRequested(ringback);
+                    notifyRingbackRequested(ringback);
                     break;
                 case MSG_DISCONNECT:
                     updateState();
@@ -463,6 +468,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         public void onVideoProviderChanged(android.telecom.Connection c,
                 Connection.VideoProvider videoProvider) {}
         public void onVideoStateChanged(android.telecom.Connection c, int videoState) {}
+        public void onRingbackRequested(Connection c, boolean ringback) {}
     }
 
     private final PostDialListener mPostDialListener = new PostDialListener() {
@@ -876,14 +882,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
 
     @Override
     public void onAnswer(int videoState) {
-        Log.v(this, "onAnswer");
-        if (isValidRingingCall() && getPhone() != null) {
-            try {
-                getPhone().acceptCall(videoState);
-            } catch (CallStateException e) {
-                Log.e(this, e, "Failed to accept call.");
-            }
-        }
+        performAnswer(videoState);
     }
 
     @Override
@@ -927,7 +926,11 @@ abstract class TelephonyConnection extends Connection implements Holdable {
 
     @Override
     public void onReject() {
-        Log.v(this, "onReject");
+        performReject();
+    }
+
+    public void performReject() {
+        Log.v(this, "performReject");
         if (isValidRingingCall()) {
             mHandler.obtainMessage(MSG_HANGUP, android.telephony.DisconnectCause.INCOMING_REJECTED)
                     .sendToTarget();
@@ -999,6 +1002,17 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         }
         ImsPhoneConnection originalConnection = (ImsPhoneConnection) mOriginalConnection;
         originalConnection.sendRttModifyResponse(textStream);
+    }
+
+    public void performAnswer(int videoState) {
+        Log.v(this, "performAnswer");
+        if (isValidRingingCall() && getPhone() != null) {
+            try {
+                getPhone().acceptCall(videoState);
+            } catch (CallStateException e) {
+                Log.e(this, e, "Failed to accept call.");
+            }
+        }
     }
 
     public void performHold() {
@@ -1167,6 +1181,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         newProperties = changeBitmask(newProperties, PROPERTY_IS_RTT, isRtt());
         newProperties = changeBitmask(newProperties, PROPERTY_NETWORK_IDENTIFIED_EMERGENCY_CALL,
                 isNetworkIdentifiedEmergencyCall());
+        newProperties = changeBitmask(newProperties, PROPERTY_IS_ADHOC_CONFERENCE,
+                isAdhocConferenceCall());
 
         if (getConnectionProperties() != newProperties) {
             setTelephonyConnectionProperties(newProperties);
@@ -1255,6 +1271,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         setTelephonyVideoState(mOriginalConnection.getVideoState());
         setOriginalConnectionCapabilities(mOriginalConnection.getConnectionCapabilities());
         setIsNetworkIdentifiedEmergencyCall(mOriginalConnection.isNetworkIdentifiedEmergencyCall());
+        setIsAdhocConferenceCall(mOriginalConnection.isAdhocConference());
         setAudioModeIsVoip(mOriginalConnection.getAudioModeIsVoip());
         setTelephonyVideoProvider(mOriginalConnection.getVideoProvider());
         setAudioQuality(mOriginalConnection.getAudioQuality());
@@ -1509,6 +1526,39 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         }
 
         return true;
+    }
+
+    /**
+     * @return The address's to which this Connection is currently communicating.
+     */
+    public final @Nullable List<Uri> getParticipants() {
+        return mParticipants;
+    }
+
+    /**
+     * Sets the value of the {@link #getParticipants()} property.
+     *
+     * @param address The participant address's.
+     */
+    public final void setParticipants(@Nullable List<Uri> address) {
+        mParticipants = address;
+    }
+
+    /**
+     * @return true if connection is adhocConference call else false.
+     */
+    public final boolean isAdhocConferenceCall() {
+        return mIsAdhocConferenceCall;
+    }
+
+    /**
+     * Sets the value of the {@link #isAdhocConferenceCall()} property.
+     *
+     * @param isAdhocConferenceCall represents if the call is adhoc conference call or not.
+     */
+    public void setIsAdhocConferenceCall(boolean isAdhocConferenceCall) {
+        mIsAdhocConferenceCall = isAdhocConferenceCall;
+        updateConnectionProperties();
     }
 
     private boolean canHoldImsCalls() {
@@ -2530,6 +2580,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         }
         sb.append(" confSupported:");
         sb.append(mIsConferenceSupported ? "Y" : "N");
+        sb.append(" isAdhocConf:");
+        sb.append(isAdhocConferenceCall() ? "Y" : "N");
         sb.append("]");
         return sb.toString();
     }
@@ -2851,6 +2903,16 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private void notifyVideoStateChanged(@VideoProfile.VideoState int videoState) {
         for (TelephonyConnectionListener listener : mTelephonyListeners) {
             listener.onVideoStateChanged(this, videoState);
+        }
+    }
+
+    /**
+     * Notifies {@link TelephonyConnectionListener}s of a whether to play Ringback Tone or not.
+     * @param ringback Whether the ringback tone is to be played
+     */
+    private void notifyRingbackRequested(boolean ringback) {
+        for (TelephonyConnectionListener listener : mTelephonyListeners) {
+            listener.onRingbackRequested(this, ringback);
         }
     }
 

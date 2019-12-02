@@ -49,6 +49,8 @@ import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsMmTelManager;
+import android.telephony.ims.ImsReasonInfo;
+import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.feature.MmTelFeature;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
@@ -86,9 +88,11 @@ public class TelecomAccountRegistry {
         private final PstnPhoneCapabilitiesNotifier mPhoneCapabilitiesNotifier;
         private boolean mIsEmergency;
         private boolean mIsRttCapable;
+        private boolean mIsAdhocConfCapable;
         private boolean mIsEmergencyPreferred;
         private MmTelFeature.MmTelCapabilities mMmTelCapabilities;
         private ImsMmTelManager.CapabilityCallback mMmtelCapabilityCallback;
+        private RegistrationManager.RegistrationCallback mImsRegistrationCallback;
         private ImsMmTelManager mMmTelManager;
         private final boolean mIsDummy;
         private boolean mIsVideoCapable;
@@ -106,6 +110,7 @@ public class TelecomAccountRegistry {
             mPhone = phone;
             mIsEmergency = isEmergency;
             mIsDummy = isDummy;
+            mIsAdhocConfCapable = mPhone.isImsRegistered();
             mAccount = registerPstnPhoneAccount(isEmergency, isDummy);
             Log.i(this, "Registered phoneAccount: %s with handle: %s",
                     mAccount, mAccount.getAccountHandle());
@@ -138,15 +143,38 @@ public class TelecomAccountRegistry {
                     updateRttCapability();
                 }
             };
-
             registerMmTelCapabilityCallback();
+
+            mImsRegistrationCallback = new RegistrationManager.RegistrationCallback() {
+                @Override
+                public void onRegistered(int imsRadioTech) {
+                    updateAdhocConfCapability(true);
+                }
+
+                @Override
+                public void onRegistering(int imsRadioTech) {
+                    updateAdhocConfCapability(false);
+                }
+
+                @Override
+                public void onUnregistered(ImsReasonInfo imsReasonInfo) {
+                    updateAdhocConfCapability(false);
+                }
+            };
+            registerImsRegistrationCallback();
         }
 
         void teardown() {
             mIncomingCallNotifier.teardown();
             mPhoneCapabilitiesNotifier.teardown();
-            if (mMmTelManager != null && mMmtelCapabilityCallback != null) {
-                mMmTelManager.unregisterMmTelCapabilityCallback(mMmtelCapabilityCallback);
+            if (mMmTelManager != null) {
+                if (mMmtelCapabilityCallback != null) {
+                    mMmTelManager.unregisterMmTelCapabilityCallback(mMmtelCapabilityCallback);
+                }
+
+                if (mImsRegistrationCallback != null) {
+                    mMmTelManager.unregisterImsRegistrationCallback(mImsRegistrationCallback);
+                }
             }
         }
 
@@ -166,6 +194,25 @@ public class TelecomAccountRegistry {
                 return;
             } catch (IllegalArgumentException e) {
                 Log.w(this, "registerMmTelCapabilityCallback: registration failed, invalid"
+                        + " subscription, Exception" + e.getMessage());
+                return;
+            }
+        }
+
+        private void registerImsRegistrationCallback() {
+            if (mMmTelManager == null || mImsRegistrationCallback == null) {
+                return;
+            }
+
+            try {
+                mMmTelManager.registerImsRegistrationCallback(mContext.getMainExecutor(),
+                        mImsRegistrationCallback);
+            } catch (ImsException e) {
+                Log.w(this, "registerImsRegistrationCallback: registration failed, no ImsService"
+                        + " available. Exception: " + e.getMessage());
+                return;
+            } catch (IllegalArgumentException e) {
+                Log.w(this, "registerImsRegistrationCallback: registration failed, invalid"
                         + " subscription, Exception" + e.getMessage());
                 return;
             }
@@ -319,6 +366,12 @@ public class TelecomAccountRegistry {
             if (isCarrierInstantLetteringSupported()) {
                 capabilities |= PhoneAccount.CAPABILITY_CALL_SUBJECT;
                 extras.putAll(getPhoneAccountExtras());
+            }
+
+            if (mIsAdhocConfCapable && isCarrierAdhocConferenceCallSupported()) {
+                capabilities |= PhoneAccount.CAPABILITY_ADHOC_CONFERENCE_CALLING;
+            } else {
+                capabilities &= ~PhoneAccount.CAPABILITY_ADHOC_CONFERENCE_CALLING;
             }
 
             final boolean isHandoverFromSupported = mContext.getResources().getBoolean(
@@ -511,6 +564,19 @@ public class TelecomAccountRegistry {
         }
 
         /**
+         * Determines from carrier config whether adhoc conference calling is supported.
+         *
+         * @return {@code true} if adhoc conference calling is supported, {@code false} otherwise.
+         */
+        private boolean isCarrierAdhocConferenceCallSupported() {
+            PersistableBundle b =
+                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
+            return b != null &&
+                    b.getBoolean(CarrierConfigManager.KEY_SUPPORT_ADHOC_CONFERENCE_CALLS_BOOL);
+        }
+
+
+        /**
          * Determines from carrier config whether merging calls is supported.
          *
          * @return {@code true} if merging calls is supported, {@code false} otherwise.
@@ -661,6 +727,26 @@ public class TelecomAccountRegistry {
                     return;
                 }
                 mAccount = registerPstnPhoneAccount(mIsEmergency, mIsDummy);
+            }
+        }
+
+        public void updateAdhocConfCapability(boolean isAdhocConfCapable) {
+            synchronized (mAccountsLock) {
+                if (!mAccounts.contains(this)) {
+                    // Account has already been torn down, don't try to register it again.
+                    // This handles the case where teardown has already happened, and we got a Ims
+                    // registartion update that lost the race for the mAccountsLock.  In such a
+                    // scenario by the time we get here, the original phone account could have been
+                    // torn down.
+                    return;
+                }
+
+                if (isAdhocConfCapable !=  mIsAdhocConfCapable) {
+                    Log.i(this, "updateAdhocConfCapability - changed, new value: "
+                            + isAdhocConfCapable);
+                    mIsAdhocConfCapable = isAdhocConfCapable;
+                    mAccount = registerPstnPhoneAccount(mIsEmergency, mIsDummy);
+                }
             }
         }
 
@@ -1046,6 +1132,21 @@ public class TelecomAccountRegistry {
             }
         }
         return null;
+    }
+
+    public void refreshAdhocConference(boolean isEnableAdhocConf) {
+        synchronized (mAccountsLock) {
+            Log.v(this, "refreshAdhocConference isEnable = " + isEnableAdhocConf);
+            for (AccountEntry entry : mAccounts) {
+                boolean hasAdhocConfCapability = entry.mAccount.hasCapabilities(
+                        PhoneAccount.CAPABILITY_ADHOC_CONFERENCE_CALLING);
+                if (!isEnableAdhocConf && hasAdhocConfCapability) {
+                    entry.updateAdhocConfCapability(isEnableAdhocConf);
+                } else if (isEnableAdhocConf && !hasAdhocConfCapability) {
+                    entry.updateAdhocConfCapability(entry.mPhone.isImsRegistered());
+                }
+            }
+        }
     }
 
     /**
