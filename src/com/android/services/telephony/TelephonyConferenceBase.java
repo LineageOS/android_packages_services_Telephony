@@ -17,6 +17,7 @@
 package com.android.services.telephony;
 
 import android.annotation.NonNull;
+import android.os.Bundle;
 import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.PhoneAccountHandle;
@@ -134,9 +135,11 @@ public class TelephonyConferenceBase extends Conference {
         final Connection primaryConnection = getPrimaryConnection();
         if (primaryConnection != null && primaryConnection instanceof TelephonyConnection) {
             TelephonyConnection telephonyConnection = (TelephonyConnection) primaryConnection;
-            putExtra(TelecomManager.EXTRA_CALL_NETWORK_TYPE,
+            Bundle newExtras = new Bundle();
+            newExtras.putInt(TelecomManager.EXTRA_CALL_NETWORK_TYPE,
                     ServiceState.rilRadioTechnologyToNetworkType(
                             telephonyConnection.getCallRadioTech()));
+            putExtras(newExtras);
         } else {
             Log.w(TAG, "No primary connection found while updateCallRadioTechAfterCreation");
         }
