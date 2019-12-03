@@ -28,6 +28,7 @@ import android.app.KeyguardManager;
 import android.content.Context;
 
 import androidx.test.InstrumentationRegistry;
+import androidx.test.filters.FlakyTest;
 import androidx.test.rule.ActivityTestRule;
 
 import com.android.internal.telephony.IccCard;
@@ -61,6 +62,7 @@ public class CallFeaturesSettingTest {
         keepScreenOn(mRule, mActivity);
     }
 
+    @FlakyTest
     @Test
     public void onResume_fdnIsAvailable_shouldShowFdnMenu() throws NoSuchFieldException,
             IllegalAccessException {
@@ -75,6 +77,7 @@ public class CallFeaturesSettingTest {
         onView(withText(R.string.fdn)).check(matches(isDisplayed()));
     }
 
+    @FlakyTest
     @Test
     public void onResume_iccCardIsNull_shouldNotShowFdnMenu() throws NoSuchFieldException,
             IllegalAccessException {
@@ -88,6 +91,7 @@ public class CallFeaturesSettingTest {
         onView(withText(R.string.fdn)).check(doesNotExist());
     }
 
+    @FlakyTest
     @Test
     public void onResume_fdnIsNotAvailable_shouldNotShowFdnMenu() throws NoSuchFieldException,
             IllegalAccessException {

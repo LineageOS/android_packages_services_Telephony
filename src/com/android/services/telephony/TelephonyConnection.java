@@ -1853,6 +1853,10 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         Log.v(this, "close");
         clearOriginalConnection();
         destroy();
+        if (mTelephonyConnectionService != null) {
+            removeTelephonyConnectionListener(
+                    mTelephonyConnectionService.getTelephonyConnectionListener());
+        }
         notifyDestroyed();
     }
 
@@ -2600,8 +2604,11 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         // For IMS PS call conference call, it can be updated via its host connection
         // {@link #Listener.onExtrasChanged} event.
         if (getConference() != null) {
-            getConference().putExtra(TelecomManager.EXTRA_CALL_NETWORK_TYPE,
+            Bundle newExtras = new Bundle();
+            newExtras.putInt(
+                    TelecomManager.EXTRA_CALL_NETWORK_TYPE,
                     ServiceState.rilRadioTechnologyToNetworkType(vrat));
+            getConference().putExtras(newExtras);
         }
     }
 
