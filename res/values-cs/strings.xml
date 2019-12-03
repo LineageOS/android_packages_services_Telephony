@@ -25,8 +25,6 @@
     <string name="private_num" msgid="6713286113000232309">"Soukromé číslo"</string>
     <string name="payphone" msgid="4793877574636445118">"Telefonní automat"</string>
     <string name="onHold" msgid="9035493194749959955">"Přidržený hovor"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) Zpráva"</string>
-    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"Zpráva od operátora"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"Kód MMI byl spuštěn"</string>
     <string name="ussdRunning" msgid="485588686340541690">"Kód USSD je spuštěn..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"Kód MMI byl zrušen"</string>
@@ -79,9 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"Hlasová schránka"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"Hlasová schránka (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"HS:"</string>
-    <string name="make_and_receive_calls" msgid="1258596928285972166">"Volání a přijímání hovorů"</string>
-    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"Chytré přesměrování"</string>
-    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"Když je jedno číslo nedostupné, vždy přesměrovávat hovory na druhé číslo"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"Oznámení"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"Výstražné zprávy o výjimečné situaci"</string>
     <string name="call_settings" msgid="6112441768261754562">"Nastavení hovorů"</string>
@@ -254,15 +255,10 @@
     <string name="roaming_enable" msgid="7331106985174381987">"Používat datové služby při roamingu"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Používat datové služby při roamingu"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"Datový roaming je vypnutý. Klepnutím ho zapnete."</string>
-    <string name="roaming_enabled_message" msgid="7176375330428295945">"Mohou vám být účtovány poplatky za roaming. Upravte klepnutím."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"Mobilní datové připojení bylo ztraceno"</string>
-    <string name="roaming_on_notification_title" msgid="5102274082214238655">"Datový roaming je zapnutý"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"Mohou vám být účtovány vysoké poplatky."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"Ceny vám sdělí poskytovatel datových služeb."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"Povolit datový roaming?"</string>
-    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"Omezená funkčnost SIM karty"</string>
-    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"Hovory a datové služby operátora <xliff:g id="CARRIER_NAME">%1$s</xliff:g> mohou být zablokovány, když používáte číslo <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
-    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"Hovory a datové služby operátora <xliff:g id="CARRIER_NAME">%1$s</xliff:g> mohou být s jinou SIM kartou blokovány."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"Využití dat aplikací"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"V období <xliff:g id="ID_2">%2$s</xliff:g> jste využili <xliff:g id="ID_1">%1$s</xliff:g> mobilních dat"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"Rozšířená nastavení"</string>
@@ -523,6 +519,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"Vlastník"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"Údaje zobrazíte dalším klepnutím"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"Tísňové volání"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"Pouze tísňová volání"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"Tísňová linka"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"Tísňové linky"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"Dalším klepnutím zavoláte na číslo <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -559,7 +556,6 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"Hovor, během něhož můžete posílat zprávy (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"Povolit posílání zpráv během hlasového hovoru"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"Funkce SMS během hovoru (RTT) pomáhá volajícím, kteří neslyší, jsou nedoslýchaví, mají řečovou vadu, případně potřebují víc než jen hlas z jiného důvodu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Další informace&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Text poslaný během hovoru se uloží jako přepis zpráv\n       &lt;br&gt; – Tato funkce není dostupná při videohovorech"</string>
-    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"Použít: Funkce SMS během hovoru není dostupná při roamingu"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY vypnuto"</item>
     <item msgid="3971695875449640648">"Úplný režim TTY"</item>
@@ -651,8 +647,6 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Bylo ztraceno připojení Wi-Fi. Hovor byl ukončen."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"Hovor není možné provést kvůli slabé baterii."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"Videohovor byl ukončen kvůli slabé baterii."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"Tísňová volání přes Wi-Fi nejsou v tomto místě k dispozici."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"Volání přes Wi-Fi není v tomto místě k dispozici."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"Změňte kód PIN hlasové schránky"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"Pokračovat"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"Zrušit"</string>
@@ -766,7 +760,6 @@
     <string name="call_barring_settings" msgid="80766145008623645">"Nastavení blokování hovorů"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"Vypnout všechna nastavení blokování hovorů?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"Síť je zaneprázdněná. Zkuste zavolat znovu později."</string>
-    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"Síť je přehlcená. O pomoc požádejte svého mobilního operátora."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"Hovor byl odkloněn."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"Hovor byl přesměrován."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"Hovor čeká."</string>

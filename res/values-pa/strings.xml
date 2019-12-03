@@ -25,8 +25,6 @@
     <string name="private_num" msgid="6713286113000232309">"ਨਿੱਜੀ ਨੰਬਰ"</string>
     <string name="payphone" msgid="4793877574636445118">"ਪੇਫੋਨ"</string>
     <string name="onHold" msgid="9035493194749959955">"ਹੋਲਡ ਤੇ"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) ਸੁਨੇਹਾ"</string>
-    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"ਕੈਰੀਅਰ ਸੁਨੇਹਾ"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI ਕੋਡ ਚਾਲੂ ਕੀਤਾ"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD ਕੋਡ ਚੱਲ ਰਿਹਾ ਹੈ…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI ਕੋਡ ਰੱਦ ਕੀਤਾ"</string>
@@ -79,9 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"ਵੌਇਸਮੇਲ"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"ਵੌਇਸਮੇਲ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <string name="make_and_receive_calls" msgid="1258596928285972166">"ਕਾਲਾਂ ਕਰੋ ਅਤੇ ਪ੍ਰਾਪਤ ਕਰੋ"</string>
-    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"ਚੁਸਤੀ ਨਾਲ ਅਗਾਂਹ"</string>
-    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"ਇੱਕ ਨੰਬਰ ਪਹੁੰਚ ਤੋਂ ਬਾਹਰ ਹੋਣ \'ਤੇ, ਕਾਲਾਂ ਹਮੇਸ਼ਾਂ ਹੋਰ ਨੰਬਰ \'ਤੇ ਅੱਗੇ ਭੇਜੀਆਂ ਜਾਂਦੀਆਂ ਹਨ"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"ਸੂਚਨਾਵਾਂ"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"ਐਮਰਜੈਂਸੀ ਪ੍ਰਸਾਰਨ"</string>
     <string name="call_settings" msgid="6112441768261754562">"ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
@@ -91,7 +92,7 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"ਵਾਧੂ CDMA ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"ਵਾਧੂ ਕੇਵਲ CDMA ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="labelNwService" msgid="4699970172021870983">"ਨੈਟਵਰਕ ਸੇਵਾ ਸੈਟਿੰਗਾਂ"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"ਕਾਲਰ ਆਈ.ਡੀ."</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"ਕਾਲਰ ID"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"ਸੈਟਿੰਗਾਂ ਨੂੰ ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"ਆਊਟਗੋਇੰਗ ਕਾਲਾਂ ਵਿੱਚ ਲੁਕਾਇਆ ਨੰਬਰ"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"ਆਊਟਗੋਇੰਗ ਕਾਲਾਂ ਵਿੱਚ ਡਿਸਪਲੇ ਕੀਤਾ ਨੰਬਰ"</string>
@@ -99,16 +100,16 @@
     <string name="labelCW" msgid="6120513814915920200">"ਕਾਲ ਉਡੀਕ ਵਿੱਚ"</string>
     <string name="sum_cw_enabled" msgid="8083061901633671397">"ਕਿਸੇ ਕਾਲ ਦੇ ਦੌਰਾਨ, ਮੈਨੂੰ ਇਨਕਮਿੰਗ ਕਾਲਾਂ ਦੀ ਸੂਚਨਾ ਦਿਓ"</string>
     <string name="sum_cw_disabled" msgid="3648693907300104575">"ਕਿਸੇ ਕਾਲ ਦੇ ਦੌਰਾਨ, ਮੈਨੂੰ ਇਨਕਮਿੰਗ ਕਾਲਾਂ ਦੀ ਸੂਚਨਾ ਦਿਓ"</string>
-    <string name="call_forwarding_settings" msgid="3378927671091537173">"ਕਾਲ ਫਾਰਵਰਡਿੰਗ ਸੈਟਿੰਗਾਂ"</string>
+    <string name="call_forwarding_settings" msgid="3378927671091537173">"ਕਾਲ ਫੌਰਵਾਰਡਿੰਗ ਸੈਟਿੰਗਾਂ"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"ਕਾਲ ਫੌਰਵਾਰਡਿੰਗ ਸੈਟਿੰਗਾਂ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="labelCF" msgid="2574386948026924737">"ਕਾਲ ਫਾਰਵਰਡਿੰਗ"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"ਹਮੇਸ਼ਾਂ ਫਾਰਵਰਡ ਕਰੋ"</string>
+    <string name="labelCF" msgid="2574386948026924737">"ਕਾਲ ਫੌਰਵਾਰਡਿੰਗ"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"ਹਮੇਸ਼ਾਂ ਫੌਰਵਰਡ ਕਰੋ"</string>
     <string name="messageCFU" msgid="3560082430662923687">"ਹਮੇਸ਼ਾਂ ਇਹ ਨੰਬਰ ਵਰਤੋ"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"ਸਾਰੀਆਂ ਕਾਲਾਂ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"ਸਾਰੀਆਂ ਕਾਲਾਂ <xliff:g id="PHONENUMBER">{0}</xliff:g> ਨੂੰ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="sum_cfu_enabled_no_number" msgid="6591985777096823616">"ਨੰਬਰ ਅਣਉਪਲਬਧ ਹੈ"</string>
     <string name="sum_cfu_disabled" msgid="8384177689501334080">"ਬੰਦ"</string>
-    <string name="labelCFB" msgid="6139853033106283172">"ਜਦੋਂ ਵਿਅਸਤ ਹੋਵੇ"</string>
+    <string name="labelCFB" msgid="6139853033106283172">"ਜਦੋਂ ਰੁਝੇਵਾਂ ਹੋਵੇ"</string>
     <string name="messageCFB" msgid="3711089705936187129">"ਜਦੋਂ ਰੁੱਝਾ ਹੋਵੇ ਤਾਂ ਨੰਬਰ"</string>
     <string name="sum_cfb_enabled" msgid="5984198104833116690">"<xliff:g id="PHONENUMBER">{0}</xliff:g> ਨੂੰ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="sum_cfb_disabled" msgid="4913145177320506827">"ਬੰਦ"</string>
@@ -118,7 +119,7 @@
     <string name="sum_cfnry_enabled" msgid="6955775691317662910">"<xliff:g id="PHONENUMBER">{0}</xliff:g> ਨੂੰ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="sum_cfnry_disabled" msgid="3884684060443538097">"ਬੰਦ"</string>
     <string name="disable_cfnry_forbidden" msgid="4308233959150658058">"ਜਦੋਂ ਤੁਹਾਡਾ ਫੋਨ ਜਵਾਬ ਨਹੀਂ ਦਿੰਦਾ ਤਾਂ ਤੁਹਾਡਾ ਓਪਰੇਟਰ ਕਾਲ ਫੌਰਵਾਰਡਿੰਗ ਨੂੰ ਅਸਮਰੱਥ ਬਣਾਉਣ ਦਾ ਸਮਰਥਨ ਨਹੀਂ ਕਰਦਾ।"</string>
-    <string name="labelCFNRc" msgid="2614827454402079766">"ਜਦੋਂ ਪਹੁੰਚ ਵਿੱਚ ਨਾ ਹੋਵੇ"</string>
+    <string name="labelCFNRc" msgid="2614827454402079766">"ਜਦੋਂ ਪਹੁੰਚਯੋਗ ਨਾ ਹੋਵੇ"</string>
     <string name="messageCFNRc" msgid="6380695421020295119">"ਜਦੋਂ ਨਾ ਪਹੁੰਚਯੋਗ ਹੋਵੇ ਤਾਂ ਨੰਬਰ"</string>
     <string name="sum_cfnrc_enabled" msgid="7010898346095497421">"<xliff:g id="PHONENUMBER">{0}</xliff:g> ਨੂੰ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="sum_cfnrc_disabled" msgid="2684474391807469832">"ਬੰਦ"</string>
@@ -254,15 +255,10 @@
     <string name="roaming_enable" msgid="7331106985174381987">"ਰੋਮਿੰਗ ਵੇਲੇ ਡਾਟਾ ਸੇਵਾਵਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰੋ"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ਰੋਮਿੰਗ ਵੇਲੇ ਡਾਟਾ ਸੇਵਾਵਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰੋ"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ਡਾਟਾ ਰੋਮਿੰਗ ਬੰਦ ਹੈ। ਚਾਲੂ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ।"</string>
-    <string name="roaming_enabled_message" msgid="7176375330428295945">"ਰੋਮਿੰਗ ਖ਼ਰਚੇ ਲਾਗੂ ਹੋ ਸਕਦੇ ਹਨ। ਸੋਧਣ ਲਈ ਟੈਪ ਕਰੋ।"</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"ਮੋਬਾਈਲ ਡਾਟਾ ਕਨੈਕਸ਼ਨ ਟੁੱਟਿਆ"</string>
-    <string name="roaming_on_notification_title" msgid="5102274082214238655">"ਡਾਟਾ ਰੋਮਿੰਗ ਚਾਲੂ ਹੈ"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"ਤੁਹਾਨੂੰ ਵਾਧੂ ਖਰਚਾ ਦੇਣਾ ਪੈ ਸਕਦਾ ਹੈ"</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ਕੀਮਤਾਂ ਜਾਣਨ ਲਈ ਆਪਣੇ ਨੈੱਟਵਰਕ ਪ੍ਰਦਾਨਕ ਨੂੰ ਸੰਪਰਕ ਕਰੋ।"</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ਕੀ ਡਾਟਾ ਰੋਮਿੰਗ ਦੀ ਆਗਿਆ ਦੇਣੀ ਹੈ?"</string>
-    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"ਸੀਮਤ ਸਿਮ ਪ੍ਰਕਾਰਜਾਤਮਕਤਾ"</string>
-    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> ਨੂੰ ਵਰਤਣ ਵੇਲੇ ਸ਼ਾਇਦ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ਦੀਆਂ ਕਾਲਾਂ ਅਤੇ ਡਾਟਾ ਸੇਵਾਵਾਂ ਨੂੰ ਬਲਾਕ ਕੀਤਾ ਜਾਵੇ।"</string>
-    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"ਕੋਈ ਹੋਰ ਸਿਮ ਵਰਤਣ ਵੇਲੇ ਸ਼ਾਇਦ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ਦੀਆਂ ਕਾਲਾਂ ਅਤੇ ਡਾਟਾ ਸੇਵਾਵਾਂ ਨੂੰ ਬਲਾਕ ਕੀਤਾ ਜਾਵੇ।"</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ਐਪ ਡਾਟਾ ਵਰਤੋਂ"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> ਤੱਕ <xliff:g id="ID_1">%1$s</xliff:g> ਮੋਬਾਈਲ ਡਾਟਾ ਵਰਤਿਆ ਗਿਆ"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"ਉੱਨਤ"</string>
@@ -407,15 +403,15 @@
     <string name="fdn_list_with_label" msgid="7437232552210469217">"FDN ਸੂਚੀ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2156479741307463576">"FDN ਸਕਿਰਿਆਕਰਨ"</string>
     <string name="fdn_enabled" msgid="5238109009915521240">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰ ਸਮਰਥਿਤ ਹਨ"</string>
-    <string name="fdn_disabled" msgid="4700049736675368279">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰ ਬੰਦ ਕੀਤੇ ਗਏ ਹਨ"</string>
-    <string name="enable_fdn" msgid="3740191529180493851">"FDN ਨੂੰ ਚਾਲੂ ਕਰੋ"</string>
+    <string name="fdn_disabled" msgid="4700049736675368279">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰ ਅਯੋਗ ਬਣਾਏ ਗਏ ਹਨ"</string>
+    <string name="enable_fdn" msgid="3740191529180493851">"FDN ਨੂੰ ਯੋਗ ਬਣਾਓ"</string>
     <string name="disable_fdn" msgid="7944020890722540616">"FDN ਨੂੰ ਅਸਮਰੱਥ ਬਣਾਓ"</string>
     <string name="change_pin2" msgid="2153563695382176676">"PIN2 ਬਦਲੋ"</string>
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN ਨੂੰ ਅਸਮਰੱਥ ਬਣਾਓ"</string>
-    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN ਨੂੰ ਚਾਲੂ ਕਰੋ"</string>
+    <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN ਨੂੰ ਯੋਗ ਬਣਾਓ"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰਾਂ ਨੂੰ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ਪਹੁੰਚ ਲਈ ਪਿੰਨ ਬਦਲੋ"</string>
-    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ਫ਼ੋਨ ਨੰਬਰ ਸੂਚੀ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ਪਹੁੰਚ ਲਈ PIN ਬਦਲੋ"</string>
+    <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ਫ਼ੋਨ ਨੰਬਰ ਸੂਚੀ ਵਿਵਸਥਿਤ ਕਰੋ"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"ਵੌਇਸ ਪ੍ਰਾਈਵੇਸੀ"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"ਵਿਸਤ੍ਰਿਤ ਪ੍ਰਾਈਵੇਸੀ ਮੋਡ ਸਮਰੱਥ ਬਣਾਓ"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY ਮੋਡ"</string>
@@ -523,6 +519,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"ਮਾਲਕ"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"ਜਾਣਕਾਰੀ ਦੇਖਣ ਲਈ ਦੁਬਾਰਾ ਟੈਪ ਕਰੋ"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ਐਮਰਜੈਂਸੀ ਕਾਲ"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"ਸਿਰਫ਼ ਐਮਰਜੈਂਸੀ ਕਾਲਾਂ"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"ਸੰਕਟਕਾਲੀਨ ਨੰਬਰ"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"ਸੰਕਟਕਾਲੀਨ ਨੰਬਰ"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> \'ਤੇ ਕਾਲ ਕਰਨ ਲਈ ਦੁਬਾਰਾ ਟੈਪ ਕਰੋ"</string>
@@ -559,7 +556,6 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"ਨਾਲ-ਦੀ-ਨਾਲ ਦਿਸਦੀ ਲਿਖਤ (RTT) ਵਾਲੀ ਕਾਲ"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ਕਿਸੇ ਵੌਇਸ ਕਾਲ ਦੌਰਾਨ ਸੁਨੇਹਾ ਭੇਜਣ ਦਿਓ"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT ਅਜਿਹੇ ਕਾਲ ਕਰਨ ਵਾਲੇ ਲੋਕਾਂ ਦੀ ਸਹਾਇਤਾ ਕਰਦਾ ਹੈ ਜੋ ਬੋਲੇ, ਘੱਟ ਸੁਣਨ ਵਾਲੇ, ਬੋਲਣ ਵਿੱਚ ਅਸਮਰਥ ਜਾਂ ਜਿਨ੍ਹਾਂ ਲਈ ਸਿਰਫ਼ ਅਵਾਜ਼ ਕਾਫ਼ੀ ਨਹੀਂ ਹੁੰਦੀ।&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ਹੋਰ ਜਾਣੋ&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT ਕਾਲਾਂ ਨੂੰ ਇੱਕ ਪ੍ਰਤਿਲਿਪੀ ਸੁਨੇਹੇ ਵਜੋਂ ਰੱਖਿਅਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ\n       &lt;br&gt; - RTT ਵੀਡੀਓ ਕਾਲਾਂ ਲਈ ਉਪਲਬਧ ਨਹੀਂ ਹੈ"</string>
-    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"ਨੋਟ ਕਥਨ:ਵੇਲੇ RTT ਉਪਲਬਧ ਨਹੀਂ ਹੈ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ਬੰਦ"</item>
     <item msgid="3971695875449640648">"TTY ਪੂਰਾ"</item>
@@ -613,7 +609,7 @@
     <string name="alert_dialog_no" msgid="1476091437797628703">"ਨਹੀਂ"</string>
     <string name="alert_dialog_dismiss" msgid="2491494287075907171">"ਖਾਰਜ ਕਰੋ"</string>
     <string name="voicemail_provider" msgid="5135942703327136909">"ਸੇਵਾ"</string>
-    <string name="voicemail_settings" msgid="72448049107749316">"ਸੈੱਟਅੱਪ ਕਰੋ"</string>
+    <string name="voicemail_settings" msgid="72448049107749316">"ਸਥਾਪਤ ਕਰੋ"</string>
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;ਸੈੱਟ ਨਹੀਂ ਕੀਤਾ&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"ਹੋਰ ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="calling_via_template" msgid="4839419581866928142">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ਰਾਹੀਂ ਕਾਲ ਕਰ ਰਿਹਾ ਹੈ"</string>
@@ -647,8 +643,6 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi ਕਨੈਕਸ਼ਨ ਚਲਾ ਗਿਆ ਹੈ। ਕਾਲ ਸਮਾਪਤ ਹੋਈ।"</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"ਘੱਟ ਬੈਟਰੀ ਕਾਰਨ ਤੁਹਾਡੀ ਵੀਡੀਓ ਕਾਲ ਕੀਤੀ ਨਹੀਂ ਜਾ ਸਕਦੀ।"</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"ਘੱਟ ਬੈਟਰੀ ਕਾਰਨ ਵੀਡੀਓ ਕਾਲ ਸਮਾਪਤ ਹੋਈ।"</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"ਇਸ ਟਿਕਾਣੇ \'ਤੇ ਵਾਈ-ਫਾਈ ਕਾਲਿੰਗ ਰਾਹੀਂ ਸੰਕਟਕਾਲੀਨ ਕਾਲਾਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ।"</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"ਇਸ ਟਿਕਾਣੇ \'ਤੇ ਵਾਈ-ਫਾਈ ਕਾਲਿੰਗ ਦੀ ਸੁਵਿਧਾ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।"</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ਵੌਇਸਮੇਲ PIN ਬਦਲੋ"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ਜਾਰੀ ਰੱਖੋ"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"ਰੱਦ ਕਰੋ"</string>
@@ -762,7 +756,6 @@
     <string name="call_barring_settings" msgid="80766145008623645">"ਕਾਲ ਬੈਰਿੰਗ ਸੈਟਿੰਗਾਂ"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"ਕੀ ਸਾਰੀਆਂ ਕਾਲ ਬੈਰਿੰਗ ਸੈਟਿੰਗਾਂ ਅਕਿਰਿਆਸ਼ੀਲ ਕਰਨੀਆਂ ਹਨ?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"ਨੈੱਟਵਰਕ ਰੁੱਝਿਆ ਹੋਇਆ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਕਾਲ ਲਈ ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"</string>
-    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"ਨੈੱਟਵਰਕ \'ਤੇ ਭਾਰੀ ਟ੍ਰਰੈਫ਼ਿਕ ਹੈ। ਸਹਾਇਤਾ ਲਈ ਆਪਣੇ ਮੋਬਾਈਲ ਓਪਰੇਟਰ ਨੂੰ ਸੰਪਰਕ ਕਰੋ।"</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"ਕਾਲ ਕਿਸੇ ਹੋਰ ਵਿਅਕਤੀ ਨੂੰ ਭੇਜੀ ਗਈ।"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"ਕਾਲ ਅੱਗੇ ਭੇਜੀ ਗਈ।"</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"ਕਾਲ ਉਡੀਕ ਵਿੱਚ ਹੈ।"</string>

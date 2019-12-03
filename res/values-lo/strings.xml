@@ -25,8 +25,6 @@
     <string name="private_num" msgid="6713286113000232309">"ເບີສ່ວນໂຕ"</string>
     <string name="payphone" msgid="4793877574636445118">"ຕູ້​ໂທ​ລະ​ສັບ​ສາ​ທາ​ລະ​ນະ"</string>
     <string name="onHold" msgid="9035493194749959955">"ພັກສາຍຊົ່ວຄາວ"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) ຂໍ້ຄວາມ"</string>
-    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"ຂໍ້ຄວາມຜູ້ໃຫ້ບໍລິການ"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"ເລີ່ມລະຫັດ MMI ແລ້ວ"</string>
     <string name="ussdRunning" msgid="485588686340541690">"ກຳລັງແລ່ນລະຫັດ USSD..."</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"ຍົກເລີກລະຫັດ MMI ແລ້ວ"</string>
@@ -79,9 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"ຂໍ້ຄວາມສຽງ"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"ຂໍ້​ຄວາມ​ສຽງ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM​:"</string>
-    <string name="make_and_receive_calls" msgid="1258596928285972166">"ໂທ ແລະ ຮັບສາຍ"</string>
-    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"ການສົ່ງຕໍ່ອັດສະລິຍະ"</string>
-    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"ເມື່ອຕິດຕໍ່ຫາເບີໂທໜຶ່ງບໍ່ໄດ້, ໃຫ້ໂອນສາຍໄປຫາອີກເບີສະເໝີ"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"ການແຈ້ງເຕືອນ"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"​ການ​ອອກອາກາດ​ສຸກ​ເສີນ"</string>
     <string name="call_settings" msgid="6112441768261754562">"ການຕັ້ງຄ່າການໂທ"</string>
@@ -91,7 +92,7 @@
     <string name="additional_cdma_call_settings" msgid="8628958775721886909">"ການຕັ້ງຄ່າການໂທ CDMA ເພີ່ມເຕີມ"</string>
     <string name="sum_cdma_call_settings" msgid="284753265979035549">"ການຕັ້ງຄ່າການໂທສະເພາະ CDMA ເພີ່ມເຕີມ"</string>
     <string name="labelNwService" msgid="4699970172021870983">"ການຕັ້ງຄ່າບໍລິການເຄືອຂ່າຍ"</string>
-    <string name="labelCallerId" msgid="3888899447379069198">"ໝາຍເລກຜູ້ໂທ"</string>
+    <string name="labelCallerId" msgid="3888899447379069198">"ໝາຍເລກຜູ່ໂທ"</string>
     <string name="sum_loading_settings" msgid="1826692909391168620">"ກຳລັງໂຫລດການຕັ້ງຄ່າ..."</string>
     <string name="sum_hide_caller_id" msgid="1071407020290873782">"ເບີໂທຖືກເຊື່ອງໃນເວລາໂທອອກ"</string>
     <string name="sum_show_caller_id" msgid="6768534125447290401">"ໝາຍເລກທີ່ສະແດງໃນເວລາໂທອອກ"</string>
@@ -102,7 +103,7 @@
     <string name="call_forwarding_settings" msgid="3378927671091537173">"ການຕັ້ງຄ່າໂອນສາຍ"</string>
     <string name="call_forwarding_settings_with_label" msgid="8569489414006897127">"ການ​ຕັ້ງ​ຄ່າ​ການ​ໂອນ​ສາຍ​ໂທ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="2574386948026924737">"ການໂອນສາຍ"</string>
-    <string name="labelCFU" msgid="8147177368148660600">"ໂອນສາຍທຸກເທື່ອ"</string>
+    <string name="labelCFU" msgid="8147177368148660600">"ໂອນສາຍທຸກຄັ້ງ"</string>
     <string name="messageCFU" msgid="3560082430662923687">"ໃຊ້ເບີນີ້ສະເໝີ"</string>
     <string name="sum_cfu_enabled_indicator" msgid="4014187342724130197">"ໂອນສາຍທັງໝົດ"</string>
     <string name="sum_cfu_enabled" msgid="2450052502198827927">"ໂອນສາຍທັງໝົດໄປທີ່ <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
@@ -254,15 +255,10 @@
     <string name="roaming_enable" msgid="7331106985174381987">"ເຊື່ອມຕໍ່ບໍລິການອິນເຕີເນັດເມື່ອໂຣມມິງຢູ່"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"ເຊື່ອມຕໍ່ບໍລິການອິນເຕີເນັດເມື່ອໂຣມມິງຢູ່"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ການໂຣມມິງອິນເຕີເນັດຖືກປິດໄວ້ຢູ່. ແຕະເພື່ອເປີດໃຊ້."</string>
-    <string name="roaming_enabled_message" msgid="7176375330428295945">"ອາດ​ມີ​ການ​ຄິດ​ໄລ່​ຄ່າ​ບໍ​ລິ​ການ​ໂຣມ​ມິງ. ແຕະເພື່ອແກ້ໄຂ."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"ສູນເສຍການເຊື່ອມຕໍ່ອິນເຕີເນັດມືຖືແລ້ວ"</string>
-    <string name="roaming_on_notification_title" msgid="5102274082214238655">"ເປີດໃຊ້ການໂຣມມິງອິນເຕີເນັດແລ້ວ"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"ທ່ານ​ອາດ​ຈະ​ເສຍ​ຄ່າ​ໃຊ້​ຈ່າຍ​ຫຼາຍ."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"ກະລຸນາກວດສອບລາຄາກັບຜູ້ໃຫ້ບໍລິການເຄືອຂ່າຍຂອງທ່ານ."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ອະນຸຍາດໃຫ້ໂຣມມິງຂໍ້ມູນບໍ?"</string>
-    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"ຈຳກັດການເຮັດວຽກຂອງຊິມ"</string>
-    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"ບໍລິການໂທ ແລະ ອິນເຕີເນັດ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ອາດຖືກບລັອກໄວ້ເມື່ອໃຊ້ເບີໂທ <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
-    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"ບໍລິການໂທ ແລະ ອິນເຕີເນັດ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ອາດຖືກບລັອກໄວ້ເມື່ອໃຊ້ຊິມອື່ນ."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ການໃຊ້ຂໍ້ມູນແອັບ"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"ໃຊ້ອິນເຕີເນັດໄປແລ້ວ <xliff:g id="ID_1">%1$s</xliff:g> ລະຫວ່າງ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"ຂັ້ນສູງ"</string>
@@ -523,6 +519,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"ເຈົ້າຂອງ"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"ແຕະອີກເທື່ອໜຶ່ງເພື່ອເບິ່ງຂໍ້ມູນ"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"ໂທສຸກເສີນ"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"ໂທສຸກເສີນເທົ່ານັ້ນ"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"ເບີໂທສຸກເສີນ"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"ເບີໂທສຸກເສີນ"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"ແຕະອີກຄັ້ງເພື່ອໂທ <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -559,7 +556,6 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"ການໂທ Real-time text (RTT)"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"ອະນຸຍາດໃຫ້ສົ່ງຂໍ້ຄວາມພາຍໃນການໂທສຽງໄດ້"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"RTT ຈະຊ່ວຍຜູ້ໂທທີ່ຫູໜວກ, ມີບັນຫາໃນການໄດ້ຍິນ, ຂາດຄວາມສາມາດໃນການເວົ້າ ຫຼື ຕ້ອງການຫຼາຍກວ່າສຽງ.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ສຶກສາເພີ່ມເຕີມ&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - ການໂທ RTT ຈະຖືກບັນທຶກເປັນການຖອດຂໍ້ຄວາມ\n       &lt;br&gt; - RTT ບໍ່ສາມາດໃຊ້ກັບການໂທວິດີໂອໄດ້"</string>
-    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"ໝາຍເຫດ: ບໍ່ສາມາດໃຊ້ RTT ໃນເວລາໂຣມມິງໄດ້"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ປິດ"</item>
     <item msgid="3971695875449640648">"TTY ເຕັມ"</item>
@@ -647,8 +643,6 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"ສູນເສຍການເຊື່ອມຕໍ່ Wi-Fi. ການໂທສິ້ນສຸດລົງແລ້ວ."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"ບໍ່ສາມາດໂທວິດີໂອໄດ້ເນື່ອງຈາກແບັດເຕີຣີເຫຼືອໜ້ອຍ."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"ສາຍວິດີໂອສິ້ນສຸດລົງເນື່ອງຈາກແບັດເຕີຣີເຫຼືອໜ້ອຍ."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"ບໍ່ສາມາດໃຊ້ການໂທສຸກເສີນຜ່ານ Wi-Fi ໃນສະຖານທີ່ນີ້ໄດ້."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"ບໍ່ສາມາດໂທ Wi-Fi ໃນສະຖານທີ່ນີ້ໄດ້."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"ປ່ຽນລະຫັດ PIN ຂໍ້ຄວາມສຽງ"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"ດຳເນີນການຕໍ່"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"ຍົກເລີກ"</string>
@@ -762,7 +756,6 @@
     <string name="call_barring_settings" msgid="80766145008623645">"ການຕັ້ງຄ່າການຍົກເລີກການໂທ"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"ປິດການຕັ້ງຄ່າການຍົກເລີກການໂທທັງໝົດບໍ?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"ເຄືອຂ່າຍບໍ່ຫວ່າງ. ກະລຸນາລອງໂທໃໝ່ໃນພາຍຫຼັງ."</string>
-    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"ເຄືອຂ່າຍແອອັດ. ກະລຸນາຕິດຕໍ່ຜູ້ໃຫ້ບໍລິການມືຖືຂອງທ່ານສຳລັບຄວາມຊ່ວຍເຫຼືອ."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"ໂອນສາຍມາແລ້ວ."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"ໂອນສາຍໄປແລ້ວ."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"ກຳລັງລໍຖ້າສາຍ."</string>
