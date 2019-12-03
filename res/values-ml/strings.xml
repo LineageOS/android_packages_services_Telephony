@@ -25,8 +25,6 @@
     <string name="private_num" msgid="6713286113000232309">"സ്വകാര്യ നമ്പർ"</string>
     <string name="payphone" msgid="4793877574636445118">"പണം നൽകി ഉപയോഗിക്കുന്ന ഫോൺ"</string>
     <string name="onHold" msgid="9035493194749959955">"ഹോള്‍ഡിലാണ്"</string>
-    <string name="carrier_mmi_msg_title" msgid="6260804395803031604">"(<xliff:g id="MMICARRIER">%s</xliff:g>) സന്ദേശം"</string>
-    <string name="default_carrier_mmi_msg_title" msgid="2680497876583134832">"സേവനദാതാവിന്റെ സന്ദേശം"</string>
     <string name="mmiStarted" msgid="6347869857061147003">"MMI കോഡ് ആരംഭിച്ചു"</string>
     <string name="ussdRunning" msgid="485588686340541690">"USSD കോഡ് പ്രവർത്തിക്കുന്നു…"</string>
     <string name="mmiCancelled" msgid="2771923949751842276">"MMI കോഡ് റദ്ദാക്കി"</string>
@@ -79,9 +77,12 @@
     <string name="voicemail" msgid="8693759337917898954">"വോയ്സ് മെയില്‍"</string>
     <string name="voicemail_settings_with_label" msgid="152724978380748296">"ശബ്ദമെയിൽ(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"VM:"</string>
-    <string name="make_and_receive_calls" msgid="1258596928285972166">"കോളുകൾ വിളിക്കുക, സ്വീകരിക്കുക"</string>
-    <string name="smart_forwarding_settings_menu" msgid="3874243342391798449">"സ്‌മാർട്ട് കൈമാറൽ"</string>
-    <string name="smart_forwarding_settings_menu_summary" msgid="8962247659470565059">"ഒരു നമ്പറിൽ ബന്ധപ്പെടാനാവുന്നില്ലെങ്കിൽ, നിങ്ങളുടെ മറ്റേ നമ്പറിലേക്ക് എപ്പോഴും കോളുകൾ കൈമാറുക"</string>
+    <!-- no translation found for make_and_receive_calls (1258596928285972166) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu (3874243342391798449) -->
+    <skip />
+    <!-- no translation found for smart_forwarding_settings_menu_summary (8962247659470565059) -->
+    <skip />
     <string name="voicemail_notifications_preference_title" msgid="4019728578955102213">"അറിയിപ്പുകൾ"</string>
     <string name="cell_broadcast_settings" msgid="8740238216690502563">"അടിയന്തര പ്രക്ഷേപണങ്ങൾ"</string>
     <string name="call_settings" msgid="6112441768261754562">"കോൾ ക്രമീകരണങ്ങൾ"</string>
@@ -254,15 +255,10 @@
     <string name="roaming_enable" msgid="7331106985174381987">"റോമിംഗിലാകുമ്പോൾ ഡാറ്റ സേവനങ്ങളുമായി കണ‌ക്റ്റുചെയ്യുക"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"റോമിംഗിലാകുമ്പോൾ ഡാറ്റ സേവനങ്ങളുമായി കണ‌ക്റ്റുചെയ്യുക"</string>
     <string name="roaming_reenable_message" msgid="6843814381576397939">"ഡാറ്റ റോമിംഗ് ഓഫാണ്. ഓണാക്കാൻ ടാപ്പ് ചെയ്യുക."</string>
-    <string name="roaming_enabled_message" msgid="7176375330428295945">"റോമിംഗ് നിരക്കുകൾ ബാധകമാകാം. പരിഷ്‌ക്കരിക്കാൻ ടാപ്പ് ചെയ്യുക."</string>
     <string name="roaming_notification_title" msgid="4749053220884743110">"മൊബൈൽ ഡാറ്റ കണക്ഷൻ നഷ്‌ടപ്പെട്ടു"</string>
-    <string name="roaming_on_notification_title" msgid="5102274082214238655">"ഡാറ്റ റോമിംഗ് ഓണാണ്"</string>
     <string name="roaming_warning" msgid="1603164667540144353">"നിങ്ങളിൽ നിന്ന് നിർദ്ദിഷ്‌ട നിരക്കുകൾ ഈടാക്കിയേക്കാം."</string>
     <string name="roaming_check_price_warning" msgid="7497570906830902550">"നിരക്കിനായി നിങ്ങളുടെ നെറ്റ്‌വർക്ക് ദാതാവിനെ ബന്ധപ്പെടുക."</string>
     <string name="roaming_alert_title" msgid="3654815360303826008">"ഡാറ്റ റോമിംഗ് അനുവദിക്കണോ?"</string>
-    <string name="limited_sim_function_notification_title" msgid="7611588665358096385">"പരിമിതമായ സിം പ്രവർത്തനം"</string>
-    <string name="limited_sim_function_with_phone_num_notification_message" msgid="8629471534217382598">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> ഉപയോഗിക്കുമ്പോൾ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> കോളുകളും ഡാറ്റാ സേവനങ്ങളും ബ്ലോക്ക് ചെയ്‌തേക്കാം."</string>
-    <string name="limited_sim_function_notification_message" msgid="2820647701127014781">"മറ്റൊരു SIM ഉപയോഗിക്കുമ്പോൾ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> കോളുകളും ഡാറ്റാ സേവനവും ബ്ലോക്ക് ചെയ്‌തേക്കാം."</string>
     <string name="data_usage_title" msgid="4042209259808900283">"ആപ്പ് ഡാറ്റ ഉപയോഗം"</string>
     <string name="data_usage_template" msgid="8526428824844656364">"<xliff:g id="ID_2">%2$s</xliff:g> തീയതികൾക്കിടയിൽ <xliff:g id="ID_1">%1$s</xliff:g> മൊബൈൽ ഡാറ്റ ഉപയോഗിച്ചു"</string>
     <string name="advanced_options_title" msgid="8074895510265488035">"വിപുലമായത്"</string>
@@ -279,7 +275,7 @@
     <string name="video_calling_settings_title" msgid="539714564273795574">"സേവനദായക വീഡിയോ കോളിംഗ്"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS ഓപ്‌ഷനുകൾ"</string>
     <string name="cdma_options" msgid="4016822858172249884">"CDMA ഓപ്‌ഷനുകൾ"</string>
-    <string name="throttle_data_usage" msgid="3715677828160555808">"ഡാറ്റാ ഉപയോഗം"</string>
+    <string name="throttle_data_usage" msgid="3715677828160555808">"ഡാറ്റ ഉപയോഗം"</string>
     <string name="throttle_current_usage" msgid="8762280193043815361">"നിലവിലെ കാലയളവിൽ ഉപയോഗിച്ച ഡാറ്റ"</string>
     <string name="throttle_time_frame" msgid="1915198770363734685">"ഡാറ്റ ഉപയോഗ കാലയളവ്"</string>
     <string name="throttle_rate" msgid="4710388992676803508">"ഡാറ്റ നിരക്ക് നയം"</string>
@@ -414,7 +410,7 @@
     <string name="enable_fdn_ok" msgid="7215588870329688132">"FDN പ്രവർത്തനരഹിതമാക്കുക"</string>
     <string name="disable_fdn_ok" msgid="5727046928930740173">"FDN പ്രവർത്തനക്ഷമമാക്കുക"</string>
     <string name="sum_fdn" msgid="1959399454900272878">"സ്ഥിര ഡയലിംഗ് നമ്പറുകൾ നിയന്ത്രിക്കുക"</string>
-    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ആക്‌സസിനായി പിൻ മാറ്റുക"</string>
+    <string name="sum_fdn_change_pin" msgid="6666549734792827932">"FDN ആക്‌സസ്സിനായി പിൻ മാറ്റുക"</string>
     <string name="sum_fdn_manage_list" msgid="8431088265332628316">"ഫോൺ നമ്പർ ലിസ്റ്റ് നിയന്ത്രിക്കുക"</string>
     <string name="voice_privacy" msgid="3776841382844614716">"വോയ്‌സ് സ്വകാര്യത"</string>
     <string name="voice_privacy_summary" msgid="3159383389833516214">"മെച്ചപ്പെടുത്തിയ സ്വകാര്യതാ മോഡ് പ്രവർത്തനക്ഷമമാക്കി"</string>
@@ -523,6 +519,7 @@
     <string name="emergency_information_owner_hint" msgid="688331472291637149">"ഉടമ"</string>
     <string name="emergency_information_confirm_hint" msgid="4039012670779853030">"വിവരങ്ങൾ കാണാൻ വീണ്ടും ടാപ്പ് ചെയ്യുക"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="4627849966634578257">"അടിയന്തര കോൾ"</string>
+    <string name="emergency_dialpad_title" msgid="6052294225467269233">"അടിയന്തര കോളുകൾ മാത്രം"</string>
     <string name="single_emergency_number_title" msgid="4959203129714396515">"അടിയന്തര നമ്പർ"</string>
     <string name="numerous_emergency_numbers_title" msgid="754158099451343898">"അടിയന്തര നമ്പറുകൾ"</string>
     <string name="emergency_call_shortcut_hint" msgid="6506167229097004348">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>-ലേക്ക് വിളിക്കാൻ വീണ്ടും ടാപ്പ് ചെയ്യുക"</string>
@@ -559,7 +556,6 @@
     <string name="rtt_mode_title" msgid="6954652435543570121">"തത്സമയ ടെക്‌സ്‌റ്റ്(RTT) കോൾ"</string>
     <string name="rtt_mode_summary" msgid="5146344277246544580">"വോയ്‌സ് കോളിൽ സന്ദേശമയയ്‌ക്കൽ അനുവദിക്കുക"</string>
     <string name="rtt_mode_more_information" msgid="6080420780730383030">"ബധിരർ, കേൾവി ശക്തി കുറഞ്ഞവർ, സംഭാഷണ വൈകല്യമുള്ളവർ അല്ലെങ്കിൽ ശബ്‌ദത്തിന് പുറമേ മറ്റ് സഹായവും ആവശ്യമുള്ള, വിളിക്കുന്ന ആളുകളെ RTT സഹായിക്കുന്നു.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;കൂടുതലറിയുക&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT കോളുകൾ സന്ദേശ ട്രാൻസ്‌ക്രിപ്റ്റായി സംരക്ഷിക്കുന്നു\n       &lt;br&gt; - വീഡിയോ കോളുകൾക്കായി RTT ലഭ്യമല്ല"</string>
-    <string name="no_rtt_when_roaming" msgid="4240863078190955607">"കുറിപ്പ്: റോമിംഗിലായിരിക്കുമ്പോൾ RTT ലഭ്യമല്ല"</string>
   <string-array name="tty_mode_entries">
     <item msgid="512950011423868021">"TTY ഓഫാണ്"</item>
     <item msgid="3971695875449640648">"TTY പൂർണ്ണം"</item>
@@ -647,8 +643,6 @@
     <string name="callFailed_wifi_lost" msgid="5968076625137297184">"Wi-Fi കണക്ഷൻ പോയതിനാൽ കോൾ അവസാനിച്ചു."</string>
     <string name="dialFailed_low_battery" msgid="8760548177088774268">"ബാറ്ററിയി ചാർജ്ജ് കുറവായതിനാൽ വീഡിയോ കോൾ ചെയ്യാനായില്ല."</string>
     <string name="callFailed_low_battery" msgid="4913582435905872616">"ബാറ്ററി ചാർജ്ജ് കുറവായതിനാൽ വീഡിയോ കോൾ അവസാനിച്ചു."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="4890063404231305951">"വൈഫൈ കോളിംഗ് വഴിയുള്ള എമർജൻസി കോളുകൾ ഈ ലൊക്കേഷനിൽ ലഭ്യമല്ല."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="7616738479038819001">"വൈഫൈ കോളിംഗ് ഈ ലൊക്കേഷനിൽ ലഭ്യമല്ല."</string>
     <string name="change_pin_title" msgid="7790232089699034029">"വോയ്‌സ്മെയിൽ പിൻ മാറ്റുക"</string>
     <string name="change_pin_continue_label" msgid="2135088662420163447">"തുടരുക"</string>
     <string name="change_pin_cancel_label" msgid="353535488390948596">"റദ്ദാക്കുക"</string>
@@ -762,7 +756,6 @@
     <string name="call_barring_settings" msgid="80766145008623645">"കോൾ തടയൽ ക്രമീകരണം"</string>
     <string name="call_barring_deactivate_all_no_password" msgid="920902774366557311">"എല്ലാ കോൾ തടയൽ ക്രമീകരണവും നിർജ്ജീവമാക്കണോ?"</string>
     <string name="callFailed_NetworkBusy" msgid="1068322087736565421">"നെറ്റ്‌വർക്ക് തിരക്കിലാണ്. കോൾ ചെയ്യാൻ പിന്നീട് വീണ്ടും ശ്രമിക്കുക."</string>
-    <string name="callFailed_NetworkCongested" msgid="3313449239735315125">"നെറ്റ്‌വർക്ക് തിരക്കിലാണ്. സഹായത്തിനായി നിങ്ങളുടെ മൊബൈൽ ഓപ്പറേറ്ററെ ബന്ധപ്പെടുക."</string>
     <string name="supp_service_notification_call_deflected" msgid="9195460512875330926">"കോൾ വഴി തിരിച്ചുവിട്ടു."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7818548630812124053">"കോൾ കൈമാറി."</string>
     <string name="supp_service_notification_call_waiting" msgid="789154111899572489">"കോൾ വെയ്‌റ്റിംഗിലാണ്."</string>
