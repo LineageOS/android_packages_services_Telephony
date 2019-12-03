@@ -5293,9 +5293,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public List<String> getPackagesWithCarrierPrivilegesForAllPhones() {
+        enforceReadPrivilegedPermission("getPackagesWithCarrierPrivilegesForAllPhones");
+
+        final long identity = Binder.clearCallingIdentity();
+
         List<String> privilegedPackages = new ArrayList<>();
-        for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
-           privilegedPackages.addAll(getPackagesWithCarrierPrivileges(i));
+        try {
+            for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
+                privilegedPackages.addAll(getPackagesWithCarrierPrivileges(i));
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
         return privilegedPackages;
     }
