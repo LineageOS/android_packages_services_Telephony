@@ -253,7 +253,7 @@
     <string name="roaming_disable" msgid="8856224638624592681">"Connessione a servizi di dati in roaming"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Disattivazione del roaming dati in corso. Tocca per attivarlo."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Potrebbero essere addebitati costi per il roaming. Tocca per modificare."</string>
-    <string name="roaming_notification_title" msgid="3590348480688047320">"Connessione dati mobile interrotta"</string>
+    <string name="roaming_notification_title" msgid="3590348480688047320">"Connessione dati mobili interrotta"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Roaming dei dati attivo"</string>
     <string name="roaming_warning" msgid="7855681468067171971">"I costi potrebbero essere elevati."</string>
     <string name="roaming_check_price_warning" msgid="8212484083990570215">"Verifica i costi con il tuo fornitore di rete."</string>
@@ -289,7 +289,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> max superato\nVelocità dati ridotta a <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ del ciclo trascorso\nIl periodo succ. inizia tra <xliff:g id="USED_1">%2$d</xliff:g> gg (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="7221971817325779535">"Velocità dati ridotta a <xliff:g id="USED">%1$d</xliff:g> Kb/s se limite utilizzo dati superato"</string>
-    <string name="throttle_help_subtext" msgid="2817114897095534807">"Informazioni sulla norme di utilizzo dati della rete cellulare del gestore"</string>
+    <string name="throttle_help_subtext" msgid="2817114897095534807">"Informazioni sulle norme di utilizzo dati della rete cellulare del gestore"</string>
     <string name="cell_broadcast_sms" msgid="4053449797289031063">"SMS cell broadcast"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4759958924031721350">"SMS cell broadcast"</string>
     <string name="cell_bc_sms_enable" msgid="2019708772024632073">"SMS cell broadcast attivato"</string>
@@ -466,7 +466,7 @@
     <string name="pin_changed" msgid="7291153750090452808">"PIN aggiornato"</string>
     <string name="puk_requested" msgid="2061337960609806851">"Password errata. PIN bloccato. Codice PUK richiesto."</string>
     <string name="enter_pin2_text" msgid="7266379426804295979">"PIN2"</string>
-    <string name="oldPin2Label" msgid="4648543187859997203">"PIN2 attuale"</string>
+    <string name="oldPin2Label" msgid="4648543187859997203">"PIN2 precedente"</string>
     <string name="newPin2Label" msgid="1840905981784453939">"Nuovo PIN2"</string>
     <string name="confirmPin2Label" msgid="4336025914667593762">"Conferma nuovo PIN2"</string>
     <string name="badPuk2" msgid="6438182906645832235">"PUK2 errato. Riprova."</string>
@@ -558,7 +558,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"Attiva la compatibilità con apparecchi acustici"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Chiamate con Real-time text (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Consenti l\'utilizzo di messaggi durante le chiamate vocali"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT aiuta i chiamanti con disabilità uditive o del linguaggio e le persone che hanno bisogno di un supporto scritto oltre alla voce.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Ulteriori informazioni&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Le chiamate RTT vengono salvare come una trascrizione in messaggi\n       &lt;br&gt; - RTT non è disponibile per le videochiamate"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT aiuta i chiamanti con disabilità uditive o del linguaggio e le persone che hanno bisogno di un supporto scritto oltre alla voce.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Ulteriori informazioni&lt;/a&gt;\n &lt;br&gt;&lt;br&gt; - Le chiamate RTT vengono salvate come una trascrizione in messaggi\n &lt;br&gt; - RTT non è disponibile per le videochiamate"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY disattivato"</item>
     <item msgid="1449091874731375214">"TTY completo"</item>
@@ -747,7 +747,7 @@
     <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"Bloccare il roaming internazionale in arrivo?"</string>
     <string name="call_barring_deactivate_all" msgid="7837931580047157328">"Disattiva tutto"</string>
     <string name="call_barring_deactivate_all_description" msgid="4474119585042121604">"Disattiva tutte le impostazioni di blocco chiamate"</string>
-    <string name="call_barring_deactivate_success" msgid="3545644320298275337">"Bocco chiamate disattivato"</string>
+    <string name="call_barring_deactivate_success" msgid="3545644320298275337">"Blocco chiamate disattivato"</string>
     <string name="call_barring_change_pwd" msgid="1730691950940338387">"Modifica password"</string>
     <string name="call_barring_change_pwd_description" msgid="1274245130382054227">"Modifica la password di blocco chiamate"</string>
     <string name="call_barring_change_pwd_description_disabled" msgid="6502248429882123711">"Impossibile modificare la password di blocco chiamate."</string>
