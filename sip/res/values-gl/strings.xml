@@ -53,7 +53,7 @@
     <string name="domain_address_title" msgid="8238078615181248579">"Servidor"</string>
     <string name="username_title" msgid="298416796886107970">"Nome de usuario"</string>
     <string name="password_title" msgid="8035579335591959021">"Contrasinal"</string>
-    <string name="display_name_title" msgid="3730105783656830160">"Nome de visualización"</string>
+    <string name="display_name_title" msgid="3730105783656830160">"Nome visible"</string>
     <string name="proxy_address_title" msgid="4120361943254795287">"Enderezo proxy saínte"</string>
     <string name="port_title" msgid="1703586046264385110">"Número de porto"</string>
     <string name="transport_title" msgid="1661659138226029178">"Tipo de transporte"</string>
