@@ -132,10 +132,10 @@
     <string name="reverting_settings" msgid="7378668837291012205">"Einstellungen werden zurückgesetzt..."</string>
     <string name="response_error" msgid="3904481964024543330">"Unerwartete Antwort von Netzwerk"</string>
     <string name="exception_error" msgid="330994460090467">"Netzwerk- oder SIM-Kartenfehler."</string>
-    <string name="stk_cc_ss_to_dial_error" msgid="5147693491690618704">"SS-Anfrage wurde in normalen Anruf geändert"</string>
-    <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"SS-Anfrage wurde in USSD-Anfrage geändert"</string>
-    <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"In neue SS-Anfrage geändert"</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"SS-Anfrage wurde in Videoanruf geändert"</string>
+    <string name="stk_cc_ss_to_dial_error" msgid="5147693491690618704">"SS-Anforderung wurde in normalen Anruf geändert"</string>
+    <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"SS-Anforderung wurde in USSD-Anforderung geändert"</string>
+    <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"In neue SS-Anforderung geändert"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"SS-Anforderung wurde in Videoanruf geändert"</string>
     <string name="fdn_check_failure" msgid="1833769746374185247">"Da die Rufnummernbeschränkung in deiner Telefon-App aktiviert ist, funktionieren nicht alle Anruffunktionen."</string>
     <string name="radio_off_error" msgid="8321564164914232181">"Aktiviere deine Mobilfunkverbindung, bevor du diese Einstellungen anzeigst."</string>
     <string name="close_dialog" msgid="1074977476136119408">"Ok"</string>
@@ -317,11 +317,11 @@
     <string name="regional_enable" msgid="7730109417536296079">"Regionalnachrichten aktiviert"</string>
     <string name="regional_disable" msgid="3781951818157772545">"Regionalnachrichten deaktiviert"</string>
     <string name="enable_disable_national" msgid="6198481711934897632">"National"</string>
-    <string name="national_enable" msgid="5159683504138239304">"Nationale Nachrichten aktiviert"</string>
-    <string name="national_disable" msgid="8484356368757118987">"Nationale Nachrichten deaktiviert"</string>
+    <string name="national_enable" msgid="5159683504138239304">"Inlandsnachrichten aktiviert"</string>
+    <string name="national_disable" msgid="8484356368757118987">"Inlandsnachrichten deaktiviert"</string>
     <string name="enable_disable_international" msgid="4204334217211198792">"International"</string>
-    <string name="international_enable" msgid="8943466745792690340">"Internationale Nachrichten aktiviert"</string>
-    <string name="international_disable" msgid="4803498658100318265">"Internationale Nachrichten deaktiviert"</string>
+    <string name="international_enable" msgid="8943466745792690340">"Auslandsnachrichten aktiviert"</string>
+    <string name="international_disable" msgid="4803498658100318265">"Auslandsnachrichten deaktiviert"</string>
     <string name="list_language_title" msgid="1850167908665485738">"Sprache"</string>
     <string name="list_language_summary" msgid="7921756070782277559">"Sprache für Nachrichten auswählen"</string>
   <string-array name="list_language_entries">
@@ -575,7 +575,7 @@
     <item msgid="2271798469250155310">"Normal"</item>
     <item msgid="6044210222666533564">"Lang"</item>
   </string-array>
-    <string name="network_info_message" msgid="7599413947016532355">"Netzwerknachricht"</string>
+    <string name="network_info_message" msgid="7599413947016532355">"Netznachricht"</string>
     <string name="network_error_message" msgid="4271579424089326618">"Fehlermeldung"</string>
     <string name="ota_title_activate" msgid="4049645324841263423">"Dein Telefon aktivieren"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Zur Aktivierung deines Telefondienstes muss ein spezieller Anruf getätigt werden. \n\nWähle \"Aktivieren\" und befolge die Anleitung zur Aktivierung deines Telefons."</string>
@@ -783,7 +783,7 @@
     <string name="supp_service_forwarded_call" msgid="6475776013771821457">"Anruf weitergeleitet."</string>
     <string name="supp_service_conference_call" msgid="4004193534408317148">"An Telefonkonferenz teilnehmen."</string>
     <string name="supp_service_held_call_released" msgid="2847835124639112410">"Gehaltener Anruf wurde beendet."</string>
-    <string name="callFailed_otasp_provisioning_in_process" msgid="3345666183602879326">"Der Anruf kann nicht getätigt werden, da das Gerät gerade bereitgestellt wird."</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="3345666183602879326">"Der Anruf kann nicht getätigt werden, da das Gerät gerade provisioniert wird."</string>
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Anruf nicht möglich, da bereits ein anderer ausgehender Anruf aufgebaut wird."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Anruf nicht möglich, da ein nicht angenommener eingehender Anruf vorhanden ist. Nimm den eingehenden Anruf an oder lehne ihn ab, bevor du einen neuen Anruf startest."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Anruf nicht möglich, weil Anrufe über die Systemeigenschaft \"ro.telephony.disable-call\" deaktiviert wurden."</string>
