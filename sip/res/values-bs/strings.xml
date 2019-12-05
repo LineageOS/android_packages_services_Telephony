@@ -42,11 +42,11 @@
     <string name="registration_status_not_receiving" msgid="3873074208531938401">"Ne prima pozive."</string>
     <string name="registration_status_no_data" msgid="2987064560116584121">"Registracija računa je zaustavljena jer niste povezani na internet."</string>
     <string name="registration_status_no_wifi_data" msgid="685470618241482948">"Registracija računa je zaustavljena jer nema WiFi veze."</string>
-    <string name="registration_status_not_running" msgid="6236403137652262659">"Registracija računa neuspješna."</string>
+    <string name="registration_status_not_running" msgid="6236403137652262659">"Registracija računa nije uspjela."</string>
     <string name="registration_status_done" msgid="6787397199273357721">"Primanje poziva."</string>
-    <string name="registration_status_failed_try_later" msgid="7855389184910312091">"Registracija računa neuspješna: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>); pokušat ćemo kasnije"</string>
-    <string name="registration_status_invalid_credentials" msgid="8896714049938660777">"Registracija računa neuspješna: netačno korisničko ime ili lozinka."</string>
-    <string name="registration_status_server_unreachable" msgid="3832339558868965604">"Registracija računa neuspješna: provjerite naziv servera."</string>
+    <string name="registration_status_failed_try_later" msgid="7855389184910312091">"Registracija računa nije uspjela: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>); pokušat ćemo kasnije"</string>
+    <string name="registration_status_invalid_credentials" msgid="8896714049938660777">"Registracija računa nije uspjela: netačno korisničko ime ili lozinka."</string>
+    <string name="registration_status_server_unreachable" msgid="3832339558868965604">"Registracija računa nije uspjela: provjerite naziv servera."</string>
     <string name="third_party_account_summary" msgid="5918779106950859167">"Ovaj račun trenutno koristi aplikacija <xliff:g id="ACCOUNT_OWNER">%s</xliff:g>."</string>
     <string name="sip_edit_title" msgid="7438891546610820307">"Detalji o SIP računima"</string>
     <string name="sip_edit_new_title" msgid="8394790068979636381">"Detalji o SIP računima"</string>
