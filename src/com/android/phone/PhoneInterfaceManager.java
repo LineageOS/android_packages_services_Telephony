@@ -5699,12 +5699,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean isRttEnabled(int subscriptionId) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            boolean isRttSupported = isRttSupported(subscriptionId);
-            boolean isUserRttSettingOn = Settings.Secure.getInt(
-                    mApp.getContentResolver(), Settings.Secure.RTT_CALLING_MODE, 0) != 0;
-            boolean shouldIgnoreUserRttSetting = mApp.getCarrierConfigForSubId(subscriptionId)
-                    .getBoolean(CarrierConfigManager.KEY_IGNORE_RTT_MODE_SETTING_BOOL);
-            return isRttSupported && (isUserRttSettingOn || shouldIgnoreUserRttSetting);
+            return isRttSupported(subscriptionId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
