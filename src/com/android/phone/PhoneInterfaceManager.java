@@ -277,6 +277,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private PhoneGlobals mApp;
     private CallManager mCM;
+    private ImsResolver mImsResolver;
     private UserManager mUserManager;
     private AppOpsManager mAppOps;
     private MainThreadHandler mMainThreadHandler;
@@ -1388,6 +1389,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private PhoneInterfaceManager(PhoneGlobals app) {
         mApp = app;
         mCM = PhoneGlobals.getInstance().mCM;
+        mImsResolver = PhoneGlobals.getInstance().getImsResolver();
         mUserManager = (UserManager) app.getSystemService(Context.USER_SERVICE);
         mAppOps = (AppOpsManager)app.getSystemService(Context.APP_OPS_SERVICE);
         mMainThreadHandler = new MainThreadHandler();
@@ -4506,12 +4508,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsResolver resolver = PhoneFactory.getImsResolver();
-            if (resolver == null) {
+            if (mImsResolver == null) {
                 // may happen if the device does not support IMS.
                 return;
             }
-            resolver.enableIms(slotId);
+            mImsResolver.enableIms(slotId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4526,12 +4527,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsResolver resolver = PhoneFactory.getImsResolver();
-            if (resolver == null) {
+            if (mImsResolver == null) {
                 // may happen if the device does not support IMS.
                 return;
             }
-            resolver.disableIms(slotId);
+            mImsResolver.disableIms(slotId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4548,12 +4548,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsResolver resolver = PhoneFactory.getImsResolver();
-            if (resolver == null) {
+            if (mImsResolver == null) {
                 // may happen if the device does not support IMS.
                 return null;
             }
-            return resolver.getMmTelFeatureAndListen(slotId, callback);
+            return mImsResolver.getMmTelFeatureAndListen(slotId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4570,12 +4569,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsResolver resolver = PhoneFactory.getImsResolver();
-            if (resolver == null) {
+            if (mImsResolver == null) {
                 // may happen if the device does not support IMS.
                 return null;
             }
-            return resolver.getRcsFeatureAndListen(slotId, callback);
+            return mImsResolver.getRcsFeatureAndListen(slotId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4590,12 +4588,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsResolver resolver = PhoneFactory.getImsResolver();
-            if (resolver == null) {
+            if (mImsResolver == null) {
                 // may happen if the device does not support IMS.
                 return null;
             }
-            return resolver.getImsRegistration(slotId, feature);
+            return mImsResolver.getImsRegistration(slotId, feature);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4610,12 +4607,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsResolver resolver = PhoneFactory.getImsResolver();
-            if (resolver == null) {
+            if (mImsResolver == null) {
                 // may happen if the device does not support IMS.
                 return null;
             }
-            return resolver.getImsConfig(slotId, feature);
+            return mImsResolver.getImsConfig(slotId, feature);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4624,58 +4620,65 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Sets the ImsService Package Name that Telephony will bind to.
      *
-     * @param slotId the slot ID that the ImsService should bind for.
-     * @param isCarrierImsService true if the ImsService is the carrier override, false if the
+     * @param slotIndex the slot ID that the ImsService should bind for.
+     * @param isCarrierService true if the ImsService is the carrier override, false if the
      *         ImsService is the device default ImsService.
-     * @param packageName The package name of the application that contains the ImsService to bind
-     *         to.
+     * @param featureTypes An integer array of feature types associated with a packageName.
+     * @param packageName The name of the package that the current configuration will be replaced
+     *                    with.
      * @return true if setting the ImsService to bind to succeeded, false if it did not.
-     * @hide
      */
-    public boolean setImsService(int slotId, boolean isCarrierImsService, String packageName) {
-        int[] subIds = SubscriptionManager.getSubId(slotId);
+    public boolean setBoundImsServiceOverride(int slotIndex, boolean isCarrierService,
+            int[] featureTypes, String packageName) {
+        int[] subIds = SubscriptionManager.getSubId(slotIndex);
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "setBoundImsServiceOverride");
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
                 (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID),
-                "setImsService");
+                "setBoundImsServiceOverride");
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsResolver resolver = PhoneFactory.getImsResolver();
-            if (resolver == null) {
+            if (mImsResolver == null) {
                 // may happen if the device does not support IMS.
                 return false;
             }
-            return resolver.overrideImsServiceConfiguration(slotId, isCarrierImsService,
-                    packageName);
+            Map<Integer, String> featureConfig = new HashMap<>();
+            for (int featureType : featureTypes) {
+                featureConfig.put(featureType, packageName);
+            }
+            return mImsResolver.overrideImsServiceConfiguration(slotIndex, isCarrierService,
+                    featureConfig);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
 
     /**
-     * Return the ImsService configuration.
+     * Return the package name of the currently bound ImsService.
      *
      * @param slotId The slot that the ImsService is associated with.
      * @param isCarrierImsService true, if the ImsService is a carrier override, false if it is
      *         the device default.
+     * @param featureType The feature associated with the queried configuration.
      * @return the package name of the ImsService configuration.
      */
-    public String getImsService(int slotId, boolean isCarrierImsService) {
+    public String getBoundImsServicePackage(int slotId, boolean isCarrierImsService,
+            @ImsFeature.FeatureType int featureType) {
         int[] subIds = SubscriptionManager.getSubId(slotId);
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
-                (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID),
-                "getImsService");
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                mApp, (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID),
+                "getBoundImsServicePackage");
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsResolver resolver = PhoneFactory.getImsResolver();
-            if (resolver == null) {
+            if (mImsResolver == null) {
                 // may happen if the device does not support IMS.
                 return "";
             }
             // TODO: change API to query RCS separately.
-            return resolver.getImsServiceConfiguration(slotId, isCarrierImsService,
-                    ImsFeature.FEATURE_MMTEL);
+            return mImsResolver.getImsServiceConfiguration(slotId, isCarrierImsService,
+                    featureType);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }

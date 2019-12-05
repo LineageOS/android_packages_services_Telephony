@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.content.res.XmlResourceParser;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
@@ -66,6 +67,7 @@ import com.android.internal.telephony.TelephonyComponentFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.dataconnection.DataConnectionReasons;
 import com.android.internal.telephony.dataconnection.DataConnectionReasons.DataDisallowedReasonType;
+import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.phone.settings.SettingsConstants;
 import com.android.phone.vvm.CarrierVvmPackageInstalledReceiver;
@@ -146,6 +148,7 @@ public class PhoneGlobals extends ContextWrapper {
     CallNotifier notifier;
     CallerInfoCache callerInfoCache;
     NotificationMgr notificationMgr;
+    ImsResolver mImsResolver;
     public PhoneInterfaceManager phoneMgr;
     public ImsRcsController imsRcsController;
     CarrierConfigLoader configLoader;
@@ -317,6 +320,19 @@ public class PhoneGlobals extends ContextWrapper {
             // Initialize the telephony framework
             PhoneFactory.makeDefaultPhones(this);
 
+            // Only bring up ImsResolver if the device supports having an IMS stack.
+            if (getPackageManager().hasSystemFeature(
+                    PackageManager.FEATURE_TELEPHONY_IMS)) {
+                // Get the package name of the default IMS implementation.
+                String defaultImsMmtelPackage = getResources().getString(
+                        R.string.config_ims_mmtel_package);
+                String defaultImsRcsPackage = getResources().getString(
+                        R.string.config_ims_rcs_package);
+                mImsResolver = new ImsResolver(this, defaultImsMmtelPackage,
+                        defaultImsRcsPackage, PhoneFactory.getPhones().length);
+                mImsResolver.initialize();
+            }
+
             // Start TelephonyDebugService After the default phone is created.
             Intent intent = new Intent(this, TelephonyDebugService.class);
             startService(intent);
@@ -436,6 +452,10 @@ public class PhoneGlobals extends ContextWrapper {
 
     public static Phone getPhone(int subId) {
         return PhoneFactory.getPhone(SubscriptionManager.getPhoneId(subId));
+    }
+
+    public ImsResolver getImsResolver() {
+        return mImsResolver;
     }
 
     /* package */ CallManager getCallManager() {
@@ -876,6 +896,14 @@ public class PhoneGlobals extends ContextWrapper {
         pw.println("isSmsCapable=" + TelephonyManager.from(this).isSmsCapable());
         pw.increaseIndent();
         mDataRoamingNotifLog.dump(fd, pw, args);
+        pw.decreaseIndent();
+        pw.println("ImsResolver:");
+        pw.increaseIndent();
+        try {
+            if (mImsResolver != null) mImsResolver.dump(fd, pw, args);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         pw.decreaseIndent();
         pw.decreaseIndent();
         pw.println("------- End PhoneGlobals -------");
