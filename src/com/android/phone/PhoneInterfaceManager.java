@@ -4619,7 +4619,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 // may happen if the device does not support IMS.
                 return "";
             }
-            return resolver.getImsServiceConfiguration(slotId, isCarrierImsService);
+            // TODO: change API to query RCS separately.
+            return resolver.getImsServiceConfiguration(slotId, isCarrierImsService,
+                    ImsFeature.FEATURE_MMTEL);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
