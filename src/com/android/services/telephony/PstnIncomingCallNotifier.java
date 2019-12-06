@@ -274,7 +274,12 @@ final class PstnIncomingCallNotifier {
             if (((ImsPhoneConnection) connection).isRttEnabledForCall()) {
                 extras.putBoolean(TelecomManager.EXTRA_START_CALL_WITH_RTT, true);
             }
+            if (((ImsPhoneConnection) connection).isIncomingCallAutoRejected()) {
+                extras.putString(TelecomManager.EXTRA_CALL_DISCONNECT_MESSAGE,
+                        "Call Dropped by lower layers");
+            }
         }
+
         PhoneAccountHandle handle = findCorrectPhoneAccountHandle();
         if (handle == null) {
             try {
