@@ -18,7 +18,6 @@ package com.android.phone.euicc;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.Activity;
-import android.app.AppGlobals;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -26,9 +25,8 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.os.UserHandle;
-import android.permission.IPermissionManager;
+import android.permission.PermissionManager;
 import android.service.euicc.EuiccService;
 import android.telephony.euicc.EuiccManager;
 import android.util.Log;
@@ -39,21 +37,45 @@ import com.android.internal.telephony.euicc.EuiccConnector;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /** Trampoline activity to forward eUICC intents from apps to the active UI implementation. */
 public class EuiccUiDispatcherActivity extends Activity {
     private static final String TAG = "EuiccUiDispatcher";
+    private static final long CHANGE_PERMISSION_TIMEOUT_MS = 15 * 1000; // 15 seconds
 
     /** Flags to use when querying PackageManager for Euicc component implementations. */
     private static final int EUICC_QUERY_FLAGS =
             PackageManager.MATCH_SYSTEM_ONLY | PackageManager.MATCH_DEBUG_TRIAGED_MISSING
                     | PackageManager.GET_RESOLVED_FILTER;
 
-    private final IPermissionManager mPermissionManager = AppGlobals.getPermissionManager();
+    private PermissionManager mPermissionManager;
+    private boolean mGrantPermissionDone = false;
+    private ThreadPoolExecutor mExecutor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPermissionManager = (PermissionManager) getSystemService(Context.PERMISSION_SERVICE);
+        mExecutor = new ThreadPoolExecutor(
+                1 /* corePoolSize */,
+                1 /* maxPoolSize */,
+                15, TimeUnit.SECONDS, /* keepAliveTime */
+                new LinkedBlockingQueue<>(), /* workQueue */
+                new ThreadFactory() {
+                    private final AtomicInteger mCount = new AtomicInteger(1);
+
+                    @Override
+                    public Thread newThread(Runnable r) {
+                        return new Thread(r, "EuiccService #" + mCount.getAndIncrement());
+                    }
+                }
+        );
         try {
             Intent euiccUiIntent = resolveEuiccUiIntent();
             if (euiccUiIntent == null) {
@@ -93,7 +115,7 @@ public class EuiccUiDispatcherActivity extends Activity {
             return null;
         }
 
-        grantDefaultPermissionsToActiveLuiApp(activityInfo);
+        grantDefaultPermissionsToLuiApp(activityInfo);
 
         euiccUiIntent.setComponent(new ComponentName(activityInfo.packageName, activityInfo.name));
         return euiccUiIntent;
@@ -128,6 +150,12 @@ public class EuiccUiDispatcherActivity extends Activity {
         return intent;
     }
 
+    @Override
+    protected void onDestroy() {
+        mExecutor.shutdownNow();
+        super.onDestroy();
+    }
+
     @VisibleForTesting
     @Nullable
     ActivityInfo findBestActivity(Intent euiccUiIntent) {
@@ -136,11 +164,20 @@ public class EuiccUiDispatcherActivity extends Activity {
 
     /** Grants default permissions to the active LUI app. */
     @VisibleForTesting
-    protected void grantDefaultPermissionsToActiveLuiApp(ActivityInfo activityInfo) {
+    protected void grantDefaultPermissionsToLuiApp(ActivityInfo activityInfo) {
+        CountDownLatch latch = new CountDownLatch(1);
         try {
-            mPermissionManager.grantDefaultPermissionsToActiveLuiApp(
-                    activityInfo.packageName, UserHandle.myUserId());
-        } catch (RemoteException e) {
+            mPermissionManager.grantDefaultPermissionsToLuiApp(
+                    activityInfo.packageName, UserHandle.of(UserHandle.myUserId()), mExecutor,
+                    isSuccess -> {
+                        if (isSuccess) {
+                            latch.countDown();
+                        } else {
+                            Log.e(TAG, "Failed to revoke LUI app permissions.");
+                        }
+                    });
+            waitUntilReady(latch);
+        } catch (RuntimeException e) {
             Log.e(TAG, "Failed to grant permissions to active LUI app.", e);
         }
     }
@@ -148,14 +185,22 @@ public class EuiccUiDispatcherActivity extends Activity {
     /** Cleans up all the packages that shouldn't have permission. */
     @VisibleForTesting
     protected void revokePermissionFromLuiApps(Intent intent) {
+        CountDownLatch latch = new CountDownLatch(1);
         try {
             Set<String> luiApps = getAllLuiAppPackageNames(intent);
             String[] luiAppsArray = luiApps.toArray(new String[luiApps.size()]);
             mPermissionManager.revokeDefaultPermissionsFromLuiApps(luiAppsArray,
-                UserHandle.myUserId());
-        } catch (RemoteException e) {
+                    UserHandle.of(UserHandle.myUserId()), mExecutor, isSuccess -> {
+                        if (isSuccess) {
+                            latch.countDown();
+                        } else {
+                            Log.e(TAG, "Failed to revoke LUI app permissions.");
+                        }
+                    });
+            waitUntilReady(latch);
+        } catch (RuntimeException e) {
             Log.e(TAG, "Failed to revoke LUI app permissions.");
-            throw new RuntimeException(e);
+            throw e;
         }
     }
 
@@ -169,5 +214,12 @@ public class EuiccUiDispatcherActivity extends Activity {
             packageNames.add(info.serviceInfo.packageName);
         }
         return packageNames;
+    }
+
+    private void waitUntilReady(CountDownLatch latch) {
+        try {
+            latch.await(CHANGE_PERMISSION_TIMEOUT_MS, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+        }
     }
 }
