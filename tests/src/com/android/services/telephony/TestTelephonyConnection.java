@@ -80,6 +80,9 @@ public class TestTelephonyConnection extends TelephonyConnection {
         mOriginalConnection = mock(Connection.class);
         // Set up mMockRadioConnection and mMockPhone to contain an active call
         when(mMockRadioConnection.getState()).thenReturn(Call.State.ACTIVE);
+        when(mOriginalConnection.getState()).thenReturn(Call.State.ACTIVE);
+        when(mMockRadioConnection.getAudioCodec()).thenReturn(
+                android.telecom.Connection.AUDIO_CODEC_AMR);
         when(mMockRadioConnection.getCall()).thenReturn(mMockCall);
         when(mMockRadioConnection.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_IMS);
         doNothing().when(mMockRadioConnection).addListener(any(Connection.Listener.class));
