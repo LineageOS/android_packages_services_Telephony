@@ -4673,7 +4673,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 // may happen if the device does not support IMS.
                 return "";
             }
-            return resolver.getImsServiceConfiguration(slotId, isCarrierImsService);
+            // TODO: change API to query RCS separately.
+            return resolver.getImsServiceConfiguration(slotId, isCarrierImsService,
+                    ImsFeature.FEATURE_MMTEL);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -5292,9 +5294,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public List<String> getPackagesWithCarrierPrivilegesForAllPhones() {
+        enforceReadPrivilegedPermission("getPackagesWithCarrierPrivilegesForAllPhones");
+
+        final long identity = Binder.clearCallingIdentity();
+
         List<String> privilegedPackages = new ArrayList<>();
-        for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
-           privilegedPackages.addAll(getPackagesWithCarrierPrivileges(i));
+        try {
+            for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
+                privilegedPackages.addAll(getPackagesWithCarrierPrivileges(i));
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
         return privilegedPackages;
     }
