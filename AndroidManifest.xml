@@ -651,5 +651,13 @@
                 <category android:name="android.intent.category.VOICE_LAUNCH" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="ServiceStateProvider"
+            android:authorities="service-state"
+            android:exported="true"
+            android:multiprocess="false"
+            android:singleUser="true"
+            android:writePermission="android.permission.MODIFY_PHONE_STATE"/>
     </application>
 </manifest>

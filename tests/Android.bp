@@ -25,6 +25,7 @@ android_test {
         "telephony-common",
         "android.test.base",
         "ims-common",
+        "android.test.mock",
     ],
     platform_apis: true,
     certificate: "platform",
