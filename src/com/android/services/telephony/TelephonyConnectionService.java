@@ -883,6 +883,7 @@ public class TelephonyConnectionService extends ConnectionService {
         if (connection == null) {
             return Connection.createCanceledConnection();
         } else {
+            connection.setTtyEnabled(isTtyModeEnabled(getApplicationContext()));
             return connection;
         }
     }
