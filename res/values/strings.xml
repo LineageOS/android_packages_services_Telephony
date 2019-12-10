@@ -16,22 +16,10 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Official label of the phone app, as seen in "Manage Applications"
-         and other settings UIs.  This is the version of the label for
-         tablet devices, where the phone app handles mobile data but not
-         actual phone calls. -->
-    <string name="phoneAppLabel" product="tablet">Mobile Data</string>
-
-    <!-- Official label of the phone app, as seen in "Manage Applications"
-         and other settings UIs. -->
-    <string name="phoneAppLabel" product="default">Phone Services</string>
-
     <!-- Screen title for Emergency Dialer UI -->
     <string name="emergencyDialerIconLabel">Emergency Dialer</string>
     <!-- Activity label for the in-call UI -->
     <string name="phoneIconLabel">Phone</string>
-    <!-- Title of FDN list screen -->
-    <string name="fdnListLabel">FDN list</string>
 
     <!-- Call status -->
     <!-- Incoming call screen, name of "unknown" caller -->
@@ -666,9 +654,6 @@
     <!-- USSD aggregation dialog box: separator strings between messages (new-lines will be added before and after) -->
     <string name="ussd_dialog_sep" translatable="false">----------</string>
 
-    <string name="gsm_umts_options">GSM/UMTS Options</string>
-    <string name="cdma_options">CDMA Options</string>
-
     <!-- Screen option on the mobile network settings to go into data usage settings -->
     <string name="throttle_data_usage">Data usage</string>
     <!-- Data usage settings screen option for checking the current usage -->
@@ -1042,8 +1027,6 @@
     <string name="simContacts_emptyLoading">Reading from SIM card\u2026</string>
     <!-- Call settings, string that appears on FDN contact list when there are no contacts on the SIM. -->
     <string name="simContacts_empty">No contacts on your SIM card.</string>
-    <!-- Call settings: title of the dialog that lets you select contacts from the SIM. -->
-    <string name="simContacts_title">Select contacts to import</string>
     <!-- Appears when user tries to import contacts in SIM during airplane mode [CHAR LIMIT=NONE] -->
     <string name="simContacts_airplaneMode">Turn off airplane mode to import contacts from the SIM card.</string>
 
