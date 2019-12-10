@@ -19,6 +19,7 @@ package com.android.services.telephony;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.telecom.PhoneAccountHandle;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -133,6 +134,28 @@ public class TestTelephonyConnection extends TelephonyConnection {
     @Override
     void clearOriginalConnection() {
         // Do nothing since the original connection is mock object
+    }
+
+    @Override
+    public PersistableBundle getCarrierConfig() {
+        // Depends on PhoneGlobals for context in TelephonyConnection, do not implement during
+        // testing.
+        return new PersistableBundle();
+    }
+
+    @Override
+    public CharSequence getResourceText(int messageId) {
+        return "TEST";
+    }
+
+    @Override
+    public String getResourceString(int id) {
+        return "TEST";
+    }
+
+    @Override
+    void refreshConferenceSupported() {
+        // Requires ImsManager dependencies, do not implement during testing.
     }
 
     public int getNotifyPhoneAccountChangedCount() {

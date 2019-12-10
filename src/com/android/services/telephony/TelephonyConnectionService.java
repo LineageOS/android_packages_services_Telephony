@@ -28,7 +28,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
-import android.provider.Settings;
 import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.ConnectionRequest;
@@ -148,12 +147,7 @@ public class TelephonyConnectionService extends ConnectionService {
             new TelephonyConferenceController(mTelephonyConnectionServiceProxy);
     private final CdmaConferenceController mCdmaConferenceController =
             new CdmaConferenceController(this);
-    private final ImsConferenceController mImsConferenceController =
-            new ImsConferenceController(TelecomAccountRegistry.getInstance(this),
-                    mTelephonyConnectionServiceProxy,
-                    // FeatureFlagProxy; used to determine if standalone call emulation is enabled.
-                    // TODO: Move to carrier config
-                    () -> true);
+    private ImsConferenceController mImsConferenceController;
 
     private ComponentName mExpectedComponentName = null;
     private RadioOnHelper mRadioOnHelper;
@@ -170,6 +164,7 @@ public class TelephonyConnectionService extends ConnectionService {
     public Pair<WeakReference<TelephonyConnection>, Queue<Phone>> mEmergencyRetryCache;
     private Handler mDdsSwitchHandler;
     private HandlerThread mHandlerThread;
+    private DeviceState mDeviceState = new DeviceState();
 
     /**
      * Keeps track of the status of a SIM slot.
@@ -191,7 +186,10 @@ public class TelephonyConnectionService extends ConnectionService {
         }
     }
 
-    // SubscriptionManager Proxy interface for testing
+    /**
+     * SubscriptionManager dependencies for testing.
+     */
+    @VisibleForTesting
     public interface SubscriptionManagerProxy {
         int getDefaultVoicePhoneId();
         int getSimStateForSlotIdx(int slotId);
@@ -215,7 +213,9 @@ public class TelephonyConnectionService extends ConnectionService {
         }
     };
 
-    // TelephonyManager Proxy interface for testing
+    /**
+     * TelephonyManager dependencies for testing.
+     */
     @VisibleForTesting
     public interface TelephonyManagerProxy {
         int getPhoneCount();
@@ -255,7 +255,9 @@ public class TelephonyConnectionService extends ConnectionService {
         }
     }
 
-    //PhoneFactory proxy interface for testing
+    /**
+     * PhoneFactory Dependencies for testing.
+     */
     @VisibleForTesting
     public interface PhoneFactoryProxy {
         Phone getPhone(int index);
@@ -280,19 +282,182 @@ public class TelephonyConnectionService extends ConnectionService {
         }
     };
 
+    /**
+     * PhoneUtils dependencies for testing.
+     */
+    @VisibleForTesting
+    public interface PhoneUtilsProxy {
+        int getSubIdForPhoneAccountHandle(PhoneAccountHandle accountHandle);
+        PhoneAccountHandle makePstnPhoneAccountHandle(Phone phone);
+        PhoneAccountHandle makePstnPhoneAccountHandleWithPrefix(Phone phone, String prefix,
+                boolean isEmergency);
+    }
+
+    private PhoneUtilsProxy mPhoneUtilsProxy = new PhoneUtilsProxy() {
+        @Override
+        public int getSubIdForPhoneAccountHandle(PhoneAccountHandle accountHandle) {
+            return PhoneUtils.getSubIdForPhoneAccountHandle(accountHandle);
+        }
+
+        @Override
+        public PhoneAccountHandle makePstnPhoneAccountHandle(Phone phone) {
+            return PhoneUtils.makePstnPhoneAccountHandle(phone);
+        }
+
+        @Override
+        public PhoneAccountHandle makePstnPhoneAccountHandleWithPrefix(Phone phone, String prefix,
+                boolean isEmergency) {
+            return PhoneUtils.makePstnPhoneAccountHandleWithPrefix(phone, prefix, isEmergency);
+        }
+    };
+
+    /**
+     * PhoneNumberUtils dependencies for testing.
+     */
+    @VisibleForTesting
+    public interface PhoneNumberUtilsProxy {
+        String convertToEmergencyNumber(Context context, String number);
+    }
+
+    private PhoneNumberUtilsProxy mPhoneNumberUtilsProxy = new PhoneNumberUtilsProxy() {
+        @Override
+        public String convertToEmergencyNumber(Context context, String number) {
+            return PhoneNumberUtils.convertToEmergencyNumber(context, number);
+        }
+    };
+
+    /**
+     * PhoneSwitcher dependencies for testing.
+     */
+    @VisibleForTesting
+    public interface PhoneSwitcherProxy {
+        PhoneSwitcher getPhoneSwitcher();
+    }
+
+    private PhoneSwitcherProxy mPhoneSwitcherProxy = new PhoneSwitcherProxy() {
+        @Override
+        public PhoneSwitcher getPhoneSwitcher() {
+            return PhoneSwitcher.getInstance();
+        }
+    };
+
+    /**
+     * Factory for Handler creation in order to remove flakiness during t esting.
+     */
+    @VisibleForTesting
+    public interface HandlerFactory {
+        HandlerThread createHandlerThread(String name);
+        Handler createHandler(Looper looper);
+    }
+
+    private HandlerFactory mHandlerFactory = new HandlerFactory() {
+        @Override
+        public HandlerThread createHandlerThread(String name) {
+            return new HandlerThread(name);
+        }
+
+        @Override
+        public Handler createHandler(Looper looper) {
+            return new Handler(looper);
+        }
+    };
+
+    /**
+     * DisconnectCause depends on PhoneGlobals in order to get a system context. Mock out
+     * dependency for testing.
+     */
+    @VisibleForTesting
+    public interface DisconnectCauseFactory {
+        DisconnectCause toTelecomDisconnectCause(int telephonyDisconnectCause, String reason);
+        DisconnectCause toTelecomDisconnectCause(int telephonyDisconnectCause,
+                String reason, int phoneId);
+    }
+
+    private DisconnectCauseFactory mDisconnectCauseFactory = new DisconnectCauseFactory() {
+        @Override
+        public DisconnectCause toTelecomDisconnectCause(int telephonyDisconnectCause,
+                String reason) {
+            return DisconnectCauseUtil.toTelecomDisconnectCause(telephonyDisconnectCause, reason);
+        }
+
+        @Override
+        public DisconnectCause toTelecomDisconnectCause(int telephonyDisconnectCause, String reason,
+                int phoneId) {
+            return DisconnectCauseUtil.toTelecomDisconnectCause(telephonyDisconnectCause, reason,
+                    phoneId);
+        }
+    };
+
+    /**
+     * Overrides SubscriptionManager dependencies for testing.
+     */
     @VisibleForTesting
     public void setSubscriptionManagerProxy(SubscriptionManagerProxy proxy) {
         mSubscriptionManagerProxy = proxy;
     }
 
+    /**
+     * Overrides TelephonyManager dependencies for testing.
+     */
     @VisibleForTesting
     public void setTelephonyManagerProxy(TelephonyManagerProxy proxy) {
         mTelephonyManagerProxy = proxy;
     }
 
+    /**
+     * Overrides PhoneFactory dependencies for testing.
+     */
     @VisibleForTesting
     public void setPhoneFactoryProxy(PhoneFactoryProxy proxy) {
         mPhoneFactoryProxy = proxy;
+    }
+
+    /**
+     * Overrides configuration and settings dependencies for testing.
+     */
+    @VisibleForTesting
+    public void setDeviceState(DeviceState state) {
+        mDeviceState = state;
+    }
+
+    /**
+     * Overrides PhoneSwitcher dependencies for testing.
+     */
+    @VisibleForTesting
+    public void setPhoneSwitcherProxy(PhoneSwitcherProxy proxy) {
+        mPhoneSwitcherProxy = proxy;
+    }
+
+    /**
+     * Overrides PhoneNumberUtils dependencies for testing.
+     */
+    @VisibleForTesting
+    public void setPhoneNumberUtilsProxy(PhoneNumberUtilsProxy proxy) {
+        mPhoneNumberUtilsProxy = proxy;
+    }
+
+    /**
+     * Overrides PhoneUtils dependencies for testing.
+     */
+    @VisibleForTesting
+    public void setPhoneUtilsProxy(PhoneUtilsProxy proxy) {
+        mPhoneUtilsProxy = proxy;
+    }
+
+    /**
+     * Override Handler creation factory for testing.
+     */
+    @VisibleForTesting
+    public void setHandlerFactory(HandlerFactory handlerFactory) {
+        mHandlerFactory = handlerFactory;
+    }
+
+    /**
+     * Override DisconnectCause creation for testing.
+     */
+    @VisibleForTesting
+    public void setDisconnectCauseFactory(DisconnectCauseFactory factory) {
+        mDisconnectCauseFactory = factory;
     }
 
     /**
@@ -322,21 +487,26 @@ public class TelephonyConnectionService extends ConnectionService {
     @Override
     public void onCreate() {
         super.onCreate();
+        mImsConferenceController = new ImsConferenceController(
+                TelecomAccountRegistry.getInstance(this),
+                mTelephonyConnectionServiceProxy,
+                // FeatureFlagProxy; used to determine if standalone call emulation is enabled.
+                // TODO: Move to carrier config
+                () -> true);
         setTelephonyManagerProxy(new TelephonyManagerProxyImpl(getApplicationContext()));
         mExpectedComponentName = new ComponentName(this, this.getClass());
         mEmergencyTonePlayer = new EmergencyTonePlayer(this);
         TelecomAccountRegistry.getInstance(this).setTelephonyConnectionService(this);
         mHoldTracker = new HoldTracker();
-        mIsTtyEnabled = isTtyModeEnabled(getApplicationContext());
+        mIsTtyEnabled = mDeviceState.isTtyModeEnabled(this);
 
         IntentFilter intentFilter = new IntentFilter(
                 TelecomManager.ACTION_TTY_PREFERRED_MODE_CHANGED);
         registerReceiver(mTtyBroadcastReceiver, intentFilter);
-
-        mHandlerThread = new HandlerThread("DdsSwitchHandlerThread");
+        mHandlerThread = mHandlerFactory.createHandlerThread("DdsSwitchHandlerThread");
         mHandlerThread.start();
         Looper looper = mHandlerThread.getLooper();
-        mDdsSwitchHandler = new Handler(looper);
+        mDdsSwitchHandler = mHandlerFactory.createHandler(looper);
     }
 
     @Override
@@ -356,7 +526,7 @@ public class TelephonyConnectionService extends ConnectionService {
         if (handle == null) {
             Log.d(this, "onCreateOutgoingConnection, handle is null");
             return Connection.createFailedConnection(
-                    DisconnectCauseUtil.toTelecomDisconnectCause(
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.NO_PHONE_NUMBER_SUPPLIED,
                             "No phone number supplied"));
         }
@@ -371,7 +541,7 @@ public class TelephonyConnectionService extends ConnectionService {
             if (phone == null) {
                 Log.d(this, "onCreateOutgoingConnection, phone is null");
                 return Connection.createFailedConnection(
-                        DisconnectCauseUtil.toTelecomDisconnectCause(
+                        mDisconnectCauseFactory.toTelecomDisconnectCause(
                                 android.telephony.DisconnectCause.OUT_OF_SERVICE,
                                 "Phone is null"));
             }
@@ -379,7 +549,7 @@ public class TelephonyConnectionService extends ConnectionService {
             if (TextUtils.isEmpty(number)) {
                 Log.d(this, "onCreateOutgoingConnection, no voicemail number set.");
                 return Connection.createFailedConnection(
-                        DisconnectCauseUtil.toTelecomDisconnectCause(
+                        mDisconnectCauseFactory.toTelecomDisconnectCause(
                                 android.telephony.DisconnectCause.VOICEMAIL_NUMBER_MISSING,
                                 "Voicemail scheme provided but no voicemail number set.",
                                 phone.getPhoneId()));
@@ -391,7 +561,7 @@ public class TelephonyConnectionService extends ConnectionService {
             if (!PhoneAccount.SCHEME_TEL.equals(scheme)) {
                 Log.d(this, "onCreateOutgoingConnection, Handle %s is not type tel", scheme);
                 return Connection.createFailedConnection(
-                        DisconnectCauseUtil.toTelecomDisconnectCause(
+                        mDisconnectCauseFactory.toTelecomDisconnectCause(
                                 android.telephony.DisconnectCause.INVALID_NUMBER,
                                 "Handle scheme is not type tel"));
             }
@@ -400,7 +570,7 @@ public class TelephonyConnectionService extends ConnectionService {
             if (TextUtils.isEmpty(number)) {
                 Log.d(this, "onCreateOutgoingConnection, unable to parse number");
                 return Connection.createFailedConnection(
-                        DisconnectCauseUtil.toTelecomDisconnectCause(
+                        mDisconnectCauseFactory.toTelecomDisconnectCause(
                                 android.telephony.DisconnectCause.INVALID_NUMBER,
                                 "Unable to parse number"));
             }
@@ -421,7 +591,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
                 if (disableActivation) {
                     return Connection.createFailedConnection(
-                            DisconnectCauseUtil.toTelecomDisconnectCause(
+                            mDisconnectCauseFactory.toTelecomDisconnectCause(
                                     android.telephony.DisconnectCause
                                             .CDMA_ALREADY_ACTIVATED,
                                     "Tried to dial *228",
@@ -445,7 +615,8 @@ public class TelephonyConnectionService extends ConnectionService {
             // service.
             if (phone == null || phone.getServiceState().getState()
                     != ServiceState.STATE_IN_SERVICE) {
-                String convertedNumber = PhoneNumberUtils.convertToEmergencyNumber(this, number);
+                String convertedNumber = mPhoneNumberUtilsProxy.convertToEmergencyNumber(this,
+                        number);
                 if (!TextUtils.equals(convertedNumber, number)) {
                     Log.i(this, "onCreateOutgoingConnection, converted to emergency number");
                     number = convertedNumber;
@@ -456,8 +627,7 @@ public class TelephonyConnectionService extends ConnectionService {
         final String numberToDial = number;
 
 
-        final boolean isAirplaneModeOn = Settings.Global.getInt(getContentResolver(),
-                Settings.Global.AIRPLANE_MODE_ON, 0) > 0;
+        final boolean isAirplaneModeOn = mDeviceState.isAirplaneModeOn(this);
 
         boolean needToTurnOnRadio = (isEmergencyNumber && (!isRadioOn() || isAirplaneModeOn))
                 || isRadioPowerDownOnBluetooth();
@@ -466,7 +636,7 @@ public class TelephonyConnectionService extends ConnectionService {
             final Uri resultHandle = handle;
             // By default, Connection based on the default Phone, since we need to return to Telecom
             // now.
-            final int originalPhoneType = PhoneFactory.getDefaultPhone().getPhoneType();
+            final int originalPhoneType = mPhoneFactoryProxy.getDefaultPhone().getPhoneType();
             final Connection resultConnection = getTelephonyConnection(request, numberToDial,
                     isEmergencyNumber, resultHandle, PhoneFactory.getDefaultPhone());
             if (mRadioOnHelper == null) {
@@ -583,12 +753,8 @@ public class TelephonyConnectionService extends ConnectionService {
      * Whether the cellular radio is power off because the device is on Bluetooth.
      */
     private boolean isRadioPowerDownOnBluetooth() {
-        final Context context = getApplicationContext();
-        final boolean allowed = context.getResources().getBoolean(
-                R.bool.config_allowRadioPowerDownOnBluetooth);
-        final int cellOn = Settings.Global.getInt(context.getContentResolver(),
-                Settings.Global.CELL_ON,
-                PhoneConstants.CELL_ON_FLAG);
+        final boolean allowed = mDeviceState.isRadioPowerDownAllowedOnBluetooth(this);
+        final int cellOn = mDeviceState.getCellOnStatus(this);
         return (allowed && cellOn == PhoneConstants.CELL_ON_FLAG && !isRadioOn());
     }
 
@@ -627,7 +793,7 @@ public class TelephonyConnectionService extends ConnectionService {
         } else {
             Log.w(this, "onCreateOutgoingConnection, failed to turn on radio");
             closeOrDestroyConnection(originalConnection,
-                    DisconnectCauseUtil.toTelecomDisconnectCause(
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.POWER_OFF,
                             "Failed to turn on radio."));
         }
@@ -652,11 +818,11 @@ public class TelephonyConnectionService extends ConnectionService {
             boolean noActiveSimCard = SubscriptionController.getInstance()
                     .getActiveSubInfoCount(phone.getContext().getOpPackageName()) == 0;
             // If there's no active sim card and the device is in emergency mode, use E account.
-            addExistingConnection(PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
+            addExistingConnection(mPhoneUtilsProxy.makePstnPhoneAccountHandleWithPrefix(
                     phone, "", isEmergencyNumber && noActiveSimCard), repConnection);
             // Remove the old connection from Telecom after.
             closeOrDestroyConnection(connectionToEvaluate,
-                    DisconnectCauseUtil.toTelecomDisconnectCause(
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.OUTGOING_CANCELED,
                             "Reconnecting outgoing Emergency Call.",
                             phone.getPhoneId()));
@@ -685,7 +851,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
         if (phone == null) {
             final Context context = getApplicationContext();
-            if (context.getResources().getBoolean(R.bool.config_checkSimStateBeforeOutgoingCall)) {
+            if (mDeviceState.shouldCheckSimStateBeforeOutgoingCall(this)) {
                 // Check SIM card state before the outgoing call.
                 // Start the SIM unlock activity if PIN_REQUIRED.
                 final Phone defaultPhone = mPhoneFactoryProxy.getDefaultPhone();
@@ -710,7 +876,7 @@ public class TelephonyConnectionService extends ConnectionService {
                         }
                     }
                     return Connection.createFailedConnection(
-                            DisconnectCauseUtil.toTelecomDisconnectCause(
+                            mDisconnectCauseFactory.toTelecomDisconnectCause(
                                     android.telephony.DisconnectCause.OUT_OF_SERVICE,
                                     "SIM_STATE_PIN_REQUIRED"));
                 }
@@ -718,7 +884,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
             Log.d(this, "onCreateOutgoingConnection, phone is null");
             return Connection.createFailedConnection(
-                    DisconnectCauseUtil.toTelecomDisconnectCause(
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.OUT_OF_SERVICE, "Phone is null"));
         }
 
@@ -746,7 +912,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
             if (!allowNonEmergencyCalls) {
                 return Connection.createFailedConnection(
-                        DisconnectCauseUtil.toTelecomDisconnectCause(
+                        mDisconnectCauseFactory.toTelecomDisconnectCause(
                                 android.telephony.DisconnectCause.CDMA_NOT_EMERGENCY,
                                 "Cannot make non-emergency call in ECM mode.",
                                 phone.getPhoneId()));
@@ -764,7 +930,7 @@ public class TelephonyConnectionService extends ConnectionService {
                         break;
                     } else {
                         return Connection.createFailedConnection(
-                                DisconnectCauseUtil.toTelecomDisconnectCause(
+                                mDisconnectCauseFactory.toTelecomDisconnectCause(
                                         android.telephony.DisconnectCause.OUT_OF_SERVICE,
                                         "ServiceState.STATE_OUT_OF_SERVICE",
                                         phone.getPhoneId()));
@@ -775,25 +941,24 @@ public class TelephonyConnectionService extends ConnectionService {
                         break;
                     }
                     return Connection.createFailedConnection(
-                            DisconnectCauseUtil.toTelecomDisconnectCause(
+                            mDisconnectCauseFactory.toTelecomDisconnectCause(
                                     android.telephony.DisconnectCause.POWER_OFF,
                                     "ServiceState.STATE_POWER_OFF",
                                     phone.getPhoneId()));
                 default:
                     Log.d(this, "onCreateOutgoingConnection, unknown service state: %d", state);
                     return Connection.createFailedConnection(
-                            DisconnectCauseUtil.toTelecomDisconnectCause(
+                            mDisconnectCauseFactory.toTelecomDisconnectCause(
                                     android.telephony.DisconnectCause.OUTGOING_FAILURE,
                                     "Unknown service state " + state,
                                     phone.getPhoneId()));
             }
         }
 
-        final Context context = getApplicationContext();
-        final boolean isTtyModeEnabled = isTtyModeEnabled(context);
+        final boolean isTtyModeEnabled = mDeviceState.isTtyModeEnabled(this);
         if (VideoProfile.isVideo(request.getVideoState()) && isTtyModeEnabled
                 && !isEmergencyNumber) {
-            return Connection.createFailedConnection(DisconnectCauseUtil.toTelecomDisconnectCause(
+            return Connection.createFailedConnection(mDisconnectCauseFactory.toTelecomDisconnectCause(
                     android.telephony.DisconnectCause.VIDEO_CALL_NOT_ALLOWED_WHILE_TTY_ENABLED,
                     null, phone.getPhoneId()));
         }
@@ -807,7 +972,7 @@ public class TelephonyConnectionService extends ConnectionService {
         // Check roaming status to see if we should block custom call forwarding codes
         if (blockCallForwardingNumberWhileRoaming(phone, number)) {
             return Connection.createFailedConnection(
-                    DisconnectCauseUtil.toTelecomDisconnectCause(
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.DIALED_CALL_FORWARDING_WHILE_ROAMING,
                             "Call forwarding while roaming",
                             phone.getPhoneId()));
@@ -819,7 +984,7 @@ public class TelephonyConnectionService extends ConnectionService {
                         request.getTelecomCallId());
         if (connection == null) {
             return Connection.createFailedConnection(
-                    DisconnectCauseUtil.toTelecomDisconnectCause(
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.OUTGOING_FAILURE,
                             "Invalid phone type",
                             phone.getPhoneId()));
@@ -852,7 +1017,7 @@ public class TelephonyConnectionService extends ConnectionService {
                 request.getAddress() == null ? null : request.getAddress().getSchemeSpecificPart());
         if (phone == null) {
             return Connection.createFailedConnection(
-                    DisconnectCauseUtil.toTelecomDisconnectCause(
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.ERROR_UNSPECIFIED,
                             "Phone is null"));
         }
@@ -861,7 +1026,7 @@ public class TelephonyConnectionService extends ConnectionService {
         if (!call.getState().isRinging()) {
             Log.i(this, "onCreateIncomingConnection, no ringing call");
             return Connection.createFailedConnection(
-                    DisconnectCauseUtil.toTelecomDisconnectCause(
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.INCOMING_MISSED,
                             "Found no ringing call",
                             phone.getPhoneId()));
@@ -882,7 +1047,7 @@ public class TelephonyConnectionService extends ConnectionService {
         if (connection == null) {
             return Connection.createCanceledConnection();
         } else {
-            connection.setTtyEnabled(isTtyModeEnabled(getApplicationContext()));
+            connection.setTtyEnabled(mDeviceState.isTtyModeEnabled(getApplicationContext()));
             return connection;
         }
     }
@@ -1015,7 +1180,7 @@ public class TelephonyConnectionService extends ConnectionService {
                 request.getAddress() == null ? null : request.getAddress().getSchemeSpecificPart());
         if (phone == null) {
             return Connection.createFailedConnection(
-                    DisconnectCauseUtil.toTelecomDisconnectCause(
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.ERROR_UNSPECIFIED,
                             "Phone is null"));
         }
@@ -1268,7 +1433,7 @@ public class TelephonyConnectionService extends ConnectionService {
     }
 
     private void updatePhoneAccount(TelephonyConnection connection, Phone phone) {
-        PhoneAccountHandle pHandle = PhoneUtils.makePstnPhoneAccountHandle(phone);
+        PhoneAccountHandle pHandle = mPhoneUtilsProxy.makePstnPhoneAccountHandle(phone);
         // For ECall handling on MSIM, until the request reaches here (i.e PhoneApp), we don't know
         // on which phone account ECall can be placed. After deciding, we should notify Telecom of
         // the change so that the proper PhoneAccount can be displayed.
@@ -1339,7 +1504,7 @@ public class TelephonyConnectionService extends ConnectionService {
                     break;
             }
             connection.setTelephonyConnectionDisconnected(
-                    DisconnectCauseUtil.toTelecomDisconnectCause(cause, e.getMessage(),
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(cause, e.getMessage(),
                             phone.getPhoneId()));
             connection.close();
             return;
@@ -1363,7 +1528,7 @@ public class TelephonyConnectionService extends ConnectionService {
             }
             Log.d(this, "placeOutgoingConnection, phone.dial returned null");
             connection.setTelephonyConnectionDisconnected(
-                    DisconnectCauseUtil.toTelecomDisconnectCause(telephonyDisconnectCause,
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(telephonyDisconnectCause,
                             "Connection is null", phone.getPhoneId()));
             connection.close();
         } else {
@@ -1445,7 +1610,7 @@ public class TelephonyConnectionService extends ConnectionService {
     private Phone getPhoneForAccount(PhoneAccountHandle accountHandle, boolean isEmergency,
                                      @Nullable String emergencyNumberAddress) {
         Phone chosenPhone = null;
-        int subId = PhoneUtils.getSubIdForPhoneAccountHandle(accountHandle);
+        int subId = mPhoneUtilsProxy.getSubIdForPhoneAccountHandle(accountHandle);
         if (subId != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             int phoneId = mSubscriptionManagerProxy.getPhoneId(subId);
             chosenPhone = mPhoneFactoryProxy.getPhone(phoneId);
@@ -1475,7 +1640,7 @@ public class TelephonyConnectionService extends ConnectionService {
             return possiblyOverrideDefaultDataForEmergencyCall(phone).get(
                     DEFAULT_DATA_SWITCH_TIMEOUT_MS, TimeUnit.MILLISECONDS);
         } catch (Exception e) {
-            Log.w(this, "onCreateOutgoingConn - delayDialForDdsSwitch exception= "
+            Log.w(this, "delayDialForDdsSwitch - exception= "
                     + e.getMessage());
             return false;
         }
@@ -1495,10 +1660,18 @@ public class TelephonyConnectionService extends ConnectionService {
      */
     private CompletableFuture<Boolean> possiblyOverrideDefaultDataForEmergencyCall(
             @NonNull Phone phone) {
-        TelephonyManager telephony = TelephonyManager.from(phone.getContext());
-        int phoneCount = telephony.getPhoneCount();
+        int phoneCount = mTelephonyManagerProxy.getPhoneCount();
         // Do not override DDS if this is a single SIM device.
         if (phoneCount <= PhoneConstants.MAX_PHONE_COUNT_SINGLE_SIM) {
+            return CompletableFuture.completedFuture(Boolean.TRUE);
+        }
+
+        // Do not switch Default data if this device supports emergency SUPL on non-DDS.
+        final boolean gnssSuplRequiresDefaultData =
+                mDeviceState.isSuplDdsSwitchRequiredForEmergencyCall(this);
+        if (!gnssSuplRequiresDefaultData) {
+            Log.d(this, "possiblyOverrideDefaultDataForEmergencyCall: not switching DDS, does not "
+                    + "require DDS switch.");
             return CompletableFuture.completedFuture(Boolean.TRUE);
         }
 
@@ -1510,34 +1683,41 @@ public class TelephonyConnectionService extends ConnectionService {
                     + "CarrierConfigManager");
             return CompletableFuture.completedFuture(Boolean.TRUE);
         }
-        // Only override default data if we are IN_SERVICE and on a home network. We don't want to
-        // perform a DDS switch of we are on a roaming network, where SUPL may not be available.
-        boolean isPhoneAvailableForEmergency = isAvailableForEmergencyCalls(phone);
+
+        // Only override default data if we are IN_SERVICE already.
+        if (!isAvailableForEmergencyCalls(phone)) {
+            Log.d(this, "possiblyOverrideDefaultDataForEmergencyCall: not switching DDS");
+            return CompletableFuture.completedFuture(Boolean.TRUE);
+        }
+
+        // Only override default data if we are not roaming, we do not want to switch onto a network
+        // that only supports data plane only (if we do not know).
         boolean isRoaming = phone.getServiceState().getVoiceRoaming();
-        if (!isPhoneAvailableForEmergency || isRoaming) {
-            Log.d(this, "possiblyOverrideDefaultDataForEmergencyCall: not switching DDS, avail = "
-                    + isPhoneAvailableForEmergency + ", roaming = " + isRoaming);
+        // In some roaming conditions, we know the roaming network doesn't support control plane
+        // fallback even though the home operator does. For these operators we will need to do a DDS
+        // switch anyway to make sure the SUPL request doesn't fail.
+        boolean roamingNetworkSupportsControlPlaneFallback = true;
+        String[] dataPlaneRoamPlmns = cfgManager.getConfigForSubId(phone.getSubId()).getStringArray(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY);
+        if (dataPlaneRoamPlmns != null && Arrays.asList(dataPlaneRoamPlmns).contains(
+                phone.getServiceState().getOperatorNumeric())) {
+            roamingNetworkSupportsControlPlaneFallback = false;
+        }
+        if (isRoaming && roamingNetworkSupportsControlPlaneFallback) {
+            Log.d(this, "possiblyOverrideDefaultDataForEmergencyCall: roaming network is assumed "
+                    + "to support CP fallback, not switching DDS.");
             return CompletableFuture.completedFuture(Boolean.TRUE);
         }
-
-        // Do not switch Default data if this device supports emergency SUPL on non-DDS.
-        final boolean gnssSuplRequiresDefaultData = phone.getContext().getResources().getBoolean(
-                R.bool.config_gnss_supl_requires_default_data_for_emergency);
-        if (!gnssSuplRequiresDefaultData) {
-            Log.d(this, "possiblyOverrideDefaultDataForEmergencyCall: not switching DDS, does not "
-                    + "require DDS switch.");
-            return CompletableFuture.completedFuture(Boolean.TRUE);
-        }
-
+        // Do not try to swap default data if we support CS fallback or it is assumed that the
+        // roaming network supports control plane fallback, we do not want to introduce
+        // a lag in emergency call setup time if possible.
         final boolean supportsCpFallback = cfgManager.getConfigForSubId(phone.getSubId())
                 .getInt(CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
                         CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_CP_ONLY)
                 != CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_DP_ONLY;
-        if (supportsCpFallback) {
+        if (supportsCpFallback && roamingNetworkSupportsControlPlaneFallback) {
             Log.d(this, "possiblyOverrideDefaultDataForEmergencyCall: not switching DDS, carrier "
                     + "supports CP fallback.");
-            // Do not try to swap default data if we support CS fallback, do not want to introduce
-            // a lag in emergency call setup time if possible.
             return CompletableFuture.completedFuture(Boolean.TRUE);
         }
 
@@ -1545,7 +1725,7 @@ public class TelephonyConnectionService extends ConnectionService {
         // CarrierConfig default if format fails.
         int extensionTime = 0;
         try {
-            extensionTime = Integer.valueOf(cfgManager.getConfigForSubId(phone.getSubId())
+            extensionTime = Integer.parseInt(cfgManager.getConfigForSubId(phone.getSubId())
                     .getString(CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0"));
         } catch (NumberFormatException e) {
             // Just use default.
@@ -1554,12 +1734,13 @@ public class TelephonyConnectionService extends ConnectionService {
         try {
             Log.d(this, "possiblyOverrideDefaultDataForEmergencyCall: overriding DDS for "
                     + extensionTime + "seconds");
-            PhoneSwitcher.getInstance().overrideDefaultDataForEmergency(phone.getPhoneId(),
-                    extensionTime, modemResultFuture);
+            mPhoneSwitcherProxy.getPhoneSwitcher().overrideDefaultDataForEmergency(
+                    phone.getPhoneId(), extensionTime, modemResultFuture);
             // Catch all exceptions, we want to continue with emergency call if possible.
         } catch (Exception e) {
             Log.w(this, "possiblyOverrideDefaultDataForEmergencyCall: exception = "
                     + e.getMessage());
+            modemResultFuture = CompletableFuture.completedFuture(Boolean.FALSE);
         }
         return modemResultFuture;
     }
@@ -1873,13 +2054,6 @@ public class TelephonyConnectionService extends ConnectionService {
         }
 
         return null; // null means nothing went wrong, and call should continue.
-    }
-
-    private boolean isTtyModeEnabled(Context context) {
-        return (android.provider.Settings.Secure.getInt(
-                context.getContentResolver(),
-                android.provider.Settings.Secure.PREFERRED_TTY_MODE,
-                TelecomManager.TTY_MODE_OFF) != TelecomManager.TTY_MODE_OFF);
     }
 
     /**

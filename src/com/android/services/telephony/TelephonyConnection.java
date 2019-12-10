@@ -52,6 +52,7 @@ import android.util.Pair;
 
 import com.android.ims.ImsCall;
 import com.android.ims.internal.ConferenceParticipant;
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.os.SomeArgs;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallFailCause;
@@ -408,12 +409,24 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             }
         }
         if (messageId != -1 && getPhone() != null && getPhone().getContext() != null) {
-            Resources res = SubscriptionManager.getResourcesForSubId(
-                    getPhone().getContext(), getPhone().getSubId());
-            return res.getText(messageId);
+            return getResourceText(messageId);
         } else {
             return null;
         }
+    }
+
+    @VisibleForTesting
+    public CharSequence getResourceText(int id) {
+        Resources resources = SubscriptionManager.getResourcesForSubId(getPhone().getContext(),
+                getPhone().getSubId());
+        return resources.getText(id);
+    }
+
+    @VisibleForTesting
+    public String getResourceString(int id) {
+        Resources resources = SubscriptionManager.getResourcesForSubId(getPhone().getContext(),
+                getPhone().getSubId());
+        return resources.getString(id);
     }
 
     /**
@@ -1492,7 +1505,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 b.getBoolean(CarrierConfigManager.KEY_ALLOW_HOLD_IN_IMS_CALL_BOOL);
     }
 
-    private PersistableBundle getCarrierConfig() {
+    @VisibleForTesting
+    public PersistableBundle getCarrierConfig() {
         Phone phone = getPhone();
         if (phone == null) {
             return null;
@@ -2279,10 +2293,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                     : R.string.status_hint_label_wifi_call;
 
             Context context = getPhone().getContext();
-            Resources res =
-                    SubscriptionManager.getResourcesForSubId(context, getPhone().getSubId());
             setTelephonyStatusHints(new StatusHints(
-                    res.getString(labelId),
+                    getResourceString(labelId),
                     Icon.createWithResource(
                             context, R.drawable.ic_signal_wifi_4_bar_24dp),
                     null /* extras */));
@@ -2365,7 +2377,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
      * 3. If call is a video call, carrier supports video conference calls.
      * 4. If call is a wifi call and VoWIFI is disabled and carrier supports merging these calls.
      */
-    private void refreshConferenceSupported() {
+    @VisibleForTesting
+    void refreshConferenceSupported() {
         boolean isVideoCall = VideoProfile.isVideo(getVideoState());
         Phone phone = getPhone();
         if (phone == null) {
