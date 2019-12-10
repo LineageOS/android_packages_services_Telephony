@@ -6,7 +6,7 @@ apex {
     // optional. if unspecified, a default one is auto-generated
     androidManifest: "AndroidManifest.xml",
 
-    //java_libs: ["telephony-common", "ims-common", "voip-common"],
+    java_libs: ["telephony-common", "ims-common"],
     //apps: ["TeleService", "StkLib", "ONSLib"],
     apps: ["StkLib"],
 
