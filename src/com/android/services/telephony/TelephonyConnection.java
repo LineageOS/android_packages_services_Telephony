@@ -202,6 +202,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                     // whether the call should have the HD audio property set.
                     refreshConferenceSupported();
                     refreshDisableAddCall();
+                    refreshHoldSupported();
                     updateConnectionProperties();
                     break;
 
@@ -1332,6 +1333,18 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         }
     }
 
+    private void refreshHoldSupported() {
+       if (mOriginalConnection == null) {
+           Log.w(this, "refreshHoldSupported org conn is null");
+           return;
+       }
+
+       if (!mOriginalConnection.shouldAllowHoldingVideoCall() && canHoldImsCalls() !=
+               ((getConnectionCapabilities() & (CAPABILITY_HOLD | CAPABILITY_SUPPORT_HOLD)) != 0)) {
+           updateConnectionCapabilities();
+       }
+    }
+
     private void refreshDisableAddCall() {
         if (shouldSetDisableAddCallExtra()) {
             Bundle newExtras = getExtras();
@@ -1488,8 +1501,10 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private boolean canHoldImsCalls() {
         PersistableBundle b = getCarrierConfig();
         // Return true if the CarrierConfig is unavailable
-        return !doesDeviceRespectHoldCarrierConfig() || b == null ||
-                b.getBoolean(CarrierConfigManager.KEY_ALLOW_HOLD_IN_IMS_CALL_BOOL);
+        return (!doesDeviceRespectHoldCarrierConfig() || b == null ||
+                b.getBoolean(CarrierConfigManager.KEY_ALLOW_HOLD_IN_IMS_CALL_BOOL)) &&
+                ((mOriginalConnection != null && mOriginalConnection.shouldAllowHoldingVideoCall())
+                || !VideoProfile.isVideo(getVideoState()));
     }
 
     private PersistableBundle getCarrierConfig() {
