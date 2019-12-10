@@ -1030,9 +1030,9 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
                 // call log.
                 connection.setDisconnected(new DisconnectCause(DisconnectCause.CANCELED));
                 connection.destroy();
-                handleConnectionDestruction(connection);
             }
             mConferenceParticipantConnections.clear();
+            updateManageConference();
         }
     }
 
