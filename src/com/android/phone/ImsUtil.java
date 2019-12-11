@@ -59,7 +59,7 @@ public class ImsUtil {
      * @return {@code true} if WFC is supported per Slot and has been enabled by the user.
      */
     public static boolean isWfcEnabled(Context context, int phoneId) {
-        ImsManager imsManager = ImsManager.getInstance(context, phoneId);
+        final ImsManager imsManager = ImsManager.getInstance(context, phoneId);
         boolean isEnabledByPlatform = imsManager.isWfcEnabledByPlatform();
         boolean isEnabledByUser = imsManager.isWfcEnabledByUser();
         if (DBG) Log.d(LOG_TAG, "isWfcEnabled :: isEnabledByPlatform=" + isEnabledByPlatform
@@ -82,7 +82,7 @@ public class ImsUtil {
      * enabled, this will return {@code false}.
      */
     public static boolean isWfcModeWifiOnly(Context context, int phoneId) {
-        ImsManager imsManager = ImsManager.getInstance(context, phoneId);
+        final ImsManager imsManager = ImsManager.getInstance(context, phoneId);
         boolean isWifiOnlyMode =
                 imsManager.getWfcMode() == ImsConfig.WfcModeFeatureValueConstants.WIFI_ONLY;
         if (DBG) Log.d(LOG_TAG, "isWfcModeWifiOnly :: isWifiOnlyMode" + isWifiOnlyMode
@@ -118,7 +118,8 @@ public class ImsUtil {
             return false;
         }
 
-        if (!getDefaultImsManagerInstance(context).isWfcProvisionedOnDevice()) {
+        final ImsManager imsManager = ImsManager.getInstance(context, phoneId);
+        if (!imsManager.isWfcProvisionedOnDevice()) {
             return false;
         }
 
@@ -132,10 +133,6 @@ public class ImsUtil {
             }
         }
         return false;
-    }
-
-    private static ImsManager getDefaultImsManagerInstance(Context context) {
-        return ImsManager.getInstance(context, SubscriptionManager.getDefaultVoicePhoneId());
     }
 
     private static int getSubId(int phoneId) {

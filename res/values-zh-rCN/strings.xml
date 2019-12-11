@@ -780,4 +780,40 @@
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="1682814794340311300">"要使用<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>服务，请确保已为 SIM (<xliff:g id="SIM_NUMBER">%2$d</xliff:g>) 开启移动数据。您可以在移动网络设置中进行更改。"</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="8062345092837168385">"要使用<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>服务，请确保已为 SIM (<xliff:g id="SIM_NUMBER">%2$d</xliff:g>) 开启移动数据和数据网络漫游。您可以在移动网络设置中进行更改。"</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5061044213859557398">"关闭"</string>
+    <string name="srvcc_video_message">"4G网络不可用，视频电话降级到2G/3G语音电话."</string>
+    <string name="srvcc_message">"4G网络不可用，4G语音电话降级到2G/3G语音电话."</string>
+    <string name="ut_not_support">UT补充业务不可用</string>
+    <string name="ct_ut_not_support_close_4glte">UT补充业务不可用，请在设置中关闭增强4G LTE选项</string>
+    <!-- Call forwarding settings screen, setting timer info for cfut case -->
+    <string name="set_time_period">设置时间区间</string>
+    <string name="all_day">" 全天"</string>
+    <string name="time_interval_char">: </string>
+    <string name="time_start">" 自 "</string>
+    <string name="time_start_hour">"起始小时"</string>
+    <string name="time_start_minute">"起始分钟"</string>
+    <string name="time_end">" 到 "</string>
+    <string name="time_next_day">" 第二天"</string>
+    <string name="time_end_hour">"结束小时"</string>
+    <string name="time_end_minute">"结束分钟"</string>
+    <string name="time_formate_am">"上午"</string>
+    <string name="time_formate_pm">"下午"</string>
+    <string name="labelCFType">"呼叫转移设置"</string>
+    <string name="labelCFVoice">"语音"</string>
+    <string name="labelCFVideo">"视频"</string>
+    <string name="call_forward_option">"呼叫转移选项"</string>
+
+    <string name="cf_setting_mobile_data_alert">请开启手机数据连接，并确保WLAN已关闭</string>
+    <string name="no_mobile_data">移动数据连接不可用</string>
+    <string name="cf_setting_mobile_data_alert_roaming">请开启数据漫游</string>
+    <string name="no_mobile_data_roaming">数据漫游不可用</string>
+    <!--alert user to switch DDS when user is making UT supplementary service on non-DDS sub -->
+    <string name="switch_dds_to_sub_alert">请将移动数据切到卡槽</string>
+    <string name="mobile_data_alert">副卡可能会产生数据流量</string>
+    <string name="mobile_data">移动数据</string>
+    <string name="sim_is_not_ready">SIM卡未就绪</string>
+    <string name="switch_dds_to_sub_alert_msg">请将移动数据切到电信所在的卡</string>
+    <string name="labelCommonMore" msgid="5930842194056092107">"通话设置"</string>
+    <string name="labelCommonMore_with_label" msgid="2674012918829238902">"通话设置（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
+    <string name="sum_common_settings" msgid="284753265979035550">"其他通话设置"</string>
+    <string name="incall_error_outgoing_call_failed">"呼叫失败"</string>
 </resources>

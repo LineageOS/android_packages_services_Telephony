@@ -104,6 +104,11 @@ public class RadioOnHelper implements RadioOnStateListener.Callback {
             Settings.Global.putInt(mContext.getContentResolver(),
                     Settings.Global.AIRPLANE_MODE_ON, 0);
 
+            for (Phone phone : PhoneFactory.getPhones()) {
+                Log.d(this, "powerOnRadio, enabling Radio");
+                phone.setRadioPower(true);
+            }
+
             // Post the broadcast intend for change in airplane mode
             // TODO: We really should not be in charge of sending this broadcast.
             // If changing the setting is sufficient to trigger all of the rest of the logic,

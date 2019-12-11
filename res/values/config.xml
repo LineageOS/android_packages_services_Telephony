@@ -218,7 +218,7 @@
     <bool name="config_pstn_phone_accounts_enabled">true</bool>
 
     <!-- Flag indicating whether the the emergency phone account should be emergency calls only -->
-    <bool name="config_emergency_account_emergency_calls_only">false</bool>
+    <bool name="config_emergency_account_emergency_calls_only">true</bool>
 
     <!-- Whether the emergency only account can make emergency calls -->
     <bool name="config_pstnCanPlaceEmergencyCalls">true</bool>
@@ -250,6 +250,10 @@
          When this is true, the Telephony stack is able to add additional audio to the outgoing
          audio stream which the remote party will be able to hear. -->
     <bool name="config_support_telephony_audio_device">false</bool>
+    <!-- To disable/enable CallForwardUnconditional Timer -->
+    <bool name="config_enable_cfu_time">false</bool>
+    <!-- To disable clir query when ut enable under CMCC -->
+    <bool name="config_disable_clir_over_ut">false</bool>
 
     <!-- The country list that shortcut view can be enabled. -->
     <string-array name="config_countries_to_enable_shortcut_view" translatable="false">

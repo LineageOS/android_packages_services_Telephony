@@ -210,6 +210,8 @@
     <uses-permission android:name="android.permission.READ_PRECISE_PHONE_STATE" />
     <uses-permission android:name="android.permission.MANAGE_ROLE_HOLDERS" />
 
+    <uses-permission android:name="com.qti.permission.BIND_QTI_IMS_SERVICE" />
+
     <application android:name="PhoneApp"
             android:persistent="true"
             android:label="@string/phoneAppLabel"
@@ -334,7 +336,7 @@
         <activity android:name="GsmUmtsCallBarringOptions"
                 android:label="@string/labelCallBarring"
                 android:configChanges="orientation|screenSize|keyboardHidden"
-                android:theme="@style/CallSettingsWithoutDividerTheme">
+                android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -342,6 +344,15 @@
 
         <activity android:name="GsmUmtsAdditionalCallOptions"
                 android:label="@string/labelGSMMore"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:theme="@style/DialerSettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="CallForwardType"
+                android:label="@string/call_forward_option"
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
@@ -640,5 +651,6 @@
                 <action android:name="android.telephony.data.DataService" />
             </intent-filter>
         </service>
+        <uses-library android:name="ims-ext-common"/>
     </application>
 </manifest>

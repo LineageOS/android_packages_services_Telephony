@@ -335,6 +335,13 @@
         <item name="android:listDivider">@null</item>
     </style>
 
+    <style name="cfut_value">
+        <item name="android:layout_width">80dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
     <style name="HeadlineTextAppearance">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">22sp</item>

@@ -56,6 +56,8 @@ public class RadioOnStateListener {
     @VisibleForTesting
     public static final int MSG_SERVICE_STATE_CHANGED = 2;
     private static final int MSG_RETRY_TIMEOUT = 3;
+    private static final int MSG_RADIO_ON = 4;
+    private static final int MSG_RADIO_OFF_OR_NOT_AVAILABLE = 5;
 
     private final Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
@@ -74,6 +76,12 @@ public class RadioOnStateListener {
                     break;
                 case MSG_SERVICE_STATE_CHANGED:
                     onServiceStateChanged((ServiceState) ((AsyncResult) msg.obj).result);
+                    break;
+                case MSG_RADIO_ON:
+                    onRadioOn();
+                    break;
+                case MSG_RADIO_OFF_OR_NOT_AVAILABLE:
+                    registerForRadioOn();
                     break;
                 case MSG_RETRY_TIMEOUT:
                     onRetryTimeout();
@@ -135,6 +143,9 @@ public class RadioOnStateListener {
         mCallback = callback;
 
         registerForServiceStateChanged();
+        // Register for RADIO_OFF to handle cases where emergency call is dialed before
+        // we receive UNSOL_RESPONSE_RADIO_STATE_CHANGED with RADIO_OFF.
+        registerForRadioOff();
         // Next step: when the SERVICE_STATE_CHANGED event comes in, we'll retry the call; see
         // onServiceStateChanged(). But also, just in case, start a timer to make sure we'll retry
         // the call even if the SERVICE_STATE_CHANGED event never comes in for some reason.
@@ -169,6 +180,17 @@ public class RadioOnStateListener {
         }
     }
 
+    private void onRadioOn() {
+        ServiceState state =  mPhone.getServiceState();
+        Log.d(this, "onRadioOn, state = %s, Phone = %s", state,
+                mPhone.getPhoneId());
+        if (isOkToCall(state.getState())) {
+            onComplete(true);
+            cleanup();
+        } else {
+            Log.d(this, "onRadioOn: not ready to call yet, keep waiting.");
+        }
+    }
     /**
      * Callback to see if it is okay to call yet, given the current conditions.
      */
@@ -239,6 +261,8 @@ public class RadioOnStateListener {
         onComplete(false);
 
         unregisterForServiceStateChanged();
+        unregisterForRadioOff();
+        unregisterForRadioOn();
         cancelRetryTimer();
 
         // Used for unregisterForServiceStateChanged() so we null it out here instead.
@@ -269,6 +293,32 @@ public class RadioOnStateListener {
             mPhone.unregisterForServiceStateChanged(mHandler);  // Safe even if unnecessary
         }
         mHandler.removeMessages(MSG_SERVICE_STATE_CHANGED);  // Clean up any pending messages too
+    }
+
+    private void registerForRadioOff() {
+        unregisterForServiceStateChanged();
+        mPhone.mCi.registerForOffOrNotAvailable(mHandler, MSG_RADIO_OFF_OR_NOT_AVAILABLE, null);
+    }
+
+    private void unregisterForRadioOff() {
+        // This method is safe to call even if we haven't set mPhone yet.
+        if (mPhone != null) {
+            mPhone.mCi.unregisterForOffOrNotAvailable(mHandler);  // Safe even if unnecessary
+        }
+        mHandler.removeMessages(MSG_RADIO_OFF_OR_NOT_AVAILABLE);  // Clean up any pending messages
+    }
+
+    private void registerForRadioOn() {
+        unregisterForRadioOff();
+        mPhone.mCi.registerForOn(mHandler, MSG_RADIO_ON, null);
+    }
+
+    private void unregisterForRadioOn() {
+        // This method is safe to call even if we haven't set mPhone yet.
+        if (mPhone != null) {
+            mPhone.mCi.unregisterForOn(mHandler);  // Safe even if unnecessary
+        }
+        mHandler.removeMessages(MSG_RADIO_ON);  // Clean up any pending messages too
     }
 
     private void onComplete(boolean isRadioReady) {
