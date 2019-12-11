@@ -83,6 +83,11 @@ public class TelephonyShellCommand extends ShellCommand {
                 STRING_ARRAY, UNKNOWN
     }
 
+    private class CcOptionParseResult {
+        public int mSubId;
+        public boolean mPersistent;
+    }
+
     // Maps carrier config keys to type. It is possible to infer the type for most carrier config
     // keys by looking at the end of the string which usually tells the type.
     // For instance: "xxxx_string", "xxxx_string_array", etc.
@@ -226,11 +231,12 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("          is specified, it will choose the default voice SIM slot.");
         pw.println("    KEY: The key to the carrier config value to print. All values are printed");
         pw.println("         if KEY is not specified.");
-        pw.println("  cc set-value [-s SLOT_ID] KEY [NEW_VALUE]");
+        pw.println("  cc set-value [-s SLOT_ID] [-p] KEY [NEW_VALUE]");
         pw.println("    Set carrier config KEY to NEW_VALUE.");
         pw.println("    Options are:");
         pw.println("      -s: The SIM slot ID to set carrier config value for. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("      -p: Value will be stored persistent");
         pw.println("    NEW_VALUE specifies the new value for carrier config KEY. Null will be");
         pw.println("      used if NEW_VALUE is not set. Strings should be encapsulated with");
         pw.println("      quotation marks. Spaces needs to be escaped. Example: \"Hello\\ World\"");
@@ -568,32 +574,47 @@ public class TelephonyShellCommand extends ShellCommand {
         return slotId;
     }
 
-    // Get the subId from argument SLOT_ID if it was provided. Otherwise use the default
-    // subscription.
-    private int getSubIdFromArgumentSlotId(String tag) {
+    // Parse options related to Carrier Config Commands.
+    private CcOptionParseResult parseCcOptions(String tag, boolean allowOptionPersistent) {
         PrintWriter errPw = getErrPrintWriter();
-        int subId = SubscriptionManager.getDefaultSubscriptionId();
-        String opt;
+        CcOptionParseResult result = new CcOptionParseResult();
+        result.mSubId = SubscriptionManager.getDefaultSubscriptionId();
+        result.mPersistent = false;
 
+        String opt;
         while ((opt = getNextOption()) != null) {
             switch (opt) {
                 case "-s": {
                     try {
-                        subId = slotStringToSubId(tag, getNextArgRequired());
+                        result.mSubId = slotStringToSubId(tag, getNextArgRequired());
+                        if (!SubscriptionManager.isValidSubscriptionId(result.mSubId)) {
+                            errPw.println(tag + "No valid subscription found.");
+                            return null;
+                        }
+
                     } catch (IllegalArgumentException e) {
                         // Missing slot id
                         errPw.println(tag + "SLOT_ID expected after -s.");
-                        return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+                        return null;
+                    }
+                    break;
+                }
+                case "-p": {
+                    if (allowOptionPersistent) {
+                        result.mPersistent = true;
+                    } else {
+                        errPw.println(tag + "Unexpected option " + opt);
+                        return null;
                     }
                     break;
                 }
                 default: {
                     errPw.println(tag + "Unknown option " + opt);
-                    return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+                    return null;
                 }
             }
         }
-        return subId;
+        return result;
     }
 
     private int slotStringToSubId(String tag, String slotString) {
@@ -657,17 +678,16 @@ public class TelephonyShellCommand extends ShellCommand {
         String tag = CARRIER_CONFIG_SUBCOMMAND + " " + CC_GET_VALUE + ": ";
         String key = null;
 
-        // Get the subId from the SLOT_ID-argument.
-        int subId = getSubIdFromArgumentSlotId(tag);
-        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
-            errPw.println(tag + "No valid subscription found.");
+        // Parse all options
+        CcOptionParseResult options =  parseCcOptions(tag, false);
+        if (options == null) {
             return -1;
         }
 
         // Get bundle containing all carrier configuration values.
-        PersistableBundle bundle = mCarrierConfigManager.getConfigForSubId(subId);
+        PersistableBundle bundle = mCarrierConfigManager.getConfigForSubId(options.mSubId);
         if (bundle == null) {
-            errPw.println(tag + "No carrier config values found for subId " + subId + ".");
+            errPw.println(tag + "No carrier config values found for subId " + options.mSubId + ".");
             return -1;
         }
 
@@ -698,17 +718,16 @@ public class TelephonyShellCommand extends ShellCommand {
         PrintWriter errPw = getErrPrintWriter();
         String tag = CARRIER_CONFIG_SUBCOMMAND + " " + CC_SET_VALUE + ": ";
 
-        // Get the subId from the SLOT_ID-argument.
-        int subId = getSubIdFromArgumentSlotId(tag);
-        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
-            errPw.println(tag + "No valid subscription found.");
+        // Parse all options
+        CcOptionParseResult options =  parseCcOptions(tag, true);
+        if (options == null) {
             return -1;
         }
 
         // Get bundle containing all current carrier configuration values.
-        PersistableBundle originalValues = mCarrierConfigManager.getConfigForSubId(subId);
+        PersistableBundle originalValues = mCarrierConfigManager.getConfigForSubId(options.mSubId);
         if (originalValues == null) {
-            errPw.println(tag + "No carrier config values found for subId " + subId + ".");
+            errPw.println(tag + "No carrier config values found for subId " + options.mSubId + ".");
             return -1;
         }
 
@@ -745,12 +764,12 @@ public class TelephonyShellCommand extends ShellCommand {
         }
 
         // Override the value
-        mCarrierConfigManager.overrideConfig(subId, overrideBundle);
+        mCarrierConfigManager.overrideConfig(options.mSubId, overrideBundle, options.mPersistent);
 
         // Find bundle containing all new carrier configuration values after the override.
-        PersistableBundle newValues = mCarrierConfigManager.getConfigForSubId(subId);
+        PersistableBundle newValues = mCarrierConfigManager.getConfigForSubId(options.mSubId);
         if (newValues == null) {
-            errPw.println(tag + "No carrier config values found for subId " + subId + ".");
+            errPw.println(tag + "No carrier config values found for subId " + options.mSubId + ".");
             return -1;
         }
 
@@ -768,15 +787,14 @@ public class TelephonyShellCommand extends ShellCommand {
         PrintWriter errPw = getErrPrintWriter();
         String tag = CARRIER_CONFIG_SUBCOMMAND + " " + CC_CLEAR_VALUES + ": ";
 
-        // Get the subId from the SLOT_ID-argument.
-        int subId = getSubIdFromArgumentSlotId(tag);
-        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
-            errPw.println(tag + "No valid subscription found.");
+        // Parse all options
+        CcOptionParseResult options =  parseCcOptions(tag, false);
+        if (options == null) {
             return -1;
         }
 
         // Clear all values that has previously been set.
-        mCarrierConfigManager.overrideConfig(subId, null);
+        mCarrierConfigManager.overrideConfig(options.mSubId, null, true);
         getOutPrintWriter()
                 .println("All previously set carrier config override values has been cleared");
         return 0;
