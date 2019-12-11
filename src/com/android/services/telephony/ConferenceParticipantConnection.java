@@ -80,6 +80,7 @@ public class ConferenceParticipantConnection extends Connection {
         mEndpoint = participant.getEndpoint();
 
         setCapabilitiesAndProperties(isRemotelyHosted);
+        updateState(participant.getState());
     }
 
     /**
@@ -189,7 +190,11 @@ public class ConferenceParticipantConnection extends Connection {
         // The SubscriptionInfo reports ISO country codes in lower case.  Convert to upper case,
         // since ultimately we use this ISO when formatting the CEP phone number, and the phone
         // number formatting library expects uppercase ISO country codes.
-        return subInfo.getCountryIso().toUpperCase();
+        final String country = subInfo.getCountryIso();
+        if (country == null) {
+            return null;
+        }
+        return country.toUpperCase();
     }
 
     /**

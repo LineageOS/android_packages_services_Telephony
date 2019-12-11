@@ -17,10 +17,19 @@
 package com.android.phone;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncResult;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.os.SystemProperties;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PersistableBundle;
@@ -39,6 +48,8 @@ import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.GsmCdmaPhone;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.imsphone.ImsPhone;
+import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.TelephonyIntents;
 import com.android.phone.settings.fdn.EditPinPreference;
 
 import java.util.ArrayList;
@@ -48,7 +59,8 @@ import java.util.ArrayList;
  * the dialogs to change the passward.
  */
 public class GsmUmtsCallBarringOptions extends TimeConsumingPreferenceActivity
-        implements EditPinPreference.OnPinEnteredListener {
+        implements EditPinPreference.OnPinEnteredListener,
+        DialogInterface.OnClickListener, DialogInterface.OnCancelListener {
     private static final String LOG_TAG = "GsmUmtsCallBarringOptions";
     private static final boolean DBG = (PhoneGlobals.DBG_LEVEL >= 2);
 
@@ -114,8 +126,12 @@ public class GsmUmtsCallBarringOptions extends TimeConsumingPreferenceActivity
     private boolean mFirstResume;
     private Bundle mIcicle;
 
+    private BroadcastReceiver mReceiver = null;
+    private boolean mCheckData = false;
     private SubscriptionInfoHelper mSubscriptionInfoHelper;
+    private SubscriptionManager mSubscriptionManager;
     private Dialog mProgressDialog;
+    AlertDialog.Builder mBuilder = null;
 
     @Override
     public void onPinEntered(EditPinPreference preference, boolean positiveResult) {
@@ -421,19 +437,33 @@ public class GsmUmtsCallBarringOptions extends TimeConsumingPreferenceActivity
         // Find out if password is currently used.
         boolean usePassword = true;
         boolean useDisableaAll = true;
+        boolean disableOutCallBarringOverIms = false;
 
         ImsPhone imsPhone = mPhone != null ? (ImsPhone) mPhone.getImsPhone() : null;
-        if (imsPhone != null
-                && ((imsPhone.getServiceState().getState() == ServiceState.STATE_IN_SERVICE)
-                        || imsPhone.isUtEnabled())) {
+        if (imsPhone != null && imsPhone.isUtEnabled()) {
             usePassword = false;
             useDisableaAll = false;
+            if (isDisableOutCallBarringOverIms()) {
+                disableOutCallBarringOverIms = true;
+            }
         }
 
         // Find out if the sim card is ready.
         boolean isSimReady = TelephonyManager.from(this).getSimState(
                 SubscriptionManager.getSlotIndex(mPhone.getSubId()))
                         == TelephonyManager.SIM_STATE_READY;
+
+        // Change outgoing CB options are unavailable when sim card is not reay or when the carrier
+        // config is true.
+        if (isSimReady && !disableOutCallBarringOverIms) {
+            mButtonBAOC.setEnabled(true);
+            mButtonBAOIC.setEnabled(true);
+            mButtonBAOICxH.setEnabled(true);
+        } else {
+            mButtonBAOC.setEnabled(false);
+            mButtonBAOIC.setEnabled(false);
+            mButtonBAOICxH.setEnabled(false);
+        }
 
         // Deactivate all option is unavailable when sim card is not ready or Ut is enabled.
         if (isSimReady && useDisableaAll) {
@@ -485,18 +515,47 @@ public class GsmUmtsCallBarringOptions extends TimeConsumingPreferenceActivity
             displayPwChangeDialog(mIcicle.getInt(DIALOG_MESSAGE_KEY, mPwChangeDialogStrId), false);
             mButtonChangePW.setText(mIcicle.getString(DIALOG_PW_ENTRY_KEY));
         }
+
+        PersistableBundle pb = configManager.getConfigForSubId(mPhone.getSubId());
+        mCheckData = pb.getBoolean("check_mobile_data_for_cf");
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
+        if (mCheckData) {
+            IntentFilter intentFilter = new IntentFilter();
+            intentFilter.addAction(TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED);
+            mReceiver = new PhoneAppBroadcastReceiver();
+            registerReceiver(mReceiver, intentFilter);
+            final SubscriptionManager mSubscriptionManager = SubscriptionManager.from(this);
+            checkDataStatus();
+        } else {
+            initCallBarring();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mReceiver != null) {
+            unregisterReceiver(mReceiver);
+        }
+    }
+
+    private void initCallBarring () {
         if (mFirstResume) {
             if (mIcicle == null || mIcicle.getBoolean(SAVED_BEFORE_LOAD_COMPLETED_KEY)) {
                 if (DBG) {
                     Log.d(LOG_TAG, "onResume: start to init ");
                 }
                 resetPwChangeState();
+                if (isDisableOutCallBarringOverIms() && mPhone.isUtEnabled()) {
+                    //if disable outgoing call barring over ims, ignore all outgoing query
+                    // and start query from incoming barring
+                    mInitIndex = 3;
+                }
                 mPreferences.get(mInitIndex).init(this, false, mPhone);
 
                 // Request removing BUSY_SAVING_DIALOG because reading is restarted.
@@ -562,6 +621,159 @@ public class GsmUmtsCallBarringOptions extends TimeConsumingPreferenceActivity
             // the result, if the activity is recreated while waiting for SAVING, it starts reading
             // all the newest data.
             mProgressDialog = dialog;
+        }
+    }
+
+    private boolean isDisableOutCallBarringOverIms() {
+        CarrierConfigManager configManager = (CarrierConfigManager)getSystemService(
+                 Context.CARRIER_CONFIG_SERVICE);
+        PersistableBundle pb = configManager.getConfigForSubId(mPhone.getSubId());
+
+        return pb != null ? pb.getBoolean("config_enable_callbarring_over_ims") : false;
+    }
+
+    /**
+     * Receiver for intent broadcasts the Phone app cares about.
+     */
+    private class PhoneAppBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED)) {
+                String state = intent.getStringExtra(PhoneConstants.STATE_KEY);
+                final String apnType = intent.getStringExtra(PhoneConstants.DATA_APN_TYPE_KEY);
+                Log.d(LOG_TAG, "apntype is: " + apnType + " state is: " + state);
+                if (PhoneConstants.DataState.DISCONNECTED.name().equals(state) &&
+                        PhoneConstants.APN_TYPE_DEFAULT.equals(apnType)) {
+                    Log.d(LOG_TAG, "default data is disconnected.");
+                    checkDataStatus();
+                }
+            }
+        }
+    }
+
+    private void showAlertDialog(String title, String message) {
+        Dialog dialog = new AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setIconAttribute(android.R.attr.alertDialogIcon)
+            .setPositiveButton(android.R.string.ok, this)
+            .setNegativeButton(android.R.string.cancel, this)
+            .setOnCancelListener(this)
+            .create();
+        dialog.show();
+    }
+
+    public void checkDataStatus() {
+        // check the active data sub.
+        int sub = mPhone.getSubId();
+        int defaultDataSub = mSubscriptionManager.getDefaultDataSubscriptionId();
+        int slotId = mSubscriptionManager.getSlotIndex(sub);
+        Log.d(LOG_TAG, "isUtEnabled = " + mPhone.isUtEnabled() +
+                ", checkMobileDataForCb = " + mCheckData + " defaultDataSub is : " +
+                defaultDataSub + " current sub is : " + sub);
+
+        if (sub != defaultDataSub) {
+            if (mPhone.isUtEnabled()) {
+                Log.d(LOG_TAG, "Show data in use indication if data sub is not on current sub");
+                showDataInuseToast();
+                initCallBarring();
+                return;
+            } else {
+                Log.d(LOG_TAG, "Show dds switch dialog if data sub is not on current sub");
+                showSwitchDdsDialog(slotId);
+                return;
+            }
+        }
+
+        if (mPhone.isUtEnabled() && mCheckData) {
+            int activeNetworkType = getActiveNetworkType();
+            boolean isDataRoaming = mPhone.getServiceState().getDataRoaming();
+            boolean isDataRoamingEnabled = mPhone.getDataRoamingEnabled();
+            boolean promptForDataRoaming = isDataRoaming && !isDataRoamingEnabled;
+            Log.d(LOG_TAG, "activeNetworkType = " + getActiveNetworkType() + ", sub = " + sub +
+                    ", defaultDataSub = " + defaultDataSub + ", isDataRoaming = " +
+                    isDataRoaming + ", isDataRoamingEnabled= " + isDataRoamingEnabled);
+            if ((activeNetworkType != ConnectivityManager.TYPE_MOBILE
+                        || sub != defaultDataSub)
+                    && !(activeNetworkType == ConnectivityManager.TYPE_NONE
+                        && promptForDataRoaming)) {
+                if (DBG) Log.d(LOG_TAG, "Show alert dialog if mobile network is disabled");
+                String title = (String)this.getResources().getText(R.string.no_mobile_data);
+                String message = (String)this.getResources()
+                    .getText(R.string.cf_setting_mobile_data_alert);
+                showAlertDialog(title, message);
+                return;
+            } else if (promptForDataRoaming) {
+                if (DBG) Log.d(LOG_TAG, "Show alert dialog if data roaming is disabled");
+                String title = (String)this.getResources()
+                    .getText(R.string.no_mobile_data_roaming);
+                String message = (String)this.getResources()
+                    .getText(R.string.cf_setting_mobile_data_roaming_alert);
+                showAlertDialog(title, message);
+                return;
+            }
+        }
+        initCallBarring();
+    }
+
+    private int getActiveNetworkType() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(
+                Context.CONNECTIVITY_SERVICE);
+        if (cm != null) {
+            NetworkInfo ni = cm.getActiveNetworkInfo();
+            if ((ni == null) || !ni.isConnected()){
+                return ConnectivityManager.TYPE_NONE;
+            }
+            return ni.getType();
+        }
+        return ConnectivityManager.TYPE_NONE;
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int id) {
+        if (id == DialogInterface.BUTTON_POSITIVE) {
+            Intent newIntent = new Intent("android.settings.SETTINGS");
+            newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(newIntent);
+        }
+        finish();
+        return;
+    }
+
+    private void showDataInuseToast() {
+        String message = (String)this.getResources()
+            .getText(R.string.mobile_data_alert);
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    private void showSwitchDdsDialog(int slotId) {
+        String title = (String)this.getResources().getText(R.string.no_mobile_data);
+        int simId = slotId + 1;
+        String message = (String)this.getResources()
+            .getText(R.string.switch_dds_to_sub_alert) + String.valueOf(simId);
+        if (mBuilder == null) {
+            mBuilder=new AlertDialog.Builder(this);
+            mBuilder.setTitle(title);
+            mBuilder.setMessage(message);
+            mBuilder.setIconAttribute(android.R.attr.alertDialogIcon);
+            mBuilder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent newIntent = new Intent("com.qualcomm.qti.simsettings.SIM_SETTINGS");
+                    newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(newIntent);
+                }
+            });
+            mBuilder.setNegativeButton(android.R.string.cancel,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            finish();
+                        }
+            });
+            mBuilder.create().show();
         }
     }
 }

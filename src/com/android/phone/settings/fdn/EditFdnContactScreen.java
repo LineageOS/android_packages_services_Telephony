@@ -95,8 +95,7 @@ public class EditFdnContactScreen extends Activity {
     /** static intent to invoke phone number picker */
     private static final Intent CONTACT_IMPORT_INTENT;
     static {
-        CONTACT_IMPORT_INTENT = new Intent(Intent.ACTION_GET_CONTENT);
-        CONTACT_IMPORT_INTENT.setType(CommonDataKinds.Phone.CONTENT_ITEM_TYPE);
+        CONTACT_IMPORT_INTENT = new Intent(Intent.ACTION_PICK, CommonDataKinds.Phone.CONTENT_URI);
     }
     /** flag to track saving state */
     private boolean mDataBusy;

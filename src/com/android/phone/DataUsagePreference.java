@@ -54,8 +54,12 @@ public class DataUsagePreference extends Preference {
         DataUsageController controller = new DataUsageController(activity);
 
         DataUsageController.DataUsageInfo usageInfo = controller.getDataUsageInfo(mTemplate);
+
+        Formatter.BytesResult bres = Formatter.formatBytes(activity.getResources(),
+                usageInfo.usageLevel,
+                Formatter.FLAG_CALCULATE_ROUNDED | Formatter.FLAG_IEC_UNITS);
         setSummary(activity.getString(R.string.data_usage_template,
-                Formatter.formatFileSize(activity, usageInfo.usageLevel), usageInfo.period));
+                String.format("%s %s", bres.value, bres.units), usageInfo.period));
         setIntent(getIntent());
     }
 

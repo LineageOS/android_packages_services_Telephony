@@ -581,11 +581,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT |
                 Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND |
                 Intent.FLAG_RECEIVER_FOREGROUND);
-        // Include subId/carrier id extra only if SIM records are loaded
-        TelephonyManager telephonyManager = TelephonyManager.from(mContext);
-        int simApplicationState = telephonyManager.getSimApplicationState();
-        if (addSubIdExtra && (simApplicationState != TelephonyManager.SIM_STATE_UNKNOWN
-                && simApplicationState != TelephonyManager.SIM_STATE_NOT_READY)) {
+        // Include subId extra only if SIM records are loaded
+        if (addSubIdExtra) {
             SubscriptionManager.putPhoneIdAndSubIdExtra(intent, phoneId);
             intent.putExtra(TelephonyManager.EXTRA_SPECIFIC_CARRIER_ID,
                     getSpecificCarrierIdForPhoneId(phoneId));
@@ -617,6 +614,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         String imsi = "";
         String gid1 = "";
         String gid2 = "";
+        String iccid = "";
         String spn = TelephonyManager.from(mContext).getSimOperatorNameForPhone(phoneId);
         String simOperator = TelephonyManager.from(mContext).getSimOperatorNumericForPhone(phoneId);
         int carrierId = TelephonyManager.UNKNOWN_CARRIER_ID;
@@ -631,10 +629,11 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             imsi = phone.getSubscriberId();
             gid1 = phone.getGroupIdLevel1();
             gid2 = phone.getGroupIdLevel2();
+            iccid = phone.getIccSerialNumber();
             carrierId = phone.getCarrierId();
             specificCarrierId = phone.getSpecificCarrierId();
         }
-        return new CarrierIdentifier(mcc, mnc, spn, imsi, gid1, gid2, carrierId, specificCarrierId);
+        return new CarrierIdentifier(mcc, mnc, spn, imsi, gid1, gid2, iccid, carrierId, specificCarrierId);
     }
 
     /** Returns the package name of a priveleged carrier app, or null if there is none. */

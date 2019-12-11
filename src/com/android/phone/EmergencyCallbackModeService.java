@@ -33,6 +33,7 @@ import android.os.Message;
 import android.os.SystemProperties;
 import android.util.Log;
 
+import com.android.internal.telephony.EcbmHandler;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
@@ -58,6 +59,7 @@ public class EmergencyCallbackModeService extends Service {
     private long mTimeLeft = 0;
     private Phone mPhone = null;
     private boolean mInEmergencyCall = false;
+    private EcbmHandler mEcbmHandler;
 
     private static final int ECM_TIMER_RESET = 1;
 
@@ -73,7 +75,8 @@ public class EmergencyCallbackModeService extends Service {
 
     @Override
     public void onCreate() {
-         Phone phoneInEcm = PhoneGlobals.getInstance().getPhoneInEcm();
+        Phone phoneInEcm = PhoneGlobals.getInstance().getPhoneInEcm();
+        mEcbmHandler = EcbmHandler.getInstance();
         // Check if it is CDMA phone
         if (phoneInEcm == null || ((phoneInEcm.getPhoneType() != PhoneConstants.PHONE_TYPE_CDMA)
                 && (phoneInEcm.getImsPhone() == null))) {
@@ -92,7 +95,7 @@ public class EmergencyCallbackModeService extends Service {
 
         // Register ECM timer reset notfication
         mPhone = phoneInEcm;
-        mPhone.registerForEcmTimerReset(mHandler, ECM_TIMER_RESET, null);
+        mEcbmHandler.registerForEcmTimerReset(mHandler, ECM_TIMER_RESET, null);
 
         startTimerNotification();
     }
@@ -103,7 +106,7 @@ public class EmergencyCallbackModeService extends Service {
             // Unregister receiver
             unregisterReceiver(mEcmReceiver);
             // Unregister ECM timer reset notification
-            mPhone.unregisterForEcmTimerReset(mHandler);
+            mEcbmHandler.unregisterForEcmTimerReset(mHandler);
 
             // Cancel the notification and timer
             mNotificationManager.cancel(R.string.phone_in_ecm_notification_title);

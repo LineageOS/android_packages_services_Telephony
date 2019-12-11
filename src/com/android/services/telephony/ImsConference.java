@@ -33,6 +33,9 @@ import android.telecom.TelecomManager;
 import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.util.Pair;
 
 import com.android.internal.annotations.VisibleForTesting;
@@ -40,6 +43,7 @@ import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.TelephonyProperties;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
 import com.android.phone.R;
@@ -201,6 +205,8 @@ public class ImsConference extends Conference implements Holdable {
         @Override
         public void onExtrasChanged(Connection c, Bundle extras) {
             Log.v(this, "onExtrasChanged: c=" + c + " Extras=" + extras);
+            mIsConferenceUri = extras.getBoolean(
+                    TelephonyProperties.EXTRAS_IS_CONFERENCE_URI, false);
             putExtras(extras);
         }
 
@@ -226,6 +232,7 @@ public class ImsConference extends Conference implements Holdable {
      */
     private TelephonyConnection mConferenceHost;
 
+    private boolean mIsConferenceUri = false;
     /**
      * The PhoneAccountHandle of the conference host.
      */
@@ -320,7 +327,8 @@ public class ImsConference extends Conference implements Holdable {
         setConferenceHost(conferenceHost);
 
         int capabilities = Connection.CAPABILITY_MUTE |
-                Connection.CAPABILITY_CONFERENCE_HAS_NO_CHILDREN;
+                Connection.CAPABILITY_CONFERENCE_HAS_NO_CHILDREN |
+                Connection.CAPABILITY_ADD_PARTICIPANT;
         if (canHoldImsCalls()) {
             capabilities |= Connection.CAPABILITY_SUPPORT_HOLD | Connection.CAPABILITY_HOLD;
             mIsHoldable = true;
@@ -492,6 +500,25 @@ public class ImsConference extends Conference implements Holdable {
             }
         } catch (CallStateException e) {
             Log.e(this, e, "Exception thrown trying to merge call into a conference");
+        }
+    }
+
+    /**
+     * Invoked when the conference adds a participant to the conference call.
+     *
+     * @param participant The participant to be added with conference call.
+     */
+    @Override
+    public void onAddParticipant(String participant) {
+        try {
+            Phone phone = (mConferenceHost != null) ? mConferenceHost.getPhone() : null;
+            Log.d(this, "onAddParticipant mConferenceHost = " + mConferenceHost
+                    + " Phone = " + phone);
+            if (phone != null) {
+                phone.addParticipant(participant);
+            }
+        } catch (CallStateException e) {
+            Log.e(this, e, "Exception thrown trying to add a participant into conference");
         }
     }
 
@@ -770,7 +797,20 @@ public class ImsConference extends Conference implements Holdable {
                     if (!mConferenceParticipantConnections.containsKey(userEntity)) {
                         // Some carriers will also include the conference host in the CEP.  We will
                         // filter that out here.
-                        if (!isParticipantHost(mConferenceHostAddress, participant.getHandle())) {
+                        // Also make sure the parent connection is not null.
+                        boolean disableFilter = false;
+                        Phone phone = parent.getPhone();
+                        if (phone != null) {
+                            CarrierConfigManager cfgManager = (CarrierConfigManager)
+                                    phone.getContext().getSystemService(Context.CARRIER_CONFIG_SERVICE);
+                            if (cfgManager != null) {
+                                disableFilter = cfgManager.getConfigForSubId(phone.getSubId())
+                                        .getBoolean("disable_filter_out_conference_host");
+                            }
+                        }
+                        if ((!isParticipantHost(mConferenceHostAddress, participant.getHandle())
+                               || disableFilter) && (parent.getOriginalConnection() != null)) {
+                            Log.i(this, "Create participant connection, participant = %s", participant);
                             createConferenceParticipantConnection(parent, participant);
                             newParticipants.add(participant);
                             newParticipantsAdded = true;
@@ -835,6 +875,9 @@ public class ImsConference extends Conference implements Holdable {
                 } else if (mIsEmulatingSinglePartyCall && !isSinglePartyConference) {
                     // Number of participants increased, so stop emulating a single party call.
                     stopEmulatingSinglePartyCall();
+                } else if (mIsConferenceUri && newParticipantCount == 1) {
+                    // conference uri call can right away start with a single participant
+                    startEmulatingSinglePartyCall();
                 }
             }
 
@@ -1140,7 +1183,7 @@ public class ImsConference extends Conference implements Holdable {
                         c.getConnectionProperties() | Connection.PROPERTY_IS_DOWNGRADED_CONFERENCE);
                 c.updateState();
                 // Copy the connect time from the conferenceHost
-                c.setConnectTimeMillis(mConferenceHost.getConnectTimeMillis());
+                c.setConnectTimeMillis(originalConnection.getConnectTime());
                 c.setConnectionStartElapsedRealTime(mConferenceHost.getConnectElapsedTimeMillis());
                 mTelephonyConnectionService.addExistingConnection(phoneAccountHandle, c);
                 mTelephonyConnectionService.addConnectionToConferenceController(c);
@@ -1220,8 +1263,19 @@ public class ImsConference extends Conference implements Holdable {
             Phone phone = mConferenceHost.getPhone();
             if (phone != null) {
                 Context context = phone.getContext();
+                String displaySubId = "";
+                if (TelephonyManager.getDefault().getPhoneCount() > 1) {
+                    final int phoneId = mConferenceHost.getPhone().getPhoneId();
+                    SubscriptionInfo sub = SubscriptionManager.from(
+                            mConferenceHost.getPhone().getContext())
+                        .getActiveSubscriptionInfoForSimSlotIndex(phoneId);
+                    if (sub != null) {
+                        displaySubId = sub.getDisplayName().toString();
+                        displaySubId  = " " + displaySubId;
+                    }
+                }
                 setStatusHints(new StatusHints(
-                        context.getString(R.string.status_hint_label_wifi_call),
+                        context.getString(R.string.status_hint_label_wifi_call) + displaySubId,
                         Icon.createWithResource(
                                 context, R.drawable.ic_signal_wifi_4_bar_24dp),
                         null /* extras */));

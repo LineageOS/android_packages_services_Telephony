@@ -18,6 +18,7 @@ package com.android.services.telephony;
 
 import android.content.Context;
 import android.media.ToneGenerator;
+import android.provider.Settings;
 import android.telecom.DisconnectCause;
 import android.telephony.SubscriptionManager;
 
@@ -26,7 +27,12 @@ import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.common.R;
 
+import com.android.internal.telephony.gsm.SuppServiceNotification;
+
 public class DisconnectCauseUtil {
+
+    public static int mNotificationCode = 0xFF;
+    public static int mNotificationType = 0xFF;
 
    /**
     * Converts from a disconnect code in {@link android.telephony.DisconnectCause} into a more
@@ -38,6 +44,13 @@ public class DisconnectCauseUtil {
     public static DisconnectCause toTelecomDisconnectCause(int telephonyDisconnectCause) {
         return toTelecomDisconnectCause(telephonyDisconnectCause,
                 CallFailCause.NOT_VALID, null /* reason */);
+    }
+
+    public static DisconnectCause toTelecomDisconnectCause(int telephonyDisconnectCause,
+            String reason, int type, int code, int phoneId) {
+        mNotificationCode = code;
+        mNotificationType = type;
+        return toTelecomDisconnectCause(telephonyDisconnectCause, reason, phoneId);
     }
 
    /**
@@ -199,6 +212,48 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.EXITED_ECM:
             case android.telephony.DisconnectCause.MMI:
             case android.telephony.DisconnectCause.IMS_MERGED_SUCCESSFULLY:
+            case android.telephony.DisconnectCause.NO_CIRCUIT_AVAIL:
+            case android.telephony.DisconnectCause.NO_ROUTE_TO_DESTINATION:
+            case android.telephony.DisconnectCause.OPERATOR_DETERMINED_BARRING:
+            case android.telephony.DisconnectCause.CALL_FAIL_NO_USER_RESPONDING:
+            case android.telephony.DisconnectCause.CALL_FAIL_NO_ANSWER_FROM_USER:
+            case android.telephony.DisconnectCause.CALL_FAIL_DESTINATION_OUT_OF_ORDER:
+            case android.telephony.DisconnectCause.BEARER_CAPABILITY_NOT_AUTHORIZED:
+            case android.telephony.DisconnectCause.CHANNEL_UNACCEPTABLE:
+            case android.telephony.DisconnectCause.CALL_REJECTED:
+            case android.telephony.DisconnectCause.NUMBER_CHANGED:
+            case android.telephony.DisconnectCause.PREEMPTION:
+            case android.telephony.DisconnectCause.FACILITY_REJECTED:
+            case android.telephony.DisconnectCause.RESP_TO_STATUS_ENQUIRY:
+            case android.telephony.DisconnectCause.NETWORK_OUT_OF_ORDER:
+            case android.telephony.DisconnectCause.TEMPORARY_FAILURE:
+            case android.telephony.DisconnectCause.SWITCHING_EQUIPMENT_CONGESTION:
+            case android.telephony.DisconnectCause.ACCESS_INFORMATION_DISCARDED:
+            case android.telephony.DisconnectCause.REQUESTED_CIRCUIT_OR_CHANNEL_NOT_AVAILABLE:
+            case android.telephony.DisconnectCause.RESOURCES_UNAVAILABLE_OR_UNSPECIFIED:
+            case android.telephony.DisconnectCause.QOS_UNAVAILABLE:
+            case android.telephony.DisconnectCause.REQUESTED_FACILITY_NOT_SUBSCRIBED:
+            case android.telephony.DisconnectCause.INCOMING_CALLS_BARRED_WITHIN_CUG:
+            case android.telephony.DisconnectCause.BEARER_CAPABILITY_UNAVAILABLE:
+            case android.telephony.DisconnectCause.SERVICE_OPTION_NOT_AVAILABLE:
+            case android.telephony.DisconnectCause.BEARER_SERVICE_NOT_IMPLEMENTED:
+            case android.telephony.DisconnectCause.REQUESTED_FACILITY_NOT_IMPLEMENTED:
+            case android.telephony.DisconnectCause.ONLY_DIGITAL_INFORMATION_BEARER_AVAILABLE:
+            case android.telephony.DisconnectCause.SERVICE_OR_OPTION_NOT_IMPLEMENTED:
+            case android.telephony.DisconnectCause.INVALID_TRANSACTION_IDENTIFIER:
+            case android.telephony.DisconnectCause.USER_NOT_MEMBER_OF_CUG:
+            case android.telephony.DisconnectCause.INCOMPATIBLE_DESTINATION:
+            case android.telephony.DisconnectCause.INVALID_TRANSIT_NW_SELECTION:
+            case android.telephony.DisconnectCause.SEMANTICALLY_INCORRECT_MESSAGE:
+            case android.telephony.DisconnectCause.INVALID_MANDATORY_INFORMATION:
+            case android.telephony.DisconnectCause.MESSAGE_TYPE_NON_IMPLEMENTED:
+            case android.telephony.DisconnectCause.MESSAGE_TYPE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE:
+            case android.telephony.DisconnectCause.INFORMATION_ELEMENT_NON_EXISTENT:
+            case android.telephony.DisconnectCause.CONDITIONAL_IE_ERROR:
+            case android.telephony.DisconnectCause.MESSAGE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE:
+            case android.telephony.DisconnectCause.RECOVERY_ON_TIMER_EXPIRED:
+            case android.telephony.DisconnectCause.PROTOCOL_ERROR_UNSPECIFIED:
+            case android.telephony.DisconnectCause.INTERWORKING_UNSPECIFIED:
                 return DisconnectCause.OTHER;
 
             case android.telephony.DisconnectCause.NOT_VALID:
@@ -557,9 +612,32 @@ public class DisconnectCauseUtil {
 
         Integer resourceId = null;
         switch (telephonyDisconnectCause) {
-            case android.telephony.DisconnectCause.CALL_BARRED:
-                resourceId = R.string.callFailed_cb_enabled;
+            case android.telephony.DisconnectCause.INCOMING_MISSED: {
+                // If the network sends SVC Notification then this dialog will be displayed
+                // in case of B when the incoming call at B is not answered and gets forwarded
+                // to C
+                if (mNotificationType == SuppServiceNotification.NOTIFICATION_TYPE_CODE_2 &&
+                        mNotificationCode ==
+                        SuppServiceNotification.CODE_2_ADDITIONAL_CALL_FORWARDED) {
+                    resourceId = R.string.callUnanswered_forwarded;
+                }
                 break;
+            }
+
+            case android.telephony.DisconnectCause.CALL_BARRED:{
+                // When call is disconnected with this code then it can either be barring from
+                // MO side or MT side.
+                // In MT case, if network sends SVC Notification then this dialog will be
+                // displayed when A is calling B & incoming is barred on B.
+                if (mNotificationType == SuppServiceNotification.NOTIFICATION_TYPE_CODE_1 &&
+                        mNotificationCode ==
+                        SuppServiceNotification.CODE_1_INCOMING_CALLS_BARRED) {
+                    resourceId = R.string.callFailed_incoming_cb_enabled;
+                } else {
+                    resourceId = R.string.callFailed_cb_enabled;
+                }
+                break;
+            }
 
             case android.telephony.DisconnectCause.CDMA_ALREADY_ACTIVATED:
                 resourceId = R.string.callFailed_cdma_activation;
@@ -626,7 +704,7 @@ public class DisconnectCauseUtil {
                 // failure in the telephony layer.
                 // TODO: Need UI spec for this failure case; for now just
                 // show a generic error.
-                resourceId = R.string.incall_error_call_failed;
+                resourceId = R.string.incall_error_outgoing_call_failed;
                 break;
 
             case android.telephony.DisconnectCause.POWER_OFF:
@@ -699,6 +777,201 @@ public class DisconnectCauseUtil {
 
             case android.telephony.DisconnectCause.MAXIMUM_NUMBER_OF_CALLS_REACHED:
                 resourceId = R.string.callFailed_maximum_reached;
+            // Supplementary for Clear Code
+            case android.telephony.DisconnectCause.BUSY:
+                resourceId = R.string.callFailed_userBusy;
+                break;
+
+            case android.telephony.DisconnectCause.NO_CIRCUIT_AVAIL:
+                resourceId = R.string.callFailed_no_circuit_avail;
+                break;
+
+            case android.telephony.DisconnectCause.TEMPORARY_FAILURE:
+                resourceId = R.string.callFailed_tempopary_failure;
+                break;
+
+            case android.telephony.DisconnectCause.SWITCHING_EQUIPMENT_CONGESTION:
+                resourceId = R.string.callFailed_switching_equipment_congestion;
+                break;
+
+            case android.telephony.DisconnectCause.REQUESTED_CIRCUIT_OR_CHANNEL_NOT_AVAILABLE:
+                resourceId = R.string.callFailed_requested_circuit_or_channel_not_available;
+                break;
+
+            case android.telephony.DisconnectCause.QOS_UNAVAILABLE:
+                resourceId = R.string.callFailed_QOS_unavailable;
+                break;
+
+            case android.telephony.DisconnectCause.BEARER_CAPABILITY_UNAVAILABLE:
+                resourceId = R.string.callFailed_bearer_capability_unavailable;
+                break;
+
+            case android.telephony.DisconnectCause.LIMIT_EXCEEDED:
+                resourceId = R.string.callFailed_limitExceeded;
+
+            case android.telephony.DisconnectCause.INVALID_NUMBER:
+                resourceId = R.string.callFailed_invalid_number_format;
+                break;
+
+            case android.telephony.DisconnectCause.UNOBTAINABLE_NUMBER:
+                resourceId = R.string.callFailed_unobtainable_number;
+                break;
+
+            case android.telephony.DisconnectCause.NO_ROUTE_TO_DESTINATION:
+                resourceId = R.string.callFailed_no_route_to_destination;
+                break;
+
+            case android.telephony.DisconnectCause.CALL_FAIL_NO_USER_RESPONDING:
+                resourceId = R.string.callFailed_no_user_responding;
+                break;
+
+            case android.telephony.DisconnectCause.CALL_FAIL_NO_ANSWER_FROM_USER:
+                resourceId = R.string.callFailed_no_answer_from_user;
+                break;
+
+            case android.telephony.DisconnectCause.CALL_FAIL_DESTINATION_OUT_OF_ORDER:
+                resourceId = R.string.callFailed_destination_out_of_order;
+                break;
+
+            case android.telephony.DisconnectCause.BEARER_CAPABILITY_NOT_AUTHORIZED:
+                resourceId = R.string.callFailed_bearer_capability_not_authorized;
+                break;
+
+            case android.telephony.DisconnectCause.CHANNEL_UNACCEPTABLE:
+                resourceId = R.string.callFailed_channel_unacceptable;
+                break;
+
+            case android.telephony.DisconnectCause.OPERATOR_DETERMINED_BARRING:
+                resourceId = R.string.callFailed_operator_determined_barring;
+                break;
+
+            case android.telephony.DisconnectCause.CALL_REJECTED:
+                resourceId = R.string.callFailed_call_rejected;
+                break;
+
+            case android.telephony.DisconnectCause.NUMBER_CHANGED:
+                resourceId = R.string.callFailed_number_changed;
+                break;
+
+            case android.telephony.DisconnectCause.PREEMPTION:
+                resourceId = R.string.callFailed_preemption;
+                break;
+
+            case android.telephony.DisconnectCause.FACILITY_REJECTED:
+                resourceId = R.string.callFailed_facility_rejected;
+                break;
+
+            case android.telephony.DisconnectCause.RESP_TO_STATUS_ENQUIRY:
+                resourceId = R.string.callFailed_resp_to_status_enquiry;
+                break;
+
+            case android.telephony.DisconnectCause.NORMAL_UNSPECIFIED:
+                resourceId = R.string.callFailed_normal_unspecified;
+                break;
+
+            case android.telephony.DisconnectCause.NETWORK_OUT_OF_ORDER:
+                resourceId = R.string.callFailed_network_out_of_order;
+                break;
+
+            case android.telephony.DisconnectCause.ACCESS_INFORMATION_DISCARDED:
+                resourceId = R.string.callFailed_access_information_discarded;
+                break;
+
+            case android.telephony.DisconnectCause.RESOURCES_UNAVAILABLE_OR_UNSPECIFIED:
+                resourceId = R.string.callFailed_resources_unavailable_or_unspecified;
+                break;
+
+            case android.telephony.DisconnectCause.REQUESTED_FACILITY_NOT_SUBSCRIBED:
+                resourceId = R.string.callFailed_requested_facility_not_subscribed;
+                break;
+
+            case android.telephony.DisconnectCause.INCOMING_CALLS_BARRED_WITHIN_CUG:
+                resourceId = R.string.callFailed_incoming_calls_barred_within_CUG;
+                break;
+
+            case android.telephony.DisconnectCause.SERVICE_OPTION_NOT_AVAILABLE:
+                resourceId = R.string.callFailed_service_option_not_available;
+                break;
+
+            case android.telephony.DisconnectCause.BEARER_SERVICE_NOT_IMPLEMENTED:
+                resourceId = R.string.callFailed_bearer_service_not_implemented;
+                break;
+
+            case android.telephony.DisconnectCause.REQUESTED_FACILITY_NOT_IMPLEMENTED:
+                resourceId = R.string.callFailed_requested_facility_not_implemented;
+                break;
+
+            case android.telephony.DisconnectCause.ONLY_DIGITAL_INFORMATION_BEARER_AVAILABLE:
+                resourceId = R.string.callFailed_only_digital_information_bearer_available;
+                break;
+
+            case android.telephony.DisconnectCause.SERVICE_OR_OPTION_NOT_IMPLEMENTED:
+                resourceId = R.string.callFailed_service_or_option_not_implemented;
+                break;
+
+            case android.telephony.DisconnectCause.INVALID_TRANSACTION_IDENTIFIER:
+                resourceId = R.string.callFailed_invalid_transaction_identifier;
+                break;
+
+            case android.telephony.DisconnectCause.USER_NOT_MEMBER_OF_CUG:
+                resourceId = R.string.callFailed_user_not_member_of_CUG;
+                break;
+
+            case android.telephony.DisconnectCause.INCOMPATIBLE_DESTINATION:
+                resourceId = R.string.callFailed_incompatible_destination;
+                break;
+
+            case android.telephony.DisconnectCause.INVALID_TRANSIT_NW_SELECTION:
+                resourceId = R.string.callFailed_invalid_transit_NW_selection;
+                break;
+
+            case android.telephony.DisconnectCause.SEMANTICALLY_INCORRECT_MESSAGE:
+                resourceId = R.string.callFailed_semantically_incorrect_message;
+                break;
+
+            case android.telephony.DisconnectCause.INVALID_MANDATORY_INFORMATION:
+                resourceId = R.string.callFailed_invalid_mandatory_information;
+                break;
+
+            case android.telephony.DisconnectCause.MESSAGE_TYPE_NON_IMPLEMENTED:
+                resourceId = R.string.callFailed_message_type_non_implemented;
+                break;
+
+            case android.telephony.DisconnectCause.MESSAGE_TYPE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE:
+                resourceId = R.string.callFailed_message_type_not_compatible_with_protocol_state;
+                break;
+
+            case android.telephony.DisconnectCause.INFORMATION_ELEMENT_NON_EXISTENT:
+                resourceId = R.string.callFailed_information_element_non_existent;
+                break;
+
+            case android.telephony.DisconnectCause.CONDITIONAL_IE_ERROR:
+                resourceId = R.string.callFailed_conditional_IE_error;
+                break;
+
+            case android.telephony.DisconnectCause.MESSAGE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE:
+                resourceId = R.string.callFailed_message_not_compatible_with_protocol_state;
+                break;
+
+            case android.telephony.DisconnectCause.RECOVERY_ON_TIMER_EXPIRED:
+                resourceId = R.string.callFailed_recovery_on_timer_expired;
+                break;
+
+            case android.telephony.DisconnectCause.PROTOCOL_ERROR_UNSPECIFIED:
+                resourceId = R.string.callFailed_protocol_error_unspecified;
+                break;
+
+            case android.telephony.DisconnectCause.INTERWORKING_UNSPECIFIED:
+                resourceId = R.string.callFailed_interworking_unspecified;
+                break;
+
+            case android.telephony.DisconnectCause.NORMAL:
+                resourceId = R.string.callFailed_normal;
+                break;
+
+            case android.telephony.DisconnectCause.NON_SELECTED_USER_CLEARING:
+                resourceId = R.string.callFailed_non_selected_user_clearing;
+                break;
 
             case android.telephony.DisconnectCause.OUTGOING_CANCELED:
                 // We don't want to show any dialog for the canceled case since the call was
@@ -738,7 +1011,11 @@ public class DisconnectCauseUtil {
                 resourceId = R.string.callFailed_too_many_calls;
                 break;
             case android.telephony.DisconnectCause.IMS_SIP_ALTERNATE_EMERGENCY_CALL:
-                resourceId = R.string.incall_error_power_off;
+                boolean isAirplaneModeOn = Settings.Global.getInt(context.getContentResolver(),
+                        Settings.Global.AIRPLANE_MODE_ON, 0) > 0;
+                if (isAirplaneModeOn) {
+                    resourceId = R.string.incall_error_power_off;
+                }
                 break;
             case android.telephony.DisconnectCause.OTASP_PROVISIONING_IN_PROCESS:
                 resourceId = R.string.callFailed_otasp_provisioning_in_process;
@@ -810,6 +1087,13 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.OUT_OF_SERVICE:
                 return ToneGenerator.TONE_CDMA_CALLDROP_LITE;
 
+            case android.telephony.DisconnectCause.NO_ROUTE_TO_DESTINATION:
+            case android.telephony.DisconnectCause.OPERATOR_DETERMINED_BARRING:
+            case android.telephony.DisconnectCause.CALL_FAIL_NO_USER_RESPONDING:
+            case android.telephony.DisconnectCause.NUMBER_CHANGED:
+            case android.telephony.DisconnectCause.CALL_FAIL_DESTINATION_OUT_OF_ORDER:
+            case android.telephony.DisconnectCause.BEARER_CAPABILITY_NOT_AUTHORIZED:
+            case android.telephony.DisconnectCause.USER_NOT_MEMBER_OF_CUG:
             case android.telephony.DisconnectCause.UNOBTAINABLE_NUMBER:
                 return ToneGenerator.TONE_SUP_ERROR;
 

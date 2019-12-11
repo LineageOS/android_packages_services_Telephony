@@ -34,6 +34,7 @@ public class GsmUmtsCallOptions extends PreferenceActivity {
     public static final String CALL_BARRING_KEY = "call_barring_key";
     private static final String ADDITIONAL_GSM_SETTINGS_KEY = "additional_gsm_call_settings_key";
 
+    private boolean mCommon = false;
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -41,10 +42,18 @@ public class GsmUmtsCallOptions extends PreferenceActivity {
         addPreferencesFromResource(R.xml.gsm_umts_call_options);
 
         SubscriptionInfoHelper subInfoHelper = new SubscriptionInfoHelper(this, getIntent());
+        PersistableBundle pb = null;
+        if (subInfoHelper.hasSubId()) {
+            pb = PhoneGlobals.getInstance().getCarrierConfigForSubId(subInfoHelper.getSubId());
+        } else {
+            pb = PhoneGlobals.getInstance().getCarrierConfig();
+        }
+        mCommon = pb != null && pb.getBoolean("config_common_callsettings_support_bool");
         subInfoHelper.setActionBarTitle(
-                getActionBar(), getResources(), R.string.labelGsmMore_with_label);
-        init(getPreferenceScreen(), subInfoHelper);
+                getActionBar(), getResources(),
+                mCommon ? R.string.labelCommonMore_with_label : R.string.labelGsmMore_with_label);
 
+        init(getPreferenceScreen(), subInfoHelper);
         if (subInfoHelper.getPhone().getPhoneType() != PhoneConstants.PHONE_TYPE_GSM) {
             //disable the entire screen
             getPreferenceScreen().setEnabled(false);
@@ -74,7 +83,7 @@ public class GsmUmtsCallOptions extends PreferenceActivity {
             if (b != null && b.getBoolean(
                     CarrierConfigManager.KEY_CALL_FORWARDING_VISIBILITY_BOOL)) {
                 callForwardingPref.setIntent(
-                        subInfoHelper.getIntent(GsmUmtsCallForwardOptions.class));
+                        subInfoHelper.getIntent(CallForwardType.class));
             } else {
                 prefScreen.removePreference(callForwardingPref);
             }
