@@ -20,6 +20,7 @@ android_test {
     srcs: ["src/**/*.java"],
 
     libs: [
+        "android.test.mock",
         "android.test.runner",
         "telephony-common",
         "android.test.base",
