@@ -1788,6 +1788,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     public boolean needMobileRadioShutdown() {
+        enforceReadPrivilegedPermission("needMobileRadioShutdown");
         /*
          * If any of the Radios are available, it will need to be
          * shutdown. So return true if any Radio is available.
