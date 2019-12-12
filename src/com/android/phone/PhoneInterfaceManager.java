@@ -2694,7 +2694,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean setVoiceMailNumber(int subId, String alphaTag, String number) {
-        TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(subId, "setVoiceMailNumber");
+        TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(
+                mApp, subId, "setVoiceMailNumber");
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -2943,7 +2944,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         TelecomManager tm = defaultPhone.getContext().getSystemService(TelecomManager.class);
         String defaultDialer = tm.getDefaultDialerPackage();
         if (!TextUtils.equals(callingPackage, defaultDialer)) {
-            TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(
+            TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(mApp,
                     getDefaultSubscription(), "sendDialerSpecialCode");
         }
 
@@ -5193,6 +5194,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int getCarrierPrivilegeStatusForUid(int subId, int uid) {
+        enforceReadPrivilegedPermission("getCarrierPrivilegeStatusForUid");
         final Phone phone = getPhone(subId);
         if (phone == null) {
             loge("getCarrierPrivilegeStatusForUid: Invalid subId");
@@ -5205,8 +5207,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
         }
         return getCarrierPrivilegeStatusFromCarrierConfigRules(
-            profile.getCarrierPrivilegeStatusForUid(
-                phone.getContext().getPackageManager(), uid), phone);
+                profile.getCarrierPrivilegeStatusForUid(
+                        phone.getContext().getPackageManager(), uid), phone);
     }
 
     @Override
@@ -5328,7 +5330,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public boolean setLine1NumberForDisplayForSubscriber(int subId, String alphaTag,
             String number) {
-        TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(
+        TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(mApp,
                 subId, "setLine1NumberForDisplayForSubscriber");
 
         final long identity = Binder.clearCallingIdentity();
@@ -5556,7 +5558,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean setOperatorBrandOverride(int subId, String brand) {
-        TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(
+        TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(mApp,
                 subId, "setOperatorBrandOverride");
 
         final long identity = Binder.clearCallingIdentity();
@@ -5572,7 +5574,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean setRoamingOverride(int subId, List<String> gsmRoamingList,
             List<String> gsmNonRoamingList, List<String> cdmaRoamingList,
             List<String> cdmaNonRoamingList) {
-        TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(subId, "setRoamingOverride");
+        TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(
+                mApp, subId, "setRoamingOverride");
 
         final long identity = Binder.clearCallingIdentity();
         try {
