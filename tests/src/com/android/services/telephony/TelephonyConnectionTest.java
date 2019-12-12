@@ -5,10 +5,10 @@ import static junit.framework.Assert.assertEquals;
 import android.os.Bundle;
 import android.telecom.Connection;
 
-import androidx.test.runner.AndroidJUnit4;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import androidx.test.runner.AndroidJUnit4;
 
 @RunWith(AndroidJUnit4.class)
 public class TelephonyConnectionTest {

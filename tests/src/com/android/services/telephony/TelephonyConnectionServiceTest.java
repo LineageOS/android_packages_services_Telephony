@@ -651,7 +651,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      * Verify that the connection is set to disconnected with an error disconnect cause and dial is
      * not called.
      */
-
     @Test
     @SmallTest
     public void testRetryOutgoingOriginalConnection_redialPermFailOneSlot() {
