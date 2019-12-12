@@ -16,12 +16,9 @@
 
 package com.android;
 
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-
-import androidx.test.InstrumentationRegistry;
 
 import org.mockito.MockitoAnnotations;
 
@@ -33,11 +30,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class TelephonyTestBase {
 
-    protected Context mContext;
+    protected TestContext mContext;
 
     public void setUp() throws Exception {
-        mContext = InstrumentationRegistry.getTargetContext();
         MockitoAnnotations.initMocks(this);
+        mContext = new TestContext();
         // Set up the looper if it does not exist on the test thread.
         if (Looper.myLooper() == null) {
             Looper.prepare();
@@ -85,5 +82,9 @@ public class TelephonyTestBase {
         } catch (InterruptedException e) {
             Log.e("TelephonyTestBase", "InterruptedException while waiting: " + e);
         }
+    }
+
+    protected TestContext getTestContext() {
+        return mContext;
     }
 }
