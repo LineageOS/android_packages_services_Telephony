@@ -16,7 +16,7 @@
 // for the 'other' dialer.
 
 android_app {
-    name: "TeleServiceLib",
+    name: "TeleService",
 
     libs: [
         "telephony-common",
@@ -58,11 +58,7 @@ android_app {
 
     aaptflags: [
         "--extra-packages com.android.services.telephony.sip",
-        "--shared-lib",
-        "--extra-packages com.android.phone",
     ],
-
-    export_package_resources: true,
 
     platform_apis: true,
 
@@ -73,7 +69,6 @@ android_app {
         proguard_flags_files: [
             "proguard.flags",
             "sip/proguard.flags",
-            "proguard.proguard",
         ],
     },
 
