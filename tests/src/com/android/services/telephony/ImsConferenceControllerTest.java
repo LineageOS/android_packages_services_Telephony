@@ -30,7 +30,6 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.android.internal.telephony.PhoneConstants;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -110,7 +109,6 @@ public class ImsConferenceControllerTest {
      *             is PhoneConstants.PHONE_TYPE_IMS
      * Expected: addConference for ImsConference is called twice
      */
-    @Ignore
     @Test
     @SmallTest
     public void testMergeMultiPartyCalls() {
