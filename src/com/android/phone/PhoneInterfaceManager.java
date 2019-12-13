@@ -1223,6 +1223,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         ((SIMRecords) uiccApp.getIccRecords())
                                 .setForbiddenPlmns(onCompleted, fplmns);
                     }
+                    break;
                 case CMD_ERASE_MODEM_CONFIG:
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_ERASE_MODEM_CONFIG_DONE, request);
