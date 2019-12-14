@@ -110,7 +110,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private final BroadcastReceiver mBootReceiver = new ConfigLoaderBroadcastReceiver();
     // Broadcast receiver for SIM and pkg intents, register intent filter in constructor.
     private final BroadcastReceiver mPackageReceiver = new ConfigLoaderBroadcastReceiver();
-    private final LocalLog mCarrierConfigLoadingLog = new LocalLog(50);
+    private final LocalLog mCarrierConfigLoadingLog = new LocalLog(100);
 
 
     // Message codes; see mHandler below.
@@ -200,6 +200,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         // have sent it before unlock. This will avoid we try to load carrier config
                         // when SIM is still loading when unlock happens.
                         if (mHasSentConfigChange[i]) {
+                            logWithLocalLog("System unlocked");
                             updateConfigForPhoneId(i);
                         }
                     }
@@ -214,6 +215,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     if (clearCachedConfigForPackage(carrierPackageName)) {
                         int numPhones = TelephonyManager.from(mContext).getActiveModemCount();
                         for (int i = 0; i < numPhones; ++i) {
+                            logWithLocalLog("Package changed: " + carrierPackageName
+                                    + ", phone=" + i);
                             updateConfigForPhoneId(i);
                         }
                     }
