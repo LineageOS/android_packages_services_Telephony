@@ -37,7 +37,7 @@
     <string name="audio_mode_speaker" msgid="243689733219312360">"സ്പീക്കർ"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"ഹാൻഡ്‌സെറ്റ് ഇയർപീസ്"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"വയർ മുഖേന ബന്ധിപ്പിച്ച ഹെഡ്‌സെറ്റ്"</string>
-    <string name="audio_mode_bluetooth" msgid="25732183428018809">"ബ്ലൂടൂത്ത്"</string>
+    <string name="audio_mode_bluetooth" msgid="25732183428018809">"Bluetooth"</string>
     <string name="wait_prompt_str" msgid="5136209532150094910">"ഇനിപ്പറയുന്ന ടോണുകൾ അയയ്‌ക്കണോ?\n"</string>
     <string name="pause_prompt_str" msgid="2308897950360272213">"ടോണുകൾ അയയ്‌ക്കുന്നു\n"</string>
     <string name="send_button" msgid="5070379600779031932">"അയയ്‌ക്കുക"</string>
