@@ -18,6 +18,7 @@ package com.android.phone.euicc;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -95,7 +96,7 @@ public class EuiccUiDispatcherActivity extends Activity {
 
         grantDefaultPermissionsToActiveLuiApp(activityInfo);
 
-        euiccUiIntent.setComponent(activityInfo.getComponentName());
+        euiccUiIntent.setComponent(new ComponentName(activityInfo.packageName, activityInfo.name));
         return euiccUiIntent;
     }
 
