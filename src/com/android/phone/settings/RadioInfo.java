@@ -192,6 +192,7 @@ public class RadioInfo extends AppCompatActivity {
     private static final int EVENT_SET_PREFERRED_TYPE_DONE = 1001;
     private static final int EVENT_QUERY_SMSC_DONE = 1005;
     private static final int EVENT_UPDATE_SMSC_DONE = 1006;
+    private static final int EVENT_PHYSICAL_CHANNEL_CONFIG_CHANGED = 1007;
 
     private static final int MENU_ITEM_SELECT_BAND         = 0;
     private static final int MENU_ITEM_VIEW_ADN            = 1;
@@ -345,12 +346,6 @@ public class RadioInfo extends AppCompatActivity {
             updateImsProvisionedState();
         }
 
-        @Override
-        public void onPhysicalChannelConfigurationChanged(
-                List<PhysicalChannelConfig> configs) {
-            updatePhysicalChannelConfiguration(configs);
-        }
-
     }
 
     private void updatePhysicalChannelConfiguration(List<PhysicalChannelConfig> configs) {
@@ -427,6 +422,13 @@ public class RadioInfo extends AppCompatActivity {
                     if (ar.exception != null) {
                         mSmsc.setText("update error");
                     }
+                    break;
+                case EVENT_PHYSICAL_CHANNEL_CONFIG_CHANGED:
+                    ar = (AsyncResult) msg.obj;
+                    if (ar.exception != null) {
+                        mPhyChanConfig.setText(("update error"));
+                    }
+                    updatePhysicalChannelConfiguration((List<PhysicalChannelConfig>) ar.result);
                     break;
                 default:
                     super.handleMessage(msg);
@@ -644,6 +646,8 @@ public class RadioInfo extends AppCompatActivity {
 
         unregisterPhoneStateListener();
         registerPhoneStateListener();
+        mPhone.registerForPhysicalChannelConfig(mHandler,
+            EVENT_PHYSICAL_CHANNEL_CONFIG_CHANGED, null);
 
         mConnectivityManager.registerNetworkCallback(
                 mDefaultNetworkRequest, mNetworkCallback, mHandler);
@@ -759,6 +763,7 @@ public class RadioInfo extends AppCompatActivity {
 
     private void unregisterPhoneStateListener() {
         mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+        mPhone.unregisterForPhysicalChannelConfig(mHandler);
 
         // clear all fields so they are blank until the next listener event occurs
         mOperatorName.setText("");
@@ -794,8 +799,7 @@ public class RadioInfo extends AppCompatActivity {
                 | PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR
                 | PhoneStateListener.LISTEN_CELL_INFO
                 | PhoneStateListener.LISTEN_SERVICE_STATE
-                | PhoneStateListener.LISTEN_SIGNAL_STRENGTHS
-                | PhoneStateListener.LISTEN_PHYSICAL_CHANNEL_CONFIGURATION);
+                | PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
     }
 
     private void updateDnsCheckState() {
