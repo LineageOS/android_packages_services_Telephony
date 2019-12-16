@@ -2032,7 +2032,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String getNetworkCountryIsoForPhone(int phoneId) {
+    public String getNetworkCountryIsoForPhone(int phoneId, String callingPackage) {
+        if (!TextUtils.isEmpty(callingPackage)) {
+            final int subId = mSubscriptionController.getSubIdUsingPhoneId(phoneId);
+            if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                    mApp, subId, callingPackage, "getNetworkCountryIsoForPhone")) {
+                return "";
+            }
+        }
+
         // Reporting the correct network country is ambiguous when IWLAN could conflict with
         // registered cell info, so return a NULL country instead.
         final long identity = Binder.clearCallingIdentity();
