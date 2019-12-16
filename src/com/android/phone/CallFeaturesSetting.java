@@ -518,6 +518,9 @@ public class CallFeaturesSetting extends PreferenceActivity
                     case ImsConfig.WfcModeFeatureValueConstants.WIFI_PREFERRED:
                         resId = com.android.internal.R.string.wfc_mode_wifi_preferred_summary;
                         break;
+                    case ImsConfig.WfcModeFeatureValueConstants.IMS_PREFERRED:
+                        resId = com.android.internal.R.string.wfc_mode_ims_preferred_summary;
+                        break;
                     default:
                         if (DBG) log("Unexpected WFC mode value: " + wfcMode);
                 }
