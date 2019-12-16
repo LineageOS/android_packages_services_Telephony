@@ -978,7 +978,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             PersistableBundle config = mConfigFromDefaultApp[phoneId];
             if (config != null) {
                 retConfig.putAll(config);
-                retConfig.putBoolean(CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL, true);
+                if (getCarrierPackageForPhoneId(phoneId) == null) {
+                    retConfig.putBoolean(
+                            CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL, true);
+                }
             }
             config = mConfigFromCarrierApp[phoneId];
             if (config != null) {
@@ -993,7 +996,6 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             config = mOverrideConfigs[phoneId];
             if (config != null) {
                 retConfig.putAll(config);
-                retConfig.putBoolean(CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL, true);
             }
         }
         return retConfig;
