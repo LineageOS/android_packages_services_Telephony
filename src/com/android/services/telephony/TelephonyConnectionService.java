@@ -1458,16 +1458,32 @@ public class TelephonyConnectionService extends ConnectionService {
                         phone.getEmergencyNumberTracker().getEmergencyNumber(number);
                 if (emergencyNumber != null) {
                     phone.notifyOutgoingEmergencyCall(emergencyNumber);
-                    // If we do not support holding ongoing calls for an outgoing emergency call,
-                    // disconnect the ongoing calls.
-                    if (!shouldHoldForEmergencyCall(phone) && !getAllConnections().isEmpty()) {
-                        for (Connection c : getAllConnections()) {
-                            if (!c.equals(connection)
-                                    && c.getState() != Connection.STATE_DISCONNECTED
-                                    && c instanceof TelephonyConnection) {
-                                ((TelephonyConnection) c).hangup(
-                                        android.telephony.DisconnectCause
-                                                .OUTGOING_EMERGENCY_CALL_PLACED);
+                    if (!getAllConnections().isEmpty()) {
+                        if (!shouldHoldForEmergencyCall(phone)) {
+                            // If we do not support holding ongoing calls for an outgoing
+                            // emergency call, disconnect the ongoing calls.
+                            for (Connection c : getAllConnections()) {
+                                if (!c.equals(connection)
+                                        && c.getState() != Connection.STATE_DISCONNECTED
+                                        && c instanceof TelephonyConnection) {
+                                    ((TelephonyConnection) c).hangup(
+                                            android.telephony.DisconnectCause
+                                                    .OUTGOING_EMERGENCY_CALL_PLACED);
+                                }
+                            }
+                        } else if (!isVideoCallHoldAllowed(phone)) {
+                            // If we do not support holding ongoing video call for an outgoing
+                            // emergency call, disconnect the ongoing video call.
+                            for (Connection c : getAllConnections()) {
+                                if (!c.equals(connection)
+                                        && c.getState() == Connection.STATE_ACTIVE
+                                        && VideoProfile.isVideo(c.getVideoState())
+                                        && c instanceof TelephonyConnection) {
+                                    ((TelephonyConnection) c).hangup(
+                                            android.telephony.DisconnectCause
+                                                    .OUTGOING_EMERGENCY_CALL_PLACED);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -1535,6 +1551,18 @@ public class TelephonyConnectionService extends ConnectionService {
         } else {
             connection.setOriginalConnection(originalConnection);
         }
+    }
+
+    private boolean isVideoCallHoldAllowed(Phone phone) {
+         CarrierConfigManager cfgManager = (CarrierConfigManager)
+                phone.getContext().getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (cfgManager == null) {
+            // For some reason CarrierConfigManager is unavailable, return default
+            Log.w(this, "isVideoCallHoldAllowed: couldn't get CarrierConfigManager");
+            return true;
+        }
+        return cfgManager.getConfigForSubId(phone.getSubId()).getBoolean(
+                CarrierConfigManager.KEY_ALLOW_HOLDING_VIDEO_CALL_BOOL, true);
     }
 
     private boolean shouldHoldForEmergencyCall(Phone phone) {
