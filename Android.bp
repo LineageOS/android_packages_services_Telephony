@@ -24,6 +24,7 @@ android_app {
         "ims-common",
         "org.apache.http.legacy",
         "libprotobuf-java-lite",
+        "unsupportedappusage",
     ],
 
     static_libs: [
