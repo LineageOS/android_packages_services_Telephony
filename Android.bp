@@ -23,6 +23,7 @@ android_app {
         "voip-common",
         "ims-common",
         "libprotobuf-java-lite",
+        "unsupportedappusage",
     ],
 
     static_libs: [
