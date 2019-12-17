@@ -55,6 +55,9 @@ public class TelephonyShellCommand extends ShellCommand {
     private static final String NUMBER_VERIFICATION_SUBCOMMAND = "numverify";
     private static final String EMERGENCY_NUMBER_TEST_MODE = "emergency-number-test-mode";
     private static final String CARRIER_CONFIG_SUBCOMMAND = "cc";
+    private static final String DATA_TEST_MODE = "data";
+    private static final String DATA_ENABLE = "enable";
+    private static final String DATA_DISABLE = "disable";
 
     private static final String IMS_SET_CARRIER_SERVICE = "set-ims-service";
     private static final String IMS_GET_CARRIER_SERVICE = "get-ims-service";
@@ -146,6 +149,8 @@ public class TelephonyShellCommand extends ShellCommand {
             case CARRIER_CONFIG_SUBCOMMAND: {
                 return handleCcCommand();
             }
+            case DATA_TEST_MODE:
+                return handleDataTestModeCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -162,10 +167,13 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("    IMS Commands.");
         pw.println("  emergency-number-test-mode");
         pw.println("    Emergency Number Test Mode Commands.");
+        pw.println("  data");
+        pw.println("    Data Test Mode Commands.");
         pw.println("  cc");
         pw.println("    Carrier Config Commands.");
         onHelpIms();
         onHelpEmergencyNumber();
+        onHelpDataTestMode();
         onHelpCc();
     }
 
@@ -205,6 +213,13 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("  numverify fake-call NUMBER;");
         pw.println("    Fake an incoming call from NUMBER. This is for testing. Output will be");
         pw.println("    1 if the call would have been intercepted, 0 otherwise.");
+    }
+
+    private void onHelpDataTestMode() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Mobile Data Test Mode Commands:");
+        pw.println("  data enable: enable mobile data connectivity");
+        pw.println("  data disable: disable mobile data connectivity");
     }
 
     private void onHelpEmergencyNumber() {
@@ -275,6 +290,41 @@ public class TelephonyShellCommand extends ShellCommand {
         }
 
         return -1;
+    }
+
+    private int handleDataTestModeCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        String arg = getNextArgRequired();
+        if (arg == null) {
+            onHelpDataTestMode();
+            return 0;
+        }
+        switch (arg) {
+            case DATA_ENABLE: {
+                try {
+                    mInterface.enableDataConnectivity();
+                } catch (RemoteException ex) {
+                    Log.w(LOG_TAG, "data enable, error " + ex.getMessage());
+                    errPw.println("Exception: " + ex.getMessage());
+                    return -1;
+                }
+                break;
+            }
+            case DATA_DISABLE: {
+                try {
+                    mInterface.disableDataConnectivity();
+                } catch (RemoteException ex) {
+                    Log.w(LOG_TAG, "data disable, error " + ex.getMessage());
+                    errPw.println("Exception: " + ex.getMessage());
+                    return -1;
+                }
+                break;
+            }
+            default:
+                onHelpDataTestMode();
+                break;
+        }
+        return 0;
     }
 
     private int handleEmergencyNumberTestModeCommand() {
