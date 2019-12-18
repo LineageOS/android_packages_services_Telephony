@@ -161,6 +161,7 @@
     <uses-permission android:name="android.permission.MANAGE_USERS" />
     <uses-permission android:name="android.permission.UPDATE_APP_OPS_STATS" />
     <uses-permission android:name="android.permission.MANAGE_APP_OPS_MODES" />
+    <uses-permission android:name="android.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS" />
     <uses-permission android:name="android.permission.NETWORK_FACTORY" />
     <uses-permission android:name="android.permission.OBSERVE_NETWORK_POLICY" />
     <uses-permission android:name="android.permission.SET_PREFERRED_APPLICATIONS" />
@@ -173,7 +174,7 @@
     <!-- BIND_CARRIER_MESSAGING_SERVICE has been deprecated in favor of BIND_CARRIER_SERVICES. -->
     <uses-permission android:name="android.permission.BIND_CARRIER_MESSAGING_SERVICE" />
     <uses-permission android:name="android.permission.BIND_EUICC_SERVICE" />
-    <uses-permission android:name="com.android.permission.BIND_TELEPHONY_NETWORK_SERVICE" />
+    <uses-permission android:name="android.permission.BIND_TELEPHONY_NETWORK_SERVICE" />
     <uses-permission android:name="android.permission.BIND_CELL_BROADCAST_SERVICE" />
     <uses-permission android:name="android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
@@ -651,5 +652,13 @@
                 <category android:name="android.intent.category.VOICE_LAUNCH" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="ServiceStateProvider"
+            android:authorities="service-state"
+            android:exported="true"
+            android:multiprocess="false"
+            android:singleUser="true"
+            android:writePermission="android.permission.MODIFY_PHONE_STATE"/>
     </application>
 </manifest>

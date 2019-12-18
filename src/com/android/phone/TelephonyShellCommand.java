@@ -26,6 +26,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.emergency.EmergencyNumber;
+import android.telephony.ims.feature.ImsFeature;
 import android.util.Log;
 
 import com.android.internal.telephony.ITelephony;
@@ -35,6 +36,7 @@ import com.android.internal.telephony.util.TelephonyUtils;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
@@ -55,6 +57,9 @@ public class TelephonyShellCommand extends ShellCommand {
     private static final String NUMBER_VERIFICATION_SUBCOMMAND = "numverify";
     private static final String EMERGENCY_NUMBER_TEST_MODE = "emergency-number-test-mode";
     private static final String CARRIER_CONFIG_SUBCOMMAND = "cc";
+    private static final String DATA_TEST_MODE = "data";
+    private static final String DATA_ENABLE = "enable";
+    private static final String DATA_DISABLE = "disable";
 
     private static final String IMS_SET_CARRIER_SERVICE = "set-ims-service";
     private static final String IMS_GET_CARRIER_SERVICE = "get-ims-service";
@@ -146,6 +151,8 @@ public class TelephonyShellCommand extends ShellCommand {
             case CARRIER_CONFIG_SUBCOMMAND: {
                 return handleCcCommand();
             }
+            case DATA_TEST_MODE:
+                return handleDataTestModeCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -162,23 +169,28 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("    IMS Commands.");
         pw.println("  emergency-number-test-mode");
         pw.println("    Emergency Number Test Mode Commands.");
+        pw.println("  data");
+        pw.println("    Data Test Mode Commands.");
         pw.println("  cc");
         pw.println("    Carrier Config Commands.");
         onHelpIms();
         onHelpEmergencyNumber();
+        onHelpDataTestMode();
         onHelpCc();
     }
 
     private void onHelpIms() {
         PrintWriter pw = getOutPrintWriter();
         pw.println("IMS Commands:");
-        pw.println("  ims set-ims-service [-s SLOT_ID] (-c | -d) PACKAGE_NAME");
+        pw.println("  ims set-ims-service [-s SLOT_ID] (-c | -d | -f) PACKAGE_NAME");
         pw.println("    Sets the ImsService defined in PACKAGE_NAME to to be the bound");
         pw.println("    ImsService. Options are:");
         pw.println("      -s: the slot ID that the ImsService should be bound for. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
         pw.println("      -c: Override the ImsService defined in the carrier configuration.");
         pw.println("      -d: Override the ImsService defined in the device overlay.");
+        pw.println("      -f: Set the feature that this override if for, if no option is");
+        pw.println("          specified, the new package name will be used for all features.");
         pw.println("  ims get-ims-service [-s SLOT_ID] [-c | -d]");
         pw.println("    Gets the package name of the currently defined ImsService.");
         pw.println("    Options are:");
@@ -186,6 +198,8 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("          is specified, it will choose the default voice SIM slot.");
         pw.println("      -c: The ImsService defined as the carrier configured ImsService.");
         pw.println("      -c: The ImsService defined as the device default ImsService.");
+        pw.println("      -f: The feature type that the query will be requested for. If none is");
+        pw.println("          specified, the returned package name will correspond to MMTEL.");
         pw.println("  ims enable [-s SLOT_ID]");
         pw.println("    enables IMS for the SIM slot specified, or for the default voice SIM slot");
         pw.println("    if none is specified.");
@@ -205,6 +219,13 @@ public class TelephonyShellCommand extends ShellCommand {
         pw.println("  numverify fake-call NUMBER;");
         pw.println("    Fake an incoming call from NUMBER. This is for testing. Output will be");
         pw.println("    1 if the call would have been intercepted, 0 otherwise.");
+    }
+
+    private void onHelpDataTestMode() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Mobile Data Test Mode Commands:");
+        pw.println("  data enable: enable mobile data connectivity");
+        pw.println("  data disable: disable mobile data connectivity");
     }
 
     private void onHelpEmergencyNumber() {
@@ -275,6 +296,41 @@ public class TelephonyShellCommand extends ShellCommand {
         }
 
         return -1;
+    }
+
+    private int handleDataTestModeCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        String arg = getNextArgRequired();
+        if (arg == null) {
+            onHelpDataTestMode();
+            return 0;
+        }
+        switch (arg) {
+            case DATA_ENABLE: {
+                try {
+                    mInterface.enableDataConnectivity();
+                } catch (RemoteException ex) {
+                    Log.w(LOG_TAG, "data enable, error " + ex.getMessage());
+                    errPw.println("Exception: " + ex.getMessage());
+                    return -1;
+                }
+                break;
+            }
+            case DATA_DISABLE: {
+                try {
+                    mInterface.disableDataConnectivity();
+                } catch (RemoteException ex) {
+                    Log.w(LOG_TAG, "data disable, error " + ex.getMessage());
+                    errPw.println("Exception: " + ex.getMessage());
+                    return -1;
+                }
+                break;
+            }
+            default:
+                onHelpDataTestMode();
+                break;
+        }
+        return 0;
     }
 
     private int handleEmergencyNumberTestModeCommand() {
@@ -394,6 +450,7 @@ public class TelephonyShellCommand extends ShellCommand {
         PrintWriter errPw = getErrPrintWriter();
         int slotId = getDefaultSlot();
         Boolean isCarrierService = null;
+        List<Integer> featuresList = new ArrayList<>();
 
         String opt;
         while ((opt = getNextOption()) != null) {
@@ -414,6 +471,26 @@ public class TelephonyShellCommand extends ShellCommand {
                 case "-d": {
                     isCarrierService = false;
                     break;
+                }
+                case "-f": {
+                    String featureString = getNextArgRequired();
+                    String[] features = featureString.split(",");
+                    for (int i = 0; i < features.length; i++) {
+                        try {
+                            Integer result = Integer.parseInt(features[i]);
+                            if (result < ImsFeature.FEATURE_EMERGENCY_MMTEL
+                                    || result >= ImsFeature.FEATURE_MAX) {
+                                errPw.println("ims set-ims-service -f " + result
+                                        + " is an invalid feature.");
+                                return -1;
+                            }
+                            featuresList.add(result);
+                        } catch (NumberFormatException e) {
+                            errPw.println("ims set-ims-service -f tried to parse " + features[i]
+                                            + " as an integer.");
+                            return -1;
+                        }
+                    }
                 }
             }
         }
@@ -429,16 +506,24 @@ public class TelephonyShellCommand extends ShellCommand {
             if (packageName == null) {
                 packageName = "";
             }
-            boolean result = mInterface.setImsService(slotId, isCarrierService, packageName);
+            int[] featureArray = new int[featuresList.size()];
+            for (int i = 0; i < featuresList.size(); i++) {
+                featureArray[i] = featuresList.get(i);
+            }
+            boolean result = mInterface.setBoundImsServiceOverride(slotId, isCarrierService,
+                    featureArray, packageName);
             if (VDBG) {
                 Log.v(LOG_TAG, "ims set-ims-service -s " + slotId + " "
-                        + (isCarrierService ? "-c " : "-d ") + packageName + ", result=" + result);
+                        + (isCarrierService ? "-c " : "-d ")
+                        + "-f " + featuresList + " "
+                        + packageName + ", result=" + result);
             }
             getOutPrintWriter().println(result);
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "ims set-ims-service -s " + slotId + " "
-                    + (isCarrierService ? "-c " : "-d ") + packageName + ", error"
-                    + e.getMessage());
+                    + (isCarrierService ? "-c " : "-d ")
+                    + "-f " + featuresList + " "
+                    + packageName + ", error" + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }
@@ -450,6 +535,7 @@ public class TelephonyShellCommand extends ShellCommand {
         PrintWriter errPw = getErrPrintWriter();
         int slotId = getDefaultSlot();
         Boolean isCarrierService = null;
+        Integer featureType = ImsFeature.FEATURE_MMTEL;
 
         String opt;
         while ((opt = getNextOption()) != null) {
@@ -471,23 +557,38 @@ public class TelephonyShellCommand extends ShellCommand {
                     isCarrierService = false;
                     break;
                 }
+                case "-f": {
+                    try {
+                        featureType = Integer.parseInt(getNextArg());
+                    } catch (NumberFormatException e) {
+                        errPw.println("ims get-ims-service -f requires valid integer as feature.");
+                        return -1;
+                    }
+                    if (featureType < ImsFeature.FEATURE_EMERGENCY_MMTEL
+                            || featureType >= ImsFeature.FEATURE_MAX) {
+                        errPw.println("ims get-ims-service -f invalid feature.");
+                        return -1;
+                    }
+                }
             }
         }
         // Mandatory param, either -c or -d
         if (isCarrierService == null) {
-            errPw.println("ims set-ims-service requires either \"-c\" or \"-d\" to be set.");
+            errPw.println("ims get-ims-service requires either \"-c\" or \"-d\" to be set.");
             return -1;
         }
 
         String result;
         try {
-            result = mInterface.getImsService(slotId, isCarrierService);
+            result = mInterface.getBoundImsServicePackage(slotId, isCarrierService, featureType);
         } catch (RemoteException e) {
             return -1;
         }
         if (VDBG) {
             Log.v(LOG_TAG, "ims get-ims-service -s " + slotId + " "
-                    + (isCarrierService ? "-c " : "-d ") + ", returned: " + result);
+                    + (isCarrierService ? "-c " : "-d ")
+                    + (featureType != null ? ("-f " + featureType) : "") + " , returned: "
+                    + result);
         }
         getOutPrintWriter().println(result);
         return 0;
