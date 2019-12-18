@@ -1,17 +1,22 @@
-apex {
-    name: "com.android.telephony",
-
-    manifest: "apex_manifest.json",
+apex_defaults {
+    name: "com.android.telephony-defaults",
 
     // optional. if unspecified, a default one is auto-generated
     androidManifest: "AndroidManifest.xml",
 
     java_libs: ["telephony-common", "ims-common"],
     //apps: ["TeleService", "StkLib", "ONSLib"],
-    apps: ["StkLib"],
 
     key: "com.android.telephony.key",
     certificate: ":com.android.telephony.certificate",
+}
+
+apex {
+    name: "com.android.telephony",
+    manifest: "apex_manifest.json",
+    apps: ["StkLib"],
+
+    defaults:["com.android.telephony-defaults"],
 }
 
 apex_key {
