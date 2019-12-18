@@ -1470,6 +1470,12 @@ public class TelephonyConnectionService extends ConnectionService {
                                                     .OUTGOING_EMERGENCY_CALL_PLACED);
                                 }
                             }
+                            for (Conference c : getAllConferences()) {
+                                if (c.getState() != Connection.STATE_DISCONNECTED
+                                        && c instanceof Conference) {
+                                    ((Conference) c).onDisconnect();
+                                }
+                            }
                         } else if (!isVideoCallHoldAllowed(phone)) {
                             // If we do not support holding ongoing video call for an outgoing
                             // emergency call, disconnect the ongoing video call.
