@@ -4979,6 +4979,36 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
     }
+     /**
+     * Get the manual network selection
+     *
+     * @param subId the id of the subscription.
+     *
+     * @return the previously saved user selected PLMN
+     */
+    @Override
+    public String getManualNetworkSelectionPlmn(int subId) {
+        TelephonyPermissions
+                    .enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                    mApp, subId, "getManualNetworkSelectionPlmn");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (!isActiveSubscription(subId)) {
+                return "";
+            }
+
+            final Phone phone = getPhone(subId);
+            if (phone == null) {
+                return "";
+            }
+            OperatorInfo networkSelection = phone.getSavedNetworkSelection();
+            return TextUtils.isEmpty(networkSelection.getOperatorNumeric())
+                ? phone.getManualNetworkSelectionPlmn() : networkSelection.getOperatorNumeric();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
 
     /**
      * Scans for available networks.
