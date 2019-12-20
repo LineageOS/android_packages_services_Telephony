@@ -1,14 +1,16 @@
 package com.android.services.telephony;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
+import static junit.framework.TestCase.assertFalse;
 
 import android.os.Bundle;
 import android.telecom.Connection;
 
+import androidx.test.runner.AndroidJUnit4;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import androidx.test.runner.AndroidJUnit4;
 
 @RunWith(AndroidJUnit4.class)
 public class TelephonyConnectionTest {
@@ -22,4 +24,17 @@ public class TelephonyConnectionTest {
         assertEquals(codec, Connection.AUDIO_CODEC_AMR);
     }
 
+    @Test
+    public void testConferenceNotSupportedForDownGradedVideoCall() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        c.setIsImsConnection(true);
+        c.setIsVideoCall(false);
+        c.setWasVideoCall(true);
+        c.setDownGradeVideoCall(true);
+        c.refreshConferenceSupported();
+        assertFalse(c.isConferenceSupported());
+        c.setDownGradeVideoCall(false);
+        c.refreshConferenceSupported();
+        assertTrue(c.isConferenceSupported());
+    }
 }

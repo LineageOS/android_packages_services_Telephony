@@ -2415,8 +2415,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         PhoneAccountHandle phoneAccountHandle = isIms ? PhoneUtils
                 .makePstnPhoneAccountHandle(phone.getDefaultPhone())
                 : PhoneUtils.makePstnPhoneAccountHandle(phone);
-        TelecomAccountRegistry telecomAccountRegistry = TelecomAccountRegistry
-                .getInstance(getPhone().getContext());
+        TelecomAccountRegistry telecomAccountRegistry = getTelecomAccountRegistry(
+                getPhone().getContext());
         boolean isConferencingSupported = telecomAccountRegistry
                 .isMergeCallSupported(phoneAccountHandle);
         boolean isImsConferencingSupported = telecomAccountRegistry
@@ -2425,6 +2425,17 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 .isVideoConferencingSupported(phoneAccountHandle);
         boolean isMergeOfWifiCallsAllowedWhenVoWifiOff = telecomAccountRegistry
                 .isMergeOfWifiCallsAllowedWhenVoWifiOff(phoneAccountHandle);
+        ImsCall imsCall = ((ImsPhoneConnection) getOriginalConnection()).getImsCall();
+        CarrierConfigManager configManager = (CarrierConfigManager) phone.getContext()
+                .getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        boolean downGradedVideoCall = false;
+        if (configManager != null) {
+            PersistableBundle config = configManager.getConfigForSubId(phone.getSubId());
+            if (config != null) {
+                downGradedVideoCall = config.getBoolean(
+                        CarrierConfigManager.KEY_TREAT_DOWNGRADED_VIDEO_CALLS_AS_VIDEO_CALLS_BOOL);
+            }
+        }
 
         Log.v(this, "refreshConferenceSupported : isConfSupp=%b, isImsConfSupp=%b, " +
                 "isVidConfSupp=%b, isMergeOfWifiAllowed=%b, " +
@@ -2445,6 +2456,12 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         } else if (isVideoCall && !mIsCarrierVideoConferencingSupported) {
             isConferenceSupported = false;
             Log.d(this, "refreshConferenceSupported = false; video conf not supported.");
+        } else if ((imsCall.wasVideoCall() && downGradedVideoCall)
+                && !mIsCarrierVideoConferencingSupported) {
+            isConferenceSupported = false;
+            Log.d(this,
+                    "refreshConferenceSupported = false;"
+                            + " video conf not supported for downgraded audio call.");
         } else if (!isMergeOfWifiCallsAllowedWhenVoWifiOff && isWifi() && !isVoWifiEnabled) {
             isConferenceSupported = false;
             Log.d(this,
@@ -2874,5 +2891,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         for (TelephonyConnectionListener listener : mTelephonyListeners) {
             listener.onStatusHintsChanged(this, statusHints);
         }
+    }
+
+    public TelecomAccountRegistry getTelecomAccountRegistry(Context context) {
+        return TelecomAccountRegistry.getInstance(context);
     }
 }
