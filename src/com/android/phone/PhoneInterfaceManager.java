@@ -52,7 +52,6 @@ import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.ServiceSpecificException;
 import android.os.ShellCallback;
-import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.os.WorkSource;
@@ -60,6 +59,7 @@ import android.preference.PreferenceManager;
 import android.provider.DeviceConfig;
 import android.provider.Settings;
 import android.provider.Telephony;
+import android.sysprop.TelephonyProperties;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
@@ -271,10 +271,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int SELECT_P1 = 0x04;
     private static final int SELECT_P2 = 0;
     private static final int SELECT_P3 = 0x10;
-
-    private static final String DEFAULT_NETWORK_MODE_PROPERTY_NAME = "ro.telephony.default_network";
-    private static final String DEFAULT_DATA_ROAMING_PROPERTY_NAME = "ro.com.android.dataroaming";
-    private static final String DEFAULT_MOBILE_DATA_PROPERTY_NAME = "ro.com.android.mobiledata";
 
     /** The singleton instance. */
     private static PhoneInterfaceManager sInstance;
@@ -6998,8 +6994,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Returns false if the mobile data is disabled by default, otherwise return true.
      */
     private boolean getDefaultDataEnabled() {
-        return "true".equalsIgnoreCase(
-                SystemProperties.get(DEFAULT_MOBILE_DATA_PROPERTY_NAME, "true"));
+        return TelephonyProperties.mobile_data().orElse(true);
     }
 
     /**
@@ -7010,8 +7005,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private boolean getDefaultDataRoamingEnabled(int subId) {
         final CarrierConfigManager configMgr = (CarrierConfigManager)
                 mApp.getSystemService(Context.CARRIER_CONFIG_SERVICE);
-        boolean isDataRoamingEnabled = "true".equalsIgnoreCase(
-                SystemProperties.get(DEFAULT_DATA_ROAMING_PROPERTY_NAME, "false"));
+        boolean isDataRoamingEnabled = TelephonyProperties.data_roaming().orElse(true);
         isDataRoamingEnabled |= configMgr.getConfigForSubId(subId).getBoolean(
                 CarrierConfigManager.KEY_CARRIER_DEFAULT_DATA_ROAMING_ENABLED_BOOL);
         return isDataRoamingEnabled;
@@ -7022,11 +7016,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * not set, return {@link Phone#PREFERRED_NT_MODE}.
      */
     private int getDefaultNetworkType(int subId) {
-        return Integer.parseInt(
-                TelephonyManager.getTelephonyProperty(
-                        mSubscriptionController.getPhoneId(subId),
-                        DEFAULT_NETWORK_MODE_PROPERTY_NAME,
-                        String.valueOf(Phone.PREFERRED_NT_MODE)));
+        List<Integer> list = TelephonyProperties.default_network();
+        int phoneId = mSubscriptionController.getPhoneId(subId);
+        if (phoneId >= 0 && phoneId < list.size() && list.get(phoneId) != null) {
+            return list.get(phoneId);
+        }
+        return Phone.PREFERRED_NT_MODE;
     }
 
     @Override
