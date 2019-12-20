@@ -1091,6 +1091,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     @Override
     public String getDefaultCarrierServicePackageName() {
+        mContext.enforceCallingOrSelfPermission(
+                android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
+                "getDefaultCarrierServicePackageName");
         return mPlatformCarrierConfigPackage;
     }
 
