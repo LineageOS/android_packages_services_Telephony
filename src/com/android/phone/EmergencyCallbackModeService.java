@@ -30,13 +30,12 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.os.SystemProperties;
+import android.sysprop.TelephonyProperties;
 import android.util.Log;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
-import com.android.internal.telephony.TelephonyProperties;
 import com.android.internal.telephony.util.NotificationChannelController;
 
 import java.text.SimpleDateFormat;
@@ -50,7 +49,7 @@ import java.text.SimpleDateFormat;
 public class EmergencyCallbackModeService extends Service {
 
     // Default Emergency Callback Mode timeout value
-    private static final int DEFAULT_ECM_EXIT_TIMER_VALUE = 300000;
+    private static final long DEFAULT_ECM_EXIT_TIMER_VALUE = 300000L;
     private static final String LOG_TAG = "EmergencyCallbackModeService";
 
     private NotificationManager mNotificationManager = null;
@@ -139,8 +138,7 @@ public class EmergencyCallbackModeService extends Service {
      */
     private void startTimerNotification() {
         // Get Emergency Callback Mode timeout value
-        long ecmTimeout = SystemProperties.getLong(
-                    TelephonyProperties.PROPERTY_ECM_EXIT_TIMER, DEFAULT_ECM_EXIT_TIMER_VALUE);
+        long ecmTimeout = TelephonyProperties.ecm_exit_timer().orElse(DEFAULT_ECM_EXIT_TIMER_VALUE);
 
         // Show the notification
         showNotification(ecmTimeout);
