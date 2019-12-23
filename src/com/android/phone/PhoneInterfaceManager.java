@@ -5514,8 +5514,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String[] getMergedSubscriberIdsFromGroup(int subId, String callingPackage) {
-        enforceReadPrivilegedPermission("getMergedSubscriberIdsFromGroup");
+    public String[] getMergedImsisFromGroup(int subId, String callingPackage) {
+        enforceReadPrivilegedPermission("getMergedImsisFromGroup");
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -5524,7 +5524,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             String subscriberId = telephonyManager.getSubscriberId(subId);
             if (subscriberId == null) {
                 if (DBG) {
-                    log("getMergedSubscriberIdsFromGroup can't find subscriberId for subId "
+                    log("getMergedImsisFromGroup can't find subscriberId for subId "
                             + subId);
                 }
                 return null;
