@@ -896,7 +896,7 @@ public class TelephonyConnectionService extends ConnectionService {
             int dataNetType = phone.getServiceState().getDataNetworkType();
             if (dataNetType == TelephonyManager.NETWORK_TYPE_LTE ||
                     dataNetType == TelephonyManager.NETWORK_TYPE_LTE_CA) {
-                state = phone.getServiceState().getDataRegState();
+                state = phone.getServiceState().getDataRegistrationState();
             }
         }
 

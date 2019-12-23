@@ -161,8 +161,8 @@ public class ServiceStateProviderTest {
         assertNotNull(cursor);
         cursor.moveToFirst();
 
-        final int voiceRegState = ss.getVoiceRegState();
-        final int dataRegState = ss.getDataRegState();
+        final int voiceRegState = ss.getState();
+        final int dataRegState = ss.getDataRegistrationState();
         final String voiceOperatorAlphaLong = ss.getOperatorAlphaLong();
         final String voiceOperatorAlphaShort = ss.getOperatorAlphaShort();
         final String voiceOperatorNumeric = ss.getOperatorNumeric();
