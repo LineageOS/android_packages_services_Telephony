@@ -25,4 +25,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="system_visual_voicemail_client" msgid="8236140562734796837"></string>
+    <string name="config_ims_mmtel_package" msgid="9015392522044235756"></string>
+    <string name="config_ims_rcs_package" msgid="6497765530737193250"></string>
 </resources>
