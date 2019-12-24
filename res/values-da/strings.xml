@@ -211,6 +211,17 @@
     <item msgid="6147699530135006312">"LTE/TDSCDMA/GSM/WCDMA"</item>
     <item msgid="8826479449402151312">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
     <item msgid="6284311629324843506">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="4738087170533378966">"Kun NR"</item>
+    <item msgid="2935877729588775187">"NR/LTE"</item>
+    <item msgid="8967513231424970529">"NR/LTE/CDMA/EvDo"</item>
+    <item msgid="1542643426479755015">"NR/LTE/GSM/WCDMA"</item>
+    <item msgid="5778162260258129841">"NR/LTE/CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="8088614845214545367">"NR/LTE/WCDMA"</item>
+    <item msgid="6517428040626326776">"NR/LTE/TDSCDMA"</item>
+    <item msgid="5294150161567170165">"NR/LTE/TDSCDMA/GSM"</item>
+    <item msgid="4130965694947056705">"NR/LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="3869566732842046032">"NR/LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="3942770927563146543">"NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</item>
   </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="7851493369130750126">"Foretrukken netværkstilstand: WCDMA foretrækkes"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="4323367929994392830">"Foretrukken netværkstilstand: kun GSM"</string>
@@ -224,6 +235,7 @@
     <string name="preferred_network_mode_lte_summary" msgid="8050539466545797149">"Foretrukken netværkstilstand: LTE"</string>
     <string name="preferred_network_mode_lte_gsm_wcdma_summary" msgid="2217794334331254936">"Foretrukken netværkstilstand: GSM/WCDMA/LTE"</string>
     <string name="preferred_network_mode_lte_cdma_evdo_summary" msgid="5559198623419981805">"Foretrukken netværkstilstand: CDMA+LTE/EVDO"</string>
+    <string name="preferred_network_mode_lte_cdma_evdo_gsm_wcdma_summary" msgid="6707224437925495615">"Foretrukken netværkstilstand: LTE/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="preferred_network_mode_global_summary" msgid="3847086258439582411">"Foretrukken netværkstilstand: Global"</string>
     <string name="preferred_network_mode_lte_wcdma_summary" msgid="7001804022020813865">"Foretrukken netværkstilstand: LTE/WCDMA"</string>
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="6484203890156282179">"Foretrukket netværkstilstand: LTE/GSM/UMTS"</string>
@@ -238,6 +250,17 @@
     <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2993923113350341106">"Foretrukken netværkstilstand: LTE/TDSCDMA/GSM/WCDMA"</string>
     <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="2779089629254220257">"Foretrukken netværkstilstand: CDMA/EvDo/GSM/WCDMA"</string>
     <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="9065672185435798587">"Foretrukken netværkstilstand: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_nr_only_summary" msgid="1467452233297987391">"Foretrukken netværkstilstand: Kun NR"</string>
+    <string name="preferred_network_mode_nr_lte_summary" msgid="5890170406507535976">"Foretrukken netværkstilstand: NR/LTE"</string>
+    <string name="preferred_network_mode_nr_lte_cdma_evdo_summary" msgid="5507940227264296616">"Foretrukken netværkstilstand: NR/LTE/CDMA/EvDo"</string>
+    <string name="preferred_network_mode_nr_lte_gsm_wcdma_summary" msgid="2811179121638665248">"Foretrukken netværkstilstand: NR/LTE/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_cdma_evdo_gsm_wcdma_summary" msgid="7631365223836621902">"Foretrukken netværkstilstand: NR/LTE/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_wcdma_summary" msgid="8696016062943591864">"Foretrukken netværkstilstand: NR/LTE/WCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_summary" msgid="1236182344680726751">"Foretrukken netværkstilstand: NR/LTE/TDSCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_summary" msgid="8384454155773415993">"Foretrukken netværkstilstand: NR/LTE/TDSCDMA/GSM"</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_wcdma_summary" msgid="5912457779733343522">"Foretrukken netværkstilstand: NR/LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_wcdma_summary" msgid="6769797110309412576">"Foretrukken netværkstilstand: NR/LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="4260661428277578573">"Foretrukken netværkstilstand: NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="call_category" msgid="4394703838833058138">"Opkald"</string>
     <string name="network_operator_category" msgid="4992217193732304680">"Netværk"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="4213420368777080540">"Udvidet 4G LTE-tilstand"</string>
@@ -379,6 +402,7 @@
     <string name="enable_disable_multi_category" msgid="5958248155437940625">"Flere kategorier"</string>
     <string name="multi_category_enable" msgid="4531915767817483960">"Flere kategorier er aktiveret"</string>
     <string name="multi_category_disable" msgid="6325934413701238104">"Flere kategorier er deaktiveret"</string>
+    <string name="network_recommended" msgid="3444321100580250926">" (anbefales)"</string>
     <string name="network_lte" msgid="7206879277095094280">"LTE (anbefales)"</string>
     <string name="network_4G" msgid="6800527815504223913">"4G (anbefales)"</string>
     <string name="network_global" msgid="3289646154407617631">"Global"</string>

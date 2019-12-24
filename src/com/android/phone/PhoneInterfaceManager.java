@@ -132,7 +132,6 @@ import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IccCard;
 import com.android.internal.telephony.LocaleTracker;
-import com.android.internal.telephony.MccTable;
 import com.android.internal.telephony.NetworkScanRequestTracker;
 import com.android.internal.telephony.OperatorInfo;
 import com.android.internal.telephony.Phone;
@@ -164,6 +163,7 @@ import com.android.internal.telephony.uicc.UiccCardApplication;
 import com.android.internal.telephony.uicc.UiccController;
 import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.telephony.uicc.UiccSlot;
+import com.android.internal.telephony.util.LocaleUtils;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
 import com.android.internal.util.HexDump;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
@@ -5514,8 +5514,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String[] getMergedSubscriberIdsFromGroup(int subId, String callingPackage) {
-        enforceReadPrivilegedPermission("getMergedSubscriberIdsFromGroup");
+    public String[] getMergedImsisFromGroup(int subId, String callingPackage) {
+        enforceReadPrivilegedPermission("getMergedImsisFromGroup");
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -5524,7 +5524,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             String subscriberId = telephonyManager.getSubscriberId(subId);
             if (subscriberId == null) {
                 if (DBG) {
-                    log("getMergedSubscriberIdsFromGroup can't find subscriberId for subId "
+                    log("getMergedImsisFromGroup can't find subscriberId for subId "
                             + subId);
                 }
                 return null;
@@ -6008,7 +6008,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // exact locale (e.g. fr_FR = French/France). So, if the locale returned from
             // the SIM and carrier preferences does not include a country we add the country
             // determined from the SIM MCC to provide an exact locale.
-            final Locale mccLocale = MccTable.getLocaleFromMcc(mApp, mcc, simLanguage);
+            final Locale mccLocale = LocaleUtils.getLocaleFromMcc(mApp, mcc, simLanguage);
             if (mccLocale != null) {
                 if (DBG) log("No locale from SIM, using mcc locale:" + mccLocale);
                 return mccLocale.toLanguageTag();
