@@ -72,6 +72,10 @@ android_app {
         ],
     },
 
+    dex_preopt: {
+        enabled: false,
+    },
+
     defaults: ["SettingsLibDefaults"],
 
     proto: {

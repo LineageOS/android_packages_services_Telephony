@@ -209,8 +209,8 @@ public class ServiceStateProvider extends ContentProvider {
             }
 
             // Build the result
-            final int voice_reg_state = ss.getVoiceRegState();
-            final int data_reg_state = ss.getDataRegState();
+            final int voice_reg_state = ss.getState();
+            final int data_reg_state = ss.getDataRegistrationState();
             final int voice_roaming_type = ss.getVoiceRoamingType();
             final int data_roaming_type = ss.getDataRoamingType();
             final String voice_operator_alpha_long = ss.getOperatorAlphaLong();
@@ -324,11 +324,11 @@ public class ServiceStateProvider extends ContentProvider {
     }
 
     private static boolean voiceRegStateChanged(ServiceState oldSS, ServiceState newSS) {
-        return oldSS.getVoiceRegState() != newSS.getVoiceRegState();
+        return oldSS.getState() != newSS.getState();
     }
 
     private static boolean dataRegStateChanged(ServiceState oldSS, ServiceState newSS) {
-        return oldSS.getDataRegState() != newSS.getDataRegState();
+        return oldSS.getDataRegistrationState() != newSS.getDataRegistrationState();
     }
 
     private static boolean voiceRoamingTypeChanged(ServiceState oldSS, ServiceState newSS) {
