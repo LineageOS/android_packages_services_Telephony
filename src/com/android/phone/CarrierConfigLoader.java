@@ -1086,6 +1086,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             case IccCardConstants.INTENT_VALUE_ICC_CARD_IO_ERROR:
             case IccCardConstants.INTENT_VALUE_ICC_CARD_RESTRICTED:
             case IccCardConstants.INTENT_VALUE_ICC_UNKNOWN:
+            case IccCardConstants.INTENT_VALUE_ICC_NOT_READY:
                 mHandler.sendMessage(mHandler.obtainMessage(EVENT_CLEAR_CONFIG, phoneId, -1));
                 break;
             case IccCardConstants.INTENT_VALUE_ICC_LOADED:

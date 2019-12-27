@@ -17,11 +17,11 @@
 package com.android.phone;
 
 import android.content.Context;
+import android.os.BasicShellCommandHandler;
 import android.os.Binder;
 import android.os.PersistableBundle;
 import android.os.Process;
 import android.os.RemoteException;
-import android.os.ShellCommand;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -46,7 +46,7 @@ import java.util.TreeSet;
  * here also contain the appropriate permissions checks.
  */
 
-public class TelephonyShellCommand extends ShellCommand {
+public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private static final String LOG_TAG = "TelephonyShellCommand";
     // Don't commit with this true.
