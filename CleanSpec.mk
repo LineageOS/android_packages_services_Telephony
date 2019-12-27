@@ -50,3 +50,6 @@
 $(call add-clean-step, rm -rf $(OUT_DIR)/target/common/obj/JAVA_LIBRARIES/com.android.services.telephony.common_intermediates)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/framework/telephony-common.jar)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/framework/ims-common.jar)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/apex/com.android.telephony/javalib/telephony-common.jar)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/apex/com.android.telephony/javalib/ims-common.jar)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/apex/com.android.telephony.apex)
