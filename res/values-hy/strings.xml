@@ -633,7 +633,7 @@
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"Ցանցային կարգավորումներ"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"Փակել"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Շտապ զանգեր"</string>
-    <string name="sim_description_emergency_calls" msgid="5146872803938897296">"Միայն արտակարգ իրավիճակների զանգեր"</string>
+    <string name="sim_description_emergency_calls" msgid="5146872803938897296">"Միայն շտապ կանչեր"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM քարտ, բնիկը՝ <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Հատուկ գործառույթներ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi զանգ այս օգտվողից՝"</string>

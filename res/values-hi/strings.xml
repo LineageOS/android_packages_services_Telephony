@@ -451,7 +451,7 @@
     <string name="enter_pin_text" msgid="3182311451978663356">"सिम पिन:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"पुराना पिन"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"नया पिन"</string>
-    <string name="confirmPinLabel" msgid="7783531218662473778">"नए पिन की दुबारा पूछें"</string>
+    <string name="confirmPinLabel" msgid="7783531218662473778">"नए पिन की पुष्टि करें"</string>
     <string name="badPin" msgid="4549286285015892321">"  लिखा गया पुराना पिन सही नहीं है. फिर से प्रयास करें."</string>
     <string name="mismatchPin" msgid="1467254768290323845">"  लिखे गए पिन का मिलान नहीं होता. फिर से प्रयास करें."</string>
     <string name="invalidPin" msgid="7363723429414001979">"कोई ऐसा पिन लिखें, जिसमें 4 से 8 अंक हों."</string>
@@ -466,7 +466,7 @@
     <string name="enter_pin2_text" msgid="7266379426804295979">"पिन2"</string>
     <string name="oldPin2Label" msgid="4648543187859997203">"पुराना पिन2"</string>
     <string name="newPin2Label" msgid="1840905981784453939">"नया पिन2"</string>
-    <string name="confirmPin2Label" msgid="4336025914667593762">"नए पिन2 की दुबारा पूछें"</string>
+    <string name="confirmPin2Label" msgid="4336025914667593762">"नए पिन2 की पुष्टि करें"</string>
     <string name="badPuk2" msgid="6438182906645832235">"PUK2 गलत है. फिर से प्रयास करें."</string>
     <string name="badPin2" msgid="2760917538643074635">"पुराना PIN2  गलत है. फिर से प्रयास करें."</string>
     <string name="mismatchPin2" msgid="4952718725266700631">"PIN2 का मिलान नहीं हो रहा. फिर से प्रयास करें."</string>
