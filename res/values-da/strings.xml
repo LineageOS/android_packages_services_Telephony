@@ -405,16 +405,16 @@
     <string name="fdn_with_label" msgid="6412087553365709494">"Begrænset opkald (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="3341716430375195441">"Numre til begrænset opkald"</string>
     <string name="fdn_list_with_label" msgid="1409655283510382556">"Numre til begrænset opkald (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="fdn_activation" msgid="2178637004710435895">"Aktivering af begrænset opkald"</string>
+    <string name="fdn_activation" msgid="2178637004710435895">"Aktivering af nummer til begrænset opkald"</string>
     <string name="fdn_enabled" msgid="7017355494808056447">"Numre til begrænset opkald er aktiveret"</string>
     <string name="fdn_disabled" msgid="6696468878037736600">"Numre til begrænset opkald er deaktiveret"</string>
-    <string name="enable_fdn" msgid="4830555730418033723">"Aktivér begrænset opkald"</string>
-    <string name="disable_fdn" msgid="3918794950264647541">"Deaktiver begrænset opkald"</string>
+    <string name="enable_fdn" msgid="4830555730418033723">"Aktivér nummer til begrænset opkald"</string>
+    <string name="disable_fdn" msgid="3918794950264647541">"Deaktiver nummer til begrænset opkald"</string>
     <string name="change_pin2" msgid="3110844547237754871">"Skift PIN2-kode"</string>
-    <string name="enable_fdn_ok" msgid="5080925177369329827">"Deaktiver begrænset opkald"</string>
-    <string name="disable_fdn_ok" msgid="3745475926874838676">"Aktivér begrænset opkald"</string>
+    <string name="enable_fdn_ok" msgid="5080925177369329827">"Deaktiver nummer til begrænset opkald"</string>
+    <string name="disable_fdn_ok" msgid="3745475926874838676">"Aktivér nummer til begrænset opkald"</string>
     <string name="sum_fdn" msgid="6152246141642323582">"Administrer numre til begrænset opkald"</string>
-    <string name="sum_fdn_change_pin" msgid="3510994280557335727">"Skift pinkode for at få adgang til begrænset opkald."</string>
+    <string name="sum_fdn_change_pin" msgid="3510994280557335727">"Skift pinkode til begrænset opkald."</string>
     <string name="sum_fdn_manage_list" msgid="3311397063233992907">"Administrer liste over telefonnumre"</string>
     <string name="voice_privacy" msgid="7346935172372181951">"Privat talekommunikation"</string>
     <string name="voice_privacy_summary" msgid="3556460926168473346">"Aktivér Udvidet fortrolighedstilstand"</string>

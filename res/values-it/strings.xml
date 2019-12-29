@@ -105,21 +105,21 @@
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"Deviazione di tutte le chiamate"</string>
     <string name="sum_cfu_enabled" msgid="5806923046528144526">"Deviazione di tutte le chiamate al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Numero non disponibile"</string>
-    <string name="sum_cfu_disabled" msgid="5010617134210809853">"Off"</string>
+    <string name="sum_cfu_disabled" msgid="5010617134210809853">"OFF"</string>
     <string name="labelCFB" msgid="615265213360512768">"Se occupato"</string>
     <string name="messageCFB" msgid="1958017270393563388">"Numero se occupato"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"Deviazione al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfb_disabled" msgid="3589913334164866035">"Off"</string>
+    <string name="sum_cfb_disabled" msgid="3589913334164866035">"OFF"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"Il tuo operatore non supporta la disattivazione dell\'inoltro chiamate quando il telefono è occupato."</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"Se non si risponde"</string>
     <string name="messageCFNRy" msgid="7644434155765359009">"Numero se non si risponde"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"Deviazione al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnry_disabled" msgid="1990563512406017880">"Off"</string>
+    <string name="sum_cfnry_disabled" msgid="1990563512406017880">"OFF"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"Il tuo operatore non supporta la disattivazione dell\'inoltro chiamate quando il telefono non risponde."</string>
     <string name="labelCFNRc" msgid="4163399350778066013">"Se non raggiungibile"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"Numero se non raggiungibile"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Deviazione al numero <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Off"</string>
+    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"OFF"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Il tuo operatore non supporta la disattivazione dell\'inoltro chiamate quando il telefono non è raggiungibile."</string>
     <string name="updating_title" msgid="6130548922615719689">"Impostazioni chiamate"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Le impostazioni delle chiamate possono essere modificate solo dall\'utente amministratore."</string>
