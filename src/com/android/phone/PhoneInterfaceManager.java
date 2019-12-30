@@ -6162,8 +6162,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // Scrub out the location info in ServiceState depending on what level of access
             // the caller has.
             if (hasFinePermission) return ss;
-            if (hasCoarsePermission) return ss.sanitizeLocationInfo(false);
-            return ss.sanitizeLocationInfo(true);
+            if (hasCoarsePermission) return ss.createLocationInfoSanitizedCopy(false);
+            return ss.createLocationInfoSanitizedCopy(true);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
