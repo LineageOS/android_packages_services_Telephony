@@ -34,6 +34,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
+import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 
@@ -55,6 +56,7 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
 
     @Mock Phone mMockPhone;
     @Mock RadioOnStateListener.Callback mCallback;
+    @Mock CommandsInterface mMockCi;
     RadioOnStateListener mListener;
 
     @Override
@@ -80,6 +82,7 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
     @Test
     @SmallTest
     public void testRegisterForCallback() {
+        mMockPhone.mCi = mMockCi;
         mListener.waitForRadioOn(mMockPhone, mCallback);
 
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
@@ -87,6 +90,9 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
         verify(mMockPhone).unregisterForServiceStateChanged(any(Handler.class));
         verify(mMockPhone).registerForServiceStateChanged(any(Handler.class),
                 eq(RadioOnStateListener.MSG_SERVICE_STATE_CHANGED), isNull());
+
+        verify(mMockCi).registerForOffOrNotAvailable(any(Handler.class),
+                eq(RadioOnStateListener.MSG_RADIO_OFF_OR_NOT_AVAILABLE), isNull());
     }
 
     /**
@@ -101,6 +107,7 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
         state.setState(ServiceState.STATE_IN_SERVICE);
         when(mMockPhone.getState()).thenReturn(PhoneConstants.State.IDLE);
         when(mCallback.isOkToCall(eq(mMockPhone), anyInt())).thenReturn(true);
+        mMockPhone.mCi = mMockCi;
         mListener.waitForRadioOn(mMockPhone, mCallback);
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
 
@@ -124,6 +131,7 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
         when(mMockPhone.getState()).thenReturn(PhoneConstants.State.IDLE);
         when(mCallback.isOkToCall(eq(mMockPhone), anyInt())).thenReturn(false);
         when(mMockPhone.getServiceState()).thenReturn(state);
+        mMockPhone.mCi = mMockCi;
         mListener.waitForRadioOn(mMockPhone, mCallback);
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS);
 
@@ -152,6 +160,7 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
         mListener.setMaxNumRetries(2);
 
         // Wait for the timer to expire and check state manually in onRetryTimeout
+        mMockPhone.mCi = mMockCi;
         mListener.waitForRadioOn(mMockPhone, mCallback);
         waitForHandlerActionDelayed(mListener.getHandler(), TIMEOUT_MS, TIMEOUT_MS /*delay*/);
 
