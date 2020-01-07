@@ -27,7 +27,7 @@
     <string name="sip_call_options_entry_2" msgid="7338504256051655013">"‏עבור שיחות SIP בלבד"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="922329055414010991">"לכל השיחות"</string>
     <string name="add_sip_account" msgid="5754758646745144384">"חשבון חדש"</string>
-    <string name="remove_sip_account" msgid="8272617403399636513">"הסר חשבון"</string>
+    <string name="remove_sip_account" msgid="8272617403399636513">"הסרת חשבון"</string>
     <string name="sip_account_list" msgid="2596262496233721769">"‏חשבונות SIP"</string>
     <string name="saving_account" msgid="3390358043846687266">"שומר את החשבון..."</string>
     <string name="removing_account" msgid="1544132880414780408">"מסיר את החשבון..."</string>

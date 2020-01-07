@@ -187,17 +187,42 @@
     <string name="network_connected" msgid="2760235679963580224">"କନେନ୍ଟ ହୋ‌ଇଛି"</string>
     <string name="network_connecting" msgid="160901383582774987">"କନେନ୍ଟ ହେଉଛି..."</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"କନେକ୍ଟ କରିହେଲା ନାହିଁ"</string>
-    <!-- no translation found for preferred_network_mode_choices:23 (4738087170533378966) -->
-    <!-- no translation found for preferred_network_mode_choices:24 (2935877729588775187) -->
-    <!-- no translation found for preferred_network_mode_choices:25 (8967513231424970529) -->
-    <!-- no translation found for preferred_network_mode_choices:26 (1542643426479755015) -->
-    <!-- no translation found for preferred_network_mode_choices:27 (5778162260258129841) -->
-    <!-- no translation found for preferred_network_mode_choices:28 (8088614845214545367) -->
-    <!-- no translation found for preferred_network_mode_choices:29 (6517428040626326776) -->
-    <!-- no translation found for preferred_network_mode_choices:30 (5294150161567170165) -->
-    <!-- no translation found for preferred_network_mode_choices:31 (4130965694947056705) -->
-    <!-- no translation found for preferred_network_mode_choices:32 (3869566732842046032) -->
-    <!-- no translation found for preferred_network_mode_choices:33 (3942770927563146543) -->
+  <string-array name="preferred_network_mode_choices">
+    <item msgid="4531933377509551889">"ନିଜ ପସନ୍ଦର GSM/WCDMA"</item>
+    <item msgid="5120532750027435355">"କେବଳ GSM"</item>
+    <item msgid="8973311380798000102">"କେବଳ WCDMA"</item>
+    <item msgid="4139961027147085705">"GSM/WCDMA ଅଟୋ"</item>
+    <item msgid="4024581977690585814">"CDMA/EvDo ଅଟୋ"</item>
+    <item msgid="7199560024080522581">"CDMA ବିନା EvDo"</item>
+    <item msgid="3160291725308400608">"କେବଳ EvDo"</item>
+    <item msgid="2319217472852426965">"CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="7342827148550261533">"CDMA + LTE/EvDo"</item>
+    <item msgid="1694517610683571748">"GSM/WCDMA/LTE"</item>
+    <item msgid="2431844716050955858">"ଗ୍ଲୋବାଲ୍"</item>
+    <item msgid="8522859526931346931">"LTE"</item>
+    <item msgid="7852977970279215000">"LTE / WCDMA"</item>
+    <item msgid="5779210256161024981">"କେବଳ TDSCDMA"</item>
+    <item msgid="611913646308951205">"TDSCDMA/WCDMA"</item>
+    <item msgid="1738977207573340604">"LTE/TDSCDMA"</item>
+    <item msgid="8506090627128783948">"TDSCDMA/GSM"</item>
+    <item msgid="8818474033583337353">"LTE/TDSCDMA/GSM"</item>
+    <item msgid="3102297933672336483">"TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="3802189736321382954">"LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="6147699530135006312">"LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="8826479449402151312">"TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="6284311629324843506">"LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA"</item>
+    <item msgid="4738087170533378966">"କେବଳ NR"</item>
+    <item msgid="2935877729588775187">"NR/LTE"</item>
+    <item msgid="8967513231424970529">"NR/LTE/CDMA/EvDo"</item>
+    <item msgid="1542643426479755015">"NR/LTE/GSM/WCDMA"</item>
+    <item msgid="5778162260258129841">"NR/LTE/CDMA/EvDo/GSM/WCDMA"</item>
+    <item msgid="8088614845214545367">"NR/LTE/WCDMA"</item>
+    <item msgid="6517428040626326776">"NR/LTE/TDSCDMA"</item>
+    <item msgid="5294150161567170165">"NR/LTE/TDSCDMA/GSM"</item>
+    <item msgid="4130965694947056705">"NR/LTE/TDSCDMA/WCDMA"</item>
+    <item msgid="3869566732842046032">"NR/LTE/TDSCDMA/GSM/WCDMA"</item>
+    <item msgid="3942770927563146543">"NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</item>
+  </string-array>
     <string name="preferred_network_mode_wcdma_perf_summary" msgid="7851493369130750126">"ନିଜ ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: WCDMAକୁ ପସନ୍ଦ କରାଯାଇଛି"</string>
     <string name="preferred_network_mode_gsm_only_summary" msgid="4323367929994392830">"ନିଜ ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: କେବଳ GSM"</string>
     <string name="preferred_network_mode_wcdma_only_summary" msgid="3585482191951442207">"ନିଜ ପସନ୍ଦର ନେଟ୍‌ୱର୍କ ମୋଡ୍: କେବଳ WCDMA"</string>
