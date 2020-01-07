@@ -6848,7 +6848,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean isManualNetworkSelectionAllowed(int subId) {
-        TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "isManualNetworkSelectionAllowed");
 
         boolean isAllowed = true;
