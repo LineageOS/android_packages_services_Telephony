@@ -22,6 +22,7 @@ import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_IMS;
 import static com.android.internal.telephony.PhoneConstants.SUBSCRIPTION_KEY;
 
 import android.Manifest.permission;
+import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
@@ -7643,6 +7644,30 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Notify that an RCS autoconfiguration XML file has been received for provisioning.
+     *
+     * @param config       The XML file to be read. ASCII/UTF8 encoded text if not compressed.
+     * @param isCompressed The XML file is compressed in gzip format and must be decompressed
+     *                     before being read.
+     */
+    @Override
+    public void notifyRcsAutoConfigurationReceived(int subId, @NonNull byte[] config, boolean
+            isCompressed) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "notifyRcsAutoConfigurationReceived");
+        try {
+            IImsConfig configBinder = getImsConfig(getSlotIndex(subId), ImsFeature.FEATURE_RCS);
+            if (configBinder == null) {
+                Rlog.e(LOG_TAG, "null result for getImsConfig");
+            } else {
+                configBinder.notifyRcsAutoConfigurationReceived(config, isCompressed);
+            }
+        } catch (RemoteException e) {
+            Rlog.e(LOG_TAG, "fail to getImsConfig " + e.getMessage());
         }
     }
 }
