@@ -701,7 +701,7 @@ public class PhoneUtils {
      * {@code false} otherwise.
      */
     public static boolean isPhoneAccountActive(SubscriptionManager sm, PhoneAccountHandle handle) {
-        return sm.getActiveSubscriptionInfoForIccIndex(handle.getId()) != null;
+        return sm.getActiveSubscriptionInfoForIcc(handle.getId()) != null;
     }
 
     private static ComponentName getPstnConnectionServiceName() {
