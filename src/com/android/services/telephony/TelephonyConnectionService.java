@@ -816,7 +816,8 @@ public class TelephonyConnectionService extends ConnectionService {
             // TODO: Switch out the underlying connection instead of creating a new
             // one and causing UI Jank.
             boolean noActiveSimCard = SubscriptionController.getInstance()
-                    .getActiveSubInfoCount(phone.getContext().getOpPackageName()) == 0;
+                    .getActiveSubInfoCount(phone.getContext().getOpPackageName(),
+                            null) == 0;
             // If there's no active sim card and the device is in emergency mode, use E account.
             addExistingConnection(mPhoneUtilsProxy.makePstnPhoneAccountHandleWithPrefix(
                     phone, "", isEmergencyNumber && noActiveSimCard), repConnection);
