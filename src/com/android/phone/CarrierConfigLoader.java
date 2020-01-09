@@ -935,8 +935,14 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     @Override
     public @NonNull PersistableBundle getConfigForSubId(int subId, String callingPackage) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mContext, subId, callingPackage, "getCarrierConfig")) {
+        return getConfigForSubIdWithFeature(subId, callingPackage, null);
+    }
+
+    @Override
+    public @NonNull PersistableBundle getConfigForSubIdWithFeature(int subId, String callingPackage,
+            String callingFeatureId) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mContext, subId, callingPackage,
+                callingFeatureId, "getCarrierConfig")) {
             return new PersistableBundle();
         }
 
