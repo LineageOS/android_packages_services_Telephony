@@ -57,12 +57,7 @@ import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.SubscriptionInfoUpdater;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.util.ArrayUtils;
-import com.android.internal.util.FastXmlSerializer;
 import com.android.internal.util.IndentingPrintWriter;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -80,7 +75,6 @@ import java.util.List;
 /**
  * CarrierConfigLoader binds to privileged carrier apps to fetch carrier config overlays.
  */
-
 public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private static final String LOG_TAG = "CarrierConfigLoader";
 
@@ -149,10 +143,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     private static final int BIND_TIMEOUT_MILLIS = 30000;
 
-    // Tags used for saving and restoring XML documents.
-    private static final String TAG_DOCUMENT = "carrier_config";
-    private static final String TAG_VERSION = "package_version";
-    private static final String TAG_BUNDLE = "bundle_data";
+    // Keys used for saving and restoring config bundle from file.
+    private static final String KEY_VERSION = "__carrier_config_package_version__";
 
     private static final String OVERRIDE_PACKAGE_ADDITION = "-override";
 
@@ -793,25 +785,12 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             outFile = new FileOutputStream(
                     new File(mContext.getFilesDir(),
                             getFilenameForConfig(packageName, extraString, iccid, cid)));
-            FastXmlSerializer out = new FastXmlSerializer();
-            out.setOutput(outFile, "utf-8");
-            out.startDocument("utf-8", true);
-            out.startTag(null, TAG_DOCUMENT);
-            out.startTag(null, TAG_VERSION);
-            out.text(version);
-            out.endTag(null, TAG_VERSION);
-            out.startTag(null, TAG_BUNDLE);
-            config.saveToXml(out);
-            out.endTag(null, TAG_BUNDLE);
-            out.endTag(null, TAG_DOCUMENT);
-            out.endDocument();
-            out.flush();
+            config.putString(KEY_VERSION, version);
+            config.writeToStream(outFile);
+            outFile.flush();
             outFile.close();
         }
         catch (IOException e) {
-            loge(e.toString());
-        }
-        catch (XmlPullParserException e) {
             loge(e.toString());
         }
     }
@@ -858,33 +837,22 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             file = new File(mContext.getFilesDir(),
                     getFilenameForConfig(packageName, extraString, iccid, cid));
             inFile = new FileInputStream(file);
-            XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
-            parser.setInput(inFile, "utf-8");
 
-            int event;
-            while (((event = parser.next()) != XmlPullParser.END_DOCUMENT)) {
+            restoredBundle = PersistableBundle.readFromStream(inFile);
+            String savedVersion = restoredBundle.getString(KEY_VERSION);
+            restoredBundle.remove(KEY_VERSION);
 
-                if (event == XmlPullParser.START_TAG && TAG_VERSION.equals(parser.getName())) {
-                    String savedVersion = parser.nextText();
-                    if (!version.equals(savedVersion)) {
-                        loge("Saved version mismatch: " + version + " vs " + savedVersion);
-                        break;
-                    }
-                }
-
-                if (event == XmlPullParser.START_TAG && TAG_BUNDLE.equals(parser.getName())) {
-                    restoredBundle = PersistableBundle.restoreFromXml(parser);
-                }
+            if (!version.equals(savedVersion)) {
+                loge("Saved version mismatch: " + version + " vs " + savedVersion);
+                restoredBundle = null;
             }
+
             inFile.close();
         }
         catch (FileNotFoundException e) {
             // Missing file is normal occurrence that might occur with a new sim or when restoring
             // an override file during boot and should not be treated as an error.
             if (file != null) log("File not found: " + file.getPath());
-        }
-        catch (XmlPullParserException e) {
-            loge(e.toString());
         }
         catch (IOException e) {
             loge(e.toString());
