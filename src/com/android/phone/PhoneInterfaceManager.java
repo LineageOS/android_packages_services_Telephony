@@ -51,7 +51,6 @@ import android.os.ParcelUuid;
 import android.os.PersistableBundle;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
-import android.os.ServiceManager;
 import android.os.ServiceSpecificException;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -89,6 +88,7 @@ import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.TelephonyHistogram;
 import android.telephony.TelephonyManager;
 import android.telephony.TelephonyScanManager;
@@ -1412,7 +1412,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private void publish() {
         if (DBG) log("publish: " + this);
 
-        ServiceManager.addService("phone", this);
+        TelephonyFrameworkInitializer
+                .getTelephonyServiceManager()
+                .getTelephonyServiceRegisterer()
+                .register(this);
     }
 
     private Phone getPhoneFromRequest(MainThreadRequest request) {

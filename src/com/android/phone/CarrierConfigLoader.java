@@ -39,13 +39,13 @@ import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
-import android.os.ServiceManager;
 import android.preference.PreferenceManager;
 import android.service.carrier.CarrierIdentifier;
 import android.service.carrier.CarrierService;
 import android.service.carrier.ICarrierService;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.TelephonyManager;
 import android.util.LocalLog;
 import android.util.Log;
@@ -539,7 +539,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         mServiceConnection = new CarrierServiceConnection[numPhones];
         mHasSentConfigChange = new boolean[numPhones];
         // Make this service available through ServiceManager.
-        ServiceManager.addService(Context.CARRIER_CONFIG_SERVICE, this);
+        TelephonyFrameworkInitializer
+                .getTelephonyServiceManager().getCarrierConfigServiceRegisterer().register(this);
         log("CarrierConfigLoader has started");
         mSubscriptionInfoUpdater = PhoneFactory.getSubscriptionInfoUpdater();
         mHandler.sendEmptyMessage(EVENT_CHECK_SYSTEM_UPDATE);
