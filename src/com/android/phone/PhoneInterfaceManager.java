@@ -67,10 +67,11 @@ import android.telephony.Annotation.ApnType;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CarrierRestrictionRules;
 import android.telephony.CellIdentity;
+import android.telephony.CellIdentityCdma;
+import android.telephony.CellIdentityGsm;
 import android.telephony.CellInfo;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoWcdma;
-import android.telephony.CellLocation;
 import android.telephony.ClientRequestStats;
 import android.telephony.ICellInfoCallback;
 import android.telephony.IccOpenLogicalChannelResponse;
@@ -94,10 +95,8 @@ import android.telephony.UiccCardInfo;
 import android.telephony.UiccSlotInfo;
 import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
-import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.data.ApnSetting;
 import android.telephony.emergency.EmergencyNumber;
-import android.telephony.gsm.GsmCellLocation;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.RegistrationManager;
@@ -1102,7 +1101,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) msg.obj;
                     WorkSource ws = (WorkSource) request.argument;
                     Phone phone = getPhoneFromRequest(request);
-                    phone.getCellLocation(ws, obtainMessage(EVENT_GET_CELL_LOCATION_DONE, request));
+                    phone.getCellIdentity(ws, obtainMessage(EVENT_GET_CELL_LOCATION_DONE, request));
                     break;
                 case EVENT_GET_CELL_LOCATION_DONE:
                     ar = (AsyncResult) msg.obj;
@@ -1112,7 +1111,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     } else {
                         phone = getPhoneFromRequest(request);
                         request.result = (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_CDMA)
-                                ? new CdmaCellLocation() : new GsmCellLocation();
+                                ? new CellIdentityCdma() : new CellIdentityGsm();
                     }
 
                     synchronized (request) {
@@ -2010,7 +2009,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public Bundle getCellLocation(String callingPackage, String callingFeatureId) {
+    public CellIdentity getCellLocation(String callingPackage, String callingFeatureId) {
         mApp.getSystemService(AppOpsManager.class)
                 .checkPackage(Binder.getCallingUid(), callingPackage);
 
@@ -2028,18 +2027,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             case DENIED_HARD:
                 throw new SecurityException("Not allowed to access cell location");
             case DENIED_SOFT:
-                return new Bundle();
+                return (getDefaultPhone().getPhoneType() == PhoneConstants.PHONE_TYPE_CDMA)
+                        ? new CellIdentityCdma() : new CellIdentityGsm();
         }
 
         WorkSource workSource = getWorkSource(Binder.getCallingUid());
         final long identity = Binder.clearCallingIdentity();
         try {
             if (DBG_LOC) log("getCellLocation: is active user");
-            Bundle data = new Bundle();
             int subId = mSubscriptionController.getDefaultDataSubId();
-            CellLocation cl = (CellLocation) sendRequest(CMD_GET_CELL_LOCATION, workSource, subId);
-            cl.fillInNotifierBundle(data);
-            return data;
+            return (CellIdentity) sendRequest(CMD_GET_CELL_LOCATION, workSource, subId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
