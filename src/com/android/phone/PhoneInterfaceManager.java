@@ -1527,27 +1527,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    public boolean supplyPin(String pin) {
-        return supplyPinForSubscriber(getDefaultSubscription(), pin);
-    }
-
     public boolean supplyPinForSubscriber(int subId, String pin) {
         int [] resultArray = supplyPinReportResultForSubscriber(subId, pin);
         return (resultArray[0] == PhoneConstants.PIN_RESULT_SUCCESS) ? true : false;
     }
 
-    public boolean supplyPuk(String puk, String pin) {
-        return supplyPukForSubscriber(getDefaultSubscription(), puk, pin);
-    }
-
     public boolean supplyPukForSubscriber(int subId, String puk, String pin) {
         int [] resultArray = supplyPukReportResultForSubscriber(subId, puk, pin);
         return (resultArray[0] == PhoneConstants.PIN_RESULT_SUCCESS) ? true : false;
-    }
-
-    /** {@hide} */
-    public int[] supplyPinReportResult(String pin) {
-        return supplyPinReportResultForSubscriber(getDefaultSubscription(), pin);
     }
 
     public int[] supplyPinReportResultForSubscriber(int subId, String pin) {
@@ -1561,11 +1548,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
-    }
-
-    /** {@hide} */
-    public int[] supplyPukReportResult(String puk, String pin) {
-        return supplyPukReportResultForSubscriber(getDefaultSubscription(), puk, pin);
     }
 
     public int[] supplyPukReportResultForSubscriber(int subId, String puk, String pin) {
