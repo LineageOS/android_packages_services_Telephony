@@ -16,12 +16,11 @@
 
 package com.android.phone;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.os.ServiceSpecificException;
+import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
@@ -70,7 +69,8 @@ public class ImsRcsController extends IImsRcsController.Stub {
     private ImsRcsController(PhoneGlobals app) {
         Log.i(TAG, "ImsRcsController");
         mApp = app;
-        ServiceManager.addService(Context.TELEPHONY_IMS_SERVICE, this);
+        TelephonyFrameworkInitializer
+                .getTelephonyServiceManager().getTelephonyImsServiceRegisterer().register(this);
     }
 
     /**
