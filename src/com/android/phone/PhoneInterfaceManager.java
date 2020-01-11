@@ -51,7 +51,6 @@ import android.os.ParcelUuid;
 import android.os.PersistableBundle;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
-import android.os.ServiceManager;
 import android.os.ServiceSpecificException;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -84,11 +83,12 @@ import android.telephony.PhoneCapability;
 import android.telephony.PhoneNumberRange;
 import android.telephony.RadioAccessFamily;
 import android.telephony.RadioAccessSpecifier;
-import android.telephony.Rlog;
+import com.android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.TelephonyHistogram;
 import android.telephony.TelephonyManager;
 import android.telephony.TelephonyScanManager;
@@ -1412,7 +1412,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private void publish() {
         if (DBG) log("publish: " + this);
 
-        ServiceManager.addService("phone", this);
+        TelephonyFrameworkInitializer
+                .getTelephonyServiceManager()
+                .getTelephonyServiceRegisterer()
+                .register(this);
     }
 
     private Phone getPhoneFromRequest(MainThreadRequest request) {
@@ -5076,24 +5079,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Get whether mobile data is enabled.
+     * Checks if the device is capable of mobile data by considering whether whether the
+     * user has enabled mobile data, whether the carrier has enabled mobile data, and
+     * whether the network policy allows data connections.
      *
-     * Comparable to {@link #isUserDataEnabled(int)}, this considers all factors deciding
-     * whether mobile data is actually enabled.
-     *
-     * Accepts either ACCESS_NETWORK_STATE, MODIFY_PHONE_STATE or carrier privileges.
-     *
-     * @return {@code true} if data is enabled else {@code false}
+     * @return {@code true} if the overall data connection is capable; {@code false} if not.
      */
     @Override
     public boolean isDataEnabled(int subId) {
-        try {
-            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
-                    null);
-        } catch (Exception e) {
-            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                    mApp, subId, "isDataEnabled");
-        }
+        enforceReadPrivilegedPermission("isDataEnabled");
 
         final long identity = Binder.clearCallingIdentity();
         try {
