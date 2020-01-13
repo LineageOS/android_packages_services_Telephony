@@ -226,6 +226,7 @@ public class TelecomAccountRegistry {
             // slotId from the subId or the phoneId in all instances.
             SubscriptionInfo record =
                     mSubscriptionManager.getActiveSubscriptionInfo(subId);
+            TelephonyManager tm = mTelephonyManager.createForSubscriptionId(subId);
 
             if (isEmergency) {
                 label = mContext.getResources().getString(R.string.sim_label_emergency_calls);
@@ -234,7 +235,7 @@ public class TelecomAccountRegistry {
             } else if (mTelephonyManager.getPhoneCount() == 1) {
                 // For single-SIM devices, we show the label and description as whatever the name of
                 // the network is.
-                description = label = mTelephonyManager.getNetworkOperatorName();
+                description = label = tm.getNetworkOperatorName();
             } else {
                 CharSequence subDisplayName = null;
 
