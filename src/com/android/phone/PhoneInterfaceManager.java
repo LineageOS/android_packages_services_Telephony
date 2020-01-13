@@ -110,6 +110,7 @@ import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.feature.MmTelFeature;
+import android.telephony.ims.feature.RcsFeature;
 import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
@@ -3454,6 +3455,91 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+
+    private void checkModifyPhoneStatePermission(int subId, String message) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
+                message);
+    }
+
+    private boolean isImsProvisioningRequired(int subId, int capability,
+            boolean isMmtelCapability) {
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("phone instance null for subid " + subId);
+            return false;
+        }
+        if (isMmtelCapability) {
+            if (!doesImsCapabilityRequireProvisioning(phone.getContext(), subId, capability)) {
+                return false;
+            }
+        } else {
+            if (!doesRcsCapabilityRequireProvisioning(phone.getContext(), subId, capability)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void setRcsProvisioningStatusForCapability(int subId, int capability,
+            boolean isProvisioned) {
+        checkModifyPhoneStatePermission(subId, "setRcsProvisioningStatusForCapability");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            if (!isImsProvisioningRequired(subId, capability, false)) {
+                return;
+            }
+
+            // this capability requires provisioning, route to the correct API.
+            ImsManager ims = ImsManager.getInstance(mApp, getSlotIndex(subId));
+            switch (capability) {
+                case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_OPTIONS_UCE:
+                case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE:
+                    ims.setEabProvisioned(isProvisioned);
+                    break;
+                default: {
+                    throw new IllegalArgumentException("Tried to set provisioning for "
+                            + "rcs capability '" + capability + "', which does not require "
+                            + "provisioning.");
+                }
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+
+    }
+
+
+    @Override
+    public boolean getRcsProvisioningStatusForCapability(int subId, int capability) {
+        enforceReadPrivilegedPermission("getRcsProvisioningStatusForCapability");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            if (!isImsProvisioningRequired(subId, capability, false)) {
+                return true;
+            }
+
+            ImsManager ims = ImsManager.getInstance(mApp, getSlotIndex(subId));
+            switch (capability) {
+                case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_OPTIONS_UCE:
+                case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE:
+                    return ims.isEabProvisionedOnDevice();
+
+                default: {
+                    throw new IllegalArgumentException("Tried to get rcs provisioning for "
+                            + "capability '" + capability + "', which does not require "
+                            + "provisioning.");
+                }
+            }
+
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
     @Override
     public void setImsProvisioningStatusForCapability(int subId, int capability, int tech,
             boolean isProvisioned) {
@@ -3461,18 +3547,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 && tech != ImsRegistrationImplBase.REGISTRATION_TECH_LTE) {
             throw new IllegalArgumentException("Registration technology '" + tech + "' is invalid");
         }
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
-                "setProvisioningStatusForCapability");
+        checkModifyPhoneStatePermission(subId, "setImsProvisioningStatusForCapability");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
-            Phone phone = getPhone(subId);
-            if (phone == null) {
-                loge("setImsProvisioningStatusForCapability: phone instance null for subid "
-                        + subId);
-                return;
-            }
-            if (!doesImsCapabilityRequireProvisioning(phone.getContext(), subId, capability)) {
+            if (!isImsProvisioningRequired(subId, capability, true)) {
                 return;
             }
 
@@ -3510,8 +3589,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     break;
                 }
                 default: {
-                    throw new IllegalArgumentException("Tried to set provisioning for capability '"
-                            + capability + "', which does not require provisioning.");
+                    throw new IllegalArgumentException("Tried to set provisioning for "
+                            + "MmTel capability '" + capability + "', which does not require "
+                            + "provisioning. ");
                 }
             }
 
@@ -3530,16 +3610,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
-            Phone phone = getPhone(subId);
-            if (phone == null) {
-                loge("getImsProvisioningStatusForCapability: phone instance null for subid "
-                        + subId);
-                // We will fail with "true" as the provisioning status because this is the default
-                // if we do not require provisioning.
-                return true;
-            }
-
-            if (!doesImsCapabilityRequireProvisioning(phone.getContext(), subId, capability)) {
+            if (!isImsProvisioningRequired(subId, capability, true)) {
                 return true;
             }
 
@@ -3565,8 +3636,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     return isMmTelCapabilityProvisionedInCache(subId, capability, tech);
                 }
                 default: {
-                    throw new IllegalArgumentException("Tried to get provisioning for capability '"
-                            + capability + "', which does not require provisioning.");
+                    throw new IllegalArgumentException(
+                            "Tried to get provisioning for MmTel capability '" + capability
+                                    + "', which does not require provisioning.");
                 }
             }
 
@@ -3667,6 +3739,29 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             case MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_UT: {
                 if (requireUtProvisioning) {
                     // UT requires provisioning
+                    return true;
+                }
+                break;
+            }
+        }
+        return false;
+    }
+
+    private boolean doesRcsCapabilityRequireProvisioning(Context context, int subId,
+            int capability) {
+        CarrierConfigManager configManager = new CarrierConfigManager(context);
+        PersistableBundle c = configManager.getConfigForSubId(subId);
+
+        boolean requireRcsProvisioning = c.getBoolean(
+                CarrierConfigManager.KEY_CARRIER_RCS_PROVISIONING_REQUIRED_BOOL, false);
+
+        // First check to make sure that the capability requires provisioning.
+        switch (capability) {
+            case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE:
+                // intentional fallthrough
+            case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_OPTIONS_UCE: {
+                if (requireRcsProvisioning) {
+                    // OPTION or PRESENCE requires provisioning
                     return true;
                 }
                 break;
