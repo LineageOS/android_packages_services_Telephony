@@ -19,7 +19,7 @@ package com.android.services.telephony;
 import android.net.Uri;
 import android.telecom.Connection;
 import android.telecom.DisconnectCause;
-import android.telephony.Rlog;
+import com.android.telephony.Rlog;
 import android.telephony.SubscriptionInfo;
 import android.text.TextUtils;
 
