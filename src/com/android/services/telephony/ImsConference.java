@@ -30,7 +30,7 @@ import android.telecom.TelecomManager;
 import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
-import android.telephony.Rlog;
+import com.android.telephony.Rlog;
 import android.util.Pair;
 
 import com.android.ims.internal.ConferenceParticipant;
