@@ -66,8 +66,8 @@
     <string name="default_preference_summary_domain_address" msgid="443247296785732364">"&lt;Коюлган эмес&gt;"</string>
     <string name="display_name_summary" msgid="6749135030093260358">"&lt;Колдонуучунун ысымына окшош&gt;"</string>
     <string name="optional_summary" msgid="620379377865437488">"&lt;Кошумча&gt;"</string>
-    <string name="advanced_settings_show" msgid="2318728080037568529">"▷ Бардыгын көрсөтүү үчүн тийип коюңуз"</string>
-    <string name="advanced_settings_hide" msgid="6200816937370652083">"▽ Бардыгын жашыруу үчүн тийип коюңуз"</string>
+    <string name="advanced_settings_show" msgid="2318728080037568529">"▷ Баарын көрсөтүү үчүн тийип коюңуз"</string>
+    <string name="advanced_settings_hide" msgid="6200816937370652083">"▽ Баарын жашыруу үчүн тийип коюңуз"</string>
     <string name="all_empty_alert" msgid="6085603517610199098">"Жаңы SIP аккаунтунун чоо-жайын киргизиңиз."</string>
     <string name="empty_alert" msgid="3693655518612836718">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> талап кылынат жана бош калтырганга болбойт."</string>
     <string name="not_a_valid_port" msgid="3664668836663491376">"Порттун номери 1000 баштап 65534 чейин болушу керек."</string>
