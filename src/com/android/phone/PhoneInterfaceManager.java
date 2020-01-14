@@ -7819,6 +7819,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Get the current calling package name.
+     * @return the current calling package name
+     */
+    @Override
+    public String getCurrentPackageName() {
+        return mApp.getPackageManager().getPackagesForUid(Binder.getCallingUid())[0];
+    }
+
+    /**
      * Return whether data is enabled for certain APN type. This will tell if framework will accept
      * corresponding network requests on a subId.
      *
@@ -7879,6 +7888,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public void enqueueSmsPickResult(String callingPackage, IIntegerConsumer pendingSubIdResult) {
+        if (callingPackage == null) {
+            callingPackage = getCurrentPackageName();
+        }
         SmsPermissions permissions = new SmsPermissions(getDefaultPhone(), mApp,
                 (AppOpsManager) mApp.getSystemService(Context.APP_OPS_SERVICE));
         if (!permissions.checkCallingCanSendSms(callingPackage, "Sending message")) {
