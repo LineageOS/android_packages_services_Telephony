@@ -71,6 +71,7 @@ import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.phone.settings.SettingsConstants;
 import com.android.phone.vvm.CarrierVvmPackageInstalledReceiver;
+import com.android.services.telephony.rcs.TelephonyRcsService;
 import com.android.services.telephony.sip.SipAccountRegistry;
 import com.android.services.telephony.sip.SipUtil;
 
@@ -149,6 +150,7 @@ public class PhoneGlobals extends ContextWrapper {
     CallerInfoCache callerInfoCache;
     NotificationMgr notificationMgr;
     ImsResolver mImsResolver;
+    TelephonyRcsService mTelephonyRcsService;
     public PhoneInterfaceManager phoneMgr;
     public ImsRcsController imsRcsController;
     CarrierConfigLoader configLoader;
@@ -371,6 +373,11 @@ public class PhoneGlobals extends ContextWrapper {
             phoneMgr = PhoneInterfaceManager.init(this);
 
             imsRcsController = ImsRcsController.init(this);
+
+            if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY_IMS)) {
+                mTelephonyRcsService = new TelephonyRcsService(this);
+                imsRcsController.setRcsService(mTelephonyRcsService);
+            }
 
             configLoader = CarrierConfigLoader.init(this);
 
