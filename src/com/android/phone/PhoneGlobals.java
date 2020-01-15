@@ -662,7 +662,8 @@ public class PhoneGlobals extends ContextWrapper {
                     if (TelephonyCapabilities.supportsEcm(phoneInEcm)) {
                         Log.d(LOG_TAG, "Emergency Callback Mode arrived in PhoneApp.");
                         // Start Emergency Callback Mode service
-                        if (intent.getBooleanExtra("phoneinECMState", false)) {
+                        if (intent.getBooleanExtra(
+                                TelephonyManager.EXTRA_PHONE_IN_ECM_STATE, false)) {
                             context.startService(new Intent(context,
                                     EmergencyCallbackModeService.class));
                         } else {
