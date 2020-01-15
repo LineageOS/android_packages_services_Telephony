@@ -7231,7 +7231,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int getCdmaRoamingMode(int subId) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "getCdmaRoamingMode");
 
         final long identity = Binder.clearCallingIdentity();
