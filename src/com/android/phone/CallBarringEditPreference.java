@@ -77,9 +77,9 @@ public class CallBarringEditPreference extends EditPinPreference {
         super(context, attrs);
         // Get the summary settings, use CheckBoxPreference as the standard.
         TypedArray typedArray = context.obtainStyledAttributes(attrs,
-                android.R.styleable.CheckBoxPreference, 0, 0);
-        mSummaryOn = typedArray.getString(android.R.styleable.CheckBoxPreference_summaryOn);
-        mSummaryOff = typedArray.getString(android.R.styleable.CheckBoxPreference_summaryOff);
+                R.styleable.CheckBoxPreference, 0, 0);
+        mSummaryOn = typedArray.getString(R.styleable.CheckBoxPreference_summaryOn);
+        mSummaryOff = typedArray.getString(R.styleable.CheckBoxPreference_summaryOff);
         mDisableText = context.getText(R.string.disable);
         mEnableText = context.getText(R.string.enable);
         typedArray.recycle();
