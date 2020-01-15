@@ -188,6 +188,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 
 /**
@@ -276,6 +277,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_SET_ICC_LOCK_ENABLED_DONE = 79;
     private static final int CMD_SET_SYSTEM_SELECTION_CHANNELS = 80;
     private static final int EVENT_SET_SYSTEM_SELECTION_CHANNELS_DONE = 81;
+    private static final int MSG_NOTIFY_USER_ACTIVITY = 82;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -295,6 +297,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private SubscriptionController mSubscriptionController;
     private SharedPreferences mTelephonySharedPreferences;
     private PhoneConfigurationManager mPhoneConfigurationManager;
+
+    /** User Activity */
+    private AtomicBoolean mNotifyUserActivity;
+    private static final String ACTION_USER_ACTIVITY_NOTIFICATION =
+            "android.intent.action.USER_ACTIVITY_NOTIFICATION";
+    private static final int USER_ACTIVITY_NOTIFICATION_DELAY = 200;
 
     private static final String PREF_CARRIERS_ALPHATAG_PREFIX = "carrier_alphtag_";
     private static final String PREF_CARRIERS_NUMBER_PREFIX = "carrier_number_";
@@ -1294,6 +1302,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     notifyRequester(request);
                     break;
 
+                case MSG_NOTIFY_USER_ACTIVITY:
+                    removeMessages(MSG_NOTIFY_USER_ACTIVITY);
+                    Intent intent = new Intent(ACTION_USER_ACTIVITY_NOTIFICATION);
+                    intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
+                    getDefaultPhone().getContext().sendBroadcastAsUser(
+                            intent, UserHandle.ALL, permission.USER_ACTIVITY);
+                    break;
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
                     break;
@@ -8238,5 +8253,43 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
         return 0;
+    }
+
+    /**
+     * Request for receiving user activity notification
+     */
+    @Override
+    public void requestUserActivityNotification() {
+        if (!mNotifyUserActivity.get()
+                && !mMainThreadHandler.hasMessages(MSG_NOTIFY_USER_ACTIVITY)) {
+            mNotifyUserActivity.set(true);
+        }
+    }
+
+    /**
+     * Called when userActivity is signalled in the power manager.
+     * This is safe to call from any thread, with any window manager locks held or not.
+     */
+    @Override
+    public void userActivity() {
+        // ***************************************
+        // *  Inherited from PhoneWindowManager  *
+        // ***************************************
+        // THIS IS CALLED FROM DEEP IN THE POWER MANAGER
+        // WITH ITS LOCKS HELD.
+        //
+        // This code must be VERY careful about the locks
+        // it acquires.
+        // In fact, the current code acquires way too many,
+        // and probably has lurking deadlocks.
+
+        if (Binder.getCallingUid() != Process.SYSTEM_UID) {
+            throw new SecurityException("Only the OS may call notifyUserActivity()");
+        }
+
+        if (mNotifyUserActivity.getAndSet(false)) {
+            mMainThreadHandler.sendEmptyMessageDelayed(MSG_NOTIFY_USER_ACTIVITY,
+                    USER_ACTIVITY_NOTIFICATION_DELAY);
+        }
     }
 }
