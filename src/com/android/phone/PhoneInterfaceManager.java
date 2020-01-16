@@ -83,7 +83,6 @@ import android.telephony.PhoneCapability;
 import android.telephony.PhoneNumberRange;
 import android.telephony.RadioAccessFamily;
 import android.telephony.RadioAccessSpecifier;
-import com.android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
@@ -174,6 +173,7 @@ import com.android.phone.vvm.PhoneAccountHandleConverter;
 import com.android.phone.vvm.RemoteVvmTaskManager;
 import com.android.phone.vvm.VisualVoicemailSettingsUtil;
 import com.android.phone.vvm.VisualVoicemailSmsFilterConfig;
+import com.android.telephony.Rlog;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -1455,6 +1455,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 Binder.restoreCallingIdentity(identity);
             }
         }
+    }
+
+    private boolean isImsAvailableOnDevice() {
+        PackageManager pm = getDefaultPhone().getContext().getPackageManager();
+        if (pm == null) {
+            // For some reason package manger is not available.. This will fail internally anyway,
+            // so do not throw error and allow.
+            return true;
+        }
+        return pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_IMS, 0);
     }
 
     public void dial(String number) {
@@ -3424,6 +3434,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         enforceReadPrivilegedPermission("registerImsProvisioningChangedCallback");
         final long identity = Binder.clearCallingIdentity();
         try {
+            if (isImsAvailableOnDevice()) {
+                throw new ImsException("IMS not available on device.",
+                        ImsException.CODE_ERROR_UNSUPPORTED_OPERATION);
+            }
+
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                     .addProvisioningCallbackForSubscription(callback, subId);
@@ -7231,7 +7246,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int getCdmaRoamingMode(int subId) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "getCdmaRoamingMode");
 
         final long identity = Binder.clearCallingIdentity();
@@ -7829,6 +7845,30 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Notify that an RCS autoconfiguration XML file has been received for provisioning.
+     *
+     * @param config       The XML file to be read. ASCII/UTF8 encoded text if not compressed.
+     * @param isCompressed The XML file is compressed in gzip format and must be decompressed
+     *                     before being read.
+     */
+    @Override
+    public void notifyRcsAutoConfigurationReceived(int subId, @NonNull byte[] config, boolean
+            isCompressed) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "notifyRcsAutoConfigurationReceived");
+        try {
+            IImsConfig configBinder = getImsConfig(getSlotIndex(subId), ImsFeature.FEATURE_RCS);
+            if (configBinder == null) {
+                Rlog.e(LOG_TAG, "null result for getImsConfig");
+            } else {
+                configBinder.notifyRcsAutoConfigurationReceived(config, isCompressed);
+            }
+        } catch (RemoteException e) {
+            Rlog.e(LOG_TAG, "fail to getImsConfig " + e.getMessage());
         }
     }
 }
