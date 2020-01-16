@@ -29,6 +29,7 @@ import android.provider.Settings;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -53,9 +54,9 @@ public class SipUtil {
     public static boolean isVoipSupported(Context context) {
         return SipManager.isVoipSupported(context) &&
                 context.getResources().getBoolean(
-                        com.android.internal.R.bool.config_built_in_sip_phone) &&
-                context.getResources().getBoolean(
-                        com.android.internal.R.bool.config_voice_capable);
+                        com.android.internal.R.bool.config_built_in_sip_phone)
+                && ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE))
+                        .isVoiceCapable();
     }
 
     static PendingIntent createIncomingCallPendingIntent(
