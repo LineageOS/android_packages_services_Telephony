@@ -303,8 +303,8 @@ public class PhoneGlobals extends ContextWrapper {
         // Cache the "voice capable" flag.
         // This flag currently comes from a resource (which is
         // overrideable on a per-product basis):
-        sVoiceCapable =
-                getResources().getBoolean(com.android.internal.R.bool.config_voice_capable);
+        sVoiceCapable = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE))
+                .isVoiceCapable();
         // ...but this might eventually become a PackageManager "system
         // feature" instead, in which case we'd do something like:
         // sVoiceCapable =
