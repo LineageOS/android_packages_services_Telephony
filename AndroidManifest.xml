@@ -630,5 +630,13 @@
                 <action android:name="android.telephony.data.DataService" />
             </intent-filter>
         </service>
+
+        <provider
+            android:name="ServiceStateProvider"
+            android:authorities="service-state"
+            android:exported="true"
+            android:multiprocess="false"
+            android:singleUser="true"
+            android:writePermission="android.permission.MODIFY_PHONE_STATE"/>
     </application>
 </manifest>
