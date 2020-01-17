@@ -36,6 +36,7 @@ import com.android.ims.RcsFeatureManager;
 import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.imsphone.ImsPhone;
+import com.android.services.telephony.rcs.TelephonyRcsService;
 
 import java.util.List;
 
@@ -49,6 +50,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
     private static ImsRcsController sInstance;
 
     private PhoneGlobals mApp;
+    private TelephonyRcsService mRcsService;
 
     /**
      * Initialize the singleton ImsRcsController instance.
@@ -338,5 +340,9 @@ public class ImsRcsController extends IImsRcsController.Stub {
                     "Cannot find RcsFeatureManager instance: " + subId);
         }
         return rcsFeatureManager;
+    }
+
+    void setRcsService(TelephonyRcsService rcsService) {
+        mRcsService = rcsService;
     }
 }

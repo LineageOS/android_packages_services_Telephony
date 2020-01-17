@@ -257,6 +257,14 @@
          audio stream which the remote party will be able to hear. -->
     <bool name="config_support_telephony_audio_device">false</bool>
 
+    <string-array translatable="false" name="config_volte_provision_error_on_publish_response">
+        <item>403 not authorized for presence</item>
+    </string-array>
+
+    <string-array translatable="false" name="config_rcs_provision_error_on_publish_response">
+        <item>404 not found</item>
+    </string-array>
+
     <!-- The country list that shortcut view can be enabled. -->
     <string-array name="config_countries_to_enable_shortcut_view" translatable="false">
     </string-array>
