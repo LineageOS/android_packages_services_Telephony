@@ -410,7 +410,7 @@ public class PhoneGlobals extends ContextWrapper {
             IntentFilter sipIntentFilter = new IntentFilter(Intent.ACTION_BOOT_COMPLETED);
             sipIntentFilter.addAction(SipManager.ACTION_SIP_SERVICE_UP);
             sipIntentFilter.addAction(SipManager.ACTION_SIP_CALL_OPTION_CHANGED);
-            sipIntentFilter.addAction(SipManager.ACTION_SIP_REMOVE_PHONE);
+            sipIntentFilter.addAction(SipManager.ACTION_SIP_REMOVE_PROFILE);
             registerReceiver(mSipReceiver, sipIntentFilter);
 
             mCarrierVvmPackageInstalledReceiver.register(this);
@@ -715,7 +715,7 @@ public class PhoneGlobals extends ContextWrapper {
             } else if (action.equals(SipManager.ACTION_SIP_SERVICE_UP)
                     || action.equals(SipManager.ACTION_SIP_CALL_OPTION_CHANGED)) {
                 sipAccountRegistry.setup(context);
-            } else if (action.equals(SipManager.ACTION_SIP_REMOVE_PHONE)) {
+            } else if (action.equals(SipManager.ACTION_SIP_REMOVE_PROFILE)) {
                 if (DBG) {
                     Log.d(LOG_TAG, "SIP_REMOVE_PHONE "
                             + intent.getStringExtra(SipManager.EXTRA_LOCAL_URI));
