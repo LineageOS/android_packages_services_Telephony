@@ -84,7 +84,6 @@ import android.telephony.PhoneCapability;
 import android.telephony.PhoneNumberRange;
 import android.telephony.RadioAccessFamily;
 import android.telephony.RadioAccessSpecifier;
-import com.android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
@@ -174,6 +173,7 @@ import com.android.phone.vvm.PhoneAccountHandleConverter;
 import com.android.phone.vvm.RemoteVvmTaskManager;
 import com.android.phone.vvm.VisualVoicemailSettingsUtil;
 import com.android.phone.vvm.VisualVoicemailSmsFilterConfig;
+import com.android.telephony.Rlog;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -1452,6 +1452,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 Binder.restoreCallingIdentity(identity);
             }
         }
+    }
+
+    private boolean isImsAvailableOnDevice() {
+        PackageManager pm = getDefaultPhone().getContext().getPackageManager();
+        if (pm == null) {
+            // For some reason package manger is not available.. This will fail internally anyway,
+            // so do not throw error and allow.
+            return true;
+        }
+        return pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_IMS, 0);
     }
 
     public void dial(String number) {
@@ -3420,6 +3430,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         enforceReadPrivilegedPermission("registerImsProvisioningChangedCallback");
         final long identity = Binder.clearCallingIdentity();
         try {
+            if (isImsAvailableOnDevice()) {
+                throw new ImsException("IMS not available on device.",
+                        ImsException.CODE_ERROR_UNSUPPORTED_OPERATION);
+            }
+
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                     .addProvisioningCallbackForSubscription(callback, subId);
