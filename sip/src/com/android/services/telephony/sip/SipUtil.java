@@ -34,8 +34,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.phone.PhoneGlobals;
-import com.android.phone.R;
-import com.android.server.sip.SipService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,6 +45,7 @@ public class SipUtil {
             "com.android.services.telephony.sip.incoming_call_intent";
     static final String EXTRA_PHONE_ACCOUNT =
             "com.android.services.telephony.sip.phone_account";
+    static final String PHONE_PACKAGE = "com.android.phone";
 
     private SipUtil() {
     }
@@ -191,7 +190,10 @@ public class SipUtil {
         // Migrate SIP database from DE->CE storage if the device has just upgraded.
         possiblyMigrateSipDb(phoneGlobalsContext);
         // Wait until boot complete to start SIP so that it has access to CE storage.
-        SipService.start(phoneGlobalsContext);
+        Intent startSipIntent = new Intent();
+        startSipIntent.setAction(SipManager.ACTION_START_SIP);
+        startSipIntent.setPackage(PHONE_PACKAGE);
+        phoneGlobalsContext.startService(startSipIntent);
     }
 
     /**
