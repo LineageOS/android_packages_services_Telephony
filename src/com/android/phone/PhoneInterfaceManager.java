@@ -49,6 +49,7 @@ import android.os.Messenger;
 import android.os.ParcelFileDescriptor;
 import android.os.ParcelUuid;
 import android.os.PersistableBundle;
+import android.os.Process;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.ServiceSpecificException;
@@ -2453,6 +2454,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     private void enforceModifyPermission() {
         mApp.enforceCallingOrSelfPermission(android.Manifest.permission.MODIFY_PHONE_STATE, null);
+    }
+
+    /**
+     * Make sure the caller is system.
+     *
+     * @throws SecurityException if the caller is not system.
+     */
+    private void enforceSystemCaller() {
+        if (Binder.getCallingUid() != Process.SYSTEM_UID) {
+            throw new SecurityException("Caller must be system");
+        }
     }
 
     private void enforceActiveEmergencySessionPermission() {
@@ -5128,6 +5140,34 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 phone.getDataEnabledSettings().setUserDataEnabled(enable);
             } else {
                 loge("setUserDataEnabled: no phone found. Invalid subId=" + subId);
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Enable or disable always reporting signal strength changes from radio.
+     *
+     * @param isEnable {@code true} for enabling; {@code false} for disabling.
+     */
+    @Override
+    public void setAlwaysReportSignalStrength(int subId, boolean isEnable) {
+        enforceModifyPermission();
+        enforceSystemCaller();
+
+        final long identity = Binder.clearCallingIdentity();
+        final Phone phone = getPhone(subId);
+        try {
+            if (phone != null) {
+                if (DBG) {
+                    log("setAlwaysReportSignalStrength: subId=" + subId
+                            + " isEnable=" + isEnable);
+                }
+                phone.setAlwaysReportSignalStrength(isEnable);
+            } else {
+                loge("setAlwaysReportSignalStrength: no phone found for subId="
+                        + subId);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
