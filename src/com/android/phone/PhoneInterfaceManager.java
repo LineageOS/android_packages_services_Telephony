@@ -4036,9 +4036,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public int getLteOnCdmaModeForSubscriber(int subId, String callingPackage,
             String callingFeatureId) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, callingFeatureId,
-                "getLteOnCdmaModeForSubscriber")) {
+        try {
+            enforceReadPrivilegedPermission("getLteOnCdmaModeForSubscriber");
+        } catch (SecurityException e) {
             return PhoneConstants.LTE_ON_CDMA_UNKNOWN;
         }
 
