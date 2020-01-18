@@ -38,7 +38,7 @@ android_app {
     ],
 
     srcs: [
-        ":framework-telephony-stack-shared-srcs",
+        ":framework-telephony-common-shared-srcs",
         "src/**/*.java",
         "sip/src/**/*.java",
         "ecc/proto/**/*.proto",

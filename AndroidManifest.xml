@@ -507,7 +507,7 @@
 
         <receiver android:name="com.android.services.telephony.sip.SipIncomingCallReceiver">
             <intent-filter>
-                <action android:name="com.android.phone.SIP_INCOMING_CALL" />
+                <action android:name="android.net.sip.action.SIP_INCOMING_CALL" />
             </intent-filter>
         </receiver>
 
@@ -537,6 +537,12 @@
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:uiOptions="splitActionBarWhenNarrow">
         </activity>
+
+        <service android:name="com.android.services.telephony.sip.components.TelephonySipService">
+            <intent-filter>
+                <action android:name="android.net.sip.action.START_SIP" />
+            </intent-filter>
+        </service>
 
         <!-- End SIP -->
 

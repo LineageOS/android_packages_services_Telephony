@@ -71,6 +71,7 @@ import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.phone.settings.SettingsConstants;
 import com.android.phone.vvm.CarrierVvmPackageInstalledReceiver;
+import com.android.services.telephony.rcs.TelephonyRcsService;
 import com.android.services.telephony.sip.SipAccountRegistry;
 import com.android.services.telephony.sip.SipUtil;
 
@@ -149,6 +150,7 @@ public class PhoneGlobals extends ContextWrapper {
     CallerInfoCache callerInfoCache;
     NotificationMgr notificationMgr;
     ImsResolver mImsResolver;
+    TelephonyRcsService mTelephonyRcsService;
     public PhoneInterfaceManager phoneMgr;
     public ImsRcsController imsRcsController;
     CarrierConfigLoader configLoader;
@@ -303,8 +305,8 @@ public class PhoneGlobals extends ContextWrapper {
         // Cache the "voice capable" flag.
         // This flag currently comes from a resource (which is
         // overrideable on a per-product basis):
-        sVoiceCapable =
-                getResources().getBoolean(com.android.internal.R.bool.config_voice_capable);
+        sVoiceCapable = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE))
+                .isVoiceCapable();
         // ...but this might eventually become a PackageManager "system
         // feature" instead, in which case we'd do something like:
         // sVoiceCapable =
@@ -372,6 +374,11 @@ public class PhoneGlobals extends ContextWrapper {
 
             imsRcsController = ImsRcsController.init(this);
 
+            if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY_IMS)) {
+                mTelephonyRcsService = new TelephonyRcsService(this);
+                imsRcsController.setRcsService(mTelephonyRcsService);
+            }
+
             configLoader = CarrierConfigLoader.init(this);
 
             // Create the CallNotifier singleton, which handles
@@ -403,7 +410,7 @@ public class PhoneGlobals extends ContextWrapper {
             IntentFilter sipIntentFilter = new IntentFilter(Intent.ACTION_BOOT_COMPLETED);
             sipIntentFilter.addAction(SipManager.ACTION_SIP_SERVICE_UP);
             sipIntentFilter.addAction(SipManager.ACTION_SIP_CALL_OPTION_CHANGED);
-            sipIntentFilter.addAction(SipManager.ACTION_SIP_REMOVE_PHONE);
+            sipIntentFilter.addAction(SipManager.ACTION_SIP_REMOVE_PROFILE);
             registerReceiver(mSipReceiver, sipIntentFilter);
 
             mCarrierVvmPackageInstalledReceiver.register(this);
@@ -709,7 +716,7 @@ public class PhoneGlobals extends ContextWrapper {
             } else if (action.equals(SipManager.ACTION_SIP_SERVICE_UP)
                     || action.equals(SipManager.ACTION_SIP_CALL_OPTION_CHANGED)) {
                 sipAccountRegistry.setup(context);
-            } else if (action.equals(SipManager.ACTION_SIP_REMOVE_PHONE)) {
+            } else if (action.equals(SipManager.ACTION_SIP_REMOVE_PROFILE)) {
                 if (DBG) {
                     Log.d(LOG_TAG, "SIP_REMOVE_PHONE "
                             + intent.getStringExtra(SipManager.EXTRA_LOCAL_URI));

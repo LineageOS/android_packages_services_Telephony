@@ -42,6 +42,7 @@ import android.view.MenuItem;
 import com.android.phone.R;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -238,7 +239,7 @@ public class SipSettings extends PreferenceActivity {
     }
 
     private void processActiveProfilesFromSipService() {
-        SipProfile[] activeList = {};
+        List<SipProfile> activeList = new ArrayList<>();
         try {
             activeList = mSipManager.getListOfProfiles();
         } catch (SipException e) {

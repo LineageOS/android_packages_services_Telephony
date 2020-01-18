@@ -3434,11 +3434,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         enforceReadPrivilegedPermission("registerImsProvisioningChangedCallback");
         final long identity = Binder.clearCallingIdentity();
         try {
-            if (isImsAvailableOnDevice()) {
-                throw new ImsException("IMS not available on device.",
-                        ImsException.CODE_ERROR_UNSUPPORTED_OPERATION);
+            if (!isImsAvailableOnDevice()) {
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                        "IMS not available on device.");
             }
-
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                     .addProvisioningCallbackForSubscription(callback, subId);
@@ -4037,9 +4036,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public int getLteOnCdmaModeForSubscriber(int subId, String callingPackage,
             String callingFeatureId) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, callingFeatureId,
-                "getLteOnCdmaModeForSubscriber")) {
+        try {
+            enforceReadPrivilegedPermission("getLteOnCdmaModeForSubscriber");
+        } catch (SecurityException e) {
             return PhoneConstants.LTE_ON_CDMA_UNKNOWN;
         }
 
