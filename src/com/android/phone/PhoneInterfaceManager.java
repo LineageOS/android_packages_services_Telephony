@@ -267,6 +267,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_SET_FORBIDDEN_PLMNS_DONE = 73;
     private static final int CMD_ERASE_MODEM_CONFIG = 74;
     private static final int EVENT_ERASE_MODEM_CONFIG_DONE = 75;
+    private static final int CMD_CHANGE_ICC_LOCK_PASSWORD = 76;
+    private static final int EVENT_CHANGE_ICC_LOCK_PASSWORD_DONE = 77;
+    private static final int CMD_SET_ICC_LOCK_ENABLED = 78;
+    private static final int EVENT_SET_ICC_LOCK_ENABLED_DONE = 79;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1231,6 +1235,43 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case EVENT_ERASE_MODEM_CONFIG_DONE:
                     handleNullReturnEvent(msg, "eraseModemConfig");
                     break;
+
+                case CMD_CHANGE_ICC_LOCK_PASSWORD:
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_CHANGE_ICC_LOCK_PASSWORD_DONE, request);
+                    Pair<String, String> changed = (Pair<String, String>) request.argument;
+                    getPhoneFromRequest(request).getIccCard().changeIccLockPassword(
+                            changed.first, changed.second, onCompleted);
+                    break;
+                case EVENT_CHANGE_ICC_LOCK_PASSWORD_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null) {
+                        request.result = TelephonyManager.CHANGE_ICC_LOCK_SUCCESS;
+                    } else {
+                        request.result = msg.arg1;
+                    }
+                    notifyRequester(request);
+                    break;
+
+                case CMD_SET_ICC_LOCK_ENABLED:
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_SET_ICC_LOCK_ENABLED_DONE, request);
+                    Pair<Boolean, String> enabled = (Pair<Boolean, String>) request.argument;
+                    getPhoneFromRequest(request).getIccCard().setIccLockEnabled(
+                            enabled.first, enabled.second, onCompleted);
+                    break;
+                case EVENT_SET_ICC_LOCK_ENABLED_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null) {
+                        request.result = TelephonyManager.CHANGE_ICC_LOCK_SUCCESS;
+                    } else {
+                        request.result = msg.arg1;
+                    }
+                    notifyRequester(request);
+                    break;
+
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
                     break;
@@ -7881,5 +7922,89 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } catch (RemoteException e) {
             Rlog.e(LOG_TAG, "fail to getImsConfig " + e.getMessage());
         }
+    }
+
+    @Override
+    public boolean isIccLockEnabled(int subId) {
+        enforceReadPrivilegedPermission("isIccLockEnabled");
+
+        // Now that all security checks passes, perform the operation as ourselves.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone != null && phone.getIccCard() != null) {
+                return phone.getIccCard().getIccLockEnabled();
+            } else {
+                return false;
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Set the ICC pin lock enabled or disabled.
+     *
+     * @return an integer representing the status of IccLock enabled or disabled in the following
+     * three cases:
+     *   - {@link TelephonyManager#CHANGE_ICC_LOCK_SUCCESS} if enabled or disabled IccLock
+     *   successfully.
+     *   - Positive number and zero for remaining password attempts.
+     *   - Negative number for other failure cases (such like enabling/disabling PIN failed).
+     *
+     */
+    @Override
+    public int setIccLockEnabled(int subId, boolean enabled, String password) {
+        enforceModifyPermission();
+
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            return 0;
+        }
+        // Now that all security checks passes, perform the operation as ourselves.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            int attemptsRemaining = (int) sendRequest(CMD_SET_ICC_LOCK_ENABLED,
+                    new Pair<Boolean, String>(enabled, password), phone, null);
+            return attemptsRemaining;
+
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "setIccLockEnabled. Exception e =" + e);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return 0;
+    }
+
+    /**
+     * Change the ICC password used in ICC pin lock.
+     *
+     * @return an integer representing the status of IccLock changed in the following three cases:
+     *   - {@link TelephonyManager#CHANGE_ICC_LOCK_SUCCESS} if changed IccLock successfully.
+     *   - Positive number and zero for remaining password attempts.
+     *   - Negative number for other failure cases (such like enabling/disabling PIN failed).
+     *
+     */
+    @Override
+    public int changeIccLockPassword(int subId, String oldPassword, String newPassword) {
+        enforceModifyPermission();
+
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            return 0;
+        }
+        // Now that all security checks passes, perform the operation as ourselves.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            int attemptsRemaining = (int) sendRequest(CMD_CHANGE_ICC_LOCK_PASSWORD,
+                    new Pair<String, String>(oldPassword, newPassword), phone, null);
+            return attemptsRemaining;
+
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "changeIccLockPassword. Exception e =" + e);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return 0;
     }
 }
