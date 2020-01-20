@@ -129,6 +129,7 @@ import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.DefaultPhoneNotifier;
 import com.android.internal.telephony.HalVersion;
+import com.android.internal.telephony.IBooleanConsumer;
 import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
@@ -187,6 +188,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.function.Consumer;
 
 /**
  * Implementation of the ITelephony interface.
@@ -272,6 +274,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_CHANGE_ICC_LOCK_PASSWORD_DONE = 77;
     private static final int CMD_SET_ICC_LOCK_ENABLED = 78;
     private static final int EVENT_SET_ICC_LOCK_ENABLED_DONE = 79;
+    private static final int CMD_SET_SYSTEM_SELECTION_CHANNELS = 80;
+    private static final int EVENT_SET_SYSTEM_SELECTION_CHANNELS_DONE = 81;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1184,6 +1188,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     notifyRequester(request);
                     break;
+                case CMD_SET_SYSTEM_SELECTION_CHANNELS: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_SET_SYSTEM_SELECTION_CHANNELS_DONE, request);
+                    Pair<List<RadioAccessSpecifier>, Consumer<Boolean>> args =
+                            (Pair<List<RadioAccessSpecifier>, Consumer<Boolean>>) request.argument;
+                    request.phone.setSystemSelectionChannels(args.first, onCompleted);
+                    break;
+                }
+                case EVENT_SET_SYSTEM_SELECTION_CHANNELS_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    Pair<List<RadioAccessSpecifier>, Consumer<Boolean>> args =
+                            (Pair<List<RadioAccessSpecifier>, Consumer<Boolean>>) request.argument;
+                    args.second.accept(ar.exception == null);
+                    notifyRequester(request);
+                    break;
+                }
                 case EVENT_SET_FORBIDDEN_PLMNS_DONE:
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
@@ -7923,6 +7944,39 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return ApnSettingUtils.isMeteredApnType(apnType, phone);
         } finally {
             Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void setSystemSelectionChannels(List<RadioAccessSpecifier> specifiers,
+            int subscriptionId, IBooleanConsumer resultCallback) {
+        enforceModifyPermission();
+        long token = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subscriptionId);
+            if (phone == null) {
+                try {
+                    if (resultCallback != null) {
+                        resultCallback.accept(false);
+                    }
+                } catch (RemoteException e) {
+                    // ignore
+                }
+                return;
+            }
+            Pair<List<RadioAccessSpecifier>, Consumer<Boolean>> argument =
+                    Pair.create(specifiers, (x) -> {
+                        try {
+                            if (resultCallback != null) {
+                                resultCallback.accept(x);
+                            }
+                        } catch (RemoteException e) {
+                            // ignore
+                        }
+                    });
+            sendRequestAsync(CMD_SET_SYSTEM_SELECTION_CHANNELS, argument, phone, null);
+        } finally {
+            Binder.restoreCallingIdentity(token);
         }
     }
 
