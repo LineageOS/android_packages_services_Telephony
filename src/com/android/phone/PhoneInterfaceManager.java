@@ -3020,10 +3020,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return false;
     }
 
+    /**
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     * @param c The callback that will be used to send the result.
+     */
     @Override
     public void registerImsRegistrationCallback(int subId, IImsRegistrationCallback c)
             throws RemoteException {
+        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
         enforceReadPrivilegedPermission("registerImsRegistrationCallback");
+
         if (!ImsManager.isImsSupportedOnDevice(mApp)) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
                     "IMS not available on device.");
@@ -3040,8 +3047,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     * @param c The callback that will be used to send the result.
+     */
     @Override
     public void unregisterImsRegistrationCallback(int subId, IImsRegistrationCallback c) {
+        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
         enforceReadPrivilegedPermission("unregisterImsRegistrationCallback");
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
@@ -3098,6 +3111,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void getImsMmTelRegistrationTransportType(int subId, IIntegerConsumer consumer) {
+        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
         enforceReadPrivilegedPermission("getImsMmTelRegistrationTransportType");
         if (!ImsManager.isImsSupportedOnDevice(mApp)) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
@@ -3129,9 +3143,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     * @param c The callback that will be used to send the result.
+     */
     @Override
     public void registerMmTelCapabilityCallback(int subId, IImsCapabilityCallback c)
             throws RemoteException {
+        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
         enforceReadPrivilegedPermission("registerMmTelCapabilityCallback");
         if (!ImsManager.isImsSupportedOnDevice(mApp)) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
@@ -3149,8 +3169,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     * @param c The callback that will be used to send the result.
+     */
     @Override
     public void unregisterMmTelCapabilityCallback(int subId, IImsCapabilityCallback c) {
+        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
         enforceReadPrivilegedPermission("unregisterMmTelCapabilityCallback");
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
@@ -3241,9 +3267,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     */
     @Override
     public boolean isAdvancedCallingSettingEnabled(int subId) {
-        enforceReadPrivilegedPermission("enforceReadPrivilegedPermission");
+        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
+        enforceReadPrivilegedPermission("isAdvancedCallingSettingEnabled");
+
         // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
         final long token = Binder.clearCallingIdentity();
         try {
@@ -3272,8 +3304,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     */
     @Override
     public boolean isVtSettingEnabled(int subId) {
+        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
         enforceReadPrivilegedPermission("isVtSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -3301,8 +3338,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     */
     @Override
     public boolean isVoWiFiSettingEnabled(int subId) {
+        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
         enforceReadPrivilegedPermission("isVoWiFiSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -3331,8 +3373,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     */
     @Override
     public boolean isVoWiFiRoamingSettingEnabled(int subId) {
+        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
         enforceReadPrivilegedPermission("isVoWiFiRoamingSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -3378,8 +3425,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     */
     @Override
     public int getVoWiFiModeSetting(int subId) {
+        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
         enforceReadPrivilegedPermission("getVoWiFiModeSetting");
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -3455,8 +3507,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     */
     @Override
     public boolean isTtyOverVolteEnabled(int subId) {
+        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
         enforceReadPrivilegedPermission("isTtyOverVolteEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -5111,18 +5168,78 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            if (DBG) log("setPreferredNetworkType: subId " + subId + " type " + networkType);
-            Boolean success = (Boolean) sendRequest(
-                    CMD_SET_PREFERRED_NETWORK_TYPE, networkType, subId);
-            if (DBG) log("setPreferredNetworkType: " + (success ? "ok" : "fail"));
-            if (success) {
-                Settings.Global.putInt(mApp.getContentResolver(),
-                        Settings.Global.PREFERRED_NETWORK_MODE + subId, networkType);
-            }
-            return success;
+            Settings.Global.putInt(mApp.getContentResolver(),
+                    Settings.Global.PREFERRED_NETWORK_MODE + subId, networkType);
+            return setPreferredNetworkTypesInternal(subId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    /**
+     * Get the allowed network types that store in the telephony provider.
+     *
+     * @param subId the id of the subscription.
+     * @return allowedNetworkTypes the allowed network types.
+     */
+    @Override
+    public long getAllowedNetworkTypes(int subId) {
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                    mApp, subId, "getAllowedNetworkTypes");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return SubscriptionManager.getLongSubscriptionProperty(
+                    subId, SubscriptionManager.ALLOWED_NETWORK_TYPES, -1, mApp);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Set the allowed network types.
+     *
+     * @param subId the id of the subscription.
+     * @param allowedNetworkTypes the allowed network types.
+     * @return true on success; false on any failure.
+     */
+    @Override
+    public boolean setAllowedNetworkTypes(int subId, long allowedNetworkTypes) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "setAllowedNetworkTypes");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            SubscriptionManager.setSubscriptionProperty(subId,
+                    SubscriptionManager.ALLOWED_NETWORK_TYPES,
+                    String.valueOf(allowedNetworkTypes));
+            return setPreferredNetworkTypesInternal(subId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    private boolean setPreferredNetworkTypesInternal(int subId) {
+        long networkTypeBitMask = RadioAccessFamily.getRafFromNetworkType(
+                Settings.Global.getInt(mApp.getContentResolver(),
+                        Settings.Global.PREFERRED_NETWORK_MODE + subId,
+                        RILConstants.PREFERRED_NETWORK_MODE));
+        long allowedNetworkTypes = SubscriptionManager.getLongSubscriptionProperty(
+                subId, SubscriptionManager.ALLOWED_NETWORK_TYPES, -1, mApp);
+        int networkMode = RadioAccessFamily.getNetworkTypeFromRaf(
+                (int) (networkTypeBitMask & allowedNetworkTypes));
+
+        if (DBG) {
+            log("setPreferredNetworkTypesInternal: subId " + subId
+                    + " networkTypes " + networkTypeBitMask
+                    + " allowedNetworkTypes " + allowedNetworkTypes
+                    + " networkMode " + networkMode);
+        }
+
+        Boolean success = (Boolean) sendRequest(
+                CMD_SET_PREFERRED_NETWORK_TYPE, networkMode, subId);
+        if (DBG) log("setPreferredNetworkTypesInternal: " + (success ? "ok" : "fail"));
+        return success;
     }
 
     /**
