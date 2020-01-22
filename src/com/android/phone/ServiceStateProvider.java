@@ -17,32 +17,9 @@
 package com.android.phone;
 
 import static android.provider.Telephony.ServiceStateTable;
-import static android.provider.Telephony.ServiceStateTable.CDMA_DEFAULT_ROAMING_INDICATOR;
-import static android.provider.Telephony.ServiceStateTable.CDMA_ERI_ICON_INDEX;
-import static android.provider.Telephony.ServiceStateTable.CDMA_ERI_ICON_MODE;
-import static android.provider.Telephony.ServiceStateTable.CDMA_ROAMING_INDICATOR;
 import static android.provider.Telephony.ServiceStateTable.CONTENT_URI;
-import static android.provider.Telephony.ServiceStateTable.CSS_INDICATOR;
-import static android.provider.Telephony.ServiceStateTable.DATA_OPERATOR_ALPHA_LONG;
-import static android.provider.Telephony.ServiceStateTable.DATA_OPERATOR_ALPHA_SHORT;
-import static android.provider.Telephony.ServiceStateTable.DATA_OPERATOR_NUMERIC;
-import static android.provider.Telephony.ServiceStateTable.DATA_REG_STATE;
-import static android.provider.Telephony.ServiceStateTable.DATA_ROAMING_TYPE;
-import static android.provider.Telephony.ServiceStateTable.IS_EMERGENCY_ONLY;
 import static android.provider.Telephony.ServiceStateTable.IS_MANUAL_NETWORK_SELECTION;
-import static android.provider.Telephony.ServiceStateTable.IS_USING_CARRIER_AGGREGATION;
-import static android.provider.Telephony.ServiceStateTable.NETWORK_ID;
-import static android.provider.Telephony.ServiceStateTable.OPERATOR_ALPHA_LONG_RAW;
-import static android.provider.Telephony.ServiceStateTable.OPERATOR_ALPHA_SHORT_RAW;
-import static android.provider.Telephony.ServiceStateTable.RIL_DATA_RADIO_TECHNOLOGY;
-import static android.provider.Telephony.ServiceStateTable.RIL_VOICE_RADIO_TECHNOLOGY;
-import static android.provider.Telephony.ServiceStateTable.SERVICE_STATE;
-import static android.provider.Telephony.ServiceStateTable.SYSTEM_ID;
-import static android.provider.Telephony.ServiceStateTable.VOICE_OPERATOR_ALPHA_LONG;
-import static android.provider.Telephony.ServiceStateTable.VOICE_OPERATOR_ALPHA_SHORT;
-import static android.provider.Telephony.ServiceStateTable.VOICE_OPERATOR_NUMERIC;
 import static android.provider.Telephony.ServiceStateTable.VOICE_REG_STATE;
-import static android.provider.Telephony.ServiceStateTable.VOICE_ROAMING_TYPE;
 import static android.provider.Telephony.ServiceStateTable.getUriForSubscriptionId;
 import static android.provider.Telephony.ServiceStateTable.getUriForSubscriptionIdAndField;
 
@@ -61,6 +38,8 @@ import android.util.Log;
 import com.android.internal.annotations.VisibleForTesting;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * The class to provide base facility to access ServiceState related content,
@@ -71,6 +50,186 @@ public class ServiceStateProvider extends ContentProvider {
 
     public static final String AUTHORITY = ServiceStateTable.AUTHORITY;
     public static final Uri AUTHORITY_URI = Uri.parse("content://" + AUTHORITY);
+
+    /**
+     * The current service state.
+     *
+     * This is the entire {@link ServiceState} object in byte array.
+     *
+     * @hide
+     */
+    public static final String SERVICE_STATE = "service_state";
+
+    /**
+     * An integer value indicating the current data service state.
+     * <p>
+     * Valid values: {@link ServiceState#STATE_IN_SERVICE},
+     * {@link ServiceState#STATE_OUT_OF_SERVICE}, {@link ServiceState#STATE_EMERGENCY_ONLY},
+     * {@link ServiceState#STATE_POWER_OFF}.
+     * <p>
+     * This is the same as {@link ServiceState#getDataRegState()}.
+     * @hide
+     */
+    public static final String DATA_REG_STATE = "data_reg_state";
+
+    /**
+     * An integer value indicating the current voice roaming type.
+     * <p>
+     * This is the same as {@link ServiceState#getVoiceRoamingType()}.
+     * @hide
+     */
+    public static final String VOICE_ROAMING_TYPE = "voice_roaming_type";
+
+    /**
+     * An integer value indicating the current data roaming type.
+     * <p>
+     * This is the same as {@link ServiceState#getDataRoamingType()}.
+     * @hide
+     */
+    public static final String DATA_ROAMING_TYPE = "data_roaming_type";
+
+    /**
+     * The current registered voice network operator name in long alphanumeric format.
+     * <p>
+     * This is the same as {@link ServiceState#getOperatorAlphaLong()}.
+     * @hide
+     */
+    public static final String VOICE_OPERATOR_ALPHA_LONG = "voice_operator_alpha_long";
+
+    /**
+     * The current registered operator name in short alphanumeric format.
+     * <p>
+     * In GSM/UMTS, short format can be up to 8 characters long. The current registered voice
+     * network operator name in long alphanumeric format.
+     * <p>
+     * This is the same as {@link ServiceState#getOperatorAlphaShort()}.
+     * @hide
+     */
+    public static final String VOICE_OPERATOR_ALPHA_SHORT = "voice_operator_alpha_short";
+
+    /**
+     * The current registered operator numeric id.
+     * <p>
+     * In GSM/UMTS, numeric format is 3 digit country code plus 2 or 3 digit
+     * network code.
+     * <p>
+     * This is the same as {@link ServiceState#getOperatorNumeric()}.
+     */
+    public static final String VOICE_OPERATOR_NUMERIC = "voice_operator_numeric";
+
+    /**
+     * The current registered data network operator name in long alphanumeric format.
+     * <p>
+     * This is the same as {@link ServiceState#getOperatorAlphaLong()}.
+     * @hide
+     */
+    public static final String DATA_OPERATOR_ALPHA_LONG = "data_operator_alpha_long";
+
+    /**
+     * The current registered data network operator name in short alphanumeric format.
+     * <p>
+     * This is the same as {@link ServiceState#getOperatorAlphaShort()}.
+     * @hide
+     */
+    public static final String DATA_OPERATOR_ALPHA_SHORT = "data_operator_alpha_short";
+
+    /**
+     * The current registered data network operator numeric id.
+     * <p>
+     * This is the same as {@link ServiceState#getOperatorNumeric()}.
+     * @hide
+     */
+    public static final String DATA_OPERATOR_NUMERIC = "data_operator_numeric";
+
+    /**
+     * This is the same as {@link ServiceState#getRilVoiceRadioTechnology()}.
+     * @hide
+     */
+    public static final String RIL_VOICE_RADIO_TECHNOLOGY = "ril_voice_radio_technology";
+
+    /**
+     * This is the same as {@link ServiceState#getRilDataRadioTechnology()}.
+     * @hide
+     */
+    public static final String RIL_DATA_RADIO_TECHNOLOGY = "ril_data_radio_technology";
+
+    /**
+     * This is the same as {@link ServiceState#getCssIndicator()}.
+     * @hide
+     */
+    public static final String CSS_INDICATOR = "css_indicator";
+
+    /**
+     * This is the same as {@link ServiceState#getCdmaNetworkId()}.
+     * @hide
+     */
+    public static final String NETWORK_ID = "network_id";
+
+    /**
+     * This is the same as {@link ServiceState#getCdmaSystemId()}.
+     * @hide
+     */
+    public static final String SYSTEM_ID = "system_id";
+
+    /**
+     * This is the same as {@link ServiceState#getCdmaRoamingIndicator()}.
+     * @hide
+     */
+    public static final String CDMA_ROAMING_INDICATOR = "cdma_roaming_indicator";
+
+    /**
+     * This is the same as {@link ServiceState#getCdmaDefaultRoamingIndicator()}.
+     * @hide
+     */
+    public static final String CDMA_DEFAULT_ROAMING_INDICATOR =
+            "cdma_default_roaming_indicator";
+
+    /**
+     * This is the same as {@link ServiceState#getCdmaEriIconIndex()}.
+     * @hide
+     */
+    public static final String CDMA_ERI_ICON_INDEX = "cdma_eri_icon_index";
+
+    /**
+     * This is the same as {@link ServiceState#getCdmaEriIconMode()}.
+     * @hide
+     */
+    public static final String CDMA_ERI_ICON_MODE = "cdma_eri_icon_mode";
+
+    /**
+     * This is the same as {@link ServiceState#isEmergencyOnly()}.
+     * @hide
+     */
+    public static final String IS_EMERGENCY_ONLY = "is_emergency_only";
+
+    /**
+     * This is the same as {@link ServiceState#getDataRoamingFromRegistration()}.
+     * @hide
+     */
+    public static final String IS_DATA_ROAMING_FROM_REGISTRATION =
+            "is_data_roaming_from_registration";
+
+    /**
+     * This is the same as {@link ServiceState#isUsingCarrierAggregation()}.
+     * @hide
+     */
+    public static final String IS_USING_CARRIER_AGGREGATION = "is_using_carrier_aggregation";
+
+    /**
+     * The current registered raw data network operator name in long alphanumeric format.
+     * <p>
+     * This is the same as {@link ServiceState#getOperatorAlphaLongRaw()}.
+     * @hide
+     */
+    public static final String OPERATOR_ALPHA_LONG_RAW = "operator_alpha_long_raw";
+
+    /**
+     * The current registered raw data network operator name in short alphanumeric format.
+     * <p>
+     * This is the same as {@link ServiceState#getOperatorAlphaShortRaw()}.
+     * @hide
+     */
+    public static final String OPERATOR_ALPHA_SHORT_RAW = "operator_alpha_short_raw";
 
     private final HashMap<Integer, ServiceState> mServiceStates = new HashMap<>();
     private static final String[] sColumns = {
@@ -128,7 +287,7 @@ public class ServiceStateProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        if (uri.isPathPrefixMatch(CONTENT_URI)) {
+        if (isPathPrefixMatch(uri, CONTENT_URI)) {
             // Parse the subId
             int subId = 0;
             try {
@@ -183,7 +342,7 @@ public class ServiceStateProvider extends ContentProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
             String sortOrder) {
-        if (!uri.isPathPrefixMatch(CONTENT_URI)) {
+        if (!isPathPrefixMatch(uri, CONTENT_URI)) {
             throw new IllegalArgumentException("Invalid URI: " + uri);
         } else {
             // Parse the subId
@@ -361,5 +520,47 @@ public class ServiceStateProvider extends ContentProvider {
                 || voiceRoamingTypeChanged(oldSS, newSS) || dataRoamingTypeChanged(oldSS, newSS)) {
             context.getContentResolver().notifyChange(getUriForSubscriptionId(subId), null, false);
         }
+    }
+
+    /**
+     * Test if this is a path prefix match against the given Uri. Verifies that
+     * scheme, authority, and atomic path segments match.
+     *
+     * Copied from frameworks/base/core/java/android/net/Uri.java
+     */
+    private boolean isPathPrefixMatch(Uri uriA, Uri uriB) {
+        if (!Objects.equals(uriA.getScheme(), uriB.getScheme())) return false;
+        if (!Objects.equals(uriA.getAuthority(), uriB.getAuthority())) return false;
+
+        List<String> segA = uriA.getPathSegments();
+        List<String> segB = uriB.getPathSegments();
+
+        final int size = segB.size();
+        if (segA.size() < size) return false;
+
+        for (int i = 0; i < size; i++) {
+            if (!Objects.equals(segA.get(i), segB.get(i))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Used to insert a ServiceState into the ServiceStateProvider as a ContentValues instance.
+     *
+     * @param state the ServiceState to convert into ContentValues
+     * @return the convertedContentValues instance
+     * @hide
+     */
+    public static ContentValues getContentValuesForServiceState(ServiceState state) {
+        ContentValues values = new ContentValues();
+        final Parcel p = Parcel.obtain();
+        state.writeToParcel(p, 0);
+        // Turn the parcel to byte array. Safe to do this because the content values were never
+        // written into a persistent storage. ServiceStateProvider keeps values in the memory.
+        values.put(SERVICE_STATE, p.marshall());
+        return values;
     }
 }
