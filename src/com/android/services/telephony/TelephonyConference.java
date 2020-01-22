@@ -93,6 +93,16 @@ public class TelephonyConference extends TelephonyConferenceBase implements Hold
     }
 
     @Override
+    public void onAnswer(int videoState) {
+        Log.e(this, new Exception(), "Answer not supported for GSM conference call.");
+    }
+
+    @Override
+    public void onReject() {
+        Log.e(this, new Exception(), "Reject not supported for GSM conference call.");
+    }
+
+    @Override
     public void onMerge(Connection connection) {
         try {
             Phone phone = ((TelephonyConnection) connection).getPhone();
