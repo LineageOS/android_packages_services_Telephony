@@ -3030,11 +3030,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int getNetworkSelectionMode(int subId) {
-        if (!isActiveSubscription(subId)) {
-            return TelephonyManager.NETWORK_SELECTION_MODE_UNKNOWN;
+        TelephonyPermissions
+                    .enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                    mApp, subId, "getNetworkSelectionMode");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (!isActiveSubscription(subId)) {
+                return TelephonyManager.NETWORK_SELECTION_MODE_UNKNOWN;
+            }
+            return (int) sendRequest(CMD_GET_NETWORK_SELECTION_MODE, null /* argument */, subId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
-
-        return (int) sendRequest(CMD_GET_NETWORK_SELECTION_MODE, null /* argument */, subId);
     }
 
     @Override
@@ -4980,12 +4987,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "setNetworkSelectionModeAutomatic");
 
-        if (!isActiveSubscription(subId)) {
-            return;
-        }
-
         final long identity = Binder.clearCallingIdentity();
         try {
+            if (!isActiveSubscription(subId)) {
+                return;
+            }
             if (DBG) log("setNetworkSelectionModeAutomatic: subId " + subId);
             sendRequest(CMD_SET_NETWORK_SELECTION_MODE_AUTOMATIC, null, subId);
         } finally {
