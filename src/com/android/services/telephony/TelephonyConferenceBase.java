@@ -48,6 +48,14 @@ public class TelephonyConferenceBase extends Conference {
         public void onConferenceMembershipChanged(Connection connection) {}
 
         /**
+         * Listener called when there conference call state changes.
+         * @param conference The conference.
+         * @param oldState previous state of conference call.
+         * @param newState new state of conference call.
+         */
+        public void onStateChanged(Conference conference, int oldState, int newState) {}
+
+        /**
          * Listener called when a conference is destroyed.
          * @param conference The conference.
          */
@@ -129,6 +137,54 @@ public class TelephonyConferenceBase extends Conference {
     }
 
     /**
+     * Sets state to be on hold.
+     */
+     public final void setConferenceOnHold() {
+         int oldState = getState();
+         if (oldState == Connection.STATE_HOLDING) {
+             return;
+         }
+         setOnHold();
+         notifyStateChanged(oldState, getState());
+     }
+
+     /**
+      * Sets state to be dialing.
+      */
+     public final void setConferenceOnDialing() {
+         int oldState = getState();
+         if (oldState == Connection.STATE_DIALING) {
+             return;
+         }
+         setDialing();
+         notifyStateChanged(oldState, getState());
+     }
+
+     /**
+      * Sets state to be ringing.
+      */
+     public final void setConferenceOnRinging() {
+         int oldState = getState();
+         if (oldState == Connection.STATE_RINGING) {
+             return;
+         }
+         setRinging();
+         notifyStateChanged(oldState, getState());
+     }
+
+     /**
+      * Sets state to be active.
+      */
+     public final void setConferenceOnActive() {
+         int oldState = getState();
+         if (oldState == Connection.STATE_ACTIVE) {
+             return;
+         }
+         setActive();
+         notifyStateChanged(oldState, getState());
+     }
+
+    /**
      * Updates RIL voice radio technology used for current conference after its creation.
      */
     public void updateCallRadioTechAfterCreation() {
@@ -186,6 +242,14 @@ public class TelephonyConferenceBase extends Conference {
     private void notifyDestroyed() {
         for (TelephonyConferenceListener listener : mListeners) {
             listener.onDestroyed(this);
+        }
+    }
+
+    private void notifyStateChanged(int oldState, int newState) {
+        if (oldState != newState) {
+            for (TelephonyConferenceListener listener : mListeners) {
+                listener.onStateChanged(this, oldState, newState);
+            }
         }
     }
 }
