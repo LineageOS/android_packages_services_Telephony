@@ -129,6 +129,7 @@ import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.DefaultPhoneNotifier;
 import com.android.internal.telephony.HalVersion;
+import com.android.internal.telephony.IBooleanConsumer;
 import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
@@ -187,6 +188,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 
 /**
  * Implementation of the ITelephony interface.
@@ -272,6 +275,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_CHANGE_ICC_LOCK_PASSWORD_DONE = 77;
     private static final int CMD_SET_ICC_LOCK_ENABLED = 78;
     private static final int EVENT_SET_ICC_LOCK_ENABLED_DONE = 79;
+    private static final int CMD_SET_SYSTEM_SELECTION_CHANNELS = 80;
+    private static final int EVENT_SET_SYSTEM_SELECTION_CHANNELS_DONE = 81;
+    private static final int MSG_NOTIFY_USER_ACTIVITY = 82;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -291,6 +297,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private SubscriptionController mSubscriptionController;
     private SharedPreferences mTelephonySharedPreferences;
     private PhoneConfigurationManager mPhoneConfigurationManager;
+
+    /** User Activity */
+    private AtomicBoolean mNotifyUserActivity;
+    private static final String ACTION_USER_ACTIVITY_NOTIFICATION =
+            "android.intent.action.USER_ACTIVITY_NOTIFICATION";
+    private static final int USER_ACTIVITY_NOTIFICATION_DELAY = 200;
 
     private static final String PREF_CARRIERS_ALPHATAG_PREFIX = "carrier_alphtag_";
     private static final String PREF_CARRIERS_NUMBER_PREFIX = "carrier_number_";
@@ -1184,6 +1196,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     notifyRequester(request);
                     break;
+                case CMD_SET_SYSTEM_SELECTION_CHANNELS: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_SET_SYSTEM_SELECTION_CHANNELS_DONE, request);
+                    Pair<List<RadioAccessSpecifier>, Consumer<Boolean>> args =
+                            (Pair<List<RadioAccessSpecifier>, Consumer<Boolean>>) request.argument;
+                    request.phone.setSystemSelectionChannels(args.first, onCompleted);
+                    break;
+                }
+                case EVENT_SET_SYSTEM_SELECTION_CHANNELS_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    Pair<List<RadioAccessSpecifier>, Consumer<Boolean>> args =
+                            (Pair<List<RadioAccessSpecifier>, Consumer<Boolean>>) request.argument;
+                    args.second.accept(ar.exception == null);
+                    notifyRequester(request);
+                    break;
+                }
                 case EVENT_SET_FORBIDDEN_PLMNS_DONE:
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
@@ -1273,6 +1302,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     notifyRequester(request);
                     break;
 
+                case MSG_NOTIFY_USER_ACTIVITY:
+                    removeMessages(MSG_NOTIFY_USER_ACTIVITY);
+                    Intent intent = new Intent(ACTION_USER_ACTIVITY_NOTIFICATION);
+                    intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
+                    getDefaultPhone().getContext().sendBroadcastAsUser(
+                            intent, UserHandle.ALL, permission.USER_ACTIVITY);
+                    break;
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
                     break;
@@ -3009,11 +3045,33 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int getNetworkSelectionMode(int subId) {
-        if (!isActiveSubscription(subId)) {
-            return TelephonyManager.NETWORK_SELECTION_MODE_UNKNOWN;
+        TelephonyPermissions
+                    .enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                    mApp, subId, "getNetworkSelectionMode");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (!isActiveSubscription(subId)) {
+                return TelephonyManager.NETWORK_SELECTION_MODE_UNKNOWN;
+            }
+            return (int) sendRequest(CMD_GET_NETWORK_SELECTION_MODE, null /* argument */, subId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
+    }
 
-        return (int) sendRequest(CMD_GET_NETWORK_SELECTION_MODE, null /* argument */, subId);
+    @Override
+    public PhoneCapability getPhoneCapability(int subId, String callingPackage,
+                String callingFeatureId) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, callingFeatureId, "getPhoneCapability")) {
+            return null;
+        }
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mPhoneConfigurationManager.getStaticPhoneCapability();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 
     @Override
@@ -4944,12 +5002,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "setNetworkSelectionModeAutomatic");
 
-        if (!isActiveSubscription(subId)) {
-            return;
-        }
-
         final long identity = Binder.clearCallingIdentity();
         try {
+            if (!isActiveSubscription(subId)) {
+                return;
+            }
             if (DBG) log("setNetworkSelectionModeAutomatic: subId " + subId);
             sendRequest(CMD_SET_NETWORK_SELECTION_MODE_AUTOMATIC, null, subId);
         } finally {
@@ -7742,7 +7799,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             loge("isMultiSimSupportedInternal: no static configuration available");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
-        if (staticCapability.logicalModemList.size() < 2) {
+        if (staticCapability.getLogicalModemUuids().size() < 2) {
             loge("isMultiSimSupportedInternal: maximum number of modem is < 2");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
@@ -7923,6 +7980,39 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return ApnSettingUtils.isMeteredApnType(apnType, phone);
         } finally {
             Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void setSystemSelectionChannels(List<RadioAccessSpecifier> specifiers,
+            int subscriptionId, IBooleanConsumer resultCallback) {
+        enforceModifyPermission();
+        long token = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subscriptionId);
+            if (phone == null) {
+                try {
+                    if (resultCallback != null) {
+                        resultCallback.accept(false);
+                    }
+                } catch (RemoteException e) {
+                    // ignore
+                }
+                return;
+            }
+            Pair<List<RadioAccessSpecifier>, Consumer<Boolean>> argument =
+                    Pair.create(specifiers, (x) -> {
+                        try {
+                            if (resultCallback != null) {
+                                resultCallback.accept(x);
+                            }
+                        } catch (RemoteException e) {
+                            // ignore
+                        }
+                    });
+            sendRequestAsync(CMD_SET_SYSTEM_SELECTION_CHANNELS, argument, phone, null);
+        } finally {
+            Binder.restoreCallingIdentity(token);
         }
     }
 
@@ -8163,5 +8253,43 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
         return 0;
+    }
+
+    /**
+     * Request for receiving user activity notification
+     */
+    @Override
+    public void requestUserActivityNotification() {
+        if (!mNotifyUserActivity.get()
+                && !mMainThreadHandler.hasMessages(MSG_NOTIFY_USER_ACTIVITY)) {
+            mNotifyUserActivity.set(true);
+        }
+    }
+
+    /**
+     * Called when userActivity is signalled in the power manager.
+     * This is safe to call from any thread, with any window manager locks held or not.
+     */
+    @Override
+    public void userActivity() {
+        // ***************************************
+        // *  Inherited from PhoneWindowManager  *
+        // ***************************************
+        // THIS IS CALLED FROM DEEP IN THE POWER MANAGER
+        // WITH ITS LOCKS HELD.
+        //
+        // This code must be VERY careful about the locks
+        // it acquires.
+        // In fact, the current code acquires way too many,
+        // and probably has lurking deadlocks.
+
+        if (Binder.getCallingUid() != Process.SYSTEM_UID) {
+            throw new SecurityException("Only the OS may call notifyUserActivity()");
+        }
+
+        if (mNotifyUserActivity.getAndSet(false)) {
+            mMainThreadHandler.sendEmptyMessageDelayed(MSG_NOTIFY_USER_ACTIVITY,
+                    USER_ACTIVITY_NOTIFICATION_DELAY);
+        }
     }
 }

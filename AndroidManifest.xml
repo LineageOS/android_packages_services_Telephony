@@ -34,6 +34,7 @@
     <protected-broadcast android:name="android.intent.action.ANY_DATA_STATE" />
     <protected-broadcast android:name="android.intent.action.DATA_STALL_DETECTED" />
     <protected-broadcast android:name="android.intent.action.SIM_STATE_CHANGED" />
+    <protected-broadcast android:name="android.intent.action.USER_ACTIVITY_NOTIFICATION" />
     <protected-broadcast android:name="android.telephony.action.ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS" />
     <protected-broadcast android:name="android.intent.action.ACTION_MDN_STATE_CHANGED" />
     <protected-broadcast android:name="android.provider.Telephony.SPN_STRINGS_UPDATED" />
@@ -75,7 +76,7 @@
     <protected-broadcast android:name= "com.android.imsconnection.DISCONNECTED" />
     <protected-broadcast android:name= "com.android.intent.action.IMS_FEATURE_CHANGED" />
     <protected-broadcast android:name= "com.android.intent.action.IMS_CONFIG_CHANGED" />
-    <protected-broadcast android:name= "com.android.ims.REGISTRATION_ERROR" />
+    <protected-broadcast android:name= "android.telephony.ims.action.WFC_IMS_REGISTRATION_ERROR" />
     <protected-broadcast android:name= "com.android.phone.vvm.omtp.sms.REQUEST_SENT" />
     <protected-broadcast android:name= "com.android.phone.vvm.ACTION_VISUAL_VOICEMAIL_SERVICE_EVENT" />
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_VVM_PACKAGE_INSTALLED" />
