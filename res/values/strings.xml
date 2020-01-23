@@ -1843,8 +1843,6 @@
     <string name="messageCallBarring">Enter password</string>
     <!-- Call barring settings screen, section heading -->
     <string name="call_barring_settings">Call barring settings</string>
-    <!-- Call barring settings screen, deactivate all call barring settings -->
-    <string name="call_barring_deactivate_all_no_password">Deactivate all call barring settings?</string>
     <!-- In-call screen: error message shown when the user attempts to place a call, but the network
          does not have enough resources (e.g. it is busy) and the call cannot be placed. -->
     <string name="callFailed_NetworkBusy">Network is busy.  Please try your call again later.</string>
