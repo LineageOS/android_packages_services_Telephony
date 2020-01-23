@@ -20,6 +20,7 @@ import android.net.Uri;
 import android.os.Binder;
 import android.os.RemoteException;
 import android.os.ServiceSpecificException;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.RegistrationManager;
@@ -260,12 +261,15 @@ public class ImsRcsController extends IImsRcsController.Stub {
     @Override
     public boolean isUceSettingEnabled(int subId) {
         enforceReadPrivilegedPermission("isUceSettingEnabled");
-        return false;
+        return SubscriptionManager.getBooleanSubscriptionProperty(subId,
+                SubscriptionManager.IMS_RCS_UCE_ENABLED, false /*defaultValue*/, mApp);
     }
 
     @Override
     public void setUceSettingEnabled(int subId, boolean isEnabled) {
         enforceModifyPermission();
+        SubscriptionManager.setSubscriptionProperty(subId, SubscriptionManager.IMS_RCS_UCE_ENABLED,
+                (isEnabled ? "1" : "0"));
     }
 
     /**
