@@ -4764,6 +4764,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Toggle IMS disable and enable for the framework to reset it. See {@link #enableIms(int)} and
+     * {@link #disableIms(int)}.
+     * @param slotIndex device slot.
+     */
+    public void resetIms(int slotIndex) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (mImsResolver == null) {
+                // may happen if the does not support IMS.
+                return;
+            }
+            mImsResolver.disableIms(slotIndex);
+            mImsResolver.enableIms(slotIndex);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
      * Enables IMS for the framework. This will trigger IMS registration and ImsFeature capability
      * status updates, if not already enabled.
      */
