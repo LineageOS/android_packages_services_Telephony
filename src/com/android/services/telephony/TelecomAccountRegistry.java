@@ -890,9 +890,8 @@ public class TelecomAccountRegistry {
             if (Intent.ACTION_USER_SWITCHED.equals(intent.getAction())) {
                 Log.i(this, "User changed, re-registering phone accounts.");
 
-                int userHandleId = intent.getIntExtra(Intent.EXTRA_USER_HANDLE, 0);
-                UserHandle currentUserHandle = UserHandle.of(userHandleId);
-                mIsPrimaryUser = currentUserHandle.isSystem();
+                UserHandle currentUser = intent.getParcelableExtra(Intent.EXTRA_USER);
+                mIsPrimaryUser = currentUser == null ? true : currentUser.isSystem();
 
                 // Any time the user changes, re-register the accounts.
                 tearDownAccounts();
