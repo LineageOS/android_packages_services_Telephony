@@ -1009,7 +1009,7 @@ public class TelecomAccountRegistry {
      * @param handle The {@link PhoneAccountHandle}.
      * @return {@code True} if merging calls is supported.
      */
-    boolean isMergeCallSupported(PhoneAccountHandle handle) {
+    public boolean isMergeCallSupported(PhoneAccountHandle handle) {
         synchronized (mAccountsLock) {
             for (AccountEntry entry : mAccounts) {
                 if (entry.getPhoneAccountHandle().equals(handle)) {
@@ -1027,7 +1027,7 @@ public class TelecomAccountRegistry {
      * @param handle The {@link PhoneAccountHandle}.
      * @return {@code True} if video conferencing is supported.
      */
-    boolean isVideoConferencingSupported(PhoneAccountHandle handle) {
+    public boolean isVideoConferencingSupported(PhoneAccountHandle handle) {
         synchronized (mAccountsLock) {
             for (AccountEntry entry : mAccounts) {
                 if (entry.getPhoneAccountHandle().equals(handle)) {
@@ -1045,7 +1045,7 @@ public class TelecomAccountRegistry {
      * @param handle The {@link PhoneAccountHandle}.
      * @return {@code True} if merging of wifi calls is allowed when VoWIFI is disabled.
      */
-    boolean isMergeOfWifiCallsAllowedWhenVoWifiOff(final PhoneAccountHandle handle) {
+    public boolean isMergeOfWifiCallsAllowedWhenVoWifiOff(final PhoneAccountHandle handle) {
         synchronized (mAccountsLock) {
             Optional<AccountEntry> result = mAccounts.stream().filter(
                     entry -> entry.getPhoneAccountHandle().equals(handle)).findFirst();
@@ -1065,7 +1065,7 @@ public class TelecomAccountRegistry {
      * @param handle The {@link PhoneAccountHandle}.
      * @return {@code True} if merging IMS calls is supported.
      */
-    boolean isMergeImsCallSupported(PhoneAccountHandle handle) {
+    public boolean isMergeImsCallSupported(PhoneAccountHandle handle) {
         synchronized (mAccountsLock) {
             for (AccountEntry entry : mAccounts) {
                 if (entry.getPhoneAccountHandle().equals(handle)) {
