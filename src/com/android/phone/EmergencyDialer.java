@@ -40,7 +40,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.provider.Settings;
-import android.telecom.ParcelableCallAnalytics;
 import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
@@ -490,7 +489,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         if (!TextUtils.isEmpty(phoneNumber)) {
             if (DBG) Log.d(LOG_TAG, "dial emergency number: " + Rlog.pii(LOG_TAG, phoneNumber));
 
-            placeCall(phoneNumber, ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_SHORTCUT,
+            placeCall(phoneNumber, TelecomManager.CALL_SOURCE_EMERGENCY_SHORTCUT,
                     mShortcutViewConfig.getPhoneInfo());
         } else {
             Log.d(LOG_TAG, "emergency number is empty");
@@ -734,7 +733,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 return;
             }
 
-            placeCall(mLastNumber, ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_DIALPAD,
+            placeCall(mLastNumber, TelecomManager.CALL_SOURCE_EMERGENCY_DIALPAD,
                     phoneToMakeCall);
         } else {
             if (DBG) Log.d(LOG_TAG, "rejecting bad requested number " + mLastNumber);
@@ -1172,9 +1171,9 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
     private String callSourceToString(int callSource) {
         switch (callSource) {
-            case ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_DIALPAD:
+            case TelecomManager.CALL_SOURCE_EMERGENCY_DIALPAD:
                 return "DialPad";
-            case ParcelableCallAnalytics.CALL_SOURCE_EMERGENCY_SHORTCUT:
+            case TelecomManager.CALL_SOURCE_EMERGENCY_SHORTCUT:
                 return "Shortcut";
             default:
                 return "Unknown-" + callSource;

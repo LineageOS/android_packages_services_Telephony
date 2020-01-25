@@ -33,6 +33,7 @@ import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.euicc.EuiccConnector;
+import com.android.internal.telephony.util.TelephonyUtils;
 
 import java.util.HashSet;
 import java.util.List;
@@ -176,7 +177,7 @@ public class EuiccUiDispatcherActivity extends Activity {
                             Log.e(TAG, "Failed to revoke LUI app permissions.");
                         }
                     });
-            waitUntilReady(latch);
+            TelephonyUtils.waitUntilReady(latch, CHANGE_PERMISSION_TIMEOUT_MS);
         } catch (RuntimeException e) {
             Log.e(TAG, "Failed to grant permissions to active LUI app.", e);
         }
@@ -197,7 +198,7 @@ public class EuiccUiDispatcherActivity extends Activity {
                             Log.e(TAG, "Failed to revoke LUI app permissions.");
                         }
                     });
-            waitUntilReady(latch);
+            TelephonyUtils.waitUntilReady(latch, CHANGE_PERMISSION_TIMEOUT_MS);
         } catch (RuntimeException e) {
             Log.e(TAG, "Failed to revoke LUI app permissions.");
             throw e;
@@ -214,12 +215,5 @@ public class EuiccUiDispatcherActivity extends Activity {
             packageNames.add(info.serviceInfo.packageName);
         }
         return packageNames;
-    }
-
-    private void waitUntilReady(CountDownLatch latch) {
-        try {
-            latch.await(CHANGE_PERMISSION_TIMEOUT_MS, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-        }
     }
 }
