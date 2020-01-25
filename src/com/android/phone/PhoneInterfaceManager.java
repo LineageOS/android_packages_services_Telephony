@@ -1074,7 +1074,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                     new android.os.ParcelableException(ar.exception));
                         } else if (ar.result == null) {
                             Log.w(LOG_TAG, "Timeout Waiting for CellInfo!");
-                            cb.onError(TelephonyManager.CellInfoCallback.ERROR_TIMEOUT, null);
+                            cb.onError(TelephonyManager.CellInfoCallback.ERROR_TIMEOUT,
+                                    new android.os.ParcelableException(new RuntimeException(
+                                            "Timeout Waiting for CellInfo!")));
                         } else {
                             // use the result as returned
                             cb.onCellInfo((List<CellInfo>) ar.result);
