@@ -149,6 +149,7 @@ import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.SmsController;
 import com.android.internal.telephony.SmsPermissions;
 import com.android.internal.telephony.SubscriptionController;
+import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.dataconnection.ApnSettingUtils;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
@@ -300,8 +301,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /** User Activity */
     private AtomicBoolean mNotifyUserActivity;
-    private static final String ACTION_USER_ACTIVITY_NOTIFICATION =
-            "android.intent.action.USER_ACTIVITY_NOTIFICATION";
     private static final int USER_ACTIVITY_NOTIFICATION_DELAY = 200;
 
     private static final String PREF_CARRIERS_ALPHATAG_PREFIX = "carrier_alphtag_";
@@ -1304,7 +1303,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case MSG_NOTIFY_USER_ACTIVITY:
                     removeMessages(MSG_NOTIFY_USER_ACTIVITY);
-                    Intent intent = new Intent(ACTION_USER_ACTIVITY_NOTIFICATION);
+                    Intent intent = new Intent(TelephonyIntents.ACTION_USER_ACTIVITY_NOTIFICATION);
                     intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
                     getDefaultPhone().getContext().sendBroadcastAsUser(
                             intent, UserHandle.ALL, permission.USER_ACTIVITY);
