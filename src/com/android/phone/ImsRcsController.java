@@ -250,12 +250,21 @@ public class ImsRcsController extends IImsRcsController.Stub {
     public void requestCapabilities(int subId, List<Uri> contactNumbers,
             IRcsUceControllerCallback c) {
         enforceReadPrivilegedPermission("requestCapabilities");
+        if (mRcsService == null) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS is not available on device.");
+        }
+        mRcsService.requestCapabilities(getImsPhone(subId).getPhoneId(), contactNumbers, c);
     }
 
     @Override
     public int getUcePublishState(int subId) {
         enforceReadPrivilegedPermission("getUcePublishState");
-        return -1;
+        if (mRcsService == null) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS is not available on device.");
+        }
+        return mRcsService.getUcePublishState(getImsPhone(subId).getPhoneId());
     }
 
     @Override
