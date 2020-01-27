@@ -113,6 +113,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private static final int MSG_SET_CALL_RADIO_TECH = 18;
     private static final int MSG_ON_CONNECTION_EVENT = 19;
     private static final int MSG_REDIAL_CONNECTION_CHANGED = 20;
+    private static final int MSG_REJECT = 21;
 
     private List<Uri> mParticipants;
     private boolean mIsAdhocConferenceCall;
@@ -272,6 +273,10 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 case MSG_HANGUP:
                     int cause = (int) msg.obj;
                     hangup(cause);
+                    break;
+                case MSG_REJECT:
+                    int rejectReason = (int) msg.obj;
+                    reject(rejectReason);
                     break;
 
                 case MSG_SET_CALL_RADIO_TECH:
@@ -926,13 +931,18 @@ abstract class TelephonyConnection extends Connection implements Holdable {
 
     @Override
     public void onReject() {
-        performReject();
+        performReject(android.telecom.Call.REJECT_REASON_DECLINED);
     }
 
-    public void performReject() {
+    @Override
+    public void onReject(@android.telecom.Call.RejectReason int rejectReason) {
+        performReject(rejectReason);
+    }
+
+    public void performReject(int rejectReason) {
         Log.v(this, "performReject");
         if (isValidRingingCall()) {
-            mHandler.obtainMessage(MSG_HANGUP, android.telephony.DisconnectCause.INCOMING_REJECTED)
+            mHandler.obtainMessage(MSG_REJECT, rejectReason)
                     .sendToTarget();
         }
         super.onReject();
@@ -1649,6 +1659,46 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                     Call call = getCall();
                     if (call != null) {
                         call.hangup();
+                    } else {
+                        Log.w(this, "Attempting to hangup a connection without backing call.");
+                    }
+                } else {
+                    // We still prefer to call connection.hangup() for non-ringing calls
+                    // in order to support hanging-up specific calls within a conference call.
+                    // If we invoked call.hangup() while in a conference, we would end up
+                    // hanging up the entire conference call instead of the specific connection.
+                    mOriginalConnection.hangup();
+                }
+            } catch (CallStateException e) {
+                Log.e(this, e, "Call to Connection.hangup failed with exception");
+            }
+        } else {
+            if (getState() == STATE_DISCONNECTED) {
+                Log.i(this, "hangup called on an already disconnected call!");
+                close();
+            } else {
+                // There are a few cases where mOriginalConnection has not been set yet. For
+                // example, when the radio has to be turned on to make an emergency call,
+                // mOriginalConnection could not be set for many seconds.
+                setTelephonyConnectionDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
+                        android.telephony.DisconnectCause.LOCAL,
+                        "Local Disconnect before connection established."));
+                close();
+            }
+        }
+    }
+
+    protected void reject(@android.telecom.Call.RejectReason int rejectReason) {
+        if (mOriginalConnection != null) {
+            mHangupDisconnectCause = android.telephony.DisconnectCause.INCOMING_REJECTED;
+            try {
+                // Hanging up a ringing call requires that we invoke call.hangup() as opposed to
+                // connection.hangup(). Without this change, the party originating the call
+                // will not get sent to voicemail if the user opts to reject the call.
+                if (isValidRingingCall()) {
+                    Call call = getCall();
+                    if (call != null) {
+                        call.hangup(rejectReason);
                     } else {
                         Log.w(this, "Attempting to hangup a connection without backing call.");
                     }
