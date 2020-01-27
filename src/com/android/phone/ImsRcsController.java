@@ -22,6 +22,7 @@ import android.os.Binder;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.ServiceSpecificException;
+import android.telephony.SubscriptionManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
@@ -249,23 +250,35 @@ public class ImsRcsController extends IImsRcsController.Stub {
     public void requestCapabilities(int subId, List<Uri> contactNumbers,
             IRcsUceControllerCallback c) {
         enforceReadPrivilegedPermission("requestCapabilities");
+        if (mRcsService == null) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS is not available on device.");
+        }
+        mRcsService.requestCapabilities(getImsPhone(subId).getPhoneId(), contactNumbers, c);
     }
 
     @Override
     public int getUcePublishState(int subId) {
         enforceReadPrivilegedPermission("getUcePublishState");
-        return -1;
+        if (mRcsService == null) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS is not available on device.");
+        }
+        return mRcsService.getUcePublishState(getImsPhone(subId).getPhoneId());
     }
 
     @Override
     public boolean isUceSettingEnabled(int subId) {
         enforceReadPrivilegedPermission("isUceSettingEnabled");
-        return false;
+        return SubscriptionManager.getBooleanSubscriptionProperty(subId,
+                SubscriptionManager.IMS_RCS_UCE_ENABLED, false /*defaultValue*/, mApp);
     }
 
     @Override
     public void setUceSettingEnabled(int subId, boolean isEnabled) {
         enforceModifyPermission();
+        SubscriptionManager.setSubscriptionProperty(subId, SubscriptionManager.IMS_RCS_UCE_ENABLED,
+                (isEnabled ? "1" : "0"));
     }
 
     /**
