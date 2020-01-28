@@ -209,7 +209,7 @@ public class EmergencyInfoGroup extends FrameLayout implements View.OnClickListe
     public void onClick(View view) {
         if (view.getId() == R.id.emergency_info_view) {
             AccessibilityManager accessibilityMgr =
-                    (AccessibilityManager) mContext.getSystemService(
+                    (AccessibilityManager) getContext().getSystemService(
                             Context.ACCESSIBILITY_SERVICE);
             if (accessibilityMgr.isTouchExplorationEnabled()) {
                 if (mOnConfirmClickListener != null) {
