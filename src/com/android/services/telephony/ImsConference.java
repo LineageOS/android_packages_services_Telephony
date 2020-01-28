@@ -540,7 +540,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
         if (mConferenceHost == null) {
             return;
         }
-        mConferenceHost.performReject();
+        mConferenceHost.performReject(android.telecom.Call.REJECT_REASON_DECLINED);
     }
 
     /**
