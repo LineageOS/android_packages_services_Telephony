@@ -184,7 +184,7 @@ public class EmergencyShortcutButton extends FrameLayout implements View.OnClick
     public void onClick(View view) {
         if (view.getId() == R.id.emergency_call_number_info_view) {
             AccessibilityManager accessibilityMgr =
-                    (AccessibilityManager) mContext.getSystemService(
+                    (AccessibilityManager) getContext().getSystemService(
                             Context.ACCESSIBILITY_SERVICE);
             if (accessibilityMgr.isTouchExplorationEnabled()) {
                 // TalkBack itself includes a prompt to confirm click action implicitly,
