@@ -48,6 +48,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.LocalLog;
 import android.util.Log;
 
@@ -153,6 +154,12 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     // SharedPreferences key for last known build fingerprint.
     private static final String KEY_FINGERPRINT = "build_fingerprint";
+
+    // Argument for #dump that indicates we should also call the default and specified carrier
+    // service's #dump method. In multi-SIM devices, it's possible that carrier A is on SIM 1 and
+    // carrier B is on SIM 2, in which case we should not dump carrier B's service when carrier A
+    // requested the dump.
+    private static final String DUMP_ARG_REQUESTING_PACKAGE = "--requesting-package";
 
     // Handler to process various events.
     //
@@ -631,7 +638,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         logdWithLocalLog("Binding to " + pkgName + " for phone " + phoneId);
         Intent carrierService = new Intent(CarrierService.CARRIER_SERVICE_INTERFACE);
         carrierService.setPackage(pkgName);
-        mServiceConnection[phoneId] = new CarrierServiceConnection(phoneId, eventId);
+        mServiceConnection[phoneId] = new CarrierServiceConnection(phoneId, pkgName, eventId);
         try {
             if (mContext.bindService(carrierService, mServiceConnection[phoneId],
                     Context.BIND_AUTO_CREATE)) {
@@ -926,12 +933,14 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     }
 
     @Override
-    public @NonNull PersistableBundle getConfigForSubId(int subId, String callingPackage) {
+    @NonNull
+    public PersistableBundle getConfigForSubId(int subId, String callingPackage) {
         return getConfigForSubIdWithFeature(subId, callingPackage, null);
     }
 
     @Override
-    public @NonNull PersistableBundle getConfigForSubIdWithFeature(int subId, String callingPackage,
+    @NonNull
+    public PersistableBundle getConfigForSubIdWithFeature(int subId, String callingPackage,
             String callingFeatureId) {
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mContext, subId, callingPackage,
                 callingFeatureId, "getCarrierConfig")) {
@@ -1064,6 +1073,21 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         return mPlatformCarrierConfigPackage;
     }
 
+    private void unbindIfBound(Context context, CarrierServiceConnection conn,
+            int phoneId) {
+        if (mServiceBound[phoneId]) {
+            mServiceBound[phoneId] = false;
+            context.unbindService(conn);
+        }
+    }
+
+    /**
+     * If {@code args} contains {@link #DUMP_ARG_REQUESTING_PACKAGE} and a following package name,
+     * we'll also call {@link IBinder#dump} on the default carrier service (if bound) and the
+     * specified carrier service (if bound). Typically, this is done for connectivity bug reports
+     * where we don't call {@code dumpsys activity service all-non-platform} because that contains
+     * too much info, but we still want to let carrier apps include their diagnostics.
+     */
     @Override
     public void dump(FileDescriptor fd, PrintWriter pw, String[] args) {
         IndentingPrintWriter indentPW = new IndentingPrintWriter(pw, "    ");
@@ -1089,6 +1113,19 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
         indentPW.println("CarrierConfigLoadingLog=");
         mCarrierConfigLoadingLog.dump(fd, indentPW, args);
+
+        int requestingPackageIndex = ArrayUtils.indexOf(args, DUMP_ARG_REQUESTING_PACKAGE);
+        if (requestingPackageIndex != -1 && requestingPackageIndex < args.length - 1
+                && !TextUtils.isEmpty(args[requestingPackageIndex + 1])) {
+            String requestingPackage = args[requestingPackageIndex + 1];
+            indentPW.println("");
+            logd("Including default and requesting package " + requestingPackage
+                    + " carrier services in dump");
+            indentPW.println("Connected services");
+            dumpCarrierServiceIfBound(fd, indentPW, "Default config package",
+                    mPlatformCarrierConfigPackage);
+            dumpCarrierServiceIfBound(fd, indentPW, "Requesting package", requestingPackage);
+        }
     }
 
     private void printConfig(PersistableBundle configApp, IndentingPrintWriter indentPW,
@@ -1121,21 +1158,68 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         indentPW.println("");
     }
 
-    private void unbindIfBound(Context context, CarrierServiceConnection conn,
-            int phoneId) {
-        if (mServiceBound[phoneId]) {
-            mServiceBound[phoneId] = false;
-            context.unbindService(conn);
+    private void dumpCarrierServiceIfBound(FileDescriptor fd, IndentingPrintWriter indentPW,
+            String prefix, String pkgName) {
+        // Null package is possible if it's early in the boot process, there was a recent crash, we
+        // loaded the config from XML most recently, or a SIM slot is empty. Carrier apps with
+        // long-lived bindings should typically get dumped here regardless. Even if an app is being
+        // used for multiple phoneIds, we assume that it's smart enough to handle that on its own,
+        // and that in most cases we'd just be dumping duplicate information and bloating a report.
+        indentPW.increaseIndent();
+        indentPW.println(prefix + " : " + pkgName);
+        for (CarrierServiceConnection connection : mServiceConnection) {
+            try {
+                // We don't pay attention to mServiceBound[connection.phoneId] because typically
+                // carrier apps will request long-lived bindings, and even if we unbind the app, it
+                // may still be alive due to CarrierServiceBindHelper.
+                if (connection == null || connection.service == null || !TextUtils.equals(pkgName,
+                        connection.pkgName) || !connection.service.isBinderAlive()
+                        || !connection.service.pingBinder()) {
+                    continue;
+                }
+                // Flush before we let the app output anything to ensure correct ordering of output.
+                // Internally, Binder#dump calls flush on its printer after finishing so we don't
+                // need to after the call finishes.
+                indentPW.flush();
+                try {
+                    logd("Dumping " + pkgName);
+                    // We don't need to give the carrier service any args.
+                    connection.service.dump(fd, null /* args */);
+                    logd("Done with " + pkgName);
+                    indentPW.decreaseIndent();
+                    indentPW.println("");
+                    return;
+                } catch (RemoteException e) {
+                    indentPW.println("RemoteException");
+                    logd("RemoteException from " + pkgName, e);
+                    e.printStackTrace(indentPW);
+                    indentPW.decreaseIndent();
+                    indentPW.println("");
+                    return;
+                }
+            } catch (NullPointerException e) {
+                // Highly unlikely, but possible if the carrier app was just unbound right before we
+                // we tried to dump it so the binder was reset to null. Loop in case we have more
+                // candidates on other phoneIds.
+                logd("NullPointerException from " + pkgName, e);
+            }
         }
+        indentPW.increaseIndent();
+        indentPW.println("Not bound");
+        indentPW.decreaseIndent();
+        indentPW.decreaseIndent();
+        indentPW.println("");
     }
 
     private class CarrierServiceConnection implements ServiceConnection {
         int phoneId;
+        String pkgName;
         int eventId;
         IBinder service;
 
-        public CarrierServiceConnection(int phoneId, int eventId) {
+        CarrierServiceConnection(int phoneId, String pkgName, int eventId) {
             this.phoneId = phoneId;
+            this.pkgName = pkgName;
             this.eventId = eventId;
         }
 
@@ -1197,6 +1281,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     private void logd(String msg) {
         Log.d(LOG_TAG, msg);
+    }
+
+    private void logd(String msg, Throwable tr) {
+        Log.d(LOG_TAG, msg, tr);
     }
 
     private void logdWithLocalLog(String msg) {
