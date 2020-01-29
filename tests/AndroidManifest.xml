@@ -61,6 +61,6 @@
 
     -->
     <instrumentation android:name="androidx.test.runner.AndroidJUnitRunner"
-        android:targetPackage="com.android.phone"
+        android:targetPackage="com.android.phone.lib"
         android:label="Phone application tests." />
 </manifest>

@@ -118,7 +118,6 @@ import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.Log;
 import android.util.Pair;
-import android.util.Slog;
 
 import com.android.ims.ImsManager;
 import com.android.ims.internal.IImsServiceFeatureCallback;
@@ -5896,7 +5895,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         PackageManager.MATCH_DISABLED_COMPONENTS
                             | PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS
                             | PackageManager.GET_SIGNING_CERTIFICATES,
-                            UserHandle.USER_SYSTEM);
+                            UserHandle.SYSTEM.getIdentifier());
                 }
                 for (int p = packages.size() - 1; p >= 0; p--) {
                     PackageInfo pkgInfo = packages.get(p);
@@ -5959,7 +5958,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             final String subscriberId = phone.getSubscriberId();
 
             if (DBG_MERGE) {
-                Slog.d(LOG_TAG, "Setting line number for ICC=" + iccId + ", subscriberId="
+                Rlog.d(LOG_TAG, "Setting line number for ICC=" + iccId + ", subscriberId="
                         + subscriberId + " to " + number);
             }
 
@@ -6085,7 +6084,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         final String numberKey = PREF_CARRIERS_NUMBER_PREFIX + iccId;
                         mergeNumber = (String) prefs.get(numberKey);
                         if (DBG_MERGE) {
-                            Slog.d(LOG_TAG, "Found line number " + mergeNumber
+                            Rlog.d(LOG_TAG, "Found line number " + mergeNumber
                                     + " for active subscriber " + subscriberId);
                         }
                         if (!TextUtils.isEmpty(mergeNumber)) {
@@ -6119,7 +6118,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             final String[] resultArray = result.toArray(new String[result.size()]);
             Arrays.sort(resultArray);
             if (DBG_MERGE) {
-                Slog.d(LOG_TAG,
+                Rlog.d(LOG_TAG,
                         "Found subscribers " + Arrays.toString(resultArray) + " after merge");
             }
             return resultArray;

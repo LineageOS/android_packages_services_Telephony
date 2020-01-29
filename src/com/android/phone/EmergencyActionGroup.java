@@ -159,7 +159,7 @@ public class EmergencyActionGroup extends FrameLayout implements View.OnClickLis
 
         if (v.getId() == R.id.action1 || v.getId() == R.id.action2 || v.getId() == R.id.action3) {
             AccessibilityManager accessibilityMgr =
-                    (AccessibilityManager) mContext.getSystemService(
+                    (AccessibilityManager) getContext().getSystemService(
                             Context.ACCESSIBILITY_SERVICE);
             if (accessibilityMgr.isTouchExplorationEnabled()) {
                 getContext().startActivity(intent);
