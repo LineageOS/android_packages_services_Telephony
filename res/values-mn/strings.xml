@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"Нууц үг баталгаажуулах"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"Нууц үг оруулна уу"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"Дуудлага хаах тохиргоо"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"Бүх дуудлага хаах тохиргоог идэвхгүй болгох уу?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"Сүлжээ завгүй байна. Та дуудлагаа дараа дахин оролдоно уу."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"Сүлжээ ачаалалтай байна. Туслалцаа авахын тулд мобайл оператортойгоо холбогдоно уу."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"Дуудлагыг шилжүүлсэн."</string>

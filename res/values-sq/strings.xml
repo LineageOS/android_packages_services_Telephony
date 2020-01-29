@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"Konfirmo fjalëkalimin"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"Fut fjalëkalimin"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"Cilësimet e bllokimit të telefonatave"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"Të çaktivizohen të gjitha cilësimet e bllokimit të telefonatave?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"Rrjeti është i zënë. Provo ta kryesh telefonatën përsëri më vonë."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"Rrjeti është i mbingarkuar. Kontakto me operatorin tënd celular për ndihmë."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"Telefonata u devijua."</string>

@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"கடவுச்சொல்லை உறுதிப்படுத்தவும்"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"கடவுச்சொல்லை உள்ளிடவும்"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"அழைப்புத் தடுப்பு அமைப்புகள்"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"எல்லா அழைப்புத் தடுப்பு அமைப்புகளையும் முடக்கவா?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"நெட்வொர்க் பிஸியாக உள்ளது. பிறகு அழைக்கவும்."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"நெட்வொர்க் பிஸியாக உள்ளது. உதவிக்கு உங்கள் மொபைல் ஆபரேட்டரைத் தொடர்பு கொள்ளவும்."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"அழைப்புத் திருப்பிவிடப்பட்டது."</string>

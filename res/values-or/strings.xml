@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"ପାସ୍‌ୱର୍ଡ ସୁନିଶ୍ଚିତ କରନ୍ତୁ"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"ପାସ୍‌ୱର୍ଡ ପ୍ରବେଶ କରନ୍ତୁ"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"କଲ୍ ରୋକିବା ସେଟିଙ୍ଗ"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"ସମସ୍ତ କଲ୍ ରୋକିବା ସେଟିଙ୍ଗକୁ ନିଷ୍କ୍ରିୟ କରିବେ?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"ନେଟ୍‌ୱର୍କ ବ୍ୟସ୍ତ ଅଛି। ଦୟାକରି ଆପଣ ପରେ ପୁଣି କଲ୍‌ ଚେଷ୍ଟା କରିବା ପାଇଁ ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"ନେଟ୍‌ୱର୍କ ବ୍ୟସ୍ତ ଅଛି। ସହାୟତା ପାଇଁ ଆପଣଙ୍କର ମୋବାଇଲ୍ ଅପରେଟର୍‍ଙ୍କୁ ଯୋଗାଯୋଗ କରନ୍ତୁ।"</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"କଲ୍ ଅନ୍ୟ ପାଖକୁ ଯିବା ବଦଳରେ ନିଜ ପାଖକୁ ଆସିଯାଇଛି।"</string>

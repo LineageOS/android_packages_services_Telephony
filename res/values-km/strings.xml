@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"បញ្ជាក់ពាក្យសម្ងាត់"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"បញ្ចូល​ពាក្យសម្ងាត់"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"ការកំណត់​​ការរារាំង​ការហៅ​ទូរសព្ទ"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"បិទ​ដំណើរការ​នៃការកំណត់​ការរារាំង​ការហៅ​​ទូរសព្ទទាំងអស់​ដែរ​​ទេ?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"បណ្ដាញ​កំពុង​រវល់។ សូម​ព្យាយាម​​ការ​ហៅ​ទូរសព្ទ​របស់​អ្នក​ម្ដង​ទៀត​នៅ​ពេល​ក្រោយ។"</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"បណ្ដាញ​មាន​ការកក​ស្ទះ។ ទាក់ទង​ទៅ​ប្រតិបត្តិករ​ឧបករណ៍​ចល័ត​របស់​អ្នក​សម្រាប់​ជំនួយ។"</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"បាន​ហៅ​ទៅ​លេខ​ផ្សេង។"</string>

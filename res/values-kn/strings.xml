@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"ಪಾಸ್‌ವರ್ಡ್‌ ದೃಢೀಕರಿಸಿ"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"ಕರೆ ನಿಷೇಧಿಸುವಿಕೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"ಎಲ್ಲಾ ಕರೆ ನಿಷೇಧಿಸುವಿಕೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುವುದೇ?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"ನೆಟ್‌ವರ್ಕ್ ಕಾರ್ಯನಿರತವಾಗಿದೆ ನಿಮ್ಮ ಕರೆಯನ್ನು ಪುನಃ ನಂತರ ಪ್ರಯತ್ನಿಸಿ"</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"ನೆಟ್‌ವರ್ಕ್ ದಟ್ಟಣೆಯಿದೆ. ಸಹಾಯಕ್ಕಾಗಿ ನಿಮ್ಮ ಮೊಬೈಲ್ ಆಪರೇಟರ್ ಅನ್ನು ಸಂಪರ್ಕಿಸಿ."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"ಕರೆ ಫಾರ್ವರ್ಡ್ ಮಾಡಲಾಗಿದೆ."</string>

@@ -48,13 +48,13 @@
     <string name="no_vm_number_msg" msgid="5165161462411372504">"‏لم يتم تخزين رقم بريد صوتي على شريحة SIM."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"إضافة رقم"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"يمكن تعديل إعدادات البريد الصوتي عن طريق المستخدم الأساسي فقط."</string>
-    <string name="puk_unlocked" msgid="4627340655215746511">"‏تم إلغاء حظر شريحة SIM. جارٍ إلغاء تأمين الهاتف..."</string>
+    <string name="puk_unlocked" msgid="4627340655215746511">"‏تم إلغاء حظر شريحة SIM. جارٍ فتح قفل الهاتف..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"‏رمز PIN لإلغاء تأمين شبكة SIM"</string>
-    <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"إلغاء تأمين"</string>
+    <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"فتح قفل"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"استبعاد"</string>
-    <string name="requesting_unlock" msgid="930512210309437741">"جارٍ طلب إلغاء تأمين الشبكة..."</string>
-    <string name="unlock_failed" msgid="7103543844840661366">"لم ينجح طلب إلغاء تأمين الشبكة."</string>
-    <string name="unlock_success" msgid="32681089371067565">"نجح إلغاء تأمين الشبكة."</string>
+    <string name="requesting_unlock" msgid="930512210309437741">"جارٍ طلب فتح قفل الشبكة..."</string>
+    <string name="unlock_failed" msgid="7103543844840661366">"لم ينجح طلب فتح قفل الشبكة."</string>
+    <string name="unlock_success" msgid="32681089371067565">"نجح فتح قفل الشبكة."</string>
     <string name="mobile_network_settings_not_available" msgid="8678168497517090039">"لا تتوفّر إعدادات شبكة الجوّال للمستخدم الحالي."</string>
     <string name="labelGSMMore" msgid="7354182269461281543">"‏إعدادات اتصال نظام GSM"</string>
     <string name="labelGsmMore_with_label" msgid="3206015314393246224">"‏إعدادات اتصال GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -793,7 +793,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"تأكيد كلمة المرور"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"إدخال كلمة المرور"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"إعدادات منع الاتصال"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"هل تريد إيقاف كل إعدادات منع الاتصال؟"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"الشبكة مشغولة. يُرجى إعادة الاتّصال في وقتٍ لاحق."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"الشبكة مزدحمة. اتصل بمشغّل شبكة الجوّال للحصول على مساعدة."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"تم انحراف المكالمة."</string>

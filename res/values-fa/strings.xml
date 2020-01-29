@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"تأیید گذرواژه"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"گذرواژه را وارد کنید"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"تنظیمات محدودیت تماس"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"همه تنظیمات محدودیت تماس غیرفعال شود؟"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"شبکه مشغول است. لطفاً بعداً دوباره تماس بگیرید."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"شبکه شلوغ است. برای کمک، با اپراتور دستگاه همراه تماس بگیرید."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"تماس برگردانده شد."</string>

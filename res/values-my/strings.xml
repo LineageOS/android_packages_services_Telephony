@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"စကားဝှက်ကို အတည်ပြုရန်"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"စကားဝှက် ထည့်ရန်"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"ခေါ်ဆိုမှုပိတ်ပင်သော ဆက်တင်များ"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"ခေါ်ဆိုမှုပိတ်ပင်သော  ဆက်တင်အားလုံးကို ပယ်ဖျက်မလား။"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"ကွန်ရက် မအားပါ။ ဖုန်းခေါ်ဆိုမှုကို နောက်မှ ထပ်စမ်းကြည့်ပါ။"</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"ကွန်ရက် ပြည့်ကျပ်နေသည်။ အကူအညီရယူရန် သင်၏ မိုဘိုင်း အော်ပရေတာကို ဆက်သွယ်ပါ။"</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"ခေါ်ဆိုမှုကို လွှဲထားပါသည်။"</string>
