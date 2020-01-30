@@ -2756,8 +2756,13 @@ abstract class TelephonyConnection extends Connection implements Holdable {
      * <p>
      * Note: This should be used instead of {@link #setVideoState(int)} to ensure listeners are
      * notified.
+     * @param videoState The new video state. Valid values:
+     *                   {@link VideoProfile#STATE_AUDIO_ONLY},
+     *                   {@link VideoProfile#STATE_BIDIRECTIONAL},
+     *                   {@link VideoProfile#STATE_TX_ENABLED},
+     *                   {@link VideoProfile#STATE_RX_ENABLED}.
      */
-    public void setTelephonyVideoState(@VideoProfile.VideoState int videoState) {
+    public void setTelephonyVideoState(int videoState) {
         setVideoState(videoState);
         notifyVideoStateChanged(videoState);
     }
@@ -2948,9 +2953,13 @@ abstract class TelephonyConnection extends Connection implements Holdable {
 
     /**
      * Notifies {@link TelephonyConnectionListener}s of a change to the video state of a connection.
-     * @param videoState The new video state.
+     * @param videoState The new video state. Valid values:
+     *                   {@link VideoProfile#STATE_AUDIO_ONLY},
+     *                   {@link VideoProfile#STATE_BIDIRECTIONAL},
+     *                   {@link VideoProfile#STATE_TX_ENABLED},
+     *                   {@link VideoProfile#STATE_RX_ENABLED}.
      */
-    private void notifyVideoStateChanged(@VideoProfile.VideoState int videoState) {
+    private void notifyVideoStateChanged(int videoState) {
         for (TelephonyConnectionListener listener : mTelephonyListeners) {
             listener.onVideoStateChanged(this, videoState);
         }
