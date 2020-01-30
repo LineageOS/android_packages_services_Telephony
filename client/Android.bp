@@ -26,6 +26,10 @@ android_app {
         "TeleServiceLib",
     ],
 
+    static_libs: [
+        "androidx.appcompat_appcompat",
+    ],
+
     srcs: [
         "src/**/*.java"
     ],
@@ -36,8 +40,6 @@ android_app {
 
     certificate: "platform",
     privileged: true,
-
-    defaults: ["SettingsLibDefaults"],
 
     proto: {
         type: "lite",
