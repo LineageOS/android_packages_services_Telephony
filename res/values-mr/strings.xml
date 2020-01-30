@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"पासवर्ड निश्चित करा"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"पासवर्ड टाका"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"कॉल बारिंग सेटिंग्ज"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"सर्व कॉल बारिंग़ सेटिंग्ज बंद करायच्या का?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"नेटवर्क व्यस्त आहे कृपया तुमचा कॉल नंतर पुन्हा करण्याचा प्रयत्न करा."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"नेटवर्क उपलब्ध नाही. साहाय्यासाठी तुमच्या मोबाइल ऑपरेटरशी संपर्क साधा."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"कॉल वळवला."</string>

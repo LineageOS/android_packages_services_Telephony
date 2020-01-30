@@ -787,7 +787,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"確認密碼"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"輸入密碼"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"通話限制設定"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"要停用所有通話限制設定嗎？"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"網絡忙碌中。請稍後再撥。"</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"網絡壅塞。請通知您的流動網絡供應商提供協助。"</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"通話已轉向。"</string>

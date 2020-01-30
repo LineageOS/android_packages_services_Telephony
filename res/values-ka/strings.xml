@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"დაადასტურეთ პაროლი"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"შეიყვანეთ პაროლი"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"ზარების აკრძალვის პარამეტრები"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"გსურთ ზარების აკრძალვის ყველა პარამეტრის დეაქტივაცია?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"ქსელი დაკავებულია. გთხოვთ, სცადოთ დარეკვა მოგვიანებით."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"ქსელი დატვირთულია. დახმარებისთვის დაუკავშირდით თქვენს მობილურ ოპერატორს."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"მოხდა ზარის აცილება."</string>

@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"Jelszó megerősítése"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"Adja meg a jelszót"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"Híváskorlátozási beállítások"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"Deaktiválja az összes híváskorlátozási beállítást?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"A hálózat túlterhelt. Próbálkozzon a hívással később."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"A hálózat túlterhelt. Ha segítségre van szüksége, forduljon a mobilszolgáltatóhoz."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"Hívás átirányítva egy másik számra."</string>

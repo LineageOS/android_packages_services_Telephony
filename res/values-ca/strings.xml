@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"Confirma la contrasenya"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"Escriu la contrasenya"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"Configuració de restricció de trucades"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"Vols desactivar la configuració de restricció de trucades?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"La xarxa està ocupada. Torna a provar de trucar més tard."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"La xarxa està congestionada. Contacta amb l\'operador mòbil per obtenir assistència."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"S\'ha derivat la trucada."</string>

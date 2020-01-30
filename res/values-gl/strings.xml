@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"Confirmar contrasinal"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"Insire un contrasinal"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"Configuración de restrición de chamadas"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"Queres desactivar a configuración de restrición de chamadas?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"A rede está ocupada. Proba a chamar de novo máis tarde."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"A rede está conxestionada. Ponte en contacto co teu operador móbil para obter asistencia."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"Derivouse a chamada."</string>

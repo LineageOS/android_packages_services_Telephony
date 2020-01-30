@@ -78,7 +78,7 @@
     <string name="connection_service_default_label" msgid="7332739049855715584">"Servicio de conexión integrado"</string>
     <string name="voicemail" msgid="7697769412804195032">"Buzón de voz"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Buzón de voz (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="voicemail_abbreviated" msgid="7746778673131551185">"Correo de voz:"</string>
+    <string name="voicemail_abbreviated" msgid="7746778673131551185">"Buzón de voz:"</string>
     <string name="make_and_receive_calls" msgid="4868913166494621109">"Realiza y recibe llamadas"</string>
     <string name="smart_forwarding_settings_menu" msgid="8850429887958938540">"Desvío inteligente"</string>
     <string name="smart_forwarding_settings_menu_summary" msgid="5096947726032885325">"Cuando un número no está disponible, siempre desvía las llamadas a tu otro número"</string>
@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"Confirmar contraseña"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"Ingresa la contraseña"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"Configuración de restricción de llamadas"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"¿Quieres desactivar todas las opciones de restricción de llamadas?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"La red está ocupada. Vuelve a realizar la llamada más tarde."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"La red está congestionada. Comunícate con tu operador de telefonía móvil para recibir asistencia."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"Se desvió la llamada."</string>

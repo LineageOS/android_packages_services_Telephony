@@ -789,7 +789,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"Potwierdź hasło"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"Wpisz hasło"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"Ustawienia blokady połączeń"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"Dezaktywować wszystkie ustawienia blokady połączeń?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"Sieć jest zajęta. Spróbuj zadzwonić później."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"Sieć jest przeciążona. Skontaktuj się z operatorem i poproś o pomoc."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"Połączenie przekazane na inny numer."</string>

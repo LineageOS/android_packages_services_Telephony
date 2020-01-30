@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"Confirmer le mot de passe"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"Saisissez un mot de passe"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"Paramètres d\'interdiction d\'appel"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"Désactiver tous les paramètres d\'interdiction d\'appel ?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"Le réseau est occupé. Veuillez réessayer plus tard."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"Le réseau est saturé. Contactez votre opérateur mobile pour obtenir de l\'aide."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"Appel redirigé."</string>

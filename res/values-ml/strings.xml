@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"പാസ്‌വേഡ് സ്ഥിരീകരിക്കുക"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"പാസ്‌വേഡ് നൽകുക"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"കോൾ തടയൽ ക്രമീകരണം"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"എല്ലാ കോൾ തടയൽ ക്രമീകരണവും നിർജ്ജീവമാക്കണോ?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"നെറ്റ്‌വർക്ക് തിരക്കിലാണ്. കോൾ ചെയ്യാൻ പിന്നീട് വീണ്ടും ശ്രമിക്കുക."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"നെറ്റ്‌വർക്ക് തിരക്കിലാണ്. സഹായത്തിനായി നിങ്ങളുടെ മൊബൈൽ ഓപ്പറേറ്ററെ ബന്ധപ്പെടുക."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"കോൾ വഴി തിരിച്ചുവിട്ടു."</string>
