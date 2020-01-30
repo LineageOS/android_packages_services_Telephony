@@ -265,7 +265,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     final CarrierServiceConnection conn = (CarrierServiceConnection) msg.obj;
                     // If new service connection has been created, unbind.
                     if (mServiceConnection[phoneId] != conn || conn.service == null) {
-                        mContext.unbindService(conn);
+                        unbindIfConnected(mContext, conn);
                         break;
                     }
                     final CarrierIdentifier carrierId = getCarrierIdentifierForPhoneId(phoneId);
@@ -274,7 +274,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                             new ResultReceiver(this) {
                                 @Override
                                 public void onReceiveResult(int resultCode, Bundle resultData) {
-                                    mContext.unbindService(conn);
+                                    unbindIfConnected(mContext, conn);
                                     // If new service connection has been created, this is stale.
                                     if (mServiceConnection[phoneId] != conn) {
                                         loge("Received response for stale request.");
@@ -308,7 +308,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     } catch (RemoteException e) {
                         loge("Failed to get carrier config from default app: " +
                                 mPlatformCarrierConfigPackage + " err: " + e.toString());
-                        mContext.unbindService(conn);
+                        unbindIfConnected(mContext, conn);
                         break; // So we don't set a timeout.
                     }
                     sendMessageDelayed(
@@ -328,7 +328,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     if (mServiceConnection[phoneId] != null) {
                         // If a ResponseReceiver callback is in the queue when this happens, we will
                         // unbind twice and throw an exception.
-                        mContext.unbindService(mServiceConnection[phoneId]);
+                        unbindIfConnected(mContext, mServiceConnection[phoneId]);
                         broadcastConfigChangedIntent(phoneId);
                     }
                     notifySubscriptionInfoUpdater(phoneId);
@@ -394,7 +394,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     final CarrierServiceConnection conn = (CarrierServiceConnection) msg.obj;
                     // If new service connection has been created, unbind.
                     if (mServiceConnection[phoneId] != conn || conn.service == null) {
-                        mContext.unbindService(conn);
+                        unbindIfConnected(mContext, conn);
                         break;
                     }
                     final CarrierIdentifier carrierId = getCarrierIdentifierForPhoneId(phoneId);
@@ -403,7 +403,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                             new ResultReceiver(this) {
                                 @Override
                                 public void onReceiveResult(int resultCode, Bundle resultData) {
-                                    mContext.unbindService(conn);
+                                    unbindIfConnected(mContext, conn);
                                     // If new service connection has been created, this is stale.
                                     if (mServiceConnection[phoneId] != conn) {
                                         loge("Received response for stale request.");
@@ -438,7 +438,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                 + " carrierid: " + carrierId.toString());
                     } catch (RemoteException e) {
                         loge("Failed to get carrier config: " + e.toString());
-                        mContext.unbindService(conn);
+                        unbindIfConnected(mContext, conn);
                         break; // So we don't set a timeout.
                     }
                     sendMessageDelayed(
@@ -458,7 +458,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     if (mServiceConnection[phoneId] != null) {
                         // If a ResponseReceiver callback is in the queue when this happens, we will
                         // unbind twice and throw an exception.
-                        mContext.unbindService(mServiceConnection[phoneId]);
+                        unbindIfConnected(mContext, mServiceConnection[phoneId]);
                         broadcastConfigChangedIntent(phoneId);
                     }
                     notifySubscriptionInfoUpdater(phoneId);
@@ -1127,10 +1127,17 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
     }
 
+    private static void unbindIfConnected(Context context, CarrierServiceConnection conn) {
+        if (conn.connected) {
+            context.unbindService(conn);
+        }
+    }
+
     private class CarrierServiceConnection implements ServiceConnection {
         int phoneId;
         int eventId;
         IBinder service;
+        boolean connected = false;
 
         public CarrierServiceConnection(int phoneId, int eventId) {
             this.phoneId = phoneId;
@@ -1141,12 +1148,29 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         public void onServiceConnected(ComponentName name, IBinder service) {
             log("Connected to config app: " + name.flattenToString());
             this.service = service;
+            connected = true;
             mHandler.sendMessage(mHandler.obtainMessage(eventId, phoneId, -1, this));
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            log("Disconnected from config app: " + name.flattenToString());
             this.service = null;
+            connected = false;
+        }
+
+        @Override
+        public void onBindingDied(ComponentName name) {
+            log("Binding died from config app: " + name.flattenToString());
+            this.service = null;
+            connected = false;
+        }
+
+        @Override
+        public void onNullBinding(ComponentName name) {
+            log("Null binding from config app: " + name.flattenToString());
+            this.service = null;
+            connected = false;
         }
     }
 
