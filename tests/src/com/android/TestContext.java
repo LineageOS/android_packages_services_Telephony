@@ -34,6 +34,8 @@ import android.test.mock.MockContext;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.concurrent.Executor;
+
 public class TestContext extends MockContext {
 
     @Mock CarrierConfigManager mMockCarrierConfigManager;
@@ -46,6 +48,12 @@ public class TestContext extends MockContext {
     public TestContext() {
         MockitoAnnotations.initMocks(this);
         doReturn(mCarrierConfig).when(mMockCarrierConfigManager).getConfigForSubId(anyInt());
+    }
+
+    @Override
+    public Executor getMainExecutor() {
+        // Just run on current thread
+        return Runnable::run;
     }
 
     @Override
