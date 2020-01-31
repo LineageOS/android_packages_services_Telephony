@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"Confirmar palavra-passe"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"Introduzir palavra-passe"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"Definições de barramento de chamadas"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"Desativar todas as definições de barramento de chamadas?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"A rede está ocupada. Tente efetuar novamente a chamada mais tarde."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"A rede está congestionada. Contacte o seu operador móvel para obter assistência."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"A chamada foi desviada."</string>

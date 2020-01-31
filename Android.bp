@@ -78,8 +78,6 @@ android_app {
         ],
     },
 
-    defaults: ["SettingsLibDefaults"],
-
     proto: {
         type: "lite",
     },

@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"પાસવર્ડની પુષ્ટિ કરો"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"પાસવર્ડ દાખલ કરો"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"કૉલ બારિંગની સેટિંગ"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"કૉલ બારિંગની બધી સેટિંગ નિષ્ક્રિય કરીએ?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"નેટવર્ક વ્યસ્ત છે. કૃપા કરીને કૉલ કરવાનો પછીથી ફરી પ્રયાસ કરો."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"નેટવર્ક ખૂબ ભરાયેલું છે. સહાય માટે મોબાઇલ ઑપરેટરનો સંપર્ક કરો."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"કૉલ બીજે વાળ્યો."</string>

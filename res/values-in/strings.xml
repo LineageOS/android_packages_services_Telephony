@@ -785,7 +785,6 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"Konfirmasi sandi"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"Masukkan sandi"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"Setelan pemblokiran panggilan"</string>
-    <string name="call_barring_deactivate_all_no_password" msgid="1722810133682258452">"Nonaktifkan semua setelan pemblokiran panggilan?"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"Jaringan sedang sibuk. Coba hubungi lagi di lain waktu."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"Jaringan sedang padat. Hubungi operator seluler Anda untuk mendapatkan bantuan."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"Panggilan dialihkan."</string>
