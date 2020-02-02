@@ -16,11 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"ম’বাইল ডেটা"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"ফ\'ন সেৱা"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"জৰুৰীকালীন ডায়েলাৰ"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"ফ’ন"</string>
-    <string name="fdnListLabel" msgid="4119121875004244097">"FDN তালিকা"</string>
     <string name="unknown" msgid="8279698889921830815">"অজ্ঞাত"</string>
     <string name="private_num" msgid="4487990167889159992">"ব্যক্তিগত নম্বৰ"</string>
     <string name="payphone" msgid="7936735771836716941">"পে\'ফ\'ন"</string>
@@ -300,8 +297,6 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"<xliff:g id="OLD_SIM">%2$s</xliff:g>ৰ সলনি <xliff:g id="NEW_SIM">%1$s</xliff:g>ক ম’বাইল ডেটাৰ বাবে ব্যৱহাৰ কৰিব খোজে নেকি?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"ৱাই-ফাই কলিং"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"বাহকৰ ভিডিঅ\' কলিং"</string>
-    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS বিকল্পসমূহ"</string>
-    <string name="cdma_options" msgid="3669592472226145665">"CDMA বিকল্পসমূহ"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"ডেটাৰ ব্যৱহাৰ"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"চলিত কালত ব্যৱহাৰ কৰা ডেটাৰ পৰিমাণ"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"ডেটাৰ ব্যৱহাৰ কাল"</string>
@@ -470,7 +465,6 @@
     <string name="fdn_failed" msgid="216592346853420250">"FDN অপাৰেশ্বন বিফল হ’ল।"</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"ছিম কাৰ্ডৰ পৰা পঢ়ি থকা হৈছে…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"আপোনাৰ ছিম কাৰ্ডত কোনো সম্পৰ্কসূচী নাই।"</string>
-    <string name="simContacts_title" msgid="2714029230160136647">"আমদানি কৰিবলৈ সম্পৰ্ক বাছনি কৰক"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"ছিম কাৰ্ডৰ পৰা সম্পৰ্কসূচী আমদানি কৰিবলৈ এয়াৰপ্লেইন ম\'ড অফ কৰক।"</string>
     <string name="enable_pin" msgid="967674051730845376">"SIM PIN সক্ষম/অক্ষম কৰক"</string>
     <string name="change_pin" msgid="3657869530942905790">"ছিমৰ পিন সলনি কৰক"</string>

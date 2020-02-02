@@ -16,11 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"মোবাইল ডেটা"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"ফোনের পরিষেবা"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"জরুরি ডায়ালার"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"ফোন"</string>
-    <string name="fdnListLabel" msgid="4119121875004244097">"FDN তালিকা"</string>
     <string name="unknown" msgid="8279698889921830815">"অজানা"</string>
     <string name="private_num" msgid="4487990167889159992">"ব্যক্তিগত নম্বর"</string>
     <string name="payphone" msgid="7936735771836716941">"পে ফোন"</string>
@@ -300,8 +297,6 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"মোবাইল ডেটার জন্য <xliff:g id="OLD_SIM">%2$s</xliff:g> এর বদলে <xliff:g id="NEW_SIM">%1$s</xliff:g> ব্যবহার করবেন?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"ওয়াই-ফাই কলিং"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"পরিষেবা প্রদানকারীর ভিডিও কলিং"</string>
-    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS বিকল্পগুলি"</string>
-    <string name="cdma_options" msgid="3669592472226145665">"CDMA বিকল্পগুলি"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"ডেটা ব্যবহার"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"বর্তমান সময়ের মধ্যে ব্যবহৃত ডেটা"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"ডেটা ব্যবহারের সময়কাল"</string>
@@ -470,7 +465,6 @@
     <string name="fdn_failed" msgid="216592346853420250">"FDN অপারেশন ব্যর্থ হয়েছে৷"</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"সিম কার্ড থেকে পড়া হচ্ছে…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"আপনার সিম কার্ডে কোনো পরিচিত নেই৷"</string>
-    <string name="simContacts_title" msgid="2714029230160136647">"পরিচিতগুলি আমদানি করুন"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"সিম কার্ডটি থেকে পরিচিতিগুলি আমদানি করতে বিমান মোড বন্ধ করুন৷"</string>
     <string name="enable_pin" msgid="967674051730845376">"সিম পিন সক্ষম/অক্ষম করুন"</string>
     <string name="change_pin" msgid="3657869530942905790">"সিম পিন পরিবর্তন করুন"</string>

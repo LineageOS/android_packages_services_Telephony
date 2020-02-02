@@ -16,11 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"മൊബൈൽ ഡാറ്റ"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"ഫോൺ സേവനങ്ങൾ"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"അടിയന്തര ഡയലർ"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"ഫോണ്‍"</string>
-    <string name="fdnListLabel" msgid="4119121875004244097">"FDN ലിസ്റ്റ്"</string>
     <string name="unknown" msgid="8279698889921830815">"അജ്ഞാതം"</string>
     <string name="private_num" msgid="4487990167889159992">"സ്വകാര്യ നമ്പർ"</string>
     <string name="payphone" msgid="7936735771836716941">"പണം നൽകി ഉപയോഗിക്കുന്ന ഫോൺ"</string>
@@ -300,8 +297,6 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"മൊബൈൽ ഡാറ്റയ്ക്ക് <xliff:g id="OLD_SIM">%2$s</xliff:g>-ന് പകരം <xliff:g id="NEW_SIM">%1$s</xliff:g> ഉപയോഗിക്കണോ?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"വൈഫൈ കോളിംഗ്"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"സേവനദായക വീഡിയോ കോളിംഗ്"</string>
-    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS ഓപ്‌ഷനുകൾ"</string>
-    <string name="cdma_options" msgid="3669592472226145665">"CDMA ഓപ്‌ഷനുകൾ"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"ഡാറ്റാ ഉപയോഗം"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"നിലവിലെ കാലയളവിൽ ഉപയോഗിച്ച ഡാറ്റ"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"ഡാറ്റ ഉപയോഗ കാലയളവ്"</string>
@@ -470,7 +465,6 @@
     <string name="fdn_failed" msgid="216592346853420250">"FDN പ്രവർത്തനം പരാജയപ്പെട്ടു."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"സിം കാർഡിൽ നിന്നും റീഡുചെയ്യുന്നു…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"നിങ്ങളുടെ സിം കാർഡിൽ കോൺടാക്റ്റുകളൊന്നുമില്ല."</string>
-    <string name="simContacts_title" msgid="2714029230160136647">"ഇമ്പോർട്ടുചെയ്യാനുള്ളവ തിരഞ്ഞെടുക്കൂ"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"SIM കാർഡിൽ നിന്ന് കോൺടാക്റ്റുകൾ ഇമ്പോർട്ടുചെയ്യാൻ വിമാന മോഡ് ഓഫാക്കുക."</string>
     <string name="enable_pin" msgid="967674051730845376">"സിം പിൻ പ്രവർത്തനക്ഷമമാക്കുക/പ്രവർത്തനരഹിതമാക്കുക"</string>
     <string name="change_pin" msgid="3657869530942905790">"സിം പിൻ മാറ്റുക"</string>

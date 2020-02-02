@@ -16,11 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Dades mòbils"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Serveis del telèfon"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Marcador d\'emergència"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Telèfon"</string>
-    <string name="fdnListLabel" msgid="4119121875004244097">"Llista d\'FDN"</string>
     <string name="unknown" msgid="8279698889921830815">"Desconegut"</string>
     <string name="private_num" msgid="4487990167889159992">"Número privat"</string>
     <string name="payphone" msgid="7936735771836716941">"Telèfon públic"</string>
@@ -300,8 +297,6 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"Vols fer servir <xliff:g id="NEW_SIM">%1$s</xliff:g> en lloc de <xliff:g id="OLD_SIM">%2$s</xliff:g> per a les dades mòbils?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Trucades per Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Videotrucades amb l\'operador de telefonia mòbil"</string>
-    <string name="gsm_umts_options" msgid="4968446771519376808">"Opcions de GSM/UMTS"</string>
-    <string name="cdma_options" msgid="3669592472226145665">"Opcions de CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Ús de dades"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Dades utilitzades al període actual"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Període d\'ús de dades"</string>
@@ -470,7 +465,6 @@
     <string name="fdn_failed" msgid="216592346853420250">"Hi ha hagut un problema en l\'operació FDN."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Lectura de la targeta SIM..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"No hi ha cap contacte a la targeta SIM."</string>
-    <string name="simContacts_title" msgid="2714029230160136647">"Selecciona contactes per importar-los"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Per importar contactes de la targeta SIM, desactiva el mode d\'avió."</string>
     <string name="enable_pin" msgid="967674051730845376">"Activa/Desactiva el PIN de la SIM"</string>
     <string name="change_pin" msgid="3657869530942905790">"Canvia el PIN de la SIM"</string>

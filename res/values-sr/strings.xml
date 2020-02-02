@@ -16,11 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Мобилни подаци"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Телефонске услуге"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Хитни позиви"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Телефон"</string>
-    <string name="fdnListLabel" msgid="4119121875004244097">"Бројеви за фиксно бирање"</string>
     <string name="unknown" msgid="8279698889921830815">"Непознато"</string>
     <string name="private_num" msgid="4487990167889159992">"Приватан број"</string>
     <string name="payphone" msgid="7936735771836716941">"Телефонска говорница"</string>
@@ -300,8 +297,6 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"Желите ли да за мобилне податке користите <xliff:g id="NEW_SIM">%1$s</xliff:g> уместо <xliff:g id="OLD_SIM">%2$s</xliff:g>?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Позивање преко Wi-Fi-ја"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Видео позивање преко оператера"</string>
-    <string name="gsm_umts_options" msgid="4968446771519376808">"Опције за GSM/UMTS"</string>
-    <string name="cdma_options" msgid="3669592472226145665">"CDMA опције"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Коришћење података"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Подаци коришћени у тренутном периоду"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Период коришћења података"</string>
@@ -470,7 +465,6 @@
     <string name="fdn_failed" msgid="216592346853420250">"Радња са бројем за фиксно бирање није успела."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Чита се са SIM картице…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"Нема контаката на SIM картици."</string>
-    <string name="simContacts_title" msgid="2714029230160136647">"Избор контаката за увоз"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Искључите режим рада у авиону да бисте увезли контакте са SIM картице."</string>
     <string name="enable_pin" msgid="967674051730845376">"Омогућавање/онемогућавање SIM PIN-а"</string>
     <string name="change_pin" msgid="3657869530942905790">"Промена SIM PIN-а"</string>

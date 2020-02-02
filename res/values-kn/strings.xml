@@ -16,11 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"ಮೊಬೈಲ್ ಡೇಟಾ"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"ಫೋನ್ ಸೇವೆಗಳು"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"ತುರ್ತು ಡಯಲರ್"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"ಫೋನ್"</string>
-    <string name="fdnListLabel" msgid="4119121875004244097">"ಎಫ್‌ಡಿಎನ್‌ ಪಟ್ಟಿ"</string>
     <string name="unknown" msgid="8279698889921830815">"ಅಪರಿಚಿತ"</string>
     <string name="private_num" msgid="4487990167889159992">"ಖಾಸಗಿ ಸಂಖ್ಯೆ"</string>
     <string name="payphone" msgid="7936735771836716941">"ಪೇಫೋನ್"</string>
@@ -300,8 +297,6 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"ಮೊಬೈಲ್ ಡೇಟಾಗೆ <xliff:g id="OLD_SIM">%2$s</xliff:g> ಬದಲಿಗೆ <xliff:g id="NEW_SIM">%1$s</xliff:g> ಬಳಸಬೇಕೆ?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"ವೈ-ಫೈ ಕರೆ ಮಾಡುವಿಕೆ"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"ವಾಹಕ ವೀಡಿಯೊ ಕರೆ ಮಾಡುವಿಕೆ"</string>
-    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS ಆಯ್ಕೆಗಳು"</string>
-    <string name="cdma_options" msgid="3669592472226145665">"CDMA ಆಯ್ಕೆಗಳು"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"ಡೇಟಾ ಬಳಕೆ"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"ಪ್ರಸ್ತುತ ಅವಧಿಯಲ್ಲಿ ಡೇಟಾವನ್ನು ಬಳಸಲಾಗಿದೆ"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"ಡೇಟಾ ಬಳಕೆ ಅವಧಿ"</string>
@@ -470,7 +465,6 @@
     <string name="fdn_failed" msgid="216592346853420250">"ಎಫ್‌ಡಿಎನ್‌ ಕಾರ್ಯಾಚರಣೆ ವಿಫಲವಾಗಿದೆ."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"ಸಿಮ್‌ ಕಾರ್ಡ್‌ನಿಂದ ಓದಲಾಗುತ್ತಿದೆ…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"ನಿಮ್ಮ ಸಿಮ್‌ ಕಾರ್ಡ್‌ನಲ್ಲಿ ಯಾವುದೇ ಸಂಪರ್ಕಗಳಿಲ್ಲ."</string>
-    <string name="simContacts_title" msgid="2714029230160136647">"ಆಮದು ಮಾಡಲು ಸಂಪರ್ಕಗಳು"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"ಸಿಮ್ ಕಾರ್ಡ್‌ನಿಂದ ಸಂಪರ್ಕಗಳನ್ನು ಆಮದು ಮಾಡಲು ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಆಫ್ ಮಾಡಿ."</string>
     <string name="enable_pin" msgid="967674051730845376">"ಸಿಮ್‌ ಪಿನ್‌ ಸಕ್ರಿಯಗೊಳಿಸಿ/ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ"</string>
     <string name="change_pin" msgid="3657869530942905790">"ಸಿಮ್‌ ಪಿನ್‌ ಬದಲಾಯಿಸಿ"</string>
