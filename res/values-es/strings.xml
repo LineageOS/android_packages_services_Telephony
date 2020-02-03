@@ -16,11 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Datos móviles"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Servicios del teléfono"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Llamada de emergencia"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Teléfono"</string>
-    <string name="fdnListLabel" msgid="4119121875004244097">"Lista de FDN"</string>
     <string name="unknown" msgid="8279698889921830815">"Desconocido"</string>
     <string name="private_num" msgid="4487990167889159992">"Número privado"</string>
     <string name="payphone" msgid="7936735771836716941">"Teléfono público"</string>
@@ -300,8 +297,6 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"¿Quieres usar la tarjeta <xliff:g id="NEW_SIM">%1$s</xliff:g> en lugar de <xliff:g id="OLD_SIM">%2$s</xliff:g> para los datos móviles?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Llamadas por Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Videollamadas a través del operador"</string>
-    <string name="gsm_umts_options" msgid="4968446771519376808">"Opciones GSM/UMTS"</string>
-    <string name="cdma_options" msgid="3669592472226145665">"Opciones de CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Uso de datos"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Datos del periodo actual"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Período uso datos"</string>
@@ -472,7 +467,6 @@
     <string name="fdn_failed" msgid="216592346853420250">"Error de funcionamiento de número de marcación fija."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Leyendo desde tarjeta SIM…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"No hay ningún contacto en la tarjeta SIM."</string>
-    <string name="simContacts_title" msgid="2714029230160136647">"Seleccionar contactos para importar"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Desactiva el modo avión para importar contactos de la tarjeta SIM."</string>
     <string name="enable_pin" msgid="967674051730845376">"Habilitar/inhabilitar PIN de tarjeta SIM"</string>
     <string name="change_pin" msgid="3657869530942905790">"Cambiar PIN de tarjeta SIM"</string>

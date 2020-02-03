@@ -16,11 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"मोबाइल डेटा"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"फोन सेवाहरू"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"आपतकालीन डायल गर्ने"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"फोन"</string>
-    <string name="fdnListLabel" msgid="4119121875004244097">"FDN सूची"</string>
     <string name="unknown" msgid="8279698889921830815">"अज्ञात"</string>
     <string name="private_num" msgid="4487990167889159992">"निजी नम्बर"</string>
     <string name="payphone" msgid="7936735771836716941">"पेफोन"</string>
@@ -300,8 +297,6 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"मोबाइल डेटाका लागि <xliff:g id="OLD_SIM">%2$s</xliff:g> को सट्टा <xliff:g id="NEW_SIM">%1$s</xliff:g> को प्रयोग गर्ने हो?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi कल"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"सेवा प्रदायकको भिडियो कल"</string>
-    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS  विकल्पहरू"</string>
-    <string name="cdma_options" msgid="3669592472226145665">"CDMA विकल्पहरू"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"डेटा उपयोग"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"हालको अवधिमा प्रयोग भएको डेटा"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"डेटाको प्रयोग अवधि"</string>
@@ -470,7 +465,6 @@
     <string name="fdn_failed" msgid="216592346853420250">"FDN कार्य बिफल भयो।"</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"SIM कार्ड पढ्दै..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"तपाईँको SIM कार्डमा कुनै पनि सम्पर्क छैन।"</string>
-    <string name="simContacts_title" msgid="2714029230160136647">"सम्पर्कहरू आयात गर्न चयन गर्नुहोस्"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"SIM कार्डबाट सम्पर्कहरू आयात गर्न हवाइजहाज मोड बन्द गर्नुहोस्।"</string>
     <string name="enable_pin" msgid="967674051730845376">"SIM PIN सक्षम/अक्षम गर्नुहोस्"</string>
     <string name="change_pin" msgid="3657869530942905790">"SIM PIN परिवर्तन गर्नुहोस्"</string>

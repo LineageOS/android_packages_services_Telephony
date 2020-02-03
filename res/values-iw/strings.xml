@@ -16,11 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"נתוני נייד"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"שירותי טלפון"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"חייגן חירום"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"טלפון"</string>
-    <string name="fdnListLabel" msgid="4119121875004244097">"רשימת מספרי חיוג קבועים"</string>
     <string name="unknown" msgid="8279698889921830815">"לא ידוע"</string>
     <string name="private_num" msgid="4487990167889159992">"מספר פרטי"</string>
     <string name="payphone" msgid="7936735771836716941">"טלפון ציבורי"</string>
@@ -300,8 +297,6 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"להשתמש בחבילת הגלישה ב-<xliff:g id="NEW_SIM">%1$s</xliff:g> במקום ב-<xliff:g id="OLD_SIM">%2$s</xliff:g>?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"‏שיחות Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"שיחות וידאו באמצעות הספק הסלולרי"</string>
-    <string name="gsm_umts_options" msgid="4968446771519376808">"‏אפשרויות GSM/UMTS"</string>
-    <string name="cdma_options" msgid="3669592472226145665">"‏אפשרויות CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"שימוש בנתונים"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"נתונים שנעשה בהם שימוש בתקופה הנוכחית"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"תקופת השימוש בנתונים"</string>
@@ -470,7 +465,6 @@
     <string name="fdn_failed" msgid="216592346853420250">"‏פעולת FDN נכשלה."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"‏קורא מכרטיס SIM…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"‏אין אנשי קשר בכרטיס ה-SIM."</string>
-    <string name="simContacts_title" msgid="2714029230160136647">"בחר אנשי קשר לייבוא"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"‏בטל את מצב טיסה כדי לייבא אנשי קשר מכרטיס ה-SIM."</string>
     <string name="enable_pin" msgid="967674051730845376">"‏הפעלה/השבתה של ה-PIN של SIM"</string>
     <string name="change_pin" msgid="3657869530942905790">"‏שנה PIN של SIM"</string>

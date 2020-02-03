@@ -16,11 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Data sa Mobile"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Mga Serbisyo sa Telepono"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Pang-emergency na Dialer"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Telepono"</string>
-    <string name="fdnListLabel" msgid="4119121875004244097">"List ng FDN"</string>
     <string name="unknown" msgid="8279698889921830815">"Di-kilala"</string>
     <string name="private_num" msgid="4487990167889159992">"Pribadong numero"</string>
     <string name="payphone" msgid="7936735771836716941">"Payphone"</string>
@@ -300,8 +297,6 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"Gamitin ang <xliff:g id="NEW_SIM">%1$s</xliff:g> sa halip na <xliff:g id="OLD_SIM">%2$s</xliff:g> para sa mobile data?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Pagtawag gamit ang Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Pakikipag-video call gamit ang carrier"</string>
-    <string name="gsm_umts_options" msgid="4968446771519376808">"Mga pagpipilian sa GSM/UMTS"</string>
-    <string name="cdma_options" msgid="3669592472226145665">"Mga pagpipiliian sa CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Paggamit ng data"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Ginamit na data sa kasalukuyang panahon"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Panahon ng paggamit ng data"</string>
@@ -470,7 +465,6 @@
     <string name="fdn_failed" msgid="216592346853420250">"Nagbigo ang operasyon ng FDN."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Nagbabasa mula sa SIM card…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"Walang contact sa iyong SIM card."</string>
-    <string name="simContacts_title" msgid="2714029230160136647">"Piliin mga contact na i-import"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"I-off ang airplane mode upang mag-import ng mga contact mula sa SIM card."</string>
     <string name="enable_pin" msgid="967674051730845376">"Paganahin/huwag paganahin ang PIN ng SIM"</string>
     <string name="change_pin" msgid="3657869530942905790">"Baguhin ang PIN ng SIM"</string>
