@@ -5604,24 +5604,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Get whether mobile data is enabled.
+     * Checks if the device is capable of mobile data by considering whether whether the
+     * user has enabled mobile data, whether the carrier has enabled mobile data, and
+     * whether the network policy allows data connections.
      *
-     * Comparable to {@link #isUserDataEnabled(int)}, this considers all factors deciding
-     * whether mobile data is actually enabled.
-     *
-     * Accepts either ACCESS_NETWORK_STATE, MODIFY_PHONE_STATE or carrier privileges.
-     *
-     * @return {@code true} if data is enabled else {@code false}
+     * @return {@code true} if the overall data connection is capable; {@code false} if not.
      */
     @Override
     public boolean isDataEnabled(int subId) {
-        try {
-            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
-                    null);
-        } catch (Exception e) {
-            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                    mApp, subId, "isDataEnabled");
-        }
+        enforceReadPrivilegedPermission("isDataEnabled");
 
         final long identity = Binder.clearCallingIdentity();
         try {
