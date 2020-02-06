@@ -15,21 +15,6 @@
 -->
 
 <resources>
-    <!-- Base attributes available to CheckBoxPreference. Copied from frameworks/base/core/res. -->
-    <declare-styleable name="CheckBoxPreference">
-        <!-- The summary for the Preference in a PreferenceActivity screen when the
-             CheckBoxPreference is checked. If separate on/off summaries are not
-             needed, the summary attribute can be used instead. -->
-        <attr name="android:summaryOn" />
-        <!-- The summary for the Preference in a PreferenceActivity screen when the
-             CheckBoxPreference is unchecked. If separate on/off summaries are not
-             needed, the summary attribute can be used instead. -->
-        <attr name="android:summaryOff" />
-        <!-- The state (true for on, or false for off) that causes dependents to be disabled. By default,
-             dependents will be disabled when this is unchecked, so the value of this preference is false. -->
-        <attr name="android:disableDependentsState" />
-    </declare-styleable>
-
     <declare-styleable name="EditPhoneNumberPreference">
         <!-- The enable button text. -->
         <attr name="enableButtonText" format="string" />
