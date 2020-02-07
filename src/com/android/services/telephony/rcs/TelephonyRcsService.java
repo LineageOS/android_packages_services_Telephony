@@ -16,195 +16,225 @@
 
 package com.android.services.telephony.rcs;
 
+import android.annotation.AnyThread;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.net.Uri;
-import android.os.RemoteException;
-import android.os.ServiceSpecificException;
-import android.telephony.ims.ImsException;
-import android.telephony.ims.RcsContactUceCapability;
-import android.telephony.ims.RcsUceAdapter;
-import android.telephony.ims.aidl.IRcsUceControllerCallback;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.AsyncResult;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.telephony.CarrierConfigManager;
+import android.telephony.SubscriptionManager;
 import android.util.Log;
 
-import com.android.ims.ResultCode;
-import com.android.service.ims.presence.ContactCapabilityResponse;
-import com.android.service.ims.presence.PresenceBase;
-import com.android.service.ims.presence.PresencePublication;
-import com.android.service.ims.presence.PresenceSubscriber;
+import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.telephony.PhoneConfigurationManager;
+import com.android.internal.util.IndentingPrintWriter;
 
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 /**
- * Telephony RCS Service integrates PresencePublication and PresenceSubscriber into the service.
+ * Singleton service setup to manage RCS related services that the platform provides such as User
+ * Capability Exchange.
  */
+@AnyThread
 public class TelephonyRcsService {
 
     private static final String LOG_TAG = "TelephonyRcsService";
 
+    /**
+     * Used to inject RcsFeatureController and UserCapabilityExchangeImpl instances for testing.
+     */
+    @VisibleForTesting
+    public interface FeatureFactory {
+        /**
+         * @return an {@link RcsFeatureController} assoicated with the slot specified.
+         */
+        RcsFeatureController createController(Context context, int slotId);
+
+        /**
+         * @return an instance of {@link UserCapabilityExchangeImpl} associated with the slot
+         * specified.
+         */
+        UserCapabilityExchangeImpl createUserCapabilityExchange(Context context, int slotId,
+                int subId);
+    }
+
+    private FeatureFactory mFeatureFactory = new FeatureFactory() {
+        @Override
+        public RcsFeatureController createController(Context context, int slotId) {
+            return new RcsFeatureController(context, slotId);
+        }
+
+        @Override
+        public UserCapabilityExchangeImpl createUserCapabilityExchange(Context context, int slotId,
+                int subId) {
+            return new UserCapabilityExchangeImpl(context, slotId, subId);
+        }
+    };
+
+    // Notifies this service that there has been a change in available slots.
+    private static final int HANDLER_MSIM_CONFIGURATION_CHANGE = 1;
+
     private final Context mContext;
+    private final Object mLock = new Object();
+    private int mNumSlots;
 
-    // A helper class to manage the RCS Presences instances.
-    private final PresenceHelper mPresenceHelper;
+    // Index corresponds to the slot ID.
+    private List<RcsFeatureController> mFeatureControllers;
 
-    private ConcurrentHashMap<Integer, IRcsUceControllerCallback> mPendingRequests;
+    private BroadcastReceiver mCarrierConfigChangedReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent == null) {
+                return;
+            }
+            if (CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED.equals(intent.getAction())) {
+                Bundle bundle = intent.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                int slotId = bundle.getInt(CarrierConfigManager.EXTRA_SLOT_INDEX);
+                int subId = bundle.getInt(CarrierConfigManager.EXTRA_SUBSCRIPTION_INDEX);
+                updateFeatureControllerSubscription(slotId, subId);
+            }
+        }
+    };
 
-    public TelephonyRcsService(Context context) {
+    private Handler mHandler = new Handler(Looper.getMainLooper(), (msg) -> {
+        switch (msg.what) {
+            case HANDLER_MSIM_CONFIGURATION_CHANGE: {
+                AsyncResult result = (AsyncResult) msg.obj;
+                Integer numSlots = (Integer) result.result;
+                if (numSlots == null) {
+                    Log.w(LOG_TAG, "msim config change with null num slots.");
+                    break;
+                }
+                updateFeatureControllerSize(numSlots);
+                break;
+            }
+            default:
+                return false;
+        }
+        return true;
+    });
+
+    public TelephonyRcsService(Context context, int numSlots) {
         Log.i(LOG_TAG, "initialize");
         mContext = context;
-        mPresenceHelper = new PresenceHelper(mContext);
-        mPendingRequests = new ConcurrentHashMap<>();
+        mNumSlots = numSlots;
+        mFeatureControllers = new ArrayList<>(numSlots);
     }
 
     /**
-     * @return the UCE Publish state for the phone ID specified.
+     * @return the {@link RcsFeatureController} associated with the given slot.
      */
-    public int getUcePublishState(int phoneId) {
-        PresencePublication publisher = getPresencePublication(phoneId);
-        if (publisher == null) {
-            throw new ServiceSpecificException(ImsException.CODE_ERROR_SERVICE_UNAVAILABLE,
-                    "UCE service is not currently running.");
+    public RcsFeatureController getFeatureController(int slotId) {
+        synchronized (mLock) {
+            return mFeatureControllers.get(slotId);
         }
-        int publishState = publisher.getPublishState();
-        return toUcePublishState(publishState);
     }
 
     /**
-     * Perform a capabilities request and call {@link IRcsUceControllerCallback} with the result.
+     * Called after instance creation to initialize internal structures as well as register for
+     * system callbacks.
      */
-    public void requestCapabilities(int phoneId, List<Uri> contactNumbers,
-            IRcsUceControllerCallback c) {
-        PresenceSubscriber subscriber = getPresenceSubscriber(phoneId);
-        if (subscriber == null) {
-            throw new ServiceSpecificException(ImsException.CODE_ERROR_SERVICE_UNAVAILABLE,
-                    "UCE service is not currently running.");
+    public void initialize() {
+        synchronized (mLock) {
+            for (int i = 0; i < mNumSlots; i++) {
+                mFeatureControllers.add(constructFeatureController(i));
+            }
         }
-        List<String> numbers = contactNumbers.stream().map(TelephonyRcsService::getNumberFromUri)
-                .collect(Collectors.toList());
-        int taskId = subscriber.requestCapability(numbers, new ContactCapabilityResponse() {
-            @Override
-            public void onSuccess(int reqId) {
-                Log.i(LOG_TAG, "onSuccess called for reqId:" + reqId);
-            }
 
-            @Override
-            public void onError(int reqId, int resultCode) {
-                IRcsUceControllerCallback c = mPendingRequests.remove(reqId);
-                try {
-                    if (c != null) {
-                        c.onError(toUceError(resultCode));
-                    } else {
-                        Log.w(LOG_TAG, "onError called for unknown reqId:" + reqId);
-                    }
-                } catch (RemoteException e) {
-                    Log.i(LOG_TAG, "Calling back to dead service");
-                }
-            }
+        PhoneConfigurationManager.registerForMultiSimConfigChange(mHandler,
+                HANDLER_MSIM_CONFIGURATION_CHANGE, null);
+        mContext.registerReceiver(mCarrierConfigChangedReceiver, new IntentFilter(
+                CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED));
+    }
 
-            @Override
-            public void onFinish(int reqId) {
-                Log.i(LOG_TAG, "onFinish called for reqId:" + reqId);
-            }
+    @VisibleForTesting
+    public void setFeatureFactory(FeatureFactory f) {
+        mFeatureFactory = f;
+    }
 
-            @Override
-            public void onTimeout(int reqId) {
-                IRcsUceControllerCallback c = mPendingRequests.remove(reqId);
-                try {
-                    if (c != null) {
-                        c.onError(RcsUceAdapter.ERROR_REQUEST_TIMEOUT);
-                    } else {
-                        Log.w(LOG_TAG, "onTimeout called for unknown reqId:" + reqId);
-                    }
-                } catch (RemoteException e) {
-                    Log.i(LOG_TAG, "Calling back to dead service");
-                }
-            }
-
-            @Override
-            public void onCapabilitiesUpdated(int reqId,
-                    List<RcsContactUceCapability> contactCapabilities,
-                    boolean updateLastTimestamp) {
-                IRcsUceControllerCallback c = mPendingRequests.remove(reqId);
-                try {
-                    if (c != null) {
-                        c.onCapabilitiesReceived(contactCapabilities);
-                    } else {
-                        Log.w(LOG_TAG, "onCapabilitiesUpdated, unknown reqId:" + reqId);
-                    }
-                } catch (RemoteException e) {
-                    Log.w(LOG_TAG, "onCapabilitiesUpdated on dead service");
-                }
-            }
-        });
-        if (taskId < 0) {
-            try {
-                c.onError(toUceError(taskId));
+    /**
+     * Update the number of {@link RcsFeatureController}s that are created based on the number of
+     * active slots on the device.
+     */
+    @VisibleForTesting
+    public void updateFeatureControllerSize(int newNumSlots) {
+        synchronized (mLock) {
+            int oldNumSlots = mFeatureControllers.size();
+            if (oldNumSlots == newNumSlots) {
                 return;
-            } catch (RemoteException e) {
-                Log.i(LOG_TAG, "Calling back to dead service");
+            }
+            mNumSlots = newNumSlots;
+            if (oldNumSlots < newNumSlots) {
+                for (int i = oldNumSlots; i < newNumSlots; i++) {
+                    mFeatureControllers.add(constructFeatureController(i));
+                }
+            } else {
+                for (int i = (oldNumSlots - 1); i > (newNumSlots - 1); i--) {
+                    RcsFeatureController controller = mFeatureControllers.remove(i);
+                    controller.destroy();
+                }
             }
         }
-        mPendingRequests.put(taskId, c);
     }
 
-    private PresencePublication getPresencePublication(int phoneId) {
-        return mPresenceHelper.getPresencePublication(phoneId);
-    }
-
-    private PresenceSubscriber getPresenceSubscriber(int phoneId) {
-        return mPresenceHelper.getPresenceSubscriber(phoneId);
-    }
-
-    private static String getNumberFromUri(Uri uri) {
-        String number = uri.getSchemeSpecificPart();
-        String[] numberParts = number.split("[@;:]");
-
-        if (numberParts.length == 0) {
-            return null;
-        }
-        return numberParts[0];
-    }
-
-    private static int toUcePublishState(int publishState) {
-        switch (publishState) {
-            case PresenceBase.PUBLISH_STATE_200_OK:
-                return RcsUceAdapter.PUBLISH_STATE_200_OK;
-            case PresenceBase.PUBLISH_STATE_NOT_PUBLISHED:
-                return RcsUceAdapter.PUBLISH_STATE_NOT_PUBLISHED;
-            case PresenceBase.PUBLISH_STATE_VOLTE_PROVISION_ERROR:
-                return RcsUceAdapter.PUBLISH_STATE_VOLTE_PROVISION_ERROR;
-            case PresenceBase.PUBLISH_STATE_RCS_PROVISION_ERROR:
-                return  RcsUceAdapter.PUBLISH_STATE_RCS_PROVISION_ERROR;
-            case PresenceBase.PUBLISH_STATE_REQUEST_TIMEOUT:
-                return RcsUceAdapter.PUBLISH_STATE_REQUEST_TIMEOUT;
-            case PresenceBase.PUBLISH_STATE_OTHER_ERROR:
-                return RcsUceAdapter.PUBLISH_STATE_OTHER_ERROR;
-            default:
-                return RcsUceAdapter.PUBLISH_STATE_OTHER_ERROR;
+    private void updateFeatureControllerSubscription(int slotId, int newSubId) {
+        synchronized (mLock) {
+            RcsFeatureController f = mFeatureControllers.get(slotId);
+            if (f == null) {
+                Log.w(LOG_TAG, "unexpected null FeatureContainer for slot " + slotId);
+                return;
+            }
+            f.updateAssociatedSubscription(newSubId);
         }
     }
 
-    private static int toUceError(int resultCode) {
-        switch(resultCode) {
-            case ResultCode.SUBSCRIBE_NOT_REGISTERED:
-                return RcsUceAdapter.ERROR_NOT_REGISTERED;
-            case ResultCode.SUBSCRIBE_REQUEST_TIMEOUT:
-                return RcsUceAdapter.ERROR_REQUEST_TIMEOUT;
-            case ResultCode.SUBSCRIBE_FORBIDDEN:
-                return RcsUceAdapter.ERROR_FORBIDDEN;
-            case ResultCode.SUBSCRIBE_NOT_FOUND:
-                return RcsUceAdapter.ERROR_NOT_FOUND;
-            case ResultCode.SUBSCRIBE_TOO_LARGE:
-                return RcsUceAdapter.ERROR_REQUEST_TOO_LARGE;
-            case ResultCode.SUBSCRIBE_INSUFFICIENT_MEMORY:
-                return RcsUceAdapter.ERROR_INSUFFICIENT_MEMORY;
-            case ResultCode.SUBSCRIBE_LOST_NETWORK:
-                return RcsUceAdapter.ERROR_LOST_NETWORK;
-            case ResultCode.SUBSCRIBE_ALREADY_IN_QUEUE:
-                return  RcsUceAdapter.ERROR_ALREADY_IN_QUEUE;
-            default:
-                return RcsUceAdapter.ERROR_GENERIC_FAILURE;
+    private RcsFeatureController constructFeatureController(int slotId) {
+        RcsFeatureController c = mFeatureFactory.createController(mContext, slotId);
+        // TODO: integrate user setting into whether or not this feature is added as well as logic
+        // to listen for changes in user setting.
+        c.addFeature(mFeatureFactory.createUserCapabilityExchange(mContext, slotId,
+                getSubscriptionFromSlot(slotId)), UserCapabilityExchangeImpl.class);
+        c.connect();
+        return c;
+    }
+
+    private int getSubscriptionFromSlot(int slotId) {
+        SubscriptionManager manager = mContext.getSystemService(SubscriptionManager.class);
+        if (manager == null) {
+            Log.w(LOG_TAG, "Couldn't find SubscriptionManager for slotId=" + slotId);
+            return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
         }
+        int[] subIds = manager.getSubscriptionIds(slotId);
+        if (subIds != null && subIds.length > 0) {
+            return subIds[0];
+        }
+        return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+    }
+
+    /**
+     * Dump this instance into a readable format for dumpsys usage.
+     */
+    public void dump(FileDescriptor fd, PrintWriter printWriter, String[] args) {
+        IndentingPrintWriter pw = new IndentingPrintWriter(printWriter, "  ");
+        pw.println("RcsFeatureControllers:");
+        pw.increaseIndent();
+        synchronized (mLock) {
+            for (RcsFeatureController f : mFeatureControllers) {
+                pw.increaseIndent();
+                f.dump(fd, printWriter, args);
+                pw.decreaseIndent();
+            }
+        }
+        pw.decreaseIndent();
     }
 }
