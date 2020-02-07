@@ -375,7 +375,9 @@ public class PhoneGlobals extends ContextWrapper {
             imsRcsController = ImsRcsController.init(this);
 
             if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY_IMS)) {
-                mTelephonyRcsService = new TelephonyRcsService(this);
+                mTelephonyRcsService = new TelephonyRcsService(this,
+                        PhoneFactory.getPhones().length);
+                mTelephonyRcsService.initialize();
                 imsRcsController.setRcsService(mTelephonyRcsService);
             }
 
@@ -912,6 +914,12 @@ public class PhoneGlobals extends ContextWrapper {
             e.printStackTrace();
         }
         pw.decreaseIndent();
+        pw.println("RcsService:");
+        try {
+            if (mTelephonyRcsService != null) mTelephonyRcsService.dump(fd, pw, args);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         pw.decreaseIndent();
         pw.println("------- End PhoneGlobals -------");
     }

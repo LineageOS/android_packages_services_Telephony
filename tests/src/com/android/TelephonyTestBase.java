@@ -16,6 +16,8 @@
 
 package com.android;
 
+import static org.mockito.Mockito.spy;
+
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -34,7 +36,7 @@ public class TelephonyTestBase {
 
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        mContext = new TestContext();
+        mContext = spy(new TestContext());
         // Set up the looper if it does not exist on the test thread.
         if (Looper.myLooper() == null) {
             Looper.prepare();
