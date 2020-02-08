@@ -7635,23 +7635,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    @Override
-    public void setRadioIndicationUpdateMode(int subId, int filters, int mode) {
-        enforceModifyPermission();
-        final Phone phone = getPhone(subId);
-        if (phone == null) {
-            loge("setRadioIndicationUpdateMode fails with invalid subId: " + subId);
-            return;
-        }
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            phone.setRadioIndicationUpdateMode(filters, mode);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
     /**
      * A test API to reload the UICC profile.
      *

@@ -38,7 +38,6 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.android.ims.internal.ConferenceParticipant;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -66,7 +65,6 @@ public class ImsConferenceTest {
                 .thenReturn(null);
     }
 
-    @Ignore
     @Test
     @SmallTest
     public void testSinglePartyEmulation() {
@@ -114,7 +112,6 @@ public class ImsConferenceTest {
     /**
      * Tests CEPs with disconnected participants present with disconnected state.
      */
-    @Ignore
     @Test
     @SmallTest
     public void testDisconnectParticipantViaDisconnectState() {
@@ -178,7 +175,6 @@ public class ImsConferenceTest {
     /**
      * Tests CEPs with removed participants.
      */
-    @Ignore
     @Test
     @SmallTest
     public void testDisconnectParticipantViaRemoval() {
@@ -236,7 +232,6 @@ public class ImsConferenceTest {
      *
      * This test verifies that we can still enter single party emulation in this case.
      */
-    @Ignore
     @Test
     @SmallTest
     public void testSinglePartyEmulationEnterOnDisconnectParticipant() {
@@ -295,7 +290,6 @@ public class ImsConferenceTest {
      * it triggered exiting single party conference mode (due to a bug) and caused the call to not
      * be logged.
      */
-    @Ignore
     @Test
     @SmallTest
     public void testSinglePartyEmulationWithPreDisconnectParticipantUpdate() {
@@ -352,7 +346,6 @@ public class ImsConferenceTest {
      * Verify that the single party emulate correctly when the conference start with only
      * one participant.
      */
-    @Ignore
     @Test
     @SmallTest
     public void testSinglePartyEmulationWithOneParticipantAtBeginning() {
@@ -377,7 +370,6 @@ public class ImsConferenceTest {
     /**
      * Verify that we do not use single party emulation when a sim call manager is in use.
      */
-    @Ignore
     @Test
     @SmallTest
     public void testNoSinglePartyEmulationWithSimCallManager() {
@@ -416,7 +408,6 @@ public class ImsConferenceTest {
         assertEquals(2, imsConference.getNumberOfParticipants());
     }
 
-    @Ignore
     @Test
     @SmallTest
     public void testNormalConference() {

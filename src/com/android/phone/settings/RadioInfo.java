@@ -19,7 +19,6 @@ package com.android.phone.settings;
 import static android.net.ConnectivityManager.NetworkCallback;
 import static android.provider.Settings.Global.PREFERRED_NETWORK_MODE;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -83,6 +82,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AlertDialog.Builder;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.ims.ImsConfig;
 import com.android.ims.ImsException;
@@ -105,7 +105,7 @@ import java.util.concurrent.TimeUnit;
  * Allows user to read and alter some of the radio related information.
  *
  */
-public class RadioInfo extends Activity {
+public class RadioInfo extends AppCompatActivity {
     private static final String TAG = "RadioInfo";
 
     private static final boolean IS_USER_BUILD = "user".equals(Build.TYPE);
