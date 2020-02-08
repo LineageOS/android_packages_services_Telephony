@@ -241,7 +241,7 @@ public class SipSettings extends PreferenceActivity {
     private void processActiveProfilesFromSipService() {
         List<SipProfile> activeList = new ArrayList<>();
         try {
-            activeList = mSipManager.getListOfProfiles();
+            activeList = mSipManager.getProfiles();
         } catch (SipException e) {
             log("SipManager could not retrieve SIP profiles: " + e);
         }
