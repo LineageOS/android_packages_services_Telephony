@@ -29,6 +29,7 @@ import android.view.WindowManager;
 
 import com.android.internal.telephony.MmiCode;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.util.TelephonyResourceUtils;
 import com.android.phone.CarrierXmlParser;
 import com.android.phone.GsmUmtsAdditionalCallOptions;
 import com.android.phone.GsmUmtsCallOptions;
@@ -237,8 +238,8 @@ public class SuppServicesUiUtil {
 
             return "";
         } else {
-            return context.getText(
-                    com.android.internal.R.string.mmiError);
+            return TelephonyResourceUtils.getTelephonyResources(context).getText(
+                    com.android.telephony.resources.R.string.mmiError);
         }
     }
 }
