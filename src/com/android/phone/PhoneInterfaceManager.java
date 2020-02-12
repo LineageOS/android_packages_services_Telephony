@@ -3250,8 +3250,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void registerImsRegistrationCallback(int subId, IImsRegistrationCallback c)
             throws RemoteException {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("registerImsRegistrationCallback");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "registerImsRegistrationCallback");
 
         if (!ImsManager.isImsSupportedOnDevice(mApp)) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
@@ -3276,8 +3276,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void unregisterImsRegistrationCallback(int subId, IImsRegistrationCallback c) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("unregisterImsRegistrationCallback");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "unregisterImsRegistrationCallback");
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
@@ -3333,8 +3333,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void getImsMmTelRegistrationTransportType(int subId, IIntegerConsumer consumer) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("getImsMmTelRegistrationTransportType");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "getImsMmTelRegistrationTransportType");
         if (!ImsManager.isImsSupportedOnDevice(mApp)) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
                     "IMS not available on device.");
@@ -3373,8 +3373,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void registerMmTelCapabilityCallback(int subId, IImsCapabilityCallback c)
             throws RemoteException {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("registerMmTelCapabilityCallback");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "registerMmTelCapabilityCallback");
         if (!ImsManager.isImsSupportedOnDevice(mApp)) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
                     "IMS not available on device.");
@@ -3398,8 +3398,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void unregisterMmTelCapabilityCallback(int subId, IImsCapabilityCallback c) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("unregisterMmTelCapabilityCallback");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "unregisterMmTelCapabilityCallback");
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
@@ -3495,8 +3495,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isAdvancedCallingSettingEnabled(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("isAdvancedCallingSettingEnabled");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isAdvancedCallingSettingEnabled");
 
         // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
         final long token = Binder.clearCallingIdentity();
@@ -3532,8 +3532,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isVtSettingEnabled(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("isVtSettingEnabled");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isVtSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -3566,8 +3566,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isVoWiFiSettingEnabled(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("isVoWiFiSettingEnabled");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isVoWiFiSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -3601,8 +3601,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isVoWiFiRoamingSettingEnabled(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("isVoWiFiRoamingSettingEnabled");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isVoWiFiRoamingSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -3653,8 +3653,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public int getVoWiFiModeSetting(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("getVoWiFiModeSetting");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "getVoWiFiModeSetting");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -3735,8 +3735,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isTtyOverVolteEnabled(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("isTtyOverVolteEnabled");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isTtyOverVolteEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
