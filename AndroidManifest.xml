@@ -35,7 +35,7 @@
     <protected-broadcast android:name="android.intent.action.DATA_STALL_DETECTED" />
     <protected-broadcast android:name="android.intent.action.SIM_STATE_CHANGED" />
     <protected-broadcast android:name="android.intent.action.USER_ACTIVITY_NOTIFICATION" />
-    <protected-broadcast android:name="android.telephony.action.ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS" />
+    <protected-broadcast android:name="android.telephony.action.SHOW_NOTICE_ECM_BLOCK_OTHERS" />
     <protected-broadcast android:name="android.intent.action.ACTION_MDN_STATE_CHANGED" />
     <protected-broadcast android:name="android.provider.Telephony.SPN_STRINGS_UPDATED" />
     <protected-broadcast android:name="android.provider.Telephony.SIM_FULL" />
@@ -491,7 +491,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="com.android.phone.action.ACTION_SHOW_ECM_EXIT_DIALOG" />
-                <action android:name="android.telephony.action.ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS" />
+                <action android:name="android.telephony.action.SHOW_NOTICE_ECM_BLOCK_OTHERS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
