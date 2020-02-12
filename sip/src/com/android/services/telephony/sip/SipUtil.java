@@ -33,6 +33,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.internal.telephony.util.TelephonyResourceUtils;
 import com.android.phone.PhoneGlobals;
 
 import java.io.IOException;
@@ -51,9 +52,9 @@ public class SipUtil {
     }
 
     public static boolean isVoipSupported(Context context) {
-        return SipManager.isVoipSupported(context) &&
-                context.getResources().getBoolean(
-                        com.android.internal.R.bool.config_built_in_sip_phone)
+        return SipManager.isVoipSupported(context)
+                && TelephonyResourceUtils.getTelephonyResources(context).getBoolean(
+                        com.android.telephony.resources.R.bool.config_built_in_sip_phone)
                 && ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE))
                         .isVoiceCapable();
     }

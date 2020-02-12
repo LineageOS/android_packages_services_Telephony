@@ -40,7 +40,6 @@ import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.PhoneNumberUtils;
-import com.android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.ServiceState.RilRadioTechnology;
 import android.telephony.SubscriptionManager;
@@ -65,10 +64,12 @@ import com.android.internal.telephony.gsm.SuppServiceNotification;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
+import com.android.internal.telephony.util.TelephonyResourceUtils;
 import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
 import com.android.phone.R;
+import com.android.telephony.Rlog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1613,8 +1614,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         if (phone == null) {
             return true;
         }
-        return phone.getContext().getResources().getBoolean(
-                com.android.internal.R.bool.config_device_respects_hold_carrier_config);
+        return TelephonyResourceUtils.getTelephonyResources(phone.getContext()).getBoolean(
+            com.android.telephony.resources.R.bool.config_device_respects_hold_carrier_config);
     }
 
     /**

@@ -171,6 +171,7 @@ import com.android.internal.telephony.uicc.UiccController;
 import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.telephony.uicc.UiccSlot;
 import com.android.internal.telephony.util.LocaleUtils;
+import com.android.internal.telephony.util.TelephonyResourceUtils;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
 import com.android.internal.util.HexDump;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
@@ -8307,8 +8308,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         //TODO investigate if this API should require proper permission check in R b/133791609
         final long identity = Binder.clearCallingIdentity();
         try {
-            return SubscriptionManager.getResourcesForSubId(getDefaultPhone().getContext(), subId)
-                    .getString(com.android.internal.R.string.config_mms_user_agent_profile_url);
+            return TelephonyResourceUtils
+                    .getResourcesForSubId(getDefaultPhone().getContext(), subId)
+                    .getString(com.android.telephony.resources.R.string
+                            .config_mms_user_agent_profile_url);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -8319,8 +8322,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         //TODO investigate if this API should require proper permission check in R b/133791609
         final long identity = Binder.clearCallingIdentity();
         try {
-            return SubscriptionManager.getResourcesForSubId(getDefaultPhone().getContext(), subId)
-                    .getString(com.android.internal.R.string.config_mms_user_agent);
+            return TelephonyResourceUtils
+                    .getResourcesForSubId(getDefaultPhone().getContext(), subId)
+                    .getString(com.android.telephony.resources.R.string.config_mms_user_agent);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }

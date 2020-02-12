@@ -31,7 +31,6 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
-import com.android.telephony.Rlog;
 import android.telephony.SubscriptionManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -52,7 +51,9 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCapabilities;
+import com.android.internal.telephony.util.TelephonyResourceUtils;
 import com.android.phone.settings.SuppServicesUiUtil;
+import com.android.telephony.Rlog;
 
 import java.util.List;
 
@@ -296,7 +297,7 @@ public class PhoneUtils {
             AlertDialog previousAlert) {
         final PhoneGlobals app = PhoneGlobals.getInstance();
         CharSequence text;
-        int title = 0;  // title for the progress dialog, if needed.
+        CharSequence title = "";  // title for the progress dialog, if needed.
         MmiCode.State state = mmiCode.getState();
 
         log("displayMMIComplete: state=" + state);
@@ -330,7 +331,8 @@ public class PhoneUtils {
                 if (app.getPUKEntryActivity() != null) {
                     // if an attempt to unPUK the device was made, we specify
                     // the title and the message here.
-                    title = com.android.internal.R.string.PinMmi;
+                    title = TelephonyResourceUtils.getTelephonyResources(context)
+                            .getText(com.android.telephony.resources.R.string.PinMmi);
                     text = context.getText(R.string.puk_unlocked);
                     break;
                 }
