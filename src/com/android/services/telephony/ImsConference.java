@@ -374,6 +374,10 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
                 Connection.CAPABILITY_CAN_PAUSE_VIDEO,
                 mConferenceHost.getVideoPauseSupported() && isVideoCapable());
 
+        conferenceCapabilities = changeBitmask(conferenceCapabilities,
+                Connection.CAPABILITY_ADD_PARTICIPANT,
+                (capabilities & Connection.CAPABILITY_ADD_PARTICIPANT) != 0);
+
         return conferenceCapabilities;
     }
 
@@ -519,6 +523,19 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
         } catch (CallStateException e) {
             Log.e(this, e, "Exception thrown trying to merge call into a conference");
         }
+    }
+
+    /**
+     * Supports adding participants to an existing conference call
+     *
+     * @param participants that are pulled to existing conference call
+     */
+    @Override
+    public void onAddConferenceParticipants(List<Uri> participants) {
+        if (mConferenceHost == null) {
+            return;
+        }
+        mConferenceHost.performAddConferenceParticipants(participants);
     }
 
     /**
