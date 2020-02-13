@@ -40,7 +40,6 @@ import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.PhoneNumberUtils;
-import com.android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.ServiceState.RilRadioTechnology;
 import android.telephony.SubscriptionManager;
@@ -71,6 +70,7 @@ import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
 import com.android.phone.R;
+import com.android.telephony.Rlog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1217,7 +1217,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 isExternalConnection());
         newProperties = changeBitmask(newProperties, PROPERTY_HAS_CDMA_VOICE_PRIVACY,
                 mIsCdmaVoicePrivacyEnabled);
-        newProperties = changeBitmask(newProperties, PROPERTY_ASSISTED_DIALING_USED,
+        newProperties = changeBitmask(newProperties, PROPERTY_ASSISTED_DIALING,
                 mIsUsingAssistedDialing);
         newProperties = changeBitmask(newProperties, PROPERTY_IS_RTT, isRtt());
         newProperties = changeBitmask(newProperties, PROPERTY_NETWORK_IDENTIFIED_EMERGENCY_CALL,
