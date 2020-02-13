@@ -19,13 +19,13 @@ package com.android.services.telephony;
 import android.net.Uri;
 import android.telecom.Connection;
 import android.telecom.DisconnectCause;
-import com.android.telephony.Rlog;
 import android.telephony.SubscriptionInfo;
 import android.text.TextUtils;
 
 import com.android.ims.internal.ConferenceParticipant;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.telephony.Rlog;
 
 /**
  * Represents a participant in a conference call.
@@ -215,7 +215,7 @@ public class ConferenceParticipantConnection extends Connection {
         sb.append(" connectTime:");
         sb.append(getConnectTimeMillis());
         sb.append(" connectElapsedTime:");
-        sb.append(getConnectElapsedTimeMillis());
+        sb.append(getConnectionStartElapsedRealtimeMillis());
         sb.append("]");
 
         return sb.toString();

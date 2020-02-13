@@ -1187,7 +1187,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 isExternalConnection());
         newProperties = changeBitmask(newProperties, PROPERTY_HAS_CDMA_VOICE_PRIVACY,
                 mIsCdmaVoicePrivacyEnabled);
-        newProperties = changeBitmask(newProperties, PROPERTY_ASSISTED_DIALING_USED,
+        newProperties = changeBitmask(newProperties, PROPERTY_ASSISTED_DIALING,
                 mIsUsingAssistedDialing);
         newProperties = changeBitmask(newProperties, PROPERTY_IS_RTT, isRtt());
         newProperties = changeBitmask(newProperties, PROPERTY_NETWORK_IDENTIFIED_EMERGENCY_CALL,

@@ -479,7 +479,7 @@ public class NotificationMgr {
 
     private Intent getShowVoicemailIntentForDefaultDialer(UserHandle userHandle) {
         String dialerPackage = mContext.getSystemService(TelecomManager.class)
-                .getDefaultDialerPackage(userHandle.getIdentifier());
+                .getDefaultDialerPackage(userHandle);
         return new Intent(TelephonyManager.ACTION_SHOW_VOICEMAIL_NOTIFICATION)
                 .setPackage(dialerPackage);
     }
