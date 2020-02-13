@@ -17,6 +17,7 @@
 package com.android.services.telephony;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.PersistableBundle;
 import android.telecom.Connection;
 import android.telecom.PhoneAccountHandle;
@@ -70,6 +71,12 @@ public class CdmaConference extends TelephonyConferenceBase implements Holdable 
     @Override
     public void onSeparate(Connection connection) {
         Log.e(this, new Exception(), "Separate not supported for CDMA conference call.");
+    }
+
+    @Override
+    public void onAddConferenceParticipants(List<Uri> participants) {
+        Log.e(this, new Exception(), "Adding Conference Participants not supported " +
+                " for CDMA conference call.");
     }
 
     @Override
