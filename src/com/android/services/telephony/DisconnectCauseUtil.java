@@ -26,6 +26,7 @@ import android.telephony.SubscriptionManager;
 import com.android.internal.telephony.CallFailCause;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.util.TelephonyResourceUtils;
 import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.common.R;
@@ -730,8 +731,8 @@ public class DisconnectCauseUtil {
                 resourceId = R.string.callFailed_data_limit_reached_description;
                 break;
             case android.telephony.DisconnectCause.DIALED_CALL_FORWARDING_WHILE_ROAMING:
-                resourceId = com.android.internal.R.string.mmiErrorWhileRoaming;
-                break;
+                return TelephonyResourceUtils.getTelephonyResources(context).getString(
+                        com.android.telephony.resources.R.string.mmiErrorWhileRoaming);
 
             case android.telephony.DisconnectCause.IMEI_NOT_ACCEPTED:
                 resourceId = R.string.callFailed_imei_not_accepted;

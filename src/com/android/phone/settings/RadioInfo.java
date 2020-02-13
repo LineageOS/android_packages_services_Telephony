@@ -89,6 +89,7 @@ import com.android.ims.ImsException;
 import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.util.TelephonyResourceUtils;
 import com.android.phone.R;
 
 import java.io.IOException;
@@ -1708,8 +1709,8 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     boolean isCbrsSupported() {
-        return getResources().getBoolean(
-              com.android.internal.R.bool.config_cbrs_supported);
+        return TelephonyResourceUtils.getTelephonyResources(mPhone.getContext())
+              .getBoolean(com.android.telephony.resources.R.bool.config_cbrs_supported);
     }
 
     void updateCbrsDataState(boolean state) {
