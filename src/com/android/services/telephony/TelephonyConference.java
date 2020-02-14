@@ -16,6 +16,7 @@
 
 package com.android.services.telephony;
 
+import android.net.Uri;
 import android.telecom.Connection;
 import android.telecom.PhoneAccountHandle;
 
@@ -100,6 +101,12 @@ public class TelephonyConference extends TelephonyConferenceBase implements Hold
     @Override
     public void onReject() {
         Log.e(this, new Exception(), "Reject not supported for GSM conference call.");
+    }
+
+    @Override
+    public void onAddConferenceParticipants(List<Uri> participants) {
+        Log.e(this, new Exception(), "Adding Conference Participants not supported " +
+                " for GSM conference call.");
     }
 
     @Override
