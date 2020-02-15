@@ -159,6 +159,7 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
                     mPhone.setCallForwardingOption(action,
                             reason,
                             number,
+                            mServiceClass,
                             time,
                             mHandler.obtainMessage(MyHandler.MESSAGE_SET_CF,
                                     action,
@@ -216,7 +217,7 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
      */
     void startCallForwardOptionsQuery() {
         if (!mCallForwardByUssd) {
-            mPhone.getCallForwardingOption(reason,
+            mPhone.getCallForwardingOption(reason, mServiceClass,
                     mHandler.obtainMessage(MyHandler.MESSAGE_GET_CF,
                             // unused in this case
                             CommandsInterface.CF_ACTION_DISABLE,
@@ -423,7 +424,7 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
             }
             Log.d(LOG_TAG, "handleSetCFResponse: re get");
             if (!mCallForwardByUssd) {
-                mPhone.getCallForwardingOption(reason,
+                mPhone.getCallForwardingOption(reason, mServiceClass,
                         obtainMessage(MESSAGE_GET_CF, msg.arg1, MESSAGE_SET_CF, ar.exception));
             } else {
                 mHandler.sendMessage(mHandler.obtainMessage(mHandler.MESSAGE_GET_CF_USSD,
