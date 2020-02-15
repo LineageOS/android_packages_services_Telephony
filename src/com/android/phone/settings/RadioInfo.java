@@ -1719,7 +1719,7 @@ public class RadioInfo extends AppCompatActivity {
             mQueuedWork.execute(new Runnable() {
                 public void run() {
                     mTelephonyManager.setOpportunisticNetworkState(state);
-                    mCbrsDataSwitch.setChecked(getCbrsDataState());
+                    mHandler.post(() -> mCbrsDataSwitch.setChecked(getCbrsDataState()));
                 }
             });
         }
