@@ -30,6 +30,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.os.UserHandle;
 import android.sysprop.TelephonyProperties;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -106,7 +107,8 @@ public class EmergencyCallbackModeService extends Service {
             mPhone.unregisterForEcmTimerReset(mHandler);
 
             // Cancel the notification and timer
-            mNotificationManager.cancel(R.string.phone_in_ecm_notification_title);
+            mNotificationManager.cancelAsUser(null, R.string.phone_in_ecm_notification_title,
+                    UserHandle.ALL);
             mTimer.cancel();
         }
     }
@@ -213,7 +215,8 @@ public class EmergencyCallbackModeService extends Service {
         builder.setChannelId(NotificationChannelController.CHANNEL_ID_ALERT);
 
         // Show notification
-        mNotificationManager.notify(R.string.phone_in_ecm_notification_title, builder.build());
+        mNotificationManager.notifyAsUser(null, R.string.phone_in_ecm_notification_title,
+                builder.build(), UserHandle.ALL);
     }
 
     /**
