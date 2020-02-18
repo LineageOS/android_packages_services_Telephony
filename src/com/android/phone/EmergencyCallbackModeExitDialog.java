@@ -300,8 +300,14 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnCance
             return String.format(getResources().getQuantityText(
                     R.plurals.alert_dialog_not_avaialble_in_ecm, minutes).toString(), time);
         case EXIT_ECM_DIALOG:
-            return String.format(getResources().getQuantityText(R.plurals.alert_dialog_exit_ecm,
-                    minutes).toString(), time);
+                boolean shouldRestrictData = mPhone.getImsPhone() != null
+                        && mPhone.getImsPhone().isInImsEcm();
+                return String.format(getResources().getQuantityText(
+                        // During IMS ECM, data restriction hint should be removed.
+                        shouldRestrictData
+                        ? R.plurals.alert_dialog_exit_ecm_without_data_restriction_hint
+                        : R.plurals.alert_dialog_exit_ecm,
+                        minutes).toString(), time);
         }
         return null;
     }
