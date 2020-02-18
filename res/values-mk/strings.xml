@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Мобилен интернет"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Телефонски услуги"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Бирач за итни случаи"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Телефон"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"FDN список"</string>
     <string name="unknown" msgid="8279698889921830815">"Непознато"</string>
     <string name="private_num" msgid="4487990167889159992">"Приватен број"</string>
     <string name="payphone" msgid="7936735771836716941">"Говорница"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"Да се користи <xliff:g id="NEW_SIM">%1$s</xliff:g> наместо <xliff:g id="OLD_SIM">%2$s</xliff:g> за мобилен интернет?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Повикување преку Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Видеоповикување преку оператор"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"Опции за GSM/UMTS"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"Опции на CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Потрошен интернет"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Податоци кои се користат во тековниот период"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Период на потрошен интернет"</string>
@@ -343,7 +348,7 @@
     <string name="list_language_title" msgid="1850167908665485738">"Јазик"</string>
     <string name="list_language_summary" msgid="7921756070782277559">"Изберете јазик за вести"</string>
   <string-array name="list_language_entries">
-    <item msgid="2347238508726934281">"Англиски"</item>
+    <item msgid="2347238508726934281">"англиски"</item>
     <item msgid="5172468397620875174">"Француски"</item>
     <item msgid="3978110664146015398">"Шпански"</item>
     <item msgid="2637764545851526369">"Јапонски"</item>
@@ -467,6 +472,7 @@
     <string name="fdn_failed" msgid="216592346853420250">"Операцијата со FDN не успеа."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Се чита од SIM картичка..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"Нема контакти на вашата SIM картичка."</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"Избери контакти за увоз"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Исклучете го авионскиот режим за да ги увезете контактите од SIM-картичката."</string>
     <string name="enable_pin" msgid="967674051730845376">"Овозможи/оневозможи PIN на SIM"</string>
     <string name="change_pin" msgid="3657869530942905790">"Промени PIN на SIM"</string>

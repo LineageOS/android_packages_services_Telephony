@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"မိုဘိုင်းဒေတာ"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"ဖုန်းဝန်ဆောင်မှုများ"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"အရေးပေါ်နံပါတ်ခေါ်ဆိုနံပါတ်ကွက်"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"ဖုန်း"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"FDN စာရင်း"</string>
     <string name="unknown" msgid="8279698889921830815">"မသိပါ"</string>
     <string name="private_num" msgid="4487990167889159992">"လျို့ဝှက် နံပါတ်"</string>
     <string name="payphone" msgid="7936735771836716941">"ငွေပေးရသည့်ဖုန်း"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"မိုဘိုင်းဒေတာအတွက် <xliff:g id="OLD_SIM">%2$s</xliff:g> အစား <xliff:g id="NEW_SIM">%1$s</xliff:g> ကို အသုံးပြုမလား။"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi ခေါ်ဆိုခြင်း"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"ဝန်ဆောင်မှုပေးသူ၏ ဗီဒီယိုခေါ်ဆိုခြင်း"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS ရွေးချယ်မှုများ"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"CDMA ရွေးချယ်စရာများ"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"ဒေတာအသုံးပြုမှု"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"လက်ရှိကာလတွင် အသုံးပြုသော ဒေတာ"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"ဒေတာအသုံးပြုမှုသတ်မှတ်ကာလ"</string>
@@ -465,6 +470,7 @@
     <string name="fdn_failed" msgid="216592346853420250">"FDN လုပ်ဆောင်ချက် မအောင်မြင်ပါ"</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"ဆင်းမ်ကဒ်မှ ဖတ်နေပါသည်..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"ဆင်းမ်ကဒ်ထဲတွင် လိပ်စာများ မရှိပါ"</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"ထည့်ယူရန် လိပ်စာများ ရွေးပါ"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"SIM ကဒ်မှ အဆက်အသွယ်များ သွင်းယူရန် လေယာဉ်ပျံမုဒ် ပိတ်ထားပါ။"</string>
     <string name="enable_pin" msgid="967674051730845376">"ဆင်းမ် ပင်နံပါတ်ကို ပယ်ဖျက်၊ပြုလုပ်ရန်"</string>
     <string name="change_pin" msgid="3657869530942905790">"ဆင်းမ်ကဒ် ပင်နံပါတ်ပြောင်းရန်"</string>

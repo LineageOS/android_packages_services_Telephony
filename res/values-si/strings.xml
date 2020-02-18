@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"ජංගම දත්ත"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"දුරකථන සේවා"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"හදිසි අමතනය"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"දුරකථනය"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"FDN ලැයිස්තුව"</string>
     <string name="unknown" msgid="8279698889921830815">"නොදනී"</string>
     <string name="private_num" msgid="4487990167889159992">"පුද්ගලික අංකය"</string>
     <string name="payphone" msgid="7936735771836716941">"පේෆෝනය"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"ජංගම දත්ත සඳහා <xliff:g id="NEW_SIM">%1$s</xliff:g> <xliff:g id="OLD_SIM">%2$s</xliff:g> වෙනුවට භාවිත කරන්නද?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi ඇමතීම"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"වාහක වීඩියෝ ඇමතීම"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS විකල්ප"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"CDMA විකල්ප"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"දත්ත භාවිතය"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"වත්මන් කාල සීමාව තුළ භාවිතා කරන ලද දත්ත"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"දත්ත භාවිතා කාල සීමාව"</string>
@@ -465,6 +470,7 @@
     <string name="fdn_failed" msgid="216592346853420250">"FDN ක්‍රියාවලිය අසමත්."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"SIM කාඩ් පතෙන් කියවමින්…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"ඔබගේ SIM පතෙහි සම්බන්ධතා නොමැත."</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"ආයාත කිරීමට සම්බන්ධතා තෝරන්න"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"සිම් කාඩ් සම්බන්ධතා ආනයනය කිරීමට ගුවන් යානා මෝඩය අක්‍රිය කරන්න."</string>
     <string name="enable_pin" msgid="967674051730845376">"SIM PIN සබල/අබල කරන්න"</string>
     <string name="change_pin" msgid="3657869530942905790">"SIM PIN වෙනස් කරන්න"</string>

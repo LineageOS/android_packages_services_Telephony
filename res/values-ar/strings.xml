@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"بيانات الجوال"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"خدمات الهاتف"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"طالب الطوارئ"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"الهاتف"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"قائمة أرقام الطلب الثابتة"</string>
     <string name="unknown" msgid="8279698889921830815">"غير معروف"</string>
     <string name="private_num" msgid="4487990167889159992">"رقم خاص"</string>
     <string name="payphone" msgid="7936735771836716941">"هاتف يعمل بالعملة"</string>
@@ -125,7 +128,7 @@
     <string name="call_settings_with_label" msgid="8460230435361579511">"الإعدادات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"خطأ في إعدادات الاتصال"</string>
     <string name="reading_settings" msgid="1605904432450871183">"جارٍ قراءة الإعدادات..."</string>
-    <string name="updating_settings" msgid="3650396734816028808">"جارٍ تحديث الإعدادات..."</string>
+    <string name="updating_settings" msgid="3650396734816028808">"جارٍ إعادة تحميل الإعدادات..."</string>
     <string name="reverting_settings" msgid="7378668837291012205">"جارٍ إعادة الإعدادات..."</string>
     <string name="response_error" msgid="3904481964024543330">"رد غير متوقع من الشبكة."</string>
     <string name="exception_error" msgid="330994460090467">"‏خطأ في الشبكة أو في شريحة SIM"</string>
@@ -138,7 +141,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"موافق"</string>
     <string name="enable" msgid="2636552299455477603">"تفعيل"</string>
     <string name="disable" msgid="1122698860799462116">"إيقاف"</string>
-    <string name="change_num" msgid="6982164494063109334">"تحديث"</string>
+    <string name="change_num" msgid="6982164494063109334">"إعادة تحميل"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"الشبكة التلقائية"</item>
     <item msgid="6813323051965618926">"إخفاء الرقم"</item>
@@ -291,12 +294,14 @@
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"بيانات الجوّال"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"الوصول إلى البيانات باستخدام شبكة الجوّال"</string>
-    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"هل تريد إيقاف تشغيل بيانات الجوّال؟"</string>
+    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"هل تريد إيقاف تفعيل بيانات الجوّال؟"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"يلزم التحديد"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"‏هل تريد تغيير شريحة SIM للبيانات؟"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"هل تريد استخدام <xliff:g id="NEW_SIM">%1$s</xliff:g> بدلاً من <xliff:g id="OLD_SIM">%2$s</xliff:g> لبيانات الجوّال؟"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"‏الاتصال عبر Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"مكالمة فيديو باستخدام مشغل شبكة الجوال"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"‏خيارات نظام GSM/النظام العالمي لاتصالات الجوال عن بعد (UMTS)"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"‏خيارات CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"استخدام البيانات"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"البيانات المستخدمة في المدة الحالية"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"مدة استخدام البيانات"</string>
@@ -454,17 +459,18 @@
     <string name="adding_fdn_contact" msgid="3112531600824361259">"جارٍ إضافة رقم الاتصال الثابت..."</string>
     <string name="fdn_contact_added" msgid="2840016151693394596">"تمت إضافة رقم الاتصال الثابت."</string>
     <string name="edit_fdn_contact" msgid="6030829994819587408">"تعديل رقم الاتصال الثابت"</string>
-    <string name="updating_fdn_contact" msgid="6989341376868227150">"جارٍ تحديث رقم الاتصال الثابت..."</string>
-    <string name="fdn_contact_updated" msgid="6876330243323118937">"تم تحديث رقم الاتصال الثابت."</string>
+    <string name="updating_fdn_contact" msgid="6989341376868227150">"جارٍ إعادة تحميل رقم الاتصال الثابت..."</string>
+    <string name="fdn_contact_updated" msgid="6876330243323118937">"تم إعادة تحميل رقم الاتصال الثابت."</string>
     <string name="delete_fdn_contact" msgid="7027405651994507077">"حذف رقم الاتصال الثابت"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"جارٍ حذف رقم الاتصال الثابت..."</string>
     <string name="fdn_contact_deleted" msgid="1680714996763848838">"تم حذف رقم الاتصال الثابت."</string>
-    <string name="pin2_invalid" msgid="2313954262684494442">"‏لم يتم تحديث FDN لأنك كتبت رقم تعريف شخصي غير صحيح."</string>
-    <string name="fdn_invalid_number" msgid="9067189814657840439">"‏لم يتم تحديث FDN نظرًا لأن الرقم يتجاوز طوله <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> رقمًا."</string>
-    <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"‏لم يتم تحديث FDN. رقم PIN2 غير صحيح، أو تم رفض رقم الهاتف."</string>
+    <string name="pin2_invalid" msgid="2313954262684494442">"‏لم يتم إعادة تحميل FDN لأنك كتبت رقم تعريف شخصي غير صحيح."</string>
+    <string name="fdn_invalid_number" msgid="9067189814657840439">"‏لم يتم إعادة تحميل FDN نظرًا لأن الرقم يتجاوز طوله <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> رقمًا."</string>
+    <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"‏لم يتم إعادة تحميل FDN. رقم PIN2 غير صحيح، أو تم رفض رقم الهاتف."</string>
     <string name="fdn_failed" msgid="216592346853420250">"‏تعذّر إتمام عملية FDN!"</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"‏جارٍ القراءة من شريحة SIM..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"‏ليس هناك جهات اتصال على شريحة SIM."</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"حدد جهات اتصال لاستيرادها"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"‏عليك إيقاف وضع الطائرة لاستيراد جهات الاتصال من شريحة SIM."</string>
     <string name="enable_pin" msgid="967674051730845376">"‏تفعيل/إيقاف رمز PIN لبطاقة SIM"</string>
     <string name="change_pin" msgid="3657869530942905790">"‏تغيير رمز PIN لبطاقة SIM"</string>
@@ -481,7 +487,7 @@
     <string name="enable_pin_ok" msgid="2877428038280804256">"تم تعيين رقم التعريف الشخصي"</string>
     <string name="disable_pin_ok" msgid="888505244389647754">"تم محو رقم التعريف الشخصي"</string>
     <string name="pin_failed" msgid="4527347792881939652">"رقم التعريف الشخصي غير صحيح"</string>
-    <string name="pin_changed" msgid="7291153750090452808">"تم تحديث رقم التعريف الشخصي"</string>
+    <string name="pin_changed" msgid="7291153750090452808">"تم إعادة تحميل رقم التعريف الشخصي"</string>
     <string name="puk_requested" msgid="2061337960609806851">"‏كلمة المرور غير صحيحة. تم قفل رقم التعريف الشخصي الآن. رمز PUK مطلوب."</string>
     <string name="enter_pin2_text" msgid="7266379426804295979">"PIN2"</string>
     <string name="oldPin2Label" msgid="4648543187859997203">"‏PIN2 القديم"</string>
@@ -492,7 +498,7 @@
     <string name="mismatchPin2" msgid="4952718725266700631">"‏رمزا PIN2 غير متطابقين. أعد المحاولة."</string>
     <string name="invalidPin2" msgid="6467957903056379343">"‏أدخل رمز PIN2 المكوّن من 4 إلى 8 أرقام."</string>
     <string name="invalidPuk2" msgid="713729511903849544">"‏أدخل رمز PUK2 المكوّن من 8 أرقام."</string>
-    <string name="pin2_changed" msgid="5710551850481287821">"‏تم تحديث رمز PIN2"</string>
+    <string name="pin2_changed" msgid="5710551850481287821">"‏تم إعادة تحميل رمز PIN2"</string>
     <string name="label_puk2_code" msgid="2852217004288085562">"‏أدخل رمز PUK2"</string>
     <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"‏كلمة المرور غير صحيحة. أصبح PIN2 محظور  الآن. لإعادة المحاولة، عليك تغيير PIN2."</string>
     <string name="puk2_requested" msgid="6992374450720307514">"‏كلمة المرور غير صحيحة. تم قفل شريحة SIM الآن. أدخل رمز PUK2."</string>
@@ -516,7 +522,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"رقم البريد الصوتي غير معروف"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"لا خدمة"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"الشبكة المحدّدة (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) غير مُتاحة"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"شغَّل شبكة الجوال، ثم أوقف تشغيل وضع الطائرة أو أوقف تشغيل وضع توفير شحن البطارية لإجراء مكالمة."</string>
+    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"شغَّل شبكة الجوال، ثم أوقف تفعيل وضع الطائرة أو أوقف تفعيل وضع توفير شحن البطارية لإجراء مكالمة."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"عليك إيقاف وضع الطائرة لإجراء مكالمة."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"عليك إيقاف وضع الطائرة أو الاتصال بشبكة لاسلكية لإجراء مكالمة."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ينبغي الخروج من وضع معاودة الاتصال بالطوارئ لإجراء مكالمة غير طارئة."</string>
@@ -544,7 +550,7 @@
     <string name="single_emergency_number_title" msgid="8413371079579067196">"رقم الطوارئ"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"أرقام الطوارئ"</string>
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"انقر مجددًا للاتصال بالرقم <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
-    <string name="emergency_enable_radio_dialog_message" msgid="1695305158151408629">"جارٍ تشغيل اللاسلكي..."</string>
+    <string name="emergency_enable_radio_dialog_message" msgid="1695305158151408629">"جارٍ تفعيل اللاسلكي..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="4329131876852608587">"لا تتوفر خدمة. جارٍ إعادة المحاولة…"</string>
     <string name="radio_off_during_emergency_call" msgid="8011154134040481609">"لا يمكن دخول وضع الطائرة أثناء إجراء مكالمة طوارئ."</string>
     <string name="dial_emergency_error" msgid="825822413209026039">"يتعذر الاتصال. لا يعد <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> رقم طوارئ."</string>
@@ -686,9 +692,9 @@
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"ينبغي لرقم التعريف الشخصي أن يتكون من <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> أرقام."</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"تأكيد رقم التعريف الشخصي"</string>
     <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"أرقام التعريف الشخصي غير متطابقة"</string>
-    <string name="change_pin_succeeded" msgid="2504705600693014403">"تمّ تحديث رقم التعريف الشخصي للبريد الصوتي"</string>
+    <string name="change_pin_succeeded" msgid="2504705600693014403">"تمّ إعادة تحميل رقم التعريف الشخصي للبريد الصوتي"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"يتعذر تعيين رقم التعريف الشخصي"</string>
-    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"تم إيقاف تشغيل تجوال البيانات"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"تم إيقاف تفعيل تجوال البيانات"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="5615757897768777865">"تم تشغيل تجوال البيانات"</string>
     <string name="mobile_data_status_roaming_without_plan_subtext" msgid="6536671968072284677">"التجوال قيد التشغيل حاليًا، يتطلب خطة بيانات"</string>
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="2576177169108123095">"التجوال قيد التشغيل حاليًا، خطة البيانات نشطة"</string>
@@ -865,7 +871,7 @@
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"‏معدّل نقل بيانات UL (كيلوبت في الثانية):"</string>
     <string name="radio_info_signal_location_label" msgid="6188435197086550049">"معلومات الموقع الخلوية (تم الإيقاف):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"‏ضبط قناة LTE Physical:"</string>
-    <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"معدّل تحديث المعلومات الخلوية:"</string>
+    <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"معدّل إعادة تحميل المعلومات الخلوية:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"جميع معلومات القياس الخلوية:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"خدمة البيانات:"</string>
     <string name="radio_info_roaming_label" msgid="6636932886446857120">"التجوال:"</string>
