@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Idatha Yeselula"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Amasevisi wefoni"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Ukudayela Okuphuthumayo"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Ifoni"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"Uhlu lwe-FDN"</string>
     <string name="unknown" msgid="8279698889921830815">"Akwaziwa"</string>
     <string name="private_num" msgid="4487990167889159992">"Inombolo eyimfihlo"</string>
     <string name="payphone" msgid="7936735771836716941">"Ucingo olufakwa imali"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"Sebenzisa i-<xliff:g id="NEW_SIM">%1$s</xliff:g> esikhundleni se-<xliff:g id="OLD_SIM">%2$s</xliff:g> kudatha yeselula?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Ukushaya kwe-Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Ukushaya kwevidiyo kwenkampani yenethiwekhi"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"Okukhethwa kukho kwe-GSM/UMTS"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"Okukhethwa kukho kwe-CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Ukusebenzisa idatha"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Idatha esebenziswe esikhathini samanje"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Isikhathi sokusebenzisa idatha"</string>
@@ -467,6 +472,7 @@
     <string name="fdn_failed" msgid="216592346853420250">"Umsebenzi we-FDN wehlulekile."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Ifunda ekhadini le-SIM..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"Abekho othintana nabo ekhadini lakho le-SIM"</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"Khetha othintana nabo ozobangenisa"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Vala imodi yendiza ukuze ungenise oxhumana nabo kusukela kukhadi le-SIM."</string>
     <string name="enable_pin" msgid="967674051730845376">"Vumela/Vima i-PIN ye-SI&lt;M"</string>
     <string name="change_pin" msgid="3657869530942905790">"Shintsha i-PIN ye-SIM"</string>
