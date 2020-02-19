@@ -848,17 +848,17 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.UNOBTAINABLE_NUMBER:
                 return ToneGenerator.TONE_SUP_ERROR;
 
+            case android.telephony.DisconnectCause.IMS_MERGED_SUCCESSFULLY:
+                // Do not play any tones if disconnected because of a successful merge.
+                return -1;
+
             case android.telephony.DisconnectCause.ERROR_UNSPECIFIED:
             case android.telephony.DisconnectCause.LOCAL:
             case android.telephony.DisconnectCause.NORMAL:
             case android.telephony.DisconnectCause.NORMAL_UNSPECIFIED:
             case android.telephony.DisconnectCause.VIDEO_CALL_NOT_ALLOWED_WHILE_TTY_ENABLED:
-                return ToneGenerator.TONE_PROP_PROMPT;
-
-            case android.telephony.DisconnectCause.IMS_MERGED_SUCCESSFULLY:
-                // Do not play any tones if disconnected because of a successful merge.
             default:
-                return -1;
+                return ToneGenerator.TONE_PROP_PROMPT;
         }
     }
 }
