@@ -908,12 +908,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) ar.userObj;
                     int callForwardingStatus = TelephonyManager.CALL_WAITING_STATUS_UNKNOWN_ERROR;
                     if (ar.exception == null && ar.result != null) {
-                        ArrayList<Integer> callForwardResults = (ArrayList<Integer>) ar.result;
+                        int[] callForwardResults = (int[]) ar.result;
                         // Service Class is a bit mask per 3gpp 27.007.
                         // Search for any service for voice call.
-                        if ((callForwardResults.get(1)
-                                & CommandsInterface.SERVICE_CLASS_VOICE) > 0) {
-                            callForwardingStatus = callForwardResults.get(0) == 0
+                        if (callForwardResults.length > 1
+                                && ((callForwardResults[1]
+                                        & CommandsInterface.SERVICE_CLASS_VOICE) > 0)) {
+                            callForwardingStatus = callForwardResults[0] == 0
                                     ? TelephonyManager.CALL_WAITING_STATUS_INACTIVE
                                             : TelephonyManager.CALL_WAITING_STATUS_ACTIVE;
                         } else {
