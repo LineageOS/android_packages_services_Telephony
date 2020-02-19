@@ -956,6 +956,58 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     }
 
     @Override
+    public void onTransfer(Uri number, boolean isConfirmationRequired) {
+        Log.v(this, "onTransfer");
+        if (mOriginalConnection != null) {
+            if (number == null) {
+                Log.w(this, "call transfer uri is null");
+                return;
+            }
+            String scheme = number.getScheme();
+            String transferNumber = "";
+            String uriString = number.getSchemeSpecificPart();
+            if (!PhoneAccount.SCHEME_VOICEMAIL.equals(scheme)) {
+                if (!PhoneAccount.SCHEME_TEL.equals(scheme)) {
+                    Log.w(this, "onTransfer, number scheme is not of type tel instead: "
+                            + scheme);
+                    return;
+                }
+                if (PhoneNumberUtils.isUriNumber(uriString)) {
+                    Log.w(this, "Invalid transfer address. Not a legal PSTN number.");
+                    return;
+                }
+                transferNumber = PhoneNumberUtils.convertAndStrip(uriString);
+                if (TextUtils.isEmpty(transferNumber)) {
+                    Log.w(this, "Empty transfer number obtained from uri");
+                    return;
+                }
+            } else {
+                Log.w(this, "Cannot transfer to voicemail uri");
+                return;
+            }
+
+            try {
+                mOriginalConnection.transfer(transferNumber, isConfirmationRequired);
+            } catch (CallStateException e) {
+                Log.e(this, e, "Failed to transfer call.");
+            }
+        }
+    }
+
+    @Override
+    public void onTransfer(Connection otherConnection) {
+        Log.v(this, "onConsultativeTransfer");
+        if (mOriginalConnection != null && (otherConnection instanceof TelephonyConnection)) {
+            try {
+                mOriginalConnection.consultativeTransfer(
+                        ((TelephonyConnection) otherConnection).getOriginalConnection());
+            } catch (CallStateException e) {
+                Log.e(this, e, "Failed to transfer call.");
+            }
+        }
+    }
+
+    @Override
     public void onPostDialContinue(boolean proceed) {
         Log.v(this, "onPostDialContinue, proceed: " + proceed);
         if (mOriginalConnection != null) {
@@ -1183,7 +1235,12 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         newCapabilities = applyConferenceTerminationCapabilities(newCapabilities);
         newCapabilities = changeBitmask(newCapabilities, CAPABILITY_SUPPORT_DEFLECT,
                 isImsConnection() && canDeflectImsCalls());
+
         newCapabilities = applyAddParticipantCapabilities(newCapabilities);
+        newCapabilities = changeBitmask(newCapabilities, CAPABILITY_TRANSFER_CONSULTATIVE,
+                isImsConnection() && canConsultativeTransfer());
+        newCapabilities = changeBitmask(newCapabilities, CAPABILITY_TRANSFER,
+                isImsConnection() && canTransferToNumber());
 
         if (getConnectionCapabilities() != newCapabilities) {
             setConnectionCapabilities(newCapabilities);
@@ -1698,6 +1755,50 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                     isValidRingingCall();
         }
         return false;
+    }
+
+    private boolean isCallTransferSupported() {
+        PersistableBundle b = getCarrierConfig();
+        // Return false if the CarrierConfig is unavailable
+        if (b != null) {
+            return b.getBoolean(CarrierConfigManager.KEY_CARRIER_ALLOW_TRANSFER_IMS_CALL_BOOL);
+        }
+        return false;
+    }
+
+    private boolean canTransfer(TelephonyConnection c) {
+        com.android.internal.telephony.Connection connection = c.getOriginalConnection();
+        return (connection != null && !connection.isMultiparty()
+                && (c.getState() == STATE_ACTIVE || c.getState() == STATE_HOLDING));
+    }
+
+    private boolean canTransferToNumber() {
+        if (!isCallTransferSupported()) {
+            return false;
+        }
+        return canTransfer(this);
+    }
+
+    private boolean canConsultativeTransfer() {
+        if (!isCallTransferSupported()) {
+            return false;
+        }
+        if (!canTransfer(this)) {
+            return false;
+        }
+        boolean canConsultativeTransfer = false;
+        if (getTelephonyConnectionService() != null) {
+            for (Connection current : getTelephonyConnectionService().getAllConnections()) {
+                if (current != this && current instanceof TelephonyConnection) {
+                    TelephonyConnection other = (TelephonyConnection) current;
+                    if (canTransfer(other)) {
+                        canConsultativeTransfer = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return canConsultativeTransfer;
     }
 
     /**
