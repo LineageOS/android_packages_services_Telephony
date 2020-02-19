@@ -35,7 +35,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.ComponentInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.net.NetworkStats;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Binder;
@@ -7155,33 +7154,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throws RemoteException {
         (new TelephonyShellCommand(this, getDefaultPhone().getContext()))
                 .exec(this, in, out, err, args, callback, resultReceiver);
-    }
-
-    /**
-     * Get aggregated video call data usage since boot.
-     *
-     * @param perUidStats True if requesting data usage per uid, otherwise overall usage.
-     * @return Snapshot of video call data usage
-     * {@hide}
-     */
-    @Override
-    public NetworkStats getVtDataUsage(int subId, boolean perUidStats) {
-        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_NETWORK_USAGE_HISTORY,
-                null);
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            // NetworkStatsService keeps tracking the active network interface and identity. It
-            // records the delta with the corresponding network identity.
-            // We just return the total video call data usage snapshot since boot.
-            Phone phone = getPhone(subId);
-            if (phone != null) {
-                return phone.getVtDataUsage(perUidStats);
-            }
-            return null;
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
     }
 
     /**
