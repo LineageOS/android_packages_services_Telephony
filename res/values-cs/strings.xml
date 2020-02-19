@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Mobilní data"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Telefonní služby"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Tísňové volání"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Telefon"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"Seznam povolených čísel"</string>
     <string name="unknown" msgid="8279698889921830815">"Neznámý volající"</string>
     <string name="private_num" msgid="4487990167889159992">"Soukromé číslo"</string>
     <string name="payphone" msgid="7936735771836716941">"Telefonní automat"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"Chcete pro mobilní data místo SIM karty <xliff:g id="NEW_SIM">%1$s</xliff:g> používat SIM kartu <xliff:g id="OLD_SIM">%2$s</xliff:g>?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Volání přes Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Videohovory přes operátora"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"Možnosti GSM/UMTS"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"Možnosti CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Využití dat"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Data využitá v aktuálním období"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Období využití dat"</string>
@@ -465,6 +470,7 @@
     <string name="fdn_failed" msgid="216592346853420250">"Operace s čísly FDN se nezdařila."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Čtení ze SIM karty..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"Na SIM kartě nejsou žádné kontakty."</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"Kontakty pro import"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Chcete-li importovat kontakty ze SIM karty, vypněte režim Letadlo."</string>
     <string name="enable_pin" msgid="967674051730845376">"Povolit nebo zakázat PIN SIM karty"</string>
     <string name="change_pin" msgid="3657869530942905790">"Změnit PIN SIM karty"</string>

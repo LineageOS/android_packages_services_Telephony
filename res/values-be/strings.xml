@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Mobile Data"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Тэлефонныя службы"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Экстраныя выклікі"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Тэлефон"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"Спіс FDN"</string>
     <string name="unknown" msgid="8279698889921830815">"Невядомы"</string>
     <string name="private_num" msgid="4487990167889159992">"Прыватны нумар"</string>
     <string name="payphone" msgid="7936735771836716941">"Таксафон"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"Выкарыстоўваць <xliff:g id="NEW_SIM">%1$s</xliff:g> замест <xliff:g id="OLD_SIM">%2$s</xliff:g> для мабільнай перадачы даных?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi-тэлефанія"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Відэавыклікі праз аператара"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"Параметры GSM/UMTS"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"Параметры CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Выкарыстанне трафіку"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Выкарыстанне даных у бягучы перыяд"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Перыяд выкарыстання дадзеных"</string>
@@ -465,6 +470,7 @@
     <string name="fdn_failed" msgid="216592346853420250">"Аперацыя ў закрытай абаненцкай групе не ўдалася."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Чытанне з SIM-карты..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"На вашай SIM-карце няма кантактаў."</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"Выберыце кантакты для імпарту"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Адключыце рэжым палёту, каб імпартаваць кантакты з SIM-карты."</string>
     <string name="enable_pin" msgid="967674051730845376">"Уключэнне/адключэнне PIN-коду SIM-карты"</string>
     <string name="change_pin" msgid="3657869530942905790">"Змена PIN-коду SIM-карты"</string>
@@ -574,7 +580,7 @@
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Імпартаваны кантакт"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Не ўдалося імпартаваць кантакт"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"Слыхавы апарат"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Уключыць функцыю сумяшчальнасці са слыхавым апаратам"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Уключыць функцыю сумяшчальнасці са слыхавымі апаратамі"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Выклік з тэкстам у рэальным часе (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Дазволіць абмен паведамленнямі ў галасавых выкліках"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"Функцыя RTT дапамагае абанентам з парушэннямі слыху і маўлення.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Даведацца больш&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-выклікі захоўваюцца ў выглядзе расшыфроўкі паведамленняў\n       &lt;br&gt; - Функцыя RTT недаступная для відэавыклікаў"</string>

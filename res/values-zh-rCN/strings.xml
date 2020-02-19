@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"移动数据"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"电话服务"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"紧急拨号器"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"电话"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"固定拨号列表"</string>
     <string name="unknown" msgid="8279698889921830815">"未知"</string>
     <string name="private_num" msgid="4487990167889159992">"私密号码"</string>
     <string name="payphone" msgid="7936735771836716941">"公用电话"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"要将用于移动数据网络的 SIM 卡从“<xliff:g id="OLD_SIM">%2$s</xliff:g>”改为“<xliff:g id="NEW_SIM">%1$s</xliff:g>”吗？"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"WLAN 通话"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"运营商视频通话"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS 选项"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"CDMA 选项"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"流量使用"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"当前时段使用的数据"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"数据使用时段"</string>
@@ -465,6 +470,7 @@
     <string name="fdn_failed" msgid="216592346853420250">"固定拨号操作失败。"</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"正在从SIM卡读取..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"SIM卡上无联系人。"</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"选择要导入的联系人"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"需关闭飞行模式才能导入 SIM 卡中的联系人。"</string>
     <string name="enable_pin" msgid="967674051730845376">"启用/停用 SIM 卡 PIN 码"</string>
     <string name="change_pin" msgid="3657869530942905790">"更改 SIM 卡 PIN 码"</string>

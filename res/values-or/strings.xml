@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"ମୋବାଇଲ୍‌ ଡାଟା"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"ଫୋନ୍ ସେବା"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"ଜରୁରୀକାଳିନ ଡାଏଲର୍"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"ଫୋନ୍"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"FDN ତାଲିକା"</string>
     <string name="unknown" msgid="8279698889921830815">"ଅଜଣା"</string>
     <string name="private_num" msgid="4487990167889159992">"ବ୍ୟକ୍ତିଗତ ନମ୍ବର୍"</string>
     <string name="payphone" msgid="7936735771836716941">"ପେ-ଫୋନ୍"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"ମୋବାଇଲ୍‌ ଡାଟା ପାଇଁ <xliff:g id="OLD_SIM">%2$s</xliff:g> ବଦଳରେ <xliff:g id="NEW_SIM">%1$s</xliff:g> ବ୍ୟବହାର କରିବେ?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"ୱାଇ-ଫାଇ କଲିଙ୍ଗ"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"କେରିଅର୍ ଭିଡିଓ କଲିଙ୍ଗ"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS ବିକଳ୍ପ"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"CDMA ବିକଳ୍ପ"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"ଡାଟାର ବ୍ୟବହାର"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"ବର୍ତ୍ତମାନ ସମୟରେ ବ୍ୟବହାର ହୋ‌ଇଥିବା ଡାଟା"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"ଡାଟା ବ୍ୟବହାର ହୋ‌ଇଥିବା ଅବଧି"</string>
@@ -465,6 +470,7 @@
     <string name="fdn_failed" msgid="216592346853420250">"FDN ଅପରେଶନ୍ ବିଫଳ ହେଲା।"</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"SIM କାର୍ଡରୁ ପଢ଼ାଯାଉଛି…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"ଆପଣଙ୍କ SIM କାର୍ଡରେ କୌଣସି ଯୋଗାଯୋଗ ନାହିଁ।"</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"ଇମ୍ପୋର୍ଟ କରିବା ପାଇଁ ଯୋଗାଯୋଗକୁ ଚୟନ କରନ୍ତୁ"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"SIM କାର୍ଡରୁ ଯୋଗାଯୋଗକୁ ଇମ୍ପୋର୍ଟ କରିବାବେଳେ ଏୟାରପ୍ଲେନ୍ ମୋଡ୍‌କୁ ବନ୍ଦ କରନ୍ତୁ।"</string>
     <string name="enable_pin" msgid="967674051730845376">"SIM PINକୁ ସକ୍ଷମ/ଅକ୍ଷମ କରନ୍ତୁ"</string>
     <string name="change_pin" msgid="3657869530942905790">"ସିମ୍‌ ପିନ୍‌ ବଦାଳନ୍ତୁ"</string>

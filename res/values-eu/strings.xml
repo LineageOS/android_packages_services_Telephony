@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Datu-konexioa"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Telefonoaren zerbitzuak"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Larrialdietarako telefonoa"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Telefonoa"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"Markatze finkoko zenbakien zerrenda"</string>
     <string name="unknown" msgid="8279698889921830815">"Ezezaguna"</string>
     <string name="private_num" msgid="4487990167889159992">"Zenbaki pribatua"</string>
     <string name="payphone" msgid="7936735771836716941">"Telefono publikoa"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"Datu-konexiorako, <xliff:g id="NEW_SIM">%1$s</xliff:g> txartela erabili nahi duzu <xliff:g id="OLD_SIM">%2$s</xliff:g> txartelaren ordez?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi bidezko deiak"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Operadorearen bideo-deiak"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS aukerak"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"CDMA aukerak"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Datuen erabilera"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Une honetan erabilitako datuak"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Datuak erabiltzeko epea"</string>
@@ -426,13 +431,13 @@
     <string name="fdn_with_label" msgid="6412087553365709494">"Markatze finkoko zenbakiak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="3341716430375195441">"Markatze finkoko zenbakien zerrenda"</string>
     <string name="fdn_list_with_label" msgid="1409655283510382556">"Markatze finkoko zenbakiak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="fdn_activation" msgid="2178637004710435895">"FDN aktibazioa"</string>
+    <string name="fdn_activation" msgid="2178637004710435895">"Markatze finkoko zenbakiaren aktibazioa"</string>
     <string name="fdn_enabled" msgid="7017355494808056447">"Markatze finkoko zenbakiak gaituta daude"</string>
     <string name="fdn_disabled" msgid="6696468878037736600">"Markatze finkoko zenbakiak desgaituta daude"</string>
     <string name="enable_fdn" msgid="4830555730418033723">"Gaitu markatze finkoko zenbakiak"</string>
-    <string name="disable_fdn" msgid="3918794950264647541">"Desgaitu FDN"</string>
+    <string name="disable_fdn" msgid="3918794950264647541">"Desgaitu markatze finkoko zenbakia"</string>
     <string name="change_pin2" msgid="3110844547237754871">"Aldatu PIN2 kodea"</string>
-    <string name="enable_fdn_ok" msgid="5080925177369329827">"Desgaitu FDN"</string>
+    <string name="enable_fdn_ok" msgid="5080925177369329827">"Desgaitu markatze finkoko zenbakia"</string>
     <string name="disable_fdn_ok" msgid="3745475926874838676">"Gaitu markatze finkoko zenbakiak"</string>
     <string name="sum_fdn" msgid="6152246141642323582">"Kudeatu Markatze finkoko zenbakiak"</string>
     <string name="sum_fdn_change_pin" msgid="3510994280557335727">"Aldatu markatze finkoko zenbakien PIN kodea"</string>
@@ -461,12 +466,13 @@
     <string name="delete_fdn_contact" msgid="7027405651994507077">"Ezabatu markatze finkoko zenbakia"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"Markatze finkoko zenbakia ezabatzen…"</string>
     <string name="fdn_contact_deleted" msgid="1680714996763848838">"Markatze finkoko zenbakia ezabatu da."</string>
-    <string name="pin2_invalid" msgid="2313954262684494442">"Ez da FDN eguneratu PIN kode okerra idatzi duzulako."</string>
-    <string name="fdn_invalid_number" msgid="9067189814657840439">"Ez da eguneratu FDNa, zenbakiak <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> digitu baino gehiago dituelako."</string>
-    <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"Ez da FDN eguneratu. PIN2 kodea ez da zuzena edo telefono-zenbakia baztertu da."</string>
-    <string name="fdn_failed" msgid="216592346853420250">"FDN eragiketak huts egin du."</string>
+    <string name="pin2_invalid" msgid="2313954262684494442">"Ez da eguneratu markatze finkoko zenbakia, PIN kode okerra idatzi duzulako."</string>
+    <string name="fdn_invalid_number" msgid="9067189814657840439">"Ez da eguneratu markatze finkoko zenbakia, zenbakiak <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> digitu baino gehiago dituelako."</string>
+    <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"Ez da eguneratu markatze finkoko zenbakia. PIN2 kodea ez da zuzena edo telefono-zenbakia baztertu da."</string>
+    <string name="fdn_failed" msgid="216592346853420250">"Markatze finkoko zenbakiaren eragiketak huts egin du."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"SIM txarteletik irakurtzen…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"Ez duzu kontakturik SIM txartelean."</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"Aukeratu inportatu beharreko kontaktuak"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"SIM txarteleko kontaktuak inportatzeko, desaktibatu hegaldi modua."</string>
     <string name="enable_pin" msgid="967674051730845376">"Gaitu/Desgaitu SIM txartelaren PIN kodea"</string>
     <string name="change_pin" msgid="3657869530942905790">"Aldatu SIM txartelaren PIN kodea"</string>
@@ -665,7 +671,7 @@
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM txartel batek zerbitzua aktibatu du eta telefonoaren ibiltaritza-gaitasunak eguneratu ditu."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Dei gehiegi daude aktibo. Amaitu edo bateratu abian diren deiak beste bat egin aurretik."</string>
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Ezin da konektatu. Erabili balio duen SIM txartel bat."</string>
-    <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Galdu egin da Wi-Fi konexioa. Amaitu da deia."</string>
+    <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Galdu egin da wifi bidezko konexioa. Amaitu da deia."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Ezin da egin deia, bateria gutxi gelditzen delako."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"Bideo-deia amaitu egin da bateria gutxi gelditzen delako."</string>
     <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Ez daude erabilgarri wifi bidezko larrialdi-deiak kokapen honetan."</string>

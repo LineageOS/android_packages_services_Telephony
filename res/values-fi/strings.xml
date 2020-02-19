@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Tiedonsiirto"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Puhelinpalvelut"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Hätäpuhelut"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Puhelin"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"Sallittujen numeroiden luettelo"</string>
     <string name="unknown" msgid="8279698889921830815">"Tuntematon"</string>
     <string name="private_num" msgid="4487990167889159992">"Salainen numero"</string>
     <string name="payphone" msgid="7936735771836716941">"Maksupuhelin"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"Käytetäänkö SIM-kortin <xliff:g id="NEW_SIM">%1$s</xliff:g> mobiilidataa kortin <xliff:g id="OLD_SIM">%2$s</xliff:g> sijaan?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi-puhelut"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Videopuheluiden operaattori"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS-asetukset"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"CDMA-asetukset"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Datan käyttö"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Nykyisellä jaksolla käytetyt tiedot"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Tietojen käyttöjakso"</string>
@@ -467,6 +472,7 @@
     <string name="fdn_failed" msgid="216592346853420250">"FDN-toiminto epäonnistui."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Luetaan SIM-korttia…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"SIM-kortilla ei ole yhteystietoja."</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"Valitse yhteystiedot"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Poista lentokonetila käytöstä, jos haluat tuoda yhteystietoja SIM-kortilta."</string>
     <string name="enable_pin" msgid="967674051730845376">"Ota SIM-kortin PIN-koodi käyttöön / poista koodi käytöstä"</string>
     <string name="change_pin" msgid="3657869530942905790">"Vaihda SIM-kortin PIN-koodi"</string>
