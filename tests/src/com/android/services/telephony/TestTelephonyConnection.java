@@ -16,6 +16,12 @@
 
 package com.android.services.telephony;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.telecom.PhoneAccountHandle;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -23,19 +29,11 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.telecom.PhoneAccountHandle;
-
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.Connection;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
-import com.android.internal.telephony.util.TelephonyResourceUtils;
 
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -60,9 +58,6 @@ public class TestTelephonyConnection extends TelephonyConnection {
 
     @Mock
     Resources mMockResources;
-
-    @Mock
-    PackageManager mMockPackageManager;
 
     @Mock
     EmergencyNumberTracker mEmergencyNumberTracker;
@@ -100,14 +95,6 @@ public class TestTelephonyConnection extends TelephonyConnection {
         when(mMockPhone.getContext()).thenReturn(mMockContext);
         when(mMockPhone.getCurrentSubscriberUris()).thenReturn(null);
         when(mMockContext.getResources()).thenReturn(mMockResources);
-        when(mMockContext.getPackageManager()).thenReturn(mMockPackageManager);
-        try {
-            when(mMockPackageManager.getResourcesForApplication(
-                    TelephonyResourceUtils.TELEPHONY_RESOURCE_PACKAGE))
-                        .thenReturn(mMockResources);
-        } catch (Exception e) {
-            // Needed to make compiler happy.
-        }
         when(mMockResources.getBoolean(anyInt())).thenReturn(false);
         when(mMockPhone.getDefaultPhone()).thenReturn(mMockPhone);
         when(mMockPhone.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_IMS);
