@@ -3211,21 +3211,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public PhoneCapability getPhoneCapability(int subId, String callingPackage,
-                String callingFeatureId) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, callingFeatureId, "getPhoneCapability")) {
-            return null;
-        }
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return mPhoneConfigurationManager.getStaticPhoneCapability();
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    @Override
     public boolean isInEmergencySmsMode() {
         enforceReadPrivilegedPermission("isInEmergencySmsMode");
         final long identity = Binder.clearCallingIdentity();
@@ -8026,7 +8011,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             loge("isMultiSimSupportedInternal: no static configuration available");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
-        if (staticCapability.getLogicalModemUuids().size() < 2) {
+        if (staticCapability.logicalModemList.size() < 2) {
             loge("isMultiSimSupportedInternal: maximum number of modem is < 2");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
