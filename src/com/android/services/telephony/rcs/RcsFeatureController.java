@@ -125,7 +125,7 @@ public class RcsFeatureController {
                 public void connectionReady(RcsFeatureManager manager)
                         throws com.android.ims.ImsException {
                     if (manager == null) {
-                        Log.w(LOG_TAG, "connectionReady returned null RcsFeatureManager");
+                        logw("connectionReady returned null RcsFeatureManager");
                         return;
                     }
                     try {
@@ -192,6 +192,7 @@ public class RcsFeatureController {
      */
     public void connect() {
         synchronized (mLock) {
+            if (mFeatureConnector != null) return;
             mFeatureConnector = mFeatureFactory.create(mContext, mSlotId, mFeatureConnectorListener,
                     mContext.getMainExecutor(), LOG_TAG);
             mFeatureConnector.connect();
@@ -224,6 +225,25 @@ public class RcsFeatureController {
     }
 
     /**
+     * Removes the feature associated with this class.
+     */
+    public <T> void removeFeature(Class<T> clazz) {
+        synchronized (mLock) {
+            RcsFeatureController.Feature feature = mFeatures.remove(clazz);
+            feature.onDestroy();
+        }
+    }
+
+    /**
+     * @return true if this controller has features it is actively tracking.
+     */
+    public boolean hasActiveFeatures() {
+        synchronized (mLock) {
+            return mFeatures.size() > 0;
+        }
+    }
+
+    /**
      * Update the subscription associated with this controller.
      */
     public void updateAssociatedSubscription(int newSubId) {
@@ -247,7 +267,10 @@ public class RcsFeatureController {
      */
     public void destroy() {
         synchronized (mLock) {
-            mFeatureConnector.disconnect();
+            Log.i(LOG_TAG, "destroy: slotId=" + mSlotId);
+            if (mFeatureConnector != null) {
+                mFeatureConnector.disconnect();
+            }
             for (Feature c : mFeatures.values()) {
                 c.onRcsDisconnected();
                 c.onDestroy();
@@ -405,5 +428,16 @@ public class RcsFeatureController {
         synchronized (mLock) {
             pw.println(mFeatureManager != null);
         }
+    }
+
+    private void logw(String log) {
+        Log.w(LOG_TAG, getLogPrefix().append(log).toString());
+    }
+
+    private StringBuilder getLogPrefix() {
+        StringBuilder sb = new StringBuilder("[");
+        sb.append(mSlotId);
+        sb.append("] ");
+        return sb;
     }
 }
