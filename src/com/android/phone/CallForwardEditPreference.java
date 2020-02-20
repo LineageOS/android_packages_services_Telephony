@@ -360,7 +360,7 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
                     mTcpListener.onError(CallForwardEditPreference.this, RESPONSE_ERROR);
                 }
                 CallForwardInfo cfInfoArray[] = (CallForwardInfo[]) ar.result;
-                if (cfInfoArray.length == 0) {
+                if (cfInfoArray == null || cfInfoArray.length == 0) {
                     Log.d(LOG_TAG, "handleGetCFResponse: cfInfoArray.length==0");
                     setEnabled(false);
                     mTcpListener.onError(CallForwardEditPreference.this, RESPONSE_ERROR);
