@@ -107,7 +107,7 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testFeatureManagerConnectedAddFeature() throws Exception {
+    public void testFeatureManagerConnectedAddRemoveFeature() throws Exception {
         RcsFeatureController controller = createFeatureController();
         // Connect the RcsFeatureManager
         mConnectorListener.getValue().connectionReady(mFeatureManager);
@@ -115,6 +115,10 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
 
         verify(mMockFeature).onRcsConnected(mFeatureManager);
         assertEquals(mMockFeature, controller.getFeature(RcsFeatureController.Feature.class));
+
+        controller.removeFeature(RcsFeatureController.Feature.class);
+        verify(mMockFeature).onDestroy();
+        assertNull(controller.getFeature(RcsFeatureController.Feature.class));
     }
 
     @Test
