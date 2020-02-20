@@ -66,7 +66,6 @@ import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCall;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
-import com.android.internal.telephony.util.TelephonyResourceUtils;
 import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
@@ -1714,8 +1713,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         if (phone == null) {
             return true;
         }
-        return TelephonyResourceUtils.getTelephonyResources(phone.getContext()).getBoolean(
-            com.android.telephony.resources.R.bool.config_device_respects_hold_carrier_config);
+        return phone.getContext().getResources().getBoolean(
+                com.android.internal.R.bool.config_device_respects_hold_carrier_config);
     }
 
     /**

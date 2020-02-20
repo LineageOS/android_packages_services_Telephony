@@ -197,7 +197,11 @@ public class EmergencyCallbackModeService extends Service {
         // Format notification string
         String text = null;
         if(mInEmergencyCall) {
-            text = getText(R.string.phone_in_ecm_call_notification_text).toString();
+            text = getText(
+                    // During IMS ECM, data restriction hint should be removed.
+                    (imsPhone != null && imsPhone.isInImsEcm())
+                    ? R.string.phone_in_ecm_call_notification_text_without_data_restriction_hint
+                    : R.string.phone_in_ecm_call_notification_text).toString();
         } else {
             // Calculate the time in ms when the notification will be finished.
             long finishedCountMs = millisUntilFinished + System.currentTimeMillis();
@@ -208,7 +212,11 @@ public class EmergencyCallbackModeService extends Service {
 
             String completeTime = SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT).format(
                     finishedCountMs);
-            text = getResources().getString(R.string.phone_in_ecm_notification_complete_time,
+            text = getResources().getString(
+                    // During IMS ECM, data restriction hint should be removed.
+                    (imsPhone != null && imsPhone.isInImsEcm())
+                    ? R.string.phone_in_ecm_notification_complete_time_without_data_restriction_hint
+                    : R.string.phone_in_ecm_notification_complete_time,
                     completeTime);
         }
         builder.setContentText(text);

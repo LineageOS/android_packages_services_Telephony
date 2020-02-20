@@ -43,7 +43,6 @@ import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaDisplayInfoRec;
 import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaSignalInfoRec;
 import com.android.internal.telephony.cdma.SignalToneUtil;
-import com.android.internal.telephony.util.TelephonyResourceUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -653,16 +652,16 @@ public class CallNotifier extends Handler {
         int resId = 0;
         switch (((Integer)r.result).intValue()) {
             case TelecomManager.TTY_MODE_FULL:
-                resId = com.android.telephony.resources.R.string.peerTtyModeFull;
+                resId = com.android.internal.R.string.peerTtyModeFull;
                 break;
             case TelecomManager.TTY_MODE_HCO:
-                resId = com.android.telephony.resources.R.string.peerTtyModeHco;
+                resId = com.android.internal.R.string.peerTtyModeHco;
                 break;
             case TelecomManager.TTY_MODE_VCO:
-                resId = com.android.telephony.resources.R.string.peerTtyModeVco;
+                resId = com.android.internal.R.string.peerTtyModeVco;
                 break;
             case TelecomManager.TTY_MODE_OFF:
-                resId = com.android.telephony.resources.R.string.peerTtyModeOff;
+                resId = com.android.internal.R.string.peerTtyModeOff;
                 break;
             default:
                 Log.e(LOG_TAG, "Unsupported TTY mode: " + r.result);
@@ -670,7 +669,7 @@ public class CallNotifier extends Handler {
         }
         if (resId != 0) {
             PhoneDisplayMessage.displayNetworkMessage(mApplication,
-                    TelephonyResourceUtils.getTelephonyResources(mApplication).getString(resId));
+                    mApplication.getResources().getString(resId));
 
             // start a timer that kills the dialog
             sendEmptyMessageDelayed(INTERNAL_SHOW_MESSAGE_NOTIFICATION_DONE,

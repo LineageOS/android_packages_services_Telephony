@@ -60,7 +60,6 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.internal.telephony.util.NotificationChannelController;
-import com.android.internal.telephony.util.TelephonyResourceUtils;
 import com.android.phone.settings.VoicemailSettingsActivity;
 
 import java.util.ArrayList;
@@ -818,10 +817,8 @@ public class NotificationMgr {
                 boolean isManualSelection;
                 // if restoring manual selection is controlled by framework, then get network
                 // selection from shared preference, otherwise get from real network indicators.
-                boolean restoreSelection = !TelephonyResourceUtils.getTelephonyResources(mContext)
-                        .getBoolean(
-                            com.android.telephony.resources.R.bool
-                                .skip_restoring_network_selection);
+                boolean restoreSelection = !mContext.getResources().getBoolean(
+                        com.android.internal.R.bool.skip_restoring_network_selection);
                 if (restoreSelection) {
                     isManualSelection = !TextUtils.isEmpty(selectedNetworkOperatorName);
                 } else {
