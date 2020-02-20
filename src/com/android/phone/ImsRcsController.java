@@ -361,8 +361,8 @@ public class ImsRcsController extends IImsRcsController.Stub {
         int slotId = phone.getPhoneId();
         RcsFeatureController c = mRcsService.getFeatureController(slotId);
         if (c == null) {
-            throw new ServiceSpecificException(ImsException.CODE_ERROR_SERVICE_UNAVAILABLE,
-                    "Cannot find RcsFeatureController instance for sub: " + subId);
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "The requested operation is not supported for subId " + subId);
         }
         return c;
     }
