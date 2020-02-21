@@ -460,7 +460,7 @@
     <string name="fdn_contact_added" msgid="2840016151693394596">"تمت إضافة رقم الاتصال الثابت."</string>
     <string name="edit_fdn_contact" msgid="6030829994819587408">"تعديل رقم الاتصال الثابت"</string>
     <string name="updating_fdn_contact" msgid="6989341376868227150">"جارٍ إعادة تحميل رقم الاتصال الثابت..."</string>
-    <string name="fdn_contact_updated" msgid="6876330243323118937">"تم إعادة تحميل رقم الاتصال الثابت."</string>
+    <string name="fdn_contact_updated" msgid="6876330243323118937">"تمت إعادة تحميل رقم الاتصال الثابت."</string>
     <string name="delete_fdn_contact" msgid="7027405651994507077">"حذف رقم الاتصال الثابت"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"جارٍ حذف رقم الاتصال الثابت..."</string>
     <string name="fdn_contact_deleted" msgid="1680714996763848838">"تم حذف رقم الاتصال الثابت."</string>
@@ -487,7 +487,7 @@
     <string name="enable_pin_ok" msgid="2877428038280804256">"تم تعيين رقم التعريف الشخصي"</string>
     <string name="disable_pin_ok" msgid="888505244389647754">"تم محو رقم التعريف الشخصي"</string>
     <string name="pin_failed" msgid="4527347792881939652">"رقم التعريف الشخصي غير صحيح"</string>
-    <string name="pin_changed" msgid="7291153750090452808">"تم إعادة تحميل رقم التعريف الشخصي"</string>
+    <string name="pin_changed" msgid="7291153750090452808">"تمت إعادة تحميل رقم التعريف الشخصي"</string>
     <string name="puk_requested" msgid="2061337960609806851">"‏كلمة المرور غير صحيحة. تم قفل رقم التعريف الشخصي الآن. رمز PUK مطلوب."</string>
     <string name="enter_pin2_text" msgid="7266379426804295979">"PIN2"</string>
     <string name="oldPin2Label" msgid="4648543187859997203">"‏PIN2 القديم"</string>
@@ -498,7 +498,7 @@
     <string name="mismatchPin2" msgid="4952718725266700631">"‏رمزا PIN2 غير متطابقين. أعد المحاولة."</string>
     <string name="invalidPin2" msgid="6467957903056379343">"‏أدخل رمز PIN2 المكوّن من 4 إلى 8 أرقام."</string>
     <string name="invalidPuk2" msgid="713729511903849544">"‏أدخل رمز PUK2 المكوّن من 8 أرقام."</string>
-    <string name="pin2_changed" msgid="5710551850481287821">"‏تم إعادة تحميل رمز PIN2"</string>
+    <string name="pin2_changed" msgid="5710551850481287821">"‏تمت إعادة تحميل رمز PIN2"</string>
     <string name="label_puk2_code" msgid="2852217004288085562">"‏أدخل رمز PUK2"</string>
     <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"‏كلمة المرور غير صحيحة. أصبح PIN2 محظور  الآن. لإعادة المحاولة، عليك تغيير PIN2."</string>
     <string name="puk2_requested" msgid="6992374450720307514">"‏كلمة المرور غير صحيحة. تم قفل شريحة SIM الآن. أدخل رمز PUK2."</string>

@@ -1706,7 +1706,7 @@ public class TelephonyConnectionService extends ConnectionService {
             return true;
         }
         return cfgManager.getConfigForSubId(phone.getSubId()).getBoolean(
-                CarrierConfigManager.KEY_ALLOW_HOLDING_VIDEO_CALL_BOOL, true);
+                CarrierConfigManager.KEY_ALLOW_HOLD_VIDEO_CALL_BOOL, true);
     }
 
     private boolean shouldHoldForEmergencyCall(Phone phone) {

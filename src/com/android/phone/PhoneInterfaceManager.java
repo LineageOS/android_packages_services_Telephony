@@ -35,7 +35,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.ComponentInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.net.NetworkStats;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Binder;
@@ -918,12 +917,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) ar.userObj;
                     int callForwardingStatus = TelephonyManager.CALL_WAITING_STATUS_UNKNOWN_ERROR;
                     if (ar.exception == null && ar.result != null) {
-                        ArrayList<Integer> callForwardResults = (ArrayList<Integer>) ar.result;
+                        int[] callForwardResults = (int[]) ar.result;
                         // Service Class is a bit mask per 3gpp 27.007.
                         // Search for any service for voice call.
-                        if ((callForwardResults.get(1)
-                                & CommandsInterface.SERVICE_CLASS_VOICE) > 0) {
-                            callForwardingStatus = callForwardResults.get(0) == 0
+                        if (callForwardResults.length > 1
+                                && ((callForwardResults[1]
+                                        & CommandsInterface.SERVICE_CLASS_VOICE) > 0)) {
+                            callForwardingStatus = callForwardResults[0] == 0
                                     ? TelephonyManager.CALL_WAITING_STATUS_INACTIVE
                                             : TelephonyManager.CALL_WAITING_STATUS_ACTIVE;
                         } else {
@@ -3206,21 +3206,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return TelephonyManager.NETWORK_SELECTION_MODE_UNKNOWN;
             }
             return (int) sendRequest(CMD_GET_NETWORK_SELECTION_MODE, null /* argument */, subId);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    @Override
-    public PhoneCapability getPhoneCapability(int subId, String callingPackage,
-                String callingFeatureId) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, callingFeatureId, "getPhoneCapability")) {
-            return null;
-        }
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return mPhoneConfigurationManager.getStaticPhoneCapability();
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -7229,33 +7214,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Get aggregated video call data usage since boot.
-     *
-     * @param perUidStats True if requesting data usage per uid, otherwise overall usage.
-     * @return Snapshot of video call data usage
-     * {@hide}
-     */
-    @Override
-    public NetworkStats getVtDataUsage(int subId, boolean perUidStats) {
-        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_NETWORK_USAGE_HISTORY,
-                null);
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            // NetworkStatsService keeps tracking the active network interface and identity. It
-            // records the delta with the corresponding network identity.
-            // We just return the total video call data usage snapshot since boot.
-            Phone phone = getPhone(subId);
-            if (phone != null) {
-                return phone.getVtDataUsage(perUidStats);
-            }
-            return null;
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
      * Policy control of data connection. Usually used when data limit is passed.
      * @param enabled True if enabling the data, otherwise disabling.
      * @param subId Subscription index
@@ -8054,7 +8012,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             loge("isMultiSimSupportedInternal: no static configuration available");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
-        if (staticCapability.getLogicalModemUuids().size() < 2) {
+        if (staticCapability.logicalModemList.size() < 2) {
             loge("isMultiSimSupportedInternal: maximum number of modem is < 2");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }

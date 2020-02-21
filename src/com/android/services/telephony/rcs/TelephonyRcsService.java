@@ -28,6 +28,7 @@ import android.os.Looper;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.util.Log;
+import android.util.SparseArray;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.PhoneConfigurationManager;
@@ -35,8 +36,6 @@ import com.android.internal.util.IndentingPrintWriter;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Singleton service setup to manage RCS related services that the platform provides such as User
@@ -85,8 +84,8 @@ public class TelephonyRcsService {
     private final Object mLock = new Object();
     private int mNumSlots;
 
-    // Index corresponds to the slot ID.
-    private List<RcsFeatureController> mFeatureControllers;
+    // Maps slot ID -> RcsFeatureController.
+    private SparseArray<RcsFeatureController> mFeatureControllers;
 
     private BroadcastReceiver mCarrierConfigChangedReceiver = new BroadcastReceiver() {
         @Override
@@ -99,8 +98,10 @@ public class TelephonyRcsService {
                 if (bundle == null) {
                     return;
                 }
-                int slotId = bundle.getInt(CarrierConfigManager.EXTRA_SLOT_INDEX);
-                int subId = bundle.getInt(CarrierConfigManager.EXTRA_SUBSCRIPTION_INDEX);
+                int slotId = bundle.getInt(CarrierConfigManager.EXTRA_SLOT_INDEX,
+                        SubscriptionManager.INVALID_PHONE_INDEX);
+                int subId = bundle.getInt(CarrierConfigManager.EXTRA_SUBSCRIPTION_INDEX,
+                        SubscriptionManager.INVALID_SUBSCRIPTION_ID);
                 updateFeatureControllerSubscription(slotId, subId);
             }
         }
@@ -125,10 +126,9 @@ public class TelephonyRcsService {
     });
 
     public TelephonyRcsService(Context context, int numSlots) {
-        Log.i(LOG_TAG, "initialize");
         mContext = context;
         mNumSlots = numSlots;
-        mFeatureControllers = new ArrayList<>(numSlots);
+        mFeatureControllers = new SparseArray<>(numSlots);
     }
 
     /**
@@ -145,11 +145,7 @@ public class TelephonyRcsService {
      * system callbacks.
      */
     public void initialize() {
-        synchronized (mLock) {
-            for (int i = 0; i < mNumSlots; i++) {
-                mFeatureControllers.add(constructFeatureController(i));
-            }
-        }
+        updateFeatureControllerSize(mNumSlots);
 
         PhoneConfigurationManager.registerForMultiSimConfigChange(mHandler,
                 HANDLER_MSIM_CONFIGURATION_CHANGE, null);
@@ -173,15 +169,24 @@ public class TelephonyRcsService {
             if (oldNumSlots == newNumSlots) {
                 return;
             }
+            Log.i(LOG_TAG, "updateFeatureControllers: oldSlots=" + oldNumSlots + ", newNumSlots="
+                    + newNumSlots);
             mNumSlots = newNumSlots;
             if (oldNumSlots < newNumSlots) {
                 for (int i = oldNumSlots; i < newNumSlots; i++) {
-                    mFeatureControllers.add(constructFeatureController(i));
+                    RcsFeatureController c = constructFeatureController(i);
+                    // Do not add feature controllers for inactive subscriptions
+                    if (c.hasActiveFeatures()) {
+                        mFeatureControllers.put(i, c);
+                    }
                 }
             } else {
                 for (int i = (oldNumSlots - 1); i > (newNumSlots - 1); i--) {
-                    RcsFeatureController controller = mFeatureControllers.remove(i);
-                    controller.destroy();
+                    RcsFeatureController c = mFeatureControllers.get(i);
+                    if (c != null) {
+                        mFeatureControllers.remove(i);
+                        c.destroy();
+                    }
                 }
             }
         }
@@ -190,23 +195,61 @@ public class TelephonyRcsService {
     private void updateFeatureControllerSubscription(int slotId, int newSubId) {
         synchronized (mLock) {
             RcsFeatureController f = mFeatureControllers.get(slotId);
-            if (f == null) {
-                Log.w(LOG_TAG, "unexpected null FeatureContainer for slot " + slotId);
-                return;
+            Log.i(LOG_TAG, "updateFeatureControllerSubscription: slotId=" + slotId + " newSubId="
+                    + newSubId + ", existing feature=" + (f != null));
+            if (SubscriptionManager.isValidSubscriptionId(newSubId)) {
+                if (f == null) {
+                    // A controller doesn't exist for this slot yet.
+                    f = mFeatureFactory.createController(mContext, slotId);
+                    updateSupportedFeatures(f, slotId, newSubId);
+                    if (f.hasActiveFeatures()) mFeatureControllers.put(slotId, f);
+                } else {
+                    updateSupportedFeatures(f, slotId, newSubId);
+                    // Do not keep an empty container around.
+                    if (!f.hasActiveFeatures()) {
+                        f.destroy();
+                        mFeatureControllers.remove(slotId);
+                    }
+                }
             }
-            f.updateAssociatedSubscription(newSubId);
+            if (f != null) f.updateAssociatedSubscription(newSubId);
         }
     }
 
     private RcsFeatureController constructFeatureController(int slotId) {
         RcsFeatureController c = mFeatureFactory.createController(mContext, slotId);
-        // TODO: integrate user setting into whether or not this feature is added as well as logic
-        // to listen for changes in user setting.
-        c.addFeature(mFeatureFactory.createUserCapabilityExchange(mContext, slotId,
-                getSubscriptionFromSlot(slotId)), UserCapabilityExchangeImpl.class);
-        c.connect();
+        int subId = getSubscriptionFromSlot(slotId);
+        updateSupportedFeatures(c, slotId, subId);
         return c;
     }
+
+    private void updateSupportedFeatures(RcsFeatureController c, int slotId, int subId) {
+        if (doesSubscriptionSupportPresence(subId)) {
+            if (c.getFeature(UserCapabilityExchangeImpl.class) == null) {
+                c.addFeature(mFeatureFactory.createUserCapabilityExchange(mContext, slotId, subId),
+                        UserCapabilityExchangeImpl.class);
+            }
+        } else {
+            if (c.getFeature(UserCapabilityExchangeImpl.class) != null) {
+                c.removeFeature(UserCapabilityExchangeImpl.class);
+            }
+        }
+        // Only start the connection procedure if we have active features.
+        if (c.hasActiveFeatures()) c.connect();
+    }
+
+    private boolean doesSubscriptionSupportPresence(int subId) {
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) return false;
+        CarrierConfigManager carrierConfigManager =
+                mContext.getSystemService(CarrierConfigManager.class);
+        if (carrierConfigManager == null) return false;
+        boolean supportsUce = carrierConfigManager.getConfigForSubId(subId).getBoolean(
+                CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL);
+        supportsUce |= carrierConfigManager.getConfigForSubId(subId).getBoolean(
+                CarrierConfigManager.KEY_USE_RCS_SIP_OPTIONS_BOOL);
+        return supportsUce;
+    }
+
 
     private int getSubscriptionFromSlot(int slotId) {
         SubscriptionManager manager = mContext.getSystemService(SubscriptionManager.class);
@@ -229,7 +272,8 @@ public class TelephonyRcsService {
         pw.println("RcsFeatureControllers:");
         pw.increaseIndent();
         synchronized (mLock) {
-            for (RcsFeatureController f : mFeatureControllers) {
+            for (int i = 0; i < mNumSlots; i++) {
+                RcsFeatureController f = mFeatureControllers.get(i);
                 pw.increaseIndent();
                 f.dump(fd, printWriter, args);
                 pw.decreaseIndent();

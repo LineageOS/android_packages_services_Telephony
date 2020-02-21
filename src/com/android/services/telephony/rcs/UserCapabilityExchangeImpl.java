@@ -44,7 +44,7 @@ import java.util.stream.Collectors;
 public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature, SubscribePublisher,
         PresencePublisher {
 
-    private static final String LOG_TAG = "UserCapabilityExchangeImpl";
+    private static final String LOG_TAG = "RcsUceImpl";
 
     private int mSlotId;
     private int mSubId;
@@ -58,6 +58,7 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
     UserCapabilityExchangeImpl(Context context, int slotId, int subId) {
         mSlotId = slotId;
         mSubId = subId;
+        logi("created");
 
         String[] volteError = context.getResources().getStringArray(
                 R.array.config_volte_provision_error_on_publish_response);
@@ -78,7 +79,7 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
     // Runs on main thread.
     @Override
     public void onRcsConnected(RcsFeatureManager rcsFeatureManager) {
-        Log.i(LOG_TAG, "onRcsConnected: slotId=" + mSlotId + ", subId=" + mSubId);
+        logi("onRcsConnected");
         mPresencePublication.updatePresencePublisher(this);
         mPresenceSubscriber.updatePresenceSubscriber(this);
     }
@@ -86,7 +87,7 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
     // Runs on main thread.
     @Override
     public void onRcsDisconnected() {
-        Log.i(LOG_TAG, "onRcsDisconnected: phoneId=" + mSlotId + ", subId=" + mSubId);
+        logi("onRcsDisconnected");
         mPresencePublication.removePresencePublisher();
         mPresenceSubscriber.removePresenceSubscriber();
     }
@@ -127,7 +128,7 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
                 new ContactCapabilityResponse() {
                     @Override
                     public void onSuccess(int reqId) {
-                        Log.i(LOG_TAG, "onSuccess called for reqId:" + reqId);
+                        logi("onSuccess called for reqId:" + reqId);
                     }
 
                     @Override
@@ -137,16 +138,16 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
                             if (c != null) {
                                 c.onError(toUceError(resultCode));
                             } else {
-                                Log.w(LOG_TAG, "onError called for unknown reqId:" + reqId);
+                                logw("onError called for unknown reqId:" + reqId);
                             }
                         } catch (RemoteException e) {
-                            Log.i(LOG_TAG, "Calling back to dead service");
+                            logi("Calling back to dead service");
                         }
                     }
 
                     @Override
                     public void onFinish(int reqId) {
-                        Log.i(LOG_TAG, "onFinish called for reqId:" + reqId);
+                        logi("onFinish called for reqId:" + reqId);
                     }
 
                     @Override
@@ -156,10 +157,10 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
                             if (c != null) {
                                 c.onError(RcsUceAdapter.ERROR_REQUEST_TIMEOUT);
                             } else {
-                                Log.w(LOG_TAG, "onTimeout called for unknown reqId:" + reqId);
+                                logw("onTimeout called for unknown reqId:" + reqId);
                             }
                         } catch (RemoteException e) {
-                            Log.i(LOG_TAG, "Calling back to dead service");
+                            logi("Calling back to dead service");
                         }
                     }
 
@@ -172,10 +173,10 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
                             if (c != null) {
                                 c.onCapabilitiesReceived(contactCapabilities);
                             } else {
-                                Log.w(LOG_TAG, "onCapabilitiesUpdated, unknown reqId:" + reqId);
+                                logw("onCapabilitiesUpdated, unknown reqId:" + reqId);
                             }
                         } catch (RemoteException e) {
-                            Log.w(LOG_TAG, "onCapabilitiesUpdated on dead service");
+                            logw("onCapabilitiesUpdated on dead service");
                         }
                     }
                 });
@@ -184,7 +185,7 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
                 c.onError(toUceError(taskId));
                 return;
             } catch (RemoteException e) {
-                Log.i(LOG_TAG, "Calling back to dead service");
+                logi("Calling back to dead service");
             }
         }
         mPendingCapabilityRequests.put(taskId, c);
@@ -271,5 +272,22 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
             default:
                 return RcsUceAdapter.ERROR_GENERIC_FAILURE;
         }
+    }
+
+    private void logi(String log) {
+        Log.i(LOG_TAG, getLogPrefix().append(log).toString());
+    }
+
+    private void logw(String log) {
+        Log.w(LOG_TAG, getLogPrefix().append(log).toString());
+    }
+
+    private StringBuilder getLogPrefix() {
+        StringBuilder builder = new StringBuilder("[");
+        builder.append(mSlotId);
+        builder.append("->");
+        builder.append(mSubId);
+        builder.append("] ");
+        return builder;
     }
 }
