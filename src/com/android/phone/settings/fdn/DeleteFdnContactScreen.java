@@ -64,7 +64,8 @@ public class DeleteFdnContactScreen extends Activity {
 
         resolveIntent();
 
-        authenticatePin2();
+        // Starts PIN2 authentication only for the first time.
+        if (icicle == null) authenticatePin2();
 
         getWindow().requestFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.delete_fdn_contact_screen);
