@@ -641,6 +641,14 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"כן"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"לא"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"סגור"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"הטלפון במצב \'התקשרות בחזרה בחירום\'"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"עד <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="two">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' ל-<xliff:g id="COUNT_1">%s</xliff:g> דקות.\nרוצה לצאת מהמצב הזה?</item>
+      <item quantity="many">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' ל-<xliff:g id="COUNT_1">%s</xliff:g> דקות.\nרוצה לצאת מהמצב הזה?</item>
+      <item quantity="other">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' ל-<xliff:g id="COUNT_1">%s</xliff:g> דקות.\nרוצה לצאת מהמצב הזה?</item>
+      <item quantity="one">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' לדקה אחת (<xliff:g id="COUNT_0">%s</xliff:g>).\nרוצה לצאת מהמצב הזה?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"שירות"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"הגדרות"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;לא מוגדר&gt;"</string>
