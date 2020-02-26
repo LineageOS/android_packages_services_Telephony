@@ -21,6 +21,7 @@ import android.bluetooth.BluetoothHeadset;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.media.AudioManager;
+import android.media.AudioSystem;
 import android.media.ToneGenerator;
 import android.os.AsyncResult;
 import android.os.Handler;
@@ -392,10 +393,10 @@ public class CallNotifier extends Handler {
             try {
                 int stream;
                 if (mBluetoothHeadset != null) {
-                    stream = isBluetoothAudioOn() ? AudioManager.STREAM_BLUETOOTH_SCO :
-                        AudioManager.STREAM_VOICE_CALL;
+                    stream = isBluetoothAudioOn() ? AudioSystem.STREAM_BLUETOOTH_SCO :
+                            AudioSystem.STREAM_VOICE_CALL;
                 } else {
-                    stream = AudioManager.STREAM_VOICE_CALL;
+                    stream = AudioSystem.STREAM_VOICE_CALL;
                 }
                 toneGenerator = new ToneGenerator(stream, toneVolume);
                 // if (DBG) log("- created toneGenerator: " + toneGenerator);
