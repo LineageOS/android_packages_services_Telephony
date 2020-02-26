@@ -84,7 +84,7 @@ public class SipIncomingCallReceiver extends BroadcastReceiver {
     }
 
     private boolean isRunningInSystemUser() {
-        return UserHandle.myUserId() == UserHandle.USER_SYSTEM;
+        return UserHandle.myUserId() == UserHandle.SYSTEM.getIdentifier();
     }
 
     private static void log(String msg) {
