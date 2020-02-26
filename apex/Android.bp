@@ -14,7 +14,7 @@ apex_defaults {
 apex {
     name: "com.android.telephony",
     manifest: "apex_manifest.json",
-    apps: ["StkLib"],
+    //apps: ["StkLib"],
 
     defaults:["com.android.telephony-defaults"],
 }
