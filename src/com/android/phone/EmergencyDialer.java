@@ -720,8 +720,12 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             isEmergencyNumber = true;
             phoneToMakeCall = mShortcutViewConfig.getPhoneInfo();
         } else {
-            isEmergencyNumber = getSystemService(TelephonyManager.class)
-                    .isEmergencyNumber(mLastNumber);
+            try {
+                isEmergencyNumber = getSystemService(TelephonyManager.class)
+                        .isEmergencyNumber(mLastNumber);
+            } catch (IllegalStateException ise) {
+                isEmergencyNumber = false;
+            }
         }
 
         if (isEmergencyNumber) {
