@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"மொபைல் டேட்டா"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"ஃபோன் சேவைகள்"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"அவசரகால டயலர்"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"மொபைல்"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"FDN பட்டியல்"</string>
     <string name="unknown" msgid="8279698889921830815">"தெரியாதவர்"</string>
     <string name="private_num" msgid="4487990167889159992">"தனிப்பட்ட எண்"</string>
     <string name="payphone" msgid="7936735771836716941">"கட்டணத் தொலைபேசி"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"<xliff:g id="OLD_SIM">%2$s</xliff:g>க்குப் பதிலாக <xliff:g id="NEW_SIM">%1$s</xliff:g> இன் மொபைல் டேட்டாவைப் பயன்படுத்தவா?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"வைஃபை அழைப்பு"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"தொலைத்தொடர்பு நிறுவன வீடியோ அழைப்பு"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS விருப்பங்கள்"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"CDMA விருப்பங்கள்"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"டேட்டா உபயோகம்"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"தற்போது பயன்படுத்தப்பட்ட தரவு"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"தரவு பயன்படுத்தப்பட்ட காலம்"</string>
@@ -465,6 +470,7 @@
     <string name="fdn_failed" msgid="216592346853420250">"FDN செயல்பாடு தோல்வி."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"சிம் கார்டில் இருப்பதைப் படிக்கிறது…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"சிம் கார்டில் தொடர்புகள் இல்லை."</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"ஏற்ற தொடர்புகளைத் தேர்ந்தெடு"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"SIM கார்டிலிருந்து தொடர்புகளை இறக்க, விமானப் பயன்முறையை முடக்கவும்."</string>
     <string name="enable_pin" msgid="967674051730845376">"சிம்மின் பின்னை இயக்கு/முடக்கு"</string>
     <string name="change_pin" msgid="3657869530942905790">"சிம்மின் பின்னை மாற்று"</string>
@@ -616,11 +622,11 @@
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"அவசரகால திரும்ப அழைக்கும் பயன்முறை இயக்கப்பட்டது"</string>
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"அவசரகால திரும்ப அழைக்கும் பயன்முறை"</string>
-    <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"தரவு இணைப்பு முடக்கப்பட்டது"</string>
-    <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> வரை தரவு இணைப்பு இருக்காது"</string>
+    <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"டேட்டா இணைப்பு முடக்கப்பட்டது"</string>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> வரை டேட்டா இணைப்பு இருக்காது"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> நிமிடங்களுக்கு மொபைல் அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும். இந்தப் பயன்முறையில், தரவு இணைப்பைப் பயன்படுத்தாத பயன்பாடுகளைப் பயன்படுத்தலாம். இப்போது வெளியேற விரும்புகிறீர்களா?</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%s</xliff:g> நிமிடத்திற்கு மொபைல் அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும். இந்தப் பயன்முறையில், தரவு இணைப்பைப் பயன்படுத்தாத பயன்பாடுகளைப் பயன்படுத்தலாம். இப்போது வெளியேற விரும்புகிறீர்களா?</item>
+      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> நிமிடங்களுக்கு மொபைல் அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும். இந்தப் பயன்முறையில், டேட்டா இணைப்பைப் பயன்படுத்தாத பயன்பாடுகளைப் பயன்படுத்தலாம். இப்போது வெளியேற விரும்புகிறீர்களா?</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%s</xliff:g> நிமிடத்திற்கு மொபைல் அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும். இந்தப் பயன்முறையில், டேட்டா இணைப்பைப் பயன்படுத்தாத பயன்பாடுகளைப் பயன்படுத்தலாம். இப்போது வெளியேற விரும்புகிறீர்களா?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
       <item quantity="other">அவசரகால திரும்ப அழைக்கும் பயன்முறை செயலில் இருக்கும்போது, தேர்ந்தெடுத்த செயல் கிடைக்காது. <xliff:g id="COUNT_1">%s</xliff:g> நிமிடங்களுக்கு மொபைல் இந்தப் பயன்முறையில் இருக்கும். இப்போது வெளியேற விரும்புகிறீர்களா?</item>
@@ -631,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ஆம்"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"இல்லை"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"விலக்கு"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"மொபைல் இப்போது அவசரகால திரும்ப அழைக்கும் பயன்முறையில் உள்ளது"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> வரை"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">மொபைல் இன்னும் <xliff:g id="COUNT_1">%s</xliff:g> நிமிடங்களுக்கு அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும்.\nஇப்போதே அதை விட்டு வெளியேறவா?</item>
+      <item quantity="one">மொபைல் இன்னும் <xliff:g id="COUNT_0">%s</xliff:g> நிமிடத்திற்கு அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும்.\nஇப்போதே அதை விட்டு வெளியேறவா?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"சேவை"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"அமைவு"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;அமைக்கப்படவில்லை&gt;"</string>
@@ -855,7 +867,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"இயல்பான டேட்டா சிம்மின் துணை ஐடி:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL இணைய வேகம் (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL இணைய வேகம் (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"மொபைலின் இருப்பிடத் தகவல் (தடுக்கப்பட்டது):"</string>
+    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"மொபைலின் இருப்பிடத் தகவல் (நிறுத்தப்பட்டது):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ஃபிசிக்கல் சேனல் உள்ளமைவு:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"மொபைல் தகவலின் புதுப்பிப்பு விகிதம்:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"அனைத்து மொபைல் அளவீட்டுத் தகவல்:"</string>

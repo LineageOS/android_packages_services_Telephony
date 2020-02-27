@@ -35,7 +35,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.ComponentInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.net.NetworkStats;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Binder;
@@ -918,12 +917,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) ar.userObj;
                     int callForwardingStatus = TelephonyManager.CALL_WAITING_STATUS_UNKNOWN_ERROR;
                     if (ar.exception == null && ar.result != null) {
-                        ArrayList<Integer> callForwardResults = (ArrayList<Integer>) ar.result;
+                        int[] callForwardResults = (int[]) ar.result;
                         // Service Class is a bit mask per 3gpp 27.007.
                         // Search for any service for voice call.
-                        if ((callForwardResults.get(1)
-                                & CommandsInterface.SERVICE_CLASS_VOICE) > 0) {
-                            callForwardingStatus = callForwardResults.get(0) == 0
+                        if (callForwardResults.length > 1
+                                && ((callForwardResults[1]
+                                        & CommandsInterface.SERVICE_CLASS_VOICE) > 0)) {
+                            callForwardingStatus = callForwardResults[0] == 0
                                     ? TelephonyManager.CALL_WAITING_STATUS_INACTIVE
                                             : TelephonyManager.CALL_WAITING_STATUS_ACTIVE;
                         } else {
@@ -2272,16 +2272,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String getNetworkCountryIsoForPhone(int phoneId, String callingPackage,
-            String callingFeatureId) {
-        if (!TextUtils.isEmpty(callingPackage)) {
-            final int subId = mSubscriptionController.getSubIdUsingPhoneId(phoneId);
-            if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp, subId, callingPackage,
-                    callingFeatureId, "getNetworkCountryIsoForPhone")) {
-                return "";
-            }
-        }
-
+    public String getNetworkCountryIsoForPhone(int phoneId) {
         // Reporting the correct network country is ambiguous when IWLAN could conflict with
         // registered cell info, so return a NULL country instead.
         final long identity = Binder.clearCallingIdentity();
@@ -3212,21 +3203,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public PhoneCapability getPhoneCapability(int subId, String callingPackage,
-                String callingFeatureId) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, subId, callingPackage, callingFeatureId, "getPhoneCapability")) {
-            return null;
-        }
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return mPhoneConfigurationManager.getStaticPhoneCapability();
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    @Override
     public boolean isInEmergencySmsMode() {
         enforceReadPrivilegedPermission("isInEmergencySmsMode");
         final long identity = Binder.clearCallingIdentity();
@@ -3250,8 +3226,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void registerImsRegistrationCallback(int subId, IImsRegistrationCallback c)
             throws RemoteException {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("registerImsRegistrationCallback");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "registerImsRegistrationCallback");
 
         if (!ImsManager.isImsSupportedOnDevice(mApp)) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
@@ -3276,8 +3252,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void unregisterImsRegistrationCallback(int subId, IImsRegistrationCallback c) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("unregisterImsRegistrationCallback");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "unregisterImsRegistrationCallback");
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
@@ -3333,8 +3309,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void getImsMmTelRegistrationTransportType(int subId, IIntegerConsumer consumer) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("getImsMmTelRegistrationTransportType");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "getImsMmTelRegistrationTransportType");
         if (!ImsManager.isImsSupportedOnDevice(mApp)) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
                     "IMS not available on device.");
@@ -3373,8 +3349,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void registerMmTelCapabilityCallback(int subId, IImsCapabilityCallback c)
             throws RemoteException {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("registerMmTelCapabilityCallback");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "registerMmTelCapabilityCallback");
         if (!ImsManager.isImsSupportedOnDevice(mApp)) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
                     "IMS not available on device.");
@@ -3398,8 +3374,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void unregisterMmTelCapabilityCallback(int subId, IImsCapabilityCallback c) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("unregisterMmTelCapabilityCallback");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "unregisterMmTelCapabilityCallback");
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
@@ -3495,8 +3471,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isAdvancedCallingSettingEnabled(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("isAdvancedCallingSettingEnabled");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isAdvancedCallingSettingEnabled");
 
         // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
         final long token = Binder.clearCallingIdentity();
@@ -3532,8 +3508,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isVtSettingEnabled(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("isVtSettingEnabled");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isVtSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -3566,8 +3542,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isVoWiFiSettingEnabled(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("isVoWiFiSettingEnabled");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isVoWiFiSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -3601,8 +3577,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isVoWiFiRoamingSettingEnabled(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("isVoWiFiRoamingSettingEnabled");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isVoWiFiRoamingSettingEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -3653,8 +3629,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public int getVoWiFiModeSetting(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("getVoWiFiModeSetting");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "getVoWiFiModeSetting");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -3735,8 +3711,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isTtyOverVolteEnabled(int subId) {
-        //TODO: b/147498511 will add TelephonyPermissions#checkCallingOrSelfReadPrecisePhoneState
-        enforceReadPrivilegedPermission("isTtyOverVolteEnabled");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isTtyOverVolteEnabled");
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -5743,14 +5719,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    private int getCarrierPrivilegeStatusFromCarrierConfigRules(int privilegeFromSim,
+    private int getCarrierPrivilegeStatusFromCarrierConfigRules(int privilegeFromSim, int uid,
             Phone phone) {
         //load access rules from carrier configs, and check those as well: b/139133814
         SubscriptionController subController = SubscriptionController.getInstance();
         if (privilegeFromSim == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
                 || subController == null) return privilegeFromSim;
 
-        int uid = Binder.getCallingUid();
         PackageManager pkgMgr = phone.getContext().getPackageManager();
         String[] packages = pkgMgr.getPackagesForUid(uid);
 
@@ -5804,7 +5779,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         return getCarrierPrivilegeStatusFromCarrierConfigRules(
             card.getCarrierPrivilegeStatusForCurrentTransaction(
-                phone.getContext().getPackageManager()), phone);
+                phone.getContext().getPackageManager()), Binder.getCallingUid(), phone);
     }
 
     @Override
@@ -5823,7 +5798,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         return getCarrierPrivilegeStatusFromCarrierConfigRules(
                 profile.getCarrierPrivilegeStatusForUid(
-                        phone.getContext().getPackageManager(), uid), phone);
+                        phone.getContext().getPackageManager(), uid), uid, phone);
     }
 
     @Override
@@ -7229,33 +7204,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Get aggregated video call data usage since boot.
-     *
-     * @param perUidStats True if requesting data usage per uid, otherwise overall usage.
-     * @return Snapshot of video call data usage
-     * {@hide}
-     */
-    @Override
-    public NetworkStats getVtDataUsage(int subId, boolean perUidStats) {
-        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_NETWORK_USAGE_HISTORY,
-                null);
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            // NetworkStatsService keeps tracking the active network interface and identity. It
-            // records the delta with the corresponding network identity.
-            // We just return the total video call data usage snapshot since boot.
-            Phone phone = getPhone(subId);
-            if (phone != null) {
-                return phone.getVtDataUsage(perUidStats);
-            }
-            return null;
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
      * Policy control of data connection. Usually used when data limit is passed.
      * @param enabled True if enabling the data, otherwise disabling.
      * @param subId Subscription index
@@ -8054,7 +8002,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             loge("isMultiSimSupportedInternal: no static configuration available");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
-        if (staticCapability.getLogicalModemUuids().size() < 2) {
+        if (staticCapability.logicalModemList.size() < 2) {
             loge("isMultiSimSupportedInternal: maximum number of modem is < 2");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }

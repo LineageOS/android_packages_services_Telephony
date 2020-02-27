@@ -1447,6 +1447,17 @@
     <string name="alert_dialog_no">No</string>
     <!-- ECM: ECM exit dialog choice -->
     <string name="alert_dialog_dismiss">Dismiss</string>
+    <!-- ECM: Notification body wihout data restriction hint -->
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint">The phone is in emergency callback mode</string>
+    <!-- ECM: Displays the time when ECM will end without data restriction hint, Example: "Until 10:45 AM" -->
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint">Until <xliff:g id="completeTime">%s</xliff:g></string>
+    <!-- ECM: Dialog box message without data restriction hint for exiting from the notifications screen -->
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint">
+        <!-- number of minutes is one -->
+        <item quantity="one">The phone will be in emergency callback mode for <xliff:g id="count">%s</xliff:g> minute.\nDo you want to exit now?</item>
+        <!-- number of minutes is not equal to one -->
+        <item quantity="other">The phone will be in emergency callback mode for <xliff:g id="count">%s</xliff:g> minutes.\nDo you want to exit now?</item>
+    </plurals>
 
     <!-- For incoming calls, this is a string we can get from a CDMA network instead of
          the actual phone number, to indicate there's no number present.  DO NOT TRANSLATE. -->

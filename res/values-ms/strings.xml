@@ -16,8 +16,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Data Mudah Alih"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Perkhidmatan Telefon"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Pendail Kecemasan"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Telefon"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"Senarai FDN"</string>
     <string name="unknown" msgid="8279698889921830815">"Tidak diketahui"</string>
     <string name="private_num" msgid="4487990167889159992">"Nombor peribadi"</string>
     <string name="payphone" msgid="7936735771836716941">"Telefon Awam"</string>
@@ -297,6 +300,8 @@
     <string name="sim_change_data_message" msgid="3567358694255933280">"Gunakan <xliff:g id="NEW_SIM">%1$s</xliff:g> dan bukannya <xliff:g id="OLD_SIM">%2$s</xliff:g> untuk data mudah alih?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Panggilan Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Panggilan video pembawa"</string>
+    <string name="gsm_umts_options" msgid="4968446771519376808">"Pilihan GSM/UMTS"</string>
+    <string name="cdma_options" msgid="3669592472226145665">"Pilihan CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Penggunaan data"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Data yang digunakan dalam tempoh semasa"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Tempoh penggunaan data"</string>
@@ -465,6 +470,7 @@
     <string name="fdn_failed" msgid="216592346853420250">"Operasi FDN gagal."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Membaca daripada kad SIM..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"Tiada kenalan pada kad SIM anda."</string>
+    <string name="simContacts_title" msgid="2714029230160136647">"Pilih kenalan untuk diimport"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Matikan mod pesawat untuk mengimport kenalan daripada kad SIM."</string>
     <string name="enable_pin" msgid="967674051730845376">"Dayakan/lumpuhkan PIN SIM"</string>
     <string name="change_pin" msgid="3657869530942905790">"Tukar PIN SIM"</string>
@@ -631,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ya"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Tidak"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Ketepikan"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefon dalam mod panggil balik kecemasan"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Hingga <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">Telefon akan berada dalam mod panggil balik kecemasan selama <xliff:g id="COUNT_1">%s</xliff:g> minit.\nAdakah anda mahu keluar sekarang?</item>
+      <item quantity="one">Telefon akan berada dalam mod panggil balik kecemasan selama <xliff:g id="COUNT_0">%s</xliff:g> minit.\nAdakah anda mahu keluar sekarang?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Perkhidmatan"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Persediaan"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Tidak ditetapkan&gt;"</string>
