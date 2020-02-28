@@ -2146,30 +2146,24 @@ public class TelephonyConnectionService extends ConnectionService {
                             return 1;
                         }
                         // sort by number of RadioAccessFamily Capabilities.
-                        int compare = Integer.bitCount(o1.capabilities) -
-                                Integer.bitCount(o2.capabilities);
+                        int compare = RadioAccessFamily.compare(o1.capabilities, o2.capabilities);
                         if (compare == 0) {
-                            // Sort by highest RAF Capability if the number is the same.
-                            compare = RadioAccessFamily.getHighestRafCapability(o1.capabilities) -
-                                    RadioAccessFamily.getHighestRafCapability(o2.capabilities);
-                            if (compare == 0) {
-                                if (firstOccupiedSlot != null) {
-                                    // If the RAF capability is the same, choose based on whether or
-                                    // not any of the slots are occupied with a SIM card (if both
-                                    // are, always choose the first).
-                                    if (o1.slotId == firstOccupiedSlot.getPhoneId()) {
-                                        return 1;
-                                    } else if (o2.slotId == firstOccupiedSlot.getPhoneId()) {
-                                        return -1;
-                                    }
-                                } else {
-                                    // No slots have SIMs detected in them, so weight the default
-                                    // Phone Id greater than the others.
-                                    if (o1.slotId == defaultPhoneId) {
-                                        return 1;
-                                    } else if (o2.slotId == defaultPhoneId) {
-                                        return -1;
-                                    }
+                            if (firstOccupiedSlot != null) {
+                                // If the RAF capability is the same, choose based on whether or
+                                // not any of the slots are occupied with a SIM card (if both
+                                // are, always choose the first).
+                                if (o1.slotId == firstOccupiedSlot.getPhoneId()) {
+                                    return 1;
+                                } else if (o2.slotId == firstOccupiedSlot.getPhoneId()) {
+                                    return -1;
+                                }
+                            } else {
+                                // No slots have SIMs detected in them, so weight the default
+                                // Phone Id greater than the others.
+                                if (o1.slotId == defaultPhoneId) {
+                                    return 1;
+                                } else if (o2.slotId == defaultPhoneId) {
+                                    return -1;
                                 }
                             }
                         }
