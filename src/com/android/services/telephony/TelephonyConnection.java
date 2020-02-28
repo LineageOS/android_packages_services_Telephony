@@ -117,6 +117,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private static final int MSG_REDIAL_CONNECTION_CHANGED = 20;
     private static final int MSG_REJECT = 21;
 
+    private static final String JAPAN_COUNTRY_CODE_WITH_PLUS_SIGN = "+81";
+    private static final String JAPAN_ISO_COUNTRY_CODE = "JP";
+
     private List<Uri> mParticipants;
     private boolean mIsAdhocConferenceCall;
 
@@ -1300,6 +1303,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             if (isShowingOriginalDialString()
                     && mOriginalConnection.getOrigDialString() != null) {
                 address = getAddressFromNumber(mOriginalConnection.getOrigDialString());
+            } else if (isNeededToFormatIncomingNumberForJp()) {
+                address = getAddressFromNumber(
+                        formatIncomingNumberForJp(mOriginalConnection.getAddress()));
             } else {
                 address = getAddressFromNumber(mOriginalConnection.getAddress());
             }
@@ -3202,5 +3208,30 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         for (TelephonyConnectionListener listener : mTelephonyListeners) {
             listener.onStatusHintsChanged(this, statusHints);
         }
+    }
+
+    /**
+     * Whether the incoming call number should be formatted to national number for Japan.
+     * @return {@code true} should be convert to the national format, {@code false} otherwise.
+     */
+    private boolean isNeededToFormatIncomingNumberForJp() {
+        if (mOriginalConnection.isIncoming()
+                && !TextUtils.isEmpty(mOriginalConnection.getAddress())
+                && mOriginalConnection.getAddress().startsWith(JAPAN_COUNTRY_CODE_WITH_PLUS_SIGN)) {
+            PersistableBundle b = getCarrierConfig();
+            return b != null && b.getBoolean(
+                    CarrierConfigManager.KEY_FORMAT_INCOMING_NUMBER_TO_NATIONAL_FOR_JP_BOOL);
+        }
+        return false;
+    }
+
+    /**
+     * Format the incoming call number to national number for Japan.
+     * @param number
+     * @return the formatted phone number (e.g, "+819012345678" -> "09012345678")
+     */
+    private String formatIncomingNumberForJp(String number) {
+        return PhoneNumberUtils.stripSeparators(
+                PhoneNumberUtils.formatNumber(number, JAPAN_ISO_COUNTRY_CODE));
     }
 }
