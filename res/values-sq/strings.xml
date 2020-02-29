@@ -506,7 +506,7 @@
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Të kanë mbetur edhe <xliff:g id="NUMBER">%d</xliff:g> përpjekje."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2-shi nuk është më i bllokuar"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Gabim në rrjet ose në kartën SIM"</string>
-    <string name="doneButton" msgid="7371209609238460207">"U krye!"</string>
+    <string name="doneButton" msgid="7371209609238460207">"U krye"</string>
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Numri i postës zanore"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"Po telefonon"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Po riformon numrin"</string>
@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Po"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Jo"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Injoro"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefoni është në modalitetin e kthimit të telefonatës së urgjencës"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Deri në <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">Telefoni do të jetë në modalitetin e kthimit të telefonatës së urgjencës për <xliff:g id="COUNT_1">%s</xliff:g> minuta.\nDëshiron të dalësh tani?</item>
+      <item quantity="one">Telefoni do të jetë në modalitetin e kthimit të telefonatës së urgjencës për <xliff:g id="COUNT_0">%s</xliff:g> minutë.\nDëshiron të dalësh tani?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Shërbimi"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Konfigurimi"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;I pavendosur&gt;"</string>

@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Иә"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Жоқ"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Бас тарту"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Телефон шұғыл кері қоңырау шалу режимінде"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> дейін"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">Телефон <xliff:g id="COUNT_1">%s</xliff:g> минут бойы шұғыл кері қоңырау шалу режимінде болады.\nҚазір шыққыңыз келе ме?</item>
+      <item quantity="one">Телефон <xliff:g id="COUNT_0">%s</xliff:g> минут бойы шұғыл кері қоңырау шалу режимінде болады.\nҚазір шыққыңыз келе ме?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Қызмет"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Орнату"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Реттелген жоқ&gt;"</string>

@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Oo"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Hindi"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Balewalain"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Nasa emergency callback mode ang telepono"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Hanggang <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">Nasa emergency callback mode ang telepono nang <xliff:g id="COUNT_1">%s</xliff:g> minuto.\nGusto mo bang lumabas ngayon?</item>
+      <item quantity="other">Nasa emergency callback mode ang telepono nang <xliff:g id="COUNT_1">%s</xliff:g> na minuto.\nGusto mo bang lumabas ngayon?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Serbisyo"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Setup"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Hindi nakatakda&gt;"</string>

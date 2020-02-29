@@ -641,6 +641,14 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Taip"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Ne"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Atsisakyti"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefone veikia atgalinio skambinimo pagalbos numeriu režimas"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Iki <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">Telefone <xliff:g id="COUNT_1">%s</xliff:g> minutę veiks atgalinio skambinimo pagalbos numeriu režimas.\nAr norite jį išjungti dabar?</item>
+      <item quantity="few">Telefone <xliff:g id="COUNT_1">%s</xliff:g> minutes veiks atgalinio skambinimo pagalbos numeriu režimas.\nAr norite jį išjungti dabar?</item>
+      <item quantity="many">Telefone <xliff:g id="COUNT_1">%s</xliff:g> minutės veiks atgalinio skambinimo pagalbos numeriu režimas.\nAr norite jį išjungti dabar?</item>
+      <item quantity="other">Telefone <xliff:g id="COUNT_1">%s</xliff:g> minučių veiks atgalinio skambinimo pagalbos numeriu režimas.\nAr norite jį išjungti dabar?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Paslaugos teikėjas"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Sąranka"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nenustatyta&gt;"</string>
