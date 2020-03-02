@@ -1707,7 +1707,7 @@ public class TelephonyConnectionService extends ConnectionService {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
                         Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 if (SubscriptionManager.isValidSubscriptionId(subId)) {
-                    intent.putExtra(PhoneConstants.SUBSCRIPTION_KEY, subId);
+                    SubscriptionManager.putSubscriptionIdExtra(intent, subId);
                 }
                 startActivity(intent);
             }
