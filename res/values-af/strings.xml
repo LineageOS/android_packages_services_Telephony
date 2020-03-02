@@ -639,6 +639,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ja"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Nee"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Maak toe"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Die foon is in noodterugbelmodus"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Tot <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">Die foon sal in noodterugbelmodus wees vir <xliff:g id="COUNT_1">%s</xliff:g> minute.\nWil jy nou uitgaan?</item>
+      <item quantity="one">Die foon sal in noodterugbelmodus wees vir <xliff:g id="COUNT_0">%s</xliff:g> minuut.\nWil jy nou uitgaan?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Diens"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Opstelling"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nie gestel nie&gt;"</string>
