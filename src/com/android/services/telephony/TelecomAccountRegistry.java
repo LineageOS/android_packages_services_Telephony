@@ -779,8 +779,11 @@ public class TelecomAccountRegistry {
                     .isRttEnabled(mPhone.getSubId());
 
             boolean isRoaming = mTelephonyManager.isNetworkRoaming(mPhone.getSubId());
+            boolean isOnWfc = mPhone.getImsRegistrationTech()
+                    == ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN;
 
-            return hasVoiceAvailability && isRttSupported && !isRoaming;
+            boolean shouldDisableBecauseRoamingOffWfc = isRoaming && !isOnWfc;
+            return hasVoiceAvailability && isRttSupported && !shouldDisableBecauseRoamingOffWfc;
         }
 
         /**
