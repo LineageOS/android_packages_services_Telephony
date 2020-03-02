@@ -31,6 +31,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.sysprop.TelephonyProperties;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.android.internal.telephony.Phone;
@@ -119,7 +120,7 @@ public class EmergencyCallbackModeService extends Service {
             // Stop the service when phone exits Emergency Callback Mode
             if (intent.getAction().equals(
                     TelephonyIntents.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED)) {
-                if (intent.getBooleanExtra("phoneinECMState", false) == false) {
+                if (!intent.getBooleanExtra(TelephonyManager.EXTRA_PHONE_IN_ECM_STATE, false)) {
                     stopSelf();
                 }
             }
