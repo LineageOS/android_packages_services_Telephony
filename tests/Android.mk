@@ -31,6 +31,7 @@ LOCAL_JAVA_LIBRARIES := telephony-common android.test.base
 LOCAL_INSTRUMENTATION_FOR := TeleService
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
+        android.test.mock \
         androidx.test.rules \
         mockito-target-minus-junit4 \
         androidx.test.espresso.core \

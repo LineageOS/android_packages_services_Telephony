@@ -54,6 +54,14 @@ final class PstnIncomingCallNotifier {
     private static final int EVENT_CDMA_CALL_WAITING = 101;
     private static final int EVENT_UNKNOWN_CONNECTION = 102;
 
+    /**
+     * The max amount of time to wait before hanging up a call that was for number verification.
+     *
+     * The delay is so that the remote end has time to hang up the call after receiving the
+     * verification signal so that the call doesn't go to voicemail.
+     */
+    private static final int MAX_NUMBER_VERIFICATION_HANGUP_DELAY_MILLIS = 10000;
+
     /** The phone object to listen to. */
     private final Phone mPhone;
 
@@ -131,12 +139,16 @@ final class PstnIncomingCallNotifier {
             if (connection.getAddress() != null) {
                 if (NumberVerificationManager.getInstance()
                         .checkIncomingCall(connection.getAddress())) {
-                    // Disconnect the call if it matches
-                    try {
-                        connection.hangup();
-                    } catch (CallStateException e) {
-                        Log.e(this, e, "Error hanging up potential number verification call");
-                    }
+                    // Disconnect the call if it matches, after a delay
+                    mHandler.postDelayed(() -> {
+                        try {
+                            connection.hangup();
+                        } catch (CallStateException e) {
+                            Log.i(this, "Remote end hung up call verification call");
+                        }
+                        // TODO: use an app-supplied delay (needs new API), not to exceed the
+                        // existing max.
+                    }, MAX_NUMBER_VERIFICATION_HANGUP_DELAY_MILLIS);
                     return;
                 }
             }
