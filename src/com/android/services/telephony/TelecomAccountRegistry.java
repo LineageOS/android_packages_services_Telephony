@@ -55,6 +55,7 @@ import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
 
 import com.android.ims.ImsManager;
+import com.android.internal.telephony.LocaleTracker;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.SubscriptionController;
@@ -67,6 +68,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * Owns all data we have registered with Telecom including handling dynamic addition and
@@ -773,14 +775,51 @@ public class TelecomAccountRegistry {
          * device.
          */
         private boolean isRttCurrentlySupported() {
+            // First check the emergency case -- if it's supported and turned on,
+            // we want to present RTT as available on the emergency-only phone account
+            if (mIsEmergency) {
+                // First check whether the device supports it
+                boolean devicesSupportsRtt =
+                        mContext.getResources().getBoolean(R.bool.config_support_rtt);
+                boolean deviceSupportsEmergencyRtt = mContext.getResources().getBoolean(
+                        R.bool.config_support_simless_emergency_rtt);
+                if (!(deviceSupportsEmergencyRtt && devicesSupportsRtt)) {
+                    Log.i(this, "isRttCurrentlySupported -- emergency acct and no device support");
+                    return false;
+                }
+                // Next check whether we're in or near a country that supports it
+                String country =
+                        mPhone.getServiceStateTracker().getLocaleTracker()
+                                .getCurrentCountry().toLowerCase();
+                String[] supportedCountries = mContext.getResources().getStringArray(
+                        R.array.config_simless_emergency_rtt_supported_countries);
+                if (supportedCountries == null || Arrays.stream(supportedCountries).noneMatch(
+                        Predicate.isEqual(country))) {
+                    Log.i(this, "isRttCurrentlySupported -- emergency acct and"
+                            + " not supported in this country: " + country);
+                    return false;
+                }
+                
+                return true;
+            }
+
             boolean hasVoiceAvailability = isImsVoiceAvailable();
 
             boolean isRttSupported = PhoneGlobals.getInstance().phoneMgr
                     .isRttEnabled(mPhone.getSubId());
 
             boolean isRoaming = mTelephonyManager.isNetworkRoaming(mPhone.getSubId());
+            boolean isOnWfc = mPhone.getImsRegistrationTech()
+                    == ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN;
 
-            return hasVoiceAvailability && isRttSupported && !isRoaming;
+            boolean shouldDisableBecauseRoamingOffWfc = isRoaming && !isOnWfc;
+            Log.i(this, "isRttCurrentlySupported -- regular acct,"
+                    + " hasVoiceAvailability: " + hasVoiceAvailability + "\n"
+                    + " isRttSupported: " + isRttSupported + "\n"
+                    + " isRoaming: " + isRoaming + "\n"
+                    + " isOnWfc: " + isOnWfc + "\n");
+
+            return hasVoiceAvailability && isRttSupported && !shouldDisableBecauseRoamingOffWfc;
         }
 
         /**
@@ -1195,8 +1234,9 @@ public class TelecomAccountRegistry {
 
         //We also need to listen for locale changes
         //(e.g. system language changed -> SIM card name changed)
-        mContext.registerReceiver(mLocaleChangeReceiver,
-                new IntentFilter(Intent.ACTION_LOCALE_CHANGED));
+        IntentFilter localeChangeFilter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
+        localeChangeFilter.addAction(TelephonyManager.ACTION_NETWORK_COUNTRY_CHANGED);
+        mContext.registerReceiver(mLocaleChangeReceiver, localeChangeFilter);
 
         // Listen to the RTT system setting so that we update it when the user flips it.
         ContentObserver rttUiSettingObserver = new ContentObserver(
