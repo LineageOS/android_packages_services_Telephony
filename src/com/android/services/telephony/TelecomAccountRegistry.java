@@ -36,6 +36,7 @@ import android.os.Looper;
 import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.provider.Telephony;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
@@ -48,6 +49,7 @@ import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsMmTelManager;
+import android.telephony.ims.ImsRcsManager;
 import android.telephony.ims.ImsReasonInfo;
 import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.feature.MmTelFeature;
@@ -540,16 +542,31 @@ public class TelecomAccountRegistry {
         }
 
         /**
-         * Determines from carrier configuration whether RCS presence indication for video calls is
-         * supported.
+         * Determines from carrier configuration and user setting whether RCS presence indication
+         * for video calls is supported.
          *
          * @return {@code true} if RCS presence indication for video calls is supported.
          */
         private boolean isCarrierVideoPresenceSupported() {
             PersistableBundle b =
                     PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            return b != null &&
-                    b.getBoolean(CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL);
+            boolean carrierConfigEnabled = b != null
+                    && b.getBoolean(CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL);
+            return carrierConfigEnabled && isUserContactDiscoverySettingEnabled();
+        }
+
+        /**
+         * @return true if the user has enabled contact discovery for the subscription associated
+         * with this account entry, false otherwise.
+         */
+        private boolean isUserContactDiscoverySettingEnabled() {
+            try {
+                ImsRcsManager manager = mImsManager.getImsRcsManager(mPhone.getSubId());
+                return manager.getUceAdapter().isUceSettingEnabled();
+            } catch (Exception e) {
+                Log.w(LOG_TAG, "isUserContactDiscoverySettingEnabled caught exception: " + e);
+                return false;
+            }
         }
 
         /**
@@ -751,6 +768,25 @@ public class TelecomAccountRegistry {
             }
         }
 
+        public void updateVideoPresenceCapability() {
+            synchronized (mAccountsLock) {
+                if (!mAccounts.contains(this)) {
+                    // Account has already been torn down, don't try to register it again.
+                    // This handles the case where teardown has already happened, and we got a Ims
+                    // registration update that lost the race for the mAccountsLock.  In such a
+                    // scenario by the time we get here, the original phone account could have been
+                    // torn down.
+                    return;
+                }
+                boolean isVideoPresenceSupported = isCarrierVideoPresenceSupported();
+                if (mIsVideoPresenceSupported != isVideoPresenceSupported) {
+                    Log.i(this, "updateVideoPresenceCapability for subId=" + mPhone.getSubId()
+                            + ", new value= " + isVideoPresenceSupported);
+                    mAccount = registerPstnPhoneAccount(mIsEmergency, mIsDummy);
+                }
+            }
+        }
+
         public void updateRttCapability() {
             boolean isRttEnabled = isRttCurrentlySupported();
             if (isRttEnabled != mIsRttCapable) {
@@ -947,6 +983,7 @@ public class TelecomAccountRegistry {
     private static TelecomAccountRegistry sInstance;
     private final Context mContext;
     private final TelecomManager mTelecomManager;
+    private final android.telephony.ims.ImsManager mImsManager;
     private final TelephonyManager mTelephonyManager;
     private final SubscriptionManager mSubscriptionManager;
     private List<AccountEntry> mAccounts = new LinkedList<AccountEntry>();
@@ -962,6 +999,7 @@ public class TelecomAccountRegistry {
     TelecomAccountRegistry(Context context) {
         mContext = context;
         mTelecomManager = context.getSystemService(TelecomManager.class);
+        mImsManager = context.getSystemService(android.telephony.ims.ImsManager.class);
         mTelephonyManager = TelephonyManager.from(context);
         mSubscriptionManager = SubscriptionManager.from(context);
     }
@@ -1199,6 +1237,10 @@ public class TelecomAccountRegistry {
         mContext.registerReceiver(mLocaleChangeReceiver,
                 new IntentFilter(Intent.ACTION_LOCALE_CHANGED));
 
+        registerContentObservers();
+    }
+
+    private void registerContentObservers() {
         // Listen to the RTT system setting so that we update it when the user flips it.
         ContentObserver rttUiSettingObserver = new ContentObserver(
                 new Handler(Looper.getMainLooper())) {
@@ -1215,6 +1257,23 @@ public class TelecomAccountRegistry {
         Uri rttSettingUri = Settings.Secure.getUriFor(Settings.Secure.RTT_CALLING_MODE);
         mContext.getContentResolver().registerContentObserver(
                 rttSettingUri, false, rttUiSettingObserver);
+
+        // Listen to the changes to the user's Contacts Discovery Setting.
+        ContentObserver contactDiscoveryObserver = new ContentObserver(
+                new Handler(Looper.getMainLooper())) {
+            @Override
+            public void onChange(boolean selfChange) {
+                synchronized (mAccountsLock) {
+                    for (AccountEntry account : mAccounts) {
+                        account.updateVideoPresenceCapability();
+                    }
+                }
+            }
+        };
+        Uri contactDiscUri = Uri.withAppendedPath(Telephony.SimInfo.CONTENT_URI,
+                Telephony.SimInfo.COLUMN_IMS_RCS_UCE_ENABLED);
+        mContext.getContentResolver().registerContentObserver(
+                contactDiscUri, true /*notifyForDescendants*/, contactDiscoveryObserver);
     }
 
     /**
