@@ -35,6 +35,7 @@ import android.util.Log;
 import com.android.ims.ImsManager;
 import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.services.telephony.rcs.RcsFeatureController;
 import com.android.services.telephony.rcs.TelephonyRcsService;
@@ -245,9 +246,13 @@ public class ImsRcsController extends IImsRcsController.Stub {
     }
 
     @Override
-    public void requestCapabilities(int subId, List<Uri> contactNumbers,
-            IRcsUceControllerCallback c) {
+    public void requestCapabilities(int subId, String callingPackage, String callingFeatureId,
+            List<Uri> contactNumbers, IRcsUceControllerCallback c) {
         enforceReadPrivilegedPermission("requestCapabilities");
+        if (!isUceSettingEnabled(subId, callingPackage, callingFeatureId)) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "The user has not enabled UCE for this subscription.");
+        }
         final long token = Binder.clearCallingIdentity();
         try {
             UserCapabilityExchangeImpl uce = getRcsFeatureController(subId).getFeature(
@@ -280,17 +285,32 @@ public class ImsRcsController extends IImsRcsController.Stub {
     }
 
     @Override
-    public boolean isUceSettingEnabled(int subId) {
-        enforceReadPrivilegedPermission("isUceSettingEnabled");
-        return SubscriptionManager.getBooleanSubscriptionProperty(subId,
-                SubscriptionManager.IMS_RCS_UCE_ENABLED, false /*defaultValue*/, mApp);
+    public boolean isUceSettingEnabled(int subId, String callingPackage, String callingFeatureId) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, callingFeatureId, "isUceSettingEnabled")) {
+            Log.w(TAG, "isUceSettingEnabled: READ_PHONE_STATE app op disabled when accessing "
+                    + "isUceSettingEnabled");
+            return false;
+        }
+        final long token = Binder.clearCallingIdentity();
+        try {
+            return SubscriptionManager.getBooleanSubscriptionProperty(subId,
+                    SubscriptionManager.IMS_RCS_UCE_ENABLED, false /*defaultValue*/, mApp);
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
     }
 
     @Override
     public void setUceSettingEnabled(int subId, boolean isEnabled) {
         enforceModifyPermission();
-        SubscriptionManager.setSubscriptionProperty(subId, SubscriptionManager.IMS_RCS_UCE_ENABLED,
-                (isEnabled ? "1" : "0"));
+        final long token = Binder.clearCallingIdentity();
+        try {
+            SubscriptionManager.setSubscriptionProperty(subId,
+                    SubscriptionManager.IMS_RCS_UCE_ENABLED, (isEnabled ? "1" : "0"));
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
     }
 
     /**
