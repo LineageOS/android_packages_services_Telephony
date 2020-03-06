@@ -7884,7 +7884,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void updateTestOtaEmergencyNumberDbFilePath(String otaFilePath) {
+    public void updateOtaEmergencyNumberDbFilePath(ParcelFileDescriptor otaParcelFileDescriptor) {
         enforceActiveEmergencySessionPermission();
 
         final long identity = Binder.clearCallingIdentity();
@@ -7892,7 +7892,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             for (Phone phone: PhoneFactory.getPhones()) {
                 EmergencyNumberTracker tracker = phone.getEmergencyNumberTracker();
                 if (tracker != null) {
-                    tracker.updateTestOtaEmergencyNumberDbFilePath(otaFilePath);
+                    tracker.updateOtaEmergencyNumberDbFilePath(otaParcelFileDescriptor);
+                }
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void resetOtaEmergencyNumberDbFilePath() {
+        enforceActiveEmergencySessionPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            for (Phone phone: PhoneFactory.getPhones()) {
+                EmergencyNumberTracker tracker = phone.getEmergencyNumberTracker();
+                if (tracker != null) {
+                    tracker.resetOtaEmergencyNumberDbFilePath();
                 }
             }
         } finally {
