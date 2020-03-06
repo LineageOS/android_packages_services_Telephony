@@ -1028,14 +1028,47 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     onCompleted = obtainMessage(EVENT_GET_MODEM_ACTIVITY_INFO_DONE, request);
                     if (defaultPhone != null) {
                         defaultPhone.getModemActivityInfo(onCompleted, request.workSource);
+                    } else {
+                        ResultReceiver result = (ResultReceiver) request.argument;
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelable(TelephonyManager.MODEM_ACTIVITY_RESULT_KEY,
+                                new ModemActivityInfo(0, 0, 0, new int[0], 0));
+                        result.send(0, bundle);
                     }
                     break;
 
                 case EVENT_GET_MODEM_ACTIVITY_INFO_DONE:
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
+                    ResultReceiver result = (ResultReceiver) request.argument;
+
+                    ModemActivityInfo ret = new ModemActivityInfo(0, 0, 0, new int[0], 0);
                     if (ar.exception == null && ar.result != null) {
-                        request.result = ar.result;
+                        // Update the last modem activity info and the result of the request.
+                        ModemActivityInfo info = (ModemActivityInfo) ar.result;
+                        if (isModemActivityInfoValid(info)) {
+                            int[] mergedTxTimeMs = new int[ModemActivityInfo.TX_POWER_LEVELS];
+                            int[] txTimeMs = info.getTransmitTimeMillis();
+                            int[] lastModemTxTimeMs = mLastModemActivityInfo
+                                    .getTransmitTimeMillis();
+                            for (int i = 0; i < mergedTxTimeMs.length; i++) {
+                                mergedTxTimeMs[i] = txTimeMs[i] + lastModemTxTimeMs[i];
+                            }
+                            mLastModemActivityInfo.setTimestamp(info.getTimestamp());
+                            mLastModemActivityInfo.setSleepTimeMillis(info.getSleepTimeMillis()
+                                    + mLastModemActivityInfo.getSleepTimeMillis());
+                            mLastModemActivityInfo.setIdleTimeMillis(info.getIdleTimeMillis()
+                                    + mLastModemActivityInfo.getIdleTimeMillis());
+                            mLastModemActivityInfo.setTransmitTimeMillis(mergedTxTimeMs);
+                            mLastModemActivityInfo.setReceiveTimeMillis(
+                                    info.getReceiveTimeMillis()
+                                            + mLastModemActivityInfo.getReceiveTimeMillis());
+                        }
+                        ret = new ModemActivityInfo(mLastModemActivityInfo.getTimestamp(),
+                                mLastModemActivityInfo.getSleepTimeMillis(),
+                                mLastModemActivityInfo.getIdleTimeMillis(),
+                                mLastModemActivityInfo.getTransmitTimeMillis(),
+                                mLastModemActivityInfo.getReceiveTimeMillis());
                     } else {
                         if (ar.result == null) {
                             loge("queryModemActivityInfo: Empty response");
@@ -1046,10 +1079,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             loge("queryModemActivityInfo: Unknown exception");
                         }
                     }
-                    // Result cannot be null. Return ModemActivityInfo with all fields set to 0.
-                    if (request.result == null) {
-                        request.result = new ModemActivityInfo(0, 0, 0, new int[0], 0);
-                    }
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(TelephonyManager.MODEM_ACTIVITY_RESULT_KEY, ret);
+                    result.send(0, bundle);
                     notifyRequester(request);
                     break;
 
@@ -6644,38 +6676,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ModemActivityInfo ret = null;
-            synchronized (mLastModemActivityInfo) {
-                ModemActivityInfo info = (ModemActivityInfo) sendRequest(
-                        CMD_GET_MODEM_ACTIVITY_INFO,
-                        null, workSource);
-                if (isModemActivityInfoValid(info)) {
-                    int[] mergedTxTimeMs = new int[ModemActivityInfo.TX_POWER_LEVELS];
-                    int[] txTimeMs = info.getTransmitTimeMillis();
-                    int[] lastModemTxTimeMs = mLastModemActivityInfo.getTransmitTimeMillis();
-                    for (int i = 0; i < mergedTxTimeMs.length; i++) {
-                        mergedTxTimeMs[i] = txTimeMs[i] + lastModemTxTimeMs[i];
-                    }
-                    mLastModemActivityInfo.setTimestamp(info.getTimestamp());
-                    mLastModemActivityInfo.setSleepTimeMillis(info.getSleepTimeMillis()
-                            + mLastModemActivityInfo.getSleepTimeMillis());
-                    mLastModemActivityInfo.setIdleTimeMillis(
-                            info.getIdleTimeMillis() + mLastModemActivityInfo.getIdleTimeMillis());
-                    mLastModemActivityInfo.setTransmitTimeMillis(mergedTxTimeMs);
-                    mLastModemActivityInfo.setReceiveTimeMillis(
-                            info.getReceiveTimeMillis() + mLastModemActivityInfo
-                                .getReceiveTimeMillis());
-                }
-
-                ret = new ModemActivityInfo(mLastModemActivityInfo.getTimestamp(),
-                        mLastModemActivityInfo.getSleepTimeMillis(),
-                        mLastModemActivityInfo.getIdleTimeMillis(),
-                        mLastModemActivityInfo.getTransmitTimeMillis(),
-                        mLastModemActivityInfo.getReceiveTimeMillis());
-            }
-            Bundle bundle = new Bundle();
-            bundle.putParcelable(TelephonyManager.MODEM_ACTIVITY_RESULT_KEY, ret);
-            result.send(0, bundle);
+            sendRequestAsync(CMD_GET_MODEM_ACTIVITY_INFO, result, null, workSource);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
