@@ -21,6 +21,7 @@ import static android.service.carrier.CarrierService.ICarrierServiceWrapper.RESU
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.app.AppOpsManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -37,6 +38,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.PersistableBundle;
+import android.os.Process;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.UserHandle;
@@ -1123,6 +1125,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 && !TextUtils.isEmpty(args[requestingPackageIndex + 1])) {
             String requestingPackage = args[requestingPackageIndex + 1];
             indentPW.println("");
+            // Throws a SecurityException if the caller is impersonating another app in an effort to
+            // dump extra info (which may contain PII the caller doesn't have a right to).
+            enforceCallerIsSystemOrRequestingPackage(requestingPackage);
             logd("Including default and requesting package " + requestingPackage
                     + " carrier services in dump");
             indentPW.println("Connected services");
@@ -1160,6 +1165,32 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         indentPW.decreaseIndent();
         indentPW.decreaseIndent();
         indentPW.println("");
+    }
+
+    /**
+     * Passes without problem when one of these conditions is true:
+     * - The caller is a privileged UID (e.g. for dumpstate.cpp generating a bug report, where the
+     * system knows the true caller plumbed in through the {@link android.os.BugreportManager} API).
+     * - The caller's UID matches the supplied package.
+     *
+     * @throws SecurityException if none of the above conditions are met.
+     */
+    private void enforceCallerIsSystemOrRequestingPackage(String requestingPackage)
+            throws SecurityException {
+        final int callingUid = Binder.getCallingUid();
+        if (callingUid == Process.ROOT_UID || callingUid == Process.SYSTEM_UID
+                || callingUid == Process.SHELL_UID || callingUid == Process.PHONE_UID) {
+            // Bug reports (dumpstate.cpp) run as SHELL, and let some other privileged UIDs through
+            // as well.
+            return;
+        }
+        // An app is trying to dump extra detail, block it if they aren't who they claim to be.
+        AppOpsManager appOps = mContext.getSystemService(AppOpsManager.class);
+        if (appOps == null) {
+            throw new SecurityException("No AppOps");
+        }
+        // Will throw a SecurityException if the UID and package don't match.
+        appOps.checkPackage(callingUid, requestingPackage);
     }
 
     private void dumpCarrierServiceIfBound(FileDescriptor fd, IndentingPrintWriter indentPW,
