@@ -8233,6 +8233,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean isMvnoMatched(int subId, int mvnoType, @NonNull String mvnoMatchData) {
+        enforceReadPrivilegedPermission("isMvnoMatched");
         IccRecords iccRecords = UiccController.getInstance().getIccRecords(
                 SubscriptionManager.getPhoneId(subId), UiccController.APP_FAM_3GPP);
         if (iccRecords == null) {
