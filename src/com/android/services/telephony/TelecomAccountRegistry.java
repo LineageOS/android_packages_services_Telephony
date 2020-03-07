@@ -286,7 +286,7 @@ public class TelecomAccountRegistry {
                 mIsRttCapable = false;
             }
 
-            mIsVideoCapable = mPhone.isVideoEnabled() && !mIsRttCapable;
+            mIsVideoCapable = mPhone.isVideoEnabled();
             boolean isVideoEnabledByPlatform = ImsManager.getInstance(mPhone.getContext(),
                     mPhone.getPhoneId()).isVtEnabledByPlatform();
 
