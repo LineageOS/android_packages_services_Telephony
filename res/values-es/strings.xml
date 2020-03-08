@@ -569,7 +569,7 @@
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Teclado"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Silenciar"</string>
     <string name="onscreenAddCallText" msgid="9075675082903611677">"Añadir llamada"</string>
-    <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Llamada a tres"</string>
+    <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Combinar llamadas"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"Cambiar"</string>
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"Administrar llamadas"</string>
     <string name="onscreenManageConferenceText" msgid="4700574060601755137">"Gestionar llamada de conferencia"</string>

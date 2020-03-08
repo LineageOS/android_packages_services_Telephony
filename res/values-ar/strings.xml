@@ -673,7 +673,7 @@
     <string name="preference_category_ringtone" msgid="8787281191375434976">"نغمة الرنين والاهتزاز"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"‏بطاقات SIM مدمجة"</string>
     <string name="enable_video_calling_title" msgid="7246600931634161830">"تشغيل مكالمات الفيديو"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"‏لتشغيل مكالمات الفيديو، يجب عليك تفعيل وضع 4G LTE المحسّن في إعدادات الشبكة."</string>
+    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"‏لتفعيل مكالمات الفيديو، يجب عليك تفعيل وضع 4G LTE المحسّن في إعدادات الشبكة."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"إعدادات الشبكة"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"إغلاق"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"مكالمات الطوارئ"</string>
