@@ -1449,8 +1449,18 @@ public class RadioInfo extends AppCompatActivity {
     OnCheckedChangeListener mRadioPowerOnChangeListener = new OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            log("toggle radio power: currently " + (isRadioOn() ? "on" : "off"));
-            mPhone.setRadioPower(isChecked);
+            // TODO: b/145681511. Within current design, radio power on all of the phones need
+            // to be controlled at the same time.
+            Phone[] phones = PhoneFactory.getPhones();
+            if (phones == null) {
+                return;
+            }
+            log("toggle radio power: phone*" + phones.length + " " + (isRadioOn() ? "on" : "off"));
+            for (int phoneIndex = 0; phoneIndex < phones.length; phoneIndex++) {
+                if (phones[phoneIndex] != null) {
+                    phones[phoneIndex].setRadioPower(isChecked);
+                }
+            }
         }
     };
 
