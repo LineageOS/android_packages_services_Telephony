@@ -235,7 +235,7 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
     private static int toUcePublishState(int publishState) {
         switch (publishState) {
             case PresenceBase.PUBLISH_STATE_200_OK:
-                return RcsUceAdapter.PUBLISH_STATE_200_OK;
+                return RcsUceAdapter.PUBLISH_STATE_OK;
             case PresenceBase.PUBLISH_STATE_NOT_PUBLISHED:
                 return RcsUceAdapter.PUBLISH_STATE_NOT_PUBLISHED;
             case PresenceBase.PUBLISH_STATE_VOLTE_PROVISION_ERROR:
