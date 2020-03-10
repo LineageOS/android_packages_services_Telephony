@@ -25,6 +25,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string-array name="config_simless_emergency_rtt_supported_countries">
-    <item msgid="5409580020841435354">"us"</item>
+    <item msgid="5409580020841435354">"ಯುಎಸ್"</item>
   </string-array>
 </resources>
