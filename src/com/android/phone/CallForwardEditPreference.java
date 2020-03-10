@@ -379,8 +379,7 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
 
                             // Show an alert if we got a success response but
                             // with unexpected values.
-                            // Currently only handle the fail-to-disable case
-                            // since we haven't observed fail-to-enable.
+                            // Handle the fail-to-disable case.
                             if (msg.arg2 == MESSAGE_SET_CF &&
                                     msg.arg1 == CommandsInterface.CF_ACTION_DISABLE &&
                                     info.status == 1) {
@@ -404,7 +403,21 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
                                 }
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                                 builder.setNeutralButton(R.string.close_dialog, null);
-                                builder.setTitle(getContext().getText(R.string.error_updating_title));
+                                builder.setTitle(getContext()
+                                        .getText(R.string.error_updating_title));
+                                builder.setMessage(s);
+                                builder.setCancelable(true);
+                                builder.create().show();
+                            } else if (msg.arg2 == MESSAGE_SET_CF &&
+                                    msg.arg1 == CommandsInterface.CF_ACTION_REGISTRATION &&
+                                    info.status == 0) {
+                                // Handle the fail-to-enable case.
+                                CharSequence s = getContext()
+                                    .getText(R.string.registration_cf_forbidden);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                builder.setNeutralButton(R.string.close_dialog, null);
+                                builder.setTitle(getContext()
+                                        .getText(R.string.error_updating_title));
                                 builder.setMessage(s);
                                 builder.setCancelable(true);
                                 builder.create().show();
