@@ -273,6 +273,7 @@
     <string name="sum_cfnrc_disabled">Off</string>
     <!-- Error message displayed after failing to disable forwarding calls when the phone is unreachable -->
     <string name="disable_cfnrc_forbidden">Your carrier doesn\'t support disabling call forwarding when your phone is unreachable.</string>
+    <string name="registration_cf_forbidden">Your carrier doesn\'t support call forwarding.</string>
 
     <!-- Title of the progress dialog displayed while updating Call settings -->
     <string name="updating_title">Call settings</string>
