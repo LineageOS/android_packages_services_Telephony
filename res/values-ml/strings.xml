@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"വേണം"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"വേണ്ട"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"നിരസിക്കുക"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ഫോൺ അടിയന്തര കോൾബാക്ക് മോഡിലാണ്"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> വരെ"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">ഫോൺ <xliff:g id="COUNT_1">%s</xliff:g> മിനിറ്റ്, അടിയന്തര കോൾബാക്ക് മോഡിലായിരിക്കും.\nനിങ്ങൾക്ക് ഇപ്പോൾ പുറത്ത് കടക്കണോ?</item>
+      <item quantity="one">ഫോൺ <xliff:g id="COUNT_0">%s</xliff:g> മിനിറ്റ്, അടിയന്തര കോൾബാക്ക് മോഡിലായിരിക്കും.\nനിങ്ങൾക്ക് ഇപ്പോൾ പുറത്ത് കടക്കണോ?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"സേവനം"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"സജ്ജമാക്കുക"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;സജ്ജീകരിച്ചിട്ടില്ല&gt;"</string>

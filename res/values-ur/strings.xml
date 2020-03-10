@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ہاں"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"نہیں"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"کالعدم کریں"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"فون ہنگامی کال بیک وضع میں ہے"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> تک"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">فون <xliff:g id="COUNT_1">%s</xliff:g> منٹ تک ہنگامی کال بیک وضع میں رہے گا۔\n کیا آپ ابھی باہر نکلنا چاہتے ہیں؟</item>
+      <item quantity="one">فون <xliff:g id="COUNT_0">%s</xliff:g> منٹ تک ہنگامی کال بیک وضع میں رہے گا۔\n کیا آپ ابھی باہر نکلنا چاہتے ہیں؟</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"سروس"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"سیٹ اپ"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"‏&lt;سیٹ نہیں ہے&gt;"</string>

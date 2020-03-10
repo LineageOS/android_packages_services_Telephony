@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"是"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"否"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"关闭"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"手机正处于紧急回拨模式"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"直到 <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">手机在 <xliff:g id="COUNT_1">%s</xliff:g> 分钟内都将处于紧急回拨模式。\n您要立即退出吗？</item>
+      <item quantity="one">手机在 <xliff:g id="COUNT_0">%s</xliff:g> 分钟内都将处于紧急回拨模式。\n您要立即退出吗？</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"服务"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"设置"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;未设置&gt;"</string>

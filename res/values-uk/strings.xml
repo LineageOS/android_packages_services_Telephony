@@ -641,6 +641,14 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Так"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Ні"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Відхилити"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Телефон перебуває в режимі екстреного зворотного виклику"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"До <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">Телефон перебуватиме в режимі екстреного зворотного виклику протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилини.\nВийти зараз?</item>
+      <item quantity="few">Телефон перебуватиме в режимі екстреного зворотного виклику протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилин.\nВийти зараз?</item>
+      <item quantity="many">Телефон перебуватиме в режимі екстреного зворотного виклику протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилин.\nВийти зараз?</item>
+      <item quantity="other">Телефон перебуватиме в режимі екстреного зворотного виклику протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилини.\nВийти зараз?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Обслуговування"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Налаштування"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Не введено&gt;"</string>
