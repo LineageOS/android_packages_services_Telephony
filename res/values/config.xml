@@ -263,7 +263,7 @@
 
     <!-- Array of countries that support sim-less emergency RTT calls. Values should be
          ISO3166 country codes in lowercase. -->
-    <string-array name="config_simless_emergency_rtt_supported_countries">
+    <string-array name="config_simless_emergency_rtt_supported_countries" translatable="false">
         <item>us</item>
     </string-array>
 
