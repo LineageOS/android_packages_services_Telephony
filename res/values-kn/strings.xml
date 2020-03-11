@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ಹೌದು"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"ಇಲ್ಲ"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"ವಜಾಗೊಳಿಸಿ"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ಫೋನ್‌‌, ತುರ್ತು ಕಾಲ್‌ಬ್ಯಾಕ್ ಮೋಡ್‌ನಲ್ಲಿದೆ"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> ವರೆಗೆ"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">ಫೋನ್‌‌ <xliff:g id="COUNT_1">%s</xliff:g> ನಿಮಿಷಗಳವರೆಗೆ ತುರ್ತು ಕಾಲ್‌ಬ್ಯಾಕ್ ಮೋಡ್‌ನಲ್ಲಿರುತ್ತದೆ.\n ನೀವು ಈಗಲೇ ನಿರ್ಗಮಿಸಲು ಬಯಸುತ್ತೀರಾ?</item>
+      <item quantity="other">ಫೋನ್‌‌ <xliff:g id="COUNT_1">%s</xliff:g> ನಿಮಿಷಗಳವರೆಗೆ ತುರ್ತು ಕಾಲ್‌ಬ್ಯಾಕ್ ಮೋಡ್‌ನಲ್ಲಿರುತ್ತದೆ.\n ನೀವು ಈಗಲೇ ನಿರ್ಗಮಿಸಲು ಬಯಸುತ್ತೀರಾ?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"ಸೇವೆ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"ಸೆಟಪ್"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;ಹೊಂದಿಸಿಲ್ಲ&gt;"</string>

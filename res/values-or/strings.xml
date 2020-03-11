@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ହଁ"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"ନାହିଁ"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"ଖାରଜ କରନ୍ତୁ"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ଫୋନଟି ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ୍ ମୋଡରେ ଅଛି"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> ପର୍ଯ୍ୟନ୍ତ"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">ଫୋନଟି <xliff:g id="COUNT_1">%s</xliff:g> ମିନିଟ୍ ପାଇଁ ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ୍ ମୋଡରେ ରହିବ।\nଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି କି?</item>
+      <item quantity="one">ଫୋନଟି <xliff:g id="COUNT_0">%s</xliff:g> ମିନିଟ୍ ପାଇଁ ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ୍ ମୋଡରେ ରହିବ।\nଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି କି?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"ସେବା"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"ସେଟଅପ୍ କରନ୍ତୁ"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;ସେଟ୍ ହୋ‌ଇନାହିଁ&gt;"</string>

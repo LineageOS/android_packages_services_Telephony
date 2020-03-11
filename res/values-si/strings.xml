@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ඔව්"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"නැත"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"ඉවතලන්න"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"දුරකථනය හදිසි පසු ඇමතුම් ප්‍රකාරයේ ඇත"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> තෙක්"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">දුරකථනය මිනිත්තු <xliff:g id="COUNT_1">%s</xliff:g>ක් තිස්සේ හදිසි පසු ඇමතුම් ප්‍රකාරයේ තිබෙනු ඇත.\nදැන් ඔබට පිටවීමට අවශ්‍යද?</item>
+      <item quantity="other">දුරකථනය මිනිත්තු <xliff:g id="COUNT_1">%s</xliff:g>ක් තිස්සේ හදිසි පසු ඇමතුම් ප්‍රකාරයේ තිබෙනු ඇත.\nදැන් ඔබට පිටවීමට අවශ්‍යද?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"සේවාව"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"ස්ථාපනය කරන්න"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;පිහිටුවා නැත&gt;"</string>

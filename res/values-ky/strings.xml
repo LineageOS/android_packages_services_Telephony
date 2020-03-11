@@ -238,7 +238,7 @@
     <string name="preferred_network_mode_lte_cdma_evdo_gsm_wcdma_summary" msgid="6707224437925495615">"Тандалган тармак режими: LTE/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="preferred_network_mode_global_summary" msgid="3847086258439582411">"Тандалган тармак режими: Дүйнө жүзү"</string>
     <string name="preferred_network_mode_lte_wcdma_summary" msgid="7001804022020813865">"Артыкчылыктуу желе тартиби: LTE / WCDMA"</string>
-    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="6484203890156282179">"Жактырылган режим: LTE / GSM / UMTS"</string>
+    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="6484203890156282179">"Жаккан режим: LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="8187929456614068518">"Тандалган тармак режими: LTE / CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="3602127224234207206">"Тандалган тармак режими: TDSCDMA"</string>
     <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="7076968749402201123">"Тандалган тармак режими: TDSCDMA / WCDMA"</string>
@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ооба"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Жок"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Этибарга албоо"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Телефон шашылыш кайра чалуу режиминде"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> чейин"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">Телефон шашылыш кайра чалуу режиминде <xliff:g id="COUNT_1">%s</xliff:g> мүнөт бою болот.\nАзыр чыгып кетесизби?</item>
+      <item quantity="one">Телефон шашылыш кайра чалуу режиминде <xliff:g id="COUNT_0">%s</xliff:g> мүнөт бою болот.\nАзыр чыгып кетесизби?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Кызмат"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Жөндөө"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Коюлган эмес&gt;"</string>
@@ -697,7 +703,7 @@
     <string name="mobile_data_activate_roaming_plan_summary" msgid="5379228493306235969">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> оператору аркылуу роуминг планын күйгүзүңүз"</string>
     <string name="mobile_data_activate_footer" msgid="7895874069807204548">"Сиз мобилдик Интернетти же роуминг планын <xliff:g id="PROVIDER_NAME">%s</xliff:g> операторуңуз аркылуу кошо аласыз."</string>
     <string name="mobile_data_activate_diag_title" msgid="5401741936224757312">"Мобилдик Интернет күйгүзүлсүнбү?"</string>
-    <string name="mobile_data_activate_diag_message" msgid="3527260988020415441">"Мобилдик интернетти <xliff:g id="PROVIDER_NAME">%s</xliff:g> оператордун жардамы менен күйгүзүү керек болушу мүмкүн"</string>
+    <string name="mobile_data_activate_diag_message" msgid="3527260988020415441">"Мобилдик интернетти <xliff:g id="PROVIDER_NAME">%s</xliff:g> оператордун жардамы менен, күйгүзүү керек болушу мүмкүн"</string>
     <string name="mobile_data_activate_button" msgid="1139792516354374612">"ДАЙЫНДАРДЫ КОШУУ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"ЖОККО ЧЫГАРУУ"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"Чалуу аяктады"</string>

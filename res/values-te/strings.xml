@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"అవును"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"కాదు"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"తీసివేయి"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ఫోన్ అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉంది"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> వరకు"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">ఫోన్ అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో <xliff:g id="COUNT_1">%s</xliff:g> నిమిషాల పాటు ఉంటుంది.\n మీరు ఇప్పుడే నిష్క్రమించాలనుకుంటున్నారా?</item>
+      <item quantity="one">ఫోన్ అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో <xliff:g id="COUNT_0">%s</xliff:g> నిమిషం పాటు ఉంటుంది. \n మీరు ఇప్పుడే నిష్క్రమించాలనుకుంటున్నారా?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"సేవ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"సెటప్"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;సెట్ చేయలేదు&gt;"</string>
