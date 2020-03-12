@@ -77,7 +77,8 @@ public class RadioOnHelper implements RadioOnStateListener.Callback {
      * RadioOnHelper's handler (thus ensuring that the rest of the sequence is entirely
      * serialized, and runs on the main looper.)
      */
-    public void triggerRadioOnAndListen(RadioOnStateListener.Callback callback) {
+    public void triggerRadioOnAndListen(RadioOnStateListener.Callback callback,
+            boolean forEmergencyCall, Phone phoneForEmergencyCall) {
         setupListeners();
         mCallback = callback;
         mInProgressListeners.clear();
@@ -89,16 +90,17 @@ public class RadioOnHelper implements RadioOnStateListener.Callback {
             }
 
             mInProgressListeners.add(mListeners.get(i));
-            mListeners.get(i).waitForRadioOn(phone, this);
+            mListeners.get(i).waitForRadioOn(phone, this, forEmergencyCall,
+                    forEmergencyCall && phone == phoneForEmergencyCall);
         }
 
-        powerOnRadio();
+        powerOnRadio(forEmergencyCall, phoneForEmergencyCall);
     }
     /**
      * Attempt to power on the radio (i.e. take the device out of airplane mode). We'll eventually
      * get an onServiceStateChanged() callback when the radio successfully comes up.
      */
-    private void powerOnRadio() {
+    private void powerOnRadio(boolean forEmergencyCall, Phone phoneForEmergencyCall) {
 
         // If airplane mode is on, we turn it off the same way that the Settings activity turns it
         // off.
@@ -112,7 +114,7 @@ public class RadioOnHelper implements RadioOnStateListener.Callback {
 
             for (Phone phone : PhoneFactory.getPhones()) {
                 Log.d(this, "powerOnRadio, enabling Radio");
-                phone.setRadioPower(true);
+                phone.setRadioPower(true, forEmergencyCall, phone == phoneForEmergencyCall, false);
             }
 
             // Post the broadcast intend for change in airplane mode
