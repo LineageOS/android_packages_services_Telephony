@@ -70,7 +70,10 @@ public class RadioOnStateListener {
                         Phone phone = (Phone) args.arg1;
                         RadioOnStateListener.Callback callback =
                                 (RadioOnStateListener.Callback) args.arg2;
-                        startSequenceInternal(phone, callback);
+                        boolean forEmergencyCall = (boolean) args.arg3;
+                        boolean isSelectedPhoneForEmergencyCall = (boolean) args.arg4;
+                        startSequenceInternal(phone, callback, forEmergencyCall,
+                                isSelectedPhoneForEmergencyCall);
                     } finally {
                         args.recycle();
                     }
@@ -97,6 +100,10 @@ public class RadioOnStateListener {
 
     private Callback mCallback;  // The callback to notify upon completion.
     private Phone mPhone;  // The phone that will attempt to place the call.
+    private boolean mForEmergencyCall; // Whether radio is being turned on for emergency call.
+    // Whether this phone is selected to place emergency call. Can be true only if
+    // mForEmergencyCall is true.
+    private boolean mSelectedPhoneForEmergencyCall;
     private int mNumRetriesSoFar;
 
     /**
@@ -113,7 +120,8 @@ public class RadioOnStateListener {
      * RadioOnStateListener's handler (thus ensuring that the rest of the sequence is entirely
      * serialized, and runs only on the handler thread.)
      */
-    public void waitForRadioOn(Phone phone, Callback callback) {
+    public void waitForRadioOn(Phone phone, Callback callback,
+            boolean forEmergencyCall, boolean isSelectedPhoneForEmergencyCall) {
         Log.d(this, "waitForRadioOn: Phone " + phone.getPhoneId());
 
         if (mPhone != null) {
@@ -124,6 +132,8 @@ public class RadioOnStateListener {
         SomeArgs args = SomeArgs.obtain();
         args.arg1 = phone;
         args.arg2 = callback;
+        args.arg3 = forEmergencyCall;
+        args.arg4 = isSelectedPhoneForEmergencyCall;
         mHandler.obtainMessage(MSG_START_SEQUENCE, args).sendToTarget();
     }
 
@@ -132,7 +142,8 @@ public class RadioOnStateListener {
      *
      * @see #waitForRadioOn
      */
-    private void startSequenceInternal(Phone phone, Callback callback) {
+    private void startSequenceInternal(Phone phone, Callback callback,
+            boolean forEmergencyCall, boolean isSelectedPhoneForEmergencyCall) {
         Log.d(this, "startSequenceInternal: Phone " + phone.getPhoneId());
 
         // First of all, clean up any state left over from a prior RadioOn call sequence. This
@@ -142,6 +153,8 @@ public class RadioOnStateListener {
 
         mPhone = phone;
         mCallback = callback;
+        mForEmergencyCall = forEmergencyCall;
+        mSelectedPhoneForEmergencyCall = isSelectedPhoneForEmergencyCall;
 
         registerForServiceStateChanged();
         // Register for RADIO_OFF to handle cases where emergency call is dialed before
@@ -231,7 +244,8 @@ public class RadioOnStateListener {
                 cleanup();
             } else {
                 Log.d(this, "Trying (again) to turn on the radio.");
-                mPhone.setRadioPower(true);
+                mPhone.setRadioPower(true, mForEmergencyCall, mSelectedPhoneForEmergencyCall,
+                        false);
                 startRetryTimer();
             }
         }
