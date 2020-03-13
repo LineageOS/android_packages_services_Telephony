@@ -2320,7 +2320,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // is on IWLAN.
             if (TelephonyManager.NETWORK_TYPE_IWLAN
                     == getVoiceNetworkTypeForSubscriber(subId, mApp.getPackageName(),
-                    mApp.getFeatureId())) {
+                    mApp.getAttributionTag())) {
                 return "";
             }
             Phone phone = PhoneFactory.getPhone(phoneId);
@@ -6166,7 +6166,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             final List<String> mergedSubscriberIds = new ArrayList<>();
             final List<SubscriptionInfo> groupInfos = SubscriptionController.getInstance()
                     .getSubscriptionsInGroup(groupUuid, mApp.getOpPackageName(),
-                            mApp.getFeatureId());
+                            mApp.getAttributionTag());
             for (SubscriptionInfo subInfo : groupInfos) {
                 subscriberId = telephonyManager.getSubscriberId(subInfo.getSubscriptionId());
                 if (subscriberId != null) {
@@ -6608,7 +6608,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             final SubscriptionInfo info = mSubscriptionController.getActiveSubscriptionInfo(subId,
-                    phone.getContext().getOpPackageName(), phone.getContext().getFeatureId());
+                    phone.getContext().getOpPackageName(), phone.getContext().getAttributionTag());
             if (info == null) {
                 log("getSimLocaleForSubscriber, inactive subId: " + subId);
                 return null;
@@ -6647,7 +6647,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private List<SubscriptionInfo> getAllSubscriptionInfoList() {
         return mSubscriptionController.getAllSubInfoList(mApp.getOpPackageName(),
-                mApp.getFeatureId());
+                mApp.getAttributionTag());
     }
 
     /**
@@ -6655,7 +6655,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     private List<SubscriptionInfo> getActiveSubscriptionInfoListPrivileged() {
         return mSubscriptionController.getActiveSubscriptionInfoList(mApp.getOpPackageName(),
-                mApp.getFeatureId());
+                mApp.getAttributionTag());
     }
 
     private final ModemActivityInfo mLastModemActivityInfo =
