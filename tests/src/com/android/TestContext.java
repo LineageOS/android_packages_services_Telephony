@@ -67,7 +67,7 @@ public class TestContext extends MockContext {
     }
 
     @Override
-    public String getFeatureId() {
+    public String getAttributionTag() {
         return "";
     }
 
