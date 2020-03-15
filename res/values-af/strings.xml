@@ -123,6 +123,7 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Stuur aan na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Af"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Jou diensverskaffer ondersteun nie die deaktivering van oproepaanstuur wanneer jou foon onbereikbaar is nie."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Jou diensverskaffer ondersteun nie oproepaanstuur nie."</string>
     <string name="updating_title" msgid="6130548922615719689">"Belinstellings"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Oproepinstellings kan net deur die administrateur verander word."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Instellings (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

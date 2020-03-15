@@ -123,6 +123,7 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g>に転送する"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"OFF"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ご利用の携帯通信会社は着信不能時の転送の無効化をサポートしていません。"</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"ご利用の携帯通信会社では電話の転送機能がサポートされていません。"</string>
     <string name="updating_title" msgid="6130548922615719689">"通話設定"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"通話設定は管理者ユーザーのみが変更できます。"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"設定（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>

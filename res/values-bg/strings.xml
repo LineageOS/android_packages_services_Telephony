@@ -123,6 +123,7 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Пренасочва се към <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Изкл."</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Операторът ви не поддържа деактивиране на пренасочването на обаждания, когато няма връзка с телефона."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Операторът ви не поддържа пренасочване на обаждания."</string>
     <string name="updating_title" msgid="6130548922615719689">"Настройки за обаждане"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Само администраторът може да променя настройките за обаждане."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Настройки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
