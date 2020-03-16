@@ -123,6 +123,7 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> руу дамжуулж байна"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Идэвхгүй"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Таны үүрэн холбоо үзүүлэгчээс утас завгүй байхад дуудлагыг дамжуулахыг зогсоох үйлчилгээг дэмждэггүй."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Таны оператор компани дуудлага шилжүүлэхийг дэмждэггүй."</string>
     <string name="updating_title" msgid="6130548922615719689">"Дуудлагын тохиргоо"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Дуудлагын тохиргоог зөвхөн админ хэрэглэгч солих боломжтой."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Тохиргоо (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

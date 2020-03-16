@@ -123,6 +123,8 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"A encaminhar para <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Desativado"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"O seu operador não suporta a desativação do encaminhamento de chamadas quando o telemóvel não está acessível."</string>
+    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
+    <skip />
     <string name="updating_title" msgid="6130548922615719689">"Definições de chamadas"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"As definições de chamadas só podem ser alteradas pelo utilizador gestor."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Definições (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

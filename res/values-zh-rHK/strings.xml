@@ -123,6 +123,7 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"轉接至 <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"關閉"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"您的流動網絡供應商不支援在手機無法接通時停用轉接功能。"</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"您的流動網絡供應商不支援來電轉駁。"</string>
     <string name="updating_title" msgid="6130548922615719689">"通話設定"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"只有管理員可以變更通話設定。"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"設定 (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

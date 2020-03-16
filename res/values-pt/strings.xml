@@ -123,6 +123,7 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Encaminhar para <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Desativado"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Sua operadora não suporta a desativação do encaminhamento de chamada quando seu telefone não está acessível."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Sua operadora não é compatível com o encaminhamento de chamada."</string>
     <string name="updating_title" msgid="6130548922615719689">"Configurações de chamadas"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"As configurações de chamada só podem ser alteradas pelo usuário administrador."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Configurações (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

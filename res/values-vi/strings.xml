@@ -123,6 +123,7 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Chuyển tiếp tới <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Tắt"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Nhà cung cấp dịch vụ của bạn không hỗ trợ vô hiệu hóa chuyển tiếp cuộc gọi khi điện thoại của bạn không thể truy cập được."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Nhà mạng của bạn không hỗ trợ tính năng chuyển tiếp cuộc gọi."</string>
     <string name="updating_title" msgid="6130548922615719689">"Cài đặt cuộc gọi"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Chỉ người dùng quản trị mới có thể thay đổi cài đặt cuộc gọi."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Cài đặt (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
