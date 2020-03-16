@@ -430,6 +430,14 @@ public class TelephonyConnectionService extends ConnectionService {
     }
 
     /**
+     * Overrides radioOnHelper for testing.
+     */
+    @VisibleForTesting
+    public void setRadioOnHelper(RadioOnHelper radioOnHelper) {
+        mRadioOnHelper = radioOnHelper;
+    }
+
+    /**
      * Overrides PhoneSwitcher dependencies for testing.
      */
     @VisibleForTesting
@@ -772,13 +780,16 @@ public class TelephonyConnectionService extends ConnectionService {
         boolean needToTurnOnRadio = (isEmergencyNumber && (!isRadioOn() || isAirplaneModeOn))
                 || isRadioPowerDownOnBluetooth();
 
+        // Get the right phone object from the account data passed in.
+        final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber,
+                /* Note: when not an emergency, handle can be null for unknown callers */
+                handle == null ? null : handle.getSchemeSpecificPart());
+
         if (needToTurnOnRadio) {
             final Uri resultHandle = handle;
-            // By default, Connection based on the default Phone, since we need to return to Telecom
-            // now.
-            final int originalPhoneType = mPhoneFactoryProxy.getDefaultPhone().getPhoneType();
+            final int originalPhoneType = phone.getPhoneType();
             final Connection resultConnection = getTelephonyConnection(request, numberToDial,
-                    isEmergencyNumber, resultHandle, PhoneFactory.getDefaultPhone());
+                    isEmergencyNumber, resultHandle, phone);
             if (mRadioOnHelper == null) {
                 mRadioOnHelper = new RadioOnHelper(this);
             }
@@ -786,7 +797,7 @@ public class TelephonyConnectionService extends ConnectionService {
                 @Override
                 public void onComplete(RadioOnStateListener listener, boolean isRadioReady) {
                     handleOnComplete(isRadioReady, isEmergencyNumber, resultConnection, request,
-                            numberToDial, resultHandle, originalPhoneType);
+                            numberToDial, resultHandle, originalPhoneType, phone);
                 }
 
                 @Override
@@ -815,7 +826,7 @@ public class TelephonyConnectionService extends ConnectionService {
                                 || serviceState == ServiceState.STATE_IN_SERVICE;
                     }
                 }
-            });
+            }, isEmergencyNumber && !isTestEmergencyNumber, phone);
             // Return the still unconnected GsmConnection and wait for the Radios to boot before
             // connecting it to the underlying Phone.
             return resultConnection;
@@ -831,10 +842,6 @@ public class TelephonyConnectionService extends ConnectionService {
                                 "Add call restricted due to ongoing video call"));
             }
 
-            // Get the right phone object from the account data passed in.
-            final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber,
-                    /* Note: when not an emergency, handle can be null for unknown callers */
-                    handle == null ? null : handle.getSchemeSpecificPart());
             if (!isEmergencyNumber) {
                 final Connection resultConnection = getTelephonyConnection(request, numberToDial,
                         false, handle, phone);
@@ -911,18 +918,21 @@ public class TelephonyConnectionService extends ConnectionService {
      */
     private void handleOnComplete(boolean isRadioReady, boolean isEmergencyNumber,
             Connection originalConnection, ConnectionRequest request, String numberToDial,
-            Uri handle, int originalPhoneType) {
+            Uri handle, int originalPhoneType, Phone phone) {
         // Make sure the Call has not already been canceled by the user.
         if (originalConnection.getState() == Connection.STATE_DISCONNECTED) {
             Log.i(this, "Call disconnected before the outgoing call was placed. Skipping call "
                     + "placement.");
+            if (isEmergencyNumber) {
+                // If call is already canceled by the user, notify modem to exit emergency call
+                // mode by sending radio on with forEmergencyCall=false.
+                for (Phone curPhone : mPhoneFactoryProxy.getPhones()) {
+                    curPhone.setRadioPower(true, false, false, true);
+                }
+            }
             return;
         }
-        // Get the right phone object since the radio has been turned on successfully.
         if (isRadioReady) {
-            final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber,
-                    /* Note: when not an emergency, handle can be null for unknown callers */
-                    handle == null ? null : handle.getSchemeSpecificPart());
             if (!isEmergencyNumber) {
                 adjustAndPlaceOutgoingConnection(phone, originalConnection, request, numberToDial,
                         handle, originalPhoneType, false);
