@@ -66,7 +66,7 @@
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"Биринчи сурасын"</string>
     <string name="phone_accounts_default_account_label" msgid="5107598881335931101">"Тармак жок"</string>
     <string name="phone_accounts_settings_header" msgid="6296501692964706536">"Жөндөөлөр"</string>
-    <string name="phone_accounts_choose_accounts" msgid="4748805293314824974">"Каттоо эсептерин тандоо"</string>
+    <string name="phone_accounts_choose_accounts" msgid="4748805293314824974">"Аккаунттарды тандоо"</string>
     <string name="phone_accounts_selection_header" msgid="2945830843104108440">"Телефон каттоо эсептери"</string>
     <string name="phone_accounts_add_sip_account" msgid="1437634802033309305">"SIP аккаунтун кошуу"</string>
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Каттоо эсеп жөндөөлөрүн конфигурациялоо"</string>
@@ -80,7 +80,7 @@
     <string name="make_and_receive_calls" msgid="4868913166494621109">"Чалуу жана чалууларды кабыл алуу"</string>
     <string name="smart_forwarding_settings_menu" msgid="8850429887958938540">"Акылдуу багыттоо"</string>
     <string name="smart_forwarding_settings_menu_summary" msgid="5096947726032885325">"Бир номер жеткиликсиз болсо, чалууларды ар дайым башка номериңизге багыттоо"</string>
-    <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"Эскертмелер"</string>
+    <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"Билдирмелер"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"Өзгөчө кырдаал тууралуу кулактандыруу"</string>
     <string name="call_settings" msgid="3677282690157603818">"Чалуу жөндөөлөрү"</string>
     <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Кошумча жөндөөлөр"</string>
@@ -166,7 +166,7 @@
     <string name="label_available" msgid="1316084116670821258">"Жеткиликтүү тармактар"</string>
     <string name="load_networks_progress" msgid="4051433047717401683">"Изделүүдө…"</string>
     <string name="empty_networks_list" msgid="9216418268008582342">"Эч тармак табылган жок."</string>
-    <string name="network_query_error" msgid="3862515805115145124">"Тармактар табылбай койду. Кайра аракет кылыңыз."</string>
+    <string name="network_query_error" msgid="3862515805115145124">"Тармактар табылбай койду. Кайталап көрүңүз."</string>
     <string name="register_on_network" msgid="4194770527833960423">"<xliff:g id="NETWORK">%s</xliff:g> тармагына катталууда…"</string>
     <string name="not_allowed" msgid="8541221928746104798">"Сиздин SIM-картаңыз бул түйүнгө кошулганга жол бербейт."</string>
     <string name="connect_later" msgid="1950138106010005425">"Бул түйүнгө азыр кошулуу мүмкүн эмес. Бир аздан соң кайра аракеттениңиз."</string>
@@ -224,7 +224,7 @@
     <string name="preferred_network_mode_lte_cdma_evdo_summary" msgid="5559198623419981805">"Артыкчылыктуу желе тартиби: CDMA+LTE/EVDO"</string>
     <string name="preferred_network_mode_global_summary" msgid="3847086258439582411">"Тандалган тармак режими: Дүйнө жүзү"</string>
     <string name="preferred_network_mode_lte_wcdma_summary" msgid="7001804022020813865">"Артыкчылыктуу желе тартиби: LTE / WCDMA"</string>
-    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="6484203890156282179">"Жактырылган режим: LTE / GSM / UMTS"</string>
+    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="6484203890156282179">"Жаккан режим: LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="8187929456614068518">"Тандалган тармак режими: LTE / CDMA"</string>
     <string name="preferred_network_mode_tdscdma_summary" msgid="3602127224234207206">"Тандалган тармак режими: TDSCDMA"</string>
     <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="7076968749402201123">"Тандалган тармак режими: TDSCDMA / WCDMA"</string>
@@ -434,10 +434,10 @@
     <string name="fdn_contact_added" msgid="2840016151693394596">"Туруктуу терүү номери кошулду."</string>
     <string name="edit_fdn_contact" msgid="6030829994819587408">"Туруктуу терүү номерин түзөтүү"</string>
     <string name="updating_fdn_contact" msgid="6989341376868227150">"Туруктуу терүү номери жаңыртылууда…"</string>
-    <string name="fdn_contact_updated" msgid="6876330243323118937">"Туруктуу терүү номери жаңыртылды."</string>
+    <string name="fdn_contact_updated" msgid="6876330243323118937">"Туруктуу терүү номери жаңырды."</string>
     <string name="delete_fdn_contact" msgid="7027405651994507077">"Туруктуу терүү номерин жок кылуу"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"Туруктуу терүү номери жок кылынууда…"</string>
-    <string name="fdn_contact_deleted" msgid="1680714996763848838">"Туруктуу терүү номери жок кылынды."</string>
+    <string name="fdn_contact_deleted" msgid="1680714996763848838">"Туруктуу терүү номери өчүрүлдү."</string>
     <string name="pin2_invalid" msgid="2313954262684494442">"БНТ жаңыртылган жок, анткени туура эмес PIN-код киргизилди."</string>
     <string name="fdn_invalid_number" msgid="155512764412225645">"Уруксат берилген номер жаңыртылган жок, себеби жазылган номердин саны 20дан ашпашы керек."</string>
     <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"БНТ жаңыртылган жок. PIN2 туура эмес, же телефон номуру жараксыз."</string>
@@ -461,18 +461,18 @@
     <string name="enable_pin_ok" msgid="2877428038280804256">"PIN орнотулду"</string>
     <string name="disable_pin_ok" msgid="888505244389647754">"PIN тазаланды"</string>
     <string name="pin_failed" msgid="4527347792881939652">"PIN туура эмес"</string>
-    <string name="pin_changed" msgid="7291153750090452808">"PIN жаңыртылды"</string>
+    <string name="pin_changed" msgid="7291153750090452808">"PIN жаңырды"</string>
     <string name="puk_requested" msgid="2061337960609806851">"Сырсөз туура эмес. PIN азыр бөгөттөлдү. PUK талап кылынат."</string>
     <string name="enter_pin2_text" msgid="7266379426804295979">"PIN2"</string>
     <string name="oldPin2Label" msgid="4648543187859997203">"Эски PIN2"</string>
     <string name="newPin2Label" msgid="1840905981784453939">"Жаңы PIN2"</string>
     <string name="confirmPin2Label" msgid="4336025914667593762">"Жаңы PIN2\'ни ырастаңыз"</string>
-    <string name="badPuk2" msgid="6438182906645832235">"PUK2 туура эмес. Кайра аракет кылыңыз."</string>
-    <string name="badPin2" msgid="2760917538643074635">"Эски PIN2 туура эмес. Кайра аракет кылыңыз."</string>
-    <string name="mismatchPin2" msgid="4952718725266700631">"PIN2лер дал келбейт. Кайра аракет кылыңыз."</string>
+    <string name="badPuk2" msgid="6438182906645832235">"PUK2 туура эмес. Кайталап көрүңүз."</string>
+    <string name="badPin2" msgid="2760917538643074635">"Эски PIN2 туура эмес. Кайталап көрүңүз."</string>
+    <string name="mismatchPin2" msgid="4952718725266700631">"PIN2лер дал келбейт. Кайталап көрүңүз."</string>
     <string name="invalidPin2" msgid="6467957903056379343">"4-8 сандан турган PIN2 киргизиңиз."</string>
     <string name="invalidPuk2" msgid="713729511903849544">"8 сандан турган PUK2 киргизиңиз."</string>
-    <string name="pin2_changed" msgid="5710551850481287821">"PIN2 жаңыртылды"</string>
+    <string name="pin2_changed" msgid="5710551850481287821">"PIN2 жаңырды"</string>
     <string name="label_puk2_code" msgid="2852217004288085562">"PUK2 кодун киргизиңиз"</string>
     <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"Сырсөз туура эмес. PIN2 азыр бөгөттөлдү. Кайра аракет кылып, PIN 2ни өзгөртүңүз."</string>
     <string name="puk2_requested" msgid="6992374450720307514">"Сырсөз туура эмес. SIM азыр кулпуланды. PUK2 киргизиңиз."</string>
@@ -656,7 +656,7 @@
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"PIN <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> сандан турушу керек."</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"PIN кодуңузду ырастаңыз"</string>
     <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PIN коддор дал келген жок"</string>
-    <string name="change_pin_succeeded" msgid="2504705600693014403">"Үн почтасынын PIN коду жаңыртылды"</string>
+    <string name="change_pin_succeeded" msgid="2504705600693014403">"Үн почтасынын PIN коду жаңырды"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"PIN код коюлбайт"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"Интернет-роуминг өчүрүлдү"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="5615757897768777865">"Интернет-роуминг күйгүзүлдү"</string>
@@ -669,7 +669,7 @@
     <string name="mobile_data_activate_roaming_plan_summary" msgid="5379228493306235969">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> оператору аркылуу роуминг планын күйгүзүңүз"</string>
     <string name="mobile_data_activate_footer" msgid="7895874069807204548">"Сиз мобилдик Интернетти же роуминг планын <xliff:g id="PROVIDER_NAME">%s</xliff:g> операторуңуз аркылуу кошо аласыз."</string>
     <string name="mobile_data_activate_diag_title" msgid="5401741936224757312">"Мобилдик Интернет күйгүзүлсүнбү?"</string>
-    <string name="mobile_data_activate_diag_message" msgid="3527260988020415441">"Мобилдик интернетти <xliff:g id="PROVIDER_NAME">%s</xliff:g> оператордун жардамы менен күйгүзүү керек болушу мүмкүн"</string>
+    <string name="mobile_data_activate_diag_message" msgid="3527260988020415441">"Мобилдик интернетти <xliff:g id="PROVIDER_NAME">%s</xliff:g> оператордун жардамы менен, күйгүзүү керек болушу мүмкүн"</string>
     <string name="mobile_data_activate_button" msgid="1139792516354374612">"ДАЙЫНДАРДЫ КОШУУ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"ЖОККО ЧЫГАРУУ"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"Чалуу аяктады"</string>

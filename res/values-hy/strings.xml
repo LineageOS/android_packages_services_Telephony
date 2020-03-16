@@ -766,7 +766,7 @@
     <string name="supp_service_notification_call_forwarded" msgid="7102930311735433088">"Զանգը վերահասցեավորվեց:"</string>
     <string name="supp_service_notification_call_waiting" msgid="4577403881609445324">"Զանգը սպասման մեջ է:"</string>
     <string name="supp_service_clir_suppression_rejected" msgid="6105737020194776121">"Համարի արգելափակումը մերժված է:"</string>
-    <string name="supp_service_closed_user_group_call" msgid="2811636666505250689">"Կապակցում օգտատերերի փակ խմբի հետ"</string>
+    <string name="supp_service_closed_user_group_call" msgid="2811636666505250689">"Միացում օգտատերերի փակ խմբի հետ"</string>
     <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"Բոլոր մուտքային զանգերն արգելափակված են:"</string>
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"Բոլոր ելքային զանգերն արգելափակված են:"</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"Զանգի վերահասցեավորումն ակտիվ է:"</string>

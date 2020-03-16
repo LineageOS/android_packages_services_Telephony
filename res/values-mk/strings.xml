@@ -323,7 +323,7 @@
     <string name="list_language_title" msgid="1850167908665485738">"Јазик"</string>
     <string name="list_language_summary" msgid="7921756070782277559">"Изберете јазик за вести"</string>
   <string-array name="list_language_entries">
-    <item msgid="2347238508726934281">"Англиски"</item>
+    <item msgid="2347238508726934281">"англиски"</item>
     <item msgid="5172468397620875174">"Француски"</item>
     <item msgid="3978110664146015398">"Шпански"</item>
     <item msgid="2637764545851526369">"Јапонски"</item>

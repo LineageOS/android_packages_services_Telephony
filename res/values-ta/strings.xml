@@ -594,11 +594,11 @@
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"அவசரகால திரும்ப அழைக்கும் பயன்முறை இயக்கப்பட்டது"</string>
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"அவசரகால திரும்ப அழைக்கும் பயன்முறை"</string>
-    <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"தரவு இணைப்பு முடக்கப்பட்டது"</string>
-    <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> வரை தரவு இணைப்பு இருக்காது"</string>
+    <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"டேட்டா இணைப்பு முடக்கப்பட்டது"</string>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> வரை டேட்டா இணைப்பு இருக்காது"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> நிமிடங்களுக்கு மொபைல் அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும். இந்தப் பயன்முறையில், தரவு இணைப்பைப் பயன்படுத்தாத பயன்பாடுகளைப் பயன்படுத்தலாம். இப்போது வெளியேற விரும்புகிறீர்களா?</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%s</xliff:g> நிமிடத்திற்கு மொபைல் அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும். இந்தப் பயன்முறையில், தரவு இணைப்பைப் பயன்படுத்தாத பயன்பாடுகளைப் பயன்படுத்தலாம். இப்போது வெளியேற விரும்புகிறீர்களா?</item>
+      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> நிமிடங்களுக்கு மொபைல் அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும். இந்தப் பயன்முறையில், டேட்டா இணைப்பைப் பயன்படுத்தாத பயன்பாடுகளைப் பயன்படுத்தலாம். இப்போது வெளியேற விரும்புகிறீர்களா?</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%s</xliff:g> நிமிடத்திற்கு மொபைல் அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும். இந்தப் பயன்முறையில், டேட்டா இணைப்பைப் பயன்படுத்தாத பயன்பாடுகளைப் பயன்படுத்தலாம். இப்போது வெளியேற விரும்புகிறீர்களா?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
       <item quantity="other">அவசரகால திரும்ப அழைக்கும் பயன்முறை செயலில் இருக்கும்போது, தேர்ந்தெடுத்த செயல் கிடைக்காது. <xliff:g id="COUNT_1">%s</xliff:g> நிமிடங்களுக்கு மொபைல் இந்தப் பயன்முறையில் இருக்கும். இப்போது வெளியேற விரும்புகிறீர்களா?</item>

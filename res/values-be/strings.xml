@@ -499,7 +499,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Каб пазваніць, уключыце мабільную сетку, выключыце рэжым палёту або рэжым эканоміі зараду."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Адключыце рэжым палёту, каб зрабіць выклік."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Адключыце рэжым палёту або падлучыцеся да бесправадной сеткі, каб зрабіць выклік."</string>
-    <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Выйдзіце з рэжыму экстранных зваротных выклікаў, каб зрабіць няэкстранны выклік."</string>
+    <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Каб зрабіць звычайны выклік, выйдзіце з рэжыму экстранных зваротных выклікаў."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Не зарэгістраваны ў сетцы."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Мабільная сетка недаступная."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Мабільная сетка недаступная. Падлучыцеся да бесправадной сеткі, каб зрабіць выклік."</string>
@@ -553,7 +553,7 @@
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Імпартаваны кантакт"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Не ўдалося імпартаваць кантакт"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"Слыхавы апарат"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Уключыць функцыю сумяшчальнасці са слыхавым апаратам"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Уключыць функцыю сумяшчальнасці са слыхавымі апаратамі"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Выклік з тэкстам у рэальным часе (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Дазволіць абмен паведамленнямі ў галасавых выкліках"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"Функцыя RTT дапамагае абанентам з парушэннямі слыху і маўлення.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Даведацца больш&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-выклікі захоўваюцца ў выглядзе расшыфроўкі паведамленняў\n       &lt;br&gt; - Функцыя RTT недаступная для відэавыклікаў"</string>
@@ -592,24 +592,24 @@
     <string name="ota_try_again" msgid="6914781945599998550">"Паспрабаваць яшчэ раз"</string>
     <string name="ota_next" msgid="2041016619313475914">"Далей"</string>
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
-    <string name="phone_entered_ecm_text" msgid="8431238297843035842">"У рэжыме аварыйнага зваротнага выкліку"</string>
-    <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Рэжым аварыйнага зваротнага выкліку"</string>
+    <string name="phone_entered_ecm_text" msgid="8431238297843035842">"У рэжыме экстранных зваротных выклікаў"</string>
+    <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Рэжым экстранных зваротных выклікаў"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Падлучэнне для перадачы дадзеных адключана"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Няма злучэння для перадачы даных да <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="one">Тэлефон пяройдзе ў рэжым экстраннага зваротнага выкліку на <xliff:g id="COUNT_1">%s</xliff:g> хвіліну. У гэтым рэжыме немагчыма карыстацца праграмамі, якія выкарыстоўваюць злучэнне для перадачы даных. Жадаеце выйсці зараз?</item>
-      <item quantity="few">Тэлефон пяройдзе ў рэжым экстраннага зваротнага выкліку на <xliff:g id="COUNT_1">%s</xliff:g> хвіліны. У гэтым рэжыме немагчыма карыстацца праграмамі, якія выкарыстоўваюць злучэнне для перадачы даных. Жадаеце выйсці зараз?</item>
-      <item quantity="many">Тэлефон пяройдзе ў рэжым экстраннага зваротнага выкліку на <xliff:g id="COUNT_1">%s</xliff:g> хвілін. У гэтым рэжыме немагчыма карыстацца праграмамі, якія выкарыстоўваюць злучэнне для перадачы даных. Жадаеце выйсці зараз?</item>
-      <item quantity="other">Тэлефон пяройдзе ў рэжым экстраннага зваротнага выкліку на <xliff:g id="COUNT_1">%s</xliff:g> хвіліны. У гэтым рэжыме немагчыма карыстацца праграмамі, якія выкарыстоўваюць злучэнне для перадачы даных. Жадаеце выйсці зараз?</item>
+      <item quantity="one">Тэлефон будзе заставацца ў рэжыме экстранных зваротных выклікаў <xliff:g id="COUNT_1">%s</xliff:g> хвіліну. У гэтым рэжыме недаступныя праграмы, якія выкарыстоўваюць перадачу даных. Выйсці зараз?</item>
+      <item quantity="few">Тэлефон будзе заставацца ў рэжыме экстранных зваротных выклікаў <xliff:g id="COUNT_1">%s</xliff:g> хвіліны. У гэтым рэжыме недаступныя праграмы, якія выкарыстоўваюць перадачу даных. Выйсці зараз?</item>
+      <item quantity="many">Тэлефон будзе заставацца ў рэжыме экстранных зваротных выклікаў <xliff:g id="COUNT_1">%s</xliff:g> хвілін. У гэтым рэжыме недаступныя праграмы, якія выкарыстоўваюць перадачу даных. Выйсці зараз?</item>
+      <item quantity="other">Тэлефон будзе заставацца ў рэжыме экстранных зваротных выклікаў <xliff:g id="COUNT_1">%s</xliff:g> хвіліны. У гэтым рэжыме недаступныя праграмы, якія выкарыстоўваюць перадачу даных. Выйсці зараз?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
-      <item quantity="one">Выбранае дзеянне недаступнае ў рэжыме экстраннага зваротнага выкліку. Тэлефон застанецца ў гэтым рэжыме на <xliff:g id="COUNT_1">%s</xliff:g> хвіліну. Жадаеце выйсці зараз?</item>
-      <item quantity="few">Выбранае дзеянне недаступнае ў рэжыме экстраннага зваротнага выкліку. Тэлефон застанецца ў гэтым рэжыме на <xliff:g id="COUNT_1">%s</xliff:g> хвіліны. Жадаеце выйсці зараз?</item>
-      <item quantity="many">Выбранае дзеянне недаступнае ў рэжыме экстраннага зваротнага выкліку. Тэлефон застанецца ў гэтым рэжыме на <xliff:g id="COUNT_1">%s</xliff:g> хвілін. Жадаеце выйсці зараз?</item>
-      <item quantity="other">Выбранае дзеянне недаступнае ў рэжыме экстраннага зваротнага выкліку. Тэлефон застанецца ў гэтым рэжыме на <xliff:g id="COUNT_1">%s</xliff:g> хвіліны. Жадаеце выйсці зараз?</item>
+      <item quantity="one">Выбранае дзеянне недаступнае ў рэжыме экстранных зваротных выклікаў. Тэлефон будзе заставацца ў гэтым рэжыме <xliff:g id="COUNT_1">%s</xliff:g> хвіліну. Выйсці зараз?</item>
+      <item quantity="few">Выбранае дзеянне недаступнае ў рэжыме экстранных зваротных выклікаў. Тэлефон будзе заставацца ў гэтым рэжыме <xliff:g id="COUNT_1">%s</xliff:g> хвіліны. Выйсці зараз?</item>
+      <item quantity="many">Выбранае дзеянне недаступнае ў рэжыме экстранных зваротных выклікаў. Тэлефон будзе заставацца ў гэтым рэжыме <xliff:g id="COUNT_1">%s</xliff:g> хвілін. Выйсці зараз?</item>
+      <item quantity="other">Выбранае дзеянне недаступнае ў рэжыме экстранных зваротных выклікаў. Тэлефон будзе заставацца ў гэтым рэжыме <xliff:g id="COUNT_1">%s</xliff:g> хвіліны. Выйсці зараз?</item>
     </plurals>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Выбранае дзеянне недаступнае падчас экстранага выкліку."</string>
-    <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Выхад з рэжыму экстранага выкліку"</string>
+    <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Выконваецца выхад з рэжыму экстранных зваротных выклікаў"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Так"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Не"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Адхіліць"</string>
