@@ -98,7 +98,7 @@
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Desvío de llamadas"</string>
-    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Configuración de desvío de llamada (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Configuración de desvío de llamadas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"Desvío de llamadas"</string>
     <string name="labelCFU" msgid="8870170873036279706">"Desviar siempre"</string>
     <string name="messageCFU" msgid="1361806450979589744">"Usar siempre este número"</string>

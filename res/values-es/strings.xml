@@ -417,7 +417,7 @@
     <string name="sum_fdn_change_pin" msgid="3510994280557335727">"Cambiar PIN para el acceso de FDN"</string>
     <string name="sum_fdn_manage_list" msgid="3311397063233992907">"Gestionar lista de números de teléfono"</string>
     <string name="voice_privacy" msgid="7346935172372181951">"Privacidad de voz"</string>
-    <string name="voice_privacy_summary" msgid="3556460926168473346">"Habilitar modo de privacidad mejorado"</string>
+    <string name="voice_privacy_summary" msgid="3556460926168473346">"Habilitar modo de privacidad aumentada"</string>
     <string name="tty_mode_option_title" msgid="3843817710032641703">"Modo TTY"</string>
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Establecer modo TTY"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Reintento automático"</string>
@@ -523,7 +523,7 @@
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Propietario"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tocar de nuevo para ver la información"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"Llamada de emergencia"</string>
-    <string name="single_emergency_number_title" msgid="8413371079579067196">"Número de emergencia"</string>
+    <string name="single_emergency_number_title" msgid="8413371079579067196">"Llamada de emergencia"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"Números de emergencia"</string>
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"Tocar de nuevo para llamar al <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="1695305158151408629">"Activando señal móvil…"</string>
@@ -542,7 +542,7 @@
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Teclado"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Silenciar"</string>
     <string name="onscreenAddCallText" msgid="9075675082903611677">"Añadir llamada"</string>
-    <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Llamada a tres"</string>
+    <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Combinar llamadas"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"Cambiar"</string>
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"Administrar llamadas"</string>
     <string name="onscreenManageConferenceText" msgid="4700574060601755137">"Gestionar llamada de conferencia"</string>
