@@ -5250,12 +5250,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             if (!isActiveSubscription(subId)) {
-                return "";
+                throw new IllegalArgumentException("Invalid Subscription Id: " + subId);
             }
 
             final Phone phone = getPhone(subId);
             if (phone == null) {
-                return "";
+                throw new IllegalArgumentException("Invalid Subscription Id: " + subId);
             }
             OperatorInfo networkSelection = phone.getSavedNetworkSelection();
             return TextUtils.isEmpty(networkSelection.getOperatorNumeric())

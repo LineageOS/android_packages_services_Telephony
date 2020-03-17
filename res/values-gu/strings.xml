@@ -123,6 +123,8 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> પર ફોરવર્ડ કરી રહ્યાં છે"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"બંધ"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"જ્યારે તમારો ફોન પહોંચયોગ્ય ન હોય ત્યારે તમારા કેરિઅર કૉલ ફોરવર્ડિંગને અક્ષમ કરવાને સમર્થન આપતા નથી."</string>
+    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
+    <skip />
     <string name="updating_title" msgid="6130548922615719689">"કૉલ સેટિંગ્સ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"કૉલ સેટિંગ્સને ફક્ત એડમિન વપરાશકર્તા દ્વારા જ બદલી શકાય છે."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"સેટિંગ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

@@ -123,6 +123,8 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> သို့ခေါ်ဆိုမှုအား တဆင့်ထပ်ပို့နေသည်"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ပိတ်ထားသည်"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"သင့် ဖုန်း ဆက်သွယ်မှု လုပ်လို့မရစဉ် call forwarding ပြုလုပ်မှု ပယ်ဖျက်ရန် သင့် အော်ပရေတာမှ ခွင့်မပြုပါ"</string>
+    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
+    <skip />
     <string name="updating_title" msgid="6130548922615719689">"ဖုန်းခေါ်ဆိုခြင်း ဆက်တင်များ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ခေါ်ဆိုမှုကြိုတင်ပြင်ဆင်ချက်များကို ကြီးကြပ်သူသာလျှင် ပြောင်းလဲနိုင်သည်။"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ဆက်တင်များ ( <xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g> )"</string>

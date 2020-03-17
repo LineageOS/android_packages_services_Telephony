@@ -123,6 +123,7 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> को अग्रेषित कर रहा है"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"बंद"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"जब आपका फ़ोन पहुंच योग्य न हो, तो आपका कैरियर कॉल अग्रेषण अक्षम करने का समर्थन नहीं करता."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"आपको मोबाइल और इंटरनेट सेवा देने वाली कंपनी, कॉल को दूसरे नंबर पर भेजने की सुविधा नहीं देती."</string>
     <string name="updating_title" msgid="6130548922615719689">"कॉल सेटिंग"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"कॉल सेटिंग केवल व्यवस्थापक उपयोगकर्ता द्वारा ही बदली जा सकती हैं."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"सेटिंग (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

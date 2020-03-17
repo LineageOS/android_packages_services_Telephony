@@ -123,6 +123,7 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g>କୁ ଫରୱାର୍ଡ କରାଯାଉଛି"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ଅଫ୍ ଅଛି"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ଆପଣଙ୍କର ଫୋନ୍ ଅପହଞ୍ଚ ଦୂରତାରେ ଥିବାବେଳେ ଆପଣଙ୍କର କେରିଅର୍ କଲ୍ ଫର୍‌ୱାର୍ଡିଙ୍ଗକୁ ଅକ୍ଷମ କରିବାରେ ସପୋର୍ଟ କରିବେ ନାହିଁ।"</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"ଆପଣଙ୍କ ମୋବାଇଲ କମ୍ପାନୀ କଲ୍‌ ଫର୍‌ୱାର୍ଡିଂ ସୁବିଧାର ସମର୍ଥନ କରେ ନାହିଁ।"</string>
     <string name="updating_title" msgid="6130548922615719689">"କଲ୍‌ ସେଟିଙ୍ଗ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"କଲ୍ ସେଟିଙ୍ଗକୁ କେବଳ ଆଡମିନ୍ ୟୁଜର୍‌ ବଦଳାଇପାରିବେ।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ସେଟିଙ୍ଗ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

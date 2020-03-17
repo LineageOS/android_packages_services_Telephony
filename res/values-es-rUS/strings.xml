@@ -123,6 +123,8 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Reenviar a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Desactivado"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando no se puede acceder a tu teléfono."</string>
+    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
+    <skip />
     <string name="updating_title" msgid="6130548922615719689">"Config. de llamada"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Solo el usuario administrador puede cambiar la configuración de llamadas."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Configuración (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

@@ -123,6 +123,8 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"转接到 <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"关闭"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"您的运营商不支持在手机无法接通时停用来电转接功能。"</string>
+    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
+    <skip />
     <string name="updating_title" msgid="6130548922615719689">"通话设置"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"只有管理员用户才能更改通话设置。"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"设置（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>

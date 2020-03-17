@@ -123,6 +123,7 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> க்குப் பகிர்"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ஆஃப்"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"மொபைல் தொடர்புகொள்ள முடியாத இடத்தில் இருக்கும்போது, அழைப்பு பகிர்தலை முடக்குவதை ஆபரேட்டர் ஆதரிக்கவில்லை."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"உங்கள் மொபைல் நிறுவனம் அழைப்புப் பகிர்வை ஆதரிக்கவில்லை."</string>
     <string name="updating_title" msgid="6130548922615719689">"அழைப்பு அமைப்பு"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"நிர்வாகிப் பயனர் மட்டுமே அழைப்பிற்கான அமைப்புகளை மாற்ற முடியும்."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"அமைப்புகள் (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
