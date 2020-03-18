@@ -210,6 +210,7 @@
          ACTION_SIM_SLOT_STATUS_CHANGED broadcast to start activities
          from the background.  -->
     <uses-permission android:name="android.permission.START_ACTIVITIES_FROM_BACKGROUND" />
+    <uses-permission android:name="android.permission.NETWORK_STATS_PROVIDER" />
 
     <application android:name="PhoneApp"
             android:persistent="true"
