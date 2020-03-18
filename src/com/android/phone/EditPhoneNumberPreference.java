@@ -16,6 +16,9 @@
 
 package com.android.phone;
 
+import static android.view.View.LAYOUT_DIRECTION_LOCALE;
+import static android.view.View.TEXT_DIRECTION_LOCALE;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -209,7 +212,9 @@ public class EditPhoneNumberPreference extends EditTextPreference {
                 }
             }
             editText.setText(BidiFormatter.getInstance().unicodeWrap(
-                    mPhoneNumber, TextDirectionHeuristics.LTR));
+                    mPhoneNumber, TextDirectionHeuristics.LOCALE));
+            editText.setTextDirection(TEXT_DIRECTION_LOCALE);
+            editText.setLayoutDirection(LAYOUT_DIRECTION_LOCALE);
             editText.setMovementMethod(ArrowKeyMovementMethod.getInstance());
             editText.setKeyListener(DialerKeyListener.getInstance());
             editText.setOnFocusChangeListener(mDialogFocusChangeListener);
