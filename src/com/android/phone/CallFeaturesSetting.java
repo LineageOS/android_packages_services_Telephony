@@ -396,11 +396,7 @@ public class CallFeaturesSetting extends PreferenceActivity
             } else {
                 if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
                     prefSet.removePreference(fdnButton);
-
-                    if (!carrierConfig.getBoolean(
-                            CarrierConfigManager.KEY_VOICE_PRIVACY_DISABLE_UI_BOOL)) {
-                        addPreferencesFromResource(R.xml.cdma_call_privacy);
-                    }
+                    addPreferencesFromResource(R.xml.cdma_call_privacy);
                 } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
                     if (mPhone.getIccCard() == null || !mPhone.getIccCard().getIccFdnAvailable()) {
                         prefSet.removePreference(fdnButton);
