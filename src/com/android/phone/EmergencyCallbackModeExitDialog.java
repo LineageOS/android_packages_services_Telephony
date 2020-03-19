@@ -35,6 +35,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.android.internal.telephony.Phone;
@@ -330,7 +331,8 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnCance
             // Received exit Emergency Callback Mode notification close all dialogs
             if (intent.getAction().equals(
                     TelephonyIntents.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED)) {
-                if (intent.getBooleanExtra("phoneinECMState", false) == false) {
+                // Cancel if the sticky broadcast extra for whether or not we are in ECM is false.
+                if (!intent.getBooleanExtra(TelephonyManager.EXTRA_PHONE_IN_ECM_STATE, false)) {
                     if (mAlertDialog != null)
                         mAlertDialog.dismiss();
                     if (mProgressDialog != null)
