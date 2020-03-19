@@ -172,6 +172,7 @@ public class RadioOnStateListener {
      * call with {@link Callback#isOkToCall}
      */
     private void onServiceStateChanged(ServiceState state) {
+        if (mPhone == null) return;
         Log.d(this, "onServiceStateChanged(), new state = %s, Phone = %s", state,
                 mPhone.getPhoneId());
 
@@ -195,6 +196,7 @@ public class RadioOnStateListener {
     }
 
     private void onRadioOn() {
+        if (mPhone == null) return;
         ServiceState state =  mPhone.getServiceState();
         Log.d(this, "onRadioOn, state = %s, Phone = %s", state,
                 mPhone.getPhoneId());
@@ -216,6 +218,7 @@ public class RadioOnStateListener {
      * Handles the retry timer expiring.
      */
     private void onRetryTimeout() {
+        if (mPhone == null) return;
         int serviceState = mPhone.getServiceState().getState();
         Log.d(this, "onRetryTimeout():  phone state = %s, service state = %d, retries = %d.",
                 mPhone.getState(), serviceState, mNumRetriesSoFar);
