@@ -310,6 +310,15 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="CdmaCallForwardOptions"
+                android:label="@string/labelCF"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:theme="@style/DialerSettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="GsmUmtsCallBarringOptions"
                 android:label="@string/labelCallBarring"
                 android:configChanges="orientation|screenSize|keyboardHidden"
