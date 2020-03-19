@@ -122,7 +122,27 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
         Log.d(LOG_TAG, "mButtonClicked=" + mButtonClicked + ", positiveResult=" + positiveResult);
         // Ignore this event if the user clicked the cancel button, or if the dialog is dismissed
         // without any button being pressed (back button press or click event outside the dialog).
-        if (this.mButtonClicked != DialogInterface.BUTTON_NEGATIVE) {
+        if (isUnknownStatus() && this.mButtonClicked != DialogInterface.BUTTON_NEGATIVE) {
+            int action = (mButtonClicked == DialogInterface.BUTTON_POSITIVE) ?
+                CommandsInterface.CF_ACTION_REGISTRATION :
+                CommandsInterface.CF_ACTION_DISABLE;
+            final String number = (action == CommandsInterface.CF_ACTION_DISABLE) ?
+                    "" : getPhoneNumber();
+
+            Log.d(LOG_TAG, "reason=" + reason + ", action=" + action + ", number=" + number);
+
+            // Display no forwarding number while we're waiting for confirmation.
+            setSummaryOff("");
+
+            mPhone.setCallForwardingOption(action,
+                    reason,
+                    number,
+                    mServiceClass,
+                    0,
+                    mHandler.obtainMessage(MyHandler.MESSAGE_SET_CF,
+                        action,
+                        MyHandler.MESSAGE_SET_CF));
+        } else if (this.mButtonClicked != DialogInterface.BUTTON_NEGATIVE) {
             int action = (isToggled() || (mButtonClicked == DialogInterface.BUTTON_POSITIVE)) ?
                     CommandsInterface.CF_ACTION_REGISTRATION :
                     CommandsInterface.CF_ACTION_DISABLE;
@@ -194,6 +214,7 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
             Log.i(LOG_TAG, "handleGetCFResponse: Overridding CF number");
         }
 
+        setUnknownStatus(callForwardInfo.status == CommandsInterface.SS_STATUS_UNKNOWN);
         setToggled(callForwardInfo.status == 1);
         boolean displayVoicemailNumber = false;
         if (TextUtils.isEmpty(callForwardInfo.number)) {
@@ -343,6 +364,7 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
             AsyncResult ar = (AsyncResult) msg.obj;
 
             callForwardInfo = null;
+            boolean summaryOff = false;
             if (ar.exception != null) {
                 Log.d(LOG_TAG, "handleGetCFResponse: ar.exception=" + ar.exception);
                 if (ar.exception instanceof CommandException) {
@@ -371,6 +393,8 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
                             // corresponding class
                             CallForwardInfo info = cfInfoArray[i];
                             handleCallForwardResult(info);
+
+                            summaryOff = (info.status == CommandsInterface.SS_STATUS_UNKNOWN);
 
                             if (ar.userObj instanceof Throwable) {
                                 Log.d(LOG_TAG, "Skipped duplicated error dialog");
@@ -430,7 +454,15 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
             // Now whether or not we got a new number, reset our enabled
             // summary text since it may have been replaced by an empty
             // placeholder.
-            updateSummaryText();
+            // for CDMA, doesn't display summary.
+            if (summaryOff) {
+                setSummaryOff("");
+            } else {
+                // Now whether or not we got a new number, reset our enabled
+                // summary text since it may have been replaced by an empty
+                // placeholder.
+                updateSummaryText();
+            }
         }
 
         private void handleSetCFResponse(Message msg) {
@@ -439,6 +471,16 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
                 Log.d(LOG_TAG, "handleSetCFResponse: ar.exception=" + ar.exception);
                 // setEnabled(false);
             }
+
+            if (ar.result != null) {
+                int arr = (int)ar.result;
+                if (arr == CommandsInterface.SS_STATUS_UNKNOWN) {
+                    Log.d(LOG_TAG, "handleSetCFResponse: no need to re get in CDMA");
+                    mTcpListener.onFinished(CallForwardEditPreference.this, false);
+                    return;
+                }
+            }
+
             Log.d(LOG_TAG, "handleSetCFResponse: re get");
             if (!mCallForwardByUssd) {
                 mPhone.getCallForwardingOption(reason, mServiceClass,
