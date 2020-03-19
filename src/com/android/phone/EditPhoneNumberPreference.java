@@ -40,6 +40,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.android.internal.telephony.CommandsInterface;
+
 public class EditPhoneNumberPreference extends EditTextPreference {
 
     //allowed modes for this preference.
@@ -93,6 +95,7 @@ public class EditPhoneNumberPreference extends EditTextPreference {
     private String mPhoneNumber;
     private boolean mChecked;
 
+    private boolean mIsUnknownStatus;
 
     /**
      * Interface for the dialog closed listener, related to
@@ -259,7 +262,13 @@ public class EditPhoneNumberPreference extends EditTextPreference {
         // displayed, since there is no need to hide the edittext
         // field anymore.
         if (mConfirmationMode == CM_ACTIVATION) {
-            if (mChecked) {
+            if (mIsUnknownStatus) {
+                builder.setPositiveButton(mEnableText, this);
+                builder.setNeutralButton(mDisableText, this);
+                if (mPrefId == CommandsInterface.CF_REASON_ALL) {
+                    builder.setPositiveButton(null, null);
+                }
+            } else if (mChecked) {
                 builder.setPositiveButton(mChangeNumberText, this);
                 builder.setNeutralButton(mDisableText, this);
             } else {
@@ -315,7 +324,8 @@ public class EditPhoneNumberPreference extends EditTextPreference {
     @Override
     public void onClick(DialogInterface dialog, int which) {
         // The neutral button (button3) is always the toggle.
-        if ((mConfirmationMode == CM_ACTIVATION) && (which == DialogInterface.BUTTON_NEUTRAL)) {
+        if ((mConfirmationMode == CM_ACTIVATION) && (which == DialogInterface.BUTTON_NEUTRAL)
+             && !mIsUnknownStatus) {
             //flip the toggle if we are in the correct mode.
             setToggled(!isToggled());
         }
@@ -503,5 +513,13 @@ public class EditPhoneNumberPreference extends EditTextPreference {
      */
     public void showPhoneNumberDialog() {
         showDialog(null);
+    }
+
+    public void setUnknownStatus(boolean isUnknown) {
+        mIsUnknownStatus = isUnknown;
+    }
+
+    public boolean isUnknownStatus() {
+        return mIsUnknownStatus;
     }
 }
