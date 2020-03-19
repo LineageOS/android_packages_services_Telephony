@@ -32,6 +32,7 @@ public class CdmaCallOptions extends PreferenceActivity {
     private final boolean DBG = (PhoneGlobals.DBG_LEVEL >= 2);
 
     private static final String BUTTON_VP_KEY = "button_voice_privacy_key";
+    private static final String CALL_FORWARDING_KEY = "call_forwarding_key";
     private SwitchPreference mButtonVoicePrivacy;
 
     @Override
@@ -55,8 +56,11 @@ public class CdmaCallOptions extends PreferenceActivity {
         if (subInfoHelper.getPhone().getPhoneType() != PhoneConstants.PHONE_TYPE_CDMA
                 || carrierConfig.getBoolean(CarrierConfigManager.KEY_VOICE_PRIVACY_DISABLE_UI_BOOL)) {
             // disable the entire screen
-            getPreferenceScreen().setEnabled(false);
+            mButtonVoicePrivacy.setEnabled(false);
         }
+
+        Preference callForwardingPref = getPreferenceScreen().findPreference(CALL_FORWARDING_KEY);
+        callForwardingPref.setIntent(subInfoHelper.getIntent(CdmaCallForwardOptions.class));
     }
 
     @Override
