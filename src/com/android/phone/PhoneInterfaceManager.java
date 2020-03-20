@@ -3065,14 +3065,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void sendVisualVoicemailSmsForSubscriber(String callingPackage, int subId,
-            String number, int port, String text, PendingIntent sentIntent) {
+    public void sendVisualVoicemailSmsForSubscriber(String callingPackage,
+            String callingAttributionTag, int subId, String number, int port, String text,
+            PendingIntent sentIntent) {
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
         enforceVisualVoicemailPackage(callingPackage, subId);
         enforceSendSmsPermission();
         SmsController smsController = PhoneFactory.getSmsController();
-        smsController.sendVisualVoicemailSmsForSubscriber(callingPackage, subId, number, port, text,
-                sentIntent);
+        smsController.sendVisualVoicemailSmsForSubscriber(callingPackage, callingAttributionTag,
+                subId, number, port, text, sentIntent);
     }
 
     /**
