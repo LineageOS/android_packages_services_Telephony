@@ -8266,13 +8266,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void enqueueSmsPickResult(String callingPackage, IIntegerConsumer pendingSubIdResult) {
+    public void enqueueSmsPickResult(String callingPackage, String callingAttributionTag,
+            IIntegerConsumer pendingSubIdResult) {
         if (callingPackage == null) {
             callingPackage = getCurrentPackageName();
         }
         SmsPermissions permissions = new SmsPermissions(getDefaultPhone(), mApp,
                 (AppOpsManager) mApp.getSystemService(Context.APP_OPS_SERVICE));
-        if (!permissions.checkCallingCanSendSms(callingPackage, "Sending message")) {
+        if (!permissions.checkCallingCanSendSms(callingPackage, callingAttributionTag,
+                "Sending message")) {
             throw new SecurityException("Requires SEND_SMS permission to perform this operation");
         }
         PickSmsSubscriptionActivity.addPendingResult(pendingSubIdResult);
