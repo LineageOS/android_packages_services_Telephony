@@ -19,9 +19,7 @@ package com.android.phone;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
 import android.telephony.CarrierConfigManager;
 import android.view.MenuItem;
 
@@ -34,7 +32,7 @@ public class CdmaCallOptions extends TimeConsumingPreferenceActivity {
     private static final String BUTTON_VP_KEY = "button_voice_privacy_key";
     private static final String CALL_FORWARDING_KEY = "call_forwarding_key";
     private static final String CALL_WAITING_KEY = "call_waiting_key";
-    private SwitchPreference mButtonVoicePrivacy;
+    private CdmaVoicePrivacySwitchPreference mButtonVoicePrivacy;
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -46,7 +44,8 @@ public class CdmaCallOptions extends TimeConsumingPreferenceActivity {
         subInfoHelper.setActionBarTitle(
                 getActionBar(), getResources(), R.string.labelCdmaMore_with_label);
 
-        mButtonVoicePrivacy = (SwitchPreference) findPreference(BUTTON_VP_KEY);
+        mButtonVoicePrivacy = (CdmaVoicePrivacySwitchPreference) findPreference(BUTTON_VP_KEY);
+        mButtonVoicePrivacy.setPhone(subInfoHelper.getPhone());
         PersistableBundle carrierConfig;
         if (subInfoHelper.hasSubId()) {
             carrierConfig = PhoneGlobals.getInstance().getCarrierConfigForSubId(
