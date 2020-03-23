@@ -61,14 +61,14 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testGetUiccCardsInfo_nonMatchingUid() {
+    public void testGetUiccCardsInfoSecurity() {
         // Set up mocks so that the supplied package UID does not equal the calling UID
         PackageManager mockPackageManager = mock(PackageManager.class);
         try {
             doReturn(Binder.getCallingUid() + 1).when(mockPackageManager)
                     .getPackageUid(eq(PRIVILEGED_PACKAGE_NAME), anyInt());
         } catch (Exception e) {
-            Log.d(TAG, "testGetUiccCardsInfo_nonMatchingUid unable to setup mocks");
+            Log.d(TAG, "testGetUiccCardsInfoSecurity unable to setup mocks");
             fail();
         }
         doReturn(mockPackageManager).when(mContext).getPackageManager();
@@ -77,28 +77,7 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
             mPhoneInterfaceManager.getUiccCardsInfo(PRIVILEGED_PACKAGE_NAME);
             fail();
         } catch (SecurityException e) {
-            Log.d(TAG, "testGetUiccCardsInfo_nonMatchingUid e = " + e);
-        }
-    }
-
-    @Test
-    public void testGetUiccCardsInfo_matchingUid() {
-        // Set up mocks so that the supplied package UID equals the calling UID
-        PackageManager mockPackageManager = mock(PackageManager.class);
-        try {
-            doReturn(Binder.getCallingUid()).when(mockPackageManager)
-                    .getPackageUid(eq(PRIVILEGED_PACKAGE_NAME), anyInt());
-        } catch (Exception e) {
-            Log.d(TAG, "testGetUiccCardsInfo_matchingUid unable to setup mocks");
-            fail();
-        }
-        doReturn(mockPackageManager).when(mContext).getPackageManager();
-        doReturn(mockPackageManager).when(mMockPhoneGlobals).getPackageManager();
-        try {
-            mPhoneInterfaceManager.getUiccCardsInfo(PRIVILEGED_PACKAGE_NAME);
-        } catch (SecurityException e) {
-            Log.d(TAG, "testGetUiccCardsInfo_matchingUid e = " + e);
-            fail();
+            Log.d(TAG, "testGetUiccCardsInfoSecurity e = " + e);
         }
     }
 }
