@@ -69,6 +69,8 @@ public class RadioOnStateListenerTest extends TelephonyTestBase {
     @Override
     @After
     public void tearDown() throws Exception {
+        mListener.setTimeBetweenRetriesMillis(5000);
+        mListener.setMaxNumRetries(5);
         mListener.getHandler().removeCallbacksAndMessages(null);
         // Wait for the queue to clear...
         waitForHandlerAction(mListener.getHandler(), TIMEOUT_MS /*ms timeout*/);
