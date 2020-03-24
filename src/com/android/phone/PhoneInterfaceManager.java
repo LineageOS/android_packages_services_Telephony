@@ -3439,6 +3439,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = getPhone(subId);
             if (phone == null) return false;
             return phone.isImsCapabilityAvailable(capability, regTech);
+        } catch (com.android.ims.ImsException e) {
+            Log.w(LOG_TAG, "IMS isAvailable - service unavailable: " + e.getMessage());
+            return false;
         } finally {
             Binder.restoreCallingIdentity(token);
         }
