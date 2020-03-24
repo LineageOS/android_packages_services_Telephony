@@ -636,8 +636,14 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             }
         }
         intent.putExtra(CarrierConfigManager.EXTRA_SLOT_INDEX, phoneId);
-        logd("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId);
         mContext.sendBroadcastAsUser(intent, UserHandle.ALL);
+        int[] subIds = SubscriptionManager.getSubId(phoneId);
+        if (subIds != null && subIds.length > 0) {
+            logd("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId + ", subId=" + subIds[0]);
+        } else {
+            logd("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId);
+        }
+
         mHasSentConfigChange[phoneId] = true;
     }
 
