@@ -1393,6 +1393,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         if (PhoneNumberUtils.isEmergencyNumber(mOriginalConnection.getAddress())) {
             mTreatAsEmergencyCall = true;
         }
+        // Propagate VERSTAT for IMS calls.
+        setCallerNumberVerificationStatus(mOriginalConnection.getNumberVerificationStatus());
 
         if (isImsConnection()) {
             mWasImsConnection = true;
