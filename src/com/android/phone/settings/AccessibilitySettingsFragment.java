@@ -25,6 +25,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
+import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionManager;
@@ -39,6 +40,11 @@ import com.android.internal.telephony.SubscriptionController;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.R;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
+
 public class AccessibilitySettingsFragment extends PreferenceFragment {
     private static final String LOG_TAG = AccessibilitySettingsFragment.class.getSimpleName();
     private static final boolean DBG = (PhoneGlobals.DBG_LEVEL >= 2);
@@ -47,6 +53,8 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
     private static final String BUTTON_HAC_KEY = "button_hac_key";
     private static final String BUTTON_RTT_KEY = "button_rtt_key";
     private static final String RTT_INFO_PREF = "button_rtt_more_information_key";
+
+    private static final int WFC_QUERY_TIMEOUT_MILLIS = 20;
 
     private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
         /**
@@ -110,10 +118,13 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
         }
 
         if (shouldShowRttSetting()) {
-            // TODO: this is going to be a on/off switch for now. Ask UX about how to integrate
-            // this settings with TTY
-            if (TelephonyManager.getDefault().isNetworkRoaming(
-                    SubscriptionManager.getDefaultVoiceSubscriptionId())) {
+            TelephonyManager tm =
+                    (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
+            boolean isRoaming = tm.isNetworkRoaming(
+                    SubscriptionManager.getDefaultVoiceSubscriptionId());
+
+            boolean shouldDisableBecauseRoamingOffWfc = isRoaming && !isOnWfc();
+            if (shouldDisableBecauseRoamingOffWfc) {
                 mButtonRtt.setSummary(TextUtils.concat(getText(R.string.rtt_mode_summary), "\n",
                         getText(R.string.no_rtt_when_roaming)));
             }
@@ -228,6 +239,21 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             }
         }
         return false;
+    }
+
+    private boolean isOnWfc() {
+        LinkedBlockingQueue<Integer> result = new LinkedBlockingQueue<>(1);
+        Executor executor = Executors.newSingleThreadExecutor();
+        mContext.getSystemService(android.telephony.ims.ImsManager.class)
+                .getImsMmTelManager(SubscriptionManager.getDefaultSubscriptionId())
+                .getRegistrationTransportType(executor, result::offer);
+        try {
+            Integer transportType = result.poll(WFC_QUERY_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);
+            return transportType != null
+                    && transportType == AccessNetworkConstants.TRANSPORT_TYPE_WLAN;
+        } catch (InterruptedException e) {
+            return false;
+        }
     }
 
     private boolean shouldShowRttSetting() {
