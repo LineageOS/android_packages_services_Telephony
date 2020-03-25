@@ -120,7 +120,6 @@ import android.util.Pair;
 
 import com.android.ims.ImsManager;
 import com.android.ims.internal.IImsServiceFeatureCallback;
-import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
@@ -1650,8 +1649,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /** Private constructor; @see init() */
-    @VisibleForTesting
-    /* package */ PhoneInterfaceManager(PhoneGlobals app) {
+    private PhoneInterfaceManager(PhoneGlobals app) {
         mApp = app;
         mCM = PhoneGlobals.getInstance().mCM;
         mImsResolver = PhoneGlobals.getInstance().getImsResolver();
@@ -7453,15 +7451,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public List<UiccCardInfo> getUiccCardsInfo(String callingPackage) {
-        try {
-            PackageManager pm = mApp.getPackageManager();
-            if (Binder.getCallingUid() != pm.getPackageUid(callingPackage, 0)) {
-                throw new SecurityException("Calling package " + callingPackage + " does not match "
-                        + "calling UID");
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            throw new SecurityException("Invalid calling package. e=" + e);
-        }
+        // Verify that tha callingPackage belongs to the calling UID
+        mApp.getSystemService(AppOpsManager.class)
+                .checkPackage(Binder.getCallingUid(), callingPackage);
+
         boolean hasReadPermission = false;
         try {
             enforceReadPrivilegedPermission("getUiccCardsInfo");
