@@ -103,8 +103,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private CarrierServiceConnection[] mServiceConnection;
     // Whether we are bound to a service for each phone
     private boolean[] mServiceBound;
-    // Whether we have sent config change bcast for each phone id.
+    // Whether we have sent config change broadcast for each phone id.
     private boolean[] mHasSentConfigChange;
+    // Whether the broadcast was sent from EVENT_SYSTEM_UNLOCKED, to track rebroadcasts
+    private boolean[] mFromSystemUnlocked;
     // SubscriptionInfoUpdater
     private final SubscriptionInfoUpdater mSubscriptionInfoUpdater;
 
@@ -200,11 +202,13 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 case EVENT_SYSTEM_UNLOCKED: {
                     for (int i = 0; i < TelephonyManager.from(mContext).getActiveModemCount();
                             ++i) {
-                        // When user unlock device, we should only try to send broadcast again if we
-                        // have sent it before unlock. This will avoid we try to load carrier config
-                        // when SIM is still loading when unlock happens.
+                        // When the user unlocks the device, send the broadcast again (with a
+                        // rebroadcast extra) if we have sent it before unlock. This will avoid
+                        // trying to load the carrier config when the SIM is still loading when the
+                        // unlock happens.
                         if (mHasSentConfigChange[i]) {
                             logdWithLocalLog("System unlocked");
+                            mFromSystemUnlocked[i] = true;
                             updateConfigForPhoneId(i);
                         }
                     }
@@ -538,6 +542,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         mServiceConnection = new CarrierServiceConnection[numPhones];
         mServiceBound = new boolean[numPhones];
         mHasSentConfigChange = new boolean[numPhones];
+        mFromSystemUnlocked = new boolean[numPhones];
         // Make this service available through ServiceManager.
         TelephonyFrameworkInitializer
                 .getTelephonyServiceManager().getCarrierConfigServiceRegisterer().register(this);
@@ -636,6 +641,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             }
         }
         intent.putExtra(CarrierConfigManager.EXTRA_SLOT_INDEX, phoneId);
+        intent.putExtra(CarrierConfigManager.EXTRA_REBROADCAST_ON_UNLOCK,
+                mFromSystemUnlocked[phoneId]);
         mContext.sendBroadcastAsUser(intent, UserHandle.ALL);
         int[] subIds = SubscriptionManager.getSubId(phoneId);
         if (subIds != null && subIds.length > 0) {
@@ -643,8 +650,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         } else {
             logd("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId);
         }
-
         mHasSentConfigChange[phoneId] = true;
+        mFromSystemUnlocked[phoneId] = false;
     }
 
     /** Binds to the default or carrier config app. */
