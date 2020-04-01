@@ -348,6 +348,9 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.DATA_LIMIT_REACHED:
                 resourceId = R.string.callFailed_data_limit_reached;
                 break;
+            case android.telephony.DisconnectCause.WIFI_LOST:
+                resourceId = R.string.callFailed_wifi_lost;
+                break;
             case android.telephony.DisconnectCause.ALREADY_DIALING:
                 resourceId = R.string.callFailed_already_dialing;
                 break;
@@ -867,6 +870,7 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.NORMAL:
             case android.telephony.DisconnectCause.NORMAL_UNSPECIFIED:
             case android.telephony.DisconnectCause.VIDEO_CALL_NOT_ALLOWED_WHILE_TTY_ENABLED:
+            case android.telephony.DisconnectCause.WIFI_LOST:
             default:
                 return ToneGenerator.TONE_PROP_PROMPT;
         }
