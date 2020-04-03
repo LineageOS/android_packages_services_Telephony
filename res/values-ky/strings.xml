@@ -494,7 +494,7 @@
     <string name="notification_voicemail_title_count" msgid="2806950319222327082">"Жаңы үн почтасы (<xliff:g id="COUNT">%d</xliff:g>)"</string>
     <string name="notification_voicemail_text_format" msgid="5720947141702312537">"<xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g> номерин терүү"</string>
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Үн почтасынын номери белгисиз"</string>
-    <string name="notification_network_selection_title" msgid="255595526707809121">"Байланыш жок"</string>
+    <string name="notification_network_selection_title" msgid="255595526707809121">"Интернет жок"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Тандалган тармак <xliff:g id="OPERATOR_NAME">%s</xliff:g> жеткиликсиз"</string>
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Мобилдик тармакты күйгүзүңүз, чалуу үчүн \"Учакта\" режимин же \"Батареяны үнөмдөө\" режимин өчүрүңүз."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Чалуу үчүн учак режимин өчүрүңүз."</string>

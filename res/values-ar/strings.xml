@@ -269,7 +269,7 @@
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"بيانات الجوّال"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"الوصول إلى البيانات باستخدام شبكة الجوّال"</string>
-    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"هل تريد إيقاف تفعيل بيانات الجوّال؟"</string>
+    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"هل تريد إيقاف بيانات الجوّال؟"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"يلزم التحديد"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"‏هل تريد تغيير شريحة SIM للبيانات؟"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"هل تريد استخدام <xliff:g id="NEW_SIM">%1$s</xliff:g> بدلاً من <xliff:g id="OLD_SIM">%2$s</xliff:g> لبيانات الجوّال؟"</string>
@@ -666,7 +666,7 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"أرقام التعريف الشخصي غير متطابقة"</string>
     <string name="change_pin_succeeded" msgid="2504705600693014403">"تمّ تحديث رقم التعريف الشخصي للبريد الصوتي"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"يتعذر تعيين رقم التعريف الشخصي"</string>
-    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"تم إيقاف تفعيل تجوال البيانات"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"تم إيقاف تجوال البيانات"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="5615757897768777865">"تم تفعيل تجوال البيانات"</string>
     <string name="mobile_data_status_roaming_without_plan_subtext" msgid="6536671968072284677">"التجوال قيد التشغيل حاليًا، يتطلب خطة بيانات"</string>
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="2576177169108123095">"التجوال قيد التشغيل حاليًا، خطة البيانات نشطة"</string>

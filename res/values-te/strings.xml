@@ -282,7 +282,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"డేటా వినియోగ వ్యవధి"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"డేటా రేట్ విధానం"</string>
     <string name="throttle_help" msgid="2624535757028809735">"మరింత తెలుసుకోండి"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"గరిష్టంగా <xliff:g id="USED_2">%3$s</xliff:g> వ్యవధిలో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)\nతదపరి వ్యవధి <xliff:g id="USED_3">%4$d</xliff:g> రోజుల్లో (<xliff:g id="USED_4">%5$s</xliff:g>) ప్రారంభమవుతుంది"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"గరిష్ఠ వ్యవధి అయిన <xliff:g id="USED_2">%3$s</xliff:g>లో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)\nతర్వాతి వ్యవధి <xliff:g id="USED_3">%4$d</xliff:g> రోజుల్లో (<xliff:g id="USED_4">%5$s</xliff:g>) ప్రారంభమవుతుంది"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"గరిష్టంగా <xliff:g id="USED_2">%3$s</xliff:g>లో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> గరిష్ట పరిమితి మించిపోయింది\nడేటా రేట్ <xliff:g id="USED_1">%2$d</xliff:g> Kb/sకి తగ్గించబడింది"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"సైకిల్‌లో <xliff:g id="USED_0">%1$d</xliff:g>٪ గడిచిపోయింది\nతదుపరి వ్యవధి <xliff:g id="USED_1">%2$d</xliff:g> రోజుల్లో (<xliff:g id="USED_2">%3$s</xliff:g>) ప్రారంభమవుతుంది"</string>
