@@ -205,6 +205,16 @@ public class PhoneGlobals extends ContextWrapper {
 
     private final SettingsObserver mSettingsObserver;
 
+    private static class EventSimStateChangedBag {
+        final int mPhoneId;
+        final String mIccStatus;
+
+        EventSimStateChangedBag(int phoneId, String iccStatus) {
+            mPhoneId = phoneId;
+            mIccStatus = iccStatus;
+        }
+    }
+
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -225,7 +235,8 @@ public class PhoneGlobals extends ContextWrapper {
                         // they enter a valid SIM network PIN.
                         Log.i(LOG_TAG, "show sim depersonal panel");
                         Phone phone = (Phone) ((AsyncResult) msg.obj).userObj;
-                        IccNetworkDepersonalizationPanel.showDialog(phone);
+                        int subType = (Integer)((AsyncResult)msg.obj).result;
+                        IccNetworkDepersonalizationPanel.showDialog(phone, subType);
                     }
                     break;
 
@@ -253,8 +264,9 @@ public class PhoneGlobals extends ContextWrapper {
                     // Marks the event where the SIM goes into ready state.
                     // Right now, this is only used for the PUK-unlocking
                     // process.
-                    if (msg.obj.equals(IccCardConstants.INTENT_VALUE_ICC_READY)
-                            || msg.obj.equals(IccCardConstants.INTENT_VALUE_ICC_LOADED)) {
+                    EventSimStateChangedBag bag = (EventSimStateChangedBag)msg.obj;
+                    if (bag.mIccStatus == IccCardConstants.INTENT_VALUE_ICC_READY
+                            || bag.mIccStatus == IccCardConstants.INTENT_VALUE_ICC_LOADED) {
                         // when the right event is triggered and there
                         // are UI objects in the foreground, we close
                         // them to display the lock panel.
@@ -266,6 +278,8 @@ public class PhoneGlobals extends ContextWrapper {
                             mPUKEntryProgressDialog.dismiss();
                             mPUKEntryProgressDialog = null;
                         }
+                        Log.i(LOG_TAG, "Dismissing depersonal panel");
+                        IccNetworkDepersonalizationPanel.dialogDismiss(bag.mPhoneId);
                     }
                     break;
 
@@ -649,14 +663,9 @@ public class PhoneGlobals extends ContextWrapper {
                     PhoneUtils.unregisterIccStatus(mHandler, phoneId);
                     PhoneUtils.registerIccStatus(mHandler, EVENT_SIM_NETWORK_LOCKED, phoneId);
                 }
-                if (mPUKEntryActivity != null) {
-                    // if an attempt to un-PUK-lock the device was made, while we're
-                    // receiving this state change notification, notify the handler.
-                    // NOTE: This is ONLY triggered if an attempt to un-PUK-lock has
-                    // been attempted.
-                    mHandler.sendMessage(mHandler.obtainMessage(EVENT_SIM_STATE_CHANGED,
-                            intent.getStringExtra(IccCardConstants.INTENT_KEY_ICC_STATE)));
-                }
+                String iccStatus = intent.getStringExtra(IccCardConstants.INTENT_KEY_ICC_STATE);
+                mHandler.sendMessage(mHandler.obtainMessage(EVENT_SIM_STATE_CHANGED,
+                        new EventSimStateChangedBag(phoneId, iccStatus)));
             } else if (action.equals(TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED)) {
                 String newPhone = intent.getStringExtra(PhoneConstants.PHONE_NAME_KEY);
                 Log.d(LOG_TAG, "Radio technology switched. Now " + newPhone + " is active.");
