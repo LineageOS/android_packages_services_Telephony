@@ -282,9 +282,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Período uso datos"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Política velocidad datos"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Más información"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) de periodo máximo de <xliff:g id="USED_2">%3$s</xliff:g>.\nPróx periodo en <xliff:g id="USED_3">%4$d</xliff:g> días (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) de periodo máx de <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Máx de <xliff:g id="USED_0">%1$s</xliff:g> superado.\nFrec datos reducida a <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ del ciclo transcurrido.\nPróx periodo en <xliff:g id="USED_1">%2$d</xliff:g> días (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>

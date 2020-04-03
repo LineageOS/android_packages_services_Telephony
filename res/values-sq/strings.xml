@@ -282,7 +282,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Periudha e përdorimit të të dhënave"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Politika e shpejtësisë së të dhënave"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Mëso më shumë"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) nga maksimumi i periudhës prej <xliff:g id="USED_2">%3$s</xliff:g> \nPeriudha tjetër fillon për <xliff:g id="USED_3">%4$d</xliff:g> ditë (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) nga maksimumi i periudhës prej <xliff:g id="USED_2">%3$s</xliff:g>\nPeriudha tjetër fillon për <xliff:g id="USED_3">%4$d</xliff:g> ditë (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) nga maksimumi i periudhës prej <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"U kapërcye maksimumi i <xliff:g id="USED_0">%1$s</xliff:g>\nShpejtësia e të dhënave u pakësua deri në <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"Ka kaluar <xliff:g id="USED_0">%1$d</xliff:g>٪ të ciklit\nPeriudha tjetër fillon për <xliff:g id="USED_1">%2$d</xliff:g> ditë (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>

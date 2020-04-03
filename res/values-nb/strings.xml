@@ -282,12 +282,8 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Databrukperiode"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Retningslinjer for datahastighet"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Les mer"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_data_usage_subtext (3185429653996709840) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> %%) av maksimum <xliff:g id="USED_2">%3$s</xliff:g> for perioden\nNeste periode starter om <xliff:g id="USED_3">%4$d</xliff:g> dager (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) av maksimum <xliff:g id="USED_2">%3$s</xliff:g> for perioden"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> har overskredet maksimumsgrensen\nDatahastigheten er redusert til <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ av syklusen er fullført\nNeste periode starter om <xliff:g id="USED_1">%2$d</xliff:g> dager (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="7221971817325779535">"Datahastigheten reduseres til <xliff:g id="USED">%1$d</xliff:g> Kb/s hvis databruken overskrider grenseverdien"</string>

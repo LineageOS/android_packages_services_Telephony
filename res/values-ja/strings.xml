@@ -47,7 +47,7 @@
     <string name="add_vm_number_str" msgid="7368168964435881637">"番号を追加"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ボイスメール設定を変更できるのはメインユーザーのみに限られています。"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIMカードロックを解除しました。デバイスのロックを解除しています..."</string>
-    <string name="label_ndp" msgid="7617392683877410341">"SIMネットワークのロック解除PIN"</string>
+    <string name="label_ndp" msgid="7617392683877410341">"SIM のネットワーク ロック解除 PIN"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ロック解除"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"無効"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ネットワークのロック解除をリクエスト中..."</string>

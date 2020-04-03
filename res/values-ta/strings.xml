@@ -282,7 +282,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"தரவு பயன்படுத்தப்பட்ட காலம்"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"தரவு கட்டண கொள்கை"</string>
     <string name="throttle_help" msgid="2624535757028809735">"மேலும் அறிக"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) / <xliff:g id="USED_2">%3$s</xliff:g> அதிகபட்சம்\nஅடுத்த காலநேரம் <xliff:g id="USED_3">%4$d</xliff:g> நாட்களுக்குள் தொடங்கும் (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"அதிகபட்ச சேமிப்பிடம் <xliff:g id="USED_2">%3$s</xliff:g> இல் <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) பயன்படுத்தப்பட்டுள்ளது\nஅடுத்த காலகட்டம் <xliff:g id="USED_3">%4$d</xliff:g> நாட்களில் (<xliff:g id="USED_4">%5$s</xliff:g>) தொடங்கும்"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"அதிகபட்சம் <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) / <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> அதிகபட்சத்தை மீறிவிட்டது\n<xliff:g id="USED_1">%2$d</xliff:g> Kb/s க்குத் தரவு கட்டணம் குறைந்தது"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ சுழற்சி கடந்துவிட்டன\nஅடுத்த காலம் <xliff:g id="USED_1">%2$d</xliff:g> நாட்களில் தொடங்கும் (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
