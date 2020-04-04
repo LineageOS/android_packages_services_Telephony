@@ -20,6 +20,7 @@ import static android.telephony.ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.ColorInt;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -44,7 +45,6 @@ import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
-import com.android.telephony.Rlog;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -72,6 +72,7 @@ import android.widget.TextView;
 import com.android.phone.common.dialpad.DialpadKeyButton;
 import com.android.phone.common.util.ViewUtil;
 import com.android.phone.common.widget.ResizingTextEditText;
+import com.android.telephony.Rlog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -150,6 +151,11 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
     /** Size limit of emergency shortcut buttons container. **/
     private static final int SHORTCUT_SIZE_LIMIT = 3;
+
+    private static final float COLOR_DELTA = 1.0f / 16.0f;
+
+    /** Dial button color, from packages/apps/PhoneCommon/res/drawable-mdpi/fab_green.png **/
+    @ColorInt private static final int DIALER_GREEN = 0xff00c853;
 
     ResizingTextEditText mDigits;
     private View mDialButton;
@@ -719,8 +725,12 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             isEmergencyNumber = true;
             phoneToMakeCall = mShortcutViewConfig.getPhoneInfo();
         } else {
-            isEmergencyNumber = getSystemService(TelephonyManager.class)
-                    .isEmergencyNumber(mLastNumber);
+            try {
+                isEmergencyNumber = getSystemService(TelephonyManager.class)
+                        .isEmergencyNumber(mLastNumber);
+            } catch (IllegalStateException ise) {
+                isEmergencyNumber = false;
+            }
         }
 
         if (isEmergencyNumber) {
@@ -1196,11 +1206,52 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
 
     private static int getPrimaryColor(WallpaperColors colors) {
         if (colors != null) {
-            return colors.getPrimaryColor().toArgb();
+            // Android accessibility scanner
+            // (https://support.google.com/accessibility/android/answer/7158390)
+            // suggest small text and graphics have a contrast ratio greater than
+            // 4.5 with background color. The color generated from wallpaper may not
+            // follow this rule. Calculate a proper color here.
+            Color primary = colors.getPrimaryColor();
+            Color text = Color.valueOf(Color.WHITE);
+            Color dial = Color.valueOf(DIALER_GREEN);
+            // If current primary color can't follow the contrast ratio rule, make it
+            // deeper and try again.
+            while (!checkContrastRatio(primary, text)) {
+                primary = getDeeper(primary);
+            }
+            while (!checkContrastRatio(primary, dial)) {
+                primary = getDeeper(primary);
+            }
+            return primary.toArgb();
         }
         // It's possible that wallpaper colors are null (e.g. when colors are being
         // processed or a live wallpaper is used). In this case, fallback to same
         // behavior as when shortcut view is enabled.
         return Color.BLACK;
+    }
+
+    private static Color getDeeper(Color color) {
+        float r = color.red() - COLOR_DELTA;
+        float g = color.green() - COLOR_DELTA;
+        float b = color.blue() - COLOR_DELTA;
+        if (r < 0f) r = 0f;
+        if (g < 0f) g = 0f;
+        if (b < 0f) b = 0f;
+        return Color.valueOf(r, g, b);
+    }
+
+    private static boolean checkContrastRatio(Color color1, Color color2) {
+        float lum1 = color1.luminance();
+        float lum2 = color2.luminance();
+        double cr;
+        if (lum1 >= lum2) {
+            cr = (lum1 + 0.05) / (lum2 + 0.05);
+        } else {
+            cr = (lum2 + 0.05) / (lum1 + 0.05);
+        }
+
+        // Make cr greater than 5.0 instead of 4.5 to guarantee that transparent white
+        // text and graphics can have contrast ratio greather than 4.5 with background.
+        return cr > 5.0;
     }
 }
