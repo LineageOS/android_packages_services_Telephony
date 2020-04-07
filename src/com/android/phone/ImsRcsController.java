@@ -28,6 +28,7 @@ import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsRcsController;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.aidl.IRcsUceControllerCallback;
+import android.telephony.ims.aidl.IRcsUcePublishStateCallback;
 import android.telephony.ims.feature.RcsFeature;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.util.Log;
@@ -191,6 +192,40 @@ public class ImsRcsController extends IImsRcsController.Stub {
         final long token = Binder.clearCallingIdentity();
         try {
             getRcsFeatureController(subId).unregisterRcsAvailabilityCallback(subId, callback);
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
+    }
+
+    @Override
+    public void registerUcePublishStateCallback(int subId, IRcsUcePublishStateCallback c) {
+        enforceReadPrivilegedPermission("registerUcePublishStateCallback");
+        final long token = Binder.clearCallingIdentity();
+        try {
+            UserCapabilityExchangeImpl uce = getRcsFeatureController(subId).getFeature(
+                    UserCapabilityExchangeImpl.class);
+            if (uce == null) {
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "This subscription does not support UCE.");
+            }
+            uce.registerPublishStateCallback(c);
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
+    }
+
+    @Override
+    public void unregisterUcePublishStateCallback(int subId, IRcsUcePublishStateCallback c) {
+        enforceReadPrivilegedPermission("unregisterUcePublishStateCallback");
+        final long token = Binder.clearCallingIdentity();
+        try {
+            UserCapabilityExchangeImpl uce = getRcsFeatureController(subId).getFeature(
+                    UserCapabilityExchangeImpl.class);
+            if (uce == null) {
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "This subscription does not support UCE.");
+            }
+            uce.unregisterUcePublishStateCallback(c);
         } finally {
             Binder.restoreCallingIdentity(token);
         }
