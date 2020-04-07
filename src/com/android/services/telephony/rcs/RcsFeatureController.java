@@ -20,9 +20,7 @@ import android.annotation.AnyThread;
 import android.content.Context;
 import android.net.Uri;
 import android.telephony.ims.ImsException;
-import android.telephony.ims.ImsRcsManager;
 import android.telephony.ims.ImsReasonInfo;
-import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
@@ -131,13 +129,14 @@ public class RcsFeatureController {
                     try {
                         // May throw ImsException if for some reason the connection to the
                         // ImsService is gone.
+                        updateConnectionStatus(manager);
                         setupConnectionToService(manager);
                     } catch (ImsException e) {
+                        updateConnectionStatus(null /*manager*/);
                         // Use deprecated Exception for compatibility.
                         throw new com.android.ims.ImsException(e.getMessage(),
                                 ImsReasonInfo.CODE_LOCAL_IMS_SERVICE_DOWN);
                     }
-                    updateConnectionStatus(manager);
                 }
 
                 @Override
