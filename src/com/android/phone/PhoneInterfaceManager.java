@@ -5735,14 +5735,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    private int getCarrierPrivilegeStatusFromCarrierConfigRules(int privilegeFromSim,
+    private int getCarrierPrivilegeStatusFromCarrierConfigRules(int privilegeFromSim, int uid,
             Phone phone) {
         //load access rules from carrier configs, and check those as well: b/139133814
         SubscriptionController subController = SubscriptionController.getInstance();
         if (privilegeFromSim == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
                 || subController == null) return privilegeFromSim;
 
-        int uid = Binder.getCallingUid();
         PackageManager pkgMgr = phone.getContext().getPackageManager();
         String[] packages = pkgMgr.getPackagesForUid(uid);
 
@@ -5796,7 +5795,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         return getCarrierPrivilegeStatusFromCarrierConfigRules(
             card.getCarrierPrivilegeStatusForCurrentTransaction(
-                phone.getContext().getPackageManager()), phone);
+                phone.getContext().getPackageManager()), Binder.getCallingUid(), phone);
     }
 
     @Override
@@ -5815,7 +5814,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         return getCarrierPrivilegeStatusFromCarrierConfigRules(
                 profile.getCarrierPrivilegeStatusForUid(
-                        phone.getContext().getPackageManager(), uid), phone);
+                        phone.getContext().getPackageManager(), uid), uid, phone);
     }
 
     @Override
