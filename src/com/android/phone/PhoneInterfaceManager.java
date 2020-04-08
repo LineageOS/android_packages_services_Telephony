@@ -5460,7 +5460,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Set the preferred network type.
-     * Used for device configuration by some CDMA operators.
      *
      * @param networkType the preferred network type, defined in RILConstants.java.
      * @return true on success; false on any failure.
@@ -5474,7 +5473,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             Settings.Global.putInt(mApp.getContentResolver(),
                     Settings.Global.PREFERRED_NETWORK_MODE + subId, networkType);
-            return setPreferredNetworkTypesInternal(subId);
+
+            Boolean success = (Boolean) sendRequest(
+                    CMD_SET_PREFERRED_NETWORK_TYPE, networkType, subId);
+            if (DBG) log("setPreferredNetworkType: " + (success ? "ok" : "fail"));
+            return success;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -5512,38 +5515,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean setAllowedNetworkTypes(int subId, long allowedNetworkTypes) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "setAllowedNetworkTypes");
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            SubscriptionManager.setSubscriptionProperty(subId,
-                    SubscriptionManager.ALLOWED_NETWORK_TYPES,
-                    String.valueOf(allowedNetworkTypes));
-            return setPreferredNetworkTypesInternal(subId);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
 
-    private boolean setPreferredNetworkTypesInternal(int subId) {
-        long networkTypeBitMask = RadioAccessFamily.getRafFromNetworkType(
-                Settings.Global.getInt(mApp.getContentResolver(),
-                        Settings.Global.PREFERRED_NETWORK_MODE + subId,
-                        RILConstants.PREFERRED_NETWORK_MODE));
-        long allowedNetworkTypes = SubscriptionManager.getLongSubscriptionProperty(
-                subId, SubscriptionManager.ALLOWED_NETWORK_TYPES, -1, mApp);
-        int networkMode = RadioAccessFamily.getNetworkTypeFromRaf(
-                (int) (networkTypeBitMask & allowedNetworkTypes));
+        SubscriptionManager.setSubscriptionProperty(subId,
+                SubscriptionManager.ALLOWED_NETWORK_TYPES,
+                String.valueOf(allowedNetworkTypes));
 
-        if (DBG) {
-            log("setPreferredNetworkTypesInternal: subId " + subId
-                    + " networkTypes " + networkTypeBitMask
-                    + " allowedNetworkTypes " + allowedNetworkTypes
-                    + " networkMode " + networkMode);
-        }
-
-        Boolean success = (Boolean) sendRequest(
-                CMD_SET_PREFERRED_NETWORK_TYPE, networkMode, subId);
-        if (DBG) log("setPreferredNetworkTypesInternal: " + (success ? "ok" : "fail"));
-        return success;
+        int preferredNetworkMode = Settings.Global.getInt(mApp.getContentResolver(),
+                Settings.Global.PREFERRED_NETWORK_MODE + subId,
+                RILConstants.PREFERRED_NETWORK_MODE);
+        return setPreferredNetworkType(subId, preferredNetworkMode);
     }
 
     /**
