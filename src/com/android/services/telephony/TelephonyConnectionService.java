@@ -580,9 +580,11 @@ public class TelephonyConnectionService extends ConnectionService {
         }
 
         TelephonyConnection connection = (TelephonyConnection)conn;
+
         ImsConference conference = new ImsConference(TelecomAccountRegistry.getInstance(this),
                 mTelephonyConnectionServiceProxy, connection,
-                phoneAccountHandle, () -> true);
+                phoneAccountHandle, () -> true,
+                ImsConferenceController.getCarrierConfig(connection.getPhone()));
         mImsConferenceController.addConference(conference);
         conference.setVideoState(connection,
                 connection.getVideoState());
