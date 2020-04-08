@@ -274,6 +274,7 @@ public class TelephonyRcsService {
         synchronized (mLock) {
             for (int i = 0; i < mNumSlots; i++) {
                 RcsFeatureController f = mFeatureControllers.get(i);
+                if (f == null) continue;
                 pw.increaseIndent();
                 f.dump(fd, printWriter, args);
                 pw.decreaseIndent();

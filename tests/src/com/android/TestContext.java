@@ -20,6 +20,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doReturn;
 
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -29,6 +30,7 @@ import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.ims.ImsManager;
 import android.test.mock.MockContext;
 
 import org.mockito.Mock;
@@ -42,6 +44,7 @@ public class TestContext extends MockContext {
     @Mock TelecomManager mMockTelecomManager;
     @Mock TelephonyManager mMockTelephonyManager;
     @Mock SubscriptionManager mMockSubscriptionManager;
+    @Mock ImsManager mMockImsManager;
 
     private PersistableBundle mCarrierConfig = new PersistableBundle();
 
@@ -94,6 +97,11 @@ public class TestContext extends MockContext {
     }
 
     @Override
+    public ContentResolver getContentResolver() {
+        return null;
+    }
+
+    @Override
     public Object getSystemService(String name) {
         switch (name) {
             case (Context.CARRIER_CONFIG_SERVICE) : {
@@ -107,6 +115,9 @@ public class TestContext extends MockContext {
             }
             case (Context.TELEPHONY_SUBSCRIPTION_SERVICE) : {
                 return mMockSubscriptionManager;
+            }
+            case(Context.TELEPHONY_IMS_SERVICE) : {
+                return mMockImsManager;
             }
         }
         return null;
