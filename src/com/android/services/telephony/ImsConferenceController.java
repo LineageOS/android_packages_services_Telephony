@@ -16,12 +16,16 @@
 
 package com.android.services.telephony;
 
+import android.content.Context;
+import android.os.PersistableBundle;
 import android.telecom.Conference;
 import android.telecom.Conferenceable;
 import android.telecom.Connection;
 import android.telecom.ConnectionService;
 import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
+import android.telephony.CarrierConfigManager;
+
 import com.android.telephony.Rlog;
 
 import com.android.internal.telephony.Phone;
@@ -403,6 +407,7 @@ public class ImsConferenceController {
         PhoneAccountHandle phoneAccountHandle = null;
 
         // Attempt to determine the phone account associated with the conference host connection.
+        ImsConference.CarrierConfiguration carrierConfig = null;
         if (connection.getPhone() != null &&
                 connection.getPhone().getPhoneType() == PhoneConstants.PHONE_TYPE_IMS) {
             Phone imsPhone = connection.getPhone();
@@ -410,10 +415,11 @@ public class ImsConferenceController {
             // base GSM or CDMA phone, not on the ImsPhone itself).
             phoneAccountHandle =
                     PhoneUtils.makePstnPhoneAccountHandle(imsPhone.getDefaultPhone());
+            carrierConfig = getCarrierConfig(imsPhone);
         }
 
         ImsConference conference = new ImsConference(mTelecomAccountRegistry, mConnectionService,
-                conferenceHostConnection, phoneAccountHandle, mFeatureFlagProxy);
+                conferenceHostConnection, phoneAccountHandle, mFeatureFlagProxy, carrierConfig);
         conference.setState(conferenceHostConnection.getState());
         conference.addTelephonyConferenceListener(mConferenceListener);
         conference.updateConferenceParticipantsAfterCreation();
@@ -432,5 +438,34 @@ public class ImsConferenceController {
         // If one of the participants failed to join the conference, recalculate will set the
         // conferenceable connections for the conference to show merge calls option.
         recalculateConferenceable();
+    }
+
+    public static ImsConference.CarrierConfiguration getCarrierConfig(Phone phone) {
+        ImsConference.CarrierConfiguration.Builder config =
+                new ImsConference.CarrierConfiguration.Builder();
+        if (phone == null) {
+            return config.build();
+        }
+
+        CarrierConfigManager cfgManager = (CarrierConfigManager)
+                phone.getContext().getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (cfgManager != null) {
+            PersistableBundle bundle = cfgManager.getConfigForSubId(phone.getSubId());
+            boolean isMaximumConferenceSizeEnforced = bundle.getBoolean(
+                    CarrierConfigManager.KEY_IS_IMS_CONFERENCE_SIZE_ENFORCED_BOOL);
+            int maximumConferenceSize = bundle.getInt(
+                    CarrierConfigManager.KEY_IMS_CONFERENCE_SIZE_LIMIT_INT);
+            boolean isHoldAllowed = bundle.getBoolean(
+                    CarrierConfigManager.KEY_ALLOW_HOLD_IN_IMS_CALL_BOOL);
+            boolean shouldLocalDisconnectOnEmptyConference = bundle.getBoolean(
+                    CarrierConfigManager.KEY_LOCAL_DISCONNECT_EMPTY_IMS_CONFERENCE_BOOL);
+
+            config.setIsMaximumConferenceSizeEnforced(isMaximumConferenceSizeEnforced)
+                    .setMaximumConferenceSize(maximumConferenceSize)
+                    .setIsHoldAllowed(isHoldAllowed)
+                    .setShouldLocalDisconnectEmptyConference(
+                            shouldLocalDisconnectOnEmptyConference);
+        }
+        return config.build();
     }
 }
