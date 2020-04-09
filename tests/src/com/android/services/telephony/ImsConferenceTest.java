@@ -82,7 +82,7 @@ public class ImsConferenceTest {
                 "A",
                 Uri.parse("sip:6505551212@testims.com"),
                 Connection.STATE_ACTIVE,
-                Call.Details.DIRECTION_INCOMING);
+                Call.Details.DIRECTION_OUTGOING);
         ConferenceParticipant participant2 = new ConferenceParticipant(
                 Uri.parse("tel:6505551213"),
                 "A",
@@ -100,6 +100,8 @@ public class ImsConferenceTest {
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1));
         assertEquals(0, imsConference.getNumberOfParticipants());
+        // Ensure the call direction is set correctly during emulation
+        assertEquals(Call.Details.DIRECTION_OUTGOING, imsConference.getCallDirection());
         reset(mMockTelephonyConnectionServiceProxy);
 
         // Back to 2!
