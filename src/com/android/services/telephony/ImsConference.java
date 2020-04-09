@@ -1150,6 +1150,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
             setConnectionStartElapsedRealtimeMillis(
                     entry.getConnectionStartElapsedRealtimeMillis());
             setConnectionTime(entry.getConnectTimeMillis());
+            setCallDirection(entry.getCallDirection());
             mLoneParticipantIdentity = new Pair<>(entry.getUserEntity(), entry.getEndpoint());
 
             // Remove the participant from Telecom.  It'll get picked up in a future CEP update
