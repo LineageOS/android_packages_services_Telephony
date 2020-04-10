@@ -772,11 +772,6 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private boolean mIsCdmaVoicePrivacyEnabled;
 
     /**
-     * Indicates whether this call is an outgoing call.
-     */
-    protected final boolean mIsOutgoing;
-
-    /**
      * Indicates whether the connection can be held. This filed combined with the state of the
      * connection can determine whether {@link Connection#CAPABILITY_HOLD} should be added to the
      * connection.
@@ -810,8 +805,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             new ConcurrentHashMap<TelephonyConnectionListener, Boolean>(8, 0.9f, 1));
 
     protected TelephonyConnection(com.android.internal.telephony.Connection originalConnection,
-            String callId, boolean isOutgoingCall) {
-        mIsOutgoing = isOutgoingCall;
+            String callId, @android.telecom.Call.Details.CallDirection int callDirection) {
+        setCallDirection(callDirection);
         setTelecomCallId(callId);
         if (originalConnection != null) {
             setOriginalConnection(originalConnection);
@@ -2434,8 +2429,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     /**
      * @return {@code true} if this is an outgoing call, {@code false} otherwise.
      */
-    boolean isOutgoingCall() {
-        return mIsOutgoing;
+    public boolean isOutgoingCall() {
+        return getCallDirection() == android.telecom.Call.Details.DIRECTION_OUTGOING;
     }
 
     /**
