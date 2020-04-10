@@ -79,7 +79,7 @@ public class TestTelephonyConnection extends TelephonyConnection {
     }
 
     public TestTelephonyConnection() {
-        super(null, null, false);
+        super(null, null, android.telecom.Call.Details.DIRECTION_INCOMING);
         MockitoAnnotations.initMocks(this);
 
         mMockPhone = mock(Phone.class);
