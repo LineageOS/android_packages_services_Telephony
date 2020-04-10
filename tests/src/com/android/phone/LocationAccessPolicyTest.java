@@ -146,6 +146,9 @@ public class LocationAccessPolicyTest {
         }
     }
 
+    private static final int TESTING_UID = 10001;
+    private static final int TESTING_PID = 8009;
+
     @Mock Context mContext;
     @Mock AppOpsManager mAppOpsManager;
     @Mock LocationManager mLocationManager;
@@ -194,15 +197,18 @@ public class LocationAccessPolicyTest {
                 anyInt(), anyString()))
                 .thenReturn(s.coarseAppOp);
 
+        // set this permission to denied by default, and only allow for the proper pid/uid
+        // combination
+        when(mContext.checkPermission(eq(Manifest.permission.INTERACT_ACROSS_USERS_FULL),
+                anyInt(), anyInt())).thenReturn(PackageManager.PERMISSION_DENIED);
         if (s.isDynamicLocationEnabled) {
             when(mLocationManager.isLocationEnabledForUser(any(UserHandle.class))).thenReturn(true);
             when(mContext.checkPermission(eq(Manifest.permission.INTERACT_ACROSS_USERS_FULL),
-                    anyInt(), anyInt())).thenReturn(PackageManager.PERMISSION_GRANTED);
+                    eq(TESTING_PID), eq(TESTING_UID)))
+                    .thenReturn(PackageManager.PERMISSION_GRANTED);
         } else {
             when(mLocationManager.isLocationEnabledForUser(any(UserHandle.class)))
                     .thenReturn(false);
-            when(mContext.checkPermission(eq(Manifest.permission.INTERACT_ACROSS_USERS_FULL),
-                    anyInt(), anyInt())).thenReturn(PackageManager.PERMISSION_DENIED);
         }
 
         ApplicationInfo fakeAppInfo = new ApplicationInfo();
@@ -220,8 +226,8 @@ public class LocationAccessPolicyTest {
         return new LocationAccessPolicy.LocationPermissionQuery.Builder()
                 .setMethod("test")
                 .setCallingPackage("com.android.test")
-                .setCallingPid(10001)
-                .setCallingUid(10001);
+                .setCallingPid(TESTING_PID)
+                .setCallingUid(TESTING_UID);
     }
 
     @Parameterized.Parameters(name = "{0}")
