@@ -421,6 +421,7 @@ public class ImsConferenceController {
         ImsConference conference = new ImsConference(mTelecomAccountRegistry, mConnectionService,
                 conferenceHostConnection, phoneAccountHandle, mFeatureFlagProxy, carrierConfig);
         conference.setState(conferenceHostConnection.getState());
+        conference.setCallDirection(conferenceHostConnection.getCallDirection());
         conference.addTelephonyConferenceListener(mConferenceListener);
         conference.updateConferenceParticipantsAfterCreation();
         mConnectionService.addConference(conference);
