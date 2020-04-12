@@ -1811,12 +1811,14 @@ public class TelephonyConnectionService extends ConnectionService {
             boolean isAdhocConference) {
         TelephonyConnection returnConnection = null;
         int phoneType = phone.getPhoneType();
+        int callDirection = isOutgoing ? android.telecom.Call.Details.DIRECTION_OUTGOING
+                : android.telecom.Call.Details.DIRECTION_INCOMING;
         if (phoneType == TelephonyManager.PHONE_TYPE_GSM) {
-            returnConnection = new GsmConnection(originalConnection, telecomCallId, isOutgoing);
+            returnConnection = new GsmConnection(originalConnection, telecomCallId, callDirection);
         } else if (phoneType == TelephonyManager.PHONE_TYPE_CDMA) {
             boolean allowsMute = allowsMute(phone);
             returnConnection = new CdmaConnection(originalConnection, mEmergencyTonePlayer,
-                    allowsMute, isOutgoing, telecomCallId);
+                    allowsMute, callDirection, telecomCallId);
         }
         if (returnConnection != null) {
             if (!isAdhocConference) {
