@@ -285,4 +285,9 @@
          slot. If true, telephony will always try to place the emergency call on the subscription
          associated with default data first, instead of using the default voice configuration.-->
     <bool name="config_gnss_supl_requires_default_data_for_emergency">false</bool>
+
+    <!-- Whether a device can have 5G connection in DSDS mode. It should be true by default, but
+         in some devices per modem limitation 5G network can't be connected if two or more SIMs
+         are active simultaneously. In that case, this value should be false. -->
+    <bool name="config_5g_connection_in_dsds_mode">true</bool>
 </resources>
