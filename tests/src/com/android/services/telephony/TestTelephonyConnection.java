@@ -84,7 +84,7 @@ public class TestTelephonyConnection extends TelephonyConnection {
 
         mMockPhone = mock(Phone.class);
         mMockContext = mock(Context.class);
-        mOriginalConnection = mock(Connection.class);
+        mOriginalConnection = mMockRadioConnection;
         // Set up mMockRadioConnection and mMockPhone to contain an active call
         when(mMockRadioConnection.getState()).thenReturn(Call.State.ACTIVE);
         when(mOriginalConnection.getState()).thenReturn(Call.State.ACTIVE);
