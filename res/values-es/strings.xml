@@ -293,7 +293,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"operador, esim, sim, euicc, cambiar de operador, añadir operador"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"Datos móviles"</string>
-    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Acceder a los datos con la red móvil"</string>
+    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Acceder a datos con la red móvil"</string>
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"¿Quieres desactivar los datos móviles?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Debes seleccionar una opción"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"¿Cambiar la SIM de datos?"</string>
@@ -645,7 +645,7 @@
     </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Servicio"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configuración"</string>
-    <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;No definido&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Sin establecer&gt;"</string>
     <string name="other_settings" msgid="8895088007393598447">"Otras opciones de llamada"</string>
     <string name="calling_via_template" msgid="1791323450703751750">"Llamada vía <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="7885089213135154834">"foto de contacto"</string>

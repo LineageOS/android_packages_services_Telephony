@@ -1975,7 +1975,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
      */
     public List<ConferenceParticipant> getConferenceParticipants() {
         if (mOriginalConnection == null) {
-            Log.v(this, "Null mOriginalConnection, cannot get conf participants.");
+            Log.w(this, "Null mOriginalConnection, cannot get conf participants.");
             return null;
         }
         return mOriginalConnection.getConferenceParticipants();

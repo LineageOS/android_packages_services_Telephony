@@ -168,7 +168,7 @@
     <string name="label_available" msgid="1316084116670821258">"Tilgængelige netværk"</string>
     <string name="load_networks_progress" msgid="4051433047717401683">"Søger..."</string>
     <string name="empty_networks_list" msgid="9216418268008582342">"Der blev ikke fundet nogen netværk."</string>
-    <string name="network_query_error" msgid="3862515805115145124">"Der kunne ikke findes netværk. Prøv igen."</string>
+    <string name="network_query_error" msgid="3862515805115145124">"Der blev ikke fundet netværk. Prøv igen."</string>
     <string name="register_on_network" msgid="4194770527833960423">"Registrerer på <xliff:g id="NETWORK">%s</xliff:g> ..."</string>
     <string name="not_allowed" msgid="8541221928746104798">"Dit SIM-kort tillader ikke en forbindelse til dette netværk."</string>
     <string name="connect_later" msgid="1950138106010005425">"Der kan ikke oprettes forbindelse til dette netværk lige nu. Prøv igen senere."</string>
