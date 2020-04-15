@@ -124,6 +124,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ಆಫ್"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ನಿಮ್ಮ ಫೋನ್‌ ಅನ್ನು ತಲುಪಲಾಗದಿದ್ದಾಗ ನಿಮ್ಮ ವಾಹಕ ಕರೆ ಫಾರ್ವರ್ಡ್‌ ಮಾಡುವಿಕೆ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲು ಬೆಂಬಲಿಸುವುದಿಲ್ಲ."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"ನಿಮ್ಮ ವಾಹಕವು ಕರೆ ಫಾರ್ವರ್ಡ್ ಮಾಡುವಿಕೆಯನ್ನು ಬೆಂಬಲಿಸುವುದಿಲ್ಲ."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"ಕರೆ ನಿರೀಕ್ಷೆಯನ್ನು ಆನ್ ಮಾಡಬೇಕೆ?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"ಕರೆಯ ಸಮಯದಲ್ಲಿ, ಒಳಬರುವ ಕರೆಗಳ ಕುರಿತು ನಿಮಗೆ ಸೂಚಿಸಲಾಗುತ್ತದೆ"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"ಆನ್ ಮಾಡಿ"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"ರದ್ದುಮಾಡಿ"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS ಆನ್ ಅಡಿಯಲ್ಲಿ CDMA ಕರೆ ನಿರೀಕ್ಷೆ"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS ಆಫ್ ಅಡಿಯಲ್ಲಿ CDMA ಕರೆ ನಿರೀಕ್ಷೆ"</string>
     <string name="updating_title" msgid="6130548922615719689">"ಕರೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ಕರೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಕೇವಲ ನಿರ್ವಾಹಕ ಬಳಕೆದಾರರು ಮಾತ್ರ ಬದಲಾಯಿಸಬಹುದು."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ಸೆಟ್ಟಿಂಗ್‌ಗಳು (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -142,7 +148,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"ಸರಿ"</string>
     <string name="enable" msgid="2636552299455477603">"ಆನ್‌ ಮಾಡಿ"</string>
     <string name="disable" msgid="1122698860799462116">"ಆಫ್ ಮಾಡು"</string>
-    <string name="change_num" msgid="6982164494063109334">"ಅಪ್‌ಡೇಟ್‌ ಮಾಡು"</string>
+    <string name="change_num" msgid="6982164494063109334">"ಅಪ್‌ಡೇಟ್‌ ಮಾಡಿ"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"ನೆಟ್‌ವರ್ಕ್ ಡಿಫಾಲ್ಟ್"</item>
     <item msgid="6813323051965618926">"ಸಂಖ್ಯೆಯನ್ನು ಮರೆಮಾಡು"</item>

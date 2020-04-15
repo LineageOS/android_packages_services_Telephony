@@ -124,6 +124,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Выключаны"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Ваш аператар не падтрымлівае адключэнне пераадрасацыi выклікаў, калі тэлефон недаступны."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Ваш аператар не падтрымлівае пераадрасацыю выкліку."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Уключыць чаканне выкліку?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Вы будзеце атрымліваць апавяшчэнні аб уваходных выкліках падчас бягучых размоў"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Уключыць"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Скасаваць"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Чаканне выкліку па тэхналогіі CDMA (IMS) уключана"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Чаканне выкліку па тэхналогіі CDMA (IMS) выключана"</string>
     <string name="updating_title" msgid="6130548922615719689">"Налады выклікаў"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Налады выклікаў можа мяняць толькі адміністратар."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Налады (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -308,7 +314,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Перыяд выкарыстання дадзеных"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Палітыка хуткасці перадачы дадзеных"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Дадатковая iнфармацыя"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"Выкарыстана <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>??) з максімуму перыяду <xliff:g id="USED_2">%3$s</xliff:g>\nНаступны перыяд пачнецца праз <xliff:g id="USED_3">%4$d</xliff:g> д. (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"Выкарыстана <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) з максімальнага перыяду (<xliff:g id="USED_2">%3$s</xliff:g>)\nНаступны перыяд пачнецца праз <xliff:g id="USED_3">%4$d</xliff:g> сут (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"Выкарыстана <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>??) з максімуму перыяду (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Максімум <xliff:g id="USED_0">%1$s</xliff:g> перавышаны\nХуткасць перадачы дадзеных зніжана да <xliff:g id="USED_1">%2$d</xliff:g> Кб/с"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>?? цыклу прайшло\nНаступны перыяд пачнецца праз <xliff:g id="USED_1">%2$d</xliff:g> д. (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>

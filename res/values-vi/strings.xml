@@ -124,6 +124,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Tắt"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Nhà cung cấp dịch vụ của bạn không hỗ trợ vô hiệu hóa chuyển tiếp cuộc gọi khi điện thoại của bạn không thể truy cập được."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Nhà mạng của bạn không hỗ trợ tính năng chuyển tiếp cuộc gọi."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Bật chế độ cuộc gọi chờ?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Trong suốt cuộc gọi, bạn sẽ nhận được thông báo về các cuộc gọi đến"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Bật"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Hủy"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Cuộc gọi chờ CDMA trong IMS đang bật"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Cuộc gọi chờ CDMA trong IMS đang tắt"</string>
     <string name="updating_title" msgid="6130548922615719689">"Cài đặt cuộc gọi"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Chỉ người dùng quản trị mới có thể thay đổi cài đặt cuộc gọi."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Cài đặt (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -278,7 +284,7 @@
     <string name="roaming_enable" msgid="6853685214521494819">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Tính năng Chuyển vùng dữ liệu bị tắt. Nhấn để bật."</string>
-    <string name="roaming_enabled_message" msgid="9022249120750897">"Có thể áp dụng phí chuyển vùng. Nhấn để sửa đổi."</string>
+    <string name="roaming_enabled_message" msgid="9022249120750897">"Bạn có thể bị tính phí chuyển vùng. Nhấn để sửa đổi."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Đã mất kết nối dữ liệu di động"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Chuyển vùng dữ liệu đang bật"</string>
     <string name="roaming_warning" msgid="7855681468067171971">"Bạn có thể phải trả một khoản phí lớn."</string>
@@ -308,7 +314,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Thời gian sử dụng dữ liệu"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Chính sách tốc độ dữ liệu"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Tìm hiểu thêm"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) trong tổng số <xliff:g id="USED_2">%3$s</xliff:g> thời gian tối đa\nThời gian tiếp theo bắt đầu sau <xliff:g id="USED_3">%4$d</xliff:g> ngày nữa (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>%%) trong tổng <xliff:g id="USED_2">%3$s</xliff:g> thời gian tối đa\nThời gian tiếp theo bắt đầu sau <xliff:g id="USED_3">%4$d</xliff:g> ngày nữa (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) trong tổng số <xliff:g id="USED_2">%3$s</xliff:g> thời gian tối đa"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Đã vượt quá tối đa <xliff:g id="USED_0">%1$s</xliff:g>\nTốc độ dữ liệu bị giảm xuống <xliff:g id="USED_1">%2$d</xliff:g> Kb/giây"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ của chu kỳ đã qua\nThời gian tiếp theo sẽ bắt đầu trong <xliff:g id="USED_1">%2$d</xliff:g> ngày (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
