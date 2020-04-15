@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> પર ફોરવર્ડ કરી રહ્યાં છે"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"બંધ"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"જ્યારે તમારો ફોન પહોંચયોગ્ય ન હોય ત્યારે તમારા કેરિઅર કૉલ ફોરવર્ડિંગને અક્ષમ કરવાને સમર્થન આપતા નથી."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"તમારા મોબાઇલ ઑપરેટર કૉલ ફૉર્વર્ડિંગને સપોર્ટ કરતા નથી."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"કૉલ પ્રતીક્ષા ચાલુ કરવા માગો છો?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"કૉલ દરમ્યાન, તમને ઇનકમિંગ કૉલ વિશે નોટિફિકેશન આપવામાં આવશે"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"ચાલુ કરો"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"રદ કરો"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS હેઠળ CDMA કૉલ પ્રતીક્ષા ચાલુ છે"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS હેઠળ CDMA કૉલ પ્રતીક્ષા બંધ છે"</string>
     <string name="updating_title" msgid="6130548922615719689">"કૉલ સેટિંગ્સ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"કૉલ સેટિંગ્સને ફક્ત એડમિન વપરાશકર્તા દ્વારા જ બદલી શકાય છે."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"સેટિંગ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

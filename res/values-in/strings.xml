@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Meneruskan ke <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Nonaktif"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Operator Anda tidak mendukung penonaktifan penerusan panggilan ketika ponsel tidak dapat dijangkau."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Operator Anda tidak mendukung penerusan panggilan."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Aktifkan nada tunggu?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Selama melakukan panggilan, Anda akan menerima notifikasi jika ada panggilan masuk"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Aktifkan"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Batal"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Nada tunggu CDMA dalam IMS aktif"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Nada tunggu CDMA dalam IMS nonaktif"</string>
     <string name="updating_title" msgid="6130548922615719689">"Setelan panggilan"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Setelan panggilan telepon hanya dapat diubah oleh pengguna admin."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Setelan (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -288,7 +293,7 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Fungsi SIM terbatas"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Layanan data dan panggilan <xliff:g id="CARRIER_NAME">%1$s</xliff:g> dapat diblokir saat menggunakan <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Layanan data dan panggilan <xliff:g id="CARRIER_NAME">%1$s</xliff:g> dapat diblokir saat menggunakan SIM lain."</string>
-    <string name="data_usage_title" msgid="8438592133893837464">"Penggunaan kuota aplikasi"</string>
+    <string name="data_usage_title" msgid="8438592133893837464">"Penggunaan data aplikasi"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> data seluler digunakan pada <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Lanjutan"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"Operator"</string>
