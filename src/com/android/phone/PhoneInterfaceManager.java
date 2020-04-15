@@ -8504,4 +8504,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     USER_ACTIVITY_NOTIFICATION_DELAY);
         }
     }
+
+    @Override
+    public boolean canConnectTo5GInDsdsMode() {
+        return mApp.getResources().getBoolean(R.bool.config_5g_connection_in_dsds_mode);
+    }
 }
