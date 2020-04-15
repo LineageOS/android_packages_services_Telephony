@@ -18,7 +18,6 @@ package com.android.services.telephony;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.never;
@@ -44,6 +43,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 public class ImsConferenceTest {
     @Mock
@@ -373,7 +373,37 @@ public class ImsConferenceTest {
                 Call.Details.DIRECTION_INCOMING);
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
                 Arrays.asList(participant1));
-        assertTrue(imsConference.isEmulatingSinglePartyCall());
+        assertFalse(imsConference.isMultiparty());
+    }
+
+    /**
+     * Verify that the single party emulate correctly when the conference starts with a single
+     * party as part of the initial setup.  This mimics how an ImsCall can get CEP data prior to the
+     * ImsConference being created.
+     */
+    @Test
+    @SmallTest
+    public void testSinglePartyEmulationWithSinglePartyAtCreation() {
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(any(PhoneAccountHandle.class)))
+                .thenReturn(false);
+
+        ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
+                mMockTelephonyConnectionServiceProxy, mConferenceHost,
+                null /* phoneAccountHandle */, () -> true /* featureFlagProxy */,
+                new ImsConference.CarrierConfiguration.Builder().build());
+
+        ConferenceParticipant participant1 = new ConferenceParticipant(
+                Uri.parse("tel:6505551214"),
+                "A",
+                Uri.parse("sip:6505551214@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
+        List<ConferenceParticipant> cps = Arrays.asList(participant1);
+        when(mConferenceHost.mMockRadioConnection.getConferenceParticipants())
+                .thenReturn(cps);
+        imsConference.updateConferenceParticipantsAfterCreation();
+
+        assertFalse(imsConference.isMultiparty());
     }
 
     /**
