@@ -124,6 +124,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"បិទ"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ក្រុមហ៊ុន​បញ្ជូន​របស់​អ្នក​​មិន​គាំទ្រ​ការ​បិទ​ការ​ហៅ​​បញ្ជូន​បន្ត នៅ​ពេល​ទូរស័ព្ទ​របស់​អ្នក​មិន​អាច​ហៅ​ចូល។"</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"ក្រុមហ៊ុន​សេវា​ទូរសព្ទ​របស់​អ្នក​មិន​ផ្ដល់​ជូន​ការហៅ​បន្ត​ទេ។"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"បើក​ការរង់ចាំ​ការហៅ​ទូរសព្ទ​ឬ?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"ក្នុង​ពេល​ហៅ​ទូរសព្ទ អ្នក​នឹង​ទទួល​បាន​ការជូន​ដំណឹង​អំពី​ការហៅ​ចូល"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"បើក"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"បោះបង់"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"ការរង់ចាំ​ការហៅ ទូរសព្ទ CDMA ក្រោម IMS ត្រូវ​បាន​បើក"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"ការរង់ចាំ​ការហៅ ទូរសព្ទ CDMA ក្រោម IMS ត្រូវ​បាន​បិទ"</string>
     <string name="updating_title" msgid="6130548922615719689">"កំណត់​ការ​ហៅ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ការកំណត់ការហៅអាចផ្លាស់ប្តូរបានដោយអ្នកប្រើដែលមានសិទ្ធិគ្រប់គ្រងតែប៉ុណ្ណោះ។"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ការកំណត់ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

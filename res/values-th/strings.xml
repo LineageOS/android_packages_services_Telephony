@@ -124,6 +124,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ปิด"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ผู้ให้บริการของคุณไม่สนับสนุนการปิดใช้งานการโอนสายเมื่อติดต่อไม่ได้"</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"ผู้ให้บริการของคุณไม่รองรับการโอนสาย"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"เปิดใช้สายเรียกซ้อนไหม"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"ระบบจะแจ้งเตือนหากมีสายเรียกเข้าซ้อนระหว่างการโทร"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"เปิด"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"ยกเลิก"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"เปิดใช้สายเรียกซ้อนระบบ CDMA ภายใต้ IMS"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"ปิดใช้สายเรียกซ้อนระบบ CDMA ภายใต้ IMS"</string>
     <string name="updating_title" msgid="6130548922615719689">"การตั้งค่าการโทร"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ผู้ใช้ระดับผู้ดูแลระบบเท่านั้นที่สามารถเปลี่ยนแปลงการตั้งค่าการโทรได้"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"การตั้งค่า (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -308,7 +314,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"ช่วงเวลาการใช้ข้อมูล"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"นโยบายอัตราการส่งข้อมูล"</string>
     <string name="throttle_help" msgid="2624535757028809735">"ดูข้อมูลเพิ่มเติม"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) จากช่วงสูงสุด <xliff:g id="USED_2">%3$s</xliff:g> \nช่วงถัดไปจะเริ่มในอีก <xliff:g id="USED_3">%4$d</xliff:g> วัน (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) จากช่วงสูงสุด <xliff:g id="USED_2">%3$s</xliff:g>\nช่วงถัดไปจะเริ่มในอีก <xliff:g id="USED_3">%4$d</xliff:g> วัน (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) จากช่วงสูงสุด <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g>เกินจำนวนสูงสุด\nอัตราการส่งข้อมูลถูกลดเหลือ<xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ ของรอบผ่านไป \n ช่วงถัดไปจะเริ่มในอีก <xliff:g id="USED_1">%2$d</xliff:g> วัน (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -519,7 +525,7 @@
     <string name="card_title_in_call" msgid="8231896539567594265">"กำลังใช้สาย"</string>
     <string name="notification_voicemail_title" msgid="3932876181831601351">"ข้อความเสียงใหม่"</string>
     <string name="notification_voicemail_title_count" msgid="2806950319222327082">"ข้อความเสียงใหม่ (<xliff:g id="COUNT">%d</xliff:g>)"</string>
-    <string name="notification_voicemail_text_format" msgid="5720947141702312537">"หมุนหมายเลข <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
+    <string name="notification_voicemail_text_format" msgid="5720947141702312537">"โทร <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"ไม่ทราบหมายเลขข้อความเสียง"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"ไม่มีบริการ"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"เครือข่ายที่เลือกไว้<xliff:g id="OPERATOR_NAME">%s</xliff:g> ไม่พร้อมใช้งาน"</string>
