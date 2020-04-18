@@ -643,13 +643,22 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
         // Unregister IMS callback
         ImsMmTelManager imsMmtelManager = getImsMmTelManager(subId);
         if (imsMmtelManager != null) {
-            imsMmtelManager.unregisterImsRegistrationCallback(mImsRegistrationCallback);
-            imsMmtelManager.unregisterMmTelCapabilityCallback(mCapabilityCallback);
+            try {
+                imsMmtelManager.unregisterImsRegistrationCallback(mImsRegistrationCallback);
+                imsMmtelManager.unregisterMmTelCapabilityCallback(mCapabilityCallback);
+            } catch (RuntimeException e) {
+                logw("unregister IMS callback error: " + e.getMessage());
+            }
         }
+
         // Unregister provision changed callback
         ProvisioningManager provisioningManager =
                 ProvisioningManager.createForSubscriptionId(subId);
-        provisioningManager.unregisterProvisioningChangedCallback(mProvisioningChangedCallback);
+        try {
+            provisioningManager.unregisterProvisioningChangedCallback(mProvisioningChangedCallback);
+        } catch (RuntimeException e) {
+            logw("unregister provisioning callback error: " + e.getMessage());
+        }
 
         // Remove all publish state callbacks
         clearPublishStateCallbacks();
@@ -718,10 +727,17 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
             if (mSubId <= SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
                 return;
             }
+
             ImsMmTelManager ims = getImsMmTelManager(mSubId);
-            boolean isEnabled = ims.isVtSettingEnabled();
-            logi("SimInfo changed: VT setting=" + isEnabled);
-            mPresencePublication.onVtEnabled(isEnabled);
+            if (ims == null) return;
+
+            try {
+                boolean isEnabled = ims.isVtSettingEnabled();
+                logi("SimInfo changed: VT setting=" + isEnabled);
+                mPresencePublication.onVtEnabled(isEnabled);
+            } catch (RuntimeException e) {
+                logw("SimInfo changed error: " + e);
+            }
         }
     };
 
@@ -790,6 +806,7 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
                     Context.TELEPHONY_IMS_SERVICE);
             return (imsManager == null) ? null : imsManager.getImsMmTelManager(subId);
         } catch (IllegalArgumentException e) {
+            logw("getImsMmTelManager error: " + e.getMessage());
             return null;
         }
     }
