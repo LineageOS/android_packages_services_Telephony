@@ -32,6 +32,7 @@ import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.PersistableBundle;
 import android.os.UserHandle;
@@ -57,6 +58,7 @@ import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
 
 import com.android.ims.ImsManager;
+import com.android.internal.telephony.ExponentialBackoff;
 import com.android.internal.telephony.LocaleTracker;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
@@ -84,6 +86,26 @@ public class TelecomAccountRegistry {
     // is not supported, i.e. SubscriptionManager.INVALID_SLOT_ID or the 5th SIM in a phone.
     private final static int DEFAULT_SIM_ICON =  R.drawable.ic_multi_sim;
     private final static String GROUP_PREFIX = "group_";
+
+    private static final int REGISTER_START_DELAY_MS = 1 * 1000; // 1 second
+    private static final int REGISTER_MAXIMUM_DELAY_MS = 60 * 1000; // 1 minute
+
+    /**
+     * Indicates the {@link SubscriptionManager.OnSubscriptionsChangedListener} has not yet been
+     * registered.
+     */
+    private static final int LISTENER_STATE_UNREGISTERED = 0;
+
+    /**
+     * Indicates the first {@link SubscriptionManager.OnSubscriptionsChangedListener} registration
+     * attempt failed and we are performing backoff registration.
+     */
+    private static final int LISTENER_STATE_PERFORMING_BACKOFF = 2;
+
+    /**
+     * Indicates the {@link SubscriptionManager.OnSubscriptionsChangedListener} has been registered.
+     */
+    private static final int LISTENER_STATE_REGISTERED = 3;
 
     final class AccountEntry implements PstnPhoneCapabilitiesNotifier.Listener {
         private final Phone mPhone;
@@ -952,10 +974,38 @@ public class TelecomAccountRegistry {
             new OnSubscriptionsChangedListener() {
         @Override
         public void onSubscriptionsChanged() {
-            // Any time the SubscriptionInfo changes...rerun the setup
-            Log.i(this, "onSubscriptionsChanged - update accounts");
+            if (mSubscriptionListenerState != LISTENER_STATE_REGISTERED) {
+                mRegisterSubscriptionListenerBackoff.stop();
+                mHandlerThread.quitSafely();
+            }
+            mSubscriptionListenerState = LISTENER_STATE_REGISTERED;
+
+            // Any time the SubscriptionInfo changes rerun the setup
+            Log.i(this, "TelecomAccountRegistry: onSubscriptionsChanged - update accounts");
             tearDownAccounts();
             setupAccounts();
+        }
+
+        @Override
+        public void onAddListenerFailed() {
+            // Woe!  Failed to add the listener!
+            Log.w(this, "TelecomAccountRegistry: onAddListenerFailed - failed to register "
+                    + "OnSubscriptionsChangedListener");
+
+            // Even though registering the listener failed, we will still try to setup the phone
+            // accounts now; the phone instances should already be present and ready, so even if
+            // telephony registry is poking along we can still try to setup the phone account.
+            tearDownAccounts();
+            setupAccounts();
+
+            if (mSubscriptionListenerState == LISTENER_STATE_UNREGISTERED) {
+                // Initial registration attempt failed; start exponential backoff.
+                mSubscriptionListenerState = LISTENER_STATE_PERFORMING_BACKOFF;
+                mRegisterSubscriptionListenerBackoff.start();
+            } else {
+                // We're already doing exponential backoff and a registration failed.
+                mRegisterSubscriptionListenerBackoff.notifyFailed();
+            }
         }
     };
 
@@ -963,7 +1013,7 @@ public class TelecomAccountRegistry {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (Intent.ACTION_USER_SWITCHED.equals(intent.getAction())) {
-                Log.i(this, "User changed, re-registering phone accounts.");
+                Log.i(this, "TelecomAccountRegistry: User changed, re-registering phone accounts.");
 
                 int userHandleId = intent.getIntExtra(Intent.EXTRA_USER_HANDLE, 0);
                 UserHandle currentUserHandle = UserHandle.of(userHandleId);
@@ -1027,13 +1077,28 @@ public class TelecomAccountRegistry {
     private final SubscriptionManager mSubscriptionManager;
     private List<AccountEntry> mAccounts = new LinkedList<AccountEntry>();
     private final Object mAccountsLock = new Object();
+    private int mSubscriptionListenerState = LISTENER_STATE_UNREGISTERED;
     private int mServiceState = ServiceState.STATE_POWER_OFF;
     private int mActiveDataSubscriptionId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     private boolean mIsPrimaryUser = true;
+    private ExponentialBackoff mRegisterSubscriptionListenerBackoff;
+    private final HandlerThread mHandlerThread = new HandlerThread("TelecomAccountRegistry");
 
     // TODO: Remove back-pointer from app singleton to Service, since this is not a preferred
     // pattern; redesign. This was added to fix a late release bug.
     private TelephonyConnectionService mTelephonyConnectionService;
+
+    // Used to register subscription changed listener when initial attempts fail.
+    private Runnable mRegisterOnSubscriptionsChangedListenerRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (mSubscriptionListenerState != LISTENER_STATE_REGISTERED) {
+                Log.i(this, "TelecomAccountRegistry: performing delayed register.");
+                SubscriptionManager.from(mContext).addOnSubscriptionsChangedListener(
+                        mOnSubscriptionsChangedListener);
+            }
+        }
+    };
 
     TelecomAccountRegistry(Context context) {
         mContext = context;
@@ -1041,6 +1106,13 @@ public class TelecomAccountRegistry {
         mImsManager = context.getSystemService(android.telephony.ims.ImsManager.class);
         mTelephonyManager = TelephonyManager.from(context);
         mSubscriptionManager = SubscriptionManager.from(context);
+        mHandlerThread.start();
+        mRegisterSubscriptionListenerBackoff = new ExponentialBackoff(
+                REGISTER_START_DELAY_MS,
+                REGISTER_MAXIMUM_DELAY_MS,
+                2, /* multiplier */
+                mHandlerThread.getLooper(),
+                mRegisterOnSubscriptionsChangedListenerRunnable);
     }
 
     /**
@@ -1256,6 +1328,7 @@ public class TelecomAccountRegistry {
 
         // Register for SubscriptionInfo list changes which is guaranteed
         // to invoke onSubscriptionsChanged the first time.
+        Log.i(this, "TelecomAccountRegistry: setupOnBoot - register subscription listener");
         SubscriptionManager.from(mContext).addOnSubscriptionsChangedListener(
                 mOnSubscriptionsChangedListener);
 
