@@ -97,7 +97,7 @@ final class CdmaConferenceController {
             return;
         }
 
-        if (!mCdmaConnections.isEmpty() && connection.isOutgoing()) {
+        if (!mCdmaConnections.isEmpty() && connection.isOutgoingCall()) {
             // There already exists a connection, so this will probably result in a conference once
             // it is added. For outgoing connections which are added while another connection
             // exists, we mark them as "dialing" for a set amount of time to give the user time to
@@ -183,7 +183,7 @@ final class CdmaConferenceController {
                 isNewlyCreated = true;
             }
 
-            if (newConnection.isOutgoing()) {
+            if (newConnection.isOutgoingCall()) {
                 // Only an outgoing call can be merged with an ongoing call.
                 mConference.updateCapabilities(Connection.CAPABILITY_MERGE_CONFERENCE);
             } else {
