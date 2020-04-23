@@ -1724,7 +1724,8 @@ public class TelephonyConnectionService extends ConnectionService {
         if (originalConnection == null) {
             int telephonyDisconnectCause = android.telephony.DisconnectCause.OUTGOING_FAILURE;
             // On GSM phones, null connection means that we dialed an MMI code
-            if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_GSM) {
+            if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_GSM ||
+                phone.isUtEnabled()) {
                 Log.d(this, "dialed MMI code");
                 int subId = phone.getSubId();
                 Log.d(this, "subId: "+subId);
