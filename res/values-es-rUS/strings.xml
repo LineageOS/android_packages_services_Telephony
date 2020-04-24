@@ -100,7 +100,7 @@
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Desvío de llamadas"</string>
-    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Configuración de desvío de llamada (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Configuración de desvío de llamadas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"Desvío de llamadas"</string>
     <string name="labelCFU" msgid="8870170873036279706">"Desviar siempre"</string>
     <string name="messageCFU" msgid="1361806450979589744">"Usar siempre este número"</string>
@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Reenviar a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Desactivado"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando no se puede acceder a tu teléfono."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Tu proveedor no admite el desvío de llamadas."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"¿Quieres activar la función de llamada en espera?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Durante una llamada, recibirás notificaciones de llamadas entrantes"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Activar"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Cancelar"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"La función de llamada en espera de CDMA en IMS está activada"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"La función de llamada en espera de CDMA en IMS está desactivada"</string>
     <string name="updating_title" msgid="6130548922615719689">"Config. de llamada"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Solo el usuario administrador puede cambiar la configuración de llamadas."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Configuración (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

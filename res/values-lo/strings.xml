@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"ໂອນສາຍໄປໃຫ້ <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ປິດ"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ຜູ່ໃຫ້ບໍລິການຂອງທ່ານ ບໍ່ຮອງຮັບການປິດການໂອນສາຍ ເມື່ອໂທລະສັບຂອງທ່ານບໍ່ມີສັນຍານ."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"ຜູ້ໃຫ້ບໍລິການຂອງທ່ານບໍ່ຮອງຮັບການໂອນສາຍ."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"ເປີດການລໍຖ້າສາຍບໍ?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"ໃນລະຫວ່າງການໂທ, ທ່ານຈະໄດ້ຮັບແຈ້ງກ່ຽວກັບສາຍໂທເຂົ້າ"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"ເປີດ"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"ຍົກເລີກ"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"ການລໍຖ້າສາຍ CDMA ພາຍໃຕ້ IMS ເປີດຢູ່"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"ການລໍຖ້າສາຍ CDMA ພາຍໃຕ້ IMS ປິດຢູ່"</string>
     <string name="updating_title" msgid="6130548922615719689">"ການຕັ້ງຄ່າການໂທ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ມີ​ແຕ່​ຜູ້​ໃຊ້​ທີ່​ເປັນ​ຜູ້ດູແລລະບົບ​ເທົ່າ​ນັ້ນ​ທີ່​ສາ​ມາດ​ປ່ຽນການ​ຕັ້ງ​ຄ່າ​ການ​ໂທ​ໄດ້."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ການ​ຕັ້ງ​ຄ່າ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

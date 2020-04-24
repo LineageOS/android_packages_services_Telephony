@@ -123,7 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Doorschakelen naar <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Uit"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Je provider biedt geen ondersteuning voor het uitschakelen van oproepdoorschakelingen wanneer je telefoon niet bereikbaar is."</string>
-    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Je provider ondersteunt gespreksdoorschakeling niet."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Je provider ondersteunt het doorschakelen van gesprekken niet."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Wisselgesprek inschakelen?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Tijdens een gesprek krijg je een melding over inkomende gesprekken"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Inschakelen"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Annuleren"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"CDMA-wisselgesprek onder IMS aan"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA-wisselgesprek onder IMS uit"</string>
     <string name="updating_title" msgid="6130548922615719689">"Gespreksinstellingen"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Oproepinstellingen kunnen alleen worden gewijzigd door de beheerder."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Instellingen (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

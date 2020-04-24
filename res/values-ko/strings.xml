@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g>(으)로 착신전환"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"사용 안함"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"이동통신사에서 전화를 받을 수 없을 때 착신전환 사용 중지를 지원하지 않습니다."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"사용 중인 이동통신사에서는 착신전환 기능을 지원하지 않습니다."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"통화중 대기를 사용 설정하시겠습니까?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"통화 중 다른 전화가 걸려 오면 알림을 받습니다."</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"사용 설정"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"취소"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS에서 CDMA 통화중 대기 사용"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS에서 CDMA 통화중 대기 사용 안함"</string>
     <string name="updating_title" msgid="6130548922615719689">"통화 설정"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"관리자만 통화 설정을 변경할 수 있습니다."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"설정(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

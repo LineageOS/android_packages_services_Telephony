@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> raqamiga yo‘naltiriladi"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Yoqilmagan"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Telefoningiz o‘chiq bo‘lganida qo‘ng‘iroqlarni boshqa raqamga yo‘naltirishni o‘chirish xususiyati tarmoq operatoringizda yo‘q."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Operatoringiz tarmog‘i orqali chaqiruvlarni uzatib bo‘lmaydi"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Chaqiruvdagi kutish rejimi yoqilsinmi?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Suhbat paytida boshqa kiruvchi chaqiruvlar haqida sizga bildirishnoma keladi"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Yoqish"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Bekor qilish"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS asosidagi CDMA chaqiruvlari uchun kutish rejimi yoqildi"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS asosidagi CDMA chaqiruvlari uchun kutish rejimi faolsizlantirildi"</string>
     <string name="updating_title" msgid="6130548922615719689">"Chaqiruv sozlamalari"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Faqat administrator qo‘ng‘iroq sozlamalarini o‘zgartirishi mumkin."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Sozlamalar (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -309,7 +314,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Ma‘lumotdan foydalanish muddati"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Ma‘lumotlar uzatish tezligi siyosati"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Batafsil"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"Maksimal daraja muddati <xliff:g id="USED_2">%3$s</xliff:g>dan <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) \nKeyingi muddat <xliff:g id="USED_3">%4$d</xliff:g> kunda (<xliff:g id="USED_4">%5$s</xliff:g>) boshlanadi."</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>%%) / <xliff:g id="USED_2">%3$s</xliff:g> (maksimum)\nKeyingi davr <xliff:g id="USED_3">%4$d</xliff:g> kun ichida boshlanadi (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"Maksimal daraja muddati <xliff:g id="USED_2">%3$s</xliff:g>dan <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> maksimal darajadan oshib ketdi\nTrafik tezligi <xliff:g id="USED_1">%2$d</xliff:g> Kb/s’ga pasaydi"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ o‘tgan bosqichdan\nKeyingi bosqich <xliff:g id="USED_1">%2$d</xliff:g> kunda boshlanadi (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>

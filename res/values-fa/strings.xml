@@ -124,6 +124,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"خاموش"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"شرکت مخابراتی شما از غیرفعال کردن هدایت تماس هنگامی که تلفن شما در دسترس نیست پشتیبانی نمی‌کند."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"شرکت مخابراتی شما از هدایت تماس پشتیبانی نمی‌کند."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"«انتظار مکالمه» روشن شود؟"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"درحین تماس، از تماس‌های ورودی مطلع خواهید شد"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"روشن کردن"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"لغو"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"‏«انتظار مکالمه CDMA» تحت IMS روشن است"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"‏«انتظار مکالمه CDMA» تحت IMS خاموش است"</string>
     <string name="updating_title" msgid="6130548922615719689">"تنظیمات تماس"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"فقط کاربر سرپرست می‌تواند تنظیمات تماس را تغییر دهد."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"تنظیمات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

@@ -72,7 +72,7 @@
     <string name="empty_alert" msgid="3693655518612836718">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> behar da eta ezin da hutsik utzi."</string>
     <string name="not_a_valid_port" msgid="3664668836663491376">"Ataka-zenbakiak 1000 eta 65534 artean egon behar luke."</string>
     <string name="no_internet_available" msgid="161720645084325479">"SIP deiak egiteko, egiaztatu Internetera konektatuta zaudela."</string>
-    <string name="no_wifi_available" msgid="1179092018692306312">"Wi-Fi sare batera konektatuta egon behar zara SIP deiak egiteko (erabili hari gabekoen eta sareen ezarpenak)."</string>
+    <string name="no_wifi_available" msgid="1179092018692306312">"Wifi-sare batera konektatuta egon behar zara SIP deiak egiteko (erabili hari gabekoen eta sareen ezarpenak)."</string>
     <string name="no_voip" msgid="3366395789297981738">"SIP deiak ez dira onartzen"</string>
     <string name="sip_system_decide" msgid="197230378376326430">"Automatikoa"</string>
     <string name="sip_always_send_keepalive" msgid="4986533673960084769">"Bidali beti"</string>

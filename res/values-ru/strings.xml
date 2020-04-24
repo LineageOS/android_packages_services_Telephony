@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Переадресация на номер <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Отключено"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Ваш оператор не позволяет отключать переадресацию вызовов, если телефон находится вне зоны доступа."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Ваш оператор не поддерживает переадресацию вызовов."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Включить ожидание вызова?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Во время телефонного разговора вы будете получать уведомления о входящих вызовах"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Включить"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Отмена"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Ожидание вызова CDMA, если сервис IMS включен"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Ожидание вызова CDMA, если сервис IMS выключен"</string>
     <string name="updating_title" msgid="6130548922615719689">"Настройки вызовов"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Настройки вызовов может изменить только основной пользователь"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Настройки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -312,9 +317,7 @@
     <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) из <xliff:g id="USED_2">%3$s</xliff:g> (максимум)\nСледующий период начнется в течение <xliff:g id="USED_3">%4$d</xliff:g> дн. (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) из <xliff:g id="USED_2">%3$s</xliff:g> (максимум)"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Превышен лимит в <xliff:g id="USED_0">%1$s</xliff:g>.\nСкорость передачи данных снижена до <xliff:g id="USED_1">%2$d</xliff:g> кбит/с."</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (6462089615392402127) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"Пройдено: <xliff:g id="USED_0">%1$d</xliff:g>٪ цикла.\nСледующий период начнется через <xliff:g id="USED_1">%2$d</xliff:g> дн. (<xliff:g id="USED_2">%3$s</xliff:g>)."</string>
     <string name="throttle_rate_subtext" msgid="7221971817325779535">"Превышение лимита снижает скорость передачи данных до <xliff:g id="USED">%1$d</xliff:g> кбит/с"</string>
     <string name="throttle_help_subtext" msgid="2817114897095534807">"Подробнее о политике передачи данных вашего оператора мобильной связи..."</string>
     <string name="cell_broadcast_sms" msgid="4053449797289031063">"Широковещательные SMS-службы"</string>

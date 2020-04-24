@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Se redirecționează la <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Dezactivat"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Operatorul dvs. nu acceptă ca redirecționarea apelurilor să fie dezactivată atunci când telefonul nu este accesibil."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Operatorul dvs. nu acceptă redirecționarea apelurilor."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Activați apelurile în așteptare?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"În timpul unui apel, veți primi o notificare despre apelurile primite"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Activați"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Anulați"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Apelurile în așteptare CDMA din IMS sunt activate"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Apelurile în așteptare CDMA din IMS sunt dezactivate"</string>
     <string name="updating_title" msgid="6130548922615719689">"Setări pentru apeluri"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Numai administratorul poate să modifice setările pentru apeluri."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Setări (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

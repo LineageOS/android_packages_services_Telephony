@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Pāradresēšana uz: <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Izslēgts"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Jūsu mobilo sakaru operators neatbalsta zvanu pāradresācijas atspējošanu, ja tālrunis nav sasniedzams."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Jūsu mobilo sakaru operators neatbalsta zvanu pāradresāciju."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Vai ieslēgt zvanu gaidīšanu?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Zvana laikā saņemsiet paziņojumu par ienākošajiem zvaniem"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Ieslēgt"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Atcelt"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"CDMA zvanu gaidīšana, kad ir ieslēgts tūlītējās ziņojumapmaiņas pakalpojums"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA zvanu gaidīšana, kad ir izslēgts tūlītējās ziņojumapmaiņas pakalpojums"</string>
     <string name="updating_title" msgid="6130548922615719689">"Zvanu iestatījumi"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Tikai lietotājs ar administratora tiesībām var mainīt zvanu iestatījumus."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Iestatījumi (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
