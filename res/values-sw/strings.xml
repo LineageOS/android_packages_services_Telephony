@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Inasambaza kwa <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Imezimwa"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Mtoa huduma wako haauni ulemezaji wa kusambaza simu wakati simu yako haifikiwi."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Kampuni inayokupa huduma za simu haina huduma ya kusambaza simu."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Ungependa kuwasha kipengele cha simu inayosubiri kupokewa?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Simu inapoendelea, utaarifiwa kuhusu simu unazopigiwa"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Washa"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Ghairi"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Kipengele cha Simu Inayosubiri Kupokewa ya CDMA chini ya IMS Kimewashwa"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Kipengele cha Simu Inayosubiri Kupokewa ya CDMA chini ya IMS Kimezimwa"</string>
     <string name="updating_title" msgid="6130548922615719689">"Mipangilio ya simu"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Mipangilio ya simu inaweza kubadilishwa na mtumiaji wa akaunti ya msimamizi."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Mipangilio (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -309,7 +314,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Muda wa matumizi ya data"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Sera ya kasi ya data"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Pata maelezo zaidi"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) ya<xliff:g id="USED_2">%3$s</xliff:g> muda wa kiwango cha juu\nMuda unaofuata unaanza baada ya siku<xliff:g id="USED_3">%4$d</xliff:g>(<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) imetumika kati ya kipindi cha juu cha <xliff:g id="USED_2">%3$s</xliff:g>\nKipindi kijacho kinaanza baada ya siku <xliff:g id="USED_3">%4$d</xliff:g> (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (asilimia <xliff:g id="USED_1">%2$d</xliff:g>) ya upeo wa muda wa <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Upeo wa <xliff:g id="USED_0">%1$s</xliff:g> umepitwa\nKasi ya data imepunguzwa hadi kilobaiti <xliff:g id="USED_1">%2$d</xliff:g> kwa sekunde"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ ya mzunguko imekamilika\nMuda ufuatao unaanza baada ya siku <xliff:g id="USED_1">%2$d</xliff:g> (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>

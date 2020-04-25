@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Prosleđuje se na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Isključeno"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Mobilni operater ne podržava onemogućavanje preusmeravanja poziva kada je telefon nedostupan."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Vaš mobilni operater ne podržava preusmeravanje poziva."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Želite da uključite stavljanje poziva na čekanje?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Tokom poziva ćete dobijati obaveštenja o dolaznim pozivima"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Uključi"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Otkaži"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Stavljanje CDMA poziva na čekanje u IMS-u je uključeno"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Stavljanje CDMA poziva na čekanje u IMS-u je isključeno"</string>
     <string name="updating_title" msgid="6130548922615719689">"Podešavanja poziva"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Samo korisniku sa administratorskim pravima je dozvoljeno da menja podešavanja poziva."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Podešavanja (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

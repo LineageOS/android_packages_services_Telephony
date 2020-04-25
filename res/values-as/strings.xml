@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g>লৈ ফৰৱাৰ্ড কৰা হৈছে"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"অফ"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"আপোনাৰ অপাৰেটৰে আপোনাৰ ফ\'নটো সংযোগ সীমাৰ পৰা বাহিৰত থাকোতে কল ফৰৱাৰ্ডিং অক্ষম কৰাৰ সুবিধা নিদিয়ে।"</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"আপোনাৰ বাহকে কল ফৰৱাৰ্ডিং সমৰ্থন নকৰে।"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"কল অপেক্ষাৰত সুবিধাটো অন কৰিবনে?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"এটা কল চলি থাকোঁতে আপোনাক অন্তৰ্গামী কলসমূহৰ বিষয়ে জনোৱা হ\'ব"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"অন কৰক"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"বাতিল কৰক"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMSত CDMA কল অপেক্ষাৰত সুবিধাটো অন আছে"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMSত CDMA কল অপেক্ষাৰত সুবিধাটো অফ আছে"</string>
     <string name="updating_title" msgid="6130548922615719689">"কল ছেটিংসমূহ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"কেৱল প্ৰশাসকে কল ছেটিংসমূহ সলনি কৰিব পাৰে।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ছেটিংসমূহ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

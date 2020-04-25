@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Áframsendir í <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Slökkt"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Símafyrirtækið leyfir ekki að slökkt sé á símtalsflutningi þegar ekki næst í símann."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Símafyrirtækið þitt styður ekki símtalsflutning."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Viltu kveikja á símtölum í bið?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Þú færð tilkynningu um móttekið símtal ef þú ert að tala í símann"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Kveikja"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Hætta"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Kveikt er á CDMA-símtölum í bið undir spjalli"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Slökkt er á CDMA-símtölum í bið undir spjalli"</string>
     <string name="updating_title" msgid="6130548922615719689">"Símtalsstillingar"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Aðeins stjórnandinn má breyta símtalsstillingum."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Stillingar (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

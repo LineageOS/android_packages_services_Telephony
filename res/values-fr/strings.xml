@@ -124,6 +124,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Désactivé"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Votre opérateur ne permet pas la désactivation du transfert d\'appel lorsque votre téléphone n\'est pas joignable."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Votre opérateur ne permet pas le transfert des appels."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Activer la fonctionnalité d\'appel en attente ?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Lorsque vous êtes en communication, des notifications vous signalent les appels entrants"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Activer"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Annuler"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Fonctionnalité d\'appel CDMA en attente sous IMS activée"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Fonctionnalité d\'appel CDMA en attente sous IMS désactivée"</string>
     <string name="updating_title" msgid="6130548922615719689">"Paramètres d\'appel"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Seul l\'administrateur peut modifier les paramètres d\'appel."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Paramètres (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

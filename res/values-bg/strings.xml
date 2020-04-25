@@ -124,6 +124,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Изкл."</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Операторът ви не поддържа деактивиране на пренасочването на обаждания, когато няма връзка с телефона."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Операторът ви не поддържа пренасочване на обаждания."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Да се включат ли изчакващите обаждания?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Ще получавате известие за входящи обаждания по време на обаждане"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Включване"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Отказ"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Изчакващите обаждания за CDMA с IMS са включени"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Изчакващите обаждания за CDMA с IMS са изключени"</string>
     <string name="updating_title" msgid="6130548922615719689">"Настройки за обаждане"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Само администраторът може да променя настройките за обаждане."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Настройки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

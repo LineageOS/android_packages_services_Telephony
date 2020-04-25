@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Προώθηση στο <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Ανενεργό"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Η εταιρεία κινητής τηλεφωνίας δεν υποστηρίζει την απενεργοποίηση της προώθησης κλήσεων όταν το τηλέφωνό σας δεν έχει σήμα."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Η εταιρεία κινητής τηλεφωνίας σας δεν υποστηρίζει την προώθηση κλήσεων."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Ενεργοποίηση αναμονής κλήσης;"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Κατά τη διάρκεια μιας κλήσης θα ειδοποιείστε για εισερχόμενες κλήσεις"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Ενεργοποίηση"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Άκυρο"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Η αναμονή κλήσης σε λειτουργία άμεσων μηνυμάτων (ΙΜ) είναι απενεργοποιημένη"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Η αναμονή κλήσης σε λειτουργία άμεσων μηνυμάτων (ΙΜ) είναι απενεργοποιημένη"</string>
     <string name="updating_title" msgid="6130548922615719689">"Ρυθμίσεις κλήσης"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Οι ρυθμίσεις κλήσεων μπορούν να αλλάξουν μόνο από τον χρήστη που έχει ρόλο διαχειριστή."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Ρυθμίσεις (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -309,7 +314,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Περίοδος χρήσης δεδομένων"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Πολιτική ταχύτητας δεδομένων"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Μάθετε περισσότερα"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) με μέγιστη περίοδο <xliff:g id="USED_2">%3$s</xliff:g>\nΗ επόμενη περίδος ξεκινά σε <xliff:g id="USED_3">%4$d</xliff:g> ημέρες (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>%%) με μέγιστη περίοδο <xliff:g id="USED_2">%3$s</xliff:g>\nΗ επόμενη περίοδος ξεκινά σε <xliff:g id="USED_3">%4$d</xliff:g> ημέρες (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) με μέγιστη περίοδο <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Συμπληρώθηκε το μέγιστο όριο <xliff:g id="USED_0">%1$s</xliff:g>\nΗ ταχύτητα δεδομένων μειώθηκε σε <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"Έχει περάσει το <xliff:g id="USED_0">%1$d</xliff:g>٪ του κύκλου\nΗ επόμενη περίοδος ξεκινά σε <xliff:g id="USED_1">%2$d</xliff:g> ημέρες (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>

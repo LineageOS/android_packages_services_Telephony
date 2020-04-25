@@ -124,6 +124,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Valiwe"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Isiphathi sakho asisekeli ukuvimbela ukudlulisela ucingo lapho ifoni yakho ingafinyeleleki."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Inkampani yakho yenethiwekhi ayisekeli ukudlulisela phambili ikholi."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Vula ukulinda ikholi?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Phakathi nekholi, uzokwaziswa ngamakholi angenayo"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Vula"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Hoxa"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Ukulinda kwekholi ye-CDMA ngaphansi kwe-IMS kuvuliwe"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Ukulinda kwekholi ye-CDMA ngaphansi kwe-IMS kuvaliwe"</string>
     <string name="updating_title" msgid="6130548922615719689">"Izilungiselelo zekholi"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Izilungiselelo zekholi zingaguqulwa kuphela ngumsebenzisi oyinhloko."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Izilungiselelo (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

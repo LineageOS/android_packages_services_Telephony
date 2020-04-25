@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Pinapasa sa <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Naka-off"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Hindi sinusuportahan ng iyong carrier ang hindi pagpapagana ng pagpasa ng tawag kapag hindi maabot ang iyong telepono."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Hindi sinusuportahan ng iyong carrier ang pagpasa ng tawag."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"I-on ang call waiting?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Habang tumatawag, aabisuhan ka sa mga papasok na tawag"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"I-on"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Kanselahin"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Naka-on ang CDMA Call Waiting sa IMS"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Naka-off ang CDMA Call Waiting sa IMS"</string>
     <string name="updating_title" msgid="6130548922615719689">"Mga setting ng tawag"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Ang admin user lang ang maaaring magbago sa mga setting ng tawag."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Mga Setting (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

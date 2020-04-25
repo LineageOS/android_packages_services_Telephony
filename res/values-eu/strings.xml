@@ -123,8 +123,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> zenbakira desbideratzen"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Desaktibatuta"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Operadoreak ez du dei-desbideratzeak desgaitzea onartzen telefonoa eskuragarri ez dagoen bitartean."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Operadoreak ez du onartzen dei-desbideratzea."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Deia zain uzteko aukera aktibatu nahi duzu?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Dei batean zaudenean, jakinarazpen bat jasoko duzu deiak jasotzen badituzu"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Aktibatu"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Utzi"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS zerbitzupean CDMA deiak zain uzteko aukera aktibatuta dago"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS zerbitzupean CDMA deiak zain uzteko aukera desaktibatuta dago"</string>
     <string name="updating_title" msgid="6130548922615719689">"Deien ezarpenak"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Administratzaileak soilik alda ditzake deien ezarpenak."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Ezarpenak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -309,9 +314,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Datuak erabiltzeko epea"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Datu-abiaduraren gidalerroak"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Lortu informazio gehiago"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g>/<xliff:g id="USED_2">%3$s</xliff:g> erabilita (%% <xliff:g id="USED_1">%2$d</xliff:g>) muga-epean\nHurrengo epea <xliff:g id="USED_3">%4$d</xliff:g> egun barru hasiko da (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g>/<xliff:g id="USED_2">%3$s</xliff:g> erabilita (٪ <xliff:g id="USED_1">%2$d</xliff:g>) muga-epean"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> muga gainditu duzu\nDatu-abiadura murriztu zaizu. <xliff:g id="USED_1">%2$d</xliff:g> Kb/s duzu orain."</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"Zikloaren ٪  <xliff:g id="USED_0">%1$d</xliff:g> igaro da\nHurrengo aldia <xliff:g id="USED_1">%2$d</xliff:g> egun barru hasten da (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
