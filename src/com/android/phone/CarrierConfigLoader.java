@@ -630,6 +630,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         .createForSubscriptionId(subIds[0]);
                 simApplicationState = telMgr.getSimApplicationState();
             }
+            logd("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId
+                    + " simApplicationState " + simApplicationState);
             // Include subId/carrier id extra only if SIM records are loaded
             if (simApplicationState != TelephonyManager.SIM_STATE_UNKNOWN
                     && simApplicationState != TelephonyManager.SIM_STATE_NOT_READY) {
