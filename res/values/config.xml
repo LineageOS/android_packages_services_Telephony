@@ -290,4 +290,13 @@
          in some devices per modem limitation 5G network can't be connected if two or more SIMs
          are active simultaneously. In that case, this value should be false. -->
     <bool name="config_5g_connection_in_dsds_mode">true</bool>
+
+    <!-- Vibrator pattern to be used as the default for notifications
+         that specify DEFAULT_VIBRATE. -->
+    <integer-array name="config_defaultNotificationVibePattern">
+        <item>0</item>
+        <item>350</item>
+        <item>250</item>
+        <item>350</item>
+    </integer-array>
 </resources>
