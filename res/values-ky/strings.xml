@@ -285,7 +285,7 @@
     <string name="roaming_alert_title" msgid="5689615818220960940">"Интернет-роумингди иштетесизби?"</string>
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM-картанын функциялары чектелген"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> номерин колдонгондо <xliff:g id="CARRIER_NAME">%1$s</xliff:g> чалуулары жана дайындар кызматтары бөгөттөлүшү мүмкүн."</string>
-    <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Башка SIM-картаны колднгндо <xliff:g id="CARRIER_NAME">%1$s</xliff:g> чалуулары жана дайындар кызмттары бөгөттлшү мүмкүн."</string>
+    <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Башка SIM картаны колднгндо <xliff:g id="CARRIER_NAME">%1$s</xliff:g> чалуулары жана дайындар кызмттары бөгөттлшү мүмкүн."</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Колдонмолордун трафиги"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> аралыгында <xliff:g id="ID_1">%1$s</xliff:g> мобилдик трафик колдонулду"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Өркүндөтүлгөн"</string>
@@ -674,7 +674,7 @@
     <string name="message_decode_error" msgid="1061856591500290887">"Билдирүү дешифрленип жатканда ката кеткен."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM-карта кызматыңызды жандырып, телефонуңуздун роуминг мүмкүнчүлүктөрүн жаңыртты."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Учурда жигердүү чалуулар өтө көп. Чалуу үчүн учурдагы чалууларды бүтүрүңүз же бириктириңиз."</string>
-    <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Байланышуу мумкүн эмес. Жарактуу SIM-картаны салыңыз."</string>
+    <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Байланышуу мумкүн эмес. Жарактуу SIM картаны салыңыз."</string>
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Wi-Fi туташуусу үзүлүп калды. Чалуу аяктады."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Батареянын заряды төмөн болгондуктан, видео режиминде чала албайсыз."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"Батареянын заряды төмөн болгондуктан, видео чалуу аяктады."</string>

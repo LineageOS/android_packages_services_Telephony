@@ -37,7 +37,7 @@
     <string name="audio_mode_speaker" msgid="243689733219312360">"स्पीकर"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"हँडसेट इअरपीस"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"वायर्ड हेडसेट"</string>
-    <string name="audio_mode_bluetooth" msgid="25732183428018809">"ब्लूटुथ"</string>
+    <string name="audio_mode_bluetooth" msgid="25732183428018809">"ब्लूटूथ"</string>
     <string name="wait_prompt_str" msgid="5136209532150094910">"खालील टोन पाठवायचे?\n"</string>
     <string name="pause_prompt_str" msgid="2308897950360272213">"टोन पाठवित आहे\n"</string>
     <string name="send_button" msgid="5070379600779031932">"पाठवा"</string>
@@ -707,7 +707,7 @@
     <string name="mobile_data_activate_button" msgid="1139792516354374612">"डेटा जोडा"</string>
     <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"रद्द करा"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"कॉल संपला"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"विमान मोड चालू आहे"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"विमान मोड सुरू आहे"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"सिम कार्ड अ‍ॅक्सेस करू शकत नाही"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"मोबाइल नेटवर्क उपलब्ध नाही"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"तुम्ही डायल करायचा प्रयत्न करत असलेल्या फोन नंबरमध्ये समस्या आहे. एरर कोड 1."</string>
