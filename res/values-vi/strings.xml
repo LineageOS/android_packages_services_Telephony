@@ -277,7 +277,7 @@
     <string name="roaming_enable" msgid="6853685214521494819">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Tính năng Chuyển vùng dữ liệu bị tắt. Nhấn để bật."</string>
-    <string name="roaming_enabled_message" msgid="9022249120750897">"Có thể áp dụng phí chuyển vùng. Nhấn để sửa đổi."</string>
+    <string name="roaming_enabled_message" msgid="9022249120750897">"Bạn có thể bị tính phí chuyển vùng. Nhấn để sửa đổi."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Đã mất kết nối dữ liệu di động"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Chuyển vùng dữ liệu đang bật"</string>
     <string name="roaming_warning" msgid="7855681468067171971">"Bạn có thể phải trả một khoản phí lớn."</string>
