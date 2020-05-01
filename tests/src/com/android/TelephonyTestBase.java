@@ -22,6 +22,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import com.android.internal.telephony.PhoneConfigurationManager;
+
 import org.mockito.MockitoAnnotations;
 
 import java.util.concurrent.CountDownLatch;
@@ -52,6 +54,8 @@ public class TelephonyTestBase {
     }
 
     public void tearDown() throws Exception {
+        // Ensure there are no static references to handlers after test completes.
+        PhoneConfigurationManager.unregisterAllMultiSimConfigChangeRegistrants();
     }
 
     protected final void waitForHandlerAction(Handler h, long timeoutMillis) {
