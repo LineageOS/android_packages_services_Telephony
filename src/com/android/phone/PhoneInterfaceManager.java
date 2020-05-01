@@ -159,6 +159,7 @@ import com.android.internal.telephony.uicc.UiccCardApplication;
 import com.android.internal.telephony.uicc.UiccController;
 import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.telephony.uicc.UiccSlot;
+import com.android.internal.telephony.uicc.IccCardApplicationStatus.AppType;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
 import com.android.internal.util.HexDump;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
