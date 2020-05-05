@@ -38,6 +38,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PersistableBundle;
 import android.os.SystemProperties;
 import android.provider.Settings;
 import android.telephony.CarrierConfigManager;
@@ -465,12 +466,12 @@ public class RadioInfo extends AppCompatActivity {
 
         mQueuedWork = new ThreadPoolExecutor(1, 1, RUNNABLE_TIMEOUT_MS, TimeUnit.MICROSECONDS,
                 new LinkedBlockingDeque<Runnable>());
-        mTelephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
         mConnectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         mPhone = PhoneFactory.getDefaultPhone();
+        mTelephonyManager = ((TelephonyManager) getSystemService(TELEPHONY_SERVICE))
+                .createForSubscriptionId(mPhone.getSubId());
 
-        mImsManager = ImsManager.getInstance(getApplicationContext(),
-                SubscriptionManager.getDefaultVoicePhoneId());
+        mImsManager = ImsManager.getInstance(getApplicationContext(), mPhone.getPhoneId());
 
         sPhoneIndexLabels = getPhoneIndexLabels(mTelephonyManager);
 
@@ -1465,9 +1466,9 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     private boolean isImsVolteProvisioned() {
-        if (mPhone != null && mImsManager != null) {
-            return mImsManager.isVolteEnabledByPlatform(mPhone.getContext())
-                && mImsManager.isVolteProvisionedOnDevice(mPhone.getContext());
+        if (mImsManager != null) {
+            return mImsManager.isVolteEnabledByPlatform()
+                && mImsManager.isVolteProvisionedOnDevice();
         }
         return false;
     }
@@ -1480,9 +1481,9 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     private boolean isImsVtProvisioned() {
-        if (mPhone != null && mImsManager != null) {
-            return mImsManager.isVtEnabledByPlatform(mPhone.getContext())
-                && mImsManager.isVtProvisionedOnDevice(mPhone.getContext());
+        if (mImsManager != null) {
+            return mImsManager.isVtEnabledByPlatform()
+                && mImsManager.isVtProvisionedOnDevice();
         }
         return false;
     }
@@ -1495,9 +1496,9 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     private boolean isImsWfcProvisioned() {
-        if (mPhone != null && mImsManager != null) {
-            return mImsManager.isWfcEnabledByPlatform(mPhone.getContext())
-                && mImsManager.isWfcProvisionedOnDevice(mPhone.getContext());
+        if (mImsManager != null) {
+            return mImsManager.isWfcEnabledByPlatform()
+                && mImsManager.isWfcProvisionedOnDevice();
         }
         return false;
     }
@@ -1539,13 +1540,14 @@ public class RadioInfo extends AppCompatActivity {
         return provisioned;
     }
 
-    private static boolean isEabEnabledByPlatform(Context context) {
-        if (context != null) {
+    private boolean isEabEnabledByPlatform() {
+        if (mPhone != null) {
             CarrierConfigManager configManager = (CarrierConfigManager)
-                    context.getSystemService(Context.CARRIER_CONFIG_SERVICE);
-            if (configManager != null && configManager.getConfig().getBoolean(
-                        CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL)) {
-                return true;
+                    mPhone.getContext().getSystemService(Context.CARRIER_CONFIG_SERVICE);
+            PersistableBundle b = configManager.getConfigForSubId(mPhone.getSubId());
+            if (b != null) {
+                return b.getBoolean(CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
+                        false);
             }
         }
         return false;
@@ -1562,25 +1564,25 @@ public class RadioInfo extends AppCompatActivity {
         mImsVolteProvisionedSwitch.setChecked(isImsVolteProvisioned());
         mImsVolteProvisionedSwitch.setOnCheckedChangeListener(mImsVolteCheckedChangeListener);
         mImsVolteProvisionedSwitch.setEnabled(!IS_USER_BUILD
-                && mImsManager.isVolteEnabledByPlatform(mPhone.getContext()));
+                && mImsManager.isVolteEnabledByPlatform());
 
         mImsVtProvisionedSwitch.setOnCheckedChangeListener(null);
         mImsVtProvisionedSwitch.setChecked(isImsVtProvisioned());
         mImsVtProvisionedSwitch.setOnCheckedChangeListener(mImsVtCheckedChangeListener);
         mImsVtProvisionedSwitch.setEnabled(!IS_USER_BUILD
-                && mImsManager.isVtEnabledByPlatform(mPhone.getContext()));
+                && mImsManager.isVtEnabledByPlatform());
 
         mImsWfcProvisionedSwitch.setOnCheckedChangeListener(null);
         mImsWfcProvisionedSwitch.setChecked(isImsWfcProvisioned());
         mImsWfcProvisionedSwitch.setOnCheckedChangeListener(mImsWfcCheckedChangeListener);
         mImsWfcProvisionedSwitch.setEnabled(!IS_USER_BUILD
-                && mImsManager.isWfcEnabledByPlatform(mPhone.getContext()));
+                && mImsManager.isWfcEnabledByPlatform());
 
         mEabProvisionedSwitch.setOnCheckedChangeListener(null);
         mEabProvisionedSwitch.setChecked(isEabProvisioned());
         mEabProvisionedSwitch.setOnCheckedChangeListener(mEabCheckedChangeListener);
         mEabProvisionedSwitch.setEnabled(!IS_USER_BUILD
-                && isEabEnabledByPlatform(mPhone.getContext()));
+                && isEabEnabledByPlatform());
     }
 
     OnClickListener mDnsCheckButtonHandler = new OnClickListener() {
