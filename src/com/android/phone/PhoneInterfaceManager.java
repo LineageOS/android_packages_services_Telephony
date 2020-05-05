@@ -2134,7 +2134,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId = mSubscriptionController.getDefaultDataSubId();
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                phone.getDataEnabledSettings().setUserDataEnabled(true);
+                phone.getDataEnabledSettings().setDataEnabled(
+                        TelephonyManager.DATA_ENABLED_REASON_USER, true);
                 return true;
             } else {
                 return false;
@@ -2154,7 +2155,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId = mSubscriptionController.getDefaultDataSubId();
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                phone.getDataEnabledSettings().setUserDataEnabled(false);
+                phone.getDataEnabledSettings().setDataEnabled(
+                        TelephonyManager.DATA_ENABLED_REASON_USER, false);
                 return true;
             } else {
                 return false;
@@ -5585,33 +5587,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Set mobile data enabled
-     * Used by the user through settings etc to turn on/off mobile data
-     *
-     * @param enable {@code true} turn turn data on, else {@code false}
-     */
-    @Override
-    public void setUserDataEnabled(int subId, boolean enable) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, subId, "setUserDataEnabled");
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            int phoneId = mSubscriptionController.getPhoneId(subId);
-            if (DBG) log("setUserDataEnabled: subId=" + subId + " phoneId=" + phoneId);
-            Phone phone = PhoneFactory.getPhone(phoneId);
-            if (phone != null) {
-                if (DBG) log("setUserDataEnabled: subId=" + subId + " enable=" + enable);
-                phone.getDataEnabledSettings().setUserDataEnabled(enable);
-            } else {
-                loge("setUserDataEnabled: no phone found. Invalid subId=" + subId);
-            }
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
      * Enable or disable always reporting signal strength changes from radio.
      *
      * @param isEnable {@code true} for enabling; {@code false} for disabling.
@@ -5714,6 +5689,53 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return retVal;
             } else {
                 if (DBG) loge("isDataEnabled: no phone subId=" + subId + " retVal=false");
+                return false;
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Check if data is enabled for a specific reason
+     * @param subId Subscription index
+     * @param reason the reason the data enable change is taking place
+     * @return {@code true} if the overall data is enabled; {@code false} if not.
+     */
+    @Override
+    public boolean isDataEnabledWithReason(int subId,
+            @TelephonyManager.DataEnabledReason int reason) {
+        try {
+            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
+                    null);
+        } catch (Exception e) {
+            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PHONE_STATE,
+                    "isDataEnabledWithReason");
+        }
+
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            int phoneId = mSubscriptionController.getPhoneId(subId);
+            if (DBG) {
+                log("isDataEnabledWithReason: subId=" + subId + " phoneId=" + phoneId
+                        + " reason=" + reason);
+            }
+            Phone phone = PhoneFactory.getPhone(phoneId);
+            if (phone != null) {
+                boolean retVal;
+                if (reason == TelephonyManager.DATA_ENABLED_REASON_USER) {
+                    retVal = phone.isUserDataEnabled();
+                } else {
+                    retVal = phone.getDataEnabledSettings().isDataEnabledWithReason(reason);
+                }
+                if (DBG) log("isDataEnabledWithReason: retVal=" + retVal);
+                return retVal;
+            } else {
+                if (DBG) {
+                    loge("isDataEnabledWithReason: no phone subId="
+                            + subId + " retVal=false");
+                }
                 return false;
             }
         } finally {
@@ -6530,7 +6552,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             if (SubscriptionManager.isUsableSubIdValue(subId) && !mUserManager.hasUserRestriction(
                     UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
-                setUserDataEnabled(subId, getDefaultDataEnabled());
+                setDataEnabledWithReason(subId, TelephonyManager.DATA_ENABLED_REASON_USER,
+                        getDefaultDataEnabled());
                 setNetworkSelectionModeAutomatic(subId);
                 setPreferredNetworkType(subId, getDefaultNetworkType(subId));
                 setDataRoamingEnabled(subId, getDefaultDataRoamingEnabled(subId));
@@ -7050,31 +7073,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Action set from carrier signalling broadcast receivers to enable/disable metered apns
-     * @param subId the subscription ID that this action applies to.
-     * @param enabled control enable or disable metered apns.
-     * {@hide}
-     */
-    @Override
-    public void carrierActionSetMeteredApnsEnabled(int subId, boolean enabled) {
-        enforceModifyPermission();
-        final Phone phone = getPhone(subId);
-
-        final long identity = Binder.clearCallingIdentity();
-        if (phone == null) {
-            loge("carrierAction: SetMeteredApnsEnabled fails with invalid subId: " + subId);
-            return;
-        }
-        try {
-            phone.carrierActionSetMeteredApnsEnabled(enabled);
-        } catch (Exception e) {
-            Log.e(LOG_TAG, "carrierAction: SetMeteredApnsEnabled fails. Exception ex=" + e);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
      * Action set from carrier signalling broadcast receivers to enable/disable radio
      * @param subId the subscription ID that this action applies to.
      * @param enabled control enable or disable radio.
@@ -7175,20 +7173,36 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Policy control of data connection. Usually used when data limit is passed.
-     * @param enabled True if enabling the data, otherwise disabling.
+     * Policy control of data connection with reason {@@TelephonyManager.DataEnabledReason}
      * @param subId Subscription index
-     * {@hide}
+     * @param reason the reason the data enable change is taking place
+     * @param enabled True if enabling the data, otherwise disabling.
+     * @hide
      */
     @Override
-    public void setPolicyDataEnabled(boolean enabled, int subId) {
-        enforceModifyPermission();
+    public void setDataEnabledWithReason(int subId, @TelephonyManager.DataEnabledReason int reason,
+            boolean enabled) {
+        if (reason == TelephonyManager.DATA_ENABLED_REASON_USER
+                || reason == TelephonyManager.DATA_ENABLED_REASON_CARRIER) {
+            try {
+                TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(
+                        mApp, subId, "setDataEnabledWithReason");
+            } catch (SecurityException se) {
+                enforceModifyPermission();
+            }
+        } else {
+            enforceModifyPermission();
+        }
 
         final long identity = Binder.clearCallingIdentity();
         try {
             Phone phone = getPhone(subId);
             if (phone != null) {
-                phone.getDataEnabledSettings().setPolicyDataEnabled(enabled);
+                if (reason == TelephonyManager.DATA_ENABLED_REASON_CARRIER) {
+                    phone.carrierActionSetMeteredApnsEnabled(enabled);
+                } else {
+                    phone.getDataEnabledSettings().setDataEnabled(reason, enabled);
+                }
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
