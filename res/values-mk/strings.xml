@@ -307,9 +307,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Период на потрошен интернет"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Политика на стапка на податоци"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Дознај повеќе"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) од максимум <xliff:g id="USED_2">%3$s</xliff:g> за периодот\nСледниот период започнува за <xliff:g id="USED_3">%4$d</xliff:g> дена (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) од <xliff:g id="USED_2">%3$s</xliff:g> максимален период"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> максимум е надминат\nСтапката на податоци е намалена на <xliff:g id="USED_1">%2$d</xliff:g> кб/с"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ од циклусот помина\nНаредниот период започнува за <xliff:g id="USED_1">%2$d</xliff:g> дена (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -545,7 +543,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Не може да се задржат повици."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Поврзете се на безжична мрежа за да повикате."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Овозможете повикување преку Wi-Fi за воспоставување повик."</string>
-    <string name="emergency_information_hint" msgid="9208897544917793012">"Информации за итни случаи"</string>
+    <string name="emergency_information_hint" msgid="9208897544917793012">"Податоци за итни случаи"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Сопственик"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Допрете повторно за приказ на информации"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"Повик за итни случаи"</string>
@@ -843,7 +841,7 @@
     <string name="radio_info_ims_reg_status_registered" msgid="7095182114078864326">"Регистриран"</string>
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"Не е регистриран"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"Достапен"</string>
-    <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Недостапен"</string>
+    <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Недостапно"</string>
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS-регистрација: <xliff:g id="STATUS">%1$s</xliff:g>\nКомуникација преку LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nКомуникација преку Wi-Fi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nВидеоповикување: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT-интерфејс: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"Во употреба"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"Надвор од употреба"</string>

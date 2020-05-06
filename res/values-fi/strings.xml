@@ -274,8 +274,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"Salli tiedonsiirto"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"Huomio"</string>
     <string name="roaming" msgid="1576180772877858949">"Roaming"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"Yhdistä verkkoon roaming-tilassa."</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"Yhdistä verkkoon roaming-tilassa."</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"Yhdistä verkkoon roaming-tilassa"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"Yhdistä verkkoon roaming-tilassa"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Roaming ei ole käytössä. Ota käyttöön napauttamalla."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Puhelusta saatetaan periä roaming-maksuja. Muokkaa napauttamalla."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Mobiilidatayhteys katkesi"</string>
@@ -307,9 +307,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Tietojen käyttöjakso"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Tiedonsiirtonopeuskäytäntö"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Lisätietoja"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> %%) / <xliff:g id="USED_2">%3$s</xliff:g> jakson enimmäismäärästä\nSeuraava kausi alkaa <xliff:g id="USED_3">%4$d</xliff:g> päivän kuluttua (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) / <xliff:g id="USED_2">%3$s</xliff:g> jakson enimmäismäärästä"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> enimmäismäärä ylitetty\nTiedonsiirtonopeus vähennetty nopeuteen<xliff:g id="USED_1">%2$d</xliff:g> kt/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ kierrosta valmis\nSeuraava jakso alkaa <xliff:g id="USED_1">%2$d</xliff:g> päivän kuluttua (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
