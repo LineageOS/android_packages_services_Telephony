@@ -1204,7 +1204,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         return false;
     }
 
-    private static int getPrimaryColor(WallpaperColors colors) {
+    private int getPrimaryColor(WallpaperColors colors) {
         if (colors != null) {
             // Android accessibility scanner
             // (https://support.google.com/accessibility/android/answer/7158390)
@@ -1212,15 +1212,22 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
             // 4.5 with background color. The color generated from wallpaper may not
             // follow this rule. Calculate a proper color here.
             Color primary = colors.getPrimaryColor();
-            Color text = Color.valueOf(Color.WHITE);
+            Color text;
+            if (mSupportsDarkText) {
+                text = Color.valueOf(Color.BLACK);
+            } else {
+                text = Color.valueOf(Color.WHITE);
+            }
             Color dial = Color.valueOf(DIALER_GREEN);
             // If current primary color can't follow the contrast ratio rule, make it
-            // deeper and try again.
+            // deeper/lighter and try again.
             while (!checkContrastRatio(primary, text)) {
-                primary = getDeeper(primary);
+                primary = getNextColor(primary, mSupportsDarkText);
             }
-            while (!checkContrastRatio(primary, dial)) {
-                primary = getDeeper(primary);
+            if (!mSupportsDarkText) {
+                while (!checkContrastRatio(primary, dial)) {
+                    primary = getNextColor(primary, mSupportsDarkText);
+                }
             }
             return primary.toArgb();
         }
@@ -1230,17 +1237,21 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         return Color.BLACK;
     }
 
-    private static Color getDeeper(Color color) {
-        float r = color.red() - COLOR_DELTA;
-        float g = color.green() - COLOR_DELTA;
-        float b = color.blue() - COLOR_DELTA;
+    private Color getNextColor(Color color, boolean darkText) {
+        float sign = darkText ? 1.f : -1.f;
+        float r = color.red() + sign * COLOR_DELTA;
+        float g = color.green() + sign * COLOR_DELTA;
+        float b = color.blue() + sign * COLOR_DELTA;
         if (r < 0f) r = 0f;
         if (g < 0f) g = 0f;
         if (b < 0f) b = 0f;
+        if (r > 1f) r = 1f;
+        if (g > 1f) g = 1f;
+        if (b > 1f) b = 1f;
         return Color.valueOf(r, g, b);
     }
 
-    private static boolean checkContrastRatio(Color color1, Color color2) {
+    private boolean checkContrastRatio(Color color1, Color color2) {
         float lum1 = color1.luminance();
         float lum2 = color2.luminance();
         double cr;
