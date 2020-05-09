@@ -184,7 +184,7 @@
     <string name="forbidden_network" msgid="5081729819561333023">"(prohibida)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"Elegir red"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"Desconectado"</string>
-    <string name="network_connected" msgid="2760235679963580224">"Conectada"</string>
+    <string name="network_connected" msgid="2760235679963580224">"Conectado"</string>
     <string name="network_connecting" msgid="160901383582774987">"Conectando..."</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"No se ha podido conectar"</string>
   <string-array name="preferred_network_mode_choices">
