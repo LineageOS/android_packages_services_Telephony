@@ -363,7 +363,7 @@ public class PhoneUtils {
         // Check to see if a UI exists for the PUK activation.  If it does
         // exist, then it indicates that we're trying to unblock the PUK.
         if ((app.getPUKEntryActivity() != null) && (state == MmiCode.State.COMPLETE)) {
-            if (DBG) log("displaying PUK unblocking progress dialog.");
+            log("displaying PUK unblocking progress dialog.");
 
             // create the progress dialog, make sure the flags and type are
             // set correctly.
