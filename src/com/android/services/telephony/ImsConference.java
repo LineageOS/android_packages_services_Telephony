@@ -256,8 +256,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
                 public void onConnectionPropertiesChanged(Connection c, int connectionProperties) {
                     Log.d(this, "onConnectionPropertiesChanged: Connection: %s,"
                             + " connectionProperties: %s", c, connectionProperties);
-                    int properties = ImsConference.this.getConnectionProperties();
-                    setConnectionProperties(applyHostProperties(properties, connectionProperties));
+                    updateConnectionProperties(connectionProperties);
                 }
 
                 @Override
@@ -269,7 +268,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
                 @Override
                 public void onExtrasChanged(Connection c, Bundle extras) {
                     Log.v(this, "onExtrasChanged: c=" + c + " Extras=" + extras);
-                    putExtras(extras);
+                    updateExtras(extras);
                 }
 
                 @Override
@@ -449,7 +448,6 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
                 mConferenceHost.getConnectionCapabilities(),
                 mConferenceHost.isCarrierVideoConferencingSupported());
         setConnectionCapabilities(capabilities);
-
     }
 
     /**
@@ -1200,6 +1198,12 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
         // data from the time of merge.
         connection.setCallDirection(participant.getCallDirection());
 
+        // Ensure important attributes of the parent get copied to child.
+        connection.setConnectionProperties(applyHostPropertiesToChild(
+                connection.getConnectionProperties(), parent.getConnectionProperties()));
+        connection.setStatusHints(parent.getStatusHints());
+        connection.setExtras(getChildExtrasFromHostBundle(parent.getExtras()));
+
         Log.i(this, "createConferenceParticipantConnection: participant=%s, connection=%s",
                 participant, connection);
 
@@ -1441,15 +1445,84 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
             Phone phone = mConferenceHost.getPhone();
             if (phone != null) {
                 Context context = phone.getContext();
-                setStatusHints(new StatusHints(
+                StatusHints hints = new StatusHints(
                         context.getString(R.string.status_hint_label_wifi_call),
                         Icon.createWithResource(
                                 context, R.drawable.ic_signal_wifi_4_bar_24dp),
-                        null /* extras */));
+                        null /* extras */);
+                setStatusHints(hints);
+
+                // Ensure the children know they're a WIFI call as well.
+                for (Connection c : getConnections()) {
+                    c.setStatusHints(hints);
+                }
             }
         } else {
             setStatusHints(null);
         }
+    }
+
+    /**
+     * Updates the conference's properties based on changes to the host.
+     * Also ensures pertinent properties from the host such as the WIFI property are copied to the
+     * children as well.
+     * @param connectionProperties The new host properties.
+     */
+    private void updateConnectionProperties(int connectionProperties) {
+        int properties = ImsConference.this.getConnectionProperties();
+        setConnectionProperties(applyHostProperties(properties, connectionProperties));
+
+        for (Connection c : getConnections()) {
+            c.setConnectionProperties(applyHostPropertiesToChild(c.getConnectionProperties(),
+                    connectionProperties));
+        }
+    }
+
+    /**
+     * Updates extras in the conference based on changes made in the parent.
+     * Also copies select extras (e.g. EXTRA_CALL_NETWORK_TYPE) to the children as well.
+     * @param extras The extras to copy.
+     */
+    private void updateExtras(Bundle extras) {
+        putExtras(extras);
+
+        if (extras == null) {
+            return;
+        }
+
+        Bundle childBundle = getChildExtrasFromHostBundle(extras);
+        for (Connection c : getConnections()) {
+            c.putExtras(childBundle);
+        }
+    }
+
+    /**
+     * Given an extras bundle from the host, returns a new bundle containing those extras which are
+     * releveant to the children.
+     * @param extras The host extras.
+     * @return The extras pertinent to the children.
+     */
+    private Bundle getChildExtrasFromHostBundle(Bundle extras) {
+        Bundle extrasToCopy = new Bundle();
+        if (extras != null && extras.containsKey(TelecomManager.EXTRA_CALL_NETWORK_TYPE)) {
+            int networkType = extras.getInt(TelecomManager.EXTRA_CALL_NETWORK_TYPE);
+            extrasToCopy.putInt(TelecomManager.EXTRA_CALL_NETWORK_TYPE, networkType);
+        }
+        return extrasToCopy;
+    }
+
+    /**
+     * Given the properties from a conference host applies and changes to the host's properties to
+     * the child as well.
+     * @param childProperties The existing child properties.
+     * @param hostProperties The properties from the host.
+     * @return The child properties with the applicable host bits set/unset.
+     */
+    private int applyHostPropertiesToChild(int childProperties, int hostProperties) {
+        childProperties = changeBitmask(childProperties,
+                Connection.PROPERTY_WIFI,
+                (hostProperties & Connection.PROPERTY_WIFI) != 0);
+        return childProperties;
     }
 
     /**

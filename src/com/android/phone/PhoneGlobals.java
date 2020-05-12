@@ -265,16 +265,18 @@ public class PhoneGlobals extends ContextWrapper {
                     // Right now, this is only used for the PUK-unlocking
                     // process.
                     EventSimStateChangedBag bag = (EventSimStateChangedBag)msg.obj;
-                    if (bag.mIccStatus == IccCardConstants.INTENT_VALUE_ICC_READY
-                            || bag.mIccStatus == IccCardConstants.INTENT_VALUE_ICC_LOADED) {
+                    if (IccCardConstants.INTENT_VALUE_ICC_READY.equals(bag.mIccStatus)
+                            || IccCardConstants.INTENT_VALUE_ICC_LOADED.equals(bag.mIccStatus)) {
                         // when the right event is triggered and there
                         // are UI objects in the foreground, we close
                         // them to display the lock panel.
                         if (mPUKEntryActivity != null) {
+                            Log.i(LOG_TAG, "Dismiss puk entry activity");
                             mPUKEntryActivity.finish();
                             mPUKEntryActivity = null;
                         }
                         if (mPUKEntryProgressDialog != null) {
+                            Log.i(LOG_TAG, "Dismiss puk progress dialog");
                             mPUKEntryProgressDialog.dismiss();
                             mPUKEntryProgressDialog = null;
                         }
@@ -528,6 +530,7 @@ public class PhoneGlobals extends ContextWrapper {
      * or SIM READYing process is over.
      */
     void setPukEntryActivity(Activity activity) {
+        Log.i(LOG_TAG, "setPukEntryActivity - set to " + (activity == null ? "null" : "activity"));
         mPUKEntryActivity = activity;
     }
 
@@ -545,6 +548,8 @@ public class PhoneGlobals extends ContextWrapper {
      * READYing process
      */
     void setPukEntryProgressDialog(ProgressDialog dialog) {
+        Log.i(LOG_TAG, "setPukEntryProgressDialog - set to "
+                + (dialog == null ? "null" : "activity"));
         mPUKEntryProgressDialog = dialog;
     }
 
