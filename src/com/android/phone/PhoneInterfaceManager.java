@@ -312,6 +312,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private AtomicBoolean mNotifyUserActivity;
     private static final int USER_ACTIVITY_NOTIFICATION_DELAY = 200;
 
+    private Set<Integer> mCarrierPrivilegeTestOverrideSubIds = new ArraySet<>();
+
     private static final String PREF_CARRIERS_ALPHATAG_PREFIX = "carrier_alphtag_";
     private static final String PREF_CARRIERS_NUMBER_PREFIX = "carrier_number_";
     private static final String PREF_CARRIERS_SUBSCRIBER_PREFIX = "carrier_subscriber_";
@@ -5755,7 +5757,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            SubscriptionInfo subInfo = subController.getSubscriptionInfo(phone.getSubId());
+            int subId = phone.getSubId();
+            if (mCarrierPrivilegeTestOverrideSubIds.contains(subId)) {
+                // A test override is in place for the privileges for this subId, so don't try to
+                // read the subscription privileges.
+                return privilegeFromSim;
+            }
+            SubscriptionInfo subInfo = subController.getSubscriptionInfo(subId);
             SubscriptionManager subManager = (SubscriptionManager)
                     phone.getContext().getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
             for (String pkg : packages) {
@@ -5778,7 +5786,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            SubscriptionInfo subInfo = subController.getSubscriptionInfo(phone.getSubId());
+            int subId = phone.getSubId();
+            if (mCarrierPrivilegeTestOverrideSubIds.contains(subId)) {
+                // A test override is in place for the privileges for this subId, so don't try to
+                // read the subscription privileges.
+                return privilegeFromSim;
+            }
+            SubscriptionInfo subInfo = subController.getSubscriptionInfo(subId);
             SubscriptionManager subManager = (SubscriptionManager)
                     phone.getContext().getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
             return subManager.canManageSubscription(subInfo, pkgName)
@@ -7651,6 +7665,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
             phone.setCarrierTestOverride(mccmnc, imsi, iccid, gid1, gid2, plmn, spn,
                     carrierPrivilegeRules, apn);
+            if (carrierPrivilegeRules == null) {
+                mCarrierPrivilegeTestOverrideSubIds.remove(subId);
+            } else {
+                mCarrierPrivilegeTestOverrideSubIds.add(subId);
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
