@@ -241,6 +241,7 @@
             android:label="@string/emergencyDialerIconLabel"
             android:theme="@style/EmergencyDialerTheme"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:resizeableActivity="false">
             <intent-filter>
                 <action android:name="com.android.phone.EmergencyDialer.DIAL" />
@@ -268,6 +269,7 @@
             android:label="@string/simContacts_title"
             android:theme="@style/SimImportTheme"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:icon="@mipmap/ic_launcher_contacts">
 
             <intent-filter>
@@ -279,6 +281,7 @@
 
         <activity android:name="com.android.phone.settings.fdn.FdnList"
                 android:label="@string/fdnListLabel"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -293,6 +296,7 @@
 
         <activity android:name="GsmUmtsCallOptions"
                 android:label="@string/gsm_umts_options"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -301,6 +305,7 @@
 
         <activity android:name="CdmaCallOptions"
                 android:label="@string/cdma_options"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -310,6 +315,7 @@
         <activity android:name="GsmUmtsCallForwardOptions"
                 android:label="@string/labelCF"
                 android:configChanges="orientation|screenSize|keyboardHidden"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -319,6 +325,7 @@
         <activity android:name="CdmaCallForwardOptions"
                 android:label="@string/labelCF"
                 android:configChanges="orientation|screenSize|keyboardHidden"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -328,6 +335,7 @@
         <activity android:name="GsmUmtsCallBarringOptions"
                 android:label="@string/labelCallBarring"
                 android:configChanges="orientation|screenSize|keyboardHidden"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -337,6 +345,7 @@
         <activity android:name="GsmUmtsAdditionalCallOptions"
                 android:label="@string/labelGSMMore"
                 android:configChanges="orientation|screenSize|keyboardHidden"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -346,6 +355,7 @@
         <!-- fdn setting -->
         <activity android:name="com.android.phone.settings.fdn.FdnSetting"
                 android:label="@string/fdn"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -355,6 +365,7 @@
         <!-- SIM PIN setting -->
         <activity android:name="EnableIccPinScreen"
                 android:label="@string/enable_pin"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -364,6 +375,7 @@
 
         <activity android:name="ChangeIccPinScreen"
                 android:label="@string/change_pin"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -391,6 +403,7 @@
         <activity android:name="CallFeaturesSetting"
                 android:label="@string/call_settings"
                 android:configChanges="orientation|screenSize|keyboardHidden"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -403,6 +416,7 @@
         <!-- Activation service that trigger OTASP sim provisioning -->
         <service android:name=".otasp.OtaspActivationService" android:launchMode="singleInstance"
             androidprv:systemUserOnly="true"
+            android:exported="true"
             android:permission="android.permission.MODIFY_PHONE_STATE">
             <intent-filter>
                 <action android:name="android.service.simActivation.SimActivationService" />
@@ -419,6 +433,7 @@
         <!-- "Accessibility" settings UI. Referenced by Dialer application. -->
         <activity android:name="com.android.phone.settings.AccessibilitySettingsActivity"
                 android:label="@string/accessibility_settings_activity_title"
+                android:exported="true"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -433,6 +448,7 @@
 
         <!-- service to dump telephony information -->
         <service android:name="com.android.phone.TelephonyDebugService"
+                android:exported="true"
                  android:permission="android.permission.DUMP">
             <intent-filter>
                 <action android:name="com.android.phone.TelephonyDebugService" />
@@ -442,6 +458,7 @@
         <!-- Handler for EuiccManager's public-facing intents. -->
         <activity android:name=".euicc.EuiccUiDispatcherActivity"
             android:theme="@android:style/Theme.NoDisplay"
+            android:exported="true"
             android:permission="android.permission.MODIFY_PHONE_STATE">
             <!-- Max out priority to ensure nobody else will handle these intents. -->
             <intent-filter android:priority="1000">
@@ -462,6 +479,7 @@
             EuiccController#RESOLUTION_ACTIVITY_CLASS_NAME
         -->
         <activity android:name=".euicc.EuiccResolutionUiDispatcherActivity"
+            android:exported="true"
             android:permission="android.permission.CALL_PRIVILEGED">
             <!-- Max out priority to ensure nobody else will handle these intents. -->
             <intent-filter android:priority="1000">
@@ -477,6 +495,7 @@
         -->
         <activity android:name=".euicc.EuiccPrivilegedActionUiDispatcherActivity"
                   android:theme="@android:style/Theme.NoDisplay"
+                  android:exported="true"
                   android:permission="android.permission.CALL_PRIVILEGED">
             <!-- Max out priority to ensure nobody else will handle these intents. -->
             <intent-filter android:priority="1000">
@@ -496,6 +515,7 @@
             whitelisted by the underlying eUICC service implementation (i.e. the LPA).
         -->
         <activity android:name=".euicc.EuiccPublicActionUiDispatcherActivity"
+            android:exported="true"
             android:theme="@android:style/Theme.NoDisplay">
             <!-- Max out priority to ensure nobody else will handle these intents. -->
             <intent-filter android:priority="1000">
@@ -509,6 +529,7 @@
             android:excludeFromRecents="true"
             android:label="@string/ecm_exit_dialog"
             android:launchMode="singleTop"
+            android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="com.android.phone.action.ACTION_SHOW_ECM_EXIT_DIALOG" />
@@ -521,13 +542,15 @@
         <service android:name="com.android.services.telephony.sip.SipConnectionService"
                  android:label="@string/sip_connection_service_label"
                  android:singleUser="true"
+                 android:exported="true"
                  android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE" >
             <intent-filter>
                 <action android:name="android.telecom.ConnectionService" />
             </intent-filter>
         </service>
 
-        <receiver android:name="com.android.services.telephony.sip.SipIncomingCallReceiver">
+        <receiver android:name="com.android.services.telephony.sip.SipIncomingCallReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.net.sip.action.SIP_INCOMING_CALL" />
             </intent-filter>
@@ -535,6 +558,7 @@
 
         <activity android:name="com.android.services.telephony.sip.SipPhoneAccountSettingsActivity"
                 android:theme="@android:style/Theme.NoDisplay"
+                android:exported="true"
                 android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.telecom.action.CONFIGURE_PHONE_ACCOUNT" />
@@ -548,6 +572,7 @@
                   android:launchMode="singleTop"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:uiOptions="splitActionBarWhenNarrow"
+                  android:exported="true"
                   android:parentActivityName="com.android.phone.CallFeaturesSetting" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -560,7 +585,8 @@
                 android:uiOptions="splitActionBarWhenNarrow">
         </activity>
 
-        <service android:name="com.android.services.telephony.sip.components.TelephonySipService">
+        <service android:name="com.android.services.telephony.sip.components.TelephonySipService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.net.sip.action.START_SIP" />
             </intent-filter>
@@ -577,6 +603,7 @@
 
         <activity android:name="com.android.phone.settings.PhoneAccountSettingsActivity"
             android:label="@string/phone_accounts"
+            android:exported="true"
             android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.telecom.action.CHANGE_PHONE_ACCOUNTS" />
@@ -588,6 +615,7 @@
             android:label="@string/voicemail"
             android:configChanges="orientation|screenSize|keyboardHidden|screenLayout"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@style/DialerSettingsLight">
             <intent-filter >
                 <!-- DO NOT RENAME. There are existing apps which use this string. -->
@@ -605,6 +633,7 @@
                 android:singleUser="true"
                 android:name="com.android.services.telephony.TelephonyConnectionService"
                 android:label="@string/pstn_connection_service_label"
+                android:exported="true"
                 android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE" >
             <intent-filter>
                 <action android:name="android.telecom.ConnectionService" />
@@ -653,6 +682,7 @@
             </intent-filter>
         </service>
         <service android:name="com.android.internal.telephony.dataconnection.CellularDataService"
+            android:exported="true"
             android:permission="android.permission.BIND_TELEPHONY_DATA_SERVICE" >
             <intent-filter>
                 <action android:name="android.telephony.data.DataService" />
@@ -662,6 +692,7 @@
         <activity
             android:name=".settings.RadioInfo"
             android:label="@string/phone_info_label"
+            android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -671,6 +702,7 @@
 
         <activity android:name=".settings.BandMode"
                   android:label="@string/band_mode_title"
+                  android:exported="true"
                   android:theme="@style/Theme.AppCompat.DayNight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
