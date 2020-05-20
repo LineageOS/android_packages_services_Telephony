@@ -5024,6 +5024,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Unregister a previously registered IImsServiceFeatureCallback associated with an ImsFeature.
+     */
+    public void unregisterImsFeatureCallback(int slotId, int featureType,
+            IImsServiceFeatureCallback callback) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (mImsResolver == null) return;
+            mImsResolver.unregisterImsFeatureCallback(slotId, featureType, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
      * Returns the {@link IImsRegistration} structure associated with the slotId and feature
      * specified or null if IMS is not supported on the slot specified.
      */
