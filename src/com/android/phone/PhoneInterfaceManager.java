@@ -1882,6 +1882,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                                 ((CommandException)(ar.exception)).getCommandError()
                                                 == CommandException.Error.PASSWORD_INCORRECT) {
                                             mResult = PhoneConstants.PIN_PASSWORD_INCORRECT;
+                                        } //When UiccCardApp dispose,handle message and return exception
+                                          else if (ar.exception instanceof CommandException &&
+                                                ((CommandException) (ar.exception)).getCommandError()
+                                                        == CommandException.Error.ABORTED) {
+                                            mResult = PhoneConstants.PIN_OPERATION_ABORTED;
                                         } else {
                                             mResult = PhoneConstants.PIN_GENERAL_FAILURE;
                                         }
