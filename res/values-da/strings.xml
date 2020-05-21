@@ -577,7 +577,7 @@
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Slå opkald sammen"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"Skift"</string>
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"Administrer opkald"</string>
-    <string name="onscreenManageConferenceText" msgid="4700574060601755137">"Admin. konference"</string>
+    <string name="onscreenManageConferenceText" msgid="4700574060601755137">"Admin. møde"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"Lyd"</string>
     <string name="onscreenVideoCallText" msgid="1743992456126258698">"Videoopkald"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"Importer"</string>
