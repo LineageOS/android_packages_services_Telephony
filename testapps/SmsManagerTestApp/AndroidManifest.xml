@@ -16,29 +16,30 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.android.phone.testapps.smsmanagertestapp">
-    <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="29" />
+     package="com.android.phone.testapps.smsmanagertestapp">
+    <uses-sdk android:minSdkVersion="24"
+         android:targetSdkVersion="29"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <application android:label="SmsManagerTestApp">
-        <activity
-            android:name=".SmsManagerTestApp"
-            android:label="SmsManagerTestApp">
+        <activity android:name=".SmsManagerTestApp"
+             android:label="SmsManagerTestApp"
+             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <service android:name=".SmsManagerTestService" android:exported="false" />
+        <service android:name=".SmsManagerTestService"
+             android:exported="false"/>
         <receiver android:name=".SendStatusReceiver"
-                  android:exported="false">
+             android:exported="false">
             <intent-filter>
-                <action android:name="com.android.phone.testapps.smsmanagertestapp.message_sent_action" />
-                <data android:scheme="content" />
+                <action android:name="com.android.phone.testapps.smsmanagertestapp.message_sent_action"/>
+                <data android:scheme="content"/>
             </intent-filter>
         </receiver>
 
     </application>
 </manifest>
-
