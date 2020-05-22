@@ -621,7 +621,7 @@
     <string name="ota_progress" msgid="8837259285255700132">"Telefonoa programatzen…"</string>
     <string name="ota_failure" msgid="5674217489921481576">"Ezin izan da programatu telefonoa"</string>
     <string name="ota_successful" msgid="1106825981548107774">"Telefonoa aktibatu egin da. Zerbitzua hasteko 15 minutu ere behar izan daitezke."</string>
-    <string name="ota_unsuccessful" msgid="8531037653803955754">"Ez duzu telefonoa aktibatu.\nBaliteke estaldura gehiago duen eremu bat aurkitu behar izatea (leiho baten ondoan edo kanpoan).\n\nSaiatu berriro edo, aukera gehiago ezagutzeko, deitu bezeroarentzako zerbitzura."</string>
+    <string name="ota_unsuccessful" msgid="8531037653803955754">"Ez duzu telefonoa aktibatu.\nBaliteke estaldura gehiago duen eremu bat aurkitu behar izatea (leiho baten ondoan edo kanpoan).\n\nSaiatu berriro edo, aukera gehiago ezagutzeko, deitu bezeroarentzako laguntza-zerbitzura."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"SPC HUTSEGITE GEHIEGI"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"Atzera"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"Saiatu berriro"</string>
