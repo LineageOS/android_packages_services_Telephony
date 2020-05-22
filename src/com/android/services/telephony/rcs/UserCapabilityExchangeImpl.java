@@ -27,12 +27,14 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import android.os.PersistableBundle;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.provider.Settings;
 import android.provider.Telephony;
 import android.telecom.TelecomManager;
 import android.telephony.AccessNetworkConstants;
+import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsManager;
@@ -62,6 +64,8 @@ import com.android.service.ims.presence.PresenceSubscriber;
 import com.android.service.ims.presence.SubscribePublisher;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -90,7 +94,6 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
     private final Context mContext;
     private final UceImplHandler mUceImplHandler;
     private RcsFeatureManager mRcsFeatureManager;
-
     private final PresencePublication mPresencePublication;
     private final PresenceSubscriber mPresenceSubscriber;
 
@@ -99,6 +102,9 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
 
     // The callbacks to notify publish state changed.
     private final RemoteCallbackList<IRcsUcePublishStateCallback> mPublishStateCallbacks;
+
+    // The task Ids of pending availability request.
+    private final Set<Integer> mPendingAvailabilityRequests = new HashSet<>();
 
     private final ConcurrentHashMap<Integer, IRcsUceControllerCallback> mPendingCapabilityRequests =
             new ConcurrentHashMap<>();
@@ -242,13 +248,15 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
 
     private void notifyPublishStateChanged(@PresenceBase.PresencePublishState int state) {
         int result = toUcePublishState(state);
-        mPublishStateCallbacks.broadcast(c -> {
-            try {
-                c.onPublishStateChanged(result);
-            } catch (RemoteException e) {
-                logw("notifyPublishStateChanged error: " + e);
-            }
-        });
+        synchronized (mPublishStateCallbacks) {
+            mPublishStateCallbacks.broadcast(c -> {
+                try {
+                    c.onPublishStateChanged(result);
+                } catch (RemoteException e) {
+                    logw("notifyPublishStateChanged error: " + e);
+                }
+            });
+        }
     }
 
     /**
@@ -317,12 +325,86 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
         if (taskId < 0) {
             try {
                 c.onError(toUceError(taskId));
-                return;
             } catch (RemoteException e) {
                 logi("Calling back to dead service");
             }
+            return;
         }
         mPendingCapabilityRequests.put(taskId, c);
+    }
+
+    @Override
+    public int requestCapability(String[] formattedContacts, int taskId) {
+        if (formattedContacts == null || formattedContacts.length == 0) {
+            logw("requestCapability error: contacts is null.");
+            return ResultCode.SUBSCRIBE_INVALID_PARAM;
+        }
+        if (mRcsFeatureManager == null) {
+            logw("requestCapability error: RcsFeatureManager is null.");
+            return ResultCode.ERROR_SERVICE_NOT_AVAILABLE;
+        }
+
+        logi("requestCapability: taskId=" + taskId);
+
+        try {
+            List<Uri> contactList = Arrays.stream(formattedContacts)
+                    .map(Uri::parse).collect(Collectors.toList());
+            mRcsFeatureManager.requestCapabilities(contactList, taskId);
+        } catch (Exception e) {
+            logw("requestCapability error: " + e.getMessage());
+            return ResultCode.ERROR_SERVICE_NOT_AVAILABLE;
+        }
+        return ResultCode.SUCCESS;
+    }
+
+    @Override
+    public int requestAvailability(String formattedContact, int taskId) {
+        if (formattedContact == null || formattedContact.isEmpty()) {
+            logw("requestAvailability error: contact is null.");
+            return ResultCode.SUBSCRIBE_INVALID_PARAM;
+        }
+        if (mRcsFeatureManager == null) {
+            logw("requestAvailability error: RcsFeatureManager is null.");
+            return ResultCode.ERROR_SERVICE_NOT_AVAILABLE;
+        }
+
+        logi("requestAvailability: taskId=" + taskId);
+        addRequestingAvailabilityTaskId(taskId);
+
+        try {
+            Uri contactUri = Uri.parse(formattedContact);
+            List<Uri> contactUris = new ArrayList<>(Arrays.asList(contactUri));
+            mRcsFeatureManager.requestCapabilities(contactUris, taskId);
+        } catch (Exception e) {
+            logw("requestAvailability error: " + e.getMessage());
+            removeRequestingAvailabilityTaskId(taskId);
+            return ResultCode.ERROR_SERVICE_NOT_AVAILABLE;
+        }
+        return ResultCode.SUCCESS;
+    }
+
+    @Override
+    public int getStackStatusForCapabilityRequest() {
+        if (mRcsFeatureManager == null) {
+            logw("Check Stack status: Error! RcsFeatureManager is null.");
+            return ResultCode.ERROR_SERVICE_NOT_AVAILABLE;
+        }
+
+        if (!isCapabilityDiscoveryEnabled(mSubId)) {
+            logw("Check Stack status: Error! capability discovery not enabled");
+            return ResultCode.ERROR_SERVICE_NOT_ENABLED;
+        }
+
+        if (!isEabProvisioned(mContext, mSubId)) {
+            logw("Check Stack status: Error! EAB provisioning disabled.");
+            return ResultCode.ERROR_SERVICE_NOT_ENABLED;
+        }
+
+        if (getPublisherState() != PresenceBase.PUBLISH_STATE_200_OK) {
+            logw("Check Stack status: Error! publish state " + getPublisherState());
+            return ResultCode.ERROR_SERVICE_NOT_PUBLISHED;
+        }
+        return ResultCode.SUCCESS;
     }
 
     /**
@@ -332,20 +414,42 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
     public RcsFeatureCallbacks mRcsFeatureCallback = new RcsFeatureCallbacks() {
         public void onCommandUpdate(int commandCode, int operationToken) {
             logi("onCommandUpdate: code=" + commandCode + ", token=" + operationToken);
-            onCommandUpdateForPublishRequest(commandCode, operationToken);
+            if (isPublishRequestExisted(operationToken)) {
+                onCommandUpdateForPublishRequest(commandCode, operationToken);
+            } else if (isCapabilityRequestExisted(operationToken)) {
+                onCommandUpdateForCapabilityRequest(commandCode, operationToken);
+            } else if (isAvailabilityRequestExisted(operationToken)) {
+                onCommandUpdateForAvailabilityRequest(commandCode, operationToken);
+            } else {
+                logw("onCommandUpdate: invalid token " + operationToken);
+            }
         }
 
         /** See {@link RcsPresenceExchangeImplBase#onNetworkResponse(int, String, int)} */
         public void onNetworkResponse(int responseCode, String reason, int operationToken) {
             logi("onNetworkResponse: code=" + responseCode + ", reason=" + reason
                     + ", operationToken=" + operationToken);
-            onNetworkResponseForPublishRequest(responseCode, reason, operationToken);
+            if (isPublishRequestExisted(operationToken)) {
+                onNetworkResponseForPublishRequest(responseCode, reason, operationToken);
+            } else if (isCapabilityRequestExisted(operationToken)) {
+                onNetworkResponseForCapabilityRequest(responseCode, reason, operationToken);
+            } else if (isAvailabilityRequestExisted(operationToken)) {
+                onNetworkResponseForAvailabilityRequest(responseCode, reason, operationToken);
+            } else {
+                logw("onNetworkResponse: invalid token " + operationToken);
+            }
         }
 
         /** See {@link RcsPresenceExchangeImplBase#onCapabilityRequestResponse(List, int)} */
         public void onCapabilityRequestResponsePresence(List<RcsContactUceCapability> infos,
                 int operationToken) {
-
+            if (isAvailabilityRequestExisted(operationToken)) {
+                handleAvailabilityReqResponse(infos, operationToken);
+            } else if (isCapabilityRequestExisted(operationToken)) {
+                handleCapabilityReqResponse(infos, operationToken);
+            } else {
+                logw("capability request response: invalid token " + operationToken);
+            }
         }
 
         /** See {@link RcsPresenceExchangeImplBase#onNotifyUpdateCapabilites(int)} */
@@ -391,7 +495,7 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
                     uceImpl.onNotifyUpdateCapabilities(publishTriggerType);
                     break;
                 case EVENT_UNPUBLISH:
-                    uceImpl.updatePublisherState(PresenceBase.PUBLISH_STATE_NOT_PUBLISHED);
+                    uceImpl.onUnPublish();
                     break;
                 default:
                     Log.w(LOG_TAG, "handleMessage: error=" + msg.what);
@@ -436,6 +540,10 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
         mPresencePublication.onStackPublishRequested(publishTriggerType);
     }
 
+    private void onUnPublish() {
+        mPresencePublication.setPublishState(PresenceBase.PUBLISH_STATE_NOT_PUBLISHED);
+    }
+
     @Override
     public @PresenceBase.PresencePublishState int getPublisherState() {
         return mPublishState;
@@ -471,11 +579,40 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
         }
         int resultCode = ResultCode.SUCCESS;
         if (commandCode != RcsCapabilityExchange.COMMAND_CODE_SUCCESS) {
-            logw("Command is failed: taskId=" + operationToken + ", code=" + commandCode);
+            logw("onCommandUpdateForPublishRequest failed! taskId=" + operationToken
+                    + ", code=" + commandCode);
             removePublishRequestTaskId(operationToken);
             resultCode = ResultCode.PUBLISH_GENERIC_FAILURE;
         }
         mPresencePublication.onCommandStatusUpdated(operationToken, operationToken, resultCode);
+    }
+
+    private void onCommandUpdateForCapabilityRequest(int commandCode, int operationToken) {
+        if (!isCapabilityRequestExisted(operationToken)) {
+            return;
+        }
+        int resultCode = ResultCode.SUCCESS;
+        if (commandCode != RcsCapabilityExchange.COMMAND_CODE_SUCCESS) {
+            logw("onCommandUpdateForCapabilityRequest failed! taskId=" + operationToken
+                    + ", code=" + commandCode);
+            mPendingCapabilityRequests.remove(operationToken);
+            resultCode = ResultCode.PUBLISH_GENERIC_FAILURE;
+        }
+        mPresenceSubscriber.onCommandStatusUpdated(operationToken, operationToken, resultCode);
+    }
+
+    private void onCommandUpdateForAvailabilityRequest(int commandCode, int operationToken) {
+        if (!isAvailabilityRequestExisted(operationToken)) {
+            return;
+        }
+        int resultCode = ResultCode.SUCCESS;
+        if (commandCode != RcsCapabilityExchange.COMMAND_CODE_SUCCESS) {
+            logw("onCommandUpdateForAvailabilityRequest failed! taskId=" + operationToken
+                    + ", code=" + commandCode);
+            removeRequestingAvailabilityTaskId(operationToken);
+            resultCode = ResultCode.PUBLISH_GENERIC_FAILURE;
+        }
+        mPresenceSubscriber.onCommandStatusUpdated(operationToken, operationToken, resultCode);
     }
 
     /*
@@ -490,19 +627,44 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
         mPresencePublication.onSipResponse(operationToken, responseCode, reason);
     }
 
-    @Override
-    public int requestCapability(String[] formatedContacts, int taskId) {
-        return 0;
+    private void onNetworkResponseForCapabilityRequest(int responseCode, String reason,
+            int operationToken) {
+        if (!isCapabilityRequestExisted(operationToken)) {
+            return;
+        }
+        mPresenceSubscriber.onSipResponse(operationToken, responseCode, reason);
     }
 
-    @Override
-    public int requestAvailability(String formattedContact, int taskId) {
-        return 0;
+    private void onNetworkResponseForAvailabilityRequest(int responseCode, String reason,
+            int operationToken) {
+        if (!isAvailabilityRequestExisted(operationToken)) {
+            return;
+        }
+        removeRequestingAvailabilityTaskId(operationToken);
+        mPresenceSubscriber.onSipResponse(operationToken, responseCode, reason);
     }
 
-    @Override
-    public int getStackStatusForCapabilityRequest() {
-        return 0;
+    private void handleAvailabilityReqResponse(List<RcsContactUceCapability> infos, int token) {
+        try {
+            if (infos == null || infos.isEmpty()) {
+                logw("handle availability request response: infos is null " + token);
+                return;
+            }
+            logi("handleAvailabilityReqResponse: token=" + token);
+            mPresenceSubscriber.updatePresence(infos.get(0));
+        } finally {
+            removeRequestingAvailabilityTaskId(token);
+        }
+    }
+
+    private void handleCapabilityReqResponse(List<RcsContactUceCapability> infos, int token) {
+        if (infos == null) {
+            logw("handleCapabilityReqResponse: infos is null " + token);
+            mPendingCapabilityRequests.remove(token);
+            return;
+        }
+        logi("handleCapabilityReqResponse: token=" + token);
+        mPresenceSubscriber.updatePresences(token, infos, true, null);
     }
 
     @Override
@@ -528,6 +690,28 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
         synchronized (mRequestingPublishTaskIds) {
             return mRequestingPublishTaskIds.contains(taskId);
         }
+    }
+
+    private void addRequestingAvailabilityTaskId(int taskId) {
+        synchronized (mPendingAvailabilityRequests) {
+            mPendingAvailabilityRequests.contains(taskId);
+        }
+    }
+
+    private void removeRequestingAvailabilityTaskId(int taskId) {
+        synchronized (mPendingAvailabilityRequests) {
+            mPendingAvailabilityRequests.remove(taskId);
+        }
+    }
+
+    private boolean isAvailabilityRequestExisted(Integer taskId) {
+        synchronized (mPendingAvailabilityRequests) {
+            return mPendingAvailabilityRequests.contains(taskId);
+        }
+    }
+
+    private boolean isCapabilityRequestExisted(Integer taskId) {
+        return mPendingCapabilityRequests.containsKey(taskId);
     }
 
     private static String getNumberFromUri(Uri uri) {
@@ -799,6 +983,45 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
             }
         }
     };
+
+    private boolean isCapabilityDiscoveryEnabled(int subId) {
+        try {
+            ProvisioningManager manager = ProvisioningManager.createForSubscriptionId(subId);
+            int discoveryEnabled = manager.getProvisioningIntValue(
+                    ProvisioningManager.KEY_RCS_CAPABILITY_DISCOVERY_ENABLED);
+            return (discoveryEnabled == ProvisioningManager.PROVISIONING_VALUE_ENABLED);
+        } catch (Exception e) {
+            logw("isCapabilityDiscoveryEnabled error: " + e.getMessage());
+        }
+        return false;
+    }
+
+    private boolean isEabProvisioned(Context context, int subId) {
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            logw("isEabProvisioned error: invalid subscriptionId " + subId);
+            return false;
+        }
+
+        CarrierConfigManager configManager = (CarrierConfigManager)
+                context.getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (configManager != null) {
+            PersistableBundle config = configManager.getConfigForSubId(subId);
+            if (config != null && !config.getBoolean(
+                    CarrierConfigManager.KEY_CARRIER_VOLTE_PROVISIONED_BOOL)) {
+                return true;
+            }
+        }
+
+        try {
+            ProvisioningManager manager = ProvisioningManager.createForSubscriptionId(subId);
+            int provisioningStatus = manager.getProvisioningIntValue(
+                    ProvisioningManager.KEY_EAB_PROVISIONING_STATUS);
+            return (provisioningStatus == ProvisioningManager.PROVISIONING_VALUE_ENABLED);
+        } catch (Exception e) {
+            logw("isEabProvisioned error: " + e.getMessage());
+        }
+        return false;
+    }
 
     private ImsMmTelManager getImsMmTelManager(int subId) {
         try {
