@@ -19,6 +19,7 @@ package com.android.services.telephony.rcs;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.verify;
@@ -33,6 +34,7 @@ import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.RcsContactUceCapability;
 import android.telephony.ims.RegistrationManager;
+import android.telephony.ims.aidl.IRcsUceControllerCallback;
 import android.telephony.ims.aidl.IRcsUcePublishStateCallback;
 import android.telephony.ims.stub.RcsCapabilityExchange;
 import android.telephony.ims.stub.RcsPresenceExchangeImplBase;
@@ -58,6 +60,9 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.Executor;
 
 @RunWith(AndroidJUnit4.class)
@@ -206,6 +211,35 @@ public class UserCapabilityExchangeImplTest extends TelephonyTestBase {
     }
 
     @Test
+    public void testRequestCapability() throws Exception {
+        int taskId = 1;
+        int sipResponse = 200;
+        List<RcsContactUceCapability> infos = new ArrayList<>();
+        List<Uri> contacts = Arrays.asList(Uri.fromParts("sip", "00000", null));
+        IRcsUceControllerCallback callback = Mockito.mock(IRcsUceControllerCallback.class);
+
+        UserCapabilityExchangeImpl uceImpl = createUserCapabilityExchangeImpl();
+        uceImpl.onRcsConnected(mRcsFeatureManager);
+
+        when(mPresenceSubscriber.requestCapability(anyList(), any())).thenReturn(taskId);
+
+        doAnswer(invocation -> {
+            uceImpl.mRcsFeatureCallback.onCommandUpdate(RcsCapabilityExchange.COMMAND_CODE_SUCCESS,
+                    taskId);
+            uceImpl.mRcsFeatureCallback.onNetworkResponse(sipResponse, null, taskId);
+            uceImpl.mRcsFeatureCallback.onCapabilityRequestResponsePresence(infos, taskId);
+            return null;
+        }).when(mRcsFeatureManager).requestCapabilities(anyList(), anyInt());
+
+        uceImpl.requestCapabilities(contacts, callback);
+        uceImpl.requestCapability(new String[] {"00000"}, taskId);
+
+        verify(mPresenceSubscriber).onCommandStatusUpdated(taskId, taskId, ResultCode.SUCCESS);
+        verify(mPresenceSubscriber).onSipResponse(taskId, sipResponse, null);
+        verify(mPresenceSubscriber).updatePresences(taskId, infos, true, null);
+    }
+
+    @Test
     public void testUpdatePublisherState() throws Exception {
         IRcsUcePublishStateCallback callback = Mockito.mock(IRcsUcePublishStateCallback.class);
         doAnswer(invocation -> {
@@ -235,8 +269,7 @@ public class UserCapabilityExchangeImplTest extends TelephonyTestBase {
         uceImpl.mRcsFeatureCallback.onUnpublish();
         waitForMs(1000);
 
-        assertEquals(PresenceBase.PUBLISH_STATE_NOT_PUBLISHED, uceImpl.getPublisherState());
-        verify(callback).onPublishStateChanged(anyInt());
+        verify(mPresencePublication).setPublishState(PresenceBase.PUBLISH_STATE_NOT_PUBLISHED);
     }
 
     private UserCapabilityExchangeImpl createUserCapabilityExchangeImpl() throws Exception {
