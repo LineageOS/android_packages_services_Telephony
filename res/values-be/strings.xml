@@ -30,7 +30,7 @@
     <string name="mmiStarted" msgid="9212975136944568623">"Пачалося выкананне MMI кода"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"Запускаецца USSD-код..."</string>
     <string name="mmiCancelled" msgid="5339191899200678272">"Код MMI адменены"</string>
-    <string name="cancel" msgid="8984206397635155197">"Адмяніць"</string>
+    <string name="cancel" msgid="8984206397635155197">"Скасаваць"</string>
     <string name="enter_input" msgid="6193628663039958990">"Паведамленне USSD павінна складацца з наступнай колькасцi знакаў:  ад <xliff:g id="MIN_LEN">%1$d</xliff:g> да <xliff:g id="MAX_LEN">%2$d</xliff:g>. Паспрабуйце яшчэ раз."</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"Кіраванне канферэнц-выклікам"</string>
     <string name="ok" msgid="7818974223666140165">"ОК"</string>
