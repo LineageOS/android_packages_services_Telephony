@@ -1535,10 +1535,17 @@ public class TelephonyConnectionService extends ConnectionService {
         if (phone == null || TextUtils.isEmpty(number) || !phone.getServiceState().getRoaming()) {
             return false;
         }
+        boolean allowPrefixIms = true;
         String[] blockPrefixes = null;
         CarrierConfigManager cfgManager = (CarrierConfigManager)
                 phone.getContext().getSystemService(Context.CARRIER_CONFIG_SERVICE);
         if (cfgManager != null) {
+            allowPrefixIms = cfgManager.getConfigForSubId(phone.getSubId()).getBoolean(
+                    CarrierConfigManager.KEY_SUPPORT_IMS_CALL_FORWARDING_WHILE_ROAMING_BOOL,
+                    true);
+            if (allowPrefixIms && useImsForAudioOnlyCall(phone)) {
+                return false;
+            }
             blockPrefixes = cfgManager.getConfigForSubId(phone.getSubId()).getStringArray(
                     CarrierConfigManager.KEY_CALL_FORWARDING_BLOCKS_WHILE_ROAMING_STRING_ARRAY);
         }
@@ -1551,6 +1558,14 @@ public class TelephonyConnectionService extends ConnectionService {
             }
         }
         return false;
+    }
+
+    private boolean useImsForAudioOnlyCall(Phone phone) {
+        Phone imsPhone = phone.getImsPhone();
+
+        return imsPhone != null
+                && (imsPhone.isVolteEnabled() || imsPhone.isWifiCallingEnabled())
+                && (imsPhone.getServiceState().getState() == ServiceState.STATE_IN_SERVICE);
     }
 
     private boolean isRadioOn() {
