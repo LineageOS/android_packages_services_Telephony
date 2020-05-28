@@ -190,7 +190,7 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnCance
      * Shows Emergency Callback Mode dialog and starts countdown timer
      */
     private void showEmergencyCallbackModeExitDialog() {
-        if (!mIsResumed) {
+        if (isDestroyed()) {
             Log.w(TAG, "Tried to show dialog, but activity was already finished");
             return;
         }
