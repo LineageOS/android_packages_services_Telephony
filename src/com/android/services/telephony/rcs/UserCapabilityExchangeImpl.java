@@ -938,7 +938,11 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
             synchronized (mCapabilitiesLock) {
                 capabilities = mMmTelCapabilities;
             }
-            mPresencePublication.onFeatureCapabilityChanged(mNetworkRegistrationType, capabilities);
+
+            if (capabilities != null) {
+                mPresencePublication.onFeatureCapabilityChanged(mNetworkRegistrationType,
+                        capabilities);
+            }
         }
 
         @Override
@@ -951,7 +955,11 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
             synchronized (mCapabilitiesLock) {
                 capabilities = mMmTelCapabilities;
             }
-            mPresencePublication.onFeatureCapabilityChanged(mNetworkRegistrationType, capabilities);
+
+            if (capabilities != null) {
+                mPresencePublication.onFeatureCapabilityChanged(mNetworkRegistrationType,
+                        capabilities);
+            }
             mPresencePublication.onImsDisconnected();
         }
     };
@@ -960,6 +968,10 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
             new ImsMmTelManager.CapabilityCallback() {
         @Override
         public void onCapabilitiesStatusChanged(MmTelFeature.MmTelCapabilities capabilities) {
+            if (capabilities == null) {
+                logw("onCapabilitiesStatusChanged: parameter is null");
+                return;
+            }
             synchronized (mCapabilitiesLock) {
                 mMmTelCapabilities = capabilities;
             }
