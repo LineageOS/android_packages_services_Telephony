@@ -1929,9 +1929,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * This method has been removed due to privacy and stability concerns.
+     */
+    @Override
     public void updateServiceLocation() {
-        updateServiceLocationForSubscriber(getDefaultSubscription());
-
+        Log.e(LOG_TAG, "Call to unsupported method updateServiceLocation()");
+        return;
     }
 
     @Override
@@ -1971,21 +1975,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             final Phone phone = getPhone(getDefaultSubscription());
             if (phone != null) {
                 phone.updateServiceLocation(workSource);
-            }
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    public void updateServiceLocationForSubscriber(int subId) {
-        // No permission check needed here: this call is harmless, and it's
-        // needed for the ServiceState.requestStateUpdate() call (which is
-        // already intentionally exposed to 3rd parties.)
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            final Phone phone = getPhone(subId);
-            if (phone != null) {
-                phone.updateServiceLocation(null);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -2360,46 +2349,30 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * This method was removed due to potential issues caused by performing partial
+     * updates of service state, and lack of a credible use case.
+     *
+     * This has the ability to break the telephony implementation by disabling notification of
+     * changes in device connectivity. DO NOT USE THIS!
+     */
     @Override
     public void enableLocationUpdates() {
-        enableLocationUpdatesForSubscriber(getDefaultSubscription());
-    }
-
-    @Override
-    public void enableLocationUpdatesForSubscriber(int subId) {
         mApp.enforceCallingOrSelfPermission(
                 android.Manifest.permission.CONTROL_LOCATION_UPDATES, null);
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            final Phone phone = getPhone(subId);
-            if (phone != null) {
-                phone.enableLocationUpdates();
-            }
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
     }
 
+    /**
+     * This method was removed due to potential issues caused by performing partial
+     * updates of service state, and lack of a credible use case.
+     *
+     * This has the ability to break the telephony implementation by disabling notification of
+     * changes in device connectivity. DO NOT USE THIS!
+     */
     @Override
     public void disableLocationUpdates() {
-        disableLocationUpdatesForSubscriber(getDefaultSubscription());
-    }
-
-    @Override
-    public void disableLocationUpdatesForSubscriber(int subId) {
         mApp.enforceCallingOrSelfPermission(
                 android.Manifest.permission.CONTROL_LOCATION_UPDATES, null);
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            final Phone phone = getPhone(subId);
-            if (phone != null) {
-                phone.disableLocationUpdates();
-            }
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
     }
 
     /**
