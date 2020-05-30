@@ -105,7 +105,7 @@
     <string name="labelCFU" msgid="8870170873036279706">"नेहमी फॉरवर्ड करा"</string>
     <string name="messageCFU" msgid="1361806450979589744">"नेहमी हा नंबर वापरा"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"सर्व कॉल अग्रेषित करत आहे"</string>
-    <string name="sum_cfu_enabled" msgid="5806923046528144526">"सर्व कॉल <xliff:g id="PHONENUMBER">{0}</xliff:g> वर अग्रेषित करत आहे"</string>
+    <string name="sum_cfu_enabled" msgid="5806923046528144526">"सर्व कॉल <xliff:g id="PHONENUMBER">{0}</xliff:g> वर फॉरवर्ड करत आहे"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"नंबर अनुपलब्‍ध आहे"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"बंद"</string>
     <string name="labelCFB" msgid="615265213360512768">"व्यस्त असताना"</string>

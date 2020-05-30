@@ -74,7 +74,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Konfiguratu kontuaren ezarpenak"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Deiak egiteko kontu guztiak"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Hautatu zein kontutatik egin daitezkeen deiak"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi bidezko deiak"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wifi bidezko deiak"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Konektatzeko zerbitzu integratua"</string>
     <string name="voicemail" msgid="7697769412804195032">"Erantzungailua"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Erantzungailua (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -305,7 +305,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Hautatu egin behar da"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Datuetarako SIMa aldatu nahi duzu?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Datu-konexiorako, <xliff:g id="NEW_SIM">%1$s</xliff:g> txartela erabili nahi duzu <xliff:g id="OLD_SIM">%2$s</xliff:g> txartelaren ordez?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi bidezko deiak"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wifi bidezko deiak"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Operadorearen bideo-deiak"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS aukerak"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA aukerak"</string>
