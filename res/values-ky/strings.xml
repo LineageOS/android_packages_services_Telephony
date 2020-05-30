@@ -48,7 +48,7 @@
     <string name="no_vm_number_msg" msgid="5165161462411372504">"SIM-картада сакталган үн почтасынын номери жок."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"Номер кошуу"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Үн почта жөндөөлөрүн алгачкы колдонуучу гана өзгөртө алат."</string>
-    <string name="puk_unlocked" msgid="4627340655215746511">"SIM-картаңыз бөгөттөн чыгарылган. Телефонуңуздун кулпусу ачылууда…"</string>
+    <string name="puk_unlocked" msgid="4627340655215746511">"SIM картаңыз бөгөттөн чыгарылган. Телефонуңуздун кулпусу ачылууда…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM-карта тармагынын кулпусун ачуучу PIN код"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Кулпусун ачуу"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Этибарга албоо"</string>
@@ -170,7 +170,7 @@
     <string name="empty_networks_list" msgid="9216418268008582342">"Эч тармак табылган жок."</string>
     <string name="network_query_error" msgid="3862515805115145124">"Тармактар табылбай койду. Кайталап көрүңүз."</string>
     <string name="register_on_network" msgid="4194770527833960423">"<xliff:g id="NETWORK">%s</xliff:g> тармагына катталууда…"</string>
-    <string name="not_allowed" msgid="8541221928746104798">"Сиздин SIM-картаңыз бул түйүнгө кошулганга жол бербейт."</string>
+    <string name="not_allowed" msgid="8541221928746104798">"Сиздин SIM картаңыз бул түйүнгө кошулганга жол бербейт."</string>
     <string name="connect_later" msgid="1950138106010005425">"Бул түйүнгө азыр кошулуу мүмкүн эмес. Бир аздан соң кайра аракеттениңиз."</string>
     <string name="registration_done" msgid="5337407023566953292">"Тармакка катталды."</string>
     <string name="already_auto" msgid="8607068290733079336">"Мурунтан эле автоматтык түрдө тандоодо."</string>

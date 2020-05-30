@@ -43,7 +43,7 @@
     <string name="send_button" msgid="5070379600779031932">"Enviar"</string>
     <string name="pause_prompt_yes" msgid="8184132073048369575">"Sí"</string>
     <string name="pause_prompt_no" msgid="2145264674774138579">"No"</string>
-    <string name="wild_prompt_str" msgid="5858910969703305375">"Sustituir el carácter comodín por"</string>
+    <string name="wild_prompt_str" msgid="5858910969703305375">"Reemplazar el carácter comodín por"</string>
     <string name="no_vm_number" msgid="6623853880546176930">"Falta el número del buzón de voz."</string>
     <string name="no_vm_number_msg" msgid="5165161462411372504">"No se ha almacenado ningún número de buzón de voz en la tarjeta SIM."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"Añadir número"</string>

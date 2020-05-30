@@ -74,7 +74,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Konfiguratu kontuaren ezarpenak"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Deiak egiteko kontu guztiak"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Hautatu zein kontutatik egin daitezkeen deiak"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi bidezko deiak"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wifi bidezko deiak"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Konektatzeko zerbitzu integratua"</string>
     <string name="voicemail" msgid="7697769412804195032">"Erantzungailua"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Erantzungailua (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -298,7 +298,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Hautatu egin behar da"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Datuetarako SIMa aldatu nahi duzu?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Datu-konexiorako, <xliff:g id="NEW_SIM">%1$s</xliff:g> txartela erabili nahi duzu <xliff:g id="OLD_SIM">%2$s</xliff:g> txartelaren ordez?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi bidezko deiak"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wifi bidezko deiak"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Operadorearen bideo-deiak"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS aukerak"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA aukerak"</string>
@@ -614,7 +614,7 @@
     <string name="ota_progress" msgid="8837259285255700132">"Telefonoa programatzen…"</string>
     <string name="ota_failure" msgid="5674217489921481576">"Ezin izan da programatu telefonoa"</string>
     <string name="ota_successful" msgid="1106825981548107774">"Telefonoa aktibatu egin da. Zerbitzua hasteko 15 minutu ere behar izan daitezke."</string>
-    <string name="ota_unsuccessful" msgid="8531037653803955754">"Ez duzu telefonoa aktibatu.\nBaliteke estaldura gehiago duen eremu bat aurkitu behar izatea (leiho baten ondoan edo kanpoan).\n\nSaiatu berriro edo, aukera gehiago ezagutzeko, deitu bezeroarentzako zerbitzura."</string>
+    <string name="ota_unsuccessful" msgid="8531037653803955754">"Ez duzu telefonoa aktibatu.\nBaliteke estaldura gehiago duen eremu bat aurkitu behar izatea (leiho baten ondoan edo kanpoan).\n\nSaiatu berriro edo, aukera gehiago ezagutzeko, deitu bezeroarentzako laguntza-zerbitzura."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"SPC HUTSEGITE GEHIEGI"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"Atzera"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"Saiatu berriro"</string>

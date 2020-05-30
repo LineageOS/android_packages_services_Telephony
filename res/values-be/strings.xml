@@ -30,7 +30,7 @@
     <string name="mmiStarted" msgid="9212975136944568623">"Пачалося выкананне MMI кода"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"Запускаецца USSD-код..."</string>
     <string name="mmiCancelled" msgid="5339191899200678272">"Код MMI адменены"</string>
-    <string name="cancel" msgid="8984206397635155197">"Адмяніць"</string>
+    <string name="cancel" msgid="8984206397635155197">"Скасаваць"</string>
     <string name="enter_input" msgid="6193628663039958990">"Паведамленне USSD павінна складацца з наступнай колькасцi знакаў:  ад <xliff:g id="MIN_LEN">%1$d</xliff:g> да <xliff:g id="MAX_LEN">%2$d</xliff:g>. Паспрабуйце яшчэ раз."</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"Кіраванне канферэнц-выклікам"</string>
     <string name="ok" msgid="7818974223666140165">"ОК"</string>
@@ -306,7 +306,7 @@
     <string name="throttle_current_usage" msgid="7483859109708658613">"Выкарыстанне даных у бягучы перыяд"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Перыяд выкарыстання дадзеных"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Палітыка хуткасці перадачы дадзеных"</string>
-    <string name="throttle_help" msgid="2624535757028809735">"Дадатковая iнфармацыя"</string>
+    <string name="throttle_help" msgid="2624535757028809735">"Даведацца больш"</string>
     <string name="throttle_status_subtext" msgid="1110276415078236687">"Выкарыстана <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) з максімальнага перыяду (<xliff:g id="USED_2">%3$s</xliff:g>)\nНаступны перыяд пачнецца праз <xliff:g id="USED_3">%4$d</xliff:g> сут (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"Выкарыстана <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>??) з максімуму перыяду (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Максімум <xliff:g id="USED_0">%1$s</xliff:g> перавышаны\nХуткасць перадачы дадзеных зніжана да <xliff:g id="USED_1">%2$d</xliff:g> Кб/с"</string>
