@@ -845,7 +845,7 @@
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"ការចុះឈ្មោះ IMS៖ <xliff:g id="STATUS">%1$s</xliff:g>\nការហៅ​ជា​សំឡេង​តាម LTE៖ <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nការហៅ​ជា​សំឡេង​តាម WiFi៖ <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nការហៅជាវីដេអូ៖ <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nផ្ទៃ UT ៖ <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"កំពុង​ដំណើរការ"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"មិនដំណើរការ"</string>
-    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"សម្រាប់​តែ​ការហៅទៅលេខសង្គ្រោះបន្ទាន់​ប៉ុណ្ណោះ"</string>
+    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"ការហៅទៅលេខសង្គ្រោះបន្ទាន់​តែប៉ុណ្ណោះ"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"វិទ្យុ​បាន​បិទ"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"រ៉ូមីង"</string>
     <string name="radioInfo_roaming_not" msgid="1904547918725478110">"មិនរ៉ូមីងទេ"</string>

@@ -74,7 +74,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"የመለያ ቅንብሮችን ይውቀሩ"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"የሁሉም ደዋይ መለያዎች"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"የትኛዎቹ መለያዎች ጥሪዎችን ማድረግ እንደሚችሉ ይምረጡ"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"የWi-Fi ጥሪ ማድረጊያ"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"የWi-Fi ጥሪ"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"አብሮ የተገነባ የግንኙነት አገልግሎት"</string>
     <string name="voicemail" msgid="7697769412804195032">"የድምፅ መልዕክት"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"የድምጽ መልዕክት (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

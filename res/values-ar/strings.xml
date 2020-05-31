@@ -662,7 +662,7 @@
     <string name="calling_via_template" msgid="1791323450703751750">"الاتصال عبر <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="7885089213135154834">"صورة جهة الاتصال"</string>
     <string name="goPrivate" msgid="4645108311382209551">"انتقال إلى مكالمة خاصة"</string>
-    <string name="selectContact" msgid="1527612842599767382">"تحديد جهة اتصال"</string>
+    <string name="selectContact" msgid="1527612842599767382">"اختيار جهة اتصال"</string>
     <string name="not_voice_capable" msgid="2819996734252084253">"الاتصال الصوتي غير معتمد"</string>
     <string name="description_dial_button" msgid="8614631902795087259">"طلب"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"عرض لوحة الاتصال"</string>

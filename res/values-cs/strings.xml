@@ -141,7 +141,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"OK"</string>
     <string name="enable" msgid="2636552299455477603">"Zapnout"</string>
     <string name="disable" msgid="1122698860799462116">"Vypnout"</string>
-    <string name="change_num" msgid="6982164494063109334">"Aktualiz."</string>
+    <string name="change_num" msgid="6982164494063109334">"Aktualizovat"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"Výchozí nastavení sítě"</item>
     <item msgid="6813323051965618926">"Skrýt číslo"</item>
