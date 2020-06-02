@@ -1574,12 +1574,13 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         boolean wasVideoCall = false;
         boolean isVowifiEnabled = false;
         if (phone instanceof ImsPhone) {
-            ImsPhone imsPhone = (ImsPhone) phone;
-            if (imsPhone.getForegroundCall() != null
-                    && imsPhone.getForegroundCall().getImsCall() != null) {
-                ImsCall call = imsPhone.getForegroundCall().getImsCall();
-                isCurrentVideoCall = call.isVideoCall();
-                wasVideoCall = call.wasVideoCall();
+            ImsPhoneCall foregroundCall = ((ImsPhone) phone).getForegroundCall();
+            if (foregroundCall != null) {
+                ImsCall call = foregroundCall.getImsCall();
+                if (call != null) {
+                    isCurrentVideoCall = call.isVideoCall();
+                    wasVideoCall = call.wasVideoCall();
+                }
             }
 
             isVowifiEnabled = ImsUtil.isWfcEnabled(phone.getContext(), phone.getPhoneId());
