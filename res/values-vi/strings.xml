@@ -282,7 +282,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Thời gian sử dụng dữ liệu"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Chính sách tốc độ dữ liệu"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Tìm hiểu thêm"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) trong tổng số <xliff:g id="USED_2">%3$s</xliff:g> thời gian tối đa\nThời gian tiếp theo bắt đầu sau <xliff:g id="USED_3">%4$d</xliff:g> ngày nữa (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>%%) trong tổng <xliff:g id="USED_2">%3$s</xliff:g> thời gian tối đa\nThời gian tiếp theo bắt đầu sau <xliff:g id="USED_3">%4$d</xliff:g> ngày nữa (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) trong tổng số <xliff:g id="USED_2">%3$s</xliff:g> thời gian tối đa"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Đã vượt quá tối đa <xliff:g id="USED_0">%1$s</xliff:g>\nTốc độ dữ liệu bị giảm xuống <xliff:g id="USED_1">%2$d</xliff:g> Kb/giây"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ của chu kỳ đã qua\nThời gian tiếp theo sẽ bắt đầu trong <xliff:g id="USED_1">%2$d</xliff:g> ngày (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>

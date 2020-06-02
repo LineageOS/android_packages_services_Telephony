@@ -263,7 +263,7 @@
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"ଅନ୍ୟ SIM ବ୍ୟବହାର କରିବା ସମୟରେ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> କଲ୍ ଏବଂ ଡାଟା ସେବାଗୁଡ଼ିକ ବ୍ଲକ୍ କରାଯାଇପାରେ।"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"ଆପ୍‌ ଦ୍ୱାରା ଡାଟା ବ୍ୟବହାର"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g>ରେ <xliff:g id="ID_1">%1$s</xliff:g> ମୋବାଇଲ୍ ଡାଟା ବ୍ୟବହାର କରାଯାଇଛି"</string>
-    <string name="advanced_options_title" msgid="9208195294513520934">"ଆଧୁନିକ"</string>
+    <string name="advanced_options_title" msgid="9208195294513520934">"ଉନ୍ନତ"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"ନେଟୱର୍କ କ୍ୟାରିଅର"</string>
     <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"ମୋବାଇଲ୍ ଓ ଇଣ୍ଟରନେଟ୍ ସେବା ପ୍ରଦାନକାରୀ କମ୍ପାନୀ, ଇସିମ୍, ସିମ୍, euicc, ମୋବାଇଲ୍ ଓ ଇଣ୍ଟରନେଟ୍ ସେବା ପ୍ରଦାନକାରୀ କମ୍ପାନୀକୁ ସ୍ଵିଚ୍ କରନ୍ତୁ, ମୋବାଇଲ୍ ଓ ଇଣ୍ଟରନେଟ୍ ସେବା ପ୍ରଦାନକାରୀ କମ୍ପାନୀକୁ ଯୋଡ଼ନ୍ତୁ"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>

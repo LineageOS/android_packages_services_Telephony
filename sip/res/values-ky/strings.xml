@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="sip_settings" msgid="7452587325305604702">"SIP жөндөөлөрү"</string>
     <string name="sip_accounts" msgid="7297896885665783239">"SIP аккаунттары"</string>
-    <string name="sip_accounts_title" msgid="3061686404598143943">"Каттоо эсептери"</string>
+    <string name="sip_accounts_title" msgid="3061686404598143943">"Аккаунттар"</string>
     <string name="sip_receive_calls" msgid="3403644006618369349">"Келген чалууларды кабыл алуу"</string>
     <string name="sip_receive_calls_summary" msgid="5306603671778761443">"Батареянын кубаты көбүрөөк керектелет"</string>
     <string name="sip_call_options_title" msgid="5027066677561068192">"SIP аркылуу чалуу"</string>
@@ -40,7 +40,7 @@
     <string name="registration_status_registering" msgid="7986331597809521791">"Катталууда…"</string>
     <string name="registration_status_still_trying" msgid="7178623685868766282">"Дагы эле аракет жасалууда…"</string>
     <string name="registration_status_not_receiving" msgid="3873074208531938401">"Чалуулар кабыл алынбайт"</string>
-    <string name="registration_status_no_data" msgid="2987064560116584121">"Интернет байланышы жок болгондуктан, эсепти каттоо аракети токтотулду."</string>
+    <string name="registration_status_no_data" msgid="2987064560116584121">"Интернет жок болгондуктан, эсепти каттоо аракети токтотулду."</string>
     <string name="registration_status_no_wifi_data" msgid="685470618241482948">"Wi-Fi байланышы жок болгондуктан, эсепти каттоо аракети токтотулду."</string>
     <string name="registration_status_not_running" msgid="6236403137652262659">"Эсеп катталбай калды."</string>
     <string name="registration_status_done" msgid="6787397199273357721">"Чалуулар кабыл алынат."</string>

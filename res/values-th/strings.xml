@@ -282,7 +282,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"ช่วงเวลาการใช้ข้อมูล"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"นโยบายอัตราการส่งข้อมูล"</string>
     <string name="throttle_help" msgid="2624535757028809735">"ดูข้อมูลเพิ่มเติม"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) จากช่วงสูงสุด <xliff:g id="USED_2">%3$s</xliff:g> \nช่วงถัดไปจะเริ่มในอีก <xliff:g id="USED_3">%4$d</xliff:g> วัน (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) จากช่วงสูงสุด <xliff:g id="USED_2">%3$s</xliff:g>\nช่วงถัดไปจะเริ่มในอีก <xliff:g id="USED_3">%4$d</xliff:g> วัน (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) จากช่วงสูงสุด <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g>เกินจำนวนสูงสุด\nอัตราการส่งข้อมูลถูกลดเหลือ<xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ ของรอบผ่านไป \n ช่วงถัดไปจะเริ่มในอีก <xliff:g id="USED_1">%2$d</xliff:g> วัน (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
