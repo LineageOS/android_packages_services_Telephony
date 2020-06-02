@@ -26,7 +26,7 @@
     <string name="sip_call_options_entry_1" msgid="4722647332760934261">"Dei guztietan datu-sarea erabilgarri dagoenean"</string>
     <string name="sip_call_options_entry_2" msgid="7338504256051655013">"SIP deietan soilik"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="922329055414010991">"Dei guztietan"</string>
-    <string name="add_sip_account" msgid="5754758646745144384">"Gehitu kontua"</string>
+    <string name="add_sip_account" msgid="5754758646745144384">"Gehitu kontu bat"</string>
     <string name="remove_sip_account" msgid="8272617403399636513">"Kendu kontua"</string>
     <string name="sip_account_list" msgid="2596262496233721769">"SIP kontuak"</string>
     <string name="saving_account" msgid="3390358043846687266">"Kontua gordetzen…"</string>
@@ -40,8 +40,8 @@
     <string name="registration_status_registering" msgid="7986331597809521791">"Erregistratzen…"</string>
     <string name="registration_status_still_trying" msgid="7178623685868766282">"Oraindik saiatzen…"</string>
     <string name="registration_status_not_receiving" msgid="3873074208531938401">"Ez da deirik jasotzen ari."</string>
-    <string name="registration_status_no_data" msgid="2987064560116584121">"Kontua erregistratzeko prozesua gelditu da ez dagoelako Interneteko konexiorik."</string>
-    <string name="registration_status_no_wifi_data" msgid="685470618241482948">"Kontua erregistratzeko prozesua gelditu da ez dagoelako Wi-Fi konexiorik."</string>
+    <string name="registration_status_no_data" msgid="2987064560116584121">"Kontua erregistratzeko prozesua gelditu da ez zaudelako konektatuta Internetera."</string>
+    <string name="registration_status_no_wifi_data" msgid="685470618241482948">"Kontua erregistratzeko prozesua gelditu da ez dagoelako wifi bidezko konexiorik."</string>
     <string name="registration_status_not_running" msgid="6236403137652262659">"Ez da kontua erregistratu."</string>
     <string name="registration_status_done" msgid="6787397199273357721">"Deiak jasotzen."</string>
     <string name="registration_status_failed_try_later" msgid="7855389184910312091">"Ez da kontua erregistratu: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>). Geroago saiatuko gara berriro."</string>
@@ -72,7 +72,7 @@
     <string name="empty_alert" msgid="3693655518612836718">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> behar da eta ezin da hutsik utzi."</string>
     <string name="not_a_valid_port" msgid="3664668836663491376">"Ataka-zenbakiak 1000 eta 65534 artean egon behar luke."</string>
     <string name="no_internet_available" msgid="161720645084325479">"SIP deiak egiteko, egiaztatu Internetera konektatuta zaudela."</string>
-    <string name="no_wifi_available" msgid="1179092018692306312">"Wi-Fi sare batera konektatuta egon behar zara SIP deiak egiteko (erabili hari gabekoen eta sareen ezarpenak)."</string>
+    <string name="no_wifi_available" msgid="1179092018692306312">"Wifi-sare batera konektatuta egon behar zara SIP deiak egiteko (erabili hari gabekoen eta sareen ezarpenak)."</string>
     <string name="no_voip" msgid="3366395789297981738">"SIP deiak ez dira onartzen"</string>
     <string name="sip_system_decide" msgid="197230378376326430">"Automatikoa"</string>
     <string name="sip_always_send_keepalive" msgid="4986533673960084769">"Bidali beti"</string>

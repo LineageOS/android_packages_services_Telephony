@@ -282,9 +282,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Տվյալների օգտագործման ժամանահատվածը"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Տվյալների սակագնային քաղաքականությունը"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Իմանալ ավելին"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) <xliff:g id="USED_2">%3$s</xliff:g>-ից (առավելագույն)\nՀաջորդ ժամանակահատվածը սկսվում է <xliff:g id="USED_3">%4$d</xliff:g> օրից (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) <xliff:g id="USED_2">%3$s</xliff:g>-ի ժամանակահատվածի առավելագույնը"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> առավելագույնը գերազանցվել է\nՏվյալների արժեքը նվազել է մինչև <xliff:g id="USED_1">%2$d</xliff:g> Կբիթ/վ"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"Շրջանի <xliff:g id="USED_0">%1$d</xliff:g>٪ -ը լրացել է\nՀաջորդ ժամանակահատվածը սկսվում է <xliff:g id="USED_1">%2$d</xliff:g> օրից (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -766,7 +764,7 @@
     <string name="supp_service_notification_call_forwarded" msgid="7102930311735433088">"Զանգը վերահասցեավորվեց:"</string>
     <string name="supp_service_notification_call_waiting" msgid="4577403881609445324">"Զանգը սպասման մեջ է:"</string>
     <string name="supp_service_clir_suppression_rejected" msgid="6105737020194776121">"Համարի արգելափակումը մերժված է:"</string>
-    <string name="supp_service_closed_user_group_call" msgid="2811636666505250689">"Կապակցում օգտատերերի փակ խմբի հետ"</string>
+    <string name="supp_service_closed_user_group_call" msgid="2811636666505250689">"Միացում օգտատերերի փակ խմբի հետ"</string>
     <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"Բոլոր մուտքային զանգերն արգելափակված են:"</string>
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"Բոլոր ելքային զանգերն արգելափակված են:"</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"Զանգի վերահասցեավորումն ակտիվ է:"</string>
