@@ -189,8 +189,10 @@ public class EmergencyCallbackModeService extends Service {
 
         // PendingIntent to launch Emergency Callback Mode Exit activity if the user selects
         // this notification
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(EmergencyCallbackModeExitDialog.ACTION_SHOW_ECM_EXIT_DIALOG), 0);
+        Intent intent = new Intent(this, EmergencyCallbackModeExitDialog.class);
+        intent.setAction(EmergencyCallbackModeExitDialog.ACTION_SHOW_ECM_EXIT_DIALOG);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent,
+                PendingIntent.FLAG_IMMUTABLE);
         builder.setContentIntent(contentIntent);
 
         // Format notification string
