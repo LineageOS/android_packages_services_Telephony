@@ -48,6 +48,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Represents an IMS conference call.
@@ -832,9 +833,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
      * @param conferenceHost The connection hosting the conference.
      */
     private void setConferenceHost(TelephonyConnection conferenceHost) {
-        if (Log.VERBOSE) {
-            Log.v(this, "setConferenceHost " + conferenceHost);
-        }
+        Log.i(this, "setConferenceHost " + conferenceHost);
 
         mConferenceHost = conferenceHost;
 
@@ -865,6 +864,12 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
 
             mConferenceHostAddress = new Uri[hostAddresses.size()];
             mConferenceHostAddress = hostAddresses.toArray(mConferenceHostAddress);
+
+            Log.i(this, "setConferenceHost: hosts are "
+                    + Arrays.stream(mConferenceHostAddress)
+                    .map(Uri::getSchemeSpecificPart)
+                    .map(ssp -> Rlog.pii(LOG_TAG, ssp))
+                    .collect(Collectors.joining(", ")));
 
             mIsUsingSimCallManager = mTelecomAccountRegistry.isUsingSimCallManager(
                     mConferenceHostPhoneAccountHandle);
