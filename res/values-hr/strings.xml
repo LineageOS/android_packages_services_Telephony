@@ -95,17 +95,17 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Učitavanje postavki…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Broj je skriven u izlaznim pozivima"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Broj prikazan za izlazne pozive"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Koristiti zadane postavke operatera za prikaz mog broja kod odlaznih poziva"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Upotrijebi zadane postavke operatera za prikaz mog broja kod odlaznih poziva"</string>
     <string name="labelCW" msgid="8449327023861428622">"Poziv na čekanju"</string>
-    <string name="sum_cw_enabled" msgid="3977308526187139996">"Obavijesti me tijekom poziva o dolaznim pozivima"</string>
-    <string name="sum_cw_disabled" msgid="3658094589461768637">"Obavijesti me tijekom poziva o dolaznim pozivima"</string>
+    <string name="sum_cw_enabled" msgid="3977308526187139996">"Obavijesti me o dolaznim pozivima tijekom poziva"</string>
+    <string name="sum_cw_disabled" msgid="3658094589461768637">"Obavijesti me o dolaznim pozivima tijekom poziva"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Postavke preusmjeravanja poziva"</string>
     <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Prosljeđivanje poziva (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"Preusmjeravanje poziva"</string>
     <string name="labelCFU" msgid="8870170873036279706">"Uvijek preusmjeri"</string>
     <string name="messageCFU" msgid="1361806450979589744">"Uvijek koristi ovaj broj"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"Preusmjeravanje svih poziva"</string>
-    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Preusmjeravanje poziva na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
+    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Preusmjeravanje svih poziva na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Broj je nedostupan"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"Isključeno"</string>
     <string name="labelCFB" msgid="615265213360512768">"Kad je broj zauzet"</string>
