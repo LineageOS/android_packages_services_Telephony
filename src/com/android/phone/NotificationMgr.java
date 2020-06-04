@@ -639,7 +639,7 @@ public class NotificationMgr {
         }
         // Navigate to "Network Selection Settings" which list all subscriptions.
         PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0,
-                new Intent(ACTION_MOBILE_NETWORK_LIST), 0);
+                new Intent(ACTION_MOBILE_NETWORK_LIST), PendingIntent.FLAG_IMMUTABLE);
         // Display phone number from the other sub
         String line1Num = null;
         SubscriptionManager subMgr = (SubscriptionManager) mContext.getSystemService(
