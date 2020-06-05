@@ -108,7 +108,7 @@
     <string name="sum_cfu_enabled" msgid="5806923046528144526">"Áframsendir öll símtöl í <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Ekki næst í númerið"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"Slökkt"</string>
-    <string name="labelCFB" msgid="615265213360512768">"Þegar er á tali"</string>
+    <string name="labelCFB" msgid="615265213360512768">"Þegar það er á tali"</string>
     <string name="messageCFB" msgid="1958017270393563388">"Númeraval þegar síminn er á tali"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"Áframsendir í <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"Slökkt"</string>
