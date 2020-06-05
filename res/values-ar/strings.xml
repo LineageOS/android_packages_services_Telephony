@@ -118,7 +118,7 @@
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"إعادة التوجيه إلى <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"غير مفعّل"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"لا يتيح مشغل شبكة الجوال إيقاف اعادة توجيه المكالمة عند عدم رد هاتفك."</string>
-    <string name="labelCFNRc" msgid="4163399350778066013">"عند عدم الوصول"</string>
+    <string name="labelCFNRc" msgid="4163399350778066013">"عند تعذر الوصول"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"الرقم عند عدم الوصول"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"إعادة التوجيه إلى <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"غير مفعّل"</string>
@@ -128,7 +128,7 @@
     <string name="call_settings_with_label" msgid="8460230435361579511">"الإعدادات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"خطأ في إعدادات الاتصال"</string>
     <string name="reading_settings" msgid="1605904432450871183">"جارٍ قراءة الإعدادات..."</string>
-    <string name="updating_settings" msgid="3650396734816028808">"جارٍ تحديث الإعدادات..."</string>
+    <string name="updating_settings" msgid="3650396734816028808">"جارٍ تعديل الإعدادات..."</string>
     <string name="reverting_settings" msgid="7378668837291012205">"جارٍ إعادة الإعدادات..."</string>
     <string name="response_error" msgid="3904481964024543330">"رد غير متوقع من الشبكة."</string>
     <string name="exception_error" msgid="330994460090467">"‏خطأ في الشبكة أو في شريحة SIM"</string>
@@ -679,7 +679,7 @@
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"مكالمات الطوارئ"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"مكالمات الطوارئ فقط"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"‏شريحة SIM، المنفذ: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"إمكانية الوصول"</string>
+    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"إعدادات تمكين الوصول"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏مكالمة Wi-Fi من"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏مكالمة عبر Wi-Fi"</string>
     <string name="emergency_action_launch_hint" msgid="2762016865340891314">"انقر مرة أخرى للفتح."</string>

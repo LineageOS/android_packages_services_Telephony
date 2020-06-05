@@ -96,7 +96,7 @@
     <string name="sum_hide_caller_id" msgid="131100328602371933">"隱藏本機號碼"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"撥出電話時顯示本機號碼"</string>
     <string name="sum_default_caller_id" msgid="1767070797135682959">"使用預設值，在撥出電話時顯示本機號碼"</string>
-    <string name="labelCW" msgid="8449327023861428622">"來電等待"</string>
+    <string name="labelCW" msgid="8449327023861428622">"來電等候"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"通話時如有來電請通知我"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"通話時如有來電請通知我"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"來電轉接設定"</string>

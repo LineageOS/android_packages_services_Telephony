@@ -128,7 +128,7 @@
     <string name="call_settings_with_label" msgid="8460230435361579511">"సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"కాల్ సెట్టింగ్‌ల లోపం"</string>
     <string name="reading_settings" msgid="1605904432450871183">"సెట్టింగ్‌లను చదువుతోంది…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"సెట్టింగ్‌లను నవీకరిస్తోంది…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"సెట్టింగ్‌లను అప్‌డేట్ చేస్తోంది…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"సెట్టింగ్‌లను తిరిగి మారుస్తోంది…"</string>
     <string name="response_error" msgid="3904481964024543330">"నెట్‌వర్క్ నుండి ఊహించని ప్రతిస్పందన."</string>
     <string name="exception_error" msgid="330994460090467">"నెట్‌వర్క్ లేదా SIM కార్డు లోపం."</string>
@@ -141,7 +141,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"సరే"</string>
     <string name="enable" msgid="2636552299455477603">"ఆన్ చేయి"</string>
     <string name="disable" msgid="1122698860799462116">"ఆఫ్ చేయి"</string>
-    <string name="change_num" msgid="6982164494063109334">"నవీకరించు"</string>
+    <string name="change_num" msgid="6982164494063109334">"అప్‌డేట్ చేయి"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"నెట్‌వర్క్ డిఫాల్ట్"</item>
     <item msgid="6813323051965618926">"నంబర్‌ను దాచు"</item>

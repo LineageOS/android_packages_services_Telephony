@@ -105,7 +105,7 @@
     <string name="labelCFU" msgid="8870170873036279706">"Uvijek proslijedi"</string>
     <string name="messageCFU" msgid="1361806450979589744">"Uvijek koristi ovaj broj"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"Prosljeđivanje svih poziva"</string>
-    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Preusmjeravaju se svi pozivi na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
+    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Prosljeđivanje svih poziva na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Broj je nedostupan"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"Isključeno"</string>
     <string name="labelCFB" msgid="615265213360512768">"Kada je zauzeto"</string>
@@ -127,8 +127,8 @@
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Postavke poziva može promijeniti samo administrator."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Postavke (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Greška u postavkama poziva"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Čitanje postavki u toku…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"Ažuriranje postavki u toku…"</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Čitanje postavki…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"Ažuriranje postavki…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Vraćanje postavki u toku…"</string>
     <string name="response_error" msgid="3904481964024543330">"Neočekivani odgovor mreže."</string>
     <string name="exception_error" msgid="330994460090467">"Greška na mreži ili SIM kartici."</string>

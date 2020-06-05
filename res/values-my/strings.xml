@@ -24,7 +24,7 @@
     <string name="unknown" msgid="8279698889921830815">"မသိပါ"</string>
     <string name="private_num" msgid="4487990167889159992">"လျို့ဝှက် နံပါတ်"</string>
     <string name="payphone" msgid="7936735771836716941">"ငွေပေးရသည့်ဖုန်း"</string>
-    <string name="onHold" msgid="6132725550015899006">"ခဏ ကိုင်ထားစဉ်"</string>
+    <string name="onHold" msgid="6132725550015899006">"ဖုန်းကိုင်ထားသည်"</string>
     <string name="carrier_mmi_msg_title" msgid="6050165242447507034">"<xliff:g id="MMICARRIER">%s</xliff:g> မက်ဆေ့ဂျ်"</string>
     <string name="default_carrier_mmi_msg_title" msgid="7754317179938537213">"ဖုန်းလိုင်းဝန်ဆောင်မှု မက်ဆေ့ဂျ်"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"MMIကုတ်နံပါတ်ကို စတင်ပြီးပါပြီ"</string>
@@ -74,7 +74,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"အကောင့် ချိန်ညှိချက်များ ပြုပြင်မည်"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"ခေါ်ဆိုနေသော အကောင့်များ အားလုံး"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"ဖုန်းခေါ်ဆိုနိုင်သည့် အကောင့်များအား ရွေးရန်"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi  ခေါ်ဆိုမှု"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi  ခေါ်ဆိုခြင်း"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"တပ်ဆင်ပြီး ချိတ်ဆက်ရေး ဝန်ဆောင်မှု"</string>
     <string name="voicemail" msgid="7697769412804195032">"အသံမေးလ်"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"အသံမေးလ် ( <xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g> )"</string>
@@ -91,7 +91,7 @@
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"ပိုမိုသော CDMA ခေါ်ဆိုမှု အပြင်အဆင်"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"CDMA ခေါ်ဆိုမှုအတွက်သာ ဖြည့်စွက်အပြင်အဆင်"</string>
     <string name="labelNwService" msgid="6015891883487125120">"ကွန်ရက် ဝန်ဆောင်မှု ဆက်တင်"</string>
-    <string name="labelCallerId" msgid="2090540744550903172">"ခေါ်ဆိုသူအိုင်ဒီ"</string>
+    <string name="labelCallerId" msgid="2090540744550903172">"ခေါ်ဆိုသူ ID"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"ဆက်တင်များကို ကြည့်ရှုရန် လုပ်နေပါသည်…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"အထွက်ဖုန်းများတွင် နံပါတ်ဖျောက်ထားပါ"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"အထွက်ဖုန်းများတွင် နံပါတ်မြင်ရသည်"</string>
@@ -105,7 +105,7 @@
     <string name="labelCFU" msgid="8870170873036279706">"အမြဲတမ်း ထပ်ဆင့်ပို့ပါ"</string>
     <string name="messageCFU" msgid="1361806450979589744">"ဤနံပါတ်ကို အမြဲသုံးပါ"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"ခေါ်ဆိုမှုအားလုံးအား တဆင့်ထပ်ပို့နေသည်"</string>
-    <string name="sum_cfu_enabled" msgid="5806923046528144526">"<xliff:g id="PHONENUMBER">{0}</xliff:g> သို့ခေါ်ဆိုမှုအားလုံးအား တဆင့်ထပ်ပို့နေသည်"</string>
+    <string name="sum_cfu_enabled" msgid="5806923046528144526">"ခေါ်ဆိုမှုအားလုံးကို <xliff:g id="PHONENUMBER">{0}</xliff:g> သို့ ထပ်ဆင့်ပို့နေသည်"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"ဖုန်းနံပါတ်မှာ မရှိပါ"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"ပိတ်ထားသည်"</string>
     <string name="labelCFB" msgid="615265213360512768">"မအားလပ်ချိန်"</string>
@@ -127,7 +127,7 @@
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ခေါ်ဆိုမှုကြိုတင်ပြင်ဆင်ချက်များကို ကြီးကြပ်သူသာလျှင် ပြောင်းလဲနိုင်သည်။"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ဆက်တင်များ ( <xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g> )"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ခေါ်ဆိုမှုဆက်တင်အမှား"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"အပြင်အဆင်များကို ဖတ်နေပါသည်…"</string>
+    <string name="reading_settings" msgid="1605904432450871183">"ဆက်တင်များကို ဖတ်နေပါသည်…"</string>
     <string name="updating_settings" msgid="3650396734816028808">"ဆက်တင်များအား ပြင်နေသည်…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"ဆက်တင်များကို ပြန်ပြောင်းနေစဉ်…"</string>
     <string name="response_error" msgid="3904481964024543330">"ကွန်ယက်မှ မထင်မှတ်သောတုံ့ပြန်ချက်"</string>
@@ -140,7 +140,7 @@
     <string name="radio_off_error" msgid="8321564164914232181">"ဤအပြင်အဆင်များကို မကြည့်ခင် ရေဒီယိုကို ဖွင့်ပါ"</string>
     <string name="close_dialog" msgid="1074977476136119408">"OK"</string>
     <string name="enable" msgid="2636552299455477603">"ဖွင့်ထားရန်"</string>
-    <string name="disable" msgid="1122698860799462116">"ပိတ်မည်"</string>
+    <string name="disable" msgid="1122698860799462116">"ပိတ်ရန်"</string>
     <string name="change_num" msgid="6982164494063109334">"အဆင်မြှင့်ခြင်း"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"မူရင်း ကွန်ရက်"</item>
@@ -513,7 +513,7 @@
     <string name="card_title_conf_call" msgid="901197309274457427">"ကွန်းဖရင့်ခေါ်ဆိုမှု"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"အဝင်ခေါ်ဆိုမှု"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"ဖုန်းခေါ်ဆိုမှု ပြီးဆုံးပါပြီ"</string>
-    <string name="card_title_on_hold" msgid="9028319436626975207">"ခဏ ကိုင်ထားစဉ်"</string>
+    <string name="card_title_on_hold" msgid="9028319436626975207">"ဖုန်းကိုင်ထားသည်"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"ဖုန်းချနေပါသည်"</string>
     <string name="card_title_in_call" msgid="8231896539567594265">"ဖုန်းပြောနေစဉ်"</string>
     <string name="notification_voicemail_title" msgid="3932876181831601351">"အသံမေးလ်အသစ်"</string>

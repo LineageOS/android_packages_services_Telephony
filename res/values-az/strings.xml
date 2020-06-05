@@ -84,7 +84,7 @@
     <string name="smart_forwarding_settings_menu_summary" msgid="5096947726032885325">"Nömrələrdən biri əlçatan olmadıqda zəngi digər nömrəyə yönləndirin"</string>
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"Bildirişlər"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"Təcili yayımlar"</string>
-    <string name="call_settings" msgid="3677282690157603818">"Zəng parametrləri"</string>
+    <string name="call_settings" msgid="3677282690157603818">"Zəng ayarları"</string>
     <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Əlavə ayarlar"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Əlavə parametrlər (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="7964692601608878138">"Əlavə GSM yalnız zəng parametrləri"</string>
@@ -123,11 +123,11 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> nömrəsinə yönləndirilir"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Deaktiv"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Sizin mobil daşıyıcı telefon əlçatmaz olduğu zaman zəng yönləndirməni deaktiv etməyi dəstəkləmir."</string>
-    <string name="updating_title" msgid="6130548922615719689">"Zəng parametrləri"</string>
+    <string name="updating_title" msgid="6130548922615719689">"Zəng ayarları"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Zəng parametrləri yalnız admin olan istifadəçi tərəfindən dəyişdirilə bilər."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Ayarlar ( <xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g> )"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Zəng parametrləri xətası"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Oxuma parametrləri ..."</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Oxuma ayarları..."</string>
     <string name="updating_settings" msgid="3650396734816028808">"Ayarlar güncəlləşdirilir…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Ayarlar qaytarılır..."</string>
     <string name="response_error" msgid="3904481964024543330">"Şəbəkədən gözlənilməz cavab."</string>
