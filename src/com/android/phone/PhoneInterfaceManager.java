@@ -1934,6 +1934,49 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     }
 
+    @Override
+    public void updateServiceLocationWithPackageName(String callingPackage) {
+        mApp.getSystemService(AppOpsManager.class)
+                .checkPackage(Binder.getCallingUid(), callingPackage);
+
+        final int targetSdk = getTargetSdk(callingPackage);
+        if (targetSdk > android.os.Build.VERSION_CODES.R) {
+            // Callers targeting S have no business invoking this method.
+            return;
+        }
+
+        LocationAccessPolicy.LocationPermissionResult locationResult =
+                LocationAccessPolicy.checkLocationPermission(mApp,
+                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                .setCallingPackage(callingPackage)
+                                .setCallingFeatureId(null)
+                                .setCallingPid(Binder.getCallingPid())
+                                .setCallingUid(Binder.getCallingUid())
+                                .setMethod("updateServiceLocation")
+                                .setMinSdkVersionForCoarse(Build.VERSION_CODES.BASE)
+                                .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                .build());
+        // Apps that lack location permission have no business calling this method;
+        // however, because no permission was declared in the public API, denials must
+        // all be "soft".
+        switch (locationResult) {
+            case DENIED_HARD: /* fall through */
+            case DENIED_SOFT:
+                return;
+        }
+
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            final Phone phone = getPhone(getDefaultSubscription());
+            if (phone != null) {
+                phone.updateServiceLocation(workSource);
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
     public void updateServiceLocationForSubscriber(int subId) {
         // No permission check needed here: this call is harmless, and it's
         // needed for the ServiceState.requestStateUpdate() call (which is
@@ -1942,7 +1985,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                phone.updateServiceLocation();
+                phone.updateServiceLocation(null);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
