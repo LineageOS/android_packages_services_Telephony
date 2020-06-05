@@ -298,7 +298,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"चयन गर्न आवश्यक छ"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"डेटा सिम परिवर्तन गर्ने हो?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"मोबाइल डेटाका लागि <xliff:g id="OLD_SIM">%2$s</xliff:g> को सट्टा <xliff:g id="NEW_SIM">%1$s</xliff:g> को प्रयोग गर्ने हो?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi कल"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi कलिङ"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"सेवा प्रदायकको भिडियो कल"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS  विकल्पहरू"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA विकल्पहरू"</string>

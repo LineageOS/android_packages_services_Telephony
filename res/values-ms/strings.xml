@@ -121,7 +121,7 @@
     <string name="labelCFNRc" msgid="4163399350778066013">"Jika tidak dapat dihubungi"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"Nombor apabila tidak dapat dihubungi"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Memajukan ke <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Mati"</string>
+    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Dimatikan"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Pembawa anda tidak menyokong pelumpuhan pemajuan panggilan semasa telefon anda tidak boleh dihubungi."</string>
     <string name="updating_title" msgid="6130548922615719689">"Tetapan panggilan"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Tetapan panggilan hanya boleh diubah oleh pengguna pentadbir."</string>
