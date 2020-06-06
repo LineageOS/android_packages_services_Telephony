@@ -84,7 +84,7 @@
     <string name="smart_forwarding_settings_menu_summary" msgid="5096947726032885325">"Кога едниот број е недостапен, секогаш проследувајте ги повиците на вашиот друг број"</string>
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"Известувања"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"Итни емитувања"</string>
-    <string name="call_settings" msgid="3677282690157603818">"Поставки на повик"</string>
+    <string name="call_settings" msgid="3677282690157603818">"Поставки за повици"</string>
     <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Дополнителни поставки"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Дополнителни поставки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="7964692601608878138">"Дополнителни поставки на повик само за GSM"</string>
@@ -123,11 +123,11 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Проследување на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Исклучено"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Вашиот оператор не поддржува оневозможување проследување повик кога вашиот телефон е недостапен."</string>
-    <string name="updating_title" msgid="6130548922615719689">"Поставки на повик"</string>
+    <string name="updating_title" msgid="6130548922615719689">"Поставки за повици"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Поставките за повик може да ги измени само администраторскиот корисник."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Поставки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Грешка со поставки на повици"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Поставки за читање..."</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Се читаат поставките..."</string>
     <string name="updating_settings" msgid="3650396734816028808">"Ажурирање поставки..."</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Враќање поставки..."</string>
     <string name="response_error" msgid="3904481964024543330">"Неочекуван одговор од мрежата."</string>

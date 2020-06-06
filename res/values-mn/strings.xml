@@ -62,7 +62,7 @@
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"CDMA дуудлагын тохиргоо (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="1978652203074756623">"Хандалтын Цэгийн Нэрс"</string>
     <string name="settings_label" msgid="9101778088412567956">"Сүлжээний тохиргоо"</string>
-    <string name="phone_accounts" msgid="1216879437523774604">"Дуудах бүртгэл"</string>
+    <string name="phone_accounts" msgid="1216879437523774604">"Дуудлагын бүртгэлүүд"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"Дараахаар дуудлага хийх"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"Дараахаар SIP дуудлага хийх"</string>
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"Эхлэж хандах"</string>
@@ -102,10 +102,10 @@
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Дуудлага шилжүүлэх тохиргоо"</string>
     <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Дуудлага шилжүүлэх тохиргоонууд (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"Дуудлага дамжуулах"</string>
-    <string name="labelCFU" msgid="8870170873036279706">"Байнга дамжуулах"</string>
+    <string name="labelCFU" msgid="8870170873036279706">"Байнга шилжүүлэх"</string>
     <string name="messageCFU" msgid="1361806450979589744">"Байнга энэ дугаарыг ашиглах"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"Бүх дуудлагыг дамжуулж байна"</string>
-    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Бүх дуудлагыг <xliff:g id="PHONENUMBER">{0}</xliff:g> руу дамжуулж байна"</string>
+    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Бүх дуудлагыг <xliff:g id="PHONENUMBER">{0}</xliff:g> руу шилжүүлж байна"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Дугаар холбогдох боломжгүй"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"Идэвхгүй"</string>
     <string name="labelCFB" msgid="615265213360512768">"Завгүй бол"</string>
@@ -425,7 +425,7 @@
     <string name="cdma_activate_device" msgid="5914720276140097632">"Төхөөрөмжийг идэвхжүүлэх"</string>
     <string name="cdma_lte_data_service" msgid="359786441782404562">"Дата үйлчилгээний тохиргоо"</string>
     <string name="carrier_settings_title" msgid="6292869148169850220">"Операторын тохиргоо"</string>
-    <string name="fdn" msgid="2545904344666098749">"Тогтсон Залгах Дугаарууд"</string>
+    <string name="fdn" msgid="2545904344666098749">"Тогтсон залгах дугаарууд"</string>
     <string name="fdn_with_label" msgid="6412087553365709494">"Тогтсон Дуудлагын Дугаарууд(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="3341716430375195441">"FDN жагсаалт"</string>
     <string name="fdn_list_with_label" msgid="1409655283510382556">"FDN жагсаалт (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -562,7 +562,7 @@
     <string name="fire_type_description" msgid="6565200468934914930">"Гал"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Залгахдаа гар ашиглах"</string>
-    <string name="onscreenHoldText" msgid="4025348842151665191">"Саатуулах"</string>
+    <string name="onscreenHoldText" msgid="4025348842151665191">"Хүлээлгэх"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Дуусгах"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Диалпад"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Дууг хаах"</string>
@@ -655,7 +655,7 @@
     <string name="description_dial_button" msgid="8614631902795087259">"залгах"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"дугаар цуглуулах самбарыг харуулах"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Яаралтай тусламжийн дугаар цуглуулах самбар"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Уншиж болохуйц дуут шуудан"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Визуал дуут шуудан"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"PIN тохируулах"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"PIN өөрчлөх"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Хонхны ая &amp; Чичиргээ"</string>

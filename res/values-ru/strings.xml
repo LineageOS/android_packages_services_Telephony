@@ -96,7 +96,7 @@
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Скрывать номер при исходящих вызовах"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Номер, отображающийся при исходящих вызовах"</string>
     <string name="sum_default_caller_id" msgid="1767070797135682959">"Использовать стандартные настройки оператора для показа моего номера при исходящих вызовах"</string>
-    <string name="labelCW" msgid="8449327023861428622">"Параллельный вызов"</string>
+    <string name="labelCW" msgid="8449327023861428622">"Ожидание вызова"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Извещать меня о входящих вызовах во время разговора"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Извещать меня о входящих вызовах во время разговора"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Переадресация"</string>

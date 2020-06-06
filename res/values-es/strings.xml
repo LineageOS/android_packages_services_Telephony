@@ -62,7 +62,7 @@
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"Ajustes de llamada de CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="1978652203074756623">"Nombres de puntos de acceso"</string>
     <string name="settings_label" msgid="9101778088412567956">"Ajustes de red"</string>
-    <string name="phone_accounts" msgid="1216879437523774604">"Cuentas de llamadas"</string>
+    <string name="phone_accounts" msgid="1216879437523774604">"Cuentas de llamada"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"Realizar llamadas con"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"Realizar llamadas SIP con"</string>
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"Preguntar primero"</string>
