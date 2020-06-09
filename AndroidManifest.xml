@@ -454,6 +454,9 @@
             Handler for EuiccManager's resolution intents. These are locked down so that only
             privileged processes can start them, which means we can trust the Intent used to start
             it (which contains a description of the next step to perform after resolution).
+
+            If modified, also change EuiccController#RESOLUTION_ACTIVITY_PACKAGE_NAME and
+            EuiccController#RESOLUTION_ACTIVITY_CLASS_NAME
         -->
         <activity android:name=".euicc.EuiccResolutionUiDispatcherActivity"
             android:permission="android.permission.CALL_PRIVILEGED">
