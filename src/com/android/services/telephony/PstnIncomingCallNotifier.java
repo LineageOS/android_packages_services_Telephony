@@ -25,7 +25,6 @@ import android.os.SystemClock;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
-import com.android.telephony.Rlog;
 import android.text.TextUtils;
 
 import com.android.internal.telephony.Call;
@@ -40,6 +39,7 @@ import com.android.internal.telephony.imsphone.ImsExternalConnection;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
 import com.android.phone.NumberVerificationManager;
 import com.android.phone.PhoneUtils;
+import com.android.telephony.Rlog;
 
 import java.util.Objects;
 
@@ -214,6 +214,9 @@ final class PstnIncomingCallNotifier {
             Call call = connection.getCall();
             if (call != null && call.getState().isAlive()) {
                 addNewUnknownCall(connection);
+            } else {
+                Log.i(this, "Skipping new unknown connection because its call is null or dead."
+                        + " connection=" + connection);
             }
         }
     }
