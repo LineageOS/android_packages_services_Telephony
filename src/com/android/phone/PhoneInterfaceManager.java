@@ -5599,6 +5599,74 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Get the allowed network types for certain reason.
+     *
+     * @param subId the id of the subscription.
+     * @param reason the reason the allowed network type change is taking place
+     * @return the allowed network types.
+     */
+    @Override
+    public long getAllowedNetworkTypesForReason(int subId,
+            @TelephonyManager.AllowedNetworkTypesReason int reason) {
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                        mApp, subId, "getAllowedNetworkTypesForReason");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return getPhoneFromSubId(subId).getAllowedNetworkTypes(reason);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Get the effective allowed network types on the device.
+     * This API will return an intersection of allowed network types for all reasons,
+     * including the configuration done through setAllowedNetworkTypes
+     *
+     * @param subId the id of the subscription.
+     * @return the allowed network types
+     */
+    @Override
+    public long getEffectiveAllowedNetworkTypes(int subId) {
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                        mApp, subId, "getEffectiveAllowedNetworkTypes");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return getPhoneFromSubId(subId).getEffectiveAllowedNetworkTypes();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Set the allowed network types of the device and
+     * provide the reason triggering the allowed network change.
+     *
+     * @param subId the id of the subscription.
+     * @param reason the reason the allowed network type change is taking place
+     * @param allowedNetworkTypes the allowed network types.
+     * @return true on success; false on any failure.
+     */
+    @Override
+    public boolean setAllowedNetworkTypesForReason(int subId,
+            @TelephonyManager.AllowedNetworkTypesReason int reason, long allowedNetworkTypes) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "setAllowedNetworkTypesForReason");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            getPhoneFromSubId(subId).setAllowedNetworkTypes(reason, allowedNetworkTypes);
+            int preferredNetworkMode = Settings.Global.getInt(mApp.getContentResolver(),
+                    Settings.Global.PREFERRED_NETWORK_MODE + subId,
+                    RILConstants.PREFERRED_NETWORK_MODE);
+            return setPreferredNetworkType(subId, preferredNetworkMode);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
      * Check whether DUN APN is required for tethering with subId.
      *
      * @param subId the id of the subscription to require tethering.
