@@ -136,7 +136,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"Solicitação SS alterada para solicitação USSD"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"Alterada para uma nova solicitação SS"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"Solicitação SS alterada para videochamada"</string>
-    <string name="fdn_check_failure" msgid="1833769746374185247">"A configuração \"Números de discagem fixa\" do seu app Telefone está ativada. Por isso, alguns recursos relacionados a chamadas não funcionam."</string>
+    <string name="fdn_check_failure" msgid="1833769746374185247">"A configuração \"N fixa\" do seu app Telefone está ativada. Por isso, alguns recursos relacionados a chamadas não funcionam."</string>
     <string name="radio_off_error" msgid="8321564164914232181">"Ligue o rádio antes de ver essas configurações."</string>
     <string name="close_dialog" msgid="1074977476136119408">"OK"</string>
     <string name="enable" msgid="2636552299455477603">"Ativar"</string>
@@ -425,8 +425,8 @@
     <string name="cdma_activate_device" msgid="5914720276140097632">"Ativar aparelho"</string>
     <string name="cdma_lte_data_service" msgid="359786441782404562">"Configurar serviço de dados"</string>
     <string name="carrier_settings_title" msgid="6292869148169850220">"Config. da operadora"</string>
-    <string name="fdn" msgid="2545904344666098749">"Números de discagem fixa"</string>
-    <string name="fdn_with_label" msgid="6412087553365709494">"Números de discagem fixa (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn" msgid="2545904344666098749">"N fixa"</string>
+    <string name="fdn_with_label" msgid="6412087553365709494">"N fixa (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="3341716430375195441">"Lista FDN"</string>
     <string name="fdn_list_with_label" msgid="1409655283510382556">"Lista de FDNs (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2178637004710435895">"Ativação do FDN"</string>
@@ -554,7 +554,7 @@
     <string name="emergency_enable_radio_dialog_retry" msgid="4329131876852608587">"Sem serviço. Tentando novamente..."</string>
     <string name="radio_off_during_emergency_call" msgid="8011154134040481609">"Não é possível usar o modo avião durante uma chamada de emergência."</string>
     <string name="dial_emergency_error" msgid="825822413209026039">"Não é possível realizar chamadas. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> não é um telefone de emergência."</string>
-    <string name="dial_emergency_empty_error" msgid="2785803395047793634">"Não é possível realizar chamadas. Disque o número de telefone de emergência."</string>
+    <string name="dial_emergency_empty_error" msgid="2785803395047793634">"Não é possível realizar chamadas. Ligue para o número de telefone de emergência."</string>
     <string name="dial_emergency_calling_not_available" msgid="6485846193794727823">"Chamada de emergência indisponível"</string>
     <string name="pin_puk_system_user_only" msgid="1045147220686867922">"Somente o proprietário do dispositivo pode digitar os códigos PIN/PUK."</string>
     <string name="police_type_description" msgid="2819533883972081757">"Polícia"</string>
