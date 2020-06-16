@@ -344,7 +344,7 @@
     <string name="international_enable" msgid="8943466745792690340">"تم تفعيل الأخبار الدولية"</string>
     <string name="international_disable" msgid="4803498658100318265">"تم إيقاف الأخبار الدولية"</string>
     <string name="list_language_title" msgid="1850167908665485738">"اللغة"</string>
-    <string name="list_language_summary" msgid="7921756070782277559">"حدد لغة الأخبار"</string>
+    <string name="list_language_summary" msgid="7921756070782277559">"اختَر لغة الأخبار"</string>
   <string-array name="list_language_entries">
     <item msgid="2347238508726934281">"الإنجليزية"</item>
     <item msgid="5172468397620875174">"الفرنسية"</item>

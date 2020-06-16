@@ -236,7 +236,7 @@
     <string name="preferred_network_mode_lte_gsm_wcdma_summary" msgid="2217794334331254936">"ተመራጭ የአውታረመረብ ሁኔታ: GSM/WCDMA/LTE"</string>
     <string name="preferred_network_mode_lte_cdma_evdo_summary" msgid="5559198623419981805">"ተመራጭ የአውታረመረብ ሁኔታ ፡ CDMA+LTE/EVDO"</string>
     <string name="preferred_network_mode_lte_cdma_evdo_gsm_wcdma_summary" msgid="6707224437925495615">"የተመረጠው የአውታረ መረብ ሁነታ፦ LTE/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_global_summary" msgid="3847086258439582411">"ተመራጭ የአውታረመረብ ፡ አለምአቀፍ"</string>
+    <string name="preferred_network_mode_global_summary" msgid="3847086258439582411">"ተመራጭ የአውታረመረብ ፡ ዓለምአቀፍ"</string>
     <string name="preferred_network_mode_lte_wcdma_summary" msgid="7001804022020813865">"ተመራጭ የአውታረመረብ ሁኔታ፡ LTE / WCDMA"</string>
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="6484203890156282179">"ተመራጭ የአውታረ መረብ ሁነታ፦ LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="8187929456614068518">"ተመራጭ የአውታረመረብ ፡LTE / CDMA ሁነታ"</string>
@@ -403,7 +403,7 @@
     <string name="network_recommended" msgid="3444321100580250926">" (የሚመከር)"</string>
     <string name="network_lte" msgid="7206879277095094280">"LTE (የሚመከር)"</string>
     <string name="network_4G" msgid="6800527815504223913">"4G (የሚመከር)"</string>
-    <string name="network_global" msgid="3289646154407617631">"አለምአቀፍ"</string>
+    <string name="network_global" msgid="3289646154407617631">"ዓለምአቀፍ"</string>
     <string name="cdma_system_select_title" msgid="614165233552656431">"የሥርዓት ምርጫ"</string>
     <string name="cdma_system_select_summary" msgid="3840420390242060407">"የCDMA በእንቅስቃሴ ላይ ሁኔታ ለውጥ"</string>
     <string name="cdma_system_select_dialogtitle" msgid="5524639510676501802">"የሥርዓት ምርጫ"</string>
