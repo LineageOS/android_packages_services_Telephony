@@ -864,6 +864,16 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
 
             mConferenceHostAddress = new Uri[hostAddresses.size()];
             mConferenceHostAddress = hostAddresses.toArray(mConferenceHostAddress);
+            Log.i(this, "setConferenceHost: temp log hosts are "
+                    + Arrays.stream(mConferenceHostAddress)
+                    .map(Uri::toString)
+                    .collect(Collectors.joining(", ")));
+
+            Log.i(this, "setConferenceHost: hosts are "
+                    + Arrays.stream(mConferenceHostAddress)
+                    .map(Uri::getSchemeSpecificPart)
+                    .map(ssp -> Rlog.pii(LOG_TAG, ssp))
+                    .collect(Collectors.joining(", ")));
 
             Log.i(this, "setConferenceHost: hosts are "
                     + Arrays.stream(mConferenceHostAddress)
