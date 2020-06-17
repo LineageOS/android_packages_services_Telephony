@@ -152,15 +152,18 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                             mOriginalConnection.getAddress() != null &&
                             mOriginalConnection.getAddress().equals(connection.getAddress())) ||
                             connection.getState() == mOriginalConnection.getStateBeforeHandover())) {
-                            Log.d(TelephonyConnection.this,
-                                    "SettingOriginalConnection " + mOriginalConnection.toString()
-                                            + " with " + connection.toString());
+                            Log.d(TelephonyConnection.this, "Setting original connection after"
+                                    + " handover or redial, current original connection="
+                                    + mOriginalConnection.toString()
+                                    + ", new original connection="
+                                    + connection.toString());
                             setOriginalConnection(connection);
                             mWasImsConnection = false;
                         }
                     } else {
                         Log.w(TelephonyConnection.this,
-                                what + ": mOriginalConnection==null - invalid state (not cleaned up)");
+                                what + ": mOriginalConnection==null --"
+                                        + " invalid state (not cleaned up)");
                     }
                     break;
                 case MSG_RINGBACK_TONE:
