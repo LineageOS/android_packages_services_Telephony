@@ -676,6 +676,7 @@
             android:name="com.android.phone.vvm.RemoteVvmTaskManager"
             android:exported="false"/>
         <service android:name="com.android.internal.telephony.CellularNetworkService"
+            android:exported="true"
             android:permission="android.permission.BIND_TELEPHONY_NETWORK_SERVICE" >
             <intent-filter>
                 <action android:name="android.telephony.NetworkService" />
