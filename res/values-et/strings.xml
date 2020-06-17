@@ -307,7 +307,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Andmete kasutamise periood"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Andmeedastuskiiruse eeskirjad"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Lisateave"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>??) / <xliff:g id="USED_2">%3$s</xliff:g> maksimaalne periood\nJärgmine periood algab <xliff:g id="USED_3">%4$d</xliff:g> päeva pärast (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) / <xliff:g id="USED_2">%3$s</xliff:g> perioodi maksimumist\nJärgmine periood algab <xliff:g id="USED_3">%4$d</xliff:g> päeva pärast (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>??) / <xliff:g id="USED_2">%3$s</xliff:g> maksimaalsest perioodist"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> maksimaalne ületatud\nAndmeedastuskiirus vähendatud määrale <xliff:g id="USED_1">%2$d</xliff:g> kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>?? tsüklist möödunud\nJärgmine periood algab <xliff:g id="USED_1">%2$d</xliff:g> päeva pärast (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Jah"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Ei"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Loobu"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefon on hädaolukorra tagasihelistusrežiimis"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Kuni <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">Telefon on hädaolukorra tagasihelistusrežiimis <xliff:g id="COUNT_1">%s</xliff:g> minutit.\nKas soovite kohe väljuda?</item>
+      <item quantity="one">Telefon on hädaolukorra tagasihelistusrežiimis <xliff:g id="COUNT_0">%s</xliff:g> minut.\nKas soovite kohe väljuda?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Teenus"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Seadistus"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Määramata&gt;"</string>

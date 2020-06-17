@@ -128,7 +128,7 @@
     <string name="call_settings_with_label" msgid="8460230435361579511">"సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"కాల్ సెట్టింగ్‌ల లోపం"</string>
     <string name="reading_settings" msgid="1605904432450871183">"సెట్టింగ్‌లను చదువుతోంది…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"సెట్టింగ్‌లను నవీకరిస్తోంది…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"సెట్టింగ్‌లను అప్‌డేట్ చేస్తోంది…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"సెట్టింగ్‌లను తిరిగి మారుస్తోంది…"</string>
     <string name="response_error" msgid="3904481964024543330">"నెట్‌వర్క్ నుండి ఊహించని ప్రతిస్పందన."</string>
     <string name="exception_error" msgid="330994460090467">"నెట్‌వర్క్ లేదా SIM కార్డు లోపం."</string>
@@ -141,7 +141,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"సరే"</string>
     <string name="enable" msgid="2636552299455477603">"ఆన్ చేయి"</string>
     <string name="disable" msgid="1122698860799462116">"ఆఫ్ చేయి"</string>
-    <string name="change_num" msgid="6982164494063109334">"నవీకరించు"</string>
+    <string name="change_num" msgid="6982164494063109334">"అప్‌డేట్ చేయి"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"నెట్‌వర్క్ డిఫాల్ట్"</item>
     <item msgid="6813323051965618926">"నంబర్‌ను దాచు"</item>
@@ -307,7 +307,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"డేటా వినియోగ వ్యవధి"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"డేటా రేట్ విధానం"</string>
     <string name="throttle_help" msgid="2624535757028809735">"మరింత తెలుసుకోండి"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"గరిష్టంగా <xliff:g id="USED_2">%3$s</xliff:g> వ్యవధిలో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)\nతదపరి వ్యవధి <xliff:g id="USED_3">%4$d</xliff:g> రోజుల్లో (<xliff:g id="USED_4">%5$s</xliff:g>) ప్రారంభమవుతుంది"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"గరిష్ఠ వ్యవధి అయిన <xliff:g id="USED_2">%3$s</xliff:g>లో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)\nతర్వాతి వ్యవధి <xliff:g id="USED_3">%4$d</xliff:g> రోజుల్లో (<xliff:g id="USED_4">%5$s</xliff:g>) ప్రారంభమవుతుంది"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"గరిష్టంగా <xliff:g id="USED_2">%3$s</xliff:g>లో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> గరిష్ట పరిమితి మించిపోయింది\nడేటా రేట్ <xliff:g id="USED_1">%2$d</xliff:g> Kb/sకి తగ్గించబడింది"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"సైకిల్‌లో <xliff:g id="USED_0">%1$d</xliff:g>٪ గడిచిపోయింది\nతదుపరి వ్యవధి <xliff:g id="USED_1">%2$d</xliff:g> రోజుల్లో (<xliff:g id="USED_2">%3$s</xliff:g>) ప్రారంభమవుతుంది"</string>
@@ -581,7 +581,7 @@
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"పరిచయాన్ని దిగుమతి చేయడంలో విఫలమైంది"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"వినికిడి సహాయక సాధనాలు"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"వినికిడి సహాయక సాధనం అనుకూలతను ప్రారంభించండి"</string>
-    <string name="rtt_mode_title" msgid="3075948111362818043">"నిజ సమయ వచనం (RTT) కాల్"</string>
+    <string name="rtt_mode_title" msgid="3075948111362818043">"రియ‌ల్‌-టైమ్‌ టెక్స్ట్ (RTT) కాల్"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"వాయిస్ కాల్‌లో సందేశాలు పంపడానికి అనుమతించండి"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"బధిరులు, వినికిడి సమస్యలు ఉన్న వారు, మాట్లాడటంలో సమస్యలు ఉన్న వారు లేదా కేవలం వాయిస్‌తో అర్థం చేసుకోలేని కాలర్‌లకు RTT సహాయపడుతుంది.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;మరింత తెలుసుకోండి&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT కాల్‌లు సందేశ లిపి మార్పు వలె సేవ్ చేయబడతాయి\n       &lt;br&gt; - వీడియో కాల్‌ల కోసం RTT అందుబాటులో లేదు"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"గమనిక: రోమింగ్‌లో ఉండగా RTTఅందుబాటులో ఉండదు"</string>
@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"అవును"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"కాదు"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"తీసివేయి"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ఫోన్ అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉంది"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> వరకు"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">ఫోన్ అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో <xliff:g id="COUNT_1">%s</xliff:g> నిమిషాల పాటు ఉంటుంది.\n మీరు ఇప్పుడే నిష్క్రమించాలనుకుంటున్నారా?</item>
+      <item quantity="one">ఫోన్ అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో <xliff:g id="COUNT_0">%s</xliff:g> నిమిషం పాటు ఉంటుంది. \n మీరు ఇప్పుడే నిష్క్రమించాలనుకుంటున్నారా?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"సేవ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"సెటప్"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;సెట్ చేయలేదు&gt;"</string>

@@ -128,7 +128,7 @@
     <string name="call_settings_with_label" msgid="8460230435361579511">"ಸೆಟ್ಟಿಂಗ್‌ಗಳು (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ಕರೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳ ದೋಷ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಓದಲಾಗುತ್ತಿದೆ…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಅಪ್‌ಡೇಟ್‌ ಆಗುತ್ತಿವೆ…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಹಿಂತಿರುಗಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="response_error" msgid="3904481964024543330">"ನೆಟ್‌ವರ್ಕ್‌ನಿಂದ ಅನಿರೀಕ್ಷಿತ ಪ್ರತಿಕ್ರಿಯೆ."</string>
     <string name="exception_error" msgid="330994460090467">"ನೆಟ್‌ವರ್ಕ್‌ ಅಥವಾ ಸಿಮ್‌ ಕಾರ್ಡ್‌ ದೋಷ."</string>
@@ -141,7 +141,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"ಸರಿ"</string>
     <string name="enable" msgid="2636552299455477603">"ಆನ್‌ ಮಾಡಿ"</string>
     <string name="disable" msgid="1122698860799462116">"ಆಫ್ ಮಾಡು"</string>
-    <string name="change_num" msgid="6982164494063109334">"ಅಪ್‌ಡೇಟ್‌ ಮಾಡು"</string>
+    <string name="change_num" msgid="6982164494063109334">"ಅಪ್‌ಡೇಟ್‌ ಮಾಡಿ"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"ನೆಟ್‌ವರ್ಕ್ ಡಿಫಾಲ್ಟ್"</item>
     <item msgid="6813323051965618926">"ಸಂಖ್ಯೆಯನ್ನು ಮರೆಮಾಡು"</item>
@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ಹೌದು"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"ಇಲ್ಲ"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"ವಜಾಗೊಳಿಸಿ"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ಫೋನ್‌‌, ತುರ್ತು ಕಾಲ್‌ಬ್ಯಾಕ್ ಮೋಡ್‌ನಲ್ಲಿದೆ"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> ವರೆಗೆ"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">ಫೋನ್‌‌ <xliff:g id="COUNT_1">%s</xliff:g> ನಿಮಿಷಗಳವರೆಗೆ ತುರ್ತು ಕಾಲ್‌ಬ್ಯಾಕ್ ಮೋಡ್‌ನಲ್ಲಿರುತ್ತದೆ.\n ನೀವು ಈಗಲೇ ನಿರ್ಗಮಿಸಲು ಬಯಸುತ್ತೀರಾ?</item>
+      <item quantity="other">ಫೋನ್‌‌ <xliff:g id="COUNT_1">%s</xliff:g> ನಿಮಿಷಗಳವರೆಗೆ ತುರ್ತು ಕಾಲ್‌ಬ್ಯಾಕ್ ಮೋಡ್‌ನಲ್ಲಿರುತ್ತದೆ.\n ನೀವು ಈಗಲೇ ನಿರ್ಗಮಿಸಲು ಬಯಸುತ್ತೀರಾ?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"ಸೇವೆ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"ಸೆಟಪ್"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;ಹೊಂದಿಸಿಲ್ಲ&gt;"</string>

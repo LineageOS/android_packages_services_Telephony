@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"হ্যাঁ"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"না"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"খারিজ করুন"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ফোনটি জরুরি কলব্যাক মোডে থাকবে"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> পর্যন্ত"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one"><xliff:g id="COUNT_1">%s</xliff:g> মিনিটের জন্য ফোনটি জরুরি কলব্যাক মোডে থাকবে।\nআপনি কি এখন বেরিয়ে আসতে চান?</item>
+      <item quantity="other"><xliff:g id="COUNT_1">%s</xliff:g> মিনিটের জন্য ফোনটি জরুরি কলব্যাক মোডে থাকবে।\nআপনি কি এখন বেরিয়ে আসতে চান?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"পরিষেবা"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"সেটআপ"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;সেট করা নেই&gt;"</string>

@@ -307,7 +307,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Період викор. даних"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Пол. шв. перед. дан."</string>
     <string name="throttle_help" msgid="2624535757028809735">"Докладніше"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) з <xliff:g id="USED_2">%3$s</xliff:g> макс. пеірод\nНаступний період поч. через <xliff:g id="USED_3">%4$d</xliff:g> дн. (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) з <xliff:g id="USED_2">%3$s</xliff:g> на цей період\nНаступний період почнеться за <xliff:g id="USED_3">%4$d</xliff:g> дн. (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) з<xliff:g id="USED_2">%3$s</xliff:g> максим. періоду"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> макс. перевищ.\nШв. перед. дан. скор. до <xliff:g id="USED_1">%2$d</xliff:g> КБ/сек"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ з циклу здійсн.\nНаст. період почин. через <xliff:g id="USED_1">%2$d</xliff:g> дн. (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -641,6 +641,14 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Так"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Ні"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Відхилити"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Телефон перебуває в режимі екстреного зворотного виклику"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"До <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">Телефон перебуватиме в режимі екстреного зворотного виклику протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилини.\nВийти зараз?</item>
+      <item quantity="few">Телефон перебуватиме в режимі екстреного зворотного виклику протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилин.\nВийти зараз?</item>
+      <item quantity="many">Телефон перебуватиме в режимі екстреного зворотного виклику протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилин.\nВийти зараз?</item>
+      <item quantity="other">Телефон перебуватиме в режимі екстреного зворотного виклику протягом <xliff:g id="COUNT_1">%s</xliff:g> хвилини.\nВийти зараз?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Обслуговування"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Налаштування"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Не введено&gt;"</string>

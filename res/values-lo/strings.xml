@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ຕົກລົງ"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"ບໍ່"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"ປິດໄວ້"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ໂທລະສັບຢູ່ໃນໂໝດໂທກັບສຸກເສີນ"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"ຈົນຮອດ <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">ໂທລະສັບຈະຢູ່ໃນໂໝດໂທກັບສຸກເສີນເປັນເວລາ <xliff:g id="COUNT_1">%s</xliff:g> ນາທີ.\nທ່ານຕ້ອງການອອກຕອນນີ້ເລີຍບໍ?</item>
+      <item quantity="one">ໂທລະສັບຈະຢູ່ໃນໂໝດໂທກັບສຸກເສີນເປັນເວລາ <xliff:g id="COUNT_0">%s</xliff:g> ນາທີ.\nທ່ານຕ້ອງການອອກຕອນນີ້ເລີຍບໍ?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"ບໍລິການ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"ຕັ້ງຄ່າ"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;ຍັງບໍ່ໄດ້ຕັ້ງ&gt;"</string>

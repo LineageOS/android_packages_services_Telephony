@@ -96,7 +96,7 @@
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Скрывать номер при исходящих вызовах"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Номер, отображающийся при исходящих вызовах"</string>
     <string name="sum_default_caller_id" msgid="1767070797135682959">"Использовать стандартные настройки оператора для показа моего номера при исходящих вызовах"</string>
-    <string name="labelCW" msgid="8449327023861428622">"Параллельный вызов"</string>
+    <string name="labelCW" msgid="8449327023861428622">"Ожидание вызова"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Извещать меня о входящих вызовах во время разговора"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Извещать меня о входящих вызовах во время разговора"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Переадресация"</string>
@@ -310,9 +310,7 @@
     <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) из <xliff:g id="USED_2">%3$s</xliff:g> (максимум)\nСледующий период начнется в течение <xliff:g id="USED_3">%4$d</xliff:g> дн. (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) из <xliff:g id="USED_2">%3$s</xliff:g> (максимум)"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Превышен лимит в <xliff:g id="USED_0">%1$s</xliff:g>.\nСкорость передачи данных снижена до <xliff:g id="USED_1">%2$d</xliff:g> кбит/с."</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_time_frame_subtext (6462089615392402127) -->
-    <skip />
+    <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"Пройдено: <xliff:g id="USED_0">%1$d</xliff:g>٪ цикла.\nСледующий период начнется через <xliff:g id="USED_1">%2$d</xliff:g> дн. (<xliff:g id="USED_2">%3$s</xliff:g>)."</string>
     <string name="throttle_rate_subtext" msgid="7221971817325779535">"Превышение лимита снижает скорость передачи данных до <xliff:g id="USED">%1$d</xliff:g> кбит/с"</string>
     <string name="throttle_help_subtext" msgid="2817114897095534807">"Подробнее о политике передачи данных вашего оператора мобильной связи..."</string>
     <string name="cell_broadcast_sms" msgid="4053449797289031063">"Широковещательные SMS-службы"</string>
@@ -643,6 +641,14 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Да"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Нет"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Закрыть"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Телефон находится в режиме экстренных обратных вызовов"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"До <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">Телефон будет оставаться в режиме экстренных обратных вызовов <xliff:g id="COUNT_1">%s</xliff:g> минуту.\nВыйти сейчас?</item>
+      <item quantity="few">Телефон будет оставаться в режиме экстренных обратных вызовов <xliff:g id="COUNT_1">%s</xliff:g> минуты.\nВыйти сейчас?</item>
+      <item quantity="many">Телефон будет оставаться в режиме экстренных обратных вызовов <xliff:g id="COUNT_1">%s</xliff:g> минут.\nВыйти сейчас?</item>
+      <item quantity="other">Телефон будет оставаться в режиме экстренных обратных вызовов <xliff:g id="COUNT_1">%s</xliff:g> минуты.\nВыйти сейчас?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Служба"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Настройка"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Не задано&gt;"</string>

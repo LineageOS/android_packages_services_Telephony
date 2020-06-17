@@ -307,7 +307,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Período de uso de datos"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Política de velocidade de datos"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Máis información"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) de <xliff:g id="USED_2">%3$s</xliff:g> de período máximo\nO seguinte período comeza dentro de <xliff:g id="USED_3">%4$d</xliff:g> días (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>%%) de <xliff:g id="USED_2">%3$s</xliff:g> de período máximo\nO seguinte período comeza dentro de <xliff:g id="USED_3">%4$d</xliff:g> días (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) de <xliff:g id="USED_2">%3$s</xliff:g> de período máximo"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> máximo superado\nTaxa de datos reducida a <xliff:g id="USED_1">%2$d</xliff:g> kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ do ciclo transcorrido\nO seguinte período comeza dentro de <xliff:g id="USED_1">%2$d</xliff:g> días (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Si"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Non"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Rexeitar"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"O teléfono está no modo de devolución de chamadas de emerxencia"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Ata: <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">O teléfono estará no modo de devolución de chamadas de emerxencia durante <xliff:g id="COUNT_1">%s</xliff:g> minutos.\nQueres saír agora?</item>
+      <item quantity="one">O teléfono estará no modo de devolución de chamadas de emerxencia durante <xliff:g id="COUNT_0">%s</xliff:g> minuto.\nQueres saír agora?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Servizo"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configuración"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Sen configurar&gt;"</string>

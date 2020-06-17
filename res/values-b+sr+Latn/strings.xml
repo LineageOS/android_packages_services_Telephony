@@ -118,7 +118,7 @@
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"Prosleđuje se na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"Isključeno"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"Operater ne podržava onemogućavanje preusmeravanja poziva kada se na poziv ne odgovori."</string>
-    <string name="labelCFNRc" msgid="4163399350778066013">"Kad sam nedostupan/a"</string>
+    <string name="labelCFNRc" msgid="4163399350778066013">"Kad sam nedostupan/na"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"Broj kad je nedostupno"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Prosleđuje se na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Isključeno"</string>
@@ -639,6 +639,13 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Da"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Ne"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Odbaci"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefon je u režimu za hitan povratni poziv"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Do <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">Telefon će <xliff:g id="COUNT_1">%s</xliff:g> minut biti u režimu za hitan povratni poziv.\nŽelite sad da izađete iz njega?</item>
+      <item quantity="few">Telefon će <xliff:g id="COUNT_1">%s</xliff:g> minuta biti u režimu za hitan povratni poziv.\nŽelite sad da izađete iz njega?</item>
+      <item quantity="other">Telefon će <xliff:g id="COUNT_1">%s</xliff:g> minuta biti u režimu za hitan povratni poziv.\nŽelite sad da izađete iz njega?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Usluga"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Podešavanje"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nije podešeno&gt;"</string>

@@ -121,7 +121,7 @@
     <string name="labelCFNRc" msgid="4163399350778066013">"Jika tidak dapat dihubungi"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"Nombor apabila tidak dapat dihubungi"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Memajukan ke <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Mati"</string>
+    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Dimatikan"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Pembawa anda tidak menyokong pelumpuhan pemajuan panggilan semasa telefon anda tidak boleh dihubungi."</string>
     <string name="updating_title" msgid="6130548922615719689">"Tetapan panggilan"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Tetapan panggilan hanya boleh diubah oleh pengguna pentadbir."</string>
@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ya"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Tidak"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Ketepikan"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefon dalam mod panggil balik kecemasan"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Hingga <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">Telefon akan berada dalam mod panggil balik kecemasan selama <xliff:g id="COUNT_1">%s</xliff:g> minit.\nAdakah anda mahu keluar sekarang?</item>
+      <item quantity="one">Telefon akan berada dalam mod panggil balik kecemasan selama <xliff:g id="COUNT_0">%s</xliff:g> minit.\nAdakah anda mahu keluar sekarang?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Perkhidmatan"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Persediaan"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Tidak ditetapkan&gt;"</string>

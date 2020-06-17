@@ -95,12 +95,12 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Cargando la configuración…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Número escondido en llamadas salientes"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Número visualizado en llamadas salientes"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilizar configuración del operador predeterminada para visualizar mi número en las llamadas salientes"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilizar configuración predeterminada del operador para visualizar mi número en las llamadas salientes"</string>
     <string name="labelCW" msgid="8449327023861428622">"Llamada en espera"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Desvío de llamadas"</string>
-    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Configuración de desvío de llamada (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Configuración de desvío de llamadas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"Desvío de llamadas"</string>
     <string name="labelCFU" msgid="8870170873036279706">"Desviar siempre"</string>
     <string name="messageCFU" msgid="1361806450979589744">"Usar siempre este número"</string>
@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Sí"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"No"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Descartar"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"El teléfono está en modo de devolución de llamadas de emergencia"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Hasta las <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">El teléfono estará en modo de devolución de llamada de emergencia durante <xliff:g id="COUNT_1">%s</xliff:g> minutos.\n¿Quieres salir ahora?</item>
+      <item quantity="one">El teléfono estará en modo de devolución de llamada de emergencia durante <xliff:g id="COUNT_0">%s</xliff:g> minuto.\n¿Quieres salir ahora?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Servicio"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configuración"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Sin configurar&gt;"</string>

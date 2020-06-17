@@ -307,7 +307,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"தரவு பயன்படுத்தப்பட்ட காலம்"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"தரவு கட்டண கொள்கை"</string>
     <string name="throttle_help" msgid="2624535757028809735">"மேலும் அறிக"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) / <xliff:g id="USED_2">%3$s</xliff:g> அதிகபட்சம்\nஅடுத்த காலநேரம் <xliff:g id="USED_3">%4$d</xliff:g> நாட்களுக்குள் தொடங்கும் (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"அதிகபட்ச சேமிப்பிடம் <xliff:g id="USED_2">%3$s</xliff:g> இல் <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) பயன்படுத்தப்பட்டுள்ளது\nஅடுத்த காலகட்டம் <xliff:g id="USED_3">%4$d</xliff:g> நாட்களில் (<xliff:g id="USED_4">%5$s</xliff:g>) தொடங்கும்"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"அதிகபட்சம் <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) / <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> அதிகபட்சத்தை மீறிவிட்டது\n<xliff:g id="USED_1">%2$d</xliff:g> Kb/s க்குத் தரவு கட்டணம் குறைந்தது"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ சுழற்சி கடந்துவிட்டன\nஅடுத்த காலம் <xliff:g id="USED_1">%2$d</xliff:g> நாட்களில் தொடங்கும் (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ஆம்"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"இல்லை"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"விலக்கு"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"மொபைல் இப்போது அவசரகால திரும்ப அழைக்கும் பயன்முறையில் உள்ளது"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> வரை"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">மொபைல் இன்னும் <xliff:g id="COUNT_1">%s</xliff:g> நிமிடங்களுக்கு அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும்.\nஇப்போதே அதை விட்டு வெளியேறவா?</item>
+      <item quantity="one">மொபைல் இன்னும் <xliff:g id="COUNT_0">%s</xliff:g> நிமிடத்திற்கு அவசரகால திரும்ப அழைக்கும் பயன்முறையில் இருக்கும்.\nஇப்போதே அதை விட்டு வெளியேறவா?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"சேவை"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"அமைவு"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;அமைக்கப்படவில்லை&gt;"</string>

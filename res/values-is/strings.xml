@@ -108,7 +108,7 @@
     <string name="sum_cfu_enabled" msgid="5806923046528144526">"Áframsendir öll símtöl í <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Ekki næst í númerið"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"Slökkt"</string>
-    <string name="labelCFB" msgid="615265213360512768">"Þegar er á tali"</string>
+    <string name="labelCFB" msgid="615265213360512768">"Þegar það er á tali"</string>
     <string name="messageCFB" msgid="1958017270393563388">"Númeraval þegar síminn er á tali"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"Áframsendir í <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"Slökkt"</string>
@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Já"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Nei"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Hunsa"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Síminn er í stillingu fyrir svarhringingu neyðarsímtala"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Til <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">Síminn verður í stillingu fyrir svarhringingu neyðarsímtala í <xliff:g id="COUNT_1">%s</xliff:g> mínútu.\nViltu hætta núna?</item>
+      <item quantity="other">Síminn verður í stillingu fyrir svarhringingu neyðarsímtala í <xliff:g id="COUNT_1">%s</xliff:g> mínútur.\nViltu hætta núna?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Þjónusta"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Uppsetning"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Ekki valið&gt;"</string>

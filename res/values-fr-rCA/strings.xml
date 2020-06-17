@@ -307,9 +307,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Période d\'utilisation des données"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Règles relatives au taux de transfert des données"</string>
     <string name="throttle_help" msgid="2624535757028809735">"En savoir plus"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> sur <xliff:g id="USED_2">%3$s</xliff:g> (soit <xliff:g id="USED_1">%2$d</xliff:g> %%) du maximum par période\nLa prochaine période démarre dans <xliff:g id="USED_3">%4$d</xliff:g> jours (<xliff:g id="USED_4">%5$s</xliff:g>)."</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> sur <xliff:g id="USED_2">%3$s</xliff:g> : (<xliff:g id="USED_1">%2$d</xliff:g> ٪) du maximum par période"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> maximum dépassé\nTaux de transfert des données réduit à <xliff:g id="USED_1">%2$d</xliff:g> Ko/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ du cycle écoulé.\nLa prochaine période démarre dans <xliff:g id="USED_1">%2$d</xliff:g> jours (<xliff:g id="USED_2">%3$s</xliff:g>)."</string>
@@ -524,7 +522,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Numéro de messagerie vocale inconnu"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Aucun service"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Réseau sélectionné<xliff:g id="OPERATOR_NAME">%s</xliff:g> non disponible"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Activez le réseau cellulaire ou désactivez le mode Avion ou le mode Économie d\'énergie pour faire un appel."</string>
+    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Activez le réseau cellulaire ou désactivez le mode Avion ou le mode Économiseur de pile pour faire un appel."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Désactivez le mode Avion pour faire un appel."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Désactivez le mode Avion ou connectez-vous à un réseau Wi-Fi pour faire un appel."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Quittez le mode de rappel d\'urgence pour effectuer un appel non urgent."</string>
@@ -582,7 +580,7 @@
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Contacts importés"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Impossible d\'importer le contact"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"Assistance auditive"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Activer la compatibilité du service d\'assistance auditive"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Activer la compatibilité des prothèses auditives"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Appel texte en temps réel (TTR)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Autoriser l\'utilisation de la messagerie lors des appels vocaux"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"La fonctionnalité TTR aide les appelants qui sont sourds ou malentendants, qui ont un trouble de la parole ou pour qui la voix ne suffit pas.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;En savoir plus&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les appels TTR sont enregistrés en tant que transcriptions de messages\n       &lt;br&gt; - La fonctionnalité TTR n\'est pas disponible pour les appels vidéo"</string>
@@ -639,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Oui"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Non"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Ignorer"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Le téléphone est en mode de rappel d\'urgence"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Jusqu\'à <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">Le mode de rappel d\'urgence sera activé sur le téléphone pour une durée de <xliff:g id="COUNT_1">%s</xliff:g> minute.\nVoulez-vous quitter ce mode maintenant?</item>
+      <item quantity="other">Le mode de rappel d\'urgence sera activé sur le téléphone pour une durée de <xliff:g id="COUNT_1">%s</xliff:g> minutes.\nVoulez-vous quitter ce mode maintenant?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Service"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configuration"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Non défini&gt;"</string>
@@ -863,7 +867,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Sous-identifiant de la carte SIM par défaut :"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Bande passante de téléchargement (kb/s) :"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Bande passante de téléversement (kb/s) :"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Données de la position de la cellule (discontinuées) :"</string>
+    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Données de la position de la cellule (obsolètes) :"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuration du canal physique LTE :"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Taux d\'actualisation des données de la cellule :"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Données des mesures de toutes les cellules :"</string>

@@ -74,7 +74,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"ანგარიშის პარამეტრების კონფიგურაცია"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"დარეკვის ყველა ანგარიში"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"აირჩიეთ რომელ ანგარიშს შეეძლება ზარების განხორციელება"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"დარეკვა Wi-Fi-ს მეშვეობით"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi დარეკვა"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"კავშირის ჩაშენებული სერვისი"</string>
     <string name="voicemail" msgid="7697769412804195032">"ხმოვანი ფოსტა"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"ხმოვანი ფოსტა (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -637,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"დიახ"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"არა"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"იგნორირება"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ტელეფონი გადაუდებელი გადმორეკვის რეჟიმშია"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g>-მდე"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">ტელეფონი <xliff:g id="COUNT_1">%s</xliff:g> წუთის განმავლობაში გადაუდებელი გადმორეკვის რეჟიმში იქნება.\nგსურთ გასვლა ახლავე?</item>
+      <item quantity="one">ტელეფონი <xliff:g id="COUNT_0">%s</xliff:g> წუთის განმავლობაში გადაუდებელი გადმორეკვის რეჟიმში იქნება.\nგსურთ გასვლა ახლავე?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"სერვისი"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"დაყენება"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;არ არის დაყენებული&gt;"</string>

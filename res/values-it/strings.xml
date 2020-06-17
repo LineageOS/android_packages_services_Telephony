@@ -95,7 +95,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Caricamento impostazioni…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Numero nascosto per chiamate in uscita"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Numero visualizzato in chiamate in uscita"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Usa impostazioni dell\'operatore per mostrare il mio numero nelle chiamate in uscita"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Usa le impostazioni predefinite dell\'operatore per mostrare il mio numero nelle chiamate in uscita"</string>
     <string name="labelCW" msgid="8449327023861428622">"Avviso di chiamata"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Notifica chiamate in entrata durante telefonata"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Notifica chiamate in entrata durante telefonata"</string>
@@ -307,9 +307,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Periodo utilizzo dati"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Norme velocità dati"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Ulteriori informazioni"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) del <xliff:g id="USED_2">%3$s</xliff:g> max periodo\nIl periodo succ. inizia tra <xliff:g id="USED_3">%4$d</xliff:g> gg (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) del <xliff:g id="USED_2">%3$s</xliff:g> max periodo"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> max superato\nVelocità dati ridotta a <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ del ciclo trascorso\nIl periodo succ. inizia tra <xliff:g id="USED_1">%2$d</xliff:g> gg (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -639,6 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Sì"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"No"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Ignora"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Il telefono è in modalità di richiamata di emergenza"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Fino alle ore <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">Il telefono sarà in modalità di richiamata di emergenza per <xliff:g id="COUNT_1">%s</xliff:g> minuti.\nVuoi uscire ora?</item>
+      <item quantity="one">Il telefono sarà in modalità di richiamata di emergenza per <xliff:g id="COUNT_0">%s</xliff:g> minuto.\nVuoi uscire ora?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Servizio"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configurazione"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Non impostato&gt;"</string>
