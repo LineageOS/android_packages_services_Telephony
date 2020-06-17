@@ -66,6 +66,10 @@ public class SmsManagerTestApp extends Activity {
         findViewById(R.id.send_text_button_service)
                 .setOnClickListener(this::sendOutgoingSmsService);
         findViewById(R.id.get_sub_for_result_button).setOnClickListener(this::getSubIdForResult);
+        findViewById(R.id.enable_persistent_service)
+                .setOnClickListener(this::setPersistentServiceComponentEnabled);
+        findViewById(R.id.disable_persistent_service)
+                .setOnClickListener(this::setPersistentServiceComponentDisabled);
         mPhoneNumber = (EditText) findViewById(R.id.phone_number_text);
     }
 
@@ -182,6 +186,21 @@ public class SmsManagerTestApp extends Activity {
                     Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void setPersistentServiceComponentEnabled(View view) {
+        getPackageManager().setComponentEnabledSetting(
+                new ComponentName(this, PersistentService.class),
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                PackageManager.DONT_KILL_APP);
+    }
+
+    private void setPersistentServiceComponentDisabled(View view) {
+        getPackageManager().setComponentEnabledSetting(
+                new ComponentName(this, PersistentService.class),
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP);
+    }
+
 
     private Intent getSendStatusIntent() {
         // Encode requestId in intent data
