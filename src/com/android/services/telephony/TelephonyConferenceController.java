@@ -260,6 +260,8 @@ final class TelephonyConferenceController {
                     }
 
                     mTelephonyConference = new TelephonyConference(phoneAccountHandle);
+                    Log.i(this, "Creating new TelephonyConference to hold conferenced connections."
+                            + " conference=" + mTelephonyConference);
                     for (Connection connection : conferencedConnections) {
                         Log.d(this, "Adding a connection to a conference call: %s %s",
                                 mTelephonyConference, connection);
