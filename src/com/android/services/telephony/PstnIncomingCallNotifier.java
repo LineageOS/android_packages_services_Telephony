@@ -41,7 +41,9 @@ import com.android.phone.NumberVerificationManager;
 import com.android.phone.PhoneUtils;
 import com.android.telephony.Rlog;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Listens to incoming-call events from the associated phone object and notifies Telecom upon each
@@ -294,12 +296,48 @@ final class PstnIncomingCallNotifier {
             } catch (CallStateException e) {
                 // connection already disconnected. Do nothing
             }
+            Log.wtf(LOG_TAG, "sendIncomingCallIntent: failed to add new call because no phone"
+                    + " account could be found for the call");
         } else {
             TelecomManager tm = mPhone.getContext().getSystemService(TelecomManager.class);
-            if (connection.isMultiparty()) {
-                tm.addNewIncomingConference(handle, extras);
-            } else {
-                tm.addNewIncomingCall(handle, extras);
+            try {
+                if (connection.isMultiparty()) {
+                    tm.addNewIncomingConference(handle, extras);
+                } else {
+                    tm.addNewIncomingCall(handle, extras);
+                }
+            } catch (SecurityException se) {
+                // If we get a security exception, the most likely cause is:
+                // "This PhoneAccountHandle is not registered for this user"
+                // If this happens, then it means that for whatever reason the phone account which
+                // we are trying to use to add the new incoming call no longer exists in Telecom.
+                // This can happen if the handle of the phone account changes.  The likely root
+                // cause of this would be a change in active SIM profile for an MVNO style carrier
+                // which aggregates multiple carriers together.
+
+                // We will log a list of the available handles ourselves here; PhoneAccountHandle
+                // oscures the ID in the toString.  Rlog.pii will do a secure hash on userdebug
+                // builds so at least we could tell if the handle we tried is different from the one
+                // which we attempted to use.
+                List<PhoneAccountHandle> handles = tm.getCallCapablePhoneAccounts();
+                String availableHandles = handles.stream()
+                        .map(h -> "[" + h.getComponentName() + " "
+                                + Rlog.pii(LOG_TAG, h.getId()) + "]")
+                        .collect(Collectors.joining(","));
+                String attemptedHandle = "[" + handle.getComponentName() + " "
+                        + Rlog.pii(LOG_TAG, handle.getId()) + "]";
+                Log.wtf(LOG_TAG, "sendIncomingCallIntent: failed to add new call " + connection
+                        + " because the handle " + attemptedHandle
+                        + " is not in the list of registered handles " + availableHandles
+                        + " - call was rejected.");
+
+                // Since the phone account handle we're trying to use is not valid, we have no other
+                // recourse but to reject the incoming call.
+                try {
+                    connection.hangup();
+                } catch (CallStateException e) {
+                    // connection already disconnected. Do nothing
+                }
             }
         }
     }
