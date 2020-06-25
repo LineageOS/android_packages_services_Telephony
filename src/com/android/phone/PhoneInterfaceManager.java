@@ -3297,7 +3297,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         final long token = Binder.clearCallingIdentity();
         try {
-            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
+            // TODO(b/159910732): Remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                     .removeRegistrationCallbackForSubscription(c, subId);
         } catch (ImsException e) {
@@ -3420,7 +3420,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long token = Binder.clearCallingIdentity();
         try {
-            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone.
+            // TODO(b/159910732): Remove ImsManager dependence and query through ImsPhone directly.
             ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
                         .removeCapabilitiesCallbackForSubscription(c, subId);
         } catch (ImsException e) {
