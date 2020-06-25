@@ -113,12 +113,18 @@ public class ImsUtil {
     public static boolean shouldPromoteWfc(Context context, int phoneId) {
         CarrierConfigManager cfgManager = (CarrierConfigManager) context
                 .getSystemService(Context.CARRIER_CONFIG_SERVICE);
-        if (cfgManager == null || !cfgManager.getConfigForSubId(getSubId(phoneId))
-                .getBoolean(CarrierConfigManager.KEY_CARRIER_PROMOTE_WFC_ON_CALL_FAIL_BOOL)) {
+
+        ImsManager imsManager = ImsManager.getInstance(context, phoneId);
+        if (!imsManager.isWfcEnabledByPlatform()) {
             return false;
         }
 
-        if (!getDefaultImsManagerInstance(context).isWfcProvisionedOnDevice()) {
+        if (!imsManager.isWfcProvisionedOnDevice()) {
+            return false;
+        }
+
+        if (cfgManager == null || !cfgManager.getConfigForSubId(getSubId(phoneId))
+                .getBoolean(CarrierConfigManager.KEY_CARRIER_PROMOTE_WFC_ON_CALL_FAIL_BOOL)) {
             return false;
         }
 
