@@ -71,7 +71,7 @@
     <string name="phone_accounts_choose_accounts" msgid="4748805293314824974">"اختيار الحسابات"</string>
     <string name="phone_accounts_selection_header" msgid="2945830843104108440">"حسابات الهاتف"</string>
     <string name="phone_accounts_add_sip_account" msgid="1437634802033309305">"‏إضافة حساب SIP"</string>
-    <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"تهيئة إعدادات الحساب"</string>
+    <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"ضبط إعدادات الحساب"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"كل حسابات الاتصال"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"حدد الحسابات التي يمكنها إجراء مكالمات"</string>
     <string name="wifi_calling" msgid="3650509202851355742">"‏الاتصال عبر Wi-Fi"</string>
