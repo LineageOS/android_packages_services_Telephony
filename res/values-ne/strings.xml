@@ -141,7 +141,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"ठिक छ"</string>
     <string name="enable" msgid="2636552299455477603">"सकृय पार्नुहोस्"</string>
     <string name="disable" msgid="1122698860799462116">"निस्कृय पार्नुहोस्"</string>
-    <string name="change_num" msgid="6982164494063109334">"अद्यावधिक गर्नुहोस्"</string>
+    <string name="change_num" msgid="6982164494063109334">"अपडेट गर्नुहोस्"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"नेटवर्क पूर्वनिर्धारित"</item>
     <item msgid="6813323051965618926">"सङ्ख्या लुकाउनुहोस्"</item>
@@ -894,7 +894,7 @@
     <string name="radio_info_http_client_test" msgid="1329583721088428238">"HTTP क्लाइन्टको परीक्षण:"</string>
     <string name="ping_test_label" msgid="448617502935719694">"पिङसम्बन्धी परीक्षण सञ्चालन गर्नुहोस्"</string>
     <string name="radio_info_smsc_label" msgid="3749927072726033763">"SMSC:"</string>
-    <string name="radio_info_smsc_update_label" msgid="5141996256097115753">"अद्यावधिक गर्नुहोस्"</string>
+    <string name="radio_info_smsc_update_label" msgid="5141996256097115753">"अपडेट गर्नुहोस्"</string>
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"पुनः ताजा गर्नुहोस्"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS को जाँचलाई टगल गर्नुहोस्"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-विशिष्ट जानकारी/सेटिङ"</string>
