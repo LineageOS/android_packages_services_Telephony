@@ -5414,6 +5414,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setCallingUid(Binder.getCallingUid())
                                 .setMethod("requestNetworkScan")
                                 .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
+                                .setMinSdkVersionForEnforcement(Build.VERSION_CODES.Q)
                                 .build());
         if (locationResult != LocationAccessPolicy.LocationPermissionResult.ALLOWED) {
             SecurityException e = checkNetworkRequestForSanitizedLocationAccess(request, subId);
